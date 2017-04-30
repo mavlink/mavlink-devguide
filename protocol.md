@@ -19,6 +19,8 @@ uint16_t checksum;           ///< X.25 CRC
 
 ## MAVLink 2 Packet Format
 
+Below is the
+
 ```C
 uint8_t magic;              ///< protocol magic marker
 uint8_t len;                ///< Length of payload
