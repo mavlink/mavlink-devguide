@@ -5,7 +5,7 @@ The parameter protocol is used to exchange key system settings and guarantees de
 {% mermaid %}
 sequenceDiagram;
     participant GCS
-    participant drone
+    participant Drone
     GCS->>Drone: PARAM_REQUEST_LIST
     Drone->>Drone: Start sending parameters
     Drone->>GCS: Send N parameters
