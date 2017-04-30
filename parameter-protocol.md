@@ -9,8 +9,8 @@ sequenceDiagram;
     GCS->>Drone: PARAM_REQUEST_LIST
     Drone->>Drone: Start sending parameters
     Drone->>GCS: Send N parameters
-    GCS->>GCS: Start timeout for receiving all N
-    GCS->>Drone: Request dropped values using PARAM_REQUEST_READ with param index
+    GCS->>GCS: Start receive timeout
+    GCS->>Drone: Request dropped params with PARAM_REQUEST_READ
 
 {% endmermaid %}
 
