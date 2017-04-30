@@ -47,13 +47,17 @@ uint8_t signature[13];      ///< Signature which allows ensuring that the link i
 
 The over-the-wire format of MAVLink is optimized for resources constrained systems and hence the field order is not the same as in the XML specification. The over-the-wire generator sorts all fields of the message according to size, with the largest fields \(uint64\_t\) first, then down to smaller fields. The sorting is done using a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), which ensures that fields that do not need to be reordered stay in the same order. This prevents alignment issues on the encoding / decoding systems and allows for very efficient packing / unpacking.
 
+## Streams vs. Guaranteed Delivery
+
+MAVLink is built for hybrid networks where high-rate data streams from data sources \(commonly drones\) flow to data sinks \(commonly ground stations\), but are mixed with transfers requiring guaranteed delivery. 
+
 ## Topic Mode \(publish-subscribe\)
+
+In topic mode the protocol will not emit a target system and component ID for messages to save link bandwidth. Typical 
 
 ## Point-to-Point Mode
 
 ## Integrity Checks / Checksum
 
 MAVLink implements two integrity checks: The first check is on the integrity of the packet during transmission using the X.25 checksum \([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check)\). This however only ensures that the data has not been altered on the link - it does not ensure consistency with the data definition. The second integrity check is on the [data description](https://en.wikipedia.org/wiki/Data_definition_language) to ensure that two messages with the same ID are indeed containing the same information. To achieve this the data definition itself is run through CRC-16-CCITT and the resulting value is used to seed the packet CRC. Most reference implementations store this constant in an array named **CRC\_EXTRA**.
-
-
 
