@@ -1,10 +1,9 @@
-#
-Protocol Overview
+# Packet Serialization
 
-MAVLink is a binary serialisation format and the reference library comes with convenience functions to make this serialization easy.
+Serialization and de-serialization is available for most common languages as part of the reference library.
 
 {% method %}
-## Packet Serialization
+## Attitude Message Example
 
 This first example shows how the MAVLink convenience serialization functions make it simple to send messages over a link.
 
