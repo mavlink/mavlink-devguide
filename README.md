@@ -10,5 +10,5 @@ Because MAVLink doesn't require any additional framing it is very well suited fo
 
 The protocol is highly efficient with minimal overhead and scales from bandwidth-constrained links to high-bandwidth IP and OFDM links.
 
-MAVLink was first released early 2009 by Lorenz Meier.
+MAVLink was first released early 2009 by Lorenz Meier and has now a [significant number of contributors](https://github.com/mavlink/mavlink/graphs/contributors).
 
