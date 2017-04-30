@@ -1,5 +1,5 @@
 {
-    "plugins": [ "theme-api" ],
+    "plugins": [ "theme-api", "mermaid" ],
     "pluginsConfig": {
         "theme-api": {
             "languages": [
