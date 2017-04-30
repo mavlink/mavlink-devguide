@@ -1,5 +1,14 @@
 {
-    "plugins": [ "theme-api", "mermaid-2" ],
+    "plugins": [
+        "theme-api",
+        "youtube",
+        "richquotes",
+        "anchors",
+        "page-toc-button",
+        "mermaid",
+        "-mermaid-2",
+        "github"
+    ],
     "pluginsConfig": {
         "theme-api": {
             "languages": [
@@ -13,6 +22,17 @@
                     "name": "Go"
                 }
             ]
-        }
+        },
+        "richquotes":
+        {
+            "tip": {
+                "alert": "success",
+                "picto": "fa-thumbs-o-up"
+            }
+
+        },
+        "github": {
+            "url": "https://github.com/mavlink/devguide"
+        },
     }
 }
