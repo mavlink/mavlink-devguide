@@ -9,7 +9,6 @@ MAVLink is a binary serialisation format and the reference library comes with co
 This first example shows how the MAVLink convenience serialization functions make it simple to send messages over a link.
 
 {% sample lang="c" %}
-
 This is the function definition for the altitude message. Behind the scenes the serializer takes care of encoding the message and sending it out on the serial port.
 
 ```c
@@ -20,7 +19,7 @@ float rollspeed, float pitchspeed, float yawspeed);
 ```
 
 {% sample lang="python" %}
-Here is the equivalent definition in Python:
+This is the function definition for the altitude message. Behind the scenes the serializer takes care of encoding the message and sending it out on the serial port.
 
 ```python
 def attitude_send(self, usec, roll, pitch, yaw,
