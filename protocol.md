@@ -1,6 +1,6 @@
 # Protocol Overview
 
-MAVLink follows a modern hybrid publish-subscribe and point-to-point design pattern: Data streams are sent / published as **topics** while configuration sub-protocols such as the [mission protocol](/mission-protocol.md) or [parameter protocol](/parameter-protocol.md) are point-to-point with retransmission.
+MAVLink is a binary telemetry protocol designed for resource-constrained systems and bandwidth-constrained links. MAVLink is deployed in two major versions: v1.0 and v2.0, which is backwards-compatible \(v2.0 implementations can parse and send v1.0 packets\). Telemetry data streams are sent in a multicast design while protocol aspects that change the system configuration and require guaranteed delivery like the [mission protocol](/mission-protocol.md) or [parameter protocol](/parameter-protocol.md) are point-to-point with retransmission.
 
 ## MAVLink 1 Packet Format
 
