@@ -49,13 +49,15 @@ The over-the-wire format of MAVLink is optimized for resources constrained syste
 
 ## Streams vs. Guaranteed Delivery
 
-MAVLink is built for hybrid networks where high-rate data streams from data sources \(commonly drones\) flow to data sinks \(commonly ground stations\), but are mixed with transfers requiring guaranteed delivery. 
+MAVLink is built for hybrid networks where high-rate data streams from data sources \(commonly drones\) flow to data sinks \(commonly ground stations\), but are mixed with transfers requiring guaranteed delivery.
 
 ## Topic Mode \(publish-subscribe\)
 
-In topic mode the protocol will not emit a target system and component ID for messages to save link bandwidth. Typical 
+In topic mode the protocol will not emit a target system and component ID for messages to save link bandwidth. Typical examples for this communication mode are all autopilot data streams like position, attitude, etc.
 
 ## Point-to-Point Mode
+
+In point-to-point mode MAVLink uses a target ID and target component. In most cases where these fields are used the sub-protocol also ensures guaranteed delivery \(missions, parameters, commands\).
 
 ## Integrity Checks / Checksum
 
