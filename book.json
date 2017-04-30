@@ -1,7 +1,6 @@
 {
     "plugins": [
         "theme-api",
-        "youtube",
         "mermaid",
         "github"
     ],
