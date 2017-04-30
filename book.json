@@ -6,7 +6,6 @@
         "anchors",
         "page-toc-button",
         "mermaid",
-        "-mermaid-2",
         "github"
     ],
     "pluginsConfig": {
