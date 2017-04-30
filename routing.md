@@ -4,3 +4,11 @@ MAVLink 2.0 has a source system and component ID as well as a destination system
 
 
 
+## Router Implementation
+
+The [MAVLink Router](https://github.com/01org/mavlink-router) created by Intel allows to mix-and-match different IP protocols with serial ports and route MAVLink traffic.
+
+
+
+
+
