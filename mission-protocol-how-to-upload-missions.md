@@ -1,6 +1,0 @@
-# Mission Protocol
-
-
-
-
-
