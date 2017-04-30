@@ -6,19 +6,24 @@ MAVLink is a binary serialisation format and the reference library comes with co
 {% method %}
 ## Packet Serialization
 
-My first method exposes how to print a message in JavaScript and Go.
+This first example shows how the MAVLink convenience serialization functions make it simple to send messages over a link.
 
-{% sample lang="js" %}
-Here is how to print a message to `stdout` using JavaScript.
+{% sample lang="c" %}
 
-```js
-console.log('My first method');
+This is the function definition for the altitude message. Behind the scenes the serializer takes care of encoding the message and sending it out on the serial port.
+
+```c
+static inline void mavlink_msg_altitude_send(mavlink_channel_t chan,
+uint64_t time_usec, float altitude_monotonic,
+float altitude_amsl, float altitude_local,
+float altitude_relative, float altitude_terrain,
+float bottom_clearance);
 ```
 
-{% sample lang="go" %}
-Here is how to print a message to `stdout` using Go.
+{% sample lang="python" %}
+Here is how to send a message using Python:
 
-```go
+```python
 fmt.Println("My first method")
 ```
 
