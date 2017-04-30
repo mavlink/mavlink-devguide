@@ -2,9 +2,6 @@
     "plugins": [
         "theme-api",
         "youtube",
-        "richquotes",
-        "anchors",
-        "page-toc-button",
         "mermaid",
         "github"
     ],
@@ -29,14 +26,6 @@
                     "name": "Go"
                 }
             ]
-        },
-        "richquotes":
-        {
-            "tip": {
-                "alert": "success",
-                "picto": "fa-thumbs-o-up"
-            }
-
         },
         "github": {
             "url": "https://github.com/mavlink/devguide"
