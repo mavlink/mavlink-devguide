@@ -1,3 +1,10 @@
-# My Awesome API
+# MAVLink Developer Guide
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+MAVLink is a very lightweight, header-only message marshalling library for micro air vehicles. 
+
+It can pack C-structs over serial channels with high effiency and send these packets to the ground control station. It is field-proven and deployed in many products where it serves as interoperability interface between components of different manufacturers.
+
+The protocol is highly efficient with minimal overhead and scales from bandwidth-constrained links to high-bandwidth IP and OFDM links.
+
+MAVLink was first released early 2009 by Lorenz Meier.
+
