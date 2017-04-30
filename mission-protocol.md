@@ -4,7 +4,7 @@ The mission protocol is a sub-protocol supporting guaranteed delivery of message
 
 
 
-```mermaid
+{% mermaid %}
 sequenceDiagram;
     participant GCS
     participant Drone
@@ -18,7 +18,4 @@ sequenceDiagram;
     GCS->>GCS: Start timeout
     Drone-->>GCS: MISSION_ITEM (1)
     GCS->>Drone: MISSION_ACK
-```
-
-
-
+{% endmermaid %}
