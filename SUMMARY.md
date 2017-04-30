@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [Protocol Overview](protocol.md) - Packet formats and protocol versions
+* [Protocol Overview](protocol.md)
 * [Routing](routing.md)
 * [General Telemetry](general-telemetry.md)
 * [Mission Protocol](mission-protocol.md)
@@ -9,6 +9,5 @@
 * [Camera Protocol](camera-protocol.md)
 * [Gimbal Protocol](gimbal-protocol.md)
 * [Offboard Control](offboard-control-interface.md)
-
-
+* [Serialization](serialization.md)
 
