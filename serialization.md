@@ -13,24 +13,25 @@ This first example shows how the MAVLink convenience serialization functions mak
 This is the function definition for the altitude message. Behind the scenes the serializer takes care of encoding the message and sending it out on the serial port.
 
 ```c
-static inline void mavlink_msg_altitude_send(mavlink_channel_t chan,
-uint64_t time_usec, float altitude_monotonic,
-float altitude_amsl, float altitude_local,
-float altitude_relative, float altitude_terrain,
-float bottom_clearance);
+static inline void mavlink_msg_attitude_send(mavlink_channel_t chan,
+uint32_t time_boot_ms, float roll, float pitch, float yaw,
+float rollspeed, float pitchspeed, float yawspeed);
+
 ```
 
 {% sample lang="python" %}
-Here is how to send a message using Python:
+Here is the equivalent definition in Python:
 
 ```python
-fmt.Println("My first method")
+def attitude_send(self, usec, roll, pitch, yaw,
+rollspeed, pitchspeed, yawspeed):
 ```
 
 {% common %}
 Whatever language you are using, the resulting binary data will be the same:
 
-```bash
-0xFF 0xABC
+```
+0x55 0x1C 0x1E <time> <roll> <pitch> <yaw>
+<rollspeed> <pitchspeed> <yawspeed> <crc1> <crc2>
 ```
 {% endmethod %}
