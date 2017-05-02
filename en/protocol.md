@@ -19,7 +19,7 @@ uint16_t checksum;           ///< X.25 CRC
 
 ## MAVLink 2 Packet Format
 
-Below is the
+Below is the over-the-wire format for a MAVLink 2 packet. The in-memory representation might differ.
 
 ```C
 uint8_t magic;              ///< protocol magic marker
