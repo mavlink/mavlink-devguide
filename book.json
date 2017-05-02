@@ -9,7 +9,9 @@
         "-mermaid-2",
         "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git",
         "language-picker",
-        "custom-favicon"
+        "custom-favicon",
+        "-stub-out-blocks@git+https://github.com/hamishwillee/gitbook-plugin-stub-out-blocks.git",
+        "-validate-links"
     ],
     "pluginsConfig": {
         "theme-api": {
