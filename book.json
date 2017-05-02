@@ -7,7 +7,7 @@
         "page-toc-button",
         "mermaid",
         "-mermaid-2",
-        "github"
+        "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git"
     ],
     "pluginsConfig": {
         "theme-api": {
@@ -39,8 +39,28 @@
             }
 
         },
-        "github": {
-            "url": "https://github.com/mavlink/devguide"
+        "toolbar": {
+            "buttons":
+            [
+                {
+                    "label": "Bug tracker",
+                    "icon": "fa fa-bug",
+                    "position" : "left",
+                    "url": "https://github.com/mavlink/devguide/issues/new?title=Doc+Bug:+{{title}}&body=DESCRIBE+PROBLEM+WITH+DOCS+HERE%0A%0ABug+Page:+[{{title}}]({{url}})"
+                    
+                },
+                {
+                    "label": "GitHub",
+                    "icon": "fa fa-github",
+                    "url": "https://github.com/mavlink/devguide"
+                },
+                {
+                    "label": "Edit page on github",
+                    "icon": "fa fa-pencil-square-o",
+                    "position" : "left",
+                    "url": "https://github.com/mavlink/devguide/edit/master/{{filepath_lang}}"
+                }
+            ]
         }
     }
 }
