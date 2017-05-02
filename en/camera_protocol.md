@@ -6,5 +6,5 @@ The camera protocol allows to configure camera payloads and request their status
 
 ## Geotagging and Trigger Feedback
 
-The [CAMERA\_IMAGE\_CAPTURED](http://mavlink.org/messages/common#CAMERA_IMAGE_CAPTURED) message is intended for geo-tagging. It should be sent by camera when an image has been taken.
+The [CAMERA\_IMAGE\_CAPTURED](http://mavlink.org/messages/common#CAMERA_IMAGE_CAPTURED) message is intended for geo-tagging. It should be sent by the camera when an image has been taken.
 

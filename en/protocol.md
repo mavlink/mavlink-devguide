@@ -41,13 +41,13 @@ uint8_t signature[13];      ///< Signature which allows ensuring that the link i
 
 ## Serialization
 
-The over-the-wire format of MAVLink is optimized for resources constrained systems and hence the field order is not the same as in the XML specification. The over-the-wire generator sorts all fields of the message according to size, with the largest fields \(uint64\_t\) first, then down to smaller fields. The sorting is done using a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), which ensures that fields that do not need to be reordered stay in the same order. This prevents alignment issues on the encoding / decoding systems and allows for very efficient packing / unpacking.
+The over-the-wire format of MAVLink is optimized for resource-constrained systems and hence the field order is not the same as in the XML specification. The over-the-wire generator sorts all fields of the message according to size, with the largest fields \(uint64\_t\) first, then down to smaller fields. The sorting is done using a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), which ensures that fields that do not need to be reordered stay in the same order. This prevents alignment issues on the encoding / decoding systems and allows for very efficient packing / unpacking.
 
 ## Multicast Streams vs. Guaranteed Delivery
 
 MAVLink is built for hybrid networks where high-rate data streams from data sources \(commonly drones\) flow to data sinks \(commonly ground stations\), but are mixed with transfers requiring guaranteed delivery. The key insight is that for most **telemetry streams** there is not a known or single recipient: Instead, typically an onboard computer, a ground control station and a cloud system all need the same data stream.
 
-On the other hand configuring the **onboard mission** or changing the system system configuration with **onboard parameters** requires point-to-point communication with guaranteed delivery. MAVLink achieves very high efficiency by allowing both modes of operation.
+On the other hand configuring the **onboard mission** or changing the system configuration with **onboard parameters** requires point-to-point communication with guaranteed delivery. MAVLink achieves very high efficiency by allowing both modes of operation.
 
 ## Topic Mode \(publish-subscribe\)
 
