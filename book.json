@@ -8,7 +8,8 @@
         "mermaid",
         "-mermaid-2",
         "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git",
-        "language-picker"
+        "language-picker",
+        "custom-favicon"
     ],
     "pluginsConfig": {
         "theme-api": {
@@ -62,6 +63,7 @@
                     "url": "https://github.com/mavlink/mavlink-devguide/edit/master/{{filepath_lang}}"
                 }
             ]
-        }
+        },
+        "favicon": "favicon.ico"
     }
 }
