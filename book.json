@@ -7,7 +7,8 @@
         "page-toc-button",
         "mermaid",
         "-mermaid-2",
-        "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git"
+        "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git",
+        "language-picker"
     ],
     "pluginsConfig": {
         "theme-api": {
@@ -46,19 +47,19 @@
                     "label": "Bug tracker",
                     "icon": "fa fa-bug",
                     "position" : "left",
-                    "url": "https://github.com/mavlink/devguide/issues/new?title=Doc+Bug:+{{title}}&body=DESCRIBE+PROBLEM+WITH+DOCS+HERE%0A%0ABug+Page:+[{{title}}]({{url}})"
+                    "url": "https://github.com/mavlink/mavlink-devguide/issues/new?title=Doc+Bug:+{{title}}&body=DESCRIBE+PROBLEM+WITH+DOCS+HERE%0A%0ABug+Page:+[{{title}}]({{url}})"
                     
                 },
                 {
                     "label": "GitHub",
                     "icon": "fa fa-github",
-                    "url": "https://github.com/mavlink/devguide"
+                    "url": "https://github.com/mavlink/mavlink-devguide"
                 },
                 {
                     "label": "Edit page on github",
                     "icon": "fa fa-pencil-square-o",
                     "position" : "left",
-                    "url": "https://github.com/mavlink/devguide/edit/master/{{filepath_lang}}"
+                    "url": "https://github.com/mavlink/mavlink-devguide/edit/master/{{filepath_lang}}"
                 }
             ]
         }
