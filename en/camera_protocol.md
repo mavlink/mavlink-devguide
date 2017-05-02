@@ -45,7 +45,6 @@ TODO : this cmd has more params
 | Param #1 | Intervalometer cycle time in milliseconds. |
 
 
-
 ## Video camera control
 
 TODO : Julian, Gus
