@@ -71,3 +71,40 @@ TODO : this cmd has more params
 
 TODO : Julian, Gus
 
+### Command interface :
+
+ - **`MAV_CMD_SET_CAMERA_MODE`** - TODO
+
+ - **`MAV_CMD_VIDEO_START_STREAMING`** - If vehicle is configured for udp video, start streaming to the target_uri configured by [**`SET_VIDEO_STREAM_SETTINGS`**](http://mavlink.org/messages/common#SET_VIDEO_STREAM_SETTINGS). If vehicle is configured to use RTSP, RTSP server is started (if stop/start RTSP server is supported)
+
+ - **`MAV_CMD_VIDEO_STOP_STREAMING`** - If vehicle is configured for udp video, stop streaming to the target_uri configured by [**`SET_VIDEO_STREAM_SETTINGS`**](http://mavlink.org/messages/common#SET_VIDEO_STREAM_SETTINGS). If vehicle is configured to use RTSP, RTSP server is stoped (if stop/start RTSP server is supported)
+
+ - **`MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION`** - Request information about video streaming. Response is done using [**`VIDEO_STREAM_INFORMATION`**](http://mavlink.org/messages/common#VIDEO_STREAM_INFORMATION) message. Can be used to discover video streams if camera_id = 0.
+
+### Message interface :
+
+ - [**`VIDEO_STREAM_INFORMATION`**](http://mavlink.org/messages/common#VIDEO_STREAM_INFORMATION) - Send information about the video stream. Response to  **`MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION`**.
+
+[PROPOSAL]: Add a string field 'supported_protocols' to be filled with a list of supported protocols, separated by comma. (ex: 'udp,rtsp')
+
+[PROPOSAL]: Change all parameters from current values to all supported values, using a list in a string. (or a use min/max to at least inform a range of possible values). (ex: replace resolution_h to resolution_h_list or max_resolution_h/min_resolution_h).
+
+ - [**`SET_VIDEO_STREAM_SETTINGS`**](http://mavlink.org/messages/common#SET_VIDEO_STREAM_SETTINGS) - Change settings for video streaming. Let GCS to configure the video resolution, frame rate and other video streaming settings. The vehicle should stream the video in the supported set of settings that is closer to the settings selected by user.
+
+target_uri field is optional and will be used to inform the vehicle the uri of the system that will play the video. This is necessary for protocols that actively sends the video to the target, like UDP. Not necessary for RTSP video.
+
+## Video camera capture
+
+### Command interface :
+
+ - **`MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE`** - TODO
+
+ - **`MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS`** - TODO
+
+ - **`MAV_CMD_VIDEO_START_CAPTURE`** - TODO
+
+ - **`MAV_CMD_VIDEO_STOP_CAPTURE`** - TODO
+
+### Message interface :
+
+ - [**`CAMERA_CAPTURED_STATUS`**](http://mavlink.org/messages/common#CAMERA_CAPTURED_STATUS) - TODO
