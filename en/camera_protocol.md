@@ -2,6 +2,31 @@
 
 The camera protocol allows to configure camera payloads and request their status. It supports photo and video cameras and includes messages to query and configure the onboard camera storage.
 
+## Camera Information
+
+### Components:
+
+ - **`MAV_COMP_ID_CAMERA`** - Component is a single camera
+[PROPOSAL]: or it is a component that controls multiple cameras.
+
+### Command interface :
+
+ - **`MAV_CMD_REQUEST_CAMERA_INFORMATION`** - Used to get cameras information. May also be used to discover available cameras using camera_id = 0. Response message is a [**`CAMERA_INFORMATION`**](http://mavlink.org/messages/common#CAMERA_INFORMATION)
+
+ - **`MAV_CMD_REQUEST_CAMERA_SETTINGS`** - Used to get cameras information. May also be used to discover available cameras using camera_id = 0. Response message is a [**`CAMERA_SETTINGS`**](http://mavlink.org/messages/common#CAMERA_SETTINGS)
+
+ - **`MAV_CMD_SET_CAMERA_SETTINGS_1`** - Change first set of settings from a camera.
+
+ - **`MAV_CMD_SET_CAMERA_SETTINGS_2`** - Change second set of settings from a camera.
+
+ - **`MAV_CMD_RESET_CAMERA_SETTINGS`** - Reset all settings from a camera to factory default.
+
+### Message interface :
+
+ - [**`CAMERA_INFORMATION`**](http://mavlink.org/messages/common#CAMERA_INFORMATION) - Response for **`MAV_CMD_REQUEST_CAMERA_INFORMATION`**
+
+ - [**`CAMERA_SETTINGS`**](http://mavlink.org/messages/common#CAMERA_SETTINGS) - Response for **`MAV_CMD_REQUEST_CAMERA_SETTINGS`**
+
 ## Still camera control
 
 ### Message interface : 
