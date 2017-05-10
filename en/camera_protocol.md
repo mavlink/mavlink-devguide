@@ -108,3 +108,60 @@ target_uri field is optional and will be used to inform the vehicle the uri of t
 ### Message interface :
 
  - [**`CAMERA_CAPTURED_STATUS`**](http://mavlink.org/messages/common#CAMERA_CAPTURED_STATUS) - TODO
+
+## Video Streaming use Cases
+
+In this section we will explore some video streaming use cases and how the protocol intends to support them.
+
+### Basic video streaming using RTSP
+
+QGS wants to discover cameras in the vehicle, present them to the user, that will select one of them to be streamed. QGS will play the streamed video.
+
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MAV_CMD_REQUEST_CAMERA_INFORMATION(camera_id = 0)
+    Drone->>GCS: CAMERA_INFORMATION (camera_id = 1)
+    Drone->>GCS: CAMERA_INFORMATION (camera_id = 2)
+    Drone->>GCS: CAMERA_INFORMATION (camera_id = 3)
+    GCS->>Drone: MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION (camera_id = 2)
+    Drone->>GCS: VIDEO_STREAM_INFORMATION (camera_id = 2, target_uri='rtsp://...')
+    GCS->>Drone: Do a RTSP request using target_uri
+{% endmermaid %}
+
+ - Note, there is no way to see supported protocols without change proposed in VIDEO_STREAM_INFORMATION
+
+### Basic video streaming using UDP
+
+QGS wants to discover cameras in the vehicle, present them to the user, that will select one of them to be streamed. QGS will play the streamed video.
+
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MAV_CMD_REQUEST_CAMERA_INFORMATION(camera_id = 0)
+    Drone->>GCS: CAMERA_INFORMATION (camera_id = 1)
+    Drone->>GCS: CAMERA_INFORMATION (camera_id = 2)
+    Drone->>GCS: CAMERA_INFORMATION (camera_id = 3)
+    GCS->>Drone: SET_VIDEO_STREAM_SETTINGS (camera_id = 2, target_uri='udp://gcs_ip:port')
+    GCS->>Drone: MAV_CMD_VIDEO_START_STREAMING
+    Drone->>GCS: Drone stream the video using UDP
+    GCS->>Drone: MAV_CMD_VIDEO_STOP_STREAMING
+    Drone->>GCS: Drone stops the video stream
+{% endmermaid %}
+
+ - Note, there is no way to see supported protocols without change proposed in VIDEO_STREAM_INFORMATION
+
+### Video streamed by daemon running on a vehicle companion board
+
+Instead of having video streaming controlled by a smart camera or the flight stack, the video cameras may be connected to a drone's companion board, that runs a software(Daemon) that controls the streaming.
+
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    Drone->>GCS: HEARTBEAT (compid=MAV_COMP_ID_CAMERA, sysid=123)
+    GCS->>GCS: GCS knows now that the cameras are controlled by another component. From now on the camera related messages are going to be sent using the new component_id/sys_id.
+    GCS->>Drone: MAV_CMD_REQUEST_CAMERA_INFORMATION (compid=MAV_COMP_ID_CAMERA, sysid=123)
+{% endmermaid %}
