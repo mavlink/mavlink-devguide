@@ -1,0 +1,118 @@
+# Mission Protocol
+
+The mission protocol is a sub-protocol supporting guaranteed delivery of messages. It allows to transfer a mission over a lossy link.
+
+## Upload a Mission to the Vehicle
+
+The diagram below shows how the ground control station (GCS) can download a mission.
+
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MISSION_COUNT
+    GCS->>GCS: Start timeout
+    Drone->>GCS: MISSION_REQUEST (0)
+    GCS->>GCS: Start timeout
+    GCS-->>Drone: MISSION_ITEM (0)
+    Drone->>GCS: MISSION_REQUEST (1)
+    GCS->>GCS: Start timeout
+    GCS-->>Drone: MISSION_ITEM (1)
+    Drone->>GCS: MISSION_ACK
+{% endmermaid %}
+
+
+## Download a Mission from the Vehicle
+
+The diagram below shows the communication sequence to download a mission from the drone.
+
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MISSION_REQUEST_LIST
+    GCS->>GCS: Start timeout
+    Drone-->>GCS: MISSION_COUNT
+    GCS->>Drone: MISSION_REQUEST (0)
+    GCS->>GCS: Start timeout
+    Drone-->>GCS: MISSION_ITEM (0)
+    GCS->>Drone: MISSION_REQUEST (1)
+    GCS->>GCS: Start timeout
+    Drone-->>GCS: MISSION_ITEM (1)
+    GCS->>Drone: MISSION_ACK
+{% endmermaid %}
+
+## Mission File Format
+
+The standard file format for missions is JSON, as implemented in the QGroundControl [reference implementation](http://github.com/mavlink/qgroundcontrol). The JSON file format has additional meta data which is not serialized over the link. The JSON file below shows an example mission with two waypoints.
+
+```json
+{
+    "fileType": "Plan",
+    "geoFence": {
+        "polygon": [
+        ],
+        "version": 1
+    },
+    "groundStation": "QGroundControl",
+    "mission": {
+        "cruiseSpeed": 16,
+        "firmwareType": 12,
+        "hoverSpeed": 4,
+        "items": [
+            {
+                "autoContinue": true,
+                "command": 22,
+                "coordinate": [
+                    47.385913889999998,
+                    8.5520674900000007,
+                    15
+                ],
+                "doJumpId": 1,
+                "frame": 3,
+                "params": [
+                    0,
+                    0,
+                    0,
+                    null
+                ],
+                "type": "SimpleItem"
+            },
+            {
+                "autoContinue": true,
+                "command": 16,
+                "coordinate": [
+                    47.383052030000002,
+                    8.5556602700000006,
+                    15
+                ],
+                "doJumpId": 2,
+                "frame": 3,
+                "params": [
+                    0,
+                    0,
+                    0,
+                    null
+                ],
+                "type": "SimpleItem"
+            }
+        ],
+        "plannedHomePosition": [
+            47.386183686176871,
+            8.5520674900000007,
+            15
+        ],
+        "vehicleType": 2,
+        "version": 2
+    },
+    "rallyPoints": {
+        "points": [
+        ],
+        "version": 1
+    },
+    "version": 1
+}
+```
+
+
+
