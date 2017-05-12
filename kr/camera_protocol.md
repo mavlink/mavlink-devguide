@@ -13,8 +13,7 @@
 
 ### 명령 인터페이스 :
 
-**`MAV_CMD_DO_TRIGGER_CONTROL`** - 온보드 카메라 _트리거_ 를 제어하는데 사용(예 :거리나 시간 간격을 기반으로 카메라 제어) start/stop(unpause/pause) 트리거 기능에서만 사용해야 합니다. **FIXME** : 현재 intervalometer cycle time을 설정하는데 이는 전혀 다른 명령입니다.
-Used to control the onboard camera _trigger_ (e.g which does camera control based on distance covered or time intervals). It should ONLY be used start/stop(unpause/pause) triggering functionality. **FIXME** : currently hackily used to set intervalometer cycle time, which should really be a different command.
+**`MAV_CMD_DO_TRIGGER_CONTROL`** - 온보드 카메라 _트리거_ 를 제어하는데 사용(예 :거리나 시간 간격을 기반으로 카메라 제어) start/stop(unpause/pause) 트리거 기능에서만 사용해야함. **FIXME** : 현재 꼼수로 자동노출계 사이클 타임을 설정하는데 이와는 전혀 다른 명령임.
 
 | 명령 파라미터 | 설명 |
 | -- | -- |
@@ -22,28 +21,27 @@ Used to control the onboard camera _trigger_ (e.g which does camera control base
 | Param #2 | ms단위 트리거 사이클 타임. FIXME : 이 필드는 여기에 자리 없음 |
 | Param #3 | 시퀀스 리셋 (1은 리셋 이미지 시퀀스 번호, 0은 현재 시컨스 번호 유지) |
 
-**`MAV_CMD_DO_DIGICAM_CONTROL` ** - 온보드 카메라를 제어하는데 사용. 카메라를 제어하는 온보드 MAVLink 라우팅 시스템이 전달해야함. 온보드 카메라 제어 모듈이 직접 이 메시지를 사용할 수 있고 카메라 자체를 제어하는데 사용할 수도 있음. 온보드 트리거 모듈이 활성화되어 있다면  
-Used to control an onboard camera. Should be forwarded by onboard MAVLink routing system for controlling cameras which directly support MAVLink. It may also be consumed by an onboard camera control module and used to control a 'naive' camera. When an onboard trigger module is active, which paces a camera based on vehicle state (e.g distance covered), the trigger module should also emit this command for other MAVLink-compatible cameras on the bus.
+**`MAV_CMD_DO_DIGICAM_CONTROL`** - 온보드 카메라를 제어하는데 사용. 카메라를 제어하는 온보드 MAVLink 라우팅 시스템이 전달해야함. 온보드 카메라 제어 모듈이 직접 이 메시지를 사용할 수 있고 카메라 자체를 제어하는데 사용할 수도 있음. 온보드 트리거 모듈이 활성화되어 있는 경우, 카메라는 비행체 상태를 따라면(예 : 거리에 따라), 트리거 모듈은 동일 버스에 있는 다른 MAVLink호환 카메라를 위해 이 명령을 보내야만함.
 
-| Command Parameter | Description |
+| 명령 파라미터 | 설명 |
 | -- | -- |
-| Param #5 | Set to 1 to trigger a single image frame. |
+| Param #5 | 1은 싱글 이미지 프레임을 트리거함 |
 
-TODO : this cmd has more params
+TODO : 이 명령은 더 많은 파라미터를 가짐
 
-**`MAV_CMD_DO_SET_CAM_TRIGG_DIST`** - Sets the distance interval for camera triggering. The camera is triggered each time this distance over ground is covered by the aircraft. **FIXME** : currently it is hackily used to modify (enable/disable) trigger state.
+**`MAV_CMD_DO_SET_CAM_TRIGG_DIST`** - 카메라 트리거링을 위해 거리 구간을 설정. 지상으로부터 비행체의 거리가 이 설정값을오 되면 매번 카메라가 트리거됨. **FIXME** : 현재 이 파라미터는 (활성/비활성) 트리거 상태를 수정과 같은 방식으로 이용.
 
-| Command Parameter | Description |
+| 명령 파라미터 | 설명 |
 | -- | -- |
-| Param #1 | Distance interval the camera should be triggered at in meters |
+| Param #1 | 카메라가 트리깅되는 m 단위 거리 구간 |
 
-[PROPOSED] **`MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL`** - Sets the time interval for camera triggering. The camera is triggered each time this interval expires. **FIXME** : we need to define this.
+[제안] **`MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL`** - 카메라 트리깅을 위한 시간 구간 설정. 이 시간 구간이 만료될때마다 카메라가 트리깅됨. **FIXME** : 향후 정의 필요.
 
-| Command Parameter | Description |
+| 명령 파라미터 | 설명 |
 | -- | -- |
-| Param #1 | Intervalometer cycle time in milliseconds. |
+| Param #1 | ms단위 자동노출(Intervalometer) 사이클 타임 |
 
 
-## Video camera control
+## 비디오 카메라 컨트롤
 
 TODO : Julian, Gus
