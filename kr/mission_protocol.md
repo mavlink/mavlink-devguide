@@ -1,10 +1,10 @@
-# Mission Protocol
+# 미션 프로토콜(Mission Protocol)
 
-The mission protocol is a sub-protocol supporting guaranteed delivery of messages. It allows to transfer a mission over a lossy link.
+미션 프로토콜은 메시지 전송을 보장하도록 지원하는 서브-프로토콜입니다. 손실이 일어날 수 있는 링크를 이용해서 미션을 전송할 수 있게 합니다.
 
-## Upload a Mission to the Vehicle
+## 미션을 비행체로 업로드
 
-The diagram below shows how the ground control station (GCS) can download a mission.
+아래 다이어그램은 그라운드 컨트롤 스테이션(GCS)이 미션을 다운로드 받는 방법을 보여줍니다.
 
 {% mermaid %}
 sequenceDiagram;
@@ -22,9 +22,9 @@ sequenceDiagram;
 {% endmermaid %}
 
 
-## Download a Mission from the Vehicle
+## 비행체로부터 미션 다운받기
 
-The diagram below shows the communication sequence to download a mission from the drone.
+아래 다이어그램은 드론으로부터 미션을 다운로드 받기 위한 커뮤니케이션 순서를 보여줍니다.
 
 {% mermaid %}
 sequenceDiagram;
@@ -42,14 +42,14 @@ sequenceDiagram;
     GCS->>Drone: MISSION_ACK
 {% endmermaid %}
 
-## Mission File Format
+## 미션 파일 포맷(Mission File Format)
 
-The standard file format for missions is JSON, as implemented in the QGroundControl [reference implementation](http://github.com/mavlink/qgroundcontrol). The JSON file format has additional meta data which is not serialized over the link. The JSON file below shows an example mission with two waypoints.
+미션용 표준 파일 포맷은 JSON입니다. QGroundControl [reference implementation](http://github.com/mavlink/qgroundcontrol)에 구현되어 있습니다. JSON 파일 포맷은 추가적으로 메타 데이터를 가지고 있습니다. 메타 데이터는 링크 상에서 직렬화되어 있지 않습니다. 2개 waypoint를 가지는 JSON 파일 예제는 아래와 같습니다.
 
 ```json
 {
-    "fileType": "Plan",
     "geoFence": {
+      "fileType": "Plan",
         "polygon": [
         ],
         "version": 1
@@ -113,6 +113,3 @@ The standard file format for missions is JSON, as implemented in the QGroundCont
     "version": 1
 }
 ```
-
-
-

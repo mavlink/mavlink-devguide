@@ -1,6 +1,3 @@
-# Offboard Control Interface
+# 오프보드 제어 인터페이스(Offboard Control Interface)
 
-The offboard control interface allows to send low-level and high-level attitude, velocity or position commands to the vehicle.
-
-
-
+오프보드 제어 인터페이스로 로우-레벨과 하이-레벨 자세 및 속도 혹은 위치 명령을 비행체에 전달할 수 있습니다.

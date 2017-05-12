@@ -1,6 +1,6 @@
-# Parameter Protocol
+# 파라미터 프로토콜(Parameter Protocol)
 
-The parameter protocol is used to exchange key system settings and guarantees delivery.
+파라미터 프로토콜은 핵심 시스템 셋팅을 교환하고 전송을 보장하는데 사용합니다.
 
 {% mermaid %}
 sequenceDiagram;
@@ -13,6 +13,3 @@ sequenceDiagram;
     GCS->>Drone: Request dropped params with PARAM_REQUEST_READ
 
 {% endmermaid %}
-
-
-

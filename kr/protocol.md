@@ -1,5 +1,6 @@
-# Protocol Overview
+# 프로토콜 개요
 
+MAVLink는 바이너리 텔레메트리 프로토콜입니다.
 MAVLink is a binary telemetry protocol designed for resource-constrained systems and bandwidth-constrained links. MAVLink is deployed in two major versions: v1.0 and v2.0, which is backwards-compatible \(v2.0 implementations can parse and send v1.0 packets\). Telemetry data streams are sent in a multicast design while protocol aspects that change the system configuration and require guaranteed delivery like the [mission protocol](mission_protocol.md) or [parameter protocol](parameter_protocol.md) are point-to-point with retransmission.
 
 ## MAVLink 1 Packet Format
@@ -62,4 +63,3 @@ In point-to-point mode MAVLink uses a target ID and target component. In most ca
 ## Integrity Checks / Checksum
 
 MAVLink implements two integrity checks: The first check is on the integrity of the packet during transmission using the X.25 checksum \([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check)\). This however only ensures that the data has not been altered on the link - it does not ensure consistency with the data definition. The second integrity check is on the [data description](https://en.wikipedia.org/wiki/Data_definition_language) to ensure that two messages with the same ID are indeed containing the same information. To achieve this the data definition itself is run through CRC-16-CCITT and the resulting value is used to seed the packet CRC. Most reference implementations store this constant in an array named **CRC\_EXTRA**.
-
