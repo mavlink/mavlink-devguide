@@ -11,10 +11,8 @@ Support for MAVLink 2 is indicated in the [AUTOPILOT\_VERSION](http://mavlink.or
 {% mermaid %}
 
 sequenceDiagram;
-
-participant GCS
-
-participant Drone
+    participant GCS
+    participant Drone
 
 {% endmermaid %}
 
