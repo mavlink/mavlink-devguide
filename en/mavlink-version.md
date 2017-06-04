@@ -8,7 +8,7 @@ Support for MAVLink 2 is indicated in the [AUTOPILOT\_VERSION](http://mavlink.or
 
 To do so, the GCS sends a [COMMAND\_LONG](http://mavlink.org/messages/common#COMMAND_LONG)  or [COMMAND\_INT](http://mavlink.org/messages/common#COMMAND_INT)  message with the command ID [MAV\_CMD\_REQUEST\_PROTOCOL\_VERSION](http://mavlink.org/messages/common#MAV_CMD_REQUEST_PROTOCOL_VERSION).
 
-If the system supports MAVLink 2 and the handshake it will respond accordingly. If it does not support MAVLink 2 it should NACK the command. The GCS should fall back to a timeout in case the command interface is not implemented properly. The diagram below illustrates the complete sequence.
+If the system supports MAVLink 2 and the handshake it will respond with PROTOCOL_VERSION **encoded as MAVLink 2 packet**. If it does not support MAVLink 2 it should NACK the command. The GCS should fall back to a timeout in case the command interface is not implemented properly. The diagram below illustrates the complete sequence.
 
 
 {% mermaid %}
@@ -18,7 +18,7 @@ sequenceDiagram;
     participant Drone
     GCS->>Drone: MAV_CMD_REQUEST_PROTOCOL_VERSION
     GCS->>GCS: Start timeout
-    Drone->>GCS: PROTOCOL_VERSION
+    Drone->>GCS: PROTOCOL_VERSION in MAVLink 2 framing
     GCS->>Drone: If ACK: Switches to MAVLink 2
     Drone->>GCS: Switches to MAVLink 2 on receive
 
