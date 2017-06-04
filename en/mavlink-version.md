@@ -6,6 +6,7 @@ MAVLink is deployed in two major versions: v1.0, which was widely adopted around
 
 Support for MAVLink 2 is indicated in the [AUTOPILOT\_VERSION](http://mavlink.org/messages/common#AUTOPILOT_VERSION) message by the [MAVLINK2](http://mavlink.org/messages/common#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag. This is sufficient if the communication link between autopilot and GCS is completely transparent. However, most communication links are not completely transparent as they either include routing or in case of fixed-length wireless implementations on packetization. In order to also test the link, the MAVLink 2 handshake protocol sends a MAVLink 2 frame to test the complete communication chain.
 
+To do so, the GCS sends a [COMMAND\_LONG](http://mavlink.org/messages/common#COMMAND_LONG)  or [COMMAND\_INT](http://mavlink.org/messages/common#COMMAND_INT)  message with the command ID MAV\_CMD\_REQUEST\_PROTOCOL\_VERSION.
 
 
 {% mermaid %}
@@ -13,25 +14,14 @@ Support for MAVLink 2 is indicated in the [AUTOPILOT\_VERSION](http://mavlink.or
 sequenceDiagram;
     participant GCS
     participant Drone
+    GCS->>Drone: MAV_CMD_REQUEST_PROTOCOL_VERSION
+    GCS->>GCS: Start timeout
+    Drone->>GCS: PROTOCOL_VERSION
+    GCS->>Drone: If ACK: Switches to MAVLink 2
+    Drone->>GCS: Switches to MAVLink 2 on receive
 
 {% endmermaid %}
 
-```
-{% mermaid %}
-sequenceDiagram;
-    participant GCS
-    participant Drone
-    GCS->>Drone: MISSION_COUNT
-    GCS->>GCS: Start timeout
-    Drone->>GCS: MISSION_REQUEST (0)
-    GCS->>GCS: Start timeout
-    GCS-->>Drone: MISSION_ITEM (0)
-    Drone->>GCS: MISSION_REQUEST (1)
-    GCS->>GCS: Start timeout
-    GCS-->>Drone: MISSION_ITEM (1)
-    Drone->>GCS: MISSION_ACK
-{% endmermaid %}
-```
 
 
 
