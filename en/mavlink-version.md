@@ -6,7 +6,9 @@ MAVLink is deployed in two major versions: v1.0, which was widely adopted around
 
 Support for MAVLink 2 is indicated in the [AUTOPILOT\_VERSION](http://mavlink.org/messages/common#AUTOPILOT_VERSION) message by the [MAVLINK2](http://mavlink.org/messages/common#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag. This is sufficient if the communication link between autopilot and GCS is completely transparent. However, most communication links are not completely transparent as they either include routing or in case of fixed-length wireless implementations on packetization. In order to also test the link, the MAVLink 2 handshake protocol sends a MAVLink 2 frame to test the complete communication chain.
 
-To do so, the GCS sends a [COMMAND\_LONG](http://mavlink.org/messages/common#COMMAND_LONG)  or [COMMAND\_INT](http://mavlink.org/messages/common#COMMAND_INT)  message with the command ID MAV\_CMD\_REQUEST\_PROTOCOL\_VERSION.
+To do so, the GCS sends a [COMMAND\_LONG](http://mavlink.org/messages/common#COMMAND_LONG)  or [COMMAND\_INT](http://mavlink.org/messages/common#COMMAND_INT)  message with the command ID [MAV\_CMD\_REQUEST\_PROTOCOL\_VERSION](http://mavlink.org/messages/common#MAV_CMD_REQUEST_PROTOCOL_VERSION).
+
+If the system supports MAVLink 2 and the handshake it will respond accordingly. If it does not support MAVLink 2 it should NACK the command. The GCS should fall back to a timeout in case the command interface is not implemented properly. The diagram below illustrates the complete sequence.
 
 
 {% mermaid %}
