@@ -10,4 +10,5 @@
 * [Camera Protocol](camera_protocol.md)
 * [Gimbal Protocol](gimbal_protocol.md)
 * [MAVLink Version](mavlink-version.md)
+* [Message Definitions](message-definitions.md)
 
