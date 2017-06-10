@@ -9,6 +9,7 @@
 * [Parameter Protocol](parameter_protocol.md)
 * [Camera Protocol](camera_protocol.md)
 * [Gimbal Protocol](gimbal_protocol.md)
+* [UAVCAN Interaction](uavcan-interaction.md)
 * [MAVLink Version](mavlink-version.md)
 * [Message Definitions](message-definitions.md)
 
