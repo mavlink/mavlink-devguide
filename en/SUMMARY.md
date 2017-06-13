@@ -13,3 +13,11 @@
 * [MAVLink Version](mavlink-version.md)
 * [Message Definitions](message-definitions.md)
 
+
+
+## Dronecode Shortcuts
+
+* [PX4 User Guide](https://docs.px4.io/en/)
+* [PX4 Developer Guide](https://dev.px4.io/en/)
+* [QGroundControl User Guide](https://docs.qgroundcontrol.com/en/)
+* [QGroundControl Developer Guide](https://dev.qgroundcontrol.com/en/)

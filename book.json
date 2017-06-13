@@ -11,7 +11,7 @@
         "language-picker",
         "custom-favicon",
         "-stub-out-blocks@git+https://github.com/hamishwillee/gitbook-plugin-stub-out-blocks.git",
-        "-validate-links"
+        "validate-links"
     ],
     "pluginsConfig": {
         "theme-api": {
