@@ -1,5 +1,7 @@
 # MAVLink Developer Guide
 
+[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)
+
 MAVLink is a very lightweight, header-only message marshalling library for micro air vehicles / drones.
 
 MAVLink follows a modern hybrid publish-subscribe and point-to-point design pattern: Data streams are sent / published as **topics** while configuration sub-protocols such as the [mission protocol](mission_protocol.md) or [parameter protocol](parameter_protocol.md) are point-to-point with retransmission.

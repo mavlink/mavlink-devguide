@@ -1,5 +1,7 @@
 # MAVLink 개발자 가이드
 
+[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)
+
 MAVLink는 소형 비행체에 적합하도록 매우 가볍고, 헤더만 가지는 메시지 마샬링(marshalling) 라이브러리입니다.
 
 MAVLink는 모던 하이브리드 publish-subscribe 구조와 point-to-point 디자인 패턴을 따릅니다. : [mission protocol](mission_protocol.md)나 [parameter protocol](parameter_protocol.md)처럼 설정 서브-프로토콜들은 두지점간 통신시에 재전송이 가능하지만 데이터 스트림은 **topics** 을 내보냅니다.
