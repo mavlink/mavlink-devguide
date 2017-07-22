@@ -12,8 +12,7 @@
 * [UAVCAN Interaction](uavcan-interaction.md)
 * [MAVLink Version](mavlink-version.md)
 * [Message Definitions](message-definitions.md)
-
-
+* [MAVLink 2](mavlink-2.md)
 
 ## Dronecode Shortcuts
 
@@ -21,3 +20,4 @@
 * [PX4 Developer Guide](https://dev.px4.io/en/)
 * [QGroundControl User Guide](https://docs.qgroundcontrol.com/en/)
 * [QGroundControl Developer Guide](https://dev.qgroundcontrol.com/en/)
+
