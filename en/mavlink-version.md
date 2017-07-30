@@ -24,6 +24,10 @@ sequenceDiagram;
 
 {% endmermaid %}
 
+## Semi-transparent legacy radios
+
+Some popular legacy radios (e.g. the SiK radio series) operate in semi-transparent mode by injecting [RADIO_STATUS](http://mavlink.org/messages/common#RADIO_STATUS) messages into the MAVLink message stream. Per MAVLink spec these should actually emit a heartbeat with the same system ID and a different component ID than the autopilot to be discoverable. However, an additional heartbeat could be an issue for deployed systems. Therefore these radios can alternatively confirm their v2 compliance by emitting `RADIO_STATUS` in v2 message format after receiving the first v2 MAVLink frame.
+
 
 
 
