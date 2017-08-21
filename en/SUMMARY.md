@@ -13,6 +13,7 @@
 * [UAVCAN Interaction](uavcan-interaction.md)
 * [MAVLink Version](mavlink-version.md)
 * [Message Definitions](message-definitions.md)
+* [Arm Authorization](arm_authorization.md)
 * Command Protocol
 
 ## Dronecode Shortcuts
