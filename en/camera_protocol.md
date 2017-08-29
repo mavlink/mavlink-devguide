@@ -2,6 +2,31 @@
 
 The camera protocol allows to configure camera payloads and request their status. It supports photo and video cameras and includes messages to query and configure the onboard camera storage.
 
+## Camera Information
+
+### Components:
+
+ - **`MAV_COMP_ID_CAMERA`** - Component is a single camera
+[PROPOSAL]: or it is a component that controls multiple cameras.
+
+### Command interface :
+
+ - **`MAV_CMD_REQUEST_CAMERA_INFORMATION`** - Used to get cameras information. May also be used to discover available cameras using camera_id = 0. Response message is a [**`CAMERA_INFORMATION`**](http://mavlink.org/messages/common#CAMERA_INFORMATION)
+
+ - **`MAV_CMD_REQUEST_CAMERA_SETTINGS`** - Used to get cameras information. May also be used to discover available cameras using camera_id = 0. Response message is a [**`CAMERA_SETTINGS`**](http://mavlink.org/messages/common#CAMERA_SETTINGS)
+
+ - **`MAV_CMD_SET_CAMERA_SETTINGS_1`** - Change first set of settings from a camera.
+
+ - **`MAV_CMD_SET_CAMERA_SETTINGS_2`** - Change second set of settings from a camera.
+
+ - **`MAV_CMD_RESET_CAMERA_SETTINGS`** - Reset all settings from a camera to factory default.
+
+### Message interface :
+
+ - [**`CAMERA_INFORMATION`**](http://mavlink.org/messages/common#CAMERA_INFORMATION) - Response for **`MAV_CMD_REQUEST_CAMERA_INFORMATION`**
+
+ - [**`CAMERA_SETTINGS`**](http://mavlink.org/messages/common#CAMERA_SETTINGS) - Response for **`MAV_CMD_REQUEST_CAMERA_SETTINGS`**
+
 ## Still camera control
 
 ### Message interface : 
@@ -46,3 +71,97 @@ TODO : this cmd has more params
 
 TODO : Julian, Gus
 
+### Command interface :
+
+ - **`MAV_CMD_SET_CAMERA_MODE`** - TODO
+
+ - **`MAV_CMD_VIDEO_START_STREAMING`** - If vehicle is configured for udp video, start streaming to the target_uri configured by [**`SET_VIDEO_STREAM_SETTINGS`**](http://mavlink.org/messages/common#SET_VIDEO_STREAM_SETTINGS). If vehicle is configured to use RTSP, RTSP server is started (if stop/start RTSP server is supported)
+
+ - **`MAV_CMD_VIDEO_STOP_STREAMING`** - If vehicle is configured for udp video, stop streaming to the target_uri configured by [**`SET_VIDEO_STREAM_SETTINGS`**](http://mavlink.org/messages/common#SET_VIDEO_STREAM_SETTINGS). If vehicle is configured to use RTSP, RTSP server is stoped (if stop/start RTSP server is supported)
+
+ - **`MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION`** - Request information about video streaming. Response is done using [**`VIDEO_STREAM_INFORMATION`**](http://mavlink.org/messages/common#VIDEO_STREAM_INFORMATION) message. Can be used to discover video streams if camera_id = 0.
+
+### Message interface :
+
+ - [**`VIDEO_STREAM_INFORMATION`**](http://mavlink.org/messages/common#VIDEO_STREAM_INFORMATION) - Send information about the video stream. Response to  **`MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION`**.
+
+[PROPOSAL]: Add a string field 'supported_protocols' to be filled with a list of supported protocols, separated by comma. (ex: 'udp,rtsp')
+
+[PROPOSAL]: Change all parameters from current values to all supported values, using a list in a string. (or a use min/max to at least inform a range of possible values). (ex: replace resolution_h to resolution_h_list or max_resolution_h/min_resolution_h).
+
+ - [**`SET_VIDEO_STREAM_SETTINGS`**](http://mavlink.org/messages/common#SET_VIDEO_STREAM_SETTINGS) - Change settings for video streaming. Let GCS to configure the video resolution, frame rate and other video streaming settings. The vehicle should stream the video in the supported set of settings that is closer to the settings selected by user.
+
+target_uri field is optional and will be used to inform the vehicle the uri of the system that will play the video. This is necessary for protocols that actively sends the video to the target, like UDP. Not necessary for RTSP video.
+
+## Video camera capture
+
+### Command interface :
+
+ - **`MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE`** - TODO
+
+ - **`MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS`** - TODO
+
+ - **`MAV_CMD_VIDEO_START_CAPTURE`** - TODO
+
+ - **`MAV_CMD_VIDEO_STOP_CAPTURE`** - TODO
+
+### Message interface :
+
+ - [**`CAMERA_CAPTURED_STATUS`**](http://mavlink.org/messages/common#CAMERA_CAPTURED_STATUS) - TODO
+
+## Video Streaming use Cases
+
+In this section we will explore some video streaming use cases and how the protocol intends to support them.
+
+### Basic video streaming using RTSP
+
+QGS wants to discover cameras in the vehicle, present them to the user, that will select one of them to be streamed. QGS will play the streamed video.
+
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MAV_CMD_REQUEST_CAMERA_INFORMATION(camera_id = 0)
+    Drone->>GCS: CAMERA_INFORMATION (camera_id = 1)
+    Drone->>GCS: CAMERA_INFORMATION (camera_id = 2)
+    Drone->>GCS: CAMERA_INFORMATION (camera_id = 3)
+    GCS->>Drone: MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION (camera_id = 2)
+    Drone->>GCS: VIDEO_STREAM_INFORMATION (camera_id = 2, target_uri='rtsp://...')
+    GCS->>Drone: Do a RTSP request using target_uri
+{% endmermaid %}
+
+ - Note, there is no way to see supported protocols without change proposed in VIDEO_STREAM_INFORMATION
+
+### Basic video streaming using UDP
+
+QGS wants to discover cameras in the vehicle, present them to the user, that will select one of them to be streamed. QGS will play the streamed video.
+
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MAV_CMD_REQUEST_CAMERA_INFORMATION(camera_id = 0)
+    Drone->>GCS: CAMERA_INFORMATION (camera_id = 1)
+    Drone->>GCS: CAMERA_INFORMATION (camera_id = 2)
+    Drone->>GCS: CAMERA_INFORMATION (camera_id = 3)
+    GCS->>Drone: SET_VIDEO_STREAM_SETTINGS (camera_id = 2, target_uri='udp://gcs_ip:port')
+    GCS->>Drone: MAV_CMD_VIDEO_START_STREAMING
+    Drone->>GCS: Drone stream the video using UDP
+    GCS->>Drone: MAV_CMD_VIDEO_STOP_STREAMING
+    Drone->>GCS: Drone stops the video stream
+{% endmermaid %}
+
+ - Note, there is no way to see supported protocols without change proposed in VIDEO_STREAM_INFORMATION
+
+### Video streamed by daemon running on a vehicle companion board
+
+Instead of having video streaming controlled by a smart camera or the flight stack, the video cameras may be connected to a drone's companion board, that runs a software(Daemon) that controls the streaming.
+
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    Drone->>GCS: HEARTBEAT (compid=MAV_COMP_ID_CAMERA, sysid=123)
+    GCS->>GCS: GCS knows now that the cameras are controlled by another component. From now on the camera related messages are going to be sent using the new component_id/sys_id.
+    GCS->>Drone: MAV_CMD_REQUEST_CAMERA_INFORMATION (compid=MAV_COMP_ID_CAMERA, sysid=123)
+{% endmermaid %}
