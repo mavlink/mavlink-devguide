@@ -9,4 +9,3 @@ Because MAVLink doesn't require any additional framing it is very well suited fo
 MAVLink was first released early 2009 by Lorenz Meier and has now a [significant number of contributors](https://github.com/mavlink/mavlink/graphs/contributors).
 
 The content of this book is CC-BY 4.0 licensed.
-
