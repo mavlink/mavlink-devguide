@@ -1,6 +1,6 @@
 # MAVLink Version
 
-MAVLink is deployed in two major versions: v1.0, which was widely adopted around 2013 and v2.0, which was adopted by major users early 2017 but there are still quite a few legacy peripherals in use not supporting it. The MAVLink 2.0 C/C++ and Python libraries are backwards compatible and support also MAVLink 1.0. This has tremendously simplified the transition.
+MAVLink is deployed in two major versions: v1.0, which was widely adopted around 2013 and v2.0, which was adopted by major users early 2017 but there are still quite a few legacy peripherals in use not supporting it. The [MAVLink 2.0](mavlink_2.md) C/C++ and Python libraries are backwards compatible and support also MAVLink 1.0. This has tremendously simplified the transition.
 
 ## Version Handshaking
 

@@ -1,19 +1,23 @@
 # Summary
 
 * [Introduction](README.md)
-* [Protocol Overview](protocol.md)
+* [Protocol Overview](protocol/overview.md)
 * [Serialization](serialization.md)
 * [Routing](routing.md)
 * [General Telemetry](general_telemetry.md)
-* [Mission Protocol](mission_protocol.md)
-* [Parameter Protocol](parameter_protocol.md)
-* [Command Protocol](command-protocol.md)
-* [Camera Protocol](camera_protocol.md)
-* [Gimbal Protocol](gimbal_protocol.md)
-* [UAVCAN Interaction](uavcan-interaction.md)
-* [MAVLink Version](mavlink-version.md)
-* [Message Definitions](message-definitions.md)
+* [Mission Protocol](protocol/mission.md)
+* [Parameter Protocol](protocol/parameter.md)
+* [Command Protocol](protocol/command.md)
+* [Camera Protocol](protocol/camera.md)
+* [Gimbal Protocol](protocol/gimbal.md)
+* [UAVCAN Interaction](uavcan_interaction.md)
+* [MAVLink Version](mavlink_version.md)
+* [MAVLink 2](mavlink_2.md)
+* [Message Definitions](messages/README.md)
 * [Arm Authorization](arm_authorization.md)
+
+
+----
 
 ## Dronecode Shortcuts
 
