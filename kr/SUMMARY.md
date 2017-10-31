@@ -14,6 +14,7 @@
 * [MAVLink Version](mavlink_version.md)
 * [MAVLink 2](mavlink_2.md)
 * [Message Definitions](messages/README.md)
+  * [Common](messages/common.md)
 * [Arm Authorization](arm_authorization.md)
 
 
