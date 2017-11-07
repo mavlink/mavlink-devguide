@@ -10,7 +10,7 @@ install:
 
 script: 
 
-- htmlproofer ./_book --empty-alt-ignore true --check-external-hash true 
+- htmlproofer ./_book --empty-alt-ignore true --check-external-hash true --url-ignore 'https://utm.arc.nasa.gov/,https://groups.google.com/forum/#!forum/uavcan'
 
 
 env:
