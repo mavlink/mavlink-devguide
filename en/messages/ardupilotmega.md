@@ -25,8 +25,8 @@ These messages define the APM specific message set, which is custom to [http://a
   </p>
   <p>This file has protocol dialect: 2.</p>
   <h2>MAVLink Type Enumerations</h2>
-  <h3 class="mavlink_message_name" id="ENUM_ACCELCAL_VEHICLE_POS">
-   <a href="#ENUM_ACCELCAL_VEHICLE_POS">ACCELCAL_VEHICLE_POS</a>
+  <h3 class="mavlink_message_name" id="ACCELCAL_VEHICLE_POS">
+   <a href="#ACCELCAL_VEHICLE_POS">ACCELCAL_VEHICLE_POS</a>
   </h3>
   <p class="description">
   </p>
@@ -89,8 +89,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_CMD">
-   <a href="#ENUM_MAV_CMD">MAV_CMD</a>
+  <h3 class="mavlink_message_name" id="MAV_CMD">
+   <a href="#MAV_CMD">MAV_CMD</a>
   </h3>
   <p class="description">
   </p>
@@ -1091,8 +1091,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_LIMITS_STATE">
-   <a href="#ENUM_LIMITS_STATE">LIMITS_STATE</a>
+  <h3 class="mavlink_message_name" id="LIMITS_STATE">
+   <a href="#LIMITS_STATE">LIMITS_STATE</a>
   </h3>
   <p class="description">
   </p>
@@ -1149,8 +1149,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_LIMIT_MODULE">
-   <a href="#ENUM_LIMIT_MODULE">LIMIT_MODULE</a>
+  <h3 class="mavlink_message_name" id="LIMIT_MODULE">
+   <a href="#LIMIT_MODULE">LIMIT_MODULE</a>
   </h3>
   <p class="description">
   </p>
@@ -1186,8 +1186,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_RALLY_FLAGS">
-   <a href="#ENUM_RALLY_FLAGS">RALLY_FLAGS</a>
+  <h3 class="mavlink_message_name" id="RALLY_FLAGS">
+   <a href="#RALLY_FLAGS">RALLY_FLAGS</a>
   </h3>
   <p class="description">Flags in RALLY_POINT message</p>
   <table class="sortable">
@@ -1215,8 +1215,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_PARACHUTE_ACTION">
-   <a href="#ENUM_PARACHUTE_ACTION">PARACHUTE_ACTION</a>
+  <h3 class="mavlink_message_name" id="PARACHUTE_ACTION">
+   <a href="#PARACHUTE_ACTION">PARACHUTE_ACTION</a>
   </h3>
   <p class="description">
   </p>
@@ -1252,8 +1252,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GRIPPER_ACTIONS">
-   <a href="#ENUM_GRIPPER_ACTIONS">GRIPPER_ACTIONS</a>
+  <h3 class="mavlink_message_name" id="GRIPPER_ACTIONS">
+   <a href="#GRIPPER_ACTIONS">GRIPPER_ACTIONS</a>
   </h3>
   <p class="description">Gripper actions.</p>
   <table class="sortable">
@@ -1281,8 +1281,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_CAMERA_STATUS_TYPES">
-   <a href="#ENUM_CAMERA_STATUS_TYPES">CAMERA_STATUS_TYPES</a>
+  <h3 class="mavlink_message_name" id="CAMERA_STATUS_TYPES">
+   <a href="#CAMERA_STATUS_TYPES">CAMERA_STATUS_TYPES</a>
   </h3>
   <p class="description">
   </p>
@@ -1346,8 +1346,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_CAMERA_FEEDBACK_FLAGS">
-   <a href="#ENUM_CAMERA_FEEDBACK_FLAGS">CAMERA_FEEDBACK_FLAGS</a>
+  <h3 class="mavlink_message_name" id="CAMERA_FEEDBACK_FLAGS">
+   <a href="#CAMERA_FEEDBACK_FLAGS">CAMERA_FEEDBACK_FLAGS</a>
   </h3>
   <p class="description">
   </p>
@@ -1397,8 +1397,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_MODE_GIMBAL">
-   <a href="#ENUM_MAV_MODE_GIMBAL">MAV_MODE_GIMBAL</a>
+  <h3 class="mavlink_message_name" id="MAV_MODE_GIMBAL">
+   <a href="#MAV_MODE_GIMBAL">MAV_MODE_GIMBAL</a>
   </h3>
   <p class="description">
   </p>
@@ -1462,8 +1462,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GIMBAL_AXIS">
-   <a href="#ENUM_GIMBAL_AXIS">GIMBAL_AXIS</a>
+  <h3 class="mavlink_message_name" id="GIMBAL_AXIS">
+   <a href="#GIMBAL_AXIS">GIMBAL_AXIS</a>
   </h3>
   <p class="description">
   </p>
@@ -1499,8 +1499,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GIMBAL_AXIS_CALIBRATION_STATUS">
-   <a href="#ENUM_GIMBAL_AXIS_CALIBRATION_STATUS">GIMBAL_AXIS_CALIBRATION_STATUS</a>
+  <h3 class="mavlink_message_name" id="GIMBAL_AXIS_CALIBRATION_STATUS">
+   <a href="#GIMBAL_AXIS_CALIBRATION_STATUS">GIMBAL_AXIS_CALIBRATION_STATUS</a>
   </h3>
   <p class="description">
   </p>
@@ -1536,8 +1536,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GIMBAL_AXIS_CALIBRATION_REQUIRED">
-   <a href="#ENUM_GIMBAL_AXIS_CALIBRATION_REQUIRED">GIMBAL_AXIS_CALIBRATION_REQUIRED</a>
+  <h3 class="mavlink_message_name" id="GIMBAL_AXIS_CALIBRATION_REQUIRED">
+   <a href="#GIMBAL_AXIS_CALIBRATION_REQUIRED">GIMBAL_AXIS_CALIBRATION_REQUIRED</a>
   </h3>
   <p class="description">
   </p>
@@ -1573,8 +1573,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_HEARTBEAT_STATUS">
-   <a href="#ENUM_GOPRO_HEARTBEAT_STATUS">GOPRO_HEARTBEAT_STATUS</a>
+  <h3 class="mavlink_message_name" id="GOPRO_HEARTBEAT_STATUS">
+   <a href="#GOPRO_HEARTBEAT_STATUS">GOPRO_HEARTBEAT_STATUS</a>
   </h3>
   <p class="description">
   </p>
@@ -1617,8 +1617,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_HEARTBEAT_FLAGS">
-   <a href="#ENUM_GOPRO_HEARTBEAT_FLAGS">GOPRO_HEARTBEAT_FLAGS</a>
+  <h3 class="mavlink_message_name" id="GOPRO_HEARTBEAT_FLAGS">
+   <a href="#GOPRO_HEARTBEAT_FLAGS">GOPRO_HEARTBEAT_FLAGS</a>
   </h3>
   <p class="description">
   </p>
@@ -1640,8 +1640,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_REQUEST_STATUS">
-   <a href="#ENUM_GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
+  <h3 class="mavlink_message_name" id="GOPRO_REQUEST_STATUS">
+   <a href="#GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
   </h3>
   <p class="description">
   </p>
@@ -1670,8 +1670,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_COMMAND">
-   <a href="#ENUM_GOPRO_COMMAND">GOPRO_COMMAND</a>
+  <h3 class="mavlink_message_name" id="GOPRO_COMMAND">
+   <a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
   </h3>
   <p class="description">
   </p>
@@ -1839,8 +1839,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_CAPTURE_MODE">
-   <a href="#ENUM_GOPRO_CAPTURE_MODE">GOPRO_CAPTURE_MODE</a>
+  <h3 class="mavlink_message_name" id="GOPRO_CAPTURE_MODE">
+   <a href="#GOPRO_CAPTURE_MODE">GOPRO_CAPTURE_MODE</a>
   </h3>
   <p class="description">
   </p>
@@ -1911,8 +1911,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_RESOLUTION">
-   <a href="#ENUM_GOPRO_RESOLUTION">GOPRO_RESOLUTION</a>
+  <h3 class="mavlink_message_name" id="GOPRO_RESOLUTION">
+   <a href="#GOPRO_RESOLUTION">GOPRO_RESOLUTION</a>
   </h3>
   <p class="description">
   </p>
@@ -2025,8 +2025,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_FRAME_RATE">
-   <a href="#ENUM_GOPRO_FRAME_RATE">GOPRO_FRAME_RATE</a>
+  <h3 class="mavlink_message_name" id="GOPRO_FRAME_RATE">
+   <a href="#GOPRO_FRAME_RATE">GOPRO_FRAME_RATE</a>
   </h3>
   <p class="description">
   </p>
@@ -2139,8 +2139,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_FIELD_OF_VIEW">
-   <a href="#ENUM_GOPRO_FIELD_OF_VIEW">GOPRO_FIELD_OF_VIEW</a>
+  <h3 class="mavlink_message_name" id="GOPRO_FIELD_OF_VIEW">
+   <a href="#GOPRO_FIELD_OF_VIEW">GOPRO_FIELD_OF_VIEW</a>
   </h3>
   <p class="description">
   </p>
@@ -2176,8 +2176,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_VIDEO_SETTINGS_FLAGS">
-   <a href="#ENUM_GOPRO_VIDEO_SETTINGS_FLAGS">GOPRO_VIDEO_SETTINGS_FLAGS</a>
+  <h3 class="mavlink_message_name" id="GOPRO_VIDEO_SETTINGS_FLAGS">
+   <a href="#GOPRO_VIDEO_SETTINGS_FLAGS">GOPRO_VIDEO_SETTINGS_FLAGS</a>
   </h3>
   <p class="description">
   </p>
@@ -2199,8 +2199,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_PHOTO_RESOLUTION">
-   <a href="#ENUM_GOPRO_PHOTO_RESOLUTION">GOPRO_PHOTO_RESOLUTION</a>
+  <h3 class="mavlink_message_name" id="GOPRO_PHOTO_RESOLUTION">
+   <a href="#GOPRO_PHOTO_RESOLUTION">GOPRO_PHOTO_RESOLUTION</a>
   </h3>
   <p class="description">
   </p>
@@ -2250,8 +2250,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_PROTUNE_WHITE_BALANCE">
-   <a href="#ENUM_GOPRO_PROTUNE_WHITE_BALANCE">GOPRO_PROTUNE_WHITE_BALANCE</a>
+  <h3 class="mavlink_message_name" id="GOPRO_PROTUNE_WHITE_BALANCE">
+   <a href="#GOPRO_PROTUNE_WHITE_BALANCE">GOPRO_PROTUNE_WHITE_BALANCE</a>
   </h3>
   <p class="description">
   </p>
@@ -2301,8 +2301,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_PROTUNE_COLOUR">
-   <a href="#ENUM_GOPRO_PROTUNE_COLOUR">GOPRO_PROTUNE_COLOUR</a>
+  <h3 class="mavlink_message_name" id="GOPRO_PROTUNE_COLOUR">
+   <a href="#GOPRO_PROTUNE_COLOUR">GOPRO_PROTUNE_COLOUR</a>
   </h3>
   <p class="description">
   </p>
@@ -2331,8 +2331,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_PROTUNE_GAIN">
-   <a href="#ENUM_GOPRO_PROTUNE_GAIN">GOPRO_PROTUNE_GAIN</a>
+  <h3 class="mavlink_message_name" id="GOPRO_PROTUNE_GAIN">
+   <a href="#GOPRO_PROTUNE_GAIN">GOPRO_PROTUNE_GAIN</a>
   </h3>
   <p class="description">
   </p>
@@ -2382,8 +2382,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_PROTUNE_SHARPNESS">
-   <a href="#ENUM_GOPRO_PROTUNE_SHARPNESS">GOPRO_PROTUNE_SHARPNESS</a>
+  <h3 class="mavlink_message_name" id="GOPRO_PROTUNE_SHARPNESS">
+   <a href="#GOPRO_PROTUNE_SHARPNESS">GOPRO_PROTUNE_SHARPNESS</a>
   </h3>
   <p class="description">
   </p>
@@ -2419,8 +2419,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_PROTUNE_EXPOSURE">
-   <a href="#ENUM_GOPRO_PROTUNE_EXPOSURE">GOPRO_PROTUNE_EXPOSURE</a>
+  <h3 class="mavlink_message_name" id="GOPRO_PROTUNE_EXPOSURE">
+   <a href="#GOPRO_PROTUNE_EXPOSURE">GOPRO_PROTUNE_EXPOSURE</a>
   </h3>
   <p class="description">
   </p>
@@ -2622,8 +2622,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_CHARGING">
-   <a href="#ENUM_GOPRO_CHARGING">GOPRO_CHARGING</a>
+  <h3 class="mavlink_message_name" id="GOPRO_CHARGING">
+   <a href="#GOPRO_CHARGING">GOPRO_CHARGING</a>
   </h3>
   <p class="description">
   </p>
@@ -2652,8 +2652,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_MODEL">
-   <a href="#ENUM_GOPRO_MODEL">GOPRO_MODEL</a>
+  <h3 class="mavlink_message_name" id="GOPRO_MODEL">
+   <a href="#GOPRO_MODEL">GOPRO_MODEL</a>
   </h3>
   <p class="description">
   </p>
@@ -2703,8 +2703,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GOPRO_BURST_RATE">
-   <a href="#ENUM_GOPRO_BURST_RATE">GOPRO_BURST_RATE</a>
+  <h3 class="mavlink_message_name" id="GOPRO_BURST_RATE">
+   <a href="#GOPRO_BURST_RATE">GOPRO_BURST_RATE</a>
   </h3>
   <p class="description">
   </p>
@@ -2782,8 +2782,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_LED_CONTROL_PATTERN">
-   <a href="#ENUM_LED_CONTROL_PATTERN">LED_CONTROL_PATTERN</a>
+  <h3 class="mavlink_message_name" id="LED_CONTROL_PATTERN">
+   <a href="#LED_CONTROL_PATTERN">LED_CONTROL_PATTERN</a>
   </h3>
   <p class="description">
   </p>
@@ -2819,8 +2819,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_EKF_STATUS_FLAGS">
-   <a href="#ENUM_EKF_STATUS_FLAGS">EKF_STATUS_FLAGS</a>
+  <h3 class="mavlink_message_name" id="EKF_STATUS_FLAGS">
+   <a href="#EKF_STATUS_FLAGS">EKF_STATUS_FLAGS</a>
   </h3>
   <p class="description">Flags in EKF_STATUS message</p>
   <table class="sortable">
@@ -2904,8 +2904,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_PID_TUNING_AXIS">
-   <a href="#ENUM_PID_TUNING_AXIS">PID_TUNING_AXIS</a>
+  <h3 class="mavlink_message_name" id="PID_TUNING_AXIS">
+   <a href="#PID_TUNING_AXIS">PID_TUNING_AXIS</a>
   </h3>
   <p class="description">
   </p>
@@ -2968,8 +2968,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAG_CAL_STATUS">
-   <a href="#ENUM_MAG_CAL_STATUS">MAG_CAL_STATUS</a>
+  <h3 class="mavlink_message_name" id="MAG_CAL_STATUS">
+   <a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
   </h3>
   <p class="description">
   </p>
@@ -3032,8 +3032,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">
-   <a href="#ENUM_MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS</a>
+  <h3 class="mavlink_message_name" id="MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">
+   <a href="#MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS</a>
   </h3>
   <p class="description">Special ACK block numbers control activation of dataflash log streaming</p>
   <table class="sortable">
@@ -3061,8 +3061,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_REMOTE_LOG_DATA_BLOCK_STATUSES">
-   <a href="#ENUM_MAV_REMOTE_LOG_DATA_BLOCK_STATUSES">MAV_REMOTE_LOG_DATA_BLOCK_STATUSES</a>
+  <h3 class="mavlink_message_name" id="MAV_REMOTE_LOG_DATA_BLOCK_STATUSES">
+   <a href="#MAV_REMOTE_LOG_DATA_BLOCK_STATUSES">MAV_REMOTE_LOG_DATA_BLOCK_STATUSES</a>
   </h3>
   <p class="description">Possible remote log data block statuses</p>
   <table class="sortable">
@@ -3090,8 +3090,8 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_DEVICE_OP_BUSTYPE">
-   <a href="#ENUM_DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
+  <h3 class="mavlink_message_name" id="DEVICE_OP_BUSTYPE">
+   <a href="#DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
   </h3>
   <p class="description">Bus types for device operations</p>
   <table class="sortable">
@@ -3495,7 +3495,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">mount_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">mount operating mode (see MAV_MOUNT_MODE enum)
-     (Enum:<a href="#ENUM_MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
+     (Enum:<a href="#MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
       )
      </td>
     </tr>
@@ -3724,7 +3724,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">breach_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">last breach type (see FENCE_BREACH_* enum)
-     (Enum:<a href="#ENUM_FENCE_BREACH">FENCE_BREACH</a>
+     (Enum:<a href="#FENCE_BREACH">FENCE_BREACH</a>
       )
      </td>
     </tr>
@@ -3974,7 +3974,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">limits_state</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">state of AP_Limits, (see enum LimitState, LIMITS_STATE)
-     (Enum:<a href="#ENUM_LIMITS_STATE">LIMITS_STATE</a>
+     (Enum:<a href="#LIMITS_STATE">LIMITS_STATE</a>
       )
      </td>
     </tr>
@@ -4011,7 +4011,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">mods_enabled</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">AP_Limit_Module bitfield of enabled modules, (see enum moduleid or LIMIT_MODULE)
-     (Enum:<a href="#ENUM_LIMIT_MODULE">LIMIT_MODULE</a>
+     (Enum:<a href="#LIMIT_MODULE">LIMIT_MODULE</a>
       )
      </td>
     </tr>
@@ -4019,7 +4019,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">mods_required</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">AP_Limit_Module bitfield of required modules, (see enum moduleid or LIMIT_MODULE)
-     (Enum:<a href="#ENUM_LIMIT_MODULE">LIMIT_MODULE</a>
+     (Enum:<a href="#LIMIT_MODULE">LIMIT_MODULE</a>
       )
      </td>
     </tr>
@@ -4027,7 +4027,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">mods_triggered</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">AP_Limit_Module bitfield of triggered modules, (see enum moduleid or LIMIT_MODULE)
-     (Enum:<a href="#ENUM_LIMIT_MODULE">LIMIT_MODULE</a>
+     (Enum:<a href="#LIMIT_MODULE">LIMIT_MODULE</a>
       )
      </td>
     </tr>
@@ -4379,7 +4379,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">See RALLY_FLAGS enum for definition of the bitmask.
-     (Enum:<a href="#ENUM_RALLY_FLAGS">RALLY_FLAGS</a>
+     (Enum:<a href="#RALLY_FLAGS">RALLY_FLAGS</a>
       )
      </td>
     </tr>
@@ -4560,7 +4560,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">event_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">See CAMERA_STATUS_TYPES enum for definition of the bitmask
-     (Enum:<a href="#ENUM_CAMERA_STATUS_TYPES">CAMERA_STATUS_TYPES</a>
+     (Enum:<a href="#CAMERA_STATUS_TYPES">CAMERA_STATUS_TYPES</a>
       )
      </td>
     </tr>
@@ -4674,7 +4674,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">See CAMERA_FEEDBACK_FLAGS enum for definition of the bitmask
-     (Enum:<a href="#ENUM_CAMERA_FEEDBACK_FLAGS">CAMERA_FEEDBACK_FLAGS</a>
+     (Enum:<a href="#CAMERA_FEEDBACK_FLAGS">CAMERA_FEEDBACK_FLAGS</a>
       )
      </td>
     </tr>
@@ -4837,7 +4837,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">seqno</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
      <td class="mavlink_comment">log data block sequence number
-     (Enum:<a href="#ENUM_MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS</a>
+     (Enum:<a href="#MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS</a>
       )
      </td>
     </tr>
@@ -4882,7 +4882,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">log data block status
-     (Enum:<a href="#ENUM_MAV_REMOTE_LOG_DATA_BLOCK_STATUSES">MAV_REMOTE_LOG_DATA_BLOCK_STATUSES</a>
+     (Enum:<a href="#MAV_REMOTE_LOG_DATA_BLOCK_STATUSES">MAV_REMOTE_LOG_DATA_BLOCK_STATUSES</a>
       )
      </td>
     </tr>
@@ -4964,7 +4964,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">cal_status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Status (see MAG_CAL_STATUS enum)
-     (Enum:<a href="#ENUM_MAG_CAL_STATUS">MAG_CAL_STATUS</a>
+     (Enum:<a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
       )
      </td>
     </tr>
@@ -5030,7 +5030,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">cal_status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Status (see MAG_CAL_STATUS enum)
-     (Enum:<a href="#ENUM_MAG_CAL_STATUS">MAG_CAL_STATUS</a>
+     (Enum:<a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
       )
      </td>
     </tr>
@@ -5111,7 +5111,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">Flags
-     (Enum:<a href="#ENUM_EKF_STATUS_FLAGS">EKF_STATUS_FLAGS</a>
+     (Enum:<a href="#EKF_STATUS_FLAGS">EKF_STATUS_FLAGS</a>
       )
      </td>
     </tr>
@@ -5161,7 +5161,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">axis</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">axis
-     (Enum:<a href="#ENUM_PID_TUNING_AXIS">PID_TUNING_AXIS</a>
+     (Enum:<a href="#PID_TUNING_AXIS">PID_TUNING_AXIS</a>
       )
      </td>
     </tr>
@@ -5392,7 +5392,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Status
-     (Enum:<a href="#ENUM_GOPRO_HEARTBEAT_STATUS">GOPRO_HEARTBEAT_STATUS</a>
+     (Enum:<a href="#GOPRO_HEARTBEAT_STATUS">GOPRO_HEARTBEAT_STATUS</a>
       )
      </td>
     </tr>
@@ -5400,7 +5400,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">capture_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Current capture mode
-     (Enum:<a href="#ENUM_GOPRO_CAPTURE_MODE">GOPRO_CAPTURE_MODE</a>
+     (Enum:<a href="#GOPRO_CAPTURE_MODE">GOPRO_CAPTURE_MODE</a>
       )
      </td>
     </tr>
@@ -5408,7 +5408,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">additional status bits
-     (Enum:<a href="#ENUM_GOPRO_HEARTBEAT_FLAGS">GOPRO_HEARTBEAT_FLAGS</a>
+     (Enum:<a href="#GOPRO_HEARTBEAT_FLAGS">GOPRO_HEARTBEAT_FLAGS</a>
       )
      </td>
     </tr>
@@ -5443,7 +5443,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">cmd_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Command ID
-     (Enum:<a href="#ENUM_GOPRO_COMMAND">GOPRO_COMMAND</a>
+     (Enum:<a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
       )
      </td>
     </tr>
@@ -5468,7 +5468,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">cmd_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Command ID
-     (Enum:<a href="#ENUM_GOPRO_COMMAND">GOPRO_COMMAND</a>
+     (Enum:<a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
       )
      </td>
     </tr>
@@ -5476,7 +5476,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Status
-     (Enum:<a href="#ENUM_GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
+     (Enum:<a href="#GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
       )
      </td>
     </tr>
@@ -5516,7 +5516,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">cmd_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Command ID
-     (Enum:<a href="#ENUM_GOPRO_COMMAND">GOPRO_COMMAND</a>
+     (Enum:<a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
       )
      </td>
     </tr>
@@ -5546,7 +5546,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">cmd_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Command ID
-     (Enum:<a href="#ENUM_GOPRO_COMMAND">GOPRO_COMMAND</a>
+     (Enum:<a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
       )
      </td>
     </tr>
@@ -5554,7 +5554,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Status
-     (Enum:<a href="#ENUM_GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
+     (Enum:<a href="#GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
       )
      </td>
     </tr>
@@ -5624,7 +5624,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">bustype</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">The bus type
-     (Enum:<a href="#ENUM_DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
+     (Enum:<a href="#DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
       )
      </td>
     </tr>
@@ -5737,7 +5737,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">bustype</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">The bus type
-     (Enum:<a href="#ENUM_DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
+     (Enum:<a href="#DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
       )
      </td>
     </tr>
@@ -5825,7 +5825,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">axis</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">axis
-     (Enum:<a href="#ENUM_PID_TUNING_AXIS">PID_TUNING_AXIS</a>
+     (Enum:<a href="#PID_TUNING_AXIS">PID_TUNING_AXIS</a>
       )
      </td>
     </tr>

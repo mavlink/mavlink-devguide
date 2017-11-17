@@ -16,8 +16,8 @@
    <a href="common.md">common.xml</a>
   </p>
   <h2>MAVLink Type Enumerations</h2>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_CMD">
-   <a href="#ENUM_MAV_CMD">MAV_CMD</a>
+  <h3 class="mavlink_message_name" id="MAV_CMD">
+   <a href="#MAV_CMD">MAV_CMD</a>
   </h3>
   <p class="description">
   </p>
@@ -140,8 +140,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_SLUGS_MODE">
-   <a href="#ENUM_SLUGS_MODE">SLUGS_MODE</a>
+  <h3 class="mavlink_message_name" id="SLUGS_MODE">
+   <a href="#SLUGS_MODE">SLUGS_MODE</a>
   </h3>
   <p class="description">Slugs-specific navigation modes.</p>
   <table class="sortable">
@@ -239,8 +239,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_CONTROL_SURFACE_FLAG">
-   <a href="#ENUM_CONTROL_SURFACE_FLAG">CONTROL_SURFACE_FLAG</a>
+  <h3 class="mavlink_message_name" id="CONTROL_SURFACE_FLAG">
+   <a href="#CONTROL_SURFACE_FLAG">CONTROL_SURFACE_FLAG</a>
   </h3>
   <p class="description">These flags encode the control surfaces for selective passthrough mode. If a bit is set then the pilot console
             has control of the surface, and if not then the autopilot has control of the surface.</p>

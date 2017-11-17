@@ -14,8 +14,8 @@
   <h2>MAVLink Protocol Version</h2>
   <p>This file has protocol version: 2. The version numbers range from 1-255.</p>
   <h2>MAVLink Type Enumerations</h2>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_AUTOPILOT">
-   <a href="#ENUM_MAV_AUTOPILOT">MAV_AUTOPILOT</a>
+  <h3 class="mavlink_message_name" id="MAV_AUTOPILOT">
+   <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
   </h3>
   <p class="description">Micro air vehicle / autopilot classes. This identifies the individual model.</p>
   <table class="sortable">
@@ -113,8 +113,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_TYPE">
-   <a href="#ENUM_MAV_TYPE">MAV_TYPE</a>
+  <h3 class="mavlink_message_name" id="MAV_TYPE">
+   <a href="#MAV_TYPE">MAV_TYPE</a>
   </h3>
   <p class="description">
   </p>
@@ -248,8 +248,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_MODE_FLAG">
-   <a href="#ENUM_MAV_MODE_FLAG">MAV_MODE_FLAG</a>
+  <h3 class="mavlink_message_name" id="MAV_MODE_FLAG">
+   <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
   </h3>
   <p class="description">These flags encode the MAV mode.</p>
   <table class="sortable">
@@ -319,8 +319,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_MODE_FLAG_DECODE_POSITION">
-   <a href="#ENUM_MAV_MODE_FLAG_DECODE_POSITION">MAV_MODE_FLAG_DECODE_POSITION</a>
+  <h3 class="mavlink_message_name" id="MAV_MODE_FLAG_DECODE_POSITION">
+   <a href="#MAV_MODE_FLAG_DECODE_POSITION">MAV_MODE_FLAG_DECODE_POSITION</a>
   </h3>
   <p class="description">These values encode the bit positions of the decode position. These values can be used to read the value of a flag bit by combining the base_mode variable with AND with the flag position value. The result will be either 0 or 1, depending on if the flag is set or not.</p>
   <table class="sortable">
@@ -390,8 +390,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_STATE">
-   <a href="#ENUM_MAV_STATE">MAV_STATE</a>
+  <h3 class="mavlink_message_name" id="MAV_STATE">
+   <a href="#MAV_STATE">MAV_STATE</a>
   </h3>
   <p class="description">
   </p>
@@ -489,7 +489,7 @@
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Type of the MAV (quadrotor, helicopter, etc., up to 15 types, defined in MAV_TYPE ENUM)
-     (Enum:<a href="#ENUM_MAV_TYPE">MAV_TYPE</a>
+     (Enum:<a href="#MAV_TYPE">MAV_TYPE</a>
       )
      </td>
     </tr>
@@ -497,7 +497,7 @@
      <td class="mavlink_name" valign="top">autopilot</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Autopilot type / class. defined in MAV_AUTOPILOT ENUM
-     (Enum:<a href="#ENUM_MAV_AUTOPILOT">MAV_AUTOPILOT</a>
+     (Enum:<a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
       )
      </td>
     </tr>
@@ -515,7 +515,7 @@
      <td class="mavlink_name" valign="top">system_status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">System status flag, see MAV_STATE ENUM
-     (Enum:<a href="#ENUM_MAV_STATE">MAV_STATE</a>
+     (Enum:<a href="#MAV_STATE">MAV_STATE</a>
       )
      </td>
     </tr>

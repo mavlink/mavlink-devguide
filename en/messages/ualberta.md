@@ -16,8 +16,8 @@
    <a href="common.md">common.xml</a>
   </p>
   <h2>MAVLink Type Enumerations</h2>
-  <h3 class="mavlink_message_name" id="ENUM_UALBERTA_AUTOPILOT_MODE">
-   <a href="#ENUM_UALBERTA_AUTOPILOT_MODE">UALBERTA_AUTOPILOT_MODE</a>
+  <h3 class="mavlink_message_name" id="UALBERTA_AUTOPILOT_MODE">
+   <a href="#UALBERTA_AUTOPILOT_MODE">UALBERTA_AUTOPILOT_MODE</a>
   </h3>
   <p class="description">Available autopilot modes for ualberta uav</p>
   <table class="sortable">
@@ -71,8 +71,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_UALBERTA_NAV_MODE">
-   <a href="#ENUM_UALBERTA_NAV_MODE">UALBERTA_NAV_MODE</a>
+  <h3 class="mavlink_message_name" id="UALBERTA_NAV_MODE">
+   <a href="#UALBERTA_NAV_MODE">UALBERTA_NAV_MODE</a>
   </h3>
   <p class="description">Navigation filter mode</p>
   <table class="sortable">
@@ -119,8 +119,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_UALBERTA_PILOT_MODE">
-   <a href="#ENUM_UALBERTA_PILOT_MODE">UALBERTA_PILOT_MODE</a>
+  <h3 class="mavlink_message_name" id="UALBERTA_PILOT_MODE">
+   <a href="#UALBERTA_PILOT_MODE">UALBERTA_PILOT_MODE</a>
   </h3>
   <p class="description">Mode currently commanded by pilot</p>
   <table class="sortable">

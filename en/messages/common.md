@@ -17,8 +17,8 @@ These messages define the common message set, which is the reference message set
   <p>This file has protocol version: 3. The version numbers range from 1-255.</p>
   <p>This file has protocol dialect: 0.</p>
   <h2>MAVLink Type Enumerations</h2>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_AUTOPILOT">
-   <a href="#ENUM_MAV_AUTOPILOT">MAV_AUTOPILOT</a>
+  <h3 class="mavlink_message_name" id="MAV_AUTOPILOT">
+   <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
   </h3>
   <p class="description">Micro air vehicle / autopilot classes. This identifies the individual model.</p>
   <table class="sortable">
@@ -165,8 +165,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_TYPE">
-   <a href="#ENUM_MAV_TYPE">MAV_TYPE</a>
+  <h3 class="mavlink_message_name" id="MAV_TYPE">
+   <a href="#MAV_TYPE">MAV_TYPE</a>
   </h3>
   <p class="description">
   </p>
@@ -384,8 +384,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_FIRMWARE_VERSION_TYPE">
-   <a href="#ENUM_FIRMWARE_VERSION_TYPE">FIRMWARE_VERSION_TYPE</a>
+  <h3 class="mavlink_message_name" id="FIRMWARE_VERSION_TYPE">
+   <a href="#FIRMWARE_VERSION_TYPE">FIRMWARE_VERSION_TYPE</a>
   </h3>
   <p class="description">These values define the type of firmware release.  These values indicate the first version or release of this type.  For example the first alpha release would be 64, the second would be 65.</p>
   <table class="sortable">
@@ -434,8 +434,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_MODE_FLAG">
-   <a href="#ENUM_MAV_MODE_FLAG">MAV_MODE_FLAG</a>
+  <h3 class="mavlink_message_name" id="MAV_MODE_FLAG">
+   <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
   </h3>
   <p class="description">These flags encode the MAV mode.</p>
   <table class="sortable">
@@ -505,8 +505,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_MODE_FLAG_DECODE_POSITION">
-   <a href="#ENUM_MAV_MODE_FLAG_DECODE_POSITION">MAV_MODE_FLAG_DECODE_POSITION</a>
+  <h3 class="mavlink_message_name" id="MAV_MODE_FLAG_DECODE_POSITION">
+   <a href="#MAV_MODE_FLAG_DECODE_POSITION">MAV_MODE_FLAG_DECODE_POSITION</a>
   </h3>
   <p class="description">These values encode the bit positions of the decode position. These values can be used to read the value of a flag bit by combining the base_mode variable with AND with the flag position value. The result will be either 0 or 1, depending on if the flag is set or not.</p>
   <table class="sortable">
@@ -576,8 +576,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_GOTO">
-   <a href="#ENUM_MAV_GOTO">MAV_GOTO</a>
+  <h3 class="mavlink_message_name" id="MAV_GOTO">
+   <a href="#MAV_GOTO">MAV_GOTO</a>
   </h3>
   <p class="description">Override command, pauses current mission execution and moves immediately to a position</p>
   <table class="sortable">
@@ -619,8 +619,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_MODE">
-   <a href="#ENUM_MAV_MODE">MAV_MODE</a>
+  <h3 class="mavlink_message_name" id="MAV_MODE">
+   <a href="#MAV_MODE">MAV_MODE</a>
   </h3>
   <p class="description">These defines are predefined OR-combined mode flags. There is no need to use values from this enum, but it
                simplifies the use of the mode flags. Note that manual input is enabled in all modes as a safety override.</p>
@@ -712,8 +712,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_STATE">
-   <a href="#ENUM_MAV_STATE">MAV_STATE</a>
+  <h3 class="mavlink_message_name" id="MAV_STATE">
+   <a href="#MAV_STATE">MAV_STATE</a>
   </h3>
   <p class="description">
   </p>
@@ -799,8 +799,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_COMPONENT">
-   <a href="#ENUM_MAV_COMPONENT">MAV_COMPONENT</a>
+  <h3 class="mavlink_message_name" id="MAV_COMPONENT">
+   <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
   </h3>
   <p class="description">
   </p>
@@ -1125,8 +1125,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_SYS_STATUS_SENSOR">
-   <a href="#ENUM_MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
+  <h3 class="mavlink_message_name" id="MAV_SYS_STATUS_SENSOR">
+   <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
   </h3>
   <p class="description">These encode the sensors whose status is sent as part of the SYS_STATUS message.</p>
   <table class="sortable">
@@ -1322,8 +1322,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_FRAME">
-   <a href="#ENUM_MAV_FRAME">MAV_FRAME</a>
+  <h3 class="mavlink_message_name" id="MAV_FRAME">
+   <a href="#MAV_FRAME">MAV_FRAME</a>
   </h3>
   <p class="description">
   </p>
@@ -1422,8 +1422,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAVLINK_DATA_STREAM_TYPE">
-   <a href="#ENUM_MAVLINK_DATA_STREAM_TYPE">MAVLINK_DATA_STREAM_TYPE</a>
+  <h3 class="mavlink_message_name" id="MAVLINK_DATA_STREAM_TYPE">
+   <a href="#MAVLINK_DATA_STREAM_TYPE">MAVLINK_DATA_STREAM_TYPE</a>
   </h3>
   <p class="description">
   </p>
@@ -1492,8 +1492,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_FENCE_ACTION">
-   <a href="#ENUM_FENCE_ACTION">FENCE_ACTION</a>
+  <h3 class="mavlink_message_name" id="FENCE_ACTION">
+   <a href="#FENCE_ACTION">FENCE_ACTION</a>
   </h3>
   <p class="description">
   </p>
@@ -1543,8 +1543,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_FENCE_BREACH">
-   <a href="#ENUM_FENCE_BREACH">FENCE_BREACH</a>
+  <h3 class="mavlink_message_name" id="FENCE_BREACH">
+   <a href="#FENCE_BREACH">FENCE_BREACH</a>
   </h3>
   <p class="description">
   </p>
@@ -1587,8 +1587,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_MOUNT_MODE">
-   <a href="#ENUM_MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
+  <h3 class="mavlink_message_name" id="MAV_MOUNT_MODE">
+   <a href="#MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
   </h3>
   <p class="description">Enumeration of possible mount operation modes</p>
   <table class="sortable">
@@ -1637,8 +1637,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_UAVCAN_NODE_HEALTH">
-   <a href="#ENUM_UAVCAN_NODE_HEALTH">UAVCAN_NODE_HEALTH</a>
+  <h3 class="mavlink_message_name" id="UAVCAN_NODE_HEALTH">
+   <a href="#UAVCAN_NODE_HEALTH">UAVCAN_NODE_HEALTH</a>
   </h3>
   <p class="description">Generalized UAVCAN node health</p>
   <table class="sortable">
@@ -1680,8 +1680,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_UAVCAN_NODE_MODE">
-   <a href="#ENUM_UAVCAN_NODE_MODE">UAVCAN_NODE_MODE</a>
+  <h3 class="mavlink_message_name" id="UAVCAN_NODE_MODE">
+   <a href="#UAVCAN_NODE_MODE">UAVCAN_NODE_MODE</a>
   </h3>
   <p class="description">Generalized UAVCAN node mode</p>
   <table class="sortable">
@@ -1730,8 +1730,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_CMD">
-   <a href="#ENUM_MAV_CMD">MAV_CMD</a>
+  <h3 class="mavlink_message_name" id="MAV_CMD">
+   <a href="#MAV_CMD">MAV_CMD</a>
   </h3>
   <p class="description">Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data.</p>
   <table class="sortable">
@@ -8287,8 +8287,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_DATA_STREAM">
-   <a href="#ENUM_MAV_DATA_STREAM">MAV_DATA_STREAM</a>
+  <h3 class="mavlink_message_name" id="MAV_DATA_STREAM">
+   <a href="#MAV_DATA_STREAM">MAV_DATA_STREAM</a>
   </h3>
   <p class="description">THIS INTERFACE IS DEPRECATED AS OF JULY 2015. Please use MESSAGE_INTERVAL instead. A data stream is not a fixed set of messages, but rather a
      recommendation to the autopilot software. Individual autopilots may or may not obey
@@ -8367,8 +8367,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_ROI">
-   <a href="#ENUM_MAV_ROI">MAV_ROI</a>
+  <h3 class="mavlink_message_name" id="MAV_ROI">
+   <a href="#MAV_ROI">MAV_ROI</a>
   </h3>
   <p class="description">The ROI (region of interest) for the vehicle. This can be
                 be used by the vehicle for camera/vehicle attitude alignment (see
@@ -8419,8 +8419,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_CMD_ACK">
-   <a href="#ENUM_MAV_CMD_ACK">MAV_CMD_ACK</a>
+  <h3 class="mavlink_message_name" id="MAV_CMD_ACK">
+   <a href="#MAV_CMD_ACK">MAV_CMD_ACK</a>
   </h3>
   <p class="description">ACK / NACK / ERROR values as a result of MAV_CMDs and for mission item transmission.</p>
   <table class="sortable">
@@ -8506,8 +8506,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_PARAM_TYPE">
-   <a href="#ENUM_MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
+  <h3 class="mavlink_message_name" id="MAV_PARAM_TYPE">
+   <a href="#MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
   </h3>
   <p class="description">Specifies the datatype of a MAVLink parameter.</p>
   <table class="sortable">
@@ -8591,8 +8591,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_PARAM_EXT_TYPE">
-   <a href="#ENUM_MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+  <h3 class="mavlink_message_name" id="MAV_PARAM_EXT_TYPE">
+   <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
   </h3>
   <p class="description">Specifies the datatype of a MAVLink extended parameter.</p>
   <table class="sortable">
@@ -8683,8 +8683,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_RESULT">
-   <a href="#ENUM_MAV_RESULT">MAV_RESULT</a>
+  <h3 class="mavlink_message_name" id="MAV_RESULT">
+   <a href="#MAV_RESULT">MAV_RESULT</a>
   </h3>
   <p class="description">result from a mavlink command</p>
   <table class="sortable">
@@ -8740,8 +8740,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_MISSION_RESULT">
-   <a href="#ENUM_MAV_MISSION_RESULT">MAV_MISSION_RESULT</a>
+  <h3 class="mavlink_message_name" id="MAV_MISSION_RESULT">
+   <a href="#MAV_MISSION_RESULT">MAV_MISSION_RESULT</a>
   </h3>
   <p class="description">result in a mavlink mission ack</p>
   <table class="sortable">
@@ -8860,8 +8860,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_SEVERITY">
-   <a href="#ENUM_MAV_SEVERITY">MAV_SEVERITY</a>
+  <h3 class="mavlink_message_name" id="MAV_SEVERITY">
+   <a href="#MAV_SEVERITY">MAV_SEVERITY</a>
   </h3>
   <p class="description">Indicates the severity level, generally used for status messages to indicate their relative urgency. Based on RFC-5424 using expanded definitions at: http://www.kiwisyslog.com/kb/info:-syslog-message-levels/.</p>
   <table class="sortable">
@@ -8931,8 +8931,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_POWER_STATUS">
-   <a href="#ENUM_MAV_POWER_STATUS">MAV_POWER_STATUS</a>
+  <h3 class="mavlink_message_name" id="MAV_POWER_STATUS">
+   <a href="#MAV_POWER_STATUS">MAV_POWER_STATUS</a>
   </h3>
   <p class="description">Power supply status flags (bitmask)</p>
   <table class="sortable">
@@ -8988,8 +8988,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_SERIAL_CONTROL_DEV">
-   <a href="#ENUM_SERIAL_CONTROL_DEV">SERIAL_CONTROL_DEV</a>
+  <h3 class="mavlink_message_name" id="SERIAL_CONTROL_DEV">
+   <a href="#SERIAL_CONTROL_DEV">SERIAL_CONTROL_DEV</a>
   </h3>
   <p class="description">SERIAL_CONTROL device types</p>
   <table class="sortable">
@@ -9038,8 +9038,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_SERIAL_CONTROL_FLAG">
-   <a href="#ENUM_SERIAL_CONTROL_FLAG">SERIAL_CONTROL_FLAG</a>
+  <h3 class="mavlink_message_name" id="SERIAL_CONTROL_FLAG">
+   <a href="#SERIAL_CONTROL_FLAG">SERIAL_CONTROL_FLAG</a>
   </h3>
   <p class="description">SERIAL_CONTROL flags (bitmask)</p>
   <table class="sortable">
@@ -9088,8 +9088,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_DISTANCE_SENSOR">
-   <a href="#ENUM_MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
+  <h3 class="mavlink_message_name" id="MAV_DISTANCE_SENSOR">
+   <a href="#MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
   </h3>
   <p class="description">Enumeration of distance sensor types</p>
   <table class="sortable">
@@ -9138,8 +9138,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_SENSOR_ORIENTATION">
-   <a href="#ENUM_MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
+  <h3 class="mavlink_message_name" id="MAV_SENSOR_ORIENTATION">
+   <a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
   </h3>
   <p class="description">Enumeration of sensor orientation, according to its rotations</p>
   <table class="sortable">
@@ -9426,8 +9426,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_PROTOCOL_CAPABILITY">
-   <a href="#ENUM_MAV_PROTOCOL_CAPABILITY">MAV_PROTOCOL_CAPABILITY</a>
+  <h3 class="mavlink_message_name" id="MAV_PROTOCOL_CAPABILITY">
+   <a href="#MAV_PROTOCOL_CAPABILITY">MAV_PROTOCOL_CAPABILITY</a>
   </h3>
   <p class="description">Bitmask of (optional) autopilot capabilities (64 bit). If a bit is set, the autopilot supports this capability.</p>
   <table class="sortable">
@@ -9560,8 +9560,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_MISSION_TYPE">
-   <a href="#ENUM_MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+  <h3 class="mavlink_message_name" id="MAV_MISSION_TYPE">
+   <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
   </h3>
   <p class="description">Type of mission items being requested/sent in mission protocol.</p>
   <table class="sortable">
@@ -9603,8 +9603,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_ESTIMATOR_TYPE">
-   <a href="#ENUM_MAV_ESTIMATOR_TYPE">MAV_ESTIMATOR_TYPE</a>
+  <h3 class="mavlink_message_name" id="MAV_ESTIMATOR_TYPE">
+   <a href="#MAV_ESTIMATOR_TYPE">MAV_ESTIMATOR_TYPE</a>
   </h3>
   <p class="description">Enumeration of estimator types</p>
   <table class="sortable">
@@ -9653,8 +9653,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_BATTERY_TYPE">
-   <a href="#ENUM_MAV_BATTERY_TYPE">MAV_BATTERY_TYPE</a>
+  <h3 class="mavlink_message_name" id="MAV_BATTERY_TYPE">
+   <a href="#MAV_BATTERY_TYPE">MAV_BATTERY_TYPE</a>
   </h3>
   <p class="description">Enumeration of battery types</p>
   <table class="sortable">
@@ -9703,8 +9703,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_BATTERY_FUNCTION">
-   <a href="#ENUM_MAV_BATTERY_FUNCTION">MAV_BATTERY_FUNCTION</a>
+  <h3 class="mavlink_message_name" id="MAV_BATTERY_FUNCTION">
+   <a href="#MAV_BATTERY_FUNCTION">MAV_BATTERY_FUNCTION</a>
   </h3>
   <p class="description">Enumeration of battery functions</p>
   <table class="sortable">
@@ -9753,8 +9753,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_VTOL_STATE">
-   <a href="#ENUM_MAV_VTOL_STATE">MAV_VTOL_STATE</a>
+  <h3 class="mavlink_message_name" id="MAV_VTOL_STATE">
+   <a href="#MAV_VTOL_STATE">MAV_VTOL_STATE</a>
   </h3>
   <p class="description">Enumeration of VTOL states</p>
   <table class="sortable">
@@ -9803,8 +9803,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_LANDED_STATE">
-   <a href="#ENUM_MAV_LANDED_STATE">MAV_LANDED_STATE</a>
+  <h3 class="mavlink_message_name" id="MAV_LANDED_STATE">
+   <a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
   </h3>
   <p class="description">Enumeration of landed detector states</p>
   <table class="sortable">
@@ -9853,8 +9853,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_ADSB_ALTITUDE_TYPE">
-   <a href="#ENUM_ADSB_ALTITUDE_TYPE">ADSB_ALTITUDE_TYPE</a>
+  <h3 class="mavlink_message_name" id="ADSB_ALTITUDE_TYPE">
+   <a href="#ADSB_ALTITUDE_TYPE">ADSB_ALTITUDE_TYPE</a>
   </h3>
   <p class="description">Enumeration of the ADSB altimeter types</p>
   <table class="sortable">
@@ -9882,8 +9882,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_ADSB_EMITTER_TYPE">
-   <a href="#ENUM_ADSB_EMITTER_TYPE">ADSB_EMITTER_TYPE</a>
+  <h3 class="mavlink_message_name" id="ADSB_EMITTER_TYPE">
+   <a href="#ADSB_EMITTER_TYPE">ADSB_EMITTER_TYPE</a>
   </h3>
   <p class="description">ADSB classification for the type of vehicle emitting the transponder signal</p>
   <table class="sortable">
@@ -10057,8 +10057,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_ADSB_FLAGS">
-   <a href="#ENUM_ADSB_FLAGS">ADSB_FLAGS</a>
+  <h3 class="mavlink_message_name" id="ADSB_FLAGS">
+   <a href="#ADSB_FLAGS">ADSB_FLAGS</a>
   </h3>
   <p class="description">These flags indicate status such as data validity of each data source. Set = data valid</p>
   <table class="sortable">
@@ -10128,8 +10128,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_DO_REPOSITION_FLAGS">
-   <a href="#ENUM_MAV_DO_REPOSITION_FLAGS">MAV_DO_REPOSITION_FLAGS</a>
+  <h3 class="mavlink_message_name" id="MAV_DO_REPOSITION_FLAGS">
+   <a href="#MAV_DO_REPOSITION_FLAGS">MAV_DO_REPOSITION_FLAGS</a>
   </h3>
   <p class="description">Bitmask of options for the MAV_CMD_DO_REPOSITION</p>
   <table class="sortable">
@@ -10150,8 +10150,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_ESTIMATOR_STATUS_FLAGS">
-   <a href="#ENUM_ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</a>
+  <h3 class="mavlink_message_name" id="ESTIMATOR_STATUS_FLAGS">
+   <a href="#ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</a>
   </h3>
   <p class="description">Flags in EKF_STATUS message</p>
   <table class="sortable">
@@ -10242,8 +10242,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MOTOR_TEST_THROTTLE_TYPE">
-   <a href="#ENUM_MOTOR_TEST_THROTTLE_TYPE">MOTOR_TEST_THROTTLE_TYPE</a>
+  <h3 class="mavlink_message_name" id="MOTOR_TEST_THROTTLE_TYPE">
+   <a href="#MOTOR_TEST_THROTTLE_TYPE">MOTOR_TEST_THROTTLE_TYPE</a>
   </h3>
   <p class="description">
   </p>
@@ -10279,8 +10279,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GPS_INPUT_IGNORE_FLAGS">
-   <a href="#ENUM_GPS_INPUT_IGNORE_FLAGS">GPS_INPUT_IGNORE_FLAGS</a>
+  <h3 class="mavlink_message_name" id="GPS_INPUT_IGNORE_FLAGS">
+   <a href="#GPS_INPUT_IGNORE_FLAGS">GPS_INPUT_IGNORE_FLAGS</a>
   </h3>
   <p class="description">
   </p>
@@ -10351,8 +10351,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_COLLISION_ACTION">
-   <a href="#ENUM_MAV_COLLISION_ACTION">MAV_COLLISION_ACTION</a>
+  <h3 class="mavlink_message_name" id="MAV_COLLISION_ACTION">
+   <a href="#MAV_COLLISION_ACTION">MAV_COLLISION_ACTION</a>
   </h3>
   <p class="description">Possible actions an aircraft can take to avoid a collision.</p>
   <table class="sortable">
@@ -10415,8 +10415,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_COLLISION_THREAT_LEVEL">
-   <a href="#ENUM_MAV_COLLISION_THREAT_LEVEL">MAV_COLLISION_THREAT_LEVEL</a>
+  <h3 class="mavlink_message_name" id="MAV_COLLISION_THREAT_LEVEL">
+   <a href="#MAV_COLLISION_THREAT_LEVEL">MAV_COLLISION_THREAT_LEVEL</a>
   </h3>
   <p class="description">Aircraft-rated danger from this threat.</p>
   <table class="sortable">
@@ -10451,8 +10451,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_COLLISION_SRC">
-   <a href="#ENUM_MAV_COLLISION_SRC">MAV_COLLISION_SRC</a>
+  <h3 class="mavlink_message_name" id="MAV_COLLISION_SRC">
+   <a href="#MAV_COLLISION_SRC">MAV_COLLISION_SRC</a>
   </h3>
   <p class="description">Source of information about this collision.</p>
   <table class="sortable">
@@ -10480,8 +10480,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_GPS_FIX_TYPE">
-   <a href="#ENUM_GPS_FIX_TYPE">GPS_FIX_TYPE</a>
+  <h3 class="mavlink_message_name" id="GPS_FIX_TYPE">
+   <a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
   </h3>
   <p class="description">Type of GPS fix</p>
   <table class="sortable">
@@ -10558,8 +10558,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_LANDING_TARGET_TYPE">
-   <a href="#ENUM_LANDING_TARGET_TYPE">LANDING_TARGET_TYPE</a>
+  <h3 class="mavlink_message_name" id="LANDING_TARGET_TYPE">
+   <a href="#LANDING_TARGET_TYPE">LANDING_TARGET_TYPE</a>
   </h3>
   <p class="description">Type of landing target</p>
   <table class="sortable">
@@ -10601,8 +10601,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_VTOL_TRANSITION_HEADING">
-   <a href="#ENUM_VTOL_TRANSITION_HEADING">VTOL_TRANSITION_HEADING</a>
+  <h3 class="mavlink_message_name" id="VTOL_TRANSITION_HEADING">
+   <a href="#VTOL_TRANSITION_HEADING">VTOL_TRANSITION_HEADING</a>
   </h3>
   <p class="description">Direction of VTOL transition</p>
   <table class="sortable">
@@ -10651,8 +10651,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_CAMERA_CAP_FLAGS">
-   <a href="#ENUM_CAMERA_CAP_FLAGS">CAMERA_CAP_FLAGS</a>
+  <h3 class="mavlink_message_name" id="CAMERA_CAP_FLAGS">
+   <a href="#CAMERA_CAP_FLAGS">CAMERA_CAP_FLAGS</a>
   </h3>
   <p class="description">Camera capability flags (Bitmap).</p>
   <table class="sortable">
@@ -10708,8 +10708,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_PARAM_ACK">
-   <a href="#ENUM_PARAM_ACK">PARAM_ACK</a>
+  <h3 class="mavlink_message_name" id="PARAM_ACK">
+   <a href="#PARAM_ACK">PARAM_ACK</a>
   </h3>
   <p class="description">Result from a PARAM_EXT_SET message.</p>
   <table class="sortable">
@@ -10751,8 +10751,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_CAMERA_MODE">
-   <a href="#ENUM_CAMERA_MODE">CAMERA_MODE</a>
+  <h3 class="mavlink_message_name" id="CAMERA_MODE">
+   <a href="#CAMERA_MODE">CAMERA_MODE</a>
   </h3>
   <p class="description">Camera Modes.</p>
   <table class="sortable">
@@ -10787,8 +10787,8 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_ARM_AUTH_DENIED_REASON">
-   <a href="#ENUM_MAV_ARM_AUTH_DENIED_REASON">MAV_ARM_AUTH_DENIED_REASON</a>
+  <h3 class="mavlink_message_name" id="MAV_ARM_AUTH_DENIED_REASON">
+   <a href="#MAV_ARM_AUTH_DENIED_REASON">MAV_ARM_AUTH_DENIED_REASON</a>
   </h3>
   <p class="description">
   </p>
@@ -10865,7 +10865,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Type of the MAV (quadrotor, helicopter, etc., up to 15 types, defined in MAV_TYPE ENUM)
-     (Enum:<a href="#ENUM_MAV_TYPE">MAV_TYPE</a>
+     (Enum:<a href="#MAV_TYPE">MAV_TYPE</a>
       )
      </td>
     </tr>
@@ -10873,7 +10873,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">autopilot</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Autopilot type / class. defined in MAV_AUTOPILOT ENUM
-     (Enum:<a href="#ENUM_MAV_AUTOPILOT">MAV_AUTOPILOT</a>
+     (Enum:<a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
       )
      </td>
     </tr>
@@ -10881,7 +10881,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">base_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">System mode bitfield, see MAV_MODE_FLAG ENUM in mavlink/include/mavlink_types.h
-     (Enum:<a href="#ENUM_MAV_MODE_FLAG">MAV_MODE_FLAG</a>
+     (Enum:<a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
       )
      </td>
     </tr>
@@ -10894,7 +10894,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">system_status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">System status flag, see MAV_STATE ENUM
-     (Enum:<a href="#ENUM_MAV_STATE">MAV_STATE</a>
+     (Enum:<a href="#MAV_STATE">MAV_STATE</a>
       )
      </td>
     </tr>
@@ -10924,7 +10924,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">onboard_control_sensors_present</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
      <td class="mavlink_comment">Bitmask showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present. Indices defined by ENUM MAV_SYS_STATUS_SENSOR
-     (Enum:<a href="#ENUM_MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
+     (Enum:<a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
       )
      </td>
     </tr>
@@ -10932,7 +10932,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">onboard_control_sensors_enabled</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
      <td class="mavlink_comment">Bitmask showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled. Indices defined by ENUM MAV_SYS_STATUS_SENSOR
-     (Enum:<a href="#ENUM_MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
+     (Enum:<a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
       )
      </td>
     </tr>
@@ -10940,7 +10940,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">onboard_control_sensors_health</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
      <td class="mavlink_comment">Bitmask showing which onboard controllers and sensors are operational or have an error:  Value of 0: not enabled. Value of 1: enabled. Indices defined by ENUM MAV_SYS_STATUS_SENSOR
-     (Enum:<a href="#ENUM_MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
+     (Enum:<a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
       )
      </td>
     </tr>
@@ -11184,7 +11184,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">base_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">The new base mode
-     (Enum:<a href="#ENUM_MAV_MODE">MAV_MODE</a>
+     (Enum:<a href="#MAV_MODE">MAV_MODE</a>
       )
      </td>
     </tr>
@@ -11288,7 +11288,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">param_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Onboard parameter type: see the MAV_PARAM_TYPE enum for supported data types.
-     (Enum:<a href="#ENUM_MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
+     (Enum:<a href="#MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
       )
      </td>
     </tr>
@@ -11343,7 +11343,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">param_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Onboard parameter type: see the MAV_PARAM_TYPE enum for supported data types.
-     (Enum:<a href="#ENUM_MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
+     (Enum:<a href="#MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
       )
      </td>
     </tr>
@@ -11375,7 +11375,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">fix_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">See the GPS_FIX_TYPE enum.
-     (Enum:<a href="#ENUM_GPS_FIX_TYPE">GPS_FIX_TYPE</a>
+     (Enum:<a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
       )
      </td>
     </tr>
@@ -12344,7 +12344,7 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#ENUM_MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
       )
      </td>
     </tr>
@@ -12392,7 +12392,7 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#ENUM_MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
       )
      </td>
     </tr>
@@ -12433,7 +12433,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">The coordinate system of the waypoint. see MAV_FRAME in mavlink_types.h
-     (Enum:<a href="#ENUM_MAV_FRAME">MAV_FRAME</a>
+     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
     </tr>
@@ -12441,7 +12441,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">The scheduled action for the waypoint. see MAV_CMD in common.xml MAVLink specs
-     (Enum:<a href="#ENUM_MAV_CMD">MAV_CMD</a>
+     (Enum:<a href="#MAV_CMD">MAV_CMD</a>
       )
      </td>
     </tr>
@@ -12497,7 +12497,7 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#ENUM_MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
       )
      </td>
     </tr>
@@ -12540,7 +12540,7 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#ENUM_MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
       )
      </td>
     </tr>
@@ -12632,7 +12632,7 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#ENUM_MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
       )
      </td>
     </tr>
@@ -12675,7 +12675,7 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#ENUM_MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
       )
      </td>
     </tr>
@@ -12713,7 +12713,7 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#ENUM_MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
       )
      </td>
     </tr>
@@ -12770,7 +12770,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">See MAV_MISSION_RESULT enum
-     (Enum:<a href="#ENUM_MAV_MISSION_RESULT">MAV_MISSION_RESULT</a>
+     (Enum:<a href="#MAV_MISSION_RESULT">MAV_MISSION_RESULT</a>
       )
      </td>
     </tr>
@@ -12781,7 +12781,7 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#ENUM_MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
       )
      </td>
     </tr>
@@ -12979,7 +12979,7 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#ENUM_MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
       )
      </td>
     </tr>
@@ -13014,7 +13014,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Coordinate frame, as defined by MAV_FRAME enum in mavlink_types.h. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down.
-     (Enum:<a href="#ENUM_MAV_FRAME">MAV_FRAME</a>
+     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
     </tr>
@@ -13075,7 +13075,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Coordinate frame, as defined by MAV_FRAME enum in mavlink_types.h. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down.
-     (Enum:<a href="#ENUM_MAV_FRAME">MAV_FRAME</a>
+     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
     </tr>
@@ -13258,7 +13258,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">estimator_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Class id of the estimator this estimate originated from.
-     (Enum:<a href="#ENUM_MAV_ESTIMATOR_TYPE">MAV_ESTIMATOR_TYPE</a>
+     (Enum:<a href="#MAV_ESTIMATOR_TYPE">MAV_ESTIMATOR_TYPE</a>
       )
      </td>
     </tr>
@@ -13336,7 +13336,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">estimator_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Class id of the estimator this estimate originated from.
-     (Enum:<a href="#ENUM_MAV_ESTIMATOR_TYPE">MAV_ESTIMATOR_TYPE</a>
+     (Enum:<a href="#MAV_ESTIMATOR_TYPE">MAV_ESTIMATOR_TYPE</a>
       )
      </td>
     </tr>
@@ -13774,7 +13774,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">The coordinate system of the waypoint. see MAV_FRAME in mavlink_types.h
-     (Enum:<a href="#ENUM_MAV_FRAME">MAV_FRAME</a>
+     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
     </tr>
@@ -13782,7 +13782,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">The scheduled action for the waypoint. see MAV_CMD in common.xml MAVLink specs
-     (Enum:<a href="#ENUM_MAV_CMD">MAV_CMD</a>
+     (Enum:<a href="#MAV_CMD">MAV_CMD</a>
       )
      </td>
     </tr>
@@ -13838,7 +13838,7 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#ENUM_MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
       )
      </td>
     </tr>
@@ -13926,7 +13926,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">The coordinate system of the COMMAND. see MAV_FRAME in mavlink_types.h
-     (Enum:<a href="#ENUM_MAV_FRAME">MAV_FRAME</a>
+     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
     </tr>
@@ -13934,7 +13934,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">The scheduled action for the mission item. see MAV_CMD in common.xml MAVLink specs
-     (Enum:<a href="#ENUM_MAV_CMD">MAV_CMD</a>
+     (Enum:<a href="#MAV_CMD">MAV_CMD</a>
       )
      </td>
     </tr>
@@ -14014,7 +14014,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">Command ID, as defined by MAV_CMD enum.
-     (Enum:<a href="#ENUM_MAV_CMD">MAV_CMD</a>
+     (Enum:<a href="#MAV_CMD">MAV_CMD</a>
       )
      </td>
     </tr>
@@ -14079,7 +14079,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">Command ID, as defined by MAV_CMD enum.
-     (Enum:<a href="#ENUM_MAV_CMD">MAV_CMD</a>
+     (Enum:<a href="#MAV_CMD">MAV_CMD</a>
       )
      </td>
     </tr>
@@ -14087,7 +14087,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">result</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">See MAV_RESULT enum
-     (Enum:<a href="#ENUM_MAV_RESULT">MAV_RESULT</a>
+     (Enum:<a href="#MAV_RESULT">MAV_RESULT</a>
       )
      </td>
     </tr>
@@ -14338,7 +14338,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">coordinate_frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Valid options are: MAV_FRAME_LOCAL_NED = 1, MAV_FRAME_LOCAL_OFFSET_NED = 7, MAV_FRAME_BODY_NED = 8, MAV_FRAME_BODY_OFFSET_NED = 9
-     (Enum:<a href="#ENUM_MAV_FRAME">MAV_FRAME</a>
+     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
     </tr>
@@ -14440,7 +14440,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">coordinate_frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Valid options are: MAV_FRAME_LOCAL_NED = 1, MAV_FRAME_LOCAL_OFFSET_NED = 7, MAV_FRAME_BODY_NED = 8, MAV_FRAME_BODY_OFFSET_NED = 9
-     (Enum:<a href="#ENUM_MAV_FRAME">MAV_FRAME</a>
+     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
     </tr>
@@ -14552,7 +14552,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">coordinate_frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Valid options are: MAV_FRAME_GLOBAL_INT = 5, MAV_FRAME_GLOBAL_RELATIVE_ALT_INT = 6, MAV_FRAME_GLOBAL_TERRAIN_ALT_INT = 11
-     (Enum:<a href="#ENUM_MAV_FRAME">MAV_FRAME</a>
+     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
     </tr>
@@ -14654,7 +14654,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">coordinate_frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Valid options are: MAV_FRAME_GLOBAL_INT = 5, MAV_FRAME_GLOBAL_RELATIVE_ALT_INT = 6, MAV_FRAME_GLOBAL_TERRAIN_ALT_INT = 11
-     (Enum:<a href="#ENUM_MAV_FRAME">MAV_FRAME</a>
+     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
     </tr>
@@ -14966,7 +14966,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">System mode (MAV_MODE)
-     (Enum:<a href="#ENUM_MAV_MODE">MAV_MODE</a>
+     (Enum:<a href="#MAV_MODE">MAV_MODE</a>
       )
      </td>
     </tr>
@@ -15107,7 +15107,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">System mode (MAV_MODE), includes arming state.
-     (Enum:<a href="#ENUM_MAV_MODE">MAV_MODE</a>
+     (Enum:<a href="#MAV_MODE">MAV_MODE</a>
       )
      </td>
     </tr>
@@ -16642,7 +16642,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">fix_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">See the GPS_FIX_TYPE enum.
-     (Enum:<a href="#ENUM_GPS_FIX_TYPE">GPS_FIX_TYPE</a>
+     (Enum:<a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
       )
      </td>
     </tr>
@@ -16736,7 +16736,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">power supply status flags (see MAV_POWER_STATUS enum)
-     (Enum:<a href="#ENUM_MAV_POWER_STATUS">MAV_POWER_STATUS</a>
+     (Enum:<a href="#MAV_POWER_STATUS">MAV_POWER_STATUS</a>
       )
      </td>
     </tr>
@@ -16761,7 +16761,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">device</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">See SERIAL_CONTROL_DEV enum
-     (Enum:<a href="#ENUM_SERIAL_CONTROL_DEV">SERIAL_CONTROL_DEV</a>
+     (Enum:<a href="#SERIAL_CONTROL_DEV">SERIAL_CONTROL_DEV</a>
       )
      </td>
     </tr>
@@ -16769,7 +16769,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">See SERIAL_CONTROL_FLAG enum
-     (Enum:<a href="#ENUM_SERIAL_CONTROL_FLAG">SERIAL_CONTROL_FLAG</a>
+     (Enum:<a href="#SERIAL_CONTROL_FLAG">SERIAL_CONTROL_FLAG</a>
       )
      </td>
     </tr>
@@ -17176,7 +17176,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Type from MAV_DISTANCE_SENSOR enum.
-     (Enum:<a href="#ENUM_MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
+     (Enum:<a href="#MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
       )
      </td>
     </tr>
@@ -17189,7 +17189,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">orientation</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Direction the sensor faces from MAV_SENSOR_ORIENTATION enum. downward-facing: ROTATION_PITCH_270, upward-facing: ROTATION_PITCH_90, backward-facing: ROTATION_PITCH_180, forward-facing: ROTATION_NONE, left-facing: ROTATION_YAW_90, right-facing: ROTATION_YAW_270
-     (Enum:<a href="#ENUM_MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
+     (Enum:<a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
       )
      </td>
     </tr>
@@ -17899,7 +17899,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">battery_function</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Function of the battery
-     (Enum:<a href="#ENUM_MAV_BATTERY_FUNCTION">MAV_BATTERY_FUNCTION</a>
+     (Enum:<a href="#MAV_BATTERY_FUNCTION">MAV_BATTERY_FUNCTION</a>
       )
      </td>
     </tr>
@@ -17907,7 +17907,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Type (chemistry) of the battery
-     (Enum:<a href="#ENUM_MAV_BATTERY_TYPE">MAV_BATTERY_TYPE</a>
+     (Enum:<a href="#MAV_BATTERY_TYPE">MAV_BATTERY_TYPE</a>
       )
      </td>
     </tr>
@@ -17968,7 +17968,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">capabilities</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
      <td class="mavlink_comment">bitmask of capabilities (see MAV_PROTOCOL_CAPABILITY enum)
-     (Enum:<a href="#ENUM_MAV_PROTOCOL_CAPABILITY">MAV_PROTOCOL_CAPABILITY</a>
+     (Enum:<a href="#MAV_PROTOCOL_CAPABILITY">MAV_PROTOCOL_CAPABILITY</a>
       )
      </td>
     </tr>
@@ -18062,7 +18062,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">MAV_FRAME enum specifying the whether the following feilds are earth-frame, body-frame, etc.
-     (Enum:<a href="#ENUM_MAV_FRAME">MAV_FRAME</a>
+     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
     </tr>
@@ -18138,7 +18138,7 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">LANDING_TARGET_TYPE enum specifying the type of landing target
-     (Enum:<a href="#ENUM_LANDING_TARGET_TYPE">LANDING_TARGET_TYPE</a>
+     (Enum:<a href="#LANDING_TARGET_TYPE">LANDING_TARGET_TYPE</a>
       )
      </td>
     </tr>
@@ -18177,7 +18177,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">Integer bitmask indicating which EKF outputs are valid. See definition for ESTIMATOR_STATUS_FLAGS.
-     (Enum:<a href="#ENUM_ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</a>
+     (Enum:<a href="#ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</a>
       )
      </td>
     </tr>
@@ -18328,7 +18328,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">ignore_flags</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">Flags indicating which fields to ignore (see GPS_INPUT_IGNORE_FLAGS enum).  All other fields must be provided.
-     (Enum:<a href="#ENUM_GPS_INPUT_IGNORE_FLAGS">GPS_INPUT_IGNORE_FLAGS</a>
+     (Enum:<a href="#GPS_INPUT_IGNORE_FLAGS">GPS_INPUT_IGNORE_FLAGS</a>
       )
      </td>
     </tr>
@@ -18473,7 +18473,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">base_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">System mode bitfield, see MAV_MODE_FLAG ENUM in mavlink/include/mavlink_types.h
-     (Enum:<a href="#ENUM_MAV_MODE_FLAG">MAV_MODE_FLAG</a>
+     (Enum:<a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
       )
      </td>
     </tr>
@@ -18486,7 +18486,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">landed_state</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown.
-     (Enum:<a href="#ENUM_MAV_LANDED_STATE">MAV_LANDED_STATE</a>
+     (Enum:<a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
       )
      </td>
     </tr>
@@ -18577,7 +18577,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">gps_fix_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">See the GPS_FIX_TYPE enum.
-     (Enum:<a href="#ENUM_GPS_FIX_TYPE">GPS_FIX_TYPE</a>
+     (Enum:<a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
       )
      </td>
     </tr>
@@ -18892,7 +18892,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">vtol_state</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">The VTOL state if applicable. Is set to MAV_VTOL_STATE_UNDEFINED if UAV is not in VTOL configuration.
-     (Enum:<a href="#ENUM_MAV_VTOL_STATE">MAV_VTOL_STATE</a>
+     (Enum:<a href="#MAV_VTOL_STATE">MAV_VTOL_STATE</a>
       )
      </td>
     </tr>
@@ -18900,7 +18900,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">landed_state</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown.
-     (Enum:<a href="#ENUM_MAV_LANDED_STATE">MAV_LANDED_STATE</a>
+     (Enum:<a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
       )
      </td>
     </tr>
@@ -18942,7 +18942,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">altitude_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Type from ADSB_ALTITUDE_TYPE enum
-     (Enum:<a href="#ENUM_ADSB_ALTITUDE_TYPE">ADSB_ALTITUDE_TYPE</a>
+     (Enum:<a href="#ADSB_ALTITUDE_TYPE">ADSB_ALTITUDE_TYPE</a>
       )
      </td>
     </tr>
@@ -18979,7 +18979,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">emitter_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Type from ADSB_EMITTER_TYPE enum
-     (Enum:<a href="#ENUM_ADSB_EMITTER_TYPE">ADSB_EMITTER_TYPE</a>
+     (Enum:<a href="#ADSB_EMITTER_TYPE">ADSB_EMITTER_TYPE</a>
       )
      </td>
     </tr>
@@ -18993,7 +18993,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">Flags to indicate various statuses including valid data fields
-     (Enum:<a href="#ENUM_ADSB_FLAGS">ADSB_FLAGS</a>
+     (Enum:<a href="#ADSB_FLAGS">ADSB_FLAGS</a>
       )
      </td>
     </tr>
@@ -19023,7 +19023,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">src</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Collision data source
-     (Enum:<a href="#ENUM_MAV_COLLISION_SRC">MAV_COLLISION_SRC</a>
+     (Enum:<a href="#MAV_COLLISION_SRC">MAV_COLLISION_SRC</a>
       )
      </td>
     </tr>
@@ -19036,7 +19036,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">action</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Action that is being taken to avoid this collision
-     (Enum:<a href="#ENUM_MAV_COLLISION_ACTION">MAV_COLLISION_ACTION</a>
+     (Enum:<a href="#MAV_COLLISION_ACTION">MAV_COLLISION_ACTION</a>
       )
      </td>
     </tr>
@@ -19044,7 +19044,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">threat_level</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">How concerned the aircraft is about this collision
-     (Enum:<a href="#ENUM_MAV_COLLISION_THREAT_LEVEL">MAV_COLLISION_THREAT_LEVEL</a>
+     (Enum:<a href="#MAV_COLLISION_THREAT_LEVEL">MAV_COLLISION_THREAT_LEVEL</a>
       )
      </td>
     </tr>
@@ -19276,7 +19276,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">severity</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Severity of status. Relies on the definitions within RFC-5424. See enum MAV_SEVERITY.
-     (Enum:<a href="#ENUM_MAV_SEVERITY">MAV_SEVERITY</a>
+     (Enum:<a href="#MAV_SEVERITY">MAV_SEVERITY</a>
       )
      </td>
     </tr>
@@ -19510,7 +19510,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
      <td class="mavlink_comment">CAMERA_CAP_FLAGS enum flags (bitmap) describing camera capabilities.
-     (Enum:<a href="#ENUM_CAMERA_CAP_FLAGS">CAMERA_CAP_FLAGS</a>
+     (Enum:<a href="#CAMERA_CAP_FLAGS">CAMERA_CAP_FLAGS</a>
       )
      </td>
     </tr>
@@ -19554,7 +19554,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">mode_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Camera mode (CAMERA_MODE)
-     (Enum:<a href="#ENUM_CAMERA_MODE">CAMERA_MODE</a>
+     (Enum:<a href="#CAMERA_MODE">CAMERA_MODE</a>
       )
      </td>
     </tr>
@@ -20236,7 +20236,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">health</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Generalized node health status.
-     (Enum:<a href="#ENUM_UAVCAN_NODE_HEALTH">UAVCAN_NODE_HEALTH</a>
+     (Enum:<a href="#UAVCAN_NODE_HEALTH">UAVCAN_NODE_HEALTH</a>
       )
      </td>
     </tr>
@@ -20244,7 +20244,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Generalized operating mode.
-     (Enum:<a href="#ENUM_UAVCAN_NODE_MODE">UAVCAN_NODE_MODE</a>
+     (Enum:<a href="#UAVCAN_NODE_MODE">UAVCAN_NODE_MODE</a>
       )
      </td>
     </tr>
@@ -20429,7 +20429,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">param_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Parameter type: see the MAV_PARAM_EXT_TYPE enum for supported data types.
-     (Enum:<a href="#ENUM_MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+     (Enum:<a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
       )
      </td>
     </tr>
@@ -20487,7 +20487,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">param_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Parameter type: see the MAV_PARAM_EXT_TYPE enum for supported data types.
-     (Enum:<a href="#ENUM_MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+     (Enum:<a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
       )
      </td>
     </tr>
@@ -20525,7 +20525,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">param_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Parameter type: see the MAV_PARAM_EXT_TYPE enum for supported data types.
-     (Enum:<a href="#ENUM_MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+     (Enum:<a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
       )
      </td>
     </tr>
@@ -20533,9 +20533,54 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">param_result</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Result code: see the PARAM_ACK enum for possible codes.
-     (Enum:<a href="#ENUM_PARAM_ACK">PARAM_ACK</a>
+     (Enum:<a href="#PARAM_ACK">PARAM_ACK</a>
       )
      </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="OBSTACLE_DISTANCE">OBSTACLE_DISTANCE (<a href="#OBSTACLE_DISTANCE">
+    #330
+   </a>
+   )
+  </h3>
+  <p class="description">
+   <strong>
+    (MAVLink 2)
+   </strong>Obstacle distances in front of the sensor, starting from the left in increment degrees to the right</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">time_usec</td>
+     <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch)
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">estimator_type</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Class id of the distance sensor type.
+     (Enum:<a href="#MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">distances</td>
+     <td class="mavlink_type" valign="top">uint8_t[12]</td>
+     <td class="mavlink_comment">Distance of obstacles in front of the sensor starting on the left side. A value of 0 means no obstacle. In a array element, each unit corresponds to 1m.</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">increment</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Angular width in degrees of each array element.
+     (Units: deg)</td>
     </tr>
    </tbody>
   </table>

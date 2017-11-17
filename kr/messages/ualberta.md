@@ -3,6 +3,12 @@
 
 *This is a human-readable form of the XML definition file: [ualberta.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/ualberta.xml).*
 
+<span></span>
+> **Note** MAVLink 2 messages have an ID > 255 and are marked up using **(MAVLink 2)** in their description.
+
+<span id="mav2_extension_field"></span>
+> **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue.
+
 <html>
  <body>
   <p>
@@ -10,8 +16,8 @@
    <a href="common.md">common.xml</a>
   </p>
   <h2>MAVLink Type Enumerations</h2>
-  <h3 class="mavlink_message_name" id="ENUM_UALBERTA_AUTOPILOT_MODE">
-   <a href="#ENUM_UALBERTA_AUTOPILOT_MODE">UALBERTA_AUTOPILOT_MODE</a>
+  <h3 class="mavlink_message_name" id="UALBERTA_AUTOPILOT_MODE">
+   <a href="#UALBERTA_AUTOPILOT_MODE">UALBERTA_AUTOPILOT_MODE</a>
   </h3>
   <p class="description">Available autopilot modes for ualberta uav</p>
   <table class="sortable">
@@ -65,8 +71,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_UALBERTA_NAV_MODE">
-   <a href="#ENUM_UALBERTA_NAV_MODE">UALBERTA_NAV_MODE</a>
+  <h3 class="mavlink_message_name" id="UALBERTA_NAV_MODE">
+   <a href="#UALBERTA_NAV_MODE">UALBERTA_NAV_MODE</a>
   </h3>
   <p class="description">Navigation filter mode</p>
   <table class="sortable">
@@ -113,8 +119,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_UALBERTA_PILOT_MODE">
-   <a href="#ENUM_UALBERTA_PILOT_MODE">UALBERTA_PILOT_MODE</a>
+  <h3 class="mavlink_message_name" id="UALBERTA_PILOT_MODE">
+   <a href="#UALBERTA_PILOT_MODE">UALBERTA_PILOT_MODE</a>
   </h3>
   <p class="description">Mode currently commanded by pilot</p>
   <table class="sortable">
@@ -169,43 +175,36 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
      <td class="mavlink_comment">Timestamp (microseconds)</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">accel_0</td>
      <td class="mavlink_type" valign="top">float</td>
      <td class="mavlink_comment">b_f[0]</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">accel_1</td>
      <td class="mavlink_type" valign="top">float</td>
      <td class="mavlink_comment">b_f[1]</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">accel_2</td>
      <td class="mavlink_type" valign="top">float</td>
      <td class="mavlink_comment">b_f[2]</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">gyro_0</td>
      <td class="mavlink_type" valign="top">float</td>
      <td class="mavlink_comment">b_f[0]</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">gyro_1</td>
      <td class="mavlink_type" valign="top">float</td>
      <td class="mavlink_comment">b_f[1]</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">gyro_2</td>
      <td class="mavlink_type" valign="top">float</td>
      <td class="mavlink_comment">b_f[2]</td>
@@ -228,37 +227,31 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">aileron</td>
      <td class="mavlink_type" valign="top">uint16_t[3]</td>
      <td class="mavlink_comment">Aileron setpoints: left, center, right</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">elevator</td>
      <td class="mavlink_type" valign="top">uint16_t[3]</td>
      <td class="mavlink_comment">Elevator setpoints: nose down, center, nose up</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">rudder</td>
      <td class="mavlink_type" valign="top">uint16_t[3]</td>
      <td class="mavlink_comment">Rudder setpoints: nose left, center, nose right</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">gyro</td>
      <td class="mavlink_type" valign="top">uint16_t[2]</td>
      <td class="mavlink_comment">Tail gyro mode/gain setpoints: heading hold, rate mode</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">uint16_t[5]</td>
      <td class="mavlink_comment">Pitch curve setpoints (every 25%)</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">throttle</td>
      <td class="mavlink_type" valign="top">uint16_t[5]</td>
      <td class="mavlink_comment">Throttle curve setpoints (every 25%)</td>
@@ -281,19 +274,16 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">System mode, see UALBERTA_AUTOPILOT_MODE ENUM</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">nav_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Navigation mode, see UALBERTA_NAV_MODE ENUM</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">pilot</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Pilot mode, see UALBERTA_PILOT_MODE</td>

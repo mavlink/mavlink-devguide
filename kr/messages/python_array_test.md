@@ -3,6 +3,12 @@
 
 *This is a human-readable form of the XML definition file: [python_array_test.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/python_array_test.xml).*
 
+<span></span>
+> **Note** MAVLink 2 messages have an ID > 255 and are marked up using **(MAVLink 2)** in their description.
+
+<span id="mav2_extension_field"></span>
+> **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue.
+
 <html>
  <body>
   <p>
@@ -26,31 +32,26 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">v1</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Stub field</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_i8</td>
      <td class="mavlink_type" valign="top">int8_t[4]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u8</td>
      <td class="mavlink_type" valign="top">uint8_t[4]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u16</td>
      <td class="mavlink_type" valign="top">uint16_t[4]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u32</td>
      <td class="mavlink_type" valign="top">uint32_t[4]</td>
      <td class="mavlink_comment">Value array</td>
@@ -73,7 +74,6 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u32</td>
      <td class="mavlink_type" valign="top">uint32_t[4]</td>
      <td class="mavlink_comment">Value array</td>
@@ -96,13 +96,11 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">v</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Stub field</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u32</td>
      <td class="mavlink_type" valign="top">uint32_t[4]</td>
      <td class="mavlink_comment">Value array</td>
@@ -125,13 +123,11 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u32</td>
      <td class="mavlink_type" valign="top">uint32_t[4]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">v</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Stub field</td>
@@ -154,13 +150,11 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">c1</td>
      <td class="mavlink_type" valign="top">char[5]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">c2</td>
      <td class="mavlink_type" valign="top">char[5]</td>
      <td class="mavlink_comment">Value array</td>
@@ -183,73 +177,61 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">v1</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Stub field</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">v2</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">Stub field</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">v3</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
      <td class="mavlink_comment">Stub field</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u32</td>
      <td class="mavlink_type" valign="top">uint32_t[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_i32</td>
      <td class="mavlink_type" valign="top">int32_t[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u16</td>
      <td class="mavlink_type" valign="top">uint16_t[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_i16</td>
      <td class="mavlink_type" valign="top">int16_t[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u8</td>
      <td class="mavlink_type" valign="top">uint8_t[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_i8</td>
      <td class="mavlink_type" valign="top">int8_t[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_c</td>
      <td class="mavlink_type" valign="top">char[32]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_d</td>
      <td class="mavlink_type" valign="top">double[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_f</td>
      <td class="mavlink_type" valign="top">float[2]</td>
      <td class="mavlink_comment">Value array</td>
@@ -272,55 +254,46 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_d</td>
      <td class="mavlink_type" valign="top">double[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_f</td>
      <td class="mavlink_type" valign="top">float[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u32</td>
      <td class="mavlink_type" valign="top">uint32_t[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_i32</td>
      <td class="mavlink_type" valign="top">int32_t[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u16</td>
      <td class="mavlink_type" valign="top">uint16_t[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_i16</td>
      <td class="mavlink_type" valign="top">int16_t[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u8</td>
      <td class="mavlink_type" valign="top">uint8_t[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_i8</td>
      <td class="mavlink_type" valign="top">int8_t[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_c</td>
      <td class="mavlink_type" valign="top">char[32]</td>
      <td class="mavlink_comment">Value array</td>
@@ -343,19 +316,16 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">v3</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
      <td class="mavlink_comment">Stub field</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_d</td>
      <td class="mavlink_type" valign="top">double[2]</td>
      <td class="mavlink_comment">Value array</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">ar_u16</td>
      <td class="mavlink_type" valign="top">uint16_t[2]</td>
      <td class="mavlink_comment">Value array</td>

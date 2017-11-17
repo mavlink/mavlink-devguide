@@ -3,6 +3,12 @@
 
 *This is a human-readable form of the XML definition file: [standard.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/standard.xml).*
 
+<span></span>
+> **Note** MAVLink 2 messages have an ID > 255 and are marked up using **(MAVLink 2)** in their description.
+
+<span id="mav2_extension_field"></span>
+> **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue.
+
 <html>
  <body>
   <p>

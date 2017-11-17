@@ -3,6 +3,12 @@
 
 *This is a human-readable form of the XML definition file: [paparazzi.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/paparazzi.xml).*
 
+<span></span>
+> **Note** MAVLink 2 messages have an ID > 255 and are marked up using **(MAVLink 2)** in their description.
+
+<span id="mav2_extension_field"></span>
+> **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue.
+
 <html>
  <body>
   <p>
@@ -29,25 +35,21 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">seq</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">Sequence</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">name</td>
      <td class="mavlink_type" valign="top">char[50]</td>
      <td class="mavlink_comment">The name of the mission script, NULL terminated.</td>
@@ -70,19 +72,16 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">seq</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">Sequence</td>
@@ -105,13 +104,11 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Component ID</td>
@@ -134,19 +131,16 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">count</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">Number of script items in the sequence</td>
@@ -169,7 +163,6 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
-     #Conditionally format field name based on whether it is MAVLink 2 (to blue)
      <td class="mavlink_name" valign="top">seq</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">Active Sequence</td>

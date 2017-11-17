@@ -18,8 +18,8 @@
   <h2>MAVLink Protocol Version</h2>
   <p>This file has protocol version: 3. The version numbers range from 1-255.</p>
   <h2>MAVLink Type Enumerations</h2>
-  <h3 class="mavlink_message_name" id="ENUM_AUTOQUAD_MAVLINK_DEFS_VERSION">
-   <a href="#ENUM_AUTOQUAD_MAVLINK_DEFS_VERSION">AUTOQUAD_MAVLINK_DEFS_VERSION</a>
+  <h3 class="mavlink_message_name" id="AUTOQUAD_MAVLINK_DEFS_VERSION">
+   <a href="#AUTOQUAD_MAVLINK_DEFS_VERSION">AUTOQUAD_MAVLINK_DEFS_VERSION</a>
   </h3>
   <p class="description">Track current version of these definitions (can be used by checking value of AUTOQUAD_MAVLINK_DEFS_VERSION_ENUM_END). Append a new entry for each published change.</p>
   <table class="sortable">
@@ -42,8 +42,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_AUTOQUAD_NAV_STATUS">
-   <a href="#ENUM_AUTOQUAD_NAV_STATUS">AUTOQUAD_NAV_STATUS</a>
+  <h3 class="mavlink_message_name" id="AUTOQUAD_NAV_STATUS">
+   <a href="#AUTOQUAD_NAV_STATUS">AUTOQUAD_NAV_STATUS</a>
   </h3>
   <p class="description">Available operating modes/statuses for AutoQuad flight controller. 
 				Bitmask up to 32 bits. Low side bits for base modes, high side for 
@@ -199,8 +199,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_CMD">
-   <a href="#ENUM_MAV_CMD">MAV_CMD</a>
+  <h3 class="mavlink_message_name" id="MAV_CMD">
+   <a href="#MAV_CMD">MAV_CMD</a>
   </h3>
   <p class="description">
   </p>
@@ -389,8 +389,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_DATA_STREAM">
-   <a href="#ENUM_MAV_DATA_STREAM">MAV_DATA_STREAM</a>
+  <h3 class="mavlink_message_name" id="MAV_DATA_STREAM">
+   <a href="#MAV_DATA_STREAM">MAV_DATA_STREAM</a>
   </h3>
   <p class="description">
   </p>

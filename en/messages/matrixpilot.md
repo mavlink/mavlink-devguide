@@ -16,8 +16,8 @@
    <a href="common.md">common.xml</a>
   </p>
   <h2>MAVLink Type Enumerations</h2>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_PREFLIGHT_STORAGE_ACTION">
-   <a href="#ENUM_MAV_PREFLIGHT_STORAGE_ACTION">MAV_PREFLIGHT_STORAGE_ACTION</a>
+  <h3 class="mavlink_message_name" id="MAV_PREFLIGHT_STORAGE_ACTION">
+   <a href="#MAV_PREFLIGHT_STORAGE_ACTION">MAV_PREFLIGHT_STORAGE_ACTION</a>
   </h3>
   <p class="description">Action required when performing CMD_PREFLIGHT_STORAGE</p>
   <table class="sortable">
@@ -80,8 +80,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ENUM_MAV_CMD">
-   <a href="#ENUM_MAV_CMD">MAV_CMD</a>
+  <h3 class="mavlink_message_name" id="MAV_CMD">
+   <a href="#MAV_CMD">MAV_CMD</a>
   </h3>
   <p class="description">
   </p>
