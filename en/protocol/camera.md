@@ -53,7 +53,7 @@ The [CAMERA\_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION)
 
 ### Camera Modes
 
-Some cameras require to be in a certain mode for still and/or video capture. The `flags` field of the [CAMERA\_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION) message will tell the GCS if that’s the case if the [CAMERA\_CAP\_FLAGS\_HAS\_MODES](http://mavlink.org/messages/common#CAMERA_CAP_FLAGS_HAS_MODES) bit is set. If so, this would tell the GCS it needs to make sure the camera is in the proper mode prior to sending a start capture (image or video) command. In addition, some cameras can capture images in any mode but usually at a different resolutions. For example, a 20 megapixel camera would take a full resolution image when set to `CAMERA\_MODE\_IMAGE` but only at the current video resolution if it is currently set to `CAMERA\_MODE\_VIDEO`.
+Some cameras require to be in a certain mode for still and/or video capture. The `flags` field of the [CAMERA\_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION) message will tell the GCS if that’s the case when the [CAMERA\_CAP\_FLAGS\_HAS\_MODES](http://mavlink.org/messages/common#CAMERA_CAP_FLAGS_HAS_MODES) bit is set. If so, this would tell the GCS it needs to make sure the camera is in the proper mode prior to sending a start capture (image or video) command. In addition, some cameras can capture images in any mode but usually at a different resolutions. For example, a 20 megapixel camera would take a full resolution image when set to `CAMERA_MODE_IMAGE` but only at the current video resolution if it is currently set to `CAMERA_MODE_VIDEO`.
 
 To get the current mode, the GCS would send a [REQUEST\_CAMERA\_SETTINGS](http://mavlink.org/messages/common#MAV_CMD_REQUEST_CAMERA_SETTINGS) command. The current mode is sent back in the `mode_id` field of the [CAMERA_SETTINGS](http://mavlink.org/messages/common#CAMERA_SETTINGS) message.
 
@@ -121,7 +121,7 @@ Before capturing images and/or videos, the GCS will query the Storage Status to 
 
 ### Camera Capture Status
 
-In addition to querying about storage status, the GCS will also request the current Camera Capture Status to determine its current state and provide the user proper UI indicators.
+In addition to querying about storage status, the GCS will also request the current Camera Capture Status to determine its current state and provide the user with proper UI indicators.
 The GCS will send a [REQUEST\_CAMERA\_CAPTURE\_STATUS](http://mavlink.org/messages/common#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS) command and it expects a [CAMERA\_CAPTURE\_STATUS](http://mavlink.org/messages/common#CAPTURE_STATUS) response.
 
 #### MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS
@@ -200,4 +200,3 @@ To stop recording, the GCS uses the [VIDEO\_STOP\_CAPTURE](http://mavlink.org/me
 | Command Parameter | Description |
 | -- | -- |
 | Param #1 | Reserved (Set to 0) |
-
