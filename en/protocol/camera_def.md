@@ -22,8 +22,8 @@ The XML file has 3 main sections (elements):
 
 All fields are self explanatory:
 
-```
-    <definition version=“1">
+```XML
+    <definition version="1">
         <model>T100</model>
         <vendor>Foo Industries</vendor>
     </definition>
@@ -56,7 +56,7 @@ The `custom` type is a special case. It allows for arbitrary data structures of 
 
 The simplest parameter would be a boolean type, which inherently (and automatically) only provides two (on/off) options:
 
-```
+```XML
         <parameter name="CAM_IRLOCK" type="bool" default="0">
             <description>Enable IR Lock</description>
         </parameter>
@@ -67,7 +67,7 @@ The `description` is what is shown to the user.
 
 More common are parameters that provide options:
 
-```
+```XML
         <parameter name="CAM_WBMODE" type="uint32" default="0">
             <description>White Balance Mode</description>
             <options>
@@ -87,7 +87,7 @@ In this case, the GCS will automatically build a drop down list with the options
 
 Some parameters are only compatible when some other parameter is set to some specific option. For example, Shutter Speed and ISO would only be available when the camera is set to Manual Exposure mode and not shown when the camera is set to Auto Exposure mode. To specify this behavior, you would use the `exclusion` element:
 
-```
+```XML
         <parameter name="CAM_EXPMODE" type="uint32" default="0">
             <description>Exposure Mode</description>
             <options default="0">
@@ -112,7 +112,7 @@ The above example describes an *Exposure Mode* parameter and its two options: *A
 
 There are cases where an option change requires a parameter to be updated. For example, using the example above, when the camera is set to *Auto Exposure Mode*, it internally might change the ISO and Shutter speed. When the user switches back to *Manual Exposure Mode*, the GCS must request an update for the current ISO and Shutter speed as they may have changed. To do this, you would use the `update` element:
 
-```
+```XML
         <parameter name="CAM_EXPMODE" type="uint32" default="0">
             <description>Exposure Mode</description>
             <updates>
@@ -141,11 +141,11 @@ This tells the GCS that when the `CAM_EXPMODE` parameter changes, both the `CAM_
 
 Suppose your camera has the following ISO options:
 
-```
+```XML
         <parameter name="CAM_ISO" type="uint32" default="100">
             <description>ISO</description>
             <options>
-                <option name=“50" value=“50" />
+                <option name="50" value="50" />
                 <option name="100" value="100" />
                 <option name="150" value="150" />
                 <option name="200" value="200" />
@@ -162,11 +162,11 @@ Suppose your camera has the following ISO options:
 
 But this full range is only available when in *Photo Mode*. For whatever reason, when the camera is set to *Video Mode*, only a subset of the above range is valid. In this case, you would use the `parameterrange` element:
 
-```
+```XML
         <parameter name="CAM_MODE" type="uint32" default="1" control="0">
             <description>Camera Mode</description>
             <options>
-                <option name="Photo" value=“0" />
+                <option name="Photo" value="0" />
                 <option name="Video" value="1">
                     <parameterranges>
                         <parameterrange parameter="CAM_ISO" condition="CAM_EXPMODE=1">
@@ -194,7 +194,7 @@ This example also tells the GCS not to display this parameter to the user (`cont
 
 If you would like for the strings shown to the user to be localized, you can add the `localization` element. If found, the GCS will use to replace all `description` and options `name` values found in the file with he strings defined here. Here is an example for German localization (de_DE):
 
-```
+```XML
     <localization>
         <locale name="de_DE">
             <strings original="Camera Mode" translated="Kamera Modus" />
@@ -224,7 +224,7 @@ When the GCS requires a current option for a given parameter, it will use the [P
 
 ## Full Camera Definition File Example
 
-```
+```XML
 <?xml version="1.0" encoding="UTF-8" ?>
 <mavlinkcamera>
     <definition version="7">
@@ -300,7 +300,6 @@ When the GCS requires a current option for a given parameter, it will use the [P
                 <option name="Manual" value="1">
                     <exclusions>
                         <exclude>CAM_EV</exclude>
-                        <exclude>CAM_METERING</exclude>
                     </exclusions>
                 </option>
             </options>
@@ -833,14 +832,6 @@ When the GCS requires a current option for a given parameter, it will use the [P
                 </option>
             </options>
         </parameter>
-        <parameter name="CAM_METERING" type="uint32" default="0">
-            <description>Metering Mode</description>
-            <options>
-                <option name="Average" value="1" />
-                <option name="Center" value="0" />
-                <option name="Spot" value="2" />
-            </options>
-        </parameter>
         <parameter name="CAM_COLORMODE" type="uint32" default="1">
             <description>Color Mode</description>
             <options>
@@ -886,7 +877,6 @@ When the GCS requires a current option for a given parameter, it will use the [P
             <strings original="Shutter Speed" translated="Verschlusszeit" />
             <strings original="Exposure Compensation" translated="Belichtungskorrektur" />
             <strings original="Video Resolution" translated="Videoauflösung" />
-            <strings original="Metering Mode" translated="Messmodus" />
             <strings original="Average" translated="Durchschnitt" />
             <strings original="Center" translated="Zentrum" />
             <strings original="Color Mode" translated="Farbmodus" />
