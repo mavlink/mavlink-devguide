@@ -24,10 +24,10 @@ The XML file has 3 main sections (elements):
 All fields are self explanatory:
 
 ```XML
-    <definition version="1">
-        <model>T100</model>
-        <vendor>Foo Industries</vendor>
-    </definition>
+<definition version="1">
+    <model>T100</model>
+    <vendor>Foo Industries</vendor>
+</definition>
 ```
 
 ### Parameters
@@ -60,9 +60,9 @@ The `custom` type is a special case that allows for arbitrary data structures of
 The simplest parameter would be a boolean type, which inherently (and automatically) only provides two options (on/off):
 
 ```XML
-        <parameter name="CAM_IRLOCK" type="bool" default="0">
-            <description>Enable IR Lock</description>
-        </parameter>
+<parameter name="CAM_IRLOCK" type="bool" default="0">
+    <description>Enable IR Lock</description>
+</parameter>
 ```
 
 The `name` attribute is the name of the parameter. This is the name used when requesting or setting the parameter's value using the extended parameter messages.
@@ -71,17 +71,17 @@ The `description` is what is shown to the user.
 More common are parameters that provide options:
 
 ```XML
-        <parameter name="CAM_WBMODE" type="uint32" default="0">
-            <description>White Balance Mode</description>
-            <options>
-                <option name="Auto" value="0" />
-                <option name="Incandescent" value="1" />
-                <option name="Sunset" value="3" />
-                <option name="Sunny" value="4" />
-                <option name="Cloudy" value="5" />
-                <option name="Fluorescent" value="7" />
-            </options>
-        </parameter>
+<parameter name="CAM_WBMODE" type="uint32" default="0">
+    <description>White Balance Mode</description>
+    <options>
+        <option name="Auto" value="0" />
+        <option name="Incandescent" value="1" />
+        <option name="Sunset" value="3" />
+        <option name="Sunny" value="4" />
+        <option name="Cloudy" value="5" />
+        <option name="Fluorescent" value="7" />
+    </options>
+</parameter>
 ```
 
 In this case, the GCS will automatically build a drop down list with the options defined within the `options` group. When sending/receiving the options, the `value` field is used and it is not in any way interpreted by the GCS. The `name` field is used for display only. In other words, using the example above, when the user selects *Sunset*, the GCS will send a [PARAM\_EXT\_SET](http://mavlink.org/messages/common#PARAM_EXT_SET) message with the id `CAM_WBMODE` and a uint32 value of 3.
@@ -91,22 +91,22 @@ In this case, the GCS will automatically build a drop down list with the options
 Some parameters are only relevant when some other parameter is set to some specific option. For example, shutter speed and ISO would only be available when the camera is set to *manual* exposure mode and not shown when the camera is set to *auto* exposure mode. To specify this behavior, you would use the `exclusion` element:
 
 ```XML
-        <parameter name="CAM_EXPMODE" type="uint32" default="0">
-            <description>Exposure Mode</description>
-            <options default="0">
-                <option name="Auto" value="0">
-                    <exclusions>
-                        <exclude>CAM_ISO</exclude>
-                        <exclude>CAM_SHUTTERSPD</exclude>
-                    </exclusions>
-                </option>
-                <option name="Manual" value="1">
-                    <exclusions>
-                        <exclude>CAM_EV</exclude>
-                    </exclusions>
-                </option>
-            </options>
-        </parameter>
+<parameter name="CAM_EXPMODE" type="uint32" default="0">
+    <description>Exposure Mode</description>
+    <options default="0">
+        <option name="Auto" value="0">
+            <exclusions>
+                <exclude>CAM_ISO</exclude>
+                <exclude>CAM_SHUTTERSPD</exclude>
+            </exclusions>
+        </option>
+        <option name="Manual" value="1">
+            <exclusions>
+                <exclude>CAM_EV</exclude>
+            </exclusions>
+        </option>
+    </options>
+</parameter>
 ```
 
 The above example describes an *Exposure Mode* parameter and its two options: *Auto* and *Manual*. When the option is set to *Auto*, both the `CAM_ISO` and `CAM_SHUTTERSPD` parameters (defined elsewhere in the parameter list) are hidden from the UI as they are not applicable. On the other hand, if the option is set to *Manual*, the `CAM_EV` parameter is hidden as it is not applicable while the camera is in *Manual Exposure Mode*.
@@ -116,26 +116,26 @@ The above example describes an *Exposure Mode* parameter and its two options: *A
 There are cases where an option change requires a parameter to be updated. For example, using the example above, when the camera is set to *Auto Exposure Mode*, it internally might change the ISO and Shutter speed. When the user switches back to *Manual Exposure Mode*, the GCS must request an update for the current ISO and Shutter speed as they may have changed. To do this, you would use the `update` element:
 
 ```XML
-        <parameter name="CAM_EXPMODE" type="uint32" default="0">
-            <description>Exposure Mode</description>
-            <updates>
-                <update>CAM_SHUTTERSPD</update>
-                <update>CAM_ISO</update>
-            </updates>
-            <options default="0">
-                <option name="Auto" value="0">
-                    <exclusions>
-                        <exclude>CAM_ISO</exclude>
-                        <exclude>CAM_SHUTTERSPD</exclude>
-                    </exclusions>
-                </option>
-                <option name="Manual" value="1">
-                    <exclusions>
-                        <exclude>CAM_EV</exclude>
-                    </exclusions>
-                </option>
-            </options>
-        </parameter>
+<parameter name="CAM_EXPMODE" type="uint32" default="0">
+    <description>Exposure Mode</description>
+    <updates>
+        <update>CAM_SHUTTERSPD</update>
+    <update>CAM_ISO</update>
+    </updates>
+    <options default="0">
+        <option name="Auto" value="0">
+            <exclusions>
+                <exclude>CAM_ISO</exclude>
+                <exclude>CAM_SHUTTERSPD</exclude>
+            </exclusions>
+        </option>
+        <option name="Manual" value="1">
+            <exclusions>
+                <exclude>CAM_EV</exclude>
+            </exclusions>
+        </option>
+    </options>
+</parameter>
 ```
 
 This tells the GCS that when the `CAM_EXPMODE` parameter changes, both the `CAM_SHUTTERSPD` and the `CAM_ISO` must be updated (requested from the camera).
@@ -145,48 +145,48 @@ This tells the GCS that when the `CAM_EXPMODE` parameter changes, both the `CAM_
 Suppose your camera has the following ISO options:
 
 ```XML
-        <parameter name="CAM_ISO" type="uint32" default="100">
-            <description>ISO</description>
-            <options>
-                <option name="50" value="50" />
-                <option name="100" value="100" />
-                <option name="150" value="150" />
-                <option name="200" value="200" />
-                <option name="300" value="300" />
-                <option name="400" value="400" />
-                <option name="600" value="600" />
-                <option name="800" value="800" />
-                <option name="1600" value="1600" />
-                <option name="3200" value="3200" />
-                <option name="6400" value="6400" />
-            </options>
-        </parameter>
+<parameter name="CAM_ISO" type="uint32" default="100">
+    <description>ISO</description>
+    <options>
+        <option name="50" value="50" />
+        <option name="100" value="100" />
+        <option name="150" value="150" />
+        <option name="200" value="200" />
+        <option name="300" value="300" />
+        <option name="400" value="400" />
+        <option name="600" value="600" />
+        <option name="800" value="800" />
+        <option name="1600" value="1600" />
+        <option name="3200" value="3200" />
+        <option name="6400" value="6400" />
+    </options>
+</parameter>
 ```
 
 But this full range is only available when in *Photo Mode*. For whatever reason, when the camera is set to *Video Mode*, only a subset of the above range is valid. In this case, you would use the `parameterrange` element:
 
 ```XML
-        <parameter name="CAM_MODE" type="uint32" default="1" control="0">
-            <description>Camera Mode</description>
-            <options>
-                <option name="Photo" value="0" />
-                <option name="Video" value="1">
-                    <parameterranges>
-                        <parameterrange parameter="CAM_ISO" condition="CAM_EXPMODE=1">
-                            <roption name="100" value="100" />
-                            <roption name="150" value="150" />
-                            <roption name="200" value="200" />
-                            <roption name="300" value="300" />
-                            <roption name="400" value="400" />
-                            <roption name="600" value="600" />
-                            <roption name="800" value="800" />
-                            <roption name="1600" value="1600" />
-                            <roption name="3200" value="3200" />
-                        </parameterrange>
-                    </parameterranges>
-                </option>
-            </options>
-        </parameter>
+<parameter name="CAM_MODE" type="uint32" default="1" control="0">
+    <description>Camera Mode</description>
+    <options>
+        <option name="Photo" value="0" />
+        <option name="Video" value="1">
+            <parameterranges>
+                <parameterrange parameter="CAM_ISO" condition="CAM_EXPMODE=1">
+                    <roption name="100" value="100" />
+                    <roption name="150" value="150" />
+                    <roption name="200" value="200" />
+                    <roption name="300" value="300" />
+                    <roption name="400" value="400" />
+                    <roption name="600" value="600" />
+                    <roption name="800" value="800" />
+                    <roption name="1600" value="1600" />
+                    <roption name="3200" value="3200" />
+                </parameterrange>
+            </parameterranges>
+        </option>
+    </options>
+</parameter>
 ```
 
 This indicates to the GCS that when the `CAM_MODE` parameter is set to *Video*, only the given range for the `CAM_ISO` parameter is valid. It additionally gives a condition that this is only the case when the `CAM_EXPOSURE` mode is set to *Manual* (1).
@@ -198,20 +198,20 @@ This example also tells the GCS not to display this parameter to the user (`cont
 The `localization` element is used for defining localized strings for display to users. If found, the GCS will use to replace all `description` and options `name` values found in the file with the strings defined here. Here is an example for German localization (de_DE):
 
 ```XML
-    <localization>
-        <locale name="de_DE">
-            <strings original="Camera Mode" translated="Kamera Modus" />
-            <strings original="Photo" translated="Foto" />
-            <strings original="Video" translated="Video" />
-            <strings original="White Balance Mode" translated="Weißabgleich Modus" />
-            <strings original="Auto" translated="Auto" />
-            <strings original="Incandescent" translated="Glühlampen" />
-            <strings original="Sunset" translated="Sonnenuntergang" />
-            <strings original="Sunny" translated="Sonnig" />
-            <strings original="Cloudy" translated="Bewölkt" />
-            <strings original="Fluorescent" translated="Fluoreszierende" />
-        </locale>
-    </localization>
+<localization>
+    <locale name="de_DE">
+        <strings original="Camera Mode" translated="Kamera Modus" />
+        <strings original="Photo" translated="Foto" />
+        <strings original="Video" translated="Video" />
+        <strings original="White Balance Mode" translated="Weißabgleich Modus" />
+        <strings original="Auto" translated="Auto" />
+        <strings original="Incandescent" translated="Glühlampen" />
+        <strings original="Sunset" translated="Sonnenuntergang" />
+        <strings original="Sunny" translated="Sonnig" />
+        <strings original="Cloudy" translated="Bewölkt" />
+        <strings original="Fluorescent" translated="Fluoreszierende" />
+    </locale>
+</localization>
 ```
 
 When the GCS loads and parses the XML file, it will check and see if it can find a localized version appropriate to the system language. If it finds a localisation, it will proceed to replace all occurrences of `original` with `translated`. If something is not found, the default English string is used. You can have as many locales as deemed necessary.
