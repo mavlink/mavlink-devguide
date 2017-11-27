@@ -1,14 +1,15 @@
 # Camera Definition File
 
-For simple cameras, the information provided by the [CAMERA\_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION) message is sufficient for image and video captures. If the camera has settings and options for the user, an extended interface is required to provide the GCS the required data structures for it to build an UI for a Camera Controller.
+A GCS will build a Camera Controller UI for image and video capture using information provided by the [CAMERA\_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION) message. 
+For very simple cameras, the information in the [CAMERA\_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION) message itself is sufficient to construct the UI. 
+For more complicated cameras (with settings and options) the information required to build the UI must be supplied in a *Camera Definition File* that is located at the URI specified in the message's `cam_definition_uri` field.
 
-As the number of camera options is wildly different from camera to camera, it is unreasonable to create specific MAVLink messages for each and every possible option. It’s also not possible to tell the GCS the valid options for each camera setting. To solve this, a Camera Definition File is used. It contains all the camera settings along with the options for each setting as well as exclusion lists (options that would cause some other settings invalid or with a different set of options).
+The *Camera Definition File* contains all the camera settings, the options for each setting, and exclusion lists (options that invalidate or are conditional on other settings). In addition, it may contain localisations of GUI strings for display to the user.
 
-If the camera provides settings, a Camera Definition File should be created and its URI added to the [CAMERA\_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION) message. At the bottom of this page, you can find a full example of a Camera Definition File.
+At the bottom of this page, you can find a [full example](#full_example) of a *Camera Definition File*.
 
-To get and set these options, an extended set of Parameter messages is used. They use a key/value pair with the parameter name and its value, which can be of any predefined or arbitrary types (though arbitrary types are only supported by custom camera controllers).
+> **Note** A *Camera Definition File* is required because the camera options differ so greatly between cameras. It is not reasonable to create specific MAVLink messages for each and every possible option and to tell the GCS the valid options for each camera setting.
 
-The Camera Definition File also provides support for localization where all strings to be translated are embedded within the file itself. The GCS will then select the appropriate language to use based on the availability of localized strings found within the file.
 
 ## Schema
 
@@ -31,7 +32,9 @@ All fields are self explanatory:
 
 ### Parameters
 
-Parameters can be simple or quite complex depending on the behavior they change. At a minimum, it defines the description (what is shown to the user) and the options. 
+An extended set of parameter messages is used to define settings and options. These minimally have a parameter name, type and default value (types can be predefined or arbitrary - though arbitrary types are only supported by custom camera controllers). They will also have a description that is displayed to the user and the set of possible options. 
+
+Parameters can be simple or quite complex, depending on the behavior they change.
 
 #### Parameter Types
 
@@ -50,11 +53,11 @@ The type of the parameter follows the enum [MAV_PARAM_EXT_TYPE](http://mavlink.o
 * double
 * custom
 
-The `custom` type is a special case. It allows for arbitrary data structures of up to 128 bytes but are not supported by default. You would need to extend or write your own camera controller within the GCS to interpret it.
+The `custom` type is a special case that allows for arbitrary data structures of up to 128 bytes. However these are not supported by default - you would need to extend or write your own camera controller within the GCS to interpret this type.
 
 #### Parameter Definition
 
-The simplest parameter would be a boolean type, which inherently (and automatically) only provides two (on/off) options:
+The simplest parameter would be a boolean type, which inherently (and automatically) only provides two options (on/off):
 
 ```XML
         <parameter name="CAM_IRLOCK" type="bool" default="0">
@@ -62,7 +65,7 @@ The simplest parameter would be a boolean type, which inherently (and automatica
         </parameter>
 ```
 
-The `name` attribute is the name of the parameter. It’s the name used when requesting or setting its value using the extended parameter messages.
+The `name` attribute is the name of the parameter. This is the name used when requesting or setting the parameter's value using the extended parameter messages.
 The `description` is what is shown to the user.
 
 More common are parameters that provide options:
@@ -85,7 +88,7 @@ In this case, the GCS will automatically build a drop down list with the options
 
 #### Exclusion Rules
 
-Some parameters are only compatible when some other parameter is set to some specific option. For example, Shutter Speed and ISO would only be available when the camera is set to Manual Exposure mode and not shown when the camera is set to Auto Exposure mode. To specify this behavior, you would use the `exclusion` element:
+Some parameters are only relevant when some other parameter is set to some specific option. For example, shutter speed and ISO would only be available when the camera is set to *manual* exposure mode and not shown when the camera is set to *auto* exposure mode. To specify this behavior, you would use the `exclusion` element:
 
 ```XML
         <parameter name="CAM_EXPMODE" type="uint32" default="0">
@@ -192,7 +195,7 @@ This example also tells the GCS not to display this parameter to the user (`cont
 
 ### Localization
 
-If you would like for the strings shown to the user to be localized, you can add the `localization` element. If found, the GCS will use to replace all `description` and options `name` values found in the file with he strings defined here. Here is an example for German localization (de_DE):
+The `localization` element is used for defining localized strings for display to users. If found, the GCS will use to replace all `description` and options `name` values found in the file with the strings defined here. Here is an example for German localization (de_DE):
 
 ```XML
     <localization>
@@ -211,10 +214,10 @@ If you would like for the strings shown to the user to be localized, you can add
     </localization>
 ```
 
-When the GCS loads and parses the XML file, it will check and see if it can find a localized version appropriate to the system language. If it finds it, it will proceed to replace all occurrences of `original` with `translated`. If something is not found, the default, English string is used. You can have as many locales as deemed necessary.
+When the GCS loads and parses the XML file, it will check and see if it can find a localized version appropriate to the system language. If it finds a localisation, it will proceed to replace all occurrences of `original` with `translated`. If something is not found, the default English string is used. You can have as many locales as deemed necessary.
 
 
-## Protocol Defintion
+## Protocol Definition
 
 Once the Camera Definition File is loaded by the GCS, it will request all parameters from the camera using the [PARAM\_EXT\_REQUEST\_LIST](http://mavlink.org/messages/common#PARAM_EXT_REQUEST_LIST) message. In response, the camera will send back all parameters using the [PARAM\_EXT\_VALUE](http://mavlink.org/messages/common#PARAM_EXT_VALUE) message.
 
@@ -222,7 +225,7 @@ When the user makes a selection, the GCS will send the new option using the [PAR
 
 When the GCS requires a current option for a given parameter, it will use the [PARAM\_EXT\_REQUEST\_READ](http://mavlink.org/messages/common#PARAM_EXT_REQUEST_READ) message and it will expect in response a [PARAM\_EXT\_VALUE](http://mavlink.org/messages/common#PARAM_EXT_VALUE) message.
 
-## Full Camera Definition File Example
+## Full Camera Definition File Example {#full_example}
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -251,7 +254,7 @@ When the GCS requires a current option for a given parameter, it will use the [P
                     </exclusions>
                 </option>
                 <option name="Video" value="1">
-                    <!-- Converselly, when Camera Mode is set to Photo mode, the following parameters should be ignored (hidden from UI or disabled)-->
+                    <!-- Conversely, when Camera Mode is set to Photo mode, the following parameters should be ignored (hidden from UI or disabled)-->
                     <exclusions>
                         <exclude>CAM_PHOTOFMT</exclude>
                         <exclude>CAM_PHOTOQUAL</exclude>
