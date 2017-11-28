@@ -120,7 +120,7 @@ There are cases where an option change requires a parameter to be updated. For e
     <description>Exposure Mode</description>
     <updates>
         <update>CAM_SHUTTERSPD</update>
-    <update>CAM_ISO</update>
+        <update>CAM_ISO</update>
     </updates>
     <options default="0">
         <option name="Auto" value="0">
