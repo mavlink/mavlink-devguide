@@ -63,6 +63,13 @@ The reordering happens as follows:
 > **Warning** This ordering is unique and can be easily implemented in a protocol generator by using a stable sorting algorithm. The alternative to using sorting would be either to use inefficient alignment, which is bad for the target architectures for typical MAVLink applications, or to have function calls in the order of the variable size instead of the application context. This would lead to very confusing function signatures of serialization functions.
 
 
+### Field Reordering (MAVLink 2)
+
+MAVLink 2 messages order the MAVLink 1 ("base") fields in the same way as the MAVLink 1 protocol. Extension fields are not ordered.
+
+<!-- FYI: Field ordering is in pymavlink/generator/mavparse.py - see https://github.com/mavlink/mavlink-devguide/pull/27#issuecomment-349215965 for info -->
+
+
 ### Python Code Example
 
 This is the python code that calculates the `CRC_EXTRA` seed:
