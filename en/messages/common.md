@@ -20564,7 +20564,7 @@ These messages define the common message set, which is the reference message set
      (Units: us)</td>
     </tr>
     <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">sensor_type</td>
+     <td class="mavlink_name" valign="top">estimator_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Class id of the distance sensor type.
      (Enum:<a href="#MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
@@ -20573,26 +20573,14 @@ These messages define the common message set, which is the reference message set
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">distances</td>
-     <td class="mavlink_type" valign="top">uint16_t[72]</td>
-     <td class="mavlink_comment">Distance of obstacles in front of the sensor starting on the left side. A value of 0 means that the obstacle is right in front of the sensor. A value of max_distance +1 means no obstace is present. A value of UINT16_MAX for unknown/not used. In a array element, each unit corresponds to 1cm.</td>
+     <td class="mavlink_type" valign="top">uint8_t[12]</td>
+     <td class="mavlink_comment">Distance of obstacles in front of the sensor starting on the left side. A value of 0 means no obstacle. In a array element, each unit corresponds to 1m.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">increment</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_comment">Angular width in degrees of each array element.
      (Units: deg)</td>
-    </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">min_distance</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Minimum distance the sensor can measure in centimeters
-     (Units: cm)</td>
-    </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">max_distance</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Maximum distance the sensor can measure in centimeters
-     (Units: cm)</td>
     </tr>
    </tbody>
   </table>
