@@ -18,5 +18,5 @@
   <p>This file has protocol dialect: 0.</p>
   <h2>MAVLink Type Enumerations</h2>
   <h2>MAVLink Messages</h2>
- </body> 
+ </body>
 </html>
