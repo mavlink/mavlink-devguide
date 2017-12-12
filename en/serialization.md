@@ -50,7 +50,7 @@ When the MAVLink code generator runs, it takes a checksum of the XML structure f
 As MAVLink reorders internally the message fields according to their size to prevent word / halfword alignment issues (see [Data structure alignment](http://en.wikipedia.org/wiki/Data%20structure%20alignment) (Wikipedia) for further reference) and a wrongly implemented reordering potentially can cause inconsistencies as well, the `CRC_EXTRA` is calculated based on the internal `struct` and over-the-air message layout, not in the XML order.
 
 
-### Field Reordering
+### Field Reordering (MAVLink 1)
 
 The reordering happens as follows:
 
@@ -65,7 +65,7 @@ The reordering happens as follows:
 
 ### Field Reordering (MAVLink 2)
 
-MAVLink 2 messages order the MAVLink 1 ("base") fields in the same way as the MAVLink 1 protocol. Extension fields are not ordered.
+MAVLink 2 messages order the MAVLink 1 ("base") fields in the same way as the MAVLink 1 protocol. Extension fields in MAVLink 1 messages, and all fields in new MAVLink 2 messages, are ordered in the same way as the source XML.
 
 <!-- FYI: Field ordering is in pymavlink/generator/mavparse.py - see https://github.com/mavlink/mavlink-devguide/pull/27#issuecomment-349215965 for info -->
 
