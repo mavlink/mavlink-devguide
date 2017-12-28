@@ -14,7 +14,7 @@ These messages define the common message set, which is the reference message set
 <html>
  <body>
   <h2>MAVLink Protocol Version</h2>
-  <p>This file has protocol version: 3. The version numbers range from 1-255.</p>
+  <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
   <p>This file has protocol dialect: 0.</p>
   <h2>MAVLink Type Enumerations</h2>
   <h3 class="mavlink_message_name" id="MAV_AUTOPILOT">

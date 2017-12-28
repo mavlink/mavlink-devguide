@@ -16,7 +16,7 @@
    <a href="common.md">common.xml</a>
   </p>
   <h2>MAVLink Protocol Version</h2>
-  <p>This file has protocol version: 3. The version numbers range from 1-255.</p>
+  <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
   <h2>MAVLink Type Enumerations</h2>
   <h2>MAVLink Messages</h2>
   <h3 class="mavlink_message_name" id="SCRIPT_ITEM">SCRIPT_ITEM (<a href="#SCRIPT_ITEM">

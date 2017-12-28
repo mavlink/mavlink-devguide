@@ -12,7 +12,7 @@
 <html>
  <body>
   <h2>MAVLink Protocol Version</h2>
-  <p>This file has protocol version: 3. The version numbers range from 1-255.</p>
+  <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
   <h2>MAVLink Messages</h2>
   <h3 class="mavlink_message_name" id="TEST_TYPES">TEST_TYPES (<a href="#TEST_TYPES">
     #0
