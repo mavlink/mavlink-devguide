@@ -4450,19 +4450,19 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">x the location of the fixed ROI (see MAV_FRAME)</td>
+     <td class="mavlink_comment">MAV_ROI_WPNEXT: pitch offset from next waypoint, MAV_ROI_LOCATION: latitude</td>
     </tr>
     <tr>
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">y</td>
+     <td class="mavlink_comment">MAV_ROI_WPNEXT: roll offset from next waypoint, MAV_ROI_LOCATION: longitude</td>
     </tr>
     <tr>
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">z</td>
+     <td class="mavlink_comment">MAV_ROI_WPNEXT: yaw offset from next waypoint, MAV_ROI_LOCATION: altitude</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8394,7 +8394,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_ROI_WPNEXT">MAV_ROI_WPNEXT</a>
      </td>
-     <td class="mavlink_comment">Point toward next waypoint.</td>
+     <td class="mavlink_comment">Point toward next waypoint, with optional pitch/roll/yaw offset.</td>
     </tr>
     <tr class="mavlink_field" id="MAV_ROI_WPINDEX">
      <td class="mavlink_type" valign="top">2</td>
