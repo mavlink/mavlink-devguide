@@ -87,6 +87,22 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_comment">
      </td>
     </tr>
+    <tr class="mavlink_field" id="ACCELCAL_VEHICLE_POS_SUCCESS">
+     <td class="mavlink_type" valign="top">16777215</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ACCELCAL_VEHICLE_POS_SUCCESS">ACCELCAL_VEHICLE_POS_SUCCESS</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="ACCELCAL_VEHICLE_POS_FAILED">
+     <td class="mavlink_type" valign="top">16777216</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ACCELCAL_VEHICLE_POS_FAILED">ACCELCAL_VEHICLE_POS_FAILED</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="MAV_CMD">
@@ -509,6 +525,123 @@ These messages define the APM specific message set, which is custom to [http://a
       <br/>
      </td>
     </tr>
+    <tr class="mavlink_field" id="MAV_CMD_FIXED_MAG_CAL">
+     <td class="mavlink_type" valign="top">42004</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_CMD_FIXED_MAG_CAL">MAV_CMD_FIXED_MAG_CAL</a>
+     </td>
+     <td class="mavlink_comment">Magnetometer calibration based on fixed position
+        in earth field given by inclination, declination and intensity</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
+     <td class="mavlink_comment">MagDeclinationDegrees</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
+     <td class="mavlink_comment">MagInclinationDegrees</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
+     <td class="mavlink_comment">MagIntensityMilliGauss</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
+     <td class="mavlink_comment">YawDegrees</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td colspan="3">
+      <br/>
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_CMD_FIXED_MAG_CAL_FIELD">
+     <td class="mavlink_type" valign="top">42005</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_CMD_FIXED_MAG_CAL_FIELD">MAV_CMD_FIXED_MAG_CAL_FIELD</a>
+     </td>
+     <td class="mavlink_comment">Magnetometer calibration based on fixed expected field values in milliGauss</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
+     <td class="mavlink_comment">FieldX</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
+     <td class="mavlink_comment">FieldY</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
+     <td class="mavlink_comment">FieldZ</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td colspan="3">
+      <br/>
+     </td>
+    </tr>
     <tr class="mavlink_field" id="MAV_CMD_DO_START_MAG_CAL">
      <td class="mavlink_type" valign="top">42424</td>
      <td class="mavlink_name" valign="top">
@@ -799,12 +932,12 @@ These messages define the APM specific message set, which is custom to [http://a
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_GIMBAL_RESET">
-     <td class="mavlink_type" valign="top">42501</td>
+    <tr class="mavlink_field" id="MAV_CMD_SET_FACTORY_TEST_MODE">
+     <td class="mavlink_type" valign="top">42427</td>
      <td class="mavlink_name" valign="top">
-      <a href="#MAV_CMD_GIMBAL_RESET">MAV_CMD_GIMBAL_RESET</a>
+      <a href="#MAV_CMD_SET_FACTORY_TEST_MODE">MAV_CMD_SET_FACTORY_TEST_MODE</a>
      </td>
-     <td class="mavlink_comment">Causes the gimbal to reset and boot as if it was just powered on</td>
+     <td class="mavlink_comment">Command autopilot to get into factory test/diagnostic mode</td>
     </tr>
     <tr>
      <td>
@@ -814,7 +947,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Empty</td>
+     <td class="mavlink_comment">0 means get out of test mode, 1 means get into test mode</td>
     </tr>
     <tr>
      <td>
@@ -857,12 +990,12 @@ These messages define the APM specific message set, which is custom to [http://a
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_SET_FACTORY_TEST_MODE">
-     <td class="mavlink_type" valign="top">42427</td>
+    <tr class="mavlink_field" id="MAV_CMD_GIMBAL_RESET">
+     <td class="mavlink_type" valign="top">42501</td>
      <td class="mavlink_name" valign="top">
-      <a href="#MAV_CMD_SET_FACTORY_TEST_MODE">MAV_CMD_SET_FACTORY_TEST_MODE</a>
+      <a href="#MAV_CMD_GIMBAL_RESET">MAV_CMD_GIMBAL_RESET</a>
      </td>
-     <td class="mavlink_comment">Command autopilot to get into factory test/diagnostic mode</td>
+     <td class="mavlink_comment">Causes the gimbal to reset and boot as if it was just powered on</td>
     </tr>
     <tr>
      <td>
@@ -872,7 +1005,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">0 means get out of test mode, 1 means get into test mode</td>
+     <td class="mavlink_comment">Empty</td>
     </tr>
     <tr>
      <td>
@@ -1089,6 +1222,64 @@ These messages define the APM specific message set, which is custom to [http://a
       <br/>
      </td>
     </tr>
+    <tr class="mavlink_field" id="MAV_CMD_DO_WINCH">
+     <td class="mavlink_type" valign="top">42600</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_CMD_DO_WINCH">MAV_CMD_DO_WINCH</a>
+     </td>
+     <td class="mavlink_comment">Command to operate winch</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
+     <td class="mavlink_comment">winch number (0 for the default winch, otherwise a number from 1 to max number of winches on the vehicle)</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
+     <td class="mavlink_comment">action (0=relax, 1=relative length control, 2=rate control.  See WINCH_ACTIONS enum)</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
+     <td class="mavlink_comment">release length (cable distance to unwind in meters, negative numbers to wind in cable)</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
+     <td class="mavlink_comment">release rate (meters/second)</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td colspan="3">
+      <br/>
+     </td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="LIMITS_STATE">
@@ -1278,6 +1469,42 @@ These messages define the APM specific message set, which is custom to [http://a
       <a href="#GRIPPER_ACTION_GRAB">GRIPPER_ACTION_GRAB</a>
      </td>
      <td class="mavlink_comment">gripper grabs onto cargo</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="WINCH_ACTIONS">
+   <a href="#WINCH_ACTIONS">WINCH_ACTIONS</a>
+  </h3>
+  <p class="description">Winch actions</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="WINCH_RELAXED">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#WINCH_RELAXED">WINCH_RELAXED</a>
+     </td>
+     <td class="mavlink_comment">relax winch</td>
+    </tr>
+    <tr class="mavlink_field" id="WINCH_RELATIVE_LENGTH_CONTROL">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#WINCH_RELATIVE_LENGTH_CONTROL">WINCH_RELATIVE_LENGTH_CONTROL</a>
+     </td>
+     <td class="mavlink_comment">winch unwinds or winds specified length of cable optionally using specified rate</td>
+    </tr>
+    <tr class="mavlink_field" id="WINCH_RATE_CONTROL">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#WINCH_RATE_CONTROL">WINCH_RATE_CONTROL</a>
+     </td>
+     <td class="mavlink_comment">winch unwinds or winds cable at specified rate in meters/seconds</td>
     </tr>
    </tbody>
   </table>
@@ -3119,6 +3346,70 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
+  <h3 class="mavlink_message_name" id="DEEPSTALL_STAGE">
+   <a href="#DEEPSTALL_STAGE">DEEPSTALL_STAGE</a>
+  </h3>
+  <p class="description">Deepstall flight stage</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="DEEPSTALL_STAGE_FLY_TO_LANDING">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#DEEPSTALL_STAGE_FLY_TO_LANDING">DEEPSTALL_STAGE_FLY_TO_LANDING</a>
+     </td>
+     <td class="mavlink_comment">Flying to the landing point</td>
+    </tr>
+    <tr class="mavlink_field" id="DEEPSTALL_STAGE_ESTIMATE_WIND">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#DEEPSTALL_STAGE_ESTIMATE_WIND">DEEPSTALL_STAGE_ESTIMATE_WIND</a>
+     </td>
+     <td class="mavlink_comment">Building an estimate of the wind</td>
+    </tr>
+    <tr class="mavlink_field" id="DEEPSTALL_STAGE_WAIT_FOR_BREAKOUT">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#DEEPSTALL_STAGE_WAIT_FOR_BREAKOUT">DEEPSTALL_STAGE_WAIT_FOR_BREAKOUT</a>
+     </td>
+     <td class="mavlink_comment">Waiting to breakout of the loiter to fly the approach</td>
+    </tr>
+    <tr class="mavlink_field" id="DEEPSTALL_STAGE_FLY_TO_ARC">
+     <td class="mavlink_type" valign="top">3</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#DEEPSTALL_STAGE_FLY_TO_ARC">DEEPSTALL_STAGE_FLY_TO_ARC</a>
+     </td>
+     <td class="mavlink_comment">Flying to the first arc point to turn around to the landing point</td>
+    </tr>
+    <tr class="mavlink_field" id="DEEPSTALL_STAGE_ARC">
+     <td class="mavlink_type" valign="top">4</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#DEEPSTALL_STAGE_ARC">DEEPSTALL_STAGE_ARC</a>
+     </td>
+     <td class="mavlink_comment">Turning around back to the deepstall landing point</td>
+    </tr>
+    <tr class="mavlink_field" id="DEEPSTALL_STAGE_APPROACH">
+     <td class="mavlink_type" valign="top">5</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#DEEPSTALL_STAGE_APPROACH">DEEPSTALL_STAGE_APPROACH</a>
+     </td>
+     <td class="mavlink_comment">Approaching the landing point</td>
+    </tr>
+    <tr class="mavlink_field" id="DEEPSTALL_STAGE_LAND">
+     <td class="mavlink_type" valign="top">6</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#DEEPSTALL_STAGE_LAND">DEEPSTALL_STAGE_LAND</a>
+     </td>
+     <td class="mavlink_comment">Stalling and steering towards the land point</td>
+    </tr>
+   </tbody>
+  </table>
   <h2>MAVLink Messages</h2>
   <h3 class="mavlink_message_name" id="SENSOR_OFFSETS">SENSOR_OFFSETS (<a href="#SENSOR_OFFSETS">
     #150
@@ -4745,7 +5036,8 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Altitude (MSL)</td>
+     <td class="mavlink_comment">Altitude (MSL)
+     (Units: m)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
@@ -5196,6 +5488,85 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">D</td>
      <td class="mavlink_type" valign="top">float</td>
      <td class="mavlink_comment">D component</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="DEEPSTALL">DEEPSTALL (<a href="#DEEPSTALL">
+    #195
+   </a>
+   )
+  </h3>
+  <p class="description">Deepstall path planning</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">landing_lat</td>
+     <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_comment">Landing latitude (deg * 1E7)
+     (Units: degE7)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">landing_lon</td>
+     <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_comment">Landing longitude (deg * 1E7)
+     (Units: degE7)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">path_lat</td>
+     <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_comment">Final heading start point, latitude (deg * 1E7)
+     (Units: degE7)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">path_lon</td>
+     <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_comment">Final heading start point, longitude (deg * 1E7)
+     (Units: degE7)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">arc_entry_lat</td>
+     <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_comment">Arc entry point, latitude (deg * 1E7)
+     (Units: degE7)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">arc_entry_lon</td>
+     <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_comment">Arc entry point, longitude (deg * 1E7)
+     (Units: degE7)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">altitude</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Altitude (meters)
+     (Units: m)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">expected_travel_distance</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Distance the aircraft expects to travel during the deepstall
+     (Units: m)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">cross_track_error</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Deepstall cross track error in meters (only valid when in DEEPSTALL_STAGE_LAND)
+     (Units: m)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">stage</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Deepstall stage, see enum MAV_DEEPSTALL_STAGE
+     (Enum:<a href="#DEEPSTALL_STAGE">DEEPSTALL_STAGE</a>
+      )
+     </td>
     </tr>
    </tbody>
   </table>
@@ -5935,6 +6306,41 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_name" valign="top">confidence</td>
      <td class="mavlink_type" valign="top">float</td>
      <td class="mavlink_comment">normalised confidence value from 0 to 100</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="AOA_SSA">AOA_SSA (<a href="#AOA_SSA">
+    #11020
+   </a>
+   )
+  </h3>
+  <p class="description">
+   <strong>
+    (MAVLink 2)
+   </strong>Angle of Attack and Side Slip Angle</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">time_usec</td>
+     <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">AOA</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Angle of Attack (degrees)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">SSA</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Side Slip Angle (degrees)</td>
     </tr>
    </tbody>
   </table>

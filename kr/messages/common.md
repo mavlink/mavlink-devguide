@@ -382,6 +382,13 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_comment">Steerable, nonrigid airfoil</td>
     </tr>
+    <tr class="mavlink_field" id="MAV_TYPE_DODECAROTOR">
+     <td class="mavlink_type" valign="top">29</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_TYPE_DODECAROTOR">MAV_TYPE_DODECAROTOR</a>
+     </td>
+     <td class="mavlink_comment">Dodecarotor</td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="FIRMWARE_VERSION_TYPE">
@@ -2560,7 +2567,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_NAV_ROI">MAV_CMD_NAV_ROI</a>
      </td>
-     <td class="mavlink_comment">Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
+     <td class="mavlink_comment">THIS INTERFACE IS DEPRECATED AS OF JANUARY 2018. Please use MAV_CMD_DO_SET_ROI_* messages instead. Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
     </tr>
     <tr>
      <td>
@@ -4353,6 +4360,180 @@ These messages define the common message set, which is the reference message set
       <br/>
      </td>
     </tr>
+    <tr class="mavlink_field" id="MAV_CMD_DO_SET_ROI_LOCATION">
+     <td class="mavlink_type" valign="top">195</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_CMD_DO_SET_ROI_LOCATION">MAV_CMD_DO_SET_ROI_LOCATION</a>
+     </td>
+     <td class="mavlink_comment">Sets the region of interest (ROI) to a location. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
+     <td class="mavlink_comment">Latitude</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
+     <td class="mavlink_comment">Longitude</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
+     <td class="mavlink_comment">Altitude</td>
+    </tr>
+    <tr>
+     <td colspan="3">
+      <br/>
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET">
+     <td class="mavlink_type" valign="top">196</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET">MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET</a>
+     </td>
+     <td class="mavlink_comment">Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
+     <td class="mavlink_comment">pitch offset from next waypoint</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
+     <td class="mavlink_comment">roll offset from next waypoint</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
+     <td class="mavlink_comment">yaw offset from next waypoint</td>
+    </tr>
+    <tr>
+     <td colspan="3">
+      <br/>
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_CMD_DO_SET_ROI_NONE">
+     <td class="mavlink_type" valign="top">197</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_CMD_DO_SET_ROI_NONE">MAV_CMD_DO_SET_ROI_NONE</a>
+     </td>
+     <td class="mavlink_comment">Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td colspan="3">
+      <br/>
+     </td>
+    </tr>
     <tr class="mavlink_field" id="MAV_CMD_DO_CONTROL_VIDEO">
      <td class="mavlink_type" valign="top">200</td>
      <td class="mavlink_name" valign="top">
@@ -4416,7 +4597,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_DO_SET_ROI">MAV_CMD_DO_SET_ROI</a>
      </td>
-     <td class="mavlink_comment">Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
+     <td class="mavlink_comment">THIS INTERFACE IS DEPRECATED AS OF JANUARY 2018. Please use MAV_CMD_DO_SET_ROI_* messages instead. Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
     </tr>
     <tr>
      <td>
@@ -4890,7 +5071,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">motor sequence number (a number from 1 to max number of motors on the vehicle)</td>
+     <td class="mavlink_comment">motor number (a number from 1 to max number of motors on the vehicle)</td>
     </tr>
     <tr>
      <td>
@@ -4914,13 +5095,13 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty</td>
+     <td class="mavlink_comment">motor count (number of motors to test to test in sequence, waiting for the timeout above between them; 0=1 motor, 1=1 motor, 2=2 motors...)</td>
     </tr>
     <tr>
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty</td>
+     <td class="mavlink_comment">motor test order (See MOTOR_TEST_ORDER enum)</td>
     </tr>
     <tr>
      <td>
@@ -5442,7 +5623,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">1: accelerometer calibration, 2: board level calibration, 3: accelerometer temperature calibration</td>
+     <td class="mavlink_comment">1: accelerometer calibration, 2: board level calibration, 3: accelerometer temperature calibration, 4: simple accelerometer calibration</td>
     </tr>
     <tr>
      <td>
@@ -8370,7 +8551,7 @@ These messages define the common message set, which is the reference message set
   <h3 class="mavlink_message_name" id="MAV_ROI">
    <a href="#MAV_ROI">MAV_ROI</a>
   </h3>
-  <p class="description">The ROI (region of interest) for the vehicle. This can be
+  <p class="description">THIS INTERFACE IS DEPRECATED AS OF JANUARY 2018. Please use MAV_CMD_DO_SET_ROI_* messages instead. The ROI (region of interest) for the vehicle. This can be
                 be used by the vehicle for camera/vehicle attitude alignment (see
                 MAV_CMD_NAV_ROI).</p>
   <table class="sortable">
@@ -10242,6 +10423,43 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
+  <h3 class="mavlink_message_name" id="MOTOR_TEST_ORDER">
+   <a href="#MOTOR_TEST_ORDER">MOTOR_TEST_ORDER</a>
+  </h3>
+  <p class="description">
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="MOTOR_TEST_ORDER_DEFAULT">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MOTOR_TEST_ORDER_DEFAULT">MOTOR_TEST_ORDER_DEFAULT</a>
+     </td>
+     <td class="mavlink_comment">default autopilot motor test method</td>
+    </tr>
+    <tr class="mavlink_field" id="MOTOR_TEST_ORDER_SEQUENCE">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MOTOR_TEST_ORDER_SEQUENCE">MOTOR_TEST_ORDER_SEQUENCE</a>
+     </td>
+     <td class="mavlink_comment">motor numbers are specified as their index in a predefined vehicle-specific sequence</td>
+    </tr>
+    <tr class="mavlink_field" id="MOTOR_TEST_ORDER_BOARD">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MOTOR_TEST_ORDER_BOARD">MOTOR_TEST_ORDER_BOARD</a>
+     </td>
+     <td class="mavlink_comment">motor numbers are specified as the output as labeled on the board</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 class="mavlink_message_name" id="MOTOR_TEST_THROTTLE_TYPE">
    <a href="#MOTOR_TEST_THROTTLE_TYPE">MOTOR_TEST_THROTTLE_TYPE</a>
   </h3>
@@ -10276,6 +10494,13 @@ These messages define the common message set, which is the reference message set
       <a href="#MOTOR_TEST_THROTTLE_PILOT">MOTOR_TEST_THROTTLE_PILOT</a>
      </td>
      <td class="mavlink_comment">throttle pass-through from pilot's transmitter</td>
+    </tr>
+    <tr class="mavlink_field" id="MOTOR_TEST_COMPASS_CAL">
+     <td class="mavlink_type" valign="top">3</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MOTOR_TEST_COMPASS_CAL">MOTOR_TEST_COMPASS_CAL</a>
+     </td>
+     <td class="mavlink_comment">per-motor compass calibration test</td>
     </tr>
    </tbody>
   </table>
@@ -10842,6 +11067,35 @@ These messages define the common message set, which is the reference message set
       <a href="#MAV_ARM_AUTH_DENIED_REASON_BAD_WEATHER">MAV_ARM_AUTH_DENIED_REASON_BAD_WEATHER</a>
      </td>
      <td class="mavlink_comment">Weather is not good to fly</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="RTK_BASELINE_COORDINATE_SYSTEM">
+   <a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
+  </h3>
+  <p class="description">RTK GPS baseline coordinate system, used for RTK corrections</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="RTK_BASELINE_COORDINATE_SYSTEM_ECEF">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#RTK_BASELINE_COORDINATE_SYSTEM_ECEF">RTK_BASELINE_COORDINATE_SYSTEM_ECEF</a>
+     </td>
+     <td class="mavlink_comment">Earth-centered, Earth-fixed</td>
+    </tr>
+    <tr class="mavlink_field" id="RTK_BASELINE_COORDINATE_SYSTEM_NED">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#RTK_BASELINE_COORDINATE_SYSTEM_NED">RTK_BASELINE_COORDINATE_SYSTEM_NED</a>
+     </td>
+     <td class="mavlink_comment">North, East, Down</td>
     </tr>
    </tbody>
   </table>
@@ -12816,7 +13070,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">longitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude (WGS84, in degrees * 1E7
+     <td class="mavlink_comment">Longitude (WGS84), in degrees * 1E7
      (Units: degE7)</td>
     </tr>
     <tr class="mavlink_field">
@@ -14231,13 +14485,13 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">body_pitch_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body roll rate in radians per second
+     <td class="mavlink_comment">Body pitch rate in radians per second
      (Units: rad/s)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">body_yaw_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body roll rate in radians per second
+     <td class="mavlink_comment">Body yaw rate in radians per second
      (Units: rad/s)</td>
     </tr>
     <tr class="mavlink_field">
@@ -14564,13 +14818,13 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat_int</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">X Position in WGS84 frame in 1e7 * meters
+     <td class="mavlink_comment">X Position in WGS84 frame in 1e7 * degrees
      (Units: degE7)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon_int</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Y Position in WGS84 frame in 1e7 * meters
+     <td class="mavlink_comment">Y Position in WGS84 frame in 1e7 * degrees
      (Units: degE7)</td>
     </tr>
     <tr class="mavlink_field">
@@ -14666,13 +14920,13 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat_int</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">X Position in WGS84 frame in 1e7 * meters
+     <td class="mavlink_comment">X Position in WGS84 frame in 1e7 * degrees
      (Units: degE7)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon_int</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Y Position in WGS84 frame in 1e7 * meters
+     <td class="mavlink_comment">Y Position in WGS84 frame in 1e7 * degrees
      (Units: degE7)</td>
     </tr>
     <tr class="mavlink_field">
@@ -14850,12 +15104,12 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude, expressed as * 1E7</td>
+     <td class="mavlink_comment">Latitude, expressed as degrees * 1E7</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude, expressed as * 1E7</td>
+     <td class="mavlink_comment">Longitude, expressed as degrees * 1E7</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
@@ -16223,12 +16477,14 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude, expressed as * 1E7</td>
+     <td class="mavlink_comment">Latitude, expressed as degrees * 1E7
+     (Units: degE7)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude, expressed as * 1E7</td>
+     <td class="mavlink_comment">Longitude, expressed as degrees * 1E7
+     (Units: degE7)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
@@ -16701,7 +16957,8 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">dgps_age</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Age of DGPS info</td>
+     <td class="mavlink_comment">Age of DGPS info
+     (Units: ms)</td>
     </tr>
    </tbody>
   </table>
@@ -16853,7 +17110,10 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baseline_coords_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Coordinate system of baseline. 0 == ECEF, 1 == NED</td>
+     <td class="mavlink_comment">Coordinate system of baseline
+     (Enum:<a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
+      )
+     </td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baseline_a_mm</td>
@@ -16941,7 +17201,10 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baseline_coords_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Coordinate system of baseline. 0 == ECEF, 1 == NED</td>
+     <td class="mavlink_comment">Coordinate system of baseline
+     (Enum:<a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
+      )
+     </td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baseline_a_mm</td>
