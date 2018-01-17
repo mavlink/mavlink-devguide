@@ -2061,7 +2061,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty</td>
+     <td class="mavlink_comment">Precision land mode. (0 = normal landing, 1 = opportunistic precision landing, 2 = required precsion landing)</td>
     </tr>
     <tr>
      <td>
