@@ -4655,7 +4655,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_DO_DIGICAM_CONFIGURE">MAV_CMD_DO_DIGICAM_CONFIGURE</a>
      </td>
-     <td class="mavlink_comment">Mission command to configure an on-board camera controller system.</td>
+     <td class="mavlink_comment">THIS INTERFACE IS DEPRECATED since 2018-01. Please use PARAM_EXT_XXX messages and the camera definition format described in https://mavlink.io/en/protocol/camera_def.html.</td>
     </tr>
     <tr>
      <td>
@@ -4713,7 +4713,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_DO_DIGICAM_CONTROL">MAV_CMD_DO_DIGICAM_CONTROL</a>
      </td>
-     <td class="mavlink_comment">Mission command to control an on-board camera controller system.</td>
+     <td class="mavlink_comment">THIS INTERFACE IS DEPRECATED since 2018-01. Please use PARAM_EXT_XXX messages and the camera definition format described in https://mavlink.io/en/protocol/camera_def.html.</td>
     </tr>
     <tr>
      <td>
@@ -6179,7 +6179,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_REQUEST_CAMERA_INFORMATION">MAV_CMD_REQUEST_CAMERA_INFORMATION</a>
      </td>
-     <td class="mavlink_comment">WIP: Request camera information (CAMERA_INFORMATION).</td>
+     <td class="mavlink_comment">Request camera information (CAMERA_INFORMATION).</td>
     </tr>
     <tr>
      <td>
@@ -6207,7 +6207,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_REQUEST_CAMERA_SETTINGS">MAV_CMD_REQUEST_CAMERA_SETTINGS</a>
      </td>
-     <td class="mavlink_comment">WIP: Request camera settings (CAMERA_SETTINGS).</td>
+     <td class="mavlink_comment">Request camera settings (CAMERA_SETTINGS).</td>
     </tr>
     <tr>
      <td>
@@ -6303,7 +6303,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS">MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS</a>
      </td>
-     <td class="mavlink_comment">WIP: Request camera capture status (CAMERA_CAPTURE_STATUS)</td>
+     <td class="mavlink_comment">Request camera capture status (CAMERA_CAPTURE_STATUS)</td>
     </tr>
     <tr>
      <td>
@@ -6359,7 +6359,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_RESET_CAMERA_SETTINGS">MAV_CMD_RESET_CAMERA_SETTINGS</a>
      </td>
-     <td class="mavlink_comment">WIP: Reset all camera settings to Factory Default</td>
+     <td class="mavlink_comment">Reset all camera settings to Factory Default</td>
     </tr>
     <tr>
      <td>
@@ -19703,7 +19703,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>WIP: Information about a camera</p>
+   </strong>Information about a camera</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19797,7 +19797,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>WIP: Settings of a camera, can be requested using MAV_CMD_REQUEST_CAMERA_SETTINGS.</p>
+   </strong>Settings of a camera, can be requested using MAV_CMD_REQUEST_CAMERA_SETTINGS.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19902,7 +19902,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>WIP: Information about the status of a capture</p>
+   </strong>Information about the status of a capture</p>
   <table class="sortable">
    <thead>
     <tr>
