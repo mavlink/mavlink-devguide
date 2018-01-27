@@ -11,7 +11,7 @@ On MAVLink 1 links the mission type defaults to `MISSION` and the ground control
 
 ## Upload a Mission to the Vehicle
 
-The diagram below shows how the ground control station (GCS) can download a mission. When MAVLink 2 is used several different mission types (regular waypoints or geofence coordinates, etc.) can be selected in the MISSION\_COUNT and MISSION\_REQUEST messages using the `mission_type` field.
+The diagram below shows how the ground control station (GCS) can upload a mission to the drone. When MAVLink 2 is used several different mission types (regular waypoints or geofence coordinates, etc.) can be selected in the MISSION\_COUNT and MISSION\_REQUEST messages using the `mission_type` field.
 
 {% mermaid %}
 sequenceDiagram;
