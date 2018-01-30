@@ -441,6 +441,471 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
+  <h3 class="mavlink_message_name" id="FLIGHT_MODE">
+   <a href="#FLIGHT_MODE">FLIGHT_MODE</a>
+  </h3>
+  <p class="description">Flight modes of the MAV.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="FLIGHT_MODE_MANUAL">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_MANUAL">FLIGHT_MODE_MANUAL</a>
+     </td>
+     <td class="mavlink_comment">Manual flight mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_ALTCTL">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_ALTCTL">FLIGHT_MODE_ALTCTL</a>
+     </td>
+     <td class="mavlink_comment">Altitude hold flight mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_POSCTL">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_POSCTL">FLIGHT_MODE_POSCTL</a>
+     </td>
+     <td class="mavlink_comment">Position control flight mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_STABILIZED">
+     <td class="mavlink_type" valign="top">3</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_STABILIZED">FLIGHT_MODE_STABILIZED</a>
+     </td>
+     <td class="mavlink_comment">Stabilized mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_ACRO">
+     <td class="mavlink_type" valign="top">4</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_ACRO">FLIGHT_MODE_ACRO</a>
+     </td>
+     <td class="mavlink_comment">Acro mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_RATTITIDE">
+     <td class="mavlink_type" valign="top">5</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_RATTITIDE">FLIGHT_MODE_RATTITIDE</a>
+     </td>
+     <td class="mavlink_comment">Rattitude mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AUTO_MISSION">
+     <td class="mavlink_type" valign="top">6</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AUTO_MISSION">FLIGHT_MODE_AUTO_MISSION</a>
+     </td>
+     <td class="mavlink_comment">Mission mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AUTO_LOITER">
+     <td class="mavlink_type" valign="top">7</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AUTO_LOITER">FLIGHT_MODE_AUTO_LOITER</a>
+     </td>
+     <td class="mavlink_comment">Loiter mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AUTO_RTL">
+     <td class="mavlink_type" valign="top">8</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AUTO_RTL">FLIGHT_MODE_AUTO_RTL</a>
+     </td>
+     <td class="mavlink_comment">Return to land mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AUTO_RCRECOVER">
+     <td class="mavlink_type" valign="top">9</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AUTO_RCRECOVER">FLIGHT_MODE_AUTO_RCRECOVER</a>
+     </td>
+     <td class="mavlink_comment">RC recover mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AUTO_RTGS">
+     <td class="mavlink_type" valign="top">10</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AUTO_RTGS">FLIGHT_MODE_AUTO_RTGS</a>
+     </td>
+     <td class="mavlink_comment">Return to ground station mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AUTO_LANDENGFAIL">
+     <td class="mavlink_type" valign="top">11</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AUTO_LANDENGFAIL">FLIGHT_MODE_AUTO_LANDENGFAIL</a>
+     </td>
+     <td class="mavlink_comment">Land Engine Fail mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AUTO_LANDGPSFAIL">
+     <td class="mavlink_type" valign="top">12</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AUTO_LANDGPSFAIL">FLIGHT_MODE_AUTO_LANDGPSFAIL</a>
+     </td>
+     <td class="mavlink_comment">Land GPS fail mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AUTO_TAKEOFF">
+     <td class="mavlink_type" valign="top">13</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AUTO_TAKEOFF">FLIGHT_MODE_AUTO_TAKEOFF</a>
+     </td>
+     <td class="mavlink_comment">Takeoff mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AUTO_LAND">
+     <td class="mavlink_type" valign="top">14</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AUTO_LAND">FLIGHT_MODE_AUTO_LAND</a>
+     </td>
+     <td class="mavlink_comment">Land mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AUTO_FOLLOW_TARGET">
+     <td class="mavlink_type" valign="top">15</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AUTO_FOLLOW_TARGET">FLIGHT_MODE_AUTO_FOLLOW_TARGET</a>
+     </td>
+     <td class="mavlink_comment">Follow target/me mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AUTO_PRECLAND">
+     <td class="mavlink_type" valign="top">16</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AUTO_PRECLAND">FLIGHT_MODE_AUTO_PRECLAND</a>
+     </td>
+     <td class="mavlink_comment">Precision landing mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_DESCEND">
+     <td class="mavlink_type" valign="top">17</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_DESCEND">FLIGHT_MODE_DESCEND</a>
+     </td>
+     <td class="mavlink_comment">Descend mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_OFFBOARD">
+     <td class="mavlink_type" valign="top">18</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_OFFBOARD">FLIGHT_MODE_OFFBOARD</a>
+     </td>
+     <td class="mavlink_comment">Offboard mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_TERMINATION">
+     <td class="mavlink_type" valign="top">19</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_TERMINATION">FLIGHT_MODE_TERMINATION</a>
+     </td>
+     <td class="mavlink_comment">Termination mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AUTO_TUNE">
+     <td class="mavlink_type" valign="top">20</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AUTO_TUNE">FLIGHT_MODE_AUTO_TUNE</a>
+     </td>
+     <td class="mavlink_comment">Auto tune mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_BRAKE">
+     <td class="mavlink_type" valign="top">21</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_BRAKE">FLIGHT_MODE_BRAKE</a>
+     </td>
+     <td class="mavlink_comment">Brake mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_CIRCLE">
+     <td class="mavlink_type" valign="top">22</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_CIRCLE">FLIGHT_MODE_CIRCLE</a>
+     </td>
+     <td class="mavlink_comment">Circle mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_DRIFT">
+     <td class="mavlink_type" valign="top">23</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_DRIFT">FLIGHT_MODE_DRIFT</a>
+     </td>
+     <td class="mavlink_comment">Drift mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_GUIDED">
+     <td class="mavlink_type" valign="top">24</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_GUIDED">FLIGHT_MODE_GUIDED</a>
+     </td>
+     <td class="mavlink_comment">Guided mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_SPORT">
+     <td class="mavlink_type" valign="top">25</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_SPORT">FLIGHT_MODE_SPORT</a>
+     </td>
+     <td class="mavlink_comment">Sport mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_THROW">
+     <td class="mavlink_type" valign="top">26</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_THROW">FLIGHT_MODE_THROW</a>
+     </td>
+     <td class="mavlink_comment">Throw mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_SUPER_SIMPLE">
+     <td class="mavlink_type" valign="top">27</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_SUPER_SIMPLE">FLIGHT_MODE_SUPER_SIMPLE</a>
+     </td>
+     <td class="mavlink_comment">Simplified multicopter control mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_AVIOD_TRAFFIC">
+     <td class="mavlink_type" valign="top">28</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_AVIOD_TRAFFIC">FLIGHT_MODE_AVIOD_TRAFFIC</a>
+     </td>
+     <td class="mavlink_comment">Avoid traffic mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_FBWA">
+     <td class="mavlink_type" valign="top">29</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_FBWA">FLIGHT_MODE_FBWA</a>
+     </td>
+     <td class="mavlink_comment">Fly by wire (version A) mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_FBWB">
+     <td class="mavlink_type" valign="top">30</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_FBWB">FLIGHT_MODE_FBWB</a>
+     </td>
+     <td class="mavlink_comment">Flz by wire (version B) mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_TRAINING">
+     <td class="mavlink_type" valign="top">31</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_TRAINING">FLIGHT_MODE_TRAINING</a>
+     </td>
+     <td class="mavlink_comment">Position control flight mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_CRUISE">
+     <td class="mavlink_type" valign="top">32</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_CRUISE">FLIGHT_MODE_CRUISE</a>
+     </td>
+     <td class="mavlink_comment">Cruise mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_HOLD">
+     <td class="mavlink_type" valign="top">33</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_HOLD">FLIGHT_MODE_HOLD</a>
+     </td>
+     <td class="mavlink_comment">Position hold mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_STEERING">
+     <td class="mavlink_type" valign="top">34</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_STEERING">FLIGHT_MODE_STEERING</a>
+     </td>
+     <td class="mavlink_comment">Steering mode</td>
+    </tr>
+    <tr class="mavlink_field" id="FLIGHT_MODE_SMART_RTL">
+     <td class="mavlink_type" valign="top">35</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#FLIGHT_MODE_SMART_RTL">FLIGHT_MODE_SMART_RTL</a>
+     </td>
+     <td class="mavlink_comment">Smart return-to-land-mode</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="MAV_FAILSAFE_FLAG">
+   <a href="#MAV_FAILSAFE_FLAG">MAV_FAILSAFE_FLAG</a>
+  </h3>
+  <p class="description">These flags encode if a certain failsafe mode is triggered.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="MAV_FAILSAFE_FLAG_RC_LOSS">
+     <td class="mavlink_type" valign="top">128</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILSAFE_FLAG_RC_LOSS">MAV_FAILSAFE_FLAG_RC_LOSS</a>
+     </td>
+     <td class="mavlink_comment">0b10000000 RC loss failsafe active.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILSAFE_FLAG_TELEM_LOSS">
+     <td class="mavlink_type" valign="top">64</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILSAFE_FLAG_TELEM_LOSS">MAV_FAILSAFE_FLAG_TELEM_LOSS</a>
+     </td>
+     <td class="mavlink_comment">0b01000000 remote control input is enabled.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILSAFE_FLAG_ENGINE">
+     <td class="mavlink_type" valign="top">32</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILSAFE_FLAG_ENGINE">MAV_FAILSAFE_FLAG_ENGINE</a>
+     </td>
+     <td class="mavlink_comment">0b00100000 Engine failure failsafe active.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILSAFE_FLAG_GPS">
+     <td class="mavlink_type" valign="top">16</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILSAFE_FLAG_GPS">MAV_FAILSAFE_FLAG_GPS</a>
+     </td>
+     <td class="mavlink_comment">0b00010000 GPS failure failsafe active.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILSAFE_FLAG_BATTERY">
+     <td class="mavlink_type" valign="top">8</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILSAFE_FLAG_BATTERY">MAV_FAILSAFE_FLAG_BATTERY</a>
+     </td>
+     <td class="mavlink_comment">0b00001000 Battery failure failsafe active.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILSAFE_FLAG_GEOFENCE">
+     <td class="mavlink_type" valign="top">4</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILSAFE_FLAG_GEOFENCE">MAV_FAILSAFE_FLAG_GEOFENCE</a>
+     </td>
+     <td class="mavlink_comment">0b00000100 Geofence failsafe active.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILSAFE_FLAG_RESERVED1">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILSAFE_FLAG_RESERVED1">MAV_FAILSAFE_FLAG_RESERVED1</a>
+     </td>
+     <td class="mavlink_comment">0b00000010 Reserved for future use.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILSAFE_FLAG_RESERVED2">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILSAFE_FLAG_RESERVED2">MAV_FAILSAFE_FLAG_RESERVED2</a>
+     </td>
+     <td class="mavlink_comment">0b00000001 Reserved for future use.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="MAV_FAILURE_FLAG">
+   <a href="#MAV_FAILURE_FLAG">MAV_FAILURE_FLAG</a>
+  </h3>
+  <p class="description">These flags encode if a certain failsafe mode is triggered.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_GPS">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_GPS">MAV_FAILURE_FLAG_GPS</a>
+     </td>
+     <td class="mavlink_comment">GPS failure.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_AIRSPEED">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_AIRSPEED">MAV_FAILURE_FLAG_AIRSPEED</a>
+     </td>
+     <td class="mavlink_comment">Airspeed failure.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_BAROMETER">
+     <td class="mavlink_type" valign="top">4</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_BAROMETER">MAV_FAILURE_FLAG_BAROMETER</a>
+     </td>
+     <td class="mavlink_comment">Barometer failure.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_ACCELEROMETER">
+     <td class="mavlink_type" valign="top">8</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_ACCELEROMETER">MAV_FAILURE_FLAG_ACCELEROMETER</a>
+     </td>
+     <td class="mavlink_comment">Accelerometer failure.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_GYROSCOPE">
+     <td class="mavlink_type" valign="top">16</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_GYROSCOPE">MAV_FAILURE_FLAG_GYROSCOPE</a>
+     </td>
+     <td class="mavlink_comment">Gyroscope failure.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_MAGNETOMETER">
+     <td class="mavlink_type" valign="top">32</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_MAGNETOMETER">MAV_FAILURE_FLAG_MAGNETOMETER</a>
+     </td>
+     <td class="mavlink_comment">Magnetometer.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_MISSION">
+     <td class="mavlink_type" valign="top">64</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_MISSION">MAV_FAILURE_FLAG_MISSION</a>
+     </td>
+     <td class="mavlink_comment">Mission failure.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_ESTIMATOR">
+     <td class="mavlink_type" valign="top">128</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_ESTIMATOR">MAV_FAILURE_FLAG_ESTIMATOR</a>
+     </td>
+     <td class="mavlink_comment">Estimator failure.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_LIDAR">
+     <td class="mavlink_type" valign="top">256</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_LIDAR">MAV_FAILURE_FLAG_LIDAR</a>
+     </td>
+     <td class="mavlink_comment">Lidar failure.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_OFFBOARD_LINK">
+     <td class="mavlink_type" valign="top">512</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_OFFBOARD_LINK">MAV_FAILURE_FLAG_OFFBOARD_LINK</a>
+     </td>
+     <td class="mavlink_comment">Offboard link failure.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_RESERVED1">
+     <td class="mavlink_type" valign="top">1024</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_RESERVED1">MAV_FAILURE_FLAG_RESERVED1</a>
+     </td>
+     <td class="mavlink_comment">Reserved for future use.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_RESERVED2">
+     <td class="mavlink_type" valign="top">2048</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_RESERVED2">MAV_FAILURE_FLAG_RESERVED2</a>
+     </td>
+     <td class="mavlink_comment">Reserved for future use.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_RESERVED3">
+     <td class="mavlink_type" valign="top">4096</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_RESERVED3">MAV_FAILURE_FLAG_RESERVED3</a>
+     </td>
+     <td class="mavlink_comment">Reserved for future use.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_RESERVED4">
+     <td class="mavlink_type" valign="top">8192</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_RESERVED4">MAV_FAILURE_FLAG_RESERVED4</a>
+     </td>
+     <td class="mavlink_comment">Reserved for future use.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_RESERVED5">
+     <td class="mavlink_type" valign="top">16384</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_RESERVED5">MAV_FAILURE_FLAG_RESERVED5</a>
+     </td>
+     <td class="mavlink_comment">Reserved for future use.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FAILURE_FLAG_RESERVED6">
+     <td class="mavlink_type" valign="top">32768</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FAILURE_FLAG_RESERVED6">MAV_FAILURE_FLAG_RESERVED6</a>
+     </td>
+     <td class="mavlink_comment">Reserved for future use.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 class="mavlink_message_name" id="MAV_MODE_FLAG">
    <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
   </h3>
@@ -18877,6 +19342,199 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">distance to target (meters)
      (Units: m)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="HIGH_LATENCY2">HIGH_LATENCY2 (<a href="#HIGH_LATENCY2">
+    #235
+   </a>
+   )
+  </h3>
+  <p class="description">
+   (DRAFT) Message appropriate for high latency connections like Iridium (version 2)
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">timestamp</td>
+     <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_comment">Timestamp (milliseconds since boot or Unix epoch)
+     (Units: ms)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">type</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Type of the MAV (quadrotor, helicopter, etc., up to 15 types, defined in MAV_TYPE ENUM)
+     (Enum:<a href="#MAV_TYPE">MAV_TYPE</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">autopilot</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Autopilot type / class. defined in MAV_AUTOPILOT ENUM
+     (Enum:<a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">flight_mode</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Flight Mode of the vehicle as defined in the FLIGHT_MODE ENUM
+     (Enum:<a href="#FLIGHT_MODE">FLIGHT_MODE</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">latitude</td>
+     <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_comment">Latitude, expressed as degrees * 1E7
+     (Units: degE7)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">longitude</td>
+     <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_comment">Longitude, expressed as degrees * 1E7
+     (Units: degE7)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">altitude</td>
+     <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_comment">Altitude above mean sea level
+     (Units: m)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">target_altitude</td>
+     <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_comment">Altitude setpoint
+     (Units: m)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">heading</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Heading (degrees / 2)
+     (Units: deg / 2)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">target_heading</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Heading setpoint (degrees / 2)
+     (Units: deg / 2)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">target_distance</td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">Distance to target waypoint or position (meters / 10)
+     (Units: m)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">throttle</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Throttle (percentage)
+     (Units: %)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">airspeed</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Airspeed (m/s * 5)
+     (Units: m/s * 5)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">airspeed_sp</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Airspeed setpoint (m/s * 5)
+     (Units: m/s * 5)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">groundspeed</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Groundspeed (m/s * 5)
+     (Units: m/s * 5)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">windspeed</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Windspeed (m/s * 5)
+     (Units: m/s * 5)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">wind_heading</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Wind heading (deg / 2)
+     (Units: deg / 2)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">eph</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Maximum error horizontal position since last message (m * 10)
+     (Units: m * 10)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">epv</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Maximum error vertical position since last message (m * 10)
+     (Units: m * 10)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">temperature_air</td>
+     <td class="mavlink_type" valign="top">int8_t</td>
+     <td class="mavlink_comment">Air temperature (degrees C) from airspeed sensor
+     (Units: degC)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">climb_rate</td>
+     <td class="mavlink_type" valign="top">int8_t</td>
+     <td class="mavlink_comment">Maximum climb rate magnitude since last message (m/s * 10)
+     (Units: m/s * 10)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">battery</td>
+     <td class="mavlink_type" valign="top">int8_t</td>
+     <td class="mavlink_comment">Battery (percentage, -1 for DNU)
+     (Units: %)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">wp_num</td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">Current waypoint number</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">failure_flags</td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">Indicates failures as defined in MAV_FAILURE_FLAG ENUM. 
+     (Enum:<a href="#MAV_FAILURE_FLAG">MAV_FAILURE_FLAG</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">failsafe</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Indicates if a failsafe mode is triggered, defined in MAV_FAILSAFE_FLAG ENUM
+     (Enum:<a href="#MAV_FAILSAFE_FLAG">MAV_FAILSAFE_FLAG</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">custom0</td>
+     <td class="mavlink_type" valign="top">int8_t</td>
+     <td class="mavlink_comment">Field for custom payload.</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">custom1</td>
+     <td class="mavlink_type" valign="top">int8_t</td>
+     <td class="mavlink_comment">Field for custom payload.</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">custom2</td>
+     <td class="mavlink_type" valign="top">int8_t</td>
+     <td class="mavlink_comment">Field for custom payload.</td>
     </tr>
    </tbody>
   </table>
