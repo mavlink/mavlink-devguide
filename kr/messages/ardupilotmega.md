@@ -23,6 +23,10 @@ These messages define the APM specific message set, which is custom to [http://a
    <strong>MAVLink Include Files:</strong>
    <a href="uAvionix.md">uAvionix.xml</a>
   </p>
+  <p>
+   <strong>MAVLink Include Files:</strong>
+   <a href="icarous.md">icarous.xml</a>
+  </p>
   <p>This file has protocol dialect: 2.</p>
   <h2>MAVLink Type Enumerations</h2>
   <h3 class="mavlink_message_name" id="ACCELCAL_VEHICLE_POS">
@@ -3410,6 +3414,585 @@ These messages define the APM specific message set, which is custom to [http://a
     </tr>
    </tbody>
   </table>
+  <h3 class="mavlink_message_name" id="PLANE_MODE">
+   <a href="#PLANE_MODE">PLANE_MODE</a>
+  </h3>
+  <p class="description">A mapping of plane flight modes for custom_mode field of heartbeat</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="PLANE_MODE_MANUAL">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_MANUAL">PLANE_MODE_MANUAL</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_CIRCLE">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_CIRCLE">PLANE_MODE_CIRCLE</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_STABILIZE">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_STABILIZE">PLANE_MODE_STABILIZE</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_TRAINING">
+     <td class="mavlink_type" valign="top">3</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_TRAINING">PLANE_MODE_TRAINING</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_ACRO">
+     <td class="mavlink_type" valign="top">4</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_ACRO">PLANE_MODE_ACRO</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_FLY_BY_WIRE_A">
+     <td class="mavlink_type" valign="top">5</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_FLY_BY_WIRE_A">PLANE_MODE_FLY_BY_WIRE_A</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_FLY_BY_WIRE_B">
+     <td class="mavlink_type" valign="top">6</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_FLY_BY_WIRE_B">PLANE_MODE_FLY_BY_WIRE_B</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_CRUISE">
+     <td class="mavlink_type" valign="top">7</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_CRUISE">PLANE_MODE_CRUISE</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_AUTOTUNE">
+     <td class="mavlink_type" valign="top">8</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_AUTOTUNE">PLANE_MODE_AUTOTUNE</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_AUTO">
+     <td class="mavlink_type" valign="top">10</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_AUTO">PLANE_MODE_AUTO</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_RTL">
+     <td class="mavlink_type" valign="top">11</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_RTL">PLANE_MODE_RTL</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_LOITER">
+     <td class="mavlink_type" valign="top">12</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_LOITER">PLANE_MODE_LOITER</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_AVOID_ADSB">
+     <td class="mavlink_type" valign="top">14</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_AVOID_ADSB">PLANE_MODE_AVOID_ADSB</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_GUIDED">
+     <td class="mavlink_type" valign="top">15</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_GUIDED">PLANE_MODE_GUIDED</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_INITIALIZING">
+     <td class="mavlink_type" valign="top">16</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_INITIALIZING">PLANE_MODE_INITIALIZING</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_QSTABILIZE">
+     <td class="mavlink_type" valign="top">17</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_QSTABILIZE">PLANE_MODE_QSTABILIZE</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_QHOVER">
+     <td class="mavlink_type" valign="top">18</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_QHOVER">PLANE_MODE_QHOVER</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_QLOITER">
+     <td class="mavlink_type" valign="top">19</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_QLOITER">PLANE_MODE_QLOITER</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_QLAND">
+     <td class="mavlink_type" valign="top">20</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_QLAND">PLANE_MODE_QLAND</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="PLANE_MODE_QRTL">
+     <td class="mavlink_type" valign="top">21</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#PLANE_MODE_QRTL">PLANE_MODE_QRTL</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="COPTER_MODE">
+   <a href="#COPTER_MODE">COPTER_MODE</a>
+  </h3>
+  <p class="description">A mapping of copter flight modes for custom_mode field of heartbeat</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="COPTER_MODE_STABILIZE">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_STABILIZE">COPTER_MODE_STABILIZE</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_ACRO">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_ACRO">COPTER_MODE_ACRO</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_ALT_HOLD">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_ALT_HOLD">COPTER_MODE_ALT_HOLD</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_AUTO">
+     <td class="mavlink_type" valign="top">3</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_AUTO">COPTER_MODE_AUTO</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_GUIDED">
+     <td class="mavlink_type" valign="top">4</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_GUIDED">COPTER_MODE_GUIDED</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_LOITER">
+     <td class="mavlink_type" valign="top">5</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_LOITER">COPTER_MODE_LOITER</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_RTL">
+     <td class="mavlink_type" valign="top">6</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_RTL">COPTER_MODE_RTL</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_CIRCLE">
+     <td class="mavlink_type" valign="top">7</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_CIRCLE">COPTER_MODE_CIRCLE</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_LAND">
+     <td class="mavlink_type" valign="top">9</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_LAND">COPTER_MODE_LAND</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_DRIFT">
+     <td class="mavlink_type" valign="top">11</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_DRIFT">COPTER_MODE_DRIFT</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_SPORT">
+     <td class="mavlink_type" valign="top">13</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_SPORT">COPTER_MODE_SPORT</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_FLIP">
+     <td class="mavlink_type" valign="top">14</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_FLIP">COPTER_MODE_FLIP</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_AUTOTUNE">
+     <td class="mavlink_type" valign="top">15</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_AUTOTUNE">COPTER_MODE_AUTOTUNE</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_POSHOLD">
+     <td class="mavlink_type" valign="top">16</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_POSHOLD">COPTER_MODE_POSHOLD</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_BRAKE">
+     <td class="mavlink_type" valign="top">17</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_BRAKE">COPTER_MODE_BRAKE</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_THROW">
+     <td class="mavlink_type" valign="top">18</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_THROW">COPTER_MODE_THROW</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_AVOID_ADSB">
+     <td class="mavlink_type" valign="top">19</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_AVOID_ADSB">COPTER_MODE_AVOID_ADSB</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_GUIDED_NOGPS">
+     <td class="mavlink_type" valign="top">20</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_GUIDED_NOGPS">COPTER_MODE_GUIDED_NOGPS</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="COPTER_MODE_SMART_RTL">
+     <td class="mavlink_type" valign="top">21</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#COPTER_MODE_SMART_RTL">COPTER_MODE_SMART_RTL</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="SUB_MODE">
+   <a href="#SUB_MODE">SUB_MODE</a>
+  </h3>
+  <p class="description">A mapping of sub flight modes for custom_mode field of heartbeat</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="SUB_MODE_STABILIZE">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#SUB_MODE_STABILIZE">SUB_MODE_STABILIZE</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="SUB_MODE_ACRO">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#SUB_MODE_ACRO">SUB_MODE_ACRO</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="SUB_MODE_ALT_HOLD">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#SUB_MODE_ALT_HOLD">SUB_MODE_ALT_HOLD</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="SUB_MODE_AUTO">
+     <td class="mavlink_type" valign="top">3</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#SUB_MODE_AUTO">SUB_MODE_AUTO</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="SUB_MODE_GUIDED">
+     <td class="mavlink_type" valign="top">4</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#SUB_MODE_GUIDED">SUB_MODE_GUIDED</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="SUB_MODE_CIRCLE">
+     <td class="mavlink_type" valign="top">7</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#SUB_MODE_CIRCLE">SUB_MODE_CIRCLE</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="SUB_MODE_SURFACE">
+     <td class="mavlink_type" valign="top">9</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#SUB_MODE_SURFACE">SUB_MODE_SURFACE</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="SUB_MODE_POSHOLD">
+     <td class="mavlink_type" valign="top">16</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#SUB_MODE_POSHOLD">SUB_MODE_POSHOLD</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="SUB_MODE_MANUAL">
+     <td class="mavlink_type" valign="top">19</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#SUB_MODE_MANUAL">SUB_MODE_MANUAL</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="ROVER_MODE">
+   <a href="#ROVER_MODE">ROVER_MODE</a>
+  </h3>
+  <p class="description">A mapping of rover flight modes for custom_mode field of heartbeat</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="ROVER_MODE_MANUAL">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ROVER_MODE_MANUAL">ROVER_MODE_MANUAL</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="ROVER_MODE_ACRO">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ROVER_MODE_ACRO">ROVER_MODE_ACRO</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="ROVER_MODE_STEERING">
+     <td class="mavlink_type" valign="top">3</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ROVER_MODE_STEERING">ROVER_MODE_STEERING</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="ROVER_MODE_HOLD">
+     <td class="mavlink_type" valign="top">4</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ROVER_MODE_HOLD">ROVER_MODE_HOLD</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="ROVER_MODE_AUTO">
+     <td class="mavlink_type" valign="top">10</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ROVER_MODE_AUTO">ROVER_MODE_AUTO</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="ROVER_MODE_RTL">
+     <td class="mavlink_type" valign="top">11</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ROVER_MODE_RTL">ROVER_MODE_RTL</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="ROVER_MODE_SMART_RTL">
+     <td class="mavlink_type" valign="top">12</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ROVER_MODE_SMART_RTL">ROVER_MODE_SMART_RTL</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="ROVER_MODE_GUIDED">
+     <td class="mavlink_type" valign="top">15</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ROVER_MODE_GUIDED">ROVER_MODE_GUIDED</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="ROVER_MODE_INITIALIZING">
+     <td class="mavlink_type" valign="top">16</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ROVER_MODE_INITIALIZING">ROVER_MODE_INITIALIZING</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="TRACKER_MODE">
+   <a href="#TRACKER_MODE">TRACKER_MODE</a>
+  </h3>
+  <p class="description">A mapping of antenna tracker flight modes for custom_mode field of heartbeat</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="TRACKER_MODE_MANUAL">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#TRACKER_MODE_MANUAL">TRACKER_MODE_MANUAL</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="TRACKER_MODE_STOP">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#TRACKER_MODE_STOP">TRACKER_MODE_STOP</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="TRACKER_MODE_SCAN">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#TRACKER_MODE_SCAN">TRACKER_MODE_SCAN</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="TRACKER_MODE_SERVO_TEST">
+     <td class="mavlink_type" valign="top">3</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#TRACKER_MODE_SERVO_TEST">TRACKER_MODE_SERVO_TEST</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="TRACKER_MODE_AUTO">
+     <td class="mavlink_type" valign="top">10</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#TRACKER_MODE_AUTO">TRACKER_MODE_AUTO</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="TRACKER_MODE_INITIALIZING">
+     <td class="mavlink_type" valign="top">16</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#TRACKER_MODE_INITIALIZING">TRACKER_MODE_INITIALIZING</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h2>MAVLink Messages</h2>
   <h3 class="mavlink_message_name" id="SENSOR_OFFSETS">SENSOR_OFFSETS (<a href="#SENSOR_OFFSETS">
     #150
@@ -6285,12 +6868,14 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds, synced to UNIX time or since system boot)</td>
+     <td class="mavlink_comment">Timestamp (microseconds, synced to UNIX time or since system boot)
+     (Units: us)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_delta_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Time in microseconds since the last reported camera frame</td>
+     <td class="mavlink_comment">Time in microseconds since the last reported camera frame
+     (Units: us)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">angle_delta</td>
@@ -6300,12 +6885,14 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">position_delta</td>
      <td class="mavlink_type" valign="top">float[3]</td>
-     <td class="mavlink_comment">Change in position in meters from previous to current frame rotated into body frame (0=forward, 1=right, 2=down)</td>
+     <td class="mavlink_comment">Change in position in meters from previous to current frame rotated into body frame (0=forward, 1=right, 2=down)
+     (Units: m)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">confidence</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">normalised confidence value from 0 to 100</td>
+     <td class="mavlink_comment">normalised confidence value from 0 to 100
+     (Units: %)</td>
     </tr>
    </tbody>
   </table>
@@ -6330,17 +6917,20 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)</td>
+     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)
+     (Units: us)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">AOA</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angle of Attack (degrees)</td>
+     <td class="mavlink_comment">Angle of Attack (degrees)
+     (Units: deg)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">SSA</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Side Slip Angle (degrees)</td>
+     <td class="mavlink_comment">Side Slip Angle (degrees)
+     (Units: deg)</td>
     </tr>
    </tbody>
   </table>
