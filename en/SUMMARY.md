@@ -1,6 +1,8 @@
 # Summary
 
 * [Introduction](README.md)
+* [MAVLink Versions](mavlink_version.md)
+  * [MAVLink 2](mavlink_2.md)
 * [Protocols](protocol/overview.md)
   * [Mission Protocol](protocol/mission.md)
   * [Parameter Protocol](protocol/parameter.md)
@@ -13,8 +15,6 @@
 * [Routing](routing.md)
 * [General Telemetry](general_telemetry.md)
 * [UAVCAN Interaction](uavcan_interaction.md)
-* [MAVLink Versions](mavlink_version.md)
-  * [MAVLink 2](mavlink_2.md)
 * [Message Definitions](messages/README.md)
   * [common.xml](messages/common.md)
   * [ardupilotmega.xml](messages/ardupilotmega.md)

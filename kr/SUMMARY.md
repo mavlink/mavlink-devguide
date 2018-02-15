@@ -1,6 +1,8 @@
 # 요약
 
 * [소개](README.md)
+* [MAVLink Versions](mavlink_version.md)
+  * [MAVLink 2](mavlink_2.md)
 * [프로토콜 개요](protocol/overview.md)
   * [미션 프로토콜](protocol/mission.md)
   * [Command Protocol](protocol/command.md)
@@ -13,8 +15,6 @@
 * [라우팅](routing.md)
 * [일반 텔레메트리](general_telemetry.md)
 * [UAVCAN Interaction](uavcan_interaction.md)
-* [MAVLink Versions](mavlink_version.md)
-  * [MAVLink 2](mavlink_2.md)
 * [Message Definitions](messages/README.md)
   * [common.xml](messages/common.md)
   * [ardupilotmega.xml](messages/ardupilotmega.md)
