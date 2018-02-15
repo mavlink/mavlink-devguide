@@ -1,19 +1,20 @@
 # Summary
 
 * [Introduction](README.md)
-* [Protocol Overview](protocol/overview.md)
+* [Protocols](protocol/overview.md)
+  * [Mission Protocol](protocol/mission.md)
+  * [Parameter Protocol](protocol/parameter.md)
+  * [Command Protocol](protocol/command.md)
+  * [Camera Protocol](protocol/camera.md)
+  * [Camera Definition](protocol/camera_def.md)
+  * [Gimbal Protocol](protocol/gimbal.md)
+  * [Arm Authorization Protocol](arm_authorization.md)
 * [Serialization](serialization.md)
 * [Routing](routing.md)
 * [General Telemetry](general_telemetry.md)
-* [Mission Protocol](protocol/mission.md)
-* [Parameter Protocol](protocol/parameter.md)
-* [Command Protocol](protocol/command.md)
-* [Camera Protocol](protocol/camera.md)
-  * [Camera Definition](protocol/camera_def.md)
-* [Gimbal Protocol](protocol/gimbal.md)
 * [UAVCAN Interaction](uavcan_interaction.md)
-* [MAVLink Version](mavlink_version.md)
-* [MAVLink 2](mavlink_2.md)
+* [MAVLink Versions](mavlink_version.md)
+  * [MAVLink 2](mavlink_2.md)
 * [Message Definitions](messages/README.md)
   * [common.xml](messages/common.md)
   * [ardupilotmega.xml](messages/ardupilotmega.md)
@@ -28,7 +29,7 @@
   * [test.xml](messages/test.md)
   * [python_array_test.xml](messages/python_array_test.md)
   * [slugs.xml](messages/slugs.md)
-* [Arm Authorization](arm_authorization.md)
+
 
 
 ----
