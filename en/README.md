@@ -11,4 +11,22 @@ Because MAVLink doesn't require any additional framing it is very well suited fo
 
 MAVLink was first released early 2009 by Lorenz Meier and has now a [significant number of contributors](https://github.com/mavlink/mavlink/graphs/contributors).
 
-The content of this book is CC-BY 4.0 licensed.
+## Forums and Chat {#support}
+
+The core development team and community are active on the following chat channel:
+
+* [Slack](http://slack.px4.io) (sign up) - #mavlink channel
+
+
+## Reporting Bugs & Issues
+
+If you have any problems using MAVLink first post them on the [support channels above](#support).
+
+If directed by the development team, issues may be raised on [Github here](https://github.com/mavlink/mavlink/issues).
+
+
+## License
+
+MAVLink is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3). The C-language version of MAVLink is a header-only library which is generated as MIT-licensed code. MAVLink can therefore be used without limits in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
+
+This documentation is licensed under *CC BY 4.0* ([Human readable overview](https://creativecommons.org/licenses/by/4.0/) | [LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE)).
