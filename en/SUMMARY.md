@@ -24,11 +24,13 @@
   * [paparazzi.xml](messages/paparazzi.md)
   * [ualberta.xml](messages/ualberta.md)
   * [uAvionix.xml](messages/uAvionix.md)
+  * [icarous.xml](messages/icarous.md)
   * [standard.xml](messages/standard.md)
   * [test.xml](messages/test.md)
   * [python_array_test.xml](messages/python_array_test.md)
   * [slugs.xml](messages/slugs.md)
 * [Arm Authorization](arm_authorization.md)
+* [MAVLink Generator](mavlink_generator.md)
 
 
 ----
