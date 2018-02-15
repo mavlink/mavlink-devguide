@@ -389,6 +389,13 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_comment">Dodecarotor</td>
     </tr>
+    <tr class="mavlink_field" id="MAV_TYPE_CAMERA">
+     <td class="mavlink_type" valign="top">30</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_TYPE_CAMERA">MAV_TYPE_CAMERA</a>
+     </td>
+     <td class="mavlink_comment">Camera</td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="FIRMWARE_VERSION_TYPE">
