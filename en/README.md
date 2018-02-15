@@ -13,9 +13,8 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 ## Forums and Chat {#support}
 
-The core development team and community are active on the following forums and chat channels:
+The core development team and community are active on the following chat channel:
 
-* [PX4 Discuss](http://discuss.px4.io/) (*recommended*)
 * [Slack](http://slack.px4.io) (sign up) - #mavlink channel
 
 

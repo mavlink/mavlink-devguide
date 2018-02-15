@@ -11,4 +11,23 @@ MAVLink는 매우 제한된 통신 대역을 가지는 어플리케이션에 최
 
 MAVLink는 2009년 로렌츠 마이어(Lorenz Meier)가 처음 릴리즈하였고 지금은 [많은 컨트리뷰터들](https://github.com/mavlink/mavlink/graphs/contributors)이 있습니다.
 
-이 책의 콘텐츠는 CC-BY 4.0 라이센스를 따릅니다.
+
+## Forums and Chat {#support}
+
+The core development team and community are active on the following chat channel:
+
+* [Slack](http://slack.px4.io) (sign up) - #mavlink channel
+
+
+## Reporting Bugs & Issues
+
+If you have any problems using MAVLink first post them on the [support channels above](#support).
+
+If directed by the development team, issues may be raised on [Github here](https://github.com/mavlink/mavlink/issues).
+
+
+## License
+
+MAVLink is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3). The C-language version of MAVLink is a header-only library which is generated as MIT-licensed code. MAVLink can therefore be used without limits in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
+
+This documentation is licensed under *CC BY 4.0* ([Human readable overview](https://creativecommons.org/licenses/by/4.0/) | [LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE)).
