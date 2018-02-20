@@ -1,6 +1,10 @@
 # 요약
 
 * [소개](README.md)
+* [Getting Started](getting_started/README.md)
+  * [Generate Source Files](getting_started/generate_source.md)
+  * [Using Generated Source Files](getting_started/use_source.md)
+  * [Scripts/Examples](getting_started/examples_scripts.md)
 * [MAVLink Versions](mavlink_version.md)
   * [MAVLink 2](mavlink_2.md)
 * [프로토콜 개요](protocol/overview.md)
