@@ -34,7 +34,7 @@
   * [test.xml](messages/test.md)
   * [python_array_test.xml](messages/python_array_test.md)
   * [slugs.xml](messages/slugs.md)
-
+* [Contributing](contributing/contributing.md)
 
 
 ----
