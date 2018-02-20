@@ -43,6 +43,11 @@ If you have any problems using MAVLink first post them on the [support channels 
 If directed by the development team, issues may be raised on [Github here](https://github.com/mavlink/mavlink/issues).
 
 
+## Contributing
+
+The [Contributing Guide](contributing/contributing.md) explains the contribution model and the main areas where you can help.
+
+
 ## License
 
 MAVLink is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3). The C-language version of MAVLink is a header-only library which is generated as MIT-licensed code. MAVLink can therefore be used without limits in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
