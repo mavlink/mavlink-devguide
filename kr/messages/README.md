@@ -20,3 +20,4 @@ The human-readable forms of the vendor XML files are linked below:
 * [test.xml](test.md)
 * [ualberta.xml](ualberta.md)
 * [uAvionix.xml](uAvionix.md)
+* [icarous.xml](icarous.md)
