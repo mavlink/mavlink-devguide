@@ -1,7 +1,7 @@
 # Generating Source Files
 
 Language-specific files can be generated using a Python script from the command line or via a GUI. 
-Available languages include C, C#, Java, Python etc. (for a full list see [Introduction > Supported Languages](../README.md#supported_languages)).
+The available languages for each version of the MAVLink protocol are listed in [Introduction > Supported Languages](../README.md#supported_languages) (these include C, C#, Java, Python etc).
 
 > **Note** The tools must already have been set up as described in [Getting Started > Installation](../getting_started/README.md#install) section (in particular *Tkinter* must be installed to use the GUI tool).
 
@@ -23,7 +23,8 @@ Generator Steps:
 1. Choose the target XML file (typically in [mavlink/message_definitions](https://github.com/mavlink/mavlink/tree/master/message_definitions)).
 1. Choose an output directory (e.g. **mavlink/include**).
 1. Select the target output programming language.
-1. Select the target MAVLink protocol version (ideally 2.0).
+1. Select the target MAVLink protocol version (ideally 2.0)
+   > **Caution** Generation will fail if the protocol is not [supported](../README.md#supported_languages) by the selected programming language.
 1. Optionally check *Validate* and/or  *Validate Units* (if checked validates XML specifications).
 1. Click **Generate** to create the source files.
 
