@@ -28,6 +28,7 @@ Library definitions can be generated for the following programming languages:
 * Swift
 * Python (2.7+, 3.3+)
 
+> **Caution** At time of writing (Feb 2018) only generated C source fully supports MAVLink 2. Generated source for other programming languages only support MAVLink 1.0.
 
 ## Forums and Chat {#support}
 
