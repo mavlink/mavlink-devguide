@@ -12,6 +12,25 @@ MAVLink는 매우 제한된 통신 대역을 가지는 어플리케이션에 최
 MAVLink는 2009년 로렌츠 마이어(Lorenz Meier)가 처음 릴리즈하였고 지금은 [많은 컨트리뷰터들](https://github.com/mavlink/mavlink/graphs/contributors)이 있습니다.
 
 
+## Supported Languages {#supported_languages}
+
+MAVLink 2 source files can be generated for:
+
+* C
+* C++11
+
+MAVLink 1 source files can be generated for:
+
+* C
+* C#
+* Objective C
+* Java
+* JavaScript
+* Lua
+* Swift
+* Python (2.7+, 3.3+)
+
+
 ## Forums and Chat {#support}
 
 The core development team and community are active on the following chat channel:

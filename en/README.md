@@ -16,10 +16,14 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 ## Supported Languages {#supported_languages}
 
-Library definitions can be generated for the following programming languages:
+MAVLink 2 source files can be generated for:
 
 * C
 * C++11
+
+MAVLink 1 source files can be generated for:
+
+* C
 * C#
 * Objective C
 * Java
