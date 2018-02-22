@@ -163,6 +163,13 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_comment">SmartAP Autopilot - http://sky-drones.com</td>
     </tr>
+    <tr class="mavlink_field" id="MAV_AUTOPILOT_AIRRAILS">
+     <td class="mavlink_type" valign="top">19</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_AUTOPILOT_AIRRAILS">MAV_AUTOPILOT_AIRRAILS</a>
+     </td>
+     <td class="mavlink_comment">AirRails - http://uaventure.com</td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="MAV_TYPE">
@@ -6987,6 +6994,64 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
      <td class="mavlink_comment">Reserved, set to NAN</td>
+    </tr>
+    <tr>
+     <td colspan="3">
+      <br/>
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_CMD_CONTROL_HIGH_LATENCY">
+     <td class="mavlink_type" valign="top">2600</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_CMD_CONTROL_HIGH_LATENCY">MAV_CMD_CONTROL_HIGH_LATENCY</a>
+     </td>
+     <td class="mavlink_comment">Request to start/stop transmitting over the high latency telemetry</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
+     <td class="mavlink_comment">Control transmittion over high latency telemetry (0: stop, 1: start)</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
+     <td class="mavlink_comment">Empty</td>
     </tr>
     <tr>
      <td colspan="3">
