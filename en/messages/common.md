@@ -20454,7 +20454,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>WIP: Orientation of a mount</p>
+   </strong>Orientation of a mount</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20473,19 +20473,28 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll in degrees
+     <td class="mavlink_comment">Roll in global frame in degrees (set to NaN for invalid).
      (Units: deg)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch in degrees
+     <td class="mavlink_comment">Pitch in global frame in degrees (set to NaN for invalid).
      (Units: deg)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw in degrees
+     <td class="mavlink_comment">Yaw relative to vehicle in degrees (set to NaN for invalid).
+     (Units: deg)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">yaw_absolute<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Yaw in absolute frame in degrees, North is 0 (set to NaN for invalid).
      (Units: deg)</td>
     </tr>
    </tbody>
