@@ -10606,6 +10606,13 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_comment">True if the EKF has detected a GPS glitch</td>
     </tr>
+    <tr class="mavlink_field" id="ESTIMATOR_ACCEL_ERROR">
+     <td class="mavlink_type" valign="top">2048</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ESTIMATOR_ACCEL_ERROR">ESTIMATOR_ACCEL_ERROR</a>
+     </td>
+     <td class="mavlink_comment">True if the EKF has detected bad accelerometer data</td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="MOTOR_TEST_ORDER">
