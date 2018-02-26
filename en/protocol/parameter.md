@@ -64,10 +64,10 @@ sequenceDiagram;
     participant GCS
     participant Drone
     GCS->>Drone: PARAM_REQUEST_LIST
-    Drone->>Drone: Start sending parameters
-    Drone->>GCS: Send N parameters
+    Drone->>Drone: Start sending parameters 
+    Drone->>GCS: Send N parameters with PARAM_VALUE
     GCS->>GCS: Start receive timeout
-    GCS->>Drone: Request dropped params with PARAM_REQUEST_READ
+    GCS->>Drone: If some params are dropped, request with PARAM_REQUEST_READ
 {% endmermaid %}
 
 ### Read Single Parameter
@@ -78,15 +78,15 @@ A single parameter can be read by the [PARAM_REQUEST_READ](../messages/common.md
 
 ### Write Parameters
 
-As a GCS does not have its own list of the parameters on startup, before writing a parameter first the parameter list has to be read once. After that, parameters can be written individually by sending the key->value pair to the component. Provided the GCS keeps track of changed parameters, it will only need to transmit those which have changed in value. The Drone (MAV) **has to acknowledge the write operation** by emitting a [PARAM_REQUEST_READ](../messages/common.md#PARAM_VALUE)  value message with the newly written parameter value.
+As a GCS does not have its own list of the parameters on startup, before writing a parameter first the parameter list has to be read once. After that, parameters can be written individually by sending the key->value pair to the component. Provided the GCS keeps track of changed parameters, it will only need to transmit those which have changed in value. The Drone (MAV) **has to acknowledge the write operation** by emitting a [PARAM_VALUE](../messages/common.md#PARAM_VALUE)  value message with the newly written parameter value.
 
 {% mermaid %}
 sequenceDiagram;
     participant GCS
     participant Drone
-    GCS->>Drone: Semd parameter name and value
+    GCS->>Drone: Send parameter name and value : PARAM_SET
     GCS->>GCS: Start timeout for receiving update value/ACK
-    Drone->>GCS: Send updated values
+    Drone->>GCS: Send updated values : PARAM_VALUE
     GCS->>Drone: If loss occurs: restart write transmission.
 {% endmermaid %}
 
