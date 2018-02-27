@@ -11646,7 +11646,7 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">Request to read the onboard parameter with the param_id string id. Onboard parameters are stored as key[const char*] -&gt; value[float]. This allows to send a parameter to any other component (such as the GCS) without the need of previous knowledge of possible parameter names. Thus the same GCS can store different parameters for different autopilots. See also http://qgroundcontrol.org/parameter_interface for a full documentation of QGroundControl and IMU code.</p>
+  <p class="description">Request to read the onboard parameter with the param_id string id. Onboard parameters are stored as key[const char*] -&gt; value[float]. This allows to send a parameter to any other component (such as the GCS) without the need of previous knowledge of possible parameter names. Thus the same GCS can store different parameters for different autopilots. See also https://mavlink.io/en/protocol/parameter.html for a full documentation of QGroundControl and IMU code.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12756,7 +12756,7 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">Request a partial list of mission items from the system/component. http://qgroundcontrol.org/mavlink/waypoint_protocol. If start and end index are the same, just send one waypoint.</p>
+  <p class="description">Request a partial list of mission items from the system/component. https://mavlink.io/en/protocol/mission.html. If start and end index are the same, just send one waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12853,7 +12853,7 @@ These messages define the common message set, which is the reference message set
    )
   </h3>
   <p class="description">Message encoding a mission item. This message is emitted to announce
-                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). See also http://qgroundcontrol.org/mavlink/waypoint_protocol.</p>
+                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). See also https://mavlink.io/en/protocol/mission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12957,7 +12957,7 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM message. http://qgroundcontrol.org/mavlink/waypoint_protocol</p>
+  <p class="description">Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM message. https://mavlink.io/en/protocol/mission.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13396,7 +13396,7 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM_INT message. http://qgroundcontrol.org/mavlink/waypoint_protocol</p>
+  <p class="description">Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM_INT message. https://mavlink.io/en/protocol/mission.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14196,7 +14196,7 @@ These messages define the common message set, which is the reference message set
    )
   </h3>
   <p class="description">Message encoding a mission item. This message is emitted to announce
-                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). See alsohttp://qgroundcontrol.org/mavlink/waypoint_protocol.</p>
+                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). See also https://mavlink.io/en/protocol/mission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21213,7 +21213,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch)
+     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch).
      (Units: us)</td>
     </tr>
     <tr class="mavlink_field">
@@ -21227,7 +21227,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">distances</td>
      <td class="mavlink_type" valign="top">uint16_t[72]</td>
-     <td class="mavlink_comment">Distance of obstacles in front of the sensor starting on the left side. A value of 0 means that the obstacle is right in front of the sensor. A value of max_distance +1 means no obstace is present. A value of UINT16_MAX for unknown/not used. In a array element, each unit corresponds to 1cm.
+     <td class="mavlink_comment">Distance of obstacles around the UAV with index 0 corresponding to local North. A value of 0 means that the obstacle is right in front of the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.
      (Units: cm)</td>
     </tr>
     <tr class="mavlink_field">
@@ -21239,13 +21239,13 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">min_distance</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Minimum distance the sensor can measure in centimeters
+     <td class="mavlink_comment">Minimum distance the sensor can measure in centimeters.
      (Units: cm)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">max_distance</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Maximum distance the sensor can measure in centimeters
+     <td class="mavlink_comment">Maximum distance the sensor can measure in centimeters.
      (Units: cm)</td>
     </tr>
    </tbody>
