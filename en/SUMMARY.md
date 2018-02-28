@@ -12,7 +12,7 @@
   * [Parameter Protocol](protocol/parameter.md)
   * [Command Protocol](protocol/command.md)
   * [Camera Protocol](protocol/camera.md)
-  * [Camera Definition](protocol/camera_def.md)
+    * [Camera Definition](protocol/camera_def.md)
   * [Gimbal Protocol](protocol/gimbal.md)
   * [Arm Authorization Protocol](arm_authorization.md)
 * [Serialization](serialization.md)
