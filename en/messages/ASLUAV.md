@@ -992,6 +992,11 @@
      <td class="mavlink_comment">Power board servo voltage</td>
     </tr>
     <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">pwr_brd_digital_volt</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Power board digital voltage</td>
+    </tr>
+    <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pwr_brd_mot_l_amp</td>
      <td class="mavlink_type" valign="top">float</td>
      <td class="mavlink_comment">Power board left motor current sensor</td>
@@ -1002,24 +1007,19 @@
      <td class="mavlink_comment">Power board right motor current sensor</td>
     </tr>
     <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pwr_brd_servo_1_amp</td>
+     <td class="mavlink_name" valign="top">pwr_brd_analog_amp</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Power board servo1 current sensor</td>
+     <td class="mavlink_comment">Power board analog current sensor</td>
     </tr>
     <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pwr_brd_servo_2_amp</td>
+     <td class="mavlink_name" valign="top">pwr_brd_digital_amp</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Power board servo1 current sensor</td>
+     <td class="mavlink_comment">Power board digital current sensor</td>
     </tr>
     <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pwr_brd_servo_3_amp</td>
+     <td class="mavlink_name" valign="top">pwr_brd_ext_amp</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Power board servo1 current sensor</td>
-    </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pwr_brd_servo_4_amp</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Power board servo1 current sensor</td>
+     <td class="mavlink_comment">Power board extension current sensor</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pwr_brd_aux_amp</td>
