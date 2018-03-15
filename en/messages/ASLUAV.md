@@ -686,6 +686,11 @@
    </thead>
    <tbody>
     <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">batmon_timestamp</td>
+     <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_comment">Time since system start [us]</td>
+    </tr>
+    <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature</td>
      <td class="mavlink_type" valign="top">float</td>
      <td class="mavlink_comment">Battery pack temperature in [deg C]</td>
@@ -716,9 +721,14 @@
      <td class="mavlink_comment">Battery monitor serial number in Hex</td>
     </tr>
     <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">hostfetcontrol</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Battery monitor sensor host FET control in Hex</td>
+     <td class="mavlink_name" valign="top">safetystatus</td>
+     <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_comment">Battery monitor safetystatus report bits in Hex</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">operationstatus</td>
+     <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_comment">Battery monitor operation status report bits in Hex</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cellvoltage1</td>

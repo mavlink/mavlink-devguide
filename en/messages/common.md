@@ -14188,6 +14188,96 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_comment">RC channel 8 value, in microseconds. A value of UINT16_MAX means to ignore this field.
      (Units: us)</td>
     </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">chan9_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">RC channel 9 value, in microseconds. A value of 0 means to ignore this field.
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">chan10_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">RC channel 10 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">chan11_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">RC channel 11 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">chan12_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">RC channel 12 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">chan13_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">RC channel 13 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">chan14_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">RC channel 14 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">chan15_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">RC channel 15 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">chan16_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">RC channel 16 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">chan17_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">RC channel 17 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">chan18_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_comment">RC channel 18 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
+     (Units: us)</td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="MISSION_ITEM_INT">MISSION_ITEM_INT (<a href="#MISSION_ITEM_INT">
