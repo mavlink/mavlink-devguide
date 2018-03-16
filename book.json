@@ -1,4 +1,9 @@
 {
+    "gitbook": ">= 3.2.2",
+    "title": "MAVLink Developer Guide",
+    "variables": {
+        "logo": "./assets/site/logo_mavlink_small.png"
+    },
     "plugins": [
         "theme-api",
         "youtube",
