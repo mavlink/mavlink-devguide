@@ -403,6 +403,13 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_comment">Camera</td>
     </tr>
+    <tr class="mavlink_field" id="MAV_TYPE_CHARGING_STATION">
+     <td class="mavlink_type" valign="top">31</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_TYPE_CHARGING_STATION">MAV_TYPE_CHARGING_STATION</a>
+     </td>
+     <td class="mavlink_comment">Charging station</td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="FIRMWARE_VERSION_TYPE">
