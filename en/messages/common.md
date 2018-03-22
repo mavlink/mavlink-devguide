@@ -1482,14 +1482,14 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_FRAME_GLOBAL">MAV_FRAME_GLOBAL</a>
      </td>
-     <td class="mavlink_comment">Global coordinate frame, WGS84 coordinate system. First value / x: latitude, second value / y: longitude, third value / z: positive altitude over mean sea level (MSL)</td>
+     <td class="mavlink_comment">Global coordinate frame, WGS84 coordinate system. First value / x: latitude, second value / y: longitude, third value / z: positive altitude over mean sea level (MSL).</td>
     </tr>
     <tr class="mavlink_field" id="MAV_FRAME_LOCAL_NED">
      <td class="mavlink_type" valign="top">1</td>
      <td class="mavlink_name" valign="top">
       <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>
      </td>
-     <td class="mavlink_comment">Local coordinate frame, Z-up (x: north, y: east, z: down).</td>
+     <td class="mavlink_comment">Local coordinate frame, Z-down (x: north, y: east, z: down).</td>
     </tr>
     <tr class="mavlink_field" id="MAV_FRAME_MISSION">
      <td class="mavlink_type" valign="top">2</td>
@@ -1510,14 +1510,14 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_FRAME_LOCAL_ENU">MAV_FRAME_LOCAL_ENU</a>
      </td>
-     <td class="mavlink_comment">Local coordinate frame, Z-down (x: east, y: north, z: up)</td>
+     <td class="mavlink_comment">Local coordinate frame, Z-up (x: east, y: north, z: up).</td>
     </tr>
     <tr class="mavlink_field" id="MAV_FRAME_GLOBAL_INT">
      <td class="mavlink_type" valign="top">5</td>
      <td class="mavlink_name" valign="top">
       <a href="#MAV_FRAME_GLOBAL_INT">MAV_FRAME_GLOBAL_INT</a>
      </td>
-     <td class="mavlink_comment">Global coordinate frame, WGS84 coordinate system. First value / x: latitude in degrees*1.0e-7, second value / y: longitude in degrees*1.0e-7, third value / z: positive altitude over mean sea level (MSL)</td>
+     <td class="mavlink_comment">Global coordinate frame, WGS84 coordinate system. First value / x: latitude in degrees*1.0e-7, second value / y: longitude in degrees*1.0e-7, third value / z: positive altitude over mean sea level (MSL).</td>
     </tr>
     <tr class="mavlink_field" id="MAV_FRAME_GLOBAL_RELATIVE_ALT_INT">
      <td class="mavlink_type" valign="top">6</td>
