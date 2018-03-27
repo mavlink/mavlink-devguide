@@ -11333,7 +11333,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">base_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System mode bitfield, see MAV_MODE_FLAG ENUM in mavlink/include/mavlink_types.h
+     <td class="mavlink_comment">System mode bitfield, as defined by MAV_MODE_FLAG enum
      (Enum:<a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
       )
      </td>
@@ -11341,12 +11341,12 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">custom_mode</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">A bitfield for use for autopilot-specific flags.</td>
+     <td class="mavlink_comment">A bitfield for use for autopilot-specific flags</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">system_status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System status flag, see MAV_STATE ENUM
+     <td class="mavlink_comment">System status flag, as defined by MAV_STATE enum
      (Enum:<a href="#MAV_STATE">MAV_STATE</a>
       )
      </td>
@@ -12888,7 +12888,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">The coordinate system of the waypoint. see MAV_FRAME in mavlink_types.h
+     <td class="mavlink_comment">The coordinate system of the waypoint, as defined by MAV_FRAME enum
      (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
@@ -12896,7 +12896,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">The scheduled action for the waypoint. see MAV_CMD in common.xml MAVLink specs
+     <td class="mavlink_comment">The scheduled action for the waypoint, as defined by MAV_CMD enum
      (Enum:<a href="#MAV_CMD">MAV_CMD</a>
       )
      </td>
@@ -13469,7 +13469,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Coordinate frame, as defined by MAV_FRAME enum in mavlink_types.h. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down.
+     <td class="mavlink_comment">Coordinate frame, as defined by MAV_FRAME enum. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down.
      (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
@@ -13530,7 +13530,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Coordinate frame, as defined by MAV_FRAME enum in mavlink_types.h. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down.
+     <td class="mavlink_comment">Coordinate frame, as defined by MAV_FRAME enum. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down.
      (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
@@ -14321,7 +14321,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">The coordinate system of the waypoint. see MAV_FRAME in mavlink_types.h
+     <td class="mavlink_comment">The coordinate system of the waypoint, as defined by MAV_FRAME enum
      (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
@@ -14329,7 +14329,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">The scheduled action for the waypoint. see MAV_CMD in common.xml MAVLink specs
+     <td class="mavlink_comment">The scheduled action for the waypoint, as defined by MAV_CMD enum
      (Enum:<a href="#MAV_CMD">MAV_CMD</a>
       )
      </td>
@@ -14473,7 +14473,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">The coordinate system of the COMMAND. see MAV_FRAME in mavlink_types.h
+     <td class="mavlink_comment">The coordinate system of the COMMAND, as defined by MAV_FRAME enum
      (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
       )
      </td>
@@ -14481,7 +14481,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">The scheduled action for the mission item. see MAV_CMD in common.xml MAVLink specs
+     <td class="mavlink_comment">The scheduled action for the mission item, as defined by MAV_CMD enum
      (Enum:<a href="#MAV_CMD">MAV_CMD</a>
       )
      </td>
@@ -19033,7 +19033,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">base_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System mode bitfield, see MAV_MODE_FLAG ENUM in mavlink/include/mavlink_types.h
+     <td class="mavlink_comment">System mode bitfield, as defined by MAV_MODE_FLAG enum.
      (Enum:<a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
       )
      </td>
