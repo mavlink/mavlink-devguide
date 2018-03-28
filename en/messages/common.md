@@ -1561,6 +1561,62 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_comment">Global coordinate frame with above terrain level altitude. WGS84 coordinate system, relative altitude over terrain with respect to the waypoint coordinate. First value / x: latitude in degrees*10e-7, second value / y: longitude in degrees*10e-7, third value / z: positive altitude in meters with 0 being at ground level in terrain model.</td>
     </tr>
+    <tr class="mavlink_field" id="MAV_FRAME_BODY_FRD">
+     <td class="mavlink_type" valign="top">12</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FRAME_BODY_FRD">MAV_FRAME_BODY_FRD</a>
+     </td>
+     <td class="mavlink_comment">Body fixed frame of reference, Z-down (x: forward, y: right, z: down).</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FRAME_BODY_FLU">
+     <td class="mavlink_type" valign="top">13</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FRAME_BODY_FLU">MAV_FRAME_BODY_FLU</a>
+     </td>
+     <td class="mavlink_comment">Body fixed frame of reference, Z-up (x: forward, y: left, z: up).</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FRAME_MOCAP_NED">
+     <td class="mavlink_type" valign="top">14</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FRAME_MOCAP_NED">MAV_FRAME_MOCAP_NED</a>
+     </td>
+     <td class="mavlink_comment">Odometry local coordinate frame of data given by a motion capture system, Z-down (x: north, y: east, z: down).</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FRAME_MOCAP_ENU">
+     <td class="mavlink_type" valign="top">15</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FRAME_MOCAP_ENU">MAV_FRAME_MOCAP_ENU</a>
+     </td>
+     <td class="mavlink_comment">Odometry local coordinate frame of data given by a motion capture system, Z-up (x: east, y: north, z: up).</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FRAME_VISION_NED">
+     <td class="mavlink_type" valign="top">16</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FRAME_VISION_NED">MAV_FRAME_VISION_NED</a>
+     </td>
+     <td class="mavlink_comment">Odometry local coordinate frame of data given by a vision estimation system, Z-down (x: north, y: east, z: down).</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FRAME_VISION_ENU">
+     <td class="mavlink_type" valign="top">17</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FRAME_VISION_ENU">MAV_FRAME_VISION_ENU</a>
+     </td>
+     <td class="mavlink_comment">Odometry local coordinate frame of data given by a vision estimation system, Z-up (x: east, y: north, z: up).</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FRAME_ESTIM_NED">
+     <td class="mavlink_type" valign="top">18</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FRAME_ESTIM_NED">MAV_FRAME_ESTIM_NED</a>
+     </td>
+     <td class="mavlink_comment">Odometry local coordinate frame of data given by an estimator running onboard the vehicle, Z-down (x: north, y: east, z: down).</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FRAME_ESTIM_ENU">
+     <td class="mavlink_type" valign="top">19</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FRAME_ESTIM_ENU">MAV_FRAME_ESTIM_ENU</a>
+     </td>
+     <td class="mavlink_comment">Odometry local coordinate frame of data given by an estimator running onboard the vehicle, Z-up (x: east, y: noth, z: up).</td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="MAVLINK_DATA_STREAM_TYPE">
@@ -10126,6 +10182,70 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
+  <h3 class="mavlink_message_name" id="MAV_BATTERY_CHARGE_STATE">
+   <a href="#MAV_BATTERY_CHARGE_STATE">MAV_BATTERY_CHARGE_STATE</a>
+  </h3>
+  <p class="description">Enumeration for states of low battery extent</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="MAV_BATTERY_CHARGE_STATE_UNDEFINED">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_BATTERY_CHARGE_STATE_UNDEFINED">MAV_BATTERY_CHARGE_STATE_UNDEFINED</a>
+     </td>
+     <td class="mavlink_comment">Low battery state is not provided</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_BATTERY_CHARGE_STATE_OK">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_BATTERY_CHARGE_STATE_OK">MAV_BATTERY_CHARGE_STATE_OK</a>
+     </td>
+     <td class="mavlink_comment">Battery is not nearly empty, normal operation</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_BATTERY_CHARGE_STATE_LOW">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_BATTERY_CHARGE_STATE_LOW">MAV_BATTERY_CHARGE_STATE_LOW</a>
+     </td>
+     <td class="mavlink_comment">Battery state is low, warn and monitor close</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_BATTERY_CHARGE_STATE_CRITICAL">
+     <td class="mavlink_type" valign="top">3</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_BATTERY_CHARGE_STATE_CRITICAL">MAV_BATTERY_CHARGE_STATE_CRITICAL</a>
+     </td>
+     <td class="mavlink_comment">Battry state is critical, return / abort immediately</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_BATTERY_CHARGE_STATE_EMERGENCY">
+     <td class="mavlink_type" valign="top">4</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_BATTERY_CHARGE_STATE_EMERGENCY">MAV_BATTERY_CHARGE_STATE_EMERGENCY</a>
+     </td>
+     <td class="mavlink_comment">Battry state is too low for ordinary abortion, fastest possible emergency stop preventing damage</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_BATTERY_CHARGE_STATE_FAILED">
+     <td class="mavlink_type" valign="top">5</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_BATTERY_CHARGE_STATE_FAILED">MAV_BATTERY_CHARGE_STATE_FAILED</a>
+     </td>
+     <td class="mavlink_comment">Battry failed, damage unavoidable</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_BATTERY_CHARGE_STATE_UNHEALTHY">
+     <td class="mavlink_type" valign="top">6</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_BATTERY_CHARGE_STATE_UNHEALTHY">MAV_BATTERY_CHARGE_STATE_UNHEALTHY</a>
+     </td>
+     <td class="mavlink_comment">Battry is diagnosed to be broken or an error occurred, usage is discouraged / prohibited</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 class="mavlink_message_name" id="MAV_VTOL_STATE">
    <a href="#MAV_VTOL_STATE">MAV_VTOL_STATE</a>
   </h3>
@@ -11295,6 +11415,526 @@ These messages define the common message set, which is the reference message set
       <a href="#RTK_BASELINE_COORDINATE_SYSTEM_NED">RTK_BASELINE_COORDINATE_SYSTEM_NED</a>
      </td>
      <td class="mavlink_comment">North, East, Down</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="MAV_FIELD">
+   <a href="#MAV_FIELD">MAV_FIELD</a>
+  </h3>
+  <p class="description">This describes the type of a field in an array, for example usage (see ESTIMATOR_STATE)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="MAV_FIELD_UNUSED">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_UNUSED">MAV_FIELD_UNUSED</a>
+     </td>
+     <td class="mavlink_comment">Unused state.</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_POS_N">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_POS_N">MAV_FIELD_POS_N</a>
+     </td>
+     <td class="mavlink_comment">Position North, m</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_POS_E">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_POS_E">MAV_FIELD_POS_E</a>
+     </td>
+     <td class="mavlink_comment">Position East, m</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_POS_D">
+     <td class="mavlink_type" valign="top">3</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_POS_D">MAV_FIELD_POS_D</a>
+     </td>
+     <td class="mavlink_comment">Position Down, m</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_ASL">
+     <td class="mavlink_type" valign="top">4</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_ASL">MAV_FIELD_ASL</a>
+     </td>
+     <td class="mavlink_comment">Altitude above sea level, m</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_AGL">
+     <td class="mavlink_type" valign="top">5</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_AGL">MAV_FIELD_AGL</a>
+     </td>
+     <td class="mavlink_comment">Altitude above ground level, m</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_VEL_N">
+     <td class="mavlink_type" valign="top">6</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_VEL_N">MAV_FIELD_VEL_N</a>
+     </td>
+     <td class="mavlink_comment">Velocity North, m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_VEL_E">
+     <td class="mavlink_type" valign="top">7</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_VEL_E">MAV_FIELD_VEL_E</a>
+     </td>
+     <td class="mavlink_comment">Velocity East, m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_VEL_D">
+     <td class="mavlink_type" valign="top">8</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_VEL_D">MAV_FIELD_VEL_D</a>
+     </td>
+     <td class="mavlink_comment">Velocity Down, m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_VEL_X">
+     <td class="mavlink_type" valign="top">9</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_VEL_X">MAV_FIELD_VEL_X</a>
+     </td>
+     <td class="mavlink_comment">Velocity body x (forward), m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_VEL_Y">
+     <td class="mavlink_type" valign="top">10</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_VEL_Y">MAV_FIELD_VEL_Y</a>
+     </td>
+     <td class="mavlink_comment">Velocity body y (right), m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_VEL_Z">
+     <td class="mavlink_type" valign="top">11</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_VEL_Z">MAV_FIELD_VEL_Z</a>
+     </td>
+     <td class="mavlink_comment">Velocity body z (down), m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_ACC_N">
+     <td class="mavlink_type" valign="top">12</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_ACC_N">MAV_FIELD_ACC_N</a>
+     </td>
+     <td class="mavlink_comment">Acceleration North, m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_ACC_E">
+     <td class="mavlink_type" valign="top">13</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_ACC_E">MAV_FIELD_ACC_E</a>
+     </td>
+     <td class="mavlink_comment">Acceleration East, m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_ACC_D">
+     <td class="mavlink_type" valign="top">14</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_ACC_D">MAV_FIELD_ACC_D</a>
+     </td>
+     <td class="mavlink_comment">Acceleration Down, m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_ACC_X">
+     <td class="mavlink_type" valign="top">15</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_ACC_X">MAV_FIELD_ACC_X</a>
+     </td>
+     <td class="mavlink_comment">Acceleration body x (forward), m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_ACC_Y">
+     <td class="mavlink_type" valign="top">16</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_ACC_Y">MAV_FIELD_ACC_Y</a>
+     </td>
+     <td class="mavlink_comment">Acceleration body y (right), m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_ACC_Z">
+     <td class="mavlink_type" valign="top">17</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_ACC_Z">MAV_FIELD_ACC_Z</a>
+     </td>
+     <td class="mavlink_comment">Acceleration body z (down), m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_Q0">
+     <td class="mavlink_type" valign="top">18</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_Q0">MAV_FIELD_Q0</a>
+     </td>
+     <td class="mavlink_comment">Quaternion from nav to body scalar component</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_Q1">
+     <td class="mavlink_type" valign="top">19</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_Q1">MAV_FIELD_Q1</a>
+     </td>
+     <td class="mavlink_comment">Quaternion from nav to body vector[0] component</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_Q2">
+     <td class="mavlink_type" valign="top">20</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_Q2">MAV_FIELD_Q2</a>
+     </td>
+     <td class="mavlink_comment">Quaternion from nav to body vector[1] component</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_Q3">
+     <td class="mavlink_type" valign="top">21</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_Q3">MAV_FIELD_Q3</a>
+     </td>
+     <td class="mavlink_comment">Quaternion from nav to body vector[2] component</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_ROLL">
+     <td class="mavlink_type" valign="top">22</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_ROLL">MAV_FIELD_ROLL</a>
+     </td>
+     <td class="mavlink_comment">Euler Body 3-2-1 (Tait-Bryan) roll angle, radians</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_PITCH">
+     <td class="mavlink_type" valign="top">23</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_PITCH">MAV_FIELD_PITCH</a>
+     </td>
+     <td class="mavlink_comment">Euler Body 3-2-1 (Tait-Bryan) pitch angle, radians</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_YAW">
+     <td class="mavlink_type" valign="top">24</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_YAW">MAV_FIELD_YAW</a>
+     </td>
+     <td class="mavlink_comment">Euler Body 3-2-1 (Tait-Bryan) yaw angle, radians</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_ANGVEL_X">
+     <td class="mavlink_type" valign="top">25</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_ANGVEL_X">MAV_FIELD_ANGVEL_X</a>
+     </td>
+     <td class="mavlink_comment">Euler Body x rate, radians/second</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_ANGVEL_Y">
+     <td class="mavlink_type" valign="top">26</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_ANGVEL_Y">MAV_FIELD_ANGVEL_Y</a>
+     </td>
+     <td class="mavlink_comment">Euler Body y rate, radians/second</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_ANGVEL_Z">
+     <td class="mavlink_type" valign="top">27</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_ANGVEL_Z">MAV_FIELD_ANGVEL_Z</a>
+     </td>
+     <td class="mavlink_comment">Euler Body z rate, radians/second</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_ROLLRATE">
+     <td class="mavlink_type" valign="top">28</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_ROLLRATE">MAV_FIELD_ROLLRATE</a>
+     </td>
+     <td class="mavlink_comment">Euler Body 3-2-1 (Tait-Bryan) roll angle rate, radians/second</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_PITCHRATE">
+     <td class="mavlink_type" valign="top">29</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_PITCHRATE">MAV_FIELD_PITCHRATE</a>
+     </td>
+     <td class="mavlink_comment">Euler Body 3-2-1 (Tait-Bryan) pitch angle rate, radians/second</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_YAWRATE">
+     <td class="mavlink_type" valign="top">30</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_YAWRATE">MAV_FIELD_YAWRATE</a>
+     </td>
+     <td class="mavlink_comment">Euler Body 3-2-1 (Tait-Bryan) yaw angle rate, radians/second</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_LAT">
+     <td class="mavlink_type" valign="top">31</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_LAT">MAV_FIELD_LAT</a>
+     </td>
+     <td class="mavlink_comment">Latitude, radians</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_LON">
+     <td class="mavlink_type" valign="top">32</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_LON">MAV_FIELD_LON</a>
+     </td>
+     <td class="mavlink_comment">Longitude, radians</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_BIAS_N">
+     <td class="mavlink_type" valign="top">33</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_BIAS_N">MAV_FIELD_BIAS_N</a>
+     </td>
+     <td class="mavlink_comment">North bias (normalized)</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_BIAS_E">
+     <td class="mavlink_type" valign="top">34</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_BIAS_E">MAV_FIELD_BIAS_E</a>
+     </td>
+     <td class="mavlink_comment">East  bias (normalized)</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_BIAS_D">
+     <td class="mavlink_type" valign="top">35</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_BIAS_D">MAV_FIELD_BIAS_D</a>
+     </td>
+     <td class="mavlink_comment">Down z bias (normalized)</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_BIAS_X">
+     <td class="mavlink_type" valign="top">36</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_BIAS_X">MAV_FIELD_BIAS_X</a>
+     </td>
+     <td class="mavlink_comment">Body x bias (normalized)</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_BIAS_Y">
+     <td class="mavlink_type" valign="top">37</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_BIAS_Y">MAV_FIELD_BIAS_Y</a>
+     </td>
+     <td class="mavlink_comment">Body y bias (normalized)</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_BIAS_Z">
+     <td class="mavlink_type" valign="top">38</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_BIAS_Z">MAV_FIELD_BIAS_Z</a>
+     </td>
+     <td class="mavlink_comment">Body z bias (normalized)</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_TERRAIN_ASL">
+     <td class="mavlink_type" valign="top">39</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_TERRAIN_ASL">MAV_FIELD_TERRAIN_ASL</a>
+     </td>
+     <td class="mavlink_comment">Altitude of terrain above sea level, m</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_AIRSPEED">
+     <td class="mavlink_type" valign="top">40</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_AIRSPEED">MAV_FIELD_AIRSPEED</a>
+     </td>
+     <td class="mavlink_comment">Airspeed, m/s</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_FLOW_X">
+     <td class="mavlink_type" valign="top">41</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_FLOW_X">MAV_FIELD_FLOW_X</a>
+     </td>
+     <td class="mavlink_comment">Optical flow in body x, radians</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_FLOW_Y">
+     <td class="mavlink_type" valign="top">42</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_FLOW_Y">MAV_FIELD_FLOW_Y</a>
+     </td>
+     <td class="mavlink_comment">Optical flow in body y, radians</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_MAG_X">
+     <td class="mavlink_type" valign="top">43</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_MAG_X">MAV_FIELD_MAG_X</a>
+     </td>
+     <td class="mavlink_comment">Magnetic field, body x, Gauss</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_MAG_Y">
+     <td class="mavlink_type" valign="top">44</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_MAG_Y">MAV_FIELD_MAG_Y</a>
+     </td>
+     <td class="mavlink_comment">Magnetic field, body y, Gauss</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_MAG_Z">
+     <td class="mavlink_type" valign="top">45</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_MAG_Z">MAV_FIELD_MAG_Z</a>
+     </td>
+     <td class="mavlink_comment">Magnetic field, body z, Gauss</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_MAG_HDG">
+     <td class="mavlink_type" valign="top">46</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_MAG_HDG">MAV_FIELD_MAG_HDG</a>
+     </td>
+     <td class="mavlink_comment">Magnetic heading, radians</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_DIST_BOTTOM">
+     <td class="mavlink_type" valign="top">47</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_DIST_BOTTOM">MAV_FIELD_DIST_BOTTOM</a>
+     </td>
+     <td class="mavlink_comment">Distance bottom, m</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_DIST_TOP">
+     <td class="mavlink_type" valign="top">48</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_DIST_TOP">MAV_FIELD_DIST_TOP</a>
+     </td>
+     <td class="mavlink_comment">Distance top, m</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_DIST_FRONT">
+     <td class="mavlink_type" valign="top">49</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_DIST_FRONT">MAV_FIELD_DIST_FRONT</a>
+     </td>
+     <td class="mavlink_comment">Distance front, m</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_DIST_BACK">
+     <td class="mavlink_type" valign="top">50</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_DIST_BACK">MAV_FIELD_DIST_BACK</a>
+     </td>
+     <td class="mavlink_comment">Distance back, m</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_DIST_LEFT">
+     <td class="mavlink_type" valign="top">51</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_DIST_LEFT">MAV_FIELD_DIST_LEFT</a>
+     </td>
+     <td class="mavlink_comment">Distance left, m</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_FIELD_DIST_RIGHT">
+     <td class="mavlink_type" valign="top">52</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_FIELD_DIST_RIGHT">MAV_FIELD_DIST_RIGHT</a>
+     </td>
+     <td class="mavlink_comment">Distance right, m</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="MAV_SENSOR_TYPE">
+   <a href="#MAV_SENSOR_TYPE">MAV_SENSOR_TYPE</a>
+  </h3>
+  <p class="description">Sensor type</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_NONE">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_NONE">MAV_SENSOR_TYPE_NONE</a>
+     </td>
+     <td class="mavlink_comment">No associated sensor</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_GPS">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_GPS">MAV_SENSOR_TYPE_GPS</a>
+     </td>
+     <td class="mavlink_comment">GPS</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_SONAR">
+     <td class="mavlink_type" valign="top">2</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_SONAR">MAV_SENSOR_TYPE_SONAR</a>
+     </td>
+     <td class="mavlink_comment">Sonar</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_LIDAR">
+     <td class="mavlink_type" valign="top">3</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_LIDAR">MAV_SENSOR_TYPE_LIDAR</a>
+     </td>
+     <td class="mavlink_comment">Lidar</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_IR">
+     <td class="mavlink_type" valign="top">4</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_IR">MAV_SENSOR_TYPE_IR</a>
+     </td>
+     <td class="mavlink_comment">Infrared ranger</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_GYRO">
+     <td class="mavlink_type" valign="top">5</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_GYRO">MAV_SENSOR_TYPE_GYRO</a>
+     </td>
+     <td class="mavlink_comment">Gyroscope</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_ACCEL">
+     <td class="mavlink_type" valign="top">6</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_ACCEL">MAV_SENSOR_TYPE_ACCEL</a>
+     </td>
+     <td class="mavlink_comment">Accelerometer</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_MAG">
+     <td class="mavlink_type" valign="top">7</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_MAG">MAV_SENSOR_TYPE_MAG</a>
+     </td>
+     <td class="mavlink_comment">Magnetometer</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_BARO">
+     <td class="mavlink_type" valign="top">8</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_BARO">MAV_SENSOR_TYPE_BARO</a>
+     </td>
+     <td class="mavlink_comment">Barometric altimeter</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_PITOT">
+     <td class="mavlink_type" valign="top">9</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_PITOT">MAV_SENSOR_TYPE_PITOT</a>
+     </td>
+     <td class="mavlink_comment">Pitot tube</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_MOCAP">
+     <td class="mavlink_type" valign="top">10</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_MOCAP">MAV_SENSOR_TYPE_MOCAP</a>
+     </td>
+     <td class="mavlink_comment">Motion capture</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_FLOW">
+     <td class="mavlink_type" valign="top">11</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_FLOW">MAV_SENSOR_TYPE_FLOW</a>
+     </td>
+     <td class="mavlink_comment">Optical flow</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_RGB">
+     <td class="mavlink_type" valign="top">12</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_RGB">MAV_SENSOR_TYPE_RGB</a>
+     </td>
+     <td class="mavlink_comment">RGB computer vision or camera</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_DEPTH">
+     <td class="mavlink_type" valign="top">13</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_DEPTH">MAV_SENSOR_TYPE_DEPTH</a>
+     </td>
+     <td class="mavlink_comment">Depth computer vision or camera</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_THERMAL">
+     <td class="mavlink_type" valign="top">14</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_THERMAL">MAV_SENSOR_TYPE_THERMAL</a>
+     </td>
+     <td class="mavlink_comment">Thermal imaging</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_TEMPER">
+     <td class="mavlink_type" valign="top">15</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_TEMPER">MAV_SENSOR_TYPE_TEMPER</a>
+     </td>
+     <td class="mavlink_comment">Temperature</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_TYPE_HUMID">
+     <td class="mavlink_type" valign="top">16</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_TYPE_HUMID">MAV_SENSOR_TYPE_HUMID</a>
+     </td>
+     <td class="mavlink_comment">Humidity</td>
     </tr>
    </tbody>
   </table>
@@ -15807,6 +16447,14 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_comment">Yaw angle in rad
      (Units: rad)</td>
     </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">float[21]</td>
+     <td class="mavlink_comment">Pose covariance matrix upper right triangular (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="VISION_POSITION_ESTIMATE">VISION_POSITION_ESTIMATE (<a href="#VISION_POSITION_ESTIMATE">
@@ -15867,6 +16515,14 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_comment">Yaw angle in rad
      (Units: rad)</td>
     </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">float[21]</td>
+     <td class="mavlink_comment">Pose covariance matrix upper right triangular (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="VISION_SPEED_ESTIMATE">VISION_SPEED_ESTIMATE (<a href="#VISION_SPEED_ESTIMATE">
@@ -15908,6 +16564,14 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_type" valign="top">float</td>
      <td class="mavlink_comment">Global Z speed
      (Units: m/s)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">float[9]</td>
+     <td class="mavlink_comment">Linear velocity covariance matrix (1st three entries - 1st row, etc.)</td>
     </tr>
    </tbody>
   </table>
@@ -15968,6 +16632,14 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_type" valign="top">float</td>
      <td class="mavlink_comment">Yaw angle in rad
      (Units: rad)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">float[21]</td>
+     <td class="mavlink_comment">Pose covariance matrix upper right triangular (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
     </tr>
    </tbody>
   </table>
@@ -18019,6 +18691,14 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_comment">Z position in meters (NED)
      (Units: m)</td>
     </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">float[21]</td>
+     <td class="mavlink_comment">Pose covariance matrix upper right triangular (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="SET_ACTUATOR_CONTROL_TARGET">SET_ACTUATOR_CONTROL_TARGET (<a href="#SET_ACTUATOR_CONTROL_TARGET">
@@ -18508,6 +19188,26 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_type" valign="top">int8_t</td>
      <td class="mavlink_comment">Remaining battery energy: (0%: 0, 100%: 100), -1: autopilot does not estimate the remaining battery
      (Units: %)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">time_remaining<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_comment">Remaining battery time, in seconds (1 = 1s = 0% energy left), 0: autopilot does not provide remaining battery time estimate
+     (Units: s)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">charge_state<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">State for extent of discharge, provided by autopilot for warning or external reactions
+     (Enum:<a href="#MAV_BATTERY_CHARGE_STATE">MAV_BATTERY_CHARGE_STATE</a>
+      )
+     </td>
     </tr>
    </tbody>
   </table>
@@ -21344,6 +22044,377 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_type" valign="top">uint16_t</td>
      <td class="mavlink_comment">Maximum distance the sensor can measure in centimeters.
      (Units: cm)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="ODOMETRY">ODOMETRY (<a href="#ODOMETRY">
+    #331
+   </a>
+   )
+  </h3>
+  <p class="description">
+   <strong>
+    (MAVLink 2)
+   </strong>Odometry message to communicate odometry information with an external interface. Fits ROS REP 147 standard for aerial vehicles (http://www.ros.org/reps/rep-0147.html).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">time_usec</td>
+     <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch).
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">frame_id</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Coordinate frame of reference for the pose data, as defined by MAV_FRAME enum.
+     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">child_frame_id</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Coordinate frame of reference for the velocity in free space (twist) data, as defined by MAV_FRAME enum.
+     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">x</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">X Position
+     (Units: m)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">y</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Y Position
+     (Units: m)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">z</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Z Position
+     (Units: m)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">q</td>
+     <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_comment">Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">vx</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">X linear speed
+     (Units: m/s)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">vy</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Y linear speed
+     (Units: m/s)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">vz</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Z linear speed
+     (Units: m/s)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">rollspeed</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Roll angular speed
+     (Units: rad/s)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">pitchspeed</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Pitch angular speed
+     (Units: rad/s)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">yawspeed</td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_comment">Yaw angular speed
+     (Units: rad/s)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">pose_covariance</td>
+     <td class="mavlink_type" valign="top">float[21]</td>
+     <td class="mavlink_comment">Pose (states: x, y, z, roll, pitch, yaw) covariance matrix upper right triangle (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">twist_covariance</td>
+     <td class="mavlink_type" valign="top">float[21]</td>
+     <td class="mavlink_comment">Twist (states: vx, vy, vz, rollspeed, pitchspeed, yawspeed) covariance matrix upper right triangle (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="ESTIMATOR_STATE">ESTIMATOR_STATE (<a href="#ESTIMATOR_STATE">
+    #335
+   </a>
+   )
+  </h3>
+  <p class="description">
+   <strong>
+    (MAVLink 2)
+   </strong>An estimator agnostic state message</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">time_usec</td>
+     <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch)
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">n</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Number of states, max 30</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">id</td>
+     <td class="mavlink_type" valign="top">uint8_t[30]</td>
+     <td class="mavlink_comment">An array describing field type (see MAV_FIELD)
+     (Enum:<a href="#MAV_FIELD">MAV_FIELD</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">sensor</td>
+     <td class="mavlink_type" valign="top">uint8_t[30]</td>
+     <td class="mavlink_comment">An array describing the sensor associated with the field (see MAV_SENSOR_TYPE)
+     (Enum:<a href="#MAV_SENSOR_TYPE">MAV_SENSOR_TYPE</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">state</td>
+     <td class="mavlink_type" valign="top">float[30]</td>
+     <td class="mavlink_comment">The estimator state</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="ESTIMATOR_STATE_STD">ESTIMATOR_STATE_STD (<a href="#ESTIMATOR_STATE_STD">
+    #336
+   </a>
+   )
+  </h3>
+  <p class="description">
+   <strong>
+    (MAVLink 2)
+   </strong>An estimator agnostic state standard deviation message</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">time_usec</td>
+     <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch)
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">n</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Number of states, max 30</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">id</td>
+     <td class="mavlink_type" valign="top">uint8_t[30]</td>
+     <td class="mavlink_comment">An array describing field type (see MAV_FIELD)
+     (Enum:<a href="#MAV_FIELD">MAV_FIELD</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">sensor</td>
+     <td class="mavlink_type" valign="top">uint8_t[30]</td>
+     <td class="mavlink_comment">An array describing the sensor associated with the field (see MAV_SENSOR_TYPE)
+     (Enum:<a href="#MAV_SENSOR_TYPE">MAV_SENSOR_TYPE</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">std</td>
+     <td class="mavlink_type" valign="top">float[30]</td>
+     <td class="mavlink_comment">The estimator state standard deviation sqrt(diag(P))</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="ESTIMATOR_INNOV">ESTIMATOR_INNOV (<a href="#ESTIMATOR_INNOV">
+    #337
+   </a>
+   )
+  </h3>
+  <p class="description">
+   <strong>
+    (MAVLink 2)
+   </strong>An estimator agnostic innovation message</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">time_usec</td>
+     <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch)
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">n</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Number of innovations, max 30</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">id</td>
+     <td class="mavlink_type" valign="top">uint8_t[30]</td>
+     <td class="mavlink_comment">An array describing field type (see MAV_FIELD)
+     (Enum:<a href="#MAV_FIELD">MAV_FIELD</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">sensor</td>
+     <td class="mavlink_type" valign="top">uint8_t[30]</td>
+     <td class="mavlink_comment">An array describing the sensor associated with the field (see MAV_SENSOR_TYPE)
+     (Enum:<a href="#MAV_SENSOR_TYPE">MAV_SENSOR_TYPE</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">innov</td>
+     <td class="mavlink_type" valign="top">float[30]</td>
+     <td class="mavlink_comment">The estimator innovation</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="ESTIMATOR_INNOV_STD">ESTIMATOR_INNOV_STD (<a href="#ESTIMATOR_INNOV_STD">
+    #338
+   </a>
+   )
+  </h3>
+  <p class="description">
+   <strong>
+    (MAVLink 2)
+   </strong>An estimator agnostic innovation standard deviation message</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">time_usec</td>
+     <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch)
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">n</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Number of innovations, max 30</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">id</td>
+     <td class="mavlink_type" valign="top">uint8_t[30]</td>
+     <td class="mavlink_comment">An array describing field type (see MAV_FIELD)
+     (Enum:<a href="#MAV_FIELD">MAV_FIELD</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">sensor</td>
+     <td class="mavlink_type" valign="top">uint8_t[30]</td>
+     <td class="mavlink_comment">An array describing the sensor associated with the field (see MAV_SENSOR_TYPE)
+     (Enum:<a href="#MAV_SENSOR_TYPE">MAV_SENSOR_TYPE</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">std</td>
+     <td class="mavlink_type" valign="top">float[30]</td>
+     <td class="mavlink_comment">The estimator innovation standard deviation sqrt(diag(S))</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="ESTIMATOR_INNOV_COV">ESTIMATOR_INNOV_COV (<a href="#ESTIMATOR_INNOV_COV">
+    #340
+   </a>
+   )
+  </h3>
+  <p class="description">
+   <strong>
+    (MAVLink 2)
+   </strong>An estimator agnostic innovation covariance message. Note: Very large, not meant for use over radio.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">time_usec</td>
+     <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch)
+     (Units: us)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">n</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_comment">Number of innovations, max 21, limited by mavlink protocol</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">id</td>
+     <td class="mavlink_type" valign="top">uint8_t[21]</td>
+     <td class="mavlink_comment">An array describing field type (see MAV_FIELD)
+     (Enum:<a href="#MAV_FIELD">MAV_FIELD</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">sensor</td>
+     <td class="mavlink_type" valign="top">uint8_t[21]</td>
+     <td class="mavlink_comment">An array describing the sensor associated with the field (see MAV_SENSOR_TYPE)
+     (Enum:<a href="#MAV_SENSOR_TYPE">MAV_SENSOR_TYPE</a>
+      )
+     </td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">cov</td>
+     <td class="mavlink_type" valign="top">float[210]</td>
+     <td class="mavlink_comment">The estimator covariance matrix (upper triangle), horizontally stacked with lengths [n, n-1, n-2, ..., 1]</td>
     </tr>
    </tbody>
   </table>
