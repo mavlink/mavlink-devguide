@@ -8,5 +8,5 @@ If you want to add MAVlink messages or dialects while working with ROS, you need
 sudo apt-get remove ros-*-mavlink
 ```
 where `*` should be replaced with the name of the ROS distribution you are using, e.g. `ros-kinetic-mavlink`.
-- in the mavlink-gbp-release, add the new MAVlink message to `common.xml` or add the new dialect `xxx.xml` is the message definitions. Do not checkout your mavlink branch because it is not the version synced with ROS.
-- generate the mavlink headers `catkin build mavlink`. You can find the headers in `~/catkin_ws/build/mavlink/include/v2.0/` for MAVlink version 2.
+- in the mavlink-gbp-release, add the new MAVlink message to `common.xml` or add the new dialect `xxx.xml` is the message definitions. Do not checkout your MAVlink branch because it is not the version synced with ROS.
+- generate the MAVlink headers `catkin build mavlink`. You can find the headers in `~/catkin_ws/build/mavlink/include/v2.0/` for MAVlink version 2.
