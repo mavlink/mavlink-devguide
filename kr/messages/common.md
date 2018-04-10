@@ -10185,7 +10185,7 @@ These messages define the common message set, which is the reference message set
   <h3 class="mavlink_message_name" id="MAV_BATTERY_CHARGE_STATE">
    <a href="#MAV_BATTERY_CHARGE_STATE">MAV_BATTERY_CHARGE_STATE</a>
   </h3>
-  <p class="description">Enumeration for states of low battery extent</p>
+  <p class="description">Enumeration for low battery states.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10207,42 +10207,42 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_BATTERY_CHARGE_STATE_OK">MAV_BATTERY_CHARGE_STATE_OK</a>
      </td>
-     <td class="mavlink_comment">Battery is not nearly empty, normal operation</td>
+     <td class="mavlink_comment">Battery is not in low state. Normal operation.</td>
     </tr>
     <tr class="mavlink_field" id="MAV_BATTERY_CHARGE_STATE_LOW">
      <td class="mavlink_type" valign="top">2</td>
      <td class="mavlink_name" valign="top">
       <a href="#MAV_BATTERY_CHARGE_STATE_LOW">MAV_BATTERY_CHARGE_STATE_LOW</a>
      </td>
-     <td class="mavlink_comment">Battery state is low, warn and monitor close</td>
+     <td class="mavlink_comment">Battery state is low, warn and monitor close.</td>
     </tr>
     <tr class="mavlink_field" id="MAV_BATTERY_CHARGE_STATE_CRITICAL">
      <td class="mavlink_type" valign="top">3</td>
      <td class="mavlink_name" valign="top">
       <a href="#MAV_BATTERY_CHARGE_STATE_CRITICAL">MAV_BATTERY_CHARGE_STATE_CRITICAL</a>
      </td>
-     <td class="mavlink_comment">Battry state is critical, return / abort immediately</td>
+     <td class="mavlink_comment">Battery state is critical, return or abort immediately.</td>
     </tr>
     <tr class="mavlink_field" id="MAV_BATTERY_CHARGE_STATE_EMERGENCY">
      <td class="mavlink_type" valign="top">4</td>
      <td class="mavlink_name" valign="top">
       <a href="#MAV_BATTERY_CHARGE_STATE_EMERGENCY">MAV_BATTERY_CHARGE_STATE_EMERGENCY</a>
      </td>
-     <td class="mavlink_comment">Battry state is too low for ordinary abortion, fastest possible emergency stop preventing damage</td>
+     <td class="mavlink_comment">Battery state is too low for ordinary abort sequence. Perform fastest possible emergency stop to prevent damage.</td>
     </tr>
     <tr class="mavlink_field" id="MAV_BATTERY_CHARGE_STATE_FAILED">
      <td class="mavlink_type" valign="top">5</td>
      <td class="mavlink_name" valign="top">
       <a href="#MAV_BATTERY_CHARGE_STATE_FAILED">MAV_BATTERY_CHARGE_STATE_FAILED</a>
      </td>
-     <td class="mavlink_comment">Battry failed, damage unavoidable</td>
+     <td class="mavlink_comment">Battery failed, damage unavoidable.</td>
     </tr>
     <tr class="mavlink_field" id="MAV_BATTERY_CHARGE_STATE_UNHEALTHY">
      <td class="mavlink_type" valign="top">6</td>
      <td class="mavlink_name" valign="top">
       <a href="#MAV_BATTERY_CHARGE_STATE_UNHEALTHY">MAV_BATTERY_CHARGE_STATE_UNHEALTHY</a>
      </td>
-     <td class="mavlink_comment">Battry is diagnosed to be broken or an error occurred, usage is discouraged / prohibited</td>
+     <td class="mavlink_comment">Battery is diagnosed to be defective or an error occurred, usage is discouraged / prohibited.</td>
     </tr>
    </tbody>
   </table>
