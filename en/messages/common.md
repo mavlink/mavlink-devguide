@@ -6251,7 +6251,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">0:Spektrum DSM2, 1:Spektrum DSMX</td>
+     <td class="mavlink_comment">RC type (see RC_TYPE enum)</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -11415,6 +11415,35 @@ These messages define the common message set, which is the reference message set
       <a href="#RTK_BASELINE_COORDINATE_SYSTEM_NED">RTK_BASELINE_COORDINATE_SYSTEM_NED</a>
      </td>
      <td class="mavlink_comment">North, East, Down</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="RC_TYPE">
+   <a href="#RC_TYPE">RC_TYPE</a>
+  </h3>
+  <p class="description">RC type</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="RC_TYPE_SPEKTRUM_DSM2">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#RC_TYPE_SPEKTRUM_DSM2">RC_TYPE_SPEKTRUM_DSM2</a>
+     </td>
+     <td class="mavlink_comment">Spektrum DSM2</td>
+    </tr>
+    <tr class="mavlink_field" id="RC_TYPE_SPEKTRUM_DSMX">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#RC_TYPE_SPEKTRUM_DSMX">RC_TYPE_SPEKTRUM_DSMX</a>
+     </td>
+     <td class="mavlink_comment">Spektrum DSMX</td>
     </tr>
    </tbody>
   </table>
