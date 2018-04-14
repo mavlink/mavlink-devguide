@@ -12592,7 +12592,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Ground Z Speed (Altitude, positive down), expressed as m/s * 100
+     <td class="mavlink_comment">Ground Z Speed (Altitude, positive up), expressed as m/s * 100
      (Units: cm/s)</td>
     </tr>
     <tr class="mavlink_field">
