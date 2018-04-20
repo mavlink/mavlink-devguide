@@ -20,11 +20,13 @@ Below we explain the processes for contributing to each category and how to rais
 
 1. First [fork and clone](https://help.github.com/articles/fork-a-repo) the project project.
 2. Create a feature branch off master
+
    ```
    git checkout -b mydescriptivebranchname
    ```
 
    > **Note** _Always_ branch off master for new features.
+
 3. Commit your changes with a descriptive commit message.
 
    * Include context information, what was fixed, and an [issue number](https://github.com/mavlink/mavlink) \(Github will link these then conveniently\)
@@ -42,9 +44,11 @@ Below we explain the processes for contributing to each category and how to rais
 4. Test your changes \(we may ask you for test results in your PR\).
 
 5. Push changes to your repo:
+
    ```
    git push origin mydescriptivebranchname
    ```
+
 6. Send a [pull request](https://github.com/mavlink/mavlink/compare/) to merge changes in the branch.
 
 ## Support {#support}
@@ -64,14 +68,12 @@ MAVLink developers, adopting companies and the surrounding community of users me
 
 * Anyone interested in the development of MAVLink
 
-
-
 > The dev call is open to all interested developers \(not just the dev team\). This is a great opportunity to meet the team and contribute to the ongoing development of the project.
 
 #### Schedule {#schedule}
 
-* **TIME**: Wednesday 6:15PM CET, 12:15AM EST, 9:15AM PST \([subscribe to calendar](https://calendar.google.com/calendar/ical/px4.io_fs35jm7ugmvahv5juhhr3tkkf0%40group.calendar.google.com/public/basic.ics)\)
-* **Join the call**: [https://zoom.us/j/625711763](https://zoom.us/j/625711763)
+* **TIME**: Wednesday 6:15PM CET, 12:15AM EST, 9:15AM PST \([subscribe to calendar](https://zoom.us/meeting/579545140/ics?icsToken=fb96681cf4458be9f1f85694037a3cc7f358d5a9479ec0a06dedc267e49649ac)\)
+* **Join the call**: [https://zoom.us/j/579545140](https://zoom.us/s/579545140)
 * **Meeting ID**: 625 711 763
 * **Dial\(for higher quality, dial a number based on your current location\)**:
 
@@ -85,7 +87,7 @@ MAVLink developers, adopting companies and the surrounding community of users me
   * **Spain**: +34 91 198 0188
   * [**International numbers available**](https://zoom.us/u/Q40ZTqiJ)
 
-* Nominate Issues and PRs for the call with the [Dev Call](https://github.com/mavlink/mavlink/labels/Dev%20Call) label on Github
+* **Nominate Issues and PRs for the call with the **[**Dev Call**](https://github.com/mavlink/mavlink/labels/Dev Call)** label on Github**
 
 
 
