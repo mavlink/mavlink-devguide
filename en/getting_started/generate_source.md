@@ -6,7 +6,7 @@ The supported output languages for each version of the MAVLink protocol are list
 > **Note** The tools must already have been set up as described in [Install MAVLink](../getting_started/installation.md) (in particular *Tkinter* must be installed to use the GUI tool).
 
 <span></span>
-> **Note** Dialect XML files that have dependencies on other XML files must be located in the same directory. Since most MAVLink dialects depend on the [common.xml](../messages/common.md) message set, you should place your dialect with the others in [/message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0).
+> **Note** [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0) contains XML definitions for a number of different dialects. Dialect files that have dependencies on other XML files must be located in the same directory. Since most MAVLink dialects depend on the [common.xml](../messages/common.md) message set, you should place your dialect with the others in that folder.
 
 ## MAVLink Generator Tool (GUI)
 
