@@ -3,7 +3,7 @@
 Language-specific MAVLink libraries ("source files") can be created from [XML Message Definitions](../messages/README.md) using Python-based command line or GUI generator tools.
 The supported output languages for each version of the MAVLink protocol are listed in [Introduction > Supported Languages](../README.md#supported_languages) (these include C, C#, Java, Python etc).
 
-> **Note** The tools must already have been set up as described in [Getting Started > Installation](../getting_started/README.md#install) section (in particular *Tkinter* must be installed to use the GUI tool).
+> **Note** The tools must already have been set up as described in [Install MAVLink](../getting_started/installation.md) (in particular *Tkinter* must be installed to use the GUI tool).
 
 <span></span>
 > **Note** Dialect XML files that have dependencies on other XML files must be located in the same directory. Since most MAVLink dialects depend on the [common.xml](../messages/common.md) message set, you should place your dialect with the others in `/message_definitions/v1.0/`.
