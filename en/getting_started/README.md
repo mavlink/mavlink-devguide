@@ -1,6 +1,6 @@
 # Getting Started
 
-Download or Generate MAVLink source files for your dialect:
+Download or Generate MAVLink source files for your [dialect](../messages/README.md):
 * **Download the [pre-built MAVLink source files](../README.md#prebuilt_libraries)** if you're working in a C/C++ project and using standard dialects.
 * **Generate the MAVLink source files** to use any other [supported language](../README.md#supported_languages), add/modify messages or dialects, or use the example scripts:
    1. [Install MAVLink](#install)

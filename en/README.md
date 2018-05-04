@@ -35,7 +35,7 @@ MAVLink 1 source files can be generated for:
 
 ## Prebuilt MAVLink Source Files {#prebuilt_libraries}
 
-*C* MAVLink Source Files (only) are auto-generated for the latest versions of all message specifications/dialects (for both MAVLink 1 and 2):
+*C* MAVLink Source Files (only) are auto-generated for the latest versions of all message [specifications/dialects](messages/README.md) (for both MAVLink 1 and 2):
 * [c_library_v2](https://github.com/mavlink/c_library_v2) (MAVLink 2)
 * [c_library_v1](https://github.com/mavlink/c_library_v1) (MAVLink 1)
 
