@@ -6,7 +6,7 @@ The supported output languages for each version of the MAVLink protocol are list
 > **Note** The tools must already have been set up as described in [Install MAVLink](../getting_started/installation.md) (in particular *Tkinter* must be installed to use the GUI tool).
 
 <span></span>
-> **Note** [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0) contains XML definitions for a number of different [dialects](../messages/README.md). Dialect files that have dependencies on other XML files must be located in the same directory. Since most MAVLink dialects depend on the [common.xml](../messages/common.md) message set, you should place your dialect with the others in that folder.
+> **Note** [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0) contains XML definitions for a number of different [dialects](../messages/README.md#dialects). Dialect files that have dependencies on other XML files must be located in the same directory. Since most MAVLink dialects depend on the [common.xml](../messages/common.md) message set, you should place your dialect with the others in that folder.
 
 ## MAVLink Generator Tool (GUI)
 
@@ -37,7 +37,7 @@ After the `mavlink` directory has been added to the `PYTHONPATH`, it can be run 
 
 > **Tip** This is the backend used by **mavgenerate.py**. The documentation below explains all the options for both tools. 
 
-For example, to generate *MAVLink 2* C libraries for a dialect named **your_custom_dialect.xml** dialect:
+For example, to generate *MAVLink 2* C libraries for a dialect named **your_custom_dialect.xml**:
 ```sh
 python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
 ```

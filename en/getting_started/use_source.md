@@ -1,6 +1,6 @@
 # Using Generated Source Files
 
-The generated MAVLink [dialect](../messages/README.md) libraries are used differently depending on the programming language. Language-specific details are given in each of the following sections.
+The generated MAVLink [dialect](../messages/README.md#dialects) libraries are used differently depending on the programming language. Language-specific details are given in each of the following sections.
 
 > **Note** At time of writing we only have usage instructions for the [C source files](#c). If you have experience with the other [supported languages](../README.md#supported_languages) please help us update those sections!
 
