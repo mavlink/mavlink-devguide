@@ -1,6 +1,6 @@
 # Generate Source Files for ROS
 
-To add MAVlink messages or dialects while working with ROS:
+To add MAVlink [messages/dialects](../messages/README.md) while working with ROS:
 
 1. Follow the [MAVROS source install instructions](https://github.com/mavlink/mavros/blob/master/mavros/README.md#source-installation) to install the mavlink-gbp-release which is the MAVlink library released for ROS.
 1. Uninstall the MAVlink package for ROS (if previously installed).

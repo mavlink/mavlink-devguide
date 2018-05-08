@@ -3,6 +3,7 @@
 
 * [Introduction](README.md)
 * [Getting Started](getting_started/README.md)
+  * [Install MAVLink](getting_started/installation.md)
   * [Generate Source Files](getting_started/generate_source.md)
   * [Using Generated Source Files](getting_started/use_source.md)
   * [Scripts/Examples](getting_started/examples_scripts.md)
