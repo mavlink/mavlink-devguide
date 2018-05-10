@@ -7,8 +7,11 @@ The common messages are provided as human-readable tables in: [Common](../messag
 
 ## Vendor Specific Extensions (Dialects) {#dialects}
 
-MAVLink protocol-specific and vendor-specific messages (dialects) are stored in separate XML files. These often extend (include) the [common](../messages/common.md) messages.
+MAVLink protocol-specific and vendor-specific messages (dialects) are stored in separate XML files. These often include the [common](../messages/common.md) message definition, extending it with needed vendor or protocol specific messages. 
 
+> **Note** While a dialect can include any other message definition, care should be taken when including a definition file that includes another file (only a single level of nesting is tested).
+
+<span></span>
 > **Note** Vendor forks of MAVLink may contain messages that are not yet merged, and hence will not appear in this documentation.
 
 The human-readable forms of the vendor XML files are linked below:
