@@ -1,6 +1,6 @@
 # Installing MAVLink
 
-This topic explains how to install the MAVLink toolchain, 
+This topic explains how to install the [MAVLink toolchain](https://github.com/mavlink/mavlink), 
 including both [XML message definitions](../messages/README.md) and the GUI/command line tools that use them to [Generate MAVLink Source Files](../getting_started/generate_source.md).
 
 > **Tip** If you are using [Prebuilt MAVLink Source Files](../README.md#prebuilt_libraries) you do not need to install or generate the source files. After getting the libraries see [Using Generated Source Files](../getting_started/use_source.md).
@@ -42,7 +42,7 @@ The main installation steps are:
       sudo apt-get install python-tk
       ```
 
-1. Clone the mavlink repo (or your fork) into a user-writable directory:
+1. Clone the [mavlink repo](https://github.com/mavlink/mavlink) (or your fork) into a user-writable directory:
    ```
    git clone https://github.com/mavlink/mavlink.git
    git submodule update --init --recursive
