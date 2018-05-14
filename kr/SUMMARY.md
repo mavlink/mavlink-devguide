@@ -16,6 +16,7 @@
     * [Camera Definition](protocol/camera_def.md)
   * [짐벌 프로토콜](protocol/gimbal.md)
   * [Arm Authorization Protocol](arm_authorization.md)
+  * [Image Transmission Protocol](protocol/image_transmission.md)
 * [직렬화(Serialization)](serialization.md)
 * [라우팅](routing.md)
 * [일반 텔레메트리](general_telemetry.md)

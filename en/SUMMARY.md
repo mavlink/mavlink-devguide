@@ -18,6 +18,7 @@
     * [Camera Definition](protocol/camera_def.md)
   * [Gimbal Protocol](protocol/gimbal.md)
   * [Arm Authorization Protocol](arm_authorization.md)
+  * [Image Transmission Protocol](protocol/image_transmission.md)
 * [Serialization](serialization.md)
 * [Routing](routing.md)
 * [General Telemetry](general_telemetry.md)
