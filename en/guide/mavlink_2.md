@@ -22,7 +22,7 @@ mavlink_status_t* chan_state = mavlink_get_channel_status(MAVLINK_COMM_0);
 chan_state->flags |= MAVLINK_STATUS_FLAG_OUT_MAVLINK1;
 ```
 
-It is advisable to switch to MAVLink v2 when the communication partner sends MAVLink v2 - the complete [handshaking for versions is described in this guide](mavlink_version.md). The minimal solution is to watch incoming packets using code similar to this:
+It is advisable to switch to MAVLink v2 when the communication partner sends MAVLink v2 - the complete [handshaking for versions is described in this guide](../guide/mavlink_version.md). The minimal solution is to watch incoming packets using code similar to this:
 
 ```C
 if (mavlink_parse_char(MAVLINK_COMM_0, buf[i], &msg, &status)) {

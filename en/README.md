@@ -16,7 +16,7 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 ## Supported Languages {#supported_languages}
 
-[MAVLink 2](mavlink_2.md) source files can be generated for:
+[MAVLink 2](guide/mavlink_2.md) source files can be generated for:
 
 * C
 * C++11
