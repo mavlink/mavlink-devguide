@@ -1,11 +1,11 @@
-# Arm authorization
+# Arm Authorization
 
 When enabled by setting a parameter on flight stack, the drone will only arm the motors if authorized by a external entity.
-This external entity is reposible to request any information that it need from the drone and from other souces(example: weather) and authorize or not the arm procedure.
+This external entity is responsible for requesting any information that it needs from the drone and from other sources (example: weather) and whether (or not) to authorize the arming procedure.
 
-This will be useful to comply to NASA UTM (https://utm.arc.nasa.gov/) but can also be useful for private companies.
+This is required to comply with [NASA UTM](https://utm.arc.nasa.gov/), but may also be useful for private companies.
 
-## Authorization flow
+## Authorization Flow
 
 {% mermaid %}
 sequenceDiagram;
@@ -44,28 +44,22 @@ sequenceDiagram;
     Drone->>Remote control/QCS: QCS COMMAND_ACK command=MAV_CMD_COMPONENT_ARM_DISARM result=ACCEPTED, TEMPORARILY_REJECTED or DENIED
 {% endmermaid %}
 
-## Message parameters:
+## Message Parameters
 
 COMMAND_LONG
 ```
-	command=MAV_CMD_ARM_AUTHORIZATION_REQUEST
-	target_system=system id of arm authorizer
-	target_component=component id of arm authorizer
+command=MAV_CMD_ARM_AUTHORIZATION_REQUEST
+target_system=system id of arm authorizer
+target_component=component id of arm authorizer
 ```
 
 COMMAND_ACK
 ```
-	command=MAV_CMD_ARM_AUTHORIZATION_REQUEST
-	result=ACCEPTED, TEMPORARILY_REJECTED or DENIED
-	progress/result_param1=if result is TEMPORARILY_REJECTED or DENIED the reason should be set MAV_ARM_AUTH_DENIED_REASON otherwise it should be set as 0
-	result_param2=if result is ACCEPTED the it should be set with the time in seconds that this authorization is valid otherwise an aditional information about why it was denied should be set. example: for result_param1=MAV_ARM_AUTH_DENIED_REASON_INVALID_WAYPOINT or MAV_ARM_AUTH_DENIED_REASON_AIRSPACE_IN_USE it may have the index of the waypoint that caused it to be denied.
-	target_system=system id of the drone
-	target_component=component id of the drone
+command=MAV_CMD_ARM_AUTHORIZATION_REQUEST
+result=ACCEPTED, TEMPORARILY_REJECTED or DENIED
+progress/result_param1=if result is TEMPORARILY_REJECTED or DENIED the reason should be set MAV_ARM_AUTH_DENIED_REASON otherwise it should be set as 0
+result_param2=if result is ACCEPTED the it should be set with the time in seconds that this authorization is valid otherwise an aditional information about why it was denied should be set. example: for result_param1=MAV_ARM_AUTH_DENIED_REASON_INVALID_WAYPOINT or MAV_ARM_AUTH_DENIED_REASON_AIRSPACE_IN_USE it may have the index of the waypoint that caused it to be denied.
+target_system=system id of the drone
+target_component=component id of the drone
 ```
-
-
-
-
-
-
 
