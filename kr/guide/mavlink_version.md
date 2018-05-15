@@ -4,9 +4,9 @@ MAVLink is deployed in two major versions: v1.0, which was widely adopted around
 
 ## Version Handshaking
 
-Support for MAVLink 2 is indicated in the [AUTOPILOT\_VERSION](http://mavlink.org/messages/common#AUTOPILOT_VERSION) message by the [MAVLINK2](http://mavlink.org/messages/common#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag. This is sufficient if the communication link between autopilot and GCS is completely transparent. However, most communication links are not completely transparent as they either include routing or in case of fixed-length wireless implementations on packetization. In order to also test the link, the MAVLink 2 handshake protocol sends a MAVLink 2 frame to test the complete communication chain.
+Support for MAVLink 2 is indicated in the [AUTOPILOT\_VERSION](../messages/common.md#AUTOPILOT_VERSION) message by the [MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag. This is sufficient if the communication link between autopilot and GCS is completely transparent. However, most communication links are not completely transparent as they either include routing or in case of fixed-length wireless implementations on packetization. In order to also test the link, the MAVLink 2 handshake protocol sends a MAVLink 2 frame to test the complete communication chain.
 
-To do so, the GCS sends a [COMMAND\_LONG](http://mavlink.org/messages/common#COMMAND_LONG)  or [COMMAND\_INT](http://mavlink.org/messages/common#COMMAND_INT)  message with the command ID [MAV\_CMD\_REQUEST\_PROTOCOL\_VERSION](http://mavlink.org/messages/common#MAV_CMD_REQUEST_PROTOCOL_VERSION).
+To do so, the GCS sends a [COMMAND\_LONG](../messages/common.md#COMMAND_LONG)  or [COMMAND\_INT](../messages/common.md#COMMAND_INT)  message with the command ID [MAV\_CMD\_REQUEST\_PROTOCOL\_VERSION](../messages/common.md#MAV_CMD_REQUEST_PROTOCOL_VERSION).
 
 If the system supports MAVLink 2 and the handshake it will respond with PROTOCOL_VERSION **encoded as MAVLink 2 packet**. If it does not support MAVLink 2 it should NACK the command. The GCS should fall back to a timeout in case the command interface is not implemented properly. The diagram below illustrates the complete sequence.
 
@@ -26,7 +26,7 @@ sequenceDiagram;
 
 ## Semi-transparent legacy radios
 
-Some popular legacy radios (e.g. the SiK radio series) operate in semi-transparent mode by injecting [RADIO_STATUS](http://mavlink.org/messages/common#RADIO_STATUS) messages into the MAVLink message stream. Per MAVLink spec these should actually emit a heartbeat with the same system ID and a different component ID than the autopilot to be discoverable. However, an additional heartbeat could be an issue for deployed systems. Therefore these radios can alternatively confirm their v2 compliance by emitting `RADIO_STATUS` in v2 message format after receiving the first v2 MAVLink frame.
+Some popular legacy radios (e.g. the SiK radio series) operate in semi-transparent mode by injecting [RADIO_STATUS](../messages/common.md#RADIO_STATUS) messages into the MAVLink message stream. Per MAVLink spec these should actually emit a heartbeat with the same system ID and a different component ID than the autopilot to be discoverable. However, an additional heartbeat could be an issue for deployed systems. Therefore these radios can alternatively confirm their v2 compliance by emitting `RADIO_STATUS` in v2 message format after receiving the first v2 MAVLink frame.
 
 
 

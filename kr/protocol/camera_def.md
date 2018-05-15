@@ -1,7 +1,7 @@
 # Camera Definition File
 
-A GCS will build a Camera Controller UI for image and video capture using information provided by the [CAMERA\_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION) message. 
-For very simple cameras, the information in the [CAMERA\_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION) message itself is sufficient to construct the UI. 
+A GCS will build a Camera Controller UI for image and video capture using information provided by the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message. 
+For very simple cameras, the information in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message itself is sufficient to construct the UI. 
 For more complicated cameras (with settings and options) the information required to build the UI must be supplied in a *Camera Definition File* that is located at the URI specified in the message's `cam_definition_uri` field.
 
 The *Camera Definition File* contains all the camera settings, the options for each setting, and exclusion lists (options that invalidate or are conditional on other settings). In addition, it may contain localisations of GUI strings for display to the user.
@@ -38,7 +38,7 @@ Parameters can be simple or quite complex, depending on the behavior they change
 
 #### Parameter Types
 
-The type of the parameter follows the enum [MAV_PARAM_EXT_TYPE](http://mavlink.org/messages/common#MAV_PARAM_EXT_TYPE_UINT8). Within the XML file, these are defined as:
+The type of the parameter follows the enum [MAV_PARAM_EXT_TYPE](../messages/common.md#MAV_PARAM_EXT_TYPE_UINT8). Within the XML file, these are defined as:
 
 * bool (internally treated as a uint8)
 * uint8
@@ -84,7 +84,7 @@ More common are parameters that provide options:
 </parameter>
 ```
 
-In this case, the GCS will automatically build a drop down list with the options defined within the `options` group. When sending/receiving the options, the `value` field is used and it is not in any way interpreted by the GCS. The `name` field is used for display only. In other words, using the example above, when the user selects *Sunset*, the GCS will send a [PARAM\_EXT\_SET](http://mavlink.org/messages/common#PARAM_EXT_SET) message with the id `CAM_WBMODE` and a uint32 value of 3.
+In this case, the GCS will automatically build a drop down list with the options defined within the `options` group. When sending/receiving the options, the `value` field is used and it is not in any way interpreted by the GCS. The `name` field is used for display only. In other words, using the example above, when the user selects *Sunset*, the GCS will send a [PARAM\_EXT\_SET](../messages/common.md#PARAM_EXT_SET) message with the id `CAM_WBMODE` and a uint32 value of 3.
 
 #### Exclusion Rules
 
@@ -191,7 +191,7 @@ But this full range is only available when in *Photo Mode*. For whatever reason,
 
 This indicates to the GCS that when the `CAM_MODE` parameter is set to *Video*, only the given range for the `CAM_ISO` parameter is valid. It additionally gives a condition that this is only the case when the `CAM_EXPOSURE` mode is set to *Manual* (1).
 
-This example also tells the GCS not to display this parameter to the user (`control=“0”`). Camera Mode is a standard parameter defined in the [CAMERA\_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION) message and it’s handled by the GCS in that way. The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the mode occur.
+This example also tells the GCS not to display this parameter to the user (`control=“0”`). Camera Mode is a standard parameter defined in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way. The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the mode occur.
 
 ### Localization
 
@@ -219,11 +219,11 @@ When the GCS loads and parses the XML file, it will check and see if it can find
 
 ## Protocol Definition
 
-Once the Camera Definition File is loaded by the GCS, it will request all parameters from the camera using the [PARAM\_EXT\_REQUEST\_LIST](http://mavlink.org/messages/common#PARAM_EXT_REQUEST_LIST) message. In response, the camera will send back all parameters using the [PARAM\_EXT\_VALUE](http://mavlink.org/messages/common#PARAM_EXT_VALUE) message.
+Once the Camera Definition File is loaded by the GCS, it will request all parameters from the camera using the [PARAM\_EXT\_REQUEST\_LIST](../messages/common.md#PARAM_EXT_REQUEST_LIST) message. In response, the camera will send back all parameters using the [PARAM\_EXT\_VALUE](../messages/common.md#PARAM_EXT_VALUE) message.
 
-When the user makes a selection, the GCS will send the new option using the [PARAM\_EXT\_SET](http://mavlink.org/messages/common#PARAM_EXT_SET) message and it will expect in response a [PARAM\_EXT\_ACK](http://mavlink.org/messages/common#PARAM_EXT_ACK) message.
+When the user makes a selection, the GCS will send the new option using the [PARAM\_EXT\_SET](../messages/common.md#PARAM_EXT_SET) message and it will expect in response a [PARAM\_EXT\_ACK](../messages/common.md#PARAM_EXT_ACK) message.
 
-When the GCS requires a current option for a given parameter, it will use the [PARAM\_EXT\_REQUEST\_READ](http://mavlink.org/messages/common#PARAM_EXT_REQUEST_READ) message and it will expect in response a [PARAM\_EXT\_VALUE](http://mavlink.org/messages/common#PARAM_EXT_VALUE) message.
+When the GCS requires a current option for a given parameter, it will use the [PARAM\_EXT\_REQUEST\_READ](../messages/common.md#PARAM_EXT_REQUEST_READ) message and it will expect in response a [PARAM\_EXT\_VALUE](../messages/common.md#PARAM_EXT_VALUE) message.
 
 ## Full Camera Definition File Example {#full_example}
 

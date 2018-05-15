@@ -6,9 +6,9 @@
 
 ### 메시지 인터페이스(Message interface) :
 
-[CAMERA\_IMAGE\_CAPTURED](http://mavlink.org/messages/common#CAMERA_IMAGE_CAPTURED) 메시지는 geo-tagging과 카메라 피드백을 위한 용도입니다. 사진을 찍게되면 카메라가 보내야 합니다. 이 메시지는 지연에 민감한 경우보다는 GCS의 geotagging에 적합합니다. 이 메시지를 대신할 수 있는 재전송 프로토콜(retransmission protocol)도 있습니다.
+[CAMERA\_IMAGE\_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) 메시지는 geo-tagging과 카메라 피드백을 위한 용도입니다. 사진을 찍게되면 카메라가 보내야 합니다. 이 메시지는 지연에 민감한 경우보다는 GCS의 geotagging에 적합합니다. 이 메시지를 대신할 수 있는 재전송 프로토콜(retransmission protocol)도 있습니다.
 
-[CAMERA\_TRIGGER](http://mavlink.org/messages/common#CAMERA_TRIGGER) 메시지는 온보드 시스템에게 트리거 이벤트가 발생했다는 것을 알리는 용도입니다. 카메라 이미지가 캡쳐되었는지 여부를 보장하지는 않습니다. 프레임 드롭(frame drop)이 일어나도 되는 상황에 적합하며 이미지와 IMU 데이터의 타임 스템핑(time-stamping)이 low-latency로 일어나는 경우에 적합합니다.(예: visual Inertial Odometry)
+[CAMERA\_TRIGGER](../messages/common.md#CAMERA_TRIGGER) 메시지는 온보드 시스템에게 트리거 이벤트가 발생했다는 것을 알리는 용도입니다. 카메라 이미지가 캡쳐되었는지 여부를 보장하지는 않습니다. 프레임 드롭(frame drop)이 일어나도 되는 상황에 적합하며 이미지와 IMU 데이터의 타임 스템핑(time-stamping)이 low-latency로 일어나는 경우에 적합합니다.(예: visual Inertial Odometry)
 
 
 ### 명령 인터페이스 :
