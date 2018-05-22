@@ -86,6 +86,12 @@ if (mavlink_parse_char(MAVLINK_COMM_0, buf[i], &msg, &status)) {
 The XML for messages can contain extensions that are optional in the protocol. 
 This allows for extra fields to be added to a message.
 
+The rules for extended messages are:
+
+* Extended fields are not sent in *MAVLink 1* messages. 
+* If received by an implementation that doesn't have the extended fields then the fields will not be seen.
+* If sent by an implementation that doesn't have the extended fields then the recipient will see zero values for the extended fields.
+
 For example the fields after the `<extensions>` line below are extended fields:
 
 ```xml
@@ -104,12 +110,6 @@ For example the fields after the `<extensions>` line below are extended fields:
       <field type="float" name="flow_rate_y" units="rad/s">Flow rate in radians/second about Y axis</field>
     </message>
 ```
-
-The rules for extended messages are:
-
-* If sent as a *MAVLink 1* message then extended fields are not sent.
-* If received by an implementation that doesn't have the extended fields then the fields will not be seen.
-* If sent by an implementation that doesn't have the extended fields then the recipient will see zero values for the extended fields.
 
 
 ## Message/Packet Signing

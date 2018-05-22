@@ -1,8 +1,8 @@
 # Message Signing (Authentication)
 
-> **Note** Message signing is supported for [MAVLink 2](../guide/mavlink_2.md) (only).
+> **Note** This topic covers message signing in [MAVLink 2](../guide/mavlink_2.md). MAVLink 1 does not support message signing.
 
-One of the key features of MAVLink2 is support for signing of messages. To enable signing in your application you will need to add some additional code. In particular you will need to add:
+One of the key features of *MAVLink 2* is support for signing of messages. To enable signing in your application you will need to add some additional code. In particular you will need to add:
 
 * Code to handle the SETUP_SIGNING message
 * Code to setup and teardown signing on a link
