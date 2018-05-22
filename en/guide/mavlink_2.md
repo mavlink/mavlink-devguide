@@ -89,14 +89,20 @@ This allows for extra fields to be added to a message.
 For example the fields after the `<extensions>` line below are extended fields:
 
 ```xml
-  <message id="152" name="MEMINFO">
-    <description>state of APM memory</description>
-    <field name="brkval" type="uint16_t">heap top</field>
-    <field name="freemem" type="uint16_t">free memory</field>
-    <extensions/>
-    <field name="extrafield1" type="uint8_t">extension1</field>
-    <field name="extrafield2" type="uint32_t">extension2</field>
-  </message>
+    <message id="100" name="OPTICAL_FLOW">
+      <description>Optical flow from a flow sensor (e.g. optical mouse sensor)</description>
+      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX)</field>
+      <field type="uint8_t" name="sensor_id">Sensor ID</field>
+      <field type="int16_t" name="flow_x" units="dpixels">Flow in pixels * 10 in x-sensor direction (dezi-pixels)</field>
+      <field type="int16_t" name="flow_y" units="dpixels">Flow in pixels * 10 in y-sensor direction (dezi-pixels)</field>
+      <field type="float" name="flow_comp_m_x" units="m">Flow in meters in x-sensor direction, angular-speed compensated</field>
+      <field type="float" name="flow_comp_m_y" units="m">Flow in meters in y-sensor direction, angular-speed compensated</field>
+      <field type="uint8_t" name="quality">Optical flow quality / confidence. 0: bad, 255: maximum quality</field>
+      <field type="float" name="ground_distance" units="m">Ground distance in meters. Positive value: distance known. Negative value: Unknown distance</field>
+      <extensions/>
+      <field type="float" name="flow_rate_x" units="rad/s">Flow rate in radians/second about X axis</field>
+      <field type="float" name="flow_rate_y" units="rad/s">Flow rate in radians/second about Y axis</field>
+    </message>
 ```
 
 The rules for extended messages are:
