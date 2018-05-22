@@ -32,27 +32,27 @@ Storage and handling of the timestamp is critical to the security of the signing
 To enable signing on a channel you need to fill in two pointers in the status structure for the channel. The two pointed are:
 
 ```
-   mavlink_signing_t *signing;
-   mavlink_signing_streams_t *signing_streams;
+mavlink_signing_t *signing;
+mavlink_signing_streams_t *signing_streams;
 ```
 
 The signing pointer controls signing for this stream. It is per-stream, and contains the secret key, the timestamp and a set of flags, plus an optional callback function for accepting unsigned packets. Typical setup would be:
 
 ```
-    memcpy(signing.secret_key, key.secret_key, 32);
-    signing.link_id = (uint8_t)chan;
-    signing.timestamp = key.timestamp;
-    signing.flags = MAVLINK_SIGNING_FLAG_SIGN_OUTGOING;
-    signing.accept_unsigned_callback = accept_unsigned_callback;
-    mavlink_status_t *status = mavlink_get_channel_status(chan);
-    status.signing = &signing;
+memcpy(signing.secret_key, key.secret_key, 32);
+signing.link_id = (uint8_t)chan;
+signing.timestamp = key.timestamp;
+signing.flags = MAVLINK_SIGNING_FLAG_SIGN_OUTGOING;
+signing.accept_unsigned_callback = accept_unsigned_callback;
+mavlink_status_t *status = mavlink_get_channel_status(chan);
+status.signing = &signing;
 ```
 
 The `signing_streams pointer` is a structure used to record the previous timestamp for a `(linkId,srcSystem,SrcComponent)` tuple. This must point to a structure that is common to all channels in order to prevent inter-channel replay attacks. Typical setup is:
 
 ```
-    mavlink_status_t *status = mavlink_get_channel_status(chan);
-    status.signing_streams = &signing_streams;
+mavlink_status_t *status = mavlink_get_channel_status(chan);
+status.signing_streams = &signing_streams;
 ```
 
 The maximum number of signing streams supported is given by the `MAVLINK_MAX_SIGNING_STREAMS` macro. This defaults to 16, but it may be worth raising this for GCS implementations. If the C implementation runs out of signing streams then new streams will be rejected.
@@ -107,13 +107,13 @@ For C implementations the obvious mechanism is to use the MAVLink channel number
 The solution adopted for MAVProxy is shown below:
 
 ```
-        if (msg.get_signed() and
-            self.mav.signing.link_id == 0 and
-            msg.get_link_id() != 0 and
-            self.target_system == msg.get_srcSystem() and
-            self.target_component == msg.get_srcComponent()):
-            # change to link_id from incoming packet
-            self.mav.signing.link_id = msg.get_link_id()
+if (msg.get_signed() and
+	self.mav.signing.link_id == 0 and
+	msg.get_link_id() != 0 and
+	self.target_system == msg.get_srcSystem() and
+	self.target_component == msg.get_srcComponent()):
+	# change to link_id from incoming packet
+	self.mav.signing.link_id = msg.get_link_id()
 ```
 
 what that says is that if the current link ID in use by MAVProxy is zero, and it receives a correctly signed packet with a non-zero link ID then it switches link ID to the one from the incoming packet.
