@@ -1,31 +1,35 @@
 # Contributing to MAVLink
 
-We follow the [Github flow](https://guides.github.com/introduction/flow/) development model. Contributions fall into two main categories: Design and micro-service changes include new features that come with a state machine and message specifications for a new type of interface (examples: parameter or mission protocol). These are major contributions requiring a lot of vetting and should come with a RFC pull request in https://github.com/mavlink/rfcs. Protocol specification and documentation changes are usually changes with less impact and can be directly raised as pull requests against this repository.
+We follow the [Github flow](https://guides.github.com/introduction/flow/) development model. Contributions fall into two main categories: Design and micro-service changes include new features that come with a state machine and message specifications for a new type of interface \(examples: parameter or mission protocol\). These are major contributions requiring a lot of vetting and should come with a RFC pull request in [https://github.com/mavlink/rfcs](https://github.com/mavlink/rfcs). Protocol specification and documentation changes are usually changes with less impact and can be directly raised as pull requests against this repository.
 
 Below we explain the processes for contributing to each category and how to raise a pull request.
 
 ## How to Contribute Design and Micro-service Changes
 
-* Open a pull request against the RFC repository containing a new RFC number https://github.com/mavlink/rfcs and use the template in the 0000 RFC.
-* Reach out to the community on Slack and on http://discuss.dronecode.org to raise awareness
+* Open a pull request against the RFC repository containing a new RFC number [https://github.com/mavlink/rfcs](https://github.com/mavlink/rfcs) and use the template in the 0000 RFC.
+* Reach out to the community on Slack and on [http://discuss.dronecode.org](http://discuss.dronecode.org) to raise awareness
 * Address concerns by pushing more commits to the pull request
 
 ## How to Contribute Protocol Specification Changes
 
-* Open a pull request against the specification repository: https://github.com/mavlink/mavlink
-* Reach out to the community on Slack and on http://discuss.dronecode.org to raise awareness
+* Open a pull request against the specification repository: [https://github.com/mavlink/mavlink](https://github.com/mavlink/mavlink)
+* Reach out to the community on Slack and on [http://discuss.dronecode.org](http://discuss.dronecode.org) to raise awareness
 * Address concerns by pushing more commits to the pull request
-  
+
 ## How to Open a Pull Request
 
 1. First [fork and clone](https://help.github.com/articles/fork-a-repo) the project project.
-1. Create a feature branch off master
+2. Create a feature branch off master
+
    ```
    git checkout -b mydescriptivebranchname
    ```
-   > **Note** *Always* branch off master for new features.
-1. Commit your changes with a descriptive commit message.
-   * Include context information, what was fixed, and an [issue number](https://github.com/mavlink/mavlink) (Github will link these then conveniently)
+
+   > **Note** _Always_ branch off master for new features.
+
+3. Commit your changes with a descriptive commit message.
+
+   * Include context information, what was fixed, and an [issue number](https://github.com/mavlink/mavlink) \(Github will link these then conveniently\)
    * **Example:**
 
      ```
@@ -37,9 +41,53 @@ Below we explain the processes for contributing to each category and how to rais
      Fixes issue #123
      ```
 
-1. Test your changes (we may ask you for test results in your PR).
-1. Push changes to your repo:
+4. Test your changes \(we may ask you for test results in your PR\).
+
+5. Push changes to your repo:
+
    ```
    git push origin mydescriptivebranchname
    ```
-1. Send a [pull request](https://github.com/mavlink/mavlink/compare/) to merge changes in the branch.
+
+6. Send a [pull request](https://github.com/mavlink/mavlink/compare/) to merge changes in the branch.
+
+## Support {#support}
+
+### Weekly Dev Call {#dev_call}
+
+MAVLink developers, adopting companies and the surrounding community of users meet weekly to help define the direction of the project, discuss RFCs, Issues and have a Q&A session.
+
+#### Who should attend: {#who-should-attend}
+
+* Core project maintainers
+* Component maintainers
+
+* Dronecode members
+
+* Community members
+
+* Anyone interested in the development of MAVLink
+
+> The dev call is open to all interested developers \(not just the dev team\). This is a great opportunity to meet the team and contribute to the ongoing development of the project.
+
+#### Schedule {#schedule}
+
+* **TIME**: Wednesday 6:15PM CET, 12:15AM EST, 9:15AM PST \([subscribe to calendar](https://zoom.us/meeting/579545140/ics?icsToken=fb96681cf4458be9f1f85694037a3cc7f358d5a9479ec0a06dedc267e49649ac)\)
+* **Join the call**: [https://zoom.us/j/579545140](https://zoom.us/s/579545140)
+* **Meeting ID**: 625 711 763
+* **Dial\(for higher quality, dial a number based on your current location\)**:
+
+  * **Switzerland**: +41 \(0\) 31 528 0988
+  * **US**: +1 646 876 9923 or +1 669 900 6833 or +1 408 740 3766
+  * **Germany**: +49 \(0\) 30 3080 6188
+  * **Mexico**: +52 554 161 4288
+  * **Australia**: +61 \(0\) 2 8015 2088
+  * **United Kingdom**: +44 \(0\) 20 3695 0088
+  * **South Korea**: +82 \(0\) 2 6022 2322
+  * **Spain**: +34 91 198 0188
+  * [**International numbers available**](https://zoom.us/u/Q40ZTqiJ)
+
+* **Nominate Issues and PRs for the call with the **[**Dev Call**](https://github.com/mavlink/mavlink/labels/Dev Call)** label on Github**
+
+
+
