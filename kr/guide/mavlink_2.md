@@ -8,7 +8,7 @@ The key new features of *MAVLink 2* are:
 * [Extending existing MAVLink messages](#message_extensions)
 * [Variable length arrays](#variable_arrays) (*simplified implementation*).
 
-*MAVLink 2* bindings have been developed for C and Python (other languages are not implemented yet).
+*MAVLink 2* bindings have been developed for C, C++11 and Python (see [Supported Languages](../README.md#supported_languages)).
 
 > **Tip** We recommend you start by reading the *MAVLink 2* [design document](https://docs.google.com/document/d/1XtbD0ORNkhZ8eKrsbSIZNLyg9sFRXMXbsR2mp37KbIg/edit?usp=sharing)
 
@@ -24,7 +24,6 @@ The existing *MAVLink 1* pre-built library [mavlink/c_library_v1](https://github
 
 For most users usage of the pre-generated C headers is recommended: https://github.com/mavlink/c_library_v2
 
-This will generate a set of C headers in the generator/C/include_v2.0 directory. 
 These headers offer the same range of APIs as was offered by MAVLink1. 
 
 The major changes from an API perspective are:

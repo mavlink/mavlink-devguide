@@ -20,6 +20,7 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 * C
 * C++11
+* Python (2.7+, 3.3+)
 
 MAVLink 1 source files can be generated for:
 
