@@ -1,17 +1,16 @@
 # Generating Source Files
 
-Language-specific files can be generated using a Python script from the command line or via a GUI. 
-The available languages for each version of the MAVLink protocol are listed in [Introduction > Supported Languages](../README.md#supported_languages) (these include C, C#, Java, Python etc).
+Language-specific MAVLink libraries ("source files") can be created from [XML Message Definitions](../messages/README.md) using Python-based command line or GUI generator tools.
+The supported output languages for each version of the MAVLink protocol are listed in [Supported Languages](../README.md#supported_languages) (these include C, C#, Java, Python etc).
 
-> **Note** The tools must already have been set up as described in [Getting Started > Installation](../getting_started/README.md#install) section (in particular *Tkinter* must be installed to use the GUI tool).
+> **Note** The tools must already have been set up as described in [Install MAVLink](../getting_started/installation.md) (in particular *Tkinter* must be installed to use the GUI tool).
 
 <span></span>
-> **Note** Dialect XML files that have dependencies on other XML files must be located in the same directory. Since most MAVLink dialects depend on the [common.xml](../messages/common.md) message set, you should place your dialect with the others in `/message_definitions/v1.0/`.
-
+> **Note** [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0) contains XML definitions for a number of different [dialects](../messages/README.md#dialects). Dialect files that have dependencies on other XML files must be located in the same directory. Since most MAVLink dialects depend on the [common.xml](../messages/common.md) message set, you should place your dialect with the others in that folder.
 
 ## MAVLink Generator Tool (GUI)
 
-*MAVLink Generator* (**mavgenerate.py**) is a header generation tool GUI written in Python. It can be run from anywhere using Python's -m argument:
+*MAVLink Generator* (**mavgenerate.py**) is a header generation tool GUI written in Python. It can be run from anywhere using Python's `-m` argument:
 
 ```sh
 python -m mavgenerate
@@ -20,7 +19,9 @@ python -m mavgenerate
 ![MAVLink Generator UI](../../assets/mavgen/mavlink_generator.png)
 
 Generator Steps:
-1. Choose the target XML file (typically in [mavlink/message_definitions](https://github.com/mavlink/mavlink/tree/master/message_definitions)).
+1. Choose the target XML file (typically in [mavlink/message_definitions/1.0](https://github.com/mavlink/mavlink/tree/master/message_definitions/1.0)).
+
+   > **Note** If using a custom dialect, first copy it into the above directory (if the dialect is dependent on **common.xml** it must be located in the same directory).
 1. Choose an output directory (e.g. **mavlink/include**).
 1. Select the target output programming language.
 1. Select the target MAVLink protocol version (ideally 2.0)
@@ -36,9 +37,9 @@ After the `mavlink` directory has been added to the `PYTHONPATH`, it can be run 
 
 > **Tip** This is the backend used by **mavgenerate.py**. The documentation below explains all the options for both tools. 
 
-For example, to generate *MAVLink 2* C libraries for the **common.xml** dialect:
+For example, to generate *MAVLink 2* C libraries for a dialect named **your_custom_dialect.xml**:
 ```sh
-python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/common.xml
+python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
 ```
 
 The full syntax can be output by running *mavgen* with the `-h` flag (reproduced below):
