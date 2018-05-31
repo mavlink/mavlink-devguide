@@ -55,7 +55,7 @@ chan_state->flags |= MAVLINK_STATUS_FLAG_OUT_MAVLINK1;
 Incoming *MAVLink 1* packets will be automatically handled as *MAVLink 1*. If you need to determine if a particular message was received as *MAVLink 1* or *MAVLink 2* then you can use the magic field of the message, like this:
 
 ```c
-if (msg->magic = MAVLINK_STX_MAVLINK1) {
+if (msg->magic == MAVLINK_STX_MAVLINK1) {
    printf("This is a MAVLink 1 message\n");
 }
 ```
