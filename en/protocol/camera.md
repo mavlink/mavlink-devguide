@@ -2,6 +2,8 @@
 
 The camera protocol is used to configure camera payloads and request their status. It supports photo and video cameras and includes messages to query and configure the onboard camera storage.
 
+> **Tip** The [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) provides an implementation of this protocol.
+
 ## Camera Identification
 
 The first step is to determine if a camera exists. Camera components are supposed to send heartbeats just like any other component. There are pre-defined component IDs for cameras - see [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA). If a camera component exists, once a heartbeat is received a [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) message is sent from the GCS. The camera component will then reply with a [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
