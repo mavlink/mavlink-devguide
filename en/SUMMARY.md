@@ -51,5 +51,5 @@
 * [PX4 Developer Guide](https://dev.px4.io/en/)
 * [QGroundControl User Guide](https://docs.qgroundcontrol.com/en/)
 * [QGroundControl Developer Guide](https://dev.qgroundcontrol.com/en/)
-* [DroneCore Guide](https://docs.dronecore.io/en/)
-* [Dronecode Camera Manager Guide](https://camera-manager.dronecode.org/en/)
+* [Dronecode SDK](https://sdk.dronecode.org/en/)
+* [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/)
