@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+  * [FAQ](about/faq.md)
   * [Ecosystem](about/ecosystem.md)
 * [Getting Started](getting_started/README.md)
   * [Install MAVLink](getting_started/installation.md)
