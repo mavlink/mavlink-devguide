@@ -3,10 +3,10 @@
 ## Users
 
 <dl>
-  <dt>Q: How efficient is MAVLink?</dt>
+  <dt>How efficient is MAVLink?</dt>
   <dd>MAVLink is a very efficient protocol. It has just 8 bytes overhead per packet, including start sign and packet drop detection.</dd>
 
-  <dt>Q: How many vehicles does MAVLink support?</dt>
+  <dt>How many vehicles does MAVLink support?</dt>
   <dd>255 vehicles, with system IDs ranging from 1 to 255 (0 is not a valid vehicle ID).
     <br><b>Note:</b> Strictly speaking MAVLink supports 255 concurrent <em>systems</em>, and these can include a mix of vehicles, GCS, antenna trackers and other hardware.</dd>
 
