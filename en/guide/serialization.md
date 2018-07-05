@@ -32,10 +32,40 @@ Whatever language you are using, the resulting binary data will be the same:
 ```
 {% endmethod %}
 
+## Packet Anatomy
 
-## Field Reordering and CRC Extra Calculation
+This section shows the anatomy of a (serialized) MAVLink packet.
+The format is inspired by the [CAN](https://en.wikipedia.org/wiki/CAN_bus) and SAE AS-4 standards.
+
+### MAVLink 1
+
+![MAVLink packet](../../assets/packets/packet_mavlink_v1.png)
+
+
+Byte Index | Content | Value | Explanation
+--- | --- | --- | ---
+0 | Packet start sign | v1.0: 0xFE (v0.9: 0x55) | Indicates the start of a new packet.
+1 | Payload length    | 0 - 255                 | Indicates length of the following payload.
+2 | Packet sequence   | 0 - 255                 | Each component counts up his send sequence. Allows to detect packet loss
+3 | System ID         | 1 - 255                 | ID of the SENDING system. Allows to differentiate different MAVs on the same network.
+4 | Component ID      | 0 - 255                 | ID of the SENDING component. Allows to differentiate different components of the same system, e.g. the IMU and the autopilot. 
+5 | Message ID        | 0 - 255                 | ID of the message - the id defines what the payload "means" and how it should be correctly decoded.
+6 to (n+6) | Data     | (0 - 255) bytes         | Data of the message, depends on the message id.
+(n+7) to (n+8) | Checksum (low byte, high byte) | | ITU X.25/SAE AS-4 hash, *excluding packet start sign, so bytes 1..(n+6)*. <br>** Note:** The checksum also includes [MAVLINK_CRC_EXTRA](#crc_extra) that protects the packet from decoding a different version of the same packet but with different variables).
+
+* The minimum packet length is 8 bytes for acknowledgment packets without payload
+* The maximum packet length is 263 bytes for full payload
+
+### MAVLink 2
+
+TBD
+
+
+## Field Reordering and CRC Extra Calculation {#crc_extra}
 
 MAVLink uses one extra CRC that is added to the message CRC to detect mismatches in message specifications. This is to prevent two devices using different message versions from incorrectly decoding a message with the same length.
+
+The checksum is the same as used in ITU X.25 and SAE AS-4 standards ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)), documented in [SAE AS5669A](http://www.sae.org/servlets/productDetail?PROD_TYP=STD&PROD_CD=AS5669A). See the MAVLink source code for [the documented C-implementation](https://github.com/mavlink/c_library_v1/blob/master/checksum.h).
 
 
 ### Rationale for a Format Checksum
