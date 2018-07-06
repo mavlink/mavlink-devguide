@@ -7,6 +7,7 @@ The key new features of *MAVLink 2* are:
 * [Packet signing](../guide/message_signing.md) (authentication)
 * [Extending existing MAVLink messages](#message_extensions)
 * [Variable length arrays](#variable_arrays) (*simplified implementation*).
+* [Non-standard fame handling (Packet Compatibility Flags)](#framing)
 
 *MAVLink 2* bindings have been developed for C, C++11 and Python (see [Supported Languages](../README.md#supported_languages)).
 
@@ -52,7 +53,7 @@ chan_state->flags |= MAVLINK_STATUS_FLAG_OUT_MAVLINK1;
 ```
 
 
-Incoming *MAVLink 1* packets will be automatically handled as *MAVLink 1*. If you need to determine if a particular message was received as *MAVLink 1* or *MAVLink 2* then you can use the magic field of the message, like this:
+Incoming *MAVLink 1* packets will be automatically handled as *MAVLink 1*. If you need to determine if a particular message was received as *MAVLink 1* or *MAVLink 2* then you can use the `magic` field of the message. In c programming, this is done like this:
 
 ```c
 if (msg->magic == MAVLINK_STX_MAVLINK1) {
@@ -121,3 +122,24 @@ Authentication is covered in the topic: [Message signing](../guide/message_signi
 *MAVLink 2* truncates any zero (empty) elements at the end of the *largest* array in a message. Other arrays in the message will not be truncated.
 
 > **Note** This is a "light" implementation of variable length arrays. For messages with 0 or 1 arrays (the most common case) this is the same as a full implementation.
+
+
+## Packet Compatibility Flags {#framing}
+
+The MAVLink 2 [serialization format](../guide/serialization.md) includes new fields (`incompat_flags` and `compat_flags`) to indicate that a packet supports or requires some special/non-standard packet handling.
+
+> **Tip** The flags are primarily provided to allow for backwards compatible evolution of the protocol. 
+  They allow older MAVLink implementations to process packets with compatible features, while rejecting packets with incompatible features.
+  
+The two fields are for specifying compatible and incompatible flags/features:
+
+- An incompatible feature is one that a MAVLink system must enable in order to be able to handle the packet.
+  For example, the `MAVLINK_IFLAG_SIGNED` is used to indicate that a signature has been appended to the packet (an implementation that doesn't understand this flag should reject the packet).
+  
+  **A MAVLink implementation must discard a packet if it does not understand any flag in the `incompat_flags` field.**
+  
+- A compatible feature is one that won't prevent MAVLink from handling the packet, even if the feature is not understood.
+  For example, a flag indicating that a packet should be treated as "high priority" can be handled by any MAVLink implementation, as the packet format and structure is not affected.
+
+  **A MAVLink implementation can safely ignore flags it doesn't understand in the `compat_flags` field.**
+
