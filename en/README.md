@@ -23,12 +23,11 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 ## Key Features
 
-- *Very efficient*: MAVLink 1 has just 8 bytes overhead per packet, including start sign and packet drop detection. MAVLink 2 has just 14 bytes of overhead (but is a much more secure and extensible protocol).
-  > **Tip** Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth. 
-- Support for up to 255 concurrent systems on the network (vehicles, ground stations, etc.)
-255 vehicles, with system IDs ranging from 1 to 255 (0 is not a valid vehicle ID). 
-- *Reliable*: Used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, corruption, and for packet authentication.
-- *Flexible*: MAVlink libraries have been provided for [many programming languages](#supported_languages), running on numerous microcontrollers/operating systems (including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS).
+- Very efficient. MAVLink 1 has just 8 bytes overhead per packet, including start sign and packet drop detection. MAVLink 2 has just 14 bytes of overhead (but is a much more secure and extensible protocol).
+  Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth.
+- Very reliable. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, corruption, and for packet authentication.
+- Supports [many programming languages](#supported_languages), running on numerous microcontrollers/operating systems (including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS).
+- Allows up to 255 concurrent systems on the network (vehicles, ground stations, etc.)
 - Enables both offboard and onboard communications (e.g. between a GCS and drone, and between drone autopilot and MAVLink enabled drone camera).
 
 
