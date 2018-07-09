@@ -7,8 +7,6 @@ MAVLink is a very lightweight messaging protocol for communicating with drones (
 
 MAVLink follows a modern hybrid publish-subscribe and point-to-point design pattern: Data streams are sent / published as **topics** while configuration sub-protocols such as the [mission protocol](protocol/mission.md) or [parameter protocol](protocol/parameter.md) are point-to-point with retransmission.
 
-> **Tip** Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth. 
-
 Messages are [defined within XML files](messages/README.md)
 Each XML file defines the message set supported by a particular system, also referred to as a "dialect". 
 The reference message set that is implemented by *most* ground control stations and autopilots is defined in [common.xml](messages/common.md) (most dialects *build on top of* this definition).
@@ -21,6 +19,17 @@ These are typically MIT-licensed, and can therefore be *used* without limits in 
   It is field-proven and deployed in many products where it serves as interoperability interface between components of different manufacturers.
 
 MAVLink was first released early 2009 by Lorenz Meier and has now a [significant number of contributors](https://github.com/mavlink/mavlink/graphs/contributors).
+
+
+## Key Features
+
+- *Very efficient*: MAVLink 1 has just 8 bytes overhead per packet, including start sign and packet drop detection. MAVLink 2 has just 14 bytes of overhead (but is a much more secure and extensible protocol).
+  > **Tip** Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth. 
+- Support for up to 255 concurrent systems on the network (vehicles, ground stations, etc.)
+255 vehicles, with system IDs ranging from 1 to 255 (0 is not a valid vehicle ID). 
+- *Reliable*: Used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, corruption, and for packet authentication.
+- *Flexible*: MAVlink libraries have been provided for [many programming languages](#supported_languages), running on numerous microcontrollers/operating systems (including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS).
+- Enables both offboard and onboard communications (e.g. between a GCS and drone, and between drone autopilot and MAVLink enabled drone camera).
 
 
 ## Supported Languages {#supported_languages}
