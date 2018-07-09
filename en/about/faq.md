@@ -13,8 +13,8 @@
   <dt>Where can I use MAVLink?</dt>
   <dd>MAVLink has been shown to work on multiple microcontrollers and operating systems, including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS.</dd>
 
-  <dt>How safe is MAVLink?</dt>
-  <dd>Very. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, and the well-established ITU X.25 checksum for packet corruption detection. MAVLink 2, further adds authentication using <a href="../guide/message_signing.md">message signing</a>.</dd>
+  <dt>How reliable is MAVLink?</dt>
+  <dd>Very. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, and the well-established ITU X.25 checksum for packet corruption detection.</dd>
 </dl>
 
 
@@ -22,7 +22,8 @@
 
 <dl>
   <dt>Can I use MAVLink in a closed source application without copyright issues?</dt>
-  <dd>Yes, without any limitations. The LGPL license only requires you to contribute back changes to <em>MAVLink itself</em>, not any code that uses MAVLink. So you are not required to publish any of your application code.</dd>
+  <dd>Yes, without any limitations. The generated MAVLink library headers are made available under the *MIT license* (for more information see: [Introduction > License|README.md#license]).
+  </dd>
 
   <dt>How does MAVLink detect and decode messages in the byte stream?</dt>
   <dd>MAVLink waits for the packet start sign, then reads the packet length and matches the checksum after n bytes. If the checksum matches, it returns the decoded packet and waits again for the start sign. If bytes are altered or lost, it will drop the current message and continue the next try on the following message.</dd>
