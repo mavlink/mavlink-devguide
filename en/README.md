@@ -3,15 +3,32 @@
 
 [![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)
 
-MAVLink is a very lightweight, header-only message marshalling library for micro air vehicles / drones.
+MAVLink is a very lightweight messaging protocol for communicating with drones (and between onboard drone components).
 
 MAVLink follows a modern hybrid publish-subscribe and point-to-point design pattern: Data streams are sent / published as **topics** while configuration sub-protocols such as the [mission protocol](protocol/mission.md) or [parameter protocol](protocol/parameter.md) are point-to-point with retransmission.
 
-Messages are [defined within XML files](messages/README.md), which may then be [generated](getting_started/generate_source.md) into appropriate source code for each of the [supported languages](#supported_languages). Each XML file defines the message set supported by a particular system, also referred to as a "dialect". The reference message set that is implemented by most ground control stations and autopilots is defined in [common.xml](messages/common.md) (most dialects *build on top of* this definition).
+Messages are [defined within XML files](messages/README.md)
+Each XML file defines the message set supported by a particular system, also referred to as a "dialect". 
+The reference message set that is implemented by *most* ground control stations and autopilots is defined in [common.xml](messages/common.md) (most dialects *build on top of* this definition).
+
+The [MAVLink toolchain](https://github.com/mavlink/mavlink/) uses the XML message definitions to [generate](getting_started/generate_source.md) MAVLink libraries for each of the [supported programming languages](#supported_languages).
+Drones, ground control stations, and other MAVLink systems use the generated libraries to communicate.
+These are typically MIT-licensed, and can therefore be *used* without limits in any closed-source application without publishing the source code of the closed-source application.
+
+> **Note** The C reference implementation is a header-only library that is highly optimized for resource-constrained systems with limited RAM and flash memory. 
+  It is field-proven and deployed in many products where it serves as interoperability interface between components of different manufacturers.
 
 MAVLink was first released early 2009 by Lorenz Meier and has now a [significant number of contributors](https://github.com/mavlink/mavlink/graphs/contributors).
 
-> **Tip** Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth. It's reference implementation in C is highly optimized for resource-constrained systems with limited RAM and flash memory. It is field-proven and deployed in many products where it serves as interoperability interface between components of different manufacturers.
+
+## Key Features
+
+- Very efficient. MAVLink 1 has just 8 bytes overhead per packet, including start sign and packet drop detection. MAVLink 2 has just 14 bytes of overhead (but is a much more secure and extensible protocol).
+  Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth.
+- Very reliable. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, corruption, and for packet authentication.
+- Supports [many programming languages](#supported_languages), running on numerous microcontrollers/operating systems (including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS).
+- Allows up to 255 concurrent systems on the network (vehicles, ground stations, etc.)
+- Enables both offboard and onboard communications (e.g. between a GCS and drone, and between drone autopilot and MAVLink enabled drone camera).
 
 
 ## Supported Languages {#supported_languages}
@@ -64,6 +81,8 @@ The [Contributing Guide](contributing/contributing.md) explains the contribution
 
 ## License
 
-MAVLink is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3). The C-language version of MAVLink is a header-only library which is generated as MIT-licensed code. MAVLink can therefore be used without limits in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
+The generated [C-language version of MAVLink](#prebuilt_libraries) is a header-only library that is made available under the MIT-licence. MAVLink can therefore be *used* without limits in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
+
+The [MAVLink toolchain](https://github.com/mavlink/mavlink/) itself is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3). Changes to the protocol/generator toolchain must therefore be contributed back to the project.
 
 This documentation is licensed under *CC BY 4.0* ([Human readable overview](https://creativecommons.org/licenses/by/4.0/) | [LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE)).
