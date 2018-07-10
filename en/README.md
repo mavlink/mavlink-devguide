@@ -81,8 +81,8 @@ The [Contributing Guide](contributing/contributing.md) explains the contribution
 
 ## License
 
-The generated [C-language version of MAVLink](#prebuilt_libraries) is a header-only library that is made available under the MIT-licence. MAVLink can therefore be *used* without limits in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
+The message definition XML files and the generated [C-language version of MAVLink](#prebuilt_libraries) (a header-only library) are made available under the MIT-licence. MAVLink can therefore be *used* without limits in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
 
-The [MAVLink toolchain](https://github.com/mavlink/mavlink/) itself is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3). Changes to the protocol/generator toolchain must therefore be contributed back to the project.
+The [MAVLink generator toolchain](https://github.com/mavlink/mavlink/) is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3). Changes to the protocol/generator toolchain must therefore be contributed back to the project.
 
 This documentation is licensed under *CC BY 4.0* ([Human readable overview](https://creativecommons.org/licenses/by/4.0/) | [LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE)).
