@@ -22,7 +22,7 @@
 
 <dl>
   <dt>Can I use MAVLink in a closed source application without copyright issues?</dt>
-  <dd>Yes, without any limitations. The generated MAVLink library headers are made available under the *MIT license* (for more information see: [Introduction > License|README.md#license]).
+  <dd>Yes, without any limitations. The generated MAVLink library headers are made available under the *MIT license* (for more information see: <a href="../README.md#license">Introduction > License</a>).
   </dd>
 
   <dt>How does MAVLink detect and decode messages in the byte stream?</dt>
