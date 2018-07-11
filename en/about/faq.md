@@ -36,6 +36,14 @@
 
   <dt>Why is the sequence number in the MAVLink header needed?</dt>
   <dd>MAVLink is part of the safety critical components of an unmanned air system. A bad communication link dropping many packets can endanger the flight safety of the aircraft and has to be monitored. Having the sequence in the header allows MAVLink to continuously provide feedback about the packet drop rate and thus allows the aircraft or ground control station to take action.</dd>
+  
+  <dt>Why is CRC_EXTRA needed in the packet checksum?</dt>
+  <dd>The CRC_EXTRA CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message 
+  (required because as a lightweight protocol, the message structure isn't included in the payload).
+  <br><br>
+  In MAVLink 0.9 the CRC was not used (although there was a length check). 
+  There were a small number of cases where XML describing a message changed without changing the message length, 
+  leading to badly corrupted fields when messages were read.</dd>
 
   <dt>I would like to help improve the decoding/encoding routines or other features. Can MAVLink be changed?</dt>
   <dd>Yes, but only very, very carefully with safety testing. 

@@ -1,36 +1,45 @@
 # Packet Serialization
 
-{% method %}
-## Attitude Message Example
+MAVLink is a lightweight protocol for sending and receiving messages/commands over a serial link.
+The protocol defines the packet format used for the communication, including the mechanisms for encoding and decoding the payloads for different messages,
+and for error correction and signing.
 
-This first example shows how the MAVLink convenience serialization functions make it simple to send messages over a link.
+This topic provides detail about MAVLink serialization.
+It is primarily intended for developers who are creating/maintaining a MAVLink generator, 
+and need a detailed understanding of the serialization format.
+
+
+## MAVLink Serialization for MAVLink Users
+
+Generally speaking most MAVLink users do not need to understand the details of the serialization format;
+The MAVLink generators create helper APIs that handle message encoding and decoding.
+
+{% method %}
+For example, this function is provided for sending the altitude message. 
+Behind the scenes the serializer takes care of encoding the message and sending it out on the serial port.
 
 {% sample lang="c" %}
-This is the function definition for the altitude message. Behind the scenes the serializer takes care of encoding the message and sending it out on the serial port.
-
 ```c
 static inline void mavlink_msg_attitude_send(mavlink_channel_t chan,
 uint32_t time_boot_ms, float roll, float pitch, float yaw,
 float rollspeed, float pitchspeed, float yawspeed);
-
 ```
 
 {% sample lang="python" %}
-This is the function definition for the altitude message. Behind the scenes the serializer takes care of encoding the message and sending it out on the serial port.
-
 ```python
 def attitude_send(self, usec, roll, pitch, yaw,
 rollspeed, pitchspeed, yawspeed):
 ```
 
-{% common %}
+{% endmethod %}
+
 Whatever language you are using, the resulting binary data will be the same:
 
 ```
 0x55 0x1C 0x1E <time> <roll> <pitch> <yaw>
 <rollspeed> <pitchspeed> <yawspeed> <crc1> <crc2>
 ```
-{% endmethod %}
+
 
 ## Packet Format
 
@@ -53,7 +62,7 @@ Byte Index | C version | Content | Value | Explanation
 4 | `uint8_t compid`| Component ID   | 0 - 255 | ID of *component* sending the message. Used to differentiate components in a *system* (e.g. autopilot and a camera). 
 5 | `uint8_t msgid` | Message ID     | 0 - 255 | ID of *message type* in payload. Used to decode data back into message object.
 6 to (n+6) | `uint8_t payload[max 255]` | Payload data | | Message data. Content depends on message type (i.e. Message ID).
-(n+7) to (n+8) | `uint16_t checksum` | Checksum (low byte, high byte) | | X.25 CRC. CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte for ensuring the message definition matches the current version.
+(n+7) to (n+8) | `uint16_t checksum` | Checksum (low byte, high byte) | | X.25 CRC. CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte for ensuring the message definition matches the current version. The checksum is the same as used in ITU X.25 and SAE AS-4 standards ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)), documented in [SAE AS5669A](http://www.sae.org/servlets/productDetail?PROD_TYP=STD&PROD_CD=AS5669A). See the MAVLink source code for [the documented C-implementation](https://github.com/mavlink/c_library_v1/blob/master/checksum.h).
 
 * The minimum packet length is 8 bytes for acknowledgment packets without payload
 * The maximum packet length is 263 bytes for full payload
@@ -79,37 +88,28 @@ Byte Index | C version | Content | Value | Explanation
 10 | `uint8_t target_sysid` | System ID (target)    | 1 - 255 | ID of target *system* (vehicle). Optionally used for point-to-point messages.
 11 | `uint8_t target_compid`| Component ID (target) | 0 - 255 | ID of target *component*. Optionally used for point-to-point messages. <!-- why? -->
 12 to (n+12) | `uint8_t payload[max 253]` | Payload data | | Message data. Depends on message type (i.e. Message ID) and contents.
-(n+13) to (n+14) | `uint16_t checksum` | Checksum (low byte, high byte) | | X.25 CRC. CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte for ensuring the message definition matches the current version.
+(n+13) to (n+14) | `uint16_t checksum` | Checksum (low byte, high byte) | | X.25 CRC. CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte for ensuring the message definition matches the current version. The checksum is the same as used in ITU X.25 and SAE AS-4 standards ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)), documented in [SAE AS5669A](http://www.sae.org/servlets/productDetail?PROD_TYP=STD&PROD_CD=AS5669A). See the MAVLink source code for [the documented C-implementation](https://github.com/mavlink/c_library_v2/blob/master/checksum.h).
 (n+15) to (n+28) | `uint8_t signature[13]`| Signature | | Signature to ensure the link is tamper-proof (Optional).
 
 
 
-## Field Reordering and CRC Extra Calculation {#crc_extra}
+## Message Field Reordering and CRC Extra Calculation {#crc_extra}
 
-MAVLink uses one extra CRC that is added to the message CRC to detect mismatches in message specifications. This is to prevent two devices using different message versions from incorrectly decoding a message with the same length.
+MAVLink packets include content for the specific message (identified by message id) in the payload section.
+MAVLink does not include information about the message structure in the payload in order to reduce overhead, 
+so the meaning, order and size of message fields in the over-the-wire must be understood/agreed by both the sender and receiver.
 
-The checksum is the same as used in ITU X.25 and SAE AS-4 standards ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)), documented in [SAE AS5669A](http://www.sae.org/servlets/productDetail?PROD_TYP=STD&PROD_CD=AS5669A). See the MAVLink source code for [the documented C-implementation](https://github.com/mavlink/c_library_v1/blob/master/checksum.h).
+MAVLink reorders the fields in the XML message definition for over-the-wire transmission (in the *payload* part of the frame). 
+The reordering strategy for different MAVLink versions is given below.
 
+MAVLink adds one extra CRC to the message checksum that allows a receiver to detect changes in [message specifications](../messages/README.md) that
+might make the over-the-wire format incompatible: new/removed fields, or changes to field name, data type, order, or array length.
 
-### Rationale for a Format Checksum
-
-While MAVLink 0.9 was used there were a small number of incidents where the XML describing a message that was in active use changed. The change was such that the length of the message didn't change, but the fields did. Revision 0.9 did check the correct message length, but not the field order, types or field names. This meant that, when a MAV using the old code was talking to a ground station using updated code, the fields were badly corrupted. The MAVLink 0.9 protocol completely relied on everyone being careful not to change the meaning or format of any existing message. With so many people working on MAVLink this was hard to enforce. So for MAVLink 1.0 this problem was solved by adding a 1 byte 'seed' to the checksum based on the XML for the message.
-
-
-### CRC_EXTRA Calculation
-
-When the MAVLink code generator runs, it takes a checksum of the XML structure for each message and creates an array define `MAVLINK_MESSAGE_CRCS`. 
-This is used to initialise the `mavlink_message_crcs[]` array in the C/C++ implementation, and is similarly used in the python (or any other, such as the C# and JavaScript) implementation. 
-When the checksum for a message is calculated, this extra byte is added on the end of the data that the checksum is calculated over. 
-The result is that if the XML changes then the message will be rejected by the recipient as having an incorrect checksum. 
-This ensures that only messages where the sender and recipient are using the same message structure will get through (or at least it makes a mistake much more unlikely, as for any checksum application).
-
-If you are doing your own implementation of MAVLink 1.0 you can get this checksum in one of two ways: you can just use the generated headers, and use `MAVLINK_MESSAGE_CRCS` to get the right seed for each message type or you can re-implement the code that calculates the seed.
-
-As MAVLink reorders internally the message fields according to their size to prevent word / halfword alignment issues (see [Data structure alignment](http://en.wikipedia.org/wiki/Data%20structure%20alignment) (Wikipedia) for further reference) and a wrongly implemented reordering potentially can cause inconsistencies as well, the `CRC_EXTRA` is calculated based on the internal `struct` and over-the-air message layout, not in the XML order.
+> **Tip** The message helper receiver function [mavlink_parse_char()](../getting_started/use_source.md#receiving) 
+  will give a status `MAVLINK_FRAMING_BAD_CRC` during decoding if the message specification is incompatible.
 
 
-### Field Reordering (MAVLink 1)
+### MAVLink 1 Field Reordering
 
 The reordering happens as follows:
 
@@ -119,32 +119,61 @@ The reordering happens as follows:
 * The over-the-air order is the same as for the `struct` and thus represents the reordered fields
 * The CRC field is calculated AFTER the reordering, to ensure that a mistake during field reordering will be caught by a faulty CRC. The provided Python, C and C# reference implementations are tested to have the correct field reordering, this is only a concern for custom implementations.
 
-> **Warning** This ordering is unique and can be easily implemented in a protocol generator by using a stable sorting algorithm. The alternative to using sorting would be either to use inefficient alignment, which is bad for the target architectures for typical MAVLink applications, or to have function calls in the order of the variable size instead of the application context. This would lead to very confusing function signatures of serialization functions.
+> **Warning** This ordering is unique and can be easily implemented in a protocol generator by using a stable sorting algorithm. 
+  The alternative to using sorting would be either to use inefficient alignment, 
+  which is bad for the target architectures for typical MAVLink applications, 
+  or to have function calls in the order of the variable size instead of the application context. 
+  This would lead to very confusing function signatures of serialization functions. 
 
 
-### Field Reordering (MAVLink 2)
+### MAVLink 2 Field Reordering
 
-MAVLink 2 messages order the MAVLink 1 ("base") fields in the same way as the MAVLink 1 protocol. Extension fields in MAVLink 1 messages, and all fields in new MAVLink 2 messages (id>255), are ordered in the same way as the source XML.
+MAVLink 2 messages order the MAVLink 1 ("base") fields in the same way as the MAVLink 1 protocol. 
+Extension fields in MAVLink 1 messages, and all fields in new MAVLink 2 messages (id>255), are ordered in the same way as the source XML.
 
 <!-- FYI: Field ordering is in pymavlink/generator/mavparse.py - see https://github.com/mavlink/mavlink-devguide/pull/27#issuecomment-349215965 for info -->
 
 
-### Python Code Example
+### CRC_EXTRA Calculation
 
-This is the python code that calculates the `CRC_EXTRA` seed:
+The `crc_extra` CRC is required to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message.
+
+When the MAVLink code generator runs, it takes a checksum of the XML structure for each message and creates an array define `MAVLINK_MESSAGE_CRCS`.
+This is used to initialise the `mavlink_message_crcs[]` array in the C/C++ implementation, and is similarly used in the Python (or any other, such as the C# and JavaScript) implementation. 
+
+When the sender calculates the checksum for a message it adds the `crc_extra` byte onto the end of the data that the checksum is calculated over.
+The recipient calculates a checksum for the received message and adds its own `crc_extra` for the particular message id.
+If the `crc_extra` for the sender and receiver are different the checksums will not match.
+
+This approach ensures that only messages where the sender and recipient are using the same message structure will be decoded (or at least it makes a mistake much more unlikely, as for any checksum application).
+
+If you are doing your own implementation of MAVLink you can get this checksum in one of two ways: 
+you can include the generated headers and use `MAVLINK_MESSAGE_CRCS` to get the right seed for each message type,
+or you can re-implement the code that calculates the seed.
+
+As MAVLink internally reorders the message fields according to their size to prevent word / halfword alignment issues (see [Data structure alignment](http://en.wikipedia.org/wiki/Data%20structure%20alignment) (Wikipedia) for further reference), and a wrongly implemented reordering potentially can cause inconsistencies as well, the `CRC_EXTRA` is calculated based on the internal `struct` and over-the-air message layout, not in the XML order.
+
+This is the Python code that calculates the `CRC_EXTRA` seed:
 
 ```python
 def message_checksum(msg):
     '''calculate a 8-bit checksum of the key fields of a message, so we
        can detect incompatible XML changes'''
-    crc = mavutil.x25crc(msg.name + ' ')
-    for f in msg.ordered_fields:
-        crc.accumulate(f.type + ' ')
-        crc.accumulate(f.name + ' ')
+    from .mavcrc import x25crc
+    crc = x25crc()
+    crc.accumulate_str(msg.name + ' ')
+    # in order to allow for extensions the crc does not include
+    # any field extensions
+    crc_end = msg.base_fields()
+    for i in range(crc_end):
+        f = msg.ordered_fields[i]
+        crc.accumulate_str(f.type + ' ')
+        crc.accumulate_str(f.name + ' ')
         if f.array_length:
-            crc.accumulate(chr(f.array_length))
-    return (crc.crc&0xFF) ^ (crc.crc>>8) 
+            crc.accumulate([f.array_length])
+    return (crc.crc&0xFF) ^ (crc.crc>>8)
 ```
 
-> **Note** This uses the same x25 checksum that is used at runtime. It calculates a CRC over the message name (such as “RAW_IMU”) followed by the type and name of each field, space separated. The order of the fields is the order they are sent over the wire. For arrays, the array length is also added.
+<!-- From https://github.com/mavlink/pymavlink/blob/master/generator/mavparse.py#L385 -->
 
+> **Note** This uses the same x25 checksum that is used at runtime. It calculates a CRC over the message name (such as “RAW_IMU”) followed by the type and name of each field, space separated. The order of the fields is the order they are sent over the wire. For arrays, the array length is also added.
