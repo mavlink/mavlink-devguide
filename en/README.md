@@ -33,6 +33,8 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 ## Supported Languages {#supported_languages}
 
+The MAVLink project includes the [mavgen](getting_started/generate_source.md#mavgen-command-line) tool that can be used to create MAVLink APIs/libraries for the following MAVLink versions/programming languages:
+
 [MAVLink 2](guide/mavlink_2.md) source files can be generated for:
 
 * C
@@ -51,11 +53,25 @@ MAVLink 1 source files can be generated for:
 * Python (2.7+, 3.3+)
 
 
-## Prebuilt MAVLink Source Files {#prebuilt_libraries}
+The following libraries have been developed outside the project:
+
+> **Note** The MAVLink project has not validated and does not provide technical support for these projects.
+
+* Clojure 
+  - [clj-mavlink](https://github.com/WickedShell/clj-mavlink) - Clojure MAVLink Bindings. 
+    - Supports both MAVLink v1 and MAVLink v2.
+* Java 
+  - [dronefleet/mavlink](https://github.com/dronefleet/mavlink) - An *idiomatic* Java SDK/API for MAVLink. 
+    - Supports both MAVLink v1 and MAVLink v2.
+
+
+
+## Prebuilt MAVLink Libraries {#prebuilt_libraries}
 
 *C* MAVLink Source Files (only) are auto-generated for the latest versions of all message [specifications/dialects](messages/README.md) (for both MAVLink 1 and 2):
 * [c_library_v2](https://github.com/mavlink/c_library_v2) (MAVLink 2)
 * [c_library_v1](https://github.com/mavlink/c_library_v1) (MAVLink 1)
+
 
 [Using Generated Source Files](getting_started/use_source.md) explains how to use these libraries.
 
