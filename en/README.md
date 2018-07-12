@@ -33,29 +33,34 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 ## Supported Languages {#supported_languages}
 
-[MAVLink 2](guide/mavlink_2.md) source files can be generated for:
+The MAVLink project includes the [mavgen](getting_started/generate_source.md#mavgen-command-line) generator tool that can be used to create MAVLink APIs/libraries for a number of programming languages (these are supported by the project). Additional generators have been provided by other projects. 
 
-* C
-* C++11
-* Python (2.7+, 3.3+)
+> **Note** The MAVLink project has not validated and does not provide technical support for generators other than *mavgen*.
 
-MAVLink 1 source files can be generated for:
+The table below shows the available languages/generators, along with their support for MAVLink v1, [MAVLink 2](guide/mavlink_2.md) and [Message Signing](guide/message_signing.md).
 
-* C
-* C#
-* Objective C
-* Java
-* JavaScript
-* Lua
-* Swift
-* Python (2.7+, 3.3+)
+Language | Generator | MAVLink v1 | MAVLink v2 | Signing | Notes
+:--- | :--- | :---:| :---: | :---: | :---
+C       | mavgen | Y | Y | Y | This is the MAVLink project reference implementation. [Generated libraries](#prebuilt_libraries) are also published for both protocol versions.
+C++11   | mavgen | Y | Y | Y | 
+Python (2.7+, 3.3+) | mavgen | Y | Y | Y | 
+C#      | mavgen | Y |  | 
+Objective C | mavgen | Y | | | 
+Java    | mavgen | Y | | |
+Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | Y | Y | Y | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
+JavaScript | mavgen | Y | | | 
+Lua     | mavgen | Y | | | 
+Swift   | mavgen | Y | | | 
+Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y | Clojure MAVLink Bindings.
 
 
-## Prebuilt MAVLink Source Files {#prebuilt_libraries}
+
+## Prebuilt MAVLink Libraries {#prebuilt_libraries}
 
 *C* MAVLink Source Files (only) are auto-generated for the latest versions of all message [specifications/dialects](messages/README.md) (for both MAVLink 1 and 2):
 * [c_library_v2](https://github.com/mavlink/c_library_v2) (MAVLink 2)
 * [c_library_v1](https://github.com/mavlink/c_library_v1) (MAVLink 1)
+
 
 [Using Generated Source Files](getting_started/use_source.md) explains how to use these libraries.
 
