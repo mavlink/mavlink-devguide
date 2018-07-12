@@ -33,36 +33,25 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 ## Supported Languages {#supported_languages}
 
-The MAVLink project includes the [mavgen](getting_started/generate_source.md#mavgen-command-line) tool that can be used to create MAVLink APIs/libraries for the following MAVLink versions/programming languages:
+The MAVLink project includes the [mavgen](getting_started/generate_source.md#mavgen-command-line) generator tool that can be used to create MAVLink APIs/libraries for a number of programming languages (these are supported by the project). Additional generators have been provided by other projects. 
 
-[MAVLink 2](guide/mavlink_2.md) source files can be generated for:
+> **Note** The MAVLink project has not validated and does not provide technical support for generators other than *mavgen*.
 
-* C
-* C++11
-* Python (2.7+, 3.3+)
+The table below shows the available languages/generators, along with their support for MAVLink v1, [MAVLink 2](guide/mavlink_2.md) and [Message Signing](guide/message_signing.md).
 
-MAVLink 1 source files can be generated for:
-
-* C
-* C#
-* Objective C
-* Java
-* JavaScript
-* Lua
-* Swift
-* Python (2.7+, 3.3+)
-
-
-The following libraries have been developed outside the project:
-
-> **Note** The MAVLink project has not validated and does not provide technical support for these projects.
-
-* Clojure 
-  - [clj-mavlink](https://github.com/WickedShell/clj-mavlink) - Clojure MAVLink Bindings. 
-    - Supports both MAVLink v1 and MAVLink v2.
-* Java 
-  - [dronefleet/mavlink](https://github.com/dronefleet/mavlink) - An *idiomatic* Java SDK/API for MAVLink. 
-    - Supports both MAVLink v1 and MAVLink v2.
+Language | Generator | MAVLink v1 | MAVLink v2 | Signing | Notes
+:--- | :--- | :---:| :---: | :---: | :---
+C       | mavgen | Y | Y | Y | This is the MAVLink project reference implementation. [Generated libraries](#prebuilt_libraries) are also published for both protocol versions.
+C++11   | mavgen | Y | Y | Y | 
+Python (2.7+, 3.3+) | mavgen | Y | Y | Y | 
+C#      | mavgen | Y |  | 
+Objective C | mavgen | Y | | | 
+Java    | mavgen | Y | | |
+Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | Y | Y | Y | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
+JavaScript | mavgen | Y | | | 
+Lua     | mavgen | Y | | | 
+Swift   | mavgen | Y | | | 
+Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y | Clojure MAVLink Bindings.
 
 
 
