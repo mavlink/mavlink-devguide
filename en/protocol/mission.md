@@ -4,14 +4,14 @@ The mission protocol is a sub-protocol supporting guaranteed delivery of message
 
 ## MAVLink 2 Extensions
 
-MAVLink 2 supports several different mission types in the MISSION\_COUNT and MISSION\_REQUEST messages using the `mission_type` field. This instructs the autopilot to read and write to different lists containing the regular mission (MAV\_MISSION\_TYPE\_MISSION), geofence (MAV\_MISSION\_TYPE\_FENCE) and safe points used as alternate landing sites (MAV\_MISSION\_TYPE\_RALLY).
+MAVLink 2 supports several different mission types in the [MISSION_COUNT](../messages/common.md#MISSION_COUNT) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) messages using the `mission_type` field. This instructs the autopilot to read and write to different lists containing the regular mission ([MAV_MISSION_TYPE_MISSION](../messages/common.md#MAV_MISSION_TYPE_MISSION)), geofence ([MAV_MISSION_TYPE_FENCE](../messages/common.md#MAV_MISSION_TYPE_FENCE)) and safe points used as alternate landing sites ([MAV_MISSION_TYPE_RALLY](../messages/common.md#MAV_MISSION_TYPE_RALLY)).
 
 On MAVLink 1 links the mission type defaults to `MISSION` and the ground control station should not attempt to send geofence or alternate landing spot coordinates.
 
 
 ## Upload a Mission to the Vehicle
 
-The diagram below shows how the ground control station (GCS) can upload a mission to the drone. When MAVLink 2 is used several different mission types (regular waypoints or geofence coordinates, etc.) can be selected in the MISSION\_COUNT and MISSION\_REQUEST messages using the `mission_type` field.
+The diagram below shows how the ground control station (GCS) can upload a mission to the drone. When MAVLink 2 is used several different mission types (regular waypoints or geofence coordinates, etc.) can be selected in the `MISSION_COUNT` and `MISSION_REQUEST` messages using the `mission_type` field.
 
 {% mermaid %}
 sequenceDiagram;
@@ -31,7 +31,7 @@ sequenceDiagram;
 
 ## Download a Mission from the Vehicle
 
-The diagram below shows the communication sequence to download a mission from the drone. When MAVLink 2 is used several different mission types (regular waypoints or geofence coordinates, etc.) can be selected in the MISSION\_COUNT and MISSION\_REQUEST messages using the `mission_type` field.
+The diagram below shows the communication sequence to download a mission from the drone. When MAVLink 2 is used several different mission types (regular waypoints or geofence coordinates, etc.) can be selected in the `MISSION_COUNT` and `MISSION_REQUEST` messages using the `mission_type` field.
 
 {% mermaid %}
 sequenceDiagram;
