@@ -25,7 +25,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -51,7 +51,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -207,7 +207,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -397,7 +397,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>

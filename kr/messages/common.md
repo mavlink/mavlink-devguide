@@ -24,7 +24,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -180,7 +180,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -410,6 +410,13 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_comment">Charging station</td>
     </tr>
+    <tr class="mavlink_field" id="MAV_TYPE_FLARM">
+     <td class="mavlink_type" valign="top">32</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_TYPE_FLARM">MAV_TYPE_FLARM</a>
+     </td>
+     <td class="mavlink_comment">Onboard FLARM collision avoidance system</td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="FIRMWARE_VERSION_TYPE">
@@ -419,7 +426,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -469,7 +476,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -582,7 +589,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -653,7 +660,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -724,7 +731,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -768,7 +775,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -861,7 +868,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -948,7 +955,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1176,6 +1183,14 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_comment">
      </td>
     </tr>
+    <tr class="mavlink_field" id="MAV_COMP_ID_FLARM">
+     <td class="mavlink_type" valign="top">160</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_COMP_ID_FLARM">MAV_COMP_ID_FLARM</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
     <tr class="mavlink_field" id="MAV_COMP_ID_MAPPER">
      <td class="mavlink_type" valign="top">180</td>
      <td class="mavlink_name" valign="top">
@@ -1273,7 +1288,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1461,6 +1476,20 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_comment">0x2000000 Battery</td>
     </tr>
+    <tr class="mavlink_field" id="MAV_SYS_STATUS_SENSOR_PROXIMITY">
+     <td class="mavlink_type" valign="top">67108864</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SYS_STATUS_SENSOR_PROXIMITY">MAV_SYS_STATUS_SENSOR_PROXIMITY</a>
+     </td>
+     <td class="mavlink_comment">0x4000000 Proximity</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SYS_STATUS_SENSOR_SATCOM">
+     <td class="mavlink_type" valign="top">134217728</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SYS_STATUS_SENSOR_SATCOM">MAV_SYS_STATUS_SENSOR_SATCOM</a>
+     </td>
+     <td class="mavlink_comment">0x8000000 Satellite Communication</td>
+    </tr>
    </tbody>
   </table>
   <h3 class="mavlink_message_name" id="MAV_FRAME">
@@ -1471,7 +1500,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1627,7 +1656,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1697,7 +1726,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1748,7 +1777,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1791,7 +1820,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1841,7 +1870,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1884,7 +1913,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1934,7 +1963,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2752,6 +2781,64 @@ These messages define the common message set, which is the reference message set
       <br/>
      </td>
     </tr>
+    <tr class="mavlink_field" id="MAV_CMD_DO_ORBIT">
+     <td class="mavlink_type" valign="top">34</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_CMD_DO_ORBIT">MAV_CMD_DO_ORBIT</a>
+     </td>
+     <td class="mavlink_comment">WIP: Start orbiting on the circumference of a circle defined by the parameters. Setting any value NaN results in using defaults.</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
+     <td class="mavlink_comment">Radius of the circle in meters. positive: Orbit clockwise. negative: Orbit counter-clockwise.</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
+     <td class="mavlink_comment">Velocity tangential in m/s. NaN: Vehicle configuration default.</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
+     <td class="mavlink_comment">Yaw behaviour of the vehicle. 0: vehicle front points to the center (default). 1: Hold last heading. 2: Leave yaw uncontrolled.</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
+     <td class="mavlink_comment">Reserved (e.g. for dynamic center beacon options)</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
+     <td class="mavlink_comment">Center point latitude (if no MAV_FRAME specified) / X coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
+     <td class="mavlink_comment">Center point longitude (if no MAV_FRAME specified) / Y coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
+     <td class="mavlink_comment">Center point altitude (AMSL) (if no MAV_FRAME specified) / Z coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
+    </tr>
+    <tr>
+     <td colspan="3">
+      <br/>
+     </td>
+    </tr>
     <tr class="mavlink_field" id="MAV_CMD_NAV_ROI">
      <td class="mavlink_type" valign="top">80</td>
      <td class="mavlink_name" valign="top">
@@ -2767,7 +2854,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Region of intereset mode. (see MAV_ROI enum)</td>
+     <td class="mavlink_comment">Region of interest mode. (see MAV_ROI enum)</td>
     </tr>
     <tr>
      <td>
@@ -3917,7 +4004,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_DO_REPEAT_RELAY">MAV_CMD_DO_REPEAT_RELAY</a>
      </td>
-     <td class="mavlink_comment">Cycle a relay on and off for a desired number of cyles with a desired period.</td>
+     <td class="mavlink_comment">Cycle a relay on and off for a desired number of cycles with a desired period.</td>
     </tr>
     <tr>
      <td>
@@ -4323,7 +4410,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_DO_GO_AROUND">MAV_CMD_DO_GO_AROUND</a>
      </td>
-     <td class="mavlink_comment">Mission command to safely abort an autonmous landing.</td>
+     <td class="mavlink_comment">Mission command to safely abort an autonomous landing.</td>
     </tr>
     <tr>
      <td>
@@ -4797,7 +4884,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Region of intereset mode. (see MAV_ROI enum)</td>
+     <td class="mavlink_comment">Region of interest mode. (see MAV_ROI enum)</td>
     </tr>
     <tr>
      <td>
@@ -4995,19 +5082,19 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">roll input (0 = angle, 1 = angular rate)</td>
+     <td class="mavlink_comment">roll input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
     </tr>
     <tr>
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">pitch input (0 = angle, 1 = angular rate)</td>
+     <td class="mavlink_comment">pitch input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
     </tr>
     <tr>
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">yaw input (0 = angle, 1 = angular rate)</td>
+     <td class="mavlink_comment">yaw input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -5077,7 +5164,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_DO_SET_CAM_TRIGG_DIST">MAV_CMD_DO_SET_CAM_TRIGG_DIST</a>
      </td>
-     <td class="mavlink_comment">Mission command to set camera trigger distance for this flight. The camera is trigerred each time this distance is exceeded. This command can also be used to set the shutter integration time for the camera.</td>
+     <td class="mavlink_comment">Mission command to set camera trigger distance for this flight. The camera is triggered each time this distance is exceeded. This command can also be used to set the shutter integration time for the camera.</td>
     </tr>
     <tr>
      <td>
@@ -5615,19 +5702,19 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">absolute altitude min (in meters, AMSL) - if vehicle moves below this alt, the command will be aborted and the mission will continue.  0 means no lower altitude limit</td>
+     <td class="mavlink_comment">Absolute altitude (AMSL) min, in meters - if vehicle moves below this alt, the command will be aborted and the mission will continue. 0 means no lower altitude limit</td>
     </tr>
     <tr>
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">absolute altitude max (in meters)- if vehicle moves above this alt, the command will be aborted and the mission will continue.  0 means no upper altitude limit</td>
+     <td class="mavlink_comment">Absolute altitude (AMSL) max, in meters - if vehicle moves above this alt, the command will be aborted and the mission will continue. 0 means no upper altitude limit</td>
     </tr>
     <tr>
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">horizontal move limit (in meters, AMSL) - if vehicle moves more than this distance from it's location at the moment the command was executed, the command will be aborted and the mission will continue. 0 means no horizontal altitude limit</td>
+     <td class="mavlink_comment">Horizontal move limit (AMSL), in meters - if vehicle moves more than this distance from its location at the moment the command was executed, the command will be aborted and the mission will continue. 0 means no horizontal altitude limit</td>
     </tr>
     <tr>
      <td>
@@ -5680,6 +5767,70 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
      <td class="mavlink_comment">Height delay (meters). This is for commanding engine start only after the vehicle has gained the specified height. Used in VTOL vehicles during takeoff to start engine after the aircraft is off the ground. Zero for no delay.</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td colspan="3">
+      <br/>
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_CMD_DO_SET_MISSION_CURRENT">
+     <td class="mavlink_type" valign="top">224</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_CMD_DO_SET_MISSION_CURRENT">MAV_CMD_DO_SET_MISSION_CURRENT</a>
+     </td>
+     <td class="mavlink_comment">Set the mission item with sequence number seq as current item. This means that the MAV will continue to this mission item on the shortest path (not following the mission items in-between).</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
+     <td class="mavlink_comment">Mission sequence value to set</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
+     <td class="mavlink_comment">Empty</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
+     <td class="mavlink_comment">Empty</td>
     </tr>
     <tr>
      <td>
@@ -6285,7 +6436,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_SET_MESSAGE_INTERVAL">MAV_CMD_SET_MESSAGE_INTERVAL</a>
      </td>
-     <td class="mavlink_comment">Request the interval between messages for a particular MAVLink message ID. This interface replaces REQUEST_DATA_STREAM</td>
+     <td class="mavlink_comment">Set the interval between messages for a particular MAVLink message ID. This interface replaces REQUEST_DATA_STREAM</td>
     </tr>
     <tr>
      <td>
@@ -6639,6 +6790,12 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
+     <td class="mavlink_comment">Capture sequence (ID to prevent double captures when a command is retransmitted, 0: unused, &gt;= 1: used)</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
      <td class="mavlink_comment">Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -7078,7 +7235,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Control transmittion over high latency telemetry (0: stop, 1: start)</td>
+     <td class="mavlink_comment">Control transmission over high latency telemetry (0: stop, 1: start)</td>
     </tr>
     <tr>
      <td>
@@ -7305,7 +7462,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_ARM_AUTHORIZATION_REQUEST">MAV_CMD_ARM_AUTHORIZATION_REQUEST</a>
      </td>
-     <td class="mavlink_comment">Request authorization to arm the vehicle to a external entity, the arm authorizer is resposible to request all data that is needs from the vehicle before authorize or deny the request. If approved the progress of command_ack message should be set with period of time that this authorization is valid in seconds or in case it was denied it should be set with one of the reasons in ARM_AUTH_DENIED_REASON.</td>
+     <td class="mavlink_comment">Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request. If approved the progress of command_ack message should be set with period of time that this authorization is valid in seconds or in case it was denied it should be set with one of the reasons in ARM_AUTH_DENIED_REASON.</td>
     </tr>
     <tr>
      <td>
@@ -7755,7 +7912,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Desired ground speed at release time. This can be overriden by the airframe in case it needs to meet minimum airspeed. A negative value indicates the system can define the ground speed at will.</td>
+     <td class="mavlink_comment">Desired ground speed at release time. This can be overridden by the airframe in case it needs to meet minimum airspeed. A negative value indicates the system can define the ground speed at will.</td>
     </tr>
     <tr>
      <td>
@@ -7779,7 +7936,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Altitude, in meters AMSL</td>
+     <td class="mavlink_comment">Altitude (AMSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -7801,7 +7958,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Operation mode. 0: Abort deployment, continue normal mission. 1: switch to payload deploment mode. 100: delete first payload deployment request. 101: delete all payload deployment requests.</td>
+     <td class="mavlink_comment">Operation mode. 0: Abort deployment, continue normal mission. 1: switch to payload deployment mode. 100: delete first payload deployment request. 101: delete all payload deployment requests.</td>
     </tr>
     <tr>
      <td>
@@ -7895,7 +8052,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Altitude, in meters AMSL</td>
+     <td class="mavlink_comment">Altitude (AMSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -7953,7 +8110,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Altitude, in meters AMSL</td>
+     <td class="mavlink_comment">Altitude (AMSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8011,7 +8168,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Altitude, in meters AMSL</td>
+     <td class="mavlink_comment">Altitude (AMSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8069,7 +8226,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Altitude, in meters AMSL</td>
+     <td class="mavlink_comment">Altitude (AMSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8127,7 +8284,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Altitude, in meters AMSL</td>
+     <td class="mavlink_comment">Altitude (AMSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8185,7 +8342,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Altitude, in meters AMSL</td>
+     <td class="mavlink_comment">Altitude (AMSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8243,7 +8400,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Altitude, in meters AMSL</td>
+     <td class="mavlink_comment">Altitude (AMSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8301,7 +8458,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Altitude, in meters AMSL</td>
+     <td class="mavlink_comment">Altitude (AMSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8359,7 +8516,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Altitude, in meters AMSL</td>
+     <td class="mavlink_comment">Altitude (AMSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8417,7 +8574,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Altitude, in meters AMSL</td>
+     <td class="mavlink_comment">Altitude (AMSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8725,7 +8882,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -8805,7 +8962,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -8855,7 +9012,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -8942,7 +9099,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -9027,7 +9184,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -9119,7 +9276,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -9172,11 +9329,11 @@ These messages define the common message set, which is the reference message set
   <h3 class="mavlink_message_name" id="MAV_MISSION_RESULT">
    <a href="#MAV_MISSION_RESULT">MAV_MISSION_RESULT</a>
   </h3>
-  <p class="description">result in a mavlink mission ack</p>
+  <p class="description">result in a MAVLink mission ack</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -9296,7 +9453,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -9342,7 +9499,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_SEVERITY_NOTICE">MAV_SEVERITY_NOTICE</a>
      </td>
-     <td class="mavlink_comment">An unusual event has occured, though not an error condition. This should be investigated for the root cause.</td>
+     <td class="mavlink_comment">An unusual event has occurred, though not an error condition. This should be investigated for the root cause.</td>
     </tr>
     <tr class="mavlink_field" id="MAV_SEVERITY_INFO">
      <td class="mavlink_type" valign="top">6</td>
@@ -9367,7 +9524,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -9424,7 +9581,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -9474,7 +9631,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -9524,7 +9681,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -9574,7 +9731,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -9862,7 +10019,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -9964,7 +10121,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_PROTOCOL_CAPABILITY_MAVLINK2">MAV_PROTOCOL_CAPABILITY_MAVLINK2</a>
      </td>
-     <td class="mavlink_comment">Autopilot supports mavlink version 2.</td>
+     <td class="mavlink_comment">Autopilot supports MAVLink version 2.</td>
     </tr>
     <tr class="mavlink_field" id="MAV_PROTOCOL_CAPABILITY_MISSION_FENCE">
      <td class="mavlink_type" valign="top">16384</td>
@@ -9996,7 +10153,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10039,7 +10196,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10089,7 +10246,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10139,7 +10296,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10189,7 +10346,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10253,7 +10410,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10303,7 +10460,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10353,7 +10510,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10382,7 +10539,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10557,7 +10714,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10624,11 +10781,11 @@ These messages define the common message set, which is the reference message set
   <h3 class="mavlink_message_name" id="MAV_DO_REPOSITION_FLAGS">
    <a href="#MAV_DO_REPOSITION_FLAGS">MAV_DO_REPOSITION_FLAGS</a>
   </h3>
-  <p class="description">Bitmask of options for the MAV_CMD_DO_REPOSITION</p>
+  <p class="description">Bitmap of options for the MAV_CMD_DO_REPOSITION</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10650,7 +10807,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10750,7 +10907,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10787,7 +10944,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10831,7 +10988,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10902,7 +11059,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -10966,7 +11123,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -11002,7 +11159,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -11031,7 +11188,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -11109,7 +11266,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -11152,7 +11309,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -11202,7 +11359,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -11259,7 +11416,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -11302,7 +11459,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -11339,7 +11496,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -11396,7 +11553,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -11425,7 +11582,7 @@ These messages define the common message set, which is the reference message set
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -11459,6 +11616,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -11466,43 +11624,51 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Type of the MAV (quadrotor, helicopter, etc., up to 15 types, defined in MAV_TYPE ENUM)
-     (Enum:<a href="#MAV_TYPE">MAV_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_TYPE">MAV_TYPE</a>
      </td>
+     <td class="mavlink_comment">Type of the MAV (quadrotor, helicopter, etc.)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">autopilot</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Autopilot type / class. defined in MAV_AUTOPILOT ENUM
-     (Enum:<a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
      </td>
+     <td class="mavlink_comment">Autopilot type / class.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">base_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System mode bitfield, as defined by MAV_MODE_FLAG enum
-     (Enum:<a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
      </td>
+     <td class="mavlink_comment">System mode bitfield.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">custom_mode</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">A bitfield for use for autopilot-specific flags</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">system_status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System status flag, as defined by MAV_STATE enum
-     (Enum:<a href="#MAV_STATE">MAV_STATE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_STATE">MAV_STATE</a>
      </td>
+     <td class="mavlink_comment">System status flag.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mavlink_version</td>
      <td class="mavlink_type" valign="top">uint8_t_mavlink_version</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">MAVLink version, not writable by user, gets added by protocol because of magic data type: uint8_t_mavlink_version</td>
     </tr>
    </tbody>
@@ -11512,12 +11678,14 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">The general system state. If the system is following the MAVLink standard, the system state is mainly defined by three orthogonal states/modes: The system mode, which is either LOCKED (motors shut down and locked), MANUAL (system under RC control), GUIDED (system with autonomous position control, position setpoint controlled manually) or AUTO (system guided by path/waypoint planner). The NAV_MODE defined the current flight state: LIFTOFF (often an open-loop maneuver), LANDING, WAYPOINTS or VECTOR. This represents the internal navigation state machine. The system status shows whether the system is currently active or not and if an emergency occured. During the CRITICAL and EMERGENCY states the MAV is still considered to be active, but should start emergency procedures autonomously. After a failure occured it should first move from active to critical to allow manual intervention and then move to emergency after a certain timeout.</p>
+  <p class="description">The general system state. If the system is following the MAVLink standard, the system state is mainly defined by three orthogonal states/modes: The system mode, which is either LOCKED (motors shut down and locked), MANUAL (system under RC control), GUIDED (system with autonomous position control, position setpoint controlled manually) or AUTO (system guided by path/waypoint planner). The NAV_MODE defined the current flight state: LIFTOFF (often an open-loop maneuver), LANDING, WAYPOINTS or VECTOR. This represents the internal navigation state machine. The system status shows whether the system is currently active or not and if an emergency occurred. During the CRITICAL and EMERGENCY states the MAV is still considered to be active, but should start emergency procedures autonomously. After a failure occurred it should first move from active to critical to allow manual intervention and then move to emergency after a certain timeout.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -11525,80 +11693,138 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">onboard_control_sensors_present</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Bitmask showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present. Indices defined by ENUM MAV_SYS_STATUS_SENSOR
-     (Enum:<a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
+     </td>
+     <td class="mavlink_comment">Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present. Indices defined by ENUM MAV_SYS_STATUS_SENSOR</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">onboard_control_sensors_enabled</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Bitmask showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled. Indices defined by ENUM MAV_SYS_STATUS_SENSOR
-     (Enum:<a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
+     </td>
+     <td class="mavlink_comment">Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled. Indices defined by ENUM MAV_SYS_STATUS_SENSOR</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">onboard_control_sensors_health</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Bitmask showing which onboard controllers and sensors are operational or have an error:  Value of 0: not enabled. Value of 1: enabled. Indices defined by ENUM MAV_SYS_STATUS_SENSOR
-     (Enum:<a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
+     </td>
+     <td class="mavlink_comment">Bitmap showing which onboard controllers and sensors are operational or have an error:  Value of 0: not enabled. Value of 1: enabled. Indices defined by ENUM MAV_SYS_STATUS_SENSOR</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">load</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Maximum usage in percent of the mainloop time, (0%: 0, 100%: 1000) should be always below 1000
-     (Units: d%)</td>
+     <td class="mavlink_units" valign="top">d%</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Maximum usage in percent of the mainloop time. Values: [0-1000] - should always be below 1000</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">voltage_battery</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Battery voltage, in millivolts (1 = 1 millivolt)
-     (Units: mV)</td>
+     <td class="mavlink_units" valign="top">mV</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Battery voltage</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">current_battery</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Battery current, in 10*milliamperes (1 = 10 milliampere), -1: autopilot does not measure the current
-     (Units: cA)</td>
+     <td class="mavlink_units" valign="top">cA</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Battery current, -1: autopilot does not measure the current</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">battery_remaining</td>
      <td class="mavlink_type" valign="top">int8_t</td>
-     <td class="mavlink_comment">Remaining battery energy: (0%: 0, 100%: 100), -1: autopilot estimate the remaining battery
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Remaining battery energy, -1: autopilot estimate the remaining battery</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">drop_rate_comm</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Communication drops in percent, (0%: 0, 100%: 10'000), (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)
-     (Units: c%)</td>
+     <td class="mavlink_units" valign="top">c%</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Communication drop rate, (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">errors_comm</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Communication errors (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">errors_count1</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Autopilot-specific errors</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">errors_count2</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Autopilot-specific errors</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">errors_count3</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Autopilot-specific errors</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">errors_count4</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Autopilot-specific errors</td>
     </tr>
    </tbody>
@@ -11614,6 +11840,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -11621,14 +11848,14 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_unix_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp of the master clock in microseconds since UNIX epoch.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX epoch time).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp of the component clock since boot time in milliseconds.
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
    </tbody>
   </table>
@@ -11643,6 +11870,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -11650,22 +11878,28 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Unix timestamp in microseconds or since system boot if smaller than MAVLink epoch (1.1.2009)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">seq</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">PING sequence</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">0: request ping from all receiving systems, if greater than 0: message is a ping response and number is the system id of the requesting system</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">0: request ping from all receiving components, if greater than 0: message is a ping response and number is the system id of the requesting system</td>
     </tr>
    </tbody>
@@ -11681,6 +11915,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -11688,22 +11923,28 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System the GCS requests control for</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">control_request</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">0: request control of this MAV, 1: Release control of this MAV</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">version</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">0: key as plaintext, 1-255: future, different hashing/encryption variants. The GCS should in general use the safest mode possible initially and then gradually move down the encryption level if it gets a NACK message indicating an encryption mismatch.
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">0: key as plaintext, 1-255: future, different hashing/encryption variants. The GCS should in general use the safest mode possible initially and then gradually move down the encryption level if it gets a NACK message indicating an encryption mismatch.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">passkey</td>
      <td class="mavlink_type" valign="top">char[25]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Password / Key, depending on version plaintext or encrypted. 25 or less characters, NULL terminated. The characters may involve A-Z, a-z, 0-9, and "!?,.-"</td>
     </tr>
    </tbody>
@@ -11773,6 +12014,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -11780,19 +12022,27 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">The system setting the mode</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">base_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">The new base mode
-     (Enum:<a href="#MAV_MODE">MAV_MODE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MODE">MAV_MODE</a>
      </td>
+     <td class="mavlink_comment">The new base mode.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">custom_mode</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">The new autopilot-specific mode. This field can be ignored by an autopilot.</td>
     </tr>
    </tbody>
@@ -11872,6 +12122,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -11879,29 +12130,45 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_id</td>
      <td class="mavlink_type" valign="top">char[16]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_value</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Onboard parameter value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Onboard parameter type: see the MAV_PARAM_TYPE enum for supported data types.
-     (Enum:<a href="#MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
      </td>
+     <td class="mavlink_comment">Onboard parameter type.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_count</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Total number of onboard parameters</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_index</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Index of this onboard parameter</td>
     </tr>
    </tbody>
@@ -11917,6 +12184,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -11924,30 +12192,46 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_id</td>
      <td class="mavlink_type" valign="top">char[16]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_value</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Onboard parameter value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Onboard parameter type: see the MAV_PARAM_TYPE enum for supported data types.
-     (Enum:<a href="#MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
      </td>
+     <td class="mavlink_comment">Onboard parameter type.</td>
     </tr>
    </tbody>
   </table>
@@ -11957,12 +12241,14 @@ These messages define the common message set, which is the reference message set
    )
   </h3>
   <p class="description">The global position, as returned by the Global Positioning System (GPS). This is
-                NOT the global position estimate of the system, but rather a RAW sensor value. See message GLOBAL_POSITION for the global position estimate. Coordinate frame is right-handed, Z-axis up (GPS frame).</p>
+                NOT the global position estimate of the system, but rather a RAW sensor value. See message GLOBAL_POSITION for the global position estimate.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -11970,60 +12256,104 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">fix_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See the GPS_FIX_TYPE enum.
-     (Enum:<a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
+     </td>
+     <td class="mavlink_comment">GPS fix type.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude (WGS84, EGM96 ellipsoid), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Latitude (WGS84, EGM96 ellipsoid)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude (WGS84, EGM96 ellipsoid), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Longitude (WGS84, EGM96 ellipsoid)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude (AMSL, NOT WGS84), in meters * 1000 (positive for up). Note that virtually all GPS modules provide the AMSL altitude in addition to the WGS84 altitude.
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude (AMSL). Positive for up. Note that virtually all GPS modules provide the AMSL altitude in addition to the WGS84 altitude.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">eph</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">epv</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vel</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">GPS ground speed (m/s * 100). If unknown, set to: UINT16_MAX
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS ground speed. If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cog</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Course over ground (NOT heading, but direction of movement) in degrees * 100, 0.0..359.99 degrees. If unknown, set to: UINT16_MAX
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Course over ground (NOT heading, but direction of movement) in degrees * 100, 0.0..359.99 degrees. If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">satellites_visible</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Number of satellites visible. If unknown, set to 255</td>
     </tr>
     <tr class="mavlink_field">
@@ -12032,8 +12362,12 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude (above WGS84, EGM96 ellipsoid), in meters * 1000 (positive for up).
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude (above WGS84, EGM96 ellipsoid). Positive for up.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">h_acc<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -12041,8 +12375,12 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Position uncertainty in meters * 1000 (positive for up).
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Position uncertainty. Positive for up.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">v_acc<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -12050,8 +12388,12 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Altitude uncertainty in meters * 1000 (positive for up).
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude uncertainty. Positive for up.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">vel_acc<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -12059,8 +12401,12 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Speed uncertainty in meters * 1000 (positive for up).
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Speed uncertainty. Positive for up.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">hdg_acc<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -12068,8 +12414,12 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Heading / track uncertainty in degrees * 1e5.
-     (Units: degE5)</td>
+     <td class="mavlink_units" valign="top">degE5</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Heading / track uncertainty</td>
     </tr>
    </tbody>
   </table>
@@ -12084,6 +12434,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12091,35 +12442,41 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">satellites_visible</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Number of satellites visible</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">satellite_prn</td>
      <td class="mavlink_type" valign="top">uint8_t[20]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Global satellite ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">satellite_used</td>
      <td class="mavlink_type" valign="top">uint8_t[20]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">0: Satellite not used, 1: used for localization</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">satellite_elevation</td>
      <td class="mavlink_type" valign="top">uint8_t[20]</td>
-     <td class="mavlink_comment">Elevation (0: right on top of receiver, 90: on the horizon) of satellite
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Elevation (0: right on top of receiver, 90: on the horizon) of satellite</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">satellite_azimuth</td>
      <td class="mavlink_type" valign="top">uint8_t[20]</td>
-     <td class="mavlink_comment">Direction of satellite, 0: 0 deg, 255: 360 deg.
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Direction of satellite, 0: 0 deg, 255: 360 deg.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">satellite_snr</td>
      <td class="mavlink_type" valign="top">uint8_t[20]</td>
-     <td class="mavlink_comment">Signal to noise ratio of satellite
-     (Units: dB)</td>
+     <td class="mavlink_units" valign="top">dB</td>
+     <td class="mavlink_comment">Signal to noise ratio of satellite</td>
     </tr>
    </tbody>
   </table>
@@ -12134,6 +12491,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12141,62 +12499,62 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">X acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">X acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Y acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">Y acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Z acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">Z acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xgyro</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Angular speed around X axis (millirad /sec)
-     (Units: mrad/s)</td>
+     <td class="mavlink_units" valign="top">mrad/s</td>
+     <td class="mavlink_comment">Angular speed around X axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ygyro</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Angular speed around Y axis (millirad /sec)
-     (Units: mrad/s)</td>
+     <td class="mavlink_units" valign="top">mrad/s</td>
+     <td class="mavlink_comment">Angular speed around Y axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zgyro</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Angular speed around Z axis (millirad /sec)
-     (Units: mrad/s)</td>
+     <td class="mavlink_units" valign="top">mrad/s</td>
+     <td class="mavlink_comment">Angular speed around Z axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xmag</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">X Magnetic field (milli tesla)
-     (Units: mT)</td>
+     <td class="mavlink_units" valign="top">mT</td>
+     <td class="mavlink_comment">X Magnetic field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ymag</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Y Magnetic field (milli tesla)
-     (Units: mT)</td>
+     <td class="mavlink_units" valign="top">mT</td>
+     <td class="mavlink_comment">Y Magnetic field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zmag</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Z Magnetic field (milli tesla)
-     (Units: mT)</td>
+     <td class="mavlink_units" valign="top">mT</td>
+     <td class="mavlink_comment">Z Magnetic field</td>
     </tr>
    </tbody>
   </table>
@@ -12211,6 +12569,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12218,52 +12577,70 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">X acceleration (raw)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Y acceleration (raw)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Z acceleration (raw)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xgyro</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Angular speed around X axis (raw)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ygyro</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Angular speed around Y axis (raw)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zgyro</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Angular speed around Z axis (raw)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xmag</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">X Magnetic field (raw)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ymag</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Y Magnetic field (raw)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zmag</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Z Magnetic field (raw)</td>
     </tr>
    </tbody>
@@ -12279,6 +12656,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12286,27 +12664,35 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">press_abs</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Absolute pressure (raw)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">press_diff1</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Differential pressure 1 (raw, 0 if nonexistant)</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">Differential pressure 1 (raw, 0 if nonexistent)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">press_diff2</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Differential pressure 2 (raw, 0 if nonexistant)</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">Differential pressure 2 (raw, 0 if nonexistent)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Raw Temperature measurement (raw)</td>
     </tr>
    </tbody>
@@ -12322,6 +12708,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12329,26 +12716,26 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">press_abs</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Absolute pressure (hectopascal)
-     (Units: hPa)</td>
+     <td class="mavlink_units" valign="top">hPa</td>
+     <td class="mavlink_comment">Absolute pressure</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">press_diff</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Differential pressure 1 (hectopascal)
-     (Units: hPa)</td>
+     <td class="mavlink_units" valign="top">hPa</td>
+     <td class="mavlink_comment">Differential pressure 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Temperature measurement (0.01 degrees celsius)
-     (Units: cdegC)</td>
+     <td class="mavlink_units" valign="top">cdegC</td>
+     <td class="mavlink_comment">Temperature</td>
     </tr>
    </tbody>
   </table>
@@ -12363,6 +12750,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12370,44 +12758,44 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll angle (rad, -pi..+pi)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Roll angle (-pi..+pi)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch angle (rad, -pi..+pi)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Pitch angle (-pi..+pi)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw angle (rad, -pi..+pi)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Yaw angle (-pi..+pi)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rollspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Roll angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitchspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Pitch angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yawspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Yaw angular speed</td>
     </tr>
    </tbody>
   </table>
@@ -12422,6 +12810,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12429,46 +12818,54 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q1</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Quaternion component 1, w (1 in null-rotation)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q2</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Quaternion component 2, x (0 in null-rotation)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q3</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Quaternion component 3, y (0 in null-rotation)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q4</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Quaternion component 4, z (0 in null-rotation)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rollspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Roll angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitchspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Pitch angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yawspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Yaw angular speed</td>
     </tr>
    </tbody>
   </table>
@@ -12483,6 +12880,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12490,44 +12888,44 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X Position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">X Position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y Position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Y Position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z Position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Z Position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X Speed
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">X Speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y Speed
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Y Speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z Speed
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Z Speed</td>
     </tr>
    </tbody>
   </table>
@@ -12543,6 +12941,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12550,56 +12949,56 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude, expressed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude, expressed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude in meters, expressed as * 1000 (millimeters), AMSL (not WGS84 - note that virtually all GPS modules provide the AMSL as well)
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_comment">Altitude (AMSL). Note that virtually all GPS modules provide both WGS84 and AMSL.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">relative_alt</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude above ground in meters, expressed as * 1000 (millimeters)
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_comment">Altitude above ground</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vx</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Ground X Speed (Latitude, positive north), expressed as m/s * 100
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">Ground X Speed (Latitude, positive north)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vy</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Ground Y Speed (Longitude, positive east), expressed as m/s * 100
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">Ground Y Speed (Longitude, positive east)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Ground Z Speed (Altitude, positive up), expressed as m/s * 100
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">Ground Z Speed (Altitude, positive down)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">hdg</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Vehicle heading (yaw angle) in degrees * 100, 0.0..359.99 degrees. If unknown, set to: UINT16_MAX
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_comment">Vehicle heading (yaw angle), 0.0..359.99 degrees. If unknown, set to: UINT16_MAX</td>
     </tr>
    </tbody>
   </table>
@@ -12608,12 +13007,13 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">The scaled values of the RC channels received. (-100%) -10000, (0%) 0, (100%) 10000. Channels that are inactive should be set to UINT16_MAX.</p>
+  <p class="description">The scaled values of the RC channels received: (-100%) -10000, (0%) 0, (100%) 10000. Channels that are inactive should be set to UINT16_MAX.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12621,59 +13021,79 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">port</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Servo output port (set of 8 outputs = 1 port). Most MAVs will just use one, but this allows for more than 8 servos.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan1_scaled</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">RC channel 1 value scaled, (-100%) -10000, (0%) 0, (100%) 10000, (invalid) INT16_MAX.</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">RC channel 1 value scaled.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan2_scaled</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">RC channel 2 value scaled, (-100%) -10000, (0%) 0, (100%) 10000, (invalid) INT16_MAX.</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">RC channel 2 value scaled.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan3_scaled</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">RC channel 3 value scaled, (-100%) -10000, (0%) 0, (100%) 10000, (invalid) INT16_MAX.</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">RC channel 3 value scaled.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan4_scaled</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">RC channel 4 value scaled, (-100%) -10000, (0%) 0, (100%) 10000, (invalid) INT16_MAX.</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">RC channel 4 value scaled.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan5_scaled</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">RC channel 5 value scaled, (-100%) -10000, (0%) 0, (100%) 10000, (invalid) INT16_MAX.</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">RC channel 5 value scaled.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan6_scaled</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">RC channel 6 value scaled, (-100%) -10000, (0%) 0, (100%) 10000, (invalid) INT16_MAX.</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">RC channel 6 value scaled.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan7_scaled</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">RC channel 7 value scaled, (-100%) -10000, (0%) 0, (100%) 10000, (invalid) INT16_MAX.</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">RC channel 7 value scaled.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan8_scaled</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">RC channel 8 value scaled, (-100%) -10000, (0%) 0, (100%) 10000, (invalid) INT16_MAX.</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">RC channel 8 value scaled.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rssi</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Receive signal strength indicator, 0: 0%, 100: 100%, 255: invalid/unknown.
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_comment">Receive signal strength indicator. Values: [0-100], 255: invalid/unknown.</td>
     </tr>
    </tbody>
   </table>
@@ -12682,12 +13102,13 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">The RAW values of the RC channels received. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. Individual receivers/transmitters might violate this specification.</p>
+  <p class="description">The RAW values of the RC channels received. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. A value of UINT16_MAX implies the channel is unused. Individual receivers/transmitters might violate this specification.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12695,67 +13116,71 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">port</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Servo output port (set of 8 outputs = 1 port). Most MAVs will just use one, but this allows for more than 8 servos.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan1_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 1 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 1 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan2_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 2 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 2 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan3_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 3 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 3 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan4_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 4 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 4 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan5_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 5 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 5 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan6_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 6 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 6 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan7_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 7 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 7 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan8_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 8 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 8 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rssi</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Receive signal strength indicator, 0: 0%, 100: 100%, 255: invalid/unknown.
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_comment">Receive signal strength indicator. Values: [0-100], 255: invalid/unknown.</td>
     </tr>
    </tbody>
   </table>
@@ -12770,6 +13195,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12777,61 +13203,63 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">port</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Servo output port (set of 8 outputs = 1 port). Most MAVs will just use one, but this allows to encode more than 8 servos.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">servo1_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 1 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 1 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">servo2_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 2 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 2 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">servo3_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 3 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 3 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">servo4_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 4 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 4 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">servo5_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 5 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 5 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">servo6_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 6 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 6 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">servo7_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 7 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 7 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">servo8_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 8 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 8 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">servo9_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -12839,8 +13267,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 9 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 9 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">servo10_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -12848,8 +13276,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 10 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 10 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">servo11_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -12857,8 +13285,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 11 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 11 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">servo12_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -12866,8 +13294,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 12 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 12 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">servo13_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -12875,8 +13303,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 13 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 13 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">servo14_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -12884,8 +13312,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 14 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 14 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">servo15_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -12893,8 +13321,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 15 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 15 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">servo16_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -12902,8 +13330,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Servo output 16 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Servo output 16 value</td>
     </tr>
    </tbody>
   </table>
@@ -12918,6 +13346,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12925,21 +13354,37 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">start_index</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Start index, 0 by default</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">end_index</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">End index, -1 by default (-1: send list to end). Else a valid index of the list</td>
     </tr>
     <tr class="mavlink_field">
@@ -12948,10 +13393,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
+     <td class="mavlink_comment">Mission type.</td>
     </tr>
    </tbody>
   </table>
@@ -12966,6 +13411,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -12973,21 +13419,37 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">start_index</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Start index, 0 by default and smaller / equal to the largest index of the current onboard list.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">end_index</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">End index, equal or greater than start index.</td>
     </tr>
     <tr class="mavlink_field">
@@ -12996,10 +13458,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
+     <td class="mavlink_comment">Mission type.</td>
     </tr>
    </tbody>
   </table>
@@ -13015,6 +13477,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13022,78 +13485,126 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">seq</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Sequence</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">The coordinate system of the waypoint, as defined by MAV_FRAME enum
-     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
+     <td class="mavlink_comment">The coordinate system of the waypoint.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">The scheduled action for the waypoint, as defined by MAV_CMD enum
-     (Enum:<a href="#MAV_CMD">MAV_CMD</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_CMD">MAV_CMD</a>
      </td>
+     <td class="mavlink_comment">The scheduled action for the waypoint.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">current</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">false:0, true:1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">autocontinue</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">autocontinue to next wp</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Autocontinue to next waypoint</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param1</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM1, see MAV_CMD enum</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param2</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM2, see MAV_CMD enum</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param3</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM3, see MAV_CMD enum</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param4</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM4, see MAV_CMD enum</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">PARAM5 / local: x position, global: latitude</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">PARAM5 / local: X coordinate, global: latitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">PARAM6 / y position: global: longitude</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">PARAM6 / local: Y coordinate, global: longitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">PARAM7 / z position: global: altitude (relative or absolute, depending on frame.</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">PARAM7 / local: Z coordinate, global: altitude (relative or absolute, depending on frame).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -13101,10 +13612,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
+     <td class="mavlink_comment">Mission type.</td>
     </tr>
    </tbody>
   </table>
@@ -13119,6 +13630,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13126,16 +13638,28 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">seq</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Sequence</td>
     </tr>
     <tr class="mavlink_field">
@@ -13144,10 +13668,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
+     <td class="mavlink_comment">Mission type.</td>
     </tr>
    </tbody>
   </table>
@@ -13216,6 +13740,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13223,11 +13748,19 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
@@ -13236,10 +13769,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
+     <td class="mavlink_comment">Mission type.</td>
     </tr>
    </tbody>
   </table>
@@ -13254,6 +13787,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13261,16 +13795,28 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">count</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Number of mission items in the sequence</td>
     </tr>
     <tr class="mavlink_field">
@@ -13279,10 +13825,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
+     <td class="mavlink_comment">Mission type.</td>
     </tr>
    </tbody>
   </table>
@@ -13297,6 +13843,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13304,11 +13851,19 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
@@ -13317,10 +13872,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
+     <td class="mavlink_comment">Mission type.</td>
     </tr>
    </tbody>
   </table>
@@ -13351,12 +13906,13 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">Ack message during waypoint handling. The type field states if this message is a positive ack (type=0) or if an error happened (type=non-zero).</p>
+  <p class="description">Acknowledgment message during waypoint handling. The type field states if this message is a positive ack (type=0) or if an error happened (type=non-zero).</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13364,20 +13920,28 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See MAV_MISSION_RESULT enum
-     (Enum:<a href="#MAV_MISSION_RESULT">MAV_MISSION_RESULT</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MISSION_RESULT">MAV_MISSION_RESULT</a>
      </td>
+     <td class="mavlink_comment">Mission result.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -13385,10 +13949,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
+     <td class="mavlink_comment">Mission type.</td>
     </tr>
    </tbody>
   </table>
@@ -13403,6 +13967,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13410,25 +13975,27 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">latitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">longitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude (AMSL), in meters * 1000 (positive for up)
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_comment">Altitude (AMSL). Positive for up.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">time_usec<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -13436,8 +14003,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
    </tbody>
   </table>
@@ -13452,6 +14019,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13459,20 +14027,20 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">latitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">longitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude (AMSL), in meters * 1000 (positive for up)
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_comment">Altitude (AMSL). Positive for up.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">time_usec<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -13480,8 +14048,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
    </tbody>
   </table>
@@ -13490,7 +14058,7 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">Bind a RC channel to a parameter. The parameter should change accoding to the RC channel value.</p>
+  <p class="description">Bind a RC channel to a parameter. The parameter should change according to the RC channel value.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13523,7 +14091,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">parameter_rc_channel_index</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Index of parameter RC channel. Not equal to the RC channel id. Typically correpsonds to a potentiometer-knob on the RC.</td>
+     <td class="mavlink_comment">Index of parameter RC channel. Not equal to the RC channel id. Typically corresponds to a potentiometer-knob on the RC.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_value0</td>
@@ -13558,6 +14126,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13565,16 +14134,28 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">seq</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Sequence</td>
     </tr>
     <tr class="mavlink_field">
@@ -13583,10 +14164,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
+     <td class="mavlink_comment">Mission type.</td>
     </tr>
    </tbody>
   </table>
@@ -13601,6 +14182,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13608,56 +14191,94 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Coordinate frame, as defined by MAV_FRAME enum. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down.
-     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_FRAME">MAV_FRAME</a>
+     </td>
+     <td class="mavlink_comment">Coordinate frame. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p1x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">x position 1 / Latitude 1
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">x position 1 / Latitude 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p1y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">y position 1 / Longitude 1
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">y position 1 / Longitude 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p1z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">z position 1 / Altitude 1
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">z position 1 / Altitude 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p2x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">x position 2 / Latitude 2
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">x position 2 / Latitude 2</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p2y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">y position 2 / Longitude 2
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">y position 2 / Longitude 2</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p2z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">z position 2 / Altitude 2
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">z position 2 / Altitude 2</td>
     </tr>
    </tbody>
   </table>
@@ -13672,6 +14293,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13679,46 +14302,72 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Coordinate frame, as defined by MAV_FRAME enum. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down.
-     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_FRAME">MAV_FRAME</a>
+     </td>
+     <td class="mavlink_comment">Coordinate frame. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p1x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">x position 1 / Latitude 1
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">x position 1 / Latitude 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p1y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">y position 1 / Longitude 1
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">y position 1 / Longitude 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p1z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">z position 1 / Altitude 1
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">z position 1 / Altitude 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p2x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">x position 2 / Latitude 2
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">x position 2 / Latitude 2</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p2y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">y position 2 / Longitude 2
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">y position 2 / Longitude 2</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p2z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">z position 2 / Altitude 2
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">z position 2 / Altitude 2</td>
     </tr>
    </tbody>
   </table>
@@ -13733,6 +14382,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13740,35 +14390,39 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q</td>
      <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rollspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Roll angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitchspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Pitch angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yawspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Yaw angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">covariance</td>
      <td class="mavlink_type" valign="top">float[9]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Attitude covariance</td>
     </tr>
    </tbody>
@@ -13784,6 +14438,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13791,50 +14446,50 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">nav_roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Current desired roll in degrees
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Current desired roll</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">nav_pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Current desired pitch in degrees
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Current desired pitch</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">nav_bearing</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Current desired heading in degrees
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Current desired heading</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_bearing</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Bearing to current waypoint/target in degrees
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Bearing to current waypoint/target</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">wp_dist</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Distance to active waypoint in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Distance to active waypoint</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt_error</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Current altitude error in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Current altitude error</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">aspd_error</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Current airspeed error in meters/second
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Current airspeed error</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xtrack_error</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Current crosstrack error on x-y plane in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Current crosstrack error on x-y plane</td>
     </tr>
    </tbody>
   </table>
@@ -13849,6 +14504,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13856,62 +14513,102 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">estimator_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Class id of the estimator this estimate originated from.
-     (Enum:<a href="#MAV_ESTIMATOR_TYPE">MAV_ESTIMATOR_TYPE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_ESTIMATOR_TYPE">MAV_ESTIMATOR_TYPE</a>
+     </td>
+     <td class="mavlink_comment">Class id of the estimator this estimate originated from.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Latitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Longitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude in meters, expressed as * 1000 (millimeters), above MSL
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude in meters above MSL</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">relative_alt</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude above ground in meters, expressed as * 1000 (millimeters)
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude above ground</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Ground X Speed (Latitude), expressed as m/s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Ground X Speed (Latitude)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Ground Y Speed (Longitude), expressed as m/s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Ground Y Speed (Longitude)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Ground Z Speed (Altitude), expressed as m/s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Ground Z Speed (Altitude)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">covariance</td>
      <td class="mavlink_type" valign="top">float[36]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Covariance matrix (first six entries are the first ROW, next six entries are the second row, etc.)</td>
     </tr>
    </tbody>
@@ -13927,6 +14624,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -13934,74 +14633,122 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">estimator_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Class id of the estimator this estimate originated from.
-     (Enum:<a href="#MAV_ESTIMATOR_TYPE">MAV_ESTIMATOR_TYPE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_ESTIMATOR_TYPE">MAV_ESTIMATOR_TYPE</a>
+     </td>
+     <td class="mavlink_comment">Class id of the estimator this estimate originated from.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X Position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X Position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y Position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y Position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z Position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z Position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X Speed (m/s)
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X Speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y Speed (m/s)
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y Speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z Speed (m/s)
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z Speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ax</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X Acceleration (m/s^2)
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X Acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ay</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y Acceleration (m/s^2)
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y Acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">az</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z Acceleration (m/s^2)
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z Acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">covariance</td>
      <td class="mavlink_type" valign="top">float[45]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Covariance matrix upper right triangular (first nine entries are the first ROW, next eight entries are the second row, etc.)</td>
     </tr>
    </tbody>
@@ -14011,12 +14758,13 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">The PPM values of the RC channels received. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. Individual receivers/transmitters might violate this specification.</p>
+  <p class="description">The PPM values of the RC channels received. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%.  A value of UINT16_MAX implies the channel is unused. Individual receivers/transmitters might violate this specification.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -14024,127 +14772,131 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chancount</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Total number of RC channels being received. This can be larger than 18, indicating that more channels are available but not given in this message. This value should be 0 when no RC channels are available.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan1_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 1 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 1 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan2_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 2 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 2 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan3_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 3 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 3 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan4_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 4 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 4 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan5_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 5 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 5 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan6_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 6 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 6 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan7_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 7 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 7 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan8_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 8 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 8 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan9_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 9 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 9 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan10_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 10 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 10 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan11_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 11 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 11 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan12_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 12 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 12 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan13_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 13 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 13 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan14_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 14 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 14 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan15_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 15 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 15 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan16_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 16 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 16 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan17_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 17 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 17 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan18_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 18 value, in microseconds. A value of UINT16_MAX implies the channel is unused.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 18 value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rssi</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Receive signal strength indicator, 0: 0%, 100: 100%, 255: invalid/unknown.
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_comment">Receive signal strength indicator. Values: [0-100], 255: invalid/unknown.</td>
     </tr>
    </tbody>
   </table>
@@ -14159,6 +14911,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -14166,27 +14919,35 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">The target requested to send the message stream.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">The target requested to send the message stream.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">req_stream_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">The ID of the requested data stream</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">req_message_rate</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">The requested message rate
-     (Units: Hz)</td>
+     <td class="mavlink_units" valign="top">Hz</td>
+     <td class="mavlink_comment">The requested message rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">start_stop</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">1 to start sending, 0 to stop sending.</td>
     </tr>
    </tbody>
@@ -14202,6 +14963,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -14209,17 +14971,21 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">stream_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">The ID of the requested data stream</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">message_rate</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">The message rate
-     (Units: Hz)</td>
+     <td class="mavlink_units" valign="top">Hz</td>
+     <td class="mavlink_comment">The message rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">on_off</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">1 stream is enabled, 0 stream is stopped.</td>
     </tr>
    </tbody>
@@ -14282,6 +15048,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -14289,60 +15056,64 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan1_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 1 value, in microseconds. A value of UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 1 value. A value of UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan2_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 2 value, in microseconds. A value of UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 2 value. A value of UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan3_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 3 value, in microseconds. A value of UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 3 value. A value of UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan4_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 4 value, in microseconds. A value of UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 4 value. A value of UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan5_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 5 value, in microseconds. A value of UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 5 value. A value of UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan6_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 6 value, in microseconds. A value of UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 6 value. A value of UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan7_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 7 value, in microseconds. A value of UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 7 value. A value of UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan8_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 8 value, in microseconds. A value of UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 8 value. A value of UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">chan9_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -14350,8 +15121,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 9 value, in microseconds. A value of 0 means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 9 value. A value of 0 means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">chan10_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -14359,8 +15130,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 10 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 10 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">chan11_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -14368,8 +15139,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 11 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 11 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">chan12_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -14377,8 +15148,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 12 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 12 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">chan13_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -14386,8 +15157,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 13 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 13 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">chan14_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -14395,8 +15166,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 14 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 14 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">chan15_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -14404,8 +15175,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 15 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 15 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">chan16_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -14413,8 +15184,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 16 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 16 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">chan17_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -14422,8 +15193,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 17 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 17 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">chan18_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -14431,8 +15202,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 18 value, in microseconds. A value of 0 or UINT16_MAX means to ignore this field.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 18 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
     </tr>
    </tbody>
   </table>
@@ -14448,6 +15219,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -14455,77 +15227,125 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">seq</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Waypoint ID (sequence number). Starts at zero. Increases monotonically for each waypoint, no gaps in the sequence (0,1,2,3,4).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">The coordinate system of the waypoint, as defined by MAV_FRAME enum
-     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
+     <td class="mavlink_comment">The coordinate system of the waypoint.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">The scheduled action for the waypoint, as defined by MAV_CMD enum
-     (Enum:<a href="#MAV_CMD">MAV_CMD</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_CMD">MAV_CMD</a>
      </td>
+     <td class="mavlink_comment">The scheduled action for the waypoint.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">current</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">false:0, true:1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">autocontinue</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">autocontinue to next wp</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Autocontinue to next waypoint</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param1</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM1, see MAV_CMD enum</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param2</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM2, see MAV_CMD enum</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param3</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM3, see MAV_CMD enum</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param4</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM4, see MAV_CMD enum</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM5 / local: x position in meters * 1e4, global: latitude in degrees * 10^7</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM6 / y position: local: x position in meters * 1e4, global: longitude in degrees *10^7</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM7 / z position: global: altitude in meters (relative or absolute, depending on frame.</td>
     </tr>
     <tr class="mavlink_field">
@@ -14534,10 +15354,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Mission type, see MAV_MISSION_TYPE
-     (Enum:<a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
+     <td class="mavlink_comment">Mission type.</td>
     </tr>
    </tbody>
   </table>
@@ -14552,6 +15372,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -14559,38 +15380,40 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">airspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Current airspeed in m/s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Current airspeed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">groundspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Current ground speed in m/s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Current ground speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">heading</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Current heading in degrees, in compass units (0..360, 0=north)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Current heading in degrees, in compass units (0..360, 0=north)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">throttle</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Current throttle setting in integer percent, 0 to 100
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_comment">Current throttle setting in integer percent, 0 to 100</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Current altitude (MSL), in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Current altitude (MSL)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">climb</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Current climb rate in meters/second
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Current climb rate</td>
     </tr>
    </tbody>
   </table>
@@ -14605,6 +15428,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -14612,73 +15436,117 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">The coordinate system of the COMMAND, as defined by MAV_FRAME enum
-     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
+     <td class="mavlink_comment">The coordinate system of the COMMAND.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">The scheduled action for the mission item, as defined by MAV_CMD enum
-     (Enum:<a href="#MAV_CMD">MAV_CMD</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_CMD">MAV_CMD</a>
      </td>
+     <td class="mavlink_comment">The scheduled action for the mission item.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">current</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">false:0, true:1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">autocontinue</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">autocontinue to next wp</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param1</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM1, see MAV_CMD enum</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param2</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM2, see MAV_CMD enum</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param3</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM3, see MAV_CMD enum</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param4</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM4, see MAV_CMD enum</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM5 / local: x position in meters * 1e4, global: latitude in degrees * 10^7</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">PARAM6 / local: y position in meters * 1e4, global: longitude in degrees * 10^7</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">PARAM7 / z position: global: altitude in meters (relative or absolute, depending on frame.</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">PARAM7 / z position: global: altitude in meters (relative or absolute, depending on frame).</td>
     </tr>
    </tbody>
   </table>
@@ -14693,6 +15561,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -14700,60 +15569,100 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System which should execute the command</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component which should execute the command, 0 for all components</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Command ID, as defined by MAV_CMD enum.
-     (Enum:<a href="#MAV_CMD">MAV_CMD</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_CMD">MAV_CMD</a>
      </td>
+     <td class="mavlink_comment">Command ID (of command to send).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">confirmation</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">0: First transmission of this command. 1-255: Confirmation transmissions (e.g. for kill command)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param1</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Parameter 1, as defined by MAV_CMD enum.</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Parameter 1 (for the specific command).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param2</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Parameter 2, as defined by MAV_CMD enum.</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Parameter 2 (for the specific command).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param3</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Parameter 3, as defined by MAV_CMD enum.</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Parameter 3 (for the specific command).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param4</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Parameter 4, as defined by MAV_CMD enum.</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Parameter 4 (for the specific command).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param5</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Parameter 5, as defined by MAV_CMD enum.</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Parameter 5 (for the specific command).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param6</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Parameter 6, as defined by MAV_CMD enum.</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Parameter 6 (for the specific command).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param7</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Parameter 7, as defined by MAV_CMD enum.</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Parameter 7 (for the specific command).</td>
     </tr>
    </tbody>
   </table>
@@ -14768,6 +15677,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -14775,18 +15685,18 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">command</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Command ID, as defined by MAV_CMD enum.
-     (Enum:<a href="#MAV_CMD">MAV_CMD</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_CMD">MAV_CMD</a>
      </td>
+     <td class="mavlink_comment">Command ID (of acknowledged command).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">result</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See MAV_RESULT enum
-     (Enum:<a href="#MAV_RESULT">MAV_RESULT</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_RESULT">MAV_RESULT</a>
      </td>
+     <td class="mavlink_comment">Result of command.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">progress<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -14794,6 +15704,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">WIP: Also used as result_param1, it can be set with a enum containing the errors reasons of why the command was denied or the progress percentage or 255 if unknown the progress when result is MAV_RESULT_IN_PROGRESS.</td>
     </tr>
     <tr class="mavlink_field">
@@ -14802,6 +15716,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">WIP: Additional parameter of the result, example: which parameter of MAV_CMD_NAV_WAYPOINT caused it to be denied.</td>
     </tr>
     <tr class="mavlink_field">
@@ -14810,6 +15728,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">WIP: System which requested the command to be executed</td>
     </tr>
     <tr class="mavlink_field">
@@ -14818,6 +15740,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">WIP: Component which requested the command to be executed</td>
     </tr>
    </tbody>
@@ -14833,6 +15759,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -14840,40 +15767,46 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp in milliseconds since system boot
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Desired roll rate in radians per second
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Desired roll rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Desired pitch rate in radians per second
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Desired pitch rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Desired yaw rate in radians per second
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Desired yaw rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">thrust</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Collective thrust, normalized to 0 .. 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mode_switch</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Flight mode switch position, 0.. 255</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">manual_override_switch</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Override mode switch position, 0.. 255</td>
     </tr>
    </tbody>
@@ -14889,6 +15822,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -14896,50 +15830,60 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp in milliseconds since system boot
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type_mask</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Mappings: If any of these bits are set, the corresponding input should be ignored: bit 1: body roll rate, bit 2: body pitch rate, bit 3: body yaw rate. bit 4-bit 6: reserved, bit 7: throttle, bit 8: attitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q</td>
      <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">body_roll_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body roll rate in radians per second
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Body roll rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">body_pitch_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body pitch rate in radians per second
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Body pitch rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">body_yaw_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body yaw rate in radians per second
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Body yaw rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">thrust</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Collective thrust, normalized to 0 .. 1 (-1 .. 1 for vehicles capable of reverse trust)</td>
     </tr>
    </tbody>
@@ -14955,6 +15899,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -14962,40 +15907,46 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp in milliseconds since system boot
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type_mask</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Mappings: If any of these bits are set, the corresponding input should be ignored: bit 1: body roll rate, bit 2: body pitch rate, bit 3: body yaw rate. bit 4-bit 7: reserved, bit 8: attitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q</td>
      <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">body_roll_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body roll rate in radians per second
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Body roll rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">body_pitch_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body pitch rate in radians per second
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Body pitch rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">body_yaw_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body yaw rate in radians per second
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Body yaw rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">thrust</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Collective thrust, normalized to 0 .. 1 (-1 .. 1 for vehicles capable of reverse trust)</td>
     </tr>
    </tbody>
@@ -15011,6 +15962,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -15018,97 +15971,165 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp in milliseconds since system boot
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">coordinate_frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Valid options are: MAV_FRAME_LOCAL_NED = 1, MAV_FRAME_LOCAL_OFFSET_NED = 7, MAV_FRAME_BODY_NED = 8, MAV_FRAME_BODY_OFFSET_NED = 9
-     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_FRAME">MAV_FRAME</a>
+     </td>
+     <td class="mavlink_comment">Valid options are: MAV_FRAME_LOCAL_NED = 1, MAV_FRAME_LOCAL_OFFSET_NED = 7, MAV_FRAME_BODY_NED = 8, MAV_FRAME_BODY_OFFSET_NED = 9</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type_mask</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Bitmask to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 10 is set the floats afx afy afz should be interpreted as force instead of acceleration. Mapping: bit 1: x, bit 2: y, bit 3: z, bit 4: vx, bit 5: vy, bit 6: vz, bit 7: ax, bit 8: ay, bit 9: az, bit 10: is force setpoint, bit 11: yaw, bit 12: yaw rate</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Bitmap to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 10 is set the floats afx afy afz should be interpreted as force instead of acceleration. Mapping: bit 1: x, bit 2: y, bit 3: z, bit 4: vx, bit 5: vy, bit 6: vz, bit 7: ax, bit 8: ay, bit 9: az, bit 10: is force setpoint, bit 11: yaw, bit 12: yaw rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X Position in NED frame in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X Position in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y Position in NED frame in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y Position in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z Position in NED frame in meters (note, altitude is negative in NED)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z Position in NED frame (note, altitude is negative in NED)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X velocity in NED frame in meter / s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X velocity in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y velocity in NED frame in meter / s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y velocity in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z velocity in NED frame in meter / s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z velocity in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">afx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">afy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">afz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">yaw setpoint in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">yaw setpoint</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">yaw rate setpoint in rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">yaw rate setpoint</td>
     </tr>
    </tbody>
   </table>
@@ -15123,6 +16144,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -15130,87 +16153,143 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp in milliseconds since system boot
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">coordinate_frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Valid options are: MAV_FRAME_LOCAL_NED = 1, MAV_FRAME_LOCAL_OFFSET_NED = 7, MAV_FRAME_BODY_NED = 8, MAV_FRAME_BODY_OFFSET_NED = 9
-     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_FRAME">MAV_FRAME</a>
+     </td>
+     <td class="mavlink_comment">Valid options are: MAV_FRAME_LOCAL_NED = 1, MAV_FRAME_LOCAL_OFFSET_NED = 7, MAV_FRAME_BODY_NED = 8, MAV_FRAME_BODY_OFFSET_NED = 9</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type_mask</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Bitmask to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 10 is set the floats afx afy afz should be interpreted as force instead of acceleration. Mapping: bit 1: x, bit 2: y, bit 3: z, bit 4: vx, bit 5: vy, bit 6: vz, bit 7: ax, bit 8: ay, bit 9: az, bit 10: is force setpoint, bit 11: yaw, bit 12: yaw rate</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Bitmap to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 10 is set the floats afx afy afz should be interpreted as force instead of acceleration. Mapping: bit 1: x, bit 2: y, bit 3: z, bit 4: vx, bit 5: vy, bit 6: vz, bit 7: ax, bit 8: ay, bit 9: az, bit 10: is force setpoint, bit 11: yaw, bit 12: yaw rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X Position in NED frame in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X Position in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y Position in NED frame in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y Position in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z Position in NED frame in meters (note, altitude is negative in NED)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z Position in NED frame (note, altitude is negative in NED)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X velocity in NED frame in meter / s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X velocity in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y velocity in NED frame in meter / s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y velocity in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z velocity in NED frame in meter / s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z velocity in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">afx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">afy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">afz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">yaw setpoint in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">yaw setpoint</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">yaw rate setpoint in rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">yaw rate setpoint</td>
     </tr>
    </tbody>
   </table>
@@ -15225,6 +16304,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -15232,97 +16313,165 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp in milliseconds since system boot. The rationale for the timestamp in the setpoint is to allow the system to compensate for the transport delay of the setpoint. This allows the system to compensate processing latency.
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (time since system boot). The rationale for the timestamp in the setpoint is to allow the system to compensate for the transport delay of the setpoint. This allows the system to compensate processing latency.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">coordinate_frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Valid options are: MAV_FRAME_GLOBAL_INT = 5, MAV_FRAME_GLOBAL_RELATIVE_ALT_INT = 6, MAV_FRAME_GLOBAL_TERRAIN_ALT_INT = 11
-     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_FRAME">MAV_FRAME</a>
+     </td>
+     <td class="mavlink_comment">Valid options are: MAV_FRAME_GLOBAL_INT = 5, MAV_FRAME_GLOBAL_RELATIVE_ALT_INT = 6, MAV_FRAME_GLOBAL_TERRAIN_ALT_INT = 11</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type_mask</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Bitmask to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 10 is set the floats afx afy afz should be interpreted as force instead of acceleration. Mapping: bit 1: x, bit 2: y, bit 3: z, bit 4: vx, bit 5: vy, bit 6: vz, bit 7: ax, bit 8: ay, bit 9: az, bit 10: is force setpoint, bit 11: yaw, bit 12: yaw rate</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Bitmap to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 10 is set the floats afx afy afz should be interpreted as force instead of acceleration. Mapping: bit 1: x, bit 2: y, bit 3: z, bit 4: vx, bit 5: vy, bit 6: vz, bit 7: ax, bit 8: ay, bit 9: az, bit 10: is force setpoint, bit 11: yaw, bit 12: yaw rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat_int</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">X Position in WGS84 frame in 1e7 * degrees
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X Position in WGS84 frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon_int</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Y Position in WGS84 frame in 1e7 * degrees
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y Position in WGS84 frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Altitude in meters in AMSL altitude, not WGS84 if absolute or relative, above terrain if GLOBAL_TERRAIN_ALT_INT
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude (AMSL) if absolute or relative, above terrain if GLOBAL_TERRAIN_ALT_INT</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X velocity in NED frame in meter / s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X velocity in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y velocity in NED frame in meter / s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y velocity in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z velocity in NED frame in meter / s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z velocity in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">afx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">afy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">afz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">yaw setpoint in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">yaw setpoint</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">yaw rate setpoint in rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">yaw rate setpoint</td>
     </tr>
    </tbody>
   </table>
@@ -15337,6 +16486,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -15344,87 +16495,143 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp in milliseconds since system boot. The rationale for the timestamp in the setpoint is to allow the system to compensate for the transport delay of the setpoint. This allows the system to compensate processing latency.
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (time since system boot). The rationale for the timestamp in the setpoint is to allow the system to compensate for the transport delay of the setpoint. This allows the system to compensate processing latency.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">coordinate_frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Valid options are: MAV_FRAME_GLOBAL_INT = 5, MAV_FRAME_GLOBAL_RELATIVE_ALT_INT = 6, MAV_FRAME_GLOBAL_TERRAIN_ALT_INT = 11
-     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_FRAME">MAV_FRAME</a>
+     </td>
+     <td class="mavlink_comment">Valid options are: MAV_FRAME_GLOBAL_INT = 5, MAV_FRAME_GLOBAL_RELATIVE_ALT_INT = 6, MAV_FRAME_GLOBAL_TERRAIN_ALT_INT = 11</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type_mask</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Bitmask to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 10 is set the floats afx afy afz should be interpreted as force instead of acceleration. Mapping: bit 1: x, bit 2: y, bit 3: z, bit 4: vx, bit 5: vy, bit 6: vz, bit 7: ax, bit 8: ay, bit 9: az, bit 10: is force setpoint, bit 11: yaw, bit 12: yaw rate</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Bitmap to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 10 is set the floats afx afy afz should be interpreted as force instead of acceleration. Mapping: bit 1: x, bit 2: y, bit 3: z, bit 4: vx, bit 5: vy, bit 6: vz, bit 7: ax, bit 8: ay, bit 9: az, bit 10: is force setpoint, bit 11: yaw, bit 12: yaw rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat_int</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">X Position in WGS84 frame in 1e7 * degrees
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X Position in WGS84 frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon_int</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Y Position in WGS84 frame in 1e7 * degrees
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y Position in WGS84 frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Altitude in meters in AMSL altitude, not WGS84 if absolute or relative, above terrain if GLOBAL_TERRAIN_ALT_INT
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude (AMSL) if absolute or relative, above terrain if GLOBAL_TERRAIN_ALT_INT</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X velocity in NED frame in meter / s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X velocity in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y velocity in NED frame in meter / s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y velocity in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z velocity in NED frame in meter / s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z velocity in NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">afx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">afy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">afz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">yaw setpoint in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">yaw setpoint</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">yaw rate setpoint in rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">yaw rate setpoint</td>
     </tr>
    </tbody>
   </table>
@@ -15439,6 +16646,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -15446,44 +16654,44 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X Position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">X Position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y Position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Y Position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z Position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Z Position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Roll</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Pitch</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Yaw</td>
     </tr>
    </tbody>
   </table>
@@ -15498,6 +16706,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -15505,98 +16714,98 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll angle (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Roll angle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch angle (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Pitch angle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw angle (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Yaw angle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rollspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body frame roll / phi angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Body frame roll / phi angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitchspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body frame pitch / theta angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Body frame pitch / theta angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yawspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body frame yaw / psi angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Body frame yaw / psi angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude in meters, expressed as * 1000 (millimeters)
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_comment">Altitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vx</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Ground X Speed (Latitude), expressed as m/s * 100
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">Ground X Speed (Latitude)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vy</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Ground Y Speed (Longitude), expressed as m/s * 100
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">Ground Y Speed (Longitude)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Ground Z Speed (Altitude), expressed as m/s * 100
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">Ground Z Speed (Altitude)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">X acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">X acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Y acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">Y acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Z acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">Z acceleration</td>
     </tr>
    </tbody>
   </table>
@@ -15611,6 +16820,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -15618,60 +16829,120 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll_ailerons</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Control output -1 .. 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch_elevator</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Control output -1 .. 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw_rudder</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Control output -1 .. 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">throttle</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Throttle 0 .. 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">aux1</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Aux 1, -1 .. 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">aux2</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Aux 2, -1 .. 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">aux3</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Aux 3, -1 .. 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">aux4</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Aux 4, -1 .. 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System mode (MAV_MODE)
-     (Enum:<a href="#MAV_MODE">MAV_MODE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MODE">MAV_MODE</a>
+     </td>
+     <td class="mavlink_comment">System mode.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">nav_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Navigation mode (MAV_NAV_MODE)</td>
     </tr>
    </tbody>
@@ -15687,6 +16958,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -15694,85 +16966,87 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan1_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 1 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 1 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan2_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 2 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 2 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan3_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 3 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 3 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan4_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 4 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 4 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan5_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 5 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 5 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan6_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 6 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 6 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan7_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 7 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 7 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan8_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 8 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 8 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan9_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 9 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 9 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan10_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 10 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 10 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan11_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 11 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 11 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">chan12_raw</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">RC channel 12 value, in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">RC channel 12 value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rssi</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Receive signal strength indicator, 0: 0%, 255: 100%</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">Receive signal strength indicator. Values: [0-100], 255: invalid/unknown.</td>
     </tr>
    </tbody>
   </table>
@@ -15787,6 +17061,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -15794,25 +17070,43 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">controls</td>
      <td class="mavlink_type" valign="top">float[16]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Control outputs -1 .. 1. Channel assignment depends on the simulated hardware.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System mode (MAV_MODE), includes arming state.
-     (Enum:<a href="#MAV_MODE">MAV_MODE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MODE">MAV_MODE</a>
+     </td>
+     <td class="mavlink_comment">System mode. Includes arming state.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Flags as bitfield, reserved for future use.</td>
     </tr>
    </tbody>
@@ -15828,6 +17122,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -15835,48 +17130,52 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (UNIX)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sensor_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Sensor ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flow_x</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Flow in pixels * 10 in x-sensor direction (dezi-pixels)
-     (Units: dpixels)</td>
+     <td class="mavlink_units" valign="top">dpixels</td>
+     <td class="mavlink_comment">Flow in pixels in x-sensor direction</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flow_y</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Flow in pixels * 10 in y-sensor direction (dezi-pixels)
-     (Units: dpixels)</td>
+     <td class="mavlink_units" valign="top">dpixels</td>
+     <td class="mavlink_comment">Flow in pixels in y-sensor direction</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flow_comp_m_x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Flow in meters in x-sensor direction, angular-speed compensated
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Flow in x-sensor direction, angular-speed compensated</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flow_comp_m_y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Flow in meters in y-sensor direction, angular-speed compensated
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Flow in y-sensor direction, angular-speed compensated</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">quality</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Optical flow quality / confidence. 0: bad, 255: maximum quality</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ground_distance</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Ground distance in meters. Positive value: distance known. Negative value: Unknown distance
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Ground distance. Positive value: distance known. Negative value: Unknown distance</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">flow_rate_x<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -15884,8 +17183,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Flow rate in radians/second about X axis
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Flow rate about X axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">flow_rate_y<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -15893,8 +17192,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Flow rate in radians/second about Y axis
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Flow rate about Y axis</td>
     </tr>
    </tbody>
   </table>
@@ -15910,6 +17209,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -15917,44 +17217,44 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds, synced to UNIX time or since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX time or since system boot)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Global X position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Global X position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Global Y position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Global Y position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Global Z position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Global Z position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll angle in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Roll angle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch angle in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Pitch angle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw angle in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Yaw angle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -15962,6 +17262,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">float[21]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Pose covariance matrix upper right triangular (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
     </tr>
    </tbody>
@@ -15978,6 +17280,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -15985,44 +17288,44 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds, synced to UNIX time or since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX time or time since system boot)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Global X position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Global X position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Global Y position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Global Y position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Global Z position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Global Z position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll angle in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Roll angle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch angle in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Pitch angle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw angle in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Yaw angle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -16030,6 +17333,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">float[21]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Pose covariance matrix upper right triangular (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
     </tr>
    </tbody>
@@ -16046,6 +17351,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -16053,26 +17359,26 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds, synced to UNIX time or since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX time or time since system boot)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Global X speed
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Global X speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Global Y speed
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Global Y speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Global Z speed
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Global Z speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -16080,6 +17386,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">float[9]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Linear velocity covariance matrix (1st three entries - 1st row, etc.)</td>
     </tr>
    </tbody>
@@ -16096,6 +17404,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -16103,44 +17412,44 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds, synced to UNIX time or since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX time or time since system boot)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Global X position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Global X position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Global Y position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Global Y position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Global Z position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Global Z position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll angle in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Roll angle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch angle in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Pitch angle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw angle in rad
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Yaw angle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -16148,6 +17457,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">float[21]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Pose covariance matrix upper right triangular (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
     </tr>
    </tbody>
@@ -16163,6 +17474,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -16170,90 +17482,94 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds, synced to UNIX time or since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xacc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X acceleration (m/s^2)
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">X acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yacc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y acceleration (m/s^2)
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">Y acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zacc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z acceleration (m/s^2)
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">Z acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xgyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular speed around X axis (rad / sec)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular speed around X axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ygyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular speed around Y axis (rad / sec)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular speed around Y axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zgyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular speed around Z axis (rad / sec)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular speed around Z axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xmag</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X Magnetic field (Gauss)
-     (Units: gauss)</td>
+     <td class="mavlink_units" valign="top">gauss</td>
+     <td class="mavlink_comment">X Magnetic field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ymag</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y Magnetic field (Gauss)
-     (Units: gauss)</td>
+     <td class="mavlink_units" valign="top">gauss</td>
+     <td class="mavlink_comment">Y Magnetic field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zmag</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z Magnetic field (Gauss)
-     (Units: gauss)</td>
+     <td class="mavlink_units" valign="top">gauss</td>
+     <td class="mavlink_comment">Z Magnetic field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">abs_pressure</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Absolute pressure in millibar
-     (Units: mbar)</td>
+     <td class="mavlink_units" valign="top">mbar</td>
+     <td class="mavlink_comment">Absolute pressure</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">diff_pressure</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Differential pressure in millibar
-     (Units: mbar)</td>
+     <td class="mavlink_units" valign="top">mbar</td>
+     <td class="mavlink_comment">Differential pressure</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pressure_alt</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Altitude calculated from pressure</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Temperature in degrees celsius
-     (Units: degC)</td>
+     <td class="mavlink_units" valign="top">degC</td>
+     <td class="mavlink_comment">Temperature</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">fields_updated</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Bitmask for fields that have updated since last message, bit 0 = xacc, bit 12: temperature</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">Bitmap for fields that have updated since last message, bit 0 = xacc, bit 12: temperature</td>
     </tr>
    </tbody>
   </table>
@@ -16268,6 +17584,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -16275,72 +17592,76 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds, synced to UNIX time or since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sensor_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Sensor ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">integration_time_us</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Integration time in microseconds. Divide integrated_x and integrated_y by the integration time to obtain average flow. The integration time also indicates the.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Integration time. Divide integrated_x and integrated_y by the integration time to obtain average flow. The integration time also indicates the.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">integrated_x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Flow in radians around X axis (Sensor RH rotation about the X axis induces a positive flow. Sensor linear motion along the positive Y axis induces a negative flow.)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Flow around X axis (Sensor RH rotation about the X axis induces a positive flow. Sensor linear motion along the positive Y axis induces a negative flow.)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">integrated_y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Flow in radians around Y axis (Sensor RH rotation about the Y axis induces a positive flow. Sensor linear motion along the positive X axis induces a positive flow.)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Flow around Y axis (Sensor RH rotation about the Y axis induces a positive flow. Sensor linear motion along the positive X axis induces a positive flow.)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">integrated_xgyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">RH rotation around X axis (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">RH rotation around X axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">integrated_ygyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">RH rotation around Y axis (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">RH rotation around Y axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">integrated_zgyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">RH rotation around Z axis (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">RH rotation around Z axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Temperature * 100 in centi-degrees Celsius
-     (Units: cdegC)</td>
+     <td class="mavlink_units" valign="top">cdegC</td>
+     <td class="mavlink_comment">Temperature</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">quality</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Optical flow quality / confidence. 0: no valid flow, 255: maximum quality</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_delta_distance_us</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Time in microseconds since the distance was sampled.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Time since the distance was sampled.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">distance</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Distance to the center of the flow field in meters. Positive value (including zero): distance known. Negative value: Unknown distance.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Distance to the center of the flow field. Positive value (including zero): distance known. Negative value: Unknown distance.</td>
     </tr>
    </tbody>
   </table>
@@ -16355,6 +17676,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -16362,90 +17684,94 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds, synced to UNIX time or since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xacc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X acceleration (m/s^2)
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">X acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yacc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y acceleration (m/s^2)
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">Y acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zacc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z acceleration (m/s^2)
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">Z acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xgyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular speed around X axis in body frame (rad / sec)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular speed around X axis in body frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ygyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular speed around Y axis in body frame (rad / sec)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular speed around Y axis in body frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zgyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular speed around Z axis in body frame (rad / sec)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular speed around Z axis in body frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xmag</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X Magnetic field (Gauss)
-     (Units: gauss)</td>
+     <td class="mavlink_units" valign="top">gauss</td>
+     <td class="mavlink_comment">X Magnetic field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ymag</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y Magnetic field (Gauss)
-     (Units: gauss)</td>
+     <td class="mavlink_units" valign="top">gauss</td>
+     <td class="mavlink_comment">Y Magnetic field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zmag</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z Magnetic field (Gauss)
-     (Units: gauss)</td>
+     <td class="mavlink_units" valign="top">gauss</td>
+     <td class="mavlink_comment">Z Magnetic field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">abs_pressure</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Absolute pressure in millibar
-     (Units: mbar)</td>
+     <td class="mavlink_units" valign="top">mbar</td>
+     <td class="mavlink_comment">Absolute pressure</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">diff_pressure</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Differential pressure (airspeed) in millibar
-     (Units: mbar)</td>
+     <td class="mavlink_units" valign="top">mbar</td>
+     <td class="mavlink_comment">Differential pressure (airspeed)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pressure_alt</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Altitude calculated from pressure</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Temperature in degrees celsius
-     (Units: degC)</td>
+     <td class="mavlink_units" valign="top">degC</td>
+     <td class="mavlink_comment">Temperature</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">fields_updated</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Bitmask for fields that have updated since last message, bit 0 = xacc, bit 12: temperature, bit 31: full reset of attitude/position/velocities/etc was performed in sim.</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">Bitmap for fields that have updated since last message, bit 0 = xacc, bit 12: temperature, bit 31: full reset of attitude/position/velocities/etc was performed in sim.</td>
     </tr>
    </tbody>
   </table>
@@ -16460,6 +17786,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -16467,119 +17794,137 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q1</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">True attitude quaternion component 1, w (1 in null-rotation)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q2</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">True attitude quaternion component 2, x (0 in null-rotation)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q3</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">True attitude quaternion component 3, y (0 in null-rotation)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q4</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">True attitude quaternion component 4, z (0 in null-rotation)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Attitude roll expressed as Euler angles, not recommended except for human-readable outputs</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Attitude pitch expressed as Euler angles, not recommended except for human-readable outputs</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Attitude yaw expressed as Euler angles, not recommended except for human-readable outputs</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xacc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X acceleration m/s/s
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">X acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yacc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y acceleration m/s/s
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">Y acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zacc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z acceleration m/s/s
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">Z acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xgyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular speed around X axis rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular speed around X axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ygyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular speed around Y axis rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular speed around Y axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zgyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular speed around Z axis rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular speed around Z axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Latitude in degrees
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Latitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Longitude in degrees
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Longitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Altitude in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Altitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">std_dev_horz</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Horizontal position standard deviation</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">std_dev_vert</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Vertical position standard deviation</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vn</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">True velocity in m/s in NORTH direction in earth-fixed NED frame
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">True velocity in NORTH direction in earth-fixed NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ve</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">True velocity in m/s in EAST direction in earth-fixed NED frame
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">True velocity in EAST direction in earth-fixed NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vd</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">True velocity in m/s in DOWN direction in earth-fixed NED frame
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">True velocity in DOWN direction in earth-fixed NED frame</td>
     </tr>
    </tbody>
   </table>
@@ -16594,6 +17939,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -16601,37 +17947,51 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rssi</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Local signal strength</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">remrssi</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Remote signal strength</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">txbuf</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Remaining free buffer space in percent.
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_comment">Remaining free buffer space.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">noise</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Background noise level</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">remnoise</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Remote background noise level</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rxerrors</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Receive errors</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">fixed</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Count of error corrected packets</td>
     </tr>
    </tbody>
@@ -16711,6 +18071,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -16718,12 +18079,14 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp for the image frame in microseconds
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp for image frame (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">seq</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Image frame sequence</td>
     </tr>
    </tbody>
@@ -16734,12 +18097,13 @@ These messages define the common message set, which is the reference message set
    )
   </h3>
   <p class="description">The global position, as returned by the Global Positioning System (GPS). This is
-                 NOT the global position estimate of the sytem, but rather a RAW sensor value. See message GLOBAL_POSITION for the global position estimate. Coordinate frame is right-handed, Z-axis up (GPS frame).</p>
+                 NOT the global position estimate of the sytem, but rather a RAW sensor value. See message GLOBAL_POSITION for the global position estimate.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -16747,75 +18111,81 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">fix_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">0-1: no fix, 2: 2D fix, 3: 3D fix. Some applications will not use the value of this field unless it is at least two, so always correctly fill in the fix.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude (AMSL, not WGS84), in meters * 1000 (positive for up)
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_comment">Altitude (AMSL). Positive for up.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">eph</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">GPS HDOP horizontal dilution of position in cm (m*100). If unknown, set to: 65535</td>
+     <td class="mavlink_units" valign="top">cm</td>
+     <td class="mavlink_comment">GPS HDOP horizontal dilution of position. If unknown, set to: 65535</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">epv</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">GPS VDOP vertical dilution of position in cm (m*100). If unknown, set to: 65535</td>
+     <td class="mavlink_units" valign="top">cm</td>
+     <td class="mavlink_comment">GPS VDOP vertical dilution of position. If unknown, set to: 65535</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vel</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">GPS ground speed in cm/s. If unknown, set to: 65535
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">GPS ground speed. If unknown, set to: 65535</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vn</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">GPS velocity in cm/s in NORTH direction in earth-fixed NED frame
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">GPS velocity in NORTH direction in earth-fixed NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ve</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">GPS velocity in cm/s in EAST direction in earth-fixed NED frame
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">GPS velocity in EAST direction in earth-fixed NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vd</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">GPS velocity in cm/s in DOWN direction in earth-fixed NED frame
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">GPS velocity in DOWN direction in earth-fixed NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cog</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Course over ground (NOT heading, but direction of movement) in degrees * 100, 0.0..359.99 degrees. If unknown, set to: 65535
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_comment">Course over ground (NOT heading, but direction of movement), 0.0..359.99 degrees. If unknown, set to: 65535</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">satellites_visible</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Number of satellites visible. If unknown, set to 255</td>
     </tr>
    </tbody>
@@ -16831,6 +18201,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -16838,72 +18209,76 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds, synced to UNIX time or since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sensor_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Sensor ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">integration_time_us</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Integration time in microseconds. Divide integrated_x and integrated_y by the integration time to obtain average flow. The integration time also indicates the.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Integration time. Divide integrated_x and integrated_y by the integration time to obtain average flow. The integration time also indicates the.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">integrated_x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Flow in radians around X axis (Sensor RH rotation about the X axis induces a positive flow. Sensor linear motion along the positive Y axis induces a negative flow.)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Flow in radians around X axis (Sensor RH rotation about the X axis induces a positive flow. Sensor linear motion along the positive Y axis induces a negative flow.)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">integrated_y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Flow in radians around Y axis (Sensor RH rotation about the Y axis induces a positive flow. Sensor linear motion along the positive X axis induces a positive flow.)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Flow in radians around Y axis (Sensor RH rotation about the Y axis induces a positive flow. Sensor linear motion along the positive X axis induces a positive flow.)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">integrated_xgyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">RH rotation around X axis (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">RH rotation around X axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">integrated_ygyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">RH rotation around Y axis (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">RH rotation around Y axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">integrated_zgyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">RH rotation around Z axis (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">RH rotation around Z axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Temperature * 100 in centi-degrees Celsius
-     (Units: cdegC)</td>
+     <td class="mavlink_units" valign="top">cdegC</td>
+     <td class="mavlink_comment">Temperature</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">quality</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Optical flow quality / confidence. 0: no valid flow, 255: maximum quality</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_delta_distance_us</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Time in microseconds since the distance was sampled.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Time since the distance was sampled.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">distance</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Distance to the center of the flow field in meters. Positive value (including zero): distance known. Negative value: Unknown distance.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Distance to the center of the flow field. Positive value (including zero): distance known. Negative value: Unknown distance.</td>
     </tr>
    </tbody>
   </table>
@@ -16918,6 +18293,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -16925,97 +18301,99 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">attitude_quaternion</td>
      <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Vehicle attitude expressed as normalized quaternion in w, x, y, z order (with 1 0 0 0 being the null-rotation)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rollspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body frame roll / phi angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Body frame roll / phi angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitchspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body frame pitch / theta angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Body frame pitch / theta angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yawspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Body frame yaw / psi angular speed (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Body frame yaw / psi angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude in meters, expressed as * 1000 (millimeters)
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_comment">Altitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vx</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Ground X Speed (Latitude), expressed as cm/s
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">Ground X Speed (Latitude)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vy</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Ground Y Speed (Longitude), expressed as cm/s
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">Ground Y Speed (Longitude)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Ground Z Speed (Altitude), expressed as cm/s
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">Ground Z Speed (Altitude)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ind_airspeed</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Indicated airspeed, expressed as cm/s
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">Indicated airspeed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">true_airspeed</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">True airspeed, expressed as cm/s
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_comment">True airspeed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">X acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">X acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Y acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">Y acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Z acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">Z acceleration</td>
     </tr>
    </tbody>
   </table>
@@ -17030,6 +18408,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17037,62 +18416,62 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">X acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">X acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Y acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">Y acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Z acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">Z acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xgyro</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Angular speed around X axis (millirad /sec)
-     (Units: mrad/s)</td>
+     <td class="mavlink_units" valign="top">mrad/s</td>
+     <td class="mavlink_comment">Angular speed around X axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ygyro</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Angular speed around Y axis (millirad /sec)
-     (Units: mrad/s)</td>
+     <td class="mavlink_units" valign="top">mrad/s</td>
+     <td class="mavlink_comment">Angular speed around Y axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zgyro</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Angular speed around Z axis (millirad /sec)
-     (Units: mrad/s)</td>
+     <td class="mavlink_units" valign="top">mrad/s</td>
+     <td class="mavlink_comment">Angular speed around Z axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xmag</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">X Magnetic field (milli tesla)
-     (Units: mT)</td>
+     <td class="mavlink_units" valign="top">mT</td>
+     <td class="mavlink_comment">X Magnetic field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ymag</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Y Magnetic field (milli tesla)
-     (Units: mT)</td>
+     <td class="mavlink_units" valign="top">mT</td>
+     <td class="mavlink_comment">Y Magnetic field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zmag</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Z Magnetic field (milli tesla)
-     (Units: mT)</td>
+     <td class="mavlink_units" valign="top">mT</td>
+     <td class="mavlink_comment">Z Magnetic field</td>
     </tr>
    </tbody>
   </table>
@@ -17144,6 +18523,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17151,29 +18531,35 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">id</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Log id</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">num_logs</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Total number of logs</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">last_log_num</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">High log number</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_utc</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">UTC timestamp of log in seconds since 1970, or 0 if not available
-     (Units: s)</td>
+     <td class="mavlink_units" valign="top">s</td>
+     <td class="mavlink_comment">UTC timestamp of log since 1970, or 0 if not available</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">size</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Size of the log (may be approximate) in bytes
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">Size of the log (may be approximate)</td>
     </tr>
    </tbody>
   </table>
@@ -17188,6 +18574,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17195,28 +18582,36 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">id</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Log id (from LOG_ENTRY reply)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ofs</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Offset into the log</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">count</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Number of bytes
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">Number of bytes</td>
     </tr>
    </tbody>
   </table>
@@ -17231,6 +18626,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17238,22 +18634,28 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">id</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Log id (from LOG_ENTRY reply)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ofs</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Offset into the log</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">count</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Number of bytes (zero for end of log)
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">Number of bytes (zero for end of log)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">uint8_t[90]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">log data</td>
     </tr>
    </tbody>
@@ -17323,6 +18725,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17330,22 +18733,28 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">len</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">data length
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">data length</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">uint8_t[110]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">raw data (110 is enough for 12 satellites of RTCMv2)</td>
     </tr>
    </tbody>
@@ -17355,12 +18764,14 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">Second GPS data. Coordinate frame is right-handed, Z-axis up (GPS frame).</p>
+  <p class="description">Second GPS data.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17368,74 +18779,124 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">fix_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See the GPS_FIX_TYPE enum.
-     (Enum:<a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
+     </td>
+     <td class="mavlink_comment">GPS fix type.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Latitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Longitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude (AMSL, not WGS84), in meters * 1000 (positive for up)
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude (AMSL). Positive for up.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">eph</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">GPS HDOP horizontal dilution of position in cm (m*100). If unknown, set to: UINT16_MAX
-     (Units: cm)</td>
+     <td class="mavlink_units" valign="top">cm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS HDOP horizontal dilution of position. If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">epv</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">GPS VDOP vertical dilution of position in cm (m*100). If unknown, set to: UINT16_MAX
-     (Units: cm)</td>
+     <td class="mavlink_units" valign="top">cm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS VDOP vertical dilution of position. If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vel</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">GPS ground speed (m/s * 100). If unknown, set to: UINT16_MAX
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS ground speed. If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cog</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Course over ground (NOT heading, but direction of movement) in degrees * 100, 0.0..359.99 degrees. If unknown, set to: UINT16_MAX
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Course over ground (NOT heading, but direction of movement): 0.0..359.99 degrees. If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">satellites_visible</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Number of satellites visible. If unknown, set to 255</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">dgps_numch</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Number of DGPS satellites</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">dgps_age</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Age of DGPS info
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Age of DGPS info</td>
     </tr>
    </tbody>
   </table>
@@ -17450,6 +18911,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17457,22 +18920,32 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">Vcc</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">5V rail voltage in millivolts
-     (Units: mV)</td>
+     <td class="mavlink_units" valign="top">mV</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">5V rail voltage.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">Vservo</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">servo rail voltage in millivolts
-     (Units: mV)</td>
+     <td class="mavlink_units" valign="top">mV</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Servo rail voltage.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">power supply status flags (see MAV_POWER_STATUS enum)
-     (Enum:<a href="#MAV_POWER_STATUS">MAV_POWER_STATUS</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_POWER_STATUS">MAV_POWER_STATUS</a>
+     </td>
+     <td class="mavlink_comment">Bitmap of power supply status flags.</td>
     </tr>
    </tbody>
   </table>
@@ -17487,6 +18960,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17494,40 +18969,62 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">device</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See SERIAL_CONTROL_DEV enum
-     (Enum:<a href="#SERIAL_CONTROL_DEV">SERIAL_CONTROL_DEV</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#SERIAL_CONTROL_DEV">SERIAL_CONTROL_DEV</a>
+     </td>
+     <td class="mavlink_comment">Serial control device type.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See SERIAL_CONTROL_FLAG enum
-     (Enum:<a href="#SERIAL_CONTROL_FLAG">SERIAL_CONTROL_FLAG</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#SERIAL_CONTROL_FLAG">SERIAL_CONTROL_FLAG</a>
+     </td>
+     <td class="mavlink_comment">Bitmap of serial control flags.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">timeout</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Timeout for reply data in milliseconds
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timeout for reply data</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baudrate</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Baudrate of transfer. Zero means no change.
-     (Units: bits/s)</td>
+     <td class="mavlink_units" valign="top">bits/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Baudrate of transfer. Zero means no change.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">count</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">how many bytes in this transfer
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">how many bytes in this transfer</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">uint8_t[70]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">serial data</td>
     </tr>
    </tbody>
@@ -17543,6 +19040,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17550,75 +19049,137 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_last_baseline_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Time since boot of last baseline message received in ms.
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Time since boot of last baseline message received.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rtk_receiver_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Identification of connected RTK receiver.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">wn</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">GPS Week Number of last baseline</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">tow</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">GPS Time of Week of last baseline
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS Time of Week of last baseline</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rtk_health</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">GPS-specific health report for RTK data.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rtk_rate</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Rate of baseline messages being received by GPS, in HZ
-     (Units: Hz)</td>
+     <td class="mavlink_units" valign="top">Hz</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Rate of baseline messages being received by GPS</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">nsats</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Current number of sats used for RTK calculation.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baseline_coords_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Coordinate system of baseline
-     (Enum:<a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
+     </td>
+     <td class="mavlink_comment">Coordinate system of baseline</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baseline_a_mm</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Current baseline in ECEF x or NED north component in mm.
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Current baseline in ECEF x or NED north component.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baseline_b_mm</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Current baseline in ECEF y or NED east component in mm.
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Current baseline in ECEF y or NED east component.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baseline_c_mm</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Current baseline in ECEF z or NED down component in mm.
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Current baseline in ECEF z or NED down component.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">accuracy</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Current estimate of baseline accuracy.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">iar_num_hypotheses</td>
      <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Current number of integer ambiguity hypotheses.</td>
     </tr>
    </tbody>
@@ -17634,6 +19195,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17641,75 +19204,137 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_last_baseline_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Time since boot of last baseline message received in ms.
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Time since boot of last baseline message received.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rtk_receiver_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Identification of connected RTK receiver.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">wn</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">GPS Week Number of last baseline</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">tow</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">GPS Time of Week of last baseline
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS Time of Week of last baseline</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rtk_health</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">GPS-specific health report for RTK data.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rtk_rate</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Rate of baseline messages being received by GPS, in HZ
-     (Units: Hz)</td>
+     <td class="mavlink_units" valign="top">Hz</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Rate of baseline messages being received by GPS</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">nsats</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Current number of sats used for RTK calculation.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baseline_coords_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Coordinate system of baseline
-     (Enum:<a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
+     </td>
+     <td class="mavlink_comment">Coordinate system of baseline</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baseline_a_mm</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Current baseline in ECEF x or NED north component in mm.
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Current baseline in ECEF x or NED north component.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baseline_b_mm</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Current baseline in ECEF y or NED east component in mm.
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Current baseline in ECEF y or NED east component.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">baseline_c_mm</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Current baseline in ECEF z or NED down component in mm.
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Current baseline in ECEF z or NED down component.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">accuracy</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Current estimate of baseline accuracy.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">iar_num_hypotheses</td>
      <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Current number of integer ambiguity hypotheses.</td>
     </tr>
    </tbody>
@@ -17725,6 +19350,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17732,62 +19358,62 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">X acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">X acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Y acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">Y acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zacc</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Z acceleration (mg)
-     (Units: mG)</td>
+     <td class="mavlink_units" valign="top">mG</td>
+     <td class="mavlink_comment">Z acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xgyro</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Angular speed around X axis (millirad /sec)
-     (Units: mrad/s)</td>
+     <td class="mavlink_units" valign="top">mrad/s</td>
+     <td class="mavlink_comment">Angular speed around X axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ygyro</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Angular speed around Y axis (millirad /sec)
-     (Units: mrad/s)</td>
+     <td class="mavlink_units" valign="top">mrad/s</td>
+     <td class="mavlink_comment">Angular speed around Y axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zgyro</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Angular speed around Z axis (millirad /sec)
-     (Units: mrad/s)</td>
+     <td class="mavlink_units" valign="top">mrad/s</td>
+     <td class="mavlink_comment">Angular speed around Z axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xmag</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">X Magnetic field (milli tesla)
-     (Units: mT)</td>
+     <td class="mavlink_units" valign="top">mT</td>
+     <td class="mavlink_comment">X Magnetic field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ymag</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Y Magnetic field (milli tesla)
-     (Units: mT)</td>
+     <td class="mavlink_units" valign="top">mT</td>
+     <td class="mavlink_comment">Y Magnetic field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zmag</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Z Magnetic field (milli tesla)
-     (Units: mT)</td>
+     <td class="mavlink_units" valign="top">mT</td>
+     <td class="mavlink_comment">Z Magnetic field</td>
     </tr>
    </tbody>
   </table>
@@ -17803,6 +19429,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17810,40 +19438,77 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">type of requested/acknowledged data (as defined in ENUM DATA_TYPES in mavlink/include/mavlink_types.h)</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#DATA_TYPES">DATA_TYPES</a>
+     </td>
+     <td class="mavlink_comment">Type of requested/acknowledged data.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">size</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">total data size in bytes (set on ACK only)
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">total data size (set on ACK only).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">width</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Width of a matrix or image</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Width of a matrix or image.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">height</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Height of a matrix or image</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Height of a matrix or image.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">packets</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">number of packets beeing sent (set on ACK only)</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Number of packets being sent (set on ACK only).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">payload</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">payload size per packet (normally 253 byte, see DATA field size in message ENCAPSULATED_DATA) (set on ACK only)
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Payload size per packet (normally 253 byte, see DATA field size in message ENCAPSULATED_DATA) (set on ACK only).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">jpg_quality</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">JPEG quality out of [1,100]
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">JPEG quality. Values: [1-100].</td>
     </tr>
    </tbody>
   </table>
@@ -17887,6 +19552,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17894,53 +19561,83 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Time since system boot
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">min_distance</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Minimum distance the sensor can measure in centimeters
-     (Units: cm)</td>
+     <td class="mavlink_units" valign="top">cm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Minimum distance the sensor can measure</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">max_distance</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Maximum distance the sensor can measure in centimeters
-     (Units: cm)</td>
+     <td class="mavlink_units" valign="top">cm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Maximum distance the sensor can measure</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">current_distance</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Current distance reading
-     (Units: cm)</td>
+     <td class="mavlink_units" valign="top">cm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Current distance reading</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Type from MAV_DISTANCE_SENSOR enum.
-     (Enum:<a href="#MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
+     </td>
+     <td class="mavlink_comment">Type of distance sensor.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Onboard ID of the sensor</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">orientation</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Direction the sensor faces from MAV_SENSOR_ORIENTATION enum. downward-facing: ROTATION_PITCH_270, upward-facing: ROTATION_PITCH_90, backward-facing: ROTATION_PITCH_180, forward-facing: ROTATION_NONE, left-facing: ROTATION_YAW_90, right-facing: ROTATION_YAW_270
-     (Enum:<a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
+     </td>
+     <td class="mavlink_comment">Direction the sensor faces. downward-facing: ROTATION_PITCH_270, upward-facing: ROTATION_PITCH_90, backward-facing: ROTATION_PITCH_180, forward-facing: ROTATION_NONE, left-facing: ROTATION_YAW_90, right-facing: ROTATION_YAW_270</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">covariance</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Measurement covariance in centimeters, 0 for unknown / invalid readings
-     (Units: cm)</td>
+     <td class="mavlink_units" valign="top">cm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Measurement covariance, 0 for unknown / invalid readings</td>
     </tr>
    </tbody>
   </table>
@@ -17955,6 +19652,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -17962,24 +19660,26 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude of SW corner of first grid (degrees *10^7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude of SW corner of first grid</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude of SW corner of first grid (in degrees *10^7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude of SW corner of first grid</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">grid_spacing</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Grid spacing in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Grid spacing</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mask</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Bitmask of requested 4x4 grids (row major 8x7 array of grids, 56 bits)</td>
     </tr>
    </tbody>
@@ -17995,6 +19695,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18002,31 +19703,33 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude of SW corner of first grid (degrees *10^7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude of SW corner of first grid</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude of SW corner of first grid (in degrees *10^7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude of SW corner of first grid</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">grid_spacing</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Grid spacing in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Grid spacing</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">gridbit</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">bit within the terrain request mask</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">int16_t[16]</td>
-     <td class="mavlink_comment">Terrain data in meters AMSL
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Terrain data AMSL</td>
     </tr>
    </tbody>
   </table>
@@ -18041,6 +19744,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18048,14 +19752,14 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude (degrees *10^7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude (degrees *10^7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude</td>
     </tr>
    </tbody>
   </table>
@@ -18070,6 +19774,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18077,40 +19782,46 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude (degrees *10^7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude (degrees *10^7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">spacing</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">grid spacing (zero if terrain at this location unavailable)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">terrain_height</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Terrain height in meters AMSL
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Terrain height AMSL</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">current_height</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Current vehicle height above lat/lon terrain height (meters)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Current vehicle height above lat/lon terrain height</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pending</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Number of 4x4 terrain blocks waiting to be received or read from disk</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">loaded</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Number of 4x4 terrain blocks in memory</td>
     </tr>
    </tbody>
@@ -18126,6 +19837,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18133,26 +19845,26 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">press_abs</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Absolute pressure (hectopascal)
-     (Units: hPa)</td>
+     <td class="mavlink_units" valign="top">hPa</td>
+     <td class="mavlink_comment">Absolute pressure</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">press_diff</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Differential pressure 1 (hectopascal)
-     (Units: hPa)</td>
+     <td class="mavlink_units" valign="top">hPa</td>
+     <td class="mavlink_comment">Differential pressure</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Temperature measurement (0.01 degrees celsius)
-     (Units: cdegC)</td>
+     <td class="mavlink_units" valign="top">cdegC</td>
+     <td class="mavlink_comment">Temperature measurement</td>
     </tr>
    </tbody>
   </table>
@@ -18167,6 +19879,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18174,31 +19887,33 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q</td>
      <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X position in meters (NED)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">X position (NED)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y position in meters (NED)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Y position (NED)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z position in meters (NED)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Z position (NED)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18206,6 +19921,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">float[21]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Pose covariance matrix upper right triangular (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
     </tr>
    </tbody>
@@ -18221,6 +19938,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18228,27 +19946,35 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">group_mlx</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Actuator group. The "_mlx" indicates this is a multi-instance message and a MAVLink parser should use this field to difference between instances.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">controls</td>
      <td class="mavlink_type" valign="top">float[8]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Actuator controls. Normed to -1..+1 where 0 is neutral position. Throttle for single rotation direction motors is 0..1, negative range for reverse direction. Standard mapping for attitude controls (group 0): (index 0-7): roll, pitch, yaw, throttle, flaps, spoilers, airbrakes, landing gear. Load a pass-through mixer to repurpose them as generic outputs.</td>
     </tr>
    </tbody>
@@ -18264,6 +19990,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18271,17 +19998,21 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">group_mlx</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Actuator group. The "_mlx" indicates this is a multi-instance message and a MAVLink parser should use this field to difference between instances.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">controls</td>
      <td class="mavlink_type" valign="top">float[8]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Actuator controls. Normed to -1..+1 where 0 is neutral position. Throttle for single rotation direction motors is 0..1, negative range for reverse direction. Standard mapping for attitude controls (group 0): (index 0-7): roll, pitch, yaw, throttle, flaps, spoilers, airbrakes, landing gear. Load a pass-through mixer to repurpose them as generic outputs.</td>
     </tr>
    </tbody>
@@ -18297,6 +20028,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18304,44 +20036,44 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude_monotonic</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">This altitude measure is initialized on system boot and monotonic (it is never reset, but represents the local altitude change). The only guarantee on this field is that it will never be reset and is consistent within a flight. The recommended value for this field is the uncorrected barometric altitude at boot time. This altitude will also drift and vary between flights.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">This altitude measure is initialized on system boot and monotonic (it is never reset, but represents the local altitude change). The only guarantee on this field is that it will never be reset and is consistent within a flight. The recommended value for this field is the uncorrected barometric altitude at boot time. This altitude will also drift and vary between flights.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude_amsl</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">This altitude measure is strictly above mean sea level and might be non-monotonic (it might reset on events like GPS lock or when a new QNH value is set). It should be the altitude to which global altitude waypoints are compared to. Note that it is *not* the GPS altitude, however, most GPS modules already output AMSL by default and not the WGS84 altitude.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">This altitude measure is strictly above mean sea level and might be non-monotonic (it might reset on events like GPS lock or when a new QNH value is set). It should be the altitude to which global altitude waypoints are compared to. Note that it is *not* the GPS altitude, however, most GPS modules already output AMSL by default and not the WGS84 altitude.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude_local</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">This is the local altitude in the local coordinate frame. It is not the altitude above home, but in reference to the coordinate origin (0, 0, 0). It is up-positive.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">This is the local altitude in the local coordinate frame. It is not the altitude above home, but in reference to the coordinate origin (0, 0, 0). It is up-positive.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude_relative</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">This is the altitude above the home position. It resets on each change of the current home position.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">This is the altitude above the home position. It resets on each change of the current home position.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude_terrain</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">This is the altitude above terrain. It might be fed by a terrain database or an altimeter. Values smaller than -1000 should be interpreted as unknown.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">This is the altitude above terrain. It might be fed by a terrain database or an altimeter. Values smaller than -1000 should be interpreted as unknown.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">bottom_clearance</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">This is not the altitude, but the clear space below the system according to the fused clearance estimate. It generally should max out at the maximum range of e.g. the laser altimeter. It is generally a moving target. A negative value indicates no measurement available.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">This is not the altitude, but the clear space below the system according to the fused clearance estimate. It generally should max out at the maximum range of e.g. the laser altimeter. It is generally a moving target. A negative value indicates no measurement available.</td>
     </tr>
    </tbody>
   </table>
@@ -18398,6 +20130,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18405,26 +20138,26 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">press_abs</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Absolute pressure (hectopascal)
-     (Units: hPa)</td>
+     <td class="mavlink_units" valign="top">hPa</td>
+     <td class="mavlink_comment">Absolute pressure</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">press_diff</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Differential pressure 1 (hectopascal)
-     (Units: hPa)</td>
+     <td class="mavlink_units" valign="top">hPa</td>
+     <td class="mavlink_comment">Differential pressure</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Temperature measurement (0.01 degrees celsius)
-     (Units: cdegC)</td>
+     <td class="mavlink_units" valign="top">cdegC</td>
+     <td class="mavlink_comment">Temperature measurement</td>
     </tr>
    </tbody>
   </table>
@@ -18439,6 +20172,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18446,47 +20180,51 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">timestamp</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp in milliseconds since system boot
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">est_capabilities</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">bit positions for tracker reporting capabilities (POS = 0, VEL = 1, ACCEL = 2, ATT + RATES = 3)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">AMSL, in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Altitude (AMSL)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vel</td>
      <td class="mavlink_type" valign="top">float[3]</td>
-     <td class="mavlink_comment">target velocity (0,0,0) for unknown
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">target velocity (0,0,0) for unknown</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">acc</td>
      <td class="mavlink_type" valign="top">float[3]</td>
-     <td class="mavlink_comment">linear target acceleration (0,0,0) for unknown
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">linear target acceleration (0,0,0) for unknown</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">attitude_q</td>
      <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">
       (1 0 0 0 for unknown)
      </td>
@@ -18494,6 +20232,8 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rates</td>
      <td class="mavlink_type" valign="top">float[3]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">
       (0 0 0 for unknown)
      </td>
@@ -18501,11 +20241,15 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">position_cov</td>
      <td class="mavlink_type" valign="top">float[3]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">eph epv</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">custom_state</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">button states or switches of a tracker device</td>
     </tr>
    </tbody>
@@ -18521,6 +20265,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18528,101 +20273,107 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x_acc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X acceleration in body frame
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">X acceleration in body frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y_acc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y acceleration in body frame
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">Y acceleration in body frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z_acc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z acceleration in body frame
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">Z acceleration in body frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x_vel</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X velocity in body frame
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">X velocity in body frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y_vel</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y velocity in body frame
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Y velocity in body frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z_vel</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z velocity in body frame
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Z velocity in body frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x_pos</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X position in local frame
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">X position in local frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y_pos</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y position in local frame
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Y position in local frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z_pos</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z position in local frame
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Z position in local frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">airspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Airspeed, set to -1 if unknown
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Airspeed, set to -1 if unknown</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vel_variance</td>
      <td class="mavlink_type" valign="top">float[3]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Variance of body velocity estimate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pos_variance</td>
      <td class="mavlink_type" valign="top">float[3]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Variance in local position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q</td>
      <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">The attitude, represented as Quaternion</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular rate in roll axis
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular rate in roll axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular rate in pitch axis
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular rate in pitch axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw_rate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular rate in yaw axis
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular rate in yaw axis</td>
     </tr>
    </tbody>
   </table>
@@ -18637,6 +20388,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18644,59 +20397,95 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Battery ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">battery_function</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Function of the battery
-     (Enum:<a href="#MAV_BATTERY_FUNCTION">MAV_BATTERY_FUNCTION</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_BATTERY_FUNCTION">MAV_BATTERY_FUNCTION</a>
+     </td>
+     <td class="mavlink_comment">Function of the battery</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Type (chemistry) of the battery
-     (Enum:<a href="#MAV_BATTERY_TYPE">MAV_BATTERY_TYPE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_BATTERY_TYPE">MAV_BATTERY_TYPE</a>
+     </td>
+     <td class="mavlink_comment">Type (chemistry) of the battery</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Temperature of the battery in centi-degrees celsius. INT16_MAX for unknown temperature.
-     (Units: cdegC)</td>
+     <td class="mavlink_units" valign="top">cdegC</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Temperature of the battery. INT16_MAX for unknown temperature.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">voltages</td>
      <td class="mavlink_type" valign="top">uint16_t[10]</td>
-     <td class="mavlink_comment">Battery voltage of cells, in millivolts (1 = 1 millivolt). Cells above the valid cell count for this battery should have the UINT16_MAX value.
-     (Units: mV)</td>
+     <td class="mavlink_units" valign="top">mV</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">current_battery</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Battery current, in 10*milliamperes (1 = 10 milliampere), -1: autopilot does not measure the current
-     (Units: cA)</td>
+     <td class="mavlink_units" valign="top">cA</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Battery current, -1: autopilot does not measure the current</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">current_consumed</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Consumed charge, in milliampere hours (1 = 1 mAh), -1: autopilot does not provide mAh consumption estimate
-     (Units: mAh)</td>
+     <td class="mavlink_units" valign="top">mAh</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Consumed charge, -1: autopilot does not provide consumption estimate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">energy_consumed</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Consumed energy, in HectoJoules (intergrated U*I*dt)  (1 = 100 Joule), -1: autopilot does not provide energy consumption estimate
-     (Units: hJ)</td>
+     <td class="mavlink_units" valign="top">hJ</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Consumed energy, -1: autopilot does not provide energy consumption estimate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">battery_remaining</td>
      <td class="mavlink_type" valign="top">int8_t</td>
-     <td class="mavlink_comment">Remaining battery energy: (0%: 0, 100%: 100), -1: autopilot does not estimate the remaining battery
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">time_remaining<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18704,8 +20493,12 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Remaining battery time, in seconds (1 = 1s = 0% energy left), 0: autopilot does not provide remaining battery time estimate
-     (Units: s)</td>
+     <td class="mavlink_units" valign="top">s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Remaining battery time, 0: autopilot does not provide remaining battery time estimate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">charge_state<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18713,10 +20506,12 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">State for extent of discharge, provided by autopilot for warning or external reactions
-     (Enum:<a href="#MAV_BATTERY_CHARGE_STATE">MAV_BATTERY_CHARGE_STATE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_BATTERY_CHARGE_STATE">MAV_BATTERY_CHARGE_STATE</a>
+     </td>
+     <td class="mavlink_comment">State for extent of discharge, provided by autopilot for warning or external reactions</td>
     </tr>
    </tbody>
   </table>
@@ -18731,6 +20526,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18738,59 +20534,99 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">capabilities</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">bitmask of capabilities (see MAV_PROTOCOL_CAPABILITY enum)
-     (Enum:<a href="#MAV_PROTOCOL_CAPABILITY">MAV_PROTOCOL_CAPABILITY</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_PROTOCOL_CAPABILITY">MAV_PROTOCOL_CAPABILITY</a>
      </td>
+     <td class="mavlink_comment">Bitmap of capabilities</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flight_sw_version</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Firmware version number</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">middleware_sw_version</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Middleware version number</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">os_sw_version</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Operating system version number</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">board_version</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">HW / board version (last 8 bytes should be silicon ID, if any)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flight_custom_version</td>
      <td class="mavlink_type" valign="top">uint8_t[8]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Custom version field, commonly the first 8 bytes of the git hash. This is not an unique identifier, but should allow to identify the commit using the main version number even for very large code bases.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">middleware_custom_version</td>
      <td class="mavlink_type" valign="top">uint8_t[8]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Custom version field, commonly the first 8 bytes of the git hash. This is not an unique identifier, but should allow to identify the commit using the main version number even for very large code bases.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">os_custom_version</td>
      <td class="mavlink_type" valign="top">uint8_t[8]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Custom version field, commonly the first 8 bytes of the git hash. This is not an unique identifier, but should allow to identify the commit using the main version number even for very large code bases.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vendor_id</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">ID of the board vendor</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">product_id</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">ID of the product</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">uid</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">UID if provided by hardware (see uid2)</td>
     </tr>
     <tr class="mavlink_field">
@@ -18799,6 +20635,10 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t[18]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">UID if provided by hardware (supersedes the uid field. If this is non-zero, use this field, otherwise use uid)</td>
     </tr>
    </tbody>
@@ -18814,6 +20654,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18821,51 +20663,83 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_num</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">The ID of the target if multiple targets are present</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">frame</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">MAV_FRAME enum specifying the whether the following feilds are earth-frame, body-frame, etc.
-     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_FRAME">MAV_FRAME</a>
+     </td>
+     <td class="mavlink_comment">Coordinate frame used for following fields.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">angle_x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X-axis angular offset (in radians) of the target from the center of the image
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X-axis angular offset of the target from the center of the image</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">angle_y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y-axis angular offset (in radians) of the target from the center of the image
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y-axis angular offset of the target from the center of the image</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">distance</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Distance to the target from the vehicle in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Distance to the target from the vehicle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">size_x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Size in radians of target along x-axis
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Size of target along x-axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">size_y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Size in radians of target along y-axis
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Size of target along y-axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">x<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18873,8 +20747,12 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X Position of the landing target on MAV_FRAME
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X Position of the landing target on MAV_FRAME</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">y<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18882,8 +20760,12 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y Position of the landing target on MAV_FRAME
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y Position of the landing target on MAV_FRAME</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">z<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18891,8 +20773,12 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z Position of the landing target on MAV_FRAME
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z Position of the landing target on MAV_FRAME</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">q<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18900,6 +20786,12 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Quaternion of landing target orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
     </tr>
     <tr class="mavlink_field">
@@ -18908,10 +20800,12 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">LANDING_TARGET_TYPE enum specifying the type of landing target
-     (Enum:<a href="#LANDING_TARGET_TYPE">LANDING_TARGET_TYPE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#LANDING_TARGET_TYPE">LANDING_TARGET_TYPE</a>
+     </td>
+     <td class="mavlink_comment">Type of landing target</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">position_valid<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18919,7 +20813,13 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Boolean indicating known position (1) or default unkown position (0), for validation of positioning of the landing target</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Boolean indicating known position (1) or default unknown position (0), for validation of positioning of the landing target</td>
     </tr>
    </tbody>
   </table>
@@ -18928,12 +20828,14 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">Estimator status message including flags, innovation test ratios and estimated accuracies. The flags message is an integer bitmask containing information on which EKF outputs are valid. See the ESTIMATOR_STATUS_FLAGS enum definition for further information. The innovaton test ratios show the magnitude of the sensor innovation divided by the innovation check threshold. Under normal operation the innovaton test ratios should be below 0.5 with occasional values up to 1.0. Values greater than 1.0 should be rare under normal operation and indicate that a measurement has been rejected by the filter. The user should be notified if an innovation test ratio greater than 1.0 is recorded. Notifications for values in the range between 0.5 and 1.0 should be optional and controllable by the user.</p>
+  <p class="description">Estimator status message including flags, innovation test ratios and estimated accuracies. The flags message is an integer bitmask containing information on which EKF outputs are valid. See the ESTIMATOR_STATUS_FLAGS enum definition for further information. The innovation test ratios show the magnitude of the sensor innovation divided by the innovation check threshold. Under normal operation the innovation test ratios should be below 0.5 with occasional values up to 1.0. Values greater than 1.0 should be rare under normal operation and indicate that a measurement has been rejected by the filter. The user should be notified if an innovation test ratio greater than 1.0 is recorded. Notifications for values in the range between 0.5 and 1.0 should be optional and controllable by the user.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -18941,58 +20843,108 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Integer bitmask indicating which EKF outputs are valid. See definition for ESTIMATOR_STATUS_FLAGS.
-     (Enum:<a href="#ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</a>
+     </td>
+     <td class="mavlink_comment">Integer bitmap indicating which EKF outputs are valid.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vel_ratio</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Velocity innovation test ratio</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pos_horiz_ratio</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Horizontal position innovation test ratio</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pos_vert_ratio</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Vertical position innovation test ratio</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mag_ratio</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Magnetometer innovation test ratio</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">hagl_ratio</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Height above terrain innovation test ratio</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">tas_ratio</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">True airspeed innovation test ratio</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pos_horiz_accuracy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Horizontal position 1-STD accuracy relative to the EKF local origin (m)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Horizontal position 1-STD accuracy relative to the EKF local origin</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pos_vert_accuracy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Vertical position 1-STD accuracy relative to the EKF local origin (m)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Vertical position 1-STD accuracy relative to the EKF local origin</td>
     </tr>
    </tbody>
   </table>
@@ -19008,6 +20960,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -19015,56 +20968,56 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">wind_x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Wind in X (NED) direction in m/s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Wind in X (NED) direction</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">wind_y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Wind in Y (NED) direction in m/s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Wind in Y (NED) direction</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">wind_z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Wind in Z (NED) direction in m/s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Wind in Z (NED) direction</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">var_horiz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Variability of the wind in XY. RMS of a 1 Hz lowpassed wind estimate.
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Variability of the wind in XY. RMS of a 1 Hz lowpassed wind estimate.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">var_vert</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Variability of the wind in Z. RMS of a 1 Hz lowpassed wind estimate.
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Variability of the wind in Z. RMS of a 1 Hz lowpassed wind estimate.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">wind_alt</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">AMSL altitude (m) this measurement was taken at
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Altitude (AMSL) that this measurement was taken at</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">horiz_accuracy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Horizontal speed 1-STD accuracy
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Horizontal speed 1-STD accuracy</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vert_accuracy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Vertical speed 1-STD accuracy
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Vertical speed 1-STD accuracy</td>
     </tr>
    </tbody>
   </table>
@@ -19073,12 +21026,14 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">GPS sensor input message.  This is a raw sensor value sent by the GPS. This is NOT the global position estimate of the sytem.</p>
+  <p class="description">GPS sensor input message.  This is a raw sensor value sent by the GPS. This is NOT the global position estimate of the system.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -19086,107 +21041,185 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">gps_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">ID of the GPS for multiple GPS inputs</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ignore_flags</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Flags indicating which fields to ignore (see GPS_INPUT_IGNORE_FLAGS enum).  All other fields must be provided.
-     (Enum:<a href="#GPS_INPUT_IGNORE_FLAGS">GPS_INPUT_IGNORE_FLAGS</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#GPS_INPUT_IGNORE_FLAGS">GPS_INPUT_IGNORE_FLAGS</a>
+     </td>
+     <td class="mavlink_comment">Bitmap indicating which GPS input flags fields to ignore.  All other fields must be provided.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_week_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">GPS time (milliseconds from start of GPS week)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS time (from start of GPS week)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_week</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">GPS week number</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">fix_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">0-1: no fix, 2: 2D fix, 3: 3D fix. 4: 3D with DGPS. 5: 3D with RTK</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Latitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Longitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Altitude (AMSL, not WGS84), in m (positive for up)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude (AMSL). Positive for up.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">hdop</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">GPS HDOP horizontal dilution of position in m
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS HDOP horizontal dilution of position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vdop</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">GPS VDOP vertical dilution of position in m
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS VDOP vertical dilution of position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vn</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">GPS velocity in m/s in NORTH direction in earth-fixed NED frame
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS velocity in NORTH direction in earth-fixed NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ve</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">GPS velocity in m/s in EAST direction in earth-fixed NED frame
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS velocity in EAST direction in earth-fixed NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vd</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">GPS velocity in m/s in DOWN direction in earth-fixed NED frame
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS velocity in DOWN direction in earth-fixed NED frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">speed_accuracy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">GPS speed accuracy in m/s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS speed accuracy</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">horiz_accuracy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">GPS horizontal accuracy in m
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS horizontal accuracy</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vert_accuracy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">GPS vertical accuracy in m
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">GPS vertical accuracy</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">satellites_visible</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Number of satellites visible.</td>
     </tr>
    </tbody>
@@ -19202,6 +21235,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -19209,17 +21243,21 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">LSB: 1 means message is fragmented, next 2 bits are the fragment ID, the remaining 5 bits are used for the sequence ID. Messages are only to be flushed to the GPS when the entire message has been reconstructed on the autopilot. The fragment ID specifies which order the fragments should be assembled into a buffer, while the sequence ID is used to detect a mismatch between different buffers. The buffer is considered fully reconstructed when either all 4 fragments are present, or all the fragments before the first fragment with a non full payload is received. This management is used to ensure that normal GPS operation doesn't corrupt RTCM data, and to recover from a unreliable transport delivery order.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">len</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">data length
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">data length</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">uint8_t[180]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">RTCM message (may be fragmented)</td>
     </tr>
    </tbody>
@@ -19235,6 +21273,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -19242,148 +21282,250 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">base_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System mode bitfield, as defined by MAV_MODE_FLAG enum.
-     (Enum:<a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
+     </td>
+     <td class="mavlink_comment">System mode bitfield, as defined by MAV_MODE_FLAG enum.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">custom_mode</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">A bitfield for use for autopilot-specific flags.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">landed_state</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown.
-     (Enum:<a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
+     </td>
+     <td class="mavlink_comment">The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">roll (centidegrees)
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">roll</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">pitch (centidegrees)
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">pitch</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">heading</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">heading (centidegrees)
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">heading</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">throttle</td>
      <td class="mavlink_type" valign="top">int8_t</td>
-     <td class="mavlink_comment">throttle (percentage)
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">throttle (percentage)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">heading_sp</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">heading setpoint (centidegrees)
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">heading setpoint</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">latitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Latitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">longitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Longitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude_amsl</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Altitude above mean sea level (meters)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude above mean sea level</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude_sp</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Altitude setpoint relative to the home position (meters)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude setpoint relative to the home position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">airspeed</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">airspeed (m/s)
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">airspeed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">airspeed_sp</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">airspeed setpoint (m/s)
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">airspeed setpoint</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">groundspeed</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">groundspeed (m/s)
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">groundspeed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">climb_rate</td>
      <td class="mavlink_type" valign="top">int8_t</td>
-     <td class="mavlink_comment">climb rate (m/s)
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">climb rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">gps_nsat</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Number of satellites visible. If unknown, set to 255</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">gps_fix_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See the GPS_FIX_TYPE enum.
-     (Enum:<a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
+     </td>
+     <td class="mavlink_comment">GPS Fix type.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">battery_remaining</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Remaining battery (percentage)
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Remaining battery (percentage)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature</td>
      <td class="mavlink_type" valign="top">int8_t</td>
-     <td class="mavlink_comment">Autopilot temperature (degrees C)
-     (Units: degC)</td>
+     <td class="mavlink_units" valign="top">degC</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Autopilot temperature (degrees C)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature_air</td>
      <td class="mavlink_type" valign="top">int8_t</td>
-     <td class="mavlink_comment">Air temperature (degrees C) from airspeed sensor
-     (Units: degC)</td>
+     <td class="mavlink_units" valign="top">degC</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Air temperature (degrees C) from airspeed sensor</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">failsafe</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, bit2:GPS, bit3:GCS, bit4:fence)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">wp_num</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">current waypoint number</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">wp_distance</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">distance to target (meters)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">distance to target</td>
     </tr>
    </tbody>
   </table>
@@ -19398,6 +21540,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -19405,164 +21549,280 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">timestamp</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since boot or Unix epoch)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (milliseconds since boot or Unix epoch)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Type of the MAV (quadrotor, helicopter, etc., up to 15 types, defined in MAV_TYPE ENUM)
-     (Enum:<a href="#MAV_TYPE">MAV_TYPE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_TYPE">MAV_TYPE</a>
+     </td>
+     <td class="mavlink_comment">Type of the MAV (quadrotor, helicopter, etc.)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">autopilot</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Autopilot type / class. defined in MAV_AUTOPILOT ENUM
-     (Enum:<a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
+     </td>
+     <td class="mavlink_comment">Autopilot type / class.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">custom_mode</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">A bitfield for use for autopilot-specific flags (2 byte version).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">latitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Latitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">longitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Longitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Altitude above mean sea level
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude above mean sea level</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_altitude</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Altitude setpoint
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude setpoint</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">heading</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Heading (degrees / 2)
-     (Units: deg/2)</td>
+     <td class="mavlink_units" valign="top">deg/2</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Heading</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_heading</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Heading setpoint (degrees / 2)
-     (Units: deg/2)</td>
+     <td class="mavlink_units" valign="top">deg/2</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Heading setpoint</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_distance</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Distance to target waypoint or position (meters / 10)
-     (Units: dam)</td>
+     <td class="mavlink_units" valign="top">dam</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Distance to target waypoint or position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">throttle</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Throttle (percentage)
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Throttle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">airspeed</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Airspeed (m/s * 5)
-     (Units: m/s*5)</td>
+     <td class="mavlink_units" valign="top">m/s*5</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Airspeed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">airspeed_sp</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Airspeed setpoint (m/s * 5)
-     (Units: m/s*5)</td>
+     <td class="mavlink_units" valign="top">m/s*5</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Airspeed setpoint</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">groundspeed</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Groundspeed (m/s * 5)
-     (Units: m/s*5)</td>
+     <td class="mavlink_units" valign="top">m/s*5</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Groundspeed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">windspeed</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Windspeed (m/s * 5)
-     (Units: m/s*5)</td>
+     <td class="mavlink_units" valign="top">m/s*5</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Windspeed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">wind_heading</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Wind heading (deg / 2)
-     (Units: deg/2)</td>
+     <td class="mavlink_units" valign="top">deg/2</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Wind heading</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">eph</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Maximum error horizontal position since last message (m * 10)
-     (Units: dm)</td>
+     <td class="mavlink_units" valign="top">dm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Maximum error horizontal position since last message</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">epv</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Maximum error vertical position since last message (m * 10)
-     (Units: dm)</td>
+     <td class="mavlink_units" valign="top">dm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Maximum error vertical position since last message</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">temperature_air</td>
      <td class="mavlink_type" valign="top">int8_t</td>
-     <td class="mavlink_comment">Air temperature (degrees C) from airspeed sensor
-     (Units: degC)</td>
+     <td class="mavlink_units" valign="top">degC</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Air temperature from airspeed sensor</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">climb_rate</td>
      <td class="mavlink_type" valign="top">int8_t</td>
-     <td class="mavlink_comment">Maximum climb rate magnitude since last message (m/s * 10)
-     (Units: dm/s)</td>
+     <td class="mavlink_units" valign="top">dm/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Maximum climb rate magnitude since last message</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">battery</td>
      <td class="mavlink_type" valign="top">int8_t</td>
-     <td class="mavlink_comment">Battery (percentage, -1 for DNU)
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Battery (percentage, -1 for DNU)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">wp_num</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Current waypoint number</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">failure_flags</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Indicates failures as defined in HL_FAILURE_FLAG ENUM. 
-     (Enum:<a href="#HL_FAILURE_FLAG">HL_FAILURE_FLAG</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#HL_FAILURE_FLAG">HL_FAILURE_FLAG</a>
+     </td>
+     <td class="mavlink_comment">Bitmap of failure flags.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">custom0</td>
      <td class="mavlink_type" valign="top">int8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Field for custom payload.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">custom1</td>
      <td class="mavlink_type" valign="top">int8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Field for custom payload.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">custom2</td>
      <td class="mavlink_type" valign="top">int8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Field for custom payload.</td>
     </tr>
    </tbody>
@@ -19578,6 +21838,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -19585,37 +21846,49 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vibration_x</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Vibration levels on X-axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vibration_y</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Vibration levels on Y-axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vibration_z</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Vibration levels on Z-axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">clipping_0</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">first accelerometer clipping count</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">clipping_1</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">second accelerometer clipping count</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">clipping_2</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">third accelerometer clipping count</td>
     </tr>
    </tbody>
@@ -19625,12 +21898,13 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">This message can be requested by sending the MAV_CMD_GET_HOME_POSITION command. The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitely set by the operator before or after. The position the system will return to and land on. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
+  <p class="description">This message can be requested by sending the MAV_CMD_GET_HOME_POSITION command. The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The position the system will return to and land on. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -19638,61 +21912,63 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">latitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">longitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude (WGS84, in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude (AMSL), in meters * 1000 (positive for up)
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_comment">Altitude (AMSL). Positive for up.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Local X position of this position in the local coordinate frame
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Local X position of this position in the local coordinate frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Local Y position of this position in the local coordinate frame
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Local Y position of this position in the local coordinate frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Local Z position of this position in the local coordinate frame
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Local Z position of this position in the local coordinate frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q</td>
      <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">World to surface normal and heading transformation of the takeoff position. Used to indicate the heading and slope of the ground</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">approach_x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Local X position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Local X position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">approach_y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Local Y position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Local Y position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">approach_z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Local Z position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Local Z position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">time_usec<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -19700,8 +21976,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
    </tbody>
   </table>
@@ -19710,12 +21986,13 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitely set by the operator before or after. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
+  <p class="description">The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -19723,66 +22000,70 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System ID.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">latitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude (WGS84), in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">longitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude (WGS84, in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude (WGS84)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude (AMSL), in meters * 1000 (positive for up)
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_comment">Altitude (AMSL). Positive for up.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Local X position of this position in the local coordinate frame
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Local X position of this position in the local coordinate frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Local Y position of this position in the local coordinate frame
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Local Y position of this position in the local coordinate frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Local Z position of this position in the local coordinate frame
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Local Z position of this position in the local coordinate frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q</td>
      <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">World to surface normal and heading transformation of the takeoff position. Used to indicate the heading and slope of the ground</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">approach_x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Local X position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Local X position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">approach_y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Local Y position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Local Y position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">approach_z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Local Z position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Local Z position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">time_usec<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -19790,8 +22071,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
    </tbody>
   </table>
@@ -19800,12 +22081,13 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">This interface replaces DATA_STREAM</p>
+  <p class="description">The interval between messages for a particular MAVLink message ID. This interface replaces DATA_STREAM</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -19813,13 +22095,15 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">message_id</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">The ID of the requested MAVLink message. v1.0 is limited to 254 messages.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">interval_us</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">The interval between two messages, in microseconds. A value of -1 indicates this stream is disabled, 0 indicates it is not available, &gt; 0 indicates the interval at which it is sent.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">The interval between two messages. A value of -1 indicates this stream is disabled, 0 indicates it is not available, &gt; 0 indicates the interval at which it is sent.</td>
     </tr>
    </tbody>
   </table>
@@ -19834,6 +22118,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -19841,18 +22126,18 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vtol_state</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">The VTOL state if applicable. Is set to MAV_VTOL_STATE_UNDEFINED if UAV is not in VTOL configuration.
-     (Enum:<a href="#MAV_VTOL_STATE">MAV_VTOL_STATE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_VTOL_STATE">MAV_VTOL_STATE</a>
      </td>
+     <td class="mavlink_comment">The VTOL state if applicable. Is set to MAV_VTOL_STATE_UNDEFINED if UAV is not in VTOL configuration.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">landed_state</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown.
-     (Enum:<a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
      </td>
+     <td class="mavlink_comment">The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown.</td>
     </tr>
    </tbody>
   </table>
@@ -19867,6 +22152,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -19874,82 +22161,134 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ICAO_address</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">ICAO address</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Latitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude, expressed as degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Longitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Type from ADSB_ALTITUDE_TYPE enum
-     (Enum:<a href="#ADSB_ALTITUDE_TYPE">ADSB_ALTITUDE_TYPE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#ADSB_ALTITUDE_TYPE">ADSB_ALTITUDE_TYPE</a>
+     </td>
+     <td class="mavlink_comment">ADSB altitude type.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude(ASL) in millimeters
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude(ASL)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">heading</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Course over ground in centidegrees
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Course over ground</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">hor_velocity</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">The horizontal velocity in centimeters/second
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">The horizontal velocity</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ver_velocity</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">The vertical velocity in centimeters/second, positive is up
-     (Units: cm/s)</td>
+     <td class="mavlink_units" valign="top">cm/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">The vertical velocity. Positive is up</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">callsign</td>
      <td class="mavlink_type" valign="top">char[9]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">The callsign, 8+null</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">emitter_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Type from ADSB_EMITTER_TYPE enum
-     (Enum:<a href="#ADSB_EMITTER_TYPE">ADSB_EMITTER_TYPE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#ADSB_EMITTER_TYPE">ADSB_EMITTER_TYPE</a>
+     </td>
+     <td class="mavlink_comment">ADSB emitter type.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">tslc</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Time since last communication in seconds
-     (Units: s)</td>
+     <td class="mavlink_units" valign="top">s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Time since last communication in seconds</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Flags to indicate various statuses including valid data fields
-     (Enum:<a href="#ADSB_FLAGS">ADSB_FLAGS</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#ADSB_FLAGS">ADSB_FLAGS</a>
+     </td>
+     <td class="mavlink_comment">Bitmap to indicate various statuses including valid data fields</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">squawk</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Squawk code</td>
     </tr>
    </tbody>
@@ -19965,6 +22304,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -19972,49 +22313,73 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">src</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Collision data source
-     (Enum:<a href="#MAV_COLLISION_SRC">MAV_COLLISION_SRC</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_COLLISION_SRC">MAV_COLLISION_SRC</a>
+     </td>
+     <td class="mavlink_comment">Collision data source</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">id</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Unique identifier, domain based on src field</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">action</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Action that is being taken to avoid this collision
-     (Enum:<a href="#MAV_COLLISION_ACTION">MAV_COLLISION_ACTION</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_COLLISION_ACTION">MAV_COLLISION_ACTION</a>
+     </td>
+     <td class="mavlink_comment">Action that is being taken to avoid this collision</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">threat_level</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">How concerned the aircraft is about this collision
-     (Enum:<a href="#MAV_COLLISION_THREAT_LEVEL">MAV_COLLISION_THREAT_LEVEL</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_COLLISION_THREAT_LEVEL">MAV_COLLISION_THREAT_LEVEL</a>
+     </td>
+     <td class="mavlink_comment">How concerned the aircraft is about this collision</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_to_minimum_delta</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Estimated time until collision occurs (seconds)
-     (Units: s)</td>
+     <td class="mavlink_units" valign="top">s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Estimated time until collision occurs</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude_minimum_delta</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Closest vertical distance in meters between vehicle and object
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Closest vertical distance between vehicle and object</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">horizontal_minimum_delta</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Closest horizontal distance in meteres between vehicle and object
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Closest horizontal distance between vehicle and object</td>
     </tr>
    </tbody>
   </table>
@@ -20051,7 +22416,7 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">message_type</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">A code that identifies the software component that understands this message (analogous to usb device classes or mime type strings).  If this code is less than 32768, it is considered a 'registered' protocol extension and the corresponding entry should be added to https://github.com/mavlink/mavlink/extension-message-ids.xml.  Software creators can register blocks of message IDs as needed (useful for GCS specific metadata, etc...). Message_types greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
+     <td class="mavlink_comment">A code that identifies the software component that understands this message (analogous to USB device classes or mime type strings).  If this code is less than 32768, it is considered a 'registered' protocol extension and the corresponding entry should be added to https://github.com/mavlink/mavlink/extension-message-ids.xml.  Software creators can register blocks of message IDs as needed (useful for GCS specific metadata, etc...). Message_types greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">payload</td>
@@ -20109,6 +22474,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20116,27 +22482,35 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">name</td>
      <td class="mavlink_type" valign="top">char[10]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Name</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">x</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">y</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">z</td>
     </tr>
    </tbody>
@@ -20152,6 +22526,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20159,17 +22534,21 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">name</td>
      <td class="mavlink_type" valign="top">char[10]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Name of the debug variable</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">value</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Floating point value</td>
     </tr>
    </tbody>
@@ -20185,6 +22564,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20192,17 +22572,21 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">name</td>
      <td class="mavlink_type" valign="top">char[10]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Name of the debug variable</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">value</td>
      <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Signed integer value</td>
     </tr>
    </tbody>
@@ -20218,6 +22602,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20225,14 +22610,18 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">severity</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Severity of status. Relies on the definitions within RFC-5424. See enum MAV_SEVERITY.
-     (Enum:<a href="#MAV_SEVERITY">MAV_SEVERITY</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_SEVERITY">MAV_SEVERITY</a>
      </td>
+     <td class="mavlink_comment">Severity of status. Relies on the definitions within RFC-5424.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">text</td>
      <td class="mavlink_type" valign="top">char[50]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Status text message, without null termination character</td>
     </tr>
    </tbody>
@@ -20248,6 +22637,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20255,17 +22645,21 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ind</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">index of debug variable</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">value</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">DEBUG value</td>
     </tr>
    </tbody>
@@ -20324,6 +22718,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20331,19 +22726,21 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">last_change_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Time of last change of button state
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Time of last change of button state</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">state</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Bitmap state of buttons</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">Bitmap for state of buttons</td>
     </tr>
    </tbody>
   </table>
@@ -20396,6 +22793,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20403,75 +22802,137 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vendor_name</td>
      <td class="mavlink_type" valign="top">uint8_t[32]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Name of the camera vendor</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">model_name</td>
      <td class="mavlink_type" valign="top">uint8_t[32]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Name of the camera model</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">firmware_version</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Version of the camera firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">focal_length</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Focal length in mm
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Focal length</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sensor_size_h</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Image sensor size horizontal in mm
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Image sensor size horizontal</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sensor_size_v</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Image sensor size vertical in mm
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Image sensor size vertical</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">resolution_h</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Image resolution in pixels horizontal
-     (Units: pix)</td>
+     <td class="mavlink_units" valign="top">pix</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Horizontal image resolution</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">resolution_v</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Image resolution in pixels vertical
-     (Units: pix)</td>
+     <td class="mavlink_units" valign="top">pix</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Vertical image resolution</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lens_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Reserved for a lens ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">CAMERA_CAP_FLAGS enum flags (bitmap) describing camera capabilities.
-     (Enum:<a href="#CAMERA_CAP_FLAGS">CAMERA_CAP_FLAGS</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#CAMERA_CAP_FLAGS">CAMERA_CAP_FLAGS</a>
+     </td>
+     <td class="mavlink_comment">Bitmap of camera capability flags.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cam_definition_version</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Camera definition version (iteration)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cam_definition_uri</td>
      <td class="mavlink_type" valign="top">char[140]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Camera definition URI (if any, otherwise only basic functions will be available).</td>
     </tr>
    </tbody>
@@ -20490,6 +22951,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20497,16 +22960,22 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mode_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Camera mode (CAMERA_MODE)
-     (Enum:<a href="#CAMERA_MODE">CAMERA_MODE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#CAMERA_MODE">CAMERA_MODE</a>
+     </td>
+     <td class="mavlink_comment">Camera mode</td>
     </tr>
    </tbody>
   </table>
@@ -20524,6 +22993,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20531,53 +23001,59 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">storage_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Storage ID (1 for first, 2 for second, etc.)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">storage_count</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Number of storage devices</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Status of storage (0 not available, 1 unformatted, 2 formatted)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">total_capacity</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Total capacity in MiB
-     (Units: Mibytes)</td>
+     <td class="mavlink_units" valign="top">Mibytes</td>
+     <td class="mavlink_comment">Total capacity</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">used_capacity</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Used capacity in MiB
-     (Units: Mibytes)</td>
+     <td class="mavlink_units" valign="top">Mibytes</td>
+     <td class="mavlink_comment">Used capacity</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">available_capacity</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Available capacity in MiB
-     (Units: Mibytes)</td>
+     <td class="mavlink_units" valign="top">Mibytes</td>
+     <td class="mavlink_comment">Available capacity</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">read_speed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Read speed in MiB/s
-     (Units: Mibytes/s)</td>
+     <td class="mavlink_units" valign="top">Mibytes/s</td>
+     <td class="mavlink_comment">Read speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">write_speed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Write speed in MiB/s
-     (Units: Mibytes/s)</td>
+     <td class="mavlink_units" valign="top">Mibytes/s</td>
+     <td class="mavlink_comment">Write speed</td>
     </tr>
    </tbody>
   </table>
@@ -20595,6 +23071,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20602,36 +23079,40 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">image_status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Current status of image capturing (0: idle, 1: capture in progress, 2: interval set but idle, 3: interval set and capture in progress)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">video_status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Current status of video capturing (0: idle, 1: capture in progress)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">image_interval</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Image capture interval in seconds
-     (Units: s)</td>
+     <td class="mavlink_units" valign="top">s</td>
+     <td class="mavlink_comment">Image capture interval</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">recording_time_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Time in milliseconds since recording started
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Time since recording started</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">available_capacity</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Available storage capacity in MiB
-     (Units: Mibytes)</td>
+     <td class="mavlink_units" valign="top">Mibytes</td>
+     <td class="mavlink_comment">Available storage capacity</td>
     </tr>
    </tbody>
   </table>
@@ -20649,6 +23130,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20656,62 +23138,72 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_utc</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch) in UTC. 0 for unknown.
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (time since UNIX epoch) in UTC. 0 for unknown.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">camera_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Camera ID (1 for first, 2 for second, etc.)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude, expressed as degrees * 1E7 where image was taken
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude where image was taken</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude, expressed as degrees * 1E7 where capture was taken
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude where capture was taken</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude in meters, expressed as * 1E3 (AMSL, not WGS84) where image was taken
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_comment">Altitude (AMSL) where image was taken</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">relative_alt</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Altitude above ground in meters, expressed as * 1E3 where image was taken
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_comment">Altitude above ground</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q</td>
      <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Quaternion of camera orientation (w, x, y, z order, zero-rotation is 0, 0, 0, 0)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">image_index</td>
      <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Zero based index of this image (image count since armed -1)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">capture_result</td>
      <td class="mavlink_type" valign="top">int8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Boolean indicating success (1) or failure (0) while capturing this image.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">file_url</td>
      <td class="mavlink_type" valign="top">char[205]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">URL of image taken. Either local storage or http://foo.jpg if camera provides an HTTP interface.</td>
     </tr>
    </tbody>
@@ -20730,6 +23222,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20737,25 +23230,27 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">arming_time_utc</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp at arming (microseconds since UNIX epoch) in UTC, 0 for unknown
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp at arming (time since UNIX epoch) in UTC, 0 for unknown</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">takeoff_time_utc</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp at takeoff (microseconds since UNIX epoch) in UTC, 0 for unknown
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp at takeoff (time since UNIX epoch) in UTC, 0 for unknown</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flight_uuid</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Universally unique identifier (UUID) of flight, should correspond to name of logfiles</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">Universally unique identifier (UUID) of flight, should correspond to name of log files</td>
     </tr>
    </tbody>
   </table>
@@ -20773,6 +23268,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20780,26 +23276,26 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_boot_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Timestamp (milliseconds since system boot)
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_comment">Timestamp (time since system boot).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll in global frame in degrees (set to NaN for invalid).
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Roll in global frame (set to NaN for invalid).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch in global frame in degrees (set to NaN for invalid).
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Pitch in global frame (set to NaN for invalid).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw relative to vehicle in degrees (set to NaN for invalid).
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Yaw relative to vehicle(set to NaN for invalid).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">yaw_absolute<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -20807,8 +23303,8 @@ These messages define the common message set, which is the reference message set
       </a>
      </td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw in absolute frame in degrees, North is 0 (set to NaN for invalid).
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Yaw in absolute frame, North is 0 (set to NaN for invalid).</td>
     </tr>
    </tbody>
   </table>
@@ -20826,6 +23322,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20833,33 +23330,41 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">system ID of the target</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">component ID of the target</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sequence</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">sequence number (can wrap)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">length</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">data length
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">data length</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">first_message_offset</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">offset into data where first message starts. This can be used for recovery, when a previous message got lost (set to 255 if no start exists).
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">offset into data where first message starts. This can be used for recovery, when a previous message got lost (set to 255 if no start exists).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">uint8_t[249]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">logged data</td>
     </tr>
    </tbody>
@@ -20878,6 +23383,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20885,33 +23391,41 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">system ID of the target</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">component ID of the target</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sequence</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">sequence number (can wrap)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">length</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">data length
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">data length</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">first_message_offset</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">offset into data where first message starts. This can be used for recovery, when a previous message got lost (set to 255 if no start exists).
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">offset into data where first message starts. This can be used for recovery, when a previous message got lost (set to 255 if no start exists).</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">uint8_t[249]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">logged data</td>
     </tr>
    </tbody>
@@ -20965,6 +23479,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -20972,46 +23487,52 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">camera_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Camera ID (1 for first, 2 for second, etc.)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Current status of video streaming (0: not running, 1: in progress)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">framerate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Frames per second
-     (Units: Hz)</td>
+     <td class="mavlink_units" valign="top">Hz</td>
+     <td class="mavlink_comment">Frame rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">resolution_h</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Resolution horizontal in pixels
-     (Units: pix)</td>
+     <td class="mavlink_units" valign="top">pix</td>
+     <td class="mavlink_comment">Horizontal resolution</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">resolution_v</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Resolution vertical in pixels
-     (Units: pix)</td>
+     <td class="mavlink_units" valign="top">pix</td>
+     <td class="mavlink_comment">Vertical resolution</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">bitrate</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Bit rate in bits per second
-     (Units: bits/s)</td>
+     <td class="mavlink_units" valign="top">bits/s</td>
+     <td class="mavlink_comment">Bit rate in bits per second</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rotation</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Video image rotation clockwise
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Video image rotation clockwise</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">uri</td>
      <td class="mavlink_type" valign="top">char[230]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Video stream URI</td>
     </tr>
    </tbody>
@@ -21030,6 +23551,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -21037,51 +23559,59 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">system ID of the target</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">component ID of the target</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">camera_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Camera ID (1 for first, 2 for second, etc.)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">framerate</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Frames per second (set to -1 for highest framerate possible)
-     (Units: Hz)</td>
+     <td class="mavlink_units" valign="top">Hz</td>
+     <td class="mavlink_comment">Frame rate (set to -1 for highest framerate possible)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">resolution_h</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Resolution horizontal in pixels (set to -1 for highest resolution possible)
-     (Units: pix)</td>
+     <td class="mavlink_units" valign="top">pix</td>
+     <td class="mavlink_comment">Horizontal resolution (set to -1 for highest resolution possible)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">resolution_v</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Resolution vertical in pixels (set to -1 for highest resolution possible)
-     (Units: pix)</td>
+     <td class="mavlink_units" valign="top">pix</td>
+     <td class="mavlink_comment">Vertical resolution (set to -1 for highest resolution possible)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">bitrate</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Bit rate in bits per second (set to -1 for auto)
-     (Units: bits/s)</td>
+     <td class="mavlink_units" valign="top">bits/s</td>
+     <td class="mavlink_comment">Bit rate (set to -1 for auto)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rotation</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Video image rotation clockwise (0-359 degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Video image rotation clockwise (0-359 degrees)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">uri</td>
      <td class="mavlink_type" valign="top">char[230]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Video stream URI</td>
     </tr>
    </tbody>
@@ -21175,6 +23705,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -21182,39 +23714,63 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">uptime_sec</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">The number of seconds since the start-up of the node.
-     (Units: s)</td>
+     <td class="mavlink_units" valign="top">s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Time since the start-up of the node.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">health</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Generalized node health status.
-     (Enum:<a href="#UAVCAN_NODE_HEALTH">UAVCAN_NODE_HEALTH</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#UAVCAN_NODE_HEALTH">UAVCAN_NODE_HEALTH</a>
+     </td>
+     <td class="mavlink_comment">Generalized node health status.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Generalized operating mode.
-     (Enum:<a href="#UAVCAN_NODE_MODE">UAVCAN_NODE_MODE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#UAVCAN_NODE_MODE">UAVCAN_NODE_MODE</a>
+     </td>
+     <td class="mavlink_comment">Generalized operating mode.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sub_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Not used currently.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vendor_specific_status_code</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Vendor-specific status information.</td>
     </tr>
    </tbody>
@@ -21233,6 +23789,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -21240,48 +23797,62 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since UNIX epoch or microseconds since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">uptime_sec</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">The number of seconds since the start-up of the node.
-     (Units: s)</td>
+     <td class="mavlink_units" valign="top">s</td>
+     <td class="mavlink_comment">Time since the start-up of the node.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">name</td>
      <td class="mavlink_type" valign="top">char[80]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Node name string. For example, "sapog.px4.io".</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">hw_version_major</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Hardware major version number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">hw_version_minor</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Hardware minor version number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">hw_unique_id</td>
      <td class="mavlink_type" valign="top">uint8_t[16]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Hardware unique 128-bit ID.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sw_version_major</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Software major version number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sw_version_minor</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Software minor version number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sw_vcs_commit</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Version control system (VCS) revision identifier (e.g. git short commit hash). Zero if unknown.</td>
     </tr>
    </tbody>
@@ -21370,6 +23941,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -21377,29 +23949,45 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_id</td>
      <td class="mavlink_type" valign="top">char[16]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_value</td>
      <td class="mavlink_type" valign="top">char[128]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Parameter value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Parameter type: see the MAV_PARAM_EXT_TYPE enum for supported data types.
-     (Enum:<a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
      </td>
+     <td class="mavlink_comment">Parameter type.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_count</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Total number of parameters</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_index</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Index of this parameter</td>
     </tr>
    </tbody>
@@ -21418,6 +24006,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -21425,30 +24014,46 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_id</td>
      <td class="mavlink_type" valign="top">char[16]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_value</td>
      <td class="mavlink_type" valign="top">char[128]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Parameter value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Parameter type: see the MAV_PARAM_EXT_TYPE enum for supported data types.
-     (Enum:<a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
      </td>
+     <td class="mavlink_comment">Parameter type.</td>
     </tr>
    </tbody>
   </table>
@@ -21466,6 +24071,7 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -21473,28 +24079,36 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_id</td>
      <td class="mavlink_type" valign="top">char[16]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_value</td>
      <td class="mavlink_type" valign="top">char[128]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Parameter value (new value if PARAM_ACK_ACCEPTED, current value otherwise)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Parameter type: see the MAV_PARAM_EXT_TYPE enum for supported data types.
-     (Enum:<a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
      </td>
+     <td class="mavlink_comment">Parameter type.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">param_result</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Result code: see the PARAM_ACK enum for possible codes.
-     (Enum:<a href="#PARAM_ACK">PARAM_ACK</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#PARAM_ACK">PARAM_ACK</a>
      </td>
+     <td class="mavlink_comment">Result code.</td>
     </tr>
    </tbody>
   </table>
@@ -21512,6 +24126,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -21519,40 +24135,62 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch).
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sensor_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Class id of the distance sensor type.
-     (Enum:<a href="#MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
+     </td>
+     <td class="mavlink_comment">Class id of the distance sensor type.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">distances</td>
      <td class="mavlink_type" valign="top">uint16_t[72]</td>
-     <td class="mavlink_comment">Distance of obstacles around the UAV with index 0 corresponding to local North. A value of 0 means that the obstacle is right in front of the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.
-     (Units: cm)</td>
+     <td class="mavlink_units" valign="top">cm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Distance of obstacles around the UAV with index 0 corresponding to local North. A value of 0 means that the obstacle is right in front of the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">increment</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Angular width in degrees of each array element.
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Angular width in degrees of each array element.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">min_distance</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Minimum distance the sensor can measure in centimeters.
-     (Units: cm)</td>
+     <td class="mavlink_units" valign="top">cm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Minimum distance the sensor can measure.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">max_distance</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Maximum distance the sensor can measure in centimeters.
-     (Units: cm)</td>
+     <td class="mavlink_units" valign="top">cm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Maximum distance the sensor can measure.</td>
     </tr>
    </tbody>
   </table>
@@ -21570,6 +24208,8 @@ These messages define the common message set, which is the reference message set
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -21577,93 +24217,319 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds since system boot or since UNIX epoch).
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">frame_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Coordinate frame of reference for the pose data, as defined by MAV_FRAME enum.
-     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_FRAME">MAV_FRAME</a>
+     </td>
+     <td class="mavlink_comment">Coordinate frame of reference for the pose data.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">child_frame_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Coordinate frame of reference for the velocity in free space (twist) data, as defined by MAV_FRAME enum.
-     (Enum:<a href="#MAV_FRAME">MAV_FRAME</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_FRAME">MAV_FRAME</a>
+     </td>
+     <td class="mavlink_comment">Coordinate frame of reference for the velocity in free space (twist) data.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X Position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X Position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y Position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y Position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z Position
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z Position</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">q</td>
      <td class="mavlink_type" valign="top">float[4]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X linear speed
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">X linear speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y linear speed
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Y linear speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z linear speed
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Z linear speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rollspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll angular speed
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Roll angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitchspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch angular speed
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Pitch angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yawspeed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw angular speed
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Yaw angular speed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pose_covariance</td>
      <td class="mavlink_type" valign="top">float[21]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Pose (states: x, y, z, roll, pitch, yaw) covariance matrix upper right triangle (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">twist_covariance</td>
      <td class="mavlink_type" valign="top">float[21]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Twist (states: vx, vy, vz, rollspeed, pitchspeed, yawspeed) covariance matrix upper right triangle (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="TRAJECTORY_REPRESENTATION_WAYPOINTS">TRAJECTORY_REPRESENTATION_WAYPOINTS (<a href="#TRAJECTORY_REPRESENTATION_WAYPOINTS">
+    #332
+   </a>
+   )
+  </h3>
+  <p class="description">
+   <strong>
+    (MAVLink 2)
+   </strong>WORK IN PROGRESS! DO NOT DEPLOY! Describe a trajectory using an array of up-to 5 waypoints in the local frame.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">time_usec</td>
+     <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">valid_points</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">Number of valid points (up-to 5 waypoints are possible)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">pos_x</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">X-coordinate of waypoint, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">pos_y</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Y-coordinate of waypoint, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">pos_z</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Z-coordinate of waypoint, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">vel_x</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">X-velocity of waypoint, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">vel_y</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Y-velocity of waypoint, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">vel_z</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Z-velocity of waypoint, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">acc_x</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">X-acceleration of waypoint, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">acc_y</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">Y-acceleration of waypoint, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">acc_z</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">Z-acceleration of waypoint, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">pos_yaw</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Yaw angle, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">vel_yaw</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Yaw rate, set to NaN if not being used</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="mavlink_message_name" id="TRAJECTORY_REPRESENTATION_BEZIER">TRAJECTORY_REPRESENTATION_BEZIER (<a href="#TRAJECTORY_REPRESENTATION_BEZIER">
+    #333
+   </a>
+   )
+  </h3>
+  <p class="description">
+   <strong>
+    (MAVLink 2)
+   </strong>WORK IN PROGRESS! DO NOT DEPLOY! Describe a trajectory using an array of up-to 5 bezier points in the local frame.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">time_usec</td>
+     <td class="mavlink_type" valign="top">uint64_t</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">valid_points</td>
+     <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_comment">Number of valid points (up-to 5 waypoints are possible)</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">pos_x</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">X-coordinate of starting bezier point, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">pos_y</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Y-coordinate of starting bezier point, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">pos_z</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Z-coordinate of starting bezier point, set to NaN if not being used</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">delta</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">s</td>
+     <td class="mavlink_comment">Bezier time horizon, set to NaN if velocity/acceleration should not be incorporated</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" valign="top">pos_yaw</td>
+     <td class="mavlink_type" valign="top">float[5]</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Yaw, set to NaN for unchanged</td>
     </tr>
    </tbody>
   </table>

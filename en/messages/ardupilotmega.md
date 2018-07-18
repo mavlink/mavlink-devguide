@@ -37,7 +37,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -117,7 +117,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1294,7 +1294,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1352,7 +1352,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1388,7 +1388,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1418,7 +1418,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1454,7 +1454,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1483,7 +1483,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1520,7 +1520,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1585,7 +1585,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1636,7 +1636,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1701,7 +1701,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1738,7 +1738,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1775,7 +1775,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1812,7 +1812,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1856,7 +1856,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1879,7 +1879,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -1909,7 +1909,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2078,7 +2078,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2150,7 +2150,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2264,7 +2264,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2378,7 +2378,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2415,7 +2415,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2438,7 +2438,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2489,7 +2489,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2540,7 +2540,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2570,7 +2570,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2621,7 +2621,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2658,7 +2658,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2861,7 +2861,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2891,7 +2891,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -2942,7 +2942,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3021,7 +3021,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3057,7 +3057,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3143,7 +3143,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3207,7 +3207,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3270,7 +3270,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3299,7 +3299,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3328,7 +3328,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3357,7 +3357,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3421,7 +3421,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3596,7 +3596,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3763,7 +3763,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3850,7 +3850,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -3884,6 +3884,14 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_type" valign="top">4</td>
      <td class="mavlink_name" valign="top">
       <a href="#ROVER_MODE_HOLD">ROVER_MODE_HOLD</a>
+     </td>
+     <td class="mavlink_comment">
+     </td>
+    </tr>
+    <tr class="mavlink_field" id="ROVER_MODE_LOITER">
+     <td class="mavlink_type" valign="top">5</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#ROVER_MODE_LOITER">ROVER_MODE_LOITER</a>
      </td>
      <td class="mavlink_comment">
      </td>
@@ -3937,7 +3945,7 @@ These messages define the APM specific message set, which is custom to [http://a
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -4005,6 +4013,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4012,62 +4021,84 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mag_ofs_x</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">magnetometer X offset</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mag_ofs_y</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">magnetometer Y offset</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mag_ofs_z</td>
      <td class="mavlink_type" valign="top">int16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">magnetometer Z offset</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mag_declination</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">magnetic declination (radians)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">magnetic declination (radians)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">raw_press</td>
      <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">raw pressure from barometer</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">raw_temp</td>
      <td class="mavlink_type" valign="top">int32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">raw temperature from barometer</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">gyro_cal_x</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">gyro X calibration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">gyro_cal_y</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">gyro Y calibration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">gyro_cal_z</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">gyro Z calibration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">accel_cal_x</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">accel X calibration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">accel_cal_y</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">accel Y calibration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">accel_cal_z</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">accel Z calibration</td>
     </tr>
    </tbody>
@@ -4125,6 +4156,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4132,13 +4164,15 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">brkval</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">heap top</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">freemem</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">free memory
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">free memory</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" style="color:blue;" valign="top">freemem32<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -4146,8 +4180,8 @@ These messages define the APM specific message set, which is custom to [http://a
       </a>
      </td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">free memory (32 bit)
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">free memory (32 bit)</td>
     </tr>
    </tbody>
   </table>
@@ -4209,6 +4243,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4216,57 +4251,77 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Mode enumeration from 1 to N //P, TV, AV, M, Etc (0 means ignore)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">shutter_speed</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Divisor number //e.g. 1000 means 1/1000 (0 means ignore)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">aperture</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">F stop number x 10 //e.g. 28 means 2.8 (0 means ignore)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">iso</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">ISO enumeration from 1 to N //e.g. 80, 100, 200, Etc (0 means ignore)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">exposure_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Exposure type enumeration from 1 to N (0 means ignore)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">command_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Command Identity (incremental loop: 0 to 255)//A command sent multiple times will be executed or pooled just once</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">engine_cut_off</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Main engine cut-off time before camera trigger in seconds/10 (0 means no cut-off)
-     (Units: ds)</td>
+     <td class="mavlink_units" valign="top">ds</td>
+     <td class="mavlink_comment">Main engine cut-off time before camera trigger in seconds/10 (0 means no cut-off)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">extra_param</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Extra parameters enumeration (0 means ignore)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">extra_value</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Correspondent value to given extra_param</td>
     </tr>
    </tbody>
@@ -4351,6 +4406,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4358,24 +4414,36 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mount_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">mount operating mode (see MAV_MOUNT_MODE enum)
-     (Enum:<a href="#MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
      </td>
+     <td class="mavlink_comment">mount operating mode (see MAV_MOUNT_MODE enum)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">stab_roll</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">
       (1 = yes, 0 = no)
      </td>
@@ -4383,6 +4451,10 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">stab_pitch</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">
       (1 = yes, 0 = no)
      </td>
@@ -4390,6 +4462,10 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">stab_yaw</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">
       (1 = yes, 0 = no)
      </td>
@@ -4454,6 +4530,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4461,30 +4538,34 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pointing_a</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">pitch(deg*100)
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_comment">pitch(deg*100)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pointing_b</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">roll(deg*100)
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_comment">roll(deg*100)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pointing_c</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">yaw(deg*100)
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_comment">yaw(deg*100)</td>
     </tr>
    </tbody>
   </table>
@@ -4499,6 +4580,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4506,34 +4588,42 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">idx</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">point index (first point is 1, 0 is for return point)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">count</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">total number of points (for sanity checking)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Latitude of point
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Latitude of point</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lng</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Longitude of point
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Longitude of point</td>
     </tr>
    </tbody>
   </table>
@@ -4580,6 +4670,8 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4587,26 +4679,44 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">breach_status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">0 if currently inside fence, 1 if outside</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">breach_count</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">number of fence breaches</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">breach_type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">last breach type (see FENCE_BREACH_* enum)
-     (Enum:<a href="#FENCE_BREACH">FENCE_BREACH</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#FENCE_BREACH">FENCE_BREACH</a>
+     </td>
+     <td class="mavlink_comment">last breach type (see FENCE_BREACH_* enum)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">breach_time</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">time of last breach in milliseconds since boot
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">time of last breach in milliseconds since boot</td>
     </tr>
    </tbody>
   </table>
@@ -4621,6 +4731,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4628,39 +4739,47 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">omegaIx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X gyro drift estimate rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">X gyro drift estimate rad/s</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">omegaIy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y gyro drift estimate rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Y gyro drift estimate rad/s</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">omegaIz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z gyro drift estimate rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Z gyro drift estimate rad/s</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">accel_weight</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">average accel_weight</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">renorm_val</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">average renormalisation value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">error_rp</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">average error_roll_pitch value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">error_yaw</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">average error_yaw value</td>
     </tr>
    </tbody>
@@ -4676,6 +4795,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4683,68 +4803,68 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll angle (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Roll angle (rad)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch angle (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Pitch angle (rad)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw angle (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Yaw angle (rad)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xacc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">X acceleration m/s/s
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">X acceleration m/s/s</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yacc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Y acceleration m/s/s
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">Y acceleration m/s/s</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zacc</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Z acceleration m/s/s
-     (Units: m/s/s)</td>
+     <td class="mavlink_units" valign="top">m/s/s</td>
+     <td class="mavlink_comment">Z acceleration m/s/s</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">xgyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular speed around X axis rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular speed around X axis rad/s</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ygyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular speed around Y axis rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular speed around Y axis rad/s</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">zgyro</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angular speed around Z axis rad/s
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Angular speed around Z axis rad/s</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude in degrees * 1E7</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lng</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude in degrees * 1E7</td>
     </tr>
    </tbody>
   </table>
@@ -4759,6 +4879,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4766,12 +4887,14 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">Vcc</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">board voltage (mV)
-     (Units: mV)</td>
+     <td class="mavlink_units" valign="top">mV</td>
+     <td class="mavlink_comment">board voltage (mV)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">I2Cerr</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">I2C error count</td>
     </tr>
    </tbody>
@@ -4787,6 +4910,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4794,37 +4918,51 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rssi</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">local signal strength</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">remrssi</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">remote signal strength</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">txbuf</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">how full the tx buffer is as a percentage
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_comment">how full the tx buffer is as a percentage</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">noise</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">background noise level</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">remnoise</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">remote background noise level</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rxerrors</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">receive errors</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">fixed</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">count of error corrected packets</td>
     </tr>
    </tbody>
@@ -4840,6 +4978,8 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4847,63 +4987,93 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">limits_state</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">state of AP_Limits, (see enum LimitState, LIMITS_STATE)
-     (Enum:<a href="#LIMITS_STATE">LIMITS_STATE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#LIMITS_STATE">LIMITS_STATE</a>
+     </td>
+     <td class="mavlink_comment">state of AP_Limits, (see enum LimitState, LIMITS_STATE)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">last_trigger</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">time of last breach in milliseconds since boot
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">time of last breach in milliseconds since boot</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">last_action</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">time of last recovery action in milliseconds since boot
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">time of last recovery action in milliseconds since boot</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">last_recovery</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">time of last successful recovery in milliseconds since boot
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">time of last successful recovery in milliseconds since boot</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">last_clear</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">time of last all-clear in milliseconds since boot
-     (Units: ms)</td>
+     <td class="mavlink_units" valign="top">ms</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">time of last all-clear in milliseconds since boot</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">breach_count</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">number of fence breaches</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mods_enabled</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">AP_Limit_Module bitfield of enabled modules, (see enum moduleid or LIMIT_MODULE)
-     (Enum:<a href="#LIMIT_MODULE">LIMIT_MODULE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#LIMIT_MODULE">LIMIT_MODULE</a>
+     </td>
+     <td class="mavlink_comment">AP_Limit_Module bitfield of enabled modules, (see enum moduleid or LIMIT_MODULE)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mods_required</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">AP_Limit_Module bitfield of required modules, (see enum moduleid or LIMIT_MODULE)
-     (Enum:<a href="#LIMIT_MODULE">LIMIT_MODULE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#LIMIT_MODULE">LIMIT_MODULE</a>
+     </td>
+     <td class="mavlink_comment">AP_Limit_Module bitfield of required modules, (see enum moduleid or LIMIT_MODULE)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mods_triggered</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">AP_Limit_Module bitfield of triggered modules, (see enum moduleid or LIMIT_MODULE)
-     (Enum:<a href="#LIMIT_MODULE">LIMIT_MODULE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#LIMIT_MODULE">LIMIT_MODULE</a>
+     </td>
+     <td class="mavlink_comment">AP_Limit_Module bitfield of triggered modules, (see enum moduleid or LIMIT_MODULE)</td>
     </tr>
    </tbody>
   </table>
@@ -4918,6 +5088,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4925,20 +5096,20 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">direction</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">wind direction that wind is coming from (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">wind direction that wind is coming from (degrees)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">speed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">wind speed in ground plane (m/s)
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">wind speed in ground plane (m/s)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">speed_z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">vertical wind speed (m/s)
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">vertical wind speed (m/s)</td>
     </tr>
    </tbody>
   </table>
@@ -4953,6 +5124,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4960,17 +5132,21 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">data type</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">len</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">data length
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">data length</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">uint8_t[16]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">raw data</td>
     </tr>
    </tbody>
@@ -4986,6 +5162,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -4993,17 +5170,21 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">data type</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">len</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">data length
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">data length</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">uint8_t[32]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">raw data</td>
     </tr>
    </tbody>
@@ -5019,6 +5200,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5026,17 +5208,21 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">data type</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">len</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">data length
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">data length</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">uint8_t[64]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">raw data</td>
     </tr>
    </tbody>
@@ -5052,6 +5238,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5059,17 +5246,21 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">data type</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">len</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">data length
-     (Units: bytes)</td>
+     <td class="mavlink_units" valign="top">bytes</td>
+     <td class="mavlink_comment">data length</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">uint8_t[96]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">raw data</td>
     </tr>
    </tbody>
@@ -5085,6 +5276,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5092,14 +5284,14 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">distance</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">distance in meters
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">distance in meters</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">voltage</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">raw voltage if available, zero otherwise
-     (Units: V)</td>
+     <td class="mavlink_units" valign="top">V</td>
+     <td class="mavlink_comment">raw voltage if available, zero otherwise</td>
     </tr>
    </tbody>
   </table>
@@ -5114,6 +5306,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5121,65 +5314,81 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vx</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">GPS velocity north m/s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">GPS velocity north m/s</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vy</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">GPS velocity east m/s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">GPS velocity east m/s</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vz</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">GPS velocity down m/s
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">GPS velocity down m/s</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">diff_pressure</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Differential pressure pascals
-     (Units: Pa)</td>
+     <td class="mavlink_units" valign="top">Pa</td>
+     <td class="mavlink_comment">Differential pressure pascals</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">EAS2TAS</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Estimated to true airspeed ratio</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ratio</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Airspeed ratio</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">state_x</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">EKF state x</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">state_y</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">EKF state y</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">state_z</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">EKF state z</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">Pax</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">EKF Pax</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">Pby</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">EKF Pby</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">Pcz</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">EKF Pcz</td>
     </tr>
    </tbody>
@@ -5195,6 +5404,8 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5202,60 +5413,106 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">idx</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">point index (first point is 0)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">count</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">total number of points (for sanity checking)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude of point in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Latitude of point in degrees * 1E7</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lng</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude of point in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Longitude of point in degrees * 1E7</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Transit / loiter altitude in meters relative to home
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Transit / loiter altitude in meters relative to home</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">break_alt</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Break altitude in meters relative to home
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Break altitude in meters relative to home</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">land_dir</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Heading to aim for when landing. In centi-degrees.
-     (Units: cdeg)</td>
+     <td class="mavlink_units" valign="top">cdeg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Heading to aim for when landing. In centi-degrees.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See RALLY_FLAGS enum for definition of the bitmask.
-     (Enum:<a href="#RALLY_FLAGS">RALLY_FLAGS</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#RALLY_FLAGS">RALLY_FLAGS</a>
+     </td>
+     <td class="mavlink_comment">See RALLY_FLAGS enum for definition of the bitmask.</td>
     </tr>
    </tbody>
   </table>
@@ -5302,6 +5559,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5309,34 +5567,42 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">throttle</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">throttle (percent*10)
-     (Units: d%)</td>
+     <td class="mavlink_units" valign="top">d%</td>
+     <td class="mavlink_comment">throttle (percent*10)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">current</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">current (Ampere)
-     (Units: A)</td>
+     <td class="mavlink_units" valign="top">A</td>
+     <td class="mavlink_comment">current (Ampere)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">interference</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">interference (percent)
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_comment">interference (percent)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">CompensationX</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Motor Compensation X</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">CompensationY</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Motor Compensation Y</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">CompensationZ</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Motor Compensation Z</td>
     </tr>
    </tbody>
@@ -5352,6 +5618,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5359,38 +5626,38 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll angle (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Roll angle (rad)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch angle (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Pitch angle (rad)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw angle (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Yaw angle (rad)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Altitude (MSL)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Altitude (MSL)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude in degrees * 1E7</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lng</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude in degrees * 1E7</td>
     </tr>
    </tbody>
   </table>
@@ -5405,6 +5672,8 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5412,50 +5681,98 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Image timestamp (microseconds since UNIX epoch, according to camera clock)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Image timestamp (microseconds since UNIX epoch, according to camera clock)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cam_idx</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Camera ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">img_idx</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Image index</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">event_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See CAMERA_STATUS_TYPES enum for definition of the bitmask
-     (Enum:<a href="#CAMERA_STATUS_TYPES">CAMERA_STATUS_TYPES</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#CAMERA_STATUS_TYPES">CAMERA_STATUS_TYPES</a>
+     </td>
+     <td class="mavlink_comment">See CAMERA_STATUS_TYPES enum for definition of the bitmask</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p1</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Parameter 1 (meaning depends on event, see CAMERA_STATUS_TYPES enum)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p2</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Parameter 2 (meaning depends on event, see CAMERA_STATUS_TYPES enum)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p3</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Parameter 3 (meaning depends on event, see CAMERA_STATUS_TYPES enum)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">p4</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Parameter 4 (meaning depends on event, see CAMERA_STATUS_TYPES enum)</td>
     </tr>
    </tbody>
@@ -5471,6 +5788,8 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5478,79 +5797,149 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Image timestamp (microseconds since UNIX epoch), as passed in by CAMERA_STATUS message (or autopilot if no CCB)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Image timestamp (microseconds since UNIX epoch), as passed in by CAMERA_STATUS message (or autopilot if no CCB)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cam_idx</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Camera ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">img_idx</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Image index</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude in (deg * 1E7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Latitude in (deg * 1E7)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lng</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude in (deg * 1E7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Longitude in (deg * 1E7)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt_msl</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Altitude Absolute (meters AMSL)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude Absolute (meters AMSL)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">alt_rel</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Altitude Relative (meters above HOME location)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude Relative (meters above HOME location)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Camera Roll angle (earth frame, degrees, +-180)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Camera Roll angle (earth frame, degrees, +-180)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Camera Pitch angle (earth frame, degrees, +-180)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Camera Pitch angle (earth frame, degrees, +-180)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Camera Yaw (earth frame, degrees, 0-360, true)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Camera Yaw (earth frame, degrees, 0-360, true)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">foc_len</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Focal Length (mm)
-     (Units: mm)</td>
+     <td class="mavlink_units" valign="top">mm</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Focal Length (mm)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See CAMERA_FEEDBACK_FLAGS enum for definition of the bitmask
-     (Enum:<a href="#CAMERA_FEEDBACK_FLAGS">CAMERA_FEEDBACK_FLAGS</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#CAMERA_FEEDBACK_FLAGS">CAMERA_FEEDBACK_FLAGS</a>
+     </td>
+     <td class="mavlink_comment">See CAMERA_FEEDBACK_FLAGS enum for definition of the bitmask</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">completed_captures<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Completed image captures</td>
     </tr>
    </tbody>
   </table>
@@ -5559,12 +5948,13 @@ These messages define the APM specific message set, which is custom to [http://a
    </a>
    )
   </h3>
-  <p class="description">2nd Battery status</p>
+  <p class="description">Deprecated. Use BATTERY_STATUS instead. 2nd Battery status</p>
   <table class="sortable">
    <thead>
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5572,14 +5962,14 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">voltage</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">voltage in millivolts
-     (Units: mV)</td>
+     <td class="mavlink_units" valign="top">mV</td>
+     <td class="mavlink_comment">voltage in millivolts</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">current_battery</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Battery current, in 10*milliamperes (1 = 10 milliampere), -1: autopilot does not measure the current
-     (Units: cA)</td>
+     <td class="mavlink_units" valign="top">cA</td>
+     <td class="mavlink_comment">Battery current, in centiamperes (1 = 10 milliampere), -1: autopilot does not measure the current</td>
     </tr>
    </tbody>
   </table>
@@ -5594,6 +5984,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5601,57 +5992,65 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Roll angle (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Roll angle (rad)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pitch</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Pitch angle (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Pitch angle (rad)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">yaw</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Yaw angle (rad)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Yaw angle (rad)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Altitude (MSL)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Altitude (MSL)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Latitude in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Latitude in degrees * 1E7</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">lng</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Longitude in degrees * 1E7
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_comment">Longitude in degrees * 1E7</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">v1</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">test variable1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">v2</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">test variable2</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">v3</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">test variable3</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">v4</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">test variable4</td>
     </tr>
    </tbody>
@@ -5694,6 +6093,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5701,24 +6101,36 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">seqno</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">log data block sequence number
-     (Enum:<a href="#MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS</a>
      </td>
+     <td class="mavlink_comment">log data block sequence number</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">uint8_t[200]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">log data block</td>
     </tr>
    </tbody>
@@ -5734,6 +6146,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5741,25 +6154,37 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">seqno</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">log data block sequence number</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">log data block status
-     (Enum:<a href="#MAV_REMOTE_LOG_DATA_BLOCK_STATUSES">MAV_REMOTE_LOG_DATA_BLOCK_STATUSES</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_REMOTE_LOG_DATA_BLOCK_STATUSES">MAV_REMOTE_LOG_DATA_BLOCK_STATUSES</a>
      </td>
+     <td class="mavlink_comment">log data block status</td>
     </tr>
    </tbody>
   </table>
@@ -5821,6 +6246,8 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5828,50 +6255,100 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">compass_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Compass being calibrated</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cal_mask</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Bitmask of compasses being calibrated</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cal_status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Status (see MAG_CAL_STATUS enum)
-     (Enum:<a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
+     </td>
+     <td class="mavlink_comment">Status (see MAG_CAL_STATUS enum)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">attempt</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Attempt number</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">completion_pct</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Completion percentage
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Completion percentage</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">completion_mask</td>
      <td class="mavlink_type" valign="top">uint8_t[10]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Bitmask of sphere sections (see http://en.wikipedia.org/wiki/Geodesic_grid)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">direction_x</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Body frame direction vector for display</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">direction_y</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Body frame direction vector for display</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">direction_z</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Body frame direction vector for display</td>
     </tr>
    </tbody>
@@ -5887,6 +6364,8 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5894,75 +6373,153 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">compass_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Compass being calibrated</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cal_mask</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Bitmask of compasses being calibrated</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cal_status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Status (see MAG_CAL_STATUS enum)
-     (Enum:<a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
+     </td>
+     <td class="mavlink_comment">Status (see MAG_CAL_STATUS enum)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">autosaved</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">0=requires a MAV_CMD_DO_ACCEPT_MAG_CAL, 1=saved to parameters</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">fitness</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">RMS milligauss residuals
-     (Units: mgauss)</td>
+     <td class="mavlink_units" valign="top">mgauss</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">RMS milligauss residuals</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ofs_x</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">X offset</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ofs_y</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Y offset</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ofs_z</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Z offset</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">diag_x</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">X diagonal (matrix 11)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">diag_y</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Y diagonal (matrix 22)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">diag_z</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Z diagonal (matrix 33)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">offdiag_x</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">X off-diagonal (matrix 12 and 21)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">offdiag_y</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Y off-diagonal (matrix 13 and 31)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">offdiag_z</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Z off-diagonal (matrix 32 and 23)</td>
     </tr>
    </tbody>
@@ -5978,6 +6535,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -5985,35 +6543,67 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Flags
-     (Enum:<a href="#EKF_STATUS_FLAGS">EKF_STATUS_FLAGS</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#EKF_STATUS_FLAGS">EKF_STATUS_FLAGS</a>
      </td>
+     <td class="mavlink_comment">Flags</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">velocity_variance</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Velocity variance</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pos_horiz_variance</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Horizontal Position variance</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">pos_vert_variance</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Vertical Position variance</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">compass_variance</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Compass variance</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">terrain_alt_variance</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Terrain Altitude variance</td>
+    </tr>
+    <tr class="mavlink_field">
+     <td class="mavlink_name" style="color:blue;" valign="top">airspeed_variance<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Airspeed variance</td>
     </tr>
    </tbody>
   </table>
@@ -6028,6 +6618,8 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6035,41 +6627,75 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">axis</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">axis
-     (Enum:<a href="#PID_TUNING_AXIS">PID_TUNING_AXIS</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#PID_TUNING_AXIS">PID_TUNING_AXIS</a>
+     </td>
+     <td class="mavlink_comment">axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">desired</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">desired rate (degrees/s)
-     (Units: deg/s)</td>
+     <td class="mavlink_units" valign="top">deg/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">desired rate (degrees/s)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">achieved</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">achieved rate (degrees/s)
-     (Units: deg/s)</td>
+     <td class="mavlink_units" valign="top">deg/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">achieved rate (degrees/s)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">FF</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">FF component</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">P</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">P component</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">I</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">I component</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">D</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">D component</td>
     </tr>
    </tbody>
@@ -6085,6 +6711,8 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6092,64 +6720,102 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">landing_lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Landing latitude (deg * 1E7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Landing latitude (deg * 1E7)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">landing_lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Landing longitude (deg * 1E7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Landing longitude (deg * 1E7)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">path_lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Final heading start point, latitude (deg * 1E7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Final heading start point, latitude (deg * 1E7)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">path_lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Final heading start point, longitude (deg * 1E7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Final heading start point, longitude (deg * 1E7)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">arc_entry_lat</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Arc entry point, latitude (deg * 1E7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Arc entry point, latitude (deg * 1E7)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">arc_entry_lon</td>
      <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Arc entry point, longitude (deg * 1E7)
-     (Units: degE7)</td>
+     <td class="mavlink_units" valign="top">degE7</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Arc entry point, longitude (deg * 1E7)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Altitude (meters)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Altitude (meters)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">expected_travel_distance</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Distance the aircraft expects to travel during the deepstall
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Distance the aircraft expects to travel during the deepstall</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cross_track_error</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Deepstall cross track error in meters (only valid when in DEEPSTALL_STAGE_LAND)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">Deepstall cross track error in meters (only valid when in DEEPSTALL_STAGE_LAND)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">stage</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Deepstall stage, see enum MAV_DEEPSTALL_STAGE
-     (Enum:<a href="#DEEPSTALL_STAGE">DEEPSTALL_STAGE</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#DEEPSTALL_STAGE">DEEPSTALL_STAGE</a>
+     </td>
+     <td class="mavlink_comment">Deepstall stage, see enum MAV_DEEPSTALL_STAGE</td>
     </tr>
    </tbody>
   </table>
@@ -6164,6 +6830,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6171,72 +6838,76 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">delta_time</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Time since last update (seconds)
-     (Units: s)</td>
+     <td class="mavlink_units" valign="top">s</td>
+     <td class="mavlink_comment">Time since last update (seconds)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">delta_angle_x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Delta angle X (radians)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Delta angle X (radians)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">delta_angle_y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Delta angle Y (radians)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Delta angle Y (radians)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">delta_angle_z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Delta angle X (radians)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Delta angle X (radians)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">delta_velocity_x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Delta velocity X (m/s)
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Delta velocity X (m/s)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">delta_velocity_y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Delta velocity Y (m/s)
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Delta velocity Y (m/s)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">delta_velocity_z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Delta velocity Z (m/s)
-     (Units: m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Delta velocity Z (m/s)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">joint_roll</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Joint ROLL (radians)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Joint ROLL (radians)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">joint_el</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Joint EL (radians)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Joint EL (radians)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">joint_az</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Joint AZ (radians)
-     (Units: rad)</td>
+     <td class="mavlink_units" valign="top">rad</td>
+     <td class="mavlink_comment">Joint AZ (radians)</td>
     </tr>
    </tbody>
   </table>
@@ -6251,6 +6922,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6258,30 +6930,34 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">demanded_rate_x</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Demanded angular rate X (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Demanded angular rate X (rad/s)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">demanded_rate_y</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Demanded angular rate Y (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Demanded angular rate Y (rad/s)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">demanded_rate_z</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Demanded angular rate Z (rad/s)
-     (Units: rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Demanded angular rate Z (rad/s)</td>
     </tr>
    </tbody>
   </table>
@@ -6338,6 +7014,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6345,26 +7022,26 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Status
-     (Enum:<a href="#GOPRO_HEARTBEAT_STATUS">GOPRO_HEARTBEAT_STATUS</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#GOPRO_HEARTBEAT_STATUS">GOPRO_HEARTBEAT_STATUS</a>
      </td>
+     <td class="mavlink_comment">Status</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">capture_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Current capture mode
-     (Enum:<a href="#GOPRO_CAPTURE_MODE">GOPRO_CAPTURE_MODE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#GOPRO_CAPTURE_MODE">GOPRO_CAPTURE_MODE</a>
      </td>
+     <td class="mavlink_comment">Current capture mode</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flags</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">additional status bits
-     (Enum:<a href="#GOPRO_HEARTBEAT_FLAGS">GOPRO_HEARTBEAT_FLAGS</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#GOPRO_HEARTBEAT_FLAGS">GOPRO_HEARTBEAT_FLAGS</a>
      </td>
+     <td class="mavlink_comment">additional status bits</td>
     </tr>
    </tbody>
   </table>
@@ -6379,6 +7056,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6386,20 +7064,28 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cmd_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Command ID
-     (Enum:<a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
      </td>
+     <td class="mavlink_comment">Command ID</td>
     </tr>
    </tbody>
   </table>
@@ -6414,6 +7100,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6421,22 +7108,26 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cmd_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Command ID
-     (Enum:<a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
      </td>
+     <td class="mavlink_comment">Command ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Status
-     (Enum:<a href="#GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
      </td>
+     <td class="mavlink_comment">Status</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">value</td>
      <td class="mavlink_type" valign="top">uint8_t[4]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Value</td>
     </tr>
    </tbody>
@@ -6452,6 +7143,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6459,24 +7151,36 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cmd_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Command ID
-     (Enum:<a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
      </td>
+     <td class="mavlink_comment">Command ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">value</td>
      <td class="mavlink_type" valign="top">uint8_t[4]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Value</td>
     </tr>
    </tbody>
@@ -6492,6 +7196,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6499,18 +7204,18 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">cmd_id</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Command ID
-     (Enum:<a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
      </td>
+     <td class="mavlink_comment">Command ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Status
-     (Enum:<a href="#GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
      </td>
+     <td class="mavlink_comment">Status</td>
     </tr>
    </tbody>
   </table>
@@ -6555,6 +7260,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6562,49 +7268,81 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">request_id</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">request ID - copied to reply</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">bustype</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">The bus type
-     (Enum:<a href="#DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
      </td>
+     <td class="mavlink_comment">The bus type</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">bus</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Bus number</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">address</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Bus address</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">busname</td>
      <td class="mavlink_type" valign="top">char[40]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Name of device on bus (for SPI)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">regstart</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">First register to read</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">count</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">count of registers to read</td>
     </tr>
    </tbody>
@@ -6668,6 +7406,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6675,54 +7414,90 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_system</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target_component</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Component ID</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">request_id</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">request ID - copied to reply</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">bustype</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">The bus type
-     (Enum:<a href="#DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
      </td>
+     <td class="mavlink_comment">The bus type</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">bus</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Bus number</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">address</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Bus address</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">busname</td>
      <td class="mavlink_type" valign="top">char[40]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Name of device on bus (for SPI)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">regstart</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">First register to write</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">count</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">count of registers to write</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">data</td>
      <td class="mavlink_type" valign="top">uint8_t[128]</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">write data</td>
     </tr>
    </tbody>
@@ -6771,6 +7546,8 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6778,71 +7555,141 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">axis</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">axis
-     (Enum:<a href="#PID_TUNING_AXIS">PID_TUNING_AXIS</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#PID_TUNING_AXIS">PID_TUNING_AXIS</a>
+     </td>
+     <td class="mavlink_comment">axis</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">desired</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">desired rate (degrees/s)
-     (Units: deg/s)</td>
+     <td class="mavlink_units" valign="top">deg/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">desired rate (degrees/s)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">achieved</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">achieved rate (degrees/s)
-     (Units: deg/s)</td>
+     <td class="mavlink_units" valign="top">deg/s</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">achieved rate (degrees/s)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">error</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">error between model and vehicle</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">theta</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">theta estimated state predictor</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">omega</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">omega estimated state predictor</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sigma</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">sigma estimated state predictor</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">theta_dot</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">theta derivative</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">omega_dot</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">omega derivative</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sigma_dot</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">sigma derivative</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">f</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">projection operator value</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">f_dot</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">projection operator derivative</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">u</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">u adaptive controlled output command</td>
     </tr>
    </tbody>
@@ -6861,6 +7708,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6868,31 +7716,35 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (microseconds, synced to UNIX time or since system boot)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (microseconds, synced to UNIX time or since system boot)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_delta_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Time in microseconds since the last reported camera frame
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Time in microseconds since the last reported camera frame</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">angle_delta</td>
      <td class="mavlink_type" valign="top">float[3]</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Defines a rotation vector in body frame that rotates the vehicle from the previous to the current orientation</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">position_delta</td>
      <td class="mavlink_type" valign="top">float[3]</td>
-     <td class="mavlink_comment">Change in position in meters from previous to current frame rotated into body frame (0=forward, 1=right, 2=down)
-     (Units: m)</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Change in position in meters from previous to current frame rotated into body frame (0=forward, 1=right, 2=down)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">confidence</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">normalised confidence value from 0 to 100
-     (Units: %)</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
+     <td class="mavlink_comment">normalised confidence value from 0 to 100</td>
     </tr>
    </tbody>
   </table>
@@ -6910,6 +7762,7 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -6917,20 +7770,20 @@ These messages define the APM specific message set, which is custom to [http://a
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">time_usec</td>
      <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)
-     (Units: us)</td>
+     <td class="mavlink_units" valign="top">us</td>
+     <td class="mavlink_comment">Timestamp (micros since boot or Unix epoch)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">AOA</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Angle of Attack (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Angle of Attack (degrees)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">SSA</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Side Slip Angle (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Side Slip Angle (degrees)</td>
     </tr>
    </tbody>
   </table>

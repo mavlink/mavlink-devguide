@@ -20,7 +20,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -60,7 +60,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -131,6 +131,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -138,10 +139,10 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See the FMS_STATE enum.
-     (Enum:<a href="#ICAROUS_FMS_STATE">ICAROUS_FMS_STATE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#ICAROUS_FMS_STATE">ICAROUS_FMS_STATE</a>
      </td>
+     <td class="mavlink_comment">See the FMS_STATE enum.</td>
     </tr>
    </tbody>
   </table>
@@ -159,6 +160,8 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -166,107 +169,163 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">numBands</td>
      <td class="mavlink_type" valign="top">int8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">Number of track bands</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type1</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See the TRACK_BAND_TYPES enum.
-     (Enum:<a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
+     </td>
+     <td class="mavlink_comment">See the TRACK_BAND_TYPES enum.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">min1</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">min angle (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">min angle (degrees)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">max1</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">max angle (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">max angle (degrees)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type2</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See the TRACK_BAND_TYPES enum.
-     (Enum:<a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
+     </td>
+     <td class="mavlink_comment">See the TRACK_BAND_TYPES enum.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">min2</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">min angle (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">min angle (degrees)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">max2</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">max angle (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">max angle (degrees)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type3</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See the TRACK_BAND_TYPES enum.
-     (Enum:<a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
+     </td>
+     <td class="mavlink_comment">See the TRACK_BAND_TYPES enum.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">min3</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">min angle (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">min angle (degrees)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">max3</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">max angle (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">max angle (degrees)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type4</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See the TRACK_BAND_TYPES enum.
-     (Enum:<a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
+     </td>
+     <td class="mavlink_comment">See the TRACK_BAND_TYPES enum.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">min4</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">min angle (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">min angle (degrees)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">max4</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">max angle (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">max angle (degrees)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type5</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">See the TRACK_BAND_TYPES enum.
-     (Enum:<a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
-      )
+     <td class="mavlink_units" valign="top">
      </td>
+     <td class="mavlink_value" valign="top">
+      <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
+     </td>
+     <td class="mavlink_comment">See the TRACK_BAND_TYPES enum.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">min5</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">min angle (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">min angle (degrees)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">max5</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">max angle (degrees)
-     (Units: deg)</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
+     <td class="mavlink_comment">max angle (degrees)</td>
     </tr>
    </tbody>
   </table>

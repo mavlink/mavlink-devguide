@@ -24,7 +24,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -147,7 +147,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -247,7 +247,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -323,6 +323,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -330,17 +331,22 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sensLoad</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Sensor DSC Load</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ctrlLoad</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Control DSC Load</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">batVolt</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Battery Voltage in millivolts</td>
+     <td class="mavlink_units" valign="top">mV</td>
+     <td class="mavlink_comment">Battery Voltage</td>
     </tr>
    </tbody>
   </table>
@@ -355,6 +361,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -362,32 +369,38 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">axBias</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Accelerometer X bias (m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Accelerometer X bias</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ayBias</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Accelerometer Y bias (m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Accelerometer Y bias</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">azBias</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Accelerometer Z bias (m/s)</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Accelerometer Z bias</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">gxBias</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Gyro X bias (rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Gyro X bias</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">gyBias</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Gyro Y bias (rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Gyro Y bias</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">gzBias</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Gyro Z bias (rad/s)</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Gyro Z bias</td>
     </tr>
    </tbody>
   </table>
@@ -449,6 +462,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -456,52 +470,70 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">u_m</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Measured Airspeed prior to the nav filter in m/s</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Measured Airspeed prior to the nav filter</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">phi_c</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Commanded Roll</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">theta_c</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Commanded Pitch</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">psiDot_c</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Commanded Turn rate</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">ay_body</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Y component of the body acceleration</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">totalDist</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Total Distance to Run on this leg of Navigation</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">dist2Go</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Remaining distance to Run on this leg of Navigation</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">fromWP</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Origin WP</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">toWP</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Destination WP</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">h_c</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Commanded altitude in 0.1 m</td>
+     <td class="mavlink_units" valign="top">dm</td>
+     <td class="mavlink_comment">Commanded altitude</td>
     </tr>
    </tbody>
   </table>
@@ -563,6 +595,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -570,61 +603,86 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">year</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Year reported by Gps</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">month</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Month reported by Gps</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">day</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Day reported by Gps</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">hour</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Hour reported by Gps</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">min</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Min reported by Gps</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sec</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Sec reported by Gps</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">clockStat</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Clock Status. See table 47 page 211 OEMStar Manual</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">visSat</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Visible satellites reported by Gps</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">useSat</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Used satellites in Solution</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">GppGl</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">GPS+GLONASS satellites in Solution</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">sigUsedMask</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">GPS and GLONASS usage mask (bit 0 GPS_used? bit_4 GLONASS_used?)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">percentUsed</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+      %
+     </td>
      <td class="mavlink_comment">Percent used GPS</td>
     </tr>
    </tbody>
@@ -640,6 +698,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -647,22 +706,27 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">The system setting the commands</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">hCommand</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Commanded Altitude in meters</td>
+     <td class="mavlink_units" valign="top">m</td>
+     <td class="mavlink_comment">Commanded Altitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">uCommand</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Commanded Airspeed in m/s</td>
+     <td class="mavlink_units" valign="top">m/s</td>
+     <td class="mavlink_comment">Commanded Airspeed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">rCommand</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Commanded Turnrate in rad/s</td>
+     <td class="mavlink_units" valign="top">rad/s</td>
+     <td class="mavlink_comment">Commanded Turnrate</td>
     </tr>
    </tbody>
   </table>
@@ -677,6 +741,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -684,11 +749,18 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">The system setting the commands</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">bitfieldPt</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#CONTROL_SURFACE_FLAG">CONTROL_SURFACE_FLAG</a>
+     </td>
      <td class="mavlink_comment">Bitfield containing the passthrough configuration, see CONTROL_SURFACE_FLAG ENUM.</td>
     </tr>
    </tbody>
@@ -783,6 +855,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -790,16 +863,20 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">The system reporting the action</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">latitude</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">deg</td>
      <td class="mavlink_comment">Mobile Latitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">longitude</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">deg</td>
      <td class="mavlink_comment">Mobile Longitude</td>
     </tr>
    </tbody>
@@ -847,6 +924,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -854,36 +932,48 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">The system reporting the action</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">latitude</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">deg</td>
      <td class="mavlink_comment">ISR Latitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">longitude</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">deg</td>
      <td class="mavlink_comment">ISR Longitude</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">height</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">ISR Height</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">option1</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Option 1</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">option2</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Option 2</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">option3</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Option 3</td>
     </tr>
    </tbody>
@@ -963,6 +1053,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -970,31 +1061,39 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">target</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">The ID system reporting the action</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">latitude</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">deg</td>
      <td class="mavlink_comment">Latitude UAV</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">longitude</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">deg</td>
      <td class="mavlink_comment">Longitude UAV</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">altitude</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">m</td>
      <td class="mavlink_comment">Altitude UAV</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">speed</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">m/s</td>
      <td class="mavlink_comment">Speed UAV</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">course</td>
      <td class="mavlink_type" valign="top">float</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Course UAV</td>
     </tr>
    </tbody>
@@ -1010,6 +1109,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -1017,36 +1117,49 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">csFails</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Number of times checksum has failed</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">gpsQuality</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">The quality indicator, 0=fix not available or invalid, 1=GPS fix, 2=C/A differential GPS, 6=Dead reckoning mode, 7=Manual input mode (fixed position), 8=Simulator mode, 9= WAAS a</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">msgsType</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Indicates if GN, GL or GP messages are being received</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">posStatus</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">A = data valid, V = data invalid</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">magVar</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Magnetic variation, degrees</td>
+     <td class="mavlink_units" valign="top">deg</td>
+     <td class="mavlink_comment">Magnetic variation</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">magDir</td>
      <td class="mavlink_type" valign="top">int8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Magnetic variation direction E/W. Easterly variation (E) subtracts from True course and Westerly variation (W) adds to True course</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">modeInd</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Positioning system mode indicator. A - Autonomous;D-Differential; E-Estimated (dead reckoning) mode;M-Manual input; N-Data not valid</td>
     </tr>
    </tbody>
@@ -1062,6 +1175,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Units</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -1069,36 +1183,49 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">timeStatus</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">The Time Status. See Table 8 page 27 Novatel OEMStar Manual</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">receiverStatus</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Status Bitfield. See table 69 page 350 Novatel OEMstar Manual</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">solStatus</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">solution Status. See table 44 page 197</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">posType</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">position type. See table 43 page 196</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">velType</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">velocity type. See table 43 page 196</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">posSolAge</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Age of the position solution in seconds</td>
+     <td class="mavlink_units" valign="top">s</td>
+     <td class="mavlink_comment">Age of the position solution</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">csFails</td>
      <td class="mavlink_type" valign="top">uint16_t</td>
+     <td class="mavlink_units" valign="top">
+     </td>
      <td class="mavlink_comment">Times the CRC has failed since boot</td>
     </tr>
    </tbody>

@@ -21,7 +21,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -121,7 +121,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -255,7 +255,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -326,7 +326,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -398,7 +398,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">CMD ID</th>
+     <th class="mavlink_field_header">Value</th>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
@@ -481,6 +481,7 @@
     <tr>
      <th class="mavlink_field_header">Field Name</th>
      <th class="mavlink_field_header">Type</th>
+     <th class="mavlink_field_header">Values</th>
      <th class="mavlink_field_header">Description</th>
     </tr>
    </thead>
@@ -488,40 +489,52 @@
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">type</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Type of the MAV (quadrotor, helicopter, etc., up to 15 types, defined in MAV_TYPE ENUM)
-     (Enum:<a href="#MAV_TYPE">MAV_TYPE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_TYPE">MAV_TYPE</a>
      </td>
+     <td class="mavlink_comment">Type of the MAV (quadrotor, helicopter, etc., up to 15 types, defined in MAV_TYPE ENUM)</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">autopilot</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Autopilot type / class. defined in MAV_AUTOPILOT ENUM
-     (Enum:<a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
      </td>
+     <td class="mavlink_comment">Autopilot type / class. defined in MAV_AUTOPILOT ENUM</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">base_mode</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">System mode bitfield, see MAV_MODE_FLAGS ENUM in mavlink/include/mavlink_types.h</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">custom_mode</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">A bitfield for use for autopilot-specific flags.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">system_status</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System status flag, see MAV_STATE ENUM
-     (Enum:<a href="#MAV_STATE">MAV_STATE</a>
-      )
+     <td class="mavlink_value" valign="top">
+      <a href="#MAV_STATE">MAV_STATE</a>
      </td>
+     <td class="mavlink_comment">System status flag, see MAV_STATE ENUM</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">mavlink_version</td>
      <td class="mavlink_type" valign="top">uint8_t_mavlink_version</td>
+     <td class="mavlink_value" valign="top">
+      <a href="#">
+      </a>
+     </td>
      <td class="mavlink_comment">MAVLink version</td>
     </tr>
    </tbody>

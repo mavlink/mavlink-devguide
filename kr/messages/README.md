@@ -7,7 +7,7 @@ The common messages are provided as human-readable tables in: [Common](../messag
 
 ## Vendor Specific Extensions (Dialects) {#dialects}
 
-MAVLink protocol-specific and vendor-specific messages (dialects) are stored in separate XML files. These often include the [common](../messages/common.md) message definition, extending it with needed vendor or protocol specific messages. 
+MAVLink protocol-specific and vendor-specific messages (dialects) are stored in separate XML files. These often include the [common](../messages/common.md) message definition, extending it with needed vendor or protocol specific messages.
 
 > **Note** While a dialect can include any other message definition, care should be taken when including a definition file that includes another file (only a single level of nesting is tested).
 
@@ -15,16 +15,16 @@ MAVLink protocol-specific and vendor-specific messages (dialects) are stored in 
 > **Note** Vendor forks of MAVLink may contain messages that are not yet merged, and hence will not appear in this documentation.
 
 The human-readable forms of the vendor XML files are linked below:
-* [ardupilotmega.xml](ardupilotmega.md)
 * [ASLUAV.xml](ASLUAV.md)
-* [autoquad.xml](autoquad.md)
-* [icarous.xml](icarous.md)
 * [matrixpilot.xml](matrixpilot.md)
 * [minimal.xml](minimal.md)
-* [paparazzi.xml](paparazzi.md)
-* [python_array_test.xml](python_array_test.md)
+* [ardupilotmega.xml](ardupilotmega.md)
 * [slugs.xml](slugs.md)
-* [standard.xml](standard.md)
 * [test.xml](test.md)
+* [paparazzi.xml](paparazzi.md)
+* [icarous.xml](icarous.md)
+* [autoquad.xml](autoquad.md)
 * [ualberta.xml](ualberta.md)
 * [uAvionix.xml](uAvionix.md)
+* [python_array_test.xml](python_array_test.md)
+* [standard.xml](standard.md)
