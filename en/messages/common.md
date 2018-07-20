@@ -11643,7 +11643,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_value" valign="top">
       <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
      </td>
-     <td class="mavlink_comment">System mode bitfield.</td>
+     <td class="mavlink_comment">System mode bitmap.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">custom_mode</td>
@@ -11698,7 +11698,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_value" valign="top">
       <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
      </td>
-     <td class="mavlink_comment">Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present. Indices defined by ENUM MAV_SYS_STATUS_SENSOR</td>
+     <td class="mavlink_comment">Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">onboard_control_sensors_enabled</td>
@@ -11708,7 +11708,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_value" valign="top">
       <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
      </td>
-     <td class="mavlink_comment">Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled. Indices defined by ENUM MAV_SYS_STATUS_SENSOR</td>
+     <td class="mavlink_comment">Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">onboard_control_sensors_health</td>
@@ -11718,7 +11718,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_value" valign="top">
       <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
      </td>
-     <td class="mavlink_comment">Bitmap showing which onboard controllers and sensors are operational or have an error:  Value of 0: not enabled. Value of 1: enabled. Indices defined by ENUM MAV_SYS_STATUS_SENSOR</td>
+     <td class="mavlink_comment">Bitmap showing which onboard controllers and sensors are operational or have an error:  Value of 0: not enabled. Value of 1: enabled.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">load</td>
@@ -20858,7 +20858,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_value" valign="top">
       <a href="#ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</a>
      </td>
-     <td class="mavlink_comment">Integer bitmap indicating which EKF outputs are valid.</td>
+     <td class="mavlink_comment">Bitmap indicating which EKF outputs are valid.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">vel_ratio</td>
@@ -21287,7 +21287,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_value" valign="top">
       <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
      </td>
-     <td class="mavlink_comment">System mode bitfield, as defined by MAV_MODE_FLAG enum.</td>
+     <td class="mavlink_comment">Bitmap of enabled system modes.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">custom_mode</td>
@@ -22712,7 +22712,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>Report button state change</p>
+   </strong>Report button state change.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22733,14 +22733,14 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">last_change_ms</td>
      <td class="mavlink_type" valign="top">uint32_t</td>
      <td class="mavlink_units" valign="top">ms</td>
-     <td class="mavlink_comment">Time of last change of button state</td>
+     <td class="mavlink_comment">Time of last change of button state.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">state</td>
      <td class="mavlink_type" valign="top">uint8_t</td>
      <td class="mavlink_units" valign="top">
      </td>
-     <td class="mavlink_comment">Bitmap for state of buttons</td>
+     <td class="mavlink_comment">Bitmap for state of buttons.</td>
     </tr>
    </tbody>
   </table>
