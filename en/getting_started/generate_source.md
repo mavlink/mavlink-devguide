@@ -38,15 +38,18 @@ Generator Steps:
 
 ## Mavgen (Command Line) {#mavgen}
 
-**mavgen.py** is a command-line interface for generating a language-specific MAVLink library. 
+**mavgen.py** is a command-line tool for generating MAVLink libraries for different programming languages. 
 After the `mavlink` directory has been added to the `PYTHONPATH`, it can be run by executing from the command line. 
 
 > **Tip** This is the backend used by [mavgenerate](#mavgenerate). The documentation below explains all the options for both tools. 
 
-For example, to generate *MAVLink 2* C libraries for a dialect named **your_custom_dialect.xml**:
+For example, to generate *MAVLink 2* C libraries for a dialect named **your_custom_dialect.xml**.
 ```sh
 python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
 ```
+
+> **Note** The syntax for for generating Python modules is the same, except that the `--output` specifies a *filename* rather than a directory.
+  <!-- https://github.com/ArduPilot/pymavlink/issues/203 -->
 
 The full syntax can be output by running *mavgen* with the `-h` flag (reproduced below):
 ```
