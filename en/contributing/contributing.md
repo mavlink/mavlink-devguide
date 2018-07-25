@@ -61,20 +61,22 @@ MAVLink developers, adopting companies and the surrounding community of users me
 
 * Core project maintainers
 * Component maintainers
-
 * Dronecode members
-
 * Community members
-
 * Anyone interested in the development of MAVLink
 
 > The dev call is open to all interested developers \(not just the dev team\). This is a great opportunity to meet the team and contribute to the ongoing development of the project.
 
 #### Schedule {#schedule}
 
-* **TIME**: Wednesday 6:15PM CET, 12:15AM EST, 9:15AM PST \([subscribe to calendar](https://zoom.us/meeting/579545140/ics?icsToken=fb96681cf4458be9f1f85694037a3cc7f358d5a9479ec0a06dedc267e49649ac)\)
-* **Join the call**: [https://zoom.us/j/579545140](https://zoom.us/s/579545140)
-* **Meeting ID**: 625 711 763
+There are two bi-weekly calls on the same day: One for a Asia-Europe overlap and one for a Europe-Americas overlap.
+
+* **Asia-Europe**: [https://zoom.us/j/832229956](https://zoom.us/j/832229956)
+  * **TIME**: Wednesday 9:00AM CET, 3:00 PM China, 5:00PM ACT
+  * Zoom Meeting ID: 832 229 956
+* **Europe-Americas**: [https://zoom.us/j/170266847](https://zoom.us/j/170266847)
+  * **TIME**: Wednesday 6:00PM CET, 12:00AM EST, 9:00AM PST
+  * Zoom Meeting ID: 170 266 847
 * **Dial\(for higher quality, dial a number based on your current location\)**:
 
   * **Switzerland**: +41 \(0\) 31 528 0988
