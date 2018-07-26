@@ -8,7 +8,7 @@ A non-exhaustive list of some users/contributors of this project is given below.
 The following autopilots are known to support MAVLink and are actively being developed (last release less than a year ago).
 
 * [PX4](http://px4.io/) (creator of the protocol)
-* [ArduPilot (APM)](http://ardupilot.org/) (key contributor to the protocol)
+* [ArduPilot](http://ardupilot.org/) (key contributor to the protocol)
 * [AutoQuad 6 AutoPilot](http://autoquad.org) (contributor)
 * [iNAV](https://github.com/iNavFlight/inav/wiki)
 * [SmartAP Autopilot](http://www.sky-drones.com/)
@@ -16,8 +16,8 @@ The following autopilots are known to support MAVLink and are actively being dev
 ## Ground Stations
 
 * [QGroundControl](http://qgroundcontrol.com/) (original reference implementation)
-* [APM Mission Planner](http://ardupilot.org/planner/)
-* [APM Mission Planner 2](http://ardupilot.org/planner2/index.html) (QGroundControl w/ APM MainWidget)
+* [Mission Planner](http://ardupilot.org/planner/)
+* [APM Planner 2](http://ardupilot.org/planner2/index.html) (QGroundControl w/ APM MainWidget)
 * [MAVProxy](http://ardupilot.github.io/MAVProxy/html/index.html)
 * [UgCS (Universal Ground Control Station)](https://www.ugcs.com/)
 * [Side Pilot](http://sidepilot.net/)
