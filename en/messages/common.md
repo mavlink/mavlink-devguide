@@ -2844,7 +2844,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_NAV_ROI">MAV_CMD_NAV_ROI</a>
      </td>
-     <td class="mavlink_comment">THIS INTERFACE IS DEPRECATED AS OF JANUARY 2018. Please use MAV_CMD_DO_SET_ROI_* messages instead. Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
+     <td class="mavlink_comment">Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
     </tr>
     <tr>
      <td>
@@ -4874,7 +4874,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_DO_SET_ROI">MAV_CMD_DO_SET_ROI</a>
      </td>
-     <td class="mavlink_comment">THIS INTERFACE IS DEPRECATED AS OF JANUARY 2018. Please use MAV_CMD_DO_SET_ROI_* messages instead. Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
+     <td class="mavlink_comment">Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
     </tr>
     <tr>
      <td>
@@ -8876,7 +8876,7 @@ These messages define the common message set, which is the reference message set
   <h3 class="mavlink_message_name" id="MAV_DATA_STREAM">
    <a href="#MAV_DATA_STREAM">MAV_DATA_STREAM</a>
   </h3>
-  <p class="description">THIS INTERFACE IS DEPRECATED AS OF JULY 2015. Please use MESSAGE_INTERVAL instead. A data stream is not a fixed set of messages, but rather a
+  <p class="description">A data stream is not a fixed set of messages, but rather a
      recommendation to the autopilot software. Individual autopilots may or may not obey
      the recommended messages.</p>
   <table class="sortable">
@@ -8956,7 +8956,7 @@ These messages define the common message set, which is the reference message set
   <h3 class="mavlink_message_name" id="MAV_ROI">
    <a href="#MAV_ROI">MAV_ROI</a>
   </h3>
-  <p class="description">THIS INTERFACE IS DEPRECATED AS OF JANUARY 2018. Please use MAV_CMD_DO_SET_ROI_* messages instead. The ROI (region of interest) for the vehicle. This can be
+  <p class="description">The ROI (region of interest) for the vehicle. This can be
                 be used by the vehicle for camera/vehicle attitude alignment (see
                 MAV_CMD_NAV_ROI).</p>
   <table class="sortable">
@@ -10003,12 +10003,33 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_comment">Roll: 90, Pitch: 0, Yaw: 270</td>
     </tr>
-    <tr class="mavlink_field" id="MAV_SENSOR_ROTATION_ROLL_315_PITCH_315_YAW_315">
+    <tr class="mavlink_field" id="MAV_SENSOR_ROTATION_ROLL_90_PITCH_68_YAW_293">
      <td class="mavlink_type" valign="top">38</td>
      <td class="mavlink_name" valign="top">
-      <a href="#MAV_SENSOR_ROTATION_ROLL_315_PITCH_315_YAW_315">MAV_SENSOR_ROTATION_ROLL_315_PITCH_315_YAW_315</a>
+      <a href="#MAV_SENSOR_ROTATION_ROLL_90_PITCH_68_YAW_293">MAV_SENSOR_ROTATION_ROLL_90_PITCH_68_YAW_293</a>
      </td>
-     <td class="mavlink_comment">Roll: 315, Pitch: 315, Yaw: 315</td>
+     <td class="mavlink_comment">Roll: 90, Pitch: 68, Yaw: 293</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_ROTATION_PITCH_315">
+     <td class="mavlink_type" valign="top">39</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_ROTATION_PITCH_315">MAV_SENSOR_ROTATION_PITCH_315</a>
+     </td>
+     <td class="mavlink_comment">Pitch: 315</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_ROTATION_ROLL_90_PITCH_315">
+     <td class="mavlink_type" valign="top">40</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_ROTATION_ROLL_90_PITCH_315">MAV_SENSOR_ROTATION_ROLL_90_PITCH_315</a>
+     </td>
+     <td class="mavlink_comment">Roll: 90, Pitch: 315</td>
+    </tr>
+    <tr class="mavlink_field" id="MAV_SENSOR_ROTATION_CUSTOM">
+     <td class="mavlink_type" valign="top">100</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_SENSOR_ROTATION_CUSTOM">MAV_SENSOR_ROTATION_CUSTOM</a>
+     </td>
+     <td class="mavlink_comment">Custom orientation</td>
     </tr>
    </tbody>
   </table>
@@ -12008,7 +12029,7 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">THIS INTERFACE IS DEPRECATED. USE COMMAND_LONG with MAV_CMD_DO_SET_MODE INSTEAD. Set the system mode, as defined by enum MAV_MODE. There is no target component id as the mode is by definition for the overall aircraft, not only for one component.</p>
+  <p class="description">Set the system mode, as defined by enum MAV_MODE. There is no target component id as the mode is by definition for the overall aircraft, not only for one component.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14905,7 +14926,8 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">THIS INTERFACE IS DEPRECATED. USE SET_MESSAGE_INTERVAL INSTEAD.</p>
+  <p class="description">
+  </p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14957,7 +14979,8 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">THIS INTERFACE IS DEPRECATED. USE MESSAGE_INTERVAL INSTEAD.</p>
+  <p class="description">
+  </p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16700,7 +16723,7 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">DEPRECATED PACKET! Suffers from missing airspeed fields and singularities due to Euler angles. Please use HIL_STATE_QUATERNION instead. Sent from simulation to autopilot. This packet is useful for high throughput applications such as hardware in the loop simulations.</p>
+  <p class="description">Sent from simulation to autopilot. This packet is useful for high throughput applications such as hardware in the loop simulations.</p>
   <table class="sortable">
    <thead>
     <tr>

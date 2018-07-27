@@ -4174,7 +4174,7 @@ These messages define the APM specific message set, which is custom to [http://a
    </a>
    )
   </h3>
-  <p class="description">Deprecated. Use MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS instead. Set the magnetometer offsets.</p>
+  <p class="description">Set the magnetometer offsets</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6014,7 +6014,7 @@ These messages define the APM specific message set, which is custom to [http://a
    </a>
    )
   </h3>
-  <p class="description">Deprecated. Use BATTERY_STATUS instead. 2nd Battery status.</p>
+  <p class="description">2nd Battery status</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6611,8 +6611,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_units" valign="top">
      </td>
      <td class="mavlink_value" valign="top">
-      <a href="#">
-      </a>
+      <a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
      </td>
      <td class="mavlink_comment">orientation before calibration.</td>
     </tr>
@@ -6625,8 +6624,7 @@ These messages define the APM specific message set, which is custom to [http://a
      <td class="mavlink_units" valign="top">
      </td>
      <td class="mavlink_value" valign="top">
-      <a href="#">
-      </a>
+      <a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
      </td>
      <td class="mavlink_comment">orientation after calibration.</td>
     </tr>
