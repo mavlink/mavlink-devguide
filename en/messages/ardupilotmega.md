@@ -1,7 +1,7 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 # MAVLINK ArduPilotMega Message Set
 
-These messages define the APM specific message set, which is custom to [http://ardupilot.org](http://ardupilot.org).
+These messages define the ArduPilot specific message set, which is custom to [http://ardupilot.org](http://ardupilot.org).
 
 *This is a human-readable form of the XML definition file: [ardupilotmega.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/ardupilotmega.xml).*
 
