@@ -22,6 +22,7 @@ The following autopilots are known to support MAVLink and are actively being dev
 * [UgCS (Universal Ground Control Station)](https://www.ugcs.com/)
 * [Side Pilot](http://sidepilot.net/)
 * [AutoQuad GCS](http://autoquad.org/software-downloads/?category=2) (QGroundControl w/ AQ MainWidget)
+* [SmartAP GCS](http://sky-drones.com/smartap-gcs)
 
 ## MAVLink Wrapper/Developer APIs
 
