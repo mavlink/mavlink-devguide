@@ -31,6 +31,7 @@
   * [Offboard Control](guide/offboard_control.md)
   * [UAVCAN Interaction](guide/uavcan_interaction.md)
   * [Scripts](guide/scripts.md)
+  * [Create a New Message](guide/create_message.md)
 * [Examples](examples/README.md)
   * [UART Interface (C)](examples/c_uart.md)
   * [UDP Example (C)](examples/c_udp.md)
