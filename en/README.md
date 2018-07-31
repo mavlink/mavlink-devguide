@@ -71,6 +71,7 @@ Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y 
 The core development team and community are active on the following chat channel:
 
 * [Slack](http://slack.px4.io) (sign up) - #mavlink channel
+* [Mailing list](https://groups.google.com/forum/#!forum/mavlink)
 
 
 ## Reporting Bugs & Issues
