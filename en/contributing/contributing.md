@@ -53,6 +53,8 @@ Below we explain the processes for contributing to each category and how to rais
 
 ## Support {#support}
 
+General support channels are covered in [Forums & Chat](../README.md#support).
+
 ### Weekly Dev Call {#dev_call}
 
 MAVLink developers, adopting companies and the surrounding community of users meet weekly to help define the direction of the project, discuss RFCs, Issues and have a Q&A session.
@@ -70,6 +72,8 @@ MAVLink developers, adopting companies and the surrounding community of users me
 #### Schedule {#schedule}
 
 There are two bi-weekly calls on the same day: One for a Asia-Europe overlap and one for a Europe-Americas overlap.
+
+> **Tip** Both calls are shown as *MAVLink Co-ordination* in the [Dronecode calendar](https://www.dronecode.org/calendar/).
 
 * **Asia-Europe**: [https://zoom.us/j/832229956](https://zoom.us/j/832229956)
   * **TIME**: Wednesday 9:00AM CET, 3:00 PM China, 5:00PM ACT
@@ -89,7 +93,7 @@ There are two bi-weekly calls on the same day: One for a Asia-Europe overlap and
   * **Spain**: +34 91 198 0188
   * [**International numbers available**](https://zoom.us/u/Q40ZTqiJ)
 
-* **Nominate Issues and PRs for the call with the **[**Dev Call**](https://github.com/mavlink/mavlink/labels/Dev Call)** label on Github**
+* **Nominate Issues and PRs** for the call with the [**Dev Call**](https://github.com/mavlink/mavlink/labels/Dev%20Call) label on Github.
 
 
 
