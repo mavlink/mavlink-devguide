@@ -69,6 +69,13 @@ MAVLink developers, adopting companies and the surrounding community of users me
 
 > The dev call is open to all interested developers \(not just the dev team\). This is a great opportunity to meet the team and contribute to the ongoing development of the project.
 
+#### Agenda
+
+Meeting agenda (and historical meeting minutes) are available on the [MAVLink wiki here](https://github.com/mavlink/mavlink/wiki#weekly-meetingsagendas).
+
+* Add topics that you'd like to discuss and issues you'd like to unblock.
+* **Nominate Issues and PRs** for the call with the [**Dev Call**](https://github.com/mavlink/mavlink/labels/Dev%20Call) label on Github.
+
 #### Schedule {#schedule}
 
 There are two bi-weekly calls on the same day: One for a Asia-Europe overlap and one for a Europe-Americas overlap.
@@ -81,7 +88,7 @@ There are two bi-weekly calls on the same day: One for a Asia-Europe overlap and
 * **Europe-Americas**: [https://zoom.us/j/170266847](https://zoom.us/j/170266847)
   * **TIME**: Wednesday 6:00PM CET, 12:00AM EST, 9:00AM PST
   * Zoom Meeting ID: 170 266 847
-* **Dial\(for higher quality, dial a number based on your current location\)**:
+* **Dial \(for higher quality, dial a number based on your current location\)**:
 
   * **Switzerland**: +41 \(0\) 31 528 0988
   * **US**: +1 646 876 9923 or +1 669 900 6833 or +1 408 740 3766
@@ -93,7 +100,7 @@ There are two bi-weekly calls on the same day: One for a Asia-Europe overlap and
   * **Spain**: +34 91 198 0188
   * [**International numbers available**](https://zoom.us/u/Q40ZTqiJ)
 
-* **Nominate Issues and PRs** for the call with the [**Dev Call**](https://github.com/mavlink/mavlink/labels/Dev%20Call) label on Github.
+
 
 
 
