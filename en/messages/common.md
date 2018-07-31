@@ -23051,32 +23051,32 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">total_capacity</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">Mibytes</td>
-     <td class="mavlink_comment">Total capacity</td>
+     <td class="mavlink_units" valign="top">MiB</td>
+     <td class="mavlink_comment">Total capacity.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">used_capacity</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">Mibytes</td>
-     <td class="mavlink_comment">Used capacity</td>
+     <td class="mavlink_units" valign="top">MiB</td>
+     <td class="mavlink_comment">Used capacity.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">available_capacity</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">Mibytes</td>
-     <td class="mavlink_comment">Available capacity</td>
+     <td class="mavlink_units" valign="top">MiB</td>
+     <td class="mavlink_comment">Available storage capacity.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">read_speed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">Mibytes/s</td>
-     <td class="mavlink_comment">Read speed</td>
+     <td class="mavlink_units" valign="top">MiB/s</td>
+     <td class="mavlink_comment">Read speed.</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">write_speed</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">Mibytes/s</td>
-     <td class="mavlink_comment">Write speed</td>
+     <td class="mavlink_units" valign="top">MiB/s</td>
+     <td class="mavlink_comment">Write speed.</td>
     </tr>
    </tbody>
   </table>
@@ -23088,7 +23088,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>Information about the status of a capture</p>
+   </strong>Information about the status of a capture.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23134,8 +23134,8 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">available_capacity</td>
      <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">Mibytes</td>
-     <td class="mavlink_comment">Available storage capacity</td>
+     <td class="mavlink_units" valign="top">MiB</td>
+     <td class="mavlink_comment">Available storage capacity.</td>
     </tr>
    </tbody>
   </table>
