@@ -33,7 +33,7 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 ## Supported Languages {#supported_languages}
 
-The MAVLink project includes the [mavgen](getting_started/generate_source.md#mavgen) generator tool that can be used to create MAVLink APIs/libraries for a number of programming languages (these are supported by the project). 
+The MAVLink project includes the [mavgen](getting_started/generate_source.md#mavgen) GUI tool that can be used to create MAVLink APIs/libraries for a number of programming languages. 
 Additional generators have been provided by other projects. 
 
 > **Note** The MAVLink project has not validated and does not provide technical support for generators other than *mavgen*.
@@ -50,7 +50,7 @@ Objective C | [mavgen](getting_started/generate_source.md#mavgen) | Y | | |
 Java    | [mavgen](getting_started/generate_source.md#mavgen) | Y | | |
 Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | Y | Y | Y | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
 JavaScript | [mavgen](getting_started/generate_source.md#mavgen) | Y | | | 
-Lua     | [mavgen](getting_started/generate_source.md#mavgen) | Y | | | 
+Lua     | [mavgen](getting_started/generate_source.md#mavgen) | Y | Y | | 
 Swift   | [mavgen](getting_started/generate_source.md#mavgen) | Y | | | 
 Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y | Clojure MAVLink Bindings.
 
@@ -70,8 +70,11 @@ Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y 
 
 The core development team and community are active on the following chat channel:
 
-* [Slack](http://slack.px4.io) (sign up) - #mavlink channel
 * [Mailing list](https://groups.google.com/forum/#!forum/mavlink)
+* [Slack](http://slack.px4.io) (sign up) - #mavlink channel
+* [Gitter](https://gitter.im/ArduPilot/pymavlink) - for mavgen and other pymavlink tools
+* [ArduPilot Forum](https://discuss.ardupilot.org/c/ground-control-software/mavlink)
+* [PX4 Forum](https://discuss.px4.io/c/mavlink)
 
 
 ## Reporting Bugs & Issues
@@ -88,8 +91,8 @@ The [Contributing Guide](contributing/contributing.md) explains the contribution
 
 ## License
 
-The message definition XML files and the generated [C-language version of MAVLink](#prebuilt_libraries) (a header-only library) are made available under the MIT-licence. MAVLink can therefore be *used* without limits in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
+The message definition XML files and the generated [C-language version of MAVLink](#prebuilt_libraries) (a header-only library) are made available under the MIT-licence. MAVLink can therefore be *used* in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
 
-The [MAVLink generator toolchain](https://github.com/mavlink/mavlink/) is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3). Changes to the protocol/generator toolchain must therefore be contributed back to the project.
+The [MAVLink generator toolchain](https://github.com/mavlink/mavlink/) is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3).
 
 This documentation is licensed under *CC BY 4.0* ([Human readable overview](https://creativecommons.org/licenses/by/4.0/) | [LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE)).
