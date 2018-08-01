@@ -33,10 +33,10 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 ## Supported Languages {#supported_languages}
 
-The MAVLink project includes the [mavgen](getting_started/generate_source.md#mavgen) GUI tool that can be used to create MAVLink APIs/libraries for a number of programming languages. 
+The MAVLink project includes the [mavgen](getting_started/generate_source.md#mavgen) and [mavgenerate](getting_started/generate_source.md#mavgenerate) tools that can be used to create MAVLink libraries for a number of programming languages. 
 Additional generators have been provided by other projects. 
 
-> **Note** The MAVLink project has not validated and does not provide technical support for generators other than *mavgen*.
+> **Note** The MAVLink project has not validated and does not provide technical support for generators other than *mavgen* and *mavgenerate*.
 
 The table below shows the available languages/generators, along with their support for MAVLink v1, [MAVLink 2](guide/mavlink_2.md) and [Message Signing](guide/message_signing.md).
 
