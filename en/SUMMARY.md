@@ -27,6 +27,7 @@
   * [Routing](guide/routing.md)
   * [General Telemetry](guide/general_telemetry.md)
   * [Offboard Control](guide/offboard_control.md)
+  * [MAVLink v1.1 Compatibility and Features](guide/mavlink_v1_compatibility_features.md)
   * [UAVCAN Interaction](guide/uavcan_interaction.md)
   * [Scripts](guide/scripts.md)
 * [Examples](examples/README.md)
