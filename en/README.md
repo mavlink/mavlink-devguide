@@ -68,13 +68,9 @@ Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y 
 
 ## Forums and Chat {#support}
 
-The core development team and community are active on the following chat channel:
+The core development team and community are active on the following mailing list:
 
 * [Mailing list](https://groups.google.com/forum/#!forum/mavlink)
-* [Slack](http://slack.px4.io) (sign up) - #mavlink channel
-* [Gitter](https://gitter.im/ArduPilot/pymavlink) - for mavgen and other pymavlink tools
-* [ArduPilot Forum](https://discuss.ardupilot.org/c/ground-control-software/mavlink)
-* [PX4 Forum](https://discuss.px4.io/c/mavlink)
 
 
 ## Reporting Bugs & Issues
