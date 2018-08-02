@@ -80,19 +80,20 @@ if (mavlink_parse_char(MAVLINK_COMM_0, buf[i], &msg, &status)) {
 ```
 
 
-
 ## Message Extensions {#message_extensions}
 
-The XML for messages can contain extensions that are optional in the protocol. 
-This allows for extra fields to be added to a message.
+MAVLink 2 allows MAVLink 1 messages to be extended with *optional* fields.
+This allows for new fields to be added to a message without breaking binary compatibility for receivers that have not been updated.
 
-The rules for extended messages are:
+The rules for extensions messages are:
 
-* Extended fields are not sent in *MAVLink 1* messages. 
-* If received by an implementation that doesn't have the extended fields then the fields will not be seen.
-* If sent by an implementation that doesn't have the extended fields then the recipient will see zero values for the extended fields.
+* Extension fields are not sent in *MAVLink 1* messages. 
+* If received by an implementation that doesn't have the extensions fields then the fields will not be seen.
+* If sent by an implementation that doesn't have the extensions fields then the recipient will see zero values for the extensions fields.
+* Extension fields are [not reordered](../guide/serialization.md#mavlink-2-field-reordering) when messages are serialized 
+  (this is what allows new extension fields to be added without breaking binary compatibility).
 
-For example the fields after the `<extensions>` line below are extended fields:
+For example the fields after the `<extensions>` line below are extension fields:
 
 ```xml
     <message id="100" name="OPTICAL_FLOW">

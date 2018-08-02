@@ -72,7 +72,7 @@ Byte Index | C version | Content | Value | Explanation
 
 Below is the over-the-wire format for a MAVLink 2 packet (the in-memory representation might differ).
 
-![MAVLink v2 packet](../../assets/packets/packet_mavlink_v2.jpg)
+![MAVLink v2 packet](../../assets/packets/packet_mavlink_v2.jpg) 
 
 
 Byte Index | C version | Content | Value | Explanation
@@ -85,11 +85,9 @@ Byte Index | C version | Content | Value | Explanation
 5 | `uint8_t sysid`  | System ID (sender)     | 1 - 255 | ID of *system* (vehicle) sending the message. Used to differentiate systems on network.
 6 | `uint8_t compid` | Component ID (sender)   | 0 - 255 | ID of *component* sending the message. Used to differentiate components in a *system* (e.g. autopilot and a camera).
 7 to 9 | `uint32_t msgid:24` | Message ID (low, middle, high bytes) | 0 - 16777215 | ID of *message type* in payload. Used to decode data back into message object.
-10 | `uint8_t target_sysid` | System ID (target)    | 1 - 255 | ID of target *system* (vehicle). Optionally used for point-to-point messages.
-11 | `uint8_t target_compid`| Component ID (target) | 0 - 255 | ID of target *component*. Optionally used for point-to-point messages. <!-- why? -->
-12 to (n+12) | `uint8_t payload[max 253]` | Payload data | | Message data. Depends on message type (i.e. Message ID) and contents.
-(n+13) to (n+14) | `uint16_t checksum` | Checksum (low byte, high byte) | | X.25 CRC. CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte for ensuring the message definition matches the current version. The checksum is the same as used in ITU X.25 and SAE AS-4 standards ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)), documented in [SAE AS5669A](http://www.sae.org/servlets/productDetail?PROD_TYP=STD&PROD_CD=AS5669A). See the MAVLink source code for [the documented C-implementation](https://github.com/mavlink/c_library_v2/blob/master/checksum.h).
-(n+15) to (n+28) | `uint8_t signature[13]`| Signature | | Signature to ensure the link is tamper-proof (Optional).
+10 to (n+10) | `uint8_t payload[max 255]` | Payload data | | Message data. Depends on message type (i.e. Message ID) and contents.
+(n+11) to (n+12) | `uint16_t checksum` | Checksum (low byte, high byte) | | X.25 CRC. CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte for ensuring the message definition matches the current version. The checksum is the same as used in ITU X.25 and SAE AS-4 standards ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)), documented in [SAE AS5669A](http://www.sae.org/servlets/productDetail?PROD_TYP=STD&PROD_CD=AS5669A). See the MAVLink source code for [the documented C-implementation](https://github.com/mavlink/c_library_v2/blob/master/checksum.h).
+(n+12) to (n+26) | `uint8_t signature[13]`| Signature | | (Optional) Signature to ensure the link is tamper-proof.
 
 
 
@@ -117,7 +115,7 @@ The reordering happens as follows:
 * If two fields have the same length, their order is preserved as it was present before the data field size ordering
 * Arrays are handled based on the data type they use, not based on the total array size
 * The over-the-air order is the same as for the `struct` and thus represents the reordered fields
-* The CRC field is calculated AFTER the reordering, to ensure that a mistake during field reordering will be caught by a faulty CRC. The provided Python, C and C# reference implementations are tested to have the correct field reordering, this is only a concern for custom implementations.
+* The CRC field is calculated AFTER the reordering, to ensure that a mistake during field reordering will be caught by a faulty CRC. The provided Python, C and C# reference implementations are tested to have the correct field reordering, this is only a concern for custom implementations. 
 
 > **Warning** This ordering is unique and can be easily implemented in a protocol generator by using a stable sorting algorithm. 
   The alternative to using sorting would be either to use inefficient alignment, 
@@ -128,8 +126,12 @@ The reordering happens as follows:
 
 ### MAVLink 2 Field Reordering
 
-MAVLink 2 messages order the MAVLink 1 ("base") fields in the same way as the MAVLink 1 protocol. 
-Extension fields in MAVLink 1 messages, and all fields in new MAVLink 2 messages (id>255), are ordered in the same way as the source XML.
+For messages with ids in the MAVLink 2 range (id >255), all fields are ordered in the same way as MAVLink 1 above.
+
+For messages with ids in the original MAVLink 1 message set (id < 256)
+- MAVLink 1 ("base") fields are ordered in the same way as the MAVLink 1 protocol. 
+- [MAVLink 2 extension fields](../guide/mavlink_2.md#message_extensions) are ordered in the same way as the source XML. 
+  This allows new new fields to be added without breaking binary compatibility.
 
 <!-- FYI: Field ordering is in pymavlink/generator/mavparse.py - see https://github.com/mavlink/mavlink-devguide/pull/27#issuecomment-349215965 for info -->
 
