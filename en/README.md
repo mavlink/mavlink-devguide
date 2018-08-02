@@ -33,7 +33,7 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 
 ## Supported Languages {#supported_languages}
 
-The MAVLink project includes the [mavgen](getting_started/generate_source.md#mavgen) and [mavgenerate](getting_started/generate_source.md#mavgenerate) tools that can be used to create MAVLink libraries for a number of programming languages. 
+The MAVLink project includes the [mavgen](getting_started/generate_libraries.md#mavgen) and [mavgenerate](getting_started/generate_libraries.md#mavgenerate) tools that can be used to create MAVLink libraries for a number of programming languages. 
 Additional generators have been provided by other projects. 
 
 > **Note** The MAVLink project has not validated and does not provide technical support for generators other than *mavgen* and *mavgenerate*.
@@ -42,16 +42,16 @@ The table below shows the available languages/generators, along with their suppo
 
 Language | Generator | MAVLink v1 | MAVLink v2 | Signing | Notes
 :--- | :--- | :---:| :---: | :---: | :---
-C       | [mavgen](getting_started/generate_source.md#mavgen) | Y | Y | Y | This is the MAVLink project reference implementation. [Generated libraries](#prebuilt_libraries) are also published for both protocol versions.
-C++11   | [mavgen](getting_started/generate_source.md#mavgen) | Y | Y | Y | 
-Python (2.7+, 3.3+) | [mavgen](getting_started/generate_source.md#mavgen) | Y | Y | Y | 
-C#      | [mavgen](getting_started/generate_source.md#mavgen) | Y |  | 
-Objective C | [mavgen](getting_started/generate_source.md#mavgen) | Y | | | 
-Java    | [mavgen](getting_started/generate_source.md#mavgen) | Y | | |
+C       | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y | This is the MAVLink project reference implementation. [Generated libraries](#prebuilt_libraries) are also published for both protocol versions.
+C++11   | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y | 
+Python (2.7+, 3.3+) | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y | 
+C#      | [mavgen](getting_started/generate_libraries.md#mavgen) | Y |  | 
+Objective C | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
+Java    | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | |
 Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | Y | Y | Y | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
-JavaScript | [mavgen](getting_started/generate_source.md#mavgen) | Y | | | 
-Lua     | [mavgen](getting_started/generate_source.md#mavgen) | Y | Y | | 
-Swift   | [mavgen](getting_started/generate_source.md#mavgen) | Y | | | 
+JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
+Lua     | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | | 
+Swift   | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
 Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y | Clojure MAVLink Bindings.
 
 
