@@ -38,7 +38,7 @@ MAVLink 1 source files can be generated for:
 * [c_library_v2](https://github.com/mavlink/c_library_v2) (MAVLink 2)
 * [c_library_v1](https://github.com/mavlink/c_library_v1) (MAVLink 1)
 
-[Using Generated Source Files](getting_started/use_source.md) explains how to use these libraries.
+[Using Generated Source Files](getting_started/use_libraries.md) explains how to use these libraries.
 
 
 ## Forums and Chat {#support}

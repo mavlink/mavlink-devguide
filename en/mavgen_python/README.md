@@ -1,6 +1,8 @@
 # Python Libraries (mavgen)
 
-This topic explains how to get and use the MAVLink Python libraries (generated using [mavgen](../getting_started/generate_source.md#mavgen)).
+This topic explains how to get and use the MAVLink Python libraries (generated using [mavgen](../getting_started/generate_libraries.md#mavgen)).
+
+> **Warning** This information has been ported from the legacy site, but not yet updated/reviewed.
 
 <!-- 
 Questions - Do not have to be answered now, but this is placeholder. 
@@ -15,7 +17,7 @@ Questions - Do not have to be answered now, but this is placeholder.
 ## Getting Libraries
 
 The Python MAVLink libraries are not pre-built, 
-so you will need to [install mavgen](../getting_started/installation.md) and [generate](../getting_started/generate_source.md) them yourself. 
+so you will need to [install mavgen](../getting_started/installation.md) and [generate](../getting_started/generate_libraries.md) them yourself. 
 
 The resulting **your_mavlink_library.py** module will contain:
 

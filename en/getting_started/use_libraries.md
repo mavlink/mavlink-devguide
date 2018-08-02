@@ -1,7 +1,6 @@
 # Using MAVLink Libraries
 
-The MAVLink [dialect](../messages/README.md#dialects) libraries are used differently depending on the programming language. 
-Library-specific details are given in the linked documents.
+The linked documents explain how to use the MAVLink libraries for different programming languages (and from different code generators).
 
 > **Note** Not all of the libraries are documented. 
   If you have experience with the other libraries, please help us update those sections!

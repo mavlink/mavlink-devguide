@@ -17,7 +17,7 @@ This topic explains the encoding, packing format, commands and errors, and the o
 > **Note** The encoding and content of the payload field are not mandated by the specification - and can be extension specific.
   This topic covers the encoding that has been used by *QGroundControl* and PX4.
 
-A MAVLink system that supports this protocol should also set the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag in the [AUTOPILOT_VERSION.capability](../messages/common.html#AUTOPILOT_VERSION) field.
+A MAVLink system that supports this protocol should also set the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag in the [AUTOPILOT_VERSION.capability](../messages/common.md#AUTOPILOT_VERSION) field.
 
 
 
