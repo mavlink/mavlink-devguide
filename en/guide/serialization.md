@@ -105,7 +105,7 @@ The reordering strategy for different MAVLink versions is given below.
 MAVLink adds one extra CRC to the message checksum that allows a receiver to detect changes in [message specifications](../messages/README.md) that
 might make the over-the-wire format incompatible: new/removed fields, or changes to field name, data type, order, or array length.
 
-> **Tip** The message helper receiver function [mavlink_parse_char()](../getting_started/use_libraries.md#receiving) 
+> **Tip** The C message helper receiver function [mavlink_parse_char()](../mavgen_c/README.md#receiving) 
   will give a status `MAVLINK_FRAMING_BAD_CRC` during decoding if the message specification is incompatible.
 
 
