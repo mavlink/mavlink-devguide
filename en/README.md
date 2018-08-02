@@ -11,7 +11,7 @@ Messages are [defined within XML files](messages/README.md).
 Each XML file defines the message set supported by a particular MAVLink system, also referred to as a "dialect". 
 The reference message set that is implemented by *most* ground control stations and autopilots is defined in [common.xml](messages/common.md) (most dialects *build on top of* this definition).
 
-The [MAVLink toolchain](https://github.com/mavlink/mavlink/) uses the XML message definitions to [generate](getting_started/generate_source.md) MAVLink libraries for each of the [supported programming languages](#supported_languages).
+The [MAVLink toolchain](https://github.com/mavlink/mavlink/) uses the XML message definitions to [generate](getting_started/generate_libraries.md) MAVLink libraries for each of the [supported programming languages](#supported_languages).
 Drones, ground control stations, and other MAVLink systems use the generated libraries to communicate.
 These are typically MIT-licensed, and can therefore be *used* without limits in any closed-source application without publishing the source code of the closed-source application.
 
@@ -56,14 +56,13 @@ Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y 
 
 
 
-## Prebuilt MAVLink Libraries {#prebuilt_libraries}
+## Prebuilt MAVLink C Libraries {#prebuilt_libraries}
 
 *C* MAVLink Source Files (only) are auto-generated for the latest versions of all message [specifications/dialects](messages/README.md) (for both MAVLink 1 and 2):
 * [c_library_v2](https://github.com/mavlink/c_library_v2) (MAVLink 2)
 * [c_library_v1](https://github.com/mavlink/c_library_v1) (MAVLink 1)
 
-
-[Using Generated Source Files](getting_started/use_source.md) explains how to use these libraries.
+[Using C Libraries](mavgen_c/README.md) explains how to use these libraries.
 
 
 ## Forums and Chat {#support}
