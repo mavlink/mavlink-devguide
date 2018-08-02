@@ -7,9 +7,9 @@ A non-exhaustive list of some users/contributors of this project is given below.
 
 The following autopilots are known to support MAVLink and are actively being developed (last release less than a year ago).
 
-* [PX4](http://px4.io/) (creator of the protocol)
-* [ArduPilot](http://ardupilot.org/) (key contributor to the protocol)
-* [AutoQuad 6 AutoPilot](http://autoquad.org) (contributor)
+* [PX4](http://px4.io/)
+* [ArduPilot](http://ardupilot.org/)
+* [AutoQuad 6 AutoPilot](http://autoquad.org)
 * [iNAV](https://github.com/iNavFlight/inav/wiki)
 * [SmartAP Autopilot](http://www.sky-drones.com/)
 
