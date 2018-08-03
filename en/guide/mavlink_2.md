@@ -87,11 +87,10 @@ This allows for new fields to be added to a message without breaking binary comp
 
 The rules for extensions messages are:
 
-* Extension fields are not sent in *MAVLink 1* messages. 
+* Extension fields are not sent when a message is encoded using the *MAVLink 1* protocol. 
 * If received by an implementation that doesn't have the extensions fields then the fields will not be seen.
 * If sent by an implementation that doesn't have the extensions fields then the recipient will see zero values for the extensions fields.
-* Extension fields are [not reordered](../guide/serialization.md#mavlink-2-field-reordering) when messages are serialized 
-  (this is what allows new extension fields to be added without breaking binary compatibility).
+* Extension fields are [not reordered](../guide/serialization.md#field_reordering) when messages are serialized.
 
 For example the fields after the `<extensions>` line below are extension fields:
 

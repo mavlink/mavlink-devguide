@@ -100,14 +100,14 @@ so the meaning, order and size of message fields in the over-the-wire must be un
 MAVLink reorders the fields in the XML message definition for over-the-wire transmission (in the *payload* part of the frame). 
 The reordering strategy for different MAVLink versions is given below.
 
-MAVLink adds one extra CRC to the message checksum that allows a receiver to detect changes in [message specifications](../messages/README.md) that
+MAVLink adds one extra CRC (`CRC_EXTRA`) to the message checksum that allows a receiver to detect changes in [message specifications](../messages/README.md) that
 might make the over-the-wire format incompatible: new/removed fields, or changes to field name, data type, order, or array length.
 
-> **Tip** The message helper receiver function [mavlink_parse_char()](../getting_started/use_source.md#receiving) 
+> **Tip** The C library's message helper receiver function [mavlink_parse_char()](../getting_started/use_source.md#receiving) 
   will give a status `MAVLINK_FRAMING_BAD_CRC` during decoding if the message specification is incompatible.
 
 
-### MAVLink 1 Field Reordering
+### Field Reordering {#field_reordering}
 
 The reordering happens as follows:
 
@@ -115,7 +115,11 @@ The reordering happens as follows:
 * If two fields have the same length, their order is preserved as it was present before the data field size ordering
 * Arrays are handled based on the data type they use, not based on the total array size
 * The over-the-air order is the same as for the `struct` and thus represents the reordered fields
-* The CRC field is calculated AFTER the reordering, to ensure that a mistake during field reordering will be caught by a faulty CRC. The provided Python, C and C# reference implementations are tested to have the correct field reordering, this is only a concern for custom implementations. 
+* The `CRC_EXTRA` field is calculated *after* the reordering, to ensure that a mistake during field reordering will be caught by a faulty CRC. The provided Python, C and C# reference implementations are tested to have the correct field reordering, this is only a concern for custom implementations. 
+
+The only exception to the above reordering is for [MAVLink 2 extension fields](../guide/mavlink_2.md#message_extensions).
+Extension fields are sent in XML-declaration order and are not included in the [CRC_EXTRA](#crc_extra) calculation.
+This allows new extension fields to be added without breaking binary compatibility.
 
 > **Warning** This ordering is unique and can be easily implemented in a protocol generator by using a stable sorting algorithm. 
   The alternative to using sorting would be either to use inefficient alignment, 
@@ -123,29 +127,19 @@ The reordering happens as follows:
   or to have function calls in the order of the variable size instead of the application context. 
   This would lead to very confusing function signatures of serialization functions. 
 
-
-### MAVLink 2 Field Reordering
-
-For messages with ids in the MAVLink 2 range (id >255), all fields are ordered in the same way as MAVLink 1 above.
-
-For messages with ids in the original MAVLink 1 message set (id < 256)
-- MAVLink 1 ("base") fields are ordered in the same way as the MAVLink 1 protocol. 
-- [MAVLink 2 extension fields](../guide/mavlink_2.md#message_extensions) are ordered in the same way as the source XML. 
-  This allows new new fields to be added without breaking binary compatibility.
-
 <!-- FYI: Field ordering is in pymavlink/generator/mavparse.py - see https://github.com/mavlink/mavlink-devguide/pull/27#issuecomment-349215965 for info -->
 
 
-### CRC_EXTRA Calculation
+### CRC_EXTRA Calculation {#crc_extra}
 
-The `crc_extra` CRC is required to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message.
+The `CRC_EXTRA` CRC is required to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message.
 
 When the MAVLink code generator runs, it takes a checksum of the XML structure for each message and creates an array define `MAVLINK_MESSAGE_CRCS`.
 This is used to initialise the `mavlink_message_crcs[]` array in the C/C++ implementation, and is similarly used in the Python (or any other, such as the C# and JavaScript) implementation. 
 
-When the sender calculates the checksum for a message it adds the `crc_extra` byte onto the end of the data that the checksum is calculated over.
-The recipient calculates a checksum for the received message and adds its own `crc_extra` for the particular message id.
-If the `crc_extra` for the sender and receiver are different the checksums will not match.
+When the sender calculates the checksum for a message it adds the `CRC_EXTRA` byte onto the end of the data that the checksum is calculated over.
+The recipient calculates a checksum for the received message and adds its own `CRC_EXTRA` for the particular message id.
+If the `CRC_EXTRA` for the sender and receiver are different the checksums will not match.
 
 This approach ensures that only messages where the sender and recipient are using the same message structure will be decoded (or at least it makes a mistake much more unlikely, as for any checksum application).
 
@@ -153,7 +147,9 @@ If you are doing your own implementation of MAVLink you can get this checksum in
 you can include the generated headers and use `MAVLINK_MESSAGE_CRCS` to get the right seed for each message type,
 or you can re-implement the code that calculates the seed.
 
-As MAVLink internally reorders the message fields according to their size to prevent word / halfword alignment issues (see [Data structure alignment](http://en.wikipedia.org/wiki/Data%20structure%20alignment) (Wikipedia) for further reference), and a wrongly implemented reordering potentially can cause inconsistencies as well, the `CRC_EXTRA` is calculated based on the internal `struct` and over-the-air message layout, not in the XML order.
+As MAVLink internally reorders the message fields according to their size to prevent word / halfword alignment issues (see [Data structure alignment](http://en.wikipedia.org/wiki/Data%20structure%20alignment) (Wikipedia) for further reference), and a wrongly implemented reordering potentially can cause inconsistencies as well, the `CRC_EXTRA` is calculated based on the over-the-air message layout rather than the XML order.
+
+> **Note* As discussed in the previous section, [MAVLink 2 extension fields](../guide/mavlink_2.md#message_extensions) are not included in the `CRC_EXTRA` calculation.
 
 This is the Python code that calculates the `CRC_EXTRA` seed:
 
