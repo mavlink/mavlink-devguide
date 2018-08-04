@@ -7340,12 +7340,34 @@ These messages define the common message set, which is the reference message set
       <br/>
      </td>
     </tr>
+    <tr class="mavlink_field" id="MAV_CMD_ARM_AUTHORIZATION_REQUEST">
+     <td class="mavlink_type" valign="top">3001</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_CMD_ARM_AUTHORIZATION_REQUEST">MAV_CMD_ARM_AUTHORIZATION_REQUEST</a>
+     </td>
+     <td class="mavlink_comment">Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request. If approved the progress of command_ack message should be set with period of time that this authorization is valid in seconds or in case it was denied it should be set with one of the reasons in ARM_AUTH_DENIED_REASON.</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
+     <td class="mavlink_comment">Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle</td>
+    </tr>
+    <tr>
+     <td colspan="3">
+      <br/>
+     </td>
+    </tr>
     <tr class="mavlink_field" id="MAV_CMD_SET_GUIDED_SUBMODE_STANDARD">
      <td class="mavlink_type" valign="top">4000</td>
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_SET_GUIDED_SUBMODE_STANDARD">MAV_CMD_SET_GUIDED_SUBMODE_STANDARD</a>
      </td>
-     <td class="mavlink_comment">This command sets the submode to standard guided when vehicle is in guided mode. The vehicle holds position and altitude and the user can input the desired velocites along all three axes.</td>
+     <td class="mavlink_comment">This command sets the submode to standard guided when vehicle is in guided mode. The vehicle holds position and altitude and the user can input the desired velocities along all three axes.</td>
     </tr>
     <tr class="mavlink_field" id="MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE">
      <td class="mavlink_type" valign="top">4001</td>
@@ -7451,28 +7473,6 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
      <td class="mavlink_comment">Altitude</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr class="mavlink_field" id="MAV_CMD_ARM_AUTHORIZATION_REQUEST">
-     <td class="mavlink_type" valign="top">3001</td>
-     <td class="mavlink_name" valign="top">
-      <a href="#MAV_CMD_ARM_AUTHORIZATION_REQUEST">MAV_CMD_ARM_AUTHORIZATION_REQUEST</a>
-     </td>
-     <td class="mavlink_comment">Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request. If approved the progress of command_ack message should be set with period of time that this authorization is valid in seconds or in case it was denied it should be set with one of the reasons in ARM_AUTH_DENIED_REASON.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -11280,6 +11280,35 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
+  <h3 class="mavlink_message_name" id="RTK_BASELINE_COORDINATE_SYSTEM">
+   <a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
+  </h3>
+  <p class="description">RTK GPS baseline coordinate system, used for RTK corrections</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Value</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="RTK_BASELINE_COORDINATE_SYSTEM_ECEF">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#RTK_BASELINE_COORDINATE_SYSTEM_ECEF">RTK_BASELINE_COORDINATE_SYSTEM_ECEF</a>
+     </td>
+     <td class="mavlink_comment">Earth-centered, Earth-fixed</td>
+    </tr>
+    <tr class="mavlink_field" id="RTK_BASELINE_COORDINATE_SYSTEM_NED">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#RTK_BASELINE_COORDINATE_SYSTEM_NED">RTK_BASELINE_COORDINATE_SYSTEM_NED</a>
+     </td>
+     <td class="mavlink_comment">North, East, Down</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 class="mavlink_message_name" id="LANDING_TARGET_TYPE">
    <a href="#LANDING_TARGET_TYPE">LANDING_TARGET_TYPE</a>
   </h3>
@@ -11564,35 +11593,6 @@ These messages define the common message set, which is the reference message set
       <a href="#MAV_ARM_AUTH_DENIED_REASON_BAD_WEATHER">MAV_ARM_AUTH_DENIED_REASON_BAD_WEATHER</a>
      </td>
      <td class="mavlink_comment">Weather is not good to fly</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 class="mavlink_message_name" id="RTK_BASELINE_COORDINATE_SYSTEM">
-   <a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
-  </h3>
-  <p class="description">RTK GPS baseline coordinate system, used for RTK corrections</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr class="mavlink_field" id="RTK_BASELINE_COORDINATE_SYSTEM_ECEF">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
-      <a href="#RTK_BASELINE_COORDINATE_SYSTEM_ECEF">RTK_BASELINE_COORDINATE_SYSTEM_ECEF</a>
-     </td>
-     <td class="mavlink_comment">Earth-centered, Earth-fixed</td>
-    </tr>
-    <tr class="mavlink_field" id="RTK_BASELINE_COORDINATE_SYSTEM_NED">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
-      <a href="#RTK_BASELINE_COORDINATE_SYSTEM_NED">RTK_BASELINE_COORDINATE_SYSTEM_NED</a>
-     </td>
-     <td class="mavlink_comment">North, East, Down</td>
     </tr>
    </tbody>
   </table>
