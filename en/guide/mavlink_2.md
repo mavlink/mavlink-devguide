@@ -7,7 +7,7 @@ The key new features of *MAVLink 2* are:
 * [Packet signing](../guide/message_signing.md) (authentication)
 * [Extending existing MAVLink messages](#message_extensions)
 * [Variable length arrays](#variable_arrays) (*simplified implementation*).
-* [Non-standard fame handling (Packet Compatibility Flags)](#framing)
+* [Non-standard frame handling (Packet Compatibility Flags)](#framing)
 
 *MAVLink 2* bindings have been developed for C, C++11 and Python (see [Supported Languages](../README.md#supported_languages)).
 
@@ -90,7 +90,7 @@ The rules for extensions messages are:
 * Extension fields are not sent when a message is encoded using the *MAVLink 1* protocol. 
 * If received by an implementation that doesn't have the extensions fields then the fields will not be seen.
 * If sent by an implementation that doesn't have the extensions fields then the recipient will see zero values for the extensions fields.
-* Extension fields are [not reordered](../guide/serialization.md#field_reordering) when messages are serialized.
+* Extension fields are [not reordered](../guide/serialization.md#field_reordering) or included in the [CRC_EXTRA](../guide/serialization.md#crc_extra) when messages are serialized.
 
 For example the fields after the `<extensions>` line below are extension fields:
 
@@ -126,20 +126,32 @@ Authentication is covered in the topic: [Message signing](../guide/message_signi
 
 ## Packet Compatibility Flags {#framing}
 
-The MAVLink 2 [serialization format](../guide/serialization.md) includes new fields (`incompat_flags` and `compat_flags`) to indicate that a packet supports or requires some special/non-standard packet handling.
+The [MAVLink 2 serialization format](../guide/serialization.md#mavlink2_packet_format) includes new fields (`incompat_flags` and `compat_flags`) to indicate that a packet supports or requires some special/non-standard packet handling.
 
-> **Tip** The flags are primarily provided to allow for backwards compatible evolution of the protocol. 
-  They allow older MAVLink implementations to process packets with compatible features, while rejecting packets with incompatible features.
+The flags are primarily provided to allow for backwards compatible evolution of the protocol. 
+Older MAVLink implementations can process packets with compatible features, while rejecting packets with incompatible features.
+ 
+
+### Incompatibility Flags {#incompat_flags}
+
+Incompatibility flags are used to indicate features that a MAVLink library must support in order to be able to handle the packet.
+This includes any feature that affects the packet format/ordering.
+
+> **Note** A MAVLink implementation **must discard** a packet if it does not understand any flag in the `incompat_flags` field.
+
+Supported incompatibility flags include (at time of writing) :
+
+Flag | Feature 
+--- | ---
+`MAVLINK_IFLAG_SIGNED` | The packet is [signed](../guide/message_signing.md) (a signature has been appended to the packet).
+
+
+### Compatibility Flags {#compat_flags}
+
+Compatibility flags are used to indicate features won't prevent a MAVLink library from handling the packet (even if the feature is not understood).
+This might include, for example, a flag to indicate that a packet should be treated as "high priority" 
+(such a messages could be handled by any MAVLink implementation because packet format and structure is not affected).
+
+A MAVLink implementation can safely ignore flags it doesn't understand in the `compat_flags` field.
   
-The two fields are for specifying compatible and incompatible flags/features:
-
-- An incompatible feature is one that a MAVLink system must enable in order to be able to handle the packet.
-  For example, the `MAVLINK_IFLAG_SIGNED` is used to indicate that a signature has been appended to the packet (an implementation that doesn't understand this flag should reject the packet).
   
-  **A MAVLink implementation must discard a packet if it does not understand any flag in the `incompat_flags` field.**
-  
-- A compatible feature is one that won't prevent MAVLink from handling the packet, even if the feature is not understood.
-  For example, a flag indicating that a packet should be treated as "high priority" can be handled by any MAVLink implementation, as the packet format and structure is not affected.
-
-  **A MAVLink implementation can safely ignore flags it doesn't understand in the `compat_flags` field.**
-
