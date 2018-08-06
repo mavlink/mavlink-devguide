@@ -2786,7 +2786,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_DO_ORBIT">MAV_CMD_DO_ORBIT</a>
      </td>
-     <td class="mavlink_comment">WIP: Start orbiting on the circumference of a circle defined by the parameters. Setting any value NaN results in using defaults.</td>
+     <td class="mavlink_comment">Start orbiting on the circumference of a circle defined by the parameters. Setting any value NaN results in using defaults.</td>
     </tr>
     <tr>
      <td>
@@ -2808,7 +2808,7 @@ These messages define the common message set, which is the reference message set
      <td>
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Yaw behaviour of the vehicle. 0: vehicle front points to the center (default). 1: Hold last heading. 2: Leave yaw uncontrolled.</td>
+     <td class="mavlink_comment">Yaw behavior of the vehicle. 0: vehicle front points to the center (default). 1: Hold last heading. 2: Leave yaw uncontrolled.</td>
     </tr>
     <tr>
      <td>
@@ -6576,7 +6576,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_REQUEST_STORAGE_INFORMATION">MAV_CMD_REQUEST_STORAGE_INFORMATION</a>
      </td>
-     <td class="mavlink_comment">WIP: Request storage information (STORAGE_INFORMATION). Use the command's target_component to target a specific component's storage.</td>
+     <td class="mavlink_comment">Request storage information (STORAGE_INFORMATION). Use the command's target_component to target a specific component's storage.</td>
     </tr>
     <tr>
      <td>
@@ -6610,7 +6610,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_STORAGE_FORMAT">MAV_CMD_STORAGE_FORMAT</a>
      </td>
-     <td class="mavlink_comment">WIP: Format a storage medium. Once format is complete, a STORAGE_INFORMATION message is sent. Use the command's target_component to target a specific component's storage.</td>
+     <td class="mavlink_comment">Format a storage medium. Once format is complete, a STORAGE_INFORMATION message is sent. Use the command's target_component to target a specific component's storage.</td>
     </tr>
     <tr>
      <td>
@@ -6672,7 +6672,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_REQUEST_FLIGHT_INFORMATION">MAV_CMD_REQUEST_FLIGHT_INFORMATION</a>
      </td>
-     <td class="mavlink_comment">WIP: Request flight information (FLIGHT_INFORMATION)</td>
+     <td class="mavlink_comment">Request flight information (FLIGHT_INFORMATION)</td>
     </tr>
     <tr>
      <td>
@@ -6836,7 +6836,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE">MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE</a>
      </td>
-     <td class="mavlink_comment">WIP: Re-request a CAMERA_IMAGE_CAPTURE packet. Use NAN for reserved values.</td>
+     <td class="mavlink_comment">Re-request a CAMERA_IMAGE_CAPTURE packet. Use NAN for reserved values.</td>
     </tr>
     <tr>
      <td>
@@ -6960,7 +6960,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_VIDEO_START_STREAMING">MAV_CMD_VIDEO_START_STREAMING</a>
      </td>
-     <td class="mavlink_comment">WIP: Start video streaming</td>
+     <td class="mavlink_comment">Start video streaming</td>
     </tr>
     <tr>
      <td>
@@ -6988,7 +6988,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_VIDEO_STOP_STREAMING">MAV_CMD_VIDEO_STOP_STREAMING</a>
      </td>
-     <td class="mavlink_comment">WIP: Stop the current video streaming</td>
+     <td class="mavlink_comment">Stop the current video streaming</td>
     </tr>
     <tr>
      <td>
@@ -7016,7 +7016,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION">MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION</a>
      </td>
-     <td class="mavlink_comment">WIP: Request video stream information (VIDEO_STREAM_INFORMATION)</td>
+     <td class="mavlink_comment">Request video stream information (VIDEO_STREAM_INFORMATION)</td>
     </tr>
     <tr>
      <td>
@@ -7340,12 +7340,34 @@ These messages define the common message set, which is the reference message set
       <br/>
      </td>
     </tr>
+    <tr class="mavlink_field" id="MAV_CMD_ARM_AUTHORIZATION_REQUEST">
+     <td class="mavlink_type" valign="top">3001</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#MAV_CMD_ARM_AUTHORIZATION_REQUEST">MAV_CMD_ARM_AUTHORIZATION_REQUEST</a>
+     </td>
+     <td class="mavlink_comment">Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request. If approved the progress of command_ack message should be set with period of time that this authorization is valid in seconds or in case it was denied it should be set with one of the reasons in ARM_AUTH_DENIED_REASON.</td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+     </td>
+     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
+     <td class="mavlink_comment">Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle</td>
+    </tr>
+    <tr>
+     <td colspan="3">
+      <br/>
+     </td>
+    </tr>
     <tr class="mavlink_field" id="MAV_CMD_SET_GUIDED_SUBMODE_STANDARD">
      <td class="mavlink_type" valign="top">4000</td>
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_SET_GUIDED_SUBMODE_STANDARD">MAV_CMD_SET_GUIDED_SUBMODE_STANDARD</a>
      </td>
-     <td class="mavlink_comment">This command sets the submode to standard guided when vehicle is in guided mode. The vehicle holds position and altitude and the user can input the desired velocites along all three axes.</td>
+     <td class="mavlink_comment">This command sets the submode to standard guided when vehicle is in guided mode. The vehicle holds position and altitude and the user can input the desired velocities along all three axes.</td>
     </tr>
     <tr class="mavlink_field" id="MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE">
      <td class="mavlink_type" valign="top">4001</td>
@@ -7404,7 +7426,7 @@ These messages define the common message set, which is the reference message set
      <td class="mavlink_name" valign="top">
       <a href="#MAV_CMD_CONDITION_GATE">MAV_CMD_CONDITION_GATE</a>
      </td>
-     <td class="mavlink_comment">WIP: Delay mission state machine until gate has been reached.</td>
+     <td class="mavlink_comment">Delay mission state machine until gate has been reached.</td>
     </tr>
     <tr>
      <td>
@@ -7451,28 +7473,6 @@ These messages define the common message set, which is the reference message set
      </td>
      <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
      <td class="mavlink_comment">Altitude</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr class="mavlink_field" id="MAV_CMD_ARM_AUTHORIZATION_REQUEST">
-     <td class="mavlink_type" valign="top">3001</td>
-     <td class="mavlink_name" valign="top">
-      <a href="#MAV_CMD_ARM_AUTHORIZATION_REQUEST">MAV_CMD_ARM_AUTHORIZATION_REQUEST</a>
-     </td>
-     <td class="mavlink_comment">Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request. If approved the progress of command_ack message should be set with period of time that this authorization is valid in seconds or in case it was denied it should be set with one of the reasons in ARM_AUTH_DENIED_REASON.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -11280,6 +11280,35 @@ These messages define the common message set, which is the reference message set
     </tr>
    </tbody>
   </table>
+  <h3 class="mavlink_message_name" id="RTK_BASELINE_COORDINATE_SYSTEM">
+   <a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
+  </h3>
+  <p class="description">RTK GPS baseline coordinate system, used for RTK corrections</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th class="mavlink_field_header">Value</th>
+     <th class="mavlink_field_header">Field Name</th>
+     <th class="mavlink_field_header">Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="mavlink_field" id="RTK_BASELINE_COORDINATE_SYSTEM_ECEF">
+     <td class="mavlink_type" valign="top">0</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#RTK_BASELINE_COORDINATE_SYSTEM_ECEF">RTK_BASELINE_COORDINATE_SYSTEM_ECEF</a>
+     </td>
+     <td class="mavlink_comment">Earth-centered, Earth-fixed</td>
+    </tr>
+    <tr class="mavlink_field" id="RTK_BASELINE_COORDINATE_SYSTEM_NED">
+     <td class="mavlink_type" valign="top">1</td>
+     <td class="mavlink_name" valign="top">
+      <a href="#RTK_BASELINE_COORDINATE_SYSTEM_NED">RTK_BASELINE_COORDINATE_SYSTEM_NED</a>
+     </td>
+     <td class="mavlink_comment">North, East, Down</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 class="mavlink_message_name" id="LANDING_TARGET_TYPE">
    <a href="#LANDING_TARGET_TYPE">LANDING_TARGET_TYPE</a>
   </h3>
@@ -11564,35 +11593,6 @@ These messages define the common message set, which is the reference message set
       <a href="#MAV_ARM_AUTH_DENIED_REASON_BAD_WEATHER">MAV_ARM_AUTH_DENIED_REASON_BAD_WEATHER</a>
      </td>
      <td class="mavlink_comment">Weather is not good to fly</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 class="mavlink_message_name" id="RTK_BASELINE_COORDINATE_SYSTEM">
-   <a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
-  </h3>
-  <p class="description">RTK GPS baseline coordinate system, used for RTK corrections</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr class="mavlink_field" id="RTK_BASELINE_COORDINATE_SYSTEM_ECEF">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
-      <a href="#RTK_BASELINE_COORDINATE_SYSTEM_ECEF">RTK_BASELINE_COORDINATE_SYSTEM_ECEF</a>
-     </td>
-     <td class="mavlink_comment">Earth-centered, Earth-fixed</td>
-    </tr>
-    <tr class="mavlink_field" id="RTK_BASELINE_COORDINATE_SYSTEM_NED">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
-      <a href="#RTK_BASELINE_COORDINATE_SYSTEM_NED">RTK_BASELINE_COORDINATE_SYSTEM_NED</a>
-     </td>
-     <td class="mavlink_comment">North, East, Down</td>
     </tr>
    </tbody>
   </table>
@@ -14926,8 +14926,7 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">
-  </p>
+  <p class="description">Request a data stream.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14979,8 +14978,7 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">
-  </p>
+  <p class="description">Data stream status information.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17166,14 +17164,14 @@ These messages define the common message set, which is the reference message set
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flow_x</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_units" valign="top">dpixels</td>
-     <td class="mavlink_comment">Flow in pixels in x-sensor direction</td>
+     <td class="mavlink_units" valign="top">dpix</td>
+     <td class="mavlink_comment">Flow in x-sensor direction</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flow_y</td>
      <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_units" valign="top">dpixels</td>
-     <td class="mavlink_comment">Flow in pixels in y-sensor direction</td>
+     <td class="mavlink_units" valign="top">dpix</td>
+     <td class="mavlink_comment">Flow in y-sensor direction</td>
     </tr>
     <tr class="mavlink_field">
      <td class="mavlink_name" valign="top">flow_comp_m_x</td>
@@ -21557,7 +21555,7 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">WIP: Message appropriate for high latency connections like Iridium (version 2)</p>
+  <p class="description">Message appropriate for high latency connections like Iridium (version 2)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22490,8 +22488,7 @@ These messages define the common message set, which is the reference message set
    </a>
    )
   </h3>
-  <p class="description">
-  </p>
+  <p class="description">To debug something using a named 3D vector.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23010,7 +23007,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>WIP: Information about a storage medium.</p>
+   </strong>Information about a storage medium.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23239,7 +23236,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>WIP: Information about flight since last arming</p>
+   </strong>Information about flight since last arming.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23496,7 +23493,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>WIP: Information about video stream</p>
+   </strong>Information about video stream</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23568,7 +23565,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>WIP: Message that sets video stream settings</p>
+   </strong>Message that sets video stream settings</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23677,7 +23674,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>WIP: Version and capability of protocol version. This message is the response to REQUEST_PROTOCOL_VERSION and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to REQUEST_PROTOCOL_VERSION to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.</p>
+   </strong>Version and capability of protocol version. This message is the response to REQUEST_PROTOCOL_VERSION and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to REQUEST_PROTOCOL_VERSION to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24400,7 +24397,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>WORK IN PROGRESS! DO NOT DEPLOY! Describe a trajectory using an array of up-to 5 waypoints in the local frame.</p>
+   </strong>Describe a trajectory using an array of up-to 5 waypoints in the local frame.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24500,7 +24497,7 @@ These messages define the common message set, which is the reference message set
   <p class="description">
    <strong>
     (MAVLink 2)
-   </strong>WORK IN PROGRESS! DO NOT DEPLOY! Describe a trajectory using an array of up-to 5 bezier points in the local frame.</p>
+   </strong>Describe a trajectory using an array of up-to 5 bezier points in the local frame.</p>
   <table class="sortable">
    <thead>
     <tr>

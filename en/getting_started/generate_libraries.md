@@ -2,27 +2,31 @@
 
 Language-specific MAVLink libraries can be created from [XML Message Definitions](../messages/README.md) using *code generator* tools.
 
-MAVLink code generators exist for a number of [supported languages](../README.md#supported_languages) and MAVLink versions, provided by both this project and the broader community.
+The available code generators and supported output languages for each version of the MAVLink protocol are listed in [Supported Languages](../README.md#supported_languages) (these include C, C#, Java, Python etc).
 
-This topic explains how to use the two Python-based code generators provided by the MAVLink project: [mavgen](#mavgen) (command line) and [mavgenerate](#mavgenerate) (GUI).
-
-> **Tip** Developers who are targetting the C programming language and the common set of messages (only) can use the [prebuilt libraries](../README.md#prebuilt_libraries) rather than generating them from XML.
+This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line) (other code generators are documented by their associated projects).
 
 
-## Preconditions
+## Pre-requisites
 
-* The tools must already have been set up as described in [Install MAVLink](../getting_started/installation.md) (in particular *Tkinter* must be installed to use the GUI tool).
-* If you're building a [dialect](../messages/README.md#dialects) file that depends on other XML files you must place your dialect in the same folder. Since most MAVLink dialects depend on the [common.xml](../messages/common.md) message set, this means that most dialect files will be placed in [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0).
+1. You must already have [Installed MAVLink](../getting_started/installation.md) (including both the tools below and [XML Message Definitions](../messages/README.md)).
+1. If you are generating messages for a [custom dialect](../messages/README.md#dialects), copy the file(s) into the directory [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0).
+   > **Note** *mavgen* can handle dialects that have relative paths for included XML files (e.g typically [common.xml](../messages/common.md)), but other generators may not. 
+     We recommend putting custom dialects in the same folder as the ones that come with the *mavlink/mavlink* repository.
 
-## MAVLink Generator Tool (GUI) {#mavgenerate}
+## Mavenerate (GUI) {#mavgenerate}
 
-*MAVLink Generator* (**mavgenerate.py**) is a MAVLink code generation tool GUI written in Python. It can be run from anywhere using Python's `-m` argument:
+**mavgenerate.py** is GUI code generator for MAVLink, written in Python.
+
+> **Note** *Mavgenerate* provides a GUI front end to the [mavgen](#mavgen) command line code generator, and supports the same [options](#mavgen_options).
+
+The GUI can be launched from anywhere using Python's `-m` argument:
 
 ```sh
 python -m mavgenerate
 ```
 
-![MAVLink Generator UI](../../assets/mavgen/mavlink_generator.png)
+![mavgenerate UI](../../assets/mavgen/mavlink_generator.png)
 
 Generator Steps:
 1. Choose the target XML file (typically in [mavlink/message_definitions/1.0](https://github.com/mavlink/mavlink/tree/master/message_definitions/1.0)).
@@ -38,17 +42,21 @@ Generator Steps:
 
 ## Mavgen (Command Line) {#mavgen}
 
-**mavgen.py** is a command-line interface for generating a language-specific MAVLink library. 
+**mavgen.py** is a command-line tool for generating MAVLink libraries for different programming languages. 
 After the `mavlink` directory has been added to the `PYTHONPATH`, it can be run by executing from the command line. 
 
 > **Tip** This is the backend used by [mavgenerate](#mavgenerate). The documentation below explains all the options for both tools. 
 
-For example, to generate *MAVLink 2* C libraries for a dialect named **your_custom_dialect.xml**:
+For example, to generate *MAVLink 2* C libraries for a dialect named **your_custom_dialect.xml**.
 ```sh
 python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
 ```
 
-The full syntax can be output by running *mavgen* with the `-h` flag (reproduced below):
+> **Note** The syntax for for generating Python modules is the same, except that the `--output` specifies a *filename* rather than a directory.
+  <!-- https://github.com/ArduPilot/pymavlink/issues/203 -->
+
+<span id="mavgen_options"></span>
+The full syntax and options can be output by running *mavgen* with the `-h` flag (reproduced below):
 ```
 usage: mavgen.py [-h] [-o OUTPUT]
                  [--lang {C,CS,JavaScript,Python,WLua,ObjC,Swift,Java,C++11}]
