@@ -17,6 +17,7 @@ uint8_t payload[max 255];    ///< A maximum of 255 payload bytes
 uint16_t checksum;           ///< X.25 CRC
 ```
 
+
 ## MAVLink 2 Packet Format
 
 Below is the over-the-wire format for a MAVLink 2 packet. The in-memory representation might differ.
@@ -32,16 +33,20 @@ uint8_t compid;             ///< ID of the message sender component
 uint8_t msgid 0:7;          ///< first 8 bits of the ID of the message
 uint8_t msgid 8:15;         ///< middle 8 bits of the ID of the message
 uint8_t msgid 16:23;        ///< last 8 bits of the ID of the message
-uint8_t target_sysid;       ///< Optional field for point-to-point messages, used for payload else
-uint8_t target_compid;      ///< Optional field for point-to-point messages, used for payload else
-uint8_t payload[max 253];   ///< A maximum of 253 payload bytes
+uint8_t payload[max 255];   ///< A maximum of 255 payload bytes
 uint16_t checksum;          ///< X.25 CRC
-uint8_t signature[13];      ///< Signature which allows ensuring that the link is tamper-proof
 ```
+```C
+uint8_t signature[13];      ///< Signature which allows ensuring that the link is tamper-proof (optional)
+```
+
 
 ## Serialization
 
-The over-the-wire format of MAVLink is optimized for resource-constrained systems and hence the field order is not the same as in the XML specification. The over-the-wire generator sorts all fields of the message according to size, with the largest fields \(uint64\_t\) first, then down to smaller fields. The sorting is done using a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), which ensures that fields that do not need to be reordered stay in the same order. This prevents alignment issues on the encoding / decoding systems and allows for very efficient packing / unpacking.
+The over-the-wire format of MAVLink is optimized for resource-constrained systems and hence the field order is not the same as in the XML specification. The over-the-wire generator sorts all fields of the message according to size, with the largest fields (`uint64_t`) first, then down to smaller fields. The sorting is done using a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), which ensures that any fields that do not need to be reordered stay in the same relative order. This prevents alignment issues on the encoding / decoding systems and allows for very efficient packing / unpacking.
+
+For more information and specific exceptions see [Serialization](../guide/serialization.md).
+
 
 ## Multicast Streams vs. Guaranteed Delivery
 
