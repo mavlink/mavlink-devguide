@@ -42,6 +42,38 @@
                 }
             ]
         },
+        "theme-dronecode": {
+
+                 "menu": [
+
+                       {
+                         "url": "https://mavlink.io/en/messages/common.html",
+                         "text": "Messages",
+                         "text_small" : "Messages"
+                       },
+                       {
+                         "url": "https://mavlink.io/en/about/faq.html",
+                         "text": "FAQ",
+                         "text_small" : "FAQ"
+                       },
+                       {
+                         "url": "https://mavlink.io/en/about/ecosystem.html",
+                         "text": "Implementations",
+                         "text_small" : "Impl."
+                       },
+                       {
+                         "url": "https://mavlink.io/en/examples/",
+                         "text": "Examples",
+                         "text_small" : "Examples"
+                       },
+                       {
+                         "url": "https://mavlink.io/en/#support",
+                         "text": "Support",
+                         "text_small" : "Help"
+                       }
+                 ]
+
+             },
         "richquotes":
         {
             "tip": {
