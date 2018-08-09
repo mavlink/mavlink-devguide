@@ -12,7 +12,6 @@
         "-anchors",
         "page-toc-button",
         "mermaid",
-        "-mermaid-2",
         "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git",
         "language-picker",
         "custom-favicon",
@@ -71,7 +70,13 @@
                          "text": "Support",
                          "text_small" : "Help"
                        }
-                 ]
+                 ],
+                 
+                 "logo": {
+                     "logo_large": "../assets/site/logo_dronecode_mavlink.png",
+                     "logo_small": "../assets/site/logo_dronecode_mavlink.png",
+                     "url": "https://www.dronecode.org/"
+                 }
 
              },
         "richquotes":
