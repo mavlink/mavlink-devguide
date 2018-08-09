@@ -18,7 +18,8 @@
         "custom-favicon",
         "-stub-out-blocks@git+https://github.com/hamishwillee/gitbook-plugin-stub-out-blocks.git",
         "validate-links",
-        "theme-dronecode@git+https://github.com/dronecode/theme-dronecode.git"
+        "theme-dronecode@git+https://github.com/dronecode/theme-dronecode.git",
+        "html-minifier"
     ],
     "pluginsConfig": {
         "theme-api": {
@@ -73,6 +74,11 @@
                 }
             ]
         },
-        "favicon": "favicon.ico"
+        "favicon": "favicon.ico",
+        
+        "html-minifier": {
+          "removeEmptyElements": false
+        }
+        
     }
 }
