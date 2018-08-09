@@ -46,27 +46,27 @@
                  "menu": [
 
                        {
-                         "url": "/en/messages/common.html",
+                         "url": "https://mavlink.io/en/messages/common.html",
                          "text": "Messages",
                          "text_small" : "Messages"
                        },
                        {
-                         "url": "/en/about/faq.html",
+                         "url": "https://mavlink.io/en/about/faq.html",
                          "text": "FAQ",
                          "text_small" : "FAQ"
                        },
                        {
-                         "url": "/en/about/implementations.html",
+                         "url": "https://mavlink.io/en/about/implementations.html",
                          "text": "Implementations",
                          "text_small" : "Implementations"
                        },
                        {
-                         "url": "/en/examples/",
+                         "url": "https://mavlink.io/en/examples/",
                          "text": "Examples",
                          "text_small" : "Examples"
                        },
                        {
-                         "url": "/en/about/support.html",
+                         "url": "https://mavlink.io/en/about/support.html",
                          "text": "Support",
                          "text_small" : "Help"
                        }
