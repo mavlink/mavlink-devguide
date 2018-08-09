@@ -73,6 +73,7 @@ The [Support](about/support.md) topic contains information about the [mailing li
 
 The [Contributing Guide](contributing/contributing.md) explains the contribution model and the main areas where you can help.
 
+
 ## License
 
 The message definition XML files and the generated [C-language version of MAVLink](#prebuilt_libraries) (a header-only library) are made available under the MIT-licence. 
@@ -81,3 +82,11 @@ MAVLink can therefore be *used* in any closed-source application without publish
 The [MAVLink generator toolchain](https://github.com/mavlink/mavlink/) is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3).
 
 This documentation is licensed under *CC BY 4.0* ([Human readable overview](https://creativecommons.org/licenses/by/4.0/) | [LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE)).
+
+
+## Governance
+
+The MAVLink protocol is hosted under the governance of the [Dronecode Project](https://www.dronecode.org/).
+
+<a href="https://www.dronecode.org/"><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" /></a>
+<a href="https://www.linuxfoundation.org/projects"><img src="../assets/site/logo_linux_foundation.png" alt="Linux Foundation Logo"/></a>
