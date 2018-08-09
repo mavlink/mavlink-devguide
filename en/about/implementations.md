@@ -1,6 +1,6 @@
-# MAVLink Ecosystem
+# MAVLink Implementations
 
-Many autopilots, groundstations, integration APIs, projects and other software packages use MAVLink. 
+Many autopilots, ground stations, integration APIs, projects and other software packages use MAVLink. 
 A non-exhaustive list of some users/contributors of this project is given below.
 
 ## Autopilots
