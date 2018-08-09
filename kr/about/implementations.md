@@ -35,7 +35,7 @@ These wrappers typically provide implementations of the main [Protocols](../prot
 * [Dronecode SDK](https://sdk.dronecode.org/en/) - MAVLink API Library for the Dronecode Platform (cross platform, optimised for PX4).
 * [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) - Adds [Camera Protocol](../protocol/camera.md) interface for cameras connected to Linux computer
 * [Rosetta Drone](https://www.youtube.com/watch?v=rBqEQoVGuzQ) - MAVLink wrapper around DJI SDK (fly a DJI drone with a Mavlink-based GCS, code: https://github.com/diux-dev/rosettadrone)
-* [pymavlink](https://github.com/mavlink/pymavlink) - MAVLink python bindings
+* [pymavlink](https://github.com/ArduPilot/pymavlink) - MAVLink python bindings
 * [MAVROS](https://github.com/mavlink/mavros) - ROS to MAVLink bridge
 
 ## Research Projects
