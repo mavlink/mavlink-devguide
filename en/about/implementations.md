@@ -21,6 +21,10 @@ The following autopilots are known to support MAVLink and are actively being dev
 * [MAVProxy](http://ardupilot.github.io/MAVProxy/html/index.html)
 * [UgCS (Universal Ground Control Station)](https://www.ugcs.com/)
 * [Side Pilot](http://sidepilot.net/)
+* [JAGCS](https://github.com/MishkaRogachev/JAGCS)
+* [Flightzoomer](https://flightzoomer.com/)
+* [Inexa Control](https://www.insitu.com/information-delivery/command-and-control/icomc2)
+
 
 ## MAVLink Wrapper/Developer APIs
 
