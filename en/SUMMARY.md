@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
   * [FAQ](about/faq.md)
-  * [Ecosystem](about/ecosystem.md)
+  * [Implementations](about/implementations.md)
 * [Getting Started](getting_started/README.md)
   * [Install MAVLink](getting_started/installation.md)
   * [Generate MAVLink Libraries](getting_started/generate_libraries.md)
@@ -50,15 +50,4 @@
   * [python_array_test.xml](messages/python_array_test.md)
   * [slugs.xml](messages/slugs.md)
 * [Contributing](contributing/contributing.md)
-
-
-----
-
-## Dronecode Shortcuts
-
-* [PX4 User Guide](https://docs.px4.io/en/)
-* [PX4 Developer Guide](https://dev.px4.io/en/)
-* [QGroundControl User Guide](https://docs.qgroundcontrol.com/en/)
-* [QGroundControl Developer Guide](https://dev.qgroundcontrol.com/en/)
-* [Dronecode SDK](https://sdk.dronecode.org/en/)
-* [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/)
+* [Support](about/support.md)

@@ -116,7 +116,7 @@ so the meaning, order and size of message fields in the over-the-wire must be un
 One extra CRC ([CRC_EXTRA](#crc_extra)) is added to the message checksum that allows a receiver to detect changes in [message specifications](../messages/README.md) that
 might make the over-the-wire format incompatible: new/removed fields, or changes to field name, data type, order, or array length.
 
-> **Tip** A MAVLink library should notify a bad CRC during decoding if a message specification is incompatible (e.g. the C library [mavlink_parse_char()](../getting_started/use_source.md#receiving) gives a status `MAVLINK_FRAMING_BAD_CRC`).
+> **Tip** A MAVLink library should notify a bad CRC during decoding if a message specification is incompatible (e.g. the C library [mavlink_parse_char()](../getting_started/use_libraries.md#receiving) gives a status `MAVLINK_FRAMING_BAD_CRC`).
 
 
 ### Field Reordering {#field_reordering}

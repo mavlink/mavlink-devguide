@@ -1,6 +1,6 @@
-# MAVLink Ecosystem
+# MAVLink Implementations
 
-Many autopilots, groundstations, integration APIs, projects and other software packages use MAVLink. 
+Many autopilots, ground stations, integration APIs, projects and other software packages use MAVLink. 
 A non-exhaustive list of some users/contributors of this project is given below.
 
 ## Autopilots
@@ -16,16 +16,15 @@ The following autopilots are known to support MAVLink and are actively being dev
 ## Ground Stations
 
 * [QGroundControl](http://qgroundcontrol.com/) (original reference implementation)
-* [AutoQuad GCS](http://autoquad.org/software-downloads/?category=2) (QGroundControl w/ AutoQuad branding and modifications)
-* [SmartAP GCS](http://sky-drones.com/smartap-gcs) (QGroundControl w/ SmartAP branding and modifications)
-* [Yuneec Datapilot](http://us.yuneec.com/comm-en-datapilot) (QGroundControl w/ Yuneec branding and modifications)
-* [Sentera Groundstation](https://sentera.com/phx-drone/) (QGroundControl w/ Sentera branding and modifications)
-* [WingtraPilot](https://wingtra.com/software/) (QGroundControl w/ Wingtra branding and modifications)
-* [APM Planner 2](http://ardupilot.org/planner2/index.html) (QGroundControl w/ APM branding and modifications)
+  * Branded/modified variants include: [AutoQuad GCS](http://autoquad.org/software-downloads/?category=2), [SmartAP GCS](http://sky-drones.com/smartap-gcs), [Yuneec Datapilot](http://us.yuneec.com/comm-en-datapilot), [Sentera Groundstation](https://sentera.com/phx-drone/), [WingtraPilot](https://wingtra.com/software/), [APM Planner 2](http://ardupilot.org/planner2/index.html).
 * [Mission Planner](http://ardupilot.org/planner/)
 * [MAVProxy](http://ardupilot.github.io/MAVProxy/html/index.html)
 * [UgCS (Universal Ground Control Station)](https://www.ugcs.com/)
 * [Side Pilot](http://sidepilot.net/)
+* [JAGCS](https://github.com/MishkaRogachev/JAGCS)
+* [Flightzoomer](https://flightzoomer.com/)
+* [Inexa Control](https://www.insitu.com/information-delivery/command-and-control/icomc2)
+
 
 ## MAVLink Wrapper/Developer APIs
 
@@ -37,6 +36,7 @@ These wrappers typically provide implementations of the main [Protocols](../prot
 * [Rosetta Drone](https://www.youtube.com/watch?v=rBqEQoVGuzQ) - MAVLink wrapper around DJI SDK (fly a DJI drone with a Mavlink-based GCS, code: https://github.com/diux-dev/rosettadrone)
 * [pymavlink](https://github.com/mavlink/pymavlink) - MAVLink python bindings
 * [MAVROS](https://github.com/mavlink/mavros) - ROS to MAVLink bridge
+* [DroneKit](http://dronekit.io/) - MAVLink API Library (Python, Android) and Log analysis tool (optimised for ArduPilot).
 
 ## Research Projects
 

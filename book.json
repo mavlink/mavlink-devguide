@@ -12,7 +12,6 @@
         "-anchors",
         "page-toc-button",
         "mermaid",
-        "-mermaid-2",
         "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git",
         "language-picker",
         "custom-favicon",
@@ -43,6 +42,44 @@
                 }
             ]
         },
+        "theme-dronecode": {
+
+                 "menu": [
+
+                       {
+                         "url": "https://mavlink.io/en/messages/common.html",
+                         "text": "Messages",
+                         "text_small" : "Messages"
+                       },
+                       {
+                         "url": "https://mavlink.io/en/about/faq.html",
+                         "text": "FAQ",
+                         "text_small" : "FAQ"
+                       },
+                       {
+                         "url": "https://mavlink.io/en/about/implementations.html",
+                         "text": "Implementations",
+                         "text_small" : "Implementations"
+                       },
+                       {
+                         "url": "https://mavlink.io/en/examples/",
+                         "text": "Examples",
+                         "text_small" : "Examples"
+                       },
+                       {
+                         "url": "https://mavlink.io/en/about/support.html",
+                         "text": "Support",
+                         "text_small" : "Help"
+                       }
+                 ],
+                 
+                 "logo": {
+                     "logo_large": "../assets/site/logo_mavlink_header.png",
+                     "logo_small": "../assets/site/logo_mavlink_header.png",
+                     "url": "https://mavlink.io/en/"
+                 }
+
+             },
         "richquotes":
         {
             "tip": {

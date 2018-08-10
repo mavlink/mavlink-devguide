@@ -65,19 +65,9 @@ Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y 
 [Using C Libraries](mavgen_c/README.md) explains how to use these libraries.
 
 
-## Forums and Chat {#support}
+## Support {#support}
 
-The core development team and community are active on the following mailing list:
-
-* [Mailing list](https://groups.google.com/forum/#!forum/mavlink)
-
-
-## Reporting Bugs & Issues
-
-If you have any problems using MAVLink first post them on the [support channels above](#support).
-
-If directed by the development team, issues may be raised on [Github here](https://github.com/mavlink/mavlink/issues).
-
+The [Support](about/support.md) topic contains information about the [mailing list](https://groups.google.com/forum/#!forum/mavlink), reporting bugs/issues, and joining the dev call. 
 
 ## Contributing
 
@@ -86,8 +76,20 @@ The [Contributing Guide](contributing/contributing.md) explains the contribution
 
 ## License
 
-The message definition XML files and the generated [C-language version of MAVLink](#prebuilt_libraries) (a header-only library) are made available under the MIT-licence. MAVLink can therefore be *used* in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
+The message definition XML files and the generated [C-language version of MAVLink](#prebuilt_libraries) (a header-only library) are made available under the MIT-licence. 
+MAVLink can therefore be *used* in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
 
 The [MAVLink generator toolchain](https://github.com/mavlink/mavlink/) is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3).
 
 This documentation is licensed under *CC BY 4.0* ([Human readable overview](https://creativecommons.org/licenses/by/4.0/) | [LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE)).
+
+
+## Governance
+
+The MAVLink protocol is hosted under the governance of the [Dronecode Project](https://www.dronecode.org/).
+
+<a href="https://www.dronecode.org/" style="padding:20px" ><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" width="110px"/></a>
+<a href="https://www.linuxfoundation.org/projects" style="padding:20px;"><img src="../assets/site/logo_linux_foundation.png" alt="Linux Foundation Logo" width="80px" /></a>
+<div style="padding:10px">&nbsp</div>
+
+
