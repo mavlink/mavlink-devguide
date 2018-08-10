@@ -73,9 +73,9 @@
                  ],
                  
                  "logo": {
-                     "logo_large": "../assets/site/logo_dronecode_mavlink.png",
-                     "logo_small": "../assets/site/logo_dronecode_mavlink.png",
-                     "url": "https://www.dronecode.org/"
+                     "logo_large": "../assets/site/logo_mavlink_header.png",
+                     "logo_small": "../assets/site/logo_mavlink_header.png",
+                     "url": "https://mavlink.io/en/"
                  }
 
              },
