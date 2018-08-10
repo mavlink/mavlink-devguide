@@ -88,5 +88,5 @@ This documentation is licensed under *CC BY 4.0* ([Human readable overview](http
 
 The MAVLink protocol is hosted under the governance of the [Dronecode Project](https://www.dronecode.org/).
 
-<a href="https://www.dronecode.org/"><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" /></a>
-<a href="https://www.linuxfoundation.org/projects"><img src="../assets/site/logo_linux_foundation.png" alt="Linux Foundation Logo"/></a>
+<a href="https://www.dronecode.org/"><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" width="200px"/></a>
+<a href="https://www.linuxfoundation.org/projects"><img src="../assets/site/logo_linux_foundation.png" alt="Linux Foundation Logo" width="130px" /></a>
