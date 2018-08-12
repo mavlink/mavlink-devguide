@@ -9,6 +9,12 @@
 <span id="mav2_extension_field"></span>
 > **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue.
 
+<style>
+td {
+    vertical-align:top;
+}
+</style>
+
 <html>
  <body>
   <p>
@@ -16,319 +22,319 @@
    <a href="common.md">common.xml</a>
   </p>
   <h2>MAVLink Messages</h2>
-  <h3 class="mavlink_message_name" id="ARRAY_TEST_0">ARRAY_TEST_0 (<a href="#ARRAY_TEST_0">
+  <h3 id="ARRAY_TEST_0">ARRAY_TEST_0 (<a href="#ARRAY_TEST_0">
     #150
    </a>
    )
   </h3>
-  <p class="description">Array test #0.</p>
+  <p>Array test #0.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">v1</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Stub field</td>
+    <tr>
+     <td>v1</td>
+     <td>uint8_t</td>
+     <td>Stub field</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_i8</td>
-     <td class="mavlink_type" valign="top">int8_t[4]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_i8</td>
+     <td>int8_t[4]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u8</td>
-     <td class="mavlink_type" valign="top">uint8_t[4]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u8</td>
+     <td>uint8_t[4]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u16</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u16</td>
+     <td>uint16_t[4]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u32</td>
-     <td class="mavlink_type" valign="top">uint32_t[4]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u32</td>
+     <td>uint32_t[4]</td>
+     <td>Value array</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ARRAY_TEST_1">ARRAY_TEST_1 (<a href="#ARRAY_TEST_1">
+  <h3 id="ARRAY_TEST_1">ARRAY_TEST_1 (<a href="#ARRAY_TEST_1">
     #151
    </a>
    )
   </h3>
-  <p class="description">Array test #1.</p>
+  <p>Array test #1.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u32</td>
-     <td class="mavlink_type" valign="top">uint32_t[4]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u32</td>
+     <td>uint32_t[4]</td>
+     <td>Value array</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ARRAY_TEST_3">ARRAY_TEST_3 (<a href="#ARRAY_TEST_3">
+  <h3 id="ARRAY_TEST_3">ARRAY_TEST_3 (<a href="#ARRAY_TEST_3">
     #153
    </a>
    )
   </h3>
-  <p class="description">Array test #3.</p>
+  <p>Array test #3.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">v</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Stub field</td>
+    <tr>
+     <td>v</td>
+     <td>uint8_t</td>
+     <td>Stub field</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u32</td>
-     <td class="mavlink_type" valign="top">uint32_t[4]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u32</td>
+     <td>uint32_t[4]</td>
+     <td>Value array</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ARRAY_TEST_4">ARRAY_TEST_4 (<a href="#ARRAY_TEST_4">
+  <h3 id="ARRAY_TEST_4">ARRAY_TEST_4 (<a href="#ARRAY_TEST_4">
     #154
    </a>
    )
   </h3>
-  <p class="description">Array test #4.</p>
+  <p>Array test #4.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u32</td>
-     <td class="mavlink_type" valign="top">uint32_t[4]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u32</td>
+     <td>uint32_t[4]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">v</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Stub field</td>
+    <tr>
+     <td>v</td>
+     <td>uint8_t</td>
+     <td>Stub field</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ARRAY_TEST_5">ARRAY_TEST_5 (<a href="#ARRAY_TEST_5">
+  <h3 id="ARRAY_TEST_5">ARRAY_TEST_5 (<a href="#ARRAY_TEST_5">
     #155
    </a>
    )
   </h3>
-  <p class="description">Array test #5.</p>
+  <p>Array test #5.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">c1</td>
-     <td class="mavlink_type" valign="top">char[5]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>c1</td>
+     <td>char[5]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">c2</td>
-     <td class="mavlink_type" valign="top">char[5]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>c2</td>
+     <td>char[5]</td>
+     <td>Value array</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ARRAY_TEST_6">ARRAY_TEST_6 (<a href="#ARRAY_TEST_6">
+  <h3 id="ARRAY_TEST_6">ARRAY_TEST_6 (<a href="#ARRAY_TEST_6">
     #156
    </a>
    )
   </h3>
-  <p class="description">Array test #6.</p>
+  <p>Array test #6.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">v1</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Stub field</td>
+    <tr>
+     <td>v1</td>
+     <td>uint8_t</td>
+     <td>Stub field</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">v2</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Stub field</td>
+    <tr>
+     <td>v2</td>
+     <td>uint16_t</td>
+     <td>Stub field</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">v3</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Stub field</td>
+    <tr>
+     <td>v3</td>
+     <td>uint32_t</td>
+     <td>Stub field</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u32</td>
-     <td class="mavlink_type" valign="top">uint32_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u32</td>
+     <td>uint32_t[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_i32</td>
-     <td class="mavlink_type" valign="top">int32_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_i32</td>
+     <td>int32_t[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u16</td>
-     <td class="mavlink_type" valign="top">uint16_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u16</td>
+     <td>uint16_t[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_i16</td>
-     <td class="mavlink_type" valign="top">int16_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_i16</td>
+     <td>int16_t[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u8</td>
-     <td class="mavlink_type" valign="top">uint8_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u8</td>
+     <td>uint8_t[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_i8</td>
-     <td class="mavlink_type" valign="top">int8_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_i8</td>
+     <td>int8_t[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_c</td>
-     <td class="mavlink_type" valign="top">char[32]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_c</td>
+     <td>char[32]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_d</td>
-     <td class="mavlink_type" valign="top">double[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_d</td>
+     <td>double[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_f</td>
-     <td class="mavlink_type" valign="top">float[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_f</td>
+     <td>float[2]</td>
+     <td>Value array</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ARRAY_TEST_7">ARRAY_TEST_7 (<a href="#ARRAY_TEST_7">
+  <h3 id="ARRAY_TEST_7">ARRAY_TEST_7 (<a href="#ARRAY_TEST_7">
     #157
    </a>
    )
   </h3>
-  <p class="description">Array test #7.</p>
+  <p>Array test #7.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_d</td>
-     <td class="mavlink_type" valign="top">double[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_d</td>
+     <td>double[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_f</td>
-     <td class="mavlink_type" valign="top">float[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_f</td>
+     <td>float[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u32</td>
-     <td class="mavlink_type" valign="top">uint32_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u32</td>
+     <td>uint32_t[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_i32</td>
-     <td class="mavlink_type" valign="top">int32_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_i32</td>
+     <td>int32_t[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u16</td>
-     <td class="mavlink_type" valign="top">uint16_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u16</td>
+     <td>uint16_t[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_i16</td>
-     <td class="mavlink_type" valign="top">int16_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_i16</td>
+     <td>int16_t[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u8</td>
-     <td class="mavlink_type" valign="top">uint8_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u8</td>
+     <td>uint8_t[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_i8</td>
-     <td class="mavlink_type" valign="top">int8_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_i8</td>
+     <td>int8_t[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_c</td>
-     <td class="mavlink_type" valign="top">char[32]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_c</td>
+     <td>char[32]</td>
+     <td>Value array</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ARRAY_TEST_8">ARRAY_TEST_8 (<a href="#ARRAY_TEST_8">
+  <h3 id="ARRAY_TEST_8">ARRAY_TEST_8 (<a href="#ARRAY_TEST_8">
     #158
    </a>
    )
   </h3>
-  <p class="description">Array test #8.</p>
+  <p>Array test #8.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">v3</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Stub field</td>
+    <tr>
+     <td>v3</td>
+     <td>uint32_t</td>
+     <td>Stub field</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_d</td>
-     <td class="mavlink_type" valign="top">double[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_d</td>
+     <td>double[2]</td>
+     <td>Value array</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ar_u16</td>
-     <td class="mavlink_type" valign="top">uint16_t[2]</td>
-     <td class="mavlink_comment">Value array</td>
+    <tr>
+     <td>ar_u16</td>
+     <td>uint16_t[2]</td>
+     <td>Value array</td>
     </tr>
    </tbody>
   </table>

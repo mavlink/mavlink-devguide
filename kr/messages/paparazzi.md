@@ -9,6 +9,12 @@
 <span id="mav2_extension_field"></span>
 > **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue.
 
+<style>
+td {
+    vertical-align:top;
+}
+</style>
+
 <html>
  <body>
   <p>
@@ -19,153 +25,153 @@
   <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
   <h2>MAVLink Type Enumerations</h2>
   <h2>MAVLink Messages</h2>
-  <h3 class="mavlink_message_name" id="SCRIPT_ITEM">SCRIPT_ITEM (<a href="#SCRIPT_ITEM">
+  <h3 id="SCRIPT_ITEM">SCRIPT_ITEM (<a href="#SCRIPT_ITEM">
     #180
    </a>
    )
   </h3>
-  <p class="description">Message encoding a mission script item. This message is emitted upon a request for the next script item.</p>
+  <p>Message encoding a mission script item. This message is emitted upon a request for the next script item.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System ID</td>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Component ID</td>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">seq</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Sequence</td>
+    <tr>
+     <td>seq</td>
+     <td>uint16_t</td>
+     <td>Sequence</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">name</td>
-     <td class="mavlink_type" valign="top">char[50]</td>
-     <td class="mavlink_comment">The name of the mission script, NULL terminated.</td>
+    <tr>
+     <td>name</td>
+     <td>char[50]</td>
+     <td>The name of the mission script, NULL terminated.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="SCRIPT_REQUEST">SCRIPT_REQUEST (<a href="#SCRIPT_REQUEST">
+  <h3 id="SCRIPT_REQUEST">SCRIPT_REQUEST (<a href="#SCRIPT_REQUEST">
     #181
    </a>
    )
   </h3>
-  <p class="description">Request script item with the sequence number seq. The response of the system to this message should be a SCRIPT_ITEM message.</p>
+  <p>Request script item with the sequence number seq. The response of the system to this message should be a SCRIPT_ITEM message.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System ID</td>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Component ID</td>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">seq</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Sequence</td>
+    <tr>
+     <td>seq</td>
+     <td>uint16_t</td>
+     <td>Sequence</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="SCRIPT_REQUEST_LIST">SCRIPT_REQUEST_LIST (<a href="#SCRIPT_REQUEST_LIST">
+  <h3 id="SCRIPT_REQUEST_LIST">SCRIPT_REQUEST_LIST (<a href="#SCRIPT_REQUEST_LIST">
     #182
    </a>
    )
   </h3>
-  <p class="description">Request the overall list of mission items from the system/component.</p>
+  <p>Request the overall list of mission items from the system/component.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System ID</td>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Component ID</td>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="SCRIPT_COUNT">SCRIPT_COUNT (<a href="#SCRIPT_COUNT">
+  <h3 id="SCRIPT_COUNT">SCRIPT_COUNT (<a href="#SCRIPT_COUNT">
     #183
    </a>
    )
   </h3>
-  <p class="description">This message is emitted as response to SCRIPT_REQUEST_LIST by the MAV to get the number of mission scripts.</p>
+  <p>This message is emitted as response to SCRIPT_REQUEST_LIST by the MAV to get the number of mission scripts.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System ID</td>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Component ID</td>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">count</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Number of script items in the sequence</td>
+    <tr>
+     <td>count</td>
+     <td>uint16_t</td>
+     <td>Number of script items in the sequence</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="SCRIPT_CURRENT">SCRIPT_CURRENT (<a href="#SCRIPT_CURRENT">
+  <h3 id="SCRIPT_CURRENT">SCRIPT_CURRENT (<a href="#SCRIPT_CURRENT">
     #184
    </a>
    )
   </h3>
-  <p class="description">This message informs about the currently active SCRIPT.</p>
+  <p>This message informs about the currently active SCRIPT.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">seq</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">Active Sequence</td>
+    <tr>
+     <td>seq</td>
+     <td>uint16_t</td>
+     <td>Active Sequence</td>
     </tr>
    </tbody>
   </table>

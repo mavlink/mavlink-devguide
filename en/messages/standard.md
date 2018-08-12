@@ -9,6 +9,12 @@
 <span id="mav2_extension_field"></span>
 > **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue.
 
+<style>
+td {
+    vertical-align:top;
+}
+</style>
+
 <html>
  <body>
   <p>

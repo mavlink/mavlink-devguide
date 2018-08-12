@@ -13,6 +13,12 @@ These messages define the ArduPilot specific message set, which is custom to [ht
 <span id="mav2_extension_field"></span>
 > **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue.
 
+<style>
+td {
+    vertical-align:top;
+}
+</style>
+
 <html>
  <body>
   <p>
@@ -29,106 +35,106 @@ These messages define the ArduPilot specific message set, which is custom to [ht
   </p>
   <p>This file has protocol dialect: 2.</p>
   <h2>MAVLink Type Enumerations</h2>
-  <h3 class="mavlink_message_name" id="ACCELCAL_VEHICLE_POS">
+  <h3 id="ACCELCAL_VEHICLE_POS">
    <a href="#ACCELCAL_VEHICLE_POS">ACCELCAL_VEHICLE_POS</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="ACCELCAL_VEHICLE_POS_LEVEL">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ACCELCAL_VEHICLE_POS_LEVEL">
+     <td>1</td>
+     <td>
       <a href="#ACCELCAL_VEHICLE_POS_LEVEL">ACCELCAL_VEHICLE_POS_LEVEL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ACCELCAL_VEHICLE_POS_LEFT">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ACCELCAL_VEHICLE_POS_LEFT">
+     <td>2</td>
+     <td>
       <a href="#ACCELCAL_VEHICLE_POS_LEFT">ACCELCAL_VEHICLE_POS_LEFT</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ACCELCAL_VEHICLE_POS_RIGHT">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ACCELCAL_VEHICLE_POS_RIGHT">
+     <td>3</td>
+     <td>
       <a href="#ACCELCAL_VEHICLE_POS_RIGHT">ACCELCAL_VEHICLE_POS_RIGHT</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ACCELCAL_VEHICLE_POS_NOSEDOWN">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ACCELCAL_VEHICLE_POS_NOSEDOWN">
+     <td>4</td>
+     <td>
       <a href="#ACCELCAL_VEHICLE_POS_NOSEDOWN">ACCELCAL_VEHICLE_POS_NOSEDOWN</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ACCELCAL_VEHICLE_POS_NOSEUP">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ACCELCAL_VEHICLE_POS_NOSEUP">
+     <td>5</td>
+     <td>
       <a href="#ACCELCAL_VEHICLE_POS_NOSEUP">ACCELCAL_VEHICLE_POS_NOSEUP</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ACCELCAL_VEHICLE_POS_BACK">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ACCELCAL_VEHICLE_POS_BACK">
+     <td>6</td>
+     <td>
       <a href="#ACCELCAL_VEHICLE_POS_BACK">ACCELCAL_VEHICLE_POS_BACK</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ACCELCAL_VEHICLE_POS_SUCCESS">
-     <td class="mavlink_type" valign="top">16777215</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ACCELCAL_VEHICLE_POS_SUCCESS">
+     <td>16777215</td>
+     <td>
       <a href="#ACCELCAL_VEHICLE_POS_SUCCESS">ACCELCAL_VEHICLE_POS_SUCCESS</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ACCELCAL_VEHICLE_POS_FAILED">
-     <td class="mavlink_type" valign="top">16777216</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ACCELCAL_VEHICLE_POS_FAILED">
+     <td>16777216</td>
+     <td>
       <a href="#ACCELCAL_VEHICLE_POS_FAILED">ACCELCAL_VEHICLE_POS_FAILED</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="MAV_CMD">
+  <h3 id="MAV_CMD">
    <a href="#MAV_CMD">MAV_CMD</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="MAV_CMD_DO_GRIPPER">
-     <td class="mavlink_type" valign="top">211</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_DO_GRIPPER">
+     <td>211</td>
+     <td>
       <a href="#MAV_CMD_DO_GRIPPER">MAV_CMD_DO_GRIPPER</a>
      </td>
-     <td class="mavlink_comment">Mission command to operate EPM gripper.</td>
+     <td>Mission command to operate EPM gripper.</td>
     </tr>
     <tr>
      <td>
@@ -137,56 +143,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Gripper number (a number from 1 to max number of grippers on the vehicle).</td>
+     <td>Mission Param #1</td>
+     <td>Gripper number (a number from 1 to max number of grippers on the vehicle).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Gripper action (0=release, 1=grab. See GRIPPER_ACTIONS enum).</td>
+     <td>Mission Param #2</td>
+     <td>Gripper action (0=release, 1=grab. See GRIPPER_ACTIONS enum).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_DO_AUTOTUNE_ENABLE">
-     <td class="mavlink_type" valign="top">212</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_DO_AUTOTUNE_ENABLE">
+     <td>212</td>
+     <td>
       <a href="#MAV_CMD_DO_AUTOTUNE_ENABLE">MAV_CMD_DO_AUTOTUNE_ENABLE</a>
      </td>
-     <td class="mavlink_comment">Enable/disable autotune.</td>
+     <td>Enable/disable autotune.</td>
     </tr>
     <tr>
      <td>
@@ -195,56 +201,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Enable (1: enable, 0:disable).</td>
+     <td>Mission Param #1</td>
+     <td>Enable (1: enable, 0:disable).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #2</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_NAV_ALTITUDE_WAIT">
-     <td class="mavlink_type" valign="top">83</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_NAV_ALTITUDE_WAIT">
+     <td>83</td>
+     <td>
       <a href="#MAV_CMD_NAV_ALTITUDE_WAIT">MAV_CMD_NAV_ALTITUDE_WAIT</a>
      </td>
-     <td class="mavlink_comment">Mission command to wait for an altitude or downwards vertical speed. This is meant for high altitude balloon launches, allowing the aircraft to be idle until either an altitude is reached or a negative vertical speed is reached (indicating early balloon burst). The wiggle time is how often to wiggle the control surfaces to prevent them seizing up.</td>
+     <td>Mission command to wait for an altitude or downwards vertical speed. This is meant for high altitude balloon launches, allowing the aircraft to be idle until either an altitude is reached or a negative vertical speed is reached (indicating early balloon burst). The wiggle time is how often to wiggle the control surfaces to prevent them seizing up.</td>
     </tr>
     <tr>
      <td>
@@ -253,56 +259,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Altitude (m).</td>
+     <td>Mission Param #1</td>
+     <td>Altitude (m).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Descent speed (m/s).</td>
+     <td>Mission Param #2</td>
+     <td>Descent speed (m/s).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Wiggle Time (s).</td>
+     <td>Mission Param #3</td>
+     <td>Wiggle Time (s).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_POWER_OFF_INITIATED">
-     <td class="mavlink_type" valign="top">42000</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_POWER_OFF_INITIATED">
+     <td>42000</td>
+     <td>
       <a href="#MAV_CMD_POWER_OFF_INITIATED">MAV_CMD_POWER_OFF_INITIATED</a>
      </td>
-     <td class="mavlink_comment">A system wide power-off event has been initiated.</td>
+     <td>A system wide power-off event has been initiated.</td>
     </tr>
     <tr>
      <td>
@@ -311,56 +317,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #1</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #2</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_SOLO_BTN_FLY_CLICK">
-     <td class="mavlink_type" valign="top">42001</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_SOLO_BTN_FLY_CLICK">
+     <td>42001</td>
+     <td>
       <a href="#MAV_CMD_SOLO_BTN_FLY_CLICK">MAV_CMD_SOLO_BTN_FLY_CLICK</a>
      </td>
-     <td class="mavlink_comment">FLY button has been clicked.</td>
+     <td>FLY button has been clicked.</td>
     </tr>
     <tr>
      <td>
@@ -369,56 +375,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #1</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #2</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_SOLO_BTN_FLY_HOLD">
-     <td class="mavlink_type" valign="top">42002</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_SOLO_BTN_FLY_HOLD">
+     <td>42002</td>
+     <td>
       <a href="#MAV_CMD_SOLO_BTN_FLY_HOLD">MAV_CMD_SOLO_BTN_FLY_HOLD</a>
      </td>
-     <td class="mavlink_comment">FLY button has been held for 1.5 seconds.</td>
+     <td>FLY button has been held for 1.5 seconds.</td>
     </tr>
     <tr>
      <td>
@@ -427,56 +433,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Takeoff altitude.</td>
+     <td>Mission Param #1</td>
+     <td>Takeoff altitude.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #2</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_SOLO_BTN_PAUSE_CLICK">
-     <td class="mavlink_type" valign="top">42003</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_SOLO_BTN_PAUSE_CLICK">
+     <td>42003</td>
+     <td>
       <a href="#MAV_CMD_SOLO_BTN_PAUSE_CLICK">MAV_CMD_SOLO_BTN_PAUSE_CLICK</a>
      </td>
-     <td class="mavlink_comment">PAUSE button has been clicked.</td>
+     <td>PAUSE button has been clicked.</td>
     </tr>
     <tr>
      <td>
@@ -485,56 +491,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">1 if Solo is in a shot mode, 0 otherwise.</td>
+     <td>Mission Param #1</td>
+     <td>1 if Solo is in a shot mode, 0 otherwise.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #2</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_FIXED_MAG_CAL">
-     <td class="mavlink_type" valign="top">42004</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_FIXED_MAG_CAL">
+     <td>42004</td>
+     <td>
       <a href="#MAV_CMD_FIXED_MAG_CAL">MAV_CMD_FIXED_MAG_CAL</a>
      </td>
-     <td class="mavlink_comment">Magnetometer calibration based on fixed position
+     <td>Magnetometer calibration based on fixed position
         in earth field given by inclination, declination and intensity.</td>
     </tr>
     <tr>
@@ -544,56 +550,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">MagDeclinationDegrees.</td>
+     <td>Mission Param #1</td>
+     <td>MagDeclinationDegrees.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">MagInclinationDegrees.</td>
+     <td>Mission Param #2</td>
+     <td>MagInclinationDegrees.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">MagIntensityMilliGauss.</td>
+     <td>Mission Param #3</td>
+     <td>MagIntensityMilliGauss.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">YawDegrees.</td>
+     <td>Mission Param #4</td>
+     <td>YawDegrees.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_FIXED_MAG_CAL_FIELD">
-     <td class="mavlink_type" valign="top">42005</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_FIXED_MAG_CAL_FIELD">
+     <td>42005</td>
+     <td>
       <a href="#MAV_CMD_FIXED_MAG_CAL_FIELD">MAV_CMD_FIXED_MAG_CAL_FIELD</a>
      </td>
-     <td class="mavlink_comment">Magnetometer calibration based on fixed expected field values in milliGauss.</td>
+     <td>Magnetometer calibration based on fixed expected field values in milliGauss.</td>
     </tr>
     <tr>
      <td>
@@ -602,56 +608,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">FieldX.</td>
+     <td>Mission Param #1</td>
+     <td>FieldX.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">FieldY.</td>
+     <td>Mission Param #2</td>
+     <td>FieldY.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">FieldZ.</td>
+     <td>Mission Param #3</td>
+     <td>FieldZ.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_DO_START_MAG_CAL">
-     <td class="mavlink_type" valign="top">42424</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_DO_START_MAG_CAL">
+     <td>42424</td>
+     <td>
       <a href="#MAV_CMD_DO_START_MAG_CAL">MAV_CMD_DO_START_MAG_CAL</a>
      </td>
-     <td class="mavlink_comment">Initiate a magnetometer calibration.</td>
+     <td>Initiate a magnetometer calibration.</td>
     </tr>
     <tr>
      <td>
@@ -660,56 +666,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">uint8_t bitmask of magnetometers (0 means all).</td>
+     <td>Mission Param #1</td>
+     <td>uint8_t bitmask of magnetometers (0 means all).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Automatically retry on failure (0=no retry, 1=retry).</td>
+     <td>Mission Param #2</td>
+     <td>Automatically retry on failure (0=no retry, 1=retry).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Save without user input (0=require input, 1=autosave).</td>
+     <td>Mission Param #3</td>
+     <td>Save without user input (0=require input, 1=autosave).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Delay (seconds).</td>
+     <td>Mission Param #4</td>
+     <td>Delay (seconds).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Autoreboot (0=user reboot, 1=autoreboot).</td>
+     <td>Mission Param #5</td>
+     <td>Autoreboot (0=user reboot, 1=autoreboot).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_DO_ACCEPT_MAG_CAL">
-     <td class="mavlink_type" valign="top">42425</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_DO_ACCEPT_MAG_CAL">
+     <td>42425</td>
+     <td>
       <a href="#MAV_CMD_DO_ACCEPT_MAG_CAL">MAV_CMD_DO_ACCEPT_MAG_CAL</a>
      </td>
-     <td class="mavlink_comment">Initiate a magnetometer calibration.</td>
+     <td>Initiate a magnetometer calibration.</td>
     </tr>
     <tr>
      <td>
@@ -718,56 +724,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">uint8_t bitmask of magnetometers (0 means all).</td>
+     <td>Mission Param #1</td>
+     <td>uint8_t bitmask of magnetometers (0 means all).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #2</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_DO_CANCEL_MAG_CAL">
-     <td class="mavlink_type" valign="top">42426</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_DO_CANCEL_MAG_CAL">
+     <td>42426</td>
+     <td>
       <a href="#MAV_CMD_DO_CANCEL_MAG_CAL">MAV_CMD_DO_CANCEL_MAG_CAL</a>
      </td>
-     <td class="mavlink_comment">Cancel a running magnetometer calibration.</td>
+     <td>Cancel a running magnetometer calibration.</td>
     </tr>
     <tr>
      <td>
@@ -776,56 +782,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">uint8_t bitmask of magnetometers (0 means all).</td>
+     <td>Mission Param #1</td>
+     <td>uint8_t bitmask of magnetometers (0 means all).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #2</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_ACCELCAL_VEHICLE_POS">
-     <td class="mavlink_type" valign="top">42429</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_ACCELCAL_VEHICLE_POS">
+     <td>42429</td>
+     <td>
       <a href="#MAV_CMD_ACCELCAL_VEHICLE_POS">MAV_CMD_ACCELCAL_VEHICLE_POS</a>
      </td>
-     <td class="mavlink_comment">Used when doing accelerometer calibration. When sent to the GCS tells it what position to put the vehicle in. When sent to the vehicle says what position the vehicle is in.</td>
+     <td>Used when doing accelerometer calibration. When sent to the GCS tells it what position to put the vehicle in. When sent to the vehicle says what position the vehicle is in.</td>
     </tr>
     <tr>
      <td>
@@ -834,56 +840,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Position, one of the ACCELCAL_VEHICLE_POS enum values.</td>
+     <td>Mission Param #1</td>
+     <td>Position, one of the ACCELCAL_VEHICLE_POS enum values.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #2</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_DO_SEND_BANNER">
-     <td class="mavlink_type" valign="top">42428</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_DO_SEND_BANNER">
+     <td>42428</td>
+     <td>
       <a href="#MAV_CMD_DO_SEND_BANNER">MAV_CMD_DO_SEND_BANNER</a>
      </td>
-     <td class="mavlink_comment">Reply with the version banner.</td>
+     <td>Reply with the version banner.</td>
     </tr>
     <tr>
      <td>
@@ -892,56 +898,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #1</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #2</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_SET_FACTORY_TEST_MODE">
-     <td class="mavlink_type" valign="top">42427</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_SET_FACTORY_TEST_MODE">
+     <td>42427</td>
+     <td>
       <a href="#MAV_CMD_SET_FACTORY_TEST_MODE">MAV_CMD_SET_FACTORY_TEST_MODE</a>
      </td>
-     <td class="mavlink_comment">Command autopilot to get into factory test/diagnostic mode.</td>
+     <td>Command autopilot to get into factory test/diagnostic mode.</td>
     </tr>
     <tr>
      <td>
@@ -950,56 +956,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">0 means get out of test mode, 1 means get into test mode.</td>
+     <td>Mission Param #1</td>
+     <td>0 means get out of test mode, 1 means get into test mode.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #2</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_GIMBAL_RESET">
-     <td class="mavlink_type" valign="top">42501</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_GIMBAL_RESET">
+     <td>42501</td>
+     <td>
       <a href="#MAV_CMD_GIMBAL_RESET">MAV_CMD_GIMBAL_RESET</a>
      </td>
-     <td class="mavlink_comment">Causes the gimbal to reset and boot as if it was just powered on.</td>
+     <td>Causes the gimbal to reset and boot as if it was just powered on.</td>
     </tr>
     <tr>
      <td>
@@ -1008,56 +1014,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #1</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #2</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS">
-     <td class="mavlink_type" valign="top">42502</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS">
+     <td>42502</td>
+     <td>
       <a href="#MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS">MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS</a>
      </td>
-     <td class="mavlink_comment">Reports progress and success or failure of gimbal axis calibration procedure.</td>
+     <td>Reports progress and success or failure of gimbal axis calibration procedure.</td>
     </tr>
     <tr>
      <td>
@@ -1066,56 +1072,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Gimbal axis we're reporting calibration progress for.</td>
+     <td>Mission Param #1</td>
+     <td>Gimbal axis we're reporting calibration progress for.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Current calibration progress for this axis, 0x64=100%.</td>
+     <td>Mission Param #2</td>
+     <td>Current calibration progress for this axis, 0x64=100%.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Status of the calibration.</td>
+     <td>Mission Param #3</td>
+     <td>Status of the calibration.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION">
-     <td class="mavlink_type" valign="top">42503</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION">
+     <td>42503</td>
+     <td>
       <a href="#MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION">MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION</a>
      </td>
-     <td class="mavlink_comment">Starts commutation calibration on the gimbal.</td>
+     <td>Starts commutation calibration on the gimbal.</td>
     </tr>
     <tr>
      <td>
@@ -1124,56 +1130,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #1</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #2</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #3</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #4</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_GIMBAL_FULL_RESET">
-     <td class="mavlink_type" valign="top">42505</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_GIMBAL_FULL_RESET">
+     <td>42505</td>
+     <td>
       <a href="#MAV_CMD_GIMBAL_FULL_RESET">MAV_CMD_GIMBAL_FULL_RESET</a>
      </td>
-     <td class="mavlink_comment">Erases gimbal application and parameters.</td>
+     <td>Erases gimbal application and parameters.</td>
     </tr>
     <tr>
      <td>
@@ -1182,56 +1188,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Magic number.</td>
+     <td>Mission Param #1</td>
+     <td>Magic number.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Magic number.</td>
+     <td>Mission Param #2</td>
+     <td>Magic number.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Magic number.</td>
+     <td>Mission Param #3</td>
+     <td>Magic number.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Magic number.</td>
+     <td>Mission Param #4</td>
+     <td>Magic number.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Magic number.</td>
+     <td>Mission Param #5</td>
+     <td>Magic number.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Magic number.</td>
+     <td>Mission Param #6</td>
+     <td>Magic number.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Magic number.</td>
+     <td>Mission Param #7</td>
+     <td>Magic number.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_DO_WINCH">
-     <td class="mavlink_type" valign="top">42600</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_DO_WINCH">
+     <td>42600</td>
+     <td>
       <a href="#MAV_CMD_DO_WINCH">MAV_CMD_DO_WINCH</a>
      </td>
-     <td class="mavlink_comment">Command to operate winch.</td>
+     <td>Command to operate winch.</td>
     </tr>
     <tr>
      <td>
@@ -1240,56 +1246,56 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Winch number (0 for the default winch, otherwise a number from 1 to max number of winches on the vehicle).</td>
+     <td>Mission Param #1</td>
+     <td>Winch number (0 for the default winch, otherwise a number from 1 to max number of winches on the vehicle).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Action (0=relax, 1=relative length control, 2=rate control. See WINCH_ACTIONS enum.).</td>
+     <td>Mission Param #2</td>
+     <td>Action (0=relax, 1=relative length control, 2=rate control. See WINCH_ACTIONS enum.).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Release length (cable distance to unwind in meters, negative numbers to wind in cable).</td>
+     <td>Mission Param #3</td>
+     <td>Release length (cable distance to unwind in meters, negative numbers to wind in cable).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Release rate (meters/second).</td>
+     <td>Mission Param #4</td>
+     <td>Release rate (meters/second).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #5</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #6</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty.</td>
+     <td>Mission Param #7</td>
+     <td>Empty.</td>
     </tr>
     <tr>
      <td colspan="3">
       <br/>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAV_CMD_FLASH_BOOTLOADER">
-     <td class="mavlink_type" valign="top">42650</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_CMD_FLASH_BOOTLOADER">
+     <td>42650</td>
+     <td>
       <a href="#MAV_CMD_FLASH_BOOTLOADER">MAV_CMD_FLASH_BOOTLOADER</a>
      </td>
-     <td class="mavlink_comment">Update the bootloader</td>
+     <td>Update the bootloader</td>
     </tr>
     <tr>
      <td>
@@ -1298,44 +1304,44 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #1</td>
-     <td class="mavlink_comment">Empty</td>
+     <td>Mission Param #1</td>
+     <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #2</td>
-     <td class="mavlink_comment">Empty</td>
+     <td>Mission Param #2</td>
+     <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #3</td>
-     <td class="mavlink_comment">Empty</td>
+     <td>Mission Param #3</td>
+     <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #4</td>
-     <td class="mavlink_comment">Empty</td>
+     <td>Mission Param #4</td>
+     <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #5</td>
-     <td class="mavlink_comment">Magic number - set to 290876 to actually flash</td>
+     <td>Mission Param #5</td>
+     <td>Magic number - set to 290876 to actually flash</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #6</td>
-     <td class="mavlink_comment">Empty</td>
+     <td>Mission Param #6</td>
+     <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td class="mavlink_mission_param" valign="top">Mission Param #7</td>
-     <td class="mavlink_comment">Empty</td>
+     <td>Mission Param #7</td>
+     <td>Empty</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -1344,6726 +1350,6726 @@ These messages define the ArduPilot specific message set, which is custom to [ht
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="LIMITS_STATE">
+  <h3 id="LIMITS_STATE">
    <a href="#LIMITS_STATE">LIMITS_STATE</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="LIMITS_INIT">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LIMITS_INIT">
+     <td>0</td>
+     <td>
       <a href="#LIMITS_INIT">LIMITS_INIT</a>
      </td>
-     <td class="mavlink_comment">Pre-initialization.</td>
+     <td>Pre-initialization.</td>
     </tr>
-    <tr class="mavlink_field" id="LIMITS_DISABLED">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LIMITS_DISABLED">
+     <td>1</td>
+     <td>
       <a href="#LIMITS_DISABLED">LIMITS_DISABLED</a>
      </td>
-     <td class="mavlink_comment">Disabled.</td>
+     <td>Disabled.</td>
     </tr>
-    <tr class="mavlink_field" id="LIMITS_ENABLED">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LIMITS_ENABLED">
+     <td>2</td>
+     <td>
       <a href="#LIMITS_ENABLED">LIMITS_ENABLED</a>
      </td>
-     <td class="mavlink_comment">Checking limits.</td>
+     <td>Checking limits.</td>
     </tr>
-    <tr class="mavlink_field" id="LIMITS_TRIGGERED">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LIMITS_TRIGGERED">
+     <td>3</td>
+     <td>
       <a href="#LIMITS_TRIGGERED">LIMITS_TRIGGERED</a>
      </td>
-     <td class="mavlink_comment">A limit has been breached.</td>
+     <td>A limit has been breached.</td>
     </tr>
-    <tr class="mavlink_field" id="LIMITS_RECOVERING">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LIMITS_RECOVERING">
+     <td>4</td>
+     <td>
       <a href="#LIMITS_RECOVERING">LIMITS_RECOVERING</a>
      </td>
-     <td class="mavlink_comment">Taking action e.g. Return/RTL.</td>
+     <td>Taking action e.g. Return/RTL.</td>
     </tr>
-    <tr class="mavlink_field" id="LIMITS_RECOVERED">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LIMITS_RECOVERED">
+     <td>5</td>
+     <td>
       <a href="#LIMITS_RECOVERED">LIMITS_RECOVERED</a>
      </td>
-     <td class="mavlink_comment">We're no longer in breach of a limit.</td>
+     <td>We're no longer in breach of a limit.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="LIMIT_MODULE">
+  <h3 id="LIMIT_MODULE">
    <a href="#LIMIT_MODULE">LIMIT_MODULE</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="LIMIT_GPSLOCK">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LIMIT_GPSLOCK">
+     <td>1</td>
+     <td>
       <a href="#LIMIT_GPSLOCK">LIMIT_GPSLOCK</a>
      </td>
-     <td class="mavlink_comment">Pre-initialization.</td>
+     <td>Pre-initialization.</td>
     </tr>
-    <tr class="mavlink_field" id="LIMIT_GEOFENCE">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LIMIT_GEOFENCE">
+     <td>2</td>
+     <td>
       <a href="#LIMIT_GEOFENCE">LIMIT_GEOFENCE</a>
      </td>
-     <td class="mavlink_comment">Disabled.</td>
+     <td>Disabled.</td>
     </tr>
-    <tr class="mavlink_field" id="LIMIT_ALTITUDE">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LIMIT_ALTITUDE">
+     <td>4</td>
+     <td>
       <a href="#LIMIT_ALTITUDE">LIMIT_ALTITUDE</a>
      </td>
-     <td class="mavlink_comment">Checking limits.</td>
+     <td>Checking limits.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="RALLY_FLAGS">
+  <h3 id="RALLY_FLAGS">
    <a href="#RALLY_FLAGS">RALLY_FLAGS</a>
   </h3>
-  <p class="description">Flags in RALLY_POINT message.</p>
+  <p>Flags in RALLY_POINT message.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="FAVORABLE_WIND">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="FAVORABLE_WIND">
+     <td>1</td>
+     <td>
       <a href="#FAVORABLE_WIND">FAVORABLE_WIND</a>
      </td>
-     <td class="mavlink_comment">Flag set when requiring favorable winds for landing.</td>
+     <td>Flag set when requiring favorable winds for landing.</td>
     </tr>
-    <tr class="mavlink_field" id="LAND_IMMEDIATELY">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LAND_IMMEDIATELY">
+     <td>2</td>
+     <td>
       <a href="#LAND_IMMEDIATELY">LAND_IMMEDIATELY</a>
      </td>
-     <td class="mavlink_comment">Flag set when plane is to immediately descend to break altitude and land without GCS intervention. Flag not set when plane is to loiter at Rally point until commanded to land.</td>
+     <td>Flag set when plane is to immediately descend to break altitude and land without GCS intervention. Flag not set when plane is to loiter at Rally point until commanded to land.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="PARACHUTE_ACTION">
+  <h3 id="PARACHUTE_ACTION">
    <a href="#PARACHUTE_ACTION">PARACHUTE_ACTION</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="PARACHUTE_DISABLE">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PARACHUTE_DISABLE">
+     <td>0</td>
+     <td>
       <a href="#PARACHUTE_DISABLE">PARACHUTE_DISABLE</a>
      </td>
-     <td class="mavlink_comment">Disable parachute release.</td>
+     <td>Disable parachute release.</td>
     </tr>
-    <tr class="mavlink_field" id="PARACHUTE_ENABLE">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PARACHUTE_ENABLE">
+     <td>1</td>
+     <td>
       <a href="#PARACHUTE_ENABLE">PARACHUTE_ENABLE</a>
      </td>
-     <td class="mavlink_comment">Enable parachute release.</td>
+     <td>Enable parachute release.</td>
     </tr>
-    <tr class="mavlink_field" id="PARACHUTE_RELEASE">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PARACHUTE_RELEASE">
+     <td>2</td>
+     <td>
       <a href="#PARACHUTE_RELEASE">PARACHUTE_RELEASE</a>
      </td>
-     <td class="mavlink_comment">Release parachute.</td>
+     <td>Release parachute.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GRIPPER_ACTIONS">
+  <h3 id="GRIPPER_ACTIONS">
    <a href="#GRIPPER_ACTIONS">GRIPPER_ACTIONS</a>
   </h3>
-  <p class="description">Gripper actions.</p>
+  <p>Gripper actions.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GRIPPER_ACTION_RELEASE">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GRIPPER_ACTION_RELEASE">
+     <td>0</td>
+     <td>
       <a href="#GRIPPER_ACTION_RELEASE">GRIPPER_ACTION_RELEASE</a>
      </td>
-     <td class="mavlink_comment">Gripper release cargo.</td>
+     <td>Gripper release cargo.</td>
     </tr>
-    <tr class="mavlink_field" id="GRIPPER_ACTION_GRAB">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GRIPPER_ACTION_GRAB">
+     <td>1</td>
+     <td>
       <a href="#GRIPPER_ACTION_GRAB">GRIPPER_ACTION_GRAB</a>
      </td>
-     <td class="mavlink_comment">Gripper grab onto cargo.</td>
+     <td>Gripper grab onto cargo.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="WINCH_ACTIONS">
+  <h3 id="WINCH_ACTIONS">
    <a href="#WINCH_ACTIONS">WINCH_ACTIONS</a>
   </h3>
-  <p class="description">Winch actions.</p>
+  <p>Winch actions.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="WINCH_RELAXED">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="WINCH_RELAXED">
+     <td>0</td>
+     <td>
       <a href="#WINCH_RELAXED">WINCH_RELAXED</a>
      </td>
-     <td class="mavlink_comment">Relax winch.</td>
+     <td>Relax winch.</td>
     </tr>
-    <tr class="mavlink_field" id="WINCH_RELATIVE_LENGTH_CONTROL">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="WINCH_RELATIVE_LENGTH_CONTROL">
+     <td>1</td>
+     <td>
       <a href="#WINCH_RELATIVE_LENGTH_CONTROL">WINCH_RELATIVE_LENGTH_CONTROL</a>
      </td>
-     <td class="mavlink_comment">Winch unwinds or winds specified length of cable optionally using specified rate.</td>
+     <td>Winch unwinds or winds specified length of cable optionally using specified rate.</td>
     </tr>
-    <tr class="mavlink_field" id="WINCH_RATE_CONTROL">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="WINCH_RATE_CONTROL">
+     <td>2</td>
+     <td>
       <a href="#WINCH_RATE_CONTROL">WINCH_RATE_CONTROL</a>
      </td>
-     <td class="mavlink_comment">Winch unwinds or winds cable at specified rate in meters/seconds.</td>
+     <td>Winch unwinds or winds cable at specified rate in meters/seconds.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="CAMERA_STATUS_TYPES">
+  <h3 id="CAMERA_STATUS_TYPES">
    <a href="#CAMERA_STATUS_TYPES">CAMERA_STATUS_TYPES</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="CAMERA_STATUS_TYPE_HEARTBEAT">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="CAMERA_STATUS_TYPE_HEARTBEAT">
+     <td>0</td>
+     <td>
       <a href="#CAMERA_STATUS_TYPE_HEARTBEAT">CAMERA_STATUS_TYPE_HEARTBEAT</a>
      </td>
-     <td class="mavlink_comment">Camera heartbeat, announce camera component ID at 1Hz.</td>
+     <td>Camera heartbeat, announce camera component ID at 1Hz.</td>
     </tr>
-    <tr class="mavlink_field" id="CAMERA_STATUS_TYPE_TRIGGER">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="CAMERA_STATUS_TYPE_TRIGGER">
+     <td>1</td>
+     <td>
       <a href="#CAMERA_STATUS_TYPE_TRIGGER">CAMERA_STATUS_TYPE_TRIGGER</a>
      </td>
-     <td class="mavlink_comment">Camera image triggered.</td>
+     <td>Camera image triggered.</td>
     </tr>
-    <tr class="mavlink_field" id="CAMERA_STATUS_TYPE_DISCONNECT">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="CAMERA_STATUS_TYPE_DISCONNECT">
+     <td>2</td>
+     <td>
       <a href="#CAMERA_STATUS_TYPE_DISCONNECT">CAMERA_STATUS_TYPE_DISCONNECT</a>
      </td>
-     <td class="mavlink_comment">Camera connection lost.</td>
+     <td>Camera connection lost.</td>
     </tr>
-    <tr class="mavlink_field" id="CAMERA_STATUS_TYPE_ERROR">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="CAMERA_STATUS_TYPE_ERROR">
+     <td>3</td>
+     <td>
       <a href="#CAMERA_STATUS_TYPE_ERROR">CAMERA_STATUS_TYPE_ERROR</a>
      </td>
-     <td class="mavlink_comment">Camera unknown error.</td>
+     <td>Camera unknown error.</td>
     </tr>
-    <tr class="mavlink_field" id="CAMERA_STATUS_TYPE_LOWBATT">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="CAMERA_STATUS_TYPE_LOWBATT">
+     <td>4</td>
+     <td>
       <a href="#CAMERA_STATUS_TYPE_LOWBATT">CAMERA_STATUS_TYPE_LOWBATT</a>
      </td>
-     <td class="mavlink_comment">Camera battery low. Parameter p1 shows reported voltage.</td>
+     <td>Camera battery low. Parameter p1 shows reported voltage.</td>
     </tr>
-    <tr class="mavlink_field" id="CAMERA_STATUS_TYPE_LOWSTORE">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="CAMERA_STATUS_TYPE_LOWSTORE">
+     <td>5</td>
+     <td>
       <a href="#CAMERA_STATUS_TYPE_LOWSTORE">CAMERA_STATUS_TYPE_LOWSTORE</a>
      </td>
-     <td class="mavlink_comment">Camera storage low. Parameter p1 shows reported shots remaining.</td>
+     <td>Camera storage low. Parameter p1 shows reported shots remaining.</td>
     </tr>
-    <tr class="mavlink_field" id="CAMERA_STATUS_TYPE_LOWSTOREV">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="CAMERA_STATUS_TYPE_LOWSTOREV">
+     <td>6</td>
+     <td>
       <a href="#CAMERA_STATUS_TYPE_LOWSTOREV">CAMERA_STATUS_TYPE_LOWSTOREV</a>
      </td>
-     <td class="mavlink_comment">Camera storage low. Parameter p1 shows reported video minutes remaining.</td>
+     <td>Camera storage low. Parameter p1 shows reported video minutes remaining.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="CAMERA_FEEDBACK_FLAGS">
+  <h3 id="CAMERA_FEEDBACK_FLAGS">
    <a href="#CAMERA_FEEDBACK_FLAGS">CAMERA_FEEDBACK_FLAGS</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="CAMERA_FEEDBACK_PHOTO">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="CAMERA_FEEDBACK_PHOTO">
+     <td>0</td>
+     <td>
       <a href="#CAMERA_FEEDBACK_PHOTO">CAMERA_FEEDBACK_PHOTO</a>
      </td>
-     <td class="mavlink_comment">Shooting photos, not video.</td>
+     <td>Shooting photos, not video.</td>
     </tr>
-    <tr class="mavlink_field" id="CAMERA_FEEDBACK_VIDEO">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="CAMERA_FEEDBACK_VIDEO">
+     <td>1</td>
+     <td>
       <a href="#CAMERA_FEEDBACK_VIDEO">CAMERA_FEEDBACK_VIDEO</a>
      </td>
-     <td class="mavlink_comment">Shooting video, not stills.</td>
+     <td>Shooting video, not stills.</td>
     </tr>
-    <tr class="mavlink_field" id="CAMERA_FEEDBACK_BADEXPOSURE">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="CAMERA_FEEDBACK_BADEXPOSURE">
+     <td>2</td>
+     <td>
       <a href="#CAMERA_FEEDBACK_BADEXPOSURE">CAMERA_FEEDBACK_BADEXPOSURE</a>
      </td>
-     <td class="mavlink_comment">Unable to achieve requested exposure (e.g. shutter speed too low).</td>
+     <td>Unable to achieve requested exposure (e.g. shutter speed too low).</td>
     </tr>
-    <tr class="mavlink_field" id="CAMERA_FEEDBACK_CLOSEDLOOP">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="CAMERA_FEEDBACK_CLOSEDLOOP">
+     <td>3</td>
+     <td>
       <a href="#CAMERA_FEEDBACK_CLOSEDLOOP">CAMERA_FEEDBACK_CLOSEDLOOP</a>
      </td>
-     <td class="mavlink_comment">Closed loop feedback from camera, we know for sure it has successfully taken a picture.</td>
+     <td>Closed loop feedback from camera, we know for sure it has successfully taken a picture.</td>
     </tr>
-    <tr class="mavlink_field" id="CAMERA_FEEDBACK_OPENLOOP">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="CAMERA_FEEDBACK_OPENLOOP">
+     <td>4</td>
+     <td>
       <a href="#CAMERA_FEEDBACK_OPENLOOP">CAMERA_FEEDBACK_OPENLOOP</a>
      </td>
-     <td class="mavlink_comment">Open loop camera, an image trigger has been requested but we can't know for sure it has successfully taken a picture.</td>
+     <td>Open loop camera, an image trigger has been requested but we can't know for sure it has successfully taken a picture.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="MAV_MODE_GIMBAL">
+  <h3 id="MAV_MODE_GIMBAL">
    <a href="#MAV_MODE_GIMBAL">MAV_MODE_GIMBAL</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="MAV_MODE_GIMBAL_UNINITIALIZED">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_MODE_GIMBAL_UNINITIALIZED">
+     <td>0</td>
+     <td>
       <a href="#MAV_MODE_GIMBAL_UNINITIALIZED">MAV_MODE_GIMBAL_UNINITIALIZED</a>
      </td>
-     <td class="mavlink_comment">Gimbal is powered on but has not started initializing yet.</td>
+     <td>Gimbal is powered on but has not started initializing yet.</td>
     </tr>
-    <tr class="mavlink_field" id="MAV_MODE_GIMBAL_CALIBRATING_PITCH">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_MODE_GIMBAL_CALIBRATING_PITCH">
+     <td>1</td>
+     <td>
       <a href="#MAV_MODE_GIMBAL_CALIBRATING_PITCH">MAV_MODE_GIMBAL_CALIBRATING_PITCH</a>
      </td>
-     <td class="mavlink_comment">Gimbal is currently running calibration on the pitch axis.</td>
+     <td>Gimbal is currently running calibration on the pitch axis.</td>
     </tr>
-    <tr class="mavlink_field" id="MAV_MODE_GIMBAL_CALIBRATING_ROLL">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_MODE_GIMBAL_CALIBRATING_ROLL">
+     <td>2</td>
+     <td>
       <a href="#MAV_MODE_GIMBAL_CALIBRATING_ROLL">MAV_MODE_GIMBAL_CALIBRATING_ROLL</a>
      </td>
-     <td class="mavlink_comment">Gimbal is currently running calibration on the roll axis.</td>
+     <td>Gimbal is currently running calibration on the roll axis.</td>
     </tr>
-    <tr class="mavlink_field" id="MAV_MODE_GIMBAL_CALIBRATING_YAW">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_MODE_GIMBAL_CALIBRATING_YAW">
+     <td>3</td>
+     <td>
       <a href="#MAV_MODE_GIMBAL_CALIBRATING_YAW">MAV_MODE_GIMBAL_CALIBRATING_YAW</a>
      </td>
-     <td class="mavlink_comment">Gimbal is currently running calibration on the yaw axis.</td>
+     <td>Gimbal is currently running calibration on the yaw axis.</td>
     </tr>
-    <tr class="mavlink_field" id="MAV_MODE_GIMBAL_INITIALIZED">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_MODE_GIMBAL_INITIALIZED">
+     <td>4</td>
+     <td>
       <a href="#MAV_MODE_GIMBAL_INITIALIZED">MAV_MODE_GIMBAL_INITIALIZED</a>
      </td>
-     <td class="mavlink_comment">Gimbal has finished calibrating and initializing, but is relaxed pending reception of first rate command from copter.</td>
+     <td>Gimbal has finished calibrating and initializing, but is relaxed pending reception of first rate command from copter.</td>
     </tr>
-    <tr class="mavlink_field" id="MAV_MODE_GIMBAL_ACTIVE">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_MODE_GIMBAL_ACTIVE">
+     <td>5</td>
+     <td>
       <a href="#MAV_MODE_GIMBAL_ACTIVE">MAV_MODE_GIMBAL_ACTIVE</a>
      </td>
-     <td class="mavlink_comment">Gimbal is actively stabilizing.</td>
+     <td>Gimbal is actively stabilizing.</td>
     </tr>
-    <tr class="mavlink_field" id="MAV_MODE_GIMBAL_RATE_CMD_TIMEOUT">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_MODE_GIMBAL_RATE_CMD_TIMEOUT">
+     <td>6</td>
+     <td>
       <a href="#MAV_MODE_GIMBAL_RATE_CMD_TIMEOUT">MAV_MODE_GIMBAL_RATE_CMD_TIMEOUT</a>
      </td>
-     <td class="mavlink_comment">Gimbal is relaxed because it missed more than 10 expected rate command messages in a row. Gimbal will move back to active mode when it receives a new rate command.</td>
+     <td>Gimbal is relaxed because it missed more than 10 expected rate command messages in a row. Gimbal will move back to active mode when it receives a new rate command.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GIMBAL_AXIS">
+  <h3 id="GIMBAL_AXIS">
    <a href="#GIMBAL_AXIS">GIMBAL_AXIS</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GIMBAL_AXIS_YAW">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GIMBAL_AXIS_YAW">
+     <td>0</td>
+     <td>
       <a href="#GIMBAL_AXIS_YAW">GIMBAL_AXIS_YAW</a>
      </td>
-     <td class="mavlink_comment">Gimbal yaw axis.</td>
+     <td>Gimbal yaw axis.</td>
     </tr>
-    <tr class="mavlink_field" id="GIMBAL_AXIS_PITCH">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GIMBAL_AXIS_PITCH">
+     <td>1</td>
+     <td>
       <a href="#GIMBAL_AXIS_PITCH">GIMBAL_AXIS_PITCH</a>
      </td>
-     <td class="mavlink_comment">Gimbal pitch axis.</td>
+     <td>Gimbal pitch axis.</td>
     </tr>
-    <tr class="mavlink_field" id="GIMBAL_AXIS_ROLL">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GIMBAL_AXIS_ROLL">
+     <td>2</td>
+     <td>
       <a href="#GIMBAL_AXIS_ROLL">GIMBAL_AXIS_ROLL</a>
      </td>
-     <td class="mavlink_comment">Gimbal roll axis.</td>
+     <td>Gimbal roll axis.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GIMBAL_AXIS_CALIBRATION_STATUS">
+  <h3 id="GIMBAL_AXIS_CALIBRATION_STATUS">
    <a href="#GIMBAL_AXIS_CALIBRATION_STATUS">GIMBAL_AXIS_CALIBRATION_STATUS</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GIMBAL_AXIS_CALIBRATION_STATUS_IN_PROGRESS">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GIMBAL_AXIS_CALIBRATION_STATUS_IN_PROGRESS">
+     <td>0</td>
+     <td>
       <a href="#GIMBAL_AXIS_CALIBRATION_STATUS_IN_PROGRESS">GIMBAL_AXIS_CALIBRATION_STATUS_IN_PROGRESS</a>
      </td>
-     <td class="mavlink_comment">Axis calibration is in progress.</td>
+     <td>Axis calibration is in progress.</td>
     </tr>
-    <tr class="mavlink_field" id="GIMBAL_AXIS_CALIBRATION_STATUS_SUCCEEDED">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GIMBAL_AXIS_CALIBRATION_STATUS_SUCCEEDED">
+     <td>1</td>
+     <td>
       <a href="#GIMBAL_AXIS_CALIBRATION_STATUS_SUCCEEDED">GIMBAL_AXIS_CALIBRATION_STATUS_SUCCEEDED</a>
      </td>
-     <td class="mavlink_comment">Axis calibration succeeded.</td>
+     <td>Axis calibration succeeded.</td>
     </tr>
-    <tr class="mavlink_field" id="GIMBAL_AXIS_CALIBRATION_STATUS_FAILED">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GIMBAL_AXIS_CALIBRATION_STATUS_FAILED">
+     <td>2</td>
+     <td>
       <a href="#GIMBAL_AXIS_CALIBRATION_STATUS_FAILED">GIMBAL_AXIS_CALIBRATION_STATUS_FAILED</a>
      </td>
-     <td class="mavlink_comment">Axis calibration failed.</td>
+     <td>Axis calibration failed.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GIMBAL_AXIS_CALIBRATION_REQUIRED">
+  <h3 id="GIMBAL_AXIS_CALIBRATION_REQUIRED">
    <a href="#GIMBAL_AXIS_CALIBRATION_REQUIRED">GIMBAL_AXIS_CALIBRATION_REQUIRED</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GIMBAL_AXIS_CALIBRATION_REQUIRED_UNKNOWN">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GIMBAL_AXIS_CALIBRATION_REQUIRED_UNKNOWN">
+     <td>0</td>
+     <td>
       <a href="#GIMBAL_AXIS_CALIBRATION_REQUIRED_UNKNOWN">GIMBAL_AXIS_CALIBRATION_REQUIRED_UNKNOWN</a>
      </td>
-     <td class="mavlink_comment">Whether or not this axis requires calibration is unknown at this time.</td>
+     <td>Whether or not this axis requires calibration is unknown at this time.</td>
     </tr>
-    <tr class="mavlink_field" id="GIMBAL_AXIS_CALIBRATION_REQUIRED_TRUE">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GIMBAL_AXIS_CALIBRATION_REQUIRED_TRUE">
+     <td>1</td>
+     <td>
       <a href="#GIMBAL_AXIS_CALIBRATION_REQUIRED_TRUE">GIMBAL_AXIS_CALIBRATION_REQUIRED_TRUE</a>
      </td>
-     <td class="mavlink_comment">This axis requires calibration.</td>
+     <td>This axis requires calibration.</td>
     </tr>
-    <tr class="mavlink_field" id="GIMBAL_AXIS_CALIBRATION_REQUIRED_FALSE">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GIMBAL_AXIS_CALIBRATION_REQUIRED_FALSE">
+     <td>2</td>
+     <td>
       <a href="#GIMBAL_AXIS_CALIBRATION_REQUIRED_FALSE">GIMBAL_AXIS_CALIBRATION_REQUIRED_FALSE</a>
      </td>
-     <td class="mavlink_comment">This axis does not require calibration.</td>
+     <td>This axis does not require calibration.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_HEARTBEAT_STATUS">
+  <h3 id="GOPRO_HEARTBEAT_STATUS">
    <a href="#GOPRO_HEARTBEAT_STATUS">GOPRO_HEARTBEAT_STATUS</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_HEARTBEAT_STATUS_DISCONNECTED">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_HEARTBEAT_STATUS_DISCONNECTED">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_HEARTBEAT_STATUS_DISCONNECTED">GOPRO_HEARTBEAT_STATUS_DISCONNECTED</a>
      </td>
-     <td class="mavlink_comment">No GoPro connected.</td>
+     <td>No GoPro connected.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_HEARTBEAT_STATUS_INCOMPATIBLE">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_HEARTBEAT_STATUS_INCOMPATIBLE">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_HEARTBEAT_STATUS_INCOMPATIBLE">GOPRO_HEARTBEAT_STATUS_INCOMPATIBLE</a>
      </td>
-     <td class="mavlink_comment">The detected GoPro is not HeroBus compatible.</td>
+     <td>The detected GoPro is not HeroBus compatible.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_HEARTBEAT_STATUS_CONNECTED">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_HEARTBEAT_STATUS_CONNECTED">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_HEARTBEAT_STATUS_CONNECTED">GOPRO_HEARTBEAT_STATUS_CONNECTED</a>
      </td>
-     <td class="mavlink_comment">A HeroBus compatible GoPro is connected.</td>
+     <td>A HeroBus compatible GoPro is connected.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_HEARTBEAT_STATUS_ERROR">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_HEARTBEAT_STATUS_ERROR">
+     <td>3</td>
+     <td>
       <a href="#GOPRO_HEARTBEAT_STATUS_ERROR">GOPRO_HEARTBEAT_STATUS_ERROR</a>
      </td>
-     <td class="mavlink_comment">An unrecoverable error was encountered with the connected GoPro, it may require a power cycle.</td>
+     <td>An unrecoverable error was encountered with the connected GoPro, it may require a power cycle.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_HEARTBEAT_FLAGS">
+  <h3 id="GOPRO_HEARTBEAT_FLAGS">
    <a href="#GOPRO_HEARTBEAT_FLAGS">GOPRO_HEARTBEAT_FLAGS</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_FLAG_RECORDING">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FLAG_RECORDING">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_FLAG_RECORDING">GOPRO_FLAG_RECORDING</a>
      </td>
-     <td class="mavlink_comment">GoPro is currently recording.</td>
+     <td>GoPro is currently recording.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_REQUEST_STATUS">
+  <h3 id="GOPRO_REQUEST_STATUS">
    <a href="#GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_REQUEST_SUCCESS">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_REQUEST_SUCCESS">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_REQUEST_SUCCESS">GOPRO_REQUEST_SUCCESS</a>
      </td>
-     <td class="mavlink_comment">The write message with ID indicated succeeded.</td>
+     <td>The write message with ID indicated succeeded.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_REQUEST_FAILED">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_REQUEST_FAILED">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_REQUEST_FAILED">GOPRO_REQUEST_FAILED</a>
      </td>
-     <td class="mavlink_comment">The write message with ID indicated failed.</td>
+     <td>The write message with ID indicated failed.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_COMMAND">
+  <h3 id="GOPRO_COMMAND">
    <a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_POWER">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_POWER">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_COMMAND_POWER">GOPRO_COMMAND_POWER</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_CAPTURE_MODE">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_CAPTURE_MODE">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_COMMAND_CAPTURE_MODE">GOPRO_COMMAND_CAPTURE_MODE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_SHUTTER">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_SHUTTER">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_COMMAND_SHUTTER">GOPRO_COMMAND_SHUTTER</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (___/Set).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_BATTERY">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_BATTERY">
+     <td>3</td>
+     <td>
       <a href="#GOPRO_COMMAND_BATTERY">GOPRO_COMMAND_BATTERY</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/___).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_MODEL">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_MODEL">
+     <td>4</td>
+     <td>
       <a href="#GOPRO_COMMAND_MODEL">GOPRO_COMMAND_MODEL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/___).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_VIDEO_SETTINGS">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_VIDEO_SETTINGS">
+     <td>5</td>
+     <td>
       <a href="#GOPRO_COMMAND_VIDEO_SETTINGS">GOPRO_COMMAND_VIDEO_SETTINGS</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_LOW_LIGHT">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_LOW_LIGHT">
+     <td>6</td>
+     <td>
       <a href="#GOPRO_COMMAND_LOW_LIGHT">GOPRO_COMMAND_LOW_LIGHT</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_PHOTO_RESOLUTION">
-     <td class="mavlink_type" valign="top">7</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_PHOTO_RESOLUTION">
+     <td>7</td>
+     <td>
       <a href="#GOPRO_COMMAND_PHOTO_RESOLUTION">GOPRO_COMMAND_PHOTO_RESOLUTION</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_PHOTO_BURST_RATE">
-     <td class="mavlink_type" valign="top">8</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_PHOTO_BURST_RATE">
+     <td>8</td>
+     <td>
       <a href="#GOPRO_COMMAND_PHOTO_BURST_RATE">GOPRO_COMMAND_PHOTO_BURST_RATE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_PROTUNE">
-     <td class="mavlink_type" valign="top">9</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_PROTUNE">
+     <td>9</td>
+     <td>
       <a href="#GOPRO_COMMAND_PROTUNE">GOPRO_COMMAND_PROTUNE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_PROTUNE_WHITE_BALANCE">
-     <td class="mavlink_type" valign="top">10</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_PROTUNE_WHITE_BALANCE">
+     <td>10</td>
+     <td>
       <a href="#GOPRO_COMMAND_PROTUNE_WHITE_BALANCE">GOPRO_COMMAND_PROTUNE_WHITE_BALANCE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set) Hero 3+ Only.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_PROTUNE_COLOUR">
-     <td class="mavlink_type" valign="top">11</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_PROTUNE_COLOUR">
+     <td>11</td>
+     <td>
       <a href="#GOPRO_COMMAND_PROTUNE_COLOUR">GOPRO_COMMAND_PROTUNE_COLOUR</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set) Hero 3+ Only.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_PROTUNE_GAIN">
-     <td class="mavlink_type" valign="top">12</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_PROTUNE_GAIN">
+     <td>12</td>
+     <td>
       <a href="#GOPRO_COMMAND_PROTUNE_GAIN">GOPRO_COMMAND_PROTUNE_GAIN</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set) Hero 3+ Only.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_PROTUNE_SHARPNESS">
-     <td class="mavlink_type" valign="top">13</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_PROTUNE_SHARPNESS">
+     <td>13</td>
+     <td>
       <a href="#GOPRO_COMMAND_PROTUNE_SHARPNESS">GOPRO_COMMAND_PROTUNE_SHARPNESS</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set) Hero 3+ Only.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_PROTUNE_EXPOSURE">
-     <td class="mavlink_type" valign="top">14</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_PROTUNE_EXPOSURE">
+     <td>14</td>
+     <td>
       <a href="#GOPRO_COMMAND_PROTUNE_EXPOSURE">GOPRO_COMMAND_PROTUNE_EXPOSURE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set) Hero 3+ Only.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_TIME">
-     <td class="mavlink_type" valign="top">15</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_TIME">
+     <td>15</td>
+     <td>
       <a href="#GOPRO_COMMAND_TIME">GOPRO_COMMAND_TIME</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_COMMAND_CHARGING">
-     <td class="mavlink_type" valign="top">16</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_COMMAND_CHARGING">
+     <td>16</td>
+     <td>
       <a href="#GOPRO_COMMAND_CHARGING">GOPRO_COMMAND_CHARGING</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (Get/Set).
      </td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_CAPTURE_MODE">
+  <h3 id="GOPRO_CAPTURE_MODE">
    <a href="#GOPRO_CAPTURE_MODE">GOPRO_CAPTURE_MODE</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_CAPTURE_MODE_VIDEO">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_CAPTURE_MODE_VIDEO">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_CAPTURE_MODE_VIDEO">GOPRO_CAPTURE_MODE_VIDEO</a>
      </td>
-     <td class="mavlink_comment">Video mode.</td>
+     <td>Video mode.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_CAPTURE_MODE_PHOTO">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_CAPTURE_MODE_PHOTO">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_CAPTURE_MODE_PHOTO">GOPRO_CAPTURE_MODE_PHOTO</a>
      </td>
-     <td class="mavlink_comment">Photo mode.</td>
+     <td>Photo mode.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_CAPTURE_MODE_BURST">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_CAPTURE_MODE_BURST">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_CAPTURE_MODE_BURST">GOPRO_CAPTURE_MODE_BURST</a>
      </td>
-     <td class="mavlink_comment">Burst mode, Hero 3+ only.</td>
+     <td>Burst mode, Hero 3+ only.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_CAPTURE_MODE_TIME_LAPSE">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_CAPTURE_MODE_TIME_LAPSE">
+     <td>3</td>
+     <td>
       <a href="#GOPRO_CAPTURE_MODE_TIME_LAPSE">GOPRO_CAPTURE_MODE_TIME_LAPSE</a>
      </td>
-     <td class="mavlink_comment">Time lapse mode, Hero 3+ only.</td>
+     <td>Time lapse mode, Hero 3+ only.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_CAPTURE_MODE_MULTI_SHOT">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_CAPTURE_MODE_MULTI_SHOT">
+     <td>4</td>
+     <td>
       <a href="#GOPRO_CAPTURE_MODE_MULTI_SHOT">GOPRO_CAPTURE_MODE_MULTI_SHOT</a>
      </td>
-     <td class="mavlink_comment">Multi shot mode, Hero 4 only.</td>
+     <td>Multi shot mode, Hero 4 only.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_CAPTURE_MODE_PLAYBACK">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_CAPTURE_MODE_PLAYBACK">
+     <td>5</td>
+     <td>
       <a href="#GOPRO_CAPTURE_MODE_PLAYBACK">GOPRO_CAPTURE_MODE_PLAYBACK</a>
      </td>
-     <td class="mavlink_comment">Playback mode, Hero 4 only, silver only except when LCD or HDMI is connected to black.</td>
+     <td>Playback mode, Hero 4 only, silver only except when LCD or HDMI is connected to black.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_CAPTURE_MODE_SETUP">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_CAPTURE_MODE_SETUP">
+     <td>6</td>
+     <td>
       <a href="#GOPRO_CAPTURE_MODE_SETUP">GOPRO_CAPTURE_MODE_SETUP</a>
      </td>
-     <td class="mavlink_comment">Playback mode, Hero 4 only.</td>
+     <td>Playback mode, Hero 4 only.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_CAPTURE_MODE_UNKNOWN">
-     <td class="mavlink_type" valign="top">255</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_CAPTURE_MODE_UNKNOWN">
+     <td>255</td>
+     <td>
       <a href="#GOPRO_CAPTURE_MODE_UNKNOWN">GOPRO_CAPTURE_MODE_UNKNOWN</a>
      </td>
-     <td class="mavlink_comment">Mode not yet known.</td>
+     <td>Mode not yet known.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_RESOLUTION">
+  <h3 id="GOPRO_RESOLUTION">
    <a href="#GOPRO_RESOLUTION">GOPRO_RESOLUTION</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_480p">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_480p">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_480p">GOPRO_RESOLUTION_480p</a>
      </td>
-     <td class="mavlink_comment">848 x 480 (480p).</td>
+     <td>848 x 480 (480p).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_720p">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_720p">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_720p">GOPRO_RESOLUTION_720p</a>
      </td>
-     <td class="mavlink_comment">1280 x 720 (720p).</td>
+     <td>1280 x 720 (720p).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_960p">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_960p">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_960p">GOPRO_RESOLUTION_960p</a>
      </td>
-     <td class="mavlink_comment">1280 x 960 (960p).</td>
+     <td>1280 x 960 (960p).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_1080p">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_1080p">
+     <td>3</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_1080p">GOPRO_RESOLUTION_1080p</a>
      </td>
-     <td class="mavlink_comment">1920 x 1080 (1080p).</td>
+     <td>1920 x 1080 (1080p).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_1440p">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_1440p">
+     <td>4</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_1440p">GOPRO_RESOLUTION_1440p</a>
      </td>
-     <td class="mavlink_comment">1920 x 1440 (1440p).</td>
+     <td>1920 x 1440 (1440p).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_2_7k_17_9">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_2_7k_17_9">
+     <td>5</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_2_7k_17_9">GOPRO_RESOLUTION_2_7k_17_9</a>
      </td>
-     <td class="mavlink_comment">2704 x 1440 (2.7k-17:9).</td>
+     <td>2704 x 1440 (2.7k-17:9).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_2_7k_16_9">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_2_7k_16_9">
+     <td>6</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_2_7k_16_9">GOPRO_RESOLUTION_2_7k_16_9</a>
      </td>
-     <td class="mavlink_comment">2704 x 1524 (2.7k-16:9).</td>
+     <td>2704 x 1524 (2.7k-16:9).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_2_7k_4_3">
-     <td class="mavlink_type" valign="top">7</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_2_7k_4_3">
+     <td>7</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_2_7k_4_3">GOPRO_RESOLUTION_2_7k_4_3</a>
      </td>
-     <td class="mavlink_comment">2704 x 2028 (2.7k-4:3).</td>
+     <td>2704 x 2028 (2.7k-4:3).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_4k_16_9">
-     <td class="mavlink_type" valign="top">8</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_4k_16_9">
+     <td>8</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_4k_16_9">GOPRO_RESOLUTION_4k_16_9</a>
      </td>
-     <td class="mavlink_comment">3840 x 2160 (4k-16:9).</td>
+     <td>3840 x 2160 (4k-16:9).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_4k_17_9">
-     <td class="mavlink_type" valign="top">9</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_4k_17_9">
+     <td>9</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_4k_17_9">GOPRO_RESOLUTION_4k_17_9</a>
      </td>
-     <td class="mavlink_comment">4096 x 2160 (4k-17:9).</td>
+     <td>4096 x 2160 (4k-17:9).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_720p_SUPERVIEW">
-     <td class="mavlink_type" valign="top">10</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_720p_SUPERVIEW">
+     <td>10</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_720p_SUPERVIEW">GOPRO_RESOLUTION_720p_SUPERVIEW</a>
      </td>
-     <td class="mavlink_comment">1280 x 720 (720p-SuperView).</td>
+     <td>1280 x 720 (720p-SuperView).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_1080p_SUPERVIEW">
-     <td class="mavlink_type" valign="top">11</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_1080p_SUPERVIEW">
+     <td>11</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_1080p_SUPERVIEW">GOPRO_RESOLUTION_1080p_SUPERVIEW</a>
      </td>
-     <td class="mavlink_comment">1920 x 1080 (1080p-SuperView).</td>
+     <td>1920 x 1080 (1080p-SuperView).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_2_7k_SUPERVIEW">
-     <td class="mavlink_type" valign="top">12</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_2_7k_SUPERVIEW">
+     <td>12</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_2_7k_SUPERVIEW">GOPRO_RESOLUTION_2_7k_SUPERVIEW</a>
      </td>
-     <td class="mavlink_comment">2704 x 1520 (2.7k-SuperView).</td>
+     <td>2704 x 1520 (2.7k-SuperView).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_RESOLUTION_4k_SUPERVIEW">
-     <td class="mavlink_type" valign="top">13</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_RESOLUTION_4k_SUPERVIEW">
+     <td>13</td>
+     <td>
       <a href="#GOPRO_RESOLUTION_4k_SUPERVIEW">GOPRO_RESOLUTION_4k_SUPERVIEW</a>
      </td>
-     <td class="mavlink_comment">3840 x 2160 (4k-SuperView).</td>
+     <td>3840 x 2160 (4k-SuperView).</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_FRAME_RATE">
+  <h3 id="GOPRO_FRAME_RATE">
    <a href="#GOPRO_FRAME_RATE">GOPRO_FRAME_RATE</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_12">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_12">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_12">GOPRO_FRAME_RATE_12</a>
      </td>
-     <td class="mavlink_comment">12 FPS.</td>
+     <td>12 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_15">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_15">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_15">GOPRO_FRAME_RATE_15</a>
      </td>
-     <td class="mavlink_comment">15 FPS.</td>
+     <td>15 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_24">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_24">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_24">GOPRO_FRAME_RATE_24</a>
      </td>
-     <td class="mavlink_comment">24 FPS.</td>
+     <td>24 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_25">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_25">
+     <td>3</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_25">GOPRO_FRAME_RATE_25</a>
      </td>
-     <td class="mavlink_comment">25 FPS.</td>
+     <td>25 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_30">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_30">
+     <td>4</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_30">GOPRO_FRAME_RATE_30</a>
      </td>
-     <td class="mavlink_comment">30 FPS.</td>
+     <td>30 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_48">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_48">
+     <td>5</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_48">GOPRO_FRAME_RATE_48</a>
      </td>
-     <td class="mavlink_comment">48 FPS.</td>
+     <td>48 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_50">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_50">
+     <td>6</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_50">GOPRO_FRAME_RATE_50</a>
      </td>
-     <td class="mavlink_comment">50 FPS.</td>
+     <td>50 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_60">
-     <td class="mavlink_type" valign="top">7</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_60">
+     <td>7</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_60">GOPRO_FRAME_RATE_60</a>
      </td>
-     <td class="mavlink_comment">60 FPS.</td>
+     <td>60 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_80">
-     <td class="mavlink_type" valign="top">8</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_80">
+     <td>8</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_80">GOPRO_FRAME_RATE_80</a>
      </td>
-     <td class="mavlink_comment">80 FPS.</td>
+     <td>80 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_90">
-     <td class="mavlink_type" valign="top">9</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_90">
+     <td>9</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_90">GOPRO_FRAME_RATE_90</a>
      </td>
-     <td class="mavlink_comment">90 FPS.</td>
+     <td>90 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_100">
-     <td class="mavlink_type" valign="top">10</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_100">
+     <td>10</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_100">GOPRO_FRAME_RATE_100</a>
      </td>
-     <td class="mavlink_comment">100 FPS.</td>
+     <td>100 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_120">
-     <td class="mavlink_type" valign="top">11</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_120">
+     <td>11</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_120">GOPRO_FRAME_RATE_120</a>
      </td>
-     <td class="mavlink_comment">120 FPS.</td>
+     <td>120 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_240">
-     <td class="mavlink_type" valign="top">12</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_240">
+     <td>12</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_240">GOPRO_FRAME_RATE_240</a>
      </td>
-     <td class="mavlink_comment">240 FPS.</td>
+     <td>240 FPS.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FRAME_RATE_12_5">
-     <td class="mavlink_type" valign="top">13</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FRAME_RATE_12_5">
+     <td>13</td>
+     <td>
       <a href="#GOPRO_FRAME_RATE_12_5">GOPRO_FRAME_RATE_12_5</a>
      </td>
-     <td class="mavlink_comment">12.5 FPS.</td>
+     <td>12.5 FPS.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_FIELD_OF_VIEW">
+  <h3 id="GOPRO_FIELD_OF_VIEW">
    <a href="#GOPRO_FIELD_OF_VIEW">GOPRO_FIELD_OF_VIEW</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_FIELD_OF_VIEW_WIDE">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FIELD_OF_VIEW_WIDE">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_FIELD_OF_VIEW_WIDE">GOPRO_FIELD_OF_VIEW_WIDE</a>
      </td>
-     <td class="mavlink_comment">0x00: Wide.</td>
+     <td>0x00: Wide.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FIELD_OF_VIEW_MEDIUM">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FIELD_OF_VIEW_MEDIUM">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_FIELD_OF_VIEW_MEDIUM">GOPRO_FIELD_OF_VIEW_MEDIUM</a>
      </td>
-     <td class="mavlink_comment">0x01: Medium.</td>
+     <td>0x01: Medium.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_FIELD_OF_VIEW_NARROW">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_FIELD_OF_VIEW_NARROW">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_FIELD_OF_VIEW_NARROW">GOPRO_FIELD_OF_VIEW_NARROW</a>
      </td>
-     <td class="mavlink_comment">0x02: Narrow.</td>
+     <td>0x02: Narrow.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_VIDEO_SETTINGS_FLAGS">
+  <h3 id="GOPRO_VIDEO_SETTINGS_FLAGS">
    <a href="#GOPRO_VIDEO_SETTINGS_FLAGS">GOPRO_VIDEO_SETTINGS_FLAGS</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_VIDEO_SETTINGS_TV_MODE">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_VIDEO_SETTINGS_TV_MODE">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_VIDEO_SETTINGS_TV_MODE">GOPRO_VIDEO_SETTINGS_TV_MODE</a>
      </td>
-     <td class="mavlink_comment">0=NTSC, 1=PAL.</td>
+     <td>0=NTSC, 1=PAL.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_PHOTO_RESOLUTION">
+  <h3 id="GOPRO_PHOTO_RESOLUTION">
    <a href="#GOPRO_PHOTO_RESOLUTION">GOPRO_PHOTO_RESOLUTION</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_PHOTO_RESOLUTION_5MP_MEDIUM">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PHOTO_RESOLUTION_5MP_MEDIUM">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_PHOTO_RESOLUTION_5MP_MEDIUM">GOPRO_PHOTO_RESOLUTION_5MP_MEDIUM</a>
      </td>
-     <td class="mavlink_comment">5MP Medium.</td>
+     <td>5MP Medium.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PHOTO_RESOLUTION_7MP_MEDIUM">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PHOTO_RESOLUTION_7MP_MEDIUM">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_PHOTO_RESOLUTION_7MP_MEDIUM">GOPRO_PHOTO_RESOLUTION_7MP_MEDIUM</a>
      </td>
-     <td class="mavlink_comment">7MP Medium.</td>
+     <td>7MP Medium.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PHOTO_RESOLUTION_7MP_WIDE">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PHOTO_RESOLUTION_7MP_WIDE">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_PHOTO_RESOLUTION_7MP_WIDE">GOPRO_PHOTO_RESOLUTION_7MP_WIDE</a>
      </td>
-     <td class="mavlink_comment">7MP Wide.</td>
+     <td>7MP Wide.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PHOTO_RESOLUTION_10MP_WIDE">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PHOTO_RESOLUTION_10MP_WIDE">
+     <td>3</td>
+     <td>
       <a href="#GOPRO_PHOTO_RESOLUTION_10MP_WIDE">GOPRO_PHOTO_RESOLUTION_10MP_WIDE</a>
      </td>
-     <td class="mavlink_comment">10MP Wide.</td>
+     <td>10MP Wide.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PHOTO_RESOLUTION_12MP_WIDE">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PHOTO_RESOLUTION_12MP_WIDE">
+     <td>4</td>
+     <td>
       <a href="#GOPRO_PHOTO_RESOLUTION_12MP_WIDE">GOPRO_PHOTO_RESOLUTION_12MP_WIDE</a>
      </td>
-     <td class="mavlink_comment">12MP Wide.</td>
+     <td>12MP Wide.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_PROTUNE_WHITE_BALANCE">
+  <h3 id="GOPRO_PROTUNE_WHITE_BALANCE">
    <a href="#GOPRO_PROTUNE_WHITE_BALANCE">GOPRO_PROTUNE_WHITE_BALANCE</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_WHITE_BALANCE_AUTO">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_WHITE_BALANCE_AUTO">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_PROTUNE_WHITE_BALANCE_AUTO">GOPRO_PROTUNE_WHITE_BALANCE_AUTO</a>
      </td>
-     <td class="mavlink_comment">Auto.</td>
+     <td>Auto.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_WHITE_BALANCE_3000K">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_WHITE_BALANCE_3000K">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_PROTUNE_WHITE_BALANCE_3000K">GOPRO_PROTUNE_WHITE_BALANCE_3000K</a>
      </td>
-     <td class="mavlink_comment">3000K.</td>
+     <td>3000K.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_WHITE_BALANCE_5500K">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_WHITE_BALANCE_5500K">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_PROTUNE_WHITE_BALANCE_5500K">GOPRO_PROTUNE_WHITE_BALANCE_5500K</a>
      </td>
-     <td class="mavlink_comment">5500K.</td>
+     <td>5500K.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_WHITE_BALANCE_6500K">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_WHITE_BALANCE_6500K">
+     <td>3</td>
+     <td>
       <a href="#GOPRO_PROTUNE_WHITE_BALANCE_6500K">GOPRO_PROTUNE_WHITE_BALANCE_6500K</a>
      </td>
-     <td class="mavlink_comment">6500K.</td>
+     <td>6500K.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_WHITE_BALANCE_RAW">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_WHITE_BALANCE_RAW">
+     <td>4</td>
+     <td>
       <a href="#GOPRO_PROTUNE_WHITE_BALANCE_RAW">GOPRO_PROTUNE_WHITE_BALANCE_RAW</a>
      </td>
-     <td class="mavlink_comment">Camera Raw.</td>
+     <td>Camera Raw.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_PROTUNE_COLOUR">
+  <h3 id="GOPRO_PROTUNE_COLOUR">
    <a href="#GOPRO_PROTUNE_COLOUR">GOPRO_PROTUNE_COLOUR</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_COLOUR_STANDARD">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_COLOUR_STANDARD">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_PROTUNE_COLOUR_STANDARD">GOPRO_PROTUNE_COLOUR_STANDARD</a>
      </td>
-     <td class="mavlink_comment">Auto.</td>
+     <td>Auto.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_COLOUR_NEUTRAL">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_COLOUR_NEUTRAL">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_PROTUNE_COLOUR_NEUTRAL">GOPRO_PROTUNE_COLOUR_NEUTRAL</a>
      </td>
-     <td class="mavlink_comment">Neutral.</td>
+     <td>Neutral.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_PROTUNE_GAIN">
+  <h3 id="GOPRO_PROTUNE_GAIN">
    <a href="#GOPRO_PROTUNE_GAIN">GOPRO_PROTUNE_GAIN</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_GAIN_400">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_GAIN_400">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_PROTUNE_GAIN_400">GOPRO_PROTUNE_GAIN_400</a>
      </td>
-     <td class="mavlink_comment">ISO 400.</td>
+     <td>ISO 400.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_GAIN_800">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_GAIN_800">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_PROTUNE_GAIN_800">GOPRO_PROTUNE_GAIN_800</a>
      </td>
-     <td class="mavlink_comment">ISO 800 (Only Hero 4).</td>
+     <td>ISO 800 (Only Hero 4).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_GAIN_1600">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_GAIN_1600">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_PROTUNE_GAIN_1600">GOPRO_PROTUNE_GAIN_1600</a>
      </td>
-     <td class="mavlink_comment">ISO 1600.</td>
+     <td>ISO 1600.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_GAIN_3200">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_GAIN_3200">
+     <td>3</td>
+     <td>
       <a href="#GOPRO_PROTUNE_GAIN_3200">GOPRO_PROTUNE_GAIN_3200</a>
      </td>
-     <td class="mavlink_comment">ISO 3200 (Only Hero 4).</td>
+     <td>ISO 3200 (Only Hero 4).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_GAIN_6400">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_GAIN_6400">
+     <td>4</td>
+     <td>
       <a href="#GOPRO_PROTUNE_GAIN_6400">GOPRO_PROTUNE_GAIN_6400</a>
      </td>
-     <td class="mavlink_comment">ISO 6400.</td>
+     <td>ISO 6400.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_PROTUNE_SHARPNESS">
+  <h3 id="GOPRO_PROTUNE_SHARPNESS">
    <a href="#GOPRO_PROTUNE_SHARPNESS">GOPRO_PROTUNE_SHARPNESS</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_SHARPNESS_LOW">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_SHARPNESS_LOW">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_PROTUNE_SHARPNESS_LOW">GOPRO_PROTUNE_SHARPNESS_LOW</a>
      </td>
-     <td class="mavlink_comment">Low Sharpness.</td>
+     <td>Low Sharpness.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_SHARPNESS_MEDIUM">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_SHARPNESS_MEDIUM">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_PROTUNE_SHARPNESS_MEDIUM">GOPRO_PROTUNE_SHARPNESS_MEDIUM</a>
      </td>
-     <td class="mavlink_comment">Medium Sharpness.</td>
+     <td>Medium Sharpness.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_SHARPNESS_HIGH">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_SHARPNESS_HIGH">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_PROTUNE_SHARPNESS_HIGH">GOPRO_PROTUNE_SHARPNESS_HIGH</a>
      </td>
-     <td class="mavlink_comment">High Sharpness.</td>
+     <td>High Sharpness.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_PROTUNE_EXPOSURE">
+  <h3 id="GOPRO_PROTUNE_EXPOSURE">
    <a href="#GOPRO_PROTUNE_EXPOSURE">GOPRO_PROTUNE_EXPOSURE</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_NEG_5_0">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_NEG_5_0">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_NEG_5_0">GOPRO_PROTUNE_EXPOSURE_NEG_5_0</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       -5.0 EV (Hero 3+ Only).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_NEG_4_5">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_NEG_4_5">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_NEG_4_5">GOPRO_PROTUNE_EXPOSURE_NEG_4_5</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       -4.5 EV (Hero 3+ Only).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_NEG_4_0">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_NEG_4_0">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_NEG_4_0">GOPRO_PROTUNE_EXPOSURE_NEG_4_0</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       -4.0 EV (Hero 3+ Only).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_NEG_3_5">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_NEG_3_5">
+     <td>3</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_NEG_3_5">GOPRO_PROTUNE_EXPOSURE_NEG_3_5</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       -3.5 EV (Hero 3+ Only).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_NEG_3_0">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_NEG_3_0">
+     <td>4</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_NEG_3_0">GOPRO_PROTUNE_EXPOSURE_NEG_3_0</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       -3.0 EV (Hero 3+ Only).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_NEG_2_5">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_NEG_2_5">
+     <td>5</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_NEG_2_5">GOPRO_PROTUNE_EXPOSURE_NEG_2_5</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       -2.5 EV (Hero 3+ Only).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_NEG_2_0">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_NEG_2_0">
+     <td>6</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_NEG_2_0">GOPRO_PROTUNE_EXPOSURE_NEG_2_0</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       -2.0 EV.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_NEG_1_5">
-     <td class="mavlink_type" valign="top">7</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_NEG_1_5">
+     <td>7</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_NEG_1_5">GOPRO_PROTUNE_EXPOSURE_NEG_1_5</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       -1.5 EV.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_NEG_1_0">
-     <td class="mavlink_type" valign="top">8</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_NEG_1_0">
+     <td>8</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_NEG_1_0">GOPRO_PROTUNE_EXPOSURE_NEG_1_0</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       -1.0 EV.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_NEG_0_5">
-     <td class="mavlink_type" valign="top">9</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_NEG_0_5">
+     <td>9</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_NEG_0_5">GOPRO_PROTUNE_EXPOSURE_NEG_0_5</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       -0.5 EV.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_ZERO">
-     <td class="mavlink_type" valign="top">10</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_ZERO">
+     <td>10</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_ZERO">GOPRO_PROTUNE_EXPOSURE_ZERO</a>
      </td>
-     <td class="mavlink_comment">0.0 EV.</td>
+     <td>0.0 EV.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_POS_0_5">
-     <td class="mavlink_type" valign="top">11</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_POS_0_5">
+     <td>11</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_POS_0_5">GOPRO_PROTUNE_EXPOSURE_POS_0_5</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       +0.5 EV.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_POS_1_0">
-     <td class="mavlink_type" valign="top">12</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_POS_1_0">
+     <td>12</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_POS_1_0">GOPRO_PROTUNE_EXPOSURE_POS_1_0</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       +1.0 EV.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_POS_1_5">
-     <td class="mavlink_type" valign="top">13</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_POS_1_5">
+     <td>13</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_POS_1_5">GOPRO_PROTUNE_EXPOSURE_POS_1_5</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       +1.5 EV.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_POS_2_0">
-     <td class="mavlink_type" valign="top">14</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_POS_2_0">
+     <td>14</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_POS_2_0">GOPRO_PROTUNE_EXPOSURE_POS_2_0</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       +2.0 EV.
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_POS_2_5">
-     <td class="mavlink_type" valign="top">15</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_POS_2_5">
+     <td>15</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_POS_2_5">GOPRO_PROTUNE_EXPOSURE_POS_2_5</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       +2.5 EV (Hero 3+ Only).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_POS_3_0">
-     <td class="mavlink_type" valign="top">16</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_POS_3_0">
+     <td>16</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_POS_3_0">GOPRO_PROTUNE_EXPOSURE_POS_3_0</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       +3.0 EV (Hero 3+ Only).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_POS_3_5">
-     <td class="mavlink_type" valign="top">17</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_POS_3_5">
+     <td>17</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_POS_3_5">GOPRO_PROTUNE_EXPOSURE_POS_3_5</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       +3.5 EV (Hero 3+ Only).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_POS_4_0">
-     <td class="mavlink_type" valign="top">18</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_POS_4_0">
+     <td>18</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_POS_4_0">GOPRO_PROTUNE_EXPOSURE_POS_4_0</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       +4.0 EV (Hero 3+ Only).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_POS_4_5">
-     <td class="mavlink_type" valign="top">19</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_POS_4_5">
+     <td>19</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_POS_4_5">GOPRO_PROTUNE_EXPOSURE_POS_4_5</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       +4.5 EV (Hero 3+ Only).
      </td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_PROTUNE_EXPOSURE_POS_5_0">
-     <td class="mavlink_type" valign="top">20</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_PROTUNE_EXPOSURE_POS_5_0">
+     <td>20</td>
+     <td>
       <a href="#GOPRO_PROTUNE_EXPOSURE_POS_5_0">GOPRO_PROTUNE_EXPOSURE_POS_5_0</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       +5.0 EV (Hero 3+ Only).
      </td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_CHARGING">
+  <h3 id="GOPRO_CHARGING">
    <a href="#GOPRO_CHARGING">GOPRO_CHARGING</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_CHARGING_DISABLED">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_CHARGING_DISABLED">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_CHARGING_DISABLED">GOPRO_CHARGING_DISABLED</a>
      </td>
-     <td class="mavlink_comment">Charging disabled.</td>
+     <td>Charging disabled.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_CHARGING_ENABLED">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_CHARGING_ENABLED">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_CHARGING_ENABLED">GOPRO_CHARGING_ENABLED</a>
      </td>
-     <td class="mavlink_comment">Charging enabled.</td>
+     <td>Charging enabled.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_MODEL">
+  <h3 id="GOPRO_MODEL">
    <a href="#GOPRO_MODEL">GOPRO_MODEL</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_MODEL_UNKNOWN">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_MODEL_UNKNOWN">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_MODEL_UNKNOWN">GOPRO_MODEL_UNKNOWN</a>
      </td>
-     <td class="mavlink_comment">Unknown gopro model.</td>
+     <td>Unknown gopro model.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_MODEL_HERO_3_PLUS_SILVER">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_MODEL_HERO_3_PLUS_SILVER">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_MODEL_HERO_3_PLUS_SILVER">GOPRO_MODEL_HERO_3_PLUS_SILVER</a>
      </td>
-     <td class="mavlink_comment">Hero 3+ Silver (HeroBus not supported by GoPro).</td>
+     <td>Hero 3+ Silver (HeroBus not supported by GoPro).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_MODEL_HERO_3_PLUS_BLACK">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_MODEL_HERO_3_PLUS_BLACK">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_MODEL_HERO_3_PLUS_BLACK">GOPRO_MODEL_HERO_3_PLUS_BLACK</a>
      </td>
-     <td class="mavlink_comment">Hero 3+ Black.</td>
+     <td>Hero 3+ Black.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_MODEL_HERO_4_SILVER">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_MODEL_HERO_4_SILVER">
+     <td>3</td>
+     <td>
       <a href="#GOPRO_MODEL_HERO_4_SILVER">GOPRO_MODEL_HERO_4_SILVER</a>
      </td>
-     <td class="mavlink_comment">Hero 4 Silver.</td>
+     <td>Hero 4 Silver.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_MODEL_HERO_4_BLACK">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_MODEL_HERO_4_BLACK">
+     <td>4</td>
+     <td>
       <a href="#GOPRO_MODEL_HERO_4_BLACK">GOPRO_MODEL_HERO_4_BLACK</a>
      </td>
-     <td class="mavlink_comment">Hero 4 Black.</td>
+     <td>Hero 4 Black.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_BURST_RATE">
+  <h3 id="GOPRO_BURST_RATE">
    <a href="#GOPRO_BURST_RATE">GOPRO_BURST_RATE</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="GOPRO_BURST_RATE_3_IN_1_SECOND">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_BURST_RATE_3_IN_1_SECOND">
+     <td>0</td>
+     <td>
       <a href="#GOPRO_BURST_RATE_3_IN_1_SECOND">GOPRO_BURST_RATE_3_IN_1_SECOND</a>
      </td>
-     <td class="mavlink_comment">3 Shots / 1 Second.</td>
+     <td>3 Shots / 1 Second.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_BURST_RATE_5_IN_1_SECOND">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_BURST_RATE_5_IN_1_SECOND">
+     <td>1</td>
+     <td>
       <a href="#GOPRO_BURST_RATE_5_IN_1_SECOND">GOPRO_BURST_RATE_5_IN_1_SECOND</a>
      </td>
-     <td class="mavlink_comment">5 Shots / 1 Second.</td>
+     <td>5 Shots / 1 Second.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_BURST_RATE_10_IN_1_SECOND">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_BURST_RATE_10_IN_1_SECOND">
+     <td>2</td>
+     <td>
       <a href="#GOPRO_BURST_RATE_10_IN_1_SECOND">GOPRO_BURST_RATE_10_IN_1_SECOND</a>
      </td>
-     <td class="mavlink_comment">10 Shots / 1 Second.</td>
+     <td>10 Shots / 1 Second.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_BURST_RATE_10_IN_2_SECOND">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_BURST_RATE_10_IN_2_SECOND">
+     <td>3</td>
+     <td>
       <a href="#GOPRO_BURST_RATE_10_IN_2_SECOND">GOPRO_BURST_RATE_10_IN_2_SECOND</a>
      </td>
-     <td class="mavlink_comment">10 Shots / 2 Second.</td>
+     <td>10 Shots / 2 Second.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_BURST_RATE_10_IN_3_SECOND">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_BURST_RATE_10_IN_3_SECOND">
+     <td>4</td>
+     <td>
       <a href="#GOPRO_BURST_RATE_10_IN_3_SECOND">GOPRO_BURST_RATE_10_IN_3_SECOND</a>
      </td>
-     <td class="mavlink_comment">10 Shots / 3 Second (Hero 4 Only).</td>
+     <td>10 Shots / 3 Second (Hero 4 Only).</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_BURST_RATE_30_IN_1_SECOND">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_BURST_RATE_30_IN_1_SECOND">
+     <td>5</td>
+     <td>
       <a href="#GOPRO_BURST_RATE_30_IN_1_SECOND">GOPRO_BURST_RATE_30_IN_1_SECOND</a>
      </td>
-     <td class="mavlink_comment">30 Shots / 1 Second.</td>
+     <td>30 Shots / 1 Second.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_BURST_RATE_30_IN_2_SECOND">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_BURST_RATE_30_IN_2_SECOND">
+     <td>6</td>
+     <td>
       <a href="#GOPRO_BURST_RATE_30_IN_2_SECOND">GOPRO_BURST_RATE_30_IN_2_SECOND</a>
      </td>
-     <td class="mavlink_comment">30 Shots / 2 Second.</td>
+     <td>30 Shots / 2 Second.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_BURST_RATE_30_IN_3_SECOND">
-     <td class="mavlink_type" valign="top">7</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_BURST_RATE_30_IN_3_SECOND">
+     <td>7</td>
+     <td>
       <a href="#GOPRO_BURST_RATE_30_IN_3_SECOND">GOPRO_BURST_RATE_30_IN_3_SECOND</a>
      </td>
-     <td class="mavlink_comment">30 Shots / 3 Second.</td>
+     <td>30 Shots / 3 Second.</td>
     </tr>
-    <tr class="mavlink_field" id="GOPRO_BURST_RATE_30_IN_6_SECOND">
-     <td class="mavlink_type" valign="top">8</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="GOPRO_BURST_RATE_30_IN_6_SECOND">
+     <td>8</td>
+     <td>
       <a href="#GOPRO_BURST_RATE_30_IN_6_SECOND">GOPRO_BURST_RATE_30_IN_6_SECOND</a>
      </td>
-     <td class="mavlink_comment">30 Shots / 6 Second.</td>
+     <td>30 Shots / 6 Second.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="LED_CONTROL_PATTERN">
+  <h3 id="LED_CONTROL_PATTERN">
    <a href="#LED_CONTROL_PATTERN">LED_CONTROL_PATTERN</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="LED_CONTROL_PATTERN_OFF">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LED_CONTROL_PATTERN_OFF">
+     <td>0</td>
+     <td>
       <a href="#LED_CONTROL_PATTERN_OFF">LED_CONTROL_PATTERN_OFF</a>
      </td>
-     <td class="mavlink_comment">LED patterns off (return control to regular vehicle control).</td>
+     <td>LED patterns off (return control to regular vehicle control).</td>
     </tr>
-    <tr class="mavlink_field" id="LED_CONTROL_PATTERN_FIRMWAREUPDATE">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LED_CONTROL_PATTERN_FIRMWAREUPDATE">
+     <td>1</td>
+     <td>
       <a href="#LED_CONTROL_PATTERN_FIRMWAREUPDATE">LED_CONTROL_PATTERN_FIRMWAREUPDATE</a>
      </td>
-     <td class="mavlink_comment">LEDs show pattern during firmware update.</td>
+     <td>LEDs show pattern during firmware update.</td>
     </tr>
-    <tr class="mavlink_field" id="LED_CONTROL_PATTERN_CUSTOM">
-     <td class="mavlink_type" valign="top">255</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="LED_CONTROL_PATTERN_CUSTOM">
+     <td>255</td>
+     <td>
       <a href="#LED_CONTROL_PATTERN_CUSTOM">LED_CONTROL_PATTERN_CUSTOM</a>
      </td>
-     <td class="mavlink_comment">Custom Pattern using custom bytes fields.</td>
+     <td>Custom Pattern using custom bytes fields.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="EKF_STATUS_FLAGS">
+  <h3 id="EKF_STATUS_FLAGS">
    <a href="#EKF_STATUS_FLAGS">EKF_STATUS_FLAGS</a>
   </h3>
-  <p class="description">Flags in EKF_STATUS message.</p>
+  <p>Flags in EKF_STATUS message.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="EKF_ATTITUDE">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="EKF_ATTITUDE">
+     <td>1</td>
+     <td>
       <a href="#EKF_ATTITUDE">EKF_ATTITUDE</a>
      </td>
-     <td class="mavlink_comment">Set if EKF's attitude estimate is good.</td>
+     <td>Set if EKF's attitude estimate is good.</td>
     </tr>
-    <tr class="mavlink_field" id="EKF_VELOCITY_HORIZ">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="EKF_VELOCITY_HORIZ">
+     <td>2</td>
+     <td>
       <a href="#EKF_VELOCITY_HORIZ">EKF_VELOCITY_HORIZ</a>
      </td>
-     <td class="mavlink_comment">Set if EKF's horizontal velocity estimate is good.</td>
+     <td>Set if EKF's horizontal velocity estimate is good.</td>
     </tr>
-    <tr class="mavlink_field" id="EKF_VELOCITY_VERT">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="EKF_VELOCITY_VERT">
+     <td>4</td>
+     <td>
       <a href="#EKF_VELOCITY_VERT">EKF_VELOCITY_VERT</a>
      </td>
-     <td class="mavlink_comment">Set if EKF's vertical velocity estimate is good.</td>
+     <td>Set if EKF's vertical velocity estimate is good.</td>
     </tr>
-    <tr class="mavlink_field" id="EKF_POS_HORIZ_REL">
-     <td class="mavlink_type" valign="top">8</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="EKF_POS_HORIZ_REL">
+     <td>8</td>
+     <td>
       <a href="#EKF_POS_HORIZ_REL">EKF_POS_HORIZ_REL</a>
      </td>
-     <td class="mavlink_comment">Set if EKF's horizontal position (relative) estimate is good.</td>
+     <td>Set if EKF's horizontal position (relative) estimate is good.</td>
     </tr>
-    <tr class="mavlink_field" id="EKF_POS_HORIZ_ABS">
-     <td class="mavlink_type" valign="top">16</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="EKF_POS_HORIZ_ABS">
+     <td>16</td>
+     <td>
       <a href="#EKF_POS_HORIZ_ABS">EKF_POS_HORIZ_ABS</a>
      </td>
-     <td class="mavlink_comment">Set if EKF's horizontal position (absolute) estimate is good.</td>
+     <td>Set if EKF's horizontal position (absolute) estimate is good.</td>
     </tr>
-    <tr class="mavlink_field" id="EKF_POS_VERT_ABS">
-     <td class="mavlink_type" valign="top">32</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="EKF_POS_VERT_ABS">
+     <td>32</td>
+     <td>
       <a href="#EKF_POS_VERT_ABS">EKF_POS_VERT_ABS</a>
      </td>
-     <td class="mavlink_comment">Set if EKF's vertical position (absolute) estimate is good.</td>
+     <td>Set if EKF's vertical position (absolute) estimate is good.</td>
     </tr>
-    <tr class="mavlink_field" id="EKF_POS_VERT_AGL">
-     <td class="mavlink_type" valign="top">64</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="EKF_POS_VERT_AGL">
+     <td>64</td>
+     <td>
       <a href="#EKF_POS_VERT_AGL">EKF_POS_VERT_AGL</a>
      </td>
-     <td class="mavlink_comment">Set if EKF's vertical position (above ground) estimate is good.</td>
+     <td>Set if EKF's vertical position (above ground) estimate is good.</td>
     </tr>
-    <tr class="mavlink_field" id="EKF_CONST_POS_MODE">
-     <td class="mavlink_type" valign="top">128</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="EKF_CONST_POS_MODE">
+     <td>128</td>
+     <td>
       <a href="#EKF_CONST_POS_MODE">EKF_CONST_POS_MODE</a>
      </td>
-     <td class="mavlink_comment">EKF is in constant position mode and does not know it's absolute or relative position.</td>
+     <td>EKF is in constant position mode and does not know it's absolute or relative position.</td>
     </tr>
-    <tr class="mavlink_field" id="EKF_PRED_POS_HORIZ_REL">
-     <td class="mavlink_type" valign="top">256</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="EKF_PRED_POS_HORIZ_REL">
+     <td>256</td>
+     <td>
       <a href="#EKF_PRED_POS_HORIZ_REL">EKF_PRED_POS_HORIZ_REL</a>
      </td>
-     <td class="mavlink_comment">Set if EKF's predicted horizontal position (relative) estimate is good.</td>
+     <td>Set if EKF's predicted horizontal position (relative) estimate is good.</td>
     </tr>
-    <tr class="mavlink_field" id="EKF_PRED_POS_HORIZ_ABS">
-     <td class="mavlink_type" valign="top">512</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="EKF_PRED_POS_HORIZ_ABS">
+     <td>512</td>
+     <td>
       <a href="#EKF_PRED_POS_HORIZ_ABS">EKF_PRED_POS_HORIZ_ABS</a>
      </td>
-     <td class="mavlink_comment">Set if EKF's predicted horizontal position (absolute) estimate is good.</td>
+     <td>Set if EKF's predicted horizontal position (absolute) estimate is good.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="PID_TUNING_AXIS">
+  <h3 id="PID_TUNING_AXIS">
    <a href="#PID_TUNING_AXIS">PID_TUNING_AXIS</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="PID_TUNING_ROLL">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PID_TUNING_ROLL">
+     <td>1</td>
+     <td>
       <a href="#PID_TUNING_ROLL">PID_TUNING_ROLL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PID_TUNING_PITCH">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PID_TUNING_PITCH">
+     <td>2</td>
+     <td>
       <a href="#PID_TUNING_PITCH">PID_TUNING_PITCH</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PID_TUNING_YAW">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PID_TUNING_YAW">
+     <td>3</td>
+     <td>
       <a href="#PID_TUNING_YAW">PID_TUNING_YAW</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PID_TUNING_ACCZ">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PID_TUNING_ACCZ">
+     <td>4</td>
+     <td>
       <a href="#PID_TUNING_ACCZ">PID_TUNING_ACCZ</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PID_TUNING_STEER">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PID_TUNING_STEER">
+     <td>5</td>
+     <td>
       <a href="#PID_TUNING_STEER">PID_TUNING_STEER</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PID_TUNING_LANDING">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PID_TUNING_LANDING">
+     <td>6</td>
+     <td>
       <a href="#PID_TUNING_LANDING">PID_TUNING_LANDING</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="MAG_CAL_STATUS">
+  <h3 id="MAG_CAL_STATUS">
    <a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
   </h3>
-  <p class="description">
+  <p>
   </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="MAG_CAL_NOT_STARTED">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAG_CAL_NOT_STARTED">
+     <td>0</td>
+     <td>
       <a href="#MAG_CAL_NOT_STARTED">MAG_CAL_NOT_STARTED</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAG_CAL_WAITING_TO_START">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAG_CAL_WAITING_TO_START">
+     <td>1</td>
+     <td>
       <a href="#MAG_CAL_WAITING_TO_START">MAG_CAL_WAITING_TO_START</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAG_CAL_RUNNING_STEP_ONE">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAG_CAL_RUNNING_STEP_ONE">
+     <td>2</td>
+     <td>
       <a href="#MAG_CAL_RUNNING_STEP_ONE">MAG_CAL_RUNNING_STEP_ONE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAG_CAL_RUNNING_STEP_TWO">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAG_CAL_RUNNING_STEP_TWO">
+     <td>3</td>
+     <td>
       <a href="#MAG_CAL_RUNNING_STEP_TWO">MAG_CAL_RUNNING_STEP_TWO</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAG_CAL_SUCCESS">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAG_CAL_SUCCESS">
+     <td>4</td>
+     <td>
       <a href="#MAG_CAL_SUCCESS">MAG_CAL_SUCCESS</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAG_CAL_FAILED">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAG_CAL_FAILED">
+     <td>5</td>
+     <td>
       <a href="#MAG_CAL_FAILED">MAG_CAL_FAILED</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="MAG_CAL_BAD_ORIENTATION">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAG_CAL_BAD_ORIENTATION">
+     <td>6</td>
+     <td>
       <a href="#MAG_CAL_BAD_ORIENTATION">MAG_CAL_BAD_ORIENTATION</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">
+  <h3 id="MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">
    <a href="#MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS</a>
   </h3>
-  <p class="description">Special ACK block numbers control activation of dataflash log streaming.</p>
+  <p>Special ACK block numbers control activation of dataflash log streaming.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="MAV_REMOTE_LOG_DATA_BLOCK_STOP">
-     <td class="mavlink_type" valign="top">2147483645</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_REMOTE_LOG_DATA_BLOCK_STOP">
+     <td>2147483645</td>
+     <td>
       <a href="#MAV_REMOTE_LOG_DATA_BLOCK_STOP">MAV_REMOTE_LOG_DATA_BLOCK_STOP</a>
      </td>
-     <td class="mavlink_comment">UAV to stop sending DataFlash blocks.</td>
+     <td>UAV to stop sending DataFlash blocks.</td>
     </tr>
-    <tr class="mavlink_field" id="MAV_REMOTE_LOG_DATA_BLOCK_START">
-     <td class="mavlink_type" valign="top">2147483646</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_REMOTE_LOG_DATA_BLOCK_START">
+     <td>2147483646</td>
+     <td>
       <a href="#MAV_REMOTE_LOG_DATA_BLOCK_START">MAV_REMOTE_LOG_DATA_BLOCK_START</a>
      </td>
-     <td class="mavlink_comment">UAV to start sending DataFlash blocks.</td>
+     <td>UAV to start sending DataFlash blocks.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="MAV_REMOTE_LOG_DATA_BLOCK_STATUSES">
+  <h3 id="MAV_REMOTE_LOG_DATA_BLOCK_STATUSES">
    <a href="#MAV_REMOTE_LOG_DATA_BLOCK_STATUSES">MAV_REMOTE_LOG_DATA_BLOCK_STATUSES</a>
   </h3>
-  <p class="description">Possible remote log data block statuses.</p>
+  <p>Possible remote log data block statuses.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="MAV_REMOTE_LOG_DATA_BLOCK_NACK">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_REMOTE_LOG_DATA_BLOCK_NACK">
+     <td>0</td>
+     <td>
       <a href="#MAV_REMOTE_LOG_DATA_BLOCK_NACK">MAV_REMOTE_LOG_DATA_BLOCK_NACK</a>
      </td>
-     <td class="mavlink_comment">This block has NOT been received.</td>
+     <td>This block has NOT been received.</td>
     </tr>
-    <tr class="mavlink_field" id="MAV_REMOTE_LOG_DATA_BLOCK_ACK">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="MAV_REMOTE_LOG_DATA_BLOCK_ACK">
+     <td>1</td>
+     <td>
       <a href="#MAV_REMOTE_LOG_DATA_BLOCK_ACK">MAV_REMOTE_LOG_DATA_BLOCK_ACK</a>
      </td>
-     <td class="mavlink_comment">This block has been received.</td>
+     <td>This block has been received.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DEVICE_OP_BUSTYPE">
+  <h3 id="DEVICE_OP_BUSTYPE">
    <a href="#DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
   </h3>
-  <p class="description">Bus types for device operations.</p>
+  <p>Bus types for device operations.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="DEVICE_OP_BUSTYPE_I2C">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="DEVICE_OP_BUSTYPE_I2C">
+     <td>0</td>
+     <td>
       <a href="#DEVICE_OP_BUSTYPE_I2C">DEVICE_OP_BUSTYPE_I2C</a>
      </td>
-     <td class="mavlink_comment">I2C Device operation.</td>
+     <td>I2C Device operation.</td>
     </tr>
-    <tr class="mavlink_field" id="DEVICE_OP_BUSTYPE_SPI">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="DEVICE_OP_BUSTYPE_SPI">
+     <td>1</td>
+     <td>
       <a href="#DEVICE_OP_BUSTYPE_SPI">DEVICE_OP_BUSTYPE_SPI</a>
      </td>
-     <td class="mavlink_comment">SPI Device operation.</td>
+     <td>SPI Device operation.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DEEPSTALL_STAGE">
+  <h3 id="DEEPSTALL_STAGE">
    <a href="#DEEPSTALL_STAGE">DEEPSTALL_STAGE</a>
   </h3>
-  <p class="description">Deepstall flight stage.</p>
+  <p>Deepstall flight stage.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="DEEPSTALL_STAGE_FLY_TO_LANDING">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="DEEPSTALL_STAGE_FLY_TO_LANDING">
+     <td>0</td>
+     <td>
       <a href="#DEEPSTALL_STAGE_FLY_TO_LANDING">DEEPSTALL_STAGE_FLY_TO_LANDING</a>
      </td>
-     <td class="mavlink_comment">Flying to the landing point.</td>
+     <td>Flying to the landing point.</td>
     </tr>
-    <tr class="mavlink_field" id="DEEPSTALL_STAGE_ESTIMATE_WIND">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="DEEPSTALL_STAGE_ESTIMATE_WIND">
+     <td>1</td>
+     <td>
       <a href="#DEEPSTALL_STAGE_ESTIMATE_WIND">DEEPSTALL_STAGE_ESTIMATE_WIND</a>
      </td>
-     <td class="mavlink_comment">Building an estimate of the wind.</td>
+     <td>Building an estimate of the wind.</td>
     </tr>
-    <tr class="mavlink_field" id="DEEPSTALL_STAGE_WAIT_FOR_BREAKOUT">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="DEEPSTALL_STAGE_WAIT_FOR_BREAKOUT">
+     <td>2</td>
+     <td>
       <a href="#DEEPSTALL_STAGE_WAIT_FOR_BREAKOUT">DEEPSTALL_STAGE_WAIT_FOR_BREAKOUT</a>
      </td>
-     <td class="mavlink_comment">Waiting to breakout of the loiter to fly the approach.</td>
+     <td>Waiting to breakout of the loiter to fly the approach.</td>
     </tr>
-    <tr class="mavlink_field" id="DEEPSTALL_STAGE_FLY_TO_ARC">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="DEEPSTALL_STAGE_FLY_TO_ARC">
+     <td>3</td>
+     <td>
       <a href="#DEEPSTALL_STAGE_FLY_TO_ARC">DEEPSTALL_STAGE_FLY_TO_ARC</a>
      </td>
-     <td class="mavlink_comment">Flying to the first arc point to turn around to the landing point.</td>
+     <td>Flying to the first arc point to turn around to the landing point.</td>
     </tr>
-    <tr class="mavlink_field" id="DEEPSTALL_STAGE_ARC">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="DEEPSTALL_STAGE_ARC">
+     <td>4</td>
+     <td>
       <a href="#DEEPSTALL_STAGE_ARC">DEEPSTALL_STAGE_ARC</a>
      </td>
-     <td class="mavlink_comment">Turning around back to the deepstall landing point.</td>
+     <td>Turning around back to the deepstall landing point.</td>
     </tr>
-    <tr class="mavlink_field" id="DEEPSTALL_STAGE_APPROACH">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="DEEPSTALL_STAGE_APPROACH">
+     <td>5</td>
+     <td>
       <a href="#DEEPSTALL_STAGE_APPROACH">DEEPSTALL_STAGE_APPROACH</a>
      </td>
-     <td class="mavlink_comment">Approaching the landing point.</td>
+     <td>Approaching the landing point.</td>
     </tr>
-    <tr class="mavlink_field" id="DEEPSTALL_STAGE_LAND">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="DEEPSTALL_STAGE_LAND">
+     <td>6</td>
+     <td>
       <a href="#DEEPSTALL_STAGE_LAND">DEEPSTALL_STAGE_LAND</a>
      </td>
-     <td class="mavlink_comment">Stalling and steering towards the land point.</td>
+     <td>Stalling and steering towards the land point.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="PLANE_MODE">
+  <h3 id="PLANE_MODE">
    <a href="#PLANE_MODE">PLANE_MODE</a>
   </h3>
-  <p class="description">A mapping of plane flight modes for custom_mode field of heartbeat.</p>
+  <p>A mapping of plane flight modes for custom_mode field of heartbeat.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="PLANE_MODE_MANUAL">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_MANUAL">
+     <td>0</td>
+     <td>
       <a href="#PLANE_MODE_MANUAL">PLANE_MODE_MANUAL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_CIRCLE">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_CIRCLE">
+     <td>1</td>
+     <td>
       <a href="#PLANE_MODE_CIRCLE">PLANE_MODE_CIRCLE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_STABILIZE">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_STABILIZE">
+     <td>2</td>
+     <td>
       <a href="#PLANE_MODE_STABILIZE">PLANE_MODE_STABILIZE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_TRAINING">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_TRAINING">
+     <td>3</td>
+     <td>
       <a href="#PLANE_MODE_TRAINING">PLANE_MODE_TRAINING</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_ACRO">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_ACRO">
+     <td>4</td>
+     <td>
       <a href="#PLANE_MODE_ACRO">PLANE_MODE_ACRO</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_FLY_BY_WIRE_A">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_FLY_BY_WIRE_A">
+     <td>5</td>
+     <td>
       <a href="#PLANE_MODE_FLY_BY_WIRE_A">PLANE_MODE_FLY_BY_WIRE_A</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_FLY_BY_WIRE_B">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_FLY_BY_WIRE_B">
+     <td>6</td>
+     <td>
       <a href="#PLANE_MODE_FLY_BY_WIRE_B">PLANE_MODE_FLY_BY_WIRE_B</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_CRUISE">
-     <td class="mavlink_type" valign="top">7</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_CRUISE">
+     <td>7</td>
+     <td>
       <a href="#PLANE_MODE_CRUISE">PLANE_MODE_CRUISE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_AUTOTUNE">
-     <td class="mavlink_type" valign="top">8</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_AUTOTUNE">
+     <td>8</td>
+     <td>
       <a href="#PLANE_MODE_AUTOTUNE">PLANE_MODE_AUTOTUNE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_AUTO">
-     <td class="mavlink_type" valign="top">10</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_AUTO">
+     <td>10</td>
+     <td>
       <a href="#PLANE_MODE_AUTO">PLANE_MODE_AUTO</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_RTL">
-     <td class="mavlink_type" valign="top">11</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_RTL">
+     <td>11</td>
+     <td>
       <a href="#PLANE_MODE_RTL">PLANE_MODE_RTL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_LOITER">
-     <td class="mavlink_type" valign="top">12</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_LOITER">
+     <td>12</td>
+     <td>
       <a href="#PLANE_MODE_LOITER">PLANE_MODE_LOITER</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_AVOID_ADSB">
-     <td class="mavlink_type" valign="top">14</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_AVOID_ADSB">
+     <td>14</td>
+     <td>
       <a href="#PLANE_MODE_AVOID_ADSB">PLANE_MODE_AVOID_ADSB</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_GUIDED">
-     <td class="mavlink_type" valign="top">15</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_GUIDED">
+     <td>15</td>
+     <td>
       <a href="#PLANE_MODE_GUIDED">PLANE_MODE_GUIDED</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_INITIALIZING">
-     <td class="mavlink_type" valign="top">16</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_INITIALIZING">
+     <td>16</td>
+     <td>
       <a href="#PLANE_MODE_INITIALIZING">PLANE_MODE_INITIALIZING</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_QSTABILIZE">
-     <td class="mavlink_type" valign="top">17</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_QSTABILIZE">
+     <td>17</td>
+     <td>
       <a href="#PLANE_MODE_QSTABILIZE">PLANE_MODE_QSTABILIZE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_QHOVER">
-     <td class="mavlink_type" valign="top">18</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_QHOVER">
+     <td>18</td>
+     <td>
       <a href="#PLANE_MODE_QHOVER">PLANE_MODE_QHOVER</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_QLOITER">
-     <td class="mavlink_type" valign="top">19</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_QLOITER">
+     <td>19</td>
+     <td>
       <a href="#PLANE_MODE_QLOITER">PLANE_MODE_QLOITER</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_QLAND">
-     <td class="mavlink_type" valign="top">20</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_QLAND">
+     <td>20</td>
+     <td>
       <a href="#PLANE_MODE_QLAND">PLANE_MODE_QLAND</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="PLANE_MODE_QRTL">
-     <td class="mavlink_type" valign="top">21</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="PLANE_MODE_QRTL">
+     <td>21</td>
+     <td>
       <a href="#PLANE_MODE_QRTL">PLANE_MODE_QRTL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="COPTER_MODE">
+  <h3 id="COPTER_MODE">
    <a href="#COPTER_MODE">COPTER_MODE</a>
   </h3>
-  <p class="description">A mapping of copter flight modes for custom_mode field of heartbeat.</p>
+  <p>A mapping of copter flight modes for custom_mode field of heartbeat.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="COPTER_MODE_STABILIZE">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_STABILIZE">
+     <td>0</td>
+     <td>
       <a href="#COPTER_MODE_STABILIZE">COPTER_MODE_STABILIZE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_ACRO">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_ACRO">
+     <td>1</td>
+     <td>
       <a href="#COPTER_MODE_ACRO">COPTER_MODE_ACRO</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_ALT_HOLD">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_ALT_HOLD">
+     <td>2</td>
+     <td>
       <a href="#COPTER_MODE_ALT_HOLD">COPTER_MODE_ALT_HOLD</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_AUTO">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_AUTO">
+     <td>3</td>
+     <td>
       <a href="#COPTER_MODE_AUTO">COPTER_MODE_AUTO</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_GUIDED">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_GUIDED">
+     <td>4</td>
+     <td>
       <a href="#COPTER_MODE_GUIDED">COPTER_MODE_GUIDED</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_LOITER">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_LOITER">
+     <td>5</td>
+     <td>
       <a href="#COPTER_MODE_LOITER">COPTER_MODE_LOITER</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_RTL">
-     <td class="mavlink_type" valign="top">6</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_RTL">
+     <td>6</td>
+     <td>
       <a href="#COPTER_MODE_RTL">COPTER_MODE_RTL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_CIRCLE">
-     <td class="mavlink_type" valign="top">7</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_CIRCLE">
+     <td>7</td>
+     <td>
       <a href="#COPTER_MODE_CIRCLE">COPTER_MODE_CIRCLE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_LAND">
-     <td class="mavlink_type" valign="top">9</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_LAND">
+     <td>9</td>
+     <td>
       <a href="#COPTER_MODE_LAND">COPTER_MODE_LAND</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_DRIFT">
-     <td class="mavlink_type" valign="top">11</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_DRIFT">
+     <td>11</td>
+     <td>
       <a href="#COPTER_MODE_DRIFT">COPTER_MODE_DRIFT</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_SPORT">
-     <td class="mavlink_type" valign="top">13</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_SPORT">
+     <td>13</td>
+     <td>
       <a href="#COPTER_MODE_SPORT">COPTER_MODE_SPORT</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_FLIP">
-     <td class="mavlink_type" valign="top">14</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_FLIP">
+     <td>14</td>
+     <td>
       <a href="#COPTER_MODE_FLIP">COPTER_MODE_FLIP</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_AUTOTUNE">
-     <td class="mavlink_type" valign="top">15</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_AUTOTUNE">
+     <td>15</td>
+     <td>
       <a href="#COPTER_MODE_AUTOTUNE">COPTER_MODE_AUTOTUNE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_POSHOLD">
-     <td class="mavlink_type" valign="top">16</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_POSHOLD">
+     <td>16</td>
+     <td>
       <a href="#COPTER_MODE_POSHOLD">COPTER_MODE_POSHOLD</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_BRAKE">
-     <td class="mavlink_type" valign="top">17</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_BRAKE">
+     <td>17</td>
+     <td>
       <a href="#COPTER_MODE_BRAKE">COPTER_MODE_BRAKE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_THROW">
-     <td class="mavlink_type" valign="top">18</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_THROW">
+     <td>18</td>
+     <td>
       <a href="#COPTER_MODE_THROW">COPTER_MODE_THROW</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_AVOID_ADSB">
-     <td class="mavlink_type" valign="top">19</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_AVOID_ADSB">
+     <td>19</td>
+     <td>
       <a href="#COPTER_MODE_AVOID_ADSB">COPTER_MODE_AVOID_ADSB</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_GUIDED_NOGPS">
-     <td class="mavlink_type" valign="top">20</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_GUIDED_NOGPS">
+     <td>20</td>
+     <td>
       <a href="#COPTER_MODE_GUIDED_NOGPS">COPTER_MODE_GUIDED_NOGPS</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="COPTER_MODE_SMART_RTL">
-     <td class="mavlink_type" valign="top">21</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="COPTER_MODE_SMART_RTL">
+     <td>21</td>
+     <td>
       <a href="#COPTER_MODE_SMART_RTL">COPTER_MODE_SMART_RTL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="SUB_MODE">
+  <h3 id="SUB_MODE">
    <a href="#SUB_MODE">SUB_MODE</a>
   </h3>
-  <p class="description">A mapping of sub flight modes for custom_mode field of heartbeat.</p>
+  <p>A mapping of sub flight modes for custom_mode field of heartbeat.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="SUB_MODE_STABILIZE">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="SUB_MODE_STABILIZE">
+     <td>0</td>
+     <td>
       <a href="#SUB_MODE_STABILIZE">SUB_MODE_STABILIZE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="SUB_MODE_ACRO">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="SUB_MODE_ACRO">
+     <td>1</td>
+     <td>
       <a href="#SUB_MODE_ACRO">SUB_MODE_ACRO</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="SUB_MODE_ALT_HOLD">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="SUB_MODE_ALT_HOLD">
+     <td>2</td>
+     <td>
       <a href="#SUB_MODE_ALT_HOLD">SUB_MODE_ALT_HOLD</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="SUB_MODE_AUTO">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="SUB_MODE_AUTO">
+     <td>3</td>
+     <td>
       <a href="#SUB_MODE_AUTO">SUB_MODE_AUTO</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="SUB_MODE_GUIDED">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="SUB_MODE_GUIDED">
+     <td>4</td>
+     <td>
       <a href="#SUB_MODE_GUIDED">SUB_MODE_GUIDED</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="SUB_MODE_CIRCLE">
-     <td class="mavlink_type" valign="top">7</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="SUB_MODE_CIRCLE">
+     <td>7</td>
+     <td>
       <a href="#SUB_MODE_CIRCLE">SUB_MODE_CIRCLE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="SUB_MODE_SURFACE">
-     <td class="mavlink_type" valign="top">9</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="SUB_MODE_SURFACE">
+     <td>9</td>
+     <td>
       <a href="#SUB_MODE_SURFACE">SUB_MODE_SURFACE</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="SUB_MODE_POSHOLD">
-     <td class="mavlink_type" valign="top">16</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="SUB_MODE_POSHOLD">
+     <td>16</td>
+     <td>
       <a href="#SUB_MODE_POSHOLD">SUB_MODE_POSHOLD</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="SUB_MODE_MANUAL">
-     <td class="mavlink_type" valign="top">19</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="SUB_MODE_MANUAL">
+     <td>19</td>
+     <td>
       <a href="#SUB_MODE_MANUAL">SUB_MODE_MANUAL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ROVER_MODE">
+  <h3 id="ROVER_MODE">
    <a href="#ROVER_MODE">ROVER_MODE</a>
   </h3>
-  <p class="description">A mapping of rover flight modes for custom_mode field of heartbeat.</p>
+  <p>A mapping of rover flight modes for custom_mode field of heartbeat.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="ROVER_MODE_MANUAL">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ROVER_MODE_MANUAL">
+     <td>0</td>
+     <td>
       <a href="#ROVER_MODE_MANUAL">ROVER_MODE_MANUAL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ROVER_MODE_ACRO">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ROVER_MODE_ACRO">
+     <td>1</td>
+     <td>
       <a href="#ROVER_MODE_ACRO">ROVER_MODE_ACRO</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ROVER_MODE_STEERING">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ROVER_MODE_STEERING">
+     <td>3</td>
+     <td>
       <a href="#ROVER_MODE_STEERING">ROVER_MODE_STEERING</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ROVER_MODE_HOLD">
-     <td class="mavlink_type" valign="top">4</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ROVER_MODE_HOLD">
+     <td>4</td>
+     <td>
       <a href="#ROVER_MODE_HOLD">ROVER_MODE_HOLD</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ROVER_MODE_LOITER">
-     <td class="mavlink_type" valign="top">5</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ROVER_MODE_LOITER">
+     <td>5</td>
+     <td>
       <a href="#ROVER_MODE_LOITER">ROVER_MODE_LOITER</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ROVER_MODE_AUTO">
-     <td class="mavlink_type" valign="top">10</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ROVER_MODE_AUTO">
+     <td>10</td>
+     <td>
       <a href="#ROVER_MODE_AUTO">ROVER_MODE_AUTO</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ROVER_MODE_RTL">
-     <td class="mavlink_type" valign="top">11</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ROVER_MODE_RTL">
+     <td>11</td>
+     <td>
       <a href="#ROVER_MODE_RTL">ROVER_MODE_RTL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ROVER_MODE_SMART_RTL">
-     <td class="mavlink_type" valign="top">12</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ROVER_MODE_SMART_RTL">
+     <td>12</td>
+     <td>
       <a href="#ROVER_MODE_SMART_RTL">ROVER_MODE_SMART_RTL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ROVER_MODE_GUIDED">
-     <td class="mavlink_type" valign="top">15</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ROVER_MODE_GUIDED">
+     <td>15</td>
+     <td>
       <a href="#ROVER_MODE_GUIDED">ROVER_MODE_GUIDED</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="ROVER_MODE_INITIALIZING">
-     <td class="mavlink_type" valign="top">16</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="ROVER_MODE_INITIALIZING">
+     <td>16</td>
+     <td>
       <a href="#ROVER_MODE_INITIALIZING">ROVER_MODE_INITIALIZING</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="TRACKER_MODE">
+  <h3 id="TRACKER_MODE">
    <a href="#TRACKER_MODE">TRACKER_MODE</a>
   </h3>
-  <p class="description">A mapping of antenna tracker flight modes for custom_mode field of heartbeat.</p>
+  <p>A mapping of antenna tracker flight modes for custom_mode field of heartbeat.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Value</th>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field" id="TRACKER_MODE_MANUAL">
-     <td class="mavlink_type" valign="top">0</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="TRACKER_MODE_MANUAL">
+     <td>0</td>
+     <td>
       <a href="#TRACKER_MODE_MANUAL">TRACKER_MODE_MANUAL</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="TRACKER_MODE_STOP">
-     <td class="mavlink_type" valign="top">1</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="TRACKER_MODE_STOP">
+     <td>1</td>
+     <td>
       <a href="#TRACKER_MODE_STOP">TRACKER_MODE_STOP</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="TRACKER_MODE_SCAN">
-     <td class="mavlink_type" valign="top">2</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="TRACKER_MODE_SCAN">
+     <td>2</td>
+     <td>
       <a href="#TRACKER_MODE_SCAN">TRACKER_MODE_SCAN</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="TRACKER_MODE_SERVO_TEST">
-     <td class="mavlink_type" valign="top">3</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="TRACKER_MODE_SERVO_TEST">
+     <td>3</td>
+     <td>
       <a href="#TRACKER_MODE_SERVO_TEST">TRACKER_MODE_SERVO_TEST</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="TRACKER_MODE_AUTO">
-     <td class="mavlink_type" valign="top">10</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="TRACKER_MODE_AUTO">
+     <td>10</td>
+     <td>
       <a href="#TRACKER_MODE_AUTO">TRACKER_MODE_AUTO</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
-    <tr class="mavlink_field" id="TRACKER_MODE_INITIALIZING">
-     <td class="mavlink_type" valign="top">16</td>
-     <td class="mavlink_name" valign="top">
+    <tr id="TRACKER_MODE_INITIALIZING">
+     <td>16</td>
+     <td>
       <a href="#TRACKER_MODE_INITIALIZING">TRACKER_MODE_INITIALIZING</a>
      </td>
-     <td class="mavlink_comment">
+     <td>
      </td>
     </tr>
    </tbody>
   </table>
   <h2>MAVLink Messages</h2>
-  <h3 class="mavlink_message_name" id="SENSOR_OFFSETS">SENSOR_OFFSETS (<a href="#SENSOR_OFFSETS">
+  <h3 id="SENSOR_OFFSETS">SENSOR_OFFSETS (<a href="#SENSOR_OFFSETS">
     #150
    </a>
    )
   </h3>
-  <p class="description">Offsets and calibrations values for hardware sensors. This makes it easier to debug the calibration process.</p>
+  <p>Offsets and calibrations values for hardware sensors. This makes it easier to debug the calibration process.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">mag_ofs_x</td>
-     <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>mag_ofs_x</td>
+     <td>int16_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Magnetometer X offset.</td>
+     <td>Magnetometer X offset.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">mag_ofs_y</td>
-     <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>mag_ofs_y</td>
+     <td>int16_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Magnetometer Y offset.</td>
+     <td>Magnetometer Y offset.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">mag_ofs_z</td>
-     <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>mag_ofs_z</td>
+     <td>int16_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Magnetometer Z offset.</td>
+     <td>Magnetometer Z offset.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">mag_declination</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Magnetic declination.</td>
+    <tr>
+     <td>mag_declination</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Magnetic declination.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">raw_press</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>raw_press</td>
+     <td>int32_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Raw pressure from barometer.</td>
+     <td>Raw pressure from barometer.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">raw_temp</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>raw_temp</td>
+     <td>int32_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Raw temperature from barometer.</td>
+     <td>Raw temperature from barometer.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">gyro_cal_x</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>gyro_cal_x</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Gyro X calibration.</td>
+     <td>Gyro X calibration.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">gyro_cal_y</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>gyro_cal_y</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Gyro Y calibration.</td>
+     <td>Gyro Y calibration.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">gyro_cal_z</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>gyro_cal_z</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Gyro Z calibration.</td>
+     <td>Gyro Z calibration.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">accel_cal_x</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>accel_cal_x</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Accel X calibration.</td>
+     <td>Accel X calibration.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">accel_cal_y</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>accel_cal_y</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Accel Y calibration.</td>
+     <td>Accel Y calibration.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">accel_cal_z</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>accel_cal_z</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Accel Z calibration.</td>
+     <td>Accel Z calibration.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="SET_MAG_OFFSETS">SET_MAG_OFFSETS (<a href="#SET_MAG_OFFSETS">
+  <h3 id="SET_MAG_OFFSETS">SET_MAG_OFFSETS (<a href="#SET_MAG_OFFSETS">
     #151
    </a>
    )
   </h3>
-  <p class="description">Set the magnetometer offsets</p>
+  <p>Set the magnetometer offsets</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System ID.</td>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Component ID.</td>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">mag_ofs_x</td>
-     <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Magnetometer X offset.</td>
+    <tr>
+     <td>mag_ofs_x</td>
+     <td>int16_t</td>
+     <td>Magnetometer X offset.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">mag_ofs_y</td>
-     <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Magnetometer Y offset.</td>
+    <tr>
+     <td>mag_ofs_y</td>
+     <td>int16_t</td>
+     <td>Magnetometer Y offset.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">mag_ofs_z</td>
-     <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Magnetometer Z offset.</td>
+    <tr>
+     <td>mag_ofs_z</td>
+     <td>int16_t</td>
+     <td>Magnetometer Z offset.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="MEMINFO">MEMINFO (<a href="#MEMINFO">
+  <h3 id="MEMINFO">MEMINFO (<a href="#MEMINFO">
     #152
    </a>
    )
   </h3>
-  <p class="description">State of APM memory.</p>
+  <p>State of APM memory.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">brkval</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>brkval</td>
+     <td>uint16_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Heap top.</td>
+     <td>Heap top.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">freemem</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">bytes</td>
-     <td class="mavlink_comment">Free memory.</td>
+    <tr>
+     <td>freemem</td>
+     <td>uint16_t</td>
+     <td>bytes</td>
+     <td>Free memory.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" style="color:blue;" valign="top">freemem32<a href="#mav2_extension_field" title="MAVLink2 extension field">
+    <tr>
+     <td style="color:blue;">freemem32<a href="#mav2_extension_field" title="MAVLink2 extension field">
        **
       </a>
      </td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_units" valign="top">bytes</td>
-     <td class="mavlink_comment">Free memory (32 bit).</td>
+     <td>uint32_t</td>
+     <td>bytes</td>
+     <td>Free memory (32 bit).</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="AP_ADC">AP_ADC (<a href="#AP_ADC">
+  <h3 id="AP_ADC">AP_ADC (<a href="#AP_ADC">
     #153
    </a>
    )
   </h3>
-  <p class="description">Raw ADC output.</p>
+  <p>Raw ADC output.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">adc1</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">ADC output 1.</td>
+    <tr>
+     <td>adc1</td>
+     <td>uint16_t</td>
+     <td>ADC output 1.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">adc2</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">ADC output 2.</td>
+    <tr>
+     <td>adc2</td>
+     <td>uint16_t</td>
+     <td>ADC output 2.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">adc3</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">ADC output 3.</td>
+    <tr>
+     <td>adc3</td>
+     <td>uint16_t</td>
+     <td>ADC output 3.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">adc4</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">ADC output 4.</td>
+    <tr>
+     <td>adc4</td>
+     <td>uint16_t</td>
+     <td>ADC output 4.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">adc5</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">ADC output 5.</td>
+    <tr>
+     <td>adc5</td>
+     <td>uint16_t</td>
+     <td>ADC output 5.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">adc6</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_comment">ADC output 6.</td>
+    <tr>
+     <td>adc6</td>
+     <td>uint16_t</td>
+     <td>ADC output 6.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DIGICAM_CONFIGURE">DIGICAM_CONFIGURE (<a href="#DIGICAM_CONFIGURE">
+  <h3 id="DIGICAM_CONFIGURE">DIGICAM_CONFIGURE (<a href="#DIGICAM_CONFIGURE">
     #154
    </a>
    )
   </h3>
-  <p class="description">Configure on-board Camera Control System.</p>
+  <p>Configure on-board Camera Control System.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">mode</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>mode</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Mode enumeration from 1 to N //P, TV, AV, M, etc. (0 means ignore).</td>
+     <td>Mode enumeration from 1 to N //P, TV, AV, M, etc. (0 means ignore).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">shutter_speed</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>shutter_speed</td>
+     <td>uint16_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Divisor number //e.g. 1000 means 1/1000 (0 means ignore).</td>
+     <td>Divisor number //e.g. 1000 means 1/1000 (0 means ignore).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">aperture</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>aperture</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">F stop number x 10 //e.g. 28 means 2.8 (0 means ignore).</td>
+     <td>F stop number x 10 //e.g. 28 means 2.8 (0 means ignore).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">iso</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>iso</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">ISO enumeration from 1 to N //e.g. 80, 100, 200, Etc (0 means ignore).</td>
+     <td>ISO enumeration from 1 to N //e.g. 80, 100, 200, Etc (0 means ignore).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">exposure_type</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>exposure_type</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Exposure type enumeration from 1 to N (0 means ignore).</td>
+     <td>Exposure type enumeration from 1 to N (0 means ignore).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">command_id</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>command_id</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Command Identity (incremental loop: 0 to 255). //A command sent multiple times will be executed or pooled just once.</td>
+     <td>Command Identity (incremental loop: 0 to 255). //A command sent multiple times will be executed or pooled just once.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">engine_cut_off</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">ds</td>
-     <td class="mavlink_comment">Main engine cut-off time before camera trigger (0 means no cut-off).</td>
+    <tr>
+     <td>engine_cut_off</td>
+     <td>uint8_t</td>
+     <td>ds</td>
+     <td>Main engine cut-off time before camera trigger (0 means no cut-off).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">extra_param</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>extra_param</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Extra parameters enumeration (0 means ignore).</td>
+     <td>Extra parameters enumeration (0 means ignore).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">extra_value</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>extra_value</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Correspondent value to given extra_param.</td>
+     <td>Correspondent value to given extra_param.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DIGICAM_CONTROL">DIGICAM_CONTROL (<a href="#DIGICAM_CONTROL">
+  <h3 id="DIGICAM_CONTROL">DIGICAM_CONTROL (<a href="#DIGICAM_CONTROL">
     #155
    </a>
    )
   </h3>
-  <p class="description">Control on-board Camera Control System to take shots.</p>
+  <p>Control on-board Camera Control System to take shots.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System ID.</td>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Component ID.</td>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">session</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">0: stop, 1: start or keep it up //Session control e.g. show/hide lens.</td>
+    <tr>
+     <td>session</td>
+     <td>uint8_t</td>
+     <td>0: stop, 1: start or keep it up //Session control e.g. show/hide lens.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">zoom_pos</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">1 to N //Zoom's absolute position (0 means ignore).</td>
+    <tr>
+     <td>zoom_pos</td>
+     <td>uint8_t</td>
+     <td>1 to N //Zoom's absolute position (0 means ignore).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">zoom_step</td>
-     <td class="mavlink_type" valign="top">int8_t</td>
-     <td class="mavlink_comment">
+    <tr>
+     <td>zoom_step</td>
+     <td>int8_t</td>
+     <td>
       -100 to 100 //Zooming step value to offset zoom from the current position.
      </td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">focus_lock</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">0: unlock focus or keep unlocked, 1: lock focus or keep locked, 3: re-lock focus.</td>
+    <tr>
+     <td>focus_lock</td>
+     <td>uint8_t</td>
+     <td>0: unlock focus or keep unlocked, 1: lock focus or keep locked, 3: re-lock focus.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">shot</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">0: ignore, 1: shot or start filming.</td>
+    <tr>
+     <td>shot</td>
+     <td>uint8_t</td>
+     <td>0: ignore, 1: shot or start filming.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">command_id</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Command Identity (incremental loop: 0 to 255)//A command sent multiple times will be executed or pooled just once.</td>
+    <tr>
+     <td>command_id</td>
+     <td>uint8_t</td>
+     <td>Command Identity (incremental loop: 0 to 255)//A command sent multiple times will be executed or pooled just once.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">extra_param</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Extra parameters enumeration (0 means ignore).</td>
+    <tr>
+     <td>extra_param</td>
+     <td>uint8_t</td>
+     <td>Extra parameters enumeration (0 means ignore).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">extra_value</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">Correspondent value to given extra_param.</td>
+    <tr>
+     <td>extra_value</td>
+     <td>float</td>
+     <td>Correspondent value to given extra_param.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="MOUNT_CONFIGURE">MOUNT_CONFIGURE (<a href="#MOUNT_CONFIGURE">
+  <h3 id="MOUNT_CONFIGURE">MOUNT_CONFIGURE (<a href="#MOUNT_CONFIGURE">
     #156
    </a>
    )
   </h3>
-  <p class="description">Message to configure a camera mount, directional antenna, etc.</p>
+  <p>Message to configure a camera mount, directional antenna, etc.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">mount_mode</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>mount_mode</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
      </td>
-     <td class="mavlink_comment">Mount operating mode.</td>
+     <td>Mount operating mode.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">stab_roll</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>stab_roll</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (1 = yes, 0 = no).
      </td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">stab_pitch</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>stab_pitch</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (1 = yes, 0 = no).
      </td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">stab_yaw</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>stab_yaw</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">
+     <td>
       (1 = yes, 0 = no).
      </td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="MOUNT_CONTROL">MOUNT_CONTROL (<a href="#MOUNT_CONTROL">
+  <h3 id="MOUNT_CONTROL">MOUNT_CONTROL (<a href="#MOUNT_CONTROL">
     #157
    </a>
    )
   </h3>
-  <p class="description">Message to control a camera mount, directional antenna, etc.</p>
+  <p>Message to control a camera mount, directional antenna, etc.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System ID.</td>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Component ID.</td>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">input_a</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Pitch (centi-degrees) or lat (degE7), depending on mount mode.</td>
+    <tr>
+     <td>input_a</td>
+     <td>int32_t</td>
+     <td>Pitch (centi-degrees) or lat (degE7), depending on mount mode.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">input_b</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Roll (centi-degrees) or lon (degE7) depending on mount mode.</td>
+    <tr>
+     <td>input_b</td>
+     <td>int32_t</td>
+     <td>Roll (centi-degrees) or lon (degE7) depending on mount mode.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">input_c</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_comment">Yaw (centi-degrees) or alt (cm) depending on mount mode.</td>
+    <tr>
+     <td>input_c</td>
+     <td>int32_t</td>
+     <td>Yaw (centi-degrees) or alt (cm) depending on mount mode.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">save_position</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">If "1" it will save current trimmed position on EEPROM (just valid for NEUTRAL and LANDING).</td>
+    <tr>
+     <td>save_position</td>
+     <td>uint8_t</td>
+     <td>If "1" it will save current trimmed position on EEPROM (just valid for NEUTRAL and LANDING).</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="MOUNT_STATUS">MOUNT_STATUS (<a href="#MOUNT_STATUS">
+  <h3 id="MOUNT_STATUS">MOUNT_STATUS (<a href="#MOUNT_STATUS">
     #158
    </a>
    )
   </h3>
-  <p class="description">Message with some status from APM to GCS about camera or antenna mount.</p>
+  <p>Message with some status from APM to GCS about camera or antenna mount.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pointing_a</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">cdeg</td>
-     <td class="mavlink_comment">Pitch.</td>
+    <tr>
+     <td>pointing_a</td>
+     <td>int32_t</td>
+     <td>cdeg</td>
+     <td>Pitch.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pointing_b</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">cdeg</td>
-     <td class="mavlink_comment">Roll.</td>
+    <tr>
+     <td>pointing_b</td>
+     <td>int32_t</td>
+     <td>cdeg</td>
+     <td>Roll.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pointing_c</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">cdeg</td>
-     <td class="mavlink_comment">Yaw.</td>
+    <tr>
+     <td>pointing_c</td>
+     <td>int32_t</td>
+     <td>cdeg</td>
+     <td>Yaw.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="FENCE_POINT">FENCE_POINT (<a href="#FENCE_POINT">
+  <h3 id="FENCE_POINT">FENCE_POINT (<a href="#FENCE_POINT">
     #160
    </a>
    )
   </h3>
-  <p class="description">A fence point. Used to set a point when from GCS -&gt; MAV. Also used to return a point from MAV -&gt; GCS.</p>
+  <p>A fence point. Used to set a point when from GCS -&gt; MAV. Also used to return a point from MAV -&gt; GCS.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">idx</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>idx</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Point index (first point is 1, 0 is for return point).</td>
+     <td>Point index (first point is 1, 0 is for return point).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">count</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>count</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Total number of points (for sanity checking).</td>
+     <td>Total number of points (for sanity checking).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">lat</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">deg</td>
-     <td class="mavlink_comment">Latitude of point.</td>
+    <tr>
+     <td>lat</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Latitude of point.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">lng</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">deg</td>
-     <td class="mavlink_comment">Longitude of point.</td>
+    <tr>
+     <td>lng</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Longitude of point.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="FENCE_FETCH_POINT">FENCE_FETCH_POINT (<a href="#FENCE_FETCH_POINT">
+  <h3 id="FENCE_FETCH_POINT">FENCE_FETCH_POINT (<a href="#FENCE_FETCH_POINT">
     #161
    </a>
    )
   </h3>
-  <p class="description">Request a current fence point from MAV.</p>
+  <p>Request a current fence point from MAV.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System ID.</td>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Component ID.</td>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">idx</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Point index (first point is 1, 0 is for return point).</td>
+    <tr>
+     <td>idx</td>
+     <td>uint8_t</td>
+     <td>Point index (first point is 1, 0 is for return point).</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="FENCE_STATUS">FENCE_STATUS (<a href="#FENCE_STATUS">
+  <h3 id="FENCE_STATUS">FENCE_STATUS (<a href="#FENCE_STATUS">
     #162
    </a>
    )
   </h3>
-  <p class="description">Status of geo-fencing. Sent in extended status stream when fencing enabled.</p>
+  <p>Status of geo-fencing. Sent in extended status stream when fencing enabled.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">breach_status</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>breach_status</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Breach status (0 if currently inside fence, 1 if outside).</td>
+     <td>Breach status (0 if currently inside fence, 1 if outside).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">breach_count</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>breach_count</td>
+     <td>uint16_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Number of fence breaches.</td>
+     <td>Number of fence breaches.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">breach_type</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>breach_type</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#FENCE_BREACH">FENCE_BREACH</a>
      </td>
-     <td class="mavlink_comment">Last breach type.</td>
+     <td>Last breach type.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">breach_time</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_units" valign="top">ms</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>breach_time</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Time (since boot) of last breach.</td>
+     <td>Time (since boot) of last breach.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="AHRS">AHRS (<a href="#AHRS">
+  <h3 id="AHRS">AHRS (<a href="#AHRS">
     #163
    </a>
    )
   </h3>
-  <p class="description">Status of DCM attitude estimator.</p>
+  <p>Status of DCM attitude estimator.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">omegaIx</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad/s</td>
-     <td class="mavlink_comment">X gyro drift estimate.</td>
+    <tr>
+     <td>omegaIx</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>X gyro drift estimate.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">omegaIy</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad/s</td>
-     <td class="mavlink_comment">Y gyro drift estimate.</td>
+    <tr>
+     <td>omegaIy</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Y gyro drift estimate.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">omegaIz</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad/s</td>
-     <td class="mavlink_comment">Z gyro drift estimate.</td>
+    <tr>
+     <td>omegaIz</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Z gyro drift estimate.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">accel_weight</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>accel_weight</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Average accel_weight.</td>
+     <td>Average accel_weight.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">renorm_val</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>renorm_val</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Average renormalisation value.</td>
+     <td>Average renormalisation value.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">error_rp</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>error_rp</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Average error_roll_pitch value.</td>
+     <td>Average error_roll_pitch value.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">error_yaw</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>error_yaw</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Average error_yaw value.</td>
+     <td>Average error_yaw value.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="SIMSTATE">SIMSTATE (<a href="#SIMSTATE">
+  <h3 id="SIMSTATE">SIMSTATE (<a href="#SIMSTATE">
     #164
    </a>
    )
   </h3>
-  <p class="description">Status of simulation environment, if used.</p>
+  <p>Status of simulation environment, if used.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">roll</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Roll angle.</td>
+    <tr>
+     <td>roll</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Roll angle.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pitch</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Pitch angle.</td>
+    <tr>
+     <td>pitch</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Pitch angle.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">yaw</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Yaw angle.</td>
+    <tr>
+     <td>yaw</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Yaw angle.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">xacc</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m/s/s</td>
-     <td class="mavlink_comment">X acceleration.</td>
+    <tr>
+     <td>xacc</td>
+     <td>float</td>
+     <td>m/s/s</td>
+     <td>X acceleration.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">yacc</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m/s/s</td>
-     <td class="mavlink_comment">Y acceleration.</td>
+    <tr>
+     <td>yacc</td>
+     <td>float</td>
+     <td>m/s/s</td>
+     <td>Y acceleration.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">zacc</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m/s/s</td>
-     <td class="mavlink_comment">Z acceleration.</td>
+    <tr>
+     <td>zacc</td>
+     <td>float</td>
+     <td>m/s/s</td>
+     <td>Z acceleration.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">xgyro</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad/s</td>
-     <td class="mavlink_comment">Angular speed around X axis.</td>
+    <tr>
+     <td>xgyro</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Angular speed around X axis.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ygyro</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad/s</td>
-     <td class="mavlink_comment">Angular speed around Y axis.</td>
+    <tr>
+     <td>ygyro</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Angular speed around Y axis.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">zgyro</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad/s</td>
-     <td class="mavlink_comment">Angular speed around Z axis.</td>
+    <tr>
+     <td>zgyro</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Angular speed around Z axis.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">lat</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_comment">Latitude.</td>
+    <tr>
+     <td>lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">lng</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_comment">Longitude.</td>
+    <tr>
+     <td>lng</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="HWSTATUS">HWSTATUS (<a href="#HWSTATUS">
+  <h3 id="HWSTATUS">HWSTATUS (<a href="#HWSTATUS">
     #165
    </a>
    )
   </h3>
-  <p class="description">Status of key hardware.</p>
+  <p>Status of key hardware.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">Vcc</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">mV</td>
-     <td class="mavlink_comment">Board voltage.</td>
+    <tr>
+     <td>Vcc</td>
+     <td>uint16_t</td>
+     <td>mV</td>
+     <td>Board voltage.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">I2Cerr</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>I2Cerr</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">I2C error count.</td>
+     <td>I2C error count.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="RADIO">RADIO (<a href="#RADIO">
+  <h3 id="RADIO">RADIO (<a href="#RADIO">
     #166
    </a>
    )
   </h3>
-  <p class="description">Status generated by radio.</p>
+  <p>Status generated by radio.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">rssi</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>rssi</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Local signal strength.</td>
+     <td>Local signal strength.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">remrssi</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>remrssi</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Remote signal strength.</td>
+     <td>Remote signal strength.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">txbuf</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>txbuf</td>
+     <td>uint8_t</td>
+     <td>
       %
      </td>
-     <td class="mavlink_comment">How full the tx buffer is.</td>
+     <td>How full the tx buffer is.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">noise</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>noise</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Background noise level.</td>
+     <td>Background noise level.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">remnoise</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>remnoise</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Remote background noise level.</td>
+     <td>Remote background noise level.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">rxerrors</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>rxerrors</td>
+     <td>uint16_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Receive errors.</td>
+     <td>Receive errors.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">fixed</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>fixed</td>
+     <td>uint16_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Count of error corrected packets.</td>
+     <td>Count of error corrected packets.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="LIMITS_STATUS">LIMITS_STATUS (<a href="#LIMITS_STATUS">
+  <h3 id="LIMITS_STATUS">LIMITS_STATUS (<a href="#LIMITS_STATUS">
     #167
    </a>
    )
   </h3>
-  <p class="description">Status of AP_Limits. Sent in extended status stream when AP_Limits is enabled.</p>
+  <p>Status of AP_Limits. Sent in extended status stream when AP_Limits is enabled.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">limits_state</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>limits_state</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#LIMITS_STATE">LIMITS_STATE</a>
      </td>
-     <td class="mavlink_comment">State of AP_Limits.</td>
+     <td>State of AP_Limits.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">last_trigger</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_units" valign="top">ms</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>last_trigger</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Time (since boot) of last breach.</td>
+     <td>Time (since boot) of last breach.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">last_action</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_units" valign="top">ms</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>last_action</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Time (since boot) of last recovery action.</td>
+     <td>Time (since boot) of last recovery action.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">last_recovery</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_units" valign="top">ms</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>last_recovery</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Time (since boot) of last successful recovery.</td>
+     <td>Time (since boot) of last successful recovery.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">last_clear</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_units" valign="top">ms</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>last_clear</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Time (since boot) of last all-clear.</td>
+     <td>Time (since boot) of last all-clear.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">breach_count</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>breach_count</td>
+     <td>uint16_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Number of fence breaches.</td>
+     <td>Number of fence breaches.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">mods_enabled</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>mods_enabled</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#LIMIT_MODULE">LIMIT_MODULE</a>
      </td>
-     <td class="mavlink_comment">AP_Limit_Module bitfield of enabled modules.</td>
+     <td>AP_Limit_Module bitfield of enabled modules.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">mods_required</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>mods_required</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#LIMIT_MODULE">LIMIT_MODULE</a>
      </td>
-     <td class="mavlink_comment">AP_Limit_Module bitfield of required modules.</td>
+     <td>AP_Limit_Module bitfield of required modules.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">mods_triggered</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>mods_triggered</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#LIMIT_MODULE">LIMIT_MODULE</a>
      </td>
-     <td class="mavlink_comment">AP_Limit_Module bitfield of triggered modules.</td>
+     <td>AP_Limit_Module bitfield of triggered modules.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="WIND">WIND (<a href="#WIND">
+  <h3 id="WIND">WIND (<a href="#WIND">
     #168
    </a>
    )
   </h3>
-  <p class="description">Wind estimation.</p>
+  <p>Wind estimation.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">direction</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">deg</td>
-     <td class="mavlink_comment">Wind direction (that wind is coming from).</td>
+    <tr>
+     <td>direction</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Wind direction (that wind is coming from).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">speed</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m/s</td>
-     <td class="mavlink_comment">Wind speed in ground plane.</td>
+    <tr>
+     <td>speed</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Wind speed in ground plane.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">speed_z</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m/s</td>
-     <td class="mavlink_comment">Vertical wind speed.</td>
+    <tr>
+     <td>speed_z</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Vertical wind speed.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DATA16">DATA16 (<a href="#DATA16">
+  <h3 id="DATA16">DATA16 (<a href="#DATA16">
     #169
    </a>
    )
   </h3>
-  <p class="description">Data packet, size 16.</p>
+  <p>Data packet, size 16.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">type</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>type</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Data type.</td>
+     <td>Data type.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">len</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">bytes</td>
-     <td class="mavlink_comment">Data length.</td>
+    <tr>
+     <td>len</td>
+     <td>uint8_t</td>
+     <td>bytes</td>
+     <td>Data length.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">data</td>
-     <td class="mavlink_type" valign="top">uint8_t[16]</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>data</td>
+     <td>uint8_t[16]</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Raw data.</td>
+     <td>Raw data.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DATA32">DATA32 (<a href="#DATA32">
+  <h3 id="DATA32">DATA32 (<a href="#DATA32">
     #170
    </a>
    )
   </h3>
-  <p class="description">Data packet, size 32.</p>
+  <p>Data packet, size 32.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">type</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>type</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Data type.</td>
+     <td>Data type.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">len</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">bytes</td>
-     <td class="mavlink_comment">Data length.</td>
+    <tr>
+     <td>len</td>
+     <td>uint8_t</td>
+     <td>bytes</td>
+     <td>Data length.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">data</td>
-     <td class="mavlink_type" valign="top">uint8_t[32]</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>data</td>
+     <td>uint8_t[32]</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Raw data.</td>
+     <td>Raw data.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DATA64">DATA64 (<a href="#DATA64">
+  <h3 id="DATA64">DATA64 (<a href="#DATA64">
     #171
    </a>
    )
   </h3>
-  <p class="description">Data packet, size 64.</p>
+  <p>Data packet, size 64.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">type</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>type</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Data type.</td>
+     <td>Data type.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">len</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">bytes</td>
-     <td class="mavlink_comment">Data length.</td>
+    <tr>
+     <td>len</td>
+     <td>uint8_t</td>
+     <td>bytes</td>
+     <td>Data length.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">data</td>
-     <td class="mavlink_type" valign="top">uint8_t[64]</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>data</td>
+     <td>uint8_t[64]</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Raw data.</td>
+     <td>Raw data.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DATA96">DATA96 (<a href="#DATA96">
+  <h3 id="DATA96">DATA96 (<a href="#DATA96">
     #172
    </a>
    )
   </h3>
-  <p class="description">Data packet, size 96.</p>
+  <p>Data packet, size 96.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">type</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>type</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Data type.</td>
+     <td>Data type.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">len</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">bytes</td>
-     <td class="mavlink_comment">Data length.</td>
+    <tr>
+     <td>len</td>
+     <td>uint8_t</td>
+     <td>bytes</td>
+     <td>Data length.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">data</td>
-     <td class="mavlink_type" valign="top">uint8_t[96]</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>data</td>
+     <td>uint8_t[96]</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Raw data.</td>
+     <td>Raw data.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="RANGEFINDER">RANGEFINDER (<a href="#RANGEFINDER">
+  <h3 id="RANGEFINDER">RANGEFINDER (<a href="#RANGEFINDER">
     #173
    </a>
    )
   </h3>
-  <p class="description">Rangefinder reporting.</p>
+  <p>Rangefinder reporting.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">distance</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m</td>
-     <td class="mavlink_comment">Distance.</td>
+    <tr>
+     <td>distance</td>
+     <td>float</td>
+     <td>m</td>
+     <td>Distance.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">voltage</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">V</td>
-     <td class="mavlink_comment">Raw voltage if available, zero otherwise.</td>
+    <tr>
+     <td>voltage</td>
+     <td>float</td>
+     <td>V</td>
+     <td>Raw voltage if available, zero otherwise.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="AIRSPEED_AUTOCAL">AIRSPEED_AUTOCAL (<a href="#AIRSPEED_AUTOCAL">
+  <h3 id="AIRSPEED_AUTOCAL">AIRSPEED_AUTOCAL (<a href="#AIRSPEED_AUTOCAL">
     #174
    </a>
    )
   </h3>
-  <p class="description">Airspeed auto-calibration.</p>
+  <p>Airspeed auto-calibration.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">vx</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m/s</td>
-     <td class="mavlink_comment">GPS velocity north.</td>
+    <tr>
+     <td>vx</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>GPS velocity north.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">vy</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m/s</td>
-     <td class="mavlink_comment">GPS velocity east.</td>
+    <tr>
+     <td>vy</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>GPS velocity east.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">vz</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m/s</td>
-     <td class="mavlink_comment">GPS velocity down.</td>
+    <tr>
+     <td>vz</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>GPS velocity down.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">diff_pressure</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">Pa</td>
-     <td class="mavlink_comment">Differential pressure.</td>
+    <tr>
+     <td>diff_pressure</td>
+     <td>float</td>
+     <td>Pa</td>
+     <td>Differential pressure.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">EAS2TAS</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>EAS2TAS</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Estimated to true airspeed ratio.</td>
+     <td>Estimated to true airspeed ratio.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ratio</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>ratio</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Airspeed ratio.</td>
+     <td>Airspeed ratio.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">state_x</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>state_x</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">EKF state x.</td>
+     <td>EKF state x.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">state_y</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>state_y</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">EKF state y.</td>
+     <td>EKF state y.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">state_z</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>state_z</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">EKF state z.</td>
+     <td>EKF state z.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">Pax</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>Pax</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">EKF Pax.</td>
+     <td>EKF Pax.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">Pby</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>Pby</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">EKF Pby.</td>
+     <td>EKF Pby.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">Pcz</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>Pcz</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">EKF Pcz.</td>
+     <td>EKF Pcz.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="RALLY_POINT">RALLY_POINT (<a href="#RALLY_POINT">
+  <h3 id="RALLY_POINT">RALLY_POINT (<a href="#RALLY_POINT">
     #175
    </a>
    )
   </h3>
-  <p class="description">A rally point. Used to set a point when from GCS -&gt; MAV. Also used to return a point from MAV -&gt; GCS.</p>
+  <p>A rally point. Used to set a point when from GCS -&gt; MAV. Also used to return a point from MAV -&gt; GCS.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">idx</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>idx</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Point index (first point is 0).</td>
+     <td>Point index (first point is 0).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">count</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>count</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Total number of points (for sanity checking).</td>
+     <td>Total number of points (for sanity checking).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">lat</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Latitude of point.</td>
+     <td>Latitude of point.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">lng</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>lng</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Longitude of point.</td>
+     <td>Longitude of point.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">alt</td>
-     <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_units" valign="top">m</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>alt</td>
+     <td>int16_t</td>
+     <td>m</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Transit / loiter altitude relative to home.</td>
+     <td>Transit / loiter altitude relative to home.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">break_alt</td>
-     <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_units" valign="top">m</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>break_alt</td>
+     <td>int16_t</td>
+     <td>m</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Break altitude relative to home.</td>
+     <td>Break altitude relative to home.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">land_dir</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">cdeg</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>land_dir</td>
+     <td>uint16_t</td>
+     <td>cdeg</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Heading to aim for when landing.</td>
+     <td>Heading to aim for when landing.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">flags</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>flags</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#RALLY_FLAGS">RALLY_FLAGS</a>
      </td>
-     <td class="mavlink_comment">Configuration flags.</td>
+     <td>Configuration flags.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="RALLY_FETCH_POINT">RALLY_FETCH_POINT (<a href="#RALLY_FETCH_POINT">
+  <h3 id="RALLY_FETCH_POINT">RALLY_FETCH_POINT (<a href="#RALLY_FETCH_POINT">
     #176
    </a>
    )
   </h3>
-  <p class="description">Request a current rally point from MAV. MAV should respond with a RALLY_POINT message. MAV should not respond if the request is invalid.</p>
+  <p>Request a current rally point from MAV. MAV should respond with a RALLY_POINT message. MAV should not respond if the request is invalid.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System ID.</td>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Component ID.</td>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">idx</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Point index (first point is 0).</td>
+    <tr>
+     <td>idx</td>
+     <td>uint8_t</td>
+     <td>Point index (first point is 0).</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="COMPASSMOT_STATUS">COMPASSMOT_STATUS (<a href="#COMPASSMOT_STATUS">
+  <h3 id="COMPASSMOT_STATUS">COMPASSMOT_STATUS (<a href="#COMPASSMOT_STATUS">
     #177
    </a>
    )
   </h3>
-  <p class="description">Status of compassmot calibration.</p>
+  <p>Status of compassmot calibration.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">throttle</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">d%</td>
-     <td class="mavlink_comment">Throttle.</td>
+    <tr>
+     <td>throttle</td>
+     <td>uint16_t</td>
+     <td>d%</td>
+     <td>Throttle.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">current</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">A</td>
-     <td class="mavlink_comment">Current.</td>
+    <tr>
+     <td>current</td>
+     <td>float</td>
+     <td>A</td>
+     <td>Current.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">interference</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>interference</td>
+     <td>uint16_t</td>
+     <td>
       %
      </td>
-     <td class="mavlink_comment">Interference.</td>
+     <td>Interference.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">CompensationX</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>CompensationX</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Motor Compensation X.</td>
+     <td>Motor Compensation X.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">CompensationY</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>CompensationY</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Motor Compensation Y.</td>
+     <td>Motor Compensation Y.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">CompensationZ</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>CompensationZ</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Motor Compensation Z.</td>
+     <td>Motor Compensation Z.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="AHRS2">AHRS2 (<a href="#AHRS2">
+  <h3 id="AHRS2">AHRS2 (<a href="#AHRS2">
     #178
    </a>
    )
   </h3>
-  <p class="description">Status of secondary AHRS filter if available.</p>
+  <p>Status of secondary AHRS filter if available.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">roll</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Roll angle.</td>
+    <tr>
+     <td>roll</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Roll angle.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pitch</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Pitch angle.</td>
+    <tr>
+     <td>pitch</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Pitch angle.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">yaw</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Yaw angle.</td>
+    <tr>
+     <td>yaw</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Yaw angle.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">altitude</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m</td>
-     <td class="mavlink_comment">Altitude (MSL).</td>
+    <tr>
+     <td>altitude</td>
+     <td>float</td>
+     <td>m</td>
+     <td>Altitude (MSL).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">lat</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_comment">Latitude.</td>
+    <tr>
+     <td>lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">lng</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_comment">Longitude.</td>
+    <tr>
+     <td>lng</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="CAMERA_STATUS">CAMERA_STATUS (<a href="#CAMERA_STATUS">
+  <h3 id="CAMERA_STATUS">CAMERA_STATUS (<a href="#CAMERA_STATUS">
     #179
    </a>
    )
   </h3>
-  <p class="description">Camera Event.</p>
+  <p>Camera Event.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">time_usec</td>
-     <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_units" valign="top">us</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Image timestamp (since UNIX epoch, according to camera clock).</td>
+     <td>Image timestamp (since UNIX epoch, according to camera clock).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">cam_idx</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>cam_idx</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Camera ID.</td>
+     <td>Camera ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">img_idx</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>img_idx</td>
+     <td>uint16_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Image index.</td>
+     <td>Image index.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">event_id</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>event_id</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#CAMERA_STATUS_TYPES">CAMERA_STATUS_TYPES</a>
      </td>
-     <td class="mavlink_comment">Event type.</td>
+     <td>Event type.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">p1</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>p1</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Parameter 1 (meaning depends on event_id, see CAMERA_STATUS_TYPES enum).</td>
+     <td>Parameter 1 (meaning depends on event_id, see CAMERA_STATUS_TYPES enum).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">p2</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>p2</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Parameter 2 (meaning depends on event_id, see CAMERA_STATUS_TYPES enum).</td>
+     <td>Parameter 2 (meaning depends on event_id, see CAMERA_STATUS_TYPES enum).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">p3</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>p3</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Parameter 3 (meaning depends on event_id, see CAMERA_STATUS_TYPES enum).</td>
+     <td>Parameter 3 (meaning depends on event_id, see CAMERA_STATUS_TYPES enum).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">p4</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>p4</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Parameter 4 (meaning depends on event_id, see CAMERA_STATUS_TYPES enum).</td>
+     <td>Parameter 4 (meaning depends on event_id, see CAMERA_STATUS_TYPES enum).</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="CAMERA_FEEDBACK">CAMERA_FEEDBACK (<a href="#CAMERA_FEEDBACK">
+  <h3 id="CAMERA_FEEDBACK">CAMERA_FEEDBACK (<a href="#CAMERA_FEEDBACK">
     #180
    </a>
    )
   </h3>
-  <p class="description">Camera Capture Feedback.</p>
+  <p>Camera Capture Feedback.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">time_usec</td>
-     <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_units" valign="top">us</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Image timestamp (since UNIX epoch), as passed in by CAMERA_STATUS message (or autopilot if no CCB).</td>
+     <td>Image timestamp (since UNIX epoch), as passed in by CAMERA_STATUS message (or autopilot if no CCB).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">cam_idx</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>cam_idx</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Camera ID.</td>
+     <td>Camera ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">img_idx</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>img_idx</td>
+     <td>uint16_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Image index.</td>
+     <td>Image index.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">lat</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Latitude.</td>
+     <td>Latitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">lng</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>lng</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Longitude.</td>
+     <td>Longitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">alt_msl</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>alt_msl</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Altitude Absolute (AMSL).</td>
+     <td>Altitude Absolute (AMSL).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">alt_rel</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>alt_rel</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Altitude Relative (above HOME location).</td>
+     <td>Altitude Relative (above HOME location).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">roll</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">deg</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>roll</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Camera Roll angle (earth frame, +-180).</td>
+     <td>Camera Roll angle (earth frame, +-180).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pitch</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">deg</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>pitch</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Camera Pitch angle (earth frame, +-180).</td>
+     <td>Camera Pitch angle (earth frame, +-180).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">yaw</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">deg</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>yaw</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Camera Yaw (earth frame, 0-360, true).</td>
+     <td>Camera Yaw (earth frame, 0-360, true).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">foc_len</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">mm</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>foc_len</td>
+     <td>float</td>
+     <td>mm</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Focal Length.</td>
+     <td>Focal Length.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">flags</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>flags</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#CAMERA_FEEDBACK_FLAGS">CAMERA_FEEDBACK_FLAGS</a>
      </td>
-     <td class="mavlink_comment">Feedback flags.</td>
+     <td>Feedback flags.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" style="color:blue;" valign="top">completed_captures<a href="#mav2_extension_field" title="MAVLink2 extension field">
+    <tr>
+     <td style="color:blue;">completed_captures<a href="#mav2_extension_field" title="MAVLink2 extension field">
        **
       </a>
      </td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">
+     <td>uint16_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Completed image captures.</td>
+     <td>Completed image captures.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="BATTERY2">BATTERY2 (<a href="#BATTERY2">
+  <h3 id="BATTERY2">BATTERY2 (<a href="#BATTERY2">
     #181
    </a>
    )
   </h3>
-  <p class="description">2nd Battery status</p>
+  <p>2nd Battery status</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">voltage</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_units" valign="top">mV</td>
-     <td class="mavlink_comment">Voltage.</td>
+    <tr>
+     <td>voltage</td>
+     <td>uint16_t</td>
+     <td>mV</td>
+     <td>Voltage.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">current_battery</td>
-     <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_units" valign="top">cA</td>
-     <td class="mavlink_comment">Battery current, -1: autopilot does not measure the current.</td>
+    <tr>
+     <td>current_battery</td>
+     <td>int16_t</td>
+     <td>cA</td>
+     <td>Battery current, -1: autopilot does not measure the current.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="AHRS3">AHRS3 (<a href="#AHRS3">
+  <h3 id="AHRS3">AHRS3 (<a href="#AHRS3">
     #182
    </a>
    )
   </h3>
-  <p class="description">Status of third AHRS filter if available. This is for ANU research group (Ali and Sean).</p>
+  <p>Status of third AHRS filter if available. This is for ANU research group (Ali and Sean).</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">roll</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Roll angle.</td>
+    <tr>
+     <td>roll</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Roll angle.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pitch</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Pitch angle.</td>
+    <tr>
+     <td>pitch</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Pitch angle.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">yaw</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Yaw angle.</td>
+    <tr>
+     <td>yaw</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Yaw angle.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">altitude</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m</td>
-     <td class="mavlink_comment">Altitude (MSL).</td>
+    <tr>
+     <td>altitude</td>
+     <td>float</td>
+     <td>m</td>
+     <td>Altitude (MSL).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">lat</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_comment">Latitude.</td>
+    <tr>
+     <td>lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">lng</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_comment">Longitude.</td>
+    <tr>
+     <td>lng</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">v1</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>v1</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Test variable1.</td>
+     <td>Test variable1.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">v2</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>v2</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Test variable2.</td>
+     <td>Test variable2.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">v3</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>v3</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Test variable3.</td>
+     <td>Test variable3.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">v4</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>v4</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Test variable4.</td>
+     <td>Test variable4.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="AUTOPILOT_VERSION_REQUEST">AUTOPILOT_VERSION_REQUEST (<a href="#AUTOPILOT_VERSION_REQUEST">
+  <h3 id="AUTOPILOT_VERSION_REQUEST">AUTOPILOT_VERSION_REQUEST (<a href="#AUTOPILOT_VERSION_REQUEST">
     #183
    </a>
    )
   </h3>
-  <p class="description">Request the autopilot version from the system/component.</p>
+  <p>Request the autopilot version from the system/component.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System ID.</td>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Component ID.</td>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="REMOTE_LOG_DATA_BLOCK">REMOTE_LOG_DATA_BLOCK (<a href="#REMOTE_LOG_DATA_BLOCK">
+  <h3 id="REMOTE_LOG_DATA_BLOCK">REMOTE_LOG_DATA_BLOCK (<a href="#REMOTE_LOG_DATA_BLOCK">
     #184
    </a>
    )
   </h3>
-  <p class="description">Send a block of log data to remote location.</p>
+  <p>Send a block of log data to remote location.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">seqno</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>seqno</td>
+     <td>uint32_t</td>
+     <td>
       <a href="#MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS</a>
      </td>
-     <td class="mavlink_comment">Log data block sequence number.</td>
+     <td>Log data block sequence number.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">data</td>
-     <td class="mavlink_type" valign="top">uint8_t[200]</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>data</td>
+     <td>uint8_t[200]</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Log data block.</td>
+     <td>Log data block.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="REMOTE_LOG_BLOCK_STATUS">REMOTE_LOG_BLOCK_STATUS (<a href="#REMOTE_LOG_BLOCK_STATUS">
+  <h3 id="REMOTE_LOG_BLOCK_STATUS">REMOTE_LOG_BLOCK_STATUS (<a href="#REMOTE_LOG_BLOCK_STATUS">
     #185
    </a>
    )
   </h3>
-  <p class="description">Send Status of each log block that autopilot board might have sent.</p>
+  <p>Send Status of each log block that autopilot board might have sent.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">seqno</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>seqno</td>
+     <td>uint32_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Log data block sequence number.</td>
+     <td>Log data block sequence number.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">status</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>status</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#MAV_REMOTE_LOG_DATA_BLOCK_STATUSES">MAV_REMOTE_LOG_DATA_BLOCK_STATUSES</a>
      </td>
-     <td class="mavlink_comment">Log data block status.</td>
+     <td>Log data block status.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="LED_CONTROL">LED_CONTROL (<a href="#LED_CONTROL">
+  <h3 id="LED_CONTROL">LED_CONTROL (<a href="#LED_CONTROL">
     #186
    </a>
    )
   </h3>
-  <p class="description">Control vehicle LEDs.</p>
+  <p>Control vehicle LEDs.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System ID.</td>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Component ID.</td>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">instance</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Instance (LED instance to control or 255 for all LEDs).</td>
+    <tr>
+     <td>instance</td>
+     <td>uint8_t</td>
+     <td>Instance (LED instance to control or 255 for all LEDs).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pattern</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Pattern (see LED_PATTERN_ENUM).</td>
+    <tr>
+     <td>pattern</td>
+     <td>uint8_t</td>
+     <td>Pattern (see LED_PATTERN_ENUM).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">custom_len</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Custom Byte Length.</td>
+    <tr>
+     <td>custom_len</td>
+     <td>uint8_t</td>
+     <td>Custom Byte Length.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">custom_bytes</td>
-     <td class="mavlink_type" valign="top">uint8_t[24]</td>
-     <td class="mavlink_comment">Custom Bytes.</td>
+    <tr>
+     <td>custom_bytes</td>
+     <td>uint8_t[24]</td>
+     <td>Custom Bytes.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="MAG_CAL_PROGRESS">MAG_CAL_PROGRESS (<a href="#MAG_CAL_PROGRESS">
+  <h3 id="MAG_CAL_PROGRESS">MAG_CAL_PROGRESS (<a href="#MAG_CAL_PROGRESS">
     #191
    </a>
    )
   </h3>
-  <p class="description">Reports progress of compass calibration.</p>
+  <p>Reports progress of compass calibration.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">compass_id</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>compass_id</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Compass being calibrated.</td>
+     <td>Compass being calibrated.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">cal_mask</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>cal_mask</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Bitmask of compasses being calibrated.</td>
+     <td>Bitmask of compasses being calibrated.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">cal_status</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>cal_status</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
      </td>
-     <td class="mavlink_comment">Calibration Status.</td>
+     <td>Calibration Status.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">attempt</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>attempt</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Attempt number.</td>
+     <td>Attempt number.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">completion_pct</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>completion_pct</td>
+     <td>uint8_t</td>
+     <td>
       %
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Completion percentage.</td>
+     <td>Completion percentage.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">completion_mask</td>
-     <td class="mavlink_type" valign="top">uint8_t[10]</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>completion_mask</td>
+     <td>uint8_t[10]</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Bitmask of sphere sections (see http://en.wikipedia.org/wiki/Geodesic_grid).</td>
+     <td>Bitmask of sphere sections (see http://en.wikipedia.org/wiki/Geodesic_grid).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">direction_x</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>direction_x</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Body frame direction vector for display.</td>
+     <td>Body frame direction vector for display.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">direction_y</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>direction_y</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Body frame direction vector for display.</td>
+     <td>Body frame direction vector for display.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">direction_z</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>direction_z</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Body frame direction vector for display.</td>
+     <td>Body frame direction vector for display.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="MAG_CAL_REPORT">MAG_CAL_REPORT (<a href="#MAG_CAL_REPORT">
+  <h3 id="MAG_CAL_REPORT">MAG_CAL_REPORT (<a href="#MAG_CAL_REPORT">
     #192
    </a>
    )
   </h3>
-  <p class="description">Reports results of completed compass calibration. Sent until MAG_CAL_ACK received.</p>
+  <p>Reports results of completed compass calibration. Sent until MAG_CAL_ACK received.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">compass_id</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>compass_id</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Compass being calibrated.</td>
+     <td>Compass being calibrated.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">cal_mask</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>cal_mask</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Bitmask of compasses being calibrated.</td>
+     <td>Bitmask of compasses being calibrated.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">cal_status</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>cal_status</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
      </td>
-     <td class="mavlink_comment">Calibration Status.</td>
+     <td>Calibration Status.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">autosaved</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>autosaved</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">0=requires a MAV_CMD_DO_ACCEPT_MAG_CAL, 1=saved to parameters.</td>
+     <td>0=requires a MAV_CMD_DO_ACCEPT_MAG_CAL, 1=saved to parameters.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">fitness</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">mgauss</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>fitness</td>
+     <td>float</td>
+     <td>mgauss</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">RMS milligauss residuals.</td>
+     <td>RMS milligauss residuals.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ofs_x</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>ofs_x</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">X offset.</td>
+     <td>X offset.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ofs_y</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>ofs_y</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Y offset.</td>
+     <td>Y offset.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">ofs_z</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>ofs_z</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Z offset.</td>
+     <td>Z offset.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">diag_x</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>diag_x</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">X diagonal (matrix 11).</td>
+     <td>X diagonal (matrix 11).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">diag_y</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>diag_y</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Y diagonal (matrix 22).</td>
+     <td>Y diagonal (matrix 22).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">diag_z</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>diag_z</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Z diagonal (matrix 33).</td>
+     <td>Z diagonal (matrix 33).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">offdiag_x</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>offdiag_x</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">X off-diagonal (matrix 12 and 21).</td>
+     <td>X off-diagonal (matrix 12 and 21).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">offdiag_y</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>offdiag_y</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Y off-diagonal (matrix 13 and 31).</td>
+     <td>Y off-diagonal (matrix 13 and 31).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">offdiag_z</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>offdiag_z</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Z off-diagonal (matrix 32 and 23).</td>
+     <td>Z off-diagonal (matrix 32 and 23).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" style="color:blue;" valign="top">orientation_confidence<a href="#mav2_extension_field" title="MAVLink2 extension field">
+    <tr>
+     <td style="color:blue;">orientation_confidence<a href="#mav2_extension_field" title="MAVLink2 extension field">
        **
       </a>
      </td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Confidence in orientation (higher is better).</td>
+     <td>Confidence in orientation (higher is better).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" style="color:blue;" valign="top">old_orientation<a href="#mav2_extension_field" title="MAVLink2 extension field">
+    <tr>
+     <td style="color:blue;">old_orientation<a href="#mav2_extension_field" title="MAVLink2 extension field">
        **
       </a>
      </td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
      </td>
-     <td class="mavlink_comment">orientation before calibration.</td>
+     <td>orientation before calibration.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" style="color:blue;" valign="top">new_orientation<a href="#mav2_extension_field" title="MAVLink2 extension field">
+    <tr>
+     <td style="color:blue;">new_orientation<a href="#mav2_extension_field" title="MAVLink2 extension field">
        **
       </a>
      </td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
      </td>
-     <td class="mavlink_comment">orientation after calibration.</td>
+     <td>orientation after calibration.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="EKF_STATUS_REPORT">EKF_STATUS_REPORT (<a href="#EKF_STATUS_REPORT">
+  <h3 id="EKF_STATUS_REPORT">EKF_STATUS_REPORT (<a href="#EKF_STATUS_REPORT">
     #193
    </a>
    )
   </h3>
-  <p class="description">EKF Status message including flags and variances.</p>
+  <p>EKF Status message including flags and variances.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">flags</td>
-     <td class="mavlink_type" valign="top">uint16_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>flags</td>
+     <td>uint16_t</td>
+     <td>
       <a href="#EKF_STATUS_FLAGS">EKF_STATUS_FLAGS</a>
      </td>
-     <td class="mavlink_comment">Flags.</td>
+     <td>Flags.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">velocity_variance</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>velocity_variance</td>
+     <td>float</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Velocity variance.</td>
+     <td>Velocity variance.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pos_horiz_variance</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>pos_horiz_variance</td>
+     <td>float</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Horizontal Position variance.</td>
+     <td>Horizontal Position variance.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">pos_vert_variance</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>pos_vert_variance</td>
+     <td>float</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Vertical Position variance.</td>
+     <td>Vertical Position variance.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">compass_variance</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>compass_variance</td>
+     <td>float</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Compass variance.</td>
+     <td>Compass variance.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">terrain_alt_variance</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>terrain_alt_variance</td>
+     <td>float</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Terrain Altitude variance.</td>
+     <td>Terrain Altitude variance.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" style="color:blue;" valign="top">airspeed_variance<a href="#mav2_extension_field" title="MAVLink2 extension field">
+    <tr>
+     <td style="color:blue;">airspeed_variance<a href="#mav2_extension_field" title="MAVLink2 extension field">
        **
       </a>
      </td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_value" valign="top">
+     <td>float</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Airspeed variance.</td>
+     <td>Airspeed variance.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="PID_TUNING">PID_TUNING (<a href="#PID_TUNING">
+  <h3 id="PID_TUNING">PID_TUNING (<a href="#PID_TUNING">
     #194
    </a>
    )
   </h3>
-  <p class="description">PID tuning information.</p>
+  <p>PID tuning information.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">axis</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>axis</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#PID_TUNING_AXIS">PID_TUNING_AXIS</a>
      </td>
-     <td class="mavlink_comment">Axis.</td>
+     <td>Axis.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">desired</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">deg/s</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>desired</td>
+     <td>float</td>
+     <td>deg/s</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Desired rate.</td>
+     <td>Desired rate.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">achieved</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">deg/s</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>achieved</td>
+     <td>float</td>
+     <td>deg/s</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Achieved rate.</td>
+     <td>Achieved rate.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">FF</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>FF</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">FF component.</td>
+     <td>FF component.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">P</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>P</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">P component.</td>
+     <td>P component.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">I</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>I</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">I component.</td>
+     <td>I component.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">D</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>D</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">D component.</td>
+     <td>D component.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DEEPSTALL">DEEPSTALL (<a href="#DEEPSTALL">
+  <h3 id="DEEPSTALL">DEEPSTALL (<a href="#DEEPSTALL">
     #195
    </a>
    )
   </h3>
-  <p class="description">Deepstall path planning.</p>
+  <p>Deepstall path planning.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">landing_lat</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>landing_lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Landing latitude.</td>
+     <td>Landing latitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">landing_lon</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>landing_lon</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Landing longitude.</td>
+     <td>Landing longitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">path_lat</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>path_lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Final heading start point, latitude.</td>
+     <td>Final heading start point, latitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">path_lon</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>path_lon</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Final heading start point, longitude.</td>
+     <td>Final heading start point, longitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">arc_entry_lat</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>arc_entry_lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Arc entry point, latitude.</td>
+     <td>Arc entry point, latitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">arc_entry_lon</td>
-     <td class="mavlink_type" valign="top">int32_t</td>
-     <td class="mavlink_units" valign="top">degE7</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>arc_entry_lon</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Arc entry point, longitude.</td>
+     <td>Arc entry point, longitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">altitude</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>altitude</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Altitude.</td>
+     <td>Altitude.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">expected_travel_distance</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>expected_travel_distance</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Distance the aircraft expects to travel during the deepstall.</td>
+     <td>Distance the aircraft expects to travel during the deepstall.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">cross_track_error</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>cross_track_error</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Deepstall cross track error (only valid when in DEEPSTALL_STAGE_LAND).</td>
+     <td>Deepstall cross track error (only valid when in DEEPSTALL_STAGE_LAND).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">stage</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>stage</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#DEEPSTALL_STAGE">DEEPSTALL_STAGE</a>
      </td>
-     <td class="mavlink_comment">Deepstall stage.</td>
+     <td>Deepstall stage.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GIMBAL_REPORT">GIMBAL_REPORT (<a href="#GIMBAL_REPORT">
+  <h3 id="GIMBAL_REPORT">GIMBAL_REPORT (<a href="#GIMBAL_REPORT">
     #200
    </a>
    )
   </h3>
-  <p class="description">3 axis gimbal measurements.</p>
+  <p>3 axis gimbal measurements.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">delta_time</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">s</td>
-     <td class="mavlink_comment">Time since last update.</td>
+    <tr>
+     <td>delta_time</td>
+     <td>float</td>
+     <td>s</td>
+     <td>Time since last update.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">delta_angle_x</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Delta angle X.</td>
+    <tr>
+     <td>delta_angle_x</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Delta angle X.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">delta_angle_y</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Delta angle Y.</td>
+    <tr>
+     <td>delta_angle_y</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Delta angle Y.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">delta_angle_z</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Delta angle X.</td>
+    <tr>
+     <td>delta_angle_z</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Delta angle X.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">delta_velocity_x</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m/s</td>
-     <td class="mavlink_comment">Delta velocity X.</td>
+    <tr>
+     <td>delta_velocity_x</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Delta velocity X.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">delta_velocity_y</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m/s</td>
-     <td class="mavlink_comment">Delta velocity Y.</td>
+    <tr>
+     <td>delta_velocity_y</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Delta velocity Y.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">delta_velocity_z</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">m/s</td>
-     <td class="mavlink_comment">Delta velocity Z.</td>
+    <tr>
+     <td>delta_velocity_z</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Delta velocity Z.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">joint_roll</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Joint ROLL.</td>
+    <tr>
+     <td>joint_roll</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Joint ROLL.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">joint_el</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Joint EL.</td>
+    <tr>
+     <td>joint_el</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Joint EL.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">joint_az</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad</td>
-     <td class="mavlink_comment">Joint AZ.</td>
+    <tr>
+     <td>joint_az</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Joint AZ.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GIMBAL_CONTROL">GIMBAL_CONTROL (<a href="#GIMBAL_CONTROL">
+  <h3 id="GIMBAL_CONTROL">GIMBAL_CONTROL (<a href="#GIMBAL_CONTROL">
     #201
    </a>
    )
   </h3>
-  <p class="description">Control message for rate gimbal.</p>
+  <p>Control message for rate gimbal.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">demanded_rate_x</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad/s</td>
-     <td class="mavlink_comment">Demanded angular rate X.</td>
+    <tr>
+     <td>demanded_rate_x</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Demanded angular rate X.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">demanded_rate_y</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad/s</td>
-     <td class="mavlink_comment">Demanded angular rate Y.</td>
+    <tr>
+     <td>demanded_rate_y</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Demanded angular rate Y.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">demanded_rate_z</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">rad/s</td>
-     <td class="mavlink_comment">Demanded angular rate Z.</td>
+    <tr>
+     <td>demanded_rate_z</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Demanded angular rate Z.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GIMBAL_TORQUE_CMD_REPORT">GIMBAL_TORQUE_CMD_REPORT (<a href="#GIMBAL_TORQUE_CMD_REPORT">
+  <h3 id="GIMBAL_TORQUE_CMD_REPORT">GIMBAL_TORQUE_CMD_REPORT (<a href="#GIMBAL_TORQUE_CMD_REPORT">
     #214
    </a>
    )
   </h3>
-  <p class="description">100 Hz gimbal torque command telemetry.</p>
+  <p>100 Hz gimbal torque command telemetry.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">System ID.</td>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Component ID.</td>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">rl_torque_cmd</td>
-     <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Roll Torque Command.</td>
+    <tr>
+     <td>rl_torque_cmd</td>
+     <td>int16_t</td>
+     <td>Roll Torque Command.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">el_torque_cmd</td>
-     <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Elevation Torque Command.</td>
+    <tr>
+     <td>el_torque_cmd</td>
+     <td>int16_t</td>
+     <td>Elevation Torque Command.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">az_torque_cmd</td>
-     <td class="mavlink_type" valign="top">int16_t</td>
-     <td class="mavlink_comment">Azimuth Torque Command.</td>
+    <tr>
+     <td>az_torque_cmd</td>
+     <td>int16_t</td>
+     <td>Azimuth Torque Command.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_HEARTBEAT">GOPRO_HEARTBEAT (<a href="#GOPRO_HEARTBEAT">
+  <h3 id="GOPRO_HEARTBEAT">GOPRO_HEARTBEAT (<a href="#GOPRO_HEARTBEAT">
     #215
    </a>
    )
   </h3>
-  <p class="description">Heartbeat from a HeroBus attached GoPro.</p>
+  <p>Heartbeat from a HeroBus attached GoPro.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">status</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>status</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#GOPRO_HEARTBEAT_STATUS">GOPRO_HEARTBEAT_STATUS</a>
      </td>
-     <td class="mavlink_comment">Status.</td>
+     <td>Status.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">capture_mode</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>capture_mode</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#GOPRO_CAPTURE_MODE">GOPRO_CAPTURE_MODE</a>
      </td>
-     <td class="mavlink_comment">Current capture mode.</td>
+     <td>Current capture mode.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">flags</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>flags</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#GOPRO_HEARTBEAT_FLAGS">GOPRO_HEARTBEAT_FLAGS</a>
      </td>
-     <td class="mavlink_comment">Additional status bits.</td>
+     <td>Additional status bits.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_GET_REQUEST">GOPRO_GET_REQUEST (<a href="#GOPRO_GET_REQUEST">
+  <h3 id="GOPRO_GET_REQUEST">GOPRO_GET_REQUEST (<a href="#GOPRO_GET_REQUEST">
     #216
    </a>
    )
   </h3>
-  <p class="description">Request a GOPRO_COMMAND response from the GoPro.</p>
+  <p>Request a GOPRO_COMMAND response from the GoPro.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">cmd_id</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>cmd_id</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
      </td>
-     <td class="mavlink_comment">Command ID.</td>
+     <td>Command ID.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_GET_RESPONSE">GOPRO_GET_RESPONSE (<a href="#GOPRO_GET_RESPONSE">
+  <h3 id="GOPRO_GET_RESPONSE">GOPRO_GET_RESPONSE (<a href="#GOPRO_GET_RESPONSE">
     #217
    </a>
    )
   </h3>
-  <p class="description">Response from a GOPRO_COMMAND get request.</p>
+  <p>Response from a GOPRO_COMMAND get request.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">cmd_id</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>cmd_id</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
      </td>
-     <td class="mavlink_comment">Command ID.</td>
+     <td>Command ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">status</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>status</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
      </td>
-     <td class="mavlink_comment">Status.</td>
+     <td>Status.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">value</td>
-     <td class="mavlink_type" valign="top">uint8_t[4]</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>value</td>
+     <td>uint8_t[4]</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Value.</td>
+     <td>Value.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_SET_REQUEST">GOPRO_SET_REQUEST (<a href="#GOPRO_SET_REQUEST">
+  <h3 id="GOPRO_SET_REQUEST">GOPRO_SET_REQUEST (<a href="#GOPRO_SET_REQUEST">
     #218
    </a>
    )
   </h3>
-  <p class="description">Request to set a GOPRO_COMMAND with a desired.</p>
+  <p>Request to set a GOPRO_COMMAND with a desired.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">cmd_id</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>cmd_id</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
      </td>
-     <td class="mavlink_comment">Command ID.</td>
+     <td>Command ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">value</td>
-     <td class="mavlink_type" valign="top">uint8_t[4]</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>value</td>
+     <td>uint8_t[4]</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Value.</td>
+     <td>Value.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="GOPRO_SET_RESPONSE">GOPRO_SET_RESPONSE (<a href="#GOPRO_SET_RESPONSE">
+  <h3 id="GOPRO_SET_RESPONSE">GOPRO_SET_RESPONSE (<a href="#GOPRO_SET_RESPONSE">
     #219
    </a>
    )
   </h3>
-  <p class="description">Response from a GOPRO_COMMAND set request.</p>
+  <p>Response from a GOPRO_COMMAND set request.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">cmd_id</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>cmd_id</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#GOPRO_COMMAND">GOPRO_COMMAND</a>
      </td>
-     <td class="mavlink_comment">Command ID.</td>
+     <td>Command ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">status</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>status</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
      </td>
-     <td class="mavlink_comment">Status.</td>
+     <td>Status.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="RPM">RPM (<a href="#RPM">
+  <h3 id="RPM">RPM (<a href="#RPM">
     #226
    </a>
    )
   </h3>
-  <p class="description">RPM sensor output.</p>
+  <p>RPM sensor output.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">rpm1</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">RPM Sensor1.</td>
+    <tr>
+     <td>rpm1</td>
+     <td>float</td>
+     <td>RPM Sensor1.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">rpm2</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_comment">RPM Sensor2.</td>
+    <tr>
+     <td>rpm2</td>
+     <td>float</td>
+     <td>RPM Sensor2.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DEVICE_OP_READ">DEVICE_OP_READ (<a href="#DEVICE_OP_READ">
+  <h3 id="DEVICE_OP_READ">DEVICE_OP_READ (<a href="#DEVICE_OP_READ">
     #11000
    </a>
    )
   </h3>
-  <p class="description">
+  <p>
    <strong>
     (MAVLink 2)
    </strong>Read registers for a device.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">request_id</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>request_id</td>
+     <td>uint32_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Request ID - copied to reply.</td>
+     <td>Request ID - copied to reply.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">bustype</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>bustype</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
      </td>
-     <td class="mavlink_comment">The bus type.</td>
+     <td>The bus type.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">bus</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>bus</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Bus number.</td>
+     <td>Bus number.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">address</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>address</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Bus address.</td>
+     <td>Bus address.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">busname</td>
-     <td class="mavlink_type" valign="top">char[40]</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>busname</td>
+     <td>char[40]</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Name of device on bus (for SPI).</td>
+     <td>Name of device on bus (for SPI).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">regstart</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>regstart</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">First register to read.</td>
+     <td>First register to read.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">count</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>count</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Count of registers to read.</td>
+     <td>Count of registers to read.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DEVICE_OP_READ_REPLY">DEVICE_OP_READ_REPLY (<a href="#DEVICE_OP_READ_REPLY">
+  <h3 id="DEVICE_OP_READ_REPLY">DEVICE_OP_READ_REPLY (<a href="#DEVICE_OP_READ_REPLY">
     #11001
    </a>
    )
   </h3>
-  <p class="description">
+  <p>
    <strong>
     (MAVLink 2)
    </strong>Read registers reply.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">request_id</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Request ID - copied from request.</td>
+    <tr>
+     <td>request_id</td>
+     <td>uint32_t</td>
+     <td>Request ID - copied from request.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">result</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">0 for success, anything else is failure code.</td>
+    <tr>
+     <td>result</td>
+     <td>uint8_t</td>
+     <td>0 for success, anything else is failure code.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">regstart</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Starting register.</td>
+    <tr>
+     <td>regstart</td>
+     <td>uint8_t</td>
+     <td>Starting register.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">count</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">Count of bytes read.</td>
+    <tr>
+     <td>count</td>
+     <td>uint8_t</td>
+     <td>Count of bytes read.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">data</td>
-     <td class="mavlink_type" valign="top">uint8_t[128]</td>
-     <td class="mavlink_comment">Reply data.</td>
+    <tr>
+     <td>data</td>
+     <td>uint8_t[128]</td>
+     <td>Reply data.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DEVICE_OP_WRITE">DEVICE_OP_WRITE (<a href="#DEVICE_OP_WRITE">
+  <h3 id="DEVICE_OP_WRITE">DEVICE_OP_WRITE (<a href="#DEVICE_OP_WRITE">
     #11002
    </a>
    )
   </h3>
-  <p class="description">
+  <p>
    <strong>
     (MAVLink 2)
    </strong>Write registers for a device.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_system</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">System ID.</td>
+     <td>System ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">target_component</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Component ID.</td>
+     <td>Component ID.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">request_id</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>request_id</td>
+     <td>uint32_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Request ID - copied to reply.</td>
+     <td>Request ID - copied to reply.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">bustype</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>bustype</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#DEVICE_OP_BUSTYPE">DEVICE_OP_BUSTYPE</a>
      </td>
-     <td class="mavlink_comment">The bus type.</td>
+     <td>The bus type.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">bus</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>bus</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Bus number.</td>
+     <td>Bus number.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">address</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>address</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Bus address.</td>
+     <td>Bus address.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">busname</td>
-     <td class="mavlink_type" valign="top">char[40]</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>busname</td>
+     <td>char[40]</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Name of device on bus (for SPI).</td>
+     <td>Name of device on bus (for SPI).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">regstart</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>regstart</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">First register to write.</td>
+     <td>First register to write.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">count</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>count</td>
+     <td>uint8_t</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Count of registers to write.</td>
+     <td>Count of registers to write.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">data</td>
-     <td class="mavlink_type" valign="top">uint8_t[128]</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>data</td>
+     <td>uint8_t[128]</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Write data.</td>
+     <td>Write data.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="DEVICE_OP_WRITE_REPLY">DEVICE_OP_WRITE_REPLY (<a href="#DEVICE_OP_WRITE_REPLY">
+  <h3 id="DEVICE_OP_WRITE_REPLY">DEVICE_OP_WRITE_REPLY (<a href="#DEVICE_OP_WRITE_REPLY">
     #11003
    </a>
    )
   </h3>
-  <p class="description">
+  <p>
    <strong>
     (MAVLink 2)
    </strong>Write registers reply.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">request_id</td>
-     <td class="mavlink_type" valign="top">uint32_t</td>
-     <td class="mavlink_comment">Request ID - copied from request.</td>
+    <tr>
+     <td>request_id</td>
+     <td>uint32_t</td>
+     <td>Request ID - copied from request.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">result</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_comment">0 for success, anything else is failure code.</td>
+    <tr>
+     <td>result</td>
+     <td>uint8_t</td>
+     <td>0 for success, anything else is failure code.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ADAP_TUNING">ADAP_TUNING (<a href="#ADAP_TUNING">
+  <h3 id="ADAP_TUNING">ADAP_TUNING (<a href="#ADAP_TUNING">
     #11010
    </a>
    )
   </h3>
-  <p class="description">
+  <p>
    <strong>
     (MAVLink 2)
    </strong>Adaptive Controller tuning information.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Values</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">axis</td>
-     <td class="mavlink_type" valign="top">uint8_t</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>axis</td>
+     <td>uint8_t</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#PID_TUNING_AXIS">PID_TUNING_AXIS</a>
      </td>
-     <td class="mavlink_comment">Axis.</td>
+     <td>Axis.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">desired</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">deg/s</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>desired</td>
+     <td>float</td>
+     <td>deg/s</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Desired rate.</td>
+     <td>Desired rate.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">achieved</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">deg/s</td>
-     <td class="mavlink_value" valign="top">
+    <tr>
+     <td>achieved</td>
+     <td>float</td>
+     <td>deg/s</td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Achieved rate.</td>
+     <td>Achieved rate.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">error</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>error</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Error between model and vehicle.</td>
+     <td>Error between model and vehicle.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">theta</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>theta</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Theta estimated state predictor.</td>
+     <td>Theta estimated state predictor.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">omega</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>omega</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Omega estimated state predictor.</td>
+     <td>Omega estimated state predictor.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">sigma</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>sigma</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Sigma estimated state predictor.</td>
+     <td>Sigma estimated state predictor.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">theta_dot</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>theta_dot</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Theta derivative.</td>
+     <td>Theta derivative.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">omega_dot</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>omega_dot</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Omega derivative.</td>
+     <td>Omega derivative.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">sigma_dot</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>sigma_dot</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Sigma derivative.</td>
+     <td>Sigma derivative.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">f</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>f</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Projection operator value.</td>
+     <td>Projection operator value.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">f_dot</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>f_dot</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">Projection operator derivative.</td>
+     <td>Projection operator derivative.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">u</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>u</td>
+     <td>float</td>
+     <td>
      </td>
-     <td class="mavlink_value" valign="top">
+     <td>
       <a href="#">
       </a>
      </td>
-     <td class="mavlink_comment">u adaptive controlled output command.</td>
+     <td>u adaptive controlled output command.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="VISION_POSITION_DELTA">VISION_POSITION_DELTA (<a href="#VISION_POSITION_DELTA">
+  <h3 id="VISION_POSITION_DELTA">VISION_POSITION_DELTA (<a href="#VISION_POSITION_DELTA">
     #11011
    </a>
    )
   </h3>
-  <p class="description">
+  <p>
    <strong>
     (MAVLink 2)
    </strong>Camera vision based attitude and position deltas.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">time_usec</td>
-     <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_units" valign="top">us</td>
-     <td class="mavlink_comment">Timestamp (synced to UNIX time or since system boot).</td>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (synced to UNIX time or since system boot).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">time_delta_usec</td>
-     <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_units" valign="top">us</td>
-     <td class="mavlink_comment">Time since the last reported camera frame.</td>
+    <tr>
+     <td>time_delta_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Time since the last reported camera frame.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">angle_delta</td>
-     <td class="mavlink_type" valign="top">float[3]</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>angle_delta</td>
+     <td>float[3]</td>
+     <td>
      </td>
-     <td class="mavlink_comment">Defines a rotation vector in body frame that rotates the vehicle from the previous to the current orientation.</td>
+     <td>Defines a rotation vector in body frame that rotates the vehicle from the previous to the current orientation.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">position_delta</td>
-     <td class="mavlink_type" valign="top">float[3]</td>
-     <td class="mavlink_units" valign="top">m</td>
-     <td class="mavlink_comment">Change in position from previous to current frame rotated into body frame (0=forward, 1=right, 2=down).</td>
+    <tr>
+     <td>position_delta</td>
+     <td>float[3]</td>
+     <td>m</td>
+     <td>Change in position from previous to current frame rotated into body frame (0=forward, 1=right, 2=down).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">confidence</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>confidence</td>
+     <td>float</td>
+     <td>
       %
      </td>
-     <td class="mavlink_comment">Normalised confidence value from 0 to 100.</td>
+     <td>Normalised confidence value from 0 to 100.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="AOA_SSA">AOA_SSA (<a href="#AOA_SSA">
+  <h3 id="AOA_SSA">AOA_SSA (<a href="#AOA_SSA">
     #11020
    </a>
    )
   </h3>
-  <p class="description">
+  <p>
    <strong>
     (MAVLink 2)
    </strong>Angle of Attack and Side Slip Angle.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">time_usec</td>
-     <td class="mavlink_type" valign="top">uint64_t</td>
-     <td class="mavlink_units" valign="top">us</td>
-     <td class="mavlink_comment">Timestamp (since boot or Unix epoch).</td>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (since boot or Unix epoch).</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">AOA</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">deg</td>
-     <td class="mavlink_comment">Angle of Attack.</td>
+    <tr>
+     <td>AOA</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Angle of Attack.</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">SSA</td>
-     <td class="mavlink_type" valign="top">float</td>
-     <td class="mavlink_units" valign="top">deg</td>
-     <td class="mavlink_comment">Side Slip Angle.</td>
+    <tr>
+     <td>SSA</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Side Slip Angle.</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ESC_TELEMETRY_1_TO_4">ESC_TELEMETRY_1_TO_4 (<a href="#ESC_TELEMETRY_1_TO_4">
+  <h3 id="ESC_TELEMETRY_1_TO_4">ESC_TELEMETRY_1_TO_4 (<a href="#ESC_TELEMETRY_1_TO_4">
     #11030
    </a>
    )
   </h3>
-  <p class="description">
+  <p>
    <strong>
     (MAVLink 2)
    </strong>ESC Telemetry Data for ESCs 1 to 4, matching data sent by BLHeli ESCs</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">temperature</td>
-     <td class="mavlink_type" valign="top">uint8_t[4]</td>
-     <td class="mavlink_units" valign="top">degC</td>
-     <td class="mavlink_comment">Temperature</td>
+    <tr>
+     <td>temperature</td>
+     <td>uint8_t[4]</td>
+     <td>degC</td>
+     <td>Temperature</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">voltage</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">cV</td>
-     <td class="mavlink_comment">Voltage</td>
+    <tr>
+     <td>voltage</td>
+     <td>uint16_t[4]</td>
+     <td>cV</td>
+     <td>Voltage</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">current</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">cA</td>
-     <td class="mavlink_comment">Current</td>
+    <tr>
+     <td>current</td>
+     <td>uint16_t[4]</td>
+     <td>cA</td>
+     <td>Current</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">totalcurrent</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">mAh</td>
-     <td class="mavlink_comment">Total current</td>
+    <tr>
+     <td>totalcurrent</td>
+     <td>uint16_t[4]</td>
+     <td>mAh</td>
+     <td>Total current</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">rpm</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">rpm</td>
-     <td class="mavlink_comment">RPM (eRPM)</td>
+    <tr>
+     <td>rpm</td>
+     <td>uint16_t[4]</td>
+     <td>rpm</td>
+     <td>RPM (eRPM)</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">count</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>count</td>
+     <td>uint16_t[4]</td>
+     <td>
      </td>
-     <td class="mavlink_comment">count of telemetry packets received (wraps at 65535)</td>
+     <td>count of telemetry packets received (wraps at 65535)</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ESC_TELEMETRY_5_TO_8">ESC_TELEMETRY_5_TO_8 (<a href="#ESC_TELEMETRY_5_TO_8">
+  <h3 id="ESC_TELEMETRY_5_TO_8">ESC_TELEMETRY_5_TO_8 (<a href="#ESC_TELEMETRY_5_TO_8">
     #11031
    </a>
    )
   </h3>
-  <p class="description">
+  <p>
    <strong>
     (MAVLink 2)
    </strong>ESC Telemetry Data for ESCs 5 to 8, matching data sent by BLHeli ESCs</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">temperature</td>
-     <td class="mavlink_type" valign="top">uint8_t[4]</td>
-     <td class="mavlink_units" valign="top">degC</td>
-     <td class="mavlink_comment">Temperature</td>
+    <tr>
+     <td>temperature</td>
+     <td>uint8_t[4]</td>
+     <td>degC</td>
+     <td>Temperature</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">voltage</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">cV</td>
-     <td class="mavlink_comment">Voltage</td>
+    <tr>
+     <td>voltage</td>
+     <td>uint16_t[4]</td>
+     <td>cV</td>
+     <td>Voltage</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">current</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">cA</td>
-     <td class="mavlink_comment">Current</td>
+    <tr>
+     <td>current</td>
+     <td>uint16_t[4]</td>
+     <td>cA</td>
+     <td>Current</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">totalcurrent</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">mAh</td>
-     <td class="mavlink_comment">Total current</td>
+    <tr>
+     <td>totalcurrent</td>
+     <td>uint16_t[4]</td>
+     <td>mAh</td>
+     <td>Total current</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">rpm</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">rpm</td>
-     <td class="mavlink_comment">RPM (eRPM)</td>
+    <tr>
+     <td>rpm</td>
+     <td>uint16_t[4]</td>
+     <td>rpm</td>
+     <td>RPM (eRPM)</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">count</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>count</td>
+     <td>uint16_t[4]</td>
+     <td>
      </td>
-     <td class="mavlink_comment">count of telemetry packets received (wraps at 65535)</td>
+     <td>count of telemetry packets received (wraps at 65535)</td>
     </tr>
    </tbody>
   </table>
-  <h3 class="mavlink_message_name" id="ESC_TELEMETRY_9_TO_12">ESC_TELEMETRY_9_TO_12 (<a href="#ESC_TELEMETRY_9_TO_12">
+  <h3 id="ESC_TELEMETRY_9_TO_12">ESC_TELEMETRY_9_TO_12 (<a href="#ESC_TELEMETRY_9_TO_12">
     #11032
    </a>
    )
   </h3>
-  <p class="description">
+  <p>
    <strong>
     (MAVLink 2)
    </strong>ESC Telemetry Data for ESCs 9 to 12, matching data sent by BLHeli ESCs</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th class="mavlink_field_header">Field Name</th>
-     <th class="mavlink_field_header">Type</th>
-     <th class="mavlink_field_header">Units</th>
-     <th class="mavlink_field_header">Description</th>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">temperature</td>
-     <td class="mavlink_type" valign="top">uint8_t[4]</td>
-     <td class="mavlink_units" valign="top">degC</td>
-     <td class="mavlink_comment">Temperature</td>
+    <tr>
+     <td>temperature</td>
+     <td>uint8_t[4]</td>
+     <td>degC</td>
+     <td>Temperature</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">voltage</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">cV</td>
-     <td class="mavlink_comment">Voltage</td>
+    <tr>
+     <td>voltage</td>
+     <td>uint16_t[4]</td>
+     <td>cV</td>
+     <td>Voltage</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">current</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">cA</td>
-     <td class="mavlink_comment">Current</td>
+    <tr>
+     <td>current</td>
+     <td>uint16_t[4]</td>
+     <td>cA</td>
+     <td>Current</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">totalcurrent</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">mAh</td>
-     <td class="mavlink_comment">Total current</td>
+    <tr>
+     <td>totalcurrent</td>
+     <td>uint16_t[4]</td>
+     <td>mAh</td>
+     <td>Total current</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">rpm</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">rpm</td>
-     <td class="mavlink_comment">RPM (eRPM)</td>
+    <tr>
+     <td>rpm</td>
+     <td>uint16_t[4]</td>
+     <td>rpm</td>
+     <td>RPM (eRPM)</td>
     </tr>
-    <tr class="mavlink_field">
-     <td class="mavlink_name" valign="top">count</td>
-     <td class="mavlink_type" valign="top">uint16_t[4]</td>
-     <td class="mavlink_units" valign="top">
+    <tr>
+     <td>count</td>
+     <td>uint16_t[4]</td>
+     <td>
      </td>
-     <td class="mavlink_comment">count of telemetry packets received (wraps at 65535)</td>
+     <td>count of telemetry packets received (wraps at 65535)</td>
     </tr>
    </tbody>
   </table>
