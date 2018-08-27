@@ -14,9 +14,9 @@ Each XML file defines the set of messages supported by a particular autopilot sy
 * Autopilot-specific dialects `include` *common.xml* and define just those messages for system-specific functionality.
 
 
-Where you define a message depends on what it is, and where you are in the develpment cycle:
+Where you define a message depends on what it is, and where you are in the development cycle:
 
-* If you're working with your own system you should fork the *mavlink/mavlink* repo, then create your own dialect file and add messages to it. 
+* If you're working with your own system you should fork the **mavlink/mavlink** repo, then create your own dialect file and add messages to it. 
 You can push your dialect to the project MAVLink repo to publish it.
 
   > **Note** You don't *have to* push changes back to MAVLink. However this makes sense if you want to publish your messages more widely, and potentially get them moved into the *common.xml* message set.
@@ -40,7 +40,7 @@ While this is the canonical reference, it is easier to understand the XML file b
 
 The broad structure for all MAVLink XML files is given below.
 
-> **Note** If you're creating a custom dialect file your file structure should be similar to the one above.
+> **Note** If you're creating a custom dialect file your file structure should be similar to the one below.
   Typically you will include *common.xml* and define your messages and enum in the blocks shown.
 
 ```xml
@@ -70,12 +70,13 @@ The main fields/tags are:
 
 - `include`: This tag is used to specify any other XML files included in your dialect.
    - Typically dialect files will include *common.xml* as shown above.
-   - You can include as many files as you like using separate tags.
-   - The path to the included file can be relative to your dialect file. 
+   - You can include multiple files using separate tags.
+   - The path to included files can be relative to your dialect file. 
      Note however that the project only tests dialects in the same folder.
-   - You can `include` dialects that include other dialects.
-     Note that the project only tests including dialects that do not include other dialects.
-* `version`: The version should be: TBD 
+   - Nested `include` of files is not supported (only files specified in the top level `include` are imported).
+* `version`: The minor version number for the release, as included in the [../messages/common.md#HEARTBEAT message] `mavlink_version` field. 
+  * For dialects that `include` **common.xml** the tag should be removed so that the `version` from **common.xml** is used (`version` from top level file will be used if specified).
+  * For private dialects you can use whatever version you like. 
 * `dialect`: This number is unique for your dialect. You should use: TBD <!-- how are these allocated -->
 * `enums`: Dialect-specific enums can be defined in this block (if none are defined in the file, the block is optional/can be removed).
 * `messages`: Dialect-specific messages can be defined in this block (if none are defined in the file, the block is optional/can be removed).
@@ -114,7 +115,7 @@ The main message tags/fields are:
     - For MAVLink 1:
       - Valid numbers range from 0 to 255.
       - The ids 0-149 and 230-255 are reserved for *common.xml*. Dialects can use 150-229 (?240) for custom messages (provided these are not used by other included dialects). 
-    - For MAVLink 2:
+    - For [MAVLink 2](../guide/mavlink_2.md):
       - Valid numbers range from 0 to 16777215.
       - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1. 
         > **Note** IDs are precious in MAVLink 1!
@@ -122,11 +123,14 @@ The main message tags/fields are:
 - `description` (optional): Human readable description of message, shown in user interfaces and in code comments. 
   This should contain all information (and hyperlinks) to fully understand the message.
 - `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire).
-  - `type`: Similar to a field in a C struct - the size of the data required to store/represent the data type.
-    - Fields can be signed/unsigned integers of size 8, 16, 23, 64 bits (`{u)int8_t`, `(u)int16_t`, `(u)int32_t`, `(u)int64_t`), single/double precision IEEE754 floating point numbers.They can also be arrays of the other types - e.g. `uint16_t[10]`. 
+  - `type`: Similar to a field in a C `struct` - the size of the data required to store/represent the data type.
+    - Fields can be signed/unsigned integers of size 8, 16, 23, 64 bits (`{u)int8_t`, `(u)int16_t`, `(u)int32_t`, `(u)int64_t`), single/double precision IEEE754 floating point numbers. 
+    They can also be arrays of the other types - e.g. `uint16_t[10]`. 
   - `name`: Name of the field (used in code).
   - `enum`: Name of an enum defining possible values of the field (e.g. `MAV_BATTERY_CHARGE_STATE`).
   - `units`: The units for fields that take numeric values (not enums). These are defined in the [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd) (search on *name="SI_Unit"*)
+  - `display`: This should be set as `display="bitmask"` for bitmask fields (hint to ground station that enum values must be displayed as checkboxes).
+  - `print_format`: TBD.
 - `extensions`: This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only. 
   - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2. 
 
