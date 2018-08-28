@@ -87,8 +87,8 @@ The main fields/tags are:
 
 ### Message Definition
 
-All messages are defined with `<messages> ... </messages>` blocks as discussed in the previous section.
-As a concrete example, the definition of the `BATTERY_STATUS` message is given below (as defined **mavlink/message_definitions/v1.0/common.xml**).
+All messages are defined within the `<messages> ... </messages>` block (as discussed in the previous section) using `<message>...</message>` tags.
+As a concrete example, the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) message is given below.
 
 > **Note** This message was chosen as it contains many of the main fields and attributes. 
 
@@ -130,16 +130,118 @@ The main message tags/fields are:
     - Fields can be signed/unsigned integers of size 8, 16, 23, 64 bits (`{u)int8_t`, `(u)int16_t`, `(u)int32_t`, `(u)int64_t`), single/double precision IEEE754 floating point numbers. 
     They can also be arrays of the other types - e.g. `uint16_t[10]`. 
   - `name`: Name of the field (used in code).
-  - `enum`: Name of an enum defining possible values of the field (e.g. `MAV_BATTERY_CHARGE_STATE`).
+  - [enum](#enum): Name of an `enum` defining possible values of the field (e.g. `MAV_BATTERY_CHARGE_STATE`).
   - `units`: The units for fields that take numeric values (not enums). These are defined in the [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd) (search on *name="SI_Unit"*)
   - `display`: This should be set as `display="bitmask"` for bitmask fields (hint to ground station that enum values must be displayed as checkboxes).
   - `print_format`: TBD.
+- [deprecated](#deprecated): The message has been replaced by another message.
 - `extensions`: This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only. 
   - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2. 
 
 
+### Enum Definition {#enum}
 
-  
+Enums are used to define named values that may be used as options in messages - for example to define errors, states, or modes. 
+
+All enums are defined within the `<enums> ... </enums>` blocks (as discussed in the previous section). Enum values are defined within `<enum>` tags.
+
+As a concrete example, the definition of the [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) message is given below.
+
+```xml
+<enum name="LANDING_TARGET_TYPE">
+    <description>Type of landing target</description>
+    <entry value="0" name="LANDING_TARGET_TYPE_LIGHT_BEACON">
+        <description>Landing target signaled by light beacon (ex: IR-LOCK)</description>
+    </entry>
+    <entry value="1" name="LANDING_TARGET_TYPE_RADIO_BEACON">
+        <description>Landing target signaled by radio beacon (ex: ILS, NDB)</description>
+    </entry>
+    <entry value="2" name="LANDING_TARGET_TYPE_VISION_FIDUCIAL">
+        <description>Landing target represented by a fiducial marker (ex: ARTag)</description>
+    </entry>
+    <entry value="3" name="LANDING_TARGET_TYPE_VISION_OTHER">
+        <description>Landing target represented by a pre-defined visual shape/feature (ex: X-marker, H-marker, square)</description>
+    </entry>
+```
+
+The main `enum` tags/fields are:
+* `name`: The name of the enum (mandatory). This is a string of capitalized, underscore-separated words.
+* `description` (optional): A string describing the purpose of the enum
+* `entry` (optional): An entry (zero or more entries can be specified for each enum)
+* [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
+
+#### entry {#entry}
+
+The enum `entry` tags/fields are:
+* `name`: The name of the enum value (mandatory). This is a string of capitalized, underscore-separated words.
+* `value` (optional): The *value* for the entry (a number).
+* `description` (optional): A description of the entry.
+* `param` (optional): A [param]() value used in a [MAV_CMD](../messages/common.md#MAV_CMD) enum entry. For more information see 
+* [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the enum is deprecated or "work in progress". 
+
+
+
+
+
+
+
+### Common Tags
+
+The tags can be used in other types - e.g. messages and enums.
+
+#### deprecated {#deprecated}
+
+The `<deprecated>` tag can be used in an [enum](#enum), enum [entry](#entry) (value) or [message](#message) to indicate that the item has been superseded. The tag also indicates the time of deprecation and the replacement item.
+
+The generator toolchain can be configured to conditionally build messages omitting the `deprecated` entries.
+
+> **Tip** An entity should be marked as deprecated only when the main users have had an opportunity to update to the new method.
+
+As a concrete example, below we see that [SET_MODE](../messages/common.md#SET_MODE) is deprecated and replaced by [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) on `2015-12`.
+```xml
+    <message id="11" name="SET_MODE">
+      <deprecated since="2015-12" replaced_by="MAV_CMD_DO_SET_MODE">Use COMMAND_LONG with MAV_CMD_DO_SET_MODE instead</deprecated>
+```
+
+The `deprecated` attributes are:
+* `since`: Year/month when deprecation started. Format: YYYY-MM.
+* `replaced by`: String of entity that supersedes this item.
+* `description` (optional): String with more information about the deprecation.
+
+<!--
+Confusing, above the description is not used, but the tag itself contains description information. 
+<xs:element name="deprecated">
+    <xs:complexType mixed="true">
+        <xs:sequence>
+            <xs:element ref="description" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute ref="since" use="required"/>
+        <xs:attribute ref="replaced_by" use="required"/>
+    </xs:complexType>
+</xs:element>
+    </message>
+-->
+
+
+#### wip {#wip}
+
+The `<wip>` tag can be used in an enum [entry](#entry) (value) or [message](#message) to indicate that the item is a "work in progress". 
+
+The generator toolchain can be configured to conditionally build messages omitting the `wip` entries.
+
+Most commonly, the tag is used as shown:
+```xml
+<wip />
+```
+
+The `wip` tags are:
+* `description` (optional): A description/explanation of the wip.
+
+<!--  ref="description" minOccurs="0" -->
+
+
+
+
   
 <!--
 BELOW HERE IS EVOLVING NOTES
@@ -216,36 +318,9 @@ static inline void mavlink_msg_heartbeat_decode(const mavlink_message_t* msg, ma
 
 
 
-Draw inspiration from dialects and other messages.
-
-
-## Create vs Extend
-
-You may need to create or 
-
-You should create a new message when your MAVLink system supports a feature that is not 
-
-
-While a dialect can include any other message definition, care should be taken when including a definition file that includes another file (only a single level of nesting is tested).
-
-
-
-
 ////
 
-
-///
-The process of adding a message is explained here with the common heartbeat message.
-
-Note that the heartbeat message is the only message required to be used, all other messages are optional.
-
 Questions
-
-
-
-it looks like this should be deleted and the dialect in imported file should be used???
-Note both the version and include tags. If this file is in the same directory as the common.xml file, the contents of that file will be included in the final MAVLink code generated from this description file. 
-This is probably the way you want to organize your custom message definition file.
 
   1. 150 - 229 appear to not be held by common.xml. 
   What range should a dialect use for its messages/ 
