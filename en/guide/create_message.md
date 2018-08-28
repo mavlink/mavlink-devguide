@@ -16,12 +16,15 @@ Each XML file defines the set of messages supported by a particular autopilot sy
 
 Where you define a message depends on what it is, and where you are in the development cycle:
 
-* If you're working with your own system you should fork the **mavlink/mavlink** repo, then create your own dialect file and add messages to it. 
-You can push your dialect to the project MAVLink repo to publish it.
+* If you're creating a new MAVLink system (e.g. flight stack) you should fork the **mavlink/mavlink** repo, add your own dialect file, and add messages to it (usually a dialect file will also include **common.xml**) .
+  You can push your dialect to the project MAVLink repo to publish it.
 
-  > **Note** You don't *have to* push changes back to MAVLink. However this makes sense if you want to publish your messages more widely, and potentially get them moved into the *common.xml* message set.
+  > **Note** You don't *have to* push changes back to MAVLink. However this makes sense if you want to publish your messages more widely, and potentially get them moved into the **common.xml** message set.
 
-* If you're working with an *existing* system/autopilot you should first fork *their version* of the *mavlink* repo. This is important because the MAVLink project may not yet have synced all their changes, and because any changes you make should first be accepted by the downstream project before being pushed into MAVLink. If you're working on a private project you might create a new dialect file that depends on their dialect file. Otherwise you might update the dialect directly.
+* If you're working with an *existing* system/autopilot you should fork *their version* of the *mavlink* repo. 
+  This is important because the MAVLink project may not yet have synced all their changes, and because any changes you make should first be accepted by the downstream project before being pushed into MAVLink. 
+  If you're working on a private project you might create a new dialect file that depends on their dialect file. 
+  Otherwise you might update the dialect directly.
 
 * If you are working on messages that are useful for multiple ground stations and autopilots then ideally these should be added to **common.xml** ([mavlink/message_definitions/v1.0/common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml)). 
   In this case we recommend that you raise a PR and discuss the API with us through that mechanism.
@@ -41,7 +44,7 @@ While this is the canonical reference, it is easier to understand the XML file b
 The broad structure for all MAVLink XML files is given below.
 
 > **Note** If you're creating a custom dialect file your file structure should be similar to the one below.
-  Typically you will include *common.xml* and define your messages and enum in the blocks shown.
+  Typically you will include **common.xml** and define your messages and enum in the blocks shown.
 
 ```xml
 <?xml version="1.0"?>
@@ -135,6 +138,9 @@ The main message tags/fields are:
   - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2. 
 
 
+
+  
+  
 <!--
 BELOW HERE IS EVOLVING NOTES
 
