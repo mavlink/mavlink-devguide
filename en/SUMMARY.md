@@ -32,6 +32,7 @@
   * [File Formats](file_formats/README.md)
   * [UAVCAN Interaction](guide/uavcan_interaction.md)
   * [Scripts](guide/scripts.md)
+  * [Message Schema](guide/message_schema.md)
   * [Create a New Message](guide/create_message.md)
 * [Examples](examples/README.md)
   * [UART Interface (C)](examples/c_uart.md)
