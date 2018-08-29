@@ -43,7 +43,7 @@ The main tags are listed below (all are optional):
    - Typically dialect files will include *common.xml* as shown above.
    - You can include multiple files using separate tags.
    - The path to included files can be relative to your dialect file. 
-     Note however that the project only tests dialects in the same folder.
+     Note however that the project tests only cover the case where dialects are in the same folder.
    - Nested `include` of files is not supported (only files specified in the top level `include` are imported).
    - When building, generator toolchains will merge/append enums in all files, and report duplicate enum entries and messages. 
 * `version`: The minor version number for the release, as included in the [HEARTBEAT](../messages/common.md#HEARTBEAT message) `mavlink_version` field. 
@@ -52,62 +52,6 @@ The main tags are listed below (all are optional):
 * `dialect`: This number is unique for your dialect. You should use: TBD <!-- how are these allocated -->
 * [enums](#enum): Dialect-specific enums can be defined in this block (if none are defined in the file, the block is optional/can be removed).
 * [messages](#messages): Dialect-specific messages can be defined in this block (if none are defined in the file, the block is optional/can be removed).
-
-
-
-### Message Definition (messages) {#messages}
-
-All messages are defined within the `<messages> ... </messages>` block (as discussed in the previous section) using `<message>...</message>` tags.
-As a concrete example, the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) message is given below.
-
-> **Note** This message was chosen as it contains many of the main fields and attributes. 
-
-```xml
-    <message id="147" name="BATTERY_STATUS">
-      <description>Battery information</description>
-      <field type="uint8_t" name="id">Battery ID</field>
-      <field type="uint8_t" name="battery_function" enum="MAV_BATTERY_FUNCTION">Function of the battery</field>
-      <field type="uint8_t" name="type" enum="MAV_BATTERY_TYPE">Type (chemistry) of the battery</field>
-      <field type="int16_t" name="temperature" units="cdegC">Temperature of the battery. INT16_MAX for unknown temperature.</field>
-      <field type="uint16_t[10]" name="voltages" units="mV">Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value.</field>
-      <field type="int16_t" name="current_battery" units="cA">Battery current, -1: autopilot does not measure the current</field>
-      <field type="int32_t" name="current_consumed" units="mAh">Consumed charge, -1: autopilot does not provide consumption estimate</field>
-      <field type="int32_t" name="energy_consumed" units="hJ">Consumed energy, -1: autopilot does not provide energy consumption estimate</field>
-      <field type="int8_t" name="battery_remaining" units="%">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</field>
-      <extensions/>
-      <field type="int32_t" name="time_remaining" units="s">Remaining battery time, 0: autopilot does not provide remaining battery time estimate</field>
-      <field type="uint8_t" name="charge_state" enum="MAV_BATTERY_CHARGE_STATE">State for extent of discharge, provided by autopilot for warning or external reactions</field>
-    </message>
-```
-    
-
-The main message tags/fields are:
-
-- `message`: Each message is encapsulated by `message` tags, with the following attributes
-  - `id`: The id attribute is the unique index number of this message (in this case 147). 
-    - For MAVLink 1:
-      - Valid numbers range from 0 to 255.
-      - The ids 0-149 and 230-255 are reserved for *common.xml*. Dialects can use 150-229 (?240) for custom messages (provided these are not used by other included dialects). 
-    - For [MAVLink 2](../guide/mavlink_2.md):
-      - Valid numbers range from 0 to 16777215.
-      - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1. 
-        > **Note** IDs are precious in MAVLink 1!
-  - `name`: The name attribute provides a human readable form for the message (ie "BATTERY_STATUS"). It is used for naming helper functions in generated libraries, but is not sent over the wire.
-- `description` (optional): Human readable description of message, shown in user interfaces and in code comments. 
-  This should contain all information (and hyperlinks) to fully understand the message.
-- `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire).
-  - `type`: Similar to a field in a C `struct` - the size of the data required to store/represent the data type.
-    - Fields can be signed/unsigned integers of size 8, 16, 23, 64 bits (`{u)int8_t`, `(u)int16_t`, `(u)int32_t`, `(u)int64_t`), single/double precision IEEE754 floating point numbers. 
-    They can also be arrays of the other types - e.g. `uint16_t[10]`. 
-  - `name`: Name of the field (used in code).
-  - [enum](#enum) (optional): Name of an `enum` defining possible values of the field (e.g. `MAV_BATTERY_CHARGE_STATE`).
-  - `units` (optional): The units for message `field`s that take numeric values (not enums). These are defined in the [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd) (search on *name="SI_Unit"*)
-  - `display` (optional): This should be set as `display="bitmask"` for bitmask fields (hint to ground station that enum values must be displayed as checkboxes).
-  - `print_format` (optional): TBD.
-  - `default` (optional): TBD.
-- [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the message is deprecated or "work in progress".
-- `extensions` (optional): This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only. 
-  - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2. 
 
 
 ### Enum Definition (enums) {#enum}
@@ -177,6 +121,62 @@ For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_P
   Some commands can be sent outside of missions in [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages.
 
 
+### Message Definition (messages) {#messages}
+
+All messages are defined within the `<messages> ... </messages>` block (as discussed in the previous section) using `<message>...</message>` tags.
+As a concrete example, the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) message is given below.
+
+> **Note** This message was chosen as it contains many of the main fields and attributes. 
+
+```xml
+    <message id="147" name="BATTERY_STATUS">
+      <description>Battery information</description>
+      <field type="uint8_t" name="id">Battery ID</field>
+      <field type="uint8_t" name="battery_function" enum="MAV_BATTERY_FUNCTION">Function of the battery</field>
+      <field type="uint8_t" name="type" enum="MAV_BATTERY_TYPE">Type (chemistry) of the battery</field>
+      <field type="int16_t" name="temperature" units="cdegC">Temperature of the battery. INT16_MAX for unknown temperature.</field>
+      <field type="uint16_t[10]" name="voltages" units="mV">Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value.</field>
+      <field type="int16_t" name="current_battery" units="cA">Battery current, -1: autopilot does not measure the current</field>
+      <field type="int32_t" name="current_consumed" units="mAh">Consumed charge, -1: autopilot does not provide consumption estimate</field>
+      <field type="int32_t" name="energy_consumed" units="hJ">Consumed energy, -1: autopilot does not provide energy consumption estimate</field>
+      <field type="int8_t" name="battery_remaining" units="%">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</field>
+      <extensions/>
+      <field type="int32_t" name="time_remaining" units="s">Remaining battery time, 0: autopilot does not provide remaining battery time estimate</field>
+      <field type="uint8_t" name="charge_state" enum="MAV_BATTERY_CHARGE_STATE">State for extent of discharge, provided by autopilot for warning or external reactions</field>
+    </message>
+```
+    
+
+The main message tags/fields are:
+
+- `message`: Each message is encapsulated by `message` tags, with the following attributes
+  - `id`: The id attribute is the unique index number of this message (in the example above: 147). 
+    - For MAVLink 1:
+      - Valid numbers range from 0 to 255.
+      - The ids 0-149 and 230-255 are reserved for *common.xml*. Dialects can use 150-229 (?240) for custom messages (provided these are not used by other included dialects). 
+    - For [MAVLink 2](../guide/mavlink_2.md):
+      - Valid numbers range from 0 to 16777215.
+      - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1. 
+        > **Note** IDs are precious in MAVLink 1!
+  - `name`: The name attribute provides a human readable form for the message (ie "BATTERY_STATUS"). It is used for naming helper functions in generated libraries, but is not sent over the wire.
+- `description` (optional): Human readable description of message, shown in user interfaces and in code comments. 
+  This should contain all information (and hyperlinks) to fully understand the message.
+- `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire).
+  - `type`: Similar to a field in a C `struct` - the size of the data required to store/represent the data type.
+    - Fields can be signed/unsigned integers of size 8, 16, 23, 64 bits (`{u)int8_t`, `(u)int16_t`, `(u)int32_t`, `(u)int64_t`), single/double precision IEEE754 floating point numbers. 
+    They can also be arrays of the other types - e.g. `uint16_t[10]`. 
+  - `name`: Name of the field (used in code).
+  - [enum](#enum) (optional): Name of an `enum` defining possible values of the field (e.g. `MAV_BATTERY_CHARGE_STATE`).
+  - `units` (optional): The units for message `field`s that take numeric values (not enums). These are defined in the [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd) (search on *name="SI_Unit"*)
+  - `display` (optional): This should be set as `display="bitmask"` for bitmask fields (hint to ground station that enum values must be displayed as checkboxes).
+  - `print_format` (optional): TBD.
+  - `default` (optional): TBD.
+- [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the message is deprecated or "work in progress".
+- `extensions` (optional): This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only. 
+  - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2. 
+
+
+
 
 
 ### Others Tags
@@ -185,7 +185,8 @@ This section lists a number of tags can be used in a number of other types - e.g
 
 #### deprecated {#deprecated}
 
-The `<deprecated>` tag can be used in an [enum](#enum), enum [entry](#entry) (value) or [message](#message) to indicate that the item has been superseded. The tag also indicates the time of deprecation and the replacement item.
+The `<deprecated>` tag can be used in an [enum](#enum), enum [entry](#entry) (value) or [message](#message) to indicate that the item has been superseded. 
+The tag attributes indicates the time of deprecation and the replacement item, while the element may (optionally) contain a string with additional information about the deprecation.
 
 The generator toolchain can be configured to conditionally build messages omitting the `deprecated` entries.
 
@@ -198,28 +199,15 @@ As a concrete example, below we see that [SET_MODE](../messages/common.md#SET_MO
 ```
 
 The `deprecated` attributes are:
-* `since`: Year/month when deprecation started. Format: YYYY-MM.
+* `since`: Year/month when deprecation started. Format: `YYYY-MM`.
 * `replaced by`: String of entity that supersedes this item.
-* `description` (optional): String with more information about the deprecation.
 
-<!--
-Confusing, above the description is not used, but the tag itself contains description information. 
-<xs:element name="deprecated">
-    <xs:complexType mixed="true">
-        <xs:sequence>
-            <xs:element ref="description" minOccurs="0"/>
-        </xs:sequence>
-        <xs:attribute ref="since" use="required"/>
-        <xs:attribute ref="replaced_by" use="required"/>
-    </xs:complexType>
-</xs:element>
-    </message>
--->
 
 
 #### wip {#wip}
 
 The `<wip>` tag can be used in an enum [entry](#entry) (value) or [message](#message) to indicate that the item is a "work in progress". 
+The element may (optionally) contain a string with additional information about the new item.
 
 The generator toolchain can be configured to conditionally build messages omitting the `wip` entries.
 
@@ -228,12 +216,7 @@ Most commonly, the tag is used as shown:
 <wip />
 ```
 
-The `wip` tags are:
-* `description` (optional): A description/explanation of the wip.
-
 <!--  ref="description" minOccurs="0" -->
-
-
 
 <!---
 
