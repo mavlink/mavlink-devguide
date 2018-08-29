@@ -1,4 +1,4 @@
-# XML Message File Schema / Format
+# MAVLink XML File Schema / Format
 
 The format and structure of dialect files is formally defined in the XML Schema document: [mavschema.xsd](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd).
 
@@ -6,7 +6,7 @@ While this is the canonical reference, it is easier to understand the XML file b
 
 ## File Structure
 
-The broad structure for all MAVLink XML files is given below.
+The broad structure for MAVLink XML files is given below.
 
 > **Note** If you're creating a custom dialect file your file structure should be similar to the one below.
   Typically you will use `<include>common.xml</include>` to import **common.xml** and define your dialect's additional messages and enum in the blocks shown.
