@@ -22803,6 +22803,14 @@ td {
      <td>char[30]</td>
      <td>tune in board specific format</td>
     </tr>
+    <tr>
+     <td style="color:blue;">tune2<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>char[200]</td>
+     <td>tune extension (appended to tune)</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="CAMERA_INFORMATION">CAMERA_INFORMATION (<a href="#CAMERA_INFORMATION">
