@@ -6,10 +6,9 @@ While this is the canonical reference, it is easier to understand the XML file b
 
 ## File Structure
 
-The broad structure for MAVLink XML files is given below.
+The broad structure for MAVLink XML files is given below. 
 
-> **Note** If you're creating a custom dialect file your file structure should be similar to the one below.
-  Typically you will use `<include>common.xml</include>` to import **common.xml** and define your dialect's additional messages and enum in the blocks shown.
+> **Note** If you're creating a custom dialect file your file structure should be similar to the one below (but may omit any/all sections).
 
 ```xml
 <?xml version="1.0"?>
@@ -33,8 +32,6 @@ The broad structure for MAVLink XML files is given below.
     
 </mavlink>
 ```
-
-> **Note** The different sections are used to define [messages](#messages) and [enums](#enum). The [MAV_CMD](../messages/common.md#MAV_CMD) enum is used to define the commands used in the [Mission Protocol](../protocol/mission.md).
 
 
 The main tags are listed below (all are optional):
