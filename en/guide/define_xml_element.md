@@ -46,7 +46,11 @@ Where you define an element depends on whether it is common or a dialect, and wh
 
 ## XML Message File Format
 
-The format can be understood by reading [Message Schema](../guide/message_schema.md), and by inspecting [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialects. 
+The format used for defining enums and messages can be understood by reading [MAVLink XML Schema](../guide/xml_schema.md), and by inspecting [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialect files. 
 
 > **Note** The format and structure of dialect files is formally defined in the XML Schema document: [mavschema.xsd](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd).
+
+
+
+
 
