@@ -15149,7 +15149,7 @@ td {
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 9 value. A value of 0 means to ignore this field.</td>
+     <td>RC channel 9 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan10_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
