@@ -188,7 +188,7 @@ For either case, all users of the message will need to be updated with new clien
 For a message in **common.xml** either change requires the agreement of major stakeholders 
 - Create a PR and discuss in the MAVLink developer meeting.
 
-> **Tip** Before proposing changes to **common.xml** check the codebase of major stakeholder to confirm impact.
+  > **Tip** Before proposing changes to **common.xml** check the codebase of major stakeholder to confirm impact.
 
 It is possible to change the message and field descriptions without breaking binary compatibility.
 Care should still be taken to ensure that any changes that alter the way that the field is interpreted are agreed by stakeholders, and handled with proper version control.
@@ -198,7 +198,7 @@ Messages are very rarely deleted, as this may break compatibility with legacy MA
 
 #### MAVLink 2 Message Extensions {#message_extensions}
 
-The exception to the above rul is that when using [MAVLink 2](../guide/mavlink_2.md) you can add new fields to messages with an `id` of 0 - 255 using the [<extensions>](../guide/mavlink_2.md#message_extensions) tag *without breaking compatibility*. 
+The exception to the above rule is that when using [MAVLink 2](../guide/mavlink_2.md) you can add new fields to messages with an `id` of 0 - 255 using the [<extensions>](../guide/mavlink_2.md#message_extensions) tag *without breaking compatibility*. 
 These fields will not be sent when the MAVLink 1 protocol is used.
 
 Otherwise the rules are the same; once added you cannot modify or remove fields. 
@@ -281,8 +281,8 @@ The main rules for enums are:
   - *must* have a `name` attribute.
     - The `name` must be unique across all entries in the enum.
     - By *convention*, the `name` should be prefixed with the enum name (e.g. enum `LANDING_TARGET_TYPE` has entry `LANDING_TARGET_TYPE_LIGHT_BEACON`).
-  - *may* have a `value` attribute, and if assigned this must be unique within the (merged) enum.
-    A value will be automatically created for the generated library if not assigned.
+  - *should* have a `value` attribute, and if assigned this must be unique within the (merged) enum.
+    A value will be automatically created for the generated library if not assigned, but this is not recommended.
   - *should* (very highly recommended) include a `description` element. 
   - may represent bitmasks, in which case values will increase by a power of 2.
   - *may* be marked as deprecated.
@@ -320,38 +320,84 @@ Enums are very rarely deleted, as this may break compatibility with legacy MAVLi
 
 ## Mission Commands {#mission_commands}
 
-TBD
-
-<!-- 
-
 Mission commands are used to define operations used in autonomous missions.
-They are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum and are encoded into [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages when a mission is sent  (see [Mission Protocol](../protocol/mission.md)).
+They are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum and are encoded into [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages when a mission is sent (see [Mission Protocol](../protocol/mission.md)).
 
 > **Tip** The [Command Protocol](../protocol/command.md) can be used to send these commands outside of missions, encoded in a [COMMAND_LONG](../messages/common.md#COMMAND_LONG) or [COMMAND_INT](../messages/common.md#COMMAND_INT) message. 
   Using an existing mission command is usually better/easier than creating a new separate message for use outside of missions.
-  
 
-Assumptions/Questions
-- ...
+A typical mission command is ([MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT)) is shown below:
 
 ```xml
-
-    <message id="76" name="COMMAND_LONG">
-      <description>Send a command with up to seven parameters to the MAV</description>
-      <field type="uint8_t" name="target_system">System which should execute the command</field>
-      <field type="uint8_t" name="target_component">Component which should execute the command, 0 for all components</field>
-      <field type="uint16_t" name="command" enum="MAV_CMD">Command ID (of command to send).</field>
-      <field type="uint8_t" name="confirmation">0: First transmission of this command. 1-255: Confirmation transmissions (e.g. for kill command)</field>
-      <field type="float" name="param1">Parameter 1 (for the specific command).</field>
-      <field type="float" name="param2">Parameter 2 (for the specific command).</field>
-      <field type="float" name="param3">Parameter 3 (for the specific command).</field>
-      <field type="float" name="param4">Parameter 4 (for the specific command).</field>
-      <field type="float" name="param5">Parameter 5 (for the specific command).</field>
-      <field type="float" name="param6">Parameter 6 (for the specific command).</field>
-      <field type="float" name="param7">Parameter 7 (for the specific command).</field>
-    </message>
+    <enum name="MAV_CMD">
+      <description>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data.</description>
+      <entry value="16" name="MAV_CMD_NAV_WAYPOINT">
+        <description>Navigate to waypoint.</description>
+        <param index="1">Hold time in decimal seconds. (ignored by fixed wing, time to stay at waypoint for rotary wing)</param>
+        <param index="2">Acceptance radius in meters (if the sphere with this radius is hit, the waypoint counts as reached)</param>
+        <param index="3">0 to pass through the WP, if &gt; 0 radius in meters to pass by WP. Positive value for clockwise orbit, negative value for counter-clockwise orbit. Allows trajectory control.</param>
+        <param index="4">Desired yaw angle at waypoint (rotary wing). NaN for unchanged.</param>
+        <param index="5">Latitude</param>
+        <param index="6">Longitude</param>
+        <param index="7">Altitude</param>
+      </entry>
+      ...
+    </enum>
 ```
-    
-    
-    Need to cover creating, modifying, deleting, adding to messages.
+The rules for mission commands are exactly the same as for other [enums](#enums).
+There are a few of additional conventions.
+
+### Entry Values
+
+All mission command entries *must* have a value (this is not enforced by the toolchain but, as for other enums, it reduces the chance of values unintentionally changing and breaking other systems).
+
+Each dialect is allocated a specific range from which entry ids can be selected.
+This ensures that any dialect can include any commands from any other dialect (or **common.xml**) without clashes.
+It also means that messages can move from a dialect to **common.xml** without any code needing to change.
+
+Dialects can choose any values within their range for any message.
+However we recommend that all *related* commands be kept in the same block of ids, and if there are likely to be more similar commands in future then spaces might be left for new commands. 
+
+The allocated ranges are listed below.
+
+Dialect | Range
+--- | ---
+Common.xml | 30000 - 39999
+asluav.xml | 40001-41999
+ArduPilotMega.xml | 42000 - 42999
+slugs.xml | 10001 - 11999
+
+> **Tip** If you are creating a new public dialect, [create an issue](https://github.com/mavlink/mavlink/issues/new) to request your own command id range. For private dialects, you can use whatever range you like.
+
+There are a number of common and ArduPilot commands that are outside the ranges (e.g. 16, 200, etc.). 
+Generally you would only use these these ranges in order to give a new command an id that is close to related to that of related commands.
+This can be done provided that the command id value is not used by any other XML file in the *mavlink/mavlink* repo.
+
+
+### Entry Names
+
+As with other enums, enum entry names should be prefixed with the enum name (i.e. `MAV_CMD_`).
+In addition, there are some other "standard" prefixes which are used for common types of commands: 
+* `MAV_CMD_NAV_`: `NAV` commands are used for navigation/movement commands (commands to go to a particular waypoint or move in a particular way).
+* `MAV_CMD_DO_`: `DO` commands are used for setting modes, changing altitude or speed etc.
+* `MAV_CMD_CONDITION_`: `CONDITION_` commands are used to define conditions before the mission state machine will move to the next item (e.g. a time after reaching a waypoint before taking a picture).
+* `MAV_CMD_REQUEST_`: For requesting information from a system.
+
+> **Tip** The rules for the above prefixes are flexible; some DO commands might reasonably be NAV commands.
+  Ins some cases a request for information might be a `MAV_CMD_REQUEST_` and in others it might be a stand alone message.
+  
+### Standard Mappings
+
+Commands have an index from 1 to 7. 
+Where a command contains position information, this is always stored in: Param 5 (x / latitude), Param 6 (y / longitude), Param 7 (z, altitude). 
+Whether the value is local (x,y,z) or global (latitude, longitude, altitude) depends on the command and the frame used (frame often defined in the parent message).
+
+
+<!-- 
+ArduPilot: 211, 212, 83, 42000-42005, 42424 (MAG_CAL) 42426, 42650
+ASLUAV : 40001,40002
+Autoquad 1,2,4
+Common - 16 - 34, 80-85, 92 - 95, 112-115, 159, 176 - 186, 189 - 252, 300, 400, 410, 500, 510, 530, 2000-2003, 2500, scattered up to 5000 then 30001-31014 (scattered
+matrixpilot : 0
+Slugs - 10001 - 10015
 -->
