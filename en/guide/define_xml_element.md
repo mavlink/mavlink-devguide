@@ -4,7 +4,7 @@ MAVLink enums, messages, commands, and other elements are [defined within XML fi
 
 This topic provides practical guidance for defining and extending MAVLink XML elements, including conventions and best-practice.
 
-> **Note** For detailed information about the file format see [MAVLink XML Schema](../guide/xml_schema.md#messages) (you can also inspect [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialect files). 
+> **Note** For detailed information about the file format see [MAVLink XML Schema](../guide/xml_schema.md) (you can also inspect [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialect files). 
 
 ## Should we Define Messages or Commands?
 
@@ -17,15 +17,17 @@ The guidance below provides some suggestions on when one or the other might be m
 
 Consider using a proper message if:
 * The required information does not fit into a command (i.e. it can't fit into the 7 available numeric fields).
-* The message is part another protocol.
+* The message is part of another protocol.
+* The message must be broadcast or streamed (i.e. no ACK required)
 
 Consider using a command if:
-* The message should be executed as part of a mission
+* The message should be executed as part of a mission.
 * There is an existing mission command that you wish to use outside of missions. 
   Depending on the autopilot you may be able to handle the message using the same code for both modes.
 * You're working with MAVLink 1 and there is no free id for the new message
   (MAVLink 1 has a much larger free pool of ids for MAVLink commands than for message ids).
-* Your command/message requires an ACK/NACK; using the existing protocol acknowledgments may be faster/easier than defining another message for acknowledgments.
+* It is important that your command message is not missed, so an ACK/NACK is required. 
+  Using the existing protocol acknowledgments may be faster/easier than defining another message for acknowledgments.
 
 Otherwise either method may freely be used.
 
