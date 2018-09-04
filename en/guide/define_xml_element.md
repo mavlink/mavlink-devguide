@@ -16,7 +16,7 @@ There are two ways to send information between MAVLink systems (including comman
 The guidance below provides some suggestions on when one or the other might be more appropriate.
 
 Consider using a proper message if:
-* The required information does not fit into a command (i.e. it requires more than 7 messages or the information cannot be stored in the available `float`/`int32_t` fields).
+* The required information does not fit into a command (i.e. it can't fit into the 7 available numeric fields).
 * The message is part another protocol.
 
 Consider using a command if:
