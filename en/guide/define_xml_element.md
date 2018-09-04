@@ -1,10 +1,33 @@
 # How to Define MAVLink Messages & Enums
 
-MAVLink enums, messages, mission commands, and other elements are [defined within XML files](../messages/README.md) and then converted to libraries for [supported programming languages](../README.md#supported_languages) using a *code generator*.
+MAVLink enums, messages, commands, and other elements are [defined within XML files](../messages/README.md) and then converted to libraries for [supported programming languages](../README.md#supported_languages) using a *code generator*.
 
 This topic provides practical guidance for defining and extending MAVLink XML elements, including conventions and best-practice.
 
 > **Note** For detailed information about the file format see [MAVLink XML Schema](../guide/xml_schema.md#messages) (you can also inspect [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialect files). 
+
+## Should we Define Messages or Commands?
+
+There are two ways to send information between MAVLink systems (including commands, information and acknowledgments):
+* [Messages](#messages) are encoded using `mavlink` elements. The message structure/fields and handling are largely unconstrained (i.e. up to the creator).
+* [MAVLink Commands](#mavlink_commands) are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum, and encoded into real messages that are sent using the [Mission Protocol](../protocol/mission.md) or [Command Protocol](../protocol/command.md). 
+  Their structure is defined (they have 7 `float` parameters *or* 5 `float` and 2 `int32_t` parameters) and handling/responses depend on the protocol used to send them.
+
+The guidance below provides some suggestions on when one or the other might be more appropriate.
+
+Consider using a proper message if:
+* The required information does not fit into a command (i.e. it requires more than 7 messages or the information cannot be stored in the available `float`/`int32_t` fields).
+* The message is part another protocol.
+
+Consider using a command if:
+* The message should be executed as part of a mission
+* There is an existing mission command that you wish to use outside of missions. 
+  Depending on the autopilot you may be able to handle the message using the same code for both modes.
+* You're working with MAVLink 1 and there is no free id for the new message
+  (MAVLink 1 has a much larger free pool of ids for MAVLink commands than for message ids).
+* Your command/message requires an ACK/NACK; using the existing protocol acknowledgments may be faster/easier than defining another message for acknowledgments.
+
+Otherwise either method may freely be used.
 
 
 ## Where are the MAVLink XML Files Located?
@@ -45,6 +68,7 @@ Where you define an element depends on whether it is common or a dialect, and wh
 **Elements for a private project**
 
 - If your enums/messages won't ever sync back to the MAVLink project then define them wherever you like!
+
 
 
 ## Creating a Dialect File
@@ -90,7 +114,7 @@ To create a new dialect file:
 1. Save the file, and create a PR to push it back to the **mavlink/mavlink** project repo.
 
 
-## Messages
+## Messages {#messages}
 
 [Messages](../guide/xml_schema.md#messages) are used to send data between MAVLink systems (including commands, information and acknowledgments).
 
@@ -318,13 +342,10 @@ Care should still be taken to ensure that any changes that alter the way that th
 Enums are very rarely deleted, as this may break compatibility with legacy MAVLink 1 hardware that is unlikely to be updated to more recent versions.
 
 
-## Mission Commands {#mission_commands}
+## Commands {#mavlink_commands}
 
-Mission commands are used to define operations used in autonomous missions.
-They are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum and are encoded into [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages when a mission is sent (see [Mission Protocol](../protocol/mission.md)).
-
-> **Tip** The [Command Protocol](../protocol/command.md) can be used to send these commands outside of missions, encoded in a [COMMAND_LONG](../messages/common.md#COMMAND_LONG) or [COMMAND_INT](../messages/common.md#COMMAND_INT) message. 
-  Using an existing mission command is usually better/easier than creating a new separate message for use outside of missions.
+MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
+They are used to define operations used in autonomous missions (see [Mission Protocol](../protocol/mission.md) or to send commands in any mode (see [Command Protocol](../protocol/command.md)).
 
 A typical mission command is ([MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT)) is shown below:
 
@@ -344,10 +365,10 @@ A typical mission command is ([MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_C
       ...
     </enum>
 ```
-The rules for mission commands are exactly the same as for other [enums](#enums).
+The rules for MAVLink commands are exactly the same as for other [enums](#enums).
 There are a few of additional conventions.
 
-### Entry Values
+### Command (Entry) Values {#command_values}
 
 All mission command entries *must* have a value (this is not enforced by the toolchain but, as for other enums, it reduces the chance of values unintentionally changing and breaking other systems).
 
@@ -374,7 +395,7 @@ Generally you would only use these these ranges in order to give a new command a
 This can be done provided that the command id value is not used by any other XML file in the *mavlink/mavlink* repo.
 
 
-### Entry Names
+### Entry Names {#command_names}
 
 As with other enums, enum entry names should be prefixed with the enum name (i.e. `MAV_CMD_`).
 In addition, there are some other "standard" prefixes which are used for common types of commands: 
