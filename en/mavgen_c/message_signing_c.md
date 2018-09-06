@@ -4,14 +4,16 @@
 
 One of the key features of *MAVLink 2* is support for signing of messages. To enable signing in your application you will need to add some additional code. In particular you will need to add:
 
-* Code to handle the SETUP_SIGNING message
+* Code to handle the [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) message
 * Code to setup and teardown signing on a link
 * Code to save and load the secret key and timestamp in persistent storage
 * A callback to allow for accepting of certain kinds of unsigned messages
 
 ## Handling SETUP_SIGNING
 
-The [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) message is the mechanism for a GCS to setup a signing key on a *MAVLink 2* device. It takes a 32 byte secret key and an initial timestamp. The method of generating the 32 byte secret key is up to the GCS implementation, although it is suggested that all GCS implementations should support the use of a sha256 hash of a user provided passphrase.
+The [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) message is the mechanism for a GCS to setup a signing key on a *MAVLink 2* device. 
+It takes a 32 byte secret key and an initial timestamp. 
+The method of generating the 32 byte secret key is up to the GCS implementation, although it is suggested that all GCS implementations should support the use of a sha256 hash of a user provided passphrase.
 
 ## Handling Timestamps
 
