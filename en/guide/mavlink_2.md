@@ -114,7 +114,7 @@ For example the fields after the `<extensions>` line below are extension fields:
 
 ## Message/Packet Signing
 
-Authentication is covered in the topic: [Message signing](../guide/message_signing.md) (authentication)
+Authentication is covered in the topic: [Message Signing](../guide/message_signing.md) (authentication)
 
 
 ## Variable Length Arrays {#variable_arrays}
@@ -126,7 +126,7 @@ Authentication is covered in the topic: [Message signing](../guide/message_signi
 
 ## Packet Compatibility Flags {#framing}
 
-The [MAVLink 2 serialization format](../guide/serialization.md#mavlink2_packet_format) includes new fields (`incompat_flags` and `compat_flags`) to indicate that a packet supports or requires some special/non-standard packet handling.
+The [MAVLink 2 serialization format](../guide/serialization.md#mavlink2_packet_format) includes new bitmap fields (in C library: `incompat_flags` and `compat_flags`) to indicate that a packet supports or requires some special/non-standard packet handling.
 
 The flags are primarily provided to allow for backwards compatible evolution of the protocol. 
 Older MAVLink implementations can process packets with compatible features, while rejecting packets with incompatible features.
@@ -141,9 +141,9 @@ This includes any feature that affects the packet format/ordering.
 
 Supported incompatibility flags include (at time of writing) :
 
-Flag | Feature 
---- | ---
-`MAVLINK_IFLAG_SIGNED` | The packet is [signed](../guide/message_signing.md) (a signature has been appended to the packet).
+Flag | C flag | Feature 
+--- | --- | ---
+<span id="MAVLINK_IFLAG_SIGNED"></span>0x01 | `MAVLINK_IFLAG_SIGNED` | The packet is [signed](../guide/message_signing.md) (a signature has been appended to the packet).
 
 
 ### Compatibility Flags {#compat_flags}
