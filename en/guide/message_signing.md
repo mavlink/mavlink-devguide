@@ -36,7 +36,7 @@ mavlink_signing_t *signing;
 mavlink_signing_streams_t *signing_streams;
 ```
 
-The signing pointer controls signing for this stream. It is per-stream, and contains the secret key, the timestamp and a set of flags, plus an optional callback function for accepting unsigned packets. Typical setup would be:
+The `signing` pointer controls signing for this stream. It is per-stream, and contains the secret key, the timestamp and a set of flags, plus an optional callback function for accepting unsigned packets. Typical setup would be:
 
 ```
 memcpy(signing.secret_key, key.secret_key, 32);
@@ -48,7 +48,7 @@ mavlink_status_t *status = mavlink_get_channel_status(chan);
 status.signing = &signing;
 ```
 
-The `signing_streams pointer` is a structure used to record the previous timestamp for a `(linkId,srcSystem,SrcComponent)` tuple. This must point to a structure that is common to all channels in order to prevent inter-channel replay attacks. Typical setup is:
+The `signing_streams` pointer is a structure used to record the previous timestamp for a `(linkId,srcSystem,SrcComponent)` tuple. This must point to a structure that is common to all channels in order to prevent inter-channel replay attacks. Typical setup is:
 
 ```
 mavlink_status_t *status = mavlink_get_channel_status(chan);
