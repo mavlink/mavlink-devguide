@@ -8,6 +8,7 @@
   * [Generate MAVLink Libraries](getting_started/generate_libraries.md)
   * [Using MAVLink Libraries](getting_started/use_libraries.md)
     * [C (mavgen)](mavgen_c/README.md)
+      * [Message Signing](mavgen_c/message_signing_c.md)
     * [Python (mavgen)](mavgen_python/README.md)
   * [Generate Source Files for ROS](getting_started/ros.md)
 * [Guide](guide/README.md)
@@ -23,7 +24,6 @@
     * [Arm Authorization Protocol](protocol/arm_authorization.md)
     * [Image Transmission Protocol](protocol/image_transmission.md)
     * [File Transfer Protocol (FTP)](protocol/ftp.md)
-    
   * [Message Signing](guide/message_signing.md)
   * [Serialization](guide/serialization.md)
   * [Routing](guide/routing.md)
