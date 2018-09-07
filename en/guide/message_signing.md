@@ -56,24 +56,28 @@ signature = sha256_48(secret_key + header + payload + CRC + link-ID + timestamp)
 
 ## Timestamp Handling {#timestamp}
 
-The timestamp field is in 10 microsecond units since 1st January 2015 GMT time. 
+The timestamp is a 48 bit number with units of 10 microseconds since 1st January 2015 GMT. For systems where the time since 1/1/1970 is available (the unix epoch) you can use an offset in seconds of 1420070400.
 
 > **Note** This is a loose definition, as the various update mechanisms detailed below may result in the timestamp being significantly different from actual GMT time.
 
-All timestamps generated must be at least 1 more than the previous timestamp sent in the same session by the same source *system ID* and *component ID* tuple. 
+All timestamps generated must be at least 1 more than the previous timestamp sent in the same session for the same link/`(SystemID, ComponentID, LinkID)` tuple.
 The timestamp may get ahead of GMT time if there is a burst of packets at a rate of more than 100 thousand packets per second.
 
-When a MAVLink-enabled device boots it may not know the current GMT time. 
-To overcome this the device should save the last timestamp used into stable storage when it is running (at least once a minute). 
-On boot the last timestamp from stable storage plus 6 million (one minute) should be used as the initial timestamp until the autopilot has a source of the correct time (for example, from GPS or another system).
+A MAVLink-enabled device may not know the current GMT time, for example if it does not have a reliable time source, or if it has just booted and not yet obtained the time from GPS or some other system. 
 
-As a general rule, when a good time-source is available the maximum of the last used timestamp and the timestamp from the new source should be used.
-Devices should update their timestamps:
-* When GPS lock is achieved (using the maximum of last used timestamp and the GPS timestamp).
-* Using the timestamp from correctly signed packets arriving from other MAVLink components (allows the system to handle clock drift and devices that don't have a good source of GMT time).
+Systems should implement the following rules to obtain a reliable timestamp:
 
-> **Tip** For devices that store the timestamp in stable storage, implementations can prevent race conditions by storing two timestamp values. 
+* The current timestamp should be stored regularly in persistent storage (ideally at least once a minute)
+* The timestamp used on startup should be the maximum of the timestamp implied by the system clock and the stored timestamp
+* If the system does not have an RTC mechanism then it should update its timestamp when GPS lock is achieved. The maximum of the timestamp from the GPS and the stored timestamp should be used.
+* The timestamp should be incremented by one on each message send.
+* When a correctly signed message is decoded the timestamp should be replaced by the timestamp of the incoming message if that timestamp is greater than the current timestamp.
+* The timestamp on incoming signed messages should be checked against the previous timestamp for the incoming `(linkID,srcSystem,SrcComponent)` tuple and the message rejected if it is smaller.
+* If there is no previous message with the given `(linkID,srcSystem,SrcComponent)` then the timestamp should be accepted if it not more than 6 million (one minute) behind the current timestamp.
+
+> **Tip** For devices that store the timestamp in persistent storage, implementations can prevent race conditions by storing two timestamp values. 
   On write the smaller of the two values should be updated. On read the larger of the two values should be used.
+
 
 ## Accepting Signed Packets
 

@@ -19,10 +19,16 @@ The method of generating the 32 byte secret key is up to the GCS implementation,
 
 ## Handling Timestamps
 
-The timestamp is a 64 bit number, and is in units of 10 microseconds since 1st January 2015. For systems where the time since 1/1/1970 is available (the unix epoch) you can use an offset in seconds of 1420070400.
+The timestamp is a 48 bit number with units of 10 microseconds since 1st January 2015 GMT. For systems where the time since 1/1/1970 is available (the unix epoch) you can use an offset in seconds of 1420070400.
 
-Storage and handling of the timestamp is critical to the security of the signing system. The rules are:
+It is the responsibility of each MAVLink system to store and restore the timestamp into persistent storage (this is critical for the security of the signing system).
 
+The rules for when this should be done are covered in [Message Signing > Timestamp Handling](../guide/message_signing.md#timestamp).
+
+> **Note** The library automatically handles some of the rules: timestamp is incremented by one on every message send, the timestamp is updated to match that of the last accepted incoming message (if it is greater than the current local timestamp), messages are rejected if the timestamp of a message on a channel is before the last message received on that channel. 
+
+<!-- 
+It is the responsibility of each MAVLink system to store and restore the timestamp into persistent storage (this is critical for the security of the signing system).
 * The current timestamp should be stored regularly in persistent storage (suggested at least once a minute)
 * The timestamp used on startup should be the maximum of the timestamp implied by the system clock and the stored timestamp
 * If the system does not have a RTC mechanism then it should update its timestamp when GPS lock is achieved. The maximum of the timestamp from the GPS and the stored timestamp should be used
@@ -30,6 +36,7 @@ Storage and handling of the timestamp is critical to the security of the signing
 * When a correctly signed message is decoded the timestamp should be replaced by the timestamp of the incoming message if that timestamp is greater than the current timestamp. This is done for you by the generated headers
 * The timestamp on incoming signed messages should be checked against the previous timestamp for the incoming `(linkID,srcSystem,SrcComponent)` tuple and the message rejected if it is smaller. This is done for you by generated headers.
 * If there is no previous message with the given `(linkID,srcSystem,SrcComponent)` then the timestamp should be accepted if it not more than 6 million (one minute) behind the current timestamp
+-->
 
 ## Enabling Signing on a Channel
 
