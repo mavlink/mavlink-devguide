@@ -16,6 +16,8 @@ You will need to add some code to:
 A secret key is 32 bytes of binary data that are used to create message signatures that can be verified by other holders of the key.
 The general requirements for creating, storing, logging and sharing keys are covered in: [Message Signing > Secret Key Management](../guide/message_signing.md#secret_key).
 
+The section [Enabling Signing on a Channel](#enabling_signing_channel) below shows how to set the secret key used by each channel.
+
 <!-- 
 The [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) message should generally be used for sharing the secret key, and support for it must be implemented on both sending and receiving systems. Receiving systems must also store the key in secure storage. 
 
@@ -37,6 +39,8 @@ The library automatically handles some of the rules:
 - messages are rejected if the timestamp of a message on a channel is before the last message received on that channel.
 
 It is the responsibility of each MAVLink system to store and restore the timestamp into persistent storage (this is critical for the security of the signing system).
+The section [Enabling Signing on a Channel](#enabling_signing_channel) below shows how to set the timestamp.
+
 
 <!-- 
 For systems where the time since 1/1/1970 is available (the unix epoch) you can use an offset in seconds of 1420070400.
@@ -50,47 +54,59 @@ It is the responsibility of each MAVLink system to store and restore the timesta
 * If there is no previous message with the given `(linkID,srcSystem,SrcComponent)` then the timestamp should be accepted if it not more than 6 million (one minute) behind the current timestamp
 -->
 
-## Enabling Signing on a Channel
+## Enabling Signing on a Channel {#enabling_signing_channel}
 
-To enable signing on a channel you need to fill in two pointers in the status structure for the channel. The two pointed are:
+To enable signing on a channel you need to fill in two pointers in the `status` structure for the channel. 
+The two pointers are:
 
-```
+```c
 mavlink_signing_t *signing;
 mavlink_signing_streams_t *signing_streams;
 ```
 
-The `signing` pointer controls signing for this stream. It is per-stream, and contains the secret key, the timestamp and a set of flags, plus an optional callback function for accepting unsigned packets. Typical setup would be:
+The `signing` pointer controls signing for this stream. 
+It is per-stream, and contains the secret key, the timestamp and a set of flags, plus an optional callback function for accepting unsigned packets. Typical setup would be:
 
-```
+```c
+mavlink_signing_t signing;
+memset(&signing, 0, sizeof(signing));
 memcpy(signing.secret_key, key.secret_key, 32);
 signing.link_id = (uint8_t)chan;
-signing.timestamp = key.timestamp;
+signing.timestamp = key.timestamp; 
 signing.flags = MAVLINK_SIGNING_FLAG_SIGN_OUTGOING;
 signing.accept_unsigned_callback = accept_unsigned_callback;
+
 mavlink_status_t *status = mavlink_get_channel_status(chan);
 status.signing = &signing;
 ```
 
-The `signing_streams` pointer is a structure used to record the previous timestamp for a `(linkId,srcSystem,SrcComponent)` tuple. This must point to a structure that is common to all channels in order to prevent inter-channel replay attacks. Typical setup is:
+The `signing_streams` pointer is a structure used to record the previous timestamp for a `(linkId,srcSystem,SrcComponent)` tuple. 
+This must point to a structure that is common to all channels in order to prevent inter-channel replay attacks. 
+Typical setup is:
 
-```
+```c
 mavlink_status_t *status = mavlink_get_channel_status(chan);
 status.signing_streams = &signing_streams;
 ```
 
 The maximum number of signing streams supported is given by the `MAVLINK_MAX_SIGNING_STREAMS` macro. 
-This defaults to 16, but it may be worth raising this for GCS implementations. If the C implementation runs out of signing streams then new streams will be rejected.
+This defaults to 16, but it may be worth raising this for GCS implementations. 
+If the C implementation runs out of signing streams then new streams will be rejected.
+
 
 ## Using accept_unsigned_callback
 
-In the signing structure there is an optional `accept_unsigned_callback` function pointer. The C prototype for this function is:
+[Message Signing > Accepting Unsigned Packets](../guide/message_signing.md#accepting_unsigned_packets) and [Message Signing > Accepting Incorrectly Signed Packets](../guide/message_signing.md#accepting_incorrectly_signed_packets) specifies that a message signing implementation should provide mechanisms such that library users can choose to conditionally accept unsigned or incorrectly signed packets.
 
-```
+The C implementation provides the `accept_unsigned_callback()` function pointer, which may optionally be set in the [signing](#enabling_signing_channel) structure.
+The C prototype for this function is:
+
+```c
 bool accept_unsigned_callback(const mavlink_status_t *status, uint32_t msgId);
 ```
 
-If set in the signing structure then this function will be called on any unsigned packet (including all *MAVLink 1* packets) or any packet where the signature is incorrect. 
-The function offers a way for the implementation to allow unsigned packets to be accepted.
+If set then this function will be called on any unsigned packet (including all *MAVLink 1* packets) or any packet where the signature is incorrect. 
+The function offers a way for the implementation to allow unsigned packets to be accepted (and incorrectly signed packets, which might be accepted under some circumstances).
 
 The rules for what unsigned packets should be accepted is implementation specific, but it is suggested the following rules be considered:
 
