@@ -70,7 +70,7 @@ Systems should implement the following rules to obtain a reliable timestamp:
 * The current timestamp should be stored regularly in persistent storage (ideally at least once a minute)
 * The timestamp used on startup should be the maximum of the timestamp implied by the system clock and the stored timestamp
 * If the system does not have an RTC mechanism then it should update its timestamp when GPS lock is achieved. The maximum of the timestamp from the GPS and the stored timestamp should be used.
-* The timestamp should be incremented by one on each message send.
+* The timestamp should be incremented by one on each message sent from a particular link.
 * When a correctly signed message is decoded the timestamp should be replaced by the timestamp of the incoming message if that timestamp is greater than the current timestamp.
 * The timestamp on incoming signed messages should be checked against the previous timestamp for the incoming `(linkID,srcSystem,SrcComponent)` tuple and the message rejected if it is smaller.
 * If there is no previous message with the given `(linkID,srcSystem,SrcComponent)` then the timestamp should be accepted if it not more than 6 million (one minute) behind the current timestamp.
