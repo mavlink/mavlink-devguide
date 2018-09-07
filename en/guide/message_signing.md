@@ -87,23 +87,27 @@ When a signed packet arrives it should be discarded if the:
 * The timestamp is more than 1 minute (6,000,000) behind the local system’s timestamp.
 
 
-## Accepting Unsigned Packets
+## Accepting Unsigned Packets {#accepting_unsigned_packets}
 
-The rules for accepting *unsigned* packets will be implementation specific, but could be based on a combination of a parameter setting, transport type, message type, (in)compatibility flags etc.
+MAVLink libraries should provide a mechanism that allows a system to conditionally accept *unsigned* packets.
 
-> **Note** MAVLink libraries should provide a mechanism that allows an implementation to make this kind of decision.
+The rules for accepting these packets will be implementation specific, but could be based on a combination of a parameter setting, transport type, message type, (in)compatibility flags etc.
 
 A few rules that may be useful for some systems are:
 * All unsigned packets accepted based on a system-specific parameter.
 * All unsigned packets accepted if the connection is over a "secure channel" (e.g. local USB cable or local wired Ethernet cable).
 * `RADIO_STATUS` packets are always accepted without signing (to make life easier for telemetry radios).
 * All unsigned packets accepted when in an "unsigned mode" (perhaps triggered by a hardware button pressed on boot).
-* MAVLink 1 messages may always be accepted or always rejected, depending on the system requirements.
 * All other packets will be rejected if not signed!
 
-<!-- 
-How are we handling case of signed packets that meet the criteria for accepting unsigned packets but signature is incorrect or the timestamp rules are not met. E.g. for lost copter finding or re-keying? AFAIK no support in the C library for handling this?
--->
+
+## Accepting Incorrectly Signed Packets {#accepting_incorrectly_signed_packets}
+
+MAVLink libraries should provide a mechanism that allows a system to conditionally accept incorrectly signed packets.
+
+> **Note** A system that is accepting incorrectly signed packets should provide a UI or signal to indicate that the connection is *insecure*.
+
+This feature might be useful for finding a lost vehicle with a corrupted secret key (the GCS could choose to still display position information, albeit ideally with a different "untrusted" icon).
 
 
 ## Secret Key Management {#secret_key}
