@@ -11,23 +11,35 @@ You will need to add some code to:
 * Implement a callback to define which (if any) unsigned messages will be accepted.
 
 
-## Handling SETUP_SIGNING
+## Secret Key Management (SETUP_SIGNING)
 
-The [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) message is the mechanism for a GCS to setup a signing key on a *MAVLink 2* device. 
-It takes a 32 byte secret key and an initial timestamp. 
-The method of generating the 32 byte secret key is up to the GCS implementation, although it is suggested that all GCS implementations should support the use of a sha256 hash of a user provided passphrase.
+A secret key is 32 bytes of binary data that are used to create message signatures that can be verified by other holders of the key.
+The general requirements for creating, storing, logging and sharing keys are covered in: [Message Signing > Secret Key Management](../guide/message_signing.md#secret_key).
+
+<!-- 
+The [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) message should generally be used for sharing the secret key, and support for it must be implemented on both sending and receiving systems. Receiving systems must also store the key in secure storage. 
+
+how pass key to system after calculation? i.e. is there a set-key method? 
+What this should show is 
+- how to generate sha256 from paraphrase
+- how to handle received message and store the key (on nuttx and Linux)
+-->
+
 
 ## Handling Timestamps
 
-The timestamp is a 48 bit number with units of 10 microseconds since 1st January 2015 GMT. For systems where the time since 1/1/1970 is available (the unix epoch) you can use an offset in seconds of 1420070400.
+The timestamp is a 48 bit number with units of 10 microseconds since 1st January 2015 GMT. 
+The general requirements for managing timestamps are covered in [Message Signing > Timestamp Handling](../guide/message_signing.md#timestamp).
+
+The library automatically handles some of the rules: 
+- timestamps are incremented by one on every message send from a link.
+- timestamps are updated to match that of the last accepted incoming message (if it is greater than the current local timestamp).
+- messages are rejected if the timestamp of a message on a channel is before the last message received on that channel.
 
 It is the responsibility of each MAVLink system to store and restore the timestamp into persistent storage (this is critical for the security of the signing system).
 
-The rules for when this should be done are covered in [Message Signing > Timestamp Handling](../guide/message_signing.md#timestamp).
-
-> **Note** The library automatically handles some of the rules: timestamp is incremented by one on every message send, the timestamp is updated to match that of the last accepted incoming message (if it is greater than the current local timestamp), messages are rejected if the timestamp of a message on a channel is before the last message received on that channel. 
-
 <!-- 
+For systems where the time since 1/1/1970 is available (the unix epoch) you can use an offset in seconds of 1420070400.
 It is the responsibility of each MAVLink system to store and restore the timestamp into persistent storage (this is critical for the security of the signing system).
 * The current timestamp should be stored regularly in persistent storage (suggested at least once a minute)
 * The timestamp used on startup should be the maximum of the timestamp implied by the system clock and the stored timestamp
@@ -66,9 +78,10 @@ mavlink_status_t *status = mavlink_get_channel_status(chan);
 status.signing_streams = &signing_streams;
 ```
 
-The maximum number of signing streams supported is given by the `MAVLINK_MAX_SIGNING_STREAMS` macro. This defaults to 16, but it may be worth raising this for GCS implementations. If the C implementation runs out of signing streams then new streams will be rejected.
+The maximum number of signing streams supported is given by the `MAVLINK_MAX_SIGNING_STREAMS` macro. 
+This defaults to 16, but it may be worth raising this for GCS implementations. If the C implementation runs out of signing streams then new streams will be rejected.
 
-## Using the accept_unsigned_callback
+## Using accept_unsigned_callback
 
 In the signing structure there is an optional `accept_unsigned_callback` function pointer. The C prototype for this function is:
 
@@ -76,7 +89,8 @@ In the signing structure there is an optional `accept_unsigned_callback` functio
 bool accept_unsigned_callback(const mavlink_status_t *status, uint32_t msgId);
 ```
 
-If set in the signing structure then this function will be called on any unsigned packet (including all *MAVLink 1* packets) or any packet where the signature is incorrect. The function offers a way for the implementation to allow unsigned packets to be accepted.
+If set in the signing structure then this function will be called on any unsigned packet (including all *MAVLink 1* packets) or any packet where the signature is incorrect. 
+The function offers a way for the implementation to allow unsigned packets to be accepted.
 
 The rules for what unsigned packets should be accepted is implementation specific, but it is suggested the following rules be considered:
 
@@ -113,7 +127,10 @@ The purpose of the `link_id` field in the *MAVLink 2* signing structure is to pr
 
 The intention with the link IDs is that each channel of communication between an autopilot and a GCS uses a different link ID. There is no requirement that the same link ID be used in both directions however.
 
-For C implementations the obvious mechanism is to use the MAVLink channel number as the link ID. That works well for an autopilot, but runs into an issue for a GCS implementation. The issue is that a user may launch multiple GCS instances talking to the same autopilot via different communication links (such as two radios, or USB and a radio). These multiple GCS instances will not be aware of each other, and so may choose the same link ID. If that happens then a large number of correctly signed packets will be rejected by the autopilot as they will have timestamps that are older than the timestamp received for the same stream tuple on the other communication link.
+For C implementations the obvious mechanism is to use the MAVLink channel number as the link ID. That works well for an autopilot, but runs into an issue for a GCS implementation. 
+The issue is that a user may launch multiple GCS instances talking to the same autopilot via different communication links (such as two radios, or USB and a radio). 
+These multiple GCS instances will not be aware of each other, and so may choose the same link ID. 
+If that happens then a large number of correctly signed packets will be rejected by the autopilot as they will have timestamps that are older than the timestamp received for the same stream tuple on the other communication link.
 
 The solution adopted for MAVProxy is shown below:
 
@@ -127,6 +144,6 @@ if (msg.get_signed() and
 	self.mav.signing.link_id = msg.get_link_id()
 ```
 
-what that says is that if the current link ID in use by MAVProxy is zero, and it receives a correctly signed packet with a non-zero link ID then it switches link ID to the one from the incoming packet.
+What that says is that if the current link ID in use by MAVProxy is zero, and it receives a correctly signed packet with a non-zero link ID then it switches link ID to the one from the incoming packet.
 
 The has the effect of making the GCS slave its link ID to the link ID of the autopilot.
