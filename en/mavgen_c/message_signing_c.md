@@ -32,7 +32,7 @@ It is the responsibility of each MAVLink system to store and restore the timesta
 * The current timestamp should be stored regularly in persistent storage (suggested at least once a minute)
 * The timestamp used on startup should be the maximum of the timestamp implied by the system clock and the stored timestamp
 * If the system does not have a RTC mechanism then it should update its timestamp when GPS lock is achieved. The maximum of the timestamp from the GPS and the stored timestamp should be used
-* The timestamp should be incremented by one on each message send. This is done for you by the generated headers.
+* The timestamp should be incremented by one on each message sent on a particular link. This is done for you by the generated headers.
 * When a correctly signed message is decoded the timestamp should be replaced by the timestamp of the incoming message if that timestamp is greater than the current timestamp. This is done for you by the generated headers
 * The timestamp on incoming signed messages should be checked against the previous timestamp for the incoming `(linkID,srcSystem,SrcComponent)` tuple and the message rejected if it is smaller. This is done for you by generated headers.
 * If there is no previous message with the given `(linkID,srcSystem,SrcComponent)` then the timestamp should be accepted if it not more than 6 million (one minute) behind the current timestamp
