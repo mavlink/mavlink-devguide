@@ -109,8 +109,8 @@ How are we handling case of signed packets that meet the criteria for accepting 
 ## Secret Key Management {#secret_key}
 
 A secret key is 32 bytes of binary data that are used to create message signatures that can be verified by other holders of the key.
-MAVLink v2 assumes that all systems in the same network (that support message signing) will use the *same* key.
 The key should be created on one system in the network (often a GCS) and shared to other trusted devices via secure channels.
+All systems on a link will use the *same* key. Different links may use different keys.
 
 The secret key should be stored in persistent storage, and should not be exposed via any publicly accessible communication protocol.
 In particular, the key must not be exposed in MAVLink parameters, MAVLink log files or dataflash log files that may be used for public log analysis.
