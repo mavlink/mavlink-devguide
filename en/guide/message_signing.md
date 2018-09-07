@@ -42,6 +42,9 @@ The monotonically increasing [timestamp](#timestamp) rule is applied separately 
 (SystemID,ComponentID,LinkID)
 ```
 
+> **Note** For more information see [C Message Signing > Handling Link IDs](../mavgen_c/message_signing_c.md#handling_link_ids).
+
+
 ### Signature {#signature}
 
 The 48 bit (6 byte) signature is the first 48 bits of a SHA-256 hash of the complete packet (without the signature, but including the timestamp) appended to the [secret key](#secret_key).
