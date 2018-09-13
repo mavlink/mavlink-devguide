@@ -15,6 +15,10 @@
 
   <dt>How reliable is MAVLink?</dt>
   <dd>Very. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, and the well-established ITU X.25 checksum for packet corruption detection.</dd>
+  
+  <dt>How secure is MAVLink?</dt>
+  <dd>MAVLink provides <a href="../guide/message_signing.md">message signing</a>, which allows systems to authenticate that messages are from a trusted source. MAVLink does not provide message encryption.  
+  </dd>
 </dl>
 
 
