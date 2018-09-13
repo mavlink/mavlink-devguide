@@ -121,7 +121,9 @@ This feature might be useful for finding a lost vehicle with a corrupted secret 
 
 A secret key is 32 bytes of binary data that are used to create message signatures that can be verified by other holders of the key.
 The key should be created on one system in the network (often a GCS) and shared to other trusted devices via secure channels.
-All systems on a link will use the *same* key. Different links may use different keys.
+Systems must have a shared key to communicate. 
+
+> **Note** The [C Library](../mavgen_c/message_signing_c.md) supports only one key per link, but this is a choice of the library and not a limit/requirement of the protocol.
 
 The secret key should be stored in persistent storage, and should not be exposed via any publicly accessible communication protocol.
 In particular, the key must not be exposed in MAVLink parameters, MAVLink log files or dataflash log files that may be used for public log analysis.
@@ -141,8 +143,6 @@ This is to avoid the case where a key received over a secure link (e.g. USB) is 
 Autopilots that don't offer MAVLink over USB might create a module that can set the secret key from a command line interface (e.g. the NSH Shell).
 
 > **Tip** We recommend that GCS implementations should generate the secret key and share this with connected systems over a secure link.
-
-
 
 
 ## Logging
