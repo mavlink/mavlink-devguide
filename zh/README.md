@@ -57,7 +57,7 @@ The table below shows the available languages/generators, along with their suppo
 
 ## Support {#support}
 
-The [Support](about/support.md) topic contains information about the [mailing list](https://groups.google.com/forum/#!forum/mavlink), reporting bugs/issues, and joining the dev call.
+The [Support](about/support.md) topic contains information about the [mailing list](https://groups.google.com/forum/#!forum/mavlink), reporting bugs/issues, and joining the [dev call](about/support.md#dev_call).
 
 ## Contributing
 
