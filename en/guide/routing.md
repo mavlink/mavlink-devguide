@@ -1,7 +1,66 @@
 # Routing
 
-MAVLink 2.0 has a source system and component ID as well as a destination system and component ID. While the source IDs are part of every message, destination IDs are only assigned for cases where a destination ID is required.
+This topic explains how messages should be routed by MAVLink systems. 
 
+## Overview
+
+A MAVLINK network is made up of systems (vehicles, ground stations, antenna trackers, cameras etc.) that are composed from components (autopilot, camera, servos, etc.).
+
+Each system has a network-unique *system id*, and each component has a system-unique *component id* that can be used for addressing/routing:
+- The *system id* has a value between 1 and 255. 
+  - The default autopilot system id is usually 1 (new autopilots added to the network are allocated increasing ids). 
+  - GCS systems and developer APIs should use an ID at the top of the numeric range to reduce ID clashes. Commonly a value of 255 is used, but this must be configurable to allow multi-GCS systems.
+- The *component id* is allocated by type and number from [MAV_COMPONENT](../messages/common.md#MAV_COMPONENT).
+
+Messages can be intended for all systems, specific systems, all components in a system, or specific components within a system. 
+The protocol defines two 8-bit fields that can (optionally) be specified in the message payload to indicate where the message should be sent/routed.
+
+- `target_system`: System that should execute the command
+- `target_component`: Component that should execute the command (requires `target_system`).
+
+The ids of the destination system and/or component should be set the the specific target.
+If the `target_system` is omitted or set to zero then the message is considered a *broadcast*, and should be sent to all systems and components.
+If the system is set but the `target_component` is omitted/set to zero then the message should be broadcast to all components in the system.
+
+
+## Routing Detail
+
+Systems/components should process a message locally if any of these conditions hold:
+- It is a broadcast message (`target_system` field omitted or zero).
+- The `target_system` matches its system id and `target_component` is broadcast (`target_component` omitted or zero).
+- The `target_system` matches its system id and has the component's `target_component`
+- The `target_system` matches its system id and the component is unknown (i.e. this component has not seen any messages on any link that have the message's `target_system`/`target_component`).
+
+Systems should forward messages to another link if any of these conditions hold:
+- It is a broadcast message (`target_system` field omitted or zero).
+- The `target_system` does not match the system id *and* the system knows the link of the target system (i.e. it has previously seen a message from `target_system` on the link).
+- The `target_system` matches its system id and has a `target_component` field, and the system has seen a message from the `target_system`/`target_component` combination on the link.
+
+> **Note** Non-broadcast messages must only be sent (or forwarded) to known destinations (i.e. a system must previously have received a message from the target system/component). Systems should also clear stored information about a detected system/component if it detects a `SYSTEM_TIME` message with a decrease in `time_boot_ms`, as this indicates that the system has rebooted, and might have different routing information.
+
+
+
+## Library Support
+
+### C Library (mavgen)
+
+The generated code for MAVLink v1 has no specific support for routing or working with `target_system` and `target_component`.
+
+The MAVLink v2 generator has been updated to make it easier to get the destination system and component ID from the payload (when these are assigned). 
+Specifically, the `mavlink_msg_entry_t` structure contains the offsets in the payload to the target system and component ids (`target_system_ofs` and `target_system_ofs`, respectively). The MAVLink helper method `const mavlink_msg_entry_t*` [`mavlink_get_msg_entry(uint32_t msgid)`](https://github.com/mavlink/c_library_v2/blob/master/protocol.h) can be used to get this structure from the message id.
+
+
+## MAVLink 2 Routing
+
+Unsigned MAVLink 2 packets are routed in the same way as MAVLink 1 packets.
+Signed packets may have some special routing requirements (see [Routing Signed Packets](#routing_signed_packets) below).
+
+
+## Routing Signed Packets {#routing_signed_packets}
+
+Routing signed packets is largely undefined at time of writing (for example, it is not clear whether a router should simply forward a signed message or decode and recode with its own keys).
+
+> **Note** The discussion can be tracked in [MAVLink/#984](https://github.com/mavlink/mavlink/issues/984)
 
 
 ## Router Implementation
@@ -9,6 +68,8 @@ MAVLink 2.0 has a source system and component ID as well as a destination system
 The [MAVLink Router](https://github.com/01org/mavlink-router) created by Intel allows to mix-and-match different IP protocols with serial ports and route MAVLink traffic.
 
 
+## Further Information
 
+* [MAVLink Routing in ArduPilot](http://ardupilot.org/dev/docs/mavlink-routing-in-ardupilot.html) (ArduPilot DevGuide)
 
 
