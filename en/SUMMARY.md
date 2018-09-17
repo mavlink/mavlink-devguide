@@ -23,7 +23,11 @@
     * [Arm Authorization Protocol](protocol/arm_authorization.md)
     * [Image Transmission Protocol](protocol/image_transmission.md)
     * [File Transfer Protocol (FTP)](protocol/ftp.md)
-    
+  * [File Formats](file_formats/README.md)
+    * [Mission Plan](file_formats/mission_plan.md)
+    * [GeoFence Plan](file_formats/geofence.md)
+    * [Rally/Safe Points Plan](file_formats/rally_points.md)
+    * [Mission Text Plan (Deprecated)](file_formats/mission_plan_plain_text.md)
   * [Message Signing](guide/message_signing.md)
   * [Serialization](guide/serialization.md)
   * [Routing](guide/routing.md)
