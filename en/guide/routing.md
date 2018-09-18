@@ -18,9 +18,15 @@ The protocol defines two 8-bit fields that can (optionally) be specified in the 
 - `target_system`: System that should execute the command
 - `target_component`: Component that should execute the command (requires `target_system`).
 
-The ids of the destination system and/or component should be set the the specific target.
-If the `target_system` is omitted or set to zero then the message is considered a *broadcast*, and should be sent to all systems and components.
-If the system is set but the `target_component` is omitted/set to zero then the message should be broadcast to all components in the system.
+The ids of the destination system and/or component should be set to the required target.
+If the ids are omitted or set to zero then the message is considered a *broadcast* (intended for all systems).
+
+MAVLink components are expected to process messages that have a matching system/component id and broadcast messages.
+They are expected to route/resend messages that are intended for other (or all) recipients to other active channels 
+(i.e. MAVLink systems may be connected across different transports, connected by a MAVLink system that routes the messages).
+Broadcast messages are forwarded to all channels that haven't seen the message. 
+Addressed messages are resent on a new channel *iff* the system has previously seen a message from the target on that channel 
+(messages are not resent if the addressee is not known or is on the original/incoming channel). 
 
 
 ## Routing Detail
@@ -38,7 +44,7 @@ Systems should forward messages to another link if any of these conditions hold:
 
 > **Note** Non-broadcast messages must only be sent (or forwarded) to known destinations (i.e. a system must previously have received a message from the target system/component). Systems should also clear stored information about a detected system/component if it detects a `SYSTEM_TIME` message with a decrease in `time_boot_ms`, as this indicates that the system has rebooted, and might have different routing information.
 
-
+Routed messages are *unchanged*; the source and destination ids are the values from the originating system.
 
 ## Library Support
 
