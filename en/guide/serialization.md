@@ -43,11 +43,11 @@ Whatever language you are using, the resulting binary data will be the same:
 ```
 -->
 
-## Packet Format
+## Packet Format {#packet_format}
 
 This section shows the serialized message format of MAVLink packets (the format is inspired by the [CAN](https://en.wikipedia.org/wiki/CAN_bus) and SAE AS-4 standards).
 
-### MAVLink 1 Packet Format
+### MAVLink 1 Packet Format {#v1_packet_format}
 
 Below is the over-the-wire format for a MAVLink 1 packet (the in-memory representation might differ).
 
@@ -60,15 +60,17 @@ Byte Index | C version | Content | Value | Explanation
 2 | `uint8_t seq`   | Packet sequence number | 0 - 255 | Used to detect packet loss. Components increment value for each message sent.
 3 | `uint8_t sysid` | System ID      | 1 - 255 | ID of *system* (vehicle) sending the message. Used to differentiate systems on network.
 4 | `uint8_t compid`| Component ID   | 0 - 255 | ID of *component* sending the message. Used to differentiate components in a *system* (e.g. autopilot and a camera). 
-5 | `uint8_t msgid` | Message ID     | 0 - 255 | ID of *message type* in payload. Used to decode data back into message object.
-6 to (n+6) | `uint8_t payload[max 255]` | [Payload](#payload) | | Message data. Content depends on message type (i.e. Message ID).
+<span id="v1_msgid"></span>5 | `uint8_t msgid` | Message ID     | 0 - 255 | ID of *message type* in payload. Used to decode data back into message object.
+<span id="v1_payload"></span>6 to (n+6) | `uint8_t payload[max 255]` | Payload data | | Message data. Content depends on message type (i.e. Message ID).
 (n+7) to (n+8) | `uint16_t checksum` | [Checksum](#checksum) (low byte, high byte) | | X.25 CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte.
+
 
 * The minimum packet length is 8 bytes for acknowledgment packets without payload.
 * The maximum packet length is 263 bytes for full payload.
 
 
 ### MAVLink 2 Packet Format {#mavlink2_packet_format}
+
 
 Below is the over-the-wire format for a [MAVLink 2](../guide/mavlink_2.md) packet (the in-memory representation might differ).
 
@@ -84,8 +86,9 @@ Byte Index | C version | Content | Value | Explanation
 4 | `uint8_t seq`    | Packet sequence number | 0 - 255 | Used to detect packet loss. Components increment value for each message sent.
 5 | `uint8_t sysid`  | System ID (sender)     | 1 - 255 | ID of *system* (vehicle) sending the message. Used to differentiate systems on network.
 6 | `uint8_t compid` | Component ID (sender)   | 0 - 255 | ID of *component* sending the message. Used to differentiate components in a *system* (e.g. autopilot and a camera).
-7 to 9 | `uint32_t msgid:24` | Message ID (low, middle, high bytes) | 0 - 16777215 | ID of *message type* in payload. Used to decode data back into message object.
-10 to (n+10) | `uint8_t payload[max 255]` | [Payload](#payload) | | Message data. Depends on message type (i.e. Message ID) and contents.
+<<<<<<< HEAD
+<span id="v2_msgid"></span>7 to 9 | `uint32_t msgid:24` | Message ID (low, middle, high bytes) | 0 - 16777215 | ID of *message type* in payload. Used to decode data back into message object.
+<span id="v2_payload"></span>10 to (n+10) | `uint8_t payload[max 255]` | [Payload](#payload) | | Message data. Depends on message type (i.e. Message ID) and contents.
 (n+11) to (n+12) | `uint16_t checksum` | [Checksum](#checksum) (low byte, high byte) | | X.25 CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte.
 (n+12) to (n+26) | `uint8_t signature[13]`| [Signature](../guide/message_signing.md) | | (Optional) Signature to ensure the link is tamper-proof.
 
