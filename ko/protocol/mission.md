@@ -6,7 +6,7 @@ The protocol covers:
 
 * Operations to upload, download and clear missions, set/get the current mission item number, and get notification when the current mission item has changed.
 * Message type(s) for exchanging mission items.
-* Mission commands that are common to most autpilots/GCS.
+* MAVLink commands that are common to most autpilots/GCS.
 
 The protocol follows the client/server pattern, where operations (and most commands) are initiated by the GCS/developer API (client) and acknowledged by the autopilot (server).
 
@@ -24,9 +24,9 @@ The mission type is specified in a MAVLink 2 message extension field: `mission_t
 
 > **Note** You set the `mission_type` in messages: [MISSION_COUNT](../messages/common.md#MISSION_COUNT), [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST), [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT), [MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL), etc.
 
-The protocol uses the same sequence of operations for all types (albeit with different mission commands).
+The protocol uses the same sequence of operations for all types (albeit with different MAVLink commands).
 
-## Mission Commands {#mission_commands}
+## MAVLink Commands {#mavlink_commands}
 
 MAVLink commands are defined in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
 
@@ -64,7 +64,7 @@ The remaining message fields are used for addressing, defining the mission type,
 | target_component | uint8_t  |                    | Component ID                                                                                                                                                                                         |
 | seq              | uint16_t |                    | Sequence number for                                                                                                                                                                                  |
 | frame            | uint8_t  | MAV_FRAME          | The coordinate system of the waypoint.  
-ArduPilot and PX4 both only support global frames in mission commands (local frames may be supported if the same command is sent via the command protocol). |
+ArduPilot and PX4 both only support global frames in MAVLink commands (local frames may be supported if the same command is sent via the command protocol). |
 | mission_type     | uint8_t  | MAV_MISSION_TYPE | [Mission type](#mission_types).                                                                                                                                                                      |
 | current          | uint8_t  | false:0, true:1    | When downloading, whether the item is the current mission item.                                                                                                                                      |
 | autocontinue     | uint8_t  |                    | Autocontinue to next waypoint when the command completes.                                                                                                                                            |
@@ -83,7 +83,7 @@ Note:
 
 * The GCS (client) sets a [timeout](#timeout) after every message and will resend if there is no response from the vehicle.
 * The client will re-request mission items that are received out of sequence.
-* The sequence above shows the [mission commands](#mission_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages. Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way (see [MISSION_ITEM_INT vs MISSION_ITEM below](#command_message_type)).
+* The sequence above shows the [MAVLink commands](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages. Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way (see [MISSION_ITEM_INT vs MISSION_ITEM below](#command_message_type)).
 
 In more detail, the sequence of operations is:
 
@@ -106,7 +106,7 @@ The diagram below shows the communication sequence to download a mission from a 
 
 {% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: MISSION_REQUEST_LIST GCS->>GCS: Start timeout Drone-->>GCS: MISSION_COUNT GCS->>Drone: MISSION_REQUEST_INT (0) GCS->>GCS: Start timeout Drone-->>GCS: MISSION_ITEM_INT (0) GCS->>Drone: MISSION_REQUEST_INT (1) GCS->>GCS: Start timeout Drone-->>GCS: MISSION_ITEM_INT (1) GCS->>Drone: MISSION_ACK {% endmermaid %}
 
-> **Note** The sequence shows the [mission commands](#mission_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages. Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way (see [MISSION_ITEM_INT vs MISSION_ITEM below](#command_message_type)).
+> **Note** The sequence shows the [MAVLink commands](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages. Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way (see [MISSION_ITEM_INT vs MISSION_ITEM below](#command_message_type)).
 
 The sequence is similar to that for [uploading a mission](#uploading_mission). The main difference is that the client (e.g. GCS) sends [MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST), which triggers the autopilot to respond with the current count of items. This starts a cycle where the GCS requests mission items, and the drone supplies them.
 
