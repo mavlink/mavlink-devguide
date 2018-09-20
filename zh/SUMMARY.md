@@ -7,16 +7,14 @@
   * [Install MAVLink](getting_started/installation.md)
   * [Generate MAVLink Libraries](getting_started/generate_libraries.md)
   * [Using MAVLink Libraries](getting_started/use_libraries.md) 
-    * [C (mavgen)](mavgen_c/README.md)
+    * [C (mavgen)](mavgen_c/README.md) 
+      * [Message Signing](mavgen_c/message_signing_c.md)
     * [Python (mavgen)](mavgen_python/README.md)
   * [Generate Source Files for ROS](getting_started/ros.md)
-
-* [Guide](guide/README.md)
-  
+* [Guide](guide/README.md) 
   * [MAVLink Versions](guide/mavlink_version.md)
   * [MAVLink 2](guide/mavlink_2.md)
-  * [Protocols](protocol/overview.md)
-    
+  * [Protocols](protocol/overview.md) 
     * [Mission Protocol](protocol/mission.md)
     * [Parameter Protocol](protocol/parameter.md)
     * [Command Protocol](protocol/command.md)
@@ -26,9 +24,7 @@
     * [Arm Authorization Protocol](protocol/arm_authorization.md)
     * [Image Transmission Protocol](protocol/image_transmission.md)
     * [File Transfer Protocol (FTP)](protocol/ftp.md)
-  
   * [Message Signing](guide/message_signing.md)
-  
   * [Serialization](guide/serialization.md)
   * [Routing](guide/routing.md)
   * [General Telemetry](guide/general_telemetry.md)
