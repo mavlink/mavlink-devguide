@@ -29,6 +29,7 @@
   * [Routing](guide/routing.md)
   * [General Telemetry](guide/general_telemetry.md)
   * [Offboard Control](guide/offboard_control.md)
+  * [File Formats](file_formats/README.md)
   * [UAVCAN Interaction](guide/uavcan_interaction.md)
   * [Scripts](guide/scripts.md)
 * [Examples](examples/README.md) 
