@@ -32,6 +32,8 @@
   * [File Formats](file_formats/README.md)
   * [UAVCAN Interaction](guide/uavcan_interaction.md)
   * [Scripts](guide/scripts.md)
+  * [MAVLink XML Schema](guide/xml_schema.md)
+  * [Defining XML Enums/Messages](guide/define_xml_element.md)
 * [Examples](examples/README.md) 
   * [UART Interface (C)](examples/c_uart.md)
   * [UDP Example (C)](examples/c_udp.md)
