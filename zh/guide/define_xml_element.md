@@ -6,11 +6,11 @@ This topic provides practical guidance for defining and extending MAVLink XML el
 
 > **Note** For detailed information about the file format see [MAVLink XML Schema](../guide/xml_schema.md) (you can also inspect [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialect files).
 
-## Should we Define Messages or Commands?
+## Messages vs Commands
 
 There are two ways to send information between MAVLink systems (including commands, information and acknowledgments):
 
-- [Messages](#messages) are encoded using `mavlink` elements. The message structure/fields and handling are largely unconstrained (i.e. up to the creator).
+- [Messages](#messages) are encoded using `message` elements. The message structure/fields and handling are largely unconstrained (i.e. up to the creator).
 - [MAVLink Commands](#mavlink_commands) are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum, and encoded into real messages that are sent using the [Mission Protocol](../protocol/mission.md) or [Command Protocol](../protocol/command.md). Their structure is defined (they have 7 `float` parameters *or* 5 `float` and 2 `int32_t` parameters) and handling/responses depend on the protocol used to send them.
 
 The guidance below provides some suggestions on when one or the other might be more appropriate.
@@ -348,7 +348,7 @@ The allocated ranges are listed below.
 | Dialect           | Range         |
 | ----------------- | ------------- |
 | Common.xml        | 30000 - 39999 |
-| asluav.xml        | 40001-41999   |
+| asluav.xml        | 40001 - 41999 |
 | ArduPilotMega.xml | 42000 - 42999 |
 | slugs.xml         | 10001 - 11999 |
 
