@@ -15,5 +15,6 @@ td {
 }
 </style>
 
-{% include "_html/slugs.html" %}
+ 
 
+{% include "_html/slugs.html" %}
