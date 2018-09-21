@@ -15,5 +15,6 @@ td {
 }
 </style>
 
-{% include "_html/ualberta.html" %}
+ 
 
+{% include "_html/ualberta.html" %}
