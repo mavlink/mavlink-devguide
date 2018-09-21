@@ -15,5 +15,6 @@ td {
 }
 </style>
 
-{% include "_html/autoquad.html" %}
+ 
 
+{% include "_html/autoquad.html" %}
