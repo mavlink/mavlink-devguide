@@ -47,8 +47,7 @@ Systems should forward messages to another link if any of these conditions hold:
 
 Routed messages are *unchanged*; the source and destination ids are the values from the originating system.
 
-<!-- COMMENTED UNTIL LIBRARIES VERIFIED -->
-<!-- 
+
 ## Library Support
 
 ### C Library (mavgen)
@@ -59,7 +58,6 @@ To extract this information you will need to use the normal methods provided for
 The MAVLink v2 generator for the C library has been updated to make it easier to get the destination system and component ID from the payload (when these are assigned). 
 Specifically, the `mavlink_msg_entry_t` structure contains flags to tell you if the message contains target system/component information (`FLAG_HAVE_TARGET_SYSTEM`, `FLAG_HAVE_TARGET_COMPONENT`) and offsets into the payload that you can use to get these ids (`target_system_ofs` and `target_system_ofs`, respectively). The MAVLink helper method `const mavlink_msg_entry_t*` [`mavlink_get_msg_entry(uint32_t msgid)`](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h) can be used to get this structure from the message id.
 
--->
 <!-- note: A real example of above would be good in the C docs, and then we should just link to them here -->
 
 ## MAVLink 2 Routing
