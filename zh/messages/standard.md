@@ -15,5 +15,6 @@ td {
 }
 </style>
 
-{% include "_html/standard.html" %}
+ 
 
+{% include "_html/standard.html" %}
