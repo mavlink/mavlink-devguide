@@ -15,5 +15,328 @@ td {
 }
 </style>
 
-{% include "_html/python_array_test.html" %}
-
+<html>
+ <body>
+  <p>
+   <strong>MAVLink Include Files:</strong>
+   <a href="common.md">common.xml</a>
+  </p>
+  <h2>MAVLink Messages</h2>
+  <h3 id="ARRAY_TEST_0">ARRAY_TEST_0 (<a href="#ARRAY_TEST_0">
+    #150
+   </a>
+   )
+  </h3>
+  <p>Array test #0.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>v1</td>
+     <td>uint8_t</td>
+     <td>Stub field</td>
+    </tr>
+    <tr>
+     <td>ar_i8</td>
+     <td>int8_t[4]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_u8</td>
+     <td>uint8_t[4]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_u16</td>
+     <td>uint16_t[4]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_u32</td>
+     <td>uint32_t[4]</td>
+     <td>Value array</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ARRAY_TEST_1">ARRAY_TEST_1 (<a href="#ARRAY_TEST_1">
+    #151
+   </a>
+   )
+  </h3>
+  <p>Array test #1.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>ar_u32</td>
+     <td>uint32_t[4]</td>
+     <td>Value array</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ARRAY_TEST_3">ARRAY_TEST_3 (<a href="#ARRAY_TEST_3">
+    #153
+   </a>
+   )
+  </h3>
+  <p>Array test #3.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>v</td>
+     <td>uint8_t</td>
+     <td>Stub field</td>
+    </tr>
+    <tr>
+     <td>ar_u32</td>
+     <td>uint32_t[4]</td>
+     <td>Value array</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ARRAY_TEST_4">ARRAY_TEST_4 (<a href="#ARRAY_TEST_4">
+    #154
+   </a>
+   )
+  </h3>
+  <p>Array test #4.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>ar_u32</td>
+     <td>uint32_t[4]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>v</td>
+     <td>uint8_t</td>
+     <td>Stub field</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ARRAY_TEST_5">ARRAY_TEST_5 (<a href="#ARRAY_TEST_5">
+    #155
+   </a>
+   )
+  </h3>
+  <p>Array test #5.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>c1</td>
+     <td>char[5]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>c2</td>
+     <td>char[5]</td>
+     <td>Value array</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ARRAY_TEST_6">ARRAY_TEST_6 (<a href="#ARRAY_TEST_6">
+    #156
+   </a>
+   )
+  </h3>
+  <p>Array test #6.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>v1</td>
+     <td>uint8_t</td>
+     <td>Stub field</td>
+    </tr>
+    <tr>
+     <td>v2</td>
+     <td>uint16_t</td>
+     <td>Stub field</td>
+    </tr>
+    <tr>
+     <td>v3</td>
+     <td>uint32_t</td>
+     <td>Stub field</td>
+    </tr>
+    <tr>
+     <td>ar_u32</td>
+     <td>uint32_t[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_i32</td>
+     <td>int32_t[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_u16</td>
+     <td>uint16_t[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_i16</td>
+     <td>int16_t[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_u8</td>
+     <td>uint8_t[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_i8</td>
+     <td>int8_t[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_c</td>
+     <td>char[32]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_d</td>
+     <td>double[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_f</td>
+     <td>float[2]</td>
+     <td>Value array</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ARRAY_TEST_7">ARRAY_TEST_7 (<a href="#ARRAY_TEST_7">
+    #157
+   </a>
+   )
+  </h3>
+  <p>Array test #7.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>ar_d</td>
+     <td>double[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_f</td>
+     <td>float[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_u32</td>
+     <td>uint32_t[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_i32</td>
+     <td>int32_t[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_u16</td>
+     <td>uint16_t[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_i16</td>
+     <td>int16_t[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_u8</td>
+     <td>uint8_t[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_i8</td>
+     <td>int8_t[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_c</td>
+     <td>char[32]</td>
+     <td>Value array</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ARRAY_TEST_8">ARRAY_TEST_8 (<a href="#ARRAY_TEST_8">
+    #158
+   </a>
+   )
+  </h3>
+  <p>Array test #8.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>v3</td>
+     <td>uint32_t</td>
+     <td>Stub field</td>
+    </tr>
+    <tr>
+     <td>ar_d</td>
+     <td>double[2]</td>
+     <td>Value array</td>
+    </tr>
+    <tr>
+     <td>ar_u16</td>
+     <td>uint16_t[2]</td>
+     <td>Value array</td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>

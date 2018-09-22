@@ -15,5 +15,14 @@ td {
 }
 </style>
 
-{% include "_html/standard.html" %}
-
+<html>
+ <body>
+  <p>
+   <strong>MAVLink Include Files:</strong>
+   <a href="common.md">common.xml</a>
+  </p>
+  <p>This file has protocol dialect: 0.</p>
+  <h2>MAVLink Type Enumerations</h2>
+  <h2>MAVLink Messages</h2>
+ </body>
+</html>
