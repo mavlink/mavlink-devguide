@@ -231,16 +231,16 @@ If needed, you can query `MAVLink_message` for information about the signature, 
 
 ## Examples
 
-A number of simple examples are available in the [pymavlink submodule](https://github.com/ArduPilot/pymavlink/tree/master/examples). These examples should help you get started.
+There are a number useful examples and complete systems based on pymavlink:
+- The [pymavlink submodule](https://github.com/ArduPilot/pymavlink/tree/master/examples) contains a number of simple examples.
+- [MAVProxy](http://ardupilot.github.io/MAVProxy/html/development/index.html) is a command-line, console based UAV ground station software package for MAVLink based systems. 
+  - It demonstrates most of the features of using the MAVLink module. 
+  - The source code can be found here: https://github.com/ArduPilot/MAVProxy
+- [DroneKit-Python](http://python.dronekit.io/) is a developer API that builds on Pymavlink.
+  - It implements a simpler high-level API for accessing vehicle information and also implementations of some of the [MAVLink sub-protocols/microservices](../protocol/overview.md) (eg. mission protocol).
+  - The source code can be found here: https://github.com/dronekit/dronekit-python
 
-
-### MAVProxy
-
-A more complete example is provided by [MAVProxy](http://ardupilot.github.io/MAVProxy/html/development/index.html), which is a command-line, console based UAV ground station software package for MAVLink based systems. It demonstrates most of the features of using the MAVLink module.
-
-The source code can be found here: https://github.com/ArduPilot/MAVProxy
-
-
+  
 ## Support
 
 Pymavlink questions can be raised in the normal MAVLink [support channels](../about/support.md).
