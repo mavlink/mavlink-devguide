@@ -24567,5 +24567,56 @@ td {
     </tr>
    </tbody>
   </table>
+  <h3 id="DEBUG_FLOAT_ARRAY">DEBUG_FLOAT_ARRAY (<a href="#DEBUG_FLOAT_ARRAY">
+    #350
+   </a>
+   )
+  </h3>
+  <p>
+   <strong>
+    (MAVLink 2)
+   </strong>Large debug/prototyping array. The message uses the maximum available payload for data. The array_id and name fields are used to discriminate between messages in code and in user interfaces (respectively). Do not use in production code.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+    </tr>
+    <tr>
+     <td>name</td>
+     <td>char[10]</td>
+     <td>
+     </td>
+     <td>Name, for human-friendly display in a Ground Control Station</td>
+    </tr>
+    <tr>
+     <td>array_id</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Unique ID used to discriminate between arrays</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">data<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float[58]</td>
+     <td>
+     </td>
+     <td>data</td>
+    </tr>
+   </tbody>
+  </table>
  </body>
 </html>
