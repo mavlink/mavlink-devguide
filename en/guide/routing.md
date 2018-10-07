@@ -39,14 +39,13 @@ Systems should forward messages to another link if any of these conditions hold:
 - The `target_system` does not match the system id *and* the system knows the link of the target system (i.e. it has previously seen a message from `target_system` on the link).
 - The `target_system` matches its system id and has a `target_component` field, and the system has seen a message from the `target_system`/`target_component` combination on the link.
 
+Forwarded messages must not be changed/repackaged by the forwarding system (the original message is passed to the new link).
+
 > **Note** Non-broadcast messages must only be sent (or forwarded) to known destinations (i.e. a system must previously have received a message from the target system/component).
 
 <span></span>
 > **Note** Systems should also check for `SYSTEM_TIME` messages with a decrease in `time_boot_ms`, as this indicates that the system has rebooted. 
   In this case it should clear stored routing information (and might perform other actions that are useful following a reboot - e.g. re-fetching parameters and home position etc.).
-
-Routed messages are *unchanged*; the source and destination ids are the values from the originating system.
-
 
 ## Library Support
 
