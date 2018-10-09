@@ -86,7 +86,6 @@ Byte Index | C version | Content | Value | Explanation
 4 | `uint8_t seq`    | Packet sequence number | 0 - 255 | Used to detect packet loss. Components increment value for each message sent.
 5 | `uint8_t sysid`  | System ID (sender)     | 1 - 255 | ID of *system* (vehicle) sending the message. Used to differentiate systems on network.
 6 | `uint8_t compid` | Component ID (sender)   | 0 - 255 | ID of *component* sending the message. Used to differentiate components in a *system* (e.g. autopilot and a camera).
-<<<<<<< HEAD
 <span id="v2_msgid"></span>7 to 9 | `uint32_t msgid:24` | Message ID (low, middle, high bytes) | 0 - 16777215 | ID of *message type* in payload. Used to decode data back into message object.
 <span id="v2_payload"></span>10 to (n+10) | `uint8_t payload[max 255]` | [Payload](#payload) | | Message data. Depends on message type (i.e. Message ID) and contents.
 (n+11) to (n+12) | `uint16_t checksum` | [Checksum](#checksum) (low byte, high byte) | | X.25 CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte.
