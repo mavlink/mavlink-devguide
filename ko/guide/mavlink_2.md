@@ -7,7 +7,7 @@ The key new features of *MAVLink 2* are:
 * More than 256 message IDs (24 bit message ID - over 16 million packets)
 * [Packet signing](../guide/message_signing.md) (authentication)
 * [Extending existing MAVLink messages](#message_extensions)
-* [Variable length arrays](#variable_arrays) (*simplified implementation*).
+* [Empty-Byte packet truncation](#packet_truncation)
 * [Non-standard frame handling (Packet Compatibility Flags)](#framing)
 
 *MAVLink 2* bindings have been developed for C, C++11 and Python (see [Supported Languages](../README.md#supported_languages)).
@@ -104,11 +104,13 @@ For example the fields after the `<extensions>` line below are extension fields:
 
 Authentication is covered in the topic: [Message Signing](../guide/message_signing.md) (authentication)
 
-## Variable Length Arrays {#variable_arrays}
+## Empty-Byte Packet Truncation {#packet_truncation}
 
-*MAVLink 2* truncates any zero (empty) elements at the end of the *largest* array in a message. Other arrays in the message will not be truncated.
+*MAVLink 2* truncates any empty (zero-filled) bytes at the end of the serialized message before it is sent. This contrasts with *MAVLink 1*, where bytes were sent for all fields regardless of content.
 
-> **Note** This is a "light" implementation of variable length arrays. For messages with 0 or 1 arrays (the most common case) this is the same as a full implementation.
+The actual fields affected/bytes saved depends on the message and its content (MAVLink [field reordering](../guide/serialization.md#field_reordering) means that all we can say is that any truncated fields will typically be those with the smallest data size, or extension fields).
+
+> **Note** The protocol only truncates empty bytes at the end of the serialized message; any null bytes/empty fields within the body of the message are not affected.
 
 ## Packet Compatibility Flags {#framing}
 
