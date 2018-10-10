@@ -46,30 +46,33 @@ The libraries can then be used in the same way as those installed using *pip*.
 ### Overview
 
 The *pymavlink* package includes a number of modules:
-- **\dialects\v20\\*** and **\dialects\v10\\***: Dialect modules corresponding to each source XML [message definition](messages/README.md) for MAVLink v2 and v1, respectively (includes your generated library). 
+- **\dialects\v20\\*** and **\dialects\v10\\***: Dialect modules corresponding to each source XML [message definition](messages/README.md) for MAVLink v2 and v1, respectively (this should include your generated library). 
   Each dialect module contains:
   - constants for all enums and enum values defined in the XML file.
-  - a set of constants for message identifiers
-  - a class for each type of MAVLink message defined in the XML file
-  - a MAVLink class, which can be used to send and receive messages
-    - has `_send` and `_decode` functions for each message type
-    - has methods to check and apply signatures
+  - a set of constants for message identifiers.
+  - a class for each type of MAVLink message defined in the XML file.
+  - a MAVLink class, which can be used to send and receive messages:
+    - has `_send` and `_decode` functions for each message type.
+    - has methods to check and apply signatures.
     - has lower-level methods for packing and parsing data.
-- **mavutil**: MAVLink utility functions for setting up ports/links, receiving and decoding messages, running periodic tasks, etc. 
+- **mavutil**: MAVLink utility functions for setting up communication links, receiving and decoding messages, running periodic tasks, etc. 
   > **Tip** This provides mechanisms for setting up a link and interacting with a connected system.
-- **mavwp**: Load/save waypoints, geofence, rally points
-- **mavparm**: Load/save sets of MAVLink parameters
-- **mavextra**: Useful functions for converting values and messages (e.g. metres/second to Km/h, eulers in radians from quaternion etc.)
-- **mavexpression** (internal): MAVLink expression evaluation functions
+- **mavwp**: Load/save waypoints, geofence, rally points.
+- **mavparm**: Load/save sets of MAVLink parameters.
+- **mavextra**: Useful functions for converting values and messages (e.g. metres/second to Km/h, eulers in radians from quaternion etc.).
+- **mavexpression** (internal): MAVLink expression evaluation functions.
 
 
 ### Choosing the Dialect/MAVLink Version {#dialect_file}
 
 Most users will use the **mavutil** module to set up and manage the communication channel (see [Listening for a Connection](#listen) below).
-By default this module uses the MAVLink 1 `ardupilotmega` dialect module for sending/receiving. 
-You can change this by setting the dialect name in the `MAVLINK_DIALECT` environment variable and by setting the `MAVLINK20` variable.
+By default this module sets up the link to use the MAVLink 1 `ardupilotmega` dialect for sending/receiving. 
+You can change this by setting environment variables:
+- `MAVLINK_DIALECT`: Set to string name for the dialect file (without XML extension).
+- `MAVLINK20`: Set to 1 (if unset then default to MAVLink 1)
+- `MDEF`: Location of message definition libraries
 
-If you're not using `mavutil` for link management, then you can import the dialect file that you want to use directly, e.g.:
+If you're not using `mavutil` for link management, then you can import the dialect file that you want to use directly:
 
 ```python
 # Import ardupilotmega module for MAVLink 1
@@ -81,16 +84,17 @@ from pymavlink.dialects.v20 import common as mavlink2
 
 ### Setting up a Connection
 
-To set up a [connection](../protocol/heartbeat.md) a system must periodically broadcast a [HEARTBEAT](../messages/common.md#HEARTBEAT) message and listen for heartbeats from other systems. 
+To set up a [connection](../protocol/heartbeat.md) a system must periodically broadcast a [HEARTBEAT](../messages/common.md#HEARTBEAT) message and listen for heartbeats from other systems.
+
 
 #### Listening for a Connection {#listen}
 
 The **mavutil** module provides the `mavlink_connection()` method for setting up a communication link to a MAVLink system over serial, tcp, or udp channels (it can also connect to a file object, which is useful when working with telemetry logs).
-It takes a string defining the channel and optional baud rate as arguments.
 
 > **Warning** The method returns an object that represents a single system, but will collect messages from multiple systems on the link.
   This is OK for two-system networks, but if you need a multi-vehicle network see [source-system-filtering](https://github.com/peterbarker/dronekit-python/tree/source-system-filtering/examples/multivehicle).
-  
+
+The `mavlink_connection()` method takes a string defining the channel and optional baud rate as arguments.
 For example, to connect to an autopilot on the standard MAVLink simulator UDP port:
 
 ```python
