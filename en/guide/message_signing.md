@@ -7,6 +7,7 @@ It explains how a system can determine if a message is signed and whether the si
 
 More detailed information for developers using existing MAVLink libraries can be found here:
 - [C Message Signing](../mavgen_c/message_signing_c.md) (mavgen)
+- [Pymavlink Message Signing](../mavgen_python/README.md#message_signing) (mavgen)
 <!-- Others?  -->
 
 
