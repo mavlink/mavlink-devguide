@@ -55,12 +55,12 @@ The *pymavlink* package includes a number of modules:
     - has `_send` and `_decode` functions for each message type.
     - has methods to check and apply signatures.
     - has lower-level methods for packing and parsing data.
-- **mavutil**: MAVLink utility functions for setting up communication links, receiving and decoding messages, running periodic tasks, etc. 
+- **[mavutil](https://github.com/ArduPilot/pymavlink/blob/master/mavutil.py)**: MAVLink utility functions for setting up communication links, receiving and decoding messages, running periodic tasks, etc. 
   > **Tip** This provides mechanisms for setting up a link and interacting with a connected system.
-- **mavwp**: Load/save waypoints, geofence, rally points.
-- **mavparm**: Load/save sets of MAVLink parameters.
-- **mavextra**: Useful functions for converting values and messages (e.g. metres/second to Km/h, eulers in radians from quaternion etc.).
-- **mavexpression** (internal): MAVLink expression evaluation functions.
+- **[mavwp](https://github.com/ArduPilot/pymavlink/blob/master/mavwp.py)**: Load/save waypoints, geofence, rally points.
+- **[mavparm](https://github.com/ArduPilot/pymavlink/blob/master/mavparm.py)**: Load/save sets of MAVLink parameters.
+- **[mavextra](https://github.com/ArduPilot/pymavlink/blob/master/mavextra.py)**: Useful functions for converting values and messages (e.g. metres/second to Km/h, eulers in radians from quaternion etc.).
+- **[mavexpression]()** (internal): MAVLink expression evaluation functions.
 
 
 ### Choosing the Dialect/MAVLink Version {#dialect_file}
