@@ -24,6 +24,7 @@
     * [Arm Authorization Protocol](protocol/arm_authorization.md)
     * [Image Transmission Protocol](protocol/image_transmission.md)
     * [File Transfer Protocol (FTP)](protocol/ftp.md)
+    * [Landing Target Protocol](protocol/landing_target.md)
   * [Message Signing](guide/message_signing.md)
   * [Serialization](guide/serialization.md)
   * [Routing](guide/routing.md)
