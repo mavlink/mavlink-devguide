@@ -4,7 +4,7 @@ The landing target protocol/message communicates the position of one or more tar
 A multicopter or VTOL system can use the message to land with far greater positional accuracy than provided by conventional GPS
 (GPS provides position within several meters while a landing-target system might reasonably provide centimetre-level precision landing).
 
-Positioning system might typically consist of an onboard companion computer with a vision system that can detect a light beacon or target image.
+A positioning system might typically consist of an onboard companion computer with a vision system that can detect a light beacon or target image.
 Radio beacons and different types of visual markers and tags are also supported.
 
 
@@ -12,7 +12,9 @@ Radio beacons and different types of visual markers and tags are also supported.
 
 The message used by this protocol is [LANDING_TARGET](../messages/common.md#LANDING_TARGET).
 This is *broadcast* by the positioning system to indicate the position of a particular target at a particular time.
-A typical broadcast rate would be (TBD).
+
+> **Note** The required broadcast rate depends on the landing speed and desired accuracy; 
+  start with rates between 10 Hz and 50 Hz and tune performance as needed.
 
 The original MAVLink 1 message was designed with the assumption that the target is captured from a downward facing camera, and provides fields that are relative to the captured image.
 MAVLink 2 extended the message to provide positional information in terms of standard frames ([MAV_FRAME](../messages/common.md#MAV_FRAME)), a quaternion and the type of landing targets ([LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE)).
@@ -38,7 +40,7 @@ The positional information can be interpreted as described below.
 
 Imagine a ray pointing from the camera's principal point to the target. 
 The x angle (`angle_x`) is the angle spanned by that ray and the x-axis of the image plane. The same holds for the y angle (`angle_y`).
-In other words, the x angle is a function of the x pixel coordinate of the target (denoted by *u*̅in the image below), the y angle is a function of the y pixel coordinate (denoted *v*  in the image below).
+In other words, the x angle is a function of the x pixel coordinate of the target (denoted by *u̅* in the image below), the y angle is a function of the y pixel coordinate (denoted *v*  in the image below).
 Using the angle rather than *u̅/v̅* pixel coordinates has the advantage that the effect of the camera lens is already accounted for. 
 Otherwise the receiver of the message would need to know the camera field of view etc.
 
