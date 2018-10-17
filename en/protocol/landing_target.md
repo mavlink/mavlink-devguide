@@ -61,9 +61,9 @@ Their use is obvious.
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
 frame | uint8_t | | [MAV_FRAME](../messages/common.md#MAV_FRAME) | Coordinate frame used for following fields.
-x | float | m | | X Position of the landing target on `MAV_FRAME`
-y | float | m | | Y Position of the landing target on `MAV_FRAME`
-z | float | m | | Z Position of the landing target on `MAV_FRAME`
+x | float | m | | X Position of the landing target in `MAV_FRAME`
+y | float | m | | Y Position of the landing target in `MAV_FRAME`
+z | float | m | | Z Position of the landing target in `MAV_FRAME`
 q | float[4] | | | Quaternion of landing target orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)
 type | uint8_t | | [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) | Type of landing target
 position_valid | uint8_t | | | Boolean indicating known position (1) or default unknown position (0), for validation of positioning of the landing target
