@@ -17324,8 +17324,7 @@ td {
    </a>
    )
   </h3>
-  <p>
-  </p>
+  <p>Global position/attitude estimate from a vision source.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17395,8 +17394,7 @@ td {
    </a>
    )
   </h3>
-  <p>
-  </p>
+  <p>Global position/attitude estimate from a vision source.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17466,8 +17464,7 @@ td {
    </a>
    )
   </h3>
-  <p>
-  </p>
+  <p>Speed estimate from a vision source.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17519,8 +17516,7 @@ td {
    </a>
    )
   </h3>
-  <p>
-  </p>
+  <p>Global position estimate from a Vicon motion system source.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18841,7 +18837,7 @@ td {
    </a>
    )
   </h3>
-  <p>data for injecting into the onboard GPS (used for DGPS)</p>
+  <p>Data for injecting into the onboard GPS (used for DGPS)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18870,14 +18866,14 @@ td {
      <td>len</td>
      <td>uint8_t</td>
      <td>bytes</td>
-     <td>data length</td>
+     <td>Data length</td>
     </tr>
     <tr>
      <td>data</td>
      <td>uint8_t[110]</td>
      <td>
      </td>
-     <td>raw data (110 is enough for 12 satellites of RTCMv2)</td>
+     <td>Raw data (110 is enough for 12 satellites of RTCMv2)</td>
     </tr>
    </tbody>
   </table>
@@ -19544,8 +19540,7 @@ td {
    </a>
    )
   </h3>
-  <p>
-  </p>
+  <p>Handshake message to initiate, control and stop image streaming when using the Image Transmission Protocol: https://mavlink.io/en/protocol/image_transmission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19639,8 +19634,7 @@ td {
    </a>
    )
   </h3>
-  <p>
-  </p>
+  <p>Data packet for images sent using the Image Transmission Protocol: https://mavlink.io/en/protocol/image_transmission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19667,8 +19661,7 @@ td {
    </a>
    )
   </h3>
-  <p>
-  </p>
+  <p>Distance sensor information for an onboard rangefinder.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20288,7 +20281,7 @@ td {
    </a>
    )
   </h3>
-  <p>current motion information from a designated system</p>
+  <p>Current motion information from a designated system</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21075,8 +21068,7 @@ td {
    </a>
    )
   </h3>
-  <p>
-  </p>
+  <p>Wind covariance estimate from vehicle.</p>
   <table class="sortable">
    <thead>
     <tr>
