@@ -125,7 +125,7 @@ td {
      <td>
       <a href="#MAV_AUTOPILOT_PX4">MAV_AUTOPILOT_PX4</a>
      </td>
-     <td>PX4 Autopilot - http://pixhawk.ethz.ch/px4/</td>
+     <td>PX4 Autopilot - http://px4.io/</td>
     </tr>
     <tr id="MAV_AUTOPILOT_SMACCMPILOT">
      <td>13</td>
