@@ -55,8 +55,8 @@ They describe the angle between the smallest and biggest pixel in x/y direction 
 
 ## Target as Position/Quaternion (MAVLink 2 and later) {#positional}
 
-The message fields that are used to providing target as a position/quaternion are shown below.
-Their use is obvious.
+The message fields that are used to provide target information as a position/quaternion are shown below.
+Field meaning and use is clear from the description.
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
@@ -66,7 +66,8 @@ y | float | m | | Y Position of the landing target in `MAV_FRAME`
 z | float | m | | Z Position of the landing target in `MAV_FRAME`
 q | float[4] | | | Quaternion of landing target orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)
 type | uint8_t | | [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) | Type of landing target
-position_valid | uint8_t | | | Boolean indicating known position (1) or default unknown position (0), for validation of positioning of the landing target
+position_valid | uint8_t | | | Boolean indicating whether these position field values are populated with valid position target information (1: valid, 0: invalid). The default is '0', so that if the fields are not populated the default-zero values are not interpreted as a valid target position.
+
 
 > **Tip** PX4 supports this form of positioning in [MAV_FRAME_LOCAL_NED](../messages/common.md#MAV_FRAME_LOCAL_NED) (only).
   The original (MAVLink 1) fields are ignored.
