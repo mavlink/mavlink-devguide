@@ -59,6 +59,12 @@ Enums are used to define named values that may be used as options in messages - 
 
 All enums are defined within the `<enums> ... </enums>` blocks (as discussed in the previous section). Enum values are defined within `<enum>` tags.
 
+The main `enum` tags/fields are:
+* `name`: The name of the enum (mandatory). This is a string of capitalized, underscore-separated words.
+* `description` (optional): A string describing the purpose of the enum
+* `entry` (optional): An entry (zero or more entries can be specified for each enum)
+* [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
+
 As a concrete example, the definition of the [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) message is given below.
 
 ```xml
@@ -78,26 +84,38 @@ As a concrete example, the definition of the [LANDING_TARGET_TYPE](../messages/c
     </entry>
 ```
 
-The main `enum` tags/fields are:
-* `name`: The name of the enum (mandatory). This is a string of capitalized, underscore-separated words.
-* `description` (optional): A string describing the purpose of the enum
-* `entry` (optional): An entry (zero or more entries can be specified for each enum)
-* [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
-
 
 #### entry {#entry}
 
-The enum `entry` tags/fields are:
+The "normal" enum `entry` tags/fields are:
 * `name`: The name of the enum value (mandatory). This is a string of capitalized, underscore-separated words.
 * `value` (optional): The *value* for the entry (a number).
 * `description` (optional): A description of the entry.
-* [param](#param) (optional): A param value used in a [MAV_CMD](../messages/common.md#MAV_CMD) enum entry.
 * [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the enum is deprecated or "work in progress". 
+
+[MAV_CMD](../messages/common.md#MAV_CMD) entries may additionally define these tags/fields:
+* [param](#param) (optional): A param value.
+* One (but not both) of:
+  * `hasLocation` (optional): A boolean (default true) that provides a hint to a GCS that the entry should be displayed as a "standalone" location - rather than as a destination on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values but which are not on the vehicle path (e.g.: [MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION)).
+  * `isDestination` (optional): A boolean (default true) that provides a hint to a GCS that the entry is a location that should be displayed as a point on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values and which are on the vehicle path (e.g.: [MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT) and [MAV_CMD_NAV_LAND](../messages/common.md#MAV_CMD_NAV_LAND)).
+
 
 #### param {#param}
 
 The `<param>` tag is used in the [MAV_CMD](../messages/common.md#MAV_CMD) enum as part of defining mission commands.
-Params include an attribute `index` (with value from 1 to 7) and contain a parameter description string.
+Params must include an attribute `index` (with value from 1 to 7) and contain a parameter description string.
+
+A `param` may also include the following optional attributes (which may be used by a GUI for parameter display and editing):
+- `label` - Display name to represent the parameter in a GCS or other UI
+- `units` - SI units for the value.
+- `enum` - Enum containing possible values for the parameter (if applicable).
+- `decimalPlaces` - Hint to a UI about how many decimal places to use if the parameter value is displayed.
+- `increment` - Allowed increments for the parameter value.
+- `minValue` - Minimum value for param.
+- `maxValue` - Maximum value for the param.
+
+> **Note** MAVLink commands are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages as part of the [Mission Protocol](../services/mission.md). 
+  Some commands can be sent outside of missions in [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages.
 
 For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE)
 
@@ -114,13 +132,40 @@ For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_P
 </entry>
 ```
 
-> **Note** MAVLink commands are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages as part of the [Mission Protocol](../services/mission.md). 
-  Some commands can be sent outside of missions in [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages.
-
 
 ### Message Definition (messages) {#messages}
 
 All messages are defined within the `<messages> ... </messages>` block (as discussed in the previous section) using `<message>...</message>` tags.
+
+The main message tags/fields are:
+
+- `message`: Each message is encapsulated by `message` tags, with the following attributes
+  - `id`: The id attribute is the unique index number of this message (in the example above: 147). 
+    - For MAVLink 1:
+      - Valid numbers range from 0 to 255.
+      - The ids 0-149 and 230-255 are reserved for *common.xml*. 
+        Dialects can use 180-229 for custom messages (provided these are not used by other included dialects). 
+    - For [MAVLink 2](../guide/mavlink_2.md):
+      - Valid numbers range from 0 to 16777215.
+      - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1. 
+        > **Note** IDs are precious in MAVLink 1!
+  - `name`: The name attribute provides a human readable form for the message (ie "BATTERY_STATUS"). It is used for naming helper functions in generated libraries, but is not sent over the wire.
+- `description`: Human readable description of message, shown in user interfaces and in code comments.
+  This should contain all information (and hyperlinks) to fully understand the message.
+- `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire).
+  - `type`: Similar to a field in a C `struct` - the size of the data required to store/represent the data type.
+    - Fields can be signed/unsigned integers of size 8, 16, 23, 64 bits (`{u)int8_t`, `(u)int16_t`, `(u)int32_t`, `(u)int64_t`), single/double precision IEEE754 floating point numbers. 
+    They can also be arrays of the other types - e.g. `uint16_t[10]`. 
+  - `name`: Name of the field (used in code).
+  - [enum](#enum) (optional): Name of an `enum` defining possible values of the field (e.g. `MAV_BATTERY_CHARGE_STATE`).
+  - `units` (optional): The units for message `field`s that take numeric values (not enums). These are defined in the [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd) (search on *name="SI_Unit"*)
+  - `display` (optional): This should be set as `display="bitmask"` for bitmask fields (hint to ground station that enum values must be displayed as checkboxes).
+  - `print_format` (optional): TBD.
+  - `default` (optional): TBD.
+- [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the message is deprecated or "work in progress".
+- `extensions` (optional): This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only. 
+  - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2. 
+
 As a concrete example, the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) message is given below.
 
 > **Note** This message was chosen as it contains many of the main fields and attributes. 
@@ -142,39 +187,6 @@ As a concrete example, the definition of the [BATTERY_STATUS](../messages/common
       <field type="uint8_t" name="charge_state" enum="MAV_BATTERY_CHARGE_STATE">State for extent of discharge, provided by autopilot for warning or external reactions</field>
     </message>
 ```
-    
-
-The main message tags/fields are:
-
-- `message`: Each message is encapsulated by `message` tags, with the following attributes
-  - `id`: The id attribute is the unique index number of this message (in the example above: 147). 
-    - For MAVLink 1:
-      - Valid numbers range from 0 to 255.
-      - The ids 0-149 and 230-255 are reserved for *common.xml*. Dialects can use 150-229 (?240) for custom messages (provided these are not used by other included dialects). 
-    - For [MAVLink 2](../guide/mavlink_2.md):
-      - Valid numbers range from 0 to 16777215.
-      - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1. 
-        > **Note** IDs are precious in MAVLink 1!
-  - `name`: The name attribute provides a human readable form for the message (ie "BATTERY_STATUS"). It is used for naming helper functions in generated libraries, but is not sent over the wire.
-- `description` (optional): Human readable description of message, shown in user interfaces and in code comments. 
-  This should contain all information (and hyperlinks) to fully understand the message.
-- `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire).
-  - `type`: Similar to a field in a C `struct` - the size of the data required to store/represent the data type.
-    - Fields can be signed/unsigned integers of size 8, 16, 23, 64 bits (`{u)int8_t`, `(u)int16_t`, `(u)int32_t`, `(u)int64_t`), single/double precision IEEE754 floating point numbers. 
-    They can also be arrays of the other types - e.g. `uint16_t[10]`. 
-  - `name`: Name of the field (used in code).
-  - [enum](#enum) (optional): Name of an `enum` defining possible values of the field (e.g. `MAV_BATTERY_CHARGE_STATE`).
-  - `units` (optional): The units for message `field`s that take numeric values (not enums). These are defined in the [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd) (search on *name="SI_Unit"*)
-  - `display` (optional): This should be set as `display="bitmask"` for bitmask fields (hint to ground station that enum values must be displayed as checkboxes).
-  - `print_format` (optional): TBD.
-  - `default` (optional): TBD.
-- [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the message is deprecated or "work in progress".
-- `extensions` (optional): This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only. 
-  - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2. 
-
-
-
-
 
 ### Others Tags
 
@@ -212,17 +224,3 @@ Most commonly, the tag is used as shown:
 ```xml
 <wip />
 ```
-
-<!--  ref="description" minOccurs="0" -->
-
-<!---
-
-Questions
-
-  1. 150 - 229 appear to not be held by common.xml. 
-  What range should a dialect use for its messages/ 
-  What about for extended enums?
-  What if they are overloaded.
-  https://diydrones.com/forum/topics/best-practice-for-adding-custom-mavlink-command
-  
--->
