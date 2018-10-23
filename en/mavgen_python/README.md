@@ -1,7 +1,7 @@
 # Using Pymavlink Libraries (mavgen)
 
 Pymavlink is a *low level* and *general purpose* MAVLink message processing library, written in Python.
-It can, in theory, be used to implement MAVLink communications for any type of MAVLink system - GCS, MAVLink applications running on a companion computer, autopilots, etc.
+It has been used to implement MAVLink communications many types of MAVLink systems, including a GCS (MAVProxy), Developer APIs (DroneKit) and numerous companion computer MAVLink applications.
 
 The library can be used with Python 2.7+ (recommended) or Python 3.5+ and supports both MAVLink 1 and MAVLink 2 versions of the protocol.
 
@@ -110,7 +110,7 @@ from pymavlink.dialects.v20 import common as mavlink2
 
 ### Setting up a Connection {#setting_up_connection}
 
-The **mavutil** module provides the `mavlink_connection()` method for setting up a communication link to a MAVLink system over serial ports, tcp, or udp channels (it can also connect to a file object, which is useful when working with telemetry logs).
+The **mavutil** module provides the `mavlink_connection()` method for setting up communication links to MAVLink systems over serial ports, tcp, or udp channels (it can also connect to a file object, which is useful when working with telemetry logs).
 
 > **Warning** The method returns an object that represents a single system, but will collect messages from multiple systems on the link.
   This is OK for two-system networks, but if you need to connect over a multi-vehicle IP network see [source-system-filtering](https://github.com/peterbarker/dronekit-python/tree/source-system-filtering/examples/multivehicle).
@@ -131,7 +131,6 @@ the_connection.wait_heartbeat()
 print("Heartbeat from system (system %u component %u)" % (the_connection.target_system, the_connection.target_system))
 
 # Once connected, use 'the_connection' to get and send messages
-# You can also monitor the state of the connection in order to handle the case where the HEARTBEAT stops arriving
 ```
 
 > **Note** The `udpin` prefix used above creates a socket to *listen for* a UDP connection on the specified port
@@ -160,7 +159,7 @@ where:
   - `udpin`: Listen for a UDP connection on the specified `address` and `port`.
   - `udpout`: Initiate a TCP connection on the specified `address` and `port`.
   - `udp`: By default, same as `udpin`. Set `mavlink_connection` parameter `input=False` to make same as `udpout`.
-  - `udpcast`: Broadcast UDP address and port. This is the same as `udp` with `mavlink_connection` parameters `input=False` and `broadcast=True`.
+  - `udpcast`: Broadcast UDP address and port. This is the same as `udp` with `mavlink_connection()` parameters `input=False` and `broadcast=True`.
 - *address*: IP address, serial port name, or file name
 - *port*: IP port (only if address is an IP address)
 
@@ -185,8 +184,22 @@ Windows computer connected to the vehicle using a 3DR Telemetry Radio on COM14 |
 ### Sending Messages {#sending}
 
 `MAVLink` is the main protocol handling class. 
-It is defined in each dialect module, and includes a "`<message_name>_send()`" method for all messages in the dialect's [message definition](../messages/README.md) (for example, `sytem_time_send()` is used to send the [SYSTEM_TIME](../messages/common.md#SYSTEM_TIME) message).
-The message field values are passed as arguments to the function (fields that are the same for all messages are defined in the class - e.g. source system, source component).
+It is defined in each dialect module, and includes a `<message_name>_send()` method for all messages in the dialect's [message definition](../messages/README.md).
+
+The message field values are passed as arguments to the function (fields that are the same for all messages are defined in the class - e.g. source system, source component) and each message is documented in the dialect source code. 
+
+For example, the `sytem_time_send()` function (shown below) is used to send the [SYSTEM_TIME](../messages/common.md#SYSTEM_TIME) message:
+
+```python
+def system_time_send(self, time_unix_usec, time_boot_ms, force_mavlink1=False):
+    '''
+    The system time is the time of the master clock, typically the
+    computer clock of the main onboard computer.
+
+    time_unix_usec    : Timestamp (UNIX epoch time). (uint64_t)
+    time_boot_ms      : Timestamp (time since system boot). (uint32_t)
+    '''
+```
 
 If you're using **mavutil** for link management then the `mav` attribute provides access to a configured `MAVLink` class object that you can use for sending messages. 
 For example, to send the `SYSTEM_TIME` message using a link named [the_connection](#listen):
@@ -197,16 +210,17 @@ the_connection.mav.sytem_time_send(time_unix_usec, time_boot_ms)
 
 Other examples can be seen in [Publishing a Heartbeat](#heartbeat) and  [Requesting Specific Messages](#specific_messages) below.
 
-> **Note** If you're not using **mavutil** you will need to create and set up the `MAVlink` object yourself so it knows about channel that it should use for sending messages (represented by the `file` attribute).
+> **Note** If you're not using **mavutil** you will need to create and set up the `MAVLink` object yourself so it knows about channel that it should use for sending messages (represented by the `file` attribute).
 
 
 ### Receiving Messages
 
 If you just want to synchronously access the last message of a particular type that was received (and when it was received) you can do so using the connection's `mavutil.messages` dictionary. 
 For example, if you're using a **mavutil** link named [the_connection](#setting_up_connection) you can do:
-```
-try:
-    altitude=the_connection.messages['GPS_RAW_INT'].alt
+
+```python
+try: 
+    altitude=the_connection.messages['GPS_RAW_INT'].alt  # Note, you can access message fields as attributes!
     timestamp=the_connection.time_since('GPS_RAW_INT')
 except:
     print('No GPS_RAW_INT message received')
@@ -361,7 +375,7 @@ def disable_signing(self):
 
 The `setup_signing()` method sets up the `MAVLink` object owned by the connection and provides some additional code:
 - If `link_id` is not specified then internally the value is iterated.
-- If `initial_timestamp` then an appropriate value for current time is populated from the underlying OS.
+- If `initial_timestamp` is not set then an appropriate value for current time is populated from the underlying OS.
 
 
 
