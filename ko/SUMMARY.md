@@ -16,6 +16,7 @@
   * [MAVLink Versions](guide/mavlink_version.md)
   * [MAVLink 2](guide/mavlink_2.md)
   * [Protocols](protocol/overview.md) 
+    * [Heartbeat/Connection Protocol](protocol/heartbeat.md)
     * [Mission Protocol](protocol/mission.md)
     * [Parameter Protocol](protocol/parameter.md)
     * [Command Protocol](protocol/command.md)
