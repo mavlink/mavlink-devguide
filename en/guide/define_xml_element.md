@@ -182,9 +182,11 @@ For MAVLink 2, each dialect is allocated a specific range from which an id can b
 This ensures that any dialect can include any other dialect (or common.xml) without clashes.
 It also means that messages can move from a dialect to common.xml without any code needing to change.
 
-When creating a new message you should select the next unused id for your dialect (after the last one defined in your target dialect file).
+Other than the fact that the id must be unique within the dialect (and any included files), and allocated within the dialect id range, any id may be used.
+Often the next sequential unused id in the dialect range is selected.
+If the preceding message belongs to a [microservice](protocol/overview.md) we recommend leaving a few gaps after the previous id - e.g. selecting the next multiple of 5 or 10. This allows space for any new messages to be grouped if the service is extended.
 
-The allocated ranges are listed below.
+The allocated ranges for MAVLink 2 are listed below.
 
 Dialect | Range
 --- | ---
@@ -195,8 +197,8 @@ icarous.xml | 42000 - 42999
 
 > **Tip** If you are creating a new public dialect, [create an issue](https://github.com/mavlink/mavlink/issues/new) to request your own message id range. For private dialects, you can use whatever range you like.
 
-You should not create messages with ids in the "MAVLink 1" range (MAVLink v1 only has 8 bit message IDs, and hence can only support messages with ids 0 - 255). 
-<!-- Note, historically ids 150 to 230 were reserved for dialects. People should not be creating messages in this range, so I'm not going to explain that-->
+You should generally not create messages with ids in the "MAVLink 1" range (MAVLink v1 only has 8 bit message IDs, and hence can only support messages with ids 0 - 255). 
+If a MAVLink 1 id *must* be used, dialects may allocate ids in the range: 180 - 229.
 
 ### Modifying a Message
 
