@@ -20763,7 +20763,7 @@ td {
    </a>
    )
   </h3>
-  <p>The location of a landing area captured from a downward facing camera</p>
+  <p>The location of a landing target. See: https://mavlink.io/en/protocol/landing_target.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20867,7 +20867,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>X Position of the landing target on MAV_FRAME</td>
+     <td>X Position of the landing target in MAV_FRAME</td>
     </tr>
     <tr>
      <td style="color:blue;">y<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -20880,7 +20880,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>Y Position of the landing target on MAV_FRAME</td>
+     <td>Y Position of the landing target in MAV_FRAME</td>
     </tr>
     <tr>
      <td style="color:blue;">z<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -20893,7 +20893,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>Z Position of the landing target on MAV_FRAME</td>
+     <td>Z Position of the landing target in MAV_FRAME</td>
     </tr>
     <tr>
      <td style="color:blue;">q<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -20934,7 +20934,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>Boolean indicating known position (1) or default unknown position (0), for validation of positioning of the landing target</td>
+     <td>Boolean indicating whether the position fields (x, y, z, q, type) contain valid target position information (valid: 1, invalid: 0). Default is 0 (invalid).</td>
     </tr>
    </tbody>
   </table>
