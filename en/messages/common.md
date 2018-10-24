@@ -62,7 +62,7 @@ td {
      <td>
       <a href="#MAV_AUTOPILOT_ARDUPILOTMEGA">MAV_AUTOPILOT_ARDUPILOTMEGA</a>
      </td>
-     <td>ArduPilotMega / ArduCopter, http://diydrones.com</td>
+     <td>ArduPilot - Plane/Copter/Rover/Sub/Tracker, http://ardupilot.org</td>
     </tr>
     <tr id="MAV_AUTOPILOT_OPENPILOT">
      <td>4</td>
@@ -3788,7 +3788,7 @@ td {
      <td>
      </td>
      <td>Mission Param #1</td>
-     <td>Speed type (0=Airspeed, 1=Ground Speed)</td>
+     <td>Speed type (0=Airspeed, 1=Ground Speed, 2=Climb Speed, 3=Descent Speed)</td>
     </tr>
     <tr>
      <td>
@@ -11634,7 +11634,7 @@ td {
   <h3 id="POSITION_TARGET_TYPEMASK">
    <a href="#POSITION_TARGET_TYPEMASK">POSITION_TARGET_TYPEMASK</a>
   </h3>
-  <p>Bitmap to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 10 is set the floats afx afy afz should be interpreted as force instead of acceleration.</p>
+  <p>Bitmap to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 9 is set the floats afx afy afz should be interpreted as force instead of acceleration.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11649,84 +11649,84 @@ td {
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_X_IGNORE">POSITION_TARGET_TYPEMASK_X_IGNORE</a>
      </td>
-     <td>0b0000000000000001 Ignore position x</td>
+     <td>Ignore position x</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_Y_IGNORE">
      <td>2</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_Y_IGNORE">POSITION_TARGET_TYPEMASK_Y_IGNORE</a>
      </td>
-     <td>0b0000000000000010 Ignore position y</td>
+     <td>Ignore position y</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_Z_IGNORE">
      <td>4</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_Z_IGNORE">POSITION_TARGET_TYPEMASK_Z_IGNORE</a>
      </td>
-     <td>0b0000000000000100 Ignore position z</td>
+     <td>Ignore position z</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_VX_IGNORE">
      <td>8</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_VX_IGNORE">POSITION_TARGET_TYPEMASK_VX_IGNORE</a>
      </td>
-     <td>0b0000000000001000 Ignore velocity x</td>
+     <td>Ignore velocity x</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_VY_IGNORE">
      <td>16</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_VY_IGNORE">POSITION_TARGET_TYPEMASK_VY_IGNORE</a>
      </td>
-     <td>0b0000000000010000 Ignore velocity y</td>
+     <td>Ignore velocity y</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_VZ_IGNORE">
      <td>32</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_VZ_IGNORE">POSITION_TARGET_TYPEMASK_VZ_IGNORE</a>
      </td>
-     <td>0b0000000000100000 Ignore velocity z</td>
+     <td>Ignore velocity z</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_AX_IGNORE">
      <td>64</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_AX_IGNORE">POSITION_TARGET_TYPEMASK_AX_IGNORE</a>
      </td>
-     <td>0b0000000001000000 Ignore acceleration x</td>
+     <td>Ignore acceleration x</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_AY_IGNORE">
      <td>128</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_AY_IGNORE">POSITION_TARGET_TYPEMASK_AY_IGNORE</a>
      </td>
-     <td>0b0000000010000000 Ignore acceleration y</td>
+     <td>Ignore acceleration y</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_AZ_IGNORE">
      <td>256</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_AZ_IGNORE">POSITION_TARGET_TYPEMASK_AZ_IGNORE</a>
      </td>
-     <td>0b0000000100000000 Ignore acceleration z</td>
+     <td>Ignore acceleration z</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_FORCE_SET">
      <td>512</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_FORCE_SET">POSITION_TARGET_TYPEMASK_FORCE_SET</a>
      </td>
-     <td>0b0000001000000000 Use force instead of acceleration</td>
+     <td>Use force instead of acceleration</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_YAW_IGNORE">
      <td>1024</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_YAW_IGNORE">POSITION_TARGET_TYPEMASK_YAW_IGNORE</a>
      </td>
-     <td>0b0000010000000000 Ignore yaw</td>
+     <td>Ignore yaw</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_YAW_RATE_IGNORE">
      <td>2048</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_YAW_RATE_IGNORE">POSITION_TARGET_TYPEMASK_YAW_RATE_IGNORE</a>
      </td>
-     <td>0b0000100000000000 Ignore yaw rate</td>
+     <td>Ignore yaw rate</td>
     </tr>
    </tbody>
   </table>

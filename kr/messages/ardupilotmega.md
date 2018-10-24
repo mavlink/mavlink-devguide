@@ -7907,7 +7907,7 @@ td {
   <p>
    <strong>
     (MAVLink 2)
-   </strong>ESC Telemetry Data for ESCs 1 to 4, matching data sent by BLHeli ESCs</p>
+   </strong>ESC Telemetry Data for ESCs 1 to 4, matching data sent by BLHeli ESCs.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -7922,38 +7922,38 @@ td {
      <td>temperature</td>
      <td>uint8_t[4]</td>
      <td>degC</td>
-     <td>Temperature</td>
+     <td>Temperature.</td>
     </tr>
     <tr>
      <td>voltage</td>
      <td>uint16_t[4]</td>
      <td>cV</td>
-     <td>Voltage</td>
+     <td>Voltage.</td>
     </tr>
     <tr>
      <td>current</td>
      <td>uint16_t[4]</td>
      <td>cA</td>
-     <td>Current</td>
+     <td>Current.</td>
     </tr>
     <tr>
      <td>totalcurrent</td>
      <td>uint16_t[4]</td>
      <td>mAh</td>
-     <td>Total current</td>
+     <td>Total current.</td>
     </tr>
     <tr>
      <td>rpm</td>
      <td>uint16_t[4]</td>
      <td>rpm</td>
-     <td>RPM (eRPM)</td>
+     <td>RPM (eRPM).</td>
     </tr>
     <tr>
      <td>count</td>
      <td>uint16_t[4]</td>
      <td>
      </td>
-     <td>count of telemetry packets received (wraps at 65535)</td>
+     <td>count of telemetry packets received (wraps at 65535).</td>
     </tr>
    </tbody>
   </table>
@@ -7965,7 +7965,7 @@ td {
   <p>
    <strong>
     (MAVLink 2)
-   </strong>ESC Telemetry Data for ESCs 5 to 8, matching data sent by BLHeli ESCs</p>
+   </strong>ESC Telemetry Data for ESCs 5 to 8, matching data sent by BLHeli ESCs.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -7980,38 +7980,38 @@ td {
      <td>temperature</td>
      <td>uint8_t[4]</td>
      <td>degC</td>
-     <td>Temperature</td>
+     <td>Temperature.</td>
     </tr>
     <tr>
      <td>voltage</td>
      <td>uint16_t[4]</td>
      <td>cV</td>
-     <td>Voltage</td>
+     <td>Voltage.</td>
     </tr>
     <tr>
      <td>current</td>
      <td>uint16_t[4]</td>
      <td>cA</td>
-     <td>Current</td>
+     <td>Current.</td>
     </tr>
     <tr>
      <td>totalcurrent</td>
      <td>uint16_t[4]</td>
      <td>mAh</td>
-     <td>Total current</td>
+     <td>Total current.</td>
     </tr>
     <tr>
      <td>rpm</td>
      <td>uint16_t[4]</td>
      <td>rpm</td>
-     <td>RPM (eRPM)</td>
+     <td>RPM (eRPM).</td>
     </tr>
     <tr>
      <td>count</td>
      <td>uint16_t[4]</td>
      <td>
      </td>
-     <td>count of telemetry packets received (wraps at 65535)</td>
+     <td>count of telemetry packets received (wraps at 65535).</td>
     </tr>
    </tbody>
   </table>
@@ -8023,7 +8023,7 @@ td {
   <p>
    <strong>
     (MAVLink 2)
-   </strong>ESC Telemetry Data for ESCs 9 to 12, matching data sent by BLHeli ESCs</p>
+   </strong>ESC Telemetry Data for ESCs 9 to 12, matching data sent by BLHeli ESCs.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -8038,38 +8038,38 @@ td {
      <td>temperature</td>
      <td>uint8_t[4]</td>
      <td>degC</td>
-     <td>Temperature</td>
+     <td>Temperature.</td>
     </tr>
     <tr>
      <td>voltage</td>
      <td>uint16_t[4]</td>
      <td>cV</td>
-     <td>Voltage</td>
+     <td>Voltage.</td>
     </tr>
     <tr>
      <td>current</td>
      <td>uint16_t[4]</td>
      <td>cA</td>
-     <td>Current</td>
+     <td>Current.</td>
     </tr>
     <tr>
      <td>totalcurrent</td>
      <td>uint16_t[4]</td>
      <td>mAh</td>
-     <td>Total current</td>
+     <td>Total current.</td>
     </tr>
     <tr>
      <td>rpm</td>
      <td>uint16_t[4]</td>
      <td>rpm</td>
-     <td>RPM (eRPM)</td>
+     <td>RPM (eRPM).</td>
     </tr>
     <tr>
      <td>count</td>
      <td>uint16_t[4]</td>
      <td>
      </td>
-     <td>count of telemetry packets received (wraps at 65535)</td>
+     <td>count of telemetry packets received (wraps at 65535).</td>
     </tr>
    </tbody>
   </table>
