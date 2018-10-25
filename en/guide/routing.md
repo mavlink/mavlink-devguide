@@ -61,15 +61,14 @@ Specifically, the `mavlink_msg_entry_t` structure contains flags to tell you if 
 ## MAVLink 2 Routing
 
 Unsigned MAVLink 2 packets are routed in the same way as MAVLink 1 packets.
-Signed packets may have some special routing requirements (see [Routing Signed Packets](#routing_signed_packets) below).
-
 
 ## Routing Signed Packets {#routing_signed_packets}
 
-Routing signed packets is largely undefined at time of writing (for example, it is not clear whether a router should simply forward a signed message or decode and recode with its own keys).
+Signed packets should be routed in the same way as any other packet.
 
-> **Note** The discussion can be tracked in [MAVLink/#984](https://github.com/mavlink/mavlink/issues/984)
-
+In particular, a routing system should:
+- not change the message in any way (including replacing the original signature).
+- forward a message according to normal rules even if it cannot be authenticated (or even understand) and hence cannot be processed locally.
 
 ## Router Implementation
 
