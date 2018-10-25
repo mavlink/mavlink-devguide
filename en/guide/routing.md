@@ -25,6 +25,7 @@ Broadcast messages are forwarded to all channels that haven't seen the message.
 Addressed messages are resent on a new channel *iff* the system has previously seen a message from the target on that channel 
 (messages are not resent if the addressee is not known or is on the original/incoming channel). 
 
+> **Warning** Forwarded messages must not be changed/repackaged by the forwarding system (the original message is passed to the new link).
 
 ## Routing Detail
 
@@ -38,8 +39,6 @@ Systems should forward messages to another link if any of these conditions hold:
 - It is a broadcast message (`target_system` field omitted or zero).
 - The `target_system` does not match the system id *and* the system knows the link of the target system (i.e. it has previously seen a message from `target_system` on the link).
 - The `target_system` matches its system id and has a `target_component` field, and the system has seen a message from the `target_system`/`target_component` combination on the link.
-
-Forwarded messages must not be changed/repackaged by the forwarding system (the original message is passed to the new link).
 
 > **Note** Non-broadcast messages must only be sent (or forwarded) to known destinations (i.e. a system must previously have received a message from the target system/component).
 
