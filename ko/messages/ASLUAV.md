@@ -163,6 +163,94 @@ td {
    </tbody>
   </table>
 
+<h3 id="GSM_LINK_TYPE">
+   <a href="#GSM_LINK_TYPE">GSM_LINK_TYPE</a>
+  </h3>
+
+<p>
+  </p>
+
+<table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GSM_LINK_TYPE_NONE">
+     <td>0</td>
+     <td>
+      <a href="#GSM_LINK_TYPE_NONE">GSM_LINK_TYPE_NONE</a>
+     </td>
+     <td>no service</td>
+    </tr>
+    <tr id="GSM_LINK_TYPE_UNKNOWN">
+     <td>1</td>
+     <td>
+      <a href="#GSM_LINK_TYPE_UNKNOWN">GSM_LINK_TYPE_UNKNOWN</a>
+     </td>
+     <td>link type unknown</td>
+    </tr>
+    <tr id="GSM_LINK_TYPE_2G">
+     <td>2</td>
+     <td>
+      <a href="#GSM_LINK_TYPE_2G">GSM_LINK_TYPE_2G</a>
+     </td>
+     <td>2G (GSM/GRPS/EDGE) link</td>
+    </tr>
+    <tr id="GSM_LINK_TYPE_3G">
+     <td>3</td>
+     <td>
+      <a href="#GSM_LINK_TYPE_3G">GSM_LINK_TYPE_3G</a>
+     </td>
+     <td>3G link (WCDMA/HSDPA/HSPA)</td>
+    </tr>
+    <tr id="GSM_LINK_TYPE_4G">
+     <td>4</td>
+     <td>
+      <a href="#GSM_LINK_TYPE_4G">GSM_LINK_TYPE_4G</a>
+     </td>
+     <td>4G link (LTE)</td>
+    </tr>
+   </tbody>
+  </table>
+
+<h3 id="GSM_MODEM_TYPE">
+   <a href="#GSM_MODEM_TYPE">GSM_MODEM_TYPE</a>
+  </h3>
+
+<p>
+  </p>
+
+<table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GSM_MODEM_TYPE_UNKNOWN">
+     <td>0</td>
+     <td>
+      <a href="#GSM_MODEM_TYPE_UNKNOWN">GSM_MODEM_TYPE_UNKNOWN</a>
+     </td>
+     <td>not specified</td>
+    </tr>
+    <tr id="GSM_MODEM_TYPE_HUAWEI_E3372">
+     <td>
+     </td>
+     <td>
+      <a href="#GSM_MODEM_TYPE_HUAWEI_E3372">GSM_MODEM_TYPE_HUAWEI_E3372</a>
+     </td>
+     <td>HUAWEI LTE USB Stick E3372</td>
+    </tr>
+   </tbody>
+  </table>
+
 <h2>MAVLink Messages</h2>
 
 <h3 id="COMMAND_INT_STAMPED">COMMAND_INT_STAMPED (<a href="#COMMAND_INT_STAMPED">
@@ -1559,6 +1647,102 @@ td {
      <td>float</td>
      <td>A</td>
      <td>Power board aux current sensor</td>
+    </tr>
+   </tbody>
+  </table>
+
+<h3 id="GSM_LINK_STATUS">GSM_LINK_STATUS (<a href="#GSM_LINK_STATUS">
+    #213
+   </a>
+   )
+  </h3>
+
+<p>Status of GSM modem (connected to onboard computer)</p>
+
+<table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>timestamp</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (of OBC)</td>
+    </tr>
+    <tr>
+     <td>gsm_modem_type</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GSM_MODEM_TYPE">GSM_MODEM_TYPE</a>
+     </td>
+     <td>GSM modem used</td>
+    </tr>
+    <tr>
+     <td>gsm_link_type</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GSM_LINK_TYPE">GSM_LINK_TYPE</a>
+     </td>
+     <td>GSM link type</td>
+    </tr>
+    <tr>
+     <td>rssi</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>RSSI as reported by modem (unconverted)</td>
+    </tr>
+    <tr>
+     <td>rsrp_rscp</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>RSRP (LTE) or RSCP (WCDMA) as reported by modem (unconverted)</td>
+    </tr>
+    <tr>
+     <td>sinr_ecio</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>SINR (LTE) or ECIO (WCDMA) as reported by modem (unconverted)</td>
+    </tr>
+    <tr>
+     <td>rsrq</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>RSRQ (LTE only) as reported by modem (unconverted)</td>
     </tr>
    </tbody>
   </table>
