@@ -22,3 +22,5 @@ The main microservices are shown in the sidebar (most are listed below):
 * [Image Transmission Protocol](../services/image_transmission.md)
 * [File Transfer Protocol (FTP)](../services/ftp.md)
 * [Landing Target Protocol](../services/landing_target.md)
+* [Ping Protocol](../services/ping.md)
+
