@@ -1,11 +1,8 @@
 # Microservices
 
-The MAVLink "microservices" define higher-level protocols that MAVLink systems can adopt in order to better inter-operate.
-For example, *QGroundControl*, ArduPilot and PX4 autopilots all share a common [Command Protocol](../services/command.md) for sending point-to-point messages that require an acknowledgment.
+The MAVLink "microservices" define higher-level protocols that MAVLink systems can adopt in order to better inter-operate. For example, *QGroundControl*, ArduPilot and PX4 autopilots all share a common [Command Protocol](../services/command.md) for sending point-to-point messages that require an acknowledgment.
 
-The microservices are used to exchange many types of data, including: parameters, missions, trajectories, images, other files.
-If the data can be far larger than can be fit into a single message, services will define how the data is split and re-assembled, and how to ensure that any lost data is re-transmitted.
-Other services provide command acknowledgment and/or error reporting.
+The microservices are used to exchange many types of data, including: parameters, missions, trajectories, images, other files. If the data can be far larger than can be fit into a single message, services will define how the data is split and re-assembled, and how to ensure that any lost data is re-transmitted. Other services provide command acknowledgment and/or error reporting.
 
 Most services use the client-server pattern, such that the GCS (client) initiates a request and the vehicle (server) responds with data.
 
@@ -15,7 +12,7 @@ The main microservices are shown in the sidebar (most are listed below):
 * [Mission Protocol](../services/mission.md)
 * [Parameter Protocol](../services/parameter.md)
 * [Command Protocol](../services/command.md)
-* [Camera Protocol](../services/camera.md)
+* [Camera Protocol](../services/camera.md) 
   * [Camera Definition](../services/camera_def.md)
 * [Gimbal Protocol](../services/gimbal.md)
 * [Arm Authorization Protocol](../services/arm_authorization.md)
