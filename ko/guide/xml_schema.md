@@ -114,7 +114,7 @@ For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_P
 </entry>
 ```
 
-> **Note** MAVLink commands are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages as part of the [Mission Protocol](../protocol/mission.md). Some commands can be sent outside of missions in [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages.
+> **Note** MAVLink commands are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages as part of the [Mission Protocol](../services/mission.md). Some commands can be sent outside of missions in [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages.
 
 ### Message Definition (messages) {#messages}
 
