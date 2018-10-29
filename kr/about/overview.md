@@ -1,6 +1,6 @@
 # 프로토콜 개요
 
-MAVLink는 바이너리 텔레메트리 프로토콜로 리소스가 제한된 시스템과 대역폭이 제한된 통신을 위해 설계되었습니다. MAVLink는 2개 주요 버전인 v1.0과 v2.0이 있습니다. 하위 호환성을 가져서 v.20 구현에서 v1.0 패킷을 파싱하고 전송이 가능합니다. 텔레메트리 데이터 스트림은 멀티캐스트 디자인으로 전송됩니다. 시스템 설정을 변경하고 [mission protocol](../protocol/mission.md)나 [parameter protocol](../protocol/parameter.md) 같이 전송 보장을 필요한 프로토콜이 되기 위해서 두지점간에 재전송을 지원합니다.
+MAVLink는 바이너리 텔레메트리 프로토콜로 리소스가 제한된 시스템과 대역폭이 제한된 통신을 위해 설계되었습니다. MAVLink는 2개 주요 버전인 v1.0과 v2.0이 있습니다. 하위 호환성을 가져서 v.20 구현에서 v1.0 패킷을 파싱하고 전송이 가능합니다. 텔레메트리 데이터 스트림은 멀티캐스트 디자인으로 전송됩니다. 시스템 설정을 변경하고 [mission protocol](../services/mission.md)나 [parameter protocol](../services/parameter.md) 같이 전송 보장을 필요한 프로토콜이 되기 위해서 두지점간에 재전송을 지원합니다.
 
 ## MAVLink 1 패킷 포맷
 

@@ -15,6 +15,7 @@
         "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git",
         "language-picker",
         "custom-favicon",
+        "bulk-redirect@git+https://github.com/Dronecode/gitbook-plugin-bulk-redirect.git",
         "-stub-out-blocks@git+https://github.com/hamishwillee/gitbook-plugin-stub-out-blocks.git",
         "validate-links",
         "theme-dronecode@git+https://github.com/dronecode/theme-dronecode.git",
@@ -112,7 +113,10 @@
             ]
         },
         "favicon": "favicon.ico",
-        
+        "bulk-redirect": {
+            "basepath": "/",
+            "redirectsFile": "redirects.json"
+        },
         "html-minifier": {
           "removeEmptyElements": false
         }

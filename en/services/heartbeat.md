@@ -18,4 +18,4 @@ A system may choose not to broadcast information if it does not detect another s
 ## Ground Control Station (GCS) Connections {#gcs}
 
 In addition using the heartbeat to establish connection/disconnection, 
-a GCS may not report that an autopilot is connected until its [parameters](../protocol/parameter.md) have been downloaded.
+a GCS may not report that an autopilot is connected until its [parameters](../services/parameter.md) have been downloaded.

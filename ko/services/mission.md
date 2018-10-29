@@ -32,7 +32,7 @@ MAVLink commands are defined in the [MAV_CMD](../messages/common.md#MAV_CMD) enu
 
 > **Note**
 
-* Some commands can be sent outside of a mission context using the [Command Protocol](../protocol/command.md). 
+* Some commands can be sent outside of a mission context using the [Command Protocol](../services/command.md). 
 * Not all commands in `MAV_CMD` are supported by all systems (or all flight modes).
 
 The *mission* commands are broadly divided into three groups.

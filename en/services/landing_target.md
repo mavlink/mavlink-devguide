@@ -1,6 +1,6 @@
 # Landing Target Protocol
 
-The landing target protocol/message communicates the position of one or more targets from MAVLink positioning system(s) to an autopilot.
+The landing target services/message communicates the position of one or more targets from MAVLink positioning system(s) to an autopilot.
 A multicopter or VTOL system can use the message to land with far greater positional accuracy than provided by conventional GPS
 (GPS provides position within several meters while a landing-target system might reasonably provide centimetre-level precision landing).
 

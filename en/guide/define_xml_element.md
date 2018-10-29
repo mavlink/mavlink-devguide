@@ -10,7 +10,7 @@ This topic provides practical guidance for defining and extending MAVLink XML el
 
 There are two ways to send information between MAVLink systems (including commands, information and acknowledgments):
 * [Messages](#messages) are encoded using `message` elements. The message structure/fields and handling are largely unconstrained (i.e. up to the creator).
-* [MAVLink Commands](#mavlink_commands) are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum, and encoded into real messages that are sent using the [Mission Protocol](../protocol/mission.md) or [Command Protocol](../protocol/command.md). 
+* [MAVLink Commands](#mavlink_commands) are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum, and encoded into real messages that are sent using the [Mission Protocol](../services/mission.md) or [Command Protocol](../services/command.md). 
   Their structure is defined (they have 7 `float` parameters *or* 5 `float` and 2 `int32_t` parameters) and handling/responses depend on the protocol used to send them.
 
 The guidance below provides some suggestions on when one or the other might be more appropriate.
@@ -120,8 +120,8 @@ To create a new dialect file:
 
 [Messages](../guide/xml_schema.md#messages) are used to send data between MAVLink systems (including commands, information and acknowledgments).
 
-Every message has mandatory `id` and `name` attributes.
-[Serialised packets](../guide/serialization.md#packet_format) include the `id` in the [message id](../guide/serialization.md#v1_msgid) section and an encoded form of the message data within the [payload](../guide/serialization.md#v1_payload) section. 
+Every message has mandatory `id`, `name`, and `description` attributes.
+[Serialised packets](../guide/serialization.md#packet_format) include the `id` in the [message id](../guide/serialization.md#v1_msgid) section and an encoded form of the message data within the [payload](../guide/serialization.md#v1_payload) section.
 The `name` is typically used by generators to name methods for encoding and decoding the specific message type.
 When a message is received the MAVLink library extracts the message id to determine the specific message, and uses that to find the appropriately named method for decoding the payload.
 
@@ -155,8 +155,8 @@ The main rules for messages are:
   - These must be unique across the generated library.
   - See [Message Id Ranges](#message_id_ranges) below for more information.
 - Messages *should* (very highly recommended) include a `description`. <!-- update if this becomes mandatory -->
-- [Point to point messages](../protocol/overview.md#point_to_point) *must* include a field for `target_system` (exactly as shown above).
-- [Point to point messages](../protocol/overview.md#point_to_point) that are relevant to components *must* include a field for `target_component`(exactly as shown above).
+- [Point to point messages](../about/overview.md#point_to_point) *must* include a field for `target_system` (exactly as shown above).
+- [Point to point messages](../about/overview.md#point_to_point) that are relevant to components *must* include a field for `target_component`(exactly as shown above).
 - The total payload size (for all fields) must not exceed 255 bytes.
 - All other fields are optional.
 - There may be no more than 64 fields.
@@ -182,11 +182,9 @@ For MAVLink 2, each dialect is allocated a specific range from which an id can b
 This ensures that any dialect can include any other dialect (or common.xml) without clashes.
 It also means that messages can move from a dialect to common.xml without any code needing to change.
 
-Other than the fact that the id must be unique within the dialect (and any included files), and allocated within the dialect id range, any id may be used.
-Often the next sequential unused id in the dialect range is selected.
-If the preceding message belongs to a [microservice](protocol/overview.md) we recommend leaving a few gaps after the previous id - e.g. selecting the next multiple of 5 or 10. This allows space for any new messages to be grouped if the service is extended.
+When creating a new message you should select the next unused id for your dialect (after the last one defined in your target dialect file).
 
-The allocated ranges for MAVLink 2 are listed below.
+The allocated ranges are listed below.
 
 Dialect | Range
 --- | ---
@@ -197,8 +195,8 @@ icarous.xml | 42000 - 42999
 
 > **Tip** If you are creating a new public dialect, [create an issue](https://github.com/mavlink/mavlink/issues/new) to request your own message id range. For private dialects, you can use whatever range you like.
 
-You should generally not create messages with ids in the "MAVLink 1" range (MAVLink v1 only has 8 bit message IDs, and hence can only support messages with ids 0 - 255). 
-If a MAVLink 1 id *must* be used, dialects may allocate ids in the range: 180 - 229.
+You should not create messages with ids in the "MAVLink 1" range (MAVLink v1 only has 8 bit message IDs, and hence can only support messages with ids 0 - 255). 
+<!-- Note, historically ids 150 to 230 were reserved for dialects. People should not be creating messages in this range, so I'm not going to explain that-->
 
 ### Modifying a Message
 
@@ -349,7 +347,7 @@ Enums are very rarely deleted, as this may break compatibility with legacy MAVLi
 ## Commands {#mavlink_commands}
 
 MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
-They are used to define operations used in autonomous missions (see [Mission Protocol](../protocol/mission.md) or to send commands in any mode (see [Command Protocol](../protocol/command.md)).
+They are used to define operations used in autonomous missions (see [Mission Protocol](../services/mission.md) or to send commands in any mode (see [Command Protocol](../services/command.md)).
 
 A typical mission command is ([MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT)) is shown below:
 
