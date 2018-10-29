@@ -5,7 +5,7 @@
 
 MAVLink is a very lightweight messaging protocol for communicating with drones (and between onboard drone components).
 
-MAVLink follows a modern hybrid publish-subscribe and point-to-point design pattern: Data streams are sent / published as **topics** while configuration sub-protocols such as the [mission protocol](protocol/mission.md) or [parameter protocol](protocol/parameter.md) are point-to-point with retransmission.
+MAVLink follows a modern hybrid publish-subscribe and point-to-point design pattern: Data streams are sent / published as **topics** while configuration sub-protocols such as the [mission protocol](services/mission.md) or [parameter protocol](services/parameter.md) are point-to-point with retransmission.
 
 Messages are [defined within XML files](messages/README.md).
 Each XML file defines the message set supported by a particular MAVLink system, also referred to as a "dialect". 

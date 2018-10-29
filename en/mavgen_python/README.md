@@ -12,7 +12,7 @@ This topic explains how to get and use the *Pymavlink* MAVLink Python libraries 
   While you can work with that project directly, this documentation explains how to work with *pymavlink* _**using the MAVLink project**_.
 
 <span></span>
-> **Tip** If you're writing a MAVLink application to communicate with an autopilot you may prefer to use a higher level library like [DroneKit-Python](http://python.dronekit.io/). This implements a number of [MAVLink microservices](../protocol/overview.md), and has been written to compensate for differences in protocol interpretation for (in particular) ArduPilot and PX4. <!-- update to include Dronecode SDK when there is a released Python library -->
+> **Tip** If you're writing a MAVLink application to communicate with an autopilot you may prefer to use a higher level library like [DroneKit-Python](http://python.dronekit.io/). This implements a number of [MAVLink microservices](../about/overview.md), and has been written to compensate for differences in protocol interpretation for (in particular) ArduPilot and PX4. <!-- update to include Dronecode SDK when there is a released Python library -->
 
 ## Getting Libraries
 
@@ -60,13 +60,13 @@ There are several main caveats to be aware of when using **mavutil**:
   If you need a multi-vehicle network see [source-system-filtering](https://github.com/peterbarker/dronekit-python/tree/source-system-filtering/examples/multivehicle).
 - The module is optimised for ArduPilot and some functions may not work properly on other autopilots.
 - **mavutil** is still a relatively low-level MAVLink API. 
-  It has limited support for even the most common [MAVLink microservices](../protocol/overview.md).
+  It has limited support for even the most common [MAVLink microservices](../services/README.md).
 
 > **Tip** You don't have to use **mavutil** but it includes a lot of useful code that you might otherwise have to write.
   In particular the connection code and methods to filter incoming messages are useful for any autopilot.
   
 The set of modules in the *pymavlink* package are listed below:
-- **\dialects\v20\\*** and **\dialects\v10\\***: Dialect modules corresponding to each source XML [message definition](messages/README.md) for MAVLink v2 and v1, respectively. 
+- **\dialects\v20\\*** and **\dialects\v10\\***: Dialect modules corresponding to each source XML [message definition](../messages/README.md) for MAVLink v2 and v1, respectively. 
   Each dialect module contains:
   - constants for all enums and enum values defined in the XML file.
   - a set of constants for message identifiers.
@@ -284,7 +284,7 @@ the_connection.mav.request_data_stream_send(the_connection.target_system, the_co
 
 ### Publishing a Heartbeat {#heartbeat}
 
-All MAVLink components should periodically broadcast a [HEARTBEAT](../messages/common.md#HEARTBEAT) message and listen for heartbeats from other systems (systems consider themselves [connected](../protocol/heartbeat.md) to another system if they regularly receive a `HEARTBEAT` from it).
+All MAVLink components should periodically broadcast a [HEARTBEAT](../messages/common.md#HEARTBEAT) message and listen for heartbeats from other systems (systems consider themselves [connected](../services/heartbeat.md) to another system if they regularly receive a `HEARTBEAT` from it).
 
 > **Note** [Sending Messages](#sending) explains how messages are sent.
 
@@ -432,7 +432,7 @@ There are a number useful examples and complete systems based on pymavlink:
   - It demonstrates most of the features of using the MAVLink module. 
   - The source code can be found here: https://github.com/ArduPilot/MAVProxy
 - [DroneKit-Python](http://python.dronekit.io/) is a developer API that builds on Pymavlink.
-  - It implements a simpler high-level API for accessing vehicle information and also implementations of some of the [MAVLink sub-protocols/microservices](../protocol/overview.md) (eg. mission protocol).
+  - It implements a simpler high-level API for accessing vehicle information and also implementations of some of the [MAVLink sub-protocols/microservices](../services/README.md) (eg. mission protocol).
   - The source code can be found here: https://github.com/dronekit/dronekit-python
 
   

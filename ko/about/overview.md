@@ -1,6 +1,6 @@
 # Protocol Overview
 
-MAVLink is a binary telemetry protocol designed for resource-constrained systems and bandwidth-constrained links. MAVLink is deployed in two major versions: v1.0 and v2.0, which is backwards-compatible \(v2.0 implementations can parse and send v1.0 packets\). Telemetry data streams are sent in a multicast design while protocol aspects that change the system configuration and require guaranteed delivery like the [mission protocol](../protocol/mission.md) or [parameter protocol](../protocol/parameter.md) are point-to-point with retransmission.
+MAVLink is a binary telemetry protocol designed for resource-constrained systems and bandwidth-constrained links. MAVLink is deployed in two major versions: v1.0 and v2.0, which is backwards-compatible \(v2.0 implementations can parse and send v1.0 packets\). Telemetry data streams are sent in a multicast design while protocol aspects that change the system configuration and require guaranteed delivery like the [mission protocol](../services/mission.md) or [parameter protocol](../services/parameter.md) are point-to-point with retransmission.
 
 ## MAVLink 1 Packet Format
 
@@ -16,7 +16,6 @@ uint8_t msgid;               ///< ID of message in payload
 uint8_t payload[max 255];    ///< A maximum of 255 payload bytes
 uint16_t checksum;           ///< X.25 CRC
 ```
-
 
 ## MAVLink 2 Packet Format
 
@@ -36,17 +35,16 @@ uint8_t msgid 16:23;        ///< last 8 bits of the ID of the message
 uint8_t payload[max 255];   ///< A maximum of 255 payload bytes
 uint16_t checksum;          ///< X.25 CRC
 ```
+
 ```C
 uint8_t signature[13];      ///< Signature which allows ensuring that the link is tamper-proof (optional)
 ```
-
 
 ## Serialization
 
 The over-the-wire format of MAVLink is optimized for resource-constrained systems and hence the field order is not the same as in the XML specification. The over-the-wire generator sorts all fields of the message according to size, with the largest fields (`uint64_t`) first, then down to smaller fields. The sorting is done using a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), which ensures that any fields that do not need to be reordered stay in the same relative order. This prevents alignment issues on the encoding / decoding systems and allows for very efficient packing / unpacking.
 
 For more information and specific exceptions see [Serialization](../guide/serialization.md).
-
 
 ## Multicast Streams vs. Guaranteed Delivery
 
@@ -67,4 +65,3 @@ In point-to-point mode MAVLink uses a target ID and target component. In most ca
 ## Integrity Checks / Checksum
 
 MAVLink implements two integrity checks: The first check is on the integrity of the packet during transmission using the X.25 checksum \([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check)\). This however only ensures that the data has not been altered on the link - it does not ensure consistency with the data definition. The second integrity check is on the [data description](https://en.wikipedia.org/wiki/Data_definition_language) to ensure that two messages with the same ID are indeed containing the same information. To achieve this the data definition itself is run through CRC-16-CCITT and the resulting value is used to seed the packet CRC. Most reference implementations store this constant in an array named **CRC\_EXTRA**.
-

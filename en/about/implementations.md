@@ -29,10 +29,11 @@ The following autopilots are known to support MAVLink and are actively being dev
 ## MAVLink Wrapper/Developer APIs
 
 A number of higher level APIs have been written to simplify interacting with MAVLink autopilots, cameras, ground stations, etc. (MAVLink is a  relatively low-level API). 
-These wrappers typically provide implementations of the main [Protocols](../protocol/overview.md) and simple/specific interfaces for sending commands and accessing vehicle information. The list here contains actively maintained implementations.
+These wrappers typically provide implementations of the main [microservices](../services/README.md) and simple/specific interfaces for sending commands and accessing vehicle information. 
+The list here contains actively maintained implementations.
 
 * [Dronecode SDK](https://sdk.dronecode.org/en/) - MAVLink API Library for the Dronecode Platform (cross platform, optimised for PX4).
-* [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) - Adds [Camera Protocol](../protocol/camera.md) interface for cameras connected to Linux computer
+* [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) - Adds [Camera Protocol](../services/camera.md) interface for cameras connected to Linux computer
 * [Rosetta Drone](https://www.youtube.com/watch?v=rBqEQoVGuzQ) - MAVLink wrapper around DJI SDK (fly a DJI drone with a Mavlink-based GCS, code: https://github.com/diux-dev/rosettadrone)
 * [pymavlink](https://github.com/mavlink/pymavlink) - MAVLink python bindings
 * [MAVROS](https://github.com/mavlink/mavros) - ROS to MAVLink bridge

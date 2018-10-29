@@ -10,4 +10,4 @@ Download or Generate MAVLink source files for your [dialect](../messages/README.
 The following topics explain how to include the files in your project and use MAVLink:
 * [Use the MAVLink Source Files](../getting_started/use_libraries.md) explains how to include the source files in your project and send messages.
 * [Message Definitions](../messages/README.md) contains human-readable explanations of the messages.
-* [Protocols](../protocol/overview.md) explains the main sub-protocols for working with missions, cameras, images, parameters etc. 
+* [Microservices](../services/README.md) explains the main sub-protocols for working with missions, cameras, images, parameters etc. 

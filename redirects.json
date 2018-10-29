@@ -1,0 +1,54 @@
+{
+    "redirects": [
+
+            {
+                "from": "en/protocol/overview.html",
+                "to": "en/about/overview.html"
+            },
+            {
+                "from": "en/protocol/heartbeat.html",
+                "to": "en/services/heartbeat.html"
+            },
+            {
+                "from": "en/protocol/mission.html",
+                "to": "en/services/mission.html"
+            },
+            {
+                "from": "en/protocol/parameter.html",
+                "to": "en/services/parameter.html"
+            },
+            {
+                "from": "en/protocol/command.html",
+                "to": "en/services/command.html"
+            },
+            {
+                "from": "en/protocol/camera.html",
+                "to": "en/services/camera.html"
+            },
+            {
+                "from": "en/protocol/camera_def.html",
+                "to": "en/services/camera_def.html"
+            },
+            {
+                "from": "en/protocol/gimbal.html",
+                "to": "en/services/gimbal.html"
+            },
+            {
+                "from": "en/protocol/arm_authorization.html",
+                "to": "en/services/arm_authorization.html"
+            },
+            {
+                "from": "en/protocol/image_transmission.html",
+                "to": "en/services/image_transmission.html"
+            },
+            {
+                "from": "en/protocol/ftp.html",
+                "to": "en/services/ftp.html"
+            },
+            {
+                "from": "en/protocol/landing_target.html",
+                "to": "en/services/landing_target.html"
+            }
+
+        ]
+}
