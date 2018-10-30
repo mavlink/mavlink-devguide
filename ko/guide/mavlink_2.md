@@ -1,18 +1,66 @@
 # MAVLink 2
 
-*MAVLink 2* is a backward-compatible update to the MAVLink protocol that has been designed to bring more flexibility and security to MAVLink communication.
+*MAVLink 2* is a backward-compatible update to the MAVLink protocol that has been designed to bring more flexibility and security to MAVLink communication. *MAVLink 2* bindings have been developed for C, C++11 and Python (see [Supported Languages](../README.md#supported_languages)).
+
+## Features
 
 The key new features of *MAVLink 2* are:
 
 * More than 256 message IDs (24 bit message ID - over 16 million packets)
-* [Packet signing](../guide/message_signing.md) (authentication)
-* [Extending existing MAVLink messages](#message_extensions)
-* [Empty-Byte packet truncation](#packet_truncation)
-* [Non-standard frame handling (Packet Compatibility Flags)](#framing)
+* Packet signing (authentication)
+* Extending existing MAVLink messages
+* Empty-byte payload truncation
+* Non-standard frame handling
 
-*MAVLink 2* bindings have been developed for C, C++11 and Python (see [Supported Languages](../README.md#supported_languages)).
+> **Tip** To better understand MAVLink 2, we recommend you start by reading the *MAVLink 2* [design document](https://docs.google.com/document/d/1XtbD0ORNkhZ8eKrsbSIZNLyg9sFRXMXbsR2mp37KbIg/edit?usp=sharing)
 
-> **Tip** We recommend you start by reading the *MAVLink 2* [design document](https://docs.google.com/document/d/1XtbD0ORNkhZ8eKrsbSIZNLyg9sFRXMXbsR2mp37KbIg/edit?usp=sharing)
+#### Message/Packet Signing
+
+Authentication is covered in the topic: [Message Signing](../guide/message_signing.md) (authentication)
+
+#### Empty-Byte Payload Truncation {#payload_truncation}
+
+MAVLink 2 truncates any empty (zero-filled) bytes at the end of the serialized payload before it is sent. This is more efficient that *MAVLink 1*, where bytes are sent for all fields - regardless of content.
+
+For more information see: [Serialization > Empty-Byte Payload Truncation](../guide/serialization.md#payload_truncation).
+
+#### Non-Standard Frame Handling {#framing}
+
+The MAVLink 2 [serialization format](../guide/serialization.md#mavlink2_packet_format) includes two new bitmap fields to indicate that a packet *supports* or *requires* some special/non-standard packet handling.
+
+The flags are primarily provided to allow for backwards compatible evolution of the protocol. Older MAVLink implementations can process packets with compatible features, while rejecting packets with incompatible features.
+
+For more information see [Incompatibility flags](../guide/serialization.md#incompat_flags) and [Compatibility flags](../guide/serialization.md#compat_flags).
+
+#### Message Extensions {#message_extensions}
+
+MAVLink 2 defines "extension" fields, which can be added to an existing message without breaking binary compatibility for receivers that have not been updated. They can be used to extend any message, including those in the MAVLink 1 message id range.
+
+The rules for extensions messages are:
+
+* Extension fields are not sent when a message is encoded using the *MAVLink 1* protocol. 
+* If received by an implementation that doesn't have the extensions fields then the fields will not be seen.
+* If sent by an implementation that doesn't have the extensions fields then the recipient will see zero values for the extensions fields.
+* Extension fields are [not reordered](../guide/serialization.md#field_reordering) or included in the [CRC_EXTRA](../guide/serialization.md#crc_extra) when messages are serialized.
+
+For example the fields after the `<extensions>` line below are extension fields:
+
+```xml
+    <message id="100" name="OPTICAL_FLOW">
+      <description>Optical flow from a flow sensor (e.g. optical mouse sensor)</description>
+      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX)</field>
+      <field type="uint8_t" name="sensor_id">Sensor ID</field>
+      <field type="int16_t" name="flow_x" units="dpixels">Flow in pixels * 10 in x-sensor direction (dezi-pixels)</field>
+      <field type="int16_t" name="flow_y" units="dpixels">Flow in pixels * 10 in y-sensor direction (dezi-pixels)</field>
+      <field type="float" name="flow_comp_m_x" units="m">Flow in meters in x-sensor direction, angular-speed compensated</field>
+      <field type="float" name="flow_comp_m_y" units="m">Flow in meters in y-sensor direction, angular-speed compensated</field>
+      <field type="uint8_t" name="quality">Optical flow quality / confidence. 0: bad, 255: maximum quality</field>
+      <field type="float" name="ground_distance" units="m">Ground distance in meters. Positive value: distance known. Negative value: Unknown distance</field>
+      <extensions/>
+      <field type="float" name="flow_rate_x" units="rad/s">Flow rate in radians/second about X axis</field>
+      <field type="float" name="flow_rate_y" units="rad/s">Flow rate in radians/second about Y axis</field>
+    </message>
+```
 
 ## Upgrading an Existing C Installation
 
@@ -69,69 +117,3 @@ if (mavlink_parse_char(MAVLINK_COMM_0, buf[i], &msg, &status)) {
     }
 }
 ```
-
-## Message Extensions {#message_extensions}
-
-MAVLink 2 allows MAVLink 1 messages to be extended with *optional* fields. This allows for new fields to be added to a message without breaking binary compatibility for receivers that have not been updated.
-
-The rules for extensions messages are:
-
-* Extension fields are not sent when a message is encoded using the *MAVLink 1* protocol. 
-* If received by an implementation that doesn't have the extensions fields then the fields will not be seen.
-* If sent by an implementation that doesn't have the extensions fields then the recipient will see zero values for the extensions fields.
-* Extension fields are [not reordered](../guide/serialization.md#field_reordering) or included in the [CRC_EXTRA](../guide/serialization.md#crc_extra) when messages are serialized.
-
-For example the fields after the `<extensions>` line below are extension fields:
-
-```xml
-    <message id="100" name="OPTICAL_FLOW">
-      <description>Optical flow from a flow sensor (e.g. optical mouse sensor)</description>
-      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX)</field>
-      <field type="uint8_t" name="sensor_id">Sensor ID</field>
-      <field type="int16_t" name="flow_x" units="dpixels">Flow in pixels * 10 in x-sensor direction (dezi-pixels)</field>
-      <field type="int16_t" name="flow_y" units="dpixels">Flow in pixels * 10 in y-sensor direction (dezi-pixels)</field>
-      <field type="float" name="flow_comp_m_x" units="m">Flow in meters in x-sensor direction, angular-speed compensated</field>
-      <field type="float" name="flow_comp_m_y" units="m">Flow in meters in y-sensor direction, angular-speed compensated</field>
-      <field type="uint8_t" name="quality">Optical flow quality / confidence. 0: bad, 255: maximum quality</field>
-      <field type="float" name="ground_distance" units="m">Ground distance in meters. Positive value: distance known. Negative value: Unknown distance</field>
-      <extensions/>
-      <field type="float" name="flow_rate_x" units="rad/s">Flow rate in radians/second about X axis</field>
-      <field type="float" name="flow_rate_y" units="rad/s">Flow rate in radians/second about Y axis</field>
-    </message>
-```
-
-## Message/Packet Signing
-
-Authentication is covered in the topic: [Message Signing](../guide/message_signing.md) (authentication)
-
-## Empty-Byte Packet Truncation {#packet_truncation}
-
-*MAVLink 2* truncates any empty (zero-filled) bytes at the end of the serialized message before it is sent. This contrasts with *MAVLink 1*, where bytes were sent for all fields regardless of content.
-
-The actual fields affected/bytes saved depends on the message and its content (MAVLink [field reordering](../guide/serialization.md#field_reordering) means that all we can say is that any truncated fields will typically be those with the smallest data size, or extension fields).
-
-> **Note** The protocol only truncates empty bytes at the end of the serialized message; any null bytes/empty fields within the body of the message are not affected.
-
-## Packet Compatibility Flags {#framing}
-
-The [MAVLink 2 serialization format](../guide/serialization.md#mavlink2_packet_format) includes new bitmap fields (in C library: `incompat_flags` and `compat_flags`) to indicate that a packet supports or requires some special/non-standard packet handling.
-
-The flags are primarily provided to allow for backwards compatible evolution of the protocol. Older MAVLink implementations can process packets with compatible features, while rejecting packets with incompatible features.
-
-### Incompatibility Flags {#incompat_flags}
-
-Incompatibility flags are used to indicate features that a MAVLink library must support in order to be able to handle the packet. This includes any feature that affects the packet format/ordering.
-
-> **Note** A MAVLink implementation **must discard** a packet if it does not understand any flag in the `incompat_flags` field.
-
-Supported incompatibility flags include (at time of writing) :
-
-| Flag                          | C flag                 | Feature                                                                                            |
-| ----------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------- |
-| <span id="MAVLINK_IFLAG_SIGNED"></span>0x01 | `MAVLINK_IFLAG_SIGNED` | The packet is [signed](../guide/message_signing.md) (a signature has been appended to the packet). |
-
-### Compatibility Flags {#compat_flags}
-
-Compatibility flags are used to indicate features won't prevent a MAVLink library from handling the packet (even if the feature is not understood). This might include, for example, a flag to indicate that a packet should be treated as "high priority" (such a messages could be handled by any MAVLink implementation because packet format and structure is not affected).
-
-A MAVLink implementation can safely ignore flags it doesn't understand in the `compat_flags` field.
