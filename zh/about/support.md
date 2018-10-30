@@ -33,16 +33,13 @@ Meeting agenda (and historical meeting minutes) are available on the [MAVLink wi
 
 #### Schedule {#schedule}
 
-There are two bi-weekly calls on the same day: One for a Asia-Europe overlap and one for a Europe-Americas overlap.
+There is a recurring bi-weekly call which covers Asia-Europe overlap (there is also a reserved call slot for a Europe-Americas overlap on PST timezone that can be used when needed).
 
-> **Tip** Both calls are shown as *MAVLink Co-ordination* in the [Dronecode calendar](https://www.dronecode.org/calendar/).
+> **Tip** The call is shown as *MAVLink Co-ordination* in the [Dronecode calendar](https://www.dronecode.org/calendar/).
 
 * **Asia-Europe**: <https://zoom.us/j/832229956> 
   * **TIME**: Wednesday 9:00AM CET, 3:00 PM China, 5:00PM ACT
   * Zoom Meeting ID: 832 229 956
-* **Europe-Americas**: <https://zoom.us/j/170266847> 
-  * **TIME**: Wednesday 6:00PM CET, 12:00AM EST, 9:00AM PST
-  * Zoom Meeting ID: 170 266 847
 
 * **Dial \(for higher quality, dial a number based on your current location\)**:
   
