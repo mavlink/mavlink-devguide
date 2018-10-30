@@ -47,42 +47,18 @@ Whatever language you are using, the resulting binary data will be the same:
 
 This section shows the serialized message format of MAVLink packets (the format is inspired by the [CAN](https://en.wikipedia.org/wiki/CAN_bus) and SAE AS-4 standards).
 
-### MAVLink 1 Packet Format {#v1_packet_format}
-
-Below is the over-the-wire format for a MAVLink 1 packet (the in-memory representation might differ).
-
-![MAVLink v1 packet](../../assets/packets/packet_mavlink_v1.jpg)
-
-Byte Index | C version | Content | Value | Explanation
---- | --- | --- | --- | ---
-0 | `uint8_t magic` | Packet start marker | 0xFE | Protocol-specific start-of-text (STX) marker used to indicate the beginning of a new packet. Any system that does not understand protocol version will skip the packet.
-1 | `uint8_t len`   | Payload length | 0&nbsp;-&nbsp;255 | Indicates length of the following `payload` section.
-2 | `uint8_t seq`   | Packet sequence number | 0 - 255 | Used to detect packet loss. Components increment value for each message sent.
-3 | `uint8_t sysid` | System ID      | 1 - 255 | ID of *system* (vehicle) sending the message. Used to differentiate systems on network.
-4 | `uint8_t compid`| Component ID   | 0 - 255 | ID of *component* sending the message. Used to differentiate components in a *system* (e.g. autopilot and a camera). 
-<span id="v1_msgid"></span>5 | `uint8_t msgid` | Message ID     | 0 - 255 | ID of *message type* in payload. Used to decode data back into message object.
-<span id="v1_payload"></span>6 to (n+6) | `uint8_t payload[max 255]` | Payload data | | Message data. Content depends on message type (i.e. Message ID).
-(n+7) to (n+8) | `uint16_t checksum` | [Checksum](#checksum) (low byte, high byte) | | X.25 CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte.
-
-
-* The minimum packet length is 8 bytes for acknowledgment packets without payload.
-* The maximum packet length is 263 bytes for full payload.
-
-
 ### MAVLink 2 Packet Format {#mavlink2_packet_format}
-
 
 Below is the over-the-wire format for a [MAVLink 2](../guide/mavlink_2.md) packet (the in-memory representation might differ).
 
 ![MAVLink v2 packet](../../assets/packets/packet_mavlink_v2.jpg) 
 
-
 Byte Index | C version | Content | Value | Explanation
 --- | --- | --- | --- | ---
 0 | `uint8_t magic`  | Packet start marker | 0xFD | Protocol-specific start-of-text (STX) marker used to indicate the beginning of a new packet. Any system that does not understand protocol version will skip the packet.
-1 | `uint8_t len`    | Payload length | 0 - 255 | Indicates length of the following `payload` section.
-2 | `uint8_t incompat_flags` | [Incompatibility Flags](../guide/mavlink_2.md#incompat_flags) | | Flags that must be understood for MAVLink compatibility (implementation discards packet if it does not understand flag).
-3 | `uint8_t compat_flags`   | [Compatibility Flags](../guide/mavlink_2.md#compat_flags) | | Flags that can be ignored if not understood (implementation can still handle packet even if it does not understand flag).
+1 | `uint8_t len`    | Payload length | 0 - 255 | Indicates length of the following `payload` section. This may be affected by [payload truncation](#payload_truncation).
+2 | `uint8_t incompat_flags` | [Incompatibility Flags](#incompat_flags) | | Flags that must be understood for MAVLink compatibility (implementation discards packet if it does not understand flag).
+3 | `uint8_t compat_flags`   | [Compatibility Flags](#compat_flags) | | Flags that can be ignored if not understood (implementation can still handle packet even if it does not understand flag).
 4 | `uint8_t seq`    | Packet sequence number | 0 - 255 | Used to detect packet loss. Components increment value for each message sent.
 5 | `uint8_t sysid`  | System ID (sender)     | 1 - 255 | ID of *system* (vehicle) sending the message. Used to differentiate systems on network.
 6 | `uint8_t compid` | Component ID (sender)   | 0 - 255 | ID of *component* sending the message. Used to differentiate components in a *system* (e.g. autopilot and a camera).
@@ -95,30 +71,65 @@ Byte Index | C version | Content | Value | Explanation
 * The maximum packet length is 279 bytes for a signed message that uses the whole payload.
 
 
-## Checksum {#checksum}
+### MAVLink 1 Packet Format {#v1_packet_format}
 
-The packet format includes a 2-byte CRC to allow detection of message corruption.
-The checksum is the same as used in ITU X.25 and SAE AS-4 standards ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)), documented in [SAE AS5669A](http://www.sae.org/servlets/productDetail?PROD_TYP=STD&PROD_CD=AS5669A). See the MAVLink source code for [the documented C-implementation](https://github.com/mavlink/c_library_v2/blob/master/checksum.h).
+Below is the over-the-wire format for a MAVLink 1 packet (the in-memory representation might differ).
 
-The CRC covers the whole message, excluding `magic` byte and the signature (if present). 
-The CRC includes the [CRC_EXTRA](#crc_extra) byte for ensuring the message definition matches the current version.
- 
+![MAVLink v1 packet](../../assets/packets/packet_mavlink_v1.jpg)
+
+Byte Index | C version | Content | Value | Explanation
+--- | --- | --- | --- | ---
+0 | `uint8_t magic` | Packet start marker | 0xFE | Protocol-specific start-of-text (STX) marker used to indicate the beginning of a new packet. Any system that does not understand protocol version will skip the packet.
+1 | `uint8_t len`   | Payload length | 0&nbsp;-&nbsp;255 | Indicates length of the following `payload` section (fixed for a particular message).
+2 | `uint8_t seq`   | Packet sequence number | 0 - 255 | Used to detect packet loss. Components increment value for each message sent.
+3 | `uint8_t sysid` | System ID      | 1 - 255 | ID of *system* (vehicle) sending the message. Used to differentiate systems on network.
+4 | `uint8_t compid`| Component ID   | 0 - 255 | ID of *component* sending the message. Used to differentiate components in a *system* (e.g. autopilot and a camera). 
+<span id="v1_msgid"></span>5 | `uint8_t msgid` | Message ID     | 0 - 255 | ID of *message type* in payload. Used to decode data back into message object.
+<span id="v1_payload"></span>6 to (n+6) | `uint8_t payload[max 255]` | Payload data | | Message data. Content depends on message type (i.e. Message ID).
+(n+7) to (n+8) | `uint16_t checksum` | [Checksum](#checksum) (low byte, high byte) | | X.25 CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte.
+
+* The minimum packet length is 8 bytes for acknowledgment packets without payload.
+* The maximum packet length is 263 bytes for full payload.
+
+
+## Incompatibility Flags (MAVLink 2) {#incompat_flags}
+
+Incompatibility flags are used to indicate features that a MAVLink library must support in order to be able to handle the packet.
+This includes any feature that affects the packet format/ordering.
+
+> **Note** A MAVLink implementation **must discard** a packet if it does not understand any flag in the `incompat_flags` field.
+
+Supported incompatibility flags include (at time of writing):
+
+Flag | C flag | Feature 
+--- | --- | ---
+<span id="MAVLINK_IFLAG_SIGNED"></span>0x01 | `MAVLINK_IFLAG_SIGNED` | The packet is [signed](../guide/message_signing.md) (a signature has been appended to the packet).
+
+
+## Compatibility Flags (MAVLink 2) {#compat_flags}
+
+Compatibility flags are used to indicate features won't prevent a MAVLink library from handling the packet (even if the feature is not understood).
+This might include, for example, a flag to indicate that a packet should be treated as "high priority" 
+(such a messages could be handled by any MAVLink implementation because packet format and structure is not affected).
+
+A MAVLink implementation can safely ignore flags it doesn't understand in the `compat_flags` field.
+
 
 ## Payload Format {#payload}
 
-Messages are encoded within the MAVLink packet format(s)
-- The message id field identifies the actual message to be sent
-- The payload field contains the data appropriate to the particular message.
+MAVLink does not include information about the message structure in the payload itself (in order to reduce overhead)!
+Instead the sender and receiver must share a common understanding of the meaning, order and size of message fields in the over-the-wire format.
 
-MAVLink [reorders the message fields](#field_reordering) in the payload (from the original [XML Message Definitions](../messages/README.md)) for over-the-wire transmission.
-
-As MAVLink does not include information about the message structure in the payload (in order to reduce overhead), 
-so the meaning, order and size of message fields in the over-the-wire must be understood/agreed by both the sender and receiver.
-
-One extra CRC ([CRC_EXTRA](#crc_extra)) is added to the message checksum that allows a receiver to detect changes in [message specifications](../messages/README.md) that
-might make the over-the-wire format incompatible: new/removed fields, or changes to field name, data type, order, or array length.
-
-> **Tip** A MAVLink library should notify a bad CRC during decoding if a message specification is incompatible (e.g. the C library [mavlink_parse_char()](../getting_started/use_libraries.md#receiving) gives a status `MAVLINK_FRAMING_BAD_CRC`).
+Messages are encoded within the MAVLink packet:
+- The `msgid` (message id) field identifies the specific message encoded in the packet.
+- The `payload` field contains the message data. 
+  - MAVLink [reorders the message fields](#field_reordering) in the payload for over-the-wire transmission (from the order in the original [XML Message Definitions](../messages/README.md)).
+  - MAVLink 2 [truncates](../guide/mavlink_2.md#packet_truncation) any zero-filled bytes at the end of the payload before the message is sent and sets the packet `len` field appropriately (MAVLink 1 always sends all bytes).
+- The `len` field contains the length of the payload data.
+- A [CRC_EXTRA](#crc_extra) byte is added to the message [checksum](#checksum). 
+  A receiver can use this to confirm that it is compatible with the payload message format/definition.
+  
+  > **Tip** A MAVLink library should notify a bad CRC during decoding if a message specification is incompatible (e.g. the C library [mavlink_parse_char()](../getting_started/use_libraries.md#receiving) gives a status `MAVLINK_FRAMING_BAD_CRC`).
 
 
 ### Field Reordering {#field_reordering}
@@ -144,9 +155,23 @@ This allows new extension fields to be added without breaking binary compatibili
 <!-- FYI: Field ordering is in pymavlink/generator/mavparse.py - see https://github.com/mavlink/mavlink-devguide/pull/27#issuecomment-349215965 for info -->
 
 
+### Empty-Byte Payload Truncation (MAVLink 2) {#payload_truncation}
+
+*MAVLink 2* truncates any empty (zero-filled) bytes at the end of the serialized payload before it is sent.
+This contrasts with *MAVLink 1*, where bytes were sent for all fields regardless of content.
+
+The actual fields affected/bytes saved depends on the message and its content 
+(MAVLink [field reordering](../guide/serialization.md#field_reordering) means that all we can say is that any truncated fields will typically be those with the smallest data size, or extension fields).
+
+> **Note** The protocol only truncates empty bytes at the end of the serialized message payload; 
+  any null bytes/empty fields within the body of the payload are not affected.
+
+  
 ### CRC_EXTRA Calculation {#crc_extra}
 
-The `CRC_EXTRA` CRC is required to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message.
+The `CRC_EXTRA` CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message.
+
+> **Tip** Changes in [message specifications](../messages/README.md) that might make the over-the-wire format incompatible include: new/removed fields, or changes to field name, data type, order, or array length.
 
 When the MAVLink code generator runs, it takes a checksum of the XML structure for each message and creates an array define `MAVLINK_MESSAGE_CRCS`.
 This is used to initialise the `mavlink_message_crcs[]` array in the C/C++ implementation, and is similarly used in the Python (or any other, such as the C# and JavaScript) implementation. 
@@ -163,7 +188,7 @@ or you can re-implement the code that calculates the seed.
 
 As MAVLink internally reorders the message fields according to their size to prevent word / halfword alignment issues (see [Data structure alignment](http://en.wikipedia.org/wiki/Data%20structure%20alignment) (Wikipedia) for further reference), and a wrongly implemented reordering potentially can cause inconsistencies as well, the `CRC_EXTRA` is calculated based on the over-the-air message layout rather than the XML order.
 
-> **Note** As discussed in the previous section, [MAVLink 2 extension fields](../guide/mavlink_2.md#message_extensions) are not included in the `CRC_EXTRA` calculation.
+> **Note** [MAVLink 2 extension fields](../guide/mavlink_2.md#message_extensions) are not included in the `CRC_EXTRA` calculation.
 
 This is the Python code that calculates the `CRC_EXTRA` seed:
 
@@ -189,3 +214,13 @@ def message_checksum(msg):
 <!-- From https://github.com/mavlink/pymavlink/blob/master/generator/mavparse.py#L385 -->
 
 > **Note** This uses the same x25 checksum that is used at runtime. It calculates a CRC over the message name (such as “RAW_IMU”) followed by the type and name of each field, space separated. The order of the fields is the order they are sent over the wire. For arrays, the array length is also added.
+
+## Checksum {#checksum}
+
+The packet format includes a 2-byte CRC to allow detection of message corruption.
+The checksum is the same as used in ITU X.25 and SAE AS-4 standards ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)), documented in [SAE AS5669A](http://www.sae.org/servlets/productDetail?PROD_TYP=STD&PROD_CD=AS5669A). 
+See the MAVLink source code for [the documented C-implementation](https://github.com/mavlink/c_library_v2/blob/master/checksum.h).
+
+The CRC covers the whole message, excluding `magic` byte and the signature (if present). 
+The CRC includes the [CRC_EXTRA](#crc_extra) byte, which is used to ensure that the sending and receiving systems share a common understanding of the message definition.
+ 
