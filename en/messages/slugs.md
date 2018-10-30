@@ -539,7 +539,7 @@ td {
      <td>h_c</td>
      <td>uint16_t</td>
      <td>dm</td>
-     <td>Commanded altitude</td>
+     <td>Commanded altitude (MSL)</td>
     </tr>
    </tbody>
   </table>
@@ -720,7 +720,7 @@ td {
      <td>hCommand</td>
      <td>float</td>
      <td>m</td>
-     <td>Commanded Altitude</td>
+     <td>Commanded altitude (MSL)</td>
     </tr>
     <tr>
      <td>uCommand</td>

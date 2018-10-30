@@ -159,7 +159,7 @@ td {
      <td>
       <a href="#AQ_NAV_STATUS_DAO">AQ_NAV_STATUS_DAO</a>
      </td>
-     <td>ynamic Altitude Override is active (AH with proportional manual adjustment)</td>
+     <td>Dynamic Altitude Override is active (AH with proportional manual adjustment)</td>
     </tr>
     <tr id="AQ_NAV_STATUS_CEILING_REACHED">
      <td>0x04000000</td>

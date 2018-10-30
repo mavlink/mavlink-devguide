@@ -1317,7 +1317,7 @@ td {
     <tr>
      <td>alt_gps</td>
      <td>int32_t</td>
-     <td>GPS altitude in meters, expressed as * 1000 (millimeters), above MSL</td>
+     <td>GPS altitude (MSL) in meters, expressed as * 1000 (millimeters)</td>
     </tr>
     <tr>
      <td>alt_imu</td>

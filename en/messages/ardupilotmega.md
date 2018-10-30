@@ -5937,7 +5937,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>Altitude Absolute (AMSL).</td>
+     <td>Altitude (MSL).</td>
     </tr>
     <tr>
      <td>alt_rel</td>
@@ -5947,7 +5947,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>Altitude Relative (above HOME location).</td>
+     <td>Altitude (Relative to HOME location).</td>
     </tr>
     <tr>
      <td>roll</td>

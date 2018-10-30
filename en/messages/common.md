@@ -1587,14 +1587,14 @@ td {
      <td>
       <a href="#MAV_FRAME_GLOBAL_TERRAIN_ALT">MAV_FRAME_GLOBAL_TERRAIN_ALT</a>
      </td>
-     <td>Global coordinate frame with above terrain level altitude. WGS84 coordinate system, relative altitude over terrain with respect to the waypoint coordinate. First value / x: latitude in degrees, second value / y: longitude in degrees, third value / z: positive altitude in meters with 0 being at ground level in terrain model.</td>
+     <td>Global (WGS84) coordinate frame with AGL altitude (at the waypoint coordinate). First value / x: latitude in degrees, second value / y: longitude in degrees, third value / z: positive altitude in meters with 0 being at ground level in terrain model.</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_TERRAIN_ALT_INT">
      <td>11</td>
      <td>
       <a href="#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT">MAV_FRAME_GLOBAL_TERRAIN_ALT_INT</a>
      </td>
-     <td>Global coordinate frame with above terrain level altitude. WGS84 coordinate system, relative altitude over terrain with respect to the waypoint coordinate. First value / x: latitude in degrees*10e-7, second value / y: longitude in degrees*10e-7, third value / z: positive altitude in meters with 0 being at ground level in terrain model.</td>
+     <td>Global (WGS84) coordinate frame with AGL altitude (at the waypoint coordinate). First value / x: latitude in degrees*10e-7, second value / y: longitude in degrees*10e-7, third value / z: positive altitude in meters with 0 being at ground level in terrain model.</td>
     </tr>
     <tr id="MAV_FRAME_BODY_FRD">
      <td>12</td>
@@ -2838,7 +2838,7 @@ td {
      <td>
      </td>
      <td>Mission Param #7</td>
-     <td>Center point altitude (AMSL) (if no MAV_FRAME specified) / Z coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
+     <td>Center point altitude (MSL) (if no MAV_FRAME specified) / Z coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -5692,7 +5692,7 @@ td {
      <td>
       <a href="#MAV_CMD_DO_GUIDED_LIMITS">MAV_CMD_DO_GUIDED_LIMITS</a>
      </td>
-     <td>set limits for external control</td>
+     <td>Set limits for external control</td>
     </tr>
     <tr>
      <td>
@@ -5702,25 +5702,25 @@ td {
      <td>
      </td>
      <td>Mission Param #1</td>
-     <td>timeout - maximum time (in seconds) that external controller will be allowed to control vehicle. 0 means no timeout</td>
+     <td>Timeout - maximum time (in seconds) that external controller will be allowed to control vehicle. 0 means no timeout.</td>
     </tr>
     <tr>
      <td>
      </td>
      <td>Mission Param #2</td>
-     <td>Absolute altitude (AMSL) min, in meters - if vehicle moves below this alt, the command will be aborted and the mission will continue. 0 means no lower altitude limit</td>
+     <td>Altitude (MSL) min, in meters - if vehicle moves below this alt, the command will be aborted and the mission will continue. 0 means no lower altitude limit.</td>
     </tr>
     <tr>
      <td>
      </td>
      <td>Mission Param #3</td>
-     <td>Absolute altitude (AMSL) max, in meters - if vehicle moves above this alt, the command will be aborted and the mission will continue. 0 means no upper altitude limit</td>
+     <td>Altitude (MSL) max, in meters - if vehicle moves above this alt, the command will be aborted and the mission will continue. 0 means no upper altitude limit.</td>
     </tr>
     <tr>
      <td>
      </td>
      <td>Mission Param #4</td>
-     <td>Horizontal move limit (AMSL), in meters - if vehicle moves more than this distance from its location at the moment the command was executed, the command will be aborted and the mission will continue. 0 means no horizontal altitude limit</td>
+     <td>Horizontal move limit, in meters - if vehicle moves more than this distance from its location at the moment the command was executed, the command will be aborted and the mission will continue. 0 means no horizontal move limit.</td>
     </tr>
     <tr>
      <td>
@@ -7942,7 +7942,7 @@ td {
      <td>
      </td>
      <td>Mission Param #7</td>
-     <td>Altitude (AMSL), in meters</td>
+     <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8058,7 +8058,7 @@ td {
      <td>
      </td>
      <td>Mission Param #7</td>
-     <td>Altitude (AMSL), in meters</td>
+     <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8116,7 +8116,7 @@ td {
      <td>
      </td>
      <td>Mission Param #7</td>
-     <td>Altitude (AMSL), in meters</td>
+     <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8174,7 +8174,7 @@ td {
      <td>
      </td>
      <td>Mission Param #7</td>
-     <td>Altitude (AMSL), in meters</td>
+     <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8232,7 +8232,7 @@ td {
      <td>
      </td>
      <td>Mission Param #7</td>
-     <td>Altitude (AMSL), in meters</td>
+     <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8290,7 +8290,7 @@ td {
      <td>
      </td>
      <td>Mission Param #7</td>
-     <td>Altitude (AMSL), in meters</td>
+     <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8348,7 +8348,7 @@ td {
      <td>
      </td>
      <td>Mission Param #7</td>
-     <td>Altitude (AMSL), in meters</td>
+     <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8406,7 +8406,7 @@ td {
      <td>
      </td>
      <td>Mission Param #7</td>
-     <td>Altitude (AMSL), in meters</td>
+     <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8464,7 +8464,7 @@ td {
      <td>
      </td>
      <td>Mission Param #7</td>
-     <td>Altitude (AMSL), in meters</td>
+     <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8522,7 +8522,7 @@ td {
      <td>
      </td>
      <td>Mission Param #7</td>
-     <td>Altitude (AMSL), in meters</td>
+     <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -8580,7 +8580,7 @@ td {
      <td>
      </td>
      <td>Mission Param #7</td>
-     <td>Altitude (AMSL), in meters</td>
+     <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
      <td colspan="3">
@@ -12427,7 +12427,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>Altitude (AMSL). Positive for up. Note that virtually all GPS modules provide the AMSL altitude in addition to the WGS84 altitude.</td>
+     <td>Altitude (MSL). Positive for up. Note that virtually all GPS modules provide the MSL altitude in addition to the WGS84 altitude.</td>
     </tr>
     <tr>
      <td>eph</td>
@@ -13094,7 +13094,7 @@ td {
      <td>alt</td>
      <td>int32_t</td>
      <td>mm</td>
-     <td>Altitude (AMSL). Note that virtually all GPS modules provide both WGS84 and AMSL.</td>
+     <td>Altitude (MSL). Note that virtually all GPS modules provide both WGS84 and MSL.</td>
     </tr>
     <tr>
      <td>relative_alt</td>
@@ -14121,7 +14121,7 @@ td {
      <td>altitude</td>
      <td>int32_t</td>
      <td>mm</td>
-     <td>Altitude (AMSL). Positive for up.</td>
+     <td>Altitude (MSL). Positive for up.</td>
     </tr>
     <tr>
      <td style="color:blue;">time_usec<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -14166,7 +14166,7 @@ td {
      <td>altitude</td>
      <td>int32_t</td>
      <td>mm</td>
-     <td>Altitude (AMSL). Positive for up.</td>
+     <td>Altitude (MSL). Positive for up.</td>
     </tr>
     <tr>
      <td style="color:blue;">time_usec<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -16514,7 +16514,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>Altitude (AMSL) if absolute or relative, above terrain if GLOBAL_TERRAIN_ALT_INT</td>
+     <td>Altitude (MSL, Relative to home, or AGL - depending on frame)</td>
     </tr>
     <tr>
      <td>vx</td>
@@ -16673,7 +16673,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>Altitude (AMSL) if absolute or relative, above terrain if GLOBAL_TERRAIN_ALT_INT</td>
+     <td>Altitude (MSL, AGL or relative to home altitude, depending on frame)</td>
     </tr>
     <tr>
      <td>vx</td>
@@ -18255,7 +18255,7 @@ td {
      <td>alt</td>
      <td>int32_t</td>
      <td>mm</td>
-     <td>Altitude (AMSL). Positive for up.</td>
+     <td>Altitude (MSL). Positive for up.</td>
     </tr>
     <tr>
      <td>eph</td>
@@ -18942,7 +18942,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>Altitude (AMSL). Positive for up.</td>
+     <td>Altitude (MSL). Positive for up.</td>
     </tr>
     <tr>
      <td>eph</td>
@@ -19844,7 +19844,7 @@ td {
      <td>data</td>
      <td>int16_t[16]</td>
      <td>m</td>
-     <td>Terrain data AMSL</td>
+     <td>Terrain data MSL</td>
     </tr>
    </tbody>
   </table>
@@ -19917,7 +19917,7 @@ td {
      <td>terrain_height</td>
      <td>float</td>
      <td>m</td>
-     <td>Terrain height AMSL</td>
+     <td>Terrain height MSL</td>
     </tr>
     <tr>
      <td>current_height</td>
@@ -20164,7 +20164,7 @@ td {
      <td>altitude_amsl</td>
      <td>float</td>
      <td>m</td>
-     <td>This altitude measure is strictly above mean sea level and might be non-monotonic (it might reset on events like GPS lock or when a new QNH value is set). It should be the altitude to which global altitude waypoints are compared to. Note that it is *not* the GPS altitude, however, most GPS modules already output AMSL by default and not the WGS84 altitude.</td>
+     <td>This altitude measure is strictly above mean sea level and might be non-monotonic (it might reset on events like GPS lock or when a new QNH value is set). It should be the altitude to which global altitude waypoints are compared to. Note that it is *not* the GPS altitude, however, most GPS modules already output MSL by default and not the WGS84 altitude.</td>
     </tr>
     <tr>
      <td>altitude_local</td>
@@ -20321,7 +20321,7 @@ td {
      <td>alt</td>
      <td>float</td>
      <td>m</td>
-     <td>Altitude (AMSL)</td>
+     <td>Altitude (MSL)</td>
     </tr>
     <tr>
      <td>vel</td>
@@ -21119,7 +21119,7 @@ td {
      <td>wind_alt</td>
      <td>float</td>
      <td>m</td>
-     <td>Altitude (AMSL) that this measurement was taken at</td>
+     <td>Altitude (MSL) that this measurement was taken at</td>
     </tr>
     <tr>
      <td>horiz_accuracy</td>
@@ -21243,7 +21243,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>Altitude (AMSL). Positive for up.</td>
+     <td>Altitude (MSL). Positive for up.</td>
     </tr>
     <tr>
      <td>hdop</td>
@@ -22039,7 +22039,7 @@ td {
      <td>altitude</td>
      <td>int32_t</td>
      <td>mm</td>
-     <td>Altitude (AMSL). Positive for up.</td>
+     <td>Altitude (MSL). Positive for up.</td>
     </tr>
     <tr>
      <td>x</td>
@@ -22134,7 +22134,7 @@ td {
      <td>altitude</td>
      <td>int32_t</td>
      <td>mm</td>
-     <td>Altitude (AMSL). Positive for up.</td>
+     <td>Altitude (MSL). Positive for up.</td>
     </tr>
     <tr>
      <td>x</td>
@@ -23291,7 +23291,7 @@ td {
      <td>alt</td>
      <td>int32_t</td>
      <td>mm</td>
-     <td>Altitude (AMSL) where image was taken</td>
+     <td>Altitude (MSL) where image was taken</td>
     </tr>
     <tr>
      <td>relative_alt</td>

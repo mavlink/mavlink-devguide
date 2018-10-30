@@ -717,7 +717,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>Altitude in mm (m * 1E-3) UP +ve. WGS84 altitude. If unknown set to INT32_MAX</td>
+     <td>Altitude (WGS84). UP +ve. If unknown set to INT32_MAX</td>
     </tr>
     <tr>
      <td>gpsFix</td>
@@ -748,7 +748,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>Barometric pressure altitude relative to a standard atmosphere of 1013.2 mBar and NOT bar corrected altitude (m * 1E-3). (up +ve). If unknown set to INT32_MAX</td>
+     <td>Barometric pressure altitude (MSL) relative to a standard atmosphere of 1013.2 mBar and NOT bar corrected altitude (m * 1E-3). (up +ve). If unknown set to INT32_MAX</td>
     </tr>
     <tr>
      <td>accuracyHor</td>
