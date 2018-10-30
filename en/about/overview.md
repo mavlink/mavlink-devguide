@@ -6,7 +6,8 @@ MAVLink is deployed in two major versions: v1.0 and v2.0, which is backwards-com
 
 ## MAVLink 2 Packet Format
 
-Below is the over-the-wire format for a MAVLink 2 packet. The in-memory representation might differ.
+Below is the over-the-wire format for a [MAVLink v2](../guide/mavlink_2.md) packet. 
+The in-memory representation might differ.
 
 ```C
 uint8_t magic;              ///< protocol magic marker
@@ -26,7 +27,8 @@ uint16_t checksum;          ///< X.25 CRC
 uint8_t signature[13];      ///< Signature which allows ensuring that the link is tamper-proof (optional)
 ```
 
-> **Note** The [MAVLink 1 packet format](guide/serialization.md#v1_packet_format) is similar, but omits `incompat_flags`, `compat_flags` and `signature`, and only has a single byte for the message address.
+> **Note** The [MAVLink 1 packet format](../guide/serialization.md#v1_packet_format) is similar, but omits `incompat_flags`, `compat_flags` and `signature`, and only has a single byte for the message address.
+  For more information see [Serialization > Packet Format](../guide/serialization.md#packet_format).
 
 
 ## Serialization
