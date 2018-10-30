@@ -402,7 +402,7 @@ td {
       <a href="#">
       </a>
      </td>
-     <td>PARAM7 / z position: global: altitude in meters (relative or absolute, depending on frame.</td>
+     <td>PARAM7 / z position: global: altitude in meters (MSL, WGS84, AGL or relative to home - depending on frame).</td>
     </tr>
    </tbody>
   </table>
