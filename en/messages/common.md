@@ -12019,14 +12019,14 @@ td {
      <td>uint8_t</td>
      <td>
      </td>
-     <td>0: request ping from all receiving systems, if greater than 0: message is a ping response and number is the system id of the requesting system</td>
+     <td>0: request ping from all receiving systems. If greater than 0: message is a ping response and number is the system id of the requesting system</td>
     </tr>
     <tr>
      <td>target_component</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>0: request ping from all receiving components, if greater than 0: message is a ping response and number is the system id of the requesting system</td>
+     <td>0: request ping from all receiving components. If greater than 0: message is a ping response and number is the component id of the requesting component.</td>
     </tr>
    </tbody>
   </table>
