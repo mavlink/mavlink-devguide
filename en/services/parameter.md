@@ -65,11 +65,16 @@ This key->value pair has many important properties:
 * Support for unknown autopilots, as long as they implement the protocol, is guaranteed
 * Adding a parameter is only a change to the onboard code.
 
-### Read Parameters
+### Read All Parameters {#read_all}
+
+A GCS should read all parameters when first connecting to a system (it does not contain a list of the vehicle parameters on startup).
+
+> **Note** The Drone will emit a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) whenever a parameter is [written/changed](#write).
+  Provided the GCS keeps track of changed parameters, it should not need to re-read the full parameter list.
 
 Reading the parameter list is activated by sending the [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_LIST) message. 
-The onboard component should start to transmit the parameters individually after receiving this message. 
-The sending should be delayed after each parameter, in order to not use up the full radio bandwidth.
+The target component should start to broadcast the parameters individually in `PARAM_VALUE` messages after receiving this message. 
+The drone should allow a pause after sending each parameter in order to not use up the full radio bandwidth.
 
 {% mermaid %}
 sequenceDiagram;
@@ -79,31 +84,72 @@ sequenceDiagram;
     Drone->>Drone: Start sending parameters 
     Drone->>GCS: Send N parameters with PARAM_VALUE
     GCS->>GCS: Start receive timeout
-    GCS->>Drone: If some params are dropped, request with PARAM_REQUEST_READ
+    GCS-->>Drone: Request any dropped params with PARAM_REQUEST_READ
 {% endmermaid %}
 
-### Read Single Parameter
+The sequence of operations is:
 
-A single parameter can be read by the [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) message.
+1. GCS (client) sends [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_READ) specifying the target system/component.
+1. Drone sends all parameters individually in [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
+   - The drone should allow a break between each message in order to avoid saturating the link.
+1. GCS accumlates parameters in order to know which parameters have been/not been received  (`PARAM_VALUE` contains total number of params and index of current param).
+1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent.
+1. After timeout (messages no longer being sent) the GCS can request any missing parameter values by [requesting them individually](#read_single) (using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ)).
 
 
 
-### Write Parameters
+### Read Single Parameter {#read_single}
 
-As a GCS does not have its own list of the parameters on startup, before writing a parameter first the parameter list has to be read once. 
-After that, parameters can be written individually by sending the key->value pair to the component. 
-Provided the GCS keeps track of changed parameters, it will only need to transmit those which have changed in value. 
-The Drone (MAV) **has to acknowledge the write operation** by emitting a [PARAM_VALUE](../messages/common.md#PARAM_VALUE)  value message with the newly written parameter value.
+A single parameter can be read by sending the [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) message, as shown below:
 
 {% mermaid %}
 sequenceDiagram;
     participant GCS
     participant Drone
-    GCS->>Drone: Send parameter name and value : PARAM_SET
-    GCS->>GCS: Start timeout for receiving update value/ACK
-    Drone->>GCS: Send updated values : PARAM_VALUE
-    GCS->>Drone: If loss occurs: restart write transmission.
+    GCS->>Drone: PARAM_REQUEST_READ
+    GCS->>GCS: Start receive timeout
+    Drone->>GCS: PARAM_VALUE
+    GCS-->>Drone: Re-request parameter value on timeout
 {% endmermaid %}
+
+The sequence of operations is:
+
+1. GCS (client) sends [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) specifying the either the parameter name or index.
+1. GCS starts timout waiting for acknowledgement (in the form of a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) message).
+1. Drone responds with `PARAM_VALUE` containing the parameter value.
+   This is a broadcast message (sent to all systems).
+
+The drone may restart the sequence the `PARAM_VALUE` acknowledgement is not received within the timeout.
+
+
+### Write Parameters {#write}
+
+Before attempting to write any parameters, the GCS must first [read the full parameter list](#read_all) at least once (a GCS does not have its own list of the parameters on startup).
+Subsequently parameters can be written individually by sending the parameter name and value pair to the GCS.
+
+The sequence of operations for setting a parameter is shown below:
+
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: PARAM_SET (param name, value, ...)
+    GCS->>GCS: Start timeout (for PARAM_VALUE)
+    Drone->>Drone: Write parameter value
+    Drone->>GCS: PARAM_VALUE (name, value ...)
+    GCS-->>Drone: On timeout restart this sequence
+{% endmermaid %}
+
+
+The sequence of operations is:
+
+1. GCS (client) sends [PARAM_SET](../messages/common.md#PARAM_VALUE) specifying the param name to update and its new value (also target system/component and the param type).
+1. GCS starts timout waiting for acknowledgement (in the form of a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) message).
+1. Drone responds with `PARAM_VALUE` containing the updated parameter value (or the old value if the write operation failed).
+   This is a broadcast message (sent to all systems).
+   > **Note** The Drone must acknowledge the `PARAM_SET` with a `PARAM_VALUE` even if the write operation fails.
+
+The drone may restart the sequence the `PARAM_VALUE` acknowledgement is not received within the timeout, or if the write operation fails (the value returned in `PARAM_VALUE` does not match the value set).
 
 
 ## QGroundControl Parameter Files
