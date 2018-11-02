@@ -67,14 +67,14 @@ This key->value pair has many important properties:
 
 ### Read All Parameters {#read_all}
 
-A GCS should read all parameters when first connecting to a system (it does not contain a list of the vehicle parameters on startup).
+A GCS will usually read all parameters when first connecting to a system, in order to get their current values.
 
 > **Note** The Drone will emit a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) whenever a parameter is [written/changed](#write).
   Provided the GCS keeps track of changed parameters, it should not need to re-read the full parameter list.
 
 Reading the parameter list is activated by sending the [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_LIST) message. 
 The target component should start to broadcast the parameters individually in `PARAM_VALUE` messages after receiving this message. 
-The drone should allow a pause after sending each parameter in order to not use up the full radio bandwidth.
+The drone should allow a pause after sending each parameter to ensure that the operation doesn't consume all of the available link bandwidth (30 - 50 percent of the bandwidth is reasonable).
 
 {% mermaid %}
 sequenceDiagram;
@@ -124,8 +124,9 @@ The drone may restart the sequence the `PARAM_VALUE` acknowledgement is not rece
 
 ### Write Parameters {#write}
 
-Before attempting to write any parameters, the GCS must first [read the full parameter list](#read_all) at least once (a GCS does not have its own list of the parameters on startup).
-Subsequently parameters can be written individually by sending the parameter name and value pair to the GCS.
+Parameters can be written individually by sending the parameter name and value pair to the GCS.
+
+> **Note** Before writing any parameters, a GCS will usually first read the [read the full parameter list](#read_all) at least once (in order to populate the current values for parameters).
 
 The sequence of operations for setting a parameter is shown below:
 
