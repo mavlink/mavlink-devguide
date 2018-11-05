@@ -204,10 +204,13 @@ Changing the name or id of a message will make it incompatible with older versio
 
 Adding or removing a field, or changing the name or type of a field, will make a message incompatible with older versions of the generated library (the generated message decoding method is hard coded with the field number, [order](../guide/serialization.md#crc_extra), type and position at build time - if these change, decoding will fail).
 
+> **Tip** [Message Extensions](#message_extensions) (see below) allow you to add new fields to a MAVLink 2 message without breaking compatibility for a receiver that has not been updated. Note that you can only add messages, not modify or delete them using this mechanism.
+
 If a message needs to be changed in these ways then there are several options:
 * A new message can be created with the desired behaviour. 
   At some point the old message may be marked as [deprecated](../guide/xml_schema.md#deprecated).
-* The message can be updated, and the dialect version number iterated. 
+* The message can be updated, and the dialect version number iterated.
+
 
 For either case, all users of the message will need to be updated with new client libraries.
 
@@ -222,16 +225,42 @@ Care should still be taken to ensure that any changes that alter the way that th
 Messages are very rarely deleted, as this may break compatibility with legacy MAVLink 1 hardware that is unlikely to be updated to more recent versions.
 
 
-#### MAVLink 2 Message Extensions {#message_extensions}
+### Message Extensions (MAVLink 2) {#message_extensions}
 
-The exception to the above rule is that when using [MAVLink 2](../guide/mavlink_2.md) you can add new fields to messages with an `id` of 0 - 255 using the [<extensions>](../guide/mavlink_2.md#message_extensions) tag *without breaking compatibility*. 
-These fields will not be sent when the MAVLink 1 protocol is used.
+MAVLink 2 defines *extension fields*, which can be added to an existing message without breaking binary compatibility for receivers that have not been updated.
+
+<!-- add note here WHY you would use this:  -->
+
+Any field that is defined after the `<extensions>` tag in a message is an extension field. 
+For example, the `OPTICAL_FLOW` has `flow_rate_x` and `flow_rate_y` fields that will only be send in MAVLink 2:
+
+```xml
+    <message id="100" name="OPTICAL_FLOW">
+      <description>Optical flow from a flow sensor (e.g. optical mouse sensor)</description>
+      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX)</field>
+      <field type="uint8_t" name="sensor_id">Sensor ID</field>
+      <field type="int16_t" name="flow_x" units="dpixels">Flow in pixels * 10 in x-sensor direction (dezi-pixels)</field>
+      <field type="int16_t" name="flow_y" units="dpixels">Flow in pixels * 10 in y-sensor direction (dezi-pixels)</field>
+      <field type="float" name="flow_comp_m_x" units="m">Flow in meters in x-sensor direction, angular-speed compensated</field>
+      <field type="float" name="flow_comp_m_y" units="m">Flow in meters in y-sensor direction, angular-speed compensated</field>
+      <field type="uint8_t" name="quality">Optical flow quality / confidence. 0: bad, 255: maximum quality</field>
+      <field type="float" name="ground_distance" units="m">Ground distance in meters. Positive value: distance known. Negative value: Unknown distance</field>
+      <extensions/>
+      <field type="float" name="flow_rate_x" units="rad/s">Flow rate in radians/second about X axis</field>
+      <field type="float" name="flow_rate_y" units="rad/s">Flow rate in radians/second about Y axis</field>
+    </message>
+```
+
+The rules for extensions messages are:
+* Extension fields can be added messages with any id, including those in the MAVLink 1 message id range.
+* Extension fields are not sent when a message is encoded using the *MAVLink 1* protocol. 
+* If received by an implementation that doesn't have the extensions fields then the fields will not be seen.
+* If sent by an implementation that doesn't have the extensions fields then the recipient will see zero values for the extensions fields.
+* Extension fields are [not reordered](../guide/serialization.md#field_reordering) or included in the [CRC_EXTRA](../guide/serialization.md#crc_extra) when messages are serialized.
+* New extension fields must be added to the end of the message definition (for extension fields the serialization order is defined by XML definition order).
 
 Otherwise the rules are the same; once added you cannot modify or remove fields. 
-You can however continue to add new fields as long as you do not exceed the maximum field number or payload size limits.
-
-> **Note** Extension fields are appended to the end of the original MAVLink 1 message fields and are not reordered. 
-  A decoding library that does not understand a new extension field will ignore it, but will not incorrectly decode the fields that it does understand.
+You can however continue to add new fields to the end of the message as long as you do not exceed the maximum field number or payload size limits.
 
 
 <!-- A FEW NOTES
