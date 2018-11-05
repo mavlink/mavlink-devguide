@@ -129,7 +129,7 @@ Message payload fields are reordered for transmission as follows:
 - The over-the-air order is the same as for the `struct` and thus represents the reordered fields
 - The `CRC_EXTRA` field is calculated *after* the reordering, to ensure that a mistake during field reordering will be caught by a faulty CRC. The provided Python, C and C# reference implementations are tested to have the correct field reordering, this is only a concern for custom implementations. 
 
-The only exception to the above reordering is for [MAVLink 2 extension fields](../guide/mavlink_2.md#message_extensions). Extension fields are sent in XML-declaration order and are not included in the [CRC_EXTRA](#crc_extra) calculation. This allows new extension fields to be added without breaking binary compatibility.
+The only exception to the above reordering is for [MAVLink 2 extension fields](../guide/define_xml_element.md#message_extensions). Extension fields are sent in XML-declaration order and are not included in the [CRC_EXTRA](#crc_extra) calculation. This allows new extension fields to be appended to the end of a message without breaking binary compatibility.
 
 > **Warning** This ordering is unique and can be easily implemented in a protocol generator by using a stable sorting algorithm. The alternative to using sorting would be either to use inefficient alignment, which is bad for the target architectures for typical MAVLink applications, or to have function calls in the order of the variable size instead of the application context. This would lead to very confusing function signatures of serialization functions.
 
@@ -159,7 +159,7 @@ If you are doing your own implementation of MAVLink you can get this checksum in
 
 As MAVLink internally reorders the message fields according to their size to prevent word / halfword alignment issues (see [Data structure alignment](http://en.wikipedia.org/wiki/Data%20structure%20alignment) (Wikipedia) for further reference), and a wrongly implemented reordering potentially can cause inconsistencies as well, the `CRC_EXTRA` is calculated based on the over-the-air message layout rather than the XML order.
 
-> **Note** [MAVLink 2 extension fields](../guide/mavlink_2.md#message_extensions) are not included in the `CRC_EXTRA` calculation.
+> **Note** [MAVLink 2 extension fields](../guide/define_xml_element.md#message_extensions) are not included in the `CRC_EXTRA` calculation.
 
 This is the Python code that calculates the `CRC_EXTRA` seed:
 
