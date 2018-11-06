@@ -28,7 +28,7 @@
     * [File Transfer Protocol (FTP)](services/ftp.md)
     * [Landing Target Protocol](services/landing_target.md)
     * [Ping Protocol](services/ping.md)
-    * [Path Planning/Obstacle Avoidance](services/obstacle_avoidance.md)
+    * [Obstacle Avoidance](services/obstacle_avoidance.md)
     obstacle_avoidance.md
   * [Message Signing](guide/message_signing.md)
   * [Serialization](guide/serialization.md)
