@@ -55,43 +55,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>MPPT number</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -113,43 +113,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Complete power cycle</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>VISensor power cycle</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
