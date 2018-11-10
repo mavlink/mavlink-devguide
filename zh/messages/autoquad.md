@@ -246,43 +246,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Orbit radius in meters</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Loiter time in decimal seconds</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Maximum horizontal speed in m/s</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Desired yaw angle at waypoint</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -304,43 +304,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Start or stop (1 or 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Stream frequency in us</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Dataset ID (refer to aq_mavlink.h::mavlinkCustomDataSets enum in AQ flight controller code)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -362,43 +362,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
