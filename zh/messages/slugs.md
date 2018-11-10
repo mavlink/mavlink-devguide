@@ -55,7 +55,7 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>1 to arm, 0 to disarm</td>
     </tr>
     <tr>
@@ -77,7 +77,7 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>0: return to base, 1: track mobile base</td>
     </tr>
     <tr>
@@ -106,13 +106,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>0: visible lights, 1: infrared lights</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>0: turn on, 1: turn off</td>
     </tr>
     <tr>
@@ -141,7 +141,7 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Mid-level command storage: 0: read from flash/EEPROM, 1: write to flash/EEPROM</td>
     </tr>
     <tr>
