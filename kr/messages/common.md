@@ -1989,43 +1989,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Hold time in decimal seconds. (ignored by fixed wing, time to stay at waypoint for rotary wing)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Acceptance radius in meters (if the sphere with this radius is hit, the waypoint counts as reached)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>0 to pass through the WP, if &gt; 0 radius in meters to pass by WP. Positive value for clockwise orbit, negative value for counter-clockwise orbit. Allows trajectory control.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Desired yaw angle at waypoint (rotary wing). NaN for unchanged.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -2047,43 +2047,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Radius around waypoint, in meters. If positive loiter clockwise, else counter-clockwise</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Desired yaw angle.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -2105,43 +2105,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Turns</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Radius around waypoint, in meters. If positive loiter clockwise, else counter-clockwise</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -2163,43 +2163,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Seconds (decimal)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Radius around waypoint, in meters. If positive loiter clockwise, else counter-clockwise</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -2221,43 +2221,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -2279,43 +2279,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Abort Alt</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Precision land mode. (0 = normal landing, 1 = opportunistic precision landing, 2 = required precsion landing)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Desired yaw angle. NaN for unchanged.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (ground level)</td>
     </tr>
     <tr>
@@ -2337,43 +2337,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Minimum pitch (if airspeed sensor present), desired pitch without sensor</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Yaw angle (if magnetometer present), ignored without magnetometer. NaN for unchanged.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -2395,43 +2395,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Landing target number (if available)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Maximum accepted offset from desired landing position [m] - computed magnitude from spherical coordinates: d = sqrt(x^2 + y^2 + z^2), which gives the maximum accepted distance between the desired landing position and the position where the vehicle is about to land</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Landing descend rate [ms^-1]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Desired yaw angle [rad]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Y-axis position [m]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>X-axis position [m]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Z-axis / ground level position [m]</td>
     </tr>
     <tr>
@@ -2453,43 +2453,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Minimum pitch (if airspeed sensor present), desired pitch without sensor [rad]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Takeoff ascend rate [ms^-1]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Yaw angle [rad] (if magnetometer or another yaw estimation source present), ignored without one of these</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Y-axis position [m]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>X-axis position [m]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Z-axis position [m]</td>
     </tr>
     <tr>
@@ -2511,43 +2511,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Following logic to use (e.g. loitering or sinusoidal following) - depends on specific autopilot implementation</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Ground speed of vehicle to be followed</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Radius around waypoint, in meters. If positive loiter clockwise, else counter-clockwise</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Desired yaw angle.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -2569,43 +2569,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Climb or Descend (0 = Neutral, command completes when within 5m of this command's altitude, 1 = Climbing, command completes when at or above this command's altitude, 2 = Descending, command completes when at or below this command's altitude.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Desired altitude in meters</td>
     </tr>
     <tr>
@@ -2627,43 +2627,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Heading Required (0 = False)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Radius in meters. If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -2685,43 +2685,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>System ID (the system ID of the FOLLOW_TARGET beacon). Send 0 to disable follow-me and return to the default position hold mode</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>RESERVED</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>RESERVED</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>altitude flag: 0: Keep current altitude, 1: keep altitude difference to target, 2: go to a fixed altitude above home</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>altitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>RESERVED</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>TTL in seconds in which the MAV should go to the default position hold mode after a message rx timeout</td>
     </tr>
     <tr>
@@ -2743,43 +2743,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Camera q1 (where 0 is on the ray from the camera to the tracking device)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Camera q2</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Camera q3</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Camera q4</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>altitude offset from target (m)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>X offset from target (m)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Y offset from target (m)</td>
     </tr>
     <tr>
@@ -2791,6 +2791,8 @@ td {
      <td>34</td>
      <td>
       <a href="#MAV_CMD_DO_ORBIT">MAV_CMD_DO_ORBIT</a>
+      <p style="color:red">
+       <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
      </td>
      <td>Start orbiting on the circumference of a circle defined by the parameters. Setting any value NaN results in using defaults.</td>
     </tr>
@@ -2801,43 +2803,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Radius of the circle in meters. positive: Orbit clockwise. negative: Orbit counter-clockwise.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Velocity tangential in m/s. NaN: Vehicle configuration default.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Yaw behavior of the vehicle. 0: vehicle front points to the center (default). 1: Hold last heading. 2: Leave yaw uncontrolled.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved (e.g. for dynamic center beacon options)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Center point latitude (if no MAV_FRAME specified) / X coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Center point longitude (if no MAV_FRAME specified) / Y coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Center point altitude (MSL) (if no MAV_FRAME specified) / Z coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
     </tr>
     <tr>
@@ -2849,6 +2851,8 @@ td {
      <td>80</td>
      <td>
       <a href="#MAV_CMD_NAV_ROI">MAV_CMD_NAV_ROI</a>
+      <p style="color:red">
+       <strong>DEPRECATED:</strong>Replaced by MAV_CMD_DO_SET_ROI_* (2018-01).</p>
      </td>
      <td>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
     </tr>
@@ -2859,43 +2863,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Region of interest mode. (see MAV_ROI enum)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Waypoint index/ target ID. (see MAV_ROI enum)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>ROI index (allows a vehicle to manage multiple ROI's)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>x the location of the fixed ROI (see MAV_FRAME)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>y</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>z</td>
     </tr>
     <tr>
@@ -2917,43 +2921,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>0: Disable local obstacle avoidance / local path planning (without resetting map), 1: Enable local path planning, 2: Enable and reset local path planning</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>0: Disable full path planning (without resetting map), 1: Enable, 2: Enable and reset map/occupancy grid, 3: Enable and reset planned route, but not occupancy grid</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Yaw angle at goal, in compass degrees, [0..360]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude/X of goal</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude/Y of goal</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude/Z of goal</td>
     </tr>
     <tr>
@@ -2975,43 +2979,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Hold time in decimal seconds. (ignored by fixed wing, time to stay at waypoint for rotary wing)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude/X of goal</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude/Y of goal</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude/Z of goal</td>
     </tr>
     <tr>
@@ -3033,43 +3037,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Front transition heading, see VTOL_TRANSITION_HEADING enum.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Yaw angle in degrees. NaN for unchanged.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -3091,43 +3095,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Approach altitude (with the same reference as the Altitude field). NaN if unspecified.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Yaw angle in degrees. NaN for unchanged.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (ground level)</td>
     </tr>
     <tr>
@@ -3149,43 +3153,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>On / Off (&gt; 0.5f on)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -3207,43 +3211,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Delay in seconds (decimal, -1 to enable time-of-day fields)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>hour (24h format, UTC, -1 to ignore)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>minute (24h format, UTC, -1 to ignore)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>second (24h format, UTC)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -3265,43 +3269,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Maximum distance to descend (meters)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude (deg * 1E7)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude (deg * 1E7)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (meters)</td>
     </tr>
     <tr>
@@ -3323,43 +3327,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -3381,43 +3385,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Delay in seconds (decimal)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -3439,43 +3443,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Descent / Ascend rate (m/s)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Finish Altitude</td>
     </tr>
     <tr>
@@ -3497,43 +3501,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Distance (meters)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -3555,43 +3559,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>target angle: [0-360], 0 is north</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>speed during yaw change:[deg per second]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>direction: negative: counter clockwise, positive: clockwise [-1,1]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>relative offset or absolute angle: [ 1,0]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -3613,43 +3617,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -3671,43 +3675,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Mode, as defined by ENUM MAV_MODE</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Custom mode - this is system specific, please refer to the individual autopilot specifications for details.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Custom sub mode - this is system specific, please refer to the individual autopilot specifications for details.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -3729,43 +3733,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Sequence number</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Repeat count</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -3787,43 +3791,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Speed type (0=Airspeed, 1=Ground Speed, 2=Climb Speed, 3=Descent Speed)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Speed  (m/s, -1 indicates no change)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Throttle  ( Percent, -1 indicates no change)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>absolute or relative [0,1]</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -3845,43 +3849,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Use current (1=use current location, 0=use specified location)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -3903,43 +3907,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Parameter number</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Parameter value</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -3961,43 +3965,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Relay number</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Setting (1=on, 0=off, others possible depending on system hardware)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4019,43 +4023,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Relay number</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Cycle count</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Cycle time (seconds, decimal)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4077,43 +4081,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Servo number</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>PWM (microseconds, 1000 to 2000 typical)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4135,43 +4139,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Servo number</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>PWM (microseconds, 1000 to 2000 typical)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Cycle count</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Cycle time (seconds)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4193,43 +4197,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Flight termination activated if &gt; 0.5</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4251,43 +4255,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Altitude in meters</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Mav frame of new altitude (see MAV_FRAME)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4309,43 +4313,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4367,43 +4371,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Break altitude (meters)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Landing speed (m/s)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4425,43 +4429,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Altitude (meters)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4483,43 +4487,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Ground speed, less than 0 (-1) for default</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Bitmask of option flags, see the MAV_DO_REPOSITION_FLAGS enum.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Yaw heading, NaN for unchanged. For planes indicates loiter direction (0: clockwise, 1: counter clockwise)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude (deg * 1E7)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude (deg * 1E7)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (meters)</td>
     </tr>
     <tr>
@@ -4541,43 +4545,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>0: Pause current mission or reposition command, hold current position. 1: Continue mission. A VTOL capable vehicle should enter hover mode (multicopter and VTOL planes). A plane should loiter with the default loiter radius.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Reserved</td>
     </tr>
     <tr>
@@ -4599,43 +4603,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Direction (0=Forward, 1=Reverse)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4657,43 +4661,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -4715,43 +4719,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>pitch offset from next waypoint</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>roll offset from next waypoint</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>yaw offset from next waypoint</td>
     </tr>
     <tr>
@@ -4773,43 +4777,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4831,43 +4835,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Camera ID (-1 for all)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Transmission: 0: disabled, 1: enabled compressed, 2: enabled raw</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Transmission mode: 0: video stream, &gt;0: single images every n seconds (decimal)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Recording: 0: disabled, 1: enabled compressed, 2: enabled raw</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4879,6 +4883,8 @@ td {
      <td>201</td>
      <td>
       <a href="#MAV_CMD_DO_SET_ROI">MAV_CMD_DO_SET_ROI</a>
+      <p style="color:red">
+       <strong>DEPRECATED:</strong>Replaced by MAV_CMD_DO_SET_ROI_* (2018-01).</p>
      </td>
      <td>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</td>
     </tr>
@@ -4889,43 +4895,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Region of interest mode. (see MAV_ROI enum)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Waypoint index/ target ID. (see MAV_ROI enum)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>ROI index (allows a vehicle to manage multiple ROI's)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>MAV_ROI_WPNEXT: pitch offset from next waypoint, MAV_ROI_LOCATION: latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>MAV_ROI_WPNEXT: roll offset from next waypoint, MAV_ROI_LOCATION: longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>MAV_ROI_WPNEXT: yaw offset from next waypoint, MAV_ROI_LOCATION: altitude</td>
     </tr>
     <tr>
@@ -4947,43 +4953,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Modes: P, TV, AV, M, Etc</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Shutter speed: Divisor number for one second</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Aperture: F stop number</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>ISO number e.g. 80, 100, 200, Etc</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Exposure type enumerator</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Command Identity</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Main engine cut-off time before camera trigger in seconds/10 (0 means no cut-off)</td>
     </tr>
     <tr>
@@ -5005,43 +5011,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Session control e.g. show/hide lens</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Zoom's absolute position</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Zooming step value to offset zoom from the current position</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Focus Locking, Unlocking or Re-locking</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Shooting Command</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Command Identity</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Test shot identifier. If set to 1, image will only be captured, but not counted towards internal frame count.</td>
     </tr>
     <tr>
@@ -5063,43 +5069,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Mount operation mode (see MAV_MOUNT_MODE enum)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>stabilize roll? (1 = yes, 0 = no)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>stabilize pitch? (1 = yes, 0 = no)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>stabilize yaw? (1 = yes, 0 = no)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>roll input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>pitch input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>yaw input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
     </tr>
     <tr>
@@ -5121,43 +5127,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>pitch depending on mount mode (degrees or degrees/second depending on pitch input).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>roll depending on mount mode (degrees or degrees/second depending on roll input).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>yaw depending on mount mode (degrees or degrees/second depending on yaw input).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>alt in meters depending on mount mode.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>latitude in degrees * 1E7, set if appropriate mount mode.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>longitude in degrees * 1E7, set if appropriate mount mode.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>MAV_MOUNT_MODE enum value</td>
     </tr>
     <tr>
@@ -5179,43 +5185,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Camera trigger distance (meters). 0 to stop triggering.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Camera shutter integration time (milliseconds). -1 or 0 to ignore</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Trigger camera once immediately. (0 = no trigger, 1 = trigger)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5237,43 +5243,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>enable? (0=disable, 1=enable, 2=disable_floor_only)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5295,43 +5301,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>action (0=disable, 1=enable, 2=release, for some systems see PARACHUTE_ACTION enum, not in general message set.)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5353,43 +5359,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>motor number (a number from 1 to max number of motors on the vehicle)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>throttle type (0=throttle percentage, 1=PWM, 2=pilot throttle channel pass-through. See MOTOR_TEST_THROTTLE_TYPE enum)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>throttle</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>timeout (in seconds)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>motor count (number of motors to test to test in sequence, waiting for the timeout above between them; 0=1 motor, 1=1 motor, 2=2 motors...)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>motor test order (See MOTOR_TEST_ORDER enum)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5411,43 +5417,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>inverted (0=normal, 1=inverted)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5469,43 +5475,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>yaw angle to adjust steering by in centidegress</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>speed - normalized to 0 .. 1</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5527,43 +5533,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Camera trigger cycle time (milliseconds). -1 or 0 to ignore.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Camera shutter integration time (milliseconds). Should be less than trigger cycle time. -1 or 0 to ignore.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5585,43 +5591,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>q1 - quaternion param #1, w (1 in null-rotation)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>q2 - quaternion param #2, x (0 in null-rotation)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>q3 - quaternion param #3, y (0 in null-rotation)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>q4 - quaternion param #4, z (0 in null-rotation)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5643,43 +5649,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>System ID</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Component ID</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5701,43 +5707,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Timeout - maximum time (in seconds) that external controller will be allowed to control vehicle. 0 means no timeout.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Altitude (MSL) min, in meters - if vehicle moves below this alt, the command will be aborted and the mission will continue. 0 means no lower altitude limit.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Altitude (MSL) max, in meters - if vehicle moves above this alt, the command will be aborted and the mission will continue. 0 means no upper altitude limit.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Horizontal move limit, in meters - if vehicle moves more than this distance from its location at the moment the command was executed, the command will be aborted and the mission will continue. 0 means no horizontal move limit.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5759,49 +5765,49 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>0: Stop engine, 1:Start Engine</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>0: Warm start, 1:Cold start. Controls use of choke where applicable</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Height delay (meters). This is for commanding engine start only after the vehicle has gained the specified height. Used in VTOL vehicles during takeoff to start engine after the aircraft is off the ground. Zero for no delay.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5823,49 +5829,49 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Mission sequence value to set</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5887,43 +5893,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -5945,43 +5951,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>1: gyro calibration, 3: gyro temperature calibration</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>1: magnetometer calibration</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>1: ground pressure calibration</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>1: radio RC calibration, 2: RC trim calibration</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>1: accelerometer calibration, 2: board level calibration, 3: accelerometer temperature calibration, 4: simple accelerometer calibration</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>1: APM: compass/motor interference calibration (PX4: airspeed calibration, deprecated), 2: airspeed calibration</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>1: ESC calibration, 3: barometer temperature calibration</td>
     </tr>
     <tr>
@@ -6003,43 +6009,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Sensor to adjust the offsets for: 0: gyros, 1: accelerometer, 2: magnetometer, 3: barometer, 4: optical flow, 5: second magnetometer, 6: third magnetometer</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>X axis offset (or generic dimension 1), in the sensor's raw units</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Y axis offset (or generic dimension 2), in the sensor's raw units</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Z axis offset (or generic dimension 3), in the sensor's raw units</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Generic dimension 4, in the sensor's raw units</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Generic dimension 5, in the sensor's raw units</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Generic dimension 6, in the sensor's raw units</td>
     </tr>
     <tr>
@@ -6061,43 +6067,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>1: Trigger actuator ID assignment and direction mapping.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Reserved</td>
     </tr>
     <tr>
@@ -6119,43 +6125,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Parameter storage: 0: READ FROM FLASH/EEPROM, 1: WRITE CURRENT TO FLASH/EEPROM, 2: Reset to defaults</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Mission storage: 0: READ FROM FLASH/EEPROM, 1: WRITE CURRENT TO FLASH/EEPROM, 2: Reset to defaults</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Onboard logging: 0: Ignore, 1: Start default rate logging, -1: Stop logging, &gt; 1: start logging with rate of param 3 in Hz (e.g. set to 1000 for 1000 Hz logging)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -6177,43 +6183,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>0: Do nothing for autopilot, 1: Reboot autopilot, 2: Shutdown autopilot, 3: Reboot autopilot and keep it in the bootloader until upgraded.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>0: Do nothing for onboard computer, 1: Reboot onboard computer, 2: Shutdown onboard computer, 3: Reboot onboard computer and keep it in the bootloader until upgraded.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>WIP: 0: Do nothing for camera, 1: Reboot onboard camera, 2: Shutdown onboard camera, 3: Reboot onboard camera and keep it in the bootloader until upgraded</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>WIP: 0: Do nothing for mount (e.g. gimbal), 1: Reboot mount, 2: Shutdown mount, 3: Reboot mount and keep it in the bootloader until upgraded</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Reserved, send 0</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Reserved, send 0</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>WIP: ID (e.g. camera ID -1 for all IDs)</td>
     </tr>
     <tr>
@@ -6235,43 +6241,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>MAV_GOTO_DO_HOLD: hold MAV_GOTO_DO_CONTINUE: continue with next item in mission plan</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>MAV_GOTO_HOLD_AT_CURRENT_POSITION: Hold at current position MAV_GOTO_HOLD_AT_SPECIFIED_POSITION: hold at specified position</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>MAV_FRAME coordinate frame of hold point</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Desired yaw angle in degrees</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude / X position</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude / Y position</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude / Z position</td>
     </tr>
     <tr>
@@ -6293,13 +6299,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>first_item: the first mission item to run</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>last_item:  the last mission item to run (after this item is run, the mission ends)</td>
     </tr>
     <tr>
@@ -6321,7 +6327,7 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>1 to arm, 0 to disarm</td>
     </tr>
     <tr>
@@ -6343,43 +6349,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Reserved</td>
     </tr>
     <tr>
@@ -6401,13 +6407,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>0:Spektrum</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>RC type (see RC_TYPE enum)</td>
     </tr>
     <tr>
@@ -6429,7 +6435,7 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>The MAVLink message ID</td>
     </tr>
     <tr>
@@ -6451,13 +6457,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>The MAVLink message ID</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>The interval between two messages, in microseconds. Set to -1 to disable and 0 to request default rate.</td>
     </tr>
     <tr>
@@ -6479,13 +6485,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>1: Request supported protocol versions by all nodes on the network</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6507,13 +6513,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>1: Request autopilot version</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6535,13 +6541,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>0: No action 1: Request camera capabilities</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6563,13 +6569,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>0: No Action 1: Request camera settings</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6581,6 +6587,8 @@ td {
      <td>525</td>
      <td>
       <a href="#MAV_CMD_REQUEST_STORAGE_INFORMATION">MAV_CMD_REQUEST_STORAGE_INFORMATION</a>
+      <p style="color:red">
+       <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
      </td>
      <td>Request storage information (STORAGE_INFORMATION). Use the command's target_component to target a specific component's storage.</td>
     </tr>
@@ -6591,19 +6599,19 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Storage ID (0 for all, 1 for first, 2 for second, etc.)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>0: No Action 1: Request storage information</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6615,6 +6623,8 @@ td {
      <td>526</td>
      <td>
       <a href="#MAV_CMD_STORAGE_FORMAT">MAV_CMD_STORAGE_FORMAT</a>
+      <p style="color:red">
+       <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
      </td>
      <td>Format a storage medium. Once format is complete, a STORAGE_INFORMATION message is sent. Use the command's target_component to target a specific component's storage.</td>
     </tr>
@@ -6625,19 +6635,19 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Storage ID (1 for first, 2 for second, etc.)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>0: No action 1: Format storage</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6659,13 +6669,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>0: No Action 1: Request camera capture status</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6677,6 +6687,8 @@ td {
      <td>528</td>
      <td>
       <a href="#MAV_CMD_REQUEST_FLIGHT_INFORMATION">MAV_CMD_REQUEST_FLIGHT_INFORMATION</a>
+      <p style="color:red">
+       <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
      </td>
      <td>Request flight information (FLIGHT_INFORMATION)</td>
     </tr>
@@ -6687,13 +6699,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>1: Request flight information</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6715,13 +6727,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>0: No Action 1: Reset all settings</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6743,19 +6755,19 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Reserved (Set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Camera mode (see CAMERA_MODE enum)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6777,31 +6789,31 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Reserved (Set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Duration between two consecutive pictures (in seconds)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Number of images to capture total - 0 for unlimited capture</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Capture sequence (ID to prevent double captures when a command is retransmitted, 0: unused, &gt;= 1: used)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6823,13 +6835,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Reserved (Set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6841,6 +6853,8 @@ td {
      <td>2002</td>
      <td>
       <a href="#MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE">MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE</a>
+      <p style="color:red">
+       <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
      </td>
      <td>Re-request a CAMERA_IMAGE_CAPTURE packet. Use NAN for reserved values.</td>
     </tr>
@@ -6851,13 +6865,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Sequence number for missing CAMERA_IMAGE_CAPTURE packet</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6879,19 +6893,19 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Trigger enable/disable (0 for disable, 1 for start), -1 to ignore</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>1 to reset the trigger sequence, -1 or 0 to ignore</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>1 to pause triggering, but without switching the camera off or retracting it. -1 to ignore</td>
     </tr>
     <tr>
@@ -6913,19 +6927,19 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Reserved (Set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Frequency CAMERA_CAPTURE_STATUS messages should be sent while recording (0 for no messages, otherwise frequency in Hz)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6947,13 +6961,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Reserved (Set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -6965,6 +6979,8 @@ td {
      <td>2502</td>
      <td>
       <a href="#MAV_CMD_VIDEO_START_STREAMING">MAV_CMD_VIDEO_START_STREAMING</a>
+      <p style="color:red">
+       <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
      </td>
      <td>Start video streaming</td>
     </tr>
@@ -6975,13 +6991,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Camera ID (0 for all cameras, 1 for first, 2 for second, etc.)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved</td>
     </tr>
     <tr>
@@ -6993,6 +7009,8 @@ td {
      <td>2503</td>
      <td>
       <a href="#MAV_CMD_VIDEO_STOP_STREAMING">MAV_CMD_VIDEO_STOP_STREAMING</a>
+      <p style="color:red">
+       <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
      </td>
      <td>Stop the current video streaming</td>
     </tr>
@@ -7003,13 +7021,13 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Camera ID (0 for all cameras, 1 for first, 2 for second, etc.)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved</td>
     </tr>
     <tr>
@@ -7021,6 +7039,8 @@ td {
      <td>2504</td>
      <td>
       <a href="#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION">MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION</a>
+      <p style="color:red">
+       <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
      </td>
      <td>Request video stream information (VIDEO_STREAM_INFORMATION)</td>
     </tr>
@@ -7031,19 +7051,19 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Camera ID (0 for all cameras, 1 for first, 2 for second, etc.)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>0: No Action 1: Request video stream information</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved (all remaining params)</td>
     </tr>
     <tr>
@@ -7065,43 +7085,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Format: 0: ULog</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
@@ -7123,43 +7143,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
@@ -7182,43 +7202,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Landing gear ID (default: 0, -1 for all)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Landing gear position (Down: 0, Up: 1, NAN for no change)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved, set to NAN</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved, set to NAN</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Reserved, set to NAN</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Reserved, set to NAN</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Reserved, set to NAN</td>
     </tr>
     <tr>
@@ -7240,43 +7260,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Control transmission over high latency telemetry (0: stop, 1: start)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -7298,25 +7318,25 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Viewing angle horizontal of the panorama (in degrees, +- 0.5 the total angle)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Viewing angle vertical of panorama (in degrees)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Speed of the horizontal rotation (in degrees per second)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Speed of the vertical rotation (in degrees per second)</td>
     </tr>
     <tr>
@@ -7338,7 +7358,7 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>The target VTOL state, as defined by ENUM MAV_VTOL_STATE. Only MAV_VTOL_STATE_MC and MAV_VTOL_STATE_FW can be used.</td>
     </tr>
     <tr>
@@ -7360,7 +7380,7 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle</td>
     </tr>
     <tr>
@@ -7389,37 +7409,37 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Radius of desired circle in CIRCLE_MODE</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Unscaled target latitude of center of circle in CIRCLE_MODE</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Unscaled target longitude of center of circle in CIRCLE_MODE</td>
     </tr>
     <tr>
@@ -7431,6 +7451,8 @@ td {
      <td>4501</td>
      <td>
       <a href="#MAV_CMD_CONDITION_GATE">MAV_CMD_CONDITION_GATE</a>
+      <p style="color:red">
+       <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
      </td>
      <td>Delay mission state machine until gate has been reached.</td>
     </tr>
@@ -7441,43 +7463,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Geometry: 0: orthogonal to path between previous and next waypoint.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Altitude: 0: ignore altitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -7499,43 +7521,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -7557,43 +7579,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Polygon vertex count</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Reserved</td>
     </tr>
     <tr>
@@ -7615,43 +7637,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Polygon vertex count</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Reserved</td>
     </tr>
     <tr>
@@ -7673,43 +7695,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>radius in meters</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Reserved</td>
     </tr>
     <tr>
@@ -7731,43 +7753,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>radius in meters</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Reserved</td>
     </tr>
     <tr>
@@ -7789,43 +7811,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude</td>
     </tr>
     <tr>
@@ -7847,43 +7869,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Reserved (set to 0)</td>
     </tr>
     <tr>
@@ -7905,43 +7927,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Operation mode. 0: prepare single payload deploy (overwriting previous requests), but do not execute it. 1: execute payload deploy immediately (rejecting further deploy commands during execution, but allowing abort). 2: add payload deploy to existing deployment list.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Desired approach vector in degrees compass heading (0..360). A negative value indicates the system can define the approach vector at will.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Desired ground speed at release time. This can be overridden by the airframe in case it needs to meet minimum airspeed. A negative value indicates the system can define the ground speed at will.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Minimum altitude clearance to the release position in meters. A negative value indicates the system can define the clearance at will.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
@@ -7963,43 +7985,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Operation mode. 0: Abort deployment, continue normal mission. 1: switch to payload deployment mode. 100: delete first payload deployment request. 101: delete all payload deployment requests.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Reserved</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Reserved</td>
     </tr>
     <tr>
@@ -8021,43 +8043,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
@@ -8079,43 +8101,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
@@ -8137,43 +8159,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
@@ -8195,43 +8217,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
@@ -8253,43 +8275,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
@@ -8311,43 +8333,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
@@ -8369,43 +8391,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
@@ -8427,43 +8449,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
@@ -8485,43 +8507,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
@@ -8543,43 +8565,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Latitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Longitude unscaled</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Altitude (MSL), in meters</td>
     </tr>
     <tr>
@@ -8601,43 +8623,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>User defined</td>
     </tr>
     <tr>
@@ -8659,43 +8681,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>User defined</td>
     </tr>
     <tr>
@@ -8717,43 +8739,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>User defined</td>
     </tr>
     <tr>
@@ -8775,43 +8797,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>User defined</td>
     </tr>
     <tr>
@@ -8833,43 +8855,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>User defined</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>User defined</td>
     </tr>
     <tr>
@@ -8882,6 +8904,8 @@ td {
   <h3 id="MAV_DATA_STREAM">
    <a href="#MAV_DATA_STREAM">MAV_DATA_STREAM</a>
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong>Replaced by MESSAGE_INTERVAL (2015-06).</p>
   <p>A data stream is not a fixed set of messages, but rather a
      recommendation to the autopilot software. Individual autopilots may or may not obey
      the recommended messages.</p>
@@ -8962,6 +8986,8 @@ td {
   <h3 id="MAV_ROI">
    <a href="#MAV_ROI">MAV_ROI</a>
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong>Replaced by MAV_CMD_DO_SET_ROI_* (2018-01).</p>
   <p>The ROI (region of interest) for the vehicle. This can be
                 be used by the vehicle for camera/vehicle attitude alignment (see
                 MAV_CMD_NAV_ROI).</p>
@@ -12134,6 +12160,9 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong>Replaced by MAV_CMD_DO_SET_MODE (2015-12).
+  Use COMMAND_LONG with MAV_CMD_DO_SET_MODE instead</p>
   <p>Set the system mode, as defined by enum MAV_MODE. There is no target component id as the mode is by definition for the overall aircraft, not only for one component.</p>
   <table class="sortable">
    <thead>
@@ -15031,6 +15060,8 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong>Replaced by SET_MESSAGE_INTERVAL (2015-08).</p>
   <p>Request a data stream.</p>
   <table class="sortable">
    <thead>
@@ -15083,6 +15114,8 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong>Replaced by MESSAGE_INTERVAL (2015-08).</p>
   <p>Data stream status information.</p>
   <table class="sortable">
    <thead>
@@ -16822,6 +16855,9 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong>Replaced by HIL_STATE_QUATERNION (2013-07).
+  Suffers from missing airspeed fields and singularities due to Euler angles</p>
   <p>Sent from simulation to autopilot. This packet is useful for high throughput applications such as hardware in the loop simulations.</p>
   <table class="sortable">
    <thead>
@@ -21648,6 +21684,8 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
   <p>Message appropriate for high latency connections like Iridium (version 2)</p>
   <table class="sortable">
    <thead>
@@ -23105,6 +23143,8 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
   <p>
    <strong>
     (MAVLink 2)
@@ -23334,6 +23374,8 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
   <p>
    <strong>
     (MAVLink 2)
@@ -23591,6 +23633,8 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
   <p>
    <strong>
     (MAVLink 2)
@@ -23663,6 +23707,8 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
   <p>
    <strong>
     (MAVLink 2)
@@ -23772,6 +23818,8 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
   <p>
    <strong>
     (MAVLink 2)
@@ -24495,6 +24543,8 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
   <p>
    <strong>
     (MAVLink 2)
@@ -24595,6 +24645,8 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong>Do not use message in stable production environments (it may change).</p>
   <p>
    <strong>
     (MAVLink 2)

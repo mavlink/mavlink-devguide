@@ -114,43 +114,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Storage action: Action defined by MAV_PREFLIGHT_STORAGE_ACTION_ADVANCED</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Storage area as defined by parameter database</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Storage flags as defined by parameter database</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>

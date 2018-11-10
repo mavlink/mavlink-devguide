@@ -143,43 +143,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Gripper number (a number from 1 to max number of grippers on the vehicle).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Gripper action (0=release, 1=grab. See GRIPPER_ACTIONS enum).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -201,43 +201,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Enable (1: enable, 0:disable).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -259,43 +259,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Altitude (m).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Descent speed (m/s).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Wiggle Time (s).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -317,43 +317,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -375,43 +375,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -433,43 +433,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Takeoff altitude.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -491,43 +491,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>1 if Solo is in a shot mode, 0 otherwise.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -550,43 +550,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>MagDeclinationDegrees.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>MagInclinationDegrees.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>MagIntensityMilliGauss.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>YawDegrees.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -608,43 +608,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>FieldX.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>FieldY.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>FieldZ.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -666,43 +666,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>uint8_t bitmask of magnetometers (0 means all).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Automatically retry on failure (0=no retry, 1=retry).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Save without user input (0=require input, 1=autosave).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Delay (seconds).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Autoreboot (0=user reboot, 1=autoreboot).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -724,43 +724,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>uint8_t bitmask of magnetometers (0 means all).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -782,43 +782,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>uint8_t bitmask of magnetometers (0 means all).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -840,43 +840,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Position, one of the ACCELCAL_VEHICLE_POS enum values.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -898,43 +898,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -956,43 +956,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>0 means get out of test mode, 1 means get into test mode.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -1014,43 +1014,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -1072,43 +1072,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Gimbal axis we're reporting calibration progress for.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Current calibration progress for this axis, 0x64=100%.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Status of the calibration.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -1130,43 +1130,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -1188,43 +1188,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Magic number.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Magic number.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Magic number.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Magic number.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Magic number.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Magic number.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Magic number.</td>
     </tr>
     <tr>
@@ -1246,43 +1246,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Winch number (0 for the default winch, otherwise a number from 1 to max number of winches on the vehicle).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Action (0=relax, 1=relative length control, 2=rate control. See WINCH_ACTIONS enum.).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Release length (cable distance to unwind in meters, negative numbers to wind in cable).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Release rate (meters/second).</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty.</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty.</td>
     </tr>
     <tr>
@@ -1304,43 +1304,43 @@ td {
     <tr>
      <td>
      </td>
-     <td>Mission Param #1</td>
+     <td>Param #1</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #2</td>
+     <td>Param #2</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #3</td>
+     <td>Param #3</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #4</td>
+     <td>Param #4</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #5</td>
+     <td>Param #5</td>
      <td>Magic number - set to 290876 to actually flash</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #6</td>
+     <td>Param #6</td>
      <td>Empty</td>
     </tr>
     <tr>
      <td>
      </td>
-     <td>Mission Param #7</td>
+     <td>Param #7</td>
      <td>Empty</td>
     </tr>
     <tr>
@@ -4180,6 +4180,8 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong>Replaced by MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS (2014-07).</p>
   <p>Set the magnetometer offsets</p>
   <table class="sortable">
    <thead>
@@ -6020,6 +6022,8 @@ td {
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong>Replaced by BATTERY_STATUS (2017-04).</p>
   <p>2nd Battery status</p>
   <table class="sortable">
    <thead>
