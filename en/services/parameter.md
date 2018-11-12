@@ -151,10 +151,3 @@ The sequence of operations is:
    > **Note** The Drone must acknowledge the `PARAM_SET` with a `PARAM_VALUE` even if the write operation fails.
 
 The drone may restart the sequence the `PARAM_VALUE` acknowledgement is not received within the timeout, or if the write operation fails (the value returned in `PARAM_VALUE` does not match the value set).
-
-
-## QGroundControl Parameter Files
-
-*QGroundControl* can save the current values of the onboard parameters in a text file. 
-The file can then be imported again and transmitted to the Drone. 
-This allows to e.g. configure several vehicles completely similar with safe default values.
