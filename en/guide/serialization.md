@@ -157,7 +157,7 @@ This allows new extension fields to be appended to the end of a message without 
 
 ### Empty-Byte Payload Truncation (MAVLink 2) {#payload_truncation}
 
-*MAVLink 2* truncates any empty (zero-filled) bytes at the end of the serialized payload before it is sent.
+*MAVLink 2* implementations *must* truncate any empty (zero-filled) bytes at the end of the serialized payload before it is sent.
 This contrasts with *MAVLink 1*, where bytes were sent for all fields regardless of content.
 
 The actual fields affected/bytes saved depends on the message and its content 
@@ -165,6 +165,9 @@ The actual fields affected/bytes saved depends on the message and its content
 
 > **Note** The protocol only truncates empty bytes at the end of the serialized message payload; 
   any null bytes/empty fields within the body of the payload are not affected.
+
+> **Note** A MAVLink 2 message that is sent with zero-filled trailing bytes is non-compliant with this specification.
+  Even so, MAVLink 2 libaries should still allow the message to be decoded (if it is otherwise valid), and methods to route/forward the messages should either forward it completely unchanged or trim the zeros and recalculate the CRC. 
 
   
 ### CRC_EXTRA Calculation {#crc_extra}
