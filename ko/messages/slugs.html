@@ -5,130 +5,6 @@
    <a href="common.md">common.xml</a>
   </p>
   <h2>MAVLink Type Enumerations</h2>
-  <h3 id="MAV_CMD">
-   <a href="#MAV_CMD">MAV_CMD</a>
-  </h3>
-  <p>
-  </p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_CMD_DO_NOTHING">
-     <td>10001</td>
-     <td>
-      <a href="#MAV_CMD_DO_NOTHING">MAV_CMD_DO_NOTHING</a>
-     </td>
-     <td>Does nothing.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>1 to arm, 0 to disarm</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_RETURN_TO_BASE">
-     <td>10011</td>
-     <td>
-      <a href="#MAV_CMD_RETURN_TO_BASE">MAV_CMD_RETURN_TO_BASE</a>
-     </td>
-     <td>Return vehicle to base.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>0: return to base, 1: track mobile base</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_STOP_RETURN_TO_BASE">
-     <td>10012</td>
-     <td>
-      <a href="#MAV_CMD_STOP_RETURN_TO_BASE">MAV_CMD_STOP_RETURN_TO_BASE</a>
-     </td>
-     <td>Stops the vehicle from returning to base and resumes flight.</td>
-    </tr>
-    <tr id="MAV_CMD_TURN_LIGHT">
-     <td>10013</td>
-     <td>
-      <a href="#MAV_CMD_TURN_LIGHT">MAV_CMD_TURN_LIGHT</a>
-     </td>
-     <td>Turns the vehicle's visible or infrared lights on or off.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>0: visible lights, 1: infrared lights</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>0: turn on, 1: turn off</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_GET_MID_LEVEL_COMMANDS">
-     <td>10014</td>
-     <td>
-      <a href="#MAV_CMD_GET_MID_LEVEL_COMMANDS">MAV_CMD_GET_MID_LEVEL_COMMANDS</a>
-     </td>
-     <td>Requests vehicle to send current mid-level commands to ground station.</td>
-    </tr>
-    <tr id="MAV_CMD_MIDLEVEL_STORAGE">
-     <td>10015</td>
-     <td>
-      <a href="#MAV_CMD_MIDLEVEL_STORAGE">MAV_CMD_MIDLEVEL_STORAGE</a>
-     </td>
-     <td>Requests storage of mid-level commands.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Mid-level command storage: 0: read from flash/EEPROM, 1: write to flash/EEPROM</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="SLUGS_MODE">
    <a href="#SLUGS_MODE">SLUGS_MODE</a>
   </h3>
@@ -297,6 +173,113 @@
       <a href="#CONTROL_SURFACE_FLAG_RIGHT_FLAP">CONTROL_SURFACE_FLAG_RIGHT_FLAP</a>
      </td>
      <td>0b00000001 Right flap control passes through to pilot console.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>MAVLink Commands (MAV_CMD)</h2>
+  <p>
+  </p>
+  <h3 id="MAV_CMD_DO_NOTHING">MAV_CMD_DO_NOTHING (<a href="#MAV_CMD_DO_NOTHING">10001</a>
+   )
+  </h3>
+  <p>Does nothing.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>1 to arm, 0 to disarm</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_RETURN_TO_BASE">MAV_CMD_RETURN_TO_BASE (<a href="#MAV_CMD_RETURN_TO_BASE">10011</a>
+   )
+  </h3>
+  <p>Return vehicle to base.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>0: return to base, 1: track mobile base</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_STOP_RETURN_TO_BASE">MAV_CMD_STOP_RETURN_TO_BASE (<a href="#MAV_CMD_STOP_RETURN_TO_BASE">10012</a>
+   )
+  </h3>
+  <p>Stops the vehicle from returning to base and resumes flight.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_TURN_LIGHT">MAV_CMD_TURN_LIGHT (<a href="#MAV_CMD_TURN_LIGHT">10013</a>
+   )
+  </h3>
+  <p>Turns the vehicle's visible or infrared lights on or off.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>0: visible lights, 1: infrared lights</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>0: turn on, 1: turn off</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_GET_MID_LEVEL_COMMANDS">MAV_CMD_GET_MID_LEVEL_COMMANDS (<a href="#MAV_CMD_GET_MID_LEVEL_COMMANDS">10014</a>
+   )
+  </h3>
+  <p>Requests vehicle to send current mid-level commands to ground station.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_MIDLEVEL_STORAGE">MAV_CMD_MIDLEVEL_STORAGE (<a href="#MAV_CMD_MIDLEVEL_STORAGE">10015</a>
+   )
+  </h3>
+  <p>Requests storage of mid-level commands.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Mid-level command storage: 0: read from flash/EEPROM, 1: write to flash/EEPROM</td>
     </tr>
    </tbody>
   </table>
@@ -522,7 +505,7 @@
      <td>h_c</td>
      <td>uint16_t</td>
      <td>dm</td>
-     <td>Commanded altitude</td>
+     <td>Commanded altitude (MSL)</td>
     </tr>
    </tbody>
   </table>
@@ -703,7 +686,7 @@
      <td>hCommand</td>
      <td>float</td>
      <td>m</td>
-     <td>Commanded Altitude</td>
+     <td>Commanded altitude (MSL)</td>
     </tr>
     <tr>
      <td>uCommand</td>
