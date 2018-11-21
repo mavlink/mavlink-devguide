@@ -94,1241 +94,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_CMD">
-   <a href="#MAV_CMD">MAV_CMD</a>
-  </h3>
-  <p>
-  </p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_CMD_DO_GRIPPER">
-     <td>211</td>
-     <td>
-      <a href="#MAV_CMD_DO_GRIPPER">MAV_CMD_DO_GRIPPER</a>
-     </td>
-     <td>Mission command to operate EPM gripper.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Gripper number (a number from 1 to max number of grippers on the vehicle).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Gripper action (0=release, 1=grab. See GRIPPER_ACTIONS enum).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_DO_AUTOTUNE_ENABLE">
-     <td>212</td>
-     <td>
-      <a href="#MAV_CMD_DO_AUTOTUNE_ENABLE">MAV_CMD_DO_AUTOTUNE_ENABLE</a>
-     </td>
-     <td>Enable/disable autotune.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Enable (1: enable, 0:disable).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_NAV_ALTITUDE_WAIT">
-     <td>83</td>
-     <td>
-      <a href="#MAV_CMD_NAV_ALTITUDE_WAIT">MAV_CMD_NAV_ALTITUDE_WAIT</a>
-     </td>
-     <td>Mission command to wait for an altitude or downwards vertical speed. This is meant for high altitude balloon launches, allowing the aircraft to be idle until either an altitude is reached or a negative vertical speed is reached (indicating early balloon burst). The wiggle time is how often to wiggle the control surfaces to prevent them seizing up.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Altitude (m).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Descent speed (m/s).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Wiggle Time (s).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_POWER_OFF_INITIATED">
-     <td>42000</td>
-     <td>
-      <a href="#MAV_CMD_POWER_OFF_INITIATED">MAV_CMD_POWER_OFF_INITIATED</a>
-     </td>
-     <td>A system wide power-off event has been initiated.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_SOLO_BTN_FLY_CLICK">
-     <td>42001</td>
-     <td>
-      <a href="#MAV_CMD_SOLO_BTN_FLY_CLICK">MAV_CMD_SOLO_BTN_FLY_CLICK</a>
-     </td>
-     <td>FLY button has been clicked.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_SOLO_BTN_FLY_HOLD">
-     <td>42002</td>
-     <td>
-      <a href="#MAV_CMD_SOLO_BTN_FLY_HOLD">MAV_CMD_SOLO_BTN_FLY_HOLD</a>
-     </td>
-     <td>FLY button has been held for 1.5 seconds.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Takeoff altitude.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_SOLO_BTN_PAUSE_CLICK">
-     <td>42003</td>
-     <td>
-      <a href="#MAV_CMD_SOLO_BTN_PAUSE_CLICK">MAV_CMD_SOLO_BTN_PAUSE_CLICK</a>
-     </td>
-     <td>PAUSE button has been clicked.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>1 if Solo is in a shot mode, 0 otherwise.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_FIXED_MAG_CAL">
-     <td>42004</td>
-     <td>
-      <a href="#MAV_CMD_FIXED_MAG_CAL">MAV_CMD_FIXED_MAG_CAL</a>
-     </td>
-     <td>Magnetometer calibration based on fixed position
-        in earth field given by inclination, declination and intensity.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>MagDeclinationDegrees.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>MagInclinationDegrees.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>MagIntensityMilliGauss.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>YawDegrees.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_FIXED_MAG_CAL_FIELD">
-     <td>42005</td>
-     <td>
-      <a href="#MAV_CMD_FIXED_MAG_CAL_FIELD">MAV_CMD_FIXED_MAG_CAL_FIELD</a>
-     </td>
-     <td>Magnetometer calibration based on fixed expected field values in milliGauss.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>FieldX.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>FieldY.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>FieldZ.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_DO_START_MAG_CAL">
-     <td>42424</td>
-     <td>
-      <a href="#MAV_CMD_DO_START_MAG_CAL">MAV_CMD_DO_START_MAG_CAL</a>
-     </td>
-     <td>Initiate a magnetometer calibration.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>uint8_t bitmask of magnetometers (0 means all).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Automatically retry on failure (0=no retry, 1=retry).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Save without user input (0=require input, 1=autosave).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Delay (seconds).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Autoreboot (0=user reboot, 1=autoreboot).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_DO_ACCEPT_MAG_CAL">
-     <td>42425</td>
-     <td>
-      <a href="#MAV_CMD_DO_ACCEPT_MAG_CAL">MAV_CMD_DO_ACCEPT_MAG_CAL</a>
-     </td>
-     <td>Initiate a magnetometer calibration.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>uint8_t bitmask of magnetometers (0 means all).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_DO_CANCEL_MAG_CAL">
-     <td>42426</td>
-     <td>
-      <a href="#MAV_CMD_DO_CANCEL_MAG_CAL">MAV_CMD_DO_CANCEL_MAG_CAL</a>
-     </td>
-     <td>Cancel a running magnetometer calibration.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>uint8_t bitmask of magnetometers (0 means all).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_ACCELCAL_VEHICLE_POS">
-     <td>42429</td>
-     <td>
-      <a href="#MAV_CMD_ACCELCAL_VEHICLE_POS">MAV_CMD_ACCELCAL_VEHICLE_POS</a>
-     </td>
-     <td>Used when doing accelerometer calibration. When sent to the GCS tells it what position to put the vehicle in. When sent to the vehicle says what position the vehicle is in.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Position, one of the ACCELCAL_VEHICLE_POS enum values.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_DO_SEND_BANNER">
-     <td>42428</td>
-     <td>
-      <a href="#MAV_CMD_DO_SEND_BANNER">MAV_CMD_DO_SEND_BANNER</a>
-     </td>
-     <td>Reply with the version banner.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_SET_FACTORY_TEST_MODE">
-     <td>42427</td>
-     <td>
-      <a href="#MAV_CMD_SET_FACTORY_TEST_MODE">MAV_CMD_SET_FACTORY_TEST_MODE</a>
-     </td>
-     <td>Command autopilot to get into factory test/diagnostic mode.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>0 means get out of test mode, 1 means get into test mode.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_GIMBAL_RESET">
-     <td>42501</td>
-     <td>
-      <a href="#MAV_CMD_GIMBAL_RESET">MAV_CMD_GIMBAL_RESET</a>
-     </td>
-     <td>Causes the gimbal to reset and boot as if it was just powered on.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS">
-     <td>42502</td>
-     <td>
-      <a href="#MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS">MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS</a>
-     </td>
-     <td>Reports progress and success or failure of gimbal axis calibration procedure.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Gimbal axis we're reporting calibration progress for.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Current calibration progress for this axis, 0x64=100%.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Status of the calibration.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION">
-     <td>42503</td>
-     <td>
-      <a href="#MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION">MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION</a>
-     </td>
-     <td>Starts commutation calibration on the gimbal.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_GIMBAL_FULL_RESET">
-     <td>42505</td>
-     <td>
-      <a href="#MAV_CMD_GIMBAL_FULL_RESET">MAV_CMD_GIMBAL_FULL_RESET</a>
-     </td>
-     <td>Erases gimbal application and parameters.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Magic number.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Magic number.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Magic number.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Magic number.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Magic number.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Magic number.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Magic number.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_DO_WINCH">
-     <td>42600</td>
-     <td>
-      <a href="#MAV_CMD_DO_WINCH">MAV_CMD_DO_WINCH</a>
-     </td>
-     <td>Command to operate winch.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Winch number (0 for the default winch, otherwise a number from 1 to max number of winches on the vehicle).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Action (0=relax, 1=relative length control, 2=rate control. See WINCH_ACTIONS enum.).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Release length (cable distance to unwind in meters, negative numbers to wind in cable).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Release rate (meters/second).</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty.</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-    <tr id="MAV_CMD_FLASH_BOOTLOADER">
-     <td>42650</td>
-     <td>
-      <a href="#MAV_CMD_FLASH_BOOTLOADER">MAV_CMD_FLASH_BOOTLOADER</a>
-     </td>
-     <td>Update the bootloader</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
-     <td>Empty</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
-     <td>Empty</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
-     <td>Empty</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
-     <td>Empty</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
-     <td>Magic number - set to 290876 to actually flash</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
-     <td>Empty</td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
-     <td>Empty</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="LIMITS_STATE">
    <a href="#LIMITS_STATE">LIMITS_STATE</a>
   </h3>
@@ -4052,6 +2817,892 @@
     </tr>
    </tbody>
   </table>
+  <h2>MAVLink Commands (MAV_CMD)</h2>
+  <p>
+  </p>
+  <h3 id="MAV_CMD_DO_GRIPPER">MAV_CMD_DO_GRIPPER (<a href="#MAV_CMD_DO_GRIPPER">211</a>
+   )
+  </h3>
+  <p>Mission command to operate EPM gripper.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Gripper number (a number from 1 to max number of grippers on the vehicle).</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Gripper action (0=release, 1=grab. See GRIPPER_ACTIONS enum).</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_AUTOTUNE_ENABLE">MAV_CMD_DO_AUTOTUNE_ENABLE (<a href="#MAV_CMD_DO_AUTOTUNE_ENABLE">212</a>
+   )
+  </h3>
+  <p>Enable/disable autotune.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Enable (1: enable, 0:disable).</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_NAV_ALTITUDE_WAIT">MAV_CMD_NAV_ALTITUDE_WAIT (<a href="#MAV_CMD_NAV_ALTITUDE_WAIT">83</a>
+   )
+  </h3>
+  <p>Mission command to wait for an altitude or downwards vertical speed. This is meant for high altitude balloon launches, allowing the aircraft to be idle until either an altitude is reached or a negative vertical speed is reached (indicating early balloon burst). The wiggle time is how often to wiggle the control surfaces to prevent them seizing up.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Altitude (m).</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Descent speed (m/s).</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Wiggle Time (s).</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_POWER_OFF_INITIATED">MAV_CMD_POWER_OFF_INITIATED (<a href="#MAV_CMD_POWER_OFF_INITIATED">42000</a>
+   )
+  </h3>
+  <p>A system wide power-off event has been initiated.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_SOLO_BTN_FLY_CLICK">MAV_CMD_SOLO_BTN_FLY_CLICK (<a href="#MAV_CMD_SOLO_BTN_FLY_CLICK">42001</a>
+   )
+  </h3>
+  <p>FLY button has been clicked.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_SOLO_BTN_FLY_HOLD">MAV_CMD_SOLO_BTN_FLY_HOLD (<a href="#MAV_CMD_SOLO_BTN_FLY_HOLD">42002</a>
+   )
+  </h3>
+  <p>FLY button has been held for 1.5 seconds.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Takeoff altitude.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_SOLO_BTN_PAUSE_CLICK">MAV_CMD_SOLO_BTN_PAUSE_CLICK (<a href="#MAV_CMD_SOLO_BTN_PAUSE_CLICK">42003</a>
+   )
+  </h3>
+  <p>PAUSE button has been clicked.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>1 if Solo is in a shot mode, 0 otherwise.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_FIXED_MAG_CAL">MAV_CMD_FIXED_MAG_CAL (<a href="#MAV_CMD_FIXED_MAG_CAL">42004</a>
+   )
+  </h3>
+  <p>Magnetometer calibration based on fixed position
+        in earth field given by inclination, declination and intensity.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>MagDeclinationDegrees.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>MagInclinationDegrees.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>MagIntensityMilliGauss.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>YawDegrees.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_FIXED_MAG_CAL_FIELD">MAV_CMD_FIXED_MAG_CAL_FIELD (<a href="#MAV_CMD_FIXED_MAG_CAL_FIELD">42005</a>
+   )
+  </h3>
+  <p>Magnetometer calibration based on fixed expected field values in milliGauss.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>FieldX.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>FieldY.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>FieldZ.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_START_MAG_CAL">MAV_CMD_DO_START_MAG_CAL (<a href="#MAV_CMD_DO_START_MAG_CAL">42424</a>
+   )
+  </h3>
+  <p>Initiate a magnetometer calibration.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>uint8_t bitmask of magnetometers (0 means all).</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Automatically retry on failure (0=no retry, 1=retry).</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Save without user input (0=require input, 1=autosave).</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Delay (seconds).</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Autoreboot (0=user reboot, 1=autoreboot).</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_ACCEPT_MAG_CAL">MAV_CMD_DO_ACCEPT_MAG_CAL (<a href="#MAV_CMD_DO_ACCEPT_MAG_CAL">42425</a>
+   )
+  </h3>
+  <p>Initiate a magnetometer calibration.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>uint8_t bitmask of magnetometers (0 means all).</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_CANCEL_MAG_CAL">MAV_CMD_DO_CANCEL_MAG_CAL (<a href="#MAV_CMD_DO_CANCEL_MAG_CAL">42426</a>
+   )
+  </h3>
+  <p>Cancel a running magnetometer calibration.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>uint8_t bitmask of magnetometers (0 means all).</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_ACCELCAL_VEHICLE_POS">MAV_CMD_ACCELCAL_VEHICLE_POS (<a href="#MAV_CMD_ACCELCAL_VEHICLE_POS">42429</a>
+   )
+  </h3>
+  <p>Used when doing accelerometer calibration. When sent to the GCS tells it what position to put the vehicle in. When sent to the vehicle says what position the vehicle is in.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Position, one of the ACCELCAL_VEHICLE_POS enum values.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_SEND_BANNER">MAV_CMD_DO_SEND_BANNER (<a href="#MAV_CMD_DO_SEND_BANNER">42428</a>
+   )
+  </h3>
+  <p>Reply with the version banner.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_SET_FACTORY_TEST_MODE">MAV_CMD_SET_FACTORY_TEST_MODE (<a href="#MAV_CMD_SET_FACTORY_TEST_MODE">42427</a>
+   )
+  </h3>
+  <p>Command autopilot to get into factory test/diagnostic mode.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>0 means get out of test mode, 1 means get into test mode.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_GIMBAL_RESET">MAV_CMD_GIMBAL_RESET (<a href="#MAV_CMD_GIMBAL_RESET">42501</a>
+   )
+  </h3>
+  <p>Causes the gimbal to reset and boot as if it was just powered on.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS">MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS (<a href="#MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS">42502</a>
+   )
+  </h3>
+  <p>Reports progress and success or failure of gimbal axis calibration procedure.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Gimbal axis we're reporting calibration progress for.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Current calibration progress for this axis, 0x64=100%.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Status of the calibration.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION">MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION (<a href="#MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION">42503</a>
+   )
+  </h3>
+  <p>Starts commutation calibration on the gimbal.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_GIMBAL_FULL_RESET">MAV_CMD_GIMBAL_FULL_RESET (<a href="#MAV_CMD_GIMBAL_FULL_RESET">42505</a>
+   )
+  </h3>
+  <p>Erases gimbal application and parameters.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Magic number.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Magic number.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Magic number.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Magic number.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Magic number.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Magic number.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Magic number.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_WINCH">MAV_CMD_DO_WINCH (<a href="#MAV_CMD_DO_WINCH">42600</a>
+   )
+  </h3>
+  <p>Command to operate winch.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Winch number (0 for the default winch, otherwise a number from 1 to max number of winches on the vehicle).</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Action (0=relax, 1=relative length control, 2=rate control. See WINCH_ACTIONS enum.).</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Release length (cable distance to unwind in meters, negative numbers to wind in cable).</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Release rate (meters/second).</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_FLASH_BOOTLOADER">MAV_CMD_FLASH_BOOTLOADER (<a href="#MAV_CMD_FLASH_BOOTLOADER">42650</a>
+   )
+  </h3>
+  <p>Update the bootloader</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Empty</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Magic number - set to 290876 to actually flash</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty</td>
+    </tr>
+   </tbody>
+  </table>
   <h2>MAVLink Messages</h2>
   <h3 id="SENSOR_OFFSETS">SENSOR_OFFSETS (<a href="#SENSOR_OFFSETS">
     #150
@@ -4159,6 +3810,8 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS (2014-07).</p>
   <p>Set the magnetometer offsets</p>
   <table class="sortable">
    <thead>
@@ -5916,7 +5569,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Altitude Absolute (AMSL).</td>
+     <td>Altitude (MSL).</td>
     </tr>
     <tr>
      <td>alt_rel</td>
@@ -5926,7 +5579,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Altitude Relative (above HOME location).</td>
+     <td>Altitude (Relative to HOME location).</td>
     </tr>
     <tr>
      <td>roll</td>
@@ -5999,6 +5652,8 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by BATTERY_STATUS (2017-04).</p>
   <p>2nd Battery status</p>
   <table class="sortable">
    <thead>
@@ -7886,7 +7541,7 @@
   <p>
    <strong>
     (MAVLink 2)
-   </strong>ESC Telemetry Data for ESCs 1 to 4, matching data sent by BLHeli ESCs</p>
+   </strong>ESC Telemetry Data for ESCs 1 to 4, matching data sent by BLHeli ESCs.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -7901,38 +7556,38 @@
      <td>temperature</td>
      <td>uint8_t[4]</td>
      <td>degC</td>
-     <td>Temperature</td>
+     <td>Temperature.</td>
     </tr>
     <tr>
      <td>voltage</td>
      <td>uint16_t[4]</td>
      <td>cV</td>
-     <td>Voltage</td>
+     <td>Voltage.</td>
     </tr>
     <tr>
      <td>current</td>
      <td>uint16_t[4]</td>
      <td>cA</td>
-     <td>Current</td>
+     <td>Current.</td>
     </tr>
     <tr>
      <td>totalcurrent</td>
      <td>uint16_t[4]</td>
      <td>mAh</td>
-     <td>Total current</td>
+     <td>Total current.</td>
     </tr>
     <tr>
      <td>rpm</td>
      <td>uint16_t[4]</td>
      <td>rpm</td>
-     <td>RPM (eRPM)</td>
+     <td>RPM (eRPM).</td>
     </tr>
     <tr>
      <td>count</td>
      <td>uint16_t[4]</td>
      <td>
      </td>
-     <td>count of telemetry packets received (wraps at 65535)</td>
+     <td>count of telemetry packets received (wraps at 65535).</td>
     </tr>
    </tbody>
   </table>
@@ -7944,7 +7599,7 @@
   <p>
    <strong>
     (MAVLink 2)
-   </strong>ESC Telemetry Data for ESCs 5 to 8, matching data sent by BLHeli ESCs</p>
+   </strong>ESC Telemetry Data for ESCs 5 to 8, matching data sent by BLHeli ESCs.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -7959,38 +7614,38 @@
      <td>temperature</td>
      <td>uint8_t[4]</td>
      <td>degC</td>
-     <td>Temperature</td>
+     <td>Temperature.</td>
     </tr>
     <tr>
      <td>voltage</td>
      <td>uint16_t[4]</td>
      <td>cV</td>
-     <td>Voltage</td>
+     <td>Voltage.</td>
     </tr>
     <tr>
      <td>current</td>
      <td>uint16_t[4]</td>
      <td>cA</td>
-     <td>Current</td>
+     <td>Current.</td>
     </tr>
     <tr>
      <td>totalcurrent</td>
      <td>uint16_t[4]</td>
      <td>mAh</td>
-     <td>Total current</td>
+     <td>Total current.</td>
     </tr>
     <tr>
      <td>rpm</td>
      <td>uint16_t[4]</td>
      <td>rpm</td>
-     <td>RPM (eRPM)</td>
+     <td>RPM (eRPM).</td>
     </tr>
     <tr>
      <td>count</td>
      <td>uint16_t[4]</td>
      <td>
      </td>
-     <td>count of telemetry packets received (wraps at 65535)</td>
+     <td>count of telemetry packets received (wraps at 65535).</td>
     </tr>
    </tbody>
   </table>
@@ -8002,7 +7657,7 @@
   <p>
    <strong>
     (MAVLink 2)
-   </strong>ESC Telemetry Data for ESCs 9 to 12, matching data sent by BLHeli ESCs</p>
+   </strong>ESC Telemetry Data for ESCs 9 to 12, matching data sent by BLHeli ESCs.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -8017,38 +7672,38 @@
      <td>temperature</td>
      <td>uint8_t[4]</td>
      <td>degC</td>
-     <td>Temperature</td>
+     <td>Temperature.</td>
     </tr>
     <tr>
      <td>voltage</td>
      <td>uint16_t[4]</td>
      <td>cV</td>
-     <td>Voltage</td>
+     <td>Voltage.</td>
     </tr>
     <tr>
      <td>current</td>
      <td>uint16_t[4]</td>
      <td>cA</td>
-     <td>Current</td>
+     <td>Current.</td>
     </tr>
     <tr>
      <td>totalcurrent</td>
      <td>uint16_t[4]</td>
      <td>mAh</td>
-     <td>Total current</td>
+     <td>Total current.</td>
     </tr>
     <tr>
      <td>rpm</td>
      <td>uint16_t[4]</td>
      <td>rpm</td>
-     <td>RPM (eRPM)</td>
+     <td>RPM (eRPM).</td>
     </tr>
     <tr>
      <td>count</td>
      <td>uint16_t[4]</td>
      <td>
      </td>
-     <td>count of telemetry packets received (wraps at 65535)</td>
+     <td>count of telemetry packets received (wraps at 65535).</td>
     </tr>
    </tbody>
   </table>
