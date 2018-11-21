@@ -69,77 +69,48 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_CMD">
-   <a href="#MAV_CMD">MAV_CMD</a>
-  </h3>
+  <h2>MAVLink Commands (MAV_CMD)</h2>
   <p>
   </p>
+  <h3 id="MAV_CMD_PREFLIGHT_STORAGE_ADVANCED">MAV_CMD_PREFLIGHT_STORAGE_ADVANCED (<a href="#MAV_CMD_PREFLIGHT_STORAGE_ADVANCED">0</a>
+   )
+  </h3>
+  <p>Request storage of different parameter values and logs. This command will be only accepted if in pre-flight mode.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
+     <th>Param</th>
      <th>Description</th>
     </tr>
    </thead>
    <tbody>
-    <tr id="MAV_CMD_PREFLIGHT_STORAGE_ADVANCED">
-     <td>0</td>
-     <td>
-      <a href="#MAV_CMD_PREFLIGHT_STORAGE_ADVANCED">MAV_CMD_PREFLIGHT_STORAGE_ADVANCED</a>
-     </td>
-     <td>Request storage of different parameter values and logs. This command will be only accepted if in pre-flight mode.</td>
-    </tr>
     <tr>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>
-     </td>
-     <td>Mission Param #1</td>
+     <td>1</td>
      <td>Storage action: Action defined by MAV_PREFLIGHT_STORAGE_ACTION_ADVANCED</td>
     </tr>
     <tr>
-     <td>
-     </td>
-     <td>Mission Param #2</td>
+     <td>2</td>
      <td>Storage area as defined by parameter database</td>
     </tr>
     <tr>
-     <td>
-     </td>
-     <td>Mission Param #3</td>
+     <td>3</td>
      <td>Storage flags as defined by parameter database</td>
     </tr>
     <tr>
-     <td>
-     </td>
-     <td>Mission Param #4</td>
+     <td>4</td>
      <td>Empty</td>
     </tr>
     <tr>
-     <td>
-     </td>
-     <td>Mission Param #5</td>
+     <td>5</td>
      <td>Empty</td>
     </tr>
     <tr>
-     <td>
-     </td>
-     <td>Mission Param #6</td>
+     <td>6</td>
      <td>Empty</td>
     </tr>
     <tr>
-     <td>
-     </td>
-     <td>Mission Param #7</td>
+     <td>7</td>
      <td>Empty</td>
-    </tr>
-    <tr>
-     <td colspan="3">
-      <br/>
-     </td>
     </tr>
    </tbody>
   </table>
@@ -1300,7 +1271,7 @@
     <tr>
      <td>alt_gps</td>
      <td>int32_t</td>
-     <td>GPS altitude in meters, expressed as * 1000 (millimeters), above MSL</td>
+     <td>GPS altitude (MSL) in meters, expressed as * 1000 (millimeters)</td>
     </tr>
     <tr>
      <td>alt_imu</td>
