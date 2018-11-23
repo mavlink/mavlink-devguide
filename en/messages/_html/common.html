@@ -4494,7 +4494,7 @@
   <h3 id="CAMERA_CAP_FLAGS">
    <a href="#CAMERA_CAP_FLAGS">CAMERA_CAP_FLAGS</a>
   </h3>
-  <p>Camera capability flags (Bitmap).</p>
+  <p>Camera capability flags (Bitmap)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -4509,14 +4509,14 @@
      <td>
       <a href="#CAMERA_CAP_FLAGS_CAPTURE_VIDEO">CAMERA_CAP_FLAGS_CAPTURE_VIDEO</a>
      </td>
-     <td>Camera is able to record video.</td>
+     <td>Camera is able to record video</td>
     </tr>
     <tr id="CAMERA_CAP_FLAGS_CAPTURE_IMAGE">
      <td>2</td>
      <td>
       <a href="#CAMERA_CAP_FLAGS_CAPTURE_IMAGE">CAMERA_CAP_FLAGS_CAPTURE_IMAGE</a>
      </td>
-     <td>Camera is able to capture images.</td>
+     <td>Camera is able to capture images</td>
     </tr>
     <tr id="CAMERA_CAP_FLAGS_HAS_MODES">
      <td>4</td>
@@ -4545,6 +4545,121 @@
       <a href="#CAMERA_CAP_FLAGS_HAS_IMAGE_SURVEY_MODE">CAMERA_CAP_FLAGS_HAS_IMAGE_SURVEY_MODE</a>
      </td>
      <td>Camera has image survey mode (MAV_CMD_SET_CAMERA_MODE)</td>
+    </tr>
+    <tr id="CAMERA_CAP_FLAGS_HAS_BASIC_ZOOM">
+     <td>64</td>
+     <td>
+      <a href="#CAMERA_CAP_FLAGS_HAS_BASIC_ZOOM">CAMERA_CAP_FLAGS_HAS_BASIC_ZOOM</a>
+     </td>
+     <td>Camera has basic zoom control (MAV_CMD_SET_CAMERA_ZOOM)</td>
+    </tr>
+    <tr id="CAMERA_CAP_FLAGS_HAS_BASIC_FOCUS">
+     <td>128</td>
+     <td>
+      <a href="#CAMERA_CAP_FLAGS_HAS_BASIC_FOCUS">CAMERA_CAP_FLAGS_HAS_BASIC_FOCUS</a>
+     </td>
+     <td>Camera has basic focus control (MAV_CMD_SET_CAMERA_FOCUS)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="VIDEO_STREAM_STATUS_FLAGS">
+   <a href="#VIDEO_STREAM_STATUS_FLAGS">VIDEO_STREAM_STATUS_FLAGS</a>
+  </h3>
+  <p>Stream status flags (Bitmap)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="VIDEO_STREAM_STATUS_FLAGS_RUNNING">
+     <td>1</td>
+     <td>
+      <a href="#VIDEO_STREAM_STATUS_FLAGS_RUNNING">VIDEO_STREAM_STATUS_FLAGS_RUNNING</a>
+     </td>
+     <td>Stream is active (running)</td>
+    </tr>
+    <tr id="VIDEO_STREAM_STATUS_FLAGS_THERMAL">
+     <td>2</td>
+     <td>
+      <a href="#VIDEO_STREAM_STATUS_FLAGS_THERMAL">VIDEO_STREAM_STATUS_FLAGS_THERMAL</a>
+     </td>
+     <td>Stream is thermal imaging</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SET_ZOOM_TYPE">
+   <a href="#SET_ZOOM_TYPE">SET_ZOOM_TYPE</a>
+  </h3>
+  <p>Zoom types for MAV_CMD_SET_CAMERA_ZOOM</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="ZOOM_TYPE_STEP">
+     <td>0</td>
+     <td>
+      <a href="#ZOOM_TYPE_STEP">ZOOM_TYPE_STEP</a>
+     </td>
+     <td>Zoom one step increment (-1 for wide, 1 for tele)</td>
+    </tr>
+    <tr id="ZOOM_TYPE_CONTINUOUS">
+     <td>1</td>
+     <td>
+      <a href="#ZOOM_TYPE_CONTINUOUS">ZOOM_TYPE_CONTINUOUS</a>
+     </td>
+     <td>Continuous zoom up/down until stopped (-1 for wide, 1 for tele, 0 to stop zooming)</td>
+    </tr>
+    <tr id="ZOOM_TYPE_RANGE">
+     <td>2</td>
+     <td>
+      <a href="#ZOOM_TYPE_RANGE">ZOOM_TYPE_RANGE</a>
+     </td>
+     <td>Zoom value as proportion of full camera range (a value between 0.0 and 100.0)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SET_FOCUS_TYPE">
+   <a href="#SET_FOCUS_TYPE">SET_FOCUS_TYPE</a>
+  </h3>
+  <p>Focus types for MAV_CMD_SET_CAMERA_FOCUS</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="FOCUS_TYPE_STEP">
+     <td>0</td>
+     <td>
+      <a href="#FOCUS_TYPE_STEP">FOCUS_TYPE_STEP</a>
+     </td>
+     <td>Focus one step increment (-1 for focusing in, 1 for focusing out towards infinity).</td>
+    </tr>
+    <tr id="FOCUS_TYPE_CONTINUOUS">
+     <td>1</td>
+     <td>
+      <a href="#FOCUS_TYPE_CONTINUOUS">FOCUS_TYPE_CONTINUOUS</a>
+     </td>
+     <td>Continuous focus up/down until stopped (-1 for focusing in, 1 for focusing out towards infinity, 0 to stop focusing)</td>
+    </tr>
+    <tr id="FOCUS_TYPE_RANGE">
+     <td>2</td>
+     <td>
+      <a href="#FOCUS_TYPE_RANGE">FOCUS_TYPE_RANGE</a>
+     </td>
+     <td>Zoom value as proportion of full camera range (a value between 0.0 and 100.0)</td>
     </tr>
    </tbody>
   </table>
@@ -8440,6 +8555,74 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_SET_CAMERA_ZOOM">MAV_CMD_SET_CAMERA_ZOOM (<a href="#MAV_CMD_SET_CAMERA_ZOOM">531</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>Set camera zoom. Returns CAMERA_SETTINGS message. Use NAN for reserved values.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Zoom type</td>
+     <td>SET_ZOOM_TYPE</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Zoom value</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_SET_CAMERA_FOCUS">MAV_CMD_SET_CAMERA_FOCUS (<a href="#MAV_CMD_SET_CAMERA_FOCUS">532</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>Set camera focus. Returns CAMERA_SETTINGS message. Use NAN for reserved values.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Focus type</td>
+     <td>SET_FOCUS_TYPE</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Focus value</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_IMAGE_START_CAPTURE">MAV_CMD_IMAGE_START_CAPTURE (<a href="#MAV_CMD_IMAGE_START_CAPTURE">2000</a>
    )
   </h3>
@@ -8610,7 +8793,7 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>Camera ID (0 for all cameras, 1 for first, 2 for second, etc.)</td>
+     <td>Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
     </tr>
     <tr>
      <td>2</td>
@@ -8634,7 +8817,7 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>Camera ID (0 for all cameras, 1 for first, 2 for second, etc.)</td>
+     <td>Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
     </tr>
     <tr>
      <td>2</td>
@@ -8658,7 +8841,7 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>Camera ID (0 for all cameras, 1 for first, 2 for second, etc.)</td>
+     <td>Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
     </tr>
     <tr>
      <td>2</td>
@@ -21393,6 +21576,34 @@
      </td>
      <td>Camera mode</td>
     </tr>
+    <tr>
+     <td style="color:blue;">zoomLevel<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current zoom level (0.0 to 100.0, NaN if not known)</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">focusLevel<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current focus level (0.0 to 100.0, NaN if not known)</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="STORAGE_INFORMATION">STORAGE_INFORMATION (<a href="#STORAGE_INFORMATION">
@@ -21902,58 +22113,111 @@
      <th>Field Name</th>
      <th>Type</th>
      <th>Units</th>
+     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
    <tbody>
     <tr>
-     <td>camera_id</td>
+     <td>stream_id</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Camera ID (1 for first, 2 for second, etc.)</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Stream ID (1 for first, 2 for second, etc.)</td>
     </tr>
     <tr>
-     <td>status</td>
+     <td>count</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Current status of video streaming (0: not running, 1: in progress)</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Number of streams available</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#VIDEO_STREAM_STATUS_FLAGS">VIDEO_STREAM_STATUS_FLAGS</a>
+     </td>
+     <td>Bitmap of stream status flags</td>
     </tr>
     <tr>
      <td>framerate</td>
      <td>float</td>
      <td>Hz</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Frame rate</td>
     </tr>
     <tr>
      <td>resolution_h</td>
      <td>uint16_t</td>
      <td>pix</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Horizontal resolution</td>
     </tr>
     <tr>
      <td>resolution_v</td>
      <td>uint16_t</td>
      <td>pix</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Vertical resolution</td>
     </tr>
     <tr>
      <td>bitrate</td>
      <td>uint32_t</td>
      <td>bits/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Bit rate in bits per second</td>
     </tr>
     <tr>
      <td>rotation</td>
      <td>uint16_t</td>
      <td>deg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Video image rotation clockwise</td>
     </tr>
     <tr>
-     <td>uri</td>
-     <td>char[230]</td>
+     <td>hfov</td>
+     <td>uint16_t</td>
+     <td>deg</td>
      <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Horizontal Field of view</td>
+    </tr>
+    <tr>
+     <td>uri</td>
+     <td>char[160]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
      </td>
      <td>Video stream URI</td>
     </tr>
@@ -21999,7 +22263,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Camera ID (1 for first, 2 for second, etc.)</td>
+     <td>Stream ID (1 for first, 2 for second, etc.)</td>
     </tr>
     <tr>
      <td>framerate</td>
@@ -22033,10 +22297,10 @@
     </tr>
     <tr>
      <td>uri</td>
-     <td>char[230]</td>
+     <td>char[160]</td>
      <td>
      </td>
-     <td>Video stream URI</td>
+     <td>Video stream URI (mostly for UDP/RTP)</td>
     </tr>
    </tbody>
   </table>
