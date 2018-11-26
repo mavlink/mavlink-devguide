@@ -2,9 +2,9 @@
 
 MAVLink systems often need to be able to store, exchange, or restore MAVLink information, including: mission plans, geofence definitions, rally points, parameters, logs, etc. Often the information is defined on one system and used on another (e.g. logs from an autopilot are parsed by analysis tools, missions are created using GCS planning tools and run from a companion computer).
 
-There is a *defacto* standard used in many GCS systems and developer APIs for storing mission information: [plain-text file format](#mission_plain_text_file).
+There is a *defacto* standard used in many GCS systems and developer APIs for storing *mission* information: [plain-text file format](#mission_plain_text_file).
 
-> **Note** At time of writing there are no MAVLink standards (defacto or otherwise) for geofence, rally points, parameters etc. There is a discussion about standardising file formats in [Issue #989](https://github.com/mavlink/mavlink/issues/989).
+> **Note** At time of writing there are no MAVLink standards (defacto or otherwise) for: geofence, rally points, parameters etc. There is a discussion about standardising file formats in [Issue #989](https://github.com/mavlink/mavlink/issues/989).
 
 ## Mission Plain-Text File Format {#mission_plain_text_file}
 
