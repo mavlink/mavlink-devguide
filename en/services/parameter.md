@@ -7,6 +7,7 @@ The parameter protocol is used to exchange key system settings and guarantees de
 
 It can be both implemented on a microcontroller (e.g. the pxIMU with ARM7) and in standard software (e.g. px_multitracker process in Linux).
 
+
 ## Supported Data Types
 
 MAVLink (v1.0, v2.0) supports these data types:
@@ -40,19 +41,6 @@ For this reason the parameter protocol also differentiates between components. T
 All onboard components should respond to parameter request messages with their ID or with ID `MAV_COMP_ID_ALL` (0). 
 
 > **Tip** *QGroundControl* by default queries all components of a system (it only queries the currently selected system, not all systems) and therefore sends ID 0 (`MAV_COMP_ID_ALL`).
-
-
-## Graphical User Interface in QGroundControl
-
-For this reason the parameter interface *discriminates between systems (one system is one airplane) and components (one component is one entity in the architecture, e.g. the IMU or a Linux process).* 
-This allows to transparently access the individual component parameters without the need of a central onboard unit that translates the parameter read/write requests for the onboard components.
-
-As can be seen on the image below, each component is represented by a top-level node in the parameter tree. 
-The system (the MAV) can be selected in the top-level drop-down menu. The GUI keeps track of changed parameters will send those parameters which changed to the appropriate components.
-
-![QGroundControl Parameter Interface](../../assets/protocols/parameter_interface_gui.png)
-
-To facilitate the use of many parameters, the tree is structures at the top level according to the first underscore ("_") in the parameter name. So `PID_POS_X_P` and `PID_POS_Y_P` will be grouped below the `PID` node.
 
 
 ## Communication / State Machine
