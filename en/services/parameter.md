@@ -1,11 +1,19 @@
 # Parameter Protocol
 
-> **Caution** This content has not been fully reviewed since being ported from the old website (and may be out of date). 
-  Updates/re-validation welcome!
+The parameter microservice is used to exchange configuration settings between MAVLink systems.
+The protocol guarantees delivery.
 
-The parameter protocol is used to exchange key system settings and guarantees delivery.
+Each parameter is represented as a key/value pair. The key is usually the human-readable name of the parameter (maximum of 16 characters) and a value - which can be one of a [number of types](../messages/common.md#MAV_PARAM_TYPE).
 
-It can be both implemented on a microcontroller (e.g. the pxIMU with ARM7) and in standard software (e.g. px_multitracker process in Linux).
+This key/value pair has a number of important properties:
+
+* The human-readable name is small but useful (it can encode parameter names from which users can infer the purpose of the parameter).
+* Unknown autopilots that implement the protocol can be supported "out of the box".
+* A GCS does not *have* to know in advance what parameters exist on a remote system
+  (although in practice a GCS can provide a *better* user experience with additional parameter metadata like maximum and minimum values, default values, etc.). 
+* Adding a parameter only requires changes to the system with parameters. 
+  A GCS that loads the parameters, and the MAVLink communication libraries, should not require any changes.
+
 
 ## Message/Enum Summary
 
@@ -20,19 +28,22 @@ Enum | Description
 -- | --
 <span id="MAV_PARAM_TYPE"></span>[MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE) | The [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE) store/encode parameter values within a `float` field. This type conveys the real type of the encoded parameter value.
 
-## Parameter Data Encoding
 
-The parameter protocol supports setting/getting parameter values of many different types: 8, 16, 32 and 64-bit signed and unsigned integers, and 32 and 64-bit floating point numbers.
-The values are encoded within a `float` field (named `param_value`) for transmission, and a field `param_type` ([MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE)) is used to indicate the actual type so that it can be decoded by the recipient.
+## Parameter Encoding
+
+Parameters names/ids are set in the `param_id` field of messages where they are used.
+The `param_id` string can store up to 16 characters. 
+The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars.
+
+Values are encoded *within* the `param_value` field, an IEE754 single-precision, 4 byte, floating point value. 
+The `param_type` ([MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE)) is used to indicate the actual type of the data so that it can be decoded by the recipient. Supported types are: 8, 16, 32 and 64-bit signed and unsigned integers, and 32 and 64-bit floating point numbers.
 
 The C API provides a convenient `union` that allows you to bytewise convert between any of the supported types: `mavlink_param_union_t` ([mavlink_types.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_types.h)).
 For example, below we shown how you can set the union integer field but pass the float value to the sending function: 
 
 ```c
 mavlink_param_union_t param;
-
 int32_t integer = 20000;
-
 param.param_int32 = integer;
 param.type = MAV_PARAM_TYPE_INT32;
 
@@ -40,26 +51,24 @@ param.type = MAV_PARAM_TYPE_INT32;
 mavlink_msg_param_set_send(xxx, xxx, param.param_float, param.type, xxx);
 ```
 
+> **Note** A byte-wise conversion is needed, rather than a simple cast, to enable larger integers to be exchanged (e.g. 1E7 scaled integers can be useful for encoding some types of data, but lose precision if cast directly to floats).
+
 ## Multi-System and Multi-Component Support
 
-MAVLink supports multiple systems / airplanes in parallel on the same link. 
-In addition to this, it also supports multiple MAVLink-enabled devices in the same airplane. 
-The protocol for example allows to communicate over one radio link with the autopilot and a payload unit. 
-For this reason the parameter protocol also differentiates between components. To get a complete parameter list from a system, send the request parameter message with `target_component` set to 0 (enum value: [MAV_COMP_ID_ALL](../messages/common.md#MAV_COMP_ID_ALL)). 
-All onboard components should respond to parameter request messages with their ID or with ID `MAV_COMP_ID_ALL` (0). 
+MAVLink supports multiple systems in parallel on the same link, and multiple MAVLink enabled components within a system.
 
-> **Tip** *QGroundControl* by default queries all components of a system (it only queries the currently selected system, not all systems) and therefore sends ID 0 (`MAV_COMP_ID_ALL`).
+Requests to get and set parameters can be sent to individual systems or components. 
+To get a complete parameter list from a system, send the request parameter message with `target_component` set to  [MAV_COMP_ID_ALL](../messages/common.md#MAV_COMP_ID_ALL).
+
+All components must respond to parameter request messages addressed to their ID or the ID `MAV_COMP_ID_ALL`. 
+
+> **Tip** *QGroundControl* by default queries all components of the currently connected system (it sends ID `MAV_COMP_ID_ALL`).
 
 
-## Communication / State Machine
+## Parameter Operations
 
-The onboard parameters are identified by a 16-char string (without `\0`) and store a floating point (IEE 754 single-precision, 4 bytes) value. 
-This key->value pair has many important properties:
+This section defines the state machine/message sequences for all parameter operations.
 
-* The human-readable name is very helpful for users, yet it is still small enough
-* The GCS does not have to know in advance what onboard parameters exist
-* Support for unknown autopilots, as long as they implement the protocol, is guaranteed
-* Adding a parameter is only a change to the onboard code.
 
 ### Read All Parameters {#read_all}
 
@@ -91,7 +100,6 @@ The sequence of operations is:
 1. GCS accumulates parameters in order to know which parameters have been/not been received  (`PARAM_VALUE` contains total number of params and index of current param).
 1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent.
 1. After timeout (messages no longer being sent) the GCS can request any missing parameter values by [requesting them individually](#read_single) (using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ)).
-
 
 
 ### Read Single Parameter {#read_single}
@@ -148,6 +156,10 @@ The sequence of operations is:
 
 The drone may restart the sequence the `PARAM_VALUE` acknowledgment is not received within the timeout, or if the write operation fails (the value returned in `PARAM_VALUE` does not match the value set).
 
+
+> **Note** The command [MAV_CMD_DO_SET_PARAMETER](../messages/common.md#MAV_CMD_DO_SET_PARAMETER) is not part of the parameter protocol.
+  If implemented it can be used to set the value of a parameter using the *enumeration* of the parameter within the remote system is known (rather than the id). 
+  This has no particular advantage over the parameter protocol methods.
 
 ## Implementations
 
