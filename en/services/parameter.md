@@ -7,18 +7,26 @@ The parameter protocol is used to exchange key system settings and guarantees de
 
 It can be both implemented on a microcontroller (e.g. the pxIMU with ARM7) and in standard software (e.g. px_multitracker process in Linux).
 
+## Message/Enum Summary
 
-## Supported Data Types
+Message | Description
+-- | --
+<span id="PARAM_REQUEST_LIST"></span>[PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_LIST) | Request all parameters. The recipient broadcast all parameter values using [PARAM_VALUE](#PARAM_VALUE).
+<span id="PARAM_REQUEST_READ"></span>[PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) | Request a single parameter. The recipient broadcasts the specified parameter value using [PARAM_VALUE](#PARAM_VALUE).
+<span id="PARAM_SET"></span>[PARAM_SET](../messages/common.md#PARAM_SET) | Send command to set a specified parameter to a value. After the value has been set (whether successful or not), the recipient should broadcast the current value using [PARAM_VALUE](#PARAM_VALUE).
+<span id="PARAM_VALUE"></span>[PARAM_VALUE](../messages/common.md#PARAM_VALUE) | The current value of a parameter, broadcast in response to a request to get one or more parameters ([PARAM_REQUEST_READ](#PARAM_REQUEST_READ),[PARAM_REQUEST_LIST](#PARAM_REQUEST_LIST)) or whenever a parameter is set/changes ([PARAM_SET](#PARAM_SET))
 
-MAVLink (v1.0, v2.0) supports these data types:
+Enum | Description
+-- | --
+<span id="MAV_PARAM_TYPE"></span>[MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE) | The [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE) store/encode parameter values within a `float` field. This type conveys the real type of the encoded parameter value.
 
-* `uint32_t` - 32bit unsigned integer (use the ENUM value [MAV_PARAM_TYPE_UINT32](../messages/common.md#MAV_PARAM_TYPE_UINT32))
-* `int32_t` - 32bit signed integer (use the ENUM value [MAV_PARAM_TYPE_INT32](../messages/common.md#MAV_PARAM_TYPE_INT32))
-* `float` - IEEE754 single precision floating point number (use the ENUM value [MAV_PARAM_TYPE_FLOAT](../messages/common.md#MAV_PARAM_TYPE_FLOAT))
+## Parameter Data Encoding
 
-> **Note** All parameters are send as the float value of `mavlink_param_union_t`, which means that a parameter should be byte-wise converted with this union to a byte-wise float (no type conversion). 
-  This is necessary in order to not limit the maximum precision for scaled integer params. 
-  E.g. GPS coordinates can only be expressed with single float precision up to a few meters, while GPS coordinates in 1E7 scaled integers provide very high accuracy.
+The parameter protocol supports setting/getting parameter values of many different types: 8, 16, 32 and 64-bit signed and unsigned integers, and 32 and 64-bit floating point numbers.
+The values are encoded within a `float` field (named `param_value`) for transmission, and a field `param_type` ([MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE)) is used to indicate the actual type so that it can be decoded by the recipient.
+
+The C API provides a convenient `union` that allows you to bytewise convert between any of the supported types: `mavlink_param_union_t` ([mavlink_types.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_types.h)).
+For example, below we shown how you can set the union integer field but pass the float value to the sending function: 
 
 ```c
 mavlink_param_union_t param;
@@ -29,7 +37,7 @@ param.param_int32 = integer;
 param.type = MAV_PARAM_TYPE_INT32;
 
 // Then send the param by providing the float bytes to the send function
-mavlink_msg_param_set_send(xx, xx, param.param_float, param.type, xx);
+mavlink_msg_param_set_send(xxx, xxx, param.param_float, param.type, xxx);
 ```
 
 ## Multi-System and Multi-Component Support
