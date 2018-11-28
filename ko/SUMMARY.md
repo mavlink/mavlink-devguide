@@ -1,6 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
+* [Introduction](README.md) 
   * [Overview](about/overview.md)
   * [FAQ](about/faq.md)
   * [Implementations](about/implementations.md)
@@ -16,6 +16,7 @@
   * [MAVLink Versions](guide/mavlink_version.md)
   * [MAVLink 2](guide/mavlink_2.md)
   * [Microservices](services/README.md) 
+    * [Heartbeat/Connection Protocol](services/heartbeat.md)
     * [Mission Protocol](services/mission.md)
     * [Parameter Protocol](services/parameter.md)
     * [Command Protocol](services/command.md)
@@ -25,6 +26,9 @@
     * [Arm Authorization Protocol](services/arm_authorization.md)
     * [Image Transmission Protocol](services/image_transmission.md)
     * [File Transfer Protocol (FTP)](services/ftp.md)
+    * [Landing Target Protocol](services/landing_target.md)
+    * [Ping Protocol](services/ping.md)
+    * [Path Planning (Trajectory) Protocol](services/trajectory.md) obstacle_avoidance.md
   * [Message Signing](guide/message_signing.md)
   * [Serialization](guide/serialization.md)
   * [Routing](guide/routing.md)

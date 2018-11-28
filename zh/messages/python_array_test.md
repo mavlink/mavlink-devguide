@@ -15,5 +15,6 @@ td {
 }
 </style>
 
-{% include "_html/python_array_test.html" %}
+ 
 
+{% include "_html/python_array_test.html" %}

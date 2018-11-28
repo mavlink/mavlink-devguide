@@ -6,7 +6,8 @@ This topic provides general overview of message signing, which will be useful bo
 
 More detailed information for developers using existing MAVLink libraries can be found here:
 
-* [C Message Signing](../mavgen_c/message_signing_c.md) (mavgen) <!-- Others?  -->
+* [C Message Signing](../mavgen_c/message_signing_c.md) (mavgen)
+* [Pymavlink Message Signing](../mavgen_python/README.md#message_signing) (mavgen) <!-- Others?  -->
 
 ## Frame Format
 

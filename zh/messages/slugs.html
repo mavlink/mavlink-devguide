@@ -1,0 +1,1265 @@
+<html>
+ <body>
+  <p>
+   <strong>MAVLink Include Files:</strong>
+   <a href="common.md">common.xml</a>
+  </p>
+  <h2>MAVLink Type Enumerations</h2>
+  <h3 id="SLUGS_MODE">
+   <a href="#SLUGS_MODE">SLUGS_MODE</a>
+  </h3>
+  <p>Slugs-specific navigation modes.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="SLUGS_MODE_NONE">
+     <td>0</td>
+     <td>
+      <a href="#SLUGS_MODE_NONE">SLUGS_MODE_NONE</a>
+     </td>
+     <td>No change to SLUGS mode.</td>
+    </tr>
+    <tr id="SLUGS_MODE_LIFTOFF">
+     <td>1</td>
+     <td>
+      <a href="#SLUGS_MODE_LIFTOFF">SLUGS_MODE_LIFTOFF</a>
+     </td>
+     <td>Vehicle is in liftoff mode.</td>
+    </tr>
+    <tr id="SLUGS_MODE_PASSTHROUGH">
+     <td>2</td>
+     <td>
+      <a href="#SLUGS_MODE_PASSTHROUGH">SLUGS_MODE_PASSTHROUGH</a>
+     </td>
+     <td>Vehicle is in passthrough mode, being controlled by a pilot.</td>
+    </tr>
+    <tr id="SLUGS_MODE_WAYPOINT">
+     <td>3</td>
+     <td>
+      <a href="#SLUGS_MODE_WAYPOINT">SLUGS_MODE_WAYPOINT</a>
+     </td>
+     <td>Vehicle is in waypoint mode, navigating to waypoints.</td>
+    </tr>
+    <tr id="SLUGS_MODE_MID_LEVEL">
+     <td>4</td>
+     <td>
+      <a href="#SLUGS_MODE_MID_LEVEL">SLUGS_MODE_MID_LEVEL</a>
+     </td>
+     <td>Vehicle is executing mid-level commands.</td>
+    </tr>
+    <tr id="SLUGS_MODE_RETURNING">
+     <td>5</td>
+     <td>
+      <a href="#SLUGS_MODE_RETURNING">SLUGS_MODE_RETURNING</a>
+     </td>
+     <td>Vehicle is returning to the home location.</td>
+    </tr>
+    <tr id="SLUGS_MODE_LANDING">
+     <td>6</td>
+     <td>
+      <a href="#SLUGS_MODE_LANDING">SLUGS_MODE_LANDING</a>
+     </td>
+     <td>Vehicle is landing.</td>
+    </tr>
+    <tr id="SLUGS_MODE_LOST">
+     <td>7</td>
+     <td>
+      <a href="#SLUGS_MODE_LOST">SLUGS_MODE_LOST</a>
+     </td>
+     <td>Lost connection with vehicle.</td>
+    </tr>
+    <tr id="SLUGS_MODE_SELECTIVE_PASSTHROUGH">
+     <td>8</td>
+     <td>
+      <a href="#SLUGS_MODE_SELECTIVE_PASSTHROUGH">SLUGS_MODE_SELECTIVE_PASSTHROUGH</a>
+     </td>
+     <td>Vehicle is in selective passthrough mode, where selected surfaces are being manually controlled.</td>
+    </tr>
+    <tr id="SLUGS_MODE_ISR">
+     <td>9</td>
+     <td>
+      <a href="#SLUGS_MODE_ISR">SLUGS_MODE_ISR</a>
+     </td>
+     <td>Vehicle is in ISR mode, performing reconaissance at a point specified by ISR_LOCATION message.</td>
+    </tr>
+    <tr id="SLUGS_MODE_LINE_PATROL">
+     <td>10</td>
+     <td>
+      <a href="#SLUGS_MODE_LINE_PATROL">SLUGS_MODE_LINE_PATROL</a>
+     </td>
+     <td>Vehicle is patrolling along lines between waypoints.</td>
+    </tr>
+    <tr id="SLUGS_MODE_GROUNDED">
+     <td>11</td>
+     <td>
+      <a href="#SLUGS_MODE_GROUNDED">SLUGS_MODE_GROUNDED</a>
+     </td>
+     <td>Vehicle is grounded or an error has occurred.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CONTROL_SURFACE_FLAG">
+   <a href="#CONTROL_SURFACE_FLAG">CONTROL_SURFACE_FLAG</a>
+  </h3>
+  <p>These flags encode the control surfaces for selective passthrough mode. If a bit is set then the pilot console
+            has control of the surface, and if not then the autopilot has control of the surface.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CONTROL_SURFACE_FLAG_THROTTLE">
+     <td>128</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_THROTTLE">CONTROL_SURFACE_FLAG_THROTTLE</a>
+     </td>
+     <td>0b10000000 Throttle control passes through to pilot console.</td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_LEFT_AILERON">
+     <td>64</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_LEFT_AILERON">CONTROL_SURFACE_FLAG_LEFT_AILERON</a>
+     </td>
+     <td>0b01000000 Left aileron control passes through to pilot console.</td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_RIGHT_AILERON">
+     <td>32</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_RIGHT_AILERON">CONTROL_SURFACE_FLAG_RIGHT_AILERON</a>
+     </td>
+     <td>0b00100000 Right aileron control passes through to pilot console.</td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_RUDDER">
+     <td>16</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_RUDDER">CONTROL_SURFACE_FLAG_RUDDER</a>
+     </td>
+     <td>0b00010000 Rudder control passes through to pilot console.</td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_LEFT_ELEVATOR">
+     <td>8</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_LEFT_ELEVATOR">CONTROL_SURFACE_FLAG_LEFT_ELEVATOR</a>
+     </td>
+     <td>0b00001000 Left elevator control passes through to pilot console.</td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_RIGHT_ELEVATOR">
+     <td>4</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_RIGHT_ELEVATOR">CONTROL_SURFACE_FLAG_RIGHT_ELEVATOR</a>
+     </td>
+     <td>0b00000100 Right elevator control passes through to pilot console.</td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_LEFT_FLAP">
+     <td>2</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_LEFT_FLAP">CONTROL_SURFACE_FLAG_LEFT_FLAP</a>
+     </td>
+     <td>0b00000010 Left flap control passes through to pilot console.</td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_RIGHT_FLAP">
+     <td>1</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_RIGHT_FLAP">CONTROL_SURFACE_FLAG_RIGHT_FLAP</a>
+     </td>
+     <td>0b00000001 Right flap control passes through to pilot console.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>MAVLink Commands (MAV_CMD)</h2>
+  <p>
+  </p>
+  <h3 id="MAV_CMD_DO_NOTHING">MAV_CMD_DO_NOTHING (<a href="#MAV_CMD_DO_NOTHING">10001</a>
+   )
+  </h3>
+  <p>Does nothing.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>1 to arm, 0 to disarm</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_RETURN_TO_BASE">MAV_CMD_RETURN_TO_BASE (<a href="#MAV_CMD_RETURN_TO_BASE">10011</a>
+   )
+  </h3>
+  <p>Return vehicle to base.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>0: return to base, 1: track mobile base</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_STOP_RETURN_TO_BASE">MAV_CMD_STOP_RETURN_TO_BASE (<a href="#MAV_CMD_STOP_RETURN_TO_BASE">10012</a>
+   )
+  </h3>
+  <p>Stops the vehicle from returning to base and resumes flight.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_TURN_LIGHT">MAV_CMD_TURN_LIGHT (<a href="#MAV_CMD_TURN_LIGHT">10013</a>
+   )
+  </h3>
+  <p>Turns the vehicle's visible or infrared lights on or off.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>0: visible lights, 1: infrared lights</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>0: turn on, 1: turn off</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_GET_MID_LEVEL_COMMANDS">MAV_CMD_GET_MID_LEVEL_COMMANDS (<a href="#MAV_CMD_GET_MID_LEVEL_COMMANDS">10014</a>
+   )
+  </h3>
+  <p>Requests vehicle to send current mid-level commands to ground station.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_MIDLEVEL_STORAGE">MAV_CMD_MIDLEVEL_STORAGE (<a href="#MAV_CMD_MIDLEVEL_STORAGE">10015</a>
+   )
+  </h3>
+  <p>Requests storage of mid-level commands.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Mid-level command storage: 0: read from flash/EEPROM, 1: write to flash/EEPROM</td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>MAVLink Messages</h2>
+  <h3 id="CPU_LOAD">CPU_LOAD (<a href="#CPU_LOAD">
+    #170
+   </a>
+   )
+  </h3>
+  <p>Sensor and DSC control loads.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>sensLoad</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Sensor DSC Load</td>
+    </tr>
+    <tr>
+     <td>ctrlLoad</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Control DSC Load</td>
+    </tr>
+    <tr>
+     <td>batVolt</td>
+     <td>uint16_t</td>
+     <td>mV</td>
+     <td>Battery Voltage</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SENSOR_BIAS">SENSOR_BIAS (<a href="#SENSOR_BIAS">
+    #172
+   </a>
+   )
+  </h3>
+  <p>Accelerometer and gyro biases.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>axBias</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Accelerometer X bias</td>
+    </tr>
+    <tr>
+     <td>ayBias</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Accelerometer Y bias</td>
+    </tr>
+    <tr>
+     <td>azBias</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Accelerometer Z bias</td>
+    </tr>
+    <tr>
+     <td>gxBias</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Gyro X bias</td>
+    </tr>
+    <tr>
+     <td>gyBias</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Gyro Y bias</td>
+    </tr>
+    <tr>
+     <td>gzBias</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Gyro Z bias</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="DIAGNOSTIC">DIAGNOSTIC (<a href="#DIAGNOSTIC">
+    #173
+   </a>
+   )
+  </h3>
+  <p>Configurable diagnostic messages.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>diagFl1</td>
+     <td>float</td>
+     <td>Diagnostic float 1</td>
+    </tr>
+    <tr>
+     <td>diagFl2</td>
+     <td>float</td>
+     <td>Diagnostic float 2</td>
+    </tr>
+    <tr>
+     <td>diagFl3</td>
+     <td>float</td>
+     <td>Diagnostic float 3</td>
+    </tr>
+    <tr>
+     <td>diagSh1</td>
+     <td>int16_t</td>
+     <td>Diagnostic short 1</td>
+    </tr>
+    <tr>
+     <td>diagSh2</td>
+     <td>int16_t</td>
+     <td>Diagnostic short 2</td>
+    </tr>
+    <tr>
+     <td>diagSh3</td>
+     <td>int16_t</td>
+     <td>Diagnostic short 3</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SLUGS_NAVIGATION">SLUGS_NAVIGATION (<a href="#SLUGS_NAVIGATION">
+    #176
+   </a>
+   )
+  </h3>
+  <p>Data used in the navigation algorithm.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>u_m</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Measured Airspeed prior to the nav filter</td>
+    </tr>
+    <tr>
+     <td>phi_c</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Commanded Roll</td>
+    </tr>
+    <tr>
+     <td>theta_c</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Commanded Pitch</td>
+    </tr>
+    <tr>
+     <td>psiDot_c</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Commanded Turn rate</td>
+    </tr>
+    <tr>
+     <td>ay_body</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Y component of the body acceleration</td>
+    </tr>
+    <tr>
+     <td>totalDist</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Total Distance to Run on this leg of Navigation</td>
+    </tr>
+    <tr>
+     <td>dist2Go</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Remaining distance to Run on this leg of Navigation</td>
+    </tr>
+    <tr>
+     <td>fromWP</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Origin WP</td>
+    </tr>
+    <tr>
+     <td>toWP</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Destination WP</td>
+    </tr>
+    <tr>
+     <td>h_c</td>
+     <td>uint16_t</td>
+     <td>dm</td>
+     <td>Commanded altitude (MSL)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="DATA_LOG">DATA_LOG (<a href="#DATA_LOG">
+    #177
+   </a>
+   )
+  </h3>
+  <p>Configurable data log probes to be used inside Simulink</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>fl_1</td>
+     <td>float</td>
+     <td>Log value 1</td>
+    </tr>
+    <tr>
+     <td>fl_2</td>
+     <td>float</td>
+     <td>Log value 2</td>
+    </tr>
+    <tr>
+     <td>fl_3</td>
+     <td>float</td>
+     <td>Log value 3</td>
+    </tr>
+    <tr>
+     <td>fl_4</td>
+     <td>float</td>
+     <td>Log value 4</td>
+    </tr>
+    <tr>
+     <td>fl_5</td>
+     <td>float</td>
+     <td>Log value 5</td>
+    </tr>
+    <tr>
+     <td>fl_6</td>
+     <td>float</td>
+     <td>Log value 6</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GPS_DATE_TIME">GPS_DATE_TIME (<a href="#GPS_DATE_TIME">
+    #179
+   </a>
+   )
+  </h3>
+  <p>Pilot console PWM messges.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>year</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Year reported by Gps</td>
+    </tr>
+    <tr>
+     <td>month</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Month reported by Gps</td>
+    </tr>
+    <tr>
+     <td>day</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Day reported by Gps</td>
+    </tr>
+    <tr>
+     <td>hour</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Hour reported by Gps</td>
+    </tr>
+    <tr>
+     <td>min</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Min reported by Gps</td>
+    </tr>
+    <tr>
+     <td>sec</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Sec reported by Gps</td>
+    </tr>
+    <tr>
+     <td>clockStat</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Clock Status. See table 47 page 211 OEMStar Manual</td>
+    </tr>
+    <tr>
+     <td>visSat</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Visible satellites reported by Gps</td>
+    </tr>
+    <tr>
+     <td>useSat</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Used satellites in Solution</td>
+    </tr>
+    <tr>
+     <td>GppGl</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>GPS+GLONASS satellites in Solution</td>
+    </tr>
+    <tr>
+     <td>sigUsedMask</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>GPS and GLONASS usage mask (bit 0 GPS_used? bit_4 GLONASS_used?)</td>
+    </tr>
+    <tr>
+     <td>percentUsed</td>
+     <td>uint8_t</td>
+     <td>
+      %
+     </td>
+     <td>Percent used GPS</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MID_LVL_CMDS">MID_LVL_CMDS (<a href="#MID_LVL_CMDS">
+    #180
+   </a>
+   )
+  </h3>
+  <p>Mid Level commands sent from the GS to the autopilot. These are only sent when being operated in mid-level commands mode from the ground.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>The system setting the commands</td>
+    </tr>
+    <tr>
+     <td>hCommand</td>
+     <td>float</td>
+     <td>m</td>
+     <td>Commanded altitude (MSL)</td>
+    </tr>
+    <tr>
+     <td>uCommand</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Commanded Airspeed</td>
+    </tr>
+    <tr>
+     <td>rCommand</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Commanded Turnrate</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CTRL_SRFC_PT">CTRL_SRFC_PT (<a href="#CTRL_SRFC_PT">
+    #181
+   </a>
+   )
+  </h3>
+  <p>This message sets the control surfaces for selective passthrough mode.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The system setting the commands</td>
+    </tr>
+    <tr>
+     <td>bitfieldPt</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG">CONTROL_SURFACE_FLAG</a>
+     </td>
+     <td>Bitfield containing the passthrough configuration, see CONTROL_SURFACE_FLAG ENUM.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SLUGS_CAMERA_ORDER">SLUGS_CAMERA_ORDER (<a href="#SLUGS_CAMERA_ORDER">
+    #184
+   </a>
+   )
+  </h3>
+  <p>Orders generated to the SLUGS camera mount.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>The system reporting the action</td>
+    </tr>
+    <tr>
+     <td>pan</td>
+     <td>int8_t</td>
+     <td>Order the mount to pan: -1 left, 0 No pan motion, +1 right</td>
+    </tr>
+    <tr>
+     <td>tilt</td>
+     <td>int8_t</td>
+     <td>Order the mount to tilt: -1 down, 0 No tilt motion, +1 up</td>
+    </tr>
+    <tr>
+     <td>zoom</td>
+     <td>int8_t</td>
+     <td>Order the zoom values 0 to 10</td>
+    </tr>
+    <tr>
+     <td>moveHome</td>
+     <td>int8_t</td>
+     <td>Orders the camera mount to move home. The other fields are ignored when this field is set. 1: move home, 0 ignored</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CONTROL_SURFACE">CONTROL_SURFACE (<a href="#CONTROL_SURFACE">
+    #185
+   </a>
+   )
+  </h3>
+  <p>Control for surface; pending and order to origin.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>The system setting the commands</td>
+    </tr>
+    <tr>
+     <td>idSurface</td>
+     <td>uint8_t</td>
+     <td>ID control surface send 0: throttle 1: aileron 2: elevator 3: rudder</td>
+    </tr>
+    <tr>
+     <td>mControl</td>
+     <td>float</td>
+     <td>Pending</td>
+    </tr>
+    <tr>
+     <td>bControl</td>
+     <td>float</td>
+     <td>Order to origin</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SLUGS_MOBILE_LOCATION">SLUGS_MOBILE_LOCATION (<a href="#SLUGS_MOBILE_LOCATION">
+    #186
+   </a>
+   )
+  </h3>
+  <p>Transmits the last known position of the mobile GS to the UAV. Very relevant when Track Mobile is enabled</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>The system reporting the action</td>
+    </tr>
+    <tr>
+     <td>latitude</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Mobile Latitude</td>
+    </tr>
+    <tr>
+     <td>longitude</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Mobile Longitude</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SLUGS_CONFIGURATION_CAMERA">SLUGS_CONFIGURATION_CAMERA (<a href="#SLUGS_CONFIGURATION_CAMERA">
+    #188
+   </a>
+   )
+  </h3>
+  <p>Control for camara.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>The system setting the commands</td>
+    </tr>
+    <tr>
+     <td>idOrder</td>
+     <td>uint8_t</td>
+     <td>ID 0: brightness 1: aperture 2: iris 3: ICR 4: backlight</td>
+    </tr>
+    <tr>
+     <td>order</td>
+     <td>uint8_t</td>
+     <td>1: up/on 2: down/off 3: auto/reset/no action</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ISR_LOCATION">ISR_LOCATION (<a href="#ISR_LOCATION">
+    #189
+   </a>
+   )
+  </h3>
+  <p>Transmits the position of watch</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>The system reporting the action</td>
+    </tr>
+    <tr>
+     <td>latitude</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>ISR Latitude</td>
+    </tr>
+    <tr>
+     <td>longitude</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>ISR Longitude</td>
+    </tr>
+    <tr>
+     <td>height</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>ISR Height</td>
+    </tr>
+    <tr>
+     <td>option1</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Option 1</td>
+    </tr>
+    <tr>
+     <td>option2</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Option 2</td>
+    </tr>
+    <tr>
+     <td>option3</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Option 3</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="VOLT_SENSOR">VOLT_SENSOR (<a href="#VOLT_SENSOR">
+    #191
+   </a>
+   )
+  </h3>
+  <p>Transmits the readings from the voltage and current sensors</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>r2Type</td>
+     <td>uint8_t</td>
+     <td>It is the value of reading 2: 0 - Current, 1 - Foreward Sonar, 2 - Back Sonar, 3 - RPM</td>
+    </tr>
+    <tr>
+     <td>voltage</td>
+     <td>uint16_t</td>
+     <td>Voltage in uS of PWM. 0 uS = 0V, 20 uS = 21.5V</td>
+    </tr>
+    <tr>
+     <td>reading2</td>
+     <td>uint16_t</td>
+     <td>Depends on the value of r2Type (0) Current consumption in uS of PWM, 20 uS = 90Amp (1) Distance in cm (2) Distance in cm (3) Absolute value</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="PTZ_STATUS">PTZ_STATUS (<a href="#PTZ_STATUS">
+    #192
+   </a>
+   )
+  </h3>
+  <p>Transmits the actual Pan, Tilt and Zoom values of the camera unit</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>zoom</td>
+     <td>uint8_t</td>
+     <td>The actual Zoom Value</td>
+    </tr>
+    <tr>
+     <td>pan</td>
+     <td>int16_t</td>
+     <td>The Pan value in 10ths of degree</td>
+    </tr>
+    <tr>
+     <td>tilt</td>
+     <td>int16_t</td>
+     <td>The Tilt value in 10ths of degree</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="UAV_STATUS">UAV_STATUS (<a href="#UAV_STATUS">
+    #193
+   </a>
+   )
+  </h3>
+  <p>Transmits the actual status values UAV in flight</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>The ID system reporting the action</td>
+    </tr>
+    <tr>
+     <td>latitude</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Latitude UAV</td>
+    </tr>
+    <tr>
+     <td>longitude</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Longitude UAV</td>
+    </tr>
+    <tr>
+     <td>altitude</td>
+     <td>float</td>
+     <td>m</td>
+     <td>Altitude UAV</td>
+    </tr>
+    <tr>
+     <td>speed</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Speed UAV</td>
+    </tr>
+    <tr>
+     <td>course</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Course UAV</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="STATUS_GPS">STATUS_GPS (<a href="#STATUS_GPS">
+    #194
+   </a>
+   )
+  </h3>
+  <p>This contains the status of the GPS readings</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>csFails</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Number of times checksum has failed</td>
+    </tr>
+    <tr>
+     <td>gpsQuality</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>The quality indicator, 0=fix not available or invalid, 1=GPS fix, 2=C/A differential GPS, 6=Dead reckoning mode, 7=Manual input mode (fixed position), 8=Simulator mode, 9= WAAS a</td>
+    </tr>
+    <tr>
+     <td>msgsType</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Indicates if GN, GL or GP messages are being received</td>
+    </tr>
+    <tr>
+     <td>posStatus</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>A = data valid, V = data invalid</td>
+    </tr>
+    <tr>
+     <td>magVar</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Magnetic variation</td>
+    </tr>
+    <tr>
+     <td>magDir</td>
+     <td>int8_t</td>
+     <td>
+     </td>
+     <td>Magnetic variation direction E/W. Easterly variation (E) subtracts from True course and Westerly variation (W) adds to True course</td>
+    </tr>
+    <tr>
+     <td>modeInd</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Positioning system mode indicator. A - Autonomous;D-Differential; E-Estimated (dead reckoning) mode;M-Manual input; N-Data not valid</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="NOVATEL_DIAG">NOVATEL_DIAG (<a href="#NOVATEL_DIAG">
+    #195
+   </a>
+   )
+  </h3>
+  <p>Transmits the diagnostics data from the Novatel OEMStar GPS</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>timeStatus</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>The Time Status. See Table 8 page 27 Novatel OEMStar Manual</td>
+    </tr>
+    <tr>
+     <td>receiverStatus</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Status Bitfield. See table 69 page 350 Novatel OEMstar Manual</td>
+    </tr>
+    <tr>
+     <td>solStatus</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>solution Status. See table 44 page 197</td>
+    </tr>
+    <tr>
+     <td>posType</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>position type. See table 43 page 196</td>
+    </tr>
+    <tr>
+     <td>velType</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>velocity type. See table 43 page 196</td>
+    </tr>
+    <tr>
+     <td>posSolAge</td>
+     <td>float</td>
+     <td>s</td>
+     <td>Age of the position solution</td>
+    </tr>
+    <tr>
+     <td>csFails</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Times the CRC has failed since boot</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SENSOR_DIAG">SENSOR_DIAG (<a href="#SENSOR_DIAG">
+    #196
+   </a>
+   )
+  </h3>
+  <p>Diagnostic data Sensor MCU</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>float1</td>
+     <td>float</td>
+     <td>Float field 1</td>
+    </tr>
+    <tr>
+     <td>float2</td>
+     <td>float</td>
+     <td>Float field 2</td>
+    </tr>
+    <tr>
+     <td>int1</td>
+     <td>int16_t</td>
+     <td>Int 16 field 1</td>
+    </tr>
+    <tr>
+     <td>char1</td>
+     <td>int8_t</td>
+     <td>Int 8 field 1</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="BOOT">BOOT (<a href="#BOOT">
+    #197
+   </a>
+   )
+  </h3>
+  <p>The boot message indicates that a system is starting. The onboard software version allows to keep track of onboard soft/firmware revisions. This message allows the sensor and control MCUs to communicate version numbers on startup.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>version</td>
+     <td>uint32_t</td>
+     <td>The onboard software version</td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>

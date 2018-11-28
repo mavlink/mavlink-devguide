@@ -15,5 +15,6 @@ td {
 }
 </style>
 
-{% include "_html/paparazzi.html" %}
+ 
 
+{% include "_html/paparazzi.html" %}
