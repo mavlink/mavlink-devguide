@@ -54,6 +54,9 @@ mavlink_msg_param_set_send(xxx, xxx, param.param_float, param.type, xxx);
 
 > **Note** A byte-wise conversion is needed, rather than a simple cast, to enable larger integers to be exchanged (e.g. 1E7 scaled integers can be useful for encoding some types of data, but lose precision if cast directly to floats).
 
+Pymavlink does not have any support for managing encoding/decoding the different types.
+By default parameter values are sent/received as a float type and any support for other types needs to be added by the using library.
+
 ## Multi-System and Multi-Component Support
 
 MAVLink supports multiple systems in parallel on the same link, and multiple MAVLink enabled components within a system.
@@ -187,4 +190,4 @@ Source files:
 
 ### ArduPilot
 
-TBD
+ArduPilot also implements the parameter service workflow, but only supports (sends and receives) float parameters.
