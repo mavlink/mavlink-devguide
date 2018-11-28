@@ -54,8 +54,7 @@ mavlink_msg_param_set_send(xxx, xxx, param.param_float, param.type, xxx);
 
 > **Note** A byte-wise conversion is needed, rather than a simple cast, to enable larger integers to be exchanged (e.g. 1E7 scaled integers can be useful for encoding some types of data, but lose precision if cast directly to floats).
 
-Pymavlink does not have any support for managing encoding/decoding the different types.
-By default parameter values are sent/received as a float type and any support for other types needs to be added by the using library.
+Pymavlink parameter values are sent/received as the float type (it does not have any explicit support for encoding/decoding other parameter types). Any support for working with non-float parameters must be added by the code that uses Pymavlink.
 
 ## Multi-System and Multi-Component Support
 
