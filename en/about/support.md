@@ -11,7 +11,7 @@ If you have any problems using MAVLink first post them on the [mailing list](htt
 If directed by the development team, issues may be raised on [Github here](https://github.com/mavlink/mavlink/issues).
 
 
-### Dev Call {#dev_call}
+## Dev Call {#dev_call}
 
 MAVLink developers, adopting companies and the surrounding community of users meet regularly to help define the direction of the project, discuss RFCs, Issues and have a Q&A session.
 
