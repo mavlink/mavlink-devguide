@@ -1,6 +1,6 @@
-# 指令协议
+# Command Protocol
 
-MAVLink指令协议确保了指令的有效传输， 包含原始的指令消息和相应的应答消息\(ACK\)。
+The MAVLink command protocol allows guaranteed delivery of commands. It consists of the original command message and the matching acknowledgement \(ACK\).
 
 {% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: COMMAND_LONG(confirmation=0) GCS->>GCS: Start timeout Drone->>GCS: COMMAND_ACK {% endmermaid %}
 
