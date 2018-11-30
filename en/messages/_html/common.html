@@ -359,7 +359,7 @@
      <td>
       <a href="#MAV_TYPE_GIMBAL">MAV_TYPE_GIMBAL</a>
      </td>
-     <td>Onboard gimbal</td>
+     <td>Gimbal (standalone)</td>
     </tr>
     <tr id="MAV_TYPE_ADSB">
      <td>27</td>
@@ -936,8 +936,9 @@
   <h3 id="MAV_COMPONENT">
    <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
   </h3>
-  <p>
-  </p>
+  <p>Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.). 
+      Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The MAV_COMP_ID_ALL value is used to indicate messages that must be processed by all components.
+      When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -952,334 +953,297 @@
      <td>
       <a href="#MAV_COMP_ID_ALL">MAV_COMP_ID_ALL</a>
      </td>
-     <td>
-     </td>
+     <td>Used to broadcast messages to all components of the receiving system. Components should attempt to process messages with this component ID and forward to components on any other interfaces.</td>
     </tr>
     <tr id="MAV_COMP_ID_AUTOPILOT1">
      <td>1</td>
      <td>
       <a href="#MAV_COMP_ID_AUTOPILOT1">MAV_COMP_ID_AUTOPILOT1</a>
      </td>
-     <td>
-     </td>
+     <td>System flight controller component ("autopilot"). Only one autopilot is expected in a particular system.</td>
     </tr>
     <tr id="MAV_COMP_ID_CAMERA">
      <td>100</td>
      <td>
       <a href="#MAV_COMP_ID_CAMERA">MAV_COMP_ID_CAMERA</a>
      </td>
-     <td>
-     </td>
+     <td>Camera #1.</td>
     </tr>
     <tr id="MAV_COMP_ID_CAMERA2">
      <td>101</td>
      <td>
       <a href="#MAV_COMP_ID_CAMERA2">MAV_COMP_ID_CAMERA2</a>
      </td>
-     <td>
-     </td>
+     <td>Camera #2.</td>
     </tr>
     <tr id="MAV_COMP_ID_CAMERA3">
      <td>102</td>
      <td>
       <a href="#MAV_COMP_ID_CAMERA3">MAV_COMP_ID_CAMERA3</a>
      </td>
-     <td>
-     </td>
+     <td>Camera #3.</td>
     </tr>
     <tr id="MAV_COMP_ID_CAMERA4">
      <td>103</td>
      <td>
       <a href="#MAV_COMP_ID_CAMERA4">MAV_COMP_ID_CAMERA4</a>
      </td>
-     <td>
-     </td>
+     <td>Camera #4.</td>
     </tr>
     <tr id="MAV_COMP_ID_CAMERA5">
      <td>104</td>
      <td>
       <a href="#MAV_COMP_ID_CAMERA5">MAV_COMP_ID_CAMERA5</a>
      </td>
-     <td>
-     </td>
+     <td>Camera #5.</td>
     </tr>
     <tr id="MAV_COMP_ID_CAMERA6">
      <td>105</td>
      <td>
       <a href="#MAV_COMP_ID_CAMERA6">MAV_COMP_ID_CAMERA6</a>
      </td>
-     <td>
-     </td>
+     <td>Camera #6.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO1">
      <td>140</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO1">MAV_COMP_ID_SERVO1</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #1.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO2">
      <td>141</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO2">MAV_COMP_ID_SERVO2</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #2.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO3">
      <td>142</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO3">MAV_COMP_ID_SERVO3</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #3.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO4">
      <td>143</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO4">MAV_COMP_ID_SERVO4</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #4.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO5">
      <td>144</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO5">MAV_COMP_ID_SERVO5</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #5.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO6">
      <td>145</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO6">MAV_COMP_ID_SERVO6</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #6.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO7">
      <td>146</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO7">MAV_COMP_ID_SERVO7</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #7.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO8">
      <td>147</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO8">MAV_COMP_ID_SERVO8</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #8.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO9">
      <td>148</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO9">MAV_COMP_ID_SERVO9</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #9.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO10">
      <td>149</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO10">MAV_COMP_ID_SERVO10</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #10.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO11">
      <td>150</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO11">MAV_COMP_ID_SERVO11</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #11.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO12">
      <td>151</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO12">MAV_COMP_ID_SERVO12</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #12.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO13">
      <td>152</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO13">MAV_COMP_ID_SERVO13</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #13.</td>
     </tr>
     <tr id="MAV_COMP_ID_SERVO14">
      <td>153</td>
      <td>
       <a href="#MAV_COMP_ID_SERVO14">MAV_COMP_ID_SERVO14</a>
      </td>
-     <td>
-     </td>
+     <td>Servo #14.</td>
     </tr>
     <tr id="MAV_COMP_ID_GIMBAL">
      <td>154</td>
      <td>
       <a href="#MAV_COMP_ID_GIMBAL">MAV_COMP_ID_GIMBAL</a>
      </td>
-     <td>
-     </td>
+     <td>Gimbal component.</td>
     </tr>
     <tr id="MAV_COMP_ID_LOG">
      <td>155</td>
      <td>
       <a href="#MAV_COMP_ID_LOG">MAV_COMP_ID_LOG</a>
      </td>
-     <td>
-     </td>
+     <td>Logging component.</td>
     </tr>
     <tr id="MAV_COMP_ID_ADSB">
      <td>156</td>
      <td>
       <a href="#MAV_COMP_ID_ADSB">MAV_COMP_ID_ADSB</a>
      </td>
-     <td>
-     </td>
+     <td>Automatic Dependent Surveillance-Broadcast (ADS-B) component.</td>
     </tr>
     <tr id="MAV_COMP_ID_OSD">
      <td>157</td>
      <td>
       <a href="#MAV_COMP_ID_OSD">MAV_COMP_ID_OSD</a>
      </td>
-     <td>On Screen Display (OSD) devices for video links</td>
+     <td>On Screen Display (OSD) devices for video links.</td>
     </tr>
     <tr id="MAV_COMP_ID_PERIPHERAL">
      <td>158</td>
      <td>
       <a href="#MAV_COMP_ID_PERIPHERAL">MAV_COMP_ID_PERIPHERAL</a>
      </td>
-     <td>Generic autopilot peripheral component ID. Meant for devices that do not implement the parameter sub-protocol</td>
+     <td>Generic autopilot peripheral component ID. Meant for devices that do not implement the parameter microservice.</td>
     </tr>
     <tr id="MAV_COMP_ID_QX1_GIMBAL">
      <td>159</td>
      <td>
       <a href="#MAV_COMP_ID_QX1_GIMBAL">MAV_COMP_ID_QX1_GIMBAL</a>
+      <p style="color:red">
+       <strong>DEPRECATED:</strong> Replaced by MAV_COMP_ID_GIMBAL (2018-11).
+
+
+  All gimbals should use MAV_COMP_ID_GIMBAL.</p>
      </td>
-     <td>
-     </td>
+     <td>Gimbal ID for QX1.</td>
     </tr>
     <tr id="MAV_COMP_ID_FLARM">
      <td>160</td>
      <td>
       <a href="#MAV_COMP_ID_FLARM">MAV_COMP_ID_FLARM</a>
      </td>
-     <td>
-     </td>
-    </tr>
-    <tr id="MAV_COMP_ID_MAPPER">
-     <td>180</td>
-     <td>
-      <a href="#MAV_COMP_ID_MAPPER">MAV_COMP_ID_MAPPER</a>
-     </td>
-     <td>
-     </td>
+     <td>FLARM collision alert component.</td>
     </tr>
     <tr id="MAV_COMP_ID_MISSIONPLANNER">
      <td>190</td>
      <td>
       <a href="#MAV_COMP_ID_MISSIONPLANNER">MAV_COMP_ID_MISSIONPLANNER</a>
      </td>
-     <td>
-     </td>
+     <td>Component that supports the Mission microservice.</td>
     </tr>
     <tr id="MAV_COMP_ID_PATHPLANNER">
      <td>195</td>
      <td>
       <a href="#MAV_COMP_ID_PATHPLANNER">MAV_COMP_ID_PATHPLANNER</a>
      </td>
-     <td>
-     </td>
+     <td>Component that finds an optimal path between points based on a certain constraint (e.g. minimum snap, shortest path, cost, etc.).</td>
     </tr>
     <tr id="MAV_COMP_ID_OBSTACLE_AVOIDANCE">
      <td>196</td>
      <td>
       <a href="#MAV_COMP_ID_OBSTACLE_AVOIDANCE">MAV_COMP_ID_OBSTACLE_AVOIDANCE</a>
      </td>
-     <td>
-     </td>
+     <td>Component that plans a collision free path between two points.</td>
     </tr>
     <tr id="MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY">
      <td>197</td>
      <td>
       <a href="#MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY">MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY</a>
      </td>
-     <td>
-     </td>
+     <td>Component that provides position estimates using VIO techniques.</td>
     </tr>
     <tr id="MAV_COMP_ID_IMU">
      <td>200</td>
      <td>
       <a href="#MAV_COMP_ID_IMU">MAV_COMP_ID_IMU</a>
      </td>
-     <td>
-     </td>
+     <td>Inertial Measurement Unit (IMU) #1.</td>
     </tr>
     <tr id="MAV_COMP_ID_IMU_2">
      <td>201</td>
      <td>
       <a href="#MAV_COMP_ID_IMU_2">MAV_COMP_ID_IMU_2</a>
      </td>
-     <td>
-     </td>
+     <td>Inertial Measurement Unit (IMU) #2.</td>
     </tr>
     <tr id="MAV_COMP_ID_IMU_3">
      <td>202</td>
      <td>
       <a href="#MAV_COMP_ID_IMU_3">MAV_COMP_ID_IMU_3</a>
      </td>
-     <td>
-     </td>
+     <td>Inertial Measurement Unit (IMU) #3.</td>
     </tr>
     <tr id="MAV_COMP_ID_GPS">
      <td>220</td>
      <td>
       <a href="#MAV_COMP_ID_GPS">MAV_COMP_ID_GPS</a>
      </td>
-     <td>
-     </td>
+     <td>GPS #1.</td>
     </tr>
     <tr id="MAV_COMP_ID_GPS2">
      <td>221</td>
      <td>
       <a href="#MAV_COMP_ID_GPS2">MAV_COMP_ID_GPS2</a>
      </td>
-     <td>
-     </td>
+     <td>GPS #2.</td>
     </tr>
     <tr id="MAV_COMP_ID_UDP_BRIDGE">
      <td>240</td>
      <td>
       <a href="#MAV_COMP_ID_UDP_BRIDGE">MAV_COMP_ID_UDP_BRIDGE</a>
      </td>
-     <td>
-     </td>
+     <td>Component to bridge MAVLink to UDP (i.e. from a UART).</td>
     </tr>
     <tr id="MAV_COMP_ID_UART_BRIDGE">
      <td>241</td>
      <td>
       <a href="#MAV_COMP_ID_UART_BRIDGE">MAV_COMP_ID_UART_BRIDGE</a>
      </td>
-     <td>
-     </td>
+     <td>Component to bridge to UART (i.e. from UDP).</td>
     </tr>
     <tr id="MAV_COMP_ID_SYSTEM_CONTROL">
      <td>250</td>
      <td>
       <a href="#MAV_COMP_ID_SYSTEM_CONTROL">MAV_COMP_ID_SYSTEM_CONTROL</a>
+      <p style="color:red">
+       <strong>DEPRECATED:</strong> Replaced by MAV_COMP_ID_ALL (2018-11).
+
+
+  System control does not require a separate component ID.</p>
      </td>
-     <td>
-     </td>
+     <td>Component for handling system messages (e.g. to ARM, takeoff, etc.).</td>
     </tr>
    </tbody>
   </table>
