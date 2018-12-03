@@ -1,9 +1,9 @@
-# Getting Started
+# 入门指南
 
-Download or Generate MAVLink source files for your [dialect](../messages/README.md#dialects):
+下载或生成 [dialect](../messages/README.md#dialects) 的 maxlink 源文件:
 
-* **Download the [pre-built MAVLink source files](../README.md#prebuilt_libraries)** if you're working in a C/C++ project and using standard dialects.
-* **Generate the MAVLink source files** to use any other [supported language](../README.md#supported_languages), add/modify messages or dialects, or use the example scripts: 
+* 如果你正在使用标准语言进行C/C++项目开发, 那么请**下载[pre-built MAVLink source files](../README.md#prebuilt_libraries)**。
+* **生成 mavlink 源文件** to use any other [supported language](../README.md#supported_languages), add/modify messages or dialects, or use the example scripts: 
     1. [Install MAVLink](../getting_started/installation.md)
     2. [Generate Language-Specific Source Files](../getting_started/generate_libraries.md).
 
