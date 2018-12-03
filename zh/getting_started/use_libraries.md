@@ -1,17 +1,17 @@
-# Using MAVLink Libraries
+# 使用 MAVLink 库
 
-The linked documents explain how to use the MAVLink libraries for different programming languages (and from different code generators).
+以下链接文档解释了如何将 mavlink 库用于不同的编程语言 (以及来自不同的代码生成器)。
 
-> **Note** Not all of the libraries are documented. If you have experience with the other libraries, please help us update those sections!
+> **Note**并非所有库都有文档记录。 如果您有使用其他库的经验, 请帮助我们更新这些部分!
 
 * [C (*mavgen*)](../mavgen_c/README.md)
 * [Python (*mavgen*)](../mavgen_python/README.md)
-* [Java](https://github.com/dronefleet/mavlink) (*dronefleet*) - documented on linked project site
+* [Java](https://github.com/dronefleet/mavlink) (*dronefleet*) —可从项目链接网站获取相关的文档信息
 * Java (*mavgen*)
-* [Clojure](https://github.com/WickedShell/clj-mavlink) (*clj-mavlink*) - documented on linked project site
+* [Clojure](https://github.com/WickedShell/clj-mavlink) (*clj-mavlink*) ——可从项目链接网站获取相关的文档信息
 * C++11 (*mavgen*)
 * C-Sharp (*mavgen*)
-* Objective C (*mavgen*)
+* Objective C (mavgen)
 * JavaScript (*mavgen*)
 * Lua (*mavgen*)
 * Swift (*mavgen*)
