@@ -11,7 +11,7 @@
 * [Clojure](https://github.com/WickedShell/clj-mavlink) (*clj-mavlink*) ——可从项目链接网站获取相关的文档信息
 * C++11 (*mavgen*)
 * C-Sharp (*mavgen*)
-* Objective C (mavgen)
+* Objective C (*mavgen*)
 * JavaScript (*mavgen*)
 * Lua (*mavgen*)
-* Swift (*mavgen*)
+* Java (*mavgen*)
