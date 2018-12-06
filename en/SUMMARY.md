@@ -59,4 +59,5 @@
   * [ualberta.xml](messages/ualberta.md)
   * [uAvionix.xml](messages/uAvionix.md)
 * [Contributing](contributing/contributing.md)
+  * [Testing](guide/testing.md)
 * [Support](about/support.md)
