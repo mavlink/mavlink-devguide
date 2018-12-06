@@ -43,8 +43,8 @@ If you support multiple *independent* dialects you can include these separately 
 
 ```c
 #include <common/mavlink.h>
-#include <your_dialect>/mavlink.h>
-#include <another_dialect>/mavlink.h>
+#include <your_dialect/mavlink.h>
+#include <another_dialect/mavlink.h>
 ```
 
 > **Tip** *Do not include the individual message files*. 
