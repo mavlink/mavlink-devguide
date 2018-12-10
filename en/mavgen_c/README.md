@@ -33,25 +33,26 @@ The MAVLink 2 C library offers the same range of APIs as was offered by MAVLink1
 
 ## Adding Libraries 
 
-To use MAVLink in your C project, include the **mavlink.h** header file in your project:
-
+To use MAVLink in your C project, include the **mavlink.h** header file for your dialect:
 ```c
-#include <mavlink/mavlink.h>
+#include <your_dialect/mavlink.h>
 ```
+This will automatically add the header files for all messages in your dialect, and for any dialect files that it includes.
 
-If headers for multiple dialects and/or versions are installed, your include path might instead look similar to the following:
+If you support multiple *independent* dialects you can include these separately (there is no need to separately include dialects that are part of another dialect, but this will do no harm):
 
 ```c
-#include <mavlink/v2.0/common/mavlink.h>
+#include <common/mavlink.h>
+#include <your_dialect/mavlink.h>
+#include <another_dialect/mavlink.h>
 ```
 
 > **Tip** *Do not include the individual message files*. 
   If you generate your own headers, you will have to add their output location to your C compiler's search path. 
 
-When compiling the project, we recommend that you specify the top-level output directory AND 
-all generated dialects and versions (this will give the greatest compatibility with existing code and examples):
+When compiling the project, we recommend that you specify the top-level output directory AND all generated dialects and versions (this will give the greatest compatibility with existing code and examples):
 ```sh
-$ gcc ... -I generated/include -I generated/include/mavlink/v2.0/common ...
+$ gcc ... -I generated/include -I generated/include/common ...
 ```
 
 ## Multiple Streams ("channels") {#streams}
@@ -71,8 +72,7 @@ Transmitting messages can be done by using the `mavlink_msg_*_pack()` function, 
 The packed message can then be serialized with `mavlink_helpers.h:mavlink_msg_to_send_buffer()` and then writing the resultant byte array out over the appropriate serial interface.
 
 It is possible to simplify the above by writing wrappers around the transmitting/receiving code. 
-A multi-byte writing macro can be defined, `MAVLINK_SEND_UART_BYTES()`, or a single-byte function can be defined, `comm_send_ch()`, 
-that wrap the low-level driver for transmitting the data. 
+A multi-byte writing macro can be defined, `MAVLINK_SEND_UART_BYTES()`, or a single-byte function can be defined, `comm_send_ch()`, that wrap the low-level driver for transmitting the data. 
 If this is done, `MAVLINK_USE_CONVENIENCE_FUNCTIONS` must be defined.
 
 ## Message Signing
