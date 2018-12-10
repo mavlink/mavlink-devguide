@@ -26,16 +26,20 @@ The MAVLink 2 C library offers the same range of APIs as was offered by MAVLink1
 
 ## Adding Libraries
 
-To use MAVLink in your C project, include the **mavlink.h** header file in your project:
+To use MAVLink in your C project, include the **mavlink.h** header file for your dialect:
 
 ```c
-#include <mavlink/mavlink.h>
+#include <your_dialect/mavlink.h>
 ```
 
-If headers for multiple dialects and/or versions are installed, your include path might instead look similar to the following:
+This will automatically add the header files for all messages in your dialect, and for any dialect files that it includes.
+
+If you support multiple *independent* dialects you can include these separately (there is no need to separately include dialects that are part of another dialect, but this will do no harm):
 
 ```c
-#include <mavlink/v2.0/common/mavlink.h>
+#include <common/mavlink.h>
+#include <your_dialect/mavlink.h>
+#include <another_dialect/mavlink.h>
 ```
 
 > **Tip** *Do not include the individual message files*. If you generate your own headers, you will have to add their output location to your C compiler's search path.
@@ -43,7 +47,7 @@ If headers for multiple dialects and/or versions are installed, your include pat
 When compiling the project, we recommend that you specify the top-level output directory AND all generated dialects and versions (this will give the greatest compatibility with existing code and examples):
 
 ```sh
-$ gcc ... -I generated/include -I generated/include/mavlink/v2.0/common ...
+$ gcc ... -I generated/include -I generated/include/common ...
 ```
 
 ## Multiple Streams ("channels") {#streams}
