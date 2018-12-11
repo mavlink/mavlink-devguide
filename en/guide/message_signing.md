@@ -84,7 +84,7 @@ Systems should implement the following rules to obtain a reliable timestamp:
   On write the smaller of the two values should be updated. On read the larger of the two values should be used.
 
 
-## Accepting Signed Packets
+## Accepting Signed Packets {#accept_signed_packets}
 
 When a signed packet arrives it should be discarded if the:
 * Timestamp is older than the previous packet from the same logical stream - where a logical stream is defined as the sequence of MAVLink packets with the same (`SystemID`, `ComponentID`, `LinkID`) tuple.
@@ -122,11 +122,13 @@ This feature might be useful for finding a lost vehicle with a corrupted secret 
 
 A secret key is 32 bytes of binary data that are used to create message signatures that can be verified by other holders of the key.
 The key should be created on one system in the network (often a GCS) and shared to other trusted devices via secure channels.
-Systems must have a shared key to communicate. 
+Systems must have a shared key in order to be able to communicate. 
 
-> **Note** The [C Library](../mavgen_c/message_signing_c.md) supports only one key per link, but this is a choice of the library and not a limit/requirement of the protocol.
+> **Note** The *mavgen* [C](../mavgen_c/message_signing_c.md) and [Python](../mavgen_python/README.md#message_signing) libraries support only one key per link. 
+  This is a choice of the library and not a limit/requirement of the protocol.
+  An implementation might instead store a pool of keys, and/or manage keys on a per-connection basis.
 
-The secret key should be stored in persistent storage, and should not be exposed via any publicly accessible communication protocol.
+The secret key should be stored in persistent storage, and must not be exposed via any publicly accessible communication protocol.
 In particular, the key must not be exposed in MAVLink parameters, MAVLink log files or dataflash log files that may be used for public log analysis.
 
 The method of generating the secret key is implementation dependent. 
@@ -138,12 +140,15 @@ The secret key may be shared to other devices using the [SETUP_SIGNING](../messa
 The message should only ever be sent over a secure link (e.g. USB or wired Ethernet) as a direct message to each connected `system_id`/`component_id`.
 The receiving system must be set up to process the message and store the received secret key to the appropriate permanent storage.
 
+The same secure method can be used to both *set* and *reset* a system's key (reseting a key does not have to be "more secure" than setting it in the first place).
+The receiving system should be configured to [accept all signed packets](#accept_signed_packets) on the secure channel, so that it is possible to reset a key that has been lost or corrupted.
+
 The `SETUP_SIGNING` message should never be broadcast, and received `SETUP_SIGNING` messages must never be automatically forwarded to other active MAVLink devices/streams/channels. 
 This is to avoid the case where a key received over a secure link (e.g. USB) is automatically forwarded to another system over an insecure link (e.g. Wifi).
 
 Autopilots that don't offer MAVLink over USB might create a module that can set the secret key from a command line interface (e.g. the NSH Shell).
 
-> **Tip** We recommend that GCS implementations should generate the secret key and share this with connected systems over a secure link.
+> **Tip** We recommend that GCS implementations should generate the secret key and share this with connected systems over a secure link (e.g. USB).
 
 
 ## Logging

@@ -65,6 +65,21 @@ However, an additional heartbeat could be an issue for deployed systems.
 Therefore these radios can alternatively confirm their *MAVLink 2* compliance by emitting `RADIO_STATUS` in v2 message format after receiving the first MAVLink v2 frame.
 
 
+## Versions and Signing
+
+The supported MAVLink library implementations enable different MAVLink versions on a per-channel basis, where a *channel* refers to a particular link in/out of a MAVLink system or component (e.g. a serial port or UDP port).
+
+As a result, all [connections](../services/heartbeat.md) to other components over a particular channel must share the same MAVLink version. If a system is using signing, then all connections via the same channel must also be signing messages with the same key.
+
+> **Note** A system cannot use a single channel to connect to signed MAVLink 2 systems, unsigned MAVLink 2 systems, and/or MAVLink 1 components.
+
+Currently most MAVLink networks are configured to use unsigned MAVLink 2 messages. 
+MAVLink 1 is primarily used to allow autopilots to connect to legacy MAVLink peripherals, and this is done via a separate channel.
+Signed networks will need to use a further separate channel to connect to other signed systems. 
+
+The next section explains how a system/channel should negotiate the version to use.
+
+
 ## Negotiating Versions {#negotiating_versions}
 
 Vehicle and GCS implementations will support both *MAVLink 1* and *MAVLink 2* for quite some time. 
@@ -73,12 +88,13 @@ We would like most users to receive the benefit of *MAVLink 2*, while still supp
 The following is meant to capture best practice for vehicle firmware and GCS authors:
 
 - Vehicle implementations should have a way to enable/disable the sending of *MAVLink 2* messages. 
-  This should preferably be on a per-link basis to allow for some peripherals to be *MAVLink 1* while others are *MAVLink 2*. 
+  This should preferably be on a per-link (channel) basis to allow for some peripherals to be *MAVLink 1* while others are *MAVLink 2*. 
   It is acceptable for this option to require a reboot of the flight controller to take effect.
-- If signing is enabled and *MAVLink 2* is enabled then the vehicle should immediately start sending *MAVLink 2* on startup.
+- If signing is enabled then the vehicle should immediately start sending *signed* *MAVLink 2* on startup.
 - If signing is not enabled and *MAVLink 2* is enabled then the vehicle may choose to start by sending *MAVLink 1* and switch to *MAVLink 2* on a link when it first receives a *MAVLink 2* message on the link.
 - Vehicles should set the `MAV_PROTOCOL_CAPABILITY_MAVLINK2` capability flag in the `AUTOPILOT_VERSION` message if *MAVLink 2* is available on a link. 
   This should be set in the case where the link is currently sending *MAVLink 1* packets but *MAVLink 2* packets will be accepted and will cause a switch to *MAVLink 2*.
 - GCS implementations can choose to either automatically switch to *MAVLink 2* where available or to have a configuration option for *MAVLink 2*.
 - If the GCS chooses to use a configuration option then when the option is enabled it should send *MAVLink 2* on starting the link.
 - If the GCS chooses to use automatic switching then it should switch to sending *MAVLink 2* if either it receives a *MAVLink 2* message on the link or by asking for the `AUTOPILOT_VERSION` message to be sent and seeing the `MAV_PROTOCOL_CAPABILITY_MAVLINK2` flag is set.
+
