@@ -98,21 +98,13 @@ The sequence of operations is:
 1. Drone sends all parameters individually in [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
    - The drone should allow a break between each message in order to avoid saturating the link.
 1. GCS accumulates parameters in order to know which parameters have been/not been received  (`PARAM_VALUE` contains total number of params and index of current param).
-1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent.
-1. After timeout (messages no longer being sent) the GCS can request any missing parameter values by [requesting them individually](#read_single) (using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ)).
-   > **Warning** The GCS determines what parameters are missing using the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages, and requests them by index.  based on missing index values in the total count 
-1. After timeout (messages no longer being sent) the GCS can request any missing parameter values, 
-   The GCS determines what parameters are have not been received based on the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
-   The messages are [requested individually](#read_single) using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) with a specified ).
-   > **Warning** 
-   param_index
-   
+1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent.  
 1. After timeout (messages no longer being sent) the GCS can request any missing parameter values.
  
    The GCS determines what parameters are missing based on the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
    The messages are [requested individually](#read_single) using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) and the missing `param_index`
 
-   > **Warning** The sending system must keep the `param_count` constant and maintain the relative `param_index` during the whole "read all parameters" operation. Outside of this operation the parameter index cannot be assumed to be constant, and parameters must be read by id (name).
+   > **Warning** The sending system must keep the `param_count` and `param_index`s the same during the whole "read all parameters" operation. Outside of this operation the parameter indecies cannot be assumed to be constant, and parameters must be read by id (name).
    
 
 ### Read Single Parameter {#read_single}
