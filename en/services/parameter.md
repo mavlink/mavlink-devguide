@@ -100,7 +100,20 @@ The sequence of operations is:
 1. GCS accumulates parameters in order to know which parameters have been/not been received  (`PARAM_VALUE` contains total number of params and index of current param).
 1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent.
 1. After timeout (messages no longer being sent) the GCS can request any missing parameter values by [requesting them individually](#read_single) (using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ)).
+   > **Warning** The GCS determines what parameters are missing using the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages, and requests them by index.  based on missing index values in the total count 
+1. After timeout (messages no longer being sent) the GCS can request any missing parameter values, 
+   The GCS determines what parameters are have not been received based on the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
+   The messages are [requested individually](#read_single) using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) with a specified ).
+   > **Warning** 
+   param_index
+   
+1. After timeout (messages no longer being sent) the GCS can request any missing parameter values.
+ 
+   The GCS determines what parameters are missing based on the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
+   The messages are [requested individually](#read_single) using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) and the missing `param_index`
 
+   > **Warning** The sending system must keep the `param_count` constant and maintain the relative `param_index` during the whole "read all parameters" operation. Outside of this operation the parameter index cannot be assumed to be constant, and parameters must be read by id (name).
+   
 
 ### Read Single Parameter {#read_single}
 
@@ -118,7 +131,9 @@ sequenceDiagram;
 
 The sequence of operations is:
 
-1. GCS (client) sends [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) specifying the either the parameter name or index.
+1. GCS (client) sends [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) specifying the either the parameter id (name) or parameter index.
+   * The parameter _id_ (name) must be used if it is known.
+   * The parameter _index_ should only be used for requesting "missing" parameters when [reading all parameters for the first time](#read_all) (where the name is not yet known). Outside of this case, the index and parameter count cannot be assume to be invariant.
 1. GCS starts timeout waiting for acknowledgment (in the form of a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) message).
 1. Drone responds with `PARAM_VALUE` containing the parameter value.
    This is a broadcast message (sent to all systems).
