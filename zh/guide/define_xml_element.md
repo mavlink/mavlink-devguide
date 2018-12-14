@@ -6,6 +6,10 @@ This topic provides practical guidance for defining and extending MAVLink XML el
 
 > **Note** For detailed information about the file format see [MAVLink XML Schema](../guide/xml_schema.md) (you can also inspect [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialect files).
 
+<span></span>
+
+> **Tip** Before submitting a pull request for a change to a [dialect xml file](../messages/README.md), you should first [regenerate the dialect library](../getting_started/generate_libraries.md) *with validation enabled*, and then run the [./scripts/format_xml.sh](https://github.com/mavlink/mavlink/blob/master/scripts/format_xml.sh) script.
+
 ## Messages vs Commands
 
 There are two ways to send information between MAVLink systems (including commands, information and acknowledgments):
