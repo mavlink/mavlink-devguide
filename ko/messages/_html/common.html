@@ -7166,7 +7166,7 @@
   <h3 id="MAV_CMD_DO_DIGICAM_CONFIGURE">MAV_CMD_DO_DIGICAM_CONFIGURE (<a href="#MAV_CMD_DO_DIGICAM_CONFIGURE">202</a>
    )
   </h3>
-  <p>THIS INTERFACE IS DEPRECATED since 2018-01. Please use PARAM_EXT_XXX messages and the camera definition format described in https://mavlink.io/en/protocol/camera_def.html.</p>
+  <p>Configure digital camera. This is a fallback message for systems that have not yet implemented PARAM_EXT_XXX messages and camera definition files (see https://mavlink.io/en/services/camera_def.html ).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -7208,7 +7208,7 @@
   <h3 id="MAV_CMD_DO_DIGICAM_CONTROL">MAV_CMD_DO_DIGICAM_CONTROL (<a href="#MAV_CMD_DO_DIGICAM_CONTROL">203</a>
    )
   </h3>
-  <p>THIS INTERFACE IS DEPRECATED since 2018-01. Please use PARAM_EXT_XXX messages and the camera definition format described in https://mavlink.io/en/protocol/camera_def.html.</p>
+  <p>Control digital camera. This is a fallback message for systems that have not yet implemented PARAM_EXT_XXX messages and camera definition files (see https://mavlink.io/en/services/camera_def.html ).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10609,7 +10609,7 @@
    </a>
    )
   </h3>
-  <p>Request to read the onboard parameter with the param_id string id. Onboard parameters are stored as key[const char*] -&gt; value[float]. This allows to send a parameter to any other component (such as the GCS) without the need of previous knowledge of possible parameter names. Thus the same GCS can store different parameters for different autopilots. See also https://mavlink.io/en/protocol/parameter.html for a full documentation of QGroundControl and IMU code.</p>
+  <p>Request to read the onboard parameter with the param_id string id. Onboard parameters are stored as key[const char*] -&gt; value[float]. This allows to send a parameter to any other component (such as the GCS) without the need of previous knowledge of possible parameter names. Thus the same GCS can store different parameters for different autopilots. See also https://mavlink.io/en/services/parameter.html for a full documentation of QGroundControl and IMU code.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11897,7 +11897,7 @@
    </a>
    )
   </h3>
-  <p>Request a partial list of mission items from the system/component. https://mavlink.io/en/protocol/mission.html. If start and end index are the same, just send one waypoint.</p>
+  <p>Request a partial list of mission items from the system/component. https://mavlink.io/en/services/mission.html. If start and end index are the same, just send one waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12028,7 +12028,7 @@
    )
   </h3>
   <p>Message encoding a mission item. This message is emitted to announce
-                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). See also https://mavlink.io/en/protocol/mission.html.</p>
+                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). See also https://mavlink.io/en/services/mission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12181,7 +12181,7 @@
    </a>
    )
   </h3>
-  <p>Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM message. https://mavlink.io/en/protocol/mission.html</p>
+  <p>Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM message. https://mavlink.io/en/services/mission.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12677,7 +12677,7 @@
    </a>
    )
   </h3>
-  <p>Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM_INT message. https://mavlink.io/en/protocol/mission.html</p>
+  <p>Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM_INT message. https://mavlink.io/en/services/mission.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13774,7 +13774,7 @@
    )
   </h3>
   <p>Message encoding a mission item. This message is emitted to announce
-                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). See also https://mavlink.io/en/protocol/mission.html.</p>
+                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). See also https://mavlink.io/en/services/mission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17980,7 +17980,7 @@
    </a>
    )
   </h3>
-  <p>Handshake message to initiate, control and stop image streaming when using the Image Transmission Protocol: https://mavlink.io/en/protocol/image_transmission.html.</p>
+  <p>Handshake message to initiate, control and stop image streaming when using the Image Transmission Protocol: https://mavlink.io/en/services/image_transmission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18074,7 +18074,7 @@
    </a>
    )
   </h3>
-  <p>Data packet for images sent using the Image Transmission Protocol: https://mavlink.io/en/protocol/image_transmission.html.</p>
+  <p>Data packet for images sent using the Image Transmission Protocol: https://mavlink.io/en/services/image_transmission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19203,7 +19203,7 @@
    </a>
    )
   </h3>
-  <p>The location of a landing target. See: https://mavlink.io/en/protocol/landing_target.html</p>
+  <p>The location of a landing target. See: https://mavlink.io/en/services/landing_target.html</p>
   <table class="sortable">
    <thead>
     <tr>
