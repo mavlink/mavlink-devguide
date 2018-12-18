@@ -14,11 +14,11 @@ Mavlink 遵循现代混合发布-订阅和点对点设计模式: 数据流作为
 
 > **Note** C引用实现是一个仅包含头文件的库, 其针对资源受限系统有限的ram 和闪存，进行了高度优化。 它经过现场验证, 并部署在许多产品中, 它在这些产品中, 充当不同厂家组件之间的交互性接口。
 
-MAVLink was first released early 2009 by Lorenz Meier and has now a [significant number of contributors](https://github.com/mavlink/mavlink/graphs/contributors).
+MAVLink于2009年初由 lorenz meier 首次发布, 目前为止，已拥有[数量可观的贡献者](https://github.com/mavlink/mavlink/graphs/contributors)。
 
-## Key Features
+## 主要特性
 
-* Very efficient. MAVLink 1 has just 8 bytes overhead per packet, including start sign and packet drop detection. MAVLink 2 has just 14 bytes of overhead (but is a much more secure and extensible protocol). Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth.
+* 非常高效。 MAVLink 1每个数据包只有8个字节的开销, 包括开始标记和数据包丢弃检测。 MAVLink 2 has just 14 bytes of overhead (but is a much more secure and extensible protocol). Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth.
 * Very reliable. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, corruption, and for packet authentication.
 * Supports [many programming languages](#supported_languages), running on numerous microcontrollers/operating systems (including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS).
 * Allows up to 255 concurrent systems on the network (vehicles, ground stations, etc.)
