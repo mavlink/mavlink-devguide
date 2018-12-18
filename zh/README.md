@@ -53,27 +53,27 @@ MAVLink项目所包含的 [mavgen](getting_started/generate_libraries.md#mavgen)
 * [c_library_v2](https://github.com/mavlink/c_library_v2) (MAVLink 2)
 * [c_library_v1](https://github.com/mavlink/c_library_v1) (MAVLink 1)
 
-[Using C Libraries](mavgen_c/README.md) explains how to use these libraries.
+[使用C Libraries ](mavgen_c/README.md) 解释了如何使用这些库。
 
-## Support {#support}
+## 支持 {#support}
 
-The [Support](about/support.md) topic contains information about the [mailing list](https://groups.google.com/forum/#!forum/mavlink), reporting bugs/issues, and joining the [dev call](about/support.md#dev_call).
+[支持](about/support.md)主题，包含有关[mailing 列表](https://groups.google.com/forum/#!forum/mavlink)、报告故障/问题和加入[dev呼叫](about/support.md#dev_call)的信息。
 
-## Contributing
+## 参与贡献
 
-The [Contributing Guide](contributing/contributing.md) explains the contribution model and the main areas where you can help.
+[贡献指南 ](contributing/contributing.md) 解释了贡献模型和您可以提供帮助的主要领域。
 
-## License
+## 许可证
 
-The message definition XML files and the generated [C-language version of MAVLink](#prebuilt_libraries) (a header-only library) are made available under the MIT-licence. MAVLink can therefore be *used* in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
+定义消息的xml 文件和生成的[ C 语言版MAVLink](#prebuilt_libraries)（仅包含头文件的库）是MIT许可的。 因此, 可以在任何闭源应用程序中 *使用* MAVLink, 而无需发布闭源应用程序的源代码。 详情请参阅 [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) 文件。
 
-The [MAVLink generator toolchain](https://github.com/mavlink/mavlink/) is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3).
+[MAVLink 生成器工具链 ](https://github.com/mavlink/mavlink/) 是根据自由软件基金会 (lgplv3) 的" 较小通用许可证 "(第3版) 的条款获得许可的。
 
-This documentation is licensed under *CC BY 4.0* ([Human readable overview](https://creativecommons.org/licenses/by/4.0/) | [LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE)).
+本文档的许可依赖于*CC BY 4.0* ([人类可读综述](https://creativecommons.org/licenses/by/4.0/)|[LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE))。
 
-## Governance
+## 管理
 
-The MAVLink protocol is hosted under the governance of the [Dronecode Project](https://www.dronecode.org/).
+MAVLink协议托管在 [Dronecode 项目 ](https://www.dronecode.org/) 下。
 
 <a href="https://www.dronecode.org/" style="padding:20px"><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" width="110px"/></a>
 <a href="https://www.linuxfoundation.org/projects" style="padding:20px;"><img src="../assets/site/logo_linux_foundation.png" alt="Linux Foundation Logo" width="80px" /></a>
