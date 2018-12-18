@@ -10,7 +10,7 @@ Mavlink 遵循现代混合发布-订阅和点对点设计模式: 数据流作为
 
 消息内容[定义于与之关联的xml 文件中](messages/README.md)。 每个xml文件对应一个特定的MAVLink系统，并为该系统定义了专属的消息集（亦被称之为“方言dialect”）。 *大部分* 地面站和自动驾驶仪所采用的参考消息集定义于 [common.xml](messages/common.md)中 (大多数方言均是*建立*在这一定义之上的) 。
 
-The [MAVLink toolchain](https://github.com/mavlink/mavlink/) uses the XML message definitions to [generate](getting_started/generate_libraries.md) MAVLink libraries for each of the [supported programming languages](#supported_languages). Drones, ground control stations, and other MAVLink systems use the generated libraries to communicate. These are typically MIT-licensed, and can therefore be *used* without limits in any closed-source application without publishing the source code of the closed-source application.
+[MAVLink工具链 ](https://github.com/mavlink/mavlink/) 通过XML消息定义，可为所有该系统[支持的编程语言](#supported_languages)[生成](getting_started/generate_libraries.md)相应的MAVLink库。 无人机、地面站和其他MAVLink系统使用生成的库进行通信。 这些库文件通常是MIT许可的, 因此可以将其无限制*使用于*任何闭源应用程序中, 而无需发布闭源应用程序的源代码。
 
 > **Note** The C reference implementation is a header-only library that is highly optimized for resource-constrained systems with limited RAM and flash memory. It is field-proven and deployed in many products where it serves as interoperability interface between components of different manufacturers.
 
