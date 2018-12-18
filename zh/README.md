@@ -18,7 +18,7 @@ MAVLink于2009年初由 lorenz meier 首次发布, 目前为止，已拥有[数�
 
 ## 主要特性
 
-* 非常高效。 MAVLink 1每个数据包只有8个字节的开销, 包括开始标记和数据包丢弃检测。 MAVLink 2 has just 14 bytes of overhead (but is a much more secure and extensible protocol). Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth.
+* 非常高效。 MAVLink 1每个数据包只有8个字节的开销, 包括开始标记和数据包丢弃检测。 MAVLink 2只有14个字节的开销 (但它是一个更安全且可扩展的协议)。 Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth.
 * Very reliable. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, corruption, and for packet authentication.
 * Supports [many programming languages](#supported_languages), running on numerous microcontrollers/operating systems (including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS).
 * Allows up to 255 concurrent systems on the network (vehicles, ground stations, etc.)
