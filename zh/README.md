@@ -22,9 +22,9 @@ MAVLink于2009年初由 lorenz meier 首次发布, 目前为止，已拥有[数�
 * 可靠性。 自2009年以来, MAVLink一直被用于多种载具、地面站 (和其他节点) 之间的通信，而这些通信信道中，不乏各种挑战性(如高延迟、噪声) 。 同时，Mavlink也具备检测数据包丢失、损坏和数据包身份验证的功能。
 * 支持 [多种编程语言 ](#supported_languages), 可运行于众多的微控制器（包括arm7、atmeg、dspic、stm32）和操作系统 (包括 windows、linux、macos、android 和 ios) 。
 * 单个网络上最多可容纳255个并发系统 (载具、地面站等)。
-* Enables both offboard and onboard communications (e.g. between a GCS and drone, and between drone autopilot and MAVLink enabled drone camera).
+* 支持offboard和 onboard通信 (例如，地面站和无人机之间的通信, 以及无人机自动驾驶仪与启用MAVLink的无人机摄像头之间的通信)。
 
-## Supported Languages {#supported_languages}
+## 支持的语言 {#supported_languages}
 
 The MAVLink project includes the [mavgen](getting_started/generate_libraries.md#mavgen) and [mavgenerate](getting_started/generate_libraries.md#mavgenerate) tools that can be used to create MAVLink libraries for a number of programming languages. Additional generators have been provided by other projects.
 
