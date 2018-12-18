@@ -1,6 +1,6 @@
 <span style="float:right; padding:10px; margin-right:20px;"><a href="https://github.com/mavlink/mavlink"><img src="../assets/site/logo_mavlink_small.png" title="MAVLink Logo" width="250px" /></a></span>
 
-# MAVLink Developer Guide
+# MAVLink 开发人员指南
 
 [![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)
 
