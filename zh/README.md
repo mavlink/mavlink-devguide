@@ -26,7 +26,7 @@ MAVLink于2009年初由 lorenz meier 首次发布, 目前为止，已拥有[数�
 
 ## 支持的语言 {#supported_languages}
 
-The MAVLink project includes the [mavgen](getting_started/generate_libraries.md#mavgen) and [mavgenerate](getting_started/generate_libraries.md#mavgenerate) tools that can be used to create MAVLink libraries for a number of programming languages. Additional generators have been provided by other projects.
+MAVLink项目所包含的 [mavgen](getting_started/generate_libraries.md#mavgen) 和 [mavgenerate](getting_started/generate_libraries.md#mavgenerate) 工具, 可为多种编程语言创建 mavlink 库。 更多的代码生成器，详见其他相关项目。
 
 > **Note** The MAVLink project has not validated and does not provide technical support for generators other than *mavgen* and *mavgenerate*.
 
