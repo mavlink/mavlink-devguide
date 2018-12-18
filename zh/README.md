@@ -8,7 +8,7 @@ MAVLink是一种非常轻量级的消息传输协议, 用于地面控制终端�
 
 Mavlink 遵循现代混合发布-订阅和点对点设计模式: 数据流作为 **topics** 发送/发布, 而配置子协议 (如 [mission 协议 ](services/mission.md)或 [parameter协议](services/parameter.md)）是基于重传机制的点对点模式。
 
-消息内容[定义于与之关联的xml 文件中](messages/README.md)。 每个xml文件对应一个特定的MAVLink系统，并为该系统定义了专属的消息集（亦被称之为“方言dialect”）。 The reference message set that is implemented by *most* ground control stations and autopilots is defined in [common.xml](messages/common.md) (most dialects *build on top of* this definition).
+消息内容[定义于与之关联的xml 文件中](messages/README.md)。 每个xml文件对应一个特定的MAVLink系统，并为该系统定义了专属的消息集（亦被称之为“方言dialect”）。 *大部分* 地面站和自动驾驶仪所采用的参考消息集定义于 [common.xml](messages/common.md)中 (大多数方言均是*建立*在这一定义之上的) 。
 
 The [MAVLink toolchain](https://github.com/mavlink/mavlink/) uses the XML message definitions to [generate](getting_started/generate_libraries.md) MAVLink libraries for each of the [supported programming languages](#supported_languages). Drones, ground control stations, and other MAVLink systems use the generated libraries to communicate. These are typically MIT-licensed, and can therefore be *used* without limits in any closed-source application without publishing the source code of the closed-source application.
 
