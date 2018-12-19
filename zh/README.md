@@ -34,7 +34,7 @@ MAVLink项目所包含的 [mavgen](getting_started/generate_libraries.md#mavgen)
 
 | 语言                  | 生成器                                                         | MAVLink v1 | MAVLink v2 | Signing | 备注                                                           |
 |:------------------- |:----------------------------------------------------------- |:----------:|:----------:|:-------:|:------------------------------------------------------------ |
-| C                   | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    | 这是 mavlink 项目参考实现。 可基于两个协议版本发布相应的[生成库](#prebuilt_libraries)。 |
+| C                   | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    | 这是 MAVLink 项目参考实现。 可基于两个协议版本发布相应的[生成库](#prebuilt_libraries)。 |
 | C++11               | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    |                                                              |
 | Python (2.7+, 3.3+) | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    |                                                              |
 | C#                  | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                              |
