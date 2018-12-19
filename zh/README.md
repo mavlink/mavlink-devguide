@@ -21,8 +21,8 @@ MAVLink于2009年初由Lorenz Meier首次发布, 目前为止，已拥有[数量
 * 高效性。 MAVLink 1每个数据包只有8个字节的开销, 包括起始标志和数据包丢弃检测。 MAVLink 2只有14个字节的开销 (但它是一个更安全且可扩展的协议)。 因为MAVLink不需要任何额外的帧, 所以它非常适合通信带宽非常有限的应用程序。
 * 可靠性。 自2009年以来, MAVLink一直被用于多种载具、地面站 (和其他节点) 之间的通信，而这些通信信道中，不乏各种挑战性(如高延迟、噪声) 。 同时，Mavlink也具备检测数据包丢失、损坏和数据包身份验证的功能。
 * 支持 [多种编程语言 ](#supported_languages), 可运行于众多的微控制器（包括arm7、atmeg、dspic、stm32）和操作系统 (包括 windows、linux、macos、android 和 ios) 。
-* 单个网络上最多可容纳255个并发系统 (载具、地面站等)。
-* 支持offboard和 onboard通信 (例如，地面站和无人机之间的通信, 以及无人机自动驾驶仪与启用MAVLink的无人机摄像头之间的通信)。
+* 单个网络上最多可容纳255个并行系统 (载具、地面站等)。
+* 支持offboard和 onboard通信 (例如，地面站和无人机之间的通信（offboard）, 以及无人机自动驾驶仪与启用MAVLink的无人机摄像头之间的通信（onboard）)。
 
 ## 支持的语言 {#supported_languages}
 
@@ -30,7 +30,7 @@ MAVLink项目所包含的 [mavgen](getting_started/generate_libraries.md#mavgen)
 
 > **Note** 除了*mavgen* 和 *mavgenerate* 以外，对于其他代码生成器，MAVLink项目尚未进行验证, 也尚未提供任何技术支持。
 
-显示了可用的语言/生成器及其对 maxlink v1、[MAVLink 2 ](guide/mavlink_2.md) 和 [Message signing](guide/message_signing.md) 的支持。
+下表显示了可用的语言/生成器及其对MAVLink v1, [ MAVLink v2 ](guide/mavlink_2.md) 和 [Message signing](guide/message_signing.md) 的支持。
 
 | 语言                  | 生成器                                                         | MAVLink v1 | MAVLink v2 | Signing | 备注                                                           |
 |:------------------- |:----------------------------------------------------------- |:----------:|:----------:|:-------:|:------------------------------------------------------------ |
