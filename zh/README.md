@@ -61,7 +61,7 @@ MAVLink项目所包含的 [mavgen](getting_started/generate_libraries.md#mavgen)
 
 ## 参与贡献
 
-[贡献指南 ](contributing/contributing.md) 解释了贡献模型和您可以提供帮助的主要领域。
+[贡献指南 ](contributing/contributing.md) 解释了贡献模式和您可以提供帮助的主要领域。
 
 ## 许可证
 
