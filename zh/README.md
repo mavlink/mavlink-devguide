@@ -12,9 +12,9 @@ Mavlink 遵循现代混合发布-订阅和点对点设计模式: 数据流作为
 
 [MAVLink工具链 ](https://github.com/mavlink/mavlink/) 通过读取XML类型的消息定义，可为该MAVLink系统，基于工具链所[支持的任一编程语言](#supported_languages)，[生成](getting_started/generate_libraries.md)相应的MAVLink库。 无人机、地面站和其他MAVLink系统使用生成的库进行通信。 这些库文件一般是遵循MIT许可的, 因此可以将其自由使用于任何闭源应用程序中, 而无需发布闭源应用程序的源代码。
 
-> **Note** C引用实现是一个仅包含头文件的库, 其针对资源受限系统有限的ram 和闪存，进行了高度优化。 它经过现场验证, 并部署在许多产品中, 它在这些产品中, 充当不同厂家组件之间的交互性接口。
+> **Note** 基于C封装的MAVLink库，是一个 header-only库, 其针对资源受限系统有限的ram 和闪存，进行了高度优化。 这种库，已经过现场验证, 并部署在许多产品中, 充当不同厂家组件之间的交互性接口。
 
-MAVLink于2009年初由 lorenz meier 首次发布, 目前为止，已拥有[数量可观的贡献者](https://github.com/mavlink/mavlink/graphs/contributors)。
+MAVLink于2009年初由Lorenz Meier首次发布, 目前为止，已拥有[数量可观的贡献者](https://github.com/mavlink/mavlink/graphs/contributors)。
 
 ## 主要特性
 
