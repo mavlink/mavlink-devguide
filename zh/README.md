@@ -6,7 +6,7 @@
 
 MAVLink是一种非常轻量级的消息传输协议, 用于地面控制终端（地面站）与无人机之间 (以及机载无人机组件之间) 进行通信。
 
-Mavlink 遵循现代混合发布-订阅和点对点设计模式: 数据流作为 **topics** 发送/发布, 而配置子协议 (如 [mission 协议 ](services/mission.md)或 [parameter协议](services/parameter.md)）是基于重传机制的点对点模式。
+Mavlink 遵循现代混合发布-订阅和点对点设计模式: 数据流作为 **topics** 发送/发布的, 而配置子协议 (如 [路径点协议 ](services/mission.md)或 [参数协议](services/parameter.md)）是基于重传机制的点对点模式。
 
 消息内容[定义于与之关联的xml 文件中](messages/README.md)。 每个xml文件对应一个特定的MAVLink系统，并为该系统定义了专属的消息集（亦被称之为“方言dialect”）。 *大部分* 地面站和自动驾驶仪所采用的参考消息集定义于 [common.xml](messages/common.md)中 (大多数方言均是*建立*在这一定义之上的) 。
 
