@@ -61,15 +61,15 @@ MAVLink项目所包含的 [mavgen](getting_started/generate_libraries.md#mavgen)
 
 ## 参与贡献
 
-[贡献指南 ](contributing/contributing.md) 解释了贡献模式和您可以提供帮助的主要领域。
+[贡献指南](contributing/contributing.md)解释了贡献方式和你可提供帮助的主要领域。
 
 ## 许可证
 
-定义消息的xml 文件和生成的[ C 语言版MAVLink](#prebuilt_libraries)（仅包含头文件的库）是MIT许可的。 因此, 可以在任何闭源应用程序中 *使用* MAVLink, 而无需发布闭源应用程序的源代码。 详情请参阅 [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) 文件。
+定义消息的xml 文件和基于其生成的[ C 语言版MAVLink](#prebuilt_libraries)（header-only 库），一般是遵循MIT许可的。 因此, 可以在任何闭源应用程序中 *使用* MAVLink, 而无需发布闭源应用程序的源代码。 详情请参阅 [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) 文件。
 
-[MAVLink 生成器工具链 ](https://github.com/mavlink/mavlink/) 是根据自由软件基金会 (lgplv3) 的" 较小通用许可证 "(第3版) 的条款获得许可的。
+[MAVLink 生成器工具链 ](https://github.com/mavlink/mavlink/) 遵循自由软件基金会 (lgplv3) 的" 较小通用许可证 "(第3版) 许可。
 
-本文档的许可依赖于*CC BY 4.0* ([人类可读综述](https://creativecommons.org/licenses/by/4.0/)|[LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE))。
+本文档遵循*CC BY 4.0* ([人类可读综述](https://creativecommons.org/licenses/by/4.0/)|[LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE)) 许可。
 
 ## 管理
 
