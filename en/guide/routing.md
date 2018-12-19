@@ -19,13 +19,16 @@ The protocol defines two 8-bit fields that can (optionally) be specified in the 
 - `target_component`: Component that should execute the command (requires `target_system`).
 
 MAVLink components are expected to process messages that have a matching system/component id and broadcast messages.
-They are expected to route/resend messages that are intended for other (or all) recipients to other active channels 
+They are expected to route/resend messages that are intended for other (or all) recipients to other active channels
 (i.e. MAVLink systems may be connected across different transports, connected by a MAVLink system that routes the messages).
 Broadcast messages are forwarded to all channels that haven't seen the message. 
 Addressed messages are resent on a new channel *iff* the system has previously seen a message from the target on that channel 
 (messages are not resent if the addressee is not known or is on the original/incoming channel). 
 
 > **Warning** Forwarded messages must not be changed/repackaged by the forwarding system (the original message is passed to the new link).
+
+<span></span>
+> **Note** Systems must forward messages according to the routing rules *even if they are unable to process them* (e.g. if using a library that does not include the message, or if they don't have the correct signature for authenticating a message).
 
 ## Routing Detail
 
