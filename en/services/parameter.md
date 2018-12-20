@@ -1,7 +1,8 @@
 # Parameter Protocol
 
 The parameter microservice is used to exchange configuration settings between MAVLink systems.
-The protocol guarantees delivery.
+
+The protocol guarantees delivery/reliable synchronisation of parameters for systems where the [parameter set does not change during normal operation](#limitations).
 
 Each parameter is represented as a key/value pair. The key is usually the human-readable name of the parameter (maximum of 16 characters) and a value - which can be one of a [number of types](../messages/common.md#MAV_PARAM_TYPE).
 
@@ -65,6 +66,18 @@ All components must respond to parameter request messages addressed to their ID 
 > **Tip** *QGroundControl* by default queries all components of the currently connected system (it sends ID `MAV_COMP_ID_ALL`).
 
 
+## Limitations {#limitations}
+
+The protocol is designed with the assumption that the parameter set does not change during normal operation.
+
+If a system can add parameters during (or after) initial sychronisation the protocol cannot guarantee reliable/robust syncronisation, because there is no way to notify that the parameter set has changed and a new sync is required.
+
+> **Note** This is the case with ArduPilot, where parameter sets can be enabled/disabled during operation.
+
+When requesting parameters from such a system, the risk of problems can be *reduced* (but not removed) if:
+* The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter may change on systems where parameters can be added/removed).
+* [PARAM_VALUE](../messages/common.md#PARAM_VALUE).`param_count` may be monitored. If this changes the parameter set should be re-sychronised.
+
 ## Parameter Operations
 
 This section defines the state machine/message sequences for all parameter operations.
@@ -98,9 +111,11 @@ The sequence of operations is:
 1. Drone sends all parameters individually in [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
    - The drone should allow a break between each message in order to avoid saturating the link.
 1. GCS accumulates parameters in order to know which parameters have been/not been received  (`PARAM_VALUE` contains total number of params and index of current param).
-1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent.
-1. After timeout (messages no longer being sent) the GCS can request any missing parameter values by [requesting them individually](#read_single) (using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ)).
-
+1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent.  
+1. After timeout (messages no longer being sent) the GCS can request any missing parameter values.
+ 
+   The GCS determines what parameters are missing based on the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
+   The messages are [requested individually](#read_single) using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) and the missing `param_index`   
 
 ### Read Single Parameter {#read_single}
 
@@ -118,13 +133,12 @@ sequenceDiagram;
 
 The sequence of operations is:
 
-1. GCS (client) sends [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) specifying the either the parameter name or index.
+1. GCS (client) sends [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) specifying the either the parameter id (name) or parameter index.
 1. GCS starts timeout waiting for acknowledgment (in the form of a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) message).
 1. Drone responds with `PARAM_VALUE` containing the parameter value.
    This is a broadcast message (sent to all systems).
 
 The drone may restart the sequence the `PARAM_VALUE` acknowledgment is not received within the timeout.
-
 
 ### Write Parameters {#write}
 
