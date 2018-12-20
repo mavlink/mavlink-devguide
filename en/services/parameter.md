@@ -183,7 +183,7 @@ PX4 implements the protocol in a way that is compatible with this specification.
 
 PX4 additionally provides a mechanism that allows a GCS to *cache* parameters, which significantly reduces ready-to-use time for the GCS if parameters have not been changed since the previous parameter sync.
 The way that this mechanism works is that when the list of parameters is requested, PX4 first sends a `PARAM_VALUE` with the `param_index` of `INT16_MAX` (in code, referred to as `PARAM_HASH`) containing a *hash* of the parameter set. 
-If the GCS has a matching hash value it can immediately start using its cached parameters (rather than waiting for all of them to upload).
+If the GCS has a matching hash value it can immediately start using its cached parameters (instead of waiting for all of the rest to upload).
 
 Source files:
 * [src/modules/mavlink/mavlink_parameters.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_parameters.cpp)
