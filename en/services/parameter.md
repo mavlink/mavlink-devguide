@@ -27,7 +27,7 @@ Message | Description
 
 Enum | Description
 -- | --
-<span id="MAV_PARAM_TYPE"></span>[MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE) | The [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE) store/encode parameter values within a `float` field. This type conveys the real type of the encoded parameter value.
+<span id="MAV_PARAM_TYPE"></span>[MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE) | The [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE) store/encode parameter values within a `float` field. This type conveys the real type of the encoded parameter value, e.g. `MAV_PARAM_TYPE_UINT16`, `MAV_PARAM_TYPE_INT32`, etc.
 
 
 ## Parameter Encoding
@@ -36,8 +36,13 @@ Parameters names/ids are set in the `param_id` field of messages where they are 
 The `param_id` string can store up to 16 characters. 
 The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars.
 
-Values are encoded *within* the `param_value` field, an IEE754 single-precision, 4 byte, floating point value. 
-The `param_type` ([MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE)) is used to indicate the actual type of the data so that it can be decoded by the recipient. Supported types are: 8, 16, 32 and 64-bit signed and unsigned integers, and 32 and 64-bit floating point numbers.
+Values are byte-wise encoded *within* the `param_value` field, an IEE754 single-precision, 4 byte, floating point value. 
+The `param_type` ([MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE)) is used to indicate the actual type of the data so that it can be decoded by the recipient. 
+Supported types are: 8, 16, 32 and 64-bit signed and unsigned integers, and 32 and 64-bit floating point numbers.
+
+> **Note** A byte-wise conversion is needed, rather than a simple cast, to enable larger integers to be exchanged (e.g. 1E7 scaled integers can be useful for encoding some types of data, but lose precision if cast directly to floats).
+
+### Mavgen C API
 
 The C API provides a convenient `union` that allows you to bytewise convert between any of the supported types: `mavlink_param_union_t` ([mavlink_types.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_types.h)).
 For example, below we shown how you can set the union integer field but pass the float value to the sending function: 
@@ -52,9 +57,13 @@ param.type = MAV_PARAM_TYPE_INT32;
 mavlink_msg_param_set_send(xxx, xxx, param.param_float, param.type, xxx);
 ```
 
-> **Note** A byte-wise conversion is needed, rather than a simple cast, to enable larger integers to be exchanged (e.g. 1E7 scaled integers can be useful for encoding some types of data, but lose precision if cast directly to floats).
+### Mavgen Python API (Pymavlink)
 
-Pymavlink parameter values are sent/received as the float type (it does not have any explicit support for encoding/decoding other parameter types). Any support for working with non-float parameters must be added by the code that uses Pymavlink.
+Pymavlink does not include special support to byte-wise encode the non-float data types (unsurprisingly, because Python effectively "hides" low level data types from users).
+When working with a system that supports non-float parameters (e.g. PX4) you will need to do the encoding/decoding yourself when sending and receiving messages.
+
+There is a good example of how to do this in the Pymavlink [mavparm.py](https://github.com/ArduPilot/pymavlink/blob/master/mavparm.py) module (see `MAVParmDict.mavset()`).
+
 
 ## Multi-System and Multi-Component Support
 
@@ -73,8 +82,6 @@ All components must respond to parameter request messages addressed to their ID 
 The protocol is designed with the assumption that the parameter set does not change during normal operation.
 
 If a system can add parameters during (or after) initial sychronisation the protocol cannot guarantee reliable/robust syncronisation, because there is no way to notify that the parameter set has changed and a new sync is required.
-
-> **Note** This is the case with ArduPilot, where parameter sets can be enabled/disabled during operation.
 
 When requesting parameters from such a system, the risk of problems can be *reduced* (but not removed) if:
 * The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter may change on systems where parameters can be added/removed).
@@ -182,6 +189,8 @@ The drone may restart the sequence the `PARAM_VALUE` acknowledgment is not recei
 ### PX4
 
 PX4 implements the protocol in a way that is compatible with this specification.
+Only float and Int32 parameters are used.
+
 
 Source files:
 * [src/modules/mavlink/mavlink_parameters.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_parameters.cpp)
@@ -189,4 +198,20 @@ Source files:
 
 ### ArduPilot
 
-ArduPilot also implements the parameter service workflow, but only supports (sends and receives) float parameters.
+ArduPilot implements an incompatible version of this protocol.
+
+The implementation uses the same message types and workflow. 
+The main difference is that ArduPilot encodes data within parameter message value fields (floats) using a normal C cast rather than a byte-wise copy (and expects incoming messages to use the same encoding).
+This can result in significant rounding errors.
+
+Other known differences are:
+- Parameter sets can be enabled/disabled during operation. 
+  This can invalidate the set of synchronized parameters and make access to parameters by index unreliable.
+- `PARAM_SET`
+  - `param_type` in the message is ignored. The data type is obtained by checking stored type info (via name lookup).
+  - The data type is used to constrain and round the received value before it is stored (as a float).
+  - A `PARAM_VALUE` is not emitted after the parameter update with the new value (or the old value if update failed).
+
+Source files:
+- [libraries/GCS_MAVLink/GCS_Param.cpp](https://github.com/ArduPilot/ardupilot/blob/master/libraries/GCS_MAVLink/GCS_Param.cpp)
+- [libraries/AP_Param/AP_Param.cpp](https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Param/AP_Param.cpp)
