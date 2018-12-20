@@ -130,7 +130,15 @@ The drone may restart the sequence the `PARAM_VALUE` acknowledgment is not recei
 
 ## Implementations
 
-PX4
+### PX4
+
+PX4 implements the protocol in a way that is compatible with this specification.
+
+Source files:
 
 * [src/modules/mavlink/mavlink_parameters.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_parameters.cpp)
 * [src/modules/mavlink/mavlink_parameters.h](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_parameters.h)
+
+### ArduPilot
+
+TBD
