@@ -1,10 +1,10 @@
-# Frequently Asked Questions (FAQ)
+# 자주 묻는 질문
 
-## Users
+## 사용자
 
 <dl>
-  <dt>How efficient is MAVLink?</dt>
-  <dd>MAVLink is a very efficient protocol. MAVLink 1 has just 8 bytes overhead per packet, including start sign and packet drop detection. MAVLink 2 has just 14 bytes of overhead (27 if signing is used), but is now a much more extensible protocol.</dd>
+  <dt>MAVLINK는 얼마나 효율적인가요?</dt>
+  <dd>MAVLINK는 매우 효율적인 프로토콜입니다. MAVLINK 1은 시작 기호(start sign)와 패킷 손실 탐지(packet drop detection)를 포함해 패킷당 8 바이트의 오버헤드를 가집니다. MAVLink 2 has just 14 bytes of overhead (27 if signing is used), but is now a much more extensible protocol.</dd>
 
   <dt>How many vehicles does MAVLink support?</dt>
   <dd>255 vehicles, with system IDs ranging from 1 to 255 (0 is not a valid vehicle ID).
