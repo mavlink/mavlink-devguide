@@ -13,19 +13,19 @@
   <dt>MAVLINK는 어떤 장치에서 사용 가능한가요?</dt>
   <dd>MAVLINK는 ARM7, ATMega, dsPic, STM32등의 마이크로컨트롤러와 Windows, Linux, MacOS, Android와 iOS등의 운영체제에서 작동하는 것으로 보입니다.</dd>
 
-  <dt>MAVLINK는 얼마나 신뢰할 수 있나요?</dt>
+  <dt>MAVLINK를 얼마나 신뢰할 수 있나요?</dt>
   <dd>상당히 신뢰할 수 있습니다. MAVLink는 다양하고 까다로운 통신 채널(높은 지연율/잡음) 환경에서 다양한 기기와 지상국(및 다른 노드) 간 통신을 위해 2009년부터 사용되었습니다. MAVLINK는 패킷 손실 탐지와 패킷 결성 체크를 위해 잘 알려진 ITU X.25 체크섬 메서드를 사용합니다.</dd>
   
-  <dt>How secure is MAVLink?</dt>
-  <dd>MAVLink provides <a href="../guide/message_signing.md">message signing</a>, which allows systems to authenticate that messages are from a trusted source. MAVLink does not provide message encryption.  
+  <dt>MAVLINK는 얼마나 안전한가요?</dt>
+  <dd>MAVLINK는 시스템이 신뢰할 수 있는 출처에서 오는 메세지임을 인증하도록 <a href="../guide/message_signing.md">message signing</a>을 사용합니다. MAVLINK는 메세지 암호화를 제공하지 않습니다.  
   </dd>
 </dl>
 
-## Developers
+## 개발자
 
 <dl>
-  <dt>Can I use MAVLink in a closed source application without copyright issues?</dt>
-  <dd>Yes, without any limitations. The generated MAVLink library headers are made available under the *MIT license* (for more information see: <a href="../README.md#license">Introduction > License</a>).
+  <dt>MAVLINK를 소스 코드를 공개하지 않는 어플리케이션에서 저작권 문제 없이 사용할 수 있나요?</dt>
+  <dd>어떠한 제한 없이 MAVLINK를 사용할 수 있습니다. 생성된 MAVLINK 라이브러리 헤더는 *MIT 라이센스*(자세한 정보는 <a href="../README.md#license">Introduction > License</a>를 참조하세요.)하에 사용할 수 있도록 만들어졌습니다.
   </dd>
 
   <dt>How does MAVLink detect and decode messages in the byte stream?</dt>
