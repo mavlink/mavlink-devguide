@@ -4,13 +4,13 @@
 
 <dl>
   <dt>MAVLINK는 얼마나 효율적인가요?</dt>
-  <dd>MAVLINK는 매우 효율적인 프로토콜입니다. MAVLINK 1은 시작 기호(start sign)와 패킷 손실 탐지(packet drop detection)를 포함해 패킷당 8 바이트의 오버헤드를 가집니다. MAVLink 2 has just 14 bytes of overhead (27 if signing is used), but is now a much more extensible protocol.</dd>
+  <dd>MAVLINK는 매우 효율적인 프로토콜입니다. MAVLINK 1은 시작 기호(start sign)와 패킷 손실 탐지(packet drop detection)를 포함해 패킷당 8 바이트의 오버헤드를 가집니다. Mavlink 2는 14 바이트(부호를 포함하는 경우, 27 바이트)의 오버헤드를 가지지만, 훨씬 더 확장성 있는 프로토콜입니다.</dd>
 
-  <dt>How many vehicles does MAVLink support?</dt>
-  <dd>255 vehicles, with system IDs ranging from 1 to 255 (0 is not a valid vehicle ID).
-    <br><b>Note:</b> Strictly speaking MAVLink supports 255 concurrent <em>systems</em>, and these can include a mix of vehicles, GCS, antenna trackers and other hardware.</dd>
+  <dt>MAVLINK가 동시에 얼마나 많은 기기를 지원하나요?</dt>
+  <dd>1부터 255까지의 범위(0은 유효한 ID가 아닙니다)의 시스템 ID를 가지는 총 255개의 기기를 지원합니다.
+    <br><b>Note:</b> 엄밀하게는, MAVLINK는 동시에 255개의  시스템을 지원합니다. 이러한 시스템은 여러 기기의 혼합, 지상 관제 장비(GCS, Ground Control Station), 안테나 트래커와 이외의 하드웨어를 포함할 수 있습니다.</dd>
 
-  <dt>Where can I use MAVLink?</dt>
+  <dt>MAVLINK는 어떤 장치에서 사용 가능한가요?</dt>
   <dd>MAVLink has been shown to work on multiple microcontrollers and operating systems, including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS.</dd>
 
   <dt>How reliable is MAVLink?</dt>
