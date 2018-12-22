@@ -1,10 +1,10 @@
-# Summary
+# 목차
 
-* [Introduction](README.md) 
-  * [Overview](about/overview.md)
-  * [FAQ](about/faq.md)
+* [소개](README.md) 
+  * [개요](about/overview.md)
+  * [자주 묻는 질문](about/faq.md)
   * [Implementations](about/implementations.md)
-* [Getting Started](getting_started/README.md) 
+* [시작하기](getting_started/README.md) 
   * [Install MAVLink](getting_started/installation.md)
   * [Generate MAVLink Libraries](getting_started/generate_libraries.md)
   * [Using MAVLink Libraries](getting_started/use_libraries.md) 
