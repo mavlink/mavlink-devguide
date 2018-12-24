@@ -1,15 +1,13 @@
 # Mission Protocol
 
-The mission sub-protocol allows a GCS or developer API to manage *mission* (flight plan), *geofence* and *safe point* information on a drone/component. 
+The mission sub-protocol allows a GCS or developer API to exchange *mission* (flight plan), *geofence* and *safe point* information with a drone/component.
 
 The protocol covers:
 - Operations to upload, download and clear missions, set/get the current mission item number, and get notification when the current mission item has changed.
-- Message type(s) for exchanging mission items.
-- MAVLink commands that are common to most autopilots/GCS.
+- Message type(s) and enumerations for exchanging mission items.
+- Mission Items ("MAVLink commands") that are common to most systems.
 
-The protocol follows the client/server pattern, where operations (and most commands) are initiated by the GCS/developer API (client) and acknowledged by the autopilot (server).
-
-The protocol supports re-request of messages that have not arrived, allowing missions to be reliably transferred over a lossy link. <!-- not quite guaranteed :-) -->
+The protocol supports re-request of messages that have not arrived, which allows missions to be reliably transferred over a lossy link.
 
 
 ## Mission Types {#mission_types}
@@ -43,14 +41,8 @@ The items for the different types of mission are identified using a simple name 
 - *Rally point mission items*: 
   - There is just one rally point `MAV_CMD`: [MAV_CMD_NAV_RALLY_POINT](../messages/common.md#MAV_CMD_NAV_RALLY_POINT).
 
-
-The commands are transmitted/encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages.
-These messages include fields to identify the desired mission item (command id) and up to 7 command-specific parameters. 
-
-The first four parameters can be used for any purpose (depends on the particular [command](../messages/common.md#MAV_CMD)). 
-The last three parameters (x, y, z) are used for positional information in NAV commands, but can be used for any purpose in other commands.
-
-The command-specific fields in the messages are shown below:
+The commands are transmitted/encoded in [MISSION_ITEM or MISSION_ITEM_INT](#command_message_type) messages.
+These messages include fields to identify the particular mission item (command id) and up to 7 command-specific optional parameters.
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
@@ -59,21 +51,33 @@ param1 | float |  | Param #1.
 param2 | float |  | Param #2.
 param3 | float |  | Param #3.
 param4 | float |  | Param #4.
-x | float / int32_t | | X coordinate (local frame) or latitude (global frame) for navigation commands (otherwise Param #5).
-y | float / int32_t | | Y coordinate (local frame) or longitude (global frame) for navigation commands (otherwise Param #6).
-z | float | | Z coordinate (local frame) or altitude (global - relative or absolute, depending on frame) (otherwise Param #7).
+param5 (x) | float / int32_t | | X coordinate (local frame) or latitude (global frame) for navigation commands (otherwise Param #5).
+param6 (y) | float / int32_t | | Y coordinate (local frame) or longitude (global frame) for navigation commands (otherwise Param #6).
+param7 (z) | float | | Z coordinate (local frame) or altitude (global - relative or absolute, depending on frame) (otherwise Param #7).
 
-The remaining message fields are used for addressing, defining the mission type, specifying the frame used for x, y, z in NAV messages, etc.:
+The first four parameters (shown above) can be used for any purpose - this depends on the particular [command](../messages/common.md#MAV_CMD). 
+The last three parameters (x, y, z) are used for positional information in `MAV_CMD_NAV_*` commands, but can be used for any purpose in other commands.
+
+The remaining message fields are used for addressing, defining the mission type, specifying the reference frame used for x, y, z in `MAV_CMD_NAV_*` messages, etc.:
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
 target_system | uint8_t | | System ID
 target_component | uint8_t | | Component ID
-seq | uint16_t |  | Sequence number for message.
+seq | uint16_t |  | Sequence number for item within mission (indexed from 0).
 frame | uint8_t | MAV_FRAME | The coordinate system of the waypoint.<br>ArduPilot and PX4 both only support global frames in MAVLink commands (local frames may be supported if the same command is sent via the command protocol).
 mission_type | uint8_t | MAV_MISSION_TYPE | [Mission type](#mission_types).
 current | uint8_t | false:0, true:1 | When downloading, whether the item is the current mission item.
 autocontinue | uint8_t | | Autocontinue to next waypoint when the command completes.
+
+
+## MISSION_ITEM_INT vs MISSION_ITEM {#command_message_type}
+
+[MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) are used to exchange individual [mission items](#message_commands) between systems. `MISSION_ITEM` messages encode all mission item parameters into `float` parameters fields (single precision IEEE754) for transmission. `MISSION_ITEM_INT` is exactly the same except that `param5` and `param6` are Int32 fields.
+
+Protocol implementations must allow both message types in supported [operations](#operations) (along with the  corresponding [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) and [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) message types).
+
+MAVLink *users* should always prefer `MISSION_ITEM_INT` because it allows latitude/longitude to be encoded without the loss of precision that can come from using `MISSION_ITEM`.
 
 
 ## Message/Enum Summary
@@ -83,10 +87,10 @@ The following messages and enums are used by the service.
 Message | Description
 -- | --
 <span id="MISSION_REQUEST_LIST"></span>[MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST) | Initiate [mission download](#download_mission) from a system by requesting the list of mission items.
-<span id="MISSION_COUNT"></span>[MISSION_COUNT](../messages/common.md#MISSION_COUNT) | Send the number of items in a mission. This is used to initiate [mission upload](#uploading_mission) or as a response to [MISSION_REQUEST_LIST](#MISSION_REQUEST_LIST) when [downloading a mission].
+<span id="MISSION_COUNT"></span>[MISSION_COUNT](../messages/common.md#MISSION_COUNT) | Send the number of items in a mission. This is used to initiate [mission upload](#uploading_mission) or as a response to [MISSION_REQUEST_LIST](#MISSION_REQUEST_LIST) when [downloading a mission](#download_mission).
 <span id="MISSION_REQUEST_INT"></span>[MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) | Request mission item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM_INT](#MISSION_ITEM_INT) message. Used for mission [upload](#uploading_mission) and [download](#download_mission).
 <span id="MISSION_REQUEST"></span>[MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) | Request mission item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM](#MISSION_ITEM) message. Used for mission [upload](#uploading_mission) and [download](#download_mission).
-<span id="MISSION_ITEM_INT"></span>[MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). The message encodes positional information in integer parameters for greater precision than [MISSION_ITEM](#MISSION_ITEM). Used for mission [upload](#uploading_mission) and [download].
+<span id="MISSION_ITEM_INT"></span>[MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). The message encodes positional information in integer parameters for greater precision than [MISSION_ITEM](#MISSION_ITEM). Used for mission [upload](#uploading_mission) and [download](#download_mission).
 <span id="MISSION_ITEM"></span>[MISSION_ITEM](../messages/common.md#MISSION_ITEM) | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). The message encodes positional information in `float` parameters. Used for mission [upload](#uploading_mission) and [download](#download_mission).
 <span id="MISSION_ACK"></span>[MISSION_ACK](../messages/common.md#MISSION_ACK) | Acknowledgment message when a system completes a [mission operation](#operations) (e.g. sent by autopilot after it has uploaded all mission items). The message includes a [MAV_MISSION_RESULT](#MAV_MISSION_RESULT) indicating either success or the type of failure.
 <span id="MISSION_CURRENT"></span>[MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) | Message containing the current mission item sequence number. This is emitted when the [current mission item is set/changed](#current_mission_item).
@@ -108,12 +112,18 @@ Enum | Description
 
 ## Operations {#operations}
 
-This section explains the main operations defined by the protocol.
+This section defines all the protocol operations.
+
+> **Note** An implementation need not support all operations.
+  In particular, operations to upload and download *partial* missions are optional.
 
 
 ### Upload a Mission to the Vehicle {#uploading_mission}
 
 The diagram below shows the communication sequence to upload a mission to a drone (assuming all operations succeed).
+
+> **Note** Mission update must be robust! 
+  A new mission should be fully uploaded and accepted before the old mission is replaced/removed.
 
 {% mermaid %}
 sequenceDiagram;
@@ -121,34 +131,39 @@ sequenceDiagram;
     participant Drone
     GCS->>Drone: MISSION_COUNT
     GCS->>GCS: Start timeout
-    Drone->>GCS: MISSION_REQUEST_INT (1)
-    GCS->>GCS: Start timeout
-    GCS-->>Drone: MISSION_ITEM_INT (1)
-    Drone->>GCS: MISSION_REQUEST_INT (2)
-    GCS->>GCS: Start timeout
-    GCS-->>Drone: MISSION_ITEM_INT (2)
+    Drone->>GCS: MISSION_REQUEST_INT (0)
+    Drone->>Drone: Start timeout
+    GCS-->>Drone: MISSION_ITEM_INT (0)
+    Note over GCS,Drone: ... iterate through items ...
+    Drone->>GCS: MISSION_REQUEST_INT (count-1)
+    Drone->>Drone: Start timeout
+    GCS-->>Drone: MISSION_ITEM_INT (count-1)
     Drone->>GCS: MISSION_ACK
 {% endmermaid %}
 
 In more detail, the sequence of operations is:
-1. GCS (client) sends [MISSION_COUNT](../messages/common.md#MISSION_COUNT) including the number of mission items to be uploaded (`count`)
-   - A [timeout](#timeout) must be started for the GCS to wait on the response from Drone (`MISSION_REQUEST_INT`) .
-1. Drone (server) receives the message, and prepares to upload mission items.
-1. Drone responds with [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) requesting the first mission item (`seq==1`).
+1. GCS sends [MISSION_COUNT](../messages/common.md#MISSION_COUNT) including the number of mission items to be uploaded (`count`).
+   - A [timeout](#timeout) must be started for the GCS to wait on the response from Drone (`MISSION_REQUEST_INT`).
+1. Drone receives message and responds with [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) requesting the first mission item (`seq==0`).
+   - A [timeout](#timeout) must be started for the Drone to wait on the `MISSION_ITEM_INT` response from GCS.
 1. GCS receives `MISSION_REQUEST_INT` and responds with the requested mission item in a [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) message.
-1. Drone and GCS repeat the `MISSION_REQUEST_INT`/`MISSION_ITEM_INT` cycle, iterating `seq` until all items are uploaded.
-1. For the last mission item, the drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with the result of the operation result: `type` ([MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT)):
-   - On success, `type` must be set to [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED)
-   - On failure, `type` must set to [MAV_MISSION_ERROR](../messages/common.md#MAV_MISSION_ERROR) or some other error code. 
-1. GCS receives `MISSION_ACK`:
-   - If `MAV_MISSION_ACCEPTED` the operation is complete.
-   - If an error, the transaction fails but may be retried. <!-- not clear here -->
+1. Drone and GCS repeat the `MISSION_REQUEST_INT`/`MISSION_ITEM_INT` cycle, iterating `seq` until all items are uploaded (`seq==count-1`).
+1. After receiving the last mission item the drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with the `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED) indicating mission upload completion/success.
+   - The drone should set the new mission to be the current mission, discarding the original data.
+   - The drone considers the upload complete.
+1. GCS receives `MISSION_ACK` containing `MAV_MISSION_ACCEPTED` to indicate the operation is complete.
 
 Note:
-- The GCS (client) sets a [timeout](#timeout) after every message and will resend if there is no response from the vehicle.
-- The client will re-request missing mission items if any are received out of sequence.
-- The sequence above shows the [MAVLink commands](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages. 
-  Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way (see [MISSION_ITEM_INT vs MISSION_ITEM below](#command_message_type)).
+- A [timeout](#timeout) is set for every message that requires a response (e.g. `MISSION_REQUEST_INT`).
+  If the timeout expires without a response being received then the request must be resent.
+- Mission items must be received in order.
+  If an item is received out-of-sequence the expected item should be re-requested by the vehicle (the out-of-sequence item is dropped).
+- An [error](#errors) can be signaled in response to any request using a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing an error code. 
+  This must cancel the operation and restore the mission to its previous state.
+  For example, the drone might respond to the [MISSION_COUNT](../messages/common.md#MISSION_COUNT) request with a [MAV_MISSION_NO_SPACE](../messages/common.md#MAV_MISSION_NO_SPACE) if there isn't enough space to upload the mission.
+- The sequence above shows the [mission items](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages. 
+  Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way.
+
 
 ### Download a Mission from the Vehicle {#download_mission}
 
@@ -161,20 +176,29 @@ sequenceDiagram;
     GCS->>Drone: MISSION_REQUEST_LIST
     GCS->>GCS: Start timeout
     Drone-->>GCS: MISSION_COUNT
-    GCS->>Drone: MISSION_REQUEST_INT (1)
+    GCS->>Drone: MISSION_REQUEST_INT (0)
     GCS->>GCS: Start timeout
-    Drone-->>GCS: MISSION_ITEM_INT (1)
-    GCS->>Drone: MISSION_REQUEST_INT (2)
+    Drone-->>GCS: MISSION_ITEM_INT (0)
+    Note over GCS,Drone: ... iterate through items ...
+    GCS->>Drone: MISSION_REQUEST_INT (count-1)
     GCS->>GCS: Start timeout
-    Drone-->>GCS: MISSION_ITEM_INT (2)
+    Drone-->>GCS: MISSION_ITEM_INT (count-1)
     GCS->>Drone: MISSION_ACK
 {% endmermaid %}
 
 The sequence is similar to that for [uploading a mission](#uploading_mission).
-The main difference is that the client (e.g. GCS) sends [MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST), which triggers the autopilot to respond with the current count of items. This starts a cycle where the GCS requests mission items, and the drone supplies them.
+The main difference is that the client (e.g. GCS) sends [MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST), which triggers the autopilot to respond with the current count of items. 
+This starts a cycle where the GCS requests mission items, and the drone supplies them.
 
-> **Note** The sequence shows the [MAVLink commands](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages. 
-  Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way (see [MISSION_ITEM_INT vs MISSION_ITEM below](#command_message_type)).
+Note:
+- A [timeout](#timeout) is set for every message that requires a response (e.g. `MISSION_REQUEST_INT`).
+  If the timeout expires without a response being received then the request must be resent.
+- Mission items must be received in order.
+  If an item is received out-of-sequence the expected item should be re-requested by the GCS (the out-of-sequence item is dropped).
+- An [error](#errors) can be signaled in response to any request using a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing an error code.
+  This must cancel the operation.
+- The sequence above shows the [mission items](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages.
+  Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way.
 
 
 ### Set Current Mission Item {#current_mission_item}
@@ -190,27 +214,30 @@ sequenceDiagram;
 {% endmermaid %}
 
 In more detail, the sequence of operations is:
-1. GCS (client) sends [MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT), specifying the new sequence number (`seq`). 
-1. Drone (server) receives message and attempts to update the current mission sequence number.
-   - On success, the Drone should *broadcast* a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message containing the current sequence number (`seq`). 
-   - On failure, the Drone should *broadcast* a [STATUSTEXT](../messages/common.md#STATUSTEXT) with a [MAV_SEVERITY](../messages/common.md#MAV_SEVERITY) and a string stating the problem. This may be displayed in the UI of receiving systems.
+1. GCS/App sends [MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT), specifying the new sequence number (`seq`).
+1. Drone receives message and attempts to update the current mission sequence number.
+   - On success, the Drone must *broadcast* a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message containing the current sequence number (`seq`). 
+   - On failure, the Drone must *broadcast* a [STATUSTEXT](../messages/common.md#STATUSTEXT) with a [MAV_SEVERITY](../messages/common.md#MAV_SEVERITY) and a string stating the problem.
+     This may be displayed in the UI of receiving systems.
 
 Notes:
-* There is no specific timeout/resend on this message.
+* There is no specific [timeout](#timeout) on the `MISSION_SET_CURRENT` message.
 * The acknowledgment of the message is via broadcast of mission/system status, which is not associated with the original message.
-  This approach is used because the message is relevant to all mission-handling clients.
+  This differs from [error handling](#errors) in other operations.
+  This approach is used because the success/failure is relevant to all mission-handling clients.
+
 
 ### Monitor Mission Progress {#monitor_progress}
 
 GCS/developer API can monitor progress by handling the appropriate messages sent by the drone:
-- The vehicle (server) must broadcast a [MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) message whenever a new mission item is reached.
-The message contains the `seq` number of the current mission item.
-- The vehicle must  also broadcast a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message if the [current mission item](#current_mission_item) is changed by a message.
+- The vehicle must broadcast a [MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) message whenever a new mission item is reached.
+  The message contains the `seq` number of the current mission item.
+- The vehicle must  also broadcast a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message if the [current mission item](#current_mission_item) is changed.
 
 
 ### Clear Missions {#clear_mission}
 
-The diagram below shows the communication sequence to clear the mission from a drone (timeouts are not displayed, and we assume all operations succeed).
+The diagram below shows the communication sequence to clear the mission from a drone (assuming all operations succeed).
 
 {% mermaid %}
 sequenceDiagram;
@@ -222,34 +249,125 @@ sequenceDiagram;
 {% endmermaid %}
 
 In more detail, the sequence of operations is:
-1. GCS (client) sends [MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)
+1. GCS/API sends [MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)
    - A [timeout](#timeout) is started for the GCS to wait on `MISSION_ACK` from Drone.
-1. Drone (server) receives the message, and clears the mission.
-   - A mission is considered cleared if a subsequent requests for mission count or current mission item indicates that there is no mission uploaded.
-1. Drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) that includes the result `type` ([MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT)):
-   - On success, this type must be set to [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED)
-   - On failure, the type must set to [MAV_MISSION_ERROR](../messages/common.md#MAV_MISSION_ERROR) or some other error code. 
-1. GCS receives `MISSION_ACK`:
-   - If `MAV_MISSION_ACCEPTED` the GCS clears its own stored information about the mission (that was just removed from the vehicle) and completes.
-   - If an error, the transaction fails, and the GCS record of the mission (if any) is retained.
-1. If no `MISSION_ACK` is received the operation will eventually timeout and may be retried (see [above](#timeout)).
+1. Drone receives the message, and clears the mission from storage.
+1. Drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with result `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED)[MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT).
+1. GCS receives `MISSION_ACK` and clears its own stored information about the mission.
+   The operation is now complete.
+
+Note:
+- A [timeout](#timeout) is set for every message that requires a response (e.g. `MISSION_CLEAR_ALL`).
+  If the timeout expires without a response being received then the request must be resent.
+- An [error](#errors) can be signaled in response to any request (in this case, just `MISSION_CLEAR_ALL`) using a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing an error code.
+  This must cancel the operation.
+  The GCS record of the mission (if any) should be retained.
 
 
-### Upload Partial Mission {#upload_partial}
+### Partial Mission Upload {#upload_partial}
 
-TBD
+The diagram below shows the communication sequence to upload a partial mission to a drone (assuming all operations succeed).
+The mission update must either overlap or immediately follow the final mission item of the existing mission (no "gaps" are allowed in the mission item sequence). 
+
+> **Note** The message sequence similar to a [full mission upload](#uploading_mission), except that it is triggered with a [MISSION_WRITE_PARTIAL_LIST](../messages/common.md#MISSION_WRITE_PARTIAL_LIST) instead of a [MISSION_COUNT](../messages/common.md#MISSION_COUNT).
+
+<span></span>
+> **Note** Unlike for full mission update, partial update is not required to be robust.
+  - Individual commands can fail, and a mission may be left partially updated.
+  - It is the responsibility of the mission planning software to ensure that, if successful, the new mission is self-consistent (i.e. the autopilot is not expected to validate that updates are "sane" with respect to other/existing items in the mission).
+
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MISSION_WRITE_PARTIAL_LIST
+    GCS->>GCS: Start timeout
+    Drone->>GCS: MISSION_REQUEST_INT (start_index)
+    Drone->>Drone: Start timeout
+    GCS-->>Drone: MISSION_ITEM_INT (start_index)
+    Note over GCS,Drone: ... iterate through items ...
+    Drone->>GCS: MISSION_REQUEST_INT (end_index)
+    Drone->>Drone: Start timeout
+    GCS-->>Drone: MISSION_ITEM_INT (end_index)
+    Drone->>GCS: MISSION_ACK
+{% endmermaid %}
 
 
-### Download Partial Mission {#download_partial}
+In more detail, the sequence of operations is:
+1. GCS sends [MISSION_WRITE_PARTIAL_LIST](../messages/common.md#MISSION_WRITE_PARTIAL_LIST) specifying the `start_index` and `end_index` of items to update/overwrite.
+   - A [timeout](#timeout) must be started for the GCS to wait on the response from Drone (`MISSION_REQUEST_INT`).
+1. Drone receives message and responds with [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) requesting the first mission item (`seq==start_index`).
+   - A [timeout](#timeout) must be started for the Drone to wait on the `MISSION_ITEM_INT` response from GCS.
+1. GCS receives `MISSION_REQUEST_INT` and responds with the requested mission item in a [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) message.
+1. Drone receives [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) and writes it into the existing mission.
+1. Drone and GCS repeat the `MISSION_REQUEST_INT`/`MISSION_ITEM_INT` cycle, iterating `seq` until all items are uploaded (including `seq==end_index`).
+1. After receiving the last mission item the drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with the `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED) indicating mission upload completion/success.
+   The drone considers the upload complete.
+1. GCS receives `MISSION_ACK` containing `MAV_MISSION_ACCEPTED`and considers the operation to be complete.
 
-TBD
+
+Note:
+- A [timeout](#timeout) is set for every message that requires a response (e.g. `MISSION_REQUEST_INT`).
+  If the timeout expires without a response being received then the request must be resent.
+- Mission items must be received in order.
+  If an item is received out-of-sequence the expected item should be re-requested by the vehicle (the out-of-sequence item is dropped).
+- An [error](#errors) can be signaled in response to any request using a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing an error code.
+  This must cancel the operation. 
+  The mission need not be rolled-back to the pre-operation state.
+  For example, an error might be returned after `MISSION_WRITE_PARTIAL_LIST` if the drone has insufficient space for the update, if the `start_index` is not inside/immediately after the end of the existing mission, if the `end_index` is before the `start_index`, etc.
+- The sequence above shows the [mission items](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages. 
+  Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way (see [MISSION_ITEM_INT vs MISSION_ITEM below](#command_message_type)).
 
 
+### Partial Mission Download {#download_partial}
 
-### Timeouts and Retries {#timeout}
+The diagram below shows the communication sequence to download part of a mission from a drone (assuming all operations succeed).
 
-All the client (GCS) commands are sent with a timeout.
-If a `MISSION_ACK` is not received before the timeout then the client (GCS) may resend the message.
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MISSION_REQUEST_PARTIAL_LIST
+    GCS->>Drone: MISSION_REQUEST_INT (start_index)
+    GCS->>GCS: Start timeout
+    Drone-->>GCS: MISSION_ITEM_INT (start_index)
+    Note over GCS,Drone: ... iterate through items ...
+    GCS->>Drone: MISSION_REQUEST_INT (end_index)
+    GCS->>GCS: Start timeout
+    Drone-->>GCS: MISSION_ITEM_INT (end_index)
+    GCS->>Drone: MISSION_ACK
+{% endmermaid %}
+
+In more detail, the sequence of operations is:
+1. GCS sends [MISSION_REQUEST_PARTIAL_LIST](../messages/common.md#MISSION_REQUEST_PARTIAL_LIST) specifying the start and end index values for the required mission items.
+   - No response is expected.
+   - Drone receives the message and prepares for mission item requests.
+1. GCS sends [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) requesting the first mission item (`seq==start_index`).
+   - A [timeout](#timeout) must be started for the GCS to wait on the response from Drone (`MISSION_ITEM_INT`).
+1. Drone receives `MISSION_REQUEST_INT` and responds with the requested mission item in a [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) message.
+1. GCS and Drone repeat the `MISSION_REQUEST_INT`/`MISSION_ITEM_INT` cycle, iterating `seq` until `end_index` (included) is reached.
+1. After receiving the last mission item the GCS responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with the `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED) indicating mission download completion/success.
+   The GCS considers the download complete.
+1. Drone receives `MISSION_ACK` containing `MAV_MISSION_ACCEPTED`and considers the operation to be complete.
+
+
+Note:
+- A [timeout](#timeout) is set for every message that requires a response (e.g. `MISSION_REQUEST_INT`).
+  If the timeout expires without a response being received then the request must be resent.
+- Mission items must be received in order.
+  If an item is received out-of-sequence the expected item should be re-requested by the GCS (the out-of-sequence item is dropped).
+- An [error](#errors) can be signaled in response to any request using a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing an error code.
+  This must cancel the operation.
+- The sequence above shows the [mission items](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages.
+  Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way.
+
+
+### Operation Exceptions
+
+#### Timeouts and Retries {#timeout}
+
+A timeout should be set for all messages that require a response.
+If the expected response is not received before the timeout then the message must be resent.
 If no response is received after a number of retries then the client must cancel the operation and return to an idle state.
 
 The recommended timeout values before resending, and the number of retries are:
@@ -257,22 +375,23 @@ The recommended timeout values before resending, and the number of retries are:
 - Timeout (mission items): 250 ms.
 - Retries (max): 5
 
-<!-- 
-### Invalid Mission Items
 
-TBD how should systems handle invalid items - ie not supported at all, or on vehicle type ? 
--->
+#### Errors/Completion {#errors}
 
 
-### MISSION_ITEM_INT vs MISSION_ITEM {#command_message_type}
+All operations complete with a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing the result of the operation ([MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT)) in the `type` field.
 
-The operations/sequence diagrams above show the [message commands](#message_commands) being requested/sent using [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) and [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT).
+On successful completion, the message must contain `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED); this is sent by the system that is receiving the command/data (e.g. the drone for mission upload or the GCS for mission download).
 
-Protocol implementations must also support the same operations/sequences using the corresponding [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) and [MISSION_ITEM](../messages/common.md#MISSION_ITEM) message types.
-The only difference is that `MISSION_ITEM_INT` encodes the latitude and longitude as integers rather than floats.
+An operation may also complete with an error - `MISSION_ACK.type` set to [MAV_MISSION_ERROR](../messages/common.md#MAV_MISSION_ERROR) or some other error code in [MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT). 
+This can occur in response to any message/anywhere in the sequence.
 
-> **Tip** MAVLink *users* should always prefer the `*_INT` variants. 
-  These avoid/reduce the precision limitations from using `MISSION_ITEM`.
+Errors are considered unrecoverable. 
+In an error is sent, both ends of the system should reset themselves to the idle state and the current state of the mission on the vehicle should be unaltered.
+
+Note:
+- [timeouts](#timeout) are not considered errors.
+- Out-of-sequence messages in mission upload/download are recoverable, and are not treated as errors.
 
 
 ## Mission File Formats
@@ -281,8 +400,6 @@ The *defacto* standard file format for exchanging missions/plans is discussed in
 
 
 ## Implementations
-
-<!-- detail below is approximate - still checking precise behaviour vs spec -->
 
 ### PX4
 
