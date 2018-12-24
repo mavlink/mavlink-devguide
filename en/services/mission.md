@@ -228,10 +228,12 @@ In more detail, the sequence of operations is:
 1. If no `MISSION_ACK` is received the operation will eventually timeout and may be retried (see [above](#timeout)).
 
 
+
+
 ### Timeouts and Retries {#timeout}
 
 All the client (GCS) commands are sent with a timeout.
-If a `MISSION_ACK` is not received before the timeout then the client (GCS) may resend the message. <!-- really guaranteed? What about partial-states in vehicle -->
+If a `MISSION_ACK` is not received before the timeout then the client (GCS) may resend the message.
 If no response is received after a number of retries then the client must cancel the operation and return to an idle state.
 
 The recommended timeout values before resending, and the number of retries are:
