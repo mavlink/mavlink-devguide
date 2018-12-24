@@ -14,34 +14,41 @@ The protocol supports re-request of messages that have not arrived, allowing mis
 
 ## Mission Types {#mission_types}
 
-MAVLink 1 supports only "regular" flight-plan missions. 
-MAVLink 2 supports three types of "missions": flight plans, geofence and rally/safe Points (the vehicle must store and act on these separately).
+MAVLink 2 supports three types of "missions": flight plans, geofences and rally/safe points.
+The protocol uses the same sequence of operations for all types (albeit with different types of [Mission Items](#mavlink_commands)).
+The mission types must be stored and handled separately/independently.
 
-The mission type is specified in a MAVLink 2 message extension field: `mission_type` using one of the [MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_TYPE) enum values:
-- [MAV_MISSION_TYPE_MISSION](../messages/common.md#MAV_MISSION_TYPE_MISSION)
-- [MAV_MISSION_TYPE_FENCE](../messages/common.md#MAV_MISSION_TYPE_FENCE)
-- [MAV_MISSION_TYPE_RALLY](../messages/common.md#MAV_MISSION_TYPE_RALLY)
+Mission protocol messages include the type of associated mission in the `mission_type` field (a MAVLink 2 message extension).
+The field takes one of the [MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_TYPE) enum values:
+[MAV_MISSION_TYPE_MISSION](../messages/common.md#MAV_MISSION_TYPE_MISSION), [MAV_MISSION_TYPE_FENCE](../messages/common.md#MAV_MISSION_TYPE_FENCE), [MAV_MISSION_TYPE_RALLY](../messages/common.md#MAV_MISSION_TYPE_RALLY).
 
-> **Note** You set the `mission_type` in messages: [MISSION_COUNT](../messages/common.md#MISSION_COUNT), [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST), [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT), [MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL), etc.
-
-The protocol uses the same sequence of operations for all types (albeit with different MAVLink commands).
+> **Note** MAVLink 1 supports only "regular" flight-plan missions (this is implied/not explicitly set).
 
 
-## Mission Items/MAVLink Commands {#mavlink_commands}
+## Mission Items (MAVLink Commands) {#mavlink_commands}
 
-MAVLink commands are defined in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
+Mission items for all the [mission types](#mission_types) are defined in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
 
-> **Note** 
-  - Some commands can be sent outside of a mission context using the [Command Protocol](../services/command.md). 
-  - Not all commands in `MAV_CMD` are supported by all systems (or all flight modes).
+> **Note** [MAV_CMD](../messages/common.md#MAV_CMD) is used to define commands that can be used in missions ("mission items") and commands that can be sent outside of a mission context (using the [Command Protocol](../services/command.md)). 
+  Some `MAV_CMD` can be used with both mission and command protocols.
+  Not all commands/mission items are supported on all systems (or for all flight modes).
 
-The *mission* commands are broadly divided into three groups. 
-* NAV commands (`MAV_CMD_NAV_*`) for navigation/movement - e.g. setting waypoints, taking off/landing, etc.
-* DO commands (`MAV_CMD_DO_*`) for immediate actions like changing speed or activating a servo.
-* CONDITION commands (`	MAV_CMD_CONDITION_*`) for changing the execution of the mission based on a condition - e.g. pausing the mission for a time before executing next command.
+The items for the different types of mission are identified using a simple name prefix convention:
+- *Flight plans*:
+  - NAV commands (`MAV_CMD_NAV_*`) for navigation/movement (e.g. [MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT), [MAV_CMD_NAV_LAND](../messages/common.md#MAV_CMD_NAV_LAND))
+  - DO commands (`MAV_CMD_DO_*`) for immediate actions like changing speed or activating a servo (e.g. [MAV_CMD_DO_CHANGE_SPEED](../messages/common.md#MAV_CMD_DO_CHANGE_SPEED)).
+  - CONDITION commands (`MAV_CMD_CONDITION_*`) for changing the execution of the mission based on a condition - e.g. pausing the mission for a time before executing next command ([MAV_CMD_CONDITION_DELAY](../messages/common.md#MAV_CMD_CONDITION_DELAY)).
+- *Geofence mission items*:
+  - Prefixed with `MAV_CMD_NAV_FENCE_` (e.g. [MAV_CMD_NAV_FENCE_RETURN_POINT](../messages/common.md#MAV_CMD_NAV_FENCE_RETURN_POINT)).
+- *Rally point mission items*: 
+  - There is just one rally point `MAV_CMD`: [MAV_CMD_NAV_RALLY_POINT](../messages/common.md#MAV_CMD_NAV_RALLY_POINT).
+
 
 The commands are transmitted/encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages.
-These messages include fields to identify the desired command (command id) and up to 7 command-specific parameters. The first four parameters can be used for any purpose (depends on the particular [command](../messages/common.md#MAV_CMD)). The last three parameters (x, y, z) are used for positional information in NAV commands, but can be used for any purpose in other commands.
+These messages include fields to identify the desired mission item (command id) and up to 7 command-specific parameters. 
+
+The first four parameters can be used for any purpose (depends on the particular [command](../messages/common.md#MAV_CMD)). 
+The last three parameters (x, y, z) are used for positional information in NAV commands, but can be used for any purpose in other commands.
 
 The command-specific fields in the messages are shown below:
 
@@ -87,8 +94,8 @@ Message | Description
 <span id="STATUSTEXT"></span>[STATUSTEXT](../messages/common.md#STATUSTEXT) | Sent to notify systems when a request to [set the current mission item](#current_mission_item) fails.
 <span id="MISSION_CLEAR_ALL"></span>[MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL) | Message sent to [clear/delete all mission items](#clear_mission) stored on a system.
 <span id="MISSION_ITEM_REACHED"></span>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).
-<span id="MISSION_REQUEST_PARTIAL_LIST"></span>[MISSION_REQUEST_PARTIAL_LIST](../messages/common.md#MISSION_REQUEST_PARTIAL_LIST) | TBD.
-<span id="MISSION_WRITE_PARTIAL_LIST"></span>[MISSION_WRITE_PARTIAL_LIST](../messages/common.md#MISSION_WRITE_PARTIAL_LIST) | TBD.
+<span id="MISSION_REQUEST_PARTIAL_LIST"></span>[MISSION_REQUEST_PARTIAL_LIST](../messages/common.md#MISSION_REQUEST_PARTIAL_LIST) | Initiate a [partial download of mission items](#download_partial) from a system/component.
+<span id="MISSION_WRITE_PARTIAL_LIST"></span>[MISSION_WRITE_PARTIAL_LIST](../messages/common.md#MISSION_WRITE_PARTIAL_LIST) | Initiate a [partial upload of new mission items](#upload_partial) to a system/component.
 
 
 Enum | Description
@@ -114,12 +121,12 @@ sequenceDiagram;
     participant Drone
     GCS->>Drone: MISSION_COUNT
     GCS->>GCS: Start timeout
-    Drone->>GCS: MISSION_REQUEST_INT (0)
-    GCS->>GCS: Start timeout
-    GCS-->>Drone: MISSION_ITEM_INT (0)
     Drone->>GCS: MISSION_REQUEST_INT (1)
     GCS->>GCS: Start timeout
     GCS-->>Drone: MISSION_ITEM_INT (1)
+    Drone->>GCS: MISSION_REQUEST_INT (2)
+    GCS->>GCS: Start timeout
+    GCS-->>Drone: MISSION_ITEM_INT (2)
     Drone->>GCS: MISSION_ACK
 {% endmermaid %}
 
@@ -154,12 +161,12 @@ sequenceDiagram;
     GCS->>Drone: MISSION_REQUEST_LIST
     GCS->>GCS: Start timeout
     Drone-->>GCS: MISSION_COUNT
-    GCS->>Drone: MISSION_REQUEST_INT (0)
-    GCS->>GCS: Start timeout
-    Drone-->>GCS: MISSION_ITEM_INT (0)
     GCS->>Drone: MISSION_REQUEST_INT (1)
     GCS->>GCS: Start timeout
     Drone-->>GCS: MISSION_ITEM_INT (1)
+    GCS->>Drone: MISSION_REQUEST_INT (2)
+    GCS->>GCS: Start timeout
+    Drone-->>GCS: MISSION_ITEM_INT (2)
     GCS->>Drone: MISSION_ACK
 {% endmermaid %}
 
@@ -228,6 +235,15 @@ In more detail, the sequence of operations is:
 1. If no `MISSION_ACK` is received the operation will eventually timeout and may be retried (see [above](#timeout)).
 
 
+### Upload Partial Mission {#upload_partial}
+
+TBD
+
+
+### Download Partial Mission {#download_partial}
+
+TBD
+
 
 
 ### Timeouts and Retries {#timeout}
@@ -266,9 +282,9 @@ The *defacto* standard file format for exchanging missions/plans is discussed in
 
 The protocol has been implemented in C.
 
-Mission upload, download, clearing missions, and monitoring progress are supported a defined in this specification.
+Mission upload, download, clearing missions, and monitoring progress are supported as defined in this specification.
 
-Partial mission upload and download are not supported (e.g. [MISSION_REQUEST_PARTIAL_LIST](#MISSION_REQUEST_PARTIAL_LIST) and[MISSION_WRITE_PARTIAL_LIST](#MISSION_WRITE_PARTIAL_LIST)).
+Mission [partial upload](#upload_partial) and [partial download](#download_partial) are not supported (e.g. [MISSION_REQUEST_PARTIAL_LIST](#MISSION_REQUEST_PARTIAL_LIST) and [MISSION_WRITE_PARTIAL_LIST](#MISSION_WRITE_PARTIAL_LIST)).
 
 Source code:
 * [src/modules/mavlink/mavlink_mission.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_mission.cpp)
@@ -283,21 +299,7 @@ Source code:
 
 ### ArduPilot
 
-The protocol has been implemented in C.
-
-Mission upload, download, clearing missions, and monitoring progress and partial mission upload ([MISSION_WRITE_PARTIAL_LIST](#MISSION_WRITE_PARTIAL_LIST)) are supported.
-Partial mission download is not supported ([MISSION_REQUEST_PARTIAL_LIST](#MISSION_REQUEST_PARTIAL_LIST)).
-
-ArduPilot's implementation differs from this specification (non-exhaustively):
-- The mission sequence number (`seq` in commands) is indexed from 0 instead of 1.
-  The zero index is populated with the home position of the vehicle.
-  Index 1 and later are the mission items, as per the specification.
-
-<!-- Other possible differences include: 
-- may emit wrong type of info on partial write for fail case, 
-- may not do robust update. Checking
-- may not support cancellation of upload.
--->
+TBD
 
 ### Dronecode SDK
 
