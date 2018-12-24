@@ -258,6 +258,11 @@ The recommended timeout values before resending, and the number of retries are:
 - Retries (max): 5
 
 
+### Invalid Mission Items
+
+TBD <!-- how should systems handle invalid items - ie not supported at all, or on vehicle type ? -->
+
+
 ### MISSION_ITEM_INT vs MISSION_ITEM {#command_message_type}
 
 The operations/sequence diagrams above show the [message commands](#message_commands) being requested/sent using [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) and [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT).
@@ -297,9 +302,56 @@ The protocol has been implemented in C.
 Source code:
 * [src/MissionManager/PlanManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/MissionManager/PlanManager.cc)
 
+
 ### ArduPilot
 
+ArduPilot implements the mission protocol in C.
+While the messages and sequence are the same, there are a number of significant differences from  the behaviour described above.
+
+Source:
+* [/libraries/GCS_MAVLink/GCS_Common.cpp](https://github.com/ArduPilot/ardupilot/blob/master/libraries/GCS_MAVLink/GCS_Common.cpp)
+
+
+#### Flight Plan Missions
+
+Mission upload, download, clearing missions, and monitoring progress and partial mission upload ([MISSION_WRITE_PARTIAL_LIST](#MISSION_WRITE_PARTIAL_LIST)) are supported.
+
+Partial mission download is not supported ([MISSION_REQUEST_PARTIAL_LIST](#MISSION_REQUEST_PARTIAL_LIST)).
+
+ArduPilot's implementation differs from this specification (non-exhaustively):
+- The mission sequence number (`seq` in commands) of 0 is populated with the home position of the vehicle.
+  - This is an invalid sequence index with respect to the specification, and can be dropped by compliant systems.
+  - ArduPilot will silently drop a mission item with `seq==0` and an "invalid" home position.
+  - Index 1 and later are the mission items, as per the specification.
+
+
+- Mission uploads are not "robust" (i.e. after a mission upload the stored mission may not match the uploaded mission). For example:
+  - If you try and upload more items than ArduPilot can store the system will "accept" the items (i.e. not report a failure) but will just overwrite each new item to the same (highest) slot in the mission list.
+  
+In addition, the following behaviour is not defined by the specification:
+- ArduPilot performs some validation of fields when mission items are submitted. 
+  The validation code is common to all vehicles; mission items that are not understood by the vehicle type are accepted on upload but skipped during mission execution.
+- A new mission can be uploaded while a mission is being executed. 
+  In this case the current waypoint will be executed to completion even if the waypoint sequence is different in the new mission (to get the new item you would need to reset the sequence or switch in/out of auto mode).
+- ArduPilot missions are stored in flash, but run from RAM. The missions therefore have a vehicle/board-specific maximum mission size (but do not depend on having an SD card and can survive SD card failure in flight).
+- Only fields that are used are stored, and some field values are rounded internally. This means that if a mission that is uploaded and then downloaded may look slightly different.
+
+
+<!-- Other possible differences include: 
+- may emit wrong type of info on partial write for fail case, 
+- may not do robust update. Checking
+- may not support cancellation of upload.
+-->
+
+#### Geofence Missions
+
 TBD
+
+#### Rally Point Missions
+
+TBD
+
+
 
 ### Dronecode SDK
 
