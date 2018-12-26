@@ -28,11 +28,11 @@
   <dd>어떠한 제한 없이 MAVLINK를 사용할 수 있습니다. 생성된 MAVLINK 라이브러리 헤더는 *MIT 라이센스*(자세한 정보는 <a href="../README.md#license">Introduction > License</a>를 참조하세요.)하에 사용할 수 있도록 만들어졌습니다.
   </dd>
 
-  <dt>How does MAVLink detect and decode messages in the byte stream?</dt>
-  <dd>MAVLink waits for the packet start sign, then reads the packet length and matches the checksum after n bytes. If the checksum matches, it returns the decoded packet and waits again for the start sign. If bytes are altered or lost, it will drop the current message and continue the next try on the following message.</dd>
+  <dt>MAVLink는 어떻게 메세지를 감지하고 바이트 스트림으로 디코딩하나요?</dt>
+  <dd>MAVLink는 패킷 시작 신호를 기다리다가 패킷의 길이를 읽습니다. 그리고 n 바이트 이후의 체크섬을 검사합니다. 만약 체크섬이 일치한다면, 디코딩된 패킷을 반환하고 다시 시작 신호를 기다립니다. 만약에 바이트가 변경되거나 손실되면, MAVLink는 현재 메세지 처리를 중단하고, 다음 메세지에서 디코딩을 계속합니다.</dd>
 
-  <dt>MAVLink uses only one start sign - isn't this less safe than using two or three start signs?</dt>
-  <dd>No. We use the CRC check to reliably determine whether a complete message has been received. Using additional start signs may increase likelihood of detecting the start point, but would provide no greater certainty of message validity. Since extra signs would increase bytes on the communication link, we choose not to use them.</dd>
+  <dt>MAVLink는 하나의 시작 신호만을 사용하는데, 두세개의 시작 신호를 사용하는 것보다 덜 안전하지 않나요?</dt>
+  <dd>그렇지 않습니다. MAVLink는 CRC 체크를 통해 완전한 메세지를 수신하였는지 판단합니다. Using additional start signs may increase likelihood of detecting the start point, but would provide no greater certainty of message validity. Since extra signs would increase bytes on the communication link, we choose not to use them.</dd>
 
   <dt>What are the system and component IDs for?</dt>
   <dd>The system ID represents the identity of a particular <em>MAVLink system</em> (vehicle, GCS, etc.). MAVLink can be used with up to 255 systems at the same time. The component ID reflects a component that is part of a larger system - for example a system might include an autopilot, companion computer and/or camera, which can be separately addressed. The component ID therefore lets MAVLink be used for both on- and off-board communication.</dd>
