@@ -17,7 +17,7 @@
   <dd>상당히 신뢰할 수 있습니다. MAVLink는 다양하고 까다로운 통신 채널(높은 지연율/잡음) 환경에서 다양한 기기와 지상국(및 다른 노드) 간 통신을 위해 2009년부터 사용되었습니다. MAVLINK는 패킷 손실 탐지와 패킷 결성 체크를 위해 잘 알려진 ITU X.25 체크섬 메서드를 사용합니다.</dd>
   
   <dt>MAVLINK는 얼마나 안전한가요?</dt>
-  <dd>MAVLINK는 시스템이 신뢰할 수 있는 출처에서 오는 메세지임을 인증하도록 <a href="../guide/message_signing.md">message signing</a>을 사용합니다. MAVLINK는 메세지 암호화를 제공하지 않습니다.  
+  <dd>MAVLINK는 시스템이 신뢰할 수 있는 출처에서 오는 메시지임을 인증하도록 <a href="../guide/message_signing.md">message signing</a>을 사용합니다. MAVLINK는 메시지 암호화를 제공하지 않습니다.  
   </dd>
 </dl>
 
@@ -28,11 +28,11 @@
   <dd>어떠한 제한 없이 MAVLINK를 사용할 수 있습니다. 생성된 MAVLINK 라이브러리 헤더는 *MIT 라이센스*(자세한 정보는 <a href="../README.md#license">Introduction > License</a>를 참조하세요.)하에 사용할 수 있도록 만들어졌습니다.
   </dd>
 
-  <dt>MAVLink는 어떻게 메세지를 감지하고 바이트 스트림으로 디코딩하나요?</dt>
-  <dd>MAVLink는 패킷 시작 신호를 기다리다가 패킷의 길이를 읽습니다. 그리고 n 바이트 이후의 체크섬을 검사합니다. 만약 체크섬이 일치한다면, 디코딩된 패킷을 반환하고 다시 시작 신호를 기다립니다. 만약에 바이트가 변경되거나 손실되면, MAVLink는 현재 메세지 처리를 중단하고, 다음 메세지에서 디코딩을 계속합니다.</dd>
+  <dt>MAVLink는 어떻게 메시지를 감지하고 바이트 스트림으로 디코딩하나요?</dt>
+  <dd>MAVLink는 패킷 시작 신호를 기다리다가 패킷의 길이를 읽습니다. 그리고 n 바이트 이후의 체크섬을 검사합니다. 만약 체크섬이 일치한다면, 디코딩된 패킷을 반환하고 다시 시작 신호를 기다립니다. 만약에 바이트가 변경되거나 손실되면, MAVLink는 현재 메시지 처리를 중단하고, 다음 메시지에서 디코딩을 계속합니다.</dd>
 
   <dt>MAVLink는 하나의 시작 신호만을 사용하는데, 두세개의 시작 신호를 사용하는 것보다 덜 안전하지 않나요?</dt>
-  <dd>그렇지 않습니다. MAVLink는 CRC 체크를 통해 완전한 메세지를 수신하였는지 판단합니다. Using additional start signs may increase likelihood of detecting the start point, but would provide no greater certainty of message validity. Since extra signs would increase bytes on the communication link, we choose not to use them.</dd>
+  <dd>그렇지 않습니다. MAVLink는 CRC 체크를 통해 수신 메시지의 무결성을 판단합니다. 시작 신호를 추가로 사용하는 것은 시작 신호의 탐지율을 올릴 수 있지만, 메시지 유효성 관점에서는 단일 시작 신호에 비해 불확실성을 크게 줄이지 못합니다. 추가 시작 신호가 커뮤니케이션 링크의 바이트 수를 증가시키기 때문에, MAVLink는 단일 시작 신호를 사용하기로 결정했습니다.</dd>
 
   <dt>What are the system and component IDs for?</dt>
   <dd>The system ID represents the identity of a particular <em>MAVLink system</em> (vehicle, GCS, etc.). MAVLink can be used with up to 255 systems at the same time. The component ID reflects a component that is part of a larger system - for example a system might include an autopilot, companion computer and/or camera, which can be separately addressed. The component ID therefore lets MAVLink be used for both on- and off-board communication.</dd>
