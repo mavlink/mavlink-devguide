@@ -43,12 +43,10 @@
   <dt>왜 CRC_EXTRA가 패킷 무결성 체크섬에 필요한가요?</dt>
   <dd>The CRC_EXTRA CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message 
   (required because as a lightweight protocol, the message structure isn't included in the payload).
-  <br><br>
-  In MAVLink 0.9 the CRC was not used (although there was a length check). 
-  There were a small number of cases where XML describing a message changed without changing the message length, 
-  leading to badly corrupted fields when messages were read.</dd>
+  MAVLink 0.9에서는 CRC가 사용되지 않았습니다.(다만 길이 검사는 있었습니다.) 
+  메시지를 설명하는 XML이 메시지 길이 변화 없이 변경되는 소수의 케이스가 있었는데, 이것은 메시지를 읽을 때 심각하게 손상된 필드로 이어졌습니다.</dd>
 
-  <dt>I would like to help improve the decoding/encoding routines or other features. Can MAVLink be changed?</dt>
-  <dd>Yes, but only very, very carefully with safety testing. 
-  <br>MAVLink is used as a safety-critical component in many autopilot systems and has undergone many years of testing. Please suggest new features on the MAVLink <a href="../README.md#support">support channels</a>.</dd>
+  <dt>디코딩/인코딩 루틴이나 다른 요소들을 개선하는데 도움을 주고 싶습니다. MAVLink가 바뀔 수도 있나요?</dt>
+  <dd>매우 엄밀한 안전 테스트를 거치는 경우에 그럴 수 있습니다. 
+  MAVLink는 많은 autopilot 시스템에서 중요한 안전 요소로 사용되기 때문에 다년간의 시험을 거칩니다. MAVLink <a href="../README.md#support">support channels</a>에 새로운 요소를 제안해주세요.</dd>
 </dl>
