@@ -38,9 +38,9 @@
   <dd>시스템 ID는 특정 <em>MAVLink system</em>(vehicle, GCS, etc.)의 신원을 나타냅니다. MAVLink는 동시에 최대 255개의 시스템에서 함께 사용될 수 있습니다. 컴포넌트 ID는 더 큰 시스템의 요소를 나타냅니다. 예를 들면, 시스템은 autopilot, companion computer, 카메라 등 개별적으로 식별할 수 있는 장치를 포함할 수 있습니다. 따라서 컴포넌트 ID는 MAVLink가 온보드와 오프보드 통신 모두에서 사용되게 합니다.</dd>
 
   <dt>MAVLink 헤더의 시퀀스 넘버(Sequence number)는 왜 필요한가요?</dt>
-  <dd>MAVLink는 무인 항공 시스템의 안전에 중요한 구성 요소의 일부입니다. 많은 패킷을 버리는 나쁜 통신 링크는 비행체의 안전을 위협할 수 있고, 모니터링이 필요합니다. Having the sequence in the header allows MAVLink to continuously provide feedback about the packet drop rate and thus allows the aircraft or ground control station to take action.</dd>
+  <dd>MAVLink는 무인 항공 시스템의 안전에 중요한 구성 요소의 일부입니다. 많은 패킷을 버리는 나쁜 통신 링크는 비행체의 안전을 위협할 수 있고, 모니터링이 필요합니다. 헤더에 시퀀스를 가지는 것은 MAVLink가 패킷 손실률에 관한 피드백을 지속적으로 제공할 수 있도록 하여 비행체나 관제국이 조치를 취할수 있도록 합니다.</dd>
   
-  <dt>Why is CRC_EXTRA needed in the packet checksum?</dt>
+  <dt>왜 CRC_EXTRA가 패킷 무결성 체크섬에 필요한가요?</dt>
   <dd>The CRC_EXTRA CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message 
   (required because as a lightweight protocol, the message structure isn't included in the payload).
   <br><br>
