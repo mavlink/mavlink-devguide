@@ -34,11 +34,11 @@
   <dt>MAVLink는 하나의 시작 신호만을 사용하는데, 두세개의 시작 신호를 사용하는 것보다 덜 안전하지 않나요?</dt>
   <dd>그렇지 않습니다. MAVLink는 CRC 체크를 통해 수신 메시지의 무결성을 판단합니다. 시작 신호를 추가로 사용하는 것은 시작 신호의 탐지율을 올릴 수 있지만, 메시지 유효성 관점에서는 단일 시작 신호에 비해 불확실성을 크게 줄이지 못합니다. 추가 시작 신호가 커뮤니케이션 링크의 바이트 수를 증가시키기 때문에, MAVLink는 단일 시작 신호를 사용하기로 결정했습니다.</dd>
 
-  <dt>What are the system and component IDs for?</dt>
-  <dd>The system ID represents the identity of a particular <em>MAVLink system</em> (vehicle, GCS, etc.). MAVLink can be used with up to 255 systems at the same time. The component ID reflects a component that is part of a larger system - for example a system might include an autopilot, companion computer and/or camera, which can be separately addressed. The component ID therefore lets MAVLink be used for both on- and off-board communication.</dd>
+  <dt>시스템 ID와 컴포넌트 ID는 어떤 용도인가요?</dt>
+  <dd>시스템 ID는 특정 <em>MAVLink system</em>(vehicle, GCS, etc.)의 신원을 나타냅니다. MAVLink는 동시에 최대 255개의 시스템에서 함께 사용될 수 있습니다. 컴포넌트 ID는 더 큰 시스템의 요소를 나타냅니다. 예를 들면, 시스템은 autopilot, companion computer, 카메라 등 개별적으로 식별할 수 있는 장치를 포함할 수 있습니다. 따라서 컴포넌트 ID는 MAVLink가 온보드와 오프보드 통신 모두에서 사용되게 합니다.</dd>
 
-  <dt>Why is the sequence number in the MAVLink header needed?</dt>
-  <dd>MAVLink is part of the safety critical components of an unmanned air system. A bad communication link dropping many packets can endanger the flight safety of the aircraft and has to be monitored. Having the sequence in the header allows MAVLink to continuously provide feedback about the packet drop rate and thus allows the aircraft or ground control station to take action.</dd>
+  <dt>MAVLink 헤더의 시퀀스 넘버(Sequence number)는 왜 필요한가요?</dt>
+  <dd>MAVLink는 무인 항공 시스템의 안전에 중요한 구성 요소의 일부입니다. 많은 패킷을 버리는 나쁜 통신 링크는 비행체의 안전을 위협할 수 있고, 모니터링이 필요합니다. Having the sequence in the header allows MAVLink to continuously provide feedback about the packet drop rate and thus allows the aircraft or ground control station to take action.</dd>
   
   <dt>Why is CRC_EXTRA needed in the packet checksum?</dt>
   <dd>The CRC_EXTRA CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message 
