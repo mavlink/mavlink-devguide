@@ -287,12 +287,17 @@ The *defacto* standard file format for exchanging missions/plans is discussed in
 
 The protocol has been implemented in C.
 
-Mission upload, download, clearing missions, and monitoring progress are supported as defined in this specification.
-
-Mission [partial upload](#upload_partial) and [partial download](#download_partial) are not supported (e.g. [MISSION_REQUEST_PARTIAL_LIST](#MISSION_REQUEST_PARTIAL_LIST) and [MISSION_WRITE_PARTIAL_LIST](#MISSION_WRITE_PARTIAL_LIST)).
-
 Source code:
-* [src/modules/mavlink/mavlink_mission.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_mission.cpp)
+- [src/modules/mavlink/mavlink_mission.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_mission.cpp)
+
+
+The implementation status is (at time of writing):
+
+- Flight plan missions:
+  - upload, download, clearing missions, and monitoring progress are supported as defined in this specification.
+  - [partial upload](#upload_partial) and [partial download](#download_partial) are not supported.
+- Geofence missions" are supported as defined in this specification.
+- Rally point "missions" are not supported on PX4.
 
 
 ### QGroundControl
@@ -306,7 +311,10 @@ Source code:
 ### ArduPilot
 
 ArduPilot implements the mission protocol in C.
-While the messages and sequence are the same, there are a number of significant differences from  the behaviour described above.
+
+ArduPilot uses the same messages and message flow described in this specification. 
+There are some implementation diferences that affect compatibility.
+These are documented below.
 
 Source:
 * [/libraries/GCS_MAVLink/GCS_Common.cpp](https://github.com/ArduPilot/ardupilot/blob/master/libraries/GCS_MAVLink/GCS_Common.cpp)
@@ -316,25 +324,25 @@ Source:
 
 Mission upload, download, clearing missions, and monitoring progress and partial mission upload ([MISSION_WRITE_PARTIAL_LIST](#MISSION_WRITE_PARTIAL_LIST)) are supported.
 
-Partial mission download is not supported ([MISSION_REQUEST_PARTIAL_LIST](#MISSION_REQUEST_PARTIAL_LIST)).
+[Partial mission download](#download_partial) is not supported ([MISSION_REQUEST_PARTIAL_LIST](#MISSION_REQUEST_PARTIAL_LIST)).
 
 ArduPilot's implementation differs from this specification (non-exhaustively):
-- The mission sequence number (`seq` in commands) of 0 is populated with the home position of the vehicle.
-  - This is an invalid sequence index with respect to the specification, and can be dropped by compliant systems.
-  - ArduPilot will silently drop a mission item with `seq==0` and an "invalid" home position.
-  - Index 1 and later are the mission items, as per the specification.
-
-
-- Mission uploads are not "robust" (i.e. after a mission upload the stored mission may not match the uploaded mission). For example:
+- The first mission sequence number (`seq==0`) is populated with the home position of the vehicle instead of the first mission item.
+- Mission uploads are not "atomic". 
+  An upload that fails (or is canceled) part-way through will not match the pre-update state.
+  Instead it may be a mix of the original and new mission.
+- Even if upload is successful, the vehicle mission may not match the version on the uploading system.
   - If you try and upload more items than ArduPilot can store the system will "accept" the items (i.e. not report a failure) but will just overwrite each new item to the same (highest) slot in the mission list.
+  - Only fields that are used are stored; if an uploaded mission is then downloaded it will not survive the round trip unaltered.
   
-In addition, the following behaviour is not defined by the specification:
+The following behaviour is not defined by the specification (but is still of interest):
 - ArduPilot performs some validation of fields when mission items are submitted. 
   The validation code is common to all vehicles; mission items that are not understood by the vehicle type are accepted on upload but skipped during mission execution.
-- A new mission can be uploaded while a mission is being executed. 
+- A new mission can be uploaded while a mission is being executed.
   In this case the current waypoint will be executed to completion even if the waypoint sequence is different in the new mission (to get the new item you would need to reset the sequence or switch in/out of auto mode).
-- ArduPilot missions are stored in flash, but run from RAM. The missions therefore have a vehicle/board-specific maximum mission size (but do not depend on having an SD card and can survive SD card failure in flight).
-- Only fields that are used are stored, and some field values are rounded internally. This means that if a mission that is uploaded and then downloaded may look slightly different.
+- ArduPilot missions are stored in flash, but run from RAM. 
+  The missions therefore have a vehicle/board-specific maximum mission size (but do not depend on having an SD card and can survive SD card failure in flight).
+
 
 
 <!-- Other possible differences include: 
@@ -345,11 +353,11 @@ In addition, the following behaviour is not defined by the specification:
 
 #### Geofence Missions
 
-TBD
+Geofence is supported by ArduPilot, but are not managed using this protocol.
 
 #### Rally Point Missions
 
-TBD
+Rally points are supported by ArduPilot, but are not managed using this protocol
 
 
 
