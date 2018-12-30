@@ -7,7 +7,7 @@ and the CRC_EXTRA used for ensuring that the sender and reciever share a compati
 
 It is primarily intended for developers who are creating/maintaining a MAVLink generator 
 
-> **Tip** MAVLink users do not typically need to understand the serialization format, as encoding/decoding is handled by the MAVLink libraries. 
+> **Tip** MAVLink users do not typically need to understand the serialization format, as encoding/decoding is handled by the MAVLink libraries.
 
 
 <!--
@@ -223,4 +223,3 @@ See the MAVLink source code for [the documented C-implementation](https://github
 
 The CRC covers the whole message, excluding `magic` byte and the signature (if present). 
 The CRC includes the [CRC_EXTRA](#crc_extra) byte, which is used to ensure that the sending and receiving systems share a common understanding of the message definition.
- 
