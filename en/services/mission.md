@@ -257,10 +257,11 @@ The recommended timeout values before resending, and the number of retries are:
 - Timeout (mission items): 250 ms.
 - Retries (max): 5
 
-
+<!-- 
 ### Invalid Mission Items
 
-TBD <!-- how should systems handle invalid items - ie not supported at all, or on vehicle type ? -->
+TBD how should systems handle invalid items - ie not supported at all, or on vehicle type ? 
+-->
 
 
 ### MISSION_ITEM_INT vs MISSION_ITEM {#command_message_type}
@@ -302,7 +303,7 @@ The implementation status is (at time of writing):
 
 ### QGroundControl
 
-The protocol has been implemented in C.
+The protocol has been implemented in C++.
 
 Source code:
 * [src/MissionManager/PlanManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/MissionManager/PlanManager.cc)
@@ -310,7 +311,7 @@ Source code:
 
 ### ArduPilot
 
-ArduPilot implements the mission protocol in C.
+ArduPilot implements the mission protocol in C++.
 
 ArduPilot uses the same messages and message flow described in this specification. 
 There are some implementation diferences that affect compatibility.
@@ -331,18 +332,24 @@ ArduPilot's implementation differs from this specification (non-exhaustively):
 - Mission uploads are not "atomic". 
   An upload that fails (or is canceled) part-way through will not match the pre-update state.
   Instead it may be a mix of the original and new mission.
-- Even if upload is successful, the vehicle mission may not match the version on the uploading system.
+- Even if upload is successful, the vehicle mission may not match the version on the uploading system (and if the mission is then downloaded it will differ from the original).
   - If you try and upload more items than ArduPilot can store the system will "accept" the items (i.e. not report a failure) but will just overwrite each new item to the same (highest) slot in the mission list.
-  - Only fields that are used are stored; if an uploaded mission is then downloaded it will not survive the round trip unaltered.
-  
+  - Only fields that are used are stored.
+  - There is rounding on some fields (and in some cases internal maximum possible values due to available storage space).
+    Failures can occur if you do a straight comparison of the float params before/after upload.
+- A [MISSION_ACK](#MISSION_ACK) returning an error value (NACK) does not terminate the upload (i.e. it is not considered an unrecoverable error).
+  As long as ArduPilot has not yet timed-out a system can retry the current mission item upload. 
+- A mission cannot be cleared while it is being executed (i.e. while in Auto mode). 
+  Note that a new mission *can* be uploaded (even a zero-size mission - which is equivalent to clearing).
+
+
 The following behaviour is not defined by the specification (but is still of interest):
 - ArduPilot performs some validation of fields when mission items are submitted. 
   The validation code is common to all vehicles; mission items that are not understood by the vehicle type are accepted on upload but skipped during mission execution.
+- ArduPilot preforms some vehicle-specific validation at mission runtime (e.g. of jump targets).
 - A new mission can be uploaded while a mission is being executed.
   In this case the current waypoint will be executed to completion even if the waypoint sequence is different in the new mission (to get the new item you would need to reset the sequence or switch in/out of auto mode).
-- ArduPilot missions are stored in flash, but run from RAM. 
-  The missions therefore have a vehicle/board-specific maximum mission size (but do not depend on having an SD card and can survive SD card failure in flight).
-
+- ArduPilot missions are not stored in an SD card and therefore have a vehicle/board-specific maximum mission size (as a benefit, on ArduPilot, missions can survive SD card failure in flight).
 
 
 <!-- Other possible differences include: 
