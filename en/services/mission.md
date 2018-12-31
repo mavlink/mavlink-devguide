@@ -362,6 +362,16 @@ Note:
   Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way.
 
 
+### Canceling Operations {#cancel}
+
+The above mission operations can be canceled by responding to any request (e.g. `MISSION_REQUEST_INT`) with a `MISSION_ACK` message containing `MAV_MISSION_DENIED` (or another error).
+Both systems should then return themselves to the idle state (if the receiving system does not receive the cancellation message it will resend and get another error response).
+<!-- note, 
+- we need a proper enum value for cancellation as may end up with wrong status messages https://github.com/mavlink/mavlink/pull/1044
+- ardupilot doesn't support cancellation. 
+-->
+
+
 ### Operation Exceptions
 
 #### Timeouts and Retries {#timeout}
@@ -377,7 +387,6 @@ The recommended timeout values before resending, and the number of retries are:
 
 
 #### Errors/Completion {#errors}
-
 
 All operations complete with a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing the result of the operation ([MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT)) in the `type` field.
 
@@ -417,6 +426,13 @@ The implementation status is (at time of writing):
 - Geofence missions" are supported as defined in this specification.
 - Rally point "missions" are not supported on PX4.
 
+Mission operation cancellation works for mission download (sets system to idle).
+Mission operation cancellation does not work for mission uploading; PX4 resends `MISSION_REQUEST_INT` until the operation times out. 
+<!-- https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_mission.cpp#L641 -->
+
+Source code:
+* [src/modules/mavlink/mavlink_mission.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_mission.cpp)
+
 
 ### QGroundControl
 
@@ -431,7 +447,7 @@ Source code:
 ArduPilot implements the mission protocol in C++.
 
 ArduPilot uses the same messages and message flow described in this specification. 
-There are some implementation diferences that affect compatibility.
+There are some implementation differences that affect compatibility.
 These are documented below.
 
 Source:
