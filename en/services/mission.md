@@ -341,6 +341,8 @@ ArduPilot's implementation differs from this specification (non-exhaustively):
   As long as ArduPilot has not yet timed-out a system can retry the current mission item upload. 
 - A mission cannot be cleared while it is being executed (i.e. while in Auto mode). 
   Note that a new mission *can* be uploaded (even a zero-size mission - which is equivalent to clearing).
+- Explicit cancellation of operations is not supported.
+  If one end stops communicating the other end will eventually timeout and reset itself to an idle/ready state.
 
 
 The following behaviour is not defined by the specification (but is still of interest):
