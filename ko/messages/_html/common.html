@@ -3245,14 +3245,14 @@
      <td>
       <a href="#MAV_MISSION_TYPE_FENCE">MAV_MISSION_TYPE_FENCE</a>
      </td>
-     <td>Specifies GeoFence area(s). Items are MAV_CMD_FENCE_ GeoFence items.</td>
+     <td>Specifies GeoFence area(s). Items are MAV_CMD_NAV_FENCE_ GeoFence items.</td>
     </tr>
     <tr id="MAV_MISSION_TYPE_RALLY">
      <td>2</td>
      <td>
       <a href="#MAV_MISSION_TYPE_RALLY">MAV_MISSION_TYPE_RALLY</a>
      </td>
-     <td>Specifies the rally points for the vehicle. Rally points are alternative RTL points. Items are MAV_CMD_RALLY_POINT rally point items.</td>
+     <td>Specifies the rally points for the vehicle. Rally points are alternative RTL points. Items are MAV_CMD_NAV_RALLY_POINT rally point items.</td>
     </tr>
     <tr id="MAV_MISSION_TYPE_ALL">
      <td>255</td>
@@ -18193,6 +18193,46 @@
       </a>
      </td>
      <td>Measurement covariance, 0 for unknown / invalid readings</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">horizontal_fov<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Horizontal Field of View (angle) where the distance measurement is valid and the field of view is known. Otherwise this is set to 0.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">vertical_fov<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Vertical Field of View (angle) where the distance measurement is valid and the field of view is known. Otherwise this is set to 0.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">quaternion<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Quaternion of the sensor orientation in vehicle body frame (w, x, y, z order, zero-rotation is 1, 0, 0, 0). Zero-rotation is along the vehicle body x-axis. This field is required if the orientation is set to MAV_SENSOR_ROTATION_CUSTOM. Set it to 0 if invalid."</td>
     </tr>
    </tbody>
   </table>
