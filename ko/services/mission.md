@@ -199,6 +199,12 @@ The recommended timeout values before resending, and the number of retries are:
 - Timeout (mission items): 250 ms.
 - Retries (max): 5
 
+<!-- 
+### Invalid Mission Items
+
+TBD how should systems handle invalid items - ie not supported at all, or on vehicle type ? 
+-->
+
 ### MISSION_ITEM_INT vs MISSION_ITEM {#command_message_type}
 
 The operations/sequence diagrams above show the [message commands](#message_commands) being requested/sent using [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) and [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT).
@@ -219,17 +225,21 @@ The *defacto* standard file format for exchanging missions/plans is discussed in
 
 The protocol has been implemented in C.
 
-Mission upload, download, clearing missions, and monitoring progress are supported as defined in this specification.
-
-Mission [partial upload](#upload_partial) and [partial download](#download_partial) are not supported (e.g. [MISSION_REQUEST_PARTIAL_LIST](#MISSION_REQUEST_PARTIAL_LIST) and [MISSION_WRITE_PARTIAL_LIST](#MISSION_WRITE_PARTIAL_LIST)).
-
 Source code:
 
 - [src/modules/mavlink/mavlink_mission.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_mission.cpp)
 
+The implementation status is (at time of writing):
+
+- Flight plan missions: 
+  - upload, download, clearing missions, and monitoring progress are supported as defined in this specification.
+  - [partial upload](#upload_partial) and [partial download](#download_partial) are not supported.
+- Geofence missions" are supported as defined in this specification.
+- Rally point "missions" are not supported on PX4.
+
 ### QGroundControl
 
-The protocol has been implemented in C.
+The protocol has been implemented in C++.
 
 Source code:
 
@@ -237,7 +247,53 @@ Source code:
 
 ### ArduPilot
 
-TBD
+ArduPilot implements the mission protocol in C++.
+
+ArduPilot uses the same messages and message flow described in this specification. There are some implementation diferences that affect compatibility. These are documented below.
+
+Source:
+
+- [/libraries/GCS_MAVLink/GCS_Common.cpp](https://github.com/ArduPilot/ardupilot/blob/master/libraries/GCS_MAVLink/GCS_Common.cpp)
+
+#### Flight Plan Missions
+
+Mission upload, download, clearing missions, and monitoring progress and partial mission upload ([MISSION_WRITE_PARTIAL_LIST](#MISSION_WRITE_PARTIAL_LIST)) are supported.
+
+[Partial mission download](#download_partial) is not supported ([MISSION_REQUEST_PARTIAL_LIST](#MISSION_REQUEST_PARTIAL_LIST)).
+
+ArduPilot's implementation differs from this specification (non-exhaustively):
+
+- The first mission sequence number (`seq==0`) is populated with the home position of the vehicle instead of the first mission item.
+- Mission uploads are not "atomic". An upload that fails (or is canceled) part-way through will not match the pre-update state. Instead it may be a mix of the original and new mission.
+- Even if upload is successful, the vehicle mission may not match the version on the uploading system (and if the mission is then downloaded it will differ from the original). 
+  - If you try and upload more items than ArduPilot can store the system will "accept" the items (i.e. not report a failure) but will just overwrite each new item to the same (highest) slot in the mission list.
+  - Only fields that are used are stored.
+  - There is rounding on some fields (and in some cases internal maximum possible values due to available storage space). Failures can occur if you do a straight comparison of the float params before/after upload.
+- A [MISSION_ACK](#MISSION_ACK) returning an error value (NACK) does not terminate the upload (i.e. it is not considered an unrecoverable error). As long as ArduPilot has not yet timed-out a system can retry the current mission item upload. 
+- A mission cannot be cleared while it is being executed (i.e. while in Auto mode). Note that a new mission *can* be uploaded (even a zero-size mission - which is equivalent to clearing).
+- Explicit cancellation of operations is not supported. If one end stops communicating the other end will eventually timeout and reset itself to an idle/ready state.
+
+The following behaviour is not defined by the specification (but is still of interest):
+
+- ArduPilot performs some validation of fields when mission items are submitted. The validation code is common to all vehicles; mission items that are not understood by the vehicle type are accepted on upload but skipped during mission execution.
+- ArduPilot preforms some vehicle-specific validation at mission runtime (e.g. of jump targets).
+- A new mission can be uploaded while a mission is being executed. In this case the current waypoint will be executed to completion even if the waypoint sequence is different in the new mission (to get the new item you would need to reset the sequence or switch in/out of auto mode).
+- ArduPilot missions are not stored in an SD card and therefore have a vehicle/board-specific maximum mission size (as a benefit, on ArduPilot, missions can survive SD card failure in flight).
+
+<!-- Other possible differences include: 
+
+- may emit wrong type of info on partial write for fail case, 
+- may not do robust update. Checking
+- may not support cancellation of upload.
+-->
+
+#### Geofence Missions
+
+Geofence is supported by ArduPilot, but are not managed using this protocol.
+
+#### Rally Point Missions
+
+Rally points are supported by ArduPilot, but are not managed using this protocol
 
 ### Dronecode SDK
 
