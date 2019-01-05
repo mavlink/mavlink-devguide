@@ -4553,6 +4553,56 @@
      </td>
      <td>Stream is thermal imaging</td>
     </tr>
+    <tr id="VIDEO_STREAM_HAS_BASIC_ZOOM">
+     <td>4</td>
+     <td>
+      <a href="#VIDEO_STREAM_HAS_BASIC_ZOOM">VIDEO_STREAM_HAS_BASIC_ZOOM</a>
+     </td>
+     <td>Stream has basic zoom control (MAV_CMD_SET_CAMERA_ZOOM)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="VIDEO_STREAM_TYPE">
+   <a href="#VIDEO_STREAM_TYPE">VIDEO_STREAM_TYPE</a>
+  </h3>
+  <p>Video stream types</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="VIDEO_STREAM_TYPE_RTSP">
+     <td>0</td>
+     <td>
+      <a href="#VIDEO_STREAM_TYPE_RTSP">VIDEO_STREAM_TYPE_RTSP</a>
+     </td>
+     <td>Stream is RTSP</td>
+    </tr>
+    <tr id="VIDEO_STREAM_TYPE_RTPUDP">
+     <td>1</td>
+     <td>
+      <a href="#VIDEO_STREAM_TYPE_RTPUDP">VIDEO_STREAM_TYPE_RTPUDP</a>
+     </td>
+     <td>Stream is RTP UDP (URI gives the port number)</td>
+    </tr>
+    <tr id="VIDEO_STREAM_TYPE_TCP_MPEG">
+     <td>2</td>
+     <td>
+      <a href="#VIDEO_STREAM_TYPE_TCP_MPEG">VIDEO_STREAM_TYPE_TCP_MPEG</a>
+     </td>
+     <td>Stream is MPEG on TCP</td>
+    </tr>
+    <tr id="VIDEO_STREAM_TYPE_MPEG_TS_H264">
+     <td>3</td>
+     <td>
+      <a href="#VIDEO_STREAM_TYPE_MPEG_TS_H264">VIDEO_STREAM_TYPE_MPEG_TS_H264</a>
+     </td>
+     <td>Stream is h.264 on MPEG TS (URI gives the port number)</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="SET_ZOOM_TYPE">
@@ -22145,6 +22195,16 @@
      <td>Number of streams available</td>
     </tr>
     <tr>
+     <td>type</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#VIDEO_STREAM_TYPE">VIDEO_STREAM_TYPE</a>
+     </td>
+     <td>Type of stream</td>
+    </tr>
+    <tr>
      <td>flags</td>
      <td>uint16_t</td>
      <td>
@@ -22223,7 +22283,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Video stream URI</td>
+     <td>Video stream URI (TCP or RTSP URI ground station should connect to) or port number (UDP port ground station should listen to)</td>
     </tr>
    </tbody>
   </table>
