@@ -18,5 +18,5 @@ To reboot or shut down a gimbal send the command [MAV_CMD_PREFLIGHT_REBOOT_SHUTD
 
 ## Telemetry from Gimbal
 
-A gimbal (or mount) should send a [HEARTBEAT](../messages/common.md#HEARTBEAT) (e.g. every second) just like any other AVLink component. Additionally, it can send feedback about the angles it's pointing using the message [MOUNT_ORIENTATION](../messages/common.md#MOUNT_ORIENTATION).
+A gimbal (or mount) should send a [HEARTBEAT](../messages/common.md#HEARTBEAT) (e.g. every second) just like any other MAVLink component. Additionally, it can send feedback about the angles it's pointing using the message [MOUNT_ORIENTATION](../messages/common.md#MOUNT_ORIENTATION).
 
