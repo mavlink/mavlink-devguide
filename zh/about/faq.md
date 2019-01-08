@@ -37,7 +37,7 @@
   <dt>What are the system and component IDs for?</dt>
   <dd>The system ID represents the identity of a particular <em>MAVLink system</em> (vehicle, GCS, etc.). MAVLink can be used with up to 255 systems at the same time. The component ID reflects a component that is part of a larger system - for example a system might include an autopilot, companion computer and/or camera, which can be separately addressed. The component ID therefore lets MAVLink be used for both on- and off-board communication.</dd>
 
-  <dt>Why is the sequence number in the MAVLink header needed?</dt>
+  <dt>为什么在 MAVLink 数据包头中要使用序列号？</dt>
   <dd>MAVLink is part of the safety critical components of an unmanned air system. A bad communication link dropping many packets can endanger the flight safety of the aircraft and has to be monitored. Having the sequence in the header allows MAVLink to continuously provide feedback about the packet drop rate and thus allows the aircraft or ground control station to take action.</dd>
   
   <dt>Why is CRC_EXTRA needed in the packet checksum?</dt>
