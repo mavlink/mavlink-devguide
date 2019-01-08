@@ -1,4 +1,4 @@
-# MAVLink Implementations
+# MAVLink的应用
 
 Many autopilots, ground stations, integration APIs, projects and other software packages use MAVLink. A non-exhaustive list of some users/contributors of this project is given below.
 
@@ -40,4 +40,4 @@ A number of higher level APIs have been written to simplify interacting with MAV
 * [ETH Flying Machine Arena](http://www.idsc.ethz.ch/Research_DAndrea/FMA)
 * [ETH SenseSoar Solar Airplane Project](http://www.sensesoar.ethz.ch/doku.php?id=project) 
 * [ETH Skye Blimp Project](http://www.projectskye.ch/)
-* [UC Santa Cruz SLUGS](http://slugsuav.soe.ucsc.edu/index.html) (early days contributor)
+* [UC Santa Cruz SLUGS](http://slugsuav.soe.ucsc.edu/index.html) (早期的贡献者)
