@@ -50,5 +50,5 @@
 
   <dt>I would like to help improve the decoding/encoding routines or other features. Can MAVLink be changed?</dt>
   <dd>Yes, but only very, very carefully with safety testing. 
-  <br>MAVLink is used as a safety-critical component in many autopilot systems and has undergone many years of testing. Please suggest new features on the MAVLink <a href="../README.md#support">support channels</a>.</dd>
+  <br>MAVLink is used as a safety-critical component in many autopilot systems and has undergone many years of testing. 请向MAVLink的技术支持推荐你所想到的新功能。</dd>
 </dl>
