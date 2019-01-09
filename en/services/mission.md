@@ -364,12 +364,9 @@ Note:
 
 ### Canceling Operations {#cancel}
 
-The above mission operations can be canceled by responding to any request (e.g. `MISSION_REQUEST_INT`) with a `MISSION_ACK` message containing `MAV_MISSION_DENIED` (or another error).
-Both systems should then return themselves to the idle state (if the receiving system does not receive the cancellation message it will resend and get another error response).
-<!-- note, 
-- we need a proper enum value for cancellation as may end up with wrong status messages https://github.com/mavlink/mavlink/pull/1044
-- ardupilot doesn't support cancellation. 
--->
+The above mission operations may be canceled by responding to any request (e.g. `MISSION_REQUEST_INT`) with a `MISSION_ACK` message containing the `MAV_MISSION_OPERATION_CANCELLED` error.
+
+Both systems should then return themselves to the idle state (if the system does not receive the cancellation message it will resend the request; the recipient will then be in the idle state and may respond with an appropriate error for that state).
 
 
 ### Operation Exceptions
