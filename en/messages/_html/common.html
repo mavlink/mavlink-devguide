@@ -2382,7 +2382,7 @@
   <h3 id="MAV_MISSION_RESULT">
    <a href="#MAV_MISSION_RESULT">MAV_MISSION_RESULT</a>
   </h3>
-  <p>result in a MAVLink mission ack</p>
+  <p>Result of mission operation (in a MISSION_ACK message).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2404,98 +2404,105 @@
      <td>
       <a href="#MAV_MISSION_ERROR">MAV_MISSION_ERROR</a>
      </td>
-     <td>generic error / not accepting mission commands at all right now</td>
+     <td>Generic error / not accepting mission commands at all right now.</td>
     </tr>
     <tr id="MAV_MISSION_UNSUPPORTED_FRAME">
      <td>2</td>
      <td>
       <a href="#MAV_MISSION_UNSUPPORTED_FRAME">MAV_MISSION_UNSUPPORTED_FRAME</a>
      </td>
-     <td>coordinate frame is not supported</td>
+     <td>Coordinate frame is not supported.</td>
     </tr>
     <tr id="MAV_MISSION_UNSUPPORTED">
      <td>3</td>
      <td>
       <a href="#MAV_MISSION_UNSUPPORTED">MAV_MISSION_UNSUPPORTED</a>
      </td>
-     <td>command is not supported</td>
+     <td>Command is not supported.</td>
     </tr>
     <tr id="MAV_MISSION_NO_SPACE">
      <td>4</td>
      <td>
       <a href="#MAV_MISSION_NO_SPACE">MAV_MISSION_NO_SPACE</a>
      </td>
-     <td>mission item exceeds storage space</td>
+     <td>Mission item exceeds storage space.</td>
     </tr>
     <tr id="MAV_MISSION_INVALID">
      <td>5</td>
      <td>
       <a href="#MAV_MISSION_INVALID">MAV_MISSION_INVALID</a>
      </td>
-     <td>one of the parameters has an invalid value</td>
+     <td>One of the parameters has an invalid value.</td>
     </tr>
     <tr id="MAV_MISSION_INVALID_PARAM1">
      <td>6</td>
      <td>
       <a href="#MAV_MISSION_INVALID_PARAM1">MAV_MISSION_INVALID_PARAM1</a>
      </td>
-     <td>param1 has an invalid value</td>
+     <td>param1 has an invalid value.</td>
     </tr>
     <tr id="MAV_MISSION_INVALID_PARAM2">
      <td>7</td>
      <td>
       <a href="#MAV_MISSION_INVALID_PARAM2">MAV_MISSION_INVALID_PARAM2</a>
      </td>
-     <td>param2 has an invalid value</td>
+     <td>param2 has an invalid value.</td>
     </tr>
     <tr id="MAV_MISSION_INVALID_PARAM3">
      <td>8</td>
      <td>
       <a href="#MAV_MISSION_INVALID_PARAM3">MAV_MISSION_INVALID_PARAM3</a>
      </td>
-     <td>param3 has an invalid value</td>
+     <td>param3 has an invalid value.</td>
     </tr>
     <tr id="MAV_MISSION_INVALID_PARAM4">
      <td>9</td>
      <td>
       <a href="#MAV_MISSION_INVALID_PARAM4">MAV_MISSION_INVALID_PARAM4</a>
      </td>
-     <td>param4 has an invalid value</td>
+     <td>param4 has an invalid value.</td>
     </tr>
     <tr id="MAV_MISSION_INVALID_PARAM5_X">
      <td>10</td>
      <td>
       <a href="#MAV_MISSION_INVALID_PARAM5_X">MAV_MISSION_INVALID_PARAM5_X</a>
      </td>
-     <td>x/param5 has an invalid value</td>
+     <td>x / param5 has an invalid value.</td>
     </tr>
     <tr id="MAV_MISSION_INVALID_PARAM6_Y">
      <td>11</td>
      <td>
       <a href="#MAV_MISSION_INVALID_PARAM6_Y">MAV_MISSION_INVALID_PARAM6_Y</a>
      </td>
-     <td>y/param6 has an invalid value</td>
+     <td>y / param6 has an invalid value.</td>
     </tr>
     <tr id="MAV_MISSION_INVALID_PARAM7">
      <td>12</td>
      <td>
       <a href="#MAV_MISSION_INVALID_PARAM7">MAV_MISSION_INVALID_PARAM7</a>
      </td>
-     <td>param7 has an invalid value</td>
+     <td>z / param7 has an invalid value.</td>
     </tr>
     <tr id="MAV_MISSION_INVALID_SEQUENCE">
      <td>13</td>
      <td>
       <a href="#MAV_MISSION_INVALID_SEQUENCE">MAV_MISSION_INVALID_SEQUENCE</a>
      </td>
-     <td>received waypoint out of sequence</td>
+     <td>Mission item received out of sequence</td>
     </tr>
     <tr id="MAV_MISSION_DENIED">
      <td>14</td>
      <td>
       <a href="#MAV_MISSION_DENIED">MAV_MISSION_DENIED</a>
      </td>
-     <td>not accepting any mission commands from this communication partner</td>
+     <td>Not accepting any mission commands from this communication partner.</td>
+    </tr>
+    <tr id="MAV_MISSION_OPERATION_CANCELLED">
+     <td>15</td>
+     <td>
+      <a href="#MAV_MISSION_OPERATION_CANCELLED">MAV_MISSION_OPERATION_CANCELLED</a>
+     </td>
+     <td>Current mission operation cancelled (e.g. mission upload, mission download).</td>
     </tr>
    </tbody>
   </table>
@@ -8634,6 +8641,46 @@
      <td>Reserved (all remaining params)</td>
      <td>
      </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_JUMP_TAG">MAV_CMD_JUMP_TAG (<a href="#MAV_CMD_JUMP_TAG">600</a>
+   )
+  </h3>
+  <p>Tagged jump target. Can be jumped to with MAV_CMD_DO_JUMP_TAG.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Tag.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_JUMP_TAG">MAV_CMD_DO_JUMP_TAG (<a href="#MAV_CMD_DO_JUMP_TAG">601</a>
+   )
+  </h3>
+  <p>Jump to the matching tag in the mission list. Repeat this action for the specified number of times. A mission should contain a single matching tag for each jump. If this is not the case then a jump to a missing tag should complete the mission, and a jump where there are multiple matching tags should always select the one with the lowest mission sequence number.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Target tag to jump to.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Repeat count</td>
     </tr>
    </tbody>
   </table>
@@ -23630,6 +23677,46 @@
       </a>
      </td>
      <td>Altitude of center point. Coordinate system depends on frame field.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="WHEEL_DISTANCE">WHEEL_DISTANCE (<a href="#WHEEL_DISTANCE">
+    #9000
+   </a>
+   )
+  </h3>
+  <p>
+   <strong>
+    (MAVLink 2)
+   </strong>Cumulative distance traveled for each reported wheel.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (synced to UNIX time or since system boot).</td>
+    </tr>
+    <tr>
+     <td>count</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Number of wheels reported.</td>
+    </tr>
+    <tr>
+     <td>distance</td>
+     <td>double[16]</td>
+     <td>m</td>
+     <td>Distance reported by individual wheel encoders. Forward rotations increase values, reverse rotations decrease them. Not all wheels will necessarily have wheel encoders; the mapping of encoders to wheel positions must be agreed/understood by the endpoints.</td>
     </tr>
    </tbody>
   </table>
