@@ -17,22 +17,22 @@
   <dd>很可靠。 自 2009 年以来，MAVLink 已用于多种运载器与地面站（或其它节点）之间使用恶劣的通信信道（大延迟、大噪声）进行通信。 它具有丢包检测功能，并使用完善的 ITU X.25 算法进行坏包检测。</dd>
   
   <dt>MAVLink 的安全性如何？</dt>
-  <dd>MAVLink provides <a href="../guide/message_signing.md">message signing</a>, which allows systems to authenticate that messages are from a trusted source. MAVLink does not provide message encryption.  
+  <dd>MAVLink 提供了 <a href="../guide/message_signing.md">消息签名</a>，系统可用其来验证是否来源于可信的消息源。 MAVLink 并不对消息进行加密处理。  
   </dd>
 </dl>
 
-## Developers
+## 开发者
 
 <dl>
-  <dt>Can I use MAVLink in a closed source application without copyright issues?</dt>
-  <dd>Yes, without any limitations. The generated MAVLink library headers are made available under the *MIT license* (for more information see: <a href="../README.md#license">Introduction > License</a>).
+  <dt>我可以将 MAVLink 用于封闭的源程序且不用考虑版权问题吗？</dt>
+  <dd>可以，没有任何使用限制。 生成的 mavlink 库的头文件可在遵循 * MIT许可证* 的条件下使用 （有关详细信息，请参阅： <a href="../README.md#license">Introduction> 许可证 </0 >）。
   </dd>
 
-  <dt>How does MAVLink detect and decode messages in the byte stream?</dt>
-  <dd>MAVLink waits for the packet start sign, then reads the packet length and matches the checksum after n bytes. If the checksum matches, it returns the decoded packet and waits again for the start sign. If bytes are altered or lost, it will drop the current message and continue the next try on the following message.</dd>
+  <dt>MAVLink 如何检测数据流中的各类消息并进行解码？</dt>
+  <dd>MAVLink 先等待数据包的起始签名，然后读入数据包的长度并计算其后 n 个字节的校验和。 如果校验和相匹配，则返回解码后的数据包并等待下一个起始签名。 如果某些字节被改变或丢失的话，它将丢弃当前消息，继续尝试解码以后的消息。</dd>
 
-  <dt>MAVLink uses only one start sign - isn't this less safe than using two or three start signs?</dt>
-  <dd>No. We use the CRC check to reliably determine whether a complete message has been received. Using additional start signs may increase likelihood of detecting the start point, but would provide no greater certainty of message validity. Since extra signs would increase bytes on the communication link, we choose not to use them.</dd>
+  <dt>MAVLink 中只使用了一个起始签名，使用两个或三个起始签名不是更安全吗？</dt>
+  <dd>不是这样的。 We use the CRC check to reliably determine whether a complete message has been received. Using additional start signs may increase likelihood of detecting the start point, but would provide no greater certainty of message validity. Since extra signs would increase bytes on the communication link, we choose not to use them.</dd>
 
   <dt>What are the system and component IDs for?</dt>
   <dd>The system ID represents the identity of a particular <em>MAVLink system</em> (vehicle, GCS, etc.). MAVLink can be used with up to 255 systems at the same time. The component ID reflects a component that is part of a larger system - for example a system might include an autopilot, companion computer and/or camera, which can be separately addressed. The component ID therefore lets MAVLink be used for both on- and off-board communication.</dd>
