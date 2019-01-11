@@ -29,7 +29,7 @@ uint8_t signature[13];      ///< 保证正确连接的签名（可选）
 
 ## 串行化
 
-The over-the-wire format of MAVLink is optimized for resource-constrained systems and hence the field order is not the same as in the XML specification. The over-the-wire generator sorts all fields of the message according to size, with the largest fields (`uint64_t`) first, then down to smaller fields. The sorting is done using a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), which ensures that any fields that do not need to be reordered stay in the same relative order. This prevents alignment issues on the encoding / decoding systems and allows for very efficient packing / unpacking.
+MAVLink 链路上的数据包格式是专为资源受限优化过的，所以其中数据域的次序与 XML 规则中的次序不一致。 链路数据发生器根据信息的长度进行排序，最长的数据（ `uint64_t` ） 在前，然后逐渐到最短的数据。 它采用[稳定的排序算法](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) 进行排序，这可以确保哪些不用参与排序的数据域仍保留在同样的相对位置上。 This prevents alignment issues on the encoding / decoding systems and allows for very efficient packing / unpacking.
 
 For more information and specific exceptions see [Serialization](../guide/serialization.md).
 
