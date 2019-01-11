@@ -5070,6 +5070,83 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="CELLULAR_NETWORK_RADIO_TYPE">
+   <a href="#CELLULAR_NETWORK_RADIO_TYPE">CELLULAR_NETWORK_RADIO_TYPE</a>
+  </h3>
+  <p>Cellular network radio type</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CELLULAR_NETWORK_RADIO_TYPE_NONE">
+     <td>0</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_RADIO_TYPE_NONE">CELLULAR_NETWORK_RADIO_TYPE_NONE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_RADIO_TYPE_GSM">
+     <td>1</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_RADIO_TYPE_GSM">CELLULAR_NETWORK_RADIO_TYPE_GSM</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_RADIO_TYPE_CDMA">
+     <td>2</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_RADIO_TYPE_CDMA">CELLULAR_NETWORK_RADIO_TYPE_CDMA</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_RADIO_TYPE_WCDMA">
+     <td>3</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_RADIO_TYPE_WCDMA">CELLULAR_NETWORK_RADIO_TYPE_WCDMA</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_RADIO_TYPE_LTE">
+     <td>4</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_RADIO_TYPE_LTE">CELLULAR_NETWORK_RADIO_TYPE_LTE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CELLULAR_NETWORK_STATUS_FLAG">
+   <a href="#CELLULAR_NETWORK_STATUS_FLAG">CELLULAR_NETWORK_STATUS_FLAG</a>
+  </h3>
+  <p>These flags encode the cellular network status</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CELLULAR_NETWORK_STATUS_FLAG_ROAMING">
+     <td>1</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_STATUS_FLAG_ROAMING">CELLULAR_NETWORK_STATUS_FLAG_ROAMING</a>
+     </td>
+     <td>Roaming is active</td>
+    </tr>
+   </tbody>
+  </table>
   <h2>MAVLink Commands (MAV_CMD)</h2>
   <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data.</p>
   <h3 id="MAV_CMD_NAV_WAYPOINT">MAV_CMD_NAV_WAYPOINT (<a href="#MAV_CMD_NAV_WAYPOINT">16</a>
@@ -23335,6 +23412,90 @@
      <td>float[5]</td>
      <td>rad</td>
      <td>Yaw, set to NaN for unchanged</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CELLULAR_STATUS">CELLULAR_STATUS (<a href="#CELLULAR_STATUS">
+    #334
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <strong>
+    (MAVLink 2)
+   </strong>Report current used cellular network status</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>status</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_STATUS_FLAG">CELLULAR_NETWORK_STATUS_FLAG</a>
+     </td>
+     <td>Status bitmap</td>
+    </tr>
+    <tr>
+     <td>type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_RADIO_TYPE">CELLULAR_NETWORK_RADIO_TYPE</a>
+     </td>
+     <td>Cellular network radio type: gsm, cdma, lte...</td>
+    </tr>
+    <tr>
+     <td>quality</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Cellular network RSSI/RSRP in dBm, absolute value</td>
+    </tr>
+    <tr>
+     <td>mcc</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Mobile country code. If unknown, set to: UINT16_MAX</td>
+    </tr>
+    <tr>
+     <td>mnc</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Mobile network code. If unknown, set to: UINT16_MAX</td>
+    </tr>
+    <tr>
+     <td>lac</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Location area code. If unknown, set to: 0</td>
+    </tr>
+    <tr>
+     <td>cid</td>
+     <td>uint32_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Cell ID. If unknown, set to: UINT32_MAX</td>
     </tr>
    </tbody>
   </table>
