@@ -51,4 +51,4 @@ MAVLink 的开发者，使用公司及周围社区会定期举办会议，来定
   * **英国**: +44 \(0\) 20 3695 0088
   * **南朝鲜**: +82 \(0\) 2 6022 2322
   * **西班牙**: +34 91 198 0188
-  * [**International numbers available**](https://zoom.us/u/Q40ZTqiJ)
+  * [**可用的国际号码**](https://zoom.us/u/Q40ZTqiJ)
