@@ -1,10 +1,10 @@
 # 飞控通讯协议概况
 
-MAVLink is a binary telemetry protocol designed for resource-constrained systems and bandwidth-constrained links. MAVLink is deployed in two major versions: v1.0 and v2.0, which is backwards-compatible (v2.0 implementations can parse and send v1.0 packets). Telemetry data streams are sent in a multicast design while protocol aspects that change the system configuration and require guaranteed delivery like the [mission protocol](../services/mission.md) or [parameter protocol](../services/parameter.md) are point-to-point with retransmission.
+MAVLink 为一种设计用于资源受限系统及带宽受限链路的二进制遥测协议。 MAVLink 主要发行了两个版本: v1.0 和 v2.0 ，这两个版本向后兼容 （即 v2.0 版可以分析和发送 v1.0 版数据包)。 遥测数据流是以广播方式发送的， 而协议方面改变了系统配置， 并保证诸如[任务协议](../services/mission.md)或参数协议</1 > 这类点对点式、需重新传输的消息。</p> 
 
-## MAVLink 2 Packet Format
+## MAVLink 2 的数据包格式
 
-Below is the over-the-wire format for a [MAVLink v2](../guide/mavlink_2.md) packet. The in-memory representation might differ.
+以下为在链路上传输的 [MAVLink v2](../guide/mavlink_2.md) 数据包格式。 内存中的表示方式可能会有所不同。
 
 ```C
 uint8_t magic;              ///< protocol magic marker
