@@ -68,13 +68,13 @@
     </dt>
     
     <dd>
-      CRC_EXTRA CRC 用来验证发送者和接收者是否都对链路上的消息格式有同样的解释。 <br /><br /> 在 MAVLink 0.9 版中没有使用 CRC（尽管检查了数据包的长度）。 There were a small number of cases where XML describing a message changed without changing the message length, leading to badly corrupted fields when messages were read.
+      CRC_EXTRA CRC 用来验证发送者和接收者是否都对链路上的消息格式有同样的解释。 <br /><br /> 在 MAVLink 0.9 版中没有使用 CRC（尽管检查了数据包的长度）。 如果 XML 所描述的消息内容偶尔被改变而长度没有改变，这样就会破坏消息中的数据域。
     </dd>
     
     <dt>
-      I would like to help improve the decoding/encoding routines or other features. Can MAVLink be changed?
+      我可以帮助编解码子程序或增加其它功能吗？ 可以更改 MAVLink 吗？
     </dt>
     
     <dd>
-      Yes, but only very, very carefully with safety testing. <br />MAVLink is used as a safety-critical component in many autopilot systems and has undergone many years of testing. 请向MAVLink的技术支持推荐你所想到的新功能。
+      可以，在安全测试时必须十分小心。 作为多个自动驾驶仪中对安全至关重要的组件，MAVLink 已经经历了多年的测试。 请向MAVLink的技术支持推荐你所想到的新功能。
     </dd></dl>
