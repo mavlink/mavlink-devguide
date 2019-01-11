@@ -7,22 +7,22 @@ MAVLink 为一种设计用于资源受限系统及带宽受限链路的二进制
 以下为在链路上传输的 [MAVLink v2](../guide/mavlink_2.md) 数据包格式。 内存中的表示方式可能会有所不同。
 
 ```C
-uint8_t magic;              ///< protocol magic marker
-uint8_t len;                ///< Length of payload
-uint8_t incompat_flags;     ///< flags that must be understood
-uint8_t compat_flags;       ///< flags that can be ignored if not understood
-uint8_t seq;                ///< Sequence of packet
-uint8_t sysid;              ///< ID of message sender system/aircraft
-uint8_t compid;             ///< ID of the message sender component
-uint8_t msgid 0:7;          ///< first 8 bits of the ID of the message
-uint8_t msgid 8:15;         ///< middle 8 bits of the ID of the message
-uint8_t msgid 16:23;        ///< last 8 bits of the ID of the message
-uint8_t payload[max 255];   ///< A maximum of 255 payload bytes
+uint8_t magic;              ///< 协议的魔术标记
+uint8_t len;                ///< 负载的长度
+uint8_t incompat_flags;     ///<  必须要解释的标志
+uint8_t compat_flags;       ///<  可以忽略的标志
+uint8_t seq;                ///< 数据包序列号
+uint8_t sysid;              ///< 发送方的消息 ID 号
+uint8_t compid;             ///< 发送方组件的消息 ID 号
+uint8_t msgid 0:7;          ///< 消息 ID 号的前8位
+uint8_t msgid 8:15;         ///< 消息 ID 号的中间8位
+uint8_t msgid 16:23;        ///< 消息 ID 号的最后8位
+uint8_t payload[max 255];   ///< 负载最大 255 个字节
 uint16_t checksum;          ///< X.25 CRC
 ```
 
 ```C
-uint8_t signature[13];      ///< Signature which allows ensuring that the link is tamper-proof (optional)
+uint8_t signature[13];      ///< 保证正确连接的签名（可选）
 ```
 
 > **Note** The [MAVLink 1 packet format](../guide/serialization.md#v1_packet_format) is similar, but omits `incompat_flags`, `compat_flags` and `signature`, and only has a single byte for the message address. For more information see [Serialization > Packet Format](../guide/serialization.md#packet_format).
