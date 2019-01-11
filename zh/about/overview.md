@@ -25,9 +25,9 @@ uint16_t checksum;          ///< X.25 CRC
 uint8_t signature[13];      ///< 保证正确连接的签名（可选）
 ```
 
-> **Note** The [MAVLink 1 packet format](../guide/serialization.md#v1_packet_format) is similar, but omits `incompat_flags`, `compat_flags` and `signature`, and only has a single byte for the message address. For more information see [Serialization > Packet Format](../guide/serialization.md#packet_format).
+> **Note** The [MAVLink 1 版本的数据包t](../guide/serialization.md#v1_packet_format) 与此类似，但是省略了 `incompat_flags`, `compat_flags` 及`signature`,，且消息地址为单个字节。 消息信息参加 [Serialization > 数据包格式](../guide/serialization.md#packet_format).
 
-## Serialization
+## 串行化
 
 The over-the-wire format of MAVLink is optimized for resource-constrained systems and hence the field order is not the same as in the XML specification. The over-the-wire generator sorts all fields of the message according to size, with the largest fields (`uint64_t`) first, then down to smaller fields. The sorting is done using a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), which ensures that any fields that do not need to be reordered stay in the same relative order. This prevents alignment issues on the encoding / decoding systems and allows for very efficient packing / unpacking.
 
