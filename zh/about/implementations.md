@@ -33,11 +33,11 @@ MAVLink 已经用于许多自动驾驶仪及地面站中，并已集成于API，
 * [Rosetta Drone](https://www.youtube.com/watch?v=rBqEQoVGuzQ) - 大疆 SDK 周边的 MAVLink 封装软件 (可使用基于 Mavlink 的地面站飞行大疆无人机，代码位于: https://github.com/diux-dev/rosettadrone)；
 * [pymavlink](https://github.com/ArduPilot/pymavlink) - MAVLink python 绑定软件；
 * [MAVROS](https://github.com/mavlink/mavros) - ROS 到MAVLink 的桥接软件；
-* [DroneKit](http://dronekit.io/) - MAVLink API Library (Python, Android) and Log analysis tool (optimised for ArduPilot).
+* [DroneKit](http://dronekit.io/) - MAVLink API 库（ Python, Android ）及日志分析工具（特别为 ArduPilot 而优化）。
 
-## Research Projects
+## 研究项目：
 
 * [ETH Flying Machine Arena](http://www.idsc.ethz.ch/Research_DAndrea/FMA)
-* [ETH SenseSoar Solar Airplane Project](http://www.sensesoar.ethz.ch/doku.php?id=project) 
-* [ETH Skye Blimp Project](http://www.projectskye.ch/)
-* [UC Santa Cruz SLUGS](http://slugsuav.soe.ucsc.edu/index.html) (早期的贡献者)
+* [ETH SenseSoar 太阳帆板飞机项目](http://www.sensesoar.ethz.ch/doku.php?id=project) 
+* [ETH Skye 软式飞艇项目](http://www.projectskye.ch/)
+* [UC Santa Cruz SLUGS](http://slugsuav.soe.ucsc.edu/index.html) （早期的贡献者）
