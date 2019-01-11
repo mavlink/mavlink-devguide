@@ -29,11 +29,11 @@ uint8_t signature[13];      ///< 保证正确连接的签名（可选）
 
 ## 串行化
 
-MAVLink 链路上的数据包格式是专为资源受限优化过的，所以其中数据域的次序与 XML 规则中的次序不一致。 链路数据发生器根据信息的长度进行排序，最长的数据（ `uint64_t` ） 在前，然后逐渐到最短的数据。 它采用[稳定的排序算法](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) 进行排序，这可以确保哪些不用参与排序的数据域仍保留在同样的相对位置上。 This prevents alignment issues on the encoding / decoding systems and allows for very efficient packing / unpacking.
+MAVLink 链路上的数据包格式是专为资源受限优化过的，所以其中数据域的次序与 XML 规则中的次序不一致。 链路数据发生器根据信息的长度进行排序，最长的数据（ `uint64_t` ） 在前，然后逐渐到最短的数据。 它采用[稳定的排序算法](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) 进行排序，这可以确保哪些不用参与排序的数据域仍保留在同样的相对位置上。 这也可以避免编解码时的对齐问题，使打包/解包算法更高效。
 
-For more information and specific exceptions see [Serialization](../guide/serialization.md).
+有关更详细详细及例外情形，请参阅[串行化](../guide/serialization.md)。
 
-## Multicast Streams vs. Guaranteed Delivery
+## 多点广播数据流 vs 确保式发送
 
 MAVLink is built for hybrid networks where high-rate data streams from data sources (commonly drones) flow to data sinks (commonly ground stations), but are mixed with transfers requiring guaranteed delivery. The key insight is that for most **telemetry streams** there is not a known or single recipient: Instead, typically an onboard computer, a ground control station and a cloud system all need the same data stream.
 
