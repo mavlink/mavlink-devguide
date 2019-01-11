@@ -28,10 +28,10 @@ MAVLink 的开发者，使用公司及周围社区会定期举办会议，来定
 
 会议日程 （和历史会议记录）可在 [MAVLink wiki here ](https://github.com/mavlink/mavlink/wiki#weekly-meetingsagendas) 上查阅。
 
-* Add topics that you'd like to discuss and issues you'd like to unblock.
-* **Nominate Issues and PRs** for the call with the [**Dev Call**](https://github.com/mavlink/mavlink/labels/Dev%20Call) label on Github.
+* 增加你想要讨论的内容及想要解决的问题。
+* 在 Github 的**Dev Call** 的标题下[**提出问题及 PRs**](https://github.com/mavlink/mavlink/labels/Dev%20Call) 。
 
-#### Schedule {#schedule}
+#### 日程 {#schedule}
 
 There is a recurring bi-weekly call which covers Asia-Europe overlap (there is also a reserved call slot for a Europe-Americas overlap on PST timezone that can be used when needed).
 
