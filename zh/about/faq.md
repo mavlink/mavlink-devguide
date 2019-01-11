@@ -1,13 +1,13 @@
-# Frequently Asked Questions (FAQ)
+# 常见问题
 
 ## 用户
 
 <dl>
   <dt>MAVLink的传输效率如何？</dt>
-  <dd>MAVLink是一种高效率的传输协议。 MAVLink 1 has just 8 bytes overhead per packet, including start sign and packet drop detection. MAVLink 2 has just 14 bytes of overhead (27 if signing is used), but is now a much more extensible protocol.</dd>
+  <dd>MAVLink是一种高效率的传输协议。 包含起始签名字节和丢包检测在内，MAVLink 1版本的每个数据包中只有8个字节的额外开销。 MAVLink 2版本只有14个字节的额外开销（如果使用签名字节的话为27个），但是现已成为可扩展的协议。</dd>
 
-  <dt>How many vehicles does MAVLink support?</dt>
-  <dd>255 vehicles, with system IDs ranging from 1 to 255 (0 is not a valid vehicle ID).
+  <dt>MAVLink 可同时支持多少个运动载体？</dt>
+  <dd>255个运动载体，其ID号从1到255（0号ID为无效ID）。
     <br><b>Note:</b> Strictly speaking MAVLink supports 255 concurrent <em>systems</em>, and these can include a mix of vehicles, GCS, antenna trackers and other hardware.</dd>
 
   <dt>Where can I use MAVLink?</dt>
