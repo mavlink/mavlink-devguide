@@ -140,6 +140,8 @@ The drone may restart the sequence the `PARAM_VALUE` acknowledgment is not recei
 
 PX4 implements the protocol in a way that is compatible with this specification. Only float and Int32 parameters are used.
 
+PX4 additionally provides a mechanism that allows a GCS to *cache* parameters, which significantly reduces ready-to-use time for the GCS if parameters have not been changed since the previous parameter sync. The way that this mechanism works is that when the list of parameters is requested, PX4 first sends a `PARAM_VALUE` with the `param_index` of `INT16_MAX` (in code, referred to as `PARAM_HASH`) containing a *hash* of the parameter set. This hash is calculated by computing the CRC32 over all param names and values (see the `param_hash_check()` in source [here](https://github.com/PX4/Firmware/blob/v1.9.0-alpha/src/lib/parameters/parameters.cpp#L1329)). If the GCS has a matching hash value it can immediately start using its cached parameters (rather than having to wait while all the rest of the parameters upload).
+
 Source files:
 
 - [src/modules/mavlink/mavlink_parameters.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_parameters.cpp)
