@@ -33,22 +33,22 @@ MAVLink 的开发者，使用公司及周围社区会定期举办会议，来定
 
 #### 日程 {#schedule}
 
-There is a recurring bi-weekly call which covers Asia-Europe overlap (there is also a reserved call slot for a Europe-Americas overlap on PST timezone that can be used when needed).
+每逢双周热线会覆盖亚欧地区（当需要时，会为欧美 PST 时区的用户预留通话时间）。
 
-> **Tip** The call is shown as *MAVLink Co-ordination* in the [Dronecode calendar](https://www.dronecode.org/calendar/).
+> **Tip** 电话号码可在 *Dronecode 日历* 的[MAVLink Co-ordination](https://www.dronecode.org/calendar/) 中找到。
 
-* **Asia-Europe**: <https://zoom.us/j/832229956> 
-  * **TIME**: Wednesday 9:00AM CET, 3:00 PM China, 5:00PM ACT
+* **亚欧地区**: <https://zoom.us/j/832229956> 
+  * **时间**: 星期三 9:00AM CET， 3:00 PM 中国， 5:00PM ACT
   * Zoom Meeting ID: 832 229 956
 
-* **Dial \(for higher quality, dial a number based on your current location\)**:
+* **请拨下列号码（为了通话质量更好，请根据自己的国家选择电话号码**:
   
-  * **Switzerland**: +41 \(0\) 31 528 0988
-  * **US**: +1 646 876 9923 or +1 669 900 6833 or +1 408 740 3766
-  * **Germany**: +49 \(0\) 30 3080 6188
-  * **Mexico**: +52 554 161 4288
-  * **Australia**: +61 \(0\) 2 8015 2088
-  * **United Kingdom**: +44 \(0\) 20 3695 0088
-  * **South Korea**: +82 \(0\) 2 6022 2322
-  * **Spain**: +34 91 198 0188
+  * **瑞士**: +41 \(0\) 31 528 0988
+  * **美国**: +1 646 876 9923 或 +1 669 900 6833 或 +1 408 740 3766
+  * **德国**: +49 \(0\) 30 3080 6188
+  * **墨西哥**: +52 554 161 4288
+  * **澳大利亚**: +61 \(0\) 2 8015 2088
+  * **英国**: +44 \(0\) 20 3695 0088
+  * **南朝鲜**: +82 \(0\) 2 6022 2322
+  * **西班牙**: +34 91 198 0188
   * [**International numbers available**](https://zoom.us/u/Q40ZTqiJ)
