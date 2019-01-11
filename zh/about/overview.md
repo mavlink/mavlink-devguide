@@ -39,16 +39,16 @@ Mavlink 是为混合网络系统构建的。在这些网络中，高速数据流
 
 另一方面，配置**机载任务**或使用**机载参数**的方式改变系统配置需要采用确保式的点对点通信。 通过使用多种发送方式，MAVLink 可达到很高的效率。
 
-## Topic Mode \(publish-subscribe\)
+## 主题模式\（发布-订阅式）
 
-In topic mode the protocol will not emit a target system and component ID for messages to save link bandwidth. Typical examples for this communication mode are all autopilot data streams like position, attitude, etc.
+在主题模式下，协议将不会为了节省带宽而省略掉目标系统及组件的 ID 号。 所有自动驾驶仪的数据流如位置、姿态都是这种通信模式的例子。
 
-The main benefit of this multicast mode is that no additional overhead is generated and multiple subscribers can all receive this data.
+这种广播式通信的优点是没有额外的数据包头，且多个订阅者都可接收此数据。
 
-## Point-to-Point Mode
+## 点对点式通信
 
-In point-to-point mode MAVLink uses a target ID and target component. In most cases where these fields are used the sub-protocol also ensures guaranteed delivery (missions, parameters, commands).
+在点对点式通信中，MAVLink 使用目标系统的 ID 号和组件的 ID 号。 在使用这些域（任务，参数，命令）的多数情况下，子协议也可以保证采用确保式发送。
 
-## Integrity Checks / Checksum
+## 完整性检查/校验和
 
-MAVLink implements two integrity checks: The first check is on the integrity of the packet during transmission using the X.25 checksum ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check)). This however only ensures that the data has not been altered on the link - it does not ensure consistency with the data definition. The second integrity check is on the [data description](https://en.wikipedia.org/wiki/Data_definition_language) to ensure that two messages with the same ID are indeed containing the same information. To achieve this the data definition itself is run through CRC-16-CCITT and the resulting value is used to seed the packet CRC. Most reference implementations store this constant in an array named **CRC\_EXTRA**.
+MAVLink 使用了两种方法检测完整性：第一道为发送过程中使用 X.25 校验和 （[CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check)）检测数据包的完整性。 但是这只能保证数据没被链路改变，不能保证数据定义的一致性。 第二道检测为[数据描述](https://en.wikipedia.org/wiki/Data_definition_language)阶段，它保证具有同样 ID 的两个信息确实包含同样的消息。 为了达到此目的，数据定义本身也进行了 CRC-16-CCITT ，结果用作此数据包 CRC 的种子。 在多种参考应用中，存储此常数的数组称作 **CRC\_EXTRA** 。
