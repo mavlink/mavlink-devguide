@@ -32,7 +32,7 @@
   <dd>MAVLink 先等待数据包的起始签名，然后读入数据包的长度并计算其后 n 个字节的校验和。 如果校验和相匹配，则返回解码后的数据包并等待下一个起始签名。 如果某些字节被改变或丢失的话，它将丢弃当前消息，继续尝试解码以后的消息。</dd>
 
   <dt>MAVLink 中只使用了一个起始签名，使用两个或三个起始签名不是更安全吗？</dt>
-  <dd>不是这样的。 We use the CRC check to reliably determine whether a complete message has been received. Using additional start signs may increase likelihood of detecting the start point, but would provide no greater certainty of message validity. Since extra signs would increase bytes on the communication link, we choose not to use them.</dd>
+  <dd>不是这样的。 我们使用 CRC 来检测是否可靠接收到一个完整的消息。 使用更多的起始签名可以有更大的可能性检测到起始点，但是并不能增加有效消息的确定性。 Since extra signs would increase bytes on the communication link, we choose not to use them.</dd>
 
   <dt>What are the system and component IDs for?</dt>
   <dd>The system ID represents the identity of a particular <em>MAVLink system</em> (vehicle, GCS, etc.). MAVLink can be used with up to 255 systems at the same time. The component ID reflects a component that is part of a larger system - for example a system might include an autopilot, companion computer and/or camera, which can be separately addressed. The component ID therefore lets MAVLink be used for both on- and off-board communication.</dd>
