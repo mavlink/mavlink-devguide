@@ -35,9 +35,9 @@ MAVLink 链路上的数据包格式是专为资源受限优化过的，所以其
 
 ## 多点广播数据流 vs 确保式发送
 
-MAVLink is built for hybrid networks where high-rate data streams from data sources (commonly drones) flow to data sinks (commonly ground stations), but are mixed with transfers requiring guaranteed delivery. The key insight is that for most **telemetry streams** there is not a known or single recipient: Instead, typically an onboard computer, a ground control station and a cloud system all need the same data stream.
+Mavlink 是为混合网络系统构建的。在这些网络中，高速数据流从数据源（通常是无人机）流向数据接收器 （通常是地面站），但是它与确保是发送的数据流是混合在一起的。 关键之处在于， 对于多数**遥测数据流**而言，都没有一个已知的或单一的接收。相反，机载计算机、地面站和云系统都需要同样的数据流。
 
-On the other hand configuring the **onboard mission** or changing the system configuration with **onboard parameters** requires point-to-point communication with guaranteed delivery. MAVLink achieves very high efficiency by allowing both modes of operation.
+另一方面，配置**机载任务**或使用**机载参数**的方式改变系统配置需要采用确保式的点对点通信。 通过使用多种发送方式，MAVLink 可达到很高的效率。
 
 ## Topic Mode \(publish-subscribe\)
 
