@@ -3,17 +3,17 @@
 ## 用户
 
 <dl>
-  <dt>MAVLink的传输效率如何？</dt>
-  <dd>MAVLink是一种高效率的传输协议。 包含起始签名字节和丢包检测在内，MAVLink 1版本的每个数据包中只有8个字节的额外开销。 MAVLink 2版本只有14个字节的额外开销（如果使用签名字节的话为27个），但是现已成为可扩展的协议。</dd>
+  <dt>MAVLink 的传输效率如何？</dt>
+  <dd>MAVLink 是一种高效率的传输协议。 包含起始签名字节和丢包检测在内，MAVLink 1 版本的每个数据包中只有8个字节的额外开销。 MAVLink 2 版本只有14个字节的额外开销（如果使用签名字节的话为27个），但是现已成为可扩展的协议。</dd>
 
   <dt>MAVLink 可同时支持多少个运动载体？</dt>
-  <dd>255个运动载体，其ID号从1到255（0号ID为无效ID）。
-    <br><b>Note:</b> Strictly speaking MAVLink supports 255 concurrent <em>systems</em>, and these can include a mix of vehicles, GCS, antenna trackers and other hardware.</dd>
+  <dd>255个运动载体，其 ID 号从1到255（0号 ID 为无效 ID）。
+    <br><b>Note:</b> 严格说来，MAVLink 可同时支持255个<em>系统</em>, 它们中可以是运动载体，GCS ，天线云台和其它硬件。</dd>
 
-  <dt>Where can I use MAVLink?</dt>
-  <dd>MAVLink has been shown to work on multiple microcontrollers and operating systems, including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS.</dd>
+  <dt>MAVLink 可用于哪些软硬件上？</dt>
+  <dd>它可用于多个微控制器和操作系统上， 包括 arm7、atmega、dspic、stm32 等微控制器和 windows、linux、macos、android 和 ios 等操作系统。</dd>
 
-  <dt>How reliable is MAVLink?</dt>
+  <dt>MAVLink 的可靠性如何？</dt>
   <dd>Very. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, and the well-established ITU X.25 checksum for packet corruption detection.</dd>
   
   <dt>How secure is MAVLink?</dt>
