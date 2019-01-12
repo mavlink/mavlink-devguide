@@ -25,7 +25,7 @@ uint16_t checksum;          ///< X.25 CRC
 uint8_t signature[13];      ///< 保证正确连接的签名（可选）
 ```
 
-> **Note** The [MAVLink 1 版本的数据包t](../guide/serialization.md#v1_packet_format) 与此类似，但是省略了 `incompat_flags`, `compat_flags` 及`signature`,，且消息地址为单个字节。 消息信息参加 [Serialization > 数据包格式](../guide/serialization.md#packet_format).
+> **Note** The [MAVLink 1 版本的数据包](../guide/serialization.md#v1_packet_format) 与此类似，但是省略了 `incompat_flags`，`compat_flags` 及`signature`，且消息地址为单个字节。 消息信息参加 [Serialization > 数据包格式](../guide/serialization.md#packet_format).
 
 ## 串行化
 
@@ -39,7 +39,7 @@ Mavlink 是为混合网络系统构建的。在这些网络中，高速数据流
 
 另一方面，配置**机载任务**或使用**机载参数**的方式改变系统配置需要采用确保式的点对点通信。 通过使用多种发送方式，MAVLink 可达到很高的效率。
 
-## 主题模式\（发布-订阅式）
+## 主题模式（发布-订阅式）
 
 在主题模式下，协议将不会为了节省带宽而省略掉目标系统及组件的 ID 号。 所有自动驾驶仪的数据流如位置、姿态都是这种通信模式的例子。
 
