@@ -51,7 +51,7 @@ The main tags are listed below (all are optional):
 
 - [messages](#messages): Dialect-specific messages can be defined in this block (if none are defined in the file, the block is optional/can be removed).
 
-### Enum Definition (enums) {#enum}
+## Enum Definition (enums) {#enum}
 
 Enums are used to define named values that may be used as options in messages - for example to define errors, states, or modes.
 
@@ -85,7 +85,7 @@ As a concrete example, the definition of the [LANDING_TARGET_TYPE](../messages/c
     </entry>
 ```
 
-#### entry {#entry}
+### entry {#entry}
 
 The "normal" enum `entry` tags/fields are:
 
@@ -101,7 +101,7 @@ The "normal" enum `entry` tags/fields are:
    - `hasLocation` (optional): A boolean (default true) that provides a hint to a GCS that the entry should be displayed as a "standalone" location - rather than as a destination on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values but which are not on the vehicle path (e.g.: [MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION)).
    - `isDestination` (optional): A boolean (default true) that provides a hint to a GCS that the entry is a location that should be displayed as a point on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values and which are on the vehicle path (e.g.: [MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT) and [MAV_CMD_NAV_LAND](../messages/common.md#MAV_CMD_NAV_LAND)).
 
-#### param {#param}
+### param {#param}
 
 The `<param>` tag is used in the [MAV_CMD](../messages/common.md#MAV_CMD) enum as part of defining mission commands. Params must include an attribute `index` (with value from 1 to 7) and contain a parameter description string.
 
@@ -132,7 +132,7 @@ For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_P
 </entry>
 ```
 
-### Message Definition (messages) {#messages}
+## Message Definition (messages) {#messages}
 
 All messages are defined within the `<messages> ... </messages>` block (as discussed in the previous section) using `<message>...</message>` tags.
 
@@ -183,11 +183,11 @@ As a concrete example, the definition of the [BATTERY_STATUS](../messages/common
     </message>
 ```
 
-### Others Tags
+## Common Tags
 
 This section lists a number of tags can be used in a number of other types - e.g. messages and enums.
 
-#### deprecated {#deprecated}
+### deprecated {#deprecated}
 
 The `<deprecated>` tag can be used in an [enum](#enum), enum [entry](#entry) (value) or [message](#message) to indicate that the item has been superseded. The tag attributes indicates the time of deprecation and the replacement item, while the element may (optionally) contain a string with additional information about the deprecation.
 
@@ -207,7 +207,7 @@ The `deprecated` attributes are:
 - `since`: Year/month when deprecation started. Format: `YYYY-MM`.
 - `replaced by`: String of entity that supersedes this item.
 
-#### wip {#wip}
+### wip {#wip}
 
 The `<wip>` tag can be used in an enum [entry](#entry) (value) or [message](#message) to indicate that the item is a "work in progress". The element may (optionally) contain a string with additional information about the new item.
 
