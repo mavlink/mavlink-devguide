@@ -53,20 +53,11 @@ The main tags are listed below (all are optional):
 
 ## Enum Definition (enums) {#enum}
 
-Enums are used to define named values that may be used as options in messages - for example to define errors, states, or modes.
+Enums are used to define named values that may be used as options in messages - for example to define errors, states, or modes. There is also a special enum `MAV_CMD` that is used to define MAVLink commands.
 
-> **Tip** [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
+Enums are defined within the `<enums> ... </enums>` blocks (as discussed in the previous section) using `<enum> ... </enum>` tags. Enum *values* are defined within the enum using `<entry> ... </entry>` tags.
 
-All enums are defined within the `<enums> ... </enums>` blocks (as discussed in the previous section). Enum values are defined within `<enum>` tags.
-
-The main `enum` tags/fields are:
-
-- `name`: The name of the enum (mandatory). This is a string of capitalized, underscore-separated words.
-- `description` (optional): A string describing the purpose of the enum
-- `entry` (optional): An entry (zero or more entries can be specified for each enum)
-- [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
-
-As a concrete example, the definition of the [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) message is given below.
+For example, the definition of the [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) message is given below:
 
 ```xml
 <enum name="LANDING_TARGET_TYPE">
@@ -83,7 +74,17 @@ As a concrete example, the definition of the [LANDING_TARGET_TYPE](../messages/c
     <entry value="3" name="LANDING_TARGET_TYPE_VISION_OTHER">
         <description>Landing target represented by a pre-defined visual shape/feature (ex: X-marker, H-marker, square)</description>
     </entry>
+</enum>
 ```
+
+The main `enum` tags/fields are:
+
+- `name`: The name of the enum (mandatory). This is a string of capitalized, underscore-separated words.
+- `description` (optional): A string describing the purpose of the enum
+- `entry` (optional): An entry (zero or more entries can be specified for each enum)
+- [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
+
+> **Tip** [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
 
 ### entry {#entry}
 
@@ -134,7 +135,27 @@ For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_P
 
 ## Message Definition (messages) {#messages}
 
-All messages are defined within the `<messages> ... </messages>` block (as discussed in the previous section) using `<message>...</message>` tags.
+Messages are defined within the `<messages> ... </messages>` block using `<message>...</message>` tags. Individual fields to be encoded in the message payload are defined using `<field> ... </field>` tags
+
+For example,the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) message is given below (this message was chosen because it contains many of the main fields and attributes.
+
+```xml
+    <message id="147" name="BATTERY_STATUS">
+      <description>Battery information</description>
+      <field type="uint8_t" name="id">Battery ID</field>
+      <field type="uint8_t" name="battery_function" enum="MAV_BATTERY_FUNCTION">Function of the battery</field>
+      <field type="uint8_t" name="type" enum="MAV_BATTERY_TYPE">Type (chemistry) of the battery</field>
+      <field type="int16_t" name="temperature" units="cdegC">Temperature of the battery. INT16_MAX for unknown temperature.</field>
+      <field type="uint16_t[10]" name="voltages" units="mV">Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value.</field>
+      <field type="int16_t" name="current_battery" units="cA">Battery current, -1: autopilot does not measure the current</field>
+      <field type="int32_t" name="current_consumed" units="mAh">Consumed charge, -1: autopilot does not provide consumption estimate</field>
+      <field type="int32_t" name="energy_consumed" units="hJ">Consumed energy, -1: autopilot does not provide energy consumption estimate</field>
+      <field type="int8_t" name="battery_remaining" units="%">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</field>
+      <extensions/>
+      <field type="int32_t" name="time_remaining" units="s">Remaining battery time, 0: autopilot does not provide remaining battery time estimate</field>
+      <field type="uint8_t" name="charge_state" enum="MAV_BATTERY_CHARGE_STATE">State for extent of discharge, provided by autopilot for warning or external reactions</field>
+    </message>
+```
 
 The main message tags/fields are:
 
@@ -160,28 +181,6 @@ The main message tags/fields are:
 - [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the message is deprecated or "work in progress".
 - `extensions` (optional): This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only. 
    - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2. 
-
-As a concrete example, the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) message is given below.
-
-> **Note** This message was chosen as it contains many of the main fields and attributes.
-
-```xml
-    <message id="147" name="BATTERY_STATUS">
-      <description>Battery information</description>
-      <field type="uint8_t" name="id">Battery ID</field>
-      <field type="uint8_t" name="battery_function" enum="MAV_BATTERY_FUNCTION">Function of the battery</field>
-      <field type="uint8_t" name="type" enum="MAV_BATTERY_TYPE">Type (chemistry) of the battery</field>
-      <field type="int16_t" name="temperature" units="cdegC">Temperature of the battery. INT16_MAX for unknown temperature.</field>
-      <field type="uint16_t[10]" name="voltages" units="mV">Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value.</field>
-      <field type="int16_t" name="current_battery" units="cA">Battery current, -1: autopilot does not measure the current</field>
-      <field type="int32_t" name="current_consumed" units="mAh">Consumed charge, -1: autopilot does not provide consumption estimate</field>
-      <field type="int32_t" name="energy_consumed" units="hJ">Consumed energy, -1: autopilot does not provide energy consumption estimate</field>
-      <field type="int8_t" name="battery_remaining" units="%">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</field>
-      <extensions/>
-      <field type="int32_t" name="time_remaining" units="s">Remaining battery time, 0: autopilot does not provide remaining battery time estimate</field>
-      <field type="uint8_t" name="charge_state" enum="MAV_BATTERY_CHARGE_STATE">State for extent of discharge, provided by autopilot for warning or external reactions</field>
-    </message>
-```
 
 ## Common Tags
 
