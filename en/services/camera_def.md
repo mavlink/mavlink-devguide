@@ -97,6 +97,7 @@ CAM_EV | Exposure Compensation (usually only used for automatic exposure modes.)
 CAM_EXPMODE | Exposure Mode (Manual, Auto, Program Auto, Aperture Priority, etc.)
 CAM_ISO | ISO
 CAM_METERING | Metering Mode
+CAM_MODE | Camera Mode. Invariably, when switching modes, some of the camera parameters that are available for one mode is not available for the other. Video more may offer video recording resolutions while photo mode may offer image capture size, format, compression, etc. If you simply use the MAVLink command [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE), you won't have a chance to let the GCS know that. If you camera does have different parameters and/or options for [CAMERA_MODE_IMAGE](../messages/common.md#CAMERA_MODE) or [CAMERA_MODE_VIDEO](../messages/common.md#CAMERA_MODE), you may want to use this parameter (along with the proper exclusion rules) instead. The CGS will look to see if this parameter is exposed. If it is, it will use it instead of [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE). If the parameter is not exposed, [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) will be used instead. See an example of a definition of `CAM_MODE` below.
 CAM_SHUTTERSPD | Shutter speed
 CAM_VIDRES | Video Resolution (for video capture)
 CAM_WBMODE | White Balance Mode
