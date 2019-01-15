@@ -24,5 +24,3 @@ sequenceDiagram;
     Drone->>GCS: COMMAND_ACK
 {% endmermaid %}
 
-
-

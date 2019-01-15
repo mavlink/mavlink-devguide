@@ -1,6 +1,6 @@
 # Camera Definition File
 
-A GCS will build a Camera Controller UI for image and video capture and video streaming using information provided by the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message. 
+A GCS will build a Camera Controller UI for image capture, video capture and video streaming using information provided by the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message. 
 For very simple cameras, the information in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message itself is sufficient to construct the UI. 
 For more advanced cameras (with settings and options) the information required to build the UI must be supplied in a *Camera Definition File* that is located at the URI specified in the message's `cam_definition_uri` field.
 
@@ -88,12 +88,14 @@ In this case, the GCS will automatically build a drop down list with the options
 
 #### Common Parameters
 
-Some parameters are common to many cameras (though their valid options vary considerably.) For these, there is a concept of _Common Parameters_, which are reserved parameter names that when found, the GCS is able to build specific controls for them.
+_Common Parameters_ are reserved parameter names for which the GCS can build specific UI controls (if found in a camera definition). 
+
+> **Note** These parameters are common to many cameras (though their valid options vary considerably).
 
 Parameter | Description
 -- | --
 CAM_APERTURE | Aperture
-CAM_EV | Exposure Compensation (usually only used for automatic exposure modes.)
+CAM_EV | Exposure Compensation (usually only used for automatic exposure modes)
 CAM_EXPMODE | Exposure Mode (Manual, Auto, Program Auto, Aperture Priority, etc.)
 CAM_ISO | ISO
 CAM_METERING | Metering Mode
