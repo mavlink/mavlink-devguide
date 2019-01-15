@@ -6,7 +6,7 @@ It also includes messages to query and configure the onboard camera storage.
 
 > **Tip** The [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) provides an implementation of this protocol.
 
-## Camera Identification
+## Camera Identification {#camera_identification}
 
 The camera identification operation determines what cameras are available/exist (this is carried out before all other operations).
 
@@ -62,12 +62,44 @@ Some cameras must be in a certain mode for still and/or video capture.
 The GCS can determine if it needs to make sure the camera is in the proper mode prior to sending a start capture (image or video) command by checking whether the [CAMERA_CAP_FLAGS_HAS_MODES](../messages/common.md#CAMERA_CAP_FLAGS_HAS_MODES) bit is set true in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
 In addition, some cameras can capture images in any mode but with different resolutions. 
-For example, a 20 megapixel camera would take a full resolution image when set to `CAMERA_MODE_IMAGE` but only at the current video resolution if it is set to `CAMERA_MODE_VIDEO`.
+For example, a 20 megapixel camera would take a full resolution image when set to `CAMERA_MODE_IMAGE` but only at the current video resolution if it is set to `CAMERA_MODE_VIDEO`. 
 
-To get the current mode, the GCS would send a [MAV_CMD_REQUEST_CAMERA_SETTINGS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_SETTINGS) command. 
-The current mode is sent back in the `mode_id` field of the [CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS) message.
+To get the current mode, the GCS would send a [MAV_CMD_REQUEST_CAMERA_SETTINGS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_SETTINGS) command.
+The camera component will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result.
+On success (`COMMAND_ACK.result` is [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) the camera must then send a [CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS) message.
+The current mode is the `CAMERA_SETTINGS.mode_id` field.
 
-To set the camera to a specific mode, the GCS would send in turn the [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) command with the appropriate mode.
+The sequence is shown below:
+
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Camera
+    GCS->>Camera: MAV_CMD_REQUEST_CAMERA_SETTINGS
+    GCS->>GCS: Start timeout
+    Camera->>GCS: COMMAND_ACK
+    Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info.
+    Camera->>GCS: CAMERA_SETTINGS
+{% endmermaid %}
+
+> **Note** Command acknowledgment and message resending is handled in the same way as for [camera identification](#camera_identification)
+  (if a successful ACK is received the camera will expect the `CAMERA_SETTINGS` message, and repeat the cycle - up to 3 times - until it is received).
+
+To set the camera to a specific mode, the GCS would send the [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) command with the appropriate mode.
+
+The sequence is shown below:
+
+{% mermaid %}
+sequenceDiagram;
+    participant GCS
+    participant Camera
+    GCS->>Camera: MAV_CMD_SET_CAMERA_MODE
+    GCS->>GCS: Start timeout
+    Camera->>GCS: COMMAND_ACK
+    Note over Camera,GCS: If MAV_RESULT_ACCEPTED, mode was changed.
+{% endmermaid %}
+
+> **Note** The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment.
 
 
 ### Storage Status
