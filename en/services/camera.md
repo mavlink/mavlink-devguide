@@ -6,11 +6,26 @@ It also includes messages to query and configure the onboard camera storage.
 
 > **Tip** The [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) provides an implementation of this protocol.
 
-## Camera Identification {#camera_identification}
+## Camera Connection
+
+Camera components are expected to follow the [Heartbeat/Connection Protocol](../services/heartbeat.md) and sent a constant flow of heartbeats (nominally at 1Hz).
+Each camera must use a different pre-defined camera component ID: [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA) to [MAV_COMP_ID_CAMERA6](../messages/common.md#MAV_COMP_ID_CAMERA6).
+
+The first time a heartbeat is detected from a new camera, a GCS (or other receiving system) should start the [Camera Identification](#camera_identification) process.
+
+> **Note** If a receiving system stops receiving heartbeats from the camera it is assumed to be *disconnected*, and should be removed from the list of available cameras. 
+  If heartbeats are again detected, the *camera identification* process below must be restarted from the beginning.
+
+
+## Basic Camera Operations
+
+The [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) provides information about camera capabilities.
+It contains a bitmap of [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS) values that tell the GCS if the camera supports still image capture, video capture, or video streaming, and if it needs to be in a certain mode for capture, etc.
+
+### Camera Identification {#camera_identification}
 
 The camera identification operation determines what cameras are available/exist (this is carried out before all other operations).
 
-Camera components must send [heartbeats](../services/heartbeat.md) (just like any other component) and use one of the pre-defined camera component IDs: [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA) to [MAV_COMP_ID_CAMERA6](../messages/common.md#MAV_COMP_ID_CAMERA6).
 The first time a heartbeat is received from a camera component the GCS will send the camera a [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) message. 
 The camera component will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result.
 On success (result is [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) the camera component must then send a [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
@@ -47,12 +62,6 @@ Once downloaded, it would only be requested again if the version number changes.
 If a vehicle has more than one camera, each camera will have a different component ID and send its own heartbeat. 
 The GCS should create multiple instances of a camera controller based on the component ID of each camera. 
 All commands are sent to a specific camera by addressing the command to a specific component ID.
-
-
-## Basic Camera Operations
-
-The [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) provides information about camera capabilities.
-It contains a bitmap of [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS) values that tell the GCS if the camera supports still image capture, video capture, or video streaming, and if it needs to be in a certain mode for capture, etc.
 
 
 ### Camera Modes
