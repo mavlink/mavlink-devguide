@@ -4531,6 +4531,13 @@
      </td>
      <td>Camera has basic focus control (MAV_CMD_SET_CAMERA_FOCUS)</td>
     </tr>
+    <tr id="CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM">
+     <td>256</td>
+     <td>
+      <a href="#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM">CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM</a>
+     </td>
+     <td>Camera has video streaming capabilities (use MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION for video streaming info)</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="VIDEO_STREAM_STATUS_FLAGS">
@@ -4559,13 +4566,6 @@
       <a href="#VIDEO_STREAM_STATUS_FLAGS_THERMAL">VIDEO_STREAM_STATUS_FLAGS_THERMAL</a>
      </td>
      <td>Stream is thermal imaging</td>
-    </tr>
-    <tr id="VIDEO_STREAM_HAS_BASIC_ZOOM">
-     <td>4</td>
-     <td>
-      <a href="#VIDEO_STREAM_HAS_BASIC_ZOOM">VIDEO_STREAM_HAS_BASIC_ZOOM</a>
-     </td>
-     <td>Stream has basic zoom control (MAV_CMD_SET_CAMERA_ZOOM)</td>
     </tr>
    </tbody>
   </table>
@@ -4612,8 +4612,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="SET_ZOOM_TYPE">
-   <a href="#SET_ZOOM_TYPE">SET_ZOOM_TYPE</a>
+  <h3 id="CAMERA_ZOOM_TYPE">
+   <a href="#CAMERA_ZOOM_TYPE">CAMERA_ZOOM_TYPE</a>
   </h3>
   <p>Zoom types for MAV_CMD_SET_CAMERA_ZOOM</p>
   <table class="sortable">
@@ -8506,8 +8506,6 @@
   <h3 id="MAV_CMD_REQUEST_STORAGE_INFORMATION">MAV_CMD_REQUEST_STORAGE_INFORMATION (<a href="#MAV_CMD_REQUEST_STORAGE_INFORMATION">525</a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>Request storage information (STORAGE_INFORMATION). Use the command's target_component to target a specific component's storage.</p>
   <table class="sortable">
    <thead>
@@ -8534,8 +8532,6 @@
   <h3 id="MAV_CMD_STORAGE_FORMAT">MAV_CMD_STORAGE_FORMAT (<a href="#MAV_CMD_STORAGE_FORMAT">526</a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>Format a storage medium. Once format is complete, a STORAGE_INFORMATION message is sent. Use the command's target_component to target a specific component's storage.</p>
   <table class="sortable">
    <thead>
@@ -8630,26 +8626,32 @@
   <h3 id="MAV_CMD_SET_CAMERA_MODE">MAV_CMD_SET_CAMERA_MODE (<a href="#MAV_CMD_SET_CAMERA_MODE">530</a>
    )
   </h3>
-  <p>Set camera running mode. Use NAN for reserved values.</p>
+  <p>Set camera running mode. Use NaN for reserved values. GCS will send a MAV_CMD_REQUEST_VIDEO_STREAM_STATUS command after a mode change if the camera supports video streaming.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>Reserved (Set to 0)</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Camera mode (see CAMERA_MODE enum)</td>
+     <td>Camera mode</td>
+     <td>CAMERA_MODE</td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8658,7 +8660,7 @@
   </h3>
   <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>Set camera zoom. Returns CAMERA_SETTINGS message. Use NAN for reserved values.</p>
+  <p>Set camera zoom. Camera must respond with a CAMERA_SETTINGS message (on success). Use NaN for reserved values.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -8671,11 +8673,11 @@
     <tr>
      <td>1</td>
      <td>Zoom type</td>
-     <td>SET_ZOOM_TYPE</td>
+     <td>CAMERA_ZOOM_TYPE</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Zoom value</td>
+     <td>Zoom value. The range of valid values depend on the zoom type.</td>
      <td>
      </td>
     </tr>
@@ -8692,7 +8694,7 @@
   </h3>
   <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>Set camera focus. Returns CAMERA_SETTINGS message. Use NAN for reserved values.</p>
+  <p>Set camera focus. Camera must respond with a CAMERA_SETTINGS message (on success). Use NaN for reserved values.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -8764,41 +8766,68 @@
   <h3 id="MAV_CMD_IMAGE_START_CAPTURE">MAV_CMD_IMAGE_START_CAPTURE (<a href="#MAV_CMD_IMAGE_START_CAPTURE">2000</a>
    )
   </h3>
-  <p>Start image capture sequence. Sends CAMERA_IMAGE_CAPTURED after each capture. Use NAN for reserved values.</p>
+  <p>Start image capture sequence. Sends CAMERA_IMAGE_CAPTURED after each capture. Use NaN for reserved values.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>Reserved (Set to 0)</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Duration between two consecutive pictures (in seconds)</td>
+     <td>Desired elapsed time between two consecutive pictures (in seconds). Minimum values depend on hardware (typically greater than 2 seconds).<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Interval,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>s</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Number of images to capture total - 0 for unlimited capture</td>
+     <td>Total number of images to capture. 0 to capture forever/until MAV_CMD_IMAGE_STOP_CAPTURE.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Capture Count,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Capture sequence (ID to prevent double captures when a command is retransmitted, 0: unused, &gt;= 1: used)</td>
+     <td>Capture sequence number starting from 1. This is only valid for single-capture (param3 == 1). Increment the capture ID for each capture command to prevent double captures when a command is re-transmitted. Use 0 to ignore it.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Sequence Number,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
   <h3 id="MAV_CMD_IMAGE_STOP_CAPTURE">MAV_CMD_IMAGE_STOP_CAPTURE (<a href="#MAV_CMD_IMAGE_STOP_CAPTURE">2001</a>
    )
   </h3>
-  <p>Stop image capture sequence Use NAN for reserved values.</p>
+  <p>Stop image capture sequence Use NaN for reserved values.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -8822,7 +8851,7 @@
   </h3>
   <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>Re-request a CAMERA_IMAGE_CAPTURE packet. Use NAN for reserved values.</p>
+  <p>Re-request a CAMERA_IMAGE_CAPTURE message. Use NaN for reserved values.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -8833,7 +8862,7 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>Sequence number for missing CAMERA_IMAGE_CAPTURE packet</td>
+     <td>Sequence number for missing CAMERA_IMAGE_CAPTURE message</td>
     </tr>
     <tr>
      <td>2</td>
@@ -8870,48 +8899,72 @@
   <h3 id="MAV_CMD_VIDEO_START_CAPTURE">MAV_CMD_VIDEO_START_CAPTURE (<a href="#MAV_CMD_VIDEO_START_CAPTURE">2500</a>
    )
   </h3>
-  <p>Starts video capture (recording). Use NAN for reserved values.</p>
+  <p>Starts video capture (recording). Use NaN for reserved values.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Reserved (Set to 0)</td>
+     <td>Video Stream ID (0 for all streams)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Stream ID,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Frequency CAMERA_CAPTURE_STATUS messages should be sent while recording (0 for no messages, otherwise frequency in Hz)</td>
+     <td>Frequency CAMERA_CAPTURE_STATUS messages should be sent while recording (0 for no messages, otherwise frequency in Hz)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Status Frequency,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>Hz</td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
   <h3 id="MAV_CMD_VIDEO_STOP_CAPTURE">MAV_CMD_VIDEO_STOP_CAPTURE (<a href="#MAV_CMD_VIDEO_STOP_CAPTURE">2501</a>
    )
   </h3>
-  <p>Stop the current video capture (recording). Use NAN for reserved values.</p>
+  <p>Stop the current video capture (recording). Use NaN for reserved values.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Reserved (Set to 0)</td>
+     <td>Video Stream ID (0 for all streams)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Stream ID,</td>
+     <td>
+      <em>min:</em>0 </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8926,16 +8979,23 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
+     <td>Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Stream ID,</td>
+     <td>
+      <em>min:</em>0 </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8944,22 +9004,29 @@
   </h3>
   <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>Stop the current video streaming</p>
+  <p>Stop the given video stream</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
+     <td>Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Stream ID,</td>
+     <td>
+      <em>min:</em>0 </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8974,20 +9041,54 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
+     <td>Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Stream ID,</td>
+     <td>
+      <em>min:</em>0 </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>0: No Action 1: Request video stream information</td>
+     <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_REQUEST_VIDEO_STREAM_STATUS">MAV_CMD_REQUEST_VIDEO_STREAM_STATUS (<a href="#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS">2505</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>Request video stream status (VIDEO_STREAM_STATUS)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Stream ID,</td>
+     <td>
+      <em>min:</em>0 </td>
     </tr>
     <tr>
-     <td>3</td>
+     <td>2</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -9094,27 +9195,27 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>Landing gear position (Down: 0, Up: 1, NAN for no change)</td>
+     <td>Landing gear position (Down: 0, Up: 1, NaN for no change)</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Reserved, set to NAN</td>
+     <td>Reserved, set to NaN</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Reserved, set to NAN</td>
+     <td>Reserved, set to NaN</td>
     </tr>
     <tr>
      <td>5</td>
-     <td>Reserved, set to NAN</td>
+     <td>Reserved, set to NaN</td>
     </tr>
     <tr>
      <td>6</td>
-     <td>Reserved, set to NAN</td>
+     <td>Reserved, set to NaN</td>
     </tr>
     <tr>
      <td>7</td>
-     <td>Reserved, set to NAN</td>
+     <td>Reserved, set to NaN</td>
     </tr>
    </tbody>
   </table>
@@ -21789,8 +21890,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <strong>
     (MAVLink 2)
@@ -22305,7 +22404,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Stream ID (1 for first, 2 for second, etc.)</td>
+     <td>Video Stream ID (1 for first, 2 for second, etc.)</td>
     </tr>
     <tr>
      <td>count</td>
@@ -22316,7 +22415,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Number of streams available</td>
+     <td>Number of streams available.</td>
     </tr>
     <tr>
      <td>type</td>
@@ -22326,7 +22425,134 @@
      <td>
       <a href="#VIDEO_STREAM_TYPE">VIDEO_STREAM_TYPE</a>
      </td>
-     <td>Type of stream</td>
+     <td>Type of stream.</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#VIDEO_STREAM_STATUS_FLAGS">VIDEO_STREAM_STATUS_FLAGS</a>
+     </td>
+     <td>Bitmap of stream status flags.</td>
+    </tr>
+    <tr>
+     <td>framerate</td>
+     <td>float</td>
+     <td>Hz</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Frame rate.</td>
+    </tr>
+    <tr>
+     <td>resolution_h</td>
+     <td>uint16_t</td>
+     <td>pix</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Horizontal resolution.</td>
+    </tr>
+    <tr>
+     <td>resolution_v</td>
+     <td>uint16_t</td>
+     <td>pix</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Vertical resolution.</td>
+    </tr>
+    <tr>
+     <td>bitrate</td>
+     <td>uint32_t</td>
+     <td>bits/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Bit rate.</td>
+    </tr>
+    <tr>
+     <td>rotation</td>
+     <td>uint16_t</td>
+     <td>deg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Video image rotation clockwise.</td>
+    </tr>
+    <tr>
+     <td>hfov</td>
+     <td>uint16_t</td>
+     <td>deg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Horizontal Field of view.</td>
+    </tr>
+    <tr>
+     <td>name</td>
+     <td>char[32]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Stream name.</td>
+    </tr>
+    <tr>
+     <td>uri</td>
+     <td>char[160]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Video stream URI (TCP or RTSP URI ground station should connect to) or port number (UDP port ground station should listen to).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="VIDEO_STREAM_STATUS">VIDEO_STREAM_STATUS (<a href="#VIDEO_STREAM_STATUS">
+    #270
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about the status of a video stream.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>stream_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Video Stream ID (1 for first, 2 for second, etc.)</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -22376,7 +22602,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Bit rate in bits per second</td>
+     <td>Bit rate</td>
     </tr>
     <tr>
      <td>rotation</td>
@@ -22397,98 +22623,6 @@
       </a>
      </td>
      <td>Horizontal Field of view</td>
-    </tr>
-    <tr>
-     <td>uri</td>
-     <td>char[160]</td>
-     <td>
-     </td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Video stream URI (TCP or RTSP URI ground station should connect to) or port number (UDP port ground station should listen to)</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="SET_VIDEO_STREAM_SETTINGS">SET_VIDEO_STREAM_SETTINGS (<a href="#SET_VIDEO_STREAM_SETTINGS">
-    #270
-   </a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <strong>
-    (MAVLink 2)
-   </strong>Message that sets video stream settings</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Units</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>target_system</td>
-     <td>uint8_t</td>
-     <td>
-     </td>
-     <td>system ID of the target</td>
-    </tr>
-    <tr>
-     <td>target_component</td>
-     <td>uint8_t</td>
-     <td>
-     </td>
-     <td>component ID of the target</td>
-    </tr>
-    <tr>
-     <td>camera_id</td>
-     <td>uint8_t</td>
-     <td>
-     </td>
-     <td>Stream ID (1 for first, 2 for second, etc.)</td>
-    </tr>
-    <tr>
-     <td>framerate</td>
-     <td>float</td>
-     <td>Hz</td>
-     <td>Frame rate (set to -1 for highest framerate possible)</td>
-    </tr>
-    <tr>
-     <td>resolution_h</td>
-     <td>uint16_t</td>
-     <td>pix</td>
-     <td>Horizontal resolution (set to -1 for highest resolution possible)</td>
-    </tr>
-    <tr>
-     <td>resolution_v</td>
-     <td>uint16_t</td>
-     <td>pix</td>
-     <td>Vertical resolution (set to -1 for highest resolution possible)</td>
-    </tr>
-    <tr>
-     <td>bitrate</td>
-     <td>uint32_t</td>
-     <td>bits/s</td>
-     <td>Bit rate (set to -1 for auto)</td>
-    </tr>
-    <tr>
-     <td>rotation</td>
-     <td>uint16_t</td>
-     <td>deg</td>
-     <td>Video image rotation clockwise (0-359 degrees)</td>
-    </tr>
-    <tr>
-     <td>uri</td>
-     <td>char[160]</td>
-     <td>
-     </td>
-     <td>Video stream URI (mostly for UDP/RTP)</td>
     </tr>
    </tbody>
   </table>
