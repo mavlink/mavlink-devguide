@@ -8,12 +8,12 @@ It also includes messages to query and configure the onboard camera storage.
 
 ## Camera Identification
 
-The first step is to determine what cameras are available/exist.
+The camera identification operation determines what cameras are available/exist (this is carried out before all other operations).
 
 Camera components must send [heartbeats](../services/heartbeat.md) (just like any other component) and use one of the pre-defined camera component IDs: [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA) to [MAV_COMP_ID_CAMERA6](../messages/common.md#MAV_COMP_ID_CAMERA6).
 The first time a heartbeat is received from a camera component the GCS will send the camera a [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) message. 
-The camera component will then reply with a [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
-If no response is sent for a `MAV_CMD_REQUEST_CAMERA_INFORMATION` message, it is assumed camera support is not available and no support for it will be provided by the GCS. 
+The camera component will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result.
+On success (result is [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) the camera component must then send a [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
 
 {% mermaid %}
 sequenceDiagram;
@@ -22,10 +22,16 @@ sequenceDiagram;
     Camera->>GCS: HEARTBEAT [cmp id: MAV_COMP_ID_CAMERA] (first) 
     GCS->>Camera: MAV_CMD_REQUEST_CAMERA_INFORMATION
     GCS->>GCS: Start timeout
+    Camera->>GCS: COMMAND_ACK
+    Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info.
     Camera->>GCS: CAMERA_INFORMATION
 {% endmermaid %}
 
-The `CAMERA_INFORMATION` response contains the bare minimum information about the camera and what it can or cannot do. 
+The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment (if no `COMMAND_ACK` response is received for `MAV_CMD_REQUEST_CAMERA_INFORMATION` the command will be re-sent a number of times before failing).
+If `CAMERA_INFORMATION` is not received after receiving an ACK with `MAV_RESULT_ACCEPTED`, the protocol assumes the message was lost, and the cycle of sending `MAV_CMD_REQUEST_CAMERA_INFORMATION` is repeated. 
+If `CAMERA_INFORMATION` is still not received after three cycle repeats, the GCS may assume that the camera is not supported.
+
+The `CAMERA_INFORMATION` response contains the bare minimum information about the camera and what it can or cannot do.
 This is sufficient for basic image and/or video capture.
 
 If a camera provides finer control over its settings `CAMERA_INFORMATION.cam_definition_uri` will include a URI to a [Camera Definition File](../services/camera_def.md).
