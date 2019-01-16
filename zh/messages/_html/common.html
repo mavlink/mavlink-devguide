@@ -23975,6 +23975,44 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="STATUSTEXT_LONG">STATUSTEXT_LONG (<a href="#STATUSTEXT_LONG">
+    #365
+   </a>
+   )
+  </h3>
+  <p>
+   <strong>
+    (MAVLink 2)
+   </strong>Status text message (use only for important status and error messages). The full message payload can be used for status text, but we recommend that updates be kept concise. Note: The message is intended as a less restrictive replacement for STATUSTEXT.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>severity</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_SEVERITY">MAV_SEVERITY</a>
+     </td>
+     <td>Severity of status. Relies on the definitions within RFC-5424.</td>
+    </tr>
+    <tr>
+     <td>text</td>
+     <td>char[254]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Status text message, without null termination character.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="WHEEL_DISTANCE">WHEEL_DISTANCE (<a href="#WHEEL_DISTANCE">
     #9000
    </a>
