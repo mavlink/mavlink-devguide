@@ -91,9 +91,39 @@ The "normal" enum `entry` tags/fields are:
 * `name`: The name of the enum value (mandatory). This is a string of capitalized, underscore-separated words.
 * `value` (optional): The *value* for the entry (a number).
 * `description` (optional): A description of the entry.
-* [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the enum is deprecated or "work in progress". 
+* [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the enum is deprecated or "work in progress".
 
-[MAV_CMD](../messages/common.md#MAV_CMD) entries may additionally define these tags/fields:
+> **Note** An `entry` may also define the optional elements: `param`, `hasLocation`, and `isDestination`.
+  In practice these should only be used in the `enum` named [MAV_CMD](#MAV_CMD) (described below).
+
+
+## MAVLink Commands (enum MAV_CMD) {#MAV_CMD}
+
+Individual `entry` values in the `enum` named [MAV_CMD](#MAV_CMD) are use to define *MAVLink Commands*.
+Each command has a `value` (its "command number") and specifies up to 7 parameters.
+
+> **Note** These parameters are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages ([Mission Protocol](../services/mission.md)), or [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages ([Command Protocol](../services/command.md)).
+
+For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE):
+
+```xml
+<enum name="MAV_CMD">
+....
+    <entry value="94" name="MAV_CMD_NAV_PAYLOAD_PLACE">
+        <description>Descend and place payload. Vehicle descends until it detects a hanging payload has reached the ground, the gripper is opened to release the payload</description>
+        <param index="1">Maximum distance to descend (meters)</param>
+        <param index="2">Empty</param>
+        <param index="3">Empty</param>
+        <param index="4">Empty</param>
+        <param index="5">Latitude (deg * 1E7)</param>
+        <param index="6">Longitude (deg * 1E7)</param>
+        <param index="7">Altitude (meters)</param>
+</entry>
+...
+</enum>
+```
+
+MAV_CMD entry `value` elements may additionally define these tags/fields:
 * [param](#param) (optional): A param value.
 * One (but not both) of:
   * `hasLocation` (optional): A boolean (default true) that provides a hint to a GCS that the entry should be displayed as a "standalone" location - rather than as a destination on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values but which are not on the vehicle path (e.g.: [MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION)).
@@ -114,23 +144,7 @@ A `param` may also include the following optional attributes (which may be used 
 - `minValue` - Minimum value for param.
 - `maxValue` - Maximum value for the param.
 
-> **Note** MAVLink commands are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages as part of the [Mission Protocol](../services/mission.md). 
-  Some commands can be sent outside of missions in [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages.
 
-For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE)
-
-```xml
-<entry value="94" name="MAV_CMD_NAV_PAYLOAD_PLACE">
-    <description>Descend and place payload. Vehicle descends until it detects a hanging payload has reached the ground, the gripper is opened to release the payload</description>
-    <param index="1">Maximum distance to descend (meters)</param>
-    <param index="2">Empty</param>
-    <param index="3">Empty</param>
-    <param index="4">Empty</param>
-    <param index="5">Latitude (deg * 1E7)</param>
-    <param index="6">Longitude (deg * 1E7)</param>
-    <param index="7">Altitude (meters)</param>
-</entry>
-```
 
 
 ## Message Definition (messages) {#messages}
