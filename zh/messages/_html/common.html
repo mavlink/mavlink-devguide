@@ -5147,6 +5147,42 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="PRECISION_LAND_MODE">
+   <a href="#PRECISION_LAND_MODE">PRECISION_LAND_MODE</a>
+  </h3>
+  <p>Precision land modes (used in MAV_CMD_NAV_LAND).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="PRECISION_LAND_MODE_DISABLED">
+     <td>0</td>
+     <td>
+      <a href="#PRECISION_LAND_MODE_DISABLED">PRECISION_LAND_MODE_DISABLED</a>
+     </td>
+     <td>Normal (non-precision) landing.</td>
+    </tr>
+    <tr id="PRECISION_LAND_MODE_OPPORTUNISTIC">
+     <td>1</td>
+     <td>
+      <a href="#PRECISION_LAND_MODE_OPPORTUNISTIC">PRECISION_LAND_MODE_OPPORTUNISTIC</a>
+     </td>
+     <td>Use precision landing if beacon detected when land command accepted, otherwise land normally.</td>
+    </tr>
+    <tr id="PRECISION_LAND_MODE_REQUIRED">
+     <td>2</td>
+     <td>
+      <a href="#PRECISION_LAND_MODE_REQUIRED">PRECISION_LAND_MODE_REQUIRED</a>
+     </td>
+     <td>Use precision landing, searching for beacon if not found when land command accepted (land normally if beacon cannot be found).</td>
+    </tr>
+   </tbody>
+  </table>
   <h2>MAVLink Commands (MAV_CMD)</h2>
   <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data.</p>
   <h3 id="MAV_CMD_NAV_WAYPOINT">MAV_CMD_NAV_WAYPOINT (<a href="#MAV_CMD_NAV_WAYPOINT">16</a>
@@ -5362,42 +5398,76 @@
   <h3 id="MAV_CMD_NAV_LAND">MAV_CMD_NAV_LAND (<a href="#MAV_CMD_NAV_LAND">21</a>
    )
   </h3>
-  <p>Land at location</p>
+  <p>Land at location.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Abort Alt</td>
+     <td>Minimum target altitude if landing is aborted (0 = undefined/use system default).<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Abort Alt,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Precision land mode. (0 = normal landing, 1 = opportunistic precision landing, 2 = required precsion landing)</td>
+     <td>Precision land mode.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Land Mode,</td>
+     <td>PRECISION_LAND_MODE</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Empty</td>
+     <td>Empty.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Empty,</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Desired yaw angle. NaN for unchanged.</td>
+     <td>Desired yaw angle. NaN for unchanged.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw Angle,</td>
+     <td>
+     </td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>5</td>
-     <td>Latitude</td>
+     <td>Latitude.</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>Longitude</td>
+     <td>Longitude.</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>Altitude (ground level)</td>
+     <td>Landing altitude (ground level in current frame).</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
