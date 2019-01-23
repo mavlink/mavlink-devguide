@@ -417,7 +417,7 @@ The allocated ranges are listed below.
 
 Dialect | Range
 --- | ---
-Common.xml | 30000 - 39999
+Common.xml | 0 - 39999
 asluav.xml | 40001 - 41999
 ArduPilotMega.xml | 42000 - 42999
 slugs.xml | 10001 - 11999
