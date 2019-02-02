@@ -3423,7 +3423,7 @@
   <h3 id="MAV_BATTERY_CHARGE_STATE">
    <a href="#MAV_BATTERY_CHARGE_STATE">MAV_BATTERY_CHARGE_STATE</a>
   </h3>
-  <p>Enumeration for low battery states.</p>
+  <p>Enumeration for battery charge states.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3481,6 +3481,13 @@
       <a href="#MAV_BATTERY_CHARGE_STATE_UNHEALTHY">MAV_BATTERY_CHARGE_STATE_UNHEALTHY</a>
      </td>
      <td>Battery is diagnosed to be defective or an error occurred, usage is discouraged / prohibited.</td>
+    </tr>
+    <tr id="MAV_BATTERY_CHARGE_STATE_CHARGING">
+     <td>7</td>
+     <td>
+      <a href="#MAV_BATTERY_CHARGE_STATE_CHARGING">MAV_BATTERY_CHARGE_STATE_CHARGING</a>
+     </td>
+     <td>Battery is charging.</td>
     </tr>
    </tbody>
   </table>
@@ -5982,42 +5989,74 @@
   <h3 id="MAV_CMD_NAV_VTOL_TAKEOFF">MAV_CMD_NAV_VTOL_TAKEOFF (<a href="#MAV_CMD_NAV_VTOL_TAKEOFF">84</a>
    )
   </h3>
-  <p>Takeoff from ground using VTOL mode including transition to forward flight.</p>
+  <p>Takeoff from ground using VTOL mode, and transition to forward flight with specified heading.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Front transition heading, see VTOL_TRANSITION_HEADING enum.</td>
+     <td>Front transition heading.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Transition Heading,</td>
+     <td>VTOL_TRANSITION_HEADING</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Yaw angle in degrees. NaN for unchanged.</td>
+     <td>Yaw angle in degrees. NaN for unchanged.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw Angle,</td>
+     <td>
+     </td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -11931,7 +11970,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Servo output port (set of 8 outputs = 1 port). Most MAVs will just use one, but this allows for more than 8 servos.</td>
+     <td>Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.</td>
     </tr>
     <tr>
      <td>chan1_scaled</td>
@@ -12026,7 +12065,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Servo output port (set of 8 outputs = 1 port). Most MAVs will just use one, but this allows for more than 8 servos.</td>
+     <td>Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.</td>
     </tr>
     <tr>
      <td>chan1_raw</td>
@@ -12113,7 +12152,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Servo output port (set of 8 outputs = 1 port). Most MAVs will just use one, but this allows to encode more than 8 servos.</td>
+     <td>Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.</td>
     </tr>
     <tr>
      <td>servo1_raw</td>
