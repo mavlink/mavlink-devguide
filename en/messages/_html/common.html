@@ -6189,42 +6189,73 @@
   <h3 id="MAV_CMD_NAV_PAYLOAD_PLACE">MAV_CMD_NAV_PAYLOAD_PLACE (<a href="#MAV_CMD_NAV_PAYLOAD_PLACE">94</a>
    )
   </h3>
-  <p>Descend and place payload.  Vehicle descends until it detects a hanging payload has reached the ground, the gripper is opened to release the payload</p>
+  <p>Descend and place payload. Vehicle moves to specified location, descends until it detects a hanging payload has reached the ground, and then releases the payload. If ground is not detected before the reaching the maximum descent value (param1), the command will complete without releasing the payload.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Maximum distance to descend (meters)</td>
+     <td>Maximum distance to descend.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Max Descent,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
-     <td>Latitude (deg * 1E7)</td>
+     <td>Latitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>Longitude (deg * 1E7)</td>
+     <td>Longitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>Altitude (meters)</td>
+     <td>Altitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
