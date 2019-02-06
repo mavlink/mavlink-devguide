@@ -272,9 +272,8 @@ The mission update must either overlap or immediately follow the final mission i
 > **Note** The message sequence similar to a [full mission upload](#uploading_mission), except that it is triggered with a [MISSION_WRITE_PARTIAL_LIST](../messages/common.md#MISSION_WRITE_PARTIAL_LIST) instead of a [MISSION_COUNT](../messages/common.md#MISSION_COUNT).
 
 <span></span>
-> **Note** Unlike for full mission update, partial update is not required to be robust.
-  - Individual commands can fail, and a mission may be left partially updated.
-  - It is the responsibility of the mission planning software to ensure that, if successful, the new mission is self-consistent (i.e. the autopilot is not expected to validate that updates are "sane" with respect to other/existing items in the mission).
+> **Note** As for full mission update, partial update is required to be robust.
+  The upload must succeed or fail completely, leaving the uploader in no doubt of the current mission state.
 
 {% mermaid %}
 sequenceDiagram;
