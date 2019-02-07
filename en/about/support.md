@@ -38,9 +38,9 @@ There is a recurring bi-weekly call which covers Asia-Europe overlap (there is a
 
 > **Tip** The call is shown as *MAVLink Co-ordination* in the [Dronecode calendar](https://www.dronecode.org/calendar/).
 
-* **Asia-Europe**: [https://zoom.us/j/832229956](https://zoom.us/j/832229956)
+* **Asia-Europe**: [https://zoom.us/j/990208968](https://zoom.us/j/990208968)
   * **TIME**: Wednesday 9:00AM CET, 3:00 PM China, 5:00PM ACT
-  * Zoom Meeting ID: 832 229 956
+  * Zoom Meeting ID: 990 208 968
 * **Dial \(for higher quality, dial a number based on your current location\)**:
 
   * **Switzerland**: +41 \(0\) 31 528 0988
