@@ -936,7 +936,7 @@
   <h3 id="MAV_COMPONENT">
    <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
   </h3>
-  <p>Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.). 
+  <p>Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.).
       Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The MAV_COMP_ID_ALL value is used to indicate messages that must be processed by all components.
       When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded.</p>
   <table class="sortable">
@@ -13395,7 +13395,7 @@
      <td>float[9]</td>
      <td>
      </td>
-     <td>Attitude covariance</td>
+     <td>Row-major representation of a 3x3 attitude covariance matrix (states: roll, pitch, yaw; first three entries are the first ROW, next three entries are the second row, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
    </tbody>
   </table>
@@ -13581,7 +13581,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Covariance matrix (first six entries are the first ROW, next six entries are the second row, etc.)</td>
+     <td>Row-major representation of a 6x6 position and velocity 6x6 cross-covariance matrix (states: lat, lon, alt, vx, vy, vz; first six entries are the first ROW, next six entries are the second row, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
    </tbody>
   </table>
@@ -13721,7 +13721,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Covariance matrix upper right triangular (first nine entries are the first ROW, next eight entries are the second row, etc.)</td>
+     <td>Row-major representation of position, velocity and acceleration 9x9 cross-covariance matrix upper right triangle (states: x, y, z, vx, vy, vz, ax, ay, az; first nine entries are the first ROW, next eight entries are the second row, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
    </tbody>
   </table>
@@ -16240,7 +16240,7 @@
      <td>float[21]</td>
      <td>
      </td>
-     <td>Pose covariance matrix upper right triangular (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
+     <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x_global, y_global, z_global, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
    </tbody>
   </table>
@@ -16310,7 +16310,7 @@
      <td>float[21]</td>
      <td>
      </td>
-     <td>Pose covariance matrix upper right triangular (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
+     <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
    </tbody>
   </table>
@@ -16362,7 +16362,7 @@
      <td>float[9]</td>
      <td>
      </td>
-     <td>Linear velocity covariance matrix (1st three entries - 1st row, etc.)</td>
+     <td>Row-major representation of 3x3 linear velocity covariance matrix (states: vx, vy, vz; 1st three entries - 1st row, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
    </tbody>
   </table>
@@ -16432,7 +16432,7 @@
      <td>float[21]</td>
      <td>
      </td>
-     <td>Pose covariance matrix upper right triangular (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
+     <td>Row-major representation of 6x6 pose cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
    </tbody>
   </table>
@@ -18607,7 +18607,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Measurement covariance, 0 for unknown / invalid readings</td>
+     <td>Measurement covariance. 0 for unknown / invalid readings</td>
     </tr>
     <tr>
      <td style="color:blue;">horizontal_fov<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18933,7 +18933,7 @@
      <td>float[21]</td>
      <td>
      </td>
-     <td>Pose covariance matrix upper right triangular (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
+     <td>Row-major representation of a pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
    </tbody>
   </table>
@@ -23506,10 +23506,10 @@
       <a href="#">
       </a>
      </td>
-     <td>Pose (states: x, y, z, roll, pitch, yaw) covariance matrix upper right triangle (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
+     <td>Row-major representation of a 6x6 pose cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
     <tr>
-     <td>twist_covariance</td>
+     <td>velocity_covariance</td>
      <td>float[21]</td>
      <td>
      </td>
@@ -23517,7 +23517,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Twist (states: vx, vy, vz, rollspeed, pitchspeed, yawspeed) covariance matrix upper right triangle (first six entries are the first ROW, next five entries are the second ROW, etc.)</td>
+     <td>Row-major representation of a 6x6 velocity cross-covariance matrix upper right triangle (states: vx, vy, vz, rollspeed, pitchspeed, yawspeed; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
    </tbody>
   </table>
