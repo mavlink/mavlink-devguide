@@ -3491,6 +3491,63 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_SMART_BATTERY_FAULT">
+   <a href="#MAV_SMART_BATTERY_FAULT">MAV_SMART_BATTERY_FAULT</a>
+  </h3>
+  <p>Smart battery supply status/fault flags (bitmask) for health indication.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_SMART_BATTERY_FAULT_DEEP_DISCHARGE">
+     <td>1</td>
+     <td>
+      <a href="#MAV_SMART_BATTERY_FAULT_DEEP_DISCHARGE">MAV_SMART_BATTERY_FAULT_DEEP_DISCHARGE</a>
+     </td>
+     <td>Battery has deep discharged.</td>
+    </tr>
+    <tr id="MAV_SMART_BATTERY_FAULT_SPIKES">
+     <td>2</td>
+     <td>
+      <a href="#MAV_SMART_BATTERY_FAULT_SPIKES">MAV_SMART_BATTERY_FAULT_SPIKES</a>
+     </td>
+     <td>Voltage spikes.</td>
+    </tr>
+    <tr id="MAV_SMART_BATTERY_FAULT_SINGLE_CELL_FAIL">
+     <td>4</td>
+     <td>
+      <a href="#MAV_SMART_BATTERY_FAULT_SINGLE_CELL_FAIL">MAV_SMART_BATTERY_FAULT_SINGLE_CELL_FAIL</a>
+     </td>
+     <td>Single cell has failed.</td>
+    </tr>
+    <tr id="MAV_SMART_BATTERY_FAULT_OVER_CURRENT">
+     <td>8</td>
+     <td>
+      <a href="#MAV_SMART_BATTERY_FAULT_OVER_CURRENT">MAV_SMART_BATTERY_FAULT_OVER_CURRENT</a>
+     </td>
+     <td>Over-current fault.</td>
+    </tr>
+    <tr id="MAV_SMART_BATTERY_FAULT_OVER_TEMPERATURE">
+     <td>16</td>
+     <td>
+      <a href="#MAV_SMART_BATTERY_FAULT_OVER_TEMPERATURE">MAV_SMART_BATTERY_FAULT_OVER_TEMPERATURE</a>
+     </td>
+     <td>Over-temperature fault.</td>
+    </tr>
+    <tr id="MAV_SMART_BATTERY_FAULT_UNDER_TEMPERATURE">
+     <td>32</td>
+     <td>
+      <a href="#MAV_SMART_BATTERY_FAULT_UNDER_TEMPERATURE">MAV_SMART_BATTERY_FAULT_UNDER_TEMPERATURE</a>
+     </td>
+     <td>Under-temperature fault.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_VTOL_STATE">
    <a href="#MAV_VTOL_STATE">MAV_VTOL_STATE</a>
   </h3>
@@ -18602,12 +18659,12 @@
     <tr>
      <td>covariance</td>
      <td>uint8_t</td>
-     <td>cm</td>
+     <td>cm^2</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Measurement covariance. 0 for unknown / invalid readings</td>
+     <td>Measurement variance. Max standard deviation is 6cm. 256 if unknown.</td>
     </tr>
     <tr>
      <td style="color:blue;">horizontal_fov<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -19392,7 +19449,7 @@
    </a>
    )
   </h3>
-  <p>Battery information</p>
+  <p>Battery information. Updates GCS with flight controller battery status. Use SMART_BATTERY_* messages instead for smart batteries.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24150,6 +24207,201 @@
       </a>
      </td>
      <td>Status text message, without null termination character.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SMART_BATTERY_INFO">SMART_BATTERY_INFO (<a href="#SMART_BATTERY_INFO">
+    #370
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <strong>
+    (MAVLink 2)
+   </strong>Smart Battery information (static/infrequent update). Use for updates from: smart battery to flight stack, flight stack to GCS. Use instead of BATTERY_STATUS for smart batteries.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Battery ID</td>
+    </tr>
+    <tr>
+     <td>capacity_full_specification</td>
+     <td>int32_t</td>
+     <td>mAh</td>
+     <td>Capacity when full according to manufacturer, -1: field not provided.</td>
+    </tr>
+    <tr>
+     <td>capacity_full</td>
+     <td>int32_t</td>
+     <td>mAh</td>
+     <td>Capacity when full (accounting for battery degradation), -1: field not provided.</td>
+    </tr>
+    <tr>
+     <td>cycle_count</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Charge/discharge cycle count. -1: field not provided.</td>
+    </tr>
+    <tr>
+     <td>serial_number</td>
+     <td>int32_t</td>
+     <td>
+     </td>
+     <td>Serial number. -1: field not provided.</td>
+    </tr>
+    <tr>
+     <td>device_name</td>
+     <td>char[50]</td>
+     <td>
+     </td>
+     <td>Static device name. Encode as manufacturer and product names separated using an underscore.</td>
+    </tr>
+    <tr>
+     <td>weight</td>
+     <td>uint16_t</td>
+     <td>g</td>
+     <td>Battery weight. 0: field not provided.</td>
+    </tr>
+    <tr>
+     <td>discharge_minimum_voltage</td>
+     <td>uint16_t</td>
+     <td>mV</td>
+     <td>Minimum per-cell voltage when discharging. If not supplied set to UINT16_MAX value.</td>
+    </tr>
+    <tr>
+     <td>charging_minimum_voltage</td>
+     <td>uint16_t</td>
+     <td>mV</td>
+     <td>Minimum per-cell voltage when charging. If not supplied set to UINT16_MAX value.</td>
+    </tr>
+    <tr>
+     <td>resting_minimum_voltage</td>
+     <td>uint16_t</td>
+     <td>mV</td>
+     <td>Minimum per-cell voltage when resting. If not supplied set to UINT16_MAX value.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SMART_BATTERY_STATUS">SMART_BATTERY_STATUS (<a href="#SMART_BATTERY_STATUS">
+    #371
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <strong>
+    (MAVLink 2)
+   </strong>Smart Battery information (dynamic). Use for updates from: smart battery to flight stack, flight stack to GCS. Use instead of BATTERY_STATUS for smart batteries.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>id</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Battery ID</td>
+    </tr>
+    <tr>
+     <td>capacity_remaining</td>
+     <td>int16_t</td>
+     <td>
+      %
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Remaining battery energy. Values: [0-100], -1: field not provided.</td>
+    </tr>
+    <tr>
+     <td>current</td>
+     <td>int16_t</td>
+     <td>cA</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Battery current (through all cells/loads). Positive if discharging, negative if charging. UINT16_MAX: field not provided.</td>
+    </tr>
+    <tr>
+     <td>temperature</td>
+     <td>int16_t</td>
+     <td>cdegC</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Battery temperature. -1: field not provided.</td>
+    </tr>
+    <tr>
+     <td>fault_bitmask</td>
+     <td>int32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_SMART_BATTERY_FAULT">MAV_SMART_BATTERY_FAULT</a>
+     </td>
+     <td>Fault/health indications.</td>
+    </tr>
+    <tr>
+     <td>time_remaining</td>
+     <td>int32_t</td>
+     <td>s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Estimated remaining battery time. -1: field not provided.</td>
+    </tr>
+    <tr>
+     <td>cell_offset</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The cell number of the first index in the 'voltages' array field. Using this field allows you to specify cell voltages for batteries with more than 16 cells.</td>
+    </tr>
+    <tr>
+     <td>voltages</td>
+     <td>uint16_t[16]</td>
+     <td>mV</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Individual cell voltages. Batteries with more 16 cells can use the cell_offset field to specify the cell offset for the array specified in the current message . Index values above the valid cell count for this battery should have the UINT16_MAX value.</td>
     </tr>
    </tbody>
   </table>
