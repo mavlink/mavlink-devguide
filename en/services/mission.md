@@ -163,6 +163,7 @@ Note:
   For example, the drone might respond to the [MISSION_COUNT](../messages/common.md#MISSION_COUNT) request with a [MAV_MISSION_NO_SPACE](../messages/common.md#MAV_MISSION_NO_SPACE) if there isn't enough space to upload the mission.
 - The sequence above shows the [mission items](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages. 
   Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way.
+- Uploading an empty mission ([MISSION_COUNT](../messages/common.md#MISSION_COUNT) is 0) has the same effect as [clearing the mission](#clear_mission).
 
 
 ### Download a Mission from the Vehicle {#download_mission}
