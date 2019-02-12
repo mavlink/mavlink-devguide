@@ -1,6 +1,6 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 
-# MAVLINK Message Set: slugs.xml
+# Dialect: slugs
 
 *This is a human-readable form of the XML definition file: [slugs.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/slugs.xml).*
 
