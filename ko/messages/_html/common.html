@@ -8612,6 +8612,28 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE (<a href="#MAV_CMD_REQUEST_MESSAGE">512</a>
+   )
+  </h3>
+  <p>Request the target system(s) emit a single instance of a specified message (i.e. a "one-shot" version of MAV_CMD_SET_MESSAGE_INTERVAL).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>The MAVLink message ID of the requested message.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Index id (if appropriate). The use of this parameter (if any), must be defined in the requested message.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_REQUEST_PROTOCOL_VERSION">MAV_CMD_REQUEST_PROTOCOL_VERSION (<a href="#MAV_CMD_REQUEST_PROTOCOL_VERSION">519</a>
    )
   </h3>
@@ -16979,14 +17001,14 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Local signal strength</td>
+     <td>Local (message sender) recieved signal strength indication. Values: [0-254], 255: invalid/unknown.</td>
     </tr>
     <tr>
      <td>remrssi</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Remote signal strength</td>
+     <td>Remote (message receiver) signal strength indication. Values: [0-254], 255: invalid/unknown.</td>
     </tr>
     <tr>
      <td>txbuf</td>
@@ -16994,35 +17016,35 @@
      <td>
       %
      </td>
-     <td>Remaining free buffer space.</td>
+     <td>Remaining free transmitter buffer space.</td>
     </tr>
     <tr>
      <td>noise</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Background noise level</td>
+     <td>Local background noise level. These are device dependent RSSI values (scale as approx 2x dB on SiK radios).</td>
     </tr>
     <tr>
      <td>remnoise</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Remote background noise level</td>
+     <td>Remote background noise level. These are device dependent RSSI values (scale as approx 2x dB on SiK radios).</td>
     </tr>
     <tr>
      <td>rxerrors</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>Receive errors</td>
+     <td>Count of receive errors (since boot).</td>
     </tr>
     <tr>
      <td>fixed</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>Count of error corrected packets</td>
+     <td>Count of error corrected packets (since boot).</td>
     </tr>
    </tbody>
   </table>
