@@ -1,6 +1,6 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 
-# MAVLINK Message Set: autoquad.xml
+# Dialect: autoquad
 
 *This is a human-readable form of the XML definition file: [autoquad.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/autoquad.xml).*
 
