@@ -1,4 +1,4 @@
-# Camera Protocol
+# 相机协议
 
 The camera protocol is used to configure camera payloads and request their status. It supports photo capture, and video capture and streaming. It also includes messages to query and configure the onboard camera storage.
 
