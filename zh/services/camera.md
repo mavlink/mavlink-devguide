@@ -1,8 +1,8 @@
 # 相机协议
 
-The camera protocol is used to configure camera payloads and request their status. It supports photo capture, and video capture and streaming. It also includes messages to query and configure the onboard camera storage.
+相机通讯协议用于远程配置机载相机或查询相机的状态。 它支持照片拍摄、视频捕获和流媒体。 它还提供了查询并配置机载相机存储空间的消息。
 
-> **Tip** The [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) provides an implementation of this protocol.
+> **Tip** 软件 [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) 实现了该协议。
 
 ## Camera Connection
 
