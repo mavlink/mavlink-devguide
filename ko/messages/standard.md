@@ -1,6 +1,6 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 
-# MAVLINK Message Set: standard.xml
+# Dialect: standard
 
 *This is a human-readable form of the XML definition file: [standard.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/standard.xml).*
 
