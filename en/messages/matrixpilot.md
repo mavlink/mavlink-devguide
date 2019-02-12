@@ -1,5 +1,5 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
-# MAVLINK Message Set: matrixpilot.xml
+# Dialect: matrixpilot
 
 *This is a human-readable form of the XML definition file: [matrixpilot.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/matrixpilot.xml).*
 
@@ -14,6 +14,7 @@ td {
     vertical-align:top;
 }
 </style>
+
 
 {% include "_html/matrixpilot.html" %}
 

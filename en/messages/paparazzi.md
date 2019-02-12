@@ -1,5 +1,5 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
-# MAVLINK Message Set: paparazzi.xml
+# Dialect: paparazzi
 
 *This is a human-readable form of the XML definition file: [paparazzi.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/paparazzi.xml).*
 
@@ -14,6 +14,7 @@ td {
     vertical-align:top;
 }
 </style>
+
 
 {% include "_html/paparazzi.html" %}
 
