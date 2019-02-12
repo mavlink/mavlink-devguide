@@ -1,6 +1,6 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 
-# MAVLINK Message Set: test.xml
+# Dialect: test
 
 *This is a human-readable form of the XML definition file: [test.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/test.xml).*
 
