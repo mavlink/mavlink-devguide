@@ -10,11 +10,11 @@
 
 当首次检测到一个新相机组件的心跳时，GCS (或其它接收系统) 应立刻启动 [Camera Identification](#camera_identification) 程序。
 
-> **Note** 如果某个相机的心跳中断，接收系统将认为该相机组件 *disconnected*，并将其从可用相机列表中删除。 If heartbeats are again detected, the *camera identification* process below must be restarted from the beginning.
+> **Note** 如果某个相机的心跳中断，接收系统将认为该相机组件 *disconnected*，并将其从可用相机列表中删除。 如果再次检测到该相机的心跳，必须重新运行一次 *camera identification* 程序。
 
-## Basic Camera Operations
+## 相机基本操作
 
-The [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) provides information about camera capabilities. It contains a bitmap of [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS) values that tell the GCS if the camera supports still image capture, video capture, or video streaming, and if it needs to be in a certain mode for capture, etc.
+标志位 [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) 提供了相机能力的相关信息。 It contains a bitmap of [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS) values that tell the GCS if the camera supports still image capture, video capture, or video streaming, and if it needs to be in a certain mode for capture, etc.
 
 ### Camera Identification {#camera_identification}
 
