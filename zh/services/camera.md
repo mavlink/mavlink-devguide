@@ -14,9 +14,9 @@
 
 ## 相机基本操作
 
-标志位 [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) 提供了相机能力的相关信息。 It contains a bitmap of [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS) values that tell the GCS if the camera supports still image capture, video capture, or video streaming, and if it needs to be in a certain mode for capture, etc.
+标志位 [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) 提供了相机能力的相关信息。 这些标志位的值来自 [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS)，GCS 可以从中得知该相机组件是否支持静态照片拍摄、视频录制和流媒体预览，以及拍摄前是否需要切换到特定模式，等等。
 
-### Camera Identification {#camera_identification}
+### 相机识别 {#camera_identification}
 
 The camera identification operation determines what cameras are available/exist (this is carried out before all other operations).
 
