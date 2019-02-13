@@ -1,6 +1,6 @@
 # 相机协议
 
-相机通讯协议用于远程配置机载相机或查询相机的状态。 它支持照片拍摄、视频捕获和流媒体。 它还提供了查询并配置机载相机存储空间的消息。
+相机通讯协议用于远程配置机载相机或查询相机的状态。 它支持照片拍摄、视频录制和流媒体预览。 它还提供了查询并配置机载相机存储空间的消息。
 
 > **Tip** 软件 [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) 实现了该协议。
 
@@ -8,9 +8,9 @@
 
 相机组件的须按照 [Heartbeat/Connection Protocol](../services/heartbeat.md) 的要求，发送固定频率的心跳包 (一般可取 1Hz)。 每个相机组件都必须独占一个预设的ID：从 [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA) 到 [MAV_COMP_ID_CAMERA6](../messages/common.md#MAV_COMP_ID_CAMERA6)。
 
-当首次检测到一个新相机组件的心跳时，GCS (或其它接收系统) 应立刻启动 [Camera Identification](#camera_identification) 程序。
+当首次检测到一个新相机组件的心跳时，GCS (或其它接收系统) 应立刻启动相机识别程序 [Camera Identification](#camera_identification)。
 
-> **Note** 如果某个相机的心跳中断，接收系统将认为该相机组件 *disconnected*，并将其从可用相机列表中删除。 如果再次检测到该相机的心跳，必须重新运行一次 *camera identification* 程序。
+> **Note** 如果某个相机的心跳中断，接收系统将认为该相机组件已经断开 *disconnected*，并将其从可用相机列表中删除。 如果再次检测到该相机的心跳，必须重新运行一次相机识别程序 *camera identification*。
 
 ## 相机基本操作
 
