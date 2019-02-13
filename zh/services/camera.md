@@ -18,9 +18,9 @@
 
 ### 相机识别 {#camera_identification}
 
-The camera identification operation determines what cameras are available/exist (this is carried out before all other operations).
+相机识别操作决定了哪些相机是可用/存在的 (然后才能运行其它操作)。
 
-The first time a heartbeat is received from a camera component the GCS will send the camera a [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) message. The camera component will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result. On success (result is [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) the camera component must then send a [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
+首次接收到一个相机组件的心跳时，GCS会向相机发送一个 [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) 消息。 The camera component will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result. On success (result is [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) the camera component must then send a [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
 
 {% mermaid %} sequenceDiagram; participant GCS participant Camera Camera->>GCS: HEARTBEAT \[cmp id: MAV_COMP_ID_CAMERA\] (first) GCS->>Camera: MAV_CMD_REQUEST_CAMERA_INFORMATION GCS->>GCS: Start timeout Camera->>GCS: COMMAND_ACK Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info. Camera->>GCS: CAMERA_INFORMATION {% endmermaid %}
 
