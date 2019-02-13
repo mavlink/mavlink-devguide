@@ -8,9 +8,9 @@
 
 相机组件的须按照 [Heartbeat/Connection Protocol](../services/heartbeat.md) 的要求，发送固定频率的心跳包 (一般可取 1Hz)。 每个相机组件都必须独占一个预设的ID：从 [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA) 到 [MAV_COMP_ID_CAMERA6](../messages/common.md#MAV_COMP_ID_CAMERA6)。
 
-The first time a heartbeat is detected from a new camera, a GCS (or other receiving system) should start the [Camera Identification](#camera_identification) process.
+当首次检测到一个新相机组件的心跳时，GCS (或其它接收系统) 应立刻启动 [Camera Identification](#camera_identification) 程序。
 
-> **Note** If a receiving system stops receiving heartbeats from the camera it is assumed to be *disconnected*, and should be removed from the list of available cameras. If heartbeats are again detected, the *camera identification* process below must be restarted from the beginning.
+> **Note** 如果某个相机的心跳中断，接收系统将认为该相机组件 *disconnected*，并将其从可用相机列表中删除。 If heartbeats are again detected, the *camera identification* process below must be restarted from the beginning.
 
 ## Basic Camera Operations
 
