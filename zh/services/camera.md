@@ -4,9 +4,9 @@
 
 > **Tip** 软件 [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) 实现了该协议。
 
-## Camera Connection
+## 相机连接
 
-Camera components are expected to follow the [Heartbeat/Connection Protocol](../services/heartbeat.md) and sent a constant flow of heartbeats (nominally at 1Hz). Each camera must use a different pre-defined camera component ID: [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA) to [MAV_COMP_ID_CAMERA6](../messages/common.md#MAV_COMP_ID_CAMERA6).
+相机组件的须按照 [Heartbeat/Connection Protocol](../services/heartbeat.md) 的要求，发送固定频率的心跳包 (一般可取 1Hz)。 Each camera must use a different pre-defined camera component ID: [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA) to [MAV_COMP_ID_CAMERA6](../messages/common.md#MAV_COMP_ID_CAMERA6).
 
 The first time a heartbeat is detected from a new camera, a GCS (or other receiving system) should start the [Camera Identification](#camera_identification) process.
 
