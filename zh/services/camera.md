@@ -24,9 +24,9 @@
 
 {% mermaid %} sequenceDiagram; participant GCS participant Camera Camera->>GCS: HEARTBEAT \[cmp id: MAV_COMP_ID_CAMERA\] (first) GCS->>Camera: MAV_CMD_REQUEST_CAMERA_INFORMATION GCS->>GCS: Start timeout Camera->>GCS: COMMAND_ACK Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info. Camera->>GCS: CAMERA_INFORMATION {% endmermaid %}
 
-The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment (if no `COMMAND_ACK` response is received for `MAV_CMD_REQUEST_CAMERA_INFORMATION` the command will be re-sent a number of times before failing). If `CAMERA_INFORMATION` is not received after receiving an ACK with `MAV_RESULT_ACCEPTED`, the protocol assumes the message was lost, and the cycle of sending `MAV_CMD_REQUEST_CAMERA_INFORMATION` is repeated. If `CAMERA_INFORMATION` is still not received after three cycle repeats, the GCS may assume that the camera is not supported.
+对相机的操作遵循 [Command Protocol](../services/command.md) 对命令/ACK 的约定 (如果没有收到 `COMMAND_ACK` 响应，`MAV_CMD_REQUEST_CAMERA_INFORMATION` 将会重发几次直到确认失败)。 如果收到 `MAV_RESULT_ACCEPTED` 的ACK之后没有收到 `CAMERA_INFORMATION` 消息，通讯协议将认为该消息丢失，然后重复发送 `MAV_CMD_REQUEST_CAMERA_INFORMATION` 消息的循环。 在轮询3次之后，如果仍未收到 `CAMERA_INFORMATION` 消息，GCS 将认为不支持此相机类型。
 
-The `CAMERA_INFORMATION` response contains the bare minimum information about the camera and what it can or cannot do. This is sufficient for basic image and/or video capture.
+`CAMERA_INFORMATION` 消息只包含相机组件支持或不支持特定功能的最简单信息。 这对于基本的图像和/或视频捕获来说已经足够了。
 
 If a camera provides finer control over its settings `CAMERA_INFORMATION.cam_definition_uri` will include a URI to a [Camera Definition File](../services/camera_def.md). If this URI exists, the GCS will request it (using a standard HTTP GET request), parse it and prepare the UI for the user to control the camera settings. The definition file can be *hosted* anywhere.
 
