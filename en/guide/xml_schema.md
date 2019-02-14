@@ -124,7 +124,7 @@ For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_P
 ```
 
 MAV_CMD entry `value` elements may additionally define these tags/fields:
-* [param](#param) (optional): A param value.
+* [param](#param) (optional): Up to 7 param tags, numbered using an `index` attribute.
 * One (but not both) of:
   * `hasLocation` (optional): A boolean (default true) that provides a hint to a GCS that the entry should be displayed as a "standalone" location - rather than as a destination on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values but which are not on the vehicle path (e.g.: [MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION)).
   * `isDestination` (optional): A boolean (default true) that provides a hint to a GCS that the entry is a location that should be displayed as a point on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values and which are on the vehicle path (e.g.: [MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT) and [MAV_CMD_NAV_LAND](../messages/common.md#MAV_CMD_NAV_LAND)).
@@ -133,9 +133,15 @@ MAV_CMD entry `value` elements may additionally define these tags/fields:
 ### param {#param}
 
 The `<param>` tag is used in the [MAV_CMD](../messages/common.md#MAV_CMD) enum as part of defining mission commands.
-Params must include an attribute `index` (with value from 1 to 7) and contain a parameter description string.
+Each entry value may have up to 7 params declared, with `index` values from 1-7. 
 
-A `param` may also include the following optional attributes (which may be used by a GUI for parameter display and editing):
+A `param` **must** include the following attribute:
+- `index` - The parameter number (1 - 7).
+
+A `param` **should** have:
+- `description`: Parameter description string (tag body)
+
+A `param` **should** also include the following optional attributes where appropriate (which may be used by a GUI for parameter display and editing):
 - `label` - Display name to represent the parameter in a GCS or other UI
 - `units` - SI units for the value.
 - `enum` - Enum containing possible values for the parameter (if applicable).
@@ -143,8 +149,10 @@ A `param` may also include the following optional attributes (which may be used 
 - `increment` - Allowed increments for the parameter value.
 - `minValue` - Minimum value for param.
 - `maxValue` - Maximum value for the param.
-
-
+- `reserved` - Param is reserved for future use. Default is `False`.
+  > **Tip** See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
+- `default` - Default value for the `param` 
+  (primarily used for `reserved` params, where the value is `0` or `NaN`).
 
 
 ## Message Definition (messages) {#messages}

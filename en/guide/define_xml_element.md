@@ -292,7 +292,6 @@ Open questions:
 -->
 
 
-
 ## Enums {#enums}
 
 [Enums](../guide/xml_schema.md#enum) are used to define named values that may be used as options in messages - for example to represent errors, states, or modes.
@@ -379,7 +378,9 @@ Enums are very rarely deleted, as this may break compatibility with legacy MAVLi
 ## Commands {#mavlink_commands}
 
 MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
-They are used to define operations used in autonomous missions (see [Mission Protocol](../services/mission.md) or to send commands in any mode (see [Command Protocol](../services/command.md)).
+They are used to define operations used in autonomous missions (see [Mission Protocol](../services/mission.md)) or to send commands in any mode (see [Command Protocol](../services/command.md)).
+
+> **Tip** The schema for commands is documented [here](../guide/xml_schema.html#MAV_CMD).
 
 A typical mission command is ([MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT)) is shown below:
 
@@ -441,11 +442,21 @@ In addition, there are some other "standard" prefixes which are used for common 
 > **Tip** The rules for the above prefixes are flexible; some DO commands might reasonably be NAV commands.
   Ins some cases a request for information might be a `MAV_CMD_REQUEST_` and in others it might be a stand alone message.
   
-### Standard Mappings
+### Parameters (param) {#param}
 
-Commands have an index from 1 to 7. 
+Message data is encoded in the [param](../guide/xml_schema.md#param) values/attributes. 
+
+#### Standard Mappings
+
+Parameters (`params`) must have an index from 1 to 7. 
+
 Where a command contains position information, this is always stored in: Param 5 (x / latitude), Param 6 (y / longitude), Param 7 (z, altitude). 
 Whether the value is local (x,y,z) or global (latitude, longitude, altitude) depends on the command and the frame used (frame often defined in the parent message).
+
+#### Data types
+
+The `param` data for index 1-4, 7 are always exchanged in a field with size `float`, while index 5, 6 may also be sent as an `int32` (depending on the message used).
+The implication is that index 5 and 6 should not be used for data that may need to be sent in a floating point value (like a `NaN`).
 
 
 <!-- 
@@ -456,3 +467,26 @@ Common - 16 - 34, 80-85, 92 - 95, 112-115, 159, 176 - 186, 189 - 252, 300, 400, 
 matrixpilot : 0
 Slugs - 10001 - 10015
 -->
+
+#### Reserved/Undefined Parameters {#reserved}
+
+Many commands do not *need* seven (or any) `param` values.
+These unused parameters can be treated as *reserved*, allowing them to be reused later if the command needs to be extended.
+
+A reserved `param` **must** always be sent with a (default) value of *either* `0` or `NaN` (which will be interpreted by recipient as "no action" or "not supported").
+If the param is reused the original default value must still mean "no action", so that an updated system can still interact with a system that has not been updated.
+
+> **Note** Unfortunately this means that a reserved `param` must have its default value decided when the command is declared!
+  The default value cannot later be changed from `NaN` to `0` (or visa versa) without potential compatibility issues.
+
+To declare a `param` as `reserved` with `default` value of `NaN` you should use the following syntax. 
+```
+<param index="3" reserved="True" default="NaN" />
+```
+
+> **Warning** Params with index values `5` and `6` should not be given a `default` of `NaN` , because if these are sent in a `COMMAND_INT` or `MISSION_INT` these parameters are integers (and hence there is no way to represent an `NaN`).
+
+To declare a param as `reserved` with `default` value of `0` simply omit the `param` from the definition (this is the default - it is equivalent to: `<param index="3" reserved="True" default="0" />`).
+
+If you have just one unused `param` we recommend you simply don't declare it. 
+If you have more than one, you may wish to explicitly define it with default of `NaN` so that you can extend your command later with ether default. 
