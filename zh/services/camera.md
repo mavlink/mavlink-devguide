@@ -28,11 +28,11 @@
 
 `CAMERA_INFORMATION` 消息只包含相机组件支持或不支持特定功能的最简单信息。 这对于基本的图像和/或视频捕获来说已经足够了。
 
-If a camera provides finer control over its settings `CAMERA_INFORMATION.cam_definition_uri` will include a URI to a [Camera Definition File](../services/camera_def.md). If this URI exists, the GCS will request it (using a standard HTTP GET request), parse it and prepare the UI for the user to control the camera settings. The definition file can be *hosted* anywhere.
+如果一个相机组件对设置项提供更精细的控制 `CAMERA_INFORMATION.cam_definition_uri` 将包含一个指向相机定义文件 [Camera Definition File](../services/camera_def.md) 的URI。 如果该URI确实存在，GCS将(通过标准的HTTP GET请求) 来获取并解析它，然后启动图形界面以便用户对相机组件进行配置。 相机定义文件可以存放 *hosted* 在任何位置。
 
-> **Note** If the camera component provides an HTTP interface, the definition file can be hosted on the camera itself. Otherwise, it can be hosted by any regular, reachable server.
+> **Note** 如果相机组件提供 HTTP 接口，相机定义文件可以存放在相机上。 否则，它可以存放在任何常规的、可访问的服务器上。
 
-The `CAMERA_INFORMATION.cam_definition_version` field should provide a version for the definition file, allowing the GCS to cache it. Once downloaded, it would only be requested again if the version number changes.
+`CAMERA_INFORMATION.cam_definition_version` 字段应提供定义文件的版本信息，允许GCS进行版本比对。 文件一旦被下载，只有当文件版本号改变时才会重新获取。
 
 If a vehicle has more than one camera, each camera will have a different component ID and send its own heartbeat. The GCS should create multiple instances of a camera controller based on the component ID of each camera. All commands are sent to a specific camera by addressing the command to a specific component ID.
 
