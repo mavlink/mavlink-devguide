@@ -26,7 +26,7 @@
 
 对相机的操作遵循 [Command Protocol](../services/command.md) 对命令/ACK 的约定 (如果没有收到 `COMMAND_ACK` 响应，`MAV_CMD_REQUEST_CAMERA_INFORMATION` 将会重发几次直到确认失败)。 如果收到 `MAV_RESULT_ACCEPTED` 的ACK之后没有收到 `CAMERA_INFORMATION` 消息，通讯协议将认为该消息丢失，然后重复发送 `MAV_CMD_REQUEST_CAMERA_INFORMATION` 消息的循环。 在轮询3次之后，如果仍未收到 `CAMERA_INFORMATION` 消息，GCS 将认为不支持此相机类型。
 
-`CAMERA_INFORMATION` 消息只包含相机组件支持或不支持特定功能的最简单信息。 这对于基本的图像和/或视频捕获来说已经足够了。
+`CAMERA_INFORMATION` 消息只包含相机组件支持或不支持特定功能的最简单信息。 这对于基本的图像或视频捕获来说已经足够了。
 
 如果一个相机组件对设置项提供更精细的控制 `CAMERA_INFORMATION.cam_definition_uri` 将包含一个指向相机定义文件 [Camera Definition File](../services/camera_def.md) 的URI。 如果该URI确实存在，GCS将(通过标准的HTTP GET请求) 来获取并解析它，然后启动图形界面以便用户对相机组件进行配置。 相机定义文件可以存放 *hosted* 在任何位置。
 
@@ -34,11 +34,11 @@
 
 `CAMERA_INFORMATION.cam_definition_version` 字段应提供定义文件的版本信息，允许GCS进行版本比对。 文件一旦被下载，只有当文件版本号改变时才会重新获取。
 
-If a vehicle has more than one camera, each camera will have a different component ID and send its own heartbeat. The GCS should create multiple instances of a camera controller based on the component ID of each camera. All commands are sent to a specific camera by addressing the command to a specific component ID.
+如果飞行器上安装了多个相机组件，每个相机都要分配一个独一无二的组件ID并发送自己的心跳。 GCS 应根据组件ID为每一个相机组件创建一个单独的相机控制器实例。 所有命令都要指定组件ID并发送给对应的相机组件。
 
-### Camera Modes
+### 相机模式
 
-Some cameras must be in a certain mode for still and/or video capture.
+有些相机组件必须切换到特定模式才能捕获图像或视频。
 
 The GCS can determine if it needs to make sure the camera is in the proper mode prior to sending a start capture (image or video) command by checking whether the [CAMERA_CAP_FLAGS_HAS_MODES](../messages/common.md#CAMERA_CAP_FLAGS_HAS_MODES) bit is set true in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
