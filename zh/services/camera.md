@@ -46,21 +46,21 @@
 
 要查询当前工作模式，GCS向相机发送[MAV_CMD_REQUEST_CAMERA_SETTINGS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_SETTINGS) 命令即可。 相机组件将回复一条 [COMMAND_ACK](../messages/common.md#COMMAND_ACK)消息，该消息有一个 result 字段用来标志查询是否成功。 如果查询成功 (`COMMAND_ACK.result` 字段等于 [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) ，相机组件将发送一条 [CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS) 消息。 `CAMERA_SETTINGS.mode_id` 字段就是当前工作模式。
 
-The sequence is shown below:
+工作流程图如下：
 
 {% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_REQUEST_CAMERA_SETTINGS GCS->>GCS: Start timeout Camera->>GCS: COMMAND_ACK Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info. Camera->>GCS: CAMERA_SETTINGS {% endmermaid %}
 
-> **Note** Command acknowledgment and message resending is handled in the same way as for [camera identification](#camera_identification) (if a successful ACK is received the camera will expect the `CAMERA_SETTINGS` message, and repeat the cycle - up to 3 times - until it is received).
+> **Note** 指令ACK 和指令重发的处理方式和相机识别 [camera identification](#camera_identification) 一致 (如果收到标志成功的ACK将等待 `CAMERA_SETTINGS` 消息，重复此循环 - 最多3次 - 直到收到此消息)。
 
-To set the camera to a specific mode, the GCS would send the [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) command with the appropriate mode.
+要将相机切换到特定的工作模式，GCS 可以发送一条包含该工作模式的[MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) 指令。
 
-The sequence is shown below:
+工作流程图如下：
 
 {% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_SET_CAMERA_MODE GCS->>GCS: Start timeout Camera->>GCS: COMMAND_ACK Note over Camera,GCS: If MAV_RESULT_ACCEPTED, mode was changed. {% endmermaid %}
 
-> **Note** The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment.
+> **Note** 以上操作对指令/Ack的规定遵循 [Command Protocol](../services/command.md) 通用准则。
 
-### Storage Status
+### 存储状态
 
 Before capturing images and/or videos, a GCS should query the storage status to determine if the camera has enough free space for these operations (and provide the user with feedback as to the current storage status). The GCS will send the [MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION) command and it expects a [STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) response. For formatting (or erasing depending on your implementation), the GCS will send a [MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) command.
 
