@@ -1,54 +1,54 @@
-# Protocol Overview
+# 飞控通讯协议概况
 
-MAVLink is a binary telemetry protocol designed for resource-constrained systems and bandwidth-constrained links. MAVLink is deployed in two major versions: v1.0 and v2.0, which is backwards-compatible (v2.0 implementations can parse and send v1.0 packets). Telemetry data streams are sent in a multicast design while protocol aspects that change the system configuration and require guaranteed delivery like the [mission protocol](../services/mission.md) or [parameter protocol](../services/parameter.md) are point-to-point with retransmission.
+MAVLink 为一种设计用于资源受限系统及带宽受限链路的二进制遥测协议。 MAVLink 主要发行了两个版本: v1.0 和 v2.0 ，这两个版本向后兼容 （即 v2.0 版可以分析和发送 v1.0 版数据包)。 遥测数据流是以广播方式发送的， 而协议方面改变了系统配置， 并保证诸如[任务协议](../services/mission.md)或参数协议</1 > 这类点对点式、需重新传输的消息。</p> 
 
-## MAVLink 2 Packet Format
+## MAVLink 2 的数据包格式
 
-Below is the over-the-wire format for a [MAVLink v2](../guide/mavlink_2.md) packet. The in-memory representation might differ.
+以下为在链路上传输的 [MAVLink v2](../guide/mavlink_2.md) 数据包格式。 内存中的表示方式可能会有所不同。
 
 ```C
-uint8_t magic;              ///< protocol magic marker
-uint8_t len;                ///< Length of payload
-uint8_t incompat_flags;     ///< flags that must be understood
-uint8_t compat_flags;       ///< flags that can be ignored if not understood
-uint8_t seq;                ///< Sequence of packet
-uint8_t sysid;              ///< ID of message sender system/aircraft
-uint8_t compid;             ///< ID of the message sender component
-uint8_t msgid 0:7;          ///< first 8 bits of the ID of the message
-uint8_t msgid 8:15;         ///< middle 8 bits of the ID of the message
-uint8_t msgid 16:23;        ///< last 8 bits of the ID of the message
-uint8_t payload[max 255];   ///< A maximum of 255 payload bytes
+uint8_t magic;              ///< 协议的魔术标记
+uint8_t len;                ///< 负载的长度
+uint8_t incompat_flags;     ///<  必须要解释的标志
+uint8_t compat_flags;       ///<  可以忽略的标志
+uint8_t seq;                ///< 数据包序列号
+uint8_t sysid;              ///< 发送方的消息 ID 号
+uint8_t compid;             ///< 发送方组件的消息 ID 号
+uint8_t msgid 0:7;          ///< 消息 ID 号的前8位
+uint8_t msgid 8:15;         ///< 消息 ID 号的中间8位
+uint8_t msgid 16:23;        ///< 消息 ID 号的最后8位
+uint8_t payload[max 255];   ///< 负载最大 255 个字节
 uint16_t checksum;          ///< X.25 CRC
 ```
 
 ```C
-uint8_t signature[13];      ///< Signature which allows ensuring that the link is tamper-proof (optional)
+uint8_t signature[13];      ///< 保证正确连接的签名（可选）
 ```
 
-> **Note** The [MAVLink 1 packet format](../guide/serialization.md#v1_packet_format) is similar, but omits `incompat_flags`, `compat_flags` and `signature`, and only has a single byte for the message address. For more information see [Serialization > Packet Format](../guide/serialization.md#packet_format).
+> **Note** The [MAVLink 1 版本的数据包](../guide/serialization.md#v1_packet_format) 与此类似，但是省略了 `incompat_flags`，`compat_flags` 及`signature`，且消息地址为单个字节。 消息信息参加 [Serialization > 数据包格式](../guide/serialization.md#packet_format).
 
-## Serialization
+## 串行化
 
-The over-the-wire format of MAVLink is optimized for resource-constrained systems and hence the field order is not the same as in the XML specification. The over-the-wire generator sorts all fields of the message according to size, with the largest fields (`uint64_t`) first, then down to smaller fields. The sorting is done using a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), which ensures that any fields that do not need to be reordered stay in the same relative order. This prevents alignment issues on the encoding / decoding systems and allows for very efficient packing / unpacking.
+MAVLink 链路上的数据包格式是专为资源受限优化过的，所以其中数据域的次序与 XML 规则中的次序不一致。 链路数据发生器根据信息的长度进行排序，最长的数据（ `uint64_t` ） 在前，然后逐渐到最短的数据。 它采用[稳定的排序算法](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) 进行排序，这可以确保哪些不用参与排序的数据域仍保留在同样的相对位置上。 这也可以避免编解码时的对齐问题，使打包/解包算法更高效。
 
-For more information and specific exceptions see [Serialization](../guide/serialization.md).
+有关更详细详细及例外情形，请参阅[串行化](../guide/serialization.md)。
 
-## Multicast Streams vs. Guaranteed Delivery
+## 多点广播数据流 vs 确保式发送
 
-MAVLink is built for hybrid networks where high-rate data streams from data sources (commonly drones) flow to data sinks (commonly ground stations), but are mixed with transfers requiring guaranteed delivery. The key insight is that for most **telemetry streams** there is not a known or single recipient: Instead, typically an onboard computer, a ground control station and a cloud system all need the same data stream.
+Mavlink 是为混合网络系统构建的。在这些网络中，高速数据流从数据源（通常是无人机）流向数据接收器 （通常是地面站），但是它与确保是发送的数据流是混合在一起的。 关键之处在于， 对于多数**遥测数据流**而言，都没有一个已知的或单一的接收。相反，机载计算机、地面站和云系统都需要同样的数据流。
 
-On the other hand configuring the **onboard mission** or changing the system configuration with **onboard parameters** requires point-to-point communication with guaranteed delivery. MAVLink achieves very high efficiency by allowing both modes of operation.
+另一方面，配置**机载任务**或使用**机载参数**的方式改变系统配置需要采用确保式的点对点通信。 通过使用多种发送方式，MAVLink 可达到很高的效率。
 
-## Topic Mode \(publish-subscribe\)
+## 主题模式（发布-订阅式）
 
-In topic mode the protocol will not emit a target system and component ID for messages to save link bandwidth. Typical examples for this communication mode are all autopilot data streams like position, attitude, etc.
+在主题模式下，协议将不会为了节省带宽而省略掉目标系统及组件的 ID 号。 所有自动驾驶仪的数据流如位置、姿态都是这种通信模式的例子。
 
-The main benefit of this multicast mode is that no additional overhead is generated and multiple subscribers can all receive this data.
+这种广播式通信的优点是没有额外的数据包头，且多个订阅者都可接收此数据。
 
-## Point-to-Point Mode
+## 点对点式通信
 
-In point-to-point mode MAVLink uses a target ID and target component. In most cases where these fields are used the sub-protocol also ensures guaranteed delivery (missions, parameters, commands).
+在点对点式通信中，MAVLink 使用目标系统的 ID 号和组件的 ID 号。 在使用这些域（任务，参数，命令）的多数情况下，子协议也可以保证采用确保式发送。
 
-## Integrity Checks / Checksum
+## 完整性检查/校验和
 
-MAVLink implements two integrity checks: The first check is on the integrity of the packet during transmission using the X.25 checksum ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check)). This however only ensures that the data has not been altered on the link - it does not ensure consistency with the data definition. The second integrity check is on the [data description](https://en.wikipedia.org/wiki/Data_definition_language) to ensure that two messages with the same ID are indeed containing the same information. To achieve this the data definition itself is run through CRC-16-CCITT and the resulting value is used to seed the packet CRC. Most reference implementations store this constant in an array named **CRC\_EXTRA**.
+MAVLink 使用了两种方法检测完整性：第一道为发送过程中使用 X.25 校验和 （[CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check)）检测数据包的完整性。 但是这只能保证数据没被链路改变，不能保证数据定义的一致性。 第二道检测为[数据描述](https://en.wikipedia.org/wiki/Data_definition_language)阶段，它保证具有同样 ID 的两个信息确实包含同样的消息。 为了达到此目的，数据定义本身也进行了 CRC-16-CCITT ，结果用作此数据包 CRC 的种子。 在多种参考应用中，存储此常数的数组称作 **CRC\_EXTRA** 。
