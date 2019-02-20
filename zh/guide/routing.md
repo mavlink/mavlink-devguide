@@ -22,6 +22,10 @@ MAVLink components are expected to process messages that have a matching system/
 
 > **Warning** Forwarded messages must not be changed/repackaged by the forwarding system (the original message is passed to the new link).
 
+<span></span>
+
+> **Note** Systems must forward messages according to the routing rules *even if they are unable to process them* (e.g. if using a library that does not include the message, or if they don't have the correct signature for authenticating a message).
+
 ## Routing Detail
 
 Systems/components should process a message locally if any of these conditions hold:
