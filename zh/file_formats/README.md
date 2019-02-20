@@ -12,8 +12,8 @@ There is a *defacto* standard used in many GCS systems and developer APIs for st
 
 The format is shown below. The first line contains the file format and version information, while subsequent the line(s) are mission items.
 
-    QGC WPL <VERSION>
-    <INDEX> <CURRENT WP> <COORD FRAME> <COMMAND> <PARAM1> <PARAM2> <PARAM3> <PARAM4> <PARAM5/X/LONGITUDE> <PARAM6/Y/LATITUDE> <PARAM7/Z/ALTITUDE> <AUTOCONTINUE>
+    QGC WPL &lt;VERSION&gt;
+    &lt;INDEX&gt; &lt;CURRENT WP&gt; &lt;COORD FRAME&gt; &lt;COMMAND&gt; &lt;PARAM1&gt; &lt;PARAM2&gt; &lt;PARAM3&gt; &lt;PARAM4&gt; &lt;PARAM5/X/LONGITUDE&gt; &lt;PARAM6/Y/LATITUDE&gt; &lt;PARAM7/Z/ALTITUDE&gt; &lt;AUTOCONTINUE&gt;
     
 
 > **Note** The spaces between the numbers/fields above are `<tab>` (i.e. `\t` in most programming languages).
