@@ -149,7 +149,7 @@ A `param` **should** also include the following optional attributes where approp
 - `increment` - Allowed increments for the parameter value.
 - `minValue` - Minimum value for param.
 - `maxValue` - Maximum value for the param.
-- `reserved` - Param is reserved for future use. Default is `False`.
+- `reserved` - Boolean indicating whether param is reserved for future use. If the attributes is not declared, then implicitly `reserved="False".
   > **Tip** See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
 - `default` - Default value for the `param` 
   (primarily used for `reserved` params, where the value is `0` or `NaN`).
