@@ -2,9 +2,11 @@
 
 # MAVLINK Common Message Set
 
-These messages define the common message set, which is the reference message set implemented by most ground control stations and autopilots.
+The MAVLink *common* message set is defined in [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml). It contains the *standard* definitions that are managed by the MAVLink project.
 
-*This is a human-readable form of the XML definition file: [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml).*
+The definitions cover functionality that is considered useful to most ground control stations and autopilots. MAVLink-compatible systems are expected to use these definitions where possible (if an appropriate message exists) rather than rolling out variants in their own [dialects](../messages/README.md).
+
+This topic is a human-readable form of [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml).
 
 <span></span>
 
