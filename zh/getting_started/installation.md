@@ -1,4 +1,4 @@
-# Installing MAVLink
+# 安装 MAVLink
 
 This topic explains how to install the [MAVLink toolchain](https://github.com/mavlink/mavlink), including both [XML message definitions](../messages/README.md) and the GUI/command line tools that use them to [Generate MAVLink Source Files](../getting_started/generate_libraries.md).
 
