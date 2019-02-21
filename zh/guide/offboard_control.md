@@ -1,3 +1,3 @@
 # 远程控制接口
 
-The offboard control interface allows to send low-level and high-level attitude, velocity or position commands to the vehicle.
+远程控制界面允许向飞机发送低级和高级姿态、速度或位置命令。
