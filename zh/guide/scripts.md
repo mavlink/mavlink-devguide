@@ -9,9 +9,9 @@
 * 写入整个 **mavLink**文件夹的权限
 * 在 `message_definitions/*/`中， 您的 [特定语言](../messages/README.md#dialects) 的 XML 文件
 
-脚本可以通过运行 Python 与 `-m` 开关执行，这表明给定的脚本在 `PYTHONPATH`上存在。 The following code runs **mavlogdump.py** in **/pymavlink/tools/** on the recorded MAVLink stream `test_run.mavlink` (other scripts in **/tools** and **/scripts** can be run in a similar fashion):
+脚本可以通过运行 Python 与 `-m` 开关执行，这表明给定的脚本在 `PYTHONPATH`上存在。 以下代码在记录的 MAVLink 流 `test_run.mavlink` 上，运行 **/pymavlink/工具/** 中的 **/pymavlog.py** (其他脚本**/tools** 和**/scripts** 可以以同样的方式运行：
 
     python -m pymavlink.tools.mavlogdump test_run.mavlink
     
 
-> **Note** Using the `-m` switch is the proper way to run Python scripts that are part of a library as per PEP-328 (and the rejected PEP-3122).
+> **Note** 使用 `-m` 切换脚本是运行 Python 作为 PEP-328 (和被拒绝的 PEP-3122) 库一部分的适当方式。
