@@ -11,7 +11,7 @@
 - *系统id* 具有1-255之间的值。 
   - 默认自动试验系统 id通常是 1。 用户应在添加新的自动驾驶仪到网络时分配独特增加的 id 值。
   - GCS 系统和开发者API 通常在数值范围顶部使用ID，以减少ID冲突(例如：255)。 它们的系统ID经常可用于允许多GCS系统。
-- The *component id* is allocated by type and number from [MAV_COMPONENT](../messages/common.md#MAV_COMPONENT).
+- *组件 id* 按类型和数字，从 [MAV_COMPONENT](../messages/common.md#MAV_COMPONENT) 分配 。
 
 Messages can be intended for all systems, specific systems, all components in a system, or specific components within a system. The protocol defines two 8-bit fields that can (optionally) be specified in the message payload to indicate where the message should be sent/routed. If the ids are omitted or set to zero then the message is considered a *broadcast* (intended for all systems/components).
 
