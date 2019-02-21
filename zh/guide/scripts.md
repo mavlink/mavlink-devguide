@@ -1,15 +1,15 @@
-# Pymavlink Scripts
+# Pymavlink 脚本
 
-This MAVLink library also comes with supporting libraries and scripts for using, manipulating, and parsing MAVLink streams within the [pymavlink](https://github.com/mavlink/pymavlink/), **pymavlink/tools**, and **pymavlink/examples** directories.
+此 MAVLink 库还附带了用于在 [pymavlink](https://github.com/mavlink/pymavlink/)、**pymavlink/tools** 和 **pymavlink/examples** 目录中使用、操作和分析 MAVLink 流的支持库和脚本。
 
-The scripts have the following requirements:
+这些脚本具有以下要求:
 
-* Python 2.7+ and 3.3+
-* `PYTHONPATH` specifies the directory path that contains the `mavlink` repository.
-* Write access to the entire **mavlink** folder.
-* Your [dialect](../messages/README.md#dialects)'s XML file is in `message_definitions/*/`
+* Python 2.7+ 和3.3+
+* `PYTHONPATH` 指定包含 `mavlink` 存储库的目录路径。
+* 写入整个 **mavLink**文件夹的权限
+* 在 `message_definitions/*/`中， 您的 [特定语言](../messages/README.md#dialects) 的 XML 文件
 
-The scripts can be executed by running Python with the `-m` switch, which indicates that the given script exists on the `PYTHONPATH`. The following code runs **mavlogdump.py** in **/pymavlink/tools/** on the recorded MAVLink stream `test_run.mavlink` (other scripts in **/tools** and **/scripts** can be run in a similar fashion):
+脚本可以通过运行 Python 与 `-m` 开关执行，这表明给定的脚本在 `PYTHONPATH`上存在。 The following code runs **mavlogdump.py** in **/pymavlink/tools/** on the recorded MAVLink stream `test_run.mavlink` (other scripts in **/tools** and **/scripts** can be run in a similar fashion):
 
     python -m pymavlink.tools.mavlogdump test_run.mavlink
     
