@@ -1,16 +1,16 @@
-# Routing
+# 路由
 
-This topic explains how messages should be routed by MAVLink systems.
+这个主题解释了如何由 MAVLink 系统路由信息。
 
-## Overview
+## 综述
 
-A MAVLINK network is made up of systems (vehicles, ground stations, antenna trackers, etc.), which may be composed from one or more components (autopilot, camera, servos, etc.).
+一个 MAVLINK 网络由多种系统组成（无人机、地面站、天线追踪器等），这些系统可能由一个或多个组件（自动试验、相机、服务器等）组成。
 
-Each system has a network-unique *system id*, and each component has a system-unique *component id* that can be used for addressing/routing:
+每个系统都有一个网络独有的 *系统 id*，每个组件都有一个系统独有的 *组件 id* 可用于地址/路由：
 
-- The *system id* has a value between 1 and 255. 
-  - The default autopilot system id is usually 1. Users should allocate unique increasing id values when adding new autopilots to a network.
-  - GCS systems and developer APIs typically use an ID at the top of the numeric range to reduce ID clashes (e.g. 255). Often their system ID is configurable to allow multi-GCS systems.
+- *系统id* 具有1-255之间的值。 
+  - 默认自动试验系统 id通常是 1。 用户应在添加新的自动驾驶仪到网络时分配独特增加的 id 值。
+  - GCS 系统和开发者API 通常在数值范围顶部使用ID，以减少ID冲突(例如：255)。 它们的系统ID经常可用于允许多GCS系统。
 - The *component id* is allocated by type and number from [MAV_COMPONENT](../messages/common.md#MAV_COMPONENT).
 
 Messages can be intended for all systems, specific systems, all components in a system, or specific components within a system. The protocol defines two 8-bit fields that can (optionally) be specified in the message payload to indicate where the message should be sent/routed. If the ids are omitted or set to zero then the message is considered a *broadcast* (intended for all systems/components).
