@@ -159,7 +159,10 @@ There are cases where an option change requires a parameter to be updated. For e
 
 This tells the GCS that when the `CAM_EXPMODE` parameter changes, the `CAM_APERTURE`, `CAM_SHUTTERSPD` and the `CAM_ISO` parameters must be updated (requested from the camera).
 
-#### Mode-Specific Range Limit {#cam_mode_example}
+#### Range Limit {#cam_mode_example}
+
+A *range limit* allows you to specify the valid options of one parameter based on the value of any other.
+For example, below we describe how you might set the available ISO options in video mode as compared to photo mode.
 
 Suppose your camera has the following ISO options:
 
@@ -182,7 +185,9 @@ Suppose your camera has the following ISO options:
 </parameter>
 ```
 
-But this full range is only available when in *Photo Mode*. For whatever reason, when the camera is set to *Video Mode*, only a subset of the above range is valid. In this case, you would use the `parameterrange` element:
+But this full range is only available when in *Photo Mode*. 
+For whatever reason, when the camera is set to *Video Mode*, only a subset of the above range is valid. 
+In this case, you would use the `parameterrange` element:
 
 ```XML
 <parameter name="CAM_MODE" type="uint32" default="1" control="0">
