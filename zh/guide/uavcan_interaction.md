@@ -6,12 +6,12 @@
 
 UAVCAN 的一般说明和规格可在<http://uavcan.org>上查阅。
 
-The text below will be referring to the following terms:
+文章将提及以下术语：
 
-* **Bridge node** - the piece of on-board equipment that bridges the on-board UAVCAN bus and the MAVLink connection. This function is often performed by the flight management unit, e.g. Pixhawk.
-* **Remote equipment** - the other end of the MAVLink channel, e.g. the ground control station.
+* **Bridge node**——搭配机设备，连接上台VAN 的总线和 MAVLink 连接。 这一功能常常由飞行管理单元控制，例如 Pixwik 执行。
+* **Remote equipment**-MAVLink 通道的其他终端，例如地面控制站。
 
-### UAVCAN Node Identification
+### UCAN Node 识别
 
 Every UAVCAN node has a bus-unique identifier referred to as "node ID". The node ID is an integer in the interval [1, 127], where the value 1 is typically used by the autopilot or some other kind of central controlling unit, and the values 126 and 127 are typically used by debugging or monitoring equipment.
 
