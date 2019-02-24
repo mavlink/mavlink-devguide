@@ -24,4 +24,4 @@
 
 ### C 接口
 
-The MAVLink 2 C library is backwards compatible with MAVLink 1. Information on how to upgrade the library and work with MAVLink 1 is covered in [Using C MAVLink Libraries (mavgen)](../mavgen_c/README.md).
+MAVLink 2 C库向下兼容 MAVLink 1。 关于如何升级库并与 MAVLink 1 工作的信息载于[使用 C MAVLink 库(mavgen)](../mavgen_c/README.md)。
