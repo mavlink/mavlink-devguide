@@ -25,27 +25,27 @@ UAVCAN 的一般说明和规格可在<http://uavcan.org>上查阅。
 
 在 UAVCAN 中, 抽象节点状态信息由标准消息类型 `uavcan.protocol.NodeStatus` 表示。 它的 MAVLink 对应是 `UCAVAN_NODE_STATUS`。
 
-The bridge node should emit the MAVLink message `UAVCAN_NODE_STATUS` every time it receives a UAVCAN node status message. The bridge node is allowed to decimate the stream of node status messages in order to avoid congestion of the MAVLink channel, but the resulting frequency of status message emission should not be lower than 1 Hz per node.
+每次收到 UAVCAN 节点状态消息时, 桥接节点都应发出 `UAVCAN_NODE_STATUS` 的 MAVLink 消息。 允许桥节点对节点状态消息流进行抽取, 以避免 MAVLink 通道的拥塞, 但所产生的状态消息发射频率不应低于每个节点 1 hz。
 
-The remote equipment can monitor which UAVCAN nodes are online by means of tracking the amount of time that passed since the last reception of the node status message for each online node. The remote equipment should consider the node to be offline if its last status message has arrived more than 5 seconds ago.
+远程设备可以通过跟踪自上次接收每个在线节点的节点状态消息以来经过的时间来监控 UAVCAN 节点的联机状态。 如果该节点的最后一个状态消息超过5秒未到达, 则应将该节点视为离线。
 
-### Extended Node Information
+### 扩展节点信息
 
-UAVCAN nodes are typically able to report some static information that identifies their type, purpose, vendor, revision, and such, via the standard service type `uavcan.protocol.GetNodeInfo`. In this context, "static" means that the data is not changing while the node is running. This information can be crucial for many important use cases.
+UAVCAN 节点通常能够通过标准服务类型 `uavcan.protocol.GetNodeInfo` 报告一些静态信息,以确定其类型、用途、供应商、修订等。 在此上下文中, "静态" 表示在节点运行时数据没有更改。 这种信息对于许多重要的使用案例至关重要。
 
-The corresponding MAVLink message is `UAVCAN_NODE_INFO`. Its fields are direct mappings of the corresponding fields in the service type `uavcan.protocol.GetNodeInfo`.
+相应的 MAVLink 消息是`UCAVAN_NODE_INFO`。 它的字段是服务类型 `uavcan.protocol.GetCanteInfo` 对应字段的直接映射。
 
-The bridge node must emit the message `UAVCAN_NODE_INFO` in the following cases:
+桥梁节点必须在下列情况下发布消息 `UCAVAN_NODE_INFO`
 
-* Reception of a service response of type `uavcan.protocol.GetNodeInfo`. In turn, this service must be invoked when the following conditions are observed on the bus (please read the UAVCAN specification for a more detailed description of the principles of bus monitoring): 
-    * A new node has appeared online.
-    * A known node has restarted.
-* Reception of the MAVLink command `MAV_CMD_UAVCAN_GET_NODE_INFO`. In this case, the bridge node is required to emit `UAVCAN_NODE_INFO` once for every known node.
-* It is also allowed, but not required, to unconditionally emit messages `UAVCAN_NODE_INFO` at a very low rate, in order to guarantee that the remote equipment always has a valid model of the on-board UAVCAN bus.
+* 接收服务响应类型 `uavcan.protocol.GetCanteInfo`。 反过来，当总线上观察以下条件时，必须援引这一服务（请阅读“UAVCAN”规格，更详细地说明总线监测原则）： 
+    * 一个新的节点在线出现。
+    * 已知节点已重新启动。
+* 接受 MAVLink 命令`MAV_CMD_UCAVAN_GET_NODE_INFO`。 在这种情况下，桥梁节点必须每个已知节点发布`UCAVAN_NODE_INFO` 一次。
+* 此外，还允许，但不要求无条件地以极低的速度发布`UCAVAN_NODE_INFO` 消息， ，以保证远程设备总是有一个有效的板载 UAVCAN 总线。
 
-## Configuration Parameter Management
+## 配置参数管理
 
-UAVCAN defines a set of standard service types that facilitate the management of configuration parameters on UAVCAN nodes. The respective data type definitions can be found in the namespace `uavcan.protocol.param`.
+UCAVAN定义了一套标准服务类型，以便利配置参数管理在 UCAVAN 节点上。 相关的数据类型定义可在命名空间 `uavcen.protocol.made` 中找到。
 
 The UAVCAN-MAVLink bridge does not define any additional messages for configuration parameter management. Instead, the following standard messages are used in the regular way:
 
