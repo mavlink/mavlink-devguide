@@ -70,4 +70,4 @@ MAVLink 已部署在若干版本中：
   * 如果链接上有 *MAVLink 2 *, 则飞机应在 `AUTOPILOT_VERSION` 消息中设置 `MAV_PROTOCOL_CAPABILITY_MAVLINK2` 能力标志。 如果链接当前正在发送 *MAVLink 1 * 数据包, 但 *MAVLink 2 * 数据包将被接受, 并将导致切换到 *MAVLink 2 * 的情况下, 应设置此设置。
   * GCS 实现可以选择自动切换到 *MAVLink 2 * (如果可用), 也可以选择具有 *MAVLink 2 * 的配置选项。
   * 如果 GCS 选择使用配置选项, 则在启用该选项时, 它应在启动链接时发送 *MAVLink 2 *。
-  * If the GCS chooses to use automatic switching then it should switch to sending *MAVLink 2* if either it receives a *MAVLink 2* message on the link or by asking for the `AUTOPILOT_VERSION` message to be sent and seeing the `MAV_PROTOCOL_CAPABILITY_MAVLINK2` flag is set.
+  * 如果 GCS 选择使用自动切换, 则应切换到发送 *MAVLink 2 * 如果它在链接上收到 *MAVLink 2 * 消息, 或者要求发送 `AUTOPILOT_VERSION` 消息并查看 `MAV_PROTOCOL_CAPABILITY_设置了 mallink2 ` 标志。
