@@ -1,10 +1,10 @@
-# UAVCAN Interaction
+# UAVCAN 介绍
 
-This chapter describes the MAVLink commands and messages that facilitate data exchange between the operator's equipment and the on-board UAVCAN nodes. The primary motivation is to enable the user to configure, monitor, and control the on-board UAVCAN nodes via the existing MAVLink connection.
+本章描述 MAVLink 命令和信息，以便利操作者的设备与板载 UAVCAN 之间的数据交互。 主要目的是使用户能够通过现有的 MAVLink 连接，配置、监测和控制机上的 UCAVAN 节点。
 
-## Basics
+## 概况
 
-The general description and specification of UAVCAN is available at <http://uavcan.org>.
+UAVCAN 的一般说明和规格可在<http://uavcan.org>上查阅。
 
 The text below will be referring to the following terms:
 
