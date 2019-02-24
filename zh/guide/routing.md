@@ -33,9 +33,9 @@ MAVLink组件预计将处理具有匹配系统/组件id和广播信息的信息�
 - 这是一个广播消息(`target_system` 字段忽略或零)。
 - `target_system` 与其系统 id 和 `target_component` 匹配
 - `target_system` 与其系统ID匹配，并拥有组件的 `target_component`
-- The `target_system` matches its system id and the component is unknown (i.e. this component has not seen any messages on any link that have the message's `target_system`/`target_component`).
+- `target_system` 匹配其系统id，组件未知 (即此组件没有看到任何信息链接上的消息 `target_system`/`target_component`)。
 
-Systems should forward messages to another link if any of these conditions hold:
+如果以下任一条件存在, 系统应将消息转发到另一个链接:
 
 - It is a broadcast message (`target_system` field omitted or zero).
 - The `target_system` does not match the system id *and* the system knows the link of the target system (i.e. it has previously seen a message from `target_system` on the link).
