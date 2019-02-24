@@ -14,23 +14,23 @@ MAVLink 已部署在若干版本中：
   库的 MAVLink 支持可以通过多种方式来确定:
   
   * [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) 可以根据 [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) 标志检查 `.capabilities`, 以验证 MAVLink 2 支持。
-  * [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION).`version` contains the MAVLink version number multiplied by 100: v1.0 is 100, <!-- v2.0 is 200, --> v2.3 is 203 etc.
+  * [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION), 我的时间, 我的`version` 包含 MAVLink 版本号乘以100: v1.0 为 100, <!--v2.0 为 200,--> v2.3 为203等。
   
-  * [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number. This is the `<version>` field defined in the [Message Definitions](../messages/README.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
-  * The major version can be determined from the packet start marker byte:
+  * [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` 字段包含次要版本号。 这是 [Message Definitions](../messages/README.md) (`version` 在 [common.xml](../messages/common.md) 中定义的 `<version>` 字段, 用于依赖于通用消息集的语支)。
+  * 主要版本可以从数据包起始标记字节中确定:
     
     * MAVLink 1: `0xFE` 
     * MAVLink 2: `0xFD`
     
-    > **Note** A MAVLink library that does not support a protocol version will not recognise the protocol start marker; so no messages will be even be detected (see [Serialization](../guide/serialization.md)).
+    > **Note** 不支持协议版本的 MAVLink 库将无法识别协议启动标记; 因此甚至不会检测到任何消息 (请参见 [Serialization](../guide/serialization.md))。
   
-  > **Tip** While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
+  > **Tip** 虽然消息不包含版本信息，但额外的 CRC 用于确保一个库只能处理兼容的信息(见[Serialization > CRC_EXTERA](../guide/serialization.md))。
   
-  ## Version Handshaking {#version_handshaking}
+  ## 版本握手 {#version_handshaking}
   
-  Support for *MAVLink 2* is indicated in the [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) message by the [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag.
+  对 *MAVLink 2 * 的支持在 [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) 消息中由 [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) 标志表示。
   
-  This is sufficient if the communication link between autopilot and GCS is completely transparent. However, most communication links are not completely transparent as they either include routing or in case of fixed-length wireless implementations on packetization. In order to also test the link, the *MAVLink 2* handshake protocol sends a *MAVLink 2* frame to test the complete communication chain.
+  如果自动驾驶仪和 gcs 之间的通信链接是完全透明的, 这就足够了。 但是, 大多数通信链路并不完全透明, 因为它们要么包括路由, 要么在数据化上固定长度的无线实现的情况下。 In order to also test the link, the *MAVLink 2* handshake protocol sends a *MAVLink 2* frame to test the complete communication chain.
   
   To do so, the GCS sends a [COMMAND_LONG](../messages/common.md#COMMAND_LONG) or [COMMAND_INT](../messages/common.md#COMMAND_INT) message with the command ID [MAV_CMD_REQUEST_PROTOCOL_VERSION](../messages/common.md#MAV_CMD_REQUEST_PROTOCOL_VERSION).
   
