@@ -5,15 +5,15 @@ MAVLink 已部署在若干版本中：
 * [MAVLink 2.0](../guide/mavlink_2.md)：当前/推荐的主要版本。 2017年初被主要用户采用。 
 * *MAVLink v1.0 </0 >: 2013年前后广泛采用。 仍被许多传统的外围设备使用。</li> </ul> 
   
-  The *MAVLink 2.0* C/C++ and Python libraries are backwards compatible with MAVLink 1.0 (support both protocols). [Version Handshaking](#version_handshaking) and [Negotiating Versions](#negotiating_versions) explain how to choose which version is used.
+  *MAVLink 2.0 * C/C++ 和 Python 库向后兼容的 MAVLink 1.0 (支持这两个协议)。 Version Handshaking</0 > 和 [Negotiating Version](#negotiating_versions) 解释了如何选择使用哪种版本。</p> 
   
-  > **Note** *MAVLink v0.9* is a pre-release version that is no longer supported. The associated message set deleted in August 2018. Legacy code may be present in generator and test code.
+  > **Note** *MAVLink v0.9 * 是不再受支持的预发行版本。 相关的信息于2018年8月删除。 旧代码可能存在于生成器和测试代码。
   
-  ## Determining Protocol/Message Version
+  ## 确定协议/消息版本
   
-  A library's MAVLink support can be determined in a number of ways:
+  库的 MAVLink 支持可以通过多种方式来确定:
   
-  * [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION)`.capabilities` can be checked against the [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag to verify MAVLink 2 support.
+  * [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) 可以根据 [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) 标志检查 `.capabilities`, 以验证 MAVLink 2 支持。
   * [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION).`version` contains the MAVLink version number multiplied by 100: v1.0 is 100, <!-- v2.0 is 200, --> v2.3 is 203 etc.
   
   * [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number. This is the `<version>` field defined in the [Message Definitions](../messages/README.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
