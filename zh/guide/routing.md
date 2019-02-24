@@ -13,26 +13,26 @@
   - GCS 系统和开发者API 通常在数值范围顶部使用ID，以减少ID冲突(例如：255)。 它们的系统ID经常可用于允许多GCS系统。
 - *组件 id* 按类型和数字，从 [MAV_COMPONENT](../messages/common.md#MAV_COMPONENT) 分配 。
 
-Messages can be intended for all systems, specific systems, all components in a system, or specific components within a system. The protocol defines two 8-bit fields that can (optionally) be specified in the message payload to indicate where the message should be sent/routed. If the ids are omitted or set to zero then the message is considered a *broadcast* (intended for all systems/components).
+消息可用于所有系统、特定系统、系统中的所有组件或系统内的特定组件。 协议界定了在报文有效载荷中能够(可选) 指定的两个8位字段，以表明发送/路由。 如果遗漏或设置为零，信息将被视为 *广播*(用于所有系统/组件)。
 
-- `target_system`: System that should execute the command
-- `target_component`: Component that should execute the command (requires `target_system`).
+- `target_system`：执行命令的系统
+- `target_component`：执行命令的组件 (需要 `target_system`)。
 
-MAVLink components are expected to process messages that have a matching system/component id and broadcast messages. They are expected to route/resend messages that are intended for other (or all) recipients to other active channels (i.e. MAVLink systems may be connected across different transports, connected by a MAVLink system that routes the messages). Broadcast messages are forwarded to all channels that haven't seen the message. Addressed messages are resent on a new channel *iff* the system has previously seen a message from the target on that channel (messages are not resent if the addressee is not known or is on the original/incoming channel).
+MAVLink组件预计将处理具有匹配系统/组件id和广播信息的信息。 预计他们将转发/重发其他(或所有)收件人的消息，前往其他活动频道（即MAVLink系统可以连接不同的运输系统，连接到连接信息的路线）。 广播消息已转发给所有尚未看到消息的通道。 地址消息在新频道 *ff*上重新发送，系统以前从该频道的目标中看到了一条消息， (如果收件人不知道，或在原始/接入频道，信息不会重新发送)。
 
-> **Warning** Forwarded messages must not be changed/repackaged by the forwarding system (the original message is passed to the new link).
+> **Warning** 转发的消息不得由转发系统更改/重新包装(原始消息传递到新链接)。
 
 <span></span>
 
-> **Note** Systems must forward messages according to the routing rules *even if they are unable to process them* (e.g. if using a library that does not include the message, or if they don't have the correct signature for authenticating a message).
+> **Note** 系统必须按照路由规则*转发信息，即使它们无法处理*(例如，如果使用不包含消息的图书馆，或者它们没有正确的签名验证消息)。
 
-## Routing Detail
+## 路由详细信息
 
-Systems/components should process a message locally if any of these conditions hold:
+系统/组件如果具备下列条件，应在本地处理信息：
 
-- It is a broadcast message (`target_system` field omitted or zero).
-- The `target_system` matches its system id and `target_component` is broadcast (`target_component` omitted or zero).
-- The `target_system` matches its system id and has the component's `target_component`
+- 这是一个广播消息(`target_system` 字段忽略或零)。
+- `target_system` 与其系统 id 和 `target_component` 匹配
+- `target_system` 与其系统ID匹配，并拥有组件的 `target_component`
 - The `target_system` matches its system id and the component is unknown (i.e. this component has not seen any messages on any link that have the message's `target_system`/`target_component`).
 
 Systems should forward messages to another link if any of these conditions hold:
