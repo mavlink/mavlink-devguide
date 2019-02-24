@@ -64,10 +64,10 @@ MAVLink 已部署在若干版本中：
   
   以下是为了捕获飞机固件和 GCS 作者的最佳实践:
   
-  * Vehicle implementations should have a way to enable/disable the sending of *MAVLink 2* messages. This should preferably be on a per-link (channel) basis to allow for some peripherals to be *MAVLink 1* while others are *MAVLink 2*. It is acceptable for this option to require a reboot of the flight controller to take effect.
-  * If signing is enabled then the vehicle should immediately start sending *signed* *MAVLink 2* on startup.
-  * If signing is not enabled and *MAVLink 2* is enabled then the vehicle may choose to start by sending *MAVLink 1* and switch to *MAVLink 2* on a link when it first receives a *MAVLink 2* message on the link.
-  * Vehicles should set the `MAV_PROTOCOL_CAPABILITY_MAVLINK2` capability flag in the `AUTOPILOT_VERSION` message if *MAVLink 2* is available on a link. This should be set in the case where the link is currently sending *MAVLink 1* packets but *MAVLink 2* packets will be accepted and will cause a switch to *MAVLink 2*.
-  * GCS implementations can choose to either automatically switch to *MAVLink 2* where available or to have a configuration option for *MAVLink 2*.
-  * If the GCS chooses to use a configuration option then when the option is enabled it should send *MAVLink 2* on starting the link.
+  * 飞机实现应该有一种方法来启用/禁用发送 *MAVLink 2 * 消息。 这最好是在每个链路 (通道) 的基础上, 以允许某些外围设备 *MAVLink 1 * 而其他外围设备 *MAVLink 2 *。 此选项要求重新启动飞行控制器才能生效是可以接受的。
+  * 如果启用了签名, 则飞机应在启动时立即开始发送 *signed* *MAVLink 2 *。
+  * 如果未启用签名, 并且启用了 *MAVLink 2 *, 则飞机可以选择通过发送 *MAVLink 1 * 启动, 并在首次收到链接上的 *MAVLink 2 * 消息时切换到链接上的 *MAVLink 2 *。
+  * 如果链接上有 *MAVLink 2 *, 则飞机应在 `AUTOPILOT_VERSION` 消息中设置 `MAV_PROTOCOL_CAPABILITY_MAVLINK2` 能力标志。 如果链接当前正在发送 *MAVLink 1 * 数据包, 但 *MAVLink 2 * 数据包将被接受, 并将导致切换到 *MAVLink 2 * 的情况下, 应设置此设置。
+  * GCS 实现可以选择自动切换到 *MAVLink 2 * (如果可用), 也可以选择具有 *MAVLink 2 * 的配置选项。
+  * 如果 GCS 选择使用配置选项, 则在启用该选项时, 它应在启动链接时发送 *MAVLink 2 *。
   * If the GCS chooses to use automatic switching then it should switch to sending *MAVLink 2* if either it receives a *MAVLink 2* message on the link or by asking for the `AUTOPILOT_VERSION` message to be sent and seeing the `MAV_PROTOCOL_CAPABILITY_MAVLINK2` flag is set.
