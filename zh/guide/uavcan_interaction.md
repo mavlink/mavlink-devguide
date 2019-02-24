@@ -47,13 +47,13 @@ UAVCAN 节点通常能够通过标准服务类型 `uavcan.protocol.GetNodeInfo` 
 
 UCAVAN定义了一套标准服务类型，以便利配置参数管理在 UCAVAN 节点上。 相关的数据类型定义可在命名空间 `uavcen.protocol.made` 中找到。
 
-The UAVCAN-MAVLink bridge does not define any additional messages for configuration parameter management. Instead, the following standard messages are used in the regular way:
+UCAVAN-MAVLink 桥没有为配置参数管理定义任何额外信息。 相反，以下标准信息经常使用：
 
-* `PARAM_REQUEST_LIST` - used to request the list of configuration parameters from the specified UAVCAN node. Remember that the UAVCAN node is specified via the field Component ID.
-* `PARAM_VALUE` - used by the bridge node to report the value of a configuration parameter. The node ID is reflected in the field Component ID.
-* `PARAM_SET` - used by the remote equipment to set the value of a configuration parameter. The node ID is reflected in the field Component ID.
+* `PARAM_RECAT_LIST` - 用于请求指定的 UAVCAN 节点的配置参数列表。 记住，UAVCAN 节点是通过字段组件ID指定的。
+* `PARAM_VALUE` - 被桥节点用来报告配置参数的值。 节点ID已反映在字段组件ID中。
+* `PARAM_SET` - 远程设备用于设置配置参数的值。 节点ID已反映在字段组件ID中。
 
-Note that the maximum length of a configuration parameter name is defined differently in UAVCAN and MAVLink. In MAVLink, the maximum length is 16 characters, whereas in UAVCAN the limit is 92 characters. Should the bridge node encounter long configuration parameter names that exceed the MAVLink's limit, it should exercise its best effort to reduce the name length presented on the MAVLink side while avoiding ambiguity. Designers of UAVCAN nodes, on their part, should avoid using configuration parameter names more than 16 characters long, until this deficiency of the MAVLink protocol is fixed.
+请注意，配置参数名称的最大长度在 UAVCAN 和 MAVLink 中定义不同。 在 MAVLink 中，最大长度为16个字符，而在 UAVCAN 中，限制是92个字符。 如果桥节点遇到超过 MAVLink 限制的长期配置参数名称，应该尽力减少 MAVLink 侧名称长度，同时避免歧义。 Designers of UAVCAN nodes, on their part, should avoid using configuration parameter names more than 16 characters long, until this deficiency of the MAVLink protocol is fixed.
 
 ## Internet Access Bridge
 
