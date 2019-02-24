@@ -53,8 +53,8 @@ UCAVAN-MAVLink 桥没有为配置参数管理定义任何额外信息。 相反�
 * `PARAM_VALUE` - 被桥节点用来报告配置参数的值。 节点ID已反映在字段组件ID中。
 * `PARAM_SET` - 远程设备用于设置配置参数的值。 节点ID已反映在字段组件ID中。
 
-请注意，配置参数名称的最大长度在 UAVCAN 和 MAVLink 中定义不同。 在 MAVLink 中，最大长度为16个字符，而在 UAVCAN 中，限制是92个字符。 如果桥节点遇到超过 MAVLink 限制的长期配置参数名称，应该尽力减少 MAVLink 侧名称长度，同时避免歧义。 Designers of UAVCAN nodes, on their part, should avoid using configuration parameter names more than 16 characters long, until this deficiency of the MAVLink protocol is fixed.
+请注意，配置参数名称的最大长度在 UAVCAN 和 MAVLink 中定义不同。 在 MAVLink 中，最大长度为16个字符，而在 UAVCAN 中，限制是92个字符。 如果桥节点遇到超过 MAVLink 限制的长期配置参数名称，应该尽力减少 MAVLink 侧名称长度，同时避免歧义。 UAVCAN 网络节点的设计者应避免使用配置参数名称超过 16 个字符，直到 MAVLink 协议的这一缺陷被修复。
 
-## Internet Access Bridge
+## 互联网访问桥
 
-UAVCAN defines a set of standard messages that facilitate communication between UAVCAN nodes and remote hosts on the Internet or LAN. [The tentative specification can be viewed on GitHub](https://github.com/UAVCAN/dsdl/pull/25). In the future, the set of MAVLink messages should be extended to allow forwarding of data packets between the bridge node and the Internet via the remote equipment (e.g. ground control station). If you're interested in this feature, please report to the [UAVCAN mailing list](https://groups.google.com/forum/#!forum/uavcan).
+UAVCAN定义了一套标准信息，以便利 UAVCAN 节点与远程主机在互联网或 LAN 之间进行通信。 [可在GitHub查看暂定规格](https://github.com/UAVCAN/dsdl/pull/25)。 今后，应该扩展 MAVLink 信息，以便通过远程设备(例如地面控制站)传输的桥梁节点与互联网之间的数据包。 如果您感兴趣此功能，请向[UAVCAN 邮件列表](https://groups.google.com/forum/#!forum/uavcan)报告。
