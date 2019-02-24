@@ -37,43 +37,43 @@ MAVLink组件预计将处理具有匹配系统/组件id和广播信息的信息�
 
 如果以下任一条件存在, 系统应将消息转发到另一个链接:
 
-- It is a broadcast message (`target_system` field omitted or zero).
-- The `target_system` does not match the system id *and* the system knows the link of the target system (i.e. it has previously seen a message from `target_system` on the link).
-- The `target_system` matches its system id and has a `target_component` field, and the system has seen a message from the `target_system`/`target_component` combination on the link.
+- 这是一个广播消息(`目标_系统` 字段忽略或零)。
+- `target_system` 与系统ID*和*不符，系统知道目标系统的联系(即它先前从链接的`target_system`上看到一个消息)。
+- `target_system` 与其系统 id 匹配, 并具有 `target_component` 字段, 并且系统在链接上看到了来自 `target_system`/`target_component` 组合的消息。
 
-> **Note** Non-broadcast messages must only be sent (or forwarded) to known destinations (i.e. a system must previously have received a message from the target system/component).
+> **Note**非广播消息只能发送 (或转发) 到已知的目标 (即系统必须以前已收到来自目标系统/组件的消息)。
 
 <span></span>
 
-> **Note** Systems should also check for `SYSTEM_TIME` messages with a decrease in `time_boot_ms`, as this indicates that the system has rebooted. In this case it should clear stored routing information (and might perform other actions that are useful following a reboot - e.g. re-fetching parameters and home position etc.).
+> **Note**系统还应检查 `time_boot_ms` 减少的 `SYSTEM_TIME` 消息, 因为这表明系统已重新启动。 在这种情况下, 它应该清除存储的路由信息 (并可能在重新启动后执行其他有用的操作-例如重新提取参数和家庭位置等)。
 
-## Library Support
+## 库支持
 
-### C Library (mavgen)
+### C 库 (mavgen)
 
-The generated code for the MAVLink v1 C Library has no specific support for routing or working with `target_system` and `target_component`. To extract this information you will need to use the normal methods provided for reading payload fields, and match on the field names.
+为 MAVLink v1 c 库生成的代码对于路由或使用 `target_system` 和 `target_component` 没有特定的支持。 若要提取此信息, 您需要使用为读取有效负载字段提供的常规方法, 并在字段名称上匹配。
 
-The MAVLink v2 generator for the C library has been updated to make it easier to get the destination system and component ID from the payload (when these are assigned). Specifically, the `mavlink_msg_entry_t` structure contains flags to tell you if the message contains target system/component information (`FLAG_HAVE_TARGET_SYSTEM`, `FLAG_HAVE_TARGET_COMPONENT`) and offsets into the payload that you can use to get these ids (`target_system_ofs` and `target_system_ofs`, respectively). The MAVLink helper method `const mavlink_msg_entry_t*` [`mavlink_get_msg_entry(uint32_t msgid)`](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h) can be used to get this structure from the message id.
+C 库的 MAVLink v2 生成器已更新, 以便更轻松地从有效负载中获取目标系统和组件 id (分配这些 id 时)。 具体来说, `mavlink_msg_entry_t` 结构包含标志, 以告诉您消息是否包含目标系统组件信息 (`FLAG_HAVE_TARGET_SYSTEM`、`FLAG_HAVE_TARGET_COMPONENT`) 和偏移到您的有效负载中。可以用于获取这些 id (分别为 `target_system_ofs` 和 `target_system_ofs`)。 MAVLink 助手方法 `consmavlink_msg_bords_t*` [`mavlink_get_msg_dard(ininstit32_t msgid)`](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h) 可用于从消息id获取此结构。
 
 <!-- note: A real example of above would be good in the C docs, and then we should just link to them here -->
 
-## MAVLink 2 Routing
+## MAVLink 2 路由
 
-Unsigned MAVLink 2 packets are routed in the same way as MAVLink 1 packets.
+未签名的 MAVLink 2 数据包与 MAVLink 1 数据包相同。
 
-## Routing Signed Packets {#routing_signed_packets}
+## 路由签名包 {#routing_signed_packets}
 
-Signed packets should be routed in the same way as any other packet.
+签名数据包应与任何其他数据包相同。
 
-In particular, a routing system should:
+特别是，路由系统应：
 
-- not change the message in any way (including replacing the original signature).
-- forward a message according to normal rules even if it cannot be authenticated (or even understand) and hence cannot be processed locally.
+- 不以任何方式更改电文(包括替换原始签字)。
+- 即使不能被验证(甚至理解)，因此不能在当地加以处理，也按照正常规则提交信息。
 
-## Router Implementation
+## 路由接口
 
-The [MAVLink Router](https://github.com/01org/mavlink-router) created by Intel allows to mix-and-match different IP protocols with serial ports and route MAVLink traffic.
+由 Intel 创建的[MAVLink Router](https://github.com/01org/mavlink-router) 允许与序列端口和路由 MAVLink 流量组合和匹配不同的IP协议。
 
-## Further Information
+## 更多信息
 
-- [MAVLink Routing in ArduPilot](http://ardupilot.org/dev/docs/mavlink-routing-in-ardupilot.html) (ArduPilot DevGuide)
+- [MAVLink Routing in ArduPilot](http://ardupilot.org/dev/docs/mavlink-routing-in-ardupilot.html) (ArduPilot 开发文档)
