@@ -30,39 +30,39 @@ MAVLink 已部署在若干版本中：
   
   对 *MAVLink 2 * 的支持在 [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) 消息中由 [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) 标志表示。
   
-  如果自动驾驶仪和 gcs 之间的通信链接是完全透明的, 这就足够了。 但是, 大多数通信链路并不完全透明, 因为它们要么包括路由, 要么在数据化上固定长度的无线实现的情况下。 In order to also test the link, the *MAVLink 2* handshake protocol sends a *MAVLink 2* frame to test the complete communication chain.
+  如果自动驾驶仪和 gcs 之间的通信链接是完全透明的, 这就足够了。 但是, 大多数通信链路并不完全透明, 因为它们要么包括路由, 要么在数据化上固定长度的无线实现的情况下。 为了测试链接, *MAVLink 2 * 握手协议发送一个 *MAVLink 2 * 帧来测试完整的通信链。
   
-  To do so, the GCS sends a [COMMAND_LONG](../messages/common.md#COMMAND_LONG) or [COMMAND_INT](../messages/common.md#COMMAND_INT) message with the command ID [MAV_CMD_REQUEST_PROTOCOL_VERSION](../messages/common.md#MAV_CMD_REQUEST_PROTOCOL_VERSION).
+  为此, GCS 将发送带有命令 ID [MAV_CMD_REQUEST_PROTOCOL_VERSION](../messages/common.md#MAV_CMD_REQUEST_PROTOCOL_VERSION) 的 [COMMAND_LONG](../messages/common.md#COMMAND_LONG) 或 [COMMAND_INT](../messages/common.md#COMMAND_INT) 消息。
   
-  If the system supports *MAVLink 2* and the handshake it will respond with [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION) **encoded as MAVLink 2 packet**. If it does not support *MAVLink 2* it should `NACK` the command. The GCS should fall back to a timeout in case the command interface is not implemented properly.
+  如果系统支持 *MAVLink 2 * 并且握手时, 它将以 [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION) **编码为 MAVLink 2 包**。 如果它不支持 *MAVLink 2 * 则回 `NACK` 命令。 如果命令接口未得到适当执行，GCS应返回超时。
   
-  The diagram below illustrates the complete sequence.
+  下表显示完整顺序。
   
   {% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: MAV_CMD_REQUEST_PROTOCOL_VERSION GCS->>GCS: Start timeout Drone->>GCS: PROTOCOL_VERSION in MAVLink 2 framing GCS->>Drone: If ACK: Switches to MAVLink 2 Drone->>GCS: Switches to MAVLink 2 on receive
   
   {% endmermaid %}
   
-  ### Semi-Transparent Legacy Radios
+  ### 半透明的传输
   
-  Some popular legacy radios (e.g. the SiK radio series) operate in semi-transparent mode by injecting [RADIO_STATUS](../messages/common.md#RADIO_STATUS) messages into the MAVLink message stream. Per MAVLink spec these should actually emit a heartbeat with the same system ID and a different component ID than the autopilot to be discoverable. However, an additional heartbeat could be an issue for deployed systems. Therefore these radios can alternatively confirm their *MAVLink 2* compliance by emitting `RADIO_STATUS` in v2 message format after receiving the first MAVLink v2 frame.
+  一些流行的传播电台(例如SiK 无线电系列)通过 [RADI_STATUS](../messages/common.md#RADIO_STATUS) 消息进入 MAVLink 消息流，在半透明模式下运行。 每个 MAVLink 规范实际上应当发送出一个用相同的系统 ID 和一个不同的组件 ID 的心跳，而不是自动自驾仪处于可见状态。 然而，额外的心跳可能是部署系统的一个问题。 因此，这些无线电可以在收到第一个 MAVLink v2 帧后以v2 信息格式发布 `RADI_STATUS` 方式确认它们*MAVLink 2*遵守情况。
   
-  ## Versions and Signing
+  ## 版本和签名
   
-  The supported MAVLink library implementations enable different MAVLink versions on a per-channel basis, where a *channel* refers to a particular link in/out of a MAVLink system or component (e.g. a serial port or UDP port).
+  支持的 MAVLink 库执行启用每个频道不同的 MAVLink 版本，其中 *频道* 是指 MAVLink 系统或组件(例如序列端口或UDP 端口)中的一个特定链接。
   
-  As a result, all [connections](../services/heartbeat.md) to other components over a particular channel must share the same MAVLink version. If a system is using signing, then all connections via the same channel must also be signing messages with the same key.
+  因此，所有 [连接](../services/heartbeat.md) 至特定频道中的其他组件必须共享相同的 MAVLink 版本。 如果一个系统正在使用签名，那么通过同一频道的所有连接也必须与同一密钥签名信息。
   
-  > **Note** A system cannot use a single channel to connect to signed MAVLink 2 systems, unsigned MAVLink 2 systems, and/or MAVLink 1 components.
+  > **Note** 系统不能使用单个通道连接到签名的 MAVLink 2 系统、未签名的 MAVLink 2 系统和/或 MAVLink 1 组件。
   
-  Currently most MAVLink networks are configured to use unsigned MAVLink 2 messages. MAVLink 1 is primarily used to allow autopilots to connect to legacy MAVLink peripherals, and this is done via a separate channel. Signed networks will need to use a further separate channel to connect to other signed systems.
+  目前大多数MAVLink网络被配置为使用未签名的 MAVLink 2 消息。 MAVLink 1 主要用于允许自动驾驶仪连接到传统的 MAVLink 外围设备, 这是通过单独的通道完成的。 签名的网络将需要使用另一个单独的通道来连接到其他签名的系统。
   
-  The next section explains how a system/channel should negotiate the version to use.
+  下一节将说明系统/通道应如何协商要使用的版本。
   
-  ## Negotiating Versions {#negotiating_versions}
+  ## 协商版本 {#negotiating_versions}
   
-  Vehicle and GCS implementations will support both *MAVLink 1* and *MAVLink 2* for quite some time. We would like most users to receive the benefit of *MAVLink 2*, while still supporting implementations that don't yet support *MAVLink 2*.
+  飞机和 GCS 执行工作将在相当一段时间内支持*MAVLink 1*和*MAVLink 2*。 我们希望大多数用户都能获得 *MAVLink 2 * 的好处, 同时仍然支持尚未支持 *MAVLink 2 * 的实现。
   
-  The following is meant to capture best practice for vehicle firmware and GCS authors:
+  以下是为了捕获飞机固件和 GCS 作者的最佳实践:
   
   * Vehicle implementations should have a way to enable/disable the sending of *MAVLink 2* messages. This should preferably be on a per-link (channel) basis to allow for some peripherals to be *MAVLink 1* while others are *MAVLink 2*. It is acceptable for this option to require a reboot of the flight controller to take effect.
   * If signing is enabled then the vehicle should immediately start sending *signed* *MAVLink 2* on startup.
