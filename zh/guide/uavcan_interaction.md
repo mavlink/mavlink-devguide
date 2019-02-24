@@ -13,17 +13,17 @@ UAVCAN 的一般说明和规格可在<http://uavcan.org>上查阅。
 
 ### UCAN Node 识别
 
-Every UAVCAN node has a bus-unique identifier referred to as "node ID". The node ID is an integer in the interval [1, 127], where the value 1 is typically used by the autopilot or some other kind of central controlling unit, and the values 126 and 127 are typically used by debugging or monitoring equipment.
+每个 UCAN 节点都有一个称为“node ID”的总线上唯一的标识符。 节点 id 是间隔 [1, 127] 中的整数, 其中值1通常由自动驾驶仪或其他类型的中央控制单元使用, 和值126和127通常由调试或监视设备使用。
 
-Each unit that is capable of communicating via MAVLink and UAVCAN must use the same number for its MAVLink Component ID and the UAVCAN Node ID, otherwise serious inconsistencies may arise. Typically, if there is a single non-redundant autopilot, its UAVCAN Node ID and the MAVLink component ID will be set to 1 (one).
+每个能够通过 MAVLink 和 UCAVAN 通信的单位必须使用相同的数字，用于 MAVLink 组件ID 和 UCAN Node ID，否则可能会出现严重的不一致之处。 通常情况下, 如果有一个非冗余自动驾驶仪, 其 UAVCAN 节点 id 和 MAVLink 组件 id 将设置为 1 (1)。
 
-Every outgoing/incoming MAVLink message/command pertaining to a given UAVCAN node will have its field Component ID set to the same value as the Node ID of the referred UAVCAN node.
+与给定 UAVCAN 节点相关的每个输出/传入的 MAVLink 消息/命令都将其字段 组件 id 设置为与所述 UAVCAN 节点的节点 id 相同的值。
 
-## Node Status Reporting
+## 节点状态报告
 
-### Node Status Messages
+### 节点状态消息
 
-In UAVCAN, the abstract node status information is represented by the standard message type `uavcan.protocol.NodeStatus`. Its MAVLink counterpart is `UAVCAN_NODE_STATUS`.
+在 UAVCAN 中, 抽象节点状态信息由标准消息类型 `uavcan.protocol.NodeStatus` 表示。 它的 MAVLink 对应是 `UCAVAN_NODE_STATUS`。
 
 The bridge node should emit the MAVLink message `UAVCAN_NODE_STATUS` every time it receives a UAVCAN node status message. The bridge node is allowed to decimate the stream of node status messages in order to avoid congestion of the MAVLink channel, but the resulting frequency of status message emission should not be lower than 1 Hz per node.
 
