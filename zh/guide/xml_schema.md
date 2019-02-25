@@ -191,48 +191,48 @@ MAV_CMD 条目 `value` 元素可能会额外定义这些标签/字段：
 - `description`(可选)：用户界面和代码评论中显示的信息可读描述。 这应当包含所有信息（以及超链接），以便充分了解信息。
 - `field`: 编码消息的一个字段。 字段值是 GUI 文档中使用的名称/文本字符串(但不通过总线发送)。 
    - `type`: 类似于 C `struct` - 存储/代表数据类型所需数据大小。 
-      - 字段可签名/无签名，大小 8、16、23、64位(`{u)int8_t`, `(u)int16_t`, `(u>(u)int 32_t`, `, <0>(u>(u)int64_int`), 单一/双精度精度IEEE754 浮点数。 They can also be arrays of the other types - e.g. `uint16_t[10]`. 
-   - `name`: Name of the field (used in code).
-   - [enum](#enum) (optional): Name of an `enum` defining possible values of the field (e.g. `MAV_BATTERY_CHARGE_STATE`).
-   - `units` (optional): The units for message `field`s that take numeric values (not enums). These are defined in the [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd) (search on *name="SI_Unit"*)
-   - `display` (optional): This should be set as `display="bitmask"` for bitmask fields (hint to ground station that enum values must be displayed as checkboxes).
-   - `print_format` (optional): TBD.
-   - `default` (optional): TBD.
-- [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the message is deprecated or "work in progress".
-- `extensions` (optional): This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only. 
-   - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2. 
+      - 字段可签名/无签名，大小 8、16、23、64位(`{u)int8_t`, `(u)int16_t`, `(u>(u)int 32_t`, `, <0>(u>(u)int64_int`), 单一/双精度精度IEEE754 浮点数。 它们也可以是其他类型——例如`uint16_t[10]`。 
+   - `name`：字段名称 (在代码中使用)。
+   - [number](#enum)(可选)：一个`enum` 定义字段可能的值的名称 (例如：`MAV_BATERY_CHRRE_STATE`)。
+   - `units`(可选)：信息 `字段`对应数字的单位(未列出)。 这些定义在 [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd)(搜索 *name="SI_Unit"*)
+   - `display`(可选)：这应当设置为 `display="bitmask"` 用于 bitsword 字段 (指向必须作为复选框显示数字的地面站)。
+   - `print_format`(可选)：TBD。
+   - `default`(可选)：TBD。
+- [deprecated](#deprecated)/[wip](#wip)(可选)：一个标签，表明该消息已被废弃或“正在进行中的工作”。
+- `扩展` (可选)：此自闭标签被用于表明随后的字段仅适用于 MAVLink 2。 
+   - 标记应该用于MAVLink 1 信息 (id < 256) 已扩展到MAVLink2。 
 
-## Common Tags
+## 常用标签
 
-This section lists a number of tags can be used in a number of other types - e.g. messages and enums.
+本节列出一些标签可用于若干其他类型，例如消息和数字。
 
-### deprecated {#deprecated}
+### 废弃的 {#deprecated}
 
-The `<deprecated>` tag can be used in an [enum](#enum), enum [entry](#entry) (value) or [message](#message) to indicate that the item has been superseded. The tag attributes indicates the time of deprecation and the replacement item, while the element may (optionally) contain a string with additional information about the deprecation.
+`<deprecated>` 标签可用于 [enum](#enum)，列出[条目](#entry)(值) 或[消息](#message) 表示该项目已被替换。 标签属性显示废弃时间和替代项目，而元素(可选) 可以包含一个字符串，其中载有关于废弃物的补充信息。
 
-The generator toolchain can be configured to conditionally build messages omitting the `deprecated` entries.
+生成工具链可以配置为有条件的构建消息，忽略 `deprecated` 的条目。
 
-> **Tip** An entity should be marked as deprecated only when the main users have had an opportunity to update to the new method.
+> **Tip** 只有在主要用户有机会向新方法更新时，一个实体才能被标记为废弃。
 
-As a concrete example, below we see that [SET_MODE](../messages/common.md#SET_MODE) is deprecated and replaced by [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) on `2015-12`.
+作为一个具体的例子，我们看到 [SET_MODE](../messages/common.md#SET_MODE) 被废弃，由 [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) 在 `2015-12` 上替换。
 
 ```xml
     <message id="11" name="SET_MODE">
       <deprecated since="2015-12" replaced_by="MAV_CMD_DO_SET_MODE">Use COMMAND_LONG with MAV_CMD_DO_SET_MODE instead</deprecated>
 ```
 
-The `deprecated` attributes are:
+`deprecated` 属性是：
 
-- `since`: Year/month when deprecation started. Format: `YYYY-MM`.
-- `replaced by`: String of entity that supersedes this item.
+- `since`：废弃开始时年份/月。 格式：`YYYYY-MM`。
+- `replaced by`：取代本项目的实体集团
 
 ### wip {#wip}
 
-The `<wip>` tag can be used in an enum [entry](#entry) (value) or [message](#message) to indicate that the item is a "work in progress". The element may (optionally) contain a string with additional information about the new item.
+`<wip>` 标签可用于列举 [条目](#entry)(值) 或[消息](#message) 表示该项目是“正在进行中的工作”。 元素可以(可选) 包含一个字符串，其中载有关于新项目的补充信息。
 
-The generator toolchain can be configured to conditionally build messages omitting the `wip` entries.
+生成工具链可以配置为有条件的构建消息，忽略 `wip` 条目。
 
-Most commonly, the tag is used as shown:
+最常见的是，标签被显示：
 
 ```xml
 <wip />
