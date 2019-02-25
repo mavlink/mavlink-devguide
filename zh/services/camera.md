@@ -80,13 +80,13 @@ GCS通过发送 [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAG
 
 ### 视频捕获
 
-A camera supports video capture if the [CAMERA_CAP_FLAGS_CAPTURE_VIDEO](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_VIDEO) bit is set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
+如果 [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) 中的[CAMERA_CAP_FLAGS_CAPTURE_VIDEO](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_VIDEO)标志位被置位，则表示该相机组件支持视频捕获。
 
-To start recording videos, the GCS uses the [MAV_CMD_VIDEO_START_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_START_CAPTURE) command. If requested, the [CAMERA_CAPTURE_STATUS](#camera_capture_status) message is sent to the GCS at a set interval.
+GCS使用 [MAV_CMD_VIDEO_START_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_START_CAPTURE) 命令来开启视频捕获功能。 收到命令请求后，相机组件将定时向GCS回送 [CAMERA_CAPTURE_STATUS](#camera_capture_status) 消息。
 
-To stop recording, the GCS uses the [MAV_CMD_VIDEO_STOP_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_STOP_CAPTURE) command.
+GCS要使用 [MAV_CMD_VIDEO_STOP_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_STOP_CAPTURE) 命令停止视频捕获。
 
-### Video Streaming
+### 流媒体预览
 
 A camera is capable of streaming video if it sets the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) bit set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
