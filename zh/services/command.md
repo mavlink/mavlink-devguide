@@ -1,9 +1,9 @@
-# Command Protocol
+# 命令协议
 
-The MAVLink command protocol allows guaranteed delivery of commands. It consists of the original command message and the matching acknowledgement \(ACK\).
+MAVLink 命令协议保证了命令的可靠投送。 它包含了原始的命令消息和对应的应答 \(ACK\)。
 
 {% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: COMMAND_LONG(confirmation=0) GCS->>GCS: Start timeout Drone->>GCS: COMMAND_ACK {% endmermaid %}
 
-If the command drops the sender should increase the confirmation field:
+如果命令丢失，发送者将确认字段加1：
 
 {% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: COMMAND_LONG(confirmation=0) GCS->>GCS: Start timeout GCS->>Drone: COMMAND_LONG(confirmation=1) GCS->>GCS: Start timeout Drone->>GCS: COMMAND_ACK {% endmermaid %}
