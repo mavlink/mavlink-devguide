@@ -1,14 +1,14 @@
-# MAVLink XML File Schema / Format
+# MAVLink XML 文件框架/格式
 
-The format and structure of dialect files is formally defined in the XML Schema document: [mavschema.xsd](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd).
+语支文件的格式和结构在 XML 图式文档中正式定义: [mavschema.xsd](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd)。
 
-While this is the canonical reference, it is easier to understand the XML file by example (as shown in the following sections).
+虽然这是规范引用, 但通过示例更容易理解 XML 文件 (如以下各节所示)。
 
-## File Structure
+## 文件结构
 
-The broad structure for MAVLink XML files is given below.
+MaVLink XML 文件的大致结构如下。
 
-> **Note** If you're creating a custom dialect file your file structure should be similar to the one below (but may omit any/all sections).
+> **Note** 如果要创建自定义语支文件, 文件结构应类似于下面的文件结构 (但可能省略所有部分)。
 
 ```xml
 <?xml version="1.0"?>
@@ -33,31 +33,31 @@ The broad structure for MAVLink XML files is given below.
 </mavlink>
 ```
 
-The main tags are listed below (all are optional):
+下面列出了主要标签 (所有标记都是可选的):
 
-- `include`: This tag is used to specify any other XML files included in your dialect. 
-   - Typically dialect files will include *common.xml* as shown above.
-   - You can include multiple files using separate tags.
-   - The path to included files can be relative to your dialect file. Note however that the project tests only cover the case where dialects are in the same folder.
-   - Nested `include` of files is not supported (only files specified in the top level `include` are imported).
-   - When building, generator toolchains will merge/append enums in all files, and report duplicate enum entries and messages. 
-- `version`: The minor version number for the release, as included in the [HEARTBEAT](../messages/common.md#HEARTBEAT message) `mavlink_version` field. 
-   - For dialects that `include` **common.xml** the tag should be removed so that the `version` from **common.xml** is used (`version` from top level file will be used if specified).
-   - For private dialects you can use whatever version you like. 
+- `include`: 此标记用于指定语支中包含的任何其他 xml 文件。 
+   - 通常, 语支文件将包括 *common.xml* 如上所示。
+   - 可以使用单独的标记包含多个文件。
+   - 包含文件的路径可以相对于您的语支文件。 但是请注意, 项目测试仅涵盖语支位于同一文件夹中的情况。
+   - 不支持嵌套 `include` 文件 (仅导入顶层 `include` 中指定的文件)。
+   - 构建时，在生成器工具链中合并/追加发送所有文件中的枚举，并报告重复的枚举条目和消息。 
+- `version`: 版本的次要版本号, 包含在 [HEARTBEAT](../messages/common.md#HEARTBEAT message) `mavlink_version` 字段 
+   - 对于 `include` **common.xml** 标记的语支，应删除该标记，以便使用 **common.xml** 中的 `version` (如果指定, 将使用顶层文件中的 `version`)。
+   - 对于私有语支, 您可以使用任何您喜欢的版本。 
 
-- `dialect`: This number is unique for your dialect. You should use: TBD <!-- how are these allocated -->
+- `dialect`: 这个数字对你的语支来说是独一无二的。 您应该使用: TBD <!-- how are these allocated -->
 
-- [enums](#enum): Dialect-specific enums can be defined in this block (if none are defined in the file, the block is optional/can be removed).
+- [enums](#enum): 可以在此块中定义特定于拨号的枚举 (如果在文件中没有定义, 则可以删除该块)。
 
-- [messages](#messages): Dialect-specific messages can be defined in this block (if none are defined in the file, the block is optional/can be removed).
+- [messages](#messages): 可以在此块中定义特定于语支的消息 (如果在文件中没有定义, 则可以删除该块)。
 
-## Enum Definition (enums) {#enum}
+## 枚举定义 (枚举) {#enum}
 
-Enums are used to define named values that may be used as options in messages - for example to define errors, states, or modes. There is also a special enum `MAV_CMD` that is used to define MAVLink commands.
+枚举用于定义可用作消息中的选项的命名值, 例如定义错误、状态或模式。 还有一个特别的名单 `MAV_CMD` 用于定义 MAVLink 命令。
 
-Enums are defined within the `<enums> ... </enums>` blocks (as discussed in the previous section) using `<enum> ... </enum>` tags. Enum *values* are defined within the enum using `<entry> ... </entry>` tags.
+所有枚举都是在 ` &lt;enums&gt; 中定义的... &lt;/enums&gt; 模块 (如前一节讨论的) 使用 <code><enum>...` 标签。 &lt;/enum&gt;</code> 标签。 Enum *值* 使用`<entry>... </entry>` 标签。
 
-For example, the definition of the [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) message is given below:
+比如, [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) 消息的定义如下：
 
 ```xml
 <enum name="LANDING_TARGET_TYPE">
@@ -77,27 +77,27 @@ For example, the definition of the [LANDING_TARGET_TYPE](../messages/common.md#L
 </enum>
 ```
 
-The main `enum` tags/fields are:
+主要 `enum` 标签/字段是:
 
-- `name`: The name of the enum (mandatory). This is a string of capitalized, underscore-separated words.
-- `description` (optional): A string describing the purpose of the enum
-- `entry` (optional): An entry (zero or more entries can be specified for each enum)
-- [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
+- `name`: 枚举的名称 (必填)。 这是一系列大写的、以下划线分隔的词。
+- `description`(可选): 描述枚举用途的字符串
+- `entry`(可选)：条目 (可以为每个列表指定零或多个条目)
+- [deprecated](#deprecated)(可选)：一个标签，显示已废弃的名单。
 
-> **Tip** [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
+> **Tip** [MAVLink 命令 ](#mav_cmd) 是在 [MAV_CMD](../messages/common.md#MAV_CMD) 枚举中定义的。
 
-### entry {#entry}
+### 条目 {#entry}
 
-The "normal" enum `entry` tags/fields are:
+“正常”列出的 `entry` 标签/字段为：
 
-- `name`: The name of the enum value (mandatory). This is a string of capitalized, underscore-separated words.
-- `value` (optional): The *value* for the entry (a number).
-- `description` (optional): A description of the entry.
-- [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the enum is deprecated or "work in progress".
+- `name`: 枚举值的名称 (必填)。 这是一系列大写的、以下划线分隔的词。
+- `value`(可选)：条目 *值* (数字)。
+- `description`(可选)：条目的描述。
+- [deprecated](#deprecated) / [wip](#wip) (可选)：一个标签，表明该清单已被废弃或“正在进行的工作”。
 
-> **Note** An `entry` may also define the optional elements: `param`, `hasLocation`, and `isDestination`. In practice these should only be used in the `enum` named [MAV_CMD](#MAV_CMD) (described below).
+> **Note** An`条目` 也可以定义可选元素 `param`，`assession`，和`istion` 实际上，这些建议只能在 `enum` 叫做 [MAV_CMD](#MAV_CMD)(下文说明)。
 
-## MAVLink Commands (enum MAV_CMD) {#MAV_CMD}
+## MAVLink 命令 (列举 MAV_CMD) {#MAV_CMD}
 
 Individual `entry` values in the `enum` named [MAV_CMD](#MAV_CMD) are use to define *MAVLink Commands*. Each command has a `value` (its "command number") and specifies up to 7 parameters.
 
