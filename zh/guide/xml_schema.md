@@ -99,11 +99,11 @@ MaVLink XML 文件的大致结构如下。
 
 ## MAVLink 命令 (列举 MAV_CMD) {#MAV_CMD}
 
-Individual `entry` values in the `enum` named [MAV_CMD](#MAV_CMD) are use to define *MAVLink Commands*. Each command has a `value` (its "command number") and specifies up to 7 parameters.
+个别 `entry` 在`enum` 命名为 [MAV_CMD](#MAV_CMD)中的值，正在使用*MAVLink Commands* 定义。 每个命令都有 `value`(其命令编号)，并指定最多 7 参数。
 
-> **Note** These parameters are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages ([Mission Protocol](../services/mission.md)), or [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages ([Command Protocol](../services/command.md)).
+> **Note** 这些参数在 [MISTION_ITEM](../messages/common.md#MISSION_ITEM) 或 [MISCION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) 消息([Mission Protocol](../services/mission.md))，或 [COMMAND_INT](../messages/common.md#COMMAND_INT) 或 [COMMAND_LONG](../messages/common.md#COMMAND_LONG) 消息([命令议定书](../services/command.md))。
 
-For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE):
+例如，见[MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE):
 
 ```xml
 <enum name="MAV_CMD">
@@ -122,16 +122,16 @@ For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_P
 </enum>
 ```
 
-MAV_CMD entry `value` elements may additionally define these tags/fields:
+MAV_CMD 条目 `value` 元素可能会额外定义这些标签/字段：
 
-- [param](#param) (optional): Up to 7 param tags, numbered using an `index` attribute.
-- One (but not both) of: 
-   - `hasLocation` (optional): A boolean (default true) that provides a hint to a GCS that the entry should be displayed as a "standalone" location - rather than as a destination on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values but which are not on the vehicle path (e.g.: [MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION)).
-   - `isDestination` (optional): A boolean (default true) that provides a hint to a GCS that the entry is a location that should be displayed as a point on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values and which are on the vehicle path (e.g.: [MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT) and [MAV_CMD_NAV_LAND](../messages/common.md#MAV_CMD_NAV_LAND)).
+- [param](#param)(可选)：最多为7个参数标签，使用`index` 属性编号。
+- 其一（但并非两者）： 
+   - `hasLocation`(可选)：一个布尔值(默认真)，提供一个 GCS 提示，该入口应作为“独立”位置，而不是作为飞行路径上的目的地。 适用于在参数5、6和7、但不在车辆路径上的“lat/on/alt”位置信息（例如：[MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION)）的条目。
+   - `istoution`(可选)：一个布尔值(默认真)，向 GCS 提供一个提示，即输入是一个位置，应该作为飞行路径上的一个点显示。 适用于在参数5、6和7、且在车辆路径上包含lat/llon/alt 位置信息的条目(例如：[MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT) 和[MAV_CMD_NAV_LAND](../messages/common.md#MAV_CMD_NAV_LAND))。
 
-### param {#param}
+### 参数 {#param}
 
-The `<param>` tag is used in the [MAV_CMD](../messages/common.md#MAV_CMD) enum as part of defining mission commands. Each entry value may have up to 7 params declared, with `index` values from 1-7.
+`<param>` 标签在 [MAV_CMD](../messages/common.md#MAV_CMD) 中用作定义任务命令的一部分。 每个条目值可能超过已申报的7个参数，从 `索引` 值来自1-7。
 
 A `param` **must** include the following attribute:
 
