@@ -1,81 +1,81 @@
-# How to Define MAVLink Messages & Enums
+# 如何定义 MAVLink 消息（Messages）& 枚举（Enums）
 
-MAVLink enums, messages, commands, and other elements are [defined within XML files](../messages/README.md) and then converted to libraries for [supported programming languages](../README.md#supported_languages) using a *code generator*.
+MAVLink 枚举、消息、命令和其他元素是 [defined within xml 文件 ](../messages/README.md) 中，然后使用 *code generator * 转换为 [已支持编程语言 ](../README.md#supported_languages) 的库。
 
-This topic provides practical guidance for defining and extending MAVLink XML elements, including conventions and best-practice.
+本主题为定义和扩展 MAVLink XML 元素，包括约定和最佳实践，提供了实用指南。
 
-> **Note** For detailed information about the file format see [MAVLink XML Schema](../guide/xml_schema.md) (you can also inspect [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialect files).
+> **Note** 有关文件格式的详细信息，请参阅 [MAVLink XML Schema ](../guide/xml_schema.md) (您还可以检查 [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) 和语支文件)。
 
 <span></span>
 
 > **Tip** Before submitting a pull request for a change to a [dialect xml file](../messages/README.md), you should first [regenerate the dialect library](../getting_started/generate_libraries.md) *with validation enabled*, and then run the [./scripts/format_xml.sh](https://github.com/mavlink/mavlink/blob/master/scripts/format_xml.sh) script.
 
-## Messages vs Commands
+## 消息与命令
 
-There are two ways to send information between MAVLink systems (including commands, information and acknowledgments):
+在 MAVLink 系统之间发送信息有两种方式 (包括命令、信息和确认):
 
-- [Messages](#messages) are encoded using `message` elements. The message structure/fields and handling are largely unconstrained (i.e. up to the creator).
-- [MAVLink Commands](#mavlink_commands) are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum, and encoded into real messages that are sent using the [Mission Protocol](../services/mission.md) or [Command Protocol](../services/command.md). Their structure is defined (they have 7 `float` parameters *or* 5 `float` and 2 `int32_t` parameters) and handling/responses depend on the protocol used to send them.
+- [Messages](#messages) 使用 `message` 元素进行编码。 消息结构/字段和处理在很大程度上是不受约束的 (即取决于创建者)。
+- [MAVLink Commands](#mavlink_commands) 被定义为 [MAV_CMD](../messages/common.md#MAV_CMD) 枚举中的条目，并编码为使用 [Mission 协议 ](../services/mission.md) 或 [Command 协议 ](../services/command.md) 发送的真实消息。 它们的结构被定义 (它们有 7个 `float` 参数 *或* 5个 `float` 和 2个 `int32_t` 参数)，处理/响应取决于用于发送它们的协议。
 
-The guidance below provides some suggestions on when one or the other might be more appropriate.
+下文的指南提出了一些建议，说明何时可能比较合适。
 
-Consider using a proper message if:
+在以下情况下, 请考虑使用适当的消息:
 
-- The required information does not fit into a command (i.e. it can't fit into the 7 available numeric fields).
-- The message is part of another protocol.
-- The message must be broadcast or streamed (i.e. no ACK required)
+- 所需的信息不适合命令 (即它不适合7个可用的字段)。
+- 该消息是另一个协议的一部分。
+- 消息必须广播或流式传输 (即不需要 ACK)
 
-Consider using a command if:
+如果出现以下情况, 请考虑使用命令:
 
-- The message should be executed as part of a mission.
-- There is an existing mission command that you wish to use outside of missions. Depending on the autopilot you may be able to handle the message using the same code for both modes.
-- You're working with MAVLink 1 and there is no free id for the new message (MAVLink 1 has a much larger free pool of ids for MAVLink commands than for message ids).
-- It is important that your command message is not missed, so an ACK/NACK is required. Using the existing protocol acknowledgments may be faster/easier than defining another message for acknowledgments.
+- 消息应作为任务的一部分执行。
+- 有一个现有的任务命令, 您希望在任务之外使用。 根据自动驾驶仪的不同, 您可以在两种模式下使用相同的代码来处理消息。
+- 您正在使用 MAVLink 1，并且新消息没有可用 id (MAVLink 1 对于 MAVLink 命令的空余 id 池比消息 id 的可用 id 池大得多)。
+- 重要的是，您的命令信息没有错过，所以需要一个ACK/NAK信息。 使用现有的协议确认可能比定义另一条消息进行确认要容易/快。
 
-Otherwise either method may freely be used.
+否则，任何一种方法都可以随意使用。
 
-## Where are the MAVLink XML Files Located?
+## MAVLink XML 文件位于哪里？
 
-The "official" project XML files are stored in the Github repo [mavlink/mavlink](https://github.com/mavlink/mavlink/) under [/message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/).
+“官方”项目 XML 文件存储在 Github 仓库 [mavlink/mavlink](https://github.com/mavlink/mavlink/) 里的 [/message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/) 下。
 
-MAVLink systems typically fork and maintain a copy of this repo (e.g. [ArduPilot/mavlink](https://github.com/ArduPilot/mavlink)). The downstream repo should pull **common.xml** changes (see next section) down from the main repo and push dialect-specific changes back to it.
+MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavlink](https://github.com/ArduPilot/mavlink))。 下游仓库应该从 **common.xml** 更改（见下一节）从主仓库中下拉下来，然后将特定的变化回去。
 
-> **Tip** The official repo is forked and/or cloned into your environment when you [Install MAVLink](../getting_started/installation.md).
+> **Tip** 当您 [安装 MAVLink](../getting_started/installation.md)时，官方仓库被 fork 和/或 clone 到您的环境。
 
 <span></span>
 
-> **Note** A project/dialect doesn't *have to* push changes back to MAVLink. However this makes sense if you want to publish your messages more widely, and potentially get them moved into the **common.xml** message set.
+> **Note** 一个项目并非 *必须* 将更改推回 MAVLink。 但是, 如果您希望更广泛地发布消息, 并有可能将其移动到 **common.xml** 消息集里, 这就有意义。
 
-## Where Should MAVLink Elements be Created?
+## 在哪里创建 MAVLink 元素？
 
-The enums and messages that are generally useful for many flight stacks and ground stations are stored in a file named [common.xml](../messages/common.md), which is managed by the MAVLink project. The MAVLink elements supported by a particular autopilot system or protocol are referred to as *dialects*. The *dialects* are stored in separate XML files, which typically `include` (import) **common.xml** and define just the elements needed for system-specific functionality.
+许多飞行堆和基地站通常有用的清单和消息存储在一个名为 [common.xml](../messages/common.md)、由 MAVLink 项目管理的文件中。 由特定自动驾驶仪系统或协议支持的 MAVLink 元素称为 *dialects*。 *dialects* 存储在单独的 xml 文件中, 这些文件通常 `include` (导入) **common.xml**, 并且只定义特定于系统的功能所需的元素。
 
-> **Note** When a MAVLink library is generated from a dialect file, code is created for all messages in both the dialect and any included files (e.g. **common.xml**), and entries for a particular enum are merged. The generator reports errors if there are name or id clashes between imported messages or enum entries.
+> **Note** 从方言文件生成 MAVLink 库时，将为方言中的所有消息和任何包含的文件 (例如 **common.xml**) 创建代码，并合并特定枚举的条目。 如果导入的消息或枚举项之间存在名称或 id 冲突, 生成器将报告错误。
 
-Where you define an element depends on whether it is common or a dialect, and whether the project is public or private.
+定义元素的位置取决于它是公共元素还是特殊的, 以及项目是公共的还是私有的。
 
-**Elements that are potentially useful for multiple ground stations and autopilots**
+**对多地面站和自动飞行可能有用的要素**
 
-- Add these elements to **common.xml** ([mavlink/message_definitions/v1.0/common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml)) in the Github **mavlink/mavlink** repo.
-- Raise a PR with your suggested changes and discuss with the MAVLink project through that mechanism.
+- 将这些元素添加到 github **mavlink/mavlink** 存储库中的 **common.xml** ([mavlink/message_definitions/v1.0/common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml))。
+- 提出一个公关与您建议的更改, 并通过该机制与 MAVLink 项目讨论。
 
-**Elements specific to a particular MAVLink dialect**
+**特定 MAVLink 语言的元素**
 
-- Add these elements to the dialect file in the owning system's fork of the repo.
-- Raise a PR with your suggested changes and discuss with the dialect project through that mechanism.
-- The dialect project should then (ideally) push the changes back to *mavlink/mavlink*. 
+- 将这些元素添加到所属系统的存储库分叉中的语言文件中。
+- 提出一个公关与您建议的更新, 并通过该机制与方言项目讨论。
+- 然后, 特定语言项目应该 (理想情况下) 将更改推回 *mavlink/mavlink*。 
 
-**Elements for a private project**
+**私人项目的要素**
 
-- If your enums/messages won't ever sync back to the MAVLink project then define them wherever you like!
+- 如果您的枚举/消息永远不会同步回 MAVLink 项目, 那么在您喜欢的任何地方定义它们!
 
-## Creating a Dialect File
+## 创建语支文件
 
-To create a new dialect file:
+创建新的语支文件：
 
-1. Fork [mavlink/mavlink](https://github.com/mavlink/mavlink/) for your system and clone to your system
-2. Create a dialect file named after your MAVLink system (e.g. flight stack) in **message_definitions/v1.0/**
-3. Copy the following text into the new file. ```xml <?xml version="1.0"?> <mavlink>
+1. 获取分支 [mavlink/mavlink](https://github.com/mavlink/mavlink/) 并克隆到您的系统
+2. 在 **message_definitions/v1.0/** 中创建 MAVLink 系统(例如飞行栈)后命名的语支文件
+3. 将下列文本复制到新文件。 ```xml <?xml version="1.0"?> <mavlink>
   
          <include>common.xml</include>
          <!-- <version>9</version> -->
@@ -90,30 +90,30 @@ To create a new dialect file:
          </messages>
       
   
-  </mavlink> ``` The template assumes that your dialect:
+  </mavlink> "' 模板假定您的语支：
   
-  - imports **common.xml** (`<include>common.xml</include>`)
-  - takes its version from **common.xml** (which is why the `version` tags are commented out).
+  - 导入 **common.xml** (`<include>common.xml</include>`)
+  - 从 **common.xml** 获取版本(这就是 `version` 标记被注释掉的原因)。
 
-4. Update the `include`(s):
+4. 更新 `include`(s):
   
-  - if the dialect is not based on **common.xml** remove the existing `include` line
-  - Add additional `<include> </include>` elements to import additional files/dialects. > **Note** Includes in nested files are ignored.
-5. Update the `version`: 
-  - Most dialects should leave the version commented out (i.e. all dialects that include **common.xml**).
-  - Dialects that are *not* based on **common.xml** can uncomment the `<version>6</version>` line and use whatever version is desired. > **Note** The `version` specified in the top level file is used by default, if present. If it is not present in the file, then a `version` from an included file is used. 
-6. Update the `<dialect>8</dialect>` line to replace `8` with the next-largest unused dialect number (based on the other files in the folder).
-7. Optionally remove the `enums` or `messages` sections if you don't plan on declaring any elements of these types.
-8. Add enums or messages as described in the following sections.
-9. Save the file, and create a PR to push it back to the **mavlink/mavlink** project repo.
+  - 如果语支不是基于 **common.xml** 删除现有的 `include`
+  - 添加其他 `<include> </include>` 元素以导入其他文件/语支。 > **Note** 嵌套文件中的包括将被忽略。
+5. 更新 `version`: 
+  - 大多数语支都应保留注释的版本 (即包括 **common.xml** 的所有语支)。
+  - *不* 基于 **common.xml** 的方言可以取消对 `<version> 6 </version>` 行的注释, 并使用所需的任何版本。 > **Note** 默认情况下 (如果存在) 使用顶层文件中指定的 `version`。 如果文件中不存在, 则使用包含的文件中的 `version`。 
+6. 更新 `<dialect>8</dialect>` 行，以`8` 使用下一大未使用的语支号码(基于文件夹中的其他文件)。
+7. 如果不打算声明这些类型的任何元素, 也可以选择删除 `enums` 或 `messages` 部分。
+8. 添加枚举或消息, 如以下各节所述。
+9. 保存文件，并创建一个 PR，将其返回 **mavlink/mavlink** 项目仓库。
 
-## Messages {#messages}
+## 消息 {#messages}
 
-[Messages](../guide/xml_schema.md#messages) are used to send data between MAVLink systems (including commands, information and acknowledgments).
+[Messages](../guide/xml_schema.md#messages) 用于在 MAVLink 系统之间发送数据(包括命令、信息和识别)。
 
-Every message has mandatory `id`, `name`, and `description` attributes. [Serialised packets](../guide/serialization.md#packet_format) include the `id` in the [message id](../guide/serialization.md#v1_msgid) section and an encoded form of the message data within the [payload](../guide/serialization.md#v1_payload) section. The `name` is typically used by generators to name methods for encoding and decoding the specific message type. When a message is received the MAVLink library extracts the message id to determine the specific message, and uses that to find the appropriately named method for decoding the payload.
+Every message has mandatory `id`, `name`, and `description` attributes. [Serialised packets](../guide/serialization.md#packet_format) 包括 `id` 在 [消息id](../guide/serialization.md#v1_msgid) 部分和 [有效载荷](../guide/serialization.md#v1_payload) 部分内信息数据编码格式。 `name` 一般用于生成编解码特殊消息类型的名称方法。 当收到消息时，MAVLink 库提取消息id，以确定特定消息，并且使用找到适当命名的方法来解码有效载荷。
 
-A typical message ([SAFETY_SET_ALLOWED_AREA](../messages/common.md#SAFETY_SET_ALLOWED_AREA)) is shown below:
+一个典型的信息 ([SAFFLE_SET_ALLOWED_ARA](../messages/common.md#SAFETY_SET_ALLOWED_AREA)) 如下：
 
 ```xml
     <message id="54" name="SAFETY_SET_ALLOWED_AREA">
@@ -130,28 +130,28 @@ A typical message ([SAFETY_SET_ALLOWED_AREA](../messages/common.md#SAFETY_SET_AL
     </message>
 ```
 
-### Creating a Message
+### 创建消息
 
-Messages must be declared between the `<messages></messages>` tags in either **common.xml** or *dialect* files. Each message is defined using `<message id="" name="LIBRARY_UNIQUE_NAME"> ... </message>` tags (with unique `id` and `name` attributes).
+消息必须声明在`<messages></messages>`标签之间，在 **common.xml** 或*dialect* 文件。 每个消息使用 `<message id="" name="LIBRARY_UNIQUE_NAME">... </message>` 标签 (带有独特的 `id` 和`名称` 属性)。
 
-> **Tip** The only only difference between messages defined in **common.xml** or *dialect* files is they they must use different `id` ranges in order to ensure that the `ids` are unique. See [Message Id Ranges](#message_id_ranges) for more information.
+> **Tip** 在 **common.xml** 或 *dialect* 文件中定义的信息之间唯一的区别，它们必须使用不同的 `id` 范围，以确保`id` 是唯一的。 查看 [Message Id Ranges](#message_id_ranges) 更多信息。
 
-The main rules for messages are:
+信息的主要规则是：
 
-- Messages **must** include the mandatory `id` and `name` 
-  - These must be unique across the generated library.
-  - See [Message Id Ranges](#message_id_ranges) below for more information.
+- 消息 **必须** 包括强制性的 `id` 和`名称` 
+  - 这些必须是生成库的独特性。
+  - 查看 [Message Id Ranges](#message_id_ranges) 更多信息。
 
-- Messages *should* (very highly recommended) include a `description`. <!-- update if this becomes mandatory -->
+- 消息 *应该*(非常高度推荐) 包含 `description`. <!-- update if this becomes mandatory -->
 
-- [Point to point messages](../about/overview.md#point_to_point) *must* include a field for `target_system` (exactly as shown above).
+- [Point to point messages](../about/overview.md#point_to_point) *必须* 包括 `target_system`（恰如上文所示）
 
-- [Point to point messages](../about/overview.md#point_to_point) that are relevant to components *must* include a field for `target_component`(exactly as shown above).
-- The total payload size (for all fields) must not exceed 255 bytes.
-- All other fields are optional.
-- There may be no more than 64 fields.
-- The `<wip/>` tag may be added to messages that are still being tested.
-- Fields: 
+- [Point to point messages](../about/overview.md#point_to_point) *必须* 包括一个字段 `目标组件` (完全如上所示)。
+- 总有效载荷大小(对于所有字段) 不得超过255字节。
+- 所有其他字段都是可选的。
+- 可能没有超过64个字段。
+- &lt;wip/&gt; 标签可以添加到仍在测试的信息。
+- 字段 
   - must have unique `name`s within a message.
   - *should* have a description.
   - *should* use the `units` attribute rather than including units in the description. Each field should only have **one** or no units.
