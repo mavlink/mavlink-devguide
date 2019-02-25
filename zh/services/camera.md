@@ -62,7 +62,7 @@
 
 ### 存储状态
 
-在捕获图像和/或视频之前，GCS应该查询相机的存储状态以决定是否还有足够的存储空间(并把当前的存储状态反馈给用户)。 The GCS will send the [MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION) command and it expects a [STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) response. For formatting (or erasing depending on your implementation), the GCS will send a [MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) command.
+在捕获图像和/或视频之前，GCS应该查询相机的存储状态以决定是否还有足够的存储空间(并把当前的存储状态反馈给用户)。 GCS 会发送一个 [MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION) 命令，并等待相机回复[STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) 消息。 For formatting (or erasing depending on your implementation), the GCS will send a [MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) command.
 
 ### Camera Capture Status
 
