@@ -183,15 +183,15 @@ MAV_CMD 条目 `value` 元素可能会额外定义这些标签/字段：
    - `id`“id”属性是这一信息的独特索引编号(见上文：147)。 
       - 对于 MAVLink 1:
       - 有效数字介于 0 到 255。
-      - The ids 0-149 and 230-255 are reserved for *common.xml*. Dialects can use 180-229 for custom messages (provided these are not used by other included dialects). 
-      - For [MAVLink 2](../guide/mavlink_2.md):
-      - Valid numbers range from 0 to 16777215.
-      - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1. > **Note** IDs are precious in MAVLink 1!
-   - `name`: The name attribute provides a human readable form for the message (ie "BATTERY_STATUS"). It is used for naming helper functions in generated libraries, but is not sent over the wire.
-- `description`: Human readable description of message, shown in user interfaces and in code comments. This should contain all information (and hyperlinks) to fully understand the message.
-- `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire). 
-   - `type`: Similar to a field in a C `struct` - the size of the data required to store/represent the data type. 
-      - Fields can be signed/unsigned integers of size 8, 16, 23, 64 bits (`{u)int8_t`, `(u)int16_t`, `(u)int32_t`, `(u)int64_t`), single/double precision IEEE754 floating point numbers. They can also be arrays of the other types - e.g. `uint16_t[10]`. 
+      - ID 0-149 和 230-255 为*common.xml*保留。 语支可以使用180-229 用于自定义消息 (除非这些信息没有被其他包括语支使用)。 
+      - 对于 [MAVLink 2 ](../guide/mavlink_2.md):
+      - 有效数字介于0-1677215。
+      - 255以下所有值都被认为是保留的，除非报文也打算用于 MAVLink 1。 >**注意** ID 在 MAVLink 1 中很宝贵！
+   - `name`：名称属性为消息提供了人类可读的表格 (比如 "BATERY_STATUS") 它用于在生成的库命名辅助功能，但并没有通过总线发送。
+- `description`(可选)：用户界面和代码评论中显示的信息可读描述。 这应当包含所有信息（以及超链接），以便充分了解信息。
+- `field`: 编码消息的一个字段。 字段值是 GUI 文档中使用的名称/文本字符串(但不通过总线发送)。 
+   - `type`: 类似于 C `struct` - 存储/代表数据类型所需数据大小。 
+      - 字段可签名/无签名，大小 8、16、23、64位(`{u)int8_t`, `(u)int16_t`, `(u>(u)int 32_t`, `, <0>(u>(u)int64_int`), 单一/双精度精度IEEE754 浮点数。 They can also be arrays of the other types - e.g. `uint16_t[10]`. 
    - `name`: Name of the field (used in code).
    - [enum](#enum) (optional): Name of an `enum` defining possible values of the field (e.g. `MAV_BATTERY_CHARGE_STATE`).
    - `units` (optional): The units for message `field`s that take numeric values (not enums). These are defined in the [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd) (search on *name="SI_Unit"*)
