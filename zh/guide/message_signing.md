@@ -1,4 +1,4 @@
-# Message Signing (Authentication)
+# 消息签名 (身份验证)
 
 [MAVLink 2](../guide/mavlink_2.md) adds support for message signing, which allows a MAVLink system to verify that messages originate from a trusted source.
 
