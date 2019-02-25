@@ -1,6 +1,6 @@
 # 相机协议
 
-相机通讯协议用于远程配置机载相机或查询相机的状态。 它支持照片拍摄、视频录制和流媒体预览。 它还提供了查询并配置机载相机存储空间的消息。
+相机通讯协议用于远程配置机载相机或查询相机的状态。 它支持照片拍摄、视频录制和视频流。 它还提供了查询并配置机载相机存储空间的消息。
 
 > **Tip** 软件 [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) 实现了该协议。
 
@@ -14,7 +14,7 @@
 
 ## 相机基本操作
 
-标志位 [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) 提供了相机能力的相关信息。 这些标志位的值来自 [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS)，GCS 可以从中得知该相机组件是否支持静态照片拍摄、视频录制和流媒体预览，以及拍摄前是否需要切换到特定模式，等等。
+标志位 [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) 提供了相机能力的相关信息。 这些标志位的值来自 [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS)，GCS 可以从中得知该相机组件是否支持静态照片拍摄、视频录制和视频流，以及拍摄前是否需要切换到特定模式，等等。
 
 ### 相机识别 {#camera_identification}
 
@@ -86,19 +86,19 @@ GCS使用 [MAV_CMD_VIDEO_START_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_STAR
 
 GCS要使用 [MAV_CMD_VIDEO_STOP_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_STOP_CAPTURE) 命令停止视频捕获。
 
-### 流媒体预览
+### 视频流
 
-A camera is capable of streaming video if it sets the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) bit set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
+如果[CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION)的[CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) 标志位被置位，则表示该相机支持视频流。
 
-When the GCS receives the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it detects the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag, it will then send the [MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION) message to the camera requesting the video streaming configuration. In response, the camera returns a [VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) message for each stream it supports.
+当GCS收到 [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消息并检测到[CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) 标志位，GCS将发送 [MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION) 消息查询视频流的配置。 作为回应，相机将为每一种支持的视频流格式回送一条 [VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) 消息。
 
-> **Note** If your camera only provides video streaming and nothing else (no camera features), the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag is the only flag you need to set. The GCS will then provide video streaming support and skip camera control.
+> **Note**如果你的相机仅支持视频流 (不支持图像/视频捕获等其它功能)，那么你只需将[CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM)这一个标志位置位即可。 GCS将仅提供视频流支持并跳过其它控制项。
 
-## Message/Enum Summary
+## 消息/枚举值摘要
 
 
 
-| Message                                                                                                                                 | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| 消息                                                                                                                                      | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <span id="mav_cmd_request_camera_information"></span>[MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION)             | Send command to request [CAMERA_INFORMATION](#camera_information).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | <span id="camera_information"></span>[CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION)                                                 | Basic information about camera including supported features and URI link to extended information (`cam_definition_uri` field).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
