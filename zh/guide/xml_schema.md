@@ -133,31 +133,31 @@ MAV_CMD 条目 `value` 元素可能会额外定义这些标签/字段：
 
 `<param>` 标签在 [MAV_CMD](../messages/common.md#MAV_CMD) 中用作定义任务命令的一部分。 每个条目值可能超过已申报的7个参数，从 `索引` 值来自1-7。
 
-A `param` **must** include the following attribute:
+`param`**必须** 包括以下属性：
 
 - `index` - The parameter number (1 - 7).
 
-A `param` **should** have:
+`param` **应该** 具有:
 
 - `description`: Parameter description string (tag body)
 
-A `param` **should** also include the following optional attributes where appropriate (which may be used by a GUI for parameter display and editing):
+`param` 还 **应该** 在适当的情况下包括以下可选属性 (GUI 可将其用于参数显示和编辑):
 
-- `label` - Display name to represent the parameter in a GCS or other UI
-- `units` - SI units for the value.
-- `enum` - Enum containing possible values for the parameter (if applicable).
-- `decimalPlaces` - Hint to a UI about how many decimal places to use if the parameter value is displayed.
-- `increment` - Allowed increments for the parameter value.
-- `minValue` - Minimum value for param.
-- `maxValue` - Maximum value for the param.
-- `reserved` - Boolean indicating whether param is reserved for future use. If the attributes is not declared, then implicitly `reserved="False"`. > **Tip** See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
-- `default` - Default value for the `param` (primarily used for `reserved` params, where the value is `0` or `NaN`).
+- `label`-显示名称以表示 GCS 或其他 UI 中的参数
+- `units`-值的 SI 单位。
+- `enum`-包含参数的可能值的枚举 (如果适用)。
+- `decimalPlaces` - 提示到 UI，如果显示参数值，多少小数位可用。
+- `increment` - 参数值允许的增加值。
+- `minValue` - 参数的最低值。
+- `max值`-参数的最大值。
+- `reserved` - 布尔值 - 表示是否保留用于未来使用的参数。 如果未宣布属性，则隐含 `reserved="False"`。 >**Tip** 参见 [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) 更多信息。
+- `default` - 默认值 `param` (主要用于 `保留` 参数, 值 `0` 或`NaN`)。
 
-## Message Definition (messages) {#messages}
+## 消息定义(消息) {#messages}
 
-Messages are defined within the `<messages> ... </messages>` block using `<message>...</message>` tags. Individual fields to be encoded in the message payload are defined using `<field> ... </field>` tags
+所有消息都是在 ` <messages> 中定义的..。 </messages>` 使用 `<message>...</message>` 标签的方块。 正在使用 `<field>... </field>` 标签。
 
-For example,the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) message is given below (this message was chosen because it contains many of the main fields and attributes.
+例如，以下文对[BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) 消息的定义 (选择了该消息因为它包含了许多主要字段和属性）
 
 ```xml
     <message id="147" name="BATTERY_STATUS">
@@ -177,12 +177,12 @@ For example,the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY
     </message>
 ```
 
-The main message tags/fields are:
+主要消息标签/字段是：
 
-- `message`: Each message is encapsulated by `message` tags, with the following attributes 
-   - `id`: The id attribute is the unique index number of this message (in the example above: 147). 
-      - For MAVLink 1:
-      - Valid numbers range from 0 to 255.
+- `message`: 每个消息被 `message` 标签封装，包含以下属性 
+   - `id`“id”属性是这一信息的独特索引编号(见上文：147)。 
+      - 对于 MAVLink 1:
+      - 有效数字介于 0 到 255。
       - The ids 0-149 and 230-255 are reserved for *common.xml*. Dialects can use 180-229 for custom messages (provided these are not used by other included dialects). 
       - For [MAVLink 2](../guide/mavlink_2.md):
       - Valid numbers range from 0 to 16777215.
