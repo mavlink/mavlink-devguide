@@ -62,17 +62,17 @@
 
 ### 存储状态
 
-在捕获图像和/或视频之前，GCS应该查询相机的存储状态以决定是否还有足够的存储空间(并把当前的存储状态反馈给用户)。 GCS 会发送一个 [MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION) 命令，并等待相机回复[STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) 消息。 For formatting (or erasing depending on your implementation), the GCS will send a [MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) command.
+在捕获图像和/或视频之前，GCS应该查询相机的存储状态以决定是否还有足够的存储空间(并把当前的存储状态反馈给用户)。 GCS 会发送一条 [MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION) 命令，并等待相机回复[STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) 消息。 如果要格式化 (你也可以定义为擦除)，GCS 会发送一条 [MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) 命令。
 
-### Camera Capture Status
+### 相机捕获状态
 
-In addition to querying about storage status, the GCS will also request the current *Camera Capture Status* in order to provide the user with proper UI indicators. The GCS will send a [MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS) command and it expects a [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) response.
+除了查询存储器状态，GCS 还要查询当前的 *Camera Capture Status* ，才能为用户提供正确的状态信息。 GCS 会发送一条 [MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS) 命令，并等待回复[CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) 消息。
 
-### Still Image Capture
+### 静态图像捕获
 
-A camera supports still image capture if the [CAMERA_CAP_FLAGS_CAPTURE_IMAGE](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_IMAGE) bit is set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
+如果[CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION)中的 [CAMERA_CAP_FLAGS_CAPTURE_IMAGE](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_IMAGE) 标志位被置位，就说明该相机组件支持静态图像捕获。
 
-To capture an image, the GCS uses the [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) command. Each time an image is captured, a [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) message is sent back to the GCS.
+GCS通过发送 [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) 命令来捕获一张图像。 每当捕获到一张图像，相机组件将向GCS发送一条 [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) 消息。
 
 The `CAMERA_IMAGE_CAPTURED` message not only tells the GCS the image was captured, it is also intended for geo-tagging.
 
