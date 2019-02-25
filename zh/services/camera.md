@@ -74,11 +74,11 @@
 
 GCS通过发送 [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) 命令来捕获一张图像。 每当捕获到一张图像，相机组件将向GCS发送一条 [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) 消息。
 
-The `CAMERA_IMAGE_CAPTURED` message not only tells the GCS the image was captured, it is also intended for geo-tagging.
+`CAMERA_IMAGE_CAPTURED` 消息不仅用来通知GCS图像是否捕获成功，还可用于添加地理位置标签。
 
-The capture command can be used to request one single image capture or a time lapse. If the command is set to take more than one single image, the GCS might use the [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) command to stop it.
+捕获命令可用于请求单张的图像捕获或多帧连拍。 如果该命令被设置为多张连拍，GCS可以发送 [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) 消息来停止捕获。
 
-### Video Capture
+### 视频捕获
 
 A camera supports video capture if the [CAMERA_CAP_FLAGS_CAPTURE_VIDEO](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_VIDEO) bit is set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
