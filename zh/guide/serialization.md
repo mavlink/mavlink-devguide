@@ -100,13 +100,13 @@ Whatever language you are using, the resulting binary data will be the same:
 
 ## 兼容性标记 (MAVLink 2) {#compat_flags}
 
-Compatibility flags are used to indicate features won't prevent a MAVLink library from handling the packet (even if the feature is not understood). This might include, for example, a flag to indicate that a packet should be treated as "high priority" (such a messages could be handled by any MAVLink implementation because packet format and structure is not affected).
+兼容性标记用于显示功能，无法阻止 MAVLink 库处理数据包 (即使不能识别此功能)。 例如，这可能包括一个标志，以表明数据包应被视为“高度优先级”， (因为数据包格式和结构不受影响，这种信息可以通过任何 MAVLink 执行处理)。
 
-A MAVLink implementation can safely ignore flags it doesn't understand in the `compat_flags` field.
+一个 MAVLink 执行可以安全地忽略它在 `compat_latime` 字段中不识别的旗帜。
 
-## Payload Format {#payload}
+## 有效负载格式 {#payload}
 
-MAVLink does not include information about the message structure in the payload itself (in order to reduce overhead)! Instead the sender and receiver must share a common understanding of the meaning, order and size of message fields in the over-the-wire format.
+MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减少间接开销)! 相反, 发送方和接收方必须对无线格式的消息字段的含义、顺序和大小有共同的标识。
 
 Messages are encoded within the MAVLink packet:
 
