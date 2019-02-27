@@ -127,11 +127,11 @@ MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减�
 - 如果两个字段的长度相同, 则它们的顺序将保留为数据字段大小排序之前的顺序
 - 根据它们使用的数据类型处理数组，而不是根据总数组大小处理
 - 已传输的报文与 `construction` 相同，因此代表重新排序的字段
-- The `CRC_EXTRA` field is calculated *after* the reordering, to ensure that a mistake during field reordering will be caught by a faulty CRC. The provided Python, C and C# reference implementations are tested to have the correct field reordering, this is only a concern for custom implementations. 
+- `CRC_EXTERA` 字段在重新排序 *后* 计算，这可以确保字段中的错误可以被默认 CRC 发现。 提供的 Python, C 和 C# 参考执行测试，以便正确地重新排序，这只是习惯执行的关切。 
 
-The only exception to the above reordering is for [MAVLink 2 extension fields](../guide/define_xml_element.md#message_extensions). Extension fields are sent in XML-declaration order and are not included in the [CRC_EXTRA](#crc_extra) calculation. This allows new extension fields to be appended to the end of a message without breaking binary compatibility.
+上述重新排序的唯一例外是 [MAVLink 2 扩展字段](../guide/define_xml_element.md#message_extensions)。 扩展字段以 XML-Declaration 的顺序发送，不包括在[CRC_EXTERA](#crc_extra) 计算中。 这允许新的扩展字段在消息结束后附加，但不打破二进制兼容性。
 
-> **Warning** This ordering is unique and can be easily implemented in a protocol generator by using a stable sorting algorithm. The alternative to using sorting would be either to use inefficient alignment, which is bad for the target architectures for typical MAVLink applications, or to have function calls in the order of the variable size instead of the application context. This would lead to very confusing function signatures of serialization functions.
+> **Warning** 此订单是独特的，可以通过使用稳定的分类算法，很容易在协议中轻松实现。 The alternative to using sorting would be either to use inefficient alignment, which is bad for the target architectures for typical MAVLink applications, or to have function calls in the order of the variable size instead of the application context. This would lead to very confusing function signatures of serialization functions.
 
 <!-- FYI: Field ordering is in pymavlink/generator/mavparse.py - see https://github.com/mavlink/mavlink-devguide/pull/27#issuecomment-349215965 for info -->
 
