@@ -108,25 +108,25 @@ Whatever language you are using, the resulting binary data will be the same:
 
 MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减少间接开销)! 相反, 发送方和接收方必须对无线格式的消息字段的含义、顺序和大小有共同的标识。
 
-Messages are encoded within the MAVLink packet:
+消息在 MAVLink 数据包中进行编码:
 
-- The `msgid` (message id) field identifies the specific message encoded in the packet.
-- The `payload` field contains the message data. 
-  - MAVLink [reorders the message fields](#field_reordering) in the payload for over-the-wire transmission (from the order in the original [XML Message Definitions](../messages/README.md)).
-  - MAVLink 2 [truncates](../guide/mavlink_2.md#packet_truncation) any zero-filled bytes at the end of the payload before the message is sent and sets the packet `len` field appropriately (MAVLink 1 always sends all bytes).
-- The `len` field contains the length of the payload data.
-- A [CRC_EXTRA](#crc_extra) byte is added to the message [checksum](#checksum). A receiver can use this to confirm that it is compatible with the payload message format/definition.
+- `msgid`(消息id) 字段确定了在数据包中编码的具体消息。
+- `payload` 字段包含消息数据。 
+  - MAVLink [reorders the message fields](#field_reordering) 超电线传输的有效载荷 (从原始 [XML Message Definitions](../messages/README.md))。
+  - 在发送消息之前, MAVLink 2 [truncates](../guide/mavlink_2.md#packet_truncation) 有效负载末尾的任何零填充字节, 并适当地设置数据包 `len` 字段 (MAVLink 1 始终发送所有字节)。
+- `len` 字段包含有效负载数据的长度。
+- [CRC_EXTRA](#crc_extra) 字节添加到消息 [checksum](#checksum)。 接收器可以使用它来确认它与有效负载消息格式/定义兼容。
   
-  > **Tip** A MAVLink library should notify a bad CRC during decoding if a message specification is incompatible (e.g. the C library [mavlink_parse_char()](../getting_started/use_libraries.md#receiving) gives a status `MAVLINK_FRAMING_BAD_CRC`).
+  > **Tip** 如果消息规范不兼容 (例如 c 库 [mavlink_parse_char()](../getting_started/use_libraries.md#receiving) 给出状态 `MAVLINK_FRAMING_BAD_CRC`), 则 MAVLink 库应在解码过程中通知错误的 crc。
 
-### Field Reordering {#field_reordering}
+### 字段重新排序 {#field_reordering}
 
-Message payload fields are reordered for transmission as follows:
+消息有效载荷字段重新排序，以便传输如下：
 
-- Fields are sorted according to their native data size, first `(u)int64_t` and `double`, then `(u)int32_t`, `float`, `(u)int16_t`, `(u)int8_t`.
-- If two fields have the same length, their order is preserved as it was present before the data field size ordering
-- Arrays are handled based on the data type they use, not based on the total array size
-- The over-the-air order is the same as for the `struct` and thus represents the reordered fields
+- 字段根据其本机数据大小进行排序, 首先 `(u)int64_t` 和 `double`, 然后 `(u)int32_t`、`float`、`(u)int16_t` `(u)int8_t`。
+- 如果两个字段的长度相同, 则它们的顺序将保留为数据字段大小排序之前的顺序
+- 根据它们使用的数据类型处理数组，而不是根据总数组大小处理
+- 已传输的报文与 `construction` 相同，因此代表重新排序的字段
 - The `CRC_EXTRA` field is calculated *after* the reordering, to ensure that a mistake during field reordering will be caught by a faulty CRC. The provided Python, C and C# reference implementations are tested to have the correct field reordering, this is only a concern for custom implementations. 
 
 The only exception to the above reordering is for [MAVLink 2 extension fields](../guide/define_xml_element.md#message_extensions). Extension fields are sent in XML-declaration order and are not included in the [CRC_EXTRA](#crc_extra) calculation. This allows new extension fields to be appended to the end of a message without breaking binary compatibility.
