@@ -92,13 +92,13 @@ Whatever language you are using, the resulting binary data will be the same:
 
 > **Note** 如果 `incompat_flags` 字段中的任何标志不识别, 则 MAVLink **必须丢弃**。
 
-Supported incompatibility flags include (at time of writing):
+支持的不兼容标志包括 (在编写本文时):
 
-| Flag                          | C flag                 | Feature                                                                                            |
-| ----------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------- |
-| <span id="MAVLINK_IFLAG_SIGNED"></span>0x01 | `MAVLINK_IFLAG_SIGNED` | The packet is [signed](../guide/message_signing.md) (a signature has been appended to the packet). |
+| 标记                            | C 标志                   | 特性                                                      |
+| ----------------------------- | ---------------------- | ------------------------------------------------------- |
+| <span id="MAVLINK_IFLAG_SIGNED"></span>0x01 | `MAVLINK_IFLAG_SIGNED` | 数据包 [signed](../guide/message_signing.md) (签名已追加到数据包中)。 |
 
-## Compatibility Flags (MAVLink 2) {#compat_flags}
+## 兼容性标记 (MAVLink 2) {#compat_flags}
 
 Compatibility flags are used to indicate features won't prevent a MAVLink library from handling the packet (even if the feature is not understood). This might include, for example, a flag to indicate that a packet should be treated as "high priority" (such a messages could be handled by any MAVLink implementation because packet format and structure is not affected).
 
