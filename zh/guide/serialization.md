@@ -72,16 +72,16 @@ Whatever language you are using, the resulting binary data will be the same:
 
 ![MAVLink v1 packet](../../assets/packets/packet_mavlink_v1.jpg)
 
-| 字节索引                                | C 版本                       | 内容                                          | 值                 | 说明                                                                                                                   |
-| ----------------------------------- | -------------------------- | ------------------------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------- |
-| 0                                   | `uint8_t magic`            | 数据包启动标记                                     | 0xFE              | 特定于协议的文本启动 (stx) 标记, 用于指示新数据包的开始。 任何不识别协议版本的系统都将跳过数据包。                                                               |
-| 1                                   | `uint8_t len`              | 载荷长度                                        | 0&nbsp;-&nbsp;255 | 指示以下 `payload` 部分的长度 (为特定消息固定)。                                                                                      |
-| 2                                   | `uint8_t seq`              | 数据包序列号                                      | 0 - 255           | Used to detect packet loss. Components increment value for each message sent.                                        |
-| 3                                   | `uint8_t sysid`            | System ID                                   | 1 - 255           | ID of *system* (vehicle) sending the message. Used to differentiate systems on network.                              |
-| 4                                   | `uint8_t compid`           | Component ID                                | 0 - 255           | ID of *component* sending the message. Used to differentiate components in a *system* (e.g. autopilot and a camera). |
-| <span id="v1_msgid"></span>5          | `uint8_t msgid`            | Message ID                                  | 0 - 255           | ID of *message type* in payload. Used to decode data back into message object.                                       |
-| <span id="v1_payload"></span>6 to (n+6) | `uint8_t payload[max 255]` | Payload data                                |                   | Message data. Content depends on message type (i.e. Message ID).                                                     |
-| (n+7) to (n+8)                      | `uint16_t checksum`        | [Checksum](#checksum) (low byte, high byte) |                   | X.25 CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte.                                |
+| 字节索引                                | C 版本                       | 内容                                          | 值                 | 说明                                                                                    |
+| ----------------------------------- | -------------------------- | ------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------- |
+| 0                                   | `uint8_t magic`            | 数据包启动标记                                     | 0xFE              | 特定于协议的文本启动 (stx) 标记, 用于指示新数据包的开始。 任何不识别协议版本的系统都将跳过数据包。                                |
+| 1                                   | `uint8_t len`              | 载荷长度                                        | 0&nbsp;-&nbsp;255 | 指示以下 `payload` 部分的长度 (为特定消息固定)。                                                       |
+| 2                                   | `uint8_t seq`              | 数据包序列号                                      | 0 - 255           | 用于检测数据包丢失。 组件为发送的每封消息递增值。                                                             |
+| 3                                   | `uint8_t sysid`            | 系统 ID                                       | 1 - 255           | 发送消息的 *system* (飞机) 的 ID。 用于区分网络上的系统。                                                 |
+| 4                                   | `uint8_t compid`           | 组件ID                                        | 0 - 255           | *component* 发送消息ID。 用于区分 *system* 中的组件 (例如自动驾驶仪和相机)。                                  |
+| <span id="v1_msgid"></span>5          | `uint8_t msgid`            | Message ID                                  | 0 - 255           | 有效载荷中的 *message type * 的 id。 用于将数据解码回消息对象。                                            |
+| <span id="v1_payload"></span>6 to (n+6) | `uint8_t payload[max 255]` | Payload data                                |                   | Message data. Content depends on message type (i.e. Message ID).                      |
+| (n+7) to (n+8)                      | `uint16_t checksum`        | [Checksum](#checksum) (low byte, high byte) |                   | X.25 CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte. |
 
 - The minimum packet length is 8 bytes for acknowledgment packets without payload.
 - The maximum packet length is 263 bytes for full payload.
