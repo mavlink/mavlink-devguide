@@ -131,31 +131,31 @@ MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减�
 
 上述重新排序的唯一例外是 [MAVLink 2 扩展字段](../guide/define_xml_element.md#message_extensions)。 扩展字段以 XML-Declaration 的顺序发送，不包括在[CRC_EXTERA](#crc_extra) 计算中。 这允许新的扩展字段在消息结束后附加，但不打破二进制兼容性。
 
-> **Warning** 此订单是独特的，可以通过使用稳定的分类算法，很容易在协议中轻松实现。 The alternative to using sorting would be either to use inefficient alignment, which is bad for the target architectures for typical MAVLink applications, or to have function calls in the order of the variable size instead of the application context. This would lead to very confusing function signatures of serialization functions.
+> **Warning** 此订单是独特的，可以通过使用稳定的分类算法，很容易在协议中轻松实现。 替代索引要么效率低下，不利于 MAVLink 应用的典型目标架构，或者要支持按变量大小为顺序的函数调用，而不是应用的上下文。 这将导致序列化函数的功能签名非常混乱。
 
 <!-- FYI: Field ordering is in pymavlink/generator/mavparse.py - see https://github.com/mavlink/mavlink-devguide/pull/27#issuecomment-349215965 for info -->
 
-### Empty-Byte Payload Truncation (MAVLink 2) {#payload_truncation}
+### 空字节有效负载截断 (MAVLink 2) {#payload_truncation}
 
-*MAVLink 2* truncates any empty (zero-filled) bytes at the end of the serialized payload before it is sent. This contrasts with *MAVLink 1*, where bytes were sent for all fields regardless of content.
+*MAVLink 2* 在序列化有效载荷发送之前截断任何空的(零填充) 字节。 这与 *MAVLink 1*，在这种情况下，所有字段都发送了字节，因此，这是这样。
 
-The actual fields affected/bytes saved depends on the message and its content (MAVLink [field reordering](../guide/serialization.md#field_reordering) means that all we can say is that any truncated fields will typically be those with the smallest data size, or extension fields).
+保存的实际字段/字节取决于消息及其内容 (MAVLink [field reordering](../guide/serialization.md#field_reordering) 意味着，我们可以说，任何截断字段通常都是最小的数据大小或扩展字段)。
 
-> **Note** The protocol only truncates empty bytes at the end of the serialized message payload; any null bytes/empty fields within the body of the payload are not affected.
+> **Note** 该协议仅在序列化消息有效负载的末尾截断空字节; 数据主体中的任何空字节/空字段都不受影响。
 
-### CRC_EXTRA Calculation {#crc_extra}
+### CRC_EXTERA 计算 {#crc_extra}
 
-The `CRC_EXTRA` CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message.
+使用 `CRC_EXTERA` CRC 来验证发送和接收对特定电文的无线协议格式的共同识别。
 
-> **Tip** Changes in [message specifications](../messages/README.md) that might make the over-the-wire format incompatible include: new/removed fields, or changes to field name, data type, order, or array length.
+> **Tip** 可能使超过电汇格式的 [信息规格](../messages/README.md) 的变化，包括：新的/删除字段，或对字段名称、数据类型、顺序或数组长度的修改。
 
-When the MAVLink code generator runs, it takes a checksum of the XML structure for each message and creates an array define `MAVLINK_MESSAGE_CRCS`. This is used to initialise the `mavlink_message_crcs[]` array in the C/C++ implementation, and is similarly used in the Python (or any other, such as the C# and JavaScript) implementation.
+当 MAVLink 代码生成器运行时, 它需要对每个消息的 XML 结构进行校验和, 并创建一个数组定义 `MAVLINK_MESSAGE_CRCS`。 这用于在 c/c + 实现中初始化 `mavlink_message_crcs[]` 数组, 并在 python (或任何其他 (如 c# 和 javascript) 实现中类似地使用。
 
-When the sender calculates the checksum for a message it adds the `CRC_EXTRA` byte onto the end of the data that the checksum is calculated over. The recipient calculates a checksum for the received message and adds its own `CRC_EXTRA` for the particular message id. If the `CRC_EXTRA` for the sender and receiver are different the checksums will not match.
+当发送者计算消息的校验和时，它添加了 `CRC_EXTERA` 字节到数据末尾，即校验和计算结果。 接受者计算收到消息的校验和，并为特定消息ID添加自己的 `CRC_EXTERA` 如果发送者和接收者的`CRC_EXTERA`不同，校验和不匹配。
 
-This approach ensures that only messages where the sender and recipient are using the same message structure will be decoded (or at least it makes a mistake much more unlikely, as for any checksum application).
+这种做法确保只有在发送人和收件人使用相同的信息结构时，才能解读（或至少造成错误，任何校验和应用都不可能）。
 
-If you are doing your own implementation of MAVLink you can get this checksum in one of two ways: you can include the generated headers and use `MAVLINK_MESSAGE_CRCS` to get the right seed for each message type, or you can re-implement the code that calculates the seed.
+如果您正在执行 MAVLink，您可以用两种方式获取此校验和： 你可以包含生成的主机，使用 `MAVLINK_MESSGE_CRCS` 获取每个信息类型的正确种子，或者你可以重新执行计算种子的代码。
 
 As MAVLink internally reorders the message fields according to their size to prevent word / halfword alignment issues (see [Data structure alignment](http://en.wikipedia.org/wiki/Data%20structure%20alignment) (Wikipedia) for further reference), and a wrongly implemented reordering potentially can cause inconsistencies as well, the `CRC_EXTRA` is calculated based on the over-the-air message layout rather than the XML order.
 
