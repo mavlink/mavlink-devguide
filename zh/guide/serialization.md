@@ -49,24 +49,24 @@ Whatever language you are using, the resulting binary data will be the same:
 
 ![MAVLink v2 packet](../../assets/packets/packet_mavlink_v2.jpg)
 
-| 字节索引                                  | C 版本                       | 内容                                          | 值            | 说明                                                                                                |
-| ------------------------------------- | -------------------------- | ------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------- |
-| 0                                     | `uint8_t magic`            | 数据包启动标记                                     | 0xFD         | 特定于协议的文本启动 (stx) 标记, 用于指示新数据包的开始。 任何不识别协议版本的系统都将跳过数据包。                                            |
-| 1                                     | `uint8_t len`              | 载荷长度                                        | 0 - 255      | 显示 `有效载荷`部分的长度。 这可能会受到 [payload truncation ](#payload_truncation) 的影响。                            |
-| 2                                     | `uint8_t incompat_flags`   | [不兼容标志](#incompat_flags)                    |              | 必须理解为 MAVLink 兼容性的标志 (如果不理解标志, 则实现丢弃数据包)。                                                         |
-| 3                                     | `uint8_t compat_flags`     | [兼容性标志](#compat_flags)                      |              | 如果不识别, 则可以忽略的标志 (即使不识别标志, 实现仍然可以处理数据包)。                                                           |
-| 4                                     | `uint8_t seq`              | 数据包序列号                                      | 0 - 255      | 用于检测数据包丢失。 组件为发送的每封消息递增值。                                                                         |
-| 5                                     | `uint8_t sysid`            | 系统 ID (发送者)                                 | 1 - 255      | 发送消息的 *system* (飞机) 的 ID。 用于区分网络上的系统。                                                             |
-| 6                                     | `uint8_t compid`           | 组件ID (发送者)                                  | 0 - 255      | *component* 发送消息ID。 Used to differentiate components in a *system* (e.g. autopilot and a camera). |
-| <span id="v2_msgid"></span>7 to 9       | `uint32_t msgid:24`        | Message ID (low, middle, high bytes)        | 0 - 16777215 | ID of *message type* in payload. Used to decode data back into message object.                    |
-| <span id="v2_payload"></span>10 to (n+10) | `uint8_t payload[max 255]` | [Payload](#payload)                         |              | Message data. Depends on message type (i.e. Message ID) and contents.                             |
-| (n+11) to (n+12)                      | `uint16_t checksum`        | [Checksum](#checksum) (low byte, high byte) |              | X.25 CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte.             |
-| (n+12) to (n+26)                      | `uint8_t signature[13]`    | [Signature](../guide/message_signing.md)    |              | (Optional) Signature to ensure the link is tamper-proof.                                          |
+| 字节索引                                | C 版本                       | 内容                                | 值            | 说明                                                                     |
+| ----------------------------------- | -------------------------- | --------------------------------- | ------------ | ---------------------------------------------------------------------- |
+| 0                                   | `uint8_t magic`            | 数据包启动标记                           | 0xFD         | 特定于协议的文本启动 (stx) 标记, 用于指示新数据包的开始。 任何不识别协议版本的系统都将跳过数据包。                 |
+| 1                                   | `uint8_t len`              | 载荷长度                              | 0 - 255      | 显示 `有效载荷`部分的长度。 这可能会受到 [payload truncation ](#payload_truncation) 的影响。 |
+| 2                                   | `uint8_t incompat_flags`   | [不兼容标志](#incompat_flags)          |              | 必须理解为 MAVLink 兼容性的标志 (如果不理解标志, 则实现丢弃数据包)。                              |
+| 3                                   | `uint8_t compat_flags`     | [兼容性标志](#compat_flags)            |              | 如果不识别, 则可以忽略的标志 (即使不识别标志, 实现仍然可以处理数据包)。                                |
+| 4                                   | `uint8_t seq`              | 数据包序列号                            | 0 - 255      | 用于检测数据包丢失。 组件为发送的每封消息递增值。                                              |
+| 5                                   | `uint8_t sysid`            | 系统 ID (发送者)                       | 1 - 255      | 发送消息的 *system* (飞机) 的 ID。 用于区分网络上的系统。                                  |
+| 6                                   | `uint8_t compid`           | 组件ID (发送者)                        | 0 - 255      | *component* 发送消息ID。 用于区分 *system* 中的组件 (例如自动驾驶仪和相机)。                   |
+| <span id="v2_msgid"></span>7至9        | `uint32_t msgid:24`        | 消息 ID (低、中级、高字节)                  | 0 - 16777215 | 有效载荷中的 *message type * 的 id。 用于将数据解码回消息对象。                             |
+| <span id="v2_payload"></span>10至 (n+10) | `uint8_t payload[max 255]` | [负载](#payload)                    |              | 消息数据。 取决于消息类型 (即消息 ID) 和内容。                                            |
+| (n+11) to (n+12)                    | `uint16_t checksum`        | [Checksum](#checksum)(低字节, 高字节)   |              | X.25 CRC 表示消息 (不包括 `magic` 字节)。 包括 [CRC_EXTERA](#crc_extra) 字节。        |
+| (n+12) 至 (n+26)                     | `uint8_t signature[13]`    | [签名](../guide/message_signing.md) |              | (可选) 签名以确保链接不受篡改。                                                      |
 
-- The minimum packet length is 11 bytes for acknowledgment packets without payload.
-- The maximum packet length is 279 bytes for a signed message that uses the whole payload.
+- 最低数据包长度是11字节，用于没有有效载荷确认数据包。
+- 最大数据包长度为 279 字节，用于使用整个有效载荷。
 
-### MAVLink 1 Packet Format {#v1_packet_format}
+### MAVLink 1 的数据包格式 {#v1_packet_format}
 
 Below is the over-the-wire format for a MAVLink 1 packet (the in-memory representation might differ).
 
