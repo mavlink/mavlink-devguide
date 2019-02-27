@@ -47,7 +47,7 @@ Whatever language you are using, the resulting binary data will be the same:
 
 下面是 [MAVLink 2 ](../guide/mavlink_2.md) 数据包的线外格式 (内存中的表示形式可能会有所不同)。
 
-![MAVLink v2 packet](../../assets/packets/packet_mavlink_v2.jpg)
+![MAVLink v2 数据包](../../assets/packets/packet_mavlink_v2.jpg)
 
 | 字节索引                                | C 版本                       | 内容                                | 值            | 说明                                                                     |
 | ----------------------------------- | -------------------------- | --------------------------------- | ------------ | ---------------------------------------------------------------------- |
@@ -70,7 +70,7 @@ Whatever language you are using, the resulting binary data will be the same:
 
 下面是 MAVLink 1 数据包的线外格式 (内存中的表示形式可能会有所不同)。
 
-![MAVLink v1 packet](../../assets/packets/packet_mavlink_v1.jpg)
+![MAVLink v1 数据包](../../assets/packets/packet_mavlink_v1.jpg)
 
 | 字节索引                              | C 版本                       | 内容                              | 值                 | 说明                                                              |
 | --------------------------------- | -------------------------- | ------------------------------- | ----------------- | --------------------------------------------------------------- |
@@ -157,11 +157,11 @@ MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减�
 
 如果您正在执行 MAVLink，您可以用两种方式获取此校验和： 你可以包含生成的主机，使用 `MAVLINK_MESSGE_CRCS` 获取每个信息类型的正确种子，或者你可以重新执行计算种子的代码。
 
-As MAVLink internally reorders the message fields according to their size to prevent word / halfword alignment issues (see [Data structure alignment](http://en.wikipedia.org/wiki/Data%20structure%20alignment) (Wikipedia) for further reference), and a wrongly implemented reordering potentially can cause inconsistencies as well, the `CRC_EXTRA` is calculated based on the over-the-air message layout rather than the XML order.
+由于 MAVLink 在内部根据消息字段大小重新排序消息字段以防止字/半字对齐问题（请参阅 [数据结构对齐](http://en.wikipedia.org/wiki/Data%20structure%20alignment)（维基百科）以供进一步参考），并且错误实现的重新排序可能也会导致不一致， ` CRC_EXTRA `是基于空中消息布局而不是 XML 顺序计算的。
 
-> **Note** [MAVLink 2 extension fields](../guide/define_xml_element.md#message_extensions) are not included in the `CRC_EXTRA` calculation.
+> **Note** [MAVLink 2 extension fields](../guide/define_xml_element.md#message_extensions) 不包括在 `CRC_EXTRA` 计算中。
 
-This is the Python code that calculates the `CRC_EXTRA` seed:
+这是计算 `CRC_EXTRA` 种子的 python 代码:
 
 ```python
 def message_checksum(msg):
@@ -184,10 +184,10 @@ def message_checksum(msg):
 
 <!-- From https://github.com/mavlink/pymavlink/blob/master/generator/mavparse.py#L385 -->
 
-> **Note** This uses the same x25 checksum that is used at runtime. It calculates a CRC over the message name (such as “RAW_IMU”) followed by the type and name of each field, space separated. The order of the fields is the order they are sent over the wire. For arrays, the array length is also added.
+> **Note** 这将使用与运行时使用的相同的 x25 校验和。 它在消息名称 (如 "raw _ imu") 上计算 crc, 后面跟每个字段的类型和名称, 空格分隔。 字段的顺序是它们通过电线发送的顺序。 对于数组, 还将添加数组长度。
 
-## Checksum {#checksum}
+## 校验和 {#checksum}
 
-The packet format includes a 2-byte CRC to allow detection of message corruption. The checksum is the same as used in ITU X.25 and SAE AS-4 standards ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)), documented in [SAE AS5669A](http://www.sae.org/servlets/productDetail?PROD_TYP=STD&PROD_CD=AS5669A). See the MAVLink source code for [the documented C-implementation](https://github.com/mavlink/c_library_v2/blob/master/checksum.h).
+数据包格式包括一个2字节的 crc, 以允许检测消息损坏。 校验和与国际电联 x.25 和 sae as-4 标准 ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)) 中使用的校验和相同, 记录在 SAE AS5669A</1/1 > 中。 请参阅 MAVLink 源代码, 以了解 [the documented C-implementation](https://github.com/mavlink/c_library_v2/blob/master/checksum.h)。</p> 
 
-The CRC covers the whole message, excluding `magic` byte and the signature (if present). The CRC includes the [CRC_EXTRA](#crc_extra) byte, which is used to ensure that the sending and receiving systems share a common understanding of the message definition.
+CRC 涵盖整个消息，但不包括`magic` 字节和签字(如果存在)。 CRC 包括 [CRC_EXTRA](#crc_extra) 字节, 用于确保发送和接收系统对消息定义有共同的识别。
