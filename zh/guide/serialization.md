@@ -1,10 +1,10 @@
 # 包的序列化
 
-This topic provides detailed information about about MAVLink packet serialization, including the over-the-wire formats for MAVLink v1 and v2 packets, the ordering of fields in the message payload, and the CRC_EXTRA used for ensuring that the sender and reciever share a compatible message definition.
+本主题提供有关 MAVLink 数据包序列化、 (包括 MAVLink v1 和 v1 数据包的线格式)、 消息有效负载中字段的排序、和 CRC_EXTRA 用于确保发件人和收件人共享兼容的邮件定义。
 
-It is primarily intended for developers who are creating/maintaining a MAVLink generator
+主要是为正在创建/维护 MAVLink 生成器的开发者
 
-> **Tip** MAVLink users do not typically need to understand the serialization format, as encoding/decoding is handled by the MAVLink libraries.
+> **Tip** MAVLink 用户通常不需要理解序列化格式，因为编码/解码由 MAVLink 库处理。
 
 <!--
 ## MAVLink Serialization for MAVLink Users
@@ -39,29 +39,29 @@ Whatever language you are using, the resulting binary data will be the same:
 ```
 -->
 
-## Packet Format {#packet_format}
+## 数据包格式 {#packet_format}
 
-This section shows the serialized message format of MAVLink packets (the format is inspired by the [CAN](https://en.wikipedia.org/wiki/CAN_bus) and SAE AS-4 standards).
+本节显示 MAVLink 数据包的序列化消息格式(格式由[CAN](https://en.wikipedia.org/wiki/CAN_bus) 和 SAE AS-4 标准启发)。
 
-### MAVLink 2 Packet Format {#mavlink2_packet_format}
+### MAVLink 2 的数据包格式 {#mavlink2_packet_format}
 
-Below is the over-the-wire format for a [MAVLink 2](../guide/mavlink_2.md) packet (the in-memory representation might differ).
+下面是 [MAVLink 2 ](../guide/mavlink_2.md) 数据包的线外格式 (内存中的表示形式可能会有所不同)。
 
 ![MAVLink v2 packet](../../assets/packets/packet_mavlink_v2.jpg)
 
-| Byte Index                            | C version                  | Content                                     | Value        | Explanation                                                                                                                                                             |
-| ------------------------------------- | -------------------------- | ------------------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0                                     | `uint8_t magic`            | Packet start marker                         | 0xFD         | Protocol-specific start-of-text (STX) marker used to indicate the beginning of a new packet. Any system that does not understand protocol version will skip the packet. |
-| 1                                     | `uint8_t len`              | Payload length                              | 0 - 255      | Indicates length of the following `payload` section. This may be affected by [payload truncation](#payload_truncation).                                                 |
-| 2                                     | `uint8_t incompat_flags`   | [Incompatibility Flags](#incompat_flags)    |              | Flags that must be understood for MAVLink compatibility (implementation discards packet if it does not understand flag).                                                |
-| 3                                     | `uint8_t compat_flags`     | [Compatibility Flags](#compat_flags)        |              | Flags that can be ignored if not understood (implementation can still handle packet even if it does not understand flag).                                               |
-| 4                                     | `uint8_t seq`              | Packet sequence number                      | 0 - 255      | Used to detect packet loss. Components increment value for each message sent.                                                                                           |
-| 5                                     | `uint8_t sysid`            | System ID (sender)                          | 1 - 255      | ID of *system* (vehicle) sending the message. Used to differentiate systems on network.                                                                                 |
-| 6                                     | `uint8_t compid`           | Component ID (sender)                       | 0 - 255      | ID of *component* sending the message. Used to differentiate components in a *system* (e.g. autopilot and a camera).                                                    |
-| <span id="v2_msgid"></span>7 to 9       | `uint32_t msgid:24`        | Message ID (low, middle, high bytes)        | 0 - 16777215 | ID of *message type* in payload. Used to decode data back into message object.                                                                                          |
-| <span id="v2_payload"></span>10 to (n+10) | `uint8_t payload[max 255]` | [Payload](#payload)                         |              | Message data. Depends on message type (i.e. Message ID) and contents.                                                                                                   |
-| (n+11) to (n+12)                      | `uint16_t checksum`        | [Checksum](#checksum) (low byte, high byte) |              | X.25 CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte.                                                                                   |
-| (n+12) to (n+26)                      | `uint8_t signature[13]`    | [Signature](../guide/message_signing.md)    |              | (Optional) Signature to ensure the link is tamper-proof.                                                                                                                |
+| 字节索引                                  | C 版本                       | 内容                                          | 值            | 说明                                                                                                |
+| ------------------------------------- | -------------------------- | ------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------- |
+| 0                                     | `uint8_t magic`            | 数据包启动标记                                     | 0xFD         | 特定于协议的文本启动 (stx) 标记, 用于指示新数据包的开始。 任何不识别协议版本的系统都将跳过数据包。                                            |
+| 1                                     | `uint8_t len`              | 载荷长度                                        | 0 - 255      | 显示 `有效载荷`部分的长度。 这可能会受到 [payload truncation ](#payload_truncation) 的影响。                            |
+| 2                                     | `uint8_t incompat_flags`   | [不兼容标志](#incompat_flags)                    |              | 必须理解为 MAVLink 兼容性的标志 (如果不理解标志, 则实现丢弃数据包)。                                                         |
+| 3                                     | `uint8_t compat_flags`     | [兼容性标志](#compat_flags)                      |              | 如果不识别, 则可以忽略的标志 (即使不识别标志, 实现仍然可以处理数据包)。                                                           |
+| 4                                     | `uint8_t seq`              | 数据包序列号                                      | 0 - 255      | 用于检测数据包丢失。 组件为发送的每封消息递增值。                                                                         |
+| 5                                     | `uint8_t sysid`            | 系统 ID (发送者)                                 | 1 - 255      | 发送消息的 *system* (飞机) 的 ID。 用于区分网络上的系统。                                                             |
+| 6                                     | `uint8_t compid`           | 组件ID (发送者)                                  | 0 - 255      | *component* 发送消息ID。 Used to differentiate components in a *system* (e.g. autopilot and a camera). |
+| <span id="v2_msgid"></span>7 to 9       | `uint32_t msgid:24`        | Message ID (low, middle, high bytes)        | 0 - 16777215 | ID of *message type* in payload. Used to decode data back into message object.                    |
+| <span id="v2_payload"></span>10 to (n+10) | `uint8_t payload[max 255]` | [Payload](#payload)                         |              | Message data. Depends on message type (i.e. Message ID) and contents.                             |
+| (n+11) to (n+12)                      | `uint16_t checksum`        | [Checksum](#checksum) (low byte, high byte) |              | X.25 CRC for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte.             |
+| (n+12) to (n+26)                      | `uint8_t signature[13]`    | [Signature](../guide/message_signing.md)    |              | (Optional) Signature to ensure the link is tamper-proof.                                          |
 
 - The minimum packet length is 11 bytes for acknowledgment packets without payload.
 - The maximum packet length is 279 bytes for a signed message that uses the whole payload.
