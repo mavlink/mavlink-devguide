@@ -29,35 +29,35 @@
 
 ### 链接 ID {#link_ids}
 
-提供了8位链接ID，以确保签名系统对多链接 MAVLink 系统足够强大。 每个执行都应该指定一个链接ID，指定它启用的 MAVLink 通信渠道，并将此ID置于链接ID字段中。 The link ID is especially important where there may be a significant latency difference between different links (such as WiFi combined with a telemetry radio).
+提供了8位链接ID，以确保签名系统对多链接 MAVLink 系统足够强大。 每个执行都应该指定一个链接ID，指定它启用的 MAVLink 通信渠道，并将此ID置于链接ID字段中。 链接 ID 特别重要，因为不同链接（如WiFi，加上遥控无线电广播）之间可能存在巨大的潜在差异。
 
-The monotonically increasing [timestamp](#timestamp) rule is applied separately for each logical stream, where a stream is defined by the tuple:
+每条逻辑流都单独适用单一图形增加的 [timestamp](#timestamp) 规则，其中一个流是由图波定义的：
 
-    (SystemID,ComponentID,LinkID)
+    (系统 id、组件 id、链接 id)
     
 
-> **Note** For more information see [C Message Signing > Handling Link IDs](../mavgen_c/message_signing_c.md#handling_link_ids).
+> **Note** 有关详细信息, 请参阅 [C Message Signing > Handling Link IDs](../mavgen_c/message_signing_c.md#handling_link_ids)。
 
-### Signature {#signature}
+### 签名 {#signature}
 
-The 48 bit (6 byte) signature is the first 48 bits of a SHA-256 hash of the complete packet (without the signature, but including the timestamp) appended to the [secret key](#secret_key). The secret key is 32 bytes of binary data stored on both ends of a MAVLink channel (i.e. an autopilot and a ground station or MAVLink API).
+48位(6byte) 签名是 SHA-256 完整包的第48位(无签名，但包括时间戳)，附在[秘密密钥](#secret_key)上。 密钥是 MAVLink 通道（即自动试验、地面站或 MAVLink API）两个终端储存的二进制数据的32字节。
 
-This is shown below, where `+` represents concatenation and `sha256_48()` is a sha256 implementation which returns the first 48 bits of the normal sha256 output:
+这如下所示, 其中 ` + ` 表示串联, `sha256_48()` 是一个 sha256 实现, 它返回正常 sha256 输出的前 48位:
 
     signature = sha256_48(secret_key + header + payload + CRC + link-ID + timestamp)
     
 
-## Timestamp Handling {#timestamp}
+## 时间戳处理 {#timestamp}
 
-The timestamp is a 48 bit number with units of 10 microseconds since 1st January 2015 GMT. For systems where the time since 1/1/1970 is available (the unix epoch) you can use an offset in seconds of 1420070400.
+时间戳是48位，从2015年1月1日起，单位为10微秒。 对于1/1/1970年以来可用的系统（unexpoch），你可以在 14200004 秒内使用抵消。
 
-> **Note** This is a loose definition, as the various update mechanisms detailed below may result in the timestamp being significantly different from actual GMT time.
+> **Note** 这是一个松散的定义, 因为下面详细介绍的各种更新机制可能会导致时间戳与实际 GMT 时间有显著差异。
 
-All timestamps generated must be at least 1 more than the previous timestamp sent in the same session for the same link/`(SystemID, ComponentID, LinkID)` tuple. The timestamp may get ahead of GMT time if there is a burst of packets at a rate of more than 100 thousand packets per second.
+生成的所有时间戳必须至少比同一会话中为同一链接 `(SystemID、组件 id、LinkID)` 元组发送的上一个时间戳多1个时间戳。 如果数据包以每秒100 000多包的速度破裂，时间戳可能提前 GMT 时间。
 
-A MAVLink-enabled device may not know the current GMT time, for example if it does not have a reliable time source, or if it has just booted and not yet obtained the time from GPS or some other system.
+MAVLink 启用的设备可能不知道当前的 GMT 时间，例如，如果没有可靠的时间源，或者，如果它刚刚启动，并且尚未从GPS 或其他系统中获得时间。
 
-Systems should implement the following rules to obtain a reliable timestamp:
+系统应当执行以下规则，以获得可靠的时间戳：
 
 * The current timestamp should be stored regularly in persistent storage (ideally at least once a minute)
 * The timestamp used on startup should be the maximum of the timestamp implied by the system clock and the stored timestamp
