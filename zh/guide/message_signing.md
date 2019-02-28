@@ -11,25 +11,25 @@
 
 ## 帧格式
 
-For a signed packet the **0x01** bit of the [incompatibility flag field](../guide/mavlink_2.md#incompat_flags) is set true and an additional 13 bytes of "signature" data appended to the packet. The signed packet format is shown below.
+对于已签名的数据包, [incompatibility flag field](../guide/mavlink_2.md#incompat_flags) 的 **0x01** 位设置为 true, 并在数据包中附加另外13个字节的 "签名" 数据。 签名的数据包格式如下。
 
 ![MAVLink 2 Signed](../../assets/packets/packet_mavlink_v2_signing.png)
 
-> **Note** The [incompatibility flags](../guide/mavlink_2.md#incompat_flags) in the packet header are used to indicate that the MAVLink library must reject the packet if it does not understand or cannot handle the flag. In other words, a MAVLink library that does not support signing must drop signed packets. The C library uses [MAVLINK_IFLAG_SIGNED](../guide/mavlink_2.md#MAVLINK_IFLAG_SIGNED) to represent the "supports message signing" bit.
+> **Note** 数据包标头中的 [incompatibility 标志 ](../guide/mavlink_2.md#incompat_flags) 用于指示如果 MAVLink 不识别或无法处理标志, 则必须拒绝数据包。 换句话说, 不支持签名的 MAVLink 库必须丢弃签名的数据包。 C 库使用 [MAVLINK_IFLAG_SIGNED](../guide/mavlink_2.md#MAVLINK_IFLAG_SIGNED) 表示 "支持消息签名" 位。
 
-The 13 bytes of the signature are:
+签字的13字节为：
 
-| Data                               | Description                                                                                                                                                                                                                                                                                 |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [linkID](#link_ids) (8&nbsp;bits)  | ID of link on which packet is sent. Normally this is the same as the *channel*.                                                                                                                                                                                                             |
-| [timestamp](#timestamps) (48 bits) | Timestamp in 10 microsecond units since 1st January 2015 GMT time. This *must* monotonically increase for every message on a particular [link](#link_ids). Note that means the timestamp may get ahead of the actual time if the packet rate averages more than 100,000 packets per second. |
-| [signature](#signature) (48 bits)  | A 48 bit signature for the packet, based on the complete packet, timestamp, and secret key.                                                                                                                                                                                                 |
+| 数据                            | 描述                                                                                                    |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------- |
+| [linkID](#link_ids)(8&nbsp;位) | 发送数据包的链接ID。 通常与*channel*相同。                                                                           |
+| [时间戳](#timestamps)(48位)       | 2015年1月1日GMT时间以来的10个微秒时间戳。 这个 *必须* 单步增加每个消息 [链接](#link_ids)。 请注意，如果数据包平均每秒100,000多个数据包，那么时间戳可能早于实际时间。 |
+| [签名](#signature)(48位)         | 基于完整的数据包、时间戳和秘密密钥，数据包有48位签名。                                                                          |
 
-See below for more information about the fields.
+见下文关于字段的更多信息。
 
-### Link IDs {#link_ids}
+### 链接 ID {#link_ids}
 
-The 8 bit link ID is provided to ensure that the signature system is robust for multi-link MAVLink systems. Each implementation should assign a link ID to each of the MAVLink communication channels it has enabled and should put this ID in the link ID field. The link ID is especially important where there may be a significant latency difference between different links (such as WiFi combined with a telemetry radio).
+提供了8位链接ID，以确保签名系统对多链接 MAVLink 系统足够强大。 每个执行都应该指定一个链接ID，指定它启用的 MAVLink 通信渠道，并将此ID置于链接ID字段中。 The link ID is especially important where there may be a significant latency difference between different links (such as WiFi combined with a telemetry radio).
 
 The monotonically increasing [timestamp](#timestamp) rule is applied separately for each logical stream, where a stream is defined by the tuple:
 
