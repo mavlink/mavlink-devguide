@@ -1,15 +1,15 @@
 # 消息签名 (身份验证)
 
-[MAVLink 2](../guide/mavlink_2.md) adds support for message signing, which allows a MAVLink system to verify that messages originate from a trusted source.
+[MAVLink 2](../guide/mavlink_2.md) 添加了对消息签名的支持, 允许 MAVLink 系统验证消息是否来自受信任的源。
 
-This topic provides general overview of message signing, which will be useful both for developers using existing MAVLink libraries and for writers of new MAVLink code generators. It explains how a system can determine if a message is signed and whether the signature is valid, how to allow unsigned messages to be accepted, and how to create and share the *secret* used to create the signature.
+本主题提供消息签名的概述, 这对于使用现有 MAVLink 库的开发人员和新的 MAVLink 代码生成器的编写者都很有用。 它解释了系统如何确定报文是否已签名、签名是否有效、如何允许接受未签名的报文以及如何创建和共享用于创建签名的 *secret*。
 
-More detailed information for developers using existing MAVLink libraries can be found here:
+有关使用现有 mavlink 库的开发人员的更多详细信息, 请参见:
 
-* [C Message Signing](../mavgen_c/message_signing_c.md) (mavgen)
-* [Pymavlink Message Signing](../mavgen_python/README.md#message_signing) (mavgen) <!-- Others?  -->
+* [C 消息签名](../mavgen_c/message_signing_c.md)(mavgen)
+* [Pymavlink 消息签名](../mavgen_python/README.md#message_signing)(mavgen) <!-- Others?  -->
 
-## Frame Format
+## 帧格式
 
 For a signed packet the **0x01** bit of the [incompatibility flag field](../guide/mavlink_2.md#incompat_flags) is set true and an additional 13 bytes of "signature" data appended to the packet. The signed packet format is shown below.
 
