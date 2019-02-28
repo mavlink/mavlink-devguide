@@ -59,83 +59,84 @@ MAVLink 启用的设备可能不知道当前的 GMT 时间，例如，如果没�
 
 系统应当执行以下规则，以获得可靠的时间戳：
 
-* The current timestamp should be stored regularly in persistent storage (ideally at least once a minute)
-* The timestamp used on startup should be the maximum of the timestamp implied by the system clock and the stored timestamp
-* If the system does not have an RTC mechanism then it should update its timestamp when GPS lock is achieved. The maximum of the timestamp from the GPS and the stored timestamp should be used.
-* The timestamp should be incremented by one on each message sent from a particular link.
-* When a correctly signed message is decoded the timestamp should be replaced by the timestamp of the incoming message if that timestamp is greater than the current timestamp. > **Note** The link timestamp must never be updated with the timestamp from an incorrectly signed packet (even if these are being [accepted](#accepting_incorrectly_signed_packets)).
-* The timestamp on incoming signed messages should be checked against the previous timestamp for the incoming `(linkID,srcSystem,SrcComponent)` tuple and the message rejected if it is smaller.
-* If there is no previous message with the given `(linkID,srcSystem,SrcComponent)` then the timestamp should be accepted if it not more than 6 million (one minute) behind the current timestamp.
-
-> **Tip** For devices that store the timestamp in persistent storage, implementations can prevent race conditions by storing two timestamp values. On write the smaller of the two values should be updated. On read the larger of the two values should be used.
-
-## Accepting Signed Packets {#accept_signed_packets}
-
-When a signed packet arrives it should be discarded if the:
-
-* Timestamp is older than the previous packet from the same logical stream - where a logical stream is defined as the sequence of MAVLink packets with the same (`SystemID`, `ComponentID`, `LinkID`) tuple.
-* Computed 48 bit signature does not match the signature included in the packet. 
-* The timestamp is more than 1 minute (6,000,000) behind the local system’s timestamp.
-
-## Accepting Unsigned Packets {#accepting_unsigned_packets}
-
-MAVLink libraries should provide a mechanism that allows a system to conditionally accept *unsigned* packets.
-
-The rules for accepting these packets will be implementation specific, but could be based on a combination of a parameter setting, transport type, message type, (in)compatibility flags etc.
-
-> **Note** All packets that do not meet the system-specific unsigned packet acceptance rules must be rejected (otherwise there is no benefit gained from signing/authentication).
-
-Some suggestions for when to accept unsigned packets:
-
-* Accept all unsigned packets based on a system-specific parameter.
-* Accept all unsigned packets if the connection is over a "secure channel" (e.g. local USB cable or local wired Ethernet cable).
-* `RADIO_STATUS` packets are always accepted without signing (to make life easier for telemetry radios).
-* Accept all unsigned packets when in an "unsigned mode" (perhaps triggered by a hardware button pressed on boot).
-* Accept all unsigned packets until a signed packet is received (unconditionally), then move to the more restricted signing rules above.
-
-## Accepting Incorrectly Signed Packets {#accepting_incorrectly_signed_packets}
-
-MAVLink libraries should provide a mechanism that allows a system to conditionally accept incorrectly signed packets.
-
-This feature might be useful for finding a lost vehicle with a corrupted secret key (the GCS could choose to still display position information, albeit ideally with a different "untrusted" icon).
-
-> **Note** A system that is accepting incorrectly signed packets should provide a highly conspicuous indication that the connection is *unsafe*/*insecure*. Malformed signed packets indicate a bad configuration, transport failure, protocol failure, or hostile manipulation.
-
-## Secret Key Management {#secret_key}
-
-A secret key is 32 bytes of binary data that are used to create message signatures that can be verified by other holders of the key. The key should be created on one system in the network (often a GCS) and shared to other trusted devices via secure channels. Systems must have a shared key in order to be able to communicate.
-
-> **Note** The *mavgen* [C](../mavgen_c/message_signing_c.md) and [Python](../mavgen_python/README.md#message_signing) libraries support only one key per link. This is a choice of the library and not a limit/requirement of the protocol. An implementation might instead store a pool of keys, and/or manage keys on a per-connection basis.
-
-The secret key should be stored in persistent storage, and must not be exposed via any publicly accessible communication protocol. In particular, the key must not be exposed in MAVLink parameters, MAVLink log files or dataflash log files that may be used for public log analysis.
-
-The method of generating the secret key is implementation dependent. For example, it could be generated by:
-
-* A user-entered string that is then run through SHA-256.
-* A random key generator.
-
-The secret key may be shared to other devices using the [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) message. The message should only ever be sent over a secure link (e.g. USB or wired Ethernet) as a direct message to each connected `system_id`/`component_id`. The receiving system must be set up to process the message and store the received secret key to the appropriate permanent storage.
-
-The same secure method can be used to both *set* and *reset* a system's key (reseting a key does not have to be "more secure" than setting it in the first place).
-
-The `SETUP_SIGNING` message should never be broadcast, and received `SETUP_SIGNING` messages must never be automatically forwarded to other active MAVLink devices/streams/channels. This is to avoid the case where a key received over a secure link (e.g. USB) is automatically forwarded to another system over an insecure link (e.g. Wifi).
-
-Autopilots that don't offer MAVLink over USB might create a module that can set the secret key from a command line interface (e.g. the NSH Shell).
-
-> **Tip** We recommend that GCS implementations should generate the secret key and share this with connected systems over a secure link (e.g. USB). The receiving system may be configured to ignore message signatures on the secure channel (i.e. accept all [signed](#accept_signed_packets), [unsigned](#accepting_unsigned_packets) or [incorrectly signed](#accepting_incorrectly_signed_packets) packets), so that it is possible to reset a key that has been lost or corrupted.
-
-## Logging
-
-In order to avoid leaking the secret key used for signing, systems should omit [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) messages from logs (or replace the secret with 32 0xFF bytes in the logged message).
-
-Similarly, signed packets should have the signature [incompatibility bit](../guide/mavlink_2.md#incompat_flags) cleared and the signature block removed before being put into telemetry log files. This makes it harder for potential attacker to collect large amounts of signature data with which to attack the system.
-
-## Further Information
-
-The [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) contains additional information, including:
-
-* Reasoning behind the design decisions.
-* Evaluation of security effectiveness, including resistance to replay and offline attacks.
-* Assumptions.
-
-> **Note** Much of this content is derived from the [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) (Google Doc).
+* 当前时间戳应定期储存在持久性储存中(最好至少每分钟一次)
+* 启动时使用的时间戳应该是系统时钟和存储时间戳所隐含的时间戳的最大值
+* 如果该系统没有一个 RTC 机制，则应当更新其在全球定位系统锁定时时的时间戳。 应该使用全球定位系统和存储时间戳的最大时间戳。
+* 从特定链接发送的每个消息中，时间戳应增加一个。
+* 当正确签名的信息被解码时，时间戳比当前时间戳高时，时间戳应替换。 > **Note<0> 链接的时间戳绝对不能来自错误签名的包（即使它们已经被 [accepted](#accepting_incorrectly_signed_packets)）</li> 
+    
+    * 收到的信息上的时间戳，应当与收到的 `(linkID,srcSystem,Srcontents)` 的输出时间戳进行检查，如果信息较小，则该消息被否决。
+    * 如果没有之前的信息与给定的 `(linkID,srcSystem,Srcontent)` 那么，如果时间戳不超过600万(1分钟)，则应接受时间戳。</ul> 
+    
+    > **Tip** For devices that store the timestamp in persistent storage, implementations can prevent race conditions by storing two timestamp values. On write the smaller of the two values should be updated. On read the larger of the two values should be used.
+    
+    ## Accepting Signed Packets {#accept_signed_packets}
+    
+    When a signed packet arrives it should be discarded if the:
+    
+    * Timestamp is older than the previous packet from the same logical stream - where a logical stream is defined as the sequence of MAVLink packets with the same (`SystemID`, `ComponentID`, `LinkID`) tuple.
+    * Computed 48 bit signature does not match the signature included in the packet. 
+    * The timestamp is more than 1 minute (6,000,000) behind the local system’s timestamp.
+    
+    ## Accepting Unsigned Packets {#accepting_unsigned_packets}
+    
+    MAVLink libraries should provide a mechanism that allows a system to conditionally accept *unsigned* packets.
+    
+    The rules for accepting these packets will be implementation specific, but could be based on a combination of a parameter setting, transport type, message type, (in)compatibility flags etc.
+    
+    > **Note** All packets that do not meet the system-specific unsigned packet acceptance rules must be rejected (otherwise there is no benefit gained from signing/authentication).
+    
+    Some suggestions for when to accept unsigned packets:
+    
+    * Accept all unsigned packets based on a system-specific parameter.
+    * Accept all unsigned packets if the connection is over a "secure channel" (e.g. local USB cable or local wired Ethernet cable).
+    * `RADIO_STATUS` packets are always accepted without signing (to make life easier for telemetry radios).
+    * Accept all unsigned packets when in an "unsigned mode" (perhaps triggered by a hardware button pressed on boot).
+    * Accept all unsigned packets until a signed packet is received (unconditionally), then move to the more restricted signing rules above.
+    
+    ## Accepting Incorrectly Signed Packets {#accepting_incorrectly_signed_packets}
+    
+    MAVLink libraries should provide a mechanism that allows a system to conditionally accept incorrectly signed packets.
+    
+    This feature might be useful for finding a lost vehicle with a corrupted secret key (the GCS could choose to still display position information, albeit ideally with a different "untrusted" icon).
+    
+    > **Note** A system that is accepting incorrectly signed packets should provide a highly conspicuous indication that the connection is *unsafe*/*insecure*. Malformed signed packets indicate a bad configuration, transport failure, protocol failure, or hostile manipulation.
+    
+    ## Secret Key Management {#secret_key}
+    
+    A secret key is 32 bytes of binary data that are used to create message signatures that can be verified by other holders of the key. The key should be created on one system in the network (often a GCS) and shared to other trusted devices via secure channels. Systems must have a shared key in order to be able to communicate.
+    
+    > **Note** The *mavgen* [C](../mavgen_c/message_signing_c.md) and [Python](../mavgen_python/README.md#message_signing) libraries support only one key per link. This is a choice of the library and not a limit/requirement of the protocol. An implementation might instead store a pool of keys, and/or manage keys on a per-connection basis.
+    
+    The secret key should be stored in persistent storage, and must not be exposed via any publicly accessible communication protocol. In particular, the key must not be exposed in MAVLink parameters, MAVLink log files or dataflash log files that may be used for public log analysis.
+    
+    The method of generating the secret key is implementation dependent. For example, it could be generated by:
+    
+    * A user-entered string that is then run through SHA-256.
+    * A random key generator.
+    
+    The secret key may be shared to other devices using the [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) message. The message should only ever be sent over a secure link (e.g. USB or wired Ethernet) as a direct message to each connected `system_id`/`component_id`. The receiving system must be set up to process the message and store the received secret key to the appropriate permanent storage.
+    
+    The same secure method can be used to both *set* and *reset* a system's key (reseting a key does not have to be "more secure" than setting it in the first place).
+    
+    The `SETUP_SIGNING` message should never be broadcast, and received `SETUP_SIGNING` messages must never be automatically forwarded to other active MAVLink devices/streams/channels. This is to avoid the case where a key received over a secure link (e.g. USB) is automatically forwarded to another system over an insecure link (e.g. Wifi).
+    
+    Autopilots that don't offer MAVLink over USB might create a module that can set the secret key from a command line interface (e.g. the NSH Shell).
+    
+    > **Tip** We recommend that GCS implementations should generate the secret key and share this with connected systems over a secure link (e.g. USB). The receiving system may be configured to ignore message signatures on the secure channel (i.e. accept all [signed](#accept_signed_packets), [unsigned](#accepting_unsigned_packets) or [incorrectly signed](#accepting_incorrectly_signed_packets) packets), so that it is possible to reset a key that has been lost or corrupted.
+    
+    ## Logging
+    
+    In order to avoid leaking the secret key used for signing, systems should omit [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) messages from logs (or replace the secret with 32 0xFF bytes in the logged message).
+    
+    Similarly, signed packets should have the signature [incompatibility bit](../guide/mavlink_2.md#incompat_flags) cleared and the signature block removed before being put into telemetry log files. This makes it harder for potential attacker to collect large amounts of signature data with which to attack the system.
+    
+    ## Further Information
+    
+    The [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) contains additional information, including:
+    
+    * Reasoning behind the design decisions.
+    * Evaluation of security effectiveness, including resistance to replay and offline attacks.
+    * Assumptions.
+    
+    > **Note** Much of this content is derived from the [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) (Google Doc).
