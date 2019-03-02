@@ -201,7 +201,7 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
 >   
 >   > **Tip** 在提出修改 **common.xml** 之前, 要检查主要利益相关者的代码库, 以确认影响。
 > 
-> It is possible to change the message and field descriptions without breaking binary compatibility. Care should still be taken to ensure that any changes that alter the way that the field is interpreted are agreed by stakeholders, and handled with proper version control.
+> 可以在不破坏二进制兼容性的情况下更改消息和字段说明。 仍然应注意确保任何改变字段解释方式的更改都得到利益攸关方的同意, 并在适当的版本控制下进行处理。
 > 
 > Messages are very rarely deleted, as this may break compatibility with legacy MAVLink 1 hardware that is unlikely to be updated to more recent versions.
 > 
