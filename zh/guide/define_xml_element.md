@@ -239,7 +239,7 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
 - 扩展字段是 [not reordered](../guide/serialization.md#field_reordering) 或在序列化消息时包含在 [CRC_EXTRA](../guide/serialization.md#crc_extra) 中。
 - 必须将新的扩展字段添加到消息定义的末尾 (对于扩展字段, 序列化顺序由 XML 定义顺序定义)。
 
-Otherwise the rules are the same; once added you cannot modify or remove fields. You can however continue to add new fields to the end of the message as long as you do not exceed the maximum field number or payload size limits.
+否则规则相同；添加后，你不能修改或删除字段。 但是, 只要不超过最大字段数或有效负载大小限制, 就可以继续向消息末尾添加新字段。
 
 <!-- A FEW NOTES
 
