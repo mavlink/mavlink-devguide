@@ -13,7 +13,7 @@
 
 对于已签名的数据包, [incompatibility flag field](../guide/mavlink_2.md#incompat_flags) 的 **0x01** 位设置为 true, 并在数据包中附加另外13个字节的 "签名" 数据。 签名的数据包格式如下。
 
-![MAVLink 2 Signed](../../assets/packets/packet_mavlink_v2_signing.png)
+![MAVLink 2 签名](../../assets/packets/packet_mavlink_v2_signing.png)
 
 > **Note** 数据包标头中的 [incompatibility 标志 ](../guide/mavlink_2.md#incompat_flags) 用于指示如果 MAVLink 不识别或无法处理标志, 则必须拒绝数据包。 换句话说, 不支持签名的 MAVLink 库必须丢弃签名的数据包。 C 库使用 [MAVLINK_IFLAG_SIGNED](../guide/mavlink_2.md#MAVLINK_IFLAG_SIGNED) 表示 "支持消息签名" 位。
 
@@ -129,14 +129,14 @@ MAVLink 启用的设备可能不知道当前的 GMT 时间，例如，如果没�
     
     为了避免泄露用于签名的密钥, 系统应省略日志中 [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) 消息 (或在记录的消息中将密钥替换为 32 个 0xFF 字节)。
     
-    Similarly, signed packets should have the signature [incompatibility bit](../guide/mavlink_2.md#incompat_flags) cleared and the signature block removed before being put into telemetry log files. This makes it harder for potential attacker to collect large amounts of signature data with which to attack the system.
+    同样，已签署的数据包应该将签名 [incompatibility bit](../guide/mavlink_2.md#incompat_flags) 清除，并在输入远程日志文件之前删除签名模块。 这使得潜在攻击者更难以收集大量签名数据来攻击系统。
     
-    ## Further Information
+    ## 更多信息
     
-    The [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) contains additional information, including:
+    [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) 包含额外信息，包括：
     
-    * Reasoning behind the design decisions.
-    * Evaluation of security effectiveness, including resistance to replay and offline attacks.
-    * Assumptions.
+    * 设计决定背后的原因。
+    * 评价安全效力，包括抵制重播和脱机攻击。
+    * 假设。
     
-    > **Note** Much of this content is derived from the [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) (Google Doc).
+    > **Note** 这些内容大部分来自 [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) (Google Doc)。
