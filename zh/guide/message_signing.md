@@ -75,28 +75,28 @@ MAVLink 启用的设备可能不知道当前的 GMT 时间，例如，如果没�
     当签名的数据包到达时, 如果出现以下情况, 则应将其丢弃:
     
     * 时间戳来自同一逻辑流的上一个数据包, 其中逻辑流被定义为具有相同 (`SystemID`、`ComponentID`、`LinkID`) 元组的 MAVLink 数据包的序列。
-    * Computed 48 bit signature does not match the signature included in the packet. 
-    * The timestamp is more than 1 minute (6,000,000) behind the local system’s timestamp.
+    * 计算的48位签名与数据包中包含的签名不匹配。 
+    * 时间戳在本地系统的时间戳后面超过 1分钟 (6, 000, 000)。
     
-    ## Accepting Unsigned Packets {#accepting_unsigned_packets}
+    ## 接受未签名包 {#accepting_unsigned_packets}
     
-    MAVLink libraries should provide a mechanism that allows a system to conditionally accept *unsigned* packets.
+    MAVLink 库应该提供一种机制, 允许系统有条件地接受 *unsigned* 数据包。
     
-    The rules for accepting these packets will be implementation specific, but could be based on a combination of a parameter setting, transport type, message type, (in)compatibility flags etc.
+    接受这些数据包的规则将是特定于实现的, 但可以基于参数设置、传输类型、消息类型、(in) 兼容性标志等的组合。
     
-    > **Note** All packets that do not meet the system-specific unsigned packet acceptance rules must be rejected (otherwise there is no benefit gained from signing/authentication).
+    > **Note** 所有不符合系统特定的未签名数据包接受规则的数据包都必须被拒绝 (否则将无法从登录/身份验证中获得任何好处)。
     
-    Some suggestions for when to accept unsigned packets:
+    关于何时接受未签名数据包的一些建议:
     
-    * Accept all unsigned packets based on a system-specific parameter.
-    * Accept all unsigned packets if the connection is over a "secure channel" (e.g. local USB cable or local wired Ethernet cable).
-    * `RADIO_STATUS` packets are always accepted without signing (to make life easier for telemetry radios).
-    * Accept all unsigned packets when in an "unsigned mode" (perhaps triggered by a hardware button pressed on boot).
-    * Accept all unsigned packets until a signed packet is received (unconditionally), then move to the more restricted signing rules above.
+    * 接受基于系统特定参数的所有未签名数据包。
+    * 如果连接是通过 "安全通道" (例如本地 usb 电缆或本地有线以太网电缆), 则接受所有未签名的数据包。
+    * `RADIO_STATUS` 数据包总是在不签名的情况下被接受 (以便使遥测数传的工作更轻松)。
+    * 在 "无签名模式" (可能由启动时按下的硬件按钮触发) 时接受所有未签名的数据包。
+    * 接受所有未签名的数据包, 直到 (无条件地) 收到已签名的数据包, 然后移动到上面更受限制的签名规则。
     
-    ## Accepting Incorrectly Signed Packets {#accepting_incorrectly_signed_packets}
+    ## 接受签名不正确的数据包 {#accepting_incorrectly_signed_packets}
     
-    MAVLink libraries should provide a mechanism that allows a system to conditionally accept incorrectly signed packets.
+    MAVLink 库应该提供一种机制, 允许系统有条件地接受签名不正确的数据包。
     
     This feature might be useful for finding a lost vehicle with a corrupted secret key (the GCS could choose to still display position information, albeit ideally with a different "untrusted" icon).
     
