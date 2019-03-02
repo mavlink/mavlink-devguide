@@ -34,11 +34,11 @@ python -m mavgenerate
 2. 选择输出路径(例如**mavlink/include**)。
 
 3. 选择目标生成编程语言。
-4. Select the target MAVLink protocol version (ideally 2.0) > **Caution** Generation will fail if the protocol is not [supported](../README.md#supported_languages) by the selected programming language.
-5. Optionally check *Validate* and/or *Validate Units* (if checked validates XML specifications).
-6. Click **Generate** to create the source files.
+4. 选择目标MAVLink协议版本(最好是2.0)>**注意**如果目标编程语言不[支持](../README.md#supported_languages)所选协议，则会生成失败。
+5. 可以选择是否检查*验证*和/或*验证单元*(如果选择是，则验证XML规范)。
+6. 点击**生成**按钮生成资源文件。
 
-## Mavgen (Command Line) {#mavgen}
+## Mavgen(命令行) {#mavgen}
 
 **mavgen.py** is a command-line tool for generating MAVLink libraries for different programming languages. After the `mavlink` directory has been added to the `PYTHONPATH`, it can be run by executing from the command line.
 
