@@ -119,15 +119,15 @@ MAVLink 启用的设备可能不知道当前的 GMT 时间，例如，如果没�
     
     同样的安全方法可以用于 *set* 和 *reset* 系统的密钥 (重新发送密钥不必比首先设置它 "更安全")。
     
-    The `SETUP_SIGNING` message should never be broadcast, and received `SETUP_SIGNING` messages must never be automatically forwarded to other active MAVLink devices/streams/channels. This is to avoid the case where a key received over a secure link (e.g. USB) is automatically forwarded to another system over an insecure link (e.g. Wifi).
+    不应广播 `SETUP_SIGNING` 消息, 接收到的 `SETUP_SIGNING` 消息不得自动转发到其他活动的 MAVLink 设备/流通道。 这是为了避免通过安全链接 (如 usb) 收到的密钥通过不安全的链接 (例如 wifi) 自动转发到另一个系统的情况。
     
-    Autopilots that don't offer MAVLink over USB might create a module that can set the secret key from a command line interface (e.g. the NSH Shell).
+    不通过 USB 提供 MAVLink 的自动驾驶仪可能会创建一个模块, 可以从命令行界面 (例如 nsh) 设置密钥。
     
-    > **Tip** We recommend that GCS implementations should generate the secret key and share this with connected systems over a secure link (e.g. USB). The receiving system may be configured to ignore message signatures on the secure channel (i.e. accept all [signed](#accept_signed_packets), [unsigned](#accepting_unsigned_packets) or [incorrectly signed](#accepting_incorrectly_signed_packets) packets), so that it is possible to reset a key that has been lost or corrupted.
+    > **Tip** 我们建议 GCS 实现生成密钥, 并通过安全链接 (例如 USB) 与连接的系统共享密钥。 可以将接收系统配置为忽略安全通道上的消息签名 (即接受所有 [signed](#accept_signed_packets)、[unsigned](#accepting_unsigned_packets) 或 [incorrectly signed](#accepting_incorrectly_signed_packets) 数据包), 以便可以重置已丢失或损坏的密钥。
     
-    ## Logging
+    ## 日志记录
     
-    In order to avoid leaking the secret key used for signing, systems should omit [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) messages from logs (or replace the secret with 32 0xFF bytes in the logged message).
+    为了避免泄露用于签名的密钥, 系统应省略日志中 [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) 消息 (或在记录的消息中将密钥替换为 32 个 0xFF 字节)。
     
     Similarly, signed packets should have the signature [incompatibility bit](../guide/mavlink_2.md#incompat_flags) cleared and the signature block removed before being put into telemetry log files. This makes it harder for potential attacker to collect large amounts of signature data with which to attack the system.
     
