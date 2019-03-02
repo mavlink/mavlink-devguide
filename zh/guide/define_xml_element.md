@@ -111,7 +111,7 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
 
 [Messages](../guide/xml_schema.md#messages) 用于在 MAVLink 系统之间发送数据(包括命令、信息和识别)。
 
-Every message has mandatory `id`, `name`, and `description` attributes. [Serialised packets](../guide/serialization.md#packet_format) 包括 `id` 在 [消息id](../guide/serialization.md#v1_msgid) 部分和 [有效载荷](../guide/serialization.md#v1_payload) 部分内信息数据编码格式。 `name` 一般用于生成编解码特殊消息类型的名称方法。 当收到消息时，MAVLink 库提取消息id，以确定特定消息，并且使用找到适当命名的方法来解码有效载荷。
+每条消息都具有必需的 `id`、`name` 和 `description` 属性。 [Serialised packets](../guide/serialization.md#packet_format) 包括 `id` 在 [消息id](../guide/serialization.md#v1_msgid) 部分和 [有效载荷](../guide/serialization.md#v1_payload) 部分内信息数据编码格式。 `name` 一般用于生成编解码特殊消息类型的名称方法。 当收到消息时，MAVLink 库提取消息id，以确定特定消息，并且使用找到适当命名的方法来解码有效载荷。
 
 一个典型的信息 ([SAFFLE_SET_ALLOWED_ARA](../messages/common.md#SAFETY_SET_ALLOWED_AREA)) 如下：
 
@@ -154,14 +154,14 @@ Every message has mandatory `id`, `name`, and `description` attributes. [Seriali
 - 字段 
   - 消息中必须具有唯一的 `name`。
   - *应该* 有一个描述。
-  - *should* use the `units` attribute rather than including units in the description. Each field should only have **one** or no units.
-  - *should* use the `enum` attribute where possible results are finite/well understood.
+  - *应该* 使用 `units` 属性, 而不是在描述中包括单位。 每个字段只能有 **一个** 或没有单位。
+  - *应该* 使用`enum` 属性，可能结果是有限的/很好的理解。
 
-> **Warning** You cannot rely on generators to fully test for compliance with the above rules. The *mavgen* code generator tests for duplicate message ids, duplicate field names and messages with more than 64 fields. It does not check for other issues (e.g. duplicate names, or over-size payloads). Other generators may provide better validation
+> **Warning** 您不能依赖生成器来完全测试是否符合上述规则。 *mavgen* 代码生成器测试重复的消息 id、重复的字段名称和具有64个以上字段的消息。 它不会检查其他问题 (例如重复的名称或过大的有效负载)。 其他生成器可能提供更好的验证
 
-#### Message Id Ranges {#message_id_ranges}
+#### 消息 id 范围 {#message_id_ranges}
 
-All messages within a particular generated library must have a unique ID - this is important because the `id` is used to determine the format of the message payload (i.e. what generated method can decode the message).
+特定生成的库中的所有消息都必须具有唯一的 id-这一点很重要, 因为 `id` 用于确定消息有效负载的格式 (即生成的方法可以解码消息)。
 
 For MAVLink 2, each dialect is allocated a specific range from which an id can be selected. This ensures that any dialect can include any other dialect (or common.xml) without clashes. It also means that messages can move from a dialect to common.xml without any code needing to change.
 
