@@ -44,7 +44,7 @@ python -m mavgenerate
 
 > **提示**这是[mavgenerate](#mavgenerate)所使用的后端。 下面的文档说明了这两种工具的所有选项。
 
-For example, to generate *MAVLink 2* C libraries for a dialect named **your_custom_dialect.xml**.
+举例来说，为*your_custom_dialect.xml*自定义消息生成**MAVLink 2**的C语言库。
 
 ```sh
 python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
