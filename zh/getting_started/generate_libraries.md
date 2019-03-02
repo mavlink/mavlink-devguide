@@ -9,7 +9,7 @@
 ## 先决条件
 
 1. 你必须已经[安装了MAVLink](../getting_started/installation.md)(包括工具和[XML消息定义](../messages/README.md))。
-2. If you are generating messages for a [custom dialect](../messages/README.md#dialects), copy the file(s) into the directory [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0). > **Note** *mavgen* can handle dialects that have relative paths for included XML files (e.g typically [common.xml](../messages/common.md)), but other generators may not. We recommend putting custom dialects in the same folder as the ones that come with the *mavlink/mavlink* repository.
+2. 如果你要生成[自定义消息](../messages/README.md#dialects)，请将文件复制到目录[message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0)文件夹中。 > **Note** *mavgen* can handle dialects that have relative paths for included XML files (e.g typically [common.xml](../messages/common.md)), but other generators may not. We recommend putting custom dialects in the same folder as the ones that come with the *mavlink/mavlink* repository.
 
 ## Mavenerate (GUI) {#mavgenerate}
 
