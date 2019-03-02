@@ -6,9 +6,9 @@
 
 本章主要介绍如何使用MAVLink项目中提供的两种代码生成器:[mavgenerate(图形用户界面)](#mavgenerate)和[mavgen(命令行)](#mavgen)(其他代码生成器可以查看与之相关的项目)。
 
-## Pre-requisites
+## 先决条件
 
-1. You must already have [Installed MAVLink](../getting_started/installation.md) (including both the tools below and [XML Message Definitions](../messages/README.md)).
+1. 你必须已经[安装了MAVLink](../getting_started/installation.md)(包括工具和[XML消息定义](../messages/README.md))。
 2. If you are generating messages for a [custom dialect](../messages/README.md#dialects), copy the file(s) into the directory [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0). > **Note** *mavgen* can handle dialects that have relative paths for included XML files (e.g typically [common.xml](../messages/common.md)), but other generators may not. We recommend putting custom dialects in the same folder as the ones that come with the *mavlink/mavlink* repository.
 
 ## Mavenerate (GUI) {#mavgenerate}
