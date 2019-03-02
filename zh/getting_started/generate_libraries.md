@@ -23,7 +23,7 @@
 python -m mavgenerate
 ```
 
-![mavgenerate UI](../../assets/mavgen/mavlink_generator.png)
+![mavgenerate 界面](../../assets/mavgen/mavlink_generator.png)
 
 代码生成器使用步骤：
 
@@ -73,8 +73,7 @@ python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated
         生成代码的语言[默认：Python]
     --wire-protocl{0.9,1.0,2.0}
         MAVLink协议版本 [默认：1.0]
-    --no-validate        不进行XML规范验证。 Can speed up code
-                            generation if XML files are known to be correct.
+    --no-validate        不进行XML规范验证。 如果已经确定XML文件是正确的，这样做有助于加快代码生成速度。
       --error-limit ERROR_LIMIT
-                            maximum number of validation errors to display
-      --strict-units        Perform validation of units attributes.
+        可以显示的最大验证错误数
+    --strict-units        执行单元属性的验证。
