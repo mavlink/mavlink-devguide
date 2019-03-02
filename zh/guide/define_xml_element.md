@@ -163,57 +163,57 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
 
 特定生成的库中的所有消息都必须具有唯一的 id-这一点很重要, 因为 `id` 用于确定消息有效负载的格式 (即生成的方法可以解码消息)。
 
-For MAVLink 2, each dialect is allocated a specific range from which an id can be selected. This ensures that any dialect can include any other dialect (or common.xml) without clashes. It also means that messages can move from a dialect to common.xml without any code needing to change.
+对于 MAVLink 2, 每个语支都被分配到一个特定的范围, 从中可以选择 id。 这可确保任何语支都可以包含任何其他语支 (或通用. xml), 而不会发生冲突。 这也意味着消息可以从语支移动到通用. xml, 而无需更改任何代码。
 
-When creating a new message you should select the next unused id for your dialect (after the last one defined in your target dialect file).
+创建新邮件时, 应为您的语支选择下一个未使用的 id (在目标语支文件中定义的最后一个 id 之后)。
 
-The allocated ranges are listed below.
+分配范围如下。
 
-| Dialect           | Range         |
+| 语支                | 范围            |
 | ----------------- | ------------- |
 | Common.xml        | 300 - 10000   |
 | uAvionix.xml      | 10001-10999   |
 | ArduPilotMega.xml | 11000 - 11999 |
 | icarous.xml       | 42000 - 42999 |
 
-> **Tip** If you are creating a new public dialect, [create an issue](https://github.com/mavlink/mavlink/issues/new) to request your own message id range. For private dialects, you can use whatever range you like.
+> **Tip** 如果要创建新的公共语支, [create an issue](https://github.com/mavlink/mavlink/issues/new) 以请求您自己的消息 Id 范围。 对于私有语支, 您可以使用任何您喜欢的版本。
 
-You should not create messages with ids in the "MAVLink 1" range (MAVLink v1 only has 8 bit message IDs, and hence can only support messages with ids 0 - 255). <!-- Note, historically ids 150 to 230 were reserved for dialects. People should not be creating messages in this range, so I'm not going to explain that-->
+不应在 "MAVLink 1" 范围内创建具有 id 的消息 (MAVLink v1 只有8位消息 id, 因此只能支持具有 id 0-255 的消息)。 <!-- Note, historically ids 150 to 230 were reserved for dialects. People should not be creating messages in this range, so I'm not going to explain that-->
 
-### Modifying a Message
+### 修改消息
 
-Changing the name or id of a message will make it incompatible with older versions of the generated library.
+更改消息的名称或 id 将使其与生成的库的旧版本不兼容。
 
-Adding or removing a field, or changing the name or type of a field, will make a message incompatible with older versions of the generated library (the generated message decoding method is hard coded with the field number, [order](../guide/serialization.md#crc_extra), type and position at build time - if these change, decoding will fail).
+添加或删除字段, 或更改字段的名称或类型, 将使消息与生成的库的旧版本不兼容 (生成的消息解码方法在生成时使用字段编号、[order](../guide/serialization.md#crc_extra)、类型和位置进行硬编码-如果这些变化, 解码将失败)。
 
-> **Tip** [Message Extensions](#message_extensions) (see below) allow you to add new fields to a MAVLink 2 message without breaking compatibility for a receiver that has not been updated. Note that you can only add messages, not modify or delete them using this mechanism.
-
-If a message needs to be changed in these ways then there are several options:
-
-- A new message can be created with the desired behaviour. At some point the old message may be marked as [deprecated](../guide/xml_schema.md#deprecated).
-- The message can be updated, and the dialect version number iterated.
-
-For either case, all users of the message will need to be updated with new client libraries.
-
-For a message in **common.xml** either change requires the agreement of major stakeholders
-
-- Create a PR and discuss in the MAVLink developer meeting.
-  
-  > **Tip** Before proposing changes to **common.xml** check the codebase of major stakeholder to confirm impact.
-
-It is possible to change the message and field descriptions without breaking binary compatibility. Care should still be taken to ensure that any changes that alter the way that the field is interpreted are agreed by stakeholders, and handled with proper version control.
-
-Messages are very rarely deleted, as this may break compatibility with legacy MAVLink 1 hardware that is unlikely to be updated to more recent versions.
-
-### Message Extensions (MAVLink 2) {#message_extensions}
-
-MAVLink 2 defines *extension fields*, which can be added to an existing message without breaking binary compatibility for receivers that have not been updated.
-
-<!-- add note here WHY you would use this:  -->
-
-Any field that is defined after the `<extensions>` tag in a message is an extension field. For example, the `OPTICAL_FLOW` has `flow_rate_x` and `flow_rate_y` fields that will only be send in MAVLink 2:
-
-```xml
+> **Tip** Message Extensions</1 >(见下文) 允许您向 MAVLink 2 消息添加新字段, 而不会破坏尚未更新的接收器的兼容性。 请注意, 您只能添加消息, 而不能使用此机制修改或删除它们。</p> </blockquote> 
+> 
+> If a message needs to be changed in these ways then there are several options:
+> 
+> - A new message can be created with the desired behaviour. At some point the old message may be marked as [deprecated](../guide/xml_schema.md#deprecated).
+> - The message can be updated, and the dialect version number iterated.
+> 
+> For either case, all users of the message will need to be updated with new client libraries.
+> 
+> For a message in **common.xml** either change requires the agreement of major stakeholders
+> 
+> - Create a PR and discuss in the MAVLink developer meeting.
+>   
+>   > **Tip** Before proposing changes to **common.xml** check the codebase of major stakeholder to confirm impact.
+> 
+> It is possible to change the message and field descriptions without breaking binary compatibility. Care should still be taken to ensure that any changes that alter the way that the field is interpreted are agreed by stakeholders, and handled with proper version control.
+> 
+> Messages are very rarely deleted, as this may break compatibility with legacy MAVLink 1 hardware that is unlikely to be updated to more recent versions.
+> 
+> ### Message Extensions (MAVLink 2) {#message_extensions}
+> 
+> MAVLink 2 defines *extension fields*, which can be added to an existing message without breaking binary compatibility for receivers that have not been updated.
+> 
+> <!-- add note here WHY you would use this:  -->
+> 
+> Any field that is defined after the `<extensions>` tag in a message is an extension field. For example, the `OPTICAL_FLOW` has `flow_rate_x` and `flow_rate_y` fields that will only be send in MAVLink 2:
+> 
+> ```xml
     <message id="100" name="OPTICAL_FLOW">
       <description>Optical flow from a flow sensor (e.g. optical mouse sensor)</description>
       <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX)</field>
