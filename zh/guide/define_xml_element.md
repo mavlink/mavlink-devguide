@@ -234,10 +234,10 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
 
 - 扩展字段可以添加任何 id 的信息，包括 MAVLink 1 消息id 范围内的信息。
 - 当消息使用 *MAVLink 1*协议编码时发送扩展字段。 
-- If received by an implementation that doesn't have the extensions fields then the fields will not be seen.
-- If sent by an implementation that doesn't have the extensions fields then the recipient will see zero values for the extensions fields.
-- Extension fields are [not reordered](../guide/serialization.md#field_reordering) or included in the [CRC_EXTRA](../guide/serialization.md#crc_extra) when messages are serialized.
-- New extension fields must be added to the end of the message definition (for extension fields the serialization order is defined by XML definition order).
+- 如果没有扩展字段的实施收到，则字段不会被看到。
+- 如果由没有扩展字段的实现发送, 则收件人将看到扩展字段的零值。
+- 扩展字段是 [not reordered](../guide/serialization.md#field_reordering) 或在序列化消息时包含在 [CRC_EXTRA](../guide/serialization.md#crc_extra) 中。
+- 必须将新的扩展字段添加到消息定义的末尾 (对于扩展字段, 序列化顺序由 XML 定义顺序定义)。
 
 Otherwise the rules are the same; once added you cannot modify or remove fields. You can however continue to add new fields to the end of the message as long as you do not exceed the maximum field number or payload size limits.
 
