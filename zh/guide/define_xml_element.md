@@ -8,7 +8,7 @@ MAVLink 枚举、消息、命令和其他元素是 [defined within xml 文件 ](
 
 <span></span>
 
-> **Tip** Before submitting a pull request for a change to a [dialect xml file](../messages/README.md), you should first [regenerate the dialect library](../getting_started/generate_libraries.md) *with validation enabled*, and then run the [./scripts/format_xml.sh](https://github.com/mavlink/mavlink/blob/master/scripts/format_xml.sh) script.
+> **Tip** 在提交对 [dialect xml fille](../messages/README.md) 进行更改的请求之前, 应首先 [regenerate the dialect library](../getting_started/generate_libraries.md) *with validation enabled*), 然后运行 [./scripts/format_xml.sh](https://github.com/mavlink/mavlink/blob/master/scripts/format_xml.sh) 脚本。
 
 ## 消息与命令
 
@@ -152,8 +152,8 @@ Every message has mandatory `id`, `name`, and `description` attributes. [Seriali
 - 可能没有超过64个字段。
 - &lt;wip/&gt; 标签可以添加到仍在测试的信息。
 - 字段 
-  - must have unique `name`s within a message.
-  - *should* have a description.
+  - 消息中必须具有唯一的 `name`。
+  - *应该* 有一个描述。
   - *should* use the `units` attribute rather than including units in the description. Each field should only have **one** or no units.
   - *should* use the `enum` attribute where possible results are finite/well understood.
 
