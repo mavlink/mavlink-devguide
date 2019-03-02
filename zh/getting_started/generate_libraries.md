@@ -4,7 +4,7 @@
 
 每个版本的MAVLink协议支持的代码生成器和编程语言类型都列在[支持语言表格](../README.md#supported_languages)中(包括C、C#、Java、Python等)。
 
-This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line) (other code generators are documented by their associated projects).
+本章主要介绍如何使用MAVLink项目中提供的两种代码生成器:[mavgenerate(图形用户界面)](#mavgenerate)和[mavgen(命令行)](#mavgen)(其他代码生成器可以查看与之相关的项目)。
 
 ## Pre-requisites
 
