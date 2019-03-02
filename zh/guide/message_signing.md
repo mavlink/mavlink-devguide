@@ -115,9 +115,9 @@ MAVLink 启用的设备可能不知道当前的 GMT 时间，例如，如果没�
     * 用户输入的字符串, 然后通过 sha-256 运行。
     * 随机密钥生成器。
     
-    The secret key may be shared to other devices using the [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) message. The message should only ever be sent over a secure link (e.g. USB or wired Ethernet) as a direct message to each connected `system_id`/`component_id`. The receiving system must be set up to process the message and store the received secret key to the appropriate permanent storage.
+    密钥可以使用 [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) 消息共享到其他设备。 该消息只能通过安全链接 (如 USB 或有线以太网) 发送, 作为直接消息发送到每个连接的 `system_id`/`component_id`。 必须设置接收系统来处理消息, 并将接收到的密钥存储到相应的永久存储中。
     
-    The same secure method can be used to both *set* and *reset* a system's key (reseting a key does not have to be "more secure" than setting it in the first place).
+    同样的安全方法可以用于 *set* 和 *reset* 系统的密钥 (重新发送密钥不必比首先设置它 "更安全")。
     
     The `SETUP_SIGNING` message should never be broadcast, and received `SETUP_SIGNING` messages must never be automatically forwarded to other active MAVLink devices/streams/channels. This is to avoid the case where a key received over a secure link (e.g. USB) is automatically forwarded to another system over an insecure link (e.g. Wifi).
     
