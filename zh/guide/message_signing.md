@@ -98,15 +98,15 @@ MAVLink 启用的设备可能不知道当前的 GMT 时间，例如，如果没�
     
     MAVLink 库应该提供一种机制, 允许系统有条件地接受签名不正确的数据包。
     
-    This feature might be useful for finding a lost vehicle with a corrupted secret key (the GCS could choose to still display position information, albeit ideally with a different "untrusted" icon).
+    此功能可能有助于查找带有损坏的密钥的失联飞机 (gcs 可以选择仍然显示位置信息, 尽管理想情况下使用不同的 "不受信任" 图标)。
     
-    > **Note** A system that is accepting incorrectly signed packets should provide a highly conspicuous indication that the connection is *unsafe*/*insecure*. Malformed signed packets indicate a bad configuration, transport failure, protocol failure, or hostile manipulation.
+    > **Note** 接受签名不正确的数据包的系统应提供一个非常明显的指示, 表明连接 *unsafe*/*insecure*。 格式错误的签名数据包表示配置错误、传输失败、协议失败或恶意操作。
     
-    ## Secret Key Management {#secret_key}
+    ## 密钥管理 {#secret_key}
     
-    A secret key is 32 bytes of binary data that are used to create message signatures that can be verified by other holders of the key. The key should be created on one system in the network (often a GCS) and shared to other trusted devices via secure channels. Systems must have a shared key in order to be able to communicate.
+    密钥是32字节的二进制数据, 用于创建可由密钥的其他持有者验证的消息签名。 密钥应在网络中的一个系统 (通常是 GCS) 上创建, 并通过安全通道共享到其他受信任的设备。 系统必须具有共享密钥才能进行通信。
     
-    > **Note** The *mavgen* [C](../mavgen_c/message_signing_c.md) and [Python](../mavgen_python/README.md#message_signing) libraries support only one key per link. This is a choice of the library and not a limit/requirement of the protocol. An implementation might instead store a pool of keys, and/or manage keys on a per-connection basis.
+    > **Note** *mavgen* [C](../mavgen_c/message_signing_c.md) 和 [Python](../mavgen_python/README.md#message_signing) 库每个链接仅支持一个密钥。 This is a choice of the library and not a limit/requirement of the protocol. An implementation might instead store a pool of keys, and/or manage keys on a per-connection basis.
     
     The secret key should be stored in persistent storage, and must not be exposed via any publicly accessible communication protocol. In particular, the key must not be exposed in MAVLink parameters, MAVLink log files or dataflash log files that may be used for public log analysis.
     
