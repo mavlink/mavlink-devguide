@@ -68,13 +68,13 @@ MAVLink 启用的设备可能不知道当前的 GMT 时间，例如，如果没�
     * 收到的信息上的时间戳，应当与收到的 `(linkID,srcSystem,Srcontents)` 的输出时间戳进行检查，如果信息较小，则该消息被否决。
     * 如果没有之前的信息与给定的 `(linkID,srcSystem,Srcontent)` 那么，如果时间戳不超过600万(1分钟)，则应接受时间戳。</ul> 
     
-    > **Tip** For devices that store the timestamp in persistent storage, implementations can prevent race conditions by storing two timestamp values. On write the smaller of the two values should be updated. On read the larger of the two values should be used.
+    > **Tip** 对于在持久存储中存储时间戳的设备, 实现可以通过存储两个时间戳值来防止抢占条件。 在写入时, 应更新两个值中较小的值。 在读取时, 应使用两个值中较大的值。
     
-    ## Accepting Signed Packets {#accept_signed_packets}
+    ## 接受签名包 {#accept_signed_packets}
     
-    When a signed packet arrives it should be discarded if the:
+    当签名的数据包到达时, 如果出现以下情况, 则应将其丢弃:
     
-    * Timestamp is older than the previous packet from the same logical stream - where a logical stream is defined as the sequence of MAVLink packets with the same (`SystemID`, `ComponentID`, `LinkID`) tuple.
+    * 时间戳来自同一逻辑流的上一个数据包, 其中逻辑流被定义为具有相同 (`SystemID`、`ComponentID`、`LinkID`) 元组的 MAVLink 数据包的序列。
     * Computed 48 bit signature does not match the signature included in the packet. 
     * The timestamp is more than 1 minute (6,000,000) behind the local system’s timestamp.
     
