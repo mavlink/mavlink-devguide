@@ -56,25 +56,24 @@ python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated
 *mavgen*可以通过使用`-h`参数来查看所有语法和选项。(复制在下面)：
 
     usage: mavgen.py [-h] [-o OUTPUT]
-                     [--lang {C,CS,JavaScript,Python,WLua,ObjC,Swift,Java,C++11}]
-                     [--wire-protocol {0.9,1.0,2.0}] [--no-validate]
-                     [--error-limit ERROR_LIMIT] [--strict-units]
+                     [--lang {C, CS, JavaScript, Python, WLua, ObjC, Swift, Java, C++11}]
+                     [--wire -protocol {0.9,1.0,2.0}][--no-validate]
+                     [--error -limit ERROR_LIMIT][--strict-units]
                      XML [XML ...]
     
-    This tool generate implementations from MAVLink message definitions
+    该工具从MAVLink消息定义中生成库文件
     
-    positional arguments:
-      XML                   MAVLink definitions
+    位置参数：
+    XML            MAVLink定义
     
-    optional arguments:
-      -h, --help            show this help message and exit
-      -o OUTPUT, --output OUTPUT
-                            output directory.
-      --lang {C,CS,JavaScript,Python,WLua,ObjC,Swift,Java,C++11}
-                            language of generated code [default: Python]
-      --wire-protocol {0.9,1.0,2.0}
-                            MAVLink protocol version. [default: 1.0]
-      --no-validate         Do not perform XML validation. Can speed up code
+    可选参数：
+    -h, --help     显示帮助信息并且退出
+    -o OUTPUT, --output OUTPUT        输出路径
+      --lang{C,CS,JavaScript,Python,WLua,ObjC,Swift,Java,C++11}
+        生成代码的语言[默认：Python]
+    --wire-protocl{0.9,1.0,2.0}
+        MAVLink协议版本 [默认：1.0]
+    --no-validate        不进行XML规范验证。 Can speed up code
                             generation if XML files are known to be correct.
       --error-limit ERROR_LIMIT
                             maximum number of validation errors to display
