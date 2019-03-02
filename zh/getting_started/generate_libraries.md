@@ -1,8 +1,8 @@
 # 生成 MAVLink 库文件
 
-通过使用*代码生成工具*从[XML格式定义的消息](../messages/README.md)中生成不同编程语言使用的MAVLink库文件。
+通过使用[代码生成器](../messages/README.md)从*XML格式定义的消息*中生成不同编程语言使用的MAVLink库文件。
 
-每个版本的MAVLink协议支持的代码生成器和编程语言类型都列在支持语言表格中（包括C、C#、Java、Python等）。
+每个版本的MAVLink协议支持的代码生成器和编程语言类型都列在[支持语言表格](../README.md#supported_languages)中(包括C、C#、Java、Python等)。
 
 This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line) (other code generators are documented by their associated projects).
 
