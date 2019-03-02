@@ -29,11 +29,11 @@ python -m mavgenerate
 
 1. 选择目标XML文件(通常位于[mavlink/message_definitions/1.0](https://github.com/mavlink/mavlink/tree/master/message_definitions/1.0)文件夹)。
     
-    > **Note** If using a custom dialect, first copy it into the above directory (if the dialect is dependent on **common.xml** it must be located in the same directory).
+    > **注意**如果使用自定义文件，首先需要将其复制到上面的目录中(如果自定义文件依赖于**common.xml**，则必须确保两者位于同一目录中)。
 
-2. Choose an output directory (e.g. **mavlink/include**).
+2. 选择输出路径(例如**mavlink/include**)。
 
-3. Select the target output programming language.
+3. 选择目标生成编程语言。
 4. Select the target MAVLink protocol version (ideally 2.0) > **Caution** Generation will fail if the protocol is not [supported](../README.md#supported_languages) by the selected programming language.
 5. Optionally check *Validate* and/or *Validate Units* (if checked validates XML specifications).
 6. Click **Generate** to create the source files.
