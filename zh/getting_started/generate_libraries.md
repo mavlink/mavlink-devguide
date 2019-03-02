@@ -40,9 +40,9 @@ python -m mavgenerate
 
 ## Mavgen(命令行) {#mavgen}
 
-**mavgen.py** is a command-line tool for generating MAVLink libraries for different programming languages. After the `mavlink` directory has been added to the `PYTHONPATH`, it can be run by executing from the command line.
+**mavgen.py**是一个命令行工具，用于为不同编程语言生成MAVLink库。 将`mavlink`路径添加到`PYTHONPATH`后，可以通过命令行来运行它。
 
-> **Tip** This is the backend used by [mavgenerate](#mavgenerate). The documentation below explains all the options for both tools.
+> **提示**这是[mavgenerate](#mavgenerate)所使用的后端。 下面的文档说明了这两种工具的所有选项。
 
 For example, to generate *MAVLink 2* C libraries for a dialect named **your_custom_dialect.xml**.
 
