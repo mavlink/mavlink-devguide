@@ -188,18 +188,18 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
 
 > **Tip** Message Extensions</1 >(见下文) 允许您向 MAVLink 2 消息添加新字段, 而不会破坏尚未更新的接收器的兼容性。 请注意, 您只能添加消息, 而不能使用此机制修改或删除它们。</p> </blockquote> 
 > 
-> If a message needs to be changed in these ways then there are several options:
+> 如果需要通过这些方式更改消息，则有几个选项：
 > 
-> - A new message can be created with the desired behaviour. At some point the old message may be marked as [deprecated](../guide/xml_schema.md#deprecated).
-> - The message can be updated, and the dialect version number iterated.
+> - 可以用理想的行为创建一个新的消息。 在某些时候, 旧消息可能会被标记为 [deprecated](../guide/xml_schema.md#deprecated)。
+> - 可以更新消息, 并迭代语支版本号。
 > 
-> For either case, all users of the message will need to be updated with new client libraries.
+> 无论如何，消息的所有用户都需要与新的客户端库更新。
 > 
-> For a message in **common.xml** either change requires the agreement of major stakeholders
+> 在 **common.xml** 中的一个消息，要么更改，要么需要主要利益相关方的同意
 > 
-> - Create a PR and discuss in the MAVLink developer meeting.
+> - 在 MAVLink 开发者会议上创建 PR 和讨论。
 >   
->   > **Tip** Before proposing changes to **common.xml** check the codebase of major stakeholder to confirm impact.
+>   > **Tip** 在提出修改 **common.xml** 之前, 要检查主要利益相关者的代码库, 以确认影响。
 > 
 > It is possible to change the message and field descriptions without breaking binary compatibility. Care should still be taken to ensure that any changes that alter the way that the field is interpreted are agreed by stakeholders, and handled with proper version control.
 > 
