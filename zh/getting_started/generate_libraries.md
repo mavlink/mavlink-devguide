@@ -15,9 +15,9 @@
 
 **mavgenerate.py**是用Python语言编写的MAVLink的图形用户界面代码生成器。
 
-> **Note** *Mavgenerate* provides a GUI front end to the [mavgen](#mavgen) command line code generator, and supports the same [options](#mavgen_options).
+> **注意***Mavgenerate*为[mavgen](#mavgen)命令行代码生成器提供了一个图形用户界面前端，并支持相同的[选项](#mavgen_options)。
 
-The GUI can be launched from anywhere using Python's `-m` argument:
+可以使用Pythond的`-m`参数从任何地方打开这个图形用户界面。
 
 ```sh
 python -m mavgenerate
@@ -25,9 +25,9 @@ python -m mavgenerate
 
 ![mavgenerate UI](../../assets/mavgen/mavlink_generator.png)
 
-Generator Steps:
+代码生成器使用步骤：
 
-1. Choose the target XML file (typically in [mavlink/message_definitions/1.0](https://github.com/mavlink/mavlink/tree/master/message_definitions/1.0)).
+1. 选择目标XML文件(通常位于[mavlink/message_definitions/1.0](https://github.com/mavlink/mavlink/tree/master/message_definitions/1.0)文件夹)。
     
     > **Note** If using a custom dialect, first copy it into the above directory (if the dialect is dependent on **common.xml** it must be located in the same directory).
 
