@@ -50,10 +50,10 @@ python -m mavgenerate
 python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
 ```
 
-> **Note** The syntax for for generating Python modules is the same, except that the `--output` specifies a *filename* rather than a directory. <!-- https://github.com/ArduPilot/pymavlink/issues/203 -->
+> **注意**生成Python模块的语法是相同的，除了`--output`指定*文件名*而不是文件路径。 <!-- https://github.com/ArduPilot/pymavlink/issues/203 -->
 
 <span id="mavgen_options"></span>
-The full syntax and options can be output by running *mavgen* with the `-h` flag (reproduced below):
+*mavgen*可以通过使用`-h`参数来查看所有语法和选项。(复制在下面)：
 
     usage: mavgen.py [-h] [-o OUTPUT]
                      [--lang {C,CS,JavaScript,Python,WLua,ObjC,Swift,Java,C++11}]
