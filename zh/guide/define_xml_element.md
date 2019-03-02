@@ -203,15 +203,15 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
 > 
 > 可以在不破坏二进制兼容性的情况下更改消息和字段说明。 仍然应注意确保任何改变字段解释方式的更改都得到利益攸关方的同意, 并在适当的版本控制下进行处理。
 > 
-> Messages are very rarely deleted, as this may break compatibility with legacy MAVLink 1 hardware that is unlikely to be updated to more recent versions.
+> 消息很少被删除，因为这可能打破与 MAVLink 1 硬件的兼容性，这些硬件不可能更新到近期版本。
 > 
-> ### Message Extensions (MAVLink 2) {#message_extensions}
+> ### 消息扩展 (MAVLink 2) {#message_extensions}
 > 
-> MAVLink 2 defines *extension fields*, which can be added to an existing message without breaking binary compatibility for receivers that have not been updated.
+> MAVLink 2 定义 *extension fields*，可以添加到一个现有消息，同时不打破未更新接收器的二进制兼容性。
 > 
 > <!-- add note here WHY you would use this:  -->
 > 
-> Any field that is defined after the `<extensions>` tag in a message is an extension field. For example, the `OPTICAL_FLOW` has `flow_rate_x` and `flow_rate_y` fields that will only be send in MAVLink 2:
+> 在消息中的 `<extensions>` 标记之后定义的任何字段都是扩展字段。 例如, `OPTICAL_FLOW` 具有 `flow_rate_x` 和 `flow_rate_y` 字段, 这些字段将仅在 MAVLink 2 中发送:
 > 
 > ```xml
     <message id="100" name="OPTICAL_FLOW">
@@ -230,10 +230,10 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
     </message>
 ```
 
-The rules for extensions messages are:
+扩展消息的规则是：
 
-- Extension fields can be added messages with any id, including those in the MAVLink 1 message id range.
-- Extension fields are not sent when a message is encoded using the *MAVLink 1* protocol. 
+- 扩展字段可以添加任何 id 的信息，包括 MAVLink 1 消息id 范围内的信息。
+- 当消息使用 *MAVLink 1*协议编码时发送扩展字段。 
 - If received by an implementation that doesn't have the extensions fields then the fields will not be seen.
 - If sent by an implementation that doesn't have the extensions fields then the recipient will see zero values for the extensions fields.
 - Extension fields are [not reordered](../guide/serialization.md#field_reordering) or included in the [CRC_EXTRA](../guide/serialization.md#crc_extra) when messages are serialized.
