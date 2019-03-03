@@ -37,8 +37,8 @@
     
     > **或者** 你可以选择在一行中执行以下操作： ```git clone https://github.com/mavlink/mavlink.git --recursive```
 
-5. Set `PYTHONPATH` to the directory path containing your *mavlink* repository. 
-    * **Windows:** `set PYTHONPATH=C:\your_path_to_mavlink_clone`
+5. 设置环境变量`PYTHONPATH`包含你的*mavlink*仓库路径。 
+    * **Windows:**`set PYTHONPATH=C:\your_path_to_mavlink_clone`
     * **Linux:** `PYTHONPATH=your_path_to_mavlink_clone`
 
-Now you are ready to [Generate MAVLink Libraries](../getting_started/generate_libraries.md).
+现在你可以开始[生成MAVLink库](../getting_started/generate_libraries.md)。
