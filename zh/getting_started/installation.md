@@ -10,16 +10,16 @@
 
 * Python 2.7+ 或者 Python 3.3+
 * Python [future](http://python-future.org/)模块
-* (Optional) Python [TkInter](https://wiki.python.org/moin/TkInter) module (required to use the GUI tool).
-* `PYTHONPATH` environment variable must be set to the directory path containing the *mavlink* repository.
+* (可选) Python[Tklnter](https://wiki.python.org/moin/TkInter)模块(如果需要使用图形用户界面)。
+* 环境变量`PYTHONPATH`必须包含*mavlink*存储库的目录路径。
 
-## Installation Steps
+## 安装步骤
 
-The main installation steps are:
+主要安装步骤是：
 
-1. Install Python 2.7+ or 3.3+. 
-    * **Windows:** Download from [Python for Windows](https://www.python.org/downloads/)
-    * **Ubuntu Linux 16.04:** Python 2.7 and Python 3.0 are already present. If you are using Python3 you will need to install the *pip3* package manager: ```sudo apt-get install python3-pip```
+1. 安装Python 2.7+ 或 3.3+。 
+    * **Windows:**从[Python for Windows](https://www.python.org/downloads/)下载。
+    * **Ubuntu Linux 16.04:** Python 2.7 和 Python 3.0 已经安装。 If you are using Python3 you will need to install the *pip3* package manager: ```sudo apt-get install python3-pip```
 2. Install the *future* module: 
     * **Windows:** ```pip install future```
     * **Linux:** ```pip install --user future```
