@@ -1,15 +1,15 @@
 # 安装 MAVLink
 
-This topic explains how to install the [MAVLink toolchain](https://github.com/mavlink/mavlink), including both [XML message definitions](../messages/README.md) and the GUI/command line tools that use them to [Generate MAVLink Source Files](../getting_started/generate_libraries.md).
+本章主要说明如何安装[MAVLink工具链](https://github.com/mavlink/mavlink)，包括[XML消息定义](../messages/README.md)和用于[生成MAVLINK源文件](../getting_started/generate_libraries.md)的图形用户界面/命令行工具。
 
-> **Tip** You do not need to install or generate the source files if you are using the C programming language and a standard [dialect](../messages/README.md#dialects). Just get the [prebuilt libraries](../README.md#prebuilt_libraries) and then jump to [Using C Libraries](../mavgen_c/README.md).
+> **建议**如果你使用的是C编程语言和标准[方言](../messages/README.md#dialects)，则不需要安装或者生成源文件。 只需要获取[预构建的库](../README.md#prebuilt_libraries)然后跳转到[Using C Libraries](../mavgen_c/README.md)。
 
-## Prerequisites
+## 先决条件
 
-The requirements for using the *MAVLink tools* are:
+使用*MAVLink工具*的要求是：
 
-* Python 2.7+ or Python 3.3+
-* Python [future](http://python-future.org/) module
+* Python 2.7+ 或者 Python 3.3+
+* Python [future](http://python-future.org/)模块
 * (Optional) Python [TkInter](https://wiki.python.org/moin/TkInter) module (required to use the GUI tool).
 * `PYTHONPATH` environment variable must be set to the directory path containing the *mavlink* repository.
 
