@@ -19,23 +19,23 @@
 
 1. 安装Python 2.7+ 或 3.3+。 
     * **Windows:**从[Python for Windows](https://www.python.org/downloads/)下载。
-    * **Ubuntu Linux 16.04:** Python 2.7 和 Python 3.0 已经安装。 If you are using Python3 you will need to install the *pip3* package manager: ```sudo apt-get install python3-pip```
-2. Install the *future* module: 
+    * **Ubuntu Linux 16.04:** Python 2.7 和 Python 3.0 已经安装。 如果你使用的是Python3，则需要安装*pip3*安装包管理工具。 ```sudo apt-get install python3-pip```
+2. 安装*future* 模块： 
     * **Windows:** ```pip install future```
     * **Linux:** ```pip install --user future```
 
-3. (Optionally) Install TkInter
+3. (可选) 安装Tklnter
     
-    * **Windows:** Installed already as part of *Python for Windows*
-    * **Linux:** Enter the following terminal command: ```sudo apt-get install python-tk```
+    * **Windows:**已作为*Python for Windows*的一部分被安装。
+    * **Linux:** 输入下面的终端命令: ```sudo apt-get install python-tk```
 
-4. Clone the [mavlink repo](https://github.com/mavlink/mavlink) (or your fork) into a user-writable directory:
+4. 将[mavlink repo](https://github.com/mavlink/mavlink)(或你的fork) 克隆到一个用户可写目录中：
     
         git clone https://github.com/mavlink/mavlink.git
         git submodule update --init --recursive
         
     
-    > **Note** Alternatively you can do this in one line: ```git clone https://github.com/mavlink/mavlink.git --recursive```
+    > **或者** 你可以选择在一行中执行以下操作： ```git clone https://github.com/mavlink/mavlink.git --recursive```
 
 5. Set `PYTHONPATH` to the directory path containing your *mavlink* repository. 
     * **Windows:** `set PYTHONPATH=C:\your_path_to_mavlink_clone`
