@@ -6,7 +6,7 @@ MAVLink*通用*消息集定义在[common.xml](https://github.com/mavlink/mavlink
 
 这些定义涵盖了对大多数地面站和自驾仪有用的功能。 MAVLink兼容系统应该尽可能的使用这些定义(如果存在合适的消息)，而不是在[自定义消息](../messages/README.md)中去编写稍微不同的消息。
 
-This topic is a human-readable form of [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml).
+本章主要是将[common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml)文件以一种可读性更高的形式展示。
 
 <span></span>
 
