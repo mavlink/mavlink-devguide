@@ -1,6 +1,6 @@
-# Contributing to MAVLink
+# 为 mavlink 做贡献
 
-We follow the [Github flow](https://guides.github.com/introduction/flow/) development model. Contributions fall into two main categories: Design and micro-service changes include new features that come with a state machine and message specifications for a new type of interface \(examples: parameter or mission protocol\). These are major contributions requiring a lot of vetting and should come with a RFC pull request in <https://github.com/mavlink/rfcs>. Protocol specification and documentation changes are usually changes with less impact and can be directly raised as pull requests against this repository.
+我们遵循[Github 流](https://guides.github.com/introduction/flow/) 开发模式。 贡献分为两个主要方面: 设计和微服务变化包括状态机附带的新特征和新类型接口的消息规范 \ (示例: 参数或任务协议 \)。 这些都是需要大量审查的重大贡献, 应该有 rfc 的拉动请求, <https://github.com/mavlink/rfcs>。 协议规范和文档更改通常是影响较小的更改, 可以作为针对此存储库的拉请求直接引发。
 
 Below we explain the processes for contributing to each category and how to raise a pull request.
 
