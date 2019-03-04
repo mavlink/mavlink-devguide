@@ -2,9 +2,9 @@
 
 # MAVLINK通用消息集
 
-The MAVLink *common* message set is defined in [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml). It contains the *standard* definitions that are managed by the MAVLink project.
+MAVLink*通用*消息集定义在[common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml)中。 它包含MAVLink项目工程的*标准*定义。
 
-The definitions cover functionality that is considered useful to most ground control stations and autopilots. MAVLink-compatible systems are expected to use these definitions where possible (if an appropriate message exists) rather than rolling out variants in their own [dialects](../messages/README.md).
+这些定义涵盖了对大多数地面站和自驾仪有用的功能。 MAVLink兼容系统应该尽可能的使用这些定义(如果存在合适的消息)，而不是在[自定义消息](../messages/README.md)中去编写稍微不同的消息。
 
 This topic is a human-readable form of [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml).
 
