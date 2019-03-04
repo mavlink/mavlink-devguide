@@ -10,11 +10,11 @@ MAVLink*通用*消息集定义在[common.xml](https://github.com/mavlink/mavlink
 
 <span></span>
 
-> **Note** MAVLink 2 messages have an ID > 255 and are marked up using **(MAVLink 2)** in their description.
+> **注意**MAVLink 2有ID>255的消息，并且在其描述中使用**(MAVLink 2)**标示。
 
 <span id="mav2_extension_field"></span>
 
-> **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue. 
+> **注意**已添加到MAVLink 1消息中的MAVLink 2扩展字段显示为蓝色。 
 
 <style>
 td {
