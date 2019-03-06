@@ -65,7 +65,9 @@ $ gcc ... -I generated/include -I generated/include/common ...
 The C MAVLink library utilizes a "channel" metaphor to allow for simultaneous processing of multiple, independent MAVLink streams in the same program.
 All receiving and transmitting functions provided by this library require a channel, and it is important to use the correct channel for each operation.
 
-Up to 4 channels can be defined on MCU/ARM7 while up to 16 may be defined on Linux/Windows.
+By default up to 16 channels may be defined on Windows, Linux and macOS, and up to 4 channels may be define on other systems.
+Systems can specify a different maximum number of channels/comms buffers using `MAVLINK_COMM_NUM_BUFFERS` (for example, this might be reduced to 1 if running MAVLink on very memory constrained hardware).
+
 If only one MAVLink stream exists, channel 0 should be used by specifying the `MAVLINK_COMM_0` constant.
 
 
@@ -79,7 +81,7 @@ These steps are demonstrated below.
 
 ### Parsing Packets
 
-The `mavlink_parse_char()` convenience function ([mavlink_helpers.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h)) is used to parse incoming MAVLink data.
+The `mavlink_parse_char(...)` convenience function ([mavlink_helpers.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h)) is used to parse incoming MAVLink data.
 The function parses the data one byte at a time, returning 0 (`MAVLINK_FRAMING_INCOMPLETE`) as it progresses, and 1 (`MAVLINK_FRAMING_OK`) on successful decoding of a packet.
 The `r_mavlink_status` parameter is updated with the channel status/errors as decoding progresses (you can check `mavlink_status_t.msg_received` to get the current byte's decode status/error and `parse_statemavlink_status_t` for the current parse state).
 On successful decoding of a packet, the `r_message` argument is populated with an object representing the decoded packet.
@@ -162,8 +164,8 @@ The headers are named with a format including the message name (**mavlink\_msg\_
 
 > **Tip** Individual message definitions are pulled in when you call `#include <mavlink.h>`, so you don't need to include these separately.
 
-The main decoding function has the signature format `mavlink_msg_<message_name>_decode()`, and decodes the whole message into a C struct (with fields mapping to the original XML message definition).
-There are also separate decoder functions to get the values of individual fields.
+The most useful decoding function is named with the format **mavlink\_msg\_*message_name*\_decode()**, and extracts the whole payload into a C struct (with fields mapping to the original XML message definition).
+There are also separate decoder functions to just get the values of individual fields.
 
 For example, the common message [GLOBAL_POSITION_INT](../messages/common.md#GLOBAL_POSITION_INT) is generated to [common/mavlink_msg_global_position_int.h](https://github.com/mavlink/c_library_v2/blob/master/common/mavlink_msg_global_position_int.h),
 and contains the following definitions:
