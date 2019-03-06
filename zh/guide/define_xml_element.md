@@ -394,28 +394,28 @@ MAVLink 命令规则和其他的 [enums](#enums) 极其相同。 还有一些其
 
 ### 条目名称 {#command_names}
 
-As with other enums, enum entry names should be prefixed with the enum name (i.e. `MAV_CMD_`). In addition, there are some other "standard" prefixes which are used for common types of commands:
+与其他枚举一样, 枚举条目名称应以枚举名称 (即 `MAV_CMD_`) 作为前缀。 此外, 还有一些其他用于常见命令类型的 "标准" 前缀:
 
-- `MAV_CMD_NAV_`: `NAV` commands are used for navigation/movement commands (commands to go to a particular waypoint or move in a particular way).
-- `MAV_CMD_DO_`: `DO` commands are used for setting modes, changing altitude or speed etc.
-- `MAV_CMD_CONDITION_`: `CONDITION_` commands are used to define conditions before the mission state machine will move to the next item (e.g. a time after reaching a waypoint before taking a picture).
-- `MAV_CMD_REQUEST_`: For requesting information from a system.
+- `MAV_CMD_NAV_`: `NAV` 命令用于导航/移动命令 (以特定方式转到特定航点或移动的命令)。
+- `MAV_CMD_DO_`: `DO` 命令用于设置模式、改变高度或速度等。
+- `MAV_CMD_CONDITION_`: `CONDITION_` 命令用于定义任务状态机移动到下一个项目之前的条件 (例如, 在拍照前到达航点之后的一段时间)。
+- `MAV_CMD_REQUEST_`: 用于请求系统的信息。
 
-> **Tip** The rules for the above prefixes are flexible; some DO commands might reasonably be NAV commands. Ins some cases a request for information might be a `MAV_CMD_REQUEST_` and in others it might be a stand alone message.
+> **Tip** 上述前缀的规则是灵活的；有些 DO 命令可能是合理的 NAV 命令。 在某些情况下, 要求提供信息可能是一种 `MAV_CMD_REQUEST_`, 而在另一些情况下, 它可能是一条独立的消息。
 
-### Parameters (param) {#param}
+### 参数 (参数) {#param}
 
-Message data is encoded in the [param](../guide/xml_schema.md#param) values/attributes.
+消息数据在 [param](../guide/xml_schema.md#param) 值/属性中进行编码。
 
-#### Standard Mappings
+#### 标准映射
 
-Parameters (`params`) must have an index from 1 to 7.
+参数 (`params`) 必须具有1到7之间的索引。
 
-Where a command contains position information, this is always stored in: Param 5 (x / latitude), Param 6 (y / longitude), Param 7 (z, altitude). Whether the value is local (x,y,z) or global (latitude, longitude, altitude) depends on the command and the frame used (frame often defined in the parent message).
+如果命令包含位置信息，这总是存储在：参数5 (x/纬度)、参数6 (y/经度)、参数7 (z, 高度)。 该值是本地 (x, y, z) 还是全局 (纬度、经度、高度) 取决于命令和使用的帧 (通常在父消息中定义的帧)。
 
-#### Data types
+#### 数据类型
 
-The `param` data for index 1-4, 7 are always exchanged in a field with size `float`, while index 5, 6 may also be sent as an `int32` (depending on the message used). The implication is that index 5 and 6 should not be used for data that may need to be sent in a floating point value (like a `NaN`).
+`参数` 索引 1-4 的数据，7 总是在一个大小 `浮动`，而索引5，6也可作为`int 32`(视所使用的消息而定)。 这意味着不应使用指数5和6用于可能需要以浮动点值发送的数据（例如`NaN`）。
 
 <!-- 
 ArduPilot: 211, 212, 83, 42000-42005, 42424 (MAG_CAL) 42426, 42650
@@ -426,9 +426,9 @@ matrixpilot : 0
 Slugs - 10001 - 10015
 -->
 
-#### Reserved/Undefined Parameters {#reserved}
+#### 保留/未定义的参数 {#reserved}
 
-Many commands do not *need* seven (or any) `param` values. These unused parameters can be treated as *reserved*, allowing them to be reused later if the command needs to be extended.
+许多命令没有*需要* 7 (或任何) `参数` 值。 这些未使用的参数可以被视为 *reserved*, 允许在以后需要扩展命令时重复使用这些参数。
 
 A reserved `param` **must** always be sent with a (default) value of *either* `0` or `NaN` (which will be interpreted by recipient as "no action" or "not supported"). If the param is reused the original default value must still mean "no action", so that an updated system can still interact with a system that has not been updated.
 
