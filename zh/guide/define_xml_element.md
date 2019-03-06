@@ -272,9 +272,9 @@ Open questions:
 
 [Enums](../guide/xml_schema.md#enum) 用于定义可用作消息中的选项的命名值, 例如, 用于表示错误、状态或模式。
 
-每个枚举都具有必需的 `name` 属性, 并且可能包含支持的值的多个 `entry` 元素 (具有枚举唯一名称)。 The *same* `enum` may be declared in **common.xml** and multiple dialects. The generated library will merge the entry values, and should report an error if there are any duplicate names.
+每个枚举都具有必需的 `name` 属性, 并且可能包含支持的值的多个 `entry` 元素 (具有枚举唯一名称)。 *相同* 的 `enum` 可以用 **common.xml** 和多种语支声明。 生成的库将合并条目值, 如果有任何重复的名称, 则应报告错误。
 
-A typical enum ([LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE)) is shown below:
+典型的枚举 ([LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE)) 如下所示:
 
 ```xml
 <enum name="LANDING_TARGET_TYPE">
