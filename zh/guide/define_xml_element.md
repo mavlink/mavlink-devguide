@@ -430,17 +430,18 @@ Slugs - 10001 - 10015
 
 许多命令没有*需要* 7 (或任何) `参数` 值。 这些未使用的参数可以被视为 *reserved*, 允许在以后需要扩展命令时重复使用这些参数。
 
-A reserved `param` **must** always be sent with a (default) value of *either* `0` or `NaN` (which will be interpreted by recipient as "no action" or "not supported"). If the param is reused the original default value must still mean "no action", so that an updated system can still interact with a system that has not been updated.
+保留的 `param` **must** 始终以默认值为 `0` 或 `NaN` (这会被接收者解释为 "无操作" 或 "不受支持") 发送。 如果重复使用, 原始默认值仍然必须表示 "无操作", 以便更新后的系统仍然可以与尚未更新的系统进行交互。
 
-> **Note** Unfortunately this means that a reserved `param` must have its default value decided when the command is declared! The default value cannot later be changed from `NaN` to `0` (or visa versa) without potential compatibility issues.
+> **Note** 不幸的是, 这意味着保留的 `param` 必须在声明命令时决定其默认值! 默认值以后不能从 `NaN` 更改为 `0` (或者签证反之亦然), 而不会出现潜在的兼容性问题。
 
-To declare a `param` as `reserved` with `default` value of `NaN` you should use the following syntax.
+若要将 `param` 声明为具有 `NaN` `default` 值的 `reserved`, 应使用以下语法。
 
     <param index="3" reserved="True" default="NaN" />
     
 
-> **Warning** Params with index values `5` and `6` should not be given a `default` of `NaN` , because if these are sent in a `COMMAND_INT` or `MISSION_INT` these parameters are integers (and hence there is no way to represent an `NaN`).
+> **警告** 索引值`5` 和`6` 参数不应授予 `默认` 的 `NaN`，因为如果这些参数在 `COMMAN_INT` 或 `指示器` 或 <MMINSION_INT</code> 这些参数是集成器 (因此没有代表`导航</1>)。</p>
+</blockquote>
 
-To declare a param as `reserved` with `default` value of `0` simply omit the `param` from the definition (this is the default - it is equivalent to: `<param index="3" reserved="True" default="0" />`).
-
-If you have just one unused `param` we recommend you simply don't declare it. If you have more than one, you may wish to explicitly define it with default of `NaN` so that you can extend your command later with ether default.
+<p>To declare a param as <code>reserved` with `default` value of `0` simply omit the `param` from the definition (this is the default - it is equivalent to: `<param index="3" reserved="True" default="0" />`).
+> 
+> 如果您仅有一个未使用的 `参数` 我们建议你不要声明。 如果您有一个以上的，您可能希望明确定义它，默认为 `NaN` 这样，您可以稍后将您的命令扩展到默认。
