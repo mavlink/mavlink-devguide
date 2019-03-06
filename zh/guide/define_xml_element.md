@@ -293,11 +293,11 @@ Open questions:
     </entry>
 ```
 
-### Creating an Enum
+### 创建枚举
 
-Enums must be declared between the `<enums></enums>` tags in **common.xml** and/or *dialect* files. Each enum is defined using `<enum name="SOME_NAME"> ... </enum>` tags (with a `name` attribute).
+在 **common.xml** 和/或 *dialect* 文件中的 `<enums></enums>` 标记之间必须声明枚举。 每个枚举都是使用 ` <enum name="SOME_NAME"> 定义的..。 </enum> ` 标记 (带有 `name` 属性)。
 
-> **Tip** There is no difference between enums defined in **common.xml** or *dialect* files (other than management of the namespace).
+> **Tip** **common.xml** 或 *dialect* 文件中定义的枚举之间没有区别 (除了管理命名空间)。
 
 The main rules for enums are:
 
