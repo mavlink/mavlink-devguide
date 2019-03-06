@@ -299,28 +299,28 @@ Open questions:
 
 > **Tip** **common.xml** 或 *dialect* 文件中定义的枚举之间没有区别 (除了管理命名空间)。
 
-The main rules for enums are:
+枚举的主要规则是:
 
-- Enums **must** include the mandatory `name` attribute. 
-  - Entries are merged for all enums that share the same `name`.
-- Enums *should* (very highly recommended) include a `description`. <!-- update if this becomes mandatory --> If enums are merged, only one description will be used (usually the first that is encountered).
+- 枚举 **must** 包括强制 `name` 属性。 
+  - 对于共享相同 `name` 的所有枚举, 将合并条目。
+- 枚举 *should* (非常强烈推荐) 包括 `description`。 <!-- update if this becomes mandatory --> If enums are merged, only one description will be used (usually the first that is encountered).
 
-- Enums *may* be marked as deprecated.
-- Enums *must* have at least one enum entry.
-- Entries: 
-  - *must* have a `name` attribute. 
-    - The `name` must be unique across all entries in the enum.
-    - By *convention*, the `name` should be prefixed with the enum name (e.g. enum `LANDING_TARGET_TYPE` has entry `LANDING_TARGET_TYPE_LIGHT_BEACON`).
-  - *should* have a `value` attribute, and if assigned this must be unique within the (merged) enum. A value will be automatically created for the generated library if not assigned, but this is not recommended.
-  - *should* (very highly recommended) include a `description` element. 
-  - may represent bitmasks, in which case values will increase by a power of 2.
-  - *may* be marked as deprecated.
+- 枚举 *may* 标记为已弃用。
+- 枚举 *must* 至少有一个枚举项。
+- 条目： 
+  - *必须* 具有 `name` 属性。 
+    - `name` 在枚举中的所有条目中必须是唯一的。
+    - 通过 *convention*, `name` 应以枚举名称 (例如枚举 `LANDING_TARGET_TYPE` 具有条目 `LANDING_TARGET_TYPE_LIGHT_BEACON`) 作为前缀。
+  - *should* 具有 `value` 属性, 如果分配了该属性, 则在 (合并) 枚举中必须是唯一的。 如果未分配, 将自动为生成的库创建一个值, 但不建议这样做。
+  - *should*(非常强烈建议) 包括 `description` 元素。 
+  - 可能表示位掩码, 在这种情况下, 值将增加2。
+  - *may* 标记为已弃用。
 
-> **Warning** You cannot rely on specific generators to fully test for compliance with the above rules. *mavgen* tests for duplicate names in enums, duplicate names for (merged) enum entries, duplicate values for enum entries.
+> **Warning** 您不能依赖特定的生成器来完全测试是否符合上述规则。 *mavgen* 在列表中重复名称测试，重复 (合并) 枚举条目的名字，重复数字。
 
-### Modifying an Enum
+### 修改 Enum
 
-Changing the name or removing an enum *will* make any messages that use the enum incompatible with older versions of the generated library. Similarly, changing an enum entry `name` or `value`, or removing an enum entry, *will* make messages that use the enum incompatible with older versions of the generated library.
+更改名称或删除 *将会* 发送任何使用与生成的图书馆旧版本不符的清单消息。 同样，更改 `名称` 或 `值`，或删除枚举条目，*将会* 发送信息，以使用与生成的图书馆的老版本不一致的。
 
 Care must be taken when adding a new enum entry/value as this *may* make the generated library incompatible:
 
