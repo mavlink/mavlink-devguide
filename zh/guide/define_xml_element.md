@@ -369,30 +369,30 @@ MAVLink 命令定义为 [MAV_CMD](../messages/common.md#MAV_CMD) number。 它�
     </enum>
 ```
 
-MAVLink 命令规则和其他的 [enums](#enums) 极其相同。 那里还有一些其他公约。
+MAVLink 命令规则和其他的 [enums](#enums) 极其相同。 还有一些其他公约。
 
 ### 命令 (条目) 值 {#command_values}
 
-All mission command entries *must* have a value (this is not enforced by the toolchain but, as for other enums, it reduces the chance of values unintentionally changing and breaking other systems).
+所有任务命令条目 *必须* 具有价值(这不是由工具链强制执行的，而是与其他清单一样，它减少了所有无意改变和拆散其他系统的值的机会)。
 
-Each dialect is allocated a specific range from which entry ids can be selected. This ensures that any dialect can include any commands from any other dialect (or **common.xml**) without clashes. It also means that messages can move from a dialect to **common.xml** without any code needing to change.
+对于 Mavlink 每个语支都被分配到一个特定的范围, 从中可以选择 id。 这可确保任何语支都可以包含任何其他语支 (或 **common. xml**), 而不会发生冲突。 它还意味着，消息可以从语支到 **common.xml** 而不需要修改的任何代码。
 
-Dialects can choose any values within their range for any message. However we recommend that all *related* commands be kept in the same block of ids, and if there are likely to be more similar commands in future then spaces might be left for new commands.
+语支可以在其范围内选择任何信息。 然而，我们建议，所有*related* 命令都保留在同一块ID中，如果今后可能有更类似的命令，那么空格可能会被留待新的命令。
 
-The allocated ranges are listed below.
+分配范围如下。
 
-| Dialect           | Range         |
+| 语支                | 范围            |
 | ----------------- | ------------- |
 | Common.xml        | 0 - 39999     |
 | asluav.xml        | 40001 - 41999 |
 | ArduPilotMega.xml | 42000 - 42999 |
 | slugs.xml         | 10001 - 11999 |
 
-> **Tip** If you are creating a new public dialect, [create an issue](https://github.com/mavlink/mavlink/issues/new) to request your own command id range. For private dialects, you can use whatever range you like.
+> **Tip** 如果要创建新的公共语支, [create an issue](https://github.com/mavlink/mavlink/issues/new) 以请求您自己的消息 Id 范围。 对于私有语支, 您可以使用任何您喜欢的版本。
 
-There are a number of common and ArduPilot commands that are outside the ranges (e.g. 16, 200, etc.). Generally you would only use these these ranges in order to give a new command an id that is close to related to that of related commands. This can be done provided that the command id value is not used by any other XML file in the *mavlink/mavlink* repo.
+有一些常见的命令和 ardupilot 命令超出了范围 (例如16、200等)。 通常, 您只会使用这些范围, 以便为新命令提供一个与相关命令相关的 id。 这可以做到, 前提是 *mavlink/mavlink* 存储库中的任何其他 xml 文件都不使用命令 id 值。
 
-### Entry Names {#command_names}
+### 条目名称 {#command_names}
 
 As with other enums, enum entry names should be prefixed with the enum name (i.e. `MAV_CMD_`). In addition, there are some other "standard" prefixes which are used for common types of commands:
 
