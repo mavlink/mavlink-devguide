@@ -10,9 +10,9 @@ This topic explains how to get and use the library.
 If you are using a [standard dialect](../messages/README.md#dialects) then download the *MAVLink 2* library from Github: [c_library_v2](https://github.com/mavlink/c_library_v2).
 
 > **Tip** The MAVLink 2 library supports both MAVLink 2 and MAVLink 1, and is rebuilt for all the *standard dialects* whenever any of the definitions in the *mavlink/mavlink* repo change.
-  It supersedes the MAVLink 1 library ([c_library_v1](https://github.com/mavlink/c_library_v1)), and should be used by preference. 
+  It supersedes the MAVLink 1 library ([c_library_v1](https://github.com/mavlink/c_library_v1)), and should be used by preference.
 
-If you need libraries for a custom dialect then you will need to [install mavgen](../getting_started/installation.md) and [generate](../getting_started/generate_libraries.md) them yourself. 
+If you need libraries for a custom dialect then you will need to [install mavgen](../getting_started/installation.md) and [generate](../getting_started/generate_libraries.md) them yourself.
 These can then be used in the same way as the pre-generated libraries.
 
 The libraries can be placed/generated anywhere in your project tree.
@@ -101,8 +101,8 @@ Returns: `0` if packet decoded. `1` if packet decoded.
 
 
 The code fragment below shows the typical use of this function when reading data from a serial port (`serial`):
-```c
-#include <mavlink.h>
+```cpp
+#include <common/mavlink.h>
 
 mavlink_status_t status;
 mavlink_message_t msg;
@@ -113,7 +113,7 @@ while(serial.bytesAvailable > 0)
   uint8_t byte = serial.getNextByte();
   if (mavlink_parse_char(chan, byte, &msg, &status))
     {
-    printf("Received message with ID %d, sequence: %d from component %d of system %d", msg.msgid, msg.seq, msg.compid, msg.sysid);
+    printf("Received message with ID %d, sequence: %d from component %d of system %d\n", msg.msgid, msg.seq, msg.compid, msg.sysid);
     // ... DECODE THE MESSAGE PAYLOAD HERE ...
     }
 }
@@ -162,7 +162,7 @@ if (mavlink_parse_char(chan, byte, &msg, &status)) {
 The decoder/encoder functions and ids for each message in a dialect can be found in separate header files under the dialect folder.
 The headers are named with a format including the message name (**mavlink\_msg\_*message_name*.h**)
 
-> **Tip** Individual message definitions are pulled in when you call `#include <mavlink.h>`, so you don't need to include these separately.
+> **Tip** Individual message definitions for the dialect are pulled in when you include **mavlink.h** for your dialect, so you don't need to include these separately.
 
 The most useful decoding function is named with the format **mavlink\_msg\_*message_name*\_decode()**, and extracts the whole payload into a C struct (with fields mapping to the original XML message definition).
 There are also separate decoder functions to just get the values of individual fields.
@@ -288,9 +288,10 @@ if (mavlink_parse_char(MAVLINK_COMM_0, buf[i], &msg, &status)) {
 
 The following examples show the use of the API.
 
-* [UART Interface](../examples/c_uart.md): Simple C example of a MAVLink to UART interface for Unix-like systems.
-* [UDP Example](../examples/c_udp.md): Simple C example of a MAVLink UDP interface for Unix-like systems (Linux, MacOS, BSD, etc.).
+* [UART Interface](../mavgen_c/example_c_uart.md): Simple C example of a MAVLink to UART interface for Unix-like systems.
+* [UDP Example](../mavgen_c/example_c_udp.md): Simple C example of a MAVLink UDP interface for Unix-like systems (Linux, MacOS, BSD, etc.).
 
 In addition, the C library is used in numerous open source systems:
 - [PX4](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_receiver.cpp)
 - [ArduPilot](https://github.com/ArduPilot/ardupilot/blob/master/libraries/GCS_MAVLink/GCS_Common.cpp)
+- [Dronecode SDK](https://github.com/Dronecode/DronecodeSDK/blob/develop/core/mavlink_receiver.cpp#L28-L51)
