@@ -348,7 +348,7 @@ Open questions:
 
 MAVLink 命令定义为 [MAV_CMD](../messages/common.md#MAV_CMD) number。 它们用于界定在自主任务(见[Mission Protocol](../services/mission.md))，或以任何方式发送命令(见[Command Protocol](../services/command.md))。
 
-> **Tip** 命令的模拟文件[here](../guide/xml_schema.html#MAV_CMD)。
+> **Tip** The schema for commands is documented [here](../guide/xml_schema.md#MAV_CMD).
 
 一个典型的任务命令是([MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT)) 如下：
 
