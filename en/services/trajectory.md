@@ -54,4 +54,4 @@ PX4 sends the current position, current waypoint, and next waypoint in a `TRAJEC
 The path planning software (a ROS node) sends setpoints for the duration of the mission. 
 These navigate the vehicle in a straight line to each waypoint, navigating around obstacles as needed.
 
-For more information see: [TBD](PX4GuideObstacleAvoidanceTopic).
+For more information see: [Obstacle Avoidance](https://docs.px4.io/en/computer_vision/obstacle_avoidance.html) (PX4 User Guide).
