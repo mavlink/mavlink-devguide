@@ -380,7 +380,7 @@ Enums are very rarely deleted, as this may break compatibility with legacy MAVLi
 MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
 They are used to define operations used in autonomous missions (see [Mission Protocol](../services/mission.md)) or to send commands in any mode (see [Command Protocol](../services/command.md)).
 
-> **Tip** The schema for commands is documented [here](../guide/xml_schema.html#MAV_CMD).
+> **Tip** The schema for commands is documented [here](../guide/xml_schema.md#MAV_CMD).
 
 A typical mission command is ([MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT)) is shown below:
 
