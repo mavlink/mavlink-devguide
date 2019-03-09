@@ -31,22 +31,22 @@
 * 包含背景信息，固定内容，以及 [发布号](https://github.com/mavlink/mavlink)\(Github 将连接这些，然后是方便的\)
 * **Example:**
     
-    ``` Change the attitude output spec documentation
+    "" 更改姿态输出规范文档
     
-    * Fixes a typo
-    * Clarifies that units are radians
+    * 修复了拼写错误
+    * 澄清单位是否为弧度
         
-        Fixes issue #123 ```
+        修复 #123 问题 ' ' '
 
-4. Test your changes \(we may ask you for test results in your PR\).
+4. 测试您的更改 \ (我们可能会要求您在您的 pr 中提供测试结果 \)。
 
-5. Push changes to your repo:
+5. 将更改推送到您的存储库:
     
-        git push origin mydescriptivebranchname
+        git 推送来源 mydescriptisbranchname
         
 
-6. Send a [pull request](https://github.com/mavlink/mavlink/compare/) to merge changes in the branch.
+6. 发送 < 0>pull request </0 > 以合并分支中的更改。
 
-## Dev Call {#dev_call}
+## Dev呼叫 {#dev_call}
 
-We have a regular [dev call](../about/support.md#dev_call) that is open to anyone who is interested in contributing to the project!
+我们有一个定期的 < 0>dev call </ 0 >, 对任何有兴趣为项目做出贡献的人开放!
