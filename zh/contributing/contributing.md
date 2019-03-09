@@ -7,28 +7,28 @@
 ## 如何贡献设计和微服务的变化
 
 * 对包含新 rfc 号的 rfc 存储库打开一个拉请求 <https://github.com/mavlink/rfcs> 并使用 0000 rfc 中的模板。
-* Reach out to the community on Slack and on <http://discuss.dronecode.org> to raise awareness
-* Address concerns by pushing more commits to the pull request
+* 与Slack社区联系，在<http://discuss.dronecode.org>上提高认识
+* 通过进一步支持拉动请求来解决关注问题
 
-## How to Contribute Protocol Specification Changes
+## 如何促成协议规范的更改
 
-* Open a pull request against the specification repository: <https://github.com/mavlink/mavlink>
-* Reach out to the community on Slack and on <http://discuss.dronecode.org> to raise awareness
-* Address concerns by pushing more commits to the pull request
+* 针对规格存储库打开拉动请求：<https://github.com/mavlink/mavlink>
+* 与Slack社区联系，在<http://discuss.dronecode.org>上提高认识
+* 通过进一步支持拉动请求来解决关注问题
 
-## How to Open a Pull Request
+## 如何打开拉请求
 
-1. First [fork and clone](https://help.github.com/articles/fork-a-repo) the project project.
-2. Create a feature branch off master
+1. 第一个[fork and clone](https://help.github.com/articles/fork-a-repo) 项目项目。
+2. 在主服务器上创建要素分支
     
-        git checkout -b mydescriptivebranchname
+        git 结帐 -b mydescriptivrancanchname
         
     
-    > **Note** *Always* branch off master for new features.
+    > **Note***Always* 分支从主分支的新功能。
 
-3. Commit your changes with a descriptive commit message.
+3. 用描述性承诺消息提交您的更改。
 
-* Include context information, what was fixed, and an [issue number](https://github.com/mavlink/mavlink) \(Github will link these then conveniently\)
+* 包含背景信息，固定内容，以及 [发布号](https://github.com/mavlink/mavlink)\(Github 将连接这些，然后是方便的\)
 * **Example:**
     
     ``` Change the attitude output spec documentation
