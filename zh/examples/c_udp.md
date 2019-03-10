@@ -1,22 +1,22 @@
-# MAVLink C UDP Example
+# MAVLink C UDP 示例
 
-The [MAVLink UDP Example](https://github.com/mavlink/mavlink/tree/master/examples/linux) is a simple C example that sends some data to *QGroundControl* using MAVLink over UDP. *QGroundControl* responds with heartbeats and other messages, which are then printed by this program.
+< 0>MAVLink udp 示例 </0 > 是一个简单的 c 示例, 它通过 udp 使用 mavlink 向 *QGroundControl* 发送一些数据。 QGroundControl响应检测信号和其他消息, 然后由此程序打印。
 
-> **Note** The example should work on any Unix-like system (Linux, MacOS, BSD, etc.). These instructions were tested on a clean *Ubuntu LTS 16.04* installation using the default version of *gcc* (5.4.0).
+> **Note**该示例应适用于任何类似 unix 的系统 (linux、macos、bsd 等)。 这些说明在使用 *gcc* (5.4.0) 的默认版本 </em> 安装时进行了干净的 < 0>Ubuntu lts 16.04 上的测试。
 
-## Building/Running the Example
+## 构建/运行示例
 
-The following instructions show how to build and run the example.
+下面的说明演示如何生成和运行该示例。
 
-1. [Install MAVLink](../getting_started/installation.md) and [generate](../getting_started/generate_libraries.md) the MAVLink 1.0 libraries into the **mavlink/include** directory.
+1. [安装 MAVLink](../getting_started/installation.md) 和[生成](../getting_started/generate_libraries.md) MAVLink 1.0 的图书馆为**mavlink/include** 目录。
     
-    > **Tip** Alternatively you can clone the [mavlink/mavlink](https://github.com/mavlink/mavlink/) repository and [Download prebuilt headers](../README.md#prebuilt_libraries) to the same location. We recommend that you use MAVLink 1.0 headers as some ground control software may not yet support MAVLink 2.0.
+    > **Tip**或者, 您可以克隆 [mavlink/mavlink](https://github.com/mavlink/mavlink/) 存储库, 并将 "2>Download 预构建的头" </2 > 克隆到同一位置。 我们建议您使用 MAVLink 1.0 头，因为一些地面控制软件可能不支持 MAVLink 2.0。
     
     <span></span>
     
-    > **Note** You can put/generate the library wherever you like, but the build command below assumes they are located in directory named **include** below the MAVLink root directory.
+    > **注意** 您可以在您喜欢的地方放置/生成的库，但下面的建设命令假定它们位于 **包括** 在 MAVLink 根目录下。
 
-2. Open a terminal and navigate to [examples/linux](https://github.com/mavlink/mavlink/tree/master/examples/linux)
+2. 打开终端并导航到 [实例/linux](https://github.com/mavlink/mavlink/tree/master/examples/linux)
 
 3. Compile with GCC using the following command:
     
