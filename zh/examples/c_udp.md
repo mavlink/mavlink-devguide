@@ -18,29 +18,29 @@
 
 2. 打开终端并导航到 [实例/linux](https://github.com/mavlink/mavlink/tree/master/examples/linux)
 
-3. Compile with GCC using the following command:
+3. 使用下列命令编译GCC：
     
     ```bash
-    gcc -std=c99 -I ../../include/common -o mavlink_udp mavlink_udp.c
+    gc -std=c99 -I./../包括/common-o mavlink_udp mavlink_udp.c
     ```
     
-    > **Note** The MAVLink header directory must be added to the include path. The path here assumes you are building the code from the example directory, and that have installed the headers in **mavlink/include**.
+    > **注意** MAVLink 标题目录必须添加到包含路径。 这里的路径假设你正在从示例目录中创建代码，并在**mavlink/include**上安装了头部。
 
-4. Run the executable from the terminal:
+4. 从终端运行可执行文件：
     
     ```bash
-    ./mavlink_udp
+    /mavlink_udp
     ```
     
-    By default, the example will listen for data on the localhost IP address, port 14551. You can specify another IP address as a command line argument (use `./mavlink_udp --help` to see usage).
+    默认情况下，实例将接收本地主机IP地址，1451端口的数据。 您可以指定另一个 IP 地址作为命令行参数 (使用 `./mavlink_udp --mail` 查看使用)。
 
-5. Open *QGroundControl* on the same machine.
+5. 在同一机器上打开 *QGroundControl*
     
-    *QGroundControl* immediately starts broadcasting its `HEARTBEAT` on port 14551.
+    *QGround Control* 立即开始在接口14501上播放其`HEAT`
     
-    > **Note** *QGroundControl* returns data, but will not actually "connect" to the example (it will continue to display the message *Waiting for Vehicle Connection*).
+    > **注意***QGrounder Control* 返回数据，但不会实际“连接”到示例(它将继续显示*等待车辆连接*)。
 
-6. The example should start displaying the received data in the terminal:
+6. 例子应该开始显示终端收到的数据：
     
         ~/github/mavlink/examples/linux$ ./mavlink_udp
         Bytes Received: 17
