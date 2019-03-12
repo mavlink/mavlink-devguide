@@ -164,7 +164,7 @@ The headers are named with a format including the message name (**mavlink\_msg\_
 
 > **Tip** Individual message definitions for the dialect are pulled in when you include **mavlink.h** for your dialect, so you don't need to include these separately.
 
-The most useful decoding function is named with the format **mavlink\_msg\_*message_name*\_decode()**, and extracts the whole payload into a C struct (with fields mapping to the original XML message definition).
+The most useful decoding function is named with the pattern **mavlink\_msg\_*message_name*\_decode()**, and extracts the whole payload into a C struct (with fields mapping to the original XML message definition).
 There are also separate decoder functions to just get the values of individual fields.
 
 For example, the common message [GLOBAL_POSITION_INT](../messages/common.md#GLOBAL_POSITION_INT) is generated to [common/mavlink_msg_global_position_int.h](https://github.com/mavlink/c_library_v2/blob/master/common/mavlink_msg_global_position_int.h),
