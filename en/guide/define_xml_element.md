@@ -339,7 +339,8 @@ The main rules for enums are:
     - The `name` must be unique across all entries in the enum.
     - By *convention*, the `name` should be prefixed with the enum name (e.g. enum `LANDING_TARGET_TYPE` has entry `LANDING_TARGET_TYPE_LIGHT_BEACON`).
   - *should* have a `value` attribute, and if assigned this must be unique within the (merged) enum.
-    A value will be automatically created for the generated library if not assigned, but this is not recommended.
+    Missing values will automatically be sequentially assigned (starting from 1, if the first value is not assigned).
+    > **Tip** We recommend you assign values because then new entries can be added within the range without breaking compatibility.
   - *should* (very highly recommended) include a `description` element. 
   - may represent bitmasks, in which case values will increase by a power of 2.
   - *may* be marked as deprecated.
