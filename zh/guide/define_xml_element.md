@@ -311,7 +311,7 @@ Open questions:
   - *必须* 具有 `name` 属性。 
     - `name` 在枚举中的所有条目中必须是唯一的。
     - 通过 *convention*, `name` 应以枚举名称 (例如枚举 `LANDING_TARGET_TYPE` 具有条目 `LANDING_TARGET_TYPE_LIGHT_BEACON`) 作为前缀。
-  - *should* 具有 `value` 属性, 如果分配了该属性, 则在 (合并) 枚举中必须是唯一的。 如果未分配, 将自动为生成的库创建一个值, 但不建议这样做。
+  - *should* 具有 `value` 属性, 如果分配了该属性, 则在 (合并) 枚举中必须是唯一的。 Missing values will automatically be sequentially assigned (starting from 1, if the first value is not assigned). > **Tip** We recommend you assign values because then new entries can be added within the range without breaking compatibility.
   - *should*(非常强烈建议) 包括 `description` 元素。 
   - 可能表示位掩码, 在这种情况下, 值将增加2。
   - *may* 标记为已弃用。
