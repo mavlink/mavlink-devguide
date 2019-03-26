@@ -143,7 +143,7 @@ A `param` **should** have:
 
 A `param` **should** also include the following optional attributes where appropriate (which may be used by a GUI for parameter display and editing):
 
-- `label` - Display name to represent the parameter in a GCS or other UI
+- `label` - Display name to represent the parameter in a GCS or other UI. All words in label should be capitalised.
 - `units` - SI units for the value.
 - `enum` - Enum containing possible values for the parameter (if applicable).
 - `decimalPlaces` - Hint to a UI about how many decimal places to use if the parameter value is displayed.
