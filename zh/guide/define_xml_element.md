@@ -445,3 +445,20 @@ Slugs - 10001 - 10015
 <p>To declare a param as <code>reserved` with `default` value of `0` simply omit the `param` from the definition (this is the default - it is equivalent to: `<param index="3" reserved="True" default="0" />`).
 > 
 > 如果您仅有一个未使用的 `参数` 我们建议你不要声明。 如果您有一个以上的，您可能希望明确定义它，默认为 `NaN` 这样，您可以稍后将您的命令扩展到默认。
+> 
+> #### GUI Param Attributes
+> 
+> A number of [param](../guide/xml_schema.md#param) attributes are provided as "GUI hints".
+> 
+> These attributes are used to better display params:
+> 
+> - `label` - Label for param in GCS/UI. All words in label should be capitalised (e.g. "Hold Altitude").
+> - `units` - SI units for the value.
+> - `decimalPlaces` - Hint to a UI about how many decimal places to use if the parameter value is displayed.
+> 
+> These attributes help a GCS customise the editing experience (e.g. controls can choose to only offer allowed values).
+> 
+> - `enum` - Enum containing possible values for the parameter (if applicable).
+> - `increment` - Allowed increments for the parameter value.
+> - `minValue` - Minimum value for param.
+> - `maxValue` - Maximum value for the param.
