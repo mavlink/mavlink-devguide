@@ -13,4 +13,7 @@ The topics linked from the sidebar (and listed below):
 * [General Telemetry](../guide/general_telemetry.md)
 * [Offboard Control](../guide/offboard_control.md)
 * [UAVCAN Interaction](../guide/uavcan_interaction.md)
-* [Scripts](../guide/scripts.md)
+* [Scripts](../guide/scripts.md) 
+ * [MAVLink XML Schema](../guide/xml_schema.md)
+ * [Defining XML Enums/Messages](../guide/define_xml_element.md)
+ * [Dialects](../messages/README.md)
