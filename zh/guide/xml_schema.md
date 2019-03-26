@@ -143,7 +143,7 @@ MAV_CMD 条目 `value` 元素可能会额外定义这些标签/字段：
 
 `param` 还 **应该** 在适当的情况下包括以下可选属性 (GUI 可将其用于参数显示和编辑):
 
-- `label`-显示名称以表示 GCS 或其他 UI 中的参数
+- `label` - Display name to represent the parameter in a GCS or other UI. All words in label should be capitalised.
 - `units`-值的 SI 单位。
 - `enum`-包含参数的可能值的枚举 (如果适用)。
 - `decimalPlaces` - 提示到 UI，如果显示参数值，多少小数位可用。
