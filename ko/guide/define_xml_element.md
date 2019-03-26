@@ -444,3 +444,20 @@ To declare a `param` as `reserved` with `default` value of `NaN` you should use 
 To declare a param as `reserved` with `default` value of `0` simply omit the `param` from the definition (this is the default - it is equivalent to: `<param index="3" reserved="True" default="0" />`).
 
 If you have just one unused `param` we recommend you simply don't declare it. If you have more than one, you may wish to explicitly define it with default of `NaN` so that you can extend your command later with ether default.
+
+#### GUI Param Attributes
+
+A number of [param](../guide/xml_schema.md#param) attributes are provided as "GUI hints".
+
+These attributes are used to better display params:
+
+- `label` - Label for param in GCS/UI. All words in label should be capitalised (e.g. "Hold Altitude").
+- `units` - SI units for the value.
+- `decimalPlaces` - Hint to a UI about how many decimal places to use if the parameter value is displayed.
+
+These attributes help a GCS customise the editing experience (e.g. controls can choose to only offer allowed values).
+
+- `enum` - Enum containing possible values for the parameter (if applicable).
+- `increment` - Allowed increments for the parameter value.
+- `minValue` - Minimum value for param.
+- `maxValue` - Maximum value for the param.
