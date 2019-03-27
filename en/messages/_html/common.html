@@ -713,7 +713,7 @@
   <h3 id="MAV_GOTO">
    <a href="#MAV_GOTO">MAV_GOTO</a>
   </h3>
-  <p>Override command, pauses current mission execution and moves immediately to a position</p>
+  <p>Actions that may be specified in MAV_CMD_OVERRIDE_GOTO to override mission execution.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -5247,6 +5247,43 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="PARACHUTE_ACTION">
+   <a href="#PARACHUTE_ACTION">PARACHUTE_ACTION</a>
+  </h3>
+  <p>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="PARACHUTE_DISABLE">
+     <td>0</td>
+     <td>
+      <a href="#PARACHUTE_DISABLE">PARACHUTE_DISABLE</a>
+     </td>
+     <td>Disable parachute release.</td>
+    </tr>
+    <tr id="PARACHUTE_ENABLE">
+     <td>1</td>
+     <td>
+      <a href="#PARACHUTE_ENABLE">PARACHUTE_ENABLE</a>
+     </td>
+     <td>Enable parachute release.</td>
+    </tr>
+    <tr id="PARACHUTE_RELEASE">
+     <td>2</td>
+     <td>
+      <a href="#PARACHUTE_RELEASE">PARACHUTE_RELEASE</a>
+     </td>
+     <td>Release parachute.</td>
+    </tr>
+   </tbody>
+  </table>
   <h2>MAVLink Commands (MAV_CMD)</h2>
   <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data.</p>
   <h3 id="MAV_CMD_NAV_WAYPOINT">MAV_CMD_NAV_WAYPOINT (<a href="#MAV_CMD_NAV_WAYPOINT">16</a>
@@ -7755,36 +7792,52 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>action (0=disable, 1=enable, 2=release, for some systems see PARACHUTE_ACTION enum, not in general message set.)</td>
+     <td>action<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>action,</td>
+     <td>PARACHUTE_ACTION</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8429,42 +8482,76 @@
   <h3 id="MAV_CMD_OVERRIDE_GOTO">MAV_CMD_OVERRIDE_GOTO (<a href="#MAV_CMD_OVERRIDE_GOTO">252</a>
    )
   </h3>
-  <p>Hold / continue the current action</p>
+  <p>Override current mission with command to pause mission, pause mission and move to position, continue/resume mission. When param 1 indicates that the mission is paused (MAV_GOTO_DO_HOLD), param 2 defines whether it holds in place or moves to another position.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>MAV_GOTO_DO_HOLD: hold MAV_GOTO_DO_CONTINUE: continue with next item in mission plan</td>
+     <td>MAV_GOTO_DO_HOLD: pause mission and either hold or move to specified position (depending on param2), MAV_GOTO_DO_CONTINUE: resume mission.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>continue,</td>
+     <td>MAV_GOTO</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>MAV_GOTO_HOLD_AT_CURRENT_POSITION: Hold at current position MAV_GOTO_HOLD_AT_SPECIFIED_POSITION: hold at specified position</td>
+     <td>MAV_GOTO_HOLD_AT_CURRENT_POSITION: hold at current position, MAV_GOTO_HOLD_AT_SPECIFIED_POSITION: hold at specified position.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>position,</td>
+     <td>MAV_GOTO</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>MAV_FRAME coordinate frame of hold point</td>
+     <td>Coordinate frame of hold point.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>frame,</td>
+     <td>MAV_FRAME</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Desired yaw angle in degrees</td>
+     <td>Desired yaw angle.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>yaw,</td>
+     <td>
+     </td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>5</td>
-     <td>Latitude / X position</td>
+     <td>Latitude / X position.</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>Longitude / Y position</td>
+     <td>Longitude / Y position.</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>Altitude / Z position</td>
+     <td>Altitude / Z position.</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
