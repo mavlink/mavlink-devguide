@@ -70,13 +70,29 @@ In addition to querying about storage status, the GCS will also request the curr
 
 ### Still Image Capture
 
-A camera supports still image capture if the [CAMERA_CAP_FLAGS_CAPTURE_IMAGE](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_IMAGE) bit is set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
+A camera supports *still image capture* if the [CAMERA_CAP_FLAGS_CAPTURE_IMAGE](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_IMAGE) bit is set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
-To capture an image, the GCS uses the [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) command. Each time an image is captured, a [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) message is sent back to the GCS.
+A GCS/MAVLink app uses the [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) command to request that the camera capture a specified number of images (or forever), and the duration between them. The camera immediately returns the normal command acknowledgment ([MAV_RESULT](../messages/common.md#MAV_RESULT_ACCEPTED)).
 
-The `CAMERA_IMAGE_CAPTURED` message not only tells the GCS the image was captured, it is also intended for geo-tagging.
+Each time an image is captured, the camera *broadcasts* a [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) message. This message not only tells the GCS the image was captured, it is also intended for geo-tagging.
 
-The capture command can be used to request one single image capture or a time lapse. If the command is set to take more than one single image, the GCS might use the [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) command to stop it.
+The [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) command can optionally be sent to stop an image capture sequence (this is needed if image capture has been set to continue forever).
+
+The still image capture message sequence *for missions* (as described above) is shown below :
+
+{% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_IMAGE_START_CAPTURE (interval, count/forever) GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED Note over Camera,GCS: Camera start capture of "count" images at "interval" Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast) Camera->>GCS: ... Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast) Note over Camera,GCS: (Optional) Stop capture GCS->>Camera: MAV_CMD_IMAGE_STOP_CAPTURE GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED {% endmermaid %}
+
+The message sequence for *interactive user-initiated image capture* through a GUI is slightly different. In this case the GCS should:
+
+- Confirm that the camera is *ready* to take images before allowing the user to request image capture. 
+  - It does this by by sending [MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS).
+  - The camera should return a `MAV_RESULT` and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
+  - The GCS should check that the status is "Idle" before enabling camera capture in the GUI.
+- Send [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) specifying a single image (only).
+
+The sequence is as shown below:
+
+{% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED GCS->>GCS: Start timeout Camera->>GCS: CAMERA_CAPTURE_STATUS (status) Note over Camera,GCS: Repeat until status is IDLE GCS->>Camera: MAV_CMD_IMAGE_START_CAPTURE (interval, count/forever) GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED Note over Camera,GCS: Camera start capture of 1 image GCS->>GCS: Start timeout Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast) {% endmermaid %}
 
 ### Video Capture
 
