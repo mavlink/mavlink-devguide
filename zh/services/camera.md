@@ -70,27 +70,43 @@
 
 ### 静态图像捕获
 
-如果[CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION)中的 [CAMERA_CAP_FLAGS_CAPTURE_IMAGE](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_IMAGE) 标志位被置位，就说明该相机组件支持静态图像捕获。
+A camera supports *still image capture* if the [CAMERA_CAP_FLAGS_CAPTURE_IMAGE](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_IMAGE) bit is set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
-GCS通过发送 [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) 命令来捕获一张图像。 每当捕获到一张图像，相机组件将向GCS发送一条 [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) 消息。
+A GCS/MAVLink app uses the [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) command to request that the camera capture a specified number of images (or forever), and the duration between them. The camera immediately returns the normal command acknowledgment ([MAV_RESULT](../messages/common.md#MAV_RESULT_ACCEPTED)).
 
-`CAMERA_IMAGE_CAPTURED` 消息不仅用来通知GCS图像是否捕获成功，还可用于添加地理位置标签。
+Each time an image is captured, the camera *broadcasts* a [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) message. This message not only tells the GCS the image was captured, it is also intended for geo-tagging.
 
-捕获命令可用于请求单张的图像捕获或多帧连拍。 如果该命令被设置为多张连拍，GCS可以发送 [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) 消息来停止捕获。
+The [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) command can optionally be sent to stop an image capture sequence (this is needed if image capture has been set to continue forever).
+
+The still image capture message sequence *for missions* (as described above) is shown below :
+
+{% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_IMAGE_START_CAPTURE (interval, count/forever) GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED Note over Camera,GCS: Camera start capture of "count" images at "interval" Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast) Camera->>GCS: ... Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast) Note over Camera,GCS: (Optional) Stop capture GCS->>Camera: MAV_CMD_IMAGE_STOP_CAPTURE GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED {% endmermaid %}
+
+The message sequence for *interactive user-initiated image capture* through a GUI is slightly different. In this case the GCS should:
+
+- Confirm that the camera is *ready* to take images before allowing the user to request image capture. 
+  - It does this by by sending [MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS).
+  - The camera should return a `MAV_RESULT` and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
+  - The GCS should check that the status is "Idle" before enabling camera capture in the GUI.
+- Send [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) specifying a single image (only).
+
+The sequence is as shown below:
+
+{% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED GCS->>GCS: Start timeout Camera->>GCS: CAMERA_CAPTURE_STATUS (status) Note over Camera,GCS: Repeat until status is IDLE GCS->>Camera: MAV_CMD_IMAGE_START_CAPTURE (interval, count/forever) GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED Note over Camera,GCS: Camera start capture of 1 image GCS->>GCS: Start timeout Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast) {% endmermaid %}
 
 ### 视频捕获
 
-如果 [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) 中的[CAMERA_CAP_FLAGS_CAPTURE_VIDEO](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_VIDEO)标志位被置位，则表示该相机组件支持视频捕获。
+A camera supports video capture if the [CAMERA_CAP_FLAGS_CAPTURE_VIDEO](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_VIDEO) bit is set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
-GCS使用 [MAV_CMD_VIDEO_START_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_START_CAPTURE) 命令来开启视频捕获功能。 收到命令请求后，相机组件将定时向GCS回送 [CAMERA_CAPTURE_STATUS](#camera_capture_status) 消息。
+To start recording videos, the GCS uses the [MAV_CMD_VIDEO_START_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_START_CAPTURE) command. If requested, the [CAMERA_CAPTURE_STATUS](#camera_capture_status) message is sent to the GCS at a set interval.
 
-GCS要使用 [MAV_CMD_VIDEO_STOP_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_STOP_CAPTURE) 命令停止视频捕获。
+To stop recording, the GCS uses the [MAV_CMD_VIDEO_STOP_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_STOP_CAPTURE) command.
 
 ### 视频流
 
-如果[CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION)的[CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) 标志位被置位，则表示该相机支持视频流。
+A camera is capable of streaming video if it sets the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) bit set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
-当GCS收到 [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消息并检测到[CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) 标志位，GCS将发送 [MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION) 消息查询视频流的配置。 作为回应，相机将为每一种支持的视频流格式回送一条 [VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) 消息。
+When the GCS receives the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it detects the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag, it will then send the [MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION) message to the camera requesting the video streaming configuration. In response, the camera returns a [VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) message for each stream it supports.
 
 > **Note**如果你的相机仅支持视频流 (不支持图像/视频捕获等其它功能)，那么你只需将[CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM)这一个标志位置位即可。 GCS将仅提供视频流支持并跳过其它控制项。
 
