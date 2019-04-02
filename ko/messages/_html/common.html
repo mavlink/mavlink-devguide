@@ -16405,6 +16405,16 @@
      </td>
      <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x_global, y_global, z_global, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
+    <tr>
+     <td style="color:blue;">reset_counter<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="VISION_POSITION_ESTIMATE">VISION_POSITION_ESTIMATE (<a href="#VISION_POSITION_ESTIMATE">
@@ -16475,6 +16485,16 @@
      </td>
      <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
+    <tr>
+     <td style="color:blue;">reset_counter<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="VISION_SPEED_ESTIMATE">VISION_SPEED_ESTIMATE (<a href="#VISION_SPEED_ESTIMATE">
@@ -16526,6 +16546,16 @@
      <td>
      </td>
      <td>Row-major representation of 3x3 linear velocity covariance matrix (states: vx, vy, vz; 1st three entries - 1st row, etc.). If unknown, assign NaN value to first element in the array.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">reset_counter<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.</td>
     </tr>
    </tbody>
   </table>
@@ -23681,6 +23711,20 @@
       </a>
      </td>
      <td>Row-major representation of a 6x6 velocity cross-covariance matrix upper right triangle (states: vx, vy, vz, rollspeed, pitchspeed, yawspeed; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">reset_counter<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.</td>
     </tr>
    </tbody>
   </table>
