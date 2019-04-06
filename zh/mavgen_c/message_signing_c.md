@@ -81,7 +81,7 @@ mavlink_status_t *status = mavlink_get_channel_status(chan);
 status.signing_streams = &signing_streams;
 ```
 
-`MAVLINK_MAX_SIGNING_STREAMS` 宏提供了支持的最大签名流数。 这默认为 16, 但对于 gcs 实现来说, 这一点可能是值得的。 If the C implementation runs out of signing streams then new streams will be rejected.
+`MAVLINK_MAX_SIGNING_STREAMS` 宏提供了支持的最大签名流数。 这默认为 16, 但对于 gcs 实现来说, 这一点可能是值得的。 如果C的执行超出了签名的流程，那么新流将被拒绝。
 
 ## Using accept_unsigned_callback
 
