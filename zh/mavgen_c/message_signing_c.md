@@ -11,9 +11,9 @@
 
 ## 密钥管理 (SETUP_SIgner)
 
-A secret key is 32 bytes of binary data that are used to create message signatures that can be verified by other holders of the key. The general requirements for creating, storing, logging and sharing keys are covered in: [Message Signing > Secret Key Management](../guide/message_signing.md#secret_key).
+密匙是 32 字节，用于创建可以由密钥的其他持有人验证的消息签名。 创建、存储、日志记录和共享密钥的一般要求包含在: [Message Signing > Secret Key Management](../guide/message_signing.md#secret_key) 中。
 
-The section [Enabling Signing on a Channel](#enabling_signing_channel) below shows how to set the secret key used by each channel.
+下面的 [Enabling Signing on a Channel](#enabling_signing_channel) 部分显示了如何设置每个通道使用的密钥。
 
 <!-- 
 The [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) message should generally be used for sharing the secret key, and support for it must be implemented on both sending and receiving systems. Receiving systems must also store the key in secure storage. 
@@ -25,17 +25,17 @@ What this should show is
 - how to handle received message and store the key (on nuttx and Linux)
 -->
 
-## Handling Timestamps
+## 处理时间戳
 
-The timestamp is a 48 bit number with units of 10 microseconds since 1st January 2015 GMT. The general requirements for managing timestamps are covered in [Message Signing > Timestamp Handling](../guide/message_signing.md#timestamp).
+时间戳是48位，自2015年1月1日起单位为10微秒。 管理时间戳的一般要求载于 [Message Signing > Timestamp Handling](../guide/message_signing.md#timestamp)。
 
-The library automatically handles some of the rules:
+该库自动处理一些规则：
 
-* timestamps are incremented by one on every message send from a link.
-* timestamps are updated to match that of the last accepted incoming message (if it is greater than the current local timestamp).
-* messages are rejected if the timestamp of a message on a channel is before the last message received on that channel.
+* 时间戳在从链接发送的每包消息上都增加一个。
+* 更新时间戳，以便与最后接受的消息（如果它大于当前的当地时间戳）相匹配。
+* 如果频道上的消息时间戳是在该频道上收到的最后一条消息之前，消息将被拒绝。
 
-It is the responsibility of each MAVLink system to store and restore the timestamp into persistent storage (this is critical for the security of the signing system). The section [Enabling Signing on a Channel](#enabling_signing_channel) below shows how to set the timestamp.
+每个 MAVLink 系统都有责任储存和恢复时间戳（这对于签字系统的安全至关重要）。 下面的 [Enabling Signing on a Channel](#enabling_signing_channel) 部分显示了如何设置时间戳。
 
 <!-- 
 For systems where the time since 1/1/1970 is available (the unix epoch) you can use an offset in seconds of 1420070400.
@@ -50,16 +50,16 @@ It is the responsibility of each MAVLink system to store and restore the timesta
 * If there is no previous message with the given `(linkID,srcSystem,SrcComponent)` then the timestamp should be accepted if it not more than 6 million (one minute) behind the current timestamp
 -->
 
-## Enabling Signing on a Channel {#enabling_signing_channel}
+## 启用频道签名 {#enabling_signing_channel}
 
-To enable signing on a channel you need to fill in two pointers in the `status` structure for the channel. The two pointers are:
+要在通道上启用签名, 您需要在通道的 `status` 结构中填写两个指针。 这两个指针是:
 
 ```c
 mavlink_signing_t *signing;
 mavlink_signing_streams_t *signing_streams;
 ```
 
-The `signing` pointer controls signing for this stream. It is per-stream, and contains the secret key, the timestamp and a set of flags, plus an optional callback function for accepting unsigned packets. Typical setup would be:
+`signing` 指针控制签名。 它是按流进行的，包含密匙、时间戳和一组标志，加上接受未签名数据包的可选回调函数。 典型的设置是:
 
 ```c
 mavlink_signing_t signing;
@@ -74,14 +74,14 @@ mavlink_status_t *status = mavlink_get_channel_status(chan);
 status.signing = &signing;
 ```
 
-The `signing_streams` pointer is a structure used to record the previous timestamp for a `(linkId,srcSystem,SrcComponent)` tuple. This must point to a structure that is common to all channels in order to prevent inter-channel replay attacks. Typical setup is:
+`signing 0> 指针是一个用于记录上一个 <code>(linkId,srcSystem,Srcmenter)` 图形的时间戳的结构。 这必须指向所有通道共有的结构, 以防止通道间重播攻击。 典型设置:
 
 ```c
 mavlink_status_t *status = mavlink_get_channel_status(chan);
 status.signing_streams = &signing_streams;
 ```
 
-The maximum number of signing streams supported is given by the `MAVLINK_MAX_SIGNING_STREAMS` macro. This defaults to 16, but it may be worth raising this for GCS implementations. If the C implementation runs out of signing streams then new streams will be rejected.
+`MAVLINK_MAX_SIGNING_STREAMS` 宏提供了支持的最大签名流数。 这默认为 16, 但对于 gcs 实现来说, 这一点可能是值得的。 If the C implementation runs out of signing streams then new streams will be rejected.
 
 ## Using accept_unsigned_callback
 
