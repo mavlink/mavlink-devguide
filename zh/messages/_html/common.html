@@ -5295,36 +5295,71 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Hold time in decimal seconds. (ignored by fixed wing, time to stay at waypoint for rotary wing)</td>
+     <td>Hold time. (ignored by fixed wing, time to stay at waypoint for rotary wing)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Hold,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>s</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Acceptance radius in meters (if the sphere with this radius is hit, the waypoint counts as reached)</td>
+     <td>Acceptance radius (if the sphere with this radius is hit, the waypoint counts as reached)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Accept Radius,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>0 to pass through the WP, if &gt; 0 radius in meters to pass by WP. Positive value for clockwise orbit, negative value for counter-clockwise orbit. Allows trajectory control.</td>
+     <td>0 to pass through the WP, if &gt; 0 radius to pass by WP. Positive value for clockwise orbit, negative value for counter-clockwise orbit. Allows trajectory control.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Pass Radius,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Desired yaw angle at waypoint (rotary wing). NaN for unchanged.</td>
+     <td>Desired yaw angle at waypoint (rotary wing). NaN for unchanged.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw,</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -5337,36 +5372,54 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Radius around waypoint, in meters. If positive loiter clockwise, else counter-clockwise</td>
+     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Radius,</td>
+     <td>m</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Desired yaw angle.</td>
+     <td>Desired yaw angle.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -5379,36 +5432,69 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Turns</td>
+     <td>Number of turns.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Turns,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Radius around waypoint, in meters. If positive loiter clockwise, else counter-clockwise</td>
+     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Radius,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>4</td>
      <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -5421,36 +5507,68 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Seconds (decimal)</td>
+     <td>Loiter time.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Time,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>s</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Radius around waypoint, in meters. If positive loiter clockwise, else counter-clockwise</td>
+     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Radius,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>4</td>
      <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -5530,9 +5648,7 @@
     </tr>
     <tr>
      <td>3</td>
-     <td>Empty.<br/>
-      <strong>GCS display settings:</strong>
-      <em>Label:</em>Empty,</td>
+     <td>Empty.</td>
      <td>
      </td>
      <td>
@@ -5586,7 +5702,9 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>Minimum pitch (if airspeed sensor present), desired pitch without sensor</td>
+     <td>Minimum pitch (if airspeed sensor present), desired pitch without sensor<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Pitch,</td>
     </tr>
     <tr>
      <td>2</td>
@@ -5598,7 +5716,9 @@
     </tr>
     <tr>
      <td>4</td>
-     <td>Yaw angle (if magnetometer present), ignored without magnetometer. NaN for unchanged.</td>
+     <td>Yaw angle (if magnetometer present), ignored without magnetometer. NaN for unchanged.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw,</td>
     </tr>
     <tr>
      <td>5</td>
@@ -5623,36 +5743,74 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Landing target number (if available)</td>
+     <td>Landing target number (if available)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Target,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Maximum accepted offset from desired landing position [m] - computed magnitude from spherical coordinates: d = sqrt(x^2 + y^2 + z^2), which gives the maximum accepted distance between the desired landing position and the position where the vehicle is about to land</td>
+     <td>Maximum accepted offset from desired landing position - computed magnitude from spherical coordinates: d = sqrt(x^2 + y^2 + z^2), which gives the maximum accepted distance between the desired landing position and the position where the vehicle is about to land<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Offset,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Landing descend rate [ms^-1]</td>
+     <td>Landing descend rate<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Descend Rate,</td>
+     <td>
+     </td>
+     <td>m/s</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Desired yaw angle [rad]</td>
+     <td>Desired yaw angle<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw,</td>
+     <td>
+     </td>
+     <td>rad</td>
     </tr>
     <tr>
      <td>5</td>
-     <td>Y-axis position [m]</td>
+     <td>Y-axis position<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Y Position,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>6</td>
-     <td>X-axis position [m]</td>
+     <td>X-axis position<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>X Position,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>7</td>
-     <td>Z-axis / ground level position [m]</td>
+     <td>Z-axis / ground level position<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Z Position,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -5665,36 +5823,57 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Minimum pitch (if airspeed sensor present), desired pitch without sensor [rad]</td>
+     <td>Minimum pitch (if airspeed sensor present), desired pitch without sensor<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Pitch,</td>
+     <td>rad</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Takeoff ascend rate [ms^-1]</td>
+     <td>Takeoff ascend rate<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Ascend Rate,</td>
+     <td>m/s</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Yaw angle [rad] (if magnetometer or another yaw estimation source present), ignored without one of these</td>
+     <td>Yaw angle (if magnetometer or another yaw estimation source present), ignored without one of these<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw,</td>
+     <td>rad</td>
     </tr>
     <tr>
      <td>5</td>
-     <td>Y-axis position [m]</td>
+     <td>Y-axis position<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Y Position,</td>
+     <td>m</td>
     </tr>
     <tr>
      <td>6</td>
-     <td>X-axis position [m]</td>
+     <td>X-axis position<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>X Position,</td>
+     <td>m</td>
     </tr>
     <tr>
      <td>7</td>
-     <td>Z-axis position [m]</td>
+     <td>Z-axis position<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Z Position,</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -5707,36 +5886,73 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Following logic to use (e.g. loitering or sinusoidal following) - depends on specific autopilot implementation</td>
+     <td>Following logic to use (e.g. loitering or sinusoidal following) - depends on specific autopilot implementation<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Following,</td>
+     <td>
+      <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Ground speed of vehicle to be followed</td>
+     <td>Ground speed of vehicle to be followed<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Ground Speed,</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Radius around waypoint, in meters. If positive loiter clockwise, else counter-clockwise</td>
+     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Radius,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Desired yaw angle.</td>
+     <td>Desired yaw angle.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw,</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -5749,36 +5965,69 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Climb or Descend (0 = Neutral, command completes when within 5m of this command's altitude, 1 = Climbing, command completes when at or above this command's altitude, 2 = Descending, command completes when at or below this command's altitude.</td>
+     <td>Climb or Descend (0 = Neutral, command completes when within 5m of this command's altitude, 1 = Climbing, command completes when at or above this command's altitude, 2 = Descending, command completes when at or below this command's altitude.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Action,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>Desired altitude in meters</td>
+     <td>Desired altitude<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Altitude,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -5791,36 +6040,71 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Heading Required (0 = False)</td>
+     <td>Heading Required (0 = False)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Heading Required,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Radius in meters. If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter.</td>
+     <td>Radius. If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Radius,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location</td>
+     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Xtrack Location,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -5833,36 +6117,73 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>System ID (the system ID of the FOLLOW_TARGET beacon). Send 0 to disable follow-me and return to the default position hold mode</td>
+     <td>System ID (of the FOLLOW_TARGET beacon). Send 0 to disable follow-me and return to the default position hold mode.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>System ID,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>255 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>RESERVED</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>RESERVED</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>altitude flag: 0: Keep current altitude, 1: keep altitude difference to target, 2: go to a fixed altitude above home</td>
+     <td>Altitude mode: 0: Keep current altitude, 1: keep altitude difference to target, 2: go to a fixed altitude above home.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Altitude Mode,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
-     <td>altitude</td>
+     <td>Altitude above home. (used if mode=2)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Altitude,</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>RESERVED</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>TTL in seconds in which the MAV should go to the default position hold mode after a message rx timeout</td>
+     <td>Time to land in which the MAV should go to the default position hold mode after a message RX timeout.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Time to Land,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>s</td>
     </tr>
    </tbody>
   </table>
@@ -5875,36 +6196,62 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Camera q1 (where 0 is on the ray from the camera to the tracking device)</td>
+     <td>Camera q1 (where 0 is on the ray from the camera to the tracking device)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Camera Q1,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Camera q2</td>
+     <td>Camera q2<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Camera Q2,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Camera q3</td>
+     <td>Camera q3<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Camera Q3,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Camera q4</td>
+     <td>Camera q4<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Camera Q4,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
-     <td>altitude offset from target (m)</td>
+     <td>altitude offset from target<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Altitude Offset,</td>
+     <td>m</td>
     </tr>
     <tr>
      <td>6</td>
-     <td>X offset from target (m)</td>
+     <td>X offset from target<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>X Offset,</td>
+     <td>m</td>
     </tr>
     <tr>
      <td>7</td>
-     <td>Y offset from target (m)</td>
+     <td>Y offset from target<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Y Offset,</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -5919,36 +6266,70 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Radius of the circle in meters. positive: Orbit clockwise. negative: Orbit counter-clockwise.</td>
+     <td>Radius of the circle. positive: Orbit clockwise. negative: Orbit counter-clockwise.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Radius,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Velocity tangential in m/s. NaN: Vehicle configuration default.</td>
+     <td>Tangential Velocity. NaN: Vehicle configuration default.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Velocity,</td>
+     <td>
+     </td>
+     <td>m/s</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Yaw behavior of the vehicle. 0: vehicle front points to the center (default). 1: Hold last heading. 2: Leave yaw uncontrolled.</td>
+     <td>Yaw behavior of the vehicle. 0: vehicle front points to the center (default). 1: Hold last heading. 2: Leave yaw uncontrolled.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw Behavior,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved (e.g. for dynamic center beacon options)</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Center point latitude (if no MAV_FRAME specified) / X coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Center point longitude (if no MAV_FRAME specified) / Y coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Center point altitude (MSL) (if no MAV_FRAME specified) / Z coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -5963,36 +6344,62 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Region of interest mode. (see MAV_ROI enum)</td>
+     <td>Region of interest mode.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>ROI Mode,</td>
+     <td>MAV_ROI</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Waypoint index/ target ID. (see MAV_ROI enum)</td>
+     <td>Waypoint index/ target ID. (see MAV_ROI enum)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>WP Index,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>ROI index (allows a vehicle to manage multiple ROI's)</td>
+     <td>ROI index (allows a vehicle to manage multiple ROI's)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>ROI Index,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
-     <td>x the location of the fixed ROI (see MAV_FRAME)</td>
+     <td>x the location of the fixed ROI (see MAV_FRAME)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>X,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>y</td>
+     <td>y<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Y,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>z</td>
+     <td>z<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Z,</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6005,36 +6412,71 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>0: Disable local obstacle avoidance / local path planning (without resetting map), 1: Enable local path planning, 2: Enable and reset local path planning</td>
+     <td>0: Disable local obstacle avoidance / local path planning (without resetting map), 1: Enable local path planning, 2: Enable and reset local path planning<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Local Ctrl,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>0: Disable full path planning (without resetting map), 1: Enable, 2: Enable and reset map/occupancy grid, 3: Enable and reset planned route, but not occupancy grid</td>
+     <td>0: Disable full path planning (without resetting map), 1: Enable, 2: Enable and reset map/occupancy grid, 3: Enable and reset planned route, but not occupancy grid<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Global Ctrl,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Yaw angle at goal, in compass degrees, [0..360]</td>
+     <td>Yaw angle at goal<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>360 </td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude/X of goal</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude/Y of goal</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude/Z of goal</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6047,36 +6489,67 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Hold time in decimal seconds. (ignored by fixed wing, time to stay at waypoint for rotary wing)</td>
+     <td>Hold time. (ignored by fixed wing, time to stay at waypoint for rotary wing)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Hold,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>s</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude/X of goal</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude/Y of goal</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude/Z of goal</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6163,36 +6636,54 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Approach altitude (with the same reference as the Altitude field). NaN if unspecified.</td>
+     <td>Approach altitude (with the same reference as the Altitude field). NaN if unspecified.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Altitude,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Yaw angle in degrees. NaN for unchanged.</td>
+     <td>Yaw angle. NaN for unchanged.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw,</td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude (ground level)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6205,36 +6696,53 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>On / Off (&gt; 0.5f on)</td>
+     <td>On / Off (&gt; 0.5f on)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Enable,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6247,36 +6755,81 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Delay in seconds (decimal, -1 to enable time-of-day fields)</td>
+     <td>Delay (-1 to enable time-of-day fields)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Delay,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>increment:</em>1</td>
+     <td>s</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>hour (24h format, UTC, -1 to ignore)</td>
+     <td>hour (24h format, UTC, -1 to ignore)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Hour,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>23 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>minute (24h format, UTC, -1 to ignore)</td>
+     <td>minute (24h format, UTC, -1 to ignore)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Minute,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>59 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>second (24h format, UTC)</td>
+     <td>second (24h format, UTC)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Second,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>59 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6446,36 +6999,52 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Descent / Ascend rate (m/s)</td>
+     <td>Descent / Ascend rate.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Rate,</td>
+     <td>m/s</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Finish Altitude</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6488,36 +7057,67 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Distance (meters)</td>
+     <td>Distance.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Distance,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6530,36 +7130,74 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>target angle: [0-360], 0 is north</td>
+     <td>target angle, 0 is north<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Angle,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>360 </td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>speed during yaw change:[deg per second]</td>
+     <td>angular speed<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Angular Speed,</td>
+     <td>
+     </td>
+     <td>deg/s</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>direction: negative: counter clockwise, positive: clockwise [-1,1]</td>
+     <td>direction: -1: counter clockwise, 1: clockwise<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Direction,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>1 <em>increment:</em>2</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>relative offset or absolute angle: [ 1,0]</td>
+     <td>0: absolute angle, 1: relative offset<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Relative,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6614,36 +7252,56 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Mode, as defined by ENUM MAV_MODE</td>
+     <td>Mode<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Mode,</td>
+     <td>MAV_MODE</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Custom mode - this is system specific, please refer to the individual autopilot specifications for details.</td>
+     <td>Custom mode - this is system specific, please refer to the individual autopilot specifications for details.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Custom Mode,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Custom sub mode - this is system specific, please refer to the individual autopilot specifications for details.</td>
+     <td>Custom sub mode - this is system specific, please refer to the individual autopilot specifications for details.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Custom Submode,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6656,36 +7314,55 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Sequence number</td>
+     <td>Sequence number<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Number,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Repeat count</td>
+     <td>Repeat count<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Repeat,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6698,36 +7375,78 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Speed type (0=Airspeed, 1=Ground Speed, 2=Climb Speed, 3=Descent Speed)</td>
+     <td>Speed type (0=Airspeed, 1=Ground Speed, 2=Climb Speed, 3=Descent Speed)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Speed Type,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Speed  (m/s, -1 indicates no change)</td>
+     <td>Speed (-1 indicates no change)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Speed,</td>
+     <td>
+      <em>min:</em>
+      -1 
+     </td>
+     <td>m/s</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Throttle  ( Percent, -1 indicates no change)</td>
+     <td>Throttle (-1 indicates no change)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Throttle,</td>
+     <td>
+      <em>min:</em>
+      -1 
+     </td>
+     <td>
+      %
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>absolute or relative [0,1]</td>
+     <td>0: absolute, 1: relative<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Relative,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6740,36 +7459,53 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Use current (1=use current location, 0=use specified location)</td>
+     <td>Use current (1=use current location, 0=use specified location)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Use Current,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6782,36 +7518,55 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Parameter number</td>
+     <td>Parameter number<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Number,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Parameter value</td>
+     <td>Parameter value<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Value,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6824,36 +7579,55 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Relay number</td>
+     <td>Relay instance number.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Instance,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Setting (1=on, 0=off, others possible depending on system hardware)</td>
+     <td>Setting. (1=on, 0=off, others possible depending on system hardware)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Setting,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6866,36 +7640,71 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Relay number</td>
+     <td>Relay instance number.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Instance,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Cycle count</td>
+     <td>Cycle count.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Count,</td>
+     <td>
+      <em>min:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Cycle time (seconds, decimal)</td>
+     <td>Cycle time.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Time,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>s</td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6908,36 +7717,69 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Servo number</td>
+     <td>Servo instance number.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Instance,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>PWM (microseconds, 1000 to 2000 typical)</td>
+     <td>Pulse Width Modulation.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>PWM,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>us</td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6950,36 +7792,72 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Servo number</td>
+     <td>Servo instance number.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Instance,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>PWM (microseconds, 1000 to 2000 typical)</td>
+     <td>Pulse Width Modulation.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>PWM,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>us</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Cycle count</td>
+     <td>Cycle count.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Count,</td>
+     <td>
+      <em>min:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Cycle time (seconds)</td>
+     <td>Cycle time.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Time,</td>
+     <td>
+     </td>
+     <td>s</td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6992,36 +7870,53 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Flight termination activated if &gt; 0.5</td>
+     <td>Flight termination activated if &gt; 0.5<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Terminate,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7034,36 +7929,68 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Altitude in meters</td>
+     <td>Altitude.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Altitude,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Mav frame of new altitude (see MAV_FRAME)</td>
+     <td>Frame of new altitude.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Frame,</td>
+     <td>MAV_FRAME</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7118,36 +8045,53 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Break altitude (meters)</td>
+     <td>Break altitude<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Altitude,</td>
+     <td>m</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Landing speed (m/s)</td>
+     <td>Landing speed<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Speed,</td>
+     <td>m/s</td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7160,36 +8104,52 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Altitude (meters)</td>
+     <td>Altitude<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Altitude,</td>
+     <td>m</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7202,36 +8162,72 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Ground speed, less than 0 (-1) for default</td>
+     <td>Ground speed, less than 0 (-1) for default<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Speed,</td>
+     <td>
+      <em>min:</em>
+      -1 
+     </td>
+     <td>m/s</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Bitmask of option flags, see the MAV_DO_REPOSITION_FLAGS enum.</td>
+     <td>Bitmask of option flags.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Bitmask,</td>
+     <td>MAV_DO_REPOSITION_FLAGS</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Yaw heading, NaN for unchanged. For planes indicates loiter direction (0: clockwise, 1: counter clockwise)</td>
+     <td>Yaw heading, NaN for unchanged. For planes indicates loiter direction (0: clockwise, 1: counter clockwise)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw,</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude (deg * 1E7)</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude (deg * 1E7)</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude (meters)</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7244,36 +8240,53 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>0: Pause current mission or reposition command, hold current position. 1: Continue mission. A VTOL capable vehicle should enter hover mode (multicopter and VTOL planes). A plane should loiter with the default loiter radius.</td>
+     <td>0: Pause current mission or reposition command, hold current position. 1: Continue mission. A VTOL capable vehicle should enter hover mode (multicopter and VTOL planes). A plane should loiter with the default loiter radius.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Continue,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7286,36 +8299,53 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Direction (0=Forward, 1=Reverse)</td>
+     <td>Direction (0=Forward, 1=Reverse)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Reverse,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7391,15 +8421,21 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>pitch offset from next waypoint</td>
+     <td>pitch offset from next waypoint<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Pitch Offset,</td>
     </tr>
     <tr>
      <td>6</td>
-     <td>roll offset from next waypoint</td>
+     <td>roll offset from next waypoint<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Roll Offset,</td>
     </tr>
     <tr>
      <td>7</td>
-     <td>yaw offset from next waypoint</td>
+     <td>yaw offset from next waypoint<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw Offset,</td>
     </tr>
    </tbody>
   </table>
@@ -7454,36 +8490,75 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Camera ID (-1 for all)</td>
+     <td>Camera ID (-1 for all)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>ID,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Transmission: 0: disabled, 1: enabled compressed, 2: enabled raw</td>
+     <td>Transmission: 0: disabled, 1: enabled compressed, 2: enabled raw<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Transmission,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Transmission mode: 0: video stream, &gt;0: single images every n seconds (decimal)</td>
+     <td>Transmission mode: 0: video stream, &gt;0: single images every n seconds<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Interval,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>s</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Recording: 0: disabled, 1: enabled compressed, 2: enabled raw</td>
+     <td>Recording: 0: disabled, 1: enabled compressed, 2: enabled raw<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Recording,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7498,36 +8573,56 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Region of interest mode. (see MAV_ROI enum)</td>
+     <td>Region of interest mode.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>ROI Mode,</td>
+     <td>MAV_ROI</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Waypoint index/ target ID. (see MAV_ROI enum)</td>
+     <td>Waypoint index/ target ID (depends on param 1).<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>WP Index,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>ROI index (allows a vehicle to manage multiple ROI's)</td>
+     <td>Region of interest index. (allows a vehicle to manage multiple ROI's)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>ROI Index,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>MAV_ROI_WPNEXT: pitch offset from next waypoint, MAV_ROI_LOCATION: latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>MAV_ROI_WPNEXT: roll offset from next waypoint, MAV_ROI_LOCATION: longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>MAV_ROI_WPNEXT: yaw offset from next waypoint, MAV_ROI_LOCATION: altitude</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7540,36 +8635,79 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Modes: P, TV, AV, M, Etc</td>
+     <td>Modes: P, TV, AV, M, Etc.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Mode,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Shutter speed: Divisor number for one second</td>
+     <td>Shutter speed: Divisor number for one second.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Shutter Speed,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Aperture: F stop number</td>
+     <td>Aperture: F stop number.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Aperture,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>ISO number e.g. 80, 100, 200, Etc</td>
+     <td>ISO number e.g. 80, 100, 200, Etc.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>ISO,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
-     <td>Exposure type enumerator</td>
+     <td>Exposure type enumerator.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Exposure,</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>Command Identity</td>
+     <td>Command Identity.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Command Identity,</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>Main engine cut-off time before camera trigger in seconds/10 (0 means no cut-off)</td>
+     <td>Main engine cut-off time before camera trigger. (0 means no cut-off)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Engine Cut-off,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>ds</td>
     </tr>
    </tbody>
   </table>
@@ -7587,31 +8725,45 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>Session control e.g. show/hide lens</td>
+     <td>Session control e.g. show/hide lens<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Session Control,</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Zoom's absolute position</td>
+     <td>Zoom's absolute position<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Zoom Absolute,</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Zooming step value to offset zoom from the current position</td>
+     <td>Zooming step value to offset zoom from the current position<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Zoom Relative,</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Focus Locking, Unlocking or Re-locking</td>
+     <td>Focus Locking, Unlocking or Re-locking<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Focus,</td>
     </tr>
     <tr>
      <td>5</td>
-     <td>Shooting Command</td>
+     <td>Shooting Command<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Shoot Command,</td>
     </tr>
     <tr>
      <td>6</td>
-     <td>Command Identity</td>
+     <td>Command Identity<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Command Identity,</td>
     </tr>
     <tr>
      <td>7</td>
-     <td>Test shot identifier. If set to 1, image will only be captured, but not counted towards internal frame count.</td>
+     <td>Test shot identifier. If set to 1, image will only be captured, but not counted towards internal frame count.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Shot ID,</td>
     </tr>
    </tbody>
   </table>
@@ -7624,36 +8776,58 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Mount operation mode (see MAV_MOUNT_MODE enum)</td>
+     <td>Mount operation mode<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Mode,</td>
+     <td>MAV_MOUNT_MODE</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>stabilize roll? (1 = yes, 0 = no)</td>
+     <td>stabilize roll? (1 = yes, 0 = no)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Stabilize Roll,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>stabilize pitch? (1 = yes, 0 = no)</td>
+     <td>stabilize pitch? (1 = yes, 0 = no)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Stabilize Pitch,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>stabilize yaw? (1 = yes, 0 = no)</td>
+     <td>stabilize yaw? (1 = yes, 0 = no)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Stabilize Yaw,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>5</td>
      <td>roll input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>pitch input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>yaw input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7666,36 +8840,68 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>pitch depending on mount mode (degrees or degrees/second depending on pitch input).</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>roll depending on mount mode (degrees or degrees/second depending on roll input).</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>yaw depending on mount mode (degrees or degrees/second depending on yaw input).</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>alt in meters depending on mount mode.</td>
+     <td>altitude depending on mount mode.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Altitude,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>5</td>
      <td>latitude in degrees * 1E7, set if appropriate mount mode.</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>longitude in degrees * 1E7, set if appropriate mount mode.</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>MAV_MOUNT_MODE enum value</td>
+     <td>Mount mode.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Mode,</td>
+     <td>MAV_MOUNT_MODE</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7708,36 +8914,72 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Camera trigger distance (meters). 0 to stop triggering.</td>
+     <td>Camera trigger distance. 0 to stop triggering.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Distance,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Camera shutter integration time (milliseconds). -1 or 0 to ignore</td>
+     <td>Camera shutter integration time. -1 or 0 to ignore<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Shutter,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>increment:</em>1</td>
+     <td>ms</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Trigger camera once immediately. (0 = no trigger, 1 = trigger)</td>
+     <td>Trigger camera once immediately. (0 = no trigger, 1 = trigger)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Trigger,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7750,36 +8992,53 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>enable? (0=disable, 1=enable, 2=disable_floor_only)</td>
+     <td>enable? (0=disable, 1=enable, 2=disable_floor_only)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Enable,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7844,126 +9103,215 @@
   <h3 id="MAV_CMD_DO_MOTOR_TEST">MAV_CMD_DO_MOTOR_TEST (<a href="#MAV_CMD_DO_MOTOR_TEST">209</a>
    )
   </h3>
-  <p>Mission command to perform motor test</p>
+  <p>Mission command to perform motor test.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>motor number (a number from 1 to max number of motors on the vehicle)</td>
+     <td>Motor instance number. (from 1 to max number of motors on the vehicle)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Instance,</td>
+     <td>
+      <em>min:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>throttle type (0=throttle percentage, 1=PWM, 2=pilot throttle channel pass-through. See MOTOR_TEST_THROTTLE_TYPE enum)</td>
+     <td>Throttle type.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Throttle Type,</td>
+     <td>MOTOR_TEST_THROTTLE_TYPE</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>throttle</td>
+     <td>Throttle.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Throttle,</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>timeout (in seconds)</td>
+     <td>Timeout.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Timeout,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>s</td>
     </tr>
     <tr>
      <td>5</td>
-     <td>motor count (number of motors to test to test in sequence, waiting for the timeout above between them; 0=1 motor, 1=1 motor, 2=2 motors...)</td>
+     <td>Motor count. (number of motors to test to test in sequence, waiting for the timeout above between them; 0=1 motor, 1=1 motor, 2=2 motors...)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Motor Count,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>motor test order (See MOTOR_TEST_ORDER enum)</td>
+     <td>Motor test order.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Test Order,</td>
+     <td>MOTOR_TEST_ORDER</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
   <h3 id="MAV_CMD_DO_INVERTED_FLIGHT">MAV_CMD_DO_INVERTED_FLIGHT (<a href="#MAV_CMD_DO_INVERTED_FLIGHT">210</a>
    )
   </h3>
-  <p>Change to/from inverted flight</p>
+  <p>Change to/from inverted flight.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>inverted (0=normal, 1=inverted)</td>
+     <td>Inverted flight. (0=normal, 1=inverted)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Inverted,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
   <h3 id="MAV_CMD_NAV_SET_YAW_SPEED">MAV_CMD_NAV_SET_YAW_SPEED (<a href="#MAV_CMD_NAV_SET_YAW_SPEED">213</a>
    )
   </h3>
-  <p>Sets a desired vehicle turn angle and speed change</p>
+  <p>Sets a desired vehicle turn angle and speed change.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>yaw angle to adjust steering by in centidegress</td>
+     <td>Yaw angle to adjust steering by.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Yaw,</td>
+     <td>
+     </td>
+     <td>cdeg</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>speed - normalized to 0 .. 1</td>
+     <td>speed - normalized to 0 .. 1<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Speed,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7976,36 +9324,72 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Camera trigger cycle time (milliseconds). -1 or 0 to ignore.</td>
+     <td>Camera trigger cycle time. -1 or 0 to ignore.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Trigger Cycle,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>increment:</em>1</td>
+     <td>ms</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Camera shutter integration time (milliseconds). Should be less than trigger cycle time. -1 or 0 to ignore.</td>
+     <td>Camera shutter integration time. Should be less than trigger cycle time. -1 or 0 to ignore.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Shutter Integration,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>increment:</em>1</td>
+     <td>ms</td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8023,19 +9407,27 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>q1 - quaternion param #1, w (1 in null-rotation)</td>
+     <td>quaternion param q1, w (1 in null-rotation)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Q1,</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>q2 - quaternion param #2, x (0 in null-rotation)</td>
+     <td>quaternion param q2, x (0 in null-rotation)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Q2,</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>q3 - quaternion param #3, y (0 in null-rotation)</td>
+     <td>quaternion param q3, y (0 in null-rotation)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Q3,</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>q4 - quaternion param #4, z (0 in null-rotation)</td>
+     <td>quaternion param q4, z (0 in null-rotation)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Q4,</td>
     </tr>
     <tr>
      <td>5</td>
@@ -8060,36 +9452,55 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>System ID</td>
+     <td>System ID<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>System ID,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>255 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Component ID</td>
+     <td>Component ID<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Component ID,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>255 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8102,36 +9513,70 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Timeout - maximum time (in seconds) that external controller will be allowed to control vehicle. 0 means no timeout.</td>
+     <td>Timeout - maximum time that external controller will be allowed to control vehicle. 0 means no timeout.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Timeout,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>s</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Altitude (MSL) min, in meters - if vehicle moves below this alt, the command will be aborted and the mission will continue. 0 means no lower altitude limit.</td>
+     <td>Altitude (MSL) min - if vehicle moves below this alt, the command will be aborted and the mission will continue. 0 means no lower altitude limit.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Min Altitude,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Altitude (MSL) max, in meters - if vehicle moves above this alt, the command will be aborted and the mission will continue. 0 means no upper altitude limit.</td>
+     <td>Altitude (MSL) max - if vehicle moves above this alt, the command will be aborted and the mission will continue. 0 means no upper altitude limit.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Max Altitude,</td>
+     <td>
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Horizontal move limit, in meters - if vehicle moves more than this distance from its location at the moment the command was executed, the command will be aborted and the mission will continue. 0 means no horizontal move limit.</td>
+     <td>Horizontal move limit - if vehicle moves more than this distance from its location at the moment the command was executed, the command will be aborted and the mission will continue. 0 means no horizontal move limit.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Horiz. Move Limit,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8144,40 +9589,79 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>0: Stop engine, 1:Start Engine</td>
+     <td>0: Stop engine, 1:Start Engine<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Start Engine,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>0: Warm start, 1:Cold start. Controls use of choke where applicable</td>
+     <td>0: Warm start, 1:Cold start. Controls use of choke where applicable<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Cold Start,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Height delay (meters). This is for commanding engine start only after the vehicle has gained the specified height. Used in VTOL vehicles during takeoff to start engine after the aircraft is off the ground. Zero for no delay.</td>
+     <td>Height delay. This is for commanding engine start only after the vehicle has gained the specified height. Used in VTOL vehicles during takeoff to start engine after the aircraft is off the ground. Zero for no delay.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Height Delay,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8190,40 +9674,59 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Mission sequence value to set</td>
+     <td>Mission sequence value to set<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Number,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8278,36 +9781,65 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>1: gyro calibration, 3: gyro temperature calibration</td>
+     <td>1: gyro calibration, 3: gyro temperature calibration<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Gyro Temperature,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>1: magnetometer calibration</td>
+     <td>1: magnetometer calibration<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Magnetometer,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>1: ground pressure calibration</td>
+     <td>1: ground pressure calibration<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Ground Pressure,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>1: radio RC calibration, 2: RC trim calibration</td>
+     <td>1: radio RC calibration, 2: RC trim calibration<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Remote Control,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>5</td>
-     <td>1: accelerometer calibration, 2: board level calibration, 3: accelerometer temperature calibration, 4: simple accelerometer calibration</td>
+     <td>1: accelerometer calibration, 2: board level calibration, 3: accelerometer temperature calibration, 4: simple accelerometer calibration<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Accelerometer,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>4 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>6</td>
-     <td>1: APM: compass/motor interference calibration (PX4: airspeed calibration, deprecated), 2: airspeed calibration</td>
+     <td>1: APM: compass/motor interference calibration (PX4: airspeed calibration, deprecated), 2: airspeed calibration<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Compmot or Airspeed,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>7</td>
-     <td>1: ESC calibration, 3: barometer temperature calibration</td>
+     <td>1: ESC calibration, 3: barometer temperature calibration<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>ESC or Baro,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
@@ -8320,36 +9852,65 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Sensor to adjust the offsets for: 0: gyros, 1: accelerometer, 2: magnetometer, 3: barometer, 4: optical flow, 5: second magnetometer, 6: third magnetometer</td>
+     <td>Sensor to adjust the offsets for: 0: gyros, 1: accelerometer, 2: magnetometer, 3: barometer, 4: optical flow, 5: second magnetometer, 6: third magnetometer<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Sensor Type,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>6 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>X axis offset (or generic dimension 1), in the sensor's raw units</td>
+     <td>X axis offset (or generic dimension 1), in the sensor's raw units<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>X Offset,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Y axis offset (or generic dimension 2), in the sensor's raw units</td>
+     <td>Y axis offset (or generic dimension 2), in the sensor's raw units<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Y Offset,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Z axis offset (or generic dimension 3), in the sensor's raw units</td>
+     <td>Z axis offset (or generic dimension 3), in the sensor's raw units<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Z Offset,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
-     <td>Generic dimension 4, in the sensor's raw units</td>
+     <td>Generic dimension 4, in the sensor's raw units<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>4th Dimension,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>Generic dimension 5, in the sensor's raw units</td>
+     <td>Generic dimension 5, in the sensor's raw units<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>5th Dimension,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>Generic dimension 6, in the sensor's raw units</td>
+     <td>Generic dimension 6, in the sensor's raw units<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>6th Dimension,</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8367,7 +9928,9 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>1: Trigger actuator ID assignment and direction mapping.</td>
+     <td>1: Trigger actuator ID assignment and direction mapping.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Actuator ID,</td>
     </tr>
     <tr>
      <td>2</td>
@@ -8404,36 +9967,73 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Parameter storage: 0: READ FROM FLASH/EEPROM, 1: WRITE CURRENT TO FLASH/EEPROM, 2: Reset to defaults</td>
+     <td>Parameter storage: 0: READ FROM FLASH/EEPROM, 1: WRITE CURRENT TO FLASH/EEPROM, 2: Reset to defaults<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Parameter Storage,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Mission storage: 0: READ FROM FLASH/EEPROM, 1: WRITE CURRENT TO FLASH/EEPROM, 2: Reset to defaults</td>
+     <td>Mission storage: 0: READ FROM FLASH/EEPROM, 1: WRITE CURRENT TO FLASH/EEPROM, 2: Reset to defaults<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Mission Storage,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Onboard logging: 0: Ignore, 1: Start default rate logging, -1: Stop logging, &gt; 1: start logging with rate of param 3 in Hz (e.g. set to 1000 for 1000 Hz logging)</td>
+     <td>Onboard logging: 0: Ignore, 1: Start default rate logging, -1: Stop logging, &gt; 1: logging rate (e.g. set to 1000 for 1000 Hz logging)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Logging Rate,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>increment:</em>1</td>
+     <td>Hz</td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8446,36 +10046,55 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>0: Do nothing for autopilot, 1: Reboot autopilot, 2: Shutdown autopilot, 3: Reboot autopilot and keep it in the bootloader until upgraded.</td>
+     <td>0: Do nothing for autopilot, 1: Reboot autopilot, 2: Shutdown autopilot, 3: Reboot autopilot and keep it in the bootloader until upgraded.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Autopilot,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>0: Do nothing for onboard computer, 1: Reboot onboard computer, 2: Shutdown onboard computer, 3: Reboot onboard computer and keep it in the bootloader until upgraded.</td>
+     <td>0: Do nothing for onboard computer, 1: Reboot onboard computer, 2: Shutdown onboard computer, 3: Reboot onboard computer and keep it in the bootloader until upgraded.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Companion,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
      <td>WIP: 0: Do nothing for camera, 1: Reboot onboard camera, 2: Shutdown onboard camera, 3: Reboot onboard camera and keep it in the bootloader until upgraded</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>WIP: 0: Do nothing for mount (e.g. gimbal), 1: Reboot mount, 2: Shutdown mount, 3: Reboot mount and keep it in the bootloader until upgraded</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Reserved, send 0</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Reserved, send 0</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>WIP: ID (e.g. camera ID -1 for all IDs)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8497,7 +10116,7 @@
      <td>1</td>
      <td>MAV_GOTO_DO_HOLD: pause mission and either hold or move to specified position (depending on param2), MAV_GOTO_DO_CONTINUE: resume mission.<br/>
       <strong>GCS display settings:</strong>
-      <em>Label:</em>continue,</td>
+      <em>Label:</em>Continue,</td>
      <td>MAV_GOTO</td>
      <td>
      </td>
@@ -8506,7 +10125,7 @@
      <td>2</td>
      <td>MAV_GOTO_HOLD_AT_CURRENT_POSITION: hold at current position, MAV_GOTO_HOLD_AT_SPECIFIED_POSITION: hold at specified position.<br/>
       <strong>GCS display settings:</strong>
-      <em>Label:</em>position,</td>
+      <em>Label:</em>Position,</td>
      <td>MAV_GOTO</td>
      <td>
      </td>
@@ -8515,7 +10134,7 @@
      <td>3</td>
      <td>Coordinate frame of hold point.<br/>
       <strong>GCS display settings:</strong>
-      <em>Label:</em>frame,</td>
+      <em>Label:</em>Frame,</td>
      <td>MAV_FRAME</td>
      <td>
      </td>
@@ -8524,7 +10143,7 @@
      <td>4</td>
      <td>Desired yaw angle.<br/>
       <strong>GCS display settings:</strong>
-      <em>Label:</em>yaw,</td>
+      <em>Label:</em>Yaw,</td>
      <td>
      </td>
      <td>deg</td>
@@ -8564,16 +10183,25 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>first_item: the first mission item to run</td>
+     <td>first_item: the first mission item to run<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>First Item,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>last_item:  the last mission item to run (after this item is run, the mission ends)</td>
+     <td>last_item:  the last mission item to run (after this item is run, the mission ends)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Last Item,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
@@ -8586,12 +10214,17 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>1 to arm, 0 to disarm</td>
+     <td>0: disarm, 1: arm<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Arm,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
@@ -8640,22 +10273,30 @@
   <h3 id="MAV_CMD_START_RX_PAIR">MAV_CMD_START_RX_PAIR (<a href="#MAV_CMD_START_RX_PAIR">500</a>
    )
   </h3>
-  <p>Starts receiver pairing</p>
+  <p>Starts receiver pairing.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>0:Spektrum</td>
+     <td>0:Spektrum.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Spektrum,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>RC type (see RC_TYPE enum)</td>
+     <td>RC type.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>RC Type,</td>
+     <td>RC_TYPE</td>
     </tr>
    </tbody>
   </table>
@@ -8668,12 +10309,17 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>The MAVLink message ID</td>
+     <td>The MAVLink message ID<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Message ID,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
@@ -8686,16 +10332,31 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>The MAVLink message ID</td>
+     <td>The MAVLink message ID<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Message ID,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>The interval between two messages, in microseconds. Set to -1 to disable and 0 to request default rate.</td>
+     <td>The interval between two messages. Set to -1 to disable and 0 to request default rate.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Interval,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>increment:</em>1</td>
+     <td>us</td>
     </tr>
    </tbody>
   </table>
@@ -8708,16 +10369,25 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>The MAVLink message ID of the requested message.</td>
+     <td>The MAVLink message ID of the requested message.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Message ID,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Index id (if appropriate). The use of this parameter (if any), must be defined in the requested message.</td>
+     <td>Index id (if appropriate). The use of this parameter (if any), must be defined in the requested message.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Index ID,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
@@ -8735,7 +10405,9 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>1: Request supported protocol versions by all nodes on the network</td>
+     <td>1: Request supported protocol versions by all nodes on the network<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Protocol,</td>
     </tr>
     <tr>
      <td>2</td>
@@ -8757,7 +10429,9 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>1: Request autopilot version</td>
+     <td>1: Request autopilot version<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Version,</td>
     </tr>
     <tr>
      <td>2</td>
@@ -8774,16 +10448,23 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>0: No action 1: Request camera capabilities</td>
+     <td>0: No action 1: Request camera capabilities<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Capabilities,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8796,16 +10477,23 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>0: No Action 1: Request camera settings</td>
+     <td>0: No Action 1: Request camera settings<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Settings,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8818,20 +10506,31 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Storage ID (0 for all, 1 for first, 2 for second, etc.)</td>
+     <td>Storage ID (0 for all, 1 for first, 2 for second, etc.)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Storage ID,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>0: No Action 1: Request storage information</td>
+     <td>0: No Action 1: Request storage information<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Information,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8844,20 +10543,31 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Storage ID (1 for first, 2 for second, etc.)</td>
+     <td>Storage ID (1 for first, 2 for second, etc.)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Storage ID,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>0: No action 1: Format storage</td>
+     <td>0: No action 1: Format storage<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Format,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8870,16 +10580,23 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>0: No Action 1: Request camera capture status</td>
+     <td>0: No Action 1: Request camera capture status<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Capture Status,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8894,16 +10611,23 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>1: Request flight information</td>
+     <td>1: Request flight information<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Flight Information,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8916,16 +10640,23 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>0: No Action 1: Reset all settings</td>
+     <td>0: No Action 1: Reset all settings<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Reset,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -8950,7 +10681,9 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>Camera mode</td>
+     <td>Camera mode<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Camera Mode,</td>
      <td>CAMERA_MODE</td>
     </tr>
     <tr>
@@ -8978,12 +10711,16 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>Zoom type</td>
+     <td>Zoom type<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Zoom Type,</td>
      <td>CAMERA_ZOOM_TYPE</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Zoom value. The range of valid values depend on the zoom type.</td>
+     <td>Zoom value. The range of valid values depend on the zoom type.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Zoom Value,</td>
      <td>
      </td>
     </tr>
@@ -9012,12 +10749,16 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>Focus type</td>
+     <td>Focus type<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Focus Type,</td>
      <td>SET_FOCUS_TYPE</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Focus value</td>
+     <td>Focus value<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Focus Value,</td>
      <td>
      </td>
     </tr>
@@ -9038,12 +10779,17 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Tag.</td>
+     <td>Tag.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Tag,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
@@ -9056,16 +10802,25 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Target tag to jump to.</td>
+     <td>Target tag to jump to.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Tag,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Repeat count</td>
+     <td>Repeat count.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Repeat,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
@@ -9106,7 +10861,7 @@
       <strong>GCS display settings:</strong>
       <em>Label:</em>Capture Count,</td>
      <td>
-      <em>min:</em>0 </td>
+      <em>min:</em>0 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
@@ -9116,7 +10871,7 @@
       <strong>GCS display settings:</strong>
       <em>Label:</em>Sequence Number,</td>
      <td>
-      <em>min:</em>0 </td>
+      <em>min:</em>1 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
@@ -9163,16 +10918,23 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Sequence number for missing CAMERA_IMAGE_CAPTURE message</td>
+     <td>Sequence number for missing CAMERA_IMAGE_CAPTURE message<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Number,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -9185,20 +10947,39 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Trigger enable/disable (0 for disable, 1 for start), -1 to ignore</td>
+     <td>Trigger enable/disable (0 for disable, 1 for start), -1 to ignore<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Enable,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>1 to reset the trigger sequence, -1 or 0 to ignore</td>
+     <td>1 to reset the trigger sequence, -1 or 0 to ignore<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Reset,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>1 to pause triggering, but without switching the camera off or retracting it. -1 to ignore</td>
+     <td>1 to pause triggering, but without switching the camera off or retracting it. -1 to ignore<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Pause,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>1 <em>increment:</em>2</td>
     </tr>
    </tbody>
   </table>
@@ -9222,13 +11003,13 @@
       <strong>GCS display settings:</strong>
       <em>Label:</em>Stream ID,</td>
      <td>
-      <em>min:</em>0 </td>
+      <em>min:</em>0 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Frequency CAMERA_CAPTURE_STATUS messages should be sent while recording (0 for no messages, otherwise frequency in Hz)<br/>
+     <td>Frequency CAMERA_CAPTURE_STATUS messages should be sent while recording (0 for no messages, otherwise frequency)<br/>
       <strong>GCS display settings:</strong>
       <em>Label:</em>Status Frequency,</td>
      <td>
@@ -9264,7 +11045,7 @@
       <strong>GCS display settings:</strong>
       <em>Label:</em>Stream ID,</td>
      <td>
-      <em>min:</em>0 </td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
@@ -9295,7 +11076,7 @@
       <strong>GCS display settings:</strong>
       <em>Label:</em>Stream ID,</td>
      <td>
-      <em>min:</em>0 </td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
@@ -9326,7 +11107,7 @@
       <strong>GCS display settings:</strong>
       <em>Label:</em>Stream ID,</td>
      <td>
-      <em>min:</em>0 </td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
@@ -9357,7 +11138,7 @@
       <strong>GCS display settings:</strong>
       <em>Label:</em>Stream ID,</td>
      <td>
-      <em>min:</em>0 </td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
@@ -9388,7 +11169,7 @@
       <strong>GCS display settings:</strong>
       <em>Label:</em>Stream ID,</td>
      <td>
-      <em>min:</em>0 </td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
@@ -9407,36 +11188,53 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Format: 0: ULog</td>
+     <td>Format: 0: ULog<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Format,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved (set to 0)</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved (set to 0)</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved (set to 0)</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Reserved (set to 0)</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Reserved (set to 0)</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Reserved (set to 0)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -9492,36 +11290,57 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Landing gear ID (default: 0, -1 for all)</td>
+     <td>Landing gear ID (default: 0, -1 for all)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Landing Gear ID,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Landing gear position (Down: 0, Up: 1, NaN for no change)</td>
+     <td>Landing gear position (Down: 0, Up: 1, NaN for no change)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Landing Gear Position,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved, set to NaN</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved, set to NaN</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Reserved, set to NaN</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Reserved, set to NaN</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Reserved, set to NaN</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -9534,36 +11353,53 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Control transmission over high latency telemetry (0: stop, 1: start)</td>
+     <td>Control transmission over high latency telemetry (0: stop, 1: start)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Enable,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -9576,24 +11412,37 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Viewing angle horizontal of the panorama (in degrees, +- 0.5 the total angle)</td>
+     <td>Viewing angle horizontal of the panorama (+- 0.5 the total angle)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Horizontal Angle,</td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Viewing angle vertical of panorama (in degrees)</td>
+     <td>Viewing angle vertical of panorama.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Vertical Angle,</td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Speed of the horizontal rotation (in degrees per second)</td>
+     <td>Speed of the horizontal rotation.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Horizontal Speed,</td>
+     <td>deg/s</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Speed of the vertical rotation (in degrees per second)</td>
+     <td>Speed of the vertical rotation.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Vertical Speed,</td>
+     <td>deg/s</td>
     </tr>
    </tbody>
   </table>
@@ -9606,12 +11455,16 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>The target VTOL state, as defined by ENUM MAV_VTOL_STATE. Only MAV_VTOL_STATE_MC and MAV_VTOL_STATE_FW can be used.</td>
+     <td>The target VTOL state. Only MAV_VTOL_STATE_MC and MAV_VTOL_STATE_FW can be used.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>State,</td>
+     <td>MAV_VTOL_STATE</td>
     </tr>
    </tbody>
   </table>
@@ -9624,12 +11477,17 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle</td>
+     <td>Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>System ID,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>255 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
@@ -9661,7 +11519,9 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>Radius of desired circle in CIRCLE_MODE</td>
+     <td>Radius of desired circle in CIRCLE_MODE<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Radius,</td>
     </tr>
     <tr>
      <td>2</td>
@@ -9696,36 +11556,55 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Geometry: 0: orthogonal to path between previous and next waypoint.</td>
+     <td>Geometry: 0: orthogonal to path between previous and next waypoint.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Geometry,</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Altitude: 0: ignore altitude</td>
+     <td>Altitude: 0: ignore altitude<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Altitude,</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -9780,36 +11659,53 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Polygon vertex count</td>
+     <td>Polygon vertex count<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Vertex Count,</td>
+     <td>
+      <em>min:</em>3 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -9822,36 +11718,53 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Polygon vertex count</td>
+     <td>Polygon vertex count<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Vertex Count,</td>
+     <td>
+      <em>min:</em>3 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -9864,36 +11777,52 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>radius in meters</td>
+     <td>Radius.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Radius,</td>
+     <td>m</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -9906,36 +11835,52 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>radius in meters</td>
+     <td>Radius.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Radius,</td>
+     <td>m</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -10032,36 +11977,78 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Operation mode. 0: prepare single payload deploy (overwriting previous requests), but do not execute it. 1: execute payload deploy immediately (rejecting further deploy commands during execution, but allowing abort). 2: add payload deploy to existing deployment list.</td>
+     <td>Operation mode. 0: prepare single payload deploy (overwriting previous requests), but do not execute it. 1: execute payload deploy immediately (rejecting further deploy commands during execution, but allowing abort). 2: add payload deploy to existing deployment list.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Operation Mode,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Desired approach vector in degrees compass heading (0..360). A negative value indicates the system can define the approach vector at will.</td>
+     <td>Desired approach vector in compass heading. A negative value indicates the system can define the approach vector at will.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Approach Vector,</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>360 </td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Desired ground speed at release time. This can be overridden by the airframe in case it needs to meet minimum airspeed. A negative value indicates the system can define the ground speed at will.</td>
+     <td>Desired ground speed at release time. This can be overridden by the airframe in case it needs to meet minimum airspeed. A negative value indicates the system can define the ground speed at will.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Ground Speed,</td>
+     <td>
+      <em>min:</em>
+      -1 
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Minimum altitude clearance to the release position in meters. A negative value indicates the system can define the clearance at will.</td>
+     <td>Minimum altitude clearance to the release position. A negative value indicates the system can define the clearance at will.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Altitude Clearance,</td>
+     <td>
+      <em>min:</em>
+      -1 
+     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>5</td>
      <td>Latitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Longitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Altitude (MSL), in meters</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -10074,36 +12061,53 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Operation mode. 0: Abort deployment, continue normal mission. 1: switch to payload deployment mode. 100: delete first payload deployment request. 101: delete all payload deployment requests.</td>
+     <td>Operation mode. 0: Abort deployment, continue normal mission. 1: switch to payload deployment mode. 100: delete first payload deployment request. 101: delete all payload deployment requests.<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Operation Mode,</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>101 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
