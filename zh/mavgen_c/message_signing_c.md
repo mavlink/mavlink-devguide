@@ -100,7 +100,7 @@ bool accept_unsigned_callback(const mavlink_status_t *status, uint32_t msgId);
 * 有一个机制标记一个特定的通信频道，使其安全（例如 USB 连接），以便能够签名设置。
 * 总是接受 `RADIIO_STATUS` 数据包从3DS 电台反馈 (没有签名)
 
-For example:
+例如：
 
 ```c
 static const uint32_t unsigned_messages[] = {
@@ -124,15 +124,15 @@ static bool accept_unsigned_callback(const mavlink_status_t *status, uint32_t me
 }
 ```
 
-## Handling Link IDs {#handling_link_ids}
+## 处理链接ID {#handling_link_ids}
 
-The purpose of the `link_id` field in the *MAVLink 2* signing structure is to prevent cross-channel replay attacks. Without the `link_id` an attacker could record a packet (such as a disarm request) on one channel, then play it back on a different channel.
+`link_id` 在*MAVLink 2* 签名结构中的字段，目的是防止交叉频道重播攻击。 如果没有 `链接_id` 攻击者可在一个频道上记录一个数据包(例如解除武装请求)，然后再回到一个不同频道。
 
-The intention with the link IDs is that each channel of communication between an autopilot and a GCS uses a different link ID. There is no requirement that the same link ID be used in both directions however.
+使用链接ID的意图是，自动试验机和GCS之间的每个通信渠道都使用不同的链接ID。 但是，没有要求在两个方案中使用同样的链接ID。
 
-For C implementations the obvious mechanism is to use the MAVLink channel number as the link ID. That works well for an autopilot, but runs into an issue for a GCS implementation. The issue is that a user may launch multiple GCS instances talking to the same autopilot via different communication links (such as two radios, or USB and a radio). These multiple GCS instances will not be aware of each other, and so may choose the same link ID. If that happens then a large number of correctly signed packets will be rejected by the autopilot as they will have timestamps that are older than the timestamp received for the same stream tuple on the other communication link.
+C 执行显然的机制是使用 MAVLink 频道编号为链接ID。 这对于自驾仪工作大有助益，但成为 GCS 实现的一个问题。 问题是，用户可以通过不同的通信链接（例如两个无线电或 USB 和 USB）无线电发射多个 GCS 实例，与同一自动飞行器进行交谈。 这些多个 GCS 实例将不会意识到彼此，因此可以选择同一链接ID。 如果发生这种情况，许多正确签名的数据包将被自驾仪拒绝，因为它们的时间戳比收到其他通信链接上相同的流时间戳更早。
 
-The solution adopted for *MAVProxy* is shown below:
+在*MAVProxy*所采用的解决办法如下：
 
     if (msg.get_signed() and
         self.mav.signing.link_id == 0 and
@@ -143,6 +143,6 @@ The solution adopted for *MAVProxy* is shown below:
         self.mav.signing.link_id = msg.get_link_id()
     
 
-What that says is that if the current link ID in use by MAVProxy is zero, and it receives a correctly signed packet with a non-zero link ID then it switches link ID to the one from the incoming packet.
+这就是说，如果 MAVProx 使用的当前链接ID为零，它收到一个与非零链接ID的正确签名数据包，那么它将链接ID切换到接收的数据包。
 
-This has the effect of making the GCS slave its link ID to the link ID of the autopilot.
+这将使 GCS 从链接ID与自动试验器的链接ID具有影响。
