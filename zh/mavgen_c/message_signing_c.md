@@ -83,22 +83,22 @@ status.signing_streams = &signing_streams;
 
 `MAVLINK_MAX_SIGNING_STREAMS` 宏提供了支持的最大签名流数。 这默认为 16, 但对于 gcs 实现来说, 这一点可能是值得的。 如果C的执行超出了签名的流程，那么新流将被拒绝。
 
-## Using accept_unsigned_callback
+## 使用 accept_unsigned_callback
 
-[Message Signing > Accepting Unsigned Packets](../guide/message_signing.md#accepting_unsigned_packets) and [Accepting Incorrectly Signed Packets](../guide/message_signing.md#accepting_incorrectly_signed_packets) specify that a message signing implementation should provide mechanisms such that library users can choose to conditionally accept unsigned or incorrectly signed packets.
+Message Signing > Accepting Unsigned Packets</0 > 和 [Accepting Incorrectly Signed packets](../guide/message_signing.md#accepting_incorrectly_signed_packets) 指定消息签名实现应提供机制, 以便图书馆用户可以选择有条件地接受未签名或不正确签名的数据包。</p> 
 
-The C implementation provides the `accept_unsigned_callback()` function pointer for this purpose, which may optionally be set in the [signing](#enabling_signing_channel) structure. The C prototype for this function is:
+C执行提供了`accept_unsigned_callback` 为此目的函数指针，可以在[签署](#enabling_signing_channel)结构中设置。 此函数的C原型是：
 
 ```c
 bool accept_unsigned_callback(const mavlink_status_t *status, uint32_t msgId);
 ```
 
-If set then this function will be called on any unsigned packet (including all *MAVLink 1* packets) or any packet where the signature is incorrect. The function offers a way for the implementation to allow unsigned packets to be accepted (and incorrectly signed packets, which might be accepted under some circumstances).
+如果设置，此函数将被调用于任何未签名的数据 (包括所有 *MAVLink 1* 数据包) 或者任何签名不正确的数据包。 该功能为执行工作提供了一个途径，允许未签名的数据包被接受（并且错误地签名的数据包，在某些情况下可以接受）。
 
-The rules for what unsigned packets should be accepted is implementation specific, but it is suggested the following rules be considered:
+关于哪些未签名包应该接受的规则是具体的执行，但建议考虑以下规则：
 
-* have a mechanism for marking a particular communication channel as being secure (such as a USB connection) to allow for signing setup.
-* always accept `RADIO_STATUS` packets for feedback from 3DR radios (which don't do signing)
+* 有一个机制标记一个特定的通信频道，使其安全（例如 USB 连接），以便能够签名设置。
+* 总是接受 `RADIIO_STATUS` 数据包从3DS 电台反馈 (没有签名)
 
 For example:
 
