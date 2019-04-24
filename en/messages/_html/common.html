@@ -5285,7 +5285,7 @@
    </tbody>
   </table>
   <h2>MAVLink Commands (MAV_CMD)</h2>
-  <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data.</p>
+  <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the MAV_CMD entries</p>
   <h3 id="MAV_CMD_NAV_WAYPOINT">MAV_CMD_NAV_WAYPOINT (<a href="#MAV_CMD_NAV_WAYPOINT">16</a>
    )
   </h3>
@@ -5306,7 +5306,7 @@
       <strong>GCS display settings:</strong>
       <em>Label:</em>Hold,</td>
      <td>
-      <em>min:</em>0 <em>increment:</em>1</td>
+      <em>min:</em>0 </td>
      <td>s</td>
     </tr>
     <tr>
@@ -5334,8 +5334,7 @@
       <em>Label:</em>Yaw,</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>5</td>
@@ -6594,7 +6593,7 @@
     </tr>
     <tr>
      <td>4</td>
-     <td>Yaw angle in degrees. NaN for unchanged.<br/>
+     <td>Yaw angle. NaN for unchanged.<br/>
       <strong>GCS display settings:</strong>
       <em>Label:</em>Yaw Angle,</td>
      <td>
@@ -6957,36 +6956,67 @@
     <tr>
      <th>Param</th>
      <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Delay in seconds (decimal)</td>
+     <td>Delay<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Delay,</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>s</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Empty</td>
+     <td>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -7671,7 +7701,7 @@
       <strong>GCS display settings:</strong>
       <em>Label:</em>Time,</td>
      <td>
-      <em>min:</em>0 <em>increment:</em>1</td>
+      <em>min:</em>0 </td>
      <td>s</td>
     </tr>
     <tr>
@@ -7832,7 +7862,7 @@
       <strong>GCS display settings:</strong>
       <em>Label:</em>Time,</td>
      <td>
-     </td>
+      <em>min:</em>0 </td>
      <td>s</td>
     </tr>
     <tr>
@@ -9059,7 +9089,7 @@
      <td>1</td>
      <td>action<br/>
       <strong>GCS display settings:</strong>
-      <em>Label:</em>action,</td>
+      <em>Label:</em>Action,</td>
      <td>PARACHUTE_ACTION</td>
     </tr>
     <tr>
