@@ -9305,9 +9305,11 @@
     </tr>
     <tr>
      <td>3</td>
-     <td>Empty</td>
+     <td>Final angle. (0=absolute, 1=relative)<br/>
+      <strong>GCS display settings:</strong>
+      <em>Label:</em>Angle,</td>
      <td>
-     </td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
@@ -12777,7 +12779,7 @@
    </a>
    )
   </h3>
-  <p>The heartbeat message shows that a system or component is present and responding. The type and autopilot fields (along with the message component id), allow the receiving system to treat further messages from this system appropriately (e.g. by laying out the user interface based on the autopilot).</p>
+  <p>The heartbeat message shows that a system or component is present and responding. The type and autopilot fields (along with the message component id), allow the receiving system to treat further messages from this system appropriately (e.g. by laying out the user interface based on the autopilot). This microservice is documented at https://mavlink.io/en/services/heartbeat.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13031,7 +13033,7 @@
    </a>
    )
   </h3>
-  <p>A ping message either requesting or responding to a ping. This allows to measure the system latencies, including serial port, radio modem and UDP connections.</p>
+  <p>A ping message either requesting or responding to a ping. This allows to measure the system latencies, including serial port, radio modem and UDP connections. The ping microservice is documented at https://mavlink.io/en/services/ping.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13261,7 +13263,7 @@
    </a>
    )
   </h3>
-  <p>Request all parameters of this component. After this request, all parameters are emitted.</p>
+  <p>Request all parameters of this component. After this request, all parameters are emitted. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13288,7 +13290,7 @@
    </a>
    )
   </h3>
-  <p>Emit the value of a onboard parameter. The inclusion of param_count and param_index in the message allows the recipient to keep track of received parameters and allows him to re-request missing parameters after a loss or timeout.</p>
+  <p>Emit the value of a onboard parameter. The inclusion of param_count and param_index in the message allows the recipient to keep track of received parameters and allows him to re-request missing parameters after a loss or timeout. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13350,7 +13352,7 @@
    </a>
    )
   </h3>
-  <p>Set a parameter value (write new value to permanent storage). IMPORTANT: The receiving component should acknowledge the new parameter value by sending a PARAM_VALUE message to all communication partners. This will also ensure that multiple GCS all have an up-to-date list of all parameters. If the sending GCS did not receive a PARAM_VALUE message within its timeout time, it should re-send the PARAM_SET message.</p>
+  <p>Set a parameter value (write new value to permanent storage). IMPORTANT: The receiving component should acknowledge the new parameter value by sending a PARAM_VALUE message to all communication partners. This will also ensure that multiple GCS all have an up-to-date list of all parameters. If the sending GCS did not receive a PARAM_VALUE message within its timeout time, it should re-send the PARAM_SET message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16595,7 +16597,7 @@
    </a>
    )
   </h3>
-  <p>Message encoding a command with parameters as scaled integers. Scaling depends on the actual command value.</p>
+  <p>Message encoding a command with parameters as scaled integers. Scaling depends on the actual command value. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16728,7 +16730,7 @@
    </a>
    )
   </h3>
-  <p>Send a command with up to seven parameters to the MAV</p>
+  <p>Send a command with up to seven parameters to the MAV. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16844,7 +16846,7 @@
    </a>
    )
   </h3>
-  <p>Report status of a command. Includes feedback whether the command was executed.</p>
+  <p>Report status of a command. Includes feedback whether the command was executed. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
   <table class="sortable">
    <thead>
     <tr>
