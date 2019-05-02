@@ -28,7 +28,7 @@ Addressed messages are resent on a new channel *iff* the system has previously s
 > **Warning** Forwarded messages must not be changed/repackaged by the forwarding system (the original message is passed to the new link).
 
 <span></span>
-> **Note** Systems must forward messages according to the routing rules *even if they are unable to process them* (e.g. if using a library that does not include the message, or if they don't have the correct signature for authenticating a message).
+> **Note** Systems should, where possible, forward messages according to the routing rules *even if they are unable to process them* (e.g. signed messages that cannot be authenticated). Messages that are not supported/understood by the library should be forwarded as though they were broadcast messages (in this case the target system/component ids cannot be read).
 
 ## Routing Detail
 
