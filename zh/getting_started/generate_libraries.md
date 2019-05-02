@@ -2,9 +2,13 @@
 
 通过使用[代码生成器](../messages/README.md)从*XML格式定义的消息*中生成不同编程语言使用的MAVLink库文件。
 
-每个版本的MAVLink协议支持的代码生成器和编程语言类型都列在[支持语言表格](../README.md#supported_languages)中(包括C、C#、Java、Python等)。
+This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line).
 
-本章主要介绍如何使用MAVLink项目中提供的两种代码生成器:[mavgenerate(图形用户界面)](#mavgenerate)和[mavgen(命令行)](#mavgen)(其他代码生成器可以查看与之相关的项目)。
+> **Note** These generators can build MAVLink 2 libraries for C, C++11, Python, Java, and WLua (supporting both MAVLink 2 and 1), and MAVLink 1 (only) libraries for: CS, JavaScript, ObjC, Swift.
+
+<span></span>
+
+> **Tip** Generators for other programming languages are supported and documented in independent progects. For more information see [Supported Languages](../README.md#supported_languages).
 
 ## 先决条件
 
@@ -15,7 +19,7 @@
 
 **mavgenerate.py**是用Python语言编写的MAVLink的图形用户界面代码生成器。
 
-> **注意***Mavgenerate*为[mavgen](#mavgen)命令行代码生成器提供了一个图形用户界面前端，并支持相同的[选项](#mavgen_options)。
+> **Note** *Mavgenerate* provides a GUI front end to the [mavgen](#mavgen) command line code generator, and supports the same [options](#mavgen_options).
 
 可以使用Pythond的`-m`参数从任何地方打开这个图形用户界面。
 
@@ -42,7 +46,7 @@ python -m mavgenerate
 
 **mavgen.py**是一个命令行工具，用于为不同编程语言生成MAVLink库。 将`mavlink`路径添加到`PYTHONPATH`后，可以通过命令行来运行它。
 
-> **提示**这是[mavgenerate](#mavgenerate)所使用的后端。 下面的文档说明了这两种工具的所有选项。
+> **Tip** This is the backend used by [mavgenerate](#mavgenerate). The documentation below explains all the options for both tools.
 
 举例来说，为*your_custom_dialect.xml*自定义消息生成**MAVLink 2**的C语言库。
 
@@ -50,7 +54,7 @@ python -m mavgenerate
 python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
 ```
 
-> **注意**生成Python模块的语法是相同的，除了`--output`指定*文件名*而不是文件路径。 <!-- https://github.com/ArduPilot/pymavlink/issues/203 -->
+> **Note** The syntax for for generating Python modules is the same, except that the `--output` specifies a *filename* rather than a directory. <!-- https://github.com/ArduPilot/pymavlink/issues/203 -->
 
 <span id="mavgen_options"></span>
 *mavgen*可以通过使用`-h`参数来查看所有语法和选项。(复制在下面)：
