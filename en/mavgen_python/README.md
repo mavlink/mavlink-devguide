@@ -188,7 +188,7 @@ It is defined in each dialect module, and includes a `<message_name>_send()` met
 
 The message field values are passed as arguments to the function (fields that are the same for all messages are defined in the class - e.g. source system, source component) and each message is documented in the dialect source code. 
 
-For example, the `sytem_time_send()` function (shown below) is used to send the [SYSTEM_TIME](../messages/common.md#SYSTEM_TIME) message:
+For example, the `system_time_send()` function (shown below) is used to send the [SYSTEM_TIME](../messages/common.md#SYSTEM_TIME) message:
 
 ```python
 def system_time_send(self, time_unix_usec, time_boot_ms, force_mavlink1=False):
@@ -205,7 +205,7 @@ If you're using **mavutil** for link management then the `mav` attribute provide
 For example, to send the `SYSTEM_TIME` message using a link named [the_connection](#listen):
 
 ```python
-the_connection.mav.sytem_time_send(time_unix_usec, time_boot_ms)
+the_connection.mav.system_time_send(time_unix_usec, time_boot_ms)
 ```
 
 Other examples can be seen in [Publishing a Heartbeat](#heartbeat) and  [Requesting Specific Messages](#specific_messages) below.
