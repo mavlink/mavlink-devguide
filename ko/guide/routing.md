@@ -24,7 +24,7 @@ MAVLink components are expected to process messages that have a matching system/
 
 <span></span>
 
-> **Note** Systems must forward messages according to the routing rules *even if they are unable to process them* (e.g. if using a library that does not include the message, or if they don't have the correct signature for authenticating a message).
+> **Note** Systems should, where possible, forward messages according to the routing rules *even if they are unable to process them* (e.g. signed messages that cannot be authenticated). Messages that are not supported/understood by the library should be forwarded as though they were broadcast messages (in this case the target system/component ids cannot be read).
 
 ## Routing Detail
 
