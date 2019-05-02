@@ -24,7 +24,7 @@ MAVLink组件预计将处理具有匹配系统/组件id和广播信息的信息�
 
 <span></span>
 
-> **Note** 系统必须按照路由规则*转发信息，即使它们无法处理*(例如，如果使用不包含消息的图书馆，或者它们没有正确的签名验证消息)。
+> **Note** Systems should, where possible, forward messages according to the routing rules *even if they are unable to process them* (e.g. signed messages that cannot be authenticated). Messages that are not supported/understood by the library should be forwarded as though they were broadcast messages (in this case the target system/component ids cannot be read).
 
 ## 路由详细信息
 
