@@ -2,9 +2,13 @@
 
 Language-specific MAVLink libraries can be created from [XML Message Definitions](../messages/README.md) using *code generator* tools.
 
-The available code generators and supported output languages for each version of the MAVLink protocol are listed in [Supported Languages](../README.md#supported_languages) (these include C, C#, Java, Python etc).
+This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line).
 
-This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line) (other code generators are documented by their associated projects).
+> **Note** These generators can build MAVLink 2 libraries for C, C++11, Python, Java, and WLua (supporting both MAVLink 2 and 1), and MAVLink 1 (only) libraries for: CS, JavaScript, ObjC, Swift.
+
+<span></span>
+
+> **Tip** Generators for other programming languages are supported and documented in independent progects. For more information see [Supported Languages](../README.md#supported_languages).
 
 ## Pre-requisites
 
