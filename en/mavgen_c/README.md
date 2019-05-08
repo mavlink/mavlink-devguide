@@ -26,13 +26,13 @@ The *MAVLink 1* pre-built library [mavlink/c_library_v1](https://github.com/mavl
 The *MAVLink 2* C library offers the same range of APIs as was offered by *MAVLink 1*. 
 
 > **Note** The major change from an API perspective is that you don't need to provide a message CRC table any more, or message length table.
-  These have been folded into a single packed table, replacing the old table which was indexed by `msgId`. 
+  These have been folded into a single packed table, replacing the old table which was indexed by `msgId`.
   That was necessary to cope with the much larger 24 bit namespace of message IDs.
 
 *MAVLink 2* usage is covered in the following sections (this includes [Working with MAVLink 1](#mavlink_1) which explains how you can communicate with both *MAVLink 2* and *MAVLink 1* (only) libraries.
 
 
-## Adding Libraries 
+## Adding Libraries
 
 To use MAVLink in your C project, include the **mavlink.h** header file for your dialect:
 ```c
@@ -40,20 +40,12 @@ To use MAVLink in your C project, include the **mavlink.h** header file for your
 ```
 This will automatically add the header files for all messages in your dialect, and for any dialect files that it includes.
 
-If you support multiple *independent* dialects you can include these separately:
-
-```c
-#include <common/mavlink.h>
-#include <your_dialect/mavlink.h>
-#include <another_dialect/mavlink.h>
-```
-
-> **Warning** Avoid including header files of *dependent* dialects (those included by your dialect). 
-  If you include the headers in the wrong order the enums/messages of the parent dialect may not be available to your code.
+> **Warning** Only include the header file for a single dialect.
+  If you need to support messages from a *number of dialects* then create a new "parent" dialect XML file that includes them (and use its generated header as shown above).
 
 <span></span>
-> **Tip** *Do not include the individual message files*. 
-  If you generate your own headers, you will have to add their output location to your C compiler's search path. 
+> **Tip** *Do not include the individual message files*.
+  If you generate your own headers, you will have to add their output location to your C compiler's search path.
 
 When compiling the project, we recommend that you specify the top-level output directory AND all generated dialects and versions (this will give the greatest compatibility with existing code and examples):
 ```sh
