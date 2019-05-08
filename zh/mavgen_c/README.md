@@ -34,15 +34,7 @@ To use MAVLink in your C project, include the **mavlink.h** header file for your
 
 This will automatically add the header files for all messages in your dialect, and for any dialect files that it includes.
 
-If you support multiple *independent* dialects you can include these separately:
-
-```c
-#include <common/mavlink.h>
-#include <your_dialect/mavlink.h>
-#include <another_dialect/mavlink.h>
-```
-
-> **Warning** Avoid including header files of *dependent* dialects (those included by your dialect). If you include the headers in the wrong order the enums/messages of the parent dialect may not be available to your code.
+> **Warning** Only include the header file for a single dialect. If you need to support messages from a *number of dialects* then create a new "parent" dialect XML file that includes them (and use its generated header as shown above).
 
 <span></span>
 
