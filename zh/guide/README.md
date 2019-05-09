@@ -4,13 +4,13 @@
 
 请点击下方的工具栏的链接，了解详情：
 
-* [MAVLink Versions](../guide/mavlink_version.md)
+* [MAVLink 版本](../guide/mavlink_version.md)
 * [MAVLink 2](../guide/mavlink_2.md)
-* [Microservices](../services/README.md) (sub-protocols)
-* [Message Signing](../guide/message_signing.md)
-* [Serialization](../guide/serialization.md)
-* [Routing](../guide/routing.md)
-* [General Telemetry](../guide/general_telemetry.md)
+* [微服务器](../services/README.md) (子协议)
+* [消息签名](../guide/message_signing.md)
+* [串行化](../guide/serialization.md)
+* [路由](../guide/routing.md)
+* [通用遥测](../guide/general_telemetry.md)
 * [Offboard Control](../guide/offboard_control.md)
 * [UAVCAN Interaction](../guide/uavcan_interaction.md)
 * [Scripts](../guide/scripts.md)
