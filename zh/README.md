@@ -37,7 +37,7 @@ MAVLink项目所包含的 [mavgen](getting_started/generate_libraries.md#mavgen)
 | C                   | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    | 这是 MAVLink 项目参考实现。 可基于两个协议版本发布相应的[生成库](#prebuilt_libraries)。 |
 | C++11               | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    |                                                              |
 | Python (2.7+, 3.3+) | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    |                                                              |
-| C#                  | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                              |
+| C#                  | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    |                                                              |
 | Objective C         | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                              |
 | Java                | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                              |
 | Java                | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) |     Y      |     Y      |    Y    | *Idiomatic*是基于MAVLink的 java SDK/API。 其可为代码生成器提供分级插件。         |
