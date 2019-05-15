@@ -4,7 +4,7 @@
 
 This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line).
 
-> **Note** These generators can build MAVLink 2 libraries for C, C++11, Python, Java, and WLua (supporting both MAVLink 2 and 1), and MAVLink 1 (only) libraries for: CS, JavaScript, ObjC, Swift.
+> **Note** These generators can build MAVLink 2 libraries for C, C++11, C#, Python, Java, and WLua (supporting both MAVLink 2 and 1), and MAVLink 1 (only) libraries for: JavaScript, ObjC, Swift.
 
 <span></span>
 
