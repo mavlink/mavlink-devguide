@@ -1922,6 +1922,49 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="STORAGE_STATUS">
+   <a href="#STORAGE_STATUS">STORAGE_STATUS</a>
+  </h3>
+  <p>Flags to indicate the status of camera storage.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="STORAGE_STATUS_EMPTY">
+     <td>0</td>
+     <td>
+      <a href="#STORAGE_STATUS_EMPTY">STORAGE_STATUS_EMPTY</a>
+     </td>
+     <td>Storage is missing (no microSD card loaded for example.)</td>
+    </tr>
+    <tr id="STORAGE_STATUS_UNFORMATTED">
+     <td>1</td>
+     <td>
+      <a href="#STORAGE_STATUS_UNFORMATTED">STORAGE_STATUS_UNFORMATTED</a>
+     </td>
+     <td>Storage present but unformatted.</td>
+    </tr>
+    <tr id="STORAGE_STATUS_READY">
+     <td>2</td>
+     <td>
+      <a href="#STORAGE_STATUS_READY">STORAGE_STATUS_READY</a>
+     </td>
+     <td>Storage present and ready.</td>
+    </tr>
+    <tr id="STORAGE_STATUS_NOT_SUPPORTED">
+     <td>3</td>
+     <td>
+      <a href="#STORAGE_STATUS_NOT_SUPPORTED">STORAGE_STATUS_NOT_SUPPORTED</a>
+     </td>
+     <td>Camera does not supply storage status information. Capacity information in STORAGE_INFORMATION fields will be ignored.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_DATA_STREAM">
    <a href="#MAV_DATA_STREAM">MAV_DATA_STREAM</a>
   </h3>
@@ -24261,13 +24304,14 @@
   <p>
    <strong>
     (MAVLink 2)
-   </strong>Information about a storage medium.</p>
+   </strong>Information about a storage medium. This message is sent in response to a request and whenever the status of the storage changes (STORAGE_STATUS).</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Field Name</th>
      <th>Type</th>
      <th>Units</th>
+     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -24276,12 +24320,20 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>storage_id</td>
      <td>uint8_t</td>
      <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
      </td>
      <td>Storage ID (1 for first, 2 for second, etc.)</td>
     </tr>
@@ -24290,6 +24342,10 @@
      <td>uint8_t</td>
      <td>
      </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Number of storage devices</td>
     </tr>
     <tr>
@@ -24297,36 +24353,59 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Status of storage (0 not available, 1 unformatted, 2 formatted)</td>
+     <td>
+      <a href="#STORAGE_STATUS">STORAGE_STATUS</a>
+     </td>
+     <td>Status of storage</td>
     </tr>
     <tr>
      <td>total_capacity</td>
      <td>float</td>
      <td>MiB</td>
-     <td>Total capacity.</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Total capacity. If storage is not ready (STORAGE_STATUS_READY) value will be ignored.</td>
     </tr>
     <tr>
      <td>used_capacity</td>
      <td>float</td>
      <td>MiB</td>
-     <td>Used capacity.</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Used capacity. If storage is not ready (STORAGE_STATUS_READY) value will be ignored.</td>
     </tr>
     <tr>
      <td>available_capacity</td>
      <td>float</td>
      <td>MiB</td>
-     <td>Available storage capacity.</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Available storage capacity. If storage is not ready (STORAGE_STATUS_READY) value will be ignored.</td>
     </tr>
     <tr>
      <td>read_speed</td>
      <td>float</td>
      <td>MiB/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Read speed.</td>
     </tr>
     <tr>
      <td>write_speed</td>
      <td>float</td>
      <td>MiB/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Write speed.</td>
     </tr>
    </tbody>
