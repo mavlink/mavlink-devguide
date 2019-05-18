@@ -15385,6 +15385,69 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MISSION_CHANGED">MISSION_CHANGED (<a href="#MISSION_CHANGED">
+    #52
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>A broadcast message to notify any ground station or SDK if a mission, geofence or safe points have changed on the vehicle.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>start_index</td>
+     <td>int16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Start index for partial mission change (-1 for all items).</td>
+    </tr>
+    <tr>
+     <td>end_index</td>
+     <td>int16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>End index of a partial mission change. -1 is a synonym for the last mission item (i.e. selects all items from start_index). Ignore field if start_index=-1.</td>
+    </tr>
+    <tr>
+     <td>origin_sysid</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID of the author of the new mission.</td>
+    </tr>
+    <tr>
+     <td>origin_compid</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
+     </td>
+     <td>Compnent ID of the author of the new mission.</td>
+    </tr>
+    <tr>
+     <td>mission_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+     </td>
+     <td>Mission type.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="SAFETY_SET_ALLOWED_AREA">SAFETY_SET_ALLOWED_AREA (<a href="#SAFETY_SET_ALLOWED_AREA">
     #54
    </a>
