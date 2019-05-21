@@ -45,7 +45,7 @@ Language | Generator | MAVLink v1 | MAVLink v2 | Signing | Notes
 C       | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y | This is the MAVLink project reference implementation. [Generated libraries](#prebuilt_libraries) are also published for both protocol versions.
 C++11   | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y | 
 Python (2.7+, 3.3+) | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y | 
-C#      | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y |
+C#      | [mavgen](getting_started/generate_libraries.md#mavgen) | Y |  |  |
 Objective C | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
 Java    | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | |
 Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | Y | Y | Y | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
