@@ -53,6 +53,7 @@ JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | |
 Lua     | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | | 
 Swift   | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
 Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y | Clojure MAVLink Bindings.
+Go      | [gomavlib](https://github.com/gswly/gomavlib) | Y | Y | Y | |
 
 
 
