@@ -45,6 +45,7 @@ MAVLink项目所包含的 [mavgen](getting_started/generate_libraries.md#mavgen)
 | Lua                 | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |         |                                                              |
 | Swift               | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                              |
 | Clojure             | [clj-mavlink](https://github.com/WickedShell/clj-mavlink)   |     Y      |     Y      |    Y    | Clojure MAVLink 绑定。                                          |
+| Go                  | [gomavlib](https://github.com/gswly/gomavlib)               |     Y      |     Y      |    Y    |                                                              |
 
 ## 预建的基于C语言的MAVLink库 {#prebuilt_libraries}
 
