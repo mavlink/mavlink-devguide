@@ -13214,6 +13214,104 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="LINK_NODE_STATUS">LINK_NODE_STATUS (<a href="#LINK_NODE_STATUS">
+    #8
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>Status generated in each node in the communication chain and injected into MAVLink stream.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>timestamp</td>
+     <td>uint64_t</td>
+     <td>ms</td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>tx_buf</td>
+     <td>uint8_t</td>
+     <td>
+      %
+     </td>
+     <td>Remaining free transmit buffer space</td>
+    </tr>
+    <tr>
+     <td>rx_buf</td>
+     <td>uint8_t</td>
+     <td>
+      %
+     </td>
+     <td>Remaining free receive buffer space</td>
+    </tr>
+    <tr>
+     <td>tx_rate</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Transmit rate in bytes/s</td>
+    </tr>
+    <tr>
+     <td>rx_rate</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Receive rate in bytes/s</td>
+    </tr>
+    <tr>
+     <td>rx_parse_err</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Number of bytes that could not be parsed correctly</td>
+    </tr>
+    <tr>
+     <td>tx_overflows</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Transmit buffer overflows. This number wraps around as it reaches UINT16_MAX</td>
+    </tr>
+    <tr>
+     <td>rx_overflows</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Receive buffer overflows. This number wraps around as it reaches UINT16_MAX</td>
+    </tr>
+    <tr>
+     <td>messages_sent</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Messages sent</td>
+    </tr>
+    <tr>
+     <td>messages_received</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Messages received (estimated from counting seq)</td>
+    </tr>
+    <tr>
+     <td>messages_lost</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Messages lost (estimated from counting seq)</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="SET_MODE">SET_MODE (<a href="#SET_MODE">
     #11
    </a>
@@ -25682,7 +25780,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Distance of obstacles around the UAV with index 0 corresponding to local North. A value of 0 means that the obstacle is right in front of the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.</td>
+     <td>Distance of obstacles around the UAV with index 0 corresponding to local forward + angle_offset. A value of 0 means that the obstacle is right in front of the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.</td>
     </tr>
     <tr>
      <td>increment</td>
@@ -25692,7 +25790,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Angular width in degrees of each array element.</td>
+     <td>Angular width in degrees of each array element. (Ignored if increment_f greater than 0).</td>
     </tr>
     <tr>
      <td>min_distance</td>
@@ -25713,6 +25811,32 @@
       </a>
      </td>
      <td>Maximum distance the sensor can measure.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">increment_f<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>deg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Angular width in degrees of each array element as a float. If greater than 0 then this value is used instead of the uint8_t increment field.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">angle_offset<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>deg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Relative angle offset of the 0-index element in the distances array. Value of 0 corresponds to forward. Positive values are offsets to the right.</td>
     </tr>
    </tbody>
   </table>
@@ -26729,6 +26853,47 @@
       </a>
      </td>
      <td>Individual cell voltages. Batteries with more 16 cells can use the cell_offset field to specify the cell offset for the array specified in the current message . Index values above the valid cell count for this battery should have the UINT16_MAX value.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ACTUATOR_OUTPUT_STATUS">ACTUATOR_OUTPUT_STATUS (<a href="#ACTUATOR_OUTPUT_STATUS">
+    #375
+   </a>
+   )
+  </h3>
+  <p>
+   <strong>
+    (MAVLink 2)
+   </strong>The raw values of the actuator outputs.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (since system boot).</td>
+    </tr>
+    <tr>
+     <td>active</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Active outputs</td>
+    </tr>
+    <tr>
+     <td>actuator</td>
+     <td>float[32]</td>
+     <td>
+     </td>
+     <td>Servo / motor output array values. Zero values indicate unused channels.</td>
     </tr>
    </tbody>
   </table>
