@@ -1,20 +1,26 @@
 # 为 mavlink 做贡献
 
-我们遵循[Github 流](https://guides.github.com/introduction/flow/) 开发模式。 贡献分为两个主要方面: 设计和微服务变化包括状态机附带的新特征和新类型接口的消息规范 \ (示例: 参数或任务协议 \)。 这些都是需要大量审查的重大贡献, 应该有 rfc 的拉动请求, <https://github.com/mavlink/rfcs>。 协议规范和文档更改通常是影响较小的更改, 可以作为针对此存储库的拉请求直接引发。
+We follow the [Github flow](https://guides.github.com/introduction/flow/) development model.
 
-下面我们将解释为每个类别做出贡献的过程, 以及如何提出拉请求。
+Contributions are divided into several categories:
 
-## 如何贡献设计和微服务的变化
+* Complicated changes that require significant review should be initiated using an RFC pull request in [mavlink/rfcs](https://github.com/mavlink/rfcs). This is primarily intended for new microservice interface definitions, as these require discussion of both messages and message sequences (state machines) \(examples: parameter or mission protocol\). Depending on the scope of the change, it may also be required when *modifying* a microservice.
+* Less complex changes should be submitted as a PRs to the [mavlink/mavlink](https://github.com/mavlink/mavlink) repository. This includes message additions/changes that do not affect a state machine.
+* Changes to mavgen generator code should be submitted as PRs to the [ArduPilot/Pymavlink](https://github.com/ArduPilot/pymavlink) repository.
 
-* 对包含新 rfc 号的 rfc 存储库打开一个拉请求 <https://github.com/mavlink/rfcs> 并使用 0000 rfc 中的模板。
-* 与Slack社区联系，在<http://discuss.dronecode.org>上提高认识
+The sections below explain how to contribute to each category and how to raise a pull request.
+
+## How to Contribute Complex Changes
+
+* Open a pull request against the RFC repository containing a new RFC number <https://github.com/mavlink/rfcs> and use the template in the 0000 RFC.
+* Reach out to the community on Slack and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
 * 通过进一步支持拉动请求来解决关注问题
 
-## 如何促成协议规范的更改
+## How to Contribute Simple Changes
 
-* 针对规格存储库打开拉动请求：<https://github.com/mavlink/mavlink>
-* 与Slack社区联系，在<http://discuss.dronecode.org>上提高认识
-* 通过进一步支持拉动请求来解决关注问题
+* Open a pull request against the specification repository: <https://github.com/mavlink/mavlink>
+* Reach out to the community on Slack and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
+* Address concerns by pushing more commits to the pull request
 
 ## 如何打开拉请求
 
@@ -28,15 +34,15 @@
 
 3. 用描述性承诺消息提交您的更改。
 
-* 包含背景信息，固定内容，以及 [发布号](https://github.com/mavlink/mavlink)\(Github 将连接这些，然后是方便的\)
+* Include context information, what was fixed, and an [issue number](https://github.com/mavlink/mavlink) \(Github will link these then conveniently\)
 * **Example:**
     
-    "" 更改姿态输出规范文档
+    ``` Change the attitude output spec documentation
     
-    * 修复了拼写错误
-    * 澄清单位是否为弧度
+    * Fixes a typo
+    * Clarifies that units are radians
         
-        修复 #123 问题 ' ' '
+        Fixes issue #123 ```
 
 4. 测试您的更改 \ (我们可能会要求您在您的 pr 中提供测试结果 \)。
 
@@ -49,4 +55,4 @@
 
 ## Dev呼叫 {#dev_call}
 
-我们有一个定期的 < 0>dev call </ 0 >, 对任何有兴趣为项目做出贡献的人开放!
+We have a regular [dev call](../about/support.md#dev_call) that is open to anyone who is interested in contributing to the project!
