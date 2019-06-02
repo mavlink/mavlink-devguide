@@ -1,19 +1,25 @@
 # Contributing to MAVLink
 
-We follow the [Github flow](https://guides.github.com/introduction/flow/) development model. Contributions fall into two main categories: Design and micro-service changes include new features that come with a state machine and message specifications for a new type of interface \(examples: parameter or mission protocol\). These are major contributions requiring a lot of vetting and should come with a RFC pull request in <https://github.com/mavlink/rfcs>. Protocol specification and documentation changes are usually changes with less impact and can be directly raised as pull requests against this repository.
+We follow the [Github flow](https://guides.github.com/introduction/flow/) development model.
 
-Below we explain the processes for contributing to each category and how to raise a pull request.
+Contributions are divided into several categories:
 
-## How to Contribute Design and Micro-service Changes
+* Complicated changes that require significant review should be initiated using an RFC pull request in [mavlink/rfcs](https://github.com/mavlink/rfcs). This is primarily intended for new microservice interface definitions, as these require discussion of both messages and message sequences (state machines) \(examples: parameter or mission protocol\). Depending on the scope of the change, it may also be required when *modifying* a microservice.
+* Less complex changes should be submitted as a PRs to the [mavlink/mavlink](https://github.com/mavlink/mavlink) repository. This includes message additions/changes that do not affect a state machine.
+* Changes to mavgen generator code should be submitted as PRs to the [ArduPilot/Pymavlink](https://github.com/ArduPilot/pymavlink) repository.
+
+The sections below explain how to contribute to each category and how to raise a pull request.
+
+## How to Contribute Complex Changes
 
 * Open a pull request against the RFC repository containing a new RFC number <https://github.com/mavlink/rfcs> and use the template in the 0000 RFC.
-* Reach out to the community on Slack and on <http://discuss.dronecode.org> to raise awareness
+* Reach out to the community on Slack and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
 * Address concerns by pushing more commits to the pull request
 
-## How to Contribute Protocol Specification Changes
+## How to Contribute Simple Changes
 
 * Open a pull request against the specification repository: <https://github.com/mavlink/mavlink>
-* Reach out to the community on Slack and on <http://discuss.dronecode.org> to raise awareness
+* Reach out to the community on Slack and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
 * Address concerns by pushing more commits to the pull request
 
 ## How to Open a Pull Request
