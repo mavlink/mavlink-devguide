@@ -111,7 +111,8 @@ sequenceDiagram;
     GCS-->>GCS: Start receive timeout (any params)
     Drone->>GCS: Send N parameters with PARAM_VALUE
     GCS-->>GCS: Start receive timeout (after each param)
-    GCS->>Drone: Request individual missing param by index (PARAM_REQUEST_READ)
+    Note over GCS: Timeout (drone sent all params)
+    GCS->>Drone: Request each missing param by index (PARAM_REQUEST_READ)
     GCS-->>GCS: Start receive timeout
     Drone->>GCS: Send param with PARAM_VALUE
 {% endmermaid %}
@@ -128,10 +129,11 @@ The sequence of operations is:
    - Components with no parameters should ignore the request.
 1. GCS accumulates parameters for each compent in order to know which parameters have been/not been received (`PARAM_VALUE` contains total number of params and index of current param).
 1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent.
-1. After timeout (params no longer being received) the GCS individually requests any missing parameter values.
-
-   The GCS determines what parameters are missing for each component based on the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
-   The messages are [requested individually](#read_single) using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) and the missing `param_index`.
+1. After timeout (All components finished sending params) the GCS individually requests any missing parameter values.
+   - The GCS determines what parameters are missing for each component based on the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
+   - The messages are [requested individually](#read_single) using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) and the missing `param_index`.
+   - A timeout is set on each request.
+     A GCS should fail gracefully on timeout and is expected to reporting errors for incomplete parameter reads.
    
 
 ### Read Single Parameter {#read_single}
