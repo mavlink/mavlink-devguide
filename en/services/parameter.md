@@ -133,7 +133,7 @@ The sequence of operations is:
    - The GCS determines what parameters are missing for each component based on the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
    - The messages are [requested individually](#read_single) using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) and the missing `param_index`.
    - A timeout is set on each request.
-     A GCS should fail gracefully on timeout and is expected to reporting errors for incomplete parameter reads.
+     A GCS should fail gracefully on timeout.
    
 
 ### Read Single Parameter {#read_single}
