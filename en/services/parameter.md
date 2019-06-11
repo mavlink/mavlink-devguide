@@ -108,23 +108,31 @@ sequenceDiagram;
     participant GCS
     participant Drone
     GCS->>Drone: PARAM_REQUEST_LIST
-    Drone->>Drone: Start sending parameters 
+    GCS-->>GCS: Start receive timeout (any params)
     Drone->>GCS: Send N parameters with PARAM_VALUE
-    GCS->>GCS: Start receive timeout
-    GCS-->>Drone: Request any dropped params with PARAM_REQUEST_READ
+    GCS-->>GCS: Start receive timeout (after each param)
+    GCS->>Drone: Request individual missing param by index (PARAM_REQUEST_READ)
+    GCS-->>GCS: Start receive timeout
+    Drone->>GCS: Send param with PARAM_VALUE
 {% endmermaid %}
 
 The sequence of operations is:
 
-1. GCS (client) sends [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_READ) specifying the target system/component.
-1. Drone sends all parameters individually in [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
-   - The drone should allow a break between each message in order to avoid saturating the link.
-1. GCS accumulates parameters in order to know which parameters have been/not been received  (`PARAM_VALUE` contains total number of params and index of current param).
-1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent.  
-1. After timeout (messages no longer being sent) the GCS can request any missing parameter values.
- 
-   The GCS determines what parameters are missing based on the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
-   The messages are [requested individually](#read_single) using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) and the missing `param_index`   
+1. GCS (client) sends [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_READ) specifying a target system/component.
+   - Broadcast addresses may be used. All targetted components should respond with parameters (or ignore the request if they have none).
+   - The GCS is expected to accumulate parameters from all responding systems.
+   - GCS starts a timeout timer and waits for parameters.
+     On timeout the GCS should fail gracefully (reset the state machine).
+1. The targetted component(s) should respond, sending all parameters individually in [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
+   - Allow breaks between each message in order to avoid saturating the link.
+   - Components with no parameters should ignore the request.
+1. GCS accumulates parameters for each compent in order to know which parameters have been/not been received (`PARAM_VALUE` contains total number of params and index of current param).
+1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent.
+1. After timeout (params no longer being received) the GCS individually requests any missing parameter values.
+
+   The GCS determines what parameters are missing for each component based on the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages.
+   The messages are [requested individually](#read_single) using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) and the missing `param_index`.
+   
 
 ### Read Single Parameter {#read_single}
 
@@ -191,7 +199,6 @@ The drone may restart the sequence the `PARAM_VALUE` acknowledgment is not recei
 PX4 implements the protocol in a way that is compatible with this specification.
 Only float and Int32 parameters are used.
 
-
 PX4 additionally provides a mechanism that allows a GCS to *cache* parameters, which significantly reduces ready-to-use time for the GCS if parameters have not been changed since the previous parameter sync.
 The way that this mechanism works is that when the list of parameters is requested, PX4 first sends a `PARAM_VALUE` with the `param_index` of `INT16_MAX` (in code, referred to as `PARAM_HASH`) containing a *hash* of the parameter set. 
 This hash is calculated by computing the CRC32 over all param names and values (see the `param_hash_check()` in source [here](https://github.com/PX4/Firmware/blob/v1.9.0-alpha/src/lib/parameters/parameters.cpp#L1329)). 
@@ -220,3 +227,11 @@ Other known differences are:
 Source files:
 - [libraries/GCS_MAVLink/GCS_Param.cpp](https://github.com/ArduPilot/ardupilot/blob/master/libraries/GCS_MAVLink/GCS_Param.cpp)
 - [libraries/AP_Param/AP_Param.cpp](https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Param/AP_Param.cpp)
+
+
+### QGroundControl
+
+*QGroundControl* implements this protocol, and works with both ArduPilot and PX4.
+
+Source files:
+- [src/FactSystem/ParameterManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/FactSystem/ParameterManager.cc)
