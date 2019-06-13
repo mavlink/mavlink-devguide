@@ -10492,7 +10492,7 @@
   <h3 id="MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES">MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES (<a href="#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES">520</a>
    )
   </h3>
-  <p>Request autopilot capabilities</p>
+  <p>Request autopilot capabilities. The receiver should ACK the command and then emit its capabilities in an AUTOPILOT_VERSION message</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21957,7 +21957,7 @@
    </a>
    )
   </h3>
-  <p>Version and capability of autopilot software</p>
+  <p>Version and capability of autopilot software. This should be emitted in response to a MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES command.</p>
   <table class="sortable">
    <thead>
     <tr>
