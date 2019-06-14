@@ -26276,6 +26276,81 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="ISBD_LINK_STATUS">ISBD_LINK_STATUS (<a href="#ISBD_LINK_STATUS">
+    #335
+   </a>
+   )
+  </h3>
+  <p>
+   <strong>
+    (MAVLink 2)
+   </strong>Status of the Iridium SBD link.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>timestamp</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+    </tr>
+    <tr>
+     <td>last_heartbeat</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp of the last successful sbd session. The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+    </tr>
+    <tr>
+     <td>failed_sessions</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Number of failed SBD sessions.</td>
+    </tr>
+    <tr>
+     <td>successful_sessions</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Number of successful SBD sessions.</td>
+    </tr>
+    <tr>
+     <td>signal_quality</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Signal quality equal to the number of bars displayed on the ISU signal strength indicator. Range is 0 to 5, where 0 indicates no signal and 5 indicates maximum signal strength.</td>
+    </tr>
+    <tr>
+     <td>ring_pending</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>1: Ring call pending, 0: No call pending.</td>
+    </tr>
+    <tr>
+     <td>tx_session_pending</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>1: Transmission session pending, 0: No transmission session pending.</td>
+    </tr>
+    <tr>
+     <td>rx_session_pending</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>1: Receiving session pending, 0: No receiving session pending.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="UTM_GLOBAL_POSITION">UTM_GLOBAL_POSITION (<a href="#UTM_GLOBAL_POSITION">
     #340
    </a>
