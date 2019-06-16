@@ -16,3 +16,4 @@ The linked documents explain how to use the MAVLink libraries for different prog
 * JavaScript (*mavgen*)
 * Lua (*mavgen*)
 * Swift (*mavgen*)
+* [Golang](https://github.com/mgr9525/go-mavlink1)
