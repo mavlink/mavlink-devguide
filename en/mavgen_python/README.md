@@ -12,7 +12,8 @@ This topic explains how to get and use the *Pymavlink* MAVLink Python libraries 
   While you can work with that project directly, this documentation explains how to work with *pymavlink* _**using the MAVLink project**_.
 
 <span></span>
-> **Tip** If you're writing a MAVLink application to communicate with an autopilot you may prefer to use a higher level library like [DroneKit-Python](http://python.dronekit.io/). This implements a number of [MAVLink microservices](../about/overview.md), and has been written to compensate for differences in protocol interpretation for (in particular) ArduPilot and PX4. <!-- update to include Dronecode SDK when there is a released Python library -->
+> **Tip** If you're writing a MAVLink application to communicate with an autopilot you may prefer to use a higher level library like [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python) or [DroneKit-Python](http://python.dronekit.io/).
+  These implement a number of [MAVLink microservices](../about/overview.md).
 
 ## Getting Libraries
 
