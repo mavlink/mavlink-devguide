@@ -258,4 +258,4 @@ In addition, the C library is used in numerous open source systems:
 
 - [PX4](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_receiver.cpp)
 - [ArduPilot](https://github.com/ArduPilot/ardupilot/blob/master/libraries/GCS_MAVLink/GCS_Common.cpp)
-- [Dronecode SDK](https://github.com/Dronecode/DronecodeSDK/blob/develop/core/mavlink_receiver.cpp#L28-L51)
+- [MAVSDK](https://github.com/mavlink/MAVSDK/blob/develop/src/core/mavlink_receiver.cpp#L28-L51)
