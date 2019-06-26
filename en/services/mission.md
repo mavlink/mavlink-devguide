@@ -370,7 +370,7 @@ Rally points are supported by ArduPilot, but are not managed using this protocol
 
 
 
-### Dronecode SDK
+### MAVSDK
 
 TBD
 
