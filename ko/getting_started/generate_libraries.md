@@ -4,7 +4,7 @@ Language-specific MAVLink libraries can be created from [XML Message Definitions
 
 This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line).
 
-> **Note** These generators can build MAVLink 2 libraries for C, C++11, Python, Java, and WLua (supporting both MAVLink 2 and 1), and MAVLink 1 (only) libraries for: C#, JavaScript, ObjC, Swift.
+> **Note** These generators can build MAVLink 2 libraries for C, C++11, Python, Typescript, Java, and WLua (supporting both MAVLink 2 and 1), and MAVLink 1 (only) libraries for: C#, JavaScript, ObjC, Swift.
 
 <span></span>
 
@@ -60,7 +60,7 @@ python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated
 The full syntax and options can be output by running *mavgen* with the `-h` flag (reproduced below):
 
     usage: mavgen.py [-h] [-o OUTPUT]
-                     [--lang {C,CS,JavaScript,Python,WLua,ObjC,Swift,Java,C++11}]
+                     [--lang {C,CS,JavaScript,TypeScript,Python,WLua,ObjC,Swift,Java,C++11}]
                      [--wire-protocol {0.9,1.0,2.0}] [--no-validate]
                      [--error-limit ERROR_LIMIT] [--strict-units]
                      XML [XML ...]
@@ -74,7 +74,7 @@ The full syntax and options can be output by running *mavgen* with the `-h` flag
       -h, --help            show this help message and exit
       -o OUTPUT, --output OUTPUT
                             output directory.
-      --lang {C,CS,JavaScript,Python,WLua,ObjC,Swift,Java,C++11}
+      --lang {C,CS,JavaScript,TypeScript,Python,WLua,ObjC,Swift,Java,C++11}
                             language of generated code [default: Python]
       --wire-protocol {0.9,1.0,2.0}
                             MAVLink protocol version. [default: 1.0]
