@@ -6153,7 +6153,7 @@
   <h3 id="MAV_CMD_DO_FOLLOW">MAV_CMD_DO_FOLLOW (<a href="#MAV_CMD_DO_FOLLOW">32</a>
    )
   </h3>
-  <p>Being following a target</p>
+  <p>Begin following a target</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26041,6 +26041,7 @@
      <th>Field Name</th>
      <th>Type</th>
      <th>Units</th>
+     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -26049,6 +26050,10 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
     </tr>
     <tr>
@@ -26056,73 +26061,131 @@
      <td>uint8_t</td>
      <td>
      </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Number of valid points (up-to 5 waypoints are possible)</td>
     </tr>
     <tr>
      <td>pos_x</td>
      <td>float[5]</td>
      <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>X-coordinate of waypoint, set to NaN if not being used</td>
     </tr>
     <tr>
      <td>pos_y</td>
      <td>float[5]</td>
      <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Y-coordinate of waypoint, set to NaN if not being used</td>
     </tr>
     <tr>
      <td>pos_z</td>
      <td>float[5]</td>
      <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Z-coordinate of waypoint, set to NaN if not being used</td>
     </tr>
     <tr>
      <td>vel_x</td>
      <td>float[5]</td>
      <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>X-velocity of waypoint, set to NaN if not being used</td>
     </tr>
     <tr>
      <td>vel_y</td>
      <td>float[5]</td>
      <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Y-velocity of waypoint, set to NaN if not being used</td>
     </tr>
     <tr>
      <td>vel_z</td>
      <td>float[5]</td>
      <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Z-velocity of waypoint, set to NaN if not being used</td>
     </tr>
     <tr>
      <td>acc_x</td>
      <td>float[5]</td>
      <td>m/s/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>X-acceleration of waypoint, set to NaN if not being used</td>
     </tr>
     <tr>
      <td>acc_y</td>
      <td>float[5]</td>
      <td>m/s/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Y-acceleration of waypoint, set to NaN if not being used</td>
     </tr>
     <tr>
      <td>acc_z</td>
      <td>float[5]</td>
      <td>m/s/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Z-acceleration of waypoint, set to NaN if not being used</td>
     </tr>
     <tr>
      <td>pos_yaw</td>
      <td>float[5]</td>
      <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Yaw angle, set to NaN if not being used</td>
     </tr>
     <tr>
      <td>vel_yaw</td>
      <td>float[5]</td>
      <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Yaw rate, set to NaN if not being used</td>
+    </tr>
+    <tr>
+     <td>command</td>
+     <td>uint16_t[5]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_CMD">MAV_CMD</a>
+     </td>
+     <td>Scheduled action for each waypoint, UINT16_MAX if not being used.</td>
     </tr>
    </tbody>
   </table>
