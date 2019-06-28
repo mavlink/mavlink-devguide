@@ -32,20 +32,21 @@ MAVLink项目所包含的 [mavgen](getting_started/generate_libraries.md#mavgen)
 
 下表显示了可用的语言/生成器及其对MAVLink v1, [ MAVLink v2 ](guide/mavlink_2.md) 和 [Message signing](guide/message_signing.md) 的支持。
 
-| 语言                  | 生成器                                                         | MAVLink v1 | MAVLink v2 | Signing | 备注                                                           |
-|:------------------- |:----------------------------------------------------------- |:----------:|:----------:|:-------:|:------------------------------------------------------------ |
-| C                   | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    | 这是 MAVLink 项目参考实现。 可基于两个协议版本发布相应的[生成库](#prebuilt_libraries)。 |
-| C++11               | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    |                                                              |
-| Python (2.7+, 3.3+) | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    |                                                              |
-| C#                  | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                              |
-| Objective C         | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                              |
-| Java                | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                              |
-| Java                | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) |     Y      |     Y      |    Y    | *Idiomatic*是基于MAVLink的 java SDK/API。 其可为代码生成器提供分级插件。         |
-| JavaScript          | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                              |
-| Lua                 | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |         |                                                              |
-| Swift               | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                              |
-| Clojure             | [clj-mavlink](https://github.com/WickedShell/clj-mavlink)   |     Y      |     Y      |    Y    | Clojure MAVLink 绑定。                                          |
-| Go                  | [gomavlib](https://github.com/gswly/gomavlib)               |     Y      |     Y      |    Y    |                                                              |
+| 语言                    | 生成器                                                         | MAVLink v1 | MAVLink v2 | Signing | 备注                                                                                                        |
+|:--------------------- |:----------------------------------------------------------- |:----------:|:----------:|:-------:|:--------------------------------------------------------------------------------------------------------- |
+| C                     | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    | 这是 MAVLink 项目参考实现。 可基于两个协议版本发布相应的[生成库](#prebuilt_libraries)。                                              |
+| C++11                 | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    |                                                                                                           |
+| Python (2.7+, 3.3+)   | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    |                                                                                                           |
+| C#                    | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                                                                           |
+| Objective C           | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                                                                           |
+| Java                  | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                                                                           |
+| Java                  | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) |     Y      |     Y      |    Y    | *Idiomatic*是基于MAVLink的 java SDK/API。 其可为代码生成器提供分级插件。                                                      |
+| JavaScript            | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                                                                           |
+| TypeScript/JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    N    | TypeScript classes which can be used with [node-mavlink](https://github.com/ifrunistuttgart/node-mavlink) |
+| Lua                   | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |         |                                                                                                           |
+| Swift                 | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                                                                           |
+| Clojure               | [clj-mavlink](https://github.com/WickedShell/clj-mavlink)   |     Y      |     Y      |    Y    | Clojure MAVLink Bindings.                                                                                 |
+| Go                    | [gomavlib](https://github.com/gswly/gomavlib)               |     Y      |     Y      |    Y    |                                                                                                           |
 
 ## 预建的基于C语言的MAVLink库 {#prebuilt_libraries}
 
