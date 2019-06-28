@@ -4,7 +4,7 @@
 
 This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line).
 
-> **Note** These generators can build MAVLink 2 libraries for C, C++11, Python, Java, and WLua (supporting both MAVLink 2 and 1), and MAVLink 1 (only) libraries for: C#, JavaScript, ObjC, Swift.
+> **Note** These generators can build MAVLink 2 libraries for C, C++11, Python, Typescript, Java, and WLua (supporting both MAVLink 2 and 1), and MAVLink 1 (only) libraries for: C#, JavaScript, ObjC, Swift.
 
 <span></span>
 
@@ -60,23 +60,24 @@ python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated
 *mavgen*可以通过使用`-h`参数来查看所有语法和选项。(复制在下面)：
 
     usage: mavgen.py [-h] [-o OUTPUT]
-                     [--lang {C, CS, JavaScript, Python, WLua, ObjC, Swift, Java, C++11}]
-                     [--wire -protocol {0.9,1.0,2.0}][--no-validate]
-                     [--error -limit ERROR_LIMIT][--strict-units]
+                     [--lang {C,CS,JavaScript,TypeScript,Python,WLua,ObjC,Swift,Java,C++11}]
+                     [--wire-protocol {0.9,1.0,2.0}] [--no-validate]
+                     [--error-limit ERROR_LIMIT] [--strict-units]
                      XML [XML ...]
     
-    该工具从MAVLink消息定义中生成库文件
+    This tool generate implementations from MAVLink message definitions
     
-    位置参数：
-    XML            MAVLink定义
+    positional arguments:
+      XML                   MAVLink definitions
     
-    可选参数：
-    -h, --help     显示帮助信息并且退出
-    -o OUTPUT, --output OUTPUT        输出路径
-      --lang{C,CS,JavaScript,Python,WLua,ObjC,Swift,Java,C++11}
-        生成代码的语言[默认：Python]
-    --wire-protocl{0.9,1.0,2.0}
-        MAVLink协议版本 [默认：1.0]
+    optional arguments:
+      -h, --help            show this help message and exit
+      -o OUTPUT, --output OUTPUT
+                            output directory.
+      --lang {C,CS,JavaScript,TypeScript,Python,WLua,ObjC,Swift,Java,C++11}
+                            language of generated code [default: Python]
+      --wire-protocol {0.9,1.0,2.0}
+                            MAVLink protocol version. [默认：1.0]
     --no-validate        不进行XML规范验证。 如果已经确定XML文件是正确的，这样做有助于加快代码生成速度。
       --error-limit ERROR_LIMIT
         可以显示的最大验证错误数
