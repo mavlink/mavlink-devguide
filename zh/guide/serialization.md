@@ -123,7 +123,11 @@ MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减�
 
 消息有效载荷字段重新排序，以便传输如下：
 
-- 字段根据其本机数据大小进行排序, 首先 `(u)int64_t` 和 `double`, 然后 `(u)int32_t`、`float`、`(u)int16_t` `(u)int8_t`。
+- Fields are sorted according to their native data size: 
+  - `(u)int64_t`, `double` (8 bytes)
+  - `(u)int32_t`, `float` (4)
+  - `(u)int16_t` (2)
+  - `(u)int8_t`, `char` (1)
 - 如果两个字段的长度相同, 则它们的顺序将保留为数据字段大小排序之前的顺序
 - 根据它们使用的数据类型处理数组，而不是根据总数组大小处理
 - 已传输的报文与 `construction` 相同，因此代表重新排序的字段
