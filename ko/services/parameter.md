@@ -68,7 +68,7 @@ All components must respond to parameter request messages addressed to their ID 
 
 The protocol is designed with the assumption that the parameter set does not change during normal operation.
 
-If a system can add parameters during (or after) initial sychronisation the protocol cannot guarantee reliable/robust syncronisation, because there is no way to notify that the parameter set has changed and a new sync is required.
+If a system can add parameters during (or after) initial synchronization the protocol cannot guarantee reliable/robust synchronization, because there is no way to notify that the parameter set has changed and a new sync is required.
 
 When requesting parameters from such a system, the risk of problems can be *reduced* (but not removed) if:
 
@@ -87,18 +87,24 @@ A GCS will usually read all parameters when first connecting to a system, in ord
 
 Reading the parameter list is activated by sending the [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_LIST) message. The target component should start to broadcast the parameters individually in `PARAM_VALUE` messages after receiving this message. The drone should allow a pause after sending each parameter to ensure that the operation doesn't consume all of the available link bandwidth (30 - 50 percent of the bandwidth is reasonable).
 
-{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: PARAM_REQUEST_LIST Drone->>Drone: Start sending parameters Drone->>GCS: Send N parameters with PARAM_VALUE GCS->>GCS: Start receive timeout GCS-->>Drone: Request any dropped params with PARAM_REQUEST_READ {% endmermaid %}
+{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: PARAM_REQUEST_LIST GCS-->>GCS: Start receive timeout (any params) Drone->>GCS: Send N parameters with PARAM_VALUE GCS-->>GCS: Start receive timeout (after each param) Note over GCS: Finish/timeout when no more params received {% endmermaid %}
 
 The sequence of operations is:
 
-1. GCS (client) sends [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_READ) specifying the target system/component.
-2. Drone sends all parameters individually in [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages. 
-  - The drone should allow a break between each message in order to avoid saturating the link.
-3. GCS accumulates parameters in order to know which parameters have been/not been received (`PARAM_VALUE` contains total number of params and index of current param).
-4. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent. 
-5. After timeout (messages no longer being sent) the GCS can request any missing parameter values.
-  
-  The GCS determines what parameters are missing based on the `param_count` and `param_index` fields from received [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages. The messages are [requested individually](#read_single) using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) and the missing `param_index`
+1. GCS (client) sends [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_READ) specifying a target system/component. 
+  - Broadcast addresses may be used. All targeted components should respond with parameters (or ignore the request if they have none).
+  - The GCS is expected to accumulate parameters from all responding systems.
+  - The timeout/retry behaviour is GSC dependent.
+2. The targeted component(s) should respond, sending all parameters individually in [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages. 
+  - Allow breaks between each message in order to avoid saturating the link.
+  - Components with no parameters should ignore the request.
+3. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent (that the operation has completed).
+
+The GCS/API accumulates received parameters for each component and can determine if any are missing/not received (`PARAM_VALUE` contains total number of params and index of current param).
+
+**Handling of missing params is GCS-dependent.** *QGroundControl*, for example, [individually requests](#read_single) each missing parameter by index (using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) as shown below):
+
+{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: Req. missing params by index (PARAM_REQUEST_READ) GCS-->>GCS: Start receive timeout Drone->>GCS: Send param with PARAM_VALUE {% endmermaid %}
 
 ### Read Single Parameter {#read_single}
 
@@ -165,3 +171,11 @@ Source files:
 
 - [libraries/GCS_MAVLink/GCS_Param.cpp](https://github.com/ArduPilot/ardupilot/blob/master/libraries/GCS_MAVLink/GCS_Param.cpp)
 - [libraries/AP_Param/AP_Param.cpp](https://github.com/ArduPilot/ardupilot/blob/master/libraries/AP_Param/AP_Param.cpp)
+
+### QGroundControl
+
+*QGroundControl* implements this protocol, and works with both ArduPilot and PX4.
+
+Source files:
+
+- [src/FactSystem/ParameterManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/FactSystem/ParameterManager.cc)
