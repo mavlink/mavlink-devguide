@@ -127,10 +127,10 @@ The sequence of operations is:
    - Components with no parameters should ignore the request.
 1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent (that the operation has completed).
 
-Handling of missing params is GCS-dependent.
+The GCS/API accumulates received parameters for each component and can determine if any are missing/not received (`PARAM_VALUE` contains total number of params and index of current param). 
 
-The GCS/API accumulates received parameters for each component and can determine if any are missing/not received (`PARAM_VALUE` contains total number of params and index of current param).
-*QGroundControl*, for example, [individually requests](#read_single) each missing parameter by index, using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) as shown below:
+**Handling of missing params is GCS-dependent.**
+*QGroundControl*, for example, [individually requests](#read_single) each missing parameter by index (using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) as shown below):
 
 {% mermaid %}
 sequenceDiagram;
