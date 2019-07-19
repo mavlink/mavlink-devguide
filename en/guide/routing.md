@@ -22,7 +22,7 @@ MAVLink components are expected to process messages that have a matching system/
 They are expected to route/resend messages that are intended for other (or all) recipients to other active channels
 (i.e. MAVLink systems may be connected across different transports, connected by a MAVLink system that routes the messages).
 Broadcast messages are forwarded to all channels that haven't seen the message. 
-Addressed messages are resent on a new channel *iff* the system has previously seen a message from the target on that channel 
+Addressed messages are resent on a new channel *if* the system has previously seen a message from the target on that channel 
 (messages are not resent if the addressee is not known or is on the original/incoming channel). 
 
 > **Warning** Forwarded messages must not be changed/repackaged by the forwarding system (the original message is passed to the new link).
