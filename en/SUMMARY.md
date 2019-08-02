@@ -50,6 +50,7 @@
   * [Command Protocol](services/command.md)
   * [Camera Protocol](services/camera.md)
     * [Camera Definition](services/camera_def.md)
+  * [Common Flight Modes Microservice](services/flight_modes.md)
   * [Gimbal Protocol](services/gimbal.md)
   * [Arm Authorization Protocol](services/arm_authorization.md)
   * [Image Transmission Protocol](services/image_transmission.md)
