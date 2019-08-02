@@ -24,6 +24,7 @@ The following autopilots are known to support MAVLink and are actively being dev
 * [JAGCS](https://github.com/MishkaRogachev/JAGCS)
 * [Flightzoomer](https://flightzoomer.com/)
 * [Inexa Control](https://www.insitu.com/information-delivery/command-and-control/icomc2)
+* [Synturian Control](https://www.textronsystems.com/what-we-do/unmanned-systems/synturian)
 
 
 ## MAVLink Wrapper/Developer APIs
