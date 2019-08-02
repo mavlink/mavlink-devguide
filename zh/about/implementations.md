@@ -23,6 +23,7 @@ MAVLink 已经用于许多自动驾驶仪及地面站中，并已集成于API，
 * [JAGCS](https://github.com/MishkaRogachev/JAGCS)
 * [Flightzoomer](https://flightzoomer.com/)
 * [Inexa Control](https://www.insitu.com/information-delivery/command-and-control/icomc2)
+* [Synturian Control](https://www.textronsystems.com/what-we-do/unmanned-systems/synturian)
 
 ## MAVLink 封装器/开发者API
 
