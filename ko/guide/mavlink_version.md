@@ -22,7 +22,7 @@ A library's MAVLink support can be determined in a number of ways:
   * MAVLink 1: `0xFE` 
   * MAVLink 2: `0xFD`
   
-  > **Note** A MAVLink library that does not support a protocol version will not recognise the protocol start marker; so no messages will be even be detected (see [Serialization](../guide/serialization.md)).
+  > **Note** A MAVLink library that does not support a protocol version will not recognise the protocol start marker; so no messages will even be detected (see [Serialization](../guide/serialization.md)).
 
 > **Tip** While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
 
