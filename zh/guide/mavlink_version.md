@@ -22,7 +22,7 @@ MAVLink 已部署在若干版本中：
     * MAVLink 1: `0xFE` 
     * MAVLink 2: `0xFD`
     
-    > **Note** 不支持协议版本的 MAVLink 库将无法识别协议启动标记; 因此甚至不会检测到任何消息 (请参见 [Serialization](../guide/serialization.md))。
+    > **Note** A MAVLink library that does not support a protocol version will not recognise the protocol start marker; so no messages will even be detected (see [Serialization](../guide/serialization.md)).
   
   > **Tip** 虽然消息不包含版本信息，但额外的 CRC 用于确保一个库只能处理兼容的信息(见[Serialization > CRC_EXTERA](../guide/serialization.md))。
   
