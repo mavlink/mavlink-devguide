@@ -5327,6 +5327,29 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_TUNNEL_PAYLOAD_TYPE">
+   <a href="#MAV_TUNNEL_PAYLOAD_TYPE">MAV_TUNNEL_PAYLOAD_TYPE</a>
+  </h3>
+  <p>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_UNKNOWN">
+     <td>0</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_UNKNOWN">MAV_TUNNEL_PAYLOAD_TYPE_UNKNOWN</a>
+     </td>
+     <td>Encoding of payload unknown.</td>
+    </tr>
+   </tbody>
+  </table>
   <h2>MAVLink Commands (MAV_CMD)</h2>
   <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the MAV_CMD entries</p>
   <h3 id="MAV_CMD_NAV_WAYPOINT">MAV_CMD_NAV_WAYPOINT (<a href="#MAV_CMD_NAV_WAYPOINT">16</a>
@@ -9979,7 +10002,7 @@
   <h3 id="MAV_CMD_GET_MESSAGE_INTERVAL">MAV_CMD_GET_MESSAGE_INTERVAL (<a href="#MAV_CMD_GET_MESSAGE_INTERVAL">510</a>
    )
   </h3>
-  <p>Request the interval between messages for a particular MAVLink message ID</p>
+  <p>Request the interval between messages for a particular MAVLink message ID. The receiver should ACK the command and then emit its response in a MESSAGE_INTERVAL message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10000,7 +10023,7 @@
   <h3 id="MAV_CMD_SET_MESSAGE_INTERVAL">MAV_CMD_SET_MESSAGE_INTERVAL (<a href="#MAV_CMD_SET_MESSAGE_INTERVAL">511</a>
    )
   </h3>
-  <p>Set the interval between messages for a particular MAVLink message ID. This interface replaces REQUEST_DATA_STREAM</p>
+  <p>Set the interval between messages for a particular MAVLink message ID. This interface replaces REQUEST_DATA_STREAM.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23062,7 +23085,7 @@
    </a>
    )
   </h3>
-  <p>The interval between messages for a particular MAVLink message ID. This interface replaces DATA_STREAM</p>
+  <p>The interval between messages for a particular MAVLink message ID. This message is the response to the MAV_CMD_GET_MESSAGE_INTERVAL command. This interface replaces DATA_STREAM.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26623,6 +26646,64 @@
      <td>int32_t</td>
      <td>s</td>
      <td>Estimated time for completing the current commanded action (i.e. Go To, Takeoff, Land, etc.). -1 means no action active and/or no estimate available.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="TUNNEL">TUNNEL (<a href="#TUNNEL">
+    #385
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <strong>
+    (MAVLink 2)
+   </strong>Message for transporting "arbitrary" variable-length data from one component to another (broadcast is not forbidden, but discouraged). The encoding of the data is usually extension specific, i.e. determined by the source, and is usually not documented as part of the mavlink specification.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID (can be 0 for broadcast, but this is discouraged)</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (can be 0 for broadcast, but this is discouraged)</td>
+    </tr>
+    <tr>
+     <td>payload_type</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE">MAV_TUNNEL_PAYLOAD_TYPE</a>
+     </td>
+     <td>A code that identifies the content of the payload (0 for unknown, which is the default). If this code is less than 32768, it is a 'registered' payload type and the corresponding code should be added to the MAV_TUNNEL_PAYLOAD_TYPE enum, and the entry possibly to https://github.com/mavlink/mavlink/tunnel-message-payload-types.xml. Software creators can register blocks of types as needed. Codes greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
+    </tr>
+    <tr>
+     <td>payload</td>
+     <td>uint8_t[128]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Variable length payload. The payload length is defined by the remaining message length when subtracting the header and other fields. The entire content of this block is opaque unless you understand the encoding specified by payload_type.</td>
     </tr>
    </tbody>
   </table>
