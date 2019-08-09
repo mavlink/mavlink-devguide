@@ -6,15 +6,23 @@
   </p>
   <h2>MAVLink Protocol Version</h2>
   <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
-  <h2>MAVLink Type Enumerations</h2>
-  <h2>MAVLink Commands (MAV_CMD)</h2>
-  <h2>MAVLink Messages</h2>
+  <h2 id="enums">MAVLink Type Enumerations</h2>
+  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+  </blockquote>
+  <h2 id="messages">MAVLink Messages</h2>
   <h3 id="SCRIPT_ITEM">SCRIPT_ITEM (<a href="#SCRIPT_ITEM">
     #180
    </a>
    )
   </h3>
-  <p>Message encoding a mission script item. This message is emitted upon a request for the next script item.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Message encoding a mission script item. This message is emitted upon a request for the next script item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -51,7 +59,10 @@
    </a>
    )
   </h3>
-  <p>Request script item with the sequence number seq. The response of the system to this message should be a SCRIPT_ITEM message.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Request script item with the sequence number seq. The response of the system to this message should be a SCRIPT_ITEM message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -83,7 +94,10 @@
    </a>
    )
   </h3>
-  <p>Request the overall list of mission items from the system/component.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Request the overall list of mission items from the system/component.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -110,7 +124,10 @@
    </a>
    )
   </h3>
-  <p>This message is emitted as response to SCRIPT_REQUEST_LIST by the MAV to get the number of mission scripts.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>This message is emitted as response to SCRIPT_REQUEST_LIST by the MAV to get the number of mission scripts.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -142,7 +159,10 @@
    </a>
    )
   </h3>
-  <p>This message informs about the currently active SCRIPT.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>This message informs about the currently active SCRIPT.</p>
   <table class="sortable">
    <thead>
     <tr>
