@@ -4,11 +4,14 @@
    <strong>MAVLink Include Files:</strong>
    <a href="common.md">common.xml</a>
   </p>
-  <h2>MAVLink Type Enumerations</h2>
+  <h2 id="enums">MAVLink Type Enumerations</h2>
   <h3 id="SLUGS_MODE">
    <a href="#SLUGS_MODE">SLUGS_MODE</a>
   </h3>
-  <p>Slugs-specific navigation modes.</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Slugs-specific navigation modes.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -107,7 +110,10 @@
   <h3 id="CONTROL_SURFACE_FLAG">
    <a href="#CONTROL_SURFACE_FLAG">CONTROL_SURFACE_FLAG</a>
   </h3>
-  <p>These flags encode the control surfaces for selective passthrough mode. If a bit is set then the pilot console
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>These flags encode the control surfaces for selective passthrough mode. If a bit is set then the pilot console
             has control of the surface, and if not then the autopilot has control of the surface.</p>
   <table class="sortable">
    <thead>
@@ -176,13 +182,21 @@
     </tr>
    </tbody>
   </table>
-  <h2>MAVLink Commands (MAV_CMD)</h2>
+  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+  </blockquote>
   <p>
   </p>
   <h3 id="MAV_CMD_DO_NOTHING">MAV_CMD_DO_NOTHING (<a href="#MAV_CMD_DO_NOTHING">10001</a>
    )
   </h3>
-  <p>Does nothing.</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Does nothing.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -200,7 +214,10 @@
   <h3 id="MAV_CMD_RETURN_TO_BASE">MAV_CMD_RETURN_TO_BASE (<a href="#MAV_CMD_RETURN_TO_BASE">10011</a>
    )
   </h3>
-  <p>Return vehicle to base.</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Return vehicle to base.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -218,7 +235,10 @@
   <h3 id="MAV_CMD_STOP_RETURN_TO_BASE">MAV_CMD_STOP_RETURN_TO_BASE (<a href="#MAV_CMD_STOP_RETURN_TO_BASE">10012</a>
    )
   </h3>
-  <p>Stops the vehicle from returning to base and resumes flight.</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Stops the vehicle from returning to base and resumes flight.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -232,7 +252,10 @@
   <h3 id="MAV_CMD_TURN_LIGHT">MAV_CMD_TURN_LIGHT (<a href="#MAV_CMD_TURN_LIGHT">10013</a>
    )
   </h3>
-  <p>Turns the vehicle's visible or infrared lights on or off.</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Turns the vehicle's visible or infrared lights on or off.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -254,7 +277,10 @@
   <h3 id="MAV_CMD_GET_MID_LEVEL_COMMANDS">MAV_CMD_GET_MID_LEVEL_COMMANDS (<a href="#MAV_CMD_GET_MID_LEVEL_COMMANDS">10014</a>
    )
   </h3>
-  <p>Requests vehicle to send current mid-level commands to ground station.</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Requests vehicle to send current mid-level commands to ground station.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -268,7 +294,10 @@
   <h3 id="MAV_CMD_MIDLEVEL_STORAGE">MAV_CMD_MIDLEVEL_STORAGE (<a href="#MAV_CMD_MIDLEVEL_STORAGE">10015</a>
    )
   </h3>
-  <p>Requests storage of mid-level commands.</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Requests storage of mid-level commands.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -283,13 +312,16 @@
     </tr>
    </tbody>
   </table>
-  <h2>MAVLink Messages</h2>
+  <h2 id="messages">MAVLink Messages</h2>
   <h3 id="CPU_LOAD">CPU_LOAD (<a href="#CPU_LOAD">
     #170
    </a>
    )
   </h3>
-  <p>Sensor and DSC control loads.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Sensor and DSC control loads.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -327,7 +359,10 @@
    </a>
    )
   </h3>
-  <p>Accelerometer and gyro biases.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Accelerometer and gyro biases.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -381,7 +416,10 @@
    </a>
    )
   </h3>
-  <p>Configurable diagnostic messages.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Configurable diagnostic messages.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -428,7 +466,10 @@
    </a>
    )
   </h3>
-  <p>Data used in the navigation algorithm.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Data used in the navigation algorithm.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -514,7 +555,10 @@
    </a>
    )
   </h3>
-  <p>Configurable data log probes to be used inside Simulink</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Configurable data log probes to be used inside Simulink</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -561,7 +605,10 @@
    </a>
    )
   </h3>
-  <p>Pilot console PWM messges.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Pilot console PWM messges.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -664,7 +711,10 @@
    </a>
    )
   </h3>
-  <p>Mid Level commands sent from the GS to the autopilot. These are only sent when being operated in mid-level commands mode from the ground.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Mid Level commands sent from the GS to the autopilot. These are only sent when being operated in mid-level commands mode from the ground.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -707,7 +757,10 @@
    </a>
    )
   </h3>
-  <p>This message sets the control surfaces for selective passthrough mode.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>This message sets the control surfaces for selective passthrough mode.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -742,7 +795,10 @@
    </a>
    )
   </h3>
-  <p>Orders generated to the SLUGS camera mount.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Orders generated to the SLUGS camera mount.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -784,7 +840,10 @@
    </a>
    )
   </h3>
-  <p>Control for surface; pending and order to origin.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Control for surface; pending and order to origin.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -821,7 +880,10 @@
    </a>
    )
   </h3>
-  <p>Transmits the last known position of the mobile GS to the UAV. Very relevant when Track Mobile is enabled</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Transmits the last known position of the mobile GS to the UAV. Very relevant when Track Mobile is enabled</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -858,7 +920,10 @@
    </a>
    )
   </h3>
-  <p>Control for camara.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Control for camara.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -890,7 +955,10 @@
    </a>
    )
   </h3>
-  <p>Transmits the position of watch</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Transmits the position of watch</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -955,7 +1023,10 @@
    </a>
    )
   </h3>
-  <p>Transmits the readings from the voltage and current sensors</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Transmits the readings from the voltage and current sensors</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -987,7 +1058,10 @@
    </a>
    )
   </h3>
-  <p>Transmits the actual Pan, Tilt and Zoom values of the camera unit</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Transmits the actual Pan, Tilt and Zoom values of the camera unit</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1019,7 +1093,10 @@
    </a>
    )
   </h3>
-  <p>Transmits the actual status values UAV in flight</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Transmits the actual status values UAV in flight</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1075,7 +1152,10 @@
    </a>
    )
   </h3>
-  <p>This contains the status of the GPS readings</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>This contains the status of the GPS readings</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1141,7 +1221,10 @@
    </a>
    )
   </h3>
-  <p>Transmits the diagnostics data from the Novatel OEMStar GPS</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Transmits the diagnostics data from the Novatel OEMStar GPS</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1207,7 +1290,10 @@
    </a>
    )
   </h3>
-  <p>Diagnostic data Sensor MCU</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Diagnostic data Sensor MCU</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1244,7 +1330,10 @@
    </a>
    )
   </h3>
-  <p>The boot message indicates that a system is starting. The onboard software version allows to keep track of onboard soft/firmware revisions. This message allows the sensor and control MCUs to communicate version numbers on startup.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>The boot message indicates that a system is starting. The onboard software version allows to keep track of onboard soft/firmware revisions. This message allows the sensor and control MCUs to communicate version numbers on startup.</p>
   <table class="sortable">
    <thead>
     <tr>
