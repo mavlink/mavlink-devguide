@@ -2,11 +2,14 @@
  <body>
   <h2>MAVLink Protocol Version</h2>
   <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
-  <h2>MAVLink Type Enumerations</h2>
+  <h2 id="enums">MAVLink Type Enumerations</h2>
   <h3 id="MAV_AUTOPILOT">
    <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
   </h3>
-  <p>Micro air vehicle / autopilot classes. This identifies the individual model.</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Micro air vehicle / autopilot classes. This identifies the individual model.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -161,7 +164,10 @@
   <h3 id="MAV_TYPE">
    <a href="#MAV_TYPE">MAV_TYPE</a>
   </h3>
-  <p>MAVLINK system type. All components in a system should report this type in their HEARTBEAT.</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>MAVLINK system type. All components in a system should report this type in their HEARTBEAT.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -407,7 +413,10 @@
   <h3 id="MAV_MODE_FLAG">
    <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
   </h3>
-  <p>These flags encode the MAV mode.</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>These flags encode the MAV mode.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -478,7 +487,10 @@
   <h3 id="MAV_MODE_FLAG_DECODE_POSITION">
    <a href="#MAV_MODE_FLAG_DECODE_POSITION">MAV_MODE_FLAG_DECODE_POSITION</a>
   </h3>
-  <p>These values encode the bit positions of the decode position. These values can be used to read the value of a flag bit by combining the base_mode variable with AND with the flag position value. The result will be either 0 or 1, depending on if the flag is set or not.</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>These values encode the bit positions of the decode position. These values can be used to read the value of a flag bit by combining the base_mode variable with AND with the flag position value. The result will be either 0 or 1, depending on if the flag is set or not.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -550,6 +562,9 @@
    <a href="#MAV_STATE">MAV_STATE</a>
   </h3>
   <p>
+   <a href="#enums">
+    [Enum]
+   </a>
   </p>
   <table class="sortable">
    <thead>
@@ -636,7 +651,10 @@
   <h3 id="MAV_COMPONENT">
    <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
   </h3>
-  <p>Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.).
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.).
       Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The MAV_COMP_ID_ALL value is used to indicate messages that must be processed by all components.
       When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded.</p>
   <table class="sortable">
@@ -661,6 +679,531 @@
       <a href="#MAV_COMP_ID_AUTOPILOT1">MAV_COMP_ID_AUTOPILOT1</a>
      </td>
      <td>System flight controller component ("autopilot"). Only one autopilot is expected in a particular system.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER1">
+     <td>25</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER1">MAV_COMP_ID_USER1</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER2">
+     <td>26</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER2">MAV_COMP_ID_USER2</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER3">
+     <td>27</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER3">MAV_COMP_ID_USER3</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER4">
+     <td>28</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER4">MAV_COMP_ID_USER4</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER5">
+     <td>29</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER5">MAV_COMP_ID_USER5</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER6">
+     <td>30</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER6">MAV_COMP_ID_USER6</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER7">
+     <td>31</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER7">MAV_COMP_ID_USER7</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER8">
+     <td>32</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER8">MAV_COMP_ID_USER8</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER9">
+     <td>33</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER9">MAV_COMP_ID_USER9</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER10">
+     <td>34</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER10">MAV_COMP_ID_USER10</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER11">
+     <td>35</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER11">MAV_COMP_ID_USER11</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER12">
+     <td>36</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER12">MAV_COMP_ID_USER12</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER13">
+     <td>37</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER13">MAV_COMP_ID_USER13</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER14">
+     <td>38</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER14">MAV_COMP_ID_USER14</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER15">
+     <td>39</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER15">MAV_COMP_ID_USER15</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USE16">
+     <td>40</td>
+     <td>
+      <a href="#MAV_COMP_ID_USE16">MAV_COMP_ID_USE16</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER17">
+     <td>41</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER17">MAV_COMP_ID_USER17</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER18">
+     <td>42</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER18">MAV_COMP_ID_USER18</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER19">
+     <td>43</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER19">MAV_COMP_ID_USER19</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER20">
+     <td>44</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER20">MAV_COMP_ID_USER20</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER21">
+     <td>45</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER21">MAV_COMP_ID_USER21</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER22">
+     <td>46</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER22">MAV_COMP_ID_USER22</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER23">
+     <td>47</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER23">MAV_COMP_ID_USER23</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER24">
+     <td>48</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER24">MAV_COMP_ID_USER24</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER25">
+     <td>49</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER25">MAV_COMP_ID_USER25</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER26">
+     <td>50</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER26">MAV_COMP_ID_USER26</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER27">
+     <td>51</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER27">MAV_COMP_ID_USER27</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER28">
+     <td>52</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER28">MAV_COMP_ID_USER28</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER29">
+     <td>53</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER29">MAV_COMP_ID_USER29</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER30">
+     <td>54</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER30">MAV_COMP_ID_USER30</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER31">
+     <td>55</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER31">MAV_COMP_ID_USER31</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER32">
+     <td>56</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER32">MAV_COMP_ID_USER32</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER33">
+     <td>57</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER33">MAV_COMP_ID_USER33</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER34">
+     <td>58</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER34">MAV_COMP_ID_USER34</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER35">
+     <td>59</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER35">MAV_COMP_ID_USER35</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER36">
+     <td>60</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER36">MAV_COMP_ID_USER36</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER37">
+     <td>61</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER37">MAV_COMP_ID_USER37</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER38">
+     <td>62</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER38">MAV_COMP_ID_USER38</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER39">
+     <td>63</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER39">MAV_COMP_ID_USER39</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER40">
+     <td>64</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER40">MAV_COMP_ID_USER40</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER41">
+     <td>65</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER41">MAV_COMP_ID_USER41</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER42">
+     <td>66</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER42">MAV_COMP_ID_USER42</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER43">
+     <td>67</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER43">MAV_COMP_ID_USER43</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER44">
+     <td>68</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER44">MAV_COMP_ID_USER44</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER45">
+     <td>69</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER45">MAV_COMP_ID_USER45</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER46">
+     <td>70</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER46">MAV_COMP_ID_USER46</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER47">
+     <td>71</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER47">MAV_COMP_ID_USER47</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER48">
+     <td>72</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER48">MAV_COMP_ID_USER48</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER49">
+     <td>73</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER49">MAV_COMP_ID_USER49</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER50">
+     <td>74</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER50">MAV_COMP_ID_USER50</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER51">
+     <td>75</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER51">MAV_COMP_ID_USER51</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER52">
+     <td>76</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER52">MAV_COMP_ID_USER52</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER53">
+     <td>77</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER53">MAV_COMP_ID_USER53</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER54">
+     <td>78</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER54">MAV_COMP_ID_USER54</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER55">
+     <td>79</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER55">MAV_COMP_ID_USER55</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER56">
+     <td>80</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER56">MAV_COMP_ID_USER56</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER57">
+     <td>81</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER57">MAV_COMP_ID_USER57</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER58">
+     <td>82</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER58">MAV_COMP_ID_USER58</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER59">
+     <td>83</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER59">MAV_COMP_ID_USER59</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER60">
+     <td>84</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER60">MAV_COMP_ID_USER60</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER61">
+     <td>85</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER61">MAV_COMP_ID_USER61</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER62">
+     <td>86</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER62">MAV_COMP_ID_USER62</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER63">
+     <td>87</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER63">MAV_COMP_ID_USER63</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER64">
+     <td>88</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER64">MAV_COMP_ID_USER64</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER65">
+     <td>89</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER65">MAV_COMP_ID_USER65</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER66">
+     <td>90</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER66">MAV_COMP_ID_USER66</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER67">
+     <td>91</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER67">MAV_COMP_ID_USER67</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER68">
+     <td>92</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER68">MAV_COMP_ID_USER68</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER69">
+     <td>93</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER69">MAV_COMP_ID_USER69</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER70">
+     <td>94</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER70">MAV_COMP_ID_USER70</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER71">
+     <td>95</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER71">MAV_COMP_ID_USER71</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER72">
+     <td>96</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER72">MAV_COMP_ID_USER72</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER73">
+     <td>97</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER73">MAV_COMP_ID_USER73</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER74">
+     <td>98</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER74">MAV_COMP_ID_USER74</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_USER75">
+     <td>99</td>
+     <td>
+      <a href="#MAV_COMP_ID_USER75">MAV_COMP_ID_USER75</a>
+     </td>
+     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
     </tr>
     <tr id="MAV_COMP_ID_CAMERA">
      <td>100</td>
@@ -947,12 +1490,20 @@
     </tr>
    </tbody>
   </table>
-  <h2>MAVLink Commands (MAV_CMD)</h2>
+  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+  </blockquote>
   <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the MAV_CMD entries</p>
   <h3 id="MAV_CMD_REQUEST_PROTOCOL_VERSION">MAV_CMD_REQUEST_PROTOCOL_VERSION (<a href="#MAV_CMD_REQUEST_PROTOCOL_VERSION">519</a>
    )
   </h3>
-  <p>Request MAVLink protocol version compatibility</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request MAVLink protocol version compatibility</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -971,13 +1522,16 @@
     </tr>
    </tbody>
   </table>
-  <h2>MAVLink Messages</h2>
+  <h2 id="messages">MAVLink Messages</h2>
   <h3 id="HEARTBEAT">HEARTBEAT (<a href="#HEARTBEAT">
     #0
    </a>
    )
   </h3>
-  <p>The heartbeat message shows that a system or component is present and responding. The type and autopilot fields (along with the message component id), allow the receiving system to treat further messages from this system appropriately (e.g. by laying out the user interface based on the autopilot). This microservice is documented at https://mavlink.io/en/services/heartbeat.html</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>The heartbeat message shows that a system or component is present and responding. The type and autopilot fields (along with the message component id), allow the receiving system to treat further messages from this system appropriately (e.g. by laying out the user interface based on the autopilot). This microservice is documented at https://mavlink.io/en/services/heartbeat.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1048,6 +1602,9 @@
   <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
+   <a href="#messages">
+    [Message]
+   </a>
    <strong>
     (MAVLink 2)
    </strong>Version and capability of protocol version. This message is the response to REQUEST_PROTOCOL_VERSION and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to REQUEST_PROTOCOL_VERSION to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.</p>
