@@ -15321,7 +15321,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>The RAW IMU readings for the usual 9DOF sensor setup. This message should always contain the true raw values without any scaling to allow data capture and system debugging.</p>
+   </a>The RAW IMU readings for a 9DOF sensor, which is identified by the id (default IMU1). This message should always contain the true raw values without any scaling to allow data capture and system debugging.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15400,6 +15400,16 @@
      <td>
      </td>
      <td>Z Magnetic field (raw)</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)</td>
     </tr>
    </tbody>
   </table>
@@ -20596,6 +20606,16 @@
      <td>
      </td>
      <td>Bitmap for fields that have updated since last message, bit 0 = xacc, bit 12: temperature</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)</td>
     </tr>
    </tbody>
   </table>
