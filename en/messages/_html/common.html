@@ -29157,6 +29157,159 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="ONBOARD_COMPUTER_STATUS">ONBOARD_COMPUTER_STATUS (<a href="#ONBOARD_COMPUTER_STATUS">
+    #390
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Hardware status sent by an onboard computer.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+    </tr>
+    <tr>
+     <td>uptime</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>Time since system boot.</td>
+    </tr>
+    <tr>
+     <td>type</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Type of the onboard computer: 0: Mission computer primary, 1: Mission computer backup 1, 2: Mission computer backup 2, 3: Compute node, 4-5: Compute spares, 6-9: Payload computers.</td>
+    </tr>
+    <tr>
+     <td>cpu_cores</td>
+     <td>uint8_t[8]</td>
+     <td>
+     </td>
+     <td>CPU usage on the component in percent (100 - idle). A value of UINT8_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>cpu_combined</td>
+     <td>uint8_t[10]</td>
+     <td>
+     </td>
+     <td>Combined CPU usage as the last 10 slices of 100 MS (a histogram). This allows to identify spikes in load that max out the system, but only for a short amount of time. A value of UINT8_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>gpu_cores</td>
+     <td>uint8_t[4]</td>
+     <td>
+     </td>
+     <td>GPU usage on the component in percent (100 - idle). A value of UINT8_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>gpu_combined</td>
+     <td>uint8_t[10]</td>
+     <td>
+     </td>
+     <td>Combined GPU usage as the last 10 slices of 100 MS (a histogram). This allows to identify spikes in load that max out the system, but only for a short amount of time. A value of UINT8_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>temperature_board</td>
+     <td>int8_t</td>
+     <td>degC</td>
+     <td>Temperature of the board. A value of INT8_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>temperature_core</td>
+     <td>int8_t[8]</td>
+     <td>degC</td>
+     <td>Temperature of the CPU core. A value of INT8_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>fan_speed</td>
+     <td>int16_t[4]</td>
+     <td>rpm</td>
+     <td>Fan speeds. A value of INT16_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>ram_usage</td>
+     <td>uint32_t</td>
+     <td>MiB</td>
+     <td>Amount of used RAM on the component system. A value of UINT32_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>ram_total</td>
+     <td>uint32_t</td>
+     <td>MiB</td>
+     <td>Total amount of RAM on the component system. A value of UINT32_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>storage_type</td>
+     <td>uint32_t[4]</td>
+     <td>
+     </td>
+     <td>Storage type: 0: HDD, 1: SSD, 2: EMMC, 3: SD card (non-removable), 4: SD card (removable). A value of UINT32_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>storage_usage</td>
+     <td>uint32_t[4]</td>
+     <td>MiB</td>
+     <td>Amount of used storage space on the component system. A value of UINT32_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>storage_total</td>
+     <td>uint32_t[4]</td>
+     <td>MiB</td>
+     <td>Total amount of storage space on the component system. A value of UINT32_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>link_type</td>
+     <td>uint32_t[6]</td>
+     <td>
+     </td>
+     <td>Link type: 0-9: UART, 10-19: Wired network, 20-29: Wifi, 30-39: Point-to-point proprietary, 40-49: Mesh proprietary</td>
+    </tr>
+    <tr>
+     <td>link_tx_rate</td>
+     <td>uint32_t[6]</td>
+     <td>KiB/s</td>
+     <td>Network traffic from the component system. A value of UINT32_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>link_rx_rate</td>
+     <td>uint32_t[6]</td>
+     <td>KiB/s</td>
+     <td>Network traffic to the component system. A value of UINT32_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>link_tx_max</td>
+     <td>uint32_t[6]</td>
+     <td>KiB/s</td>
+     <td>Network capacity from the component system. A value of UINT32_MAX implies the field is unused.</td>
+    </tr>
+    <tr>
+     <td>link_rx_max</td>
+     <td>uint32_t[6]</td>
+     <td>KiB/s</td>
+     <td>Network capacity to the component system. A value of UINT32_MAX implies the field is unused.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="WHEEL_DISTANCE">WHEEL_DISTANCE (<a href="#WHEEL_DISTANCE">
     #9000
    </a>
