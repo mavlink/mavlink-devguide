@@ -102,16 +102,16 @@ The payload `size` field must be set to either 1 or 2, depending on whether or n
 
 Error | Name | Description
 --- | --- | ---
-<span id="None"></span>1                | None            | No error
-<span id="Fail"></span>2                | Fail            | Unknown failure
-<span id="FailErrno"></span>3           | FailErrno       | Command failed, Err number sent back in `PayloadHeader.data[1]`. This is a file-system error number understood by the server operating system.
-<span id="InvalidDataSize"></span>4     | InvalidDataSize | Payload `size` is invalid
-<span id="InvalidSession"></span>5      | InvalidSessionn | Session is not currently open
-<span id="NoSessionsAvailable"></span>6 | NoSessionsAvailable | All available sessions are already in use.
-<span id="EOF"></span>7                 | EOF             | Offset past end of file for `ListDirectory` and `ReadFile` commands.
-<span id="UnknownCommand"></span>8      | UnknownCommand  | Unknown command / opcode
-<span id="FileExists"></span>9          | FileExists      | File already exists
-<span id="FileProtected"></span>10      | FileProtected   | File is write protected
+<span id="None"></span>0                | None            | No error
+<span id="Fail"></span>1                | Fail            | Unknown failure
+<span id="FailErrno"></span>2           | FailErrno       | Command failed, Err number sent back in `PayloadHeader.data[1]`. This is a file-system error number understood by the server operating system.
+<span id="InvalidDataSize"></span>3     | InvalidDataSize | Payload `size` is invalid
+<span id="InvalidSession"></span>4      | InvalidSessionn | Session is not currently open
+<span id="NoSessionsAvailable"></span>5 | NoSessionsAvailable | All available sessions are already in use.
+<span id="EOF"></span>6                 | EOF             | Offset past end of file for `ListDirectory` and `ReadFile` commands.
+<span id="UnknownCommand"></span>7      | UnknownCommand  | Unknown command / opcode
+<span id="FileExists"></span>8          | FileExists      | File already exists
+<span id="FileProtected"></span>9       | FileProtected   | File is write protected
 
 
 
