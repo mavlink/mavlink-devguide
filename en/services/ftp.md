@@ -38,12 +38,12 @@ Byte Index | C version | Content | Value | Explanation
 0 to 1 | `uint16_t seq_number` | Sequence number for message | 0&nbsp;-&nbsp;65535 | All *new* messages between the GCS and drone iterate this number. Re-sent commands/ACK/NAK should use the previous response's sequence number.
 2 | `uint8_t session`   | Session id | 0 - 255 | Session id for read/write operations (the server may use this to reference the file handle and information about the progress of read/write operations).
 3 | `uint8_t opcode`    | [OpCode](#opcodes) (id) | 0 - 255 | Ids for particular commands and ACK/NAK messages.
-4 | `uint8_t size`      | Size         | 1 - 255 | Depends on [OpCode](#opcodes). For Reads/Writes this is the size of the `data` transported. For an ACK to `OpenFileRO` it is the size of the file that has been opened (and must be read). For NAK it is the number of bytes used for [error information](#error_codes) (1 or 2).
+4 | `uint8_t size`      | Size         | 1 - 255 | Depends on [OpCode](#opcodes). For Reads/Writes this is the size of the `data` transported. For NAK it is the number of bytes used for [error information](#error_codes) (1 or 2).
 5 | `uint8_t req_opcode`| Request [OpCode](#opcodes) | 0 - 255 | OpCode (of original message) returned in an ACK or NAK response. 
 6 | `uint8_t burst_complete` | Burst complete | 0, 1 | Code to indicate if a burst is complete. 1: set of burst packets complete, 0: More burst packets coming.<br>- Only used if `req_opcode` is [BurstReadFile](#BurstReadFile).
 7 | `uint8_t padding` | Padding | | 32 bit alignment padding.
 8 to 11 | `uint32_t offset` | Content offset | | Offsets into data to be sent for [ListDirectory](#ListDirectory) and [ReadFile](#ReadFile) commands.
-12 to (max) 251| `uint8_t data[]` | Data | | Command/response data. Varies by [OpCode](#opcodes). This contains the `path` for operations that act on a file or directory. For an ACK for a reads or writes this is the requested information. For a NAK the first byte is the [error code](#error_codes) and the (optional) second byte may be an error number.
+12 to (max) 251| `uint8_t data[]` | Data | | Command/response data. Varies by [OpCode](#opcodes). This contains the `path` for operations that act on a file or directory. For an ACK for a read or write this is the requested information. For an ACK for a `OpenFileRO` operation this is the size of the file that was opened. For a NAK the first byte is the [error code](#error_codes) and the (optional) second byte may be an error number.
 
 
 ## OpCodes/Command {#opcodes}
@@ -148,7 +148,7 @@ sequenceDiagram;
     participant Drone
     Note right of GCS: Open file
     GCS->>Drone:  OpenFileRO( data[0]=path, size=len(path) )
-    Drone-->>GCS: ACK( session, size=len(file) )
+    Drone-->>GCS: ACK( session, size=4, data=len(file) )
     Note right of GCS: Read file in chunks<br>(call at offset)
     GCS->>Drone:  ReadFile(session, size, offset)
     Drone-->>GCS: ACK(session, size=len(buffer), data[0]=buffer)
@@ -163,7 +163,7 @@ The sequence of operations is:
 1. GCS (client) sends [OpenFileRO](#OpenFileRO) command specifying the file path to open.
    - The payload must specify: `data[0]`= file path string, `size`=length of file path string.
 1. Drone (server) responds with either 
-   - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = length of file that has been opened. 
+   - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = 4, `data` = length of file that has been opened. 
    - NAK with [error information](#error_codes), e.g. `NoSessionsAvailable`, `FileExists`. 
      The GCS may cancel the operation, depending on the error.
 1. GCS sends [ReadFile](#ReadFile) commands to download a chunk of data from the file. 
@@ -222,7 +222,12 @@ The sequence of operations is:
 The GSC should create a timeout after `CreateFile` and `WriteFile` commands are sent, and resend the messages as needed (and [described above](#timeouts)).
 A timeout is not set for `TerminateSession` (the server may ignore failure of the command or the ACK).
 
-> **Warning** PX4 and QGroundControl* implement this slightly differently than outlined above. The implementation only has a single session (id=0) so only a single operation can be active at a time. As a result, this operation should only be started if no other operation is active. The drone expects that the session id will be set to zero by the sender of `CreateFile`. Last of all, the GCS sends `ResetSessions` rather than `TerminateSession`. While you can send either if talking to PX4, if the protocol is implemented elsewhere calling `ResetSessions` may break other communications.
+> **Warning** PX4 and *QGroundControl* implement this slightly differently than outlined above. 
+  The implementation only has a single session (id=0) so only a single operation can be active at a time.
+  As a result, this operation should only be started if no other operation is active.
+  The drone expects that the session id will be set to zero by the sender of `CreateFile`.
+  Last of all, the GCS sends `ResetSessions` rather than `TerminateSession`.
+  While you can send either if talking to PX4, if the protocol is implemented elsewhere calling `ResetSessions` may break other communications.
 
 
 ### Remove File
