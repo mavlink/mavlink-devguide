@@ -145,7 +145,9 @@ MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减�
 
 保存的实际字段/字节取决于消息及其内容 (MAVLink [field reordering](../guide/serialization.md#field_reordering) 意味着，我们可以说，任何截断字段通常都是最小的数据大小或扩展字段)。
 
-> **Note** 该协议仅在序列化消息有效负载的末尾截断空字节; 数据主体中的任何空字节/空字段都不受影响。
+> **Note** The first byte of the payload is never truncated, even if the payload consists entirely of zeros.
+> 
+> **Note** The protocol only truncates empty bytes at the end of the serialized message payload; any null bytes/empty fields within the body of the payload are not affected.
 
 ### CRC_EXTERA 计算 {#crc_extra}
 
