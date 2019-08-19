@@ -146,28 +146,30 @@ MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减�
 保存的实际字段/字节取决于消息及其内容 (MAVLink [field reordering](../guide/serialization.md#field_reordering) 意味着，我们可以说，任何截断字段通常都是最小的数据大小或扩展字段)。
 
 > **Note** The first byte of the payload is never truncated, even if the payload consists entirely of zeros.
-> 
+
+<span></span>
+
 > **Note** The protocol only truncates empty bytes at the end of the serialized message payload; any null bytes/empty fields within the body of the payload are not affected.
 
 ### CRC_EXTERA 计算 {#crc_extra}
 
-使用 `CRC_EXTERA` CRC 来验证发送和接收对特定电文的无线协议格式的共同识别。
+The `CRC_EXTRA` CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message.
 
-> **Tip** 可能使超过电汇格式的 [信息规格](../messages/README.md) 的变化，包括：新的/删除字段，或对字段名称、数据类型、顺序或数组长度的修改。
+> **Tip** Changes in [message specifications](../messages/README.md) that might make the over-the-wire format incompatible include: new/removed fields, or changes to field name, data type, order, or array length.
 
-当 MAVLink 代码生成器运行时, 它需要对每个消息的 XML 结构进行校验和, 并创建一个数组定义 `MAVLINK_MESSAGE_CRCS`。 这用于在 c/c + 实现中初始化 `mavlink_message_crcs[]` 数组, 并在 python (或任何其他 (如 c# 和 javascript) 实现中类似地使用。
+When the MAVLink code generator runs, it takes a checksum of the XML structure for each message and creates an array define `MAVLINK_MESSAGE_CRCS`. This is used to initialise the `mavlink_message_crcs[]` array in the C/C++ implementation, and is similarly used in the Python (or any other, such as the C# and JavaScript) implementation.
 
-当发送者计算消息的校验和时，它添加了 `CRC_EXTERA` 字节到数据末尾，即校验和计算结果。 接受者计算收到消息的校验和，并为特定消息ID添加自己的 `CRC_EXTERA` 如果发送者和接收者的`CRC_EXTERA`不同，校验和不匹配。
+When the sender calculates the checksum for a message it adds the `CRC_EXTRA` byte onto the end of the data that the checksum is calculated over. The recipient calculates a checksum for the received message and adds its own `CRC_EXTRA` for the particular message id. If the `CRC_EXTRA` for the sender and receiver are different the checksums will not match.
 
-这种做法确保只有在发送人和收件人使用相同的信息结构时，才能解读（或至少造成错误，任何校验和应用都不可能）。
+This approach ensures that only messages where the sender and recipient are using the same message structure will be decoded (or at least it makes a mistake much more unlikely, as for any checksum application).
 
-如果您正在执行 MAVLink，您可以用两种方式获取此校验和： 你可以包含生成的主机，使用 `MAVLINK_MESSGE_CRCS` 获取每个信息类型的正确种子，或者你可以重新执行计算种子的代码。
+If you are doing your own implementation of MAVLink you can get this checksum in one of two ways: you can include the generated headers and use `MAVLINK_MESSAGE_CRCS` to get the right seed for each message type, or you can re-implement the code that calculates the seed.
 
-由于 MAVLink 在内部根据消息字段大小重新排序消息字段以防止字/半字对齐问题（请参阅 [数据结构对齐](http://en.wikipedia.org/wiki/Data%20structure%20alignment)（维基百科）以供进一步参考），并且错误实现的重新排序可能也会导致不一致， ` CRC_EXTRA `是基于空中消息布局而不是 XML 顺序计算的。
+As MAVLink internally reorders the message fields according to their size to prevent word / halfword alignment issues (see [Data structure alignment](http://en.wikipedia.org/wiki/Data%20structure%20alignment) (Wikipedia) for further reference), and a wrongly implemented reordering potentially can cause inconsistencies as well, the `CRC_EXTRA` is calculated based on the over-the-air message layout rather than the XML order.
 
-> **Note** [MAVLink 2 extension fields](../guide/define_xml_element.md#message_extensions) 不包括在 `CRC_EXTRA` 计算中。
+> **Note** [MAVLink 2 extension fields](../guide/define_xml_element.md#message_extensions) are not included in the `CRC_EXTRA` calculation.
 
-这是计算 `CRC_EXTRA` 种子的 python 代码:
+This is the Python code that calculates the `CRC_EXTRA` seed:
 
 ```python
 def message_checksum(msg):
@@ -190,10 +192,10 @@ def message_checksum(msg):
 
 <!-- From https://github.com/mavlink/pymavlink/blob/master/generator/mavparse.py#L385 -->
 
-> **Note** 这将使用与运行时使用的相同的 x25 校验和。 它在消息名称 (如 "raw _ imu") 上计算 crc, 后面跟每个字段的类型和名称, 空格分隔。 字段的顺序是它们通过电线发送的顺序。 对于数组, 还将添加数组长度。
+> **Note** This uses the same x25 checksum that is used at runtime. It calculates a CRC over the message name (such as “RAW_IMU”) followed by the type and name of each field, space separated. The order of the fields is the order they are sent over the wire. For arrays, the array length is also added.
 
 ## 校验和 {#checksum}
 
-数据包格式包括一个2字节的 crc, 以允许检测消息损坏。 校验和与国际电联 x.25 和 sae as-4 标准 ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)) 中使用的校验和相同, 记录在 SAE AS5669A</1/1 > 中。 请参阅 MAVLink 源代码, 以了解 [the documented C-implementation](https://github.com/mavlink/c_library_v2/blob/master/checksum.h)。</p> 
+The packet format includes a 2-byte CRC to allow detection of message corruption. The checksum is the same as used in ITU X.25 and SAE AS-4 standards ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)), documented in [SAE AS5669A](http://www.sae.org/servlets/productDetail?PROD_TYP=STD&PROD_CD=AS5669A). See the MAVLink source code for [the documented C-implementation](https://github.com/mavlink/c_library_v2/blob/master/checksum.h).
 
-CRC 涵盖整个消息，但不包括`magic` 字节和签字(如果存在)。 CRC 包括 [CRC_EXTRA](#crc_extra) 字节, 用于确保发送和接收系统对消息定义有共同的识别。
+The CRC covers the whole message, excluding `magic` byte and the signature (if present). The CRC includes the [CRC_EXTRA](#crc_extra) byte, which is used to ensure that the sending and receiving systems share a common understanding of the message definition.
