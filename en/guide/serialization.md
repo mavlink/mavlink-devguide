@@ -167,6 +167,8 @@ This contrasts with *MAVLink 1*, where bytes were sent for all fields regardless
 The actual fields affected/bytes saved depends on the message and its content 
 (MAVLink [field reordering](../guide/serialization.md#field_reordering) means that all we can say is that any truncated fields will typically be those with the smallest data size, or extension fields).
 
+> **Note** The first byte of the payload is never truncated, even if the payload consists entirely of zeros.
+
 > **Note** The protocol only truncates empty bytes at the end of the serialized message payload; 
   any null bytes/empty fields within the body of the payload are not affected.
 
