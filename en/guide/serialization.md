@@ -169,6 +169,7 @@ The actual fields affected/bytes saved depends on the message and its content
 
 > **Note** The first byte of the payload is never truncated, even if the payload consists entirely of zeros.
 
+<span></span>
 > **Note** The protocol only truncates empty bytes at the end of the serialized message payload; 
   any null bytes/empty fields within the body of the payload are not affected.
 
