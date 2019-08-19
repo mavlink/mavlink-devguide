@@ -106,13 +106,13 @@ Error | Name | Description
 <span id="Fail"></span>1                | Fail            | Unknown failure
 <span id="FailErrno"></span>2           | FailErrno       | Command failed, Err number sent back in `PayloadHeader.data[1]`. This is a file-system error number understood by the server operating system.
 <span id="InvalidDataSize"></span>3     | InvalidDataSize | Payload `size` is invalid
-<span id="InvalidSession"></span>4      | InvalidSessionn | Session is not currently open
+<span id="InvalidSession"></span>4      | InvalidSession  | Session is not currently open
 <span id="NoSessionsAvailable"></span>5 | NoSessionsAvailable | All available sessions are already in use.
 <span id="EOF"></span>6                 | EOF             | Offset past end of file for `ListDirectory` and `ReadFile` commands.
 <span id="UnknownCommand"></span>7      | UnknownCommand  | Unknown command / opcode
 <span id="FileExists"></span>8          | FileExists      | File already exists
 <span id="FileProtected"></span>9       | FileProtected   | File is write protected
-
+<span id="NotFound"></span>10           | NotFound        | File/folder not found
 
 
 ## Timeouts/Resending {#timeouts}
