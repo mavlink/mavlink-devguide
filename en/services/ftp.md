@@ -112,7 +112,7 @@ Error | Name | Description
 <span id="UnknownCommand"></span>7      | UnknownCommand  | Unknown command / opcode
 <span id="FileExists"></span>8          | FileExists      | File/directory already exists
 <span id="FileProtected"></span>9       | FileProtected   | File/directory is write protected
-<span id="NotFound"></span>10           | FileNotFound    | File/directory not found
+<span id="FileNotFound"></span>10       | FileNotFound    | File/directory not found
 
 
 ## Timeouts/Resending {#timeouts}
