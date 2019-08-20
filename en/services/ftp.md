@@ -110,9 +110,9 @@ Error | Name | Description
 <span id="NoSessionsAvailable"></span>5 | NoSessionsAvailable | All available sessions are already in use.
 <span id="EOF"></span>6                 | EOF             | Offset past end of file for `ListDirectory` and `ReadFile` commands.
 <span id="UnknownCommand"></span>7      | UnknownCommand  | Unknown command / opcode
-<span id="FileExists"></span>8          | FileExists      | File already exists
-<span id="FileProtected"></span>9       | FileProtected   | File is write protected
-<span id="NotFound"></span>10           | NotFound        | File/folder not found
+<span id="FileExists"></span>8          | FileExists      | File/directory already exists
+<span id="FileProtected"></span>9       | FileProtected   | File/directory is write protected
+<span id="NotFound"></span>10           | FileNotFound    | File/directory not found
 
 
 ## Timeouts/Resending {#timeouts}
