@@ -58,7 +58,7 @@ Opcode | Name | Description
 0   | None | Ignored, always ACKed
 <span id="TerminateSession"></span> 1 | TerminateSession | Terminates open Read `session`.<br>- Closes the file associated with (`session`) and frees the session ID for re-use. 
 <span id="ResetSessions"></span> 2   | ResetSessions | Terminates *all* open read sessions.<br>- Clears all state held by the drone (server); closes all open files, etc.<br>- Sends an ACK reply with no data. <!-- Note, is same as Terminate, but does not check if file session exists -->
-<span id="ListDirectory"></span> 3   | [ListDirectory](#list_directory) | List directory contents in `<path>`, starting from file/directory at `<offset>`.<br>- Sends an ACK packet with the result buffer on success, otherwise a NAK packet with an error code.<br>- The directory is closed after the operation, so this leaves no state on the server.
+<span id="ListDirectory"></span> 3   | [ListDirectory](#list_directory) | List directory entry information (files, folders etc.) in `<path>`, starting from a specified entry index (`<offset>`).<br>- Response is an ACK packet with one or more entries on success, otherwise a NAK packet with an error code.<br>- Completion is indicated by a NACK with EOF in response to a requested index (`offset`) beyond the list of entries.<br>- The directory is closed after the operation, so this leaves no state on the server.
 <span id="OpenFileRO"></span> 4      | OpenFileRO | Opens file at `<path>` for reading, returns `<session>`<br>- The `path` is stored in the [payload](#payload) `data`. The drone opens the file (`path`) and allocates a *session number*. The file must exist.<br>- An ACK packet must include the allocated `session` and the data size of the file to be opened (`size`)<br>- A NAK packet must contain [error information](#error_codes) . Typical error codes for this command are `NoSessionsAvailable`, `FileExists`. <br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
 <span id="ReadFile"></span> 5        | ReadFile | Reads `<size>` bytes from `<offset>` in `<session>`.<br>- Seeks to (`offset`) in the file opened in (session) and reads (`size`) bytes into the result buffer.<br>- Sends an ACK packet with the result buffer on success, otherwise a NAK packet with an error code. For short reads or reads beyond the end of a file, the (`size`) field in the ACK packet will indicate the actual number of bytes read.<br>- Reads can be issued to any offset in the file for any number of bytes, so reconstructing portions of the file to deal with lost packets should be easy.<br>- For best download performance, try to keep two `Read` packets in flight.
 <span id="CreateFile"></span> 6      | CreateFile | Creates file at `<path>` for writing, returns `<session>`.<br>- Creates the file (path) and allocates a *session number*. The file must not exist, but all parent directories must exist.<br>- Sends an ACK packet with the allocated session number on success, or a NAK packet with an error code on error (i.e. [FileExists](#FileExists) if the `path` already exists).<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
@@ -257,7 +257,6 @@ The sequence of operations is:
 The GSC should create a timeout after the `RemoveFile` command is sent and resend the message as needed (and [described above](#timeouts)).
 
 
-
 ### Truncate File
 
 The sequence of operations for truncating a file is shown below (assuming there are no timeouts and all operations/requests succeed).
@@ -294,45 +293,41 @@ The sequence of operations for getting a directory listing is shown below (assum
 sequenceDiagram;
     participant GCS
     participant Drone
-    GCS->>Drone:  ListDirectory( data[0]=path, size=len(path), offset=0 )
-    Drone->>GCS: ACK(size, data=n_files_info_at_offset_0)
-    Note right of GCS: Read data in chunks.<br>Next offset depends<br>on no. files received.
-    GCS->>Drone:  ListDirectory( data[0]=path, size=len(path), offset=n )
-    Drone->>GCS: ACK(size, data=files_at_offset_n)
-    Note right of GCS: NACK with EOF if<br>offset > file number
+    Note over GCS,Drone: Request entries at index (offset) 0.<br>One or more entries returned in ACK.
+    GCS->>Drone: ListDirectory( data[0]=path, size=len(path), offset=0 )
+    Drone->>GCS: ACK(size, data=entries_at_offset_0)
+    Note over GCS,Drone: Repeat request in cycle to get all<br>entries (each time set offset to<br>entry index just after last one<br>received).
+    Note over GCS,Drone: Drone NACK with EOF when all<br>entries returned<br>(e.g. request with:<br>offset > number of entries).
     GCS->>Drone:  ListDirectory( data[0]=path, size=len(path), offset=... )
     Drone->>GCS: NACK(size=1, data[0]=EOF)
 {% endmermaid %}
 
 
 The sequence of operations is:
-1. GCS sends [ListDirectory](#ListDirectory) command to specifying a directory path and an offset into the directory listing.
+1. GCS sends [ListDirectory](#ListDirectory) command specifying a directory path and the index of an entry.
    - The [payload](#payload) must specify:
      - `data[0]` = file path
      - `size` = length of path string
-     - `offset` = desired offset into directory listing (initially 0)
-       > **Note** This offset is the index to a specific file/directory (i.e. not an offset into a string containing file information).
-   - If communicating with the PX4 implementation there is only one session.
-     For this case you must set the `session` to 0 and only send when the system is idle.
-1. Drone responds with an ACK containing information about one or more files/directories, starting at the file with the `offset` specified in the request.
+     - `offset` = The index of the first entry to get (0 for first entry, 1 for second, etc.).
+1. Drone responds with an ACK containing **one or more entries** (the first entry is the one specified in request `offset` field).
    - The payload must specify:
-     - `data[0]` = Information for one or more *complete* files/folders starting at the requested offset.
-       Information for each entry is null terminator separated (`\0`), and has the following format (where `type` is one of the letters **F**(ile), **D**(irectory), **S**(skip))
+     - `data[0]` = Information for one or more (sequential) entries, starting at the requested entry index (`offset`).
+       Each entry is separated with a null terminator (`\0`), and has the following format (where `type` is one of the letters **F**(ile), **D**(irectory), **S**(skip))
        ```
        <type><file_or_folder_name>\t<file_size_in_bytes>\0
        ```
-       For example, given five files named *TestFile1.xml* to *TestFile5.xml*, the data returned at offset 2 might look like: `FTestFile3.xml\t223\0FTestFile4.xml\t755568\0FTestFile5.xml\t11111\0`
+       For example, given five files named *TestFile1.xml* to *TestFile5.xml*, the entries returned at offset 2 might look like: `FTestFile3.xml\t223\0FTestFile4.xml\t755568\0FTestFile5.xml\t11111\0`
      - `size` = The size of the `data`.
 1. The operation is then repeated at different offsets to download the whole directory listing.
-   > **Note** The offset for each chunk will depend on how many files were returned by the previous request(s).
-1. The operation completes when the GSCs requests an offset beyond the number of file/directory entries. 
+   > **Note** The offset for each request will depend on how many entries were returned by the previous request(s).
+1. The operation completes when the GSCs requests an entry index (`offset`) greater than the number of entries.
    In this case the drone responds with a [NAK](#error_codes) containing [EOF](#EOF) (end of file).
 
 
 The GSC should create a timeout after the `ListDirectory` command is sent and resend the message as needed (and [described above](#timeouts)).
 
 The drone may also [NAK](#error_codes) with an unexpected error.
-Generally errors are unrecoverable, and the drone must clean up all resources (ie close file handles) associated with the request after sending the NAK.
+Generally errors are unrecoverable, and the drone must clean up all resources (i.e. close file handles) associated with the request after sending the NAK.
 
 
 ### Create Directory
