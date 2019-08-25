@@ -293,18 +293,20 @@ The sequence of operations for getting a directory listing is shown below (assum
 sequenceDiagram;
     participant GCS
     participant Drone
-    Note over GCS,Drone: Request entries at index (offset) 0.<br>One or more entries returned in ACK.
+    Note over GCS,Drone: Request entries from index (offset) 0.<br>One or more entries returned in ACK.
     GCS->>Drone: ListDirectory( data[0]=path, size=len(path), offset=0 )
     Drone->>GCS: ACK(size, data=entries_at_offset_0)
     Note over GCS,Drone: Repeat request in cycle to get all<br>entries (each time set offset to<br>entry index just after last one<br>received).
-    Note over GCS,Drone: Drone NACK with EOF when all<br>entries returned<br>(e.g. request with:<br>offset > number of entries).
-    GCS->>Drone:  ListDirectory( data[0]=path, size=len(path), offset=... )
+    GCS->>Drone: ListDirectory( data[0]=path, size=len(path), offset=...)
+    Drone->>GCS: ACK(size, data=entries_at_offset)
+    Note over GCS,Drone: Drone NACK with EOF when all<br>entries returned<br>(e.g. request with:<br>offset >= number of entries).
+    GCS->>Drone:  ListDirectory( data[0]=path, size=len(path), offset=too_big )
     Drone->>GCS: NACK(size=1, data[0]=EOF)
 {% endmermaid %}
 
 
 The sequence of operations is:
-1. GCS sends [ListDirectory](#ListDirectory) command specifying a directory path and the index of an entry.
+1. GCS sends [ListDirectory](#ListDirectory) command specifying a directory path and the **index** of an entry.
    - The [payload](#payload) must specify:
      - `data[0]` = file path
      - `size` = length of path string
@@ -320,7 +322,7 @@ The sequence of operations is:
      - `size` = The size of the `data`.
 1. The operation is then repeated at different offsets to download the whole directory listing.
    > **Note** The offset for each request will depend on how many entries were returned by the previous request(s).
-1. The operation completes when the GSCs requests an entry index (`offset`) greater than the number of entries.
+1. The operation completes when the GCS requests an entry index (`offset`) greater than or equal to the number of entries.
    In this case the drone responds with a [NAK](#error_codes) containing [EOF](#EOF) (end of file).
 
 
