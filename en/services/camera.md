@@ -24,7 +24,7 @@ It contains a bitmap of [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAG
 
 ### Camera Identification {#camera_identification}
 
-The camera identification operation identifies all the available cameras and determines their capablities.
+The camera identification operation identifies all the available cameras and determines their capabilities.
 
 > **Tip** Camera identification must be carried out before all other operations!
 
