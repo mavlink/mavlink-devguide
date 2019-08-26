@@ -18,9 +18,11 @@
 
 ### 相机识别 {#camera_identification}
 
-相机识别操作决定了哪些相机是可用/存在的 (然后才能运行其它操作)。
+The camera identification operation identifies all the available cameras and determines their capabilities.
 
-首次接收到一个相机组件的心跳时，GCS会向相机发送一个 [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) 消息。 相机组件随后将响应一个包含结果的 [COMMAND_ACK](../messages/common.md#COMMAND_ACK) 消息。 如果成功 (结果将是 [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) 相机组件将继续发送[CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消息。
+> **Tip** Camera identification must be carried out before all other operations!
+
+The first time a heartbeat is received from a new camera component, the GCS will send it a [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) message. The camera will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result. 如果成功 (结果将是 [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) 相机组件将继续发送[CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消息。
 
 {% mermaid %} sequenceDiagram; participant GCS participant Camera Camera->>GCS: HEARTBEAT \[cmp id: MAV_COMP_ID_CAMERA\] (first) GCS->>Camera: MAV_CMD_REQUEST_CAMERA_INFORMATION GCS->>GCS: Start timeout Camera->>GCS: COMMAND_ACK Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info. Camera->>GCS: CAMERA_INFORMATION {% endmermaid %}
 
@@ -30,7 +32,7 @@
 
 如果一个相机组件对设置项提供更精细的控制 `CAMERA_INFORMATION.cam_definition_uri` 将包含一个指向相机定义文件 [Camera Definition File](../services/camera_def.md) 的URI。 如果该URI确实存在，GCS将(通过标准的HTTP GET请求) 来获取并解析它，然后启动图形界面以便用户对相机组件进行配置。 相机定义文件可以存放 *hosted* 在任何位置。
 
-> **Note** 如果相机组件提供 HTTP 接口，相机定义文件可以存放在相机上。 否则，它可以存放在任何常规的、可访问的服务器上。
+> **Note** If the camera component provides an HTTP interface, the definition file can be hosted on the camera itself. Otherwise, it can be hosted by any regular, reachable server.
 
 `CAMERA_INFORMATION.cam_definition_version` 字段应提供定义文件的版本信息，允许GCS进行版本比对。 文件一旦被下载，只有当文件版本号改变时才会重新获取。
 
@@ -50,7 +52,7 @@
 
 {% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_REQUEST_CAMERA_SETTINGS GCS->>GCS: Start timeout Camera->>GCS: COMMAND_ACK Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info. Camera->>GCS: CAMERA_SETTINGS {% endmermaid %}
 
-> **Note** 指令ACK 和指令重发的处理方式和相机识别 [camera identification](#camera_identification) 一致 (如果收到标志成功的ACK将等待 `CAMERA_SETTINGS` 消息，重复此循环 - 最多3次 - 直到收到此消息)。
+> **Note** Command acknowledgment and message resending is handled in the same way as for [camera identification](#camera_identification) (if a successful ACK is received the camera will expect the `CAMERA_SETTINGS` message, and repeat the cycle - up to 3 times - until it is received).
 
 要将相机切换到特定的工作模式，GCS 可以发送一条包含该工作模式的[MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) 指令。
 
@@ -58,7 +60,7 @@
 
 {% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_SET_CAMERA_MODE GCS->>GCS: Start timeout Camera->>GCS: COMMAND_ACK Note over Camera,GCS: If MAV_RESULT_ACCEPTED, mode was changed. {% endmermaid %}
 
-> **Note** 以上操作对指令/Ack的规定遵循 [Command Protocol](../services/command.md) 通用准则。
+> **Note** The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment.
 
 ### 存储状态
 
@@ -78,7 +80,7 @@ Each time an image is captured, the camera *broadcasts* a [CAMERA_IMAGE_CAPTURED
 
 The [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) command can optionally be sent to stop an image capture sequence (this is needed if image capture has been set to continue forever).
 
-The still image capture message sequence *for missions* (as described above) is shown below :
+The still image capture message sequence *for missions* (as described above) is shown below:
 
 {% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_IMAGE_START_CAPTURE (interval, count/forever) GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED Note over Camera,GCS: Camera start capture of "count" images at "interval" Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast) Camera->>GCS: ... Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast) Note over Camera,GCS: (Optional) Stop capture GCS->>Camera: MAV_CMD_IMAGE_STOP_CAPTURE GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED {% endmermaid %}
 
@@ -102,13 +104,27 @@ To start recording videos, the GCS uses the [MAV_CMD_VIDEO_START_CAPTURE](../mes
 
 To stop recording, the GCS uses the [MAV_CMD_VIDEO_STOP_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_STOP_CAPTURE) command.
 
-### 视频流
+### Video Streaming {#video_streaming}
+
+> **Note** The GCS should already have identified all connected cameras by their heartbeat and followed the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
 
 A camera is capable of streaming video if it sets the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) bit set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
-When the GCS receives the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it detects the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag, it will then send the [MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION) message to the camera requesting the video streaming configuration. In response, the camera returns a [VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) message for each stream it supports.
+The sequence for requesting *all* video streams from a particular camera is shown below:
 
-> **Note**如果你的相机仅支持视频流 (不支持图像/视频捕获等其它功能)，那么你只需将[CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM)这一个标志位置位即可。 GCS将仅提供视频流支持并跳过其它控制项。
+{% mermaid %} sequenceDiagram; participant GCS participant Camera Note over GCS,Camera: IF CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM  
+in CAMERA_INFORMATION.flags  
+request all streams. GCS->>Camera: MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION ( param1=0 ) GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED Note over Camera,GCS: Camera sends information for  
+all streams. Camera->>GCS: VIDEO_STREAM_INFORMATION (1) Camera->>GCS: ... Camera->>GCS: VIDEO_STREAM_INFORMATION (n) {% endmermaid %}
+
+The steps are:
+
+1. GCS follows the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
+2. GCS checks if [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) contains the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag.
+3. If so, the GCS sends the [MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION) message to the camera requesting the video streaming configuration for all streams - `param1=0`). > **Note** A GCS can also request information for a particular stream by setting its id in `param1`.
+4. Camera returns a [VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) message for the specified stream or all streams it supports.
+
+> **Note** If your camera only provides video streaming and nothing else (no camera features), the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag is the only flag you need to set. The GCS will then provide video streaming support and skip camera control.
 
 ## 消息/枚举值摘要
 
