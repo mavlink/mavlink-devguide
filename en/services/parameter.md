@@ -10,8 +10,7 @@ This key/value pair has a number of important properties:
 
 * The human-readable name is small but useful (it can encode parameter names from which users can infer the purpose of the parameter).
 * Unknown autopilots that implement the protocol can be supported "out of the box".
-* A GCS does not *have* to know in advance what parameters exist on a remote system
-  (although in practice a GCS can provide a *better* user experience with additional parameter metadata like maximum and minimum values, default values, etc.). 
+* A GCS does not *have* to know in advance what parameters exist on a remote system (although in practice a GCS can provide a *better* user experience with additional parameter metadata like maximum and minimum values, default values, etc.). 
 * Adding a parameter only requires changes to the system with parameters. 
   A GCS that loads the parameters, and the MAVLink communication libraries, should not require any changes.
 
@@ -79,6 +78,8 @@ All components must respond to parameter request messages addressed to their ID 
 
 ## Limitations {#limitations}
 
+### Parameters Assumed Invariant
+
 The protocol is designed with the assumption that the parameter set does not change during normal operation.
 
 If a system can add parameters during (or after) initial synchronization the protocol cannot guarantee reliable/robust synchronization, because there is no way to notify that the parameter set has changed and a new sync is required.
@@ -87,6 +88,15 @@ When requesting parameters from such a system, the risk of problems can be *redu
 * The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter may change on systems where parameters can be added/removed).
 * [PARAM_VALUE](../messages/common.md#PARAM_VALUE).`param_count` may be monitored.
   If this changes the parameter set should be re-sychronised.
+
+### Monitoring Parameter Updates Can Fail {#monitoring_unreliable}
+
+The protocol requires that all systems that want to synchronise parameters with a component: first get all parameters, and then track changes by monitoring for `PARAM_VALUE` messages (updating their internal list appropriately).
+
+This works for the originator of a parameter change, which can resend the request if an expected `PARAM_VALUE` is not recieved.
+This approach may fail for systems that did not originate the change, as they will not know about updates they do not receive (i.e. if messages are dropped).
+
+A component may mitigate this risk by, for example, sending the `PARAM_VALUE` multiple times after a parameter is changed.
 
 ## Parameter Operations
 
@@ -181,6 +191,7 @@ sequenceDiagram;
     GCS->>GCS: Start timeout (for PARAM_VALUE)
     Drone->>Drone: Write parameter value
     Drone->>GCS: PARAM_VALUE (name, value ...)
+    GCS->>GCS: Update record for PARAM_VALUE
     GCS-->>Drone: On timeout restart this sequence
 {% endmermaid %}
 
@@ -189,16 +200,20 @@ The sequence of operations is:
 
 1. GCS (client) sends [PARAM_SET](../messages/common.md#PARAM_VALUE) specifying the param name to update and its new value (also target system/component and the param type).
 1. GCS starts timout waiting for acknowledgment (in the form of a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) message).
-1. Drone responds with `PARAM_VALUE` containing the updated parameter value (or the old value if the write operation failed).
-   This is a broadcast message (sent to all systems).
-   > **Note** The Drone must acknowledge the `PARAM_SET` with a `PARAM_VALUE` even if the write operation fails.
+1. Drone writes parameter and responds by *broadcasting* a `PARAM_VALUE` containing the updated parameter value to all components/systems.
+   > **Note** The Drone must acknowledge the `PARAM_SET` by broadcasting a `PARAM_VALUE` even if the write operation fails.
+     In this case the `PARAM_VALUE` will be the current/unchanged parameter value. 
+1. GCS, and other systems interested in the component's parameters, must update their internal record of the parameter with the new value.
+1. The GCS may restart the sequence if the expected `PARAM_VALUE` is not received within the timeout, or if the write operation fails (the value returned in `PARAM_VALUE` does not match the value set).
 
-The drone may restart the sequence the `PARAM_VALUE` acknowledgment is not received within the timeout, or if the write operation fails (the value returned in `PARAM_VALUE` does not match the value set).
 
+> **Warning** A system that did not request the param change may miss updates and fall out of sync. For more information, and suggestions for mitigation, see [limitations](#monitoring_unreliable) above.
 
+<span></span>
 > **Note** The command [MAV_CMD_DO_SET_PARAMETER](../messages/common.md#MAV_CMD_DO_SET_PARAMETER) is not part of the parameter protocol.
   If implemented it can be used to set the value of a parameter using the *enumeration* of the parameter within the remote system is known (rather than the id). 
   This has no particular advantage over the parameter protocol methods.
+
 
 ## Implementations
 
