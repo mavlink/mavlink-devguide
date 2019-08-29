@@ -30,9 +30,9 @@ The first time a heartbeat is received from a new camera component, the GCS will
 
 `CAMERA_INFORMATION` 消息只包含相机组件支持或不支持特定功能的最简单信息。 这对于基本的图像或视频捕获来说已经足够了。
 
-如果一个相机组件对设置项提供更精细的控制 `CAMERA_INFORMATION.cam_definition_uri` 将包含一个指向相机定义文件 [Camera Definition File](../services/camera_def.md) 的URI。 如果该URI确实存在，GCS将(通过标准的HTTP GET请求) 来获取并解析它，然后启动图形界面以便用户对相机组件进行配置。 相机定义文件可以存放 *hosted* 在任何位置。
+如果一个相机组件对设置项提供更精细的控制 `CAMERA_INFORMATION.cam_definition_uri` 将包含一个指向相机定义文件 [Camera Definition File](../services/camera_def.md) 的URI。 If this URI exists, the GCS will request it, parse it and prepare the UI for the user to control the camera settings.
 
-> **Note** If the camera component provides an HTTP interface, the definition file can be hosted on the camera itself. Otherwise, it can be hosted by any regular, reachable server.
+> **Note** A GCS that implements this protocol is expected to support both HTTP (`http://`) and [MAVLink FTP](../services/ftp.md) (`mavlinkftp://`) URIs for download of the camera definition file. If the camera provides an HTTP or MAVLink FTP interface, the definition file can be hosted on the camera itself. Otherwise, it can be *hosted* anywhere (on any reachable server).
 
 `CAMERA_INFORMATION.cam_definition_version` 字段应提供定义文件的版本信息，允许GCS进行版本比对。 文件一旦被下载，只有当文件版本号改变时才会重新获取。
 
