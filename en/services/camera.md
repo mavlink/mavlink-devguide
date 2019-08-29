@@ -52,11 +52,11 @@ The `CAMERA_INFORMATION` response contains the bare minimum information about th
 This is sufficient for basic image and/or video capture.
 
 If a camera provides finer control over its settings `CAMERA_INFORMATION.cam_definition_uri` will include a URI to a [Camera Definition File](../services/camera_def.md).
-If this URI exists, the GCS will request it (using a standard HTTP GET request), parse it and prepare the UI for the user to control the camera settings. 
-The definition file can be *hosted* anywhere.
+If this URI exists, the GCS will request it, parse it and prepare the UI for the user to control the camera settings.
 
-> **Note** If the camera component provides an HTTP interface, the definition file can be hosted on the camera itself. 
-  Otherwise, it can be hosted by any regular, reachable server. 
+> **Note** A GCS that implements this protocol is expected to support both HTTP (`http://`) and [MAVLink FTP](../services/ftp.md) (`mavlinkftp://`) URIs for download of the camera definition file. 
+  If the camera provides an HTTP or MAVLink FTP interface, the definition file can be hosted on the camera itself. 
+  Otherwise, it can be *hosted* anywhere (on any reachable server).
 
 The `CAMERA_INFORMATION.cam_definition_version` field should provide a version for the definition file, allowing the GCS to cache it. 
 Once downloaded, it would only be requested again if the version number changes.
