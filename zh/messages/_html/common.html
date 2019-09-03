@@ -1669,7 +1669,7 @@
      <td>
       <a href="#MAV_COMP_ID_GIMBAL">MAV_COMP_ID_GIMBAL</a>
      </td>
-     <td>Gimbal component.</td>
+     <td>Gimbal #1.</td>
     </tr>
     <tr id="MAV_COMP_ID_LOG">
      <td>155</td>
@@ -1717,6 +1717,41 @@
       <a href="#MAV_COMP_ID_FLARM">MAV_COMP_ID_FLARM</a>
      </td>
      <td>FLARM collision alert component.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_GIMBAL2">
+     <td>171</td>
+     <td>
+      <a href="#MAV_COMP_ID_GIMBAL2">MAV_COMP_ID_GIMBAL2</a>
+     </td>
+     <td>Gimbal #2.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_GIMBAL3">
+     <td>172</td>
+     <td>
+      <a href="#MAV_COMP_ID_GIMBAL3">MAV_COMP_ID_GIMBAL3</a>
+     </td>
+     <td>Gimbal #3.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_GIMBAL4">
+     <td>173</td>
+     <td>
+      <a href="#MAV_COMP_ID_GIMBAL4">MAV_COMP_ID_GIMBAL4</a>
+     </td>
+     <td>Gimbal #4</td>
+    </tr>
+    <tr id="MAV_COMP_ID_GIMBAL5">
+     <td>174</td>
+     <td>
+      <a href="#MAV_COMP_ID_GIMBAL5">MAV_COMP_ID_GIMBAL5</a>
+     </td>
+     <td>Gimbal #5.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_GIMBAL6">
+     <td>175</td>
+     <td>
+      <a href="#MAV_COMP_ID_GIMBAL6">MAV_COMP_ID_GIMBAL6</a>
+     </td>
+     <td>Gimbal #6.</td>
     </tr>
     <tr id="MAV_COMP_ID_MISSIONPLANNER">
      <td>190</td>
@@ -27807,7 +27842,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Distance of obstacles around the vehicle with index 0 corresponding to local forward + angle_offset. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.</td>
+     <td>Distance of obstacles around the vehicle with index 0 corresponding to North + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.</td>
     </tr>
     <tr>
      <td>increment</td>
@@ -27864,6 +27899,19 @@
       </a>
      </td>
      <td>Relative angle offset of the 0-index element in the distances array. Value of 0 corresponds to forward. Positive is clockwise direction, negative is counter-clockwise.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">frame<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_FRAME">MAV_FRAME</a>
+     </td>
+     <td>Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to MAV_FRAME_GLOBAL, which is North aligned. For body-mounted sensors use MAV_FRAME_BODY_FRD, which is vehicle front aligned.</td>
     </tr>
    </tbody>
   </table>
