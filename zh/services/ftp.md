@@ -116,18 +116,19 @@ The payload `size` field must be set to either 1 or 2, depending on whether or n
 
 <!--  uint8_t enum ErrorCode: https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.h -->
 
-| Error                       | Name                | Description                                                                                                                                    |
-| --------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span id="None"></span>0 | None                | No error                                                                                                                                       |
-| <span id="Fail"></span>1 | Fail                | Unknown failure                                                                                                                                |
-| <span id="FailErrno"></span>2 | FailErrno           | Command failed, Err number sent back in `PayloadHeader.data[1]`. This is a file-system error number understood by the server operating system. |
-| <span id="InvalidDataSize"></span>3 | InvalidDataSize     | Payload `size` is invalid                                                                                                                      |
-| <span id="InvalidSession"></span>4 | InvalidSessionn     | Session is not currently open                                                                                                                  |
-| <span id="NoSessionsAvailable"></span>5 | NoSessionsAvailable | All available sessions are already in use.                                                                                                     |
-| <span id="EOF"></span>6 | EOF                 | Offset past end of file for `ListDirectory` and `ReadFile` commands.                                                                           |
-| <span id="UnknownCommand"></span>7 | UnknownCommand      | Unknown command / opcode                                                                                                                       |
-| <span id="FileExists"></span>8 | FileExists          | File already exists                                                                                                                            |
-| <span id="FileProtected"></span>9 | FileProtected       | File is write protected                                                                                                                        |
+| Error                        | Name                | Description                                                                                                                                    |
+| ---------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span id="None"></span>0  | None                | No error                                                                                                                                       |
+| <span id="Fail"></span>1  | Fail                | Unknown failure                                                                                                                                |
+| <span id="FailErrno"></span>2  | FailErrno           | Command failed, Err number sent back in `PayloadHeader.data[1]`. This is a file-system error number understood by the server operating system. |
+| <span id="InvalidDataSize"></span>3  | InvalidDataSize     | Payload `size` is invalid                                                                                                                      |
+| <span id="InvalidSession"></span>4  | InvalidSession      | Session is not currently open                                                                                                                  |
+| <span id="NoSessionsAvailable"></span>5  | NoSessionsAvailable | All available sessions are already in use.                                                                                                     |
+| <span id="EOF"></span>6  | EOF                 | Offset past end of file for `ListDirectory` and `ReadFile` commands.                                                                           |
+| <span id="UnknownCommand"></span>7  | UnknownCommand      | Unknown command / opcode                                                                                                                       |
+| <span id="FileExists"></span>8  | FileExists          | File/directory already exists                                                                                                                  |
+| <span id="FileProtected"></span>9  | FileProtected       | File/directory is write protected                                                                                                              |
+| <span id="FileNotFound"></span>10 | FileNotFound        | File/directory not found                                                                                                                       |
 
 ## Timeouts/Resending {#timeouts}
 
