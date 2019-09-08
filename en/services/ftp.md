@@ -38,7 +38,7 @@ Byte Index | C version | Content | Value | Explanation
 0 to 1 | `uint16_t seq_number` | Sequence number for message | 0&nbsp;-&nbsp;65535 | All *new* messages between the GCS and drone iterate this number. Re-sent commands/ACK/NAK should use the previous response's sequence number.
 2 | `uint8_t session`   | Session id | 0 - 255 | Session id for read/write operations (the server may use this to reference the file handle and information about the progress of read/write operations).
 3 | `uint8_t opcode`    | [OpCode](#opcodes) (id) | 0 - 255 | Ids for particular commands and ACK/NAK messages.
-4 | `uint8_t size`      | Size         | 1 - 255 | Depends on [OpCode](#opcodes). For Reads/Writes this is the size of the `data` transported. For NAK it is the number of bytes used for [error information](#error_codes) (1 or 2).
+4 | `uint8_t size`      | Size         | 0 - 255 | Depends on [OpCode](#opcodes). For Reads/Writes this is the size of the `data` transported. For NAK it is the number of bytes used for [error information](#error_codes) (1 or 2).
 5 | `uint8_t req_opcode`| Request [OpCode](#opcodes) | 0 - 255 | OpCode (of original message) returned in an ACK or NAK response. 
 6 | `uint8_t burst_complete` | Burst complete | 0, 1 | Code to indicate if a burst is complete. 1: set of burst packets complete, 0: More burst packets coming.<br>- Only used if `req_opcode` is [BurstReadFile](#BurstReadFile).
 7 | `uint8_t padding` | Padding | | 32 bit alignment padding.
