@@ -22,7 +22,7 @@ Message | Description
 <span id="PARAM_REQUEST_LIST"></span>[PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_LIST) | Request all parameters. The recipient broadcast all parameter values using [PARAM_VALUE](#PARAM_VALUE).
 <span id="PARAM_REQUEST_READ"></span>[PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) | Request a single parameter. The recipient broadcasts the specified parameter value using [PARAM_VALUE](#PARAM_VALUE).
 <span id="PARAM_SET"></span>[PARAM_SET](../messages/common.md#PARAM_SET) | Send command to set a specified parameter to a value. After the value has been set (whether successful or not), the recipient should broadcast the current value using [PARAM_VALUE](#PARAM_VALUE).
-<span id="PARAM_VALUE"></span>[PARAM_VALUE](../messages/common.md#PARAM_VALUE) | The current value of a parameter, broadcast in response to a request to get one or more parameters ([PARAM_REQUEST_READ](#PARAM_REQUEST_READ),[PARAM_REQUEST_LIST](#PARAM_REQUEST_LIST)) or whenever a parameter is set/changes ([PARAM_SET](#PARAM_SET))
+<span id="PARAM_VALUE"></span>[PARAM_VALUE](../messages/common.md#PARAM_VALUE) | The current value of a parameter, broadcast in response to a request to get one or more parameters ([PARAM_REQUEST_READ](#PARAM_REQUEST_READ), [PARAM_REQUEST_LIST](#PARAM_REQUEST_LIST)) or whenever a parameter is set ([PARAM_SET](#PARAM_SET)) or changes.
 
 Enum | Description
 -- | --
@@ -91,7 +91,7 @@ When requesting parameters from such a system, the risk of problems can be *redu
 
 ### Monitoring Parameter Updates Can Fail {#monitoring_unreliable}
 
-The protocol requires that all systems that want to synchronise parameters with a component: first get all parameters, and then track changes by monitoring for `PARAM_VALUE` messages (updating their internal list appropriately).
+The protocol requires that all systems that want to synchronise parameters with a component first get all parameters, and then track changes by monitoring for `PARAM_VALUE` messages (updating their internal list appropriately).
 
 This works for the originator of a parameter change, which can resend the request if an expected `PARAM_VALUE` is not recieved.
 This approach may fail for systems that did not originate the change, as they will not know about updates they do not receive (i.e. if messages are dropped).
@@ -127,7 +127,7 @@ sequenceDiagram;
 
 The sequence of operations is:
 
-1. GCS (client) sends [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_READ) specifying a target system/component.
+1. GCS (client) sends [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_LIST) specifying a target system/component.
    - Broadcast addresses may be used.
      All targeted components should respond with parameters (or ignore the request if they have none).
    - The GCS is expected to accumulate parameters from all responding systems.
@@ -168,12 +168,12 @@ sequenceDiagram;
 
 The sequence of operations is:
 
-1. GCS (client) sends [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) specifying the either the parameter id (name) or parameter index.
+1. GCS (client) sends [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) specifying either the parameter id (name) or parameter index.
 1. GCS starts timeout waiting for acknowledgment (in the form of a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) message).
 1. Drone responds with `PARAM_VALUE` containing the parameter value.
    This is a broadcast message (sent to all systems).
 
-The drone may restart the sequence the `PARAM_VALUE` acknowledgment is not received within the timeout.
+The drone may restart the sequence if the `PARAM_VALUE` acknowledgment is not received within the timeout.
 
 ### Write Parameters {#write}
 
