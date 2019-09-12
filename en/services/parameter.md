@@ -1,19 +1,17 @@
 # Parameter Protocol
 
-The parameter microservice is used to exchange configuration settings between MAVLink systems.
+The parameter microservice is used to exchange configuration settings between MAVLink components.
 
-The protocol guarantees delivery/reliable synchronisation of parameters for systems where the [parameter set does not change during normal operation](#limitations).
+Each parameter is represented as a key/value pair.
+The key is usually the human-readable name of the parameter (maximum of 16 characters) and a value - which can be one of a [number of types](../messages/common.md#MAV_PARAM_TYPE).
 
-Each parameter is represented as a key/value pair. The key is usually the human-readable name of the parameter (maximum of 16 characters) and a value - which can be one of a [number of types](../messages/common.md#MAV_PARAM_TYPE).
-
-This key/value pair has a number of important properties:
+The key/value pair has a number of important properties:
 
 * The human-readable name is small but useful (it can encode parameter names from which users can infer the purpose of the parameter).
 * Unknown autopilots that implement the protocol can be supported "out of the box".
 * A GCS does not *have* to know in advance what parameters exist on a remote system (although in practice a GCS can provide a *better* user experience with additional parameter metadata like maximum and minimum values, default values, etc.). 
 * Adding a parameter only requires changes to the system with parameters. 
   A GCS that loads the parameters, and the MAVLink communication libraries, should not require any changes.
-
 
 ## Message/Enum Summary
 
@@ -26,7 +24,7 @@ Message | Description
 
 Enum | Description
 -- | --
-<span id="MAV_PARAM_TYPE"></span>[MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE) | The [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE) store/encode parameter values within a `float` field. This type conveys the real type of the encoded parameter value, e.g. `MAV_PARAM_TYPE_UINT16`, `MAV_PARAM_TYPE_INT32`, etc.
+<span id="MAV_PARAM_TYPE"></span>[MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE) | [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE) store/encode parameter values within a `float` field. This type conveys the real type of the encoded parameter value, e.g. `MAV_PARAM_TYPE_UINT16`, `MAV_PARAM_TYPE_INT32`, etc.
 
 
 ## Parameter Encoding
@@ -63,6 +61,13 @@ When working with a system that supports non-float parameters (e.g. PX4) you wil
 
 There is a good example of how to do this in the Pymavlink [mavparm.py](https://github.com/ArduPilot/pymavlink/blob/master/mavparm.py) module (see `MAVParmDict.mavset()`).
 
+## Parameter Caching {#parameter_caching}
+
+A GCS or other component may choose to maintain a cache of parameter values for connected components/systems, in order to reduce the time required to display values and reduce MAVLink traffic.
+
+The cache can be populated initially by first [reading the full parameter list](#read_all) at least once, and then updated by monitoring for [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages (which are emitted whenever a parameter is [written/changed](#write)).
+
+> **Note** Cache synchronisation is not guaranteed; a component may [miss parameter update messages](#monitoring_unreliable) due to changes by other components.
 
 ## Multi-System and Multi-Component Support
 
@@ -91,27 +96,22 @@ When requesting parameters from such a system, the risk of problems can be *redu
 
 ### Monitoring Parameter Updates Can Fail {#monitoring_unreliable}
 
-The protocol requires that all systems that want to synchronise parameters with a component first get all parameters, and then track changes by monitoring for `PARAM_VALUE` messages (updating their internal list appropriately).
+A GCS (or other system) that wants to [synchronise parameters](#parameter_caching) with a component should first get all parameters, and then track changes by monitoring for `PARAM_VALUE` messages (updating their internal list appropriately).
 
 This works for the originator of a parameter change, which can resend the request if an expected `PARAM_VALUE` is not recieved.
 This approach may fail for systems that did not originate the change, as they will not know about updates they do not receive (i.e. if messages are dropped).
 
 A component may mitigate this risk by, for example, sending the `PARAM_VALUE` multiple times after a parameter is changed.
 
+
 ## Parameter Operations
 
 This section defines the state machine/message sequences for all parameter operations.
 
-
 ### Read All Parameters {#read_all}
 
-A GCS will usually read all parameters when first connecting to a system, in order to get their current values.
-
-> **Note** The Drone will emit a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) whenever a parameter is [written/changed](#write).
-  Provided the GCS keeps track of changed parameters, it should not need to re-read the full parameter list.
-
-Reading the parameter list is activated by sending the [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_LIST) message.
-The target component should start to broadcast the parameters individually in `PARAM_VALUE` messages after receiving this message.
+The read-all operation is started by sending the [PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_LIST) message.
+The target component must start to broadcast the parameters individually in `PARAM_VALUE` messages after receiving this message.
 The drone should allow a pause after sending each parameter to ensure that the operation doesn't consume all of the available link bandwidth (30 - 50 percent of the bandwidth is reasonable).
 
 {% mermaid %}
@@ -137,7 +137,7 @@ The sequence of operations is:
    - Components with no parameters should ignore the request.
 1. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent (that the operation has completed).
 
-The GCS/API accumulates received parameters for each component and can determine if any are missing/not received (`PARAM_VALUE` contains total number of params and index of current param). 
+The GCS/API may accumulate the received parameters for each component and can determine if any are missing/not received (`PARAM_VALUE` contains the total number of params and index of current param). 
 
 **Handling of missing params is GCS-dependent.**
 *QGroundControl*, for example, [individually requests](#read_single) each missing parameter by index (using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) as shown below):
@@ -177,11 +177,7 @@ The drone may restart the sequence if the `PARAM_VALUE` acknowledgment is not re
 
 ### Write Parameters {#write}
 
-Parameters can be written individually by sending the parameter name and value pair to the GCS.
-
-> **Note** Before writing any parameters, a GCS will usually first read the [read the full parameter list](#read_all) at least once (in order to populate the current values for parameters).
-
-The sequence of operations for setting a parameter is shown below:
+Parameters can be written individually by sending the parameter name and value pair to the GCS, as shown:
 
 {% mermaid %}
 sequenceDiagram;
@@ -191,10 +187,9 @@ sequenceDiagram;
     GCS->>GCS: Start timeout (for PARAM_VALUE)
     Drone->>Drone: Write parameter value
     Drone->>GCS: PARAM_VALUE (name, value ...)
-    GCS->>GCS: Update record for PARAM_VALUE
+    GCS->>GCS: (optional) Update cache for PARAM_VALUE
     GCS-->>Drone: On timeout restart this sequence
 {% endmermaid %}
-
 
 The sequence of operations is:
 
@@ -202,14 +197,10 @@ The sequence of operations is:
 1. GCS starts timout waiting for acknowledgment (in the form of a [PARAM_VALUE](../messages/common.md#PARAM_VALUE) message).
 1. Drone writes parameter and responds by *broadcasting* a `PARAM_VALUE` containing the updated parameter value to all components/systems.
    > **Note** The Drone must acknowledge the `PARAM_SET` by broadcasting a `PARAM_VALUE` even if the write operation fails.
-     In this case the `PARAM_VALUE` will be the current/unchanged parameter value. 
-1. GCS, and other systems interested in the component's parameters, must update their internal record of the parameter with the new value.
+     In this case the `PARAM_VALUE` will be the current/unchanged parameter value.
+1. GCS should update the [parameter cache](#parameter_caching) (if used) with the new value.
 1. The GCS may restart the sequence if the expected `PARAM_VALUE` is not received within the timeout, or if the write operation fails (the value returned in `PARAM_VALUE` does not match the value set).
 
-
-> **Warning** A system that did not request the param change may miss updates and fall out of sync. For more information, and suggestions for mitigation, see [limitations](#monitoring_unreliable) above.
-
-<span></span>
 > **Note** The command [MAV_CMD_DO_SET_PARAMETER](../messages/common.md#MAV_CMD_DO_SET_PARAMETER) is not part of the parameter protocol.
   If implemented it can be used to set the value of a parameter using the *enumeration* of the parameter within the remote system is known (rather than the id). 
   This has no particular advantage over the parameter protocol methods.
