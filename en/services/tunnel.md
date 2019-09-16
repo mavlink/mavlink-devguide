@@ -54,7 +54,7 @@ The rules for adding new `MAV_TUNNEL_PAYLOAD_TYPE` values are:
 >  
 >  If you wish to publish a definition, please raise through the normal [support channels](../about/support.md).
 
-A vendor may publish the format for a [registered payload format](#register) in the XML file: [mavlink/tunnel-message-payload-types.xml](https://github.com/mavlink/mavlink/tunnel-message-payload-types.xml).
+A vendor may publish the format for a [registered payload format](#register) in the XML file: [definition_files/tunnel_message_payload_types.xml](https://github.com/mavlink/mavlink/definition_files/tunnel_message_payload_types.xml).
 
 Once published the vendor is expected to maintain compatibility of the format:
 - The name/value of the associated [MAV_TUNNEL_PAYLOAD_TYPE](#MAV_TUNNEL_PAYLOAD_TYPE) may no longer change.
