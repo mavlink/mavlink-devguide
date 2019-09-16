@@ -5,7 +5,7 @@ The *Tunnel Protocol* allows MAVLink to be used as a "dumb channel" to pass data
 > **Warning** Using the tunnel loses most of the benefits of MAVLink in terms of efficiently and interoperability.
   You should almost always create "dedicated" MAVLink messages for communicating in a MAVLink system.
 
-An example where this protocol is useful is connecting a *Storm32 gimbal* to a computer for configuration/debugging (via a USB connection to the autopilot and using MAVLink to carry the native serial protocol between it and the gimbal). 
+An example where this protocol is useful is connecting a *STorM32 gimbal* to a computer for configuration/debugging (via a USB connection to the autopilot and using MAVLink to carry the native serial protocol between it and the gimbal). 
 Normally you would connect the gimbal directly via USB, but when mounted on the drone the gimbal USB port may be hard to access.
 You might re-invent the native protocol in MAVLink, but that would be a lot of effort for little benefit in this case.
 
@@ -36,11 +36,12 @@ Vendors can register their own formats in [MAV_TUNNEL_PAYLOAD_TYPE](#MAV_TUNNEL_
 The rules for adding new `MAV_TUNNEL_PAYLOAD_TYPE` values are:
 1. Values 0-199 are reserved for MAVLink
 1. Enum values are "allocated" to vendors and/or specific hardware in blocks of 10:
-   - New blocks must start on the decade boundary (e.g. 200-209, 210-219, etc)
-   - Blocks are allocated sequentially (in the previous point the next block is allocated at 220, not 430)
+   - New blocks must start on the decade boundary (e.g. 200-209, 210-219, etc.).
+   - Blocks are allocated sequentially (in the previous point the next block is allocated at 220, not 430).
    - Vendors may reserve multiple sequential blocks if needed.
 1. Enum values in a block may be explicitly "reserved":
-   - Values should be named using the format `MAV_TUNNEL_PAYLOAD_TYPE_XXXX_RESERVEDYY`, where `XXXX` indicates the vendor or software, and `YY` is an increasing number starting at 0. For example, the Storm32 gimbal might reserve `MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0`.
+   - Values should be named using the format `MAV_TUNNEL_PAYLOAD_TYPE_XXXX_RESERVEDYY`, where `XXXX` indicates the vendor or software, and `YY` is an increasing number starting at 0.
+     For example, the *STorM32 gimbal* might reserve a block of 10 values from `MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0` to `MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9`.
    - You do not *have to* explicitly reserve unused values.
 1. Enum values that are in use should be (re)named to reflect the vendor/software and purpose (e.g. `MAV_TUNNEL_PAYLOAD_TYPE_STORM32_CONFIG`).
 1. If a [payload definition is published](#publishing) its name and definition must not change.
