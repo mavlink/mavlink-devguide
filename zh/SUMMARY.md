@@ -57,5 +57,6 @@
   * [Landing Target Protocol](services/landing_target.md)
   * [Ping Protocol](services/ping.md)
   * [Path Planning (Trajectory) Protocol](services/trajectory.md)
+  * [Smart Battery Protocol (WIP)](services/smart_battery.md)
 * [Contributing](contributing/contributing.md)
 * [Support](about/support.md)
