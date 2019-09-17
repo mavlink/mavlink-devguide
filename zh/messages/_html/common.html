@@ -2421,6 +2421,38 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="FENCE_MITIGATE">
+   <a href="#FENCE_MITIGATE">FENCE_MITIGATE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Actions being taken to mitigate/prevent fence breach</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="FENCE_MITIGATE_NONE">
+     <td>0</td>
+     <td>
+      <a href="#FENCE_MITIGATE_NONE">FENCE_MITIGATE_NONE</a>
+     </td>
+     <td>No actions being taken</td>
+    </tr>
+    <tr id="FENCE_MITIGATE_VEL_LIMIT">
+     <td>1</td>
+     <td>
+      <a href="#FENCE_MITIGATE_VEL_LIMIT">FENCE_MITIGATE_VEL_LIMIT</a>
+     </td>
+     <td>Velocity limiting active to prevent breach</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_MOUNT_MODE">
    <a href="#MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
   </h3>
@@ -5558,6 +5590,13 @@
      </td>
      <td>Zoom value as proportion of full camera range (a value between 0.0 and 100.0)</td>
     </tr>
+    <tr id="ZOOM_TYPE_FOCAL_LENGTH">
+     <td>3</td>
+     <td>
+      <a href="#ZOOM_TYPE_FOCAL_LENGTH">ZOOM_TYPE_FOCAL_LENGTH</a>
+     </td>
+     <td>Zoom value/variable focal length in milimetres. Note that there is no message to get the valid zoom range of the camera, so this can type can only be used for cameras where the zoom range is known (implying that this cannot reliably be used in a GCS for an arbitrary camera)</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="SET_FOCUS_TYPE">
@@ -5596,6 +5635,13 @@
       <a href="#FOCUS_TYPE_RANGE">FOCUS_TYPE_RANGE</a>
      </td>
      <td>Focus value as proportion of full camera focus range (a value between 0.0 and 100.0)</td>
+    </tr>
+    <tr id="FOCUS_TYPE_METERS">
+     <td>3</td>
+     <td>
+      <a href="#FOCUS_TYPE_METERS">FOCUS_TYPE_METERS</a>
+     </td>
+     <td>Focus value in metres. Note that there is no message to get the valid focus range of the camera, so this can type can only be used for cameras where the range is known (implying that this cannot reliably be used in a GCS for an arbitrary camera).</td>
     </tr>
    </tbody>
   </table>
@@ -24226,6 +24272,19 @@
      </td>
      <td>Time (since boot) of last breach.</td>
     </tr>
+    <tr>
+     <td style="color:blue;">breach_mitigation<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#FENCE_MITIGATE">FENCE_MITIGATE</a>
+     </td>
+     <td>Active action to prevent fence breach</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="ESTIMATOR_STATUS">ESTIMATOR_STATUS (<a href="#ESTIMATOR_STATUS">
@@ -25864,7 +25923,7 @@
     <tr>
      <td>message_type</td>
      <td>uint16_t</td>
-     <td>A code that identifies the software component that understands this message (analogous to USB device classes or mime type strings). If this code is less than 32768, it is considered a 'registered' protocol extension and the corresponding entry should be added to https://github.com/mavlink/mavlink/extension-message-ids.xml. Software creators can register blocks of message IDs as needed (useful for GCS specific metadata, etc...). Message_types greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
+     <td>A code that identifies the software component that understands this message (analogous to USB device classes or mime type strings). If this code is less than 32768, it is considered a 'registered' protocol extension and the corresponding entry should be added to https://github.com/mavlink/mavlink/definition_files/extension_message_ids.xml. Software creators can register blocks of message IDs as needed (useful for GCS specific metadata, etc...). Message_types greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
     </tr>
     <tr>
      <td>payload</td>
@@ -29299,7 +29358,7 @@
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE">MAV_TUNNEL_PAYLOAD_TYPE</a>
      </td>
-     <td>A code that identifies the content of the payload (0 for unknown, which is the default). If this code is less than 32768, it is a 'registered' payload type and the corresponding code should be added to the MAV_TUNNEL_PAYLOAD_TYPE enum, and the entry possibly to https://github.com/mavlink/mavlink/tunnel-message-payload-types.xml. Software creators can register blocks of types as needed. Codes greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
+     <td>A code that identifies the content of the payload (0 for unknown, which is the default). If this code is less than 32768, it is a 'registered' payload type and the corresponding code should be added to the MAV_TUNNEL_PAYLOAD_TYPE enum, and the entry possibly to https://github.com/mavlink/mavlink/definition_files/tunnel_message_payload_types.xml. Software creators can register blocks of types as needed. Codes greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
     </tr>
     <tr>
      <td>payload_length</td>
