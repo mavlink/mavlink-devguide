@@ -29,10 +29,12 @@ Enum | Description
 
 ## Parameter Encoding {#parameter_encoding}
 
-Extended-Parameter names/ids are the same as for the [Parameter Protocol](../services/parameter.md#parameter_encoding).
-They are set in the `param_id` field of messages where they are used.
+Parameters names/ids are set in the `param_id` field of messages where they are used.
 The `param_id` string can store up to 16 characters. 
 The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars.
+
+> **Note** Names (as above) are the same as for the [Parameter Protocol](../services/parameter.md#parameter_encoding).
+  Values (below) are encoded differently.
 
 Values are byte-wise encoded *within* the `param_value` field, which is a `char[128]`. <!-- how are they encoded? -->
 The `param_type` ([MAV_PARAM_EXT_TYPE](#MAV_PARAM_EXT_TYPE)) is used to indicate the actual type of the data so that it can be decoded by the recipient.
