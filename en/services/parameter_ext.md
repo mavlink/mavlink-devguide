@@ -100,19 +100,19 @@ There is a good example of how to do this in the Pymavlink [mavparm.py](https://
 
 The protocol is designed with the assumption that the parameter set does not change during normal operation.
 
-If a system can add parameters during (or after) initial synchronization the protocol cannot guarantee reliable/robust synchronization, because there is no way to notify that the parameter set has changed and a new sync is required.
+If a components can add parameters during (or after) initial synchronization the protocol cannot guarantee reliable/robust synchronization, because there is no way to notify that the parameter set has changed and a new sync is required.
 
-When requesting parameters from such a system, the risk of problems can be *reduced* (but not removed) if:
+When requesting parameters from such a components, the risk of problems can be *reduced* (but not removed) if:
 * The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter may change on systems where parameters can be added/removed).
 * [PARAM_EXT_VALUE .param_count](../messages/common.md#PARAM_EXT_VALUE) may be monitored.
   If this changes the parameter set should be re-sychronised.
 
-### Monitoring Parameter Updates Can Fail {#monitoring_unreliable}
+### Parameter Synchronisation Can Fail {#monitoring_unreliable}
 
-A GCS (or other system) that wants to [cache parameters](#parameter_caching) from a component and keep them synchronise should first get all parameters, and then track changes by monitoring for `PARAM_EXT_ACK` messages (updating their internal list appropriately).
+A GCS (or other system) that wants to [cache parameters](#parameter_caching) from a component and keep them synchronised should first get all parameters, and then track changes by monitoring for `PARAM_EXT_ACK` messages (updating their internal list appropriately).
 
 This works for the originator of a parameter change, which can resend the request if an expected `PARAM_EXT_ACK` is not received.
-This approach may fail for systems that did not originate the change, as they will not know about updates they do not receive (i.e. if messages are dropped).
+This approach may fail for components that did not originate the change, as they will not know about updates they do not receive (i.e. if messages are dropped).
 
 A component may mitigate this risk by, for example, sending the `PARAM_EXT_ACK` multiple times after a parameter is changed.
 
@@ -151,10 +151,14 @@ The sequence of operations is:
    - Components with no parameters should ignore the request.
 1. GCS starts timeout after each `PARAM_EXT_VALUE` message in order to detect when parameters are no longer being sent (that the operation has completed).
 
-The GCS/API may accumulate the received parameters for each component and can determine if any are missing/not received (`PARAM_EXT_VALUE` contains the total number of params and index of current param).
 
-**Handling of missing params is GCS-dependent.**
-*QGroundControl*, for example, [individually requests](#read_single) each missing parameter by index (using [PARAM_EXT_REQUEST_READ](../messages/common.md#PARAM_EXT_REQUEST_READ)).
+
+Notes:
+- The GCS/API may accumulate the received parameters for each component and can determine if any are missing/not received (`PARAM_EXT_VALUE` contains the total number of params and index of current param). 
+- Handling of missing params is GCS-dependent. 
+  *QGroundControl*, for example, [individually requests](#read_single) each missing parameter by index.
+- If a component does not any parameters then it will ignore a `PARAM_EXT_REQUEST_LIST` request.
+  The sender should simply timeout (after resends) if no `PARAM_EXT_VALUE` is received.
 
 
 ### Read Single Parameter {#read_single}
