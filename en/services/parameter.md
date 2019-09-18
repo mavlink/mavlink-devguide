@@ -168,6 +168,10 @@ The sequence of operations is:
 
 The drone may restart the sequence if the `PARAM_VALUE` acknowledgment is not received within the timeout.
 
+> **Note** There is no formal way for the drone to signal when an invalid parameter is requested (i.e. for a parameter name or id that does not exist).
+  In this case the drone *should* emit [STATUS_TEXT](../messages/common.md#STATUS_TEXT).
+  The GCS may monitor for the specific notification, but will otherwise fail the request after any timeout/resend cycle completes. 
+
 ### Write Parameters {#write}
 
 Parameters can be written individually by sending the parameter name and value pair to the GCS, as shown:
