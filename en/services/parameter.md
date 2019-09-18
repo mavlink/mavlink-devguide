@@ -83,16 +83,15 @@ All components must respond to parameter request messages addressed to their ID 
 
 ## Limitations {#limitations}
 
-### Parameters Assumed Invariant
+### Parameters Table is Invariant {#parameters_invariant}
 
-The protocol is designed with the assumption that the parameter set does not change during normal operation.
+The protocol *requires* that the parameter set does not change during normal operation/after parameters have been read.
 
-If a system can add parameters during (or after) initial synchronization the protocol cannot guarantee reliable/robust synchronization, because there is no way to notify that the parameter set has changed and a new sync is required.
+If a component can add parameters during (or after) initial synchronization the protocol cannot guarantee reliable/robust synchronization, because there is no way to notify that the parameter set has changed and a new sync is required.
 
-When requesting parameters from such a system, the risk of problems can be *reduced* (but not removed) if:
-* The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter may change on systems where parameters can be added/removed).
-* [PARAM_VALUE](../messages/common.md#PARAM_VALUE).`param_count` may be monitored.
-  If this changes the parameter set should be re-sychronised.
+If working with a non-compliant component, the risk of problems when working with parameters can be *reduced* (but not removed) if:
+* The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter might change on systems where parameters can be added/removed).
+* [PARAM_VALUE.param_count](../messages/common.md#PARAM_VALUE) is monitored and the parameter set re-sychronised on change.
 
 ### Parameter Synchronisation Can Fail {#monitoring_unreliable}
 
