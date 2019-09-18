@@ -5,8 +5,13 @@
    <a href="common.md">common.xml</a>
   </p>
   <p>This file has protocol dialect: 0.</p>
-  <h2>MAVLink Type Enumerations</h2>
-  <h2>MAVLink Commands (MAV_CMD)</h2>
-  <h2>MAVLink Messages</h2>
+  <h2 id="enums">MAVLink Type Enumerations</h2>
+  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+  </blockquote>
+  <h2 id="messages">MAVLink Messages</h2>
  </body>
 </html>

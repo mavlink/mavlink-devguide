@@ -6,11 +6,14 @@
   </p>
   <h2>MAVLink Protocol Version</h2>
   <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
-  <h2>MAVLink Type Enumerations</h2>
+  <h2 id="enums">MAVLink Type Enumerations</h2>
   <h3 id="AUTOQUAD_MAVLINK_DEFS_VERSION">
    <a href="#AUTOQUAD_MAVLINK_DEFS_VERSION">AUTOQUAD_MAVLINK_DEFS_VERSION</a>
   </h3>
-  <p>Track current version of these definitions (can be used by checking value of AUTOQUAD_MAVLINK_DEFS_VERSION_ENUM_END). Append a new entry for each published change.</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Track current version of these definitions (can be used by checking value of AUTOQUAD_MAVLINK_DEFS_VERSION_ENUM_END). Append a new entry for each published change.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -34,7 +37,10 @@
   <h3 id="AUTOQUAD_NAV_STATUS">
    <a href="#AUTOQUAD_NAV_STATUS">AUTOQUAD_NAV_STATUS</a>
   </h3>
-  <p>Available operating modes/statuses for AutoQuad flight controller. 
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Available operating modes/statuses for AutoQuad flight controller. 
 				Bitmask up to 32 bits. Low side bits for base modes, high side for 
 				additional active features/modifiers/constraints.</p>
   <table class="sortable">
@@ -192,6 +198,9 @@
    <a href="#MAV_DATA_STREAM">MAV_DATA_STREAM</a>
   </h3>
   <p>
+   <a href="#enums">
+    [Enum]
+   </a>
   </p>
   <table class="sortable">
    <thead>
@@ -212,17 +221,25 @@
     </tr>
    </tbody>
   </table>
-  <h2>MAVLink Commands (MAV_CMD)</h2>
+  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+  </blockquote>
   <p>
   </p>
   <h3 id="MAV_CMD_AQ_NAV_LEG_ORBIT">MAV_CMD_AQ_NAV_LEG_ORBIT (<a href="#MAV_CMD_AQ_NAV_LEG_ORBIT">1</a>
    )
   </h3>
-  <p>Orbit a waypoint.</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Orbit a waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Param</th>
+     <th>Param (:Label)</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -260,11 +277,14 @@
   <h3 id="MAV_CMD_AQ_TELEMETRY">MAV_CMD_AQ_TELEMETRY (<a href="#MAV_CMD_AQ_TELEMETRY">2</a>
    )
   </h3>
-  <p>Start/stop AutoQuad telemetry values stream.</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Start/stop AutoQuad telemetry values stream.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Param</th>
+     <th>Param (:Label)</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -302,11 +322,14 @@
   <h3 id="MAV_CMD_AQ_REQUEST_VERSION">MAV_CMD_AQ_REQUEST_VERSION (<a href="#MAV_CMD_AQ_REQUEST_VERSION">4</a>
    )
   </h3>
-  <p>Request AutoQuad firmware version number.</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request AutoQuad firmware version number.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Param</th>
+     <th>Param (:Label)</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -341,13 +364,16 @@
     </tr>
    </tbody>
   </table>
-  <h2>MAVLink Messages</h2>
+  <h2 id="messages">MAVLink Messages</h2>
   <h3 id="AQ_TELEMETRY_F">AQ_TELEMETRY_F (<a href="#AQ_TELEMETRY_F">
     #150
    </a>
    )
   </h3>
-  <p>Sends up to 20 raw float values.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Sends up to 20 raw float values.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -469,7 +495,10 @@
    </a>
    )
   </h3>
-  <p>Sends ESC32 telemetry data for up to 4 motors. Multiple messages may be sent in sequence when system has &gt; 4 motors. Data is described as follows: 
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Sends ESC32 telemetry data for up to 4 motors. Multiple messages may be sent in sequence when system has &gt; 4 motors. Data is described as follows: 
 				// unsigned int state :   3;
 			    // unsigned int vin :	  12;  // x 100
 			    // unsigned int amps :	  14;  // x 100

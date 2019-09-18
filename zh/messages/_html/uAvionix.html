@@ -1,10 +1,17 @@
 <html>
  <body>
-  <h2>MAVLink Type Enumerations</h2>
+  <p>
+   <strong>MAVLink Include Files:</strong>
+   <a href="common.md">common.xml</a>
+  </p>
+  <h2 id="enums">MAVLink Type Enumerations</h2>
   <h3 id="UAVIONIX_ADSB_OUT_DYNAMIC_STATE">
    <a href="#UAVIONIX_ADSB_OUT_DYNAMIC_STATE">UAVIONIX_ADSB_OUT_DYNAMIC_STATE</a>
   </h3>
-  <p>State flags for ADS-B transponder dynamic report</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>State flags for ADS-B transponder dynamic report</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -59,7 +66,10 @@
   <h3 id="UAVIONIX_ADSB_OUT_RF_SELECT">
    <a href="#UAVIONIX_ADSB_OUT_RF_SELECT">UAVIONIX_ADSB_OUT_RF_SELECT</a>
   </h3>
-  <p>Transceiver RF control flags for ADS-B transponder dynamic reports</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Transceiver RF control flags for ADS-B transponder dynamic reports</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -98,7 +108,10 @@
   <h3 id="UAVIONIX_ADSB_OUT_DYNAMIC_GPS_FIX">
    <a href="#UAVIONIX_ADSB_OUT_DYNAMIC_GPS_FIX">UAVIONIX_ADSB_OUT_DYNAMIC_GPS_FIX</a>
   </h3>
-  <p>Status for ADS-B transponder dynamic input</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Status for ADS-B transponder dynamic input</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -161,7 +174,10 @@
   <h3 id="UAVIONIX_ADSB_RF_HEALTH">
    <a href="#UAVIONIX_ADSB_RF_HEALTH">UAVIONIX_ADSB_RF_HEALTH</a>
   </h3>
-  <p>Status flags for ADS-B transponder dynamic output</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Status flags for ADS-B transponder dynamic output</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -208,7 +224,10 @@
   <h3 id="UAVIONIX_ADSB_OUT_CFG_AIRCRAFT_SIZE">
    <a href="#UAVIONIX_ADSB_OUT_CFG_AIRCRAFT_SIZE">UAVIONIX_ADSB_OUT_CFG_AIRCRAFT_SIZE</a>
   </h3>
-  <p>Definitions for aircraft size</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Definitions for aircraft size</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -351,7 +370,10 @@
   <h3 id="UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LAT">
    <a href="#UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LAT">UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LAT</a>
   </h3>
-  <p>GPS lataral offset encoding</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>GPS lataral offset encoding</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -430,7 +452,10 @@
   <h3 id="UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LON">
    <a href="#UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LON">UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LON</a>
   </h3>
-  <p>GPS longitudinal offset encoding</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>GPS longitudinal offset encoding</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -461,7 +486,10 @@
   <h3 id="UAVIONIX_ADSB_EMERGENCY_STATUS">
    <a href="#UAVIONIX_ADSB_EMERGENCY_STATUS">UAVIONIX_ADSB_EMERGENCY_STATUS</a>
   </h3>
-  <p>Emergency status encoding</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Emergency status encoding</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -537,14 +565,22 @@
     </tr>
    </tbody>
   </table>
-  <h2>MAVLink Commands (MAV_CMD)</h2>
-  <h2>MAVLink Messages</h2>
+  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+  </blockquote>
+  <h2 id="messages">MAVLink Messages</h2>
   <h3 id="UAVIONIX_ADSB_OUT_CFG">UAVIONIX_ADSB_OUT_CFG (<a href="#UAVIONIX_ADSB_OUT_CFG">
     #10001
    </a>
    )
   </h3>
   <p>
+   <a href="#messages">
+    [Message]
+   </a>
    <strong>
     (MAVLink 2)
    </strong>Static data to configure the ADS-B transponder (send within 10 sec of a POR and every 10 sec thereafter)</p>
@@ -649,6 +685,9 @@
    )
   </h3>
   <p>
+   <a href="#messages">
+    [Message]
+   </a>
    <strong>
     (MAVLink 2)
    </strong>Dynamic data used to generate ADS-B out transponder data (send at 5Hz)</p>
@@ -833,6 +872,9 @@
    )
   </h3>
   <p>
+   <a href="#messages">
+    [Message]
+   </a>
    <strong>
     (MAVLink 2)
    </strong>Transceiver heartbeat with health report (updated every 10s)</p>

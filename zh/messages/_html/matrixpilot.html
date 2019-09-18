@@ -4,11 +4,14 @@
    <strong>MAVLink Include Files:</strong>
    <a href="common.md">common.xml</a>
   </p>
-  <h2>MAVLink Type Enumerations</h2>
+  <h2 id="enums">MAVLink Type Enumerations</h2>
   <h3 id="MAV_PREFLIGHT_STORAGE_ACTION">
    <a href="#MAV_PREFLIGHT_STORAGE_ACTION">MAV_PREFLIGHT_STORAGE_ACTION</a>
   </h3>
-  <p>Action required when performing CMD_PREFLIGHT_STORAGE</p>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Action required when performing CMD_PREFLIGHT_STORAGE</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -69,17 +72,25 @@
     </tr>
    </tbody>
   </table>
-  <h2>MAVLink Commands (MAV_CMD)</h2>
+  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+  </blockquote>
   <p>
   </p>
   <h3 id="MAV_CMD_PREFLIGHT_STORAGE_ADVANCED">MAV_CMD_PREFLIGHT_STORAGE_ADVANCED (<a href="#MAV_CMD_PREFLIGHT_STORAGE_ADVANCED">0</a>
    )
   </h3>
-  <p>Request storage of different parameter values and logs. This command will be only accepted if in pre-flight mode.</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request storage of different parameter values and logs. This command will be only accepted if in pre-flight mode.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Param</th>
+     <th>Param (:Label)</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -114,13 +125,16 @@
     </tr>
    </tbody>
   </table>
-  <h2>MAVLink Messages</h2>
+  <h2 id="messages">MAVLink Messages</h2>
   <h3 id="FLEXIFUNCTION_SET">FLEXIFUNCTION_SET (<a href="#FLEXIFUNCTION_SET">
     #150
    </a>
    )
   </h3>
-  <p>Depreciated but used as a compiler flag.  Do not remove</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Depreciated but used as a compiler flag.  Do not remove</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -147,7 +161,10 @@
    </a>
    )
   </h3>
-  <p>Reqest reading of flexifunction data</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Reqest reading of flexifunction data</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -184,7 +201,10 @@
    </a>
    )
   </h3>
-  <p>Flexifunction type and parameters for component at function index from buffer</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Flexifunction type and parameters for component at function index from buffer</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -236,7 +256,10 @@
    </a>
    )
   </h3>
-  <p>Flexifunction type and parameters for component at function index from buffer</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Flexifunction type and parameters for component at function index from buffer</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -273,7 +296,10 @@
    </a>
    )
   </h3>
-  <p>Acknowldge sucess or failure of a flexifunction command</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Acknowldge sucess or failure of a flexifunction command</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -320,7 +346,10 @@
    </a>
    )
   </h3>
-  <p>Acknowldge sucess or failure of a flexifunction command</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Acknowldge sucess or failure of a flexifunction command</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -367,7 +396,10 @@
    </a>
    )
   </h3>
-  <p>Acknowldge sucess or failure of a flexifunction command</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Acknowldge sucess or failure of a flexifunction command</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -399,7 +431,10 @@
    </a>
    )
   </h3>
-  <p>Acknowldge sucess or failure of a flexifunction command</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Acknowldge sucess or failure of a flexifunction command</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -426,7 +461,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible MAVLink version of SERIAL_UDB_EXTRA - F2: Format Part A</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible MAVLink version of SERIAL_UDB_EXTRA - F2: Format Part A</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -578,7 +616,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA - F2: Part B</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA - F2: Part B</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -845,7 +886,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F4: format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F4: format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -912,7 +956,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F5: format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F5: format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -949,7 +996,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F6: format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F6: format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -991,7 +1041,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F7: format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F7: format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1038,7 +1091,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F8: format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F8: format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1090,7 +1146,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F13: format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F13: format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1127,7 +1186,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F14: format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F14: format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1199,7 +1261,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F15 format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F15 format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1226,7 +1291,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F16 format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F16 format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1253,7 +1321,10 @@
    </a>
    )
   </h3>
-  <p>The altitude measured by sensors and IMU</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>The altitude measured by sensors and IMU</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1305,7 +1376,10 @@
    </a>
    )
   </h3>
-  <p>The airspeed measured by sensors and IMU</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>The airspeed measured by sensors and IMU</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1357,7 +1431,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F17 format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F17 format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1389,7 +1466,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F18 format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F18 format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1431,7 +1511,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F19 format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F19 format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1488,7 +1571,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F20 format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F20 format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1570,7 +1656,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F21 format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F21 format</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1617,7 +1706,10 @@
    </a>
    )
   </h3>
-  <p>Backwards compatible version of SERIAL_UDB_EXTRA F22 format</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Backwards compatible version of SERIAL_UDB_EXTRA F22 format</p>
   <table class="sortable">
    <thead>
     <tr>

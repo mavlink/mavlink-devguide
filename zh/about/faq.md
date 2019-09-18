@@ -1,54 +1,80 @@
-# Frequently Asked Questions (FAQ)
+# 常见问题（FAQ）
 
-## Users
+## 用户
 
 <dl>
-  <dt>How efficient is MAVLink?</dt>
-  <dd>MAVLink is a very efficient protocol. MAVLink 1 has just 8 bytes overhead per packet, including start sign and packet drop detection. MAVLink 2 has just 14 bytes of overhead (27 if signing is used), but is now a much more extensible protocol.</dd>
+  <dt>MAVLink 的传输效率如何？</dt>
+  <dd>MAVLink 是一种高效率的传输协议。 包含起始签名字节和丢包检测在内，MAVLink 1 版本的每个数据包中只有8个字节的额外开销。 MAVLink 2 版本只有14个字节的额外开销（如果使用签名字节的话为27个），但是现已成为可扩展的协议。</dd>
 
-  <dt>How many vehicles does MAVLink support?</dt>
-  <dd>255 vehicles, with system IDs ranging from 1 to 255 (0 is not a valid vehicle ID).
-    <br><b>Note:</b> Strictly speaking MAVLink supports 255 concurrent <em>systems</em>, and these can include a mix of vehicles, GCS, antenna trackers and other hardware.</dd>
+  <dt>MAVLink 可同时支持多少个运载器？</dt>
+  <dd>255个运动载体，其 ID 号从1到255（0号 ID 为无效 ID）。
+    <br><b>Note:</b> 严格说来，MAVLink 可同时支持 255 个<em>系统</em>, 它们中可以是运动载体，GCS ，天线云台和其它硬件。</dd>
 
-  <dt>Where can I use MAVLink?</dt>
-  <dd>MAVLink has been shown to work on multiple microcontrollers and operating systems, including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS.</dd>
+  <dt>MAVLink 可用于哪些软硬件上？</dt>
+  <dd>它可用于多个微控制器和操作系统上， 包括 arm7、atmega、dspic、stm32 等微控制器和 windows、linux、macos、android 和 ios 等操作系统。</dd>
 
-  <dt>How reliable is MAVLink?</dt>
-  <dd>Very. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, and the well-established ITU X.25 checksum for packet corruption detection.</dd>
+  <dt>MAVLink 的可靠性如何？</dt>
+  <dd>很可靠。 自 2009 年以来，MAVLink 已用于多种运载器与地面站（或其它节点）之间使用恶劣的通信信道（大延迟、大噪声）进行通信。 它具有丢包检测功能，并使用完善的 ITU X.25 算法进行坏包检测。</dd>
   
-  <dt>How secure is MAVLink?</dt>
-  <dd>MAVLink provides <a href="../guide/message_signing.md">message signing</a>, which allows systems to authenticate that messages are from a trusted source. MAVLink does not provide message encryption.  
+  <dt>MAVLink 的安全性如何？</dt>
+  <dd>MAVLink 提供了 <a href="../guide/message_signing.md">消息签名</a>，系统可用其来验证是否来源于可信的消息源。 MAVLink 并不对消息进行加密处理。  
   </dd>
 </dl>
 
-## Developers
+## 开发者
 
 <dl>
-  <dt>Can I use MAVLink in a closed source application without copyright issues?</dt>
-  <dd>Yes, without any limitations. The generated MAVLink library headers are made available under the *MIT license* (for more information see: <a href="../README.md#license">Introduction > License</a>).
-  </dd>
-
-  <dt>How does MAVLink detect and decode messages in the byte stream?</dt>
-  <dd>MAVLink waits for the packet start sign, then reads the packet length and matches the checksum after n bytes. If the checksum matches, it returns the decoded packet and waits again for the start sign. If bytes are altered or lost, it will drop the current message and continue the next try on the following message.</dd>
-
-  <dt>MAVLink uses only one start sign - isn't this less safe than using two or three start signs?</dt>
-  <dd>No. We use the CRC check to reliably determine whether a complete message has been received. Using additional start signs may increase likelihood of detecting the start point, but would provide no greater certainty of message validity. Since extra signs would increase bytes on the communication link, we choose not to use them.</dd>
-
-  <dt>What are the system and component IDs for?</dt>
-  <dd>The system ID represents the identity of a particular <em>MAVLink system</em> (vehicle, GCS, etc.). MAVLink can be used with up to 255 systems at the same time. The component ID reflects a component that is part of a larger system - for example a system might include an autopilot, companion computer and/or camera, which can be separately addressed. The component ID therefore lets MAVLink be used for both on- and off-board communication.</dd>
-
-  <dt>Why is the sequence number in the MAVLink header needed?</dt>
-  <dd>MAVLink is part of the safety critical components of an unmanned air system. A bad communication link dropping many packets can endanger the flight safety of the aircraft and has to be monitored. Having the sequence in the header allows MAVLink to continuously provide feedback about the packet drop rate and thus allows the aircraft or ground control station to take action.</dd>
+  <dt>
+    我可以将 MAVLink 用于封闭的源程序且不用考虑版权问题吗？
+  </dt>
   
-  <dt>Why is CRC_EXTRA needed in the packet checksum?</dt>
-  <dd>The CRC_EXTRA CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message 
-  (required because as a lightweight protocol, the message structure isn't included in the payload).
-  <br><br>
-  In MAVLink 0.9 the CRC was not used (although there was a length check). 
-  There were a small number of cases where XML describing a message changed without changing the message length, 
-  leading to badly corrupted fields when messages were read.</dd>
-
-  <dt>I would like to help improve the decoding/encoding routines or other features. Can MAVLink be changed?</dt>
-  <dd>Yes, but only very, very carefully with safety testing. 
-  <br>MAVLink is used as a safety-critical component in many autopilot systems and has undergone many years of testing. Please suggest new features on the MAVLink <a href="../README.md#support">support channels</a>.</dd>
-</dl>
+  <dd>
+    可以，没有任何使用限制。 生成的 mavlink 库的头文件可在遵循 * MIT许可证* 的条件下使用 （有关详细信息，请参阅： <a href="../README.md#license">Introduction> 许可证 </0 >）。 </dd> 
+    
+    <dt>
+      MAVLink 如何检测数据流中的各类消息并进行解码？
+    </dt>
+    
+    <dd>
+      MAVLink 先等待数据包的起始签名，然后读入数据包的长度并计算其后 n 个字节的校验和。 如果校验和相匹配，则返回解码后的数据包并等待下一个起始签名。 如果某些字节被改变或丢失的话，它将丢弃当前消息，继续尝试解码以后的消息。
+    </dd>
+    
+    <dt>
+      MAVLink 中只使用了一个起始签名，使用两个或三个起始签名不是更安全吗？
+    </dt>
+    
+    <dd>
+      不是这样的。 我们使用 CRC 来检测是否可靠接收到一个完整的消息。 使用更多的起始签名可以有更大的可能性检测到起始点，但是并不能增加有效消息的确定性。 因为额外的签名将增加通信负载，所以我们不使用它。
+    </dd>
+    
+    <dt>
+      系统 ID 和组件 ID 是干什么用的？
+    </dt>
+    
+    <dd>
+      系统 ID 用来识别特定的 <em>MAVLink 系统</em>（运载器， GCS 等）。 MAVLink 可同时用于 255 个系统。 组件 ID 用于区分一个大系统中的组件，系统中可以包含自动驾驶仪，协处理计算机或照相机，其中每个都可被单独寻址。 MAVLink 可使用组件 ID 用于板间或板外通信。
+    </dd>
+    
+    <dt>
+      为什么在 MAVLink 数据包头中要使用序列号？
+    </dt>
+    
+    <dd>
+      MAVLink 是无人飞行器中对安全至关重要的一部分。 较差的通信链路会丢失好多数据包，这会将所监视的飞机置于不安全的状态。 MAVLink 使用数据包头中的序列号来计算丢包率并将其反馈给另一方，使得飞行器或地面站能采取相应措施。
+    </dd>
+    
+    <dt>
+      为什么要在数据包的校验和中使用 CRC_EXTRA 呢？
+    </dt>
+    
+    <dd>
+      CRC_EXTRA CRC 用来验证发送者和接收者是否都对链路上的消息格式有同样的解释。 <br /><br /> 在 MAVLink 0.9 版中没有使用 CRC（尽管检查了数据包的长度）。 如果 XML 所描述的消息内容偶尔被改变而长度没有改变，这样就会破坏消息中的数据域。
+    </dd>
+    
+    <dt>
+      我可以帮助编解码子程序或增加其它功能吗？ 可以更改 MAVLink 吗？
+    </dt>
+    
+    <dd>
+      可以，在安全测试时必须十分小心。 作为多个自动驾驶仪中对安全至关重要的组件，MAVLink 已经经历了多年的测试。 请向MAVLink的技术支持推荐你所想到的新功能。
+    </dd></dl>

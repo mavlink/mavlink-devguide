@@ -2,9 +2,13 @@
 
 Language-specific MAVLink libraries can be created from [XML Message Definitions](../messages/README.md) using *code generator* tools.
 
-The available code generators and supported output languages for each version of the MAVLink protocol are listed in [Supported Languages](../README.md#supported_languages) (these include C, C#, Java, Python etc).
+This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line).
 
-This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line) (other code generators are documented by their associated projects).
+> **Note** These generators can build MAVLink 2 libraries for C, C++11, Python, Typescript, Java, and WLua (supporting both MAVLink 2 and 1), and MAVLink 1 (only) libraries for: C#, JavaScript, ObjC, Swift.
+
+<span></span>
+
+> **Tip** Generators for other programming languages are supported and documented in independent progects. For more information see [Supported Languages](../README.md#supported_languages).
 
 ## Pre-requisites
 
@@ -56,7 +60,7 @@ python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated
 The full syntax and options can be output by running *mavgen* with the `-h` flag (reproduced below):
 
     usage: mavgen.py [-h] [-o OUTPUT]
-                     [--lang {C,CS,JavaScript,Python,WLua,ObjC,Swift,Java,C++11}]
+                     [--lang {C,CS,JavaScript,TypeScript,Python,WLua,ObjC,Swift,Java,C++11}]
                      [--wire-protocol {0.9,1.0,2.0}] [--no-validate]
                      [--error-limit ERROR_LIMIT] [--strict-units]
                      XML [XML ...]
@@ -70,7 +74,7 @@ The full syntax and options can be output by running *mavgen* with the `-h` flag
       -h, --help            show this help message and exit
       -o OUTPUT, --output OUTPUT
                             output directory.
-      --lang {C,CS,JavaScript,Python,WLua,ObjC,Swift,Java,C++11}
+      --lang {C,CS,JavaScript,TypeScript,Python,WLua,ObjC,Swift,Java,C++11}
                             language of generated code [default: Python]
       --wire-protocol {0.9,1.0,2.0}
                             MAVLink protocol version. [default: 1.0]

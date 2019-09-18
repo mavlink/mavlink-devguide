@@ -1,6 +1,6 @@
-# Using Pymavlink Libraries (mavgen)
+# Pymavlink库 (mavgen)使用指南
 
-Pymavlink is a *low level* and *general purpose* MAVLink message processing library, written in Python. It has been used to implement MAVLink communications many types of MAVLink systems, including a GCS (MAVProxy), Developer APIs (DroneKit) and numerous companion computer MAVLink applications.
+Pymavlink 是用 python 编写的 "*低级 " 通用*消息处理库。 It has been used to implement MAVLink communications many types of MAVLink systems, including a GCS (MAVProxy), Developer APIs (DroneKit) and numerous companion computer MAVLink applications.
 
 The library can be used with Python 2.7+ (recommended) or Python 3.5+ and supports both MAVLink 1 and MAVLink 2 versions of the protocol.
 
@@ -10,7 +10,7 @@ This topic explains how to get and use the *Pymavlink* MAVLink Python libraries 
 
 <span></span>
 
-> **Tip** If you're writing a MAVLink application to communicate with an autopilot you may prefer to use a higher level library like [DroneKit-Python](http://python.dronekit.io/). This implements a number of [MAVLink microservices](../about/overview.md), and has been written to compensate for differences in protocol interpretation for (in particular) ArduPilot and PX4. <!-- update to include Dronecode SDK when there is a released Python library -->
+> **Tip** If you're writing a MAVLink application to communicate with an autopilot you may prefer to use a higher level library like [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python) or [DroneKit-Python](http://python.dronekit.io/). These implement a number of [MAVLink microservices](../about/overview.md).
 
 ## Getting Libraries
 
@@ -168,7 +168,7 @@ Some of the strings you can use for different types of connections are listed be
 
 The message field values are passed as arguments to the function (fields that are the same for all messages are defined in the class - e.g. source system, source component) and each message is documented in the dialect source code.
 
-For example, the `sytem_time_send()` function (shown below) is used to send the [SYSTEM_TIME](../messages/common.md#SYSTEM_TIME) message:
+For example, the `system_time_send()` function (shown below) is used to send the [SYSTEM_TIME](../messages/common.md#SYSTEM_TIME) message:
 
 ```python
 def system_time_send(self, time_unix_usec, time_boot_ms, force_mavlink1=False):
@@ -184,7 +184,7 @@ def system_time_send(self, time_unix_usec, time_boot_ms, force_mavlink1=False):
 If you're using **mavutil** for link management then the `mav` attribute provides access to a configured `MAVLink` class object that you can use for sending messages. For example, to send the `SYSTEM_TIME` message using a link named [the_connection](#listen):
 
 ```python
-the_connection.mav.sytem_time_send(time_unix_usec, time_boot_ms)
+the_connection.mav.system_time_send(time_unix_usec, time_boot_ms)
 ```
 
 Other examples can be seen in [Publishing a Heartbeat](#heartbeat) and [Requesting Specific Messages](#specific_messages) below.

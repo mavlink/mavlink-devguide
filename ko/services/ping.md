@@ -2,7 +2,7 @@
 
 The PING Protocol enables a system to measure system latencies on any connection: serial port, radio modem, UDP etc.
 
-The PING protocol is implemented with just the [PING](../messages/common.html#PING) message. The message is sent with a timestamp and a sequence number that are returned by recipients, and can hence be used to determine the round-trip time.
+The PING protocol is implemented with just the [PING](../messages/common.md#PING) message. The message is sent with a timestamp and a sequence number that are returned by recipients, and can hence be used to determine the round-trip time.
 
 ## Ping Sequence
 

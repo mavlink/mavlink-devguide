@@ -4,11 +4,14 @@
    <strong>MAVLink Include Files:</strong>
    <a href="common.md">common.xml</a>
   </p>
-  <h2>MAVLink Type Enumerations</h2>
+  <h2 id="enums">MAVLink Type Enumerations</h2>
   <h3 id="GSM_LINK_TYPE">
    <a href="#GSM_LINK_TYPE">GSM_LINK_TYPE</a>
   </h3>
   <p>
+   <a href="#enums">
+    [Enum]
+   </a>
   </p>
   <table class="sortable">
    <thead>
@@ -60,6 +63,9 @@
    <a href="#GSM_MODEM_TYPE">GSM_MODEM_TYPE</a>
   </h3>
   <p>
+   <a href="#enums">
+    [Enum]
+   </a>
   </p>
   <table class="sortable">
    <thead>
@@ -87,17 +93,25 @@
     </tr>
    </tbody>
   </table>
-  <h2>MAVLink Commands (MAV_CMD)</h2>
+  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+  </blockquote>
   <p>
   </p>
   <h3 id="MAV_CMD_RESET_MPPT">MAV_CMD_RESET_MPPT (<a href="#MAV_CMD_RESET_MPPT">40001</a>
    )
   </h3>
-  <p>Mission command to reset Maximum Power Point Tracker (MPPT)</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Mission command to reset Maximum Power Point Tracker (MPPT)</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Param</th>
+     <th>Param (:Label)</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -135,11 +149,14 @@
   <h3 id="MAV_CMD_PAYLOAD_CONTROL">MAV_CMD_PAYLOAD_CONTROL (<a href="#MAV_CMD_PAYLOAD_CONTROL">40002</a>
    )
   </h3>
-  <p>Mission command to perform a power cycle on payload</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Mission command to perform a power cycle on payload</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Param</th>
+     <th>Param (:Label)</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -174,13 +191,16 @@
     </tr>
    </tbody>
   </table>
-  <h2>MAVLink Messages</h2>
+  <h2 id="messages">MAVLink Messages</h2>
   <h3 id="COMMAND_INT_STAMPED">COMMAND_INT_STAMPED (<a href="#COMMAND_INT_STAMPED">
     #78
    </a>
    )
   </h3>
-  <p>Message encoding a command with parameters as scaled integers and additional metadata. Scaling depends on the actual command value.</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Message encoding a command with parameters as scaled integers and additional metadata. Scaling depends on the actual command value.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -331,7 +351,10 @@
    </a>
    )
   </h3>
-  <p>Send a command with up to seven parameters to the MAV and additional metadata</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Send a command with up to seven parameters to the MAV and additional metadata</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -465,7 +488,10 @@
    </a>
    )
   </h3>
-  <p>Voltage and current sensor data</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Voltage and current sensor data</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -507,7 +533,10 @@
    </a>
    )
   </h3>
-  <p>Maximum Power Point Tracker (MPPT) sensor data for solar module power performance tracking</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Maximum Power Point Tracker (MPPT) sensor data for solar module power performance tracking</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -606,7 +635,10 @@
    </a>
    )
   </h3>
-  <p>ASL-fixed-wing controller data</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>ASL-fixed-wing controller data</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -806,7 +838,10 @@
    </a>
    )
   </h3>
-  <p>ASL-fixed-wing controller debug data</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>ASL-fixed-wing controller debug data</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -878,7 +913,10 @@
    </a>
    )
   </h3>
-  <p>Extended state information for ASLUAVs</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Extended state information for ASLUAVs</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -915,7 +953,10 @@
    </a>
    )
   </h3>
-  <p>Extended EKF state estimates for ASLUAVs</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Extended EKF state estimates for ASLUAVs</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -975,7 +1016,10 @@
    </a>
    )
   </h3>
-  <p>Off-board controls/commands for ASLUAVs</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Off-board controls/commands for ASLUAVs</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1048,7 +1092,10 @@
    </a>
    )
   </h3>
-  <p>Atmospheric sensors (temperature, humidity, ...)</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Atmospheric sensors (temperature, humidity, ...)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1059,6 +1106,12 @@
     </tr>
    </thead>
    <tbody>
+    <tr>
+     <td>timestamp</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Time since system boot</td>
+    </tr>
     <tr>
      <td>TempAmbient</td>
      <td>float</td>
@@ -1080,7 +1133,10 @@
    </a>
    )
   </h3>
-  <p>Battery pack monitoring data for Li-Ion batteries</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Battery pack monitoring data for Li-Ion batteries</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1193,7 +1249,10 @@
    </a>
    )
   </h3>
-  <p>Fixed-wing soaring (i.e. thermal seeking) data</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Fixed-wing soaring (i.e. thermal seeking) data</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1372,7 +1431,10 @@
    </a>
    )
   </h3>
-  <p>Monitoring of sensorpod status</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Monitoring of sensorpod status</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1444,7 +1506,10 @@
    </a>
    )
   </h3>
-  <p>Monitoring of power board status</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Monitoring of power board status</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1536,7 +1601,10 @@
    </a>
    )
   </h3>
-  <p>Status of GSM modem (connected to onboard computer)</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Status of GSM modem (connected to onboard computer)</p>
   <table class="sortable">
    <thead>
     <tr>
