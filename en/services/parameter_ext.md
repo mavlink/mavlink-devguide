@@ -23,7 +23,7 @@ Message | Description
 
 Enum | Description
 -- | --
-<span id="MAV_PARAM_EXT_TYPE"></span>[MAV_PARAM_EXT_TYPE](../messages/common.md#MAV_PARAM_EXT_TYPE) | Specifies the datatype of a MAVLink extended parameter (parameter values are [encoded](parameter_encoding) within the a `char[128]` array in the messages. This type conveys the real type of the encoded parameter value, e.g. `MAV_PARAM_EXT_TYPE_REAL32`.
+<span id="MAV_PARAM_EXT_TYPE"></span>[MAV_PARAM_EXT_TYPE](../messages/common.md#MAV_PARAM_EXT_TYPE) | Specifies the datatype of a MAVLink extended parameter (parameter values are [encoded](parameter_encoding) within the a `char[128]` array in the messages). This type conveys the *real type* of the encoded parameter value, e.g. `MAV_PARAM_EXT_TYPE_REAL32`.
 <span id="PARAM_ACK"></span>[PARAM_ACK](../messages/common.md#PARAM_ACK) | Request acknowledgment status value, sent in an [PARAM_EXT_ACK](#PARAM_EXT_ACK) as a response to a [PARAM_EXT_SET](#PARAM_EXT_SET) message. A request can be accepted, fail, in-progress, or unsupported (indicating the specified parameter does not exist or has an invalid value or value type).
 
 
