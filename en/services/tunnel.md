@@ -2,10 +2,10 @@
 
 The *Tunnel Protocol* allows MAVLink to be used as a "dumb channel" to pass data in any format across, through or into a MAVLink network.
 
-> **Warning** Using the tunnel loses most of the benefits of MAVLink in terms of efficiently and interoperability.
+> **Warning** **Tunnels use is highly discouraged**, as they lose most of the benefits of MAVLink in terms of efficiently and interoperability.
   You should almost always create "dedicated" MAVLink messages for communicating in a MAVLink system.
 
-An example where this protocol is useful is connecting a *STorM32 gimbal* to a computer for configuration/debugging (via a USB connection to the autopilot and using MAVLink to carry the native serial protocol between it and the gimbal). 
+An example where this protocol is useful is connecting a *STorM32 gimbal* to a computer for configuration/debugging (via a USB connection to the autopilot and using MAVLink to carry the native serial protocol between it and the gimbal).
 Normally you would connect the gimbal directly via USB, but when mounted on the drone the gimbal USB port may be hard to access.
 You might re-invent the native protocol in MAVLink, but that would be a lot of effort for little benefit in this case.
 
@@ -44,18 +44,3 @@ The rules for adding new `MAV_TUNNEL_PAYLOAD_TYPE` values are:
      For example, the *STorM32 gimbal* might reserve a block of 10 values from `MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0` to `MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9`.
    - You do not *have to* explicitly reserve unused values.
 1. Enum values that are in use should be (re)named to reflect the vendor/software and purpose (e.g. `MAV_TUNNEL_PAYLOAD_TYPE_STORM32_CONFIG`).
-1. If a [payload definition is published](#publishing) its name and definition must not change.
-
-
-## Publish a Payload Definition {#publishing}
-
-> **Note** This section describes broadly what you will need to do if you want to share payload definitions.
->  Note however that generally we do not expect vendors will want or need to do so, and hence the XML format is not yet defined.
->  
->  If you wish to publish a definition, please raise through the normal [support channels](../about/support.md).
-
-A vendor may publish the format for a [registered payload format](#register) in the XML file: [definition_files/tunnel_message_payload_types.xml](https://github.com/mavlink/mavlink/definition_files/tunnel_message_payload_types.xml).
-
-Once published the vendor is expected to maintain compatibility of the format:
-- The name/value of the associated [MAV_TUNNEL_PAYLOAD_TYPE](#MAV_TUNNEL_PAYLOAD_TYPE) may no longer change.
-- The definition of the payload format may not change.
