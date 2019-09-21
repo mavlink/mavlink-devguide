@@ -1830,6 +1830,13 @@
      </td>
      <td>Component to bridge to UART (i.e. from UDP).</td>
     </tr>
+    <tr id="MAV_COMP_ID_TUNNEL_NODE">
+     <td>242</td>
+     <td>
+      <a href="#MAV_COMP_ID_TUNNEL_NODE">MAV_COMP_ID_TUNNEL_NODE</a>
+     </td>
+     <td>Component handling TUNNEL messages (e.g. vendor specific GUI of a component).</td>
+    </tr>
     <tr id="MAV_COMP_ID_SYSTEM_CONTROL">
      <td>250</td>
      <td>
@@ -6237,6 +6244,76 @@
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE_UNKNOWN">MAV_TUNNEL_PAYLOAD_TYPE_UNKNOWN</a>
      </td>
      <td>Encoding of payload unknown.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0">
+     <td>200</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED1">
+     <td>201</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED1">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED1</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED2">
+     <td>202</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED2">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED2</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED3">
+     <td>203</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED3">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED3</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED4">
+     <td>204</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED4">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED4</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED5">
+     <td>205</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED5">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED5</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED6">
+     <td>206</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED6">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED6</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED7">
+     <td>207</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED7">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED7</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED8">
+     <td>208</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED8">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED8</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9">
+     <td>209</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
     </tr>
    </tbody>
   </table>
@@ -29358,7 +29435,7 @@
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE">MAV_TUNNEL_PAYLOAD_TYPE</a>
      </td>
-     <td>A code that identifies the content of the payload (0 for unknown, which is the default). If this code is less than 32768, it is a 'registered' payload type and the corresponding code should be added to the MAV_TUNNEL_PAYLOAD_TYPE enum, and the entry possibly to https://github.com/mavlink/mavlink/definition_files/tunnel_message_payload_types.xml. Software creators can register blocks of types as needed. Codes greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
+     <td>A code that identifies the content of the payload (0 for unknown, which is the default). If this code is less than 32768, it is a 'registered' payload type and the corresponding code should be added to the MAV_TUNNEL_PAYLOAD_TYPE enum. Software creators can register blocks of types as needed. Codes greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
     </tr>
     <tr>
      <td>payload_length</td>
