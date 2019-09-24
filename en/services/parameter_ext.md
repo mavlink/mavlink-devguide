@@ -30,18 +30,86 @@ Enum | Description
 ## Parameter Encoding {#parameter_encoding}
 
 Parameters names/ids are set in the `param_id` field of messages where they are used.
-The `param_id` string can store up to 16 characters. 
+The `param_id` string can store up to 16 characters.
 The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars.
 
 > **Note** Names (as above) are the same as for the [Parameter Protocol](../services/parameter.md#parameter_encoding).
-  Values (below) are encoded differently.
 
-Values are byte-wise encoded *within* the `param_value` field, which is a `char[128]`. <!-- how are they encoded? -->
+Values are byte-wise encoded *within* the `param_value` field, which is a `char[128]`.
 The `param_type` ([MAV_PARAM_EXT_TYPE](#MAV_PARAM_EXT_TYPE)) is used to indicate the actual type of the data so that it can be decoded by the recipient.
-Supported types are: 8, 16, 32 and 64-bit signed and unsigned integers, 32 and 64-bit floating point numbers, and a "custom type" which may used for strings. <!-- why custom? shouldit be string, and then new types added for non string usage of the same field -->
+Supported types are: 8, 16, 32 and 64-bit signed and unsigned integers, 32 and 64-bit floating point numbers, and a "custom type" which may used for strings.
 
-<!--  **Note** A byte-wise conversion is needed, rather than a simple cast, to enable larger integers to be exchanged (e.g. 1E7 scaled integers can be useful for encoding some types of data, but lose precision if cast directly to floats).
--->
+The encoding is best described by example [as shown below](#c_encoding).
+
+### C Encoding/Decoding {#c_encoding}
+
+To send the parameter, the data is written into a union structure then memcpy used to copy the data into the message `char[128]` field.
+
+The union structure might look like this:
+```cpp
+MAVPACKED(
+typedef struct {
+    union {
+        float       param_float;
+        double      param_double;
+        int64_t     param_int64;
+        uint64_t    param_uint64;
+        int32_t     param_int32;
+        uint32_t    param_uint32;
+        int16_t     param_int16;
+        uint16_t    param_uint16;
+        int8_t      param_int8;
+        uint8_t     param_uint8;
+        uint8_t     bytes[MAVLINK_MSG_PARAM_EXT_SET_FIELD_PARAM_VALUE_LEN];
+    };
+    uint8_t type;
+}) param_ext_union_t;
+```
+
+To send the parameter, the data is written into the union value of the correct type and then memcpy used to copy it to the message data.
+```cpp
+# Create C object for message data and zero fill
+mavlink_param_ext_set_t p;
+memset(&p, 0, sizeof(mavlink_param_ext_set_t));
+
+# Store type of data to be sent in message
+p.param_type = /* Value for type from MAV_PARAM_EXT_TYPE */;
+
+# Create union value to assign data to
+param_ext_union_t union_value;
+
+# Assign data to union value (usually in a case statement based on type).
+union_value.param_uint16 = static_cast<uint16_t>(aUint16Value);
+
+# memcpy the union bytes value into the message data array.
+memcpy(&p.param_value[0], &union_value.bytes[0], MAVLINK_MSG_PARAM_EXT_SET_FIELD_PARAM_VALUE_LEN);
+```
+
+Receiving and decoding a parameter is even simpler:
+```
+# 'value' is the char[128] from the message
+# 'param_type' is the param_type value from the message
+
+# Create union value to assign data to
+param_ext_union_t union_value;
+
+# memcpy the received value into the union_value bytes field.
+memcpy(union_value.bytes, value, MAVLINK_MSG_PARAM_EXT_SET_FIELD_PARAM_VALUE_LEN);
+
+# Assign the union_value of correct type to a variable for use
+switch (param_type) {
+    ...
+    case MAV_PARAM_EXT_TYPE_INT16:
+        auto var = union_value.param_int16;
+        break;
+    ...
+}
+```
+
+*QGroundControl* provides real code examples here:
+- Union structure: [QGCCameraIO.h::param_ext_union_t](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.h)
+- Send a parameter (encode in `char[128]`): [QGCCameraIO.cc::QGCCameraParamIO::_sendParameter()](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)
+- Receive a parameter and get typed value: [QGCCameraIO.cc::QGCCameraParamIO::_valueFromMessage()](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)
 
 
 ## Parameter Caching {#parameter_caching}
@@ -96,15 +164,15 @@ There is a good example of how to do this in the Pymavlink [mavparm.py](https://
 
 ## Limitations {#limitations}
 
-### Parameters Assumed Invariant {#parameters_invariant}
+### Parameters Table is Invariant {#parameters_invariant}
 
-The protocol is designed with the assumption that the parameter set does not change during normal operation.
+The protocol *requires* that the parameter set does not change during normal operation/after parameters have been read.
 
-If a components can add parameters during (or after) initial synchronization the protocol cannot guarantee reliable/robust synchronization, because there is no way to notify that the parameter set has changed and a new sync is required.
+If a component can add parameters during (or after) initial synchronization the protocol cannot guarantee reliable/robust synchronization, because there is no way to notify that the parameter set has changed and a new sync is required.
 
 When requesting parameters from such a components, the risk of problems can be *reduced* (but not removed) if:
 * The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter may change on systems where parameters can be added/removed).
-* [PARAM_EXT_VALUE .param_count](../messages/common.md#PARAM_EXT_VALUE) may be monitored.
+* [PARAM_EXT_VALUE.param_count](../messages/common.md#PARAM_EXT_VALUE) may be monitored.
   If this changes the parameter set should be re-sychronised.
 
 ### Parameter Synchronisation Can Fail {#monitoring_unreliable}
