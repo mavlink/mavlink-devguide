@@ -123,44 +123,6 @@ A system may also monitor for [PARAM_EXT_VALUE](#PARAM_EXT_VALUE) originating fr
 > **Note** Cache synchronisation is not guaranteed; a component may [miss parameter update messages](#monitoring_unreliable) due to changes by other components.
 
 
-<!--
-## Multi-System and Multi-Component Support
-
-MAVLink supports multiple systems in parallel on the same link, and multiple MAVLink enabled components within a system.
-
-Requests to get and set parameters can be sent to individual systems or components. 
-To get a complete parameter list from a system, send the request parameter message with `target_component` set to [MAV_COMP_ID_ALL](../messages/common.md#MAV_COMP_ID_ALL).
-
-All components must respond to parameter request messages addressed to their ID or the ID `MAV_COMP_ID_ALL`. 
-
-> **Tip** *QGroundControl* by default queries all components of the currently connected system (it sends ID `MAV_COMP_ID_ALL`).
--->
-
-
-<!--
-### Mavgen C API
-
-The C API provides a convenient `union` that allows you to bytewise convert between any of the supported types: `mavlink_param_union_t` ([mavlink_types.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_types.h)).
-For example, below we shown how you can set the union integer field but pass the float value to the sending function: 
-
-```c
-mavlink_param_union_t param;
-int32_t integer = 20000;
-param.param_int32 = integer;
-param.type = MAV_PARAM_TYPE_INT32;
-
-// Then send the param by providing the float bytes to the send function
-mavlink_msg_param_set_send(xxx, xxx, param.param_float, param.type, xxx);
-```
-
-### Mavgen Python API (Pymavlink)
-
-Pymavlink does not include special support to byte-wise encode the non-float data types (unsurprisingly, because Python effectively "hides" low level data types from users).
-When working with a system that supports non-float parameters (e.g. PX4) you will need to do the encoding/decoding yourself when sending and receiving messages.
-
-There is a good example of how to do this in the Pymavlink [mavparm.py](https://github.com/ArduPilot/pymavlink/blob/master/mavparm.py) module (see `MAVParmDict.mavset()`).
-
--->
 
 ## Limitations {#limitations}
 
@@ -218,7 +180,6 @@ The sequence of operations is:
    - Allow breaks between each message in order to avoid saturating the link.
    - Components with no parameters should ignore the request.
 1. GCS starts timeout after each `PARAM_EXT_VALUE` message in order to detect when parameters are no longer being sent (that the operation has completed).
-
 
 
 Notes:
@@ -304,7 +265,7 @@ The sequence of operations is:
 1. The GCS may restart the sequence if an expected `PARAM_EXT_ACK` is not received within the timeout, or if the write operation fails.
 
 
-<!-- 
 ## Implementations
 
--->
+*QGroundControl*: [QGCCameraIO.h](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.h), [QGCCameraIO.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)
+
