@@ -12,7 +12,7 @@ The key new features of *MAVLink 2* are:
 * [Packet signing](../guide/message_signing.md) - Authenticate that messages were sent by trusted systems.
 * [Message extensions](../guide/define_xml_element.md#message_extensions) - Add new fields to existing MAVLink message definitions without breaking binary compatibility for receivers that have not updated. 
 * [Empty-byte payload truncation](../guide/serialization.md#payload_truncation) - Empty (zero-filled) bytes at the end of the serialized payload are removed before sending (All bytes were sent in *MAVLink 1*, regardless of content). 
-* [Compatibility Flags](../guide/serialization.md#compat_flags)/[Incompatibility Flags](../guide/serialization.md#incompat_flags) - Allow for backwards compatible evolution of the protocol by indicating frames that must be handled in a special/non-standard way (packets with compatibility flags can still be handled in the standard way, while packets with incompatibility flags must be dropped if the flage is not supported).
+* [Compatibility Flags](../guide/serialization.md#compat_flags)/[Incompatibility Flags](../guide/serialization.md#incompat_flags) - Allow for backwards compatible evolution of the protocol by indicating frames that must be handled in a special/non-standard way (packets with compatibility flags can still be handled in the standard way, while packets with incompatibility flags must be dropped if the flag is not supported).
 
 > **Tip** The *MAVLink 2* [design document](https://docs.google.com/document/d/1XtbD0ORNkhZ8eKrsbSIZNLyg9sFRXMXbsR2mp37KbIg/edit?usp=sharing) provides additional background information about the changes.
 
