@@ -165,11 +165,20 @@ The main rules for messages are:
 - There may be no more than 64 fields.
 - The `<wip/>` tag may be added to messages that are still being tested.
 - Fields:
-  - must have unique `name`s within a message.
-  - *should* have a description.
-  - *should* use the `units` attribute rather than including units in the description. 
-    Each field should only have **one** or no units.
-  - *should* use the `enum` attribute where possible results are finite/well understood.
+  - `name`: required
+    - must be unique within a message.
+  - `type`: required
+    - There are a fixed set of types: `uint8_t`, `uint16_t`, `uint32_t`, `uint64_t`, `int8_t`, `int16_t`, `int32_t`, `int64_t`, `float`, `double`
+    - You can also declare an array for each type, e.g.: `uint8_t[3]`, `int32_t`
+    - Use the smallest data type that will contain the field data with sufficient resolution.
+  - `description` optional, but *should* be provided.
+    - The description should not include units information.
+  - `units`: optional, for indicating units
+    - SI units should be used where possible (units are constrained by the XML DTD)
+      > **Note** Use natural units like radians or quaternions where possible as these allow greater precision and fewer issues for implementers than units like degrees.
+    - *should* only have **one** or no units (avoid defining fields where the units can change depending on other fields or conditions). 
+  - `enum`: optional.
+    - *should* be used where possible results are finite/well understood and for bitmasks.
 
 > **Warning** You cannot rely on generators to fully test for compliance with the above rules. 
   The *mavgen* code generator tests for duplicate message ids, duplicate field names and messages with more than 64 fields.
