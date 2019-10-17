@@ -18,7 +18,7 @@ This topic shows how to use the two code generators provided with the MAVLink pr
    > **Note** *mavgen* can handle dialects that have relative paths for included XML files (e.g typically [common.xml](../messages/common.md)), but other generators may not. 
      We recommend putting custom dialects in the same folder as the ones that come with the *mavlink/mavlink* repository.
 
-## Mavenerate (GUI) {#mavgenerate}
+## Mavgenerate (GUI) {#mavgenerate}
 
 **mavgenerate.py** is GUI code generator for MAVLink, written in Python.
 
