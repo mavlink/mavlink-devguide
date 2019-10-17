@@ -15,7 +15,7 @@ This topic shows how to use the two code generators provided with the MAVLink pr
 1. 你必须已经[安装了MAVLink](../getting_started/installation.md)(包括工具和[XML消息定义](../messages/README.md))。
 2. 如果你要生成[自定义消息](../messages/README.md#dialects)，请将文件复制到目录[message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0)文件夹中。 >**注意***mavgen*可以处理包含XML文件相对路径的方言(例如，最常见的[common.xml](../messages/common.md))，但是其他生成器可能不行。 我们建议将自定义文件放在与*mavlink/mavlink*存储库相同的文件夹中。
 
-## Mavenerate(图形用户界面) {#mavgenerate}
+## Mavgenerate (GUI) {#mavgenerate}
 
 **mavgenerate.py**是用Python语言编写的MAVLink的图形用户界面代码生成器。
 
