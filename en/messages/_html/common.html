@@ -16256,7 +16256,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>The RAW values of the servo outputs (for RC input from the remote, use the RC_CHANNELS messages). The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%.</p>
+   </a>Superseded by ACTUATOR_OUTPUT_STATUS. The RAW values of the servo outputs (for RC input from the remote, use the RC_CHANNELS messages). The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29338,7 +29338,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>The raw values of the actuator outputs.</p>
+   </strong>The raw values of the actuator outputs (e.g. on Pixhawk, from MAIN, AUX ports). This message supersedes SERVO_OUTPUT_RAW.</p>
   <table class="sortable">
    <thead>
     <tr>
