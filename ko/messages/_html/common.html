@@ -15921,6 +15921,16 @@
      <td>rad/s</td>
      <td>Yaw angular speed</td>
     </tr>
+    <tr>
+     <td style="color:blue;">repr_offset_q<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>Rotation offset by which the attitude quaternion and angular speed vector should be rotated for user display (quaternion with [w, x, y, z] order, zero-rotation is [1, 0, 0, 0], send [0, 0, 0, 0] if field not supported). This field is intended for systems in which the reference attitude may change during flight. For example, tailsitters VTOLs rotate their reference attitude by 90 degrees between hover mode and fixed wing mode, thus repr_offset_q is equal to [1, 0, 0, 0] in hover mode and equal to [0.7071, 0, 0.7071, 0] in fixed wing mode.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="LOCAL_POSITION_NED">LOCAL_POSITION_NED (<a href="#LOCAL_POSITION_NED">
