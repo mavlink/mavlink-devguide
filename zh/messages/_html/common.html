@@ -7077,6 +7077,38 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="TUNE_FORMAT">
+   <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Tune formats (used for vehicle buzzer/tone generation).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="TUNE_FORMAT_QBASIC1_1">
+     <td>0</td>
+     <td>
+      <a href="#TUNE_FORMAT_QBASIC1_1">TUNE_FORMAT_QBASIC1_1</a>
+     </td>
+     <td>Format is QBasic 1.1 Play: https://www.qbasic.net/en/reference/qb11/Statement/PLAY-006.htm.</td>
+    </tr>
+    <tr id="TUNE_FORMAT_MML_MODERN">
+     <td>1</td>
+     <td>
+      <a href="#TUNE_FORMAT_MML_MODERN">TUNE_FORMAT_MML_MODERN</a>
+     </td>
+     <td>Format is Modern Music Markup Language (MML): https://en.wikipedia.org/wiki/Music_Macro_Language#Modern_MML.</td>
+    </tr>
+   </tbody>
+  </table>
   <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
@@ -26406,13 +26438,18 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by PLAY_TUNE_V2 (2019-10).
+
+
+  New version explicitly defines format. More interoperable.</p>
   <p>
    <a href="#messages">
     [Message]
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Control vehicle tone generation (buzzer)</p>
+   </strong>Control vehicle tone generation (buzzer).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29657,6 +29694,115 @@
      <td>uint32_t[6]</td>
      <td>KiB/s</td>
      <td>Network capacity to the component system. A value of UINT32_MAX implies the field is unused.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="PLAY_TUNE_V2">PLAY_TUNE_V2 (<a href="#PLAY_TUNE_V2">
+    #400
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Play vehicle tone/tune (buzzer). Default format is QBasic 1.1. Supersedes message PLAY_TUNE.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>format</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
+     </td>
+     <td>Tune format</td>
+    </tr>
+    <tr>
+     <td>tune</td>
+     <td>char[252]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tune definition</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SUPPORTED_TUNES">SUPPORTED_TUNES (<a href="#SUPPORTED_TUNES">
+    #401
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Tune formats supported by vehicle. This should be emitted as response to MAV_CMD_REQUEST_MESSAGE.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>format</td>
+     <td>uint8_t[200]</td>
+     <td>
+      <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
+     </td>
+     <td>Array of supported tune formats</td>
     </tr>
    </tbody>
   </table>
