@@ -3079,7 +3079,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>result from a mavlink command</p>
+   </a>Result from a MAVLink command (MAV_CMD)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3094,42 +3094,42 @@
      <td>
       <a href="#MAV_RESULT_ACCEPTED">MAV_RESULT_ACCEPTED</a>
      </td>
-     <td>Command ACCEPTED and EXECUTED</td>
+     <td>Command is valid (is supported and has valid parameters), and was executed.</td>
     </tr>
     <tr id="MAV_RESULT_TEMPORARILY_REJECTED">
      <td>1</td>
      <td>
       <a href="#MAV_RESULT_TEMPORARILY_REJECTED">MAV_RESULT_TEMPORARILY_REJECTED</a>
      </td>
-     <td>Command TEMPORARY REJECTED/DENIED</td>
+     <td>Command is valid, but cannot be executed at this time. This is used to indicate a problem that should be fixed just by waiting (e.g. a state machine is busy, can't arm because have not got GPS lock, etc.). Retrying later should work.</td>
     </tr>
     <tr id="MAV_RESULT_DENIED">
      <td>2</td>
      <td>
       <a href="#MAV_RESULT_DENIED">MAV_RESULT_DENIED</a>
      </td>
-     <td>Command PERMANENTLY DENIED</td>
+     <td>Command is invalid (is supported but has invalid parameters). Retrying same command and parameters will not work.</td>
     </tr>
     <tr id="MAV_RESULT_UNSUPPORTED">
      <td>3</td>
      <td>
       <a href="#MAV_RESULT_UNSUPPORTED">MAV_RESULT_UNSUPPORTED</a>
      </td>
-     <td>Command UNKNOWN/UNSUPPORTED</td>
+     <td>Command is not supported (unknown).</td>
     </tr>
     <tr id="MAV_RESULT_FAILED">
      <td>4</td>
      <td>
       <a href="#MAV_RESULT_FAILED">MAV_RESULT_FAILED</a>
      </td>
-     <td>Command executed, but failed</td>
+     <td>Command is valid, but execution has failed. This is used to indicate any non-temporary or unexpected problem, i.e. any problem that must be fixed before the command can succeed/be retried. For example, attempting to write a file when out of memory, attempting to arm when sensors are not calibrated, etc.</td>
     </tr>
     <tr id="MAV_RESULT_IN_PROGRESS">
      <td>5</td>
      <td>
       <a href="#MAV_RESULT_IN_PROGRESS">MAV_RESULT_IN_PROGRESS</a>
      </td>
-     <td>WIP: Command being executed</td>
+     <td>Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further COMMAND_ACK messages with result MAV_RESULT_IN_PROGRESS (at a rate decided by the implementation), and must terminate by sending a COMMAND_ACK message with final result of the operation. The COMMAND_ACK.progress field can be used to indicate the progress of the operation. There is no need for the sender to retry the command, but if done during execution, the component will return MAV_RESULT_IN_PROGRESS with an updated progress.</td>
     </tr>
    </tbody>
   </table>
