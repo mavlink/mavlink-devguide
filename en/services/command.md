@@ -51,7 +51,7 @@ sequenceDiagram;
     Drone->>GCS: COMMAND_ACK
 {% endmermaid %}
 
-The command may not complete immediately, in which case the drone can report its progress by sending `COMMMAND_ACK` messages with `COMMAND_ACK.result=`[MAV_RESULT_IN_PROGRESS](../messages/common.md#MAV_RESULT_IN_PROGRESS) and the progress as a percentage in `COMMMAND_ACK.progress` ([0-100] percent complete, 255 if progrss not supplied). 
+The command may not complete immediately, in which case the drone can report its progress by sending `COMMMAND_ACK` messages with [COMMAND_ACK.result=MAV_RESULT_IN_PROGRESS](../messages/common.md#MAV_RESULT_IN_PROGRESS) and the progress as a percentage in `COMMMAND_ACK.progress` ([0-100] percent complete, 255 if progress not supplied). 
 When the operation completes, the drone must terminate with a `COMMMAND_ACK` containing the final [result](#MAV_RESULT) of the operation (e.g. failed, accepted, etc.).
 
 {% mermaid %}
@@ -61,10 +61,12 @@ sequenceDiagram;
     GCS->>Drone: COMMAND_LONG()
     GCS->>GCS: Start timeout
     Drone->>GCS: COMMAND_ACK(result=MAV_RESULT_IN_PROGRESS,progress=?)
-    GCS->>GCS: Start timeout
+    GCS->>GCS: Start (longer) timeout
     Drone->>GCS: COMMAND_ACK(result=MAV_RESULT_IN_PROGRESS,progress=?)
-    GCS->>GCS: Start timeout
+    GCS->>GCS: Start (longer) timeout
     Note right of GCS: ...
     Drone->>GCS: COMMAND_ACK(result=MAV_RESULT_ACCEPTED)
 {% endmermaid %}
 
+The rate at which progress messages are emitted is system-dependent.
+Generally though, the GCS should have a much increased timeout after receiving an ACK with `MAV_RESULT_IN_PROGRESS`. 
