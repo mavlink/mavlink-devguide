@@ -7094,14 +7094,14 @@
    </thead>
    <tbody>
     <tr id="TUNE_FORMAT_QBASIC1_1">
-     <td>0</td>
+     <td>1</td>
      <td>
       <a href="#TUNE_FORMAT_QBASIC1_1">TUNE_FORMAT_QBASIC1_1</a>
      </td>
      <td>Format is QBasic 1.1 Play: https://www.qbasic.net/en/reference/qb11/Statement/PLAY-006.htm.</td>
     </tr>
     <tr id="TUNE_FORMAT_MML_MODERN">
-     <td>1</td>
+     <td>2</td>
      <td>
       <a href="#TUNE_FORMAT_MML_MODERN">TUNE_FORMAT_MML_MODERN</a>
      </td>
@@ -29702,13 +29702,15 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Play vehicle tone/tune (buzzer). Default format is QBasic 1.1. Supersedes message PLAY_TUNE.</p>
+   </strong>Play vehicle tone/tune (buzzer). Supersedes message PLAY_TUNE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29739,7 +29741,7 @@
     </tr>
     <tr>
      <td>format</td>
-     <td>uint8_t</td>
+     <td>uint32_t</td>
      <td>
       <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
      </td>
@@ -29752,7 +29754,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Tune definition</td>
+     <td>Tune definition as a NULL-terminated string.</td>
     </tr>
    </tbody>
   </table>
@@ -29761,6 +29763,8 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -29798,11 +29802,11 @@
     </tr>
     <tr>
      <td>format</td>
-     <td>uint8_t[200]</td>
+     <td>uint32_t</td>
      <td>
       <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
      </td>
-     <td>Array of supported tune formats</td>
+     <td>Bitfield of supported tune formats.</td>
     </tr>
    </tbody>
   </table>
