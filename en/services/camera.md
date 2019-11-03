@@ -227,6 +227,12 @@ The steps are:
 
 > **Note** If your camera only provides video streaming and nothing else (no camera features), the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag is the only flag you need to set. 
   The GCS will then provide video streaming support and skip camera control.
+  
+### Battery Status
+
+Cameras that are powered from their own battery should publish [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) messages.
+`BATTERY_STATUS.battery_function` should be set to [MAV_BATTERY_TYPE_PAYLOAD](../messages/common.md#MAV_BATTERY_TYPE_PAYLOAD).
+
 
 ## Message/Enum Summary
 
