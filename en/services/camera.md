@@ -231,7 +231,8 @@ The steps are:
 ### Battery Status
 
 Camera components that are powered from their own battery should publish [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) messages.
-`BATTERY_STATUS.battery_function` should be set to [MAV_BATTERY_TYPE_PAYLOAD](../messages/common.md#MAV_BATTERY_TYPE_PAYLOAD).
+
+Other components like a GCS will typically only use the camera `BATTERY_STATUS.battery_remaining` field (or possibly `time_remaining`); generally other fields can be set as "not supported".
 
 
 ## Message/Enum Summary
