@@ -5298,7 +5298,7 @@
      <td>
       <a href="#RTK_BASELINE_COORDINATE_SYSTEM_NED">RTK_BASELINE_COORDINATE_SYSTEM_NED</a>
      </td>
-     <td>North, East, Down</td>
+     <td>RTK basestation centered, north, east, down</td>
     </tr>
    </tbody>
   </table>
@@ -21297,19 +21297,19 @@
      <td>vn</td>
      <td>float</td>
      <td>m/s</td>
-     <td>True velocity in NORTH direction in earth-fixed NED frame</td>
+     <td>True velocity in north direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>ve</td>
      <td>float</td>
      <td>m/s</td>
-     <td>True velocity in EAST direction in earth-fixed NED frame</td>
+     <td>True velocity in east direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>vd</td>
      <td>float</td>
      <td>m/s</td>
-     <td>True velocity in DOWN direction in earth-fixed NED frame</td>
+     <td>True velocity in down direction in earth-fixed NED frame</td>
     </tr>
    </tbody>
   </table>
@@ -21561,19 +21561,19 @@
      <td>vn</td>
      <td>int16_t</td>
      <td>cm/s</td>
-     <td>GPS velocity in NORTH direction in earth-fixed NED frame</td>
+     <td>GPS velocity in north direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>ve</td>
      <td>int16_t</td>
      <td>cm/s</td>
-     <td>GPS velocity in EAST direction in earth-fixed NED frame</td>
+     <td>GPS velocity in east direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>vd</td>
      <td>int16_t</td>
      <td>cm/s</td>
-     <td>GPS velocity in DOWN direction in earth-fixed NED frame</td>
+     <td>GPS velocity in down direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>cog</td>
@@ -24804,7 +24804,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS velocity in NORTH direction in earth-fixed NED frame</td>
+     <td>GPS velocity in north direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>ve</td>
@@ -24814,7 +24814,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS velocity in EAST direction in earth-fixed NED frame</td>
+     <td>GPS velocity in east direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>vd</td>
@@ -24824,7 +24824,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS velocity in DOWN direction in earth-fixed NED frame</td>
+     <td>GPS velocity in down direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>speed_accuracy</td>
@@ -24866,6 +24866,19 @@
       </a>
      </td>
      <td>Number of satellites visible.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">yaw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t</td>
+     <td>cdeg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north</td>
     </tr>
    </tbody>
   </table>
@@ -27101,7 +27114,7 @@
      <td>yaw</td>
      <td>float</td>
      <td>deg</td>
-     <td>Yaw relative to vehicle(set to NaN for invalid).</td>
+     <td>Yaw relative to vehicle (set to NaN for invalid).</td>
     </tr>
     <tr>
      <td style="color:blue;">yaw_absolute<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -27110,7 +27123,7 @@
      </td>
      <td>float</td>
      <td>deg</td>
-     <td>Yaw in absolute frame, North is 0 (set to NaN for invalid).</td>
+     <td>Yaw in absolute frame relative to Earth's North, north is 0 (set to NaN for invalid).</td>
     </tr>
    </tbody>
   </table>
@@ -28115,7 +28128,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Distance of obstacles around the vehicle with index 0 corresponding to North + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.</td>
+     <td>Distance of obstacles around the vehicle with index 0 corresponding to north + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.</td>
     </tr>
     <tr>
      <td>increment</td>
@@ -28184,7 +28197,7 @@
      <td>
       <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
-     <td>Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to MAV_FRAME_GLOBAL, which is North aligned. For body-mounted sensors use MAV_FRAME_BODY_FRD, which is vehicle front aligned.</td>
+     <td>Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to MAV_FRAME_GLOBAL, which is north aligned. For body-mounted sensors use MAV_FRAME_BODY_FRD, which is vehicle front aligned.</td>
     </tr>
    </tbody>
   </table>
