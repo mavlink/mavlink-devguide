@@ -2419,6 +2419,14 @@
      <td>
      </td>
     </tr>
+    <tr id="PLANE_MODE_TAKEOFF">
+     <td>13</td>
+     <td>
+      <a href="#PLANE_MODE_TAKEOFF">PLANE_MODE_TAKEOFF</a>
+     </td>
+     <td>
+     </td>
+    </tr>
     <tr id="PLANE_MODE_AVOID_ADSB">
      <td>14</td>
      <td>
@@ -3868,6 +3876,36 @@
     <tr>
      <td>7</td>
      <td>Empty</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_BATTERY_RESET">MAV_CMD_BATTERY_RESET (<a href="#MAV_CMD_BATTERY_RESET">42651</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Reset battery capacity for batteries that accumulate consumed battery via integration.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: battery mask</td>
+     <td>Bitmask of batteries to reset. Least significant bit is for the first battery.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>2: percentage</td>
+     <td>Battery percentage remaining to set.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>100 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
