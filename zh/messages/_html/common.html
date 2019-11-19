@@ -2665,6 +2665,59 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="ORBIT_YAW_BEHAVIOUR">
+   <a href="#ORBIT_YAW_BEHAVIOUR">ORBIT_YAW_BEHAVIOUR</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Yaw behaviour during orbit flight.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TO_CIRCLE_CENTER">
+     <td>0</td>
+     <td>
+      <a href="#ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TO_CIRCLE_CENTER">ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TO_CIRCLE_CENTER</a>
+     </td>
+     <td>Vehicle front points to the center (default).</td>
+    </tr>
+    <tr id="ORBIT_YAW_BEHAVIOUR_HOLD_INITIAL_HEADING">
+     <td>1</td>
+     <td>
+      <a href="#ORBIT_YAW_BEHAVIOUR_HOLD_INITIAL_HEADING">ORBIT_YAW_BEHAVIOUR_HOLD_INITIAL_HEADING</a>
+     </td>
+     <td>Vehicle front holds heading when message received.</td>
+    </tr>
+    <tr id="ORBIT_YAW_BEHAVIOUR_UNCONTROLLED">
+     <td>2</td>
+     <td>
+      <a href="#ORBIT_YAW_BEHAVIOUR_UNCONTROLLED">ORBIT_YAW_BEHAVIOUR_UNCONTROLLED</a>
+     </td>
+     <td>Yaw uncontrolled.</td>
+    </tr>
+    <tr id="ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE">
+     <td>3</td>
+     <td>
+      <a href="#ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE">ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE</a>
+     </td>
+     <td>Vehicle front follows flight path (tangential to circle).</td>
+    </tr>
+    <tr id="ORBIT_YAW_BEHAVIOUR_RC_CONTROLLED">
+     <td>4</td>
+     <td>
+      <a href="#ORBIT_YAW_BEHAVIOUR_RC_CONTROLLED">ORBIT_YAW_BEHAVIOUR_RC_CONTROLLED</a>
+     </td>
+     <td>Yaw controlled by RC input.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_DATA_STREAM">
    <a href="#MAV_DATA_STREAM">MAV_DATA_STREAM</a>
   </h3>
@@ -8072,9 +8125,8 @@
     </tr>
     <tr>
      <td>3: Yaw Behavior</td>
-     <td>Yaw behavior of the vehicle. 0: vehicle front points to the center (default). 1: Hold last heading. 2: Leave yaw uncontrolled.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>Yaw behavior of the vehicle.</td>
+     <td>ORBIT_YAW_BEHAVIOUR</td>
      <td>
      </td>
     </tr>
