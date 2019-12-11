@@ -2518,6 +2518,13 @@
      </td>
      <td>Load neutral position and start to point to Lat,Lon,Alt</td>
     </tr>
+    <tr id="MAV_MOUNT_MODE_SYSID_TARGET">
+     <td>5</td>
+     <td>
+      <a href="#MAV_MOUNT_MODE_SYSID_TARGET">MAV_MOUNT_MODE_SYSID_TARGET</a>
+     </td>
+     <td>Gimbal tracks system with specified system ID</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="UAVCAN_NODE_HEALTH">
@@ -11438,6 +11445,30 @@
     <tr>
      <td>7</td>
      <td>Empty</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_SET_ROI_SYSID">MAV_CMD_DO_SET_ROI_SYSID (<a href="#MAV_CMD_DO_SET_ROI_SYSID">198</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Mount tracks system with specified system ID. Determination of target vehicle position may be done with GLOBAL_POSITION_INT or any other means.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: System ID</td>
+     <td>sysid</td>
+     <td>
+      <em>min:</em>1 <em>max:</em>255 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
