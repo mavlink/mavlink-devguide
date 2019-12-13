@@ -16,7 +16,7 @@ Message | Description
 
 Enum | Description
 -- | --
-<span id="MAV_TYPE"></span>[MAV_TYPE](../messages/common.md#MAV_TYPE) | Type of the system (quadrotor, helicopter, etc.). Components use the same type as their associated system.
+<span id="MAV_TYPE"></span>[MAV_TYPE](../messages/common.md#MAV_TYPE) | Type of the component. Flight controllers must report the type of the vehicle on which they are mounted (e.g. MAV_TYPE_OCTOROTOR). All other components must report a value appropriate for their type (e.g. a camera must use MAV_TYPE_CAMERA).
 <span id="MAV_AUTOPILOT"></span>[MAV_AUTOPILOT](../messages/common.md#MAV_AUTOPILOT) | Autopilot type / class.
 <span id="MAV_MODE_FLAG"></span>[MAV_MODE_FLAG](../messages/common.md#MAV_MODE_FLAG) | System mode bitmap.
 <span id="MAV_STATE"></span>[MAV_STATE](../messages/common.md#MAV_STATE) | System status flag.
