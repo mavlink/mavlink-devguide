@@ -2142,6 +2142,14 @@
      <td>
      </td>
     </tr>
+    <tr id="MAG_CAL_BAD_RADIUS">
+     <td>7</td>
+     <td>
+      <a href="#MAG_CAL_BAD_RADIUS">MAG_CAL_BAD_RADIUS</a>
+     </td>
+     <td>
+     </td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS">
@@ -3336,6 +3344,63 @@
     <tr>
      <td>7</td>
      <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_FIXED_MAG_CAL_YAW">MAV_CMD_FIXED_MAG_CAL_YAW (<a href="#MAV_CMD_FIXED_MAG_CAL_YAW">42006</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Magnetometer calibration based on provided known yaw. This allows for fast calibration using WMM field tables in the vehicle, given only the known yaw of the vehicle. If Latitude and longitude are both zero then use the current vehicle location.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Yaw</td>
+     <td>Yaw of vehicle in earth frame.</td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>2: CompassMask</td>
+     <td>CompassMask, 0 for all.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3: Latitude</td>
+     <td>Latitude.</td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>4: Longitude</td>
+     <td>Longitude.</td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6524,6 +6589,20 @@
      </td>
      <td>orientation after calibration.</td>
     </tr>
+    <tr>
+     <td style="color:blue;">scale_factor<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>field radius correction factor</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="EKF_STATUS_REPORT">EKF_STATUS_REPORT (<a href="#EKF_STATUS_REPORT">
@@ -7251,6 +7330,118 @@
       <a href="#GOPRO_REQUEST_STATUS">GOPRO_REQUEST_STATUS</a>
      </td>
      <td>Status.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="EFI_STATUS">EFI_STATUS (<a href="#EFI_STATUS">
+    #225
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>EFI Status Output</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>health</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>EFI Health status</td>
+    </tr>
+    <tr>
+     <td>ecu_index</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>ECU Index</td>
+    </tr>
+    <tr>
+     <td>rpm</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>RPM</td>
+    </tr>
+    <tr>
+     <td>fuel_consumed</td>
+     <td>float</td>
+     <td>g</td>
+     <td>Fuel Consumed (grams)</td>
+    </tr>
+    <tr>
+     <td>fuel_flow</td>
+     <td>float</td>
+     <td>g/min</td>
+     <td>Fuel Flow Rate (g/min)</td>
+    </tr>
+    <tr>
+     <td>engine_load</td>
+     <td>float</td>
+     <td>
+      %
+     </td>
+     <td>Engine Load (%)</td>
+    </tr>
+    <tr>
+     <td>throttle_position</td>
+     <td>float</td>
+     <td>
+      %
+     </td>
+     <td>Throttle Position (%)</td>
+    </tr>
+    <tr>
+     <td>spark_dwell_time</td>
+     <td>float</td>
+     <td>ms</td>
+     <td>Spark Dwell Time (ms)</td>
+    </tr>
+    <tr>
+     <td>barometric_pressure</td>
+     <td>float</td>
+     <td>kPa</td>
+     <td>Barometric Pressure (kPa)</td>
+    </tr>
+    <tr>
+     <td>intake_manifold_pressure</td>
+     <td>float</td>
+     <td>kPa</td>
+     <td>Intake Manifold Pressure (kPa)(</td>
+    </tr>
+    <tr>
+     <td>intake_manifold_temperature</td>
+     <td>float</td>
+     <td>degC</td>
+     <td>Intake Manifold Temperature (degC)</td>
+    </tr>
+    <tr>
+     <td>cylinder_head_temperature</td>
+     <td>float</td>
+     <td>degC</td>
+     <td>cylinder_head_temperature (degC)</td>
+    </tr>
+    <tr>
+     <td>ignition_timing</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Ignition timing for cylinder i (Crank Angle degrees)</td>
+    </tr>
+    <tr>
+     <td>injection_time</td>
+     <td>float</td>
+     <td>ms</td>
+     <td>Injection time for injector i (ms)</td>
     </tr>
    </tbody>
   </table>
