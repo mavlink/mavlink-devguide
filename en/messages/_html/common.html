@@ -27679,6 +27679,30 @@
      </td>
      <td>Status text message, without null termination character</td>
     </tr>
+    <tr>
+     <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Unique (opaque) identifier for this statustext message.  May be used to reassemble a logical long-statustext message from a sequence of chunks.  A value of zero indicates this is the only chunk in the sequence and the message can be emitted immediately.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">chunk_seq<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>This chunk's sequence number; indexing is from zero.  Any null character in the text field is taken to mean this was the last chunk.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="DEBUG">DEBUG (<a href="#DEBUG">
@@ -30704,47 +30728,6 @@
       </a>
      </td>
      <td>Altitude of center point. Coordinate system depends on frame field.</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="STATUSTEXT_LONG">STATUSTEXT_LONG (<a href="#STATUSTEXT_LONG">
-    #365
-   </a>
-   )
-  </h3>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Status text message (use only for important status and error messages). The full message payload can be used for status text, but we recommend that updates be kept concise. Note: The message is intended as a less restrictive replacement for STATUSTEXT.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>severity</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_SEVERITY">MAV_SEVERITY</a>
-     </td>
-     <td>Severity of status. Relies on the definitions within RFC-5424.</td>
-    </tr>
-    <tr>
-     <td>text</td>
-     <td>char[254]</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Status text message, without null termination character.</td>
     </tr>
    </tbody>
   </table>
