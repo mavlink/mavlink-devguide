@@ -46,7 +46,7 @@
      <td>
       <a href="#MAV_AUTOPILOT_ARDUPILOTMEGA">MAV_AUTOPILOT_ARDUPILOTMEGA</a>
      </td>
-     <td>ArduPilot - Plane/Copter/Rover/Sub/Tracker, http://ardupilot.org</td>
+     <td>ArduPilot - Plane/Copter/Rover/Sub/Tracker, https://ardupilot.org</td>
     </tr>
     <tr id="MAV_AUTOPILOT_OPENPILOT">
      <td>4</td>
@@ -16827,6 +16827,19 @@
      </td>
      <td>Heading / track uncertainty</td>
     </tr>
+    <tr>
+     <td style="color:blue;">yaw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t</td>
+     <td>cdeg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="GPS_STATUS">GPS_STATUS (<a href="#GPS_STATUS">
@@ -23694,6 +23707,19 @@
       </a>
      </td>
      <td>Age of DGPS info</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">yaw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t</td>
+     <td>cdeg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north.</td>
     </tr>
    </tbody>
   </table>
