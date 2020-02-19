@@ -45,8 +45,7 @@ The main installation steps are:
 
 1. Clone the [mavlink repo](https://github.com/mavlink/mavlink) (or your fork) into a user-writable directory:
    ```
-   git clone https://github.com/mavlink/mavlink.git
-   git submodule update --init --recursive
+   git clone https://github.com/mavlink/mavlink.git --recursive
    ```
    > **Note** Alternatively you can do this in one line:
      ```
