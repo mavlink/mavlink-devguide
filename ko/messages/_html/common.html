@@ -2491,10 +2491,12 @@
   <h3 id="MAV_MOUNT_MODE">
    <a href="#MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by GIMBAL_MANAGER_FLAGS (2020-01).</p>
   <p>
    <a href="#enums">
     [Enum]
-   </a>Enumeration of possible mount operation modes</p>
+   </a>Enumeration of possible mount operation modes. This message is used by obsolete/deprecated gimbal messages.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2545,6 +2547,460 @@
       <a href="#MAV_MOUNT_MODE_SYSID_TARGET">MAV_MOUNT_MODE_SYSID_TARGET</a>
      </td>
      <td>Gimbal tracks system with specified system ID</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_DEVICE_CAP_FLAGS">
+   <a href="#GIMBAL_DEVICE_CAP_FLAGS">GIMBAL_DEVICE_CAP_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal device (low level) capability flags (bitmap)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT">
+     <td>1</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT">GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT</a>
+     </td>
+     <td>Gimbal device supports a retracted position</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL">
+     <td>2</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL">GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL</a>
+     </td>
+     <td>Gimbal device supports a horizontal, forward looking position, stabilized</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS">
+     <td>4</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS">GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS</a>
+     </td>
+     <td>Gimbal device supports rotating around roll axis.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW">
+     <td>8</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW">GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW</a>
+     </td>
+     <td>Gimbal device supports to follow a roll angle relative to the vehicle</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK">
+     <td>16</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK">GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK</a>
+     </td>
+     <td>Gimbal device supports locking to an roll angle (generally that's the default with roll stabilized)</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS">
+     <td>32</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS">GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS</a>
+     </td>
+     <td>Gimbal device supports rotating around pitch axis.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW">
+     <td>64</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW">GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW</a>
+     </td>
+     <td>Gimbal device supports to follow a pitch angle relative to the vehicle</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK">
+     <td>128</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK">GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK</a>
+     </td>
+     <td>Gimbal device supports locking to an pitch angle (generally that's the default with pitch stabilized)</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS">
+     <td>256</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS">GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS</a>
+     </td>
+     <td>Gimbal device supports rotating around yaw axis.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW">
+     <td>512</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW">GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW</a>
+     </td>
+     <td>Gimbal device supports to follow a yaw angle relative to the vehicle (generally that's the default)</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK">
+     <td>1024</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK">GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK</a>
+     </td>
+     <td>Gimbal device supports locking to an absolute heading (often this is an option available)</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW">
+     <td>2048</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW">GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW</a>
+     </td>
+     <td>Gimbal device supports yawing/panning infinetely (e.g. using slip disk).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_CAP_FLAGS">
+   <a href="#GIMBAL_MANAGER_CAP_FLAGS">GIMBAL_MANAGER_CAP_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal manager high level capability flags (bitmap). The first 16 bits are identical to the GIMBAL_DEVICE_CAP_FLAGS which are identical with GIMBAL_DEVICE_FLAGS. However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT">
+     <td>1</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT">GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL">
+     <td>2</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL">GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_AXIS">
+     <td>4</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_AXIS">GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_AXIS</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_FOLLOW">
+     <td>8</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_FOLLOW">GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_FOLLOW</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_LOCK">
+     <td>16</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_LOCK">GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_LOCK</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_AXIS">
+     <td>32</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_AXIS">GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_AXIS</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_FOLLOW">
+     <td>64</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_FOLLOW">GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_FOLLOW</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_LOCK">
+     <td>128</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_LOCK">GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_LOCK</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_AXIS">
+     <td>256</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_AXIS">GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_AXIS</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_FOLLOW">
+     <td>512</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_FOLLOW">GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_FOLLOW</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_LOCK">
+     <td>1024</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_LOCK">GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_LOCK</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW">
+     <td>2048</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL">
+     <td>65536</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL">GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL</a>
+     </td>
+     <td>Gimbal manager supports to point to a local position.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL">
+     <td>131072</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL">GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL</a>
+     </td>
+     <td>Gimbal manager supports to point to a global latitude, longitude, altitude position.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT">
+     <td>262144</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT">GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT</a>
+     </td>
+     <td>Gimbal manager supports tracking of a point on the camera.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE">
+     <td>524288</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE">GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE</a>
+     </td>
+     <td>Gimbal manager supports tracking of a point on the camera.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">
+     <td>1048576</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE</a>
+     </td>
+     <td>Gimbal manager supports pitching and yawing at an angular velocity scaled by focal length (the more zoomed in, the slower the movement).</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING">
+     <td>2097152</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING</a>
+     </td>
+     <td>Gimbal manager supports nudging when pointing to a location or tracking.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE">
+     <td>4194304</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE</a>
+     </td>
+     <td>Gimbal manager supports overriding when pointing to a location or tracking.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_DEVICE_FLAGS">
+   <a href="#GIMBAL_DEVICE_FLAGS">GIMBAL_DEVICE_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags for gimbal device (lower level) operation.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GIMBAL_DEVICE_FLAGS_RETRACT">
+     <td>1</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS_RETRACT">GIMBAL_DEVICE_FLAGS_RETRACT</a>
+     </td>
+     <td>Set to retracted safe position (no stabilization), takes presedence over all other flags.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_FLAGS_NEUTRAL">
+     <td>2</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS_NEUTRAL">GIMBAL_DEVICE_FLAGS_NEUTRAL</a>
+     </td>
+     <td>Set to neutral position (horizontal, forward looking, with stabiliziation), takes presedence over all other flags except RETRACT.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_FLAGS_ROLL_LOCK">
+     <td>4</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS_ROLL_LOCK">GIMBAL_DEVICE_FLAGS_ROLL_LOCK</a>
+     </td>
+     <td>Lock roll angle to absolute angle relative to horizon (not relative to drone). This is generally the default with a stabilizing gimbal.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_FLAGS_PITCH_LOCK">
+     <td>8</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS_PITCH_LOCK">GIMBAL_DEVICE_FLAGS_PITCH_LOCK</a>
+     </td>
+     <td>Lock pitch angle to absolute angle relative to horizon (not relative to drone). This is generally the default.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_FLAGS_YAW_LOCK">
+     <td>16</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a>
+     </td>
+     <td>Lock yaw angle to absolute angle relative to North (not relative to drone). If this flag is set, the quaternion is in the Earth frame with the x-axis pointing North (yaw absolute). If this flag is not set, the quaternion frame is in the Earth frame rotated so that the x-axis is pointing forward (yaw relative to vehicle).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_FLAGS">
+   <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags for high level gimbal manager operation The first 16 bytes are identical to the GIMBAL_DEVICE_FLAGS.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GIMBAL_MANAGER_FLAGS_RETRACT">
+     <td>1</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_RETRACT">GIMBAL_MANAGER_FLAGS_RETRACT</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_RETRACT</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_NEUTRAL">
+     <td>2</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_NEUTRAL">GIMBAL_MANAGER_FLAGS_NEUTRAL</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_NEUTRAL</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_ROLL_LOCK">
+     <td>4</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_ROLL_LOCK">GIMBAL_MANAGER_FLAGS_ROLL_LOCK</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_ROLL_LOCK</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_PITCH_LOCK">
+     <td>8</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_PITCH_LOCK">GIMBAL_MANAGER_FLAGS_PITCH_LOCK</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_PITCH_LOCK</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_YAW_LOCK">
+     <td>16</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_YAW_LOCK">GIMBAL_MANAGER_FLAGS_YAW_LOCK</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_YAW_LOCK</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH">
+     <td>1048576</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH">GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH</a>
+     </td>
+     <td>Scale angular velocity relative to focal length. This means the gimbal moves slower if it is zoomed in.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_NUDGE">
+     <td>2097152</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_NUDGE">GIMBAL_MANAGER_FLAGS_NUDGE</a>
+     </td>
+     <td>Interpret attitude control on top of pointing to a location or tracking. If this flag is set, the quaternion is relative to the existing tracking angle.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_OVERRIDE">
+     <td>4194304</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_OVERRIDE">GIMBAL_MANAGER_FLAGS_OVERRIDE</a>
+     </td>
+     <td>Completely override pointing to a location or tracking. If this flag is set, the quaternion is (as usual) according to GIMBAL_MANAGER_FLAGS_YAW_LOCK.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_DEVICE_ERROR_FLAGS">
+   <a href="#GIMBAL_DEVICE_ERROR_FLAGS">GIMBAL_DEVICE_ERROR_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal device (low level) error flags (bitmap, 0 means no error)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT">
+     <td>1</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT">GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT</a>
+     </td>
+     <td>Gimbal device is limited by hardware roll limit.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT">
+     <td>2</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT">GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT</a>
+     </td>
+     <td>Gimbal device is limited by hardware pitch limit.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT">
+     <td>4</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT">GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT</a>
+     </td>
+     <td>Gimbal device is limited by hardware yaw limit.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR">
+     <td>8</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal encoders.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR">
+     <td>16</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal power source.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR">
+     <td>32</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal motor's.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR">
+     <td>64</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal's software.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR">
+     <td>128</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal's communication.</td>
     </tr>
    </tbody>
   </table>
@@ -9394,7 +9850,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+   </a>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11410,42 +11866,54 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Sets the region of interest (ROI) to a location. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+   </a>Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
-     <td>1</td>
-     <td>Empty</td>
+     <td>1: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
-     <td>Latitude</td>
+     <td>5: Latitude</td>
+     <td>Latitude of ROI location</td>
+     <td>degE7</td>
     </tr>
     <tr>
-     <td>6</td>
-     <td>Longitude</td>
+     <td>6: Longitude</td>
+     <td>Longitude of ROI location</td>
+     <td>degE7</td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude</td>
+     <td>7: Altitude</td>
+     <td>Altitude of ROI location</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -11455,7 +11923,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+   </a>Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11465,8 +11933,8 @@
    </thead>
    <tbody>
     <tr>
-     <td>1</td>
-     <td>Empty</td>
+     <td>1: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
     </tr>
     <tr>
      <td>2</td>
@@ -11482,15 +11950,15 @@
     </tr>
     <tr>
      <td>5: Pitch Offset</td>
-     <td>pitch offset from next waypoint</td>
+     <td>Pitch offset from next waypoint, positive tilting up</td>
     </tr>
     <tr>
      <td>6: Roll Offset</td>
-     <td>roll offset from next waypoint</td>
+     <td>roll offset from next waypoint, positive banking to the right</td>
     </tr>
     <tr>
      <td>7: Yaw Offset</td>
-     <td>yaw offset from next waypoint</td>
+     <td>yaw offset from next waypoint, positive panning to the right</td>
     </tr>
    </tbody>
   </table>
@@ -11500,7 +11968,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+   </a>Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message. After this command the gimbal manager should go back to manual input if available, and otherwise assume a neutral position.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11510,8 +11978,8 @@
    </thead>
    <tbody>
     <tr>
-     <td>1</td>
-     <td>Empty</td>
+     <td>1: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
     </tr>
     <tr>
      <td>2</td>
@@ -11545,7 +12013,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Mount tracks system with specified system ID. Determination of target vehicle position may be done with GLOBAL_POSITION_INT or any other means.</p>
+   </a>Mount tracks system with specified system ID. Determination of target vehicle position may be done with GLOBAL_POSITION_INT or any other means. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11560,6 +12028,12 @@
      <td>sysid</td>
      <td>
       <em>min:</em>1 <em>max:</em>255 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>2: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -11647,7 +12121,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+   </a>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11881,6 +12355,11 @@
   <h3 id="MAV_CMD_DO_MOUNT_CONTROL">MAV_CMD_DO_MOUNT_CONTROL (<a href="#MAV_CMD_DO_MOUNT_CONTROL">205</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).
+
+
+  This message is ambiguous and inconsistent. It has been superseded by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE and MAV_CMD_DO_SET_ROI_*. The message can still be used to communicate with legacy gimbals implementing it.</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -12430,6 +12909,8 @@
   <h3 id="MAV_CMD_DO_MOUNT_CONTROL_QUAT">MAV_CMD_DO_MOUNT_CONTROL_QUAT (<a href="#MAV_CMD_DO_MOUNT_CONTROL_QUAT">220</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -13890,6 +14371,162 @@
      <td>Repeat count.</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE">MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE">1000</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>High level setpoint to be sent to a gimbal manager to set a gimbal attitude. It is possible to set combinations of the values below. E.g. an angle as well as a desired angular rate can be used to get to this angle at a certain angular rate, or an angular rate only will result in continuous turning. NaN is to be used to signal unset. Note: a gimbal is never to react to this command but only the gimbal manager.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Tilt angular rate</td>
+     <td>Tilt/pitch angular rate (positive to point up).</td>
+     <td>
+     </td>
+     <td>deg/s</td>
+    </tr>
+    <tr>
+     <td>2: Pan angular rate</td>
+     <td>Pan/yaw angular rate (positive to pan to the right).</td>
+     <td>
+     </td>
+     <td>deg/s</td>
+    </tr>
+    <tr>
+     <td>3: Tilt angle</td>
+     <td>Pitch/tilt angle relative to world horizon (negative is to tilt down, positive to tilt up).</td>
+     <td>
+      <em>min:</em>
+      -180 
+      <em>max:</em>180 </td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>4: Pan angle</td>
+     <td>Yaw/pan angle (positive is pan to the right, relative to vehicle for PAN mode, absolute to North for HOLD mode)</td>
+     <td>
+      <em>min:</em>
+      -180 
+      <em>max:</em>180 </td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>5: Gimbal manager flags</td>
+     <td>Gimbal manager flags to use.</td>
+     <td>GIMBAL_MANAGER_FLAGS</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT">MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT">1001</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>If the gimbal manager supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Point x</td>
+     <td>Point to track x value.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>2: Point y</td>
+     <td>Point to track y value.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>7: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE">MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE">1002</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>If the gimbal supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Top left corner x</td>
+     <td>Top left corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>2: Top left corner y</td>
+     <td>Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>3: Bottom right corner x</td>
+     <td>Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>4: Bottom right corner y</td>
+     <td>Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>7: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -28480,6 +29117,11 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).
+
+
+  This message is being superseded by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE. The message can still be used to communicate with legacy gimbals implementing it.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -28954,6 +29596,698 @@
       </a>
      </td>
      <td>Horizontal Field of view</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_INFORMATION">GIMBAL_MANAGER_INFORMATION (<a href="#GIMBAL_MANAGER_INFORMATION">
+    #280
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about a high level gimbal manager. This message should be requested by a ground station using MAV_CMD_REQUEST_MESSAGE.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>cap_flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS">GIMBAL_MANAGER_CAP_FLAGS</a>
+     </td>
+     <td>Bitmap of gimbal capability flags.</td>
+    </tr>
+    <tr>
+     <td>gimbal_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Gimbal component ID that this gimbal manager is responsible for.</td>
+    </tr>
+    <tr>
+     <td>tilt_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum tilt/pitch angle (positive: up, negative: down)</td>
+    </tr>
+    <tr>
+     <td>tilt_min</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum tilt/pitch angle (positive: up, negative: down)</td>
+    </tr>
+    <tr>
+     <td>tilt_rate_max</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum tilt/pitch angular rate (positive: up, negative: down)</td>
+    </tr>
+    <tr>
+     <td>pan_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum pan/yaw angle (positive: to the right, negative: to the left)</td>
+    </tr>
+    <tr>
+     <td>pan_min</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum pan/yaw angle (positive: to the right, negative: to the left)</td>
+    </tr>
+    <tr>
+     <td>pan_rate_max</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum pan/yaw angular rate (positive: to the right, negative: to the left)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_STATUS">GIMBAL_MANAGER_STATUS (<a href="#GIMBAL_MANAGER_STATUS">
+    #281
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Current status about a high level gimbal manager. This message should be broadcast at a low regular rate (e.g. 5Hz).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
+     </td>
+     <td>High level gimbal manager flags currently applied.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_SET_ATTITUDE">GIMBAL_MANAGER_SET_ATTITUDE (<a href="#GIMBAL_MANAGER_SET_ATTITUDE">
+    #282
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>High level message to control a gimbal's attitude. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
+     </td>
+     <td>High level gimbal manager flags to use.</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation, the frame is depends on whether the flag GIMBAL_MANAGER_FLAGS_YAW_LOCK is set)</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_x</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X component of angular velocity, positive is banking to the right, NaN to be ignored.</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_y</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y component of angular velocity, positive is tilting up, NaN to be ignored.</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_z</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z component of angular velocity, positive is panning to the right, NaN to be ignored.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_DEVICE_INFORMATION">GIMBAL_DEVICE_INFORMATION (<a href="#GIMBAL_DEVICE_INFORMATION">
+    #283
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about a low level gimbal. This message should be requested by the gimbal manager or a ground station using MAV_CMD_REQUEST_MESSAGE.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>vendor_name</td>
+     <td>uint8_t[32]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Name of the gimbal vendor</td>
+    </tr>
+    <tr>
+     <td>model_name</td>
+     <td>uint8_t[32]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Name of the gimbal model</td>
+    </tr>
+    <tr>
+     <td>firmware_version</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Version of the gimbal firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+    </tr>
+    <tr>
+     <td>cap_flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS">GIMBAL_DEVICE_CAP_FLAGS</a>
+     </td>
+     <td>Bitmap of gimbal capability flags.</td>
+    </tr>
+    <tr>
+     <td>tilt_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum tilt/pitch angle (positive: up, negative: down)</td>
+    </tr>
+    <tr>
+     <td>tilt_min</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum tilt/pitch angle (positive: up, negative: down)</td>
+    </tr>
+    <tr>
+     <td>tilt_rate_max</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum tilt/pitch angular rate (positive: up, negative: down)</td>
+    </tr>
+    <tr>
+     <td>pan_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum pan/yaw angle (positive: to the right, negative: to the left)</td>
+    </tr>
+    <tr>
+     <td>pan_min</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum pan/yaw angle (positive: to the right, negative: to the left)</td>
+    </tr>
+    <tr>
+     <td>pan_rate_max</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum pan/yaw angular rate (positive: to the right, negative: to the left)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_DEVICE_SET_ATTITUDE">GIMBAL_DEVICE_SET_ATTITUDE (<a href="#GIMBAL_DEVICE_SET_ATTITUDE">
+    #284
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Low level message to control a gimbal device's attitude. This message is to be sent from the gimbal manager to the gimbal device component. Angles and rates can be set to NaN according to use case.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS">GIMBAL_DEVICE_FLAGS</a>
+     </td>
+     <td>Low level gimbal flags.</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation, the frame is depends on whether the flag GIMBAL_DEVICE_FLAGS_YAW_LOCK is set, set all fields to NaN if only angular velocity should be used)</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_x</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X component of angular velocity, positive is banking to the right, NaN to be ignored.</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_y</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y component of angular velocity, positive is tilting up, NaN to be ignored.</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_z</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z component of angular velocity, positive is panning to the right, NaN to be ignored.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_DEVICE_ATTITUDE_STATUS">GIMBAL_DEVICE_ATTITUDE_STATUS (<a href="#GIMBAL_DEVICE_ATTITUDE_STATUS">
+    #285
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Message reporting the status of a gimbal device. This message should be broadcasted by a gimbal device component. The angles encoded in the quaternion are in the global frame (roll: positive is tilt to the right, pitch: positive is tilting up, yaw is turn to the right). This message should be broadcast at a low regular rate (e.g. 10Hz).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS">GIMBAL_DEVICE_FLAGS</a>
+     </td>
+     <td>Current gimbal flags set.</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation, the frame is depends on whether the flag GIMBAL_DEVICE_FLAGS_YAW_LOCK is set)</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_x</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X component of angular velocity (NaN if unknown)</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_y</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y component of angular velocity (NaN if unknown)</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_z</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z component of angular velocity (NaN if unknown)</td>
+    </tr>
+    <tr>
+     <td>failure_flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS">GIMBAL_DEVICE_ERROR_FLAGS</a>
+     </td>
+     <td>Failure flags (0 for no failure)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AUTOPILOT_STATE_FOR_GIMBAL_DEVICE">AUTOPILOT_STATE_FOR_GIMBAL_DEVICE (<a href="#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE">
+    #286
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Low level message containing autopilot state relevant for a gimbal device. This message is to be sent from the gimbal manager to the gimbal device component. The data of this message server for the gimbal's estimator corrections in particular horizon compensation, as well as the autopilot's control intention e.g. feed forward angular control in z-axis.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_us</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>Quaternion components of autopilot attitude: w, x, y, z (1 0 0 0 is the null-rotation, Hamiltonian convention).</td>
+    </tr>
+    <tr>
+     <td>q_estimated_delay_us</td>
+     <td>uint32_t</td>
+     <td>us</td>
+     <td>Estimated delay of the attitude data.</td>
+    </tr>
+    <tr>
+     <td>vx</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>X Speed in NED (North, East, Down).</td>
+    </tr>
+    <tr>
+     <td>vy</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Y Speed in NED (North, East, Down).</td>
+    </tr>
+    <tr>
+     <td>vz</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Z Speed in NED (North, East, Down).</td>
+    </tr>
+    <tr>
+     <td>v_estimated_delay_us</td>
+     <td>uint32_t</td>
+     <td>us</td>
+     <td>Estimated delay of the speed data.</td>
+    </tr>
+    <tr>
+     <td>feed_forward_angular_velocity_z</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Feed forward Z component of angular velocity, positive is yawing to the right, NaN to be ignored. This is to indicate if the autopilot is actively yawing.</td>
     </tr>
    </tbody>
   </table>
