@@ -59,10 +59,8 @@ Enum | Description
 
 ## Sequences
 
-<!-- Test sequences using https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IE1hbmFnZXJcbiAgICBwYXJ0aWNpcGFudCBHaW1iYWxcbiAgICBHQ1MtPj5NYW5hZ2VyOiBNQVZfQ01EX0RPX1NFVF9ST0lfTE9DQVRJT05cbiAgICBHQ1MtPj5NYW5hZ2VyOiBTdGFydCB0aW1lb3V0XG4gICAgTWFuYWdlci0-PkdDUzogQ09NTUFORF9BQ0tcbiAgICBNYW5hZ2VyLT4-R2ltYmFsOiBHSU1CQUxfREVWSUNFX1NFVF9BVFRJVFVERSAoc3RyZWFtKVxuICAgIEdpbWJhbC0-Pk1hbmFnZXI6IEdJTUJBTF9ERVZJQ0VfQVRUSVRVREVfU1RBVFVTIChzdHJlYW0pXG5cbiAgICAiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ 
-
+<!--
 {% mermaid %}
-sequenceDiagram;
 sequenceDiagram;
     participant GCS
     participant Manager
