@@ -13,7 +13,8 @@ To support easy data transfers to/from a drone ID transmitter/receiver, MAVLink 
 There are multiple possible use cases for the Mavlink drone ID messages:
 * A flight controller sends ID, location etc. data to an onboard Bluetooth/WiFi transmitter module.
 * An onboard Bluetooth/WiFi receiver module picks up ASTM drone ID messages from surrounding aircrafts, relays this information using Mavlink drone ID messages to the flight controller, which then uses the information e.g. for detect-and-avoid calculations.
-* A drone sends Mavlink drone ID messages via it's control link to the ground control station. The ground control station is connected via the internet to a Remote ID server, which stores and publishes the drone's location etc.
+* A drone sends MAVLink drone ID messages via it's control link to the ground control station.
+  The ground control station is connected via the Internet to a Remote ID server, which stores and publishes the drone's location etc.
 * As above but in the other direction for detect-and-avoid calculations.
 
 The ASTM/MAVLink messages are listed below.
@@ -40,4 +41,4 @@ The ASTM Remote ID standard does not impose any requirements for a drone to be c
 
 An example Android receiver implementation for broadcast ASTM drone ID messages is available here: [OpenDroneID Android receiver application](https://github.com/opendroneid/receiver-android).
 
- Code related to (internet) Network Remote ID can be found in the [InterUSS Project](https://github.com/interuss) and https://github.com/uastech/standards (Unofficial reference for UAS-related APIs).
+ Code related to (Internet) Network Remote ID can be found in the [InterUSS Project](https://github.com/interuss) and https://github.com/uastech/standards (Unofficial reference for UAS-related APIs).
