@@ -1,4 +1,7 @@
-# Open Drone ID
+# Open Drone ID (WIP)
+
+> **Note** The Open Drone ID messages are tagged in the definition file as "work in progress".
+  They may still change and should not be used in production environments.
 
 The ASTM Remote ID standard has been defined to specify how drones can publish their ID, location, altitude etc. either via direct broadcast, Bluetooth or WiFi NaN (Neighbor aware Network), or via an internet connection to a Remote ID server.
 
