@@ -7,9 +7,11 @@
 > **Note** This version supersedes [Gimbal Protocol v1](../services/gimbal.md)
 
 ## Introduction
-The "new" gimbal protocol was developed due to [various issues identified](https://docs.google.com/document/d/16pekKRXLN2FhlL9YNFP983cjfBKAsDwN0gOSks8USo4/edit#heading=h.e9jccepe95ds) with the existing protocol. The main issues were the overall coordination of gimbal inputs and lack of specification, either due to missing functionality or insufficient specification.
 
-The first issue is addressed using the concept of gimbal manager and gimbal device, the second by new messages, as well as this documentation.
+Gimbal protocol v2 was developed due to [various issues](../services/gimbal.md#known_issues) with the version 1.
+The main issues were the overall coordination of gimbal inputs, unclear specification and missing functionality.
+
+The issues have been addressed using the concept of gimbal manager and gimbal device, along with new messages to support these concepts and additional required functionality. 
 
 ## Concepts
 
@@ -33,37 +35,33 @@ Below are three common hardware set-ups as anticipated:
 
 In this set-up the autopilot takes the role of the gimbal manager.
 
-<!--
-{% mermaid %}
+<!-- Mermaid graph: 
 graph LR
 	ap["Autopilot (Gimbal Manager)"]
 	g["Gimbal Device"]
 	gcs["Ground Station"]
-	ap -->|"GIMBAL_DEVICE_SET_ATTITUE"| g
-	g -->|"GIMBAL_DEVICE_ATTITUDE_STATUS<br/>GIMBAL_DEVICE_INFORMATION"| ap
-	gcs -->|"GIMBAL_MANAGER_SET_ATTITUDE"| ap
-	ap -->|"GIMBAL_DEVICE_ATTITUDE_STATUS<br/>GIMBAL_MANAGER_INFORMATION<br/>GIMBAL_MANAGER_STATUS"| gcs
-{% endmermaid %}
+	ap -- >|"GIMBAL_DEVICE_SET_ATTITUDE"| g
+	g -- >|"GIMBAL_DEVICE_ATTITUDE_STATUS<br/>GIMBAL_DEVICE_INFORMATION"| ap
+	gcs -- >|"GIMBAL_MANAGER_SET_ATTITUDE"| ap
+	ap -- >|"GIMBAL_DEVICE_ATTITUDE_STATUS<br/>GIMBAL_MANAGER_INFORMATION<br/>GIMBAL_MANAGER_STATUS"| gcs
 -->
 
-[![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3QgKEdpbWJhbCBNYW5hZ2VyKVwiXVxuXHRnW1wiR2ltYmFsIERldmljZVwiXVxuXHRnY3NbXCJHcm91bmQgU3RhdGlvblwiXVxuXHRhcCAtLT58R0lNQkFMX0RFVklDRV9TRVRfQVRUSVRVRXwgZ1xuXHRnIC0tPnxHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVUzxici8-R0lNQkFMX0RFVklDRV9JTkZPUk1BVElPTnwgYXBcblx0Z2NzIC0tPnxHSU1CQUxfTUFOQUdFUl9TRVRfQVRUSVRVREV8IGFwXG5cdGFwIC0tPnxHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVUzxici8-R0lNQkFMX01BTkFHRVJfSU5GT1JNQVRJT048YnIvPkdJTUJBTF9NQU5BR0VSX1NUQVRVU3wgZ2NzXHRcdFx0XHQiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3QgKEdpbWJhbCBNYW5hZ2VyKVwiXVxuXHRnW1wiR2ltYmFsIERldmljZVwiXVxuXHRnY3NbXCJHcm91bmQgU3RhdGlvblwiXVxuXHRhcCAtLT58R0lNQkFMX0RFVklDRV9TRVRfQVRUSVRVRXwgZ1xuXHRnIC0tPnxHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVUzxici8-R0lNQkFMX0RFVklDRV9JTkZPUk1BVElPTnwgYXBcblx0Z2NzIC0tPnxHSU1CQUxfTUFOQUdFUl9TRVRfQVRUSVRVREV8IGFwXG5cdGFwIC0tPnxHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVUzxici8-R0lNQkFMX01BTkFHRVJfSU5GT1JNQVRJT048YnIvPkdJTUJBTF9NQU5BR0VSX1NUQVRVU3wgZ2NzXHRcdFx0XHQiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+[![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3QgKEdpbWJhbCBNYW5hZ2VyKVwiXVxuXHRnW1wiR2ltYmFsIERldmljZVwiXVxuXHRnY3NbXCJHcm91bmQgU3RhdGlvblwiXVxuXHRhcCAtLT58R0lNQkFMX0RFVklDRV9TRVRfQVRUSVRVREV8IGdcblx0ZyAtLT58R0lNQkFMX0RFVklDRV9BVFRJVFVERV9TVEFUVVM8YnIvPkdJTUJBTF9ERVZJQ0VfSU5GT1JNQVRJT058IGFwXG5cdGdjcyAtLT58R0lNQkFMX01BTkFHRVJfU0VUX0FUVElUVURFfCBhcFxuXHRhcCAtLT58R0lNQkFMX0RFVklDRV9BVFRJVFVERV9TVEFUVVM8YnIvPkdJTUJBTF9NQU5BR0VSX0lORk9STUFUSU9OPGJyLz5HSU1CQUxfTUFOQUdFUl9TVEFUVVN8IGdjc1x0XHRcdFx0IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3QgKEdpbWJhbCBNYW5hZ2VyKVwiXVxuXHRnW1wiR2ltYmFsIERldmljZVwiXVxuXHRnY3NbXCJHcm91bmQgU3RhdGlvblwiXVxuXHRhcCAtLT58R0lNQkFMX0RFVklDRV9TRVRfQVRUSVRVREV8IGdcblx0ZyAtLT58R0lNQkFMX0RFVklDRV9BVFRJVFVERV9TVEFUVVM8YnIvPkdJTUJBTF9ERVZJQ0VfSU5GT1JNQVRJT058IGFwXG5cdGdjcyAtLT58R0lNQkFMX01BTkFHRVJfU0VUX0FUVElUVURFfCBhcFxuXHRhcCAtLT58R0lNQkFMX0RFVklDRV9BVFRJVFVERV9TVEFUVVM8YnIvPkdJTUJBTF9NQU5BR0VSX0lORk9STUFUSU9OPGJyLz5HSU1CQUxfTUFOQUdFUl9TVEFUVVN8IGdjc1x0XHRcdFx0IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
 
-#### Standalone integrated camera/gimbal
+#### Standalone Integrated Camera/Gimbal
 
 In this set-up the integrated camera/gimbal itself can be the gimbal manager.
 Therefore, the gimbal device and the gimbal manager are implemented in the same place and the messages between gimbal manager and gimbal device are not visible outside, or don't need to be implemented at all.
 
-<!--
-{% mermaid %}
+<!-- Mermaid graph: 
 graph LR
 	ap["Autopilot"]
 	g["Camera / Gimbal (Gimbal Manager)"]
 	gcs["Ground Station"]
-	ap -->|"DO_GIMBAL_MANAGER_ATTITUDE<br/>DO_SET_ROI_LOCATION<br/>(commands in mission)"| g
-	g -->|GIMBAL_DEVICE_ATTITUDE_STATUS<br/>GIMBAL_MANAGER_INFORMATION<br/>GIMBAL_MANAGER_STATUS| ap
-	g -->|GIMBAL_DEVICE_ATTITUDE_STATUS<br/>GIMBAL_MANAGER_INFORMATION<br/>GIMBAL_MANAGER_STATUS| gcs
-	gcs -->|GIMBAL_MANAGER_SET_ATTITUDE|g
-{% endmermaid %}
+	ap -- >|"DO_GIMBAL_MANAGER_ATTITUDE<br/>DO_SET_ROI_LOCATION<br/>(commands in mission)"| g
+	g -- >|GIMBAL_DEVICE_ATTITUDE_STATUS<br/>GIMBAL_MANAGER_INFORMATION<br/>GIMBAL_MANAGER_STATUS| ap
+	g -- >|GIMBAL_DEVICE_ATTITUDE_STATUS<br/>GIMBAL_MANAGER_INFORMATION<br/>GIMBAL_MANAGER_STATUS| gcs
+	gcs -- >|GIMBAL_MANAGER_SET_ATTITUDE|g
 -->
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3RcIl1cblx0Z1tcIkNhbWVyYSAvIEdpbWJhbCAoR2ltYmFsIE1hbmFnZXIpXCJdXG5cdGdjc1tcIkdyb3VuZCBTdGF0aW9uXCJdXG5cdGFwIC0tPnxcIkRPX0dJTUJBTF9NQU5BR0VSX0FUVElUVURFPGJyLz5ET19TRVRfUk9JX0xPQ0FUSU9OPGJyLz4oY29tbWFuZHMgaW4gbWlzc2lvbilcInwgZ1xuXHRnIC0tPnxHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVUzxici8-R0lNQkFMX01BTkFHRVJfSU5GT1JNQVRJT048YnIvPkdJTUJBTF9NQU5BR0VSX1NUQVRVU3wgYXBcblx0ZyAtLT58R0lNQkFMX0RFVklDRV9BVFRJVFVERV9TVEFUVVM8YnIvPkdJTUJBTF9NQU5BR0VSX0lORk9STUFUSU9OPGJyLz5HSU1CQUxfTUFOQUdFUl9TVEFUVVN8IGdjc1xuXHRnY3MgLS0-fEdJTUJBTF9NQU5BR0VSX1NFVF9BVFRJVFVERXxnIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3RcIl1cblx0Z1tcIkNhbWVyYSAvIEdpbWJhbCAoR2ltYmFsIE1hbmFnZXIpXCJdXG5cdGdjc1tcIkdyb3VuZCBTdGF0aW9uXCJdXG5cdGFwIC0tPnxcIkRPX0dJTUJBTF9NQU5BR0VSX0FUVElUVURFPGJyLz5ET19TRVRfUk9JX0xPQ0FUSU9OPGJyLz4oY29tbWFuZHMgaW4gbWlzc2lvbilcInwgZ1xuXHRnIC0tPnxHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVUzxici8-R0lNQkFMX01BTkFHRVJfSU5GT1JNQVRJT048YnIvPkdJTUJBTF9NQU5BR0VSX1NUQVRVU3wgYXBcblx0ZyAtLT58R0lNQkFMX0RFVklDRV9BVFRJVFVERV9TVEFUVVM8YnIvPkdJTUJBTF9NQU5BR0VSX0lORk9STUFUSU9OPGJyLz5HSU1CQUxfTUFOQUdFUl9TVEFUVVN8IGdjc1xuXHRnY3MgLS0-fEdJTUJBTF9NQU5BR0VSX1NFVF9BVFRJVFVERXxnIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
@@ -74,27 +72,25 @@ graph LR
 In this set-up the gimbal manager can be on the onboard computer.
 For this case all commands for gimbal manager need to be sent to the gimbal manager (in this case the companion computer), and the messages to the gimbal device need to be sent/routed to the autopilot.
 
-<!--
-{% mermaid %}
+<!-- Mermaid graph: 
 graph LR
 	ap["Autopilot"]
 	cc["Companion (Gimbal Manager)"]
 	g["Gimbal Device"]
 	gcs["Ground Station"]
-	ap -->|GIMBAL_DEVICE_SET_ATTITUDE|g
-	g -->|GIMBAL_DEVICE_ATTITUDE_STATUS|ap
-	ap -->|"DO_GIMBAL_MANAGER_ATTITUDE<br/>DO_SET_ROI_LOCATION<br/>(commands in mission)"| cc
-	ap -->|GIMBAL_DEVICE_ATTITUDE_STATUS|cc
-	gcs -->|GIMBAL_MANAGER_SET_ATTITUDE|cc
-	cc -->|GIMBAL_MANAGER_INFORMATION<br/>GIMBAL_MANAGER_STATUS<br/>GIMBAL_DEVICE_ATTITUDE_STATUS|gcs
-	cc -->|GIMBAL_DEVICE_SET_ATTITUDE|ap
-{% endmermaid %}
+	ap -- >|GIMBAL_DEVICE_SET_ATTITUDE|g
+	g -- >|GIMBAL_DEVICE_ATTITUDE_STATUS|ap
+	ap -- >|"DO_GIMBAL_MANAGER_ATTITUDE<br/>DO_SET_ROI_LOCATION<br/>(commands in mission)"| cc
+	ap -- >|GIMBAL_DEVICE_ATTITUDE_STATUS|cc
+	gcs -- >|GIMBAL_MANAGER_SET_ATTITUDE|cc
+	cc -- >|GIMBAL_MANAGER_INFORMATION<br/>GIMBAL_MANAGER_STATUS<br/>GIMBAL_DEVICE_ATTITUDE_STATUS|gcs
+	cc -- >|GIMBAL_DEVICE_SET_ATTITUDE|ap
 -->
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3RcIl1cblx0Y2NbXCJDb21wYW5pb24gKEdpbWJhbCBNYW5hZ2VyKVwiXVxuXHRnW1wiR2ltYmFsIERldmljZVwiXVxuXHRnY3NbXCJHcm91bmQgU3RhdGlvblwiXVxuXHRhcCAtLT58R0lNQkFMX0RFVklDRV9TRVRfQVRUSVRVREV8Z1xuXHRnIC0tPnxHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVU3xhcFxuXHRhcCAtLT58XCJET19HSU1CQUxfTUFOQUdFUl9BVFRJVFVERTxici8-RE9fU0VUX1JPSV9MT0NBVElPTjxici8-KGNvbW1hbmRzIGluIG1pc3Npb24pXCJ8IGNjXG5cdGFwIC0tPnxHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVU3xjY1xuXHRnY3MgLS0-fEdJTUJBTF9NQU5BR0VSX1NFVF9BVFRJVFVERXxjY1xuXHRjYyAtLT58R0lNQkFMX01BTkFHRVJfSU5GT1JNQVRJT048YnIvPkdJTUJBTF9NQU5BR0VSX1NUQVRVUzxici8-R0lNQkFMX0RFVklDRV9BVFRJVFVERV9TVEFUVVN8Z2NzXG5cdGNjIC0tPnxHSU1CQUxfREVWSUNFX1NFVF9BVFRJVFVERXxhcCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3RcIl1cblx0Y2NbXCJDb21wYW5pb24gKEdpbWJhbCBNYW5hZ2VyKVwiXVxuXHRnW1wiR2ltYmFsIERldmljZVwiXVxuXHRnY3NbXCJHcm91bmQgU3RhdGlvblwiXVxuXHRhcCAtLT58R0lNQkFMX0RFVklDRV9TRVRfQVRUSVRVREV8Z1xuXHRnIC0tPnxHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVU3xhcFxuXHRhcCAtLT58XCJET19HSU1CQUxfTUFOQUdFUl9BVFRJVFVERTxici8-RE9fU0VUX1JPSV9MT0NBVElPTjxici8-KGNvbW1hbmRzIGluIG1pc3Npb24pXCJ8IGNjXG5cdGFwIC0tPnxHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVU3xjY1xuXHRnY3MgLS0-fEdJTUJBTF9NQU5BR0VSX1NFVF9BVFRJVFVERXxjY1xuXHRjYyAtLT58R0lNQkFMX01BTkFHRVJfSU5GT1JNQVRJT048YnIvPkdJTUJBTF9NQU5BR0VSX1NUQVRVUzxici8-R0lNQkFMX0RFVklDRV9BVFRJVFVERV9TVEFUVVN8Z2NzXG5cdGNjIC0tPnxHSU1CQUxfREVWSUNFX1NFVF9BVFRJVFVERXxhcCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
 
-### Message flow:
+### Message flow
 
 The ground station or any other user facing API such as an SDK are never to send messages directly to the gimbal device but always to the gimbal manager.
 However, the gimbal can and should broadcast its status to everyone, not just the gimbal manager.
@@ -107,22 +103,17 @@ Multiple gimbals per drone are supported.
 
 #### Component IDs
 
-There are multiple component IDs for gimbal devices:
-- `MAV_COMP_ID_GIMBAL`
-- `MAV_COMP_ID_GIMBAL2`
-- `MAV_COMP_ID_GIMBAL3`
-- `MAV_COMP_ID_GIMBAL4`
-- `MAV_COMP_ID_GIMBAL5`
-- `MAV_COMP_ID_GIMBAL6`
+Multiple component IDs are reserved for gimbal devices: `MAV_COMP_ID_GIMBAL`, `MAV_COMP_ID_GIMBAL2`, `MAV_COMP_ID_GIMBAL3`, `MAV_COMP_ID_GIMBAL4`, `MAV_COMP_ID_GIMBAL5`, `MAV_COMP_ID_GIMBAL6`.
 
-It is encouraged to use one of the listed component IDs, however, other component IDs are allowed, as long as the MAV_TYPE is correctly set to MAV_TYPE_GIMBAL.
+The listed component IDs should be used where possible (other ids may be used as long as the [MAV_TYPE](../messages/common.md#MAV_TYPE) is correctly set to [MAV_TYPE_GIMBAL](../messages/common.md#MAV_TYPE_GIMBAL)).
 
-#### Mapping from gimbal managers to gimbal devices:
+#### Mapping from gimbal managers to gimbal devices
 
-Each gimbal manager needs to announce which gimbal it maps to. It is a 1:1 relationship, each gimbal manager is responsible for one gimbal device. However, multiple gimbal managers can be implemented on the same MAVLink component.
+Each gimbal manager needs to announce which gimbal it maps to.
+It is a 1:1 relationship, each gimbal manager is responsible for one gimbal device. However, multiple gimbal managers can be implemented on the same MAVLink component.
 E.g. an autopilot can implement two gimbal managers in order to control two gimbal devices.
 
-#### Addressing of gimbal devices:
+#### Addressing of gimbal devices
 
 Gimbal manager commands and messages have a param respective field to indicate the gimbal device component ID that they intend to control. However, the message needs to be sent to the gimbal manager. If all gimbal devices should be controlled this param/field can be set to 0 signalling "all".
 
@@ -132,35 +123,38 @@ Gimbal manager commands and messages have a param respective field to indicate t
 
 #### Discovery of gimbal manager
 
-A ground station should initially discover all gimbal managers by sending [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) to any sysid and compid. Every gimbal manager should respond with [GIMBAL_MANAGER_INFORMATION](../messages/common.md#GIMBAL_MANAGER_INFORMATION).
+A ground station should initially discover all gimbal managers by sending [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) to any sysid and compid. Every gimbal manager should respond with [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
 
-The [GIMBAL_MANAGER_INFORMATION](../messages/common.md#GIMBAL_MANAGER_INFORMATION) contains important information such as gimbal capabitilies [GIMBAL_MANAGER_CAP_FLAGS](../messages/common.md#GIMBAL_MANAGER_CAP_FLAGS), maximum angles and angle rates, as well as the `gimbal_component` which is the component ID of the gimbal device controlled by this gimbal manager.
+The [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) contains important information such as gimbal capabitilies [GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS), maximum angles and angle rates, as well as the `gimbal_component` which is the component ID of the gimbal device controlled by this gimbal manager.
 
 #### Gimbal manager status
 
-A gimbal manager should send out [GIMBAL_MANAGER_STATUS](../messages/common.md#GIMBAL_MANAGER_STATUS) at a low regular rate (e.g. 5 Hz) to inform the ground sation about its status.
+A gimbal manager should send out [GIMBAL_MANAGER_STATUS](#GIMBAL_MANAGER_STATUS) at a low regular rate (e.g. 5 Hz) to inform the ground sation about its status.
 
 #### Manually controlling a gimbal using MAVLink
 
-A ground station can manually control a gimbal by sending [GIMBAL_MANAGER_SET_ATTITUDE](../messages/common.md#GIMBAL_MANAGER_SET_ATTITUDE). This allows controlling the gimbal with angles or angular rates or both.
+A ground station can manually control a gimbal by sending [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE). This allows controlling the gimbal with angles or angular rates or both.
 
 ### Messages between gimbal manager and gimbal device
 
 #### Discover of gimbal device
 
-The MAVlink node where the gimbal manager is implemented needs to discover gimbal devices by sending [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) to any sysid and compid. Every gimbal device should respond with [GIMBAL_DEVICE_INFORMATION]. The MAVLink node should then create as many gimbal manager instances as gimbal devices found.
+The MAVlink node where the gimbal manager is implemented needs to discover gimbal devices by sending [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) to any sysid and compid.
+Every gimbal device should respond with [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).
+The MAVLink node should then create as many gimbal manager instances as gimbal devices found.
 
 #### Control of a gimbal device
 
-To control a gimbal should use [GIMBAL_DEVICE_SET_ATTITUDE](../messages/common.md#GIMBAL_DEVICE_SET_ATTITUDE) to control set the angle and/or angular rate of the gimbal device. If the gimbal manager has multiple gimbal control inputs available it should deconflict them as explained below.
+To control a gimbal should use [GIMBAL_DEVICE_SET_ATTITUDE](#GIMBAL_DEVICE_SET_ATTITUDE) to control set the angle and/or angular rate of the gimbal device.
+If the gimbal manager has multiple gimbal control inputs available it should deconflict them as explained below.
 
 #### Autopilot state for gimbal device
 
-If the gimbal manager is implemented in the autopilot it should also send the message [AUTOPILOT_STATE_FOR_GIMBAL_DEVICE](../messages/common.md#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE). This data is required by the gimbal device's attitude estimator (horizon compensation), as well as to anticipate the vehicle's movements (e.g. the feed forward angular velocity in z-axis, so the current yaw intention).
+If the gimbal manager is implemented in the autopilot it should also send the message [AUTOPILOT_STATE_FOR_GIMBAL_DEVICE](#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE). This data is required by the gimbal device's attitude estimator (horizon compensation), as well as to anticipate the vehicle's movements (e.g. the feed forward angular velocity in z-axis, so the current yaw intention).
 
 ### Gimbal device broadcast/status messages
 
-The gimbal device should send out its attitude and status in [GIMBAL_DEVICE_ATTITUDE_STATUS](../messages/common.md#GIMBAL_DEVICE_ATTITUDE_STATUS) at a regular rate, e.g. 10 Hz. This message is a meant as broadcast, so it's not only sent to the gimbal manager but also to the ground station directly. It is the only message from gimbal device to the ground station directly.
+The gimbal device should send out its attitude and status in [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS) at a regular rate, e.g. 10 Hz. This message is a meant as broadcast, so it's not only sent to the gimbal manager but also to the ground station directly. It is the only message from gimbal device to the ground station directly.
 
 ### Gimbal manager deconfliction rules
 
@@ -169,9 +163,10 @@ This can create situations where the gimbal would receive conflicting messages f
 
 The deconfliction of various inputs is the task of the gimbal manager. The gimbal manager should implement the rules below:
 
-1. If an attitude has been set using a command ([DO_GIMBAL_MANAGER_ATTITUDE](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE), [DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION), [DO_GIMBAL_MANAGER_TRACK_POINT](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT), or [DO_GIMBAL_MANAGER_TRACK_RECTANGLE](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE) it takes precedence over any other input until a [DO_GIMBAL_MANAGER_ATTITUDE](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE) with [GIMBAL_MANAGER_FLAGS_NONE](../messages/common.md#GIMBAL_MODE_NONE) or a [DO_SET_ROI_NONE](../messages/common.md#MAV_CMD_DO_SET_ROI_NONE) is set. Commands will interfere with each other, whichever command is received last takes precedence.
-2. A gimbal angle or tracking location initiated by a command can be nudged by [GIMBAL_MANAGER_SET_ATTITUDE](../messages/common.md#GIMBAL_MANAGER_SET_ATTITUDE) if the "nudge bit" is set.
-3. A gimbal angle or tracking location initiated by a command can be overridden by [GIMBAL_MANAGER_SET_ATTITUDE](../messages/common.md#GIMBAL_MANAGER_SET_ATTITUDE) if the "override bit" is set.
+1. If an attitude has been set using a command ([DO_GIMBAL_MANAGER_ATTITUDE](#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE), [DO_SET_ROI_LOCATION](#MAV_CMD_DO_SET_ROI_LOCATION), [DO_GIMBAL_MANAGER_TRACK_POINT](#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT), or [DO_GIMBAL_MANAGER_TRACK_RECTANGLE](#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE) it takes precedence over any other input until a [DO_GIMBAL_MANAGER_ATTITUDE](#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE) with [GIMBAL_MANAGER_FLAGS_NONE](#GIMBAL_MODE_NONE) or a [DO_SET_ROI_NONE](#MAV_CMD_DO_SET_ROI_NONE) is set.
+   Commands will interfere with each other, whichever command is received last takes precedence.
+2. A gimbal angle or tracking location initiated by a command can be nudged by [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE) if the "nudge bit" is set.
+3. A gimbal angle or tracking location initiated by a command can be overridden by [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE) if the "override bit" is set.
 
 #### Nudging
 
@@ -213,8 +208,11 @@ Gimbals controlled using a protocol like PPM, PWM, SBUS or something proprietary
 
 ### What about RC (non-MAVLink) control?
 
-The autopilot needs to be configured to either accept MAVLink input (so [GIMBAL_MANAGER_SET_ATTITUDE](../messages/common.md#GIMBAL_MANAGER_SET_ATTITUDE)) or RC control. For RC control, the channels will have to be manually mapped/configured to control the gimbal.
-It is up to the gimbal manager implementation to deconflict between RC and MAVLink input. This is in the same way that also RC input to fly needs to be selected from either RC or MAVLink and is up to the implementation. The recommendation is to make it configurable using for instance a parameter.
+The autopilot needs to be configured to either accept MAVLink input (so [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE)) or RC control.
+For RC control, the channels will have to be manually mapped/configured to control the gimbal.
+It is up to the gimbal manager implementation to deconflict between RC and MAVLink input.
+This is in the same way that also RC input to fly needs to be selected from either RC or MAVLink and is up to the implementation.
+The recommendation is to make it configurable using for instance a parameter.
 
 ## Message/Command/Enum Summary
 
@@ -267,8 +265,7 @@ Enum | Description
 
 TODO: not sure if this is needed, and how?
 
-<!--
-{% mermaid %}
+<!-- Mermaid graph: 
 sequenceDiagram;
     participant GCS
     participant Manager
@@ -278,7 +275,6 @@ sequenceDiagram;
     Manager->>GCS: COMMAND_ACK
     Manager->>Gimbal: GIMBAL_DEVICE_SET_ATTITUDE (stream)
     Gimbal->>Manager: GIMBAL_DEVICE_ATTITUDE_STATUS (stream)
-{% endmermaid %}
 -->
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IE1hbmFnZXJcbiAgICBwYXJ0aWNpcGFudCBHaW1iYWxcbiAgICBHQ1MtPj5NYW5hZ2VyOiBNQVZfQ01EX0RPX1NFVF9ST0lfTE9DQVRJT05cbiAgICBHQ1MtPj5NYW5hZ2VyOiBTdGFydCB0aW1lb3V0XG4gICAgTWFuYWdlci0-PkdDUzogQ09NTUFORF9BQ0tcbiAgICBNYW5hZ2VyLT4-R2ltYmFsOiBHSU1CQUxfREVWSUNFX1NFVF9BVFRJVFVERSAoc3RyZWFtKVxuICAgIEdpbWJhbC0-Pk1hbmFnZXI6IEdJTUJBTF9ERVZJQ0VfQVRUSVRVREVfU1RBVFVTIChzdHJlYW0pXG5cbiAgICAiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9fQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IE1hbmFnZXJcbiAgICBwYXJ0aWNpcGFudCBHaW1iYWxcbiAgICBHQ1MtPj5NYW5hZ2VyOiBNQVZfQ01EX0RPX1NFVF9ST0lfTE9DQVRJT05cbiAgICBHQ1MtPj5NYW5hZ2VyOiBTdGFydCB0aW1lb3V0XG4gICAgTWFuYWdlci0-PkdDUzogQ09NTUFORF9BQ0tcbiAgICBNYW5hZ2VyLT4-R2ltYmFsOiBHSU1CQUxfREVWSUNFX1NFVF9BVFRJVFVERSAoc3RyZWFtKVxuICAgIEdpbWJhbC0-Pk1hbmFnZXI6IEdJTUJBTF9ERVZJQ0VfQVRUSVRVREVfU1RBVFVTIChzdHJlYW0pXG5cbiAgICAiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9fQ)
