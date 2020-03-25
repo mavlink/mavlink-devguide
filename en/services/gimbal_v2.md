@@ -28,6 +28,13 @@ This results in two message sets:
 
 Note that by default the gimbal manager is by default implemented by the autopilot.
 
+### Message flow
+
+The ground station or any other user facing API such as an SDK are never to send messages directly to the gimbal device but always to the gimbal manager.
+However, the gimbal can and should broadcast its status to everyone, not just the gimbal manager.
+
+> **Note** The gimbal device must act only upon gimbal device messages that come from the gimbal manager!
+
 ### Common set-ups
 
 Below are three common hardware set-ups as anticipated:
@@ -82,13 +89,6 @@ graph LR
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3RcIl1cblx0Y2NbXCJDb21wYW5pb24gKEdpbWJhbCBNYW5hZ2VyKVwiXVxuXHRnW1wiR2ltYmFsIERldmljZVwiXVxuXHRnY3NbXCJHcm91bmQgU3RhdGlvblwiXVxuXHRhcCAtLS18XCJHaW1iYWwgZGV2aWNlIG1lc3NhZ2VzXCJ8Z1xuXHRhcCAtLS18XCJHaW1iYWwgZGV2aWNlIG1lc3NhZ2VzXCJ8Y2Ncblx0Z2NzIC0tLXxcIkdpbWJhbCBtYW5hZ2VyIG1lc3NhZ2VzXCJ8Y2MiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3RcIl1cblx0Y2NbXCJDb21wYW5pb24gKEdpbWJhbCBNYW5hZ2VyKVwiXVxuXHRnW1wiR2ltYmFsIERldmljZVwiXVxuXHRnY3NbXCJHcm91bmQgU3RhdGlvblwiXVxuXHRhcCAtLS18XCJHaW1iYWwgZGV2aWNlIG1lc3NhZ2VzXCJ8Z1xuXHRhcCAtLS18XCJHaW1iYWwgZGV2aWNlIG1lc3NhZ2VzXCJ8Y2Ncblx0Z2NzIC0tLXxcIkdpbWJhbCBtYW5hZ2VyIG1lc3NhZ2VzXCJ8Y2MiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
-
-### Message flow
-
-The ground station or any other user facing API such as an SDK are never to send messages directly to the gimbal device but always to the gimbal manager.
-However, the gimbal can and should broadcast its status to everyone, not just the gimbal manager.
-
-> **Note** The gimbal device must act only upon gimbal device messages that come from the gimbal manager!
 
 ### Multiple gimbals
 
