@@ -36,7 +36,7 @@ Below are three common hardware set-ups as anticipated:
 
 In this set-up the autopilot takes the role of the gimbal manager.
 
-<!-- Mermaid graph: 
+<!-- Mermaid graph:
 graph LR
 	ap["Autopilot (Gimbal Manager)"]
 	g["Gimbal Device"]
@@ -54,7 +54,7 @@ graph LR
 In this set-up the integrated camera/gimbal itself can be the gimbal manager.
 Therefore, the gimbal device and the gimbal manager are implemented in the same place and the messages between gimbal manager and gimbal device are not visible outside, or don't need to be implemented at all.
 
-<!-- Mermaid graph: 
+<!-- Mermaid graph:
 graph LR
 	ap["Autopilot"]
 	g["Camera / Gimbal (Gimbal Manager)"]
@@ -73,7 +73,7 @@ graph LR
 In this set-up the gimbal manager can be on the onboard computer.
 For this case all commands for gimbal manager need to be sent to the gimbal manager (in this case the companion computer), and the messages to the gimbal device need to be sent/routed to the autopilot.
 
-<!-- Mermaid graph: 
+<!-- Mermaid graph:
 graph LR
 	ap["Autopilot"]
 	cc["Companion (Gimbal Manager)"]
@@ -266,7 +266,7 @@ Enum | Description
 
 TODO: not sure if this is needed, and how?
 
-<!-- Mermaid graph: 
+<!-- Mermaid graph:
 sequenceDiagram;
     participant GCS
     participant Manager
