@@ -8,10 +8,11 @@
 
 ## Introduction
 
-Gimbal protocol v2 was developed due to [various issues](../services/gimbal.md#known_issues) with the version 1.
-The main issues were the overall coordination of gimbal inputs, unclear specification and missing functionality.
+The gimbal protocol allows a pilot or operator to control the attitude/orientation of cameras (or other sensors) mounted on the drone.
+The orientation can either be controlled in real time using e.g. a joystick from a ground station, set as part of a mission, or based on tracking by a camera.
+The goal of the gimbal protocol is to enable such use cases while avoiding conflicts between the actors trying to controle it. It should also enable status information for developers, configurators, as well as users of the drone.
 
-The issues have been addressed using the concept of gimbal manager and gimbal device, along with new messages to support these concepts and additional required functionality. 
+The protocol is designed in a way to support various hardware setups and gimbal capabilities.
 
 ## Concepts
 
