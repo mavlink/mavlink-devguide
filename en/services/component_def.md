@@ -14,7 +14,7 @@ The component information contains the URL to the XML file which can be download
 
 ## Example definition file
 
-Here is an example for one param for a gimbal:
+Here is an example for one custom parameter defined for a gimbal:
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -37,9 +37,9 @@ Here is an example for one param for a gimbal:
 
 ## Parameter
 
-For the example above, the param `MAX_PAN_RATE` can be set using the `PARAM_EXT` parameter protocol (for more information, check the [camera definition](../services/camera_def.md)).
+For the example above, the parameter `MAX_PAN_RATE` can be set using the `PARAM_EXT` parameter protocol (for more information, check the [camera definition](../services/camera_def.md)).
 
 ## Compression of definition file
 
-In order to save flash space on the component and during transfer, the file can be compressed using gzip. If the URL of the definition file ends with `.xml.gz` it is the gzip compressed stream.
-(Not that only the file stream is compressed but it is not an actual zip archive like `.zip` or `.tar.gz`.
+In order to save flash space on the component and during transfer, the file can be compressed using gzip. If the URL of the definition file ends with `.xml.gz` it is the gzip compressed stream of the text file.
+(Note that only the file stream is compressed but it is not an archive like `.zip` or `.tar.gz`, so there is no folder structure.)
