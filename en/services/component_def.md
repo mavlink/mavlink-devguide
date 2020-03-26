@@ -24,7 +24,7 @@ Here is an example for one param for a gimbal:
         <vendor>Gimbal king</vendor>
     </definition>
     <parameters>
-        <parameter name="MAX_PAN_RATE" type="int32" default="" min="1" max="360" step="1">
+        <parameter name="MAX_PAN_RATE" type="int32" default="60" min="1" max="360" step="1">
             <description>Max pan angular rate in degrees per second</description>
         </parameter>
     <localization>
