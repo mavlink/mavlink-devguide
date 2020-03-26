@@ -26,9 +26,7 @@ To accommodate for gimbals with varying degrees of capabilities and various hard
 - **Gimbal Device:** the actual gimbal device, hardware and software.
 - **Gimbal Manager:** software to deconflict gimbal messages and commands from different sources, and to abstract the capabilities of the **Gimbal Device** from gimbal users.
 
-The gimbal manager and gimbal device expose respective *message sets* that can be used for: querying capabilities, publishing status, and various types of orientation/attitude control.
-The gimbal manager message set can also be used for gimbal manager discovery.
-
+The gimbal manager and gimbal device expose respective *message sets* that can be used for: gimbal manager/device discovery, querying capabilities, publishing status, and various types of orientation/attitude control.
 
 The key concept to understand is that a *Gimbal Manager* has a 1:1 relationship with a particular *Gimbal Device*, and is the only party on the MAVLink network that is allowed to directly command that device (and does so using the *Gimbal Device message set*).
 
@@ -122,8 +120,8 @@ Gimbal manager commands and messages have a param respective field to indicate t
 
 #### Discovery of gimbal manager
 
-A ground station should initially discover all gimbal managers by sending [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) to request [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) from any sysid and compid.
-Every gimbal manager should respond with [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
+A ground station should initially discover all gimbal managers by sending a broadcast [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) for [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
+Every gimbal manager should respond (with `GIMBAL_MANAGER_INFORMATION`).
 
 The [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) contains important information such as gimbal capabilities. [GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS), maximum angles and angle rates, as well as the `gimbal_component` which is the component ID of the gimbal device controlled by this gimbal manager.
 
@@ -140,8 +138,8 @@ This allows controlling the gimbal with angles, or angular rates, or both.
 
 #### Discovery of gimbal device
 
-The MAVlink node where the gimbal manager is implemented needs to discover gimbal devices by sending [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) for [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION) to any sysid and compid.
-Every gimbal device should respond with [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).
+The MAVlink node where the gimbal manager is implemented needs to discover gimbal devices by sending a broadcast [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) for [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).
+Every gimbal device should respond with `GIMBAL_DEVICE_INFORMATION`.
 
 The MAVLink node should then create as many gimbal manager instances as gimbal devices found.
 
