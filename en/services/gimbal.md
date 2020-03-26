@@ -41,6 +41,6 @@ This version of the gimbal protocol (v1) has a number of known issues:
 - Control conflicts between different sources.
   It is not clear what takes precedence and how the deconfliction between different sources and commands should be implemented.
 
-Migrate to [Gimbal Protocol v2](../services/gimbal.md) if possible, as this addresses these issues. 
+If possible migrate to [Gimbal Protocol v2](../services/gimbal.md) which addresses these issues.
 
 
