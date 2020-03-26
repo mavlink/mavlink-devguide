@@ -62,7 +62,8 @@ graph LR
 #### Standalone Integrated Camera/Gimbal
 
 In this set-up the integrated camera/gimbal itself can be the gimbal manager.
-Therefore, the gimbal device and the gimbal manager are implemented in the same place and the messages between gimbal manager and gimbal device are not visible outside, or don't need to be implemented at all.
+
+Therefore, the gimbal device interface is internal (no implementation is required).
 
 <!-- Mermaid graph:
 graph LR
@@ -76,7 +77,7 @@ graph LR
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3RcIl1cblx0Z1tcIkNhbWVyYSAvIEdpbWJhbCAoR2ltYmFsIE1hbmFnZXIpXCJdXG5cdGdjc1tcIkdyb3VuZCBTdGF0aW9uXCJdXG5cdGFwIC0tLXxcIkdpbWJhbCBtYW5hZ2VyIG1lc3NhZ2VzXCJ8IGdcblx0Z2NzIC0tLXxcIkdpbWJhbCBtYW5hZ2VyIG1lc3NhZ2VzXCJ8ZyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3RcIl1cblx0Z1tcIkNhbWVyYSAvIEdpbWJhbCAoR2ltYmFsIE1hbmFnZXIpXCJdXG5cdGdjc1tcIkdyb3VuZCBTdGF0aW9uXCJdXG5cdGFwIC0tLXxcIkdpbWJhbCBtYW5hZ2VyIG1lc3NhZ2VzXCJ8IGdcblx0Z2NzIC0tLXxcIkdpbWJhbCBtYW5hZ2VyIG1lc3NhZ2VzXCJ8ZyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
 
-#### Onboard computer with camera and gimbal conntected to autopilot
+#### Onboard computer with camera and gimbal connected to autopilot
 
 In this set-up the gimbal manager can be on the onboard computer.
 For this case all commands for gimbal manager need to be sent to the gimbal manager (in this case the companion computer), and the messages to the gimbal device need to be sent/routed to the autopilot.
@@ -121,26 +122,27 @@ Gimbal manager commands and messages have a param respective field to indicate t
 
 #### Discovery of gimbal manager
 
-A ground station should initially discover all gimbal managers by sending [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) to any sysid and compid.
+A ground station should initially discover all gimbal managers by sending [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) to request [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) from any sysid and compid.
 Every gimbal manager should respond with [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
 
-The [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) contains important information such as gimbal capabitilies [GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS), maximum angles and angle rates, as well as the `gimbal_component` which is the component ID of the gimbal device controlled by this gimbal manager.
+The [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) contains important information such as gimbal capabilities. [GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS), maximum angles and angle rates, as well as the `gimbal_component` which is the component ID of the gimbal device controlled by this gimbal manager.
 
 #### Gimbal manager status
 
-A gimbal manager should send out [GIMBAL_MANAGER_STATUS](#GIMBAL_MANAGER_STATUS) at a low regular rate (e.g. 5 Hz) to inform the ground sation about its status.
+A gimbal manager should send out [GIMBAL_MANAGER_STATUS](#GIMBAL_MANAGER_STATUS) at a low regular rate (e.g. 5 Hz) to inform the ground station about its status.
 
 #### Manually controlling a gimbal using MAVLink
 
 A ground station can manually control a gimbal by sending [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE).
-This allows controlling the gimbal with angles or angular rates or both.
+This allows controlling the gimbal with angles, or angular rates, or both.
 
 ### Messages between gimbal manager and gimbal device
 
-#### Discover of gimbal device
+#### Discovery of gimbal device
 
-The MAVlink node where the gimbal manager is implemented needs to discover gimbal devices by sending [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) to any sysid and compid.
+The MAVlink node where the gimbal manager is implemented needs to discover gimbal devices by sending [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) for [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION) to any sysid and compid.
 Every gimbal device should respond with [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).
+
 The MAVLink node should then create as many gimbal manager instances as gimbal devices found.
 
 #### Control of a gimbal device
@@ -158,7 +160,7 @@ The gimbal device should send out its attitude and status in [GIMBAL_DEVICE_ATTI
 
 ### Gimbal manager deconfliction rules
 
-It is possible for multiple components to want to control a gimbal at the same time: e.g a ground station, a companion computer, or the autopilot running a mission.
+It is possible for multiple components to want to control a gimbal at the same time: e.g. a ground station, a companion computer, or the autopilot running a mission.
 This can create situations where the gimbal would receive conflicting messages from the different components, and hence may behave unintendedly or unexpectedly from the viewpoint of one of the components (and ultimately the user). Thus, decision making is required in order to establish proper and predictable gimbal operation.
 
 The deconfliction of various inputs is the task of the gimbal manager. The gimbal manager should implement the rules below:
@@ -170,13 +172,20 @@ The deconfliction of various inputs is the task of the gimbal manager. The gimba
 
 #### Nudging
 
-Nudging is a slight deflection/change on top of the set gimbal attitude:
-ROI: while set at ROI, the gimbal can be moved around to look around. If the sticks are let go, it will snap to the new selected ROI if supported and otherwise snap back to the previous one.
-TRACK: while tracking a point or rectangle, nudging will move the gimbal angle only as much as so that the tracked object is still on the image (otherwise it would lose the tracking). If the sticks are let go, it will snap back to have the tracked object centered.
-ATTITUDE: nudging allows deflection of the angle. If the sticks are let go it will go back to the set attitude.
+Nudging is a slight deflection/change on top of the set gimbal attitude.
+
+The behaviour is slightly different based on *how* the attitude has been set:
+- `ROI:` while set at ROI, the gimbal can be moved around to look around.
+  If the sticks are let go, it will snap to the new selected ROI if supported and otherwise snap back to the previous one.
+- `TRACK:` while tracking a point or rectangle, nudging will move the gimbal angle only as much as so that the tracked object is still on the image (otherwise it would lose the tracking).
+  If the sticks are let go, it will snap back to have the tracked object centered.
+- `ATTITUDE:` nudging allows deflection of the angle.
+  If the sticks are let go it will go back to the set attitude.
 
 #### Overriding
-Overriding means that anything set is ignored. It is generally discouraged to use this unless something doesn’t work as intended, a mission is set-up incorrectly, etc..
+
+Overriding means that anything set is ignored.
+It is generally discouraged to use this unless something doesn’t work as intended, a mission is set-up incorrectly, etc.
 
 
 ### Custom gimbal device settings
@@ -187,28 +196,35 @@ Custom gimbal settings can be accomplished using the component information micro
 
 ### How to set System ID?
 
-The system ID of all components (e.g autopilot, companion computer, camera, gimbal) on a drone/system need to be the same. This needs to be either done manually by configuration, or alternatively, the components need to listen to the heartbeat of the autopilot and then adjust their system ID accordingly.
+The system ID of all components (e.g. autopilot, companion computer, camera, gimbal) on a drone/system need to be the same.
+This needs to be either done manually by configuration, or alternatively, the components need to listen to the heartbeat of the autopilot and then adjust their system ID accordingly.
 
 ### When is gimbal device also gimbal manager?
 
-The default case should be to use the gimbal manager in the autopilot. The only exception to this are integrated solutions containing a camera and gimbal for functionality like like visual tracking.
+The default case should be to use the gimbal manager in the autopilot.
+The only exception to this are integrated solutions containing a camera and gimbal for functionality like like visual tracking.
 
 ### How to test gimbal device?
 
-A gimbal device can be tested by connecting it to an autopilot with a gimbal manager implemented and active. To avoid having to do a full setup including autopilot, a direct test using MAVSDK is planned.
+A gimbal device can be tested by connecting it to an autopilot with a gimbal manager implemented and active.
+To avoid having to do a full setup including autopilot, a direct test using MAVSDK is planned.
+
 TODO: add link to MAVSDK test once it exists.
 
 ### How to control a gimbal with the old MAVLink protocol?
 
-Gimbals using the old MAVLink protocol should still be supported by autopilot software. Basically, the gimbal manager needs to translate the commands to the old protocol.
+Gimbals that use the (old) Gimbal protocol v1 should still be supported by autopilot software.
+Basically, the gimbal manager needs to translate the commands to the old protocol.
 
 ### How to control a gimbal without MAVLink support?
 
-Gimbals controlled using a protocol like PPM, PWM, SBUS or something proprietary can still be supported. The autopilot will have to act as the gimbal manager and provide the driver and translation to the respective protocol.
+Gimbals controlled using a protocol like PPM, PWM, SBUS or something proprietary can still be supported.
+The autopilot will have to act as the gimbal manager and provide the driver and translation to the respective protocol.
 
 ### What about RC (non-MAVLink) control?
 
 The autopilot needs to be configured to either accept MAVLink input (so [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE)) or RC control.
+
 For RC control, the channels will have to be manually mapped/configured to control the gimbal.
 It is up to the gimbal manager implementation to deconflict between RC and MAVLink input.
 This is in the same way that also RC input to fly needs to be selected from either RC or MAVLink and is up to the implementation.
