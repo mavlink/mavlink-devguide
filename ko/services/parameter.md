@@ -56,9 +56,9 @@ There is a good example of how to do this in the Pymavlink [mavparm.py](https://
 
 A GCS or other component may choose to maintain a cache of parameter values for connected components/systems, in order to reduce the time required to display values and reduce MAVLink traffic.
 
-The cache can be populated initially by first [reading the full parameter list](#read_all) at least once, and then updated by monitoring for [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages (which are emitted whenever a parameter is [written/changed](#write)).
+The cache can be populated initially by first [reading the full parameter list](#read_all) at least once, and then updated by monitoring for [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages (which are emitted whenever a parameter is [written](#write) or otherwise changed).
 
-> **Note** Cache synchronisation is not guaranteed; a component may [miss parameter update messages](#monitoring_unreliable) due to changes by other components.
+> **Note** Cache synchronisation is not guaranteed; a component may [miss update messages](#monitoring_unreliable) due to parameter changes by other components.
 
 ## Multi-System and Multi-Component Support
 
@@ -72,22 +72,22 @@ All components must respond to parameter request messages addressed to their ID 
 
 ## Limitations {#limitations}
 
-### Parameters Assumed Invariant
+### Parameters Table is Invariant {#parameters_invariant}
 
-The protocol is designed with the assumption that the parameter set does not change during normal operation.
+The protocol *requires* that the parameter set does not change during normal operation/after parameters have been read.
 
-If a system can add parameters during (or after) initial synchronization the protocol cannot guarantee reliable/robust synchronization, because there is no way to notify that the parameter set has changed and a new sync is required.
+If a component can add parameters during (or after) initial synchronization the protocol cannot guarantee reliable/robust synchronization, because there is no way to notify that the parameter set has changed and a new sync is required.
 
-When requesting parameters from such a system, the risk of problems can be *reduced* (but not removed) if:
+If working with a non-compliant component, the risk of problems when working with parameters can be *reduced* (but not removed) if:
 
-- The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter may change on systems where parameters can be added/removed).
-- [PARAM_VALUE](../messages/common.md#PARAM_VALUE).`param_count` may be monitored. If this changes the parameter set should be re-sychronised.
+- The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter might change on systems where parameters can be added/removed).
+- [PARAM_VALUE.param_count](../messages/common.md#PARAM_VALUE) is monitored and the parameter set re-sychronised on change.
 
-### Monitoring Parameter Updates Can Fail {#monitoring_unreliable}
+### Parameter Synchronisation Can Fail {#monitoring_unreliable}
 
-A GCS (or other system) that wants to [synchronise parameters](#parameter_caching) with a component should first get all parameters, and then track changes by monitoring for `PARAM_VALUE` messages (updating their internal list appropriately).
+A GCS (or other component) that wants to [cache parameters](#parameter_caching) with a component and keep them synchronised, should first get all parameters, and then track any new parameter changes by monitoring for `PARAM_VALUE` messages (updating their internal list appropriately).
 
-This works for the originator of a parameter change, which can resend the request if an expected `PARAM_VALUE` is not recieved. This approach may fail for systems that did not originate the change, as they will not know about updates they do not receive (i.e. if messages are dropped).
+This works for the originator of a parameter change, which can resend the request if an expected `PARAM_VALUE` is not recieved. This approach may fail for components that did not originate the change, as they will not know about updates they do not receive (i.e. if messages are dropped).
 
 A component may mitigate this risk by, for example, sending the `PARAM_VALUE` multiple times after a parameter is changed.
 
@@ -112,11 +112,11 @@ The sequence of operations is:
   - Components with no parameters should ignore the request.
 3. GCS starts timeout after each `PARAM_VALUE` message in order to detect when parameters are no longer being sent (that the operation has completed).
 
-The GCS/API may accumulate the received parameters for each component and can determine if any are missing/not received (`PARAM_VALUE` contains the total number of params and index of current param).
+Notes:
 
-**Handling of missing params is GCS-dependent.** *QGroundControl*, for example, [individually requests](#read_single) each missing parameter by index (using [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) as shown below):
-
-{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: Req. missing params by index (PARAM_REQUEST_READ) GCS-->>GCS: Start receive timeout Drone->>GCS: Send param with PARAM_VALUE {% endmermaid %}
+- The GCS/API may accumulate the received parameters for each component and can determine if any are missing/not received (`PARAM_VALUE` contains the total number of params and index of current param). 
+- Handling of missing params is GCS-dependent. *QGroundControl*, for example, [individually requests](#read_single) each missing parameter by index.
+- If a component does not any parameters then it will ignore a `PARAM_REQUEST_LIST` request. The sender should simply timeout (after resends) if no `PARAM_VALUE` is received.
 
 ### Read Single Parameter {#read_single}
 
@@ -131,6 +131,8 @@ The sequence of operations is:
 3. Drone responds with `PARAM_VALUE` containing the parameter value. This is a broadcast message (sent to all systems).
 
 The drone may restart the sequence if the `PARAM_VALUE` acknowledgment is not received within the timeout.
+
+> **Note** There is no formal way for the drone to signal when an invalid parameter is requested (i.e. for a parameter name or id that does not exist). In this case the drone *should* emit [STATUS_TEXT](../messages/common.md#STATUS_TEXT). The GCS may monitor for the specific notification, but will otherwise fail the request after any timeout/resend cycle completes.
 
 ### Write Parameters {#write}
 

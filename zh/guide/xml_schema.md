@@ -55,7 +55,7 @@ MaVLink XML 文件的大致结构如下。
 
 枚举用于定义可用作消息中的选项的命名值, 例如定义错误、状态或模式。 还有一个特别的名单 `MAV_CMD` 用于定义 MAVLink 命令。
 
-所有枚举都是在 ` &lt;enums&gt; 中定义的... &lt;/enums&gt; 模块 (如前一节讨论的) 使用 <code><enum>...` 标签。 &lt;/enum&gt;</code> 标签。 Enum *值* 使用`<entry>... </entry>` 标签。
+所有枚举都是在 ` <enums> 中定义的... </enums> 模块 (如前一节讨论的) 使用 <code><enum>...` 标签。 </enum></code> 标签。 Enum *值* 使用`<entry>... </entry>` 标签。
 
 比如, [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) 消息的定义如下：
 

@@ -58,5 +58,7 @@
   * [Ping Protocol](services/ping.md)
   * [Path Planning (Trajectory) Protocol](services/trajectory.md)
   * [Smart Battery Protocol (WIP)](services/smart_battery.md)
+  * [Tunnel Protocol](services/tunnel.md)
+  * [Open Drone ID Protocol](services/opendroneid.md)
 * [Contributing](contributing/contributing.md)
 * [Support](about/support.md)

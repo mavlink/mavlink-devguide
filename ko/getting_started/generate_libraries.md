@@ -15,7 +15,7 @@ This topic shows how to use the two code generators provided with the MAVLink pr
 1. You must already have [Installed MAVLink](../getting_started/installation.md) (including both the tools below and [XML Message Definitions](../messages/README.md)).
 2. If you are generating messages for a [custom dialect](../messages/README.md#dialects), copy the file(s) into the directory [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0). > **Note** *mavgen* can handle dialects that have relative paths for included XML files (e.g typically [common.xml](../messages/common.md)), but other generators may not. We recommend putting custom dialects in the same folder as the ones that come with the *mavlink/mavlink* repository.
 
-## Mavenerate (GUI) {#mavgenerate}
+## Mavgenerate (GUI) {#mavgenerate}
 
 **mavgenerate.py** is GUI code generator for MAVLink, written in Python.
 

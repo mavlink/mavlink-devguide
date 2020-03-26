@@ -31,8 +31,7 @@
 
 4. 将[mavlink repo](https://github.com/mavlink/mavlink)(或你的fork) 克隆到一个用户可写目录中：
     
-        git clone https://github.com/mavlink/mavlink.git
-        git submodule update --init --recursive
+        git clone https://github.com/mavlink/mavlink.git --recursive
         
     
     > **或者** 你可以选择在一行中执行以下操作： ```git clone https://github.com/mavlink/mavlink.git --recursive```

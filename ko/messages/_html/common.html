@@ -46,7 +46,7 @@
      <td>
       <a href="#MAV_AUTOPILOT_ARDUPILOTMEGA">MAV_AUTOPILOT_ARDUPILOTMEGA</a>
      </td>
-     <td>ArduPilot - Plane/Copter/Rover/Sub/Tracker, http://ardupilot.org</td>
+     <td>ArduPilot - Plane/Copter/Rover/Sub/Tracker, https://ardupilot.org</td>
     </tr>
     <tr id="MAV_AUTOPILOT_OPENPILOT">
      <td>4</td>
@@ -990,7 +990,7 @@
      <td>
       <a href="#MAV_COMP_ID_ALL">MAV_COMP_ID_ALL</a>
      </td>
-     <td>Used to broadcast messages to all components of the receiving system. Components should attempt to process messages with this component ID and forward to components on any other interfaces.</td>
+     <td>Target id (target_component) used to broadcast messages to all components of the receiving system. Components should attempt to process messages with this component ID and forward to components on any other interfaces. Note: This is not a valid *source* component id for a message.</td>
     </tr>
     <tr id="MAV_COMP_ID_AUTOPILOT1">
      <td>1</td>
@@ -1781,6 +1781,13 @@
      </td>
      <td>Component that provides position estimates using VIO techniques.</td>
     </tr>
+    <tr id="MAV_COMP_ID_PAIRING_MANAGER">
+     <td>198</td>
+     <td>
+      <a href="#MAV_COMP_ID_PAIRING_MANAGER">MAV_COMP_ID_PAIRING_MANAGER</a>
+     </td>
+     <td>Component that manages pairing of vehicle and GCS.</td>
+    </tr>
     <tr id="MAV_COMP_ID_IMU">
      <td>200</td>
      <td>
@@ -1829,6 +1836,13 @@
       <a href="#MAV_COMP_ID_UART_BRIDGE">MAV_COMP_ID_UART_BRIDGE</a>
      </td>
      <td>Component to bridge to UART (i.e. from UDP).</td>
+    </tr>
+    <tr id="MAV_COMP_ID_TUNNEL_NODE">
+     <td>242</td>
+     <td>
+      <a href="#MAV_COMP_ID_TUNNEL_NODE">MAV_COMP_ID_TUNNEL_NODE</a>
+     </td>
+     <td>Component handling TUNNEL messages (e.g. vendor specific GUI of a component).</td>
     </tr>
     <tr id="MAV_COMP_ID_SYSTEM_CONTROL">
      <td>250</td>
@@ -2055,6 +2069,20 @@
       <a href="#MAV_SYS_STATUS_SENSOR_SATCOM">MAV_SYS_STATUS_SENSOR_SATCOM</a>
      </td>
      <td>0x8000000 Satellite Communication</td>
+    </tr>
+    <tr id="MAV_SYS_STATUS_PREARM_CHECK">
+     <td>268435456</td>
+     <td>
+      <a href="#MAV_SYS_STATUS_PREARM_CHECK">MAV_SYS_STATUS_PREARM_CHECK</a>
+     </td>
+     <td>0x10000000 pre-arm check status. Always healthy when armed</td>
+    </tr>
+    <tr id="MAV_SYS_STATUS_OBSTACLE_AVOIDANCE">
+     <td>536870912</td>
+     <td>
+      <a href="#MAV_SYS_STATUS_OBSTACLE_AVOIDANCE">MAV_SYS_STATUS_OBSTACLE_AVOIDANCE</a>
+     </td>
+     <td>0x20000000 Avoidance/collision prevention</td>
     </tr>
    </tbody>
   </table>
@@ -2437,15 +2465,22 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="FENCE_MITIGATE_NONE">
+    <tr id="FENCE_MITIGATE_UNKNOWN">
      <td>0</td>
+     <td>
+      <a href="#FENCE_MITIGATE_UNKNOWN">FENCE_MITIGATE_UNKNOWN</a>
+     </td>
+     <td>Unknown</td>
+    </tr>
+    <tr id="FENCE_MITIGATE_NONE">
+     <td>1</td>
      <td>
       <a href="#FENCE_MITIGATE_NONE">FENCE_MITIGATE_NONE</a>
      </td>
      <td>No actions being taken</td>
     </tr>
     <tr id="FENCE_MITIGATE_VEL_LIMIT">
-     <td>1</td>
+     <td>2</td>
      <td>
       <a href="#FENCE_MITIGATE_VEL_LIMIT">FENCE_MITIGATE_VEL_LIMIT</a>
      </td>
@@ -2456,10 +2491,12 @@
   <h3 id="MAV_MOUNT_MODE">
    <a href="#MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by GIMBAL_MANAGER_FLAGS (2020-01).</p>
   <p>
    <a href="#enums">
     [Enum]
-   </a>Enumeration of possible mount operation modes</p>
+   </a>Enumeration of possible mount operation modes. This message is used by obsolete/deprecated gimbal messages.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2503,6 +2540,474 @@
       <a href="#MAV_MOUNT_MODE_GPS_POINT">MAV_MOUNT_MODE_GPS_POINT</a>
      </td>
      <td>Load neutral position and start to point to Lat,Lon,Alt</td>
+    </tr>
+    <tr id="MAV_MOUNT_MODE_SYSID_TARGET">
+     <td>5</td>
+     <td>
+      <a href="#MAV_MOUNT_MODE_SYSID_TARGET">MAV_MOUNT_MODE_SYSID_TARGET</a>
+     </td>
+     <td>Gimbal tracks system with specified system ID</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_DEVICE_CAP_FLAGS">
+   <a href="#GIMBAL_DEVICE_CAP_FLAGS">GIMBAL_DEVICE_CAP_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal device (low level) capability flags (bitmap)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT">
+     <td>1</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT">GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT</a>
+     </td>
+     <td>Gimbal device supports a retracted position</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL">
+     <td>2</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL">GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL</a>
+     </td>
+     <td>Gimbal device supports a horizontal, forward looking position, stabilized</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS">
+     <td>4</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS">GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS</a>
+     </td>
+     <td>Gimbal device supports rotating around roll axis.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW">
+     <td>8</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW">GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW</a>
+     </td>
+     <td>Gimbal device supports to follow a roll angle relative to the vehicle</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK">
+     <td>16</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK">GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK</a>
+     </td>
+     <td>Gimbal device supports locking to an roll angle (generally that's the default with roll stabilized)</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS">
+     <td>32</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS">GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS</a>
+     </td>
+     <td>Gimbal device supports rotating around pitch axis.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW">
+     <td>64</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW">GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW</a>
+     </td>
+     <td>Gimbal device supports to follow a pitch angle relative to the vehicle</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK">
+     <td>128</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK">GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK</a>
+     </td>
+     <td>Gimbal device supports locking to an pitch angle (generally that's the default with pitch stabilized)</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS">
+     <td>256</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS">GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS</a>
+     </td>
+     <td>Gimbal device supports rotating around yaw axis.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW">
+     <td>512</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW">GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW</a>
+     </td>
+     <td>Gimbal device supports to follow a yaw angle relative to the vehicle (generally that's the default)</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK">
+     <td>1024</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK">GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK</a>
+     </td>
+     <td>Gimbal device supports locking to an absolute heading (often this is an option available)</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW">
+     <td>2048</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW">GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW</a>
+     </td>
+     <td>Gimbal device supports yawing/panning infinetely (e.g. using slip disk).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_CAP_FLAGS">
+   <a href="#GIMBAL_MANAGER_CAP_FLAGS">GIMBAL_MANAGER_CAP_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal manager high level capability flags (bitmap). The first 16 bits are identical to the GIMBAL_DEVICE_CAP_FLAGS which are identical with GIMBAL_DEVICE_FLAGS. However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT">
+     <td>1</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT">GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL">
+     <td>2</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL">GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_AXIS">
+     <td>4</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_AXIS">GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_AXIS</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_FOLLOW">
+     <td>8</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_FOLLOW">GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_FOLLOW</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_LOCK">
+     <td>16</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_LOCK">GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_LOCK</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_AXIS">
+     <td>32</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_AXIS">GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_AXIS</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_FOLLOW">
+     <td>64</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_FOLLOW">GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_FOLLOW</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_LOCK">
+     <td>128</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_LOCK">GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_LOCK</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_AXIS">
+     <td>256</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_AXIS">GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_AXIS</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_FOLLOW">
+     <td>512</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_FOLLOW">GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_FOLLOW</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_LOCK">
+     <td>1024</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_LOCK">GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_LOCK</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW">
+     <td>2048</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL">
+     <td>65536</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL">GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL</a>
+     </td>
+     <td>Gimbal manager supports to point to a local position.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL">
+     <td>131072</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL">GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL</a>
+     </td>
+     <td>Gimbal manager supports to point to a global latitude, longitude, altitude position.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT">
+     <td>262144</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT">GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT</a>
+     </td>
+     <td>Gimbal manager supports tracking of a point on the camera.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE">
+     <td>524288</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE">GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE</a>
+     </td>
+     <td>Gimbal manager supports tracking of a point on the camera.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">
+     <td>1048576</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE</a>
+     </td>
+     <td>Gimbal manager supports pitching and yawing at an angular velocity scaled by focal length (the more zoomed in, the slower the movement).</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING">
+     <td>2097152</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING</a>
+     </td>
+     <td>Gimbal manager supports nudging when pointing to a location or tracking.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE">
+     <td>4194304</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE</a>
+     </td>
+     <td>Gimbal manager supports overriding when pointing to a location or tracking.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_DEVICE_FLAGS">
+   <a href="#GIMBAL_DEVICE_FLAGS">GIMBAL_DEVICE_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags for gimbal device (lower level) operation.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GIMBAL_DEVICE_FLAGS_RETRACT">
+     <td>1</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS_RETRACT">GIMBAL_DEVICE_FLAGS_RETRACT</a>
+     </td>
+     <td>Set to retracted safe position (no stabilization), takes presedence over all other flags.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_FLAGS_NEUTRAL">
+     <td>2</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS_NEUTRAL">GIMBAL_DEVICE_FLAGS_NEUTRAL</a>
+     </td>
+     <td>Set to neutral position (horizontal, forward looking, with stabiliziation), takes presedence over all other flags except RETRACT.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_FLAGS_ROLL_LOCK">
+     <td>4</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS_ROLL_LOCK">GIMBAL_DEVICE_FLAGS_ROLL_LOCK</a>
+     </td>
+     <td>Lock roll angle to absolute angle relative to horizon (not relative to drone). This is generally the default with a stabilizing gimbal.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_FLAGS_PITCH_LOCK">
+     <td>8</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS_PITCH_LOCK">GIMBAL_DEVICE_FLAGS_PITCH_LOCK</a>
+     </td>
+     <td>Lock pitch angle to absolute angle relative to horizon (not relative to drone). This is generally the default.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_FLAGS_YAW_LOCK">
+     <td>16</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a>
+     </td>
+     <td>Lock yaw angle to absolute angle relative to North (not relative to drone). If this flag is set, the quaternion is in the Earth frame with the x-axis pointing North (yaw absolute). If this flag is not set, the quaternion frame is in the Earth frame rotated so that the x-axis is pointing forward (yaw relative to vehicle).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_FLAGS">
+   <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags for high level gimbal manager operation The first 16 bytes are identical to the GIMBAL_DEVICE_FLAGS.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GIMBAL_MANAGER_FLAGS_RETRACT">
+     <td>1</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_RETRACT">GIMBAL_MANAGER_FLAGS_RETRACT</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_RETRACT</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_NEUTRAL">
+     <td>2</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_NEUTRAL">GIMBAL_MANAGER_FLAGS_NEUTRAL</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_NEUTRAL</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_ROLL_LOCK">
+     <td>4</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_ROLL_LOCK">GIMBAL_MANAGER_FLAGS_ROLL_LOCK</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_ROLL_LOCK</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_PITCH_LOCK">
+     <td>8</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_PITCH_LOCK">GIMBAL_MANAGER_FLAGS_PITCH_LOCK</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_PITCH_LOCK</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_YAW_LOCK">
+     <td>16</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_YAW_LOCK">GIMBAL_MANAGER_FLAGS_YAW_LOCK</a>
+     </td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_YAW_LOCK</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH">
+     <td>1048576</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH">GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH</a>
+     </td>
+     <td>Scale angular velocity relative to focal length. This means the gimbal moves slower if it is zoomed in.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_NUDGE">
+     <td>2097152</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_NUDGE">GIMBAL_MANAGER_FLAGS_NUDGE</a>
+     </td>
+     <td>Interpret attitude control on top of pointing to a location or tracking. If this flag is set, the quaternion is relative to the existing tracking angle.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_OVERRIDE">
+     <td>4194304</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_OVERRIDE">GIMBAL_MANAGER_FLAGS_OVERRIDE</a>
+     </td>
+     <td>Completely override pointing to a location or tracking. If this flag is set, the quaternion is (as usual) according to GIMBAL_MANAGER_FLAGS_YAW_LOCK.</td>
+    </tr>
+    <tr id="GIMBAL_MANAGER_FLAGS_NONE">
+     <td>8388608</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS_NONE">GIMBAL_MANAGER_FLAGS_NONE</a>
+     </td>
+     <td>This flag can be set to give up control previously set using MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE. This flag must not be combined with other flags.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_DEVICE_ERROR_FLAGS">
+   <a href="#GIMBAL_DEVICE_ERROR_FLAGS">GIMBAL_DEVICE_ERROR_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal device (low level) error flags (bitmap, 0 means no error)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT">
+     <td>1</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT">GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT</a>
+     </td>
+     <td>Gimbal device is limited by hardware roll limit.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT">
+     <td>2</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT">GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT</a>
+     </td>
+     <td>Gimbal device is limited by hardware pitch limit.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT">
+     <td>4</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT">GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT</a>
+     </td>
+     <td>Gimbal device is limited by hardware yaw limit.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR">
+     <td>8</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal encoders.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR">
+     <td>16</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal power source.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR">
+     <td>32</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal motor's.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR">
+     <td>64</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal's software.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR">
+     <td>128</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal's communication.</td>
     </tr>
    </tbody>
   </table>
@@ -2648,6 +3153,59 @@
       <a href="#STORAGE_STATUS_NOT_SUPPORTED">STORAGE_STATUS_NOT_SUPPORTED</a>
      </td>
      <td>Camera does not supply storage status information. Capacity information in STORAGE_INFORMATION fields will be ignored.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ORBIT_YAW_BEHAVIOUR">
+   <a href="#ORBIT_YAW_BEHAVIOUR">ORBIT_YAW_BEHAVIOUR</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Yaw behaviour during orbit flight.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TO_CIRCLE_CENTER">
+     <td>0</td>
+     <td>
+      <a href="#ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TO_CIRCLE_CENTER">ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TO_CIRCLE_CENTER</a>
+     </td>
+     <td>Vehicle front points to the center (default).</td>
+    </tr>
+    <tr id="ORBIT_YAW_BEHAVIOUR_HOLD_INITIAL_HEADING">
+     <td>1</td>
+     <td>
+      <a href="#ORBIT_YAW_BEHAVIOUR_HOLD_INITIAL_HEADING">ORBIT_YAW_BEHAVIOUR_HOLD_INITIAL_HEADING</a>
+     </td>
+     <td>Vehicle front holds heading when message received.</td>
+    </tr>
+    <tr id="ORBIT_YAW_BEHAVIOUR_UNCONTROLLED">
+     <td>2</td>
+     <td>
+      <a href="#ORBIT_YAW_BEHAVIOUR_UNCONTROLLED">ORBIT_YAW_BEHAVIOUR_UNCONTROLLED</a>
+     </td>
+     <td>Yaw uncontrolled.</td>
+    </tr>
+    <tr id="ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE">
+     <td>3</td>
+     <td>
+      <a href="#ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE">ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE</a>
+     </td>
+     <td>Vehicle front follows flight path (tangential to circle).</td>
+    </tr>
+    <tr id="ORBIT_YAW_BEHAVIOUR_RC_CONTROLLED">
+     <td>4</td>
+     <td>
+      <a href="#ORBIT_YAW_BEHAVIOUR_RC_CONTROLLED">ORBIT_YAW_BEHAVIOUR_RC_CONTROLLED</a>
+     </td>
+     <td>Yaw controlled by RC input.</td>
     </tr>
    </tbody>
   </table>
@@ -3072,7 +3630,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>result from a mavlink command</p>
+   </a>Result from a MAVLink command (MAV_CMD)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3087,42 +3645,42 @@
      <td>
       <a href="#MAV_RESULT_ACCEPTED">MAV_RESULT_ACCEPTED</a>
      </td>
-     <td>Command ACCEPTED and EXECUTED</td>
+     <td>Command is valid (is supported and has valid parameters), and was executed.</td>
     </tr>
     <tr id="MAV_RESULT_TEMPORARILY_REJECTED">
      <td>1</td>
      <td>
       <a href="#MAV_RESULT_TEMPORARILY_REJECTED">MAV_RESULT_TEMPORARILY_REJECTED</a>
      </td>
-     <td>Command TEMPORARY REJECTED/DENIED</td>
+     <td>Command is valid, but cannot be executed at this time. This is used to indicate a problem that should be fixed just by waiting (e.g. a state machine is busy, can't arm because have not got GPS lock, etc.). Retrying later should work.</td>
     </tr>
     <tr id="MAV_RESULT_DENIED">
      <td>2</td>
      <td>
       <a href="#MAV_RESULT_DENIED">MAV_RESULT_DENIED</a>
      </td>
-     <td>Command PERMANENTLY DENIED</td>
+     <td>Command is invalid (is supported but has invalid parameters). Retrying same command and parameters will not work.</td>
     </tr>
     <tr id="MAV_RESULT_UNSUPPORTED">
      <td>3</td>
      <td>
       <a href="#MAV_RESULT_UNSUPPORTED">MAV_RESULT_UNSUPPORTED</a>
      </td>
-     <td>Command UNKNOWN/UNSUPPORTED</td>
+     <td>Command is not supported (unknown).</td>
     </tr>
     <tr id="MAV_RESULT_FAILED">
      <td>4</td>
      <td>
       <a href="#MAV_RESULT_FAILED">MAV_RESULT_FAILED</a>
      </td>
-     <td>Command executed, but failed</td>
+     <td>Command is valid, but execution has failed. This is used to indicate any non-temporary or unexpected problem, i.e. any problem that must be fixed before the command can succeed/be retried. For example, attempting to write a file when out of memory, attempting to arm when sensors are not calibrated, etc.</td>
     </tr>
     <tr id="MAV_RESULT_IN_PROGRESS">
      <td>5</td>
      <td>
       <a href="#MAV_RESULT_IN_PROGRESS">MAV_RESULT_IN_PROGRESS</a>
      </td>
-     <td>WIP: Command being executed</td>
+     <td>Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further COMMAND_ACK messages with result MAV_RESULT_IN_PROGRESS (at a rate decided by the implementation), and must terminate by sending a COMMAND_ACK message with final result of the operation. The COMMAND_ACK.progress field can be used to indicate the progress of the operation. There is no need for the sender to retry the command, but if done during execution, the component will return MAV_RESULT_IN_PROGRESS with an updated progress.</td>
     </tr>
    </tbody>
   </table>
@@ -3440,6 +3998,76 @@
       <a href="#SERIAL_CONTROL_DEV_SHELL">SERIAL_CONTROL_DEV_SHELL</a>
      </td>
      <td>system shell</td>
+    </tr>
+    <tr id="SERIAL_CONTROL_SERIAL0">
+     <td>100</td>
+     <td>
+      <a href="#SERIAL_CONTROL_SERIAL0">SERIAL_CONTROL_SERIAL0</a>
+     </td>
+     <td>SERIAL0</td>
+    </tr>
+    <tr id="SERIAL_CONTROL_SERIAL1">
+     <td>101</td>
+     <td>
+      <a href="#SERIAL_CONTROL_SERIAL1">SERIAL_CONTROL_SERIAL1</a>
+     </td>
+     <td>SERIAL1</td>
+    </tr>
+    <tr id="SERIAL_CONTROL_SERIAL2">
+     <td>102</td>
+     <td>
+      <a href="#SERIAL_CONTROL_SERIAL2">SERIAL_CONTROL_SERIAL2</a>
+     </td>
+     <td>SERIAL2</td>
+    </tr>
+    <tr id="SERIAL_CONTROL_SERIAL3">
+     <td>103</td>
+     <td>
+      <a href="#SERIAL_CONTROL_SERIAL3">SERIAL_CONTROL_SERIAL3</a>
+     </td>
+     <td>SERIAL3</td>
+    </tr>
+    <tr id="SERIAL_CONTROL_SERIAL4">
+     <td>104</td>
+     <td>
+      <a href="#SERIAL_CONTROL_SERIAL4">SERIAL_CONTROL_SERIAL4</a>
+     </td>
+     <td>SERIAL4</td>
+    </tr>
+    <tr id="SERIAL_CONTROL_SERIAL5">
+     <td>105</td>
+     <td>
+      <a href="#SERIAL_CONTROL_SERIAL5">SERIAL_CONTROL_SERIAL5</a>
+     </td>
+     <td>SERIAL5</td>
+    </tr>
+    <tr id="SERIAL_CONTROL_SERIAL6">
+     <td>106</td>
+     <td>
+      <a href="#SERIAL_CONTROL_SERIAL6">SERIAL_CONTROL_SERIAL6</a>
+     </td>
+     <td>SERIAL6</td>
+    </tr>
+    <tr id="SERIAL_CONTROL_SERIAL7">
+     <td>107</td>
+     <td>
+      <a href="#SERIAL_CONTROL_SERIAL7">SERIAL_CONTROL_SERIAL7</a>
+     </td>
+     <td>SERIAL7</td>
+    </tr>
+    <tr id="SERIAL_CONTROL_SERIAL8">
+     <td>108</td>
+     <td>
+      <a href="#SERIAL_CONTROL_SERIAL8">SERIAL_CONTROL_SERIAL8</a>
+     </td>
+     <td>SERIAL8</td>
+    </tr>
+    <tr id="SERIAL_CONTROL_SERIAL9">
+     <td>109</td>
+     <td>
+      <a href="#SERIAL_CONTROL_SERIAL9">SERIAL_CONTROL_SERIAL9</a>
+     </td>
+     <td>SERIAL9</td>
     </tr>
    </tbody>
   </table>
@@ -4753,6 +5381,30 @@
      <td>
      </td>
     </tr>
+    <tr id="ADSB_FLAGS_VERTICAL_VELOCITY_VALID">
+     <td>128</td>
+     <td>
+      <a href="#ADSB_FLAGS_VERTICAL_VELOCITY_VALID">ADSB_FLAGS_VERTICAL_VELOCITY_VALID</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="ADSB_FLAGS_BARO_VALID">
+     <td>256</td>
+     <td>
+      <a href="#ADSB_FLAGS_BARO_VALID">ADSB_FLAGS_BARO_VALID</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="ADSB_FLAGS_SOURCE_UAT">
+     <td>32768</td>
+     <td>
+      <a href="#ADSB_FLAGS_SOURCE_UAT">ADSB_FLAGS_SOURCE_UAT</a>
+     </td>
+     <td>
+     </td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_DO_REPOSITION_FLAGS">
@@ -5291,7 +5943,7 @@
      <td>
       <a href="#RTK_BASELINE_COORDINATE_SYSTEM_NED">RTK_BASELINE_COORDINATE_SYSTEM_NED</a>
      </td>
-     <td>North, East, Down</td>
+     <td>RTK basestation centered, north, east, down</td>
     </tr>
    </tbody>
   </table>
@@ -6238,10 +6890,80 @@
      </td>
      <td>Encoding of payload unknown.</td>
     </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0">
+     <td>200</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED1">
+     <td>201</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED1">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED1</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED2">
+     <td>202</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED2">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED2</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED3">
+     <td>203</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED3">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED3</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED4">
+     <td>204</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED4">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED4</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED5">
+     <td>205</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED5">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED5</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED6">
+     <td>206</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED6">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED6</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED7">
+     <td>207</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED7">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED7</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED8">
+     <td>208</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED8">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED8</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9">
+     <td>209</td>
+     <td>
+      <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
    </tbody>
   </table>
-  <h3 id="MAV_ODID_IDTYPE">
-   <a href="#MAV_ODID_IDTYPE">MAV_ODID_IDTYPE</a>
+  <h3 id="MAV_ODID_ID_TYPE">
+   <a href="#MAV_ODID_ID_TYPE">MAV_ODID_ID_TYPE</a>
   </h3>
   <p>
    <a href="#enums">
@@ -6257,38 +6979,38 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="MAV_ODID_IDTYPE_NONE">
+    <tr id="MAV_ODID_ID_TYPE_NONE">
      <td>0</td>
      <td>
-      <a href="#MAV_ODID_IDTYPE_NONE">MAV_ODID_IDTYPE_NONE</a>
+      <a href="#MAV_ODID_ID_TYPE_NONE">MAV_ODID_ID_TYPE_NONE</a>
      </td>
      <td>No type defined.</td>
     </tr>
-    <tr id="MAV_ODID_IDTYPE_SERIAL_NUMBER">
+    <tr id="MAV_ODID_ID_TYPE_SERIAL_NUMBER">
      <td>1</td>
      <td>
-      <a href="#MAV_ODID_IDTYPE_SERIAL_NUMBER">MAV_ODID_IDTYPE_SERIAL_NUMBER</a>
+      <a href="#MAV_ODID_ID_TYPE_SERIAL_NUMBER">MAV_ODID_ID_TYPE_SERIAL_NUMBER</a>
      </td>
      <td>Manufacturer Serial Number (ANSI/CTA-2063 format).</td>
     </tr>
-    <tr id="MAV_ODID_IDTYPE_CAA_ASSIGNED_ID">
+    <tr id="MAV_ODID_ID_TYPE_CAA_REGISTRATION_ID">
      <td>2</td>
      <td>
-      <a href="#MAV_ODID_IDTYPE_CAA_ASSIGNED_ID">MAV_ODID_IDTYPE_CAA_ASSIGNED_ID</a>
+      <a href="#MAV_ODID_ID_TYPE_CAA_REGISTRATION_ID">MAV_ODID_ID_TYPE_CAA_REGISTRATION_ID</a>
      </td>
-     <td>CAA (Civil Aviation Authority) assigned ID. Format: [ICAO Country Code].[CAA Assigned ID]</td>
+     <td>CAA (Civil Aviation Authority) registered ID. Format: [ICAO Country Code].[CAA Assigned ID].</td>
     </tr>
-    <tr id="MAV_ODID_IDTYPE_UTM_ASSIGNED_ID">
+    <tr id="MAV_ODID_ID_TYPE_UTM_ASSIGNED_UUID">
      <td>3</td>
      <td>
-      <a href="#MAV_ODID_IDTYPE_UTM_ASSIGNED_ID">MAV_ODID_IDTYPE_UTM_ASSIGNED_ID</a>
+      <a href="#MAV_ODID_ID_TYPE_UTM_ASSIGNED_UUID">MAV_ODID_ID_TYPE_UTM_ASSIGNED_UUID</a>
      </td>
-     <td>UTM (Unmanned Traffic Management) assigned ID (UUID RFC4122).</td>
+     <td>UTM (Unmanned Traffic Management) assigned UUID (RFC4122).</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_ODID_UATYPE">
-   <a href="#MAV_ODID_UATYPE">MAV_ODID_UATYPE</a>
+  <h3 id="MAV_ODID_UA_TYPE">
+   <a href="#MAV_ODID_UA_TYPE">MAV_ODID_UA_TYPE</a>
   </h3>
   <p>
    <a href="#enums">
@@ -6304,115 +7026,115 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="MAV_ODID_UATYPE_NONE">
+    <tr id="MAV_ODID_UA_TYPE_NONE">
      <td>0</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_NONE">MAV_ODID_UATYPE_NONE</a>
+      <a href="#MAV_ODID_UA_TYPE_NONE">MAV_ODID_UA_TYPE_NONE</a>
      </td>
      <td>No UA (Unmanned Aircraft) type defined.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_AEROPLANE">
+    <tr id="MAV_ODID_UA_TYPE_AEROPLANE">
      <td>1</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_AEROPLANE">MAV_ODID_UATYPE_AEROPLANE</a>
+      <a href="#MAV_ODID_UA_TYPE_AEROPLANE">MAV_ODID_UA_TYPE_AEROPLANE</a>
      </td>
-     <td>Aeroplane/Airplane.</td>
+     <td>Aeroplane/Airplane. Fixed wing.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_ROTORCRAFT">
+    <tr id="MAV_ODID_UA_TYPE_HELICOPTER_OR_MULTIROTOR">
      <td>2</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_ROTORCRAFT">MAV_ODID_UATYPE_ROTORCRAFT</a>
+      <a href="#MAV_ODID_UA_TYPE_HELICOPTER_OR_MULTIROTOR">MAV_ODID_UA_TYPE_HELICOPTER_OR_MULTIROTOR</a>
      </td>
-     <td>Rotorcraft (including Multirotor).</td>
+     <td>Helicopter or multirotor.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_GYROPLANE">
+    <tr id="MAV_ODID_UA_TYPE_GYROPLANE">
      <td>3</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_GYROPLANE">MAV_ODID_UATYPE_GYROPLANE</a>
+      <a href="#MAV_ODID_UA_TYPE_GYROPLANE">MAV_ODID_UA_TYPE_GYROPLANE</a>
      </td>
      <td>Gyroplane.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_VTOL">
+    <tr id="MAV_ODID_UA_TYPE_HYBRID_LIFT">
      <td>4</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_VTOL">MAV_ODID_UATYPE_VTOL</a>
+      <a href="#MAV_ODID_UA_TYPE_HYBRID_LIFT">MAV_ODID_UA_TYPE_HYBRID_LIFT</a>
      </td>
      <td>VTOL (Vertical Take-Off and Landing). Fixed wing aircraft that can take off vertically.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_ORNITHOPTER">
+    <tr id="MAV_ODID_UA_TYPE_ORNITHOPTER">
      <td>5</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_ORNITHOPTER">MAV_ODID_UATYPE_ORNITHOPTER</a>
+      <a href="#MAV_ODID_UA_TYPE_ORNITHOPTER">MAV_ODID_UA_TYPE_ORNITHOPTER</a>
      </td>
      <td>Ornithopter.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_GLIDER">
+    <tr id="MAV_ODID_UA_TYPE_GLIDER">
      <td>6</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_GLIDER">MAV_ODID_UATYPE_GLIDER</a>
+      <a href="#MAV_ODID_UA_TYPE_GLIDER">MAV_ODID_UA_TYPE_GLIDER</a>
      </td>
      <td>Glider.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_KITE">
+    <tr id="MAV_ODID_UA_TYPE_KITE">
      <td>7</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_KITE">MAV_ODID_UATYPE_KITE</a>
+      <a href="#MAV_ODID_UA_TYPE_KITE">MAV_ODID_UA_TYPE_KITE</a>
      </td>
      <td>Kite.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_FREE_BALLOON">
+    <tr id="MAV_ODID_UA_TYPE_FREE_BALLOON">
      <td>8</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_FREE_BALLOON">MAV_ODID_UATYPE_FREE_BALLOON</a>
+      <a href="#MAV_ODID_UA_TYPE_FREE_BALLOON">MAV_ODID_UA_TYPE_FREE_BALLOON</a>
      </td>
      <td>Free Balloon.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_CAPTIVE_BALLOON">
+    <tr id="MAV_ODID_UA_TYPE_CAPTIVE_BALLOON">
      <td>9</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_CAPTIVE_BALLOON">MAV_ODID_UATYPE_CAPTIVE_BALLOON</a>
+      <a href="#MAV_ODID_UA_TYPE_CAPTIVE_BALLOON">MAV_ODID_UA_TYPE_CAPTIVE_BALLOON</a>
      </td>
      <td>Captive Balloon.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_AIRSHIP">
+    <tr id="MAV_ODID_UA_TYPE_AIRSHIP">
      <td>10</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_AIRSHIP">MAV_ODID_UATYPE_AIRSHIP</a>
+      <a href="#MAV_ODID_UA_TYPE_AIRSHIP">MAV_ODID_UA_TYPE_AIRSHIP</a>
      </td>
-     <td>Airship.</td>
+     <td>Airship. E.g. a blimp.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_FREE_FALL_PARACHUTE">
+    <tr id="MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE">
      <td>11</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_FREE_FALL_PARACHUTE">MAV_ODID_UATYPE_FREE_FALL_PARACHUTE</a>
+      <a href="#MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE">MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE</a>
      </td>
-     <td>Free Fall/Parachute.</td>
+     <td>Free Fall/Parachute (unpowered).</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_ROCKET">
+    <tr id="MAV_ODID_UA_TYPE_ROCKET">
      <td>12</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_ROCKET">MAV_ODID_UATYPE_ROCKET</a>
+      <a href="#MAV_ODID_UA_TYPE_ROCKET">MAV_ODID_UA_TYPE_ROCKET</a>
      </td>
      <td>Rocket.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_GROUND_OBSTACLE">
+    <tr id="MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT">
      <td>13</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_GROUND_OBSTACLE">MAV_ODID_UATYPE_GROUND_OBSTACLE</a>
+      <a href="#MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT">MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT</a>
+     </td>
+     <td>Tethered powered aircraft.</td>
+    </tr>
+    <tr id="MAV_ODID_UA_TYPE_GROUND_OBSTACLE">
+     <td>14</td>
+     <td>
+      <a href="#MAV_ODID_UA_TYPE_GROUND_OBSTACLE">MAV_ODID_UA_TYPE_GROUND_OBSTACLE</a>
      </td>
      <td>Ground Obstacle.</td>
     </tr>
-    <tr id="MAV_ODID_UATYPE_RESERVED">
-     <td>14</td>
-     <td>
-      <a href="#MAV_ODID_UATYPE_RESERVED">MAV_ODID_UATYPE_RESERVED</a>
-     </td>
-     <td>Reserved.</td>
-    </tr>
-    <tr id="MAV_ODID_UATYPE_OTHER">
+    <tr id="MAV_ODID_UA_TYPE_OTHER">
      <td>15</td>
      <td>
-      <a href="#MAV_ODID_UATYPE_OTHER">MAV_ODID_UATYPE_OTHER</a>
+      <a href="#MAV_ODID_UA_TYPE_OTHER">MAV_ODID_UA_TYPE_OTHER</a>
      </td>
      <td>Other type of aircraft not listed earlier.</td>
     </tr>
@@ -6520,56 +7242,56 @@
      <td>
       <a href="#MAV_ODID_HOR_ACC_10NM">MAV_ODID_HOR_ACC_10NM</a>
      </td>
-     <td>The horizontal accuracy is smaller than 10 Nautical Miles.</td>
+     <td>The horizontal accuracy is smaller than 10 Nautical Miles. 18.52 km.</td>
     </tr>
     <tr id="MAV_ODID_HOR_ACC_4NM">
      <td>2</td>
      <td>
       <a href="#MAV_ODID_HOR_ACC_4NM">MAV_ODID_HOR_ACC_4NM</a>
      </td>
-     <td>The horizontal accuracy is smaller than 4 Nautical Miles.</td>
+     <td>The horizontal accuracy is smaller than 4 Nautical Miles. 7.408 km.</td>
     </tr>
     <tr id="MAV_ODID_HOR_ACC_2NM">
      <td>3</td>
      <td>
       <a href="#MAV_ODID_HOR_ACC_2NM">MAV_ODID_HOR_ACC_2NM</a>
      </td>
-     <td>The horizontal accuracy is smaller than 2 Nautical Miles.</td>
+     <td>The horizontal accuracy is smaller than 2 Nautical Miles. 3.704 km.</td>
     </tr>
     <tr id="MAV_ODID_HOR_ACC_1NM">
      <td>4</td>
      <td>
       <a href="#MAV_ODID_HOR_ACC_1NM">MAV_ODID_HOR_ACC_1NM</a>
      </td>
-     <td>The horizontal accuracy is smaller than 1 Nautical Miles.</td>
+     <td>The horizontal accuracy is smaller than 1 Nautical Miles. 1.852 km.</td>
     </tr>
     <tr id="MAV_ODID_HOR_ACC_0_5NM">
      <td>5</td>
      <td>
       <a href="#MAV_ODID_HOR_ACC_0_5NM">MAV_ODID_HOR_ACC_0_5NM</a>
      </td>
-     <td>The horizontal accuracy is smaller than 0.5 Nautical Miles.</td>
+     <td>The horizontal accuracy is smaller than 0.5 Nautical Miles. 926 m.</td>
     </tr>
     <tr id="MAV_ODID_HOR_ACC_0_3NM">
      <td>6</td>
      <td>
       <a href="#MAV_ODID_HOR_ACC_0_3NM">MAV_ODID_HOR_ACC_0_3NM</a>
      </td>
-     <td>The horizontal accuracy is smaller than 0.3 Nautical Miles.</td>
+     <td>The horizontal accuracy is smaller than 0.3 Nautical Miles. 555.6 m.</td>
     </tr>
     <tr id="MAV_ODID_HOR_ACC_0_1NM">
      <td>7</td>
      <td>
       <a href="#MAV_ODID_HOR_ACC_0_1NM">MAV_ODID_HOR_ACC_0_1NM</a>
      </td>
-     <td>The horizontal accuracy is smaller than 0.1 Nautical Miles.</td>
+     <td>The horizontal accuracy is smaller than 0.1 Nautical Miles. 185.2 m.</td>
     </tr>
     <tr id="MAV_ODID_HOR_ACC_0_05NM">
      <td>8</td>
      <td>
       <a href="#MAV_ODID_HOR_ACC_0_05NM">MAV_ODID_HOR_ACC_0_05NM</a>
      </td>
-     <td>The horizontal accuracy is smaller than 0.05 Nautical Miles.</td>
+     <td>The horizontal accuracy is smaller than 0.05 Nautical Miles. 92.6 m.</td>
     </tr>
     <tr id="MAV_ODID_HOR_ACC_30_METER">
      <td>9</td>
@@ -6693,33 +7415,33 @@
      </td>
      <td>The speed accuracy is unknown.</td>
     </tr>
-    <tr id="MAV_ODID_SPEED_ACC_10_METER_PER_SECOND">
+    <tr id="MAV_ODID_SPEED_ACC_10_METERS_PER_SECOND">
      <td>1</td>
      <td>
-      <a href="#MAV_ODID_SPEED_ACC_10_METER_PER_SECOND">MAV_ODID_SPEED_ACC_10_METER_PER_SECOND</a>
+      <a href="#MAV_ODID_SPEED_ACC_10_METERS_PER_SECOND">MAV_ODID_SPEED_ACC_10_METERS_PER_SECOND</a>
      </td>
-     <td>The speed accuracy is smaller than 10 meter per second.</td>
+     <td>The speed accuracy is smaller than 10 meters per second.</td>
     </tr>
-    <tr id="MAV_ODID_SPEED_ACC_3_METER_PER_SECOND">
+    <tr id="MAV_ODID_SPEED_ACC_3_METERS_PER_SECOND">
      <td>2</td>
      <td>
-      <a href="#MAV_ODID_SPEED_ACC_3_METER_PER_SECOND">MAV_ODID_SPEED_ACC_3_METER_PER_SECOND</a>
+      <a href="#MAV_ODID_SPEED_ACC_3_METERS_PER_SECOND">MAV_ODID_SPEED_ACC_3_METERS_PER_SECOND</a>
      </td>
-     <td>The speed accuracy is smaller than 3 meter per second.</td>
+     <td>The speed accuracy is smaller than 3 meters per second.</td>
     </tr>
-    <tr id="MAV_ODID_SPEED_ACC_1_METER_PER_SECOND">
+    <tr id="MAV_ODID_SPEED_ACC_1_METERS_PER_SECOND">
      <td>3</td>
      <td>
-      <a href="#MAV_ODID_SPEED_ACC_1_METER_PER_SECOND">MAV_ODID_SPEED_ACC_1_METER_PER_SECOND</a>
+      <a href="#MAV_ODID_SPEED_ACC_1_METERS_PER_SECOND">MAV_ODID_SPEED_ACC_1_METERS_PER_SECOND</a>
      </td>
-     <td>The speed accuracy is smaller than 1 meter per second.</td>
+     <td>The speed accuracy is smaller than 1 meters per second.</td>
     </tr>
-    <tr id="MAV_ODID_SPEED_ACC_0_3_METER_PER_SECOND">
+    <tr id="MAV_ODID_SPEED_ACC_0_3_METERS_PER_SECOND">
      <td>4</td>
      <td>
-      <a href="#MAV_ODID_SPEED_ACC_0_3_METER_PER_SECOND">MAV_ODID_SPEED_ACC_0_3_METER_PER_SECOND</a>
+      <a href="#MAV_ODID_SPEED_ACC_0_3_METERS_PER_SECOND">MAV_ODID_SPEED_ACC_0_3_METERS_PER_SECOND</a>
      </td>
-     <td>The speed accuracy is smaller than 0.3 meter per second.</td>
+     <td>The speed accuracy is smaller than 0.3 meters per second.</td>
     </tr>
    </tbody>
   </table>
@@ -6854,8 +7576,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_ODID_AUTH">
-   <a href="#MAV_ODID_AUTH">MAV_ODID_AUTH</a>
+  <h3 id="MAV_ODID_AUTH_TYPE">
+   <a href="#MAV_ODID_AUTH_TYPE">MAV_ODID_AUTH_TYPE</a>
   </h3>
   <p>
    <a href="#enums">
@@ -6871,19 +7593,40 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="MAV_ODID_AUTH_NONE">
+    <tr id="MAV_ODID_AUTH_TYPE_NONE">
      <td>0</td>
      <td>
-      <a href="#MAV_ODID_AUTH_NONE">MAV_ODID_AUTH_NONE</a>
+      <a href="#MAV_ODID_AUTH_TYPE_NONE">MAV_ODID_AUTH_TYPE_NONE</a>
      </td>
      <td>No authentication type is specified.</td>
     </tr>
-    <tr id="MAV_ODID_AUTH_MPUID">
+    <tr id="MAV_ODID_AUTH_TYPE_UAS_ID_SIGNATURE">
      <td>1</td>
      <td>
-      <a href="#MAV_ODID_AUTH_MPUID">MAV_ODID_AUTH_MPUID</a>
+      <a href="#MAV_ODID_AUTH_TYPE_UAS_ID_SIGNATURE">MAV_ODID_AUTH_TYPE_UAS_ID_SIGNATURE</a>
      </td>
-     <td>Manufacturer Programmed Unique ID.</td>
+     <td>Signature for the UAS (Unmanned Aircraft System) ID.</td>
+    </tr>
+    <tr id="MAV_ODID_AUTH_TYPE_OPERATOR_ID_SIGNATURE">
+     <td>2</td>
+     <td>
+      <a href="#MAV_ODID_AUTH_TYPE_OPERATOR_ID_SIGNATURE">MAV_ODID_AUTH_TYPE_OPERATOR_ID_SIGNATURE</a>
+     </td>
+     <td>Signature for the Operator ID.</td>
+    </tr>
+    <tr id="MAV_ODID_AUTH_TYPE_MESSAGE_SET_SIGNATURE">
+     <td>3</td>
+     <td>
+      <a href="#MAV_ODID_AUTH_TYPE_MESSAGE_SET_SIGNATURE">MAV_ODID_AUTH_TYPE_MESSAGE_SET_SIGNATURE</a>
+     </td>
+     <td>Signature for the entire message set.</td>
+    </tr>
+    <tr id="MAV_ODID_AUTH_TYPE_NETWORK_REMOTE_ID">
+     <td>4</td>
+     <td>
+      <a href="#MAV_ODID_AUTH_TYPE_NETWORK_REMOTE_ID">MAV_ODID_AUTH_TYPE_NETWORK_REMOTE_ID</a>
+     </td>
+     <td>Authentication is provided by Network Remote ID.</td>
     </tr>
    </tbody>
   </table>
@@ -6911,13 +7654,6 @@
      </td>
      <td>Free-form text description of the purpose of the flight.</td>
     </tr>
-    <tr id="MAV_ODID_DESC_TYPE_REMOTE_PILOT_ID">
-     <td>1</td>
-     <td>
-      <a href="#MAV_ODID_DESC_TYPE_REMOTE_PILOT_ID">MAV_ODID_DESC_TYPE_REMOTE_PILOT_ID</a>
-     </td>
-     <td>Remote pilot ID as assigned by the Civil Aviation Authority.</td>
-    </tr>
    </tbody>
   </table>
   <h3 id="MAV_ODID_LOCATION_SRC">
@@ -6942,21 +7678,1179 @@
      <td>
       <a href="#MAV_ODID_LOCATION_SRC_TAKEOFF">MAV_ODID_LOCATION_SRC_TAKEOFF</a>
      </td>
-     <td>The location of the remote pilot is the same as the take-off location.</td>
+     <td>The location of the operator is the same as the take-off location.</td>
     </tr>
     <tr id="MAV_ODID_LOCATION_SRC_LIVE_GNSS">
      <td>1</td>
      <td>
       <a href="#MAV_ODID_LOCATION_SRC_LIVE_GNSS">MAV_ODID_LOCATION_SRC_LIVE_GNSS</a>
      </td>
-     <td>The location of the remote pilot is based on live GNSS data.</td>
+     <td>The location of the operator is based on live GNSS data.</td>
     </tr>
     <tr id="MAV_ODID_LOCATION_SRC_FIXED">
      <td>2</td>
      <td>
       <a href="#MAV_ODID_LOCATION_SRC_FIXED">MAV_ODID_LOCATION_SRC_FIXED</a>
      </td>
-     <td>The location of the remote pilot is a fixed location.</td>
+     <td>The location of the operator is a fixed location.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_ODID_OPERATOR_ID_TYPE">
+   <a href="#MAV_ODID_OPERATOR_ID_TYPE">MAV_ODID_OPERATOR_ID_TYPE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_ODID_OPERATOR_ID_TYPE_CAA">
+     <td>0</td>
+     <td>
+      <a href="#MAV_ODID_OPERATOR_ID_TYPE_CAA">MAV_ODID_OPERATOR_ID_TYPE_CAA</a>
+     </td>
+     <td>CAA (Civil Aviation Authority) registered operator ID.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="TUNE_FORMAT">
+   <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Tune formats (used for vehicle buzzer/tone generation).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="TUNE_FORMAT_QBASIC1_1">
+     <td>1</td>
+     <td>
+      <a href="#TUNE_FORMAT_QBASIC1_1">TUNE_FORMAT_QBASIC1_1</a>
+     </td>
+     <td>Format is QBasic 1.1 Play: https://www.qbasic.net/en/reference/qb11/Statement/PLAY-006.htm.</td>
+    </tr>
+    <tr id="TUNE_FORMAT_MML_MODERN">
+     <td>2</td>
+     <td>
+      <a href="#TUNE_FORMAT_MML_MODERN">TUNE_FORMAT_MML_MODERN</a>
+     </td>
+     <td>Format is Modern Music Markup Language (MML): https://en.wikipedia.org/wiki/Music_Macro_Language#Modern_MML.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="COMPONENT_CAP_FLAGS">
+   <a href="#COMPONENT_CAP_FLAGS">COMPONENT_CAP_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Component capability flags (Bitmap)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="COMPONENT_CAP_FLAGS_PARAM">
+     <td>1</td>
+     <td>
+      <a href="#COMPONENT_CAP_FLAGS_PARAM">COMPONENT_CAP_FLAGS_PARAM</a>
+     </td>
+     <td>Component has parameters, and supports the parameter protocol (PARAM messages).</td>
+    </tr>
+    <tr id="COMPONENT_CAP_FLAGS_PARAM_EXT">
+     <td>2</td>
+     <td>
+      <a href="#COMPONENT_CAP_FLAGS_PARAM_EXT">COMPONENT_CAP_FLAGS_PARAM_EXT</a>
+     </td>
+     <td>Component has parameters, and supports the extended parameter protocol (PARAM_EXT messages).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AIS_TYPE">
+   <a href="#AIS_TYPE">AIS_TYPE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Type of AIS vessel, enum duplicated from AIS standard, https://gpsd.gitlab.io/gpsd/AIVDM.html</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="AIS_TYPE_UNKNOWN">
+     <td>0</td>
+     <td>
+      <a href="#AIS_TYPE_UNKNOWN">AIS_TYPE_UNKNOWN</a>
+     </td>
+     <td>Not available (default).</td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_1">
+     <td>1</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_1">AIS_TYPE_RESERVED_1</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_2">
+     <td>2</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_2">AIS_TYPE_RESERVED_2</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_3">
+     <td>3</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_3">AIS_TYPE_RESERVED_3</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_4">
+     <td>4</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_4">AIS_TYPE_RESERVED_4</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_5">
+     <td>5</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_5">AIS_TYPE_RESERVED_5</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_6">
+     <td>6</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_6">AIS_TYPE_RESERVED_6</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_7">
+     <td>7</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_7">AIS_TYPE_RESERVED_7</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_8">
+     <td>8</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_8">AIS_TYPE_RESERVED_8</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_9">
+     <td>9</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_9">AIS_TYPE_RESERVED_9</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_10">
+     <td>10</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_10">AIS_TYPE_RESERVED_10</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_11">
+     <td>11</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_11">AIS_TYPE_RESERVED_11</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_12">
+     <td>12</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_12">AIS_TYPE_RESERVED_12</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_13">
+     <td>13</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_13">AIS_TYPE_RESERVED_13</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_14">
+     <td>14</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_14">AIS_TYPE_RESERVED_14</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_15">
+     <td>15</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_15">AIS_TYPE_RESERVED_15</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_16">
+     <td>16</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_16">AIS_TYPE_RESERVED_16</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_17">
+     <td>17</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_17">AIS_TYPE_RESERVED_17</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_18">
+     <td>18</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_18">AIS_TYPE_RESERVED_18</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_19">
+     <td>19</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_19">AIS_TYPE_RESERVED_19</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_WIG">
+     <td>20</td>
+     <td>
+      <a href="#AIS_TYPE_WIG">AIS_TYPE_WIG</a>
+     </td>
+     <td>Wing In Ground effect.</td>
+    </tr>
+    <tr id="AIS_TYPE_WIG_HAZARDOUS_A">
+     <td>21</td>
+     <td>
+      <a href="#AIS_TYPE_WIG_HAZARDOUS_A">AIS_TYPE_WIG_HAZARDOUS_A</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_WIG_HAZARDOUS_B">
+     <td>22</td>
+     <td>
+      <a href="#AIS_TYPE_WIG_HAZARDOUS_B">AIS_TYPE_WIG_HAZARDOUS_B</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_WIG_HAZARDOUS_C">
+     <td>23</td>
+     <td>
+      <a href="#AIS_TYPE_WIG_HAZARDOUS_C">AIS_TYPE_WIG_HAZARDOUS_C</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_WIG_HAZARDOUS_D">
+     <td>24</td>
+     <td>
+      <a href="#AIS_TYPE_WIG_HAZARDOUS_D">AIS_TYPE_WIG_HAZARDOUS_D</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_WIG_RESERVED_1">
+     <td>25</td>
+     <td>
+      <a href="#AIS_TYPE_WIG_RESERVED_1">AIS_TYPE_WIG_RESERVED_1</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_WIG_RESERVED_2">
+     <td>26</td>
+     <td>
+      <a href="#AIS_TYPE_WIG_RESERVED_2">AIS_TYPE_WIG_RESERVED_2</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_WIG_RESERVED_3">
+     <td>27</td>
+     <td>
+      <a href="#AIS_TYPE_WIG_RESERVED_3">AIS_TYPE_WIG_RESERVED_3</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_WIG_RESERVED_4">
+     <td>28</td>
+     <td>
+      <a href="#AIS_TYPE_WIG_RESERVED_4">AIS_TYPE_WIG_RESERVED_4</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_WIG_RESERVED_5">
+     <td>29</td>
+     <td>
+      <a href="#AIS_TYPE_WIG_RESERVED_5">AIS_TYPE_WIG_RESERVED_5</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_FISHING">
+     <td>30</td>
+     <td>
+      <a href="#AIS_TYPE_FISHING">AIS_TYPE_FISHING</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_TOWING">
+     <td>31</td>
+     <td>
+      <a href="#AIS_TYPE_TOWING">AIS_TYPE_TOWING</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_TOWING_LARGE">
+     <td>32</td>
+     <td>
+      <a href="#AIS_TYPE_TOWING_LARGE">AIS_TYPE_TOWING_LARGE</a>
+     </td>
+     <td>Towing: length exceeds 200m or breadth exceeds 25m.</td>
+    </tr>
+    <tr id="AIS_TYPE_DREDGING">
+     <td>33</td>
+     <td>
+      <a href="#AIS_TYPE_DREDGING">AIS_TYPE_DREDGING</a>
+     </td>
+     <td>Dredging or other underwater ops.</td>
+    </tr>
+    <tr id="AIS_TYPE_DIVING">
+     <td>34</td>
+     <td>
+      <a href="#AIS_TYPE_DIVING">AIS_TYPE_DIVING</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_MILITARY">
+     <td>35</td>
+     <td>
+      <a href="#AIS_TYPE_MILITARY">AIS_TYPE_MILITARY</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_SAILING">
+     <td>36</td>
+     <td>
+      <a href="#AIS_TYPE_SAILING">AIS_TYPE_SAILING</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_PLEASURE">
+     <td>37</td>
+     <td>
+      <a href="#AIS_TYPE_PLEASURE">AIS_TYPE_PLEASURE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_20">
+     <td>38</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_20">AIS_TYPE_RESERVED_20</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_RESERVED_21">
+     <td>39</td>
+     <td>
+      <a href="#AIS_TYPE_RESERVED_21">AIS_TYPE_RESERVED_21</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_HSC">
+     <td>40</td>
+     <td>
+      <a href="#AIS_TYPE_HSC">AIS_TYPE_HSC</a>
+     </td>
+     <td>High Speed Craft.</td>
+    </tr>
+    <tr id="AIS_TYPE_HSC_HAZARDOUS_A">
+     <td>41</td>
+     <td>
+      <a href="#AIS_TYPE_HSC_HAZARDOUS_A">AIS_TYPE_HSC_HAZARDOUS_A</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_HSC_HAZARDOUS_B">
+     <td>42</td>
+     <td>
+      <a href="#AIS_TYPE_HSC_HAZARDOUS_B">AIS_TYPE_HSC_HAZARDOUS_B</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_HSC_HAZARDOUS_C">
+     <td>43</td>
+     <td>
+      <a href="#AIS_TYPE_HSC_HAZARDOUS_C">AIS_TYPE_HSC_HAZARDOUS_C</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_HSC_HAZARDOUS_D">
+     <td>44</td>
+     <td>
+      <a href="#AIS_TYPE_HSC_HAZARDOUS_D">AIS_TYPE_HSC_HAZARDOUS_D</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_HSC_RESERVED_1">
+     <td>45</td>
+     <td>
+      <a href="#AIS_TYPE_HSC_RESERVED_1">AIS_TYPE_HSC_RESERVED_1</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_HSC_RESERVED_2">
+     <td>46</td>
+     <td>
+      <a href="#AIS_TYPE_HSC_RESERVED_2">AIS_TYPE_HSC_RESERVED_2</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_HSC_RESERVED_3">
+     <td>47</td>
+     <td>
+      <a href="#AIS_TYPE_HSC_RESERVED_3">AIS_TYPE_HSC_RESERVED_3</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_HSC_RESERVED_4">
+     <td>48</td>
+     <td>
+      <a href="#AIS_TYPE_HSC_RESERVED_4">AIS_TYPE_HSC_RESERVED_4</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_HSC_UNKNOWN">
+     <td>49</td>
+     <td>
+      <a href="#AIS_TYPE_HSC_UNKNOWN">AIS_TYPE_HSC_UNKNOWN</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_PILOT">
+     <td>50</td>
+     <td>
+      <a href="#AIS_TYPE_PILOT">AIS_TYPE_PILOT</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_SAR">
+     <td>51</td>
+     <td>
+      <a href="#AIS_TYPE_SAR">AIS_TYPE_SAR</a>
+     </td>
+     <td>Search And Rescue vessel.</td>
+    </tr>
+    <tr id="AIS_TYPE_TUG">
+     <td>52</td>
+     <td>
+      <a href="#AIS_TYPE_TUG">AIS_TYPE_TUG</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_PORT_TENDER">
+     <td>53</td>
+     <td>
+      <a href="#AIS_TYPE_PORT_TENDER">AIS_TYPE_PORT_TENDER</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_ANTI_POLLUTION">
+     <td>54</td>
+     <td>
+      <a href="#AIS_TYPE_ANTI_POLLUTION">AIS_TYPE_ANTI_POLLUTION</a>
+     </td>
+     <td>Anti-pollution equipment.</td>
+    </tr>
+    <tr id="AIS_TYPE_LAW_ENFORCEMENT">
+     <td>55</td>
+     <td>
+      <a href="#AIS_TYPE_LAW_ENFORCEMENT">AIS_TYPE_LAW_ENFORCEMENT</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_SPARE_LOCAL_1">
+     <td>56</td>
+     <td>
+      <a href="#AIS_TYPE_SPARE_LOCAL_1">AIS_TYPE_SPARE_LOCAL_1</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_SPARE_LOCAL_2">
+     <td>57</td>
+     <td>
+      <a href="#AIS_TYPE_SPARE_LOCAL_2">AIS_TYPE_SPARE_LOCAL_2</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_MEDICAL_TRANSPORT">
+     <td>58</td>
+     <td>
+      <a href="#AIS_TYPE_MEDICAL_TRANSPORT">AIS_TYPE_MEDICAL_TRANSPORT</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_NONECOMBATANT">
+     <td>59</td>
+     <td>
+      <a href="#AIS_TYPE_NONECOMBATANT">AIS_TYPE_NONECOMBATANT</a>
+     </td>
+     <td>Noncombatant ship according to RR Resolution No. 18.</td>
+    </tr>
+    <tr id="AIS_TYPE_PASSENGER">
+     <td>60</td>
+     <td>
+      <a href="#AIS_TYPE_PASSENGER">AIS_TYPE_PASSENGER</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_PASSENGER_HAZARDOUS_A">
+     <td>61</td>
+     <td>
+      <a href="#AIS_TYPE_PASSENGER_HAZARDOUS_A">AIS_TYPE_PASSENGER_HAZARDOUS_A</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_PASSENGER_HAZARDOUS_B">
+     <td>62</td>
+     <td>
+      <a href="#AIS_TYPE_PASSENGER_HAZARDOUS_B">AIS_TYPE_PASSENGER_HAZARDOUS_B</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_AIS_TYPE_PASSENGER_HAZARDOUS_C">
+     <td>63</td>
+     <td>
+      <a href="#AIS_TYPE_AIS_TYPE_PASSENGER_HAZARDOUS_C">AIS_TYPE_AIS_TYPE_PASSENGER_HAZARDOUS_C</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_PASSENGER_HAZARDOUS_D">
+     <td>64</td>
+     <td>
+      <a href="#AIS_TYPE_PASSENGER_HAZARDOUS_D">AIS_TYPE_PASSENGER_HAZARDOUS_D</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_PASSENGER_RESERVED_1">
+     <td>65</td>
+     <td>
+      <a href="#AIS_TYPE_PASSENGER_RESERVED_1">AIS_TYPE_PASSENGER_RESERVED_1</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_PASSENGER_RESERVED_2">
+     <td>66</td>
+     <td>
+      <a href="#AIS_TYPE_PASSENGER_RESERVED_2">AIS_TYPE_PASSENGER_RESERVED_2</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_PASSENGER_RESERVED_3">
+     <td>67</td>
+     <td>
+      <a href="#AIS_TYPE_PASSENGER_RESERVED_3">AIS_TYPE_PASSENGER_RESERVED_3</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_AIS_TYPE_PASSENGER_RESERVED_4">
+     <td>68</td>
+     <td>
+      <a href="#AIS_TYPE_AIS_TYPE_PASSENGER_RESERVED_4">AIS_TYPE_AIS_TYPE_PASSENGER_RESERVED_4</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_PASSENGER_UNKNOWN">
+     <td>69</td>
+     <td>
+      <a href="#AIS_TYPE_PASSENGER_UNKNOWN">AIS_TYPE_PASSENGER_UNKNOWN</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_CARGO">
+     <td>70</td>
+     <td>
+      <a href="#AIS_TYPE_CARGO">AIS_TYPE_CARGO</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_CARGO_HAZARDOUS_A">
+     <td>71</td>
+     <td>
+      <a href="#AIS_TYPE_CARGO_HAZARDOUS_A">AIS_TYPE_CARGO_HAZARDOUS_A</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_CARGO_HAZARDOUS_B">
+     <td>72</td>
+     <td>
+      <a href="#AIS_TYPE_CARGO_HAZARDOUS_B">AIS_TYPE_CARGO_HAZARDOUS_B</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_CARGO_HAZARDOUS_C">
+     <td>73</td>
+     <td>
+      <a href="#AIS_TYPE_CARGO_HAZARDOUS_C">AIS_TYPE_CARGO_HAZARDOUS_C</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_CARGO_HAZARDOUS_D">
+     <td>74</td>
+     <td>
+      <a href="#AIS_TYPE_CARGO_HAZARDOUS_D">AIS_TYPE_CARGO_HAZARDOUS_D</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_CARGO_RESERVED_1">
+     <td>75</td>
+     <td>
+      <a href="#AIS_TYPE_CARGO_RESERVED_1">AIS_TYPE_CARGO_RESERVED_1</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_CARGO_RESERVED_2">
+     <td>76</td>
+     <td>
+      <a href="#AIS_TYPE_CARGO_RESERVED_2">AIS_TYPE_CARGO_RESERVED_2</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_CARGO_RESERVED_3">
+     <td>77</td>
+     <td>
+      <a href="#AIS_TYPE_CARGO_RESERVED_3">AIS_TYPE_CARGO_RESERVED_3</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_CARGO_RESERVED_4">
+     <td>78</td>
+     <td>
+      <a href="#AIS_TYPE_CARGO_RESERVED_4">AIS_TYPE_CARGO_RESERVED_4</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_CARGO_UNKNOWN">
+     <td>79</td>
+     <td>
+      <a href="#AIS_TYPE_CARGO_UNKNOWN">AIS_TYPE_CARGO_UNKNOWN</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_TANKER">
+     <td>80</td>
+     <td>
+      <a href="#AIS_TYPE_TANKER">AIS_TYPE_TANKER</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_TANKER_HAZARDOUS_A">
+     <td>81</td>
+     <td>
+      <a href="#AIS_TYPE_TANKER_HAZARDOUS_A">AIS_TYPE_TANKER_HAZARDOUS_A</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_TANKER_HAZARDOUS_B">
+     <td>82</td>
+     <td>
+      <a href="#AIS_TYPE_TANKER_HAZARDOUS_B">AIS_TYPE_TANKER_HAZARDOUS_B</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_TANKER_HAZARDOUS_C">
+     <td>83</td>
+     <td>
+      <a href="#AIS_TYPE_TANKER_HAZARDOUS_C">AIS_TYPE_TANKER_HAZARDOUS_C</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_TANKER_HAZARDOUS_D">
+     <td>84</td>
+     <td>
+      <a href="#AIS_TYPE_TANKER_HAZARDOUS_D">AIS_TYPE_TANKER_HAZARDOUS_D</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_TANKER_RESERVED_1">
+     <td>85</td>
+     <td>
+      <a href="#AIS_TYPE_TANKER_RESERVED_1">AIS_TYPE_TANKER_RESERVED_1</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_TANKER_RESERVED_2">
+     <td>86</td>
+     <td>
+      <a href="#AIS_TYPE_TANKER_RESERVED_2">AIS_TYPE_TANKER_RESERVED_2</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_TANKER_RESERVED_3">
+     <td>87</td>
+     <td>
+      <a href="#AIS_TYPE_TANKER_RESERVED_3">AIS_TYPE_TANKER_RESERVED_3</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_TANKER_RESERVED_4">
+     <td>88</td>
+     <td>
+      <a href="#AIS_TYPE_TANKER_RESERVED_4">AIS_TYPE_TANKER_RESERVED_4</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_TANKER_UNKNOWN">
+     <td>89</td>
+     <td>
+      <a href="#AIS_TYPE_TANKER_UNKNOWN">AIS_TYPE_TANKER_UNKNOWN</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_OTHER">
+     <td>90</td>
+     <td>
+      <a href="#AIS_TYPE_OTHER">AIS_TYPE_OTHER</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_OTHER_HAZARDOUS_A">
+     <td>91</td>
+     <td>
+      <a href="#AIS_TYPE_OTHER_HAZARDOUS_A">AIS_TYPE_OTHER_HAZARDOUS_A</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_OTHER_HAZARDOUS_B">
+     <td>92</td>
+     <td>
+      <a href="#AIS_TYPE_OTHER_HAZARDOUS_B">AIS_TYPE_OTHER_HAZARDOUS_B</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_OTHER_HAZARDOUS_C">
+     <td>93</td>
+     <td>
+      <a href="#AIS_TYPE_OTHER_HAZARDOUS_C">AIS_TYPE_OTHER_HAZARDOUS_C</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_OTHER_HAZARDOUS_D">
+     <td>94</td>
+     <td>
+      <a href="#AIS_TYPE_OTHER_HAZARDOUS_D">AIS_TYPE_OTHER_HAZARDOUS_D</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_OTHER_RESERVED_1">
+     <td>95</td>
+     <td>
+      <a href="#AIS_TYPE_OTHER_RESERVED_1">AIS_TYPE_OTHER_RESERVED_1</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_OTHER_RESERVED_2">
+     <td>96</td>
+     <td>
+      <a href="#AIS_TYPE_OTHER_RESERVED_2">AIS_TYPE_OTHER_RESERVED_2</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_OTHER_RESERVED_3">
+     <td>97</td>
+     <td>
+      <a href="#AIS_TYPE_OTHER_RESERVED_3">AIS_TYPE_OTHER_RESERVED_3</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_OTHER_RESERVED_4">
+     <td>98</td>
+     <td>
+      <a href="#AIS_TYPE_OTHER_RESERVED_4">AIS_TYPE_OTHER_RESERVED_4</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_TYPE_OTHER_UNKNOWN">
+     <td>99</td>
+     <td>
+      <a href="#AIS_TYPE_OTHER_UNKNOWN">AIS_TYPE_OTHER_UNKNOWN</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AIS_NAV_STATUS">
+   <a href="#AIS_NAV_STATUS">AIS_NAV_STATUS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Navigational status of AIS vessel, enum duplicated from AIS standard, https://gpsd.gitlab.io/gpsd/AIVDM.html</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="UNDER_WAY">
+     <td>0</td>
+     <td>
+      <a href="#UNDER_WAY">UNDER_WAY</a>
+     </td>
+     <td>Under way using engine.</td>
+    </tr>
+    <tr id="AIS_NAV_ANCHORED">
+     <td>1</td>
+     <td>
+      <a href="#AIS_NAV_ANCHORED">AIS_NAV_ANCHORED</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_UN_COMMANDED">
+     <td>2</td>
+     <td>
+      <a href="#AIS_NAV_UN_COMMANDED">AIS_NAV_UN_COMMANDED</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_RESTRICTED_MANOEUVERABILITY">
+     <td>3</td>
+     <td>
+      <a href="#AIS_NAV_RESTRICTED_MANOEUVERABILITY">AIS_NAV_RESTRICTED_MANOEUVERABILITY</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_DRAUGHT_CONSTRAINED">
+     <td>4</td>
+     <td>
+      <a href="#AIS_NAV_DRAUGHT_CONSTRAINED">AIS_NAV_DRAUGHT_CONSTRAINED</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_MOORED">
+     <td>5</td>
+     <td>
+      <a href="#AIS_NAV_MOORED">AIS_NAV_MOORED</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_AGROUND">
+     <td>6</td>
+     <td>
+      <a href="#AIS_NAV_AGROUND">AIS_NAV_AGROUND</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_FISHING">
+     <td>7</td>
+     <td>
+      <a href="#AIS_NAV_FISHING">AIS_NAV_FISHING</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_SAILING">
+     <td>8</td>
+     <td>
+      <a href="#AIS_NAV_SAILING">AIS_NAV_SAILING</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_RESERVED_HSC">
+     <td>9</td>
+     <td>
+      <a href="#AIS_NAV_RESERVED_HSC">AIS_NAV_RESERVED_HSC</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_RESERVED_WIG">
+     <td>10</td>
+     <td>
+      <a href="#AIS_NAV_RESERVED_WIG">AIS_NAV_RESERVED_WIG</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_RESERVED_1">
+     <td>11</td>
+     <td>
+      <a href="#AIS_NAV_RESERVED_1">AIS_NAV_RESERVED_1</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_RESERVED_2">
+     <td>12</td>
+     <td>
+      <a href="#AIS_NAV_RESERVED_2">AIS_NAV_RESERVED_2</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_RESERVED_3">
+     <td>13</td>
+     <td>
+      <a href="#AIS_NAV_RESERVED_3">AIS_NAV_RESERVED_3</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_NAV_AIS_SART">
+     <td>14</td>
+     <td>
+      <a href="#AIS_NAV_AIS_SART">AIS_NAV_AIS_SART</a>
+     </td>
+     <td>Search And Rescue Transponder.</td>
+    </tr>
+    <tr id="AIS_NAV_UNKNOWN">
+     <td>15</td>
+     <td>
+      <a href="#AIS_NAV_UNKNOWN">AIS_NAV_UNKNOWN</a>
+     </td>
+     <td>Not available (default).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AIS_FLAGS">
+   <a href="#AIS_FLAGS">AIS_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>These flags are used in the AIS_VESSEL.fields bitmask to indicate validity of data in the other message fields. When set, the data is valid.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="AIS_FLAGS_POSITION_ACCURACY">
+     <td>1</td>
+     <td>
+      <a href="#AIS_FLAGS_POSITION_ACCURACY">AIS_FLAGS_POSITION_ACCURACY</a>
+     </td>
+     <td>1 = Position accuracy less than 10m, 0 = position accuracy greater than 10m.</td>
+    </tr>
+    <tr id="AIS_FLAGS_VALID_COG">
+     <td>2</td>
+     <td>
+      <a href="#AIS_FLAGS_VALID_COG">AIS_FLAGS_VALID_COG</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_FLAGS_VALID_VELOCITY">
+     <td>4</td>
+     <td>
+      <a href="#AIS_FLAGS_VALID_VELOCITY">AIS_FLAGS_VALID_VELOCITY</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_FLAGS_HIGH_VELOCITY">
+     <td>8</td>
+     <td>
+      <a href="#AIS_FLAGS_HIGH_VELOCITY">AIS_FLAGS_HIGH_VELOCITY</a>
+     </td>
+     <td>1 = Velocity over 52.5765m/s (102.2 knots)</td>
+    </tr>
+    <tr id="AIS_FLAGS_VALID_TURN_RATE">
+     <td>16</td>
+     <td>
+      <a href="#AIS_FLAGS_VALID_TURN_RATE">AIS_FLAGS_VALID_TURN_RATE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_FLAGS_TURN_RATE_SIGN_ONLY">
+     <td>32</td>
+     <td>
+      <a href="#AIS_FLAGS_TURN_RATE_SIGN_ONLY">AIS_FLAGS_TURN_RATE_SIGN_ONLY</a>
+     </td>
+     <td>Only the sign of the returned turn rate value is valid, either greater than 5deg/30s or less than -5deg/30s</td>
+    </tr>
+    <tr id="AIS_FLAGS_VALID_DIMENSIONS">
+     <td>64</td>
+     <td>
+      <a href="#AIS_FLAGS_VALID_DIMENSIONS">AIS_FLAGS_VALID_DIMENSIONS</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_FLAGS_LARGE_BOW_DIMENSION">
+     <td>128</td>
+     <td>
+      <a href="#AIS_FLAGS_LARGE_BOW_DIMENSION">AIS_FLAGS_LARGE_BOW_DIMENSION</a>
+     </td>
+     <td>Distance to bow is larger than 511m</td>
+    </tr>
+    <tr id="AIS_FLAGS_LARGE_STERN_DIMENSION">
+     <td>256</td>
+     <td>
+      <a href="#AIS_FLAGS_LARGE_STERN_DIMENSION">AIS_FLAGS_LARGE_STERN_DIMENSION</a>
+     </td>
+     <td>Distance to stern is larger than 511m</td>
+    </tr>
+    <tr id="AIS_FLAGS_LARGE_PORT_DIMENSION">
+     <td>512</td>
+     <td>
+      <a href="#AIS_FLAGS_LARGE_PORT_DIMENSION">AIS_FLAGS_LARGE_PORT_DIMENSION</a>
+     </td>
+     <td>Distance to port side is larger than 63m</td>
+    </tr>
+    <tr id="AIS_FLAGS_LARGE_STARBOARD_DIMENSION">
+     <td>1024</td>
+     <td>
+      <a href="#AIS_FLAGS_LARGE_STARBOARD_DIMENSION">AIS_FLAGS_LARGE_STARBOARD_DIMENSION</a>
+     </td>
+     <td>Distance to starboard side is larger than 63m</td>
+    </tr>
+    <tr id="AIS_FLAGS_VALID_CALLSIGN">
+     <td>2048</td>
+     <td>
+      <a href="#AIS_FLAGS_VALID_CALLSIGN">AIS_FLAGS_VALID_CALLSIGN</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIS_FLAGS_VALID_NAME">
+     <td>4096</td>
+     <td>
+      <a href="#AIS_FLAGS_VALID_NAME">AIS_FLAGS_VALID_NAME</a>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -6966,7 +8860,7 @@
    </strong>
    <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
   </blockquote>
-  <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the MAV_CMD entries</p>
+  <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. NaN and INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current yaw or latitude rather than a specific value). See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the MAV_CMD entries</p>
   <h3 id="MAV_CMD_NAV_WAYPOINT">MAV_CMD_NAV_WAYPOINT (<a href="#MAV_CMD_NAV_WAYPOINT">16</a>
    )
   </h3>
@@ -7007,7 +8901,7 @@
     </tr>
     <tr>
      <td>4: Yaw</td>
-     <td>Desired yaw angle at waypoint (rotary wing). NaN for unchanged.</td>
+     <td>Desired yaw angle at waypoint (rotary wing). NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
      <td>
      </td>
      <td>deg</td>
@@ -7073,7 +8967,7 @@
     </tr>
     <tr>
      <td>4: Yaw</td>
-     <td>Desired yaw angle. NaN for unchanged.</td>
+     <td>Desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
      <td>
      </td>
     </tr>
@@ -7139,7 +9033,7 @@
     </tr>
     <tr>
      <td>4</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle. NaN for unchanged.</td>
+     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
      <td>
      </td>
      <td>
@@ -7212,7 +9106,7 @@
     </tr>
     <tr>
      <td>4</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle.  NaN for unchanged.</td>
+     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle.  NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
      <td>
      </td>
      <td>
@@ -7330,7 +9224,7 @@
     </tr>
     <tr>
      <td>4: Yaw Angle</td>
-     <td>Desired yaw angle. NaN for unchanged.</td>
+     <td>Desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
      <td>
      </td>
      <td>deg</td>
@@ -7389,7 +9283,7 @@
     </tr>
     <tr>
      <td>4: Yaw</td>
-     <td>Yaw angle (if magnetometer present), ignored without magnetometer. NaN for unchanged.</td>
+     <td>Yaw angle (if magnetometer present), ignored without magnetometer. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
     </tr>
     <tr>
      <td>5</td>
@@ -7916,9 +9810,8 @@
     </tr>
     <tr>
      <td>3: Yaw Behavior</td>
-     <td>Yaw behavior of the vehicle. 0: vehicle front points to the center (default). 1: Hold last heading. 2: Leave yaw uncontrolled.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>Yaw behavior of the vehicle.</td>
+     <td>ORBIT_YAW_BEHAVIOUR</td>
      <td>
      </td>
     </tr>
@@ -7964,7 +9857,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+   </a>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -8207,7 +10100,7 @@
     </tr>
     <tr>
      <td>4: Yaw Angle</td>
-     <td>Yaw angle. NaN for unchanged.</td>
+     <td>Yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
      <td>
      </td>
      <td>deg</td>
@@ -8274,7 +10167,7 @@
     </tr>
     <tr>
      <td>4: Yaw</td>
-     <td>Yaw angle. NaN for unchanged.</td>
+     <td>Yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
      <td>deg</td>
     </tr>
     <tr>
@@ -9822,7 +11715,7 @@
     </tr>
     <tr>
      <td>4: Yaw</td>
-     <td>Yaw heading, NaN for unchanged. For planes indicates loiter direction (0: clockwise, 1: counter clockwise)</td>
+     <td>Yaw heading. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). For planes indicates loiter direction (0: clockwise, 1: counter clockwise)</td>
      <td>
      </td>
      <td>
@@ -9830,7 +11723,7 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>Latitude (deg * 1E7)</td>
+     <td>Latitude</td>
      <td>
      </td>
      <td>
@@ -9838,7 +11731,7 @@
     </tr>
     <tr>
      <td>6</td>
-     <td>Longitude (deg * 1E7)</td>
+     <td>Longitude</td>
      <td>
      </td>
      <td>
@@ -9980,42 +11873,54 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Sets the region of interest (ROI) to a location. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+   </a>Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
-     <td>1</td>
-     <td>Empty</td>
+     <td>1: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
-     <td>Latitude</td>
+     <td>5: Latitude</td>
+     <td>Latitude of ROI location</td>
+     <td>degE7</td>
     </tr>
     <tr>
-     <td>6</td>
-     <td>Longitude</td>
+     <td>6: Longitude</td>
+     <td>Longitude of ROI location</td>
+     <td>degE7</td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude</td>
+     <td>7: Altitude</td>
+     <td>Altitude of ROI location</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -10025,7 +11930,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+   </a>Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10035,8 +11940,8 @@
    </thead>
    <tbody>
     <tr>
-     <td>1</td>
-     <td>Empty</td>
+     <td>1: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
     </tr>
     <tr>
      <td>2</td>
@@ -10052,15 +11957,15 @@
     </tr>
     <tr>
      <td>5: Pitch Offset</td>
-     <td>pitch offset from next waypoint</td>
+     <td>Pitch offset from next waypoint, positive tilting up</td>
     </tr>
     <tr>
      <td>6: Roll Offset</td>
-     <td>roll offset from next waypoint</td>
+     <td>roll offset from next waypoint, positive banking to the right</td>
     </tr>
     <tr>
      <td>7: Yaw Offset</td>
-     <td>yaw offset from next waypoint</td>
+     <td>yaw offset from next waypoint, positive panning to the right</td>
     </tr>
    </tbody>
   </table>
@@ -10070,7 +11975,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+   </a>Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message. After this command the gimbal manager should go back to manual input if available, and otherwise assume a neutral position.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10080,8 +11985,8 @@
    </thead>
    <tbody>
     <tr>
-     <td>1</td>
-     <td>Empty</td>
+     <td>1: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
     </tr>
     <tr>
      <td>2</td>
@@ -10106,6 +12011,36 @@
     <tr>
      <td>7</td>
      <td>Empty</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_SET_ROI_SYSID">MAV_CMD_DO_SET_ROI_SYSID (<a href="#MAV_CMD_DO_SET_ROI_SYSID">198</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Mount tracks system with specified system ID. Determination of target vehicle position may be done with GLOBAL_POSITION_INT or any other means. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: System ID</td>
+     <td>sysid</td>
+     <td>
+      <em>min:</em>1 <em>max:</em>255 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>2: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -10193,7 +12128,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+   </a>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10427,6 +12362,11 @@
   <h3 id="MAV_CMD_DO_MOUNT_CONTROL">MAV_CMD_DO_MOUNT_CONTROL (<a href="#MAV_CMD_DO_MOUNT_CONTROL">205</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).
+
+
+  This message is ambiguous and inconsistent. It has been superseded by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE and MAV_CMD_DO_SET_ROI_*. The message can still be used to communicate with legacy gimbals implementing it.</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -10474,7 +12414,7 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>latitude in degrees * 1E7, set if appropriate mount mode.</td>
+     <td>latitude, set if appropriate mount mode.</td>
      <td>
      </td>
      <td>
@@ -10482,7 +12422,7 @@
     </tr>
     <tr>
      <td>6</td>
-     <td>longitude in degrees * 1E7, set if appropriate mount mode.</td>
+     <td>longitude, set if appropriate mount mode.</td>
      <td>
      </td>
      <td>
@@ -10976,6 +12916,8 @@
   <h3 id="MAV_CMD_DO_MOUNT_CONTROL_QUAT">MAV_CMD_DO_MOUNT_CONTROL_QUAT (<a href="#MAV_CMD_DO_MOUNT_CONTROL_QUAT">220</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -11767,10 +13709,36 @@
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>2: Enforce in-air</td>
-     <td>0: only arm-disarm when landed, 21196: enforce arming/disarming even in-air (during flight)</td>
+     <td>2: Force</td>
+     <td>0: arm-disarm unless prevented by safety checks (i.e. when landed), 21196: force arming/disarming (e.g. allow arming to override preflight checks and disarming in flight)</td>
      <td>
       <em>min:</em>0 <em>max:</em>21196 <em>increment:</em>21196</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_ILLUMINATOR_ON_OFF">MAV_CMD_ILLUMINATOR_ON_OFF (<a href="#MAV_CMD_ILLUMINATOR_ON_OFF">405</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Turns illuminators ON/OFF. An illuminator is a light source that is used for lighting up dark areas external to the sytstem: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Enable</td>
+     <td>0: Illuminators OFF, 1: Illuminators ON</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
@@ -11906,6 +13874,14 @@
       <em>increment:</em>1</td>
      <td>us</td>
     </tr>
+    <tr>
+     <td>7: Response Target</td>
+     <td>Target address of message stream (if message has target address fields). 0: Flight-stack default (recommended), 1: address of requestor, 2: broadcast.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+     <td>
+     </td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE (<a href="#MAV_CMD_REQUEST_MESSAGE">512</a>
@@ -11935,6 +13911,36 @@
      <td>Index id (if appropriate). The use of this parameter (if any), must be defined in the requested message.</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7: Response Target</td>
+     <td>Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requestor, 2: broadcast.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
@@ -12372,6 +14378,162 @@
      <td>Repeat count.</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE">MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE">1000</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>High level setpoint to be sent to a gimbal manager to set a gimbal attitude. It is possible to set combinations of the values below. E.g. an angle as well as a desired angular rate can be used to get to this angle at a certain angular rate, or an angular rate only will result in continuous turning. NaN is to be used to signal unset. Note: a gimbal is never to react to this command but only the gimbal manager.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Tilt angular rate</td>
+     <td>Tilt/pitch angular rate (positive to point up).</td>
+     <td>
+     </td>
+     <td>deg/s</td>
+    </tr>
+    <tr>
+     <td>2: Pan angular rate</td>
+     <td>Pan/yaw angular rate (positive to pan to the right).</td>
+     <td>
+     </td>
+     <td>deg/s</td>
+    </tr>
+    <tr>
+     <td>3: Tilt angle</td>
+     <td>Pitch/tilt angle relative to world horizon (negative is to tilt down, positive to tilt up).</td>
+     <td>
+      <em>min:</em>
+      -180 
+      <em>max:</em>180 </td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>4: Pan angle</td>
+     <td>Yaw/pan angle (positive is pan to the right, relative to vehicle for PAN mode, absolute to North for HOLD mode)</td>
+     <td>
+      <em>min:</em>
+      -180 
+      <em>max:</em>180 </td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>5: Gimbal manager flags</td>
+     <td>Gimbal manager flags to use.</td>
+     <td>GIMBAL_MANAGER_FLAGS</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT">MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT">1001</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>If the gimbal manager supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Point x</td>
+     <td>Point to track x value.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>2: Point y</td>
+     <td>Point to track y value.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>7: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE">MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE">1002</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>If the gimbal supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Top left corner x</td>
+     <td>Top left corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>2: Top left corner y</td>
+     <td>Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>3: Bottom right corner x</td>
+     <td>Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>4: Bottom right corner y</td>
+     <td>Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>7: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -14639,7 +16801,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>seq</td>
@@ -15149,7 +17311,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>fix_type</td>
@@ -15268,7 +17430,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Position uncertainty. Positive for up.</td>
+     <td>Position uncertainty.</td>
     </tr>
     <tr>
      <td style="color:blue;">v_acc<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -15281,7 +17443,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Altitude uncertainty. Positive for up.</td>
+     <td>Altitude uncertainty.</td>
     </tr>
     <tr>
      <td style="color:blue;">vel_acc<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -15294,7 +17456,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Speed uncertainty. Positive for up.</td>
+     <td>Speed uncertainty.</td>
     </tr>
     <tr>
      <td style="color:blue;">hdg_acc<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -15308,6 +17470,19 @@
       </a>
      </td>
      <td>Heading / track uncertainty</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">yaw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t</td>
+     <td>cdeg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north.</td>
     </tr>
    </tbody>
   </table>
@@ -15484,7 +17659,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>xacc</td>
@@ -15593,7 +17768,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>press_abs</td>
@@ -15803,6 +17978,16 @@
      <td>float</td>
      <td>rad/s</td>
      <td>Yaw angular speed</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">repr_offset_q<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>Rotation offset by which the attitude quaternion and angular speed vector should be rotated for user display (quaternion with [w, x, y, z] order, zero-rotation is [1, 0, 0, 0], send [0, 0, 0, 0] if field not supported). This field is intended for systems in which the reference attitude may change during flight. For example, tailsitters VTOLs rotate their reference attitude by 90 degrees between hover mode and fixed wing mode, thus repr_offset_q is equal to [1, 0, 0, 0] in hover mode and equal to [0.7071, 0, 0.7071, 0] in fixed wing mode.</td>
     </tr>
    </tbody>
   </table>
@@ -16139,7 +18324,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>The RAW values of the servo outputs (for RC input from the remote, use the RC_CHANNELS messages). The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%.</p>
+   </a>Superseded by ACTUATOR_OUTPUT_STATUS. The RAW values of the servo outputs (for RC input from the remote, use the RC_CHANNELS messages). The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16154,7 +18339,7 @@
      <td>time_usec</td>
      <td>uint32_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>port</td>
@@ -16430,7 +18615,7 @@
    <a href="#messages">
     [Message]
    </a>Message encoding a mission item. This message is emitted to announce
-                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). See also https://mavlink.io/en/services/mission.html.</p>
+                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). NaN may be used to indicate an optional/default value (e.g. to use the system's current latitude or yaw rather than a specific value). See also https://mavlink.io/en/services/mission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16990,7 +19175,7 @@
      </td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
    </tbody>
   </table>
@@ -17038,7 +19223,7 @@
      </td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
    </tbody>
   </table>
@@ -17461,7 +19646,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>q</td>
@@ -17594,7 +19779,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>estimator_type</td>
@@ -17717,7 +19902,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>estimator_type</td>
@@ -18313,7 +20498,7 @@
    <a href="#messages">
     [Message]
    </a>Message encoding a mission item. This message is emitted to announce
-                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). See also https://mavlink.io/en/services/mission.html.</p>
+                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). NaN or INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current latitude, yaw rather than a specific value). See also https://mavlink.io/en/services/mission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19855,7 +22040,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>roll</td>
@@ -19977,7 +22162,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>roll_ailerons</td>
@@ -20113,7 +22298,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>chan1_raw</td>
@@ -20224,7 +22409,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>controls</td>
@@ -20256,7 +22441,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Flags as bitfield, reserved for future use.</td>
+     <td>Flags as bitfield, 1: indicate simulation using lockstep.</td>
     </tr>
    </tbody>
   </table>
@@ -20283,7 +22468,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>sensor_id</td>
@@ -20440,7 +22625,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Global position/attitude estimate from a vision source.</p>
+   </a>Local position/attitude estimate from a vision source.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20461,19 +22646,19 @@
      <td>x</td>
      <td>float</td>
      <td>m</td>
-     <td>Global X position</td>
+     <td>Local X position</td>
     </tr>
     <tr>
      <td>y</td>
      <td>float</td>
      <td>m</td>
-     <td>Global Y position</td>
+     <td>Local Y position</td>
     </tr>
     <tr>
      <td>z</td>
      <td>float</td>
      <td>m</td>
-     <td>Global Z position</td>
+     <td>Local Z position</td>
     </tr>
     <tr>
      <td>roll</td>
@@ -20676,7 +22861,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>xacc</td>
@@ -20799,7 +22984,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>sensor_id</td>
@@ -20894,7 +23079,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>xacc</td>
@@ -21124,19 +23309,19 @@
      <td>vn</td>
      <td>float</td>
      <td>m/s</td>
-     <td>True velocity in NORTH direction in earth-fixed NED frame</td>
+     <td>True velocity in north direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>ve</td>
      <td>float</td>
      <td>m/s</td>
-     <td>True velocity in EAST direction in earth-fixed NED frame</td>
+     <td>True velocity in east direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>vd</td>
      <td>float</td>
      <td>m/s</td>
-     <td>True velocity in DOWN direction in earth-fixed NED frame</td>
+     <td>True velocity in down direction in earth-fixed NED frame</td>
     </tr>
    </tbody>
   </table>
@@ -21304,7 +23489,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp for image frame (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp for image frame (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>seq</td>
@@ -21339,7 +23524,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>fix_type</td>
@@ -21388,19 +23573,19 @@
      <td>vn</td>
      <td>int16_t</td>
      <td>cm/s</td>
-     <td>GPS velocity in NORTH direction in earth-fixed NED frame</td>
+     <td>GPS velocity in north direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>ve</td>
      <td>int16_t</td>
      <td>cm/s</td>
-     <td>GPS velocity in EAST direction in earth-fixed NED frame</td>
+     <td>GPS velocity in east direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>vd</td>
      <td>int16_t</td>
      <td>cm/s</td>
-     <td>GPS velocity in DOWN direction in earth-fixed NED frame</td>
+     <td>GPS velocity in down direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>cog</td>
@@ -21440,7 +23625,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>sensor_id</td>
@@ -21535,7 +23720,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>attitude_quaternion</td>
@@ -22053,7 +24238,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>fix_type</td>
@@ -22166,6 +24351,19 @@
       </a>
      </td>
      <td>Age of DGPS info</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">yaw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t</td>
+     <td>cdeg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north.</td>
     </tr>
    </tbody>
   </table>
@@ -23245,7 +25443,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>q</td>
@@ -23307,7 +25505,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>group_mlx</td>
@@ -23362,7 +25560,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>group_mlx</td>
@@ -23403,7 +25601,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>altitude_monotonic</td>
@@ -23652,7 +25850,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>x_acc</td>
@@ -23824,7 +26022,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value.</td>
+     <td>Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value. If individual cell voltages are unknown or not measured for this battery, then the overall battery voltage should be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining voltage. This can be extended to multiple cells if the total voltage is greater than 2 * (UINT16_MAX - 1).</td>
     </tr>
     <tr>
      <td>current_battery</td>
@@ -24055,7 +26253,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>target_num</td>
@@ -24315,7 +26513,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -24438,7 +26636,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>wind_x</td>
@@ -24518,7 +26716,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>gps_id</td>
@@ -24631,7 +26829,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS velocity in NORTH direction in earth-fixed NED frame</td>
+     <td>GPS velocity in north direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>ve</td>
@@ -24641,7 +26839,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS velocity in EAST direction in earth-fixed NED frame</td>
+     <td>GPS velocity in east direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>vd</td>
@@ -24651,7 +26849,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS velocity in DOWN direction in earth-fixed NED frame</td>
+     <td>GPS velocity in down direction in earth-fixed NED frame</td>
     </tr>
     <tr>
      <td>speed_accuracy</td>
@@ -24693,6 +26891,19 @@
       </a>
      </td>
      <td>Number of satellites visible.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">yaw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t</td>
+     <td>cdeg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north</td>
     </tr>
    </tbody>
   </table>
@@ -25333,7 +27544,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>vibration_x</td>
@@ -25387,7 +27598,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>This message can be requested by sending the MAV_CMD_GET_HOME_POSITION command. The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The position the system will return to and land on. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
+   </a>This message can be requested by sending the MAV_CMD_GET_HOME_POSITION command. The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25466,7 +27677,7 @@
      </td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
    </tbody>
   </table>
@@ -25564,7 +27775,7 @@
      </td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
    </tbody>
   </table>
@@ -26002,7 +28213,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>x</td>
@@ -26145,6 +28356,30 @@
      </td>
      <td>Status text message, without null termination character</td>
     </tr>
+    <tr>
+     <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Unique (opaque) identifier for this statustext message.  May be used to reassemble a logical long-statustext message from a sequence of chunks.  A value of zero indicates this is the only chunk in the sequence and the message can be emitted immediately.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">chunk_seq<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>This chunk's sequence number; indexing is from zero.  Any null character in the text field is taken to mean this was the last chunk.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="DEBUG">DEBUG (<a href="#DEBUG">
@@ -26279,13 +28514,18 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by PLAY_TUNE_V2 (2019-10).
+
+
+  New version explicitly defines format. More interoperable.</p>
   <p>
    <a href="#messages">
     [Message]
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Control vehicle tone generation (buzzer)</p>
+   </strong>Control vehicle tone generation (buzzer).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26884,6 +29124,11 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).
+
+
+  This message is being superseded by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE. The message can still be used to communicate with legacy gimbals implementing it.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -26923,7 +29168,7 @@
      <td>yaw</td>
      <td>float</td>
      <td>deg</td>
-     <td>Yaw relative to vehicle(set to NaN for invalid).</td>
+     <td>Yaw relative to vehicle (set to NaN for invalid).</td>
     </tr>
     <tr>
      <td style="color:blue;">yaw_absolute<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -26932,7 +29177,7 @@
      </td>
      <td>float</td>
      <td>deg</td>
-     <td>Yaw in absolute frame, North is 0 (set to NaN for invalid).</td>
+     <td>Yaw in absolute frame relative to Earth's North, north is 0 (set to NaN for invalid).</td>
     </tr>
    </tbody>
   </table>
@@ -27361,6 +29606,698 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="GIMBAL_MANAGER_INFORMATION">GIMBAL_MANAGER_INFORMATION (<a href="#GIMBAL_MANAGER_INFORMATION">
+    #280
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about a high level gimbal manager. This message should be requested by a ground station using MAV_CMD_REQUEST_MESSAGE.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>cap_flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_MANAGER_CAP_FLAGS">GIMBAL_MANAGER_CAP_FLAGS</a>
+     </td>
+     <td>Bitmap of gimbal capability flags.</td>
+    </tr>
+    <tr>
+     <td>gimbal_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Gimbal component ID that this gimbal manager is responsible for.</td>
+    </tr>
+    <tr>
+     <td>tilt_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum tilt/pitch angle (positive: up, negative: down)</td>
+    </tr>
+    <tr>
+     <td>tilt_min</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum tilt/pitch angle (positive: up, negative: down)</td>
+    </tr>
+    <tr>
+     <td>tilt_rate_max</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum tilt/pitch angular rate (positive: up, negative: down)</td>
+    </tr>
+    <tr>
+     <td>pan_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum pan/yaw angle (positive: to the right, negative: to the left)</td>
+    </tr>
+    <tr>
+     <td>pan_min</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum pan/yaw angle (positive: to the right, negative: to the left)</td>
+    </tr>
+    <tr>
+     <td>pan_rate_max</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum pan/yaw angular rate (positive: to the right, negative: to the left)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_STATUS">GIMBAL_MANAGER_STATUS (<a href="#GIMBAL_MANAGER_STATUS">
+    #281
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Current status about a high level gimbal manager. This message should be broadcast at a low regular rate (e.g. 5Hz).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
+     </td>
+     <td>High level gimbal manager flags currently applied.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_SET_ATTITUDE">GIMBAL_MANAGER_SET_ATTITUDE (<a href="#GIMBAL_MANAGER_SET_ATTITUDE">
+    #282
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>High level message to control a gimbal's attitude. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
+     </td>
+     <td>High level gimbal manager flags to use.</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation, the frame is depends on whether the flag GIMBAL_MANAGER_FLAGS_YAW_LOCK is set)</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_x</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X component of angular velocity, positive is banking to the right, NaN to be ignored.</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_y</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y component of angular velocity, positive is tilting up, NaN to be ignored.</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_z</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z component of angular velocity, positive is panning to the right, NaN to be ignored.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_DEVICE_INFORMATION">GIMBAL_DEVICE_INFORMATION (<a href="#GIMBAL_DEVICE_INFORMATION">
+    #283
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about a low level gimbal. This message should be requested by the gimbal manager or a ground station using MAV_CMD_REQUEST_MESSAGE.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>vendor_name</td>
+     <td>uint8_t[32]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Name of the gimbal vendor</td>
+    </tr>
+    <tr>
+     <td>model_name</td>
+     <td>uint8_t[32]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Name of the gimbal model</td>
+    </tr>
+    <tr>
+     <td>firmware_version</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Version of the gimbal firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+    </tr>
+    <tr>
+     <td>cap_flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_DEVICE_CAP_FLAGS">GIMBAL_DEVICE_CAP_FLAGS</a>
+     </td>
+     <td>Bitmap of gimbal capability flags.</td>
+    </tr>
+    <tr>
+     <td>tilt_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum tilt/pitch angle (positive: up, negative: down)</td>
+    </tr>
+    <tr>
+     <td>tilt_min</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum tilt/pitch angle (positive: up, negative: down)</td>
+    </tr>
+    <tr>
+     <td>tilt_rate_max</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum tilt/pitch angular rate (positive: up, negative: down)</td>
+    </tr>
+    <tr>
+     <td>pan_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum pan/yaw angle (positive: to the right, negative: to the left)</td>
+    </tr>
+    <tr>
+     <td>pan_min</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum pan/yaw angle (positive: to the right, negative: to the left)</td>
+    </tr>
+    <tr>
+     <td>pan_rate_max</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum pan/yaw angular rate (positive: to the right, negative: to the left)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_DEVICE_SET_ATTITUDE">GIMBAL_DEVICE_SET_ATTITUDE (<a href="#GIMBAL_DEVICE_SET_ATTITUDE">
+    #284
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Low level message to control a gimbal device's attitude. This message is to be sent from the gimbal manager to the gimbal device component. Angles and rates can be set to NaN according to use case.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS">GIMBAL_DEVICE_FLAGS</a>
+     </td>
+     <td>Low level gimbal flags.</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation, the frame is depends on whether the flag GIMBAL_DEVICE_FLAGS_YAW_LOCK is set, set all fields to NaN if only angular velocity should be used)</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_x</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X component of angular velocity, positive is banking to the right, NaN to be ignored.</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_y</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y component of angular velocity, positive is tilting up, NaN to be ignored.</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_z</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z component of angular velocity, positive is panning to the right, NaN to be ignored.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_DEVICE_ATTITUDE_STATUS">GIMBAL_DEVICE_ATTITUDE_STATUS (<a href="#GIMBAL_DEVICE_ATTITUDE_STATUS">
+    #285
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Message reporting the status of a gimbal device. This message should be broadcasted by a gimbal device component. The angles encoded in the quaternion are in the global frame (roll: positive is tilt to the right, pitch: positive is tilting up, yaw is turn to the right). This message should be broadcast at a low regular rate (e.g. 10Hz).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_DEVICE_FLAGS">GIMBAL_DEVICE_FLAGS</a>
+     </td>
+     <td>Current gimbal flags set.</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation, the frame is depends on whether the flag GIMBAL_DEVICE_FLAGS_YAW_LOCK is set)</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_x</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X component of angular velocity (NaN if unknown)</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_y</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y component of angular velocity (NaN if unknown)</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_z</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z component of angular velocity (NaN if unknown)</td>
+    </tr>
+    <tr>
+     <td>failure_flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS">GIMBAL_DEVICE_ERROR_FLAGS</a>
+     </td>
+     <td>Failure flags (0 for no failure)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AUTOPILOT_STATE_FOR_GIMBAL_DEVICE">AUTOPILOT_STATE_FOR_GIMBAL_DEVICE (<a href="#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE">
+    #286
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Low level message containing autopilot state relevant for a gimbal device. This message is to be sent from the gimbal manager to the gimbal device component. The data of this message server for the gimbal's estimator corrections in particular horizon compensation, as well as the autopilot's control intention e.g. feed forward angular control in z-axis.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_us</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>Quaternion components of autopilot attitude: w, x, y, z (1 0 0 0 is the null-rotation, Hamiltonian convention).</td>
+    </tr>
+    <tr>
+     <td>q_estimated_delay_us</td>
+     <td>uint32_t</td>
+     <td>us</td>
+     <td>Estimated delay of the attitude data.</td>
+    </tr>
+    <tr>
+     <td>vx</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>X Speed in NED (North, East, Down).</td>
+    </tr>
+    <tr>
+     <td>vy</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Y Speed in NED (North, East, Down).</td>
+    </tr>
+    <tr>
+     <td>vz</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Z Speed in NED (North, East, Down).</td>
+    </tr>
+    <tr>
+     <td>v_estimated_delay_us</td>
+     <td>uint32_t</td>
+     <td>us</td>
+     <td>Estimated delay of the speed data.</td>
+    </tr>
+    <tr>
+     <td>feed_forward_angular_velocity_z</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Feed forward Z component of angular velocity, positive is yawing to the right, NaN to be ignored. This is to indicate if the autopilot is actively yawing.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="WIFI_CONFIG_AP">WIFI_CONFIG_AP (<a href="#WIFI_CONFIG_AP">
     #299
    </a>
@@ -27444,6 +30381,206 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="AIS_VESSEL">AIS_VESSEL (<a href="#AIS_VESSEL">
+    #301
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>The location and information of an AIS vessel</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>MMSI</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Mobile Marine Service Identifier, 9 decimal digits</td>
+    </tr>
+    <tr>
+     <td>lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Latitude</td>
+    </tr>
+    <tr>
+     <td>lon</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Longitude</td>
+    </tr>
+    <tr>
+     <td>COG</td>
+     <td>uint16_t</td>
+     <td>cdeg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Course over ground</td>
+    </tr>
+    <tr>
+     <td>heading</td>
+     <td>uint16_t</td>
+     <td>cdeg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>True heading</td>
+    </tr>
+    <tr>
+     <td>velocity</td>
+     <td>uint16_t</td>
+     <td>cm/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Speed over ground</td>
+    </tr>
+    <tr>
+     <td>turn_rate</td>
+     <td>int8_t</td>
+     <td>cdeg/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Turn rate</td>
+    </tr>
+    <tr>
+     <td>navigational_status</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#AIS_NAV_STATUS">AIS_NAV_STATUS</a>
+     </td>
+     <td>Navigational status</td>
+    </tr>
+    <tr>
+     <td>type</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#AIS_TYPE">AIS_TYPE</a>
+     </td>
+     <td>Type of vessels</td>
+    </tr>
+    <tr>
+     <td>dimension_bow</td>
+     <td>uint16_t</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Distance from lat/lon location to bow</td>
+    </tr>
+    <tr>
+     <td>dimension_stern</td>
+     <td>uint16_t</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Distance from lat/lon location to stern</td>
+    </tr>
+    <tr>
+     <td>dimension_port</td>
+     <td>uint8_t</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Distance from lat/lon location to port side</td>
+    </tr>
+    <tr>
+     <td>dimension_starboard</td>
+     <td>uint8_t</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Distance from lat/lon location to starboard side</td>
+    </tr>
+    <tr>
+     <td>callsign</td>
+     <td>char[7]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The vessel callsign</td>
+    </tr>
+    <tr>
+     <td>name</td>
+     <td>char[20]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The vessel name</td>
+    </tr>
+    <tr>
+     <td>tslc</td>
+     <td>uint16_t</td>
+     <td>s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Time since last communication in seconds</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#AIS_FLAGS">AIS_FLAGS</a>
+     </td>
+     <td>Bitmask to indicate various statuses including valid data fields</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="UAVCAN_NODE_STATUS">UAVCAN_NODE_STATUS (<a href="#UAVCAN_NODE_STATUS">
     #310
    </a>
@@ -27475,7 +30612,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>uptime_sec</td>
@@ -27557,7 +30694,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>uptime_sec</td>
@@ -27917,7 +31054,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>sensor_type</td>
@@ -27937,7 +31074,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Distance of obstacles around the vehicle with index 0 corresponding to North + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.</td>
+     <td>Distance of obstacles around the vehicle with index 0 corresponding to north + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.</td>
     </tr>
     <tr>
      <td>increment</td>
@@ -28006,7 +31143,7 @@
      <td>
       <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
-     <td>Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to MAV_FRAME_GLOBAL, which is North aligned. For body-mounted sensors use MAV_FRAME_BODY_FRD, which is vehicle front aligned.</td>
+     <td>Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to MAV_FRAME_GLOBAL, which is north aligned. For body-mounted sensors use MAV_FRAME_BODY_FRD, which is vehicle front aligned.</td>
     </tr>
    </tbody>
   </table>
@@ -28041,7 +31178,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>frame_id</td>
@@ -28220,15 +31357,13 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Describe a trajectory using an array of up-to 5 waypoints in the local frame.</p>
+   </strong>Describe a trajectory using an array of up-to 5 waypoints in the local frame (MAV_FRAME_LOCAL_NED).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28248,7 +31383,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>valid_points</td>
@@ -28388,15 +31523,13 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Describe a trajectory using an array of up-to 5 bezier points in the local frame.</p>
+   </strong>Describe a trajectory using an array of up-to 5 bezier control points in the local frame (MAV_FRAME_LOCAL_NED).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28411,44 +31544,44 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>valid_points</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Number of valid points (up-to 5 waypoints are possible)</td>
+     <td>Number of valid control points (up-to 5 points are possible)</td>
     </tr>
     <tr>
      <td>pos_x</td>
      <td>float[5]</td>
      <td>m</td>
-     <td>X-coordinate of starting bezier point, set to NaN if not being used</td>
+     <td>X-coordinate of bezier control points. Set to NaN if not being used</td>
     </tr>
     <tr>
      <td>pos_y</td>
      <td>float[5]</td>
      <td>m</td>
-     <td>Y-coordinate of starting bezier point, set to NaN if not being used</td>
+     <td>Y-coordinate of bezier control points. Set to NaN if not being used</td>
     </tr>
     <tr>
      <td>pos_z</td>
      <td>float[5]</td>
      <td>m</td>
-     <td>Z-coordinate of starting bezier point, set to NaN if not being used</td>
+     <td>Z-coordinate of bezier control points. Set to NaN if not being used</td>
     </tr>
     <tr>
      <td>delta</td>
      <td>float[5]</td>
      <td>s</td>
-     <td>Bezier time horizon, set to NaN if velocity/acceleration should not be incorporated</td>
+     <td>Bezier time horizon. Set to NaN if velocity/acceleration should not be incorporated</td>
     </tr>
     <tr>
      <td>pos_yaw</td>
      <td>float[5]</td>
      <td>rad</td>
-     <td>Yaw, set to NaN for unchanged</td>
+     <td>Yaw. Set to NaN for unchanged</td>
     </tr>
    </tbody>
   </table>
@@ -28565,13 +31698,13 @@
      <td>timestamp</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>last_heartbeat</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp of the last successful sbd session. The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp of the last successful sbd session. The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>failed_sessions</td>
@@ -28851,7 +31984,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>name</td>
@@ -28912,7 +32045,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>radius</td>
@@ -28965,47 +32098,6 @@
       </a>
      </td>
      <td>Altitude of center point. Coordinate system depends on frame field.</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="STATUSTEXT_LONG">STATUSTEXT_LONG (<a href="#STATUSTEXT_LONG">
-    #365
-   </a>
-   )
-  </h3>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Status text message (use only for important status and error messages). The full message payload can be used for status text, but we recommend that updates be kept concise. Note: The message is intended as a less restrictive replacement for STATUSTEXT.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>severity</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_SEVERITY">MAV_SEVERITY</a>
-     </td>
-     <td>Severity of status. Relies on the definitions within RFC-5424.</td>
-    </tr>
-    <tr>
-     <td>text</td>
-     <td>char[254]</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Status text message, without null termination character.</td>
     </tr>
    </tbody>
   </table>
@@ -29221,7 +32313,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>The raw values of the actuator outputs.</p>
+   </strong>The raw values of the actuator outputs (e.g. on Pixhawk, from MAIN, AUX ports). This message supersedes SERVO_OUTPUT_RAW.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29358,7 +32450,7 @@
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE">MAV_TUNNEL_PAYLOAD_TYPE</a>
      </td>
-     <td>A code that identifies the content of the payload (0 for unknown, which is the default). If this code is less than 32768, it is a 'registered' payload type and the corresponding code should be added to the MAV_TUNNEL_PAYLOAD_TYPE enum, and the entry possibly to https://github.com/mavlink/mavlink/definition_files/tunnel_message_payload_types.xml. Software creators can register blocks of types as needed. Codes greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
+     <td>A code that identifies the content of the payload (0 for unknown, which is the default). If this code is less than 32768, it is a 'registered' payload type and the corresponding code should be added to the MAV_TUNNEL_PAYLOAD_TYPE enum. Software creators can register blocks of types as needed. Codes greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
     </tr>
     <tr>
      <td>payload_length</td>
@@ -29408,7 +32500,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>uptime</td>
@@ -29533,6 +32625,232 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="COMPONENT_INFORMATION">COMPONENT_INFORMATION (<a href="#COMPONENT_INFORMATION">
+    #395
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about a component. For camera components instead use CAMERA_INFORMATION, and for autopilots use AUTOPILOT_VERSION. Components including GCSes should consider supporting requests of this message via MAV_CMD_REQUEST_MESSAGE.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>vendor_name</td>
+     <td>uint8_t[32]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Name of the component vendor</td>
+    </tr>
+    <tr>
+     <td>model_name</td>
+     <td>uint8_t[32]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Name of the component model</td>
+    </tr>
+    <tr>
+     <td>firmware_version</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Version of the component firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+    </tr>
+    <tr>
+     <td>hardware_version</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Version of the component hardware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+    </tr>
+    <tr>
+     <td>capability_flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#COMPONENT_CAP_FLAGS">COMPONENT_CAP_FLAGS</a>
+     </td>
+     <td>Bitmap of component capability flags.</td>
+    </tr>
+    <tr>
+     <td>component_definition_version</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component definition version (iteration)</td>
+    </tr>
+    <tr>
+     <td>component_definition_uri</td>
+     <td>char[140]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component definition URI (if any, otherwise only basic functions will be available). The XML format is not yet specified and work in progress.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="PLAY_TUNE_V2">PLAY_TUNE_V2 (<a href="#PLAY_TUNE_V2">
+    #400
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Play vehicle tone/tune (buzzer). Supersedes message PLAY_TUNE.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>format</td>
+     <td>uint32_t</td>
+     <td>
+      <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
+     </td>
+     <td>Tune format</td>
+    </tr>
+    <tr>
+     <td>tune</td>
+     <td>char[248]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tune definition as a NULL-terminated string.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SUPPORTED_TUNES">SUPPORTED_TUNES (<a href="#SUPPORTED_TUNES">
+    #401
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Tune formats supported by vehicle. This should be emitted as response to MAV_CMD_REQUEST_MESSAGE.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>format</td>
+     <td>uint32_t</td>
+     <td>
+      <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
+     </td>
+     <td>Bitfield of supported tune formats.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="WHEEL_DISTANCE">WHEEL_DISTANCE (<a href="#WHEEL_DISTANCE">
     #9000
    </a>
@@ -29589,7 +32907,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Basic ID message.</p>
+   </strong>Data for filling the OpenDroneID Basic ID message. This and the below messages are primarily meant for feeding data to/from an OpenDroneID implementation. E.g. https://github.com/opendroneid/opendroneid-core-c. See also the ASTM Remote ID standard at https://www.astm.org/Standards/F3411.htm. The usage of these messages is documented at https://mavlink.io/en/services/opendroneid.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29604,7 +32922,7 @@
      <td>id_type</td>
      <td>uint8_t</td>
      <td>
-      <a href="#MAV_ODID_IDTYPE">MAV_ODID_IDTYPE</a>
+      <a href="#MAV_ODID_ID_TYPE">MAV_ODID_ID_TYPE</a>
      </td>
      <td>Indicates the format for the uas_id field of this message.</td>
     </tr>
@@ -29612,7 +32930,7 @@
      <td>ua_type</td>
      <td>uint8_t</td>
      <td>
-      <a href="#MAV_ODID_UATYPE">MAV_ODID_UATYPE</a>
+      <a href="#MAV_ODID_UA_TYPE">MAV_ODID_UA_TYPE</a>
      </td>
      <td>Indicates the type of UA (Unmanned Aircraft).</td>
     </tr>
@@ -29623,7 +32941,7 @@
       <a href="#">
       </a>
      </td>
-     <td>UAS ID following the format specified by id_type. Shall be filled with nulls in the unused portion of the field.</td>
+     <td>UAS (Unmanned Aircraft System) ID following the format specified by id_type. Shall be filled with nulls in the unused portion of the field.</td>
     </tr>
    </tbody>
   </table>
@@ -29660,7 +32978,7 @@
      <td>
       <a href="#MAV_ODID_STATUS">MAV_ODID_STATUS</a>
      </td>
-     <td>Indicates whether the Unmanned Aircraft is on the ground or in the air.</td>
+     <td>Indicates whether the unmanned aircraft is on the ground or in the air.</td>
     </tr>
     <tr>
      <td>direction</td>
@@ -29670,7 +32988,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Direction over ground (not heading, but direction of movement) in degrees * 100: 0.0 - 359.99 degrees.</td>
+     <td>Direction over ground (not heading, but direction of movement) measured clockwise from true North: 0 - 35999 centi-degrees. If unknown: 36100 centi-degrees.</td>
     </tr>
     <tr>
      <td>speed_horizontal</td>
@@ -29680,7 +32998,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Ground speed.</td>
+     <td>Ground speed. Positive only. If unknown: 25500 cm/s. If speed is larger than 25425 cm/s, use 25425 cm/s.</td>
     </tr>
     <tr>
      <td>speed_vertical</td>
@@ -29690,7 +33008,7 @@
       <a href="#">
       </a>
      </td>
-     <td>The vertical speed. Up is positive.</td>
+     <td>The vertical speed. Up is positive. If unknown: 6300 cm/s. If speed is larger than 6200 cm/s, use 6200 cm/s. If lower than -6200 cm/s, use -6200 cm/s.</td>
     </tr>
     <tr>
      <td>latitude</td>
@@ -29700,7 +33018,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Current latitude of the UA.</td>
+     <td>Current latitude of the unmanned aircraft. If unknown: 0 (both Lat/Lon).</td>
     </tr>
     <tr>
      <td>longitude</td>
@@ -29710,7 +33028,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Current longitude of the UA.</td>
+     <td>Current longitude of the unmanned aircraft. If unknown: 0 (both Lat/Lon).</td>
     </tr>
     <tr>
      <td>altitude_barometric</td>
@@ -29720,7 +33038,7 @@
       <a href="#">
       </a>
      </td>
-     <td>The altitude calculated from the barometric pressue. Reference is against 29.92inHg or 1013.2mb.</td>
+     <td>The altitude calculated from the barometric pressue. Reference is against 29.92inHg or 1013.2mb. If unknown: -1000 m.</td>
     </tr>
     <tr>
      <td>altitude_geodetic</td>
@@ -29730,7 +33048,7 @@
       <a href="#">
       </a>
      </td>
-     <td>The geodetic altitude as defined by WGS84.</td>
+     <td>The geodetic altitude as defined by WGS84. If unknown: -1000 m.</td>
     </tr>
     <tr>
      <td>height_reference</td>
@@ -29750,7 +33068,7 @@
       <a href="#">
       </a>
      </td>
-     <td>The current height of the UA above the take-off location or the ground as indicated by height_reference.</td>
+     <td>The current height of the unmanned aircraft above the take-off location or the ground as indicated by height_reference. If unknown: -1000 m.</td>
     </tr>
     <tr>
      <td>horizontal_accuracy</td>
@@ -29800,7 +33118,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Seconds after the full hour. Typically the GPS outputs a time of week value in milliseconds. That value can be easily converted for this field using ((float) (time_week_ms % (60*60*1000))) / 1000.</td>
+     <td>Seconds after the full hour with reference to UTC time. Typically the GPS outputs a time-of-week value in milliseconds. First convert that to UTC and then convert for this field using ((float) (time_week_ms % (60*60*1000))) / 1000.</td>
     </tr>
     <tr>
      <td>timestamp_accuracy</td>
@@ -29827,12 +33145,13 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Authentication message. The Authentication Message defines a field that can provide a means of authenticity for the identity of the UAS (Unmanned Aircraft System) sending the message.</p>
+   </strong>Data for filling the OpenDroneID Authentication message. The Authentication Message defines a field that can provide a means of authenticity for the identity of the UAS (Unmanned Aircraft System). The Authentication message can have two different formats. Five data pages are supported. For data page 0, the fields PageCount, Length and TimeStamp are present and AuthData is only 17 bytes. For data page 1 through 4, PageCount, Length and TimeStamp are not present and the size of AuthData is 23 bytes.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Field Name</th>
      <th>Type</th>
+     <th>Units</th>
      <th>Values</th>
      <th>Description</th>
     </tr>
@@ -29842,7 +33161,9 @@
      <td>authentication_type</td>
      <td>uint8_t</td>
      <td>
-      <a href="#MAV_ODID_AUTH">MAV_ODID_AUTH</a>
+     </td>
+     <td>
+      <a href="#MAV_ODID_AUTH_TYPE">MAV_ODID_AUTH_TYPE</a>
      </td>
      <td>Indicates the type of authentication.</td>
     </tr>
@@ -29850,23 +33171,58 @@
      <td>data_page</td>
      <td>uint8_t</td>
      <td>
+     </td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td>Allowed range is 0 - 15.</td>
+     <td>Allowed range is 0 - 4.</td>
+    </tr>
+    <tr>
+     <td>page_count</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>This field is only present for page 0. Allowed range is 0 - 5.</td>
+    </tr>
+    <tr>
+     <td>length</td>
+     <td>uint8_t</td>
+     <td>bytes</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>This field is only present for page 0. Total bytes of authentication_data from all data pages. Allowed range is 0 - 109 (17 + 23*4).</td>
+    </tr>
+    <tr>
+     <td>timestamp</td>
+     <td>uint32_t</td>
+     <td>s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>This field is only present for page 0. 32 bit Unix Timestamp in seconds since 00:00:00 01/01/2019.</td>
     </tr>
     <tr>
      <td>authentication_data</td>
      <td>uint8_t[23]</td>
      <td>
+     </td>
+     <td>
       <a href="#">
       </a>
      </td>
-     <td>Opaque authentication data. Sixteen pages are supported for a total of 16 * 23 = 368 bytes. Shall be filled with nulls in the unused portion of the field.</td>
+     <td>Opaque authentication data. For page 0, the size is only 17 bytes. For other pages, the size is 23 bytes. Shall be filled with nulls in the unused portion of the field.</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="OPEN_DRONE_ID_SELFID">OPEN_DRONE_ID_SELFID (<a href="#OPEN_DRONE_ID_SELFID">
+  <h3 id="OPEN_DRONE_ID_SELF_ID">OPEN_DRONE_ID_SELF_ID (<a href="#OPEN_DRONE_ID_SELF_ID">
     #12903
    </a>
    )
@@ -29879,7 +33235,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Self-ID message. The Self-ID Message is an opportunity for the Remote Pilot to (optionally) declare their identity and purpose of the flight. This message can provide additional information that could reduce the threat profile of a UA flying in a particular area or manner.</p>
+   </strong>Data for filling the OpenDroneID Self ID message. The Self ID Message is an opportunity for the operator to (optionally) declare their identity and purpose of the flight. This message can provide additional information that could reduce the threat profile of a UA (Unmanned Aircraft) flying in a particular area or manner.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29922,7 +33278,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for filling the OpenDroneID System message. The System Message contains general system information including the remote pilot location and possible aircraft group information.</p>
+   </strong>Data for filling the OpenDroneID System message. The System Message contains general system information including the operator location and possible aircraft group information.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29942,30 +33298,30 @@
      <td>
       <a href="#MAV_ODID_LOCATION_SRC">MAV_ODID_LOCATION_SRC</a>
      </td>
-     <td>Specifies the location source for the remote pilot location.</td>
+     <td>Specifies the location source for the operator location.</td>
     </tr>
     <tr>
-     <td>remote_pilot_latitude</td>
+     <td>operator_latitude</td>
      <td>int32_t</td>
      <td>degE7</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Latitude of the remote pilot.</td>
+     <td>Latitude of the operator. If unknown: 0 (both Lat/Lon).</td>
     </tr>
     <tr>
-     <td>remote_pilot_longitude</td>
+     <td>operator_longitude</td>
      <td>int32_t</td>
      <td>degE7</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Longitude of the remote pilot.</td>
+     <td>Longitude of the operator. If unknown: 0 (both Lat/Lon).</td>
     </tr>
     <tr>
-     <td>group_count</td>
+     <td>area_count</td>
      <td>uint16_t</td>
      <td>
      </td>
@@ -29973,37 +33329,126 @@
       <a href="#">
       </a>
      </td>
-     <td>Number of aircraft in group or formation (default 0).</td>
+     <td>Number of aircraft in the area, group or formation (default 1).</td>
     </tr>
     <tr>
-     <td>group_radius</td>
+     <td>area_radius</td>
      <td>uint16_t</td>
      <td>m</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Radius of cylindrical area of group or formation (default 0).</td>
+     <td>Radius of the cylindrical area of the group or formation (default 0).</td>
     </tr>
     <tr>
-     <td>group_ceiling</td>
+     <td>area_ceiling</td>
      <td>float</td>
      <td>m</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Group Operations Ceiling relative to WGS84.</td>
+     <td>Area Operations Ceiling relative to WGS84. If unknown: -1000 m.</td>
     </tr>
     <tr>
-     <td>group_floor</td>
+     <td>area_floor</td>
      <td>float</td>
      <td>m</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Group Operations Floor relative to WGS84.</td>
+     <td>Area Operations Floor relative to WGS84. If unknown: -1000 m.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="OPEN_DRONE_ID_OPERATOR_ID">OPEN_DRONE_ID_OPERATOR_ID (<a href="#OPEN_DRONE_ID_OPERATOR_ID">
+    #12905
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Data for filling the OpenDroneID Operator ID message, which contains the CAA (Civil Aviation Authority) issued operator ID.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>operator_id_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_ODID_OPERATOR_ID_TYPE">MAV_ODID_OPERATOR_ID_TYPE</a>
+     </td>
+     <td>Indicates the type of the operator_id field.</td>
+    </tr>
+    <tr>
+     <td>operator_id</td>
+     <td>char[20]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Text description or numeric value expressed as ASCII characters. Shall be filled with nulls in the unused portion of the field.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="OPEN_DRONE_ID_MESSAGE_PACK">OPEN_DRONE_ID_MESSAGE_PACK (<a href="#OPEN_DRONE_ID_MESSAGE_PACK">
+    #12915
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>An OpenDroneID message pack is a container for multiple encoded OpenDroneID messages (i.e. not in the format given for the above messages descriptions but after encoding into the compressed OpenDroneID byte format). Used e.g. when transmitting on Bluetooth 5.0 Long Range/Extended Advertising or on WiFi Neighbor Aware Networking.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>single_message_size</td>
+     <td>uint8_t</td>
+     <td>bytes</td>
+     <td>This field must currently always be equal to 25 bytes, since all encoded OpenDroneID messages are specificed to have this length.</td>
+    </tr>
+    <tr>
+     <td>msg_pack_size</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Number of encoded messages in the pack (not the number of bytes). Allowed range is 1 - 10.</td>
+    </tr>
+    <tr>
+     <td>messages</td>
+     <td>uint8_t[250]</td>
+     <td>
+     </td>
+     <td>Concatenation of encoded OpenDroneID messages. Shall be filled with nulls in the unused portion of the field.</td>
     </tr>
    </tbody>
   </table>
