@@ -9,10 +9,10 @@
 ## Introduction
 
 The gimbal protocol allows MAVLink control over the attitude/orientation of cameras (or other sensors) mounted on the drone.
-The orientation can be controlled in: real time using (e.g. a joystick from a ground station), set as part of a mission, or based on camera tracking.
+The orientation can be: controlled in real time using (e.g. a joystick from a ground station), set as part of a mission, or moved based on camera tracking.
 
 The protocol also defines what status information is published for developers, configurators, as well as users of the drone.
-It additionally provides guidance to manage conflicts between commands from different sources. 
+It additionally provides guidance to manage conflicts between commands from different sources.
 
 The protocol supports a number of hardware setups, and enables gimbals with varying capabilities.
 
@@ -30,7 +30,7 @@ The gimbal manager and gimbal device expose respective *message sets* that can b
 
 The key concept to understand is that a *Gimbal Manager* has a 1:1 relationship with a particular *Gimbal Device*, and is the only party on the MAVLink network that is allowed to directly command that device (and does so using the *Gimbal Device message set*).
 
-> **Note** The gimbal device must act only upon messages that come from the associated gimbal manager! 
+> **Note** The gimbal device must act only upon messages that come from the associated gimbal manager!
   The device will however *broadcast* its status to all parties on the network (not just its manager).
 
 MAVLink applications (ground stations, developer APIs like the MAVSDK, etc.), and any other software that wants to control a particular gimbal, must do so via its *Gimbal Manager*, using the *Gimbal Manager message set*.
@@ -121,9 +121,9 @@ Gimbal manager commands and messages have a param respective field to indicate t
 #### Discovery of gimbal manager
 
 A ground station should initially discover all gimbal managers by sending a broadcast [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) for [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
-Every gimbal manager should respond (with `GIMBAL_MANAGER_INFORMATION`).
+Every gimbal manager should respond with [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
 
-The [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) contains important information such as gimbal capabilities. [GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS), maximum angles and angle rates, as well as the `gimbal_component` which is the component ID of the gimbal device controlled by this gimbal manager.
+The [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) contains important information such as gimbal capabilities ([GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS)), maximum angles and angle rates, as well as the `gimbal_component` which is the component ID of the gimbal device controlled by this gimbal manager.
 
 #### Gimbal manager status
 
@@ -138,23 +138,23 @@ This allows controlling the gimbal with angles, or angular rates, or both.
 
 #### Discovery of gimbal device
 
-The MAVlink node where the gimbal manager is implemented needs to discover gimbal devices by sending a broadcast [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) for [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).
-Every gimbal device should respond with `GIMBAL_DEVICE_INFORMATION`.
+The MAVlink node where the gimbal manager is implemented needs to discover gimbal devices by sending a broadcast [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE_2) for [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).
+Every gimbal device should respond with [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).
 
 The MAVLink node should then create as many gimbal manager instances as gimbal devices found.
 
 #### Control of a gimbal device
 
-To control a gimbal should use [GIMBAL_DEVICE_SET_ATTITUDE](#GIMBAL_DEVICE_SET_ATTITUDE) to control set the angle and/or angular rate of the gimbal device.
+To control the angle and/or angular rate of the gimbal device the message [GIMBAL_DEVICE_SET_ATTITUDE](#GIMBAL_DEVICE_SET_ATTITUDE) should be used.
 If the gimbal manager has multiple gimbal control inputs available it should deconflict them as explained below.
 
 #### Autopilot state for gimbal device
 
-If the gimbal manager is implemented in the autopilot it should also send the message [AUTOPILOT_STATE_FOR_GIMBAL_DEVICE](#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE). This data is required by the gimbal device's attitude estimator (horizon compensation), as well as to anticipate the vehicle's movements (e.g. the feed forward angular velocity in z-axis, so the current yaw intention).
+The autopilot should also send the message [AUTOPILOT_STATE_FOR_GIMBAL_DEVICE](#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE) to the gimbal device. This data is required by the gimbal device's attitude estimator (horizon compensation), as well as to anticipate the vehicle's movements (e.g. the feed forward angular velocity in z-axis, so the current yaw intention).
 
 ### Gimbal device broadcast/status messages
 
-The gimbal device should send out its attitude and status in [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS) at a regular rate, e.g. 10 Hz. This message is a meant as broadcast, so it's not only sent to the gimbal manager but also to the ground station directly. It is the only message from gimbal device to the ground station directly.
+The gimbal device should send out its attitude and status in [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS) at a regular rate, e.g. 10 Hz. This message is a meant as broadcast, so it's not only sent to the gimbal manager but also to the ground station directly. It is the only message from the gimbal device to the ground station directly.
 
 ### Gimbal manager deconfliction rules
 
@@ -163,7 +163,7 @@ This can create situations where the gimbal would receive conflicting messages f
 
 The deconfliction of various inputs is the task of the gimbal manager. The gimbal manager should implement the rules below:
 
-1. If an attitude has been set using a command ([DO_GIMBAL_MANAGER_ATTITUDE](#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE), [DO_SET_ROI_LOCATION](#MAV_CMD_DO_SET_ROI_LOCATION), [DO_GIMBAL_MANAGER_TRACK_POINT](#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT), or [DO_GIMBAL_MANAGER_TRACK_RECTANGLE](#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE) it takes precedence over any other input until a [DO_GIMBAL_MANAGER_ATTITUDE](#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE) with [GIMBAL_MANAGER_FLAGS_NONE](#GIMBAL_MODE_NONE) or a [DO_SET_ROI_NONE](#MAV_CMD_DO_SET_ROI_NONE) is set.
+1. If an attitude has been set using a command ([DO_GIMBAL_MANAGER_ATTITUDE](#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE), [DO_SET_ROI_LOCATION](#MAV_CMD_DO_SET_ROI_LOCATION), [DO_GIMBAL_MANAGER_TRACK_POINT](#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT), or [DO_GIMBAL_MANAGER_TRACK_RECTANGLE](#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE) it takes precedence over any other input until a [DO_GIMBAL_MANAGER_ATTITUDE](#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE) with `GIMBAL_MANAGER_FLAGS_NONE` or a [DO_SET_ROI_NONE](#MAV_CMD_DO_SET_ROI_NONE) is set.
    Commands will interfere with each other, whichever command is received last takes precedence.
 2. A gimbal angle or tracking location initiated by a command can be nudged by [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE) if the "nudge bit" is set.
 3. A gimbal angle or tracking location initiated by a command can be overridden by [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE) if the "override bit" is set.
@@ -192,7 +192,7 @@ Custom gimbal settings can be accomplished using the component information micro
 
 ## FAQ
 
-### How to set System ID?
+### How to set the System ID of a gimbal device?
 
 The system ID of all components (e.g. autopilot, companion computer, camera, gimbal) on a drone/system need to be the same.
 This needs to be either done manually by configuration, or alternatively, the components need to listen to the heartbeat of the autopilot and then adjust their system ID accordingly.
@@ -200,7 +200,7 @@ This needs to be either done manually by configuration, or alternatively, the co
 ### When is gimbal device also gimbal manager?
 
 The default case should be to use the gimbal manager in the autopilot.
-The only exception to this are integrated solutions containing a camera and gimbal for functionality like like visual tracking.
+The only exception to this are integrated solutions containing a camera and gimbal for functionality like visual tracking.
 
 ### How to test gimbal device?
 
@@ -211,7 +211,7 @@ TODO: add link to MAVSDK test once it exists.
 
 ### How to control a gimbal with the old MAVLink protocol?
 
-Gimbals that use the (old) Gimbal protocol v1 should still be supported by autopilot software.
+Gimbals that use the (old) Gimbal [protocol v1](../services/gimbal.md) should still be supported by autopilot software.
 Basically, the gimbal manager needs to translate the commands to the old protocol.
 
 ### How to control a gimbal without MAVLink support?
@@ -233,7 +233,7 @@ The recommendation is to make it configurable using for instance a parameter.
 
 ### Gimbal Manager Messages
 
-This is the set of messages/enums for communicating with the gimbal manager (by GCS, autopilot, etc.).
+This is the set of messages/enums for communicating with the gimbal manager (by ground station, autopilot, etc.).
 
 Message | Description
 -- | --
@@ -260,7 +260,7 @@ Enum | Description
 
 ### Gimbal Device Messages
 
-This is the set of messages/enums for communication between gimbal manager and gimbal.
+This is the set of messages/enums for communication between gimbal manager and gimbal device.
 
 Message | Description
 -- | --
