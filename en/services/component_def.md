@@ -1,20 +1,25 @@
-# Component definition file
+# Component Definition File
 
-## Introduction
+A component information file is an XML file that describes the custom settings of a MAVLink component (like a gimbal or companion computer).
 
-The component information file allows a component like a gimbal or companion computer to expose and describe custom settings. Essentially, a component can have settings accessible by MAVLink parameters and describe these params using an xml definition file. The file can be distributed using MAVLink FTP.
+The location of the file can be requested from a component.
+Usually the component hosts the file and distributes it using [MAVLink FTP](../services/ftp.md).
 
-Note that the component definition file mechanism is developed based on the [camera definition file](..services/camera_def.md) and therefore very similar.
+The settings themselves can be queried and set using [MAVLink Parameters](../services/parameter.md) (a GCS client may use the file to generate a settings UI).
 
-## Discovery mechanism
+> **Note** The component definition file mechanism is based on the [camera definition file](../services/camera_def.md), and therefore very similar.
 
-Initially, the ground station needs to find available components. It can do so by broadcasting the command [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) and components should answer with [COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION).
+## Discovery Mechanism
 
-The component information contains the URL to the XML file which can be downloaded using [MAVLink FTP](../services/ftp.md).
+The ground station must first discover all components on the network by broadcasting the command [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) (specifying the [COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) message).
+All components should respond with `COMPONENT_INFORMATION`.
 
-## Example definition file
+The `COMPONENT_INFORMATION.component_definition_uri` field contains the definition file URL.
+Typically this is a [MAVLink FTP URL](../services/ftp.md) address (i.e. the component itself), but it might also be an address on the Internet.
 
-Here is an example for one custom parameter defined for a gimbal:
+## Example Definition File
+
+This is an example of a gimbal component definition file that defines a single custom parameter:
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -39,7 +44,9 @@ Here is an example for one custom parameter defined for a gimbal:
 
 For the example above, the parameter `MAX_PAN_RATE` can be set using the `PARAM_EXT` parameter protocol (for more information, check the [camera definition](../services/camera_def.md)).
 
-## Compression of definition file
+## File Compression
 
-In order to save flash space on the component and during transfer, the file can be compressed using gzip. If the URL of the definition file ends with `.xml.gz` it is the gzip compressed stream of the text file.
-(Note that only the file stream is compressed but it is not an archive like `.zip` or `.tar.gz`, so there is no folder structure.)
+In order to save flash space on the component and during transfer, the file can be compressed using *gzip*.
+If the URL of the definition file ends with `.xml.gz` it is the gzip compressed stream of the text file.
+
+> **Note** Tthe file stream is compressed but it is not an archive like `.zip` or `.tar.gz` (so there is no folder structure).
