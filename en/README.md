@@ -49,7 +49,7 @@ C#      | [mavgen](getting_started/generate_libraries.md#mavgen) | Y |  |  |
 Objective C | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
 Java    | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | |
 Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | Y | Y | Y | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
-JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
+JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | N | 
 TypeScript/JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | N | TypeScript classes which can be used with [node-mavlink](https://github.com/ifrunistuttgart/node-mavlink)
 Lua     | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | | 
 Swift   | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
