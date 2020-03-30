@@ -1,8 +1,8 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 
-# Dialect: python_array_test
+# 方言：python_array_test
 
-*This is a human-readable form of the XML definition file: [python_array_test.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/python_array_test.xml).*
+*这是一种XML定义文件的可读形式：[python_array_test.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/python_array_test.xml).*
 
 <span></span>
 
