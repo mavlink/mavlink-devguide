@@ -2,15 +2,15 @@
 
 # 方言：python_array_test
 
-*这是一种XML定义文件的可读形式：[python_array_test.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/python_array_test.xml).*
+*这是一种 XML 定义文件的可读形式： [python_array_test.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/python_array_test.xml) .*
 
 <span></span>
 
-> **Note** MAVLink 2 messages have an ID > 255 and are marked up using **(MAVLink 2)** in their description.
+> **Note** MAVLink 2 消息的 ID > 255，并在其描述中使用 **(MAVLink 2)** 进行标记。
 
 <span id="mav2_extension_field"></span>
 
-> **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue. 
+> **Note** 已添加到 MAVLink 1 消息中的 MAVLink 2 扩展字段以蓝色显示。 
 
 <style>
 td {
