@@ -1,6 +1,6 @@
 <!-- THIS FILE IS AUTO-GENERATED (DO NOT UPDATE GITBOOK): https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 
-# Dialects {#dialects}
+# 方言 {#dialects}
 
 MAVLink *dialects* are XML files that define *protocol-* and *vendor-specific* messages, enums and commands.
 
