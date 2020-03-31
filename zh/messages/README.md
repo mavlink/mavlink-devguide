@@ -4,13 +4,13 @@
 
 MAVLink *dialects* 一种 XML 文件，用来定义 *protocol-* 和 *vendor-specific* 消息， 枚举和命令。
 
-方言可能 *include* 其它 MAVLink XML 文件。 一种典型的模式是方言包含 [common.xml](../messages/common.md) （其中包括 *MAVLink standard definitions* ），使用供应商或协议特定消息对其进行扩展。 While a dialect can include any other message definition, only only a single level of nesting is supported ([at time of writing](https://github.com/ArduPilot/pymavlink/pull/248)).
+方言可能 *include* 其它 MAVLink XML 文件。 一种典型的模式是方言包含 [common.xml](../messages/common.md) （其中包括 *MAVLink standard definitions* ），使用供应商或协议特定消息对其进行扩展。 虽然方言可以包含任何其他消息定义，但是仅支持单层嵌套 ( [at time of writing](https://github.com/ArduPilot/pymavlink/pull/248) )。
 
-> **Note** Vendor forks of MAVLink may contain dialect messages that are not yet merged, and hence will not appear in this documentation.
+> **Note** MAVLink的供应商分支可能包含尚未合并的方言消息，因此不会出现在本文档中。
 
-The dialect files are stored alongside in separate XML files in [mavlink/message definitions](https://github.com/mavlink/mavlink/blob/master/message_definitions/).
+多个方言文件在 [mavlink/message definitions](https://github.com/mavlink/mavlink/blob/master/message_definitions/) 中并存于单独的 XML文件。
 
-The human-readable forms of the XML dialect files are linked below:
+XML 方言文件的可读格式链接如下：
 
 * [ASLUAV.xml](ASLUAV.md)
 * [ardupilotmega.xml](ardupilotmega.md)
