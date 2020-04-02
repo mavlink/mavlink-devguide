@@ -2,7 +2,7 @@
 
 # 方言：python_array_test
 
-*这是一种 XML 定义文件的可读形式： [python_array_test.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/python_array_test.xml) .*
+*这是一种 XML 定义文件的可读形式： [python_array_test.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/python_array_test.xml) 。*
 
 <span></span>
 
