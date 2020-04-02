@@ -1,8 +1,7 @@
 <html>
  <body>
   <p>
-   <strong>MAVLink 包含文件：</strong>
-   <a href="common.md">common.xml</a>
+   <strong>MAVLink 包含文件：</strong> <a href="common.md">common.xml</a>
   </p>
   <h2 id="enums">MAVLink类型枚举</h2>
   <h3 id="UAVIONIX_ADSB_OUT_DYNAMIC_STATE">
@@ -69,8 +68,8 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
+     <th>值</th>
+     <th>字段名称</th>
      <th>参数描述</th>
     </tr>
    </thead>
@@ -718,7 +717,7 @@
      <td>
       <a href="#UAVIONIX_ADSB_OUT_DYNAMIC_GPS_FIX">UAVIONIX_ADSB_OUT_DYNAMIC_GPS_FIX</a>
      </td>
-     <td>0-1: no fix, 2: 2D fix, 3: 3D fix, 4: DGPS, 5: RTK</td>
+     <td>0-1：无修正，2：2D 修正，3：3D 修正，4：DGPS，5：RTK</td>
     </tr>
     <tr>
      <td>numSats</td>
@@ -729,77 +728,77 @@
       <a href="#">
       </a>
      </td>
-     <td>Number of satellites visible. If unknown set to UINT8_MAX</td>
+     <td>可见卫星数量。 如果未知设置为 UINT8_MAX</td>
     </tr>
     <tr>
      <td>baroAltMSL</td>
      <td>int32_t</td>
-     <td>mbar</td>
+     <td>毫巴</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Barometric pressure altitude (MSL) relative to a standard atmosphere of 1013.2 mBar and NOT bar corrected altitude (m * 1E-3). (up +ve). If unknown set to INT32_MAX</td>
+     <td>相对于标准大气层1013.2毫巴和不带校正高度（MSL）的几何压力高度（MSL），而不受校正高度（m * 1E-3）。 （up +ve）。 如果未知设置为 UINT32_MAX</td>
     </tr>
     <tr>
      <td>accuracyHor</td>
      <td>uint32_t</td>
-     <td>mm</td>
+     <td>毫米</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Horizontal accuracy in mm (m * 1E-3). If unknown set to UINT32_MAX</td>
+     <td>水平精度单位为毫米（m*1E-3）。 如果未知设置为 UINT32_MAX</td>
     </tr>
     <tr>
      <td>accuracyVert</td>
      <td>uint16_t</td>
-     <td>cm</td>
+     <td>厘米</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Vertical accuracy in cm. If unknown set to UINT16_MAX</td>
+     <td>以厘米为单位的垂直精度。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>accuracyVel</td>
      <td>uint16_t</td>
-     <td>mm/s</td>
+     <td>毫米/秒</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Velocity accuracy in mm/s (m * 1E-3). If unknown set to UINT16_MAX</td>
+     <td>水平精度单位为毫米（m*1E-3）。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>velVert</td>
      <td>int16_t</td>
-     <td>cm/s</td>
+     <td>厘米/秒</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>GPS vertical speed in cm/s. If unknown set to INT16_MAX</td>
+     <td>GPS垂直速度，单位为cm / s。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>velNS</td>
      <td>int16_t</td>
-     <td>cm/s</td>
+     <td>厘米/秒</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>North-South velocity over ground in cm/s North +ve. If unknown set to INT16_MAX</td>
+     <td>地面上的南北速度，以cm / s为单位 North + ve。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>VelEW</td>
      <td>int16_t</td>
-     <td>cm/s</td>
+     <td>厘米/秒</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>East-West velocity over ground in cm/s East +ve. If unknown set to INT16_MAX</td>
+     <td>地面上东西方向的速度，以cm / s 为单位 East + ve。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>emergencyStatus</td>
@@ -809,7 +808,7 @@
      <td>
       <a href="#UAVIONIX_ADSB_EMERGENCY_STATUS">UAVIONIX_ADSB_EMERGENCY_STATUS</a>
      </td>
-     <td>Emergency status</td>
+     <td>紧急消息</td>
     </tr>
     <tr>
      <td>state</td>
@@ -819,7 +818,7 @@
      <td>
       <a href="#UAVIONIX_ADSB_OUT_DYNAMIC_STATE">UAVIONIX_ADSB_OUT_DYNAMIC_STATE</a>
      </td>
-     <td>ADS-B transponder dynamic input state flags</td>
+     <td>ADS-B应答器动态输入状态标志</td>
     </tr>
     <tr>
      <td>squawk</td>
@@ -830,29 +829,21 @@
       <a href="#">
       </a>
      </td>
-     <td>Mode A code (typically 1200 [0x04B0] for VFR)</td>
+     <td>模式A代码（对于VFR，通常为1200 [0x04B0]）</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="UAVIONIX_ADSB_TRANSCEIVER_HEALTH_REPORT">UAVIONIX_ADSB_TRANSCEIVER_HEALTH_REPORT (<a href="#UAVIONIX_ADSB_TRANSCEIVER_HEALTH_REPORT">
-    #10003
-   </a>
-   )
+  <h3 id="UAVIONIX_ADSB_TRANSCEIVER_HEALTH_REPORT">UAVIONIX_ADSB_TRANSCEIVER_HEALTH_REPORT（<a href="#UAVIONIX_ADSB_TRANSCEIVER_HEALTH_REPORT">#10003</a>）
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Transceiver heartbeat with health report (updated every 10s)</p>
+   <a href="#messages">[消息]</a> <strong>（MAVLink 2）</strong> 带有健康报告的收发器心跳（每10秒更新一次）</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数值</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -862,7 +853,7 @@
      <td>
       <a href="#UAVIONIX_ADSB_RF_HEALTH">UAVIONIX_ADSB_RF_HEALTH</a>
      </td>
-     <td>ADS-B transponder messages</td>
+     <td>ADS-B应答器消息</td>
     </tr>
    </tbody>
   </table>
