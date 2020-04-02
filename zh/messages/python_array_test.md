@@ -6,7 +6,7 @@
 
 <span></span>
 
-> **Note** MAVLink 2 消息的 ID > 255，并在其描述中使用 **(MAVLink 2)** 进行标记。
+> **Note** MAVLink 2 有一个 ID > 255的消息，并在其描述中使用 **（MAVLink 2）** 进行标记。
 
 <span id="mav2_extension_field"></span>
 
