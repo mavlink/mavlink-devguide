@@ -556,7 +556,7 @@
    <p>MAVLink 命令（MAV_CMD）和消息是不同的！ 这些命令定义了最多7个参数的值，这些参数打包在“任务协议”和“命令协议”中使用的 INSIDE 特定消息中。 执行任务或者需要从请求中确认和/或重试逻辑时使用命令。 否则使用消息。</p>
   </blockquote>
   <h2 id="messages">MAVLink 消息</h2>
-  <h3 id="UAVIONIX_ADSB_OUT_CFG">UAVIONIX_ADSB_OUT_CFG （<a href="#UAVIONIX_ADSB_OUT_CFG">#10001</a>）
+  <h3 id="UAVIONIX_ADSB_OUT_CFG">UAVIONIX_ADSB_OUT_CFG （ <a href="#UAVIONIX_ADSB_OUT_CFG">#10001</a> ）
   </h3>
   <p>
    <a href="#messages">[消息]</a> <strong>（MAVLink 2）</strong> 用于配置ADS-B应答器的静态数据（在POR的10秒内发送，此后每10秒发送一次）</p>
@@ -611,7 +611,7 @@
      <td>
       <a href="#UAVIONIX_ADSB_OUT_CFG_AIRCRAFT_SIZE">UAVIONIX_ADSB_OUT_CFG_AIRCRAFT_SIZE</a>
      </td>
-     <td>Aircraft length and width encoding (table 2-35 of DO-282B)</td>
+     <td>机身长度和宽度编码（DO-282B的表 2-35）</td>
     </tr>
     <tr>
      <td>gpsOffsetLat</td>
@@ -621,7 +621,7 @@
      <td>
       <a href="#UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LAT">UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LAT</a>
      </td>
-     <td>GPS antenna lateral offset (table 2-36 of DO-282B)</td>
+     <td>GPS天线纬度偏移（DO-282B的表2-36）</td>
     </tr>
     <tr>
      <td>gpsOffsetLon</td>
@@ -631,17 +631,17 @@
      <td>
       <a href="#UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LON">UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LON</a>
      </td>
-     <td>GPS antenna longitudinal offset from nose [if non-zero, take position (in meters) divide by 2 and add one] (table 2-37 DO-282B)</td>
+     <td>GPS天线从机头经度偏移[如果非零，取得位置（以米为单位）除以2并加一]（DO-282B的表2-37）</td>
     </tr>
     <tr>
      <td>stallSpeed</td>
      <td>uint16_t</td>
-     <td>cm/s</td>
+     <td>厘米/秒</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Aircraft stall speed in cm/s</td>
+     <td>飞机失速速度（厘米/秒）</td>
     </tr>
     <tr>
      <td>rfSelect</td>
@@ -651,42 +651,34 @@
      <td>
       <a href="#UAVIONIX_ADSB_OUT_RF_SELECT">UAVIONIX_ADSB_OUT_RF_SELECT</a>
      </td>
-     <td>ADS-B transponder reciever and transmit enable flags</td>
+     <td>ADS-B应答器接收器和发送使能标志</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="UAVIONIX_ADSB_OUT_DYNAMIC">UAVIONIX_ADSB_OUT_DYNAMIC (<a href="#UAVIONIX_ADSB_OUT_DYNAMIC">
-    #10002
-   </a>
-   )
+  <h3 id="UAVIONIX_ADSB_OUT_DYNAMIC">UAVIONIX_ADSB_OUT_DYNAMIC（ <a href="#UAVIONIX_ADSB_OUT_DYNAMIC">#10002</a> ）
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Dynamic data used to generate ADS-B out transponder data (send at 5Hz)</p>
+   <a href="#messages">[消息]</a> <strong>（MAVLink 2）</strong> 用于生成ADS-B输出应答器数据的动态数据（以5Hz频率发送）</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Units</th>
-     <th>Values</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数值</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>utcTime</td>
      <td>uint32_t</td>
-     <td>s</td>
+     <td>秒</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>UTC time in seconds since GPS epoch (Jan 6, 1980). If unknown set to UINT32_MAX</td>
+     <td>自GPS时代以来的UTC时间（以秒为单位）（1980年1月6日）。 如果未知设置为 UINT32_MAX</td>
     </tr>
     <tr>
      <td>gpsLat</td>
@@ -696,7 +688,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Latitude WGS84 (deg * 1E7). If unknown set to INT32_MAX</td>
+     <td>纬度WGS84（度* 1E7）。 如果未知设置为 UINT32_MAX</td>
     </tr>
     <tr>
      <td>gpsLon</td>
@@ -706,17 +698,17 @@
       <a href="#">
       </a>
      </td>
-     <td>Longitude WGS84 (deg * 1E7). If unknown set to INT32_MAX</td>
+     <td>经度WGS84（度* 1E7）。 如果未知设置为 UINT32_MAX</td>
     </tr>
     <tr>
      <td>gpsAlt</td>
      <td>int32_t</td>
-     <td>mm</td>
+     <td>毫米</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Altitude (WGS84). UP +ve. If unknown set to INT32_MAX</td>
+     <td>高度(WGS84)。 UP +ve。 如果未知设置为 UINT32_MAX</td>
     </tr>
     <tr>
      <td>gpsFix</td>
