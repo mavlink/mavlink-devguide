@@ -97,6 +97,39 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="SCRIPTING_CMD">
+   <a href="#SCRIPTING_CMD">SCRIPTING_CMD</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="SCRIPTING_CMD_REPL_START">
+     <td>0</td>
+     <td>
+      <a href="#SCRIPTING_CMD_REPL_START">SCRIPTING_CMD_REPL_START</a>
+     </td>
+     <td>Start a REPL session.</td>
+    </tr>
+    <tr id="SCRIPTING_CMD_REPL_STOP">
+     <td>1</td>
+     <td>
+      <a href="#SCRIPTING_CMD_REPL_STOP">SCRIPTING_CMD_REPL_STOP</a>
+     </td>
+     <td>End a REPL session.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="LIMITS_STATE">
    <a href="#LIMITS_STATE">LIMITS_STATE</a>
   </h3>
@@ -2000,6 +2033,13 @@
      </td>
      <td>Set if EKF's predicted horizontal position (absolute) estimate is good.</td>
     </tr>
+    <tr id="EKF_UNINITIALIZED">
+     <td>1024</td>
+     <td>
+      <a href="#EKF_UNINITIALIZED">EKF_UNINITIALIZED</a>
+     </td>
+     <td>Set if EKF has never been healthy.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="PID_TUNING_AXIS">
@@ -3031,6 +3071,65 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_DO_SET_RESUME_REPEAT_DIST">MAV_CMD_DO_SET_RESUME_REPEAT_DIST (<a href="#MAV_CMD_DO_SET_RESUME_REPEAT_DIST">215</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Set the distance to be repeated on mission resume</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Distance</td>
+     <td>Distance.</td>
+     <td>m</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_NAV_ALTITUDE_WAIT">MAV_CMD_NAV_ALTITUDE_WAIT (<a href="#MAV_CMD_NAV_ALTITUDE_WAIT">83</a>
    )
   </h3>
@@ -4016,6 +4115,29 @@
     <tr>
      <td>7</td>
      <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_SCRIPTING">MAV_CMD_SCRIPTING (<a href="#MAV_CMD_SCRIPTING">42701</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Control onboard scripting.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Scripting command to execute</td>
+     <td>SCRIPTING_CMD</td>
     </tr>
    </tbody>
   </table>
