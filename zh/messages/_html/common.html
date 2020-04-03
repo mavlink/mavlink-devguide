@@ -8854,6 +8854,210 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="FAILURE_UNIT">
+   <a href="#FAILURE_UNIT">FAILURE_UNIT</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>List of possible units where failures can be injected.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="FAILURE_UNIT_SENSOR_GYRO">
+     <td>0</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_GYRO">FAILURE_UNIT_SENSOR_GYRO</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_ACCEL">
+     <td>1</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_ACCEL">FAILURE_UNIT_SENSOR_ACCEL</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_MAG">
+     <td>2</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_MAG">FAILURE_UNIT_SENSOR_MAG</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_BARO">
+     <td>3</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_BARO">FAILURE_UNIT_SENSOR_BARO</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_GPS">
+     <td>4</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_GPS">FAILURE_UNIT_SENSOR_GPS</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_OPTICAL_FLOW">
+     <td>5</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_OPTICAL_FLOW">FAILURE_UNIT_SENSOR_OPTICAL_FLOW</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_VIO">
+     <td>6</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_VIO">FAILURE_UNIT_SENSOR_VIO</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_DISTANCE_SENSOR">
+     <td>7</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_DISTANCE_SENSOR">FAILURE_UNIT_SENSOR_DISTANCE_SENSOR</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SYSTEM_BATTERY">
+     <td>100</td>
+     <td>
+      <a href="#FAILURE_UNIT_SYSTEM_BATTERY">FAILURE_UNIT_SYSTEM_BATTERY</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SYSTEM_MOTOR">
+     <td>101</td>
+     <td>
+      <a href="#FAILURE_UNIT_SYSTEM_MOTOR">FAILURE_UNIT_SYSTEM_MOTOR</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SYSTEM_SERVO">
+     <td>102</td>
+     <td>
+      <a href="#FAILURE_UNIT_SYSTEM_SERVO">FAILURE_UNIT_SYSTEM_SERVO</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SYSTEM_AVOIDANCE">
+     <td>103</td>
+     <td>
+      <a href="#FAILURE_UNIT_SYSTEM_AVOIDANCE">FAILURE_UNIT_SYSTEM_AVOIDANCE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SYSTEM_RC_SIGNAL">
+     <td>104</td>
+     <td>
+      <a href="#FAILURE_UNIT_SYSTEM_RC_SIGNAL">FAILURE_UNIT_SYSTEM_RC_SIGNAL</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL">
+     <td>105</td>
+     <td>
+      <a href="#FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL">FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="FAILURE_TYPE">
+   <a href="#FAILURE_TYPE">FAILURE_TYPE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>List of possible failure type to inject.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="FAILURE_TYPE_OK">
+     <td>0</td>
+     <td>
+      <a href="#FAILURE_TYPE_OK">FAILURE_TYPE_OK</a>
+     </td>
+     <td>No failure injected, used to reset a previous failure.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_OFF">
+     <td>1</td>
+     <td>
+      <a href="#FAILURE_TYPE_OFF">FAILURE_TYPE_OFF</a>
+     </td>
+     <td>Sets unit off, so completely non-responsive.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_STUCK">
+     <td>2</td>
+     <td>
+      <a href="#FAILURE_TYPE_STUCK">FAILURE_TYPE_STUCK</a>
+     </td>
+     <td>Unit is stuck e.g. keeps reporting the same value.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_GARBAGE">
+     <td>3</td>
+     <td>
+      <a href="#FAILURE_TYPE_GARBAGE">FAILURE_TYPE_GARBAGE</a>
+     </td>
+     <td>Unit is reporting complete garbage.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_WRONG">
+     <td>4</td>
+     <td>
+      <a href="#FAILURE_TYPE_WRONG">FAILURE_TYPE_WRONG</a>
+     </td>
+     <td>Unit is consistently wrong.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_SLOW">
+     <td>5</td>
+     <td>
+      <a href="#FAILURE_TYPE_SLOW">FAILURE_TYPE_SLOW</a>
+     </td>
+     <td>Unit is slow, so e.g. reporting at slower than expected rate.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_DELAYED">
+     <td>6</td>
+     <td>
+      <a href="#FAILURE_TYPE_DELAYED">FAILURE_TYPE_DELAYED</a>
+     </td>
+     <td>Data of unit is delayed in time.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_INTERMITTENT">
+     <td>7</td>
+     <td>
+      <a href="#FAILURE_TYPE_INTERMITTENT">FAILURE_TYPE_INTERMITTENT</a>
+     </td>
+     <td>Unit is sometimes working, sometimes not.</td>
+    </tr>
+   </tbody>
+  </table>
   <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
@@ -13794,6 +13998,42 @@
     <tr>
      <td>7</td>
      <td>Reserved</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_INJECT_FAILURE">MAV_CMD_INJECT_FAILURE (<a href="#MAV_CMD_INJECT_FAILURE">420</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Inject artificial failure for testing purposes. Note that autopilots should implement an additional protection before accepting this command such as a specific param setting.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>The unit which is affected by the failure.</td>
+     <td>FAILURE_UNIT</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>The type how the failure manifests itself.</td>
+     <td>FAILURE_TYPE</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Instance affected by failure (0 to signal all).</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
