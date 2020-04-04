@@ -20,4 +20,4 @@ td {
 
  
 
-{% 包括 "_html/paparazzi.html" %}
+{% include "_html/paparazzi.html" %}
