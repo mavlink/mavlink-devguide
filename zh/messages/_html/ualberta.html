@@ -1,7 +1,7 @@
 <html>
  <body>
   <p>
-   <strong>MAVLink 包含文件：</strong> <a href="common.md">common.xml</a>
+   <strong>MAVLink Include Files:</strong> <a href="common.md">common.xml</a>
   </p>
   <h2 id="enums">MAVLink类型枚举</h2>
   <h3 id="UALBERTA_AUTOPILOT_MODE">
@@ -113,7 +113,7 @@
    <a href="#UALBERTA_PILOT_MODE">UALBERTA_PILOT_MODE</a>
   </h3>
   <p>
-   <a href="#enums">[Enum]</a> 飞行员当前命令的模式</p>
+   <a href="#enums">[Enum]</a> 驾驶员当前命令的模式</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -213,7 +213,7 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
+     <th>字段名称</th>
      <th>类型</th>
      <th>参数描述</th>
     </tr>
@@ -247,42 +247,37 @@
     <tr>
      <td>油门</td>
      <td>uint16_t[5]</td>
-     <td>Throttle curve setpoints (every 25%)</td>
+     <td>油门曲线设置点(每 25%)</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="UALBERTA_SYS_STATUS">UALBERTA_SYS_STATUS (<a href="#UALBERTA_SYS_STATUS">
-    #222
-   </a>
-   )
+  <h3 id="UALBERTA_SYS_STATUS">UALBERTA_SYS_STATUS（<a href="#UALBERTA_SYS_STATUS">#222</a>）
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>System status specific to ualberta uav</p>
+   <a href="#messages">[Message]</a> ualberta 无人机特定的系统状态</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
-     <td>mode</td>
+     <td>模式</td>
      <td>uint8_t</td>
-     <td>System mode, see UALBERTA_AUTOPILOT_MODE ENUM</td>
+     <td>系统模式，见 UALBERTA_AUTOPILOT_MODE ENUM</td>
     </tr>
     <tr>
-     <td>nav_mode</td>
+     <td>导航模式</td>
      <td>uint8_t</td>
-     <td>Navigation mode, see UALBERTA_NAV_MODE ENUM</td>
+     <td>导航模式，见 UALBERTA_NAV_MODE ENUM</td>
     </tr>
     <tr>
-     <td>pilot</td>
+     <td>驾驶员</td>
      <td>uint8_t</td>
-     <td>Pilot mode, see UALBERTA_PILOT_MODE</td>
+     <td>驾驶员模式，参见 UALBERTA_PILOT_MODE</td>
     </tr>
    </tbody>
   </table>
