@@ -20,4 +20,4 @@ td {
 
  
 
-{% 包括 "_html/test.html" %}
+{% include "_html/test.html" %}
