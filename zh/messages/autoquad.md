@@ -20,4 +20,4 @@ td {
 
  
 
-{% 包括 "_html/autoquad.html" %}
+{% include "_html/autoquad.html" %}
