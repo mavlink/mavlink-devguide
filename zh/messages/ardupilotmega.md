@@ -6,7 +6,7 @@
 
 这个话题是一种 XML 定义文件的可读形式： [ardupilotmega.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/ardupilotmega.xml) 。
 
-> **警告** [ardupilotmega.xml](https://github.com/ArduPilot/mavlink/blob/master/message_definitions/v1.0/ardupilotmega.xml) 的ArduPilot MAVLink分支可能包含尚未合并到本文档中的消息。
+> **Warning** [ardupilotmega.xml](https://github.com/ArduPilot/mavlink/blob/master/message_definitions/v1.0/ardupilotmega.xml) 的ArduPilot MAVLink分支可能包含尚未合并到本文档中的消息。
 
 <span></span>
 
@@ -24,4 +24,4 @@ td {
 
  
 
-{% 包括 "_html/ardupilotmega.html" %}
+{% include "_html/ardupilotmega.html" %}
