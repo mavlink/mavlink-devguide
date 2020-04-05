@@ -1,23 +1,20 @@
 <html>
  <body>
   <p>
-   <strong>MAVLink Include Files:</strong>
-   <a href="common.md">common.xml</a>
+   <strong>MAVLink Include Files:</strong> <a href="common.md">common.xml</a>
   </p>
-  <h2 id="enums">MAVLink Type Enumerations</h2>
+  <h2 id="enums">MAVLink类型枚举</h2>
   <h3 id="SLUGS_MODE">
    <a href="#SLUGS_MODE">SLUGS_MODE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Slugs-specific navigation modes.</p>
+   <a href="#enums">[Enum]</a> Slugs-specific 导航模式</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -26,84 +23,84 @@
      <td>
       <a href="#SLUGS_MODE_NONE">SLUGS_MODE_NONE</a>
      </td>
-     <td>No change to SLUGS mode.</td>
+     <td>SLUGS 模式不变。</td>
     </tr>
     <tr id="SLUGS_MODE_LIFTOFF">
      <td>1</td>
      <td>
       <a href="#SLUGS_MODE_LIFTOFF">SLUGS_MODE_LIFTOFF</a>
      </td>
-     <td>Vehicle is in liftoff mode.</td>
+     <td>车辆处于升空模式。</td>
     </tr>
     <tr id="SLUGS_MODE_PASSTHROUGH">
      <td>2</td>
      <td>
       <a href="#SLUGS_MODE_PASSTHROUGH">SLUGS_MODE_PASSTHROUGH</a>
      </td>
-     <td>Vehicle is in passthrough mode, being controlled by a pilot.</td>
+     <td>车辆处于直通模式，由驾驶员控制。</td>
     </tr>
     <tr id="SLUGS_MODE_WAYPOINT">
      <td>3</td>
      <td>
       <a href="#SLUGS_MODE_WAYPOINT">SLUGS_MODE_WAYPOINT</a>
      </td>
-     <td>Vehicle is in waypoint mode, navigating to waypoints.</td>
+     <td>车辆处于航点模式，导航到航点。</td>
     </tr>
     <tr id="SLUGS_MODE_MID_LEVEL">
      <td>4</td>
      <td>
       <a href="#SLUGS_MODE_MID_LEVEL">SLUGS_MODE_MID_LEVEL</a>
      </td>
-     <td>Vehicle is executing mid-level commands.</td>
+     <td>车辆正在执行中级命令。</td>
     </tr>
     <tr id="SLUGS_MODE_RETURNING">
      <td>5</td>
      <td>
       <a href="#SLUGS_MODE_RETURNING">SLUGS_MODE_RETURNING</a>
      </td>
-     <td>Vehicle is returning to the home location.</td>
+     <td>车辆返回原位。</td>
     </tr>
     <tr id="SLUGS_MODE_LANDING">
      <td>6</td>
      <td>
       <a href="#SLUGS_MODE_LANDING">SLUGS_MODE_LANDING</a>
      </td>
-     <td>Vehicle is landing.</td>
+     <td>车辆在着陆。</td>
     </tr>
     <tr id="SLUGS_MODE_LOST">
      <td>7</td>
      <td>
       <a href="#SLUGS_MODE_LOST">SLUGS_MODE_LOST</a>
      </td>
-     <td>Lost connection with vehicle.</td>
+     <td>与车辆连接断开。</td>
     </tr>
     <tr id="SLUGS_MODE_SELECTIVE_PASSTHROUGH">
      <td>8</td>
      <td>
       <a href="#SLUGS_MODE_SELECTIVE_PASSTHROUGH">SLUGS_MODE_SELECTIVE_PASSTHROUGH</a>
      </td>
-     <td>Vehicle is in selective passthrough mode, where selected surfaces are being manually controlled.</td>
+     <td>车辆采用选择性通道模式，其中选择操作是手动控制的。 </td>
     </tr>
     <tr id="SLUGS_MODE_ISR">
      <td>9</td>
      <td>
       <a href="#SLUGS_MODE_ISR">SLUGS_MODE_ISR</a>
      </td>
-     <td>Vehicle is in ISR mode, performing reconaissance at a point specified by ISR_LOCATION message.</td>
+     <td>车辆处于 ISR 模式，在 ISR_LOCATION 信息指定的点执行侦察。 </td>
     </tr>
     <tr id="SLUGS_MODE_LINE_PATROL">
      <td>10</td>
      <td>
       <a href="#SLUGS_MODE_LINE_PATROL">SLUGS_MODE_LINE_PATROL</a>
      </td>
-     <td>Vehicle is patrolling along lines between waypoints.</td>
+     <td>车辆沿航路点之间的路线巡逻。</td>
     </tr>
     <tr id="SLUGS_MODE_GROUNDED">
      <td>11</td>
      <td>
       <a href="#SLUGS_MODE_GROUNDED">SLUGS_MODE_GROUNDED</a>
      </td>
-     <td>Vehicle is grounded or an error has occurred.</td>
+     <td>车辆接地或发生错误。</td>
     </tr>
    </tbody>
   </table>
@@ -111,16 +108,13 @@
    <a href="#CONTROL_SURFACE_FLAG">CONTROL_SURFACE_FLAG</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>These flags encode the control surfaces for selective passthrough mode. If a bit is set then the pilot console
-            has control of the surface, and if not then the autopilot has control of the surface.</p>
+   <a href="#enums">[Enum]</a> 这些标志对选定通道模式的控制面进行编码。  如果设置了一个位，那么驾驶员控制台可以控制操作台，如果没有，那么自动驾驶仪可以控操作台。 </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -129,79 +123,77 @@
      <td>
       <a href="#CONTROL_SURFACE_FLAG_THROTTLE">CONTROL_SURFACE_FLAG_THROTTLE</a>
      </td>
-     <td>0b10000000 Throttle control passes through to pilot console.</td>
+     <td>0b10000000 油门控制通过驾驶员控制台。 </td>
     </tr>
     <tr id="CONTROL_SURFACE_FLAG_LEFT_AILERON">
-     <td>64</td>
+     <td>64
+</td>
      <td>
       <a href="#CONTROL_SURFACE_FLAG_LEFT_AILERON">CONTROL_SURFACE_FLAG_LEFT_AILERON</a>
      </td>
-     <td>0b01000000 Left aileron control passes through to pilot console.</td>
+     <td>0b01000000 左副翼操纵杆通过飞行员控制台。</td>
     </tr>
     <tr id="CONTROL_SURFACE_FLAG_RIGHT_AILERON">
      <td>32</td>
      <td>
       <a href="#CONTROL_SURFACE_FLAG_RIGHT_AILERON">CONTROL_SURFACE_FLAG_RIGHT_AILERON</a>
      </td>
-     <td>0b00100000 Right aileron control passes through to pilot console.</td>
+     <td>0b00100000 右副翼操纵杆通过驾驶员控制台。 </td>
     </tr>
     <tr id="CONTROL_SURFACE_FLAG_RUDDER">
      <td>16</td>
      <td>
       <a href="#CONTROL_SURFACE_FLAG_RUDDER">CONTROL_SURFACE_FLAG_RUDDER</a>
      </td>
-     <td>0b00010000 Rudder control passes through to pilot console.</td>
+     <td>0b00010000 方向舵控制通过驾驶员控制台。 </td>
     </tr>
     <tr id="CONTROL_SURFACE_FLAG_LEFT_ELEVATOR">
      <td>8</td>
      <td>
       <a href="#CONTROL_SURFACE_FLAG_LEFT_ELEVATOR">CONTROL_SURFACE_FLAG_LEFT_ELEVATOR</a>
      </td>
-     <td>0b00001000 Left elevator control passes through to pilot console.</td>
+     <td>0b00001000 左升降舵操纵杆通过驾驶员操纵台。 </td>
     </tr>
     <tr id="CONTROL_SURFACE_FLAG_RIGHT_ELEVATOR">
      <td>4</td>
      <td>
       <a href="#CONTROL_SURFACE_FLAG_RIGHT_ELEVATOR">CONTROL_SURFACE_FLAG_RIGHT_ELEVATOR</a>
      </td>
-     <td>0b00000100 Right elevator control passes through to pilot console.</td>
+     <td>0b00000100 右升降舵操纵杆通过驾驶员操纵台。 </td>
     </tr>
     <tr id="CONTROL_SURFACE_FLAG_LEFT_FLAP">
      <td>2</td>
      <td>
       <a href="#CONTROL_SURFACE_FLAG_LEFT_FLAP">CONTROL_SURFACE_FLAG_LEFT_FLAP</a>
      </td>
-     <td>0b00000010 Left flap control passes through to pilot console.</td>
+     <td>0b00000010 左襟翼控制通过驾驶员控制台。 </td>
     </tr>
     <tr id="CONTROL_SURFACE_FLAG_RIGHT_FLAP">
      <td>1</td>
      <td>
       <a href="#CONTROL_SURFACE_FLAG_RIGHT_FLAP">CONTROL_SURFACE_FLAG_RIGHT_FLAP</a>
      </td>
-     <td>0b00000001 Right flap control passes through to pilot console.</td>
+     <td>0b00000001 右襟翼控制通过驾驶员控制台。</td>
     </tr>
    </tbody>
   </table>
-  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <h2 id="mav_commands">MAVLink 命令（MAV_CMD）</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
    </strong>
-   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+   <p>MAVLink 命令（MAV_CMD）和消息是不同的！ 这些命令定义了最多7个参数的值，这些参数打包在“任务协议”和“命令协议”中使用的 INSIDE 特定消息中。 执行任务或者需要从请求中确认和/或重试逻辑时使用命令。 否则使用消息。</p>
   </blockquote>
   <p>
   </p>
-  <h3 id="MAV_CMD_DO_NOTHING">MAV_CMD_DO_NOTHING (<a href="#MAV_CMD_DO_NOTHING">10001</a>
-   )
+  <h3 id="MAV_CMD_DO_NOTHING">MAV_CMD_DO_NOTHING（<a href="#MAV_CMD_DO_NOTHING">10001</a>）
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Does nothing.</p>
+   <a href="#mav_commands">[Command]</a> 无动作。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
+     <th>参数（:Label）</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
