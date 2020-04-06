@@ -999,7 +999,7 @@
     <tr>
      <td>tilt</td>
      <td>int16_t</td>
-     <td>The Tilt value in 10ths of degree</td>
+     <td>以10度为单位的倾斜值</td>
     </tr>
    </tbody>
   </table>
@@ -1125,7 +1125,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>定位系统模式指示器。 A - Autonomous;D-Differential; E-Estimated (dead reckoning) mode;M-Manual input; N-Data not valid</td>
+     <td>定位系统模式指示器。 A - 自主；D - 微分；E - 估计（航位推算）模式；M - 手动输入；N - 数据无效</td>
     </tr>
    </tbody>
   </table>
@@ -1136,15 +1136,14 @@
   </h3>
   <p>
    <a href="#messages">
-    [Message]
-   </a>Transmits the diagnostics data from the Novatel OEMStar GPS</p>
+    [Message]</a> 从Novatel OEMStar GPS传输诊断数据</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Units</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -1153,48 +1152,48 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>The Time Status. See Table 8 page 27 Novatel OEMStar Manual</td>
+     <td>时间状态。 见 Novatel OEMStar 手册的第 27 页表 8</td>
     </tr>
     <tr>
      <td>receiverStatus</td>
      <td>uint32_t</td>
      <td>
      </td>
-     <td>Status Bitfield. See table 69 page 350 Novatel OEMstar Manual</td>
+     <td>状态位字段。 见 Novatel OEMstar 手册的第 350 页表 69</td>
     </tr>
     <tr>
      <td>solStatus</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>solution Status. See table 44 page 197</td>
+     <td>解决方案状态。 见 197 页表 44</td>
     </tr>
     <tr>
      <td>posType</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>position type. See table 43 page 196</td>
+     <td>位置类型。 见 196 页表 43</td>
     </tr>
     <tr>
      <td>velType</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>velocity type. See table 43 page 196</td>
+     <td>速度类型。 见 196 页表 43</td>
     </tr>
     <tr>
      <td>posSolAge</td>
      <td>float</td>
-     <td>s</td>
-     <td>Age of the position solution</td>
+     <td>秒</td>
+     <td>位置解决方案的时间</td>
     </tr>
     <tr>
      <td>csFails</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>Times the CRC has failed since boot</td>
+     <td>自启动后 CRC 失败的次数</td>
     </tr>
    </tbody>
   </table>
@@ -1206,35 +1205,35 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Diagnostic data Sensor MCU</p>
+   </a> 诊断数据传感器 MCU</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>float1</td>
      <td>float</td>
-     <td>Float field 1</td>
+     <td>浮动字段 1 </td>
     </tr>
     <tr>
      <td>float2</td>
      <td>float</td>
-     <td>Float field 2</td>
+     <td>浮动字段 2 </td>
     </tr>
     <tr>
      <td>int1</td>
      <td>int16_t</td>
-     <td>Int 16 field 1</td>
+     <td>Int 16 字段 1 </td>
     </tr>
     <tr>
      <td>char1</td>
      <td>int8_t</td>
-     <td>Int 8 field 1</td>
+     <td>Int 8 字段 1 </td>
     </tr>
    </tbody>
   </table>
@@ -1246,20 +1245,20 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>The boot message indicates that a system is starting. The onboard software version allows to keep track of onboard soft/firmware revisions. This message allows the sensor and control MCUs to communicate version numbers on startup.</p>
+   </a> 引导消息指示系统正在启动。 板载软件版本允许跟踪板载软件/固件版本。 此消息允许传感器和控制MCU在启动时通信版本号。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>version</td>
      <td>uint32_t</td>
-     <td>The onboard software version</td>
+     <td>板载软件版本</td>
     </tr>
    </tbody>
   </table>
