@@ -730,7 +730,7 @@
   <h3 id="SLUGS_CAMERA_ORDER">SLUGS_CAMERA_ORDER（<a href="#SLUGS_CAMERA_ORDER">#184</a>）
   </h3>
   <p>
-   <a href="#messages">[Message]</a> 订单生成到 SLUGS 摄像机支架。</p>
+   <a href="#messages">[Message]</a> 订单生成到 SLUGS 像机支架。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -748,29 +748,26 @@
     <tr>
      <td>pan</td>
      <td>int8_t</td>
-     <td>将支座定为平移：-1 左，0 无平移运动，+1 右</td>
+     <td>将支座定为平移：-1 向左，0 不平移，+1 向右</td>
     </tr>
     <tr>
      <td>tilt</td>
      <td>int8_t</td>
-     <td>Order the mount to tilt: -1 down, 0 No tilt motion, +1 up</td>
+     <td>将支座定位倾斜：-1 向下，0 不倾斜，+1 向上 </td>
     </tr>
     <tr>
      <td>zoom</td>
      <td>int8_t</td>
-     <td>Order the zoom values 0 to 10</td>
+     <td>将缩放值排序为 0 到 10 </td>
     </tr>
     <tr>
      <td>moveHome</td>
      <td>int8_t</td>
-     <td>Orders the camera mount to move home. The other fields are ignored when this field is set. 1: move home, 0 ignored</td>
+     <td>命令像机移回原处。 设置此字段时，将忽略其他字段。 1：移回原点，0：忽略</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="CONTROL_SURFACE">CONTROL_SURFACE (<a href="#CONTROL_SURFACE">
-    #185
-   </a>
-   )
+  <h3 id="CONTROL_SURFACE">CONTROL_SURFACE（<a href="#CONTROL_SURFACE">#185</a>）
   </h3>
   <p>
    <a href="#messages">
