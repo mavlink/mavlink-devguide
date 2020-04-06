@@ -1010,15 +1010,14 @@
   </h3>
   <p>
    <a href="#messages">
-    [Message]
-   </a>Transmits the actual status values UAV in flight</p>
+    [Message]</a> 传输飞行中无人机的实际状态值</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Units</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -1027,38 +1026,38 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>The ID system reporting the action</td>
+     <td>系统报告动作</td>
     </tr>
     <tr>
      <td>latitude</td>
      <td>float</td>
-     <td>deg</td>
-     <td>Latitude UAV</td>
+     <td>度</td>
+     <td>无人机纬度</td>
     </tr>
     <tr>
      <td>longitude</td>
      <td>float</td>
-     <td>deg</td>
-     <td>Longitude UAV</td>
+     <td>度</td>
+     <td>无人机经度</td>
     </tr>
     <tr>
      <td>altitude</td>
      <td>float</td>
-     <td>m</td>
-     <td>Altitude UAV</td>
+     <td>米</td>
+     <td>无人机高度</td>
     </tr>
     <tr>
      <td>speed</td>
      <td>float</td>
-     <td>m/s</td>
-     <td>Speed UAV</td>
+     <td>米/秒</td>
+     <td>无人机速度</td>
     </tr>
     <tr>
      <td>course</td>
      <td>float</td>
      <td>
      </td>
-     <td>Course UAV</td>
+     <td>无人机航向</td>
     </tr>
    </tbody>
   </table>
@@ -1069,15 +1068,14 @@
   </h3>
   <p>
    <a href="#messages">
-    [Message]
-   </a>This contains the status of the GPS readings</p>
+    [Message]</a> 包含GPS读数的状态</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Units</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -1086,48 +1084,48 @@
      <td>uint16_t</td>
      <td>
      </td>
-     <td>Number of times checksum has failed</td>
+     <td>校验和失败的次数 </td>
     </tr>
     <tr>
      <td>gpsQuality</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>The quality indicator, 0=fix not available or invalid, 1=GPS fix, 2=C/A differential GPS, 6=Dead reckoning mode, 7=Manual input mode (fixed position), 8=Simulator mode, 9= WAAS a</td>
+     <td>质量指示器，0 = 固定不可用或无效，1 = GPS固定，2 = C / A差分GPS，6 = 航位推算模式，7 = 手动输入模式（固定位置），8 = 仿真器模式，9 = WAAS a</td>
     </tr>
     <tr>
      <td>msgsType</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Indicates if GN, GL or GP messages are being received</td>
+     <td>指示是否接收到 GN、GL 或 GP 消息 </td>
     </tr>
     <tr>
      <td>posStatus</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>A = data valid, V = data invalid</td>
+     <td>A = 数据有效，V = 数据无效</td>
     </tr>
     <tr>
      <td>magVar</td>
      <td>float</td>
-     <td>deg</td>
-     <td>Magnetic variation</td>
+     <td>度</td>
+     <td>磁偏差</td>
     </tr>
     <tr>
      <td>magDir</td>
      <td>int8_t</td>
      <td>
      </td>
-     <td>Magnetic variation direction E/W. Easterly variation (E) subtracts from True course and Westerly variation (W) adds to True course</td>
+     <td>磁变化方向 E/W。  向东变化（E）减去真实路线，向西变化（W）增加真实路线</td>
     </tr>
     <tr>
      <td>modeInd</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Positioning system mode indicator. A - Autonomous;D-Differential; E-Estimated (dead reckoning) mode;M-Manual input; N-Data not valid</td>
+     <td>定位系统模式指示器。 A - Autonomous;D-Differential; E-Estimated (dead reckoning) mode;M-Manual input; N-Data not valid</td>
     </tr>
    </tbody>
   </table>
