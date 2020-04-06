@@ -613,35 +613,35 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Clock Status. See table 47 page 211 OEMStar Manual</td>
+     <td>时钟状态。 见 OEMStar 手册的第 211 页表 47</td>
     </tr>
     <tr>
      <td>visSat</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Visible satellites reported by Gps</td>
+     <td>Gps报告的可见卫星 </td>
     </tr>
     <tr>
      <td>useSat</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Used satellites in Solution</td>
+     <td>解决方案中使用的卫星 </td>
     </tr>
     <tr>
      <td>GppGl</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>GPS+GLONASS satellites in Solution</td>
+     <td>解决方案中的 GPS + GLONASS 卫星</td>
     </tr>
     <tr>
      <td>sigUsedMask</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>GPS and GLONASS usage mask (bit 0 GPS_used? bit_4 GLONASS_used?)</td>
+     <td>GPS和GLONASS使用掩码（位 0 GPS_used？ 位 4 bit_4 GLONASS_used？）</td>
     </tr>
     <tr>
      <td>percentUsed</td>
@@ -649,26 +649,21 @@
      <td>
       %
      </td>
-     <td>Percent used GPS</td>
+     <td>使用GPS的百分比</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="MID_LVL_CMDS">MID_LVL_CMDS (<a href="#MID_LVL_CMDS">
-    #180
-   </a>
-   )
+  <h3 id="MID_LVL_CMDS">MID_LVL_CMDS（<a href="#MID_LVL_CMDS">#180</a>）
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Mid Level commands sent from the GS to the autopilot. These are only sent when being operated in mid-level commands mode from the ground.</p>
+   <a href="#messages">[Message]</a> 从地面站发送到自动驾驶仪的中级命令。  只有在地面以中级命令模式操作时才会发送这些命令。 </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Units</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -677,44 +672,39 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>The system setting the commands</td>
+     <td>系统设置命令</td>
     </tr>
     <tr>
      <td>hCommand</td>
      <td>float</td>
-     <td>m</td>
-     <td>Commanded altitude (MSL)</td>
+     <td>米</td>
+     <td>高度指令（MSL） </td>
     </tr>
     <tr>
      <td>uCommand</td>
      <td>float</td>
-     <td>m/s</td>
-     <td>Commanded Airspeed</td>
+     <td>米/秒</td>
+     <td>空速指令</td>
     </tr>
     <tr>
      <td>rCommand</td>
      <td>float</td>
-     <td>rad/s</td>
-     <td>Commanded Turnrate</td>
+     <td>度/秒</td>
+     <td>偏航速率指令</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="CTRL_SRFC_PT">CTRL_SRFC_PT (<a href="#CTRL_SRFC_PT">
-    #181
-   </a>
-   )
+  <h3 id="CTRL_SRFC_PT">CTRL_SRFC_PT（<a href="#CTRL_SRFC_PT">#181 </0）
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>This message sets the control surfaces for selective passthrough mode.</p>
+   <a href="#messages">[Message]</a> 该消息将控制界面设置为选择性通道模式。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>值</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -725,7 +715,7 @@
       <a href="#">
       </a>
      </td>
-     <td>The system setting the commands</td>
+     <td>系统设置命令</td>
     </tr>
     <tr>
      <td>bitfieldPt</td>
