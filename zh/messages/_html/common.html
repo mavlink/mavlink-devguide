@@ -608,56 +608,56 @@
      <td>
       <a href="#MAV_MODE_FLAG_SAFETY_ARMED">MAV_MODE_FLAG_SAFETY_ARMED</a>
      </td>
-     <td>0b10000000 MAV 的安全设置为上锁。 电机已启用/运行/可以启动。 准备起飞。 附加说明：发送命令 MAV_CMD_DO_SET_MODE 时会忽略该标志，而应该使用MAV_CMD_COMPONENT_ARM_DISARM。 The flag can still be used to report the armed state.</td>
+     <td>0b10000000 MAV 已经上锁， 电机已启用/运行/可以启动。 准备起飞。 附加说明：发送命令 MAV_CMD_DO_SET_MODE 时会忽略该标志，而应该使用MAV_CMD_COMPONENT_ARM_DISARM。 该标志仍可用于报告上锁状态。</td>
     </tr>
     <tr id="MAV_MODE_FLAG_MANUAL_INPUT_ENABLED">
      <td>64</td>
      <td>
       <a href="#MAV_MODE_FLAG_MANUAL_INPUT_ENABLED">MAV_MODE_FLAG_MANUAL_INPUT_ENABLED</a>
      </td>
-     <td>0b01000000 remote control input is enabled.</td>
+     <td>0b01000000 已经使能远程控制输入。</td>
     </tr>
     <tr id="MAV_MODE_FLAG_HIL_ENABLED">
      <td>32</td>
      <td>
-      <a href="#MAV_MODE_FLAG_HIL_ENABLED">MAV_MODE_FLAG_HIL_ENABLED</a>
+      <a href="#MAV_MODE_FLAG_HIL_ENABLED">MAV_MODE_FLAG_HEL_ENABLED</a>
      </td>
-     <td>0b00100000 hardware in the loop simulation. All motors / actuators are blocked, but internal software is full operational.</td>
+     <td>0b00100000 硬件在环仿真。 所有电机/执行器均不能运行，但是内部软件正常运行。</td>
     </tr>
     <tr id="MAV_MODE_FLAG_STABILIZE_ENABLED">
      <td>16</td>
      <td>
       <a href="#MAV_MODE_FLAG_STABILIZE_ENABLED">MAV_MODE_FLAG_STABILIZE_ENABLED</a>
      </td>
-     <td>0b00010000 system stabilizes electronically its attitude (and optionally position). It needs however further control inputs to move around.</td>
+     <td>0b00010000 系统以姿态模式（以及位置模式）进行增稳。 需要更多的控制输入才会移动。</td>
     </tr>
     <tr id="MAV_MODE_FLAG_GUIDED_ENABLED">
      <td>8</td>
      <td>
       <a href="#MAV_MODE_FLAG_GUIDED_ENABLED">MAV_MODE_FLAG_GUIDED_ENABLED</a>
      </td>
-     <td>0b00001000 guided mode enabled, system flies waypoints / mission items.</td>
+     <td>0b00001000 已经启用引导模式，系统将飞行航路点/飞行任务。</td>
     </tr>
     <tr id="MAV_MODE_FLAG_AUTO_ENABLED">
      <td>4</td>
      <td>
       <a href="#MAV_MODE_FLAG_AUTO_ENABLED">MAV_MODE_FLAG_AUTO_ENABLED</a>
      </td>
-     <td>0b00000100 autonomous mode enabled, system finds its own goal positions. Guided flag can be set or not, depends on the actual implementation.</td>
+     <td>0b00000100 已经启用自主模式，系统找到自己的目标位置。 引导标志是否可以被设置，取决于实际的实现。</td>
     </tr>
     <tr id="MAV_MODE_FLAG_TEST_ENABLED">
      <td>2</td>
      <td>
       <a href="#MAV_MODE_FLAG_TEST_ENABLED">MAV_MODE_FLAG_TEST_ENABLED</a>
      </td>
-     <td>0b00000010 system has a test mode enabled. This flag is intended for temporary system tests and should not be used for stable implementations.</td>
+     <td>0b00000010 系统已启用测试模式。 该标志只用于临时系统测试，不应该出于在稳定版本中。</td>
     </tr>
     <tr id="MAV_MODE_FLAG_CUSTOM_MODE_ENABLED">
      <td>1</td>
      <td>
       <a href="#MAV_MODE_FLAG_CUSTOM_MODE_ENABLED">MAV_MODE_FLAG_CUSTOM_MODE_ENABLED</a>
      </td>
-     <td>0b00000001 Reserved for future use.</td>
+     <td>0b00000001 保留。</td>
     </tr>
    </tbody>
   </table>
