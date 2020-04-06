@@ -55,8 +55,8 @@ $ gcc ... -I generated/include -I generated/include/common ...
 In order to *send messages* you will also need to declare a variable `mavlink_system` in the **global scope**, specifying the system id and component ID of your component:
 ```cpp
 mavlink_system_t mavlink_system = {
-	1, //Sytem ID (1-255)
-	1  //Component ID 
+	1, // System ID (1-255)
+	1  // Component ID (MAV_COMPONENT)
 }; 
 ```
 
