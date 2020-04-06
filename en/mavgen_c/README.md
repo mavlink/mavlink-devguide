@@ -56,7 +56,7 @@ In order to *send messages* you will also need to declare a variable `mavlink_sy
 ```cpp
 mavlink_system_t mavlink_system = {
 	1, // System ID (1-255)
-	1  // Component ID (MAV_COMPONENT)
+	1  // Component ID (a MAV_COMPONENT value)
 }; 
 ```
 
