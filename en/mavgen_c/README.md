@@ -52,6 +52,15 @@ When compiling the project, we recommend that you specify the top-level output d
 $ gcc ... -I generated/include -I generated/include/common ...
 ```
 
+In order to *send messages* you will also need to declare a variable `mavlink_system` in the **global scope**, specifying the system id and component ID of your component:
+```cpp
+mavlink_system_t mavlink_system = {
+	1, //Sytem ID (1-255)
+	1  //Component ID 
+}; 
+```
+
+
 ## Multiple Streams ("channels") {#channels}
 
 The C MAVLink library utilizes a "channel" metaphor to allow for simultaneous processing of multiple, independent MAVLink streams in the same program.
