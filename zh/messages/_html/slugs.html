@@ -257,61 +257,50 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_CMD_GET_MID_LEVEL_COMMANDS">MAV_CMD_GET_MID_LEVEL_COMMANDS (<a href="#MAV_CMD_GET_MID_LEVEL_COMMANDS">10014</a>
-   )
+  <h3 id="MAV_CMD_GET_MID_LEVEL_COMMANDS">MAV_CMD_GET_MID_LEVEL_COMMANDS（<a href="#MAV_CMD_GET_MID_LEVEL_COMMANDS">10014</a>）
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Requests vehicle to send current mid-level commands to ground station.</p>
+   <a href="#mav_commands">[Command]</a> 请求车辆将当前的中级命令发送到地面站。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
+     <th>参数（:Label）</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
    </tbody>
   </table>
-  <h3 id="MAV_CMD_MIDLEVEL_STORAGE">MAV_CMD_MIDLEVEL_STORAGE (<a href="#MAV_CMD_MIDLEVEL_STORAGE">10015</a>
-   )
+  <h3 id="MAV_CMD_MIDLEVEL_STORAGE">MAV_CMD_MIDLEVEL_STORAGE（<a href="#MAV_CMD_MIDLEVEL_STORAGE">10015</a>）
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Requests storage of mid-level commands.</p>
+   <a href="#mav_commands">[Command]</a> 请求存储中级命令。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
+     <th>参数（:Label）</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Mid-level command storage: 0: read from flash/EEPROM, 1: write to flash/EEPROM</td>
+     <td>中级命令存储：0：从闪存/ EEPROM读取，1：写入闪存/ EEPROM</td>
     </tr>
    </tbody>
   </table>
-  <h2 id="messages">MAVLink Messages</h2>
-  <h3 id="CPU_LOAD">CPU_LOAD (<a href="#CPU_LOAD">
-    #170
-   </a>
-   )
+  <h2 id="messages">MAVLink 消息</h2>
+  <h3 id="CPU_LOAD">CPU_LOAD（<a href="#CPU_LOAD">#170</a>）
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Sensor and DSC control loads.</p>
+   <a href="#messages">[Message]</a> 传感器和DSC控制负载。 </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Units</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -320,161 +309,146 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Sensor DSC Load</td>
+     <td>传感器 DSC 负载</td>
     </tr>
     <tr>
      <td>ctrlLoad</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Control DSC Load</td>
+     <td>控制 DSC 负载</td>
     </tr>
     <tr>
      <td>batVolt</td>
      <td>uint16_t</td>
-     <td>mV</td>
-     <td>Battery Voltage</td>
+     <td>毫伏</td>
+     <td>电池电压</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="SENSOR_BIAS">SENSOR_BIAS (<a href="#SENSOR_BIAS">
-    #172
-   </a>
-   )
+  <h3 id="SENSOR_BIAS">SENSOR_BIAS（<a href="#SENSOR_BIAS">#172</a>）
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Accelerometer and gyro biases.</p>
+   <a href="#messages">[Message]</a> 加速度计和陀螺仪偏差。 </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Units</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>axBias</td>
      <td>float</td>
-     <td>m/s</td>
-     <td>Accelerometer X bias</td>
+     <td>米/秒</td>
+     <td>加速度计 X 偏差</td>
     </tr>
     <tr>
      <td>ayBias</td>
      <td>float</td>
-     <td>m/s</td>
-     <td>Accelerometer Y bias</td>
+     <td>米/秒</td>
+     <td>加速度计 Y 偏差</td>
     </tr>
     <tr>
      <td>azBias</td>
      <td>float</td>
-     <td>m/s</td>
-     <td>Accelerometer Z bias</td>
+     <td>米/秒</td>
+     <td>加速度计 Z 偏差</td>
     </tr>
     <tr>
      <td>gxBias</td>
      <td>float</td>
-     <td>rad/s</td>
-     <td>Gyro X bias</td>
+     <td>度/秒</td>
+     <td>陀螺仪 X 偏差</td>
     </tr>
     <tr>
      <td>gyBias</td>
      <td>float</td>
-     <td>rad/s</td>
-     <td>Gyro Y bias</td>
+     <td>度/秒</td>
+     <td>陀螺仪 Y 偏差</td>
     </tr>
     <tr>
      <td>gzBias</td>
      <td>float</td>
-     <td>rad/s</td>
-     <td>Gyro Z bias</td>
+     <td>度/秒</td>
+     <td>陀螺仪 Z 偏差</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="DIAGNOSTIC">DIAGNOSTIC (<a href="#DIAGNOSTIC">
-    #173
-   </a>
-   )
+  <h3 id="DIAGNOSTIC">DIAGNOSTIC（<a href="#DIAGNOSTIC">#173</a>）
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Configurable diagnostic messages.</p>
+   <a href="#messages">[Message]</a> 可配置诊断信息。 </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>diagFl1</td>
      <td>float</td>
-     <td>Diagnostic float 1</td>
+     <td>诊断 float 1</td>
     </tr>
     <tr>
      <td>diagFl2</td>
      <td>float</td>
-     <td>Diagnostic float 2</td>
+     <td>诊断 float 2</td>
     </tr>
     <tr>
      <td>diagFl3</td>
      <td>float</td>
-     <td>Diagnostic float 3</td>
+     <td>诊断 float 3</td>
     </tr>
     <tr>
      <td>diagSh1</td>
      <td>int16_t</td>
-     <td>Diagnostic short 1</td>
+     <td>诊断 short 1</td>
     </tr>
     <tr>
      <td>diagSh2</td>
      <td>int16_t</td>
-     <td>Diagnostic short 2</td>
+     <td>诊断 short 2</td>
     </tr>
     <tr>
      <td>diagSh3</td>
      <td>int16_t</td>
-     <td>Diagnostic short 3</td>
+     <td>诊断 short 3</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="SLUGS_NAVIGATION">SLUGS_NAVIGATION (<a href="#SLUGS_NAVIGATION">
-    #176
-   </a>
-   )
+  <h3 id="SLUGS_NAVIGATION">SLUGS_NAVIGATION（<a href="#SLUGS_NAVIGATION">#176</a>）
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Data used in the navigation algorithm.</p>
+   <a href="#messages">[Message]</a> 导航算法中使用的数据。 </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Units</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>u_m</td>
      <td>float</td>
-     <td>m/s</td>
-     <td>Measured Airspeed prior to the nav filter</td>
+     <td>米/秒</td>
+     <td>在导航滤波之前测量的空速 </td>
     </tr>
     <tr>
      <td>phi_c</td>
      <td>float</td>
      <td>
      </td>
-     <td>Commanded Roll</td>
+     <td>横滚指令</td>
     </tr>
     <tr>
      <td>theta_c</td>
