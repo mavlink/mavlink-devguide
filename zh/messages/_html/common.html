@@ -548,42 +548,42 @@
      <td>
       <a href="#HL_FAILURE_FLAG_RC_RECEIVER">HL_FAILURE_FLAG_RC_RECEIVER</a>
      </td>
-     <td>RC receiver failure/no rc connection.</td>
+     <td>RC接收机故障/无接收机信号。</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_OFFBOARD_LINK">
      <td>512</td>
      <td>
       <a href="#HL_FAILURE_FLAG_OFFBOARD_LINK">HL_FAILURE_FLAG_OFFBOARD_LINK</a>
      </td>
-     <td>Offboard link failure.</td>
+     <td>Offboard 连接故障。</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_ENGINE">
      <td>1024</td>
      <td>
       <a href="#HL_FAILURE_FLAG_ENGINE">HL_FAILURE_FLAG_ENGINE</a>
      </td>
-     <td>Engine failure.</td>
+     <td>引擎故障。</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_GEOFENCE">
      <td>2048</td>
      <td>
       <a href="#HL_FAILURE_FLAG_GEOFENCE">HL_FAILURE_FLAG_GEOFENCE</a>
      </td>
-     <td>Geofence violation.</td>
+     <td>违反地理围栏规则。</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_ESTIMATOR">
      <td>4096</td>
      <td>
       <a href="#HL_FAILURE_FLAG_ESTIMATOR">HL_FAILURE_FLAG_ESTIMATOR</a>
      </td>
-     <td>Estimator failure, for example measurement rejection or large variances.</td>
+     <td>状态估计失败，例如测量值未被接收或大方差。</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_MISSION">
      <td>8192</td>
      <td>
       <a href="#HL_FAILURE_FLAG_MISSION">HL_FAILURE_FLAG_MISSION</a>
      </td>
-     <td>Mission failure.</td>
+     <td>任务失败。</td>
     </tr>
    </tbody>
   </table>
@@ -593,13 +593,13 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>These flags encode the MAV mode.</p>
+   </a>这些标志代表了 MAV 的模式。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名</th>
+     <th>描述</th>
     </tr>
    </thead>
    <tbody>
@@ -608,7 +608,7 @@
      <td>
       <a href="#MAV_MODE_FLAG_SAFETY_ARMED">MAV_MODE_FLAG_SAFETY_ARMED</a>
      </td>
-     <td>0b10000000 MAV safety set to armed. Motors are enabled / running / can start. Ready to fly. Additional note: this flag is to be ignore when sent in the command MAV_CMD_DO_SET_MODE and MAV_CMD_COMPONENT_ARM_DISARM shall be used instead. The flag can still be used to report the armed state.</td>
+     <td>0b10000000 MAV 的安全设置为上锁。 Motors are enabled / running / can start. Ready to fly. Additional note: this flag is to be ignore when sent in the command MAV_CMD_DO_SET_MODE and MAV_CMD_COMPONENT_ARM_DISARM shall be used instead. The flag can still be used to report the armed state.</td>
     </tr>
     <tr id="MAV_MODE_FLAG_MANUAL_INPUT_ENABLED">
      <td>64</td>
