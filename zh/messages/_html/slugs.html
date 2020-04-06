@@ -770,27 +770,25 @@
   <h3 id="CONTROL_SURFACE">CONTROL_SURFACE（<a href="#CONTROL_SURFACE">#185</a>）
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Control for surface; pending and order to origin.</p>
+   <a href="#messages">[Message]</a> 对操作台的控制；待命的和命令到原点。 </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>target</td>
      <td>uint8_t</td>
-     <td>The system setting the commands</td>
+     <td>系统设置命令</td>
     </tr>
     <tr>
      <td>idSurface</td>
      <td>uint8_t</td>
-     <td>ID control surface send 0: throttle 1: aileron 2: elevator 3: rudder</td>
+     <td>ID 控制台发送 0：油门 1：副翼 2：升降舵 3：方向舵 </td>
     </tr>
     <tr>
      <td>mControl</td>
@@ -800,19 +798,14 @@
     <tr>
      <td>bControl</td>
      <td>float</td>
-     <td>Order to origin</td>
+     <td>命令回原点</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="SLUGS_MOBILE_LOCATION">SLUGS_MOBILE_LOCATION (<a href="#SLUGS_MOBILE_LOCATION">
-    #186
-   </a>
-   )
+  <h3 id="SLUGS_MOBILE_LOCATION">SLUGS_MOBILE_LOCATION（<a href="#SLUGS_MOBILE_LOCATION">#186</a>）
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Transmits the last known position of the mobile GS to the UAV. Very relevant when Track Mobile is enabled</p>
+   <a href="#messages">[Message]</a> 将移动地面站的最新已知位置发送到无人机。 Very relevant when Track Mobile is enabled</p>
   <table class="sortable">
    <thead>
     <tr>
