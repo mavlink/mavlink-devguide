@@ -793,7 +793,7 @@
     <tr>
      <td>mControl</td>
      <td>float</td>
-     <td>Pending</td>
+     <td>待定</td>
     </tr>
     <tr>
      <td>bControl</td>
@@ -805,14 +805,14 @@
   <h3 id="SLUGS_MOBILE_LOCATION">SLUGS_MOBILE_LOCATION（<a href="#SLUGS_MOBILE_LOCATION">#186</a>）
   </h3>
   <p>
-   <a href="#messages">[Message]</a> 将移动地面站的最新已知位置发送到无人机。 Very relevant when Track Mobile is enabled</p>
+   <a href="#messages">[Message]</a> 将移动地面站的最新已知位置发送到无人机。 启用追踪移动设备时非常相关。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Units</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -821,54 +821,50 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>The system reporting the action</td>
+     <td>系统报告动作</td>
     </tr>
     <tr>
      <td>latitude</td>
      <td>float</td>
-     <td>deg</td>
-     <td>Mobile Latitude</td>
+     <td>度</td>
+     <td>移动纬度</td>
     </tr>
     <tr>
      <td>longitude</td>
      <td>float</td>
-     <td>deg</td>
-     <td>Mobile Longitude</td>
+     <td>度</td>
+     <td>移动经度</td>
     </tr>
    </tbody>
   </table>
-  <h3 id="SLUGS_CONFIGURATION_CAMERA">SLUGS_CONFIGURATION_CAMERA (<a href="#SLUGS_CONFIGURATION_CAMERA">
-    #188
-   </a>
-   )
+  <h3 id="SLUGS_CONFIGURATION_CAMERA">SLUGS_CONFIGURATION_CAMERA（<a href="#SLUGS_CONFIGURATION_CAMERA">#188</a>）
   </h3>
   <p>
    <a href="#messages">
-    [Message]
-   </a>Control for camara.</p>
+    [Message]</a> 控制相机。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>target</td>
      <td>uint8_t</td>
-     <td>The system setting the commands</td>
+     <td>系统设置命令</td>
     </tr>
     <tr>
      <td>idOrder</td>
      <td>uint8_t</td>
-     <td>ID 0: brightness 1: aperture 2: iris 3: ICR 4: backlight</td>
+     <td>ID 0：亮度 1：光圈 2：光圈 3：ICR 4：背光 </td>
     </tr>
     <tr>
      <td>order</td>
      <td>uint8_t</td>
-     <td>1: up/on 2: down/off 3: auto/reset/no action</td>
+     <td>1：上/开 2：下/关 3：自动/复位/无动作 </td>
     </tr>
    </tbody>
   </table>
@@ -879,15 +875,14 @@
   </h3>
   <p>
    <a href="#messages">
-    [Message]
-   </a>Transmits the position of watch</p>
+    [Message]</a> 传送时钟的位置 </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Units</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -896,47 +891,47 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>The system reporting the action</td>
+     <td>系统报告动作</td>
     </tr>
     <tr>
      <td>latitude</td>
      <td>float</td>
-     <td>deg</td>
-     <td>ISR Latitude</td>
+     <td>度</td>
+     <td>ISR 纬度</td>
     </tr>
     <tr>
      <td>longitude</td>
      <td>float</td>
-     <td>deg</td>
-     <td>ISR Longitude</td>
+     <td>度</td>
+     <td>ISR 经度</td>
     </tr>
     <tr>
      <td>height</td>
      <td>float</td>
      <td>
      </td>
-     <td>ISR Height</td>
+     <td>ISR 高度</td>
     </tr>
     <tr>
      <td>option1</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Option 1</td>
+     <td>选项 1</td>
     </tr>
     <tr>
      <td>option2</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Option 2</td>
+     <td>选项 2</td>
     </tr>
     <tr>
      <td>option3</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Option 3</td>
+     <td>选项 3</td>
     </tr>
    </tbody>
   </table>
@@ -947,31 +942,30 @@
   </h3>
   <p>
    <a href="#messages">
-    [Message]
-   </a>Transmits the readings from the voltage and current sensors</p>
+    [Message]</a> 传输电压和电流传感器的读数</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>r2Type</td>
      <td>uint8_t</td>
-     <td>It is the value of reading 2: 0 - Current, 1 - Foreward Sonar, 2 - Back Sonar, 3 - RPM</td>
+     <td>它是计数到2的值：0 -  当前，1 - 前声纳，2 - 后声纳，3 - RPM</td>
     </tr>
     <tr>
      <td>voltage</td>
      <td>uint16_t</td>
-     <td>Voltage in uS of PWM. 0 uS = 0V, 20 uS = 21.5V</td>
+     <td>PWM 电压 0 uS = 0V，20 uS = 21.5V</td>
     </tr>
     <tr>
      <td>reading2</td>
      <td>uint16_t</td>
-     <td>Depends on the value of r2Type (0) Current consumption in uS of PWM, 20 uS = 90Amp (1) Distance in cm (2) Distance in cm (3) Absolute value</td>
+     <td>取决于 r2Type 的值（0）电流消耗（单位：uS），20 uS=90安培（1）距离（单位：cm）（2）距离（单位：cm）（3）绝对值 </td>
     </tr>
    </tbody>
   </table>
@@ -982,26 +976,25 @@
   </h3>
   <p>
    <a href="#messages">
-    [Message]
-   </a>Transmits the actual Pan, Tilt and Zoom values of the camera unit</p>
+    [Message]</a> 传输像机单元的实际“平移”，“倾斜”和“缩放”值</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>zoom</td>
      <td>uint8_t</td>
-     <td>The actual Zoom Value</td>
+     <td>实际缩放值</td>
     </tr>
     <tr>
      <td>pan</td>
      <td>int16_t</td>
-     <td>The Pan value in 10ths of degree</td>
+     <td>以10度为单位的平移值</td>
     </tr>
     <tr>
      <td>tilt</td>
