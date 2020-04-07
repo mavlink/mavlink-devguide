@@ -973,14 +973,14 @@
    <a href="#enums">
     [Enum]
    </a>构成MAVLink系统（自动驾驶仪，摄像机，伺服系统，GPS系统，回避系统等）的机载硬件/软件的不同类型和实例的组件ID（值）。
-      组件在发送消息时必须在其源地址中使用适当的ID。 Components can also use IDs to determine if they are the intended recipient of an incoming message. The MAV_COMP_ID_ALL value is used to indicate messages that must be processed by all components.
-      When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded.</p>
+      组件在发送消息时必须在其源地址中使用适当的ID。 组件还可以通过ID来判断它们是不是传入消息的预期接收方。 MAV_COMP_ID_ALL 值用于指示所有组件必须处理的消息。
+      创建新条目时，可以有多个实例的组件（如摄像机、伺服系统等）应按顺序分配值。 在这些组件之后，应该留有一定的数值空间，保证能扩展一定数量的组件。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名</th>
+     <th>描述</th>
     </tr>
    </thead>
    <tbody>
@@ -989,7 +989,7 @@
      <td>
       <a href="#MAV_COMP_ID_ALL">MAV_COMP_ID_ALL</a>
      </td>
-     <td>Target id (target_component) used to broadcast messages to all components of the receiving system. Components should attempt to process messages with this component ID and forward to components on any other interfaces. Note: This is not a valid *source* component id for a message.</td>
+     <td>用于向接收系统的所有组件广播的消息id（目标组件）。 Components should attempt to process messages with this component ID and forward to components on any other interfaces. Note: This is not a valid *source* component id for a message.</td>
     </tr>
     <tr id="MAV_COMP_ID_AUTOPILOT1">
      <td>1</td>
