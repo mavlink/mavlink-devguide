@@ -36,6 +36,8 @@ An extended set of parameter messages is used to define settings and options. Th
 
 Parameters can be simple or quite complex, depending on the behavior they change.
 
+> **Note** The parameter CAM_MODE needs to part of the parameter list. It maps to the command [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE). It allows to expose different settings based on the mode, so photo settings in photo mode and video settings in video mode.
+
 #### Parameter Types
 
 The type of the parameter follows the enum [MAV_PARAM_EXT_TYPE](../messages/common.md#MAV_PARAM_EXT_TYPE_UINT8). Within the XML file, these are defined as:
