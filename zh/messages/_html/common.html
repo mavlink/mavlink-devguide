@@ -17083,7 +17083,7 @@
       <a href="#">
       </a>
      </td>
-     <td>电池电压，该电压不是飞控传输的电压</td>
+     <td>电池电压，-1：自驾仪不测量电压</td>
     </tr>
     <tr>
      <td>current_battery</td>
@@ -17137,7 +17137,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Autopilot-specific errors</td>
+     <td>特定错误</td>
     </tr>
     <tr>
      <td>errors_count2</td>
@@ -17148,7 +17148,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Autopilot-specific errors</td>
+     <td>特定错误</td>
     </tr>
     <tr>
      <td>errors_count3</td>
@@ -17159,7 +17159,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Autopilot-specific errors</td>
+     <td>特定错误</td>
     </tr>
     <tr>
      <td>errors_count4</td>
@@ -17170,7 +17170,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Autopilot-specific errors</td>
+     <td>特定错误</td>
     </tr>
    </tbody>
   </table>
@@ -17180,9 +17180,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The system time is the time of the master clock, typically the computer clock of the main onboard computer.</p>
+   该系统时间是系统的主时钟时间，通常是控制板上主控芯片的时钟</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17197,13 +17195,13 @@
      <td>time_unix_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX epoch time).</td>
+     <td>时间戳(UNIX时间 从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数)。</td>
     </tr>
     <tr>
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
    </tbody>
   </table>
