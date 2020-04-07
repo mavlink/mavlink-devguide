@@ -9135,7 +9135,7 @@
    )
   </h3>
   <p>
-   以该航点进行没有时间限制定点悬停动作</p>
+   以该航点进行没有时间限制进行定点飞行动作</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9190,9 +9190,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Loiter around this waypoint for X turns</p>
+   围绕该航点飞行X圈</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9205,7 +9203,7 @@
    <tbody>
     <tr>
      <td>1: Turns</td>
-     <td>Number of turns.</td>
+     <td>圈数</td>
      <td>
       <em>min:</em>0 </td>
      <td>
@@ -9221,14 +9219,14 @@
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise</td>
+     <td>环绕航点半径。 如果正-顺时针，负-逆时针</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>飞行中的航空器退出坐标：0用于定点的中心，1用于退出位置。 另外，该数值也可以设置期望的航向角。 NaN 要使用当前系统的头向方向模式(例如朝着下一个航点方向的头向、朝home点方向的航向，等等)。</td>
      <td>
      </td>
      <td>
