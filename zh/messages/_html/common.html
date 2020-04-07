@@ -16969,7 +16969,7 @@
      <td>
       <a href="#MAV_TYPE">MAV_TYPE</a>
      </td>
-     <td>机体或者组件的类型。 For a flight controller component the vehicle type (quadrotor, helicopter, etc.). For other components the component type (e.g. camera, gimbal, etc.). This should be used in preference to component id for identifying the component type.</td>
+     <td>机体或者组件的类型。 用来表示当前自驾仪所控制机体的类型（如四旋翼飞行器，直升机等） 对应其他组件的组件类型（如相机，云台等） 在标识组件类型时，应该优先使用此id。</td>
     </tr>
     <tr>
      <td>自驾仪</td>
@@ -16977,7 +16977,7 @@
      <td>
       <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
      </td>
-     <td>Autopilot type / class. Use MAV_AUTOPILOT_INVALID for components that are not flight controllers.</td>
+     <td>自驾仪的类型 对于不是飞控的组件参考MAV_AUTOPILOT_INVALID</td>
     </tr>
     <tr>
      <td>base_mode</td>
@@ -16985,7 +16985,7 @@
      <td>
       <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
      </td>
-     <td>System mode bitmap.</td>
+     <td>该位图用于标识系统的状态</td>
     </tr>
     <tr>
      <td>custom_mode</td>
@@ -16994,7 +16994,7 @@
       <a href="#">
       </a>
      </td>
-     <td>A bitfield for use for autopilot-specific flags</td>
+     <td>该专用字段用于标识自驾仪器的状态</td>
     </tr>
     <tr>
      <td>system_status</td>
@@ -17002,7 +17002,7 @@
      <td>
       <a href="#MAV_STATE">MAV_STATE</a>
      </td>
-     <td>System status flag.</td>
+     <td>系统的状态标识</td>
     </tr>
     <tr>
      <td>mavlink_version</td>
@@ -17023,7 +17023,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>The general system state. If the system is following the MAVLink standard, the system state is mainly defined by three orthogonal states/modes: The system mode, which is either LOCKED (motors shut down and locked), MANUAL (system under RC control), GUIDED (system with autonomous position control, position setpoint controlled manually) or AUTO (system guided by path/waypoint planner). The NAV_MODE defined the current flight state: LIFTOFF (often an open-loop maneuver), LANDING, WAYPOINTS or VECTOR. This represents the internal navigation state machine. The system status shows whether the system is currently active or not and if an emergency occurred. During the CRITICAL and EMERGENCY states the MAV is still considered to be active, but should start emergency procedures autonomously. After a failure occurred it should first move from active to critical to allow manual intervention and then move to emergency after a certain timeout.</p>
+   </a>The general system state. 如果系统遵循MAVLink标准，系统可用三种模式/状态进行定义，锁定状态(电机关闭和锁定)、手动状态(RC控制下的系统)、导航状态(具有自定位能力的系统、可以手动设定的位置)或自自主(可以进行轨迹/航点等任务规划进行导航的系统)。 NAV_MODE定义了当前导航状态:起飞(通常是开环机动)、着陆、航路点或定向。 This represents the internal navigation state machine. The system status shows whether the system is currently active or not and if an emergency occurred. During the CRITICAL and EMERGENCY states the MAV is still considered to be active, but should start emergency procedures autonomously. After a failure occurred it should first move from active to critical to allow manual intervention and then move to emergency after a certain timeout.</p>
   <table class="sortable">
    <thead>
     <tr>
