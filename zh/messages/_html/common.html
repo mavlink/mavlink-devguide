@@ -18031,19 +18031,23 @@
      <td>xmag</td>
      <td>int16_t</td>
      <td>mgauss</td>
-     <td>X Magnetic field</td>
+     <td>X轴磁力计数据
+</td>
     </tr>
     <tr>
      <td>ymag</td>
      <td>int16_t</td>
      <td>mgauss</td>
-     <td>Y Magnetic field</td>
+     <td>
+y轴磁力计数据
+</td>
     </tr>
     <tr>
      <td>zmag</td>
      <td>int16_t</td>
      <td>mgauss</td>
-     <td>Z Magnetic field</td>
+     <td>Z轴磁力计数据
+</td>
     </tr>
     <tr>
      <td style="color:blue;">temperature<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18052,7 +18056,7 @@
      </td>
      <td>int16_t</td>
      <td>cdegC</td>
-     <td>Temperature, 0: IMU does not provide temperature values. If the IMU is at 0C it must send 1 (0.01C).</td>
+     <td>温度，0： IMU 不提供温度值。 如果当前IMU的温度数据是0C，它必须发送 1 (0.01C)。</td>
     </tr>
    </tbody>
   </table>
@@ -18062,9 +18066,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The RAW IMU readings for a 9DOF sensor, which is identified by the id (default IMU1). This message should always contain the true raw values without any scaling to allow data capture and system debugging.</p>
+   九轴传感器的原始数据（默认IMU1）。 此消息应总是包含真正的原始值，不能压缩或裁减放以便于数据捕获和系统调试。</p>
   <table class="sortable">
    <thead>
     <tr>
