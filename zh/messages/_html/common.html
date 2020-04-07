@@ -946,7 +946,7 @@
      <td>
       <a href="#MAV_STATE_EMERGENCY">MAV_STATE_EMERGENCY</a>
      </td>
-     <td>系统处于非正常飞行模式。 失去了对部件或整个机身的控制。 It is in mayday and going down.</td>
+     <td>系统处于非正常飞行模式。 失去了对部件或整个机身的控制。 处于紧急状态，正在下坠。</td>
     </tr>
     <tr id="MAV_STATE_POWEROFF">
      <td>
@@ -954,7 +954,7 @@
      <td>
       <a href="#MAV_STATE_POWEROFF">MAV_STATE_POWEROFF</a>
      </td>
-     <td>System just initialized its power-down sequence, will shut down now.</td>
+     <td>系统刚刚初始化了掉电处理程序，即将关机。</td>
     </tr>
     <tr id="MAV_STATE_FLIGHT_TERMINATION">
      <td>
@@ -962,7 +962,7 @@
      <td>
       <a href="#MAV_STATE_FLIGHT_TERMINATION">MAV_STATE_FLIGHT_TERMINATION</a>
      </td>
-     <td>System is terminating itself.</td>
+     <td>系统正在自行终止。</td>
     </tr>
    </tbody>
   </table>
@@ -972,8 +972,8 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.).
-      Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The MAV_COMP_ID_ALL value is used to indicate messages that must be processed by all components.
+   </a>构成MAVLink系统（自动驾驶仪，摄像机，伺服系统，GPS系统，回避系统等）的机载硬件/软件的不同类型和实例的组件ID（值）。
+      组件在发送消息时必须在其源地址中使用适当的ID。 Components can also use IDs to determine if they are the intended recipient of an incoming message. The MAV_COMP_ID_ALL value is used to indicate messages that must be processed by all components.
       When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded.</p>
   <table class="sortable">
    <thead>
