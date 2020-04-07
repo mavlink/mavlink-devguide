@@ -9436,7 +9436,7 @@
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>着陆高度（当前框架下的地面等级）。</td>
+     <td>着陆高度（当前坐标系下的地平基准）。</td>
      <td>
      </td>
      <td>m</td>
@@ -9503,9 +9503,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Land at local position (local frame only)</p>
+   着陆在本地的位置 (仅限于局部坐标系)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9518,7 +9516,7 @@
    <tbody>
     <tr>
      <td>1: Target</td>
-     <td>Landing target number (if available)</td>
+     <td>着陆目标序号(如果可用)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
      <td>
@@ -9526,42 +9524,42 @@
     </tr>
     <tr>
      <td>2: Offset</td>
-     <td>Maximum accepted offset from desired landing position - computed magnitude from spherical coordinates: d = sqrt(x^2 + y^2 + z^2), which gives the maximum accepted distance between the desired landing position and the position where the vehicle is about to land</td>
+     <td>最大可接受的偏移量来自理想着陆位置 - 来自球形坐标：d = sqrt(x^2 + y^2 + z^2， 它给出所需着陆位置与机体即将着陆位置之间最大可接受的距离</td>
      <td>
       <em>min:</em>0 </td>
      <td>m</td>
     </tr>
     <tr>
      <td>3: Descend Rate</td>
-     <td>Landing descend rate</td>
+     <td>着陆下降速率：</td>
      <td>
      </td>
      <td>m/s</td>
     </tr>
     <tr>
      <td>4: Yaw</td>
-     <td>Desired yaw angle</td>
+     <td>期望的航向角</td>
      <td>
      </td>
      <td>rad</td>
     </tr>
     <tr>
      <td>5: Y Position</td>
-     <td>Y-axis position</td>
+     <td>Y轴位置</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>6: X Position</td>
-     <td>X-axis position</td>
+     <td>Y轴位置</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>7: Z Position</td>
-     <td>Z-axis / ground level position</td>
+     <td>Z轴/地面基准位置</td>
      <td>
      </td>
      <td>m</td>
@@ -9572,9 +9570,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Takeoff from local position (local frame only)</p>
+   本地的位置起飞 (仅限于局部坐标系)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9586,7 +9582,7 @@
    <tbody>
     <tr>
      <td>1: Pitch</td>
-     <td>Minimum pitch (if airspeed sensor present), desired pitch without sensor</td>
+     <td>最小俯仰角(如果空速传感器存在)，没有传感器需要设定俯仰角</td>
      <td>rad</td>
     </tr>
     <tr>
@@ -9597,12 +9593,12 @@
     </tr>
     <tr>
      <td>3: Ascend Rate</td>
-     <td>Takeoff ascend rate</td>
+     <td>起飞的爬升率</td>
      <td>m/s</td>
     </tr>
     <tr>
      <td>4: Yaw</td>
-     <td>Yaw angle (if magnetometer or another yaw estimation source present), ignored without one of these</td>
+     <td>航向角(如果磁罗盘或另一个航向估计源存在)，忽略其中一个值</td>
      <td>rad</td>
     </tr>
     <tr>
@@ -19264,9 +19260,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Message that announces the sequence number of the current active mission item. The MAV will fly towards this mission item.</p>
+   该消息内容为当前执行的任务序列号信息 MAV将飞往这个任务。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19279,7 +19273,7 @@ y轴磁力计数据
     <tr>
      <td>seq</td>
      <td>uint16_t</td>
-     <td>Sequence</td>
+     <td>序号</td>
     </tr>
    </tbody>
   </table>
@@ -19289,9 +19283,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Request the overall list of mission items from the system/component.</p>
+    请求系统/组件提供任务规划的列表。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19309,7 +19301,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19318,7 +19310,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td style="color:blue;">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -19329,7 +19321,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
-     <td>Mission type.</td>
+     <td>任务类型</td>
     </tr>
    </tbody>
   </table>
@@ -19339,9 +19331,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>This message is emitted as response to MISSION_REQUEST_LIST by the MAV and to initiate a write transaction. The GCS can then request the individual mission item based on the knowledge of the total number of waypoints.</p>
+   MAV发出此消息作为对 SCRIPT_REQUEST_LIST 的响应，以获取任务规划内容的数量。 地面控制站可以根据对航点总数的了解，要求提供单独的任务规划的内容。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19359,7 +19349,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19368,7 +19358,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td>count</td>
@@ -19377,7 +19367,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Number of mission items in the sequence</td>
+     <td>序列中的任务规划内容的数量</td>
     </tr>
     <tr>
      <td style="color:blue;">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -19388,7 +19378,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
-     <td>Mission type.</td>
+     <td>任务类型</td>
     </tr>
    </tbody>
   </table>
@@ -19398,9 +19388,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Delete all mission items at once.</p>
+   删除所有任务项目。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19418,7 +19406,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19427,7 +19415,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td style="color:blue;">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -19438,7 +19426,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
-     <td>Mission type.</td>
+     <td>任务类型</td>
     </tr>
    </tbody>
   </table>
@@ -19448,9 +19436,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>A certain mission item has been reached. The system will either hold this position (or circle on the orbit) or (if the autocontinue on the WP was set) continue to the next waypoint.</p>
+   该任务项目已经达到。 该系统要么保持这一位置(或围绕该点运动)，要么(如果确定了WP上的自动继续)，要么继续到下一个航点。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19463,7 +19449,7 @@ y轴磁力计数据
     <tr>
      <td>seq</td>
      <td>uint16_t</td>
-     <td>Sequence</td>
+     <td>序号</td>
     </tr>
    </tbody>
   </table>
@@ -19473,9 +19459,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Acknowledgment message during waypoint handling. The type field states if this message is a positive ack (type=0) or if an error happened (type=non-zero).</p>
+   在航点处理过程中确认消息。 类型字段表示此消息是否为正 (type=0) 或发生错误 (type=non-zero).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19493,7 +19477,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19502,7 +19486,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td>type</td>
@@ -19510,7 +19494,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_MISSION_RESULT">MAV_MISSION_RESULT</a>
      </td>
-     <td>Mission result.</td>
+     <td>2. 任务结果。</td>
     </tr>
     <tr>
      <td style="color:blue;">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -19521,7 +19505,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
-     <td>Mission type.</td>
+     <td>任务类型</td>
     </tr>
    </tbody>
   </table>
@@ -19531,9 +19515,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Sets the GPS co-ordinates of the vehicle local origin (0,0,0) position. Vehicle should emit GPS_GLOBAL_ORIGIN irrespective of whether the origin is changed. This enables transform between the local coordinate frame and the global (GPS) coordinate frame, which may be necessary when (for example) indoor and outdoor settings are connected and the MAV should move from in- to outdoor.</p>
+   设置机体本地位置的 GPS 坐标(0,0,0) 位置。 Vehicle should emit GPS_GLOBAL_ORIGIN irrespective of whether the origin is changed. This enables transform between the local coordinate frame and the global (GPS) coordinate frame, which may be necessary when (for example) indoor and outdoor settings are connected and the MAV should move from in- to outdoor.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19699,9 +19681,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM_INT message. https://mavlink.io/en/services/mission.html</p>
+   请求该序列号的任务项目信息。 系统对此消息的响应应该是MISSION_ITEM_INT 消息。 https://mavlink.io/en/services/mission.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21053,9 +21033,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Metrics typically displayed on a HUD for fixed wing aircraft.</p>
+   该信息内容显示在固定翼飞机的HUD（抬头显示器）上。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21070,19 +21048,19 @@ y轴磁力计数据
      <td>airspeed</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Current indicated airspeed (IAS).</td>
+     <td>当前显示的空速(IAS)。</td>
     </tr>
     <tr>
      <td>groundspeed</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Current ground speed.</td>
+     <td>当前地面速度。</td>
     </tr>
     <tr>
      <td>heading</td>
      <td>int16_t</td>
      <td>deg</td>
-     <td>Current heading in compass units (0-360, 0=north).</td>
+     <td>当前航向(0-360, 0=北)。</td>
     </tr>
     <tr>
      <td>throttle</td>
@@ -21090,19 +21068,19 @@ y轴磁力计数据
      <td>
       %
      </td>
-     <td>Current throttle setting (0 to 100).</td>
+     <td>当前油门值百分比 (0至100)。</td>
     </tr>
     <tr>
      <td>alt</td>
      <td>float</td>
      <td>m</td>
-     <td>Current altitude (MSL).</td>
+     <td>当前海拔高度(MSL)。</td>
     </tr>
     <tr>
      <td>climb</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Current climb rate.</td>
+     <td>当前爬升率</td>
     </tr>
    </tbody>
   </table>
@@ -28727,9 +28705,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Status text message. These messages are printed in yellow in the COMM console of QGroundControl. WARNING: They consume quite some bandwidth, so use only for important status and error messages. If implemented wisely, these messages are buffered on the MCU and sent only at a limited rate (e.g. 10 Hz).</p>
+   状态文本信息 这些消息以黄色文字字节显示在地面站的COMM控制台 警告：他们消耗了相当多的带宽，所以只能用于重要的状态和错误信息。 比较明智的方法是将这些信息缓存在MCU上，并且只以有限的速度发送(例如10Hz)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28746,7 +28722,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_SEVERITY">MAV_SEVERITY</a>
      </td>
-     <td>Severity of status. Relies on the definitions within RFC-5424.</td>
+     <td>状态的严重性。 依靠RFC-5424中的定义。</td>
     </tr>
     <tr>
      <td>text</td>
@@ -28755,7 +28731,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Status text message, without null termination character</td>
+     <td>状态文本消息，不包含空终止字符</td>
     </tr>
     <tr>
      <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -28767,7 +28743,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Unique (opaque) identifier for this statustext message.  May be used to reassemble a logical long-statustext message from a sequence of chunks.  A value of zero indicates this is the only chunk in the sequence and the message can be emitted immediately.</td>
+     <td>此状态文本消息的唯一(不透明) 标识符。  可以用来重新组合源自一系列块的逻辑长状态文本消息。  0表示这是序列中唯一的内容，消息可以立即发布。</td>
     </tr>
     <tr>
      <td style="color:blue;">chunk_seq<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -28779,7 +28755,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>This chunk's sequence number; indexing is from zero.  Any null character in the text field is taken to mean this was the last chunk.</td>
+     <td>此区块的序列号；索引来自零。  文本字段中的任何空字符都会被认为是最后一个块。</td>
     </tr>
    </tbody>
   </table>
