@@ -9,9 +9,7 @@
    <a href="#MAV_PREFLIGHT_STORAGE_ACTION">MAV_PREFLIGHT_STORAGE_ACTION</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Action required when performing CMD_PREFLIGHT_STORAGE</p>
+   执行CMD_PREFLIGHT_STORAGE时需要操作</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26,49 +24,49 @@
      <td>
       <a href="#MAV_PFS_CMD_READ_ALL">MAV_PFS_CMD_READ_ALL</a>
      </td>
-     <td>Read all parameters from storage</td>
+     <td>从存储读取所有参数</td>
     </tr>
     <tr id="MAV_PFS_CMD_WRITE_ALL">
      <td>1</td>
      <td>
       <a href="#MAV_PFS_CMD_WRITE_ALL">MAV_PFS_CMD_WRITE_ALL</a>
      </td>
-     <td>Write all parameters to storage</td>
+     <td>将所有参数写入到存储</td>
     </tr>
     <tr id="MAV_PFS_CMD_CLEAR_ALL">
      <td>2</td>
      <td>
       <a href="#MAV_PFS_CMD_CLEAR_ALL">MAV_PFS_CMD_CLEAR_ALL</a>
      </td>
-     <td>Clear all  parameters in storage</td>
+     <td>清除存储中的所有参数</td>
     </tr>
     <tr id="MAV_PFS_CMD_READ_SPECIFIC">
      <td>3</td>
      <td>
       <a href="#MAV_PFS_CMD_READ_SPECIFIC">MAV_PFS_CMD_READ_SPECIFIC</a>
      </td>
-     <td>Read specific parameters from storage</td>
+     <td>从存储读取特定参数</td>
     </tr>
     <tr id="MAV_PFS_CMD_WRITE_SPECIFIC">
      <td>4</td>
      <td>
       <a href="#MAV_PFS_CMD_WRITE_SPECIFIC">MAV_PFS_CMD_WRITE_SPECIFIC</a>
      </td>
-     <td>Write specific parameters to storage</td>
+     <td>将特定参数写入到存储</td>
     </tr>
     <tr id="MAV_PFS_CMD_CLEAR_SPECIFIC">
      <td>5</td>
      <td>
       <a href="#MAV_PFS_CMD_CLEAR_SPECIFIC">MAV_PFS_CMD_CLEAR_SPECIFIC</a>
      </td>
-     <td>Clear specific parameters in storage</td>
+     <td>清除存储中的特定参数</td>
     </tr>
     <tr id="MAV_PFS_CMD_DO_NOTHING">
      <td>6</td>
      <td>
       <a href="#MAV_PFS_CMD_DO_NOTHING">MAV_PFS_CMD_DO_NOTHING</a>
      </td>
-     <td>do nothing</td>
+     <td>不进行任何操作</td>
     </tr>
    </tbody>
   </table>
@@ -76,7 +74,7 @@
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
    </strong>
-   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+   <p>MAVLink 指令（MAV_CMD）和消息是不同的！ 这个命令在“任务协议”和“指令协议”中定义了最多7个参数的值，并将其嵌入在特定消息中。 使用该指令模式执行任务或者需要获取确认反馈信息时，请根据返回内容使用重新发送逻辑 Otherwise use messages.</p>
   </blockquote>
   <p>
   </p>
@@ -84,9 +82,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request storage of different parameter values and logs. This command will be only accepted if in pre-flight mode.</p>
+   请求存储不同参数值和日志。 只有在飞行前模式下才会接受此命令。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -97,15 +93,15 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>Storage action: Action defined by MAV_PREFLIGHT_STORAGE_ACTION_ADVANCED</td>
+     <td>存储操作：MAV_PREFLIGHT_STORAGE_ACTION_ADVANCED</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Storage area as defined by parameter database</td>
+     <td>由参数数据库定义的存储区域</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Storage flags as defined by parameter database</td>
+     <td>由参数数据库定义的存储标记</td>
     </tr>
     <tr>
      <td>4</td>
