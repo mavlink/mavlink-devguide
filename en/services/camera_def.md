@@ -32,9 +32,15 @@ All fields are self explanatory:
 
 ### Parameters
 
-An extended set of parameter messages is used to define settings and options. These minimally have a parameter name, type and default value (types can be predefined or arbitrary - though arbitrary types are only supported by custom camera controllers). They will also have a description that is displayed to the user and the set of possible options. 
+An extended set of parameter messages is used to define settings and options.
+These minimally have a parameter name, type and default value (types can be predefined or arbitrary - though arbitrary types are only supported by custom camera controllers).
+They will also have a description that is displayed to the user and the set of possible options. 
 
 Parameters can be simple or quite complex, depending on the behavior they change.
+
+> **Note** The parameter `CAM_MODE` must be part of the parameter list.
+  It maps to the command [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE).
+  It enables exposure of different settings based on the mode, so photo settings in photo mode and video settings in video mode.
 
 #### Parameter Types
 
