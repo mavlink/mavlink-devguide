@@ -4,16 +4,16 @@
    <strong>MAVLink Include Files:</strong>
    <a href="common.md">common.xml</a>
   </p>
-  <h2>MAVLink Protocol Version</h2>
-  <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
-  <h2 id="enums">MAVLink Type Enumerations</h2>
-  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <h2>MAVLink 协议版本</h2>
+  <p>当前的MAVLink版本是2.3。 二级版本号（点后）的范围是1-255。</p>
+  <h2 id="enums">MAVLink 枚举类型</h2>
+  <h2 id="mav_commands">MAVLink 命令（MAV_CMD）</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
    </strong>
-   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+   <p>MAVLink 命令（MAV_CMD）和消息是不同的！ 这些命令定义了最多7个参数的值，这些参数打包在“任务协议”和“命令协议”中使用的 INSIDE 特定消息中。 执行任务或者需要从请求中确认和/或重试逻辑时使用命令。 否则使用消息。</p>
   </blockquote>
-  <h2 id="messages">MAVLink Messages</h2>
+  <h2 id="messages">MAVLink 消息</h2>
   <h3 id="SCRIPT_ITEM">SCRIPT_ITEM (<a href="#SCRIPT_ITEM">
     #180
    </a>
@@ -22,35 +22,35 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Message encoding a mission script item. This message is emitted upon a request for the next script item.</p>
+   </a> 消息编码任务脚本项。 此消息在请求下一个脚本项时发出。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>target_system</td>
      <td>uint8_t</td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
      <td>uint8_t</td>
-     <td>Component ID</td>
+     <td>组件 ID</td>
     </tr>
     <tr>
      <td>seq</td>
      <td>uint16_t</td>
-     <td>Sequence</td>
+     <td>序列</td>
     </tr>
     <tr>
      <td>name</td>
      <td>char[50]</td>
-     <td>The name of the mission script, NULL terminated.</td>
+     <td>任务脚本的名称，空终止符。 </td>
     </tr>
    </tbody>
   </table>
@@ -62,30 +62,30 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Request script item with the sequence number seq. The response of the system to this message should be a SCRIPT_ITEM message.</p>
+   </a> 请求序列号为 seq 的脚本项。  系统对此消息的响应应为脚本项消息。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>target_system</td>
      <td>uint8_t</td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
      <td>uint8_t</td>
-     <td>Component ID</td>
+     <td>组件 ID</td>
     </tr>
     <tr>
      <td>seq</td>
      <td>uint16_t</td>
-     <td>Sequence</td>
+     <td>序列</td>
     </tr>
    </tbody>
   </table>
@@ -97,25 +97,25 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Request the overall list of mission items from the system/component.</p>
+   </a> 请求系统/组件提供任务项的总体列表。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>target_system</td>
      <td>uint8_t</td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
      <td>uint8_t</td>
-     <td>Component ID</td>
+     <td>组件 ID</td>
     </tr>
    </tbody>
   </table>
@@ -127,30 +127,30 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>This message is emitted as response to SCRIPT_REQUEST_LIST by the MAV to get the number of mission scripts.</p>
+   </a> MAV发出此消息作为对 SCRIPT_REQUEST_LIST 的响应，以获取任务脚本的数量。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>target_system</td>
      <td>uint8_t</td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
      <td>uint8_t</td>
-     <td>Component ID</td>
+     <td>组件 ID</td>
     </tr>
     <tr>
      <td>count</td>
      <td>uint16_t</td>
-     <td>Number of script items in the sequence</td>
+     <td>序列中的脚本项数</td>
     </tr>
    </tbody>
   </table>
@@ -162,20 +162,20 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>This message informs about the currently active SCRIPT.</p>
+   </a> 该消息通知有关当前活动的 SCRIPT。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>seq</td>
      <td>uint16_t</td>
-     <td>Active Sequence</td>
+     <td>活动序列</td>
     </tr>
    </tbody>
   </table>
