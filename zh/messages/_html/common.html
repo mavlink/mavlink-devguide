@@ -17093,7 +17093,7 @@
       <a href="#">
       </a>
      </td>
-     <td>电池电流，该电流不是飞控传输的电流</td>
+     <td>电池电流，-1：自驾仪无法测量电流</td>
     </tr>
     <tr>
      <td>battery_remaining</td>
@@ -17105,7 +17105,7 @@
       <a href="#">
       </a>
      </td>
-     <td>电池剩余电量，剩余电量不是由自驾仪传输</td>
+     <td>电池剩余电量，-1：自驾仪器无法测量电量</td>
     </tr>
     <tr>
      <td>drop_rate_comm</td>
@@ -17715,10 +17715,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The global position, as returned by the Global Positioning System (GPS). This is
-                NOT the global position estimate of the system, but rather a RAW sensor value. See message GLOBAL_POSITION for the global position estimate.</p>
+   通过全球定位系统获得的位置信息 不是系统的进行处理后的全局位置信息，而是传感器的原始值。 关于全球定位位置估算，见GLOBAL_POSTITION。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17738,7 +17735,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>fix_type</td>
@@ -17748,7 +17745,7 @@
      <td>
       <a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
      </td>
-     <td>GPS fix type.</td>
+     <td>全球定位系统的定位状态</td>
     </tr>
     <tr>
      <td>lat</td>
@@ -17758,7 +17755,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Latitude (WGS84, EGM96 ellipsoid)</td>
+     <td>纬度(WGS84，EGM96 椭球坐标系)</td>
     </tr>
     <tr>
      <td>lon</td>
@@ -17768,7 +17765,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Longitude (WGS84, EGM96 ellipsoid)</td>
+     <td>经度 (WGS84, EGM96 椭圆坐标系)</td>
     </tr>
     <tr>
      <td>alt</td>
@@ -17778,7 +17775,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Altitude (MSL). Positive for up. Note that virtually all GPS modules provide the MSL altitude in addition to the WGS84 altitude.</td>
+     <td>高度(MSL)。 Positive for up. 请注意几乎所有GPS模块除了WGS84高度以外，还提供了MSL高度。</td>
     </tr>
     <tr>
      <td>eph</td>
@@ -17789,7 +17786,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
+     <td>GPS HDOP水平精度因子。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>epv</td>
@@ -17800,7 +17797,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
+     <td>GPS VDOP位置垂直精度因子 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>vel</td>
@@ -17810,7 +17807,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS ground speed. If unknown, set to: UINT16_MAX</td>
+     <td>GPS 地面速度。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>cog</td>
@@ -17820,7 +17817,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Course over ground (NOT heading, but direction of movement) in degrees * 100, 0.0..359.99 degrees. If unknown, set to: UINT16_MAX</td>
+     <td>地面航向(不是机体的头向，是移动的方向)   100度，0.0..359.99度。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>satellites_visible</td>
@@ -17831,7 +17828,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Number of satellites visible. If unknown, set to 255</td>
+     <td>可见定位卫星数量。 如果未知, 设置为 255</td>
     </tr>
     <tr>
      <td style="color:blue;">alt_ellipsoid<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -17844,7 +17841,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Altitude (above WGS84, EGM96 ellipsoid). Positive for up.</td>
+     <td>高度(WGS84，EGM96椭圆坐标系)。 Positive for up.</td>
     </tr>
     <tr>
      <td style="color:blue;">h_acc<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -17919,9 +17916,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The positioning status, as reported by GPS. This message is intended to display status information about each satellite visible to the receiver. See message GLOBAL_POSITION for the global position estimate. This message can contain information for up to 20 satellites.</p>
+   全球定位系统报告的定位状态。 此消息显示接收机可见的每颗卫星的状态信息。 关于全球定位位置估算，见GLOBAL_POSTITION。 此消息最多可以包含20颗卫星的信息。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17937,39 +17932,39 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Number of satellites visible</td>
+     <td>可见卫星数量。</td>
     </tr>
     <tr>
      <td>satellite_prn</td>
      <td>uint8_t[20]</td>
      <td>
      </td>
-     <td>Global satellite ID</td>
+     <td>可见的全球定位卫星 ID</td>
     </tr>
     <tr>
      <td>satellite_used</td>
      <td>uint8_t[20]</td>
      <td>
      </td>
-     <td>0: Satellite not used, 1: used for localization</td>
+     <td>0: 卫星未被用于定位，1: 卫星用于定位</td>
     </tr>
     <tr>
      <td>satellite_elevation</td>
      <td>uint8_t[20]</td>
      <td>deg</td>
-     <td>Elevation (0: right on top of receiver, 90: on the horizon) of satellite</td>
+     <td>卫星倾角(0: 正上方，90: 地平线)</td>
     </tr>
     <tr>
      <td>satellite_azimuth</td>
      <td>uint8_t[20]</td>
      <td>deg</td>
-     <td>Direction of satellite, 0: 0 deg, 255: 360 deg.</td>
+     <td>卫星方位角，0: 0 deg, 255: 360 deg。</td>
     </tr>
     <tr>
      <td>satellite_snr</td>
      <td>uint8_t[20]</td>
      <td>dB</td>
-     <td>Signal to noise ratio of satellite</td>
+     <td>卫星信号与噪声比率</td>
     </tr>
    </tbody>
   </table>
@@ -17979,9 +17974,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The RAW IMU readings for the usual 9DOF sensor setup. This message should contain the scaled values to the described units</p>
+   九轴加速度传感器原始 读数。 This message should contain the scaled values to the described units</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17996,43 +17989,43 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>xacc</td>
      <td>int16_t</td>
      <td>mG</td>
-     <td>X acceleration</td>
+     <td>X轴加速度</td>
     </tr>
     <tr>
      <td>yacc</td>
      <td>int16_t</td>
      <td>mG</td>
-     <td>Y acceleration</td>
+     <td>Y轴加速度</td>
     </tr>
     <tr>
      <td>zacc</td>
      <td>int16_t</td>
      <td>mG</td>
-     <td>Z acceleration</td>
+     <td>Z轴加速度</td>
     </tr>
     <tr>
      <td>xgyro</td>
      <td>int16_t</td>
      <td>mrad/s</td>
-     <td>Angular speed around X axis</td>
+     <td>X轴角速度</td>
     </tr>
     <tr>
      <td>ygyro</td>
      <td>int16_t</td>
      <td>mrad/s</td>
-     <td>Angular speed around Y axis</td>
+     <td>绕Y 轴的角速度</td>
     </tr>
     <tr>
      <td>zgyro</td>
      <td>int16_t</td>
      <td>mrad/s</td>
-     <td>Angular speed around Z axis</td>
+     <td>绕Z轴的角速度</td>
     </tr>
     <tr>
      <td>xmag</td>
