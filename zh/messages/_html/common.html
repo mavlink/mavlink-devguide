@@ -5838,9 +5838,7 @@
    <a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Type of GPS fix</p>
+   GPS定位状态</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -5855,56 +5853,56 @@
      <td>
       <a href="#GPS_FIX_TYPE_NO_GPS">GPS_FIX_TYPE_NO_GPS</a>
      </td>
-     <td>No GPS connected</td>
+     <td>没有连接到全球定位卫星系统</td>
     </tr>
     <tr id="GPS_FIX_TYPE_NO_FIX">
      <td>1</td>
      <td>
       <a href="#GPS_FIX_TYPE_NO_FIX">GPS_FIX_TYPE_NO_FIX</a>
      </td>
-     <td>No position information, GPS is connected</td>
+     <td>GPS已连接但无法进入定位状态</td>
     </tr>
     <tr id="GPS_FIX_TYPE_2D_FIX">
      <td>2</td>
      <td>
       <a href="#GPS_FIX_TYPE_2D_FIX">GPS_FIX_TYPE_2D_FIX</a>
      </td>
-     <td>2D position</td>
+     <td>2D定位</td>
     </tr>
     <tr id="GPS_FIX_TYPE_3D_FIX">
      <td>3</td>
      <td>
       <a href="#GPS_FIX_TYPE_3D_FIX">GPS_FIX_TYPE_3D_FIX</a>
      </td>
-     <td>3D position</td>
+     <td>3D定位</td>
     </tr>
     <tr id="GPS_FIX_TYPE_DGPS">
      <td>4</td>
      <td>
       <a href="#GPS_FIX_TYPE_DGPS">GPS_FIX_TYPE_DGPS</a>
      </td>
-     <td>DGPS/SBAS aided 3D position</td>
+     <td>伪距差分/星基增强后的3D 定位</td>
     </tr>
     <tr id="GPS_FIX_TYPE_RTK_FLOAT">
      <td>5</td>
      <td>
       <a href="#GPS_FIX_TYPE_RTK_FLOAT">GPS_FIX_TYPE_RTK_FLOAT</a>
      </td>
-     <td>RTK float, 3D position</td>
+     <td>RTK 浮动解</td>
     </tr>
     <tr id="GPS_FIX_TYPE_RTK_FIXED">
      <td>6</td>
      <td>
       <a href="#GPS_FIX_TYPE_RTK_FIXED">GPS_FIX_TYPE_RTK_FIXED</a>
      </td>
-     <td>RTK Fixed, 3D position</td>
+     <td>RTK 固定解</td>
     </tr>
     <tr id="GPS_FIX_TYPE_STATIC">
      <td>7</td>
      <td>
       <a href="#GPS_FIX_TYPE_STATIC">GPS_FIX_TYPE_STATIC</a>
      </td>
-     <td>Static fixed, typically used for base stations</td>
+     <td>静态固定解，通常用于基站模式</td>
     </tr>
     <tr id="GPS_FIX_TYPE_PPP">
      <td>8</td>
@@ -9062,7 +9060,7 @@
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
    </strong>
-   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+   <p>MAVLink 指令（MAV_CMD）和消息是不同的！ 这个命令在“任务协议”和“指令协议”中定义了最多7个参数的值，并将其嵌入在特定消息中。 使用该指令模式执行任务或者需要获取确认反馈信息时，请根据返回内容使用重新发送逻辑 否则使用mavlink的message。</p>
   </blockquote>
   <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. NaN and INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current yaw or latitude rather than a specific value). See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the MAV_CMD entries</p>
   <h3 id="MAV_CMD_NAV_WAYPOINT">MAV_CMD_NAV_WAYPOINT (<a href="#MAV_CMD_NAV_WAYPOINT">16</a>
@@ -17570,12 +17568,12 @@
     <tr>
      <td>target_system</td>
      <td>uint8_t</td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
      <td>uint8_t</td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
    </tbody>
   </table>
@@ -17974,7 +17972,7 @@
    )
   </h3>
   <p>
-   九轴加速度传感器原始 读数。 This message should contain the scaled values to the described units</p>
+   九轴传感器设置的原始IMU读数。 This message should contain the scaled values to the described units</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18273,9 +18271,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The attitude in the aeronautical frame (right-handed, Z-down, X-front, Y-right).</p>
+   航空坐标系下的姿态信息(右手基准, Z-下, X-前, Y-右)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18290,43 +18286,43 @@ y轴磁力计数据
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>roll</td>
      <td>float</td>
      <td>rad</td>
-     <td>Roll angle (-pi..+pi)</td>
+     <td>滚转角 (-pi...+pi)</td>
     </tr>
     <tr>
      <td>pitch</td>
      <td>float</td>
      <td>rad</td>
-     <td>Pitch angle (-pi..+pi)</td>
+     <td>俯仰角 (-pi...+pi)</td>
     </tr>
     <tr>
      <td>yaw</td>
      <td>float</td>
      <td>rad</td>
-     <td>Yaw angle (-pi..+pi)</td>
+     <td>偏航角 (-pi...+pi)</td>
     </tr>
     <tr>
      <td>rollspeed</td>
      <td>float</td>
      <td>rad/s</td>
-     <td>Roll angular speed</td>
+     <td>滚转角速度</td>
     </tr>
     <tr>
      <td>pitchspeed</td>
      <td>float</td>
      <td>rad/s</td>
-     <td>Pitch angular speed</td>
+     <td>俯仰角速度</td>
     </tr>
     <tr>
      <td>yawspeed</td>
      <td>float</td>
      <td>rad/s</td>
-     <td>Yaw angular speed</td>
+     <td>偏航角速度</td>
     </tr>
    </tbody>
   </table>
@@ -18336,9 +18332,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The attitude in the aeronautical frame (right-handed, Z-down, X-front, Y-right), expressed as quaternion. Quaternion order is w, x, y, z and a zero rotation would be expressed as (1 0 0 0).</p>
+   航空坐标系下的姿态信息(右手基准, Z-下, X-前, Y-右)。表示成四元数方式 Quaternion order is w, x, y, z and a zero rotation would be expressed as (1 0 0 0).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18353,7 +18347,7 @@ y轴磁力计数据
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>q1</td>
@@ -18482,10 +18476,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The filtered global position (e.g. fused GPS and accelerometers). The position is in GPS-frame (right-handed, Z-up). It
-               is designed as scaled integer message since the resolution of float is not sufficient.</p>
+   经过处理的的全局位置(如 GPS 和加速计数据融合后)。 位置在 GPS 坐标系下(右手基准，Z-上)。 它被设计成缩放整数型，因为浮点型的精度不满足要求。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18500,55 +18491,55 @@ y轴磁力计数据
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>lat</td>
      <td>int32_t</td>
      <td>degE7</td>
-     <td>Latitude, expressed</td>
+     <td>纬度</td>
     </tr>
     <tr>
      <td>lon</td>
      <td>int32_t</td>
      <td>degE7</td>
-     <td>Longitude, expressed</td>
+     <td>经度</td>
     </tr>
     <tr>
      <td>alt</td>
      <td>int32_t</td>
      <td>mm</td>
-     <td>Altitude (MSL). Note that virtually all GPS modules provide both WGS84 and MSL.</td>
+     <td>高度(海拔)。 请注意几乎所有GPS模块都提供WGS84和MSL。</td>
     </tr>
     <tr>
      <td>relative_alt</td>
      <td>int32_t</td>
      <td>mm</td>
-     <td>Altitude above ground</td>
+     <td>相对（地面）高度</td>
     </tr>
     <tr>
      <td>vx</td>
      <td>int16_t</td>
      <td>cm/s</td>
-     <td>Ground X Speed (Latitude, positive north)</td>
+     <td>X方向的地面速度 (纬度, 正向北)</td>
     </tr>
     <tr>
      <td>vy</td>
      <td>int16_t</td>
      <td>cm/s</td>
-     <td>Ground Y Speed (Longitude, positive east)</td>
+     <td>Y方向的地面速度 (经度, 正向东)</td>
     </tr>
     <tr>
      <td>vz</td>
      <td>int16_t</td>
      <td>cm/s</td>
-     <td>Ground Z Speed (Altitude, positive down)</td>
+     <td>Z方向的地面速度 (高度, 正向下)</td>
     </tr>
     <tr>
      <td>hdg</td>
      <td>uint16_t</td>
      <td>cdeg</td>
-     <td>Vehicle heading (yaw angle), 0.0..359.99 degrees. If unknown, set to: UINT16_MAX</td>
+     <td>机体头像 (偏航角度), 0.0..359.99 度. 如果未知设置为 UINT16_MAX</td>
     </tr>
    </tbody>
   </table>
@@ -18746,7 +18737,7 @@ y轴磁力计数据
   <p>
    <a href="#messages">
     [Message]
-   </a>Superseded by ACTUATOR_OUTPUT_STATUS. The RAW values of the servo outputs (for RC input from the remote, use the RC_CHANNELS messages). The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%.</p>
+   </a>Superseded by ACTUATOR_OUTPUT_STATUS. 伺服器输出的原始值值 (远距离遥控，请使用 RC_CHANNELS 消息)。 PPM标准：1000微秒：0%，2000微秒：100%。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18761,62 +18752,62 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint32_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>port</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.</td>
+     <td>伺服器输出端口(8个输出=1个端口)。 在 Pixhawk 上运行的飞行堆栈应使用：0 = MAIN，1 = AUX。</td>
     </tr>
     <tr>
      <td>servo1_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 1 value</td>
+     <td>ID为1的伺服器 输出值</td>
     </tr>
     <tr>
      <td>servo2_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 2 value</td>
+     <td>ID为2的伺服器 输出值</td>
     </tr>
     <tr>
      <td>servo3_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 3 value</td>
+     <td>ID为3的伺服器 输出值</td>
     </tr>
     <tr>
      <td>servo4_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 4 value</td>
+     <td>ID为4的伺服器 输出值</td>
     </tr>
     <tr>
      <td>servo5_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 5 value</td>
+     <td>ID为5的伺服器 输出值</td>
     </tr>
     <tr>
      <td>servo6_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 6 value</td>
+     <td>ID为6的伺服器 输出值</td>
     </tr>
     <tr>
      <td>servo7_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 7 value</td>
+     <td>ID为7的伺服器 输出值</td>
     </tr>
     <tr>
      <td>servo8_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 8 value</td>
+     <td>ID为8的伺服器 输出值</td>
     </tr>
     <tr>
      <td style="color:blue;">servo9_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18825,7 +18816,7 @@ y轴磁力计数据
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 9 value</td>
+     <td>ID为9的伺服器 输出值</td>
     </tr>
     <tr>
      <td style="color:blue;">servo10_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18834,7 +18825,7 @@ y轴磁力计数据
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 10 value</td>
+     <td>ID为10的伺服器 输出值</td>
     </tr>
     <tr>
      <td style="color:blue;">servo11_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18843,7 +18834,7 @@ y轴磁力计数据
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 11 value</td>
+     <td>ID为11的伺服器 输出值</td>
     </tr>
     <tr>
      <td style="color:blue;">servo12_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18852,7 +18843,7 @@ y轴磁力计数据
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 12 value</td>
+     <td>ID为12的伺服器 输出值</td>
     </tr>
     <tr>
      <td style="color:blue;">servo13_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18861,7 +18852,7 @@ y轴磁力计数据
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 13 value</td>
+     <td>ID为13的伺服器 输出值</td>
     </tr>
     <tr>
      <td style="color:blue;">servo14_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18870,7 +18861,7 @@ y轴磁力计数据
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 14 value</td>
+     <td>ID为14的伺服器 输出值</td>
     </tr>
     <tr>
      <td style="color:blue;">servo15_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18879,7 +18870,7 @@ y轴磁力计数据
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 15 value</td>
+     <td>ID为15的伺服器 输出值</td>
     </tr>
     <tr>
      <td style="color:blue;">servo16_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18888,7 +18879,7 @@ y轴磁力计数据
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>Servo output 16 value</td>
+     <td>ID为16的伺服器 输出值</td>
     </tr>
    </tbody>
   </table>
@@ -18898,9 +18889,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Request a partial list of mission items from the system/component. https://mavlink.io/en/services/mission.html. If start and end index are the same, just send one waypoint.</p>
+    请求系统/组件提供任务的列表。 https://mavlink.io/en/services/mission.html. 如果开始和结束编号是相同的，只需发送一个航点。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18918,7 +18907,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -18927,7 +18916,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td>start_index</td>
@@ -18936,7 +18925,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Start index</td>
+     <td>起始编号(&I)：</td>
     </tr>
     <tr>
      <td>end_index</td>
@@ -18945,7 +18934,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>End index, -1 by default (-1: send list to end). Else a valid index of the list</td>
+     <td>默认情况下结束编号，(-1: 发送列表到结尾)。 其他有效的索引列表</td>
     </tr>
     <tr>
      <td style="color:blue;">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18956,7 +18945,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
-     <td>Mission type.</td>
+     <td>任务类型</td>
     </tr>
    </tbody>
   </table>
