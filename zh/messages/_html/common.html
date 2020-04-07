@@ -16952,7 +16952,7 @@
    )
   </h3>
   <p>
-   心跳包信息表示系统或组件已经存在并且可以回应。 The type and autopilot fields (along with the message component id), allow the receiving system to treat further messages from this system appropriately (e.g. by laying out the user interface based on the autopilot). 这种微型服务在 https://mavlink.io/en/services/hearbeat.html 上记录。</p>
+   心跳包信息表示系统或组件已经存在并且可以回应。 类型和自驾仪字段(以及消息组件id)，允许接收到该信息的系统(如具备用户交互界面的自驾仪）对信息进行进一步处理 这种微型服务在 https://mavlink.io/en/services/hearbeat.html 上记录。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16964,7 +16964,7 @@
    </thead>
    <tbody>
     <tr>
-     <td>类型</td>
+     <td>type</td>
      <td>uint8_t</td>
      <td>
       <a href="#MAV_TYPE">MAV_TYPE</a>
@@ -16972,7 +16972,7 @@
      <td>机体或者组件的类型。 用来表示当前自驾仪所控制机体的类型（如四旋翼飞行器，直升机等） 对应其他组件的组件类型（如相机，云台等） 在标识组件类型时，应该优先使用此id。</td>
     </tr>
     <tr>
-     <td>自驾仪</td>
+     <td>autopilot</td>
      <td>uint8_t</td>
      <td>
       <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
@@ -16985,7 +16985,7 @@
      <td>
       <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
      </td>
-     <td>该位图用于标识系统的状态</td>
+     <td>该映射用于标识MAV系统的状态</td>
     </tr>
     <tr>
      <td>custom_mode</td>
@@ -17011,7 +17011,7 @@
       <a href="#">
       </a>
      </td>
-     <td>MAVLink version, not writable by user, gets added by protocol because of magic data type: uint8_t_mavlink_version</td>
+     <td>通过协议添加用于标识mavlink版本信息的特殊字段，不允许用户修改，</td>
     </tr>
    </tbody>
   </table>
@@ -17023,7 +17023,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>The general system state. 如果系统遵循MAVLink标准，系统可用三种模式/状态进行定义，锁定状态(电机关闭和锁定)、手动状态(RC控制下的系统)、导航状态(具有自定位能力的系统、可以手动设定的位置)或自自主(可以进行轨迹/航点等任务规划进行导航的系统)。 NAV_MODE定义了当前导航状态:起飞(通常是开环机动)、着陆、航路点或定向。 This represents the internal navigation state machine. The system status shows whether the system is currently active or not and if an emergency occurred. During the CRITICAL and EMERGENCY states the MAV is still considered to be active, but should start emergency procedures autonomously. After a failure occurred it should first move from active to critical to allow manual intervention and then move to emergency after a certain timeout.</p>
+   </a>The general system state. 如果系统遵循MAVLink标准，系统可用三种模式/状态进行定义，锁定状态(电机关闭和锁定)、手动状态(RC控制下的系统)、导航状态(具有自定位能力的系统、可以手动设定的位置)或自自主(可以进行轨迹/航点等任务规划进行导航的系统)。 NAV_MODE定义了当前导航状态:起飞(通常是开环机动)、着陆、航路点或定向。 This represents the internal navigation state machine. 系统状态显示系统当前是否处于正常状态，以及是否发生了紧急情况。 在关键和紧急状态时，MAV被认为仍可以正常运行，但应自动进入应急程序。 当发生故障时，应该首先保证关键程序并允许手动干预，并在在超出规定时间后切换到应急程序</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17043,7 +17043,7 @@
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
      </td>
-     <td>Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present.</td>
+     <td>该映射标识相关传感器是否都存在。 0：不存在 1：存在</td>
     </tr>
     <tr>
      <td>onboard_control_sensors_enabled</td>
@@ -17053,7 +17053,7 @@
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
      </td>
-     <td>Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled.</td>
+     <td>该映射标识板载控制器和传感器是否正常启用：0：没有启用 已经启用</td>
     </tr>
     <tr>
      <td>onboard_control_sensors_health</td>
@@ -17063,7 +17063,7 @@
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
      </td>
-     <td>Bitmap showing which onboard controllers and sensors have an error (or are operational). Value of 0: error. Value of 1: healthy.</td>
+     <td>该映射标识板载控制器和传感器是否存在错误（或操作） 0：错误 Value of 1: healthy.</td>
     </tr>
     <tr>
      <td>load</td>
