@@ -9211,7 +9211,7 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>Empty</td>
+     <td>空</td>
      <td>
      </td>
      <td>
@@ -9234,7 +9234,7 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>Latitude</td>
+     <td>纬度</td>
      <td>
      </td>
      <td>
@@ -9242,7 +9242,7 @@
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>Longitude</td>
+     <td>经度</td>
      <td>
      </td>
      <td>
@@ -9250,7 +9250,7 @@
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>Altitude</td>
+     <td>高度</td>
      <td>
      </td>
      <td>m</td>
@@ -9261,9 +9261,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Loiter around this waypoint for X seconds</p>
+   在当前航点进行定点飞行动作X秒</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9276,7 +9274,7 @@
    <tbody>
     <tr>
      <td>1: Time</td>
-     <td>Loiter time.</td>
+     <td>留待时间</td>
      <td>
       <em>min:</em>0 </td>
      <td>s</td>
@@ -9291,14 +9289,14 @@
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise.</td>
+     <td>环绕航点半径。 如果正-顺时针，负-逆时针.</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle.  NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>飞行中的航空器退出坐标：0用于定点的中心，1用于退出位置。 Else, this is desired yaw angle.  NaN 要使用当前系统的头向方向模式(例如朝着下一个航点方向的头向、朝home点方向的航向，等等)。</td>
      <td>
      </td>
      <td>
@@ -9393,21 +9391,21 @@
    <tbody>
     <tr>
      <td>1: Abort Alt</td>
-     <td>Minimum target altitude if landing is aborted (0 = undefined/use system default).</td>
+     <td>着陆终止的最小高度范围(0=未定义/使用系统默认)。</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>2: Land Mode</td>
-     <td>Precision land mode.</td>
+     <td>精准着陆模式</td>
      <td>PRECISION_LAND_MODE</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Empty.</td>
+     <td>空.</td>
      <td>
      </td>
      <td>
@@ -9415,14 +9413,14 @@
     </tr>
     <tr>
      <td>4: Yaw Angle</td>
-     <td>Desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>期望的航向角 NaN 要使用当前系统的头向方向模式(例如朝着下一个航点方向的头向、朝home点方向的航向，等等)。</td>
      <td>
      </td>
      <td>deg</td>
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>Latitude.</td>
+     <td>纬度.</td>
      <td>
      </td>
      <td>
@@ -9430,7 +9428,7 @@
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>Longitude.</td>
+     <td>经度.</td>
      <td>
      </td>
      <td>
@@ -9438,7 +9436,7 @@
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>Landing altitude (ground level in current frame).</td>
+     <td>着陆高度（当前框架下的地面等级）。</td>
      <td>
      </td>
      <td>m</td>
@@ -9449,9 +9447,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Takeoff from ground / hand</p>
+   从地面/手中起飞。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9463,7 +9459,7 @@
    <tbody>
     <tr>
      <td>1: Pitch</td>
-     <td>Minimum pitch (if airspeed sensor present), desired pitch without sensor</td>
+     <td>最小俯仰角(如果空速传感器存在)，没有传感器需要设定俯仰角</td>
      <td>
      </td>
     </tr>
@@ -9481,7 +9477,7 @@
     </tr>
     <tr>
      <td>4: Yaw</td>
-     <td>Yaw angle (if magnetometer present), ignored without magnetometer. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>航向角度(如果存在磁罗盘)，无磁罗盘忽略 NaN 要使用当前系统的头向方向模式(例如朝着下一个航点方向的头向、朝home点方向的航向，等等)。</td>
      <td>deg</td>
     </tr>
     <tr>
