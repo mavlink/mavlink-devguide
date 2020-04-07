@@ -16952,9 +16952,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The heartbeat message shows that a system or component is present and responding. The type and autopilot fields (along with the message component id), allow the receiving system to treat further messages from this system appropriately (e.g. by laying out the user interface based on the autopilot). This microservice is documented at https://mavlink.io/en/services/heartbeat.html</p>
+   心跳包信息表示系统或组件已经存在并且可以回应。 The type and autopilot fields (along with the message component id), allow the receiving system to treat further messages from this system appropriately (e.g. by laying out the user interface based on the autopilot). 这种微型服务在 https://mavlink.io/en/services/hearbeat.html 上记录。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16966,15 +16964,15 @@
    </thead>
    <tbody>
     <tr>
-     <td>type</td>
+     <td>类型</td>
      <td>uint8_t</td>
      <td>
       <a href="#MAV_TYPE">MAV_TYPE</a>
      </td>
-     <td>Vehicle or component type. For a flight controller component the vehicle type (quadrotor, helicopter, etc.). For other components the component type (e.g. camera, gimbal, etc.). This should be used in preference to component id for identifying the component type.</td>
+     <td>机体或者组件的类型。 For a flight controller component the vehicle type (quadrotor, helicopter, etc.). For other components the component type (e.g. camera, gimbal, etc.). This should be used in preference to component id for identifying the component type.</td>
     </tr>
     <tr>
-     <td>autopilot</td>
+     <td>自驾仪</td>
      <td>uint8_t</td>
      <td>
       <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
