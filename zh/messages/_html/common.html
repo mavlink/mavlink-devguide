@@ -17063,7 +17063,7 @@
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
      </td>
-     <td>该映射标识板载控制器和传感器是否存在错误（或操作） 0：错误 Value of 1: healthy.</td>
+     <td>该映射标识板载控制器和传感器是否存在错误（或操作） 0：错误 1：启用</td>
     </tr>
     <tr>
      <td>load</td>
@@ -17073,7 +17073,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Maximum usage in percent of the mainloop time. Values: [0-1000] - should always be below 1000</td>
+     <td>主循环程序的最大使用率 0-1000：必须持续低于1000</td>
     </tr>
     <tr>
      <td>voltage_battery</td>
@@ -17083,7 +17083,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Battery voltage, UINT16_MAX: Voltage not sent by autopilot</td>
+     <td>电池电压，该电压不是飞控传输的电压</td>
     </tr>
     <tr>
      <td>current_battery</td>
@@ -17093,7 +17093,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Battery current, -1: Current not sent by autopilot</td>
+     <td>电池电流，该电流不是飞控传输的电流</td>
     </tr>
     <tr>
      <td>battery_remaining</td>
@@ -17105,7 +17105,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Battery energy remaining, -1: Battery remaining energy not sent by autopilot</td>
+     <td>电池剩余电量，剩余电量不是由自驾仪传输</td>
     </tr>
     <tr>
      <td>drop_rate_comm</td>
@@ -17115,7 +17115,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Communication drop rate, (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)</td>
+     <td>通讯丢包率（UART, I2C, SPI, CAN），所有通讯链路的数据丢失量（MAV接收时数据损坏的包）</td>
     </tr>
     <tr>
      <td>errors_comm</td>
@@ -17126,7 +17126,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Communication errors (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV)</td>
+     <td>通讯错误率（UART, I2C, SPI, CAN），所有通讯链路的数据丢失量（MAV接收时数据损坏的包）</td>
     </tr>
     <tr>
      <td>errors_count1</td>
