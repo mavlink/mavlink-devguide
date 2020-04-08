@@ -17106,9 +17106,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>A ping message either requesting or responding to a ping. This allows to measure the system latencies, including serial port, radio modem and UDP connections. The ping microservice is documented at https://mavlink.io/en/services/ping.html</p>
+   用来测试请求或响应的PING的消息。 这样可以测量系统延迟，包括串行端口、无线电调制解调器和UDP连接。 这种微型服务在 https://mavlink.io/en/services/hearbeat.html 上记录。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17123,28 +17121,28 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>seq</td>
      <td>uint32_t</td>
      <td>
      </td>
-     <td>PING sequence</td>
+     <td>PING 序列号</td>
     </tr>
     <tr>
      <td>target_system</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>0: request ping from all receiving systems. If greater than 0: message is a ping response and number is the system id of the requesting system</td>
+     <td>0: 向所有接收系统请求ping。 如果大于 0：消息是一个 ping 响应，数字是请求系统的 id</td>
     </tr>
     <tr>
      <td>target_component</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>0: request ping from all receiving components. If greater than 0: message is a ping response and number is the component id of the requesting component.</td>
+     <td>0: 向所有接收组件请求ping。 如果大于 0：消息是一个 ping 响应，数字是请求组件的 id。</td>
     </tr>
    </tbody>
   </table>
@@ -17154,9 +17152,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Request to control this MAV</p>
+   请求控制此 MAV</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17172,27 +17168,27 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>System the GCS requests control for</td>
+     <td> GCS 请求控制目标系统</td>
     </tr>
     <tr>
      <td>control_request</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>0: request control of this MAV, 1: Release control of this MAV</td>
+     <td>0: 请求控制, 1: 释放控制</td>
     </tr>
     <tr>
      <td>version</td>
      <td>uint8_t</td>
      <td>rad</td>
-     <td>0: key as plaintext, 1-255: future, different hashing/encryption variants. The GCS should in general use the safest mode possible initially and then gradually move down the encryption level if it gets a NACK message indicating an encryption mismatch.</td>
+     <td>0: 密钥为纯文本，1-255: 未来, 不同的哈希/加密变量。 一般情况下，GCS应该首先使用最安全的模式，然后如果它得到一个NACK消息，表明加密不匹配，则逐渐降低加密级别。</td>
     </tr>
     <tr>
      <td>passkey</td>
      <td>char[25]</td>
      <td>
      </td>
-     <td>Password / Key, depending on version plaintext or encrypted. 25 or less characters, NULL terminated. The characters may involve A-Z, a-z, 0-9, and "!?,.-"</td>
+     <td>密码/密钥，取决于版本的纯文本或加密。 不超过 25 个字符，NULL 终止。 字符可能包含A-Z、a-z、0-9和“!?、.-”</td>
     </tr>
    </tbody>
   </table>
@@ -17202,9 +17198,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Accept / deny control of this MAV</p>
+   接受/拒绝对此 MAV 的控制</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17217,17 +17211,17 @@
     <tr>
      <td>gcs_system_id</td>
      <td>uint8_t</td>
-     <td>ID of the GCS this message</td>
+     <td>此消息的地面站 ID</td>
     </tr>
     <tr>
      <td>control_request</td>
      <td>uint8_t</td>
-     <td>0: request control of this MAV, 1: Release control of this MAV</td>
+     <td>0: 请求控制, 1: 释放控制</td>
     </tr>
     <tr>
      <td>ack</td>
      <td>uint8_t</td>
-     <td>0: ACK, 1: NACK: Wrong passkey, 2: NACK: Unsupported passkey encryption method, 3: NACK: Already under control</td>
+     <td>0: ACK, 1: NACK: 错误的密码, 2: NACK: 不支持的密钥加密方法, 3: NACK: 已经在控制</td>
     </tr>
    </tbody>
   </table>
@@ -17237,9 +17231,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Emit an encrypted signature / key identifying this system. PLEASE NOTE: This protocol has been kept simple, so transmitting the key requires an encrypted channel for true safety.</p>
+   发出一个加密的签名/密钥识别此系统。 请注意：此协议保持简单，传输密钥需要一个加密渠道才能真正安全。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17262,7 +17254,7 @@
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    <a href="#messages">
     [Message]
