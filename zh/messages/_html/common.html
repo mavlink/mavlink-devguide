@@ -9482,13 +9482,13 @@
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>Longitude</td>
+     <td>经度</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>Altitude</td>
+     <td>高度</td>
      <td>m</td>
     </tr>
    </tbody>
@@ -9616,9 +9616,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Vehicle following, i.e. this waypoint represents the position of a moving vehicle</p>
+   机体跟随模式，即这个航点代表着移动车辆的位置</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9631,7 +9629,7 @@
    <tbody>
     <tr>
      <td>1: Following</td>
-     <td>Following logic to use (e.g. loitering or sinusoidal following) - depends on specific autopilot implementation</td>
+     <td>根据于具体的自主能力采用相应的逻辑(例如定点或切向跟随) - </td>
      <td>
       <em>increment:</em>1</td>
      <td>
@@ -9639,28 +9637,28 @@
     </tr>
     <tr>
      <td>2: Ground Speed</td>
-     <td>Ground speed of vehicle to be followed</td>
+     <td>被跟踪载具的地面速度</td>
      <td>
      </td>
      <td>m/s</td>
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise</td>
+     <td>环绕航点半径。 如果正-顺时针，负-逆时针</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>4: Yaw</td>
-     <td>Desired yaw angle.</td>
+     <td>期望的航向角</td>
      <td>
      </td>
      <td>deg</td>
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>Latitude</td>
+     <td>纬度</td>
      <td>
      </td>
      <td>
@@ -9668,7 +9666,7 @@
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>Longitude</td>
+     <td>经度</td>
      <td>
      </td>
      <td>
@@ -9676,7 +9674,7 @@
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>Altitude</td>
+     <td>高度</td>
      <td>
      </td>
      <td>m</td>
@@ -9687,9 +9685,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Continue on the current course and climb/descend to specified altitude.  When the altitude is reached continue to the next command (i.e., don't proceed to the next command until the desired altitude is reached.</p>
+   继续当前航线并爬升/下降到指定的高度。  当达到高度时，继续到下一个指令（即在达到预定高度之前不要继续到下一个指令）。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9702,7 +9698,7 @@
    <tbody>
     <tr>
      <td>1: Action</td>
-     <td>Climb or Descend (0 = Neutral, command completes when within 5m of this command's altitude, 1 = Climbing, command completes when at or above this command's altitude, 2 = Descending, command completes when at or below this command's altitude.</td>
+     <td>爬升或下降(0=中立, 当到达该指令5米以内的高度时指令完成 1=爬升, , 当到达高于该指令高度时指令完成, 2 = 下降, 当到达或低于该指令高度时，指令完成。</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
      <td>
@@ -9750,7 +9746,7 @@
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>Desired altitude</td>
+     <td>期望高度</td>
      <td>
      </td>
      <td>m</td>
@@ -9761,9 +9757,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter at the current position.  Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached.  Additionally, if the Heading Required parameter is non-zero the  aircraft will not leave the loiter until heading toward the next waypoint.</p>
+   在指定的纬度和经度开始定点运动。  如果Lat=Lon=0，则在当前位置定点运动。  在达到高度之前，导航指令不会完成 (不会离开定点状态)。  此外，如果头向设定参数非零，飞机在飞往下一个航点之前不会离开定点模式直到机头指向下一航点。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9776,7 +9770,7 @@
    <tbody>
     <tr>
      <td>1: Heading Required</td>
-     <td>Heading Required (0 = False)</td>
+     <td>期望的头向（0错误）</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
