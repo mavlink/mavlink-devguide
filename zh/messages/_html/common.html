@@ -13179,7 +13179,7 @@
    <tbody>
     <tr>
      <td>1: Start Engine</td>
-     <td>0: Stop engine, 1:Start Engine</td>
+     <td>0: 停止引擎, 1:开始引擎</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -13187,7 +13187,7 @@
     </tr>
     <tr>
      <td>2: Cold Start</td>
-     <td>0: Warm start, 1:Cold start. Controls use of choke where applicable</td>
+     <td>0: 暖启动, 1:冷启动 视情况控制冷却系统使用</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -13195,7 +13195,7 @@
     </tr>
     <tr>
      <td>3: Height Delay</td>
-     <td>Height delay. This is for commanding engine start only after the vehicle has gained the specified height. Used in VTOL vehicles during takeoff to start engine after the aircraft is off the ground. Zero for no delay.</td>
+     <td>高度延迟。 只有在载具达到指定高度后才能启动引擎指令。 垂直起降飞行器，在飞机起飞后启动引擎。 0表示没有推迟</td>
      <td>
       <em>min:</em>0 </td>
      <td>m</td>
@@ -13246,9 +13246,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Set the mission item with sequence number seq as current item. This means that the MAV will continue to this mission item on the shortest path (not following the mission items in-between).</p>
+   将序列号seq 的任务项设置为当前项目。 这意味着MAV将沿着最短的路线继续执行这个任务项目(不按照任务中间的项目)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13260,7 +13258,7 @@
    <tbody>
     <tr>
      <td>1: Number</td>
-     <td>Mission sequence value to set</td>
+     <td>要设置的任务项目序列号</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -13312,9 +13310,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>NOP - This command is only used to mark the upper limit of the DO commands in the enumeration</p>
+   此命令仅用于在枚举中标记条件指令的上限</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13357,9 +13353,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Trigger calibration. This command will be only accepted if in pre-flight mode. Except for Temperature Calibration, only one sensor should be set in a single message and all others should be zero.</p>
+   触发校准。 只有在飞行前模式下才会接受此命令。 除温度校准外，只有一个传感器应设在一个消息中，所有其他传感器均为零。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13371,43 +13365,43 @@
    <tbody>
     <tr>
      <td>1: Gyro Temperature</td>
-     <td>1: gyro calibration, 3: gyro temperature calibration</td>
+     <td>1：陀螺仪校准，3：陀螺仪温度校准</td>
      <td>
       <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2: Magnetometer</td>
-     <td>1: magnetometer calibration</td>
+     <td>磁力计校准</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3: Ground Pressure</td>
-     <td>1: ground pressure calibration</td>
+     <td>1：地面起亚传感器校准</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>4: Remote Control</td>
-     <td>1: radio RC calibration, 2: RC trim calibration</td>
+     <td>1：无线电遥控器校准，2：遥控器微调校准。</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>5: Accelerometer</td>
-     <td>1: accelerometer calibration, 2: board level calibration, 3: accelerometer temperature calibration, 4: simple accelerometer calibration</td>
+     <td>1：加速计校准，2：板级校准，3：加速计温度校准，4：单独加速计校准。</td>
      <td>
       <em>min:</em>0 <em>max:</em>4 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>6: Compmot or Airspeed</td>
-     <td>1: APM: compass/motor interference calibration (PX4: airspeed calibration, deprecated), 2: airspeed calibration</td>
+     <td>1： APM：指南针/发动机干扰校准（PX4：空速校准，废弃），2：空速校准。</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>7: ESC or Baro</td>
-     <td>1: ESC calibration, 3: barometer temperature calibration</td>
+     <td>1：ESC 校准：3：气压计温度校准。</td>
      <td>
       <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
     </tr>
