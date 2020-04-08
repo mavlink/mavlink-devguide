@@ -2164,7 +2164,7 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_BODY_FRD (2019-08).</p>
      </td>
-     <td>在机体导航坐标系设置点 This makes sense if all position control is externalized - e.g. useful to command 2 m/s^2 acceleration to the right.</td>
+     <td>在机体导航坐标系设置点 如果位置控制来自于外部系统 - 例如有利于指令 2 m/s^2 加速到右边</td>
     </tr>
     <tr id="MAV_FRAME_BODY_OFFSET_NED">
      <td>9</td>
@@ -2173,35 +2173,35 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_BODY_FRD (2019-08).</p>
      </td>
-     <td>Offset in body NED frame. This makes sense if adding setpoints to the current flight path, to avoid an obstacle - e.g. useful to command 2 m/s^2 acceleration to the east.</td>
+     <td>设定机体导航坐标系偏移量 This makes sense if adding setpoints to the current flight path, to avoid an obstacle - e.g. useful to command 2 m/s^2 acceleration to the east.</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_TERRAIN_ALT">
      <td>10</td>
      <td>
       <a href="#MAV_FRAME_GLOBAL_TERRAIN_ALT">MAV_FRAME_GLOBAL_TERRAIN_ALT</a>
      </td>
-     <td>Global (WGS84) coordinate frame with AGL altitude (at the waypoint coordinate). First value / x: latitude in degrees, second value / y: longitude in degrees, third value / z: positive altitude in meters with 0 being at ground level in terrain model.</td>
+     <td>带有距离地面高度高度（航点坐标）的全球（WGS84)坐标系。 第一个数值/x：纬度 角度*e-7；第二个数值/：经度 角度*1e-7；第三个数值/z 单位米：以地平线基准为0的地形模型中</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_TERRAIN_ALT_INT">
      <td>11</td>
      <td>
       <a href="#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT">MAV_FRAME_GLOBAL_TERRAIN_ALT_INT</a>
      </td>
-     <td>Global (WGS84) coordinate frame (scaled) with AGL altitude (at the waypoint coordinate). First value / x: latitude in degrees*10e-7, second value / y: longitude in degrees*10e-7, third value / z: positive altitude in meters with 0 being at ground level in terrain model.</td>
+     <td>带有距离地面高度高度（航点坐标）的全球（WGS84)坐标系(比例缩放）。 第一个数值/x：纬度 角度*e-7；第二个数值/：经度 角度*1e-7；第三个数值/z 单位米：以地平线基准为0的地形模型中</td>
     </tr>
     <tr id="MAV_FRAME_BODY_FRD">
      <td>12</td>
      <td>
       <a href="#MAV_FRAME_BODY_FRD">MAV_FRAME_BODY_FRD</a>
      </td>
-     <td>Body fixed frame of reference, Z-down (x: forward, y: right, z: down).</td>
+     <td>身体固定参考坐标系，Z-down (x：前 ：右，z：下)。</td>
     </tr>
     <tr id="MAV_FRAME_BODY_FLU">
      <td>13</td>
      <td>
       <a href="#MAV_FRAME_BODY_FLU">MAV_FRAME_BODY_FLU</a>
      </td>
-     <td>Body fixed frame of reference, Z-up (x: forward, y: left, z: up).</td>
+     <td>固定参照基准，Z上 (x：前 y：左，z：上)。</td>
     </tr>
     <tr id="MAV_FRAME_MOCAP_NED">
      <td>14</td>
@@ -4179,9 +4179,7 @@
    <a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Enumeration of sensor orientation, according to its rotations</p>
+   传感器旋转的方向设定的值</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -4252,35 +4250,35 @@
      <td>
       <a href="#MAV_SENSOR_ROTATION_ROLL_180">MAV_SENSOR_ROTATION_ROLL_180</a>
      </td>
-     <td>滚转:0 , 俯仰: 180, 偏航: 0</td>
+     <td>滚转:180 , 俯仰: 0, 偏航: 0</td>
     </tr>
     <tr id="MAV_SENSOR_ROTATION_ROLL_180_YAW_45">
      <td>9</td>
      <td>
       <a href="#MAV_SENSOR_ROTATION_ROLL_180_YAW_45">MAV_SENSOR_ROTATION_ROLL_180_YAW_45</a>
      </td>
-     <td>滚转:0 , 俯仰: 180, 偏航: 45</td>
+     <td>滚转:180 , 俯仰: 0, 偏航: 45</td>
     </tr>
     <tr id="MAV_SENSOR_ROTATION_ROLL_180_YAW_90">
      <td>10</td>
      <td>
       <a href="#MAV_SENSOR_ROTATION_ROLL_180_YAW_90">MAV_SENSOR_ROTATION_ROLL_180_YAW_90</a>
      </td>
-     <td>Roll: 180, Pitch: 0, Yaw: 90</td>
+     <td>滚转:180 , 俯仰: 0, 偏航: 90</td>
     </tr>
     <tr id="MAV_SENSOR_ROTATION_ROLL_180_YAW_135">
      <td>11</td>
      <td>
       <a href="#MAV_SENSOR_ROTATION_ROLL_180_YAW_135">MAV_SENSOR_ROTATION_ROLL_180_YAW_135</a>
      </td>
-     <td>Roll: 180, Pitch: 0, Yaw: 135</td>
+     <td>滚转:180 , 俯仰: 0, 偏航: 135</td>
     </tr>
     <tr id="MAV_SENSOR_ROTATION_PITCH_180">
      <td>12</td>
      <td>
       <a href="#MAV_SENSOR_ROTATION_PITCH_180">MAV_SENSOR_ROTATION_PITCH_180</a>
      </td>
-     <td>Roll: 0, Pitch: 180, Yaw: 0</td>
+     <td>滚转:0 , 俯仰: 180, 偏航: 0</td>
     </tr>
     <tr id="MAV_SENSOR_ROTATION_ROLL_180_YAW_225">
      <td>13</td>
@@ -9478,7 +9476,7 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>Latitude</td>
+     <td>纬度</td>
      <td>
      </td>
     </tr>
