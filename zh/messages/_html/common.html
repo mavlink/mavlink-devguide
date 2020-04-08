@@ -10486,9 +10486,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Descend and place payload. Vehicle moves to specified location, descends until it detects a hanging payload has reached the ground, and then releases the payload. If ground is not detected before the reaching the maximum descent value (param1), the command will complete without releasing the payload.</p>
+   降落并放置有效载荷。 载具移动到指定位置，降落直到检测到挂载有效载荷到达地上，然后释放有效载荷。 如果在达到最大降落值前没有检测到地面(参数1)，指令将会在不释放有效载荷的情况下完成。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10501,7 +10499,7 @@
    <tbody>
     <tr>
      <td>1: Max Descent</td>
-     <td>Maximum distance to descend.</td>
+     <td>最大下降距离。</td>
      <td>
       <em>min:</em>0 </td>
      <td>m</td>
@@ -10559,9 +10557,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>NOP - This command is only used to mark the upper limit of the NAV/ACTION commands in the enumeration</p>
+   此命令仅用于在枚举中标记NAV/ACTION 指令的上限</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10604,9 +10600,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Delay mission state machine.</p>
+   推迟执行任务</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10678,9 +10672,8 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Ascend/descend at rate.  Delay mission state machine until desired altitude reached.</p>
+   下降和爬升率  以一定速率上升/下降。推迟执行任务
+直到到达到所需的高度。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10692,7 +10685,7 @@
    <tbody>
     <tr>
      <td>1: Rate</td>
-     <td>Descent / Ascend rate.</td>
+     <td>下降/爬升速率</td>
      <td>m/s</td>
     </tr>
     <tr>
@@ -10727,7 +10720,7 @@
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>Target Altitude</td>
+     <td>目标海拔:</td>
      <td>m</td>
     </tr>
    </tbody>
@@ -10736,9 +10729,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Delay mission state machine until within desired distance of next NAV point.</p>
+   推迟任务状态的执行直到下一个 导航点的预期距离内。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10810,9 +10801,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Reach a certain target angle.</p>
+   到达一个目标的角度</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10825,21 +10814,21 @@
    <tbody>
     <tr>
      <td>1: Angle</td>
-     <td>target angle, 0 is north</td>
+     <td>目标角度，0 为北方</td>
      <td>
       <em>min:</em>0 <em>max:</em>360 </td>
      <td>deg</td>
     </tr>
     <tr>
      <td>2: Angular Speed</td>
-     <td>angular speed</td>
+     <td>角速度</td>
      <td>
      </td>
      <td>deg/s</td>
     </tr>
     <tr>
      <td>3: Direction</td>
-     <td>direction: -1: counter clockwise, 1: clockwise</td>
+     <td>方向：-1：逆时针，1：顺时针</td>
      <td>
       <em>min:</em>
       -1 
@@ -10849,7 +10838,7 @@
     </tr>
     <tr>
      <td>4: Relative</td>
-     <td>0: absolute angle, 1: relative offset</td>
+     <td>0: 绝对角度, 1: 相对偏移</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -10885,9 +10874,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>NOP - This command is only used to mark the upper limit of the CONDITION commands in the enumeration</p>
+   此命令仅用于在枚举中标记条件指令的上限</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10930,9 +10917,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Set system mode.</p>
+   设定系统模式。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10944,18 +10929,18 @@
    <tbody>
     <tr>
      <td>1: Mode</td>
-     <td>Mode</td>
+     <td>模式</td>
      <td>MAV_MODE</td>
     </tr>
     <tr>
      <td>2: Custom Mode</td>
-     <td>Custom mode - this is system specific, please refer to the individual autopilot specifications for details.</td>
+     <td>自定义模式 - 这是针对系统的，详细信息请参阅单独的自驾仪特殊说明。</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3: Custom Submode</td>
-     <td>Custom sub mode - this is system specific, please refer to the individual autopilot specifications for details.</td>
+     <td>自定义子模式 - 这是针对系统的，详细信息请参阅自驾仪说明。</td>
      <td>
      </td>
     </tr>
@@ -10989,9 +10974,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Jump to the desired command in the mission list.  Repeat this action only the specified number of times</p>
+   跳转到任务列表中所需的指令。  仅重复指定次数的操作</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11003,13 +10986,13 @@
    <tbody>
     <tr>
      <td>1: Number</td>
-     <td>Sequence number</td>
+     <td>序列号</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2: Repeat</td>
-     <td>Repeat count</td>
+     <td>重复次数</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -11049,9 +11032,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Change speed and/or throttle set points.</p>
+   更改速度和/或油门值。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11064,7 +11045,7 @@
    <tbody>
     <tr>
      <td>1: Speed Type</td>
-     <td>Speed type (0=Airspeed, 1=Ground Speed, 2=Climb Speed, 3=Descent Speed)</td>
+     <td>速度类型 (0=空速, 1=地速, 2=爬升速度, 3=下降速度)</td>
      <td>
       <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
      <td>
@@ -11072,7 +11053,7 @@
     </tr>
     <tr>
      <td>2: Speed</td>
-     <td>Speed (-1 indicates no change)</td>
+     <td>速度 (-1 表示没有变化)</td>
      <td>
       <em>min:</em>
       -1 
@@ -11081,7 +11062,7 @@
     </tr>
     <tr>
      <td>3: Throttle</td>
-     <td>Throttle (-1 indicates no change)</td>
+     <td>油门值 (-1 表示无改动)</td>
      <td>
       <em>min:</em>
       -1 
@@ -11092,7 +11073,7 @@
     </tr>
     <tr>
      <td>4: Relative</td>
-     <td>0: absolute, 1: relative</td>
+     <td>0: 绝对值：1: 相对值</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -11128,9 +11109,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Changes the home location either to the current location or a specified location.</p>
+   更改home点位置或者当前位置或者指定位置。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11143,7 +11122,7 @@
    <tbody>
     <tr>
      <td>1: Use Current</td>
-     <td>Use current (1=use current location, 0=use specified location)</td>
+     <td>使用当前位置(1=使用当前位置, 0=使用指定位置)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -11202,9 +11181,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Set a system parameter.  Caution!  Use of this command requires knowledge of the numeric enumeration value of the parameter.</p>
+   设置一个系统参数。  注意！  使用此命令需要知道参数的数字枚举值。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11216,13 +11193,13 @@
    <tbody>
     <tr>
      <td>1: Number</td>
-     <td>Parameter number</td>
+     <td>参数名称</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2: Value</td>
-     <td>Parameter value</td>
+     <td>参数值</td>
      <td>
      </td>
     </tr>
@@ -11262,9 +11239,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Set a relay to a condition.</p>
+   设置继电器销的电压高(开)或低(关)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11276,13 +11251,13 @@
    <tbody>
     <tr>
      <td>1: Instance</td>
-     <td>Relay instance number.</td>
+     <td>继电器序号</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2: Setting</td>
-     <td>Setting. (1=on, 0=off, others possible depending on system hardware)</td>
+     <td>设置. (1=on, 0=off, 其他可能取决于系统硬件)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
