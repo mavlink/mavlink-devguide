@@ -17971,63 +17971,66 @@ y轴磁力计数据
      <td>int16_t</td>
      <td>
      </td>
-     <td>X acceleration (raw)</td>
+     <td>X轴加速度（原始值）</td>
     </tr>
     <tr>
      <td>yacc</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>Y acceleration (raw)</td>
+     <td>Y轴加速度（原始值）</td>
     </tr>
     <tr>
      <td>zacc</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>Z acceleration (raw)</td>
+     <td>z轴加速度（原始值）</td>
     </tr>
     <tr>
      <td>xgyro</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>Angular speed around X axis (raw)</td>
+     <td>X轴角速度（原始值）</td>
     </tr>
     <tr>
      <td>ygyro</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>Angular speed around Y axis (raw)</td>
+     <td>Y轴角速度（原始值）</td>
     </tr>
     <tr>
      <td>zgyro</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>Angular speed around Z axis (raw)</td>
+     <td>Z轴角速度（原始值）</td>
     </tr>
     <tr>
      <td>xmag</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>X Magnetic field (raw)</td>
+     <td>X轴磁力计数据（原始值）
+</td>
     </tr>
     <tr>
      <td>ymag</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>Y Magnetic field (raw)</td>
+     <td>Y轴磁力计数据（原始值）
+</td>
     </tr>
     <tr>
      <td>zmag</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>Z Magnetic field (raw)</td>
+     <td>Z轴磁力计数据（原始值）
+</td>
     </tr>
     <tr>
      <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18046,7 +18049,7 @@ y轴磁力计数据
      </td>
      <td>int16_t</td>
      <td>cdegC</td>
-     <td>Temperature, 0: IMU does not provide temperature values. If the IMU is at 0C it must send 1 (0.01C).</td>
+     <td>温度，0： IMU 不提供温度值。 如果当前IMU的温度数据是0C，它必须发送 1 (0.01C)。</td>
     </tr>
    </tbody>
   </table>
@@ -18056,9 +18059,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The RAW pressure readings for the typical setup of one absolute pressure and one differential pressure sensor. The sensor values should be the raw, UNSCALED ADC values.</p>
+   从一个绝对压力和一个压差传感器的读取的原始压力数值 The sensor values should be the raw, UNSCALED ADC values.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18073,35 +18074,35 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>press_abs</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>Absolute pressure (raw)</td>
+     <td>绝对压力(原始)</td>
     </tr>
     <tr>
      <td>press_diff1</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>Differential pressure 1 (raw, 0 if nonexistent)</td>
+     <td>压力差 (原始, 0 如果不存在)</td>
     </tr>
     <tr>
      <td>press_diff2</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>Differential pressure 2 (raw, 0 if nonexistent)</td>
+     <td>压力差2 (原始, 0 如果不存在)</td>
     </tr>
     <tr>
      <td>temperature</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>Raw Temperature measurement (raw)</td>
+     <td>原始温度测量(原始)</td>
     </tr>
    </tbody>
   </table>
@@ -18111,9 +18112,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The pressure readings for the typical setup of one absolute and differential pressure sensor. The units are as specified in each field.</p>
+   从一个绝对压力和一个压差传感器的读取的压力数值 该字段中会指定相应的单位</p>
   <table class="sortable">
    <thead>
     <tr>
