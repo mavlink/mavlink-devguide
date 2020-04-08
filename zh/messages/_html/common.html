@@ -13411,9 +13411,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Set sensor offsets. This command will be only accepted if in pre-flight mode.</p>
+   设置传感器修正值 只有在飞行前模式下才会接受此命令。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13425,13 +13423,13 @@
    <tbody>
     <tr>
      <td>1: Sensor Type</td>
-     <td>Sensor to adjust the offsets for: 0: gyros, 1: accelerometer, 2: magnetometer, 3: barometer, 4: optical flow, 5: second magnetometer, 6: third magnetometer</td>
+     <td>调整偏移量的传感器：0：陀螺仪：1：加速度计，2：磁力计，3：气压计，4：光流，5：第二次磁力计，6：第三个磁力计；</td>
      <td>
       <em>min:</em>0 <em>max:</em>6 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2: X Offset</td>
-     <td>X axis offset (or generic dimension 1), in the sensor's raw units</td>
+     <td>传感器原件中的 X 轴偏移(或通用尺寸1)</td>
      <td>
      </td>
     </tr>
@@ -13471,9 +13469,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Trigger UAVCAN config. This command will be only accepted if in pre-flight mode.</p>
+   触发UAVCAN 配置。只有在飞行前模式下才接受此命令。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13484,7 +13480,7 @@
    <tbody>
     <tr>
      <td>1: Actuator ID</td>
-     <td>1: Trigger actuator ID assignment and direction mapping.</td>
+     <td>触发器 ID 作业和方向映射。</td>
     </tr>
     <tr>
      <td>2</td>
@@ -13516,9 +13512,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request storage of different parameter values and logs. This command will be only accepted if in pre-flight mode.</p>
+   请求存储不同参数值和日志。 只有在飞行前模式下才会接受此命令。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13531,7 +13525,7 @@
    <tbody>
     <tr>
      <td>1: Parameter Storage</td>
-     <td>Parameter storage: 0: READ FROM FLASH/EEPROM, 1: WRITE CURRENT TO FLASH/EEPROM, 2: Reset to defaults</td>
+     <td>参数存储: 0: 从 FLASH / EEPROM 读取, 1:写入 到 FLASH / EEPROM , 2: 重置为默认值</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
      <td>
@@ -13539,7 +13533,7 @@
     </tr>
     <tr>
      <td>2: Mission Storage</td>
-     <td>Mission storage: 0: READ FROM FLASH/EEPROM, 1: WRITE CURRENT TO FLASH/EEPROM, 2: Reset to defaults</td>
+     <td>任务存储: 0: 从 FLASH / EEPROM 读取, 1:写入 到 FLASH / EEPROM , 2: 重置为默认值</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
      <td>
@@ -13547,7 +13541,7 @@
     </tr>
     <tr>
      <td>3: Logging Rate</td>
-     <td>Onboard logging: 0: Ignore, 1: Start default rate logging, -1: Stop logging, &gt; 1: logging rate (e.g. set to 1000 for 1000 Hz logging)</td>
+     <td>在线日志记录：0: 忽略, 1: 开始默认率日志记录, -1: 停止日志记录, &gt; 1: 日志记录率(例如设置为 1000 Hz 日志记录)</td>
      <td>
       <em>min:</em>
       -1 
@@ -13592,9 +13586,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request the reboot or shutdown of system components.</p>
+   请求重启或关闭系统组件。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13606,25 +13598,25 @@
    <tbody>
     <tr>
      <td>1: Autopilot</td>
-     <td>0: Do nothing for autopilot, 1: Reboot autopilot, 2: Shutdown autopilot, 3: Reboot autopilot and keep it in the bootloader until upgraded.</td>
+     <td>0: 不对自驾仪做任何动作，1: 重启自驾仪，2: 关机自驾仪，3: 重启自驾仪，在升级前将其保存在引导加载器。</td>
      <td>
       <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2: Companion</td>
-     <td>0: Do nothing for onboard computer, 1: Reboot onboard computer, 2: Shutdown onboard computer, 3: Reboot onboard computer and keep it in the bootloader until upgraded.</td>
+     <td>0: 对主控不做任何事, 1: 重启主控, 2: 关主控, 3： 重启主控并将其保存在引导加载器中，直到升级。</td>
      <td>
       <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>WIP: 0: Do nothing for camera, 1: Reboot onboard camera, 2: Shutdown onboard camera, 3: Reboot onboard camera and keep it in the bootloader until upgraded</td>
+     <td>WIP：0：对相机不做任何事，1：重启在板上相机，2：关机上相机， 3： 重启板上的摄像头并将其保存在引导加载器中，直到升级</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>WIP: 0: Do nothing for mount (e.g. gimbal), 1: Reboot mount, 2: Shutdown mount, 3: Reboot mount and keep it in the bootloader until upgraded</td>
+     <td>WIP：0：不执行挂载(例如云台)，1：重启挂载，2：关机挂载，3：重启挂载并保留在引导器中，直到升级</td>
      <td>
      </td>
     </tr>
@@ -13652,9 +13644,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Override current mission with command to pause mission, pause mission and move to position, continue/resume mission. When param 1 indicates that the mission is paused (MAV_GOTO_DO_HOLD), param 2 defines whether it holds in place or moves to another position.</p>
+   用命令覆盖当前任务以暂停任务、暂停任务并移动到位置、继续/恢复任务。 当参数1表示任务已暂停时(MAV_GOTO_DO_HOLD)，参数2定义任务是否已经停留或转到另一个位置。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13667,28 +13657,28 @@
    <tbody>
     <tr>
      <td>1: Continue</td>
-     <td>MAV_GOTO_DO_HOLD: pause mission and either hold or move to specified position (depending on param2), MAV_GOTO_DO_CONTINUE: resume mission.</td>
+     <td>MAV_GOTO_DO_HOLD: 暂停任务并按住或移动到指定位置(取决于参数2), MAV_GOTO_DO_CONTINUE: 恢复任务。</td>
      <td>MAV_GOTO</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>2: Position</td>
-     <td>MAV_GOTO_HOLD_AT_CURRENT_POSITION: hold at current position, MAV_GOTO_HOLD_AT_SPECIFIED_POSITION: hold at specified position.</td>
+     <td>MAV_GOTO_HOLD_AT_CURRENT_POSITION: 保持当前位置，MAV_GOTO_HOLD_AT_SPECIFIED_POSITION: 保持指定位置。</td>
      <td>MAV_GOTO</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3: Frame</td>
-     <td>Coordinate frame of hold point.</td>
+     <td>保持点的坐标系</td>
      <td>MAV_FRAME</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>4: Yaw</td>
-     <td>Desired yaw angle.</td>
+     <td>期望的航向角</td>
      <td>
      </td>
      <td>deg</td>
