@@ -17256,9 +17256,7 @@
   <p style="color:red">
    生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Status generated in each node in the communication chain and injected into MAVLink stream.</p>
+   在数据链中每个节点生成并注入到 MAVLink流的状态。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17273,7 +17271,7 @@
      <td>timestamp</td>
      <td>uint64_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>tx_buf</td>
@@ -17281,7 +17279,7 @@
      <td>
       %
      </td>
-     <td>Remaining free transmit buffer space</td>
+     <td>剩余的传输缓存区域百分比</td>
     </tr>
     <tr>
      <td>rx_buf</td>
@@ -17289,58 +17287,58 @@
      <td>
       %
      </td>
-     <td>Remaining free receive buffer space</td>
+     <td>剩余的接收缓存区域百分比</td>
     </tr>
     <tr>
      <td>tx_rate</td>
      <td>uint32_t</td>
      <td>bytes/s</td>
-     <td>Transmit rate</td>
+     <td>传输率</td>
     </tr>
     <tr>
      <td>rx_rate</td>
      <td>uint32_t</td>
      <td>bytes/s</td>
-     <td>Receive rate</td>
+     <td>接收率</td>
     </tr>
     <tr>
      <td>rx_parse_err</td>
      <td>uint16_t</td>
      <td>bytes</td>
-     <td>Number of bytes that could not be parsed correctly.</td>
+     <td>无法正确解析的字节数。</td>
     </tr>
     <tr>
      <td>tx_overflows</td>
      <td>uint16_t</td>
      <td>bytes</td>
-     <td>Transmit buffer overflows. This number wraps around as it reaches UINT16_MAX</td>
+     <td>传送缓存区溢出 当这个数字达到UINT16_MAX时，它会自动循环</td>
     </tr>
     <tr>
      <td>rx_overflows</td>
      <td>uint16_t</td>
      <td>bytes</td>
-     <td>Receive buffer overflows. This number wraps around as it reaches UINT16_MAX</td>
+     <td>接收缓存区溢出 当这个数字达到UINT16_MAX时，它会自动循环</td>
     </tr>
     <tr>
      <td>messages_sent</td>
      <td>uint32_t</td>
      <td>
      </td>
-     <td>Messages sent</td>
+     <td>消息已发送</td>
     </tr>
     <tr>
      <td>messages_received</td>
      <td>uint32_t</td>
      <td>
      </td>
-     <td>Messages received (estimated from counting seq)</td>
+     <td>收到的消息(根据包序号估算)</td>
     </tr>
     <tr>
      <td>messages_lost</td>
      <td>uint32_t</td>
      <td>
      </td>
-     <td>Messages lost (estimated from counting seq)</td>
+     <td>丢失的消息(根据包序号估算)</td>
     </tr>
    </tbody>
   </table>
@@ -17350,14 +17348,12 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_SET_MODE (2015-12).
+    替换为 MAV_CMD_DO_SET_MODE (2015-12)。
 
 
-  Use COMMAND_LONG with MAV_CMD_DO_SET_MODE instead</p>
+  使用 COMMAND_LONG 中 MAV_CMD_DO_SET_MODE替换</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Set the system mode, as defined by enum MAV_MODE. There is no target component id as the mode is by definition for the overall aircraft, not only for one component.</p>
+   设置系统模式，定义为 枚举类型 MAV_MODE。 该协议没有组件ID，根据定义该状态是飞行器完整整体的飞行状态不是某个组件的状态</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17375,7 +17371,7 @@
       <a href="#">
       </a>
      </td>
-     <td>The system setting the mode</td>
+     <td>设定系统模式</td>
     </tr>
     <tr>
      <td>base_mode</td>
@@ -17383,7 +17379,7 @@
      <td>
       <a href="#MAV_MODE">MAV_MODE</a>
      </td>
-     <td>The new base mode.</td>
+     <td>新的锡系统状态</td>
     </tr>
     <tr>
      <td>custom_mode</td>
@@ -17392,7 +17388,7 @@
       <a href="#">
       </a>
      </td>
-     <td>The new autopilot-specific mode. This field can be ignored by an autopilot.</td>
+     <td>新的自定义模式 此字段可以被自动忽略。</td>
     </tr>
    </tbody>
   </table>
@@ -17968,7 +17964,7 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>xacc</td>
