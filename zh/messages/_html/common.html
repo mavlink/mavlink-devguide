@@ -4626,9 +4626,7 @@
    <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Type of mission items being requested/sent in mission protocol.</p>
+   任务项目中请求/发送的任务项目类型。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -4643,28 +4641,28 @@
      <td>
       <a href="#MAV_MISSION_TYPE_MISSION">MAV_MISSION_TYPE_MISSION</a>
      </td>
-     <td>Items are mission commands for main mission.</td>
+     <td>项目是主任务的任务指令。</td>
     </tr>
     <tr id="MAV_MISSION_TYPE_FENCE">
      <td>1</td>
      <td>
       <a href="#MAV_MISSION_TYPE_FENCE">MAV_MISSION_TYPE_FENCE</a>
      </td>
-     <td>Specifies GeoFence area(s). Items are MAV_CMD_NAV_FENCE_ GeoFence items.</td>
+     <td>指定地理围栏。 项目是MAV_CMD_NAV_FENCE_GeoFence。</td>
     </tr>
     <tr id="MAV_MISSION_TYPE_RALLY">
      <td>2</td>
      <td>
       <a href="#MAV_MISSION_TYPE_RALLY">MAV_MISSION_TYPE_RALLY</a>
      </td>
-     <td>Specifies the rally points for the vehicle. Rally points are alternative RTL points. Items are MAV_CMD_NAV_RALLY_POINT rally point items.</td>
+     <td>指定载具的转场点 转场点是替代的RTL点。 项目是MAV_CMD_NAV_RALLY_POINT 专场点项目。</td>
     </tr>
     <tr id="MAV_MISSION_TYPE_ALL">
      <td>255</td>
      <td>
       <a href="#MAV_MISSION_TYPE_ALL">MAV_MISSION_TYPE_ALL</a>
      </td>
-     <td>Only used in MISSION_CLEAR_ALL to clear all mission types.</td>
+     <td>仅用于MISSION_CLEAR_ALL来清除所有任务类型。</td>
     </tr>
    </tbody>
   </table>
@@ -4672,9 +4670,7 @@
    <a href="#MAV_ESTIMATOR_TYPE">MAV_ESTIMATOR_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Enumeration of estimator types</p>
+   估算器类型的枚举。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -4689,63 +4685,63 @@
      <td>
       <a href="#MAV_ESTIMATOR_TYPE_UNKNOWN">MAV_ESTIMATOR_TYPE_UNKNOWN</a>
      </td>
-     <td>Unknown type of the estimator.</td>
+     <td>未知类型的估计值</td>
     </tr>
     <tr id="MAV_ESTIMATOR_TYPE_NAIVE">
      <td>1</td>
      <td>
       <a href="#MAV_ESTIMATOR_TYPE_NAIVE">MAV_ESTIMATOR_TYPE_NAIVE</a>
      </td>
-     <td>This is a naive estimator without any real covariance feedback.</td>
+     <td>这是一个没有任何实际协方差反馈的朴素估计。</td>
     </tr>
     <tr id="MAV_ESTIMATOR_TYPE_VISION">
      <td>2</td>
      <td>
       <a href="#MAV_ESTIMATOR_TYPE_VISION">MAV_ESTIMATOR_TYPE_VISION</a>
      </td>
-     <td>Computer vision based estimate. Might be up to scale.</td>
+     <td>基于机器视觉的估计值， 也许是符合标准的</td>
     </tr>
     <tr id="MAV_ESTIMATOR_TYPE_VIO">
      <td>3</td>
      <td>
       <a href="#MAV_ESTIMATOR_TYPE_VIO">MAV_ESTIMATOR_TYPE_VIO</a>
      </td>
-     <td>Visual-inertial estimate.</td>
+     <td>视觉里程计的估计值</td>
     </tr>
     <tr id="MAV_ESTIMATOR_TYPE_GPS">
      <td>4</td>
      <td>
       <a href="#MAV_ESTIMATOR_TYPE_GPS">MAV_ESTIMATOR_TYPE_GPS</a>
      </td>
-     <td>Plain GPS estimate.</td>
+     <td>普通GPS估计值</td>
     </tr>
     <tr id="MAV_ESTIMATOR_TYPE_GPS_INS">
      <td>5</td>
      <td>
       <a href="#MAV_ESTIMATOR_TYPE_GPS_INS">MAV_ESTIMATOR_TYPE_GPS_INS</a>
      </td>
-     <td>Estimator integrating GPS and inertial sensing.</td>
+     <td>集成GPS和惯性传感器组合惯导的估计值</td>
     </tr>
     <tr id="MAV_ESTIMATOR_TYPE_MOCAP">
      <td>6</td>
      <td>
       <a href="#MAV_ESTIMATOR_TYPE_MOCAP">MAV_ESTIMATOR_TYPE_MOCAP</a>
      </td>
-     <td>Estimate from external motion capturing system.</td>
+     <td>来自外部动作捕获系统的估计。</td>
     </tr>
     <tr id="MAV_ESTIMATOR_TYPE_LIDAR">
      <td>7</td>
      <td>
       <a href="#MAV_ESTIMATOR_TYPE_LIDAR">MAV_ESTIMATOR_TYPE_LIDAR</a>
      </td>
-     <td>Estimator based on lidar sensor input.</td>
+     <td>基于 激光雷达输入的估计器。</td>
     </tr>
     <tr id="MAV_ESTIMATOR_TYPE_AUTOPILOT">
      <td>8</td>
      <td>
       <a href="#MAV_ESTIMATOR_TYPE_AUTOPILOT">MAV_ESTIMATOR_TYPE_AUTOPILOT</a>
      </td>
-     <td>Estimator on autopilot.</td>
+     <td>自驾仪上的估计值</td>
     </tr>
    </tbody>
   </table>
@@ -12082,9 +12078,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message. After this command the gimbal manager should go back to manual input if available, and otherwise assume a neutral position.</p>
+   取消之前任何ROI 命令返回载具/传感器默认飞行特性。 然后，载具的控制系统可以用来控制车辆的姿态和照相机等各种传感器的姿态。 此命令可以发送到云台管理器，但不能发送到云台设备。 云台不对此消息做出反应。 在发出此命令后，云台管理器应进入手动输入状态，否则应维持中立状态。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12095,7 +12089,7 @@
    <tbody>
     <tr>
      <td>1: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>云台设备的组件ID ( 或1-6到非 MAVLink 的云台l) ，0为发送到所有云台。 (发送超过1个云台，但不是所有云台。)</td>
     </tr>
     <tr>
      <td>2</td>
@@ -12127,9 +12121,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Mount tracks system with specified system ID. Determination of target vehicle position may be done with GLOBAL_POSITION_INT or any other means. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.</p>
+   使用指定的系统ID安装跟踪系统。 可通过GLOBAL_POSITION_INT或任何其他手段确定目标车辆位置。 此命令可以发送到云台管理器，但不能发送到云台设备。 云台不对此消息做出反应。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12147,7 +12139,7 @@
     </tr>
     <tr>
      <td>2: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>云台设备的组件ID ( 或1-6到非 MAVLink 的云台l) ，0为发送到所有云台。 (发送超过1个云台，但不是所有云台。)</td>
      <td>
      </td>
     </tr>
@@ -12157,9 +12149,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Control onboard camera system.</p>
+   控制板载摄像头系统。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12233,11 +12223,9 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_SET_ROI_* (2018-01).</p>
+   替换为MAV_CMD_DO_SET_ROI_* (2018-01)。</p>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+   为传感器或载具设置感兴趣的区域 (ROI机器视觉术语)。 然后，载具的控制系统可以用来控制车辆的姿态和照相机等各种传感器的姿态。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12249,18 +12237,18 @@
    <tbody>
     <tr>
      <td>1: ROI Mode</td>
-     <td>Region of interest mode.</td>
+     <td>兴趣区域状态。</td>
      <td>MAV_ROI</td>
     </tr>
     <tr>
      <td>2: WP Index</td>
-     <td>Waypoint index/ target ID (depends on param 1).</td>
+     <td>航点索引/目标 ID (取决于参数 1)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3: ROI Index</td>
-     <td>Region of interest index. (allows a vehicle to manage multiple ROI's)</td>
+     <td>ROI索引 ROI 索引 (允许载具管理多个ROI)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -12272,19 +12260,19 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>MAV_ROI_WPNEXT: pitch offset from next waypoint, MAV_ROI_LOCATION: latitude</td>
+     <td>MAV_ROI_WPNEXT: 下一个航点俯仰偏移，MAV_ROI_LOCATION: 纬度</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>MAV_ROI_WPNEXT: roll offset from next waypoint, MAV_ROI_LOCATION: longitude</td>
+     <td>MAV_ROI_WPNEXT: 下一个航点滚转偏移，MAV_ROI_LOCATION: 经度</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>MAV_ROI_WPNEXT: yaw offset from next waypoint, MAV_ROI_LOCATION: altitude</td>
+     <td>MAV_ROI_WPNEXT: 下一个航点方位偏移，MAV_ROI_LOCATION: 高度</td>
      <td>
      </td>
     </tr>
@@ -18127,25 +18115,25 @@ y轴磁力计数据
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>press_abs</td>
      <td>float</td>
      <td>hPa</td>
-     <td>Absolute pressure</td>
+     <td>绝对压力</td>
     </tr>
     <tr>
      <td>press_diff</td>
      <td>float</td>
      <td>hPa</td>
-     <td>Differential pressure 1</td>
+     <td>压差</td>
     </tr>
     <tr>
      <td>temperature</td>
      <td>int16_t</td>
      <td>cdegC</td>
-     <td>Temperature</td>
+     <td>温度</td>
     </tr>
    </tbody>
   </table>
@@ -18216,7 +18204,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   航空坐标系下的姿态信息(右手基准, Z-下, X-前, Y-右)。表示成四元数方式 Quaternion order is w, x, y, z and a zero rotation would be expressed as (1 0 0 0).</p>
+   航空坐标系下的姿态信息(右手基准, Z-下, X-前, Y-右)。表示成四元数方式 四元顺序为w、x、y、z，零转换表示为 (1 0 0 0)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18238,14 +18226,14 @@ y轴磁力计数据
      <td>float</td>
      <td>
      </td>
-     <td>Quaternion component 1, w (1 in null-rotation)</td>
+     <td>四元数第一位，w</td>
     </tr>
     <tr>
      <td>q2</td>
      <td>float</td>
      <td>
      </td>
-     <td>Quaternion component 2, x (0 in null-rotation)</td>
+     <td>四元数第二位 X</td>
     </tr>
     <tr>
      <td>q3</td>
@@ -18297,9 +18285,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The filtered local position (e.g. fused computer vision and accelerometers). Coordinate frame is right-handed, Z-axis down (aeronautical frame, NED / north-east-down convention)</p>
+   经过处理的的局部位置(如 计算机视觉和加速计数据融合后)。 坐标框架是右手基准，Z轴向下(航空坐标系、NED / 东北下公约)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18314,7 +18300,7 @@ y轴磁力计数据
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>x</td>
@@ -18433,9 +18419,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The scaled values of the RC channels received: (-100%) -10000, (0%) 0, (100%) 10000. Channels that are inactive should be set to UINT16_MAX.</p>
+   遥控器通道的缩放值：(-100%) -10000   ，(0%) 0, (100%) 10000。 未激活的频道应设置为 UINT16_MAX。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18450,14 +18434,14 @@ y轴磁力计数据
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>port</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.</td>
+     <td>伺服器输出端口(8个输出=1个端口)。 在 Pixhawk 上运行的飞行堆栈应使用：0 = MAIN，1 = AUX。</td>
     </tr>
     <tr>
      <td>chan1_scaled</td>
@@ -18520,7 +18504,7 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Receive signal strength indicator in device-dependent units/scale. Values: [0-254], 255: invalid/unknown.</td>
+     <td>通过数值/比例用来表示接收信号强度指示。 值： [0-254], 255: 无效/未知。</td>
     </tr>
    </tbody>
   </table>
@@ -18530,9 +18514,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The RAW values of the RC channels received. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. A value of UINT16_MAX implies the channel is unused. Individual receivers/transmitters might violate this specification.</p>
+   接收到遥控器的 原始PPM 值。 PPM标准：1000微秒：0%，2000微秒：100%。 UINT16_MAX值意味着该频道未使用。 个人接收器/发射器可能不遵守这一标准。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18609,7 +18591,7 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Receive signal strength indicator in device-dependent units/scale. Values: [0-254], 255: invalid/unknown.</td>
+     <td>通过数值/比例用来表示接收信号强度指示。 值： [0-254], 255: 无效/未知。</td>
     </tr>
    </tbody>
   </table>
@@ -18907,10 +18889,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Message encoding a mission item. This message is emitted to announce
-                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). NaN may be used to indicate an optional/default value (e.g. to use the system's current latitude or yaw rather than a specific value). See also https://mavlink.io/en/services/mission.html.</p>
+   对任务项目进行编码的消息。 发出此消息是为了通知任务项目存在，并在系统中设置一个任务项目。 任务项目可以是x, y, z meters (type: LOCAL) 或 x:lat, y:lon, z:高度. 本地坐标系Z-下，右手（NED），全局坐标系是Z-上，右手（ENU）。 NAN可以用来表示一个可选/默认值(例如使用系统当前纬度或 方位 而不是一个特定值)。 另见https://mavlink.io/en/services/mission.html。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18928,7 +18907,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -18937,7 +18916,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td>seq</td>
@@ -18946,7 +18925,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Sequence</td>
+     <td>序号</td>
     </tr>
     <tr>
      <td>frame</td>
@@ -18954,7 +18933,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
-     <td>The coordinate system of the waypoint.</td>
+     <td>航点的坐标系。</td>
     </tr>
     <tr>
      <td>command</td>
@@ -18962,7 +18941,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_CMD">MAV_CMD</a>
      </td>
-     <td>The scheduled action for the waypoint.</td>
+     <td>航点的预设操作</td>
     </tr>
     <tr>
      <td>current</td>
@@ -18971,7 +18950,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>false:0, true:1</td>
+     <td>假:0, 真:1</td>
     </tr>
     <tr>
      <td>autocontinue</td>
@@ -18980,7 +18959,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Autocontinue to next waypoint</td>
+     <td>自动继续到下一个航点</td>
     </tr>
     <tr>
      <td>param1</td>
@@ -18989,7 +18968,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>PARAM1, see MAV_CMD enum</td>
+     <td>PARAM1, 见MAV_CMD 枚举。</td>
     </tr>
     <tr>
      <td>param2</td>
@@ -19025,7 +19004,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>PARAM5 / local: X coordinate, global: latitude</td>
+     <td>PARAM5 /局部：X 坐标，全局：纬度</td>
     </tr>
     <tr>
      <td>y</td>
@@ -19034,7 +19013,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>PARAM6 / local: Y coordinate, global: longitude</td>
+     <td>PARAM6 / 局部：Y 坐标，全局：经度</td>
     </tr>
     <tr>
      <td>z</td>
@@ -19043,7 +19022,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>PARAM7 / local: Z coordinate, global: altitude (relative or absolute, depending on frame).</td>
+     <td>PARAM7 / 局部：Z 坐标，全球：高度(相对或绝对，取决于坐标系)。</td>
     </tr>
     <tr>
      <td style="color:blue;">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -19064,9 +19043,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM message. https://mavlink.io/en/services/mission.html</p>
+   请求该序列号的任务项目信息。 系统对此消息的响应应该是MISSION_ITEM_INT 消息。 https://mavlink.io/en/services/mission.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19123,9 +19100,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Set the mission item with sequence number seq as current item. This means that the MAV will continue to this mission item on the shortest path (not following the mission items in-between).</p>
+   将序列号seq 的任务项设置为当前项目。 这意味着MAV将沿着最短的路线继续执行这个任务项目(不按照任务中间的项目)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20032,9 +20007,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The filtered global position (e.g. fused GPS and accelerometers). The position is in GPS-frame (right-handed, Z-up). It  is designed as scaled integer message since the resolution of float is not sufficient. NOTE: This message is intended for onboard networks / companion computers and higher-bandwidth links and optimized for accuracy and completeness. Please use the GLOBAL_POSITION_INT message for a minimal subset.</p>
+   经过处理的的全局位置(如 GPS 和加速计数据融合后)。 位置在 GPS 坐标系下(右手基准，Z-上)。 它被设计成缩放整数型，因为浮点型的精度不满足要求。 注：此信息是为了在板载网络/配套计算机和高带宽链接，并为准确性和完整性优化。 请使用GLOBAL_POSITION_INT 消息作为最小的子集。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20054,7 +20027,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>estimator_type</td>
@@ -20094,7 +20067,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Altitude in meters above MSL</td>
+     <td>海拔高度</td>
     </tr>
     <tr>
      <td>relative_alt</td>
@@ -20145,7 +20118,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Row-major representation of a 6x6 position and velocity 6x6 cross-covariance matrix (states: lat, lon, alt, vx, vy, vz; first six entries are the first ROW, next six entries are the second row, etc.). If unknown, assign NaN value to first element in the array.</td>
+     <td>按照行优先方法表示6x6位置和速度6x6 互协方差矩阵(表示：纬度、 纬度、 Alt、 vx、 vy、 vz)； 前六个条目是第一个ROW，后六个条目是第二行等。 如果未知，在数组中将NAN值分配给第一个元素。</td>
     </tr>
    </tbody>
   </table>
