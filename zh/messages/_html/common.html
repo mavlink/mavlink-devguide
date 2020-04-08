@@ -12282,9 +12282,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Configure digital camera. This is a fallback message for systems that have not yet implemented PARAM_EXT_XXX messages and camera definition files (see https://mavlink.io/en/services/camera_def.html ).</p>
+   配置数字摄像头。 对于尚未实现 PARAM_EXT_XXX 消息和相机定义文件的系统来说，这是一个回退消息（见https://mavlink.io/en/services/camera_defen.html）。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12297,7 +12295,7 @@
    <tbody>
     <tr>
      <td>1: Mode</td>
-     <td>Modes: P, TV, AV, M, Etc.</td>
+     <td>模式：P, TV, AV, M, Etc.</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
      <td>
@@ -12305,7 +12303,7 @@
     </tr>
     <tr>
      <td>2: Shutter Speed</td>
-     <td>Shutter speed: Divisor number for one second.</td>
+     <td>快门速度：一秒对应的分数。</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
      <td>
@@ -12313,7 +12311,7 @@
     </tr>
     <tr>
      <td>3: Aperture</td>
-     <td>Aperture: F stop number.</td>
+     <td>光圈: F </td>
      <td>
       <em>min:</em>0 </td>
      <td>
@@ -12321,7 +12319,7 @@
     </tr>
     <tr>
      <td>4: ISO</td>
-     <td>ISO number e.g. 80, 100, 200, Etc.</td>
+     <td>ISO 数字，例如 80、100、200、Etc。</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
      <td>
@@ -12329,7 +12327,7 @@
     </tr>
     <tr>
      <td>5: Exposure</td>
-     <td>Exposure type enumerator.</td>
+     <td>曝光类型枚举器。</td>
      <td>
      </td>
      <td>
@@ -12337,7 +12335,7 @@
     </tr>
     <tr>
      <td>6: Command Identity</td>
-     <td>Command Identity.</td>
+     <td>命令身份。</td>
      <td>
      </td>
      <td>
@@ -12345,7 +12343,7 @@
     </tr>
     <tr>
      <td>7: Engine Cut-off</td>
-     <td>Main engine cut-off time before camera trigger. (0 means no cut-off)</td>
+     <td>相机触发前的主引擎停止时间。 (0表示不停用)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
      <td>ds</td>
@@ -12356,9 +12354,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Control digital camera. This is a fallback message for systems that have not yet implemented PARAM_EXT_XXX messages and camera definition files (see https://mavlink.io/en/services/camera_def.html ).</p>
+   控制数码相机 对于尚未实现 PARAM_EXT_XXX 消息和相机定义文件的系统来说，这是一个回退消息（见https://mavlink.io/en/services/camera_defen.html）。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12369,31 +12365,31 @@
    <tbody>
     <tr>
      <td>1: Session Control</td>
-     <td>Session control e.g. show/hide lens</td>
+     <td>会话控制，例如显示/隐藏镜头</td>
     </tr>
     <tr>
      <td>2: Zoom Absolute</td>
-     <td>Zoom's absolute position</td>
+     <td>变焦绝对位置</td>
     </tr>
     <tr>
      <td>3: Zoom Relative</td>
-     <td>Zooming step value to offset zoom from the current position</td>
+     <td>变焦步长值以抵消当前位置的变焦</td>
     </tr>
     <tr>
      <td>4: Focus</td>
-     <td>Focus Locking, Unlocking or Re-locking</td>
+     <td>聚焦锁、解锁或重新锁定</td>
     </tr>
     <tr>
      <td>5: Shoot Command</td>
-     <td>Shooting Command</td>
+     <td>拍照命令</td>
     </tr>
     <tr>
      <td>6: Command Identity</td>
-     <td>Command Identity</td>
+     <td>命令身份</td>
     </tr>
     <tr>
      <td>7: Shot ID</td>
-     <td>Test shot identifier. If set to 1, image will only be captured, but not counted towards internal frame count.</td>
+     <td>测试截图标识符。 如果设置为 1，图像将仅被抓取，但不计入内部帧数。</td>
     </tr>
    </tbody>
   </table>
@@ -12401,9 +12397,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Mission command to configure a camera or antenna mount</p>
+   对于配置相机或天线挂载的任务指令</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12415,42 +12409,42 @@
    <tbody>
     <tr>
      <td>1: Mode</td>
-     <td>Mount operation mode</td>
+     <td>挂载操作模式</td>
      <td>MAV_MOUNT_MODE</td>
     </tr>
     <tr>
      <td>2: Stabilize Roll</td>
-     <td>stabilize roll? (1 = yes, 0 = no)</td>
+     <td>滚转增稳模式 (1= 是，0=否)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3: Stabilize Pitch</td>
-     <td>stabilize pitch? (1 = yes, 0 = no)</td>
+     <td>俯仰增稳模式 (1= 是，0=否)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>4: Stabilize Yaw</td>
-     <td>stabilize yaw? (1 = yes, 0 = no)</td>
+     <td>方位增稳模式 (1 = yes, 0 = no)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>5</td>
-     <td>roll input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
+     <td>滚转输入(0=角度机体坐标系, 1=角速率, 2=角度绝对坐标系)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>pitch input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
+     <td>俯仰输入(0=角度机体坐标系, 1=角速率, 2=角度绝对坐标系)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>yaw input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
+     <td>方位输入(0=角度机体坐标系, 1=角速率, 2=角度绝对坐标系)</td>
      <td>
      </td>
     </tr>
@@ -12460,10 +12454,10 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).
+   替换为MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01)。
 
 
-  This message is ambiguous and inconsistent. It has been superseded by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE and MAV_CMD_DO_SET_ROI_*. The message can still be used to communicate with legacy gimbals implementing it.</p>
+  这一信息含糊不清，前后不一。 它已被MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE 和 MAV_CMD_DO_SET_ROI_*所取代。 该消息仍然可以用来与旧版Gimbals进行通信。</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -12538,9 +12532,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Mission command to set camera trigger distance for this flight. The camera is triggered each time this distance is exceeded. This command can also be used to set the shutter integration time for the camera.</p>
+   为这次飞行设置相机触发距离的任务指令 每次超出此距离时触发相机。 此命令也可以用于设置相机的快门集成时间。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12553,14 +12545,14 @@
    <tbody>
     <tr>
      <td>1: Distance</td>
-     <td>Camera trigger distance. 0 to stop triggering.</td>
+     <td>相机定距触发的间距. 0 停止触发。</td>
      <td>
       <em>min:</em>0 </td>
      <td>m</td>
     </tr>
     <tr>
      <td>2: Shutter</td>
-     <td>Camera shutter integration time. -1 or 0 to ignore</td>
+     <td>相机快门集成时间。 -1 或 0 来忽略</td>
      <td>
       <em>min:</em>
       -1 
