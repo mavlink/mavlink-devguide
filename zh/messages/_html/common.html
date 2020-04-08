@@ -9778,7 +9778,7 @@
     </tr>
     <tr>
      <td>2: Radius</td>
-     <td>Radius. If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter.</td>
+     <td>半径： 如果正顺时针运动，负逆时钟运动，0表示不改变当前定点状态。</td>
      <td>
      </td>
      <td>m</td>
@@ -9793,7 +9793,7 @@
     </tr>
     <tr>
      <td>4: Xtrack Location</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location</td>
+     <td>飞行中的航空器退出坐标：0用于定点的中心，1用于退出位置。</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -9801,7 +9801,7 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>Latitude</td>
+     <td>纬度</td>
      <td>
      </td>
      <td>
@@ -9809,7 +9809,7 @@
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>Longitude</td>
+     <td>经度</td>
      <td>
      </td>
      <td>
@@ -9817,7 +9817,7 @@
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>Altitude</td>
+     <td>高度</td>
      <td>
      </td>
      <td>m</td>
@@ -9828,9 +9828,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Begin following a target</p>
+   开始跟踪一个目标</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9843,7 +9841,7 @@
    <tbody>
     <tr>
      <td>1: System ID</td>
-     <td>System ID (of the FOLLOW_TARGET beacon). Send 0 to disable follow-me and return to the default position hold mode.</td>
+     <td>系统 ID (FOLLOW_TARGET 信标)。 发送 0 以跟随模式，并返回默认位置控制模式。</td>
      <td>
       <em>min:</em>0 <em>max:</em>255 <em>increment:</em>1</td>
      <td>
@@ -9851,7 +9849,7 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>RESERVED</td>
+     <td>已恢复</td>
      <td>
      </td>
      <td>
@@ -9867,7 +9865,7 @@
     </tr>
     <tr>
      <td>4: Altitude Mode</td>
-     <td>Altitude mode: 0: Keep current altitude, 1: keep altitude difference to target, 2: go to a fixed altitude above home.</td>
+     <td>高度模式：0：保持当前高度：1：保持相对目标位置高度，2：保持到相对于home点的高度</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
      <td>
@@ -9875,7 +9873,7 @@
     </tr>
     <tr>
      <td>5: Altitude</td>
-     <td>Altitude above home. (used if mode=2)</td>
+     <td>相对home点高度. (如果模式=2启用)</td>
      <td>
      </td>
      <td>m</td>
@@ -9890,7 +9888,7 @@
     </tr>
     <tr>
      <td>7: Time to Land</td>
-     <td>Time to land in which the MAV should go to the default position hold mode after a message RX timeout.</td>
+     <td>设定超时时间，当接收信息超时后，MAV会到达默认位置降落。</td>
      <td>
       <em>min:</em>0 </td>
      <td>s</td>
@@ -9901,9 +9899,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Reposition the MAV after a follow target command has been sent</p>
+   当跟随的目标命令被发送后重置MAV</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9915,7 +9911,7 @@
    <tbody>
     <tr>
      <td>1: Camera Q1</td>
-     <td>Camera q1 (where 0 is on the ray from the camera to the tracking device)</td>
+     <td>摄像头 q1 (从相机到跟踪设备的矢量方向)</td>
      <td>
      </td>
     </tr>
@@ -9939,12 +9935,12 @@
     </tr>
     <tr>
      <td>5: Altitude Offset</td>
-     <td>altitude offset from target</td>
+     <td>对目标高度的偏移修正</td>
      <td>m</td>
     </tr>
     <tr>
      <td>6: X Offset</td>
-     <td>X offset from target</td>
+     <td>目标的 X 偏移</td>
      <td>m</td>
     </tr>
     <tr>
@@ -9958,11 +9954,9 @@
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Start orbiting on the circumference of a circle defined by the parameters. Setting any value NaN results in using defaults.</p>
+   在由参数定义的圆周围开始绕圈。  参数设置为NAN表示采用默认设置。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9975,7 +9969,7 @@
    <tbody>
     <tr>
      <td>1: Radius</td>
-     <td>Radius of the circle. positive: Orbit clockwise. negative: Orbit counter-clockwise.</td>
+     <td>圆的半径 positive: Orbit clockwise. negative: Orbit counter-clockwise.</td>
      <td>
      </td>
      <td>m</td>
