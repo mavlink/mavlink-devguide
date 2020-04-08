@@ -12561,7 +12561,7 @@
     </tr>
     <tr>
      <td>3: Trigger</td>
-     <td>Trigger camera once immediately. (0 = no trigger, 1 = trigger)</td>
+     <td>立即触发相机。 (0=无触发器, 1=触发器)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -12605,9 +12605,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Mission command to enable the geofence</p>
+   启用地理围栏的任务指令</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12619,7 +12617,7 @@
    <tbody>
     <tr>
      <td>1: Enable</td>
-     <td>enable? (0=disable, 1=enable, 2=disable_floor_only)</td>
+     <td>启用? (0=禁用, 1=启用, 2=地面禁用)</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
     </tr>
@@ -12665,9 +12663,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Mission command to trigger a parachute</p>
+   触发起落架的任务指令</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12679,7 +12675,7 @@
    <tbody>
     <tr>
      <td>1: Action</td>
-     <td>action</td>
+     <td>执行</td>
      <td>PARACHUTE_ACTION</td>
     </tr>
     <tr>
@@ -12724,9 +12720,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Mission command to perform motor test.</p>
+   执行发动机准备的任务指令。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12739,7 +12733,7 @@
    <tbody>
     <tr>
      <td>1: Instance</td>
-     <td>Motor instance number. (from 1 to max number of motors on the vehicle)</td>
+     <td>发动机序号 (载具上从1到最大值)</td>
      <td>
       <em>min:</em>1 <em>increment:</em>1</td>
      <td>
@@ -12747,14 +12741,14 @@
     </tr>
     <tr>
      <td>2: Throttle Type</td>
-     <td>Throttle type.</td>
+     <td>油门类型</td>
      <td>MOTOR_TEST_THROTTLE_TYPE</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3: Throttle</td>
-     <td>Throttle.</td>
+     <td>油门.</td>
      <td>
      </td>
      <td>
@@ -12762,14 +12756,14 @@
     </tr>
     <tr>
      <td>4: Timeout</td>
-     <td>Timeout.</td>
+     <td>超时。</td>
      <td>
       <em>min:</em>0 </td>
      <td>s</td>
     </tr>
     <tr>
      <td>5: Motor Count</td>
-     <td>Motor count. (number of motors to test to test in sequence, waiting for the timeout above between them; 0=1 motor, 1=1 motor, 2=2 motors...)</td>
+     <td>发动机数量 (用于测试序列的发动机数目，等待它们之间的超时时间；0=1发动机，1=1发动机，2=2发动机...)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
      <td>
@@ -12777,7 +12771,7 @@
     </tr>
     <tr>
      <td>6: Test Order</td>
-     <td>Motor test order.</td>
+     <td>电机测试模式</td>
      <td>MOTOR_TEST_ORDER</td>
      <td>
      </td>
@@ -12796,9 +12790,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Change to/from inverted flight.</p>
+   改出/改成到飞模式</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12810,7 +12802,7 @@
    <tbody>
     <tr>
      <td>1: Inverted</td>
-     <td>Inverted flight. (0=normal, 1=inverted)</td>
+     <td>反向 (0=普通, 1=反向)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -12856,9 +12848,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Sets a desired vehicle turn angle and speed change.</p>
+   设置载具转向角度和速度变化指令。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12871,21 +12861,21 @@
    <tbody>
     <tr>
      <td>1: Yaw</td>
-     <td>Yaw angle to adjust steering by.</td>
+     <td>调整引导方向的角度.</td>
      <td>
      </td>
      <td>deg</td>
     </tr>
     <tr>
      <td>2: Speed</td>
-     <td>Speed.</td>
+     <td>速度</td>
      <td>
      </td>
      <td>m/s</td>
     </tr>
     <tr>
      <td>3: Angle</td>
-     <td>Final angle. (0=absolute, 1=relative)</td>
+     <td>最终角度。 (0: 绝对值：1: 相对值)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -12929,9 +12919,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Mission command to set camera trigger interval for this flight. If triggering is enabled, the camera is triggered each time this interval expires. This command can also be used to set the shutter integration time for the camera.</p>
+   飞行设置相机触发时间间隔的任务指令。 如果启用触发，每次此间隔到期时都会触发相机。 此命令也可以用于设置相机的快门集成时间。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12944,7 +12932,7 @@
    <tbody>
     <tr>
      <td>1: Trigger Cycle</td>
-     <td>Camera trigger cycle time. -1 or 0 to ignore.</td>
+     <td>Camera trigger cycle time. -1 或 0 来忽略.</td>
      <td>
       <em>min:</em>
       -1 
@@ -12953,7 +12941,7 @@
     </tr>
     <tr>
      <td>2: Shutter Integration</td>
-     <td>Camera shutter integration time. Should be less than trigger cycle time. -1 or 0 to ignore.</td>
+     <td>相机快门集成时间。 应小于循环触发时间。 -1 or 0 to ignore.</td>
      <td>
       <em>min:</em>
       -1 
@@ -13006,11 +12994,9 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).</p>
+   替换为MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01)。</p>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Mission command to control a camera or antenna mount, using a quaternion as reference.</p>
+   控制相机或天线挂载的指令，使用四边形作为参考。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13053,9 +13039,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>set id of master controller</p>
+   设置主控制器id</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13113,9 +13097,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Set limits for external control</p>
+   设置外部控制限制</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13128,7 +13110,7 @@
    <tbody>
     <tr>
      <td>1: Timeout</td>
-     <td>Timeout - maximum time that external controller will be allowed to control vehicle. 0 means no timeout.</td>
+     <td>超时-允许外部控制器控制载具的最大时间。 0 表示没有超时。</td>
      <td>
       <em>min:</em>0 </td>
      <td>s</td>
