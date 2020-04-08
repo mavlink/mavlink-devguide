@@ -11590,7 +11590,7 @@
     </tr>
     <tr>
      <td>2: Frame</td>
-     <td>Frame of new altitude.</td>
+     <td>新高度所采用的坐标系</td>
      <td>MAV_FRAME</td>
      <td>
      </td>
@@ -11641,9 +11641,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Mission command to perform a landing. This is used as a marker in a mission to tell the autopilot where a sequence of mission items that represents a landing starts. It may also be sent via a COMMAND_LONG to trigger a landing, in which case the nearest (geographically) landing sequence in the mission will be used. The Latitude/Longitude is optional, and may be set to 0 if not needed. If specified then it will be used to help find the closest landing sequence.</p>
+   执行降落任务指令 该指令用于在任务中标识，告知自驾仪，从从哪个任务项目起开始着陆 它也可以通过COMMAND_LONG指令触发着陆， 在这种情况下，将使用最近（区域）着陆顺序。 经纬度是可选的，如果不需要，可以设置为0。 如果指定经纬度，它将被用来帮助找到最近的着陆顺序。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11700,12 +11698,12 @@
    <tbody>
     <tr>
      <td>1: Altitude</td>
-     <td>Break altitude</td>
+     <td>决断高度</td>
      <td>m</td>
     </tr>
     <tr>
      <td>2: Speed</td>
-     <td>Landing speed</td>
+     <td>着陆速度</td>
      <td>m/s</td>
     </tr>
     <tr>
