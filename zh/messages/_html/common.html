@@ -11684,9 +11684,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Mission command to perform a landing from a rally point.</p>
+   从转场点执行降落任务指令</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11742,9 +11740,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Mission command to safely abort an autonomous landing.</p>
+   任务指令安全中止自动着陆。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11801,9 +11797,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Reposition the vehicle to a specific WGS84 global position.</p>
+   将载具重新定位到 WGS84 的全局位置。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11816,7 +11810,7 @@
    <tbody>
     <tr>
      <td>1: Speed</td>
-     <td>Ground speed, less than 0 (-1) for default</td>
+     <td>地面速度，低于0(-1) 默认值</td>
      <td>
       <em>min:</em>
       -1 
@@ -11825,14 +11819,14 @@
     </tr>
     <tr>
      <td>2: Bitmask</td>
-     <td>Bitmask of option flags.</td>
+     <td>选项标志的 位掩码。</td>
      <td>MAV_DO_REPOSITION_FLAGS</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Reserved</td>
+     <td>保留</td>
      <td>
      </td>
      <td>
@@ -11840,7 +11834,7 @@
     </tr>
     <tr>
      <td>4: Yaw</td>
-     <td>Yaw heading. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). For planes indicates loiter direction (0: clockwise, 1: counter clockwise)</td>
+     <td>头向方位 NaN 要使用当前系统的头向方向模式(例如朝着下一个航点方向的头向、朝home点方向的航向，等等)。 飞机按照定位确定方向(0：顺时针，1：逆时针)</td>
      <td>
      </td>
      <td>deg</td>
@@ -11874,9 +11868,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>If in a GPS controlled position mode, hold the current position or continue.</p>
+   如果在GPS 控制的位置模式，保持当前位置或继续。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11888,7 +11880,7 @@
    <tbody>
     <tr>
      <td>1: Continue</td>
-     <td>0: Pause current mission or reposition command, hold current position. 1: Continue mission. A VTOL capable vehicle should enter hover mode (multicopter and VTOL planes). A plane should loiter with the default loiter radius.</td>
+     <td>0: 暂停当前任务或重新定位命令，保持当前位置 继续任务 垂直起降飞行器应进入悬停模式(多旋翼和VTOL飞机)。 飞机应该在默认的半径范围内进行定点飞行</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -11934,9 +11926,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Set moving direction to forward or reverse.</p>
+   设置向前移动或反向移动方向。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11948,7 +11938,7 @@
    <tbody>
     <tr>
      <td>1: Reverse</td>
-     <td>Direction (0=Forward, 1=Reverse)</td>
+     <td>方向 (0=前进, 1=反向)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -11994,9 +11984,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message.</p>
+   在本地设置感兴趣的区域 (ROI机器视觉术语)。 然后，载具的控制系统可以用来控制车辆的姿态和照相机等各种传感器的姿态。 此命令可以发送到云台管理器，但不能发送到云台设备。 云台不对此消息做出反应。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12008,7 +11996,7 @@
    <tbody>
     <tr>
      <td>1: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>云台设备的组件ID ( 或1-6到非 MAVLink 的云台l) ，0为发送到所有云台。 (发送超过1个云台，但不是所有云台。)</td>
      <td>
      </td>
     </tr>
@@ -12051,9 +12039,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.</p>
+   将感兴趣的区域设置到下一个航点, 并可选的俯仰/滚转/方位 偏移。 然后，载具的控制系统可以用来控制车辆的姿态和照相机等各种传感器的姿态。 此命令可以发送到云台管理器，但不能发送到云台设备。 云台不对此消息做出反应。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12064,7 +12050,7 @@
    <tbody>
     <tr>
      <td>1: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>云台设备的组件ID ( 或1-6到非 MAVLink 的云台l) ，0为发送到所有云台。 (发送超过1个云台，但不是所有云台。)</td>
     </tr>
     <tr>
      <td>2</td>
@@ -12080,15 +12066,15 @@
     </tr>
     <tr>
      <td>5: Pitch Offset</td>
-     <td>Pitch offset from next waypoint, positive tilting up</td>
+     <td>下一个航点的高度偏移，正倾斜上移</td>
     </tr>
     <tr>
      <td>6: Roll Offset</td>
-     <td>roll offset from next waypoint, positive banking to the right</td>
+     <td>下一个航点的滚转偏移、正面倾斜到右侧</td>
     </tr>
     <tr>
      <td>7: Yaw Offset</td>
-     <td>yaw offset from next waypoint, positive panning to the right</td>
+     <td>下一个航点的方位偏移、正面倾斜到右侧</td>
     </tr>
    </tbody>
   </table>
@@ -12186,7 +12172,7 @@
    <tbody>
     <tr>
      <td>1: ID</td>
-     <td>Camera ID (-1 for all)</td>
+     <td>摄像机ID (-1 代表所有)</td>
      <td>
       <em>min:</em>
       -1 
@@ -12196,7 +12182,7 @@
     </tr>
     <tr>
      <td>2: Transmission</td>
-     <td>Transmission: 0: disabled, 1: enabled compressed, 2: enabled raw</td>
+     <td>传输: 0: 禁用, 1: 已启用压缩, 2: 已启用原始文件</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
      <td>
@@ -12204,14 +12190,14 @@
     </tr>
     <tr>
      <td>3: Interval</td>
-     <td>Transmission mode: 0: video stream, &gt;0: single images every n seconds</td>
+     <td>传输模式：0：视频流，＞0;：每n秒单张图像</td>
      <td>
       <em>min:</em>0 </td>
      <td>s</td>
     </tr>
     <tr>
      <td>4: Recording</td>
-     <td>Recording: 0: disabled, 1: enabled compressed, 2: enabled raw</td>
+     <td>记录: 0: 禁用, 1: 已启用压缩, 2: 已启用原始文件</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
      <td>
