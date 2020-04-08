@@ -1862,9 +1862,7 @@
    <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>These encode the sensors whose status is sent as part of the SYS_STATUS message.</p>
+   通过SYS_STATUS该部分编码内容显示当前传感器的状态。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1879,28 +1877,28 @@
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_3D_GYRO">MAV_SYS_STATUS_SENSOR_3D_GYRO</a>
      </td>
-     <td>0x01 3D gyro</td>
+     <td>0x01 三轴陀螺仪</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_3D_ACCEL">
      <td>2</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_3D_ACCEL">MAV_SYS_STATUS_SENSOR_3D_ACCEL</a>
      </td>
-     <td>0x02 3D accelerometer</td>
+     <td>0x02 三轴加速度传感器</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_3D_MAG">
      <td>4</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_3D_MAG">MAV_SYS_STATUS_SENSOR_3D_MAG</a>
      </td>
-     <td>0x04 3D magnetometer</td>
+     <td>0x04 三轴磁力计</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_ABSOLUTE_PRESSURE">
      <td>8</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_ABSOLUTE_PRESSURE">MAV_SYS_STATUS_SENSOR_ABSOLUTE_PRESSURE</a>
      </td>
-     <td>0x08 absolute pressure</td>
+     <td>0x08绝对气压计</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_DIFFERENTIAL_PRESSURE">
      <td>16</td>
@@ -1921,168 +1919,168 @@
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_OPTICAL_FLOW">MAV_SYS_STATUS_SENSOR_OPTICAL_FLOW</a>
      </td>
-     <td>0x40 optical flow</td>
+     <td>0x40 光流传感器</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_VISION_POSITION">
      <td>128</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_VISION_POSITION">MAV_SYS_STATUS_SENSOR_VISION_POSITION</a>
      </td>
-     <td>0x80 computer vision position</td>
+     <td>0x80 视觉传感器</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_LASER_POSITION">
      <td>256</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_LASER_POSITION">MAV_SYS_STATUS_SENSOR_LASER_POSITION</a>
      </td>
-     <td>0x100 laser based position</td>
+     <td> 0x100基于激光的定位系统</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_EXTERNAL_GROUND_TRUTH">
      <td>512</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_EXTERNAL_GROUND_TRUTH">MAV_SYS_STATUS_SENSOR_EXTERNAL_GROUND_TRUTH</a>
      </td>
-     <td>0x200 external ground truth (Vicon or Leica)</td>
+     <td>0x200 外部视觉定位系统(Vicon 或 Leica)</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_ANGULAR_RATE_CONTROL">
      <td>1024</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_ANGULAR_RATE_CONTROL">MAV_SYS_STATUS_SENSOR_ANGULAR_RATE_CONTROL</a>
      </td>
-     <td>0x400 3D angular rate control</td>
+     <td>0x400 三轴角速率控制</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_ATTITUDE_STABILIZATION">
      <td>2048</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_ATTITUDE_STABILIZATION">MAV_SYS_STATUS_SENSOR_ATTITUDE_STABILIZATION</a>
      </td>
-     <td>0x800 attitude stabilization</td>
+     <td>0x800 姿态增稳</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_YAW_POSITION">
      <td>4096</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_YAW_POSITION">MAV_SYS_STATUS_SENSOR_YAW_POSITION</a>
      </td>
-     <td>0x1000 yaw position</td>
+     <td>0x1000 航向控制</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_Z_ALTITUDE_CONTROL">
      <td>8192</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_Z_ALTITUDE_CONTROL">MAV_SYS_STATUS_SENSOR_Z_ALTITUDE_CONTROL</a>
      </td>
-     <td>0x2000 z/altitude control</td>
+     <td>0x2000 高度控制</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_XY_POSITION_CONTROL">
      <td>16384</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_XY_POSITION_CONTROL">MAV_SYS_STATUS_SENSOR_XY_POSITION_CONTROL</a>
      </td>
-     <td>0x4000 x/y position control</td>
+     <td>0x4000 x/y 位置控制</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_MOTOR_OUTPUTS">
      <td>32768</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_MOTOR_OUTPUTS">MAV_SYS_STATUS_SENSOR_MOTOR_OUTPUTS</a>
      </td>
-     <td>0x8000 motor outputs / control</td>
+     <td>0x8000 电机输出/控制</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_RC_RECEIVER">
      <td>65536</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_RC_RECEIVER">MAV_SYS_STATUS_SENSOR_RC_RECEIVER</a>
      </td>
-     <td>0x10000 rc receiver</td>
+     <td>0x10000遥控接收机</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_3D_GYRO2">
      <td>131072</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_3D_GYRO2">MAV_SYS_STATUS_SENSOR_3D_GYRO2</a>
      </td>
-     <td>0x20000 2nd 3D gyro</td>
+     <td>0x20000 第二颗三轴陀螺仪</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_3D_ACCEL2">
      <td>262144</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_3D_ACCEL2">MAV_SYS_STATUS_SENSOR_3D_ACCEL2</a>
      </td>
-     <td>0x40000 2nd 3D accelerometer</td>
+     <td>0x40000 第二颗三轴加速度传感器</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_3D_MAG2">
      <td>524288</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_3D_MAG2">MAV_SYS_STATUS_SENSOR_3D_MAG2</a>
      </td>
-     <td>0x80000 2nd 3D magnetometer</td>
+     <td>0x80000  第二颗三轴磁力计</td>
     </tr>
     <tr id="MAV_SYS_STATUS_GEOFENCE">
      <td>1048576</td>
      <td>
       <a href="#MAV_SYS_STATUS_GEOFENCE">MAV_SYS_STATUS_GEOFENCE</a>
      </td>
-     <td>0x100000 geofence</td>
+     <td>0x100000 地理围栏</td>
     </tr>
     <tr id="MAV_SYS_STATUS_AHRS">
      <td>2097152</td>
      <td>
       <a href="#MAV_SYS_STATUS_AHRS">MAV_SYS_STATUS_AHRS</a>
      </td>
-     <td>0x200000 AHRS subsystem health</td>
+     <td>0x200 000 姿态航向参考子系统健康</td>
     </tr>
     <tr id="MAV_SYS_STATUS_TERRAIN">
      <td>4194304</td>
      <td>
       <a href="#MAV_SYS_STATUS_TERRAIN">MAV_SYS_STATUS_TERRAIN</a>
      </td>
-     <td>0x400000 Terrain subsystem health</td>
+     <td>0x400000 地形子系统健康</td>
     </tr>
     <tr id="MAV_SYS_STATUS_REVERSE_MOTOR">
      <td>8388608</td>
      <td>
       <a href="#MAV_SYS_STATUS_REVERSE_MOTOR">MAV_SYS_STATUS_REVERSE_MOTOR</a>
      </td>
-     <td>0x800000 Motors are reversed</td>
+     <td>0x800000 电机反转</td>
     </tr>
     <tr id="MAV_SYS_STATUS_LOGGING">
      <td>16777216</td>
      <td>
       <a href="#MAV_SYS_STATUS_LOGGING">MAV_SYS_STATUS_LOGGING</a>
      </td>
-     <td>0x1000000 Logging</td>
+     <td>0x1000000 日志记录</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_BATTERY">
      <td>33554432</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_BATTERY">MAV_SYS_STATUS_SENSOR_BATTERY</a>
      </td>
-     <td>0x2000000 Battery</td>
+     <td>0:2000000 电池</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_PROXIMITY">
      <td>67108864</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_PROXIMITY">MAV_SYS_STATUS_SENSOR_PROXIMITY</a>
      </td>
-     <td>0x4000000 Proximity</td>
+     <td>0x4000000 近距离传感器</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_SATCOM">
      <td>134217728</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_SATCOM">MAV_SYS_STATUS_SENSOR_SATCOM</a>
      </td>
-     <td>0x8000000 Satellite Communication</td>
+     <td>0x80000 卫星通讯</td>
     </tr>
     <tr id="MAV_SYS_STATUS_PREARM_CHECK">
      <td>268435456</td>
      <td>
       <a href="#MAV_SYS_STATUS_PREARM_CHECK">MAV_SYS_STATUS_PREARM_CHECK</a>
      </td>
-     <td>0x10000000 pre-arm check status. Always healthy when armed</td>
+     <td>0x100000 解锁前检查状态。 解锁时需要是是正常的</td>
     </tr>
     <tr id="MAV_SYS_STATUS_OBSTACLE_AVOIDANCE">
      <td>536870912</td>
      <td>
       <a href="#MAV_SYS_STATUS_OBSTACLE_AVOIDANCE">MAV_SYS_STATUS_OBSTACLE_AVOIDANCE</a>
      </td>
-     <td>0x20000000 Avoidance/collision prevention</td>
+     <td>0x20000000 避障系统</td>
     </tr>
    </tbody>
   </table>
@@ -2108,28 +2106,28 @@
      <td>
       <a href="#MAV_FRAME_GLOBAL">MAV_FRAME_GLOBAL</a>
      </td>
-     <td>Global (WGS84) coordinate frame + MSL altitude. First value / x: latitude, second value / y: longitude, third value / z: positive altitude over mean sea level (MSL).</td>
+     <td>全局(WGS84) 坐标系+ 海拔高度. 第一个数值/x：纬度；第二个数值/：经度；第三个数值/z：正，海拔高度(MSL)。</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_NED">
      <td>1</td>
      <td>
       <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>
      </td>
-     <td>Local coordinate frame, Z-down (x: north, y: east, z: down).</td>
+     <td>本地坐标系, Z-下 (x: 北, y: 东, z: 下).</td>
     </tr>
     <tr id="MAV_FRAME_MISSION">
      <td>2</td>
      <td>
       <a href="#MAV_FRAME_MISSION">MAV_FRAME_MISSION</a>
      </td>
-     <td>NOT a coordinate frame, indicates a mission command.</td>
+     <td>不是一个坐标系，是一条指令</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_RELATIVE_ALT">
      <td>3</td>
      <td>
       <a href="#MAV_FRAME_GLOBAL_RELATIVE_ALT">MAV_FRAME_GLOBAL_RELATIVE_ALT</a>
      </td>
-     <td>Global (WGS84) coordinate frame + altitude relative to the home position. First value / x: latitude, second value / y: longitude, third value / z: positive altitude with 0 being at the altitude of the home location.</td>
+     <td>全局(WGS84) 坐标系+相对于home点位置的高度。 First value / x: latitude, second value / y: longitude, third value / z: positive altitude with 0 being at the altitude of the home location.</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_ENU">
      <td>4</td>
