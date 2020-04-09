@@ -14544,31 +14544,31 @@
    <tbody>
     <tr>
      <td>1: Top left corner x</td>
-     <td>Top left corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>矩形的左上角X坐标值 (0..1, 左, 1 正).</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 </td>
     </tr>
     <tr>
      <td>2: Top left corner y</td>
-     <td>Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>矩形的左上角y坐标值 (0..1, 0,顶, 1 底).</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 </td>
     </tr>
     <tr>
      <td>3: Bottom right corner x</td>
-     <td>Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>矩形的右下上角X坐标值 (0..1, 左, 1 正).</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 </td>
     </tr>
     <tr>
      <td>4: Bottom right corner y</td>
-     <td>Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>矩形的右下角y坐标值 (0..1, 0，顶, 1 底).</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 </td>
     </tr>
     <tr>
      <td>7: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>云台设备的组件ID ( 或1-6到非 MAVLink 的云台l) ，0为发送到所有云台。 (发送超过1个云台，但不是所有云台。)</td>
      <td>
      </td>
     </tr>
@@ -15224,9 +15224,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request. If approved the progress of command_ack message should be set with period of time that this authorization is valid in seconds or in case it was denied it should be set with one of the reasons in ARM_AUTH_DENIED_REASON.</p>
+   请求机体的解锁权限授权给一个外部实体， 解锁的授权人还有在批准或拒绝请求之前向机体索取所有必要的数据。 如果获取到了 command_ack 消息的进度，则必须设置一段时间，以确定此授权在XX秒钟内有效或被拒绝时，必须在ARM_AUTH_DENIED_REASON中设置它的一个原因。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15238,7 +15236,7 @@
    <tbody>
     <tr>
      <td>1: System ID</td>
-     <td>Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle</td>
+     <td>机体系统id，这样地面站可以解锁任何机体</td>
      <td>
       <em>min:</em>0 <em>max:</em>255 <em>increment:</em>1</td>
     </tr>
@@ -15248,9 +15246,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>This command sets the submode to standard guided when vehicle is in guided mode. The vehicle holds position and altitude and the user can input the desired velocities along all three axes.</p>
+   当车辆处于导航模式时，此命令将子模式设置为标准引导航。 机体保持位置和高度，用户可以对三个轴输入所需的速度。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15265,9 +15261,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>This command sets submode circle when vehicle is in guided mode. Vehicle flies along a circle facing the center of the circle. The user can input the velocity along the circle and change the radius. If no input is given the vehicle will hold position.</p>
+   当载具处于导航模式时，此命令将子模式设置为环绕模式。 车辆沿着一个圆飞行，正对着圆心。 用户可以沿圆圈输入速度并改变半径。 如果没有输入，载具将保持位置。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15278,7 +15272,7 @@
    <tbody>
     <tr>
      <td>1: Radius</td>
-     <td>Radius of desired circle in CIRCLE_MODE</td>
+     <td>CIRCLE_MODE中期望圆的半径</td>
     </tr>
     <tr>
      <td>2</td>
@@ -15294,11 +15288,11 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>Unscaled target latitude of center of circle in CIRCLE_MODE</td>
+     <td>在CIRCLE_MODE 中未缩放的圆心的目标纬度</td>
     </tr>
     <tr>
      <td>6</td>
-     <td>Unscaled target longitude of center of circle in CIRCLE_MODE</td>
+     <td>在CIRCLE_MODE 中未缩放的圆心的目标经度</td>
     </tr>
    </tbody>
   </table>
@@ -15382,9 +15376,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Fence return point. There can only be one fence return point.</p>
+   围栏的返航点 只能有一个围栏返回点。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15783,9 +15775,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Deploy payload on a Lat / Lon / Alt position. This includes the navigation to reach the required release position and velocity.</p>
+   在Lat / Lon / Alt 位置部署有效载荷。 This includes the navigation to reach the required release position and velocity.</p>
   <table class="sortable">
    <thead>
     <tr>
