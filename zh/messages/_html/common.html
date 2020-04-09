@@ -13713,9 +13713,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>start running a mission</p>
+   开始运行一个任务</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13727,13 +13725,13 @@
    <tbody>
     <tr>
      <td>1: First Item</td>
-     <td>first_item: the first mission item to run</td>
+     <td>first_item: 第一个要运行的任务项目</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2: Last Item</td>
-     <td>last_item:  the last mission item to run (after this item is run, the mission ends)</td>
+     <td>最后一个项目：最后一个要运行的任务项目 (运行后, 任务结束)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -13743,9 +13741,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Arms / Disarms a component</p>
+   锁定/解锁一个组件</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13757,13 +13753,13 @@
    <tbody>
     <tr>
      <td>1: Arm</td>
-     <td>0: disarm, 1: arm</td>
+     <td>0: 解锁, 1: 锁定</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2: Force</td>
-     <td>0: arm-disarm unless prevented by safety checks (i.e. when landed), 21196: force arming/disarming (e.g. allow arming to override preflight checks and disarming in flight)</td>
+     <td>0：除非经过安全检查，否则不能解锁 21196:强制解锁(例如:允许飞行前检查解锁和飞行中锁定)</td>
      <td>
       <em>min:</em>0 <em>max:</em>21196 <em>increment:</em>21196</td>
     </tr>
@@ -13773,11 +13769,9 @@
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Turns illuminators ON/OFF. An illuminator is a light source that is used for lighting up dark areas external to the sytstem: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light).</p>
+   照明系统开/关闭. 照明系统是用于照亮系统外黑暗区域的光源，例如： 一个火炬或探照灯(而不是系统本身的光源，例如指示灯)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13789,7 +13783,7 @@
    <tbody>
     <tr>
      <td>1: Enable</td>
-     <td>0: Illuminators OFF, 1: Illuminators ON</td>
+     <td>0: 探照灯关闭，1: 探照灯开启</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -13799,9 +13793,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request the home position from the vehicle.</p>
+   请求重启或关闭系统组件。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13844,11 +13836,9 @@
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Inject artificial failure for testing purposes. Note that autopilots should implement an additional protection before accepting this command such as a specific param setting.</p>
+   为测试目的输入人为失败。 请注意，在接受此命令之前，自动运行应该执行额外的保护，如特定参数设置。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13860,17 +13850,17 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>The unit which is affected by the failure.</td>
+     <td>受故障影响的单元。</td>
      <td>FAILURE_UNIT</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>The type how the failure manifests itself.</td>
+     <td>失败的表现方式。</td>
      <td>FAILURE_TYPE</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Instance affected by failure (0 to signal all).</td>
+     <td>受故障影响的实例 (0表示所有)。</td>
      <td>
      </td>
     </tr>
@@ -13880,9 +13870,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Starts receiver pairing.</p>
+   开始接收器配对。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13900,7 +13888,7 @@
     </tr>
     <tr>
      <td>2: RC Type</td>
-     <td>RC type.</td>
+     <td>遥控器类型。</td>
      <td>RC_TYPE</td>
     </tr>
    </tbody>
