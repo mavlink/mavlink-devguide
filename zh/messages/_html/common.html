@@ -13897,9 +13897,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request the interval between messages for a particular MAVLink message ID. The receiver should ACK the command and then emit its response in a MESSAGE_INTERVAL message.</p>
+   为特定的MAVLink消息ID请求消息之间的间隔。 接收器应该是ACK，然后在MESSAGE_INTERVAL消息中发出其回复。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13911,7 +13909,7 @@
    <tbody>
     <tr>
      <td>1: Message ID</td>
-     <td>The MAVLink message ID</td>
+     <td>MAVlink 消息 ID</td>
      <td>
       <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
     </tr>
@@ -13921,9 +13919,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Set the interval between messages for a particular MAVLink message ID. This interface replaces REQUEST_DATA_STREAM.</p>
+   为特定的MAVLink消息ID设置消息之间的间隔。 此接口取代REQUESTA_STREAM。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13936,7 +13932,7 @@
    <tbody>
     <tr>
      <td>1: Message ID</td>
-     <td>The MAVLink message ID</td>
+     <td>MAVlink 消息 ID</td>
      <td>
       <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
      <td>
@@ -13944,7 +13940,7 @@
     </tr>
     <tr>
      <td>2: Interval</td>
-     <td>The interval between two messages. Set to -1 to disable and 0 to request default rate.</td>
+     <td>两个消息之间的间隔。 设置为 -1 禁用，0设置为请求默认率。</td>
      <td>
       <em>min:</em>
       -1 
@@ -13953,7 +13949,7 @@
     </tr>
     <tr>
      <td>7: Response Target</td>
-     <td>Target address of message stream (if message has target address fields). 0: Flight-stack default (recommended), 1: address of requestor, 2: broadcast.</td>
+     <td>消息流的目标地址(如果消息有目标地址字段)。 0: Flight-stack默认值(推荐)，1: 请求者的地址，2: 广播。</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
      <td>
@@ -13965,9 +13961,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request the target system(s) emit a single instance of a specified message (i.e. a "one-shot" version of MAV_CMD_SET_MESSAGE_INTERVAL).</p>
+   请求目标系统发出一个指定消息的单个实例(即MAV_CMD_SET_MESSAGE_INTERVAL)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13979,13 +13973,13 @@
    <tbody>
     <tr>
      <td>1: Message ID</td>
-     <td>The MAVLink message ID of the requested message.</td>
+     <td>请求消息的 MAVLink 消息 ID。</td>
      <td>
       <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2: Index ID</td>
-     <td>Index id (if appropriate). The use of this parameter (if any), must be defined in the requested message.</td>
+     <td>索引id（如果适当）。 必须在请求的消息中定义此参数(如果有的话)。</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -14015,7 +14009,7 @@
     </tr>
     <tr>
      <td>7: Response Target</td>
-     <td>Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requestor, 2: broadcast.</td>
+     <td>请求消息的目标地址(如果消息有目标地址字段)。 0: Flight-stack默认值, 1: 请求者的地址, 2: 广播</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
     </tr>
@@ -14025,9 +14019,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request MAVLink protocol version compatibility</p>
+   请求的 MAVLink 协议版本兼容性</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14038,11 +14030,11 @@
    <tbody>
     <tr>
      <td>1: Protocol</td>
-     <td>1: Request supported protocol versions by all nodes on the network</td>
+     <td>1：网络上所有节点请求支持的协议版本</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
     </tr>
    </tbody>
   </table>
@@ -14050,9 +14042,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request autopilot capabilities. The receiver should ACK the command and then emit its capabilities in an AUTOPILOT_VERSION message</p>
+   请求自驾仪功能。 接收方应该对命令进行ACK处理，然后在AUTOPILOT_VERSION消息中发出它的功能</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14063,11 +14053,11 @@
    <tbody>
     <tr>
      <td>1: Version</td>
-     <td>1: Request autopilot version</td>
+     <td>1：请求自驾仪版本</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
     </tr>
    </tbody>
   </table>
@@ -14075,9 +14065,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request camera information (CAMERA_INFORMATION).</p>
+   请求相机信息(CAMERA_INFORMATION)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14089,13 +14077,13 @@
    <tbody>
     <tr>
      <td>1: Capabilities</td>
-     <td>0: No action 1: Request camera capabilities</td>
+     <td>0: 无动作 1: 请求相机能力</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -14105,9 +14093,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request camera settings (CAMERA_SETTINGS).</p>
+   请求相机设置 (CAMERA_SETTINGS)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14119,13 +14105,13 @@
    <tbody>
     <tr>
      <td>1: Settings</td>
-     <td>0: No Action 1: Request camera settings</td>
+     <td>0: 无动作 1: 请求相机设置</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -14135,9 +14121,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request storage information (STORAGE_INFORMATION). Use the command's target_component to target a specific component's storage.</p>
+   请求存储信息(STORAGE_INFORMATION)。 使用命令的target_component 来对准特定组件的存储。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14149,19 +14133,19 @@
    <tbody>
     <tr>
      <td>1: Storage ID</td>
-     <td>Storage ID (0 for all, 1 for first, 2 for second, etc.)</td>
+     <td>存储 ID (全部0, 第一个, 2个, 第二个, 等)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2: Information</td>
-     <td>0: No Action 1: Request storage information</td>
+     <td>0: 无动作 1: 请求存储信息</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -14171,9 +14155,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Format a storage medium. Once format is complete, a STORAGE_INFORMATION message is sent. Use the command's target_component to target a specific component's storage.</p>
+   格式化存储介质。 一旦格式完成，将发送一份STORAGE_INFORMATION 消息。 使用命令的target_component 来对准特定组件的存储。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14185,13 +14167,13 @@
    <tbody>
     <tr>
      <td>1: Storage ID</td>
-     <td>Storage ID (1 for first, 2 for second, etc.)</td>
+     <td>存储 ID (第一个，第二个等)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2: Format</td>
-     <td>0: No action 1: Format storage</td>
+     <td>0: 无动作 1：格式存储</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -14207,9 +14189,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request camera capture status (CAMERA_CAPTURE_STATUS)</p>
+   >请求摄像头捕获状态 (CAMERA_CAPTURE_STATUS)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14221,7 +14201,7 @@
    <tbody>
     <tr>
      <td>1: Capture Status</td>
-     <td>0: No Action 1: Request camera capture status</td>
+     <td>0: 无动作 1: 请求相机捕获状态</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -14237,11 +14217,9 @@
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   <strong>生产过程中的工作:</strong> 不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request flight information (FLIGHT_INFORMATION)</p>
+   请求飞行信息(FLIGHT_INFORMATION)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14253,7 +14231,7 @@
    <tbody>
     <tr>
      <td>1: Flight Information</td>
-     <td>1: Request flight information</td>
+     <td>1：请求飞行信息</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -14269,9 +14247,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Reset all camera settings to Factory Default</p>
+   将所有相机设置重置为出厂默认设置</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14283,7 +14259,7 @@
    <tbody>
     <tr>
      <td>1: Reset</td>
-     <td>0: No Action 1: Reset all settings</td>
+     <td>0: 无动作 1: 重置所有设置</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -14299,9 +14275,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Set camera running mode. Use NaN for reserved values. GCS will send a MAV_CMD_REQUEST_VIDEO_STREAM_STATUS command after a mode change if the camera supports video streaming.</p>
+   设置相机工作模式。 使用NAN作为保留值。 如果相机支持视频流，GCS将在模式更改后发送MAV_CMD_REQUEST_VIDEO_STREAM_STATUS命令。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14319,7 +14293,7 @@
     </tr>
     <tr>
      <td>2: Camera Mode</td>
-     <td>Camera mode</td>
+     <td>相机模式</td>
      <td>CAMERA_MODE</td>
     </tr>
     <tr>
@@ -14334,11 +14308,9 @@
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Set camera zoom. Camera must respond with a CAMERA_SETTINGS message (on success). Use NaN for reserved values.</p>
+   设置相机焦距。 Camera must respond with a CAMERA_SETTINGS message (on success). Use NaN for reserved values.</p>
   <table class="sortable">
    <thead>
     <tr>
