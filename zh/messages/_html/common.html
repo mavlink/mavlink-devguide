@@ -27694,7 +27694,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   可以通过发送 MAV_CMD_GET_HOME_POSITION 指令来请求此消息。 系统将返回并着陆的位置。 在起飞过程中，如果操作员没有在起飞前或起飞后显式设置位置，系统会自动设置位置 The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
+   可以通过发送 MAV_CMD_GET_HOME_POSITION 指令来请求此消息。 系统将返回并着陆的位置。 在起飞过程中，如果操作员没有在起飞前或起飞后显式设置位置，系统会自动设置位置 全局位置和局部位置在各自的坐标系中对位置进行编码，而q参数对曲面的方向进行编码。 在正常情况下，它描述了飞机可以用来调整进近的航向和地形坡度。 该方法的三维矢量描述的点，该系统应在正常飞行模式，然后执行一个沿着向量进行的顺序着落</p>
   <table class="sortable">
    <thead>
     <tr>
