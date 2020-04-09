@@ -26837,7 +26837,7 @@ y轴磁力计数据
      <td>
       <a href="#GPS_INPUT_IGNORE_FLAGS">GPS_INPUT_IGNORE_FLAGS</a>
      </td>
-     <td>位图显示哪些GPS输入标志字段需要忽略。  All other fields must be provided.</td>
+     <td>位图显示哪些GPS输入标志字段需要忽略。  必须提供所有其他字段。</td>
     </tr>
     <tr>
      <td>time_week_ms</td>
@@ -26847,7 +26847,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS time (from start of GPS week)</td>
+     <td>GPS 时间(从GPS开始)</td>
     </tr>
     <tr>
      <td>time_week</td>
@@ -26858,7 +26858,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS week number</td>
+     <td>GPS 周数</td>
     </tr>
     <tr>
      <td>fix_type</td>
@@ -26869,7 +26869,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>0-1: no fix, 2: 2D fix, 3: 3D fix. 4: 3D with DGPS. 5: 3D with RTK</td>
+     <td>0-1: 无修正, 2: 2D 修正, 3: 3D 修正. 4：3D 带有GPS。 5：3D 与 RTK</td>
     </tr>
     <tr>
      <td>lat</td>
@@ -26879,7 +26879,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Latitude (WGS84)</td>
+     <td>纬度(WGS84)</td>
     </tr>
     <tr>
      <td>lon</td>
@@ -26889,7 +26889,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Longitude (WGS84)</td>
+     <td>经度 (WGS84)</td>
     </tr>
     <tr>
      <td>alt</td>
@@ -26899,7 +26899,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Altitude (MSL). Positive for up.</td>
+     <td>高度(海拔)。 正：上</td>
     </tr>
     <tr>
      <td>hdop</td>
@@ -26909,7 +26909,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS HDOP horizontal dilution of position</td>
+     <td>GPS HDOP水平精度因子。</td>
     </tr>
     <tr>
      <td>vdop</td>
@@ -26919,7 +26919,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS VDOP vertical dilution of position</td>
+     <td>GPS VDOP位置垂直精度因子</td>
     </tr>
     <tr>
      <td>vn</td>
@@ -26929,7 +26929,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS velocity in north direction in earth-fixed NED frame</td>
+     <td>GPS在固定地球坐标系下的北向速度</td>
     </tr>
     <tr>
      <td>ve</td>
@@ -26939,7 +26939,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS velocity in east direction in earth-fixed NED frame</td>
+     <td>GPS在固定地球坐标系下的东向速度</td>
     </tr>
     <tr>
      <td>vd</td>
@@ -26949,7 +26949,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS velocity in down direction in earth-fixed NED frame</td>
+     <td>GPS在固定地球坐标系下的下向速度</td>
     </tr>
     <tr>
      <td>speed_accuracy</td>
@@ -26969,7 +26969,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS horizontal accuracy</td>
+     <td>GPS 水平精度</td>
     </tr>
     <tr>
      <td>vert_accuracy</td>
@@ -26979,7 +26979,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS vertical accuracy</td>
+     <td>GPS 垂直精度</td>
     </tr>
     <tr>
      <td>satellites_visible</td>
@@ -26990,7 +26990,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Number of satellites visible.</td>
+     <td>可见卫星数量。</td>
     </tr>
     <tr>
      <td style="color:blue;">yaw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -27003,7 +27003,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north</td>
+     <td>载具相对于地球北方的偏航，0表示不可用，北方使用36000</td>
     </tr>
    </tbody>
   </table>
@@ -27013,9 +27013,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>RTCM message for injecting into the onboard GPS (used for DGPS)</p>
+   RTCM 消息发送给板载GPS (用于DGPS)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27031,20 +27029,20 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>LSB: 1 means message is fragmented, next 2 bits are the fragment ID, the remaining 5 bits are used for the sequence ID. Messages are only to be flushed to the GPS when the entire message has been reconstructed on the autopilot. The fragment ID specifies which order the fragments should be assembled into a buffer, while the sequence ID is used to detect a mismatch between different buffers. The buffer is considered fully reconstructed when either all 4 fragments are present, or all the fragments before the first fragment with a non full payload is received. This management is used to ensure that normal GPS operation doesn't corrupt RTCM data, and to recover from a unreliable transport delivery order.</td>
+     <td>LSB: 1表示消息是片段的，后面2位是片段ID，其余5位是序列ID。 只有当整个信息在自动驾驶仪上被重建后，信息才会被刷新到GPS上。 片段ID指定将片段组装到缓冲区中的顺序，而序列ID用于检测不同缓冲区之间的不匹配。 当所有4个片段都存在时，或者在接收到第一个没有完全有效载荷的片段之前的所有片段时，缓冲区被认为是完全重构的。 此管理用于确保正常的GPS操作不会损坏RTCM数据，并从不可靠的传输方式指令中恢复</td>
     </tr>
     <tr>
      <td>len</td>
      <td>uint8_t</td>
      <td>bytes</td>
-     <td>data length</td>
+     <td>数据长度</td>
     </tr>
     <tr>
      <td>data</td>
      <td>uint8_t[180]</td>
      <td>
      </td>
-     <td>RTCM message (may be fragmented)</td>
+     <td>RTCM消息(可能是片段化的)</td>
     </tr>
    </tbody>
   </table>
@@ -27696,9 +27694,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>This message can be requested by sending the MAV_CMD_GET_HOME_POSITION command. The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
+   可以通过发送 MAV_CMD_GET_HOME_POSITION 指令来请求此消息。 系统将返回并着陆的位置。 在起飞过程中，如果操作员没有在起飞前或起飞后显式设置位置，系统会自动设置位置 The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
   <table class="sortable">
    <thead>
     <tr>
