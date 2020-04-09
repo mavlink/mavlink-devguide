@@ -21241,7 +21241,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   设定载具期望的姿态 Used by an external controller to command the vehicle (manual controller or other system).</p>
+   设定载具期望的姿态 通过外部控制系统赖控制载具（手动模式或其他系统）</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21256,7 +21256,7 @@ y轴磁力计数据
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>target_system</td>
@@ -21277,39 +21277,39 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Mappings: If any of these bits are set, the corresponding input should be ignored: bit 1: body roll rate, bit 2: body pitch rate, bit 3: body yaw rate. bit 4-bit 6: reserved, bit 7: throttle, bit 8: attitude</td>
+     <td>映射：如果设置了这些位数，则应忽略相应的输入 bit1：滚动速率。 bit2： 俯仰速率，bit3： 偏航速率。 bit 4-bit 6: reserved, bit 7: throttle, bit 8: attitude</td>
     </tr>
     <tr>
      <td>q</td>
      <td>float[4]</td>
      <td>
      </td>
-     <td>Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
+     <td>姿态四元数(w、x、y、z、零旋转为1，0，0，0)</td>
     </tr>
     <tr>
      <td>body_roll_rate</td>
      <td>float</td>
      <td>rad/s</td>
-     <td>Body roll rate</td>
+     <td>机体滚转速率</td>
     </tr>
     <tr>
      <td>body_pitch_rate</td>
      <td>float</td>
      <td>rad/s</td>
-     <td>Body pitch rate</td>
+     <td>机体俯仰速率</td>
     </tr>
     <tr>
      <td>body_yaw_rate</td>
      <td>float</td>
      <td>rad/s</td>
-     <td>Body yaw rate</td>
+     <td>机体偏航速率</td>
     </tr>
     <tr>
      <td>thrust</td>
      <td>float</td>
      <td>
      </td>
-     <td>Collective thrust, normalized to 0 .. 1 (-1 .. 1 for vehicles capable of reverse trust)</td>
+     <td>总推力，标准值0-1 1 (-1 .. 1 用于能够反向的载具）</td>
     </tr>
    </tbody>
   </table>
@@ -21319,9 +21319,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Reports the current commanded attitude of the vehicle as specified by the autopilot. This should match the commands sent in a SET_ATTITUDE_TARGET message if the vehicle is being controlled this way.</p>
+   报告由自动驾驶仪指定的车辆当前的指令姿态。 如果载具正在以这种方式控制, 这应该与SET_ATTITUDE_TARGET 消息中发送的指令相匹配。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21336,21 +21334,21 @@ y轴磁力计数据
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>type_mask</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Mappings: If any of these bits are set, the corresponding input should be ignored: bit 1: body roll rate, bit 2: body pitch rate, bit 3: body yaw rate. bit 4-bit 7: reserved, bit 8: attitude</td>
+     <td>映射：如果设置了这些位数，则应忽略相应的输入 bit1：滚动速率。 bit2： 俯仰速率，bit3： 偏航速率。 bit4- bit7: 保留, bit 8: 姿态</td>
     </tr>
     <tr>
      <td>q</td>
      <td>float[4]</td>
      <td>
      </td>
-     <td>Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
+     <td>姿态四元数(w、x、y、z、零旋转为1，0，0，0)</td>
     </tr>
     <tr>
      <td>body_roll_rate</td>
@@ -24338,9 +24336,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Second GPS data.</p>
+   第二 GPS数据。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24360,7 +24356,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>fix_type</td>
@@ -24370,7 +24366,7 @@ y轴磁力计数据
      <td>
       <a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
      </td>
-     <td>GPS fix type.</td>
+     <td>全球定位系统的定位状态</td>
     </tr>
     <tr>
      <td>lat</td>
@@ -24380,7 +24376,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Latitude (WGS84)</td>
+     <td>纬度(WGS84)</td>
     </tr>
     <tr>
      <td>lon</td>
@@ -24400,7 +24396,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Altitude (MSL). Positive for up.</td>
+     <td>高度(海拔)。 正：上</td>
     </tr>
     <tr>
      <td>eph</td>
@@ -24410,7 +24406,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS HDOP horizontal dilution of position. If unknown, set to: UINT16_MAX</td>
+     <td>GPS HDOP水平精度因子。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>epv</td>
@@ -24420,7 +24416,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS VDOP vertical dilution of position. If unknown, set to: UINT16_MAX</td>
+     <td>GPS VDOP位置垂直精度因子 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>vel</td>
@@ -24430,7 +24426,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS ground speed. If unknown, set to: UINT16_MAX</td>
+     <td>GPS 地面速度。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>cog</td>
@@ -24440,7 +24436,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Course over ground (NOT heading, but direction of movement): 0.0..359.99 degrees. If unknown, set to: UINT16_MAX</td>
+     <td>地面航向(不是机体的头向，是移动的方向)   100度，0.0..359.99度。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>satellites_visible</td>
@@ -24451,7 +24447,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Number of satellites visible. If unknown, set to 255</td>
+     <td>可见定位卫星数量。 如果未知, 设置为 255</td>
     </tr>
     <tr>
      <td>dgps_numch</td>
@@ -24462,7 +24458,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Number of DGPS satellites</td>
+     <td>伪距差分卫星数量</td>
     </tr>
     <tr>
      <td>dgps_age</td>
@@ -24472,7 +24468,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Age of DGPS info</td>
+     <td>伪距差分时间信息</td>
     </tr>
     <tr>
      <td style="color:blue;">yaw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -24485,7 +24481,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north.</td>
+     <td>航向为地球坐标系，北 如果此 GPS 不提供航向，请使用 0。 如果此GPS配置为提供偏航但是当前无法提供偏航，则为65535。 北边使用36000。</td>
     </tr>
    </tbody>
   </table>
@@ -24495,9 +24491,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Power supply status</p>
+   供电状态</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24517,7 +24511,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>5V rail voltage.</td>
+     <td>5V供电</td>
     </tr>
     <tr>
      <td>Vservo</td>
@@ -24527,7 +24521,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Servo rail voltage.</td>
+     <td>伺服供电</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -24537,7 +24531,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_POWER_STATUS">MAV_POWER_STATUS</a>
      </td>
-     <td>Bitmap of power supply status flags.</td>
+     <td>电源状态标志映射</td>
     </tr>
    </tbody>
   </table>
@@ -24547,9 +24541,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Control a serial port. This can be used for raw access to an onboard serial peripheral such as a GPS or telemetry radio. It is designed to make it possible to update the devices firmware via MAVLink messages or change the devices settings. A message with zero bytes can be used to change just the baudrate.</p>
+   控制串行端口。 这可用于原始访问机载外围，例如全球定位系统或数传电调。 它旨在通过MAVLink 消息或更改设备设置来更新设备固件。 零字节的消息可以仅用于更改波特率。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24569,7 +24561,7 @@ y轴磁力计数据
      <td>
       <a href="#SERIAL_CONTROL_DEV">SERIAL_CONTROL_DEV</a>
      </td>
-     <td>Serial control device type.</td>
+     <td>串行控制设备类型。</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -24579,7 +24571,7 @@ y轴磁力计数据
      <td>
       <a href="#SERIAL_CONTROL_FLAG">SERIAL_CONTROL_FLAG</a>
      </td>
-     <td>Bitmap of serial control flags.</td>
+     <td>串行控制标志的位图</td>
     </tr>
     <tr>
      <td>timeout</td>
@@ -24589,7 +24581,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timeout for reply data</td>
+     <td>回复数据超时</td>
     </tr>
     <tr>
      <td>baudrate</td>
@@ -24599,7 +24591,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Baudrate of transfer. Zero means no change.</td>
+     <td>传输波特率 零意味着没有变化。</td>
     </tr>
     <tr>
      <td>count</td>
@@ -24609,7 +24601,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>how many bytes in this transfer</td>
+     <td>此传输中有多少字节</td>
     </tr>
     <tr>
      <td>data</td>
@@ -24620,7 +24612,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>serial data</td>
+     <td>串行数据</td>
     </tr>
    </tbody>
   </table>
@@ -24630,9 +24622,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>RTK GPS data. Gives information on the relative baseline calculation the GPS is reporting</p>
+   差分GPS数据 提供GPS报告的相对基线信息</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24652,7 +24642,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Time since boot of last baseline message received.</td>
+     <td>从开机起最后收到的基线信息时间</td>
     </tr>
     <tr>
      <td>rtk_receiver_id</td>
@@ -24663,7 +24653,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Identification of connected RTK receiver.</td>
+     <td>识别已连接的 RTK 接收器。</td>
     </tr>
     <tr>
      <td>wn</td>
@@ -24674,7 +24664,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS Week Number of last baseline</td>
+     <td>最后差分的GPS周数</td>
     </tr>
     <tr>
      <td>tow</td>
@@ -24684,7 +24674,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS Time of Week of last baseline</td>
+     <td>最后差分的GPS周 时间</td>
     </tr>
     <tr>
      <td>rtk_health</td>
@@ -24695,7 +24685,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS-specific health report for RTK data.</td>
+     <td>用于RTK数据的GPS-特定健康报告。</td>
     </tr>
     <tr>
      <td>rtk_rate</td>
@@ -24705,7 +24695,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Rate of baseline messages being received by GPS</td>
+     <td>GPS收到的基线信息速率</td>
     </tr>
     <tr>
      <td>nsats</td>
@@ -24716,7 +24706,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current number of sats used for RTK calculation.</td>
+     <td>当前用于RTK计算的卫星数量。</td>
     </tr>
     <tr>
      <td>baseline_coords_type</td>
@@ -24726,7 +24716,7 @@ y轴磁力计数据
      <td>
       <a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
      </td>
-     <td>Coordinate system of baseline</td>
+     <td>基线坐标系</td>
     </tr>
     <tr>
      <td>baseline_a_mm</td>
@@ -24736,7 +24726,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current baseline in ECEF x or NED north component.</td>
+     <td>在ECEF x 或 NED 北坐标系下的当前基线。</td>
     </tr>
     <tr>
      <td>baseline_b_mm</td>
@@ -24746,7 +24736,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current baseline in ECEF y or NED east component.</td>
+     <td>在ECEF y 或 NED 东坐标系下的当前基线。</td>
     </tr>
     <tr>
      <td>baseline_c_mm</td>
@@ -24756,7 +24746,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current baseline in ECEF z or NED down component.</td>
+     <td>在ECEF z 或 NED 下坐标系下的当前基线。</td>
     </tr>
     <tr>
      <td>accuracy</td>
@@ -24767,7 +24757,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current estimate of baseline accuracy.</td>
+     <td>目前对基线准确性的估计。</td>
     </tr>
     <tr>
      <td>iar_num_hypotheses</td>
@@ -24778,7 +24768,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current number of integer ambiguity hypotheses.</td>
+     <td>当前整周模糊假设的数目</td>
     </tr>
    </tbody>
   </table>
@@ -24790,7 +24780,7 @@ y轴磁力计数据
   <p>
    <a href="#messages">
     [Message]
-   </a>RTK GPS data. Gives information on the relative baseline calculation the GPS is reporting</p>
+   </a>RTK GPS data. 提供GPS报告的相对基线信息</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24810,7 +24800,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Time since boot of last baseline message received.</td>
+     <td>从开机起最后收到的基线信息时间</td>
     </tr>
     <tr>
      <td>rtk_receiver_id</td>
@@ -24821,7 +24811,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Identification of connected RTK receiver.</td>
+     <td>识别已连接的 RTK 接收器。</td>
     </tr>
     <tr>
      <td>wn</td>
@@ -24832,7 +24822,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS Week Number of last baseline</td>
+     <td>最后差分的GPS周数</td>
     </tr>
     <tr>
      <td>tow</td>
@@ -24842,7 +24832,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS Time of Week of last baseline</td>
+     <td>最后差分的GPS周 时间</td>
     </tr>
     <tr>
      <td>rtk_health</td>
@@ -25163,9 +25153,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Distance sensor information for an onboard rangefinder.</p>
+   机载测距仪的距离传感器信息。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25185,7 +25173,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>min_distance</td>
@@ -25195,7 +25183,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Minimum distance the sensor can measure</td>
+     <td>传感器能测量的最小距离</td>
     </tr>
     <tr>
      <td>max_distance</td>
@@ -25205,7 +25193,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Maximum distance the sensor can measure</td>
+     <td>传感器能够测量的最大距离</td>
     </tr>
     <tr>
      <td>current_distance</td>
@@ -25215,7 +25203,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current distance reading</td>
+     <td>当前获取到的距离值</td>
     </tr>
     <tr>
      <td>type</td>
@@ -25225,7 +25213,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
      </td>
-     <td>Type of distance sensor.</td>
+     <td>距离传感器的类型。</td>
     </tr>
     <tr>
      <td>id</td>
@@ -25236,7 +25224,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Onboard ID of the sensor</td>
+     <td>板载传感器ID</td>
     </tr>
     <tr>
      <td>orientation</td>
@@ -25246,7 +25234,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
      </td>
-     <td>Direction the sensor faces. downward-facing: ROTATION_PITCH_270, upward-facing: ROTATION_PITCH_90, backward-facing: ROTATION_PITCH_180, forward-facing: ROTATION_NONE, left-facing: ROTATION_YAW_90, right-facing: ROTATION_YAW_270</td>
+     <td>传感器正面方向. 下方：RTATION_PITCH_270，上方：RTATION_PITCH_90，后方：RTATION_PITCH_180，前方：RTATION_NONE，左面：RTATION_YAW_90，右面：RTATION_YAW_270</td>
     </tr>
     <tr>
      <td>covariance</td>
@@ -25256,7 +25244,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Measurement variance. Max standard deviation is 6cm. 255 if unknown.</td>
+     <td>测量方差 最大标准偏差为6厘米。 如果未知则255。</td>
     </tr>
     <tr>
      <td style="color:blue;">horizontal_fov<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -25269,7 +25257,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Horizontal Field of View (angle) where the distance measurement is valid and the field of view is known. Otherwise this is set to 0.</td>
+     <td>水平视场(角度)，其中距离测量是有效的，视场是已知的。 否则，此设置为 0。</td>
     </tr>
     <tr>
      <td style="color:blue;">vertical_fov<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -25282,7 +25270,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Vertical Field of View (angle) where the distance measurement is valid and the field of view is known. Otherwise this is set to 0.</td>
+     <td>垂直视场(角度)，其中距离测量是有效的，视场是已知的。 否则，此设置为 0。</td>
     </tr>
     <tr>
      <td style="color:blue;">quaternion<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -25296,7 +25284,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Quaternion of the sensor orientation in vehicle body frame (w, x, y, z order, zero-rotation is 1, 0, 0, 0). Zero-rotation is along the vehicle body x-axis. This field is required if the orientation is set to MAV_SENSOR_ROTATION_CUSTOM. Set it to 0 if invalid."</td>
+     <td>四元数的传感器方向在机体坐标系(w, x, y, z阶，零旋转是1,0,0,0)。 零旋转沿着机体X轴。 如果方向设置为 MAV_SENSOR_ROTATION_CUSTOM，则必须填写此字段。 如果无效则将其设置为 0。"</td>
     </tr>
    </tbody>
   </table>
@@ -26081,9 +26069,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Battery information. Updates GCS with flight controller battery status. Use SMART_BATTERY_* messages instead for smart batteries.</p>
+   电池信息。 更新GCS的飞行控制器电池状态。 使用SMART_BATTERY_* 消息代替智能电池。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26104,7 +26090,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Battery ID</td>
+     <td>电池ID</td>
     </tr>
     <tr>
      <td>battery_function</td>
@@ -26114,7 +26100,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_BATTERY_FUNCTION">MAV_BATTERY_FUNCTION</a>
      </td>
-     <td>Function of the battery</td>
+     <td>电池的功能</td>
     </tr>
     <tr>
      <td>type</td>
@@ -26124,7 +26110,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_BATTERY_TYPE">MAV_BATTERY_TYPE</a>
      </td>
-     <td>Type (chemistry) of the battery</td>
+     <td>电池类型 (化学)</td>
     </tr>
     <tr>
      <td>temperature</td>
@@ -26134,7 +26120,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Temperature of the battery. INT16_MAX for unknown temperature.</td>
+     <td>电池温度。 未知温度的 INT16_MAX 。</td>
     </tr>
     <tr>
      <td>voltages</td>
@@ -26144,7 +26130,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value. If individual cell voltages are unknown or not measured for this battery, then the overall battery voltage should be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining voltage. This can be extended to multiple cells if the total voltage is greater than 2 * (UINT16_MAX - 1).</td>
+     <td>电池电压。 超出此电池的有效电池计数的电池应具有UINT16_MAX 值 如果个别电池电压未知或未测量到该电池组， 然后整个电池电压应填写入cell 0，所有其它电压都设置为UINT16_MAX。 如果电池电压大于(UINT16_MAX - 1)，则将cell 0设置为(UINT16_MAX - 1)， cell 1设置为剩余电压。 如果总电压大于2 * (UINT16_MAX - 1)，这可以扩展到多个电池</td>
     </tr>
     <tr>
      <td>current_battery</td>
@@ -26154,7 +26140,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Battery current, -1: autopilot does not measure the current</td>
+     <td>电池电流，-1:自动驾驶仪不测量电流</td>
     </tr>
     <tr>
      <td>current_consumed</td>
@@ -26164,7 +26150,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Consumed charge, -1: autopilot does not provide consumption estimate</td>
+     <td>已经消耗电量，-1:自动驾驶仪不提供消耗电量估计</td>
     </tr>
     <tr>
      <td>energy_consumed</td>
@@ -26174,7 +26160,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Consumed energy, -1: autopilot does not provide energy consumption estimate</td>
+     <td>消耗的能源，-1:自动驾驶仪不提供能源消耗估计</td>
     </tr>
     <tr>
      <td>battery_remaining</td>
@@ -26186,7 +26172,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</td>
+     <td>剩下的电池能源 值:[0-100]，-1:自动驾驶仪不估计剩余的电量</td>
     </tr>
     <tr>
      <td style="color:blue;">time_remaining<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -26199,7 +26185,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Remaining battery time, 0: autopilot does not provide remaining battery time estimate</td>
+     <td>剩余电池时间，0:自动驾驶仪不提供剩余电池时间估计</td>
     </tr>
     <tr>
      <td style="color:blue;">charge_state<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -26212,7 +26198,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_BATTERY_CHARGE_STATE">MAV_BATTERY_CHARGE_STATE</a>
      </td>
-     <td>State for extent of discharge, provided by autopilot for warning or external reactions</td>
+     <td>状态为放电范围，由自动驾驶仪提供的警告或外部反应</td>
     </tr>
    </tbody>
   </table>
@@ -26222,9 +26208,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Version and capability of autopilot software. This should be emitted in response to a MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES command.</p>
+   自驾仪的版本和功能。 这应在响应MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES 指令时发出。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26241,7 +26225,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY">MAV_PROTOCOL_CAPABILITY</a>
      </td>
-     <td>Bitmap of capabilities</td>
+     <td>能力位图</td>
     </tr>
     <tr>
      <td>flight_sw_version</td>
@@ -26250,7 +26234,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Firmware version number</td>
+     <td>固件版本号</td>
     </tr>
     <tr>
      <td>middleware_sw_version</td>
@@ -26259,7 +26243,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Middleware version number</td>
+     <td>中间版本号</td>
     </tr>
     <tr>
      <td>os_sw_version</td>
@@ -26268,7 +26252,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Operating system version number</td>
+     <td>操作系统版本号</td>
     </tr>
     <tr>
      <td>board_version</td>
@@ -26277,7 +26261,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>HW / board version (last 8 bytes should be silicon ID, if any)</td>
+     <td>HW /板版本(最后8字节应该是硅ID，如果有的话)</td>
     </tr>
     <tr>
      <td>flight_custom_version</td>
@@ -26286,7 +26270,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Custom version field, commonly the first 8 bytes of the git hash. This is not an unique identifier, but should allow to identify the commit using the main version number even for very large code bases.</td>
+     <td>自定义版本字段，通常是git 哈希的前8字节。 这不是唯一的标识符，但是应该允许使用主版本号来标识提交，即使对于非常大的代码库也是如此。</td>
     </tr>
     <tr>
      <td>middleware_custom_version</td>
@@ -26295,7 +26279,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Custom version field, commonly the first 8 bytes of the git hash. This is not an unique identifier, but should allow to identify the commit using the main version number even for very large code bases.</td>
+     <td>自定义版本字段，通常是git 哈希的前8字节。 这不是唯一的标识符，但是应该允许使用主版本号来标识提交，即使对于非常大的代码库也是如此。</td>
     </tr>
     <tr>
      <td>os_custom_version</td>
@@ -26304,7 +26288,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Custom version field, commonly the first 8 bytes of the git hash. This is not an unique identifier, but should allow to identify the commit using the main version number even for very large code bases.</td>
+     <td>自定义版本字段，通常是git 哈希的前8字节。 这不是唯一的标识符，但是应该允许使用主版本号来标识提交，即使对于非常大的代码库也是如此。</td>
     </tr>
     <tr>
      <td>vendor_id</td>
@@ -26313,7 +26297,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>ID of the board vendor</td>
+     <td>主控供应商ID</td>
     </tr>
     <tr>
      <td>product_id</td>
@@ -26322,7 +26306,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>ID of the product</td>
+     <td>产品ID</td>
     </tr>
     <tr>
      <td>uid</td>
@@ -26331,7 +26315,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>UID if provided by hardware (see uid2)</td>
+     <td>由硬件提供的UID(见uid2)</td>
     </tr>
     <tr>
      <td style="color:blue;">uid2<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -26343,7 +26327,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>UID if provided by hardware (supersedes the uid field. If this is non-zero, use this field, otherwise use uid)</td>
+     <td>如果是硬件提供的 UID (取代了uid 字段)。 如果不是零，请使用此字段，否则使用uid)</td>
     </tr>
    </tbody>
   </table>
@@ -26353,9 +26337,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The location of a landing target. See: https://mavlink.io/en/services/landing_target.html</p>
+   着陆目标的位置。 见：https://mavlink.io/en/services/landing_target.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26375,7 +26357,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>target_num</td>
@@ -26386,7 +26368,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>The ID of the target if multiple targets are present</td>
+     <td>存在多个目标时目标的ID</td>
     </tr>
     <tr>
      <td>frame</td>
@@ -26396,7 +26378,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
-     <td>Coordinate frame used for following fields.</td>
+     <td>用于下列字段的坐标系</td>
     </tr>
     <tr>
      <td>angle_x</td>
@@ -26406,7 +26388,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X-axis angular offset of the target from the center of the image</td>
+     <td>图像中心目标的X轴角偏移量</td>
     </tr>
     <tr>
      <td>angle_y</td>
@@ -26416,7 +26398,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y-axis angular offset of the target from the center of the image</td>
+     <td>图像中心目标的Y轴角偏移量</td>
     </tr>
     <tr>
      <td>distance</td>
@@ -26426,7 +26408,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Distance to the target from the vehicle</td>
+     <td>从载具到目标的距离</td>
     </tr>
     <tr>
      <td>size_x</td>
@@ -26436,7 +26418,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Size of target along x-axis</td>
+     <td>沿x轴的目标大小</td>
     </tr>
     <tr>
      <td>size_y</td>
@@ -26446,7 +26428,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Size of target along y-axis</td>
+     <td>沿y轴的目标大小</td>
     </tr>
     <tr>
      <td style="color:blue;">x<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -26459,7 +26441,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X Position of the landing target in MAV_FRAME</td>
+     <td>MAV_FRAME 中着陆目标的 X 位置</td>
     </tr>
     <tr>
      <td style="color:blue;">y<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -26472,7 +26454,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y Position of the landing target in MAV_FRAME</td>
+     <td>MAV_FRAME 中着陆目标的 Y 位置</td>
     </tr>
     <tr>
      <td style="color:blue;">z<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -26485,7 +26467,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Z Position of the landing target in MAV_FRAME</td>
+     <td>MAV_FRAME 中着陆目标的Z 位置</td>
     </tr>
     <tr>
      <td style="color:blue;">q<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -26499,7 +26481,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Quaternion of landing target orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
+     <td>着陆目标方向的四位数(w、x、y、z顺序、零旋转为1、0、0，0)</td>
     </tr>
     <tr>
      <td style="color:blue;">type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -26512,7 +26494,7 @@ y轴磁力计数据
      <td>
       <a href="#LANDING_TARGET_TYPE">LANDING_TARGET_TYPE</a>
      </td>
-     <td>Type of landing target</td>
+     <td>着陆目标类型</td>
     </tr>
     <tr>
      <td style="color:blue;">position_valid<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -26526,7 +26508,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Boolean indicating whether the position fields (x, y, z, q, type) contain valid target position information (valid: 1, invalid: 0). Default is 0 (invalid).</td>
+     <td>布尔表示位置字段(x, y, z, q, ty) 是否包含有效的目标位置信息(有效: 1, 无效: 0)。 默认值为0(无效)。</td>
     </tr>
    </tbody>
   </table>
@@ -26536,9 +26518,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Status of geo-fencing. Sent in extended status stream when fencing enabled.</p>
+   地理围栏状态。 当围栏启用时发送扩展状态流。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26816,9 +26796,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>GPS sensor input message.  This is a raw sensor value sent by the GPS. This is NOT the global position estimate of the system.</p>
+   GPS 传感器输入消息。  这是GPS发送的原始传感器值。 这不是该系统的全局位置估计值。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26838,7 +26816,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>gps_id</td>
@@ -26849,7 +26827,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>ID of the GPS for multiple GPS inputs</td>
+     <td>多GPS输入的 GPS ID</td>
     </tr>
     <tr>
      <td>ignore_flags</td>
@@ -26859,7 +26837,7 @@ y轴磁力计数据
      <td>
       <a href="#GPS_INPUT_IGNORE_FLAGS">GPS_INPUT_IGNORE_FLAGS</a>
      </td>
-     <td>Bitmap indicating which GPS input flags fields to ignore.  All other fields must be provided.</td>
+     <td>位图显示哪些GPS输入标志字段需要忽略。  All other fields must be provided.</td>
     </tr>
     <tr>
      <td>time_week_ms</td>
