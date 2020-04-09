@@ -4989,9 +4989,7 @@
    <a href="#MAV_VTOL_STATE">MAV_VTOL_STATE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Enumeration of VTOL states</p>
+   VTOL状态的枚举值</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -5006,35 +5004,35 @@
      <td>
       <a href="#MAV_VTOL_STATE_UNDEFINED">MAV_VTOL_STATE_UNDEFINED</a>
      </td>
-     <td>MAV is not configured as VTOL</td>
+     <td>MAV 未配置为 VTOL</td>
     </tr>
     <tr id="MAV_VTOL_STATE_TRANSITION_TO_FW">
      <td>1</td>
      <td>
       <a href="#MAV_VTOL_STATE_TRANSITION_TO_FW">MAV_VTOL_STATE_TRANSITION_TO_FW</a>
      </td>
-     <td>VTOL is in transition from multicopter to fixed-wing</td>
+     <td>VToL 正在从多旋翼过渡到固定翼飞机中</td>
     </tr>
     <tr id="MAV_VTOL_STATE_TRANSITION_TO_MC">
      <td>2</td>
      <td>
       <a href="#MAV_VTOL_STATE_TRANSITION_TO_MC">MAV_VTOL_STATE_TRANSITION_TO_MC</a>
      </td>
-     <td>VTOL is in transition from fixed-wing to multicopter</td>
+     <td>VTOL 正在从固定翼到多旋翼的过渡</td>
     </tr>
     <tr id="MAV_VTOL_STATE_MC">
      <td>3</td>
      <td>
       <a href="#MAV_VTOL_STATE_MC">MAV_VTOL_STATE_MC</a>
      </td>
-     <td>VTOL is in multicopter state</td>
+     <td>VTAL 处于多旋翼状态</td>
     </tr>
     <tr id="MAV_VTOL_STATE_FW">
      <td>4</td>
      <td>
       <a href="#MAV_VTOL_STATE_FW">MAV_VTOL_STATE_FW</a>
      </td>
-     <td>VTOL is in fixed-wing state</td>
+     <td>VTOL 处于固定翼飞机状态</td>
     </tr>
    </tbody>
   </table>
@@ -14310,7 +14308,7 @@
   <p style="color:red">
    生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   设置相机焦距。 Camera must respond with a CAMERA_SETTINGS message (on success). Use NaN for reserved values.</p>
+   设置相机焦距。 相机必须使用 CAMERA_SETTINGS 消息响应(成功)。 使用NAN作为保留值。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14322,12 +14320,12 @@
    <tbody>
     <tr>
      <td>1: Zoom Type</td>
-     <td>Zoom type</td>
+     <td>变焦类型</td>
      <td>CAMERA_ZOOM_TYPE</td>
     </tr>
     <tr>
      <td>2: Zoom Value</td>
-     <td>Zoom value. The range of valid values depend on the zoom type.</td>
+     <td>Zoom value. 有效值的范围取决于变焦类型。</td>
      <td>
      </td>
     </tr>
@@ -14343,11 +14341,9 @@
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Set camera focus. Camera must respond with a CAMERA_SETTINGS message (on success). Use NaN for reserved values.</p>
+   设置相机的焦点。 相机必须使用 CAMERA_SETTINGS 消息响应(成功)。 使用NAN作为保留值。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14359,7 +14355,7 @@
    <tbody>
     <tr>
      <td>1: Focus Type</td>
-     <td>Focus type</td>
+     <td>对焦模式</td>
      <td>SET_FOCUS_TYPE</td>
     </tr>
     <tr>
@@ -14380,9 +14376,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Tagged jump target. Can be jumped to with MAV_CMD_DO_JUMP_TAG.</p>
+   跳转目标。 可以用MAV_CMD_DO_JUMP_TAG 跳跃。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14404,9 +14398,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Jump to the matching tag in the mission list. Repeat this action for the specified number of times. A mission should contain a single matching tag for each jump. If this is not the case then a jump to a missing tag should complete the mission, and a jump where there are multiple matching tags should always select the one with the lowest mission sequence number.</p>
+   跳至任务列表中匹配的标签。 在指定次数内重复此操作。 一个任务应该包含每个跳跃的单个匹配标签。 如果不是这种情况，那么跳转到一个丢失的标签应该完成任务，并且跳转到有多个匹配标签的地方应该总是选择任务序列号最低的那个。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14418,13 +14410,13 @@
    <tbody>
     <tr>
      <td>1: Tag</td>
-     <td>Target tag to jump to.</td>
+     <td>要跳转到的目标标签。</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2: Repeat</td>
-     <td>Repeat count.</td>
+     <td>重复计数。</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -14434,11 +14426,9 @@
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>High level setpoint to be sent to a gimbal manager to set a gimbal attitude. It is possible to set combinations of the values below. E.g. an angle as well as a desired angular rate can be used to get to this angle at a certain angular rate, or an angular rate only will result in continuous turning. NaN is to be used to signal unset. Note: a gimbal is never to react to this command but only the gimbal manager.</p>
+   高级设定值被发送到云台管理器以设置云台的姿态 可以设置下面的数值组合。 一个角度和一个期望的角速度可以被用来达到这个角度在一个特定的角速度，如果只有一个角速度只会导致连续旋转。 NAN将被用于信号未设置。 注意：一个云台永远不会对此命令作出反应，只能是云台管理器。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14451,21 +14441,21 @@
    <tbody>
     <tr>
      <td>1: Tilt angular rate</td>
-     <td>Tilt/pitch angular rate (positive to point up).</td>
+     <td>倾斜角/倾斜角速率(正向上)</td>
      <td>
      </td>
      <td>deg/s</td>
     </tr>
     <tr>
      <td>2: Pan angular rate</td>
-     <td>Pan/yaw angular rate (positive to pan to the right).</td>
+     <td>平移/方位角速率 (正向右倾斜)。</td>
      <td>
      </td>
      <td>deg/s</td>
     </tr>
     <tr>
      <td>3: Tilt angle</td>
-     <td>Pitch/tilt angle relative to world horizon (negative is to tilt down, positive to tilt up).</td>
+     <td>相对于水平的俯仰/倾斜角(负值是向下倾斜，正值向上倾斜)。</td>
      <td>
       <em>min:</em>
       -180 
@@ -14474,7 +14464,7 @@
     </tr>
     <tr>
      <td>4: Pan angle</td>
-     <td>Yaw/pan angle (positive is pan to the right, relative to vehicle for PAN mode, absolute to North for HOLD mode)</td>
+     <td>方位/平移角度 (正，向右平移，相对于平移模式的载体，保持模式绝对向北)</td>
      <td>
       <em>min:</em>
       -180 
@@ -14483,14 +14473,14 @@
     </tr>
     <tr>
      <td>5: Gimbal manager flags</td>
-     <td>Gimbal manager flags to use.</td>
+     <td>云台控制器标记</td>
      <td>GIMBAL_MANAGER_FLAGS</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>云台设备的组件ID ( 或1-6到非 MAVLink 的云台l) ，0为发送到所有云台。 (发送超过1个云台，但不是所有云台。)</td>
      <td>
      </td>
      <td>
@@ -14502,11 +14492,11 @@
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>If the gimbal manager supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
+   </a>如果云台管理器支持视觉跟踪 (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT 已设置)，此命令允许启动跟踪。 这种跟踪云台管理器通常是一个集成的摄像机/云台，或者是一个连接到摄像机的配套计算机。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14518,19 +14508,19 @@
    <tbody>
     <tr>
      <td>1: Point x</td>
-     <td>Point to track x value.</td>
+     <td>跟踪x值的点。</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 </td>
     </tr>
     <tr>
      <td>2: Point y</td>
-     <td>Point to track y value.</td>
+     <td>跟踪Y值的点。</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 </td>
     </tr>
     <tr>
      <td>7: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>云台设备的组件ID ( 或1-6到非 MAVLink 的云台l) ，0为发送到所有云台。 (发送超过1个云台，但不是所有云台。)</td>
      <td>
      </td>
     </tr>
