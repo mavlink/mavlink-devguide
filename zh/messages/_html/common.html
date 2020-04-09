@@ -15775,7 +15775,7 @@
    )
   </h3>
   <p>
-   在Lat / Lon / Alt 位置部署有效载荷。 This includes the navigation to reach the required release position and velocity.</p>
+   在Lat / Lon / Alt 位置部署有效载荷。 这包括导航到所需要释放的位置和速度。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15788,7 +15788,7 @@
    <tbody>
     <tr>
      <td>1: Operation Mode</td>
-     <td>Operation mode. 0: prepare single payload deploy (overwriting previous requests), but do not execute it. 1: execute payload deploy immediately (rejecting further deploy commands during execution, but allowing abort). 2: add payload deploy to existing deployment list.</td>
+     <td>运行模式 0: 准备部署单个有效载荷(覆盖先前的请求)，但不执行它。 1： 立即执行有效载荷部署(在执行期间拒绝进一步部署指令，但允许中止)。 2： 将有效载荷部署到现有的部署列表。</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
      <td>
@@ -15911,9 +15911,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>User defined waypoint item. Ground Station will show the Vehicle as flying through this item.</p>
+   用户定义的航点项目。 地面站将显示车辆通过该项目飞行。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16800,7 +16798,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>The general system state. 如果系统遵循MAVLink标准，系统可用三种模式/状态进行定义，锁定状态(电机关闭和锁定)、手动状态(RC控制下的系统)、导航状态(具有自定位能力的系统、可以手动设定的位置)或自自主(可以进行轨迹/航点等任务规划进行导航的系统)。 NAV_MODE定义了当前导航状态:起飞(通常是开环机动)、着陆、航路点或定向。 This represents the internal navigation state machine. 系统状态显示系统当前是否处于正常状态，以及是否发生了紧急情况。 在关键和紧急状态时，MAV被认为仍可以正常运行，但应自动进入应急程序。 当发生故障时，应该首先保证关键程序并允许手动干预，并在在超出规定时间后切换到应急程序</p>
+   </a>The general system state. 如果系统遵循MAVLink标准，系统可用三种模式/状态进行定义，锁定状态(电机关闭和锁定)、手动状态(RC控制下的系统)、导航状态(具有自定位能力的系统、可以手动设定的位置)或自自主(可以进行轨迹/航点等任务规划进行导航的系统)。 NAV_MODE定义了当前导航状态:起飞(通常是开环机动)、着陆、航路点或定向。 这表示内部导航的有限状态。 系统状态显示系统当前是否处于正常状态，以及是否发生了紧急情况。 在关键和紧急状态时，MAV被认为仍可以正常运行，但应自动进入应急程序。 当发生故障时，应该首先保证关键程序并允许手动干预，并在在超出规定时间后切换到应急程序</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17739,7 +17737,7 @@
    )
   </h3>
   <p>
-   九轴传感器设置的原始IMU读数。 This message should contain the scaled values to the described units</p>
+   九轴传感器设置的原始IMU读数。 此消息应包含缩放到具体单位的值</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17941,7 +17939,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   从一个绝对压力和一个压差传感器的读取的原始压力数值 The sensor values should be the raw, UNSCALED ADC values.</p>
+   从一个绝对压力和一个压差传感器的读取的原始压力数值 传感器的值应该是原始的，</p>
   <table class="sortable">
    <thead>
     <tr>
