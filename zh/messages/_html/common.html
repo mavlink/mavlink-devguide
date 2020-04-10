@@ -14440,15 +14440,15 @@
    </thead>
    <tbody>
     <tr>
-     <td>1: Tilt angular rate</td>
-     <td>倾斜角/倾斜角速率(正向上)</td>
+     <td>1: Tilt angular velocity</td>
+     <td>Tilt/pitch angular velocity (positive to point up).</td>
      <td>
      </td>
      <td>deg/s</td>
     </tr>
     <tr>
-     <td>2: Pan angular rate</td>
-     <td>平移/方位角速率 (正向右倾斜)。</td>
+     <td>2: Pan angular velocity</td>
+     <td>Pan/yaw angular velocity (positive to pan to the right).</td>
      <td>
      </td>
      <td>deg/s</td>
@@ -29746,7 +29746,7 @@ y轴磁力计数据
      <td>Bitmap of gimbal capability flags.</td>
     </tr>
     <tr>
-     <td>gimbal_component</td>
+     <td>gimbal_device_id</td>
      <td>uint8_t</td>
      <td>
      </td>
@@ -29754,7 +29754,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Gimbal component ID that this gimbal manager is responsible for.</td>
+     <td>Gimbal device ID that this gimbal manager is responsible for.</td>
     </tr>
     <tr>
      <td>tilt_max</td>
@@ -29863,6 +29863,17 @@ y轴磁力计数据
      </td>
      <td>High level gimbal manager flags currently applied.</td>
     </tr>
+    <tr>
+     <td>gimbal_device_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Gimbal device ID that this gimbal manager is responsible for.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="GIMBAL_MANAGER_SET_ATTITUDE">GIMBAL_MANAGER_SET_ATTITUDE (<a href="#GIMBAL_MANAGER_SET_ATTITUDE">
@@ -29921,6 +29932,17 @@ y轴磁力计数据
       <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
      </td>
      <td>High level gimbal manager flags to use.</td>
+    </tr>
+    <tr>
+     <td>gimbal_device_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
     </tr>
     <tr>
      <td>q</td>
