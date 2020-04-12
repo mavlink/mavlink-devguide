@@ -27583,9 +27583,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Vibration levels and accelerometer clipping</p>
+   振动水平和加速计限幅</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27741,9 +27739,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
+   系统将返回和着陆的位置。 在起飞过程中，如果操作员没有在起飞前或起飞后显式设置位置，系统会自动设置位置 全局位置和局部位置在各自的坐标系中对位置进行编码，而q参数对曲面的方向进行编码。 在正常情况下，它描述了飞机可以用来调整进近的航向和地形坡度。 该方法的三维矢量描述的点，该系统应在正常飞行模式，然后执行一个沿着向量进行的顺序着落</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27839,9 +27835,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The interval between messages for a particular MAVLink message ID. This message is the response to the MAV_CMD_GET_MESSAGE_INTERVAL command. This interface replaces DATA_STREAM.</p>
+   特定MAVLink 消息ID之间的间隔。 此消息是对 MAV_CMD_GET_MESSAGE_INTERVAL 命令的回应。 此接口取代DATA_STREAM。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27910,9 +27904,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The location and information of an ADSB vehicle</p>
+   具备ADS-B能力的 载具的位置和信息</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27933,7 +27925,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>ICAO address</td>
+     <td>ICAO（国际民航组织）分配的地址</td>
     </tr>
     <tr>
      <td>lat</td>
@@ -27943,7 +27935,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Latitude</td>
+     <td>纬度</td>
     </tr>
     <tr>
      <td>lon</td>
@@ -27953,7 +27945,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Longitude</td>
+     <td>经度</td>
     </tr>
     <tr>
      <td>altitude_type</td>
@@ -27963,7 +27955,7 @@ y轴磁力计数据
      <td>
       <a href="#ADSB_ALTITUDE_TYPE">ADSB_ALTITUDE_TYPE</a>
      </td>
-     <td>ADSB altitude type.</td>
+     <td>ADS-B 高度类型。</td>
     </tr>
     <tr>
      <td>altitude</td>
@@ -27973,7 +27965,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Altitude(ASL)</td>
+     <td>高度(海拔)</td>
     </tr>
     <tr>
      <td>heading</td>
@@ -27983,7 +27975,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Course over ground</td>
+     <td>对地航向（Cog）</td>
     </tr>
     <tr>
      <td>hor_velocity</td>
@@ -27993,7 +27985,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>The horizontal velocity</td>
+     <td>最大水平速度：</td>
     </tr>
     <tr>
      <td>ver_velocity</td>
@@ -28003,7 +27995,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>The vertical velocity. Positive is up</td>
+     <td>垂直速度。 正：上</td>
     </tr>
     <tr>
      <td>callsign</td>
@@ -28014,7 +28006,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>The callsign, 8+null</td>
+     <td>通信呼号8+null</td>
     </tr>
     <tr>
      <td>emitter_type</td>
@@ -28024,7 +28016,7 @@ y轴磁力计数据
      <td>
       <a href="#ADSB_EMITTER_TYPE">ADSB_EMITTER_TYPE</a>
      </td>
-     <td>ADSB emitter type.</td>
+     <td>ADS_B发射器的类型。</td>
     </tr>
     <tr>
      <td>tslc</td>
@@ -28034,7 +28026,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Time since last communication in seconds</td>
+     <td>上次通讯时间（秒）</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -28044,7 +28036,7 @@ y轴磁力计数据
      <td>
       <a href="#ADSB_FLAGS">ADSB_FLAGS</a>
      </td>
-     <td>Bitmap to indicate various statuses including valid data fields</td>
+     <td>显示包括有效数据字段在内的各种状态的位图</td>
     </tr>
     <tr>
      <td>squawk</td>
