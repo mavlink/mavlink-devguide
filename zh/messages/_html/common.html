@@ -20943,7 +20943,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>PARAM6 / local: y position in meters * 1e4, global: longitude in degrees * 10^7</td>
+     <td>参数6 /本地:y位置(米)* 1e4，全球:经度(度)* 10^7</td>
     </tr>
     <tr>
      <td>z</td>
@@ -20952,7 +20952,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>PARAM7 / z position: global: altitude in meters (relative or absolute, depending on frame).</td>
+     <td>参数7 / z位置:全球:海拔米(相对或绝对，取决于坐标系)。</td>
     </tr>
    </tbody>
   </table>
@@ -21097,7 +21097,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_CMD">MAV_CMD</a>
      </td>
-     <td>Command ID (of acknowledged command).</td>
+     <td>指令 ID (已确认命令)。</td>
     </tr>
     <tr>
      <td>result</td>
@@ -21105,7 +21105,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_RESULT">MAV_RESULT</a>
      </td>
-     <td>Result of command.</td>
+     <td>指令结果</td>
     </tr>
     <tr>
      <td style="color:blue;">progress<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21117,7 +21117,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>WIP: Also used as result_param1, it can be set with a enum containing the errors reasons of why the command was denied or the progress percentage or 255 if unknown the progress when result is MAV_RESULT_IN_PROGRESS.</td>
+     <td>WIP:也可以作为result_param1使用，它可以用一个enum来设置，其中包含拒绝命令的错误原因，或者当结果为MAV_RESULT_IN_PROGRESS时，如果不知道进度，则使用255个进度百分比。</td>
     </tr>
     <tr>
      <td style="color:blue;">result_param2<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21129,7 +21129,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>WIP: Additional parameter of the result, example: which parameter of MAV_CMD_NAV_WAYPOINT caused it to be denied.</td>
+     <td>IP:结果的附加参数，例如:MAV_CMD_NAV_WAYPOINT的哪个参数导致它被拒绝。</td>
     </tr>
     <tr>
      <td style="color:blue;">target_system<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21141,7 +21141,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>WIP: System which requested the command to be executed</td>
+     <td>WIP：请求执行命令的系统</td>
     </tr>
     <tr>
      <td style="color:blue;">target_component<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21153,7 +21153,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>WIP: Component which requested the command to be executed</td>
+     <td>WIP: 组件，该组件请求执行命令</td>
     </tr>
    </tbody>
   </table>
@@ -21359,7 +21359,7 @@ y轴磁力计数据
      <td>float</td>
      <td>
      </td>
-     <td>Collective thrust, normalized to 0 .. 1 (-1 .. 1 for vehicles capable of reverse trust)</td>
+     <td>总推力，标准值0-1 1 (-1 .. （-1。。1 用于能够反向的载具）</td>
     </tr>
    </tbody>
   </table>
@@ -21369,9 +21369,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Sets a desired vehicle position in a local north-east-down coordinate frame. Used by an external controller to command the vehicle (manual controller or other system).</p>
+   在本地东北向下的坐标系中设置所需的载具位置。 通过外部控制系统赖控制载具（手动模式或其他系统）</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21423,7 +21421,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
-     <td>Valid options are: MAV_FRAME_LOCAL_NED = 1, MAV_FRAME_LOCAL_OFFSET_NED = 7, MAV_FRAME_BODY_NED = 8, MAV_FRAME_BODY_OFFSET_NED = 9</td>
+     <td>有效的选项是MAV_FRAME_LOCAL_NED = 1, MAV_FRAME_LOCAL_OFFSET_NED = 7, MAV_FRAME_BODY_NED = 8, MAV_FRAME_BODY_OFFSET_NED = 9</td>
     </tr>
     <tr>
      <td>type_mask</td>
@@ -21443,7 +21441,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X Position in NED frame</td>
+     <td>NED坐标系下X轴位置</td>
     </tr>
     <tr>
      <td>y</td>
@@ -21453,7 +21451,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y Position in NED frame</td>
+     <td>NED坐标系下Y轴位置</td>
     </tr>
     <tr>
      <td>z</td>
@@ -21463,7 +21461,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Z Position in NED frame (note, altitude is negative in NED)</td>
+     <td>NED坐标系下Z轴位置(注意，海拔为负数)</td>
     </tr>
     <tr>
      <td>vx</td>
@@ -21473,7 +21471,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X velocity in NED frame</td>
+     <td>NED 坐标系中的 X 速度</td>
     </tr>
     <tr>
      <td>vy</td>
@@ -21483,7 +21481,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y velocity in NED frame</td>
+     <td>NED 坐标系中的Y 速度</td>
     </tr>
     <tr>
      <td>vz</td>
@@ -21493,7 +21491,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Z velocity in NED frame</td>
+     <td>NED 坐标系中的Z速度</td>
     </tr>
     <tr>
      <td>afx</td>
@@ -21503,7 +21501,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
+     <td>以米/秒^2或N为单位的 NED坐标系中中的X 加速度或力(如果设置了 Bit10 的类型掩码)</td>
     </tr>
     <tr>
      <td>afy</td>
@@ -21513,7 +21511,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
+     <td>以米/秒^2或N为单位的 NED坐标系中的Y加速度或力(如果设置了 Bit10 的类型掩码)</td>
     </tr>
     <tr>
      <td>afz</td>
@@ -21523,7 +21521,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
+     <td>以米/秒^2或N为单位的 NED坐标系中的Z加速度或力(如果设置了 Bit10 的类型掩码)</td>
     </tr>
     <tr>
      <td>yaw</td>
@@ -21533,7 +21531,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>yaw setpoint</td>
+     <td>Yaw: 航向设定值</td>
     </tr>
     <tr>
      <td>yaw_rate</td>
@@ -21543,7 +21541,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>yaw rate setpoint</td>
+     <td>yaw: 航向角速度设定值</td>
     </tr>
    </tbody>
   </table>
@@ -22557,9 +22555,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Optical flow from a flow sensor (e.g. optical mouse sensor)</p>
+   来自光流传感器(例如，光学鼠标传感器)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22729,9 +22725,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Local position/attitude estimate from a vision source.</p>
+   通过视觉估计位置/状态。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22812,9 +22806,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Speed estimate from a vision source.</p>
+   通过视觉估计速度。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22877,9 +22869,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Global position estimate from a Vicon motion system source.</p>
+   通过Vicon 运动系统源的全局位置估计。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22950,9 +22940,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The IMU readings in SI units in NED body frame</p>
+   在 航空机体坐标系中的 国际标准单位读取的 IMU</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23073,9 +23061,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Optical flow from an angular rate flow sensor (e.g. PX4FLOW or mouse sensor)</p>
+   来自角速率流传感器的光流(例如PX4FLOW或鼠标传感器)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23168,9 +23154,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The IMU readings in SI units in NED body frame</p>
+   在 航空机体坐标系中的 国际标准单位读取的 IMU</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23281,9 +23265,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Status of simulation environment, if used</p>
+   模拟环境状态，如果使用</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23437,9 +23419,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Status generated by radio and injected into MAVLink stream.</p>
+   由无线电生成并注入到 MAVLink 流的状态。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23508,9 +23488,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>File transfer message</p>
+   文件传输消息</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23548,9 +23526,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Time synchronization message.</p>
+   时间同步消息。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24829,7 +24805,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>GPS-specific health report for RTK data.</td>
+     <td>用于RTK数据的GPS-特定健康报告。</td>
     </tr>
     <tr>
      <td>rtk_rate</td>
@@ -27038,9 +27014,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Message appropriate for high latency connections like Iridium</p>
+   适合于铱星等高延迟连接的消息</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27060,7 +27034,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
      </td>
-     <td>Bitmap of enabled system modes.</td>
+     <td>启用系统模式的位图。</td>
     </tr>
     <tr>
      <td>custom_mode</td>
@@ -27071,7 +27045,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>A bitfield for use for autopilot-specific flags.</td>
+     <td>该专用字段用于标识自驾仪器的状态.</td>
     </tr>
     <tr>
      <td>landed_state</td>
@@ -27081,7 +27055,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
      </td>
-     <td>The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown.</td>
+     <td>降落状态。 如果登陆状态未知，则设置为 MAV_LANDED_STATE_UNDEFINED</td>
     </tr>
     <tr>
      <td>roll</td>
@@ -27091,7 +27065,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>roll</td>
+     <td>滚转</td>
     </tr>
     <tr>
      <td>pitch</td>
@@ -27101,7 +27075,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>pitch</td>
+     <td>俯仰</td>
     </tr>
     <tr>
      <td>heading</td>
@@ -27111,7 +27085,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>heading</td>
+     <td>方位角</td>
     </tr>
     <tr>
      <td>throttle</td>
@@ -27123,7 +27097,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>throttle (percentage)</td>
+     <td>油门(百分比)</td>
     </tr>
     <tr>
      <td>heading_sp</td>
@@ -27133,7 +27107,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>heading setpoint</td>
+     <td>设定的头向</td>
     </tr>
     <tr>
      <td>latitude</td>
@@ -27143,7 +27117,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Latitude</td>
+     <td>纬度</td>
     </tr>
     <tr>
      <td>longitude</td>
@@ -27153,7 +27127,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Longitude</td>
+     <td>经度</td>
     </tr>
     <tr>
      <td>altitude_amsl</td>
@@ -27163,7 +27137,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Altitude above mean sea level</td>
+     <td>高于平均海拔的高度</td>
     </tr>
     <tr>
      <td>altitude_sp</td>
@@ -27173,7 +27147,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Altitude setpoint relative to the home position</td>
+     <td>相对于home点的高度设置点</td>
     </tr>
     <tr>
      <td>airspeed</td>
@@ -27183,7 +27157,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>airspeed</td>
+     <td>空速：</td>
     </tr>
     <tr>
      <td>airspeed_sp</td>
@@ -27193,7 +27167,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>airspeed setpoint</td>
+     <td>设定的空速</td>
     </tr>
     <tr>
      <td>groundspeed</td>
@@ -27203,7 +27177,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>groundspeed</td>
+     <td>地速</td>
     </tr>
     <tr>
      <td>climb_rate</td>
@@ -27213,7 +27187,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>climb rate</td>
+     <td>爬升率</td>
     </tr>
     <tr>
      <td>gps_nsat</td>
@@ -27224,7 +27198,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Number of satellites visible. If unknown, set to 255</td>
+     <td>可见卫星数量。 如果未知, 设置为 255</td>
     </tr>
     <tr>
      <td>gps_fix_type</td>
@@ -27234,7 +27208,7 @@ y轴磁力计数据
      <td>
       <a href="#GPS_FIX_TYPE">GPS_FIX_TYPE</a>
      </td>
-     <td>GPS Fix type.</td>
+     <td>全球定位系统的定位状态</td>
     </tr>
     <tr>
      <td>battery_remaining</td>
@@ -27246,7 +27220,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Remaining battery (percentage)</td>
+     <td>剩余电量(百分比)</td>
     </tr>
     <tr>
      <td>temperature</td>
@@ -27256,7 +27230,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Autopilot temperature (degrees C)</td>
+     <td>自驾仪温度(摄氏度)</td>
     </tr>
     <tr>
      <td>temperature_air</td>
@@ -27266,7 +27240,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Air temperature (degrees C) from airspeed sensor</td>
+     <td>空气温度(℃)来自空速传感器</td>
     </tr>
     <tr>
      <td>failsafe</td>
@@ -27277,7 +27251,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>failsafe (each bit represents a failsafe where 0=ok, 1=failsafe active (bit0:RC, bit1:batt, bit2:GPS, bit3:GCS, bit4:fence)</td>
+     <td>失效保护(每个位表示一个失效保护，其中0=ok, 1=失效保护活动(bit0:遥控器, bit1:电池, bit2:GPS, bit3:地面站, bit4:地理围栏)</td>
     </tr>
     <tr>
      <td>wp_num</td>
@@ -27288,7 +27262,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>current waypoint number</td>
+     <td>当前航点数</td>
     </tr>
     <tr>
      <td>wp_distance</td>
@@ -27298,7 +27272,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>distance to target</td>
+     <td>距离目标</td>
     </tr>
    </tbody>
   </table>
@@ -27308,11 +27282,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Message appropriate for high latency connections like Iridium (version 2)</p>
+   适合于铱星等高延迟连接的消息（版本2）</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27332,7 +27304,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (milliseconds since boot or Unix epoch)</td>
+     <td>时间戳(启动或Unix纪元后的毫秒)</td>
     </tr>
     <tr>
      <td>type</td>
@@ -27342,7 +27314,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_TYPE">MAV_TYPE</a>
      </td>
-     <td>Type of the MAV (quadrotor, helicopter, etc.)</td>
+     <td>MAV类型（四旋翼、直升机等）</td>
     </tr>
     <tr>
      <td>autopilot</td>
@@ -27352,7 +27324,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
      </td>
-     <td>Autopilot type / class. Use MAV_AUTOPILOT_INVALID for components that are not flight controllers.</td>
+     <td>自驾仪的类型 对于不是飞控的组件参考MAV_AUTOPILOT_INVALID</td>
     </tr>
     <tr>
      <td>custom_mode</td>
@@ -27363,7 +27335,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>A bitfield for use for autopilot-specific flags (2 byte version).</td>
+     <td>该专用字段用于标识自驾仪器的状态（2字节版本).</td>
     </tr>
     <tr>
      <td>latitude</td>
@@ -27373,7 +27345,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Latitude</td>
+     <td>纬度</td>
     </tr>
     <tr>
      <td>longitude</td>
@@ -27383,7 +27355,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Longitude</td>
+     <td>经度</td>
     </tr>
     <tr>
      <td>altitude</td>
@@ -27393,7 +27365,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Altitude above mean sea level</td>
+     <td>高于平均海拔的高度</td>
     </tr>
     <tr>
      <td>target_altitude</td>
@@ -27505,7 +27477,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Maximum error horizontal position since last message</td>
+     <td>自上一条消息以来的水平位置最大误差</td>
     </tr>
     <tr>
      <td>epv</td>
@@ -27515,7 +27487,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Maximum error vertical position since last message</td>
+     <td>自上一条消息以来的垂直位置最大误差</td>
     </tr>
     <tr>
      <td>temperature_air</td>
@@ -27525,7 +27497,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Air temperature from airspeed sensor</td>
+     <td>空气温度(℃)来自空速传感器</td>
     </tr>
     <tr>
      <td>climb_rate</td>
@@ -27535,7 +27507,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Maximum climb rate magnitude since last message</td>
+     <td>自上次消息以来最大的爬升率</td>
     </tr>
     <tr>
      <td>battery</td>
@@ -27547,7 +27519,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Battery level (-1 if field not provided).</td>
+     <td>电池电量(如果未提供字段则为 -1)。</td>
     </tr>
     <tr>
      <td>wp_num</td>
@@ -27558,7 +27530,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current waypoint number</td>
+     <td>当前航点数</td>
     </tr>
     <tr>
      <td>failure_flags</td>
@@ -27568,7 +27540,7 @@ y轴磁力计数据
      <td>
       <a href="#HL_FAILURE_FLAG">HL_FAILURE_FLAG</a>
      </td>
-     <td>Bitmap of failure flags.</td>
+     <td>失败标志的位图。</td>
     </tr>
     <tr>
      <td>custom0</td>
@@ -27579,7 +27551,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Field for custom payload.</td>
+     <td>自定义有效载荷字段。</td>
     </tr>
     <tr>
      <td>custom1</td>
