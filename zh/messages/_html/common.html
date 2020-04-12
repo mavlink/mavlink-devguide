@@ -28047,7 +28047,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Squawk code</td>
+     <td>应答机编码</td>
     </tr>
    </tbody>
   </table>
@@ -28057,9 +28057,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Information about a potential collision</p>
+   关于潜在碰撞的信息</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28079,7 +28077,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_COLLISION_SRC">MAV_COLLISION_SRC</a>
      </td>
-     <td>Collision data source</td>
+     <td>碰撞数据源</td>
     </tr>
     <tr>
      <td>id</td>
@@ -28090,7 +28088,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Unique identifier, domain based on src field</td>
+     <td>唯一标识符，基于src域的域</td>
     </tr>
     <tr>
      <td>action</td>
@@ -28100,7 +28098,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_COLLISION_ACTION">MAV_COLLISION_ACTION</a>
      </td>
-     <td>Action that is being taken to avoid this collision</td>
+     <td>正在采取行动以避免这种冲突</td>
     </tr>
     <tr>
      <td>threat_level</td>
@@ -28110,7 +28108,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_COLLISION_THREAT_LEVEL">MAV_COLLISION_THREAT_LEVEL</a>
      </td>
-     <td>How concerned the aircraft is about this collision</td>
+     <td>飞机对这次碰撞的关注程度</td>
     </tr>
     <tr>
      <td>time_to_minimum_delta</td>
@@ -28120,7 +28118,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Estimated time until collision occurs</td>
+     <td>碰撞发生之前的估计时间</td>
     </tr>
     <tr>
      <td>altitude_minimum_delta</td>
@@ -28130,7 +28128,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Closest vertical distance between vehicle and object</td>
+     <td>载具与物体之间最接近的垂直距离</td>
     </tr>
     <tr>
      <td>horizontal_minimum_delta</td>
@@ -28140,7 +28138,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Closest horizontal distance between vehicle and object</td>
+     <td>载具和物体之间最接近的水平距离</td>
     </tr>
    </tbody>
   </table>
@@ -28150,9 +28148,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Message implementing parts of the V2 payload specs in V1 frames for transitional support.</p>
+   消息在V1版本中实现V2有效载荷规范的一部分，用于过渡支持。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28165,27 +28161,27 @@ y轴磁力计数据
     <tr>
      <td>target_network</td>
      <td>uint8_t</td>
-     <td>Network ID (0 for broadcast)</td>
+     <td>网络 ID (0用于广播)</td>
     </tr>
     <tr>
      <td>target_system</td>
      <td>uint8_t</td>
-     <td>System ID (0 for broadcast)</td>
+     <td>系统 ID (0用于广播)</td>
     </tr>
     <tr>
      <td>target_component</td>
      <td>uint8_t</td>
-     <td>Component ID (0 for broadcast)</td>
+     <td>组件 ID (0用于广播)</td>
     </tr>
     <tr>
      <td>message_type</td>
      <td>uint16_t</td>
-     <td>A code that identifies the software component that understands this message (analogous to USB device classes or mime type strings). If this code is less than 32768, it is considered a 'registered' protocol extension and the corresponding entry should be added to https://github.com/mavlink/mavlink/definition_files/extension_message_ids.xml. Software creators can register blocks of message IDs as needed (useful for GCS specific metadata, etc...). Message_types greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
+     <td>一种识别软件组件理解这条消息的代码(类似于USB设备类或mime类型字符串)。 如果该代码小于32768，则认为它是一个“注册”的协议扩展，相应的条目应该添加到https://github.com/mavlink/mavlink/definition_files/extension_message_ids.xml。 软件创建者可以根据需要注册消息id块(对于GCS特定的元数据等非常有用)。 Message_types大于32767被认为是局部实验，不应该检入任何广泛分布的代码库。</td>
     </tr>
     <tr>
      <td>payload</td>
      <td>uint8_t[249]</td>
-     <td>Variable length payload. The length must be encoded in the payload as part of the message_type protocol, e.g. by including the length as payload data, or by terminating the payload data with a non-zero marker. This is required in order to reconstruct zero-terminated payloads that are (or otherwise would be) trimmed by MAVLink 2 empty-byte truncation. The entire content of the payload block is opaque unless you understand the encoding message_type. The particular encoding used can be extension specific and might not always be documented as part of the MAVLink specification.</td>
+     <td>可变长度负载。 长度必须作为message_type协议的一部分编码到有效负载中，例如通过将长度包含为有效负载数据，或者使用非零标记终止有效负载数据。 这是为了重构被MAVLink 2空字节截断所修剪(或将被修剪)的零终止有效载荷所必需的内容。 有效负载块的整个内容是不透明的，除非您理解编码message_type。 所使用的特定编码可以是特定于扩展的，并且可能不总是作为MAVLink规范的一部分记录下来。</td>
     </tr>
    </tbody>
   </table>
