@@ -20446,9 +20446,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The RAW values of the RC channels sent to the MAV to override info received from the RC radio. A value of UINT16_MAX means no change to that channel. A value of 0 means control of that channel should be released back to the RC radio. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. Individual receivers/transmitters might violate this specification.</p>
+   遥控器通道的原始值被发送到MAV以覆盖从遥控器收到的信息。 UINT16_MAX值意味着该通道没有变化。 ：值0表示该频道的控制权应该释放回RC电台。 PPM标准：1000微秒：0%，2000微秒：100%。 个人接收器/发射器可能不遵守这一标准。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20830,9 +20828,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Message encoding a command with parameters as scaled integers. Scaling depends on the actual command value. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
+   消息编码一个命令，该命令的参数是按比例缩放的整数。 缩放取决于实际的指令值 可在 https://mavlink.io/en/services/command.html 查阅文件。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20867,7 +20863,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
-     <td>The coordinate system of the COMMAND.</td>
+     <td>指令的坐标系</td>
     </tr>
     <tr>
      <td>command</td>
@@ -20875,7 +20871,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_CMD">MAV_CMD</a>
      </td>
-     <td>The scheduled action for the mission item.</td>
+     <td>任务项目的预设动作。</td>
     </tr>
     <tr>
      <td>current</td>
@@ -20884,7 +20880,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>false:0, true:1</td>
+     <td>假:0, 真:1</td>
     </tr>
     <tr>
      <td>autocontinue</td>
@@ -20893,7 +20889,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>autocontinue to next wp</td>
+     <td>自动继续到下一个航点</td>
     </tr>
     <tr>
      <td>param1</td>
@@ -20938,7 +20934,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>PARAM5 / local: x position in meters * 1e4, global: latitude in degrees * 10^7</td>
+     <td>参数5 /本地:x位置(米)* 1e4，全球:纬度(度)* 10^7</td>
     </tr>
     <tr>
      <td>y</td>
