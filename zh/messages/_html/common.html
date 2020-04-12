@@ -30649,12 +30649,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>General status information of an UAVCAN node. Please refer to the definition of the UAVCAN message "uavcan.protocol.NodeStatus" for the background information. The UAVCAN specification is available at http://uavcan.org.</p>
+   UAVCAN节点的一般状态信息。 关于背景信息，请参阅UAVCAN 消息“uavcan.protocol.NodeStatus”的定义。 UAVCAN 规格见http://uavcan.org。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31818,14 +31813,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>The global position resulting from GPS and sensor fusion.</p>
+   由GPS和传感器融合产生的全局位置。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32169,14 +32159,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Smart Battery information (static/infrequent update). Use for updates from: smart battery to flight stack, flight stack to GCS. Use instead of BATTERY_STATUS for smart batteries.</p>
+   智能电池信息(静态/不频繁更新)。 用于更新:智能电池到飞行堆栈，飞行堆栈到地面站 智能电池使用代替BATTERY_STATUS。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32192,64 +32177,64 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Battery ID</td>
+     <td>电池ID</td>
     </tr>
     <tr>
      <td>capacity_full_specification</td>
      <td>int32_t</td>
      <td>mAh</td>
-     <td>Capacity when full according to manufacturer, -1: field not provided.</td>
+     <td>根据制造商信息的满电量状态，-1：未提供字段的容量。</td>
     </tr>
     <tr>
      <td>capacity_full</td>
      <td>int32_t</td>
      <td>mAh</td>
-     <td>Capacity when full (accounting for battery degradation), -1: field not provided.</td>
+     <td>容量满时(考虑到电池退化)，-1:不提供字段。</td>
     </tr>
     <tr>
      <td>cycle_count</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>Charge/discharge cycle count. -1: field not provided.</td>
+     <td>充电/放电循环计数。 -1：未提供字段。</td>
     </tr>
     <tr>
      <td>serial_number</td>
      <td>int32_t</td>
      <td>
      </td>
-     <td>Serial number. -1: field not provided.</td>
+     <td>序列号: -1：未提供字段。</td>
     </tr>
     <tr>
      <td>device_name</td>
      <td>char[50]</td>
      <td>
      </td>
-     <td>Static device name. Encode as manufacturer and product names separated using an underscore.</td>
+     <td>静态设备名称。 用下划线分隔制造商和产品名称进行编码。</td>
     </tr>
     <tr>
      <td>weight</td>
      <td>uint16_t</td>
      <td>g</td>
-     <td>Battery weight. 0: field not provided.</td>
+     <td>电池重量。 0: 未提供字段。</td>
     </tr>
     <tr>
      <td>discharge_minimum_voltage</td>
      <td>uint16_t</td>
      <td>mV</td>
-     <td>Minimum per-cell voltage when discharging. If not supplied set to UINT16_MAX value.</td>
+     <td>放电时每个电池单体的最低电压。 如果不提供设置为UINT16_MAX值</td>
     </tr>
     <tr>
      <td>charging_minimum_voltage</td>
      <td>uint16_t</td>
      <td>mV</td>
-     <td>Minimum per-cell voltage when charging. If not supplied set to UINT16_MAX value.</td>
+     <td>充电时每个电池单体的最低电压。 如果不提供设置为UINT16_MAX值</td>
     </tr>
     <tr>
      <td>resting_minimum_voltage</td>
      <td>uint16_t</td>
      <td>mV</td>
-     <td>Minimum per-cell voltage when resting. If not supplied set to UINT16_MAX value.</td>
+     <td>静止时每个电池单体的最低电压。 如果不提供设置为UINT16_MAX值</td>
     </tr>
    </tbody>
   </table>
@@ -32259,14 +32244,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Smart Battery information (dynamic). Use for updates from: smart battery to flight stack, flight stack to GCS. Use instead of BATTERY_STATUS for smart batteries.</p>
+   智能电池信息(动态)。 用于更新:智能电池到飞行堆栈，飞行堆栈到地面站 智能电池使用代替BATTERY_STATUS。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32287,7 +32267,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Battery ID</td>
+     <td>电池ID</td>
     </tr>
     <tr>
      <td>capacity_remaining</td>
@@ -32299,7 +32279,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Remaining battery energy. Values: [0-100], -1: field not provided.</td>
+     <td>剩余电量 值： [0-100], -1: 字段未提供。</td>
     </tr>
     <tr>
      <td>current</td>
@@ -32309,7 +32289,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Battery current (through all cells/loads). Positive if discharging, negative if charging. UINT16_MAX: field not provided.</td>
+     <td>电池电流(通过所有电池/负载)。 放电为正，充电为负。 UINT16_MAX：未提供字段。</td>
     </tr>
     <tr>
      <td>temperature</td>
@@ -32319,7 +32299,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Battery temperature. -1: field not provided.</td>
+     <td>电池温度： -1：未提供字段。</td>
     </tr>
     <tr>
      <td>fault_bitmask</td>
@@ -32329,7 +32309,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_SMART_BATTERY_FAULT">MAV_SMART_BATTERY_FAULT</a>
      </td>
-     <td>Fault/health indications.</td>
+     <td>故障/健康的状况说明。</td>
     </tr>
     <tr>
      <td>time_remaining</td>
@@ -32339,7 +32319,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Estimated remaining battery time. -1: field not provided.</td>
+     <td>估计剩余电池时间。 -1：未提供字段。</td>
     </tr>
     <tr>
      <td>cell_offset</td>
@@ -32350,7 +32330,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>The cell number of the first index in the 'voltages' array field. Using this field allows you to specify cell voltages for batteries with more than 16 cells.</td>
+     <td>'电压'阵列字段中第一个索引的单元格数。 使用此字段指定超过16个电池单体的电压。</td>
     </tr>
     <tr>
      <td>voltages</td>
@@ -32360,7 +32340,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Individual cell voltages. Batteries with more 16 cells can use the cell_offset field to specify the cell offset for the array specified in the current message . Index values above the valid cell count for this battery should have the UINT16_MAX value.</td>
+     <td>单个电池单体电压。 拥有更多16个单元格的电池可以使用cell_offset字段来指定当前消息中指定的数组的单元格偏移量。 此电池的有效电池计数之上的索引值应该具有UINT16_MAX值。</td>
     </tr>
    </tbody>
   </table>
@@ -32962,14 +32942,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Basic ID message. This and the below messages are primarily meant for feeding data to/from an OpenDroneID implementation. E.g. https://github.com/opendroneid/opendroneid-core-c. See also the ASTM Remote ID standard at https://www.astm.org/Standards/F3411.htm. The usage of these messages is documented at https://mavlink.io/en/services/opendroneid.html.</p>
+   用于填充OpenDroneID基本ID消息的数据。 此消息和以下消息主要用于向OpenDroneID实现提供数据。 E.g. https://github.com/opendroneid/opendroneid-core-c. 另见ASTM远程识别标准：https://www.astm.org/Standards/F3411.htm。 这些信息的使用情况见https://mavlink.io/en/services/opendroneid.html。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32986,7 +32961,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_ID_TYPE">MAV_ODID_ID_TYPE</a>
      </td>
-     <td>Indicates the format for the uas_id field of this message.</td>
+     <td>指示此消息的uas_id字段的格式。</td>
     </tr>
     <tr>
      <td>ua_type</td>
@@ -32994,7 +32969,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_UA_TYPE">MAV_ODID_UA_TYPE</a>
      </td>
-     <td>Indicates the type of UA (Unmanned Aircraft).</td>
+     <td>表示UA 类型(无人驾驶航空器)。</td>
     </tr>
     <tr>
      <td>uas_id</td>
@@ -33003,7 +32978,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>UAS (Unmanned Aircraft System) ID following the format specified by id_type. Shall be filled with nulls in the unused portion of the field.</td>
+     <td>UAS (无人驾驶飞机系统) ID采用id_型号指定的格式。 应在字段的未使用部分中填充空值。</td>
     </tr>
    </tbody>
   </table>
@@ -33013,14 +32988,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Location message. The float data types are 32-bit IEEE 754. The Location message provides the location, altitude, direction and speed of the aircraft.</p>
+   用于填充OpenDroneID位置消息的数据。 浮动数据类型为32位 IEEE 754。 置信息提供了飞机的位置、高度、方向和速度。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33040,7 +33010,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_STATUS">MAV_ODID_STATUS</a>
      </td>
-     <td>Indicates whether the unmanned aircraft is on the ground or in the air.</td>
+     <td>判断无人驾驶飞机是在地面上还是在空中。</td>
     </tr>
     <tr>
      <td>direction</td>
@@ -33050,7 +33020,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Direction over ground (not heading, but direction of movement) measured clockwise from true North: 0 - 35999 centi-degrees. If unknown: 36100 centi-degrees.</td>
+     <td>对地方向(不是航向，而是运动方向):从真北向顺时针方向测量:0 - 35999 单位百分之一度。 如果未知：36100  单位百分之一度。</td>
     </tr>
     <tr>
      <td>speed_horizontal</td>
@@ -33060,7 +33030,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Ground speed. Positive only. If unknown: 25500 cm/s. If speed is larger than 25425 cm/s, use 25425 cm/s.</td>
+     <td>地面速度。 前进方向上 如果未知：25500厘米/秒。 如果速度大于25425厘米/秒，请使用 25425厘米/秒。</td>
     </tr>
     <tr>
      <td>speed_vertical</td>
@@ -33070,7 +33040,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>The vertical speed. Up is positive. If unknown: 6300 cm/s. If speed is larger than 6200 cm/s, use 6200 cm/s. If lower than -6200 cm/s, use -6200 cm/s.</td>
+     <td>垂直速度。 上为正 如果未知：6300厘米/秒。 如果速度大于6200厘米/秒，请使用 6200厘米/秒。 如果低于-6200厘米/秒，请使用-6200厘米/秒。</td>
     </tr>
     <tr>
      <td>latitude</td>
@@ -33080,7 +33050,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current latitude of the unmanned aircraft. If unknown: 0 (both Lat/Lon).</td>
+     <td>无人驾驶飞机目前的纬度。 如果未知： 0 (包括经纬度)。</td>
     </tr>
     <tr>
      <td>longitude</td>
@@ -33090,7 +33060,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current longitude of the unmanned aircraft. If unknown: 0 (both Lat/Lon).</td>
+     <td>无人驾驶飞机目前经度。 如果未知： 0 (包括经纬度)。</td>
     </tr>
     <tr>
      <td>altitude_barometric</td>
@@ -33100,7 +33070,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>The altitude calculated from the barometric pressue. Reference is against 29.92inHg or 1013.2mb. If unknown: -1000 m.</td>
+     <td>根据气压计算的海拔高度. 参考值为29.92inHg或1013.2mb。 d</td>
     </tr>
     <tr>
      <td>altitude_geodetic</td>
@@ -33110,7 +33080,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>The geodetic altitude as defined by WGS84. If unknown: -1000 m.</td>
+     <td>WGS84定义的大地测量海拔。 如果未知：-1000米。</td>
     </tr>
     <tr>
      <td>height_reference</td>
@@ -33120,7 +33090,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_HEIGHT_REF">MAV_ODID_HEIGHT_REF</a>
      </td>
-     <td>Indicates the reference point for the height field.</td>
+     <td>指示高度字段的参考点。</td>
     </tr>
     <tr>
      <td>height</td>
@@ -33130,7 +33100,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>The current height of the unmanned aircraft above the take-off location or the ground as indicated by height_reference. If unknown: -1000 m.</td>
+     <td>当前无人驾驶飞机在起飞位置或地面以上的高度，用height_reference表示。 如果未知：-1000米。</td>
     </tr>
     <tr>
      <td>horizontal_accuracy</td>
@@ -33140,7 +33110,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_HOR_ACC">MAV_ODID_HOR_ACC</a>
      </td>
-     <td>The accuracy of the horizontal position.</td>
+     <td>水平位置的精度。</td>
     </tr>
     <tr>
      <td>vertical_accuracy</td>
@@ -33150,7 +33120,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_VER_ACC">MAV_ODID_VER_ACC</a>
      </td>
-     <td>The accuracy of the vertical position.</td>
+     <td>垂直位置的精度。</td>
     </tr>
     <tr>
      <td>barometer_accuracy</td>
@@ -33160,7 +33130,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_VER_ACC">MAV_ODID_VER_ACC</a>
      </td>
-     <td>The accuracy of the barometric altitude.</td>
+     <td>气度高度的精度。</td>
     </tr>
     <tr>
      <td>speed_accuracy</td>
@@ -33170,7 +33140,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_SPEED_ACC">MAV_ODID_SPEED_ACC</a>
      </td>
-     <td>The accuracy of the horizontal and vertical speed.</td>
+     <td>水平和垂直速度的精度。</td>
     </tr>
     <tr>
      <td>timestamp</td>
@@ -33180,7 +33150,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Seconds after the full hour with reference to UTC time. Typically the GPS outputs a time-of-week value in milliseconds. First convert that to UTC and then convert for this field using ((float) (time_week_ms % (60*60*1000))) / 1000.</td>
+     <td>一小时后的秒数，参照协调世界时。 通常GPS会输出一个以毫秒为单位的周时间值。 首先将它转换为 UTC 然后将此字段转换为 (float) (time_week_ms % (60*60*1000))) / 1000。</td>
     </tr>
     <tr>
      <td>timestamp_accuracy</td>
@@ -33190,7 +33160,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_TIME_ACC">MAV_ODID_TIME_ACC</a>
      </td>
-     <td>The accuracy of the timestamps.</td>
+     <td>时间戳的准确性。</td>
     </tr>
    </tbody>
   </table>
