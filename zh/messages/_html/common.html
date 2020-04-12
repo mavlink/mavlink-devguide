@@ -18167,7 +18167,7 @@ y轴磁力计数据
      <td>float[4]</td>
      <td>
      </td>
-     <td>Rotation offset by which the attitude quaternion and angular speed vector should be rotated for user display (quaternion with [w, x, y, z] order, zero-rotation is [1, 0, 0, 0], send [0, 0, 0, 0] if field not supported). This field is intended for systems in which the reference attitude may change during flight. For example, tailsitters VTOLs rotate their reference attitude by 90 degrees between hover mode and fixed wing mode, thus repr_offset_q is equal to [1, 0, 0, 0] in hover mode and equal to [0.7071, 0, 0.7071, 0] in fixed wing mode.</td>
+     <td>旋转偏移，通过旋转姿态四元数和角速度矢量来为用户提供显示(四元数有[w, x, y, z]的顺序，零旋转是[1,0,0,0]，如果不支持字段，发送[0,0,0,0])。 该字段适用于参考姿态在飞行过程中可能发生变化的系统。 例如，tailsitters VTOLs（一个特殊的机体类型）在悬停模式和固定翼模式之间将参考姿态旋转90度，因此repr_offset_q在悬停模式下等于[1,0,0,0]，在固定翼模式下等于[0.7071,0,0.7071,0]。</td>
     </tr>
    </tbody>
   </table>
@@ -18421,14 +18421,14 @@ y轴磁力计数据
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>port</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.</td>
+     <td>伺服器输出端口(8个输出=1个端口)。 在 Pixhawk 上运行的飞行堆栈应使用：0 = MAIN，1 = AUX。</td>
     </tr>
     <tr>
      <td>chan1_raw</td>
@@ -19521,7 +19521,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Start index for partial mission change (-1 for all items).</td>
+     <td>启动部分任务更改索引 (所有项目为 -1 )。</td>
     </tr>
     <tr>
      <td>end_index</td>
@@ -19530,7 +19530,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>End index of a partial mission change. -1 is a synonym for the last mission item (i.e. selects all items from start_index). Ignore field if start_index=-1.</td>
+     <td>部分任务更改的结束索引。 -1可等同为最后一个任务项（即从start_index中选择所有项目） 如果start_index=-1的则忽略该字段。</td>
     </tr>
     <tr>
      <td>origin_sysid</td>
@@ -19539,7 +19539,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>System ID of the author of the new mission.</td>
+     <td>新任务创建者的系统ID。</td>
     </tr>
     <tr>
      <td>origin_compid</td>
@@ -19547,7 +19547,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
      </td>
-     <td>Compnent ID of the author of the new mission.</td>
+     <td>新任务创建者的组件ID。</td>
     </tr>
     <tr>
      <td>mission_type</td>
@@ -19555,7 +19555,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
-     <td>Mission type.</td>
+     <td>任务类型</td>
     </tr>
    </tbody>
   </table>
@@ -19767,9 +19767,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The attitude in the aeronautical frame (right-handed, Z-down, X-front, Y-right), expressed as quaternion. Quaternion order is w, x, y, z and a zero rotation would be expressed as (1 0 0 0).</p>
+   航空坐标系下的姿态信息(右手基准, Z-下, X-前, Y-右)。表示成四元数方式 四元顺序为w、x、y、z，零转换表示为 (1 0 0 0)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19816,7 +19814,7 @@ y轴磁力计数据
      <td>float[9]</td>
      <td>
      </td>
-     <td>Row-major representation of a 3x3 attitude covariance matrix (states: roll, pitch, yaw; first three entries are the first ROW, next three entries are the second row, etc.). If unknown, assign NaN value to first element in the array.</td>
+     <td>3 * 3姿态协方差矩阵(状态:横摇、俯仰、偏航;前三项是第一行，后三项是第二行，等等)。 如果未知，在数组中将NAN值分配给第一个元素。</td>
     </tr>
    </tbody>
   </table>
@@ -19826,9 +19824,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The state of the fixed wing navigation and position controller.</p>
+   固定翼导航和位置控制器的状态。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19843,49 +19839,49 @@ y轴磁力计数据
      <td>nav_roll</td>
      <td>float</td>
      <td>deg</td>
-     <td>Current desired roll</td>
+     <td>当前需要的滚转</td>
     </tr>
     <tr>
      <td>nav_pitch</td>
      <td>float</td>
      <td>deg</td>
-     <td>Current desired pitch</td>
+     <td>当前需要的俯仰</td>
     </tr>
     <tr>
      <td>nav_bearing</td>
      <td>int16_t</td>
      <td>deg</td>
-     <td>Current desired heading</td>
+     <td>当前需要的头向</td>
     </tr>
     <tr>
      <td>target_bearing</td>
      <td>int16_t</td>
      <td>deg</td>
-     <td>Bearing to current waypoint/target</td>
+     <td>保持当前航点/目标</td>
     </tr>
     <tr>
      <td>wp_dist</td>
      <td>uint16_t</td>
      <td>m</td>
-     <td>Distance to active waypoint</td>
+     <td>与有效航点的距离</td>
     </tr>
     <tr>
      <td>alt_error</td>
      <td>float</td>
      <td>m</td>
-     <td>Current altitude error</td>
+     <td>当前高度错误</td>
     </tr>
     <tr>
      <td>aspd_error</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Current airspeed error</td>
+     <td>当前空速错误</td>
     </tr>
     <tr>
      <td>xtrack_error</td>
      <td>float</td>
      <td>m</td>
-     <td>Current crosstrack error on x-y plane</td>
+     <td>当前存在x-y平面上的交叉误差</td>
     </tr>
    </tbody>
   </table>
@@ -19925,7 +19921,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ESTIMATOR_TYPE">MAV_ESTIMATOR_TYPE</a>
      </td>
-     <td>Class id of the estimator this estimate originated from.</td>
+     <td>估计量的类id。</td>
     </tr>
     <tr>
      <td>lat</td>
@@ -20016,9 +20012,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The filtered local position (e.g. fused computer vision and accelerometers). Coordinate frame is right-handed, Z-axis down (aeronautical frame, NED / north-east-down convention)</p>
+   经过处理的的局部位置(如 计算机视觉和加速计数据融合后)。 坐标框架是右手基准，Z轴向下(航空坐标系、NED / 东北下公约)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20306,11 +20300,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by SET_MESSAGE_INTERVAL (2015-08).</p>
+   替补SET_MESSAGE_INTERVAL (2015-08)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Request a data stream.</p>
+   请求数据流。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20326,7 +20318,7 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>The target requested to send the message stream.</td>
+     <td>请求发送消息流的目标。</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -20406,9 +20398,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>This message provides an API for manually controlling the vehicle using standard joystick axes nomenclature, along with a joystick-like input device. Unused axes can be disabled an buttons are also transmit as boolean values of their</p>
+   此消息提供了一个API，用于使用标准的操纵杆轴命名法手动控制载具，以及一个类似操纵杆的输入设备。 未使用的轴可以被禁用，按钮也可以作为其布尔值来传输</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20421,32 +20411,32 @@ y轴磁力计数据
     <tr>
      <td>target</td>
      <td>uint8_t</td>
-     <td>The system to be controlled.</td>
+     <td>要控制的系统。</td>
     </tr>
     <tr>
      <td>x</td>
      <td>int16_t</td>
-     <td>X-axis, normalized to the range [-1000,1000]. A value of INT16_MAX indicates that this axis is invalid. Generally corresponds to forward(1000)-backward(-1000) movement on a joystick and the pitch of a vehicle.</td>
+     <td>X轴，正常范围 [-1000,1000]。 INT16_MAX值表示此轴无效。 一般对应于操纵杆上向前(1000)-向后(-1000)的运动和载具的俯仰。</td>
     </tr>
     <tr>
      <td>y</td>
      <td>int16_t</td>
-     <td>Y-axis, normalized to the range [-1000,1000]. A value of INT16_MAX indicates that this axis is invalid. Generally corresponds to left(-1000)-right(1000) movement on a joystick and the roll of a vehicle.</td>
+     <td>Y轴，正常范围 [-1000,1000]。 INT16_MAX值表示此轴无效。 一般对应于操纵杆上向左(1000)-向右(-1000)的运动和载具的滚转。</td>
     </tr>
     <tr>
      <td>z</td>
      <td>int16_t</td>
-     <td>Z-axis, normalized to the range [-1000,1000]. A value of INT16_MAX indicates that this axis is invalid. Generally corresponds to a separate slider movement with maximum being 1000 and minimum being -1000 on a joystick and the thrust of a vehicle. Positive values are positive thrust, negative values are negative thrust.</td>
+     <td>Z-轴，正常为范围 [-1000,1000]。 INT16_MAX值表示此轴无效。 一般对应一个单独的滑块移动，最大1000和最小-1000在一个操纵杆和载具的前进动力。 正的值是正的推力，负的值是负的推力（倒车）。</td>
     </tr>
     <tr>
      <td>r</td>
      <td>int16_t</td>
-     <td>R-axis, normalized to the range [-1000,1000]. A value of INT16_MAX indicates that this axis is invalid. Generally corresponds to a twisting of the joystick, with counter-clockwise being 1000 and clockwise being -1000, and the yaw of a vehicle.</td>
+     <td>R-轴，正常范围 [-1000,1000]。 INT16_MAX值表示此轴无效。 一般对应于游戏杆的旋转，逆时针为 1000，顺时针为 -1000，以及载具的方位。</td>
     </tr>
     <tr>
      <td>buttons</td>
      <td>uint16_t</td>
-     <td>A bitfield corresponding to the joystick buttons' current state, 1 for pressed, 0 for released. The lowest bit corresponds to Button 1.</td>
+     <td>与操纵杆按钮当前状态对应的位字段，1表示按下，0表示释放。 最小位对应按钮 1。</td>
     </tr>
    </tbody>
   </table>
