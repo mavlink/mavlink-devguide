@@ -2210,7 +2210,7 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-08).</p>
      </td>
-     <td>Odometry local coordinate frame of data given by a motion capture system, Z-down (x: north, y: east, z: down).</td>
+     <td>运动捕捉系统给出的数据的测程局部坐标系， Z-down (X：北：东：东：z，z：下)</td>
     </tr>
     <tr id="MAV_FRAME_MOCAP_ENU">
      <td>15</td>
@@ -2219,7 +2219,7 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-08).</p>
      </td>
-     <td>Odometry local coordinate frame of data given by a motion capture system, Z-up (x: east, y: north, z: up).</td>
+     <td>运动捕捉系统给出的数据的测程局部坐标系， Z-上 (X：东：y：北：z：下)</td>
     </tr>
     <tr id="MAV_FRAME_VISION_NED">
      <td>16</td>
@@ -2228,7 +2228,7 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-08).</p>
      </td>
-     <td>Odometry local coordinate frame of data given by a vision estimation system, Z-down (x: north, y: east, z: down).</td>
+     <td>运动捕捉系统给出的数据的测程局部坐标系， Z-下 (X：北：y：东：z：下)</td>
     </tr>
     <tr id="MAV_FRAME_VISION_ENU">
      <td>17</td>
@@ -2237,7 +2237,7 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-08).</p>
      </td>
-     <td>Odometry local coordinate frame of data given by a vision estimation system, Z-up (x: east, y: north, z: up).</td>
+     <td>视觉估计系统给出的测程数据局部坐标系 Z-上 (X：东：y：北：z：下)</td>
     </tr>
     <tr id="MAV_FRAME_ESTIM_NED">
      <td>18</td>
@@ -2246,7 +2246,7 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-08).</p>
      </td>
-     <td>Odometry local coordinate frame of data given by an estimator running onboard the vehicle, Z-down (x: north, y: east, z: down).</td>
+     <td>载具上的里程估计系统给出的数据的测程局部坐标系， Z-下 (X：北：y：东：z：下)</td>
     </tr>
     <tr id="MAV_FRAME_ESTIM_ENU">
      <td>19</td>
@@ -2255,21 +2255,21 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-08).</p>
      </td>
-     <td>Odometry local coordinate frame of data given by an estimator running onboard the vehicle, Z-up (x: east, y: noth, z: up).</td>
+     <td>载具上的里程估计系统给出的数据的测程局部坐标系， Z-上 (X：东：y：北：z：下)</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_FRD">
      <td>20</td>
      <td>
       <a href="#MAV_FRAME_LOCAL_FRD">MAV_FRAME_LOCAL_FRD</a>
      </td>
-     <td>Forward, Right, Down coordinate frame. This is a local frame with Z-down and arbitrary F/R alignment (i.e. not aligned with NED/earth frame).</td>
+     <td>前，右，下坐标系。 这是一个z向下和任意F/R对齐的局部作坐标系（即不与NED/earth坐标系对齐)。</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_FLU">
      <td>21</td>
      <td>
       <a href="#MAV_FRAME_LOCAL_FLU">MAV_FRAME_LOCAL_FLU</a>
      </td>
-     <td>Forward, Left, Up coordinate frame. This is a local frame with Z-up and arbitrary F/L alignment (i.e. not aligned with ENU/earth frame).</td>
+     <td>向前, 左, 向上坐标系. 这是一个z向上和任意F/R对齐的局部作坐标系（即不与NED/earth坐标系对齐)。</td>
     </tr>
    </tbody>
   </table>
@@ -2368,35 +2368,35 @@
      <td>
       <a href="#FENCE_ACTION_NONE">FENCE_ACTION_NONE</a>
      </td>
-     <td>Disable fenced mode</td>
+     <td>禁用围栏模式</td>
     </tr>
     <tr id="FENCE_ACTION_GUIDED">
      <td>1</td>
      <td>
       <a href="#FENCE_ACTION_GUIDED">FENCE_ACTION_GUIDED</a>
      </td>
-     <td>Switched to guided mode to return point (fence point 0)</td>
+     <td>切换到引导模式，返回点(围栏点0)</td>
     </tr>
     <tr id="FENCE_ACTION_REPORT">
      <td>2</td>
      <td>
       <a href="#FENCE_ACTION_REPORT">FENCE_ACTION_REPORT</a>
      </td>
-     <td>Report fence breach, but don't take action</td>
+     <td>报告围栏被破坏，但不要采取行动</td>
     </tr>
     <tr id="FENCE_ACTION_GUIDED_THR_PASS">
      <td>3</td>
      <td>
       <a href="#FENCE_ACTION_GUIDED_THR_PASS">FENCE_ACTION_GUIDED_THR_PASS</a>
      </td>
-     <td>Switched to guided mode to return point (fence point 0) with manual throttle control</td>
+     <td>切换到引导模式返回点(起点0)，手动油门控制</td>
     </tr>
     <tr id="FENCE_ACTION_RTL">
      <td>4</td>
      <td>
       <a href="#FENCE_ACTION_RTL">FENCE_ACTION_RTL</a>
      </td>
-     <td>Switch to RTL (return to launch) mode and head for the return point.</td>
+     <td>切换到RTL(返回启动)模式，前往返回点。</td>
     </tr>
    </tbody>
   </table>
@@ -2858,9 +2858,7 @@
    <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Flags for high level gimbal manager operation The first 16 bytes are identical to the GIMBAL_DEVICE_FLAGS.</p>
+   高级云台管理器操作的标志前16个字节与GIMBAL_DEVICE_FLAGS相同。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2875,42 +2873,42 @@
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_RETRACT">GIMBAL_MANAGER_FLAGS_RETRACT</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_FLAGS_RETRACT</td>
+     <td>基于 GIMBAL_DEVICE_FLAGS_RETRACT</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_NEUTRAL">
      <td>2</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_NEUTRAL">GIMBAL_MANAGER_FLAGS_NEUTRAL</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_FLAGS_NEUTRAL</td>
+     <td>基于 GIMBAL_DEVICE_FLAGS_RETRACT</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_ROLL_LOCK">
      <td>4</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_ROLL_LOCK">GIMBAL_MANAGER_FLAGS_ROLL_LOCK</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_FLAGS_ROLL_LOCK</td>
+     <td>基于 GIMBAL_DEVICE_FLAGS_ROLL_LOCK</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_PITCH_LOCK">
      <td>8</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_PITCH_LOCK">GIMBAL_MANAGER_FLAGS_PITCH_LOCK</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_FLAGS_PITCH_LOCK</td>
+     <td>基于 GIMBAL_DEVICE_FLAGS_PITCH_LOCK</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_YAW_LOCK">
      <td>16</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_YAW_LOCK">GIMBAL_MANAGER_FLAGS_YAW_LOCK</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_FLAGS_YAW_LOCK</td>
+     <td>基于 GIMBAL_DEVICE_FLAGS_RETRACT</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH">
      <td>1048576</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH">GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH</a>
      </td>
-     <td>Scale angular velocity relative to focal length. This means the gimbal moves slower if it is zoomed in.</td>
+     <td>比例角速度相对于焦距。 当变焦放大之后，云台的移动速度会变慢</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_NUDGE">
      <td>2097152</td>
@@ -2939,9 +2937,7 @@
    <a href="#GIMBAL_DEVICE_ERROR_FLAGS">GIMBAL_DEVICE_ERROR_FLAGS</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Gimbal device (low level) error flags (bitmap, 0 means no error)</p>
+   云台(低等级)错误标志(位图，0表示无错误)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33386,7 +33382,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    用于填充OpenDroneID操作员ID消息的数据，其中包含CAA(民用航空局)颁发的操作员ID。</p>
   <table class="sortable">
@@ -33424,7 +33420,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    OpenDroneID消息包是多个已编码的OpenDroneID消息的容器(即不是上述消息描述的格式，而是编码为压缩后的OpenDroneID字节格式)。 用于蓝牙5.0远程/扩展广告或WiFi邻居感知网络传输。</p>
   <table class="sortable">
@@ -33441,21 +33437,21 @@ y轴磁力计数据
      <td>single_message_size</td>
      <td>uint8_t</td>
      <td>bytes</td>
-     <td>This field must currently always be equal to 25 bytes, since all encoded OpenDroneID messages are specificed to have this length.</td>
+     <td>该字段当前必须始终等于25字节，因为所有已编码的OpenDroneID消息都被指定为这个长度。</td>
     </tr>
     <tr>
      <td>msg_pack_size</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Number of encoded messages in the pack (not the number of bytes). Allowed range is 1 - 10.</td>
+     <td>包中已编码消息的数量(不是字节数)。 允许的范围是 1 - 10。</td>
     </tr>
     <tr>
      <td>messages</td>
      <td>uint8_t[250]</td>
      <td>
      </td>
-     <td>Concatenation of encoded OpenDroneID messages. Shall be filled with nulls in the unused portion of the field.</td>
+     <td>已编码的OpenDroneID消息的连接。 应在字段的未使用部分中填充空值。</td>
     </tr>
    </tbody>
   </table>
