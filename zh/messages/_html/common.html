@@ -33170,14 +33170,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Authentication message. The Authentication Message defines a field that can provide a means of authenticity for the identity of the UAS (Unmanned Aircraft System). The Authentication message can have two different formats. Five data pages are supported. For data page 0, the fields PageCount, Length and TimeStamp are present and AuthData is only 17 bytes. For data page 1 through 4, PageCount, Length and TimeStamp are not present and the size of AuthData is 23 bytes.</p>
+   用于填充OpenDroneID身份验证消息的数据。 身份验证消息定义了一个字段，该字段可以为UAS(无人驾驶飞机系统)的身份验证真实性方法。 身份验证消息可以有两种不同的格式。 支持五个数据页。 对于data page 0，存在PageCount、长度和时间戳字段，而验证数据只有17个字节。 对于数据页1到4，不存在PageCount、长度和时间戳，验证数据的大小为23字节。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33197,7 +33192,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_AUTH_TYPE">MAV_ODID_AUTH_TYPE</a>
      </td>
-     <td>Indicates the type of authentication.</td>
+     <td>身份验证的类型标识。</td>
     </tr>
     <tr>
      <td>data_page</td>
@@ -33208,7 +33203,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Allowed range is 0 - 4.</td>
+     <td>允许的范围是 0 - 4。</td>
     </tr>
     <tr>
      <td>page_count</td>
@@ -33219,7 +33214,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>This field is only present for page 0. Allowed range is 0 - 5.</td>
+     <td>此字段仅适用于第0页。 允许的范围是 0 - 5。</td>
     </tr>
     <tr>
      <td>length</td>
@@ -33229,7 +33224,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>This field is only present for page 0. Total bytes of authentication_data from all data pages. Allowed range is 0 - 109 (17 + 23*4).</td>
+     <td>此字段仅适用于第0页。 所有数据页面的身份验证数据的总字节。 允许的范围是 0 - 109 (17 + 23*4)。</td>
     </tr>
     <tr>
      <td>timestamp</td>
@@ -33239,7 +33234,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>This field is only present for page 0. 32 bit Unix Timestamp in seconds since 00:00:00 01/01/2019.</td>
+     <td>这个字段只出现在第0页。32位Unix时间戳(以秒为单位)，从00:00:00 01/01/2019开始。</td>
     </tr>
     <tr>
      <td>authentication_data</td>
@@ -33250,7 +33245,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Opaque authentication data. For page 0, the size is only 17 bytes. For other pages, the size is 23 bytes. Shall be filled with nulls in the unused portion of the field.</td>
+     <td>不透明的身份验证数据。 对于页面0，大小仅为17字节。 对于其他页面，大小为23字节。 应在字段的未使用部分中填充空值。</td>
     </tr>
    </tbody>
   </table>
@@ -33262,12 +33257,7 @@ y轴磁力计数据
   <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Self ID message. The Self ID Message is an opportunity for the operator to (optionally) declare their identity and purpose of the flight. This message can provide additional information that could reduce the threat profile of a UA (Unmanned Aircraft) flying in a particular area or manner.</p>
+   用于填充OpenDroneID自我ID消息的数据。 Self ID消息为操作员提供了一个机会(可选地)来声明他们的身份和飞行的目的。 这条信息可以提供额外的信息，可以减少在特定区域或方式飞行的UA(无人驾驶飞机)的威胁概况。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33284,7 +33274,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_DESC_TYPE">MAV_ODID_DESC_TYPE</a>
      </td>
-     <td>Indicates the type of the description field.</td>
+     <td>描述字段的类型。</td>
     </tr>
     <tr>
      <td>description</td>
@@ -33293,7 +33283,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Text description or numeric value expressed as ASCII characters. Shall be filled with nulls in the unused portion of the field.</td>
+     <td>用ASCII字符表示的文本描述或数值。 应在字段的未使用部分中填充空值。</td>
     </tr>
    </tbody>
   </table>
@@ -33305,12 +33295,7 @@ y轴磁力计数据
   <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Data for filling the OpenDroneID System message. The System Message contains general system information including the operator location and possible aircraft group information.</p>
+   用于填充OpenDroneID系统消息的数据。 系统信息包含一般系统信息，包括操作员位置和可能的机群信息。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33330,7 +33315,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_LOCATION_SRC">MAV_ODID_LOCATION_SRC</a>
      </td>
-     <td>Specifies the location source for the operator location.</td>
+     <td>指定运行人员位置的位置源。</td>
     </tr>
     <tr>
      <td>operator_latitude</td>
@@ -33340,7 +33325,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Latitude of the operator. If unknown: 0 (both Lat/Lon).</td>
+     <td>运营人的纬度。 如果未知： 0 (包括经纬度)。</td>
     </tr>
     <tr>
      <td>operator_longitude</td>
@@ -33350,7 +33335,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Longitude of the operator. If unknown: 0 (both Lat/Lon).</td>
+     <td>运营人的经度 如果未知： 0 (包括经纬度)。</td>
     </tr>
     <tr>
      <td>area_count</td>
@@ -33361,7 +33346,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Number of aircraft in the area, group or formation (default 1).</td>
+     <td>该区域、编队或编队中的飞机数量(默认为1架)。</td>
     </tr>
     <tr>
      <td>area_radius</td>
@@ -33371,7 +33356,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Radius of the cylindrical area of the group or formation (default 0).</td>
+     <td>组或组的圆柱形区域的半径(默认为0)。</td>
     </tr>
     <tr>
      <td>area_ceiling</td>
