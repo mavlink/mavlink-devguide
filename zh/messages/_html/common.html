@@ -2915,21 +2915,21 @@
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_NUDGE">GIMBAL_MANAGER_FLAGS_NUDGE</a>
      </td>
-     <td>Interpret attitude control on top of pointing to a location or tracking. If this flag is set, the quaternion is relative to the existing tracking angle.</td>
+     <td>解析指向某个位置或跟踪的姿态控制。 如果设置了此标志，则四元数相对于现有的跟踪角。</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_OVERRIDE">
      <td>4194304</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_OVERRIDE">GIMBAL_MANAGER_FLAGS_OVERRIDE</a>
      </td>
-     <td>Completely override pointing to a location or tracking. If this flag is set, the quaternion is (as usual) according to GIMBAL_MANAGER_FLAGS_YAW_LOCK.</td>
+     <td>完全覆盖指向一个位置或跟踪 如果设置了此标志，则四元数(通常)是根据GIMBAL_MANAGER_FLAGS_YAW_LOCK</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_NONE">
      <td>8388608</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_NONE">GIMBAL_MANAGER_FLAGS_NONE</a>
      </td>
-     <td>This flag can be set to give up control previously set using MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE. This flag must not be combined with other flags.</td>
+     <td>可以将此标志设置为放弃前面使用MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE设置的控制。 此标志不得与其他标志相结合。</td>
     </tr>
    </tbody>
   </table>
@@ -2952,56 +2952,56 @@
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT">GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT</a>
      </td>
-     <td>Gimbal device is limited by hardware roll limit.</td>
+     <td>云台装置受硬件滚转角度限制。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT">
      <td>2</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT">GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT</a>
      </td>
-     <td>Gimbal device is limited by hardware pitch limit.</td>
+     <td>云台设备受到硬件俯仰角度限制。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT">
      <td>4</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT">GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT</a>
      </td>
-     <td>Gimbal device is limited by hardware yaw limit.</td>
+     <td>云台设备受到硬件方位角度的限制。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR">
      <td>8</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR</a>
      </td>
-     <td>There is an error with the gimbal encoders.</td>
+     <td>与云台编码器发生错误。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR">
      <td>16</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR</a>
      </td>
-     <td>There is an error with the gimbal power source.</td>
+     <td>云台电源发生错误。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR">
      <td>32</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR</a>
      </td>
-     <td>There is an error with the gimbal motor's.</td>
+     <td>云台电机发生错误。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR">
      <td>64</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR</a>
      </td>
-     <td>There is an error with the gimbal's software.</td>
+     <td>云台l的软件有错误。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR">
      <td>128</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR</a>
      </td>
-     <td>There is an error with the gimbal's communication.</td>
+     <td>云台的通信有错误。</td>
     </tr>
    </tbody>
   </table>
@@ -3009,9 +3009,7 @@
    <a href="#UAVCAN_NODE_HEALTH">UAVCAN_NODE_HEALTH</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Generalized UAVCAN node health</p>
+   常规的 UAVCAN 节点健康状态</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3055,9 +3053,7 @@
    <a href="#UAVCAN_NODE_MODE">UAVCAN_NODE_MODE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Generalized UAVCAN node mode</p>
+   常规的 UAVCAN 节点模式</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3108,9 +3104,7 @@
    <a href="#STORAGE_STATUS">STORAGE_STATUS</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Flags to indicate the status of camera storage.</p>
+   表示摄像机存储状态的标志。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3154,9 +3148,7 @@
    <a href="#ORBIT_YAW_BEHAVIOUR">ORBIT_YAW_BEHAVIOUR</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Yaw behaviour during orbit flight.</p>
+   轨道飞行中的偏航行为。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3682,9 +3674,7 @@
    <a href="#MAV_MISSION_RESULT">MAV_MISSION_RESULT</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Result of mission operation (in a MISSION_ACK message).</p>
+   任务操作结果(在 MISSION_ACK 消息中)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3699,49 +3689,49 @@
      <td>
       <a href="#MAV_MISSION_ACCEPTED">MAV_MISSION_ACCEPTED</a>
      </td>
-     <td>mission accepted OK</td>
+     <td>任务接受成功</td>
     </tr>
     <tr id="MAV_MISSION_ERROR">
      <td>1</td>
      <td>
       <a href="#MAV_MISSION_ERROR">MAV_MISSION_ERROR</a>
      </td>
-     <td>Generic error / not accepting mission commands at all right now.</td>
+     <td>一般错误/现在完全不接受任务命令。</td>
     </tr>
     <tr id="MAV_MISSION_UNSUPPORTED_FRAME">
      <td>2</td>
      <td>
       <a href="#MAV_MISSION_UNSUPPORTED_FRAME">MAV_MISSION_UNSUPPORTED_FRAME</a>
      </td>
-     <td>Coordinate frame is not supported.</td>
+     <td>不支持坐标系。</td>
     </tr>
     <tr id="MAV_MISSION_UNSUPPORTED">
      <td>3</td>
      <td>
       <a href="#MAV_MISSION_UNSUPPORTED">MAV_MISSION_UNSUPPORTED</a>
      </td>
-     <td>Command is not supported.</td>
+     <td>不支持此命令。</td>
     </tr>
     <tr id="MAV_MISSION_NO_SPACE">
      <td>4</td>
      <td>
       <a href="#MAV_MISSION_NO_SPACE">MAV_MISSION_NO_SPACE</a>
      </td>
-     <td>Mission item exceeds storage space.</td>
+     <td>任务项超出存储空间。</td>
     </tr>
     <tr id="MAV_MISSION_INVALID">
      <td>5</td>
      <td>
       <a href="#MAV_MISSION_INVALID">MAV_MISSION_INVALID</a>
      </td>
-     <td>One of the parameters has an invalid value.</td>
+     <td>其中一个参数有一个无效值。</td>
     </tr>
     <tr id="MAV_MISSION_INVALID_PARAM1">
      <td>6</td>
      <td>
       <a href="#MAV_MISSION_INVALID_PARAM1">MAV_MISSION_INVALID_PARAM1</a>
      </td>
-     <td>param1 has an invalid value.</td>
+     <td>参数1 有一个无效值。</td>
     </tr>
     <tr id="MAV_MISSION_INVALID_PARAM2">
      <td>7</td>
@@ -3790,21 +3780,21 @@
      <td>
       <a href="#MAV_MISSION_INVALID_SEQUENCE">MAV_MISSION_INVALID_SEQUENCE</a>
      </td>
-     <td>Mission item received out of sequence</td>
+     <td>任务项目接收顺序错误</td>
     </tr>
     <tr id="MAV_MISSION_DENIED">
      <td>14</td>
      <td>
       <a href="#MAV_MISSION_DENIED">MAV_MISSION_DENIED</a>
      </td>
-     <td>Not accepting any mission commands from this communication partner.</td>
+     <td>不接受来自该通信伙伴的任何任务命令</td>
     </tr>
     <tr id="MAV_MISSION_OPERATION_CANCELLED">
      <td>15</td>
      <td>
       <a href="#MAV_MISSION_OPERATION_CANCELLED">MAV_MISSION_OPERATION_CANCELLED</a>
      </td>
-     <td>Current mission operation cancelled (e.g. mission upload, mission download).</td>
+     <td>当前任务操作取消(例如任务上传、任务下载)。</td>
     </tr>
    </tbody>
   </table>
