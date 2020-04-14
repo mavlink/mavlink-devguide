@@ -2,11 +2,11 @@
 
 着陆目标服务/信息从MAVLink定位系统向自动驾驶仪传达一个或多个目标的位置。 一个多旋翼机或VTOL系统可以使用该信息来着陆，其定位精度远远高于传统GPS提供的定位精度(GPS提供几米内的位置，而着陆目标系统可能合理地提供厘米级的精确着陆)。
 
-A positioning system might typically consist of an onboard companion computer with a vision system that can detect a light beacon or target image. Radio beacons and different types of visual markers and tags are also supported.
+定位系统通常由机载另一台计算机和视觉系统组成，能够探测到光信标或目标图像。 还支持无线电信标和不同类型的可视标记和标记。
 
 ## Protocol Messages
 
-The message used by this protocol is [LANDING_TARGET](../messages/common.md#LANDING_TARGET). This is *broadcast* by the positioning system to indicate the position of a particular target at a particular time.
+本协议使用的信息是 [LANDING_TARGET](../messages/common.md#LANDING_TARGET)。 这是通过定位系统*广播*来指示特定目标在特定时间的位置。
 
 > **Note** The required broadcast rate depends on the landing speed and desired accuracy; start with rates between 10 Hz and 50 Hz and tune performance as needed.
 
