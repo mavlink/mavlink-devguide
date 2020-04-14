@@ -1,6 +1,6 @@
 # Landing Target Protocol
 
-The landing target services/message communicates the position of one or more targets from MAVLink positioning system(s) to an autopilot. A multicopter or VTOL system can use the message to land with far greater positional accuracy than provided by conventional GPS (GPS provides position within several meters while a landing-target system might reasonably provide centimetre-level precision landing).
+着陆目标服务/信息从MAVLink定位系统向自动驾驶仪传达一个或多个目标的位置。 一个多旋翼机或VTOL系统可以使用该信息来着陆，其定位精度远远高于传统GPS提供的定位精度(GPS提供几米内的位置，而着陆目标系统可能合理地提供厘米级的精确着陆)。
 
 A positioning system might typically consist of an onboard companion computer with a vision system that can detect a light beacon or target image. Radio beacons and different types of visual markers and tags are also supported.
 
