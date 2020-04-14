@@ -21699,9 +21699,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Sets a desired vehicle position, velocity, and/or acceleration in a global coordinate system (WGS84). Used by an external controller to command the vehicle (manual controller or other system).</p>
+   在全局坐标系(WGS84)中设置所需的载具位置、速度和/或加速度。 通过外部控制系统控制载具（手动模式或其他系统）</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21721,7 +21719,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (time since system boot). The rationale for the timestamp in the setpoint is to allow the system to compensate for the transport delay of the setpoint. This allows the system to compensate processing latency.</td>
+     <td>时间戳(系统启动后的时间)。 设置点中的时间戳的基本原理是允许系统补偿设置点的传输延迟。 这允许系统补偿处理延迟。</td>
     </tr>
     <tr>
      <td>target_system</td>
@@ -21732,7 +21730,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -21743,7 +21741,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td>coordinate_frame</td>
@@ -21753,7 +21751,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
-     <td>Valid options are: MAV_FRAME_GLOBAL_INT = 5, MAV_FRAME_GLOBAL_RELATIVE_ALT_INT = 6, MAV_FRAME_GLOBAL_TERRAIN_ALT_INT = 11</td>
+     <td>有效选项为：MAV_FRAME_GLOBAL_INT = 5, MAV_FRAME_GLOBAL_RELATIVE_ALT_INT = 6, MAV_FRAME_GLOBAL_TERRAIN_ALT_INT = 11</td>
     </tr>
     <tr>
      <td>type_mask</td>
@@ -21773,7 +21771,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X Position in WGS84 frame</td>
+     <td>在WGS84坐标系中的 X 位置</td>
     </tr>
     <tr>
      <td>lon_int</td>
@@ -21783,7 +21781,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y Position in WGS84 frame</td>
+     <td>在WGS84坐标系中的Y 位置</td>
     </tr>
     <tr>
      <td>alt</td>
@@ -21793,7 +21791,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Altitude (MSL, Relative to home, or AGL - depending on frame)</td>
+     <td>高度(MSL，相对于home点，或AGL -取决于坐标系）</td>
     </tr>
     <tr>
      <td>vx</td>
@@ -21803,7 +21801,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X velocity in NED frame</td>
+     <td>NED 坐标系中的 X 速度</td>
     </tr>
     <tr>
      <td>vy</td>
@@ -21813,7 +21811,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y velocity in NED frame</td>
+     <td>NED 坐标系中的Y 速度</td>
     </tr>
     <tr>
      <td>vz</td>
@@ -21823,7 +21821,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Z velocity in NED frame</td>
+     <td>NED 坐标系中的Z速度</td>
     </tr>
     <tr>
      <td>afx</td>
@@ -21833,7 +21831,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
+     <td>以米/秒^2或N为单位的 NED坐标系中中的X 加速度或力(如果设置了 Bit10 的类型掩码)</td>
     </tr>
     <tr>
      <td>afy</td>
@@ -21843,7 +21841,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
+     <td>以米/秒^2或N为单位的 NED坐标系中的Y加速度或力(如果设置了 Bit10 的类型掩码)</td>
     </tr>
     <tr>
      <td>afz</td>
