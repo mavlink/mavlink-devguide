@@ -25588,7 +25588,7 @@ y轴磁力计数据
      <td>bottom_clearance</td>
      <td>float</td>
      <td>m</td>
-     <td>This is not the altitude, but the clear space below the system according to the fused clearance estimate. It generally should max out at the maximum range of e.g. the laser altimeter. It is generally a moving target. A negative value indicates no measurement available.</td>
+     <td>这不是高度，而是根据间隙融合估计下方的净空间范围 它通常应该在最大的范围，如激光高度计。 它通常是一个动态目标。 负值表示没有可用的测量</td>
     </tr>
    </tbody>
   </table>
@@ -25598,9 +25598,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The autopilot is requesting a resource (file, binary, other type of data)</p>
+   自动驾驶仪正在请求资源(文件、二进制文件、其他类型的数据)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25643,9 +25641,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Barometer readings for 3rd barometer</p>
+   3号气压计读数</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25688,9 +25684,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Current motion information from a designated system</p>
+   指定系统的当前运动信息</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25784,9 +25778,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The smoothed, monotonic system state used to feed the control loops of the system.</p>
+   平滑的、单调的系统状态，用于系统的控制回路使用</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26562,9 +26554,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Wind covariance estimate from vehicle.</p>
+   来自载具的风大小代码估计值。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28391,12 +28381,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Report button state change.</p>
+   报告按钮状态更改。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28485,12 +28470,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Information about a camera</p>
+   有关相机的信息</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28719,12 +28699,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Information about a storage medium. This message is sent in response to a request and whenever the status of the storage changes (STORAGE_STATUS).</p>
+   有关存储介质的信息。 当存储状态发生变化时(STORAGE_STATUS)，将发送此消息以响应请求。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28836,12 +28811,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Information about the status of a capture.</p>
+   有关捕获状态的信息。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28993,14 +28963,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Information about flight since last arming.</p>
+   自上次锁定以来的飞行信息。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29015,26 +28980,26 @@ y轴磁力计数据
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>arming_time_utc</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp at arming (time since UNIX epoch) in UTC, 0 for unknown</td>
+     <td>在UTC中，启动时的时间戳(从UNIX纪元开始的时间)，0表示未知</td>
     </tr>
     <tr>
      <td>takeoff_time_utc</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp at takeoff (time since UNIX epoch) in UTC, 0 for unknown</td>
+     <td>在UTC中起飞时的时间戳(从UNIX时代开始的时间)，0表示未知</td>
     </tr>
     <tr>
      <td>flight_uuid</td>
      <td>uint64_t</td>
      <td>
      </td>
-     <td>Universally unique identifier (UUID) of flight, should correspond to name of log files</td>
+     <td>飞行的通用唯一标识符(UUID)，应该与日志文件的名称相对应</td>
     </tr>
    </tbody>
   </table>
@@ -29106,12 +29071,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>A message containing logged data (see also MAV_CMD_LOGGING_START)</p>
+   包含日志数据的消息(也参见MAV_CMD_LOGGING_START)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29127,40 +29087,40 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>system ID of the target</td>
+     <td>目标的系统ID</td>
     </tr>
     <tr>
      <td>target_component</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>component ID of the target</td>
+     <td>目标的组件 ID</td>
     </tr>
     <tr>
      <td>sequence</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>sequence number (can wrap)</td>
+     <td>序列号 (可以换行)</td>
     </tr>
     <tr>
      <td>length</td>
      <td>uint8_t</td>
      <td>bytes</td>
-     <td>data length</td>
+     <td>数据长度</td>
     </tr>
     <tr>
      <td>first_message_offset</td>
      <td>uint8_t</td>
      <td>bytes</td>
-     <td>offset into data where first message starts. This can be used for recovery, when a previous message got lost (set to 255 if no start exists).</td>
+     <td>偏移到第一个消息开始的数据中。 当以前的消息丢失时(如果不存在start，则设置为255)，可以使用此值进行恢复。</td>
     </tr>
     <tr>
      <td>data</td>
      <td>uint8_t[249]</td>
      <td>
      </td>
-     <td>logged data</td>
+     <td>记录的数据</td>
     </tr>
    </tbody>
   </table>
@@ -29170,12 +29130,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>A message containing logged data which requires a LOGGING_ACK to be sent back</p>
+   包含日志数据的消息，需要返回一个LOGGING_ACK</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30965,12 +30920,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Obstacle distances in front of the sensor, starting from the left in increment degrees to the right</p>
+   传感器前面的障碍物距离，从左侧开始，向右侧递增角度</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31714,7 +31664,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Time of applicability of position (microseconds since UNIX epoch).</td>
+     <td>位置应用时间（以微秒为单位的UNIX时间）。</td>
     </tr>
     <tr>
      <td>uas_id</td>
@@ -31725,7 +31675,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Unique UAS ID.</td>
+     <td>唯一的UASID。</td>
     </tr>
     <tr>
      <td>lat</td>
@@ -31735,7 +31685,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Latitude (WGS84)</td>
+     <td>纬度(WGS84)</td>
     </tr>
     <tr>
      <td>lon</td>
@@ -31745,7 +31695,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Longitude (WGS84)</td>
+     <td>经度 (WGS84)</td>
     </tr>
     <tr>
      <td>alt</td>
@@ -31755,7 +31705,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Altitude (WGS84)</td>
+     <td>高度(WGS84)。</td>
     </tr>
     <tr>
      <td>relative_alt</td>
@@ -31765,7 +31715,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Altitude above ground</td>
+     <td>相对（地面）高度</td>
     </tr>
     <tr>
      <td>vx</td>
@@ -31775,7 +31725,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Ground X speed (latitude, positive north)</td>
+     <td>X方向的地面速度 (纬度, 正向北)</td>
     </tr>
     <tr>
      <td>vy</td>
@@ -31785,7 +31735,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Ground Y speed (longitude, positive east)</td>
+     <td>Y方向的地面速度 (经度, 正向东)</td>
     </tr>
     <tr>
      <td>vz</td>
@@ -31795,7 +31745,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Ground Z speed (altitude, positive down)</td>
+     <td>Z方向的地面速度 (高度, 正向下)</td>
     </tr>
     <tr>
      <td>h_acc</td>
@@ -31805,7 +31755,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Horizontal position uncertainty (standard deviation)</td>
+     <td>水平位置不确定性(标准偏差)</td>
     </tr>
     <tr>
      <td>v_acc</td>
@@ -31815,7 +31765,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Altitude uncertainty (standard deviation)</td>
+     <td>高度不确定性(标准偏差)</td>
     </tr>
     <tr>
      <td>vel_acc</td>
@@ -31825,7 +31775,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Speed uncertainty (standard deviation)</td>
+     <td>速度不确定性(标准偏差)</td>
     </tr>
     <tr>
      <td>next_lat</td>
@@ -31835,7 +31785,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Next waypoint, latitude (WGS84)</td>
+     <td>下一个航路点，纬度(WGS84)</td>
     </tr>
     <tr>
      <td>next_lon</td>
@@ -31855,7 +31805,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Next waypoint, altitude (WGS84)</td>
+     <td>下一个航点高度(WGS84)</td>
     </tr>
     <tr>
      <td>update_rate</td>
@@ -31865,7 +31815,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Time until next update. Set to 0 if unknown or in data driven mode.</td>
+     <td>下次更新之前的时间。 设置为0，如果未知或在数据驱动模式。</td>
     </tr>
     <tr>
      <td>flight_state</td>
@@ -31875,7 +31825,7 @@ y轴磁力计数据
      <td>
       <a href="#UTM_FLIGHT_STATE">UTM_FLIGHT_STATE</a>
      </td>
-     <td>Flight state</td>
+     <td>飞行状态</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -31885,7 +31835,7 @@ y轴磁力计数据
      <td>
       <a href="#UTM_DATA_AVAIL_FLAGS">UTM_DATA_AVAIL_FLAGS</a>
      </td>
-     <td>Bitwise OR combination of the data available flags.</td>
+     <td>按位或可用数据标志的组合。</td>
     </tr>
    </tbody>
   </table>
