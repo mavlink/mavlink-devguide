@@ -1,22 +1,22 @@
 # Open Drone ID (WIP)
 
-> **Note** The Open Drone ID messages are tagged in the definition file as "work in progress". They may still change and should not be used in production environments.
+> 备注：开放无人机ID信息在定义文件中被标记为“正在工作”。 它们可能仍在变化，不应在生产环境中使用。
 
-The ASTM Remote ID standard has been defined to specify how drones can publish their ID, location, altitude etc. either via direct broadcast, Bluetooth or WiFi NaN (Neighbor aware Network), or via an internet connection to a Remote ID server.
+ASTM远程识别标准已被定义为指定无人机如何发布它们的识别号、位置、高度等。 可以通过直接广播、蓝牙或WiFi NaN(邻居感知网络)，也可以通过internet连接到远程ID服务器
 
-The standard is available at https://www.astm.org/Standards/F3411.htm.
+标准见https://www.astm.org/Standards/F3411.htm。
 
-Particularly the broadcast method used with Bluetooth Legacy Advertising signals impose a strict size limitation for the amount of data that can be transmitted in each broadcast "ping". Therefore the relevant data is divided into different categories and each category is transmitted via it's own message.
+特别是与蓝牙传统的广告信号一起使用的广播方法对每个广播“ping”中可以传输的数据量施加了严格的大小限制。 因此，将相关数据划分为不同的类别，每个类别通过自己的消息进行传输。
 
-The ASTM Remote ID standard defines 6 such messages and an additional seventh message type for packing multiple messages together into a message pack (used when transmitting on WiFi NaN or Bluetooth Long Range with Extended Advertising). To support easy data transfers to/from a drone ID transmitter/receiver, MAVLink messages supporting all the fields of the drone ID messages have been made available.
+ASTM远程ID标准定义了6个这样的消息和一个额外的第七种消息类型，用于将多个消息打包到一个消息包中(用于WiFi NaN或蓝牙远程传输，并有扩展公告 为了支持无人机ID发送/接收之间的数据传输，支持无人机ID消息所有字段的MAVLink消息已经可用。
 
-There are multiple possible use cases for the Mavlink drone ID messages:
-* A flight controller sends ID, location etc. data to an onboard Bluetooth/WiFi transmitter module.
-* An onboard Bluetooth/WiFi receiver module picks up ASTM drone ID messages from surrounding aircrafts, relays this information using Mavlink drone ID messages to the flight controller, which then uses the information e.g. for detect-and-avoid calculations.
-* A drone sends MAVLink drone ID messages via it's control link to the ground control station. The ground control station is connected via the Internet to a Remote ID server, which stores and publishes the drone's location etc.
-* As above but in the other direction for detect-and-avoid calculations.
+Mavlink无人机ID消息有多个可能的用例:
+* 飞行控制器发送ID，位置等信息。 数据传输到机载蓝牙/WiFi传输模块。
+* 机载的蓝牙/WiFi接收模块从周围的飞机上获取ASTM无人机ID信息，使用Mavlink无人机ID信息将这些信息传递给飞行控制器，然后飞行控制器使用这些信息，例如用于探测和避免计算。
+* 无人机通过它的控制链路向地面控制站发送MAVLink无人机ID信息。 地面控制站通过互联网连接到一个远程身份服务器，该服务器存储和发布无人机的位置等。
+* 如上所述，但另一方方面上进行探测和避免计算。
 
-The ASTM/MAVLink messages are listed below.
+ASTM/MAVLink 消息列于下面。
 
 | ASTM           | MAVLink                                                                              | Purpose                                                                                                                                                        |
 | -------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
