@@ -3632,35 +3632,35 @@
      <td>
       <a href="#MAV_RESULT_TEMPORARILY_REJECTED">MAV_RESULT_TEMPORARILY_REJECTED</a>
      </td>
-     <td>Command is valid, but cannot be executed at this time. This is used to indicate a problem that should be fixed just by waiting (e.g. a state machine is busy, can't arm because have not got GPS lock, etc.). Retrying later should work.</td>
+     <td>命令有效，但此时无法执行。 这是用来表示应该通过等待来修复的问题（例如，状态机很忙，不能使用arm，因为没有GPS锁，等等。） 稍后重试应该可以。</td>
     </tr>
     <tr id="MAV_RESULT_DENIED">
      <td>2</td>
      <td>
       <a href="#MAV_RESULT_DENIED">MAV_RESULT_DENIED</a>
      </td>
-     <td>Command is invalid (is supported but has invalid parameters). Retrying same command and parameters will not work.</td>
+     <td>指令无效(支持但参数无效)。 重试相同的命令和参数将无法工作。</td>
     </tr>
     <tr id="MAV_RESULT_UNSUPPORTED">
      <td>3</td>
      <td>
       <a href="#MAV_RESULT_UNSUPPORTED">MAV_RESULT_UNSUPPORTED</a>
      </td>
-     <td>Command is not supported (unknown).</td>
+     <td>不支持指令(未知)。</td>
     </tr>
     <tr id="MAV_RESULT_FAILED">
      <td>4</td>
      <td>
       <a href="#MAV_RESULT_FAILED">MAV_RESULT_FAILED</a>
      </td>
-     <td>Command is valid, but execution has failed. This is used to indicate any non-temporary or unexpected problem, i.e. any problem that must be fixed before the command can succeed/be retried. For example, attempting to write a file when out of memory, attempting to arm when sensors are not calibrated, etc.</td>
+     <td>指令有效，但执行失败。 这用于指示任何非临时或意外的问题，即在命令成功/重试之前必须修复的任何问题。 例如当内存不足时尝试写文件，当传感器没有校准时尝试arm，等等。</td>
     </tr>
     <tr id="MAV_RESULT_IN_PROGRESS">
      <td>5</td>
      <td>
       <a href="#MAV_RESULT_IN_PROGRESS">MAV_RESULT_IN_PROGRESS</a>
      </td>
-     <td>Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further COMMAND_ACK messages with result MAV_RESULT_IN_PROGRESS (at a rate decided by the implementation), and must terminate by sending a COMMAND_ACK message with final result of the operation. The COMMAND_ACK.progress field can be used to indicate the progress of the operation. There is no need for the sender to retry the command, but if done during execution, the component will return MAV_RESULT_IN_PROGRESS with an updated progress.</td>
+     <td>指令是有效的，正在执行。 这之后会有进一步的进展更新，组件可能会进一步发送带有结果MAV_RESULT_IN_PROGRESS的COMMAND_ACK消息(以实现决定的速率)，并且必须通过发送带有操作最终结果的COMMAND_ACK消息来终止。 COMMAND_ACK。进度字段可用于指示操作的进度 发送方不需要重试命令，但是如果在执行期间执行，则组件将返回MAV_RESULT_IN_PROGRESS和更新的进度。</td>
     </tr>
    </tbody>
   </table>
@@ -3883,42 +3883,42 @@
      <td>
       <a href="#MAV_POWER_STATUS_BRICK_VALID">MAV_POWER_STATUS_BRICK_VALID</a>
      </td>
-     <td>main brick power supply valid</td>
+     <td>主供电有效</td>
     </tr>
     <tr id="MAV_POWER_STATUS_SERVO_VALID">
      <td>2</td>
      <td>
       <a href="#MAV_POWER_STATUS_SERVO_VALID">MAV_POWER_STATUS_SERVO_VALID</a>
      </td>
-     <td>main servo power supply valid for FMU</td>
+     <td>主伺服电源适用于FMU</td>
     </tr>
     <tr id="MAV_POWER_STATUS_USB_CONNECTED">
      <td>4</td>
      <td>
       <a href="#MAV_POWER_STATUS_USB_CONNECTED">MAV_POWER_STATUS_USB_CONNECTED</a>
      </td>
-     <td>USB power is connected</td>
+     <td>USB电源已连接</td>
     </tr>
     <tr id="MAV_POWER_STATUS_PERIPH_OVERCURRENT">
      <td>8</td>
      <td>
       <a href="#MAV_POWER_STATUS_PERIPH_OVERCURRENT">MAV_POWER_STATUS_PERIPH_OVERCURRENT</a>
      </td>
-     <td>peripheral supply is in over-current state</td>
+     <td>外围电源处于过流状态</td>
     </tr>
     <tr id="MAV_POWER_STATUS_PERIPH_HIPOWER_OVERCURRENT">
      <td>16</td>
      <td>
       <a href="#MAV_POWER_STATUS_PERIPH_HIPOWER_OVERCURRENT">MAV_POWER_STATUS_PERIPH_HIPOWER_OVERCURRENT</a>
      </td>
-     <td>hi-power peripheral supply is in over-current state</td>
+     <td>大功率外围电源处于过流状态</td>
     </tr>
     <tr id="MAV_POWER_STATUS_CHANGED">
      <td>32</td>
      <td>
       <a href="#MAV_POWER_STATUS_CHANGED">MAV_POWER_STATUS_CHANGED</a>
      </td>
-     <td>Power status has changed since boot</td>
+     <td>开机后电源状态改变</td>
     </tr>
    </tbody>
   </table>
@@ -3928,7 +3928,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>SERIAL_CONTROL device types</p>
+   </a>SERIAL_CONTROL设备类型</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -4480,14 +4480,14 @@
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT">MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT</a>
      </td>
-     <td>Autopilot supports MISSION float message type.</td>
+     <td>自动驾驶仪支持任务浮动消息类型。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT">
      <td>2</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT">MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT</a>
      </td>
-     <td>Autopilot supports the new param float message type.</td>
+     <td>自驾仪支持新的参数浮动消息类型。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_MISSION_INT">
      <td>4</td>
@@ -4803,21 +4803,21 @@
      <td>
       <a href="#MAV_BATTERY_FUNCTION_PROPULSION">MAV_BATTERY_FUNCTION_PROPULSION</a>
      </td>
-     <td>Battery for the propulsion system</td>
+     <td>推进系统的电池</td>
     </tr>
     <tr id="MAV_BATTERY_FUNCTION_AVIONICS">
      <td>3</td>
      <td>
       <a href="#MAV_BATTERY_FUNCTION_AVIONICS">MAV_BATTERY_FUNCTION_AVIONICS</a>
      </td>
-     <td>Avionics battery</td>
+     <td>航空电子设备的电池</td>
     </tr>
     <tr id="MAV_BATTERY_TYPE_PAYLOAD">
      <td>4</td>
      <td>
       <a href="#MAV_BATTERY_TYPE_PAYLOAD">MAV_BATTERY_TYPE_PAYLOAD</a>
      </td>
-     <td>Payload battery</td>
+     <td>任务载荷电池</td>
     </tr>
    </tbody>
   </table>
