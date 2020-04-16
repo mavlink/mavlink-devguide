@@ -1267,7 +1267,7 @@
     <tr id="MAV_COMP_ID_USER39">
      <td>63</td>
      <td>
-      <a href="#MAV_COMP_ID_USER39">63</a>
+      <a href="#MAV_COMP_ID_USER39">MAV_COMP_ID_USER39</a>
      </td>
      <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
     </tr>
@@ -3161,35 +3161,35 @@
      <td>
       <a href="#ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TO_CIRCLE_CENTER">ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TO_CIRCLE_CENTER</a>
      </td>
-     <td>Vehicle front points to the center (default).</td>
+     <td>车辆前端指向中心(默认)。</td>
     </tr>
     <tr id="ORBIT_YAW_BEHAVIOUR_HOLD_INITIAL_HEADING">
      <td>1</td>
      <td>
       <a href="#ORBIT_YAW_BEHAVIOUR_HOLD_INITIAL_HEADING">ORBIT_YAW_BEHAVIOUR_HOLD_INITIAL_HEADING</a>
      </td>
-     <td>Vehicle front holds heading when message received.</td>
+     <td>接收到信息后，机体前部保持航向。</td>
     </tr>
     <tr id="ORBIT_YAW_BEHAVIOUR_UNCONTROLLED">
      <td>2</td>
      <td>
       <a href="#ORBIT_YAW_BEHAVIOUR_UNCONTROLLED">ORBIT_YAW_BEHAVIOUR_UNCONTROLLED</a>
      </td>
-     <td>Yaw uncontrolled.</td>
+     <td>偏航不受控制。</td>
     </tr>
     <tr id="ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE">
      <td>3</td>
      <td>
       <a href="#ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE">ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE</a>
      </td>
-     <td>Vehicle front follows flight path (tangential to circle).</td>
+     <td>车辆前沿飞行路线(切向圆周)行驶。</td>
     </tr>
     <tr id="ORBIT_YAW_BEHAVIOUR_RC_CONTROLLED">
      <td>4</td>
      <td>
       <a href="#ORBIT_YAW_BEHAVIOUR_RC_CONTROLLED">ORBIT_YAW_BEHAVIOUR_RC_CONTROLLED</a>
      </td>
-     <td>Yaw controlled by RC input.</td>
+     <td>由遥控端输入控制的方位</td>
     </tr>
    </tbody>
   </table>
@@ -3363,7 +3363,7 @@
      <td>
       <a href="#MAV_CMD_ACK_ERR_FAIL">MAV_CMD_ACK_ERR_FAIL</a>
      </td>
-     <td>Generic error message if none of the other reasons fails or if no detailed error reporting is implemented.</td>
+     <td>如果其他原因都没有失败，或者没有实现详细的错误报告，则发出通用错误消息。</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_ACCESS_DENIED">
      <td>
@@ -3371,7 +3371,7 @@
      <td>
       <a href="#MAV_CMD_ACK_ERR_ACCESS_DENIED">MAV_CMD_ACK_ERR_ACCESS_DENIED</a>
      </td>
-     <td>The system is refusing to accept this command from this source / communication partner.</td>
+     <td>系统拒绝接受来自此源/通信伙伴的此命令。</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_NOT_SUPPORTED">
      <td>
@@ -3379,7 +3379,7 @@
      <td>
       <a href="#MAV_CMD_ACK_ERR_NOT_SUPPORTED">MAV_CMD_ACK_ERR_NOT_SUPPORTED</a>
      </td>
-     <td>Command or mission item is not supported, other commands would be accepted.</td>
+     <td>不支持指令和任务项，可以接受其他指令。</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_COORDINATE_FRAME_NOT_SUPPORTED">
      <td>
@@ -3387,7 +3387,7 @@
      <td>
       <a href="#MAV_CMD_ACK_ERR_COORDINATE_FRAME_NOT_SUPPORTED">MAV_CMD_ACK_ERR_COORDINATE_FRAME_NOT_SUPPORTED</a>
      </td>
-     <td>The coordinate frame of this command / mission item is not supported.</td>
+     <td>不支持此命令/任务项的坐标系。</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_COORDINATES_OUT_OF_RANGE">
      <td>
@@ -3395,7 +3395,7 @@
      <td>
       <a href="#MAV_CMD_ACK_ERR_COORDINATES_OUT_OF_RANGE">MAV_CMD_ACK_ERR_COORDINATES_OUT_OF_RANGE</a>
      </td>
-     <td>The coordinate frame of this command is ok, but he coordinate values exceed the safety limits of this system. This is a generic error, please use the more specific error messages below if possible.</td>
+     <td>这个指令的坐标系是可以的，但是它的坐标值超过了这个系统的安全极限。 这是一个通用错误，如果可能，请使用下面更具体的错误消息。</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_X_LAT_OUT_OF_RANGE">
      <td>
@@ -3403,7 +3403,7 @@
      <td>
       <a href="#MAV_CMD_ACK_ERR_X_LAT_OUT_OF_RANGE">MAV_CMD_ACK_ERR_X_LAT_OUT_OF_RANGE</a>
      </td>
-     <td>The X or latitude value is out of range.</td>
+     <td>X或纬度值超出范围。</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_Y_LON_OUT_OF_RANGE">
      <td>
@@ -3411,7 +3411,7 @@
      <td>
       <a href="#MAV_CMD_ACK_ERR_Y_LON_OUT_OF_RANGE">MAV_CMD_ACK_ERR_Y_LON_OUT_OF_RANGE</a>
      </td>
-     <td>The Y or longitude value is out of range.</td>
+     <td>Y或经度值超出范围。</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_Z_ALT_OUT_OF_RANGE">
      <td>
@@ -3419,7 +3419,7 @@
      <td>
       <a href="#MAV_CMD_ACK_ERR_Z_ALT_OUT_OF_RANGE">MAV_CMD_ACK_ERR_Z_ALT_OUT_OF_RANGE</a>
      </td>
-     <td>The Z or altitude value is out of range.</td>
+     <td>Z或高度值超出范围。</td>
     </tr>
    </tbody>
   </table>
@@ -3625,7 +3625,7 @@
      <td>
       <a href="#MAV_RESULT_ACCEPTED">MAV_RESULT_ACCEPTED</a>
      </td>
-     <td>Command is valid (is supported and has valid parameters), and was executed.</td>
+     <td>指令是有效的(受支持并且有有效的参数)，并且被执行。</td>
     </tr>
     <tr id="MAV_RESULT_TEMPORARILY_REJECTED">
      <td>1</td>
