@@ -2422,28 +2422,28 @@
      <td>
       <a href="#FENCE_BREACH_NONE">FENCE_BREACH_NONE</a>
      </td>
-     <td>No last fence breach</td>
+     <td>没有违反围栏的行为</td>
     </tr>
     <tr id="FENCE_BREACH_MINALT">
      <td>1</td>
      <td>
       <a href="#FENCE_BREACH_MINALT">FENCE_BREACH_MINALT</a>
      </td>
-     <td>Breached minimum altitude</td>
+     <td>触发最低高度</td>
     </tr>
     <tr id="FENCE_BREACH_MAXALT">
      <td>2</td>
      <td>
       <a href="#FENCE_BREACH_MAXALT">FENCE_BREACH_MAXALT</a>
      </td>
-     <td>Breached maximum altitude</td>
+     <td>触发最高高度</td>
     </tr>
     <tr id="FENCE_BREACH_BOUNDARY">
      <td>3</td>
      <td>
       <a href="#FENCE_BREACH_BOUNDARY">FENCE_BREACH_BOUNDARY</a>
      </td>
-     <td>Breached fence boundary</td>
+     <td>越过围栏边界</td>
     </tr>
    </tbody>
   </table>
@@ -30950,12 +30950,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Odometry message to communicate odometry information with an external interface. Fits ROS REP 147 standard for aerial vehicles (http://www.ros.org/reps/rep-0147.html).</p>
+   通过外部测距通讯测距信息传输的测距消息 Fits ROS REP 147 standard for aerial vehicles (http://www.ros.org/reps/rep-0147.html).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31490,55 +31485,55 @@ y轴磁力计数据
      <td>timestamp</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>last_heartbeat</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp of the last successful sbd session. The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>最后一次成功的 sbd 会话的时间戳。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>failed_sessions</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>Number of failed SBD sessions.</td>
+     <td>失败的SBD会话的数量。</td>
     </tr>
     <tr>
      <td>successful_sessions</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>Number of successful SBD sessions.</td>
+     <td>成功的SBD会话的数量。</td>
     </tr>
     <tr>
      <td>signal_quality</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Signal quality equal to the number of bars displayed on the ISU signal strength indicator. Range is 0 to 5, where 0 indicates no signal and 5 indicates maximum signal strength.</td>
+     <td>信号质量等于ISU信号强度指示器上显示的条数。 范围为0到5，其中0表示无信号，5表示最大信号强度。</td>
     </tr>
     <tr>
      <td>ring_pending</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>1: Ring call pending, 0: No call pending.</td>
+     <td>1: 呼叫待拨，0: 没有待拨。</td>
     </tr>
     <tr>
      <td>tx_session_pending</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>1: Transmission session pending, 0: No transmission session pending.</td>
+     <td>1： 尚待转发会议，0： 未等待转发会议。</td>
     </tr>
     <tr>
      <td>rx_session_pending</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>1: Receiving session pending, 0: No receiving session pending.</td>
+     <td>1：收到待决会议，0：没有收到待定会话。</td>
     </tr>
    </tbody>
   </table>
@@ -32085,12 +32080,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>The raw values of the actuator outputs (e.g. on Pixhawk, from MAIN, AUX ports). This message supersedes SERVO_OUTPUT_RAW.</p>
+   执行器输出的原始值(例如在Pixhawk上，来自主端口，辅助端口)。 此消息取代SERVO_OUTPUT_RAW。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32112,14 +32102,14 @@ y轴磁力计数据
      <td>uint32_t</td>
      <td>
      </td>
-     <td>Active outputs</td>
+     <td>活动的输出</td>
     </tr>
     <tr>
      <td>actuator</td>
      <td>float[32]</td>
      <td>
      </td>
-     <td>Servo / motor output array values. Zero values indicate unused channels.</td>
+     <td>伺服/电机输出数组值。 零值表示未使用的通道。</td>
     </tr>
    </tbody>
   </table>
@@ -32405,12 +32395,7 @@ y轴磁力计数据
   <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Information about a component. For camera components instead use CAMERA_INFORMATION, and for autopilots use AUTOPILOT_VERSION. Components including GCSes should consider supporting requests of this message via MAV_CMD_REQUEST_MESSAGE.</p>
+   关于组件的信息。 对于相机组件，使用CAMERA_INFORMATION，对于自动驾驶，使用AUTOPILOT_VERSION。 包括GCSes在内的组件应该考虑通过MAV_CMD_REQUEST_MESSAGE支持此消息的请求。</p>
   <table class="sortable">
    <thead>
     <tr>
