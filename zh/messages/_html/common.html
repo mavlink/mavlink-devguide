@@ -6739,7 +6739,7 @@
      <td>
       <a href="#PRECISION_LAND_MODE_REQUIRED">PRECISION_LAND_MODE_REQUIRED</a>
      </td>
-     <td>Use precision landing, searching for beacon if not found when land command accepted (land normally if beacon cannot be found).</td>
+     <td>使用精确着陆，但收到降落指令时没有搜索到信标(如未能找到航标，则正常着陆)。</td>
     </tr>
    </tbody>
   </table>
@@ -6765,21 +6765,21 @@
      <td>
       <a href="#PARACHUTE_DISABLE">PARACHUTE_DISABLE</a>
      </td>
-     <td>Disable parachute release.</td>
+     <td>禁用降落伞释放。</td>
     </tr>
     <tr id="PARACHUTE_ENABLE">
      <td>1</td>
      <td>
       <a href="#PARACHUTE_ENABLE">PARACHUTE_ENABLE</a>
      </td>
-     <td>Enable parachute release.</td>
+     <td>启用降落伞释放。</td>
     </tr>
     <tr id="PARACHUTE_RELEASE">
      <td>2</td>
      <td>
       <a href="#PARACHUTE_RELEASE">PARACHUTE_RELEASE</a>
      </td>
-     <td>Release parachute.</td>
+     <td>释放降落伞。</td>
     </tr>
    </tbody>
   </table>
@@ -6812,7 +6812,7 @@
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0</a>
      </td>
-     <td>Registered for STorM32 gimbal controller.</td>
+     <td>注册到 STorM32 云台控制器。</td>
     </tr>
     <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED1">
      <td>201</td>
@@ -8121,7 +8121,7 @@
      <td>
       <a href="#AIS_TYPE_SAR">AIS_TYPE_SAR</a>
      </td>
-     <td>Search And Rescue vessel.</td>
+     <td>搜索救援船只。</td>
     </tr>
     <tr id="AIS_TYPE_TUG">
      <td>52</td>
@@ -8144,7 +8144,7 @@
      <td>
       <a href="#AIS_TYPE_ANTI_POLLUTION">AIS_TYPE_ANTI_POLLUTION</a>
      </td>
-     <td>Anti-pollution equipment.</td>
+     <td>防污染设备。</td>
     </tr>
     <tr id="AIS_TYPE_LAW_ENFORCEMENT">
      <td>55</td>
@@ -8183,7 +8183,8 @@
      <td>
       <a href="#AIS_TYPE_NONECOMBATANT">AIS_TYPE_NONECOMBATANT</a>
      </td>
-     <td>Noncombatant ship according to RR Resolution No. 18.</td>
+     <td>根据RR NO.18号决议的非战斗船。
+ 18.</td>
     </tr>
     <tr id="AIS_TYPE_PASSENGER">
      <td>60</td>
@@ -8511,9 +8512,7 @@
    <a href="#AIS_NAV_STATUS">AIS_NAV_STATUS</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Navigational status of AIS vessel, enum duplicated from AIS standard, https://gpsd.gitlab.io/gpsd/AIVDM.html</p>
+   AIS船舶航行状态，enum复制自AIS标准，https://gpsd.gitlab.io/gpsd/AIVDM.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -8528,7 +8527,7 @@
      <td>
       <a href="#UNDER_WAY">UNDER_WAY</a>
      </td>
-     <td>Under way using engine.</td>
+     <td>正在使用引擎。</td>
     </tr>
     <tr id="AIS_NAV_ANCHORED">
      <td>1</td>
@@ -8639,14 +8638,14 @@
      <td>
       <a href="#AIS_NAV_AIS_SART">AIS_NAV_AIS_SART</a>
      </td>
-     <td>Search And Rescue Transponder.</td>
+     <td>搜救应答器。</td>
     </tr>
     <tr id="AIS_NAV_UNKNOWN">
      <td>15</td>
      <td>
       <a href="#AIS_NAV_UNKNOWN">AIS_NAV_UNKNOWN</a>
      </td>
-     <td>Not available (default).</td>
+     <td>不可用(默认)。</td>
     </tr>
    </tbody>
   </table>
@@ -8769,9 +8768,7 @@
    <a href="#FAILURE_UNIT">FAILURE_UNIT</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>List of possible units where failures can be injected.</p>
+   可以产生故障的可能单元的列表。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -8899,9 +8896,7 @@
    <a href="#FAILURE_TYPE">FAILURE_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>List of possible failure type to inject.</p>
+   可能的故障类型列表</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -8916,56 +8911,56 @@
      <td>
       <a href="#FAILURE_TYPE_OK">FAILURE_TYPE_OK</a>
      </td>
-     <td>No failure injected, used to reset a previous failure.</td>
+     <td>没有失败输入，用于重置以前的失败。</td>
     </tr>
     <tr id="FAILURE_TYPE_OFF">
      <td>1</td>
      <td>
       <a href="#FAILURE_TYPE_OFF">FAILURE_TYPE_OFF</a>
      </td>
-     <td>Sets unit off, so completely non-responsive.</td>
+     <td>关闭设备，因此完全无响应性。</td>
     </tr>
     <tr id="FAILURE_TYPE_STUCK">
      <td>2</td>
      <td>
       <a href="#FAILURE_TYPE_STUCK">FAILURE_TYPE_STUCK</a>
      </td>
-     <td>Unit is stuck e.g. keeps reporting the same value.</td>
+     <td>设备卡住了，比如一直报告相同的数值。</td>
     </tr>
     <tr id="FAILURE_TYPE_GARBAGE">
      <td>3</td>
      <td>
       <a href="#FAILURE_TYPE_GARBAGE">FAILURE_TYPE_GARBAGE</a>
      </td>
-     <td>Unit is reporting complete garbage.</td>
+     <td>设备提供的数据都是无效数据</td>
     </tr>
     <tr id="FAILURE_TYPE_WRONG">
      <td>4</td>
      <td>
       <a href="#FAILURE_TYPE_WRONG">FAILURE_TYPE_WRONG</a>
      </td>
-     <td>Unit is consistently wrong.</td>
+     <td>设备一直处于错误状态</td>
     </tr>
     <tr id="FAILURE_TYPE_SLOW">
      <td>5</td>
      <td>
       <a href="#FAILURE_TYPE_SLOW">FAILURE_TYPE_SLOW</a>
      </td>
-     <td>Unit is slow, so e.g. reporting at slower than expected rate.</td>
+     <td>单位缓慢，因此报告速度比预期要慢。</td>
     </tr>
     <tr id="FAILURE_TYPE_DELAYED">
      <td>6</td>
      <td>
       <a href="#FAILURE_TYPE_DELAYED">FAILURE_TYPE_DELAYED</a>
      </td>
-     <td>Data of unit is delayed in time.</td>
+     <td>单位数据被延迟。</td>
     </tr>
     <tr id="FAILURE_TYPE_INTERMITTENT">
      <td>7</td>
      <td>
       <a href="#FAILURE_TYPE_INTERMITTENT">FAILURE_TYPE_INTERMITTENT</a>
      </td>
-     <td>Unit is sometimes working, sometimes not.</td>
+     <td>设备有时候正常，有时候不正常</td>
     </tr>
    </tbody>
   </table>
