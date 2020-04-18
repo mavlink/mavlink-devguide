@@ -14498,7 +14498,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>4: Sequence Number</td>
-     <td>从1开始拍照序列号。 这只对单张拍摄有效(param3 == 1)。 Increment the capture ID for each capture command to prevent double captures when a command is re-transmitted. Use 0 to ignore it.</td>
+     <td>从1开始拍照序列号。 这只对单张拍摄有效(param3 == 1)。 增加每个捕获命令的捕获ID，以防止在重新传输命令时重复捕获。 使用 0 来忽略它。</td>
      <td>
       <em>min:</em>1 <em>increment:</em>1</td>
      <td>
@@ -14506,7 +14506,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>5</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
      <td>
@@ -14529,11 +14529,11 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Reserved (Set to 0)</td>
+     <td>保留(设置为0)</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
     </tr>
    </tbody>
   </table>
@@ -14543,9 +14543,7 @@ MAV_CMD_NAV_ROI)。</p>
   <p style="color:red">
    生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Re-request a CAMERA_IMAGE_CAPTURE message. Use NaN for reserved values.</p>
+   重新请求CAMERA_IMAGE_CAPTURE消息。 使用NAN作为保留值。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14557,13 +14555,13 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Number</td>
-     <td>Sequence number for missing CAMERA_IMAGE_CAPTURE message</td>
+     <td>丢失的 CAMERA_IMAGE_CAPTURE 消息的序列号</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -14585,7 +14583,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Enable</td>
-     <td>Trigger enable/disable (0 for disable, 1 for start), -1 to ignore</td>
+     <td>触发器启用/禁用 (0 禁用, 1 开始), -1 忽略。</td>
      <td>
       <em>min:</em>
       -1 
@@ -14593,7 +14591,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>2: Reset</td>
-     <td>1 to reset the trigger sequence, -1 or 0 to ignore</td>
+     <td>1重置触发序列，-1或0忽略</td>
      <td>
       <em>min:</em>
       -1 
@@ -14601,7 +14599,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>3: Pause</td>
-     <td>1 to pause triggering, but without switching the camera off or retracting it. -1 to ignore</td>
+     <td>暂停触发，但不关闭或撤回相机 -1 to ignore</td>
      <td>
       <em>min:</em>
       -1 
@@ -14626,7 +14624,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Stream ID</td>
-     <td>Video Stream ID (0 for all streams)</td>
+     <td>视频流ID(所有视频流为0)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
      <td>
@@ -14919,7 +14917,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Landing Gear ID</td>
-     <td>Landing gear ID (default: 0, -1 for all)</td>
+     <td>起落架ID(默认值:0，所有-1)</td>
      <td>
       <em>min:</em>
       -1 
@@ -14927,7 +14925,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>2: Landing Gear Position</td>
-     <td>Landing gear position (Down: 0, Up: 1, NaN for no change)</td>
+     <td>起落架位置(下:0，上:1,NaN不变)</td>
      <td>
      </td>
     </tr>
@@ -14979,7 +14977,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Enable</td>
-     <td>Control transmission over high latency telemetry (0: stop, 1: start)</td>
+     <td>通过高延迟遥测控制传输(0:停止，1:开始)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -15073,7 +15071,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: State</td>
-     <td>The target VTOL state. Only MAV_VTOL_STATE_MC and MAV_VTOL_STATE_FW can be used.</td>
+     <td>目标VTOL 状态。 只能使用 MAV_VTOL_STATE_MC 和 MAV_VTOL_STATE_FW</td>
      <td>MAV_VTOL_STATE</td>
     </tr>
    </tbody>
@@ -15640,7 +15638,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>2: Approach Vector</td>
-     <td>Desired approach vector in compass heading. A negative value indicates the system can define the approach vector at will.</td>
+     <td>罗盘航向所要求的进近矢量。 负值表示系统可以任意界定进近矢量。</td>
      <td>
       <em>min:</em>
       -1 
@@ -15649,7 +15647,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>3: Ground Speed</td>
-     <td>Desired ground speed at release time. This can be overridden by the airframe in case it needs to meet minimum airspeed. A negative value indicates the system can define the ground speed at will.</td>
+     <td>释放时间所需的地面速度。 This can be overridden by the airframe in case it needs to meet minimum airspeed. 负值表示系统可以随意确定地面速度。</td>
      <td>
       <em>min:</em>
       -1 
@@ -15707,7 +15705,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Operation Mode</td>
-     <td>Operation mode. 0: Abort deployment, continue normal mission. 1: switch to payload deployment mode. 100: delete first payload deployment request. 101: delete all payload deployment requests.</td>
+     <td>操作模式 0：中止部署，继续执行正常任务。 1： 切换到有效载荷部署模式。 100: delete first payload deployment request. 101: delete all payload deployment requests.</td>
      <td>
       <em>min:</em>0 <em>max:</em>101 <em>increment:</em>1</td>
     </tr>
