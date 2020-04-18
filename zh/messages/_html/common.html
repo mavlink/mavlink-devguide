@@ -22879,7 +22879,7 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Sensor ID</td>
+     <td>传感器 ID</td>
     </tr>
     <tr>
      <td>integration_time_us</td>
@@ -22891,7 +22891,7 @@ y轴磁力计数据
      <td>integrated_x</td>
      <td>float</td>
      <td>rad</td>
-     <td>Flow around X axis (Sensor RH rotation about the X axis induces a positive flow. Sensor linear motion along the positive Y axis induces a negative flow.)</td>
+     <td>绕X轴流动(传感器RH绕X轴旋转引起的正流动） 传感器沿Y轴正方向的直线运动产生负向流动。</td>
     </tr>
     <tr>
      <td>integrated_y</td>
@@ -22903,7 +22903,7 @@ y轴磁力计数据
      <td>integrated_xgyro</td>
      <td>float</td>
      <td>rad</td>
-     <td>RH rotation around X axis</td>
+     <td>RH绕X轴旋转</td>
     </tr>
     <tr>
      <td>integrated_ygyro</td>
@@ -22928,19 +22928,19 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Optical flow quality / confidence. 0: no valid flow, 255: maximum quality</td>
+     <td>光流质量/可靠性。 0:无效流量，255:最大置信质量</td>
     </tr>
     <tr>
      <td>time_delta_distance_us</td>
      <td>uint32_t</td>
      <td>us</td>
-     <td>Time since the distance was sampled.</td>
+     <td>距离采样后的时间。</td>
     </tr>
     <tr>
      <td>distance</td>
      <td>float</td>
      <td>m</td>
-     <td>Distance to the center of the flow field. Positive value (including zero): distance known. Negative value: Unknown distance.</td>
+     <td>到光流区域中心的距离。 正值(包括零)：距离已知。 负值：未知距离。</td>
     </tr>
    </tbody>
   </table>
@@ -22989,7 +22989,7 @@ y轴磁力计数据
      <td>xgyro</td>
      <td>float</td>
      <td>rad/s</td>
-     <td>Angular speed around X axis in body frame</td>
+     <td>在身体坐标系内绕X轴的角速度</td>
     </tr>
     <tr>
      <td>ygyro</td>
@@ -23051,7 +23051,7 @@ y轴磁力计数据
      <td>uint32_t</td>
      <td>
      </td>
-     <td>Bitmap for fields that have updated since last message, bit 0 = xacc, bit 12: temperature, bit 31: full reset of attitude/position/velocities/etc was performed in sim.</td>
+     <td>从上一条消息开始更新的字段的位图，第0位= xacc，第12位:温度 ：第31位:在sim中进行姿态/位置/速度/等的完全复位。</td>
     </tr>
    </tbody>
   </table>
@@ -23105,14 +23105,14 @@ y轴磁力计数据
      <td>float</td>
      <td>
      </td>
-     <td>Attitude roll expressed as Euler angles, not recommended except for human-readable outputs</td>
+     <td>滚转姿态表示为欧拉角，除了用于人工判读的输出，不推荐使用</td>
     </tr>
     <tr>
      <td>pitch</td>
      <td>float</td>
      <td>
      </td>
-     <td>Attitude pitch expressed as Euler angles, not recommended except for human-readable outputs</td>
+     <td>俯仰姿态表示为欧拉角，除了用于人工判读的输出，不推荐使用</td>
     </tr>
     <tr>
      <td>yaw</td>
@@ -23180,14 +23180,14 @@ y轴磁力计数据
      <td>float</td>
      <td>
      </td>
-     <td>Horizontal position standard deviation</td>
+     <td>水平位置标准偏差</td>
     </tr>
     <tr>
      <td>std_dev_vert</td>
      <td>float</td>
      <td>
      </td>
-     <td>Vertical position standard deviation</td>
+     <td>垂直位置标准偏差</td>
     </tr>
     <tr>
      <td>vn</td>
@@ -23372,7 +23372,7 @@ y轴磁力计数据
      <td>uint32_t</td>
      <td>
      </td>
-     <td>Image frame sequence</td>
+     <td>图像帧序列</td>
     </tr>
    </tbody>
   </table>
@@ -23464,7 +23464,7 @@ y轴磁力计数据
      <td>cog</td>
      <td>uint16_t</td>
      <td>cdeg</td>
-     <td>Course over ground (NOT heading, but direction of movement), 0.0..359.99 degrees. If unknown, set to: 65535</td>
+     <td>相对地面的航向(不是航向，而是运动方向)，0.0—359.99度。 如果未知, 设置为 65535</td>
     </tr>
     <tr>
      <td>satellites_visible</td>
@@ -23509,7 +23509,7 @@ y轴磁力计数据
      <td>integration_time_us</td>
      <td>uint32_t</td>
      <td>us</td>
-     <td>Integration time. Divide integrated_x and integrated_y by the integration time to obtain average flow. The integration time also indicates the.</td>
+     <td>积分时间。 Divide integrated_x and integrated_y by the integration time to obtain average flow. The integration time also indicates the.</td>
     </tr>
     <tr>
      <td>integrated_x</td>
@@ -23690,7 +23690,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   用于二级9DOF传感器设置的原始IMU读数。 This message should contain the scaled values to the described units</p>
+   用于二级9DOF传感器设置的原始IMU读数。 此消息应包含缩放到具体单位的值</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23768,7 +23768,7 @@ y轴磁力计数据
      </td>
      <td>int16_t</td>
      <td>cdegC</td>
-     <td>Temperature, 0: IMU does not provide temperature values. If the IMU is at 0C it must send 1 (0.01C).</td>
+     <td>温度，0： IMU 不提供温度值。 如果当前IMU的温度数据是0C，它必须发送 1 (0.01C)。</td>
     </tr>
    </tbody>
   </table>
@@ -23801,12 +23801,12 @@ y轴磁力计数据
     <tr>
      <td>start</td>
      <td>uint16_t</td>
-     <td>First log id (0 for first available)</td>
+     <td>第一个日志 id (0作为第一个可用)</td>
     </tr>
     <tr>
      <td>end</td>
      <td>uint16_t</td>
-     <td>Last log id (0xffff for last available)</td>
+     <td>最后日志 id (0xffff 最后可用)</td>
     </tr>
    </tbody>
   </table>
@@ -23858,7 +23858,7 @@ y轴磁力计数据
      <td>size</td>
      <td>uint32_t</td>
      <td>bytes</td>
-     <td>Size of the log (may be approximate)</td>
+     <td>日志的大小(可能是近似的)</td>
     </tr>
    </tbody>
   </table>
@@ -23911,7 +23911,7 @@ y轴磁力计数据
      <td>count</td>
      <td>uint32_t</td>
      <td>bytes</td>
-     <td>Number of bytes</td>
+     <td>字节数</td>
     </tr>
    </tbody>
   </table>
@@ -23957,7 +23957,7 @@ y轴磁力计数据
      <td>uint8_t[90]</td>
      <td>
      </td>
-     <td>log data</td>
+     <td>日志数据</td>
     </tr>
    </tbody>
   </table>
@@ -24059,7 +24059,7 @@ y轴磁力计数据
      <td>uint8_t[110]</td>
      <td>
      </td>
-     <td>Raw data (110 is enough for 12 satellites of RTCMv2)</td>
+     <td>原始数据(110长度 足够12颗RTCMv2卫星使用)</td>
     </tr>
    </tbody>
   </table>
@@ -24775,7 +24775,7 @@ y轴磁力计数据
      <td>
       <a href="#MAVLINK_DATA_STREAM_TYPE">MAVLINK_DATA_STREAM_TYPE</a>
      </td>
-     <td>Type of requested/acknowledged data.</td>
+     <td>请求/确认数据的类型。</td>
     </tr>
     <tr>
      <td>size</td>
@@ -24785,7 +24785,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>total data size (set on ACK only).</td>
+     <td>总数据大小(仅在ACK上设置)。</td>
     </tr>
     <tr>
      <td>width</td>
@@ -24796,7 +24796,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Width of a matrix or image.</td>
+     <td>矩阵或图像的宽度。</td>
     </tr>
     <tr>
      <td>height</td>
@@ -24807,7 +24807,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Height of a matrix or image.</td>
+     <td>矩阵或图像的高度。</td>
     </tr>
     <tr>
      <td>packets</td>
@@ -24818,7 +24818,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Number of packets being sent (set on ACK only).</td>
+     <td>正在发送的包的数量(仅在ACK上设置)。</td>
     </tr>
     <tr>
      <td>payload</td>
@@ -24828,7 +24828,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Payload size per packet (normally 253 byte, see DATA field size in message ENCAPSULATED_DATA) (set on ACK only).</td>
+     <td>每个数据包的有效负载大小(通常为253字节，请参阅消息封装_data中的数据字段大小)(仅在ACK上设置)。</td>
     </tr>
     <tr>
      <td>jpg_quality</td>
@@ -24840,7 +24840,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>JPEG quality. Values: [1-100].</td>
+     <td>JPEG质量 值： [1-100]。</td>
     </tr>
    </tbody>
   </table>
@@ -24863,7 +24863,7 @@ y轴磁力计数据
     <tr>
      <td>seqnr</td>
      <td>uint16_t</td>
-     <td>sequence number (starting with 0 on every transmission)</td>
+     <td>序列号(每次传输从0开始)</td>
     </tr>
     <tr>
      <td>data</td>
@@ -25113,7 +25113,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   请求车辆报告指定位置的地形高度。 Used by GCS to check if vehicle has all terrain data needed for a mission.</p>
+   请求车辆报告指定位置的地形高度。 用于GCS检查载具是否有执行任务所需的所有地形数据。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25172,33 +25172,33 @@ y轴磁力计数据
      <td>uint16_t</td>
      <td>
      </td>
-     <td>grid spacing (zero if terrain at this location unavailable)</td>
+     <td>网格间距(如果该位置地形不可用，则为零)</td>
     </tr>
     <tr>
      <td>terrain_height</td>
      <td>float</td>
      <td>m</td>
-     <td>Terrain height MSL</td>
+     <td>地形高度 MSL</td>
     </tr>
     <tr>
      <td>current_height</td>
      <td>float</td>
      <td>m</td>
-     <td>Current vehicle height above lat/lon terrain height</td>
+     <td>载具相对于当前位置的高度</td>
     </tr>
     <tr>
      <td>pending</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>Number of 4x4 terrain blocks waiting to be received or read from disk</td>
+     <td>等待从磁盘接收或读取的4x4地形块数</td>
     </tr>
     <tr>
      <td>loaded</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>Number of 4x4 terrain blocks in memory</td>
+     <td>内存中的4x4地形块数</td>
     </tr>
    </tbody>
   </table>
