@@ -12379,9 +12379,7 @@
 
   这一信息含糊不清，前后不一。 它已被MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE 和 MAV_CMD_DO_SET_ROI_*所取代。 该消息仍然可以用来与旧版Gimbals进行通信。</p>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Mission command to control a camera or antenna mount</p>
+   控制相机或架设天线的设备的任务命令</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13802,7 +13800,7 @@
    <tbody>
     <tr>
      <td>1: Spektrum</td>
-     <td>0:Spektrum.</td>
+     <td>0：频段</td>
      <td>
      </td>
     </tr>
@@ -14282,13 +14280,13 @@
     </tr>
     <tr>
      <td>2: Focus Value</td>
-     <td>Focus value</td>
+     <td>焦点值</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Reserved (all remaining params)</td>
+     <td>预留(所有剩余参数)</td>
      <td>
      </td>
     </tr>
@@ -14363,14 +14361,14 @@
    <tbody>
     <tr>
      <td>1: Tilt angular velocity</td>
-     <td>Tilt/pitch angular velocity (positive to point up).</td>
+     <td>倾斜/俯仰角速度(正指向上)。</td>
      <td>
      </td>
      <td>deg/s</td>
     </tr>
     <tr>
      <td>2: Pan angular velocity</td>
-     <td>Pan/yaw angular velocity (positive to pan to the right).</td>
+     <td>平移/偏航角速度(正向平移向右)。</td>
      <td>
      </td>
      <td>deg/s</td>
@@ -15075,22 +15073,22 @@
    <tbody>
     <tr>
      <td>1: Horizontal Angle</td>
-     <td>Viewing angle horizontal of the panorama (+- 0.5 the total angle)</td>
+     <td>全景图水平视角(+- 0.5总视角)</td>
      <td>deg</td>
     </tr>
     <tr>
      <td>2: Vertical Angle</td>
-     <td>Viewing angle vertical of panorama.</td>
+     <td>全景垂直视角。</td>
      <td>deg</td>
     </tr>
     <tr>
      <td>3: Horizontal Speed</td>
-     <td>Speed of the horizontal rotation.</td>
+     <td>水平旋转的速度。</td>
      <td>deg/s</td>
     </tr>
     <tr>
      <td>4: Vertical Speed</td>
-     <td>Speed of the vertical rotation.</td>
+     <td>垂直旋转的速度。</td>
      <td>deg/s</td>
     </tr>
    </tbody>
@@ -15196,7 +15194,7 @@
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    延迟任务状态机器直到到达大门。</p>
   <table class="sortable">
@@ -15500,9 +15498,7 @@
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Circular fence area. The vehicle must stay outside this area.</p>
+   圆形围栏区域。 载具必须停留在这个区域之外。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15514,7 +15510,7 @@
    <tbody>
     <tr>
      <td>1: Radius</td>
-     <td>Radius.</td>
+     <td>半径</td>
      <td>m</td>
     </tr>
     <tr>
@@ -17150,9 +17146,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Request to read the onboard parameter with the param_id string id. Onboard parameters are stored as key[const char*] -&gt; value[float]. This allows to send a parameter to any other component (such as the GCS) without the need of previous knowledge of possible parameter names. Thus the same GCS can store different parameters for different autopilots. See also https://mavlink.io/en/services/parameter.html for a full documentation of QGroundControl and IMU code.</p>
+   请求读取带有param_id字符串id的板载参数。 板载参数储存为密钥 这允许将参数发送到任何其他组件(例如地面站)，而不需要预先知道可能的参数名称 因此，相同的GCS可以为不同的自动驾驶仪存储不同的参数。 有关QGroundControl和IMU代码的完整文档，请参见https://mavlink.io/en/services/parameter.html。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17175,12 +17169,12 @@
     <tr>
      <td>param_id</td>
      <td>char[16]</td>
-     <td>Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+     <td>板载参数id，如果长度小于16个可读字符，则以NULL结尾;如果长度正好是16个字符，则不需要NULL终止(NULL)字节；如果ID存储为字符串，应用程序必须提供16+1字节的存储</td>
     </tr>
     <tr>
      <td>param_index</td>
      <td>int16_t</td>
-     <td>Parameter index. Send -1 to use the param ID field as identifier (else the param id will be ignored)</td>
+     <td>参数索引。 发送 -1 使用参数 ID 字段作为标识符 (否则param id 将被忽略)</td>
     </tr>
    </tbody>
   </table>
@@ -17190,9 +17184,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Request all parameters of this component. After this request, all parameters are emitted. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
+   请求此组件的所有参数。 在此请求后，所有参数都会被发出。 参数微型服务记录在 https://mavlink.io/en/services/parameter.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17220,9 +17212,7 @@
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Emit the value of a onboard parameter. The inclusion of param_count and param_index in the message allows the recipient to keep track of received parameters and allows him to re-request missing parameters after a loss or timeout. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
+   发出板载参数的值。 在消息中包含param_count和param_index允许接收方跟踪接收到的参数，并允许接收方在丢失或超时后重新请求丢失的参数。 参数微型服务记录在 https://mavlink.io/en/services/parameter.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19150,7 +19140,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   设置机体本地位置的 GPS 坐标(0,0,0) 位置。 Vehicle should emit GPS_GLOBAL_ORIGIN irrespective of whether the origin is changed. This enables transform between the local coordinate frame and the global (GPS) coordinate frame, which may be necessary when (for example) indoor and outdoor settings are connected and the MAV should move from in- to outdoor.</p>
+   设置机体本地位置的 GPS 坐标(0,0,0) 位置。 载具应发出GPS_GLOBAL_ORIGIN，无论其来源是否改变。 这使得在局部坐标系和全局(GPS)坐标系之间进行转换成为可能，当(例如)室内和室外设置连接并且MAV应该从室内移动到室外时，这可能是必要的。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20229,9 +20219,7 @@ y轴磁力计数据
   <p style="color:red">
    <strong>DEPRECATED:</strong> Replaced by MESSAGE_INTERVAL (2015-08).</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Data stream status information.</p>
+   数据流状态信息</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21261,7 +21249,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>target_system</td>
@@ -21785,7 +21773,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (time since system boot). The rationale for the timestamp in the setpoint is to allow the system to compensate for the transport delay of the setpoint. This allows the system to compensate processing latency.</td>
+     <td>时间戳(系统启动后的时间)。 设置点中的时间戳的基本原理是允许系统补偿设置点的传输延迟。 这允许系统补偿处理延迟。</td>
     </tr>
     <tr>
      <td>coordinate_frame</td>
@@ -21925,9 +21913,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The offset in X, Y, Z and yaw between the LOCAL_POSITION_NED messages of MAV X and the global coordinate frame in NED coordinates. Coordinate frame is right-handed, Z-axis down (aeronautical frame, NED / north-east-down convention)</p>
+   MAV X的LOCAL_POSITION_NED消息与NED坐标下的全局坐标系之间的X、Y、Z和偏航的偏移量。 坐标框架是右手基准，Z轴向下(航空坐标系、NED / 东北下公约)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23380,7 +23366,7 @@ y轴磁力计数据
     <tr>
      <td>payload</td>
      <td>uint8_t[251]</td>
-     <td>Variable length payload. The length is defined by the remaining message length when subtracting the header and other fields.  The entire content of this block is opaque unless you understand any the encoding message_type.  The particular encoding used can be extension specific and might not always be documented as part of the mavlink specification.</td>
+     <td>内容可变长度。 长度由减去报头和其他字段时的剩余消息长度定义。  除非您理解编码message_type，否则此块的整个内容都是不透明的。  所使用的特定编码可以是特定于扩展的，并且可能不总是作为MAVLink规范的一部分记录下来。</td>
     </tr>
    </tbody>
   </table>
@@ -23758,9 +23744,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>The RAW IMU readings for secondary 9DOF sensor setup. This message should contain the scaled values to the described units</p>
+   用于二级9DOF传感器设置的原始IMU读数。 This message should contain the scaled values to the described units</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24654,7 +24638,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Rate of baseline messages being received by GPS</td>
+     <td>GPS收到的基线信息速率</td>
     </tr>
     <tr>
      <td>nsats</td>
@@ -24665,7 +24649,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current number of sats used for RTK calculation.</td>
+     <td>当前用于RTK计算的卫星数量。</td>
     </tr>
     <tr>
      <td>baseline_coords_type</td>
@@ -24675,7 +24659,7 @@ y轴磁力计数据
      <td>
       <a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
      </td>
-     <td>Coordinate system of baseline</td>
+     <td>基线坐标系</td>
     </tr>
     <tr>
      <td>baseline_a_mm</td>
@@ -24685,7 +24669,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current baseline in ECEF x or NED north component.</td>
+     <td>在ECEF x 或 NED 北坐标系下的当前基线。</td>
     </tr>
     <tr>
      <td>baseline_b_mm</td>
@@ -24695,7 +24679,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Current baseline in ECEF y or NED east component.</td>
+     <td>地心地固坐标系或 NED 东部组件的当前基线。</td>
     </tr>
     <tr>
      <td>baseline_c_mm</td>
@@ -24825,9 +24809,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Handshake message to initiate, control and stop image streaming when using the Image Transmission Protocol: https://mavlink.io/en/services/image_transmission.html.</p>
+   使用图像传输协议时启动、控制和停止图像流的握手消息:https://mavlink.io/en/services/image_transmission.html。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26366,7 +26348,7 @@ y轴磁力计数据
   <p>
    <a href="#messages">
     [Message]
-   </a>Estimator status message including flags, innovation test ratios and estimated accuracies. The flags message is an integer bitmask containing information on which EKF outputs are valid. See the ESTIMATOR_STATUS_FLAGS enum definition for further information. The innovation test ratios show the magnitude of the sensor innovation divided by the innovation check threshold. Under normal operation the innovation test ratios should be below 0.5 with occasional values up to 1.0. Values greater than 1.0 should be rare under normal operation and indicate that a measurement has been rejected by the filter. The user should be notified if an innovation test ratio greater than 1.0 is recorded. Notifications for values in the range between 0.5 and 1.0 should be optional and controllable by the user.</p>
+   </a>Estimator status message including flags, innovation test ratios and estimated accuracies. 标记消息是一个整数位掩码，包含EKF输出有效的信息。 欲了解更多信息，请参阅ESTIMATOR_STATUS_FLAGS编码定义。 The innovation test ratios show the magnitude of the sensor innovation divided by the innovation check threshold. Under normal operation the innovation test ratios should be below 0.5 with occasional values up to 1.0. Values greater than 1.0 should be rare under normal operation and indicate that a measurement has been rejected by the filter. The user should be notified if an innovation test ratio greater than 1.0 is recorded. Notifications for values in the range between 0.5 and 1.0 should be optional and controllable by the user.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27674,9 +27656,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Provides state for additional features</p>
+   提供附加功能的状态</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27693,7 +27673,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_VTOL_STATE">MAV_VTOL_STATE</a>
      </td>
-     <td>The VTOL state if applicable. Is set to MAV_VTOL_STATE_UNDEFINED if UAV is not in VTOL configuration.</td>
+     <td>适用情况下的VTOL状态。 如果UAV不在VTOL配置中，则设置为 MAV_VTOL_STATE_UNDEFINED</td>
     </tr>
     <tr>
      <td>landed_state</td>
@@ -27701,7 +27681,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
      </td>
-     <td>The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown.</td>
+     <td>降落状态。 如果着陆状态未知，则设置为 MAV_LANDED_STATE_UNDEFINED</td>
     </tr>
    </tbody>
   </table>
@@ -27998,9 +27978,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Send raw controller memory. The use of this message is discouraged for normal packets, but a quite efficient way for testing new messages and getting experimental debug output.</p>
+   发送原始控制器内存。 对于普通的信息包，不建议使用此消息，但是对于测试新消息和获得实验性调试输出来说，这是一种非常有效的方法。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30138,12 +30116,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Configure AP SSID and Password.</p>
+   配置AP SSID和密码。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30878,7 +30851,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>sensor_type</td>
@@ -30888,7 +30861,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
      </td>
-     <td>Class id of the distance sensor type.</td>
+     <td>距离传感器类型的类id。</td>
     </tr>
     <tr>
      <td>distances</td>
@@ -30898,7 +30871,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Distance of obstacles around the vehicle with index 0 corresponding to north + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.</td>
+     <td>索引为0的车辆周围障碍物的距离，与north + angle_offset对应，除非坐标系另有说明。 A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm.</td>
     </tr>
     <tr>
      <td>increment</td>
