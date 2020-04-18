@@ -3811,42 +3811,42 @@
      <td>
       <a href="#MAV_SEVERITY_EMERGENCY">MAV_SEVERITY_EMERGENCY</a>
      </td>
-     <td>System is unusable. This is a "panic" condition.</td>
+     <td>系统无法使用. 这是一种“恐怖的”状态。</td>
     </tr>
     <tr id="MAV_SEVERITY_ALERT">
      <td>1</td>
      <td>
       <a href="#MAV_SEVERITY_ALERT">MAV_SEVERITY_ALERT</a>
      </td>
-     <td>Action should be taken immediately. Indicates error in non-critical systems.</td>
+     <td>应该立即采取行动 指示非关键系统中的错误。</td>
     </tr>
     <tr id="MAV_SEVERITY_CRITICAL">
      <td>2</td>
      <td>
       <a href="#MAV_SEVERITY_CRITICAL">MAV_SEVERITY_CRITICAL</a>
      </td>
-     <td>Action must be taken immediately. Indicates failure in a primary system.</td>
+     <td>应当立即采取行动。 指示主系统中的故障。</td>
     </tr>
     <tr id="MAV_SEVERITY_ERROR">
      <td>3</td>
      <td>
       <a href="#MAV_SEVERITY_ERROR">MAV_SEVERITY_ERROR</a>
      </td>
-     <td>Indicates an error in secondary/redundant systems.</td>
+     <td>指示辅助/冗余系统中的错误。</td>
     </tr>
     <tr id="MAV_SEVERITY_WARNING">
      <td>4</td>
      <td>
       <a href="#MAV_SEVERITY_WARNING">MAV_SEVERITY_WARNING</a>
      </td>
-     <td>Indicates about a possible future error if this is not resolved within a given timeframe. Example would be a low battery warning.</td>
+     <td>指示如果在给定的时间段内未解决此问题，则将来可能发生的错误。 例如低电量警告。</td>
     </tr>
     <tr id="MAV_SEVERITY_NOTICE">
      <td>5</td>
      <td>
       <a href="#MAV_SEVERITY_NOTICE">MAV_SEVERITY_NOTICE</a>
      </td>
-     <td>An unusual event has occurred, though not an error condition. This should be investigated for the root cause.</td>
+     <td>发生了一个不寻常的事件，但不是错误条件。 This should be investigated for the root cause.</td>
     </tr>
     <tr id="MAV_SEVERITY_INFO">
      <td>6</td>
@@ -32244,12 +32244,7 @@ y轴磁力计数据
   <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Message for transporting "arbitrary" variable-length data from one component to another (broadcast is not forbidden, but discouraged). The encoding of the data is usually extension specific, i.e. determined by the source, and is usually not documented as part of the MAVLink specification.</p>
+   用于将“任意”变长数据从一个组件传输到另一个组件的消息(不禁止广播，但不鼓励)。 数据的编码通常是特定于扩展的，即由源决定的，并且通常不作为MAVLink规范的一部分记录下来。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32312,7 +32307,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    <a href="#messages">
     [Message]
@@ -32639,14 +32634,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Tune formats supported by vehicle. This should be emitted as response to MAV_CMD_REQUEST_MESSAGE.</p>
+   车辆支持的调优格式。 这应该作为对MAV_CMD_REQUEST_MESSAGE的响应发出。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32681,7 +32671,7 @@ y轴磁力计数据
      <td>
       <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
      </td>
-     <td>Bitfield of supported tune formats.</td>
+     <td>支持的调整格式的字段。</td>
     </tr>
    </tbody>
   </table>
@@ -32719,7 +32709,7 @@ y轴磁力计数据
      <td>distance</td>
      <td>double[16]</td>
      <td>m</td>
-     <td>单轮编码器报告的距离. 前向轮调增加值、反向轮调减少值。 Not all wheels will necessarily have wheel encoders; the mapping of encoders to wheel positions must be agreed/understood by the endpoints.</td>
+     <td>单轮编码器报告的距离. 前向轮调增加值、反向轮调减少值。 不是所有的轮子都必须有轮子编码器;编码器到转轮位置的映射必须得到端点的同意/理解。</td>
     </tr>
    </tbody>
   </table>
