@@ -27212,7 +27212,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Altitude setpoint</td>
+     <td>高度定位点</td>
     </tr>
     <tr>
      <td>heading</td>
@@ -27222,7 +27222,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Heading</td>
+     <td>方位角</td>
     </tr>
     <tr>
      <td>target_heading</td>
@@ -27232,7 +27232,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Heading setpoint</td>
+     <td>设定的头向</td>
     </tr>
     <tr>
      <td>target_distance</td>
@@ -27242,7 +27242,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Distance to target waypoint or position</td>
+     <td>距离目标航点或位置</td>
     </tr>
     <tr>
      <td>throttle</td>
@@ -27254,7 +27254,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Throttle</td>
+     <td>油门</td>
     </tr>
     <tr>
      <td>airspeed</td>
@@ -27264,7 +27264,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Airspeed</td>
+     <td>空速：</td>
     </tr>
     <tr>
      <td>airspeed_sp</td>
@@ -27274,7 +27274,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Airspeed setpoint</td>
+     <td>设定的空速</td>
     </tr>
     <tr>
      <td>groundspeed</td>
@@ -27284,7 +27284,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Groundspeed</td>
+     <td>地速</td>
     </tr>
     <tr>
      <td>windspeed</td>
@@ -27294,7 +27294,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Windspeed</td>
+     <td>风速</td>
     </tr>
     <tr>
      <td>wind_heading</td>
@@ -27304,7 +27304,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Wind heading</td>
+     <td>风速方向</td>
     </tr>
     <tr>
      <td>eph</td>
@@ -27399,7 +27399,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Field for custom payload.</td>
+     <td>自定义有效载荷字段。</td>
     </tr>
     <tr>
      <td>custom2</td>
@@ -27410,7 +27410,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Field for custom payload.</td>
+     <td>自定义有效载荷字段。</td>
     </tr>
    </tbody>
   </table>
@@ -27442,7 +27442,7 @@ y轴磁力计数据
      <td>float</td>
      <td>
      </td>
-     <td>Vibration levels on X-axis</td>
+     <td>X轴振动水平</td>
     </tr>
     <tr>
      <td>vibration_y</td>
@@ -32691,12 +32691,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Cumulative distance traveled for each reported wheel.</p>
+   每个车轮行驶的累积距离。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32711,20 +32706,20 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (synced to UNIX time or since system boot).</td>
+     <td>时间戳(同步到 UNIX 时间或系统启动后)。</td>
     </tr>
     <tr>
      <td>count</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Number of wheels reported.</td>
+     <td>提供数据的车轮总数量</td>
     </tr>
     <tr>
      <td>distance</td>
      <td>double[16]</td>
      <td>m</td>
-     <td>Distance reported by individual wheel encoders. Forward rotations increase values, reverse rotations decrease them. Not all wheels will necessarily have wheel encoders; the mapping of encoders to wheel positions must be agreed/understood by the endpoints.</td>
+     <td>单轮编码器报告的距离. 前向轮调增加值、反向轮调减少值。 Not all wheels will necessarily have wheel encoders; the mapping of encoders to wheel positions must be agreed/understood by the endpoints.</td>
     </tr>
    </tbody>
   </table>
