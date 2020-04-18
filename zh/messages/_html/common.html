@@ -25333,7 +25333,7 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Actuator group. The "_mlx" indicates this is a multi-instance message and a MAVLink parser should use this field to difference between instances.</td>
+     <td>Actuator group. “_mlx”表示这是一个多实例消息，MAVLink解析器应该使用这个字段来区分实例之间的差异。</td>
     </tr>
     <tr>
      <td>target_system</td>
@@ -25354,7 +25354,7 @@ y轴磁力计数据
      <td>float[8]</td>
      <td>
      </td>
-     <td>Actuator controls. Normed to -1..+1 where 0 is neutral position. Throttle for single rotation direction motors is 0..1, negative range for reverse direction. Standard mapping for attitude controls (group 0): (index 0-7): roll, pitch, yaw, throttle, flaps, spoilers, airbrakes, landing gear. Load a pass-through mixer to repurpose them as generic outputs.</td>
+     <td>执行器控制 变为-1...+1，0是中立位置。 单旋转方向发动机的阈值为0.1，反方向为负范围。 姿态控制的标准映射(0组):(索引0-7):滚转、俯仰、偏航、油门、襟翼、扰流片、气闸、起落架。 Load a pass-through mixer to repurpose them as generic outputs.</td>
     </tr>
    </tbody>
   </table>
@@ -27533,25 +27533,25 @@ y轴磁力计数据
      <td>float[4]</td>
      <td>
      </td>
-     <td>World to surface normal and heading transformation of the takeoff position. Used to indicate the heading and slope of the ground</td>
+     <td>World to surface normal and heading transformation of the takeoff position. 用于指示地面的航向和坡度</td>
     </tr>
     <tr>
      <td>approach_x</td>
      <td>float</td>
      <td>m</td>
-     <td>Local X position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
+     <td>进近末端的局部X位置 多旋翼应该根据它们的起飞路径来设置这个位置。 在草地降落固定翼飞机应将其设置为与多旋翼飞机相同的方式。 如果起飞是从起降区开始的。跑道着陆的固定翼飞机应该将起飞方向设为与起飞相反的方向，</td>
     </tr>
     <tr>
      <td>approach_y</td>
      <td>float</td>
      <td>m</td>
-     <td>Local Y position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
+     <td>进近末端的局部Y位置 多旋翼应该根据它们的起飞路径来设置这个位置。 在草地降落固定翼飞机应将其设置为与多旋翼飞机相同的方式。 如果起飞是从起降区开始的。跑道着陆的固定翼飞机应该将起飞方向设为与起飞相反的方向，</td>
     </tr>
     <tr>
      <td>approach_z</td>
      <td>float</td>
      <td>m</td>
-     <td>Local Z position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
+     <td>进近末端的局部Z位置 多旋翼应该根据它们的起飞路径来设置这个位置。 在草地降落固定翼飞机应将其设置为与多旋翼飞机相同的方式。 如果起飞是从起降区开始的。跑道着陆的固定翼飞机应该将起飞方向设为与起飞相反的方向，</td>
     </tr>
     <tr>
      <td style="color:blue;">time_usec<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -27560,7 +27560,7 @@ y轴磁力计数据
      </td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
    </tbody>
   </table>
@@ -27592,7 +27592,7 @@ y轴磁力计数据
      <td>interval_us</td>
      <td>int32_t</td>
      <td>us</td>
-     <td>The interval between two messages. A value of -1 indicates this stream is disabled, 0 indicates it is not available, &gt; 0 indicates the interval at which it is sent.</td>
+     <td>两个消息之间的间隔。 值为 -1 表示此流已禁用。0 表示它不可用。 &gt; 表示发送时间间隔。</td>
     </tr>
    </tbody>
   </table>
@@ -27937,7 +27937,7 @@ y轴磁力计数据
     <tr>
      <td>address</td>
      <td>uint16_t</td>
-     <td>Starting address of the debug variables</td>
+     <td>调试变量的起始地址</td>
     </tr>
     <tr>
      <td>ver</td>
@@ -32372,7 +32372,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Name of the component vendor</td>
+     <td>组件供应商名称</td>
     </tr>
     <tr>
      <td>model_name</td>
@@ -32383,7 +32383,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Name of the component model</td>
+     <td>组件型号名称</td>
     </tr>
     <tr>
      <td>firmware_version</td>
