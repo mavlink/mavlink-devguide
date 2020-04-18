@@ -2505,42 +2505,42 @@
      <td>
       <a href="#MAV_MOUNT_MODE_RETRACT">MAV_MOUNT_MODE_RETRACT</a>
      </td>
-     <td>Load and keep safe position (Roll,Pitch,Yaw) from permant memory and stop stabilization</td>
+     <td>按照记忆功能加载并且保持安全位置（俯仰滚转偏航）并停止增稳功能</td>
     </tr>
     <tr id="MAV_MOUNT_MODE_NEUTRAL">
      <td>1</td>
      <td>
       <a href="#MAV_MOUNT_MODE_NEUTRAL">MAV_MOUNT_MODE_NEUTRAL</a>
      </td>
-     <td>Load and keep neutral position (Roll,Pitch,Yaw) from permanent memory.</td>
+     <td>按照记忆功能加载并且保持中立位置（俯仰滚转偏航）</td>
     </tr>
     <tr id="MAV_MOUNT_MODE_MAVLINK_TARGETING">
      <td>2</td>
      <td>
       <a href="#MAV_MOUNT_MODE_MAVLINK_TARGETING">MAV_MOUNT_MODE_MAVLINK_TARGETING</a>
      </td>
-     <td>Load neutral position and start MAVLink Roll,Pitch,Yaw control with stabilization</td>
+     <td>在稳定模式下加载空档位置，启动横摇、俯仰、偏航控制</td>
     </tr>
     <tr id="MAV_MOUNT_MODE_RC_TARGETING">
      <td>3</td>
      <td>
       <a href="#MAV_MOUNT_MODE_RC_TARGETING">MAV_MOUNT_MODE_RC_TARGETING</a>
      </td>
-     <td>Load neutral position and start RC Roll,Pitch,Yaw control with stabilization</td>
+     <td>在稳定模式下加载空档位置，启动横摇、俯仰、偏航遥控器控制</td>
     </tr>
     <tr id="MAV_MOUNT_MODE_GPS_POINT">
      <td>4</td>
      <td>
       <a href="#MAV_MOUNT_MODE_GPS_POINT">MAV_MOUNT_MODE_GPS_POINT</a>
      </td>
-     <td>Load neutral position and start to point to Lat,Lon,Alt</td>
+     <td>加载中立位置并开始指向具体的经纬高点</td>
     </tr>
     <tr id="MAV_MOUNT_MODE_SYSID_TARGET">
      <td>5</td>
      <td>
       <a href="#MAV_MOUNT_MODE_SYSID_TARGET">MAV_MOUNT_MODE_SYSID_TARGET</a>
      </td>
-     <td>Gimbal tracks system with specified system ID</td>
+     <td>指定系统ID的云台跟踪系统</td>
     </tr>
    </tbody>
   </table>
@@ -2563,84 +2563,84 @@
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT">GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT</a>
      </td>
-     <td>Gimbal device supports a retracted position</td>
+     <td>云台设备支持收放位置</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL">
      <td>2</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL">GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL</a>
      </td>
-     <td>Gimbal device supports a horizontal, forward looking position, stabilized</td>
+     <td>云台设备支持水平的、向前的位置，增稳状态</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS">
      <td>4</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS">GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS</a>
      </td>
-     <td>Gimbal device supports rotating around roll axis.</td>
+     <td>云台设备支持滚转。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW">
      <td>8</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW">GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW</a>
      </td>
-     <td>Gimbal device supports to follow a roll angle relative to the vehicle</td>
+     <td>云台设备支持相对于机体的滚动角变化的增稳</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK">
      <td>16</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK">GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK</a>
      </td>
-     <td>Gimbal device supports locking to an roll angle (generally that's the default with roll stabilized)</td>
+     <td>云台设备支持锁定滚转角度(通常这是滚转增稳的默认值)</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS">
      <td>32</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS">GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS</a>
      </td>
-     <td>Gimbal device supports rotating around pitch axis.</td>
+     <td>云台设备支持围绕俯仰轴旋转。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW">
      <td>64</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW">GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW</a>
      </td>
-     <td>Gimbal device supports to follow a pitch angle relative to the vehicle</td>
+     <td>云台设备支持相对于机体的俯仰角变化的增稳</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK">
      <td>128</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK">GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK</a>
      </td>
-     <td>Gimbal device supports locking to an pitch angle (generally that's the default with pitch stabilized)</td>
+     <td>云台设备支持锁定俯仰角度(通常这是俯仰增稳的默认值)</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS">
      <td>256</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS">GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS</a>
      </td>
-     <td>Gimbal device supports rotating around yaw axis.</td>
+     <td>云台设备支持方位运动。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW">
      <td>512</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW">GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW</a>
      </td>
-     <td>Gimbal device supports to follow a yaw angle relative to the vehicle (generally that's the default)</td>
+     <td>云台装置支持跟随相对于机体的方位(通常这是默认值)</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK">
      <td>1024</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK">GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK</a>
      </td>
-     <td>Gimbal device supports locking to an absolute heading (often this is an option available)</td>
+     <td>台设备支持锁定到一个绝对方位(通常这是一个可用的选项)</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW">
      <td>2048</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW">GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW</a>
      </td>
-     <td>Gimbal device supports yawing/panning infinetely (e.g. using slip disk).</td>
+     <td>云台设备支持无限制的旋转(例如使用滑环)。</td>
     </tr>
    </tbody>
   </table>
@@ -2648,7 +2648,7 @@
    <a href="#GIMBAL_MANAGER_CAP_FLAGS">GIMBAL_MANAGER_CAP_FLAGS</a>
   </h3>
   <p>
-   高性能云台的能力标识 前16位与GIMBAL_DEVICE_CAP_FLAGS相同，而GIMBAL_DEVICE_FLAGS与GIMBAL_DEVICE_FLAGS相同。 However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags.</p>
+   高性能云台的能力标识 前16位与GIMBAL_DEVICE_CAP_FLAGS相同，而GIMBAL_DEVICE_FLAGS与GIMBAL_DEVICE_FLAGS相同。 但是，云台管理器不需要从云台复制标志，但也可以增强功能，从而添加标志。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2663,14 +2663,14 @@
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT">GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT.</td>
+     <td>基于GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT。</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL">
      <td>2</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL">GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL.</td>
+     <td>基于GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL。</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_AXIS">
      <td>4</td>
@@ -2797,9 +2797,7 @@
    <a href="#GIMBAL_DEVICE_FLAGS">GIMBAL_DEVICE_FLAGS</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Flags for gimbal device (lower level) operation.</p>
+   低水平云台的设备标识</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2814,35 +2812,35 @@
      <td>
       <a href="#GIMBAL_DEVICE_FLAGS_RETRACT">GIMBAL_DEVICE_FLAGS_RETRACT</a>
      </td>
-     <td>Set to retracted safe position (no stabilization), takes presedence over all other flags.</td>
+     <td>设置为缩回安全位置(不稳定)，覆盖所有其他标识。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_FLAGS_NEUTRAL">
      <td>2</td>
      <td>
       <a href="#GIMBAL_DEVICE_FLAGS_NEUTRAL">GIMBAL_DEVICE_FLAGS_NEUTRAL</a>
      </td>
-     <td>Set to neutral position (horizontal, forward looking, with stabiliziation), takes presedence over all other flags except RETRACT.</td>
+     <td>设置为中立位置(水平，向前看，稳定)，在除后退外的所有其他标识上保持稳定。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_FLAGS_ROLL_LOCK">
      <td>4</td>
      <td>
       <a href="#GIMBAL_DEVICE_FLAGS_ROLL_LOCK">GIMBAL_DEVICE_FLAGS_ROLL_LOCK</a>
      </td>
-     <td>Lock roll angle to absolute angle relative to horizon (not relative to drone). This is generally the default with a stabilizing gimbal.</td>
+     <td>锁定滚转角到水平的绝对角度(不是到无人机的绝对角度)。 这通常是默认的稳定框架。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_FLAGS_PITCH_LOCK">
      <td>8</td>
      <td>
       <a href="#GIMBAL_DEVICE_FLAGS_PITCH_LOCK">GIMBAL_DEVICE_FLAGS_PITCH_LOCK</a>
      </td>
-     <td>Lock pitch angle to absolute angle relative to horizon (not relative to drone). This is generally the default.</td>
+     <td>锁定俯仰角到水平的绝对角度(不是到无人机的绝对角度)。 这通常是缺省的。</td>
     </tr>
     <tr id="GIMBAL_DEVICE_FLAGS_YAW_LOCK">
      <td>16</td>
      <td>
       <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a>
      </td>
-     <td>Lock yaw angle to absolute angle relative to North (not relative to drone). If this flag is set, the quaternion is in the Earth frame with the x-axis pointing North (yaw absolute). If this flag is not set, the quaternion frame is in the Earth frame rotated so that the x-axis is pointing forward (yaw relative to vehicle).</td>
+     <td>锁定方位角到水平的绝对北(不是到无人机的绝对角度)。 ：如果设置了这个标志，四元数在地球框架中，x轴指向北方(绝对偏航)。 如果不设置此标志，四元数帧将在地球坐标系中旋转，使x轴指向前方(相对于机体的偏航)。</td>
     </tr>
    </tbody>
   </table>
@@ -3060,35 +3058,35 @@
      <td>
       <a href="#UAVCAN_NODE_MODE_OPERATIONAL">UAVCAN_NODE_MODE_OPERATIONAL</a>
      </td>
-     <td>The node is performing its primary functions.</td>
+     <td>节点正在执行它的主要功能。</td>
     </tr>
     <tr id="UAVCAN_NODE_MODE_INITIALIZATION">
      <td>1</td>
      <td>
       <a href="#UAVCAN_NODE_MODE_INITIALIZATION">UAVCAN_NODE_MODE_INITIALIZATION</a>
      </td>
-     <td>The node is initializing; this mode is entered immediately after startup.</td>
+     <td>节点正在初始化;此模式在启动后立即进入。</td>
     </tr>
     <tr id="UAVCAN_NODE_MODE_MAINTENANCE">
      <td>2</td>
      <td>
       <a href="#UAVCAN_NODE_MODE_MAINTENANCE">UAVCAN_NODE_MODE_MAINTENANCE</a>
      </td>
-     <td>The node is under maintenance.</td>
+     <td>该节点正在维护中。</td>
     </tr>
     <tr id="UAVCAN_NODE_MODE_SOFTWARE_UPDATE">
      <td>3</td>
      <td>
       <a href="#UAVCAN_NODE_MODE_SOFTWARE_UPDATE">UAVCAN_NODE_MODE_SOFTWARE_UPDATE</a>
      </td>
-     <td>The node is in the process of updating its software.</td>
+     <td>该节点正在更新其软件</td>
     </tr>
     <tr id="UAVCAN_NODE_MODE_OFFLINE">
      <td>7</td>
      <td>
       <a href="#UAVCAN_NODE_MODE_OFFLINE">UAVCAN_NODE_MODE_OFFLINE</a>
      </td>
-     <td>The node is no longer available online.</td>
+     <td>该节点不再联机可用。</td>
     </tr>
    </tbody>
   </table>
@@ -3111,28 +3109,28 @@
      <td>
       <a href="#STORAGE_STATUS_EMPTY">STORAGE_STATUS_EMPTY</a>
      </td>
-     <td>Storage is missing (no microSD card loaded for example.)</td>
+     <td>缺少存储设备 (例如没有加载microSD卡)</td>
     </tr>
     <tr id="STORAGE_STATUS_UNFORMATTED">
      <td>1</td>
      <td>
       <a href="#STORAGE_STATUS_UNFORMATTED">STORAGE_STATUS_UNFORMATTED</a>
      </td>
-     <td>Storage present but unformatted.</td>
+     <td>存储存在但未格式化。</td>
     </tr>
     <tr id="STORAGE_STATUS_READY">
      <td>2</td>
      <td>
       <a href="#STORAGE_STATUS_READY">STORAGE_STATUS_READY</a>
      </td>
-     <td>Storage present and ready.</td>
+     <td>存储存在并准备就绪。</td>
     </tr>
     <tr id="STORAGE_STATUS_NOT_SUPPORTED">
      <td>3</td>
      <td>
       <a href="#STORAGE_STATUS_NOT_SUPPORTED">STORAGE_STATUS_NOT_SUPPORTED</a>
      </td>
-     <td>Camera does not supply storage status information. Capacity information in STORAGE_INFORMATION fields will be ignored.</td>
+     <td>相机不提供存储状态信息。 STORAGE_INFORMATION字段中的容量信息将被忽略。</td>
     </tr>
    </tbody>
   </table>
@@ -3191,13 +3189,9 @@
    <a href="#MAV_DATA_STREAM">MAV_DATA_STREAM</a>
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MESSAGE_INTERVAL (2015-06).</p>
+    替换于MESSAGE_INTERVAL(2015-06)。</p>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>A data stream is not a fixed set of messages, but rather a
-     recommendation to the autopilot software. Individual autopilots may or may not obey
-     the recommended messages.</p>
+   数据流不是一组固定的消息，而是一个推荐自动驾驶仪软件。 个体自动驾驶仪可能服从也可能不服从推荐的消息。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3212,63 +3206,63 @@
      <td>
       <a href="#MAV_DATA_STREAM_ALL">MAV_DATA_STREAM_ALL</a>
      </td>
-     <td>Enable all data streams</td>
+     <td>启用所有数据流</td>
     </tr>
     <tr id="MAV_DATA_STREAM_RAW_SENSORS">
      <td>1</td>
      <td>
       <a href="#MAV_DATA_STREAM_RAW_SENSORS">MAV_DATA_STREAM_RAW_SENSORS</a>
      </td>
-     <td>Enable IMU_RAW, GPS_RAW, GPS_STATUS packets.</td>
+     <td>启用IMU_RAW、GPS_RAW、GPS_STATUS包。</td>
     </tr>
     <tr id="MAV_DATA_STREAM_EXTENDED_STATUS">
      <td>2</td>
      <td>
       <a href="#MAV_DATA_STREAM_EXTENDED_STATUS">MAV_DATA_STREAM_EXTENDED_STATUS</a>
      </td>
-     <td>Enable GPS_STATUS, CONTROL_STATUS, AUX_STATUS</td>
+     <td>启用 GPS_STATUS, CONTROL_STATUS, AUX_STATUS</td>
     </tr>
     <tr id="MAV_DATA_STREAM_RC_CHANNELS">
      <td>3</td>
      <td>
       <a href="#MAV_DATA_STREAM_RC_CHANNELS">MAV_DATA_STREAM_RC_CHANNELS</a>
      </td>
-     <td>Enable RC_CHANNELS_SCALED, RC_CHANNELS_RAW, SERVO_OUTPUT_RAW</td>
+     <td>启用 RC_CHANNELS_SCALED, RC_CHANNELS_RAW, SERVO_OUTPUT_RAW</td>
     </tr>
     <tr id="MAV_DATA_STREAM_RAW_CONTROLLER">
      <td>4</td>
      <td>
       <a href="#MAV_DATA_STREAM_RAW_CONTROLLER">MAV_DATA_STREAM_RAW_CONTROLLER</a>
      </td>
-     <td>Enable ATTITUDE_CONTROLLER_OUTPUT, POSITION_CONTROLLER_OUTPUT, NAV_CONTROLLER_OUTPUT.</td>
+     <td>启用ATTITUDE_CONTROLLER_OUTPUT, POSITION_CONTROLLER_OUTPUT, NAV_CONTROLLER_OUTPUT</td>
     </tr>
     <tr id="MAV_DATA_STREAM_POSITION">
      <td>6</td>
      <td>
       <a href="#MAV_DATA_STREAM_POSITION">MAV_DATA_STREAM_POSITION</a>
      </td>
-     <td>Enable LOCAL_POSITION, GLOBAL_POSITION/GLOBAL_POSITION_INT messages.</td>
+     <td>启用 LOCAL_POSITION, GLOBAL_POSITION/GLOBAL_POSITION_INT 消息.</td>
     </tr>
     <tr id="MAV_DATA_STREAM_EXTRA1">
      <td>10</td>
      <td>
       <a href="#MAV_DATA_STREAM_EXTRA1">MAV_DATA_STREAM_EXTRA1</a>
      </td>
-     <td>Dependent on the autopilot</td>
+     <td>根据自驾仪设置</td>
     </tr>
     <tr id="MAV_DATA_STREAM_EXTRA2">
      <td>11</td>
      <td>
       <a href="#MAV_DATA_STREAM_EXTRA2">MAV_DATA_STREAM_EXTRA2</a>
      </td>
-     <td>Dependent on the autopilot</td>
+     <td>根据自驾仪设置</td>
     </tr>
     <tr id="MAV_DATA_STREAM_EXTRA3">
      <td>12</td>
      <td>
       <a href="#MAV_DATA_STREAM_EXTRA3">MAV_DATA_STREAM_EXTRA3</a>
      </td>
-     <td>Dependent on the autopilot</td>
+     <td>根据自驾仪设置</td>
     </tr>
    </tbody>
   </table>
@@ -3276,13 +3270,10 @@
    <a href="#MAV_ROI">MAV_ROI</a>
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_SET_ROI_* (2018-01).</p>
+   替换为MAV_CMD_DO_SET_ROI_* (2018-01)。</p>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>The ROI (region of interest) for the vehicle. This can be
-                be used by the vehicle for camera/vehicle attitude alignment (see
-                MAV_CMD_NAV_ROI).</p>
+   机体的 ROI (感兴趣的区域)。 被机体用于摄像机/机体姿态校准(参见
+MAV_CMD_NAV_ROI)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3297,35 +3288,35 @@
      <td>
       <a href="#MAV_ROI_NONE">MAV_ROI_NONE</a>
      </td>
-     <td>No region of interest.</td>
+     <td>没有值得关注的区域。</td>
     </tr>
     <tr id="MAV_ROI_WPNEXT">
      <td>1</td>
      <td>
       <a href="#MAV_ROI_WPNEXT">MAV_ROI_WPNEXT</a>
      </td>
-     <td>Point toward next waypoint, with optional pitch/roll/yaw offset.</td>
+     <td>指向下一个航点, 可选pitch/roll/yaw 偏移。</td>
     </tr>
     <tr id="MAV_ROI_WPINDEX">
      <td>2</td>
      <td>
       <a href="#MAV_ROI_WPINDEX">MAV_ROI_WPINDEX</a>
      </td>
-     <td>Point toward given waypoint.</td>
+     <td>指向给定航点。</td>
     </tr>
     <tr id="MAV_ROI_LOCATION">
      <td>3</td>
      <td>
       <a href="#MAV_ROI_LOCATION">MAV_ROI_LOCATION</a>
      </td>
-     <td>Point toward fixed location.</td>
+     <td>指向固定位置。</td>
     </tr>
     <tr id="MAV_ROI_TARGET">
      <td>4</td>
      <td>
       <a href="#MAV_ROI_TARGET">MAV_ROI_TARGET</a>
      </td>
-     <td>Point toward of given id.</td>
+     <td>指向给定的id。</td>
     </tr>
    </tbody>
   </table>
@@ -4054,35 +4045,35 @@
      <td>
       <a href="#SERIAL_CONTROL_FLAG_REPLY">SERIAL_CONTROL_FLAG_REPLY</a>
      </td>
-     <td>Set if this is a reply</td>
+     <td>如果这是一个回复，则设置</td>
     </tr>
     <tr id="SERIAL_CONTROL_FLAG_RESPOND">
      <td>2</td>
      <td>
       <a href="#SERIAL_CONTROL_FLAG_RESPOND">SERIAL_CONTROL_FLAG_RESPOND</a>
      </td>
-     <td>Set if the sender wants the receiver to send a response as another SERIAL_CONTROL message</td>
+     <td>如果发送方希望接收方以另一个SERIAL_CONTROL消息的形式发送响应，则设置</td>
     </tr>
     <tr id="SERIAL_CONTROL_FLAG_EXCLUSIVE">
      <td>4</td>
      <td>
       <a href="#SERIAL_CONTROL_FLAG_EXCLUSIVE">SERIAL_CONTROL_FLAG_EXCLUSIVE</a>
      </td>
-     <td>Set if access to the serial port should be removed from whatever driver is currently using it, giving exclusive access to the SERIAL_CONTROL protocol. The port can be handed back by sending a request without this flag set</td>
+     <td>设置是否从当前使用的任何驱动程序中删除访问串口的权限，只允许访问SERIAL_CONTROL协议。 可以通过发送一个没有设置此标志的请求来返回端口</td>
     </tr>
     <tr id="SERIAL_CONTROL_FLAG_BLOCKING">
      <td>8</td>
      <td>
       <a href="#SERIAL_CONTROL_FLAG_BLOCKING">SERIAL_CONTROL_FLAG_BLOCKING</a>
      </td>
-     <td>Block on writes to the serial port</td>
+     <td>阻止对串行端口的写操作</td>
     </tr>
     <tr id="SERIAL_CONTROL_FLAG_MULTI">
      <td>16</td>
      <td>
       <a href="#SERIAL_CONTROL_FLAG_MULTI">SERIAL_CONTROL_FLAG_MULTI</a>
      </td>
-     <td>Send multiple replies until port is drained</td>
+     <td>发送多个回复，直到端口耗尽</td>
     </tr>
    </tbody>
   </table>
@@ -8628,9 +8619,7 @@
    <a href="#AIS_FLAGS">AIS_FLAGS</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>These flags are used in the AIS_VESSEL.fields bitmask to indicate validity of data in the other message fields. When set, the data is valid.</p>
+   这些标志在AIS_VESSEL字段中使用，用于指示其他消息字段中的数据的有效性。 When set, the data is valid.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -8683,7 +8672,7 @@
      <td>
       <a href="#AIS_FLAGS_TURN_RATE_SIGN_ONLY">AIS_FLAGS_TURN_RATE_SIGN_ONLY</a>
      </td>
-     <td>Only the sign of the returned turn rate value is valid, either greater than 5deg/30s or less than -5deg/30s</td>
+     <td>只有返回转速率值的符号是有效的，要么大于 5deg/30s 要么小于 -5deg/30s</td>
     </tr>
     <tr id="AIS_FLAGS_VALID_DIMENSIONS">
      <td>64</td>
@@ -8698,28 +8687,28 @@
      <td>
       <a href="#AIS_FLAGS_LARGE_BOW_DIMENSION">AIS_FLAGS_LARGE_BOW_DIMENSION</a>
      </td>
-     <td>Distance to bow is larger than 511m</td>
+     <td>到船首的距离大于511米</td>
     </tr>
     <tr id="AIS_FLAGS_LARGE_STERN_DIMENSION">
      <td>256</td>
      <td>
       <a href="#AIS_FLAGS_LARGE_STERN_DIMENSION">AIS_FLAGS_LARGE_STERN_DIMENSION</a>
      </td>
-     <td>Distance to stern is larger than 511m</td>
+     <td>到船尾的距离大于511米</td>
     </tr>
     <tr id="AIS_FLAGS_LARGE_PORT_DIMENSION">
      <td>512</td>
      <td>
       <a href="#AIS_FLAGS_LARGE_PORT_DIMENSION">AIS_FLAGS_LARGE_PORT_DIMENSION</a>
      </td>
-     <td>Distance to port side is larger than 63m</td>
+     <td>到左舷的距离大于63米</td>
     </tr>
     <tr id="AIS_FLAGS_LARGE_STARBOARD_DIMENSION">
      <td>1024</td>
      <td>
       <a href="#AIS_FLAGS_LARGE_STARBOARD_DIMENSION">AIS_FLAGS_LARGE_STARBOARD_DIMENSION</a>
      </td>
-     <td>Distance to starboard side is larger than 63m</td>
+     <td>到右舷的距离大于63米</td>
     </tr>
     <tr id="AIS_FLAGS_VALID_CALLSIGN">
      <td>2048</td>
@@ -12352,7 +12341,7 @@
    替换为MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01)。
 
 
-  这一信息含糊不清，前后不一。 它已被MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE 和 MAV_CMD_DO_SET_ROI_*所取代。 该消息仍然可以用来与旧版Gimbals进行通信。</p>
+  这一信息含糊不清，前后不一。 它已被MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE 和 MAV_CMD_DO_SET_ROI_*所取代。 该消息仍然可以用来与旧版云台进行通信。</p>
   <p>
    控制相机或架设天线的设备的任务命令</p>
   <table class="sortable">
@@ -12367,7 +12356,7 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>pitch depending on mount mode (degrees or degrees/second depending on pitch input).</td>
+     <td>俯仰取决于挂载的操作模式(度或度/秒取决于俯仰输入)。</td>
      <td>
      </td>
      <td>
@@ -12375,7 +12364,7 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>roll depending on mount mode (degrees or degrees/second depending on roll input).</td>
+     <td>滚转取决于挂在的操作模式(度或度/秒取决于滚转输入)。</td>
      <td>
      </td>
      <td>
@@ -12383,7 +12372,7 @@
     </tr>
     <tr>
      <td>3</td>
-     <td>yaw depending on mount mode (degrees or degrees/second depending on yaw input).</td>
+     <td>方位取决于挂载的操作模式(度或度/秒取决于方位输入)。</td>
      <td>
      </td>
      <td>
@@ -12391,14 +12380,14 @@
     </tr>
     <tr>
      <td>4: Altitude</td>
-     <td>altitude depending on mount mode.</td>
+     <td>高度取决于挂载的操作模式。</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>5</td>
-     <td>latitude, set if appropriate mount mode.</td>
+     <td>纬度，如果是适当的挂载的操作模式则设定。</td>
      <td>
      </td>
      <td>
@@ -12406,7 +12395,7 @@
     </tr>
     <tr>
      <td>6</td>
-     <td>longitude, set if appropriate mount mode.</td>
+     <td>经度，如果是适当的挂载的操作模式则设定。</td>
      <td>
      </td>
      <td>
@@ -12414,7 +12403,7 @@
     </tr>
     <tr>
      <td>7: Mode</td>
-     <td>Mount mode.</td>
+     <td>挂载的操作</td>
      <td>MAV_MOUNT_MODE</td>
      <td>
      </td>
@@ -13878,7 +13867,7 @@
     </tr>
     <tr>
      <td>3</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>必须在请求的消息中定义此参数(如果有的话)。 默认情况下假定未使用(0)。</td>
      <td>
      </td>
     </tr>
@@ -14486,7 +14475,7 @@
    <tbody>
     <tr>
      <td>1</td>
-     <td>Reserved (Set to 0)</td>
+     <td>保留(设置为0)</td>
      <td>
      </td>
      <td>
@@ -14494,14 +14483,14 @@
     </tr>
     <tr>
      <td>2: Interval</td>
-     <td>Desired elapsed time between two consecutive pictures (in seconds). Minimum values depend on hardware (typically greater than 2 seconds).</td>
+     <td>连续拍摄情况下，两张照片之间所需的运行时间(以秒为单位)。 最小值取决于硬件(通常大于2秒)。</td>
      <td>
       <em>min:</em>0 </td>
      <td>s</td>
     </tr>
     <tr>
      <td>3: Capture Count</td>
-     <td>Total number of images to capture. 0 to capture forever/until MAV_CMD_IMAGE_STOP_CAPTURE.</td>
+     <td>需要拍照总数。 0表示一直拍照/直到MAV_CMD_IMAGE_STOP_CAPTURE。</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
      <td>
@@ -14509,7 +14498,7 @@
     </tr>
     <tr>
      <td>4: Sequence Number</td>
-     <td>Capture sequence number starting from 1. This is only valid for single-capture (param3 == 1). Increment the capture ID for each capture command to prevent double captures when a command is re-transmitted. Use 0 to ignore it.</td>
+     <td>从1开始拍照序列号。 这只对单张拍摄有效(param3 == 1)。 Increment the capture ID for each capture command to prevent double captures when a command is re-transmitted. Use 0 to ignore it.</td>
      <td>
       <em>min:</em>1 <em>increment:</em>1</td>
      <td>
