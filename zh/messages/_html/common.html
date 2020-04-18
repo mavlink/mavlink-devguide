@@ -4817,7 +4817,7 @@
    <a href="#MAV_BATTERY_CHARGE_STATE">MAV_BATTERY_CHARGE_STATE</a>
   </h3>
   <p>
-   电池充电状态。</p>
+   电池使用过程的状态</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -4904,42 +4904,42 @@
      <td>
       <a href="#MAV_SMART_BATTERY_FAULT_DEEP_DISCHARGE">MAV_SMART_BATTERY_FAULT_DEEP_DISCHARGE</a>
      </td>
-     <td>Battery has deep discharged.</td>
+     <td>电池已严重放电。</td>
     </tr>
     <tr id="MAV_SMART_BATTERY_FAULT_SPIKES">
      <td>2</td>
      <td>
       <a href="#MAV_SMART_BATTERY_FAULT_SPIKES">MAV_SMART_BATTERY_FAULT_SPIKES</a>
      </td>
-     <td>Voltage spikes.</td>
+     <td>电压峰值。</td>
     </tr>
     <tr id="MAV_SMART_BATTERY_FAULT_SINGLE_CELL_FAIL">
      <td>4</td>
      <td>
       <a href="#MAV_SMART_BATTERY_FAULT_SINGLE_CELL_FAIL">MAV_SMART_BATTERY_FAULT_SINGLE_CELL_FAIL</a>
      </td>
-     <td>Single cell has failed.</td>
+     <td>某个单体电池失效</td>
     </tr>
     <tr id="MAV_SMART_BATTERY_FAULT_OVER_CURRENT">
      <td>8</td>
      <td>
       <a href="#MAV_SMART_BATTERY_FAULT_OVER_CURRENT">MAV_SMART_BATTERY_FAULT_OVER_CURRENT</a>
      </td>
-     <td>Over-current fault.</td>
+     <td>电流超限错误</td>
     </tr>
     <tr id="MAV_SMART_BATTERY_FAULT_OVER_TEMPERATURE">
      <td>16</td>
      <td>
       <a href="#MAV_SMART_BATTERY_FAULT_OVER_TEMPERATURE">MAV_SMART_BATTERY_FAULT_OVER_TEMPERATURE</a>
      </td>
-     <td>Over-temperature fault.</td>
+     <td>温度超限错误</td>
     </tr>
     <tr id="MAV_SMART_BATTERY_FAULT_UNDER_TEMPERATURE">
      <td>32</td>
      <td>
       <a href="#MAV_SMART_BATTERY_FAULT_UNDER_TEMPERATURE">MAV_SMART_BATTERY_FAULT_UNDER_TEMPERATURE</a>
      </td>
-     <td>Under-temperature fault.</td>
+     <td>温度过低错误</td>
     </tr>
    </tbody>
   </table>
@@ -5013,35 +5013,35 @@
      <td>
       <a href="#MAV_LANDED_STATE_UNDEFINED">MAV_LANDED_STATE_UNDEFINED</a>
      </td>
-     <td>MAV landed state is unknown</td>
+     <td>MAV 降落状态未知</td>
     </tr>
     <tr id="MAV_LANDED_STATE_ON_GROUND">
      <td>1</td>
      <td>
       <a href="#MAV_LANDED_STATE_ON_GROUND">MAV_LANDED_STATE_ON_GROUND</a>
      </td>
-     <td>MAV is landed (on ground)</td>
+     <td>MAV在地面上</td>
     </tr>
     <tr id="MAV_LANDED_STATE_IN_AIR">
      <td>2</td>
      <td>
       <a href="#MAV_LANDED_STATE_IN_AIR">MAV_LANDED_STATE_IN_AIR</a>
      </td>
-     <td>MAV is in air</td>
+     <td>MAV 在飞行过程中</td>
     </tr>
     <tr id="MAV_LANDED_STATE_TAKEOFF">
      <td>3</td>
      <td>
       <a href="#MAV_LANDED_STATE_TAKEOFF">MAV_LANDED_STATE_TAKEOFF</a>
      </td>
-     <td>MAV currently taking off</td>
+     <td>MAV 正在起飞</td>
     </tr>
     <tr id="MAV_LANDED_STATE_LANDING">
      <td>4</td>
      <td>
       <a href="#MAV_LANDED_STATE_LANDING">MAV_LANDED_STATE_LANDING</a>
      </td>
-     <td>MAV currently landing</td>
+     <td>MAV处于降落状态</td>
     </tr>
    </tbody>
   </table>
@@ -5064,14 +5064,14 @@
      <td>
       <a href="#ADSB_ALTITUDE_TYPE_PRESSURE_QNH">ADSB_ALTITUDE_TYPE_PRESSURE_QNH</a>
      </td>
-     <td>Altitude reported from a Baro source using QNH reference</td>
+     <td>使用QNH参考从Baro源报告的高度</td>
     </tr>
     <tr id="ADSB_ALTITUDE_TYPE_GEOMETRIC">
      <td>1</td>
      <td>
       <a href="#ADSB_ALTITUDE_TYPE_GEOMETRIC">ADSB_ALTITUDE_TYPE_GEOMETRIC</a>
      </td>
-     <td>Altitude reported from a GNSS source</td>
+     <td>来自GNSS的高度报告</td>
     </tr>
    </tbody>
   </table>
@@ -5079,9 +5079,7 @@
    <a href="#ADSB_EMITTER_TYPE">ADSB_EMITTER_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>ADSB classification for the type of vehicle emitting the transponder signal</p>
+   发送应答器信号的车辆类型的ADSB分类</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -5353,9 +5351,7 @@
    <a href="#MAV_DO_REPOSITION_FLAGS">MAV_DO_REPOSITION_FLAGS</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Bitmap of options for the MAV_CMD_DO_REPOSITION</p>
+   MAV_CMD_DO_REPOSITION选项的位图</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -5370,7 +5366,7 @@
      <td>
       <a href="#MAV_DO_REPOSITION_FLAGS_CHANGE_MODE">MAV_DO_REPOSITION_FLAGS_CHANGE_MODE</a>
      </td>
-     <td>The aircraft should immediately transition into guided. This should not be set for follow me applications</td>
+     <td>飞机应立即过渡到有导航的状态。 不应将此设置为“跟随我”应用程序</td>
     </tr>
    </tbody>
   </table>
@@ -5498,21 +5494,21 @@
      <td>
       <a href="#MOTOR_TEST_ORDER_DEFAULT">MOTOR_TEST_ORDER_DEFAULT</a>
      </td>
-     <td>default autopilot motor test method</td>
+     <td>默认自动发动机测试方法</td>
     </tr>
     <tr id="MOTOR_TEST_ORDER_SEQUENCE">
      <td>1</td>
      <td>
       <a href="#MOTOR_TEST_ORDER_SEQUENCE">MOTOR_TEST_ORDER_SEQUENCE</a>
      </td>
-     <td>motor numbers are specified as their index in a predefined vehicle-specific sequence</td>
+     <td>预先定义的特定于车辆的序列中，将电机编号指定为它们的索引</td>
     </tr>
     <tr id="MOTOR_TEST_ORDER_BOARD">
      <td>2</td>
      <td>
       <a href="#MOTOR_TEST_ORDER_BOARD">MOTOR_TEST_ORDER_BOARD</a>
      </td>
-     <td>motor numbers are specified as the output as labeled on the board</td>
+     <td>电机编号指定为控制板上标示的输出</td>
     </tr>
    </tbody>
   </table>
@@ -5538,28 +5534,28 @@
      <td>
       <a href="#MOTOR_TEST_THROTTLE_PERCENT">MOTOR_TEST_THROTTLE_PERCENT</a>
      </td>
-     <td>throttle as a percentage from 0 ~ 100</td>
+     <td>以百分比表示的 0 ~ 100</td>
     </tr>
     <tr id="MOTOR_TEST_THROTTLE_PWM">
      <td>1</td>
      <td>
       <a href="#MOTOR_TEST_THROTTLE_PWM">MOTOR_TEST_THROTTLE_PWM</a>
      </td>
-     <td>throttle as an absolute PWM value (normally in range of 1000~2000)</td>
+     <td>以PWM绝对值(通常为 1000~2000)</td>
     </tr>
     <tr id="MOTOR_TEST_THROTTLE_PILOT">
      <td>2</td>
      <td>
       <a href="#MOTOR_TEST_THROTTLE_PILOT">MOTOR_TEST_THROTTLE_PILOT</a>
      </td>
-     <td>throttle pass-through from pilot's transmitter</td>
+     <td>飞行员的发射器输出的油门值</td>
     </tr>
     <tr id="MOTOR_TEST_COMPASS_CAL">
      <td>3</td>
      <td>
       <a href="#MOTOR_TEST_COMPASS_CAL">MOTOR_TEST_COMPASS_CAL</a>
      </td>
-     <td>per-motor compass calibration test</td>
+     <td>电机罗盘校准试验</td>
     </tr>
    </tbody>
   </table>
@@ -5585,56 +5581,56 @@
      <td>
       <a href="#GPS_INPUT_IGNORE_FLAG_ALT">GPS_INPUT_IGNORE_FLAG_ALT</a>
      </td>
-     <td>ignore altitude field</td>
+     <td>忽略高度字段</td>
     </tr>
     <tr id="GPS_INPUT_IGNORE_FLAG_HDOP">
      <td>2</td>
      <td>
       <a href="#GPS_INPUT_IGNORE_FLAG_HDOP">GPS_INPUT_IGNORE_FLAG_HDOP</a>
      </td>
-     <td>ignore hdop field</td>
+     <td>忽略 hdop 字段</td>
     </tr>
     <tr id="GPS_INPUT_IGNORE_FLAG_VDOP">
      <td>4</td>
      <td>
       <a href="#GPS_INPUT_IGNORE_FLAG_VDOP">GPS_INPUT_IGNORE_FLAG_VDOP</a>
      </td>
-     <td>ignore vdop field</td>
+     <td>忽略 vdop 字段</td>
     </tr>
     <tr id="GPS_INPUT_IGNORE_FLAG_VEL_HORIZ">
      <td>8</td>
      <td>
       <a href="#GPS_INPUT_IGNORE_FLAG_VEL_HORIZ">GPS_INPUT_IGNORE_FLAG_VEL_HORIZ</a>
      </td>
-     <td>ignore horizontal velocity field (vn and ve)</td>
+     <td>忽略水平速度字段 (vn 和 ve)</td>
     </tr>
     <tr id="GPS_INPUT_IGNORE_FLAG_VEL_VERT">
      <td>16</td>
      <td>
       <a href="#GPS_INPUT_IGNORE_FLAG_VEL_VERT">GPS_INPUT_IGNORE_FLAG_VEL_VERT</a>
      </td>
-     <td>ignore vertical velocity field (vd)</td>
+     <td>忽略垂直速度字段 (vd)</td>
     </tr>
     <tr id="GPS_INPUT_IGNORE_FLAG_SPEED_ACCURACY">
      <td>32</td>
      <td>
       <a href="#GPS_INPUT_IGNORE_FLAG_SPEED_ACCURACY">GPS_INPUT_IGNORE_FLAG_SPEED_ACCURACY</a>
      </td>
-     <td>ignore speed accuracy field</td>
+     <td>忽略速度精度字段</td>
     </tr>
     <tr id="GPS_INPUT_IGNORE_FLAG_HORIZONTAL_ACCURACY">
      <td>64</td>
      <td>
       <a href="#GPS_INPUT_IGNORE_FLAG_HORIZONTAL_ACCURACY">GPS_INPUT_IGNORE_FLAG_HORIZONTAL_ACCURACY</a>
      </td>
-     <td>ignore horizontal accuracy field</td>
+     <td>忽略水平精度字段</td>
     </tr>
     <tr id="GPS_INPUT_IGNORE_FLAG_VERTICAL_ACCURACY">
      <td>128</td>
      <td>
       <a href="#GPS_INPUT_IGNORE_FLAG_VERTICAL_ACCURACY">GPS_INPUT_IGNORE_FLAG_VERTICAL_ACCURACY</a>
      </td>
-     <td>ignore vertical accuracy field</td>
+     <td>忽略垂直精度字段</td>
     </tr>
    </tbody>
   </table>
@@ -5724,7 +5720,7 @@
      <td>
       <a href="#MAV_COLLISION_THREAT_LEVEL_NONE">MAV_COLLISION_THREAT_LEVEL_NONE</a>
      </td>
-     <td>Not a threat</td>
+     <td>不是威胁</td>
     </tr>
     <tr id="MAV_COLLISION_THREAT_LEVEL_LOW">
      <td>1</td>
@@ -5746,9 +5742,7 @@
    <a href="#MAV_COLLISION_SRC">MAV_COLLISION_SRC</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Source of information about this collision.</p>
+   关于这次碰撞的信息来源</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -5763,14 +5757,14 @@
      <td>
       <a href="#MAV_COLLISION_SRC_ADSB">MAV_COLLISION_SRC_ADSB</a>
      </td>
-     <td>ID field references ADSB_VEHICLE packets</td>
+     <td>ID字段引用 ADSB_VEHICLE 数据包</td>
     </tr>
     <tr id="MAV_COLLISION_SRC_MAVLINK_GPS_GLOBAL_INT">
      <td>1</td>
      <td>
       <a href="#MAV_COLLISION_SRC_MAVLINK_GPS_GLOBAL_INT">MAV_COLLISION_SRC_MAVLINK_GPS_GLOBAL_INT</a>
      </td>
-     <td>ID field references MAVLink SRC ID</td>
+     <td>ID字段引用 MAVLink SRC ID</td>
     </tr>
    </tbody>
   </table>
@@ -5849,7 +5843,7 @@
      <td>
       <a href="#GPS_FIX_TYPE_PPP">GPS_FIX_TYPE_PPP</a>
      </td>
-     <td>PPP, 3D position.</td>
+     <td>PPP, 3D 位置</td>
     </tr>
    </tbody>
   </table>
@@ -5857,9 +5851,7 @@
    <a href="#RTK_BASELINE_COORDINATE_SYSTEM">RTK_BASELINE_COORDINATE_SYSTEM</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>RTK GPS baseline coordinate system, used for RTK corrections</p>
+   RTK GPS 基准坐标系统，用于RTK 校正</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -5874,14 +5866,14 @@
      <td>
       <a href="#RTK_BASELINE_COORDINATE_SYSTEM_ECEF">RTK_BASELINE_COORDINATE_SYSTEM_ECEF</a>
      </td>
-     <td>Earth-centered, Earth-fixed</td>
+     <td>地球,地球定点</td>
     </tr>
     <tr id="RTK_BASELINE_COORDINATE_SYSTEM_NED">
      <td>1</td>
      <td>
       <a href="#RTK_BASELINE_COORDINATE_SYSTEM_NED">RTK_BASELINE_COORDINATE_SYSTEM_NED</a>
      </td>
-     <td>RTK basestation centered, north, east, down</td>
+     <td>RTK 基础以北、东、下</td>
     </tr>
    </tbody>
   </table>
@@ -5889,9 +5881,7 @@
    <a href="#LANDING_TARGET_TYPE">LANDING_TARGET_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Type of landing target</p>
+   着陆目标类型</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -5906,28 +5896,28 @@
      <td>
       <a href="#LANDING_TARGET_TYPE_LIGHT_BEACON">LANDING_TARGET_TYPE_LIGHT_BEACON</a>
      </td>
-     <td>Landing target signaled by light beacon (ex: IR-LOCK)</td>
+     <td>着陆目标由光信标发出信号(例如:IR-LOCK)</td>
     </tr>
     <tr id="LANDING_TARGET_TYPE_RADIO_BEACON">
      <td>1</td>
      <td>
       <a href="#LANDING_TARGET_TYPE_RADIO_BEACON">LANDING_TARGET_TYPE_RADIO_BEACON</a>
      </td>
-     <td>Landing target signaled by radio beacon (ex: ILS, NDB)</td>
+     <td>着陆目标由无线电信标发出信号(例如:ILS, NDB)</td>
     </tr>
     <tr id="LANDING_TARGET_TYPE_VISION_FIDUCIAL">
      <td>2</td>
      <td>
       <a href="#LANDING_TARGET_TYPE_VISION_FIDUCIAL">LANDING_TARGET_TYPE_VISION_FIDUCIAL</a>
      </td>
-     <td>Landing target represented by a fiducial marker (ex: ARTag)</td>
+     <td>用基准标记表示的着陆目标(例如:ARTag)</td>
     </tr>
     <tr id="LANDING_TARGET_TYPE_VISION_OTHER">
      <td>3</td>
      <td>
       <a href="#LANDING_TARGET_TYPE_VISION_OTHER">LANDING_TARGET_TYPE_VISION_OTHER</a>
      </td>
-     <td>Landing target represented by a pre-defined visual shape/feature (ex: X-marker, H-marker, square)</td>
+     <td>着陆目标由预先定义的视觉形状/特征表示 (例如：X-标记、H-标记、正方形)</td>
     </tr>
    </tbody>
   </table>
@@ -5935,9 +5925,7 @@
    <a href="#VTOL_TRANSITION_HEADING">VTOL_TRANSITION_HEADING</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Direction of VTOL transition</p>
+   VToL 过渡方向</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -5952,35 +5940,35 @@
      <td>
       <a href="#VTOL_TRANSITION_HEADING_VEHICLE_DEFAULT">VTOL_TRANSITION_HEADING_VEHICLE_DEFAULT</a>
      </td>
-     <td>Respect the heading configuration of the vehicle.</td>
+     <td>按照机体头向的方向</td>
     </tr>
     <tr id="VTOL_TRANSITION_HEADING_NEXT_WAYPOINT">
      <td>1</td>
      <td>
       <a href="#VTOL_TRANSITION_HEADING_NEXT_WAYPOINT">VTOL_TRANSITION_HEADING_NEXT_WAYPOINT</a>
      </td>
-     <td>Use the heading pointing towards the next waypoint.</td>
+     <td>使用指向下一个航路点的标航向</td>
     </tr>
     <tr id="VTOL_TRANSITION_HEADING_TAKEOFF">
      <td>2</td>
      <td>
       <a href="#VTOL_TRANSITION_HEADING_TAKEOFF">VTOL_TRANSITION_HEADING_TAKEOFF</a>
      </td>
-     <td>Use the heading on takeoff (while sitting on the ground).</td>
+     <td>使用起飞时(在地面上时)航向。</td>
     </tr>
     <tr id="VTOL_TRANSITION_HEADING_SPECIFIED">
      <td>3</td>
      <td>
       <a href="#VTOL_TRANSITION_HEADING_SPECIFIED">VTOL_TRANSITION_HEADING_SPECIFIED</a>
      </td>
-     <td>Use the specified heading in parameter 4.</td>
+     <td>使用参数4中的指定头向</td>
     </tr>
     <tr id="VTOL_TRANSITION_HEADING_ANY">
      <td>4</td>
      <td>
       <a href="#VTOL_TRANSITION_HEADING_ANY">VTOL_TRANSITION_HEADING_ANY</a>
      </td>
-     <td>Use the current heading when reaching takeoff altitude (potentially facing the wind when weather-vaning is active).</td>
+     <td>到达起飞高度时使用当前航向(当风向标活动时，可能迎向风)。</td>
     </tr>
    </tbody>
   </table>
@@ -6642,9 +6630,8 @@
    <a href="#CELLULAR_NETWORK_RADIO_TYPE">CELLULAR_NETWORK_RADIO_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Cellular network radio type</p>
+   蜂窝移动网络状态
+</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6700,9 +6687,7 @@
    <a href="#CELLULAR_NETWORK_STATUS_FLAG">CELLULAR_NETWORK_STATUS_FLAG</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>These flags encode the cellular network status</p>
+   这些标志编码蜂窝网络状态</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6717,7 +6702,7 @@
      <td>
       <a href="#CELLULAR_NETWORK_STATUS_FLAG_ROAMING">CELLULAR_NETWORK_STATUS_FLAG_ROAMING</a>
      </td>
-     <td>Roaming is active</td>
+     <td>漫游已启用</td>
     </tr>
    </tbody>
   </table>
@@ -6725,9 +6710,7 @@
    <a href="#PRECISION_LAND_MODE">PRECISION_LAND_MODE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Precision land modes (used in MAV_CMD_NAV_LAND).</p>
+   精确着陆模式(在MAV_CMD_NAV_LAND中使用)。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6742,14 +6725,14 @@
      <td>
       <a href="#PRECISION_LAND_MODE_DISABLED">PRECISION_LAND_MODE_DISABLED</a>
      </td>
-     <td>Normal (non-precision) landing.</td>
+     <td>正常(non-precision)着陆。</td>
     </tr>
     <tr id="PRECISION_LAND_MODE_OPPORTUNISTIC">
      <td>1</td>
      <td>
       <a href="#PRECISION_LAND_MODE_OPPORTUNISTIC">PRECISION_LAND_MODE_OPPORTUNISTIC</a>
      </td>
-     <td>Use precision landing if beacon detected when land command accepted, otherwise land normally.</td>
+     <td>如果接受地面指挥时探测到信标，请使用精确着陆，否则正常着陆。</td>
     </tr>
     <tr id="PRECISION_LAND_MODE_REQUIRED">
      <td>2</td>
