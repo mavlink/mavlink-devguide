@@ -3427,9 +3427,7 @@
    <a href="#MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Specifies the datatype of a MAVLink parameter.</p>
+   指定MAVLink参数的数据类型。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3515,9 +3513,7 @@
    <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Specifies the datatype of a MAVLink extended parameter.</p>
+   指定MAVLink扩展参数的数据类型。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -4461,9 +4457,7 @@
    <a href="#MAV_PROTOCOL_CAPABILITY">MAV_PROTOCOL_CAPABILITY</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Bitmask of (optional) autopilot capabilities (64 bit). If a bit is set, the autopilot supports this capability.</p>
+   自驾仪能力的位掩码（64位） 如果设置了一个位，自动驾驶仪就支持这种功能。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -4492,7 +4486,7 @@
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_MISSION_INT">MAV_PROTOCOL_CAPABILITY_MISSION_INT</a>
      </td>
-     <td>Autopilot supports MISSION_INT scaled integer message type.</td>
+     <td>Autopilot支持MISSION_INT比例整数消息类型。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_COMMAND_INT">
      <td>8</td>
@@ -4736,35 +4730,35 @@
      <td>
       <a href="#MAV_BATTERY_TYPE_UNKNOWN">MAV_BATTERY_TYPE_UNKNOWN</a>
      </td>
-     <td>Not specified.</td>
+     <td>未指定。</td>
     </tr>
     <tr id="MAV_BATTERY_TYPE_LIPO">
      <td>1</td>
      <td>
       <a href="#MAV_BATTERY_TYPE_LIPO">MAV_BATTERY_TYPE_LIPO</a>
      </td>
-     <td>Lithium polymer battery</td>
+     <td>锂离子聚合物电池</td>
     </tr>
     <tr id="MAV_BATTERY_TYPE_LIFE">
      <td>2</td>
      <td>
       <a href="#MAV_BATTERY_TYPE_LIFE">MAV_BATTERY_TYPE_LIFE</a>
      </td>
-     <td>Lithium-iron-phosphate battery</td>
+     <td>磷酸亚铁锂电池</td>
     </tr>
     <tr id="MAV_BATTERY_TYPE_LION">
      <td>3</td>
      <td>
       <a href="#MAV_BATTERY_TYPE_LION">MAV_BATTERY_TYPE_LION</a>
      </td>
-     <td>Lithium-ION battery</td>
+     <td>锂离子电池</td>
     </tr>
     <tr id="MAV_BATTERY_TYPE_NIMH">
      <td>4</td>
      <td>
       <a href="#MAV_BATTERY_TYPE_NIMH">MAV_BATTERY_TYPE_NIMH</a>
      </td>
-     <td>Nickel metal hydride battery</td>
+     <td>镍氢电池</td>
     </tr>
    </tbody>
   </table>
@@ -4838,56 +4832,56 @@
      <td>
       <a href="#MAV_BATTERY_CHARGE_STATE_UNDEFINED">MAV_BATTERY_CHARGE_STATE_UNDEFINED</a>
      </td>
-     <td>Low battery state is not provided</td>
+     <td>不提供低电量状态</td>
     </tr>
     <tr id="MAV_BATTERY_CHARGE_STATE_OK">
      <td>1</td>
      <td>
       <a href="#MAV_BATTERY_CHARGE_STATE_OK">MAV_BATTERY_CHARGE_STATE_OK</a>
      </td>
-     <td>Battery is not in low state. Normal operation.</td>
+     <td>电池电量不处于低电量状态 正常的操作。</td>
     </tr>
     <tr id="MAV_BATTERY_CHARGE_STATE_LOW">
      <td>2</td>
      <td>
       <a href="#MAV_BATTERY_CHARGE_STATE_LOW">MAV_BATTERY_CHARGE_STATE_LOW</a>
      </td>
-     <td>Battery state is low, warn and monitor close.</td>
+     <td>电池电量不足，警告并关闭监控</td>
     </tr>
     <tr id="MAV_BATTERY_CHARGE_STATE_CRITICAL">
      <td>3</td>
      <td>
       <a href="#MAV_BATTERY_CHARGE_STATE_CRITICAL">MAV_BATTERY_CHARGE_STATE_CRITICAL</a>
      </td>
-     <td>Battery state is critical, return or abort immediately.</td>
+     <td>电池状态紧急，请立即返回或中止。</td>
     </tr>
     <tr id="MAV_BATTERY_CHARGE_STATE_EMERGENCY">
      <td>4</td>
      <td>
       <a href="#MAV_BATTERY_CHARGE_STATE_EMERGENCY">MAV_BATTERY_CHARGE_STATE_EMERGENCY</a>
      </td>
-     <td>Battery state is too low for ordinary abort sequence. Perform fastest possible emergency stop to prevent damage.</td>
+     <td>电池状态太低，不能正常中止程序。 尽可能快地进行紧急停车以防止损坏。</td>
     </tr>
     <tr id="MAV_BATTERY_CHARGE_STATE_FAILED">
      <td>5</td>
      <td>
       <a href="#MAV_BATTERY_CHARGE_STATE_FAILED">MAV_BATTERY_CHARGE_STATE_FAILED</a>
      </td>
-     <td>Battery failed, damage unavoidable.</td>
+     <td>电池故障，损坏在所难免。</td>
     </tr>
     <tr id="MAV_BATTERY_CHARGE_STATE_UNHEALTHY">
      <td>6</td>
      <td>
       <a href="#MAV_BATTERY_CHARGE_STATE_UNHEALTHY">MAV_BATTERY_CHARGE_STATE_UNHEALTHY</a>
      </td>
-     <td>Battery is diagnosed to be defective or an error occurred, usage is discouraged / prohibited.</td>
+     <td>电池被诊断为有缺陷或发生错误，不鼓励/禁止使用。</td>
     </tr>
     <tr id="MAV_BATTERY_CHARGE_STATE_CHARGING">
      <td>7</td>
      <td>
       <a href="#MAV_BATTERY_CHARGE_STATE_CHARGING">MAV_BATTERY_CHARGE_STATE_CHARGING</a>
      </td>
-     <td>Battery is charging.</td>
+     <td>电池充电。</td>
     </tr>
    </tbody>
   </table>
