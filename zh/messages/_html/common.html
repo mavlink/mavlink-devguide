@@ -21931,11 +21931,9 @@ y轴磁力计数据
     替换于HIL_STATE_QUATERNION (2013-07)。
 
 
-  Suffers from missing airspeed fields and singularities due to Euler angles</p>
+  由于欧拉角的原因而缺少空速场和奇异点</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Sent from simulation to autopilot. This packet is useful for high throughput applications such as hardware in the loop simulations.</p>
+   从仿真系统发送到自动驾驶仪。 此包对于高吞吐量应用程序(如循环仿真中的硬件)非常有用。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22050,9 +22048,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Sent from autopilot to simulation. Hardware in the loop control outputs</p>
+   从自动驾驶仪发送到仿真系统 硬件在环控制</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22181,7 +22177,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Navigation mode (MAV_NAV_MODE)</td>
+     <td>导航模式 (MAV_NAV_MODE)</td>
     </tr>
    </tbody>
   </table>
@@ -22191,9 +22187,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Sent from simulation to autopilot. The RAW values of the RC channels received. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. Individual receivers/transmitters might violate this specification.</p>
+   从仿真系统发送到自动驾驶仪。 收到遥控器通道的原始值 PPM标准：1000微秒：0%，2000微秒：100%。 个人接收器/发射器可能不遵守这一标准。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22297,9 +22291,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Sent from autopilot to simulation. Hardware in the loop control outputs (replacement for HIL_CONTROLS)</p>
+   从自动驾驶仪发送到仿真系统 硬件在环控制(替换为 HIL_CONTROLS)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22330,7 +22322,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Control outputs -1 .. 1. Channel assignment depends on the simulated hardware.</td>
+     <td>控制输出 1. 通道分配依赖于模拟硬件。</td>
     </tr>
     <tr>
      <td>mode</td>
@@ -22340,7 +22332,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
      </td>
-     <td>System mode. Includes arming state.</td>
+     <td>系统模式。 包括锁定状态。</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -22509,7 +22501,7 @@ y轴磁力计数据
      <td>float[21]</td>
      <td>
      </td>
-     <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x_global, y_global, z_global, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
+     <td>位姿6x6交叉协方差矩阵的行-主表示右上角三角形(状态:x_global, y_global, z_global, roll, pitch, yaw;前六项是第一行，后五项是第二行，等等)。 如果未知，在数组中将NAN值分配给第一个元素。</td>
     </tr>
     <tr>
      <td style="color:blue;">reset_counter<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -22519,7 +22511,7 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.</td>
+     <td>预测计数器的复位 当估计值在任意维(位置、速度、姿态、角速度)中重置时，这个值应该增加。 这是设计来使用的外部SLAM系统检测循环结束和估计值跳变</td>
     </tr>
    </tbody>
   </table>
@@ -22590,7 +22582,7 @@ y轴磁力计数据
      <td>float[21]</td>
      <td>
      </td>
-     <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
+     <td>位姿6x6交叉协方差矩阵的行-主表示右上角三角形(状态:x_global, y_global, z_global, roll, pitch, yaw;前六项是第一行，后五项是第二行，等等)。 If unknown, assign NaN value to first element in the array.</td>
     </tr>
     <tr>
      <td style="color:blue;">reset_counter<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -22600,7 +22592,7 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.</td>
+     <td>预测计数器的复位 当估计值在任意维(位置、速度、姿态、角速度)中重置时，这个值应该增加。 这是设计来使用的外部SLAM系统检测循环结束和估计值跳变</td>
     </tr>
    </tbody>
   </table>
@@ -22734,7 +22726,7 @@ y轴磁力计数据
      <td>float[21]</td>
      <td>
      </td>
-     <td>Row-major representation of 6x6 pose cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
+     <td>位姿6x6交叉协方差矩阵的行-主表示右上角三角形(状态:x_global, y_global, z_global, roll, pitch, yaw;前六项是第一行，后五项是第二行，等等)。 如果未知，在数组中将NAN值分配给第一个元素。</td>
     </tr>
    </tbody>
   </table>
@@ -22819,33 +22811,33 @@ y轴磁力计数据
      <td>abs_pressure</td>
      <td>float</td>
      <td>mbar</td>
-     <td>Absolute pressure</td>
+     <td>绝对压力</td>
     </tr>
     <tr>
      <td>diff_pressure</td>
      <td>float</td>
      <td>mbar</td>
-     <td>Differential pressure</td>
+     <td>压差</td>
     </tr>
     <tr>
      <td>pressure_alt</td>
      <td>float</td>
      <td>
      </td>
-     <td>Altitude calculated from pressure</td>
+     <td>根据压力计算的高度</td>
     </tr>
     <tr>
      <td>temperature</td>
      <td>float</td>
      <td>degC</td>
-     <td>Temperature</td>
+     <td>温度</td>
     </tr>
     <tr>
      <td>fields_updated</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>Bitmap for fields that have updated since last message, bit 0 = xacc, bit 12: temperature</td>
+     <td>自上次消息以来已更新的字段的位图，第0位= xacc，第12位:温度</td>
     </tr>
     <tr>
      <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -22855,7 +22847,7 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)</td>
+     <td>Id. id从0开始编号：从1开始映射到IMUs（IMU1将有一个id=0的消息）</td>
     </tr>
    </tbody>
   </table>
@@ -22893,7 +22885,7 @@ y轴磁力计数据
      <td>integration_time_us</td>
      <td>uint32_t</td>
      <td>us</td>
-     <td>Integration time. Divide integrated_x and integrated_y by the integration time to obtain average flow. The integration time also indicates the.</td>
+     <td>积分时间。 将integrated_x和integrated_y除以积分时间，得到平均流动值。 积分时间也表示。</td>
     </tr>
     <tr>
      <td>integrated_x</td>
