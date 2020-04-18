@@ -27942,12 +27942,12 @@ y轴磁力计数据
     <tr>
      <td>ver</td>
      <td>uint8_t</td>
-     <td>Version code of the type variable. 0=unknown, type ignored and assumed int16_t. 1=as below</td>
+     <td>Version code of the type variable. 0=未知, 类型忽略, 假设为int16_t。 1 =如下</td>
     </tr>
     <tr>
      <td>type</td>
      <td>uint8_t</td>
-     <td>Type code of the memory variables. for ver = 1: 0=16 x int16_t, 1=16 x uint16_t, 2=16 x Q15, 3=16 x 1Q14</td>
+     <td>内存变量的类型代码。 for ver = 1: 0=16 x int16_t, 1=16 x uint16_t, 2=16 x Q15, 3=16 x 1Q14</td>
     </tr>
     <tr>
      <td>value</td>
@@ -28017,9 +28017,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Send a key-value pair as float. The use of this message is discouraged for normal packets, but a quite efficient way for testing new messages and getting experimental debug output.</p>
+   将键值对作为浮点数发送。 对于普通的信息包，不建议使用此消息，但是对于测试新消息和获得实验性调试输出来说，这是一种非常有效的方法。</p>
   <table class="sortable">
    <thead>
     <tr>
