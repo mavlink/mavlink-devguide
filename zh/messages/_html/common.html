@@ -2488,11 +2488,9 @@
    <a href="#MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by GIMBAL_MANAGER_FLAGS (2020-01).</p>
+   替换为GIMBAL_MANAGER_FLAGS (2020-01)。</p>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Enumeration of possible mount operation modes. This message is used by obsolete/deprecated gimbal messages.</p>
+   可能的挂载操作模式的枚举。 此消息被过时/废弃的云台消息使用。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2650,9 +2648,7 @@
    <a href="#GIMBAL_MANAGER_CAP_FLAGS">GIMBAL_MANAGER_CAP_FLAGS</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Gimbal manager high level capability flags (bitmap). The first 16 bits are identical to the GIMBAL_DEVICE_CAP_FLAGS which are identical with GIMBAL_DEVICE_FLAGS. However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags.</p>
+   高性能云台的能力标识 前16位与GIMBAL_DEVICE_CAP_FLAGS相同，而GIMBAL_DEVICE_FLAGS与GIMBAL_DEVICE_FLAGS相同。 However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6073,7 +6069,7 @@
      <td>
       <a href="#VIDEO_STREAM_STATUS_FLAGS_THERMAL">VIDEO_STREAM_STATUS_FLAGS_THERMAL</a>
      </td>
-     <td>Stream is thermal imaging</td>
+     <td>视频流是热成像</td>
     </tr>
    </tbody>
   </table>
@@ -6081,9 +6077,7 @@
    <a href="#VIDEO_STREAM_TYPE">VIDEO_STREAM_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Video stream types</p>
+   视频流类型</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6098,28 +6092,28 @@
      <td>
       <a href="#VIDEO_STREAM_TYPE_RTSP">VIDEO_STREAM_TYPE_RTSP</a>
      </td>
-     <td>Stream is RTSP</td>
+     <td>RTSP推流</td>
     </tr>
     <tr id="VIDEO_STREAM_TYPE_RTPUDP">
      <td>1</td>
      <td>
       <a href="#VIDEO_STREAM_TYPE_RTPUDP">VIDEO_STREAM_TYPE_RTPUDP</a>
      </td>
-     <td>Stream is RTP UDP (URI gives the port number)</td>
+     <td>RTP UDP (URI给出端口号)</td>
     </tr>
     <tr id="VIDEO_STREAM_TYPE_TCP_MPEG">
      <td>2</td>
      <td>
       <a href="#VIDEO_STREAM_TYPE_TCP_MPEG">VIDEO_STREAM_TYPE_TCP_MPEG</a>
      </td>
-     <td>Stream is MPEG on TCP</td>
+     <td>TCP上的视频流是 MPEG</td>
     </tr>
     <tr id="VIDEO_STREAM_TYPE_MPEG_TS_H264">
      <td>3</td>
      <td>
       <a href="#VIDEO_STREAM_TYPE_MPEG_TS_H264">VIDEO_STREAM_TYPE_MPEG_TS_H264</a>
      </td>
-     <td>Stream is h.264 on MPEG TS (URI gives the port number)</td>
+     <td>视频流是 h.264 在 MPEG TS 上 (URI 给了端口号)</td>
     </tr>
    </tbody>
   </table>
@@ -6127,9 +6121,7 @@
    <a href="#CAMERA_ZOOM_TYPE">CAMERA_ZOOM_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Zoom types for MAV_CMD_SET_CAMERA_ZOOM</p>
+   MAV_CMD_SET_CAMERA_ZOM 变焦类型</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6144,28 +6136,28 @@
      <td>
       <a href="#ZOOM_TYPE_STEP">ZOOM_TYPE_STEP</a>
      </td>
-     <td>Zoom one step increment (-1 for wide, 1 for tele)</td>
+     <td>变焦的单次步长(-1表示变广角，1表示变远焦）</td>
     </tr>
     <tr id="ZOOM_TYPE_CONTINUOUS">
      <td>1</td>
      <td>
       <a href="#ZOOM_TYPE_CONTINUOUS">ZOOM_TYPE_CONTINUOUS</a>
      </td>
-     <td>Continuous zoom up/down until stopped (-1 for wide, 1 for tele, 0 to stop zooming)</td>
+     <td>持续向上/向下缩放直到停止(-1广角, 1远焦, 0停止缩放)</td>
     </tr>
     <tr id="ZOOM_TYPE_RANGE">
      <td>2</td>
      <td>
       <a href="#ZOOM_TYPE_RANGE">ZOOM_TYPE_RANGE</a>
      </td>
-     <td>Zoom value as proportion of full camera range (a value between 0.0 and 100.0)</td>
+     <td>变焦值作为整个相机范围的比例(0.0 和 100.0之间的数值)</td>
     </tr>
     <tr id="ZOOM_TYPE_FOCAL_LENGTH">
      <td>3</td>
      <td>
       <a href="#ZOOM_TYPE_FOCAL_LENGTH">ZOOM_TYPE_FOCAL_LENGTH</a>
      </td>
-     <td>Zoom value/variable focal length in milimetres. Note that there is no message to get the valid zoom range of the camera, so this can type can only be used for cameras where the zoom range is known (implying that this cannot reliably be used in a GCS for an arbitrary camera)</td>
+     <td>变焦值/可变焦距(以毫米为单位)。 注意，没有消息可以获得相机的有效变焦范围，因此这个can类型只能用于已知变焦范围的相机(这意味着它不能可靠地用于任意相机的GCS中)</td>
     </tr>
    </tbody>
   </table>
@@ -6173,9 +6165,7 @@
    <a href="#SET_FOCUS_TYPE">SET_FOCUS_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Focus types for MAV_CMD_SET_CAMERA_FOCUS</p>
+   MAV_CMD_SET_CAMERA_FOCUS的焦点类型</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6190,28 +6180,29 @@
      <td>
       <a href="#FOCUS_TYPE_STEP">FOCUS_TYPE_STEP</a>
      </td>
-     <td>Focus one step increment (-1 for focusing in, 1 for focusing out towards infinity).</td>
+     <td>对焦单次步长（1表示向内聚焦，1表示向外无限聚焦）</td>
     </tr>
     <tr id="FOCUS_TYPE_CONTINUOUS">
      <td>1</td>
      <td>
       <a href="#FOCUS_TYPE_CONTINUOUS">FOCUS_TYPE_CONTINUOUS</a>
      </td>
-     <td>Continuous focus up/down until stopped (-1 for focusing in, 1 for focusing out towards infinity, 0 to stop focusing)</td>
+     <td>向上/向下持续对焦直到停止(-1 焦点趋向近处, 1 焦点趋向无限, 0 焦点停止焦点)</td>
     </tr>
     <tr id="FOCUS_TYPE_RANGE">
      <td>2</td>
      <td>
       <a href="#FOCUS_TYPE_RANGE">FOCUS_TYPE_RANGE</a>
      </td>
-     <td>Focus value as proportion of full camera focus range (a value between 0.0 and 100.0)</td>
+     <td>对焦值作为全相机对焦范围的比例(数值在0.0至100.0之间)</td>
     </tr>
     <tr id="FOCUS_TYPE_METERS">
      <td>3</td>
      <td>
       <a href="#FOCUS_TYPE_METERS">FOCUS_TYPE_METERS</a>
      </td>
-     <td>Focus value in metres. Note that there is no message to get the valid focus range of the camera, so this can type can only be used for cameras where the range is known (implying that this cannot reliably be used in a GCS for an arbitrary camera).</td>
+     <td>对焦单位为米。
+ 请注意，没有消息可以获得相机的有效焦距，因此这个can类型只能用于已知焦距的相机(这意味着它不能可靠地用于任何相机的GCS中)。</td>
     </tr>
    </tbody>
   </table>
@@ -6219,9 +6210,7 @@
    <a href="#PARAM_ACK">PARAM_ACK</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Result from a PARAM_EXT_SET message.</p>
+   PARAM_EXT_SET 消息的结果。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6236,28 +6225,28 @@
      <td>
       <a href="#PARAM_ACK_ACCEPTED">PARAM_ACK_ACCEPTED</a>
      </td>
-     <td>Parameter value ACCEPTED and SET</td>
+     <td>参数值接受并设置</td>
     </tr>
     <tr id="PARAM_ACK_VALUE_UNSUPPORTED">
      <td>1</td>
      <td>
       <a href="#PARAM_ACK_VALUE_UNSUPPORTED">PARAM_ACK_VALUE_UNSUPPORTED</a>
      </td>
-     <td>Parameter value UNKNOWN/UNSUPPORTED</td>
+     <td>参数值未知的/不受支持的</td>
     </tr>
     <tr id="PARAM_ACK_FAILED">
      <td>2</td>
      <td>
       <a href="#PARAM_ACK_FAILED">PARAM_ACK_FAILED</a>
      </td>
-     <td>Parameter failed to set</td>
+     <td>参数设置失败</td>
     </tr>
     <tr id="PARAM_ACK_IN_PROGRESS">
      <td>3</td>
      <td>
       <a href="#PARAM_ACK_IN_PROGRESS">PARAM_ACK_IN_PROGRESS</a>
      </td>
-     <td>Parameter value received but not yet validated or set. A subsequent PARAM_EXT_ACK will follow once operation is completed with the actual result. These are for parameters that may take longer to set. Instead of waiting for an ACK and potentially timing out, you will immediately receive this response to let you know it was received.</td>
+     <td>参数值已收到，但尚未验证或设置。 一旦操作完成，后续的PARAM_EXT_ACK将跟随实际结果。 这些参数可能需要更长的时间来设置。 您将立即收到此响应，让您知道它已被接收，而不是等待ACK并可能超时。</td>
     </tr>
    </tbody>
   </table>
@@ -6265,9 +6254,7 @@
    <a href="#CAMERA_MODE">CAMERA_MODE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Camera Modes.</p>
+   相机模式。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6282,21 +6269,21 @@
      <td>
       <a href="#CAMERA_MODE_IMAGE">CAMERA_MODE_IMAGE</a>
      </td>
-     <td>Camera is in image/photo capture mode.</td>
+     <td>相机处于拍照模式</td>
     </tr>
     <tr id="CAMERA_MODE_VIDEO">
      <td>1</td>
      <td>
       <a href="#CAMERA_MODE_VIDEO">CAMERA_MODE_VIDEO</a>
      </td>
-     <td>Camera is in video capture mode.</td>
+     <td>相机处于摄像模式</td>
     </tr>
     <tr id="CAMERA_MODE_IMAGE_SURVEY">
      <td>2</td>
      <td>
       <a href="#CAMERA_MODE_IMAGE_SURVEY">CAMERA_MODE_IMAGE_SURVEY</a>
      </td>
-     <td>Camera is in image survey capture mode. It allows for camera controller to do specific settings for surveys.</td>
+     <td>相机处于图像调查捕获模式。 它允许相机控制器为调查做特定的设置。</td>
     </tr>
    </tbody>
   </table>
@@ -6322,42 +6309,42 @@
      <td>
       <a href="#MAV_ARM_AUTH_DENIED_REASON_GENERIC">MAV_ARM_AUTH_DENIED_REASON_GENERIC</a>
      </td>
-     <td>Not a specific reason</td>
+     <td>无特定原因</td>
     </tr>
     <tr id="MAV_ARM_AUTH_DENIED_REASON_NONE">
      <td>1</td>
      <td>
       <a href="#MAV_ARM_AUTH_DENIED_REASON_NONE">MAV_ARM_AUTH_DENIED_REASON_NONE</a>
      </td>
-     <td>Authorizer will send the error as string to GCS</td>
+     <td>授权人将错误作为字符串发送到GCS</td>
     </tr>
     <tr id="MAV_ARM_AUTH_DENIED_REASON_INVALID_WAYPOINT">
      <td>2</td>
      <td>
       <a href="#MAV_ARM_AUTH_DENIED_REASON_INVALID_WAYPOINT">MAV_ARM_AUTH_DENIED_REASON_INVALID_WAYPOINT</a>
      </td>
-     <td>At least one waypoint have a invalid value</td>
+     <td>至少有一个路点的值无效</td>
     </tr>
     <tr id="MAV_ARM_AUTH_DENIED_REASON_TIMEOUT">
      <td>3</td>
      <td>
       <a href="#MAV_ARM_AUTH_DENIED_REASON_TIMEOUT">MAV_ARM_AUTH_DENIED_REASON_TIMEOUT</a>
      </td>
-     <td>Timeout in the authorizer process(in case it depends on network)</td>
+     <td>授权器进程超时(如果它依赖于网络)</td>
     </tr>
     <tr id="MAV_ARM_AUTH_DENIED_REASON_AIRSPACE_IN_USE">
      <td>4</td>
      <td>
       <a href="#MAV_ARM_AUTH_DENIED_REASON_AIRSPACE_IN_USE">MAV_ARM_AUTH_DENIED_REASON_AIRSPACE_IN_USE</a>
      </td>
-     <td>Airspace of the mission in use by another vehicle, second result parameter can have the waypoint id that caused it to be denied.</td>
+     <td>飞行任务由另一辆车使用的空域，第二个结果参数可以具有导致其被拒绝的航点 id。</td>
     </tr>
     <tr id="MAV_ARM_AUTH_DENIED_REASON_BAD_WEATHER">
      <td>5</td>
      <td>
       <a href="#MAV_ARM_AUTH_DENIED_REASON_BAD_WEATHER">MAV_ARM_AUTH_DENIED_REASON_BAD_WEATHER</a>
      </td>
-     <td>Weather is not good to fly</td>
+     <td>天气不适合运行</td>
     </tr>
    </tbody>
   </table>
@@ -6365,9 +6352,7 @@
    <a href="#RC_TYPE">RC_TYPE</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>RC type</p>
+   遥控器类型</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6382,14 +6367,14 @@
      <td>
       <a href="#RC_TYPE_SPEKTRUM_DSM2">RC_TYPE_SPEKTRUM_DSM2</a>
      </td>
-     <td>Spektrum DSM2</td>
+     <td>Spektrum DSM2（Digital Spread Spectrum Modulation）2.4GHz数字扩频调制技术</td>
     </tr>
     <tr id="RC_TYPE_SPEKTRUM_DSMX">
      <td>1</td>
      <td>
       <a href="#RC_TYPE_SPEKTRUM_DSMX">RC_TYPE_SPEKTRUM_DSMX</a>
      </td>
-     <td>Spektrum DSMX</td>
+     <td>Spektrum DSMX（Digital Spread Spectrum Modulation）第三代2.4GHz数字扩频调制技术</td>
     </tr>
    </tbody>
   </table>
@@ -6397,9 +6382,7 @@
    <a href="#POSITION_TARGET_TYPEMASK">POSITION_TARGET_TYPEMASK</a>
   </h3>
   <p>
-   <a href="#enums">
-    [Enum]
-   </a>Bitmap to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 9 is set the floats afx afy afz should be interpreted as force instead of acceleration.</p>
+   位图指示车辆应该忽略哪些维度:值为0b0000000000000000或0b0000001000000000表示不应该忽略任何设定值维度。 如果设置了第9位，浮动afx afy afz应该被解释为力而不是加速度。</p>
   <table class="sortable">
    <thead>
     <tr>
