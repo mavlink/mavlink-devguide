@@ -15647,7 +15647,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>3: Ground Speed</td>
-     <td>释放时间所需的地面速度。 This can be overridden by the airframe in case it needs to meet minimum airspeed. 负值表示系统可以随意确定地面速度。</td>
+     <td>释放时间所需的地面速度。 因为要满足机体的最低速度要求，这条指令可能被机体否决 负值表示系统可以随意确定地面速度。</td>
      <td>
       <em>min:</em>
       -1 
@@ -15657,7 +15657,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>4: Altitude Clearance</td>
-     <td>Minimum altitude clearance to the release position. A negative value indicates the system can define the clearance at will.</td>
+     <td>释放位置的最小高度许可。 负值表示系统可以随意定义许可要求</td>
      <td>
       <em>min:</em>
       -1 
@@ -15666,7 +15666,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>Latitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
+     <td>纬度未缩放为MISSION_ITEM或1e7度为MISSION_ITEM_INT</td>
      <td>
      </td>
      <td>
@@ -15674,7 +15674,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>Longitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
+     <td>未缩放的经度为MISSION_ITEM或1e7度为MISSION_ITEM_INT</td>
      <td>
      </td>
      <td>
@@ -15682,7 +15682,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>Altitude (MSL)</td>
+     <td>高度(MSL)。</td>
      <td>
      </td>
      <td>m</td>
@@ -15705,7 +15705,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Operation Mode</td>
-     <td>操作模式 0：中止部署，继续执行正常任务。 1： 切换到有效载荷部署模式。 100: delete first payload deployment request. 101: delete all payload deployment requests.</td>
+     <td>操作模式 0：中止部署，继续执行正常任务。 1： 切换到有效载荷部署模式。 100：删除第一个有效载荷部署请求。 101: 删除所有有效载荷部署请求。</td>
      <td>
       <em>min:</em>0 <em>max:</em>101 <em>increment:</em>1</td>
     </tr>
@@ -16036,7 +16036,8 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的空间项。 地面站将不会显示载具穿越通过这个项目。 示例：ROI项目。</p>
+   用户定义的受空间条件限制的项目
+ 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：ROI项目。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16093,9 +16094,8 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
+   用户定义的受空间条件限制的项目
+ 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 Example: ROI item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16329,9 +16329,7 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>User defined command. Ground Station will not show the Vehicle as flying through this item. Example: MAV_CMD_DO_SET_PARAMETER item.</p>
+   用户定义的指令。 Ground Station will not show the Vehicle as flying through this item. 示例：MAV_CMD_DO_SET_PARMETER项目。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17192,7 +17190,7 @@ MAV_CMD_NAV_ROI)。</p>
       <a href="#">
       </a>
      </td>
-     <td>Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+     <td>板载参数id，如果长度小于16个可读字符，则以NULL结尾;如果长度正好是16个字符，则不需要NULL终止(NULL)字节；如果ID存储为字符串，应用程序必须提供16+1字节的存储</td>
     </tr>
     <tr>
      <td>param_value</td>
@@ -17201,7 +17199,7 @@ MAV_CMD_NAV_ROI)。</p>
       <a href="#">
       </a>
      </td>
-     <td>Onboard parameter value</td>
+     <td>机载参数值</td>
     </tr>
     <tr>
      <td>param_type</td>
@@ -17209,7 +17207,7 @@ MAV_CMD_NAV_ROI)。</p>
      <td>
       <a href="#MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
      </td>
-     <td>Onboard parameter type.</td>
+     <td>机载参数类型。</td>
     </tr>
     <tr>
      <td>param_count</td>
@@ -17218,7 +17216,7 @@ MAV_CMD_NAV_ROI)。</p>
       <a href="#">
       </a>
      </td>
-     <td>Total number of onboard parameters</td>
+     <td>机载参数总数</td>
     </tr>
     <tr>
      <td>param_index</td>
@@ -17227,7 +17225,7 @@ MAV_CMD_NAV_ROI)。</p>
       <a href="#">
       </a>
      </td>
-     <td>Index of this onboard parameter</td>
+     <td>机载参数索引</td>
     </tr>
    </tbody>
   </table>
@@ -17237,9 +17235,7 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>Set a parameter value (write new value to permanent storage). IMPORTANT: The receiving component should acknowledge the new parameter value by sending a PARAM_VALUE message to all communication partners. This will also ensure that multiple GCS all have an up-to-date list of all parameters. If the sending GCS did not receive a PARAM_VALUE message within its timeout time, it should re-send the PARAM_SET message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
+   设置一个参数值(将新值写入永久存储)。 重要提示:接收组件应该通过向所有通信组件发送PARAM_VALUE消息来确认新参数值。 This will also ensure that multiple GCS all have an up-to-date list of all parameters. If the sending GCS did not receive a PARAM_VALUE message within its timeout time, it should re-send the PARAM_SET message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
   <table class="sortable">
    <thead>
     <tr>
