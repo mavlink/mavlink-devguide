@@ -113,7 +113,7 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
 
 每条消息都具有必需的 `id`、`name` 和 `description` 属性。 [Serialised packets](../guide/serialization.md#packet_format) 包括 `id` 在 [消息id](../guide/serialization.md#v1_msgid) 部分和 [有效载荷](../guide/serialization.md#v1_payload) 部分内信息数据编码格式。 `name` 一般用于生成编解码特殊消息类型的名称方法。 当收到消息时，MAVLink 库提取消息id，以确定特定消息，并且使用找到适当命名的方法来解码有效载荷。
 
-一个典型的信息 ([SAFFLE_SET_ALLOWED_ARA](../messages/common.md#SAFETY_SET_ALLOWED_AREA)) 如下：
+一个典型的信息 ([SAFETY_SET_ALLOWED_AREA](../messages/common.md#SAFETY_SET_ALLOWED_AREA)) 如下：
 
 ```xml
     <message id="54" name="SAFETY_SET_ALLOWED_AREA">
@@ -439,26 +439,25 @@ Slugs - 10001 - 10015
     <param index="3" reserved="True" default="NaN" />
     
 
-> **警告** 索引值`5` 和`6` 参数不应授予 `默认` 的 `NaN`，因为如果这些参数在 `COMMAN_INT` 或 `指示器` 或 <MMINSION_INT</code> 这些参数是集成器 (因此没有代表`导航</1>)。</p>
-</blockquote>
+> **警告** 索引值`5` 和`6` 参数不应授予 `默认` 的 `NaN`，因为如果这些参数在 `COMMAND_INT` 或 `指示器` 或 `MISSION_INT` 这些参数是集成器 (因此没有代表<1>导航</1>)。
 
-<p>To declare a param as <code>reserved` with `default` value of `0` simply omit the `param` from the definition (this is the default - it is equivalent to: `<param index="3" reserved="True" default="0" />`).
-> 
-> 如果您仅有一个未使用的 `参数` 我们建议你不要声明。 如果您有一个以上的，您可能希望明确定义它，默认为 `NaN` 这样，您可以稍后将您的命令扩展到默认。
-> 
-> #### GUI Param Attributes
-> 
-> A number of [param](../guide/xml_schema.md#param) attributes are provided as "GUI hints".
-> 
-> These attributes are used to better display params:
-> 
-> - `label` - Label for param in GCS/UI. All words in label should be capitalised (e.g. "Hold Altitude").
-> - `units` - SI units for the value.
-> - `decimalPlaces` - Hint to a UI about how many decimal places to use if the parameter value is displayed.
-> 
-> These attributes help a GCS customise the editing experience (e.g. controls can choose to only offer allowed values).
-> 
-> - `enum` - Enum containing possible values for the parameter (if applicable).
-> - `increment` - Allowed increments for the parameter value.
-> - `minValue` - Minimum value for param.
-> - `maxValue` - Maximum value for the param.
+To declare a param as `reserved` with `default` value of `0` simply omit the `param` from the definition (this is the default - it is equivalent to: `<param index="3" reserved="True" default="0" />`).
+
+如果您仅有一个未使用的 `参数` 我们建议你不要声明。 如果您有一个以上的，您可能希望明确定义它，默认为 `NaN` 这样，您可以稍后将您的命令扩展到默认。
+
+#### GUI Param Attributes
+
+A number of [param](../guide/xml_schema.md#param) attributes are provided as "GUI hints".
+
+These attributes are used to better display params:
+
+- `label` - Label for param in GCS/UI. All words in label should be capitalised (e.g. "Hold Altitude").
+- `units` - SI units for the value.
+- `decimalPlaces` - Hint to a UI about how many decimal places to use if the parameter value is displayed.
+
+These attributes help a GCS customise the editing experience (e.g. controls can choose to only offer allowed values).
+
+- `enum` - Enum containing possible values for the parameter (if applicable).
+- `increment` - Allowed increments for the parameter value.
+- `minValue` - Minimum value for param.
+- `maxValue` - Maximum value for the param.
