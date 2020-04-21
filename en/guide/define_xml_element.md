@@ -487,7 +487,10 @@ To declare a `param` as `reserved` with `default` value of `NaN` you should use 
 
 > **Warning** Params with index values `5` and `6` should not be given a `default` of `NaN` , because if these are sent in a `COMMAND_INT` or `MISSION_INT` these parameters are integers (and hence there is no way to represent an `NaN`).
 
-To declare a param as `reserved` with `default` value of `0` simply omit the `param` from the definition (this is the default - it is equivalent to: `<param index="3" reserved="True" default="0" />`).
+To declare a param as `reserved` with `default` value of `0` simply omit the `param` from the definition. This is the default - it is equivalent to: 
+```xml
+<param index="3" reserved="True" default="0" />
+```
 
 If you have just one unused `param` we recommend you simply don't declare it. 
 If you have more than one, you may wish to explicitly define it with default of `NaN` so that you can extend your command later with ether default. 
