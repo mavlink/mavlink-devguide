@@ -1,20 +1,20 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 
-# Dialect: ArduPilotMega
+# 方言：ArduPilotMega
 
-These messages define the ArduPilot specific message set, which is custom to <http://ardupilot.org>.
+这些消息定义了ArduPilot特定的消息集，该消息集是 <http://ardupilot.org> 的自定义消息。
 
-This topic is a human-readable form of the XML definition file: [ardupilotmega.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/ardupilotmega.xml).
+这个话题是一种 XML 定义文件的可读形式： [ardupilotmega.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/ardupilotmega.xml) 。
 
-> **Warning** The ArduPilot MAVLink fork of [ardupilotmega.xml](https://github.com/ArduPilot/mavlink/blob/master/message_definitions/v1.0/ardupilotmega.xml) may contain messages that have not yet been merged into this documentation.
+> **Warning** [ardupilotmega.xml](https://github.com/ArduPilot/mavlink/blob/master/message_definitions/v1.0/ardupilotmega.xml) 的ArduPilot MAVLink分支可能包含尚未合并到本文档中的消息。
 
 <span></span>
 
-> **Note** MAVLink 2 messages have an ID > 255 and are marked up using **(MAVLink 2)** in their description.
+> **Note** MAVLink 2 有一个 ID > 255的消息，并在其描述中使用 **（MAVLink 2）** 进行标记。
 
 <span id="mav2_extension_field"></span>
 
-> **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue. 
+> **Note** 已添加到 MAVLink 1 消息中的 MAVLink 2 扩展字段以蓝色显示。 
 
 <style>
 td {

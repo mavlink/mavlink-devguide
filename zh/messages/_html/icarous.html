@@ -1,6 +1,6 @@
 <html>
  <body>
-  <h2 id="enums">MAVLink Type Enumerations</h2>
+  <h2 id="enums">MAVLink 类型枚举</h2>
   <h3 id="ICAROUS_TRACK_BAND_TYPES">
    <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
   </h3>
@@ -12,9 +12,9 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -55,9 +55,9 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -111,13 +111,13 @@
     </tr>
    </tbody>
   </table>
-  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <h2 id="mav_commands">MAVLink 命令（MAV_CMD）</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
    </strong>
-   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+   <p>MAVLink 指令（MAV_CMD）和消息是不同的！ 这个命令在“任务协议”和“指令协议”中定义了最多7个参数的值，并将其嵌入在特定消息中。 执行任务中的操作，或者如果需要请求的确认和/或重试逻辑使用命令。 否则使用消息。</p>
   </blockquote>
-  <h2 id="messages">MAVLink Messages</h2>
+  <h2 id="messages">MAVLink 消息</h2>
   <h3 id="ICAROUS_HEARTBEAT">ICAROUS_HEARTBEAT (<a href="#ICAROUS_HEARTBEAT">
     #42000
    </a>
@@ -129,14 +129,14 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>ICAROUS heartbeat</p>
+   </strong> ICAROUS 状态信息</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>值</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -146,7 +146,7 @@
      <td>
       <a href="#ICAROUS_FMS_STATE">ICAROUS_FMS_STATE</a>
      </td>
-     <td>See the FMS_STATE enum.</td>
+     <td>参见 FMS_STATE 编码。</td>
     </tr>
    </tbody>
   </table>
@@ -161,15 +161,15 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Kinematic multi bands (track) output from Daidalus</p>
+   </strong> Daidalus 的运动多波段（轨迹）输出 </p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Units</th>
-     <th>Values</th>
-     <th>Description</th>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>值</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -182,7 +182,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Number of track bands</td>
+     <td>轨道带数</td>
     </tr>
     <tr>
      <td>type1</td>
@@ -192,27 +192,27 @@
      <td>
       <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
      </td>
-     <td>See the TRACK_BAND_TYPES enum.</td>
+     <td>见 TRACK_BAND_TYPES 编码。</td>
     </tr>
     <tr>
      <td>min1</td>
      <td>float</td>
-     <td>deg</td>
+     <td>度</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>min angle (degrees)</td>
+     <td>最小角度（度）</td>
     </tr>
     <tr>
      <td>max1</td>
      <td>float</td>
-     <td>deg</td>
+     <td>度</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>max angle (degrees)</td>
+     <td>最大角度（度）</td>
     </tr>
     <tr>
      <td>type2</td>
@@ -222,27 +222,27 @@
      <td>
       <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
      </td>
-     <td>See the TRACK_BAND_TYPES enum.</td>
+     <td>见 TRACK_BAND_TYPES 编码。</td>
     </tr>
     <tr>
      <td>min2</td>
      <td>float</td>
-     <td>deg</td>
+     <td>度</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>min angle (degrees)</td>
+     <td>最小角度（度）</td>
     </tr>
     <tr>
      <td>max2</td>
      <td>float</td>
-     <td>deg</td>
+     <td>度</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>max angle (degrees)</td>
+     <td>最大角度（度）</td>
     </tr>
     <tr>
      <td>type3</td>
@@ -252,27 +252,27 @@
      <td>
       <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
      </td>
-     <td>See the TRACK_BAND_TYPES enum.</td>
+     <td>见 TRACK_BAND_TYPES 编码。</td>
     </tr>
     <tr>
      <td>min3</td>
      <td>float</td>
-     <td>deg</td>
+     <td>度</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>min angle (degrees)</td>
+     <td>最小角度（度）</td>
     </tr>
     <tr>
      <td>max3</td>
      <td>float</td>
-     <td>deg</td>
+     <td>度</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>max angle (degrees)</td>
+     <td>最大角度（度）</td>
     </tr>
     <tr>
      <td>type4</td>
@@ -282,27 +282,27 @@
      <td>
       <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
      </td>
-     <td>See the TRACK_BAND_TYPES enum.</td>
+     <td>见 TRACK_BAND_TYPES 编码。</td>
     </tr>
     <tr>
      <td>min4</td>
      <td>float</td>
-     <td>deg</td>
+     <td>度</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>min angle (degrees)</td>
+     <td>最小角度（度）</td>
     </tr>
     <tr>
      <td>max4</td>
      <td>float</td>
-     <td>deg</td>
+     <td>度</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>max angle (degrees)</td>
+     <td>最大角度（度）</td>
     </tr>
     <tr>
      <td>type5</td>
@@ -312,27 +312,27 @@
      <td>
       <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
      </td>
-     <td>See the TRACK_BAND_TYPES enum.</td>
+     <td>见 TRACK_BAND_TYPES 编码。</td>
     </tr>
     <tr>
      <td>min5</td>
      <td>float</td>
-     <td>deg</td>
+     <td>度</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>min angle (degrees)</td>
+     <td>最小角度（度）</td>
     </tr>
     <tr>
      <td>max5</td>
      <td>float</td>
-     <td>deg</td>
+     <td>度</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>max angle (degrees)</td>
+     <td>最大角度（度）</td>
     </tr>
    </tbody>
   </table>

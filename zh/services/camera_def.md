@@ -33,6 +33,8 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 
 参数可以是简单的, 也可以是相当复杂的, 具体取决于与它相关的行为。
 
+> **Note** The parameter `CAM_MODE` must be part of the parameter list. It maps to the command [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE). It enables exposure of different settings based on the mode, so photo settings in photo mode and video settings in video mode.
+
 #### 参数类型
 
 参数类型不能超出枚举类型 [MAV_PARAM_EXT_TYPE](../messages/common.md#MAV_PARAM_EXT_TYPE_UINT8) 所定义的范围。 在XML文件中，合法的类型定义如下：
@@ -86,7 +88,7 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 
 常用参数 *Common Parameters* 是一些被保留的参数名，GCS 为这些参数内置了 UI 控件 (如果在相机定义文件中发现这些参数，可以直接调出相应控件)。
 
-> **Note** 对于大部分相机，这些参数都是极其常用的 (虽然它们的可选择项千差万别)。
+> **Note** These parameters are common to many cameras (though their valid options vary considerably).
 
 | 参数             | 描述                   |
 | -------------- | -------------------- |

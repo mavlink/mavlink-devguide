@@ -20,7 +20,7 @@
 
 ### 版本对接/谈判
 
-[MAVLink Versions](../guide/mavlink_version.md) 解释[handshaking](../guide/mavlink_version.md#version_handshaking) 用于确定支持的 MAVLink 版本，以及如何 [negotiate the version to use](#negotiating_versions) 版本。
+[MAVLink Versions](../guide/mavlink_version.md) explains the [handshaking](../guide/mavlink_version.md#version_handshaking) used to determine the supported MAVLink version of either end of the channel, and how to [negotiate the version to use](../guide/mavlink_version.md#negotiating_versions).
 
 ### C 接口
 

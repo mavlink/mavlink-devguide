@@ -97,6 +97,39 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="SCRIPTING_CMD">
+   <a href="#SCRIPTING_CMD">SCRIPTING_CMD</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="SCRIPTING_CMD_REPL_START">
+     <td>0</td>
+     <td>
+      <a href="#SCRIPTING_CMD_REPL_START">SCRIPTING_CMD_REPL_START</a>
+     </td>
+     <td>Start a REPL session.</td>
+    </tr>
+    <tr id="SCRIPTING_CMD_REPL_STOP">
+     <td>1</td>
+     <td>
+      <a href="#SCRIPTING_CMD_REPL_STOP">SCRIPTING_CMD_REPL_STOP</a>
+     </td>
+     <td>End a REPL session.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="LIMITS_STATE">
    <a href="#LIMITS_STATE">LIMITS_STATE</a>
   </h3>
@@ -2000,6 +2033,13 @@
      </td>
      <td>Set if EKF's predicted horizontal position (absolute) estimate is good.</td>
     </tr>
+    <tr id="EKF_UNINITIALIZED">
+     <td>1024</td>
+     <td>
+      <a href="#EKF_UNINITIALIZED">EKF_UNINITIALIZED</a>
+     </td>
+     <td>Set if EKF has never been healthy.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="PID_TUNING_AXIS">
@@ -2080,9 +2120,9 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名</th>
+     <th>描述</th>
     </tr>
    </thead>
    <tbody>
@@ -2162,9 +2202,9 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th>值</th>
-     <th>字段名</th>
-     <th>描述</th>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
     </tr>
    </thead>
    <tbody>
@@ -3028,6 +3068,65 @@
     <tr>
      <td>7</td>
      <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_SET_RESUME_REPEAT_DIST">MAV_CMD_DO_SET_RESUME_REPEAT_DIST (<a href="#MAV_CMD_DO_SET_RESUME_REPEAT_DIST">215</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Set the distance to be repeated on mission resume</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Distance</td>
+     <td>Distance.</td>
+     <td>m</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -3971,6 +4070,74 @@
      <td>Battery percentage remaining to set.</td>
      <td>
       <em>min:</em>0 <em>max:</em>100 <em>increment:</em>1</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DEBUG_TRAP">MAV_CMD_DEBUG_TRAP (<a href="#MAV_CMD_DEBUG_TRAP">42700</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Issue a trap signal to the autopilot process, presumably to enter the debugger.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Magic number - set to 32451 to actually trap.</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_SCRIPTING">MAV_CMD_SCRIPTING (<a href="#MAV_CMD_SCRIPTING">42701</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Control onboard scripting.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>Scripting command to execute</td>
+     <td>SCRIPTING_CMD</td>
     </tr>
    </tbody>
   </table>
@@ -7341,7 +7508,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>EFI Status Output</p>
+   </a>EFI status output</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -7357,14 +7524,14 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>EFI Health status</td>
+     <td>EFI health status</td>
     </tr>
     <tr>
      <td>ecu_index</td>
      <td>float</td>
      <td>
      </td>
-     <td>ECU Index</td>
+     <td>ECU index</td>
     </tr>
     <tr>
      <td>rpm</td>
@@ -7377,13 +7544,13 @@
      <td>fuel_consumed</td>
      <td>float</td>
      <td>g</td>
-     <td>Fuel Consumed (grams)</td>
+     <td>Fuel consumed</td>
     </tr>
     <tr>
      <td>fuel_flow</td>
      <td>float</td>
      <td>g/min</td>
-     <td>Fuel Flow Rate (g/min)</td>
+     <td>Fuel flow rate</td>
     </tr>
     <tr>
      <td>engine_load</td>
@@ -7391,7 +7558,7 @@
      <td>
       %
      </td>
-     <td>Engine Load (%)</td>
+     <td>Engine load</td>
     </tr>
     <tr>
      <td>throttle_position</td>
@@ -7399,49 +7566,70 @@
      <td>
       %
      </td>
-     <td>Throttle Position (%)</td>
+     <td>Throttle position</td>
     </tr>
     <tr>
      <td>spark_dwell_time</td>
      <td>float</td>
      <td>ms</td>
-     <td>Spark Dwell Time (ms)</td>
+     <td>Spark dwell time</td>
     </tr>
     <tr>
      <td>barometric_pressure</td>
      <td>float</td>
      <td>kPa</td>
-     <td>Barometric Pressure (kPa)</td>
+     <td>Barometric pressure</td>
     </tr>
     <tr>
      <td>intake_manifold_pressure</td>
      <td>float</td>
      <td>kPa</td>
-     <td>Intake Manifold Pressure (kPa)(</td>
+     <td>Intake manifold pressure(</td>
     </tr>
     <tr>
      <td>intake_manifold_temperature</td>
      <td>float</td>
      <td>degC</td>
-     <td>Intake Manifold Temperature (degC)</td>
+     <td>Intake manifold temperature</td>
     </tr>
     <tr>
      <td>cylinder_head_temperature</td>
      <td>float</td>
      <td>degC</td>
-     <td>cylinder_head_temperature (degC)</td>
+     <td>Cylinder head temperature</td>
     </tr>
     <tr>
      <td>ignition_timing</td>
      <td>float</td>
      <td>deg</td>
-     <td>Ignition timing for cylinder i (Crank Angle degrees)</td>
+     <td>Ignition timing (Crank angle degrees)</td>
     </tr>
     <tr>
      <td>injection_time</td>
      <td>float</td>
      <td>ms</td>
-     <td>Injection time for injector i (ms)</td>
+     <td>Injection time</td>
+    </tr>
+    <tr>
+     <td>exhaust_gas_temperature</td>
+     <td>float</td>
+     <td>degC</td>
+     <td>Exhaust gas temperature</td>
+    </tr>
+    <tr>
+     <td>throttle_out</td>
+     <td>float</td>
+     <td>
+      %
+     </td>
+     <td>Output throttle</td>
+    </tr>
+    <tr>
+     <td>pt_compensation</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Pressure/temperature compensation</td>
     </tr>
    </tbody>
   </table>

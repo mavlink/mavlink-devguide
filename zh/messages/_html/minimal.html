@@ -1,21 +1,21 @@
 <html>
  <body>
-  <h2>MAVLink Protocol Version</h2>
-  <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
-  <h2 id="enums">MAVLink Type Enumerations</h2>
+  <h2>MAVLink 协议版本</h2>
+  <p>当前的 MAVLink 版本是 2.3。 二级版本号（点后）的范围是 1-255 。</p>
+  <h2 id="enums">MAVLink 枚举类型</h2>
   <h3 id="MAV_AUTOPILOT">
    <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
   </h3>
   <p>
    <a href="#enums">
     [Enum]
-   </a>Micro air vehicle / autopilot classes. This identifies the individual model.</p>
+   </a> 微型飞行器/自动驾驶仪类。 这里标明了每个单个模型。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -24,35 +24,35 @@
      <td>
       <a href="#MAV_AUTOPILOT_GENERIC">MAV_AUTOPILOT_GENERIC</a>
      </td>
-     <td>Generic autopilot, full support for everything</td>
+     <td>通用自动驾驶仪，完全支持所有</td>
     </tr>
     <tr id="MAV_AUTOPILOT_RESERVED">
      <td>1</td>
      <td>
       <a href="#MAV_AUTOPILOT_RESERVED">MAV_AUTOPILOT_RESERVED</a>
      </td>
-     <td>Reserved for future use.</td>
+     <td>保留以备将来使用。</td>
     </tr>
     <tr id="MAV_AUTOPILOT_SLUGS">
      <td>2</td>
      <td>
       <a href="#MAV_AUTOPILOT_SLUGS">MAV_AUTOPILOT_SLUGS</a>
      </td>
-     <td>SLUGS autopilot, http://slugsuav.soe.ucsc.edu</td>
+     <td>SLUGS 自动驾驶仪，http://slugsuav.soe.ucsc.edu</td>
     </tr>
     <tr id="MAV_AUTOPILOT_ARDUPILOTMEGA">
      <td>3</td>
      <td>
       <a href="#MAV_AUTOPILOT_ARDUPILOTMEGA">MAV_AUTOPILOT_ARDUPILOTMEGA</a>
      </td>
-     <td>ArduPilot - Plane/Copter/Rover/Sub/Tracker, http://ardupilot.org</td>
+     <td>ArduPilot - 飞机/直升机/小车/潜艇/跟踪器，http://arduplot.org </td>
     </tr>
     <tr id="MAV_AUTOPILOT_OPENPILOT">
      <td>4</td>
      <td>
       <a href="#MAV_AUTOPILOT_OPENPILOT">MAV_AUTOPILOT_OPENPILOT</a>
      </td>
-     <td>OpenPilot, http://openpilot.org</td>
+     <td>OpenPilot，http://openpilot.org</td>
     </tr>
     <tr id="MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY">
      <td>5</td>
@@ -73,28 +73,28 @@
      <td>
       <a href="#MAV_AUTOPILOT_GENERIC_MISSION_FULL">MAV_AUTOPILOT_GENERIC_MISSION_FULL</a>
      </td>
-     <td>Generic autopilot supporting the full mission command set</td>
+     <td>支持所有任务命令的通用自动驾驶仪</td>
     </tr>
     <tr id="MAV_AUTOPILOT_INVALID">
      <td>8</td>
      <td>
       <a href="#MAV_AUTOPILOT_INVALID">MAV_AUTOPILOT_INVALID</a>
      </td>
-     <td>No valid autopilot, e.g. a GCS or other MAVLink component</td>
+     <td>没有有效的自动驾驶仪，例如地面站或其他 MAVLink 组件 </td>
     </tr>
     <tr id="MAV_AUTOPILOT_PPZ">
      <td>9</td>
      <td>
       <a href="#MAV_AUTOPILOT_PPZ">MAV_AUTOPILOT_PPZ</a>
      </td>
-     <td>PPZ UAV - http://nongnu.org/paparazzi</td>
+     <td>PPZ 无人机 - http://nongnu.org/paparazzi</td>
     </tr>
     <tr id="MAV_AUTOPILOT_UDB">
      <td>10</td>
      <td>
       <a href="#MAV_AUTOPILOT_UDB">MAV_AUTOPILOT_UDB</a>
      </td>
-     <td>UAV Dev Board</td>
+     <td>无人机开发板 </td>
     </tr>
     <tr id="MAV_AUTOPILOT_FP">
      <td>11</td>
@@ -108,7 +108,7 @@
      <td>
       <a href="#MAV_AUTOPILOT_PX4">MAV_AUTOPILOT_PX4</a>
      </td>
-     <td>PX4 Autopilot - http://px4.io/</td>
+     <td>PX4 自动驾驶仪 - http://px4.io/</td>
     </tr>
     <tr id="MAV_AUTOPILOT_SMACCMPILOT">
      <td>13</td>
@@ -143,14 +143,14 @@
      <td>
       <a href="#MAV_AUTOPILOT_ASLUAV">MAV_AUTOPILOT_ASLUAV</a>
      </td>
-     <td>ASLUAV autopilot -- http://www.asl.ethz.ch</td>
+     <td>ASLUAV 自动驾驶仪 -- http://www.asl.ethz.ch</td>
     </tr>
     <tr id="MAV_AUTOPILOT_SMARTAP">
      <td>18</td>
      <td>
       <a href="#MAV_AUTOPILOT_SMARTAP">MAV_AUTOPILOT_SMARTAP</a>
      </td>
-     <td>SmartAP Autopilot - http://sky-drones.com</td>
+     <td>SmartAP自动驾驶仪 - http://sky-drones.com</td>
     </tr>
     <tr id="MAV_AUTOPILOT_AIRRAILS">
      <td>19</td>
@@ -167,13 +167,13 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>MAVLINK component type reported in HEARTBEAT message. Flight controllers must report the type of the vehicle on which they are mounted (e.g. MAV_TYPE_OCTOROTOR). All other components must report a value appropriate for their type (e.g. a camera must use MAV_TYPE_CAMERA).</p>
+   </a> 在 HEARTBEAT 消息中报告的 MAVLINK 组件类型。 飞行控制器必须报告其安装的机体的类型（例如 MAV_TYPE_OCTOROTOR ）。 所有其他组件必须报告适合其类型的值（例如，相机必须使用 MAV_TYPE_CAMERA ）。</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
     </tr>
    </thead>
    <tbody>
@@ -182,105 +182,105 @@
      <td>
       <a href="#MAV_TYPE_GENERIC">MAV_TYPE_GENERIC</a>
      </td>
-     <td>Generic micro air vehicle</td>
+     <td>通用微型飞行器</td>
     </tr>
     <tr id="MAV_TYPE_FIXED_WING">
      <td>1</td>
      <td>
       <a href="#MAV_TYPE_FIXED_WING">MAV_TYPE_FIXED_WING</a>
      </td>
-     <td>Fixed wing aircraft.</td>
+     <td>固定翼。</td>
     </tr>
     <tr id="MAV_TYPE_QUADROTOR">
      <td>2</td>
      <td>
       <a href="#MAV_TYPE_QUADROTOR">MAV_TYPE_QUADROTOR</a>
      </td>
-     <td>Quadrotor</td>
+     <td>四旋翼</td>
     </tr>
     <tr id="MAV_TYPE_COAXIAL">
      <td>3</td>
      <td>
       <a href="#MAV_TYPE_COAXIAL">MAV_TYPE_COAXIAL</a>
      </td>
-     <td>Coaxial helicopter</td>
+     <td>共轴直升机 </td>
     </tr>
     <tr id="MAV_TYPE_HELICOPTER">
      <td>4</td>
      <td>
       <a href="#MAV_TYPE_HELICOPTER">MAV_TYPE_HELICOPTER</a>
      </td>
-     <td>Normal helicopter with tail rotor.</td>
+     <td>带尾桨的普通直升机。</td>
     </tr>
     <tr id="MAV_TYPE_ANTENNA_TRACKER">
      <td>5</td>
      <td>
       <a href="#MAV_TYPE_ANTENNA_TRACKER">MAV_TYPE_ANTENNA_TRACKER</a>
      </td>
-     <td>Ground installation</td>
+     <td>地面安装</td>
     </tr>
     <tr id="MAV_TYPE_GCS">
      <td>6</td>
      <td>
       <a href="#MAV_TYPE_GCS">MAV_TYPE_GCS</a>
      </td>
-     <td>Operator control unit / ground control station</td>
+     <td>操作员控制单元/地面站</td>
     </tr>
     <tr id="MAV_TYPE_AIRSHIP">
      <td>7</td>
      <td>
       <a href="#MAV_TYPE_AIRSHIP">MAV_TYPE_AIRSHIP</a>
      </td>
-     <td>Airship, controlled</td>
+     <td>可控飞艇</td>
     </tr>
     <tr id="MAV_TYPE_FREE_BALLOON">
      <td>8</td>
      <td>
       <a href="#MAV_TYPE_FREE_BALLOON">MAV_TYPE_FREE_BALLOON</a>
      </td>
-     <td>Free balloon, uncontrolled</td>
+     <td>不可控的热气球</td>
     </tr>
     <tr id="MAV_TYPE_ROCKET">
      <td>9</td>
      <td>
       <a href="#MAV_TYPE_ROCKET">MAV_TYPE_ROCKET</a>
      </td>
-     <td>Rocket</td>
+     <td>火箭</td>
     </tr>
     <tr id="MAV_TYPE_GROUND_ROVER">
      <td>10</td>
      <td>
       <a href="#MAV_TYPE_GROUND_ROVER">MAV_TYPE_GROUND_ROVER</a>
      </td>
-     <td>Ground rover</td>
+     <td>地面小车</td>
     </tr>
     <tr id="MAV_TYPE_SURFACE_BOAT">
      <td>11</td>
      <td>
       <a href="#MAV_TYPE_SURFACE_BOAT">MAV_TYPE_SURFACE_BOAT</a>
      </td>
-     <td>Surface vessel, boat, ship</td>
+     <td>水面舰艇，小船，轮船</td>
     </tr>
     <tr id="MAV_TYPE_SUBMARINE">
      <td>12</td>
      <td>
       <a href="#MAV_TYPE_SUBMARINE">MAV_TYPE_SUBMARINE</a>
      </td>
-     <td>Submarine</td>
+     <td>潜艇</td>
     </tr>
     <tr id="MAV_TYPE_HEXAROTOR">
      <td>13</td>
      <td>
       <a href="#MAV_TYPE_HEXAROTOR">MAV_TYPE_HEXAROTOR</a>
      </td>
-     <td>Hexarotor</td>
+     <td>六旋翼</td>
     </tr>
     <tr id="MAV_TYPE_OCTOROTOR">
      <td>14</td>
      <td>
       <a href="#MAV_TYPE_OCTOROTOR">MAV_TYPE_OCTOROTOR</a>
      </td>
-     <td>Octorotor</td>
+     <td>八旋翼</td>
     </tr>
     <tr id="MAV_TYPE_TRICOPTER">
      <td>15</td>
@@ -792,10 +792,10 @@
      </td>
      <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
     </tr>
-    <tr id="MAV_COMP_ID_USE16">
+    <tr id="MAV_COMP_ID_USER16">
      <td>40</td>
      <td>
-      <a href="#MAV_COMP_ID_USE16">MAV_COMP_ID_USE16</a>
+      <a href="#MAV_COMP_ID_USER16">MAV_COMP_ID_USER16</a>
      </td>
      <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
     </tr>

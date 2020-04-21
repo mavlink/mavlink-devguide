@@ -8854,6 +8854,210 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="FAILURE_UNIT">
+   <a href="#FAILURE_UNIT">FAILURE_UNIT</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>List of possible units where failures can be injected.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="FAILURE_UNIT_SENSOR_GYRO">
+     <td>0</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_GYRO">FAILURE_UNIT_SENSOR_GYRO</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_ACCEL">
+     <td>1</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_ACCEL">FAILURE_UNIT_SENSOR_ACCEL</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_MAG">
+     <td>2</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_MAG">FAILURE_UNIT_SENSOR_MAG</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_BARO">
+     <td>3</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_BARO">FAILURE_UNIT_SENSOR_BARO</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_GPS">
+     <td>4</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_GPS">FAILURE_UNIT_SENSOR_GPS</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_OPTICAL_FLOW">
+     <td>5</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_OPTICAL_FLOW">FAILURE_UNIT_SENSOR_OPTICAL_FLOW</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_VIO">
+     <td>6</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_VIO">FAILURE_UNIT_SENSOR_VIO</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SENSOR_DISTANCE_SENSOR">
+     <td>7</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_DISTANCE_SENSOR">FAILURE_UNIT_SENSOR_DISTANCE_SENSOR</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SYSTEM_BATTERY">
+     <td>100</td>
+     <td>
+      <a href="#FAILURE_UNIT_SYSTEM_BATTERY">FAILURE_UNIT_SYSTEM_BATTERY</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SYSTEM_MOTOR">
+     <td>101</td>
+     <td>
+      <a href="#FAILURE_UNIT_SYSTEM_MOTOR">FAILURE_UNIT_SYSTEM_MOTOR</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SYSTEM_SERVO">
+     <td>102</td>
+     <td>
+      <a href="#FAILURE_UNIT_SYSTEM_SERVO">FAILURE_UNIT_SYSTEM_SERVO</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SYSTEM_AVOIDANCE">
+     <td>103</td>
+     <td>
+      <a href="#FAILURE_UNIT_SYSTEM_AVOIDANCE">FAILURE_UNIT_SYSTEM_AVOIDANCE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SYSTEM_RC_SIGNAL">
+     <td>104</td>
+     <td>
+      <a href="#FAILURE_UNIT_SYSTEM_RC_SIGNAL">FAILURE_UNIT_SYSTEM_RC_SIGNAL</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL">
+     <td>105</td>
+     <td>
+      <a href="#FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL">FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="FAILURE_TYPE">
+   <a href="#FAILURE_TYPE">FAILURE_TYPE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>List of possible failure type to inject.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="FAILURE_TYPE_OK">
+     <td>0</td>
+     <td>
+      <a href="#FAILURE_TYPE_OK">FAILURE_TYPE_OK</a>
+     </td>
+     <td>No failure injected, used to reset a previous failure.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_OFF">
+     <td>1</td>
+     <td>
+      <a href="#FAILURE_TYPE_OFF">FAILURE_TYPE_OFF</a>
+     </td>
+     <td>Sets unit off, so completely non-responsive.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_STUCK">
+     <td>2</td>
+     <td>
+      <a href="#FAILURE_TYPE_STUCK">FAILURE_TYPE_STUCK</a>
+     </td>
+     <td>Unit is stuck e.g. keeps reporting the same value.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_GARBAGE">
+     <td>3</td>
+     <td>
+      <a href="#FAILURE_TYPE_GARBAGE">FAILURE_TYPE_GARBAGE</a>
+     </td>
+     <td>Unit is reporting complete garbage.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_WRONG">
+     <td>4</td>
+     <td>
+      <a href="#FAILURE_TYPE_WRONG">FAILURE_TYPE_WRONG</a>
+     </td>
+     <td>Unit is consistently wrong.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_SLOW">
+     <td>5</td>
+     <td>
+      <a href="#FAILURE_TYPE_SLOW">FAILURE_TYPE_SLOW</a>
+     </td>
+     <td>Unit is slow, so e.g. reporting at slower than expected rate.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_DELAYED">
+     <td>6</td>
+     <td>
+      <a href="#FAILURE_TYPE_DELAYED">FAILURE_TYPE_DELAYED</a>
+     </td>
+     <td>Data of unit is delayed in time.</td>
+    </tr>
+    <tr id="FAILURE_TYPE_INTERMITTENT">
+     <td>7</td>
+     <td>
+      <a href="#FAILURE_TYPE_INTERMITTENT">FAILURE_TYPE_INTERMITTENT</a>
+     </td>
+     <td>Unit is sometimes working, sometimes not.</td>
+    </tr>
+   </tbody>
+  </table>
   <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
@@ -8907,7 +9111,7 @@
      <td>deg</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
@@ -8915,7 +9119,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
@@ -8923,12 +9127,11 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -8968,26 +9171,24 @@
     <tr>
      <td>4: Yaw</td>
      <td>Desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
-     <td>
-     </td>
+     <td>deg</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -9040,7 +9241,7 @@
      </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
@@ -9048,7 +9249,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
@@ -9056,12 +9257,11 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -9113,7 +9313,7 @@
      </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
@@ -9121,7 +9321,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
@@ -9129,12 +9329,11 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -9230,7 +9429,7 @@
      <td>deg</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude.</td>
      <td>
      </td>
@@ -9238,7 +9437,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude.</td>
      <td>
      </td>
@@ -9246,7 +9445,7 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Landing altitude (ground level in current frame).</td>
      <td>
      </td>
@@ -9266,36 +9465,49 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1: Pitch</td>
      <td>Minimum pitch (if airspeed sensor present), desired pitch without sensor</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4: Yaw</td>
      <td>Yaw angle (if magnetometer present), ignored without magnetometer. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>deg</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -9452,8 +9664,7 @@
      <td>Ground speed of vehicle to be followed</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>m/s</td>
     </tr>
     <tr>
      <td>3: Radius</td>
@@ -9467,11 +9678,10 @@
      <td>Desired yaw angle.</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>deg</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
@@ -9479,7 +9689,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
@@ -9487,12 +9697,11 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -9619,7 +9828,7 @@
      </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
@@ -9627,7 +9836,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
@@ -9635,12 +9844,11 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -9698,8 +9906,7 @@
      <td>Altitude above home. (used if mode=2)</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>6</td>
@@ -9955,7 +10162,7 @@
      <td>4: Yaw</td>
      <td>Yaw angle at goal</td>
      <td>
-      <em>min:</em>0 <em>max:</em>360 </td>
+     </td>
      <td>deg</td>
     </tr>
     <tr>
@@ -10106,7 +10313,7 @@
      <td>deg</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
@@ -10114,7 +10321,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
@@ -10122,12 +10329,11 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -10160,10 +10366,9 @@
      </td>
     </tr>
     <tr>
-     <td>3: Altitude</td>
+     <td>3: Approach Altitude</td>
      <td>Approach altitude (with the same reference as the Altitude field). NaN if unspecified.</td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>4: Yaw</td>
@@ -10171,22 +10376,21 @@
      <td>deg</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Ground Altitude</td>
      <td>Altitude (ground level)</td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -10381,7 +10585,7 @@
      </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
@@ -10389,7 +10593,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
@@ -10397,12 +10601,11 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -10577,10 +10780,9 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Finish Altitude</td>
-     <td>
-     </td>
+     <td>7: Altitude</td>
+     <td>Target Altitude</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -10989,6 +11191,7 @@
      <th>Param (:Label)</th>
      <th>Description</th>
      <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
@@ -10997,10 +11200,14 @@
      <td>Use current (1=use current location, 0=use specified location)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
      <td>
      </td>
     </tr>
@@ -11009,30 +11216,39 @@
      <td>Empty</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
      <td>
      </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -11542,11 +11758,11 @@
      <td>Empty</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
     </tr>
     <tr>
@@ -11718,11 +11934,10 @@
      <td>Yaw heading. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). For planes indicates loiter direction (0: clockwise, 1: counter clockwise)</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>deg</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
@@ -11730,7 +11945,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
@@ -11738,12 +11953,11 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude (meters)</td>
+     <td>7: Altitude</td>
+     <td>Altitude</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -13787,6 +14001,42 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_INJECT_FAILURE">MAV_CMD_INJECT_FAILURE (<a href="#MAV_CMD_INJECT_FAILURE">420</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Inject artificial failure for testing purposes. Note that autopilots should implement an additional protection before accepting this command such as a specific param setting.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>The unit which is affected by the failure.</td>
+     <td>FAILURE_UNIT</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>The type how the failure manifests itself.</td>
+     <td>FAILURE_TYPE</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Instance affected by failure (0 to signal all).</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_START_RX_PAIR">MAV_CMD_START_RX_PAIR (<a href="#MAV_CMD_START_RX_PAIR">500</a>
    )
   </h3>
@@ -14401,15 +14651,15 @@
    </thead>
    <tbody>
     <tr>
-     <td>1: Tilt angular rate</td>
-     <td>Tilt/pitch angular rate (positive to point up).</td>
+     <td>1: Tilt angular velocity</td>
+     <td>Tilt/pitch angular velocity (positive to point up).</td>
      <td>
      </td>
      <td>deg/s</td>
     </tr>
     <tr>
-     <td>2: Pan angular rate</td>
-     <td>Pan/yaw angular rate (positive to pan to the right).</td>
+     <td>2: Pan angular velocity</td>
+     <td>Pan/yaw angular velocity (positive to pan to the right).</td>
      <td>
      </td>
      <td>deg/s</td>
@@ -15280,6 +15530,7 @@
      <th>Param (:Label)</th>
      <th>Description</th>
      <th>Values</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
@@ -15288,10 +15539,14 @@
      <td>Geometry: 0: orthogonal to path between previous and next waypoint.</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>2: Altitude</td>
+     <td>2: UseAltitude</td>
      <td>Altitude: 0: ignore altitude</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
@@ -15300,30 +15555,39 @@
      <td>Empty</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
      <td>
      </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -15339,36 +15603,50 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -15413,13 +15691,13 @@
      </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
@@ -15473,13 +15751,13 @@
      </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
@@ -15532,13 +15810,13 @@
      </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
@@ -15591,13 +15869,13 @@
      </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
@@ -15622,36 +15900,50 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude</td>
      <td>Altitude</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -15754,7 +16046,7 @@
      <td>m</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
      <td>
      </td>
@@ -15762,7 +16054,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
      <td>
      </td>
@@ -15770,12 +16062,11 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude (MSL), in meters</td>
+     <td>7: Altitude</td>
+     <td>Altitude (MSL)</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -15851,36 +16142,50 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude (MSL), in meters</td>
+     <td>7: Altitude</td>
+     <td>Altitude (MSL)</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -15896,36 +16201,50 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude (MSL), in meters</td>
+     <td>7: Altitude</td>
+     <td>Altitude (MSL)</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -15941,36 +16260,50 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude (MSL), in meters</td>
+     <td>7: Altitude</td>
+     <td>Altitude (MSL)</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -15986,36 +16319,50 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude (MSL), in meters</td>
+     <td>7: Altitude</td>
+     <td>Altitude (MSL)</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -16031,36 +16378,50 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude (MSL), in meters</td>
+     <td>7: Altitude</td>
+     <td>Altitude (MSL)</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -16076,36 +16437,50 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude (MSL), in meters</td>
+     <td>7: Altitude</td>
+     <td>Altitude (MSL)</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -16121,36 +16496,50 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude (MSL), in meters</td>
+     <td>7: Altitude</td>
+     <td>Altitude (MSL)</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -16166,36 +16555,50 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude (MSL), in meters</td>
+     <td>7: Altitude</td>
+     <td>Altitude (MSL)</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -16211,36 +16614,50 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude (MSL), in meters</td>
+     <td>7: Altitude</td>
+     <td>Altitude (MSL)</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -16256,36 +16673,50 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>Latitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>Longitude unscaled</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude (MSL), in meters</td>
+     <td>7: Altitude</td>
+     <td>Altitude (MSL)</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
@@ -29652,7 +30083,7 @@
      <td>Bitmap of gimbal capability flags.</td>
     </tr>
     <tr>
-     <td>gimbal_component</td>
+     <td>gimbal_device_id</td>
      <td>uint8_t</td>
      <td>
      </td>
@@ -29660,7 +30091,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Gimbal component ID that this gimbal manager is responsible for.</td>
+     <td>Gimbal device ID that this gimbal manager is responsible for.</td>
     </tr>
     <tr>
      <td>tilt_max</td>
@@ -29769,6 +30200,17 @@
      </td>
      <td>High level gimbal manager flags currently applied.</td>
     </tr>
+    <tr>
+     <td>gimbal_device_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Gimbal device ID that this gimbal manager is responsible for.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="GIMBAL_MANAGER_SET_ATTITUDE">GIMBAL_MANAGER_SET_ATTITUDE (<a href="#GIMBAL_MANAGER_SET_ATTITUDE">
@@ -29827,6 +30269,17 @@
       <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
      </td>
      <td>High level gimbal manager flags to use.</td>
+    </tr>
+    <tr>
+     <td>gimbal_device_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
     </tr>
     <tr>
      <td>q</td>
