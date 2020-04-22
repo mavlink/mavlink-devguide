@@ -51,7 +51,7 @@ The sections below explain how to contribute to each category and how to raise a
         git 推送来源 mydescriptisbranchname
         
 
-6. 发送 < 0>pull request </0 > 以合并分支中的更改。
+6. 发送 [pull request ](https://github.com/mavlink/mavlink/compare/) 以合并分支中的更改。
 
 ## Dev呼叫 {#dev_call}
 
