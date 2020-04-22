@@ -439,7 +439,7 @@ Slugs - 10001 - 10015
     <param index="3" reserved="True" default="NaN" />
     
 
-> **警告** 索引值`5` 和`6` 参数不应授予 `默认` 的 `NaN`，因为如果这些参数在 `COMMAND_INT` 或 `指示器` 或 `MISSION_INT` 这些参数是集成器 (因此没有代表<1>导航</1>)
+> **Warning** 索引值`5` 和`6` 参数不应授予 `默认` 的 `NaN`，因为如果这些参数在 `COMMAND_INT` 或 `指示器` 或 `MISSION_INT` 这些参数是集成器 (因此没有代表<1>导航</1>)
 
 To declare a param as `reserved` with `default` value of `0` simply omit the `param` from the definition. This is the default - it is equivalent to:
 
