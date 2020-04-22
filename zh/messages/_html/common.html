@@ -21913,19 +21913,19 @@ y轴磁力计数据
      <td>roll</td>
      <td>float</td>
      <td>rad</td>
-     <td>Roll</td>
+     <td>滚转</td>
     </tr>
     <tr>
      <td>pitch</td>
      <td>float</td>
      <td>rad</td>
-     <td>Pitch</td>
+     <td>俯仰角</td>
     </tr>
     <tr>
      <td>yaw</td>
      <td>float</td>
      <td>rad</td>
-     <td>Yaw</td>
+     <td>偏航：</td>
     </tr>
    </tbody>
   </table>
@@ -21955,97 +21955,97 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>roll</td>
      <td>float</td>
      <td>rad</td>
-     <td>Roll angle</td>
+     <td>滚转角</td>
     </tr>
     <tr>
      <td>pitch</td>
      <td>float</td>
      <td>rad</td>
-     <td>Pitch angle</td>
+     <td>俯仰角</td>
     </tr>
     <tr>
      <td>yaw</td>
      <td>float</td>
      <td>rad</td>
-     <td>Yaw angle</td>
+     <td>偏航角</td>
     </tr>
     <tr>
      <td>rollspeed</td>
      <td>float</td>
      <td>rad/s</td>
-     <td>Body frame roll / phi angular speed</td>
+     <td>机体坐标系滚转/phi 角速度</td>
     </tr>
     <tr>
      <td>pitchspeed</td>
      <td>float</td>
      <td>rad/s</td>
-     <td>Body frame pitch / theta angular speed</td>
+     <td>机体坐标系俯仰/phi 角速度</td>
     </tr>
     <tr>
      <td>yawspeed</td>
      <td>float</td>
      <td>rad/s</td>
-     <td>Body frame yaw / psi angular speed</td>
+     <td>机体坐标系方位/phi 角速度</td>
     </tr>
     <tr>
      <td>lat</td>
      <td>int32_t</td>
      <td>degE7</td>
-     <td>Latitude</td>
+     <td>纬度</td>
     </tr>
     <tr>
      <td>lon</td>
      <td>int32_t</td>
      <td>degE7</td>
-     <td>Longitude</td>
+     <td>经度</td>
     </tr>
     <tr>
      <td>alt</td>
      <td>int32_t</td>
      <td>mm</td>
-     <td>Altitude</td>
+     <td>高度</td>
     </tr>
     <tr>
      <td>vx</td>
      <td>int16_t</td>
      <td>cm/s</td>
-     <td>Ground X Speed (Latitude)</td>
+     <td>地面X速率(纬度)</td>
     </tr>
     <tr>
      <td>vy</td>
      <td>int16_t</td>
      <td>cm/s</td>
-     <td>Ground Y Speed (Longitude)</td>
+     <td>地面Y速率(纬度)</td>
     </tr>
     <tr>
      <td>vz</td>
      <td>int16_t</td>
      <td>cm/s</td>
-     <td>Ground Z Speed (Altitude)</td>
+     <td>地面Z速率(纬度)</td>
     </tr>
     <tr>
      <td>xacc</td>
      <td>int16_t</td>
      <td>mG</td>
-     <td>X acceleration</td>
+     <td>X轴加速度</td>
     </tr>
     <tr>
      <td>yacc</td>
      <td>int16_t</td>
      <td>mG</td>
-     <td>Y acceleration</td>
+     <td>Y轴加速度</td>
     </tr>
     <tr>
      <td>zacc</td>
      <td>int16_t</td>
      <td>mG</td>
-     <td>Z acceleration</td>
+     <td>Z轴加速度</td>
     </tr>
    </tbody>
   </table>
@@ -22075,7 +22075,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>roll_ailerons</td>
@@ -22086,7 +22086,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Control output -1 .. 1</td>
+     <td>控制输出 -1..1</td>
     </tr>
     <tr>
      <td>pitch_elevator</td>
@@ -22097,7 +22097,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Control output -1 .. 1</td>
+     <td>控制输出 -1..1</td>
     </tr>
     <tr>
      <td>yaw_rudder</td>
@@ -22108,7 +22108,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Control output -1 .. 1</td>
+     <td>控制输出 1</td>
     </tr>
     <tr>
      <td>throttle</td>
@@ -22119,7 +22119,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Throttle 0 .. 1</td>
+     <td>油门 .. -1..1</td>
     </tr>
     <tr>
      <td>aux1</td>
@@ -22173,7 +22173,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_MODE">MAV_MODE</a>
      </td>
-     <td>System mode.</td>
+     <td>系统模式。</td>
     </tr>
     <tr>
      <td>nav_mode</td>
@@ -22239,56 +22239,56 @@ y轴磁力计数据
      <td>chan5_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 5 value</td>
+     <td>遥控通道 5 值</td>
     </tr>
     <tr>
      <td>chan6_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 6 value</td>
+     <td>遥控通道 6 值</td>
     </tr>
     <tr>
      <td>chan7_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 7 value</td>
+     <td>遥控通道 7 值</td>
     </tr>
     <tr>
      <td>chan8_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 8 value</td>
+     <td>遥控通道 8 值</td>
     </tr>
     <tr>
      <td>chan9_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 9 value</td>
+     <td>遥控通道 9 值</td>
     </tr>
     <tr>
      <td>chan10_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 10 value</td>
+     <td>遥控通道 10 值</td>
     </tr>
     <tr>
      <td>chan11_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 11 value</td>
+     <td>遥控通道 11 值</td>
     </tr>
     <tr>
      <td>chan12_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 12 value</td>
+     <td>遥控通道 12 值</td>
     </tr>
     <tr>
      <td>rssi</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Receive signal strength indicator in device-dependent units/scale. Values: [0-254], 255: invalid/unknown.</td>
+     <td>通过数值/比例用来表示接收信号强度指示。 值： [0-254], 255: 无效/未知。</td>
     </tr>
    </tbody>
   </table>
