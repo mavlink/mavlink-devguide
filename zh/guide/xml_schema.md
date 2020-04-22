@@ -191,7 +191,7 @@ MAV_CMD 条目 `value` 元素可能会额外定义这些标签/字段：
 - `description`(可选)：用户界面和代码评论中显示的信息可读描述。 这应当包含所有信息（以及超链接），以便充分了解信息。
 - `field`: 编码消息的一个字段。 字段值是 GUI 文档中使用的名称/文本字符串(但不通过总线发送)。 
    - `type`: 类似于 C `struct` - 存储/代表数据类型所需数据大小。 
-      - 字段可签名/无签名，大小 8、16、23、64位(`{u)int8_t`, `(u)int16_t`, `(u>(u)int 32_t`, `, <0>(u>(u)int64_int`), 单一/双精度精度IEEE754 浮点数。 它们也可以是其他类型——例如`uint16_t[10]`。 
+      - 字段可签名/无签名，大小 8、16、23、64位(`{u)int8_t`, `(u)int16_t`, `(u>(u)int 32_t`, `(u>(u)int64_int`), 单一/双精度精度IEEE754 浮点数。 它们也可以是其他类型——例如`uint16_t[10]`。 
    - `name`：字段名称 (在代码中使用)。
    - [number](#enum)(可选)：一个`enum` 定义字段可能的值的名称 (例如：`MAV_BATERY_CHRRE_STATE`)。
    - `units`(可选)：信息 `字段`对应数字的单位(未列出)。 这些定义在 [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd)(搜索 *name="SI_Unit"*)
