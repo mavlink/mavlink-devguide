@@ -31091,12 +31091,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Describe a trajectory using an array of up-to 5 waypoints in the local frame (MAV_FRAME_LOCAL_NED).</p>
+   使用本地坐标系中最多5个路径点的数组(MAV_FRAME_LOCAL_NED)描述轨迹。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31116,7 +31111,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX Epoch时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>valid_points</td>
@@ -31127,7 +31122,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Number of valid points (up-to 5 waypoints are possible)</td>
+     <td>有效点的数量(最多5个路径点)</td>
     </tr>
     <tr>
      <td>pos_x</td>
@@ -31137,7 +31132,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X-coordinate of waypoint, set to NaN if not being used</td>
+     <td>路径点的x坐标，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>pos_y</td>
@@ -31147,7 +31142,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y-coordinate of waypoint, set to NaN if not being used</td>
+     <td>路径点的y坐标，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>pos_z</td>
@@ -31157,7 +31152,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Z-coordinate of waypoint, set to NaN if not being used</td>
+     <td>路径点z坐标，不使用设置为NaN</td>
     </tr>
     <tr>
      <td>vel_x</td>
@@ -31167,7 +31162,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X-velocity of waypoint, set to NaN if not being used</td>
+     <td>路径点的x速度，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>vel_y</td>
@@ -31177,7 +31172,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y-velocity of waypoint, set to NaN if not being used</td>
+     <td>路径点的y速度，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>vel_z</td>
@@ -31187,7 +31182,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Z-velocity of waypoint, set to NaN if not being used</td>
+     <td>路径点z速度，不使用设置为NaN</td>
     </tr>
     <tr>
      <td>acc_x</td>
@@ -31197,7 +31192,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X-acceleration of waypoint, set to NaN if not being used</td>
+     <td>路径点的x -加速度，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>acc_y</td>
@@ -31207,7 +31202,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y-acceleration of waypoint, set to NaN if not being used</td>
+     <td>路径点的y加速，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>acc_z</td>
@@ -31217,7 +31212,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Z-acceleration of waypoint, set to NaN if not being used</td>
+     <td>路径点的z向加速度，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>pos_yaw</td>
@@ -31227,7 +31222,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Yaw angle, set to NaN if not being used</td>
+     <td>偏航角度，如果不使用设置为NaN，</td>
     </tr>
     <tr>
      <td>vel_yaw</td>
@@ -31237,7 +31232,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Yaw rate, set to NaN if not being used</td>
+     <td>偏航角速度，如果不使用设置为NaN，</td>
     </tr>
     <tr>
      <td>command</td>
@@ -31247,7 +31242,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_CMD">MAV_CMD</a>
      </td>
-     <td>Scheduled action for each waypoint, UINT16_MAX if not being used.</td>
+     <td>为每个路点调度操作，如果没有使用UINT16_MAX。</td>
     </tr>
    </tbody>
   </table>
@@ -32334,7 +32329,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    关于组件的信息。 对于相机组件，使用CAMERA_INFORMATION，对于自动驾驶，使用AUTOPILOT_VERSION。 包括GCSes在内的组件应该考虑通过MAV_CMD_REQUEST_MESSAGE支持此消息的请求。</p>
   <table class="sortable">
@@ -32356,7 +32351,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>vendor_name</td>
@@ -32389,7 +32384,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Version of the component firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>组件固件版本(v <<24&0xff = 驱动, v <<16&0xff = 打补丁, v <<8&0xff = 次要, v &0xff =主要)</td>
     </tr>
     <tr>
      <td>hardware_version</td>
@@ -32400,7 +32395,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Version of the component hardware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>组件硬硬件版本(v <<24&0xff = 驱动, v <<16&0xff = 打补丁, v <<8&0xff = 次要, v &0xff =主要)</td>
     </tr>
     <tr>
      <td>capability_flags</td>
@@ -32410,7 +32405,7 @@ y轴磁力计数据
      <td>
       <a href="#COMPONENT_CAP_FLAGS">COMPONENT_CAP_FLAGS</a>
      </td>
-     <td>Bitmap of component capability flags.</td>
+     <td>组件功能标志的位图。</td>
     </tr>
     <tr>
      <td>component_definition_version</td>
@@ -32421,7 +32416,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component definition version (iteration)</td>
+     <td>组件定义版本(迭代)</td>
     </tr>
     <tr>
      <td>component_definition_uri</td>
@@ -32432,7 +32427,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component definition URI (if any, otherwise only basic functions will be available). The XML format is not yet specified and work in progress.</td>
+     <td>组件定义URI(如果有的话)，否则只能提供基本功能)。 XML格式尚未指定，正在运行。</td>
     </tr>
    </tbody>
   </table>
@@ -32442,14 +32437,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Play vehicle tone/tune (buzzer). Supersedes message PLAY_TUNE.</p>
+   播放车辆音调/调音(蜂鸣器)。 首选消息PLAY_TUNE。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32467,7 +32457,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -32476,7 +32466,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td>format</td>
@@ -32484,7 +32474,7 @@ y轴磁力计数据
      <td>
       <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
      </td>
-     <td>Tune format</td>
+     <td>调整格式</td>
     </tr>
     <tr>
      <td>tune</td>
@@ -32493,7 +32483,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Tune definition as a NULL-terminated string.</td>
+     <td>将优化定义为以null结尾的字符串。</td>
     </tr>
    </tbody>
   </table>
@@ -32523,7 +32513,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -32532,7 +32522,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td>format</td>
