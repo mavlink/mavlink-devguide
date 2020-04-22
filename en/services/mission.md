@@ -98,8 +98,6 @@ Message | Description
 <span id="STATUSTEXT"></span>[STATUSTEXT](../messages/common.md#STATUSTEXT) | Sent to notify systems when a request to [set the current mission item](#current_mission_item) fails.
 <span id="MISSION_CLEAR_ALL"></span>[MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL) | Message sent to [clear/delete all mission items](#clear_mission) stored on a system.
 <span id="MISSION_ITEM_REACHED"></span>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).
-<span id="MISSION_REQUEST_PARTIAL_LIST"></span>[MISSION_REQUEST_PARTIAL_LIST](../messages/common.md#MISSION_REQUEST_PARTIAL_LIST) | Initiate a [partial download of mission items](#download_partial) from a system/component.
-<span id="MISSION_WRITE_PARTIAL_LIST"></span>[MISSION_WRITE_PARTIAL_LIST](../messages/common.md#MISSION_WRITE_PARTIAL_LIST) | Initiate a [partial upload of new mission items](#upload_partial) to a system/component.
 
 
 Enum | Description
@@ -113,9 +111,6 @@ Enum | Description
 ## Operations {#operations}
 
 This section defines all the protocol operations.
-
-> **Note** An implementation need not support all operations.
-  In particular, operations to upload and download *partial* missions are optional.
 
 
 ### Upload a Mission to the Vehicle {#uploading_mission}
@@ -265,103 +260,6 @@ Note:
   The GCS record of the mission (if any) should be retained.
 
 
-### Partial Mission Upload {#upload_partial}
-
-The diagram below shows the communication sequence to upload a partial mission to a drone (assuming all operations succeed).
-The mission update must either overlap or immediately follow the final mission item of the existing mission (no "gaps" are allowed in the mission item sequence). 
-
-> **Note** The message sequence similar to a [full mission upload](#uploading_mission), except that it is triggered with a [MISSION_WRITE_PARTIAL_LIST](../messages/common.md#MISSION_WRITE_PARTIAL_LIST) instead of a [MISSION_COUNT](../messages/common.md#MISSION_COUNT).
-
-<span></span>
-> **Note** As for full mission update, partial update is required to be robust.
-  The upload must succeed or fail completely, leaving the uploader in no doubt of the current mission state.
-
-{% mermaid %}
-sequenceDiagram;
-    participant GCS
-    participant Drone
-    GCS->>Drone: MISSION_WRITE_PARTIAL_LIST
-    GCS->>GCS: Start timeout
-    Drone->>GCS: MISSION_REQUEST_INT (start_index)
-    Drone->>Drone: Start timeout
-    GCS-->>Drone: MISSION_ITEM_INT (start_index)
-    Note over GCS,Drone: ... iterate through items ...
-    Drone->>GCS: MISSION_REQUEST_INT (end_index)
-    Drone->>Drone: Start timeout
-    GCS-->>Drone: MISSION_ITEM_INT (end_index)
-    Drone->>GCS: MISSION_ACK
-{% endmermaid %}
-
-
-In more detail, the sequence of operations is:
-1. GCS sends [MISSION_WRITE_PARTIAL_LIST](../messages/common.md#MISSION_WRITE_PARTIAL_LIST) specifying the `start_index` and `end_index` of items to update/overwrite.
-   - A [timeout](#timeout) must be started for the GCS to wait on the response from Drone (`MISSION_REQUEST_INT`).
-1. Drone receives message and responds with [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) requesting the first mission item (`seq==start_index`).
-   - A [timeout](#timeout) must be started for the Drone to wait on the `MISSION_ITEM_INT` response from GCS.
-1. GCS receives `MISSION_REQUEST_INT` and responds with the requested mission item in a [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) message.
-1. Drone receives [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) and writes it into the existing mission.
-1. Drone and GCS repeat the `MISSION_REQUEST_INT`/`MISSION_ITEM_INT` cycle, iterating `seq` until all items are uploaded (including `seq==end_index`).
-1. After receiving the last mission item the drone responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with the `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED) indicating mission upload completion/success.
-   The drone considers the upload complete.
-1. GCS receives `MISSION_ACK` containing `MAV_MISSION_ACCEPTED`and considers the operation to be complete.
-
-
-Note:
-- A [timeout](#timeout) is set for every message that requires a response (e.g. `MISSION_REQUEST_INT`).
-  If the timeout expires without a response being received then the request must be resent.
-- Mission items must be received in order.
-  If an item is received out-of-sequence the expected item should be re-requested by the vehicle (the out-of-sequence item is dropped).
-- An [error](#errors) can be signaled in response to any request using a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing an error code.
-  This must cancel the operation. 
-  The mission need not be rolled-back to the pre-operation state.
-  For example, an error might be returned after `MISSION_WRITE_PARTIAL_LIST` if the drone has insufficient space for the update, if the `start_index` is not inside/immediately after the end of the existing mission, if the `end_index` is before the `start_index`, etc.
-- The sequence above shows the [mission items](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages. 
-  Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way (see [MISSION_ITEM_INT vs MISSION_ITEM below](#command_message_type)).
-
-
-### Partial Mission Download {#download_partial}
-
-The diagram below shows the communication sequence to download part of a mission from a drone (assuming all operations succeed).
-
-{% mermaid %}
-sequenceDiagram;
-    participant GCS
-    participant Drone
-    GCS->>Drone: MISSION_REQUEST_PARTIAL_LIST
-    GCS->>Drone: MISSION_REQUEST_INT (start_index)
-    GCS->>GCS: Start timeout
-    Drone-->>GCS: MISSION_ITEM_INT (start_index)
-    Note over GCS,Drone: ... iterate through items ...
-    GCS->>Drone: MISSION_REQUEST_INT (end_index)
-    GCS->>GCS: Start timeout
-    Drone-->>GCS: MISSION_ITEM_INT (end_index)
-    GCS->>Drone: MISSION_ACK
-{% endmermaid %}
-
-In more detail, the sequence of operations is:
-1. GCS sends [MISSION_REQUEST_PARTIAL_LIST](../messages/common.md#MISSION_REQUEST_PARTIAL_LIST) specifying the start and end index values for the required mission items.
-   - No response is expected.
-   - Drone receives the message and prepares for mission item requests.
-1. GCS sends [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) requesting the first mission item (`seq==start_index`).
-   - A [timeout](#timeout) must be started for the GCS to wait on the response from Drone (`MISSION_ITEM_INT`).
-1. Drone receives `MISSION_REQUEST_INT` and responds with the requested mission item in a [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) message.
-1. GCS and Drone repeat the `MISSION_REQUEST_INT`/`MISSION_ITEM_INT` cycle, iterating `seq` until `end_index` (included) is reached.
-1. After receiving the last mission item the GCS responds with [MISSION_ACK](../messages/common.md#MISSION_ACK) with the `type` of [MAV_MISSION_ACCEPTED](../messages/common.md#MAV_MISSION_ACCEPTED) indicating mission download completion/success.
-   The GCS considers the download complete.
-1. Drone receives `MISSION_ACK` containing `MAV_MISSION_ACCEPTED`and considers the operation to be complete.
-
-
-Note:
-- A [timeout](#timeout) is set for every message that requires a response (e.g. `MISSION_REQUEST_INT`).
-  If the timeout expires without a response being received then the request must be resent.
-- Mission items must be received in order.
-  If an item is received out-of-sequence the expected item should be re-requested by the GCS (the out-of-sequence item is dropped).
-- An [error](#errors) can be signaled in response to any request using a [MISSION_ACK](../messages/common.md#MISSION_ACK) message containing an error code.
-  This must cancel the operation.
-- The sequence above shows the [mission items](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages.
-  Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way.
-
-
 ### Canceling Operations {#cancel}
 
 The above mission operations may be canceled by responding to any request (e.g. `MISSION_REQUEST_INT`) with a `MISSION_ACK` message containing the `MAV_MISSION_OPERATION_CANCELLED` error.
@@ -419,7 +317,6 @@ The implementation status is (at time of writing):
 
 - Flight plan missions:
   - upload, download, clearing missions, and monitoring progress are supported as defined in this specification.
-  - [partial upload](#upload_partial) and [partial download](#download_partial) are not supported.
 - Geofence missions" are supported as defined in this specification.
 - Rally point "missions" are not supported on PX4.
 
@@ -453,9 +350,10 @@ Source:
 
 #### Flight Plan Missions
 
-Mission upload, download, clearing missions, and monitoring progress and partial mission upload ([MISSION_WRITE_PARTIAL_LIST](#MISSION_WRITE_PARTIAL_LIST)) are supported.
+Mission upload, download, clearing missions, and monitoring progress are supported.
 
-[Partial mission download](#download_partial) is not supported ([MISSION_REQUEST_PARTIAL_LIST](#MISSION_REQUEST_PARTIAL_LIST)).
+> **Note** ArduPilot implements also partial mission upload using `MISSION_WRITE_PARTIAL_LIST`, but not partial mission download (`MISSION_REQUEST_PARTIAL_LIST`).
+  Partial mission upload/download is not an official/standardised part of the mission service.
 
 ArduPilot's implementation differs from this specification (non-exhaustively):
 - The first mission sequence number (`seq==0`) is populated with the home position of the vehicle instead of the first mission item.
