@@ -22533,7 +22533,7 @@ y轴磁力计数据
      <td>usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX time or time since system boot)</td>
+     <td>时间戳(同步到 UNIX 时间或系统启动后)。</td>
     </tr>
     <tr>
      <td>x</td>
@@ -22869,7 +22869,7 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>sensor_id</td>
@@ -23401,7 +23401,7 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>0-1: no fix, 2: 2D fix, 3: 3D fix. Some applications will not use the value of this field unless it is at least two, so always correctly fill in the fix.</td>
+     <td>0-1: 无修正, 2: 2D 修正, 3: 3D 修正. Some applications will not use the value of this field unless it is at least two, so always correctly fill in the fix.</td>
     </tr>
     <tr>
      <td>lat</td>
@@ -25298,7 +25298,7 @@ y轴磁力计数据
      <td>float[21]</td>
      <td>
      </td>
-     <td>Row-major representation of a pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
+     <td>位姿6x6交叉协方差矩阵的行-主表示右上角三角形(状态:x_global, y_global, z_global, roll, pitch, yaw;前六项是第一行，后五项是第二行，等等)。 如果未知，在数组中将NAN值分配给第一个元素。</td>
     </tr>
    </tbody>
   </table>
@@ -25383,7 +25383,7 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Actuator group. The "_mlx" indicates this is a multi-instance message and a MAVLink parser should use this field to difference between instances.</td>
+     <td>Actuator group. “_mlx”表示这是一个多实例消息，MAVLink解析器应该使用这个字段来区分实例之间的差异。</td>
     </tr>
     <tr>
      <td>controls</td>
@@ -25415,7 +25415,7 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>altitude_monotonic</td>
@@ -26311,7 +26311,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -26321,7 +26321,7 @@ y轴磁力计数据
      <td>
       <a href="#ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</a>
      </td>
-     <td>Bitmap indicating which EKF outputs are valid.</td>
+     <td>位图显示哪些EKF输出是有效的。</td>
     </tr>
     <tr>
      <td>vel_ratio</td>
@@ -27397,62 +27397,62 @@ y轴磁力计数据
      <td>latitude</td>
      <td>int32_t</td>
      <td>degE7</td>
-     <td>Latitude (WGS84)</td>
+     <td>纬度(WGS84)</td>
     </tr>
     <tr>
      <td>longitude</td>
      <td>int32_t</td>
      <td>degE7</td>
-     <td>Longitude (WGS84)</td>
+     <td>经度 (WGS84)</td>
     </tr>
     <tr>
      <td>altitude</td>
      <td>int32_t</td>
      <td>mm</td>
-     <td>Altitude (MSL). Positive for up.</td>
+     <td>高度(MSL)。 正：上</td>
     </tr>
     <tr>
      <td>x</td>
      <td>float</td>
      <td>m</td>
-     <td>Local X position of this position in the local coordinate frame</td>
+     <td>这个位置在局部坐标系中的X位置</td>
     </tr>
     <tr>
      <td>y</td>
      <td>float</td>
      <td>m</td>
-     <td>Local Y position of this position in the local coordinate frame</td>
+     <td>这个位置在局部坐标系中的局部Y位置</td>
     </tr>
     <tr>
      <td>z</td>
      <td>float</td>
      <td>m</td>
-     <td>Local Z position of this position in the local coordinate frame</td>
+     <td>这个位置在局部坐标系中的局部Z位置</td>
     </tr>
     <tr>
      <td>q</td>
      <td>float[4]</td>
      <td>
      </td>
-     <td>World to surface normal and heading transformation of the takeoff position. Used to indicate the heading and slope of the ground</td>
+     <td>World to surface normal and heading transformation of the takeoff position. 用于指示地面的航向和坡度</td>
     </tr>
     <tr>
      <td>approach_x</td>
      <td>float</td>
      <td>m</td>
-     <td>Local X position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
+     <td>进近末端的局部X位置 多旋翼应该根据它们的起飞路径来设置这个位置。 在草地降落固定翼飞机应将其设置为与多旋翼飞机相同的方式。 如果起飞是从起降区开始的。跑道着陆的固定翼飞机应该将起飞方向设为与起飞相反的方向，</td>
     </tr>
     <tr>
      <td>approach_y</td>
      <td>float</td>
      <td>m</td>
-     <td>Local Y position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
+     <td>进近末端的局部Y位置 多旋翼应该根据它们的起飞路径来设置这个位置。 在草地降落固定翼飞机应将其设置为与多旋翼飞机相同的方式。 如果起飞是从起降区开始的。跑道着陆的固定翼飞机应该将起飞方向设为与起飞相反的方向，</td>
     </tr>
     <tr>
      <td>approach_z</td>
      <td>float</td>
      <td>m</td>
-     <td>Local Z position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
+     <td>进近末端的局部Z位置 多旋翼应该根据它们的起飞路径来设置这个位置。 在草地降落固定翼飞机应将其设置为与多旋翼飞机相同的方式。 如果起飞是从起降区开始的。跑道着陆的固定翼飞机应该将起飞方向设为与起飞相反的方向，</td>
     </tr>
     <tr>
      <td style="color:blue;">time_usec<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -27461,7 +27461,7 @@ y轴磁力计数据
      </td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
    </tbody>
   </table>
@@ -30355,7 +30355,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>uptime_sec</td>
@@ -30646,12 +30646,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Set a parameter value. In order to deal with message loss (and retransmission of PARAM_EXT_SET), when setting a parameter value and the new value is the same as the current value, you will immediately get a PARAM_ACK_ACCEPTED response. If the current state is PARAM_ACK_IN_PROGRESS, you will accordingly receive a PARAM_ACK_IN_PROGRESS in response.</p>
+   设置一个参数值。 为了处理消息丢失(以及PARAM_EXT_SET的重新传输)，当设置一个参数值并且新值与当前值相同时，您将立即得到一个PARAM_ACK_ACCEPTED响应。 如果当前状态是PARAM_ACK_IN_PROGRESS，那么您将相应地收到一个PARAM_ACK_IN_PROGRESS响应。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30714,12 +30709,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Response from a PARAM_EXT_SET message.</p>
+   来自PARAM_EXT_SET消息的响应。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30737,7 +30727,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+     <td>参数id，如果长度小于16个可读字符，则以NULL结尾;如果长度正好是16个字符，则不需要NULL终止(NULL)字节；如果ID存储为字符串，应用程序必须提供16+1字节的存储</td>
     </tr>
     <tr>
      <td>param_value</td>
@@ -30746,7 +30736,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Parameter value (new value if PARAM_ACK_ACCEPTED, current value otherwise)</td>
+     <td>参数值(如果PARAM_ACK_ACCEPTED，则新值)</td>
     </tr>
     <tr>
      <td>param_type</td>
@@ -30754,7 +30744,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
      </td>
-     <td>Parameter type.</td>
+     <td>参数类型.</td>
     </tr>
     <tr>
      <td>param_result</td>
@@ -30762,7 +30752,7 @@ y轴磁力计数据
      <td>
       <a href="#PARAM_ACK">PARAM_ACK</a>
      </td>
-     <td>Result code.</td>
+     <td>结果代码。</td>
     </tr>
    </tbody>
   </table>
@@ -30891,7 +30881,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   通过外部测距通讯测距信息传输的测距消息 Fits ROS REP 147 standard for aerial vehicles (http://www.ros.org/reps/rep-0147.html).</p>
+   通过外部测距通讯测距信息传输的测距消息 航空飞行器使用ROS REP 147 标准（http://www.ros.org/reps/rep-0147.html）。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30911,7 +30901,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>frame_id</td>
@@ -30921,7 +30911,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
-     <td>Coordinate frame of reference for the pose data.</td>
+     <td>位姿数据的参考坐标系。</td>
     </tr>
     <tr>
      <td>child_frame_id</td>
@@ -30931,7 +30921,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
-     <td>Coordinate frame of reference for the velocity in free space (twist) data.</td>
+     <td>自由空间数据中速度的参考系。</td>
     </tr>
     <tr>
      <td>x</td>
@@ -30941,7 +30931,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X Position</td>
+     <td>X位置</td>
     </tr>
     <tr>
      <td>y</td>
@@ -31252,12 +31242,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Describe a trajectory using an array of up-to 5 bezier control points in the local frame (MAV_FRAME_LOCAL_NED).</p>
+   使用本地坐标系中最多5个贝塞尔控制点的数组(MAV_FRAME_LOCAL_NED)描述轨迹。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31272,44 +31257,44 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>valid_points</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Number of valid control points (up-to 5 points are possible)</td>
+     <td>有效控制点的数量(最多可达5个)</td>
     </tr>
     <tr>
      <td>pos_x</td>
      <td>float[5]</td>
      <td>m</td>
-     <td>X-coordinate of bezier control points. Set to NaN if not being used</td>
+     <td>贝塞尔控制点的X坐标 设置为NaN(如果不使用)</td>
     </tr>
     <tr>
      <td>pos_y</td>
      <td>float[5]</td>
      <td>m</td>
-     <td>Y-coordinate of bezier control points. Set to NaN if not being used</td>
+     <td>贝塞尔控制点的Y坐标。 设置为NaN(如果不使用)</td>
     </tr>
     <tr>
      <td>pos_z</td>
      <td>float[5]</td>
      <td>m</td>
-     <td>Z-coordinate of bezier control points. Set to NaN if not being used</td>
+     <td>贝塞尔控制点的Z坐标 设置为NaN(如果不使用)</td>
     </tr>
     <tr>
      <td>delta</td>
      <td>float[5]</td>
      <td>s</td>
-     <td>Bezier time horizon. Set to NaN if velocity/acceleration should not be incorporated</td>
+     <td>贝塞尔时间距。 设置为NAN，如果速度/加速度不应被包含</td>
     </tr>
     <tr>
      <td>pos_yaw</td>
      <td>float[5]</td>
      <td>rad</td>
-     <td>Yaw. Set to NaN for unchanged</td>
+     <td>偏航：. 设置为NAN未更改</td>
     </tr>
    </tbody>
   </table>
@@ -31319,14 +31304,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Report current used cellular network status</p>
+   报告当前使用的蜂窝网络状态</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31343,7 +31323,7 @@ y轴磁力计数据
      <td>
       <a href="#CELLULAR_NETWORK_STATUS_FLAG">CELLULAR_NETWORK_STATUS_FLAG</a>
      </td>
-     <td>Status bitmap</td>
+     <td>状态</td>
     </tr>
     <tr>
      <td>type</td>
@@ -31351,7 +31331,7 @@ y轴磁力计数据
      <td>
       <a href="#CELLULAR_NETWORK_RADIO_TYPE">CELLULAR_NETWORK_RADIO_TYPE</a>
      </td>
-     <td>Cellular network radio type: gsm, cdma, lte...</td>
+     <td>蜂窝网络无线电类型:gsm, cdma, lte</td>
     </tr>
     <tr>
      <td>quality</td>
@@ -31360,7 +31340,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Cellular network RSSI/RSRP in dBm, absolute value</td>
+     <td>蜂窝网络RSSI/RSRP的dBm绝对值</td>
     </tr>
     <tr>
      <td>mcc</td>
@@ -31369,7 +31349,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Mobile country code. If unknown, set to: UINT16_MAX</td>
+     <td>移动国家代码。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>mnc</td>
@@ -31378,7 +31358,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Mobile network code. If unknown, set to: UINT16_MAX</td>
+     <td>移动网络代码。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>lac</td>
@@ -31387,7 +31367,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Location area code. If unknown, set to: 0</td>
+     <td>位置区号。 如果未知, 设置为 0</td>
     </tr>
     <tr>
      <td>cid</td>
@@ -31396,7 +31376,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Cell ID. If unknown, set to: UINT32_MAX</td>
+     <td>单元ID 如果未知设置为 UINT32_MAX</td>
     </tr>
    </tbody>
   </table>
@@ -31632,7 +31612,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Next waypoint, longitude (WGS84)</td>
+     <td>下一个航路点，经度(WGS84)</td>
     </tr>
     <tr>
      <td>next_alt</td>
@@ -32111,7 +32091,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    用于将“任意”变长数据从一个组件传输到另一个组件的消息(不禁止广播，但不鼓励)。 数据的编码通常是特定于扩展的，即由源决定的，并且通常不作为MAVLink规范的一部分记录下来。</p>
   <table class="sortable">
@@ -32140,7 +32120,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID (can be 0 for broadcast, but this is discouraged)</td>
+     <td>组件ID(广播可以为0，但不建议这样做)</td>
     </tr>
     <tr>
      <td>payload_type</td>
@@ -32148,7 +32128,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE">MAV_TUNNEL_PAYLOAD_TYPE</a>
      </td>
-     <td>A code that identifies the content of the payload (0 for unknown, which is the default). If this code is less than 32768, it is a 'registered' payload type and the corresponding code should be added to the MAV_TUNNEL_PAYLOAD_TYPE enum. Software creators can register blocks of types as needed. Codes greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
+     <td>标识有效负载内容的代码(0表示未知，这是默认值)。 如果这个代码小于32768，那么它是一个“已注册”的有效负载类型，相应的代码应该添加到MAV_TUNNEL_PAYLOAD_TYPE enum中。 软件创建者可以根据需要注册类型块。 大于32767的代码被认为是局部实验，不应该检入任何广泛分布的代码库。</td>
     </tr>
     <tr>
      <td>payload_length</td>
@@ -32157,7 +32137,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Length of the data transported in payload</td>
+     <td>有效载荷传送的数据长度</td>
     </tr>
     <tr>
      <td>payload</td>
@@ -32166,7 +32146,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Variable length payload. The payload length is defined by payload_length. The entire content of this block is opaque unless you understand the encoding specified by payload_type.</td>
+     <td>可变长度负载。 有效载荷长度是由有效载荷长度定义的。 除非您理解payload_type指定的编码，否则此块的整个内容都是不透明的</td>
     </tr>
    </tbody>
   </table>
@@ -32178,12 +32158,7 @@ y轴磁力计数据
   <p style="color:red">
    生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Hardware status sent by an onboard computer.</p>
+   由机载计算机发送的硬件状态</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32198,27 +32173,27 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>uptime</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Time since system boot.</td>
+     <td>系统启动后的时间。</td>
     </tr>
     <tr>
      <td>type</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Type of the onboard computer: 0: Mission computer primary, 1: Mission computer backup 1, 2: Mission computer backup 2, 3: Compute node, 4-5: Compute spares, 6-9: Payload computers.</td>
+     <td>机载计算机类型:0:任务计算机主计算机，1:任务计算机备份1,2:任务计算机备份2,3:计算节点，4-5:计算备件，6-9:有效载荷计算机。</td>
     </tr>
     <tr>
      <td>cpu_cores</td>
      <td>uint8_t[8]</td>
      <td>
      </td>
-     <td>CPU usage on the component in percent (100 - idle). A value of UINT8_MAX implies the field is unused.</td>
+     <td>组件的CPU使用百分比(100 - idle)。 值UINT8_MAX表示该字段未被使用。</td>
     </tr>
     <tr>
      <td>cpu_combined</td>
