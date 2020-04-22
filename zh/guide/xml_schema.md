@@ -150,7 +150,7 @@ MAV_CMD 条目 `value` 元素可能会额外定义这些标签/字段：
 - `increment` - 参数值允许的增加值。
 - `minValue` - 参数的最低值。
 - `max值`-参数的最大值。
-- `reserved` - 布尔值 - 表示是否保留用于未来使用的参数。 如果未宣布属性，则隐含 `reserved="False"`。 >**Tip** 参见 [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) 更多信息。
+- `reserved` - 布尔值 - 表示是否保留用于未来使用的参数。 如果未宣布属性，则隐含 `reserved="False"`。 > **Tip** 参见 [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) 更多信息。
 - `default` - 默认值 `param` (主要用于 `保留` 参数, 值 `0` 或`NaN`)。
 
 ## 消息定义(消息) {#messages}
