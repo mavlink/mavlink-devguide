@@ -2113,7 +2113,7 @@
      <td>
       <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>
      </td>
-     <td>本地坐标系, Z-下 (x: 北, y: 东, z: 下).</td>
+     <td>Local coordinate frame, Z-down (x: North, y: East, z: Down).</td>
     </tr>
     <tr id="MAV_FRAME_MISSION">
      <td>2</td>
@@ -2134,7 +2134,7 @@
      <td>
       <a href="#MAV_FRAME_LOCAL_ENU">MAV_FRAME_LOCAL_ENU</a>
      </td>
-     <td>本地坐标系, Z-上 (x: 东, y: 北, z: 上).</td>
+     <td>Local coordinate frame, Z-up (x: East, y: North, z: Up).</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_INT">
      <td>5</td>
@@ -2189,73 +2189,77 @@
      </td>
      <td>带有距离地面高度高度（航点坐标）的全球（WGS84)坐标系(比例缩放）。 第一个数值/x：纬度 角度*e-7；第二个数值/：经度 角度*1e-7；第三个数值/z 单位米：以地平线基准为0的地形模型中</td>
     </tr>
-    <tr id="MAV_FRAME_BODY_FRD">
+    <tr id="MAV_FRAME_RESERVED_12">
      <td>12</td>
      <td>
-      <a href="#MAV_FRAME_BODY_FRD">MAV_FRAME_BODY_FRD</a>
+      <a href="#MAV_FRAME_RESERVED_12">MAV_FRAME_RESERVED_12</a>
+      <p style="color:red">
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_BODY_OFFSET_NED (2019-04).</p>
      </td>
-     <td>身体固定参考坐标系，Z-down (x：前 ：右，z：下)。</td>
+     <td>MAV_FRAME_BODY_FRD - Body fixed frame of reference, Z-down (x: Forward, y: Right, z: Down).</td>
     </tr>
-    <tr id="MAV_FRAME_BODY_FLU">
+    <tr id="MAV_FRAME_RESERVED_13">
      <td>13</td>
      <td>
-      <a href="#MAV_FRAME_BODY_FLU">MAV_FRAME_BODY_FLU</a>
+      <a href="#MAV_FRAME_RESERVED_13">MAV_FRAME_RESERVED_13</a>
+      <p style="color:red">
+       <strong>DEPRECATED:</strong> Replaced by  (2019-04).</p>
      </td>
-     <td>固定参照基准，Z上 (x：前 y：左，z：上)。</td>
+     <td>MAV_FRAME_BODY_FLU - Body fixed frame of reference, Z-up (x: Forward, y: Left, z: Up).</td>
     </tr>
-    <tr id="MAV_FRAME_MOCAP_NED">
+    <tr id="MAV_FRAME_RESERVED_14">
      <td>14</td>
      <td>
-      <a href="#MAV_FRAME_MOCAP_NED">MAV_FRAME_MOCAP_NED</a>
+      <a href="#MAV_FRAME_RESERVED_14">MAV_FRAME_RESERVED_14</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-08).</p>
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-04).</p>
      </td>
-     <td>运动捕捉系统给出的数据的测程局部坐标系， Z-down (X：北：东：东：z，z：下)</td>
+     <td>MAV_FRAME_MOCAP_NED - Odometry local coordinate frame of data given by a motion capture system, Z-down (x: North, y: East, z: Down).</td>
     </tr>
-    <tr id="MAV_FRAME_MOCAP_ENU">
+    <tr id="MAV_FRAME_RESERVED_15">
      <td>15</td>
      <td>
-      <a href="#MAV_FRAME_MOCAP_ENU">MAV_FRAME_MOCAP_ENU</a>
+      <a href="#MAV_FRAME_RESERVED_15">MAV_FRAME_RESERVED_15</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-08).</p>
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-04).</p>
      </td>
-     <td>运动捕捉系统给出的数据的测程局部坐标系， Z-上 (X：东：y：北：z：下)</td>
+     <td>MAV_FRAME_MOCAP_ENU - Odometry local coordinate frame of data given by a motion capture system, Z-up (x: East, y: North, z: Up).</td>
     </tr>
-    <tr id="MAV_FRAME_VISION_NED">
+    <tr id="MAV_FRAME_RESERVED_16">
      <td>16</td>
      <td>
-      <a href="#MAV_FRAME_VISION_NED">MAV_FRAME_VISION_NED</a>
+      <a href="#MAV_FRAME_RESERVED_16">MAV_FRAME_RESERVED_16</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-08).</p>
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-04).</p>
      </td>
-     <td>运动捕捉系统给出的数据的测程局部坐标系， Z-下 (X：北：y：东：z：下)</td>
+     <td>MAV_FRAME_VISION_NED - Odometry local coordinate frame of data given by a vision estimation system, Z-down (x: North, y: East, z: Down).</td>
     </tr>
-    <tr id="MAV_FRAME_VISION_ENU">
+    <tr id="MAV_FRAME_RESERVED_17">
      <td>17</td>
      <td>
-      <a href="#MAV_FRAME_VISION_ENU">MAV_FRAME_VISION_ENU</a>
+      <a href="#MAV_FRAME_RESERVED_17">MAV_FRAME_RESERVED_17</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-08).</p>
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-04).</p>
      </td>
-     <td>视觉估计系统给出的测程数据局部坐标系 Z-上 (X：东：y：北：z：下)</td>
+     <td>MAV_FRAME_VISION_ENU - Odometry local coordinate frame of data given by a vision estimation system, Z-up (x: East, y: North, z: Up).</td>
     </tr>
-    <tr id="MAV_FRAME_ESTIM_NED">
+    <tr id="MAV_FRAME_RESERVED_18">
      <td>18</td>
      <td>
-      <a href="#MAV_FRAME_ESTIM_NED">MAV_FRAME_ESTIM_NED</a>
+      <a href="#MAV_FRAME_RESERVED_18">MAV_FRAME_RESERVED_18</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-08).</p>
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-04).</p>
      </td>
-     <td>载具上的里程估计系统给出的数据的测程局部坐标系， Z-下 (X：北：y：东：z：下)</td>
+     <td>MAV_FRAME_ESTIM_NED - Odometry local coordinate frame of data given by an estimator running onboard the vehicle, Z-down (x: North, y: East, z: Down).</td>
     </tr>
-    <tr id="MAV_FRAME_ESTIM_ENU">
+    <tr id="MAV_FRAME_RESERVED_19">
      <td>19</td>
      <td>
-      <a href="#MAV_FRAME_ESTIM_ENU">MAV_FRAME_ESTIM_ENU</a>
+      <a href="#MAV_FRAME_RESERVED_19">MAV_FRAME_RESERVED_19</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-08).</p>
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-04).</p>
      </td>
-     <td>载具上的里程估计系统给出的数据的测程局部坐标系， Z-上 (X：东：y：北：z：下)</td>
+     <td>MAV_FRAME_ESTIM_ENU - Odometry local coordinate frame of data given by an estimator running onboard the vehicle, Z-up (x: East, y: North, z: Up).</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_FRD">
      <td>20</td>
@@ -2677,119 +2681,119 @@
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_AXIS">GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_AXIS</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS.</td>
+     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_FOLLOW">
      <td>8</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_FOLLOW">GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_FOLLOW</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW.</td>
+     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLLOW</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_LOCK">
      <td>16</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_LOCK">GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_LOCK</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK.</td>
+     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_AXIS">
      <td>32</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_AXIS">GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_AXIS</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS.</td>
+     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_FOLLOW">
      <td>64</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_FOLLOW">GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_FOLLOW</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW.</td>
+     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_LOCK">
      <td>128</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_LOCK">GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_LOCK</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK.</td>
+     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_AXIS">
      <td>256</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_AXIS">GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_AXIS</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS.</td>
+     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_FOLLOW">
      <td>512</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_FOLLOW">GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_FOLLOW</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW.</td>
+     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_LOCK">
      <td>1024</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_LOCK">GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_LOCK</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK.</td>
+     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW">
      <td>2048</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW</a>
      </td>
-     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW.</td>
+     <td>以GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW为依据。</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL">
      <td>65536</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL">GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL</a>
      </td>
-     <td>Gimbal manager supports to point to a local position.</td>
+     <td>云台管理器支持指向本地位置。</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL">
      <td>131072</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL">GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL</a>
      </td>
-     <td>Gimbal manager supports to point to a global latitude, longitude, altitude position.</td>
+     <td>云台管理器支持指向全球纬度、经度、高度位置。</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT">
      <td>262144</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT">GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT</a>
      </td>
-     <td>Gimbal manager supports tracking of a point on the camera.</td>
+     <td>云台管理器支持跟踪摄像头上的点。</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE">
      <td>524288</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE">GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE</a>
      </td>
-     <td>Gimbal manager supports tracking of a point on the camera.</td>
+     <td>云台管理器支持跟踪相机上的一个点。</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">
      <td>1048576</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE</a>
      </td>
-     <td>Gimbal manager supports pitching and yawing at an angular velocity scaled by focal length (the more zoomed in, the slower the movement).</td>
+     <td>云台管理器支持俯仰和偏航的角速度缩放焦距(越是放大，运动越慢)。</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING">
      <td>2097152</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING</a>
      </td>
-     <td>Gimbal manager supports nudging when pointing to a location or tracking.</td>
+     <td>云台管理器支持在指向位置或跟踪时嵌入。</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE">
      <td>4194304</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE</a>
      </td>
-     <td>Gimbal manager supports overriding when pointing to a location or tracking.</td>
+     <td>云台控制器支持在指向位置或跟踪时覆盖。</td>
     </tr>
    </tbody>
   </table>
@@ -4485,98 +4489,98 @@ MAV_CMD_NAV_ROI)。</p>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_COMMAND_INT">MAV_PROTOCOL_CAPABILITY_COMMAND_INT</a>
      </td>
-     <td>Autopilot supports COMMAND_INT scaled integer message type.</td>
+     <td>自驾仪支持COMMAND_INT缩放整数消息类型。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_PARAM_UNION">
      <td>16</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_UNION">MAV_PROTOCOL_CAPABILITY_PARAM_UNION</a>
      </td>
-     <td>Autopilot supports the new param union message type.</td>
+     <td>自驾仪支持新的param联合消息类型。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_FTP">
      <td>32</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_FTP">MAV_PROTOCOL_CAPABILITY_FTP</a>
      </td>
-     <td>Autopilot supports the new FILE_TRANSFER_PROTOCOL message type.</td>
+     <td>自动化支持新的 FILE_TRANSFER_PROTOCOL 消息类型。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_SET_ATTITUDE_TARGET">
      <td>64</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_SET_ATTITUDE_TARGET">MAV_PROTOCOL_CAPABILITY_SET_ATTITUDE_TARGET</a>
      </td>
-     <td>Autopilot supports commanding attitude offboard.</td>
+     <td>自动驾驶仪支持姿态控制。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED">
      <td>128</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED">MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED</a>
      </td>
-     <td>Autopilot supports commanding position and velocity targets in local NED frame.</td>
+     <td>自动驾驶仪在局部NED坐标系中支持控制位置和速度目标。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT">
      <td>256</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT">MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT</a>
      </td>
-     <td>Autopilot supports commanding position and velocity targets in global scaled integers.</td>
+     <td>自动驾驶仪支持指挥位置和速度目标在全球规模的整数。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_TERRAIN">
      <td>512</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_TERRAIN">MAV_PROTOCOL_CAPABILITY_TERRAIN</a>
      </td>
-     <td>Autopilot supports terrain protocol / data handling.</td>
+     <td>自动驾驶仪支持地形协议/数据处理。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_SET_ACTUATOR_TARGET">
      <td>1024</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_SET_ACTUATOR_TARGET">MAV_PROTOCOL_CAPABILITY_SET_ACTUATOR_TARGET</a>
      </td>
-     <td>Autopilot supports direct actuator control.</td>
+     <td>自动驾驶仪支持直接致动器控制。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION">
      <td>2048</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION">MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION</a>
      </td>
-     <td>Autopilot supports the flight termination command.</td>
+     <td>自动驾驶仪支持飞行终止命令。进入翻译页面</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION">
      <td>4096</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION">MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION</a>
      </td>
-     <td>Autopilot supports onboard compass calibration.</td>
+     <td>自动驾驶仪支持船上罗盘校准。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_MAVLINK2">
      <td>8192</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_MAVLINK2">MAV_PROTOCOL_CAPABILITY_MAVLINK2</a>
      </td>
-     <td>Autopilot supports MAVLink version 2.</td>
+     <td>Autopilot 支持 MAVLink 版本 2。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_MISSION_FENCE">
      <td>16384</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_MISSION_FENCE">MAV_PROTOCOL_CAPABILITY_MISSION_FENCE</a>
      </td>
-     <td>Autopilot supports mission fence protocol.</td>
+     <td>自动驾驶仪支持任务围栏协议。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_MISSION_RALLY">
      <td>32768</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_MISSION_RALLY">MAV_PROTOCOL_CAPABILITY_MISSION_RALLY</a>
      </td>
-     <td>Autopilot supports mission rally point protocol.</td>
+     <td>自动驾驶仪支持任务集结点协议。</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_FLIGHT_INFORMATION">
      <td>65536</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_FLIGHT_INFORMATION">MAV_PROTOCOL_CAPABILITY_FLIGHT_INFORMATION</a>
      </td>
-     <td>Autopilot supports the flight information protocol.</td>
+     <td>Autopilot 支持飞行信息协议。</td>
     </tr>
    </tbody>
   </table>
@@ -5395,70 +5399,70 @@ MAV_CMD_NAV_ROI)。</p>
      <td>
       <a href="#ESTIMATOR_VELOCITY_VERT">ESTIMATOR_VELOCITY_VERT</a>
      </td>
-     <td>True if the  vertical velocity estimate is good</td>
+     <td>如果垂直速度估计值良好，则为真</td>
     </tr>
     <tr id="ESTIMATOR_POS_HORIZ_REL">
      <td>8</td>
      <td>
       <a href="#ESTIMATOR_POS_HORIZ_REL">ESTIMATOR_POS_HORIZ_REL</a>
      </td>
-     <td>True if the horizontal position (relative) estimate is good</td>
+     <td>如果水平位置(相对)估计值良好，则为真</td>
     </tr>
     <tr id="ESTIMATOR_POS_HORIZ_ABS">
      <td>16</td>
      <td>
       <a href="#ESTIMATOR_POS_HORIZ_ABS">ESTIMATOR_POS_HORIZ_ABS</a>
      </td>
-     <td>True if the horizontal position (absolute) estimate is good</td>
+     <td>如果水平位置(绝对)估计值良好，则为真</td>
     </tr>
     <tr id="ESTIMATOR_POS_VERT_ABS">
      <td>32</td>
      <td>
       <a href="#ESTIMATOR_POS_VERT_ABS">ESTIMATOR_POS_VERT_ABS</a>
      </td>
-     <td>True if the vertical position (absolute) estimate is good</td>
+     <td>如果垂直位置(绝对)估计值良好，则为真</td>
     </tr>
     <tr id="ESTIMATOR_POS_VERT_AGL">
      <td>64</td>
      <td>
       <a href="#ESTIMATOR_POS_VERT_AGL">ESTIMATOR_POS_VERT_AGL</a>
      </td>
-     <td>True if the vertical position (above ground) estimate is good</td>
+     <td>如果垂直位置(地面以上)估计值良好，则为真</td>
     </tr>
     <tr id="ESTIMATOR_CONST_POS_MODE">
      <td>128</td>
      <td>
       <a href="#ESTIMATOR_CONST_POS_MODE">ESTIMATOR_CONST_POS_MODE</a>
      </td>
-     <td>True if the EKF is in a constant position mode and is not using external measurements (eg GPS or optical flow)</td>
+     <td>如果EKF处于恒定位置模式，且没有使用外部测量(如GPS或光流)，则为真。</td>
     </tr>
     <tr id="ESTIMATOR_PRED_POS_HORIZ_REL">
      <td>256</td>
      <td>
       <a href="#ESTIMATOR_PRED_POS_HORIZ_REL">ESTIMATOR_PRED_POS_HORIZ_REL</a>
      </td>
-     <td>True if the EKF has sufficient data to enter a mode that will provide a (relative) position estimate</td>
+     <td>如果EKF有足够的数据来进入一个提供(相对)位置估计的模式，则为真</td>
     </tr>
     <tr id="ESTIMATOR_PRED_POS_HORIZ_ABS">
      <td>512</td>
      <td>
       <a href="#ESTIMATOR_PRED_POS_HORIZ_ABS">ESTIMATOR_PRED_POS_HORIZ_ABS</a>
      </td>
-     <td>True if the EKF has sufficient data to enter a mode that will provide a (absolute) position estimate</td>
+     <td>如果EKF有足够的数据来进入提供(绝对)位置估计的模式，则为真</td>
     </tr>
     <tr id="ESTIMATOR_GPS_GLITCH">
      <td>1024</td>
      <td>
       <a href="#ESTIMATOR_GPS_GLITCH">ESTIMATOR_GPS_GLITCH</a>
      </td>
-     <td>True if the EKF has detected a GPS glitch</td>
+     <td>如果EKF检测到GPS故障，则为真</td>
     </tr>
     <tr id="ESTIMATOR_ACCEL_ERROR">
      <td>2048</td>
      <td>
       <a href="#ESTIMATOR_ACCEL_ERROR">ESTIMATOR_ACCEL_ERROR</a>
      </td>
-     <td>True if the EKF has detected bad accelerometer data</td>
+     <td>如果EKF检测到错误的加速度计数据，则为真</td>
     </tr>
    </tbody>
   </table>
@@ -5717,14 +5721,14 @@ MAV_CMD_NAV_ROI)。</p>
      <td>
       <a href="#MAV_COLLISION_THREAT_LEVEL_LOW">MAV_COLLISION_THREAT_LEVEL_LOW</a>
      </td>
-     <td>Craft is mildly concerned about this threat</td>
+     <td>机体已经开始关注这个威胁</td>
     </tr>
     <tr id="MAV_COLLISION_THREAT_LEVEL_HIGH">
      <td>2</td>
      <td>
       <a href="#MAV_COLLISION_THREAT_LEVEL_HIGH">MAV_COLLISION_THREAT_LEVEL_HIGH</a>
      </td>
-     <td>Craft is panicking, and may take actions to avoid threat</td>
+     <td>存在威胁，可能采取行动进行回避</td>
     </tr>
    </tbody>
   </table>
@@ -6395,84 +6399,84 @@ MAV_CMD_NAV_ROI)。</p>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_X_IGNORE">POSITION_TARGET_TYPEMASK_X_IGNORE</a>
      </td>
-     <td>Ignore position x</td>
+     <td>忽略X轴位置</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_Y_IGNORE">
      <td>2</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_Y_IGNORE">POSITION_TARGET_TYPEMASK_Y_IGNORE</a>
      </td>
-     <td>Ignore position y</td>
+     <td>忽略Y轴位置</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_Z_IGNORE">
      <td>4</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_Z_IGNORE">POSITION_TARGET_TYPEMASK_Z_IGNORE</a>
      </td>
-     <td>Ignore position z</td>
+     <td>忽略Z轴位置</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_VX_IGNORE">
      <td>8</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_VX_IGNORE">POSITION_TARGET_TYPEMASK_VX_IGNORE</a>
      </td>
-     <td>Ignore velocity x</td>
+     <td>忽略X轴速度</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_VY_IGNORE">
      <td>16</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_VY_IGNORE">POSITION_TARGET_TYPEMASK_VY_IGNORE</a>
      </td>
-     <td>Ignore velocity y</td>
+     <td>忽略Y轴速度</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_VZ_IGNORE">
      <td>32</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_VZ_IGNORE">POSITION_TARGET_TYPEMASK_VZ_IGNORE</a>
      </td>
-     <td>Ignore velocity z</td>
+     <td>忽略Z轴速度</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_AX_IGNORE">
      <td>64</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_AX_IGNORE">POSITION_TARGET_TYPEMASK_AX_IGNORE</a>
      </td>
-     <td>Ignore acceleration x</td>
+     <td>忽略X轴加速度</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_AY_IGNORE">
      <td>128</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_AY_IGNORE">POSITION_TARGET_TYPEMASK_AY_IGNORE</a>
      </td>
-     <td>Ignore acceleration y</td>
+     <td>忽略Y轴加速度</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_AZ_IGNORE">
      <td>256</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_AZ_IGNORE">POSITION_TARGET_TYPEMASK_AZ_IGNORE</a>
      </td>
-     <td>Ignore acceleration z</td>
+     <td>忽略z轴加速度</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_FORCE_SET">
      <td>512</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_FORCE_SET">POSITION_TARGET_TYPEMASK_FORCE_SET</a>
      </td>
-     <td>Use force instead of acceleration</td>
+     <td>用力代替加速度</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_YAW_IGNORE">
      <td>1024</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_YAW_IGNORE">POSITION_TARGET_TYPEMASK_YAW_IGNORE</a>
      </td>
-     <td>Ignore yaw</td>
+     <td>忽略航向</td>
     </tr>
     <tr id="POSITION_TARGET_TYPEMASK_YAW_RATE_IGNORE">
      <td>2048</td>
      <td>
       <a href="#POSITION_TARGET_TYPEMASK_YAW_RATE_IGNORE">POSITION_TARGET_TYPEMASK_YAW_RATE_IGNORE</a>
      </td>
-     <td>Ignore yaw rate</td>
+     <td>忽略航向角速率</td>
     </tr>
    </tbody>
   </table>
@@ -6792,63 +6796,63 @@ MAV_CMD_NAV_ROI)。</p>
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED1">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED1</a>
      </td>
-     <td>Registered for STorM32 gimbal controller.</td>
+     <td>注册到 STorM32 云台控制器。</td>
     </tr>
     <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED2">
      <td>202</td>
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED2">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED2</a>
      </td>
-     <td>Registered for STorM32 gimbal controller.</td>
+     <td>注册到 STorM32 云台控制器。</td>
     </tr>
     <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED3">
      <td>203</td>
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED3">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED3</a>
      </td>
-     <td>Registered for STorM32 gimbal controller.</td>
+     <td>注册到 STorM32 云台控制器。</td>
     </tr>
     <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED4">
      <td>204</td>
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED4">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED4</a>
      </td>
-     <td>Registered for STorM32 gimbal controller.</td>
+     <td>注册到 STorM32 云台控制器。</td>
     </tr>
     <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED5">
      <td>205</td>
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED5">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED5</a>
      </td>
-     <td>Registered for STorM32 gimbal controller.</td>
+     <td>注册到 STorM32 云台控制器。</td>
     </tr>
     <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED6">
      <td>206</td>
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED6">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED6</a>
      </td>
-     <td>Registered for STorM32 gimbal controller.</td>
+     <td>注册到 STorM32 云台控制器。</td>
     </tr>
     <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED7">
      <td>207</td>
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED7">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED7</a>
      </td>
-     <td>Registered for STorM32 gimbal controller.</td>
+     <td>注册到 STorM32 云台控制器。</td>
     </tr>
     <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED8">
      <td>208</td>
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED8">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED8</a>
      </td>
-     <td>Registered for STorM32 gimbal controller.</td>
+     <td>注册到 STorM32 云台控制器。</td>
     </tr>
     <tr id="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9">
      <td>209</td>
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9">MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9</a>
      </td>
-     <td>Registered for STorM32 gimbal controller.</td>
+     <td>注册到 STorM32 云台控制器。</td>
     </tr>
    </tbody>
   </table>
@@ -11907,17 +11911,17 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>Latitude of ROI location</td>
+     <td>ROI坐标系下纬度</td>
      <td>degE7</td>
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>Longitude of ROI location</td>
+     <td>ROI坐标系下经度</td>
      <td>degE7</td>
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>Altitude of ROI location</td>
+     <td>ROI坐标系下高度</td>
      <td>m</td>
     </tr>
    </tbody>
@@ -12821,7 +12825,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Trigger Cycle</td>
-     <td>Camera trigger cycle time. -1 或 0 来忽略.</td>
+     <td>相机连续触发的间隔时间 -1 或 0 来忽略.</td>
      <td>
       <em>min:</em>
       -1 
@@ -13324,31 +13328,31 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>3: Y Offset</td>
-     <td>Y axis offset (or generic dimension 2), in the sensor's raw units</td>
+     <td>传感器原件中的 Y轴偏移(或通用尺寸2)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>4: Z Offset</td>
-     <td>Z axis offset (or generic dimension 3), in the sensor's raw units</td>
+     <td>传感器元件中的 Z轴偏移(或通用尺寸3)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>5: 4th Dimension</td>
-     <td>Generic dimension 4, in the sensor's raw units</td>
+     <td>通用尺寸4，在传感器的原始单位</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>6: 5th Dimension</td>
-     <td>Generic dimension 5, in the sensor's raw units</td>
+     <td>通用尺寸5，在传感器的原始单位</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7: 6th Dimension</td>
-     <td>Generic dimension 6, in the sensor's raw units</td>
+     <td>通用尺寸6，在传感器的原始单位</td>
      <td>
      </td>
     </tr>
@@ -13614,7 +13618,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: First Item</td>
-     <td>first_item: 第一个要运行的任务项目</td>
+     <td>起始项目: 第一个要运行的任务项目</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -13880,19 +13884,19 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>4</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>必须在请求的消息中定义此参数(如果有的话)。 默认情况下假定未使用(0)。</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>5</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>必须在请求的消息中定义此参数(如果有的话)。 默认情况下假定未使用(0)。</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
+     <td>必须在请求的消息中定义此参数(如果有的话)。 默认情况下假定未使用(0)。</td>
      <td>
      </td>
     </tr>
@@ -14068,7 +14072,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>3</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -14096,7 +14100,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>2</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -14126,7 +14130,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>2</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -14154,7 +14158,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>2</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -14176,7 +14180,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1</td>
-     <td>Reserved (Set to 0)</td>
+     <td>保留(设置为0)</td>
      <td>
      </td>
     </tr>
@@ -14187,7 +14191,7 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>3</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -14216,13 +14220,14 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>2: Zoom Value</td>
-     <td>Zoom value. 有效值的范围取决于变焦类型。</td>
+     <td>变焦值
+ 有效值的范围取决于变焦类型。</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -14639,14 +14644,14 @@ MAV_CMD_NAV_ROI)。</p>
     </tr>
     <tr>
      <td>2: Status Frequency</td>
-     <td>Frequency CAMERA_CAPTURE_STATUS messages should be sent while recording (0 for no messages, otherwise frequency)</td>
+     <td>记录时应发送频率CAMERA_CAPTURE_STATUS消息(0表示没有消息，否则为频率)</td>
      <td>
       <em>min:</em>0 </td>
      <td>Hz</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
      <td>
@@ -14670,13 +14675,13 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Stream ID</td>
-     <td>Video Stream ID (0 for all streams)</td>
+     <td>视频流ID(所有视频流为0)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -14700,7 +14705,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Stream ID</td>
-     <td>Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
+     <td>视频流ID(0为所有流，1为第一流，2为第二流，等等)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -14732,7 +14737,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Stream ID</td>
-     <td>Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
+     <td>视频流ID(0为所有流，1为第一流，2为第二流，等等)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -14748,7 +14753,7 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    请求视频流信息 (VIDEO_STREAM_INFORMATION)</p>
   <table class="sortable">
@@ -14762,13 +14767,13 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Stream ID</td>
-     <td>Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
+     <td>视频流ID(0为所有流，1为第一流，2为第二流，等等)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -14778,7 +14783,7 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    请求视频流状态 (VIDEO_STREAM_STATUS)</p>
   <table class="sortable">
@@ -14792,13 +14797,13 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Stream ID</td>
-     <td>Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
+     <td>视频流ID(0为所有流，1为第一流，2为第二流，等等)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>Reserved (all remaining params)</td>
+     <td>保留(所有剩余的参数)</td>
      <td>
      </td>
     </tr>
@@ -16159,9 +16164,8 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
+   用户定义的受空间条件限制的项目
+ 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：ROI项目。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16218,9 +16222,8 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
+   用户定义的受空间条件限制的项目
+ 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：ROI项目。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16277,9 +16280,8 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
+   用户定义的受空间条件限制的项目
+ 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：ROI项目。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16336,7 +16338,7 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的指令。 Ground Station will not show the Vehicle as flying through this item. 示例：MAV_CMD_DO_SET_PARMETER项目。</p>
+   用户定义的指令。 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：MAV_CMD_DO_SET_PARMETER项目。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16379,9 +16381,7 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>User defined command. Ground Station will not show the Vehicle as flying through this item. Example: MAV_CMD_DO_SET_PARAMETER item.</p>
+   用户定义的指令。 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：MAV_CMD_DO_SET_PARMETER项目。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16424,9 +16424,7 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>User defined command. Ground Station will not show the Vehicle as flying through this item. Example: MAV_CMD_DO_SET_PARAMETER item.</p>
+   用户定义的指令。 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：MAV_CMD_DO_SET_PARMETER项目。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16469,9 +16467,7 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>User defined command. Ground Station will not show the Vehicle as flying through this item. Example: MAV_CMD_DO_SET_PARAMETER item.</p>
+   用户定义的指令。 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：MAV_CMD_DO_SET_PARMETER项目。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16514,9 +16510,7 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>User defined command. Ground Station will not show the Vehicle as flying through this item. Example: MAV_CMD_DO_SET_PARAMETER item.</p>
+   用户定义的指令。 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：MAV_CMD_DO_SET_PARMETER项目。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18167,56 +18161,56 @@ y轴磁力计数据
      <td>int16_t</td>
      <td>
      </td>
-     <td>RC channel 1 value scaled.</td>
+     <td>RC通道1的值缩放。</td>
     </tr>
     <tr>
      <td>chan2_scaled</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>RC channel 2 value scaled.</td>
+     <td>RC通道2值缩放。</td>
     </tr>
     <tr>
      <td>chan3_scaled</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>RC channel 3 value scaled.</td>
+     <td>RC通道3值缩放。</td>
     </tr>
     <tr>
      <td>chan4_scaled</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>RC channel 4 value scaled.</td>
+     <td>RC通道4值缩放。</td>
     </tr>
     <tr>
      <td>chan5_scaled</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>RC channel 5 value scaled.</td>
+     <td>RC通道5值缩放。</td>
     </tr>
     <tr>
      <td>chan6_scaled</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>RC channel 6 value scaled.</td>
+     <td>RC通道6值缩放。</td>
     </tr>
     <tr>
      <td>chan7_scaled</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>RC channel 7 value scaled.</td>
+     <td>RC通道7值缩放。</td>
     </tr>
     <tr>
      <td>chan8_scaled</td>
      <td>int16_t</td>
      <td>
      </td>
-     <td>RC channel 8 value scaled.</td>
+     <td>RC通道8值缩放。</td>
     </tr>
     <tr>
      <td>rssi</td>
@@ -22318,7 +22312,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>controls</td>
@@ -22350,7 +22344,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Flags as bitfield, 1: indicate simulation using lockstep.</td>
+     <td>标记为bitfield, 1:使用lockstep表示模拟</td>
     </tr>
    </tbody>
   </table>
@@ -22375,51 +22369,51 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>sensor_id</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Sensor ID</td>
+     <td>传感器 ID</td>
     </tr>
     <tr>
      <td>flow_x</td>
      <td>int16_t</td>
      <td>dpix</td>
-     <td>Flow in x-sensor direction</td>
+     <td>传感器X方向的流</td>
     </tr>
     <tr>
      <td>flow_y</td>
      <td>int16_t</td>
      <td>dpix</td>
-     <td>Flow in y-sensor direction</td>
+     <td>传感器Y方向的流</td>
     </tr>
     <tr>
      <td>flow_comp_m_x</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Flow in x-sensor direction, angular-speed compensated</td>
+     <td>传感器X方向流，角度速度补偿</td>
     </tr>
     <tr>
      <td>flow_comp_m_y</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Flow in y-sensor direction, angular-speed compensated</td>
+     <td>传感器Y方向流，角度速度补偿</td>
     </tr>
     <tr>
      <td>quality</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Optical flow quality / confidence. 0: bad, 255: maximum quality</td>
+     <td>光流质量/可靠性。 0:差，255:最高质量</td>
     </tr>
     <tr>
      <td>ground_distance</td>
      <td>float</td>
      <td>m</td>
-     <td>Ground distance. Positive value: distance known. Negative value: Unknown distance</td>
+     <td>地面距离 正值:距离已知。 负值：未知距离。</td>
     </tr>
     <tr>
      <td style="color:blue;">flow_rate_x<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -22428,7 +22422,7 @@ y轴磁力计数据
      </td>
      <td>float</td>
      <td>rad/s</td>
-     <td>Flow rate about X axis</td>
+     <td>X轴流速率</td>
     </tr>
     <tr>
      <td style="color:blue;">flow_rate_y<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -22437,7 +22431,7 @@ y轴磁力计数据
      </td>
      <td>float</td>
      <td>rad/s</td>
-     <td>Flow rate about Y axis</td>
+     <td>Y 轴流速率</td>
     </tr>
    </tbody>
   </table>
@@ -22462,7 +22456,7 @@ y轴磁力计数据
      <td>usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX time or since system boot)</td>
+     <td>时间戳(同步到 UNIX 时间或系统启动后)。</td>
     </tr>
     <tr>
      <td>x</td>
@@ -22543,7 +22537,7 @@ y轴磁力计数据
      <td>usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX time or time since system boot)</td>
+     <td>时间戳(同步到 UNIX 时间或系统启动后)。</td>
     </tr>
     <tr>
      <td>x</td>
@@ -22879,7 +22873,7 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>sensor_id</td>
@@ -23411,7 +23405,7 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>0-1: no fix, 2: 2D fix, 3: 3D fix. Some applications will not use the value of this field unless it is at least two, so always correctly fill in the fix.</td>
+     <td>0-1: 无修正, 2: 2D 修正, 3: 3D 修正. Some applications will not use the value of this field unless it is at least two, so always correctly fill in the fix.</td>
     </tr>
     <tr>
      <td>lat</td>
@@ -25308,7 +25302,7 @@ y轴磁力计数据
      <td>float[21]</td>
      <td>
      </td>
-     <td>Row-major representation of a pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
+     <td>位姿6x6交叉协方差矩阵的行-主表示右上角三角形(状态:x_global, y_global, z_global, roll, pitch, yaw;前六项是第一行，后五项是第二行，等等)。 如果未知，在数组中将NAN值分配给第一个元素。</td>
     </tr>
    </tbody>
   </table>
@@ -25393,7 +25387,7 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Actuator group. The "_mlx" indicates this is a multi-instance message and a MAVLink parser should use this field to difference between instances.</td>
+     <td>Actuator group. “_mlx”表示这是一个多实例消息，MAVLink解析器应该使用这个字段来区分实例之间的差异。</td>
     </tr>
     <tr>
      <td>controls</td>
@@ -25425,7 +25419,7 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>altitude_monotonic</td>
@@ -26321,7 +26315,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -26331,7 +26325,7 @@ y轴磁力计数据
      <td>
       <a href="#ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</a>
      </td>
-     <td>Bitmap indicating which EKF outputs are valid.</td>
+     <td>位图显示哪些EKF输出是有效的。</td>
     </tr>
     <tr>
      <td>vel_ratio</td>
@@ -27407,62 +27401,62 @@ y轴磁力计数据
      <td>latitude</td>
      <td>int32_t</td>
      <td>degE7</td>
-     <td>Latitude (WGS84)</td>
+     <td>纬度(WGS84)</td>
     </tr>
     <tr>
      <td>longitude</td>
      <td>int32_t</td>
      <td>degE7</td>
-     <td>Longitude (WGS84)</td>
+     <td>经度 (WGS84)</td>
     </tr>
     <tr>
      <td>altitude</td>
      <td>int32_t</td>
      <td>mm</td>
-     <td>Altitude (MSL). Positive for up.</td>
+     <td>高度(MSL)。 正：上</td>
     </tr>
     <tr>
      <td>x</td>
      <td>float</td>
      <td>m</td>
-     <td>Local X position of this position in the local coordinate frame</td>
+     <td>这个位置在局部坐标系中的X位置</td>
     </tr>
     <tr>
      <td>y</td>
      <td>float</td>
      <td>m</td>
-     <td>Local Y position of this position in the local coordinate frame</td>
+     <td>这个位置在局部坐标系中的局部Y位置</td>
     </tr>
     <tr>
      <td>z</td>
      <td>float</td>
      <td>m</td>
-     <td>Local Z position of this position in the local coordinate frame</td>
+     <td>这个位置在局部坐标系中的局部Z位置</td>
     </tr>
     <tr>
      <td>q</td>
      <td>float[4]</td>
      <td>
      </td>
-     <td>World to surface normal and heading transformation of the takeoff position. Used to indicate the heading and slope of the ground</td>
+     <td>World to surface normal and heading transformation of the takeoff position. 用于指示地面的航向和坡度</td>
     </tr>
     <tr>
      <td>approach_x</td>
      <td>float</td>
      <td>m</td>
-     <td>Local X position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
+     <td>进近末端的局部X位置 多旋翼应该根据它们的起飞路径来设置这个位置。 在草地降落固定翼飞机应将其设置为与多旋翼飞机相同的方式。 如果起飞是从起降区开始的。跑道着陆的固定翼飞机应该将起飞方向设为与起飞相反的方向，</td>
     </tr>
     <tr>
      <td>approach_y</td>
      <td>float</td>
      <td>m</td>
-     <td>Local Y position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
+     <td>进近末端的局部Y位置 多旋翼应该根据它们的起飞路径来设置这个位置。 在草地降落固定翼飞机应将其设置为与多旋翼飞机相同的方式。 如果起飞是从起降区开始的。跑道着陆的固定翼飞机应该将起飞方向设为与起飞相反的方向，</td>
     </tr>
     <tr>
      <td>approach_z</td>
      <td>float</td>
      <td>m</td>
-     <td>Local Z position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</td>
+     <td>进近末端的局部Z位置 多旋翼应该根据它们的起飞路径来设置这个位置。 在草地降落固定翼飞机应将其设置为与多旋翼飞机相同的方式。 如果起飞是从起降区开始的。跑道着陆的固定翼飞机应该将起飞方向设为与起飞相反的方向，</td>
     </tr>
     <tr>
      <td style="color:blue;">time_usec<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -27471,7 +27465,7 @@ y轴磁力计数据
      </td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
    </tbody>
   </table>
@@ -30365,7 +30359,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>uptime_sec</td>
@@ -30656,12 +30650,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Set a parameter value. In order to deal with message loss (and retransmission of PARAM_EXT_SET), when setting a parameter value and the new value is the same as the current value, you will immediately get a PARAM_ACK_ACCEPTED response. If the current state is PARAM_ACK_IN_PROGRESS, you will accordingly receive a PARAM_ACK_IN_PROGRESS in response.</p>
+   设置一个参数值。 为了处理消息丢失(以及PARAM_EXT_SET的重新传输)，当设置一个参数值并且新值与当前值相同时，您将立即得到一个PARAM_ACK_ACCEPTED响应。 如果当前状态是PARAM_ACK_IN_PROGRESS，那么您将相应地收到一个PARAM_ACK_IN_PROGRESS响应。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30724,12 +30713,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Response from a PARAM_EXT_SET message.</p>
+   来自PARAM_EXT_SET消息的响应。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30747,7 +30731,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+     <td>参数id，如果长度小于16个可读字符，则以NULL结尾;如果长度正好是16个字符，则不需要NULL终止(NULL)字节；如果ID存储为字符串，应用程序必须提供16+1字节的存储</td>
     </tr>
     <tr>
      <td>param_value</td>
@@ -30756,7 +30740,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Parameter value (new value if PARAM_ACK_ACCEPTED, current value otherwise)</td>
+     <td>参数值(如果PARAM_ACK_ACCEPTED，则新值)</td>
     </tr>
     <tr>
      <td>param_type</td>
@@ -30764,7 +30748,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
      </td>
-     <td>Parameter type.</td>
+     <td>参数类型.</td>
     </tr>
     <tr>
      <td>param_result</td>
@@ -30772,7 +30756,7 @@ y轴磁力计数据
      <td>
       <a href="#PARAM_ACK">PARAM_ACK</a>
      </td>
-     <td>Result code.</td>
+     <td>结果代码。</td>
     </tr>
    </tbody>
   </table>
@@ -30901,7 +30885,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   通过外部测距通讯测距信息传输的测距消息 Fits ROS REP 147 standard for aerial vehicles (http://www.ros.org/reps/rep-0147.html).</p>
+   通过外部测距通讯测距信息传输的测距消息 航空飞行器使用ROS REP 147 标准（http://www.ros.org/reps/rep-0147.html）。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30921,7 +30905,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>frame_id</td>
@@ -30931,7 +30915,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
-     <td>Coordinate frame of reference for the pose data.</td>
+     <td>位姿数据的参考坐标系。</td>
     </tr>
     <tr>
      <td>child_frame_id</td>
@@ -30941,7 +30925,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
-     <td>Coordinate frame of reference for the velocity in free space (twist) data.</td>
+     <td>自由空间数据中速度的参考系。</td>
     </tr>
     <tr>
      <td>x</td>
@@ -30951,7 +30935,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X Position</td>
+     <td>X位置</td>
     </tr>
     <tr>
      <td>y</td>
@@ -31101,12 +31085,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Describe a trajectory using an array of up-to 5 waypoints in the local frame (MAV_FRAME_LOCAL_NED).</p>
+   使用本地坐标系中最多5个路径点的数组(MAV_FRAME_LOCAL_NED)描述轨迹。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31126,7 +31105,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX Epoch时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>valid_points</td>
@@ -31137,7 +31116,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Number of valid points (up-to 5 waypoints are possible)</td>
+     <td>有效点的数量(最多5个路径点)</td>
     </tr>
     <tr>
      <td>pos_x</td>
@@ -31147,7 +31126,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X-coordinate of waypoint, set to NaN if not being used</td>
+     <td>路径点的x坐标，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>pos_y</td>
@@ -31157,7 +31136,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y-coordinate of waypoint, set to NaN if not being used</td>
+     <td>路径点的y坐标，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>pos_z</td>
@@ -31167,7 +31146,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Z-coordinate of waypoint, set to NaN if not being used</td>
+     <td>路径点z坐标，不使用设置为NaN</td>
     </tr>
     <tr>
      <td>vel_x</td>
@@ -31177,7 +31156,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X-velocity of waypoint, set to NaN if not being used</td>
+     <td>路径点的x速度，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>vel_y</td>
@@ -31187,7 +31166,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y-velocity of waypoint, set to NaN if not being used</td>
+     <td>路径点的y速度，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>vel_z</td>
@@ -31197,7 +31176,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Z-velocity of waypoint, set to NaN if not being used</td>
+     <td>路径点z速度，不使用设置为NaN</td>
     </tr>
     <tr>
      <td>acc_x</td>
@@ -31207,7 +31186,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X-acceleration of waypoint, set to NaN if not being used</td>
+     <td>路径点的x -加速度，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>acc_y</td>
@@ -31217,7 +31196,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y-acceleration of waypoint, set to NaN if not being used</td>
+     <td>路径点的y加速，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>acc_z</td>
@@ -31227,7 +31206,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Z-acceleration of waypoint, set to NaN if not being used</td>
+     <td>路径点的z向加速度，不使用时设为NaN</td>
     </tr>
     <tr>
      <td>pos_yaw</td>
@@ -31237,7 +31216,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Yaw angle, set to NaN if not being used</td>
+     <td>偏航角度，如果不使用设置为NaN，</td>
     </tr>
     <tr>
      <td>vel_yaw</td>
@@ -31247,7 +31226,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Yaw rate, set to NaN if not being used</td>
+     <td>偏航角速度，如果不使用设置为NaN，</td>
     </tr>
     <tr>
      <td>command</td>
@@ -31257,7 +31236,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_CMD">MAV_CMD</a>
      </td>
-     <td>Scheduled action for each waypoint, UINT16_MAX if not being used.</td>
+     <td>为每个路点调度操作，如果没有使用UINT16_MAX。</td>
     </tr>
    </tbody>
   </table>
@@ -31267,12 +31246,7 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Describe a trajectory using an array of up-to 5 bezier control points in the local frame (MAV_FRAME_LOCAL_NED).</p>
+   使用本地坐标系中最多5个贝塞尔控制点的数组(MAV_FRAME_LOCAL_NED)描述轨迹。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31287,44 +31261,44 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>valid_points</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Number of valid control points (up-to 5 points are possible)</td>
+     <td>有效控制点的数量(最多可达5个)</td>
     </tr>
     <tr>
      <td>pos_x</td>
      <td>float[5]</td>
      <td>m</td>
-     <td>X-coordinate of bezier control points. Set to NaN if not being used</td>
+     <td>贝塞尔控制点的X坐标 设置为NaN(如果不使用)</td>
     </tr>
     <tr>
      <td>pos_y</td>
      <td>float[5]</td>
      <td>m</td>
-     <td>Y-coordinate of bezier control points. Set to NaN if not being used</td>
+     <td>贝塞尔控制点的Y坐标。 设置为NaN(如果不使用)</td>
     </tr>
     <tr>
      <td>pos_z</td>
      <td>float[5]</td>
      <td>m</td>
-     <td>Z-coordinate of bezier control points. Set to NaN if not being used</td>
+     <td>贝塞尔控制点的Z坐标 设置为NaN(如果不使用)</td>
     </tr>
     <tr>
      <td>delta</td>
      <td>float[5]</td>
      <td>s</td>
-     <td>Bezier time horizon. Set to NaN if velocity/acceleration should not be incorporated</td>
+     <td>贝塞尔时间距。 设置为NAN，如果速度/加速度不应被包含</td>
     </tr>
     <tr>
      <td>pos_yaw</td>
      <td>float[5]</td>
      <td>rad</td>
-     <td>Yaw. Set to NaN for unchanged</td>
+     <td>偏航：. 设置为NAN未更改</td>
     </tr>
    </tbody>
   </table>
@@ -31334,14 +31308,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Report current used cellular network status</p>
+   报告当前使用的蜂窝网络状态</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31358,7 +31327,7 @@ y轴磁力计数据
      <td>
       <a href="#CELLULAR_NETWORK_STATUS_FLAG">CELLULAR_NETWORK_STATUS_FLAG</a>
      </td>
-     <td>Status bitmap</td>
+     <td>状态</td>
     </tr>
     <tr>
      <td>type</td>
@@ -31366,7 +31335,7 @@ y轴磁力计数据
      <td>
       <a href="#CELLULAR_NETWORK_RADIO_TYPE">CELLULAR_NETWORK_RADIO_TYPE</a>
      </td>
-     <td>Cellular network radio type: gsm, cdma, lte...</td>
+     <td>蜂窝网络无线电类型:gsm, cdma, lte</td>
     </tr>
     <tr>
      <td>quality</td>
@@ -31375,7 +31344,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Cellular network RSSI/RSRP in dBm, absolute value</td>
+     <td>蜂窝网络RSSI/RSRP的dBm绝对值</td>
     </tr>
     <tr>
      <td>mcc</td>
@@ -31384,7 +31353,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Mobile country code. If unknown, set to: UINT16_MAX</td>
+     <td>移动国家代码。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>mnc</td>
@@ -31393,7 +31362,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Mobile network code. If unknown, set to: UINT16_MAX</td>
+     <td>移动网络代码。 如果未知设置为 UINT16_MAX</td>
     </tr>
     <tr>
      <td>lac</td>
@@ -31402,7 +31371,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Location area code. If unknown, set to: 0</td>
+     <td>位置区号。 如果未知, 设置为 0</td>
     </tr>
     <tr>
      <td>cid</td>
@@ -31411,7 +31380,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Cell ID. If unknown, set to: UINT32_MAX</td>
+     <td>单元ID 如果未知设置为 UINT32_MAX</td>
     </tr>
    </tbody>
   </table>
@@ -31647,7 +31616,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Next waypoint, longitude (WGS84)</td>
+     <td>下一个航路点，经度(WGS84)</td>
     </tr>
     <tr>
      <td>next_alt</td>
@@ -32126,7 +32095,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    用于将“任意”变长数据从一个组件传输到另一个组件的消息(不禁止广播，但不鼓励)。 数据的编码通常是特定于扩展的，即由源决定的，并且通常不作为MAVLink规范的一部分记录下来。</p>
   <table class="sortable">
@@ -32155,7 +32124,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID (can be 0 for broadcast, but this is discouraged)</td>
+     <td>组件ID(广播可以为0，但不建议这样做)</td>
     </tr>
     <tr>
      <td>payload_type</td>
@@ -32163,7 +32132,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE">MAV_TUNNEL_PAYLOAD_TYPE</a>
      </td>
-     <td>A code that identifies the content of the payload (0 for unknown, which is the default). If this code is less than 32768, it is a 'registered' payload type and the corresponding code should be added to the MAV_TUNNEL_PAYLOAD_TYPE enum. Software creators can register blocks of types as needed. Codes greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
+     <td>标识有效负载内容的代码(0表示未知，这是默认值)。 如果这个代码小于32768，那么它是一个“已注册”的有效负载类型，相应的代码应该添加到MAV_TUNNEL_PAYLOAD_TYPE enum中。 软件创建者可以根据需要注册类型块。 大于32767的代码被认为是局部实验，不应该检入任何广泛分布的代码库。</td>
     </tr>
     <tr>
      <td>payload_length</td>
@@ -32172,7 +32141,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Length of the data transported in payload</td>
+     <td>有效载荷传送的数据长度</td>
     </tr>
     <tr>
      <td>payload</td>
@@ -32181,7 +32150,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Variable length payload. The payload length is defined by payload_length. The entire content of this block is opaque unless you understand the encoding specified by payload_type.</td>
+     <td>可变长度负载。 有效载荷长度是由有效载荷长度定义的。 除非您理解payload_type指定的编码，否则此块的整个内容都是不透明的</td>
     </tr>
    </tbody>
   </table>
@@ -32193,12 +32162,7 @@ y轴磁力计数据
   <p style="color:red">
    生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Hardware status sent by an onboard computer.</p>
+   由机载计算机发送的硬件状态</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32213,27 +32177,27 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
     </tr>
     <tr>
      <td>uptime</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Time since system boot.</td>
+     <td>系统启动后的时间。</td>
     </tr>
     <tr>
      <td>type</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Type of the onboard computer: 0: Mission computer primary, 1: Mission computer backup 1, 2: Mission computer backup 2, 3: Compute node, 4-5: Compute spares, 6-9: Payload computers.</td>
+     <td>机载计算机类型:0:任务计算机主计算机，1:任务计算机备份1,2:任务计算机备份2,3:计算节点，4-5:计算备件，6-9:有效载荷计算机。</td>
     </tr>
     <tr>
      <td>cpu_cores</td>
      <td>uint8_t[8]</td>
      <td>
      </td>
-     <td>CPU usage on the component in percent (100 - idle). A value of UINT8_MAX implies the field is unused.</td>
+     <td>组件的CPU使用百分比(100 - idle)。 值UINT8_MAX表示该字段未被使用。</td>
     </tr>
     <tr>
      <td>cpu_combined</td>
@@ -32344,7 +32308,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    关于组件的信息。 对于相机组件，使用CAMERA_INFORMATION，对于自动驾驶，使用AUTOPILOT_VERSION。 包括GCSes在内的组件应该考虑通过MAV_CMD_REQUEST_MESSAGE支持此消息的请求。</p>
   <table class="sortable">
@@ -32366,7 +32330,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>vendor_name</td>
@@ -32399,7 +32363,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Version of the component firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>组件固件版本 (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
     </tr>
     <tr>
      <td>hardware_version</td>
@@ -32410,7 +32374,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Version of the component hardware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>组件硬硬件版本 (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
     </tr>
     <tr>
      <td>capability_flags</td>
@@ -32420,7 +32384,7 @@ y轴磁力计数据
      <td>
       <a href="#COMPONENT_CAP_FLAGS">COMPONENT_CAP_FLAGS</a>
      </td>
-     <td>Bitmap of component capability flags.</td>
+     <td>组件功能标志的位图。</td>
     </tr>
     <tr>
      <td>component_definition_version</td>
@@ -32431,7 +32395,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component definition version (iteration)</td>
+     <td>组件定义版本(迭代)</td>
     </tr>
     <tr>
      <td>component_definition_uri</td>
@@ -32442,7 +32406,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component definition URI (if any, otherwise only basic functions will be available). The XML format is not yet specified and work in progress.</td>
+     <td>组件定义URI(如果有的话)，否则只能提供基本功能)。 XML格式尚未指定，正在运行。</td>
     </tr>
    </tbody>
   </table>
@@ -32452,14 +32416,9 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Play vehicle tone/tune (buzzer). Supersedes message PLAY_TUNE.</p>
+   播放车辆音调/调音(蜂鸣器)。 首选消息PLAY_TUNE。</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32477,7 +32436,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -32486,7 +32445,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td>format</td>
@@ -32494,7 +32453,7 @@ y轴磁力计数据
      <td>
       <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
      </td>
-     <td>Tune format</td>
+     <td>调整格式</td>
     </tr>
     <tr>
      <td>tune</td>
@@ -32503,7 +32462,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Tune definition as a NULL-terminated string.</td>
+     <td>将优化定义为以null结尾的字符串。</td>
     </tr>
    </tbody>
   </table>
@@ -32533,7 +32492,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -32542,7 +32501,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td>format</td>
