@@ -2113,7 +2113,7 @@
      <td>
       <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>
      </td>
-     <td>本地坐标系, Z-下 (x: 北, y: 东, z: 下).</td>
+     <td>Local coordinate frame, Z-down (x: North, y: East, z: Down).</td>
     </tr>
     <tr id="MAV_FRAME_MISSION">
      <td>2</td>
@@ -2134,7 +2134,7 @@
      <td>
       <a href="#MAV_FRAME_LOCAL_ENU">MAV_FRAME_LOCAL_ENU</a>
      </td>
-     <td>本地坐标系, Z-上 (x: 东, y: 北, z: 上).</td>
+     <td>Local coordinate frame, Z-up (x: East, y: North, z: Up).</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_INT">
      <td>5</td>
@@ -2189,73 +2189,77 @@
      </td>
      <td>带有距离地面高度高度（航点坐标）的全球（WGS84)坐标系(比例缩放）。 第一个数值/x：纬度 角度*e-7；第二个数值/：经度 角度*1e-7；第三个数值/z 单位米：以地平线基准为0的地形模型中</td>
     </tr>
-    <tr id="MAV_FRAME_BODY_FRD">
+    <tr id="MAV_FRAME_RESERVED_12">
      <td>12</td>
      <td>
-      <a href="#MAV_FRAME_BODY_FRD">MAV_FRAME_BODY_FRD</a>
+      <a href="#MAV_FRAME_RESERVED_12">MAV_FRAME_RESERVED_12</a>
+      <p style="color:red">
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_BODY_OFFSET_NED (2019-04).</p>
      </td>
-     <td>身体固定参考坐标系，Z-down (x：前 ：右，z：下)。</td>
+     <td>MAV_FRAME_BODY_FRD - Body fixed frame of reference, Z-down (x: Forward, y: Right, z: Down).</td>
     </tr>
-    <tr id="MAV_FRAME_BODY_FLU">
+    <tr id="MAV_FRAME_RESERVED_13">
      <td>13</td>
      <td>
-      <a href="#MAV_FRAME_BODY_FLU">MAV_FRAME_BODY_FLU</a>
+      <a href="#MAV_FRAME_RESERVED_13">MAV_FRAME_RESERVED_13</a>
+      <p style="color:red">
+       <strong>DEPRECATED:</strong> Replaced by  (2019-04).</p>
      </td>
-     <td>固定参照基准，Z上 (x：前 y：左，z：上)。</td>
+     <td>MAV_FRAME_BODY_FLU - Body fixed frame of reference, Z-up (x: Forward, y: Left, z: Up).</td>
     </tr>
-    <tr id="MAV_FRAME_MOCAP_NED">
+    <tr id="MAV_FRAME_RESERVED_14">
      <td>14</td>
      <td>
-      <a href="#MAV_FRAME_MOCAP_NED">MAV_FRAME_MOCAP_NED</a>
+      <a href="#MAV_FRAME_RESERVED_14">MAV_FRAME_RESERVED_14</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-08).</p>
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-04).</p>
      </td>
-     <td>运动捕捉系统给出的数据的测程局部坐标系， Z-down (X：北：东：东：z，z：下)</td>
+     <td>MAV_FRAME_MOCAP_NED - Odometry local coordinate frame of data given by a motion capture system, Z-down (x: North, y: East, z: Down).</td>
     </tr>
-    <tr id="MAV_FRAME_MOCAP_ENU">
+    <tr id="MAV_FRAME_RESERVED_15">
      <td>15</td>
      <td>
-      <a href="#MAV_FRAME_MOCAP_ENU">MAV_FRAME_MOCAP_ENU</a>
+      <a href="#MAV_FRAME_RESERVED_15">MAV_FRAME_RESERVED_15</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-08).</p>
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-04).</p>
      </td>
-     <td>运动捕捉系统给出的数据的测程局部坐标系， Z-上 (X：东：y：北：z：下)</td>
+     <td>MAV_FRAME_MOCAP_ENU - Odometry local coordinate frame of data given by a motion capture system, Z-up (x: East, y: North, z: Up).</td>
     </tr>
-    <tr id="MAV_FRAME_VISION_NED">
+    <tr id="MAV_FRAME_RESERVED_16">
      <td>16</td>
      <td>
-      <a href="#MAV_FRAME_VISION_NED">MAV_FRAME_VISION_NED</a>
+      <a href="#MAV_FRAME_RESERVED_16">MAV_FRAME_RESERVED_16</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-08).</p>
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-04).</p>
      </td>
-     <td>运动捕捉系统给出的数据的测程局部坐标系， Z-下 (X：北：y：东：z：下)</td>
+     <td>MAV_FRAME_VISION_NED - Odometry local coordinate frame of data given by a vision estimation system, Z-down (x: North, y: East, z: Down).</td>
     </tr>
-    <tr id="MAV_FRAME_VISION_ENU">
+    <tr id="MAV_FRAME_RESERVED_17">
      <td>17</td>
      <td>
-      <a href="#MAV_FRAME_VISION_ENU">MAV_FRAME_VISION_ENU</a>
+      <a href="#MAV_FRAME_RESERVED_17">MAV_FRAME_RESERVED_17</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-08).</p>
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-04).</p>
      </td>
-     <td>视觉估计系统给出的测程数据局部坐标系 Z-上 (X：东：y：北：z：下)</td>
+     <td>MAV_FRAME_VISION_ENU - Odometry local coordinate frame of data given by a vision estimation system, Z-up (x: East, y: North, z: Up).</td>
     </tr>
-    <tr id="MAV_FRAME_ESTIM_NED">
+    <tr id="MAV_FRAME_RESERVED_18">
      <td>18</td>
      <td>
-      <a href="#MAV_FRAME_ESTIM_NED">MAV_FRAME_ESTIM_NED</a>
+      <a href="#MAV_FRAME_RESERVED_18">MAV_FRAME_RESERVED_18</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-08).</p>
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FRD (2019-04).</p>
      </td>
-     <td>载具上的里程估计系统给出的数据的测程局部坐标系， Z-下 (X：北：y：东：z：下)</td>
+     <td>MAV_FRAME_ESTIM_NED - Odometry local coordinate frame of data given by an estimator running onboard the vehicle, Z-down (x: North, y: East, z: Down).</td>
     </tr>
-    <tr id="MAV_FRAME_ESTIM_ENU">
+    <tr id="MAV_FRAME_RESERVED_19">
      <td>19</td>
      <td>
-      <a href="#MAV_FRAME_ESTIM_ENU">MAV_FRAME_ESTIM_ENU</a>
+      <a href="#MAV_FRAME_RESERVED_19">MAV_FRAME_RESERVED_19</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-08).</p>
+       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_LOCAL_FLU (2019-04).</p>
      </td>
-     <td>载具上的里程估计系统给出的数据的测程局部坐标系， Z-上 (X：东：y：北：z：下)</td>
+     <td>MAV_FRAME_ESTIM_ENU - Odometry local coordinate frame of data given by an estimator running onboard the vehicle, Z-up (x: East, y: North, z: Up).</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_FRD">
      <td>20</td>
