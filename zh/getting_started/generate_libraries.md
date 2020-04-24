@@ -24,7 +24,7 @@ This topic shows how to use the two code generators provided with the MAVLink pr
 可以使用Pythond的`-m`参数从任何地方打开这个图形用户界面。
 
 ```sh
-python -m mavgenerate
+python3 -m mavgenerate
 ```
 
 ![mavgenerate 界面](../../assets/mavgen/mavlink_generator.png)
@@ -51,7 +51,7 @@ python -m mavgenerate
 举例来说，为*your_custom_dialect.xml*自定义消息生成**MAVLink 2**的C语言库。
 
 ```sh
-python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
+python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
 ```
 
 > **Note** The syntax for for generating Python modules is the same, except that the `--output` specifies a *filename* rather than a directory. <!-- https://github.com/ArduPilot/pymavlink/issues/203 -->
