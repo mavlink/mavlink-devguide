@@ -11,7 +11,7 @@ including both [XML message definitions](../messages/README.md) and the GUI/comm
 
 The requirements for using the *MAVLink tools* are: 
 
-* Python 2.7+ or Python 3.3+
+* Python 3.3+ (recommended) or Python 2.7+
 * Python [future](http://python-future.org/) module
 * (Optional) Python [TkInter](https://wiki.python.org/moin/TkInter) module (required to use the GUI tool).
 * `PYTHONPATH` environment variable must be set to the directory path containing the *mavlink* repository.
@@ -20,9 +20,9 @@ The requirements for using the *MAVLink tools* are:
 
 The main installation steps are:
 
-1. Install Python 2.7+ or 3.3+. 
+1. Install Python 3.3+ (or Python 2.7+):
    * **Windows:** Download from [Python for Windows](https://www.python.org/downloads/)
-   * **Ubuntu Linux 16.04:** Python 2.7 and Python 3.0 are already present. 
+   * **Ubuntu Linux 18.04:** Python 3 (and Python 2.7+) are already present. 
      If you are using Python3 you will need to install the *pip3* package manager:
      ```
      sudo apt-get install python3-pip
@@ -30,19 +30,30 @@ The main installation steps are:
 1. Install the *future* module:
    * **Windows:**
      ```
-     pip install future
+     pip3 install future
      ```
    * **Linux:**
+   
+     Python 3:
+     ```
+     pip3 install --user future
+     ```
+     Python 2:
      ```
      pip install --user future
      ```
 1. (Optionally) Install TkInter
     * **Windows:** Installed already as part of *Python for Windows*
     * **Linux:** Enter the following terminal command:
+    
+      Python 3:
+      ```
+      sudo apt-get install python3-tk
+      ```
+      Python 2:
       ```
       sudo apt-get install python-tk
       ```
-
 1. Clone the [mavlink repo](https://github.com/mavlink/mavlink) (or your fork) into a user-writable directory:
    ```
    git clone https://github.com/mavlink/mavlink.git --recursive
