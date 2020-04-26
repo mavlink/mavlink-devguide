@@ -45,4 +45,4 @@ For the example above, the parameter `MAX_PAN_RATE` can be set using the `PARAM_
 
 In order to save flash space on the component and during transfer, the file can be compressed using *gzip*. If the URL of the definition file ends with `.xml.gz` it is the gzip compressed stream of the text file.
 
-> **Note** Tthe file stream is compressed but it is not an archive like `.zip` or `.tar.gz` (so there is no folder structure).
+> **Note** The file stream is compressed but it is not an archive like `.zip` or `.tar.gz` (so there is no folder structure).
