@@ -4,11 +4,21 @@ A GCS will build a Camera Controller UI for image capture, video capture and vid
 For very simple cameras, the information in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message itself is sufficient to construct the UI. 
 For more advanced cameras (with settings and options) the information required to build the UI must be supplied in a *Camera Definition File* that is located at the URI specified in the message's `cam_definition_uri` field.
 
-The *Camera Definition File* contains all the camera settings, the options for each setting, and exclusion lists (options that invalidate or are conditional on other settings). In addition, it may contain localisations of GUI strings for display to the user.
+The *Camera Definition File* contains all the camera settings, the options for each setting, and exclusion lists (options that invalidate or are conditional on other settings).
+In addition, it may contain localisations of GUI strings for display to the user.
 
 At the bottom of this page, you can find a [full example](#full_example) of a *Camera Definition File*.
 
-> **Note** A *Camera Definition File* is required because the camera options differ so greatly between cameras. It is not reasonable to create specific MAVLink messages for each and every possible option and to tell the GCS the valid options for each camera setting.
+> **Note** A *Camera Definition File* is required because the camera options differ so greatly between cameras.
+  It is not reasonable to create specific MAVLink messages for each and every possible option and to tell the GCS the valid options for each camera setting.
+
+
+## File Compression
+
+In order to reduce file size on the camera and during transfer, a definition file may be compressed using *gzip*.
+If the URL of the definition file ends with `.xml.gz` it is the gzip compressed stream of the text file.
+
+> **Note** The file stream is compressed but it is not an archive like `.zip` or `.tar.gz` (so there is no folder structure).
 
 
 ## Schema
