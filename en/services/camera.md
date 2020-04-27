@@ -123,7 +123,7 @@ For formatting (or erasing depending on your implementation), the GCS will send 
 ### Camera Capture Status
 
 In addition to querying about storage status, the GCS will also request the current *Camera Capture Status* in order to provide the user with proper UI indicators.
-The GCS will send a [MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS) command and it expects a [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) response.
+The GCS will send a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command specifying the [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) message id in param 1, and it expects an ACK followed by a `CAMERA_CAPTURE_STATUS` in response.
 
 
 ### Still Image Capture
@@ -160,18 +160,20 @@ sequenceDiagram;
 The message sequence for *interactive user-initiated image capture* through a GUI is slightly different.
 In this case the GCS should:
 - Confirm that the camera is *ready* to take images before allowing the user to request image capture.
-  - It does this by by sending [MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS).
-  - The camera should return a `MAV_RESULT` and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
+  - It does this by by sending [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) specifying the [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) message id in param1. 
+  - The camera should return a `MAV_RESULT` and then `CAMERA_CAPTURE_STATUS`.
   - The GCS should check that the status is "Idle" before enabling camera capture in the GUI.
 - Send [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) specifying a single image (only).
 
 The sequence is as shown below:
 
-{% mermaid %}
+[![Sequence:interactive user-initiated image capture](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9SRVFVRVNUX01FU1NBR0U6PGJyPiBDQU1FUkFfQ0FQVFVSRV9TVEFUVVNcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IE1BVl9SRVNVTFRfQUNDRVBURURcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9DQVBUVVJFX1NUQVRVUyAoc3RhdHVzKVxuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBSZXBlYXQgdW50aWwgc3RhdHVzIGlzIElETEVcbiAgICBHQ1MtPj5DYW1lcmE6IE1BVl9DTURfSU1BR0VfU1RBUlRfQ0FQVFVSRSAoaW50ZXJ2YWwsIGNvdW50L2ZvcmV2ZXIpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgQ2FtZXJhLT4-R0NTOiBNQVZfUkVTVUxUX0FDQ0VQVEVEXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IENhbWVyYSBzdGFydCBjYXB0dXJlIG9mIDEgaW1hZ2VcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTUFHRV9DQVBUVVJFRCAgKGJyb2FkY2FzdCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9SRVFVRVNUX01FU1NBR0U6PGJyPiBDQU1FUkFfQ0FQVFVSRV9TVEFUVVNcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IE1BVl9SRVNVTFRfQUNDRVBURURcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9DQVBUVVJFX1NUQVRVUyAoc3RhdHVzKVxuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBSZXBlYXQgdW50aWwgc3RhdHVzIGlzIElETEVcbiAgICBHQ1MtPj5DYW1lcmE6IE1BVl9DTURfSU1BR0VfU1RBUlRfQ0FQVFVSRSAoaW50ZXJ2YWwsIGNvdW50L2ZvcmV2ZXIpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgQ2FtZXJhLT4-R0NTOiBNQVZfUkVTVUxUX0FDQ0VQVEVEXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IENhbWVyYSBzdGFydCBjYXB0dXJlIG9mIDEgaW1hZ2VcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTUFHRV9DQVBUVVJFRCAgKGJyb2FkY2FzdCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+<!-- original mermaid sequence
 sequenceDiagram;
     participant GCS
     participant Camera
-    GCS->>Camera: MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS
+    GCS->>Camera: MAV_CMD_REQUEST_MESSAGE: CAMERA_CAPTURE_STATUS
     GCS->>GCS: Start timeout
     Camera->>GCS: MAV_RESULT_ACCEPTED
     GCS->>GCS: Start timeout
@@ -183,7 +185,7 @@ sequenceDiagram;
     Note over Camera,GCS: Camera start capture of 1 image
     GCS->>GCS: Start timeout
     Camera->>GCS: CAMERA_IMAGE_CAPTURED  (broadcast)
-{% endmermaid %}
+-->
 
 
 ### Video Capture
@@ -204,26 +206,28 @@ A camera is capable of streaming video if it sets the [CAMERA_CAP_FLAGS_HAS_VIDE
 
 The sequence for requesting *all* video streams from a particular camera is shown below:
 
-{% mermaid %}
+[![Sequence: video streaming](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIE5vdGUgb3ZlciBHQ1MsQ2FtZXJhOiBJRiBDQU1FUkFfQ0FQX0ZMQUdTX0hBU19WSURFT19TVFJFQU08YnI-aW4gQ0FNRVJBX0lORk9STUFUSU9OLmZsYWdzPGJyPnJlcXVlc3QgYWxsIHN0cmVhbXMuXG4gICAgR0NTLT4-Q2FtZXJhOiBNQVZfQ01EX1JFUVVFU1RfTUVTU0FHRTogPGJyPnBhcmFtMTpWSURFT19TVFJFQU1fSU5GT1JNQVRJT048YnI-cGFyYW0yOjAgKGFsbCBzdHJlYW1zKVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRFxuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBDYW1lcmEgc2VuZHMgaW5mb3JtYXRpb24gZm9yPGJyPiBhbGwgc3RyZWFtcy5cbiAgICBDYW1lcmEtPj5HQ1M6IFZJREVPX1NUUkVBTV9JTkZPUk1BVElPTiAoMSlcbiAgICBDYW1lcmEtPj5HQ1M6IC4uLlxuICAgIENhbWVyYS0-PkdDUzogVklERU9fU1RSRUFNX0lORk9STUFUSU9OIChuKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIE5vdGUgb3ZlciBHQ1MsQ2FtZXJhOiBJRiBDQU1FUkFfQ0FQX0ZMQUdTX0hBU19WSURFT19TVFJFQU08YnI-aW4gQ0FNRVJBX0lORk9STUFUSU9OLmZsYWdzPGJyPnJlcXVlc3QgYWxsIHN0cmVhbXMuXG4gICAgR0NTLT4-Q2FtZXJhOiBNQVZfQ01EX1JFUVVFU1RfTUVTU0FHRTogPGJyPnBhcmFtMTpWSURFT19TVFJFQU1fSU5GT1JNQVRJT048YnI-cGFyYW0yOjAgKGFsbCBzdHJlYW1zKVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRFxuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBDYW1lcmEgc2VuZHMgaW5mb3JtYXRpb24gZm9yPGJyPiBhbGwgc3RyZWFtcy5cbiAgICBDYW1lcmEtPj5HQ1M6IFZJREVPX1NUUkVBTV9JTkZPUk1BVElPTiAoMSlcbiAgICBDYW1lcmEtPj5HQ1M6IC4uLlxuICAgIENhbWVyYS0-PkdDUzogVklERU9fU1RSRUFNX0lORk9STUFUSU9OIChuKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!-- Original mermaid sequence
 sequenceDiagram;
     participant GCS
     participant Camera
     Note over GCS,Camera: IF CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM<br>in CAMERA_INFORMATION.flags<br>request all streams.
-    GCS->>Camera: MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION ( param1=0 )
+    GCS->>Camera: MAV_CMD_REQUEST_MESSAGE: <br>param1:VIDEO_STREAM_INFORMATION<br>param2:0 (all streams)
     GCS->>GCS: Start timeout
     Camera->>GCS: MAV_RESULT_ACCEPTED
     Note over Camera,GCS: Camera sends information for<br> all streams.
     Camera->>GCS: VIDEO_STREAM_INFORMATION (1)
     Camera->>GCS: ...
     Camera->>GCS: VIDEO_STREAM_INFORMATION (n)
-{% endmermaid %}
+-->
 
 The steps are:
 1. GCS follows the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
 1. GCS checks if [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) contains the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag.
-1. If so, the GCS sends the [MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION) message to the camera requesting the video streaming configuration for all streams - `param1=0`).
-   > **Note** A GCS can also request information for a particular stream by setting its id in `param1`.
-1. Camera returns a [VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) message for the specified stream or all streams it supports.
+1. If so, the GCS sends the [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message to the camera requesting the video streaming configuration for all streams: `param1`= message id of `VIDEO_STREAM_INFORMATION`, `param2` = 0 (all streams).
+   > **Note** A GCS can also request information for a particular stream by setting its id in `param2`.
+1. Camera returns an ACK and then a [VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) message for the specified stream or all streams it supports.
 
 > **Note** If your camera only provides video streaming and nothing else (no camera features), the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag is the only flag you need to set. 
   The GCS will then provide video streaming support and skip camera control.
@@ -239,19 +243,14 @@ Other components like a GCS will typically only use the camera `BATTERY_STATUS.b
 
 Message | Description
 -- | --
-<span id="mav_cmd_request_camera_information"></span>[MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) | Send command to request [CAMERA_INFORMATION](#camera_information).
+<span id="mav_cmd_request_camera_information"></span>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Send command to request:<br>- [CAMERA_INFORMATION](#camera_information)<br>- [CAMERA_SETTINGS](#camera_settings)<br>- [VIDEO_STREAM_INFORMATION](#video_stream_information). This is sent once for each camera when a camera is detected and it has set the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag within the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message `flags` field.<br>- [STORAGE_INFORMATION](#storage_information)<br>- [CAMERA_CAPTURE_STATUS](#camera_capture_status)<br>- [VIDEO_STREAM_STATUS](#video_stream_status). This is sent whenever there is a mode change (when [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) is sent.) It allows the camera to update the stream configuration when a camera mode change occurs.
 <span id="camera_information"></span>[CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) | Basic information about camera including supported features and URI link to extended information (`cam_definition_uri` field).
-<span id="mav_cmd_request_camera_settings"></span>[MAV_CMD_REQUEST_CAMERA_SETTINGS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_SETTINGS) | Send command to request [CAMERA_SETTINGS](#camera_settings).
 <span id="camera_settings"></span>[CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS) | Timestamp and camera mode information.
 <span id="mav_cmd_set_camera_mode"></span>[MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) | Send command to set [CAMERA_MODE](#camera_mode).
-<span id="mav_cmd_request_video_stream_information"></span>[MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION) | Send command to request [VIDEO_STREAM_INFORMATION](#video_stream_information). This is sent once for each camera when a camera is detected and it has set the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag within the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message `flags` field.
 <span id="video_stream_information"></span>[VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) | Information defining a video stream configuration. If a camera has more than one video stream, it would send one of this for each video stream, with their specific configuration. Each stream must have its own, unique `stream_id`.
-<span id="mav_cmd_request_video_stream_status"></span>[MAV_CMD_REQUEST_VIDEO_STREAM_STATUS](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS) | Send command to request [VIDEO_STREAM_STATUS](#video_stream_status). This is sent whenever there is a mode change (when [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) is sent.) It allows the camera to update the stream configuration when a camera mode change occurs.
 <span id="video_stream_status"></span>[VIDEO_STREAM_STATUS](../messages/common.md#VIDEO_STREAM_STATUS) | Information updating a video stream configuration. <!-- TBD? -->
-<span id="mav_cmd_request_storage_information"></span>[MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION) | Send command to request [STORAGE_INFORMATION](#storage_information).
 <span id="storage_information"></span>[STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) | Storage information (e.g. number and type of storage devices, total/used/available capacity, read/write speeds).
 <span id="mav_cmd_storage_format"></span>[MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) | Send command to format the specified storage device.
-<span id="mav_cmd_request_camera_capture_status"></span>[MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS) | Send command to request [CAMERA_CAPTURE_STATUS](#camera_capture_status).
 <span id="camera_capture_status"></span>[CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) | Camera capture status, including current capture type (if any), capture interval, available capacity.
 <span id="mav_cmd_image_start_capture"></span>[MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) | Send command to start image capture, specifying the duration between captures and total number of images to capture.
 <span id="mav_cmd_image_stop_capture"></span>[MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) | Send command to stop image capture.
