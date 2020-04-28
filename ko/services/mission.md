@@ -294,7 +294,7 @@ Source code:
 
 ArduPilot implements the mission protocol in C++.
 
-ArduPilot uses the same messages and message flow described in this specification. There are some implementation differences that affect compatibility. These are documented below.
+ArduPilot uses the same messages and message flow described in this specification. There are (*anecdotally*) some implementation differences that affect compatibility. These are documented below.
 
 Source:
 
@@ -311,12 +311,10 @@ ArduPilot's implementation differs from this specification (non-exhaustively):
 - The first mission sequence number (`seq==0`) is populated with the home position of the vehicle instead of the first mission item.
 - Mission uploads are not "atomic". An upload that fails (or is canceled) part-way through will not match the pre-update state. Instead it may be a mix of the original and new mission.
 - Even if upload is successful, the vehicle mission may not match the version on the uploading system (and if the mission is then downloaded it will differ from the original). 
-  - If you try and upload more items than ArduPilot can store the system will "accept" the items (i.e. not report a failure) but will just overwrite each new item to the same (highest) slot in the mission list.
-  - Only fields that are used are stored.
   - There is rounding on some fields (and in some cases internal maximum possible values due to available storage space). Failures can occur if you do a straight comparison of the float params before/after upload.
-- A [MISSION_ACK](#MISSION_ACK) returning an error value (NACK) does not terminate the upload (i.e. it is not considered an unrecoverable error). As long as ArduPilot has not yet timed-out a system can retry the current mission item upload. 
-- A mission cannot be cleared while it is being executed (i.e. while in Auto mode). Note that a new mission *can* be uploaded (even a zero-size mission - which is equivalent to clearing).
-- Explicit cancellation of operations is not supported. If one end stops communicating the other end will eventually timeout and reset itself to an idle/ready state.
+- A [MISSION_ACK](#MISSION_ACK) returning an error value (NACK) does not terminate the upload (i.e. it is not considered an unrecoverable error). As long as ArduPilot has not yet timed-out a system can retry the current mission item upload.
+- A mission cannot be cleared while it is being executed (i.e. while in Auto mode). Note that a new mission *can* be uploaded (even a zero-size mission - which is equivalent to clearing). 
+- Explicit cancellation of operations is not supported. If one end stops communicating the other end will eventually timeout and reset itself to an idle/ready state. 
 
 The following behaviour is not defined by the specification (but is still of interest):
 
@@ -325,20 +323,11 @@ The following behaviour is not defined by the specification (but is still of int
 - A new mission can be uploaded while a mission is being executed. In this case the current waypoint will be executed to completion even if the waypoint sequence is different in the new mission (to get the new item you would need to reset the sequence or switch in/out of auto mode).
 - ArduPilot missions are not stored in an SD card and therefore have a vehicle/board-specific maximum mission size (as a benefit, on ArduPilot, missions can survive SD card failure in flight).
 
-<!-- Other possible differences include: 
+#### Geofence & Rally Point Plans
 
-- may emit wrong type of info on partial write for fail case, 
-- may not do robust update. Checking
-- may not support cancellation of upload.
--->
+ArduPilot supports Geofence and Rally points on Copter Rover and Sub using this protocol (for MAVLink 2 connections).
 
-#### Geofence Missions
-
-Geofence is supported by ArduPilot, but are not managed using this protocol.
-
-#### Rally Point Missions
-
-Rally points are supported by ArduPilot, but are not managed using this protocol
+ArduPlane supports rally points and missions. Geofence support for ArduPlane is in development (May 2020).
 
 ### MAVSDK
 
