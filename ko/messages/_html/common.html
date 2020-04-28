@@ -3737,7 +3737,7 @@
      <td>
       <a href="#MAV_MISSION_NO_SPACE">MAV_MISSION_NO_SPACE</a>
      </td>
-     <td>Mission item exceeds storage space.</td>
+     <td>Mission items exceed storage space.</td>
     </tr>
     <tr id="MAV_MISSION_INVALID">
      <td>5</td>
@@ -3815,13 +3815,6 @@
       <a href="#MAV_MISSION_OPERATION_CANCELLED">MAV_MISSION_OPERATION_CANCELLED</a>
      </td>
      <td>Current mission operation cancelled (e.g. mission upload, mission download).</td>
-    </tr>
-    <tr id="MAV_MISSION_TOO_MANY_ITEMS">
-     <td>16</td>
-     <td>
-      <a href="#MAV_MISSION_TOO_MANY_ITEMS">MAV_MISSION_TOO_MANY_ITEMS</a>
-     </td>
-     <td>Mission has too many items for recipient. Upload cancelled.</td>
     </tr>
    </tbody>
   </table>
@@ -6141,7 +6134,7 @@
      <td>
       <a href="#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM">CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM</a>
      </td>
-     <td>Camera has video streaming capabilities (use MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION for video streaming info)</td>
+     <td>Camera has video streaming capabilities (request VIDEO_STREAM_INFORMATION with MAV_CMD_REQUEST_MESSAGE for video streaming info)</td>
     </tr>
    </tbody>
   </table>
@@ -14215,10 +14208,12 @@
   <h3 id="MAV_CMD_REQUEST_PROTOCOL_VERSION">MAV_CMD_REQUEST_PROTOCOL_VERSION (<a href="#MAV_CMD_REQUEST_PROTOCOL_VERSION">519</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request MAVLink protocol version compatibility</p>
+   </a>Request MAVLink protocol version compatibility. All receivers should ACK the command and then emit their capabilities in an PROTOCOL_VERSION message</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14240,6 +14235,8 @@
   <h3 id="MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES">MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES (<a href="#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES">520</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -14265,6 +14262,8 @@
   <h3 id="MAV_CMD_REQUEST_CAMERA_INFORMATION">MAV_CMD_REQUEST_CAMERA_INFORMATION (<a href="#MAV_CMD_REQUEST_CAMERA_INFORMATION">521</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -14295,6 +14294,8 @@
   <h3 id="MAV_CMD_REQUEST_CAMERA_SETTINGS">MAV_CMD_REQUEST_CAMERA_SETTINGS (<a href="#MAV_CMD_REQUEST_CAMERA_SETTINGS">522</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -14325,6 +14326,8 @@
   <h3 id="MAV_CMD_REQUEST_STORAGE_INFORMATION">MAV_CMD_REQUEST_STORAGE_INFORMATION (<a href="#MAV_CMD_REQUEST_STORAGE_INFORMATION">525</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -14397,6 +14400,8 @@
   <h3 id="MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS">MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS (<a href="#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS">527</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -14427,6 +14432,8 @@
   <h3 id="MAV_CMD_REQUEST_FLIGHT_INFORMATION">MAV_CMD_REQUEST_FLIGHT_INFORMATION (<a href="#MAV_CMD_REQUEST_FLIGHT_INFORMATION">528</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
@@ -14953,11 +14960,13 @@
    )
   </h3>
   <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
+  <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Re-request a CAMERA_IMAGE_CAPTURE message.</p>
+   </a>Re-request a CAMERA_IMAGE_CAPTURED message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14969,7 +14978,7 @@
    <tbody>
     <tr>
      <td>1: Number</td>
-     <td>Sequence number for missing CAMERA_IMAGE_CAPTURE message</td>
+     <td>Sequence number for missing CAMERA_IMAGE_CAPTURED message</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -15246,6 +15255,8 @@
    )
   </h3>
   <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
+  <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
@@ -15271,6 +15282,8 @@
   <h3 id="MAV_CMD_REQUEST_VIDEO_STREAM_STATUS">MAV_CMD_REQUEST_VIDEO_STREAM_STATUS (<a href="#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS">2505</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
@@ -26688,7 +26701,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Version and capability of autopilot software. This should be emitted in response to a MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES command.</p>
+   </a>Version and capability of autopilot software. This should be emitted in response to a request with MAV_CMD_REQUEST_MESSAGE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29157,7 +29170,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about a camera</p>
+   </strong>Information about a camera. Can be requested with a MAV_CMD_REQUEST_MESSAGE command.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29318,7 +29331,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Settings of a camera, can be requested using MAV_CMD_REQUEST_CAMERA_SETTINGS.</p>
+   </strong>Settings of a camera. Can be requested with a MAV_CMD_REQUEST_MESSAGE command.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29391,7 +29404,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about a storage medium. This message is sent in response to a request and whenever the status of the storage changes (STORAGE_STATUS).</p>
+   </strong>Information about a storage medium. This message is sent in response to a request with MAV_CMD_REQUEST_MESSAGE and whenever the status of the storage changes (STORAGE_STATUS). Use MAV_CMD_REQUEST_MESSAGE.param2 to indicate the index/id of requested storage: 0 for all, 1 for first, 2 for second, etc.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29508,7 +29521,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about the status of a capture.</p>
+   </strong>Information about the status of a capture. Can be requested with a MAV_CMD_REQUEST_MESSAGE command.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29570,7 +29583,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about a captured image</p>
+   </strong>Information about a captured image. This is emitted every time a message is captured. It may be re-requested using MAV_CMD_REQUEST_MESSAGE, using param2 to indicate the sequence number for the missing image.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29946,7 +29959,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about video stream</p>
+   </strong>Information about video stream. It may be requested using MAV_CMD_REQUEST_MESSAGE, where param2 indicates the video stream id: 0 for all streams, 1 for first, 2 for second, etc.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30097,7 +30110,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about the status of a video stream.</p>
+   </strong>Information about the status of a video stream. It may be requested using MAV_CMD_REQUEST_MESSAGE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30952,7 +30965,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Version and capability of protocol version. This message is the response to REQUEST_PROTOCOL_VERSION and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to REQUEST_PROTOCOL_VERSION to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.</p>
+   </strong>Version and capability of protocol version. This message can be requested with MAV_CMD_REQUEST_MESSAGE and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to a request for PROTOCOL_VERSION to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.</p>
   <table class="sortable">
    <thead>
     <tr>
