@@ -345,7 +345,7 @@ Source code:
 ArduPilot implements the mission protocol in C++.
 
 ArduPilot uses the same messages and message flow described in this specification. 
-There are some implementation differences that affect compatibility.
+There are (*anecdotally*) some implementation differences that affect compatibility.
 These are documented below.
 
 Source:
