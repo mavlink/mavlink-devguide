@@ -386,7 +386,11 @@ The following behaviour is not defined by the specification (but is still of int
 
 #### Geofence & Rally Point Plans
 
-ArduCopter supports Geofence and Rally points using this protocol for MAVLink 2 connections.
+ArduPilot supports Geofence and Rally points on Copter Rover and Sub using this protocol (for MAVLink 2 connections).
+
+ArduPlane supports rally points and missions.
+Geofence support for ArduPlane is in development (May 2020).
+
 
 ### MAVSDK
 
