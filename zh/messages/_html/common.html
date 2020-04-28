@@ -3696,7 +3696,7 @@ MAV_CMD_NAV_ROI)。</p>
      <td>
       <a href="#MAV_MISSION_NO_SPACE">MAV_MISSION_NO_SPACE</a>
      </td>
-     <td>任务项超出存储空间。</td>
+     <td>Mission items exceed storage space.</td>
     </tr>
     <tr id="MAV_MISSION_INVALID">
      <td>5</td>
@@ -3774,13 +3774,6 @@ MAV_CMD_NAV_ROI)。</p>
       <a href="#MAV_MISSION_OPERATION_CANCELLED">MAV_MISSION_OPERATION_CANCELLED</a>
      </td>
      <td>当前任务操作取消(例如任务上传、任务下载)。</td>
-    </tr>
-    <tr id="MAV_MISSION_TOO_MANY_ITEMS">
-     <td>16</td>
-     <td>
-      <a href="#MAV_MISSION_TOO_MANY_ITEMS">MAV_MISSION_TOO_MANY_ITEMS</a>
-     </td>
-     <td>Mission has too many items for recipient. Upload cancelled.</td>
     </tr>
    </tbody>
   </table>
@@ -6048,7 +6041,7 @@ MAV_CMD_NAV_ROI)。</p>
      <td>
       <a href="#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM">CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM</a>
      </td>
-     <td>摄像头有视频流功能(使用MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION获取视频流信息)</td>
+     <td>Camera has video streaming capabilities (request VIDEO_STREAM_INFORMATION with MAV_CMD_REQUEST_MESSAGE for video streaming info)</td>
     </tr>
    </tbody>
   </table>
@@ -13918,8 +13911,12 @@ MAV_CMD_NAV_ROI)。</p>
   <h3 id="MAV_CMD_REQUEST_PROTOCOL_VERSION">MAV_CMD_REQUEST_PROTOCOL_VERSION (<a href="#MAV_CMD_REQUEST_PROTOCOL_VERSION">519</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p>
-   请求的 MAVLink 协议版本兼容性</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request MAVLink protocol version compatibility. All receivers should ACK the command and then emit their capabilities in an PROTOCOL_VERSION message</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13941,8 +13938,12 @@ MAV_CMD_NAV_ROI)。</p>
   <h3 id="MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES">MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES (<a href="#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES">520</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p>
-   请求自驾仪功能。 接收方应该对命令进行ACK处理，然后在AUTOPILOT_VERSION消息中发出它的功能</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request autopilot capabilities. The receiver should ACK the command and then emit its capabilities in an AUTOPILOT_VERSION message</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13964,8 +13965,12 @@ MAV_CMD_NAV_ROI)。</p>
   <h3 id="MAV_CMD_REQUEST_CAMERA_INFORMATION">MAV_CMD_REQUEST_CAMERA_INFORMATION (<a href="#MAV_CMD_REQUEST_CAMERA_INFORMATION">521</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p>
-   请求相机信息(CAMERA_INFORMATION)。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request camera information (CAMERA_INFORMATION).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13992,8 +13997,12 @@ MAV_CMD_NAV_ROI)。</p>
   <h3 id="MAV_CMD_REQUEST_CAMERA_SETTINGS">MAV_CMD_REQUEST_CAMERA_SETTINGS (<a href="#MAV_CMD_REQUEST_CAMERA_SETTINGS">522</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p>
-   请求相机设置 (CAMERA_SETTINGS)。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request camera settings (CAMERA_SETTINGS).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14020,8 +14029,12 @@ MAV_CMD_NAV_ROI)。</p>
   <h3 id="MAV_CMD_REQUEST_STORAGE_INFORMATION">MAV_CMD_REQUEST_STORAGE_INFORMATION (<a href="#MAV_CMD_REQUEST_STORAGE_INFORMATION">525</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p>
-   请求存储信息(STORAGE_INFORMATION)。 使用命令的target_component 来对准特定组件的存储。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request storage information (STORAGE_INFORMATION). Use the command's target_component to target a specific component's storage.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14055,7 +14068,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   格式化存储介质。 一旦格式完成，将发送一份STORAGE_INFORMATION 消息。 使用命令的target_component 来对准特定组件的存储。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Format a storage medium. Once format is complete, a STORAGE_INFORMATION message is sent. Use the command's target_component to target a specific component's storage.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14088,8 +14103,12 @@ MAV_CMD_NAV_ROI)。</p>
   <h3 id="MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS">MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS (<a href="#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS">527</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
   <p>
-   >请求摄像头捕获状态 (CAMERA_CAPTURE_STATUS)</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request camera capture status (CAMERA_CAPTURE_STATUS)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14117,9 +14136,13 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   <strong>生产过程中的工作:</strong> 不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   请求飞行信息(FLIGHT_INFORMATION)</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request flight information (FLIGHT_INFORMATION)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14147,7 +14170,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   将所有相机设置重置为出厂默认设置</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Reset all camera settings to Factory Default</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14175,7 +14200,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   设置相机工作模式。 使用NAN作为保留值。 如果相机支持视频流，GCS将在模式更改后发送MAV_CMD_REQUEST_VIDEO_STREAM_STATUS命令。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Set camera running mode. Use NaN for reserved values. GCS will send a MAV_CMD_REQUEST_VIDEO_STREAM_STATUS command after a mode change if the camera supports video streaming.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14223,9 +14250,11 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   设置相机焦距。 相机必须使用 CAMERA_SETTINGS 消息响应(成功)。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Set camera zoom. Camera must respond with a CAMERA_SETTINGS message (on success).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14274,9 +14303,11 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   设置相机的焦点。 相机必须使用 CAMERA_SETTINGS 消息响应(成功)。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Set camera focus. Camera must respond with a CAMERA_SETTINGS message (on success).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14324,7 +14355,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   跳转目标。 可以用MAV_CMD_DO_JUMP_TAG 跳跃。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Tagged jump target. Can be jumped to with MAV_CMD_DO_JUMP_TAG.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14346,7 +14379,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   跳至任务列表中匹配的标签。 在指定次数内重复此操作。 一个任务应该包含每个跳跃的单个匹配标签。 如果不是这种情况，那么跳转到一个丢失的标签应该完成任务，并且跳转到有多个匹配标签的地方应该总是选择任务序列号最低的那个。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Jump to the matching tag in the mission list. Repeat this action for the specified number of times. A mission should contain a single matching tag for each jump. If this is not the case then a jump to a missing tag should complete the mission, and a jump where there are multiple matching tags should always select the one with the lowest mission sequence number.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14374,9 +14409,11 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   高级设定值被发送到云台管理器以设置云台的姿态 可以设置下面的数值组合。 一个角度和一个期望的角速度可以被用来达到这个角度在一个特定的角速度，如果只有一个角速度只会导致连续旋转。 NAN将被用于信号未设置。 注意：一个云台永远不会对此命令作出反应，只能是云台管理器。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>High level setpoint to be sent to a gimbal manager to set a gimbal attitude. It is possible to set combinations of the values below. E.g. an angle as well as a desired angular rate can be used to get to this angle at a certain angular rate, or an angular rate only will result in continuous turning. NaN is to be used to signal unset. Note: a gimbal is never to react to this command but only the gimbal manager.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14440,11 +14477,11 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>如果云台管理器支持视觉跟踪 (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT 已设置)，此命令允许启动跟踪。 这种跟踪云台管理器通常是一个集成的摄像机/云台，或者是一个连接到摄像机的配套计算机。</p>
+   </a>If the gimbal manager supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14478,9 +14515,11 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   如果云台控制器支持视觉跟踪 (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT 已设置)，此命令允许启动跟踪。 这种跟踪云台管理器通常是一个集成的摄像机/云台，或者是一个连接到摄像机的配套计算机。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>If the gimbal supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14526,7 +14565,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   启动图像捕获序列。 每次捕获后发送camera_image_capture。 使用NAN作为保留值。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Start image capture sequence. Sends CAMERA_IMAGE_CAPTURED after each capture. Use NaN for reserved values.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14582,7 +14623,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   停止图像捕获序列，使用NaN作为保留值。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Stop image capture sequence Use NaN for reserved values.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14621,11 +14664,13 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Re-request a CAMERA_IMAGE_CAPTURE message.</p>
+   </a>Re-request a CAMERA_IMAGE_CAPTURED message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14637,7 +14682,7 @@ MAV_CMD_NAV_ROI)。</p>
    <tbody>
     <tr>
      <td>1: Number</td>
-     <td>丢失的 CAMERA_IMAGE_CAPTURE 消息的序列号</td>
+     <td>Sequence number for missing CAMERA_IMAGE_CAPTURED message</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -14675,7 +14720,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   启用或禁用机载摄像头触发系统。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Enable or disable on-board camera triggering system.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14860,9 +14907,11 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   开始视频流</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Start video streaming</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14884,7 +14933,7 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -14910,9 +14959,13 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   请求视频流信息 (VIDEO_STREAM_INFORMATION)</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request video stream information (VIDEO_STREAM_INFORMATION)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14934,9 +14987,13 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   请求视频流状态 (VIDEO_STREAM_STATUS)</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request video stream status (VIDEO_STREAM_STATUS)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14958,7 +15015,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   请求通过MAVLink启动传输日志数据的请求(参见LOGGING_DATA消息)</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request to start streaming logging data over MAVLink (see also LOGGING_DATA message)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15016,7 +15075,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   请求停止通过MAVLink传输日志数据</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request to stop streaming log data over MAVLink</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15127,7 +15188,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   请求通过高延迟遥测开始/停止传输</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request to start/stop transmitting over the high latency telemetry</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15185,7 +15248,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   创建当前位置的全景图</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Create a panorama at the current position</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15221,7 +15286,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   请求垂直起落过渡</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request VTOL transition</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15242,7 +15309,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   请求机体的解锁权限授权给一个外部实体， 解锁的授权人还有在批准或拒绝请求之前向机体索取所有必要的数据。 如果获取到了 command_ack 消息的进度，则必须设置一段时间，以确定此授权在XX秒钟内有效或被拒绝时，必须在ARM_AUTH_DENIED_REASON中设置它的一个原因。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request. If approved the progress of command_ack message should be set with period of time that this authorization is valid in seconds or in case it was denied it should be set with one of the reasons in ARM_AUTH_DENIED_REASON.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15264,7 +15333,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   当车辆处于导航模式时，此命令将子模式设置为标准引导航。 机体保持位置和高度，用户可以对三个轴输入所需的速度。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>This command sets the submode to standard guided when vehicle is in guided mode. The vehicle holds position and altitude and the user can input the desired velocities along all three axes.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15279,7 +15350,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   当载具处于导航模式时，此命令将子模式设置为环绕模式。 车辆沿着一个圆飞行，正对着圆心。 用户可以沿圆圈输入速度并改变半径。 如果没有输入，载具将保持位置。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>This command sets submode circle when vehicle is in guided mode. Vehicle flies along a circle facing the center of the circle. The user can input the velocity along the circle and change the radius. If no input is given the vehicle will hold position.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15318,9 +15391,11 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   延迟任务状态机器直到到达大门。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Delay mission state machine until gate has been reached.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15392,7 +15467,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   围栏的返航点 只能有一个围栏返回点。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Fence return point. There can only be one fence return point.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15449,7 +15526,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   包含多边形的围栏顶点(多边形不能自交)。 载具必须停留在这个区域内。 最少需要 3 个顶点。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Fence vertex for an inclusion polygon (the polygon must not be self-intersecting). The vehicle must stay within this area. Minimum of 3 vertices required.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15507,7 +15586,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   排除多边形的围栏顶点(多边形不能自交)。 载具必须停留在这个区域之外。 最少需要 3 个顶点。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Fence vertex for an exclusion polygon (the polygon must not be self-intersecting). The vehicle must stay outside this area. Minimum of 3 vertices required.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15565,7 +15646,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   圆形围栏区域。 载具必须留在这个区域内。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Circular fence area. The vehicle must stay inside this area.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15622,7 +15705,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   圆形围栏区域。 载具必须停留在这个区域之外。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Circular fence area. The vehicle must stay outside this area.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15679,7 +15764,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   集合点。 您可以定义多个集结点。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Rally point. You can have multiple rally points defined.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15736,7 +15823,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   命令载具响应一系列消息UAVCAN_NODE_INFO，每个在线的UAVCAN节点一个消息。 注意，有些响应消息可能会丢失，接收方可以通过检查每个接收到的UAVCAN_NODE_STATUS是否有一个之前接收到的匹配消息UAVCAN_NODE_INFO来轻松检测到这些消息;如果没有，则应再次发送此命令，以便请求重新传输节点信息消息。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Commands the vehicle to respond with a sequence of messages UAVCAN_NODE_INFO, one message per every UAVCAN node that is online. Note that some of the response messages can be lost, which the receiver can detect easily by checking whether every received UAVCAN_NODE_STATUS has a matching message UAVCAN_NODE_INFO received earlier; if not, this command should be sent again in order to request re-transmission of the node information messages.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15779,7 +15868,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   在Lat / Lon / Alt 位置部署有效载荷。 这包括导航到所需要释放的位置和速度。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Deploy payload on a Lat / Lon / Alt position. This includes the navigation to reach the required release position and velocity.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15855,7 +15946,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   控制有效载荷部署。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Control the payload deployment.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15913,7 +16006,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的航点项目。 地面站将显示载具飞过该项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined waypoint item. Ground Station will show the Vehicle as flying through this item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15970,7 +16065,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的航点项目。 地面站将显示载具飞过该项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined waypoint item. Ground Station will show the Vehicle as flying through this item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16027,7 +16124,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的航点项目。 地面站将显示载具飞过该项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined waypoint item. Ground Station will show the Vehicle as flying through this item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16084,7 +16183,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的航点项目。 地面站将显示车辆飞过该项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined waypoint item. Ground Station will show the Vehicle as flying through this item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16141,7 +16242,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的航点项目。 地面站将显示车辆飞过该项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined waypoint item. Ground Station will show the Vehicle as flying through this item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16198,8 +16301,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的受空间条件限制的项目
- 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：ROI项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16256,8 +16360,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的受空间条件限制的项目
- 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 Example: ROI item.</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16314,8 +16419,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的受空间条件限制的项目
- 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：ROI项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16372,8 +16478,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的受空间条件限制的项目
- 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：ROI项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16430,8 +16537,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的受空间条件限制的项目
- 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：ROI项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16488,7 +16596,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的指令。 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：MAV_CMD_DO_SET_PARMETER项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined command. Ground Station will not show the Vehicle as flying through this item. Example: MAV_CMD_DO_SET_PARAMETER item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16531,7 +16641,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的指令。 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：MAV_CMD_DO_SET_PARMETER项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined command. Ground Station will not show the Vehicle as flying through this item. Example: MAV_CMD_DO_SET_PARAMETER item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16574,7 +16686,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的指令。 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：MAV_CMD_DO_SET_PARMETER项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined command. Ground Station will not show the Vehicle as flying through this item. Example: MAV_CMD_DO_SET_PARAMETER item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16617,7 +16731,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的指令。 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：MAV_CMD_DO_SET_PARMETER项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined command. Ground Station will not show the Vehicle as flying through this item. Example: MAV_CMD_DO_SET_PARAMETER item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16660,7 +16776,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用户定义的指令。 地面站将不会要求机体像航点任务一样执行这个项目，而是穿过这个项目 示例：MAV_CMD_DO_SET_PARMETER项目。</p>
+   <a href="#mav_commands">
+    [Command]
+   </a>User defined command. Ground Station will not show the Vehicle as flying through this item. Example: MAV_CMD_DO_SET_PARAMETER item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16706,7 +16824,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   心跳包信息表示系统或组件已经存在并且可以回应。 类型和自驾仪字段(以及消息组件id)，允许接收到该信息的系统(如具备用户交互界面的自驾仪）对信息进行进一步处理 这种微型服务在 https://mavlink.io/en/services/hearbeat.html 上记录。</p>
+   <a href="#messages">
+    [Message]
+   </a>The heartbeat message shows that a system or component is present and responding. The type and autopilot fields (along with the message component id), allow the receiving system to treat further messages from this system appropriately (e.g. by laying out the user interface based on the autopilot). This microservice is documented at https://mavlink.io/en/services/heartbeat.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16777,7 +16897,7 @@ MAV_CMD_NAV_ROI)。</p>
   <p>
    <a href="#messages">
     [Message]
-   </a>The general system state. 如果系统遵循MAVLink标准，系统可用三种模式/状态进行定义，锁定状态(电机关闭和锁定)、手动状态(RC控制下的系统)、导航状态(具有自定位能力的系统、可以手动设定的位置)或自自主(可以进行轨迹/航点等任务规划进行导航的系统)。 NAV_MODE定义了当前导航状态:起飞(通常是开环机动)、着陆、航路点或定向。 这表示内部导航的有限状态。 系统状态显示系统当前是否处于正常状态，以及是否发生了紧急情况。 在关键和紧急状态时，MAV被认为仍可以正常运行，但应自动进入应急程序。 当发生故障时，应该首先保证关键程序并允许手动干预，并在在超出规定时间后切换到应急程序</p>
+   </a>The general system state. If the system is following the MAVLink standard, the system state is mainly defined by three orthogonal states/modes: The system mode, which is either LOCKED (motors shut down and locked), MANUAL (system under RC control), GUIDED (system with autonomous position control, position setpoint controlled manually) or AUTO (system guided by path/waypoint planner). The NAV_MODE defined the current flight state: LIFTOFF (often an open-loop maneuver), LANDING, WAYPOINTS or VECTOR. This represents the internal navigation state machine. The system status shows whether the system is currently active or not and if an emergency occurred. During the CRITICAL and EMERGENCY states the MAV is still considered to be active, but should start emergency procedures autonomously. After a failure occurred it should first move from active to critical to allow manual intervention and then move to emergency after a certain timeout.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16934,7 +17054,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   该系统时间是系统的主时钟时间，通常是控制板上主控芯片的时钟</p>
+   <a href="#messages">
+    [Message]
+   </a>The system time is the time of the master clock, typically the computer clock of the main onboard computer.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16965,7 +17087,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   用来测试请求或响应的PING的消息。 这样可以测量系统延迟，包括串行端口、无线电调制解调器和UDP连接。 这种微型服务在 https://mavlink.io/en/services/hearbeat.html 上记录。</p>
+   <a href="#messages">
+    [Message]
+   </a>A ping message either requesting or responding to a ping. This allows to measure the system latencies, including serial port, radio modem and UDP connections. The ping microservice is documented at https://mavlink.io/en/services/ping.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17011,7 +17135,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   请求控制此 MAV</p>
+   <a href="#messages">
+    [Message]
+   </a>Request to control this MAV</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17057,7 +17183,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   接受/拒绝对此 MAV 的控制</p>
+   <a href="#messages">
+    [Message]
+   </a>Accept / deny control of this MAV</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17090,7 +17218,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   发出一个加密的签名/密钥识别此系统。 请注意：此协议保持简单，传输密钥需要一个加密渠道才能真正安全。</p>
+   <a href="#messages">
+    [Message]
+   </a>Emit an encrypted signature / key identifying this system. PLEASE NOTE: This protocol has been kept simple, so transmitting the key requires an encrypted channel for true safety.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17113,9 +17243,11 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   在数据链中每个节点生成并注入到 MAVLink流的状态。</p>
+   <a href="#messages">
+    [Message]
+   </a>Status generated in each node in the communication chain and injected into MAVLink stream.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17207,12 +17339,14 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p style="color:red">
-    替换为 MAV_CMD_DO_SET_MODE (2015-12)。
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_SET_MODE (2015-12).
 
 
-  使用 COMMAND_LONG 中 MAV_CMD_DO_SET_MODE替换</p>
+  Use COMMAND_LONG with MAV_CMD_DO_SET_MODE instead</p>
   <p>
-   设置系统模式，定义为 枚举类型 MAV_MODE。 该协议没有组件ID，根据定义该状态是飞行器完整整体的飞行状态不是某个组件的状态</p>
+   <a href="#messages">
+    [Message]
+   </a>Set the system mode, as defined by enum MAV_MODE. There is no target component id as the mode is by definition for the overall aircraft, not only for one component.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17257,7 +17391,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   请求读取带有param_id字符串id的板载参数。 板载参数储存为密钥 这允许将参数发送到任何其他组件(例如地面站)，而不需要预先知道可能的参数名称 因此，相同的GCS可以为不同的自动驾驶仪存储不同的参数。 有关QGroundControl和IMU代码的完整文档，请参见https://mavlink.io/en/services/parameter.html。</p>
+   <a href="#messages">
+    [Message]
+   </a>Request to read the onboard parameter with the param_id string id. Onboard parameters are stored as key[const char*] -&gt; value[float]. This allows to send a parameter to any other component (such as the GCS) without the need of previous knowledge of possible parameter names. Thus the same GCS can store different parameters for different autopilots. See also https://mavlink.io/en/services/parameter.html for a full documentation of QGroundControl and IMU code.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17295,7 +17431,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   请求此组件的所有参数。 在此请求后，所有参数都会被发出。 参数微型服务记录在 https://mavlink.io/en/services/parameter.html</p>
+   <a href="#messages">
+    [Message]
+   </a>Request all parameters of this component. After this request, all parameters are emitted. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17323,7 +17461,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   发出板载参数的值。 在消息中包含param_count和param_index允许接收方跟踪接收到的参数，并允许接收方在丢失或超时后重新请求丢失的参数。 参数微型服务记录在 https://mavlink.io/en/services/parameter.html</p>
+   <a href="#messages">
+    [Message]
+   </a>Emit the value of a onboard parameter. The inclusion of param_count and param_index in the message allows the recipient to keep track of received parameters and allows him to re-request missing parameters after a loss or timeout. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17386,7 +17526,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   设置一个参数值(将新值写入永久存储)。 重要提示:接收组件应该通过向所有通信组件发送PARAM_VALUE消息来确认新参数值。 这还将确保多个地面站都具有所有参数的最新列表。 如果发送的GCS在超时时间内没有收到PARAM_VALUE消息，它应该重新发送PARAM_SET消息。 参数微服务的文档位于https://mavlink.io/en/services/parameter.html</p>
+   <a href="#messages">
+    [Message]
+   </a>Set a parameter value (write new value to permanent storage). IMPORTANT: The receiving component should acknowledge the new parameter value by sending a PARAM_VALUE message to all communication partners. This will also ensure that multiple GCS all have an up-to-date list of all parameters. If the sending GCS did not receive a PARAM_VALUE message within its timeout time, it should re-send the PARAM_SET message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17449,7 +17591,10 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   通过全球定位系统获得的位置信息 不是系统的进行处理后的全局位置信息，而是传感器的原始值。 关于全球定位位置估算，见GLOBAL_POSTITION。</p>
+   <a href="#messages">
+    [Message]
+   </a>The global position, as returned by the Global Positioning System (GPS). This is
+                NOT the global position estimate of the system, but rather a RAW sensor value. See message GLOBAL_POSITION for the global position estimate.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17650,7 +17795,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   全球定位系统报告的定位状态。 此消息显示接收机可见的每颗卫星的状态信息。 关于全球定位位置估算，见GLOBAL_POSTITION。 此消息最多可以包含20颗卫星的信息。</p>
+   <a href="#messages">
+    [Message]
+   </a>The positioning status, as reported by GPS. This message is intended to display status information about each satellite visible to the receiver. See message GLOBAL_POSITION for the global position estimate. This message can contain information for up to 20 satellites.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17708,7 +17855,9 @@ MAV_CMD_NAV_ROI)。</p>
    )
   </h3>
   <p>
-   九轴传感器设置的原始IMU读数。 此消息应包含缩放到具体单位的值</p>
+   <a href="#messages">
+    [Message]
+   </a>The RAW IMU readings for the usual 9DOF sensor setup. This message should contain the scaled values to the described units</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17800,7 +17949,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   九轴传感器的原始数据（默认IMU1）。 此消息应总是包含真正的原始值，不能压缩或裁减放以便于数据捕获和系统调试。</p>
+   <a href="#messages">
+    [Message]
+   </a>The RAW IMU readings for a 9DOF sensor, which is identified by the id (default IMU1). This message should always contain the true raw values without any scaling to allow data capture and system debugging.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17910,7 +18061,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   从一个绝对压力和一个压差传感器的读取的原始压力数值 传感器的值应该是原始的，</p>
+   <a href="#messages">
+    [Message]
+   </a>The RAW pressure readings for the typical setup of one absolute pressure and one differential pressure sensor. The sensor values should be the raw, UNSCALED ADC values.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17963,7 +18116,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   从一个绝对压力和一个压差传感器的读取的压力数值 该字段中会指定相应的单位</p>
+   <a href="#messages">
+    [Message]
+   </a>The pressure readings for the typical setup of one absolute and differential pressure sensor. The units are as specified in each field.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18006,7 +18161,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   航空坐标系下的姿态信息(右手基准, Z-下, X-前, Y-右)。</p>
+   <a href="#messages">
+    [Message]
+   </a>The attitude in the aeronautical frame (right-handed, Z-down, X-front, Y-right).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18067,7 +18224,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   航空坐标系下的姿态信息(右手基准, Z-下, X-前, Y-右)。表示成四元数方式 四元顺序为w、x、y、z，零转换表示为 (1 0 0 0)。</p>
+   <a href="#messages">
+    [Message]
+   </a>The attitude in the aeronautical frame (right-handed, Z-down, X-front, Y-right), expressed as quaternion. Quaternion order is w, x, y, z and a zero rotation would be expressed as (1 0 0 0).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18148,7 +18307,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   经过处理的的局部位置(如 计算机视觉和加速计数据融合后)。 坐标框架是右手基准，Z轴向下(航空坐标系、NED / 东北下公约)</p>
+   <a href="#messages">
+    [Message]
+   </a>The filtered local position (e.g. fused computer vision and accelerometers). Coordinate frame is right-handed, Z-axis down (aeronautical frame, NED / north-east-down convention)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18209,7 +18370,10 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   经过处理的的全局位置(如 GPS 和加速计数据融合后)。 位置在 GPS 坐标系下(右手基准，Z-上)。 它被设计成缩放整数型，因为浮点型的精度不满足要求。</p>
+   <a href="#messages">
+    [Message]
+   </a>The filtered global position (e.g. fused GPS and accelerometers). The position is in GPS-frame (right-handed, Z-up). It
+               is designed as scaled integer message since the resolution of float is not sufficient.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18282,7 +18446,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   遥控器通道的缩放值：(-100%) -10000   ，(0%) 0, (100%) 10000。 未激活的频道应设置为 UINT16_MAX。</p>
+   <a href="#messages">
+    [Message]
+   </a>The scaled values of the RC channels received: (-100%) -10000, (0%) 0, (100%) 10000. Channels that are inactive should be set to UINT16_MAX.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18377,7 +18543,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   接收到遥控器的 原始PPM 值。 PPM标准：1000微秒：0%，2000微秒：100%。 UINT16_MAX值意味着该频道未使用。 个人接收器/发射器可能不遵守这一标准。</p>
+   <a href="#messages">
+    [Message]
+   </a>The RAW values of the RC channels received. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. A value of UINT16_MAX implies the channel is unused. Individual receivers/transmitters might violate this specification.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18466,7 +18634,7 @@ y轴磁力计数据
   <p>
    <a href="#messages">
     [Message]
-   </a>Superseded by ACTUATOR_OUTPUT_STATUS. 伺服器输出的原始值值 (远距离遥控，请使用 RC_CHANNELS 消息)。 PPM标准：1000微秒：0%，2000微秒：100%。</p>
+   </a>Superseded by ACTUATOR_OUTPUT_STATUS. The RAW values of the servo outputs (for RC input from the remote, use the RC_CHANNELS messages). The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18618,7 +18786,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-    请求系统/组件提供任务的列表。 https://mavlink.io/en/services/mission.html. 如果开始和结束编号是相同的，只需发送一个航点。</p>
+   <a href="#messages">
+    [Message]
+   </a>Request a partial list of mission items from the system/component. https://mavlink.io/en/services/mission.html. If start and end index are the same, just send one waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18684,7 +18854,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   此消息被发送到 MAV 来写一个部分列表。 如果开始索引 == 结束索引，只有一个项目会被传送/更新。 如果起始索引不是0或高于当前列表大小，这个请求应该被拒绝！</p>
+   <a href="#messages">
+    [Message]
+   </a>This message is sent to the MAV to write a partial list. If start index == end index, only one item will be transmitted / updated. If the start index is NOT 0 and above the current list size, this request should be REJECTED!</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18750,7 +18922,10 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   对任务项目进行编码的消息。 发出此消息是为了通知任务项目存在，并在系统中设置一个任务项目。 任务项目可以是x, y, z meters (type: LOCAL) 或 x:lat, y:lon, z:高度. 本地坐标系Z-下，右手（NED），全局坐标系是Z-上，右手（ENU）。 NAN可以用来表示一个可选/默认值(例如使用系统当前纬度或 方位 而不是一个特定值)。 另见https://mavlink.io/en/services/mission.html。</p>
+   <a href="#messages">
+    [Message]
+   </a>Message encoding a mission item. This message is emitted to announce
+                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). NaN may be used to indicate an optional/default value (e.g. to use the system's current latitude or yaw rather than a specific value). See also https://mavlink.io/en/services/mission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18904,7 +19079,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   请求该序列号的任务项目信息。 系统对此消息的响应应该是MISSION_ITEM_INT 消息。 https://mavlink.io/en/services/mission.html</p>
+   <a href="#messages">
+    [Message]
+   </a>Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM message. https://mavlink.io/en/services/mission.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18961,7 +19138,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   将序列号seq 的任务项设置为当前项目。 这意味着MAV将沿着最短的路线继续执行这个任务项目(不按照任务中间的项目)。</p>
+   <a href="#messages">
+    [Message]
+   </a>Set the mission item with sequence number seq as current item. This means that the MAV will continue to this mission item on the shortest path (not following the mission items in-between).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18994,7 +19173,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   该消息内容为当前执行的任务序列号信息 MAV将飞往这个任务。</p>
+   <a href="#messages">
+    [Message]
+   </a>Message that announces the sequence number of the current active mission item. The MAV will fly towards this mission item.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19017,7 +19198,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-    请求系统/组件提供任务规划的列表。</p>
+   <a href="#messages">
+    [Message]
+   </a>Request the overall list of mission items from the system/component.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19065,7 +19248,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   MAV发出此消息作为对 SCRIPT_REQUEST_LIST 的响应，以获取任务规划内容的数量。 地面控制站可以根据对航点总数的了解，要求提供单独的任务规划的内容。</p>
+   <a href="#messages">
+    [Message]
+   </a>This message is emitted as response to MISSION_REQUEST_LIST by the MAV and to initiate a write transaction. The GCS can then request the individual mission item based on the knowledge of the total number of waypoints.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19122,7 +19307,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   删除所有任务项目。</p>
+   <a href="#messages">
+    [Message]
+   </a>Delete all mission items at once.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19170,7 +19357,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   该任务项目已经达到。 该系统要么保持这一位置(或围绕该点运动)，要么(如果确定了WP上的自动继续)，要么继续到下一个航点。</p>
+   <a href="#messages">
+    [Message]
+   </a>A certain mission item has been reached. The system will either hold this position (or circle on the orbit) or (if the autocontinue on the WP was set) continue to the next waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19193,7 +19382,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   在航点处理过程中确认消息。 类型字段表示此消息是否为正 (type=0) 或发生错误 (type=non-zero).</p>
+   <a href="#messages">
+    [Message]
+   </a>Acknowledgment message during waypoint handling. The type field states if this message is a positive ack (type=0) or if an error happened (type=non-zero).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19249,7 +19440,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   设置机体本地位置的 GPS 坐标(0,0,0) 位置。 载具应发出GPS_GLOBAL_ORIGIN，无论其来源是否改变。 这使得在局部坐标系和全局(GPS)坐标系之间进行转换成为可能，当(例如)室内和室外设置连接并且MAV应该从室内移动到室外时，这可能是必要的。</p>
+   <a href="#messages">
+    [Message]
+   </a>Sets the GPS co-ordinates of the vehicle local origin (0,0,0) position. Vehicle should emit GPS_GLOBAL_ORIGIN irrespective of whether the origin is changed. This enables transform between the local coordinate frame and the global (GPS) coordinate frame, which may be necessary when (for example) indoor and outdoor settings are connected and the MAV should move from in- to outdoor.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19302,7 +19495,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   发布机体本地原点(0,0,0)位置的GPS坐标。 每当请求或设置新的GPS-Local位置映射时发出—例如，在SET_GPS_GLOBAL_ORIGIN消息之后发出。</p>
+   <a href="#messages">
+    [Message]
+   </a>Publishes the GPS co-ordinates of the vehicle local origin (0,0,0) position. Emitted whenever a new GPS-Local position mapping is requested or set - e.g. following SET_GPS_GLOBAL_ORIGIN message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19348,7 +19543,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   用一个参数绑定遥控通道 参数应根据RC通道值进行更改。</p>
+   <a href="#messages">
+    [Message]
+   </a>Bind a RC channel to a parameter. The parameter should change according to the RC channel value.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19411,7 +19608,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   请求该序列号的任务项目信息。 系统对此消息的响应应该是MISSION_ITEM_INT 消息。 https://mavlink.io/en/services/mission.html</p>
+   <a href="#messages">
+    [Message]
+   </a>Request the information of the mission item with the sequence number seq. The response of the system to this message should be a MISSION_ITEM_INT message. https://mavlink.io/en/services/mission.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19468,9 +19667,11 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   一个广播消息来通知任何地面站或SDK 载具上的地理围栏或安全点已经改变。</p>
+   <a href="#messages">
+    [Message]
+   </a>A broadcast message to notify any ground station or SDK if a mission, geofence or safe points have changed on the vehicle.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19532,7 +19733,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   设置一个安全区 (空间)，以立方体的两个角为边界。 这个消息可以用来告诉MAV哪个设置点/航点可以接受，哪些可以拒绝。 安全区往往是由国家条例或条例强制执行的。</p>
+   <a href="#messages">
+    [Message]
+   </a>Set a safety zone (volume), which is defined by two corners of a cube. This message can be used to tell the MAV which setpoints/waypoints to accept and which to reject. Safety areas are often enforced by national or competition regulations.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19644,7 +19847,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   读取MAV 目前设定的安全区。</p>
+   <a href="#messages">
+    [Message]
+   </a>Read out the safety zone the MAV currently assumes.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19734,7 +19939,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   航空坐标系下的姿态信息(右手基准, Z-下, X-前, Y-右)。表示成四元数方式 四元顺序为w、x、y、z，零转换表示为 (1 0 0 0)。</p>
+   <a href="#messages">
+    [Message]
+   </a>The attitude in the aeronautical frame (right-handed, Z-down, X-front, Y-right), expressed as quaternion. Quaternion order is w, x, y, z and a zero rotation would be expressed as (1 0 0 0).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19791,7 +19998,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   固定翼导航和位置控制器的状态。</p>
+   <a href="#messages">
+    [Message]
+   </a>The state of the fixed wing navigation and position controller.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19858,7 +20067,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   经过处理的的全局位置(如 GPS 和加速计数据融合后)。 位置在 GPS 坐标系下(右手基准，Z-上)。 它被设计成缩放整数型，因为浮点型的精度不满足要求。 注：此信息是为了在板载网络/配套计算机和高带宽链接，并为准确性和完整性优化。 请使用GLOBAL_POSITION_INT 消息作为最小的子集。</p>
+   <a href="#messages">
+    [Message]
+   </a>The filtered global position (e.g. fused GPS and accelerometers). The position is in GPS-frame (right-handed, Z-up). It  is designed as scaled integer message since the resolution of float is not sufficient. NOTE: This message is intended for onboard networks / companion computers and higher-bandwidth links and optimized for accuracy and completeness. Please use the GLOBAL_POSITION_INT message for a minimal subset.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -19979,7 +20190,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   经过处理的的局部位置(如 计算机视觉和加速计数据融合后)。 坐标框架是右手基准，Z轴向下(航空坐标系、NED / 东北下公约)</p>
+   <a href="#messages">
+    [Message]
+   </a>The filtered local position (e.g. fused computer vision and accelerometers). Coordinate frame is right-handed, Z-axis down (aeronautical frame, NED / north-east-down convention)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20120,7 +20333,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   接收到遥控器的 PPM 值。 PPM标准：1000微秒：0%，2000微秒：100%。  UINT16_MAX值意味着该频道未使用。 个人接收器/发射器可能不遵守这一标准。</p>
+   <a href="#messages">
+    [Message]
+   </a>The PPM values of the RC channels received. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%.  A value of UINT16_MAX implies the channel is unused. Individual receivers/transmitters might violate this specification.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20267,9 +20482,11 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   替补SET_MESSAGE_INTERVAL (2015-08)。</p>
+   <strong>DEPRECATED:</strong> Replaced by SET_MESSAGE_INTERVAL (2015-08).</p>
   <p>
-   请求数据流。</p>
+   <a href="#messages">
+    [Message]
+   </a>Request a data stream.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20322,9 +20539,11 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-    替换于MESSAGE_INTERVAL(2015-08)。</p>
+   <strong>DEPRECATED:</strong> Replaced by MESSAGE_INTERVAL (2015-08).</p>
   <p>
-   数据流状态信息</p>
+   <a href="#messages">
+    [Message]
+   </a>Data stream status information.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20363,7 +20582,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   此消息提供了一个API，用于使用标准的操纵杆轴命名法手动控制载具，以及一个类似操纵杆的输入设备。 未使用的轴可以被禁用，按钮也可以作为其布尔值来传输</p>
+   <a href="#messages">
+    [Message]
+   </a>This message provides an API for manually controlling the vehicle using standard joystick axes nomenclature, along with a joystick-like input device. Unused axes can be disabled an buttons are also transmit as boolean values of their</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20411,7 +20632,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   遥控器通道的原始值被发送到MAV以覆盖从遥控器收到的信息。 UINT16_MAX值意味着该通道没有变化。 ：值0表示该频道的控制权应该释放回RC电台。 PPM标准：1000微秒：0%，2000微秒：100%。 个人接收器/发射器可能不遵守这一标准。</p>
+   <a href="#messages">
+    [Message]
+   </a>The RAW values of the RC channels sent to the MAV to override info received from the RC radio. A value of UINT16_MAX means no change to that channel. A value of 0 means control of that channel should be released back to the RC radio. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. Individual receivers/transmitters might violate this specification.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20582,7 +20805,10 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   对任务项目进行编码的消息。 发出此消息是为了通知任务项目存在，并在系统中设置一个任务项目。 任务项目可以是x, y, z meters (type: LOCAL) 或 x:lat, y:lon, z:高度. 本地坐标系Z-下，右手（NED），全局坐标系是Z-上，右手（ENU）。 NAN和 INT32_MAX 可以用在浮点/整数参数中(分别) 表示可选/默认值(e)。 。使用组件的当前航向或纬度，而不是特定值)。 另见https://mavlink.io/en/services/mission.html。</p>
+   <a href="#messages">
+    [Message]
+   </a>Message encoding a mission item. This message is emitted to announce
+                the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). NaN or INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current latitude, yaw rather than a specific value). See also https://mavlink.io/en/services/mission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20736,7 +20962,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   该信息内容显示在固定翼飞机的HUD（抬头显示器）上。</p>
+   <a href="#messages">
+    [Message]
+   </a>Metrics typically displayed on a HUD for fixed wing aircraft.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20793,7 +21021,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   消息编码一个命令，该命令的参数是按比例缩放的整数。 缩放取决于实际的指令值 可在 https://mavlink.io/en/services/command.html 查阅文件。</p>
+   <a href="#messages">
+    [Message]
+   </a>Message encoding a command with parameters as scaled integers. Scaling depends on the actual command value. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -20927,7 +21157,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   向MAV发送最多七个参数的命令。 可在 https://mavlink.io/en/services/command.html 查阅文件。</p>
+   <a href="#messages">
+    [Message]
+   </a>Send a command with up to seven parameters to the MAV. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21045,7 +21277,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   对于一个指令的状态回复 包括命令是否执行的反馈。 可在 https://mavlink.io/en/services/command.html 查阅文件。</p>
+   <a href="#messages">
+    [Message]
+   </a>Report status of a command. Includes feedback whether the command was executed. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21128,7 +21362,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   操作员对横摇、俯仰、偏航和推力的设定值</p>
+   <a href="#messages">
+    [Message]
+   </a>Setpoint in roll, pitch, yaw and thrust from the operator</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21192,7 +21428,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   设定载具期望的姿态 通过外部控制系统赖控制载具（手动模式或其他系统）</p>
+   <a href="#messages">
+    [Message]
+   </a>Sets a desired vehicle attitude. Used by an external controller to command the vehicle (manual controller or other system).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21270,7 +21508,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   报告由自动驾驶仪指定的车辆当前的指令姿态。 如果载具正在以这种方式控制, 这应该与SET_ATTITUDE_TARGET 消息中发送的指令相匹配。</p>
+   <a href="#messages">
+    [Message]
+   </a>Reports the current commanded attitude of the vehicle as specified by the autopilot. This should match the commands sent in a SET_ATTITUDE_TARGET message if the vehicle is being controlled this way.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21334,7 +21574,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   在本地东北向下的坐标系中设置所需的载具位置。 通过外部控制系统赖控制载具（手动模式或其他系统）</p>
+   <a href="#messages">
+    [Message]
+   </a>Sets a desired vehicle position in a local north-east-down coordinate frame. Used by an external controller to command the vehicle (manual controller or other system).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21516,7 +21758,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   告自动驾驶仪指定的当前所控制载具的位置、速度和加速度。 如果载具是通过这种方式控制的，那么它应该与SET_POSITION_TARGET_LOCAL_NED中发送的命令相匹配。</p>
+   <a href="#messages">
+    [Message]
+   </a>Reports the current commanded vehicle position, velocity, and acceleration as specified by the autopilot. This should match the commands sent in SET_POSITION_TARGET_LOCAL_NED if the vehicle is being controlled this way.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21676,7 +21920,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   在全局坐标系(WGS84)中设置所需的载具位置、速度和/或加速度。 通过外部控制系统控制载具（手动模式或其他系统）</p>
+   <a href="#messages">
+    [Message]
+   </a>Sets a desired vehicle position, velocity, and/or acceleration in a global coordinate system (WGS84). Used by an external controller to command the vehicle (manual controller or other system).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21858,7 +22104,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   告自动驾驶仪指定的当前所控制载具的位置、速度和加速度。 如果载具是通过这种方式控制的，那么它应该与SET_POSITION_TARGET_GLOBAL_INT中发送的命令相匹配。</p>
+   <a href="#messages">
+    [Message]
+   </a>Reports the current commanded vehicle position, velocity, and acceleration as specified by the autopilot. This should match the commands sent in SET_POSITION_TARGET_GLOBAL_INT if the vehicle is being controlled this way.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22018,7 +22266,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   MAV X的LOCAL_POSITION_NED消息与NED坐标下的全局坐标系之间的X、Y、Z和偏航的偏移量。 坐标框架是右手基准，Z轴向下(航空坐标系、NED / 东北下公约)</p>
+   <a href="#messages">
+    [Message]
+   </a>The offset in X, Y, Z and yaw between the LOCAL_POSITION_NED messages of MAV X and the global coordinate frame in NED coordinates. Coordinate frame is right-handed, Z-axis down (aeronautical frame, NED / north-east-down convention)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22079,12 +22329,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-    替换于HIL_STATE_QUATERNION (2013-07)。
+   <strong>DEPRECATED:</strong> Replaced by HIL_STATE_QUATERNION (2013-07).
 
 
-  由于欧拉角的原因而缺少空速场和奇异点</p>
+  Suffers from missing airspeed fields and singularities due to Euler angles</p>
   <p>
-   从仿真系统发送到自动驾驶仪。 此包对于高吞吐量应用程序(如循环仿真中的硬件)非常有用。</p>
+   <a href="#messages">
+    [Message]
+   </a>Sent from simulation to autopilot. This packet is useful for high throughput applications such as hardware in the loop simulations.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22199,7 +22451,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   从自动驾驶仪发送到仿真系统 硬件在环控制</p>
+   <a href="#messages">
+    [Message]
+   </a>Sent from autopilot to simulation. Hardware in the loop control outputs</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22338,7 +22592,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   从仿真系统发送到自动驾驶仪。 收到遥控器通道的原始值 PPM标准：1000微秒：0%，2000微秒：100%。 个人接收器/发射器可能不遵守这一标准。</p>
+   <a href="#messages">
+    [Message]
+   </a>Sent from simulation to autopilot. The RAW values of the RC channels received. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. Individual receivers/transmitters might violate this specification.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22442,7 +22698,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   从自动驾驶仪发送到仿真系统 硬件在环控制(替换为 HIL_CONTROLS)</p>
+   <a href="#messages">
+    [Message]
+   </a>Sent from autopilot to simulation. Hardware in the loop control outputs (replacement for HIL_CONTROLS)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22504,7 +22762,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   来自光流传感器(例如，光学鼠标传感器)</p>
+   <a href="#messages">
+    [Message]
+   </a>Optical flow from a flow sensor (e.g. optical mouse sensor)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22591,7 +22851,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   通过视觉源估计全局位置/姿态。</p>
+   <a href="#messages">
+    [Message]
+   </a>Global position/attitude estimate from a vision source.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22672,7 +22934,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   通过视觉估计位置/状态。</p>
+   <a href="#messages">
+    [Message]
+   </a>Local position/attitude estimate from a vision source.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22753,7 +23017,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   通过视觉估计速度。</p>
+   <a href="#messages">
+    [Message]
+   </a>Speed estimate from a vision source.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22816,7 +23082,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   通过Vicon 运动系统源的全局位置估计。</p>
+   <a href="#messages">
+    [Message]
+   </a>Global position estimate from a Vicon motion system source.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -22887,7 +23155,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   在 航空机体坐标系中的 国际标准单位读取的 IMU</p>
+   <a href="#messages">
+    [Message]
+   </a>The IMU readings in SI units in NED body frame</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23012,7 +23282,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   来自角速率流传感器的光流(例如PX4FLOW或鼠标传感器)</p>
+   <a href="#messages">
+    [Message]
+   </a>Optical flow from an angular rate flow sensor (e.g. PX4FLOW or mouse sensor)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23105,7 +23377,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   在 航空机体坐标系中的 国际标准单位读取的 IMU</p>
+   <a href="#messages">
+    [Message]
+   </a>The IMU readings in SI units in NED body frame</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23216,7 +23490,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   模拟环境状态，如果使用</p>
+   <a href="#messages">
+    [Message]
+   </a>Status of simulation environment, if used</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23370,7 +23646,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   由无线电生成并注入到 MAVLink 流的状态。</p>
+   <a href="#messages">
+    [Message]
+   </a>Status generated by radio and injected into MAVLink stream.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23439,7 +23717,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   文件传输消息</p>
+   <a href="#messages">
+    [Message]
+   </a>File transfer message</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23477,7 +23757,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   时间同步消息。</p>
+   <a href="#messages">
+    [Message]
+   </a>Time synchronization message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23505,7 +23787,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   摄像- imu触发和同步消息。</p>
+   <a href="#messages">
+    [Message]
+   </a>Camera-IMU triggering and synchronisation message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23537,7 +23821,10 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   （模拟信息）通过全球定位系统获得的位置信息 不是系统的进行处理后的全局位置信息，而是传感器的原始值。 关于全球定位位置估算，见GLOBAL_POSTITION。</p>
+   <a href="#messages">
+    [Message]
+   </a>The global position, as returned by the Global Positioning System (GPS). This is
+                 NOT the global position estimate of the sytem, but rather a RAW sensor value. See message GLOBAL_POSITION for the global position estimate.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23636,7 +23923,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   模拟来自流传感器的光流(例如PX4FLOW或光学鼠标传感器)</p>
+   <a href="#messages">
+    [Message]
+   </a>Simulated optical flow from a flow sensor (e.g. PX4FLOW or optical mouse sensor)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23729,7 +24018,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   通过仿真发送到自动驾驶仪，避免对比HIL_STATE奇点。 此包对于高吞吐量应用程序(如循环仿真中的硬件)非常有用</p>
+   <a href="#messages">
+    [Message]
+   </a>Sent from simulation to autopilot, avoids in contrast to HIL_STATE singularities. This packet is useful for high throughput applications such as hardware in the loop simulations.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23845,7 +24136,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   用于二级9DOF传感器设置的原始IMU读数。 此消息应包含缩放到具体单位的值</p>
+   <a href="#messages">
+    [Message]
+   </a>The RAW IMU readings for secondary 9DOF sensor setup. This message should contain the scaled values to the described units</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23937,7 +24230,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   请求可用日志列表。 在某些系统上，调用它可能会停止On -board日志记录，直到调用LOG_REQUEST_END。</p>
+   <a href="#messages">
+    [Message]
+   </a>Request a list of available logs. On some systems calling this may stop on-board logging until LOG_REQUEST_END is called.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23975,7 +24270,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   回复LOG_REQUEST_LIST</p>
+   <a href="#messages">
+    [Message]
+   </a>Reply to LOG_REQUEST_LIST</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24027,7 +24324,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   请求某一存储区块的日志</p>
+   <a href="#messages">
+    [Message]
+   </a>Request a chunk of a log</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24080,7 +24379,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   回复LOG_REQUEST_DATA</p>
+   <a href="#messages">
+    [Message]
+   </a>Reply to LOG_REQUEST_DATA</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24126,7 +24427,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   擦除所有日志</p>
+   <a href="#messages">
+    [Message]
+   </a>Erase all logs</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24154,7 +24457,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   停止日志传输并恢复正常日志记录</p>
+   <a href="#messages">
+    [Message]
+   </a>Stop log transfer and resume normal logging</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24182,7 +24487,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   发送给板载GPS的数据(用于DGPS)</p>
+   <a href="#messages">
+    [Message]
+   </a>Data for injecting into the onboard GPS (used for DGPS)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24228,7 +24535,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   第二 GPS数据。</p>
+   <a href="#messages">
+    [Message]
+   </a>Second GPS data.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24383,7 +24692,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   供电状态</p>
+   <a href="#messages">
+    [Message]
+   </a>Power supply status</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24433,7 +24744,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   控制串行端口。 这可用于原始访问机载外围，例如全球定位系统或数传电调。 它旨在通过MAVLink 消息或更改设备设置来更新设备固件。 零字节的消息可以仅用于更改波特率。</p>
+   <a href="#messages">
+    [Message]
+   </a>Control a serial port. This can be used for raw access to an onboard serial peripheral such as a GPS or telemetry radio. It is designed to make it possible to update the devices firmware via MAVLink messages or change the devices settings. A message with zero bytes can be used to change just the baudrate.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24514,7 +24827,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   差分GPS数据 提供GPS报告的相对基线信息</p>
+   <a href="#messages">
+    [Message]
+   </a>RTK GPS data. Gives information on the relative baseline calculation the GPS is reporting</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24670,7 +24985,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   差分GPS数据 提供GPS报告的相对基线信息</p>
+   <a href="#messages">
+    [Message]
+   </a>RTK GPS data. Gives information on the relative baseline calculation the GPS is reporting</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24826,7 +25143,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   从第3颗9 DOF 传感器读取的原始信息 此消息应包含缩放到具体单位的值</p>
+   <a href="#messages">
+    [Message]
+   </a>The RAW IMU readings for 3rd 9DOF sensor setup. This message should contain the scaled values to the described units</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24915,7 +25234,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   使用图像传输协议时启动、控制和停止图像流的握手消息:https://mavlink.io/en/services/image_transmission.html。</p>
+   <a href="#messages">
+    [Message]
+   </a>Handshake message to initiate, control and stop image streaming when using the Image Transmission Protocol: https://mavlink.io/en/services/image_transmission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25010,7 +25331,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   使用图像传输协议发送的图像的数据包:https://mavlink.io/en/services/image_transmission.html。</p>
+   <a href="#messages">
+    [Message]
+   </a>Data packet for images sent using the Image Transmission Protocol: https://mavlink.io/en/services/image_transmission.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25038,7 +25361,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   机载测距仪的距离传感器信息。</p>
+   <a href="#messages">
+    [Message]
+   </a>Distance sensor information for an onboard rangefinder.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25179,7 +25504,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   请求提供地形数据和地形状态</p>
+   <a href="#messages">
+    [Message]
+   </a>Request for terrain data and terrain status</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25223,7 +25550,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   从GCS发送的地形数据。 lat/lon 和 gid_spacing 必须与TERRAIN_REQUEST的lat/lon 相同</p>
+   <a href="#messages">
+    [Message]
+   </a>Terrain data sent from GCS. The lat/lon and grid_spacing must be the same as a lat/lon from a TERRAIN_REQUEST</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25273,7 +25602,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   请求车辆报告指定位置的地形高度。 用于GCS检查载具是否有执行任务所需的所有地形数据。</p>
+   <a href="#messages">
+    [Message]
+   </a>Request that the vehicle report terrain height at the given location. Used by GCS to check if vehicle has all terrain data needed for a mission.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25304,7 +25635,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   来自TERRAIN_CHECK请求的响应</p>
+   <a href="#messages">
+    [Message]
+   </a>Response from a TERRAIN_CHECK request</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25368,7 +25701,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   2号气压计读数</p>
+   <a href="#messages">
+    [Message]
+   </a>Barometer readings for 2nd barometer</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25411,7 +25746,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   动作捕捉姿势和位置</p>
+   <a href="#messages">
+    [Message]
+   </a>Motion capture attitude and position</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25471,7 +25808,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   设置载具姿态和载具角速度。</p>
+   <a href="#messages">
+    [Message]
+   </a>Set the vehicle attitude and body angular rates.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25524,7 +25863,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   设置载具姿态和载具角速度。</p>
+   <a href="#messages">
+    [Message]
+   </a>Set the vehicle attitude and body angular rates.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25563,7 +25904,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   当前系统高度.</p>
+   <a href="#messages">
+    [Message]
+   </a>The current system altitude.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25624,7 +25967,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   自动驾驶仪正在请求资源(文件、二进制文件、其他类型的数据)</p>
+   <a href="#messages">
+    [Message]
+   </a>The autopilot is requesting a resource (file, binary, other type of data)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25667,7 +26012,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   3号气压计读数</p>
+   <a href="#messages">
+    [Message]
+   </a>Barometer readings for 3rd barometer</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25710,7 +26057,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   指定系统的当前运动信息</p>
+   <a href="#messages">
+    [Message]
+   </a>Current motion information from a designated system</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25804,7 +26153,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   平滑的、单调的系统状态，用于系统的控制回路使用</p>
+   <a href="#messages">
+    [Message]
+   </a>The smoothed, monotonic system state used to feed the control loops of the system.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25929,7 +26280,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   电池信息。 更新GCS的飞行控制器电池状态。 使用SMART_BATTERY_* 消息代替智能电池。</p>
+   <a href="#messages">
+    [Message]
+   </a>Battery information. Updates GCS with flight controller battery status. Use SMART_BATTERY_* messages instead for smart batteries.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26068,7 +26421,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   自驾仪的版本和功能。 这应在响应MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES 指令时发出。</p>
+   <a href="#messages">
+    [Message]
+   </a>Version and capability of autopilot software. This should be emitted in response to a request with MAV_CMD_REQUEST_MESSAGE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26197,7 +26552,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   着陆目标的位置。 见：https://mavlink.io/en/services/landing_target.html</p>
+   <a href="#messages">
+    [Message]
+   </a>The location of a landing target. See: https://mavlink.io/en/services/landing_target.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26378,7 +26735,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   地理围栏状态。 当围栏启用时发送扩展状态流。</p>
+   <a href="#messages">
+    [Message]
+   </a>Status of geo-fencing. Sent in extended status stream when fencing enabled.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26455,7 +26814,7 @@ y轴磁力计数据
   <p>
    <a href="#messages">
     [Message]
-   </a>Estimator status message including flags, innovation test ratios and estimated accuracies. 标记消息是一个整数位掩码，包含EKF输出有效的信息。 欲了解更多信息，请参阅ESTIMATOR_STATUS_FLAGS编码定义。 The innovation test ratios show the magnitude of the sensor innovation divided by the innovation check threshold. Under normal operation the innovation test ratios should be below 0.5 with occasional values up to 1.0. Values greater than 1.0 should be rare under normal operation and indicate that a measurement has been rejected by the filter. The user should be notified if an innovation test ratio greater than 1.0 is recorded. Notifications for values in the range between 0.5 and 1.0 should be optional and controllable by the user.</p>
+   </a>Estimator status message including flags, innovation test ratios and estimated accuracies. The flags message is an integer bitmask containing information on which EKF outputs are valid. See the ESTIMATOR_STATUS_FLAGS enum definition for further information. The innovation test ratios show the magnitude of the sensor innovation divided by the innovation check threshold. Under normal operation the innovation test ratios should be below 0.5 with occasional values up to 1.0. Values greater than 1.0 should be rare under normal operation and indicate that a measurement has been rejected by the filter. The user should be notified if an innovation test ratio greater than 1.0 is recorded. Notifications for values in the range between 0.5 and 1.0 should be optional and controllable by the user.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26581,7 +26940,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   来自载具的风大小代码估计值。</p>
+   <a href="#messages">
+    [Message]
+   </a>Wind covariance estimate from vehicle.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26654,7 +27015,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   GPS 传感器输入消息。  这是GPS发送的原始传感器值。 这不是该系统的全局位置估计值。</p>
+   <a href="#messages">
+    [Message]
+   </a>GPS sensor input message.  This is a raw sensor value sent by the GPS. This is NOT the global position estimate of the system.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26871,7 +27234,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   RTCM 消息发送给板载GPS (用于DGPS)</p>
+   <a href="#messages">
+    [Message]
+   </a>RTCM message for injecting into the onboard GPS (used for DGPS)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26910,7 +27275,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   适合于铱星等高延迟连接的消息</p>
+   <a href="#messages">
+    [Message]
+   </a>Message appropriate for high latency connections like Iridium</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27178,9 +27545,11 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   适合于铱星等高延迟连接的消息（版本2）</p>
+   <a href="#messages">
+    [Message]
+   </a>Message appropriate for high latency connections like Iridium (version 2)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27479,7 +27848,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   振动水平和加速计限幅</p>
+   <a href="#messages">
+    [Message]
+   </a>Vibration levels and accelerometer clipping</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27546,7 +27917,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   可以通过发送 MAV_CMD_GET_HOME_POSITION 指令来请求此消息。 系统将返回并着陆的位置。 在起飞过程中，如果操作员没有在起飞前或起飞后显式设置位置，系统会自动设置位置 全局位置和局部位置在各自的坐标系中对位置进行编码，而q参数对曲面的方向进行编码。 在正常情况下，它描述了飞机可以用来调整进近的航向和地形坡度。 该方法的三维矢量描述的点，该系统应在正常飞行模式，然后执行一个沿着向量进行的顺序着落</p>
+   <a href="#messages">
+    [Message]
+   </a>This message can be requested by sending the MAV_CMD_GET_HOME_POSITION command. The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27635,7 +28008,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   系统将返回和着陆的位置。 在起飞过程中，如果操作员没有在起飞前或起飞后显式设置位置，系统会自动设置位置 全局位置和局部位置在各自的坐标系中对位置进行编码，而q参数对曲面的方向进行编码。 在正常情况下，它描述了飞机可以用来调整进近的航向和地形坡度。 该方法的三维矢量描述的点，该系统应在正常飞行模式，然后执行一个沿着向量进行的顺序着落</p>
+   <a href="#messages">
+    [Message]
+   </a>The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27731,7 +28106,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   特定MAVLink 消息ID之间的间隔。 此消息是对 MAV_CMD_GET_MESSAGE_INTERVAL 命令的回应。 此接口取代DATA_STREAM。</p>
+   <a href="#messages">
+    [Message]
+   </a>The interval between messages for a particular MAVLink message ID. This message is the response to the MAV_CMD_GET_MESSAGE_INTERVAL command. This interface replaces DATA_STREAM.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27763,7 +28140,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   提供附加功能的状态</p>
+   <a href="#messages">
+    [Message]
+   </a>Provides state for additional features</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27798,7 +28177,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   具备ADS-B能力的 载具的位置和信息</p>
+   <a href="#messages">
+    [Message]
+   </a>The location and information of an ADSB vehicle</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27951,7 +28332,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   关于潜在碰撞的信息</p>
+   <a href="#messages">
+    [Message]
+   </a>Information about a potential collision</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28042,7 +28425,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   消息在V1版本中实现V2有效载荷规范的一部分，用于过渡支持。</p>
+   <a href="#messages">
+    [Message]
+   </a>Message implementing parts of the V2 payload specs in V1 frames for transitional support.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28085,7 +28470,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   发送原始控制器内存。 对于普通的信息包，不建议使用此消息，但是对于测试新消息和获得实验性调试输出来说，这是一种非常有效的方法。</p>
+   <a href="#messages">
+    [Message]
+   </a>Send raw controller memory. The use of this message is discouraged for normal packets, but a quite efficient way for testing new messages and getting experimental debug output.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28123,7 +28510,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   使用指定的3D矢量调试某些东西。</p>
+   <a href="#messages">
+    [Message]
+   </a>To debug something using a named 3D vector.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28176,7 +28565,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   将键值对作为浮点数发送。 对于普通的信息包，不建议使用此消息，但是对于测试新消息和获得实验性调试输出来说，这是一种非常有效的方法。</p>
+   <a href="#messages">
+    [Message]
+   </a>Send a key-value pair as float. The use of this message is discouraged for normal packets, but a quite efficient way for testing new messages and getting experimental debug output.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28215,7 +28606,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   将键值对作为整数发送。 ：对于普通的信息包，不建议使用此消息，但是对于测试新消息和获得实验性调试输出来说，这是一种非常有效的方法。</p>
+   <a href="#messages">
+    [Message]
+   </a>Send a key-value pair as integer. The use of this message is discouraged for normal packets, but a quite efficient way for testing new messages and getting experimental debug output.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28254,7 +28647,9 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   状态文本信息 这些消息以黄色文字字节显示在地面站的COMM控制台 警告：他们消耗了相当多的带宽，所以只能用于重要的状态和错误信息。 比较明智的方法是将这些信息缓存在MCU上，并且只以有限的速度发送(例如10Hz)。</p>
+   <a href="#messages">
+    [Message]
+   </a>Status text message. These messages are printed in yellow in the COMM console of QGroundControl. WARNING: They consume quite some bandwidth, so use only for important status and error messages. If implemented wisely, these messages are buffered on the MCU and sent only at a limited rate (e.g. 10 Hz).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28398,7 +28793,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   报告按钮状态更改。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Report button state change.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28487,7 +28887,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   有关相机的信息</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about a camera. Can be requested with a MAV_CMD_REQUEST_MESSAGE command.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28648,7 +29053,7 @@ y轴磁力计数据
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Settings of a camera, can be requested using MAV_CMD_REQUEST_CAMERA_SETTINGS.</p>
+   </strong>Settings of a camera. Can be requested with a MAV_CMD_REQUEST_MESSAGE command.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28716,7 +29121,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   有关存储介质的信息。 当存储状态发生变化时(STORAGE_STATUS)，将发送此消息以响应请求。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about a storage medium. This message is sent in response to a request with MAV_CMD_REQUEST_MESSAGE and whenever the status of the storage changes (STORAGE_STATUS). Use MAV_CMD_REQUEST_MESSAGE.param2 to indicate the index/id of requested storage: 0 for all, 1 for first, 2 for second, etc.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28828,7 +29238,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   有关捕获状态的信息。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about the status of a capture. Can be requested with a MAV_CMD_REQUEST_MESSAGE command.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28890,7 +29305,7 @@ y轴磁力计数据
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about a captured image</p>
+   </strong>Information about a captured image. This is emitted every time a message is captured. It may be re-requested using MAV_CMD_REQUEST_MESSAGE, using param2 to indicate the sequence number for the missing image.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28980,9 +29395,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   自上次锁定以来的飞行信息。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about flight since last arming.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29029,9 +29449,14 @@ y轴磁力计数据
    <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).
 
 
-  此消息正被MAV_CMD_DO_GIMBAL_MANAGER_ATTITUTE所取代。 该消息仍然可以用来与旧版云台进行通信。</p>
+  This message is being superseded by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE. The message can still be used to communicate with legacy gimbals implementing it.</p>
   <p>
-   底座定位</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Orientation of a mount</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29083,7 +29508,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   包含日志数据的消息(也参见MAV_CMD_LOGGING_START)</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>A message containing logged data (see also MAV_CMD_LOGGING_START)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29142,7 +29572,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   包含日志数据的消息，需要返回一个LOGGING_ACK</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>A message containing logged data which requires a LOGGING_ACK to be sent back</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29246,7 +29681,7 @@ y轴磁力计数据
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about video stream</p>
+   </strong>Information about video stream. It may be requested using MAV_CMD_REQUEST_MESSAGE, where param2 indicates the video stream id: 0 for all streams, 1 for first, 2 for second, etc.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29390,14 +29825,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    <a href="#messages">
     [Message]
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about the status of a video stream.</p>
+   </strong>Information about the status of a video stream. It may be requested using MAV_CMD_REQUEST_MESSAGE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29498,7 +29933,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    <a href="#messages">
     [Message]
@@ -29618,7 +30053,12 @@ y轴磁力计数据
   <p style="color:red">
    生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   关于高等级云台管理器的当前状态。 This message should be broadcast at a low regular rate (e.g. 5Hz).</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Current status about a high level gimbal manager. This message should be broadcast at a low regular rate (e.g. 5Hz).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29782,8 +30222,12 @@ y轴磁力计数据
   <p style="color:red">
    <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-    有关低等级云台的信息-.
- 该消息应该由云台管理器或使用MAV_CMD_REQUEST_MESSAGE的地面站请求。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about a low level gimbal. This message should be requested by the gimbal manager or a ground station using MAV_CMD_REQUEST_MESSAGE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29916,9 +30360,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   控制云台姿态的低电平信息。 此消息将从云台管理器发送到云台设备组件。 角度和速率可以根据用例设置为NaN。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Low level message to control a gimbal device's attitude. This message is to be sent from the gimbal manager to the gimbal device component. Angles and rates can be set to NaN according to use case.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30011,9 +30460,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   消息报告云台设备的状态。 此消息应由云台设备组件播出。 四边编码的角度在全局坐标系(滚转:正向是向右倾斜，俯仰:正向是向上倾斜，偏航是向右转弯)。 此消息应以较低的固定频率(如10Hz)广播。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Message reporting the status of a gimbal device. This message should be broadcasted by a gimbal device component. The angles encoded in the quaternion are in the global frame (roll: positive is tilt to the right, pitch: positive is tilting up, yaw is turn to the right). This message should be broadcast at a low regular rate (e.g. 10Hz).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30104,9 +30558,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   包含与云台设备相关的自动驾驶状态的低级消息。 此消息将从云台管理器发送到云台设备组件。 该消息服务器的数据为框架的估计校正，特别是地平线补偿，以及自动驾驶仪的控制意图，如前馈角控制在z轴。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Low level message containing autopilot state relevant for a gimbal device. This message is to be sent from the gimbal manager to the gimbal device component. The data of this message server for the gimbal's estimator corrections in particular horizon compensation, as well as the autopilot's control intention e.g. feed forward angular control in z-axis.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30188,7 +30647,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   配置AP SSID和密码。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Configure AP SSID and Password.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30216,9 +30680,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   协议版本和功能。 此消息是对REQUEST_PROTOCOL_VERSION的响应，并作为握手的一部分用于确定应该在网络上使用哪个MAVLink版本。 每个节点都应该响应REQUEST_PROTOCOL_VERSION来支持握手。 库实现者应该考虑将其添加到默认解码状态机中，以允许协议核心直接响应。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Version and capability of protocol version. This message can be requested with MAV_CMD_REQUEST_MESSAGE and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to a request for PROTOCOL_VERSION to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30261,9 +30730,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   AIS船舶的位置和信息</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>The location and information of an AIS vessel</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30456,7 +30930,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   UAVCAN节点的一般状态信息。 关于背景信息，请参阅UAVCAN 消息“uavcan.protocol.NodeStatus”的定义。 UAVCAN 规格见http://uavcan.org。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>General status information of an UAVCAN node. Please refer to the definition of the UAVCAN message "uavcan.protocol.NodeStatus" for the background information. The UAVCAN specification is available at http://uavcan.org.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30538,7 +31017,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   述特定UAVCAN节点的一般信息。 请参考UAVCAN服务的定义“UAVCAN .protocol”。获取背景信息 系统应该在新节点联机或现有节点重新启动时发出此消息。 此外，它可以在MAVLink通道的另一端发出请求时发出(请参阅MAV_CMD_UAVCAN_GET_NODE_INFO)。 也不禁止以低频率无条件地发出此消息。 可以在http://uavcan.org上找到UAVCAN规范。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>General information describing a particular UAVCAN node. Please refer to the definition of the UAVCAN service "uavcan.protocol.GetNodeInfo" for the background information. This message should be emitted by the system whenever a new node appears online, or an existing node reboots. Additionally, it can be emitted upon request from the other end of the MAVLink channel (see MAV_CMD_UAVCAN_GET_NODE_INFO). It is also not prohibited to emit this message unconditionally at a low frequency. The UAVCAN specification is available at http://uavcan.org.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30618,7 +31102,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   请求用param_id字符串id或param_index读取参数的值。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Request to read the value of a parameter with the either the param_id string id or param_index.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30656,7 +31145,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   请求此组件的所有参数。 在此请求后，所有参数都会被发出。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Request all parameters of this component. After this request, all parameters are emitted.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30684,7 +31178,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   发出参数的值。 在消息中包含param_count和param_index允许接收方跟踪接收到的参数，并允许接收方在丢失或超时后重新请求丢失的参数。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Emit the value of a parameter. The inclusion of param_count and param_index in the message allows the recipient to keep track of received parameters and allows them to re-request missing parameters after a loss or timeout.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30747,7 +31246,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   设置一个参数值。 为了处理消息丢失(以及PARAM_EXT_SET的重新传输)，当设置一个参数值并且新值与当前值相同时，您将立即得到一个PARAM_ACK_ACCEPTED响应。 如果当前状态是PARAM_ACK_IN_PROGRESS，那么您将相应地收到一个PARAM_ACK_IN_PROGRESS响应。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Set a parameter value. In order to deal with message loss (and retransmission of PARAM_EXT_SET), when setting a parameter value and the new value is the same as the current value, you will immediately get a PARAM_ACK_ACCEPTED response. If the current state is PARAM_ACK_IN_PROGRESS, you will accordingly receive a PARAM_ACK_IN_PROGRESS in response.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30810,7 +31314,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   来自PARAM_EXT_SET消息的响应。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Response from a PARAM_EXT_SET message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30863,7 +31372,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   传感器前面的障碍物距离，从左侧开始，向右侧递增角度</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Obstacle distances in front of the sensor, starting from the left in increment degrees to the right</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30982,7 +31496,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   通过外部测距通讯测距信息传输的测距消息 航空飞行器使用ROS REP 147 标准（http://www.ros.org/reps/rep-0147.html）。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Odometry message to communicate odometry information with an external interface. Fits ROS REP 147 standard for aerial vehicles (http://www.ros.org/reps/rep-0147.html).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31182,7 +31701,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   使用本地坐标系中最多5个路径点的数组(MAV_FRAME_LOCAL_NED)描述轨迹。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Describe a trajectory using an array of up-to 5 waypoints in the local frame (MAV_FRAME_LOCAL_NED).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31343,7 +31867,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   使用本地坐标系中最多5个贝塞尔控制点的数组(MAV_FRAME_LOCAL_NED)描述轨迹。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Describe a trajectory using an array of up-to 5 bezier control points in the local frame (MAV_FRAME_LOCAL_NED).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31407,7 +31936,12 @@ y轴磁力计数据
   <p style="color:red">
    生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   报告当前使用的蜂窝网络状态</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Report current used cellular network status</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31487,7 +32021,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   铱星SBD链的状态。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Status of the Iridium SBD link.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31562,7 +32101,12 @@ y轴磁力计数据
   <p style="color:red">
    生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   由GPS和传感器融合产生的全局位置。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>The global position resulting from GPS and sensor fusion.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31763,7 +32307,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   大的调试/原型数组。 消息使用数据的最大有效负载。 array_id和name字段分别用于区分代码和用户界面中的消息。 Do not use in production code.</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Large debug/prototyping array. The message uses the maximum available payload for data. The array_id and name fields are used to discriminate between messages in code and in user interfaces (respectively). Do not use in production code.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31812,9 +32361,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   在轨执行过程中发送的飞行器状态报告(参见MAV_CMD_DO_ORBIT)。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Vehicle status report that is sent out while orbit execution is in progress (see MAV_CMD_DO_ORBIT).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31896,9 +32450,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   智能电池信息(静态/不频繁更新)。 用于更新:智能电池到飞行堆栈，飞行堆栈到地面站 智能电池使用代替BATTERY_STATUS。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Smart Battery information (static/infrequent update). Use for updates from: smart battery to flight stack, flight stack to GCS. Use instead of BATTERY_STATUS for smart batteries.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31981,9 +32540,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   智能电池信息(动态)。 用于更新:智能电池到飞行堆栈，飞行堆栈到地面站 智能电池使用代替BATTERY_STATUS。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Smart Battery information (dynamic). Use for updates from: smart battery to flight stack, flight stack to GCS. Use instead of BATTERY_STATUS for smart batteries.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32087,7 +32651,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   执行器输出的原始值(例如在Pixhawk上，来自主端口，辅助端口)。 此消息取代SERVO_OUTPUT_RAW。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>The raw values of the actuator outputs (e.g. on Pixhawk, from MAIN, AUX ports). This message supersedes SERVO_OUTPUT_RAW.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32128,7 +32697,12 @@ y轴磁力计数据
   <p style="color:red">
    生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   根据当前车辆状态和位置，估计各种事件和动作的时间/持续时间。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Time/duration estimates for various events and actions given the current vehicle state and position.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32177,9 +32751,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   用于将“任意”变长数据从一个组件传输到另一个组件的消息(不禁止广播，但不鼓励)。 数据的编码通常是特定于扩展的，即由源决定的，并且通常不作为MAVLink规范的一部分记录下来。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Message for transporting "arbitrary" variable-length data from one component to another (broadcast is not forbidden, but discouraged). The encoding of the data is usually extension specific, i.e. determined by the source, and is usually not documented as part of the MAVLink specification.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32242,9 +32821,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   由机载计算机发送的硬件状态</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Hardware status sent by an onboard computer.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32394,9 +32978,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   关于组件的信息。 对于相机组件，使用CAMERA_INFORMATION，对于自动驾驶，使用AUTOPILOT_VERSION。 包括GCSes在内的组件应该考虑通过MAV_CMD_REQUEST_MESSAGE支持此消息的请求。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about a component. For camera components instead use CAMERA_INFORMATION, and for autopilots use AUTOPILOT_VERSION. Components including GCSes should consider supporting requests of this message via MAV_CMD_REQUEST_MESSAGE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32502,9 +33091,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   播放车辆音调/调音(蜂鸣器)。 首选消息PLAY_TUNE。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Play vehicle tone/tune (buzzer). Supersedes message PLAY_TUNE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32558,9 +33152,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   车辆支持的调优格式。 这应该作为对MAV_CMD_REQUEST_MESSAGE的响应发出。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Tune formats supported by vehicle. This should be emitted as response to MAV_CMD_REQUEST_MESSAGE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32605,7 +33204,12 @@ y轴磁力计数据
    )
   </h3>
   <p>
-   每个车轮行驶的累积距离。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Cumulative distance traveled for each reported wheel.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32645,7 +33249,12 @@ y轴磁力计数据
   <p style="color:red">
    生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   用于填充OpenDroneID基本ID消息的数据。 此消息和以下消息主要用于向OpenDroneID实现提供数据。 E.g. https://github.com/opendroneid/opendroneid-core-c. 另见ASTM远程识别标准：https://www.astm.org/Standards/F3411.htm。 这些信息的使用情况见https://mavlink.io/en/services/opendroneid.html。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Data for filling the OpenDroneID Basic ID message. This and the below messages are primarily meant for feeding data to/from an OpenDroneID implementation. E.g. https://github.com/opendroneid/opendroneid-core-c. See also the ASTM Remote ID standard at https://www.astm.org/Standards/F3411.htm. The usage of these messages is documented at https://mavlink.io/en/services/opendroneid.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32691,7 +33300,12 @@ y轴磁力计数据
   <p style="color:red">
    生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
-   用于填充OpenDroneID位置消息的数据。 浮动数据类型为32位 IEEE 754。 置信息提供了飞机的位置、高度、方向和速度。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Data for filling the OpenDroneID Location message. The float data types are 32-bit IEEE 754. The Location message provides the location, altitude, direction and speed of the aircraft.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32871,9 +33485,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   用于填充OpenDroneID身份验证消息的数据。 身份验证消息定义了一个字段，该字段可以为UAS(无人驾驶飞机系统)的身份验证真实性方法。 身份验证消息可以有两种不同的格式。 支持五个数据页。 对于data page 0，存在PageCount、长度和时间戳字段，而验证数据只有17个字节。 对于数据页1到4，不存在PageCount、长度和时间戳，验证数据的大小为23字节。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Data for filling the OpenDroneID Authentication message. The Authentication Message defines a field that can provide a means of authenticity for the identity of the UAS (Unmanned Aircraft System). The Authentication message can have two different formats. Five data pages are supported. For data page 0, the fields PageCount, Length and TimeStamp are present and AuthData is only 17 bytes. For data page 1 through 4, PageCount, Length and TimeStamp are not present and the size of AuthData is 23 bytes.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32956,9 +33575,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   用于填充OpenDroneID自我ID消息的数据。 Self ID消息为操作员提供了一个机会(可选地)来声明他们的身份和飞行的目的。 这条信息可以提供额外的信息，可以减少在特定区域或方式飞行的UA(无人驾驶飞机)的威胁概况。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Data for filling the OpenDroneID Self ID message. The Self ID Message is an opportunity for the operator to (optionally) declare their identity and purpose of the flight. This message can provide additional information that could reduce the threat profile of a UA (Unmanned Aircraft) flying in a particular area or manner.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32994,9 +33618,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   用于填充OpenDroneID系统消息的数据。 系统信息包含一般系统信息，包括操作员位置和可能的机群信息。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Data for filling the OpenDroneID System message. The System Message contains general system information including the operator location and possible aircraft group information.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33087,9 +33716,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   用于填充OpenDroneID操作员ID消息的数据，其中包含CAA(民用航空局)颁发的操作员ID。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Data for filling the OpenDroneID Operator ID message, which contains the CAA (Civil Aviation Authority) issued operator ID.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33125,9 +33759,14 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
-   OpenDroneID消息包是多个已编码的OpenDroneID消息的容器(即不是上述消息描述的格式，而是编码为压缩后的OpenDroneID字节格式)。 用于蓝牙5.0远程/扩展广告或WiFi邻居感知网络传输。</p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>An OpenDroneID message pack is a container for multiple encoded OpenDroneID messages (i.e. not in the format given for the above messages descriptions but after encoding into the compressed OpenDroneID byte format). Used e.g. when transmitting on Bluetooth 5.0 Long Range/Extended Advertising or on WiFi Neighbor Aware Networking.</p>
   <table class="sortable">
    <thead>
     <tr>
