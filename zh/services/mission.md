@@ -107,7 +107,23 @@ The diagram below shows the communication sequence to upload a mission to a dron
 
 > **Note** Mission update must be robust! A new mission should be fully uploaded and accepted before the old mission is replaced/removed.
 
-{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: MISSION_COUNT GCS->>GCS: Start timeout Drone->>GCS: MISSION_REQUEST_INT (0) Drone->>Drone: Start timeout GCS-->>Drone: MISSION_ITEM_INT (0) Note over GCS,Drone: ... iterate through items ... Drone->>GCS: MISSION_REQUEST_INT (count-1) Drone->>Drone: Start timeout GCS-->>Drone: MISSION_ITEM_INT (count-1) Drone->>GCS: MISSION_ACK {% endmermaid %}
+[![Mission Upload Sequence](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ09VTlRcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9SRVFVRVNUX0lOVCAoMClcbiAgICBEcm9uZS0-PkRyb25lOiBTdGFydCB0aW1lb3V0XG4gICAgR0NTLS0-PkRyb25lOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgRHJvbmUtPj5HQ1M6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgRHJvbmUtPj5Ecm9uZTogU3RhcnQgdGltZW91dFxuICAgIEdDUy0tPj5Ecm9uZTogTUlTU0lPTl9JVEVNX0lOVCAoY291bnQtMSlcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ09VTlRcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9SRVFVRVNUX0lOVCAoMClcbiAgICBEcm9uZS0-PkRyb25lOiBTdGFydCB0aW1lb3V0XG4gICAgR0NTLS0-PkRyb25lOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgRHJvbmUtPj5HQ1M6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgRHJvbmUtPj5Ecm9uZTogU3RhcnQgdGltZW91dFxuICAgIEdDUy0tPj5Ecm9uZTogTUlTU0lPTl9JVEVNX0lOVCAoY291bnQtMSlcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+<!-- Original sequence diagram
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MISSION_COUNT
+    GCS->>GCS: Start timeout
+    Drone->>GCS: MISSION_REQUEST_INT (0)
+    Drone->>Drone: Start timeout
+    GCS-- >>Drone: MISSION_ITEM_INT (0)
+    Note over GCS,Drone: ... iterate through items ...
+    Drone->>GCS: MISSION_REQUEST_INT (count-1)
+    Drone->>Drone: Start timeout
+    GCS-- >>Drone: MISSION_ITEM_INT (count-1)
+    Drone->>GCS: MISSION_ACK
+-->
 
 In more detail, the sequence of operations is:
 
@@ -134,7 +150,24 @@ Note:
 
 The diagram below shows the communication sequence to download a mission from a drone (assuming all operations succeed).
 
-{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: MISSION_REQUEST_LIST GCS->>GCS: Start timeout Drone-->>GCS: MISSION_COUNT GCS->>Drone: MISSION_REQUEST_INT (0) GCS->>GCS: Start timeout Drone-->>GCS: MISSION_ITEM_INT (0) Note over GCS,Drone: ... iterate through items ... GCS->>Drone: MISSION_REQUEST_INT (count-1) GCS->>GCS: Start timeout Drone-->>GCS: MISSION_ITEM_INT (count-1) GCS->>Drone: MISSION_ACK {% endmermaid %}
+[![Sequence: Download mission](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9MSVNUXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0NPVU5UXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKDApXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UIChjb3VudC0xKVxuICAgIEdDUy0-PkRyb25lOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9MSVNUXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0NPVU5UXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKDApXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UIChjb3VudC0xKVxuICAgIEdDUy0-PkRyb25lOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!-- original sequence
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MISSION_REQUEST_LIST
+    GCS->>GCS: Start timeout
+    Drone-- >>GCS: MISSION_COUNT
+    GCS->>Drone: MISSION_REQUEST_INT (0)
+    GCS->>GCS: Start timeout
+    Drone-- >>GCS: MISSION_ITEM_INT (0)
+    Note over GCS,Drone: ... iterate through items ...
+    GCS->>Drone: MISSION_REQUEST_INT (count-1)
+    GCS->>GCS: Start timeout
+    Drone-- >>GCS: MISSION_ITEM_INT (count-1)
+    GCS->>Drone: MISSION_ACK
+-->
 
 The sequence is similar to that for [uploading a mission](#uploading_mission). The main difference is that the client (e.g. GCS) sends [MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST), which triggers the autopilot to respond with the current count of items. This starts a cycle where the GCS requests mission items, and the drone supplies them.
 
