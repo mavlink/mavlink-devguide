@@ -13742,17 +13742,17 @@ MAV_CMD_NAV_ROI)。</p>
    </thead>
    <tbody>
     <tr>
-     <td>1</td>
+     <td>1: Failure unit</td>
      <td>受故障影响的单元。</td>
      <td>FAILURE_UNIT</td>
     </tr>
     <tr>
-     <td>2</td>
+     <td>2: Failure type</td>
      <td>失败的表现方式。</td>
      <td>FAILURE_TYPE</td>
     </tr>
     <tr>
-     <td>3</td>
+     <td>3: Instance</td>
      <td>受故障影响的实例 (0表示所有)。</td>
      <td>
      </td>
@@ -14137,8 +14137,6 @@ MAV_CMD_NAV_ROI)。</p>
   </h3>
   <p style="color:red">
    <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -14665,8 +14663,6 @@ MAV_CMD_NAV_ROI)。</p>
   </h3>
   <p style="color:red">
    <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -14960,8 +14956,6 @@ MAV_CMD_NAV_ROI)。</p>
   </h3>
   <p style="color:red">
    <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -14988,8 +14982,6 @@ MAV_CMD_NAV_ROI)。</p>
   </h3>
   <p style="color:red">
    <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -29825,7 +29817,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -29933,7 +29925,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -30109,7 +30101,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    <a href="#messages">
     [Message]
@@ -30220,7 +30212,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    <a href="#messages">
     [Message]
@@ -31934,7 +31926,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -32093,6 +32085,43 @@ y轴磁力计数据
     </tr>
    </tbody>
   </table>
+  <h3 id="RAW_RPM">RAW_RPM (<a href="#RAW_RPM">
+    #339
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>RPM sensor data message.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>index</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Index of this RPM sensor (0-indexed)</td>
+    </tr>
+    <tr>
+     <td>frequency</td>
+     <td>float</td>
+     <td>rpm</td>
+     <td>Indicated rate</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="UTM_GLOBAL_POSITION">UTM_GLOBAL_POSITION (<a href="#UTM_GLOBAL_POSITION">
     #340
    </a>
@@ -32126,7 +32155,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>位置应用时间（以微秒为单位的UNIX时间）。</td>
+     <td>Time of applicability of position (microseconds since UNIX epoch).</td>
     </tr>
     <tr>
      <td>uas_id</td>
@@ -32137,7 +32166,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>唯一的UASID。</td>
+     <td>Unique UAS ID.</td>
     </tr>
     <tr>
      <td>lat</td>
@@ -32147,7 +32176,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>纬度(WGS84)</td>
+     <td>Latitude (WGS84)</td>
     </tr>
     <tr>
      <td>lon</td>
@@ -32157,7 +32186,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>经度 (WGS84)</td>
+     <td>Longitude (WGS84)</td>
     </tr>
     <tr>
      <td>alt</td>
@@ -32167,7 +32196,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>高度(WGS84)。</td>
+     <td>Altitude (WGS84)</td>
     </tr>
     <tr>
      <td>relative_alt</td>
@@ -32177,7 +32206,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>相对（地面）高度</td>
+     <td>Altitude above ground</td>
     </tr>
     <tr>
      <td>vx</td>
@@ -32187,7 +32216,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>X方向的地面速度 (纬度, 正向北)</td>
+     <td>Ground X speed (latitude, positive north)</td>
     </tr>
     <tr>
      <td>vy</td>
@@ -32197,7 +32226,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Y方向的地面速度 (经度, 正向东)</td>
+     <td>Ground Y speed (longitude, positive east)</td>
     </tr>
     <tr>
      <td>vz</td>
@@ -32207,7 +32236,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>Z方向的地面速度 (高度, 正向下)</td>
+     <td>Ground Z speed (altitude, positive down)</td>
     </tr>
     <tr>
      <td>h_acc</td>
@@ -32217,7 +32246,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>水平位置不确定性(标准偏差)</td>
+     <td>Horizontal position uncertainty (standard deviation)</td>
     </tr>
     <tr>
      <td>v_acc</td>
@@ -32227,7 +32256,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>高度不确定性(标准偏差)</td>
+     <td>Altitude uncertainty (standard deviation)</td>
     </tr>
     <tr>
      <td>vel_acc</td>
@@ -32237,7 +32266,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>速度不确定性(标准偏差)</td>
+     <td>Speed uncertainty (standard deviation)</td>
     </tr>
     <tr>
      <td>next_lat</td>
@@ -32247,7 +32276,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>下一个航路点，纬度(WGS84)</td>
+     <td>Next waypoint, latitude (WGS84)</td>
     </tr>
     <tr>
      <td>next_lon</td>
@@ -32257,7 +32286,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>下一个航路点，经度(WGS84)</td>
+     <td>Next waypoint, longitude (WGS84)</td>
     </tr>
     <tr>
      <td>next_alt</td>
@@ -32267,7 +32296,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>下一个航点高度(WGS84)</td>
+     <td>Next waypoint, altitude (WGS84)</td>
     </tr>
     <tr>
      <td>update_rate</td>
@@ -32277,7 +32306,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>下次更新之前的时间。 设置为0，如果未知或在数据驱动模式。</td>
+     <td>Time until next update. Set to 0 if unknown or in data driven mode.</td>
     </tr>
     <tr>
      <td>flight_state</td>
@@ -32287,7 +32316,7 @@ y轴磁力计数据
      <td>
       <a href="#UTM_FLIGHT_STATE">UTM_FLIGHT_STATE</a>
      </td>
-     <td>飞行状态</td>
+     <td>Flight state</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -32297,7 +32326,7 @@ y轴磁力计数据
      <td>
       <a href="#UTM_DATA_AVAIL_FLAGS">UTM_DATA_AVAIL_FLAGS</a>
      </td>
-     <td>按位或可用数据标志的组合。</td>
+     <td>Bitwise OR combination of the data available flags.</td>
     </tr>
    </tbody>
   </table>
@@ -32327,21 +32356,21 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>name</td>
      <td>char[10]</td>
      <td>
      </td>
-     <td>名称，用于在地面控制站中显示良好人机交互的内容</td>
+     <td>Name, for human-friendly display in a Ground Control Station</td>
     </tr>
     <tr>
      <td>array_id</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>用于区分数组的唯一ID</td>
+     <td>Unique ID used to discriminate between arrays</td>
     </tr>
     <tr>
      <td style="color:blue;">data<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -32351,7 +32380,7 @@ y轴磁力计数据
      <td>float[58]</td>
      <td>
      </td>
-     <td>数据</td>
+     <td>data</td>
     </tr>
    </tbody>
   </table>
@@ -32361,7 +32390,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
   <p>
    <a href="#messages">
     [Message]
@@ -32388,7 +32417,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>radius</td>
@@ -32398,7 +32427,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>轨道圆半径。 正值顺时针，负值逆时针。</td>
+     <td>Radius of the orbit circle. Positive values orbit clockwise, negative values orbit counter-clockwise.</td>
     </tr>
     <tr>
      <td>frame</td>
@@ -32408,7 +32437,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_FRAME">MAV_FRAME</a>
      </td>
-     <td>场的坐标系统:x, y, z。</td>
+     <td>The coordinate system of the fields: x, y, z.</td>
     </tr>
     <tr>
      <td>x</td>
@@ -32419,7 +32448,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>中心点的 X 坐标。 坐标系依赖于坐标系域:局部= x位置(以米为单位)* 1e4，全局=纬度(以度为单位)* 1e7。</td>
+     <td>X coordinate of center point. Coordinate system depends on frame field: local = x position in meters * 1e4, global = latitude in degrees * 1e7.</td>
     </tr>
     <tr>
      <td>y</td>
@@ -32430,7 +32459,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>中心点的Y坐标。  坐标系依赖于坐标系域:局部= x位置(以米为单位)* 1e4，全局=纬度(以度为单位)* 1e7。</td>
+     <td>Y coordinate of center point.  Coordinate system depends on frame field: local = x position in meters * 1e4, global = latitude in degrees * 1e7.</td>
     </tr>
     <tr>
      <td>z</td>
@@ -32440,7 +32469,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>中心点的高度。 坐标系依赖于坐标字段。</td>
+     <td>Altitude of center point. Coordinate system depends on frame field.</td>
     </tr>
    </tbody>
   </table>
@@ -32473,64 +32502,64 @@ y轴磁力计数据
      <td>uint8_t</td>
      <td>
      </td>
-     <td>电池ID</td>
+     <td>Battery ID</td>
     </tr>
     <tr>
      <td>capacity_full_specification</td>
      <td>int32_t</td>
      <td>mAh</td>
-     <td>根据制造商信息的满电量状态，-1：未提供字段的容量。</td>
+     <td>Capacity when full according to manufacturer, -1: field not provided.</td>
     </tr>
     <tr>
      <td>capacity_full</td>
      <td>int32_t</td>
      <td>mAh</td>
-     <td>容量满时(考虑到电池退化)，-1:不提供字段。</td>
+     <td>Capacity when full (accounting for battery degradation), -1: field not provided.</td>
     </tr>
     <tr>
      <td>cycle_count</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>充电/放电循环计数。 -1：未提供字段。</td>
+     <td>Charge/discharge cycle count. -1: field not provided.</td>
     </tr>
     <tr>
      <td>serial_number</td>
      <td>int32_t</td>
      <td>
      </td>
-     <td>序列号: -1：未提供字段。</td>
+     <td>Serial number. -1: field not provided.</td>
     </tr>
     <tr>
      <td>device_name</td>
      <td>char[50]</td>
      <td>
      </td>
-     <td>静态设备名称。 用下划线分隔制造商和产品名称进行编码。</td>
+     <td>Static device name. Encode as manufacturer and product names separated using an underscore.</td>
     </tr>
     <tr>
      <td>weight</td>
      <td>uint16_t</td>
      <td>g</td>
-     <td>电池重量。 0: 未提供字段。</td>
+     <td>Battery weight. 0: field not provided.</td>
     </tr>
     <tr>
      <td>discharge_minimum_voltage</td>
      <td>uint16_t</td>
      <td>mV</td>
-     <td>放电时每个电池单体的最低电压。 如果不提供设置为UINT16_MAX值</td>
+     <td>Minimum per-cell voltage when discharging. If not supplied set to UINT16_MAX value.</td>
     </tr>
     <tr>
      <td>charging_minimum_voltage</td>
      <td>uint16_t</td>
      <td>mV</td>
-     <td>充电时每个电池单体的最低电压。 如果不提供设置为UINT16_MAX值</td>
+     <td>Minimum per-cell voltage when charging. If not supplied set to UINT16_MAX value.</td>
     </tr>
     <tr>
      <td>resting_minimum_voltage</td>
      <td>uint16_t</td>
      <td>mV</td>
-     <td>静止时每个电池单体的最低电压。 如果不提供设置为UINT16_MAX值</td>
+     <td>Minimum per-cell voltage when resting. If not supplied set to UINT16_MAX value.</td>
     </tr>
    </tbody>
   </table>
@@ -32568,7 +32597,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>电池ID</td>
+     <td>Battery ID</td>
     </tr>
     <tr>
      <td>capacity_remaining</td>
@@ -32580,7 +32609,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>剩余电量 值： [0-100], -1: 字段未提供。</td>
+     <td>Remaining battery energy. Values: [0-100], -1: field not provided.</td>
     </tr>
     <tr>
      <td>current</td>
@@ -32590,7 +32619,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>电池电流(通过所有电池/负载)。 放电为正，充电为负。 UINT16_MAX：未提供字段。</td>
+     <td>Battery current (through all cells/loads). Positive if discharging, negative if charging. UINT16_MAX: field not provided.</td>
     </tr>
     <tr>
      <td>temperature</td>
@@ -32600,7 +32629,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>电池温度： -1：未提供字段。</td>
+     <td>Battery temperature. -1: field not provided.</td>
     </tr>
     <tr>
      <td>fault_bitmask</td>
@@ -32610,7 +32639,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_SMART_BATTERY_FAULT">MAV_SMART_BATTERY_FAULT</a>
      </td>
-     <td>故障/健康的状况说明。</td>
+     <td>Fault/health indications.</td>
     </tr>
     <tr>
      <td>time_remaining</td>
@@ -32620,7 +32649,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>估计剩余电池时间。 -1：未提供字段。</td>
+     <td>Estimated remaining battery time. -1: field not provided.</td>
     </tr>
     <tr>
      <td>cell_offset</td>
@@ -32631,7 +32660,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>'电压'阵列字段中第一个索引的单元格数。 使用此字段指定超过16个电池单体的电压。</td>
+     <td>The cell number of the first index in the 'voltages' array field. Using this field allows you to specify cell voltages for batteries with more than 16 cells.</td>
     </tr>
     <tr>
      <td>voltages</td>
@@ -32641,7 +32670,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>单个电池单体电压。 拥有更多16个单元格的电池可以使用cell_offset字段来指定当前消息中指定的数组的单元格偏移量。 此电池的有效电池计数之上的索引值应该具有UINT16_MAX值。</td>
+     <td>Individual cell voltages. Batteries with more 16 cells can use the cell_offset field to specify the cell offset for the array specified in the current message . Index values above the valid cell count for this battery should have the UINT16_MAX value.</td>
     </tr>
    </tbody>
   </table>
@@ -32671,21 +32700,21 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (since system boot).</td>
     </tr>
     <tr>
      <td>active</td>
      <td>uint32_t</td>
      <td>
      </td>
-     <td>活动的输出</td>
+     <td>Active outputs</td>
     </tr>
     <tr>
      <td>actuator</td>
      <td>float[32]</td>
      <td>
      </td>
-     <td>伺服/电机输出数组值。 零值表示未使用的通道。</td>
+     <td>Servo / motor output array values. Zero values indicate unused channels.</td>
     </tr>
    </tbody>
   </table>
@@ -32695,7 +32724,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -32717,31 +32746,31 @@ y轴磁力计数据
      <td>safe_return</td>
      <td>int32_t</td>
      <td>s</td>
-     <td>车辆从目前的位置“安全返回”估计时间，(例如:RTL、Smart RTL等)。 -1表示载具已着陆，或没有时间估计。</td>
+     <td>Estimated time to complete the vehicle's configured "safe return" action from its current position (e.g. RTL, Smart RTL, etc.). -1 indicates that the vehicle is landed, or that no time estimate available.</td>
     </tr>
     <tr>
      <td>land</td>
      <td>int32_t</td>
      <td>s</td>
-     <td>从当前位置估计载具完成着陆行动的时间。 -1表示载具已着陆，或没有时间估计。</td>
+     <td>Estimated time for vehicle to complete the LAND action from its current position. -1 indicates that the vehicle is landed, or that no time estimate available.</td>
     </tr>
     <tr>
      <td>mission_next_item</td>
      <td>int32_t</td>
      <td>s</td>
-     <td>完成目前正在进行的任务项目的估计时间。 -1表示没有可用的时间估计。</td>
+     <td>Estimated time for reaching/completing the currently active mission item. -1 means no time estimate available.</td>
     </tr>
     <tr>
      <td>mission_end</td>
      <td>int32_t</td>
      <td>s</td>
-     <td>估计完成当前任务的时间。 -1意味着没有任务和/或没有可用的估计。</td>
+     <td>Estimated time for completing the current mission. -1 means no mission active and/or no estimate available.</td>
     </tr>
     <tr>
      <td>commanded_action</td>
      <td>int32_t</td>
      <td>s</td>
-     <td>完成当前命令动作的估计时间(即去、起飞、降落等)。 -1表示没有活动和/或没有可用的估计。</td>
+     <td>Estimated time for completing the current commanded action (i.e. Go To, Takeoff, Land, etc.). -1 means no action active and/or no estimate available.</td>
     </tr>
    </tbody>
   </table>
@@ -32776,7 +32805,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>系统ID(广播可以为0，但不建议这样做)</td>
+     <td>System ID (can be 0 for broadcast, but this is discouraged)</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -32785,7 +32814,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>组件ID(广播可以为0，但不建议这样做)</td>
+     <td>Component ID (can be 0 for broadcast, but this is discouraged)</td>
     </tr>
     <tr>
      <td>payload_type</td>
@@ -32793,7 +32822,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_TUNNEL_PAYLOAD_TYPE">MAV_TUNNEL_PAYLOAD_TYPE</a>
      </td>
-     <td>标识有效负载内容的代码(0表示未知，这是默认值)。 如果这个代码小于32768，那么它是一个“已注册”的有效负载类型，相应的代码应该添加到MAV_TUNNEL_PAYLOAD_TYPE enum中。 软件创建者可以根据需要注册类型块。 大于32767的代码被认为是局部实验，不应该检入任何广泛分布的代码库。</td>
+     <td>A code that identifies the content of the payload (0 for unknown, which is the default). If this code is less than 32768, it is a 'registered' payload type and the corresponding code should be added to the MAV_TUNNEL_PAYLOAD_TYPE enum. Software creators can register blocks of types as needed. Codes greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase.</td>
     </tr>
     <tr>
      <td>payload_length</td>
@@ -32802,7 +32831,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>有效载荷传送的数据长度</td>
+     <td>Length of the data transported in payload</td>
     </tr>
     <tr>
      <td>payload</td>
@@ -32811,7 +32840,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>可变长度负载。 有效载荷长度是由有效载荷长度定义的。 除非您理解payload_type指定的编码，否则此块的整个内容都是不透明的</td>
+     <td>Variable length payload. The payload length is defined by payload_length. The entire content of this block is opaque unless you understand the encoding specified by payload_type.</td>
     </tr>
    </tbody>
   </table>
@@ -32843,132 +32872,128 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>uptime</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>系统启动后的时间。</td>
+     <td>Time since system boot.</td>
     </tr>
     <tr>
      <td>type</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>机载计算机类型:0:任务计算机主计算机，1:任务计算机备份1,2:任务计算机备份2,3:计算节点，4-5:计算备件，6-9:有效载荷计算机。</td>
+     <td>Type of the onboard computer: 0: Mission computer primary, 1: Mission computer backup 1, 2: Mission computer backup 2, 3: Compute node, 4-5: Compute spares, 6-9: Payload computers.</td>
     </tr>
     <tr>
      <td>cpu_cores</td>
      <td>uint8_t[8]</td>
      <td>
      </td>
-     <td>组件的CPU使用百分比(100 - idle)。 值UINT8_MAX表示该字段未被使用。</td>
+     <td>CPU usage on the component in percent (100 - idle). A value of UINT8_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>cpu_combined</td>
      <td>uint8_t[10]</td>
      <td>
      </td>
-     <td>按照最后10块将GPU使用合并运行100ms，(直方图)。 这允许识别负载峰值，使系统达到最大运算能力，但只在很短的时间内。 值UINT8_MAX表示该字段未被使用。</td>
+     <td>Combined CPU usage as the last 10 slices of 100 MS (a histogram). This allows to identify spikes in load that max out the system, but only for a short amount of time. A value of UINT8_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>gpu_cores</td>
      <td>uint8_t[4]</td>
      <td>
      </td>
-     <td>GPU对组件的使用百分比(100 - idle)。 值UINT8_MAX表示该字段未被使用。</td>
+     <td>GPU usage on the component in percent (100 - idle). A value of UINT8_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>gpu_combined</td>
      <td>uint8_t[10]</td>
      <td>
      </td>
-     <td>按照最后10块将GPU使用合并运行100ms，(直方图)。 这允许识别负载峰值，使系统达到最大运算能力，但只在很短的时间内。 值UINT8_MAX表示该字段未被使用。</td>
+     <td>Combined GPU usage as the last 10 slices of 100 MS (a histogram). This allows to identify spikes in load that max out the system, but only for a short amount of time. A value of UINT8_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>temperature_board</td>
      <td>int8_t</td>
      <td>degC</td>
-     <td>板的温度。 值INT8_MAX表示该字段未被使用。</td>
+     <td>Temperature of the board. A value of INT8_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>temperature_core</td>
      <td>int8_t[8]</td>
      <td>degC</td>
-     <td>中央处理器核心的温度。 值INT8_MAX表示该字段未被使用。</td>
+     <td>Temperature of the CPU core. A value of INT8_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>fan_speed</td>
      <td>int16_t[4]</td>
      <td>rpm</td>
-     <td>风扇速度。 值INT16_MAX表示该字段未被使用。</td>
+     <td>Fan speeds. A value of INT16_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>ram_usage</td>
      <td>uint32_t</td>
      <td>MiB</td>
-     <td>组件系统上使用的RAM存储空间量。 值UINT32_MAX表示该字段未被使用。</td>
+     <td>Amount of used RAM on the component system. A value of UINT32_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>ram_total</td>
      <td>uint32_t</td>
      <td>MiB</td>
-     <td>组件系统上的RAM总数。 值UINT32_MAX表示该字段未被使用。</td>
+     <td>Total amount of RAM on the component system. A value of UINT32_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>storage_type</td>
      <td>uint32_t[4]</td>
      <td>
      </td>
-     <td>存储类型:0:硬盘驱动器，1:SSD, 2: EMMC, 3: SD卡(不可移动)，4:SD卡(可移动)。 值UINT32_MAX表示该字段未被使用。</td>
+     <td>Storage type: 0: HDD, 1: SSD, 2: EMMC, 3: SD card (non-removable), 4: SD card (removable). A value of UINT32_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>storage_usage</td>
      <td>uint32_t[4]</td>
      <td>MiB</td>
-     <td>组件系统上使用的存储空间量。 UINT32_MAX表示该字段未被使用。</td>
+     <td>Amount of used storage space on the component system. A value of UINT32_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>storage_total</td>
      <td>uint32_t[4]</td>
      <td>MiB</td>
-     <td>组件系统上的存储空间总量。 值UINT32_MAX表示该字段未被使用。</td>
+     <td>Total amount of storage space on the component system. A value of UINT32_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>link_type</td>
      <td>uint32_t[6]</td>
      <td>
      </td>
-     <td>链接类型:0-9:UART, 10-19:有线网络，20-29:Wifi, 30-39:点对点专有，40-49:Mesh专有</td>
+     <td>Link type: 0-9: UART, 10-19: Wired network, 20-29: Wifi, 30-39: Point-to-point proprietary, 40-49: Mesh proprietary</td>
     </tr>
     <tr>
      <td>link_tx_rate</td>
      <td>uint32_t[6]</td>
      <td>KiB/s</td>
-     <td>
-来自到组件系统的上行网络通信量 值UINT32_MAX表示该字段未被使用。</td>
+     <td>Network traffic from the component system. A value of UINT32_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>link_rx_rate</td>
      <td>uint32_t[6]</td>
      <td>KiB/s</td>
-     <td>
-传输到组件系统的下行网络通信量 值UINT32_MAX表示该字段未被使用。</td>
+     <td>Network traffic to the component system. A value of UINT32_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>link_tx_max</td>
      <td>uint32_t[6]</td>
      <td>KiB/s</td>
-     <td>
-来自到组件系统的上行网络通讯能力 值UINT32_MAX表示该字段未被使用。</td>
+     <td>Network capacity from the component system. A value of UINT32_MAX implies the field is unused.</td>
     </tr>
     <tr>
      <td>link_rx_max</td>
      <td>uint32_t[6]</td>
      <td>KiB/s</td>
-     <td>
-传输到组件系统的下行网络通讯能力 值UINT32_MAX表示该字段未被使用。</td>
+     <td>Network capacity to the component system. A value of UINT32_MAX implies the field is unused.</td>
     </tr>
    </tbody>
   </table>
@@ -33005,7 +33030,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>vendor_name</td>
@@ -33016,7 +33041,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>组件供应商名称</td>
+     <td>Name of the component vendor</td>
     </tr>
     <tr>
      <td>model_name</td>
@@ -33027,7 +33052,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>组件型号名称</td>
+     <td>Name of the component model</td>
     </tr>
     <tr>
      <td>firmware_version</td>
@@ -33038,7 +33063,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>组件固件版本 (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>Version of the component firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
     </tr>
     <tr>
      <td>hardware_version</td>
@@ -33049,7 +33074,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>组件硬硬件版本 (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>Version of the component hardware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
     </tr>
     <tr>
      <td>capability_flags</td>
@@ -33059,7 +33084,7 @@ y轴磁力计数据
      <td>
       <a href="#COMPONENT_CAP_FLAGS">COMPONENT_CAP_FLAGS</a>
      </td>
-     <td>组件功能标志的位图。</td>
+     <td>Bitmap of component capability flags.</td>
     </tr>
     <tr>
      <td>component_definition_version</td>
@@ -33070,7 +33095,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>组件定义版本(迭代)</td>
+     <td>Component definition version (iteration)</td>
     </tr>
     <tr>
      <td>component_definition_uri</td>
@@ -33081,7 +33106,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>组件定义URI(如果有的话)，否则只能提供基本功能)。 XML格式尚未指定，正在运行。</td>
+     <td>Component definition URI (if any, otherwise only basic functions will be available). The XML format is not yet specified and work in progress.</td>
     </tr>
    </tbody>
   </table>
@@ -33133,7 +33158,7 @@ y轴磁力计数据
      <td>
       <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
      </td>
-     <td>调整格式</td>
+     <td>Tune format</td>
     </tr>
     <tr>
      <td>tune</td>
@@ -33142,7 +33167,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>将优化定义为以null结尾的字符串。</td>
+     <td>Tune definition as a NULL-terminated string.</td>
     </tr>
    </tbody>
   </table>
@@ -33177,7 +33202,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -33186,7 +33211,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td>format</td>
@@ -33194,7 +33219,7 @@ y轴磁力计数据
      <td>
       <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
      </td>
-     <td>支持的调整格式的字段。</td>
+     <td>Bitfield of supported tune formats.</td>
     </tr>
    </tbody>
   </table>
@@ -33224,20 +33249,20 @@ y轴磁力计数据
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(同步到 UNIX 时间或系统启动后)。</td>
+     <td>Timestamp (synced to UNIX time or since system boot).</td>
     </tr>
     <tr>
      <td>count</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>提供数据的车轮总数量</td>
+     <td>Number of wheels reported.</td>
     </tr>
     <tr>
      <td>distance</td>
      <td>double[16]</td>
      <td>m</td>
-     <td>单轮编码器报告的距离. 前向轮调增加值、反向轮调减少值。 不是所有的轮子都必须有轮子编码器;编码器到转轮位置的映射必须得到端点的同意/理解。</td>
+     <td>Distance reported by individual wheel encoders. Forward rotations increase values, reverse rotations decrease them. Not all wheels will necessarily have wheel encoders; the mapping of encoders to wheel positions must be agreed/understood by the endpoints.</td>
     </tr>
    </tbody>
   </table>
@@ -33247,7 +33272,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33271,7 +33296,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_ID_TYPE">MAV_ODID_ID_TYPE</a>
      </td>
-     <td>指示此消息的uas_id字段的格式。</td>
+     <td>Indicates the format for the uas_id field of this message.</td>
     </tr>
     <tr>
      <td>ua_type</td>
@@ -33279,7 +33304,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_UA_TYPE">MAV_ODID_UA_TYPE</a>
      </td>
-     <td>表示UA 类型(无人驾驶航空器)。</td>
+     <td>Indicates the type of UA (Unmanned Aircraft).</td>
     </tr>
     <tr>
      <td>uas_id</td>
@@ -33288,7 +33313,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>UAS (无人驾驶飞机系统) ID采用id_型号指定的格式。 应在字段的未使用部分中填充空值。</td>
+     <td>UAS (Unmanned Aircraft System) ID following the format specified by id_type. Shall be filled with nulls in the unused portion of the field.</td>
     </tr>
    </tbody>
   </table>
@@ -33298,7 +33323,7 @@ y轴磁力计数据
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33325,7 +33350,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_STATUS">MAV_ODID_STATUS</a>
      </td>
-     <td>判断无人驾驶飞机是在地面上还是在空中。</td>
+     <td>Indicates whether the unmanned aircraft is on the ground or in the air.</td>
     </tr>
     <tr>
      <td>direction</td>
@@ -33335,7 +33360,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>对地方向(不是航向，而是运动方向):从真北向顺时针方向测量:0 - 35999 单位百分之一度。 如果未知：36100  单位百分之一度。</td>
+     <td>Direction over ground (not heading, but direction of movement) measured clockwise from true North: 0 - 35999 centi-degrees. If unknown: 36100 centi-degrees.</td>
     </tr>
     <tr>
      <td>speed_horizontal</td>
@@ -33345,7 +33370,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>地面速度。 前进方向上 如果未知：25500厘米/秒。 如果速度大于25425厘米/秒，请使用 25425厘米/秒。</td>
+     <td>Ground speed. Positive only. If unknown: 25500 cm/s. If speed is larger than 25425 cm/s, use 25425 cm/s.</td>
     </tr>
     <tr>
      <td>speed_vertical</td>
@@ -33355,7 +33380,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>垂直速度。 上为正 如果未知：6300厘米/秒。 如果速度大于6200厘米/秒，请使用 6200厘米/秒。 如果低于-6200厘米/秒，请使用-6200厘米/秒。</td>
+     <td>The vertical speed. Up is positive. If unknown: 6300 cm/s. If speed is larger than 6200 cm/s, use 6200 cm/s. If lower than -6200 cm/s, use -6200 cm/s.</td>
     </tr>
     <tr>
      <td>latitude</td>
@@ -33365,7 +33390,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>无人驾驶飞机目前的纬度。 如果未知： 0 (包括经纬度)。</td>
+     <td>Current latitude of the unmanned aircraft. If unknown: 0 (both Lat/Lon).</td>
     </tr>
     <tr>
      <td>longitude</td>
@@ -33375,7 +33400,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>无人驾驶飞机目前经度。 如果未知： 0 (包括经纬度)。</td>
+     <td>Current longitude of the unmanned aircraft. If unknown: 0 (both Lat/Lon).</td>
     </tr>
     <tr>
      <td>altitude_barometric</td>
@@ -33385,7 +33410,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>根据气压计算的海拔高度. 参考值为29.92inHg或1013.2mb。 d</td>
+     <td>The altitude calculated from the barometric pressue. Reference is against 29.92inHg or 1013.2mb. If unknown: -1000 m.</td>
     </tr>
     <tr>
      <td>altitude_geodetic</td>
@@ -33395,7 +33420,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>WGS84定义的大地测量海拔。 如果未知：-1000米。</td>
+     <td>The geodetic altitude as defined by WGS84. If unknown: -1000 m.</td>
     </tr>
     <tr>
      <td>height_reference</td>
@@ -33405,7 +33430,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_HEIGHT_REF">MAV_ODID_HEIGHT_REF</a>
      </td>
-     <td>指示高度字段的参考点。</td>
+     <td>Indicates the reference point for the height field.</td>
     </tr>
     <tr>
      <td>height</td>
@@ -33415,7 +33440,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>当前无人驾驶飞机在起飞位置或地面以上的高度，用height_reference表示。 如果未知：-1000米。</td>
+     <td>The current height of the unmanned aircraft above the take-off location or the ground as indicated by height_reference. If unknown: -1000 m.</td>
     </tr>
     <tr>
      <td>horizontal_accuracy</td>
@@ -33425,7 +33450,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_HOR_ACC">MAV_ODID_HOR_ACC</a>
      </td>
-     <td>水平位置的精度。</td>
+     <td>The accuracy of the horizontal position.</td>
     </tr>
     <tr>
      <td>vertical_accuracy</td>
@@ -33435,7 +33460,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_VER_ACC">MAV_ODID_VER_ACC</a>
      </td>
-     <td>垂直位置的精度。</td>
+     <td>The accuracy of the vertical position.</td>
     </tr>
     <tr>
      <td>barometer_accuracy</td>
@@ -33445,7 +33470,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_VER_ACC">MAV_ODID_VER_ACC</a>
      </td>
-     <td>气度高度的精度。</td>
+     <td>The accuracy of the barometric altitude.</td>
     </tr>
     <tr>
      <td>speed_accuracy</td>
@@ -33455,7 +33480,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_SPEED_ACC">MAV_ODID_SPEED_ACC</a>
      </td>
-     <td>水平和垂直速度的精度。</td>
+     <td>The accuracy of the horizontal and vertical speed.</td>
     </tr>
     <tr>
      <td>timestamp</td>
@@ -33465,7 +33490,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>一小时后的秒数，参照协调世界时。 通常GPS会输出一个以毫秒为单位的周时间值。 首先将它转换为 UTC 然后将此字段转换为 (float) (time_week_ms % (60*60*1000))) / 1000。</td>
+     <td>Seconds after the full hour with reference to UTC time. Typically the GPS outputs a time-of-week value in milliseconds. First convert that to UTC and then convert for this field using ((float) (time_week_ms % (60*60*1000))) / 1000.</td>
     </tr>
     <tr>
      <td>timestamp_accuracy</td>
@@ -33475,7 +33500,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_TIME_ACC">MAV_ODID_TIME_ACC</a>
      </td>
-     <td>时间戳的准确性。</td>
+     <td>The accuracy of the timestamps.</td>
     </tr>
    </tbody>
   </table>
@@ -33512,7 +33537,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_AUTH_TYPE">MAV_ODID_AUTH_TYPE</a>
      </td>
-     <td>身份验证的类型标识。</td>
+     <td>Indicates the type of authentication.</td>
     </tr>
     <tr>
      <td>data_page</td>
@@ -33523,7 +33548,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>允许的范围是 0 - 4。</td>
+     <td>Allowed range is 0 - 4.</td>
     </tr>
     <tr>
      <td>page_count</td>
@@ -33534,7 +33559,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>此字段仅适用于第0页。 允许的范围是 0 - 5。</td>
+     <td>This field is only present for page 0. Allowed range is 0 - 5.</td>
     </tr>
     <tr>
      <td>length</td>
@@ -33544,7 +33569,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>此字段仅适用于第0页。 所有数据页面的身份验证数据的总字节。 允许的范围是 0 - 109 (17 + 23*4)。</td>
+     <td>This field is only present for page 0. Total bytes of authentication_data from all data pages. Allowed range is 0 - 109 (17 + 23*4).</td>
     </tr>
     <tr>
      <td>timestamp</td>
@@ -33554,7 +33579,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>这个字段只出现在第0页。32位Unix时间戳(以秒为单位)，从00:00:00 01/01/2019开始。</td>
+     <td>This field is only present for page 0. 32 bit Unix Timestamp in seconds since 00:00:00 01/01/2019.</td>
     </tr>
     <tr>
      <td>authentication_data</td>
@@ -33565,7 +33590,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>不透明的身份验证数据。 对于页面0，大小仅为17字节。 对于其他页面，大小为23字节。 应在字段的未使用部分中填充空值。</td>
+     <td>Opaque authentication data. For page 0, the size is only 17 bytes. For other pages, the size is 23 bytes. Shall be filled with nulls in the unused portion of the field.</td>
     </tr>
    </tbody>
   </table>
@@ -33599,7 +33624,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_DESC_TYPE">MAV_ODID_DESC_TYPE</a>
      </td>
-     <td>描述字段的类型。</td>
+     <td>Indicates the type of the description field.</td>
     </tr>
     <tr>
      <td>description</td>
@@ -33608,7 +33633,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>用ASCII字符表示的文本描述或数值。 应在字段的未使用部分中填充空值。</td>
+     <td>Text description or numeric value expressed as ASCII characters. Shall be filled with nulls in the unused portion of the field.</td>
     </tr>
    </tbody>
   </table>
@@ -33645,7 +33670,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_LOCATION_SRC">MAV_ODID_LOCATION_SRC</a>
      </td>
-     <td>指定运行人员位置的位置源。</td>
+     <td>Specifies the location source for the operator location.</td>
     </tr>
     <tr>
      <td>operator_latitude</td>
@@ -33655,7 +33680,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>运营人的纬度。 如果未知： 0 (包括经纬度)。</td>
+     <td>Latitude of the operator. If unknown: 0 (both Lat/Lon).</td>
     </tr>
     <tr>
      <td>operator_longitude</td>
@@ -33665,7 +33690,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>运营人的经度 如果未知： 0 (包括经纬度)。</td>
+     <td>Longitude of the operator. If unknown: 0 (both Lat/Lon).</td>
     </tr>
     <tr>
      <td>area_count</td>
@@ -33676,7 +33701,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>该区域、编队或编队中的飞机数量(默认为1架)。</td>
+     <td>Number of aircraft in the area, group or formation (default 1).</td>
     </tr>
     <tr>
      <td>area_radius</td>
@@ -33686,7 +33711,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>组或组的圆柱形区域的半径(默认为0)。</td>
+     <td>Radius of the cylindrical area of the group or formation (default 0).</td>
     </tr>
     <tr>
      <td>area_ceiling</td>
@@ -33696,7 +33721,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>相对于WGS84的区域操作上限 如果未知：-1000米。</td>
+     <td>Area Operations Ceiling relative to WGS84. If unknown: -1000 m.</td>
     </tr>
     <tr>
      <td>area_floor</td>
@@ -33706,7 +33731,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>相对于WGS84的区域操作楼层。 未知:-1000米。</td>
+     <td>Area Operations Floor relative to WGS84. If unknown: -1000 m.</td>
     </tr>
    </tbody>
   </table>
@@ -33740,7 +33765,7 @@ y轴磁力计数据
      <td>
       <a href="#MAV_ODID_OPERATOR_ID_TYPE">MAV_ODID_OPERATOR_ID_TYPE</a>
      </td>
-     <td>指示operator_id字段（运营人）的类型。</td>
+     <td>Indicates the type of the operator_id field.</td>
     </tr>
     <tr>
      <td>operator_id</td>
@@ -33749,7 +33774,7 @@ y轴磁力计数据
       <a href="#">
       </a>
      </td>
-     <td>用ASCII字符表示的文本描述或数值。 应在字段的未使用部分中填充空值。</td>
+     <td>Text description or numeric value expressed as ASCII characters. Shall be filled with nulls in the unused portion of the field.</td>
     </tr>
    </tbody>
   </table>
@@ -33781,21 +33806,21 @@ y轴磁力计数据
      <td>single_message_size</td>
      <td>uint8_t</td>
      <td>bytes</td>
-     <td>该字段当前必须始终等于25字节，因为所有已编码的OpenDroneID消息都被指定为这个长度。</td>
+     <td>This field must currently always be equal to 25 bytes, since all encoded OpenDroneID messages are specificed to have this length.</td>
     </tr>
     <tr>
      <td>msg_pack_size</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>包中已编码消息的数量(不是字节数)。 允许的范围是 1 - 10。</td>
+     <td>Number of encoded messages in the pack (not the number of bytes). Allowed range is 1 - 10.</td>
     </tr>
     <tr>
      <td>messages</td>
      <td>uint8_t[250]</td>
      <td>
      </td>
-     <td>已编码的OpenDroneID消息的连接。 应在字段的未使用部分中填充空值。</td>
+     <td>Concatenation of encoded OpenDroneID messages. Shall be filled with nulls in the unused portion of the field.</td>
     </tr>
    </tbody>
   </table>
