@@ -14031,17 +14031,17 @@
    </thead>
    <tbody>
     <tr>
-     <td>1</td>
+     <td>1: Failure unit</td>
      <td>The unit which is affected by the failure.</td>
      <td>FAILURE_UNIT</td>
     </tr>
     <tr>
-     <td>2</td>
+     <td>2: Failure type</td>
      <td>The type how the failure manifests itself.</td>
      <td>FAILURE_TYPE</td>
     </tr>
     <tr>
-     <td>3</td>
+     <td>3: Instance</td>
      <td>Instance affected by failure (0 to signal all).</td>
      <td>
      </td>
@@ -14434,8 +14434,6 @@
   </h3>
   <p style="color:red">
    <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -14961,8 +14959,6 @@
   </h3>
   <p style="color:red">
    <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -15256,8 +15252,6 @@
   </h3>
   <p style="color:red">
    <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -15284,8 +15278,6 @@
   </h3>
   <p style="color:red">
    <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -32368,6 +32360,43 @@
      <td>
      </td>
      <td>1: Receiving session pending, 0: No receiving session pending.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="RAW_RPM">RAW_RPM (<a href="#RAW_RPM">
+    #339
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>RPM sensor data message.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>index</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Index of this RPM sensor (0-indexed)</td>
+    </tr>
+    <tr>
+     <td>frequency</td>
+     <td>float</td>
+     <td>rpm</td>
+     <td>Indicated rate</td>
     </tr>
    </tbody>
   </table>
