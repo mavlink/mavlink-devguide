@@ -38,12 +38,12 @@ Byte Index | C version | Content | Value | Explanation
 0 to 1 | `uint16_t seq_number` | Sequence number for message | 0&nbsp;-&nbsp;65535 | All *new* messages between the GCS and drone iterate this number. Re-sent commands/ACK/NAK should use the previous response's sequence number.
 2 | `uint8_t session`   | Session id | 0 - 255 | Session id for read/write operations (the server may use this to reference the file handle and information about the progress of read/write operations).
 3 | `uint8_t opcode`    | [OpCode](#opcodes) (id) | 0 - 255 | Ids for particular commands and ACK/NAK messages.
-4 | `uint8_t size`      | Size         | 1 - 255 | Depends on [OpCode](#opcodes). For Reads/Writes this is the size of the `data` transported. For an ACK to `OpenFileRO` it is the size of the file that has been opened (and must be read). For NAK it is the number of bytes used for [error information](#error_codes) (1 or 2).
+4 | `uint8_t size`      | Size         | 0 - 255 | Depends on [OpCode](#opcodes). For Reads/Writes this is the size of the `data` transported. For NAK it is the number of bytes used for [error information](#error_codes) (1 or 2).
 5 | `uint8_t req_opcode`| Request [OpCode](#opcodes) | 0 - 255 | OpCode (of original message) returned in an ACK or NAK response. 
 6 | `uint8_t burst_complete` | Burst complete | 0, 1 | Code to indicate if a burst is complete. 1: set of burst packets complete, 0: More burst packets coming.<br>- Only used if `req_opcode` is [BurstReadFile](#BurstReadFile).
 7 | `uint8_t padding` | Padding | | 32 bit alignment padding.
 8 to 11 | `uint32_t offset` | Content offset | | Offsets into data to be sent for [ListDirectory](#ListDirectory) and [ReadFile](#ReadFile) commands.
-12 to (max) 251| `uint8_t data[]` | Data | | Command/response data. Varies by [OpCode](#opcodes). This contains the `path` for operations that act on a file or directory. For an ACK for a reads or writes this is the requested information. For a NAK the first byte is the [error code](#error_codes) and the (optional) second byte may be an error number.
+12 to (max) 251| `uint8_t data[]` | Data | | Command/response data. Varies by [OpCode](#opcodes). This contains the `path` for operations that act on a file or directory. For an ACK for a read or write this is the requested information. For an ACK for a `OpenFileRO` operation this is the size of the file that was opened. For a NAK the first byte is the [error code](#error_codes) and the (optional) second byte may be an error number.
 
 
 ## OpCodes/Command {#opcodes}
@@ -51,13 +51,14 @@ Byte Index | C version | Content | Value | Explanation
 The opcodes that may be sent by the GCS (client) to the drone (server) are listed below.
 
 <!--  uint8_t enum Opcode: https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.h -->
-     
+
+
 Opcode | Name | Description
 --- | --- | ---
 0   | None | Ignored, always ACKed
 <span id="TerminateSession"></span> 1 | TerminateSession | Terminates open Read `session`.<br>- Closes the file associated with (`session`) and frees the session ID for re-use. 
 <span id="ResetSessions"></span> 2   | ResetSessions | Terminates *all* open read sessions.<br>- Clears all state held by the drone (server); closes all open files, etc.<br>- Sends an ACK reply with no data. <!-- Note, is same as Terminate, but does not check if file session exists -->
-<span id="ListDirectory"></span> 3   | ListDirectory | List files and directories in `<path>` from `<offset>`.<br>- Opens the directory (`path`), seeks to (`offset`) and fills the result buffer with `NULL`-separated filenames (files also include tab-separated file size) and directory names. Sends an ACK packet with the result buffer on success, otherwise a NAK packet with an error code.<br>- The directory is closed after the operation, so this leaves no state on the server.
+<span id="ListDirectory"></span> 3   | [ListDirectory](#list_directory) | List directory entry information (files, folders etc.) in `<path>`, starting from a specified entry index (`<offset>`).<br>- Response is an ACK packet with one or more entries on success, otherwise a NAK packet with an error code.<br>- Completion is indicated by a NACK with EOF in response to a requested index (`offset`) beyond the list of entries.<br>- The directory is closed after the operation, so this leaves no state on the server.
 <span id="OpenFileRO"></span> 4      | OpenFileRO | Opens file at `<path>` for reading, returns `<session>`<br>- The `path` is stored in the [payload](#payload) `data`. The drone opens the file (`path`) and allocates a *session number*. The file must exist.<br>- An ACK packet must include the allocated `session` and the data size of the file to be opened (`size`)<br>- A NAK packet must contain [error information](#error_codes) . Typical error codes for this command are `NoSessionsAvailable`, `FileExists`. <br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
 <span id="ReadFile"></span> 5        | ReadFile | Reads `<size>` bytes from `<offset>` in `<session>`.<br>- Seeks to (`offset`) in the file opened in (session) and reads (`size`) bytes into the result buffer.<br>- Sends an ACK packet with the result buffer on success, otherwise a NAK packet with an error code. For short reads or reads beyond the end of a file, the (`size`) field in the ACK packet will indicate the actual number of bytes read.<br>- Reads can be issued to any offset in the file for any number of bytes, so reconstructing portions of the file to deal with lost packets should be easy.<br>- For best download performance, try to keep two `Read` packets in flight.
 <span id="CreateFile"></span> 6      | CreateFile | Creates file at `<path>` for writing, returns `<session>`.<br>- Creates the file (path) and allocates a *session number*. The file must not exist, but all parent directories must exist.<br>- Sends an ACK packet with the allocated session number on success, or a NAK packet with an error code on error (i.e. [FileExists](#FileExists) if the `path` already exists).<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
@@ -102,17 +103,17 @@ The payload `size` field must be set to either 1 or 2, depending on whether or n
 
 Error | Name | Description
 --- | --- | ---
-<span id="None"></span>1                | None            | No error
-<span id="Fail"></span>2                | Fail            | Unknown failure
-<span id="FailErrno"></span>3           | FailErrno       | Command failed, Err number sent back in `PayloadHeader.data[1]`. This is a file-system error number understood by the server operating system.
-<span id="InvalidDataSize"></span>4     | InvalidDataSize | Payload `size` is invalid
-<span id="InvalidSession"></span>5      | InvalidSessionn | Session is not currently open
-<span id="NoSessionsAvailable"></span>6 | NoSessionsAvailable | All available sessions are already in use.
-<span id="EOF"></span>7                 | EOF             | Offset past end of file for `ListDirectory` and `ReadFile` commands.
-<span id="UnknownCommand"></span>8      | UnknownCommand  | Unknown command / opcode
-<span id="FileExists"></span>9          | FileExists      | File already exists
-<span id="FileProtected"></span>10      | FileProtected   | File is write protected
-
+<span id="None"></span>0                | None            | No error
+<span id="Fail"></span>1                | Fail            | Unknown failure
+<span id="FailErrno"></span>2           | FailErrno       | Command failed, Err number sent back in `PayloadHeader.data[1]`. This is a file-system error number understood by the server operating system.
+<span id="InvalidDataSize"></span>3     | InvalidDataSize | Payload `size` is invalid
+<span id="InvalidSession"></span>4      | InvalidSession  | Session is not currently open
+<span id="NoSessionsAvailable"></span>5 | NoSessionsAvailable | All available sessions are already in use.
+<span id="EOF"></span>6                 | EOF             | Offset past end of file for `ListDirectory` and `ReadFile` commands.
+<span id="UnknownCommand"></span>7      | UnknownCommand  | Unknown command / opcode
+<span id="FileExists"></span>8          | FileExists      | File/directory already exists
+<span id="FileProtected"></span>9       | FileProtected   | File/directory is write protected
+<span id="FileNotFound"></span>10       | FileNotFound    | File/directory not found
 
 
 ## Timeouts/Resending {#timeouts}
@@ -142,28 +143,30 @@ GCS recommended settings:
 
 The sequence of operations for downloading (reading) a file, assuming there are no timeouts and all operations/requests succeed, is shown below.
 
-{% mermaid %}
+[![Mermaid Sequence: Reading a File](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IE9wZW4gZmlsZVxuICAgIEdDUy0-PkRyb25lOiAgT3BlbkZpbGVSTyggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSApXG4gICAgRHJvbmUtLT4-R0NTOiBBQ0soIHNlc3Npb24sIHNpemU9NCwgZGF0YT1sZW4oZmlsZSkgKVxuICAgIE5vdGUgcmlnaHQgb2YgR0NTOiBSZWFkIGZpbGUgaW4gY2h1bmtzPGJyPihjYWxsIGF0IG9mZnNldClcbiAgICBHQ1MtPj5Ecm9uZTogIFJlYWRGaWxlKHNlc3Npb24sIHNpemUsIG9mZnNldClcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSyhzZXNzaW9uLCBzaXplPWxlbihidWZmZXIpLCBkYXRhWzBdPWJ1ZmZlcilcbiAgICBOb3RlIHJpZ2h0IG9mIEdDUzogQ29udGludWUgdW50aWwgTkFLPGJyPiB3aXRoIEVPRlxuICAgIERyb25lLS0-PkdDUzogTkFLKHNlc3Npb24sIHNpemU9MSwgZGF0YT1FT0YpXG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IENsb3NlIHNlc3Npb25cbiAgICBHQ1MtPj5Ecm9uZTogIFRlcm1pbmF0ZVNlc3Npb24oc2Vzc2lvbilcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSygpIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IE9wZW4gZmlsZVxuICAgIEdDUy0-PkRyb25lOiAgT3BlbkZpbGVSTyggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSApXG4gICAgRHJvbmUtLT4-R0NTOiBBQ0soIHNlc3Npb24sIHNpemU9NCwgZGF0YT1sZW4oZmlsZSkgKVxuICAgIE5vdGUgcmlnaHQgb2YgR0NTOiBSZWFkIGZpbGUgaW4gY2h1bmtzPGJyPihjYWxsIGF0IG9mZnNldClcbiAgICBHQ1MtPj5Ecm9uZTogIFJlYWRGaWxlKHNlc3Npb24sIHNpemUsIG9mZnNldClcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSyhzZXNzaW9uLCBzaXplPWxlbihidWZmZXIpLCBkYXRhWzBdPWJ1ZmZlcilcbiAgICBOb3RlIHJpZ2h0IG9mIEdDUzogQ29udGludWUgdW50aWwgTkFLPGJyPiB3aXRoIEVPRlxuICAgIERyb25lLS0-PkdDUzogTkFLKHNlc3Npb24sIHNpemU9MSwgZGF0YT1FT0YpXG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IENsb3NlIHNlc3Npb25cbiAgICBHQ1MtPj5Ecm9uZTogIFRlcm1pbmF0ZVNlc3Npb24oc2Vzc2lvbilcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSygpIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+
+<!-- Original diagram
 sequenceDiagram;
     participant GCS
     participant Drone
     Note right of GCS: Open file
     GCS->>Drone:  OpenFileRO( data[0]=path, size=len(path) )
-    Drone-->>GCS: ACK( session, size=len(file) )
+    Drone-- >>GCS: ACK( session, size=4, data=len(file) )
     Note right of GCS: Read file in chunks<br>(call at offset)
     GCS->>Drone:  ReadFile(session, size, offset)
-    Drone-->>GCS: ACK(session, size=len(buffer), data[0]=buffer)
+    Drone-- >>GCS: ACK(session, size=len(buffer), data[0]=buffer)
     Note right of GCS: Continue until NAK<br> with EOF
-    Drone-->>GCS: NAK(session, size=1, data=EOF)
+    Drone-- >>GCS: NAK(session, size=1, data=EOF)
     Note right of GCS: Close session
     GCS->>Drone:  TerminateSession(session)
-    Drone-->>GCS: ACK()
-{% endmermaid %}
+    Drone-- >>GCS: ACK()
+-->
 
 The sequence of operations is:
 1. GCS (client) sends [OpenFileRO](#OpenFileRO) command specifying the file path to open.
    - The payload must specify: `data[0]`= file path string, `size`=length of file path string.
 1. Drone (server) responds with either 
-   - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = length of file that has been opened. 
+   - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = 4, `data` = length of file that has been opened. 
    - NAK with [error information](#error_codes), e.g. `NoSessionsAvailable`, `FileExists`. 
      The GCS may cancel the operation, depending on the error.
 1. GCS sends [ReadFile](#ReadFile) commands to download a chunk of data from the file. 
@@ -185,20 +188,22 @@ A timeout is not set for `TerminateSession` (the server may ignore failure of th
 
 The sequence of operations for uploading a file to the drone, assuming there are no timeouts and all operations/requests succeed, is shown below.
 
-{% mermaid %}
+[![Mermaid Sequence: Uploading a file](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IENyZWF0ZSBmaWxlIG9uIERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBDcmVhdGVGaWxlKCBkYXRhWzBdPXBhdGgsIHNpemU9bGVuKHBhdGgpIClcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSyggc2Vzc2lvbiAsIHNpemU9MCApXG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IFdyaXRlIGRhdGEgaW4gY2h1bmtzPGJyPnVudGlsIGNvbXBsZXRlXG4gICAgR0NTLT4-RHJvbmU6ICBXcml0ZUZpbGUoc2Vzc2lvbiwgc2l6ZT1sZW4oYnVmZmVyKSwgb2Zmc2V0LCBkYXRhPWJ1ZmZlcilcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSyggc2Vzc2lvbiwgc2l6ZT0wIClcbiAgICBOb3RlIHJpZ2h0IG9mIEdDUzogQ2xvc2Ugc2Vzc2lvblxuICAgIEdDUy0-PkRyb25lOiAgVGVybWluYXRlU2Vzc2lvbihzZXNzaW9uKVxuICAgIERyb25lLS0-PkdDUzogQUNLKCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IENyZWF0ZSBmaWxlIG9uIERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBDcmVhdGVGaWxlKCBkYXRhWzBdPXBhdGgsIHNpemU9bGVuKHBhdGgpIClcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSyggc2Vzc2lvbiAsIHNpemU9MCApXG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IFdyaXRlIGRhdGEgaW4gY2h1bmtzPGJyPnVudGlsIGNvbXBsZXRlXG4gICAgR0NTLT4-RHJvbmU6ICBXcml0ZUZpbGUoc2Vzc2lvbiwgc2l6ZT1sZW4oYnVmZmVyKSwgb2Zmc2V0LCBkYXRhPWJ1ZmZlcilcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSyggc2Vzc2lvbiwgc2l6ZT0wIClcbiAgICBOb3RlIHJpZ2h0IG9mIEdDUzogQ2xvc2Ugc2Vzc2lvblxuICAgIEdDUy0-PkRyb25lOiAgVGVybWluYXRlU2Vzc2lvbihzZXNzaW9uKVxuICAgIERyb25lLS0-PkdDUzogQUNLKCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+<!-- Original Sequence
 sequenceDiagram;
     participant GCS
     participant Drone
     Note right of GCS: Create file on Drone
     GCS->>Drone:  CreateFile( data[0]=path, size=len(path) )
-    Drone-->>GCS: ACK( session , size=0 )
+    Drone-- >>GCS: ACK( session , size=0 )
     Note right of GCS: Write data in chunks<br>until complete
     GCS->>Drone:  WriteFile(session, size=len(buffer), offset, data=buffer)
-    Drone-->>GCS: ACK( session, size=0 )
+    Drone-- >>GCS: ACK( session, size=0 )
     Note right of GCS: Close session
     GCS->>Drone:  TerminateSession(session)
-    Drone-->>GCS: ACK()
-{% endmermaid %}
+    Drone-- >>GCS: ACK()
+-->
 
 The sequence of operations is:
 1. GCS (client) sends [CreateFile](#CreateFile) command specifying the file path where the file is to be uploaded.
@@ -222,7 +227,12 @@ The sequence of operations is:
 The GSC should create a timeout after `CreateFile` and `WriteFile` commands are sent, and resend the messages as needed (and [described above](#timeouts)).
 A timeout is not set for `TerminateSession` (the server may ignore failure of the command or the ACK).
 
-> **Warning** PX4 and QGroundControl* implement this slightly differently than outlined above. The implementation only has a single session (id=0) so only a single operation can be active at a time. As a result, this operation should only be started if no other operation is active. The drone expects that the session id will be set to zero by the sender of `CreateFile`. Last of all, the GCS sends `ResetSessions` rather than `TerminateSession`. While you can send either if talking to PX4, if the protocol is implemented elsewhere calling `ResetSessions` may break other communications.
+> **Warning** PX4 and *QGroundControl* implement this slightly differently than outlined above. 
+  The implementation only has a single session (id=0) so only a single operation can be active at a time.
+  As a result, this operation should only be started if no other operation is active.
+  The drone expects that the session id will be set to zero by the sender of `CreateFile`.
+  Last of all, the GCS sends `ResetSessions` rather than `TerminateSession`.
+  While you can send either if talking to PX4, if the protocol is implemented elsewhere calling `ResetSessions` may break other communications.
 
 
 ### Remove File
@@ -232,13 +242,16 @@ A timeout is not set for `TerminateSession` (the server may ignore failure of th
 
 The sequence of operations for removing a file is shown below (assuming there are no timeouts and all operations/requests succeed).
 
-{% mermaid %}
+[![Mermaid Sequence: Removing a file](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBSZW1vdmVGaWxlKCBkYXRhWzBdPXBhdGgsIHNpemU9bGVuKHBhdGgpIClcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSyhzaXplPTApIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBSZW1vdmVGaWxlKCBkYXRhWzBdPXBhdGgsIHNpemU9bGVuKHBhdGgpIClcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSyhzaXplPTApIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+
+
+<!-- Original Sequence
 sequenceDiagram;
     participant GCS
     participant Drone
     GCS->>Drone:  RemoveFile( data[0]=path, size=len(path) )
-    Drone-->>GCS: ACK(size=0)
-{% endmermaid %}
+    Drone-- >>GCS: ACK(size=0)
+-->
 
 The sequence of operations is:
 1. GCS sends [RemoveFile](#RemoveFile) command specifying the full path of the file to be deleted.
@@ -251,7 +264,6 @@ The sequence of operations is:
 The GSC should create a timeout after the `RemoveFile` command is sent and resend the message as needed (and [described above](#timeouts)).
 
 
-
 ### Truncate File
 
 The sequence of operations for truncating a file is shown below (assuming there are no timeouts and all operations/requests succeed).
@@ -259,13 +271,15 @@ The sequence of operations for truncating a file is shown below (assuming there 
 > **Note** `TruncateFile` handling is implemented in PX4 but not in *QGroundControl*. 
   GCS behaviour is therefore not fully defined/tested.
 
-{% mermaid %}
+[![Mermaid Sequence: Truncate file](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBUcnVuY2F0ZUZpbGUgPGJyPiggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSwgb2Zmc2V0PW9mZnNldCB0byB0cnVuY2F0ZSApXG4gICAgRHJvbmUtLT4-R0NTOiBBQ0soc2l6ZT0wKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBUcnVuY2F0ZUZpbGUgPGJyPiggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSwgb2Zmc2V0PW9mZnNldCB0byB0cnVuY2F0ZSApXG4gICAgRHJvbmUtLT4-R0NTOiBBQ0soc2l6ZT0wKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!-- Original sequnce
 sequenceDiagram;
     participant GCS
     participant Drone
     GCS->>Drone:  TruncateFile ( data[0]=path, size=len(path), offset=offset to truncate )
-    Drone-->>GCS: ACK(size=0)
-{% endmermaid %}
+    Drone-- >>GCS: ACK(size=0)
+-->
 
 The sequence of operations is:
 1. GCS sends [TruncateFile](#TruncateFile) command specifying file to truncate and the offset for truncation. 
@@ -280,45 +294,71 @@ The sequence of operations is:
 The GSC should create a timeout after the `TruncateFile` command is sent and resend the message as needed (and [described above](#timeouts)).
 
 
-### List Directory
+### List Directory {#list_directory}
 
 The sequence of operations for getting a directory listing is shown below (assuming there are no timeouts and all operations/requests succeed).
 
-{% mermaid %}
+[![Mermaid Sequence: List Directory](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogUmVxdWVzdCBlbnRyaWVzIGZyb20gaW5kZXggKG9mZnNldCkgMC48YnI-T25lIG9yIG1vcmUgZW50cmllcyByZXR1cm5lZCBpbiBBQ0suXG4gICAgR0NTLT4-RHJvbmU6IExpc3REaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCksIG9mZnNldD0wIClcbiAgICBEcm9uZS0-PkdDUzogQUNLKHNpemUsIGRhdGE9ZW50cmllc19hdF9vZmZzZXRfMClcbiAgICBOb3RlIG92ZXIgR0NTLERyb25lOiBSZXBlYXQgcmVxdWVzdCBpbiBjeWNsZSB0byBnZXQgYWxsPGJyPmVudHJpZXMgKGVhY2ggdGltZSBzZXQgb2Zmc2V0IHRvPGJyPmVudHJ5IGluZGV4IGp1c3QgYWZ0ZXIgbGFzdCBvbmU8YnI-cmVjZWl2ZWQpLlxuICAgIEdDUy0-PkRyb25lOiBMaXN0RGlyZWN0b3J5KCBkYXRhWzBdPXBhdGgsIHNpemU9bGVuKHBhdGgpLCBvZmZzZXQ9Li4uKVxuICAgIERyb25lLT4-R0NTOiBBQ0soc2l6ZSwgZGF0YT1lbnRyaWVzX2F0X29mZnNldClcbiAgICBOb3RlIG92ZXIgR0NTLERyb25lOiBEcm9uZSBOQUNLIHdpdGggRU9GIHdoZW4gYWxsPGJyPmVudHJpZXMgcmV0dXJuZWQ8YnI-KGUuZy4gcmVxdWVzdCB3aXRoOjxicj5vZmZzZXQgPj0gbnVtYmVyIG9mIGVudHJpZXMpLlxuICAgIEdDUy0-PkRyb25lOiAgTGlzdERpcmVjdG9yeSggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSwgb2Zmc2V0PXRvb19iaWcgKVxuICAgIERyb25lLT4-R0NTOiBOQUNLKHNpemU9MSwgZGF0YVswXT1FT0YpIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogUmVxdWVzdCBlbnRyaWVzIGZyb20gaW5kZXggKG9mZnNldCkgMC48YnI-T25lIG9yIG1vcmUgZW50cmllcyByZXR1cm5lZCBpbiBBQ0suXG4gICAgR0NTLT4-RHJvbmU6IExpc3REaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCksIG9mZnNldD0wIClcbiAgICBEcm9uZS0-PkdDUzogQUNLKHNpemUsIGRhdGE9ZW50cmllc19hdF9vZmZzZXRfMClcbiAgICBOb3RlIG92ZXIgR0NTLERyb25lOiBSZXBlYXQgcmVxdWVzdCBpbiBjeWNsZSB0byBnZXQgYWxsPGJyPmVudHJpZXMgKGVhY2ggdGltZSBzZXQgb2Zmc2V0IHRvPGJyPmVudHJ5IGluZGV4IGp1c3QgYWZ0ZXIgbGFzdCBvbmU8YnI-cmVjZWl2ZWQpLlxuICAgIEdDUy0-PkRyb25lOiBMaXN0RGlyZWN0b3J5KCBkYXRhWzBdPXBhdGgsIHNpemU9bGVuKHBhdGgpLCBvZmZzZXQ9Li4uKVxuICAgIERyb25lLT4-R0NTOiBBQ0soc2l6ZSwgZGF0YT1lbnRyaWVzX2F0X29mZnNldClcbiAgICBOb3RlIG92ZXIgR0NTLERyb25lOiBEcm9uZSBOQUNLIHdpdGggRU9GIHdoZW4gYWxsPGJyPmVudHJpZXMgcmV0dXJuZWQ8YnI-KGUuZy4gcmVxdWVzdCB3aXRoOjxicj5vZmZzZXQgPj0gbnVtYmVyIG9mIGVudHJpZXMpLlxuICAgIEdDUy0-PkRyb25lOiAgTGlzdERpcmVjdG9yeSggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSwgb2Zmc2V0PXRvb19iaWcgKVxuICAgIERyb25lLT4-R0NTOiBOQUNLKHNpemU9MSwgZGF0YVswXT1FT0YpIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+
+
+
+<!-- original sequence
 sequenceDiagram;
     participant GCS
     participant Drone
-    Note right of GCS: Read directory<br>listing in chunks
-    GCS->>Drone:  ListDirectory( data[0]=path, size=len(path), offset )
-    Drone-->>GCS: ACK(size, data=part_dir_string)
-{% endmermaid %}
+    Note over GCS,Drone: Request entries from index (offset) 0.<br>One or more entries returned in ACK.
+    GCS->>Drone: ListDirectory( data[0]=path, size=len(path), offset=0 )
+    Drone->>GCS: ACK(size, data=entries_at_offset_0)
+    Note over GCS,Drone: Repeat request in cycle to get all<br>entries (each time set offset to<br>entry index just after last one<br>received).
+    GCS->>Drone: ListDirectory( data[0]=path, size=len(path), offset=...)
+    Drone->>GCS: ACK(size, data=entries_at_offset)
+    Note over GCS,Drone: Drone NACK with EOF when all<br>entries returned<br>(e.g. request with:<br>offset >= number of entries).
+    GCS->>Drone:  ListDirectory( data[0]=path, size=len(path), offset=too_big )
+    Drone->>GCS: NACK(size=1, data[0]=EOF)
+-->
 
 
 The sequence of operations is:
-1. GCS sends [ListDirectory](#ListDirectory) command to specifying a directory path and an offset into the returned listing string.
-   - The payload must specify: `data[0]`=file path, `size`=length of path string, `offset`=desired offset into returned directory listing string.
-   - If communicating with the PX4 implementation there is only one session. For this case you must set the `session` to 0 and only send when the system is idle.
-1. The drone generates a directory listing string including NULL-separated directory and file information (file information includes both file name and tab-separated file size). 
-1. Drone responds to the message with either:
-   - ACK containing a fragment of the directory listing string (in the [payload](#payload) `data` field). The size of the data is returned in the `size` field.
-   - NAK with [error information](#error_codes). Generally errors are unrecoverable, but in some case they may indicate that an operation is complete - e.g. EOF error when all the data is downloaded.
-   - The drone must clean up all resources (ie close file handles) associated with the request after sending the NAK.
-1. The operation can be repeated at different offsets to download the whole directory listing.
+1. GCS sends [ListDirectory](#ListDirectory) command specifying a directory path and the **index** of an entry.
+   - The [payload](#payload) must specify:
+     - `data[0]` = file path
+     - `size` = length of path string
+     - `offset` = The index of the first entry to get (0 for first entry, 1 for second, etc.).
+1. Drone responds with an ACK containing **one or more entries** (the first entry is the one specified in request `offset` field).
+   - The payload must specify:
+     - `data[0]` = Information for one or more (sequential) entries, starting at the requested entry index (`offset`).
+       Each entry is separated with a null terminator (`\0`), and has the following format (where `type` is one of the letters **F**(ile), **D**(irectory), **S**(skip))
+       ```
+       <type><file_or_folder_name>\t<file_size_in_bytes>\0
+       ```
+       For example, given five files named *TestFile1.xml* to *TestFile5.xml*, the entries returned at offset 2 might look like: `FTestFile3.xml\t223\0FTestFile4.xml\t755568\0FTestFile5.xml\t11111\0`
+     - `size` = The size of the `data`.
+1. The operation is then repeated at different offsets to download the whole directory listing.
+   > **Note** The offset for each request will depend on how many entries were returned by the previous request(s).
+1. The operation completes when the GCS requests an entry index (`offset`) greater than or equal to the number of entries.
+   In this case the drone responds with a [NAK](#error_codes) containing [EOF](#EOF) (end of file).
+
 
 The GSC should create a timeout after the `ListDirectory` command is sent and resend the message as needed (and [described above](#timeouts)).
+
+The drone may also [NAK](#error_codes) with an unexpected error.
+Generally errors are unrecoverable, and the drone must clean up all resources (i.e. close file handles) associated with the request after sending the NAK.
+
 
 ### Create Directory
 
 The sequence of operations for creating a directory is shown below (assuming there are no timeouts and all operations/requests succeed). 
 Note that this operation will fail if the directory is not empty.
 
-{% mermaid %}
+[![Mermaid Sequence: Create Directory](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBDcmVhdGVEaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCkgKVxuICAgIERyb25lLS0-PkdDUzogQUNLKHNpemU9MCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBDcmVhdGVEaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCkgKVxuICAgIERyb25lLS0-PkdDUzogQUNLKHNpemU9MCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+<!--
 sequenceDiagram;
     participant GCS
     participant Drone
     GCS->>Drone:  CreateDirectory( data[0]=path, size=len(path) )
-    Drone-->>GCS: ACK(size=0)
-{% endmermaid %}
+    Drone-- >>GCS: ACK(size=0)
+-->
 
 The sequence of operations is:
 1. GCS sends [CreateDirectory](#CreateDirectory) command specifying the full path of the directory to be created.
@@ -339,13 +379,16 @@ The GSC should not create timeouts or handle the NAK case (other than to report 
 The sequence of operations for removing a directory is shown below (assuming there are no timeouts and all operations/requests succeed). 
 Note that this operation will fail if the directory is not empty.
 
-{% mermaid %}
+[![Mermaid Sequence: Remove directory](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBSZW1vdmVEaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCkgKVxuICAgIERyb25lLS0-PkdDUzogQUNLKHNpemU9MCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBSZW1vdmVEaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCkgKVxuICAgIERyb25lLS0-PkdDUzogQUNLKHNpemU9MCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+
+<!-- Original Diagram
 sequenceDiagram;
     participant GCS
     participant Drone
     GCS->>Drone:  RemoveDirectory( data[0]=path, size=len(path) )
-    Drone-->>GCS: ACK(size=0)
-{% endmermaid %}
+    Drone-- >>GCS: ACK(size=0)
+-->
 
 The sequence of operations is:
 1. GCS sends [RemoveDirectory](#RemoveDirectory) command specifying the full path of the directory to be deleted.
