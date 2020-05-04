@@ -24,7 +24,19 @@ The camera identification operation identifies all the available cameras and det
 
 The first time a heartbeat is received from a new camera component, the GCS will send it a [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) message. The camera will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result. 如果成功 (结果将是 [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) 相机组件将继续发送[CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消息。
 
-{% mermaid %} sequenceDiagram; participant GCS participant Camera Camera->>GCS: HEARTBEAT \[cmp id: MAV_COMP_ID_CAMERA\] (first) GCS->>Camera: MAV_CMD_REQUEST_CAMERA_INFORMATION GCS->>GCS: Start timeout Camera->>GCS: COMMAND_ACK Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info. Camera->>GCS: CAMERA_INFORMATION {% endmermaid %}
+[![Mermaid Sequence: Camera Id](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIENhbWVyYS0-PkdDUzogSEVBUlRCRUFUIFtjbXAgaWQ6IE1BVl9DT01QX0lEX0NBTUVSQV0gKGZpcnN0KSBcbiAgICBHQ1MtPj5DYW1lcmE6IE1BVl9DTURfUkVRVUVTVF9DQU1FUkFfSU5GT1JNQVRJT05cbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IENPTU1BTkRfQUNLXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IElmIE1BVl9SRVNVTFRfQUNDRVBURUQgc2VuZCBpbmZvLlxuICAgIENhbWVyYS0-PkdDUzogQ0FNRVJBX0lORk9STUFUSU9OIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIENhbWVyYS0-PkdDUzogSEVBUlRCRUFUIFtjbXAgaWQ6IE1BVl9DT01QX0lEX0NBTUVSQV0gKGZpcnN0KSBcbiAgICBHQ1MtPj5DYW1lcmE6IE1BVl9DTURfUkVRVUVTVF9DQU1FUkFfSU5GT1JNQVRJT05cbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IENPTU1BTkRfQUNLXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IElmIE1BVl9SRVNVTFRfQUNDRVBURUQgc2VuZCBpbmZvLlxuICAgIENhbWVyYS0-PkdDUzogQ0FNRVJBX0lORk9STUFUSU9OIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+
+<!-- Original diagram
+sequenceDiagram;
+    participant GCS
+    participant Camera
+    Camera->>GCS: HEARTBEAT [cmp id: MAV_COMP_ID_CAMERA] (first) 
+    GCS->>Camera: MAV_CMD_REQUEST_CAMERA_INFORMATION
+    GCS->>GCS: Start timeout
+    Camera->>GCS: COMMAND_ACK
+    Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info.
+    Camera->>GCS: CAMERA_INFORMATION
+-->
 
 对相机的操作遵循 [Command Protocol](../services/command.md) 对命令/ACK 的约定 (如果没有收到 `COMMAND_ACK` 响应，`MAV_CMD_REQUEST_CAMERA_INFORMATION` 将会重发几次直到确认失败)。 如果收到 `MAV_RESULT_ACCEPTED` 的ACK之后没有收到 `CAMERA_INFORMATION` 消息，通讯协议将认为该消息丢失，然后重复发送 `MAV_CMD_REQUEST_CAMERA_INFORMATION` 消息的循环。 在轮询3次之后，如果仍未收到 `CAMERA_INFORMATION` 消息，GCS 将认为不支持此相机类型。
 
@@ -50,7 +62,18 @@ The first time a heartbeat is received from a new camera component, the GCS will
 
 工作流程图如下：
 
-{% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_REQUEST_CAMERA_SETTINGS GCS->>GCS: Start timeout Camera->>GCS: COMMAND_ACK Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info. Camera->>GCS: CAMERA_SETTINGS {% endmermaid %}
+[![Camera Settings](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9SRVFVRVNUX0NBTUVSQV9TRVRUSU5HU1xuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogQ09NTUFORF9BQ0tcbiAgICBOb3RlIG92ZXIgQ2FtZXJhLEdDUzogSWYgTUFWX1JFU1VMVF9BQ0NFUFRFRCBzZW5kIGluZm8uXG4gICAgQ2FtZXJhLT4-R0NTOiBDQU1FUkFfU0VUVElOR1MiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9SRVFVRVNUX0NBTUVSQV9TRVRUSU5HU1xuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogQ09NTUFORF9BQ0tcbiAgICBOb3RlIG92ZXIgQ2FtZXJhLEdDUzogSWYgTUFWX1JFU1VMVF9BQ0NFUFRFRCBzZW5kIGluZm8uXG4gICAgQ2FtZXJhLT4-R0NTOiBDQU1FUkFfU0VUVElOR1MiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+<!-- Original sequence
+sequenceDiagram;
+    participant GCS
+    participant Camera
+    GCS->>Camera: MAV_CMD_REQUEST_CAMERA_SETTINGS
+    GCS->>GCS: Start timeout
+    Camera->>GCS: COMMAND_ACK
+    Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info.
+    Camera->>GCS: CAMERA_SETTINGS
+-->
 
 > **Note** Command acknowledgment and message resending is handled in the same way as for [camera identification](#camera_identification) (if a successful ACK is received the camera will expect the `CAMERA_SETTINGS` message, and repeat the cycle - up to 3 times - until it is received).
 
@@ -58,7 +81,17 @@ The first time a heartbeat is received from a new camera component, the GCS will
 
 工作流程图如下：
 
-{% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_SET_CAMERA_MODE GCS->>GCS: Start timeout Camera->>GCS: COMMAND_ACK Note over Camera,GCS: If MAV_RESULT_ACCEPTED, mode was changed. {% endmermaid %}
+[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9TRVRfQ0FNRVJBX01PREVcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IENPTU1BTkRfQUNLXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IElmIE1BVl9SRVNVTFRfQUNDRVBURUQsIG1vZGUgd2FzIGNoYW5nZWQuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9TRVRfQ0FNRVJBX01PREVcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IENPTU1BTkRfQUNLXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IElmIE1BVl9SRVNVTFRfQUNDRVBURUQsIG1vZGUgd2FzIGNoYW5nZWQuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+
+<!-- Original sequence
+sequenceDiagram;
+    participant GCS
+    participant Camera
+    GCS->>Camera: MAV_CMD_SET_CAMERA_MODE
+    GCS->>GCS: Start timeout
+    Camera->>GCS: COMMAND_ACK
+    Note over Camera,GCS: If MAV_RESULT_ACCEPTED, mode was changed.
+-->
 
 > **Note** The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment.
 
@@ -82,7 +115,24 @@ The [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTUR
 
 The still image capture message sequence *for missions* (as described above) is shown below:
 
-{% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_IMAGE_START_CAPTURE (interval, count/forever) GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED Note over Camera,GCS: Camera start capture of "count" images at "interval" Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast) Camera->>GCS: ... Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast) Note over Camera,GCS: (Optional) Stop capture GCS->>Camera: MAV_CMD_IMAGE_STOP_CAPTURE GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED {% endmermaid %}
+[![Mermaid Sequence: Image capture](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9JTUFHRV9TVEFSVF9DQVBUVVJFIChpbnRlcnZhbCwgY291bnQvZm9yZXZlcilcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IE1BVl9SRVNVTFRfQUNDRVBURURcbiAgICBOb3RlIG92ZXIgQ2FtZXJhLEdDUzogQ2FtZXJhIHN0YXJ0IGNhcHR1cmUgb2YgXCJjb3VudFwiIGltYWdlcyBhdCBcImludGVydmFsXCJcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTUFHRV9DQVBUVVJFRCAgKGJyb2FkY2FzdClcbiAgICBDYW1lcmEtPj5HQ1M6IC4uLlxuICAgIENhbWVyYS0-PkdDUzogQ0FNRVJBX0lNQUdFX0NBUFRVUkVEIChicm9hZGNhc3QpXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IChPcHRpb25hbCkgU3RvcCBjYXB0dXJlXG4gICAgR0NTLT4-Q2FtZXJhOiBNQVZfQ01EX0lNQUdFX1NUT1BfQ0FQVFVSRVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9JTUFHRV9TVEFSVF9DQVBUVVJFIChpbnRlcnZhbCwgY291bnQvZm9yZXZlcilcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IE1BVl9SRVNVTFRfQUNDRVBURURcbiAgICBOb3RlIG92ZXIgQ2FtZXJhLEdDUzogQ2FtZXJhIHN0YXJ0IGNhcHR1cmUgb2YgXCJjb3VudFwiIGltYWdlcyBhdCBcImludGVydmFsXCJcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTUFHRV9DQVBUVVJFRCAgKGJyb2FkY2FzdClcbiAgICBDYW1lcmEtPj5HQ1M6IC4uLlxuICAgIENhbWVyYS0-PkdDUzogQ0FNRVJBX0lNQUdFX0NBUFRVUkVEIChicm9hZGNhc3QpXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IChPcHRpb25hbCkgU3RvcCBjYXB0dXJlXG4gICAgR0NTLT4-Q2FtZXJhOiBNQVZfQ01EX0lNQUdFX1NUT1BfQ0FQVFVSRVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!-- Original sequence
+sequenceDiagram;
+    participant GCS
+    participant Camera
+    GCS->>Camera: MAV_CMD_IMAGE_START_CAPTURE (interval, count/forever)
+    GCS->>GCS: Start timeout
+    Camera->>GCS: MAV_RESULT_ACCEPTED
+    Note over Camera,GCS: Camera start capture of "count" images at "interval"
+    Camera->>GCS: CAMERA_IMAGE_CAPTURED  (broadcast)
+    Camera->>GCS: ...
+    Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast)
+    Note over Camera,GCS: (Optional) Stop capture
+    GCS->>Camera: MAV_CMD_IMAGE_STOP_CAPTURE
+    GCS->>GCS: Start timeout
+    Camera->>GCS: MAV_RESULT_ACCEPTED
+-->
 
 The message sequence for *interactive user-initiated image capture* through a GUI is slightly different. In this case the GCS should:
 
@@ -94,7 +144,25 @@ The message sequence for *interactive user-initiated image capture* through a GU
 
 The sequence is as shown below:
 
-{% mermaid %} sequenceDiagram; participant GCS participant Camera GCS->>Camera: MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED GCS->>GCS: Start timeout Camera->>GCS: CAMERA_CAPTURE_STATUS (status) Note over Camera,GCS: Repeat until status is IDLE GCS->>Camera: MAV_CMD_IMAGE_START_CAPTURE (interval, count/forever) GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED Note over Camera,GCS: Camera start capture of 1 image GCS->>GCS: Start timeout Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast) {% endmermaid %}
+[![Mermaid Sequence: Interactive user intiated image capture](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9SRVFVRVNUX0NBTUVSQV9DQVBUVVJFX1NUQVRVU1xuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRFxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogQ0FNRVJBX0NBUFRVUkVfU1RBVFVTIChzdGF0dXMpXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IFJlcGVhdCB1bnRpbCBzdGF0dXMgaXMgSURMRVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9JTUFHRV9TVEFSVF9DQVBUVVJFIChpbnRlcnZhbCwgY291bnQvZm9yZXZlcilcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IE1BVl9SRVNVTFRfQUNDRVBURURcbiAgICBOb3RlIG92ZXIgQ2FtZXJhLEdDUzogQ2FtZXJhIHN0YXJ0IGNhcHR1cmUgb2YgMSBpbWFnZVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogQ0FNRVJBX0lNQUdFX0NBUFRVUkVEICAoYnJvYWRjYXN0KSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9SRVFVRVNUX0NBTUVSQV9DQVBUVVJFX1NUQVRVU1xuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRFxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogQ0FNRVJBX0NBUFRVUkVfU1RBVFVTIChzdGF0dXMpXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IFJlcGVhdCB1bnRpbCBzdGF0dXMgaXMgSURMRVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9JTUFHRV9TVEFSVF9DQVBUVVJFIChpbnRlcnZhbCwgY291bnQvZm9yZXZlcilcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IE1BVl9SRVNVTFRfQUNDRVBURURcbiAgICBOb3RlIG92ZXIgQ2FtZXJhLEdDUzogQ2FtZXJhIHN0YXJ0IGNhcHR1cmUgb2YgMSBpbWFnZVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogQ0FNRVJBX0lNQUdFX0NBUFRVUkVEICAoYnJvYWRjYXN0KSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!-- Original sequence
+sequenceDiagram;
+    participant GCS
+    participant Camera
+    GCS->>Camera: MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS
+    GCS->>GCS: Start timeout
+    Camera->>GCS: MAV_RESULT_ACCEPTED
+    GCS->>GCS: Start timeout
+    Camera->>GCS: CAMERA_CAPTURE_STATUS (status)
+    Note over Camera,GCS: Repeat until status is IDLE
+    GCS->>Camera: MAV_CMD_IMAGE_START_CAPTURE (interval, count/forever)
+    GCS->>GCS: Start timeout
+    Camera->>GCS: MAV_RESULT_ACCEPTED
+    Note over Camera,GCS: Camera start capture of 1 image
+    GCS->>GCS: Start timeout
+    Camera->>GCS: CAMERA_IMAGE_CAPTURED  (broadcast)
+-->
 
 ### 视频捕获
 
@@ -112,10 +180,21 @@ A camera is capable of streaming video if it sets the [CAMERA_CAP_FLAGS_HAS_VIDE
 
 The sequence for requesting *all* video streams from a particular camera is shown below:
 
-{% mermaid %} sequenceDiagram; participant GCS participant Camera Note over GCS,Camera: IF CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM  
-in CAMERA_INFORMATION.flags  
-request all streams. GCS->>Camera: MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION ( param1=0 ) GCS->>GCS: Start timeout Camera->>GCS: MAV_RESULT_ACCEPTED Note over Camera,GCS: Camera sends information for  
-all streams. Camera->>GCS: VIDEO_STREAM_INFORMATION (1) Camera->>GCS: ... Camera->>GCS: VIDEO_STREAM_INFORMATION (n) {% endmermaid %}
+[![Mermaid Sequence: Video stream info](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIE5vdGUgb3ZlciBHQ1MsQ2FtZXJhOiBJRiBDQU1FUkFfQ0FQX0ZMQUdTX0hBU19WSURFT19TVFJFQU08YnI-aW4gQ0FNRVJBX0lORk9STUFUSU9OLmZsYWdzPGJyPnJlcXVlc3QgYWxsIHN0cmVhbXMuXG4gICAgR0NTLT4-Q2FtZXJhOiBNQVZfQ01EX1JFUVVFU1RfVklERU9fU1RSRUFNX0lORk9STUFUSU9OICggcGFyYW0xPTAgKVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRFxuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBDYW1lcmEgc2VuZHMgaW5mb3JtYXRpb24gZm9yPGJyPiBhbGwgc3RyZWFtcy5cbiAgICBDYW1lcmEtPj5HQ1M6IFZJREVPX1NUUkVBTV9JTkZPUk1BVElPTiAoMSlcbiAgICBDYW1lcmEtPj5HQ1M6IC4uLlxuICAgIENhbWVyYS0-PkdDUzogVklERU9fU1RSRUFNX0lORk9STUFUSU9OIChuKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIE5vdGUgb3ZlciBHQ1MsQ2FtZXJhOiBJRiBDQU1FUkFfQ0FQX0ZMQUdTX0hBU19WSURFT19TVFJFQU08YnI-aW4gQ0FNRVJBX0lORk9STUFUSU9OLmZsYWdzPGJyPnJlcXVlc3QgYWxsIHN0cmVhbXMuXG4gICAgR0NTLT4-Q2FtZXJhOiBNQVZfQ01EX1JFUVVFU1RfVklERU9fU1RSRUFNX0lORk9STUFUSU9OICggcGFyYW0xPTAgKVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRFxuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBDYW1lcmEgc2VuZHMgaW5mb3JtYXRpb24gZm9yPGJyPiBhbGwgc3RyZWFtcy5cbiAgICBDYW1lcmEtPj5HQ1M6IFZJREVPX1NUUkVBTV9JTkZPUk1BVElPTiAoMSlcbiAgICBDYW1lcmEtPj5HQ1M6IC4uLlxuICAgIENhbWVyYS0-PkdDUzogVklERU9fU1RSRUFNX0lORk9STUFUSU9OIChuKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!-- Original sequence
+sequenceDiagram;
+    participant GCS
+    participant Camera
+    Note over GCS,Camera: IF CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM<br>in CAMERA_INFORMATION.flags<br>request all streams.
+    GCS->>Camera: MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION ( param1=0 )
+    GCS->>GCS: Start timeout
+    Camera->>GCS: MAV_RESULT_ACCEPTED
+    Note over Camera,GCS: Camera sends information for<br> all streams.
+    Camera->>GCS: VIDEO_STREAM_INFORMATION (1)
+    Camera->>GCS: ...
+    Camera->>GCS: VIDEO_STREAM_INFORMATION (n)
+-->
 
 The steps are:
 
