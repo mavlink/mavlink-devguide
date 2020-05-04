@@ -12,14 +12,17 @@ The (autopilot) system that requires path-planning sends messages containing its
 The path planning system (companion computer) analyses the desired route, and sends back a stream of messages with setpoints for a new path.
 
 
-{% mermaid %}
+[![Mermaid Sequence: Trajectory](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEF1dG9waWxvdFxuICAgIHBhcnRpY2lwYW50IENvbXBhbmlvblxuICAgIEF1dG9waWxvdC0-PkNvbXBhbmlvbjogRGVzaXJlZCBwYXRoL3RyYWplY3RvcnlcbiAgICBDb21wYW5pb24tPj5Db21wYW5pb246IENhbGN1bGF0ZSBiZXN0IHRyYWplY3RvcnlcbiAgICBDb21wYW5pb24tLT4-QXV0b3BpbG90OiBUYXJnZXQgc2V0cG9pbnQgKGlmIHJlcXVpcmVkKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEF1dG9waWxvdFxuICAgIHBhcnRpY2lwYW50IENvbXBhbmlvblxuICAgIEF1dG9waWxvdC0-PkNvbXBhbmlvbjogRGVzaXJlZCBwYXRoL3RyYWplY3RvcnlcbiAgICBDb21wYW5pb24tPj5Db21wYW5pb246IENhbGN1bGF0ZSBiZXN0IHRyYWplY3RvcnlcbiAgICBDb21wYW5pb24tLT4-QXV0b3BpbG90OiBUYXJnZXQgc2V0cG9pbnQgKGlmIHJlcXVpcmVkKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+
+<!-- 
 sequenceDiagram;
     participant Autopilot
     participant Companion
     Autopilot->>Companion: Desired path/trajectory
     Companion->>Companion: Calculate best trajectory
-    Companion-->>Autopilot: Target setpoint (if required)
-{% endmermaid %}
+    Companion-- >>Autopilot: Target setpoint (if required)
+-->
 
 When path planning is active, autopilots are expected to navigate using the most recent setpoint from the companion computer (and should have sensible behaviour if setpoints "run out").
 

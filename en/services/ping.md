@@ -9,7 +9,9 @@ The message is sent with a timestamp and a sequence number that are returned by 
 
 A simplified sequence diagram is given below:
 
-{% mermaid %}
+[![Mermaid sequence: Ping](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IFBJTkcoaW5nKVxuICAgIHBhcnRpY2lwYW50IFBJTkcoZWQpXG4gICAgUElORyhpbmcpLT4-UElORyhlZCk6IFBJTkcgKHNlcTogbiwgc3lzL2NvbXA9MClcbiAgICBQSU5HKGluZyktPj5QSU5HKGluZyk6IFdhaXQgcmVzcG9uc2VcbiAgICBQSU5HKGVkKS0-PlBJTkcoaW5nKTogUElORyAoc2VxIG4sIHN5cy9jb21wID4gMClcbiAgICBQSU5HKGluZyktPj5QSU5HKGluZyk6IENhbGN1bGF0ZSByb3VuZC10cmlwIHRpbWUiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IFBJTkcoaW5nKVxuICAgIHBhcnRpY2lwYW50IFBJTkcoZWQpXG4gICAgUElORyhpbmcpLT4-UElORyhlZCk6IFBJTkcgKHNlcTogbiwgc3lzL2NvbXA9MClcbiAgICBQSU5HKGluZyktPj5QSU5HKGluZyk6IFdhaXQgcmVzcG9uc2VcbiAgICBQSU5HKGVkKS0-PlBJTkcoaW5nKTogUElORyAoc2VxIG4sIHN5cy9jb21wID4gMClcbiAgICBQSU5HKGluZyktPj5QSU5HKGluZyk6IENhbGN1bGF0ZSByb3VuZC10cmlwIHRpbWUiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+<!-- Original sequence
 sequenceDiagram;
     participant PING(ing)
     participant PING(ed)
@@ -17,7 +19,7 @@ sequenceDiagram;
     PING(ing)->>PING(ing): Wait response
     PING(ed)->>PING(ing): PING (seq n, sys/comp > 0)
     PING(ing)->>PING(ing): Calculate round-trip time
-{% endmermaid %}
+-->
 
 
 The ping**ing** system initially populates a PING message with:
