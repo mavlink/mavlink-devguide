@@ -205,13 +205,15 @@ Note:
 
 The diagram below shows the communication sequence to set the current mission item.
 
-{% mermaid %}
+[![Mermaid Diagram: Set mission item](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fU0VUX0NVUlJFTlRcbiAgICBEcm9uZS0tPj5HQ1M6IE1JU1NJT05fQ1VSUkVOVCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fU0VUX0NVUlJFTlRcbiAgICBEcm9uZS0tPj5HQ1M6IE1JU1NJT05fQ1VSUkVOVCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!-- Original sequence
 sequenceDiagram;
     participant GCS
     participant Drone
     GCS->>Drone: MISSION_SET_CURRENT
-    Drone-->>GCS: MISSION_CURRENT
-{% endmermaid %}
+    Drone-- >>GCS: MISSION_CURRENT
+-->
 
 In more detail, the sequence of operations is:
 1. GCS/App sends [MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT), specifying the new sequence number (`seq`).
@@ -239,14 +241,16 @@ GCS/developer API can monitor progress by handling the appropriate messages sent
 
 The diagram below shows the communication sequence to clear the mission from a drone (assuming all operations succeed).
 
-{% mermaid %}
+[![Mermaid Diagram: Clear Missions](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ0xFQVJfQUxMXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ0xFQVJfQUxMXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!-- 
 sequenceDiagram;
     participant GCS
     participant Drone
     GCS->>Drone: MISSION_CLEAR_ALL
     GCS->>GCS: Start timeout
-    Drone-->>GCS: MISSION_ACK
-{% endmermaid %}
+    Drone-- >>GCS: MISSION_ACK
+-->
 
 In more detail, the sequence of operations is:
 1. GCS/API sends [MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)
