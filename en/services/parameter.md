@@ -113,16 +113,19 @@ The read-all operation is started by sending the [PARAM_REQUEST_LIST](../message
 The target component must start to broadcast the parameters individually in `PARAM_VALUE` messages after receiving this message.
 The drone should allow a pause after sending each parameter to ensure that the operation doesn't consume all of the available link bandwidth (30 - 50 percent of the bandwidth is reasonable).
 
-{% mermaid %}
+[![Mermaid sequence: Read all parameters](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFBBUkFNX1JFUVVFU1RfTElTVFxuICAgIEdDUy0tPj5HQ1M6IFN0YXJ0IHJlY2VpdmUgdGltZW91dCAoYW55IHBhcmFtcylcbiAgICBEcm9uZS0-PkdDUzogU2VuZCBOIHBhcmFtZXRlcnMgd2l0aCBQQVJBTV9WQUxVRVxuICAgIEdDUy0tPj5HQ1M6IFN0YXJ0IHJlY2VpdmUgdGltZW91dCAoYWZ0ZXIgZWFjaCBwYXJhbSlcbiAgICBOb3RlIG92ZXIgR0NTOiBGaW5pc2gvdGltZW91dCB3aGVuIG5vIG1vcmUgcGFyYW1zIHJlY2VpdmVkIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFBBUkFNX1JFUVVFU1RfTElTVFxuICAgIEdDUy0tPj5HQ1M6IFN0YXJ0IHJlY2VpdmUgdGltZW91dCAoYW55IHBhcmFtcylcbiAgICBEcm9uZS0-PkdDUzogU2VuZCBOIHBhcmFtZXRlcnMgd2l0aCBQQVJBTV9WQUxVRVxuICAgIEdDUy0tPj5HQ1M6IFN0YXJ0IHJlY2VpdmUgdGltZW91dCAoYWZ0ZXIgZWFjaCBwYXJhbSlcbiAgICBOb3RlIG92ZXIgR0NTOiBGaW5pc2gvdGltZW91dCB3aGVuIG5vIG1vcmUgcGFyYW1zIHJlY2VpdmVkIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+
+
+<!--
 sequenceDiagram;
     participant GCS
     participant Drone
     GCS->>Drone: PARAM_REQUEST_LIST
-    GCS-->>GCS: Start receive timeout (any params)
+    GCS-- >>GCS: Start receive timeout (any params)
     Drone->>GCS: Send N parameters with PARAM_VALUE
-    GCS-->>GCS: Start receive timeout (after each param)
+    GCS-- >>GCS: Start receive timeout (after each param)
     Note over GCS: Finish/timeout when no more params received
-{% endmermaid %}
+-->
 
 The sequence of operations is:
 
@@ -148,15 +151,18 @@ Notes:
 
 A single parameter can be read by sending the [PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) message, as shown below:
 
-{% mermaid %}
+[![Mermaid sequence: Read single parameter](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFBBUkFNX1JFUVVFU1RfUkVBRFxuICAgIEdDUy0-PkdDUzogU3RhcnQgcmVjZWl2ZSB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IFBBUkFNX1ZBTFVFXG4gICAgR0NTLS0-PkRyb25lOiBSZS1yZXF1ZXN0IHBhcmFtZXRlciB2YWx1ZSBvbiB0aW1lb3V0IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFBBUkFNX1JFUVVFU1RfUkVBRFxuICAgIEdDUy0-PkdDUzogU3RhcnQgcmVjZWl2ZSB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IFBBUkFNX1ZBTFVFXG4gICAgR0NTLS0-PkRyb25lOiBSZS1yZXF1ZXN0IHBhcmFtZXRlciB2YWx1ZSBvbiB0aW1lb3V0IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+
+
+<!-- Original sequence
 sequenceDiagram;
     participant GCS
     participant Drone
     GCS->>Drone: PARAM_REQUEST_READ
     GCS->>GCS: Start receive timeout
     Drone->>GCS: PARAM_VALUE
-    GCS-->>Drone: Re-request parameter value on timeout
-{% endmermaid %}
+    GCS-- >>Drone: Re-request parameter value on timeout
+-->
 
 The sequence of operations is:
 
@@ -175,7 +181,9 @@ The drone may restart the sequence if the `PARAM_VALUE` acknowledgment is not re
 
 Parameters can be written individually by sending the parameter name and value pair to the GCS, as shown:
 
-{% mermaid %}
+[![Mermaid Sequence: Write parameters](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFBBUkFNX1NFVCAocGFyYW0gbmFtZSwgdmFsdWUsIC4uLilcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXQgKGZvciBQQVJBTV9WQUxVRSlcbiAgICBEcm9uZS0-PkRyb25lOiBXcml0ZSBwYXJhbWV0ZXIgdmFsdWVcbiAgICBEcm9uZS0-PkdDUzogUEFSQU1fVkFMVUUgKG5hbWUsIHZhbHVlIC4uLilcbiAgICBHQ1MtPj5HQ1M6IChvcHRpb25hbCkgVXBkYXRlIGNhY2hlIGZvciBQQVJBTV9WQUxVRVxuICAgIEdDUy0tPj5Ecm9uZTogT24gdGltZW91dCByZXN0YXJ0IHRoaXMgc2VxdWVuY2UiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFBBUkFNX1NFVCAocGFyYW0gbmFtZSwgdmFsdWUsIC4uLilcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXQgKGZvciBQQVJBTV9WQUxVRSlcbiAgICBEcm9uZS0-PkRyb25lOiBXcml0ZSBwYXJhbWV0ZXIgdmFsdWVcbiAgICBEcm9uZS0-PkdDUzogUEFSQU1fVkFMVUUgKG5hbWUsIHZhbHVlIC4uLilcbiAgICBHQ1MtPj5HQ1M6IChvcHRpb25hbCkgVXBkYXRlIGNhY2hlIGZvciBQQVJBTV9WQUxVRVxuICAgIEdDUy0tPj5Ecm9uZTogT24gdGltZW91dCByZXN0YXJ0IHRoaXMgc2VxdWVuY2UiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+<!-- Original sequence
 sequenceDiagram;
     participant GCS
     participant Drone
@@ -184,8 +192,8 @@ sequenceDiagram;
     Drone->>Drone: Write parameter value
     Drone->>GCS: PARAM_VALUE (name, value ...)
     GCS->>GCS: (optional) Update cache for PARAM_VALUE
-    GCS-->>Drone: On timeout restart this sequence
-{% endmermaid %}
+    GCS-- >>Drone: On timeout restart this sequence
+-->
 
 The sequence of operations is:
 
