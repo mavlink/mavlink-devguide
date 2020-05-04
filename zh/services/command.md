@@ -24,14 +24,48 @@ The protocol provides reliable delivery by expecting a matching acknowledgement 
 
 ## Sequences
 
-{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: COMMAND_LONG(confirmation=0) GCS->>GCS: Start timeout Drone->>GCS: COMMAND_ACK {% endmermaid %}
+[![Mermaid Sequence: Command Long](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IENPTU1BTkRfTE9ORyhjb25maXJtYXRpb249MClcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBEcm9uZS0-PkdDUzogQ09NTUFORF9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IENPTU1BTkRfTE9ORyhjb25maXJtYXRpb249MClcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBEcm9uZS0-PkdDUzogQ09NTUFORF9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+<!-- Original sequence
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: COMMAND_LONG(confirmation=0)
+    GCS->>GCS: Start timeout
+    Drone->>GCS: COMMAND_ACK
+-->
 
 If the command drops the sender should increase the confirmation field:
 
-{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: COMMAND_LONG(confirmation=0) GCS->>GCS: Start timeout GCS->>Drone: COMMAND_LONG(confirmation=1) GCS->>GCS: Start timeout Drone->>GCS: COMMAND_ACK {% endmermaid %}
+[![Mermaid Sequence: increase confirmation field](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IENPTU1BTkRfTE9ORyhjb25maXJtYXRpb249MClcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBHQ1MtPj5Ecm9uZTogQ09NTUFORF9MT05HKGNvbmZpcm1hdGlvbj0xKVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IENPTU1BTkRfTE9ORyhjb25maXJtYXRpb249MClcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBHQ1MtPj5Ecm9uZTogQ09NTUFORF9MT05HKGNvbmZpcm1hdGlvbj0xKVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!-- Original sequence
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: COMMAND_LONG(confirmation=0)
+    GCS->>GCS: Start timeout
+    GCS->>Drone: COMMAND_LONG(confirmation=1)
+    GCS->>GCS: Start timeout
+    Drone->>GCS: COMMAND_ACK
+-->
 
 The command may not complete immediately, in which case the drone can report its progress by sending `COMMMAND_ACK` messages with [COMMAND_ACK.result=MAV_RESULT_IN_PROGRESS](../messages/common.md#MAV_RESULT_IN_PROGRESS) and the progress as a percentage in `COMMMAND_ACK.progress` ([0-100] percent complete, 255 if progress not supplied). When the operation completes, the drone must terminate with a `COMMMAND_ACK` containing the final [result](#MAV_RESULT) of the operation (e.g. failed, accepted, etc.).
 
-{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: COMMAND_LONG() GCS->>GCS: Start timeout Drone->>GCS: COMMAND_ACK(result=MAV_RESULT_IN_PROGRESS,progress=?) GCS->>GCS: Start (longer) timeout Drone->>GCS: COMMAND_ACK(result=MAV_RESULT_IN_PROGRESS,progress=?) GCS->>GCS: Start (longer) timeout Note right of GCS: ... Drone->>GCS: COMMAND_ACK(result=MAV_RESULT_ACCEPTED) {% endmermaid %}
+[![Mermaid Sequence: MAV_RESULT_IN_PROGRESS](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IENPTU1BTkRfTE9ORygpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLKHJlc3VsdD1NQVZfUkVTVUxUX0lOX1BST0dSRVNTLHByb2dyZXNzPT8pXG4gICAgR0NTLT4-R0NTOiBTdGFydCAobG9uZ2VyKSB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLKHJlc3VsdD1NQVZfUkVTVUxUX0lOX1BST0dSRVNTLHByb2dyZXNzPT8pXG4gICAgR0NTLT4-R0NTOiBTdGFydCAobG9uZ2VyKSB0aW1lb3V0XG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IC4uLlxuICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDSyhyZXN1bHQ9TUFWX1JFU1VMVF9BQ0NFUFRFRCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IENPTU1BTkRfTE9ORygpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLKHJlc3VsdD1NQVZfUkVTVUxUX0lOX1BST0dSRVNTLHByb2dyZXNzPT8pXG4gICAgR0NTLT4-R0NTOiBTdGFydCAobG9uZ2VyKSB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLKHJlc3VsdD1NQVZfUkVTVUxUX0lOX1BST0dSRVNTLHByb2dyZXNzPT8pXG4gICAgR0NTLT4-R0NTOiBTdGFydCAobG9uZ2VyKSB0aW1lb3V0XG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IC4uLlxuICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDSyhyZXN1bHQ9TUFWX1JFU1VMVF9BQ0NFUFRFRCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+<!-- Original sequence
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: COMMAND_LONG()
+    GCS->>GCS: Start timeout
+    Drone->>GCS: COMMAND_ACK(result=MAV_RESULT_IN_PROGRESS,progress=?)
+    GCS->>GCS: Start (longer) timeout
+    Drone->>GCS: COMMAND_ACK(result=MAV_RESULT_IN_PROGRESS,progress=?)
+    GCS->>GCS: Start (longer) timeout
+    Note right of GCS: ...
+    Drone->>GCS: COMMAND_ACK(result=MAV_RESULT_ACCEPTED)
+-->
 
 The rate at which progress messages are emitted is system-dependent. Generally though, the GCS should have a much increased timeout after receiving an ACK with `MAV_RESULT_IN_PROGRESS`.
