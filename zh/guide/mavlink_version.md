@@ -38,31 +38,40 @@ MAVLink 已部署在若干版本中：
 
 下表显示完整顺序。
 
-{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: MAV_CMD_REQUEST_PROTOCOL_VERSION GCS->>GCS: Start timeout Drone->>GCS: PROTOCOL_VERSION in MAVLink 2 framing GCS->>Drone: If ACK: Switches to MAVLink 2 Drone->>GCS: Switches to MAVLink 2 on receive
+[![Mermaid sequence: Request protocol version](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9QUk9UT0NPTF9WRVJTSU9OXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IFBST1RPQ09MX1ZFUlNJT04gaW4gTUFWTGluayAyIGZyYW1pbmdcbiAgICBHQ1MtPj5Ecm9uZTogSWYgQUNLOiBTd2l0Y2hlcyB0byBNQVZMaW5rIDJcbiAgICBEcm9uZS0-PkdDUzogU3dpdGNoZXMgdG8gTUFWTGluayAyIG9uIHJlY2VpdmUiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9QUk9UT0NPTF9WRVJTSU9OXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IFBST1RPQ09MX1ZFUlNJT04gaW4gTUFWTGluayAyIGZyYW1pbmdcbiAgICBHQ1MtPj5Ecm9uZTogSWYgQUNLOiBTd2l0Y2hlcyB0byBNQVZMaW5rIDJcbiAgICBEcm9uZS0-PkdDUzogU3dpdGNoZXMgdG8gTUFWTGluayAyIG9uIHJlY2VpdmUiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
-{% endmermaid %}
+<!-- Original sequence
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MAV_CMD_REQUEST_PROTOCOL_VERSION
+    GCS->>GCS: Start timeout
+    Drone->>GCS: PROTOCOL_VERSION in MAVLink 2 framing
+    GCS->>Drone: If ACK: Switches to MAVLink 2
+    Drone->>GCS: Switches to MAVLink 2 on receive
+-->
 
 ### 半透明的传输
 
-一些流行的传播电台(例如SiK 无线电系列)通过 [RADI_STATUS](../messages/common.md#RADIO_STATUS) 消息进入 MAVLink 消息流，在半透明模式下运行。 每个 MAVLink 规范实际上应当发送出一个用相同的系统 ID 和一个不同的组件 ID 的心跳，而不是自动自驾仪处于可见状态。 然而，额外的心跳可能是部署系统的一个问题。 因此，这些无线电可以在收到第一个 MAVLink v2 帧后以v2 信息格式发布 `RADI_STATUS` 方式确认它们*MAVLink 2*遵守情况。
+Some popular legacy radios (e.g. the SiK radio series) operate in semi-transparent mode by injecting [RADIO_STATUS](../messages/common.md#RADIO_STATUS) messages into the MAVLink message stream. Per MAVLink spec these should actually emit a heartbeat with the same system ID and a different component ID than the autopilot to be discoverable. However, an additional heartbeat could be an issue for deployed systems. Therefore these radios can alternatively confirm their *MAVLink 2* compliance by emitting `RADIO_STATUS` in v2 message format after receiving the first MAVLink v2 frame.
 
 ## 版本和签名
 
-支持的 MAVLink 库执行启用每个频道不同的 MAVLink 版本，其中 *频道* 是指 MAVLink 系统或组件(例如序列端口或UDP 端口)中的一个特定链接。
+The supported MAVLink library implementations enable different MAVLink versions on a per-channel basis, where a *channel* refers to a particular link in/out of a MAVLink system or component (e.g. a serial port or UDP port).
 
-因此，所有 [连接](../services/heartbeat.md) 至特定频道中的其他组件必须共享相同的 MAVLink 版本。 如果一个系统正在使用签名，那么通过同一频道的所有连接也必须与同一密钥签名信息。
+As a result, all [connections](../services/heartbeat.md) to other components over a particular channel must share the same MAVLink version. If a system is using signing, then all connections via the same channel must also be signing messages with the same key.
 
 > **Note** 系统不能使用单个通道连接到签名的 MAVLink 2 系统、未签名的 MAVLink 2 系统和/或 MAVLink 1 组件。
 
-目前大多数MAVLink网络被配置为使用未签名的 MAVLink 2 消息。 MAVLink 1 主要用于允许自动驾驶仪连接到传统的 MAVLink 外围设备, 这是通过单独的通道完成的。 签名的网络将需要使用另一个单独的通道来连接到其他签名的系统。
+Currently most MAVLink networks are configured to use unsigned MAVLink 2 messages. MAVLink 1 is primarily used to allow autopilots to connect to legacy MAVLink peripherals, and this is done via a separate channel. Signed networks will need to use a further separate channel to connect to other signed systems.
 
-下一节将说明系统/通道应如何协商要使用的版本。
+The next section explains how a system/channel should negotiate the version to use.
 
 ## 协商版本 {#negotiating_versions}
 
-飞机和 GCS 执行工作将在相当一段时间内支持*MAVLink 1*和*MAVLink 2*。 我们希望大多数用户都能获得 *MAVLink 2 * 的好处, 同时仍然支持尚未支持 *MAVLink 2 * 的实现。
+Vehicle and GCS implementations will support both *MAVLink 1* and *MAVLink 2* for quite some time. We would like most users to receive the benefit of *MAVLink 2*, while still supporting implementations that don't yet support *MAVLink 2*.
 
-以下是为了捕获飞机固件和 GCS 作者的最佳实践:
+The following is meant to capture best practice for vehicle firmware and GCS authors:
 
 * 飞机实现应该有一种方法来启用/禁用发送 *MAVLink 2 * 消息。 这最好是在每个链路 (通道) 的基础上, 以允许某些外围设备 *MAVLink 1 * 而其他外围设备 *MAVLink 2 *。 此选项要求重新启动飞行控制器才能生效是可以接受的。
 * 如果启用了签名, 则飞机应在启动时立即开始发送 *signed* *MAVLink 2 *。
