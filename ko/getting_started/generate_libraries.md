@@ -24,7 +24,7 @@ This topic shows how to use the two code generators provided with the MAVLink pr
 The GUI can be launched from anywhere using Python's `-m` argument:
 
 ```sh
-python -m mavgenerate
+python3 -m mavgenerate
 ```
 
 ![mavgenerate UI](../../assets/mavgen/mavlink_generator.png)
@@ -51,7 +51,7 @@ Generator Steps:
 For example, to generate *MAVLink 2* C libraries for a dialect named **your_custom_dialect.xml**.
 
 ```sh
-python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
+python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
 ```
 
 > **Note** The syntax for for generating Python modules is the same, except that the `--output` specifies a *filename* rather than a directory. <!-- https://github.com/ArduPilot/pymavlink/issues/203 -->

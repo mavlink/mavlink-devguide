@@ -107,7 +107,23 @@ The diagram below shows the communication sequence to upload a mission to a dron
 
 > **Note** Mission update must be robust! A new mission should be fully uploaded and accepted before the old mission is replaced/removed.
 
-{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: MISSION_COUNT GCS->>GCS: Start timeout Drone->>GCS: MISSION_REQUEST_INT (0) Drone->>Drone: Start timeout GCS-->>Drone: MISSION_ITEM_INT (0) Note over GCS,Drone: ... iterate through items ... Drone->>GCS: MISSION_REQUEST_INT (count-1) Drone->>Drone: Start timeout GCS-->>Drone: MISSION_ITEM_INT (count-1) Drone->>GCS: MISSION_ACK {% endmermaid %}
+[![Mission Upload Sequence](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ09VTlRcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9SRVFVRVNUX0lOVCAoMClcbiAgICBEcm9uZS0-PkRyb25lOiBTdGFydCB0aW1lb3V0XG4gICAgR0NTLS0-PkRyb25lOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgRHJvbmUtPj5HQ1M6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgRHJvbmUtPj5Ecm9uZTogU3RhcnQgdGltZW91dFxuICAgIEdDUy0tPj5Ecm9uZTogTUlTU0lPTl9JVEVNX0lOVCAoY291bnQtMSlcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ09VTlRcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9SRVFVRVNUX0lOVCAoMClcbiAgICBEcm9uZS0-PkRyb25lOiBTdGFydCB0aW1lb3V0XG4gICAgR0NTLS0-PkRyb25lOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgRHJvbmUtPj5HQ1M6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgRHJvbmUtPj5Ecm9uZTogU3RhcnQgdGltZW91dFxuICAgIEdDUy0tPj5Ecm9uZTogTUlTU0lPTl9JVEVNX0lOVCAoY291bnQtMSlcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+<!-- Original sequence diagram
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MISSION_COUNT
+    GCS->>GCS: Start timeout
+    Drone->>GCS: MISSION_REQUEST_INT (0)
+    Drone->>Drone: Start timeout
+    GCS-- >>Drone: MISSION_ITEM_INT (0)
+    Note over GCS,Drone: ... iterate through items ...
+    Drone->>GCS: MISSION_REQUEST_INT (count-1)
+    Drone->>Drone: Start timeout
+    GCS-- >>Drone: MISSION_ITEM_INT (count-1)
+    Drone->>GCS: MISSION_ACK
+-->
 
 In more detail, the sequence of operations is:
 
@@ -134,7 +150,24 @@ Note:
 
 The diagram below shows the communication sequence to download a mission from a drone (assuming all operations succeed).
 
-{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: MISSION_REQUEST_LIST GCS->>GCS: Start timeout Drone-->>GCS: MISSION_COUNT GCS->>Drone: MISSION_REQUEST_INT (0) GCS->>GCS: Start timeout Drone-->>GCS: MISSION_ITEM_INT (0) Note over GCS,Drone: ... iterate through items ... GCS->>Drone: MISSION_REQUEST_INT (count-1) GCS->>GCS: Start timeout Drone-->>GCS: MISSION_ITEM_INT (count-1) GCS->>Drone: MISSION_ACK {% endmermaid %}
+[![Sequence: Download mission](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9MSVNUXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0NPVU5UXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKDApXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UIChjb3VudC0xKVxuICAgIEdDUy0-PkRyb25lOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9MSVNUXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0NPVU5UXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKDApXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtLT4-R0NTOiBNSVNTSU9OX0lURU1fSU5UIChjb3VudC0xKVxuICAgIEdDUy0-PkRyb25lOiBNSVNTSU9OX0FDSyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!-- original sequence
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MISSION_REQUEST_LIST
+    GCS->>GCS: Start timeout
+    Drone-- >>GCS: MISSION_COUNT
+    GCS->>Drone: MISSION_REQUEST_INT (0)
+    GCS->>GCS: Start timeout
+    Drone-- >>GCS: MISSION_ITEM_INT (0)
+    Note over GCS,Drone: ... iterate through items ...
+    GCS->>Drone: MISSION_REQUEST_INT (count-1)
+    GCS->>GCS: Start timeout
+    Drone-- >>GCS: MISSION_ITEM_INT (count-1)
+    GCS->>Drone: MISSION_ACK
+-->
 
 The sequence is similar to that for [uploading a mission](#uploading_mission). The main difference is that the client (e.g. GCS) sends [MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST), which triggers the autopilot to respond with the current count of items. This starts a cycle where the GCS requests mission items, and the drone supplies them.
 
@@ -261,7 +294,7 @@ Source code:
 
 ArduPilot implements the mission protocol in C++.
 
-ArduPilot uses the same messages and message flow described in this specification. There are some implementation differences that affect compatibility. These are documented below.
+ArduPilot uses the same messages and message flow described in this specification. There are (*anecdotally*) some implementation differences that affect compatibility. These are documented below.
 
 Source:
 
@@ -278,12 +311,10 @@ ArduPilot's implementation differs from this specification (non-exhaustively):
 - The first mission sequence number (`seq==0`) is populated with the home position of the vehicle instead of the first mission item.
 - Mission uploads are not "atomic". An upload that fails (or is canceled) part-way through will not match the pre-update state. Instead it may be a mix of the original and new mission.
 - Even if upload is successful, the vehicle mission may not match the version on the uploading system (and if the mission is then downloaded it will differ from the original). 
-  - If you try and upload more items than ArduPilot can store the system will "accept" the items (i.e. not report a failure) but will just overwrite each new item to the same (highest) slot in the mission list.
-  - Only fields that are used are stored.
   - There is rounding on some fields (and in some cases internal maximum possible values due to available storage space). Failures can occur if you do a straight comparison of the float params before/after upload.
-- A [MISSION_ACK](#MISSION_ACK) returning an error value (NACK) does not terminate the upload (i.e. it is not considered an unrecoverable error). As long as ArduPilot has not yet timed-out a system can retry the current mission item upload. 
-- A mission cannot be cleared while it is being executed (i.e. while in Auto mode). Note that a new mission *can* be uploaded (even a zero-size mission - which is equivalent to clearing).
-- Explicit cancellation of operations is not supported. If one end stops communicating the other end will eventually timeout and reset itself to an idle/ready state.
+- A [MISSION_ACK](#MISSION_ACK) returning an error value (NACK) does not terminate the upload (i.e. it is not considered an unrecoverable error). As long as ArduPilot has not yet timed-out a system can retry the current mission item upload.
+- A mission cannot be cleared while it is being executed (i.e. while in Auto mode). Note that a new mission *can* be uploaded (even a zero-size mission - which is equivalent to clearing). 
+- Explicit cancellation of operations is not supported. If one end stops communicating the other end will eventually timeout and reset itself to an idle/ready state. 
 
 The following behaviour is not defined by the specification (but is still of interest):
 
@@ -292,20 +323,11 @@ The following behaviour is not defined by the specification (but is still of int
 - A new mission can be uploaded while a mission is being executed. In this case the current waypoint will be executed to completion even if the waypoint sequence is different in the new mission (to get the new item you would need to reset the sequence or switch in/out of auto mode).
 - ArduPilot missions are not stored in an SD card and therefore have a vehicle/board-specific maximum mission size (as a benefit, on ArduPilot, missions can survive SD card failure in flight).
 
-<!-- Other possible differences include: 
+#### Geofence & Rally Point Plans
 
-- may emit wrong type of info on partial write for fail case, 
-- may not do robust update. Checking
-- may not support cancellation of upload.
--->
+ArduPilot supports Geofence and Rally points on Copter Rover and Sub using this protocol (for MAVLink 2 connections).
 
-#### Geofence Missions
-
-Geofence is supported by ArduPilot, but are not managed using this protocol.
-
-#### Rally Point Missions
-
-Rally points are supported by ArduPilot, but are not managed using this protocol
+ArduPlane supports rally points and missions. Geofence support for ArduPlane is in development (May 2020).
 
 ### MAVSDK
 

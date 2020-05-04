@@ -8,9 +8,15 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 
 > **Note** 之所以需要 *Camera Definition File* 文件，是因为在不同型号的相机之间，其配置项大不相同。 要为每一种型号的相机、每一个可能的配置选项都单独创建MAVLink消息，是很不明智的。
 
-## 概述
+## File Compression
 
-一个描述相机定义的 XML 文件应包含3个主要章节 (元素)：
+In order to reduce file size on the camera and during transfer, a definition file may be compressed using *gzip*. If the URL of the definition file ends with `.xml.gz` it is the gzip compressed stream of the text file.
+
+> **Note** The file stream is compressed but it is not an archive like `.zip` or `.tar.gz` (so there is no folder structure).
+
+## Schema
+
+The XML file has 3 main sections (elements):
 
 * 定义
 * 参数
@@ -18,7 +24,7 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 
 ### 定义
 
-所有字段都是自解释的：
+All fields are self explanatory:
 
 ```XML
 <definition version="1">
@@ -29,15 +35,15 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 
 ### 参数
 
-一组扩展的参数消息用于定义设置和可选项。 这些消息至少具有参数名称、类型和默认值 (类型可以是预定义的, 也可以是任意的--注意只有自定义相机控制器支持任意类型)。 还有一个描述字段，用于提示用户有哪些可选项。
+An extended set of parameter messages is used to define settings and options. These minimally have a parameter name, type and default value (types can be predefined or arbitrary - though arbitrary types are only supported by custom camera controllers). They will also have a description that is displayed to the user and the set of possible options.
 
-参数可以是简单的, 也可以是相当复杂的, 具体取决于与它相关的行为。
+Parameters can be simple or quite complex, depending on the behavior they change.
 
 > **Note** The parameter `CAM_MODE` must be part of the parameter list. It maps to the command [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE). It enables exposure of different settings based on the mode, so photo settings in photo mode and video settings in video mode.
 
 #### 参数类型
 
-参数类型不能超出枚举类型 [MAV_PARAM_EXT_TYPE](../messages/common.md#MAV_PARAM_EXT_TYPE_UINT8) 所定义的范围。 在XML文件中，合法的类型定义如下：
+The type of the parameter follows the enum [MAV_PARAM_EXT_TYPE](../messages/common.md#MAV_PARAM_EXT_TYPE_UINT8). Within the XML file, these are defined as:
 
 * bool (按 uint8 类型处理)
 * uint8
@@ -52,11 +58,11 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 * double
 * custom(自定义)
 
-自定义 `custom` 类型的特殊之处在于，它可以是不超过 128 字节的任意数据结构。 但是MAVLink默认并不支持这些自定义类型的数据 -- 所以你需要亲自为GCS编写相机控制器来使用这些类型。
+The `custom` type is a special case that allows for arbitrary data structures of up to 128 bytes. However these are not supported by default - you would need to extend or write your own camera controller within the GCS to interpret this type.
 
 #### 参数定义
 
-最简单的肯定是布尔类型啦，它本质上 (由编译器自动设置为) 只表示两种状态 (开/关)：
+The simplest parameter would be a boolean type, which inherently (and automatically) only provides two options (on/off):
 
 ```XML
 <parameter name="CAM_IRLOCK" type="bool" default="0">
@@ -64,9 +70,9 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 </parameter>
 ```
 
-名称 `name` 属性当然是参数的名称。 这就是使用扩展参数消息请求或设置参数值时使用的名称。 描述 `description` 字段是显示给用户的提示信息。
+The `name` attribute is the name of the parameter. This is the name used when requesting or setting the parameter's value using the extended parameter messages. The `description` is what is shown to the user.
 
-更常见的是提供了可选项的参数：
+More common are parameters that provide options:
 
 ```XML
 <parameter name="CAM_WBMODE" type="uint32" default="0">
@@ -82,11 +88,11 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 </parameter>
 ```
 
-在这种情况下，GCS将把 `options` 字段的所有选项提取出来，并为这些选项创建一个下拉菜单。 当发送/接收这些选项时，将直接使用`value`字段的值，GCS不做任何翻译。 名称`name` 字段只用来做显示。 用上面的例子来说明，如果用户选择了 *Sunset* 模式，GCS将向相机组件发送一条 [PARAM\_EXT\_SET](../messages/common.md#PARAM_EXT_SET) 消息，消息的包含一个id `CAM_WBMODE` 和一个 uint32 变量，赋值为3。
+In this case, the GCS will automatically build a drop down list with the options defined within the `options` group. When sending/receiving the options, the `value` field is used and it is not in any way interpreted by the GCS. The `name` field is used for display only. In other words, using the example above, when the user selects *Sunset*, the GCS will send a [PARAM\_EXT\_SET](../messages/common.md#PARAM_EXT_SET) message with the id `CAM_WBMODE` and a uint32 value of 3.
 
 #### 常用参数
 
-常用参数 *Common Parameters* 是一些被保留的参数名，GCS 为这些参数内置了 UI 控件 (如果在相机定义文件中发现这些参数，可以直接调出相应控件)。
+*Common Parameters* are reserved parameter names for which the GCS can build specific UI controls (if found in a camera definition).
 
 > **Note** These parameters are common to many cameras (though their valid options vary considerably).
 
@@ -103,7 +109,7 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 
 #### 排除(某些参数) 的语法
 
-有些参数仅在另一个相关的参数被设置为特定选项时，才能被关联进来。 例如，只有相机被设置为 手动曝光 *manual* 模式时，快门速度，光圈和ISO这些参数才是可以调整的，在自动曝光 *auto* 模式下，这些参数是不可见的。 正好相反的是，*EV* (曝光补偿) 只用在自动曝光 *auto* 模式下，其它模式下都被隐藏。 为了指定这种行为，你可以使用关键字 `exclusion` 来声明：
+Some parameters are only relevant when some other parameter is set to some specific option. For example, shutter speed, aperture and ISO would only be available when the camera is set to *manual* exposure mode and not shown when the camera is set to *auto* exposure mode. Conversely, *EV* (Exposure Compensation) is only used when the camera is set to *auto* and hidden otherwise. To specify this behavior, you would use the `exclusion` element:
 
 ```XML
 <parameter name="CAM_EXPMODE" type="uint32" default="0">
@@ -125,11 +131,11 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 </parameter>
 ```
 
-上面的例子描述了曝光模式 *Exposure Mode* 参数和它的两个可选项：自动模式*Auto* 和手动模式 *Manual*。 如果选择自动模式 *Auto*，那么 `CAM_APERTURE`、`CAM_ISO` 和`CAM_SHUTTERSPD` 这些参数 (在参数列表的其它位置定义) 便不可用，将被 UI 隐藏。 另一方面，如果选择手动模式 *Manual*，那么`CAM_EV`将被隐藏，因为手动曝光模式 *Manual Exposure Mode*下，无法进行曝光补偿。
+The above example describes an *Exposure Mode* parameter and its two options: *Auto* and *Manual*. When the option is set to *Auto*, the `CAM_APERTURE`, `CAM_ISO` and `CAM_SHUTTERSPD` parameters (defined elsewhere in the parameter list) are hidden from the UI as they are not applicable. On the other hand, if the option is set to *Manual*, the `CAM_EV` parameter is hidden as it is not applicable while the camera is in *Manual Exposure Mode*.
 
 #### 关联参数刷新
 
-有这样一些使用场景：一个参数的改变选项以后，一些其它参数必须要刷新。 还用上面的例子来说明，当相机被设置为自动曝光模式 *Auto Exposure Mode*，光圈、快门和ISO这些参数都有可能被改变。 当用户切回手动曝光模式 *Manual Exposure Mode*，当前的光圈、ISO和快门速度这些参数很可能已经被改变了，因此GCS 必须请求一次刷新操作。 这种情况，你应该使用关键字 `update` 来声明：
+There are cases where an option change requires a parameter to be updated. For example, using the example above, when the camera is set to *Auto Exposure Mode*, it internally might change the Aperture, ISO and Shutter speed. When the user switches back to *Manual Exposure Mode*, the GCS must request an update for the current Aperture, ISO and Shutter speed as they may have changed. To do this, you would use the `update` element:
 
 ```XML
 <parameter name="CAM_EXPMODE" type="uint32" default="0">
@@ -156,11 +162,11 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 </parameter>
 ```
 
-上面的例子告诉 GCS：当参数 `CAM_EXPMODE` 发生变化时，`CAM_APERTURE`、`CAM_SHUTTERSPD` 和 `CAM_ISO`这些参数必须被刷新 (重新从相机组件读取)。
+This tells the GCS that when the `CAM_EXPMODE` parameter changes, the `CAM_APERTURE`, `CAM_SHUTTERSPD` and the `CAM_ISO` parameters must be updated (requested from the camera).
 
 #### 范围限制
 
-假设你的相机有以下ISO可选项：
+Suppose your camera has the following ISO options:
 
 ```XML
 <parameter name="CAM_ISO" type="uint32" default="100">
@@ -181,7 +187,7 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 </parameter>
 ```
 
-但完整的感光度可选择范围，仅在拍照模式 *Photo Mode* 下可用。 不论如何，相机被切换到录像模式 *Video Mode*，上面的感光度范围将只有一个子集可用。 这种情况，你应该使用关键字 `parameterrange` 声明：
+But this full range is only available when in *Photo Mode*. For whatever reason, when the camera is set to *Video Mode*, only a subset of the above range is valid. In this case, you would use the `parameterrange` element:
 
 ```XML
 <parameter name="CAM_MODE" type="uint32" default="1" control="0">
@@ -207,13 +213,13 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 </parameter>
 ```
 
-上面的例子告诉GCS，当参数 `CAM_MODE` 被设置为 *Video* 时，只有明确给出的 `CAM_ISO` 参数才是可用的。 还有一个前提条件就是曝光模式 `CAM_EXPOSURE` 被设置为 *Manual* (1)。
+This indicates to the GCS that when the `CAM_MODE` parameter is set to *Video*, only the given range for the `CAM_ISO` parameter is valid. It additionally gives a condition that this is only the case when the `CAM_EXPOSURE` mode is set to *Manual* (1).
 
-这个例子还告诉GCS，该参数不要显示给用户 (`control=“0”`)。 因为相机模式是 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消息中定义的一个标准参数，那才是GCS处理这个参数的正确方式。 上面的参数定义只是为了告诉GCS当相机模式发生变化时，需要同时改变哪些规则。
+This example also tells the GCS not to display this parameter to the user (`control=“0”`). Camera Mode is a standard parameter defined in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way. The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur.
 
 ### 本土化
 
-关键词 `localization` 用来向用户展示一些本土化的字符串。 如果GCS检测到该标记，将使用这些本土化的字符串去替换同名的 `description` 和 `name` 字符串。 下面是一个德语的本土化示例 (de_DE)：
+The `localization` element is used for defining localized strings for display to users. If found, the GCS will use to replace all `description` and options `name` values found in the file with the strings defined here. Here is an example for German localization (de_DE):
 
 ```XML
 <localization>
@@ -232,17 +238,17 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 </localization>
 ```
 
-当GCS加载并解析这个XML文件时，它将尝试查找一个与系统语言相同的本土化版本。 如果找到了，它将把所有标记为 `original` 的字符串替换为 `translated` 字符串。 如果没有找到，将使用默认的英文字符串。 如有必要，你可以设置多个语言版本。
+When the GCS loads and parses the XML file, it will check and see if it can find a localized version appropriate to the system language. If it finds a localisation, it will proceed to replace all occurrences of `original` with `translated`. If something is not found, the default English string is used. You can have as many locales as deemed necessary.
 
-## 协议定义
+## Protocol Definition
 
-一旦GCS加载了相机定义文件，它将通过 [PARAM\_EXT\_REQUEST\_LIST](../messages/common.md#PARAM_EXT_REQUEST_LIST) 消息向相机请求所有的参数。 作为回应，相机将通过 [PARAM\_EXT\_VALUE](../messages/common.md#PARAM_EXT_VALUE) 消息回传所有的参数。
+Once the Camera Definition File is loaded by the GCS, it will request all parameters from the camera using the [PARAM\_EXT\_REQUEST\_LIST](../messages/common.md#PARAM_EXT_REQUEST_LIST) message. In response, the camera will send back all parameters using the [PARAM\_EXT\_VALUE](../messages/common.md#PARAM_EXT_VALUE) message.
 
-每当用户作出一个选择，GCS将通过 [PARAM\_EXT\_SET](../messages/common.md#PARAM_EXT_SET) 消息发送给相机，然后等待应答 [PARAM\_EXT\_ACK](../messages/common.md#PARAM_EXT_ACK) 消息。
+When the user makes a selection, the GCS will send the new option using the [PARAM\_EXT\_SET](../messages/common.md#PARAM_EXT_SET) message and it will expect in response a [PARAM\_EXT\_ACK](../messages/common.md#PARAM_EXT_ACK) message.
 
-当GCS想要查询某个参数当前使用的选项，它将发送 [PARAM\_EXT\_REQUEST\_READ](../messages/common.md#PARAM_EXT_REQUEST_READ) 消息，然后等待相机回复 [PARAM\_EXT\_VALUE](../messages/common.md#PARAM_EXT_VALUE) 消息。
+When the GCS requires a current option for a given parameter, it will use the [PARAM\_EXT\_REQUEST\_READ](../messages/common.md#PARAM_EXT_REQUEST_READ) message and it will expect in response a [PARAM\_EXT\_VALUE](../messages/common.md#PARAM_EXT_VALUE) message.
 
-## 一份完整的相机定义文件示例 {#full_example}
+## Full Camera Definition File Example {#full_example}
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" ?>
