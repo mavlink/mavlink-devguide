@@ -38,9 +38,18 @@ If the system supports *MAVLink 2* and the handshake it will respond with [PROTO
 
 The diagram below illustrates the complete sequence.
 
-{% mermaid %} sequenceDiagram; participant GCS participant Drone GCS->>Drone: MAV_CMD_REQUEST_PROTOCOL_VERSION GCS->>GCS: Start timeout Drone->>GCS: PROTOCOL_VERSION in MAVLink 2 framing GCS->>Drone: If ACK: Switches to MAVLink 2 Drone->>GCS: Switches to MAVLink 2 on receive
+[![Mermaid sequence: Request protocol version](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9QUk9UT0NPTF9WRVJTSU9OXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IFBST1RPQ09MX1ZFUlNJT04gaW4gTUFWTGluayAyIGZyYW1pbmdcbiAgICBHQ1MtPj5Ecm9uZTogSWYgQUNLOiBTd2l0Y2hlcyB0byBNQVZMaW5rIDJcbiAgICBEcm9uZS0-PkdDUzogU3dpdGNoZXMgdG8gTUFWTGluayAyIG9uIHJlY2VpdmUiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9QUk9UT0NPTF9WRVJTSU9OXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IFBST1RPQ09MX1ZFUlNJT04gaW4gTUFWTGluayAyIGZyYW1pbmdcbiAgICBHQ1MtPj5Ecm9uZTogSWYgQUNLOiBTd2l0Y2hlcyB0byBNQVZMaW5rIDJcbiAgICBEcm9uZS0-PkdDUzogU3dpdGNoZXMgdG8gTUFWTGluayAyIG9uIHJlY2VpdmUiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
-{% endmermaid %}
+<!-- Original sequence
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MAV_CMD_REQUEST_PROTOCOL_VERSION
+    GCS->>GCS: Start timeout
+    Drone->>GCS: PROTOCOL_VERSION in MAVLink 2 framing
+    GCS->>Drone: If ACK: Switches to MAVLink 2
+    Drone->>GCS: Switches to MAVLink 2 on receive
+-->
 
 ### Semi-Transparent Legacy Radios
 
