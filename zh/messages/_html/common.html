@@ -29290,7 +29290,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Version of the camera firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>Version of the camera firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff)</td>
     </tr>
     <tr>
      <td>focal_length</td>
@@ -30625,7 +30625,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Version of the gimbal firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>Version of the gimbal firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff)</td>
     </tr>
     <tr>
      <td>cap_flags</td>
@@ -33449,7 +33449,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Version of the component firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>Version of the component firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff)</td>
     </tr>
     <tr>
      <td>hardware_version</td>
@@ -33460,7 +33460,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Version of the component hardware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>Version of the component hardware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff)</td>
     </tr>
     <tr>
      <td>capability_flags</td>
