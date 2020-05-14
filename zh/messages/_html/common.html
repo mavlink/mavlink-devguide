@@ -9545,7 +9545,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Takeoff from ground / hand</p>
+   </a>Takeoff from ground / hand. Vehicles that support multiple takeoff modes (e.g. VTOL quadplane) should take off using the currently configured mode.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10357,7 +10357,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Takeoff from ground using VTOL mode, and transition to forward flight with specified heading.</p>
+   </a>Takeoff from ground using VTOL mode, and transition to forward flight with specified heading. The command should be ignored by vehicles that dont support both VTOL and fixed-wing flight (multicopters, boats,etc.).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11306,12 +11306,11 @@
      </td>
     </tr>
     <tr>
-     <td>4</td>
-     <td>Empty</td>
+     <td>4: Yaw</td>
+     <td>Yaw angle. NaN to use default heading</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>5: Latitude</td>
@@ -14243,10 +14242,10 @@
       <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>2: Index ID</td>
-     <td>Index id (if appropriate). The use of this parameter (if any), must be defined in the requested message.</td>
+     <td>2</td>
+     <td>Use for index ID, if required. Otherwise, the use of this parameter (if any) must be defined in the requested message. By default assumed not used (0).</td>
      <td>
-      <em>min:</em>0 <em>increment:</em>1</td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
@@ -21335,7 +21334,7 @@
      <td>airspeed</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Current indicated airspeed (IAS).</td>
+     <td>Vehicle speed in form appropriate for vehicle type. For standard aircraft this is typically calibrated airspeed (CAS) or indicated airspeed (IAS) - either of which can be used by a pilot to estimate stall speed.</td>
     </tr>
     <tr>
      <td>groundspeed</td>
