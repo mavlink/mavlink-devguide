@@ -2189,14 +2189,12 @@
      </td>
      <td>带有距离地面高度高度（航点坐标）的全球（WGS84)坐标系(比例缩放）。 第一个数值/x：纬度 角度*e-7；第二个数值/：经度 角度*1e-7；第三个数值/z 单位米：以地平线基准为0的地形模型中</td>
     </tr>
-    <tr id="MAV_FRAME_RESERVED_12">
+    <tr id="MAV_FRAME_BODY_FRD">
      <td>12</td>
      <td>
-      <a href="#MAV_FRAME_RESERVED_12">MAV_FRAME_RESERVED_12</a>
-      <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_BODY_OFFSET_NED (2019-04).</p>
+      <a href="#MAV_FRAME_BODY_FRD">MAV_FRAME_BODY_FRD</a>
      </td>
-     <td>MAV_FRAME_BODY_FRD - Body fixed frame of reference, Z-down (x: Forward, y: Right, z: Down).</td>
+     <td>Body fixed frame of reference, Z-down (x: Forward, y: Right, z: Down).</td>
     </tr>
     <tr id="MAV_FRAME_RESERVED_13">
      <td>13</td>
@@ -5076,6 +5074,150 @@
       <a href="#MAV_SMART_BATTERY_FAULT_UNDER_TEMPERATURE">MAV_SMART_BATTERY_FAULT_UNDER_TEMPERATURE</a>
      </td>
      <td>Under-temperature fault.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GENERATOR_STATUS_FLAG">
+   <a href="#GENERATOR_STATUS_FLAG">GENERATOR_STATUS_FLAG</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags to report status/failure cases for a power generator (used in GENERATOR_STATUS). Note that FAULTS are conditions that cause the generator to fail. Warnings are conditions that require attention before the next use (they indicate the system is not operating properly).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GENERATOR_STATUS_FLAG_OFF">
+     <td>1</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_OFF">GENERATOR_STATUS_FLAG_OFF</a>
+     </td>
+     <td>Generator is off.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_READY">
+     <td>2</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_READY">GENERATOR_STATUS_FLAG_READY</a>
+     </td>
+     <td>Generator is ready to start generating power.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_GENERATING">
+     <td>4</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_GENERATING">GENERATOR_STATUS_FLAG_GENERATING</a>
+     </td>
+     <td>Generator is generating power.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_CHARGING">
+     <td>8</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_CHARGING">GENERATOR_STATUS_FLAG_CHARGING</a>
+     </td>
+     <td>Generator is charging the batteries (generating enough power to charge and provide the load).</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_REDUCED_POWER">
+     <td>16</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_REDUCED_POWER">GENERATOR_STATUS_FLAG_REDUCED_POWER</a>
+     </td>
+     <td>Generator is operating at a reduced maximum power.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_MAXPOWER">
+     <td>32</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_MAXPOWER">GENERATOR_STATUS_FLAG_MAXPOWER</a>
+     </td>
+     <td>Generator is providing the maximum output.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">
+     <td>64</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">GENERATOR_STATUS_FLAG_OVERTEMP_WARNING</a>
+     </td>
+     <td>Generator is near the maximum operating temperature, cooling is insufficient.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">
+     <td>128</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">GENERATOR_STATUS_FLAG_OVERTEMP_FAULT</a>
+     </td>
+     <td>Generator hit the maximum operating temperature and shutdown.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">
+     <td>256</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING</a>
+     </td>
+     <td>Power electronics are near the maximum operating temperature, cooling is insufficient.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">
+     <td>512</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT</a>
+     </td>
+     <td>Power electronics hit the maximum operating temperature and shutdown.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">
+     <td>1024</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT</a>
+     </td>
+     <td>Power electronics experienced a fault and shutdown.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">
+     <td>2048</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT</a>
+     </td>
+     <td>The power source supplying the generator failed e.g. mechanical generator stopped, tether is no longer providing power, solar cell is in shade, hydrogen reaction no longer happening.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">
+     <td>4096</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING</a>
+     </td>
+     <td>Generator controller having communication problems.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_COOLING_WARNING">
+     <td>8192</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_COOLING_WARNING">GENERATOR_STATUS_FLAG_COOLING_WARNING</a>
+     </td>
+     <td>Power electronic or generator cooling system error.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">
+     <td>16384</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT</a>
+     </td>
+     <td>Generator controller power rail experienced a fault.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">
+     <td>32768</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT</a>
+     </td>
+     <td>Generator controller exceeded the overcurrent threshold and shutdown to prevent damage.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">
+     <td>65536</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT</a>
+     </td>
+     <td>Generator controller detected a high current going into the batteries and shutdown to prevent battery damage.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">
+     <td>131072</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT</a>
+     </td>
+     <td>Generator controller exceeded it's overvoltage threshold and shutdown to prevent it exceeding the voltage rating.</td>
     </tr>
    </tbody>
   </table>
@@ -9251,7 +9393,7 @@
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>环绕航点半径。 If positive loiter clockwise, else counter-clockwise</td>
+     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise</td>
      <td>m</td>
     </tr>
     <tr>
@@ -9261,19 +9403,19 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>纬度</td>
+     <td>Latitude</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>经度</td>
+     <td>Longitude</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>高度</td>
+     <td>Altitude</td>
      <td>m</td>
     </tr>
    </tbody>
@@ -9557,7 +9699,7 @@
    <tbody>
     <tr>
      <td>1: Pitch</td>
-     <td>最小俯仰角(如果空速传感器存在)，没有传感器需要设定俯仰角</td>
+     <td>Minimum pitch (if airspeed sensor present), desired pitch without sensor</td>
      <td>
      </td>
     </tr>
@@ -9768,7 +9910,7 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>纬度</td>
+     <td>Latitude</td>
      <td>
      </td>
      <td>
@@ -9776,7 +9918,7 @@
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>经度</td>
+     <td>Longitude</td>
      <td>
      </td>
      <td>
@@ -9784,7 +9926,7 @@
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>高度</td>
+     <td>Altitude</td>
      <td>
      </td>
      <td>m</td>
@@ -12172,7 +12314,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Sets the region of interest (ROI) to a location. 然后，载具的控制系统可以用来控制车辆的姿态和照相机等各种传感器的姿态。 此命令可以发送到云台管理器，但不能发送到云台设备。 A gimbal is not to react to this message.</p>
+   </a>Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. 此命令可以发送到云台管理器，但不能发送到云台设备。 A gimbal is not to react to this message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12184,7 +12326,7 @@
    <tbody>
     <tr>
      <td>1: Gimbal device ID</td>
-     <td>云台设备的组件ID ( 或1-6到非 MAVLink 的云台l) ，0为发送到所有云台。 (发送超过1个云台，但不是所有云台。)</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
      <td>
      </td>
     </tr>
@@ -12229,7 +12371,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. 此命令可以发送到云台管理器，但不能发送到云台设备。 云台不对此消息做出反应。</p>
+   </a>Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13589,7 +13731,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Trigger calibration. This command will be only accepted if in pre-flight mode. Except for Temperature Calibration, only one sensor should be set in a single message and all others should be zero.</p>
+   </a>Trigger calibration. 只有在飞行前模式下才会接受此命令。 Except for Temperature Calibration, only one sensor should be set in a single message and all others should be zero.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13649,7 +13791,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Set sensor offsets. 只有在飞行前模式下才会接受此命令。</p>
+   </a>Set sensor offsets. This command will be only accepted if in pre-flight mode.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14329,7 +14471,7 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>保留(所有剩余的参数)</td>
+     <td>Reserved (all remaining params)</td>
     </tr>
    </tbody>
   </table>
@@ -14497,7 +14639,7 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>保留(所有剩余的参数)</td>
+     <td>Reserved (all remaining params)</td>
      <td>
      </td>
     </tr>
@@ -15315,7 +15457,7 @@
    <tbody>
     <tr>
      <td>1: Stream ID</td>
-     <td>视频流ID(0为所有流，1为第一流，2为第二流，等等)</td>
+     <td>Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -18743,7 +18885,7 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>lat</td>
@@ -18825,7 +18967,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>伺服器输出端口(8个输出=1个端口)。 在 Pixhawk 上运行的飞行堆栈应使用：0 = MAIN，1 = AUX。</td>
+     <td>Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.</td>
     </tr>
     <tr>
      <td>chan1_scaled</td>
@@ -19229,7 +19371,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19238,7 +19380,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td>start_index</td>
@@ -19573,7 +19715,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19582,7 +19724,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td style="color:blue;">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -19593,7 +19735,7 @@
      <td>
       <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
-     <td>任务类型</td>
+     <td>Mission type.</td>
     </tr>
    </tbody>
   </table>
@@ -19623,7 +19765,7 @@
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19632,7 +19774,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td>count</td>
@@ -19682,7 +19824,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19691,7 +19833,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td style="color:blue;">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21005,14 +21147,14 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td>chan1_raw</td>
@@ -21181,7 +21323,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -21190,7 +21332,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td>seq</td>
@@ -21733,7 +21875,7 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>roll</td>
@@ -21961,7 +22103,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -21972,7 +22114,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td>coordinate_frame</td>
@@ -21992,7 +22134,7 @@
      <td>
       <a href="#POSITION_TARGET_TYPEMASK">POSITION_TARGET_TYPEMASK</a>
      </td>
-     <td>位图，表示载具应该忽略哪些维度。</td>
+     <td>Bitmap to indicate which dimensions should be ignored by the vehicle.</td>
     </tr>
     <tr>
      <td>x</td>
@@ -22032,7 +22174,7 @@
       <a href="#">
       </a>
      </td>
-     <td>NED 坐标系中的 X 速度</td>
+     <td>X velocity in NED frame</td>
     </tr>
     <tr>
      <td>vy</td>
@@ -22042,7 +22184,7 @@
       <a href="#">
       </a>
      </td>
-     <td>NED 坐标系中的Y 速度</td>
+     <td>Y velocity in NED frame</td>
     </tr>
     <tr>
      <td>vz</td>
@@ -22052,7 +22194,7 @@
       <a href="#">
       </a>
      </td>
-     <td>NED 坐标系中的Z速度</td>
+     <td>Z velocity in NED frame</td>
     </tr>
     <tr>
      <td>afx</td>
@@ -22062,7 +22204,7 @@
       <a href="#">
       </a>
      </td>
-     <td>以米/秒^2或N为单位的 NED坐标系中中的X 加速度或力(如果设置了 Bit10 的类型掩码)</td>
+     <td>X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr>
      <td>afy</td>
@@ -22072,7 +22214,7 @@
       <a href="#">
       </a>
      </td>
-     <td>以米/秒^2或N为单位的 NED坐标系中的Y加速度或力(如果设置了 Bit10 的类型掩码)</td>
+     <td>Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr>
      <td>afz</td>
@@ -22082,7 +22224,7 @@
       <a href="#">
       </a>
      </td>
-     <td>以米/秒^2或N为单位的 NED坐标系中的Z加速度或力(如果设置了 Bit10 的类型掩码)</td>
+     <td>Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr>
      <td>yaw</td>
@@ -22154,7 +22296,7 @@
      <td>
       <a href="#POSITION_TARGET_TYPEMASK">POSITION_TARGET_TYPEMASK</a>
      </td>
-     <td>标识机体哪些维度应该被忽略的位图</td>
+     <td>Bitmap to indicate which dimensions should be ignored by the vehicle.</td>
     </tr>
     <tr>
      <td>x</td>
@@ -22194,7 +22336,7 @@
       <a href="#">
       </a>
      </td>
-     <td>NED 坐标系中的 X 速度</td>
+     <td>X velocity in NED frame</td>
     </tr>
     <tr>
      <td>vy</td>
@@ -22204,7 +22346,7 @@
       <a href="#">
       </a>
      </td>
-     <td>NED 坐标系中的Y 速度</td>
+     <td>Y velocity in NED frame</td>
     </tr>
     <tr>
      <td>vz</td>
@@ -22214,7 +22356,7 @@
       <a href="#">
       </a>
      </td>
-     <td>NED 坐标系中的Z速度</td>
+     <td>Z velocity in NED frame</td>
     </tr>
     <tr>
      <td>afx</td>
@@ -22224,7 +22366,7 @@
       <a href="#">
       </a>
      </td>
-     <td>以米/秒^2或N为单位的 NED坐标系中中的X 加速度或力(如果设置了 Bit10 的类型掩码)</td>
+     <td>X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr>
      <td>afy</td>
@@ -22234,7 +22376,7 @@
       <a href="#">
       </a>
      </td>
-     <td>以米/秒^2或N为单位的 NED坐标系中的Y加速度或力(如果设置了 Bit10 的类型掩码)</td>
+     <td>Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr>
      <td>afz</td>
@@ -22244,7 +22386,7 @@
       <a href="#">
       </a>
      </td>
-     <td>以米/秒^2或N为单位的 NED坐标系中的Z加速度或力(如果设置了 Bit10 的类型掩码)</td>
+     <td>Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr>
      <td>yaw</td>
@@ -22254,7 +22396,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Yaw: 航向设定值</td>
+     <td>yaw setpoint</td>
     </tr>
     <tr>
      <td>yaw_rate</td>
@@ -22264,7 +22406,7 @@
       <a href="#">
       </a>
      </td>
-     <td>yaw: 航向角速度设定值</td>
+     <td>yaw rate setpoint</td>
     </tr>
    </tbody>
   </table>
@@ -22705,7 +22847,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>roll</td>
@@ -22827,7 +22969,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>roll_ailerons</td>
@@ -22963,7 +23105,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>chan1_raw</td>
@@ -23246,19 +23388,19 @@
      <td>roll</td>
      <td>float</td>
      <td>rad</td>
-     <td>Roll angle</td>
+     <td>滚转角</td>
     </tr>
     <tr>
      <td>pitch</td>
      <td>float</td>
      <td>rad</td>
-     <td>Pitch angle</td>
+     <td>俯仰角</td>
     </tr>
     <tr>
      <td>yaw</td>
      <td>float</td>
      <td>rad</td>
-     <td>Yaw angle</td>
+     <td>偏航角</td>
     </tr>
     <tr>
      <td style="color:blue;">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -23268,7 +23410,7 @@
      <td>float[21]</td>
      <td>
      </td>
-     <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x_global, y_global, z_global, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
+     <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x_global, y_global, z_global, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). 如果未知，在数组中将NAN值分配给第一个元素。</td>
     </tr>
     <tr>
      <td style="color:blue;">reset_counter<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -23305,7 +23447,7 @@
      <td>usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(同步到 UNIX 时间或系统启动后)。</td>
+     <td>Timestamp (UNIX time or time since system boot)</td>
     </tr>
     <tr>
      <td>x</td>
@@ -23329,19 +23471,19 @@
      <td>roll</td>
      <td>float</td>
      <td>rad</td>
-     <td>滚转角</td>
+     <td>Roll angle</td>
     </tr>
     <tr>
      <td>pitch</td>
      <td>float</td>
      <td>rad</td>
-     <td>俯仰角</td>
+     <td>Pitch angle</td>
     </tr>
     <tr>
      <td>yaw</td>
      <td>float</td>
      <td>rad</td>
-     <td>偏航角</td>
+     <td>Yaw angle</td>
     </tr>
     <tr>
      <td style="color:blue;">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -23351,7 +23493,7 @@
      <td>float[21]</td>
      <td>
      </td>
-     <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). 如果未知，在数组中将NAN值分配给第一个元素。</td>
+     <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
     <tr>
      <td style="color:blue;">reset_counter<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -23526,7 +23668,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>xacc</td>
@@ -23586,7 +23728,7 @@
      <td>abs_pressure</td>
      <td>float</td>
      <td>mbar</td>
-     <td>绝对压力</td>
+     <td>Absolute pressure</td>
     </tr>
     <tr>
      <td>diff_pressure</td>
@@ -23599,13 +23741,13 @@
      <td>float</td>
      <td>
      </td>
-     <td>根据压力计算的高度</td>
+     <td>Altitude calculated from pressure</td>
     </tr>
     <tr>
      <td>temperature</td>
      <td>float</td>
      <td>degC</td>
-     <td>温度</td>
+     <td>Temperature</td>
     </tr>
     <tr>
      <td>fields_updated</td>
@@ -24189,7 +24331,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>fix_type</td>
@@ -26170,7 +26312,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>group_mlx</td>
@@ -26918,7 +27060,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>target_num</td>
@@ -27178,7 +27320,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -29602,7 +29744,7 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>image_status</td>
@@ -30277,7 +30419,7 @@
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -30304,7 +30446,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>cap_flags</td>
@@ -30395,7 +30537,7 @@
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -30422,7 +30564,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -30453,7 +30595,7 @@
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -30591,7 +30733,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>vendor_name</td>
@@ -31576,7 +31718,7 @@
       <a href="#">
       </a>
      </td>
-     <td>参数id，如果长度小于16个可读字符，则以NULL结尾;如果长度正好是16个字符，则不需要NULL终止(NULL)字节；如果ID存储为字符串，应用程序必须提供16+1字节的存储</td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
     </tr>
     <tr>
      <td>param_value</td>
@@ -31593,7 +31735,7 @@
      <td>
       <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
      </td>
-     <td>参数类型.</td>
+     <td>Parameter type.</td>
     </tr>
     <tr>
      <td>param_count</td>
@@ -31772,7 +31914,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后UNIX Epoch时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>sensor_type</td>
@@ -32262,7 +32404,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>valid_points</td>
@@ -33056,6 +33198,123 @@
       </a>
      </td>
      <td>Individual cell voltages. Batteries with more 16 cells can use the cell_offset field to specify the cell offset for the array specified in the current message . Index values above the valid cell count for this battery should have the UINT16_MAX value.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GENERATOR_STATUS">GENERATOR_STATUS (<a href="#GENERATOR_STATUS">
+    #373
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Telemetry of power generation system. Alternator or mechanical generator.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>status</td>
+     <td>uint64_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG">GENERATOR_STATUS_FLAG</a>
+     </td>
+     <td>Status flags.</td>
+    </tr>
+    <tr>
+     <td>generator_speed</td>
+     <td>uint16_t</td>
+     <td>rpm</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Speed of electrical generator or alternator. UINT16_MAX: field not provided.</td>
+    </tr>
+    <tr>
+     <td>battery_current</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current into/out of battery. Positive for out. Negative for in. NaN: field not provided.</td>
+    </tr>
+    <tr>
+     <td>load_current</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current going to the UAV. If battery current not available this is the DC current from the generator. Positive for out. Negative for in. NaN: field not provided</td>
+    </tr>
+    <tr>
+     <td>power_generated</td>
+     <td>float</td>
+     <td>W</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The power being generated. NaN: field not provided</td>
+    </tr>
+    <tr>
+     <td>bus_voltage</td>
+     <td>float</td>
+     <td>V</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Voltage of the bus seen at the generator, or battery bus if battery bus is controlled by generator and at a different voltage to main bus.</td>
+    </tr>
+    <tr>
+     <td>rectifier_temperature</td>
+     <td>int16_t</td>
+     <td>degC</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The temperature of the rectifier or power converter. INT16_MAX: field not provided.</td>
+    </tr>
+    <tr>
+     <td>bat_current_setpoint</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The target battery current. Positive for out. Negative for in. NaN: field not provided</td>
+    </tr>
+    <tr>
+     <td>generator_temperature</td>
+     <td>int16_t</td>
+     <td>degC</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The temperature of the mechanical motor, fuel cell core or generator. INT16_MAX: field not provided.</td>
     </tr>
    </tbody>
   </table>
