@@ -2191,14 +2191,12 @@
      </td>
      <td>Global (WGS84) coordinate frame (scaled) with AGL altitude (at the waypoint coordinate). First value / x: latitude in degrees*10e-7, second value / y: longitude in degrees*10e-7, third value / z: positive altitude in meters with 0 being at ground level in terrain model.</td>
     </tr>
-    <tr id="MAV_FRAME_RESERVED_12">
+    <tr id="MAV_FRAME_BODY_FRD">
      <td>12</td>
      <td>
-      <a href="#MAV_FRAME_RESERVED_12">MAV_FRAME_RESERVED_12</a>
-      <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_BODY_OFFSET_NED (2019-04).</p>
+      <a href="#MAV_FRAME_BODY_FRD">MAV_FRAME_BODY_FRD</a>
      </td>
-     <td>MAV_FRAME_BODY_FRD - Body fixed frame of reference, Z-down (x: Forward, y: Right, z: Down).</td>
+     <td>Body fixed frame of reference, Z-down (x: Forward, y: Right, z: Down).</td>
     </tr>
     <tr id="MAV_FRAME_RESERVED_13">
      <td>13</td>
@@ -5100,6 +5098,150 @@
       <a href="#MAV_SMART_BATTERY_FAULT_UNDER_TEMPERATURE">MAV_SMART_BATTERY_FAULT_UNDER_TEMPERATURE</a>
      </td>
      <td>Under-temperature fault.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GENERATOR_STATUS_FLAG">
+   <a href="#GENERATOR_STATUS_FLAG">GENERATOR_STATUS_FLAG</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags to report status/failure cases for a power generator (used in GENERATOR_STATUS). Note that FAULTS are conditions that cause the generator to fail. Warnings are conditions that require attention before the next use (they indicate the system is not operating properly).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GENERATOR_STATUS_FLAG_OFF">
+     <td>1</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_OFF">GENERATOR_STATUS_FLAG_OFF</a>
+     </td>
+     <td>Generator is off.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_READY">
+     <td>2</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_READY">GENERATOR_STATUS_FLAG_READY</a>
+     </td>
+     <td>Generator is ready to start generating power.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_GENERATING">
+     <td>4</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_GENERATING">GENERATOR_STATUS_FLAG_GENERATING</a>
+     </td>
+     <td>Generator is generating power.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_CHARGING">
+     <td>8</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_CHARGING">GENERATOR_STATUS_FLAG_CHARGING</a>
+     </td>
+     <td>Generator is charging the batteries (generating enough power to charge and provide the load).</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_REDUCED_POWER">
+     <td>16</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_REDUCED_POWER">GENERATOR_STATUS_FLAG_REDUCED_POWER</a>
+     </td>
+     <td>Generator is operating at a reduced maximum power.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_MAXPOWER">
+     <td>32</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_MAXPOWER">GENERATOR_STATUS_FLAG_MAXPOWER</a>
+     </td>
+     <td>Generator is providing the maximum output.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">
+     <td>64</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">GENERATOR_STATUS_FLAG_OVERTEMP_WARNING</a>
+     </td>
+     <td>Generator is near the maximum operating temperature, cooling is insufficient.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">
+     <td>128</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">GENERATOR_STATUS_FLAG_OVERTEMP_FAULT</a>
+     </td>
+     <td>Generator hit the maximum operating temperature and shutdown.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">
+     <td>256</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING</a>
+     </td>
+     <td>Power electronics are near the maximum operating temperature, cooling is insufficient.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">
+     <td>512</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT</a>
+     </td>
+     <td>Power electronics hit the maximum operating temperature and shutdown.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">
+     <td>1024</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT</a>
+     </td>
+     <td>Power electronics experienced a fault and shutdown.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">
+     <td>2048</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT</a>
+     </td>
+     <td>The power source supplying the generator failed e.g. mechanical generator stopped, tether is no longer providing power, solar cell is in shade, hydrogen reaction no longer happening.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">
+     <td>4096</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING</a>
+     </td>
+     <td>Generator controller having communication problems.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_COOLING_WARNING">
+     <td>8192</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_COOLING_WARNING">GENERATOR_STATUS_FLAG_COOLING_WARNING</a>
+     </td>
+     <td>Power electronic or generator cooling system error.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">
+     <td>16384</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT</a>
+     </td>
+     <td>Generator controller power rail experienced a fault.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">
+     <td>32768</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT</a>
+     </td>
+     <td>Generator controller exceeded the overcurrent threshold and shutdown to prevent damage.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">
+     <td>65536</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT</a>
+     </td>
+     <td>Generator controller detected a high current going into the batteries and shutdown to prevent battery damage.</td>
+    </tr>
+    <tr id="GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">
+     <td>131072</td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT</a>
+     </td>
+     <td>Generator controller exceeded it's overvoltage threshold and shutdown to prevent it exceeding the voltage rating.</td>
     </tr>
    </tbody>
   </table>
@@ -33080,6 +33222,123 @@
       </a>
      </td>
      <td>Individual cell voltages. Batteries with more 16 cells can use the cell_offset field to specify the cell offset for the array specified in the current message . Index values above the valid cell count for this battery should have the UINT16_MAX value.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GENERATOR_STATUS">GENERATOR_STATUS (<a href="#GENERATOR_STATUS">
+    #373
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Telemetry of power generation system. Alternator or mechanical generator.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>status</td>
+     <td>uint64_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GENERATOR_STATUS_FLAG">GENERATOR_STATUS_FLAG</a>
+     </td>
+     <td>Status flags.</td>
+    </tr>
+    <tr>
+     <td>generator_speed</td>
+     <td>uint16_t</td>
+     <td>rpm</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Speed of electrical generator or alternator. UINT16_MAX: field not provided.</td>
+    </tr>
+    <tr>
+     <td>battery_current</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current into/out of battery. Positive for out. Negative for in. NaN: field not provided.</td>
+    </tr>
+    <tr>
+     <td>load_current</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current going to the UAV. If battery current not available this is the DC current from the generator. Positive for out. Negative for in. NaN: field not provided</td>
+    </tr>
+    <tr>
+     <td>power_generated</td>
+     <td>float</td>
+     <td>W</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The power being generated. NaN: field not provided</td>
+    </tr>
+    <tr>
+     <td>bus_voltage</td>
+     <td>float</td>
+     <td>V</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Voltage of the bus seen at the generator, or battery bus if battery bus is controlled by generator and at a different voltage to main bus.</td>
+    </tr>
+    <tr>
+     <td>rectifier_temperature</td>
+     <td>int16_t</td>
+     <td>degC</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The temperature of the rectifier or power converter. INT16_MAX: field not provided.</td>
+    </tr>
+    <tr>
+     <td>bat_current_setpoint</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The target battery current. Positive for out. Negative for in. NaN: field not provided</td>
+    </tr>
+    <tr>
+     <td>generator_temperature</td>
+     <td>int16_t</td>
+     <td>degC</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The temperature of the mechanical motor, fuel cell core or generator. INT16_MAX: field not provided.</td>
     </tr>
    </tbody>
   </table>
