@@ -9523,7 +9523,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Loiter around this waypoint for X seconds</p>
+   </a>Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9536,29 +9536,29 @@
    <tbody>
     <tr>
      <td>1: Time</td>
-     <td>Loiter time.</td>
+     <td>Loiter time (only starts once Lat, Lon and Alt is reached).</td>
      <td>
       <em>min:</em>0 </td>
      <td>s</td>
     </tr>
     <tr>
-     <td>2</td>
-     <td>Empty</td>
+     <td>2: Heading Required</td>
+     <td>Leave loiter circle only once heading towards the next waypoint (0 = False)</td>
      <td>
-     </td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise.</td>
+     <td>Loiter radius around waypoint for forward-moving vehicles. If positive loiter clockwise, else counter-clockwise.</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>4: Xtrack Location</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle.  NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>For forward-moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
      <td>
      </td>
      <td>
@@ -14050,6 +14050,67 @@
     <tr>
      <td>7</td>
      <td>WIP: ID (e.g. camera ID -1 for all IDs)</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_UPGRADE">MAV_CMD_DO_UPGRADE (<a href="#MAV_CMD_DO_UPGRADE">247</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request a target system to start, cancel, or restart upgrade of one (or all) of its components. For example, the command might be sent to a companion computer to cause it to upgrade a connected flight controller. The system doing the upgrade will report progress using the normal command protocol sequence (COMMAND_ACK regularly sent with result=MAV_RESULT_IN_PROGRESS, followed by a final result of MAV_RESULT_ACCEPTED or MAV_RESULT_FAILED). The operation can be cancelled, in which case the updating system would send COMMAND_ACK with MAV_RESULT_ACCEPTED. The operation can be restarted, in which case the updating system should respond with progress updates (as though it had a new message).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Component ID</td>
+     <td>Component id of the component to be upgraded. If set to 0, all components should be upgraded.</td>
+     <td>MAV_COMPONENT</td>
+    </tr>
+    <tr>
+     <td>2: Action</td>
+     <td>0: Start component upgrade, 1: Cancel component upgrade, 2: Restart component upgrade.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>3: Reboot</td>
+     <td>0: Do not reboot component after the action is executed, 1: Reboot component after the action is executed.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>WIP: upgrade progress report rate (can be used for more granular control).</td>
      <td>
      </td>
     </tr>
