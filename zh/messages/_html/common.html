@@ -9499,7 +9499,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Loiter around this waypoint for X seconds</p>
+   </a>Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9512,29 +9512,29 @@
    <tbody>
     <tr>
      <td>1: Time</td>
-     <td>Loiter time.</td>
+     <td>Loiter time (only starts once Lat, Lon and Alt is reached).</td>
      <td>
       <em>min:</em>0 </td>
      <td>s</td>
     </tr>
     <tr>
-     <td>2</td>
-     <td>Empty</td>
+     <td>2: Heading Required</td>
+     <td>Leave loiter circle only once heading towards the next waypoint (0 = False)</td>
      <td>
-     </td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise.</td>
+     <td>Loiter radius around waypoint for forward-moving vehicles. If positive loiter clockwise, else counter-clockwise.</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>4: Xtrack Location</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle.  NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>For forward-moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
      <td>
      </td>
      <td>
@@ -14031,6 +14031,67 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_DO_UPGRADE">MAV_CMD_DO_UPGRADE (<a href="#MAV_CMD_DO_UPGRADE">247</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request a target system to start, cancel, or restart upgrade of one (or all) of its components. For example, the command might be sent to a companion computer to cause it to upgrade a connected flight controller. The system doing the upgrade will report progress using the normal command protocol sequence (COMMAND_ACK regularly sent with result=MAV_RESULT_IN_PROGRESS, followed by a final result of MAV_RESULT_ACCEPTED or MAV_RESULT_FAILED). The operation can be cancelled, in which case the updating system would send COMMAND_ACK with MAV_RESULT_ACCEPTED. The operation can be restarted, in which case the updating system should respond with progress updates (as though it had a new message).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Component ID</td>
+     <td>Component id of the component to be upgraded. If set to 0, all components should be upgraded.</td>
+     <td>MAV_COMPONENT</td>
+    </tr>
+    <tr>
+     <td>2: Action</td>
+     <td>0: Start component upgrade, 1: Cancel component upgrade, 2: Restart component upgrade.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>3: Reboot</td>
+     <td>0: Do not reboot component after the action is executed, 1: Reboot component after the action is executed.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>WIP: upgrade progress report rate (can be used for more granular control).</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_OVERRIDE_GOTO">MAV_CMD_OVERRIDE_GOTO (<a href="#MAV_CMD_OVERRIDE_GOTO">252</a>
    )
   </h3>
@@ -14449,7 +14510,7 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>保留(所有剩余的参数)</td>
+     <td>Reserved (all remaining params)</td>
     </tr>
    </tbody>
   </table>
@@ -15442,7 +15503,7 @@
    <tbody>
     <tr>
      <td>1: Stream ID</td>
-     <td>视频流ID(0为所有流，1为第一流，2为第二流，等等)</td>
+     <td>Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -18843,7 +18904,7 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>x</td>
@@ -19325,7 +19386,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19334,7 +19395,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td>start_index</td>
@@ -19737,7 +19798,7 @@
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19746,7 +19807,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td style="color:blue;">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -19787,7 +19848,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19796,7 +19857,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td>count</td>
@@ -21169,14 +21230,14 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td>chan1_raw</td>
@@ -23410,19 +23471,19 @@
      <td>roll</td>
      <td>float</td>
      <td>rad</td>
-     <td>滚转角</td>
+     <td>Roll angle</td>
     </tr>
     <tr>
      <td>pitch</td>
      <td>float</td>
      <td>rad</td>
-     <td>俯仰角</td>
+     <td>Pitch angle</td>
     </tr>
     <tr>
      <td>yaw</td>
      <td>float</td>
      <td>rad</td>
-     <td>偏航角</td>
+     <td>Yaw angle</td>
     </tr>
     <tr>
      <td style="color:blue;">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -23432,7 +23493,7 @@
      <td>float[21]</td>
      <td>
      </td>
-     <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x_global, y_global, z_global, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). 如果未知，在数组中将NAN值分配给第一个元素。</td>
+     <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x_global, y_global, z_global, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
     <tr>
      <td style="color:blue;">reset_counter<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -24318,7 +24379,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp for image frame (UNIX Epoch time or time since system boot). 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp for image frame (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>seq</td>
@@ -26282,7 +26343,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>q</td>
@@ -30488,7 +30549,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>cap_flags</td>
