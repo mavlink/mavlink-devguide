@@ -80,12 +80,9 @@ sequenceDiagram;
 The rate at which progress messages are emitted is system-dependent.
 Generally though, the GCS should have a much increased timeout after receiving an ACK with `MAV_RESULT_IN_PROGRESS`.
 
-Typically if a system receives exactly the same command while it is already processing the command, it should continue the operation.
-If the command is a "resend" (confirmation number > 0) the command can be ignored; otherwise the system should respond immediately with a progress update `COMMAND_ACK`.
+Often long running operations may be cancelled, restarted, or updated (continue operation but with new parameters) by sending the same command with different parameters.
+- A cancel command will complete immediately with response `COMMAND_ACK.result=MAV_RESULT_ACCEPTED`.
+- A restart or update command will start off a new sequence of progress updates - i.e. `COMMAND_ACK.result=MAV_RESULT_IN_PROGRESS` followed by updates until the operation completes.
+- A "repeat" command is typically treated as an update command.
 
-If a system receives the same command with *different parameters* then in general it must be treated as *new command* (although this should be evaluated based on the specific operation requested):
-So for example:
-- If the new command cancels an operation, the recipient would stop the operation and emit `COMMAND_ACK` with `result=MAV_RESULT_ACCEPTED`
-  > **Note** If another (different) command was used to cancel the operation then it would be ACKd with `MAV_RESULT_ACCEPTED`, and the original command would be ACKd with `MAV_RESULT_FAILED`.
-- If the new command re-starts an operation the recipient should restart the job and emit `result=MAV_RESULT_IN_PROGRESS` etc.
-- If a new command changes some general value (e.g. a target position) this would be a new command.
+Other commands will typically be rejected with `MAV_RESULT_TEMPORARILY_REJECTED` unless the long running command is interruptible.
