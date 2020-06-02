@@ -196,6 +196,12 @@ sequenceDiagram;
     Camera->>GCS: CAMERA_IMAGE_CAPTURED  (broadcast)
 -->
 
+Detecting lost [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) messages.
+
+- [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) field image_index can be used to detect that one of the [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) messages was lost.
+- [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) field image_count contains total number of images on the camera and can be used to detect that the last message was lost.
+- If GCS and camera image counts don't match then individual entries can be requested with [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) where param1="MAVLINK_MSG_ID_CAMERA_IMAGE_CAPTURED" and param2="image index"
+- Camera image log can be reset with [MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) where param3=1
 
 ### Video Capture
 
