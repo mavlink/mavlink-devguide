@@ -206,7 +206,7 @@ The camera broadcasts a [CAMERA_IMAGE_CAPTURED](#CAMERA_IMAGE_CAPTURED) every ti
 
 These messages can be lost during transmission; for example if the vehicle is out of data-link range of the ground stations.
 
-Data loss can be detected by comparing GCS and camera image counts. 
+Lost image capture messages can be detected by comparing GCS and camera image counts. 
 Individual entries can be requested using [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE), where `param1="MAVLINK_MSG_ID_CAMERA_IMAGE_CAPTURED"` and `param2="the index of the missing image"`.
 
 The camera image log iterates "forever" (but may be explicitly reset using [MAV_CMD_STORAGE_FORMAT.param3=1](../messages/common.md#MAV_CMD_STORAGE_FORMAT)).
