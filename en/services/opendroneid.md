@@ -92,7 +92,7 @@ By default, all senders of drone ID messages should fill the `target_system` and
 > **Note** WIP: Security of drone ID data is currently quite open and it is unclear if it will be required in some locations or for some use cases. 
  Most likely the transmitter components will be the ones to generate the signature for the Authentication message but the signing mechanism and how the key(s) for this is managed is open.
 
-> **Note** WIP: How will the Internet tranciever be configured? It needs to know what server(s) to connect to, credentials etc.
+> **Note** WIP: How will the Internet transceiver be configured? It needs to know what server(s) to connect to, credentials etc.
 
 ### Open Drone ID data from other UA
 It is possible that the transmitter components also work as receivers, for obtaining drone ID data from sourrounding UAs.
@@ -105,15 +105,17 @@ At least two possible consumers of drone ID data from sourrounding aircrafts are
 See below on how to combine data from other UAs.
 
 ### Heartbeat
+
 Each component listed in the table above, is required to regularly send out MAVLink [HEARTBEAT](../messages/common.md#HEARTBEAT) messages in order to facilitate discovery and monitoring of the component in the UAS.
-For MAV_COMP_ID_ODID_TXRX_x components, the `type` field in the HEARTBEAT message must be filled with [MAV_TYPE_ODID](../messages/common.md#MAV_TYPE_ODID).
+For transceiver components (with component ids [MAV_COMP_ID_ODID_TXRX_1](../messages/common.md#MAV_COMP_ID_ODID_TXRX_1), [MAV_COMP_ID_ODID_TXRX_2](../messages/common.md#MAV_COMP_ID_ODID_TXRX_2), [MAV_COMP_ID_ODID_TXRX_3](../messages/common.md#MAV_COMP_ID_ODID_TXRX_3)), the `type` field in the HEARTBEAT message must be filled with [MAV_TYPE_ODID](../messages/common.md#MAV_TYPE_ODID).
 Please see further details in the [Heartbeat documentation](heartbeat.md).
  
 
 ## UAS with multiple transmitters and/or receivers
 
 Since three different methods of broadcasting/publishing drone ID data has been defined, it is quite possible and desirable for a UAS to have more than just a single type.
-Exact legislation for drone ID support in different regions is still in the definition phase but e.g. the current FAA rule proposal mandates that for certain categories of UA, both broadcast of it's ID via either Bluetooth or WiFi must be performed and also simultaneous transmission of it's ID via the internet to a Remote ID server must be performed.
+
+Exact legislation for drone ID support in different regions is still in the definition phase but we do know that the current FAA rule proposal mandates that for certain categories of UA, broadcast of its ID must be performed via either Bluetooth or WiFi *and simultaneously* via the Internet to a Remote ID server.
 
 For UASs that desire to listen to other UA's information, it is therefore desirable to include receivers for all three methods, in order to maximize the possibility of detecting all other sourrounding UA.
 
