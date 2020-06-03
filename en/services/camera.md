@@ -143,6 +143,10 @@ The camera immediately returns the normal command acknowledgment ([MAV_RESULT](.
 Each time an image is captured, the camera *broadcasts* a [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) message.
 This message not only tells the GCS the image was captured, it is also intended for geo-tagging.
 
+> **Note** The camera must iterate `CAMERA_IMAGE_CAPTURED.image_index` and the counter used in `CAMERA_CAPTURE_STATUS.image_count` for every *new* image capture (these values iterate until explicitly cleared using [MAV_CMD_STORAGE_FORMAT](#MAV_CMD_STORAGE_FORMAT)).
+  The index and total image count can be used to [re-request missing images](#missing_images) (e.g. images captured when the vehicle was out of telmetry range).
+  
+
 The [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) command can optionally be sent to stop an image capture sequence (this is needed if image capture has been set to continue forever).
 
 The still image capture message sequence *for missions* (as described above) is shown below:
@@ -196,12 +200,17 @@ sequenceDiagram;
     Camera->>GCS: CAMERA_IMAGE_CAPTURED  (broadcast)
 -->
 
-Detecting lost [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) messages.
+### Request Lost CAMERA_IMAGE_CAPTURED Messages {#missing_images}
 
-- [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) field image_index can be used to detect that one of the [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) messages was lost.
-- [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) field image_count contains total number of images on the camera and can be used to detect that the last message was lost.
-- If GCS and camera image counts don't match then individual entries can be requested with [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) where param1="MAVLINK_MSG_ID_CAMERA_IMAGE_CAPTURED" and param2="image index"
-- Camera image log can be reset with [MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) where param3=1
+The camera broadcasts a [CAMERA_IMAGE_CAPTURED](#CAMERA_IMAGE_CAPTURED) every time a new image is captured, iterating both the current image index (`CAMERA_IMAGE_CAPTURED.image_index`) and the total image count (`CAMERA_CAPTURE_STATUS.image_count`).
+
+These messages can be lost during transmission; for example if the vehicle is out of data-link range of the ground stations.
+
+Data loss can be detected by comparing GCS and camera image counts. 
+Individual entries can be requested using [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE), where `param1="MAVLINK_MSG_ID_CAMERA_IMAGE_CAPTURED"` and `param2="the index of the missing image"`.
+
+The camera image log iterates "forever" (but may be explicitly reset using [MAV_CMD_STORAGE_FORMAT.param3=1](../messages/common.md#MAV_CMD_STORAGE_FORMAT)).
+
 
 ### Video Capture
 
