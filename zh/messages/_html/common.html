@@ -416,6 +416,13 @@
      </td>
      <td>伺服</td>
     </tr>
+    <tr id="MAV_TYPE_ODID">
+     <td>34</td>
+     <td>
+      <a href="#MAV_TYPE_ODID">MAV_TYPE_ODID</a>
+     </td>
+     <td>Open Drone ID. See https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="FIRMWARE_VERSION_TYPE">
@@ -1823,38 +1830,59 @@
      </td>
      <td>2号GPS。</td>
     </tr>
+    <tr id="MAV_COMP_ID_ODID_TXRX_1">
+     <td>236</td>
+     <td>
+      <a href="#MAV_COMP_ID_ODID_TXRX_1">MAV_COMP_ID_ODID_TXRX_1</a>
+     </td>
+     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
+    </tr>
+    <tr id="MAV_COMP_ID_ODID_TXRX_2">
+     <td>237</td>
+     <td>
+      <a href="#MAV_COMP_ID_ODID_TXRX_2">MAV_COMP_ID_ODID_TXRX_2</a>
+     </td>
+     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
+    </tr>
+    <tr id="MAV_COMP_ID_ODID_TXRX_3">
+     <td>238</td>
+     <td>
+      <a href="#MAV_COMP_ID_ODID_TXRX_3">MAV_COMP_ID_ODID_TXRX_3</a>
+     </td>
+     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
+    </tr>
     <tr id="MAV_COMP_ID_UDP_BRIDGE">
      <td>240</td>
      <td>
       <a href="#MAV_COMP_ID_UDP_BRIDGE">MAV_COMP_ID_UDP_BRIDGE</a>
      </td>
-     <td>将 MAVLink 桥接到 UDP 的组件（也就是从串口）。</td>
+     <td>Component to bridge MAVLink to UDP (i.e. from a UART).</td>
     </tr>
     <tr id="MAV_COMP_ID_UART_BRIDGE">
      <td>241</td>
      <td>
-      <a href="#MAV_COMP_ID_UART_BRIDGE">MAV_COMP_ID_UART_BRIDG</a>
+      <a href="#MAV_COMP_ID_UART_BRIDGE">MAV_COMP_ID_UART_BRIDGE</a>
      </td>
-     <td>将 MAVLink 桥接到 UART 的组件（也就是从UDP端口）。</td>
+     <td>Component to bridge to UART (i.e. from UDP).</td>
     </tr>
     <tr id="MAV_COMP_ID_TUNNEL_NODE">
      <td>242</td>
      <td>
       <a href="#MAV_COMP_ID_TUNNEL_NODE">MAV_COMP_ID_TUNNEL_NODE</a>
      </td>
-     <td>处理TUNNEL消息（例如组件中特定供应商的图形用户界面）的组件。</td>
+     <td>Component handling TUNNEL messages (e.g. vendor specific GUI of a component).</td>
     </tr>
     <tr id="MAV_COMP_ID_SYSTEM_CONTROL">
      <td>250</td>
      <td>
       <a href="#MAV_COMP_ID_SYSTEM_CONTROL">MAV_COMP_ID_SYSTEM_CONTROL</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> 由 MAV_COMP_ID_ALL （2018-11）代替。
+       <strong>DEPRECATED:</strong> Replaced by MAV_COMP_ID_ALL (2018-11).
 
 
-  系统控制不需要分离的组件ID。</p>
+  System control does not require a separate component ID.</p>
      </td>
-     <td>处理系统消息（例如：解琐，起飞等）的组件。</td>
+     <td>Component for handling system messages (e.g. to ARM, takeoff, etc.).</td>
     </tr>
    </tbody>
   </table>
@@ -7709,105 +7737,105 @@
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_1_SECOND">MAV_ODID_TIME_ACC_0_1_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.1 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.1 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_2_SECOND">
      <td>2</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_2_SECOND">MAV_ODID_TIME_ACC_0_2_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.2 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.2 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_3_SECOND">
      <td>3</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_3_SECOND">MAV_ODID_TIME_ACC_0_3_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.3 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.3 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_4_SECOND">
      <td>4</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_4_SECOND">MAV_ODID_TIME_ACC_0_4_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.4 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.4 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_5_SECOND">
      <td>5</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_5_SECOND">MAV_ODID_TIME_ACC_0_5_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.5 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.5 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_6_SECOND">
      <td>6</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_6_SECOND">MAV_ODID_TIME_ACC_0_6_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.6 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.6 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_7_SECOND">
      <td>7</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_7_SECOND">MAV_ODID_TIME_ACC_0_7_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.7 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.7 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_8_SECOND">
      <td>8</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_8_SECOND">MAV_ODID_TIME_ACC_0_8_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.8 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.8 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_9_SECOND">
      <td>9</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_9_SECOND">MAV_ODID_TIME_ACC_0_9_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.9 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.9 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_1_0_SECOND">
      <td>10</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_1_0_SECOND">MAV_ODID_TIME_ACC_1_0_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 1.0 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 1.0 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_1_1_SECOND">
      <td>11</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_1_1_SECOND">MAV_ODID_TIME_ACC_1_1_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 1.1 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 1.1 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_1_2_SECOND">
      <td>12</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_1_2_SECOND">MAV_ODID_TIME_ACC_1_2_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 1.2 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 1.2 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_1_3_SECOND">
      <td>13</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_1_3_SECOND">MAV_ODID_TIME_ACC_1_3_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 1.3 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 1.3 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_1_4_SECOND">
      <td>14</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_1_4_SECOND">MAV_ODID_TIME_ACC_1_4_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 1.4 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 1.4 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_1_5_SECOND">
      <td>15</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_1_5_SECOND">MAV_ODID_TIME_ACC_1_5_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 1.5 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 1.5 second.</td>
     </tr>
    </tbody>
   </table>
@@ -34045,6 +34073,33 @@
    </thead>
    <tbody>
     <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
+    <tr>
      <td>id_type</td>
      <td>uint8_t</td>
      <td>
@@ -34096,6 +34151,39 @@
     </tr>
    </thead>
    <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
     <tr>
      <td>status</td>
      <td>uint8_t</td>
@@ -34284,6 +34372,39 @@
    </thead>
    <tbody>
     <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
+    <tr>
      <td>authentication_type</td>
      <td>uint8_t</td>
      <td>
@@ -34373,6 +34494,33 @@
    </thead>
    <tbody>
     <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
+    <tr>
      <td>description_type</td>
      <td>uint8_t</td>
      <td>
@@ -34416,6 +34564,39 @@
     </tr>
    </thead>
    <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
     <tr>
      <td>flags</td>
      <td>uint8_t</td>
@@ -34514,6 +34695,33 @@
    </thead>
    <tbody>
     <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
+    <tr>
      <td>operator_id_type</td>
      <td>uint8_t</td>
      <td>
@@ -34557,10 +34765,24 @@
    </thead>
    <tbody>
     <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
      <td>single_message_size</td>
      <td>uint8_t</td>
      <td>bytes</td>
-     <td>This field must currently always be equal to 25 bytes, since all encoded OpenDroneID messages are specificed to have this length.</td>
+     <td>This field must currently always be equal to 25 (bytes), since all encoded OpenDroneID messages are specificed to have this length.</td>
     </tr>
     <tr>
      <td>msg_pack_size</td>
