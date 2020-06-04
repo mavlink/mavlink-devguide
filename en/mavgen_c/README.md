@@ -98,7 +98,7 @@ Parameters:
 - [`mavlink_message_t*`](https://github.com/ArduPilot/pymavlink/blob/c0f5bb2695a677721aa7bb8f20be40ba8274c3d4/generator/C/include_v2.0/mavlink_types.h#L108) `r_message`: On success, the decoded message. NULL if the message couldn't be decoded.
 - [`mavlink_status_t*`](https://github.com/ArduPilot/pymavlink/blob/c0f5bb2695a677721aa7bb8f20be40ba8274c3d4/generator/C/include_v2.0/mavlink_types.h#L217) `r_mavlink_status`: The channel statistics, including information about the current parse state.
 
-Returns: `0` if packet decoded. `1` if packet decoded.
+Returns: `0` if the packet decoding is incomplete. `1` if the packet successfully decoded.
 
 
 The code fragment below shows the typical use of this function when reading data from a serial port (`serial`):
