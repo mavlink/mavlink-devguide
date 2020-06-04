@@ -84,7 +84,7 @@ These steps are demonstrated below.
 
 The `mavlink_parse_char(...)` convenience function ([mavlink_helpers.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h)) is used to parse incoming MAVLink data.
 The function parses the data one byte at a time, returning 0 (`MAVLINK_FRAMING_INCOMPLETE`) as it progresses, and 1 (`MAVLINK_FRAMING_OK`) on successful decoding of a packet.
-The `r_mavlink_status` parameter is updated with the channel status/errors as decoding progresses (you can check `mavlink_status_t.msg_received` to get the current byte's decode status/error and `parse_statemavlink_status_t` for the current parse state).
+The `r_mavlink_status` parameter is updated with the channel status/errors as decoding progresses (you can check `mavlink_status_t.msg_received` to get the current byte's decode status/error and `mavlink_status_t.parse_state` for the current parse state).
 On successful decoding of a packet, the `r_message` argument is populated with an object representing the decoded packet.
 
 The function prototype and parameters are shown below:
