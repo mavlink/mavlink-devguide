@@ -74,7 +74,7 @@ These steps are demonstrated below.
 
 ### Parsing Packets
 
-The `mavlink_parse_char(...)` convenience function ([mavlink_helpers.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h)) is used to parse incoming MAVLink data. The function parses the data one byte at a time, returning 0 (`MAVLINK_FRAMING_INCOMPLETE`) as it progresses, and 1 (`MAVLINK_FRAMING_OK`) on successful decoding of a packet. The `r_mavlink_status` parameter is updated with the channel status/errors as decoding progresses (you can check `mavlink_status_t.msg_received` to get the current byte's decode status/error and `parse_statemavlink_status_t` for the current parse state). On successful decoding of a packet, the `r_message` argument is populated with an object representing the decoded packet.
+The `mavlink_parse_char(...)` convenience function ([mavlink_helpers.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h)) is used to parse incoming MAVLink data. The function parses the data one byte at a time, returning 0 (`MAVLINK_FRAMING_INCOMPLETE`) as it progresses, and 1 (`MAVLINK_FRAMING_OK`) on successful decoding of a packet. The `r_mavlink_status` parameter is updated with the channel status/errors as decoding progresses (you can check `mavlink_status_t.msg_received` to get the current byte's decode status/error and `mavlink_status_t.parse_state` for the current parse state). On successful decoding of a packet, the `r_message` argument is populated with an object representing the decoded packet.
 
 The function prototype and parameters are shown below:
 
@@ -89,7 +89,7 @@ Parameters:
 - [`mavlink_message_t*`](https://github.com/ArduPilot/pymavlink/blob/c0f5bb2695a677721aa7bb8f20be40ba8274c3d4/generator/C/include_v2.0/mavlink_types.h#L108) `r_message`: On success, the decoded message. NULL if the message couldn't be decoded.
 - [`mavlink_status_t*`](https://github.com/ArduPilot/pymavlink/blob/c0f5bb2695a677721aa7bb8f20be40ba8274c3d4/generator/C/include_v2.0/mavlink_types.h#L217) `r_mavlink_status`: The channel statistics, including information about the current parse state.
 
-Returns: `0` if packet decoded. `1` if packet decoded.
+Returns: `0` if the packet decoding is incomplete. `1` if the packet successfully decoded.
 
 The code fragment below shows the typical use of this function when reading data from a serial port (`serial`):
 
