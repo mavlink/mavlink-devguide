@@ -9221,6 +9221,14 @@
      <td>
      </td>
     </tr>
+    <tr id="FAILURE_UNIT_SENSOR_AIRSPEED">
+     <td>8</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_AIRSPEED">FAILURE_UNIT_SENSOR_AIRSPEED</a>
+     </td>
+     <td>
+     </td>
+    </tr>
     <tr id="FAILURE_UNIT_SYSTEM_BATTERY">
      <td>100</td>
      <td>
@@ -14726,12 +14734,12 @@
     </tr>
     <tr>
      <td>2: Format</td>
-     <td>0: No action 1: Format storage</td>
+     <td>Format storage (and reset image log). 0: No action 1: Format storage</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>3: Reset Image Count</td>
+     <td>3: Reset Image Log (without formatting storage medium). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index.</td>
      <td>0: No action 1: Reset Image Count</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
@@ -29938,7 +29946,7 @@
      <td>int32_t</td>
      <td>
      </td>
-     <td>Total number of images.</td>
+     <td>Total number of images captured ('forever', or until reset using MAV_CMD_STORAGE_FORMAT).</td>
     </tr>
    </tbody>
   </table>
@@ -30019,7 +30027,7 @@
      <td>int32_t</td>
      <td>
      </td>
-     <td>Zero based index of this image (image count -1)</td>
+     <td>Zero based index of this image (i.e. a new image will have index CAMERA_CAPTURE_STATUS.image count -1)</td>
     </tr>
     <tr>
      <td>capture_result</td>
