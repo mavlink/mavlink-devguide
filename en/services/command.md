@@ -80,9 +80,11 @@ sequenceDiagram;
 The rate at which progress messages are emitted is system-dependent.
 Generally though, the GCS should have a much increased timeout after receiving an ACK with `MAV_RESULT_IN_PROGRESS`.
 
-Often long running operations may be cancelled, restarted, or updated (continue operation but with new parameters) by sending the same command with different parameters.
-- A cancel command will complete immediately with response `COMMAND_ACK.result=MAV_RESULT_ACCEPTED`.
-- A restart or update command will start off a new sequence of progress updates - i.e. `COMMAND_ACK.result=MAV_RESULT_IN_PROGRESS` followed by updates until the operation completes.
-- A "repeat" command is typically treated as an update command.
-
-Other commands will typically be rejected with `MAV_RESULT_TEMPORARILY_REJECTED` unless the long running command is interruptible.
+Long running operations may need to be cancelled:
+- The cancel operation should ideally be triggered by the same command with a parameter value set to indicate cancellation. 
+- The recipient should complete immediately with response `COMMAND_ACK.result=MAV_RESULT_CANCELLED`.
+  This response should be sent even if there is no operation in progress.
+- If it is not possible to cancel the operation using the same command this might be done using a message or other command.
+  In this case the *original progress sequence* should still be completed using a final `COMMAND_ACK.result=MAV_RESULT_CANCELLED`.
+- Other commands (or the same command with new parameters) should generally be rejected with `MAV_RESULT_TEMPORARILY_REJECTED`.
+  What this means is that to restart an operation (i.e. with new parameters) it must first be cancelled.
