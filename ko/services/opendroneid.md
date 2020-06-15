@@ -2,9 +2,11 @@
 
 > **Note** The Open Drone ID messages are tagged in the definition file as "work in progress". They may still change and should not be used in production environments.
 
-The ASTM Remote ID standard has been defined to specify how Unmanned Aircraft (UA) can publish their ID, location, altitude etc. either via direct broadcast, Bluetooth or WiFi Neighbor-aware Network (NaN)), or via an internet connection to a Remote ID server.
+The ASTM Remote ID standard has been defined to specify how Unmanned Aircraft (UA) can publish their ID, location, altitude etc., either via direct broadcast (Bluetooth or WiFi Neighbor-aware Network (NaN)), or via an internet connection to a Remote ID server.
 
 The standard is available at https://www.astm.org/Standards/F3411.htm.
+
+Also the ASD-STAN Direct Remote ID standard will be compatible with this same system.
 
 Particularly the broadcast method used with Bluetooth Legacy Advertising signals impose a strict size limitation for the amount of data that can be transmitted in each radio burst. Therefore the relevant data is divided into different categories and each category is transmitted via it's own message.
 
@@ -24,7 +26,7 @@ The ASTM and MAVLink messages are listed below.
 | Basic ID       | [OPEN_DRONE_ID_BASIC_ID](../messages/common.md#OPEN_DRONE_ID_BASIC_ID)           | Provides an ID for the UA, characterizes the type of ID and identifies the type of UA.                                                                         |
 | Location       | [OPEN_DRONE_ID_LOCATION](../messages/common.md#OPEN_DRONE_ID_LOCATION)             | Provides location, altitude, direction, and speed of UA.                                                                                                       |
 | Authentication | [OPEN_DRONE_ID_AUTHENTICATION](../messages/common.md#OPEN_DRONE_ID_AUTHENTICATION) | Provides authentication data for the UA.                                                                                                                       |
-| Self-ID        | [OPEN_DRONE_ID_SELF_ID](../messages/common.md#OPEN_DRONE_ID_SELF_ID)             | Message that can be used by Operators to identify themselves and the purpose of an operation.                                                                  |
+| Self-ID        | [OPEN_DRONE_ID_SELF_ID](../messages/common.md#OPEN_DRONE_ID_SELF_ID)             | Plain text message that can be used by Operators to identify themselves and the purpose of an operation.                                                       |
 | System         | [OPEN_DRONE_ID_SYSTEM](../messages/common.md#OPEN_DRONE_ID_SYSTEM)                 | Includes Remote Pilot location and multiple aircraft information (group), if applicable, and additional system information.                                    |
 | Operator ID    | [OPEN_DRONE_ID_OPERATOR_ID](../messages/common.md#OPEN_DRONE_ID_OPERATOR_ID)     | Provides the Operator ID.                                                                                                                                      |
 | Message Pack   | [OPEN_DRONE_ID_MESSAGE_PACK](../messages/common.md#OPEN_DRONE_ID_MESSAGE_PACK)   | A payload mechanism for combining the messages above into a single message pack. Used with Bluetooth Extended Advertising and WiFi Neighbor Awareness Network. |
@@ -64,7 +66,7 @@ The autopilot/flight controller is typically the component that knows about the 
 
 The Ground Control Station System is the interface for the operator of the UAS. The operator must enter the data needed for the Self ID, the System and the Operator ID messages before the flight. The GCS will publish this data via the MAVLink messages. If the GCS is capable of regularly updating it's own location, these updates are published as well. There is no need for the GCS to listen to drone ID MAVLink messages.
 
-The UAS has one or more transmitters for publishing the drone ID data to the rest of the world, either via Bluetooth or WiFi broadcasts, or via an internet connection to an internet Remote ID server. The transmitter components will listen to the MAVLink messages from the flight controller and the GCS but should ignore messages where the `compid` field is set to MAV_COMP_ID_ODID_TXRX_1, MAV_COMP_ID_ODID_TXRX_2 or MAV_COMP_ID_ODID_TXRX_3.
+The UAS has one or more transmitters for publishing the drone ID data to the rest of the world, either via Bluetooth or WiFi broadcasts, or via an internet connection to an internet Remote ID server. The transmitter components will listen to the MAVLink messages from the flight controller and the GCS but should ignore messages where the `compid` field is set to [MAV_COMP_ID_ODID_TXRX_1](../messages/common.md#MAV_COMP_ID_ODID_TXRX_1), [MAV_COMP_ID_ODID_TXRX_2](../messages/common.md#MAV_COMP_ID_ODID_TXRX_2) or [MAV_COMP_ID_ODID_TXRX_3](../messages/common.md#MAV_COMP_ID_ODID_TXRX_3). The method for the receivers to identify MAVLink messages from the GCS, is described in the Hearbeat section below.
 
 Optionally, further restrictions on which transmitter component should receive a message can be enforced if the sender fills the `target_system` and/or `target_component` fields of the message. Receivers should only listen to messages that have these fields set to either zero (broadcast) or the receivers own system ID and/or component ID. This can be useful if e.g. there are two UA connected to a single GCS. The GCS can then direct information to specific MAV_COMP_ID_ODID_TXRX_x components on a specific UA. By default, all senders of drone ID messages should fill the `target_system` and `target_component` fields with zero, to indicate a broadcast to all receivers.
 
@@ -73,7 +75,7 @@ Optionally, further restrictions on which transmitter component should receive a
 > **Note** WIP: How will the Internet transceiver be configured? It needs to know what server(s) to connect to, credentials etc.
 
 ### Open Drone ID data from other UA
-It is possible that the transmitter components also work as receivers, for obtaining drone ID data from sourrounding UAs. When publishing the received drone ID data as internal MAVLink messages, they must set the `compid` field to their own MAV_COMP_ID_ODID_TXRX_n ID to make it possible to distinguish this data from the drone ID data of the UA itself.
+It is possible that the transmitter components also work as receivers, for obtaining drone ID data from sourrounding UAs. When publishing the received drone ID data as internal MAVLink messages, they must set the `compid` field to their own MAV_COMP_ID_ODID_TXRX_n ID to make it possible to distinguish this data from the drone ID data of the UA itself. Also the `systemid` field must be set with the system ID value that the receiver component belongs to
 
 At least two possible consumers of drone ID data from sourrounding aircrafts are possible.
 - A Detect And Avoid (DAA) system will track the current and estimated future positions of the other UAs and take that into account when setting the fligt path of the UA itself.
@@ -83,12 +85,14 @@ See below on how to combine data from other UAs.
 
 ### Heartbeat
 
-Each component listed in the table above, is required to regularly send out MAVLink [HEARTBEAT](../messages/common.md#HEARTBEAT) messages in order to facilitate discovery and monitoring of the component in the UAS. For transceiver components (with component ids [MAV_COMP_ID_ODID_TXRX_1](../messages/common.md#MAV_COMP_ID_ODID_TXRX_1), [MAV_COMP_ID_ODID_TXRX_2](../messages/common.md#MAV_COMP_ID_ODID_TXRX_2), [MAV_COMP_ID_ODID_TXRX_3](../messages/common.md#MAV_COMP_ID_ODID_TXRX_3)), the `type` field in the HEARTBEAT message must be filled with [MAV_TYPE_ODID](../messages/common.md#MAV_TYPE_ODID). Please see further details in the [Heartbeat documentation](heartbeat.md).
+Each component involved in the drone ID MAVLink message exchange, is required to regularly send out MAVLink [HEARTBEAT](../messages/common.md#HEARTBEAT) messages in order to facilitate discovery and monitoring of the component in the UAS. For transceiver components (with component ids [MAV_COMP_ID_ODID_TXRX_1](../messages/common.md#MAV_COMP_ID_ODID_TXRX_1), [MAV_COMP_ID_ODID_TXRX_2](../messages/common.md#MAV_COMP_ID_ODID_TXRX_2), [MAV_COMP_ID_ODID_TXRX_3](../messages/common.md#MAV_COMP_ID_ODID_TXRX_3)), the `type` field in the HEARTBEAT message must be filled with [MAV_TYPE_ODID](../messages/common.md#MAV_TYPE_ODID). Please see further details in the [Heartbeat documentation](heartbeat.md).
+
+The MAVLink [HEARTBEAT](../messages/common.md#HEARTBEAT) message also serves as the way for receiver components to identify the `systemid` of the GCS. The GCS will send out MAVLink [HEARTBEAT](../messages/common.md#HEARTBEAT) messages with its `systemid` field set to the GCS system ID and the type set to [MAV_TYPE_GCS](../message/common.md#MAV_TYPE_GCS). The receiver components shall interpret all MAVLink Open Drone ID messages from that system ID, as coming from the GCS. There is no dedicated component ID for GCSs, hence the system ID must be used instead for identifying the GCS.
 
 
 ## UAS with multiple transmitters and/or receivers
 
-Since three different methods of broadcasting/publishing drone ID data has been defined, it is quite possible and desirable for a UAS to have more than just a single type.
+Since three different methods of broadcasting/publishing drone ID data have been defined, it is quite possible and desirable for a UAS to support more than just a single type.
 
 Exact legislation for drone ID support in different regions is still in the definition phase but we do know that the current FAA rule proposal mandates that for certain categories of UA, broadcast of its ID must be performed via either Bluetooth or WiFi *and simultaneously* via the Internet to a Remote ID server.
 
@@ -99,7 +103,9 @@ For UASs that desire to listen to other UA's information, it is therefore desira
 
 For Drone ID data that is received from other UAs, the data message itself does not always identify exactly which UA the data originated from. E.g. for data received via Bluetooth Legacy Advertising (Bluetooth 4.x), many of the received messages will not contain the unique serial number/ID of the UA that transmitted the data, due to the severe size limitation imposed by Legacy Advertising where only one 25 byte message can be transmitted in one radio burst. The MAC address of the Bluetooth transmitter is the only way to associate these messages to the same UA. For Bluetooth 5.x and WiFi, it is possible that the same can happen, although this is less likely since message packs are supposed to be used. For data received via internet, the data packet will always contain the unique serial number/ID of the originating UA but no associated MAC address.
 
-In order to allow e.g. a DAA component to sort and identify which UA each data message has originated from, the receiver components must add either the MAC address or the ID number associated with the UA that originated the data message to the MAVLink message before sending it on the internal UAS MAVLink network. This information must be added in the `id_or_mac` field of each MAVLink message. The serial/ID is copied directly from the `uas_id` field with NULLs in the unused portion. The MAC address must be entered in ASCII format with NULLs in the unused portion. Any separation characters must be removed. E.g. "30-65-EC-6F-C4-58" or "30:65:EC:6F:C4:58" must be represented as the ASCII string "3065EC6FC458". When not used for the above purpose, the `id_or_mac` field should be filled with zeroes.
+In order to allow e.g. a DAA component to sort and identify which UA each data message has originated from, the receiver components must add either the MAC address or the ID number associated with the UA that originated the data message to the MAVLink message, before sending it on the internal UAS MAVLink network. This information must be added in the `id_or_mac` field of each MAVLink message.
+
+The serial/ID is copied directly from the `uas_id` field with NULLs in the unused portion. The MAC address must be entered in ASCII format with NULLs in the unused portion. Any separation characters must be removed. E.g. "30-65-EC-6F-C4-58" or "30:65:EC:6F:C4:58" must be represented as the ASCII string "3065EC6FC458". When not used for the above purpose, the `id_or_mac` field should be filled with zeroes.
 
 The system listening must be aware that it is possible to receive drone ID data from the same UA via multiple receive paths (e.g. WiFi and internet). Filtering and merging of the data (and possible deletion of duplicates) will be needed and it must keep track of both a possible MAC address and the serial/ID of the other UAs. Additional filtering and sorting based on the timestamp in the Location message can also be needed in order to generate a consistent flight path for the other UAs.
 
