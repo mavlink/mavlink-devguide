@@ -122,7 +122,7 @@ There is no dedicated component ID for GCSs, hence the system ID must be used in
 
 ## UAS with multiple transmitters and/or receivers
 
-Since three different methods of broadcasting/publishing drone ID data has been defined, it is quite possible and desirable for a UAS to support more than just a single type.
+Since three different methods of broadcasting/publishing drone ID data have been defined, it is quite possible and desirable for a UAS to support more than just a single type.
 
 Exact legislation for drone ID support in different regions is still in the definition phase but we do know that the current FAA rule proposal mandates that for certain categories of UA, broadcast of its ID must be performed via either Bluetooth or WiFi *and simultaneously* via the Internet to a Remote ID server.
 
