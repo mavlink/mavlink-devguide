@@ -49,7 +49,7 @@ The libraries can then be used in the same way as those installed using *pip*.
 
 ### Using custom dialect with pymavlink installed pip
 
-An other way to use a custom dialect with a standar instalation of *pymavlink* with *pip* is
+Another way to use a custom dialect with a standard installation of *pymavlink* with *pip* is
 1. [Generate](../getting_started/generate_libraries.md) the Python libraries for your dialect.
 1. Copy the generated **.py** dialect file into folder you have the code (for example: customDialect.py)
 1. You need to change one import on the generated file 
