@@ -3345,6 +3345,38 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="COMP_METADATA_TYPE">
+   <a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Possible values for COMPONENT_INFORMATION.comp_metadata_type.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="COMP_METADATA_TYPE_VERSION">
+     <td>0</td>
+     <td>
+      <a href="#COMP_METADATA_TYPE_VERSION">COMP_METADATA_TYPE_VERSION</a>
+     </td>
+     <td>Version information which also includes information on other optional supported COMP_METADATA_TYPE's. Must be supported. Only downloadable from vehicle.</td>
+    </tr>
+    <tr id="COMP_METADATA_TYPE_PARAMETER">
+     <td>1</td>
+     <td>
+      <a href="#COMP_METADATA_TYPE_PARAMETER">COMP_METADATA_TYPE_PARAMETER</a>
+     </td>
+     <td>Parameter meta data.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_DATA_STREAM">
    <a href="#MAV_DATA_STREAM">MAV_DATA_STREAM</a>
   </h3>
@@ -7465,6 +7497,13 @@
      </td>
      <td>The UA is in the air.</td>
     </tr>
+    <tr id="MAV_ODID_STATUS_EMERGENCY">
+     <td>3</td>
+     <td>
+      <a href="#MAV_ODID_STATUS_EMERGENCY">MAV_ODID_STATUS_EMERGENCY</a>
+     </td>
+     <td>The UA is having an emergency.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_ODID_HEIGHT_REF">
@@ -7943,8 +7982,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_ODID_LOCATION_SRC">
-   <a href="#MAV_ODID_LOCATION_SRC">MAV_ODID_LOCATION_SRC</a>
+  <h3 id="MAV_ODID_OPERATOR_LOCATION_TYPE">
+   <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE">MAV_ODID_OPERATOR_LOCATION_TYPE</a>
   </h3>
   <p>
    <a href="#enums">
@@ -7960,26 +7999,181 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="MAV_ODID_LOCATION_SRC_TAKEOFF">
+    <tr id="MAV_ODID_OPERATOR_LOCATION_TYPE_TAKEOFF">
      <td>0</td>
      <td>
-      <a href="#MAV_ODID_LOCATION_SRC_TAKEOFF">MAV_ODID_LOCATION_SRC_TAKEOFF</a>
+      <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE_TAKEOFF">MAV_ODID_OPERATOR_LOCATION_TYPE_TAKEOFF</a>
      </td>
      <td>The location of the operator is the same as the take-off location.</td>
     </tr>
-    <tr id="MAV_ODID_LOCATION_SRC_LIVE_GNSS">
+    <tr id="MAV_ODID_OPERATOR_LOCATION_TYPE_LIVE_GNSS">
      <td>1</td>
      <td>
-      <a href="#MAV_ODID_LOCATION_SRC_LIVE_GNSS">MAV_ODID_LOCATION_SRC_LIVE_GNSS</a>
+      <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE_LIVE_GNSS">MAV_ODID_OPERATOR_LOCATION_TYPE_LIVE_GNSS</a>
      </td>
      <td>The location of the operator is based on live GNSS data.</td>
     </tr>
-    <tr id="MAV_ODID_LOCATION_SRC_FIXED">
+    <tr id="MAV_ODID_OPERATOR_LOCATION_TYPE_FIXED">
      <td>2</td>
      <td>
-      <a href="#MAV_ODID_LOCATION_SRC_FIXED">MAV_ODID_LOCATION_SRC_FIXED</a>
+      <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE_FIXED">MAV_ODID_OPERATOR_LOCATION_TYPE_FIXED</a>
      </td>
      <td>The location of the operator is a fixed location.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_ODID_CLASSIFICATION_TYPE">
+   <a href="#MAV_ODID_CLASSIFICATION_TYPE">MAV_ODID_CLASSIFICATION_TYPE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_ODID_CLASSIFICATION_TYPE_UNDECLARED">
+     <td>0</td>
+     <td>
+      <a href="#MAV_ODID_CLASSIFICATION_TYPE_UNDECLARED">MAV_ODID_CLASSIFICATION_TYPE_UNDECLARED</a>
+     </td>
+     <td>The classification type for the UA is undeclared.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASSIFICATION_TYPE_EU">
+     <td>1</td>
+     <td>
+      <a href="#MAV_ODID_CLASSIFICATION_TYPE_EU">MAV_ODID_CLASSIFICATION_TYPE_EU</a>
+     </td>
+     <td>The classification type for the UA follows EU (European Union) specifications.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_ODID_CATEGORY_EU">
+   <a href="#MAV_ODID_CATEGORY_EU">MAV_ODID_CATEGORY_EU</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_ODID_CATEGORY_EU_UNDECLARED">
+     <td>0</td>
+     <td>
+      <a href="#MAV_ODID_CATEGORY_EU_UNDECLARED">MAV_ODID_CATEGORY_EU_UNDECLARED</a>
+     </td>
+     <td>The category for the UA, according to the EU specification, is undeclared.</td>
+    </tr>
+    <tr id="MAV_ODID_CATEGORY_EU_OPEN">
+     <td>1</td>
+     <td>
+      <a href="#MAV_ODID_CATEGORY_EU_OPEN">MAV_ODID_CATEGORY_EU_OPEN</a>
+     </td>
+     <td>The category for the UA, according to the EU specification, is the Open category.</td>
+    </tr>
+    <tr id="MAV_ODID_CATEGORY_EU_SPECIFIC">
+     <td>2</td>
+     <td>
+      <a href="#MAV_ODID_CATEGORY_EU_SPECIFIC">MAV_ODID_CATEGORY_EU_SPECIFIC</a>
+     </td>
+     <td>The category for the UA, according to the EU specification, is the Specific category.</td>
+    </tr>
+    <tr id="MAV_ODID_CATEGORY_EU_CERTIFIED">
+     <td>3</td>
+     <td>
+      <a href="#MAV_ODID_CATEGORY_EU_CERTIFIED">MAV_ODID_CATEGORY_EU_CERTIFIED</a>
+     </td>
+     <td>The category for the UA, according to the EU specification, is the Certified category.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_ODID_CLASS_EU">
+   <a href="#MAV_ODID_CLASS_EU">MAV_ODID_CLASS_EU</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_ODID_CLASS_EU_UNDECLARED">
+     <td>0</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_UNDECLARED">MAV_ODID_CLASS_EU_UNDECLARED</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is undeclared.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_0">
+     <td>1</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_0">MAV_ODID_CLASS_EU_CLASS_0</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 0.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_1">
+     <td>2</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_1">MAV_ODID_CLASS_EU_CLASS_1</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 1.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_2">
+     <td>3</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_2">MAV_ODID_CLASS_EU_CLASS_2</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 2.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_3">
+     <td>4</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_3">MAV_ODID_CLASS_EU_CLASS_3</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 3.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_4">
+     <td>5</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_4">MAV_ODID_CLASS_EU_CLASS_4</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 4.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_5">
+     <td>6</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_5">MAV_ODID_CLASS_EU_CLASS_5</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 5.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_6">
+     <td>7</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_6">MAV_ODID_CLASS_EU_CLASS_6</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 6.</td>
     </tr>
    </tbody>
   </table>
@@ -9767,8 +9961,7 @@
     <tr>
      <td>1: Pitch</td>
      <td>Minimum pitch (if airspeed sensor present), desired pitch without sensor</td>
-     <td>
-     </td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>2</td>
@@ -11029,7 +11222,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Ascend/descend at rate.  Delay mission state machine until desired altitude reached.</p>
+   </a>Ascend/descend to target altitude at specified rate. Delay mission state machine until desired altitude reached.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11176,7 +11369,7 @@
      <td>1: Angle</td>
      <td>target angle, 0 is north</td>
      <td>
-      <em>min:</em>0 <em>max:</em>360 </td>
+     </td>
      <td>deg</td>
     </tr>
     <tr>
@@ -14568,16 +14761,21 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1: Protocol</td>
      <td>1: Request supported protocol versions by all nodes on the network</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -14595,16 +14793,21 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1: Version</td>
      <td>1: Request autopilot version</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -16008,8 +16211,7 @@
     <tr>
      <td>1: Radius</td>
      <td>Radius of desired circle in CIRCLE_MODE</td>
-     <td>
-     </td>
+     <td>m</td>
     </tr>
     <tr>
      <td>2</td>
@@ -33862,29 +34064,17 @@
      <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
-     <td>vendor_name</td>
-     <td>uint8_t[32]</td>
+     <td>metadata_type</td>
+     <td>uint32_t</td>
      <td>
      </td>
      <td>
-      <a href="#">
-      </a>
+      <a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>
      </td>
-     <td>Name of the component vendor</td>
+     <td>The type of metadata being requested.</td>
     </tr>
     <tr>
-     <td>model_name</td>
-     <td>uint8_t[32]</td>
-     <td>
-     </td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Name of the component model</td>
-    </tr>
-    <tr>
-     <td>firmware_version</td>
+     <td>metadata_uid</td>
      <td>uint32_t</td>
      <td>
      </td>
@@ -33892,10 +34082,21 @@
       <a href="#">
       </a>
      </td>
-     <td>Version of the component firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff)</td>
+     <td>Unique uid for this metadata which a gcs can use for created cached metadata and understanding whether it's cache it up to date or whether it needs to download new data.</td>
     </tr>
     <tr>
-     <td>hardware_version</td>
+     <td>metadata_uri</td>
+     <td>char[70]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component definition URI. If prefix mavlinkftp:// file is downloaded from vehicle over mavlink ftp protocol. If prefix http[s]:// file is downloaded over internet. Files are json format. They can end in .gz to indicate file is in gzip format.</td>
+    </tr>
+    <tr>
+     <td>translation_uid</td>
      <td>uint32_t</td>
      <td>
      </td>
@@ -33903,39 +34104,18 @@
       <a href="#">
       </a>
      </td>
-     <td>Version of the component hardware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff)</td>
+     <td>Unique uid for the translation file associated with the metadata.</td>
     </tr>
     <tr>
-     <td>capability_flags</td>
-     <td>uint32_t</td>
-     <td>
-     </td>
-     <td>
-      <a href="#COMPONENT_CAP_FLAGS">COMPONENT_CAP_FLAGS</a>
-     </td>
-     <td>Bitmap of component capability flags.</td>
-    </tr>
-    <tr>
-     <td>component_definition_version</td>
-     <td>uint16_t</td>
+     <td>translation_uri</td>
+     <td>char[70]</td>
      <td>
      </td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Component definition version (iteration)</td>
-    </tr>
-    <tr>
-     <td>component_definition_uri</td>
-     <td>char[140]</td>
-     <td>
-     </td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Component definition URI (if any, otherwise only basic functions will be available). The XML format is not yet specified and work in progress.</td>
+     <td>The translations for strings within the metadata file. If null the either do not exist or may be included in the metadata file itself. The translations specified here supercede any which may be in the metadata file itself. The uri format is the same as component_metadata_uri . Files are in Json Translation spec format. Empty string indicates no tranlsation file.</td>
     </tr>
    </tbody>
   </table>
@@ -34108,7 +34288,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Basic ID message. This and the below messages are primarily meant for feeding data to/from an OpenDroneID implementation. E.g. https://github.com/opendroneid/opendroneid-core-c. See also the ASTM Remote ID standard at https://www.astm.org/Standards/F3411.htm. The usage of these messages is documented at https://mavlink.io/en/services/opendroneid.html.</p>
+   </strong>Data for filling the OpenDroneID Basic ID message. This and the below messages are primarily meant for feeding data to/from an OpenDroneID implementation. E.g. https://github.com/opendroneid/opendroneid-core-c. These messages are compatible with the ASTM Remote ID standard at https://www.astm.org/Standards/F3411.htm and the ASD-STAN Direct Remote ID standard. The usage of these messages is documented at https://mavlink.io/en/services/opendroneid.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -34645,14 +34825,24 @@
      <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
     </tr>
     <tr>
-     <td>flags</td>
+     <td>operator_location_type</td>
      <td>uint8_t</td>
      <td>
      </td>
      <td>
-      <a href="#MAV_ODID_LOCATION_SRC">MAV_ODID_LOCATION_SRC</a>
+      <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE">MAV_ODID_OPERATOR_LOCATION_TYPE</a>
      </td>
-     <td>Specifies the location source for the operator location.</td>
+     <td>Specifies the operator location type.</td>
+    </tr>
+    <tr>
+     <td>classification_type</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_ODID_CLASSIFICATION_TYPE">MAV_ODID_CLASSIFICATION_TYPE</a>
+     </td>
+     <td>Specifies the classification type of the UA.</td>
     </tr>
     <tr>
      <td>operator_latitude</td>
@@ -34714,6 +34904,26 @@
       </a>
      </td>
      <td>Area Operations Floor relative to WGS84. If unknown: -1000 m.</td>
+    </tr>
+    <tr>
+     <td>category_eu</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_ODID_CATEGORY_EU">MAV_ODID_CATEGORY_EU</a>
+     </td>
+     <td>When classification_type is MAV_ODID_CLASSIFICATION_TYPE_EU, specifies the category of the UA.</td>
+    </tr>
+    <tr>
+     <td>class_eu</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU">MAV_ODID_CLASS_EU</a>
+     </td>
+     <td>When classification_type is MAV_ODID_CLASSIFICATION_TYPE_EU, specifies the class of the UA.</td>
     </tr>
    </tbody>
   </table>
