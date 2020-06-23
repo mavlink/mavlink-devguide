@@ -69,7 +69,7 @@ Opcode | Name | Description
 <span id="OpenFileWO"></span> 11     | OpenFileWO | Opens file at `<path>` for writing, returns `<session>`. <br>- Opens the file (`path`) and allocates a *session number*. The file must exist.<br>- Sends an ACK packet with the allocated *session number* on success, otherwise a NAK packet with an error code.<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
 <span id="TruncateFile"></span> 12   | TruncateFile | Truncate file at `<path>` to `<offset>` length.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
 <span id="Rename"></span> 13         | Rename | Rename `<path1>` to `<path2>`.<br>- Sends an ACK reply the no data on success, otherwise a NAK packet with an error code (i.e. if the source path does not exist).
-<span id="CalcFileCRC32"></span> 14  | CalcFileCRC32 | Calculate CRC32 for file at `<path>`.<br>- Sends an ACK reply with the checksum on success, otherwise a NAK packet with an error code.
+<span id="CalcFileCRC32"></span> 14  | CalcFileCRC32 | Calculate CRC32 for file at `<path>` (with the same CRC32 algorithm as is used in the C standard library - **crc32.h**).<br>- Sends an ACK reply with the checksum on success, otherwise a NAK packet with an error code.
 <span id="BurstReadFile"></span> 15  | BurstReadFile | Burst download session file.
 
 
