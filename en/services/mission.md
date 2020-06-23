@@ -341,13 +341,15 @@ Param (:Label) | Description | Units
 The loiter time and turns are set in param 1 for the respective messages.
 The direction of loiter for `MAV_CMD_NAV_LOITER_UNLIM` can be set using `param4` (Yaw).
 
-The remaining parameters define the location at which a forward flying (fixed wing) vehicle will *exit the loiter, and its path to the next waypoint* (these apply only to apply to only `MAV_CMD_NAV_LOITER_TIME` and `MAV_CMD_NAV_LOITER_TURNS`). 
+> **Note** The remaining parameters (xtrack and heading) apply only to forward flying aircraft (not multicopters!)
+
+Xtrack and heading define the location at which a forward flying (fixed wing) vehicle will *exit the loiter circle, and its path to the next waypoint* (these apply only to apply to only `MAV_CMD_NAV_LOITER_TIME` and `MAV_CMD_NAV_LOITER_TURNS`). 
 
 
 Param (:Label) | Description | Units
 --- | --- | ---
 2: Heading Required	| Leave loiter circle only once heading towards the next waypoint (0 = False)| min:0 max:1 increment:1	
-4: Xtrack Location | Forward-moving aircraft only (not multicopters)! Sets xtrack path or exit location: 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour.
+4: Xtrack Location | Sets xtrack path or exit location: 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour.
 
 
 The recommended values (and resulting paths) are those shown below.
