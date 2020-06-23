@@ -16,11 +16,11 @@ The protocol provides reliable delivery by expecting a matching acknowledgement 
 | <span id="COMMAND_LONG"></span>[COMMAND_LONG](../messages/common.md#COMMAND_LONG) | Message for encoding a command ([MAV_CMD](#MAV_CMD)). The mesage encodes commands into up to 7 float parameters. The coordinate frame used for positional co-ordinates is implementation dependent. Any command may be packaged in this message, but there may be some loss of precision for positional co-ordinates (latitude, longitude).                                                                                                                                                                                       |
 | <span id="COMMAND_ACK"></span>[COMMAND_ACK](../messages/common.md#COMMAND_ACK)   | Command acknowledgement. Includes result (success, failure, still in progress) and may include progress information and additional detail about failure reasons.                                                                                                                                                                                                                                                                                                                                                                  |
 
-| Enum                                                                    | Description                                                                                    |
-| ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| <span id="MAV_CMD"></span>[MAV_CMD](../messages/common.md#mav_commands)  | Commands to be executed/sent in the command messages.                                          |
-| <span id="MAV_FRAME"></span>[MAV_FRAME](../messages/common.md#MAV_FRAME)   | Coordinate frame. Used `COMMAND_INT` to specify co-ordinate frame of an positional parameters. |
-| <span id="MAV_RESULT"></span>[MAV_RESULT](../messages/common.md#MAV_RESULT) | Result of command, included in [COMMAND_ACK.result](#COMMAND_ACK).                             |
+| Enum                                                                    | Description                                                                                            |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| <span id="MAV_CMD"></span>[MAV_CMD](../messages/common.md#mav_commands)  | Commands to be executed/sent in the command messages.                                                  |
+| <span id="MAV_FRAME"></span>[MAV_FRAME](../messages/common.md#MAV_FRAME)   | Coordinate frame. Used in `COMMAND_INT` to specify the co-ordinate frame of any positional parameters. |
+| <span id="MAV_RESULT"></span>[MAV_RESULT](../messages/common.md#MAV_RESULT) | Result of command, included in [COMMAND_ACK.result](#COMMAND_ACK).                                     |
 
 ## Sequences
 
