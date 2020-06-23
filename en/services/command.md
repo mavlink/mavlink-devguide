@@ -23,7 +23,7 @@ Message | Description
 Enum | Description
 -- | --
 <span id="MAV_CMD"></span>[MAV_CMD](../messages/common.md#mav_commands) | Commands to be executed/sent in the command messages.
-<span id="MAV_FRAME"></span>[MAV_FRAME](../messages/common.md#MAV_FRAME) | Coordinate frame. Used `COMMAND_INT` to specify co-ordinate frame of an positional parameters.
+<span id="MAV_FRAME"></span>[MAV_FRAME](../messages/common.md#MAV_FRAME) | Coordinate frame. Used in `COMMAND_INT` to specify the co-ordinate frame of any positional parameters.
 <span id="MAV_RESULT"></span>[MAV_RESULT](../messages/common.md#MAV_RESULT) | Result of command, included in [COMMAND_ACK.result](#COMMAND_ACK).
 
 
