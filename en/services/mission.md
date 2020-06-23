@@ -311,6 +311,78 @@ Note:
 The *defacto* standard file format for exchanging missions/plans is discussed in: [File Formats > Mission Plain-Text File Format](../file_formats/README.md#mission_plain_text_file).
 
 
+## Mission Command Detail
+
+This section is for clarifications and additional information about common mission items.
+In particular it is intended for cases that are difficult to document in the specification XML, or when images will much better describe expected behaviour.
+
+
+### Loiter Commands (`MAV_CMD_NAV_LOITER_*`) {#loiter_commands}
+
+Loiter commands are provided to allow a vehicle to hold at a location for a specified time or number of turns, until it reaches the specified altitude, or indefinitely.
+Multicopter vehicles stop at the specified point (within a *vehicle-specific* acceptance radius that is not set by the mission item).
+Forward-moving vehicles (e.g. fixed-wing) *circle* the point with the specified radius/direction.
+
+The commands are:
+- [MAV_CMD_NAV_LOITER_TIME](../messages/common.md#MAV_CMD_NAV_LOITER_TIME) - Loiter at specified location for a given amount of time after reaching the location. 
+- [MAV_CMD_NAV_LOITER_TURNS](../messages/common.md#MAV_CMD_NAV_LOITER_TURNS) - Loiter at specified location for a given number of turns.
+- [MAV_CMD_NAV_LOITER_TO_ALT](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_LOITER_TO_ALT) - Loiter at specified location until desired altitude is reached.
+- [MAV_CMD_NAV_LOITER_UNLIM](../messages/common.md#MAV_CMD_NAV_LOITER_UNLIM) - Loiter at specified location for an unlimited amount of time, yawing to face a given direction.
+
+The location and fixed-wing loiter radius parameters are common to all commands:
+
+Param (:Label) | Description | Units
+--- | --- | ---
+3: Radius | Radius around waypoint. If positive loiter clockwise, else counter-clockwise| m
+5: Latitude | Latitude | 
+6: Longitude | Longitude | 
+7: Altitude | Altitude | m
+
+The loiter time and turns are set in param 1 for the respective messages.
+The direction of loiter for `MAV_CMD_NAV_LOITER_UNLIM` can be set using `param4` (Yaw).
+
+> **Note** The remaining parameters (xtrack and heading) apply only to forward flying aircraft (not multicopters!)
+
+Xtrack and heading define the location at which a forward flying (fixed wing) vehicle will *exit the loiter circle, and its path to the next waypoint* (these apply only to apply to only `MAV_CMD_NAV_LOITER_TIME` and `MAV_CMD_NAV_LOITER_TURNS`). 
+
+
+Param (:Label) | Description | Units
+--- | --- | ---
+2: Heading Required	| Leave loiter circle only once heading towards the next waypoint (0 = False)| min:0 max:1 increment:1	
+4: Xtrack Location | Sets xtrack path or exit location: 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour.
+
+
+The recommended values (and resulting paths) are those shown below.
+
+![Loiter heading](../../assets/protocols/mission_loiter/xtrack1_0_heading_1.png)
+
+The vehicle leaves the loiter after it reaches the desired number of turns or time *and* based on **both** the `heading required` and `xtrack` params.
+
+A `heading required` of `1` prevents the vehicle from exiting the loiter unless it is heading towards the next waypoint (if `0` it can leave at any point provided the other conditions are met).
+With this setting the vehicle can leave at any point in the arc shown, provided it meets the other conditions (e.g. xtrack).
+If necessary (i.e. it is not in the arc when the other conditions are met), the vehicle will loop back around the loiter before it evaluates the xtrack condition.
+
+![Loiter heading](../../assets/protocols/mission_loiter/xtrack_heading.png)
+
+The Xtrack parameter independently defines the path and exit location:
+- `xtrack=0`: Exit the loiter circle and converge to the centre xtrack between this and the next waypoint.
+  - If the heading required parameter is not set it will exit the loiter immediately.
+  - Otherwise it will leave as soon as it is heading towards the next waypoint (which may also be immediately!)
+- `xtrack=1`: Exit the loiter circle and fly/converge to the straight line between the exit point and the centre of the next waypoint (i.e. don't converge to the centre xtrack).
+  - If the heading required parameter is set it will exit the loiter as soon as it is heading towards the next waypoint (which may be immediately!).
+  - If the heading required parameter is not set it will exit the loiter immediately (note that this exit path does not make much sense unless the heading parameter is set).
+- `xtrack=NaN`: Exit the loiter using "system specific default behaviour".
+  - The vehicle must still respect the heading required param.
+  - Usually this is synonymous with `xtrack=0` 
+- `xtrack=any other value`: Exit the loiter when the vehicle heading (tangent) makes the specified angle in degrees to the center xtrack.
+  Converge to the center xtrack.
+  The vehicle must still respect the `heading required` param (some xtrack values may not be possible with this condition true).
+  This allows callers to specify how quickly the vehicle converges to the center xtrack. For example, the image below shows the vehicle exiting the loiter at 30 degrees.
+  
+  ![Loiter angle](../../assets/protocols/mission_loiter/xtrack_30.png)
+
+
+
 ## Implementations
 
 ### PX4
