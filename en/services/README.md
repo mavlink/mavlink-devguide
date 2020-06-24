@@ -27,5 +27,6 @@ The main microservices are shown in the sidebar (most are listed below):
 * [Ping Protocol](../services/ping.md)
 * [Path Planning Protocol](../services/trajectory.md) (Trajectory Interface)
 * [Smart Battery Protocol (WIP)](../services/smart_battery.md)
+* [Terrain Protocol](../services/terrain.md)
 * [Tunnel Protocol](../services/tunnel.md)
 * [Open Drone ID Protocol (WIP)](../services/opendroneid.md)
