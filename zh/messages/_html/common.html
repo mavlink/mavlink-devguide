@@ -14918,8 +14918,8 @@
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>3: Reset Image Log (without formatting storage medium). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index.</td>
-     <td>0: No action 1: Reset Image Count</td>
+     <td>3: Reset Image Log</td>
+     <td>Reset Image Log (without formatting storage medium). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index. 0: No action 1: Reset Image Log</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -28383,8 +28383,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -31329,6 +31327,28 @@
    </thead>
    <tbody>
     <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
@@ -31421,6 +31441,7 @@
      <th>Field Name</th>
      <th>Type</th>
      <th>Units</th>
+     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -31429,12 +31450,20 @@
      <td>time_boot_us</td>
      <td>uint64_t</td>
      <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>target_system</td>
      <td>uint8_t</td>
      <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
      </td>
      <td>System ID</td>
     </tr>
@@ -31443,6 +31472,10 @@
      <td>uint8_t</td>
      <td>
      </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Component ID</td>
     </tr>
     <tr>
@@ -31450,43 +31483,91 @@
      <td>float[4]</td>
      <td>
      </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Quaternion components of autopilot attitude: w, x, y, z (1 0 0 0 is the null-rotation, Hamiltonian convention).</td>
     </tr>
     <tr>
      <td>q_estimated_delay_us</td>
      <td>uint32_t</td>
      <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Estimated delay of the attitude data.</td>
     </tr>
     <tr>
      <td>vx</td>
      <td>float</td>
      <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>X Speed in NED (North, East, Down).</td>
     </tr>
     <tr>
      <td>vy</td>
      <td>float</td>
      <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Y Speed in NED (North, East, Down).</td>
     </tr>
     <tr>
      <td>vz</td>
      <td>float</td>
      <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Z Speed in NED (North, East, Down).</td>
     </tr>
     <tr>
      <td>v_estimated_delay_us</td>
      <td>uint32_t</td>
      <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Estimated delay of the speed data.</td>
     </tr>
     <tr>
      <td>feed_forward_angular_velocity_z</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Feed forward Z component of angular velocity, positive is yawing to the right, NaN to be ignored. This is to indicate if the autopilot is actively yawing.</td>
+    </tr>
+    <tr>
+     <td>estimator_status</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</a>
+     </td>
+     <td>Bitmap indicating which estimator outputs are valid.</td>
+    </tr>
+    <tr>
+     <td>landed_state</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
+     </td>
+     <td>The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown.</td>
     </tr>
    </tbody>
   </table>
