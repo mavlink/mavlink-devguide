@@ -41,8 +41,8 @@ The items for the different types of mission are identified using a simple name 
 - *Rally point mission items*: 
   - There is just one rally point `MAV_CMD`: [MAV_CMD_NAV_RALLY_POINT](../messages/common.md#MAV_CMD_NAV_RALLY_POINT).
 
-The commands are transmitted/encoded in [MISSION_ITEM or MISSION_ITEM_INT](#command_message_type) messages.
-These messages include fields to identify the particular mission item (command id) and up to 7 command-specific optional parameters.
+Mission items (`MAV_CMD`) are transmitted/encoded in [MISSION_ITEM_INT](#MISSION_ITEM_INT) messages.
+This message includes fields to identify the particular mission item (command id) and up to 7 command-specific optional parameters.
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
@@ -51,8 +51,8 @@ param1 | float |  | Param #1.
 param2 | float |  | Param #2.
 param3 | float |  | Param #3.
 param4 | float |  | Param #4.
-param5 (x) | float / int32_t | | X coordinate (local frame) or latitude (global frame) for navigation commands (otherwise Param #5).
-param6 (y) | float / int32_t | | Y coordinate (local frame) or longitude (global frame) for navigation commands (otherwise Param #6).
+param5 (x) | int32_t | | X coordinate (local frame) or latitude (global frame) for navigation commands (otherwise Param #5).
+param6 (y) | int32_t | | Y coordinate (local frame) or longitude (global frame) for navigation commands (otherwise Param #6).
 param7 (z) | float | | Z coordinate (local frame) or altitude (global - relative or absolute, depending on frame) (otherwise Param #7).
 
 The first four parameters (shown above) can be used for any purpose - this depends on the particular [command](../messages/common.md#MAV_CMD). 
@@ -71,15 +71,6 @@ current | uint8_t | false:0, true:1 | When downloading, whether the item is the 
 autocontinue | uint8_t | | Autocontinue to next waypoint when the command completes.
 
 
-## MISSION_ITEM_INT vs MISSION_ITEM {#command_message_type}
-
-[MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) are used to exchange individual [mission items](#message_commands) between systems. `MISSION_ITEM` messages encode all mission item parameters into `float` parameters fields (single precision IEEE754) for transmission. `MISSION_ITEM_INT` is exactly the same except that `param5` and `param6` are Int32 fields.
-
-Protocol implementations must allow both message types in supported [operations](#operations) (along with the  corresponding [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) and [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) message types).
-
-MAVLink *users* should always prefer `MISSION_ITEM_INT` because it allows latitude/longitude to be encoded without the loss of precision that can come from using `MISSION_ITEM`.
-
-
 ## Message/Enum Summary
 
 The following messages and enums are used by the service.
@@ -89,9 +80,7 @@ Message | Description
 <span id="MISSION_REQUEST_LIST"></span>[MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST) | Initiate [mission download](#download_mission) from a system by requesting the list of mission items.
 <span id="MISSION_COUNT"></span>[MISSION_COUNT](../messages/common.md#MISSION_COUNT) | Send the number of items in a mission. This is used to initiate [mission upload](#uploading_mission) or as a response to [MISSION_REQUEST_LIST](#MISSION_REQUEST_LIST) when [downloading a mission](#download_mission).
 <span id="MISSION_REQUEST_INT"></span>[MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) | Request mission item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM_INT](#MISSION_ITEM_INT) message. Used for mission [upload](#uploading_mission) and [download](#download_mission).
-<span id="MISSION_REQUEST"></span>[MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) | Request mission item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM](#MISSION_ITEM) message. Used for mission [upload](#uploading_mission) and [download](#download_mission).
-<span id="MISSION_ITEM_INT"></span>[MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). The message encodes positional information in integer parameters for greater precision than [MISSION_ITEM](#MISSION_ITEM). Used for mission [upload](#uploading_mission) and [download](#download_mission).
-<span id="MISSION_ITEM"></span>[MISSION_ITEM](../messages/common.md#MISSION_ITEM) | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). The message encodes positional information in `float` parameters. Used for mission [upload](#uploading_mission) and [download](#download_mission).
+<span id="MISSION_ITEM_INT"></span>[MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). Used for mission [upload](#uploading_mission) and [download](#download_mission).
 <span id="MISSION_ACK"></span>[MISSION_ACK](../messages/common.md#MISSION_ACK) | Acknowledgment message when a system completes a [mission operation](#operations) (e.g. sent by autopilot after it has uploaded all mission items). The message includes a [MAV_MISSION_RESULT](#MAV_MISSION_RESULT) indicating either success or the type of failure.
 <span id="MISSION_CURRENT"></span>[MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) | Message containing the current mission item sequence number. This is emitted when the [current mission item is set/changed](#current_mission_item).
 <span id="MISSION_SET_CURRENT"></span>[MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT) | [Set the current mission item](#current_mission_item) by sequence number (continue to this item on the shortest path).
@@ -105,7 +94,15 @@ Enum | Description
 <span id="MAV_MISSION_TYPE"></span>[MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_TYPE) | [Mission type](#mission_types) for message (mission, geofence, rallypoints).
 <span id="MAV_MISSION_RESULT"></span>[MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT) | Used to indicate the success or failure reason for an operation (e.g. to upload or download a mission). This is carried in a [MISSION_ACK](#MISSION_ACK).
 <span id="MAV_FRAME"></span>[MAV_FRAME](../messages/common.md#MAV_FRAME) | Co-ordinate frame for position/velocity/acceleration data in the message.
-<span id="MAV_CMD"></span>[MAV_CMD](../messages/common.md#MAV_CMD) | [Mission Items](#mavlink_commands) (and MAVLink commands). These can be sent in [MISSION_ITEM](#MISSION_ITEM) or [MISSION_ITEM_INT](#MISSION_ITEM_INT).
+<span id="MAV_CMD"></span>[MAV_CMD](../messages/common.md#MAV_CMD) | [Mission Items](#mavlink_commands) (and MAVLink commands) sent in [MISSION_ITEM_INT](#MISSION_ITEM_INT).
+
+
+## Deprecated Types: MISSION_ITEM {#command_message_type}
+
+The legacy version of the protocol also supported [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) for requesting that a mission be sent as a sequence of [MISSION_ITEM](../messages/common.md#MISSION_ITEM) messages.
+
+Both `MISSION_REQUEST` and `MISSION_ITEM` messages are now deprecated, and should no longer be sent.
+If `MISSION_REQUEST` is recieved the system should instead respond with [MISSION_ITEM_INT](#MISSION_ITEM_INT) items (as though it  received [MISSION_REQUEST_INT](#MISSION_REQUEST_INT)).
 
 
 ## Operations {#operations}
