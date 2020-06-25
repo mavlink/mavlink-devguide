@@ -59,7 +59,7 @@ sequenceDiagram;
 ### Long Running Commands {#long_running_commands}
 
 Some commands are *long running*, and cannot complete immediately. 
-For thse commands the drone reports its progress by sending `COMMMAND_ACK` messages with [COMMAND_ACK.result=MAV_RESULT_IN_PROGRESS](../messages/common.md#MAV_RESULT_IN_PROGRESS) and the progress as a percentage in `COMMMAND_ACK.progress` ([0-100] percent complete, 255 if progress not supplied). 
+Tthe drone reports its progress by sending `COMMMAND_ACK` messages with [COMMAND_ACK.result=MAV_RESULT_IN_PROGRESS](../messages/common.md#MAV_RESULT_IN_PROGRESS) and the progress as a percentage in `COMMMAND_ACK.progress` ([0-100] percent complete, 255 if progress not supplied). 
 When the operation completes, the drone must terminate with a `COMMMAND_ACK` containing the final [result](#MAV_RESULT) of the operation: `MAV_RESULT_ACCEPTED`, `MAV_RESULT_FAILED`, `MAV_RESULT_CANCELLED`).
 
 [![Mermaid Sequence: MAV_RESULT_IN_PROGRESS](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IENPTU1BTkRfTE9ORygpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLKHJlc3VsdD1NQVZfUkVTVUxUX0lOX1BST0dSRVNTLHByb2dyZXNzPT8pXG4gICAgR0NTLT4-R0NTOiBTdGFydCAobG9uZ2VyKSB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLKHJlc3VsdD1NQVZfUkVTVUxUX0lOX1BST0dSRVNTLHByb2dyZXNzPT8pXG4gICAgR0NTLT4-R0NTOiBTdGFydCAobG9uZ2VyKSB0aW1lb3V0XG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IC4uLlxuICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDSyhyZXN1bHQ9TUFWX1JFU1VMVF9BQ0NFUFRFRCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IENPTU1BTkRfTE9ORygpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLKHJlc3VsdD1NQVZfUkVTVUxUX0lOX1BST0dSRVNTLHByb2dyZXNzPT8pXG4gICAgR0NTLT4-R0NTOiBTdGFydCAobG9uZ2VyKSB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLKHJlc3VsdD1NQVZfUkVTVUxUX0lOX1BST0dSRVNTLHByb2dyZXNzPT8pXG4gICAgR0NTLT4-R0NTOiBTdGFydCAobG9uZ2VyKSB0aW1lb3V0XG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IC4uLlxuICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDSyhyZXN1bHQ9TUFWX1JFU1VMVF9BQ0NFUFRFRCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
@@ -79,10 +79,6 @@ sequenceDiagram;
     Drone->>GCS: COMMAND_ACK(result=MAV_RESULT_ACCEPTED)
 -->
 
-\
-The rate at which progress messages are emitted is system-dependent.
-Generally though, the GCS should have a much increased timeout after receiving an ACK with `MAV_RESULT_IN_PROGRESS`.
-
 Long running operations may be cancelled by sending the [COMMAND_CANCEL](#COMMAND_CANCEL) message.
 The drone should cancel the operation and complete the sequence by sending `COMMAND_ACK` with `COMMAND_ACK.result=MAV_RESULT_CANCELLED`
 - If cancellation is not supported the drone can just continue to send progress updates until completion.
@@ -90,5 +86,8 @@ The drone should cancel the operation and complete the sequence by sending `COMM
 
 > **Note** If another command is received while handling a command (long running or otherwise) the new command should be rejected with `MAV_RESULT_TEMPORARILY_REJECTED`.
   What this means is that to restart an operation (i.e. with new parameters) it must first be cancelled.
+  
+The rate at which progress messages are emitted is system-dependent.
+Generally though, the GCS should have a much increased timeout after receiving an ACK with `MAV_RESULT_IN_PROGRESS`.
   
 If a timeout is triggered when waiting for a progress or completion update, the GCS should terminate the sequence (return to the idle state) and notify the user if appropriate.
