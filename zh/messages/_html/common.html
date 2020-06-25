@@ -9630,7 +9630,7 @@
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise</td>
+     <td>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise</td>
      <td>m</td>
     </tr>
     <tr>
@@ -9683,23 +9683,23 @@
      </td>
     </tr>
     <tr>
-     <td>2</td>
-     <td>Empty</td>
+     <td>2: Heading Required</td>
+     <td>Leave loiter circle only once heading towards the next waypoint (0 = False)</td>
      <td>
-     </td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise</td>
+     <td>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>4: Xtrack Location</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour.</td>
      <td>
      </td>
      <td>
@@ -9736,7 +9736,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.</p>
+   </a>Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-only moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9764,14 +9764,14 @@
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Loiter radius around waypoint for forward-moving vehicles. If positive loiter clockwise, else counter-clockwise.</td>
+     <td>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise.</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>4: Xtrack Location</td>
-     <td>For forward-moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour.</td>
      <td>
      </td>
      <td>
@@ -10249,7 +10249,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter at the current position.  Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached.  Additionally, if the Heading Required parameter is non-zero the  aircraft will not leave the loiter until heading toward the next waypoint.</p>
+   </a>Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter at the current position.  Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached. Additionally, if the Heading Required parameter is non-zero the aircraft will not leave the loiter until heading toward the next waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10262,7 +10262,7 @@
    <tbody>
     <tr>
      <td>1: Heading Required</td>
-     <td>Heading Required (0 = False)</td>
+     <td>Leave loiter circle only once heading towards the next waypoint (0 = False)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -10270,7 +10270,7 @@
     </tr>
     <tr>
      <td>2: Radius</td>
-     <td>Radius. If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter.</td>
+     <td>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter.</td>
      <td>
      </td>
      <td>m</td>
@@ -10285,7 +10285,7 @@
     </tr>
     <tr>
      <td>4: Xtrack Location</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location</td>
+     <td>Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour.</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
