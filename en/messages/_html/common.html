@@ -3848,7 +3848,14 @@
      <td>
       <a href="#MAV_RESULT_IN_PROGRESS">MAV_RESULT_IN_PROGRESS</a>
      </td>
-     <td>Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further COMMAND_ACK messages with result MAV_RESULT_IN_PROGRESS (at a rate decided by the implementation), and must terminate by sending a COMMAND_ACK message with final result of the operation. The COMMAND_ACK.progress field can be used to indicate the progress of the operation. There is no need for the sender to retry the command, but if done during execution, the component will return MAV_RESULT_IN_PROGRESS with an updated progress.</td>
+     <td>Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further COMMAND_ACK messages with result MAV_RESULT_IN_PROGRESS (at a rate decided by the implementation), and must terminate by sending a COMMAND_ACK message with final result of the operation. The COMMAND_ACK.progress field can be used to indicate the progress of the operation.</td>
+    </tr>
+    <tr id="MAV_RESULT_CANCELLED">
+     <td>6</td>
+     <td>
+      <a href="#MAV_RESULT_CANCELLED">MAV_RESULT_CANCELLED</a>
+     </td>
+     <td>Command has been cancelled (as a result of receiving a COMMAND_CANCEL message).</td>
     </tr>
    </tbody>
   </table>
@@ -4698,8 +4705,13 @@
      <td>4</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_MISSION_INT">MAV_PROTOCOL_CAPABILITY_MISSION_INT</a>
+      <p style="color:red">
+       <strong>DEPRECATED:</strong> Replaced by  (2020-06).
+
+
+  This flag must always be set if missions are supported, because missions must always use MISSION_ITEM_INT (rather than MISSION_ITEM, which is deprecated).</p>
      </td>
-     <td>Autopilot supports MISSION_INT scaled integer message type.</td>
+     <td>Autopilot supports MISSION_ITEM_INT scaled integer message type.</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_COMMAND_INT">
      <td>8</td>
@@ -16775,19 +16787,17 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>Latitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
+     <td>Latitude. Note, if used in MISSION_ITEM (deprecated) the units are degrees (unscaled)</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>degE7</td>
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>Longitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
+     <td>Longitude. Note, if used in MISSION_ITEM (deprecated) the units are degrees (unscaled)</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>degE7</td>
     </tr>
     <tr>
      <td>7: Altitude</td>
@@ -19770,6 +19780,8 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MISSION_ITEM_INT (2020-06).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -19927,6 +19939,11 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MISSION_REQUEST_INT (2020-06).
+
+
+  A system that gets this request should respond with MISSION_ITEM_INT (as though MISSION_REQUEST_INT was received).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -22201,6 +22218,55 @@
       </a>
      </td>
      <td>WIP: Component which requested the command to be executed</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="COMMAND_CANCEL">COMMAND_CANCEL (<a href="#COMMAND_CANCEL">
+    #80
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Cancel a long running command. The target system should respond with a COMMAND_ACK to the original command with result=MAV_RESULT_CANCELLED if the long running process was cancelled. If it has already completed, the cancel action can be ignored. The cancel action can be retried until some sort of acknowledgement to the original command has been received. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System executing long running command. Should not be broadcast (0).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component executing long running command.</td>
+    </tr>
+    <tr>
+     <td>command</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#MAV_CMD">MAV_CMD</a>
+     </td>
+     <td>Command ID (of command to cancel).</td>
     </tr>
    </tbody>
   </table>
