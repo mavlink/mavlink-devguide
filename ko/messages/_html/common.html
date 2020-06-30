@@ -5180,8 +5180,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="GENERATOR_STATUS_FLAG">
-   <a href="#GENERATOR_STATUS_FLAG">GENERATOR_STATUS_FLAG</a>
+  <h3 id="MAV_GENERATOR_STATUS_FLAG">
+   <a href="#MAV_GENERATOR_STATUS_FLAG">MAV_GENERATOR_STATUS_FLAG</a>
   </h3>
   <p>
    <a href="#enums">
@@ -5196,131 +5196,152 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="GENERATOR_STATUS_FLAG_OFF">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OFF">
      <td>1</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_OFF">GENERATOR_STATUS_FLAG_OFF</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OFF">MAV_GENERATOR_STATUS_FLAG_OFF</a>
      </td>
      <td>Generator is off.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_READY">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_READY">
      <td>2</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_READY">GENERATOR_STATUS_FLAG_READY</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_READY">MAV_GENERATOR_STATUS_FLAG_READY</a>
      </td>
      <td>Generator is ready to start generating power.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_GENERATING">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_GENERATING">
      <td>4</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_GENERATING">GENERATOR_STATUS_FLAG_GENERATING</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_GENERATING">MAV_GENERATOR_STATUS_FLAG_GENERATING</a>
      </td>
      <td>Generator is generating power.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_CHARGING">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_CHARGING">
      <td>8</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_CHARGING">GENERATOR_STATUS_FLAG_CHARGING</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_CHARGING">MAV_GENERATOR_STATUS_FLAG_CHARGING</a>
      </td>
      <td>Generator is charging the batteries (generating enough power to charge and provide the load).</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_REDUCED_POWER">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_REDUCED_POWER">
      <td>16</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_REDUCED_POWER">GENERATOR_STATUS_FLAG_REDUCED_POWER</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_REDUCED_POWER">MAV_GENERATOR_STATUS_FLAG_REDUCED_POWER</a>
      </td>
      <td>Generator is operating at a reduced maximum power.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_MAXPOWER">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_MAXPOWER">
      <td>32</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_MAXPOWER">GENERATOR_STATUS_FLAG_MAXPOWER</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_MAXPOWER">MAV_GENERATOR_STATUS_FLAG_MAXPOWER</a>
      </td>
      <td>Generator is providing the maximum output.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">
      <td>64</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">GENERATOR_STATUS_FLAG_OVERTEMP_WARNING</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">MAV_GENERATOR_STATUS_FLAG_OVERTEMP_WARNING</a>
      </td>
      <td>Generator is near the maximum operating temperature, cooling is insufficient.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">
      <td>128</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">GENERATOR_STATUS_FLAG_OVERTEMP_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">MAV_GENERATOR_STATUS_FLAG_OVERTEMP_FAULT</a>
      </td>
      <td>Generator hit the maximum operating temperature and shutdown.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">
      <td>256</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING</a>
      </td>
      <td>Power electronics are near the maximum operating temperature, cooling is insufficient.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">
      <td>512</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT</a>
      </td>
      <td>Power electronics hit the maximum operating temperature and shutdown.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">
      <td>1024</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT</a>
      </td>
      <td>Power electronics experienced a fault and shutdown.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">
      <td>2048</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">MAV_GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT</a>
      </td>
      <td>The power source supplying the generator failed e.g. mechanical generator stopped, tether is no longer providing power, solar cell is in shade, hydrogen reaction no longer happening.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">
      <td>4096</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">MAV_GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING</a>
      </td>
      <td>Generator controller having communication problems.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_COOLING_WARNING">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_COOLING_WARNING">
      <td>8192</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_COOLING_WARNING">GENERATOR_STATUS_FLAG_COOLING_WARNING</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_COOLING_WARNING">MAV_GENERATOR_STATUS_FLAG_COOLING_WARNING</a>
      </td>
      <td>Power electronic or generator cooling system error.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">
      <td>16384</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">MAV_GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT</a>
      </td>
      <td>Generator controller power rail experienced a fault.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">
      <td>32768</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">MAV_GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT</a>
      </td>
      <td>Generator controller exceeded the overcurrent threshold and shutdown to prevent damage.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">
      <td>65536</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">MAV_GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT</a>
      </td>
      <td>Generator controller detected a high current going into the batteries and shutdown to prevent battery damage.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">
      <td>131072</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">MAV_GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT</a>
      </td>
      <td>Generator controller exceeded it's overvoltage threshold and shutdown to prevent it exceeding the voltage rating.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_BATTERY_UNDERVOLT_FAULT">
+     <td>262144</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_BATTERY_UNDERVOLT_FAULT">MAV_GENERATOR_STATUS_FLAG_BATTERY_UNDERVOLT_FAULT</a>
+     </td>
+     <td>Batteries are under voltage (generator will not start).</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_START_INHIBITED">
+     <td>524288</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_START_INHIBITED">MAV_GENERATOR_STATUS_FLAG_START_INHIBITED</a>
+     </td>
+     <td>Generator start is inhibited by e.g. a safety switch.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_MAINTENANCE_REQUIRED">
+     <td>1048576</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_MAINTENANCE_REQUIRED">MAV_GENERATOR_STATUS_FLAG_MAINTENANCE_REQUIRED</a>
+     </td>
+     <td>Generator requires maintenance.</td>
     </tr>
    </tbody>
   </table>
@@ -33766,7 +33787,7 @@
      <td>
      </td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG">GENERATOR_STATUS_FLAG</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG">MAV_GENERATOR_STATUS_FLAG</a>
      </td>
      <td>Status flags.</td>
     </tr>
