@@ -7184,8 +7184,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>
-  </p>
+   </a>Parachute actions. Trigger release and enable/disable auto-release.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -7200,21 +7199,21 @@
      <td>
       <a href="#PARACHUTE_DISABLE">PARACHUTE_DISABLE</a>
      </td>
-     <td>Disable parachute release.</td>
+     <td>Disable auto-release of parachute (i.e. release triggered by crash detectors).</td>
     </tr>
     <tr id="PARACHUTE_ENABLE">
      <td>1</td>
      <td>
       <a href="#PARACHUTE_ENABLE">PARACHUTE_ENABLE</a>
      </td>
-     <td>Enable parachute release.</td>
+     <td>Enable auto-release of parachute.</td>
     </tr>
     <tr id="PARACHUTE_RELEASE">
      <td>2</td>
      <td>
       <a href="#PARACHUTE_RELEASE">PARACHUTE_RELEASE</a>
      </td>
-     <td>Release parachute.</td>
+     <td>Release parachute and kill motors.</td>
     </tr>
    </tbody>
   </table>
@@ -13317,7 +13316,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Mission command to trigger a parachute</p>
+   </a>Mission item/command to release a parachute or enable/disable auto release.</p>
   <table class="sortable">
    <thead>
     <tr>
