@@ -15289,7 +15289,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE">MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE">1000</a>
+  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN">MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN">1000</a>
    )
   </h3>
   <p style="color:red">
@@ -15309,22 +15309,22 @@
    </thead>
    <tbody>
     <tr>
-     <td>1: Tilt angular velocity</td>
-     <td>Tilt/pitch angular velocity (positive to point up).</td>
+     <td>1: Tilt rate</td>
+     <td>Tilt/pitch rate (positive to tilt up).</td>
      <td>
      </td>
      <td>deg/s</td>
     </tr>
     <tr>
-     <td>2: Pan angular velocity</td>
-     <td>Pan/yaw angular velocity (positive to pan to the right).</td>
+     <td>2: Pan rate</td>
+     <td>Pan/yaw rate (positive to pan to the right).</td>
      <td>
      </td>
      <td>deg/s</td>
     </tr>
     <tr>
      <td>3: Tilt angle</td>
-     <td>Pitch/tilt angle relative to world horizon (negative is to tilt down, positive to tilt up).</td>
+     <td>Tilt/pitch angle (positive to tilt up, relative to vehicle for PAN mode, relative to world horizon for HOLD mode).</td>
      <td>
       <em>min:</em>
       -180 
@@ -15333,7 +15333,7 @@
     </tr>
     <tr>
      <td>4: Pan angle</td>
-     <td>Yaw/pan angle (positive is pan to the right, relative to vehicle for PAN mode, absolute to North for HOLD mode)</td>
+     <td>Pan/yaw angle (positive to pan to the right, relative to vehicle for PAN mode, absolute to North for HOLD mode).</td>
      <td>
       <em>min:</em>
       -180 
@@ -31678,6 +31678,116 @@
       <a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
      </td>
      <td>The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_SET_TILTPAN">GIMBAL_MANAGER_SET_TILTPAN (<a href="#GIMBAL_MANAGER_SET_TILTPAN">
+    #287
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>High level message to control a gimbal's tilt and pan angles. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
+     </td>
+     <td>High level gimbal manager flags to use.</td>
+    </tr>
+    <tr>
+     <td>gimbal_device_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+    </tr>
+    <tr>
+     <td>tilt</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tilt/pitch angle (positive: up, negative: down, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>pan</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Pan/yaw angle (positive: to the right, negative: to the left, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>tilt_rate</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tilt/pitch angular rate (positive: up, negative: down, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>pan_rate</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Pan/yaw angular rate (positive: to the right, negative: to the left, NaN to be ignored).</td>
     </tr>
    </tbody>
   </table>
