@@ -25,9 +25,9 @@ The field takes one of the [MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_
 
 ## Mission Items (MAVLink Commands) {#mavlink_commands}
 
-Mission items for all the [mission types](#mission_types) are defined in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
+Mission items for all the [mission types](#mission_types) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
-> **Note** [MAV_CMD](../messages/common.md#MAV_CMD) is used to define commands that can be used in missions ("mission items") and commands that can be sent outside of a mission context (using the [Command Protocol](../services/command.md)). 
+> **Note** [MAV_CMD](../messages/common.md#mav_commands) is used to define commands that can be used in missions ("mission items") and commands that can be sent outside of a mission context (using the [Command Protocol](../services/command.md)). 
   Some `MAV_CMD` can be used with both mission and command protocols.
   Not all commands/mission items are supported on all systems (or for all flight modes).
 
@@ -46,7 +46,7 @@ This message includes fields to identify the particular mission item (command id
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
-command | uint16_t | [MAV_CMD](../messages/common.md#MAV_CMD) | Command id, as defined in [MAV_CMD](../messages/common.md#MAV_CMD).
+command | uint16_t | [MAV_CMD](../messages/common.md#mav_commands) | Command id, as defined in [MAV_CMD](../messages/common.md#mav_commands).
 param1 | float |  | Param #1.
 param2 | float |  | Param #2.
 param3 | float |  | Param #3.
@@ -55,7 +55,7 @@ param5 (x) | int32_t | | X coordinate (local frame) or latitude (global frame) f
 param6 (y) | int32_t | | Y coordinate (local frame) or longitude (global frame) for navigation commands (otherwise Param #6).
 param7 (z) | float | | Z coordinate (local frame) or altitude (global - relative or absolute, depending on frame) (otherwise Param #7).
 
-The first four parameters (shown above) can be used for any purpose - this depends on the particular [command](../messages/common.md#MAV_CMD). 
+The first four parameters (shown above) can be used for any purpose - this depends on the particular [command](../messages/common.md#mav_commands). 
 The last three parameters (x, y, z) are used for positional information in `MAV_CMD_NAV_*` commands, but can be used for any purpose in other commands.
 
 The remaining message fields are used for addressing, defining the mission type, specifying the reference frame used for x, y, z in `MAV_CMD_NAV_*` messages, etc.:
@@ -94,7 +94,7 @@ Enum | Description
 <span id="MAV_MISSION_TYPE"></span>[MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_TYPE) | [Mission type](#mission_types) for message (mission, geofence, rallypoints).
 <span id="MAV_MISSION_RESULT"></span>[MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT) | Used to indicate the success or failure reason for an operation (e.g. to upload or download a mission). This is carried in a [MISSION_ACK](#MISSION_ACK).
 <span id="MAV_FRAME"></span>[MAV_FRAME](../messages/common.md#MAV_FRAME) | Co-ordinate frame for position/velocity/acceleration data in the message.
-<span id="MAV_CMD"></span>[MAV_CMD](../messages/common.md#MAV_CMD) | [Mission Items](#mavlink_commands) (and MAVLink commands) sent in [MISSION_ITEM_INT](#MISSION_ITEM_INT).
+<span id="MAV_CMD"></span>[MAV_CMD](../messages/common.md#mav_commands) | [Mission Items](#mavlink_commands) (and MAVLink commands) sent in [MISSION_ITEM_INT](#MISSION_ITEM_INT).
 
 
 ## Deprecated Types: MISSION_ITEM {#command_message_type}
