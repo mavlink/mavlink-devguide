@@ -84,7 +84,7 @@ MaVLink XML 文件的大致结构如下。
 - `entry`(可选)：条目 (可以为每个列表指定零或多个条目)
 - [deprecated](#deprecated)(可选)：一个标签，显示已废弃的名单。
 
-> **Tip** [MAVLink 命令 ](#mav_cmd) 是在 [MAV_CMD](../messages/common.md#MAV_CMD) 枚举中定义的。
+> **Tip** [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
 ### 条目 {#entry}
 
@@ -131,7 +131,7 @@ MAV_CMD 条目 `value` 元素可能会额外定义这些标签/字段：
 
 ### 参数 {#param}
 
-`<param>` 标签在 [MAV_CMD](../messages/common.md#MAV_CMD) 中用作定义任务命令的一部分。 每个条目值可能超过已申报的7个参数，从 `索引` 值来自1-7。
+The `<param>` tag is used in the [MAV_CMD](../messages/common.md#mav_commands) enum as part of defining mission commands. 每个条目值可能超过已申报的7个参数，从 `索引` 值来自1-7。
 
 `param`**必须** 包括以下属性：
 

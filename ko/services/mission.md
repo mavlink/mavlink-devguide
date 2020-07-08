@@ -20,9 +20,9 @@ Mission protocol messages include the type of associated mission in the `mission
 
 ## Mission Items (MAVLink Commands) {#mavlink_commands}
 
-Mission items for all the [mission types](#mission_types) are defined in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
+Mission items for all the [mission types](#mission_types) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
-> **Note** [MAV_CMD](../messages/common.md#MAV_CMD) is used to define commands that can be used in missions ("mission items") and commands that can be sent outside of a mission context (using the [Command Protocol](../services/command.md)). Some `MAV_CMD` can be used with both mission and command protocols. Not all commands/mission items are supported on all systems (or for all flight modes).
+> **Note** [MAV_CMD](../messages/common.md#mav_commands) is used to define commands that can be used in missions ("mission items") and commands that can be sent outside of a mission context (using the [Command Protocol](../services/command.md)). Some `MAV_CMD` can be used with both mission and command protocols. Not all commands/mission items are supported on all systems (or for all flight modes).
 
 The items for the different types of mission are identified using a simple name prefix convention:
 
@@ -35,20 +35,20 @@ The items for the different types of mission are identified using a simple name 
 - *Rally point mission items*: 
   - There is just one rally point `MAV_CMD`: [MAV_CMD_NAV_RALLY_POINT](../messages/common.md#MAV_CMD_NAV_RALLY_POINT).
 
-The commands are transmitted/encoded in [MISSION_ITEM or MISSION_ITEM_INT](#command_message_type) messages. These messages include fields to identify the particular mission item (command id) and up to 7 command-specific optional parameters.
+Mission items (`MAV_CMD`) are transmitted/encoded in [MISSION_ITEM_INT](#MISSION_ITEM_INT) messages. This message includes fields to identify the particular mission item (command id) and up to 7 command-specific optional parameters.
 
-| Field Name | Type            | Values                                   | Description                                                                                                      |
-| ---------- | --------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| command    | uint16_t        | [MAV_CMD](../messages/common.md#MAV_CMD) | Command id, as defined in [MAV_CMD](../messages/common.md#MAV_CMD).                                              |
-| param1     | float           |                                          | Param #1.                                                                                                        |
-| param2     | float           |                                          | Param #2.                                                                                                        |
-| param3     | float           |                                          | Param #3.                                                                                                        |
-| param4     | float           |                                          | Param #4.                                                                                                        |
-| param5 (x) | float / int32_t |                                          | X coordinate (local frame) or latitude (global frame) for navigation commands (otherwise Param #5).              |
-| param6 (y) | float / int32_t |                                          | Y coordinate (local frame) or longitude (global frame) for navigation commands (otherwise Param #6).             |
-| param7 (z) | float           |                                          | Z coordinate (local frame) or altitude (global - relative or absolute, depending on frame) (otherwise Param #7). |
+| Field Name | Type     | Values                                        | Description                                                                                                      |
+| ---------- | -------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| command    | uint16_t | [MAV_CMD](../messages/common.md#mav_commands) | Command id, as defined in [MAV_CMD](../messages/common.md#mav_commands).                                         |
+| param1     | float    |                                               | Param #1.                                                                                                        |
+| param2     | float    |                                               | Param #2.                                                                                                        |
+| param3     | float    |                                               | Param #3.                                                                                                        |
+| param4     | float    |                                               | Param #4.                                                                                                        |
+| param5 (x) | int32_t  |                                               | X coordinate (local frame) or latitude (global frame) for navigation commands (otherwise Param #5).              |
+| param6 (y) | int32_t  |                                               | Y coordinate (local frame) or longitude (global frame) for navigation commands (otherwise Param #6).             |
+| param7 (z) | float    |                                               | Z coordinate (local frame) or altitude (global - relative or absolute, depending on frame) (otherwise Param #7). |
 
-The first four parameters (shown above) can be used for any purpose - this depends on the particular [command](../messages/common.md#MAV_CMD). The last three parameters (x, y, z) are used for positional information in `MAV_CMD_NAV_*` commands, but can be used for any purpose in other commands.
+The first four parameters (shown above) can be used for any purpose - this depends on the particular [command](../messages/common.md#mav_commands). The last three parameters (x, y, z) are used for positional information in `MAV_CMD_NAV_*` commands, but can be used for any purpose in other commands.
 
 The remaining message fields are used for addressing, defining the mission type, specifying the reference frame used for x, y, z in `MAV_CMD_NAV_*` messages, etc.:
 
@@ -63,39 +63,35 @@ ArduPilot and PX4 both only support global frames in MAVLink commands (local fra
 | current          | uint8_t  | false:0, true:1    | When downloading, whether the item is the current mission item.                                                                                                                                      |
 | autocontinue     | uint8_t  |                    | Autocontinue to next waypoint when the command completes.                                                                                                                                            |
 
-## MISSION_ITEM_INT vs MISSION_ITEM {#command_message_type}
-
-[MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) are used to exchange individual [mission items](#message_commands) between systems. `MISSION_ITEM` messages encode all mission item parameters into `float` parameters fields (single precision IEEE754) for transmission. `MISSION_ITEM_INT` is exactly the same except that `param5` and `param6` are Int32 fields.
-
-Protocol implementations must allow both message types in supported [operations](#operations) (along with the corresponding [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) and [MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) message types).
-
-MAVLink *users* should always prefer `MISSION_ITEM_INT` because it allows latitude/longitude to be encoded without the loss of precision that can come from using `MISSION_ITEM`.
-
 ## Message/Enum Summary
 
 The following messages and enums are used by the service.
 
-| Message                                                                                        | Description                                                                                                                                                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <span id="MISSION_REQUEST_LIST"></span>[MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST)  | Initiate [mission download](#download_mission) from a system by requesting the list of mission items.                                                                                                                                                                                                        |
-| <span id="MISSION_COUNT"></span>[MISSION_COUNT](../messages/common.md#MISSION_COUNT)                  | Send the number of items in a mission. This is used to initiate [mission upload](#uploading_mission) or as a response to [MISSION_REQUEST_LIST](#MISSION_REQUEST_LIST) when [downloading a mission](#download_mission).                                                                                    |
-| <span id="MISSION_REQUEST_INT"></span>[MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT)    | Request mission item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM_INT](#MISSION_ITEM_INT) message. Used for mission [upload](#uploading_mission) and [download](#download_mission).                                                                                  |
-| <span id="MISSION_REQUEST"></span>[MISSION_REQUEST](../messages/common.md#MISSION_REQUEST)              | Request mission item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM](#MISSION_ITEM) message. Used for mission [upload](#uploading_mission) and [download](#download_mission).                                                                                            |
-| <span id="MISSION_ITEM_INT"></span>[MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT)          | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). The message encodes positional information in integer parameters for greater precision than [MISSION_ITEM](#MISSION_ITEM). Used for mission [upload](#uploading_mission) and [download](#download_mission). |
-| <span id="MISSION_ITEM"></span>[MISSION_ITEM](../messages/common.md#MISSION_ITEM)                    | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). The message encodes positional information in `float` parameters. Used for mission [upload](#uploading_mission) and [download](#download_mission).                                                          |
-| <span id="MISSION_ACK"></span>[MISSION_ACK](../messages/common.md#MISSION_ACK)                      | Acknowledgment message when a system completes a [mission operation](#operations) (e.g. sent by autopilot after it has uploaded all mission items). The message includes a [MAV_MISSION_RESULT](#MAV_MISSION_RESULT) indicating either success or the type of failure.                                     |
-| <span id="MISSION_CURRENT"></span>[MISSION_CURRENT](../messages/common.md#MISSION_CURRENT)              | Message containing the current mission item sequence number. This is emitted when the [current mission item is set/changed](#current_mission_item).                                                                                                                                                          |
-| <span id="MISSION_SET_CURRENT"></span>[MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT)    | [Set the current mission item](#current_mission_item) by sequence number (continue to this item on the shortest path).                                                                                                                                                                                       |
-| <span id="STATUSTEXT"></span>[STATUSTEXT](../messages/common.md#STATUSTEXT)                        | Sent to notify systems when a request to [set the current mission item](#current_mission_item) fails.                                                                                                                                                                                                        |
-| <span id="MISSION_CLEAR_ALL"></span>[MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)       | Message sent to [clear/delete all mission items](#clear_mission) stored on a system.                                                                                                                                                                                                                         |
-| <span id="MISSION_ITEM_REACHED"></span>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).                                                                                                                                                                                                 |
+| Message                                                                                       | Description                                                                                                                                                                                                                                                              |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <span id="MISSION_REQUEST_LIST"></span>[MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST) | Initiate [mission download](#download_mission) from a system by requesting the list of mission items.                                                                                                                                                                    |
+| <span id="MISSION_COUNT"></span>[MISSION_COUNT](../messages/common.md#MISSION_COUNT)                 | Send the number of items in a mission. This is used to initiate [mission upload](#uploading_mission) or as a response to [MISSION_REQUEST_LIST](#MISSION_REQUEST_LIST) when [downloading a mission](#download_mission).                                                |
+| <span id="MISSION_REQUEST_INT"></span>[MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT)   | Request mission item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM_INT](#MISSION_ITEM_INT) message. Used for mission [upload](#uploading_mission) and [download](#download_mission).                                              |
+| <span id="MISSION_ITEM_INT"></span>[MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT)         | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). Used for mission [upload](#uploading_mission) and [download](#download_mission).                                                                                        |
+| <span id="MISSION_ACK"></span>[MISSION_ACK](../messages/common.md#MISSION_ACK)                     | Acknowledgment message when a system completes a [mission operation](#operations) (e.g. sent by autopilot after it has uploaded all mission items). The message includes a [MAV_MISSION_RESULT](#MAV_MISSION_RESULT) indicating either success or the type of failure. |
+| <span id="MISSION_CURRENT"></span>[MISSION_CURRENT](../messages/common.md#MISSION_CURRENT)             | Message containing the current mission item sequence number. This is emitted when the [current mission item is set/changed](#current_mission_item).                                                                                                                      |
+| <span id="MISSION_SET_CURRENT"></span>[MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT)   | [Set the current mission item](#current_mission_item) by sequence number (continue to this item on the shortest path).                                                                                                                                                   |
+| <span id="STATUSTEXT"></span>[STATUSTEXT](../messages/common.md#STATUSTEXT)                       | Sent to notify systems when a request to [set the current mission item](#current_mission_item) fails.                                                                                                                                                                    |
+| <span id="MISSION_CLEAR_ALL"></span>[MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)       | Message sent to [clear/delete all mission items](#clear_mission) stored on a system.                                                                                                                                                                                     |
+| <span id="MISSION_ITEM_REACHED"></span>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).                                                                                                                                                             |
 
 | Enum                                                                                       | Description                                                                                                                                               |
 | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <span id="MAV_MISSION_TYPE"></span>[MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_TYPE)     | [Mission type](#mission_types) for message (mission, geofence, rallypoints).                                                                              |
 | <span id="MAV_MISSION_RESULT"></span>[MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT) | Used to indicate the success or failure reason for an operation (e.g. to upload or download a mission). This is carried in a [MISSION_ACK](#MISSION_ACK). |
 | <span id="MAV_FRAME"></span>[MAV_FRAME](../messages/common.md#MAV_FRAME)                     | Co-ordinate frame for position/velocity/acceleration data in the message.                                                                                 |
-| <span id="MAV_CMD"></span>[MAV_CMD](../messages/common.md#MAV_CMD)                         | [Mission Items](#mavlink_commands) (and MAVLink commands). These can be sent in [MISSION_ITEM](#MISSION_ITEM) or [MISSION_ITEM_INT](#MISSION_ITEM_INT). |
+| <span id="MAV_CMD"></span>[MAV_CMD](../messages/common.md#mav_commands)                    | [Mission Items](#mavlink_commands) (and MAVLink commands) sent in [MISSION_ITEM_INT](#MISSION_ITEM_INT).                                                |
+
+## Deprecated Types: MISSION_ITEM {#command_message_type}
+
+The legacy version of the protocol also supported [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) for requesting that a mission be sent as a sequence of [MISSION_ITEM](../messages/common.md#MISSION_ITEM) messages.
+
+Both `MISSION_REQUEST` and `MISSION_ITEM` messages are now deprecated, and should no longer be sent. If `MISSION_REQUEST` is recieved the system should instead respond with [MISSION_ITEM_INT](#MISSION_ITEM_INT) items (as though it received [MISSION_REQUEST_INT](#MISSION_REQUEST_INT)).
 
 ## Operations {#operations}
 
@@ -275,6 +271,67 @@ Note:
 ## Mission File Formats
 
 The *defacto* standard file format for exchanging missions/plans is discussed in: [File Formats > Mission Plain-Text File Format](../file_formats/README.md#mission_plain_text_file).
+
+## Mission Command Detail
+
+This section is for clarifications and additional information about common mission items. In particular it is intended for cases that are difficult to document in the specification XML, or when images will much better describe expected behaviour.
+
+### Loiter Commands (`MAV_CMD_NAV_LOITER_*`) {#loiter_commands}
+
+Loiter commands are provided to allow a vehicle to hold at a location for a specified time or number of turns, until it reaches the specified altitude, or indefinitely. Multicopter vehicles stop at the specified point (within a *vehicle-specific* acceptance radius that is not set by the mission item). Forward-moving vehicles (e.g. fixed-wing) *circle* the point with the specified radius/direction.
+
+The commands are:
+
+- [MAV_CMD_NAV_LOITER_TIME](../messages/common.md#MAV_CMD_NAV_LOITER_TIME) - Loiter at specified location for a given amount of time after reaching the location. 
+- [MAV_CMD_NAV_LOITER_TURNS](../messages/common.md#MAV_CMD_NAV_LOITER_TURNS) - Loiter at specified location for a given number of turns.
+- [MAV_CMD_NAV_LOITER_TO_ALT](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_LOITER_TO_ALT) - Loiter at specified location until desired altitude is reached.
+- [MAV_CMD_NAV_LOITER_UNLIM](../messages/common.md#MAV_CMD_NAV_LOITER_UNLIM) - Loiter at specified location for an unlimited amount of time, yawing to face a given direction.
+
+The location and fixed-wing loiter radius parameters are common to all commands:
+
+| Param (:Label) | Description                                                                  | Units |
+| -------------- | ---------------------------------------------------------------------------- | ----- |
+| 3: Radius      | Radius around waypoint. If positive loiter clockwise, else counter-clockwise | m     |
+| 5: Latitude    | Latitude                                                                     |       |
+| 6: Longitude   | Longitude                                                                    |       |
+| 7: Altitude    | Altitude                                                                     | m     |
+
+The loiter time and turns are set in param 1 for the respective messages. The direction of loiter for `MAV_CMD_NAV_LOITER_UNLIM` can be set using `param4` (Yaw).
+
+> **Note** The remaining parameters (xtrack and heading) apply only to forward flying aircraft (not multicopters!)
+
+Xtrack and heading define the location at which a forward flying (fixed wing) vehicle will *exit the loiter circle, and its path to the next waypoint* (these apply only to apply to only `MAV_CMD_NAV_LOITER_TIME` and `MAV_CMD_NAV_LOITER_TURNS`).
+
+| Param (:Label)      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Units                   |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| 2: Heading Required | Leave loiter circle only once heading towards the next waypoint (0 = False)                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | min:0 max:1 increment:1 |
+| 4: Xtrack Location  | Sets xtrack path or exit location: 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. |                         |
+
+The recommended values (and resulting paths) are those shown below.
+
+![Loiter heading](../../assets/protocols/mission_loiter/xtrack1_0_heading_1.png)
+
+The vehicle leaves the loiter after it reaches the desired number of turns or time *and* based on **both** the `heading required` and `xtrack` params.
+
+A `heading required` of `1` prevents the vehicle from exiting the loiter unless it is heading towards the next waypoint (if `0` it can leave at any point provided the other conditions are met). With this setting the vehicle can leave at any point in the arc shown, provided it meets the other conditions (e.g. xtrack). If necessary (i.e. it is not in the arc when the other conditions are met), the vehicle will loop back around the loiter before it evaluates the xtrack condition.
+
+![Loiter heading](../../assets/protocols/mission_loiter/xtrack_heading.png)
+
+The Xtrack parameter independently defines the path and exit location:
+
+- `xtrack=0`: Exit the loiter circle and converge to the centre xtrack between this and the next waypoint. 
+  - If the heading required parameter is not set it will exit the loiter immediately.
+  - Otherwise it will leave as soon as it is heading towards the next waypoint (which may also be immediately!)
+- `xtrack=1`: Exit the loiter circle and fly/converge to the straight line between the exit point and the centre of the next waypoint (i.e. don't converge to the centre xtrack). 
+  - If the heading required parameter is set it will exit the loiter as soon as it is heading towards the next waypoint (which may be immediately!).
+  - If the heading required parameter is not set it will exit the loiter immediately (note that this exit path does not make much sense unless the heading parameter is set).
+- `xtrack=NaN`: Exit the loiter using "system specific default behaviour". 
+  - The vehicle must still respect the heading required param.
+  - Usually this is synonymous with `xtrack=0` 
+
+- `xtrack=any other value`: Exit the loiter when the vehicle heading (tangent) makes the specified angle in degrees to the center xtrack. Converge to the center xtrack. The vehicle must still respect the `heading required` param (some xtrack values may not be possible with this condition true). This allows callers to specify how quickly the vehicle converges to the center xtrack. For example, the image below shows the vehicle exiting the loiter at 30 degrees.
+  
+  ![Loiter angle](../../assets/protocols/mission_loiter/xtrack_30.png)
 
 ## Implementations
 

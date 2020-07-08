@@ -416,6 +416,13 @@
      </td>
      <td>伺服</td>
     </tr>
+    <tr id="MAV_TYPE_ODID">
+     <td>34</td>
+     <td>
+      <a href="#MAV_TYPE_ODID">MAV_TYPE_ODID</a>
+     </td>
+     <td>Open Drone ID. See https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="FIRMWARE_VERSION_TYPE">
@@ -1300,12 +1307,12 @@
      </td>
      <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
     </tr>
-    <tr id="MAV_COMP_ID_USER44">
+    <tr id="MAV_COMP_ID_TELEMETRY_RADIO">
      <td>68</td>
      <td>
-      <a href="#MAV_COMP_ID_USER44">MAV_COMP_ID_USER44</a>
+      <a href="#MAV_COMP_ID_TELEMETRY_RADIO">MAV_COMP_ID_TELEMETRY_RADIO</a>
      </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
+     <td>Telemetry radio (e.g. SiK radio, or other component that emits RADIO_STATUS messages).</td>
     </tr>
     <tr id="MAV_COMP_ID_USER45">
      <td>69</td>
@@ -1823,38 +1830,59 @@
      </td>
      <td>2号GPS。</td>
     </tr>
+    <tr id="MAV_COMP_ID_ODID_TXRX_1">
+     <td>236</td>
+     <td>
+      <a href="#MAV_COMP_ID_ODID_TXRX_1">MAV_COMP_ID_ODID_TXRX_1</a>
+     </td>
+     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
+    </tr>
+    <tr id="MAV_COMP_ID_ODID_TXRX_2">
+     <td>237</td>
+     <td>
+      <a href="#MAV_COMP_ID_ODID_TXRX_2">MAV_COMP_ID_ODID_TXRX_2</a>
+     </td>
+     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
+    </tr>
+    <tr id="MAV_COMP_ID_ODID_TXRX_3">
+     <td>238</td>
+     <td>
+      <a href="#MAV_COMP_ID_ODID_TXRX_3">MAV_COMP_ID_ODID_TXRX_3</a>
+     </td>
+     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
+    </tr>
     <tr id="MAV_COMP_ID_UDP_BRIDGE">
      <td>240</td>
      <td>
       <a href="#MAV_COMP_ID_UDP_BRIDGE">MAV_COMP_ID_UDP_BRIDGE</a>
      </td>
-     <td>将 MAVLink 桥接到 UDP 的组件（也就是从串口）。</td>
+     <td>Component to bridge MAVLink to UDP (i.e. from a UART).</td>
     </tr>
     <tr id="MAV_COMP_ID_UART_BRIDGE">
      <td>241</td>
      <td>
-      <a href="#MAV_COMP_ID_UART_BRIDGE">MAV_COMP_ID_UART_BRIDG</a>
+      <a href="#MAV_COMP_ID_UART_BRIDGE">MAV_COMP_ID_UART_BRIDGE</a>
      </td>
-     <td>将 MAVLink 桥接到 UART 的组件（也就是从UDP端口）。</td>
+     <td>Component to bridge to UART (i.e. from UDP).</td>
     </tr>
     <tr id="MAV_COMP_ID_TUNNEL_NODE">
      <td>242</td>
      <td>
       <a href="#MAV_COMP_ID_TUNNEL_NODE">MAV_COMP_ID_TUNNEL_NODE</a>
      </td>
-     <td>处理TUNNEL消息（例如组件中特定供应商的图形用户界面）的组件。</td>
+     <td>Component handling TUNNEL messages (e.g. vendor specific GUI of a component).</td>
     </tr>
     <tr id="MAV_COMP_ID_SYSTEM_CONTROL">
      <td>250</td>
      <td>
       <a href="#MAV_COMP_ID_SYSTEM_CONTROL">MAV_COMP_ID_SYSTEM_CONTROL</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> 由 MAV_COMP_ID_ALL （2018-11）代替。
+       <strong>DEPRECATED:</strong> Replaced by MAV_COMP_ID_ALL (2018-11).
 
 
-  系统控制不需要分离的组件ID。</p>
+  System control does not require a separate component ID.</p>
      </td>
-     <td>处理系统消息（例如：解琐，起飞等）的组件。</td>
+     <td>Component for handling system messages (e.g. to ARM, takeoff, etc.).</td>
     </tr>
    </tbody>
   </table>
@@ -2189,14 +2217,12 @@
      </td>
      <td>带有距离地面高度高度（航点坐标）的全球（WGS84)坐标系(比例缩放）。 第一个数值/x：纬度 角度*e-7；第二个数值/：经度 角度*1e-7；第三个数值/z 单位米：以地平线基准为0的地形模型中</td>
     </tr>
-    <tr id="MAV_FRAME_RESERVED_12">
+    <tr id="MAV_FRAME_BODY_FRD">
      <td>12</td>
      <td>
-      <a href="#MAV_FRAME_RESERVED_12">MAV_FRAME_RESERVED_12</a>
-      <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_BODY_OFFSET_NED (2019-04).</p>
+      <a href="#MAV_FRAME_BODY_FRD">MAV_FRAME_BODY_FRD</a>
      </td>
-     <td>MAV_FRAME_BODY_FRD - Body fixed frame of reference, Z-down (x: Forward, y: Right, z: Down).</td>
+     <td>Body fixed frame of reference, Z-down (x: Forward, y: Right, z: Down).</td>
     </tr>
     <tr id="MAV_FRAME_RESERVED_13">
      <td>13</td>
@@ -3286,6 +3312,45 @@
      </td>
      <td>WiFi configured as a station connected to an existing local WiFi network.</td>
     </tr>
+    <tr id="WIFI_CONFIG_AP_MODE_DISABLED">
+     <td>3</td>
+     <td>
+      <a href="#WIFI_CONFIG_AP_MODE_DISABLED">WIFI_CONFIG_AP_MODE_DISABLED</a>
+     </td>
+     <td>WiFi disabled.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="COMP_METADATA_TYPE">
+   <a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Possible values for COMPONENT_INFORMATION.comp_metadata_type.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="COMP_METADATA_TYPE_VERSION">
+     <td>0</td>
+     <td>
+      <a href="#COMP_METADATA_TYPE_VERSION">COMP_METADATA_TYPE_VERSION</a>
+     </td>
+     <td>Version information which also includes information on other optional supported COMP_METADATA_TYPE's. Must be supported. Only downloadable from vehicle.</td>
+    </tr>
+    <tr id="COMP_METADATA_TYPE_PARAMETER">
+     <td>1</td>
+     <td>
+      <a href="#COMP_METADATA_TYPE_PARAMETER">COMP_METADATA_TYPE_PARAMETER</a>
+     </td>
+     <td>Parameter meta data.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_DATA_STREAM">
@@ -3759,7 +3824,14 @@
      <td>
       <a href="#MAV_RESULT_IN_PROGRESS">MAV_RESULT_IN_PROGRESS</a>
      </td>
-     <td>Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further COMMAND_ACK messages with result MAV_RESULT_IN_PROGRESS (at a rate decided by the implementation), and must terminate by sending a COMMAND_ACK message with final result of the operation. The COMMAND_ACK.progress field can be used to indicate the progress of the operation. There is no need for the sender to retry the command, but if done during execution, the component will return MAV_RESULT_IN_PROGRESS with an updated progress.</td>
+     <td>Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further COMMAND_ACK messages with result MAV_RESULT_IN_PROGRESS (at a rate decided by the implementation), and must terminate by sending a COMMAND_ACK message with final result of the operation. The COMMAND_ACK.progress field can be used to indicate the progress of the operation.</td>
+    </tr>
+    <tr id="MAV_RESULT_CANCELLED">
+     <td>6</td>
+     <td>
+      <a href="#MAV_RESULT_CANCELLED">MAV_RESULT_CANCELLED</a>
+     </td>
+     <td>Command has been cancelled (as a result of receiving a COMMAND_CANCEL message).</td>
     </tr>
    </tbody>
   </table>
@@ -4609,8 +4681,13 @@
      <td>4</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_MISSION_INT">MAV_PROTOCOL_CAPABILITY_MISSION_INT</a>
+      <p style="color:red">
+       <strong>DEPRECATED:</strong> Replaced by  (2020-06).
+
+
+  This flag must always be set if missions are supported, because missions must always use MISSION_ITEM_INT (rather than MISSION_ITEM, which is deprecated).</p>
      </td>
-     <td>Autopilot supports MISSION_INT scaled integer message type.</td>
+     <td>Autopilot supports MISSION_ITEM_INT scaled integer message type.</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_COMMAND_INT">
      <td>8</td>
@@ -5079,6 +5156,171 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_GENERATOR_STATUS_FLAG">
+   <a href="#MAV_GENERATOR_STATUS_FLAG">MAV_GENERATOR_STATUS_FLAG</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags to report status/failure cases for a power generator (used in GENERATOR_STATUS). Note that FAULTS are conditions that cause the generator to fail. Warnings are conditions that require attention before the next use (they indicate the system is not operating properly).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OFF">
+     <td>1</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OFF">MAV_GENERATOR_STATUS_FLAG_OFF</a>
+     </td>
+     <td>Generator is off.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_READY">
+     <td>2</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_READY">MAV_GENERATOR_STATUS_FLAG_READY</a>
+     </td>
+     <td>Generator is ready to start generating power.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_GENERATING">
+     <td>4</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_GENERATING">MAV_GENERATOR_STATUS_FLAG_GENERATING</a>
+     </td>
+     <td>Generator is generating power.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_CHARGING">
+     <td>8</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_CHARGING">MAV_GENERATOR_STATUS_FLAG_CHARGING</a>
+     </td>
+     <td>Generator is charging the batteries (generating enough power to charge and provide the load).</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_REDUCED_POWER">
+     <td>16</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_REDUCED_POWER">MAV_GENERATOR_STATUS_FLAG_REDUCED_POWER</a>
+     </td>
+     <td>Generator is operating at a reduced maximum power.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_MAXPOWER">
+     <td>32</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_MAXPOWER">MAV_GENERATOR_STATUS_FLAG_MAXPOWER</a>
+     </td>
+     <td>Generator is providing the maximum output.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">
+     <td>64</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">MAV_GENERATOR_STATUS_FLAG_OVERTEMP_WARNING</a>
+     </td>
+     <td>Generator is near the maximum operating temperature, cooling is insufficient.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">
+     <td>128</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">MAV_GENERATOR_STATUS_FLAG_OVERTEMP_FAULT</a>
+     </td>
+     <td>Generator hit the maximum operating temperature and shutdown.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">
+     <td>256</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING</a>
+     </td>
+     <td>Power electronics are near the maximum operating temperature, cooling is insufficient.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">
+     <td>512</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT</a>
+     </td>
+     <td>Power electronics hit the maximum operating temperature and shutdown.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">
+     <td>1024</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT</a>
+     </td>
+     <td>Power electronics experienced a fault and shutdown.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">
+     <td>2048</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">MAV_GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT</a>
+     </td>
+     <td>The power source supplying the generator failed e.g. mechanical generator stopped, tether is no longer providing power, solar cell is in shade, hydrogen reaction no longer happening.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">
+     <td>4096</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">MAV_GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING</a>
+     </td>
+     <td>Generator controller having communication problems.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_COOLING_WARNING">
+     <td>8192</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_COOLING_WARNING">MAV_GENERATOR_STATUS_FLAG_COOLING_WARNING</a>
+     </td>
+     <td>Power electronic or generator cooling system error.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">
+     <td>16384</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">MAV_GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT</a>
+     </td>
+     <td>Generator controller power rail experienced a fault.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">
+     <td>32768</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">MAV_GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT</a>
+     </td>
+     <td>Generator controller exceeded the overcurrent threshold and shutdown to prevent damage.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">
+     <td>65536</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">MAV_GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT</a>
+     </td>
+     <td>Generator controller detected a high current going into the batteries and shutdown to prevent battery damage.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">
+     <td>131072</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">MAV_GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT</a>
+     </td>
+     <td>Generator controller exceeded it's overvoltage threshold and shutdown to prevent it exceeding the voltage rating.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_BATTERY_UNDERVOLT_FAULT">
+     <td>262144</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_BATTERY_UNDERVOLT_FAULT">MAV_GENERATOR_STATUS_FLAG_BATTERY_UNDERVOLT_FAULT</a>
+     </td>
+     <td>Batteries are under voltage (generator will not start).</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_START_INHIBITED">
+     <td>524288</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_START_INHIBITED">MAV_GENERATOR_STATUS_FLAG_START_INHIBITED</a>
+     </td>
+     <td>Generator start is inhibited by e.g. a safety switch.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_MAINTENANCE_REQUIRED">
+     <td>1048576</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_MAINTENANCE_REQUIRED">MAV_GENERATOR_STATUS_FLAG_MAINTENANCE_REQUIRED</a>
+     </td>
+     <td>Generator requires maintenance.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_VTOL_STATE">
    <a href="#MAV_VTOL_STATE">MAV_VTOL_STATE</a>
   </h3>
@@ -5524,7 +5766,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Flags in EKF_STATUS message</p>
+   </a>Flags in ESTIMATOR_STATUS message</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6918,8 +7160,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>
-  </p>
+   </a>Parachute actions. Trigger release and enable/disable auto-release.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6934,21 +7175,21 @@
      <td>
       <a href="#PARACHUTE_DISABLE">PARACHUTE_DISABLE</a>
      </td>
-     <td>Disable parachute release.</td>
+     <td>Disable auto-release of parachute (i.e. release triggered by crash detectors).</td>
     </tr>
     <tr id="PARACHUTE_ENABLE">
      <td>1</td>
      <td>
       <a href="#PARACHUTE_ENABLE">PARACHUTE_ENABLE</a>
      </td>
-     <td>Enable parachute release.</td>
+     <td>Enable auto-release of parachute.</td>
     </tr>
     <tr id="PARACHUTE_RELEASE">
      <td>2</td>
      <td>
       <a href="#PARACHUTE_RELEASE">PARACHUTE_RELEASE</a>
      </td>
-     <td>Release parachute.</td>
+     <td>Release parachute and kill motors.</td>
     </tr>
    </tbody>
   </table>
@@ -7264,6 +7505,13 @@
      </td>
      <td>The UA is in the air.</td>
     </tr>
+    <tr id="MAV_ODID_STATUS_EMERGENCY">
+     <td>3</td>
+     <td>
+      <a href="#MAV_ODID_STATUS_EMERGENCY">MAV_ODID_STATUS_EMERGENCY</a>
+     </td>
+     <td>The UA is having an emergency.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_ODID_HEIGHT_REF">
@@ -7560,105 +7808,105 @@
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_1_SECOND">MAV_ODID_TIME_ACC_0_1_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.1 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.1 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_2_SECOND">
      <td>2</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_2_SECOND">MAV_ODID_TIME_ACC_0_2_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.2 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.2 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_3_SECOND">
      <td>3</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_3_SECOND">MAV_ODID_TIME_ACC_0_3_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.3 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.3 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_4_SECOND">
      <td>4</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_4_SECOND">MAV_ODID_TIME_ACC_0_4_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.4 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.4 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_5_SECOND">
      <td>5</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_5_SECOND">MAV_ODID_TIME_ACC_0_5_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.5 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.5 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_6_SECOND">
      <td>6</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_6_SECOND">MAV_ODID_TIME_ACC_0_6_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.6 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.6 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_7_SECOND">
      <td>7</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_7_SECOND">MAV_ODID_TIME_ACC_0_7_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.7 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.7 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_8_SECOND">
      <td>8</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_8_SECOND">MAV_ODID_TIME_ACC_0_8_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.8 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.8 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_0_9_SECOND">
      <td>9</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_0_9_SECOND">MAV_ODID_TIME_ACC_0_9_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 0.9 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 0.9 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_1_0_SECOND">
      <td>10</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_1_0_SECOND">MAV_ODID_TIME_ACC_1_0_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 1.0 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 1.0 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_1_1_SECOND">
      <td>11</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_1_1_SECOND">MAV_ODID_TIME_ACC_1_1_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 1.1 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 1.1 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_1_2_SECOND">
      <td>12</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_1_2_SECOND">MAV_ODID_TIME_ACC_1_2_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 1.2 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 1.2 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_1_3_SECOND">
      <td>13</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_1_3_SECOND">MAV_ODID_TIME_ACC_1_3_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 1.3 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 1.3 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_1_4_SECOND">
      <td>14</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_1_4_SECOND">MAV_ODID_TIME_ACC_1_4_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 1.4 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 1.4 second.</td>
     </tr>
     <tr id="MAV_ODID_TIME_ACC_1_5_SECOND">
      <td>15</td>
      <td>
       <a href="#MAV_ODID_TIME_ACC_1_5_SECOND">MAV_ODID_TIME_ACC_1_5_SECOND</a>
      </td>
-     <td>The timestamp accuracy is smaller than 1.5 second.</td>
+     <td>The timestamp accuracy is smaller than or equal to 1.5 second.</td>
     </tr>
    </tbody>
   </table>
@@ -7742,8 +7990,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_ODID_LOCATION_SRC">
-   <a href="#MAV_ODID_LOCATION_SRC">MAV_ODID_LOCATION_SRC</a>
+  <h3 id="MAV_ODID_OPERATOR_LOCATION_TYPE">
+   <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE">MAV_ODID_OPERATOR_LOCATION_TYPE</a>
   </h3>
   <p>
    <a href="#enums">
@@ -7759,26 +8007,181 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="MAV_ODID_LOCATION_SRC_TAKEOFF">
+    <tr id="MAV_ODID_OPERATOR_LOCATION_TYPE_TAKEOFF">
      <td>0</td>
      <td>
-      <a href="#MAV_ODID_LOCATION_SRC_TAKEOFF">MAV_ODID_LOCATION_SRC_TAKEOFF</a>
+      <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE_TAKEOFF">MAV_ODID_OPERATOR_LOCATION_TYPE_TAKEOFF</a>
      </td>
      <td>The location of the operator is the same as the take-off location.</td>
     </tr>
-    <tr id="MAV_ODID_LOCATION_SRC_LIVE_GNSS">
+    <tr id="MAV_ODID_OPERATOR_LOCATION_TYPE_LIVE_GNSS">
      <td>1</td>
      <td>
-      <a href="#MAV_ODID_LOCATION_SRC_LIVE_GNSS">MAV_ODID_LOCATION_SRC_LIVE_GNSS</a>
+      <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE_LIVE_GNSS">MAV_ODID_OPERATOR_LOCATION_TYPE_LIVE_GNSS</a>
      </td>
      <td>The location of the operator is based on live GNSS data.</td>
     </tr>
-    <tr id="MAV_ODID_LOCATION_SRC_FIXED">
+    <tr id="MAV_ODID_OPERATOR_LOCATION_TYPE_FIXED">
      <td>2</td>
      <td>
-      <a href="#MAV_ODID_LOCATION_SRC_FIXED">MAV_ODID_LOCATION_SRC_FIXED</a>
+      <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE_FIXED">MAV_ODID_OPERATOR_LOCATION_TYPE_FIXED</a>
      </td>
      <td>The location of the operator is a fixed location.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_ODID_CLASSIFICATION_TYPE">
+   <a href="#MAV_ODID_CLASSIFICATION_TYPE">MAV_ODID_CLASSIFICATION_TYPE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_ODID_CLASSIFICATION_TYPE_UNDECLARED">
+     <td>0</td>
+     <td>
+      <a href="#MAV_ODID_CLASSIFICATION_TYPE_UNDECLARED">MAV_ODID_CLASSIFICATION_TYPE_UNDECLARED</a>
+     </td>
+     <td>The classification type for the UA is undeclared.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASSIFICATION_TYPE_EU">
+     <td>1</td>
+     <td>
+      <a href="#MAV_ODID_CLASSIFICATION_TYPE_EU">MAV_ODID_CLASSIFICATION_TYPE_EU</a>
+     </td>
+     <td>The classification type for the UA follows EU (European Union) specifications.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_ODID_CATEGORY_EU">
+   <a href="#MAV_ODID_CATEGORY_EU">MAV_ODID_CATEGORY_EU</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_ODID_CATEGORY_EU_UNDECLARED">
+     <td>0</td>
+     <td>
+      <a href="#MAV_ODID_CATEGORY_EU_UNDECLARED">MAV_ODID_CATEGORY_EU_UNDECLARED</a>
+     </td>
+     <td>The category for the UA, according to the EU specification, is undeclared.</td>
+    </tr>
+    <tr id="MAV_ODID_CATEGORY_EU_OPEN">
+     <td>1</td>
+     <td>
+      <a href="#MAV_ODID_CATEGORY_EU_OPEN">MAV_ODID_CATEGORY_EU_OPEN</a>
+     </td>
+     <td>The category for the UA, according to the EU specification, is the Open category.</td>
+    </tr>
+    <tr id="MAV_ODID_CATEGORY_EU_SPECIFIC">
+     <td>2</td>
+     <td>
+      <a href="#MAV_ODID_CATEGORY_EU_SPECIFIC">MAV_ODID_CATEGORY_EU_SPECIFIC</a>
+     </td>
+     <td>The category for the UA, according to the EU specification, is the Specific category.</td>
+    </tr>
+    <tr id="MAV_ODID_CATEGORY_EU_CERTIFIED">
+     <td>3</td>
+     <td>
+      <a href="#MAV_ODID_CATEGORY_EU_CERTIFIED">MAV_ODID_CATEGORY_EU_CERTIFIED</a>
+     </td>
+     <td>The category for the UA, according to the EU specification, is the Certified category.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_ODID_CLASS_EU">
+   <a href="#MAV_ODID_CLASS_EU">MAV_ODID_CLASS_EU</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_ODID_CLASS_EU_UNDECLARED">
+     <td>0</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_UNDECLARED">MAV_ODID_CLASS_EU_UNDECLARED</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is undeclared.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_0">
+     <td>1</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_0">MAV_ODID_CLASS_EU_CLASS_0</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 0.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_1">
+     <td>2</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_1">MAV_ODID_CLASS_EU_CLASS_1</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 1.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_2">
+     <td>3</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_2">MAV_ODID_CLASS_EU_CLASS_2</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 2.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_3">
+     <td>4</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_3">MAV_ODID_CLASS_EU_CLASS_3</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 3.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_4">
+     <td>5</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_4">MAV_ODID_CLASS_EU_CLASS_4</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 4.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_5">
+     <td>6</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_5">MAV_ODID_CLASS_EU_CLASS_5</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 5.</td>
+    </tr>
+    <tr id="MAV_ODID_CLASS_EU_CLASS_6">
+     <td>7</td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU_CLASS_6">MAV_ODID_CLASS_EU_CLASS_6</a>
+     </td>
+     <td>The class for the UA, according to the EU specification, is Class 6.</td>
     </tr>
    </tbody>
   </table>
@@ -9020,6 +9423,14 @@
      <td>
      </td>
     </tr>
+    <tr id="FAILURE_UNIT_SENSOR_AIRSPEED">
+     <td>8</td>
+     <td>
+      <a href="#FAILURE_UNIT_SENSOR_AIRSPEED">FAILURE_UNIT_SENSOR_AIRSPEED</a>
+     </td>
+     <td>
+     </td>
+    </tr>
     <tr id="FAILURE_UNIT_SYSTEM_BATTERY">
      <td>100</td>
      <td>
@@ -9198,7 +9609,7 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>纬度</td>
+     <td>Latitude</td>
      <td>
      </td>
      <td>
@@ -9206,7 +9617,7 @@
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>经度</td>
+     <td>Longitude</td>
      <td>
      </td>
      <td>
@@ -9214,7 +9625,7 @@
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>高度</td>
+     <td>Altitude</td>
      <td>
      </td>
      <td>m</td>
@@ -9251,7 +9662,7 @@
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>环绕航点半径。 If positive loiter clockwise, else counter-clockwise</td>
+     <td>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise</td>
      <td>m</td>
     </tr>
     <tr>
@@ -9261,19 +9672,19 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>纬度</td>
+     <td>Latitude</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>经度</td>
+     <td>Longitude</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>高度</td>
+     <td>Altitude</td>
      <td>m</td>
     </tr>
    </tbody>
@@ -9304,23 +9715,23 @@
      </td>
     </tr>
     <tr>
-     <td>2</td>
-     <td>Empty</td>
+     <td>2: Heading Required</td>
+     <td>Leave loiter circle only once heading towards the next waypoint (0 = False)</td>
      <td>
-     </td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise</td>
+     <td>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
-     <td>4</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>4: Xtrack Location</td>
+     <td>Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour.</td>
      <td>
      </td>
      <td>
@@ -9357,7 +9768,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Loiter around this waypoint for X seconds</p>
+   </a>Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-only moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9370,29 +9781,29 @@
    <tbody>
     <tr>
      <td>1: Time</td>
-     <td>Loiter time.</td>
+     <td>Loiter time (only starts once Lat, Lon and Alt is reached).</td>
      <td>
       <em>min:</em>0 </td>
      <td>s</td>
     </tr>
     <tr>
-     <td>2</td>
-     <td>Empty</td>
+     <td>2: Heading Required</td>
+     <td>Leave loiter circle only once heading towards the next waypoint (0 = False)</td>
      <td>
-     </td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise.</td>
+     <td>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise.</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
-     <td>4</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle.  NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>4: Xtrack Location</td>
+     <td>Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour.</td>
      <td>
      </td>
      <td>
@@ -9501,7 +9912,7 @@
     </tr>
     <tr>
      <td>3</td>
-     <td>Empty.</td>
+     <td>Empty</td>
      <td>
      </td>
      <td>
@@ -9545,7 +9956,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Takeoff from ground / hand</p>
+   </a>Takeoff from ground / hand. Vehicles that support multiple takeoff modes (e.g. VTOL quadplane) should take off using the currently configured mode.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9557,9 +9968,8 @@
    <tbody>
     <tr>
      <td>1: Pitch</td>
-     <td>最小俯仰角(如果空速传感器存在)，没有传感器需要设定俯仰角</td>
-     <td>
-     </td>
+     <td>Minimum pitch (if airspeed sensor present), desired pitch without sensor</td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>2</td>
@@ -9768,7 +10178,7 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>纬度</td>
+     <td>Latitude</td>
      <td>
      </td>
      <td>
@@ -9776,7 +10186,7 @@
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>经度</td>
+     <td>Longitude</td>
      <td>
      </td>
      <td>
@@ -9784,7 +10194,7 @@
     </tr>
     <tr>
      <td>7: Altitude</td>
-     <td>高度</td>
+     <td>Altitude</td>
      <td>
      </td>
      <td>m</td>
@@ -9871,7 +10281,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter at the current position.  Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached.  Additionally, if the Heading Required parameter is non-zero the  aircraft will not leave the loiter until heading toward the next waypoint.</p>
+   </a>Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter at the current position.  Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached. Additionally, if the Heading Required parameter is non-zero the aircraft will not leave the loiter until heading toward the next waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9884,7 +10294,7 @@
    <tbody>
     <tr>
      <td>1: Heading Required</td>
-     <td>Heading Required (0 = False)</td>
+     <td>Leave loiter circle only once heading towards the next waypoint (0 = False)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -9892,7 +10302,7 @@
     </tr>
     <tr>
      <td>2: Radius</td>
-     <td>Radius. If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter.</td>
+     <td>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter.</td>
      <td>
      </td>
      <td>m</td>
@@ -9907,7 +10317,7 @@
     </tr>
     <tr>
      <td>4: Xtrack Location</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location</td>
+     <td>Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour.</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -9965,7 +10375,7 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>RESERVED</td>
+     <td>Reserved</td>
      <td>
      </td>
      <td>
@@ -9973,7 +10383,7 @@
     </tr>
     <tr>
      <td>3</td>
-     <td>RESERVED</td>
+     <td>Reserved</td>
      <td>
      </td>
      <td>
@@ -9996,7 +10406,7 @@
     </tr>
     <tr>
      <td>6</td>
-     <td>RESERVED</td>
+     <td>Reserved</td>
      <td>
      </td>
      <td>
@@ -10117,7 +10527,7 @@
      </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude/X</td>
      <td>Center point latitude (if no MAV_FRAME specified) / X coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
      <td>
      </td>
@@ -10125,7 +10535,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude/Y</td>
      <td>Center point longitude (if no MAV_FRAME specified) / Y coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
      <td>
      </td>
@@ -10133,7 +10543,7 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude/Z</td>
      <td>Center point altitude (MSL) (if no MAV_FRAME specified) / Z coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
      <td>
      </td>
@@ -10252,7 +10662,7 @@
      <td>deg</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude/X</td>
      <td>Latitude/X of goal</td>
      <td>
      </td>
@@ -10260,7 +10670,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude/Y</td>
      <td>Longitude/Y of goal</td>
      <td>
      </td>
@@ -10268,7 +10678,7 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude/Z</td>
      <td>Altitude/Z of goal</td>
      <td>
      </td>
@@ -10326,7 +10736,7 @@
      </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude/X</td>
      <td>Latitude/X of goal</td>
      <td>
      </td>
@@ -10334,7 +10744,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude/Y</td>
      <td>Longitude/Y of goal</td>
      <td>
      </td>
@@ -10342,7 +10752,7 @@
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Altitude/Z</td>
      <td>Altitude/Z of goal</td>
      <td>
      </td>
@@ -10357,7 +10767,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Takeoff from ground using VTOL mode, and transition to forward flight with specified heading.</p>
+   </a>Takeoff from ground using VTOL mode, and transition to forward flight with specified heading. The command should be ignored by vehicles that dont support both VTOL and fixed-wing flight (multicopters, boats,etc.).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10820,7 +11230,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Ascend/descend at rate.  Delay mission state machine until desired altitude reached.</p>
+   </a>Ascend/descend to target altitude at specified rate. Delay mission state machine until desired altitude reached.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10967,7 +11377,7 @@
      <td>1: Angle</td>
      <td>target angle, 0 is north</td>
      <td>
-      <em>min:</em>0 <em>max:</em>360 </td>
+     </td>
      <td>deg</td>
     </tr>
     <tr>
@@ -11306,12 +11716,11 @@
      </td>
     </tr>
     <tr>
-     <td>4</td>
-     <td>Empty</td>
+     <td>4: Yaw</td>
+     <td>Yaw angle. NaN to use default heading</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>deg</td>
     </tr>
     <tr>
      <td>5: Latitude</td>
@@ -11758,7 +12167,7 @@
    <tbody>
     <tr>
      <td>1: Altitude</td>
-     <td>Altitude.</td>
+     <td>Altitude</td>
      <td>
      </td>
      <td>m</td>
@@ -12173,7 +12582,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Sets the region of interest (ROI) to a location. 然后，载具的控制系统可以用来控制车辆的姿态和照相机等各种传感器的姿态。 此命令可以发送到云台管理器，但不能发送到云台设备。 A gimbal is not to react to this message.</p>
+   </a>Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12185,7 +12594,7 @@
    <tbody>
     <tr>
      <td>1: Gimbal device ID</td>
-     <td>云台设备的组件ID ( 或1-6到非 MAVLink 的云台l) ，0为发送到所有云台。 (发送超过1个云台，但不是所有云台。)</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
      <td>
      </td>
     </tr>
@@ -12230,7 +12639,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. 此命令可以发送到云台管理器，但不能发送到云台设备。 云台不对此消息做出反应。</p>
+   </a>Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12332,7 +12741,7 @@
    <tbody>
     <tr>
      <td>1: System ID</td>
-     <td>sysid</td>
+     <td>System ID</td>
      <td>
       <em>min:</em>1 <em>max:</em>255 <em>increment:</em>1</td>
     </tr>
@@ -12603,6 +13012,11 @@
   <h3 id="MAV_CMD_DO_MOUNT_CONFIGURE">MAV_CMD_DO_MOUNT_CONFIGURE (<a href="#MAV_CMD_DO_MOUNT_CONFIGURE">204</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).
+
+
+  This message has been superseded by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE. The message can still be used to communicate with legacy gimbals implementing it.</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -12640,19 +13054,19 @@
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Roll Input Mode</td>
      <td>roll input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Pitch Input Mode</td>
      <td>pitch input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>7</td>
+     <td>7: Yaw Input Mode</td>
      <td>yaw input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame)</td>
      <td>
      </td>
@@ -12682,7 +13096,7 @@
    </thead>
    <tbody>
     <tr>
-     <td>1</td>
+     <td>1: Pitch</td>
      <td>pitch depending on mount mode (degrees or degrees/second depending on pitch input).</td>
      <td>
      </td>
@@ -12690,7 +13104,7 @@
      </td>
     </tr>
     <tr>
-     <td>2</td>
+     <td>2: Roll</td>
      <td>roll depending on mount mode (degrees or degrees/second depending on roll input).</td>
      <td>
      </td>
@@ -12698,7 +13112,7 @@
      </td>
     </tr>
     <tr>
-     <td>3</td>
+     <td>3: Yaw</td>
      <td>yaw depending on mount mode (degrees or degrees/second depending on yaw input).</td>
      <td>
      </td>
@@ -12713,7 +13127,7 @@
      <td>m</td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Latitude</td>
      <td>latitude, set if appropriate mount mode.</td>
      <td>
      </td>
@@ -12721,7 +13135,7 @@
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Longitude</td>
      <td>longitude, set if appropriate mount mode.</td>
      <td>
      </td>
@@ -12878,7 +13292,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Mission command to trigger a parachute</p>
+   </a>Mission item/command to release a parachute or enable/disable auto release.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12890,7 +13304,7 @@
    <tbody>
     <tr>
      <td>1: Action</td>
-     <td>action</td>
+     <td>Action</td>
      <td>PARACHUTE_ACTION</td>
     </tr>
     <tr>
@@ -13650,7 +14064,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Set sensor offsets. 只有在飞行前模式下才会接受此命令。</p>
+   </a>Set sensor offsets. This command will be only accepted if in pre-flight mode.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13867,19 +14281,80 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>Reserved, send 0</td>
+     <td>Reserved (set to 0)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>Reserved, send 0</td>
+     <td>Reserved (set to 0)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7</td>
      <td>WIP: ID (e.g. camera ID -1 for all IDs)</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_UPGRADE">MAV_CMD_DO_UPGRADE (<a href="#MAV_CMD_DO_UPGRADE">247</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request a target system to start an upgrade of one (or all) of its components. For example, the command might be sent to a companion computer to cause it to upgrade a connected flight controller. The system doing the upgrade will report progress using the normal command protocol sequence for a long running operation. Command protocol information: https://mavlink.io/en/services/command.html.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Component ID</td>
+     <td>Component id of the component to be upgraded. If set to 0, all components should be upgraded.</td>
+     <td>MAV_COMPONENT</td>
+    </tr>
+    <tr>
+     <td>2: Reboot</td>
+     <td>0: Do not reboot component after the action is executed, 1: Reboot component after the action is executed.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>WIP: upgrade progress report rate (can be used for more granular control).</td>
      <td>
      </td>
     </tr>
@@ -13931,24 +14406,24 @@
      <td>deg</td>
     </tr>
     <tr>
-     <td>5</td>
-     <td>Latitude / X position.</td>
+     <td>5: Latitude/X</td>
+     <td>Latitude/X position.</td>
      <td>
      </td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>6</td>
-     <td>Longitude / Y position.</td>
+     <td>6: Longitude/Y</td>
+     <td>Longitude/Y position.</td>
      <td>
      </td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Altitude / Z position.</td>
+     <td>7: Altitude/Z</td>
+     <td>Altitude/Z position.</td>
      <td>
      </td>
      <td>
@@ -14243,31 +14718,31 @@
       <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>2: Index ID</td>
-     <td>Index id (if appropriate). The use of this parameter (if any), must be defined in the requested message.</td>
+     <td>2: Req Param 1</td>
+     <td>Use for index ID, if required. Otherwise, the use of this parameter (if any) must be defined in the requested message. By default assumed not used (0).</td>
      <td>
-      <em>min:</em>0 <em>increment:</em>1</td>
+     </td>
     </tr>
     <tr>
-     <td>3</td>
+     <td>3: Req Param 2</td>
      <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>4</td>
+     <td>4: Req Param 3</td>
      <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Req Param 4</td>
      <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Req Param 5</td>
      <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
      <td>
      </td>
@@ -14294,16 +14769,21 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1: Protocol</td>
      <td>1: Request supported protocol versions by all nodes on the network</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>保留(所有剩余的参数)</td>
+     <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -14321,16 +14801,21 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1: Version</td>
      <td>1: Request autopilot version</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
-     <td>保留(所有剩余的参数)</td>
+     <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -14460,12 +14945,18 @@
     </tr>
     <tr>
      <td>2: Format</td>
-     <td>0: No action 1: Format storage</td>
+     <td>Format storage (and reset image log). 0: No action 1: Format storage</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>3</td>
+     <td>3: Reset Image Log</td>
+     <td>Reset Image Log (without formatting storage medium). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index. 0: No action 1: Reset Image Log</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>4</td>
      <td>Reserved (all remaining params)</td>
      <td>
      </td>
@@ -14498,7 +14989,7 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>保留(所有剩余的参数)</td>
+     <td>Reserved (all remaining params)</td>
      <td>
      </td>
     </tr>
@@ -14774,7 +15265,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE">MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE">1000</a>
+  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN">MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN">1000</a>
    )
   </h3>
   <p style="color:red">
@@ -14794,22 +15285,22 @@
    </thead>
    <tbody>
     <tr>
-     <td>1: Tilt angular velocity</td>
-     <td>Tilt/pitch angular velocity (positive to point up).</td>
+     <td>1: Tilt rate</td>
+     <td>Tilt/pitch rate (positive to tilt up).</td>
      <td>
      </td>
      <td>deg/s</td>
     </tr>
     <tr>
-     <td>2: Pan angular velocity</td>
-     <td>Pan/yaw angular velocity (positive to pan to the right).</td>
+     <td>2: Pan rate</td>
+     <td>Pan/yaw rate (positive to pan to the right).</td>
      <td>
      </td>
      <td>deg/s</td>
     </tr>
     <tr>
      <td>3: Tilt angle</td>
-     <td>Pitch/tilt angle relative to world horizon (negative is to tilt down, positive to tilt up).</td>
+     <td>Tilt/pitch angle (positive to tilt up, relative to vehicle for PAN mode, relative to world horizon for HOLD mode).</td>
      <td>
       <em>min:</em>
       -180 
@@ -14818,7 +15309,7 @@
     </tr>
     <tr>
      <td>4: Pan angle</td>
-     <td>Yaw/pan angle (positive is pan to the right, relative to vehicle for PAN mode, absolute to North for HOLD mode)</td>
+     <td>Pan/yaw angle (positive to pan to the right, relative to vehicle for PAN mode, absolute to North for HOLD mode).</td>
      <td>
       <em>min:</em>
       -180 
@@ -15290,7 +15781,7 @@
    <tbody>
     <tr>
      <td>1: Stream ID</td>
-     <td>视频流ID(0为所有流，1为第一流，2为第二流，等等)</td>
+     <td>Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -15316,7 +15807,7 @@
    <tbody>
     <tr>
      <td>1: Stream ID</td>
-     <td>视频流ID(0为所有流，1为第一流，2为第二流，等等)</td>
+     <td>Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
@@ -15721,32 +16212,42 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1: Radius</td>
      <td>Radius of desired circle in CIRCLE_MODE</td>
+     <td>m</td>
     </tr>
     <tr>
      <td>2</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>User defined</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>5</td>
-     <td>Unscaled target latitude of center of circle in CIRCLE_MODE</td>
+     <td>5: Latitude</td>
+     <td>Target latitude of center of circle in CIRCLE_MODE</td>
+     <td>degE7</td>
     </tr>
     <tr>
-     <td>6</td>
-     <td>Unscaled target longitude of center of circle in CIRCLE_MODE</td>
+     <td>6: Longitude</td>
+     <td>Target longitude of center of circle in CIRCLE_MODE</td>
+     <td>degE7</td>
     </tr>
    </tbody>
   </table>
@@ -16282,19 +16783,17 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>Latitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
+     <td>Latitude. Note, if used in MISSION_ITEM (deprecated) the units are degrees (unscaled)</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>degE7</td>
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>Longitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
+     <td>Longitude. Note, if used in MISSION_ITEM (deprecated) the units are degrees (unscaled)</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>degE7</td>
     </tr>
     <tr>
      <td>7: Altitude</td>
@@ -18235,7 +18734,7 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>Timestamp (time since system boot).</td>
+     <td>时间戳(系统启动后的时间)。</td>
     </tr>
     <tr>
      <td>xacc</td>
@@ -18489,7 +18988,7 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>press_abs</td>
@@ -18534,7 +19033,7 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>roll</td>
@@ -18597,7 +19096,7 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>q1</td>
@@ -18680,7 +19179,7 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>x</td>
@@ -18744,7 +19243,7 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>lat</td>
@@ -18826,7 +19325,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>伺服器输出端口(8个输出=1个端口)。 在 Pixhawk 上运行的飞行堆栈应使用：0 = MAIN，1 = AUX。</td>
+     <td>Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.</td>
     </tr>
     <tr>
      <td>chan1_scaled</td>
@@ -19162,7 +19661,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19171,7 +19670,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td>start_index</td>
@@ -19230,7 +19729,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19239,7 +19738,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td>start_index</td>
@@ -19277,6 +19776,8 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MISSION_ITEM_INT (2020-06).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -19299,7 +19800,7 @@
       <a href="#">
       </a>
      </td>
-     <td>System ID</td>
+     <td>系统 ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19308,7 +19809,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Component ID</td>
+     <td>组件ID</td>
     </tr>
     <tr>
      <td>seq</td>
@@ -19434,6 +19935,11 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MISSION_REQUEST_INT (2020-06).
+
+
+  A system that gets this request should respond with MISSION_ITEM_INT (as though MISSION_REQUEST_INT was received).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -19574,7 +20080,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19583,7 +20089,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td style="color:blue;">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -19594,7 +20100,7 @@
      <td>
       <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
-     <td>任务类型</td>
+     <td>Mission type.</td>
     </tr>
    </tbody>
   </table>
@@ -19683,7 +20189,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -19692,7 +20198,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td style="color:blue;">mission_type<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21182,7 +21688,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -21191,7 +21697,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td>seq</td>
@@ -21335,7 +21841,7 @@
      <td>airspeed</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Current indicated airspeed (IAS).</td>
+     <td>Vehicle speed in form appropriate for vehicle type. For standard aircraft this is typically calibrated airspeed (CAS) or indicated airspeed (IAS) - either of which can be used by a pilot to estimate stall speed.</td>
     </tr>
     <tr>
      <td>groundspeed</td>
@@ -21711,6 +22217,55 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="COMMAND_CANCEL">COMMAND_CANCEL (<a href="#COMMAND_CANCEL">
+    #80
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Cancel a long running command. The target system should respond with a COMMAND_ACK to the original command with result=MAV_RESULT_CANCELLED if the long running process was cancelled. If it has already completed, the cancel action can be ignored. The cancel action can be retried until some sort of acknowledgement to the original command has been received. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System executing long running command. Should not be broadcast (0).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component executing long running command.</td>
+    </tr>
+    <tr>
+     <td>command</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#MAV_CMD">MAV_CMD</a>
+     </td>
+     <td>Command ID (of command to cancel).</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MANUAL_SETPOINT">MANUAL_SETPOINT (<a href="#MANUAL_SETPOINT">
     #81
    </a>
@@ -21734,7 +22289,7 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>roll</td>
@@ -21962,7 +22517,7 @@
       <a href="#">
       </a>
      </td>
-     <td>系统 ID</td>
+     <td>System ID</td>
     </tr>
     <tr>
      <td>target_component</td>
@@ -21973,7 +22528,7 @@
       <a href="#">
       </a>
      </td>
-     <td>组件ID</td>
+     <td>Component ID</td>
     </tr>
     <tr>
      <td>coordinate_frame</td>
@@ -21993,7 +22548,7 @@
      <td>
       <a href="#POSITION_TARGET_TYPEMASK">POSITION_TARGET_TYPEMASK</a>
      </td>
-     <td>位图，表示载具应该忽略哪些维度。</td>
+     <td>Bitmap to indicate which dimensions should be ignored by the vehicle.</td>
     </tr>
     <tr>
      <td>x</td>
@@ -22033,7 +22588,7 @@
       <a href="#">
       </a>
      </td>
-     <td>NED 坐标系中的 X 速度</td>
+     <td>X velocity in NED frame</td>
     </tr>
     <tr>
      <td>vy</td>
@@ -22043,7 +22598,7 @@
       <a href="#">
       </a>
      </td>
-     <td>NED 坐标系中的Y 速度</td>
+     <td>Y velocity in NED frame</td>
     </tr>
     <tr>
      <td>vz</td>
@@ -22053,7 +22608,7 @@
       <a href="#">
       </a>
      </td>
-     <td>NED 坐标系中的Z速度</td>
+     <td>Z velocity in NED frame</td>
     </tr>
     <tr>
      <td>afx</td>
@@ -22063,7 +22618,7 @@
       <a href="#">
       </a>
      </td>
-     <td>以米/秒^2或N为单位的 NED坐标系中中的X 加速度或力(如果设置了 Bit10 的类型掩码)</td>
+     <td>X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr>
      <td>afy</td>
@@ -22073,7 +22628,7 @@
       <a href="#">
       </a>
      </td>
-     <td>以米/秒^2或N为单位的 NED坐标系中的Y加速度或力(如果设置了 Bit10 的类型掩码)</td>
+     <td>Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr>
      <td>afz</td>
@@ -22083,7 +22638,7 @@
       <a href="#">
       </a>
      </td>
-     <td>以米/秒^2或N为单位的 NED坐标系中的Z加速度或力(如果设置了 Bit10 的类型掩码)</td>
+     <td>Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr>
      <td>yaw</td>
@@ -22155,7 +22710,7 @@
      <td>
       <a href="#POSITION_TARGET_TYPEMASK">POSITION_TARGET_TYPEMASK</a>
      </td>
-     <td>标识机体哪些维度应该被忽略的位图</td>
+     <td>Bitmap to indicate which dimensions should be ignored by the vehicle.</td>
     </tr>
     <tr>
      <td>x</td>
@@ -22195,7 +22750,7 @@
       <a href="#">
       </a>
      </td>
-     <td>NED 坐标系中的 X 速度</td>
+     <td>X velocity in NED frame</td>
     </tr>
     <tr>
      <td>vy</td>
@@ -22205,7 +22760,7 @@
       <a href="#">
       </a>
      </td>
-     <td>NED 坐标系中的Y 速度</td>
+     <td>Y velocity in NED frame</td>
     </tr>
     <tr>
      <td>vz</td>
@@ -22215,7 +22770,7 @@
       <a href="#">
       </a>
      </td>
-     <td>NED 坐标系中的Z速度</td>
+     <td>Z velocity in NED frame</td>
     </tr>
     <tr>
      <td>afx</td>
@@ -22225,7 +22780,7 @@
       <a href="#">
       </a>
      </td>
-     <td>以米/秒^2或N为单位的 NED坐标系中中的X 加速度或力(如果设置了 Bit10 的类型掩码)</td>
+     <td>X acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr>
      <td>afy</td>
@@ -22235,7 +22790,7 @@
       <a href="#">
       </a>
      </td>
-     <td>以米/秒^2或N为单位的 NED坐标系中的Y加速度或力(如果设置了 Bit10 的类型掩码)</td>
+     <td>Y acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr>
      <td>afz</td>
@@ -22245,7 +22800,7 @@
       <a href="#">
       </a>
      </td>
-     <td>以米/秒^2或N为单位的 NED坐标系中的Z加速度或力(如果设置了 Bit10 的类型掩码)</td>
+     <td>Z acceleration or force (if bit 10 of type_mask is set) in NED frame in meter / s^2 or N</td>
     </tr>
     <tr>
      <td>yaw</td>
@@ -22255,7 +22810,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Yaw: 航向设定值</td>
+     <td>yaw setpoint</td>
     </tr>
     <tr>
      <td>yaw_rate</td>
@@ -22265,7 +22820,7 @@
       <a href="#">
       </a>
      </td>
-     <td>yaw: 航向角速度设定值</td>
+     <td>yaw rate setpoint</td>
     </tr>
    </tbody>
   </table>
@@ -22706,7 +23261,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>roll</td>
@@ -22828,7 +23383,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>roll_ailerons</td>
@@ -22964,7 +23519,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>chan1_raw</td>
@@ -23306,7 +23861,7 @@
      <td>usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(同步到 UNIX 时间或系统启动后)。</td>
+     <td>Timestamp (UNIX time or time since system boot)</td>
     </tr>
     <tr>
      <td>x</td>
@@ -23330,19 +23885,19 @@
      <td>roll</td>
      <td>float</td>
      <td>rad</td>
-     <td>滚转角</td>
+     <td>Roll angle</td>
     </tr>
     <tr>
      <td>pitch</td>
      <td>float</td>
      <td>rad</td>
-     <td>俯仰角</td>
+     <td>Pitch angle</td>
     </tr>
     <tr>
      <td>yaw</td>
      <td>float</td>
      <td>rad</td>
-     <td>偏航角</td>
+     <td>Yaw angle</td>
     </tr>
     <tr>
      <td style="color:blue;">covariance<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -23352,7 +23907,7 @@
      <td>float[21]</td>
      <td>
      </td>
-     <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). 如果未知，在数组中将NAN值分配给第一个元素。</td>
+     <td>Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array.</td>
     </tr>
     <tr>
      <td style="color:blue;">reset_counter<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -23527,7 +24082,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>xacc</td>
@@ -23587,7 +24142,7 @@
      <td>abs_pressure</td>
      <td>float</td>
      <td>mbar</td>
-     <td>绝对压力</td>
+     <td>Absolute pressure</td>
     </tr>
     <tr>
      <td>diff_pressure</td>
@@ -23600,13 +24155,13 @@
      <td>float</td>
      <td>
      </td>
-     <td>根据压力计算的高度</td>
+     <td>Altitude calculated from pressure</td>
     </tr>
     <tr>
      <td>temperature</td>
      <td>float</td>
      <td>degC</td>
-     <td>温度</td>
+     <td>Temperature</td>
     </tr>
     <tr>
      <td>fields_updated</td>
@@ -24155,7 +24710,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>Timestamp for image frame (UNIX Epoch time or time since system boot). 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp for image frame (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>seq</td>
@@ -24190,7 +24745,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>fix_type</td>
@@ -24265,6 +24820,16 @@
      <td>
      </td>
      <td>Number of satellites visible. If unknown, set to 255</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>GPS ID (zero indexed). Used for multiple GPS inputs</td>
     </tr>
    </tbody>
   </table>
@@ -25842,6 +26407,21 @@
      </td>
      <td>Quaternion of the sensor orientation in vehicle body frame (w, x, y, z order, zero-rotation is 1, 0, 0, 0). Zero-rotation is along the vehicle body x-axis. This field is required if the orientation is set to MAV_SENSOR_ROTATION_CUSTOM. Set it to 0 if invalid."</td>
     </tr>
+    <tr>
+     <td style="color:blue;">signal_quality<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+      %
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Signal quality of the sensor. Specific to each sensor type, representing the relation of the signal strength with the target reflectivity, distance, size or aspect, but normalised as a percentage. 0 = unknown/unset signal quality, 1 = invalid signal, 100 = perfect signal.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="TERRAIN_REQUEST">TERRAIN_REQUEST (<a href="#TERRAIN_REQUEST">
@@ -26109,7 +26689,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>q</td>
@@ -26171,7 +26751,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>group_mlx</td>
@@ -26919,7 +27499,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>target_num</td>
@@ -27179,7 +27759,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -27889,8 +28469,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -29290,7 +29868,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Version of the camera firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>Version of the camera firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff)</td>
     </tr>
     <tr>
      <td>focal_length</td>
@@ -29603,7 +30181,7 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>image_status</td>
@@ -29636,6 +30214,16 @@
      <td>float</td>
      <td>MiB</td>
      <td>Available storage capacity.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">image_count<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>int32_t</td>
+     <td>
+     </td>
+     <td>Total number of images captured ('forever', or until reset using MAV_CMD_STORAGE_FORMAT).</td>
     </tr>
    </tbody>
   </table>
@@ -29716,7 +30304,7 @@
      <td>int32_t</td>
      <td>
      </td>
-     <td>Zero based index of this image (image count since armed -1)</td>
+     <td>Zero based index of this image (i.e. a new image will have index CAMERA_CAPTURE_STATUS.image count -1)</td>
     </tr>
     <tr>
      <td>capture_result</td>
@@ -30278,7 +30866,7 @@
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -30396,7 +30984,7 @@
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -30423,7 +31011,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -30454,7 +31042,7 @@
    )
   </h3>
   <p style="color:red">
-   生产过程中的工作:不在稳定的生产环境中使用(可能会改变)。</p>
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -30592,7 +31180,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后的时间)。</td>
+     <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>vendor_name</td>
@@ -30625,7 +31213,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Version of the gimbal firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>Version of the gimbal firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff)</td>
     </tr>
     <tr>
      <td>cap_flags</td>
@@ -30825,6 +31413,28 @@
    </thead>
    <tbody>
     <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
@@ -30917,6 +31527,7 @@
      <th>Field Name</th>
      <th>Type</th>
      <th>Units</th>
+     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -30925,12 +31536,20 @@
      <td>time_boot_us</td>
      <td>uint64_t</td>
      <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>target_system</td>
      <td>uint8_t</td>
      <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
      </td>
      <td>System ID</td>
     </tr>
@@ -30939,6 +31558,10 @@
      <td>uint8_t</td>
      <td>
      </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Component ID</td>
     </tr>
     <tr>
@@ -30946,43 +31569,201 @@
      <td>float[4]</td>
      <td>
      </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Quaternion components of autopilot attitude: w, x, y, z (1 0 0 0 is the null-rotation, Hamiltonian convention).</td>
     </tr>
     <tr>
      <td>q_estimated_delay_us</td>
      <td>uint32_t</td>
      <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Estimated delay of the attitude data.</td>
     </tr>
     <tr>
      <td>vx</td>
      <td>float</td>
      <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>X Speed in NED (North, East, Down).</td>
     </tr>
     <tr>
      <td>vy</td>
      <td>float</td>
      <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Y Speed in NED (North, East, Down).</td>
     </tr>
     <tr>
      <td>vz</td>
      <td>float</td>
      <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Z Speed in NED (North, East, Down).</td>
     </tr>
     <tr>
      <td>v_estimated_delay_us</td>
      <td>uint32_t</td>
      <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Estimated delay of the speed data.</td>
     </tr>
     <tr>
      <td>feed_forward_angular_velocity_z</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Feed forward Z component of angular velocity, positive is yawing to the right, NaN to be ignored. This is to indicate if the autopilot is actively yawing.</td>
+    </tr>
+    <tr>
+     <td>estimator_status</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</a>
+     </td>
+     <td>Bitmap indicating which estimator outputs are valid.</td>
+    </tr>
+    <tr>
+     <td>landed_state</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
+     </td>
+     <td>The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_SET_TILTPAN">GIMBAL_MANAGER_SET_TILTPAN (<a href="#GIMBAL_MANAGER_SET_TILTPAN">
+    #287
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>High level message to control a gimbal's tilt and pan angles. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
+     </td>
+     <td>High level gimbal manager flags to use.</td>
+    </tr>
+    <tr>
+     <td>gimbal_device_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+    </tr>
+    <tr>
+     <td>tilt</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tilt/pitch angle (positive: up, negative: down, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>pan</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Pan/yaw angle (positive: to the right, negative: to the left, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>tilt_rate</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tilt/pitch angular rate (positive: up, negative: down, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>pan_rate</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Pan/yaw angular rate (positive: to the right, negative: to the left, NaN to be ignored).</td>
     </tr>
    </tbody>
   </table>
@@ -31577,7 +32358,7 @@
       <a href="#">
       </a>
      </td>
-     <td>参数id，如果长度小于16个可读字符，则以NULL结尾;如果长度正好是16个字符，则不需要NULL终止(NULL)字节；如果ID存储为字符串，应用程序必须提供16+1字节的存储</td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
     </tr>
     <tr>
      <td>param_value</td>
@@ -31594,7 +32375,7 @@
      <td>
       <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
      </td>
-     <td>参数类型.</td>
+     <td>Parameter type.</td>
     </tr>
     <tr>
      <td>param_count</td>
@@ -31773,7 +32554,7 @@
       <a href="#">
       </a>
      </td>
-     <td>时间戳(系统启动后UNIX Epoch时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>sensor_type</td>
@@ -32263,7 +33044,7 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
-     <td>时间戳(系统启动后UNIX时间或时间)。 接收端可以通过检查数字的数量级来推断时间戳格式（自1.1970年起或系统启动后）。</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>valid_points</td>
@@ -33060,6 +33841,123 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="GENERATOR_STATUS">GENERATOR_STATUS (<a href="#GENERATOR_STATUS">
+    #373
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Telemetry of power generation system. Alternator or mechanical generator.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>status</td>
+     <td>uint64_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG">MAV_GENERATOR_STATUS_FLAG</a>
+     </td>
+     <td>Status flags.</td>
+    </tr>
+    <tr>
+     <td>generator_speed</td>
+     <td>uint16_t</td>
+     <td>rpm</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Speed of electrical generator or alternator. UINT16_MAX: field not provided.</td>
+    </tr>
+    <tr>
+     <td>battery_current</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current into/out of battery. Positive for out. Negative for in. NaN: field not provided.</td>
+    </tr>
+    <tr>
+     <td>load_current</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current going to the UAV. If battery current not available this is the DC current from the generator. Positive for out. Negative for in. NaN: field not provided</td>
+    </tr>
+    <tr>
+     <td>power_generated</td>
+     <td>float</td>
+     <td>W</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The power being generated. NaN: field not provided</td>
+    </tr>
+    <tr>
+     <td>bus_voltage</td>
+     <td>float</td>
+     <td>V</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Voltage of the bus seen at the generator, or battery bus if battery bus is controlled by generator and at a different voltage to main bus.</td>
+    </tr>
+    <tr>
+     <td>rectifier_temperature</td>
+     <td>int16_t</td>
+     <td>degC</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The temperature of the rectifier or power converter. INT16_MAX: field not provided.</td>
+    </tr>
+    <tr>
+     <td>bat_current_setpoint</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The target battery current. Positive for out. Negative for in. NaN: field not provided</td>
+    </tr>
+    <tr>
+     <td>generator_temperature</td>
+     <td>int16_t</td>
+     <td>degC</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>The temperature of the mechanical motor, fuel cell core or generator. INT16_MAX: field not provided.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="ACTUATOR_OUTPUT_STATUS">ACTUATOR_OUTPUT_STATUS (<a href="#ACTUATOR_OUTPUT_STATUS">
     #375
    </a>
@@ -33419,29 +34317,17 @@
      <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
-     <td>vendor_name</td>
-     <td>uint8_t[32]</td>
+     <td>metadata_type</td>
+     <td>uint32_t</td>
      <td>
      </td>
      <td>
-      <a href="#">
-      </a>
+      <a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>
      </td>
-     <td>Name of the component vendor</td>
+     <td>The type of metadata being requested.</td>
     </tr>
     <tr>
-     <td>model_name</td>
-     <td>uint8_t[32]</td>
-     <td>
-     </td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Name of the component model</td>
-    </tr>
-    <tr>
-     <td>firmware_version</td>
+     <td>metadata_uid</td>
      <td>uint32_t</td>
      <td>
      </td>
@@ -33449,10 +34335,21 @@
       <a href="#">
       </a>
      </td>
-     <td>Version of the component firmware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>Unique uid for this metadata which a gcs can use for created cached metadata and understanding whether it's cache it up to date or whether it needs to download new data.</td>
     </tr>
     <tr>
-     <td>hardware_version</td>
+     <td>metadata_uri</td>
+     <td>char[70]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component definition URI. If prefix mavlinkftp:// file is downloaded from vehicle over mavlink ftp protocol. If prefix http[s]:// file is downloaded over internet. Files are json format. They can end in .gz to indicate file is in gzip format.</td>
+    </tr>
+    <tr>
+     <td>translation_uid</td>
      <td>uint32_t</td>
      <td>
      </td>
@@ -33460,39 +34357,18 @@
       <a href="#">
       </a>
      </td>
-     <td>Version of the component hardware (v &lt;&lt; 24 &amp; 0xff = Dev, v &lt;&lt; 16 &amp; 0xff = Patch, v &lt;&lt; 8 &amp; 0xff = Minor, v &amp; 0xff = Major)</td>
+     <td>Unique uid for the translation file associated with the metadata.</td>
     </tr>
     <tr>
-     <td>capability_flags</td>
-     <td>uint32_t</td>
-     <td>
-     </td>
-     <td>
-      <a href="#COMPONENT_CAP_FLAGS">COMPONENT_CAP_FLAGS</a>
-     </td>
-     <td>Bitmap of component capability flags.</td>
-    </tr>
-    <tr>
-     <td>component_definition_version</td>
-     <td>uint16_t</td>
+     <td>translation_uri</td>
+     <td>char[70]</td>
      <td>
      </td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Component definition version (iteration)</td>
-    </tr>
-    <tr>
-     <td>component_definition_uri</td>
-     <td>char[140]</td>
-     <td>
-     </td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Component definition URI (if any, otherwise only basic functions will be available). The XML format is not yet specified and work in progress.</td>
+     <td>The translations for strings within the metadata file. If null the either do not exist or may be included in the metadata file itself. The translations specified here supercede any which may be in the metadata file itself. The uri format is the same as component_metadata_uri . Files are in Json Translation spec format. Empty string indicates no tranlsation file.</td>
     </tr>
    </tbody>
   </table>
@@ -33665,7 +34541,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Basic ID message. This and the below messages are primarily meant for feeding data to/from an OpenDroneID implementation. E.g. https://github.com/opendroneid/opendroneid-core-c. See also the ASTM Remote ID standard at https://www.astm.org/Standards/F3411.htm. The usage of these messages is documented at https://mavlink.io/en/services/opendroneid.html.</p>
+   </strong>Data for filling the OpenDroneID Basic ID message. This and the below messages are primarily meant for feeding data to/from an OpenDroneID implementation. E.g. https://github.com/opendroneid/opendroneid-core-c. These messages are compatible with the ASTM Remote ID standard at https://www.astm.org/Standards/F3411.htm and the ASD-STAN Direct Remote ID standard. The usage of these messages is documented at https://mavlink.io/en/services/opendroneid.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33676,6 +34552,33 @@
     </tr>
    </thead>
    <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
     <tr>
      <td>id_type</td>
      <td>uint8_t</td>
@@ -33728,6 +34631,39 @@
     </tr>
    </thead>
    <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
     <tr>
      <td>status</td>
      <td>uint8_t</td>
@@ -33916,6 +34852,39 @@
    </thead>
    <tbody>
     <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
+    <tr>
      <td>authentication_type</td>
      <td>uint8_t</td>
      <td>
@@ -34005,6 +34974,33 @@
    </thead>
    <tbody>
     <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
+    <tr>
      <td>description_type</td>
      <td>uint8_t</td>
      <td>
@@ -34049,14 +35045,57 @@
    </thead>
    <tbody>
     <tr>
-     <td>flags</td>
+     <td>target_system</td>
      <td>uint8_t</td>
      <td>
      </td>
      <td>
-      <a href="#MAV_ODID_LOCATION_SRC">MAV_ODID_LOCATION_SRC</a>
+      <a href="#">
+      </a>
      </td>
-     <td>Specifies the location source for the operator location.</td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
+    <tr>
+     <td>operator_location_type</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE">MAV_ODID_OPERATOR_LOCATION_TYPE</a>
+     </td>
+     <td>Specifies the operator location type.</td>
+    </tr>
+    <tr>
+     <td>classification_type</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_ODID_CLASSIFICATION_TYPE">MAV_ODID_CLASSIFICATION_TYPE</a>
+     </td>
+     <td>Specifies the classification type of the UA.</td>
     </tr>
     <tr>
      <td>operator_latitude</td>
@@ -34119,6 +35158,26 @@
      </td>
      <td>Area Operations Floor relative to WGS84. If unknown: -1000 m.</td>
     </tr>
+    <tr>
+     <td>category_eu</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_ODID_CATEGORY_EU">MAV_ODID_CATEGORY_EU</a>
+     </td>
+     <td>When classification_type is MAV_ODID_CLASSIFICATION_TYPE_EU, specifies the category of the UA.</td>
+    </tr>
+    <tr>
+     <td>class_eu</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_ODID_CLASS_EU">MAV_ODID_CLASS_EU</a>
+     </td>
+     <td>When classification_type is MAV_ODID_CLASSIFICATION_TYPE_EU, specifies the class of the UA.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="OPEN_DRONE_ID_OPERATOR_ID">OPEN_DRONE_ID_OPERATOR_ID (<a href="#OPEN_DRONE_ID_OPERATOR_ID">
@@ -34145,6 +35204,33 @@
     </tr>
    </thead>
    <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
     <tr>
      <td>operator_id_type</td>
      <td>uint8_t</td>
@@ -34189,10 +35275,24 @@
    </thead>
    <tbody>
     <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
      <td>single_message_size</td>
      <td>uint8_t</td>
      <td>bytes</td>
-     <td>This field must currently always be equal to 25 bytes, since all encoded OpenDroneID messages are specificed to have this length.</td>
+     <td>This field must currently always be equal to 25 (bytes), since all encoded OpenDroneID messages are specificed to have this length.</td>
     </tr>
     <tr>
      <td>msg_pack_size</td>

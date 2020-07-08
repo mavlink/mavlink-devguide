@@ -53,7 +53,7 @@ MAVLink组件预计将处理具有匹配系统/组件id和广播信息的信息�
 
 为 MAVLink v1 c 库生成的代码对于路由或使用 `target_system` 和 `target_component` 没有特定的支持。 若要提取此信息, 您需要使用为读取有效负载字段提供的常规方法, 并在字段名称上匹配。
 
-C 库的 MAVLink v2 生成器已更新, 以便更轻松地从有效负载中获取目标系统和组件 id (分配这些 id 时)。 具体来说, `mavlink_msg_entry_t` 结构包含标志, 以告诉您消息是否包含目标系统组件信息 (`FLAG_HAVE_TARGET_SYSTEM`、`FLAG_HAVE_TARGET_COMPONENT`) 和偏移到您的有效负载中。可以用于获取这些 id (分别为 `target_system_ofs` 和 `target_system_ofs`)。 MAVLink 助手方法 `consmavlink_msg_bords_t*` [`mavlink_get_msg_dard(ininstit32_t msgid)`](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h) 可用于从消息id获取此结构。
+C 库的 MAVLink v2 生成器已更新, 以便更轻松地从有效负载中获取目标系统和组件 id (分配这些 id 时)。 Specifically, the `mavlink_msg_entry_t` structure contains flags to tell you if the message contains target system/component information (`FLAG_HAVE_TARGET_SYSTEM`, `FLAG_HAVE_TARGET_COMPONENT`) and offsets into the payload that you can use to get these ids (`target_system_ofs` and `target_component_ofs`, respectively). MAVLink 助手方法 `consmavlink_msg_bords_t*` [`mavlink_get_msg_dard(ininstit32_t msgid)`](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h) 可用于从消息id获取此结构。
 
 <!-- note: A real example of above would be good in the C docs, and then we should just link to them here -->
 
