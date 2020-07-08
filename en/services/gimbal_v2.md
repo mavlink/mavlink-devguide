@@ -176,7 +176,7 @@ Thus, decision making is required in order to establish proper and predictable g
 
 The *Gimbal Manager* must deconflict the various inputs by implementing the rules below:
 
-1. If an attitude has been set using a command ([DO_GIMBAL_MANAGER_ATTITUDE](#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE), [DO_SET_ROI_LOCATION](#MAV_CMD_DO_SET_ROI_LOCATION), [DO_GIMBAL_MANAGER_TRACK_POINT](#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT), or [DO_GIMBAL_MANAGER_TRACK_RECTANGLE](#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE) it takes precedence over any other input until a [DO_GIMBAL_MANAGER_ATTITUDE](#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE) with `GIMBAL_MANAGER_FLAGS_NONE` or a [DO_SET_ROI_NONE](#MAV_CMD_DO_SET_ROI_NONE) is set.
+1. If an attitude has been set using a command ([DO_GIMBAL_MANAGER_TILTPAN](#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN), [DO_SET_ROI_LOCATION](#MAV_CMD_DO_SET_ROI_LOCATION), [DO_GIMBAL_MANAGER_TRACK_POINT](#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT), or [DO_GIMBAL_MANAGER_TRACK_RECTANGLE](#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE) it takes precedence over any other input until a [DO_GIMBAL_MANAGER_TILTPAN](#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN) with `GIMBAL_MANAGER_FLAGS_NONE` or a [DO_SET_ROI_NONE](#MAV_CMD_DO_SET_ROI_NONE) is set.
    Commands will interfere with each other, whichever command is received last takes precedence.
 2. A gimbal angle or tracking location initiated by a command can be nudged by [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE) if the "nudge bit" is set.
 3. A gimbal angle or tracking location initiated by a command can be overridden by [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE) if the "override bit" is set.
@@ -259,7 +259,7 @@ Message | Description
 Command | Description
 -- | --
 <span id="MAV_CMD_REQUEST_MESSAGE"></span>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Request the target system(s) emit a single instance of a specified message. This is used to request [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
-<span id="MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE"></span>[MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE) | High level setpoint to be sent to a gimbal manager to set a gimbal attitude. Note: a gimbal is never to react to this command but only the gimbal manager.
+<span id="MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN"></span>[MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN) | High level setpoint to be sent to a gimbal manager to set a gimbal attitude. Note: a gimbal is never to react to this command but only the gimbal manager.
 <span id="MAV_CMD_DO_SET_ROI_LOCATION"></span>[MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION) | Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message.
 <span id="MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET"></span>[MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET](../messages/common.md#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET) | Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.
 <span id="MAV_CMD_DO_SET_ROI_SYSID"></span>[MAV_CMD_DO_SET_ROI_SYSID](../messages/common.md#MAV_CMD_DO_SET_ROI_SYSID) | Mount tracks system with specified system ID. Determination of target vehicle position may be done with GLOBAL_POSITION_INT or any other means. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.
@@ -269,7 +269,7 @@ Command | Description
 
 Enum | Description
 -- | --
-<span id="GIMBAL_MANAGER_FLAGS"></span>[GIMBAL_MANAGER_FLAGS](../messages/common.md#GIMBAL_MANAGER_FLAGS) | Flags for high level gimbal manager operation.<br>The first 16 bytes are identical to the [GIMBAL_DEVICE_FLAGS](#GIMBAL_DEVICE_FLAGS). Used in [MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE](#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE), [GIMBAL_MANAGER_STATUS ](#GIMBAL_MANAGER_STATUS ), [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE).
+<span id="GIMBAL_MANAGER_FLAGS"></span>[GIMBAL_MANAGER_FLAGS](../messages/common.md#GIMBAL_MANAGER_FLAGS) | Flags for high level gimbal manager operation.<br>The first 16 bytes are identical to the [GIMBAL_DEVICE_FLAGS](#GIMBAL_DEVICE_FLAGS). Used in [MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN](#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN), [GIMBAL_MANAGER_STATUS ](#GIMBAL_MANAGER_STATUS ), [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE).
 <span id="GIMBAL_MANAGER_CAP_FLAGS"></span>[GIMBAL_MANAGER_CAP_FLAGS](../messages/common.md#GIMBAL_MANAGER_CAP_FLAGS) | Gimbal manager high level capability flags (bitmap).<br>The first 16 bits are identical to the GIMBAL_DEVICE_CAP_FLAGS which are identical with GIMBAL_DEVICE_FLAGS. However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags. Used in [GIMBAL_MANAGER_INFORMATION ](#GIMBAL_MANAGER_INFORMATION)
 
 
@@ -362,11 +362,11 @@ sequenceDiagram
     participant Ground Station
     participant Gimbal Manager
     participant Gimbal Device
-    Gimbal Manager->>Gimbal Manager: CMD_DO_GIMBAL_MANAGER_ATTITUDE
+    Gimbal Manager->>Gimbal Manager: CMD_DO_GIMBAL_MANAGER_TILTPAN
     Gimbal Manager->>Gimbal Device: GIMBAL_DEVICE_SET_ATTITUDE (stream)
     Gimbal Device->>Gimbal Manager: GIMBAL_DEVICE_ATTITUDE_STATUS (stream)
     Gimbal Device->>Ground Station: GIMBAL_DEVICE_ATTITUDE_STATUS (stream)
-    Gimbal Manager->>Gimbal Manager: CMD_DO_GIMBAL_MANAGER_ATTITUDE (Flag: NONE)
+    Gimbal Manager->>Gimbal Manager: CMD_DO_GIMBAL_MANAGER_TILTPAN (Flag: NONE)
 -->
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgR3JvdW5kIFN0YXRpb25cbiAgICBwYXJ0aWNpcGFudCBHaW1iYWwgTWFuYWdlclxuICAgIHBhcnRpY2lwYW50IEdpbWJhbCBEZXZpY2VcbiAgICBHaW1iYWwgTWFuYWdlci0-PkdpbWJhbCBNYW5hZ2VyOiBDTURfRE9fR0lNQkFMX01BTkFHRVJfQVRUSVRVREVcbiAgICBHaW1iYWwgTWFuYWdlci0-PkdpbWJhbCBEZXZpY2U6IEdJTUJBTF9ERVZJQ0VfU0VUX0FUVElUVURFIChzdHJlYW0pXG4gICAgR2ltYmFsIERldmljZS0-PkdpbWJhbCBNYW5hZ2VyOiBHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVUyAoc3RyZWFtKVxuICAgIEdpbWJhbCBEZXZpY2UtPj5Hcm91bmQgU3RhdGlvbjogR0lNQkFMX0RFVklDRV9BVFRJVFVERV9TVEFUVVMgKHN0cmVhbSlcbiAgICBHaW1iYWwgTWFuYWdlci0-PkdpbWJhbCBNYW5hZ2VyOiBDTURfRE9fR0lNQkFMX01BTkFHRVJfQVRUSVRVREUgKEZsYWc6IE5PTkUpIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgR3JvdW5kIFN0YXRpb25cbiAgICBwYXJ0aWNpcGFudCBHaW1iYWwgTWFuYWdlclxuICAgIHBhcnRpY2lwYW50IEdpbWJhbCBEZXZpY2VcbiAgICBHaW1iYWwgTWFuYWdlci0-PkdpbWJhbCBNYW5hZ2VyOiBDTURfRE9fR0lNQkFMX01BTkFHRVJfQVRUSVRVREVcbiAgICBHaW1iYWwgTWFuYWdlci0-PkdpbWJhbCBEZXZpY2U6IEdJTUJBTF9ERVZJQ0VfU0VUX0FUVElUVURFIChzdHJlYW0pXG4gICAgR2ltYmFsIERldmljZS0-PkdpbWJhbCBNYW5hZ2VyOiBHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVUyAoc3RyZWFtKVxuICAgIEdpbWJhbCBEZXZpY2UtPj5Hcm91bmQgU3RhdGlvbjogR0lNQkFMX0RFVklDRV9BVFRJVFVERV9TVEFUVVMgKHN0cmVhbSlcbiAgICBHaW1iYWwgTWFuYWdlci0-PkdpbWJhbCBNYW5hZ2VyOiBDTURfRE9fR0lNQkFMX01BTkFHRVJfQVRUSVRVREUgKEZsYWc6IE5PTkUpIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)

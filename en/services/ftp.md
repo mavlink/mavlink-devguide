@@ -83,7 +83,7 @@ Opcode | Name | Description
 
 Notes:
 * An ACK response may additionally return requested data in the payload (e.g. `OpenFileRO` returns the session and file size, `ReadFile` returns the requested file data, etc.). 
-* The NAK response includes [error information](#error_code) in the payload `data`. 
+* The NAK response includes [error information](#error_codes) in the payload `data`. 
 
 
 ## NAK Error Information {#error_codes}
