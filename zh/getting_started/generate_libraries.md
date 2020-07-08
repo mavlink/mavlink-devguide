@@ -31,7 +31,7 @@ python3 -m mavgenerate
 
 代码生成器使用步骤：
 
-1. 选择目标XML文件(通常位于[mavlink/message_definitions/1.0](https://github.com/mavlink/mavlink/tree/master/message_definitions/1.0)文件夹)。
+1. Choose the target XML file (typically in [mavlink/message_definitions/1.0](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0)).
     
     > **注意**如果使用自定义文件，首先需要将其复制到上面的目录中(如果自定义文件依赖于**common.xml**，则必须确保两者位于同一目录中)。
 
