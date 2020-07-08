@@ -1,6 +1,7 @@
 # Image Transmission Protocol
 
-The image transmission protocol uses MAVLink as the communication channel to transport any kind of image (raw images, Kinect data, etc.) from one MAVLink node to another. It basically takes a live camera image, splits it into small chunks and sends it over MAVLink.  
+The image transmission protocol uses MAVLink as the communication channel to transport any kind of image (raw images, Kinect data, etc.) from one MAVLink node to another.
+It basically takes a live camera image, splits it into small chunks and sends it over MAVLink.  
 
 This topic describes how the image streaming functionality works and covers both the communication protocol and implementation details (for a vehicle and *QGroundControl*).
 
@@ -54,6 +55,7 @@ It is possible to request for a specific image quality. To do so, you must set t
 
 
 ## Usage / Configuration
+
 To use the two modules on your MAV, you have to do the following steps:
 
 - Compile the `mavconn` middleware for your MAV: [Guide](https://www.pixhawk.org/wiki/software/mavconn/start), [Github](https://github.com/pixhawk/mavconn).

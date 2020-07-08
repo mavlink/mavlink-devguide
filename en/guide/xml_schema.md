@@ -83,7 +83,7 @@ The main `enum` tags/fields are:
 * `entry` (optional): An entry (zero or more entries can be specified for each enum)
 * [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
 
-> **Tip** [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
+> **Tip** [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
 ### entry {#entry}
 
@@ -132,7 +132,7 @@ MAV_CMD entry `value` elements may additionally define these tags/fields:
 
 ### param {#param}
 
-The `<param>` tag is used in the [MAV_CMD](../messages/common.md#MAV_CMD) enum as part of defining mission commands.
+The `<param>` tag is used in the [MAV_CMD](../messages/common.md#mav_commands) enum as part of defining mission commands.
 Each entry value may have up to 7 params declared, with `index` values from 1-7. 
 
 A `param` **must** include the following attribute:

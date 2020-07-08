@@ -13,7 +13,7 @@ This topic provides practical guidance for defining and extending MAVLink XML el
 
 There are two ways to send information between MAVLink systems (including commands, information and acknowledgments):
 * [Messages](#messages) are encoded using `message` elements. The message structure/fields and handling are largely unconstrained (i.e. up to the creator).
-* [MAVLink Commands](#mavlink_commands) are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum, and encoded into real messages that are sent using the [Mission Protocol](../services/mission.md) or [Command Protocol](../services/command.md). 
+* [MAVLink Commands](#mavlink_commands) are defined as entries in the [MAV_CMD](../messages/common.md#mav_commands) enum, and encoded into real messages that are sent using the [Mission Protocol](../services/mission.md) or [Command Protocol](../services/command.md). 
   Their structure is defined (they have 7 `float` parameters *or* 5 `float` and 2 `int32_t` parameters) and handling/responses depend on the protocol used to send them.
 
 The guidance below provides some suggestions on when one or the other might be more appropriate.
@@ -378,7 +378,7 @@ Enums are very rarely deleted, as this may break compatibility with legacy MAVLi
 
 ## Commands {#mavlink_commands}
 
-MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
+MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 They are used to define operations used in autonomous missions (see [Mission Protocol](../services/mission.md)) or to send commands in any mode (see [Command Protocol](../services/command.md)).
 
 > **Tip** The schema for commands is documented [here](../guide/xml_schema.md#MAV_CMD).
