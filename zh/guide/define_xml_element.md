@@ -15,7 +15,7 @@ MAVLink 枚举、消息、命令和其他元素是 [defined within xml 文件 ](
 在 MAVLink 系统之间发送信息有两种方式 (包括命令、信息和确认):
 
 - [Messages](#messages) 使用 `message` 元素进行编码。 消息结构/字段和处理在很大程度上是不受约束的 (即取决于创建者)。
-- [MAVLink Commands](#mavlink_commands) 被定义为 [MAV_CMD](../messages/common.md#MAV_CMD) 枚举中的条目，并编码为使用 [Mission 协议 ](../services/mission.md) 或 [Command 协议 ](../services/command.md) 发送的真实消息。 它们的结构被定义 (它们有 7个 `float` 参数 *或* 5个 `float` 和 2个 `int32_t` 参数)，处理/响应取决于用于发送它们的协议。
+- [MAVLink Commands](#mavlink_commands) are defined as entries in the [MAV_CMD](../messages/common.md#mav_commands) enum, and encoded into real messages that are sent using the [Mission Protocol](../services/mission.md) or [Command Protocol](../services/command.md). 它们的结构被定义 (它们有 7个 `float` 参数 *或* 5个 `float` 和 2个 `int32_t` 参数)，处理/响应取决于用于发送它们的协议。
 
 下文的指南提出了一些建议，说明何时可能比较合适。
 
@@ -346,7 +346,7 @@ Open questions:
 
 ## 命令 {#mavlink_commands}
 
-MAVLink 命令定义为 [MAV_CMD](../messages/common.md#MAV_CMD) number。 它们用于界定在自主任务(见[Mission Protocol](../services/mission.md))，或以任何方式发送命令(见[Command Protocol](../services/command.md))。
+MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#mav_commands) enum. 它们用于界定在自主任务(见[Mission Protocol](../services/mission.md))，或以任何方式发送命令(见[Command Protocol](../services/command.md))。
 
 > **Tip** The schema for commands is documented [here](../guide/xml_schema.md#MAV_CMD).
 
