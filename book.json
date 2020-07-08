@@ -63,7 +63,7 @@
                          "text_small" : "Implementations"
                        },
                        {
-                         "url": "https://mavlink.io/en/examples/",
+                         "url": "https://mavlink.io/en/mavgen_c/examples.html",
                          "text": "Examples",
                          "text_small" : "Examples"
                        },

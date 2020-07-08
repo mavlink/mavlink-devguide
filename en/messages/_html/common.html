@@ -3848,7 +3848,14 @@
      <td>
       <a href="#MAV_RESULT_IN_PROGRESS">MAV_RESULT_IN_PROGRESS</a>
      </td>
-     <td>Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further COMMAND_ACK messages with result MAV_RESULT_IN_PROGRESS (at a rate decided by the implementation), and must terminate by sending a COMMAND_ACK message with final result of the operation. The COMMAND_ACK.progress field can be used to indicate the progress of the operation. There is no need for the sender to retry the command, but if done during execution, the component will return MAV_RESULT_IN_PROGRESS with an updated progress.</td>
+     <td>Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further COMMAND_ACK messages with result MAV_RESULT_IN_PROGRESS (at a rate decided by the implementation), and must terminate by sending a COMMAND_ACK message with final result of the operation. The COMMAND_ACK.progress field can be used to indicate the progress of the operation.</td>
+    </tr>
+    <tr id="MAV_RESULT_CANCELLED">
+     <td>6</td>
+     <td>
+      <a href="#MAV_RESULT_CANCELLED">MAV_RESULT_CANCELLED</a>
+     </td>
+     <td>Command has been cancelled (as a result of receiving a COMMAND_CANCEL message).</td>
     </tr>
    </tbody>
   </table>
@@ -4698,8 +4705,13 @@
      <td>4</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_MISSION_INT">MAV_PROTOCOL_CAPABILITY_MISSION_INT</a>
+      <p style="color:red">
+       <strong>DEPRECATED:</strong> Replaced by  (2020-06).
+
+
+  This flag must always be set if missions are supported, because missions must always use MISSION_ITEM_INT (rather than MISSION_ITEM, which is deprecated).</p>
      </td>
-     <td>Autopilot supports MISSION_INT scaled integer message type.</td>
+     <td>Autopilot supports MISSION_ITEM_INT scaled integer message type.</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_COMMAND_INT">
      <td>8</td>
@@ -5168,8 +5180,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="GENERATOR_STATUS_FLAG">
-   <a href="#GENERATOR_STATUS_FLAG">GENERATOR_STATUS_FLAG</a>
+  <h3 id="MAV_GENERATOR_STATUS_FLAG">
+   <a href="#MAV_GENERATOR_STATUS_FLAG">MAV_GENERATOR_STATUS_FLAG</a>
   </h3>
   <p>
    <a href="#enums">
@@ -5184,131 +5196,152 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="GENERATOR_STATUS_FLAG_OFF">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OFF">
      <td>1</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_OFF">GENERATOR_STATUS_FLAG_OFF</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OFF">MAV_GENERATOR_STATUS_FLAG_OFF</a>
      </td>
      <td>Generator is off.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_READY">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_READY">
      <td>2</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_READY">GENERATOR_STATUS_FLAG_READY</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_READY">MAV_GENERATOR_STATUS_FLAG_READY</a>
      </td>
      <td>Generator is ready to start generating power.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_GENERATING">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_GENERATING">
      <td>4</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_GENERATING">GENERATOR_STATUS_FLAG_GENERATING</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_GENERATING">MAV_GENERATOR_STATUS_FLAG_GENERATING</a>
      </td>
      <td>Generator is generating power.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_CHARGING">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_CHARGING">
      <td>8</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_CHARGING">GENERATOR_STATUS_FLAG_CHARGING</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_CHARGING">MAV_GENERATOR_STATUS_FLAG_CHARGING</a>
      </td>
      <td>Generator is charging the batteries (generating enough power to charge and provide the load).</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_REDUCED_POWER">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_REDUCED_POWER">
      <td>16</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_REDUCED_POWER">GENERATOR_STATUS_FLAG_REDUCED_POWER</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_REDUCED_POWER">MAV_GENERATOR_STATUS_FLAG_REDUCED_POWER</a>
      </td>
      <td>Generator is operating at a reduced maximum power.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_MAXPOWER">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_MAXPOWER">
      <td>32</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_MAXPOWER">GENERATOR_STATUS_FLAG_MAXPOWER</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_MAXPOWER">MAV_GENERATOR_STATUS_FLAG_MAXPOWER</a>
      </td>
      <td>Generator is providing the maximum output.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">
      <td>64</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">GENERATOR_STATUS_FLAG_OVERTEMP_WARNING</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OVERTEMP_WARNING">MAV_GENERATOR_STATUS_FLAG_OVERTEMP_WARNING</a>
      </td>
      <td>Generator is near the maximum operating temperature, cooling is insufficient.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">
      <td>128</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">GENERATOR_STATUS_FLAG_OVERTEMP_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OVERTEMP_FAULT">MAV_GENERATOR_STATUS_FLAG_OVERTEMP_FAULT</a>
      </td>
      <td>Generator hit the maximum operating temperature and shutdown.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">
      <td>256</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING">MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_WARNING</a>
      </td>
      <td>Power electronics are near the maximum operating temperature, cooling is insufficient.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">
      <td>512</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT">MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_OVERTEMP_FAULT</a>
      </td>
      <td>Power electronics hit the maximum operating temperature and shutdown.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">
      <td>1024</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT">MAV_GENERATOR_STATUS_FLAG_ELECTRONICS_FAULT</a>
      </td>
      <td>Power electronics experienced a fault and shutdown.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">
      <td>2048</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT">MAV_GENERATOR_STATUS_FLAG_POWERSOURCE_FAULT</a>
      </td>
      <td>The power source supplying the generator failed e.g. mechanical generator stopped, tether is no longer providing power, solar cell is in shade, hydrogen reaction no longer happening.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">
      <td>4096</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING">MAV_GENERATOR_STATUS_FLAG_COMMUNICATION_WARNING</a>
      </td>
      <td>Generator controller having communication problems.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_COOLING_WARNING">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_COOLING_WARNING">
      <td>8192</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_COOLING_WARNING">GENERATOR_STATUS_FLAG_COOLING_WARNING</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_COOLING_WARNING">MAV_GENERATOR_STATUS_FLAG_COOLING_WARNING</a>
      </td>
      <td>Power electronic or generator cooling system error.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">
      <td>16384</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT">MAV_GENERATOR_STATUS_FLAG_POWER_RAIL_FAULT</a>
      </td>
      <td>Generator controller power rail experienced a fault.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">
      <td>32768</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT">MAV_GENERATOR_STATUS_FLAG_OVERCURRENT_FAULT</a>
      </td>
      <td>Generator controller exceeded the overcurrent threshold and shutdown to prevent damage.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">
      <td>65536</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT">MAV_GENERATOR_STATUS_FLAG_BATTERY_OVERCHARGE_CURRENT_FAULT</a>
      </td>
      <td>Generator controller detected a high current going into the batteries and shutdown to prevent battery damage.</td>
     </tr>
-    <tr id="GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">
+    <tr id="MAV_GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">
      <td>131072</td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT">MAV_GENERATOR_STATUS_FLAG_OVERVOLTAGE_FAULT</a>
      </td>
      <td>Generator controller exceeded it's overvoltage threshold and shutdown to prevent it exceeding the voltage rating.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_BATTERY_UNDERVOLT_FAULT">
+     <td>262144</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_BATTERY_UNDERVOLT_FAULT">MAV_GENERATOR_STATUS_FLAG_BATTERY_UNDERVOLT_FAULT</a>
+     </td>
+     <td>Batteries are under voltage (generator will not start).</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_START_INHIBITED">
+     <td>524288</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_START_INHIBITED">MAV_GENERATOR_STATUS_FLAG_START_INHIBITED</a>
+     </td>
+     <td>Generator start is inhibited by e.g. a safety switch.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_MAINTENANCE_REQUIRED">
+     <td>1048576</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_MAINTENANCE_REQUIRED">MAV_GENERATOR_STATUS_FLAG_MAINTENANCE_REQUIRED</a>
+     </td>
+     <td>Generator requires maintenance.</td>
     </tr>
    </tbody>
   </table>
@@ -7151,8 +7184,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>
-  </p>
+   </a>Parachute actions. Trigger release and enable/disable auto-release.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -7167,21 +7199,21 @@
      <td>
       <a href="#PARACHUTE_DISABLE">PARACHUTE_DISABLE</a>
      </td>
-     <td>Disable parachute release.</td>
+     <td>Disable auto-release of parachute (i.e. release triggered by crash detectors).</td>
     </tr>
     <tr id="PARACHUTE_ENABLE">
      <td>1</td>
      <td>
       <a href="#PARACHUTE_ENABLE">PARACHUTE_ENABLE</a>
      </td>
-     <td>Enable parachute release.</td>
+     <td>Enable auto-release of parachute.</td>
     </tr>
     <tr id="PARACHUTE_RELEASE">
      <td>2</td>
      <td>
       <a href="#PARACHUTE_RELEASE">PARACHUTE_RELEASE</a>
      </td>
-     <td>Release parachute.</td>
+     <td>Release parachute and kill motors.</td>
     </tr>
    </tbody>
   </table>
@@ -9654,7 +9686,7 @@
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise</td>
+     <td>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise</td>
      <td>m</td>
     </tr>
     <tr>
@@ -9707,23 +9739,23 @@
      </td>
     </tr>
     <tr>
-     <td>2</td>
-     <td>Empty</td>
+     <td>2: Heading Required</td>
+     <td>Leave loiter circle only once heading towards the next waypoint (0 = False)</td>
      <td>
-     </td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Radius around waypoint. If positive loiter clockwise, else counter-clockwise</td>
+     <td>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>4: Xtrack Location</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour.</td>
      <td>
      </td>
      <td>
@@ -9760,7 +9792,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.</p>
+   </a>Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-only moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9788,14 +9820,14 @@
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Loiter radius around waypoint for forward-moving vehicles. If positive loiter clockwise, else counter-clockwise.</td>
+     <td>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise.</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>4: Xtrack Location</td>
-     <td>For forward-moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location. Else, this is desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour.</td>
      <td>
      </td>
      <td>
@@ -10273,7 +10305,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter at the current position.  Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached.  Additionally, if the Heading Required parameter is non-zero the  aircraft will not leave the loiter until heading toward the next waypoint.</p>
+   </a>Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter at the current position.  Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached. Additionally, if the Heading Required parameter is non-zero the aircraft will not leave the loiter until heading toward the next waypoint.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10286,7 +10318,7 @@
    <tbody>
     <tr>
      <td>1: Heading Required</td>
-     <td>Heading Required (0 = False)</td>
+     <td>Leave loiter circle only once heading towards the next waypoint (0 = False)</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -10294,7 +10326,7 @@
     </tr>
     <tr>
      <td>2: Radius</td>
-     <td>Radius. If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter.</td>
+     <td>Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter.</td>
      <td>
      </td>
      <td>m</td>
@@ -10309,7 +10341,7 @@
     </tr>
     <tr>
      <td>4: Xtrack Location</td>
-     <td>Forward moving aircraft this sets exit xtrack location: 0 for center of loiter wp, 1 for exit location</td>
+     <td>Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour.</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
      <td>
@@ -13284,7 +13316,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Mission command to trigger a parachute</p>
+   </a>Mission item/command to release a parachute or enable/disable auto release.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14299,7 +14331,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request a target system to start, cancel, or restart upgrade of one (or all) of its components. For example, the command might be sent to a companion computer to cause it to upgrade a connected flight controller. The system doing the upgrade will report progress using the normal command protocol sequence (COMMAND_ACK regularly sent with result=MAV_RESULT_IN_PROGRESS, followed by a final result of MAV_RESULT_ACCEPTED or MAV_RESULT_FAILED). The operation can be cancelled, in which case the updating system would send COMMAND_ACK with MAV_RESULT_ACCEPTED. The operation can be restarted, in which case the updating system should respond with progress updates (as though it had a new message).</p>
+   </a>Request a target system to start an upgrade of one (or all) of its components. For example, the command might be sent to a companion computer to cause it to upgrade a connected flight controller. The system doing the upgrade will report progress using the normal command protocol sequence for a long running operation. Command protocol information: https://mavlink.io/en/services/command.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14315,16 +14347,16 @@
      <td>MAV_COMPONENT</td>
     </tr>
     <tr>
-     <td>2: Action</td>
-     <td>0: Start component upgrade, 1: Cancel component upgrade, 2: Restart component upgrade.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
-    </tr>
-    <tr>
-     <td>3: Reboot</td>
+     <td>2: Reboot</td>
      <td>0: Do not reboot component after the action is executed, 1: Reboot component after the action is executed.</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Reserved</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
@@ -14942,8 +14974,8 @@
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>3: Reset Image Log (without formatting storage medium). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index.</td>
-     <td>0: No action 1: Reset Image Count</td>
+     <td>3: Reset Image Log</td>
+     <td>Reset Image Log (without formatting storage medium). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index. 0: No action 1: Reset Image Log</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -15257,7 +15289,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE">MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE">1000</a>
+  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN">MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN">1000</a>
    )
   </h3>
   <p style="color:red">
@@ -15277,22 +15309,22 @@
    </thead>
    <tbody>
     <tr>
-     <td>1: Tilt angular velocity</td>
-     <td>Tilt/pitch angular velocity (positive to point up).</td>
+     <td>1: Tilt rate</td>
+     <td>Tilt/pitch rate (positive to tilt up).</td>
      <td>
      </td>
      <td>deg/s</td>
     </tr>
     <tr>
-     <td>2: Pan angular velocity</td>
-     <td>Pan/yaw angular velocity (positive to pan to the right).</td>
+     <td>2: Pan rate</td>
+     <td>Pan/yaw rate (positive to pan to the right).</td>
      <td>
      </td>
      <td>deg/s</td>
     </tr>
     <tr>
      <td>3: Tilt angle</td>
-     <td>Pitch/tilt angle relative to world horizon (negative is to tilt down, positive to tilt up).</td>
+     <td>Tilt/pitch angle (positive to tilt up, relative to vehicle for PAN mode, relative to world horizon for HOLD mode).</td>
      <td>
       <em>min:</em>
       -180 
@@ -15301,7 +15333,7 @@
     </tr>
     <tr>
      <td>4: Pan angle</td>
-     <td>Yaw/pan angle (positive is pan to the right, relative to vehicle for PAN mode, absolute to North for HOLD mode)</td>
+     <td>Pan/yaw angle (positive to pan to the right, relative to vehicle for PAN mode, absolute to North for HOLD mode).</td>
      <td>
       <em>min:</em>
       -180 
@@ -16775,19 +16807,17 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>Latitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
+     <td>Latitude. Note, if used in MISSION_ITEM (deprecated) the units are degrees (unscaled)</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>degE7</td>
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>Longitude unscaled for MISSION_ITEM or in 1e7 degrees for MISSION_ITEM_INT</td>
+     <td>Longitude. Note, if used in MISSION_ITEM (deprecated) the units are degrees (unscaled)</td>
      <td>
      </td>
-     <td>
-     </td>
+     <td>degE7</td>
     </tr>
     <tr>
      <td>7: Altitude</td>
@@ -19770,6 +19800,8 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MISSION_ITEM_INT (2020-06).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -19927,6 +19959,11 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MISSION_REQUEST_INT (2020-06).
+
+
+  A system that gets this request should respond with MISSION_ITEM_INT (as though MISSION_REQUEST_INT was received).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -22201,6 +22238,55 @@
       </a>
      </td>
      <td>WIP: Component which requested the command to be executed</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="COMMAND_CANCEL">COMMAND_CANCEL (<a href="#COMMAND_CANCEL">
+    #80
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Cancel a long running command. The target system should respond with a COMMAND_ACK to the original command with result=MAV_RESULT_CANCELLED if the long running process was cancelled. If it has already completed, the cancel action can be ignored. The cancel action can be retried until some sort of acknowledgement to the original command has been received. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System executing long running command. Should not be broadcast (0).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component executing long running command.</td>
+    </tr>
+    <tr>
+     <td>command</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#MAV_CMD">MAV_CMD</a>
+     </td>
+     <td>Command ID (of command to cancel).</td>
     </tr>
    </tbody>
   </table>
@@ -28407,8 +28493,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -31353,6 +31437,28 @@
    </thead>
    <tbody>
     <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
@@ -31445,6 +31551,7 @@
      <th>Field Name</th>
      <th>Type</th>
      <th>Units</th>
+     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -31453,12 +31560,20 @@
      <td>time_boot_us</td>
      <td>uint64_t</td>
      <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>target_system</td>
      <td>uint8_t</td>
      <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
      </td>
      <td>System ID</td>
     </tr>
@@ -31467,6 +31582,10 @@
      <td>uint8_t</td>
      <td>
      </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Component ID</td>
     </tr>
     <tr>
@@ -31474,43 +31593,201 @@
      <td>float[4]</td>
      <td>
      </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Quaternion components of autopilot attitude: w, x, y, z (1 0 0 0 is the null-rotation, Hamiltonian convention).</td>
     </tr>
     <tr>
      <td>q_estimated_delay_us</td>
      <td>uint32_t</td>
      <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Estimated delay of the attitude data.</td>
     </tr>
     <tr>
      <td>vx</td>
      <td>float</td>
      <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>X Speed in NED (North, East, Down).</td>
     </tr>
     <tr>
      <td>vy</td>
      <td>float</td>
      <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Y Speed in NED (North, East, Down).</td>
     </tr>
     <tr>
      <td>vz</td>
      <td>float</td>
      <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Z Speed in NED (North, East, Down).</td>
     </tr>
     <tr>
      <td>v_estimated_delay_us</td>
      <td>uint32_t</td>
      <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Estimated delay of the speed data.</td>
     </tr>
     <tr>
      <td>feed_forward_angular_velocity_z</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Feed forward Z component of angular velocity, positive is yawing to the right, NaN to be ignored. This is to indicate if the autopilot is actively yawing.</td>
+    </tr>
+    <tr>
+     <td>estimator_status</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</a>
+     </td>
+     <td>Bitmap indicating which estimator outputs are valid.</td>
+    </tr>
+    <tr>
+     <td>landed_state</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_LANDED_STATE">MAV_LANDED_STATE</a>
+     </td>
+     <td>The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_SET_TILTPAN">GIMBAL_MANAGER_SET_TILTPAN (<a href="#GIMBAL_MANAGER_SET_TILTPAN">
+    #287
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>High level message to control a gimbal's tilt and pan angles. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
+     </td>
+     <td>High level gimbal manager flags to use.</td>
+    </tr>
+    <tr>
+     <td>gimbal_device_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+    </tr>
+    <tr>
+     <td>tilt</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tilt/pitch angle (positive: up, negative: down, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>pan</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Pan/yaw angle (positive: to the right, negative: to the left, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>tilt_rate</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tilt/pitch angular rate (positive: up, negative: down, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>pan_rate</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Pan/yaw angular rate (positive: to the right, negative: to the left, NaN to be ignored).</td>
     </tr>
    </tbody>
   </table>
@@ -33619,7 +33896,7 @@
      <td>
      </td>
      <td>
-      <a href="#GENERATOR_STATUS_FLAG">GENERATOR_STATUS_FLAG</a>
+      <a href="#MAV_GENERATOR_STATUS_FLAG">MAV_GENERATOR_STATUS_FLAG</a>
      </td>
      <td>Status flags.</td>
     </tr>
