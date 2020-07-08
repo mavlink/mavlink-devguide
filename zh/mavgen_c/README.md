@@ -184,7 +184,7 @@ static inline int32_t mavlink_msg_global_position_int_get_alt(const mavlink_mess
 
 ### Command Decoding {#decode_command}
 
-A [MAVLink Command](../services/command.md) encodes a command defined in a [MAV_CMD](../messages/common.md#mavlink-commands-mavcmd) enum value into a [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) message.
+A [MAVLink Command](../services/command.md) encodes a command defined in a [MAV_CMD](../messages/common.md#mav_commands) enum value into a [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) message.
 
 Command packets are parsed and decoded in the same way as [any other payload](#decode_payload) - i.e. you switch on message id of `MAVLINK_MSG_ID_COMMAND_INT`/`MAVLINK_MSG_ID_COMMAND_LONG` and call the decoder functions `mavlink_msg_command_int_decode()`/`mavlink_msg_command_long_decode()` (respectively) to get a C struct mapping the original message.
 
@@ -218,7 +218,7 @@ This section explains how to use the MAVLink 2 C library to work with MAVLink 1 
 
 ### Version Handshaking/Negotiation
 
-[MAVLink Versions](../guide/mavlink_version.md) explains the [handshaking](../guide/mavlink_version.md#version_handshaking) used to determine the supported MAVLink version of either end of the channel, and how to [negotiate the version to use](#negotiating_versions).
+[MAVLink Versions](../guide/mavlink_version.md) explains the [handshaking](../guide/mavlink_version.md#version_handshaking) used to determine the supported MAVLink version of either end of the channel, and how to [negotiate the version to use](../guide/mavlink_version.md#negotiating_versions).
 
 ### Sending and Receiving MAVLink 1 Packets
 
