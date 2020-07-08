@@ -100,7 +100,7 @@ The drone (server) will respond with/send the following opcodes for any of the a
 Notes:
 
 * An ACK response may additionally return requested data in the payload (e.g. `OpenFileRO` returns the session and file size, `ReadFile` returns the requested file data, etc.). 
-* The NAK response includes [error information](#error_code) in the payload `data`. 
+* The NAK response includes [error information](#error_codes) in the payload `data`. 
 
 ## NAK Error Information {#error_codes}
 
@@ -409,15 +409,15 @@ The FTP Protocol has been implemented (minimally) in C by PX4 <!-- and ArduPilot
 *QGroundControl*.  
 This implementation can be used in your own code within the terms of their software licenses.
 
-PX4 Implementation::
+PX4 Implementation:
 
 * [src/modules/mavlink/mavlink_ftp.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.cpp)
 * [src/modules/mavlink/mavlink_ftp.h](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.h)
 
 *QGroundControl* implementation:
 
-* [src/uas/FileManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/uas/FileManager.cc)
-* [/src/uas/FileManager.h](https://github.com/mavlink/qgroundcontrol/blob/master/src/uas/FileManager.h)
+* [src/uas/FileManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/FTPManager.cc)
+* [/src/uas/FileManager.h](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/FTPManager.h)
 
 Everything is run by the master (QGC in this case); the slave simply responds to packets in order as they arrive. There’s buffering in the server for a little overlap (two packets in the queue at a time). This is a tradeoff between memory and link latency which may need to be reconsidered at some point.
 
