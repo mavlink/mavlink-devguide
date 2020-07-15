@@ -22,6 +22,26 @@ The sections below explain how to contribute to each category and how to raise a
 * Reach out to the community on Slack and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
 * Address concerns by pushing more commits to the pull request
 
+## How to Contribute New Programming Language Support
+
+MAVLink generators create MAVLink libraries from the XML definitions for different programming languages ([supported language list here](../README.md#supported_languages)).
+
+Support for new programming languages can be added either to the [mavgen](../getting_started/generate_libraries.html#mavgen) generator (source code in [ArduPilot/pymavlink](https://github.com/ArduPilot/pymavlink)) or as a stand alone generator.
+
+The broad requirements for inclusion in the project are:
+- Project team should be able to commit to supporting the generator. 
+- `common.xml` and all official dialect XML files should parse, validate, and be able to encode/decode for all the messages.
+- Failures should be handled gracefully (not result in exceptions/segfaults).
+- Enum values that are not explicitly defined in XML should be automatically and sequentially allocated.
+- Test code to validate the above.
+
+Ideally:
+- Libraries should support both MAVLink 2 and MAVLink 1
+- Any message with arbitrary field values can be successfully encoded and decoded.
+- Errors/warnings should be reported for invalid payloads - e.g. oversize, duplicate command or message ids, etc.
+- Deep dialect inclusion/nesting should be supported (minimum is 3 levels).
+
+
 ## How to Open a Pull Request
 
 1. First [fork and clone](https://help.github.com/articles/fork-a-repo) the project project.
