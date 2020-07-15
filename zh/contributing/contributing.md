@@ -10,15 +10,15 @@ Contributions are divided into several categories:
 
 The sections below explain how to contribute to each category and how to raise a pull request.
 
-## How to Contribute Complex Changes
-
-* Open a pull request against the RFC repository containing a new RFC number <https://github.com/mavlink/rfcs> and use the template in the 0000 RFC.
-* Reach out to the community on Slack and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
-* 通过进一步支持拉动请求来解决关注问题
-
 ## How to Contribute Simple Changes
 
 * Open a pull request against the specification repository: <https://github.com/mavlink/mavlink>
+* Reach out to the community on Slack and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
+* 通过进一步支持拉动请求来解决关注问题
+
+## How to Contribute Complex Changes
+
+* Open a pull request against the RFC repository containing a new RFC number <https://github.com/mavlink/rfcs> and use the template in the 0000 RFC.
 * Reach out to the community on Slack and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
 * Address concerns by pushing more commits to the pull request
 
