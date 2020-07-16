@@ -55,8 +55,6 @@
     
         git clone https://github.com/mavlink/mavlink.git --recursive
         
-    
-    > **或者** 你可以选择在一行中执行以下操作： ```git clone https://github.com/mavlink/mavlink.git --recursive```
 
 5. 设置环境变量`PYTHONPATH`包含你的*mavlink*仓库路径。 
     * **Windows:**`set PYTHONPATH=C:\your_path_to_mavlink_clone`
