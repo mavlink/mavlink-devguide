@@ -5510,6 +5510,20 @@
      </td>
      <td>Generator requires maintenance.</td>
     </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_WARMING_UP">
+     <td>2097152</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_WARMING_UP">MAV_GENERATOR_STATUS_FLAG_WARMING_UP</a>
+     </td>
+     <td>Generator is not ready to generate yet.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_IDLE">
+     <td>4194304</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_IDLE">MAV_GENERATOR_STATUS_FLAG_IDLE</a>
+     </td>
+     <td>Generator is idle.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_VTOL_STATE">
@@ -34638,6 +34652,26 @@
       </a>
      </td>
      <td>The temperature of the mechanical motor, fuel cell core or generator. INT16_MAX: field not provided.</td>
+    </tr>
+    <tr>
+     <td>runtime</td>
+     <td>uint32_t</td>
+     <td>s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Seconds this generator has run since it was rebooted. UINT32_MAX: field not provided.</td>
+    </tr>
+    <tr>
+     <td>time_until_maintenance</td>
+     <td>int32_t</td>
+     <td>s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Seconds until this generator requires maintenance.  A negative value indicates maintenance is past-due. INT32_MAX: field not provided.</td>
     </tr>
    </tbody>
   </table>
