@@ -6,7 +6,7 @@ Commands are values of [MAV_CMD](#MAV_CMD) that define the values of up to 7 par
 These parameters and the command id are encoded in [COMMAND_INT](#COMMAND_INT) or [COMMAND_LONG](#COMMAND_LONG) for sending.
 
 The protocol provides reliable delivery by expecting a matching acknowledgement (`COMMAND_ACK`) from commands to indicate command arrival, and result.
-If not acknowledgement is received the command must be automatically re-sent.
+If no acknowledgement is received the command must be automatically re-sent.
 
 > **Note** `COMMAND_INT` is generally recommended when sending positional information as it allows greater precision, and is explicit about the co-ordinate frame.
   Commands that require float-only properties in parameters 5, 6 must be sent in `COMMAND_LONG` (e.g. commands where NaN has an explicit meaning).  
