@@ -55,8 +55,6 @@ The main installation steps are:
     
         git clone https://github.com/mavlink/mavlink.git --recursive
         
-    
-    > **Note** Alternatively you can do this in one line: ```git clone https://github.com/mavlink/mavlink.git --recursive```
 
 5. Set `PYTHONPATH` to the directory path containing your *mavlink* repository. 
     * **Windows:** `set PYTHONPATH=C:\your_path_to_mavlink_clone`

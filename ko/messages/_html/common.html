@@ -3140,6 +3140,140 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="ESC_CONNECTION_TYPE">
+   <a href="#ESC_CONNECTION_TYPE">ESC_CONNECTION_TYPE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Indicates the ESC connection type.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="ESC_CONNECTION_TYPE_PPM">
+     <td>0</td>
+     <td>
+      <a href="#ESC_CONNECTION_TYPE_PPM">ESC_CONNECTION_TYPE_PPM</a>
+     </td>
+     <td>Traditional PPM ESC.</td>
+    </tr>
+    <tr id="ESC_CONNECTION_TYPE_SERIAL">
+     <td>1</td>
+     <td>
+      <a href="#ESC_CONNECTION_TYPE_SERIAL">ESC_CONNECTION_TYPE_SERIAL</a>
+     </td>
+     <td>Serial Bus connected ESC.</td>
+    </tr>
+    <tr id="ESC_CONNECTION_TYPE_ONESHOT">
+     <td>2</td>
+     <td>
+      <a href="#ESC_CONNECTION_TYPE_ONESHOT">ESC_CONNECTION_TYPE_ONESHOT</a>
+     </td>
+     <td>One Shot PPM ESC.</td>
+    </tr>
+    <tr id="ESC_CONNECTION_TYPE_I2C">
+     <td>3</td>
+     <td>
+      <a href="#ESC_CONNECTION_TYPE_I2C">ESC_CONNECTION_TYPE_I2C</a>
+     </td>
+     <td>I2C ESC.</td>
+    </tr>
+    <tr id="ESC_CONNECTION_TYPE_CAN">
+     <td>4</td>
+     <td>
+      <a href="#ESC_CONNECTION_TYPE_CAN">ESC_CONNECTION_TYPE_CAN</a>
+     </td>
+     <td>CAN-Bus ESC.</td>
+    </tr>
+    <tr id="ESC_CONNECTION_TYPE_DSHOT">
+     <td>5</td>
+     <td>
+      <a href="#ESC_CONNECTION_TYPE_DSHOT">ESC_CONNECTION_TYPE_DSHOT</a>
+     </td>
+     <td>DShot ESC.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ESC_FAILURE_FLAGS">
+   <a href="#ESC_FAILURE_FLAGS">ESC_FAILURE_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags to report ESC failures.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="ESC_FAILURE_NONE">
+     <td>0</td>
+     <td>
+      <a href="#ESC_FAILURE_NONE">ESC_FAILURE_NONE</a>
+     </td>
+     <td>No ESC failure.</td>
+    </tr>
+    <tr id="ESC_FAILURE_OVER_CURRENT">
+     <td>1</td>
+     <td>
+      <a href="#ESC_FAILURE_OVER_CURRENT">ESC_FAILURE_OVER_CURRENT</a>
+     </td>
+     <td>Over current failure.</td>
+    </tr>
+    <tr id="ESC_FAILURE_OVER_VOLTAGE">
+     <td>2</td>
+     <td>
+      <a href="#ESC_FAILURE_OVER_VOLTAGE">ESC_FAILURE_OVER_VOLTAGE</a>
+     </td>
+     <td>Over voltage failure.</td>
+    </tr>
+    <tr id="ESC_FAILURE_OVER_TEMPERATURE">
+     <td>4</td>
+     <td>
+      <a href="#ESC_FAILURE_OVER_TEMPERATURE">ESC_FAILURE_OVER_TEMPERATURE</a>
+     </td>
+     <td>Over temperature failure.</td>
+    </tr>
+    <tr id="ESC_FAILURE_OVER_RPM">
+     <td>8</td>
+     <td>
+      <a href="#ESC_FAILURE_OVER_RPM">ESC_FAILURE_OVER_RPM</a>
+     </td>
+     <td>Over RPM failure.</td>
+    </tr>
+    <tr id="ESC_FAILURE_INCONSISTENT_CMD">
+     <td>16</td>
+     <td>
+      <a href="#ESC_FAILURE_INCONSISTENT_CMD">ESC_FAILURE_INCONSISTENT_CMD</a>
+     </td>
+     <td>Inconsistent command failure i.e. out of bounds.</td>
+    </tr>
+    <tr id="ESC_FAILURE_MOTOR_STUCK">
+     <td>32</td>
+     <td>
+      <a href="#ESC_FAILURE_MOTOR_STUCK">ESC_FAILURE_MOTOR_STUCK</a>
+     </td>
+     <td>Motor stuck failure.</td>
+    </tr>
+    <tr id="ESC_FAILURE_GENERIC">
+     <td>64</td>
+     <td>
+      <a href="#ESC_FAILURE_GENERIC">ESC_FAILURE_GENERIC</a>
+     </td>
+     <td>Generic ESC failure.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="STORAGE_STATUS">
    <a href="#STORAGE_STATUS">STORAGE_STATUS</a>
   </h3>
@@ -3296,6 +3430,59 @@
       <a href="#WIFI_CONFIG_AP_RESPONSE_PASSWORD_ERROR">WIFI_CONFIG_AP_RESPONSE_PASSWORD_ERROR</a>
      </td>
      <td>Invalid Password.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CELLULAR_CONFIG_RESPONSE">
+   <a href="#CELLULAR_CONFIG_RESPONSE">CELLULAR_CONFIG_RESPONSE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Possible responses from a CELLULAR_CONFIG message.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CELLULAR_CONFIG_RESPONSE_ACCEPTED">
+     <td>0</td>
+     <td>
+      <a href="#CELLULAR_CONFIG_RESPONSE_ACCEPTED">CELLULAR_CONFIG_RESPONSE_ACCEPTED</a>
+     </td>
+     <td>Changes accepted.</td>
+    </tr>
+    <tr id="CELLULAR_CONFIG_RESPONSE_APN_ERROR">
+     <td>1</td>
+     <td>
+      <a href="#CELLULAR_CONFIG_RESPONSE_APN_ERROR">CELLULAR_CONFIG_RESPONSE_APN_ERROR</a>
+     </td>
+     <td>Invalid APN.</td>
+    </tr>
+    <tr id="CELLULAR_CONFIG_RESPONSE_PIN_ERROR">
+     <td>2</td>
+     <td>
+      <a href="#CELLULAR_CONFIG_RESPONSE_PIN_ERROR">CELLULAR_CONFIG_RESPONSE_PIN_ERROR</a>
+     </td>
+     <td>Invalid PIN.</td>
+    </tr>
+    <tr id="CELLULAR_CONFIG_RESPONSE_REJECTED">
+     <td>3</td>
+     <td>
+      <a href="#CELLULAR_CONFIG_RESPONSE_REJECTED">CELLULAR_CONFIG_RESPONSE_REJECTED</a>
+     </td>
+     <td>Changes rejected.</td>
+    </tr>
+    <tr id="CELLULAR_CONFIG_BLOCKED_PUK_REQUIRED">
+     <td>4</td>
+     <td>
+      <a href="#CELLULAR_CONFIG_BLOCKED_PUK_REQUIRED">CELLULAR_CONFIG_BLOCKED_PUK_REQUIRED</a>
+     </td>
+     <td>PUK is required to unblock SIM card.</td>
     </tr>
    </tbody>
   </table>
@@ -5343,6 +5530,20 @@
      </td>
      <td>Generator requires maintenance.</td>
     </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_WARMING_UP">
+     <td>2097152</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_WARMING_UP">MAV_GENERATOR_STATUS_FLAG_WARMING_UP</a>
+     </td>
+     <td>Generator is not ready to generate yet.</td>
+    </tr>
+    <tr id="MAV_GENERATOR_STATUS_FLAG_IDLE">
+     <td>4194304</td>
+     <td>
+      <a href="#MAV_GENERATOR_STATUS_FLAG_IDLE">MAV_GENERATOR_STATUS_FLAG_IDLE</a>
+     </td>
+     <td>Generator is idle.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_VTOL_STATE">
@@ -7114,8 +7315,8 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="CELLULAR_NETWORK_STATUS_FLAG">
-   <a href="#CELLULAR_NETWORK_STATUS_FLAG">CELLULAR_NETWORK_STATUS_FLAG</a>
+  <h3 id="CELLULAR_STATUS_FLAG">
+   <a href="#CELLULAR_STATUS_FLAG">CELLULAR_STATUS_FLAG</a>
   </h3>
   <p>
    <a href="#enums">
@@ -7130,12 +7331,142 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="CELLULAR_NETWORK_STATUS_FLAG_ROAMING">
+    <tr id="CELLULAR_STATUS_FLAG_UNKNOWN">
+     <td>0</td>
+     <td>
+      <a href="#CELLULAR_STATUS_FLAG_UNKNOWN">CELLULAR_STATUS_FLAG_UNKNOWN</a>
+     </td>
+     <td>State unknown or not reportable.</td>
+    </tr>
+    <tr id="CELLULAR_STATUS_FLAG_FAILED">
      <td>1</td>
      <td>
-      <a href="#CELLULAR_NETWORK_STATUS_FLAG_ROAMING">CELLULAR_NETWORK_STATUS_FLAG_ROAMING</a>
+      <a href="#CELLULAR_STATUS_FLAG_FAILED">CELLULAR_STATUS_FLAG_FAILED</a>
      </td>
-     <td>Roaming is active</td>
+     <td>Modem is unusable</td>
+    </tr>
+    <tr id="CELLULAR_STATUS_FLAG_INITIALIZING">
+     <td>2</td>
+     <td>
+      <a href="#CELLULAR_STATUS_FLAG_INITIALIZING">CELLULAR_STATUS_FLAG_INITIALIZING</a>
+     </td>
+     <td>Modem is being initialized</td>
+    </tr>
+    <tr id="CELLULAR_STATUS_FLAG_LOCKED">
+     <td>3</td>
+     <td>
+      <a href="#CELLULAR_STATUS_FLAG_LOCKED">CELLULAR_STATUS_FLAG_LOCKED</a>
+     </td>
+     <td>Modem is locked</td>
+    </tr>
+    <tr id="CELLULAR_STATUS_FLAG_DISABLED">
+     <td>4</td>
+     <td>
+      <a href="#CELLULAR_STATUS_FLAG_DISABLED">CELLULAR_STATUS_FLAG_DISABLED</a>
+     </td>
+     <td>Modem is not enabled and is powered down</td>
+    </tr>
+    <tr id="CELLULAR_STATUS_FLAG_DISABLING">
+     <td>5</td>
+     <td>
+      <a href="#CELLULAR_STATUS_FLAG_DISABLING">CELLULAR_STATUS_FLAG_DISABLING</a>
+     </td>
+     <td>Modem is currently transitioning to the CELLULAR_STATUS_FLAG_DISABLED state</td>
+    </tr>
+    <tr id="CELLULAR_STATUS_FLAG_ENABLING">
+     <td>6</td>
+     <td>
+      <a href="#CELLULAR_STATUS_FLAG_ENABLING">CELLULAR_STATUS_FLAG_ENABLING</a>
+     </td>
+     <td>Modem is currently transitioning to the CELLULAR_STATUS_FLAG_ENABLED state</td>
+    </tr>
+    <tr id="CELLULAR_STATUS_FLAG_ENABLED">
+     <td>7</td>
+     <td>
+      <a href="#CELLULAR_STATUS_FLAG_ENABLED">CELLULAR_STATUS_FLAG_ENABLED</a>
+     </td>
+     <td>Modem is enabled and powered on but not registered with a network provider and not available for data connections</td>
+    </tr>
+    <tr id="CELLULAR_STATUS_FLAG_SEARCHING">
+     <td>8</td>
+     <td>
+      <a href="#CELLULAR_STATUS_FLAG_SEARCHING">CELLULAR_STATUS_FLAG_SEARCHING</a>
+     </td>
+     <td>Modem is searching for a network provider to register</td>
+    </tr>
+    <tr id="CELLULAR_STATUS_FLAG_REGISTERED">
+     <td>9</td>
+     <td>
+      <a href="#CELLULAR_STATUS_FLAG_REGISTERED">CELLULAR_STATUS_FLAG_REGISTERED</a>
+     </td>
+     <td>Modem is registered with a network provider, and data connections and messaging may be available for use</td>
+    </tr>
+    <tr id="CELLULAR_STATUS_FLAG_DISCONNECTING">
+     <td>10</td>
+     <td>
+      <a href="#CELLULAR_STATUS_FLAG_DISCONNECTING">CELLULAR_STATUS_FLAG_DISCONNECTING</a>
+     </td>
+     <td>Modem is disconnecting and deactivating the last active packet data bearer. This state will not be entered if more than one packet data bearer is active and one of the active bearers is deactivated</td>
+    </tr>
+    <tr id="CELLULAR_STATUS_FLAG_CONNECTING">
+     <td>11</td>
+     <td>
+      <a href="#CELLULAR_STATUS_FLAG_CONNECTING">CELLULAR_STATUS_FLAG_CONNECTING</a>
+     </td>
+     <td>Modem is activating and connecting the first packet data bearer. Subsequent bearer activations when another bearer is already active do not cause this state to be entered</td>
+    </tr>
+    <tr id="CELLULAR_STATUS_FLAG_CONNECTED">
+     <td>12</td>
+     <td>
+      <a href="#CELLULAR_STATUS_FLAG_CONNECTED">CELLULAR_STATUS_FLAG_CONNECTED</a>
+     </td>
+     <td>One or more packet data bearers is active and connected</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CELLULAR_NETWORK_FAILED_REASON">
+   <a href="#CELLULAR_NETWORK_FAILED_REASON">CELLULAR_NETWORK_FAILED_REASON</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>These flags are used to diagnose the failure state of CELLULAR_STATUS</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CELLULAR_NETWORK_FAILED_REASON_NONE">
+     <td>0</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_FAILED_REASON_NONE">CELLULAR_NETWORK_FAILED_REASON_NONE</a>
+     </td>
+     <td>No error</td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_FAILED_REASON_UNKNOWN">
+     <td>1</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_FAILED_REASON_UNKNOWN">CELLULAR_NETWORK_FAILED_REASON_UNKNOWN</a>
+     </td>
+     <td>Error state is unknown</td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_FAILED_REASON_SIM_MISSING">
+     <td>2</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_FAILED_REASON_SIM_MISSING">CELLULAR_NETWORK_FAILED_REASON_SIM_MISSING</a>
+     </td>
+     <td>SIM is required for the modem but missing</td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_FAILED_REASON_SIM_ERROR">
+     <td>3</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_FAILED_REASON_SIM_ERROR">CELLULAR_NETWORK_FAILED_REASON_SIM_ERROR</a>
+     </td>
+     <td>SIM is available, but not usuable for connection</td>
     </tr>
    </tbody>
   </table>
@@ -12242,6 +12573,80 @@
      </td>
      <td>
      </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_SET_ACTUATOR">MAV_CMD_DO_SET_ACTUATOR (<a href="#MAV_CMD_DO_SET_ACTUATOR">187</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Sets actuators (e.g. servos) to a desired value. The actuator numbers are mapped to specific outputs (e.g. on any MAIN or AUX PWM or UAVCAN) using a flight-stack specific mechanism (i.e. a parameter).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Actuator 1</td>
+     <td>Actuator 1 value, scaled from [-1 to 1]. NaN to ignore.</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>2: Actuator 2</td>
+     <td>Actuator 2 value, scaled from [-1 to 1]. NaN to ignore.</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>3: Actuator 3</td>
+     <td>Actuator 3 value, scaled from [-1 to 1]. NaN to ignore.</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>4: Actuator 4</td>
+     <td>Actuator 4 value, scaled from [-1 to 1]. NaN to ignore.</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>5: Actuator 5</td>
+     <td>Actuator 5 value, scaled from [-1 to 1]. NaN to ignore.</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>6: Actuator 6</td>
+     <td>Actuator 6 value, scaled from [-1 to 1]. NaN to ignore.</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>7: Index</td>
+     <td>Index of actuator set (i.e if set to 1, Actuator 1 becomes Actuator 7)</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
    </tbody>
   </table>
@@ -27292,7 +27697,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value. If individual cell voltages are unknown or not measured for this battery, then the overall battery voltage should be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining voltage. This can be extended to multiple cells if the total voltage is greater than 2 * (UINT16_MAX - 1).</td>
+     <td>Battery voltage of cells 1 to 10 (see voltages_ext for cells 11-14). Cells in this field above the valid cell count for this battery should have the UINT16_MAX value. If individual cell voltages are unknown or not measured for this battery, then the overall battery voltage should be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining voltage. This can be extended to multiple cells if the total voltage is greater than 2 * (UINT16_MAX - 1).</td>
     </tr>
     <tr>
      <td>current_battery</td>
@@ -27361,6 +27766,19 @@
       <a href="#MAV_BATTERY_CHARGE_STATE">MAV_BATTERY_CHARGE_STATE</a>
      </td>
      <td>State for extent of discharge, provided by autopilot for warning or external reactions</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">voltages_ext<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t[4]</td>
+     <td>mV</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Battery voltages for cells 11 to 14. Cells above the valid cell count for this battery should have a value of 0, where zero indicates not supported (note, this is different than for the voltages field and allows empty byte truncation). If the measured value is 0 then 1 should be sent instead.</td>
     </tr>
    </tbody>
   </table>
@@ -31791,6 +32209,185 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="ESC_INFO">ESC_INFO (<a href="#ESC_INFO">
+    #290
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>ESC information for lower rate streaming. Recommended streaming rate 1Hz. See ESC_STATUS for higher-rate ESC data.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>index</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Index of the first ESC in this message. minValue = 0, maxValue = 60, increment = 4.</td>
+    </tr>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+    </tr>
+    <tr>
+     <td>counter</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Counter of data packets received.</td>
+    </tr>
+    <tr>
+     <td>count</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Total number of ESCs in all messages of this type. Message fields with an index higher than this should be ignored because they contain invalid data.</td>
+    </tr>
+    <tr>
+     <td>connection_type</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ESC_CONNECTION_TYPE">ESC_CONNECTION_TYPE</a>
+     </td>
+     <td>Connection type protocol for all ESC.</td>
+    </tr>
+    <tr>
+     <td>info</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Information regarding online/offline status of each ESC.</td>
+    </tr>
+    <tr>
+     <td>failure_flags</td>
+     <td>uint16_t[4]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ESC_FAILURE_FLAGS">ESC_FAILURE_FLAGS</a>
+     </td>
+     <td>Bitmap of ESC failure flags.</td>
+    </tr>
+    <tr>
+     <td>error_count</td>
+     <td>uint32_t[4]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Number of reported errors by each ESC since boot.</td>
+    </tr>
+    <tr>
+     <td>temperature</td>
+     <td>uint8_t[4]</td>
+     <td>degC</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Temperature measured by each ESC. UINT8_MAX if data not supplied by ESC.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ESC_STATUS">ESC_STATUS (<a href="#ESC_STATUS">
+    #291
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>ESC information for higher rate streaming. Recommended streaming rate is ~10 Hz. Information that changes more slowly is sent in ESC_INFO. It should typically only be streamed on high-bandwidth links (i.e. to a companion computer).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>index</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Index of the first ESC in this message. minValue = 0, maxValue = 60, increment = 4.</td>
+    </tr>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number.</td>
+    </tr>
+    <tr>
+     <td>rpm</td>
+     <td>int32_t[4]</td>
+     <td>rpm</td>
+     <td>Reported motor RPM from each ESC (negative for reverse rotation).</td>
+    </tr>
+    <tr>
+     <td>voltage</td>
+     <td>float[4]</td>
+     <td>V</td>
+     <td>Voltage measured from each ESC.</td>
+    </tr>
+    <tr>
+     <td>current</td>
+     <td>float[4]</td>
+     <td>A</td>
+     <td>Current measured from each ESC.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="WIFI_CONFIG_AP">WIFI_CONFIG_AP (<a href="#WIFI_CONFIG_AP">
     #299
    </a>
@@ -33135,11 +33732,19 @@
    <tbody>
     <tr>
      <td>status</td>
-     <td>uint16_t</td>
+     <td>uint8_t</td>
      <td>
-      <a href="#CELLULAR_NETWORK_STATUS_FLAG">CELLULAR_NETWORK_STATUS_FLAG</a>
+      <a href="#CELLULAR_STATUS_FLAG">CELLULAR_STATUS_FLAG</a>
      </td>
-     <td>Status bitmap</td>
+     <td>Cellular modem status</td>
+    </tr>
+    <tr>
+     <td>failure_reason</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_FAILED_REASON">CELLULAR_NETWORK_FAILED_REASON</a>
+     </td>
+     <td>Failure reason when status in in CELLUAR_STATUS_FAILED</td>
     </tr>
     <tr>
      <td>type</td>
@@ -33156,7 +33761,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Cellular network RSSI/RSRP in dBm, absolute value</td>
+     <td>Signal quality in percent. If unknown, set to UINT8_MAX</td>
     </tr>
     <tr>
      <td>mcc</td>
@@ -33165,7 +33770,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Mobile country code. If unknown, set to: UINT16_MAX</td>
+     <td>Mobile country code. If unknown, set to UINT16_MAX</td>
     </tr>
     <tr>
      <td>mnc</td>
@@ -33174,7 +33779,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Mobile network code. If unknown, set to: UINT16_MAX</td>
+     <td>Mobile network code. If unknown, set to UINT16_MAX</td>
     </tr>
     <tr>
      <td>lac</td>
@@ -33183,16 +33788,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Location area code. If unknown, set to: 0</td>
-    </tr>
-    <tr>
-     <td>cid</td>
-     <td>uint32_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Cell ID. If unknown, set to: UINT32_MAX</td>
+     <td>Location area code. If unknown, set to 0</td>
     </tr>
    </tbody>
   </table>
@@ -33271,6 +33867,103 @@
      <td>
      </td>
      <td>1: Receiving session pending, 0: No receiving session pending.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CELLULAR_CONFIG">CELLULAR_CONFIG (<a href="#CELLULAR_CONFIG">
+    #336
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Configure cellular modems. This message is re-emitted as an acknowledgement by the modem. The message may also be explicitly requested using MAV_CMD_REQUEST_MESSAGE.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>enable_lte</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Enable/disable LTE. 0: setting unchanged, 1: disabled, 2: enabled. Current setting when sent back as a response.</td>
+    </tr>
+    <tr>
+     <td>enable_pin</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Enable/disable PIN on the SIM card. 0: setting unchanged, 1: disabled, 2: enabled. Current setting when sent back as a response.</td>
+    </tr>
+    <tr>
+     <td>pin</td>
+     <td>char[16]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>PIN sent to the SIM card. Blank when PIN is disabled. Empty when message is sent back as a response.</td>
+    </tr>
+    <tr>
+     <td>new_pin</td>
+     <td>char[16]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>New PIN when changing the PIN. Blank to leave it unchanged. Empty when message is sent back as a response.</td>
+    </tr>
+    <tr>
+     <td>apn</td>
+     <td>char[32]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Name of the cellular APN. Blank to leave it unchanged. Current APN when sent back as a response.</td>
+    </tr>
+    <tr>
+     <td>puk</td>
+     <td>char[16]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Required PUK code in case the user failed to authenticate 3 times with the PIN. Empty when message is sent back as a response.</td>
+    </tr>
+    <tr>
+     <td>roaming</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Enable/disable roaming. 0: setting unchanged, 1: disabled, 2: enabled. Current setting when sent back as a response.</td>
+    </tr>
+    <tr>
+     <td>response</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CELLULAR_CONFIG_RESPONSE">CELLULAR_CONFIG_RESPONSE</a>
+     </td>
+     <td>Message acceptance response (sent back to GS).</td>
     </tr>
    </tbody>
   </table>
@@ -33979,6 +34672,26 @@
       </a>
      </td>
      <td>The temperature of the mechanical motor, fuel cell core or generator. INT16_MAX: field not provided.</td>
+    </tr>
+    <tr>
+     <td>runtime</td>
+     <td>uint32_t</td>
+     <td>s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Seconds this generator has run since it was rebooted. UINT32_MAX: field not provided.</td>
+    </tr>
+    <tr>
+     <td>time_until_maintenance</td>
+     <td>int32_t</td>
+     <td>s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Seconds until this generator requires maintenance.  A negative value indicates maintenance is past-due. INT32_MAX: field not provided.</td>
     </tr>
    </tbody>
   </table>
