@@ -3544,6 +3544,84 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="PARAM_TRANSACTION_RESPONSE">
+   <a href="#PARAM_TRANSACTION_RESPONSE">PARAM_TRANSACTION_RESPONSE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Possible responses from a PARAM_START_TRANSACTION and PARAM_COMMIT_TRANSACTION messages.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="PARAM_TRANSACTION_RESPONSE_ACCEPTED">
+     <td>0</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_RESPONSE_ACCEPTED">PARAM_TRANSACTION_RESPONSE_ACCEPTED</a>
+     </td>
+     <td>Transaction accepted.</td>
+    </tr>
+    <tr id="PARAM_TRANSACTION_RESPONSE_FAILED">
+     <td>1</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_RESPONSE_FAILED">PARAM_TRANSACTION_RESPONSE_FAILED</a>
+     </td>
+     <td>Transaction failed.</td>
+    </tr>
+    <tr id="PARAM_TRANSACTION_RESPONSE_UNSUPPORTED">
+     <td>2</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_RESPONSE_UNSUPPORTED">PARAM_TRANSACTION_RESPONSE_UNSUPPORTED</a>
+     </td>
+     <td>Transaction unsupported.</td>
+    </tr>
+    <tr id="PARAM_TRANSACTION_RESPONSE_INPROGRESS">
+     <td>3</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_RESPONSE_INPROGRESS">PARAM_TRANSACTION_RESPONSE_INPROGRESS</a>
+     </td>
+     <td>Transaction in progress.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="PARAM_TRANSACTION_TRANSPORT">
+   <a href="#PARAM_TRANSACTION_TRANSPORT">PARAM_TRANSACTION_TRANSPORT</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Possible transport layers to set and get parameters via mavlink during a parameter transaction.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="PARAM_TRANSACTION_TRANSPORT_PARAM">
+     <td>0</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_TRANSPORT_PARAM">PARAM_TRANSACTION_TRANSPORT_PARAM</a>
+     </td>
+     <td>Transaction over param transport.</td>
+    </tr>
+    <tr id="PARAM_TRANSACTION_TRANSPORT_PARAM_EXT">
+     <td>1</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_TRANSPORT_PARAM_EXT">PARAM_TRANSACTION_TRANSPORT_PARAM_EXT</a>
+     </td>
+     <td>Transaction over param_ext transport.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_DATA_STREAM">
    <a href="#MAV_DATA_STREAM">MAV_DATA_STREAM</a>
   </h3>
@@ -6836,7 +6914,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Result from a PARAM_EXT_SET message.</p>
+   </a>Result from PARAM_EXT_SET message (or a PARAM_SET within a transaction).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -6872,7 +6950,7 @@
      <td>
       <a href="#PARAM_ACK_IN_PROGRESS">PARAM_ACK_IN_PROGRESS</a>
      </td>
-     <td>Parameter value received but not yet validated or set. A subsequent PARAM_EXT_ACK will follow once operation is completed with the actual result. These are for parameters that may take longer to set. Instead of waiting for an ACK and potentially timing out, you will immediately receive this response to let you know it was received.</td>
+     <td>Parameter value received but not yet set/accepted. A subsequent PARAM_ACK_TRANSACTION or PARAM_EXT_ACK with the final result will follow once operation is completed. This is returned immediately for parameters that take longer to set, indicating taht the the parameter was recieved and does not need to be resent.</td>
     </tr>
    </tbody>
   </table>
@@ -18656,6 +18734,81 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="PARAM_ACK_TRANSACTION">PARAM_ACK_TRANSACTION (<a href="#PARAM_ACK_TRANSACTION">
+    #19
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Response from a PARAM_SET message when it is used in a transaction.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Id of system that sent PARAM_SET message.</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Id of system that sent PARAM_SET message.</td>
+    </tr>
+    <tr>
+     <td>param_id</td>
+     <td>char[16]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+    </tr>
+    <tr>
+     <td>param_value</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Parameter value (new value if PARAM_ACCEPTED, current value otherwise)</td>
+    </tr>
+    <tr>
+     <td>param_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
+     </td>
+     <td>Parameter type.</td>
+    </tr>
+    <tr>
+     <td>param_result</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#PARAM_ACK">PARAM_ACK</a>
+     </td>
+     <td>Result code.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="PARAM_REQUEST_READ">PARAM_REQUEST_READ (<a href="#PARAM_REQUEST_READ">
     #20
    </a>
@@ -18799,7 +18952,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Set a parameter value (write new value to permanent storage). IMPORTANT: The receiving component should acknowledge the new parameter value by sending a PARAM_VALUE message to all communication partners. This will also ensure that multiple GCS all have an up-to-date list of all parameters. If the sending GCS did not receive a PARAM_VALUE message within its timeout time, it should re-send the PARAM_SET message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
+   </a>Set a parameter value (write new value to permanent storage). Within a transaction the recieving componenent should respond with PARAM_ACK_TRANSACTION to the setter component. IMPORTANT: If sent outside a transaction the receiving component should acknowledge the new parameter value by broadcasting a PARAM_VALUE message to all communication partners (broadcasting ensures that multiple GCS all have an up-to-date list of all parameters). If the sending GCS did not receive a PARAM_VALUE or PARAM_ACK_TRANSACTION message within its timeout time, it should re-send the PARAM_SET message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32935,6 +33088,11 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by PARAM_V3_VALUE (2020-07).
+
+
+  The new version of this message correctly trims zeros.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33003,6 +33161,11 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by PARAM_V3_SET (2020-07).
+
+
+  The new second version of this message correctly trims zeros.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33071,6 +33234,11 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by PARAM_V3_ACK (2020-07).
+
+
+  The new version of this message correctly trims zeros.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33121,6 +33289,318 @@
       <a href="#PARAM_ACK">PARAM_ACK</a>
      </td>
      <td>Result code.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="PARAM_V3_VALUE">PARAM_V3_VALUE (<a href="#PARAM_V3_VALUE">
+    #325
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Emit the value of a parameter. The param_count and param_index fields allow the recipient to keep track of received parameters and to re-request missing parameters after a loss or timeout. Replacement for PARAM_EXT_VALUE.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>param_id</td>
+     <td>char[16]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+    </tr>
+    <tr>
+     <td>param_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+     </td>
+     <td>Parameter type.</td>
+    </tr>
+    <tr>
+     <td>param_count</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Total number of parameters</td>
+    </tr>
+    <tr>
+     <td>param_index</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Index of this parameter</td>
+    </tr>
+    <tr>
+     <td>param_value</td>
+     <td>char[128]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Parameter value (zeros get trimmed)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="PARAM_V3_SET">PARAM_V3_SET (<a href="#PARAM_V3_SET">
+    #326
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Set a parameter value. In order to deal with message loss (and retransmission of PARAM_EXT_SET), when setting a parameter value and the new value is the same as the current value, you will immediately get a PARAM_ACK_ACCEPTED response. If the current state is PARAM_ACK_IN_PROGRESS, you will accordingly receive a PARAM_ACK_IN_PROGRESS in response.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>param_id</td>
+     <td>char[16]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+    </tr>
+    <tr>
+     <td>param_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+     </td>
+     <td>Parameter type.</td>
+    </tr>
+    <tr>
+     <td>param_value</td>
+     <td>char[128]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Parameter value (zeros get trimmed)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="PARAM_V3_ACK">PARAM_V3_ACK (<a href="#PARAM_V3_ACK">
+    #327
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Response from a PARAM_V3_SET message.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>param_id</td>
+     <td>char[16]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+    </tr>
+    <tr>
+     <td>param_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+     </td>
+     <td>Parameter type.</td>
+    </tr>
+    <tr>
+     <td>param_result</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#PARAM_ACK">PARAM_ACK</a>
+     </td>
+     <td>Result code.</td>
+    </tr>
+    <tr>
+     <td>param_value</td>
+     <td>char[128]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Parameter value (new value if PARAM_ACK_ACCEPTED, current value otherwise, zeros get trimmed)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="PARAM_START_TRANSACTION">PARAM_START_TRANSACTION (<a href="#PARAM_START_TRANSACTION">
+    #328
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Request to start a new parameter transaction. Multiple kinds of transport layers can be used to exchange parameters in the transaction (param, param_ext and mavftp). The response (ack) will contain the same message but with a response attached to it.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>param_transport</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_TRANSPORT">PARAM_TRANSACTION_TRANSPORT</a>
+     </td>
+     <td>Possible transport layers to set and get parameters via mavlink during a parameter transaction.</td>
+    </tr>
+    <tr>
+     <td>response</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_RESPONSE">PARAM_TRANSACTION_RESPONSE</a>
+     </td>
+     <td>Message acceptance response (sent back to GS).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="PARAM_COMMIT_TRANSACTION">PARAM_COMMIT_TRANSACTION (<a href="#PARAM_COMMIT_TRANSACTION">
+    #329
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Request to end the current parameter transaction. This message will have effect only if a transaction was previously opened using the PARAM_START_TRANSACTION message. The response will contain the same message but with a response attached to it. The response can either be a success/failure or and in progress in case the receiving side takes some time to apply the parameters.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>response</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_RESPONSE">PARAM_TRANSACTION_RESPONSE</a>
+     </td>
+     <td>Message acceptance response (sent back to GS).</td>
     </tr>
    </tbody>
   </table>
