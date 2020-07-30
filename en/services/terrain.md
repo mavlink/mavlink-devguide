@@ -37,6 +37,7 @@ In summary, the sequence is:
 The diagram below shows the way the data is encoded within the [TERRAIN_REQUEST](#TERRAIN_REQUEST) and [TERRAIN_DATA](#TERRAIN_DATA).
 
 ![Terrain_report.mask data layout](../../assets/protocols/terrain/terrain_request_data.png)
+<!-- Link to image source: https://docs.google.com/drawings/d/1DnDH6L58qBMW4HuCjMo3Fpkgx_vTYuwLAsH0W8bWLXQ/edit?usp=sharing -->
 
 [TERRAIN_REQUEST.mask](#TERRAIN_REQUEST) is a 64-bit value that represents a row major 8x7 array of (4x4) tiles.
 The the `lat`, `lon` fields indicate the position of the South-West corner of first grid position (tile). 
