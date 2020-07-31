@@ -27003,7 +27003,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Request for terrain data and terrain status</p>
+   </a>Request for terrain data and terrain status. See terrain protocol docs: https://mavlink.io/en/services/terrain.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27049,7 +27049,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Terrain data sent from GCS. The lat/lon and grid_spacing must be the same as a lat/lon from a TERRAIN_REQUEST</p>
+   </a>Terrain data sent from GCS. The lat/lon and grid_spacing must be the same as a lat/lon from a TERRAIN_REQUEST. See terrain protocol docs: https://mavlink.io/en/services/terrain.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27098,6 +27098,11 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by  (2020-08).
+
+
+  Deprecated (without replacement) as is not part of terrain protocol: https://mavlink.io/en/services/terrain.html.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -27134,7 +27139,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Response from a TERRAIN_CHECK request</p>
+   </a>Streamed from drone to report progress of terrain map download (or response from a TERRAIN_CHECK request - deprecated). See terrain protocol docs: https://mavlink.io/en/services/terrain.html</p>
   <table class="sortable">
    <thead>
     <tr>
