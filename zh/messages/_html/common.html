@@ -3622,6 +3622,38 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="PARAM_TRANSACTION_ACTION">
+   <a href="#PARAM_TRANSACTION_ACTION">PARAM_TRANSACTION_ACTION</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Possible parameter transaction action during a commit.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="PARAM_TRANSACTION_ACTION_COMMIT">
+     <td>0</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_ACTION_COMMIT">PARAM_TRANSACTION_ACTION_COMMIT</a>
+     </td>
+     <td>Commit the current parameter transaction.</td>
+    </tr>
+    <tr id="PARAM_TRANSACTION_ACTION_CANCEL">
+     <td>1</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_ACTION_CANCEL">PARAM_TRANSACTION_ACTION_CANCEL</a>
+     </td>
+     <td>Cancel the current parameter transaction.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_DATA_STREAM">
    <a href="#MAV_DATA_STREAM">MAV_DATA_STREAM</a>
   </h3>
@@ -33625,6 +33657,14 @@
       </a>
      </td>
      <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>param_action</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_ACTION">PARAM_TRANSACTION_ACTION</a>
+     </td>
+     <td>Commit or cancel an ongoing transaction.</td>
     </tr>
     <tr>
      <td>response</td>
