@@ -12,8 +12,8 @@ MAVLink系统往往需要能够储存、交换或恢复MAVLink信息，包括：
 
 格式如下。 第一行包含文件格式和版本信息，后面行为任务项目。
 
-    QGC WPL &lt;VERSION&gt;
-    &lt;INDEX&gt; &lt;CURRENT WP&gt; &lt;COORD FRAME&gt; &lt;COMMAND&gt; &lt;PARAM1&gt; &lt;PARAM2&gt; &lt;PARAM3&gt; &lt;PARAM4&gt; &lt;PARAM5/X/LONGITUDE&gt; &lt;PARAM6/Y/LATITUDE&gt; &lt;PARAM7/Z/ALTITUDE&gt; &lt;AUTOCONTINUE&gt;
+    QGC WPL <VERSION>
+    <INDEX> <CURRENT WP> <COORD FRAME> <COMMAND> <PARAM1> <PARAM2> <PARAM3> <PARAM4> <PARAM5/X/LATITUDE> <PARAM6/Y/LONGITUDE> <PARAM7/Z/ALTITUDE> <AUTOCONTINUE>
     
 
 > **Note** 以上数字/字段之间的空间为 `<tab>` (i.e. `\t` 大多数编程语言)。
