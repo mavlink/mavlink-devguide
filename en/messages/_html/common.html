@@ -10020,6 +10020,52 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_WINCH_STATUS_FLAG">
+   <a href="#MAV_WINCH_STATUS_FLAG">MAV_WINCH_STATUS_FLAG</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Winch status flags used in WINCH_STATUS</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_WINCH_STATUS_HEALTHY">
+     <td>1</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_HEALTHY">MAV_WINCH_STATUS_HEALTHY</a>
+     </td>
+     <td>Winch is healthy</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_FULLY_RETRACTED">
+     <td>2</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_FULLY_RETRACTED">MAV_WINCH_STATUS_FULLY_RETRACTED</a>
+     </td>
+     <td>Winch thread is fully retracted</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_MOVING">
+     <td>4</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_MOVING">MAV_WINCH_STATUS_MOVING</a>
+     </td>
+     <td>Winch motor is moving</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_CLUTCH_ENGAGED">
+     <td>8</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_CLUTCH_ENGAGED">MAV_WINCH_STATUS_CLUTCH_ENGAGED</a>
+     </td>
+     <td>Winch clutch is engaged allowing motor to move freely</td>
+    </tr>
+   </tbody>
+  </table>
   <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
@@ -30956,7 +31002,7 @@
      <td>float[4]</td>
      <td>
      </td>
-     <td>Quaternion of camera orientation (w, x, y, z order, zero-rotation is 0, 0, 0, 0)</td>
+     <td>Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
     </tr>
     <tr>
      <td>image_index</td>
@@ -31516,6 +31562,93 @@
       </a>
      </td>
      <td>Horizontal Field of view</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_FOV_STATUS">CAMERA_FOV_STATUS (<a href="#CAMERA_FOV_STATUS">
+    #271
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about the field of view of a camera. Can be requested with a MAV_CMD_REQUEST_MESSAGE command.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>lat_camera</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude of camera (INT32_MAX if unknown).</td>
+    </tr>
+    <tr>
+     <td>lon_camera</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude of camera (INT32_MAX if unknown).</td>
+    </tr>
+    <tr>
+     <td>alt_camera</td>
+     <td>int32_t</td>
+     <td>mm</td>
+     <td>Altitude (MSL) of camera (INT32_MAX if unknown).</td>
+    </tr>
+    <tr>
+     <td>lat_image</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).</td>
+    </tr>
+    <tr>
+     <td>lon_image</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).</td>
+    </tr>
+    <tr>
+     <td>alt_image</td>
+     <td>int32_t</td>
+     <td>mm</td>
+     <td>Altitude (MSL) of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
+    </tr>
+    <tr>
+     <td>hfov</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Horizontal field of view (NaN if unknown).</td>
+    </tr>
+    <tr>
+     <td>vfov</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Vertical field of view (NaN if unknown).</td>
     </tr>
    </tbody>
   </table>
@@ -35814,6 +35947,113 @@
      <td>double[16]</td>
      <td>m</td>
      <td>Distance reported by individual wheel encoders. Forward rotations increase values, reverse rotations decrease them. Not all wheels will necessarily have wheel encoders; the mapping of encoders to wheel positions must be agreed/understood by the endpoints.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="WINCH_STATUS">WINCH_STATUS (<a href="#WINCH_STATUS">
+    #9005
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Winch status.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (synced to UNIX time or since system boot).</td>
+    </tr>
+    <tr>
+     <td>line_length</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Length of line released. NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>speed</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Speed line is being released or retracted. Positive values if being released, negative values if being retracted, NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>tension</td>
+     <td>float</td>
+     <td>kg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tension on the line. NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>voltage</td>
+     <td>float</td>
+     <td>V</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Voltage of the battery supplying the winch. NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>current</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current draw from the winch. NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>temperature</td>
+     <td>int16_t</td>
+     <td>degC</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Temperature of the motor. INT16_MAX if unknown</td>
+    </tr>
+    <tr>
+     <td>status</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_FLAG">MAV_WINCH_STATUS_FLAG</a>
+     </td>
+     <td>Status flags</td>
     </tr>
    </tbody>
   </table>
