@@ -32,22 +32,22 @@ MAVLink 프로젝트에는 [mavgen](getting_started/generate_libraries.md#mavgen
 
 하단 표에서는 현재 MAVLink 1, [MAVLink 2](guide/mavlink_2.md), [메시지 서명](guide/message_signing.md)에 활용할 수 있는 프로그래밍 언어와 제너레이터를 보여드립니다.
 
-| Language              | Generator                                                   | MAVLink v1 | MAVLink v2 | Signing | Notes                                                                                                                                           |
-|:--------------------- |:----------------------------------------------------------- |:----------:|:----------:|:-------:|:----------------------------------------------------------------------------------------------------------------------------------------------- |
-| C                     | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    | This is the MAVLink project reference implementation. [Generated libraries](#prebuilt_libraries) are also published for both protocol versions. |
-| C++11                 | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    |                                                                                                                                                 |
-| Python (2.7+, 3.3+)   | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    Y    |                                                                                                                                                 |
-| C#                    | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                                                                                                                 |
-| Objective C           | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                                                                                                                 |
-| Java                  | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                                                                                                                 |
-| Java                  | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) |     Y      |     Y      |    Y    | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.                                                          |
-| JavaScript            | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    N    |                                                                                                                                                 |
-| TypeScript/JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |    N    | TypeScript classes which can be used with [node-mavlink](https://github.com/ifrunistuttgart/node-mavlink)                                       |
-| Lua                   | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |     Y      |         |                                                                                                                                                 |
-| Swift                 | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                                                                                                                 |
-| Clojure               | [clj-mavlink](https://github.com/WickedShell/clj-mavlink)   |     Y      |     Y      |    Y    | Clojure MAVLink Bindings.                                                                                                                       |
-| Go                    | [gomavlib](https://github.com/gswly/gomavlib)               |     Y      |     Y      |    Y    |                                                                                                                                                 |
-| Haskell               | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)    |     N      |     Y      |    N    |                                                                                                                                                 |
+| 언어                    | 제너레이터                                                       | MAVLink v1 | MAVLink v2 | 서명  | 참고                                                                                             |
+|:--------------------- |:----------------------------------------------------------- |:----------:|:----------:|:---:|:---------------------------------------------------------------------------------------------- |
+| C                     | [mavgen](getting_started/generate_libraries.md#mavgen)      |     예      |     예      |  예  | MAVLink 프로젝트 참고 구현입니다. [생성 라이브러리](#prebuilt_libraries)는 프로토콜 버전 별로 출시합니다.                      |
+| C++11                 | [mavgen](getting_started/generate_libraries.md#mavgen)      |     예      |     예      |  예  |                                                                                                |
+| 파이썬 (2.7+, 3.3+)      | [mavgen](getting_started/generate_libraries.md#mavgen)      |     예      |     예      |  예  |                                                                                                |
+| C#                    | [mavgen](getting_started/generate_libraries.md#mavgen)      |     예      |            |     |                                                                                                |
+| Objective C           | [mavgen](getting_started/generate_libraries.md#mavgen)      |     예      |            |     |                                                                                                |
+| Java                  | [mavgen](getting_started/generate_libraries.md#mavgen)      |     예      |            |     |                                                                                                |
+| Java                  | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) |     예      |     예      |  예  | MAVLink용 *Idiomatic* Java SDK/API 입니다. 코드 제너레이터용 그래들 플러그인이 있습니다.                               |
+| JavaScript            | [mavgen](getting_started/generate_libraries.md#mavgen)      |     예      |     예      | 아니요 |                                                                                                |
+| TypeScript/JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen)      |     예      |     예      | 아니요 | [node-mavlink](https://github.com/ifrunistuttgart/node-mavlink)와 활용할 수 있는 TypeScript 클래스가 있습니다 |
+| Lua                   | [mavgen](getting_started/generate_libraries.md#mavgen)      |     예      |     예      |     |                                                                                                |
+| Swift                 | [mavgen](getting_started/generate_libraries.md#mavgen)      |     예      |            |     |                                                                                                |
+| Clojure               | [clj-mavlink](https://github.com/WickedShell/clj-mavlink)   |     예      |     예      |  예  | Clojure용 MAVLink 바인딩이 있습니다.                                                                    |
+| Go                    | [gomavlib](https://github.com/gswly/gomavlib)               |     예      |     예      |  예  |                                                                                                |
+| Haskell               | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)    |    아니요     |     예      | 아니요 |                                                                                                |
 
 ## 미리 빌드한 MAVLink C 라이브러리 {#prebuilt_libraries}
 
@@ -64,11 +64,11 @@ The [Support](about/support.md) topic contains information about the [mailing li
 
 ## 기여 
 
-The [Contributing Guide](contributing/contributing.md) explains the contribution model and the main areas where you can help.
+[기여 안내서](contributing/contributing.md)에서는 기여 모델을 도움을 줄 수 있는 주요 영역을 설명합니다.
 
 ## 라이선스
 
-The message definition XML files and the generated [C-language version of MAVLink](#prebuilt_libraries) (a header-only library) are made available under the MIT-licence. MAVLink can therefore be *used* in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
+메시지 정의 XML 파일과 기존에 만든 [MAVLink C 언어 버전](#prebuilt_libraries)(헤더만 있는 라이브러리)은 MIT 라이선스에 따라 사용할 수 있습니다. 따라서 MAVLink는 비공개 소스 코드 프로그램의 소스 코드 공개를 하지 않고도 어떤 비공개 소스 코드 프로그램에든 *사용*할 수 있습니다. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
 
 The [MAVLink generator toolchain](https://github.com/mavlink/mavlink/) is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3).
 
@@ -78,7 +78,7 @@ This documentation is licensed under *CC BY 4.0* ([Human readable overview](http
 
 MAVLink 프로토콜은 [드론코드 프로젝트](https://www.dronecode.org/) 관리 체계에서 제공합니다.
 
-<a href="https://www.dronecode.org/" style="padding:20px"><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" width="110px"/></a>
-<a href="https://www.linuxfoundation.org/projects" style="padding:20px;"><img src="../assets/site/logo_linux_foundation.png" alt="Linux Foundation Logo" width="80px" /></a>
+<a href="https://www.dronecode.org/" style="padding:20px"><img src="../assets/site/logo_dronecode.png" alt="드론코드 로고" width="110px"/></a>
+<a href="https://www.linuxfoundation.org/projects" style="padding:20px;"><img src="../assets/site/logo_linux_foundation.png" alt="리눅스 재단 로고" width="80px" /></a>
 
 <div style="padding:10px">&nbsp;</div>
