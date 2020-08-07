@@ -1,8 +1,8 @@
-<span style="float:right; padding:10px; margin-right:20px;"><a href="https://github.com/mavlink/mavlink"><img src="../assets/site/logo_mavlink_small.png" title="MAVLink Logo" width="250px" /></a></span>
+<span style="float:right; padding:10px; margin-right:20px;"><a href="https://github.com/mavlink/mavlink"><img src="../assets/site/logo_mavlink_small.png" title="MAVLink 로고" width="250px" /></a></span>
 
 # MAVLink 개발자 안내서
 
-[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)
+[![슬랙](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)
 
 MAVLink는 매우 가벼운 드론(과 드론 구성 부품간 온보드) 통신용 메시지 프로토콜입니다.
 
@@ -28,9 +28,9 @@ MAVLink는 2009년 초반 Lorenz Meier가 처음으로 출시했으며, 현재�
 
 MAVLink 프로젝트에는 [mavgen](getting_started/generate_libraries.md#mavgen)과 [mavgenerate](getting_started/generate_libraries.md#mavgenerate) 도구가 들어있어, 다양한 프로그래밍 언어를 활용할 수 있는 MAVLink 라이브러리를 만들 수 있습니다. 추가 제네레이터는 다른 프로젝트에서 제공합니다.
 
-> **Note** The MAVLink project has not validated and does not provide technical support for generators other than *mavgen* and *mavgenerate*.
+> **Note**MAVLink 프로젝트에서는 *mavgen*과 *mavgenerate*를 제외한 다른 모든 제네레이터를 아직 검증하지 않았고, 해당 제네레이터를 대상으로 기술지원을 하지 않습니다.
 
-The table below shows the available languages/generators, along with their support for MAVLink v1, [MAVLink 2](guide/mavlink_2.md) and [Message Signing](guide/message_signing.md).
+하단 표에서는 현재 MAVLink 1, [MAVLink 2](guide/mavlink_2.md), [메시지 서명](guide/message_signing.md)에 활용할 수 있는 프로그래밍 언어와 제너레이터를 보여드립니다.
 
 | Language              | Generator                                                   | MAVLink v1 | MAVLink v2 | Signing | Notes                                                                                                                                           |
 |:--------------------- |:----------------------------------------------------------- |:----------:|:----------:|:-------:|:----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -49,7 +49,7 @@ The table below shows the available languages/generators, along with their suppo
 | Go                    | [gomavlib](https://github.com/gswly/gomavlib)               |     Y      |     Y      |    Y    |                                                                                                                                                 |
 | Haskell               | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)    |     N      |     Y      |    N    |                                                                                                                                                 |
 
-## Prebuilt MAVLink C Libraries {#prebuilt_libraries}
+## 미리 빌드한 MAVLink C 라이브러리 {#prebuilt_libraries}
 
 *C* MAVLink Source Files (only) are auto-generated for the latest versions of all message [specifications/dialects](messages/README.md) (for both MAVLink 1 and 2):
 
@@ -58,15 +58,15 @@ The table below shows the available languages/generators, along with their suppo
 
 [Using C Libraries](mavgen_c/README.md) explains how to use these libraries.
 
-## Support {#support}
+## 지원 {#support}
 
 The [Support](about/support.md) topic contains information about the [mailing list](https://groups.google.com/forum/#!forum/mavlink), reporting bugs/issues, and joining the [dev call](about/support.md#dev_call).
 
-## Contributing
+## 기여 
 
 The [Contributing Guide](contributing/contributing.md) explains the contribution model and the main areas where you can help.
 
-## License
+## 라이선스
 
 The message definition XML files and the generated [C-language version of MAVLink](#prebuilt_libraries) (a header-only library) are made available under the MIT-licence. MAVLink can therefore be *used* in any closed-source application without publishing the source code of the closed-source application. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
 
@@ -74,9 +74,9 @@ The [MAVLink generator toolchain](https://github.com/mavlink/mavlink/) is licens
 
 This documentation is licensed under *CC BY 4.0* ([Human readable overview](https://creativecommons.org/licenses/by/4.0/) | [LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE)).
 
-## Governance
+## 운영
 
-The MAVLink protocol is hosted under the governance of the [Dronecode Project](https://www.dronecode.org/).
+MAVLink 프로토콜은 [드론코드 프로젝트](https://www.dronecode.org/) 관리 체계에서 제공합니다.
 
 <a href="https://www.dronecode.org/" style="padding:20px"><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" width="110px"/></a>
 <a href="https://www.linuxfoundation.org/projects" style="padding:20px;"><img src="../assets/site/logo_linux_foundation.png" alt="Linux Foundation Logo" width="80px" /></a>
