@@ -1767,68 +1767,75 @@
      </td>
      <td>能够生成/提供任务飞行计划的组件（例如地面站或开发者API）。</td>
     </tr>
+    <tr id="MAV_COMP_ID_ONBOARD_COMPUTER">
+     <td>191</td>
+     <td>
+      <a href="#MAV_COMP_ID_ONBOARD_COMPUTER">MAV_COMP_ID_ONBOARD_COMPUTER</a>
+     </td>
+     <td>Component that lives on the onboard computer (companion computer) and has some generic functionalities, such as settings system parameters and monitoring the status of some processes that don't directly speak mavlink and so on.</td>
+    </tr>
     <tr id="MAV_COMP_ID_PATHPLANNER">
      <td>195</td>
      <td>
-      <a href="#MAV_COMP_ID_PATHPLANNER">MAV_COMP_ID_PTHPLANNER</a>
+      <a href="#MAV_COMP_ID_PATHPLANNER">MAV_COMP_ID_PATHPLANNER</a>
      </td>
-     <td>基于特定约束（如最少拍照、最短路径、代价等）在点之间找到最佳路径的组件。</td>
+     <td>Component that finds an optimal path between points based on a certain constraint (e.g. minimum snap, shortest path, cost, etc.).</td>
     </tr>
     <tr id="MAV_COMP_ID_OBSTACLE_AVOIDANCE">
      <td>196</td>
      <td>
       <a href="#MAV_COMP_ID_OBSTACLE_AVOIDANCE">MAV_COMP_ID_OBSTACLE_AVOIDANCE</a>
      </td>
-     <td>在两点之间规划无碰撞路径的组件。</td>
+     <td>Component that plans a collision free path between two points.</td>
     </tr>
     <tr id="MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY">
      <td>197</td>
      <td>
       <a href="#MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY">MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY</a>
      </td>
-     <td>使用视觉里程计技术估计位置的组件。</td>
+     <td>Component that provides position estimates using VIO techniques.</td>
     </tr>
     <tr id="MAV_COMP_ID_PAIRING_MANAGER">
      <td>198</td>
      <td>
       <a href="#MAV_COMP_ID_PAIRING_MANAGER">MAV_COMP_ID_PAIRING_MANAGER</a>
      </td>
-     <td>管理飞行器和地面站配对的部件。</td>
+     <td>Component that manages pairing of vehicle and GCS.</td>
     </tr>
     <tr id="MAV_COMP_ID_IMU">
      <td>200</td>
      <td>
       <a href="#MAV_COMP_ID_IMU">MAV_COMP_ID_IMU</a>
      </td>
-     <td>1号惯性测量单元（IMU）。</td>
+     <td>Inertial Measurement Unit (IMU) #1.</td>
     </tr>
     <tr id="MAV_COMP_ID_IMU_2">
      <td>201</td>
      <td>
       <a href="#MAV_COMP_ID_IMU_2">MAV_COMP_ID_IMU_2</a>
      </td>
-     <td>2号惯性测量单元（IMU）。</td>
+     <td>Inertial Measurement Unit (IMU) #2.</td>
     </tr>
     <tr id="MAV_COMP_ID_IMU_3">
      <td>202</td>
      <td>
       <a href="#MAV_COMP_ID_IMU_3">MAV_COMP_ID_IMU_3</a>
      </td>
-     <td>3号惯性测量单元（IMU）。</td>
+     <td>Inertial Measurement Unit (IMU) #3.</td>
     </tr>
     <tr id="MAV_COMP_ID_GPS">
      <td>220</td>
      <td>
       <a href="#MAV_COMP_ID_GPS">MAV_COMP_ID_GPS</a>
      </td>
-     <td>1号GPS。</td>
+     <td>GPS #1.</td>
     </tr>
     <tr id="MAV_COMP_ID_GPS2">
      <td>221</td>
      <td>
       <a href="#MAV_COMP_ID_GPS2">MAV_COMP_ID_GPS2</a>
      </td>
-     <td>2号GPS。</td>
+     <td>GPS #2.</td>
     </tr>
     <tr id="MAV_COMP_ID_ODID_TXRX_1">
      <td>236</td>
@@ -2786,40 +2793,26 @@
      </td>
      <td>云台管理器支持指向全球纬度、经度、高度位置。</td>
     </tr>
-    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT">
-     <td>262144</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT">GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT</a>
-     </td>
-     <td>云台管理器支持跟踪摄像头上的点。</td>
-    </tr>
-    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE">
-     <td>524288</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE">GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE</a>
-     </td>
-     <td>云台管理器支持跟踪相机上的一个点。</td>
-    </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">
      <td>1048576</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE</a>
      </td>
-     <td>云台管理器支持俯仰和偏航的角速度缩放焦距(越是放大，运动越慢)。</td>
+     <td>Gimbal manager supports pitching and yawing at an angular velocity scaled by focal length (the more zoomed in, the slower the movement).</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING">
      <td>2097152</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING</a>
      </td>
-     <td>云台管理器支持在指向位置或跟踪时嵌入。</td>
+     <td>Gimbal manager supports nudging when pointing to a location or tracking.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE">
      <td>4194304</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE</a>
      </td>
-     <td>云台控制器支持在指向位置或跟踪时覆盖。</td>
+     <td>Gimbal manager supports overriding when pointing to a location or tracking.</td>
     </tr>
    </tbody>
   </table>
@@ -6768,6 +6761,27 @@
      </td>
      <td>Camera has video streaming capabilities (request VIDEO_STREAM_INFORMATION with MAV_CMD_REQUEST_MESSAGE for video streaming info)</td>
     </tr>
+    <tr id="CAMERA_CAP_FLAGS_HAS_TRACKING_POINT">
+     <td>512</td>
+     <td>
+      <a href="#CAMERA_CAP_FLAGS_HAS_TRACKING_POINT">CAMERA_CAP_FLAGS_HAS_TRACKING_POINT</a>
+     </td>
+     <td>Camera supports tracking of a point on the camera view.</td>
+    </tr>
+    <tr id="CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE">
+     <td>1024</td>
+     <td>
+      <a href="#CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE">CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE</a>
+     </td>
+     <td>Camera supports tracking of a selection rectangle on the camera view.</td>
+    </tr>
+    <tr id="CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS">
+     <td>2048</td>
+     <td>
+      <a href="#CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS">CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS</a>
+     </td>
+     <td>Camera supports tracking geo status (CAMERA_TRACKING_GEO_STATUS).</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="VIDEO_STREAM_STATUS_FLAGS">
@@ -6845,6 +6859,130 @@
       <a href="#VIDEO_STREAM_TYPE_MPEG_TS_H264">VIDEO_STREAM_TYPE_MPEG_TS_H264</a>
      </td>
      <td>Stream is h.264 on MPEG TS (URI gives the port number)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_STATUS_FLAGS">
+   <a href="#CAMERA_TRACKING_STATUS_FLAGS">CAMERA_TRACKING_STATUS_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Camera tracking status flags</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CAMERA_TRACKING_STATUS_FLAGS_IDLE">
+     <td>0</td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS_IDLE">CAMERA_TRACKING_STATUS_FLAGS_IDLE</a>
+     </td>
+     <td>Camera is not tracking</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_STATUS_FLAGS_ACTIVE">
+     <td>1</td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS_ACTIVE">CAMERA_TRACKING_STATUS_FLAGS_ACTIVE</a>
+     </td>
+     <td>Camera is tracking</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_STATUS_FLAGS_ERROR">
+     <td>2</td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS_ERROR">CAMERA_TRACKING_STATUS_FLAGS_ERROR</a>
+     </td>
+     <td>Camera tracking in error state</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_MODE">
+   <a href="#CAMERA_TRACKING_MODE">CAMERA_TRACKING_MODE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Camera tracking modes</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CAMERA_TRACKING_NONE">
+     <td>0</td>
+     <td>
+      <a href="#CAMERA_TRACKING_NONE">CAMERA_TRACKING_NONE</a>
+     </td>
+     <td>Not tracking</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_POINT">
+     <td>1</td>
+     <td>
+      <a href="#CAMERA_TRACKING_POINT">CAMERA_TRACKING_POINT</a>
+     </td>
+     <td>Target is a point</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_RECTANGLE">
+     <td>2</td>
+     <td>
+      <a href="#CAMERA_TRACKING_RECTANGLE">CAMERA_TRACKING_RECTANGLE</a>
+     </td>
+     <td>Target is a rectangle</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_TARGET_DATA">
+   <a href="#CAMERA_TRACKING_TARGET_DATA">CAMERA_TRACKING_TARGET_DATA</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Camera tracking target data (shows where tracked target is within image)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CAMERA_TRACKING_TARGET_NONE">
+     <td>0</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_NONE">CAMERA_TRACKING_TARGET_NONE</a>
+     </td>
+     <td>No target data</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_TARGET_EMBEDDED">
+     <td>1</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_EMBEDDED">CAMERA_TRACKING_TARGET_EMBEDDED</a>
+     </td>
+     <td>Target data embedded in image data (proprietary)</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_TARGET_RENDERED">
+     <td>2</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_RENDERED">CAMERA_TRACKING_TARGET_RENDERED</a>
+     </td>
+     <td>Target data rendered in image</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_TARGET_IN_STATUS">
+     <td>4</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_IN_STATUS">CAMERA_TRACKING_TARGET_IN_STATUS</a>
+     </td>
+     <td>Target data within status message (Point or Rectangle)</td>
     </tr>
    </tbody>
   </table>
@@ -15898,94 +16036,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT">MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT">1001</a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>If the gimbal manager supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Values</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Point x</td>
-     <td>Point to track x value.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>2: Point y</td>
-     <td>Point to track y value.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>7: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
-     <td>
-     </td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE">MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE">1002</a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>If the gimbal supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Values</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Top left corner x</td>
-     <td>Top left corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>2: Top left corner y</td>
-     <td>Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>3: Bottom right corner x</td>
-     <td>Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>4: Bottom right corner y</td>
-     <td>Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>7: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
-     <td>
-     </td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="MAV_CMD_IMAGE_START_CAPTURE">MAV_CMD_IMAGE_START_CAPTURE (<a href="#MAV_CMD_IMAGE_START_CAPTURE">2000</a>
    )
   </h3>
@@ -16179,6 +16229,107 @@
       -1 
       <em>max:</em>1 <em>increment:</em>2</td>
     </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_CAMERA_TRACK_POINT">MAV_CMD_CAMERA_TRACK_POINT (<a href="#MAV_CMD_CAMERA_TRACK_POINT">2004</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>If the camera supports point visual tracking (CAMERA_CAP_FLAGS_HAS_TRACKING_POINT is set), this command allows to initiate the tracking.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Point x</td>
+     <td>Point to track x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>2: Point y</td>
+     <td>Point to track y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>3: Radius</td>
+     <td>Point radius (normalized 0..1, 0 is image left, 1 is image right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_CAMERA_TRACK_RECTANGLE">MAV_CMD_CAMERA_TRACK_RECTANGLE (<a href="#MAV_CMD_CAMERA_TRACK_RECTANGLE">2005</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>If the camera supports rectangle visual tracking (CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE is set), this command allows to initiate the tracking.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Top left corner x</td>
+     <td>Top left corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>2: Top left corner y</td>
+     <td>Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>3: Bottom right corner x</td>
+     <td>Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>4: Bottom right corner y</td>
+     <td>Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_CAMERA_STOP_TRACKING">MAV_CMD_CAMERA_STOP_TRACKING (<a href="#MAV_CMD_CAMERA_STOP_TRACKING">2010</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Stops ongoing tracking.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
    </tbody>
   </table>
   <h3 id="MAV_CMD_VIDEO_START_CAPTURE">MAV_CMD_VIDEO_START_CAPTURE (<a href="#MAV_CMD_VIDEO_START_CAPTURE">2500</a>
@@ -31632,6 +31783,276 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="CAMERA_TRACKING_IMAGE_STATUS">CAMERA_TRACKING_IMAGE_STATUS (<a href="#CAMERA_TRACKING_IMAGE_STATUS">
+    #275
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Camera tracking status, sent while in active tracking. Use MAV_CMD_SET_MESSAGE_INTERVAL to define message interval.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>tracking_status</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS">CAMERA_TRACKING_STATUS_FLAGS</a>
+     </td>
+     <td>Current tracking status</td>
+    </tr>
+    <tr>
+     <td>tracking_mode</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CAMERA_TRACKING_MODE">CAMERA_TRACKING_MODE</a>
+     </td>
+     <td>Current tracking mode</td>
+    </tr>
+    <tr>
+     <td>target_data</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_DATA">CAMERA_TRACKING_TARGET_DATA</a>
+     </td>
+     <td>Defines location of target data</td>
+    </tr>
+    <tr>
+     <td>point_x</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked point x value if CAMERA_TRACKING_POINT (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>point_y</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked point y value if CAMERA_TRACKING_POINT (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>radius</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked radius if CAMERA_TRACKING_POINT (normalized 0..1, 0 is image left, 1 is image right), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>rec_top_x</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked rectangle top x value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>rec_top_y</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked rectangle top y value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>rec_bottom_x</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked rectangle bottom x value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>rec_bottom_y</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked rectangle bottom y value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_GEO_STATUS">CAMERA_TRACKING_GEO_STATUS (<a href="#CAMERA_TRACKING_GEO_STATUS">
+    #276
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Camera tracking status, sent while in active tracking. Use MAV_CMD_SET_MESSAGE_INTERVAL to define message interval.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>tracking_status</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS">CAMERA_TRACKING_STATUS_FLAGS</a>
+     </td>
+     <td>Current tracking status</td>
+    </tr>
+    <tr>
+     <td>lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Latitude of tracked object</td>
+    </tr>
+    <tr>
+     <td>lon</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Longitude of tracked object</td>
+    </tr>
+    <tr>
+     <td>alt</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Altitude of tracked object(AMSL, WGS84)</td>
+    </tr>
+    <tr>
+     <td>h_acc</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Horizontal accuracy. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>v_acc</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Vertical accuracy. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>vel_n</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>North velocity of tracked object. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>vel_e</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>East velocity of tracked object. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>vel_d</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Down velocity of tracked object. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>vel_acc</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Velocity accuracy. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>dist</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Distance between camera and tracked object. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>hdg</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Heading in radians, in NED. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>hdg_acc</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Accuracy of heading, in NED. NAN if unknown</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="GIMBAL_MANAGER_INFORMATION">GIMBAL_MANAGER_INFORMATION (<a href="#GIMBAL_MANAGER_INFORMATION">
     #280
    </a>
@@ -33215,7 +33636,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Request to read the value of a parameter with the either the param_id string id or param_index.</p>
+   </strong>Request to read the value of a parameter with either the param_id string id or param_index. PARAM_EXT_VALUE or PARAM_EXT_VALUE_TRIMMED should be emitted in response (see field: trimmed).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33245,6 +33666,14 @@
      <td>int16_t</td>
      <td>Parameter index. Set to -1 to use the Parameter ID field as identifier (else param_id will be ignored)</td>
     </tr>
+    <tr>
+     <td style="color:blue;">trimmed<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>Request _TRIMMED variants of PARAM_EXT_ messages. Set to 1 if _TRIMMED message variants are supported, and 0 otherwise. This signals the recipient that _TRIMMED messages are supported by the sender (and should be used if supported by the recipient).</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="PARAM_EXT_REQUEST_LIST">PARAM_EXT_REQUEST_LIST (<a href="#PARAM_EXT_REQUEST_LIST">
@@ -33258,7 +33687,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Request all parameters of this component. After this request, all parameters are emitted.</p>
+   </strong>Request all parameters of this component. All parameters should be emitted in response (as PARAM_EXT_VALUE or PARAM_EXT_VALUE_TRIMMED messages - see field: trimmed).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33278,6 +33707,14 @@
      <td>uint8_t</td>
      <td>Component ID</td>
     </tr>
+    <tr>
+     <td style="color:blue;">trimmed<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>Request _TRIMMED variants of PARAM_EXT_ messages. Set to 1 if _TRIMMED message variants are supported, and 0 otherwise. This signals the recipient that _TRIMMED messages are supported by the sender (and should be used if supported by the recipient).</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="PARAM_EXT_VALUE">PARAM_EXT_VALUE (<a href="#PARAM_EXT_VALUE">
@@ -33286,7 +33723,7 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by PARAM_V3_VALUE (2020-07).
+   <strong>DEPRECATED:</strong> Replaced by PARAM_EXT_VALUE_TRIMMED (2020-07).
 
 
   The new version of this message correctly trims zeros.</p>
@@ -33359,10 +33796,10 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by PARAM_V3_SET (2020-07).
+   <strong>DEPRECATED:</strong> Replaced by PARAM_EXT_SET_TRIMMED (2020-07).
 
 
-  The new second version of this message correctly trims zeros.</p>
+  New version of PARAM_EXT_SET that correctly trims zeros.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33432,10 +33869,10 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by PARAM_V3_ACK (2020-07).
+   <strong>DEPRECATED:</strong> Replaced by PARAM_EXT_ACK_TRIMMED (2020-07).
 
 
-  The new version of this message correctly trims zeros.</p>
+  New version of PARAM_EXT_ACK that correctly trims zeros.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33489,7 +33926,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="PARAM_V3_VALUE">PARAM_V3_VALUE (<a href="#PARAM_V3_VALUE">
+  <h3 id="PARAM_EXT_VALUE_TRIMMED">PARAM_EXT_VALUE_TRIMMED (<a href="#PARAM_EXT_VALUE_TRIMMED">
     #325
    </a>
    )
@@ -33502,7 +33939,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Emit the value of a parameter. The param_count and param_index fields allow the recipient to keep track of received parameters and to re-request missing parameters after a loss or timeout. Replacement for PARAM_EXT_VALUE.</p>
+   </strong>Emit the value of a parameter. The inclusion of param_count and param_index in the message allows the recipient to keep track of received parameters and allows them to re-request missing parameters after a loss or timeout. Replacement for PARAM_EXT_VALUE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33559,7 +33996,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="PARAM_V3_SET">PARAM_V3_SET (<a href="#PARAM_V3_SET">
+  <h3 id="PARAM_EXT_SET_TRIMMED">PARAM_EXT_SET_TRIMMED (<a href="#PARAM_EXT_SET_TRIMMED">
     #326
    </a>
    )
@@ -33572,7 +34009,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Set a parameter value. In order to deal with message loss (and retransmission of PARAM_EXT_SET), when setting a parameter value and the new value is the same as the current value, you will immediately get a PARAM_ACK_ACCEPTED response. If the current state is PARAM_ACK_IN_PROGRESS, you will accordingly receive a PARAM_ACK_IN_PROGRESS in response.</p>
+   </strong>Set a parameter value. In order to deal with message loss (and retransmission of PARAM_EXT_SET_TRIMMED), when setting a parameter value and the new value is the same as the current value, you will immediately get a PARAM_ACK_ACCEPTED response. If the current state is PARAM_ACK_IN_PROGRESS, you will accordingly receive a PARAM_ACK_IN_PROGRESS in response. If there is no response to this message, and it is unknown whether the _TRIMMED messages are supported (because no PARAM_EXT_REQUEST_READ or PARAM_EXT_REQUEST_LIST has been performed yet), then fall back to PARAM_EXT_SET.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33629,7 +34066,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="PARAM_V3_ACK">PARAM_V3_ACK (<a href="#PARAM_V3_ACK">
+  <h3 id="PARAM_EXT_ACK_TRIMMED">PARAM_EXT_ACK_TRIMMED (<a href="#PARAM_EXT_ACK_TRIMMED">
     #327
    </a>
    )
@@ -33642,7 +34079,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Response from a PARAM_V3_SET message.</p>
+   </strong>Response from a PARAM_EXT_SET_TRIMMED message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33740,6 +34177,15 @@
      <td>Possible transport layers to set and get parameters via mavlink during a parameter transaction.</td>
     </tr>
     <tr>
+     <td>transaction_id</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Identifier for a specific transaction.</td>
+    </tr>
+    <tr>
      <td>response</td>
      <td>uint8_t</td>
      <td>
@@ -33798,6 +34244,15 @@
       <a href="#PARAM_TRANSACTION_ACTION">PARAM_TRANSACTION_ACTION</a>
      </td>
      <td>Commit or cancel an ongoing transaction.</td>
+    </tr>
+    <tr>
+     <td>transaction_id</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Identifier for a specific transaction.</td>
     </tr>
     <tr>
      <td>response</td>
