@@ -51,16 +51,16 @@ MAVLink 프로젝트에는 [mavgen](getting_started/generate_libraries.md#mavgen
 
 ## 미리 빌드한 MAVLink C 라이브러리 {#prebuilt_libraries}
 
-*C* MAVLink Source Files (only) are auto-generated for the latest versions of all message [specifications/dialects](messages/README.md) (for both MAVLink 1 and 2):
+*C* MAVLink 소스코드 파일(만) (MAVLink 1과 2에 대한) 모든 메시지 [명세/공통 언어](messages/README.md) 를 다룬 최신 버전의 내용을 자동으로 생성합니다:
 
 * [c_library_v2](https://github.com/mavlink/c_library_v2) (MAVLink 2)
 * [c_library_v1](https://github.com/mavlink/c_library_v1) (MAVLink 1)
 
-[Using C Libraries](mavgen_c/README.md) explains how to use these libraries.
+[C 라이브러리 활용법](mavgen_c/README.md)에서 이 라이브러리의 활용 방법을 설명합니다.
 
 ## 지원 {#support}
 
-The [Support](about/support.md) topic contains information about the [mailing list](https://groups.google.com/forum/#!forum/mavlink), reporting bugs/issues, and joining the [dev call](about/support.md#dev_call).
+[지원](about/support.md) 주제에는 [메일링 리스트](https://groups.google.com/forum/#!forum/mavlink), 버그/문제 보고, [유선 개발 미팅](about/support.md#dev_call) 참여 방법에 대한 내용이 들어있습니다.. 
 
 ## 기여 
 
@@ -68,11 +68,11 @@ The [Support](about/support.md) topic contains information about the [mailing li
 
 ## 라이선스
 
-메시지 정의 XML 파일과 기존에 만든 [MAVLink C 언어 버전](#prebuilt_libraries)(헤더만 있는 라이브러리)은 MIT 라이선스에 따라 사용할 수 있습니다. 따라서 MAVLink는 비공개 소스 코드 프로그램의 소스 코드 공개를 하지 않고도 어떤 비공개 소스 코드 프로그램에든 *사용*할 수 있습니다. See the [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING) file for more information.
+메시지 정의 XML 파일과 기존에 만든 [MAVLink C 언어 버전](#prebuilt_libraries)(헤더만 있는 라이브러리)은 MIT 라이선스에 따라 사용할 수 있습니다. 따라서 MAVLink는 비공개 소스 코드 프로그램의 소스 코드 공개를 하지 않고도 어떤 비공개 소스 코드 프로그램에든 *사용*할 수 있습니다. 자세한 내용은 [COPYING](https://github.com/mavlink/mavlink/blob/master/COPYING)을 참고하십시오.
 
-The [MAVLink generator toolchain](https://github.com/mavlink/mavlink/) is licensed under the terms of the Lesser General Public License (version 3) of the Free Software Foundation (LGPLv3).
+[MAVLink 제너레이터 툴체인](https://github.com/mavlink/mavlink/)은 자유 소프트웨어 재단의 조건 완화 일반 공중 사용 허가서(버전 3) (LGPLv3) 라이선스를 적용했습니다.
 
-This documentation is licensed under *CC BY 4.0* ([Human readable overview](https://creativecommons.org/licenses/by/4.0/) | [LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE)).
+이 문서는 *크리에이티브 커먼즈 저작권 표시 4.0* 라이선스를 적용했습니다 ([보기 가능 개요](https://creativecommons.org/licenses/by/4.0/) | [LICENSE](https://github.com/mavlink/mavlink-devguide/blob/master/LICENSE))
 
 ## 운영
 
