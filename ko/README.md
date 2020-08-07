@@ -19,14 +19,14 @@ MAVLink는 2009년 초반 Lorenz Meier가 처음으로 출시했으며, 현재�
 ## 주요 기능
 
 * 매우 효율적입니다. MAVLink 1은 시작 부호와 패킷 손실 탐지 부분을 포함하여 패킷당 8바이트의 크기를 가집니다. MAVLink 2는 14바이트의 크기를 가집니다(만, 더 안전하고 기능 확장에 용이합니다). MAVLink는 추가 프레이밍이 필요가 없기 때문에 통신 대역폭을 상당히 제한하는 여건에서도 프로그램에 매우 안성맞춤입니다.
-* 상당히 견고합니다. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, corruption, and for packet authentication.
-* Supports [many programming languages](#supported_languages), running on numerous microcontrollers/operating systems (including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS).
-* Allows up to 255 concurrent systems on the network (vehicles, ground stations, etc.)
-* Enables both offboard and onboard communications (e.g. between a GCS and drone, and between drone autopilot and MAVLink enabled drone camera).
+* 상당히 견고합니다. MAVLink는 여건이 혹독한 다양한 통신 채널(높은 지연율/잡음) 환경에서 다양한 기체, 지상 관제국(및 타 노드)간의 통신 수행 목적으로 2009년부터 사용했습니다. 패킷 손실, 손상, 인증 수단을 제공합니다.
+* 여러 마이크로컨트롤러(ARM7, ATMega, dsPic, STM32)와 운영체제(윈도우, 리눅스, MacOS, 안드로이드, iOS)에서 동작하는 [많은 프로그래밍 언어](#supported_languages)를 지원합니다.
+* 네트워크에서 최대 255대의 시스템(기체, 지상 관제국)을 동시에 운용할 수 있습니다.
+* 보드 내외간 통신이 가능합니다(GCS와 드론간의 통신, 드론 오토파일럿과 MAVLink 통신 기능을 갖춘 드론 카메라와의 통신).
 
-## Supported Languages {#supported_languages}
+## 지원 언어 {#supported_languages}
 
-The MAVLink project includes the [mavgen](getting_started/generate_libraries.md#mavgen) and [mavgenerate](getting_started/generate_libraries.md#mavgenerate) tools that can be used to create MAVLink libraries for a number of programming languages. Additional generators have been provided by other projects.
+MAVLink 프로젝트에는 [mavgen](getting_started/generate_libraries.md#mavgen)과 [mavgenerate](getting_started/generate_libraries.md#mavgenerate) 도구가 들어있어, 다양한 프로그래밍 언어를 활용할 수 있는 MAVLink 라이브러리를 만들 수 있습니다. 추가 제네레이터는 다른 프로젝트에서 제공합니다.
 
 > **Note** The MAVLink project has not validated and does not provide technical support for generators other than *mavgen* and *mavgenerate*.
 
