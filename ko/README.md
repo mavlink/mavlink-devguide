@@ -12,11 +12,11 @@ MAVLink는 임의송신-가입 방식 및 점대점 방식을 혼용한 최신 �
 
 [MAVLink 툴체인](https://github.com/mavlink/mavlink/)에서는 [각각의 지원 프로그래밍 언어](#supported_languages)에 따라 MAVLink 라이브러리를 [만드는](getting_started/generate_libraries.md) XML 메시지 정의를 활용합니다. 드론, 지상 관제 머신, 기타 MAVLink 시스템에서는 통신 목적으로 만든 라이브러리를 활용합니다. 보통 MIT 라이선스를 부여하며, 비공개 소스코드 프로그램의 소스코드를 공개하지 않고도 비공개 소스 코드 프로그램으로의 그 어떤 제한 없이 *활용*할 수 있습니다.
 
-> **Note** C 참조 구현체는 제한된 RAM과 플래시 메모리 용량을 가진 자원 제약 시스템에 극도로 최적화한 헤더만 있는 라이브러리입니다. It is field-proven and deployed in many products where it serves as interoperability interface between components of different manufacturers.
+> **Note** C 참조 구현체는 제한된 RAM과 플래시 메모리 용량을 가진 자원 제약 시스템에 극도로 최적화한 헤더만 있는 라이브러리입니다. 현업에서 검증했고 제각기 다른 제조사의 부품들간 상호 운용 인터페이스를 제공하는 많은 제품에 적용했습니다.
 
-MAVLink was first released early 2009 by Lorenz Meier and has now a [significant number of contributors](https://github.com/mavlink/mavlink/graphs/contributors).
+MAVLink는 2009년 초반 Lorenz Meier가 처음으로 출시했으며, 현재는 [두드러지는 규모의 기여자가 있습니다](https://github.com/mavlink/mavlink/graphs/contributors).
 
-## Key Features
+## 주요 기능
 
 * Very efficient. MAVLink 1 has just 8 bytes overhead per packet, including start sign and packet drop detection. MAVLink 2 has just 14 bytes of overhead (but is a much more secure and extensible protocol). Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth.
 * Very reliable. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, corruption, and for packet authentication.
