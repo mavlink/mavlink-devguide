@@ -33978,23 +33978,6 @@
    </thead>
    <tbody>
     <tr>
-     <td>param_id</td>
-     <td>char[16]</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
-    </tr>
-    <tr>
-     <td>param_type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
-     </td>
-     <td>Parameter type.</td>
-    </tr>
-    <tr>
      <td>param_count</td>
      <td>uint16_t</td>
      <td>
@@ -34011,6 +33994,23 @@
       </a>
      </td>
      <td>Index of this parameter</td>
+    </tr>
+    <tr>
+     <td>param_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+     </td>
+     <td>Parameter type.</td>
+    </tr>
+    <tr>
+     <td>param_id</td>
+     <td>char[16]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
     </tr>
     <tr>
      <td>param_value</td>
@@ -34066,6 +34066,14 @@
      <td>Component ID</td>
     </tr>
     <tr>
+     <td>param_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+     </td>
+     <td>Parameter type.</td>
+    </tr>
+    <tr>
      <td>param_id</td>
      <td>char[16]</td>
      <td>
@@ -34073,14 +34081,6 @@
       </a>
      </td>
      <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
-    </tr>
-    <tr>
-     <td>param_type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
-     </td>
-     <td>Parameter type.</td>
     </tr>
     <tr>
      <td>param_value</td>
@@ -34118,13 +34118,12 @@
    </thead>
    <tbody>
     <tr>
-     <td>param_id</td>
-     <td>char[16]</td>
+     <td>param_result</td>
+     <td>uint8_t</td>
      <td>
-      <a href="#">
-      </a>
+      <a href="#PARAM_ACK">PARAM_ACK</a>
      </td>
-     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+     <td>Result code.</td>
     </tr>
     <tr>
      <td>param_type</td>
@@ -34135,12 +34134,13 @@
      <td>Parameter type.</td>
     </tr>
     <tr>
-     <td>param_result</td>
-     <td>uint8_t</td>
+     <td>param_id</td>
+     <td>char[16]</td>
      <td>
-      <a href="#PARAM_ACK">PARAM_ACK</a>
+      <a href="#">
+      </a>
      </td>
-     <td>Result code.</td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
     </tr>
     <tr>
      <td>param_value</td>
