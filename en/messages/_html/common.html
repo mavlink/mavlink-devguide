@@ -3041,6 +3041,77 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="GRIPPER_ACTIONS">
+   <a href="#GRIPPER_ACTIONS">GRIPPER_ACTIONS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gripper actions.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GRIPPER_ACTION_RELEASE">
+     <td>0</td>
+     <td>
+      <a href="#GRIPPER_ACTION_RELEASE">GRIPPER_ACTION_RELEASE</a>
+     </td>
+     <td>Gripper release cargo.</td>
+    </tr>
+    <tr id="GRIPPER_ACTION_GRAB">
+     <td>1</td>
+     <td>
+      <a href="#GRIPPER_ACTION_GRAB">GRIPPER_ACTION_GRAB</a>
+     </td>
+     <td>Gripper grab onto cargo.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="WINCH_ACTIONS">
+   <a href="#WINCH_ACTIONS">WINCH_ACTIONS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Winch actions.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="WINCH_RELAXED">
+     <td>0</td>
+     <td>
+      <a href="#WINCH_RELAXED">WINCH_RELAXED</a>
+     </td>
+     <td>Relax winch.</td>
+    </tr>
+    <tr id="WINCH_RELATIVE_LENGTH_CONTROL">
+     <td>1</td>
+     <td>
+      <a href="#WINCH_RELATIVE_LENGTH_CONTROL">WINCH_RELATIVE_LENGTH_CONTROL</a>
+     </td>
+     <td>Wind or unwind specified length of cable, optionally using specified rate.</td>
+    </tr>
+    <tr id="WINCH_RATE_CONTROL">
+     <td>2</td>
+     <td>
+      <a href="#WINCH_RATE_CONTROL">WINCH_RATE_CONTROL</a>
+     </td>
+     <td>Wind or unwind cable at specified rate.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="UAVCAN_NODE_HEALTH">
    <a href="#UAVCAN_NODE_HEALTH">UAVCAN_NODE_HEALTH</a>
   </h3>
@@ -14168,6 +14239,65 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_DO_GRIPPER">MAV_CMD_DO_GRIPPER (<a href="#MAV_CMD_DO_GRIPPER">211</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Mission command to operate a gripper.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Instance</td>
+     <td>Gripper instance number.</td>
+     <td>
+      <em>min:</em>1 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>2: Action</td>
+     <td>Gripper action to perform.</td>
+     <td>GRIPPER_ACTIONS</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_NAV_SET_YAW_SPEED">MAV_CMD_NAV_SET_YAW_SPEED (<a href="#MAV_CMD_NAV_SET_YAW_SPEED">213</a>
    )
   </h3>
@@ -17599,6 +17729,78 @@
     <tr>
      <td>7</td>
      <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_WINCH">MAV_CMD_DO_WINCH (<a href="#MAV_CMD_DO_WINCH">42600</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Command to operate winch.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Instance</td>
+     <td>Winch instance number.</td>
+     <td>
+      <em>min:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>2: Action</td>
+     <td>Action to perform.</td>
+     <td>WINCH_ACTIONS</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3: Length</td>
+     <td>Length of cable to release (negative to wind).</td>
+     <td>
+     </td>
+     <td>m</td>
+    </tr>
+    <tr>
+     <td>4: Rate</td>
+     <td>Release rate (negative to wind).</td>
+     <td>
+     </td>
+     <td>m/s</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
      <td>
      </td>
     </tr>
