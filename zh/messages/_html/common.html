@@ -3025,11 +3025,84 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="GRIPPER_ACTIONS">
+   <a href="#GRIPPER_ACTIONS">GRIPPER_ACTIONS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gripper actions.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GRIPPER_ACTION_RELEASE">
+     <td>0</td>
+     <td>
+      <a href="#GRIPPER_ACTION_RELEASE">GRIPPER_ACTION_RELEASE</a>
+     </td>
+     <td>Gripper release cargo.</td>
+    </tr>
+    <tr id="GRIPPER_ACTION_GRAB">
+     <td>1</td>
+     <td>
+      <a href="#GRIPPER_ACTION_GRAB">GRIPPER_ACTION_GRAB</a>
+     </td>
+     <td>Gripper grab onto cargo.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="WINCH_ACTIONS">
+   <a href="#WINCH_ACTIONS">WINCH_ACTIONS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Winch actions.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="WINCH_RELAXED">
+     <td>0</td>
+     <td>
+      <a href="#WINCH_RELAXED">WINCH_RELAXED</a>
+     </td>
+     <td>Relax winch.</td>
+    </tr>
+    <tr id="WINCH_RELATIVE_LENGTH_CONTROL">
+     <td>1</td>
+     <td>
+      <a href="#WINCH_RELATIVE_LENGTH_CONTROL">WINCH_RELATIVE_LENGTH_CONTROL</a>
+     </td>
+     <td>Wind or unwind specified length of cable, optionally using specified rate.</td>
+    </tr>
+    <tr id="WINCH_RATE_CONTROL">
+     <td>2</td>
+     <td>
+      <a href="#WINCH_RATE_CONTROL">WINCH_RATE_CONTROL</a>
+     </td>
+     <td>Wind or unwind cable at specified rate.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="UAVCAN_NODE_HEALTH">
    <a href="#UAVCAN_NODE_HEALTH">UAVCAN_NODE_HEALTH</a>
   </h3>
   <p>
-   常规的 UAVCAN 节点健康状态</p>
+   <a href="#enums">
+    [Enum]
+   </a>Generalized UAVCAN node health</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3044,28 +3117,28 @@
      <td>
       <a href="#UAVCAN_NODE_HEALTH_OK">UAVCAN_NODE_HEALTH_OK</a>
      </td>
-     <td>节点正常运行。</td>
+     <td>The node is functioning properly.</td>
     </tr>
     <tr id="UAVCAN_NODE_HEALTH_WARNING">
      <td>1</td>
      <td>
       <a href="#UAVCAN_NODE_HEALTH_WARNING">UAVCAN_NODE_HEALTH_WARNING</a>
      </td>
-     <td>关键参数超出范围或节点遇到轻微故障。</td>
+     <td>A critical parameter went out of range or the node has encountered a minor failure.</td>
     </tr>
     <tr id="UAVCAN_NODE_HEALTH_ERROR">
      <td>2</td>
      <td>
       <a href="#UAVCAN_NODE_HEALTH_ERROR">UAVCAN_NODE_HEALTH_ERROR</a>
      </td>
-     <td>该节点遇到重大故障。</td>
+     <td>The node has encountered a major failure.</td>
     </tr>
     <tr id="UAVCAN_NODE_HEALTH_CRITICAL">
      <td>3</td>
      <td>
       <a href="#UAVCAN_NODE_HEALTH_CRITICAL">UAVCAN_NODE_HEALTH_CRITICAL</a>
      </td>
-     <td>该节点发生致命故障。</td>
+     <td>The node has suffered a fatal malfunction.</td>
     </tr>
    </tbody>
   </table>
@@ -3073,7 +3146,9 @@
    <a href="#UAVCAN_NODE_MODE">UAVCAN_NODE_MODE</a>
   </h3>
   <p>
-   常规的 UAVCAN 节点模式</p>
+   <a href="#enums">
+    [Enum]
+   </a>Generalized UAVCAN node mode</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3088,35 +3163,35 @@
      <td>
       <a href="#UAVCAN_NODE_MODE_OPERATIONAL">UAVCAN_NODE_MODE_OPERATIONAL</a>
      </td>
-     <td>节点正在执行它的主要功能。</td>
+     <td>The node is performing its primary functions.</td>
     </tr>
     <tr id="UAVCAN_NODE_MODE_INITIALIZATION">
      <td>1</td>
      <td>
       <a href="#UAVCAN_NODE_MODE_INITIALIZATION">UAVCAN_NODE_MODE_INITIALIZATION</a>
      </td>
-     <td>节点正在初始化;此模式在启动后立即进入。</td>
+     <td>The node is initializing; this mode is entered immediately after startup.</td>
     </tr>
     <tr id="UAVCAN_NODE_MODE_MAINTENANCE">
      <td>2</td>
      <td>
       <a href="#UAVCAN_NODE_MODE_MAINTENANCE">UAVCAN_NODE_MODE_MAINTENANCE</a>
      </td>
-     <td>该节点正在维护中。</td>
+     <td>The node is under maintenance.</td>
     </tr>
     <tr id="UAVCAN_NODE_MODE_SOFTWARE_UPDATE">
      <td>3</td>
      <td>
       <a href="#UAVCAN_NODE_MODE_SOFTWARE_UPDATE">UAVCAN_NODE_MODE_SOFTWARE_UPDATE</a>
      </td>
-     <td>该节点正在更新其软件</td>
+     <td>The node is in the process of updating its software.</td>
     </tr>
     <tr id="UAVCAN_NODE_MODE_OFFLINE">
      <td>7</td>
      <td>
       <a href="#UAVCAN_NODE_MODE_OFFLINE">UAVCAN_NODE_MODE_OFFLINE</a>
      </td>
-     <td>该节点不再联机可用。</td>
+     <td>The node is no longer available online.</td>
     </tr>
    </tbody>
   </table>
@@ -14148,6 +14223,65 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_DO_GRIPPER">MAV_CMD_DO_GRIPPER (<a href="#MAV_CMD_DO_GRIPPER">211</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Mission command to operate a gripper.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Instance</td>
+     <td>Gripper instance number.</td>
+     <td>
+      <em>min:</em>1 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>2: Action</td>
+     <td>Gripper action to perform.</td>
+     <td>GRIPPER_ACTIONS</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_NAV_SET_YAW_SPEED">MAV_CMD_NAV_SET_YAW_SPEED (<a href="#MAV_CMD_NAV_SET_YAW_SPEED">213</a>
    )
   </h3>
@@ -17579,6 +17713,78 @@
     <tr>
      <td>7</td>
      <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_WINCH">MAV_CMD_DO_WINCH (<a href="#MAV_CMD_DO_WINCH">42600</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Command to operate winch.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Instance</td>
+     <td>Winch instance number.</td>
+     <td>
+      <em>min:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>2: Action</td>
+     <td>Action to perform.</td>
+     <td>WINCH_ACTIONS</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3: Length</td>
+     <td>Length of cable to release (negative to wind).</td>
+     <td>
+     </td>
+     <td>m</td>
+    </tr>
+    <tr>
+     <td>4: Rate</td>
+     <td>Release rate (negative to wind).</td>
+     <td>
+     </td>
+     <td>m/s</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
      <td>
      </td>
     </tr>
