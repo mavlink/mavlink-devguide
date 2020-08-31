@@ -45,7 +45,7 @@
      <td>
       <a href="#MAV_AUTOPILOT_ARDUPILOTMEGA">MAV_AUTOPILOT_ARDUPILOTMEGA</a>
      </td>
-     <td>ArduPilot - Plane/Copter/Rover/Sub/Tracker, http://ardupilot.org</td>
+     <td>ArduPilot - Plane/Copter/Rover/Sub/Tracker, https://ardupilot.org</td>
     </tr>
     <tr id="MAV_AUTOPILOT_OPENPILOT">
      <td>4</td>
@@ -415,6 +415,13 @@
      </td>
      <td>Servo</td>
     </tr>
+    <tr id="MAV_TYPE_ODID">
+     <td>34</td>
+     <td>
+      <a href="#MAV_TYPE_ODID">MAV_TYPE_ODID</a>
+     </td>
+     <td>Open Drone ID. See https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_MODE_FLAG">
@@ -678,7 +685,7 @@
      <td>
       <a href="#MAV_COMP_ID_ALL">MAV_COMP_ID_ALL</a>
      </td>
-     <td>Used to broadcast messages to all components of the receiving system. Components should attempt to process messages with this component ID and forward to components on any other interfaces.</td>
+     <td>Target id (target_component) used to broadcast messages to all components of the receiving system. Components should attempt to process messages with this component ID and forward to components on any other interfaces. Note: This is not a valid *source* component id for a message.</td>
     </tr>
     <tr id="MAV_COMP_ID_AUTOPILOT1">
      <td>1</td>
@@ -988,12 +995,12 @@
      </td>
      <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
     </tr>
-    <tr id="MAV_COMP_ID_USER44">
+    <tr id="MAV_COMP_ID_TELEMETRY_RADIO">
      <td>68</td>
      <td>
-      <a href="#MAV_COMP_ID_USER44">MAV_COMP_ID_USER44</a>
+      <a href="#MAV_COMP_ID_TELEMETRY_RADIO">MAV_COMP_ID_TELEMETRY_RADIO</a>
      </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
+     <td>Telemetry radio (e.g. SiK radio, or other component that emits RADIO_STATUS messages).</td>
     </tr>
     <tr id="MAV_COMP_ID_USER45">
      <td>69</td>
@@ -1357,7 +1364,7 @@
      <td>
       <a href="#MAV_COMP_ID_GIMBAL">MAV_COMP_ID_GIMBAL</a>
      </td>
-     <td>Gimbal component.</td>
+     <td>Gimbal #1.</td>
     </tr>
     <tr id="MAV_COMP_ID_LOG">
      <td>155</td>
@@ -1406,12 +1413,54 @@
      </td>
      <td>FLARM collision alert component.</td>
     </tr>
+    <tr id="MAV_COMP_ID_GIMBAL2">
+     <td>171</td>
+     <td>
+      <a href="#MAV_COMP_ID_GIMBAL2">MAV_COMP_ID_GIMBAL2</a>
+     </td>
+     <td>Gimbal #2.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_GIMBAL3">
+     <td>172</td>
+     <td>
+      <a href="#MAV_COMP_ID_GIMBAL3">MAV_COMP_ID_GIMBAL3</a>
+     </td>
+     <td>Gimbal #3.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_GIMBAL4">
+     <td>173</td>
+     <td>
+      <a href="#MAV_COMP_ID_GIMBAL4">MAV_COMP_ID_GIMBAL4</a>
+     </td>
+     <td>Gimbal #4</td>
+    </tr>
+    <tr id="MAV_COMP_ID_GIMBAL5">
+     <td>174</td>
+     <td>
+      <a href="#MAV_COMP_ID_GIMBAL5">MAV_COMP_ID_GIMBAL5</a>
+     </td>
+     <td>Gimbal #5.</td>
+    </tr>
+    <tr id="MAV_COMP_ID_GIMBAL6">
+     <td>175</td>
+     <td>
+      <a href="#MAV_COMP_ID_GIMBAL6">MAV_COMP_ID_GIMBAL6</a>
+     </td>
+     <td>Gimbal #6.</td>
+    </tr>
     <tr id="MAV_COMP_ID_MISSIONPLANNER">
      <td>190</td>
      <td>
       <a href="#MAV_COMP_ID_MISSIONPLANNER">MAV_COMP_ID_MISSIONPLANNER</a>
      </td>
      <td>Component that can generate/supply a mission flight plan (e.g. GCS or developer API).</td>
+    </tr>
+    <tr id="MAV_COMP_ID_ONBOARD_COMPUTER">
+     <td>191</td>
+     <td>
+      <a href="#MAV_COMP_ID_ONBOARD_COMPUTER">MAV_COMP_ID_ONBOARD_COMPUTER</a>
+     </td>
+     <td>Component that lives on the onboard computer (companion computer) and has some generic functionalities, such as settings system parameters and monitoring the status of some processes that don't directly speak mavlink and so on.</td>
     </tr>
     <tr id="MAV_COMP_ID_PATHPLANNER">
      <td>195</td>
@@ -1476,6 +1525,27 @@
      </td>
      <td>GPS #2.</td>
     </tr>
+    <tr id="MAV_COMP_ID_ODID_TXRX_1">
+     <td>236</td>
+     <td>
+      <a href="#MAV_COMP_ID_ODID_TXRX_1">MAV_COMP_ID_ODID_TXRX_1</a>
+     </td>
+     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
+    </tr>
+    <tr id="MAV_COMP_ID_ODID_TXRX_2">
+     <td>237</td>
+     <td>
+      <a href="#MAV_COMP_ID_ODID_TXRX_2">MAV_COMP_ID_ODID_TXRX_2</a>
+     </td>
+     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
+    </tr>
+    <tr id="MAV_COMP_ID_ODID_TXRX_3">
+     <td>238</td>
+     <td>
+      <a href="#MAV_COMP_ID_ODID_TXRX_3">MAV_COMP_ID_ODID_TXRX_3</a>
+     </td>
+     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
+    </tr>
     <tr id="MAV_COMP_ID_UDP_BRIDGE">
      <td>240</td>
      <td>
@@ -1489,6 +1559,13 @@
       <a href="#MAV_COMP_ID_UART_BRIDGE">MAV_COMP_ID_UART_BRIDGE</a>
      </td>
      <td>Component to bridge to UART (i.e. from UDP).</td>
+    </tr>
+    <tr id="MAV_COMP_ID_TUNNEL_NODE">
+     <td>242</td>
+     <td>
+      <a href="#MAV_COMP_ID_TUNNEL_NODE">MAV_COMP_ID_TUNNEL_NODE</a>
+     </td>
+     <td>Component handling TUNNEL messages (e.g. vendor specific GUI of a component).</td>
     </tr>
     <tr id="MAV_COMP_ID_SYSTEM_CONTROL">
      <td>250</td>
@@ -1534,31 +1611,31 @@
       <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>2: Index ID</td>
-     <td>Index id (if appropriate). The use of this parameter (if any), must be defined in the requested message.</td>
+     <td>2: Req Param 1</td>
+     <td>Use for index ID, if required. Otherwise, the use of this parameter (if any) must be defined in the requested message. By default assumed not used (0).</td>
      <td>
-      <em>min:</em>0 <em>increment:</em>1</td>
+     </td>
     </tr>
     <tr>
-     <td>3</td>
+     <td>3: Req Param 2</td>
      <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>4</td>
+     <td>4: Req Param 3</td>
      <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>5</td>
+     <td>5: Req Param 4</td>
      <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
      <td>
      </td>
     </tr>
     <tr>
-     <td>6</td>
+     <td>6: Req Param 5</td>
      <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
      <td>
      </td>
@@ -1579,22 +1656,27 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request MAVLink protocol version compatibility</p>
+   </a>Request MAVLink protocol version compatibility. All receivers should ACK the command and then emit their capabilities in an PROTOCOL_VERSION message</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Values</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1: Protocol</td>
      <td>1: Request supported protocol versions by all nodes on the network</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>2</td>
      <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -1624,7 +1706,7 @@
      <td>
       <a href="#MAV_TYPE">MAV_TYPE</a>
      </td>
-     <td>Type of the system (quadrotor, helicopter, etc.). Components use the same type as their associated system.</td>
+     <td>Vehicle or component type. For a flight controller component the vehicle type (quadrotor, helicopter, etc.). For other components the component type (e.g. camera, gimbal, etc.). This should be used in preference to component id for identifying the component type.</td>
     </tr>
     <tr>
      <td>autopilot</td>
@@ -1632,7 +1714,7 @@
      <td>
       <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
      </td>
-     <td>Autopilot type / class.</td>
+     <td>Autopilot type / class. Use MAV_AUTOPILOT_INVALID for components that are not flight controllers.</td>
     </tr>
     <tr>
      <td>base_mode</td>
@@ -1683,7 +1765,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Version and capability of protocol version. This message is the response to REQUEST_PROTOCOL_VERSION and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to REQUEST_PROTOCOL_VERSION to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.</p>
+   </strong>Version and capability of protocol version. This message can be requested with MAV_CMD_REQUEST_MESSAGE and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to a request for PROTOCOL_VERSION to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.</p>
   <table class="sortable">
    <thead>
     <tr>
