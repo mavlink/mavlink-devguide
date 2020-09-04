@@ -14,6 +14,7 @@ The dialect files are stored alongside in separate XML files in [mavlink/message
 The human-readable forms of the XML dialect files are linked below:
 
 * [ASLUAV.xml](ASLUAV.md)
+* [all.xml](all.md)
 * [ardupilotmega.xml](ardupilotmega.md)
 * [autoquad.xml](autoquad.md)
 * [icarous.xml](icarous.md)
