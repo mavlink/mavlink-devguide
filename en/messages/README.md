@@ -22,7 +22,6 @@ The human-readable forms of the XML dialect files are linked below:
 * [minimal.xml](minimal.md)
 * [paparazzi.xml](paparazzi.md)
 * [python_array_test.xml](python_array_test.md)
-* [slugs.xml](slugs.md)
 * [standard.xml](standard.md)
 * [test.xml](test.md)
 * [uAvionix.xml](uAvionix.md)
