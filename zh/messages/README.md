@@ -21,7 +21,6 @@ XML 方言文件的可读格式链接如下：
 * [minimal.xml](minimal.md)
 * [paparazzi.xml](paparazzi.md)
 * [python_array_test.xml](python_array_test.md)
-* [slugs.xml](slugs.md)
 * [standard.xml](standard.md)
 * [test.xml](test.md)
 * [uAvionix.xml](uAvionix.md)
