@@ -13,6 +13,7 @@ MAVLink *dialects* 一种 XML 文件，用来定义 *protocol-* 和 *vendor-spec
 XML 方言文件的可读格式链接如下：
 
 * [ASLUAV.xml](ASLUAV.md)
+* [all.xml](all.md)
 * [ardupilotmega.xml](ardupilotmega.md)
 * [autoquad.xml](autoquad.md)
 * [icarous.xml](icarous.md)
@@ -20,7 +21,6 @@ XML 方言文件的可读格式链接如下：
 * [minimal.xml](minimal.md)
 * [paparazzi.xml](paparazzi.md)
 * [python_array_test.xml](python_array_test.md)
-* [slugs.xml](slugs.md)
 * [standard.xml](standard.md)
 * [test.xml](test.md)
 * [uAvionix.xml](uAvionix.md)

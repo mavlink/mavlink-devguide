@@ -1,437 +1,20 @@
 <html>
  <body>
+  <p>
+   <strong>MAVLink Include Files:</strong>
+   <a href="minimal.md">minimal.xml</a>
+  </p>
   <h2>MAVLink协议版本</h2>
-  <p>当前的MAVLink版本是2.3。次版本号（点后面的数字）范围是从1到255。</p>
-  <p>本文件包含自定义协议：0。</p>
+  <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
+  <p>This file has protocol dialect: 0.</p>
   <h2 id="enums">MAVLink枚举类型</h2>
-  <h3 id="MAV_AUTOPILOT">
-   <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>微型飞行器/自驾仪. 这里标明了每个唯一模型。</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>值</th>
-     <th>字段名</th>
-     <th>描述</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_AUTOPILOT_GENERIC">
-     <td>0</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_GENERIC">MAV_AUTOPILOT_GENCERIC</a>
-     </td>
-     <td>通用自驾仪，支持所有。</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_RESERVED">
-     <td>1</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_RESERVED">MAV_AUTOPILOT_RESERVED</a>
-     </td>
-     <td>保留供将来使用。</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_SLUGS">
-     <td>2</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_SLUGS">MAV_AUTOPILOT_SLUGS</a>
-     </td>
-     <td>SLUGS自驾仪，http://slugsuav.soe.ucsc.edu</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_ARDUPILOTMEGA">
-     <td>3</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_ARDUPILOTMEGA">MAV_AUTOPILOT_ARDUPILOTMEGA</a>
-     </td>
-     <td>ArduPilot - Plane/Copter/Rover/Sub/Tracker, https://ardupilot.org</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_OPENPILOT">
-     <td>4</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_OPENPILOT">MAV_AUTOPILOT_OPENPILOT</a>
-     </td>
-     <td>OpenPilot自驾仪, http://openpilot.org</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY">
-     <td>5</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY">MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY</a>
-     </td>
-     <td>仅支持简单航路点的通用自驾仪</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_GENERIC_WAYPOINTS_AND_SIMPLE_NAVIGATION_ONLY">
-     <td>6</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_GENERIC_WAYPOINTS_AND_SIMPLE_NAVIGATION_ONLY">MAV_AUTOPILOT_GENERIC_WAYPOINTS_AND_SIMPLE_NAVIGATION_ONLY</a>
-     </td>
-     <td>支持航路点和其他简单导航命令的通用自驾仪</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_GENERIC_MISSION_FULL">
-     <td>7</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_GENERIC_MISSION_FULL">MAV_AUTOPILOT_GENERIC_MISSION_FULL</a>
-     </td>
-     <td>支持所有任务命令的通用自驾仪</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_INVALID">
-     <td>8</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_INVALID">MAV_AUTOPILOT_INVALID</a>
-     </td>
-     <td>非自驾仪，例如地面站或其他MAVLink组件</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_PPZ">
-     <td>9</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_PPZ">MAV_AUTOPILOT_PPZ</a>
-     </td>
-     <td>PPZ 自驾仪 - http://nongnu.org/paparazzi</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_UDB">
-     <td>10</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_UDB">MAV_AUTOPILOT_UDB</a>
-     </td>
-     <td>UAV Dev Board</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_FP">
-     <td>11</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_FP">MAV_AUTOPILOT_FP</a>
-     </td>
-     <td>FlexiPilot</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_PX4">
-     <td>12</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_PX4">MAV_AUTOPILOT_PX4</a>
-     </td>
-     <td>PX4 自驾仪 - http://px4.io/</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_SMACCMPILOT">
-     <td>13</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_SMACCMPILOT">MAV_AUTOPILOT_SMACCMPILOT</a>
-     </td>
-     <td>SMACCMPilot - http://smaccmpilot.org</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_AUTOQUAD">
-     <td>14</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_AUTOQUAD">MAV_AUTOPILOT_AUTOQUAD</a>
-     </td>
-     <td>AutoQuad -- http://autoquad.org</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_ARMAZILA">
-     <td>15</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_ARMAZILA">MAV_AUTOPILOT_ARMAZILA</a>
-     </td>
-     <td>Armazila -- http://armazila.com</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_AEROB">
-     <td>16</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_AEROB">MAV_AUTOPILOT_AEROB</a>
-     </td>
-     <td>Aerob -- http://aerob.ru</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_ASLUAV">
-     <td>17</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_ASLUAV">MAV_AUTOPILOT_ASLUAV</a>
-     </td>
-     <td>ASLUAV 自驾仪 -- http://www.asl.ethz.ch</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_SMARTAP">
-     <td>18</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_SMARTAP">MAV_AUTOPILOT_SMARTAP</a>
-     </td>
-     <td>SmartAP 自驾仪 - http://sky-drones.com</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_AIRRAILS">
-     <td>19</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_AIRRAILS">MAV_AUTOPILOT_AIRRAILS</a>
-     </td>
-     <td>AirRails - http://uaventure.com</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_TYPE">
-   <a href="#MAV_TYPE">MAV_TYPE</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>在 HEARTBEAT 消息中报告的 MAVLINK 组件类型。 飞控必须报告安装在的载具类型（如： MAV_TYPE_OCTOROTOR）。 所有其它的组件报告时必须使用对应的类型（如： 相机必须使用MAV_TYPE_CAMERA）。</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>值</th>
-     <th>字段名</th>
-     <th>描述</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_TYPE_GENERIC">
-     <td>0</td>
-     <td>
-      <a href="#MAV_TYPE_GENERIC">MAV_TYPE_GENERIC</a>
-     </td>
-     <td>通用微型飞行器</td>
-    </tr>
-    <tr id="MAV_TYPE_FIXED_WING">
-     <td>1</td>
-     <td>
-      <a href="#MAV_TYPE_FIXED_WING">MAV_TYPE_FIXED_WING</a>
-     </td>
-     <td>固定翼飞机</td>
-    </tr>
-    <tr id="MAV_TYPE_QUADROTOR">
-     <td>2</td>
-     <td>
-      <a href="#MAV_TYPE_QUADROTOR">Fixed wing aircraft.</a>
-     </td>
-     <td>四旋翼</td>
-    </tr>
-    <tr id="MAV_TYPE_COAXIAL">
-     <td>3</td>
-     <td>
-      <a href="#MAV_TYPE_COAXIAL">MAV_TYPE_COAXIAL</a>
-     </td>
-     <td>共轴直升机</td>
-    </tr>
-    <tr id="MAV_TYPE_HELICOPTER">
-     <td>4</td>
-     <td>
-      <a href="#MAV_TYPE_HELICOPTER">MAV_TYPE_HELICOPTER</a>
-     </td>
-     <td>带有尾桨的普通直升机。</td>
-    </tr>
-    <tr id="MAV_TYPE_ANTENNA_TRACKER">
-     <td>5</td>
-     <td>
-      <a href="#MAV_TYPE_ANTENNA_TRACKER">MAV_TYPE_ANTENNA_TRACKER</a>
-     </td>
-     <td>地面安装</td>
-    </tr>
-    <tr id="MAV_TYPE_GCS">
-     <td>6</td>
-     <td>
-      <a href="#MAV_TYPE_GCS">MAV_TYPE_GCS</a>
-     </td>
-     <td>操作员控制单元/地面控制站</td>
-    </tr>
-    <tr id="MAV_TYPE_AIRSHIP">
-     <td>7</td>
-     <td>
-      <a href="#MAV_TYPE_AIRSHIP">MAV_TYPE_AIRSHIP</a>
-     </td>
-     <td>可以控制的飞艇</td>
-    </tr>
-    <tr id="MAV_TYPE_FREE_BALLOON">
-     <td>8</td>
-     <td>
-      <a href="#MAV_TYPE_FREE_BALLOON">MAV_TYPE_FREE_BALLOON</a>
-     </td>
-     <td>不受控制的自由气球</td>
-    </tr>
-    <tr id="MAV_TYPE_ROCKET">
-     <td>9</td>
-     <td>
-      <a href="#MAV_TYPE_ROCKET">MAV_TYPE_ROCKET</a>
-     </td>
-     <td>火箭</td>
-    </tr>
-    <tr id="MAV_TYPE_GROUND_ROVER">
-     <td>10</td>
-     <td>
-      <a href="#MAV_TYPE_GROUND_ROVER">MAV_TYPE_GROUND_ROVER</a>
-     </td>
-     <td>地面小车</td>
-    </tr>
-    <tr id="MAV_TYPE_SURFACE_BOAT">
-     <td>11</td>
-     <td>
-      <a href="#MAV_TYPE_SURFACE_BOAT">MAV_TYPE_SURFACE_BOAT</a>
-     </td>
-     <td>水面船，舟，艇</td>
-    </tr>
-    <tr id="MAV_TYPE_SUBMARINE">
-     <td>12</td>
-     <td>
-      <a href="#MAV_TYPE_SUBMARINE">MAV_TYPE_SUBMARINE</a>
-     </td>
-     <td>潜艇</td>
-    </tr>
-    <tr id="MAV_TYPE_HEXAROTOR">
-     <td>13</td>
-     <td>
-      <a href="#MAV_TYPE_HEXAROTOR">MAV_TYPE_HEXAROTOR</a>
-     </td>
-     <td>六旋翼</td>
-    </tr>
-    <tr id="MAV_TYPE_OCTOROTOR">
-     <td>14</td>
-     <td>
-      <a href="#MAV_TYPE_OCTOROTOR">MAV_TYPE_OCTOROTOR</a>
-     </td>
-     <td>八旋翼</td>
-    </tr>
-    <tr id="MAV_TYPE_TRICOPTER">
-     <td>15</td>
-     <td>
-      <a href="#MAV_TYPE_TRICOPTER">MAV_TYPE_TRICOPTER</a>
-     </td>
-     <td>三旋翼</td>
-    </tr>
-    <tr id="MAV_TYPE_FLAPPING_WING">
-     <td>16</td>
-     <td>
-      <a href="#MAV_TYPE_FLAPPING_WING">MAV_TYPE_FLAPPING_WING</a>
-     </td>
-     <td>扑翼</td>
-    </tr>
-    <tr id="MAV_TYPE_KITE">
-     <td>17</td>
-     <td>
-      <a href="#MAV_TYPE_KITE">MAV_TYPE_KITE</a>
-     </td>
-     <td>风筝</td>
-    </tr>
-    <tr id="MAV_TYPE_ONBOARD_CONTROLLER">
-     <td>18</td>
-     <td>
-      <a href="#MAV_TYPE_ONBOARD_CONTROLLER">MAV_TYPE_ONBOARD_CONTROLLER</a>
-     </td>
-     <td>机载控制器</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_DUOROTOR">
-     <td>19</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_DUOROTOR">MAV_TYPE_VTOL_DUOROTOR</a>
-     </td>
-     <td>在垂直操作中使用舵面控制的双旋翼VTOL。  </td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_QUADROTOR">
-     <td>20</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_QUADROTOR">MAV_TYPE_VTOL_QUADROTOR</a>
-     </td>
-     <td>V型四旋翼VTOL 。</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_TILTROTOR">
-     <td>21</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_TILTROTOR">MAV_TYPE_VTOL_TILTROTOR</a>
-     </td>
-     <td>倾转VTOL</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_RESERVED2">
-     <td>22</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_RESERVED2">MAV_TYPE_VTOL_RESERVED2</a>
-     </td>
-     <td>VTOL保留机型2</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_RESERVED3">
-     <td>23</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_RESERVED3">MAV_TYPE_VTOL_RESERVED3</a>
-     </td>
-     <td>VTOL保留机型3</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_RESERVED4">
-     <td>24</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_RESERVED4">MAV_TYPE_VTOL_RESERVED4</a>
-     </td>
-     <td>VTOL保留机型4</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_RESERVED5">
-     <td>25</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_RESERVED5">MAV_TYPE_VTOL_RESERVED5</a>
-     </td>
-     <td>VTOL保留机型5</td>
-    </tr>
-    <tr id="MAV_TYPE_GIMBAL">
-     <td>26</td>
-     <td>
-      <a href="#MAV_TYPE_GIMBAL">MAV_TYPE_GIMBAL</a>
-     </td>
-     <td>云台</td>
-    </tr>
-    <tr id="MAV_TYPE_ADSB">
-     <td>27</td>
-     <td>
-      <a href="#MAV_TYPE_ADSB">MAV_TYPE_ADSB</a>
-     </td>
-     <td>ADS-B系统</td>
-    </tr>
-    <tr id="MAV_TYPE_PARAFOIL">
-     <td>28</td>
-     <td>
-      <a href="#MAV_TYPE_PARAFOIL">MAV_TYPE_PARAFOIL</a>
-     </td>
-     <td>可转向的非刚性翼型</td>
-    </tr>
-    <tr id="MAV_TYPE_DODECAROTOR">
-     <td>29</td>
-     <td>
-      <a href="#MAV_TYPE_DODECAROTOR">MAV_TYPE_DODECAROTOR</a>
-     </td>
-     <td>十二旋翼</td>
-    </tr>
-    <tr id="MAV_TYPE_CAMERA">
-     <td>30</td>
-     <td>
-      <a href="#MAV_TYPE_CAMERA">MAV_TYPE_CAMERA</a>
-     </td>
-     <td>相机</td>
-    </tr>
-    <tr id="MAV_TYPE_CHARGING_STATION">
-     <td>31</td>
-     <td>
-      <a href="#MAV_TYPE_CHARGING_STATION">MAV_TYPE_CHARGING_STATION</a>
-     </td>
-     <td>充电站</td>
-    </tr>
-    <tr id="MAV_TYPE_FLARM">
-     <td>32</td>
-     <td>
-      <a href="#MAV_TYPE_FLARM">MAV_TYPE_FLARM</a>
-     </td>
-     <td>FLARM防撞系统</td>
-    </tr>
-    <tr id="MAV_TYPE_SERVO">
-     <td>33</td>
-     <td>
-      <a href="#MAV_TYPE_SERVO">MAV_TYPE_SERVO</a>
-     </td>
-     <td>伺服</td>
-    </tr>
-    <tr id="MAV_TYPE_ODID">
-     <td>34</td>
-     <td>
-      <a href="#MAV_TYPE_ODID">MAV_TYPE_ODID</a>
-     </td>
-     <td>Open Drone ID. See https://mavlink.io/en/services/opendroneid.html.</td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="FIRMWARE_VERSION_TYPE">
    <a href="#FIRMWARE_VERSION_TYPE">FIRMWARE_VERSION_TYPE</a>
   </h3>
   <p>
    <a href="#enums">
     [Enum]
-   </a>这些值定义了固件版本的类型。  这些值指示了该类型的第一个版本或者是发行的版本。  例如：第一个alpha版本是64，那么第二个版本就是65。</p>
+   </a>These values define the type of firmware release.  These values indicate the first version or release of this type.  For example the first alpha release would be 64, the second would be 65.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -446,35 +29,35 @@
      <td>
       <a href="#FIRMWARE_VERSION_TYPE_DEV">FIRMWARE_VERSION_TYPE_DEV</a>
      </td>
-     <td>开发版本发布</td>
+     <td>development release</td>
     </tr>
     <tr id="FIRMWARE_VERSION_TYPE_ALPHA">
      <td>64</td>
      <td>
       <a href="#FIRMWARE_VERSION_TYPE_ALPHA">FIRMWARE_VERSION_TYPE_ALPHA</a>
      </td>
-     <td>alpha 版本发布</td>
+     <td>alpha release</td>
     </tr>
     <tr id="FIRMWARE_VERSION_TYPE_BETA">
      <td>128</td>
      <td>
       <a href="#FIRMWARE_VERSION_TYPE_BETA">FIRMWARE_VERSION_TYPE_BETA</a>
      </td>
-     <td>beta 版本发布</td>
+     <td>beta release</td>
     </tr>
     <tr id="FIRMWARE_VERSION_TYPE_RC">
      <td>192</td>
      <td>
       <a href="#FIRMWARE_VERSION_TYPE_RC">FIRMWARE_VERSION_TYPE_RC</a>
      </td>
-     <td>候选发布</td>
+     <td>release candidate</td>
     </tr>
     <tr id="FIRMWARE_VERSION_TYPE_OFFICIAL">
      <td>255</td>
      <td>
       <a href="#FIRMWARE_VERSION_TYPE_OFFICIAL">FIRMWARE_VERSION_TYPE_OFFICIAL</a>
      </td>
-     <td>官方稳定版本发布</td>
+     <td>official stable release</td>
     </tr>
    </tbody>
   </table>
@@ -484,7 +67,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>用于高延迟通信的故障情况标志。</p>
+   </a>Flags to report failure cases over the high latency telemtry.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -499,246 +82,98 @@
      <td>
       <a href="#HL_FAILURE_FLAG_GPS">HL_FAILURE_FLAG_GPS</a>
      </td>
-     <td>GPS故障。</td>
+     <td>GPS failure.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_DIFFERENTIAL_PRESSURE">
      <td>2</td>
      <td>
       <a href="#HL_FAILURE_FLAG_DIFFERENTIAL_PRESSURE">HL_FAILURE_FLAG_DIFFERENTIAL_PRESSURE</a>
      </td>
-     <td>差分气压传感器故障。</td>
+     <td>Differential pressure sensor failure.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_ABSOLUTE_PRESSURE">
      <td>4</td>
      <td>
       <a href="#HL_FAILURE_FLAG_ABSOLUTE_PRESSURE">HL_FAILURE_FLAG_ABSOLUTE_PRESSURE</a>
      </td>
-     <td>绝对气压传感器故障</td>
+     <td>Absolute pressure sensor failure.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_3D_ACCEL">
      <td>8</td>
      <td>
       <a href="#HL_FAILURE_FLAG_3D_ACCEL">HL_FAILURE_FLAG_3D_ACCEL</a>
      </td>
-     <td>加速度传感器故障。</td>
+     <td>Accelerometer sensor failure.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_3D_GYRO">
      <td>16</td>
      <td>
       <a href="#HL_FAILURE_FLAG_3D_GYRO">HL_FAILURE_FLAG_3D_GYRO</a>
      </td>
-     <td>陀螺仪传感器故障</td>
+     <td>Gyroscope sensor failure.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_3D_MAG">
      <td>32</td>
      <td>
       <a href="#HL_FAILURE_FLAG_3D_MAG">HL_FAILURE_FLAG_3D_MAG</a>
      </td>
-     <td>磁力计传感器故障。</td>
+     <td>Magnetometer sensor failure.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_TERRAIN">
      <td>64</td>
      <td>
       <a href="#HL_FAILURE_FLAG_TERRAIN">HL_FAILURE_FLAG_TERRAIN</a>
      </td>
-     <td>地形子系统故障。</td>
+     <td>Terrain subsystem failure.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_BATTERY">
      <td>128</td>
      <td>
       <a href="#HL_FAILURE_FLAG_BATTERY">HL_FAILURE_FLAG_BATTERY</a>
      </td>
-     <td>电池故障/电池电压严重不足。</td>
+     <td>Battery failure/critical low battery.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_RC_RECEIVER">
      <td>256</td>
      <td>
       <a href="#HL_FAILURE_FLAG_RC_RECEIVER">HL_FAILURE_FLAG_RC_RECEIVER</a>
      </td>
-     <td>RC接收机故障/无接收机信号。</td>
+     <td>RC receiver failure/no rc connection.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_OFFBOARD_LINK">
      <td>512</td>
      <td>
       <a href="#HL_FAILURE_FLAG_OFFBOARD_LINK">HL_FAILURE_FLAG_OFFBOARD_LINK</a>
      </td>
-     <td>Offboard 连接故障。</td>
+     <td>Offboard link failure.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_ENGINE">
      <td>1024</td>
      <td>
       <a href="#HL_FAILURE_FLAG_ENGINE">HL_FAILURE_FLAG_ENGINE</a>
      </td>
-     <td>引擎故障。</td>
+     <td>Engine failure.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_GEOFENCE">
      <td>2048</td>
      <td>
       <a href="#HL_FAILURE_FLAG_GEOFENCE">HL_FAILURE_FLAG_GEOFENCE</a>
      </td>
-     <td>违反地理围栏规则。</td>
+     <td>Geofence violation.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_ESTIMATOR">
      <td>4096</td>
      <td>
       <a href="#HL_FAILURE_FLAG_ESTIMATOR">HL_FAILURE_FLAG_ESTIMATOR</a>
      </td>
-     <td>状态估计失败，例如测量值未被接收或大方差。</td>
+     <td>Estimator failure, for example measurement rejection or large variances.</td>
     </tr>
     <tr id="HL_FAILURE_FLAG_MISSION">
      <td>8192</td>
      <td>
       <a href="#HL_FAILURE_FLAG_MISSION">HL_FAILURE_FLAG_MISSION</a>
      </td>
-     <td>任务失败。</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_MODE_FLAG">
-   <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>这些标志代表了 MAV 的模式。</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>值</th>
-     <th>字段名</th>
-     <th>描述</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_MODE_FLAG_SAFETY_ARMED">
-     <td>128</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_SAFETY_ARMED">MAV_MODE_FLAG_SAFETY_ARMED</a>
-     </td>
-     <td>0b10000000 MAV 已经上锁， 电机已启用/运行/可以启动。 准备起飞。 附加说明：发送命令 MAV_CMD_DO_SET_MODE 时会忽略该标志，而应该使用MAV_CMD_COMPONENT_ARM_DISARM。 该标志仍可用于报告上锁状态。</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_MANUAL_INPUT_ENABLED">
-     <td>64</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_MANUAL_INPUT_ENABLED">MAV_MODE_FLAG_MANUAL_INPUT_ENABLED</a>
-     </td>
-     <td>0b01000000 已经使能远程控制输入。</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_HIL_ENABLED">
-     <td>32</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_HIL_ENABLED">MAV_MODE_FLAG_HEL_ENABLED</a>
-     </td>
-     <td>0b00100000 硬件在环仿真。 所有电机/执行器均不能运行，但是内部软件正常运行。</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_STABILIZE_ENABLED">
-     <td>16</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_STABILIZE_ENABLED">MAV_MODE_FLAG_STABILIZE_ENABLED</a>
-     </td>
-     <td>0b00010000 系统以姿态模式（以及位置模式）进行增稳。 需要更多的控制输入才会移动。</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_GUIDED_ENABLED">
-     <td>8</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_GUIDED_ENABLED">MAV_MODE_FLAG_GUIDED_ENABLED</a>
-     </td>
-     <td>0b00001000 已经启用引导模式，系统将飞行航路点/飞行任务。</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_AUTO_ENABLED">
-     <td>4</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_AUTO_ENABLED">MAV_MODE_FLAG_AUTO_ENABLED</a>
-     </td>
-     <td>0b00000100 已经启用自主模式，系统找到自己的目标位置。 引导标志是否可以被设置，取决于实际的实现。</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_TEST_ENABLED">
-     <td>2</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_TEST_ENABLED">MAV_MODE_FLAG_TEST_ENABLED</a>
-     </td>
-     <td>0b00000010 系统已启用测试模式。 该标志只用于临时系统测试，不应该出于在稳定版本中。</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_CUSTOM_MODE_ENABLED">
-     <td>1</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_CUSTOM_MODE_ENABLED">MAV_MODE_FLAG_CUSTOM_MODE_ENABLED</a>
-     </td>
-     <td>0b00000001 保留。</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_MODE_FLAG_DECODE_POSITION">
-   <a href="#MAV_MODE_FLAG_DECODE_POSITION">MAV_MODE_FLAG_DECODE_POSITION</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>这些值编码了解码位置的位位置。 通过 base_mode 变量与位置标志结合使用，来读取标志位的值。 结果不是0就是1，取决于该标志是否置位。</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_SAFETY">
-     <td>128</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_SAFETY">MAV_MODE_FLAG_DECODE_POSITION_SAFETY</a>
-     </td>
-     <td>第1位：10000000</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_MANUAL">
-     <td>64</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_MANUAL">MAV_MODE_FLAG_DECODE_POSITION_MANUAL</a>
-     </td>
-     <td>第2位：01000000</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_HIL">
-     <td>32</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_HIL">MAV_MODE_FLAG_DECODE_POSITION_HIL</a>
-     </td>
-     <td>第3位：00100000</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_STABILIZE">
-     <td>16</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_STABILIZE">MAV_MODE_FLAG_DECODE_POSITION_STABILIZE</a>
-     </td>
-     <td>第4位：00010000</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_GUIDED">
-     <td>8</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_GUIDED">MAV_MODE_FLAG_DECODE_POSITION_GUIDED</a>
-     </td>
-     <td>第5位：00001000</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_AUTO">
-     <td>4</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_AUTO">MAV_MODE_FLAG_DECODE_POSITION_AUTO</a>
-     </td>
-     <td>第6位：00000100</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_TEST">
-     <td>2</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_TEST">MAV_MODE_FLAG_DECODE_POSITION_TEST</a>
-     </td>
-     <td>第7位：00000010</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE">
-     <td>1</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE">MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE</a>
-     </td>
-     <td>第8位：00000001</td>
+     <td>Mission failure.</td>
     </tr>
    </tbody>
   </table>
@@ -748,7 +183,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>可以在 MAV_CMD_OVERRIDE_GOTO 中设置指定的操作来覆盖执行中的任务。</p>
+   </a>Actions that may be specified in MAV_CMD_OVERRIDE_GOTO to override mission execution.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -763,28 +198,28 @@
      <td>
       <a href="#MAV_GOTO_DO_HOLD">MAV_GOTO_DO_HOLD</a>
      </td>
-     <td>保存在当前位置。</td>
+     <td>Hold at the current position.</td>
     </tr>
     <tr id="MAV_GOTO_DO_CONTINUE">
      <td>1</td>
      <td>
       <a href="#MAV_GOTO_DO_CONTINUE">MAV_GOTO_DO_CONTINUE</a>
      </td>
-     <td>继续执行任务中的下一项。</td>
+     <td>Continue with the next item in mission execution.</td>
     </tr>
     <tr id="MAV_GOTO_HOLD_AT_CURRENT_POSITION">
      <td>2</td>
      <td>
       <a href="#MAV_GOTO_HOLD_AT_CURRENT_POSITION">MAV_GOTO_HOLD_AT_CURRENT_POSITION</a>
      </td>
-     <td>保持在系统的当前位置。</td>
+     <td>Hold at the current position of the system</td>
     </tr>
     <tr id="MAV_GOTO_HOLD_AT_SPECIFIED_POSITION">
      <td>3</td>
      <td>
       <a href="#MAV_GOTO_HOLD_AT_SPECIFIED_POSITION">MAV_GOTO_HOLD_AT_SPECIFIED_POSITION</a>
      </td>
-     <td>保持在 DO_HOLD 命令参数中指定的位置</td>
+     <td>Hold at the position specified in the parameters of the DO_HOLD action</td>
     </tr>
    </tbody>
   </table>
@@ -794,7 +229,8 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>这些是预定义的OR-组合的模式标志。 不需要使用此枚举中的值，但它简化了模式标志的使用。 请注意，手动输入在所有模式下都是作为安全超控启用的。</p>
+   </a>These defines are predefined OR-combined mode flags. There is no need to use values from this enum, but it
+               simplifies the use of the mode flags. Note that manual input is enabled in all modes as a safety override.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -809,1080 +245,77 @@
      <td>
       <a href="#MAV_MODE_PREFLIGHT">MAV_MODE_PREFLIGHT</a>
      </td>
-     <td>系统还没有准备好飞行、启动、校准等。 没有标志置位。</td>
+     <td>System is not ready to fly, booting, calibrating, etc. No flag is set.</td>
     </tr>
     <tr id="MAV_MODE_STABILIZE_DISARMED">
      <td>80</td>
      <td>
       <a href="#MAV_MODE_STABILIZE_DISARMED">MAV_MODE_STABILIZE_DISARMED</a>
      </td>
-     <td>系统允许在有RC遥控器的情况下解锁。</td>
+     <td>System is allowed to be active, under assisted RC control.</td>
     </tr>
     <tr id="MAV_MODE_STABILIZE_ARMED">
      <td>208</td>
      <td>
       <a href="#MAV_MODE_STABILIZE_ARMED">MAV_MODE_STABILIZE_ARMED</a>
      </td>
-     <td>在RC遥控器控制的情况下，系统可以允许激活。</td>
+     <td>System is allowed to be active, under assisted RC control.</td>
     </tr>
     <tr id="MAV_MODE_MANUAL_DISARMED">
      <td>64</td>
      <td>
       <a href="#MAV_MODE_MANUAL_DISARMED">MAV_MODE_MANUAL_DISARMED</a>
      </td>
-     <td>在手动（RC）控制下，系统允许激活，没有增稳</td>
+     <td>System is allowed to be active, under manual (RC) control, no stabilization</td>
     </tr>
     <tr id="MAV_MODE_MANUAL_ARMED">
      <td>192</td>
      <td>
       <a href="#MAV_MODE_MANUAL_ARMED">MAV_MODE_MANUAL_ARMED</a>
      </td>
-     <td>在手动（RC）控制下，系统允许激活，没有增稳</td>
+     <td>System is allowed to be active, under manual (RC) control, no stabilization</td>
     </tr>
     <tr id="MAV_MODE_GUIDED_DISARMED">
      <td>88</td>
      <td>
       <a href="#MAV_MODE_GUIDED_DISARMED">MAV_MODE_GUIDED_DISARMED</a>
      </td>
-     <td>系统允许在自动控制下激活，手动设定目标点</td>
+     <td>System is allowed to be active, under autonomous control, manual setpoint</td>
     </tr>
     <tr id="MAV_MODE_GUIDED_ARMED">
      <td>216</td>
      <td>
       <a href="#MAV_MODE_GUIDED_ARMED">MAV_MODE_GUIDED_ARMED</a>
      </td>
-     <td>系统允许在自动控制下激活，手动设定目标点</td>
+     <td>System is allowed to be active, under autonomous control, manual setpoint</td>
     </tr>
     <tr id="MAV_MODE_AUTO_DISARMED">
      <td>92</td>
      <td>
       <a href="#MAV_MODE_AUTO_DISARMED">MAV_MODE_AUTO_DISARMED</a>
      </td>
-     <td>允许系统在自动控制和导航下运行(轨迹是实时计算确定的，而不是通过航点预先编程)</td>
+     <td>System is allowed to be active, under autonomous control and navigation (the trajectory is decided onboard and not pre-programmed by waypoints)</td>
     </tr>
     <tr id="MAV_MODE_AUTO_ARMED">
      <td>220</td>
      <td>
-      <a href="#MAV_MODE_AUTO_ARMED">MAV_MODE_AUTO_DISARMED</a>
+      <a href="#MAV_MODE_AUTO_ARMED">MAV_MODE_AUTO_ARMED</a>
      </td>
-     <td>允许系统在自动控制和导航下运行(轨迹是实时计算确定的，而不是通过航点预先编程)</td>
+     <td>System is allowed to be active, under autonomous control and navigation (the trajectory is decided onboard and not pre-programmed by waypoints)</td>
     </tr>
     <tr id="MAV_MODE_TEST_DISARMED">
      <td>66</td>
      <td>
       <a href="#MAV_MODE_TEST_DISARMED">MAV_MODE_TEST_DISARMED</a>
      </td>
-     <td>未定义模式。 这完全取决于自驾仪 - 请谨慎使用，仅适用于开发人员。</td>
+     <td>UNDEFINED mode. This solely depends on the autopilot - use with caution, intended for developers only.</td>
     </tr>
     <tr id="MAV_MODE_TEST_ARMED">
      <td>194</td>
      <td>
       <a href="#MAV_MODE_TEST_ARMED">MAV_MODE_TEST_ARMED</a>
      </td>
-     <td>未定义模式。 这完全取决于自驾仪 - 请谨慎使用，仅适用于开发人员。</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_STATE">
-   <a href="#MAV_STATE">MAV_STATE</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>
-  </p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>值</th>
-     <th>字段名</th>
-     <th>描述</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_STATE_UNINIT">
-     <td>0</td>
-     <td>
-      <a href="#MAV_STATE_UNINIT">MAV_STATE_UNINIT</a>
-     </td>
-     <td>未初始化的系统，未知状态。</td>
-    </tr>
-    <tr id="MAV_STATE_BOOT">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_BOOT">MAV_STATE_BOOT</a>
-     </td>
-     <td>系统正在启动中。</td>
-    </tr>
-    <tr id="MAV_STATE_CALIBRATING">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_CALIBRATING">MAV_STATE_CALIBRATING</a>
-     </td>
-     <td>系统正在校准，飞行未准备就绪。</td>
-    </tr>
-    <tr id="MAV_STATE_STANDBY">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_STANDBY">MAV_STATE_STANDBY</a>
-     </td>
-     <td>系统在地面待命。 随时准备起飞。</td>
-    </tr>
-    <tr id="MAV_STATE_ACTIVE">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_ACTIVE">MAV_STATE_ACTIVE</a>
-     </td>
-     <td>系统已经运行，可能已经升空。 电动已启动。</td>
-    </tr>
-    <tr id="MAV_STATE_CRITICAL">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_CRITICAL">MAV_STATE_CRITICAL</a>
-     </td>
-     <td>系统处于非正常飞行模式。 但是仍可以导航。</td>
-    </tr>
-    <tr id="MAV_STATE_EMERGENCY">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_EMERGENCY">MAV_STATE_EMERGENCY</a>
-     </td>
-     <td>系统处于非正常飞行模式。 失去了对部件或整个机身的控制。 处于紧急状态，正在下坠。</td>
-    </tr>
-    <tr id="MAV_STATE_POWEROFF">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_POWEROFF">MAV_STATE_POWEROFF</a>
-     </td>
-     <td>系统刚刚初始化了掉电处理程序，即将关机。</td>
-    </tr>
-    <tr id="MAV_STATE_FLIGHT_TERMINATION">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_FLIGHT_TERMINATION">MAV_STATE_FLIGHT_TERMINATION</a>
-     </td>
-     <td>系统正在自行终止。</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_COMPONENT">
-   <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>构成MAVLink系统（自动驾驶仪，摄像机，伺服系统，GPS系统，回避系统等）的机载硬件/软件的不同类型和实例的组件ID（值）。
-      组件在发送消息时必须在其源地址中使用适当的ID。 组件还可以通过ID来判断它们是不是传入消息的预期接收方。 MAV_COMP_ID_ALL 值用于指示所有组件必须处理的消息。
-      创建新条目时，可以有多个实例的组件（如摄像机、伺服系统等）应按顺序分配值。 在这些组件之后，应该留有一定的数值空间，保证能扩展一定数量的组件。</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>值</th>
-     <th>字段名</th>
-     <th>描述</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_COMP_ID_ALL">
-     <td>0</td>
-     <td>
-      <a href="#MAV_COMP_ID_ALL">MAV_COMP_ID_ALL</a>
-     </td>
-     <td>用于向接收系统的所有组件广播的消息id（目标组件）。 组件应尝试处理具有此组件ID的消息，并转发到任何其他接口上的组件。 Note：这不是消息的有效*源*组件id。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_AUTOPILOT1">
-     <td>1</td>
-     <td>
-      <a href="#MAV_COMP_ID_AUTOPILOT1">MAV_COMP_ID_AUTOPILOT1</a>
-     </td>
-     <td>系统飞行控制器组件（“自驾仪”）。 在一个特定的系统中只能有一个自驾仪。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER1">
-     <td>25</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER1">MAV_COMP_ID_USER1</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER2">
-     <td>26</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER2">MAV_COMP_ID_USER2</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER3">
-     <td>27</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER3">MAV_COMP_ID_USER3</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER4">
-     <td>28</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER4">MAV_COMP_ID_USER4</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER5">
-     <td>29</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER5">MAV_COMP_ID_USER5</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER6">
-     <td>30</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER6">MAV_COMP_ID_USER6</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER7">
-     <td>31</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER7">MAV_COMP_ID_USER7</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER8">
-     <td>32</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER8">MAV_COMP_ID_USER8</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER9">
-     <td>33</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER9">MAV_COMP_ID_USER9</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER10">
-     <td>34</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER10">MAV_COMP_ID_USER10</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER11">
-     <td>35</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER11">MAV_COMP_ID_USER11</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER12">
-     <td>36</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER12">MAV_COMP_ID_USER12</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER13">
-     <td>37</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER13">MAV_COMP_ID_USER13</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER14">
-     <td>38</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER14">MAV_COMP_ID_USER14</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER15">
-     <td>39</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER15">MAV_COMP_ID_USER15</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER16">
-     <td>40</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER16">MAV_COMP_ID_USER16</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER17">
-     <td>41</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER17">MAV_COMP_ID_USER17</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER18">
-     <td>42</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER18">MAV_COMP_ID_USER18</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER19">
-     <td>43</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER19">MAV_COMP_ID_USER19</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER20">
-     <td>44</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER20">MAV_COMP_ID_USER20</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER21">
-     <td>45</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER21">MAV_COMP_ID_USER21</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER22">
-     <td>46</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER22">MAV_COMP_ID_USER22</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER23">
-     <td>47</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER23">MAV_COMP_ID_USER23</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER24">
-     <td>48</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER24">MAV_COMP_ID_USER24</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER25">
-     <td>49</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER25">MAV_COMP_ID_USER25</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER26">
-     <td>50</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER26">MAV_COMP_ID_USER26</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER27">
-     <td>51</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER27">MAV_COMP_ID_USER27</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER28">
-     <td>52</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER28">MAV_COMP_ID_USER28</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER29">
-     <td>53</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER29">MAV_COMP_ID_USER29</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER30">
-     <td>54</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER30">MAV_COMP_ID_USER30</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER31">
-     <td>55</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER31">MAV_COMP_ID_USER31</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER32">
-     <td>56</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER32">MAV_COMP_ID_USER32</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER33">
-     <td>57</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER33">MAV_COMP_ID_USER33</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER34">
-     <td>58</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER34">MAV_COMP_ID_USER34</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER35">
-     <td>59</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER35">MAV_COMP_ID_USER35</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER36">
-     <td>60</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER36">MAV_COMP_ID_USER36</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER37">
-     <td>61</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER37">MAV_COMP_ID_USER37</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER38">
-     <td>62</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER38">MAV_COMP_ID_USER38</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER39">
-     <td>63</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER39">MAV_COMP_ID_USER39</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER40">
-     <td>64
-</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER40">MAV_COMP_ID_USER40</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER41">
-     <td>65</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER41">MAV_COMP_ID_USER41</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER42">
-     <td>66</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER42">MAV_COMP_ID_USER42</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER43">
-     <td>67</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER43">MAV_COMP_ID_USER43</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_TELEMETRY_RADIO">
-     <td>68</td>
-     <td>
-      <a href="#MAV_COMP_ID_TELEMETRY_RADIO">MAV_COMP_ID_TELEMETRY_RADIO</a>
-     </td>
-     <td>Telemetry radio (e.g. SiK radio, or other component that emits RADIO_STATUS messages).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER45">
-     <td>69</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER45">MAV_COMP_ID_USER45</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER46">
-     <td>70</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER46">MAV_COMP_ID_USER46</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER47">
-     <td>71</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER47">MAV_COMP_ID_USER47</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER48">
-     <td>72</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER48">MAV_COMP_ID_USER48</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER49">
-     <td>73</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER49">MAV_COMP_ID_USER49</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER50">
-     <td>74</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER50">MAV_COMP_ID_USER50</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER51">
-     <td>75</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER51">MAV_COMP_ID_USER51</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER52">
-     <td>76</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER52">MAV_COMP_ID_USER52</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER53">
-     <td>77</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER53">MAV_COMP_ID_USER53</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER54">
-     <td>78</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER54">MAV_COMP_ID_USER54</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER55">
-     <td>79</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER55">MAV_COMP_ID_USER55</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER56">
-     <td>80</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER56">MAV_COMP_ID_USER56</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER57">
-     <td>81</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER57">MAV_COMP_ID_USER57</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER58">
-     <td>82</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER58">MAV_COMP_ID_USER58</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER59">
-     <td>83</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER59">MAV_COMP_ID_USER59</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER60">
-     <td>84</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER60">MAV_COMP_ID_USER60</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER61">
-     <td>85</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER61">MAV_COMP_ID_USER61</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER62">
-     <td>86</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER62">MAV_COMP_ID_USER62</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER63">
-     <td>87</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER63">MAV_COMP_ID_USER63</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER64">
-     <td>88</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER64">MAV_COMP_ID_USER64</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER65">
-     <td>89</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER65">MAV_COMP_ID_USER65</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER66">
-     <td>90</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER66">MAV_COMP_ID_USER66</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER67">
-     <td>91</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER67">MAV_COMP_ID_USER67</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER68">
-     <td>92</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER68">MAV_COMP_ID_USER68</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER69">
-     <td>93</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER69">MAV_COMP_ID_USER69</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER70">
-     <td>94</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER70">MAV_COMP_ID_USER70</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER71">
-     <td>95</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER71">MAV_COMP_ID_USER71</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER72">
-     <td>96</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER72">MAV_COMP_ID_USER72</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER73">
-     <td>97</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER73">MAV_COMP_ID_USER73</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER74">
-     <td>98</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER74">MAV_COMP_ID_USER74</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER75">
-     <td>9</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER75">MAV_COMP_ID_USER75</a>
-     </td>
-     <td>私有 MAVLink 网络上的组件Id。 可以用于任何目的，但不能由私有网络外部的组件发布。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_CAMERA">
-     <td>100</td>
-     <td>
-      <a href="#MAV_COMP_ID_CAMERA">MAV_COMP_ID_CAMERA</a>
-     </td>
-     <td>1号相机</td>
-    </tr>
-    <tr id="MAV_COMP_ID_CAMERA2">
-     <td>101</td>
-     <td>
-      <a href="#MAV_COMP_ID_CAMERA2">MAV_COMP_ID_CAMERA2</a>
-     </td>
-     <td>2号相机</td>
-    </tr>
-    <tr id="MAV_COMP_ID_CAMERA3">
-     <td>102</td>
-     <td>
-      <a href="#MAV_COMP_ID_CAMERA3">MAV_COMP_ID_CAMERA3</a>
-     </td>
-     <td>3号相机</td>
-    </tr>
-    <tr id="MAV_COMP_ID_CAMERA4">
-     <td>103</td>
-     <td>
-      <a href="#MAV_COMP_ID_CAMERA4">MAV_COMP_ID_CAMERA4</a>
-     </td>
-     <td>4号相机</td>
-    </tr>
-    <tr id="MAV_COMP_ID_CAMERA5">
-     <td>104</td>
-     <td>
-      <a href="#MAV_COMP_ID_CAMERA5">MAV_COMP_ID_CAMERA5</a>
-     </td>
-     <td>5号相机</td>
-    </tr>
-    <tr id="MAV_COMP_ID_CAMERA6">
-     <td>105</td>
-     <td>
-      <a href="#MAV_COMP_ID_CAMERA6">MAV_COMP_ID_CAMERA6</a>
-     </td>
-     <td>6号相机</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO1">
-     <td>140</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO1">MAV_COMP_ID_SERVO1</a>
-     </td>
-     <td>1号舵机</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO2">
-     <td>141</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO2">MAV_COMP_ID_SERVO2</a>
-     </td>
-     <td>2号舵机</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO3">
-     <td>142</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO3">MAV_COMP_ID_SERVO3</a>
-     </td>
-     <td>3号伺服</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO4">
-     <td>143</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO4">MAV_COMP_ID_SERVO4</a>
-     </td>
-     <td>4号伺服</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO5">
-     <td>144</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO5">MAV_COMP_ID_SERVO5</a>
-     </td>
-     <td>5号伺服</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO6">
-     <td>145</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO6">MAV_COMP_ID_SERVO6</a>
-     </td>
-     <td>6号伺服</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO7">
-     <td>146</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO7">MAV_COMP_ID_SERVO7</a>
-     </td>
-     <td>7号伺服</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO8">
-     <td>147</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO8">MAV_COMP_ID_SERVO8</a>
-     </td>
-     <td>8号伺服</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO9">
-     <td>148</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO9">MAV_COMP_ID_SERVO9</a>
-     </td>
-     <td>9号伺服</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO10">
-     <td>149</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO10">MAV_COMP_ID_SERVO10</a>
-     </td>
-     <td>10号伺服</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO11">
-     <td>150</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO11">MAV_COMP_ID_SERVO11</a>
-     </td>
-     <td>11号伺服</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO12">
-     <td>151</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO12">MAV_COMP_ID_SERVO12</a>
-     </td>
-     <td>12号伺服</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO13">
-     <td>152</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO13">MAV_COMP_ID_SERVO13</a>
-     </td>
-     <td>13号伺服</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO14">
-     <td>153</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO14">MAV_COMP_ID_SERVO14</a>
-     </td>
-     <td>14号伺服</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GIMBAL">
-     <td>154</td>
-     <td>
-      <a href="#MAV_COMP_ID_GIMBAL">MAV_COMP_ID_GIMBAL</a>
-     </td>
-     <td>1号云台</td>
-    </tr>
-    <tr id="MAV_COMP_ID_LOG">
-     <td>155</td>
-     <td>
-      <a href="#MAV_COMP_ID_LOG">MAV_COMP_ID_LOG</a>
-     </td>
-     <td>日志记录组件。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_ADSB">
-     <td>156</td>
-     <td>
-      <a href="#MAV_COMP_ID_ADSB">MAV_COMP_ID_ADSB</a>
-     </td>
-     <td>广播式自动相关监视系统（ADS-B）组件。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_OSD">
-     <td>157</td>
-     <td>
-      <a href="#MAV_COMP_ID_OSD">MAV_COMP_ID_OSD</a>
-     </td>
-     <td>屏幕信息显示（OSD）设备。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_PERIPHERAL">
-     <td>158</td>
-     <td>
-      <a href="#MAV_COMP_ID_PERIPHERAL">MAV_COMP_DESCRIPTION</a>
-     </td>
-     <td>通用自驾仪外设组件ID。 未实现参数的微服务设备。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_QX1_GIMBAL">
-     <td>159</td>
-     <td>
-      <a href="#MAV_COMP_ID_QX1_GIMBAL">MAV_COMP_ID_QX1_GIMBAL</a>
-      <p style="color:red">
-       <strong>DEPRECATED:</strong> 由 MAV_COMP_ID_GIMBAL（2018-11）代替。
-
-
-  所有云台应使用 MAV_COMP_ID_GIMBAL。</p>
-     </td>
-     <td>QX1的云台ID。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_FLARM">
-     <td>160</td>
-     <td>
-      <a href="#MAV_COMP_ID_FLARM">MAV_COMP_ID_FLARM</a>
-     </td>
-     <td>FLARM 防撞系统组件。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GIMBAL2">
-     <td>171</td>
-     <td>
-      <a href="#MAV_COMP_ID_GIMBAL2">MAV_COMP_ID_GIMBAL2</a>
-     </td>
-     <td>2号云台。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GIMBAL3">
-     <td>172</td>
-     <td>
-      <a href="#MAV_COMP_ID_GIMBAL3">MAV_COMP_ID_GIMBAL3</a>
-     </td>
-     <td>3号云台</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GIMBAL4">
-     <td>173</td>
-     <td>
-      <a href="#MAV_COMP_ID_GIMBAL4">MAV_COMP_ID_GIMBAL4</a>
-     </td>
-     <td>4号云台</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GIMBAL5">
-     <td>174</td>
-     <td>
-      <a href="#MAV_COMP_ID_GIMBAL5">MAV_COMP_ID_GIMBAL5</a>
-     </td>
-     <td>5号云台。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GIMBAL6">
-     <td>175</td>
-     <td>
-      <a href="#MAV_COMP_ID_GIMBAL6">MAV_COMP_ID_GIMBAL6</a>
-     </td>
-     <td>6号云台。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_MISSIONPLANNER">
-     <td>190</td>
-     <td>
-      <a href="#MAV_COMP_ID_MISSIONPLANNER">MAV_COMP_ID_MISSIONPLANNER</a>
-     </td>
-     <td>能够生成/提供任务飞行计划的组件（例如地面站或开发者API）。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_PATHPLANNER">
-     <td>195</td>
-     <td>
-      <a href="#MAV_COMP_ID_PATHPLANNER">MAV_COMP_ID_PTHPLANNER</a>
-     </td>
-     <td>基于特定约束（如最少拍照、最短路径、代价等）在点之间找到最佳路径的组件。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_OBSTACLE_AVOIDANCE">
-     <td>196</td>
-     <td>
-      <a href="#MAV_COMP_ID_OBSTACLE_AVOIDANCE">MAV_COMP_ID_OBSTACLE_AVOIDANCE</a>
-     </td>
-     <td>在两点之间规划无碰撞路径的组件。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY">
-     <td>197</td>
-     <td>
-      <a href="#MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY">MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY</a>
-     </td>
-     <td>使用视觉里程计技术估计位置的组件。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_PAIRING_MANAGER">
-     <td>198</td>
-     <td>
-      <a href="#MAV_COMP_ID_PAIRING_MANAGER">MAV_COMP_ID_PAIRING_MANAGER</a>
-     </td>
-     <td>管理飞行器和地面站配对的部件。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_IMU">
-     <td>200</td>
-     <td>
-      <a href="#MAV_COMP_ID_IMU">MAV_COMP_ID_IMU</a>
-     </td>
-     <td>1号惯性测量单元（IMU）。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_IMU_2">
-     <td>201</td>
-     <td>
-      <a href="#MAV_COMP_ID_IMU_2">MAV_COMP_ID_IMU_2</a>
-     </td>
-     <td>2号惯性测量单元（IMU）。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_IMU_3">
-     <td>202</td>
-     <td>
-      <a href="#MAV_COMP_ID_IMU_3">MAV_COMP_ID_IMU_3</a>
-     </td>
-     <td>3号惯性测量单元（IMU）。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GPS">
-     <td>220</td>
-     <td>
-      <a href="#MAV_COMP_ID_GPS">MAV_COMP_ID_GPS</a>
-     </td>
-     <td>1号GPS。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GPS2">
-     <td>221</td>
-     <td>
-      <a href="#MAV_COMP_ID_GPS2">MAV_COMP_ID_GPS2</a>
-     </td>
-     <td>2号GPS。</td>
-    </tr>
-    <tr id="MAV_COMP_ID_ODID_TXRX_1">
-     <td>236</td>
-     <td>
-      <a href="#MAV_COMP_ID_ODID_TXRX_1">MAV_COMP_ID_ODID_TXRX_1</a>
-     </td>
-     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_ODID_TXRX_2">
-     <td>237</td>
-     <td>
-      <a href="#MAV_COMP_ID_ODID_TXRX_2">MAV_COMP_ID_ODID_TXRX_2</a>
-     </td>
-     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_ODID_TXRX_3">
-     <td>238</td>
-     <td>
-      <a href="#MAV_COMP_ID_ODID_TXRX_3">MAV_COMP_ID_ODID_TXRX_3</a>
-     </td>
-     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_UDP_BRIDGE">
-     <td>240</td>
-     <td>
-      <a href="#MAV_COMP_ID_UDP_BRIDGE">MAV_COMP_ID_UDP_BRIDGE</a>
-     </td>
-     <td>Component to bridge MAVLink to UDP (i.e. from a UART).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_UART_BRIDGE">
-     <td>241</td>
-     <td>
-      <a href="#MAV_COMP_ID_UART_BRIDGE">MAV_COMP_ID_UART_BRIDGE</a>
-     </td>
-     <td>Component to bridge to UART (i.e. from UDP).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_TUNNEL_NODE">
-     <td>242</td>
-     <td>
-      <a href="#MAV_COMP_ID_TUNNEL_NODE">MAV_COMP_ID_TUNNEL_NODE</a>
-     </td>
-     <td>Component handling TUNNEL messages (e.g. vendor specific GUI of a component).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SYSTEM_CONTROL">
-     <td>250</td>
-     <td>
-      <a href="#MAV_COMP_ID_SYSTEM_CONTROL">MAV_COMP_ID_SYSTEM_CONTROL</a>
-      <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_COMP_ID_ALL (2018-11).
-
-
-  System control does not require a separate component ID.</p>
-     </td>
-     <td>Component for handling system messages (e.g. to ARM, takeoff, etc.).</td>
+     <td>UNDEFINED mode. This solely depends on the autopilot - use with caution, intended for developers only.</td>
     </tr>
    </tbody>
   </table>
@@ -1890,13 +323,15 @@
    <a href="#MAV_SYS_STATUS_SENSOR">MAV_SYS_STATUS_SENSOR</a>
   </h3>
   <p>
-   通过SYS_STATUS该部分编码内容显示当前传感器的状态。</p>
+   <a href="#enums">
+    [Enum]
+   </a>These encode the sensors whose status is sent as part of the SYS_STATUS message.</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名</th>
+     <th>描述</th>
     </tr>
    </thead>
    <tbody>
@@ -1905,35 +340,35 @@
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_3D_GYRO">MAV_SYS_STATUS_SENSOR_3D_GYRO</a>
      </td>
-     <td>0x01 三轴陀螺仪</td>
+     <td>0x01 3D gyro</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_3D_ACCEL">
      <td>2</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_3D_ACCEL">MAV_SYS_STATUS_SENSOR_3D_ACCEL</a>
      </td>
-     <td>0x02 三轴加速度传感器</td>
+     <td>0x02 3D accelerometer</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_3D_MAG">
      <td>4</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_3D_MAG">MAV_SYS_STATUS_SENSOR_3D_MAG</a>
      </td>
-     <td>0x04 三轴磁力计</td>
+     <td>0x04 3D magnetometer</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_ABSOLUTE_PRESSURE">
      <td>8</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_ABSOLUTE_PRESSURE">MAV_SYS_STATUS_SENSOR_ABSOLUTE_PRESSURE</a>
      </td>
-     <td>0x08绝对气压计</td>
+     <td>0x08 absolute pressure</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_DIFFERENTIAL_PRESSURE">
      <td>16</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_DIFFERENTIAL_PRESSURE">MAV_SYS_STATUS_SENSOR_DIFFERENTIAL_PRESSURE</a>
      </td>
-     <td>0x10 压差传感器</td>
+     <td>0x10 differential pressure</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_GPS">
      <td>32</td>
@@ -1947,168 +382,168 @@
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_OPTICAL_FLOW">MAV_SYS_STATUS_SENSOR_OPTICAL_FLOW</a>
      </td>
-     <td>0x40 光流传感器</td>
+     <td>0x40 optical flow</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_VISION_POSITION">
      <td>128</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_VISION_POSITION">MAV_SYS_STATUS_SENSOR_VISION_POSITION</a>
      </td>
-     <td>0x80 视觉传感器</td>
+     <td>0x80 computer vision position</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_LASER_POSITION">
      <td>256</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_LASER_POSITION">MAV_SYS_STATUS_SENSOR_LASER_POSITION</a>
      </td>
-     <td> 0x100基于激光的定位系统</td>
+     <td>0x100 laser based position</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_EXTERNAL_GROUND_TRUTH">
      <td>512</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_EXTERNAL_GROUND_TRUTH">MAV_SYS_STATUS_SENSOR_EXTERNAL_GROUND_TRUTH</a>
      </td>
-     <td>0x200 外部视觉定位系统(Vicon 或 Leica)</td>
+     <td>0x200 external ground truth (Vicon or Leica)</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_ANGULAR_RATE_CONTROL">
      <td>1024</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_ANGULAR_RATE_CONTROL">MAV_SYS_STATUS_SENSOR_ANGULAR_RATE_CONTROL</a>
      </td>
-     <td>0x400 三轴角速率控制</td>
+     <td>0x400 3D angular rate control</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_ATTITUDE_STABILIZATION">
      <td>2048</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_ATTITUDE_STABILIZATION">MAV_SYS_STATUS_SENSOR_ATTITUDE_STABILIZATION</a>
      </td>
-     <td>0x800 姿态增稳</td>
+     <td>0x800 attitude stabilization</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_YAW_POSITION">
      <td>4096</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_YAW_POSITION">MAV_SYS_STATUS_SENSOR_YAW_POSITION</a>
      </td>
-     <td>0x1000 航向控制</td>
+     <td>0x1000 yaw position</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_Z_ALTITUDE_CONTROL">
      <td>8192</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_Z_ALTITUDE_CONTROL">MAV_SYS_STATUS_SENSOR_Z_ALTITUDE_CONTROL</a>
      </td>
-     <td>0x2000 高度控制</td>
+     <td>0x2000 z/altitude control</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_XY_POSITION_CONTROL">
      <td>16384</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_XY_POSITION_CONTROL">MAV_SYS_STATUS_SENSOR_XY_POSITION_CONTROL</a>
      </td>
-     <td>0x4000 x/y 位置控制</td>
+     <td>0x4000 x/y position control</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_MOTOR_OUTPUTS">
      <td>32768</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_MOTOR_OUTPUTS">MAV_SYS_STATUS_SENSOR_MOTOR_OUTPUTS</a>
      </td>
-     <td>0x8000 电机输出/控制</td>
+     <td>0x8000 motor outputs / control</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_RC_RECEIVER">
      <td>65536</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_RC_RECEIVER">MAV_SYS_STATUS_SENSOR_RC_RECEIVER</a>
      </td>
-     <td>0x10000遥控接收机</td>
+     <td>0x10000 rc receiver</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_3D_GYRO2">
      <td>131072</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_3D_GYRO2">MAV_SYS_STATUS_SENSOR_3D_GYRO2</a>
      </td>
-     <td>0x20000 第二颗三轴陀螺仪</td>
+     <td>0x20000 2nd 3D gyro</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_3D_ACCEL2">
      <td>262144</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_3D_ACCEL2">MAV_SYS_STATUS_SENSOR_3D_ACCEL2</a>
      </td>
-     <td>0x40000 第二颗三轴加速度传感器</td>
+     <td>0x40000 2nd 3D accelerometer</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_3D_MAG2">
      <td>524288</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_3D_MAG2">MAV_SYS_STATUS_SENSOR_3D_MAG2</a>
      </td>
-     <td>0x80000  第二颗三轴磁力计</td>
+     <td>0x80000 2nd 3D magnetometer</td>
     </tr>
     <tr id="MAV_SYS_STATUS_GEOFENCE">
      <td>1048576</td>
      <td>
       <a href="#MAV_SYS_STATUS_GEOFENCE">MAV_SYS_STATUS_GEOFENCE</a>
      </td>
-     <td>0x100000 地理围栏</td>
+     <td>0x100000 geofence</td>
     </tr>
     <tr id="MAV_SYS_STATUS_AHRS">
      <td>2097152</td>
      <td>
       <a href="#MAV_SYS_STATUS_AHRS">MAV_SYS_STATUS_AHRS</a>
      </td>
-     <td>0x200 000 姿态航向参考子系统健康</td>
+     <td>0x200000 AHRS subsystem health</td>
     </tr>
     <tr id="MAV_SYS_STATUS_TERRAIN">
      <td>4194304</td>
      <td>
       <a href="#MAV_SYS_STATUS_TERRAIN">MAV_SYS_STATUS_TERRAIN</a>
      </td>
-     <td>0x400000 地形子系统健康</td>
+     <td>0x400000 Terrain subsystem health</td>
     </tr>
     <tr id="MAV_SYS_STATUS_REVERSE_MOTOR">
      <td>8388608</td>
      <td>
       <a href="#MAV_SYS_STATUS_REVERSE_MOTOR">MAV_SYS_STATUS_REVERSE_MOTOR</a>
      </td>
-     <td>0x800000 电机反转</td>
+     <td>0x800000 Motors are reversed</td>
     </tr>
     <tr id="MAV_SYS_STATUS_LOGGING">
      <td>16777216</td>
      <td>
       <a href="#MAV_SYS_STATUS_LOGGING">MAV_SYS_STATUS_LOGGING</a>
      </td>
-     <td>0x1000000 日志记录</td>
+     <td>0x1000000 Logging</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_BATTERY">
      <td>33554432</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_BATTERY">MAV_SYS_STATUS_SENSOR_BATTERY</a>
      </td>
-     <td>0:2000000 电池</td>
+     <td>0x2000000 Battery</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_PROXIMITY">
      <td>67108864</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_PROXIMITY">MAV_SYS_STATUS_SENSOR_PROXIMITY</a>
      </td>
-     <td>0x4000000 近距离传感器</td>
+     <td>0x4000000 Proximity</td>
     </tr>
     <tr id="MAV_SYS_STATUS_SENSOR_SATCOM">
      <td>134217728</td>
      <td>
       <a href="#MAV_SYS_STATUS_SENSOR_SATCOM">MAV_SYS_STATUS_SENSOR_SATCOM</a>
      </td>
-     <td>0x80000 卫星通讯</td>
+     <td>0x8000000 Satellite Communication</td>
     </tr>
     <tr id="MAV_SYS_STATUS_PREARM_CHECK">
      <td>268435456</td>
      <td>
       <a href="#MAV_SYS_STATUS_PREARM_CHECK">MAV_SYS_STATUS_PREARM_CHECK</a>
      </td>
-     <td>0x100000 解锁前检查状态。 解锁时需要是是正常的</td>
+     <td>0x10000000 pre-arm check status. Always healthy when armed</td>
     </tr>
     <tr id="MAV_SYS_STATUS_OBSTACLE_AVOIDANCE">
      <td>536870912</td>
      <td>
       <a href="#MAV_SYS_STATUS_OBSTACLE_AVOIDANCE">MAV_SYS_STATUS_OBSTACLE_AVOIDANCE</a>
      </td>
-     <td>0x20000000 避障系统</td>
+     <td>0x20000000 Avoidance/collision prevention</td>
     </tr>
    </tbody>
   </table>
@@ -2134,7 +569,7 @@
      <td>
       <a href="#MAV_FRAME_GLOBAL">MAV_FRAME_GLOBAL</a>
      </td>
-     <td>全局(WGS84) 坐标系+ 海拔高度. 第一个数值/x：纬度；第二个数值/：经度；第三个数值/z：正，海拔高度(MSL)。</td>
+     <td>Global (WGS84) coordinate frame + MSL altitude. First value / x: latitude, second value / y: longitude, third value / z: positive altitude over mean sea level (MSL).</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_NED">
      <td>1</td>
@@ -2148,14 +583,14 @@
      <td>
       <a href="#MAV_FRAME_MISSION">MAV_FRAME_MISSION</a>
      </td>
-     <td>不是一个坐标系，是一条指令</td>
+     <td>NOT a coordinate frame, indicates a mission command.</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_RELATIVE_ALT">
      <td>3</td>
      <td>
       <a href="#MAV_FRAME_GLOBAL_RELATIVE_ALT">MAV_FRAME_GLOBAL_RELATIVE_ALT</a>
      </td>
-     <td>全局(WGS84) 坐标系+相对于home点位置的高度。 第一个数值/x：纬度；第二个数值/：经度；第三个数值/z：以home点高度为0，高度为正</td>
+     <td>Global (WGS84) coordinate frame + altitude relative to the home position. First value / x: latitude, second value / y: longitude, third value / z: positive altitude with 0 being at the altitude of the home location.</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_ENU">
      <td>4</td>
@@ -2169,21 +604,21 @@
      <td>
       <a href="#MAV_FRAME_GLOBAL_INT">MAV_FRAME_GLOBAL_INT</a>
      </td>
-     <td>全局(WGS84) 坐标系（比例）+ 海拔高度. 第一个数值/x：纬度  角度*1.0e-7；第二个数值/：经度 角度*1.0e-7；第三个数值/z：正，海拔高度(MSL)。</td>
+     <td>Global (WGS84) coordinate frame (scaled) + MSL altitude. First value / x: latitude in degrees*1.0e-7, second value / y: longitude in degrees*1.0e-7, third value / z: positive altitude over mean sea level (MSL).</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_RELATIVE_ALT_INT">
      <td>6</td>
      <td>
       <a href="#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT">MAV_FRAME_GLOBAL_RELATIVE_ALT_INT</a>
      </td>
-     <td>全局(WGS84) 坐标系（比例）+相对于home点位置的高度。 第一个数值/x：纬度 角度*10e-7；第二个数值/：经度 角度*10e-7；第三个数值/z：以home点高度为0，高度为正</td>
+     <td>Global (WGS84) coordinate frame (scaled) + altitude relative to the home position. First value / x: latitude in degrees*10e-7, second value / y: longitude in degrees*10e-7, third value / z: positive altitude with 0 being at the altitude of the home location.</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_OFFSET_NED">
      <td>7</td>
      <td>
       <a href="#MAV_FRAME_LOCAL_OFFSET_NED">MAV_FRAME_LOCAL_OFFSET_NED</a>
      </td>
-     <td>当前坐标系偏移。 当前坐标系下的任何内容都应按照本地坐标系进行修正</td>
+     <td>Offset to the current local frame. Anything expressed in this frame should be added to the current local frame position.</td>
     </tr>
     <tr id="MAV_FRAME_BODY_NED">
      <td>8</td>
@@ -2192,7 +627,7 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_BODY_FRD (2019-08).</p>
      </td>
-     <td>在机体导航坐标系设置点 如果位置控制来自于外部系统 - 例如有利于指令 2 m/s^2 加速到右边</td>
+     <td>Setpoint in body NED frame. This makes sense if all position control is externalized - e.g. useful to command 2 m/s^2 acceleration to the right.</td>
     </tr>
     <tr id="MAV_FRAME_BODY_OFFSET_NED">
      <td>9</td>
@@ -2201,21 +636,21 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_BODY_FRD (2019-08).</p>
      </td>
-     <td>设定机体导航坐标系偏移量 如果要在当前飞行路径上添加设定值以避免障碍，那么这样做是有意义的例如，指令2米/秒方的加速度向东是。</td>
+     <td>Offset in body NED frame. This makes sense if adding setpoints to the current flight path, to avoid an obstacle - e.g. useful to command 2 m/s^2 acceleration to the east.</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_TERRAIN_ALT">
      <td>10</td>
      <td>
       <a href="#MAV_FRAME_GLOBAL_TERRAIN_ALT">MAV_FRAME_GLOBAL_TERRAIN_ALT</a>
      </td>
-     <td>带有距离地面高度高度（航点坐标）的全球（WGS84)坐标系。 第一个数值/x：纬度 角度*e-7；第二个数值/：经度 角度*1e-7；第三个数值/z 单位米：以地平线基准为0的地形模型中</td>
+     <td>Global (WGS84) coordinate frame with AGL altitude (at the waypoint coordinate). First value / x: latitude in degrees, second value / y: longitude in degrees, third value / z: positive altitude in meters with 0 being at ground level in terrain model.</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_TERRAIN_ALT_INT">
      <td>11</td>
      <td>
       <a href="#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT">MAV_FRAME_GLOBAL_TERRAIN_ALT_INT</a>
      </td>
-     <td>带有距离地面高度高度（航点坐标）的全球（WGS84)坐标系(比例缩放）。 第一个数值/x：纬度 角度*e-7；第二个数值/：经度 角度*1e-7；第三个数值/z 单位米：以地平线基准为0的地形模型中</td>
+     <td>Global (WGS84) coordinate frame (scaled) with AGL altitude (at the waypoint coordinate). First value / x: latitude in degrees*10e-7, second value / y: longitude in degrees*10e-7, third value / z: positive altitude in meters with 0 being at ground level in terrain model.</td>
     </tr>
     <tr id="MAV_FRAME_BODY_FRD">
      <td>12</td>
@@ -2292,14 +727,14 @@
      <td>
       <a href="#MAV_FRAME_LOCAL_FRD">MAV_FRAME_LOCAL_FRD</a>
      </td>
-     <td>前，右，下坐标系。 这是一个z向下和任意F/R对齐的局部作坐标系（即不与NED/earth坐标系对齐)。</td>
+     <td>Forward, Right, Down coordinate frame. This is a local frame with Z-down and arbitrary F/R alignment (i.e. not aligned with NED/earth frame).</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_FLU">
      <td>21</td>
      <td>
       <a href="#MAV_FRAME_LOCAL_FLU">MAV_FRAME_LOCAL_FLU</a>
      </td>
-     <td>向前, 左, 向上坐标系. 这是一个z向上和任意F/R对齐的局部作坐标系（即不与NED/earth坐标系对齐)。</td>
+     <td>Forward, Left, Up coordinate frame. This is a local frame with Z-up and arbitrary F/L alignment (i.e. not aligned with ENU/earth frame).</td>
     </tr>
    </tbody>
   </table>
@@ -2314,9 +749,9 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名</th>
+     <th>描述</th>
     </tr>
    </thead>
    <tbody>
@@ -2387,9 +822,9 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名</th>
+     <th>描述</th>
     </tr>
    </thead>
    <tbody>
@@ -2398,35 +833,35 @@
      <td>
       <a href="#FENCE_ACTION_NONE">FENCE_ACTION_NONE</a>
      </td>
-     <td>禁用围栏模式</td>
+     <td>Disable fenced mode</td>
     </tr>
     <tr id="FENCE_ACTION_GUIDED">
      <td>1</td>
      <td>
       <a href="#FENCE_ACTION_GUIDED">FENCE_ACTION_GUIDED</a>
      </td>
-     <td>切换到引导模式，返回点(围栏点0)</td>
+     <td>Switched to guided mode to return point (fence point 0)</td>
     </tr>
     <tr id="FENCE_ACTION_REPORT">
      <td>2</td>
      <td>
       <a href="#FENCE_ACTION_REPORT">FENCE_ACTION_REPORT</a>
      </td>
-     <td>报告围栏被破坏，但不要采取行动</td>
+     <td>Report fence breach, but don't take action</td>
     </tr>
     <tr id="FENCE_ACTION_GUIDED_THR_PASS">
      <td>3</td>
      <td>
       <a href="#FENCE_ACTION_GUIDED_THR_PASS">FENCE_ACTION_GUIDED_THR_PASS</a>
      </td>
-     <td>切换到引导模式返回点(起点0)，手动油门控制</td>
+     <td>Switched to guided mode to return point (fence point 0) with manual throttle control</td>
     </tr>
     <tr id="FENCE_ACTION_RTL">
      <td>4</td>
      <td>
       <a href="#FENCE_ACTION_RTL">FENCE_ACTION_RTL</a>
      </td>
-     <td>切换到RTL(返回启动)模式，前往返回点。</td>
+     <td>Switch to RTL (return to launch) mode and head for the return point.</td>
     </tr>
    </tbody>
   </table>
@@ -2441,9 +876,9 @@
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名</th>
+     <th>描述</th>
     </tr>
    </thead>
    <tbody>
@@ -2452,28 +887,28 @@
      <td>
       <a href="#FENCE_BREACH_NONE">FENCE_BREACH_NONE</a>
      </td>
-     <td>没有违反围栏的行为</td>
+     <td>No last fence breach</td>
     </tr>
     <tr id="FENCE_BREACH_MINALT">
      <td>1</td>
      <td>
       <a href="#FENCE_BREACH_MINALT">FENCE_BREACH_MINALT</a>
      </td>
-     <td>触发最低高度</td>
+     <td>Breached minimum altitude</td>
     </tr>
     <tr id="FENCE_BREACH_MAXALT">
      <td>2</td>
      <td>
       <a href="#FENCE_BREACH_MAXALT">FENCE_BREACH_MAXALT</a>
      </td>
-     <td>触发最高高度</td>
+     <td>Breached maximum altitude</td>
     </tr>
     <tr id="FENCE_BREACH_BOUNDARY">
      <td>3</td>
      <td>
       <a href="#FENCE_BREACH_BOUNDARY">FENCE_BREACH_BOUNDARY</a>
      </td>
-     <td>越过围栏边界</td>
+     <td>Breached fence boundary</td>
     </tr>
    </tbody>
   </table>
@@ -2481,13 +916,15 @@
    <a href="#FENCE_MITIGATE">FENCE_MITIGATE</a>
   </h3>
   <p>
-   正在采取的缓解/防止违反地理围栏的行动</p>
+   <a href="#enums">
+    [Enum]
+   </a>Actions being taken to mitigate/prevent fence breach</p>
   <table class="sortable">
    <thead>
     <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
+     <th>值</th>
+     <th>字段名</th>
+     <th>描述</th>
     </tr>
    </thead>
    <tbody>
@@ -2496,21 +933,21 @@
      <td>
       <a href="#FENCE_MITIGATE_UNKNOWN">FENCE_MITIGATE_UNKNOWN</a>
      </td>
-     <td>未知</td>
+     <td>Unknown</td>
     </tr>
     <tr id="FENCE_MITIGATE_NONE">
      <td>1</td>
      <td>
       <a href="#FENCE_MITIGATE_NONE">FENCE_MITIGATE_NONE</a>
      </td>
-     <td>没有采取任何行动</td>
+     <td>No actions being taken</td>
     </tr>
     <tr id="FENCE_MITIGATE_VEL_LIMIT">
      <td>2</td>
      <td>
       <a href="#FENCE_MITIGATE_VEL_LIMIT">FENCE_MITIGATE_VEL_LIMIT</a>
      </td>
-     <td>限制速度以防止违反行为</td>
+     <td>Velocity limiting active to prevent breach</td>
     </tr>
    </tbody>
   </table>
@@ -2518,9 +955,11 @@
    <a href="#MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
   </h3>
   <p style="color:red">
-   替换为GIMBAL_MANAGER_FLAGS (2020-01)。</p>
+   <strong>DEPRECATED:</strong> Replaced by GIMBAL_MANAGER_FLAGS (2020-01).</p>
   <p>
-   可能的挂载操作模式的枚举。 此消息被过时/废弃的云台消息使用。</p>
+   <a href="#enums">
+    [Enum]
+   </a>Enumeration of possible mount operation modes. This message is used by obsolete/deprecated gimbal messages.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2535,42 +974,42 @@
      <td>
       <a href="#MAV_MOUNT_MODE_RETRACT">MAV_MOUNT_MODE_RETRACT</a>
      </td>
-     <td>按照记忆功能加载并且保持安全位置（俯仰滚转偏航）并停止增稳功能</td>
+     <td>Load and keep safe position (Roll,Pitch,Yaw) from permant memory and stop stabilization</td>
     </tr>
     <tr id="MAV_MOUNT_MODE_NEUTRAL">
      <td>1</td>
      <td>
       <a href="#MAV_MOUNT_MODE_NEUTRAL">MAV_MOUNT_MODE_NEUTRAL</a>
      </td>
-     <td>按照记忆功能加载并且保持中立位置（俯仰滚转偏航）</td>
+     <td>Load and keep neutral position (Roll,Pitch,Yaw) from permanent memory.</td>
     </tr>
     <tr id="MAV_MOUNT_MODE_MAVLINK_TARGETING">
      <td>2</td>
      <td>
       <a href="#MAV_MOUNT_MODE_MAVLINK_TARGETING">MAV_MOUNT_MODE_MAVLINK_TARGETING</a>
      </td>
-     <td>在稳定模式下加载空档位置，启动横摇、俯仰、偏航控制</td>
+     <td>Load neutral position and start MAVLink Roll,Pitch,Yaw control with stabilization</td>
     </tr>
     <tr id="MAV_MOUNT_MODE_RC_TARGETING">
      <td>3</td>
      <td>
       <a href="#MAV_MOUNT_MODE_RC_TARGETING">MAV_MOUNT_MODE_RC_TARGETING</a>
      </td>
-     <td>在稳定模式下加载空档位置，启动横摇、俯仰、偏航遥控器控制</td>
+     <td>Load neutral position and start RC Roll,Pitch,Yaw control with stabilization</td>
     </tr>
     <tr id="MAV_MOUNT_MODE_GPS_POINT">
      <td>4</td>
      <td>
       <a href="#MAV_MOUNT_MODE_GPS_POINT">MAV_MOUNT_MODE_GPS_POINT</a>
      </td>
-     <td>加载中立位置并开始指向具体的经纬高点</td>
+     <td>Load neutral position and start to point to Lat,Lon,Alt</td>
     </tr>
     <tr id="MAV_MOUNT_MODE_SYSID_TARGET">
      <td>5</td>
      <td>
       <a href="#MAV_MOUNT_MODE_SYSID_TARGET">MAV_MOUNT_MODE_SYSID_TARGET</a>
      </td>
-     <td>指定系统ID的云台跟踪系统</td>
+     <td>Gimbal tracks system with specified system ID</td>
     </tr>
    </tbody>
   </table>
@@ -2578,7 +1017,9 @@
    <a href="#GIMBAL_DEVICE_CAP_FLAGS">GIMBAL_DEVICE_CAP_FLAGS</a>
   </h3>
   <p>
-   云台设备 (低级别) 能力标志 （位图)</p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal device (low level) capability flags (bitmap)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2593,84 +1034,84 @@
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT">GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT</a>
      </td>
-     <td>云台设备支持收放位置</td>
+     <td>Gimbal device supports a retracted position</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL">
      <td>2</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL">GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL</a>
      </td>
-     <td>云台设备支持水平的、向前的位置，增稳状态</td>
+     <td>Gimbal device supports a horizontal, forward looking position, stabilized</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS">
      <td>4</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS">GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS</a>
      </td>
-     <td>云台设备支持滚转。</td>
+     <td>Gimbal device supports rotating around roll axis.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW">
      <td>8</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW">GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW</a>
      </td>
-     <td>云台设备支持相对于机体的滚动角变化的增稳</td>
+     <td>Gimbal device supports to follow a roll angle relative to the vehicle</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK">
      <td>16</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK">GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK</a>
      </td>
-     <td>云台设备支持锁定滚转角度(通常这是滚转增稳的默认值)</td>
+     <td>Gimbal device supports locking to an roll angle (generally that's the default with roll stabilized)</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS">
      <td>32</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS">GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS</a>
      </td>
-     <td>云台设备支持围绕俯仰轴旋转。</td>
+     <td>Gimbal device supports rotating around pitch axis.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW">
      <td>64</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW">GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW</a>
      </td>
-     <td>云台设备支持相对于机体的俯仰角变化的增稳</td>
+     <td>Gimbal device supports to follow a pitch angle relative to the vehicle</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK">
      <td>128</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK">GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK</a>
      </td>
-     <td>云台设备支持锁定俯仰角度(通常这是俯仰增稳的默认值)</td>
+     <td>Gimbal device supports locking to an pitch angle (generally that's the default with pitch stabilized)</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS">
      <td>256</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS">GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS</a>
      </td>
-     <td>云台设备支持方位运动。</td>
+     <td>Gimbal device supports rotating around yaw axis.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW">
      <td>512</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW">GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW</a>
      </td>
-     <td>云台装置支持跟随相对于机体的方位(通常这是默认值)</td>
+     <td>Gimbal device supports to follow a yaw angle relative to the vehicle (generally that's the default)</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK">
      <td>1024</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK">GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK</a>
      </td>
-     <td>台设备支持锁定到一个绝对方位(通常这是一个可用的选项)</td>
+     <td>Gimbal device supports locking to an absolute heading (often this is an option available)</td>
     </tr>
     <tr id="GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW">
      <td>2048</td>
      <td>
       <a href="#GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW">GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW</a>
      </td>
-     <td>云台设备支持无限制的旋转(例如使用滑环)。</td>
+     <td>Gimbal device supports yawing/panning infinetely (e.g. using slip disk).</td>
     </tr>
    </tbody>
   </table>
@@ -2678,7 +1119,9 @@
    <a href="#GIMBAL_MANAGER_CAP_FLAGS">GIMBAL_MANAGER_CAP_FLAGS</a>
   </h3>
   <p>
-   高性能云台的能力标识 前16位与GIMBAL_DEVICE_CAP_FLAGS相同，而GIMBAL_DEVICE_FLAGS与GIMBAL_DEVICE_FLAGS相同。 但是，云台管理器不需要从云台复制标志，但也可以增强功能，从而添加标志。</p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal manager high level capability flags (bitmap). The first 16 bits are identical to the GIMBAL_DEVICE_CAP_FLAGS which are identical with GIMBAL_DEVICE_FLAGS. However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2693,133 +1136,119 @@
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT">GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT</a>
      </td>
-     <td>基于GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT。</td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL">
      <td>2</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL">GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL</a>
      </td>
-     <td>基于GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL。</td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_AXIS">
      <td>4</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_AXIS">GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_AXIS</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS</td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_FOLLOW">
      <td>8</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_FOLLOW">GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_FOLLOW</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLLOW</td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_LOCK">
      <td>16</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_LOCK">GIMBAL_MANAGER_CAP_FLAGS_HAS_ROLL_LOCK</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK</td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_AXIS">
      <td>32</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_AXIS">GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_AXIS</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS</td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_FOLLOW">
      <td>64</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_FOLLOW">GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_FOLLOW</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW</td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_LOCK">
      <td>128</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_LOCK">GIMBAL_MANAGER_CAP_FLAGS_HAS_PITCH_LOCK</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK</td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_AXIS">
      <td>256</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_AXIS">GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_AXIS</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS</td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_FOLLOW">
      <td>512</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_FOLLOW">GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_FOLLOW</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW</td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_LOCK">
      <td>1024</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_LOCK">GIMBAL_MANAGER_CAP_FLAGS_HAS_YAW_LOCK</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK</td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW">
      <td>2048</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_INFINITE_YAW</a>
      </td>
-     <td>以GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW为依据。</td>
+     <td>Based on GIMBAL_DEVICE_CAP_FLAGS_SUPPORTS_INFINITE_YAW.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL">
      <td>65536</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL">GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_LOCAL</a>
      </td>
-     <td>云台管理器支持指向本地位置。</td>
+     <td>Gimbal manager supports to point to a local position.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL">
      <td>131072</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL">GIMBAL_MANAGER_CAP_FLAGS_CAN_POINT_LOCATION_GLOBAL</a>
      </td>
-     <td>云台管理器支持指向全球纬度、经度、高度位置。</td>
-    </tr>
-    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT">
-     <td>262144</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT">GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT</a>
-     </td>
-     <td>云台管理器支持跟踪摄像头上的点。</td>
-    </tr>
-    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE">
-     <td>524288</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE">GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE</a>
-     </td>
-     <td>云台管理器支持跟踪相机上的一个点。</td>
+     <td>Gimbal manager supports to point to a global latitude, longitude, altitude position.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">
      <td>1048576</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE</a>
      </td>
-     <td>云台管理器支持俯仰和偏航的角速度缩放焦距(越是放大，运动越慢)。</td>
+     <td>Gimbal manager supports pitching and yawing at an angular velocity scaled by focal length (the more zoomed in, the slower the movement).</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING">
      <td>2097152</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING</a>
      </td>
-     <td>云台管理器支持在指向位置或跟踪时嵌入。</td>
+     <td>Gimbal manager supports nudging when pointing to a location or tracking.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE">
      <td>4194304</td>
      <td>
       <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE</a>
      </td>
-     <td>云台控制器支持在指向位置或跟踪时覆盖。</td>
+     <td>Gimbal manager supports overriding when pointing to a location or tracking.</td>
     </tr>
    </tbody>
   </table>
@@ -2827,7 +1256,9 @@
    <a href="#GIMBAL_DEVICE_FLAGS">GIMBAL_DEVICE_FLAGS</a>
   </h3>
   <p>
-   低水平云台的设备标识</p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags for gimbal device (lower level) operation.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2842,35 +1273,35 @@
      <td>
       <a href="#GIMBAL_DEVICE_FLAGS_RETRACT">GIMBAL_DEVICE_FLAGS_RETRACT</a>
      </td>
-     <td>设置为缩回安全位置(不稳定)，覆盖所有其他标识。</td>
+     <td>Set to retracted safe position (no stabilization), takes presedence over all other flags.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_FLAGS_NEUTRAL">
      <td>2</td>
      <td>
       <a href="#GIMBAL_DEVICE_FLAGS_NEUTRAL">GIMBAL_DEVICE_FLAGS_NEUTRAL</a>
      </td>
-     <td>设置为中立位置(水平，向前看，稳定)，在除后退外的所有其他标识上保持稳定。</td>
+     <td>Set to neutral position (horizontal, forward looking, with stabiliziation), takes presedence over all other flags except RETRACT.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_FLAGS_ROLL_LOCK">
      <td>4</td>
      <td>
       <a href="#GIMBAL_DEVICE_FLAGS_ROLL_LOCK">GIMBAL_DEVICE_FLAGS_ROLL_LOCK</a>
      </td>
-     <td>锁定滚转角到水平的绝对角度(不是到无人机的绝对角度)。 这通常是默认的稳定框架。</td>
+     <td>Lock roll angle to absolute angle relative to horizon (not relative to drone). This is generally the default with a stabilizing gimbal.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_FLAGS_PITCH_LOCK">
      <td>8</td>
      <td>
       <a href="#GIMBAL_DEVICE_FLAGS_PITCH_LOCK">GIMBAL_DEVICE_FLAGS_PITCH_LOCK</a>
      </td>
-     <td>锁定俯仰角到水平的绝对角度(不是到无人机的绝对角度)。 这通常是缺省的。</td>
+     <td>Lock pitch angle to absolute angle relative to horizon (not relative to drone). This is generally the default.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_FLAGS_YAW_LOCK">
      <td>16</td>
      <td>
       <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a>
      </td>
-     <td>锁定方位角到水平的绝对北(不是到无人机的绝对角度)。 ：如果设置了这个标志，四元数在地球框架中，x轴指向北方(绝对偏航)。 如果不设置此标志，四元数帧将在地球坐标系中旋转，使x轴指向前方(相对于机体的偏航)。</td>
+     <td>Lock yaw angle to absolute angle relative to North (not relative to drone). If this flag is set, the quaternion is in the Earth frame with the x-axis pointing North (yaw absolute). If this flag is not set, the quaternion frame is in the Earth frame rotated so that the x-axis is pointing forward (yaw relative to vehicle).</td>
     </tr>
    </tbody>
   </table>
@@ -2878,7 +1309,9 @@
    <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
   </h3>
   <p>
-   高级云台管理器操作的标志前16个字节与GIMBAL_DEVICE_FLAGS相同。</p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags for high level gimbal manager operation The first 16 bytes are identical to the GIMBAL_DEVICE_FLAGS.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2893,63 +1326,63 @@
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_RETRACT">GIMBAL_MANAGER_FLAGS_RETRACT</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_FLAGS_RETRACT</td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_RETRACT</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_NEUTRAL">
      <td>2</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_NEUTRAL">GIMBAL_MANAGER_FLAGS_NEUTRAL</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_FLAGS_RETRACT</td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_NEUTRAL</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_ROLL_LOCK">
      <td>4</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_ROLL_LOCK">GIMBAL_MANAGER_FLAGS_ROLL_LOCK</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_FLAGS_ROLL_LOCK</td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_ROLL_LOCK</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_PITCH_LOCK">
      <td>8</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_PITCH_LOCK">GIMBAL_MANAGER_FLAGS_PITCH_LOCK</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_FLAGS_PITCH_LOCK</td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_PITCH_LOCK</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_YAW_LOCK">
      <td>16</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_YAW_LOCK">GIMBAL_MANAGER_FLAGS_YAW_LOCK</a>
      </td>
-     <td>基于 GIMBAL_DEVICE_FLAGS_RETRACT</td>
+     <td>Based on GIMBAL_DEVICE_FLAGS_YAW_LOCK</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH">
      <td>1048576</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH">GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH</a>
      </td>
-     <td>比例角速度相对于焦距。 当变焦放大之后，云台的移动速度会变慢</td>
+     <td>Scale angular velocity relative to focal length. This means the gimbal moves slower if it is zoomed in.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_NUDGE">
      <td>2097152</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_NUDGE">GIMBAL_MANAGER_FLAGS_NUDGE</a>
      </td>
-     <td>解析指向某个位置或跟踪的姿态控制。 如果设置了此标志，则四元数相对于现有的跟踪角。</td>
+     <td>Interpret attitude control on top of pointing to a location or tracking. If this flag is set, the quaternion is relative to the existing tracking angle.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_OVERRIDE">
      <td>4194304</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_OVERRIDE">GIMBAL_MANAGER_FLAGS_OVERRIDE</a>
      </td>
-     <td>完全覆盖指向一个位置或跟踪 如果设置了此标志，则四元数(通常)是根据GIMBAL_MANAGER_FLAGS_YAW_LOCK</td>
+     <td>Completely override pointing to a location or tracking. If this flag is set, the quaternion is (as usual) according to GIMBAL_MANAGER_FLAGS_YAW_LOCK.</td>
     </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_NONE">
      <td>8388608</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_NONE">GIMBAL_MANAGER_FLAGS_NONE</a>
      </td>
-     <td>可以将此标志设置为放弃前面使用MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE设置的控制。 此标志不得与其他标志相结合。</td>
+     <td>This flag can be set to give up control previously set using MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE. This flag must not be combined with other flags.</td>
     </tr>
    </tbody>
   </table>
@@ -2957,7 +1390,9 @@
    <a href="#GIMBAL_DEVICE_ERROR_FLAGS">GIMBAL_DEVICE_ERROR_FLAGS</a>
   </h3>
   <p>
-   云台(低等级)错误标志(位图，0表示无错误)</p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal device (low level) error flags (bitmap, 0 means no error)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2972,56 +1407,134 @@
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT">GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT</a>
      </td>
-     <td>云台装置受硬件滚转角度限制。</td>
+     <td>Gimbal device is limited by hardware roll limit.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT">
      <td>2</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT">GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT</a>
      </td>
-     <td>云台设备受到硬件俯仰角度限制。</td>
+     <td>Gimbal device is limited by hardware pitch limit.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT">
      <td>4</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT">GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT</a>
      </td>
-     <td>云台设备受到硬件方位角度的限制。</td>
+     <td>Gimbal device is limited by hardware yaw limit.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR">
      <td>8</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR</a>
      </td>
-     <td>与云台编码器发生错误。</td>
+     <td>There is an error with the gimbal encoders.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR">
      <td>16</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR</a>
      </td>
-     <td>云台电源发生错误。</td>
+     <td>There is an error with the gimbal power source.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR">
      <td>32</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR</a>
      </td>
-     <td>云台电机发生错误。</td>
+     <td>There is an error with the gimbal motor's.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR">
      <td>64</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR</a>
      </td>
-     <td>云台l的软件有错误。</td>
+     <td>There is an error with the gimbal's software.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR">
      <td>128</td>
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR</a>
      </td>
-     <td>云台的通信有错误。</td>
+     <td>There is an error with the gimbal's communication.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_CALIBRATION_RUNNING">
+     <td>256</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_CALIBRATION_RUNNING">GIMBAL_DEVICE_ERROR_FLAGS_CALIBRATION_RUNNING</a>
+     </td>
+     <td>Gimbal is currently calibrating.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GRIPPER_ACTIONS">
+   <a href="#GRIPPER_ACTIONS">GRIPPER_ACTIONS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gripper actions.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GRIPPER_ACTION_RELEASE">
+     <td>0</td>
+     <td>
+      <a href="#GRIPPER_ACTION_RELEASE">GRIPPER_ACTION_RELEASE</a>
+     </td>
+     <td>Gripper release cargo.</td>
+    </tr>
+    <tr id="GRIPPER_ACTION_GRAB">
+     <td>1</td>
+     <td>
+      <a href="#GRIPPER_ACTION_GRAB">GRIPPER_ACTION_GRAB</a>
+     </td>
+     <td>Gripper grab onto cargo.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="WINCH_ACTIONS">
+   <a href="#WINCH_ACTIONS">WINCH_ACTIONS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Winch actions.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="WINCH_RELAXED">
+     <td>0</td>
+     <td>
+      <a href="#WINCH_RELAXED">WINCH_RELAXED</a>
+     </td>
+     <td>Relax winch.</td>
+    </tr>
+    <tr id="WINCH_RELATIVE_LENGTH_CONTROL">
+     <td>1</td>
+     <td>
+      <a href="#WINCH_RELATIVE_LENGTH_CONTROL">WINCH_RELATIVE_LENGTH_CONTROL</a>
+     </td>
+     <td>Wind or unwind specified length of cable, optionally using specified rate.</td>
+    </tr>
+    <tr id="WINCH_RATE_CONTROL">
+     <td>2</td>
+     <td>
+      <a href="#WINCH_RATE_CONTROL">WINCH_RATE_CONTROL</a>
+     </td>
+     <td>Wind or unwind cable at specified rate.</td>
     </tr>
    </tbody>
   </table>
@@ -3029,7 +1542,9 @@
    <a href="#UAVCAN_NODE_HEALTH">UAVCAN_NODE_HEALTH</a>
   </h3>
   <p>
-   常规的 UAVCAN 节点健康状态</p>
+   <a href="#enums">
+    [Enum]
+   </a>Generalized UAVCAN node health</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3044,28 +1559,28 @@
      <td>
       <a href="#UAVCAN_NODE_HEALTH_OK">UAVCAN_NODE_HEALTH_OK</a>
      </td>
-     <td>节点正常运行。</td>
+     <td>The node is functioning properly.</td>
     </tr>
     <tr id="UAVCAN_NODE_HEALTH_WARNING">
      <td>1</td>
      <td>
       <a href="#UAVCAN_NODE_HEALTH_WARNING">UAVCAN_NODE_HEALTH_WARNING</a>
      </td>
-     <td>关键参数超出范围或节点遇到轻微故障。</td>
+     <td>A critical parameter went out of range or the node has encountered a minor failure.</td>
     </tr>
     <tr id="UAVCAN_NODE_HEALTH_ERROR">
      <td>2</td>
      <td>
       <a href="#UAVCAN_NODE_HEALTH_ERROR">UAVCAN_NODE_HEALTH_ERROR</a>
      </td>
-     <td>该节点遇到重大故障。</td>
+     <td>The node has encountered a major failure.</td>
     </tr>
     <tr id="UAVCAN_NODE_HEALTH_CRITICAL">
      <td>3</td>
      <td>
       <a href="#UAVCAN_NODE_HEALTH_CRITICAL">UAVCAN_NODE_HEALTH_CRITICAL</a>
      </td>
-     <td>该节点发生致命故障。</td>
+     <td>The node has suffered a fatal malfunction.</td>
     </tr>
    </tbody>
   </table>
@@ -3073,7 +1588,9 @@
    <a href="#UAVCAN_NODE_MODE">UAVCAN_NODE_MODE</a>
   </h3>
   <p>
-   常规的 UAVCAN 节点模式</p>
+   <a href="#enums">
+    [Enum]
+   </a>Generalized UAVCAN node mode</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3088,35 +1605,35 @@
      <td>
       <a href="#UAVCAN_NODE_MODE_OPERATIONAL">UAVCAN_NODE_MODE_OPERATIONAL</a>
      </td>
-     <td>节点正在执行它的主要功能。</td>
+     <td>The node is performing its primary functions.</td>
     </tr>
     <tr id="UAVCAN_NODE_MODE_INITIALIZATION">
      <td>1</td>
      <td>
       <a href="#UAVCAN_NODE_MODE_INITIALIZATION">UAVCAN_NODE_MODE_INITIALIZATION</a>
      </td>
-     <td>节点正在初始化;此模式在启动后立即进入。</td>
+     <td>The node is initializing; this mode is entered immediately after startup.</td>
     </tr>
     <tr id="UAVCAN_NODE_MODE_MAINTENANCE">
      <td>2</td>
      <td>
       <a href="#UAVCAN_NODE_MODE_MAINTENANCE">UAVCAN_NODE_MODE_MAINTENANCE</a>
      </td>
-     <td>该节点正在维护中。</td>
+     <td>The node is under maintenance.</td>
     </tr>
     <tr id="UAVCAN_NODE_MODE_SOFTWARE_UPDATE">
      <td>3</td>
      <td>
       <a href="#UAVCAN_NODE_MODE_SOFTWARE_UPDATE">UAVCAN_NODE_MODE_SOFTWARE_UPDATE</a>
      </td>
-     <td>该节点正在更新其软件</td>
+     <td>The node is in the process of updating its software.</td>
     </tr>
     <tr id="UAVCAN_NODE_MODE_OFFLINE">
      <td>7</td>
      <td>
       <a href="#UAVCAN_NODE_MODE_OFFLINE">UAVCAN_NODE_MODE_OFFLINE</a>
      </td>
-     <td>该节点不再联机可用。</td>
+     <td>The node is no longer available online.</td>
     </tr>
    </tbody>
   </table>
@@ -3542,51 +2059,12 @@
      </td>
      <td>Parameter meta data.</td>
     </tr>
-   </tbody>
-  </table>
-  <h3 id="PARAM_TRANSACTION_RESPONSE">
-   <a href="#PARAM_TRANSACTION_RESPONSE">PARAM_TRANSACTION_RESPONSE</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>Possible responses from a PARAM_START_TRANSACTION and PARAM_COMMIT_TRANSACTION messages.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="PARAM_TRANSACTION_RESPONSE_ACCEPTED">
-     <td>0</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_RESPONSE_ACCEPTED">PARAM_TRANSACTION_RESPONSE_ACCEPTED</a>
-     </td>
-     <td>Transaction accepted.</td>
-    </tr>
-    <tr id="PARAM_TRANSACTION_RESPONSE_FAILED">
-     <td>1</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_RESPONSE_FAILED">PARAM_TRANSACTION_RESPONSE_FAILED</a>
-     </td>
-     <td>Transaction failed.</td>
-    </tr>
-    <tr id="PARAM_TRANSACTION_RESPONSE_UNSUPPORTED">
+    <tr id="COMP_METADATA_TYPE_COMMANDS">
      <td>2</td>
      <td>
-      <a href="#PARAM_TRANSACTION_RESPONSE_UNSUPPORTED">PARAM_TRANSACTION_RESPONSE_UNSUPPORTED</a>
+      <a href="#COMP_METADATA_TYPE_COMMANDS">COMP_METADATA_TYPE_COMMANDS</a>
      </td>
-     <td>Transaction unsupported.</td>
-    </tr>
-    <tr id="PARAM_TRANSACTION_RESPONSE_INPROGRESS">
-     <td>3</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_RESPONSE_INPROGRESS">PARAM_TRANSACTION_RESPONSE_INPROGRESS</a>
-     </td>
-     <td>Transaction in progress.</td>
+     <td>Meta data which specifies the commands the vehicle supports. (WIP)</td>
     </tr>
    </tbody>
   </table>
@@ -3628,7 +2106,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Possible parameter transaction action during a commit.</p>
+   </a>Possible parameter transaction actions.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3638,15 +2116,22 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="PARAM_TRANSACTION_ACTION_COMMIT">
+    <tr id="PARAM_TRANSACTION_ACTION_START">
      <td>0</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_ACTION_START">PARAM_TRANSACTION_ACTION_START</a>
+     </td>
+     <td>Commit the current parameter transaction.</td>
+    </tr>
+    <tr id="PARAM_TRANSACTION_ACTION_COMMIT">
+     <td>1</td>
      <td>
       <a href="#PARAM_TRANSACTION_ACTION_COMMIT">PARAM_TRANSACTION_ACTION_COMMIT</a>
      </td>
      <td>Commit the current parameter transaction.</td>
     </tr>
     <tr id="PARAM_TRANSACTION_ACTION_CANCEL">
-     <td>1</td>
+     <td>2</td>
      <td>
       <a href="#PARAM_TRANSACTION_ACTION_CANCEL">PARAM_TRANSACTION_ACTION_CANCEL</a>
      </td>
@@ -6768,6 +5253,27 @@
      </td>
      <td>Camera has video streaming capabilities (request VIDEO_STREAM_INFORMATION with MAV_CMD_REQUEST_MESSAGE for video streaming info)</td>
     </tr>
+    <tr id="CAMERA_CAP_FLAGS_HAS_TRACKING_POINT">
+     <td>512</td>
+     <td>
+      <a href="#CAMERA_CAP_FLAGS_HAS_TRACKING_POINT">CAMERA_CAP_FLAGS_HAS_TRACKING_POINT</a>
+     </td>
+     <td>Camera supports tracking of a point on the camera view.</td>
+    </tr>
+    <tr id="CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE">
+     <td>1024</td>
+     <td>
+      <a href="#CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE">CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE</a>
+     </td>
+     <td>Camera supports tracking of a selection rectangle on the camera view.</td>
+    </tr>
+    <tr id="CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS">
+     <td>2048</td>
+     <td>
+      <a href="#CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS">CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS</a>
+     </td>
+     <td>Camera supports tracking geo status (CAMERA_TRACKING_GEO_STATUS).</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="VIDEO_STREAM_STATUS_FLAGS">
@@ -6845,6 +5351,130 @@
       <a href="#VIDEO_STREAM_TYPE_MPEG_TS_H264">VIDEO_STREAM_TYPE_MPEG_TS_H264</a>
      </td>
      <td>Stream is h.264 on MPEG TS (URI gives the port number)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_STATUS_FLAGS">
+   <a href="#CAMERA_TRACKING_STATUS_FLAGS">CAMERA_TRACKING_STATUS_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Camera tracking status flags</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CAMERA_TRACKING_STATUS_FLAGS_IDLE">
+     <td>0</td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS_IDLE">CAMERA_TRACKING_STATUS_FLAGS_IDLE</a>
+     </td>
+     <td>Camera is not tracking</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_STATUS_FLAGS_ACTIVE">
+     <td>1</td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS_ACTIVE">CAMERA_TRACKING_STATUS_FLAGS_ACTIVE</a>
+     </td>
+     <td>Camera is tracking</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_STATUS_FLAGS_ERROR">
+     <td>2</td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS_ERROR">CAMERA_TRACKING_STATUS_FLAGS_ERROR</a>
+     </td>
+     <td>Camera tracking in error state</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_MODE">
+   <a href="#CAMERA_TRACKING_MODE">CAMERA_TRACKING_MODE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Camera tracking modes</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CAMERA_TRACKING_NONE">
+     <td>0</td>
+     <td>
+      <a href="#CAMERA_TRACKING_NONE">CAMERA_TRACKING_NONE</a>
+     </td>
+     <td>Not tracking</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_POINT">
+     <td>1</td>
+     <td>
+      <a href="#CAMERA_TRACKING_POINT">CAMERA_TRACKING_POINT</a>
+     </td>
+     <td>Target is a point</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_RECTANGLE">
+     <td>2</td>
+     <td>
+      <a href="#CAMERA_TRACKING_RECTANGLE">CAMERA_TRACKING_RECTANGLE</a>
+     </td>
+     <td>Target is a rectangle</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_TARGET_DATA">
+   <a href="#CAMERA_TRACKING_TARGET_DATA">CAMERA_TRACKING_TARGET_DATA</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Camera tracking target data (shows where tracked target is within image)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CAMERA_TRACKING_TARGET_NONE">
+     <td>0</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_NONE">CAMERA_TRACKING_TARGET_NONE</a>
+     </td>
+     <td>No target data</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_TARGET_EMBEDDED">
+     <td>1</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_EMBEDDED">CAMERA_TRACKING_TARGET_EMBEDDED</a>
+     </td>
+     <td>Target data embedded in image data (proprietary)</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_TARGET_RENDERED">
+     <td>2</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_RENDERED">CAMERA_TRACKING_TARGET_RENDERED</a>
+     </td>
+     <td>Target data rendered in image</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_TARGET_IN_STATUS">
+     <td>4</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_IN_STATUS">CAMERA_TRACKING_TARGET_IN_STATUS</a>
+     </td>
+     <td>Target data within status message (Point or Rectangle)</td>
     </tr>
    </tbody>
   </table>
@@ -9997,6 +8627,135 @@
       <a href="#FAILURE_TYPE_INTERMITTENT">FAILURE_TYPE_INTERMITTENT</a>
      </td>
      <td>Unit is sometimes working, sometimes not.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_WINCH_STATUS_FLAG">
+   <a href="#MAV_WINCH_STATUS_FLAG">MAV_WINCH_STATUS_FLAG</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Winch status flags used in WINCH_STATUS</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_WINCH_STATUS_HEALTHY">
+     <td>1</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_HEALTHY">MAV_WINCH_STATUS_HEALTHY</a>
+     </td>
+     <td>Winch is healthy</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_FULLY_RETRACTED">
+     <td>2</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_FULLY_RETRACTED">MAV_WINCH_STATUS_FULLY_RETRACTED</a>
+     </td>
+     <td>Winch thread is fully retracted</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_MOVING">
+     <td>4</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_MOVING">MAV_WINCH_STATUS_MOVING</a>
+     </td>
+     <td>Winch motor is moving</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_CLUTCH_ENGAGED">
+     <td>8</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_CLUTCH_ENGAGED">MAV_WINCH_STATUS_CLUTCH_ENGAGED</a>
+     </td>
+     <td>Winch clutch is engaged allowing motor to move freely</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAG_CAL_STATUS">
+   <a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAG_CAL_NOT_STARTED">
+     <td>0</td>
+     <td>
+      <a href="#MAG_CAL_NOT_STARTED">MAG_CAL_NOT_STARTED</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_WAITING_TO_START">
+     <td>1</td>
+     <td>
+      <a href="#MAG_CAL_WAITING_TO_START">MAG_CAL_WAITING_TO_START</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_RUNNING_STEP_ONE">
+     <td>2</td>
+     <td>
+      <a href="#MAG_CAL_RUNNING_STEP_ONE">MAG_CAL_RUNNING_STEP_ONE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_RUNNING_STEP_TWO">
+     <td>3</td>
+     <td>
+      <a href="#MAG_CAL_RUNNING_STEP_TWO">MAG_CAL_RUNNING_STEP_TWO</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_SUCCESS">
+     <td>4</td>
+     <td>
+      <a href="#MAG_CAL_SUCCESS">MAG_CAL_SUCCESS</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_FAILED">
+     <td>5</td>
+     <td>
+      <a href="#MAG_CAL_FAILED">MAG_CAL_FAILED</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_BAD_ORIENTATION">
+     <td>6</td>
+     <td>
+      <a href="#MAG_CAL_BAD_ORIENTATION">MAG_CAL_BAD_ORIENTATION</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_BAD_RADIUS">
+     <td>7</td>
+     <td>
+      <a href="#MAG_CAL_BAD_RADIUS">MAG_CAL_BAD_RADIUS</a>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -13996,6 +12755,65 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_DO_GRIPPER">MAV_CMD_DO_GRIPPER (<a href="#MAV_CMD_DO_GRIPPER">211</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Mission command to operate a gripper.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Instance</td>
+     <td>Gripper instance number.</td>
+     <td>
+      <em>min:</em>1 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>2: Action</td>
+     <td>Gripper action to perform.</td>
+     <td>GRIPPER_ACTIONS</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_NAV_SET_YAW_SPEED">MAV_CMD_NAV_SET_YAW_SPEED (<a href="#MAV_CMD_NAV_SET_YAW_SPEED">213</a>
    )
   </h3>
@@ -15214,98 +14032,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE (<a href="#MAV_CMD_REQUEST_MESSAGE">512</a>
-   )
-  </h3>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request the target system(s) emit a single instance of a specified message (i.e. a "one-shot" version of MAV_CMD_SET_MESSAGE_INTERVAL).</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Values</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Message ID</td>
-     <td>The MAVLink message ID of the requested message.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
-    </tr>
-    <tr>
-     <td>2: Req Param 1</td>
-     <td>Use for index ID, if required. Otherwise, the use of this parameter (if any) must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>3: Req Param 2</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>4: Req Param 3</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>5: Req Param 4</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>6: Req Param 5</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>7: Response Target</td>
-     <td>Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requestor, 2: broadcast.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_REQUEST_PROTOCOL_VERSION">MAV_CMD_REQUEST_PROTOCOL_VERSION (<a href="#MAV_CMD_REQUEST_PROTOCOL_VERSION">519</a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request MAVLink protocol version compatibility. All receivers should ACK the command and then emit their capabilities in an PROTOCOL_VERSION message</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Values</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Protocol</td>
-     <td>1: Request supported protocol versions by all nodes on the network</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
-    </tr>
-    <tr>
-     <td>2</td>
-     <td>Reserved (all remaining params)</td>
-     <td>
-     </td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES">MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES (<a href="#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES">520</a>
    )
   </h3>
@@ -15784,6 +14510,42 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_PARAM_TRANSACTION">MAV_CMD_PARAM_TRANSACTION (<a href="#MAV_CMD_PARAM_TRANSACTION">900</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request to start or end a parameter transaction. Multiple kinds of transport layers can be used to exchange parameters in the transaction (param, param_ext and mavftp). The command response can either be a success/failure or an in progress in case the receiving side takes some time to apply the parameters.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Action</td>
+     <td>Action to be performed (start, commit, cancel, etc.)</td>
+     <td>PARAM_TRANSACTION_ACTION</td>
+    </tr>
+    <tr>
+     <td>2: Transport</td>
+     <td>Possible transport layers to set and get parameters via mavlink during a parameter transaction.</td>
+     <td>PARAM_TRANSACTION_TRANSPORT</td>
+    </tr>
+    <tr>
+     <td>3: Transaction ID</td>
+     <td>Identifier for a specific transaction.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN">MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN">1000</a>
    )
   </h3>
@@ -15847,94 +14609,6 @@
      <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
      <td>
      </td>
-     <td>
-     </td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT">MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT">1001</a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>If the gimbal manager supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Values</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Point x</td>
-     <td>Point to track x value.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>2: Point y</td>
-     <td>Point to track y value.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>7: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
-     <td>
-     </td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE">MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE">1002</a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>If the gimbal supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Values</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Top left corner x</td>
-     <td>Top left corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>2: Top left corner y</td>
-     <td>Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>3: Bottom right corner x</td>
-     <td>Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>4: Bottom right corner y</td>
-     <td>Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>7: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
      <td>
      </td>
     </tr>
@@ -16133,6 +14807,107 @@
       -1 
       <em>max:</em>1 <em>increment:</em>2</td>
     </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_CAMERA_TRACK_POINT">MAV_CMD_CAMERA_TRACK_POINT (<a href="#MAV_CMD_CAMERA_TRACK_POINT">2004</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>If the camera supports point visual tracking (CAMERA_CAP_FLAGS_HAS_TRACKING_POINT is set), this command allows to initiate the tracking.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Point x</td>
+     <td>Point to track x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>2: Point y</td>
+     <td>Point to track y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>3: Radius</td>
+     <td>Point radius (normalized 0..1, 0 is image left, 1 is image right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_CAMERA_TRACK_RECTANGLE">MAV_CMD_CAMERA_TRACK_RECTANGLE (<a href="#MAV_CMD_CAMERA_TRACK_RECTANGLE">2005</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>If the camera supports rectangle visual tracking (CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE is set), this command allows to initiate the tracking.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Top left corner x</td>
+     <td>Top left corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>2: Top left corner y</td>
+     <td>Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>3: Bottom right corner x</td>
+     <td>Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>4: Bottom right corner y</td>
+     <td>Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_CAMERA_STOP_TRACKING">MAV_CMD_CAMERA_STOP_TRACKING (<a href="#MAV_CMD_CAMERA_STOP_TRACKING">2010</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Stops ongoing tracking.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
    </tbody>
   </table>
   <h3 id="MAV_CMD_VIDEO_START_CAPTURE">MAV_CMD_VIDEO_START_CAPTURE (<a href="#MAV_CMD_VIDEO_START_CAPTURE">2500</a>
@@ -17383,6 +16158,135 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_FIXED_MAG_CAL_YAW">MAV_CMD_FIXED_MAG_CAL_YAW (<a href="#MAV_CMD_FIXED_MAG_CAL_YAW">42006</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Magnetometer calibration based on provided known yaw. This allows for fast calibration using WMM field tables in the vehicle, given only the known yaw of the vehicle. If Latitude and longitude are both zero then use the current vehicle location.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Yaw</td>
+     <td>Yaw of vehicle in earth frame.</td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>2: CompassMask</td>
+     <td>CompassMask, 0 for all.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3: Latitude</td>
+     <td>Latitude.</td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>4: Longitude</td>
+     <td>Longitude.</td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_WINCH">MAV_CMD_DO_WINCH (<a href="#MAV_CMD_DO_WINCH">42600</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Command to operate winch.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Instance</td>
+     <td>Winch instance number.</td>
+     <td>
+      <em>min:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>2: Action</td>
+     <td>Action to perform.</td>
+     <td>WINCH_ACTIONS</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3: Length</td>
+     <td>Length of cable to release (negative to wind).</td>
+     <td>
+     </td>
+     <td>m</td>
+    </tr>
+    <tr>
+     <td>4: Rate</td>
+     <td>Release rate (negative to wind).</td>
+     <td>
+     </td>
+     <td>m/s</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_WAYPOINT_USER_1">MAV_CMD_WAYPOINT_USER_1 (<a href="#MAV_CMD_WAYPOINT_USER_1">31000</a>
    )
   </h3>
@@ -18199,77 +17103,6 @@
    </tbody>
   </table>
   <h2 id="messages">MAVLink Messages</h2>
-  <h3 id="HEARTBEAT">HEARTBEAT (<a href="#HEARTBEAT">
-    #0
-   </a>
-   )
-  </h3>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>The heartbeat message shows that a system or component is present and responding. The type and autopilot fields (along with the message component id), allow the receiving system to treat further messages from this system appropriately (e.g. by laying out the user interface based on the autopilot). This microservice is documented at https://mavlink.io/en/services/heartbeat.html</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_TYPE">MAV_TYPE</a>
-     </td>
-     <td>Vehicle or component type. For a flight controller component the vehicle type (quadrotor, helicopter, etc.). For other components the component type (e.g. camera, gimbal, etc.). This should be used in preference to component id for identifying the component type.</td>
-    </tr>
-    <tr>
-     <td>autopilot</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
-     </td>
-     <td>Autopilot type / class. Use MAV_AUTOPILOT_INVALID for components that are not flight controllers.</td>
-    </tr>
-    <tr>
-     <td>base_mode</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
-     </td>
-     <td>System mode bitmap.</td>
-    </tr>
-    <tr>
-     <td>custom_mode</td>
-     <td>uint32_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>A bitfield for use for autopilot-specific flags</td>
-    </tr>
-    <tr>
-     <td>system_status</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_STATE">MAV_STATE</a>
-     </td>
-     <td>System status flag.</td>
-    </tr>
-    <tr>
-     <td>mavlink_version</td>
-     <td>uint8_t_mavlink_version</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>MAVLink version, not writable by user, gets added by protocol because of magic data type: uint8_t_mavlink_version</td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="SYS_STATUS">SYS_STATUS (<a href="#SYS_STATUS">
     #1
    </a>
@@ -24991,6 +23824,16 @@
      </td>
      <td>Bitmap for fields that have updated since last message, bit 0 = xacc, bit 12: temperature, bit 31: full reset of attitude/position/velocities/etc was performed in sim.</td>
     </tr>
+    <tr>
+     <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Sensor ID (zero indexed). Used for multiple sensor inputs</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="SIM_STATE">SIM_STATE (<a href="#SIM_STATE">
@@ -25433,6 +24276,15 @@
      <td>
      </td>
      <td>GPS ID (zero indexed). Used for multiple GPS inputs</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">yaw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t</td>
+     <td>cdeg</td>
+     <td>Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north</td>
     </tr>
    </tbody>
   </table>
@@ -28370,6 +27222,234 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAG_CAL_REPORT">MAG_CAL_REPORT (<a href="#MAG_CAL_REPORT">
+    #192
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Reports results of completed compass calibration. Sent until MAG_CAL_ACK received.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>compass_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Compass being calibrated.</td>
+    </tr>
+    <tr>
+     <td>cal_mask</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Bitmask of compasses being calibrated.</td>
+    </tr>
+    <tr>
+     <td>cal_status</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
+     </td>
+     <td>Calibration Status.</td>
+    </tr>
+    <tr>
+     <td>autosaved</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>0=requires a MAV_CMD_DO_ACCEPT_MAG_CAL, 1=saved to parameters.</td>
+    </tr>
+    <tr>
+     <td>fitness</td>
+     <td>float</td>
+     <td>mgauss</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>RMS milligauss residuals.</td>
+    </tr>
+    <tr>
+     <td>ofs_x</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X offset.</td>
+    </tr>
+    <tr>
+     <td>ofs_y</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y offset.</td>
+    </tr>
+    <tr>
+     <td>ofs_z</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z offset.</td>
+    </tr>
+    <tr>
+     <td>diag_x</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X diagonal (matrix 11).</td>
+    </tr>
+    <tr>
+     <td>diag_y</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y diagonal (matrix 22).</td>
+    </tr>
+    <tr>
+     <td>diag_z</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z diagonal (matrix 33).</td>
+    </tr>
+    <tr>
+     <td>offdiag_x</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X off-diagonal (matrix 12 and 21).</td>
+    </tr>
+    <tr>
+     <td>offdiag_y</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y off-diagonal (matrix 13 and 31).</td>
+    </tr>
+    <tr>
+     <td>offdiag_z</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z off-diagonal (matrix 32 and 23).</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">orientation_confidence<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Confidence in orientation (higher is better).</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">old_orientation<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
+     </td>
+     <td>orientation before calibration.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">new_orientation<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
+     </td>
+     <td>orientation after calibration.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">scale_factor<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>field radius correction factor</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="ESTIMATOR_STATUS">ESTIMATOR_STATUS (<a href="#ESTIMATOR_STATUS">
     #230
    </a>
@@ -30936,7 +30016,7 @@
      <td>float[4]</td>
      <td>
      </td>
-     <td>Quaternion of camera orientation (w, x, y, z order, zero-rotation is 0, 0, 0, 0)</td>
+     <td>Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
     </tr>
     <tr>
      <td>image_index</td>
@@ -31496,6 +30576,363 @@
       </a>
      </td>
      <td>Horizontal Field of view</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_FOV_STATUS">CAMERA_FOV_STATUS (<a href="#CAMERA_FOV_STATUS">
+    #271
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about the field of view of a camera. Can be requested with a MAV_CMD_REQUEST_MESSAGE command.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>lat_camera</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude of camera (INT32_MAX if unknown).</td>
+    </tr>
+    <tr>
+     <td>lon_camera</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude of camera (INT32_MAX if unknown).</td>
+    </tr>
+    <tr>
+     <td>alt_camera</td>
+     <td>int32_t</td>
+     <td>mm</td>
+     <td>Altitude (MSL) of camera (INT32_MAX if unknown).</td>
+    </tr>
+    <tr>
+     <td>lat_image</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).</td>
+    </tr>
+    <tr>
+     <td>lon_image</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).</td>
+    </tr>
+    <tr>
+     <td>alt_image</td>
+     <td>int32_t</td>
+     <td>mm</td>
+     <td>Altitude (MSL) of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
+    </tr>
+    <tr>
+     <td>hfov</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Horizontal field of view (NaN if unknown).</td>
+    </tr>
+    <tr>
+     <td>vfov</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Vertical field of view (NaN if unknown).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_IMAGE_STATUS">CAMERA_TRACKING_IMAGE_STATUS (<a href="#CAMERA_TRACKING_IMAGE_STATUS">
+    #275
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Camera tracking status, sent while in active tracking. Use MAV_CMD_SET_MESSAGE_INTERVAL to define message interval.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>tracking_status</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS">CAMERA_TRACKING_STATUS_FLAGS</a>
+     </td>
+     <td>Current tracking status</td>
+    </tr>
+    <tr>
+     <td>tracking_mode</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CAMERA_TRACKING_MODE">CAMERA_TRACKING_MODE</a>
+     </td>
+     <td>Current tracking mode</td>
+    </tr>
+    <tr>
+     <td>target_data</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_DATA">CAMERA_TRACKING_TARGET_DATA</a>
+     </td>
+     <td>Defines location of target data</td>
+    </tr>
+    <tr>
+     <td>point_x</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked point x value if CAMERA_TRACKING_POINT (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>point_y</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked point y value if CAMERA_TRACKING_POINT (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>radius</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked radius if CAMERA_TRACKING_POINT (normalized 0..1, 0 is image left, 1 is image right), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>rec_top_x</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked rectangle top x value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>rec_top_y</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked rectangle top y value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>rec_bottom_x</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked rectangle bottom x value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>rec_bottom_y</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked rectangle bottom y value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_GEO_STATUS">CAMERA_TRACKING_GEO_STATUS (<a href="#CAMERA_TRACKING_GEO_STATUS">
+    #276
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Camera tracking status, sent while in active tracking. Use MAV_CMD_SET_MESSAGE_INTERVAL to define message interval.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>tracking_status</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS">CAMERA_TRACKING_STATUS_FLAGS</a>
+     </td>
+     <td>Current tracking status</td>
+    </tr>
+    <tr>
+     <td>lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Latitude of tracked object</td>
+    </tr>
+    <tr>
+     <td>lon</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Longitude of tracked object</td>
+    </tr>
+    <tr>
+     <td>alt</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Altitude of tracked object(AMSL, WGS84)</td>
+    </tr>
+    <tr>
+     <td>h_acc</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Horizontal accuracy. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>v_acc</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Vertical accuracy. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>vel_n</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>North velocity of tracked object. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>vel_e</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>East velocity of tracked object. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>vel_d</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Down velocity of tracked object. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>vel_acc</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Velocity accuracy. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>dist</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Distance between camera and tracked object. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>hdg</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Heading in radians, in NED. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>hdg_acc</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Accuracy of heading, in NED. NAN if unknown</td>
     </tr>
    </tbody>
   </table>
@@ -32649,56 +32086,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="PROTOCOL_VERSION">PROTOCOL_VERSION (<a href="#PROTOCOL_VERSION">
-    #300
-   </a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Version and capability of protocol version. This message can be requested with MAV_CMD_REQUEST_MESSAGE and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to a request for PROTOCOL_VERSION to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>version</td>
-     <td>uint16_t</td>
-     <td>Currently active MAVLink version number * 100: v1.0 is 100, v2.0 is 200, etc.</td>
-    </tr>
-    <tr>
-     <td>min_version</td>
-     <td>uint16_t</td>
-     <td>Minimum MAVLink version supported</td>
-    </tr>
-    <tr>
-     <td>max_version</td>
-     <td>uint16_t</td>
-     <td>Maximum MAVLink version supported (set to the same value as version by default)</td>
-    </tr>
-    <tr>
-     <td>spec_version_hash</td>
-     <td>uint8_t[8]</td>
-     <td>The first 8 bytes (not characters printed in hex!) of the git hash.</td>
-    </tr>
-    <tr>
-     <td>library_version_hash</td>
-     <td>uint8_t[8]</td>
-     <td>The first 8 bytes (not characters printed in hex!) of the git hash.</td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="AIS_VESSEL">AIS_VESSEL (<a href="#AIS_VESSEL">
     #301
    </a>
@@ -33082,7 +32469,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Request to read the value of a parameter with the either the param_id string id or param_index.</p>
+   </strong>Request to read the value of a parameter with either the param_id string id or param_index. PARAM_EXT_VALUE or PARAM_EXT_VALUE_TRIMMED should be emitted in response (see field: trimmed).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33112,6 +32499,14 @@
      <td>int16_t</td>
      <td>Parameter index. Set to -1 to use the Parameter ID field as identifier (else param_id will be ignored)</td>
     </tr>
+    <tr>
+     <td style="color:blue;">trimmed<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>Request _TRIMMED variants of PARAM_EXT_ messages. Set to 1 if _TRIMMED message variants are supported, and 0 otherwise. This signals the recipient that _TRIMMED messages are supported by the sender (and should be used if supported by the recipient).</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="PARAM_EXT_REQUEST_LIST">PARAM_EXT_REQUEST_LIST (<a href="#PARAM_EXT_REQUEST_LIST">
@@ -33125,7 +32520,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Request all parameters of this component. After this request, all parameters are emitted.</p>
+   </strong>Request all parameters of this component. All parameters should be emitted in response (as PARAM_EXT_VALUE or PARAM_EXT_VALUE_TRIMMED messages - see field: trimmed).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33145,6 +32540,14 @@
      <td>uint8_t</td>
      <td>Component ID</td>
     </tr>
+    <tr>
+     <td style="color:blue;">trimmed<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>Request _TRIMMED variants of PARAM_EXT_ messages. Set to 1 if _TRIMMED message variants are supported, and 0 otherwise. This signals the recipient that _TRIMMED messages are supported by the sender (and should be used if supported by the recipient).</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="PARAM_EXT_VALUE">PARAM_EXT_VALUE (<a href="#PARAM_EXT_VALUE">
@@ -33153,7 +32556,7 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by PARAM_V3_VALUE (2020-07).
+   <strong>DEPRECATED:</strong> Replaced by PARAM_EXT_VALUE_TRIMMED (2020-07).
 
 
   The new version of this message correctly trims zeros.</p>
@@ -33226,10 +32629,10 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by PARAM_V3_SET (2020-07).
+   <strong>DEPRECATED:</strong> Replaced by PARAM_EXT_SET_TRIMMED (2020-07).
 
 
-  The new second version of this message correctly trims zeros.</p>
+  New version of PARAM_EXT_SET that correctly trims zeros.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33299,10 +32702,10 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by PARAM_V3_ACK (2020-07).
+   <strong>DEPRECATED:</strong> Replaced by PARAM_EXT_ACK_TRIMMED (2020-07).
 
 
-  The new version of this message correctly trims zeros.</p>
+  New version of PARAM_EXT_ACK that correctly trims zeros.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33356,7 +32759,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="PARAM_V3_VALUE">PARAM_V3_VALUE (<a href="#PARAM_V3_VALUE">
+  <h3 id="PARAM_EXT_VALUE_TRIMMED">PARAM_EXT_VALUE_TRIMMED (<a href="#PARAM_EXT_VALUE_TRIMMED">
     #325
    </a>
    )
@@ -33369,7 +32772,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Emit the value of a parameter. The param_count and param_index fields allow the recipient to keep track of received parameters and to re-request missing parameters after a loss or timeout. Replacement for PARAM_EXT_VALUE.</p>
+   </strong>Emit the value of a parameter. The inclusion of param_count and param_index in the message allows the recipient to keep track of received parameters and allows them to re-request missing parameters after a loss or timeout. Replacement for PARAM_EXT_VALUE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33380,23 +32783,6 @@
     </tr>
    </thead>
    <tbody>
-    <tr>
-     <td>param_id</td>
-     <td>char[16]</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
-    </tr>
-    <tr>
-     <td>param_type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
-     </td>
-     <td>Parameter type.</td>
-    </tr>
     <tr>
      <td>param_count</td>
      <td>uint16_t</td>
@@ -33416,6 +32802,23 @@
      <td>Index of this parameter</td>
     </tr>
     <tr>
+     <td>param_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+     </td>
+     <td>Parameter type.</td>
+    </tr>
+    <tr>
+     <td>param_id</td>
+     <td>char[16]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+    </tr>
+    <tr>
      <td>param_value</td>
      <td>char[128]</td>
      <td>
@@ -33426,7 +32829,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="PARAM_V3_SET">PARAM_V3_SET (<a href="#PARAM_V3_SET">
+  <h3 id="PARAM_EXT_SET_TRIMMED">PARAM_EXT_SET_TRIMMED (<a href="#PARAM_EXT_SET_TRIMMED">
     #326
    </a>
    )
@@ -33439,7 +32842,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Set a parameter value. In order to deal with message loss (and retransmission of PARAM_EXT_SET), when setting a parameter value and the new value is the same as the current value, you will immediately get a PARAM_ACK_ACCEPTED response. If the current state is PARAM_ACK_IN_PROGRESS, you will accordingly receive a PARAM_ACK_IN_PROGRESS in response.</p>
+   </strong>Set a parameter value. In order to deal with message loss (and retransmission of PARAM_EXT_SET_TRIMMED), when setting a parameter value and the new value is the same as the current value, you will immediately get a PARAM_ACK_ACCEPTED response. If the current state is PARAM_ACK_IN_PROGRESS, you will accordingly receive a PARAM_ACK_IN_PROGRESS in response. If there is no response to this message, and it is unknown whether the _TRIMMED messages are supported (because no PARAM_EXT_REQUEST_READ or PARAM_EXT_REQUEST_LIST has been performed yet), then fall back to PARAM_EXT_SET.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33469,6 +32872,14 @@
      <td>Component ID</td>
     </tr>
     <tr>
+     <td>param_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+     </td>
+     <td>Parameter type.</td>
+    </tr>
+    <tr>
      <td>param_id</td>
      <td>char[16]</td>
      <td>
@@ -33476,14 +32887,6 @@
       </a>
      </td>
      <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
-    </tr>
-    <tr>
-     <td>param_type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
-     </td>
-     <td>Parameter type.</td>
     </tr>
     <tr>
      <td>param_value</td>
@@ -33496,7 +32899,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="PARAM_V3_ACK">PARAM_V3_ACK (<a href="#PARAM_V3_ACK">
+  <h3 id="PARAM_EXT_ACK_TRIMMED">PARAM_EXT_ACK_TRIMMED (<a href="#PARAM_EXT_ACK_TRIMMED">
     #327
    </a>
    )
@@ -33509,7 +32912,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Response from a PARAM_V3_SET message.</p>
+   </strong>Response from a PARAM_EXT_SET_TRIMMED message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33521,13 +32924,12 @@
    </thead>
    <tbody>
     <tr>
-     <td>param_id</td>
-     <td>char[16]</td>
+     <td>param_result</td>
+     <td>uint8_t</td>
      <td>
-      <a href="#">
-      </a>
+      <a href="#PARAM_ACK">PARAM_ACK</a>
      </td>
-     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+     <td>Result code.</td>
     </tr>
     <tr>
      <td>param_type</td>
@@ -33538,12 +32940,13 @@
      <td>Parameter type.</td>
     </tr>
     <tr>
-     <td>param_result</td>
-     <td>uint8_t</td>
+     <td>param_id</td>
+     <td>char[16]</td>
      <td>
-      <a href="#PARAM_ACK">PARAM_ACK</a>
+      <a href="#">
+      </a>
      </td>
-     <td>Result code.</td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
     </tr>
     <tr>
      <td>param_value</td>
@@ -33553,126 +32956,6 @@
       </a>
      </td>
      <td>Parameter value (new value if PARAM_ACK_ACCEPTED, current value otherwise, zeros get trimmed)</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="PARAM_START_TRANSACTION">PARAM_START_TRANSACTION (<a href="#PARAM_START_TRANSACTION">
-    #328
-   </a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Request to start a new parameter transaction. Multiple kinds of transport layers can be used to exchange parameters in the transaction (param, param_ext and mavftp). The response (ack) will contain the same message but with a response attached to it.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>target_system</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>System ID</td>
-    </tr>
-    <tr>
-     <td>target_component</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Component ID</td>
-    </tr>
-    <tr>
-     <td>param_transport</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_TRANSPORT">PARAM_TRANSACTION_TRANSPORT</a>
-     </td>
-     <td>Possible transport layers to set and get parameters via mavlink during a parameter transaction.</td>
-    </tr>
-    <tr>
-     <td>response</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_RESPONSE">PARAM_TRANSACTION_RESPONSE</a>
-     </td>
-     <td>Message acceptance response (sent back to GS).</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="PARAM_COMMIT_TRANSACTION">PARAM_COMMIT_TRANSACTION (<a href="#PARAM_COMMIT_TRANSACTION">
-    #329
-   </a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Request to end the current parameter transaction. This message will have effect only if a transaction was previously opened using the PARAM_START_TRANSACTION message. The response will contain the same message but with a response attached to it. The response can either be a success/failure or and in progress in case the receiving side takes some time to apply the parameters.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>target_system</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>System ID</td>
-    </tr>
-    <tr>
-     <td>target_component</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Component ID</td>
-    </tr>
-    <tr>
-     <td>param_action</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_ACTION">PARAM_TRANSACTION_ACTION</a>
-     </td>
-     <td>Commit or cancel an ongoing transaction.</td>
-    </tr>
-    <tr>
-     <td>response</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_RESPONSE">PARAM_TRANSACTION_RESPONSE</a>
-     </td>
-     <td>Message acceptance response (sent back to GS).</td>
     </tr>
    </tbody>
   </table>
@@ -35095,8 +34378,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -35794,6 +35075,113 @@
      <td>double[16]</td>
      <td>m</td>
      <td>Distance reported by individual wheel encoders. Forward rotations increase values, reverse rotations decrease them. Not all wheels will necessarily have wheel encoders; the mapping of encoders to wheel positions must be agreed/understood by the endpoints.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="WINCH_STATUS">WINCH_STATUS (<a href="#WINCH_STATUS">
+    #9005
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Winch status.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (synced to UNIX time or since system boot).</td>
+    </tr>
+    <tr>
+     <td>line_length</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Length of line released. NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>speed</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Speed line is being released or retracted. Positive values if being released, negative values if being retracted, NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>tension</td>
+     <td>float</td>
+     <td>kg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tension on the line. NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>voltage</td>
+     <td>float</td>
+     <td>V</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Voltage of the battery supplying the winch. NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>current</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current draw from the winch. NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>temperature</td>
+     <td>int16_t</td>
+     <td>degC</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Temperature of the motor. INT16_MAX if unknown</td>
+    </tr>
+    <tr>
+     <td>status</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_FLAG">MAV_WINCH_STATUS_FLAG</a>
+     </td>
+     <td>Status flags</td>
     </tr>
    </tbody>
   </table>

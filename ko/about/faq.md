@@ -6,14 +6,14 @@
   <dt>MAVLINK는 얼마나 효율적인가요?</dt>
   <dd>MAVLINK는 매우 효율적인 프로토콜입니다. MAVLINK 1은 시작 신호(start sign)와 패킷 손실 탐지(packet drop detection)를 포함해 패킷당 8 바이트의 오버헤드를 가집니다. Mavlink 2는 14 바이트(부호를 포함하는 경우, 27 바이트)의 오버헤드를 가지지만, 훨씬 더 확장성 있는 프로토콜입니다.</dd>
 
-  <dt>MAVLINK가 동시에 얼마나 많은 기기를 지원하나요?</dt>
+  <dt>MAVLINK가 지원하는 기기 댓수는 몇대인가요?</dt>
   <dd>1부터 255까지의 범위(0은 유효한 ID가 아닙니다)의 시스템 ID를 가지는 총 255개의 기기를 지원합니다.
     <br><b>참고:</b> 엄밀히 말하자면, MAVLINK는255개의 동시 시스템을 지원합니다. 이러한 시스템은 여러 기기의 혼합, 지상국(GCS, Ground Control Station), 안테나 트래커와 기타 하드웨어를 포함할 수 있습니다.</dd>
 
-  <dt>MAVLINK는 어떤 장치에서 사용 가능한가요?</dt>
+  <dt>MAVLINK는 어떤 장치에서 쓸 수 있나요?</dt>
   <dd>MAVLINK는 ARM7, ATMega, dsPic, STM32등의 마이크로컨트롤러와 Windows, Linux, MacOS, Android와 iOS등의 운영체제에서 작동하는 것으로 보입니다.</dd>
 
-  <dt>MAVLINK를 얼마나 신뢰할 수 있나요?</dt>
+  <dt>MAVLINK를 얼마나 믿을 수 있나요?</dt>
   <dd>상당히 신뢰할 수 있습니다. MAVLink는 다양하고 까다로운 통신 채널(높은 지연율/잡음) 환경에서 다양한 기기와 지상국(및 다른 노드) 간 통신을 위해 2009년부터 사용되었습니다. MAVLINK는 패킷 손실 탐지와 패킷 결성 체크를 위해 잘 알려진 ITU X.25 체크섬 메서드를 사용합니다.</dd>
   
   <dt>MAVLINK는 얼마나 안전한가요?</dt>
@@ -41,12 +41,11 @@
   <dd>MAVLink는 무인 항공 시스템의 안전에 중요한 구성 요소의 일부입니다. 많은 패킷을 버리는 나쁜 통신 링크는 비행체의 안전을 위협할 수 있고, 모니터링이 필요합니다. 헤더에 시퀀스를 가지는 것은 MAVLink가 패킷 손실률에 관한 피드백을 지속적으로 제공할 수 있도록 하여 비행체나 관제국이 조치를 취할수 있도록 합니다.</dd>
   
   <dt>왜 CRC_EXTRA가 패킷 무결성 체크섬에 필요한가요?</dt>
-  <dd>The CRC_EXTRA CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message 
-  (required because as a lightweight protocol, the message structure isn't included in the payload).
-  MAVLink 0.9에서는 CRC가 사용되지 않았습니다.(다만 길이 검사는 있었습니다.) 
+  <dd>CRC_EXTRA의 CRC는 송수신자 각자가 지정 메시지의 유선 형식을 이해하는지 검증하는 용도로 활용합니다   (프로토콜 구조가 단순하여 메시지 구조에 페이로드가 들어있지 않기 때문에 필요함).
+  MAVLink 0.9에서는 CRC를 사용하지 않았습니다(다만 길이 검사는 진행했습니다). 
   메시지를 설명하는 XML이 메시지 길이 변화 없이 변경되는 소수의 케이스가 있었는데, 이것은 메시지를 읽을 때 심각하게 손상된 필드로 이어졌습니다.</dd>
 
   <dt>디코딩/인코딩 루틴이나 다른 요소들을 개선하는데 도움을 주고 싶습니다. MAVLink가 바뀔 수도 있나요?</dt>
   <dd>매우 엄밀한 안전 테스트를 거치는 경우에 그럴 수 있습니다. 
-  MAVLink는 많은 autopilot 시스템에서 중요한 안전 요소로 사용되기 때문에 다년간의 시험을 거칩니다. MAVLink <a href="../README.md#support">support channels</a>에 새로운 요소를 제안해주세요.</dd>
+  MAVLink는 많은 autopilot 시스템에서 중요한 안전 요소로 사용되기 때문에 다년간의 시험을 거칩니다. MAVLink <a href="../README.md#support">지원 채널</a>에 새 기능을 제안해주세요.</dd>
 </dl>

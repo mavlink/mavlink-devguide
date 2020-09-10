@@ -1,430 +1,13 @@
 <html>
  <body>
+  <p>
+   <strong>MAVLink Include Files:</strong>
+   <a href="minimal.md">minimal.xml</a>
+  </p>
   <h2>MAVLink Protocol Version</h2>
   <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
   <p>This file has protocol dialect: 0.</p>
   <h2 id="enums">MAVLink Type Enumerations</h2>
-  <h3 id="MAV_AUTOPILOT">
-   <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>Micro air vehicle / autopilot classes. This identifies the individual model.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_AUTOPILOT_GENERIC">
-     <td>0</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_GENERIC">MAV_AUTOPILOT_GENERIC</a>
-     </td>
-     <td>Generic autopilot, full support for everything</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_RESERVED">
-     <td>1</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_RESERVED">MAV_AUTOPILOT_RESERVED</a>
-     </td>
-     <td>Reserved for future use.</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_SLUGS">
-     <td>2</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_SLUGS">MAV_AUTOPILOT_SLUGS</a>
-     </td>
-     <td>SLUGS autopilot, http://slugsuav.soe.ucsc.edu</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_ARDUPILOTMEGA">
-     <td>3</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_ARDUPILOTMEGA">MAV_AUTOPILOT_ARDUPILOTMEGA</a>
-     </td>
-     <td>ArduPilot - Plane/Copter/Rover/Sub/Tracker, https://ardupilot.org</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_OPENPILOT">
-     <td>4</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_OPENPILOT">MAV_AUTOPILOT_OPENPILOT</a>
-     </td>
-     <td>OpenPilot, http://openpilot.org</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY">
-     <td>5</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY">MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY</a>
-     </td>
-     <td>Generic autopilot only supporting simple waypoints</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_GENERIC_WAYPOINTS_AND_SIMPLE_NAVIGATION_ONLY">
-     <td>6</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_GENERIC_WAYPOINTS_AND_SIMPLE_NAVIGATION_ONLY">MAV_AUTOPILOT_GENERIC_WAYPOINTS_AND_SIMPLE_NAVIGATION_ONLY</a>
-     </td>
-     <td>Generic autopilot supporting waypoints and other simple navigation commands</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_GENERIC_MISSION_FULL">
-     <td>7</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_GENERIC_MISSION_FULL">MAV_AUTOPILOT_GENERIC_MISSION_FULL</a>
-     </td>
-     <td>Generic autopilot supporting the full mission command set</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_INVALID">
-     <td>8</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_INVALID">MAV_AUTOPILOT_INVALID</a>
-     </td>
-     <td>No valid autopilot, e.g. a GCS or other MAVLink component</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_PPZ">
-     <td>9</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_PPZ">MAV_AUTOPILOT_PPZ</a>
-     </td>
-     <td>PPZ UAV - http://nongnu.org/paparazzi</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_UDB">
-     <td>10</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_UDB">MAV_AUTOPILOT_UDB</a>
-     </td>
-     <td>UAV Dev Board</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_FP">
-     <td>11</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_FP">MAV_AUTOPILOT_FP</a>
-     </td>
-     <td>FlexiPilot</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_PX4">
-     <td>12</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_PX4">MAV_AUTOPILOT_PX4</a>
-     </td>
-     <td>PX4 Autopilot - http://px4.io/</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_SMACCMPILOT">
-     <td>13</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_SMACCMPILOT">MAV_AUTOPILOT_SMACCMPILOT</a>
-     </td>
-     <td>SMACCMPilot - http://smaccmpilot.org</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_AUTOQUAD">
-     <td>14</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_AUTOQUAD">MAV_AUTOPILOT_AUTOQUAD</a>
-     </td>
-     <td>AutoQuad -- http://autoquad.org</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_ARMAZILA">
-     <td>15</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_ARMAZILA">MAV_AUTOPILOT_ARMAZILA</a>
-     </td>
-     <td>Armazila -- http://armazila.com</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_AEROB">
-     <td>16</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_AEROB">MAV_AUTOPILOT_AEROB</a>
-     </td>
-     <td>Aerob -- http://aerob.ru</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_ASLUAV">
-     <td>17</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_ASLUAV">MAV_AUTOPILOT_ASLUAV</a>
-     </td>
-     <td>ASLUAV autopilot -- http://www.asl.ethz.ch</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_SMARTAP">
-     <td>18</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_SMARTAP">MAV_AUTOPILOT_SMARTAP</a>
-     </td>
-     <td>SmartAP Autopilot - http://sky-drones.com</td>
-    </tr>
-    <tr id="MAV_AUTOPILOT_AIRRAILS">
-     <td>19</td>
-     <td>
-      <a href="#MAV_AUTOPILOT_AIRRAILS">MAV_AUTOPILOT_AIRRAILS</a>
-     </td>
-     <td>AirRails - http://uaventure.com</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_TYPE">
-   <a href="#MAV_TYPE">MAV_TYPE</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>MAVLINK component type reported in HEARTBEAT message. Flight controllers must report the type of the vehicle on which they are mounted (e.g. MAV_TYPE_OCTOROTOR). All other components must report a value appropriate for their type (e.g. a camera must use MAV_TYPE_CAMERA).</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_TYPE_GENERIC">
-     <td>0</td>
-     <td>
-      <a href="#MAV_TYPE_GENERIC">MAV_TYPE_GENERIC</a>
-     </td>
-     <td>Generic micro air vehicle</td>
-    </tr>
-    <tr id="MAV_TYPE_FIXED_WING">
-     <td>1</td>
-     <td>
-      <a href="#MAV_TYPE_FIXED_WING">MAV_TYPE_FIXED_WING</a>
-     </td>
-     <td>Fixed wing aircraft.</td>
-    </tr>
-    <tr id="MAV_TYPE_QUADROTOR">
-     <td>2</td>
-     <td>
-      <a href="#MAV_TYPE_QUADROTOR">MAV_TYPE_QUADROTOR</a>
-     </td>
-     <td>Quadrotor</td>
-    </tr>
-    <tr id="MAV_TYPE_COAXIAL">
-     <td>3</td>
-     <td>
-      <a href="#MAV_TYPE_COAXIAL">MAV_TYPE_COAXIAL</a>
-     </td>
-     <td>Coaxial helicopter</td>
-    </tr>
-    <tr id="MAV_TYPE_HELICOPTER">
-     <td>4</td>
-     <td>
-      <a href="#MAV_TYPE_HELICOPTER">MAV_TYPE_HELICOPTER</a>
-     </td>
-     <td>Normal helicopter with tail rotor.</td>
-    </tr>
-    <tr id="MAV_TYPE_ANTENNA_TRACKER">
-     <td>5</td>
-     <td>
-      <a href="#MAV_TYPE_ANTENNA_TRACKER">MAV_TYPE_ANTENNA_TRACKER</a>
-     </td>
-     <td>Ground installation</td>
-    </tr>
-    <tr id="MAV_TYPE_GCS">
-     <td>6</td>
-     <td>
-      <a href="#MAV_TYPE_GCS">MAV_TYPE_GCS</a>
-     </td>
-     <td>Operator control unit / ground control station</td>
-    </tr>
-    <tr id="MAV_TYPE_AIRSHIP">
-     <td>7</td>
-     <td>
-      <a href="#MAV_TYPE_AIRSHIP">MAV_TYPE_AIRSHIP</a>
-     </td>
-     <td>Airship, controlled</td>
-    </tr>
-    <tr id="MAV_TYPE_FREE_BALLOON">
-     <td>8</td>
-     <td>
-      <a href="#MAV_TYPE_FREE_BALLOON">MAV_TYPE_FREE_BALLOON</a>
-     </td>
-     <td>Free balloon, uncontrolled</td>
-    </tr>
-    <tr id="MAV_TYPE_ROCKET">
-     <td>9</td>
-     <td>
-      <a href="#MAV_TYPE_ROCKET">MAV_TYPE_ROCKET</a>
-     </td>
-     <td>Rocket</td>
-    </tr>
-    <tr id="MAV_TYPE_GROUND_ROVER">
-     <td>10</td>
-     <td>
-      <a href="#MAV_TYPE_GROUND_ROVER">MAV_TYPE_GROUND_ROVER</a>
-     </td>
-     <td>Ground rover</td>
-    </tr>
-    <tr id="MAV_TYPE_SURFACE_BOAT">
-     <td>11</td>
-     <td>
-      <a href="#MAV_TYPE_SURFACE_BOAT">MAV_TYPE_SURFACE_BOAT</a>
-     </td>
-     <td>Surface vessel, boat, ship</td>
-    </tr>
-    <tr id="MAV_TYPE_SUBMARINE">
-     <td>12</td>
-     <td>
-      <a href="#MAV_TYPE_SUBMARINE">MAV_TYPE_SUBMARINE</a>
-     </td>
-     <td>Submarine</td>
-    </tr>
-    <tr id="MAV_TYPE_HEXAROTOR">
-     <td>13</td>
-     <td>
-      <a href="#MAV_TYPE_HEXAROTOR">MAV_TYPE_HEXAROTOR</a>
-     </td>
-     <td>Hexarotor</td>
-    </tr>
-    <tr id="MAV_TYPE_OCTOROTOR">
-     <td>14</td>
-     <td>
-      <a href="#MAV_TYPE_OCTOROTOR">MAV_TYPE_OCTOROTOR</a>
-     </td>
-     <td>Octorotor</td>
-    </tr>
-    <tr id="MAV_TYPE_TRICOPTER">
-     <td>15</td>
-     <td>
-      <a href="#MAV_TYPE_TRICOPTER">MAV_TYPE_TRICOPTER</a>
-     </td>
-     <td>Tricopter</td>
-    </tr>
-    <tr id="MAV_TYPE_FLAPPING_WING">
-     <td>16</td>
-     <td>
-      <a href="#MAV_TYPE_FLAPPING_WING">MAV_TYPE_FLAPPING_WING</a>
-     </td>
-     <td>Flapping wing</td>
-    </tr>
-    <tr id="MAV_TYPE_KITE">
-     <td>17</td>
-     <td>
-      <a href="#MAV_TYPE_KITE">MAV_TYPE_KITE</a>
-     </td>
-     <td>Kite</td>
-    </tr>
-    <tr id="MAV_TYPE_ONBOARD_CONTROLLER">
-     <td>18</td>
-     <td>
-      <a href="#MAV_TYPE_ONBOARD_CONTROLLER">MAV_TYPE_ONBOARD_CONTROLLER</a>
-     </td>
-     <td>Onboard companion controller</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_DUOROTOR">
-     <td>19</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_DUOROTOR">MAV_TYPE_VTOL_DUOROTOR</a>
-     </td>
-     <td>Two-rotor VTOL using control surfaces in vertical operation in addition. Tailsitter.</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_QUADROTOR">
-     <td>20</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_QUADROTOR">MAV_TYPE_VTOL_QUADROTOR</a>
-     </td>
-     <td>Quad-rotor VTOL using a V-shaped quad config in vertical operation. Tailsitter.</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_TILTROTOR">
-     <td>21</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_TILTROTOR">MAV_TYPE_VTOL_TILTROTOR</a>
-     </td>
-     <td>Tiltrotor VTOL</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_RESERVED2">
-     <td>22</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_RESERVED2">MAV_TYPE_VTOL_RESERVED2</a>
-     </td>
-     <td>VTOL reserved 2</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_RESERVED3">
-     <td>23</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_RESERVED3">MAV_TYPE_VTOL_RESERVED3</a>
-     </td>
-     <td>VTOL reserved 3</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_RESERVED4">
-     <td>24</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_RESERVED4">MAV_TYPE_VTOL_RESERVED4</a>
-     </td>
-     <td>VTOL reserved 4</td>
-    </tr>
-    <tr id="MAV_TYPE_VTOL_RESERVED5">
-     <td>25</td>
-     <td>
-      <a href="#MAV_TYPE_VTOL_RESERVED5">MAV_TYPE_VTOL_RESERVED5</a>
-     </td>
-     <td>VTOL reserved 5</td>
-    </tr>
-    <tr id="MAV_TYPE_GIMBAL">
-     <td>26</td>
-     <td>
-      <a href="#MAV_TYPE_GIMBAL">MAV_TYPE_GIMBAL</a>
-     </td>
-     <td>Gimbal</td>
-    </tr>
-    <tr id="MAV_TYPE_ADSB">
-     <td>27</td>
-     <td>
-      <a href="#MAV_TYPE_ADSB">MAV_TYPE_ADSB</a>
-     </td>
-     <td>ADSB system</td>
-    </tr>
-    <tr id="MAV_TYPE_PARAFOIL">
-     <td>28</td>
-     <td>
-      <a href="#MAV_TYPE_PARAFOIL">MAV_TYPE_PARAFOIL</a>
-     </td>
-     <td>Steerable, nonrigid airfoil</td>
-    </tr>
-    <tr id="MAV_TYPE_DODECAROTOR">
-     <td>29</td>
-     <td>
-      <a href="#MAV_TYPE_DODECAROTOR">MAV_TYPE_DODECAROTOR</a>
-     </td>
-     <td>Dodecarotor</td>
-    </tr>
-    <tr id="MAV_TYPE_CAMERA">
-     <td>30</td>
-     <td>
-      <a href="#MAV_TYPE_CAMERA">MAV_TYPE_CAMERA</a>
-     </td>
-     <td>Camera</td>
-    </tr>
-    <tr id="MAV_TYPE_CHARGING_STATION">
-     <td>31</td>
-     <td>
-      <a href="#MAV_TYPE_CHARGING_STATION">MAV_TYPE_CHARGING_STATION</a>
-     </td>
-     <td>Charging station</td>
-    </tr>
-    <tr id="MAV_TYPE_FLARM">
-     <td>32</td>
-     <td>
-      <a href="#MAV_TYPE_FLARM">MAV_TYPE_FLARM</a>
-     </td>
-     <td>FLARM collision avoidance system</td>
-    </tr>
-    <tr id="MAV_TYPE_SERVO">
-     <td>33</td>
-     <td>
-      <a href="#MAV_TYPE_SERVO">MAV_TYPE_SERVO</a>
-     </td>
-     <td>Servo</td>
-    </tr>
-    <tr id="MAV_TYPE_ODID">
-     <td>34</td>
-     <td>
-      <a href="#MAV_TYPE_ODID">MAV_TYPE_ODID</a>
-     </td>
-     <td>Open Drone ID. See https://mavlink.io/en/services/opendroneid.html.</td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="FIRMWARE_VERSION_TYPE">
    <a href="#FIRMWARE_VERSION_TYPE">FIRMWARE_VERSION_TYPE</a>
   </h3>
@@ -594,154 +177,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_MODE_FLAG">
-   <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>These flags encode the MAV mode.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_MODE_FLAG_SAFETY_ARMED">
-     <td>128</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_SAFETY_ARMED">MAV_MODE_FLAG_SAFETY_ARMED</a>
-     </td>
-     <td>0b10000000 MAV safety set to armed. Motors are enabled / running / can start. Ready to fly. Additional note: this flag is to be ignore when sent in the command MAV_CMD_DO_SET_MODE and MAV_CMD_COMPONENT_ARM_DISARM shall be used instead. The flag can still be used to report the armed state.</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_MANUAL_INPUT_ENABLED">
-     <td>64</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_MANUAL_INPUT_ENABLED">MAV_MODE_FLAG_MANUAL_INPUT_ENABLED</a>
-     </td>
-     <td>0b01000000 remote control input is enabled.</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_HIL_ENABLED">
-     <td>32</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_HIL_ENABLED">MAV_MODE_FLAG_HIL_ENABLED</a>
-     </td>
-     <td>0b00100000 hardware in the loop simulation. All motors / actuators are blocked, but internal software is full operational.</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_STABILIZE_ENABLED">
-     <td>16</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_STABILIZE_ENABLED">MAV_MODE_FLAG_STABILIZE_ENABLED</a>
-     </td>
-     <td>0b00010000 system stabilizes electronically its attitude (and optionally position). It needs however further control inputs to move around.</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_GUIDED_ENABLED">
-     <td>8</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_GUIDED_ENABLED">MAV_MODE_FLAG_GUIDED_ENABLED</a>
-     </td>
-     <td>0b00001000 guided mode enabled, system flies waypoints / mission items.</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_AUTO_ENABLED">
-     <td>4</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_AUTO_ENABLED">MAV_MODE_FLAG_AUTO_ENABLED</a>
-     </td>
-     <td>0b00000100 autonomous mode enabled, system finds its own goal positions. Guided flag can be set or not, depends on the actual implementation.</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_TEST_ENABLED">
-     <td>2</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_TEST_ENABLED">MAV_MODE_FLAG_TEST_ENABLED</a>
-     </td>
-     <td>0b00000010 system has a test mode enabled. This flag is intended for temporary system tests and should not be used for stable implementations.</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_CUSTOM_MODE_ENABLED">
-     <td>1</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_CUSTOM_MODE_ENABLED">MAV_MODE_FLAG_CUSTOM_MODE_ENABLED</a>
-     </td>
-     <td>0b00000001 Reserved for future use.</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_MODE_FLAG_DECODE_POSITION">
-   <a href="#MAV_MODE_FLAG_DECODE_POSITION">MAV_MODE_FLAG_DECODE_POSITION</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>These values encode the bit positions of the decode position. These values can be used to read the value of a flag bit by combining the base_mode variable with AND with the flag position value. The result will be either 0 or 1, depending on if the flag is set or not.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_SAFETY">
-     <td>128</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_SAFETY">MAV_MODE_FLAG_DECODE_POSITION_SAFETY</a>
-     </td>
-     <td>First bit:  10000000</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_MANUAL">
-     <td>64</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_MANUAL">MAV_MODE_FLAG_DECODE_POSITION_MANUAL</a>
-     </td>
-     <td>Second bit: 01000000</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_HIL">
-     <td>32</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_HIL">MAV_MODE_FLAG_DECODE_POSITION_HIL</a>
-     </td>
-     <td>Third bit:  00100000</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_STABILIZE">
-     <td>16</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_STABILIZE">MAV_MODE_FLAG_DECODE_POSITION_STABILIZE</a>
-     </td>
-     <td>Fourth bit: 00010000</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_GUIDED">
-     <td>8</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_GUIDED">MAV_MODE_FLAG_DECODE_POSITION_GUIDED</a>
-     </td>
-     <td>Fifth bit:  00001000</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_AUTO">
-     <td>4</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_AUTO">MAV_MODE_FLAG_DECODE_POSITION_AUTO</a>
-     </td>
-     <td>Sixth bit:   00000100</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_TEST">
-     <td>2</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_TEST">MAV_MODE_FLAG_DECODE_POSITION_TEST</a>
-     </td>
-     <td>Seventh bit: 00000010</td>
-    </tr>
-    <tr id="MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE">
-     <td>1</td>
-     <td>
-      <a href="#MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE">MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE</a>
-     </td>
-     <td>Eighth bit: 00000001</td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="MAV_GOTO">
    <a href="#MAV_GOTO">MAV_GOTO</a>
   </h3>
@@ -881,1008 +316,6 @@
       <a href="#MAV_MODE_TEST_ARMED">MAV_MODE_TEST_ARMED</a>
      </td>
      <td>UNDEFINED mode. This solely depends on the autopilot - use with caution, intended for developers only.</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_STATE">
-   <a href="#MAV_STATE">MAV_STATE</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>
-  </p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_STATE_UNINIT">
-     <td>0</td>
-     <td>
-      <a href="#MAV_STATE_UNINIT">MAV_STATE_UNINIT</a>
-     </td>
-     <td>Uninitialized system, state is unknown.</td>
-    </tr>
-    <tr id="MAV_STATE_BOOT">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_BOOT">MAV_STATE_BOOT</a>
-     </td>
-     <td>System is booting up.</td>
-    </tr>
-    <tr id="MAV_STATE_CALIBRATING">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_CALIBRATING">MAV_STATE_CALIBRATING</a>
-     </td>
-     <td>System is calibrating and not flight-ready.</td>
-    </tr>
-    <tr id="MAV_STATE_STANDBY">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_STANDBY">MAV_STATE_STANDBY</a>
-     </td>
-     <td>System is grounded and on standby. It can be launched any time.</td>
-    </tr>
-    <tr id="MAV_STATE_ACTIVE">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_ACTIVE">MAV_STATE_ACTIVE</a>
-     </td>
-     <td>System is active and might be already airborne. Motors are engaged.</td>
-    </tr>
-    <tr id="MAV_STATE_CRITICAL">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_CRITICAL">MAV_STATE_CRITICAL</a>
-     </td>
-     <td>System is in a non-normal flight mode. It can however still navigate.</td>
-    </tr>
-    <tr id="MAV_STATE_EMERGENCY">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_EMERGENCY">MAV_STATE_EMERGENCY</a>
-     </td>
-     <td>System is in a non-normal flight mode. It lost control over parts or over the whole airframe. It is in mayday and going down.</td>
-    </tr>
-    <tr id="MAV_STATE_POWEROFF">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_POWEROFF">MAV_STATE_POWEROFF</a>
-     </td>
-     <td>System just initialized its power-down sequence, will shut down now.</td>
-    </tr>
-    <tr id="MAV_STATE_FLIGHT_TERMINATION">
-     <td>
-     </td>
-     <td>
-      <a href="#MAV_STATE_FLIGHT_TERMINATION">MAV_STATE_FLIGHT_TERMINATION</a>
-     </td>
-     <td>System is terminating itself.</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_COMPONENT">
-   <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.).
-      Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The MAV_COMP_ID_ALL value is used to indicate messages that must be processed by all components.
-      When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="MAV_COMP_ID_ALL">
-     <td>0</td>
-     <td>
-      <a href="#MAV_COMP_ID_ALL">MAV_COMP_ID_ALL</a>
-     </td>
-     <td>Target id (target_component) used to broadcast messages to all components of the receiving system. Components should attempt to process messages with this component ID and forward to components on any other interfaces. Note: This is not a valid *source* component id for a message.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_AUTOPILOT1">
-     <td>1</td>
-     <td>
-      <a href="#MAV_COMP_ID_AUTOPILOT1">MAV_COMP_ID_AUTOPILOT1</a>
-     </td>
-     <td>System flight controller component ("autopilot"). Only one autopilot is expected in a particular system.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER1">
-     <td>25</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER1">MAV_COMP_ID_USER1</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER2">
-     <td>26</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER2">MAV_COMP_ID_USER2</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER3">
-     <td>27</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER3">MAV_COMP_ID_USER3</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER4">
-     <td>28</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER4">MAV_COMP_ID_USER4</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER5">
-     <td>29</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER5">MAV_COMP_ID_USER5</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER6">
-     <td>30</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER6">MAV_COMP_ID_USER6</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER7">
-     <td>31</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER7">MAV_COMP_ID_USER7</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER8">
-     <td>32</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER8">MAV_COMP_ID_USER8</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER9">
-     <td>33</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER9">MAV_COMP_ID_USER9</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER10">
-     <td>34</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER10">MAV_COMP_ID_USER10</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER11">
-     <td>35</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER11">MAV_COMP_ID_USER11</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER12">
-     <td>36</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER12">MAV_COMP_ID_USER12</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER13">
-     <td>37</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER13">MAV_COMP_ID_USER13</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER14">
-     <td>38</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER14">MAV_COMP_ID_USER14</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER15">
-     <td>39</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER15">MAV_COMP_ID_USER15</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER16">
-     <td>40</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER16">MAV_COMP_ID_USER16</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER17">
-     <td>41</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER17">MAV_COMP_ID_USER17</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER18">
-     <td>42</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER18">MAV_COMP_ID_USER18</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER19">
-     <td>43</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER19">MAV_COMP_ID_USER19</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER20">
-     <td>44</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER20">MAV_COMP_ID_USER20</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER21">
-     <td>45</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER21">MAV_COMP_ID_USER21</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER22">
-     <td>46</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER22">MAV_COMP_ID_USER22</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER23">
-     <td>47</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER23">MAV_COMP_ID_USER23</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER24">
-     <td>48</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER24">MAV_COMP_ID_USER24</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER25">
-     <td>49</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER25">MAV_COMP_ID_USER25</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER26">
-     <td>50</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER26">MAV_COMP_ID_USER26</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER27">
-     <td>51</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER27">MAV_COMP_ID_USER27</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER28">
-     <td>52</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER28">MAV_COMP_ID_USER28</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER29">
-     <td>53</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER29">MAV_COMP_ID_USER29</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER30">
-     <td>54</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER30">MAV_COMP_ID_USER30</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER31">
-     <td>55</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER31">MAV_COMP_ID_USER31</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER32">
-     <td>56</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER32">MAV_COMP_ID_USER32</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER33">
-     <td>57</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER33">MAV_COMP_ID_USER33</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER34">
-     <td>58</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER34">MAV_COMP_ID_USER34</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER35">
-     <td>59</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER35">MAV_COMP_ID_USER35</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER36">
-     <td>60</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER36">MAV_COMP_ID_USER36</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER37">
-     <td>61</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER37">MAV_COMP_ID_USER37</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER38">
-     <td>62</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER38">MAV_COMP_ID_USER38</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER39">
-     <td>63</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER39">MAV_COMP_ID_USER39</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER40">
-     <td>64</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER40">MAV_COMP_ID_USER40</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER41">
-     <td>65</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER41">MAV_COMP_ID_USER41</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER42">
-     <td>66</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER42">MAV_COMP_ID_USER42</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER43">
-     <td>67</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER43">MAV_COMP_ID_USER43</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_TELEMETRY_RADIO">
-     <td>68</td>
-     <td>
-      <a href="#MAV_COMP_ID_TELEMETRY_RADIO">MAV_COMP_ID_TELEMETRY_RADIO</a>
-     </td>
-     <td>Telemetry radio (e.g. SiK radio, or other component that emits RADIO_STATUS messages).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER45">
-     <td>69</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER45">MAV_COMP_ID_USER45</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER46">
-     <td>70</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER46">MAV_COMP_ID_USER46</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER47">
-     <td>71</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER47">MAV_COMP_ID_USER47</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER48">
-     <td>72</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER48">MAV_COMP_ID_USER48</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER49">
-     <td>73</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER49">MAV_COMP_ID_USER49</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER50">
-     <td>74</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER50">MAV_COMP_ID_USER50</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER51">
-     <td>75</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER51">MAV_COMP_ID_USER51</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER52">
-     <td>76</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER52">MAV_COMP_ID_USER52</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER53">
-     <td>77</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER53">MAV_COMP_ID_USER53</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER54">
-     <td>78</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER54">MAV_COMP_ID_USER54</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER55">
-     <td>79</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER55">MAV_COMP_ID_USER55</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER56">
-     <td>80</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER56">MAV_COMP_ID_USER56</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER57">
-     <td>81</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER57">MAV_COMP_ID_USER57</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER58">
-     <td>82</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER58">MAV_COMP_ID_USER58</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER59">
-     <td>83</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER59">MAV_COMP_ID_USER59</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER60">
-     <td>84</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER60">MAV_COMP_ID_USER60</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER61">
-     <td>85</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER61">MAV_COMP_ID_USER61</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER62">
-     <td>86</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER62">MAV_COMP_ID_USER62</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER63">
-     <td>87</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER63">MAV_COMP_ID_USER63</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER64">
-     <td>88</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER64">MAV_COMP_ID_USER64</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER65">
-     <td>89</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER65">MAV_COMP_ID_USER65</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER66">
-     <td>90</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER66">MAV_COMP_ID_USER66</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER67">
-     <td>91</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER67">MAV_COMP_ID_USER67</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER68">
-     <td>92</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER68">MAV_COMP_ID_USER68</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER69">
-     <td>93</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER69">MAV_COMP_ID_USER69</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER70">
-     <td>94</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER70">MAV_COMP_ID_USER70</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER71">
-     <td>95</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER71">MAV_COMP_ID_USER71</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER72">
-     <td>96</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER72">MAV_COMP_ID_USER72</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER73">
-     <td>97</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER73">MAV_COMP_ID_USER73</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER74">
-     <td>98</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER74">MAV_COMP_ID_USER74</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_USER75">
-     <td>99</td>
-     <td>
-      <a href="#MAV_COMP_ID_USER75">MAV_COMP_ID_USER75</a>
-     </td>
-     <td>Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_CAMERA">
-     <td>100</td>
-     <td>
-      <a href="#MAV_COMP_ID_CAMERA">MAV_COMP_ID_CAMERA</a>
-     </td>
-     <td>Camera #1.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_CAMERA2">
-     <td>101</td>
-     <td>
-      <a href="#MAV_COMP_ID_CAMERA2">MAV_COMP_ID_CAMERA2</a>
-     </td>
-     <td>Camera #2.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_CAMERA3">
-     <td>102</td>
-     <td>
-      <a href="#MAV_COMP_ID_CAMERA3">MAV_COMP_ID_CAMERA3</a>
-     </td>
-     <td>Camera #3.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_CAMERA4">
-     <td>103</td>
-     <td>
-      <a href="#MAV_COMP_ID_CAMERA4">MAV_COMP_ID_CAMERA4</a>
-     </td>
-     <td>Camera #4.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_CAMERA5">
-     <td>104</td>
-     <td>
-      <a href="#MAV_COMP_ID_CAMERA5">MAV_COMP_ID_CAMERA5</a>
-     </td>
-     <td>Camera #5.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_CAMERA6">
-     <td>105</td>
-     <td>
-      <a href="#MAV_COMP_ID_CAMERA6">MAV_COMP_ID_CAMERA6</a>
-     </td>
-     <td>Camera #6.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO1">
-     <td>140</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO1">MAV_COMP_ID_SERVO1</a>
-     </td>
-     <td>Servo #1.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO2">
-     <td>141</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO2">MAV_COMP_ID_SERVO2</a>
-     </td>
-     <td>Servo #2.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO3">
-     <td>142</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO3">MAV_COMP_ID_SERVO3</a>
-     </td>
-     <td>Servo #3.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO4">
-     <td>143</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO4">MAV_COMP_ID_SERVO4</a>
-     </td>
-     <td>Servo #4.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO5">
-     <td>144</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO5">MAV_COMP_ID_SERVO5</a>
-     </td>
-     <td>Servo #5.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO6">
-     <td>145</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO6">MAV_COMP_ID_SERVO6</a>
-     </td>
-     <td>Servo #6.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO7">
-     <td>146</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO7">MAV_COMP_ID_SERVO7</a>
-     </td>
-     <td>Servo #7.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO8">
-     <td>147</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO8">MAV_COMP_ID_SERVO8</a>
-     </td>
-     <td>Servo #8.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO9">
-     <td>148</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO9">MAV_COMP_ID_SERVO9</a>
-     </td>
-     <td>Servo #9.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO10">
-     <td>149</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO10">MAV_COMP_ID_SERVO10</a>
-     </td>
-     <td>Servo #10.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO11">
-     <td>150</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO11">MAV_COMP_ID_SERVO11</a>
-     </td>
-     <td>Servo #11.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO12">
-     <td>151</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO12">MAV_COMP_ID_SERVO12</a>
-     </td>
-     <td>Servo #12.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO13">
-     <td>152</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO13">MAV_COMP_ID_SERVO13</a>
-     </td>
-     <td>Servo #13.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SERVO14">
-     <td>153</td>
-     <td>
-      <a href="#MAV_COMP_ID_SERVO14">MAV_COMP_ID_SERVO14</a>
-     </td>
-     <td>Servo #14.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GIMBAL">
-     <td>154</td>
-     <td>
-      <a href="#MAV_COMP_ID_GIMBAL">MAV_COMP_ID_GIMBAL</a>
-     </td>
-     <td>Gimbal #1.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_LOG">
-     <td>155</td>
-     <td>
-      <a href="#MAV_COMP_ID_LOG">MAV_COMP_ID_LOG</a>
-     </td>
-     <td>Logging component.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_ADSB">
-     <td>156</td>
-     <td>
-      <a href="#MAV_COMP_ID_ADSB">MAV_COMP_ID_ADSB</a>
-     </td>
-     <td>Automatic Dependent Surveillance-Broadcast (ADS-B) component.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_OSD">
-     <td>157</td>
-     <td>
-      <a href="#MAV_COMP_ID_OSD">MAV_COMP_ID_OSD</a>
-     </td>
-     <td>On Screen Display (OSD) devices for video links.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_PERIPHERAL">
-     <td>158</td>
-     <td>
-      <a href="#MAV_COMP_ID_PERIPHERAL">MAV_COMP_ID_PERIPHERAL</a>
-     </td>
-     <td>Generic autopilot peripheral component ID. Meant for devices that do not implement the parameter microservice.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_QX1_GIMBAL">
-     <td>159</td>
-     <td>
-      <a href="#MAV_COMP_ID_QX1_GIMBAL">MAV_COMP_ID_QX1_GIMBAL</a>
-      <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_COMP_ID_GIMBAL (2018-11).
-
-
-  All gimbals should use MAV_COMP_ID_GIMBAL.</p>
-     </td>
-     <td>Gimbal ID for QX1.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_FLARM">
-     <td>160</td>
-     <td>
-      <a href="#MAV_COMP_ID_FLARM">MAV_COMP_ID_FLARM</a>
-     </td>
-     <td>FLARM collision alert component.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GIMBAL2">
-     <td>171</td>
-     <td>
-      <a href="#MAV_COMP_ID_GIMBAL2">MAV_COMP_ID_GIMBAL2</a>
-     </td>
-     <td>Gimbal #2.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GIMBAL3">
-     <td>172</td>
-     <td>
-      <a href="#MAV_COMP_ID_GIMBAL3">MAV_COMP_ID_GIMBAL3</a>
-     </td>
-     <td>Gimbal #3.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GIMBAL4">
-     <td>173</td>
-     <td>
-      <a href="#MAV_COMP_ID_GIMBAL4">MAV_COMP_ID_GIMBAL4</a>
-     </td>
-     <td>Gimbal #4</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GIMBAL5">
-     <td>174</td>
-     <td>
-      <a href="#MAV_COMP_ID_GIMBAL5">MAV_COMP_ID_GIMBAL5</a>
-     </td>
-     <td>Gimbal #5.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GIMBAL6">
-     <td>175</td>
-     <td>
-      <a href="#MAV_COMP_ID_GIMBAL6">MAV_COMP_ID_GIMBAL6</a>
-     </td>
-     <td>Gimbal #6.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_MISSIONPLANNER">
-     <td>190</td>
-     <td>
-      <a href="#MAV_COMP_ID_MISSIONPLANNER">MAV_COMP_ID_MISSIONPLANNER</a>
-     </td>
-     <td>Component that can generate/supply a mission flight plan (e.g. GCS or developer API).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_PATHPLANNER">
-     <td>195</td>
-     <td>
-      <a href="#MAV_COMP_ID_PATHPLANNER">MAV_COMP_ID_PATHPLANNER</a>
-     </td>
-     <td>Component that finds an optimal path between points based on a certain constraint (e.g. minimum snap, shortest path, cost, etc.).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_OBSTACLE_AVOIDANCE">
-     <td>196</td>
-     <td>
-      <a href="#MAV_COMP_ID_OBSTACLE_AVOIDANCE">MAV_COMP_ID_OBSTACLE_AVOIDANCE</a>
-     </td>
-     <td>Component that plans a collision free path between two points.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY">
-     <td>197</td>
-     <td>
-      <a href="#MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY">MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY</a>
-     </td>
-     <td>Component that provides position estimates using VIO techniques.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_PAIRING_MANAGER">
-     <td>198</td>
-     <td>
-      <a href="#MAV_COMP_ID_PAIRING_MANAGER">MAV_COMP_ID_PAIRING_MANAGER</a>
-     </td>
-     <td>Component that manages pairing of vehicle and GCS.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_IMU">
-     <td>200</td>
-     <td>
-      <a href="#MAV_COMP_ID_IMU">MAV_COMP_ID_IMU</a>
-     </td>
-     <td>Inertial Measurement Unit (IMU) #1.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_IMU_2">
-     <td>201</td>
-     <td>
-      <a href="#MAV_COMP_ID_IMU_2">MAV_COMP_ID_IMU_2</a>
-     </td>
-     <td>Inertial Measurement Unit (IMU) #2.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_IMU_3">
-     <td>202</td>
-     <td>
-      <a href="#MAV_COMP_ID_IMU_3">MAV_COMP_ID_IMU_3</a>
-     </td>
-     <td>Inertial Measurement Unit (IMU) #3.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GPS">
-     <td>220</td>
-     <td>
-      <a href="#MAV_COMP_ID_GPS">MAV_COMP_ID_GPS</a>
-     </td>
-     <td>GPS #1.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_GPS2">
-     <td>221</td>
-     <td>
-      <a href="#MAV_COMP_ID_GPS2">MAV_COMP_ID_GPS2</a>
-     </td>
-     <td>GPS #2.</td>
-    </tr>
-    <tr id="MAV_COMP_ID_ODID_TXRX_1">
-     <td>236</td>
-     <td>
-      <a href="#MAV_COMP_ID_ODID_TXRX_1">MAV_COMP_ID_ODID_TXRX_1</a>
-     </td>
-     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_ODID_TXRX_2">
-     <td>237</td>
-     <td>
-      <a href="#MAV_COMP_ID_ODID_TXRX_2">MAV_COMP_ID_ODID_TXRX_2</a>
-     </td>
-     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_ODID_TXRX_3">
-     <td>238</td>
-     <td>
-      <a href="#MAV_COMP_ID_ODID_TXRX_3">MAV_COMP_ID_ODID_TXRX_3</a>
-     </td>
-     <td>Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_UDP_BRIDGE">
-     <td>240</td>
-     <td>
-      <a href="#MAV_COMP_ID_UDP_BRIDGE">MAV_COMP_ID_UDP_BRIDGE</a>
-     </td>
-     <td>Component to bridge MAVLink to UDP (i.e. from a UART).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_UART_BRIDGE">
-     <td>241</td>
-     <td>
-      <a href="#MAV_COMP_ID_UART_BRIDGE">MAV_COMP_ID_UART_BRIDGE</a>
-     </td>
-     <td>Component to bridge to UART (i.e. from UDP).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_TUNNEL_NODE">
-     <td>242</td>
-     <td>
-      <a href="#MAV_COMP_ID_TUNNEL_NODE">MAV_COMP_ID_TUNNEL_NODE</a>
-     </td>
-     <td>Component handling TUNNEL messages (e.g. vendor specific GUI of a component).</td>
-    </tr>
-    <tr id="MAV_COMP_ID_SYSTEM_CONTROL">
-     <td>250</td>
-     <td>
-      <a href="#MAV_COMP_ID_SYSTEM_CONTROL">MAV_COMP_ID_SYSTEM_CONTROL</a>
-      <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_COMP_ID_ALL (2018-11).
-
-
-  System control does not require a separate component ID.</p>
-     </td>
-     <td>Component for handling system messages (e.g. to ARM, takeoff, etc.).</td>
     </tr>
    </tbody>
   </table>
@@ -2796,20 +1229,6 @@
      </td>
      <td>Gimbal manager supports to point to a global latitude, longitude, altitude position.</td>
     </tr>
-    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT">
-     <td>262144</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT">GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT</a>
-     </td>
-     <td>Gimbal manager supports tracking of a point on the camera.</td>
-    </tr>
-    <tr id="GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE">
-     <td>524288</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE">GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE</a>
-     </td>
-     <td>Gimbal manager supports tracking of a point on the camera.</td>
-    </tr>
     <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">
      <td>1048576</td>
      <td>
@@ -3038,6 +1457,84 @@
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR</a>
      </td>
      <td>There is an error with the gimbal's communication.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_CALIBRATION_RUNNING">
+     <td>256</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_CALIBRATION_RUNNING">GIMBAL_DEVICE_ERROR_FLAGS_CALIBRATION_RUNNING</a>
+     </td>
+     <td>Gimbal is currently calibrating.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GRIPPER_ACTIONS">
+   <a href="#GRIPPER_ACTIONS">GRIPPER_ACTIONS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gripper actions.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="GRIPPER_ACTION_RELEASE">
+     <td>0</td>
+     <td>
+      <a href="#GRIPPER_ACTION_RELEASE">GRIPPER_ACTION_RELEASE</a>
+     </td>
+     <td>Gripper release cargo.</td>
+    </tr>
+    <tr id="GRIPPER_ACTION_GRAB">
+     <td>1</td>
+     <td>
+      <a href="#GRIPPER_ACTION_GRAB">GRIPPER_ACTION_GRAB</a>
+     </td>
+     <td>Gripper grab onto cargo.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="WINCH_ACTIONS">
+   <a href="#WINCH_ACTIONS">WINCH_ACTIONS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Winch actions.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="WINCH_RELAXED">
+     <td>0</td>
+     <td>
+      <a href="#WINCH_RELAXED">WINCH_RELAXED</a>
+     </td>
+     <td>Relax winch.</td>
+    </tr>
+    <tr id="WINCH_RELATIVE_LENGTH_CONTROL">
+     <td>1</td>
+     <td>
+      <a href="#WINCH_RELATIVE_LENGTH_CONTROL">WINCH_RELATIVE_LENGTH_CONTROL</a>
+     </td>
+     <td>Wind or unwind specified length of cable, optionally using specified rate.</td>
+    </tr>
+    <tr id="WINCH_RATE_CONTROL">
+     <td>2</td>
+     <td>
+      <a href="#WINCH_RATE_CONTROL">WINCH_RATE_CONTROL</a>
+     </td>
+     <td>Wind or unwind cable at specified rate.</td>
     </tr>
    </tbody>
   </table>
@@ -3562,51 +2059,12 @@
      </td>
      <td>Parameter meta data.</td>
     </tr>
-   </tbody>
-  </table>
-  <h3 id="PARAM_TRANSACTION_RESPONSE">
-   <a href="#PARAM_TRANSACTION_RESPONSE">PARAM_TRANSACTION_RESPONSE</a>
-  </h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>Possible responses from a PARAM_START_TRANSACTION and PARAM_COMMIT_TRANSACTION messages.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="PARAM_TRANSACTION_RESPONSE_ACCEPTED">
-     <td>0</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_RESPONSE_ACCEPTED">PARAM_TRANSACTION_RESPONSE_ACCEPTED</a>
-     </td>
-     <td>Transaction accepted.</td>
-    </tr>
-    <tr id="PARAM_TRANSACTION_RESPONSE_FAILED">
-     <td>1</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_RESPONSE_FAILED">PARAM_TRANSACTION_RESPONSE_FAILED</a>
-     </td>
-     <td>Transaction failed.</td>
-    </tr>
-    <tr id="PARAM_TRANSACTION_RESPONSE_UNSUPPORTED">
+    <tr id="COMP_METADATA_TYPE_COMMANDS">
      <td>2</td>
      <td>
-      <a href="#PARAM_TRANSACTION_RESPONSE_UNSUPPORTED">PARAM_TRANSACTION_RESPONSE_UNSUPPORTED</a>
+      <a href="#COMP_METADATA_TYPE_COMMANDS">COMP_METADATA_TYPE_COMMANDS</a>
      </td>
-     <td>Transaction unsupported.</td>
-    </tr>
-    <tr id="PARAM_TRANSACTION_RESPONSE_INPROGRESS">
-     <td>3</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_RESPONSE_INPROGRESS">PARAM_TRANSACTION_RESPONSE_INPROGRESS</a>
-     </td>
-     <td>Transaction in progress.</td>
+     <td>Meta data which specifies the commands the vehicle supports. (WIP)</td>
     </tr>
    </tbody>
   </table>
@@ -3648,7 +2106,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Possible parameter transaction action during a commit.</p>
+   </a>Possible parameter transaction actions.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3658,15 +2116,22 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="PARAM_TRANSACTION_ACTION_COMMIT">
+    <tr id="PARAM_TRANSACTION_ACTION_START">
      <td>0</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_ACTION_START">PARAM_TRANSACTION_ACTION_START</a>
+     </td>
+     <td>Commit the current parameter transaction.</td>
+    </tr>
+    <tr id="PARAM_TRANSACTION_ACTION_COMMIT">
+     <td>1</td>
      <td>
       <a href="#PARAM_TRANSACTION_ACTION_COMMIT">PARAM_TRANSACTION_ACTION_COMMIT</a>
      </td>
      <td>Commit the current parameter transaction.</td>
     </tr>
     <tr id="PARAM_TRANSACTION_ACTION_CANCEL">
-     <td>1</td>
+     <td>2</td>
      <td>
       <a href="#PARAM_TRANSACTION_ACTION_CANCEL">PARAM_TRANSACTION_ACTION_CANCEL</a>
      </td>
@@ -6788,6 +5253,27 @@
      </td>
      <td>Camera has video streaming capabilities (request VIDEO_STREAM_INFORMATION with MAV_CMD_REQUEST_MESSAGE for video streaming info)</td>
     </tr>
+    <tr id="CAMERA_CAP_FLAGS_HAS_TRACKING_POINT">
+     <td>512</td>
+     <td>
+      <a href="#CAMERA_CAP_FLAGS_HAS_TRACKING_POINT">CAMERA_CAP_FLAGS_HAS_TRACKING_POINT</a>
+     </td>
+     <td>Camera supports tracking of a point on the camera view.</td>
+    </tr>
+    <tr id="CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE">
+     <td>1024</td>
+     <td>
+      <a href="#CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE">CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE</a>
+     </td>
+     <td>Camera supports tracking of a selection rectangle on the camera view.</td>
+    </tr>
+    <tr id="CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS">
+     <td>2048</td>
+     <td>
+      <a href="#CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS">CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS</a>
+     </td>
+     <td>Camera supports tracking geo status (CAMERA_TRACKING_GEO_STATUS).</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="VIDEO_STREAM_STATUS_FLAGS">
@@ -6865,6 +5351,130 @@
       <a href="#VIDEO_STREAM_TYPE_MPEG_TS_H264">VIDEO_STREAM_TYPE_MPEG_TS_H264</a>
      </td>
      <td>Stream is h.264 on MPEG TS (URI gives the port number)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_STATUS_FLAGS">
+   <a href="#CAMERA_TRACKING_STATUS_FLAGS">CAMERA_TRACKING_STATUS_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Camera tracking status flags</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CAMERA_TRACKING_STATUS_FLAGS_IDLE">
+     <td>0</td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS_IDLE">CAMERA_TRACKING_STATUS_FLAGS_IDLE</a>
+     </td>
+     <td>Camera is not tracking</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_STATUS_FLAGS_ACTIVE">
+     <td>1</td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS_ACTIVE">CAMERA_TRACKING_STATUS_FLAGS_ACTIVE</a>
+     </td>
+     <td>Camera is tracking</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_STATUS_FLAGS_ERROR">
+     <td>2</td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS_ERROR">CAMERA_TRACKING_STATUS_FLAGS_ERROR</a>
+     </td>
+     <td>Camera tracking in error state</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_MODE">
+   <a href="#CAMERA_TRACKING_MODE">CAMERA_TRACKING_MODE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Camera tracking modes</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CAMERA_TRACKING_NONE">
+     <td>0</td>
+     <td>
+      <a href="#CAMERA_TRACKING_NONE">CAMERA_TRACKING_NONE</a>
+     </td>
+     <td>Not tracking</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_POINT">
+     <td>1</td>
+     <td>
+      <a href="#CAMERA_TRACKING_POINT">CAMERA_TRACKING_POINT</a>
+     </td>
+     <td>Target is a point</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_RECTANGLE">
+     <td>2</td>
+     <td>
+      <a href="#CAMERA_TRACKING_RECTANGLE">CAMERA_TRACKING_RECTANGLE</a>
+     </td>
+     <td>Target is a rectangle</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_TARGET_DATA">
+   <a href="#CAMERA_TRACKING_TARGET_DATA">CAMERA_TRACKING_TARGET_DATA</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Camera tracking target data (shows where tracked target is within image)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CAMERA_TRACKING_TARGET_NONE">
+     <td>0</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_NONE">CAMERA_TRACKING_TARGET_NONE</a>
+     </td>
+     <td>No target data</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_TARGET_EMBEDDED">
+     <td>1</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_EMBEDDED">CAMERA_TRACKING_TARGET_EMBEDDED</a>
+     </td>
+     <td>Target data embedded in image data (proprietary)</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_TARGET_RENDERED">
+     <td>2</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_RENDERED">CAMERA_TRACKING_TARGET_RENDERED</a>
+     </td>
+     <td>Target data rendered in image</td>
+    </tr>
+    <tr id="CAMERA_TRACKING_TARGET_IN_STATUS">
+     <td>4</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_IN_STATUS">CAMERA_TRACKING_TARGET_IN_STATUS</a>
+     </td>
+     <td>Target data within status message (Point or Rectangle)</td>
     </tr>
    </tbody>
   </table>
@@ -10017,6 +8627,135 @@
       <a href="#FAILURE_TYPE_INTERMITTENT">FAILURE_TYPE_INTERMITTENT</a>
      </td>
      <td>Unit is sometimes working, sometimes not.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_WINCH_STATUS_FLAG">
+   <a href="#MAV_WINCH_STATUS_FLAG">MAV_WINCH_STATUS_FLAG</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Winch status flags used in WINCH_STATUS</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_WINCH_STATUS_HEALTHY">
+     <td>1</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_HEALTHY">MAV_WINCH_STATUS_HEALTHY</a>
+     </td>
+     <td>Winch is healthy</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_FULLY_RETRACTED">
+     <td>2</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_FULLY_RETRACTED">MAV_WINCH_STATUS_FULLY_RETRACTED</a>
+     </td>
+     <td>Winch thread is fully retracted</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_MOVING">
+     <td>4</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_MOVING">MAV_WINCH_STATUS_MOVING</a>
+     </td>
+     <td>Winch motor is moving</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_CLUTCH_ENGAGED">
+     <td>8</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_CLUTCH_ENGAGED">MAV_WINCH_STATUS_CLUTCH_ENGAGED</a>
+     </td>
+     <td>Winch clutch is engaged allowing motor to move freely</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAG_CAL_STATUS">
+   <a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAG_CAL_NOT_STARTED">
+     <td>0</td>
+     <td>
+      <a href="#MAG_CAL_NOT_STARTED">MAG_CAL_NOT_STARTED</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_WAITING_TO_START">
+     <td>1</td>
+     <td>
+      <a href="#MAG_CAL_WAITING_TO_START">MAG_CAL_WAITING_TO_START</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_RUNNING_STEP_ONE">
+     <td>2</td>
+     <td>
+      <a href="#MAG_CAL_RUNNING_STEP_ONE">MAG_CAL_RUNNING_STEP_ONE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_RUNNING_STEP_TWO">
+     <td>3</td>
+     <td>
+      <a href="#MAG_CAL_RUNNING_STEP_TWO">MAG_CAL_RUNNING_STEP_TWO</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_SUCCESS">
+     <td>4</td>
+     <td>
+      <a href="#MAG_CAL_SUCCESS">MAG_CAL_SUCCESS</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_FAILED">
+     <td>5</td>
+     <td>
+      <a href="#MAG_CAL_FAILED">MAG_CAL_FAILED</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_BAD_ORIENTATION">
+     <td>6</td>
+     <td>
+      <a href="#MAG_CAL_BAD_ORIENTATION">MAG_CAL_BAD_ORIENTATION</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="MAG_CAL_BAD_RADIUS">
+     <td>7</td>
+     <td>
+      <a href="#MAG_CAL_BAD_RADIUS">MAG_CAL_BAD_RADIUS</a>
+     </td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -14016,6 +12755,65 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_DO_GRIPPER">MAV_CMD_DO_GRIPPER (<a href="#MAV_CMD_DO_GRIPPER">211</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Mission command to operate a gripper.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Instance</td>
+     <td>Gripper instance number.</td>
+     <td>
+      <em>min:</em>1 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>2: Action</td>
+     <td>Gripper action to perform.</td>
+     <td>GRIPPER_ACTIONS</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_NAV_SET_YAW_SPEED">MAV_CMD_NAV_SET_YAW_SPEED (<a href="#MAV_CMD_NAV_SET_YAW_SPEED">213</a>
    )
   </h3>
@@ -15234,98 +14032,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE (<a href="#MAV_CMD_REQUEST_MESSAGE">512</a>
-   )
-  </h3>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request the target system(s) emit a single instance of a specified message (i.e. a "one-shot" version of MAV_CMD_SET_MESSAGE_INTERVAL).</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Values</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Message ID</td>
-     <td>The MAVLink message ID of the requested message.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
-    </tr>
-    <tr>
-     <td>2: Req Param 1</td>
-     <td>Use for index ID, if required. Otherwise, the use of this parameter (if any) must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>3: Req Param 2</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>4: Req Param 3</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>5: Req Param 4</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>6: Req Param 5</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>7: Response Target</td>
-     <td>Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requestor, 2: broadcast.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_REQUEST_PROTOCOL_VERSION">MAV_CMD_REQUEST_PROTOCOL_VERSION (<a href="#MAV_CMD_REQUEST_PROTOCOL_VERSION">519</a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_REQUEST_MESSAGE (2019-08).</p>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request MAVLink protocol version compatibility. All receivers should ACK the command and then emit their capabilities in an PROTOCOL_VERSION message</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Values</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Protocol</td>
-     <td>1: Request supported protocol versions by all nodes on the network</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
-    </tr>
-    <tr>
-     <td>2</td>
-     <td>Reserved (all remaining params)</td>
-     <td>
-     </td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES">MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES (<a href="#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES">520</a>
    )
   </h3>
@@ -15804,6 +14510,42 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_PARAM_TRANSACTION">MAV_CMD_PARAM_TRANSACTION (<a href="#MAV_CMD_PARAM_TRANSACTION">900</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request to start or end a parameter transaction. Multiple kinds of transport layers can be used to exchange parameters in the transaction (param, param_ext and mavftp). The command response can either be a success/failure or an in progress in case the receiving side takes some time to apply the parameters.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Action</td>
+     <td>Action to be performed (start, commit, cancel, etc.)</td>
+     <td>PARAM_TRANSACTION_ACTION</td>
+    </tr>
+    <tr>
+     <td>2: Transport</td>
+     <td>Possible transport layers to set and get parameters via mavlink during a parameter transaction.</td>
+     <td>PARAM_TRANSACTION_TRANSPORT</td>
+    </tr>
+    <tr>
+     <td>3: Transaction ID</td>
+     <td>Identifier for a specific transaction.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN">MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN">1000</a>
    )
   </h3>
@@ -15867,94 +14609,6 @@
      <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
      <td>
      </td>
-     <td>
-     </td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT">MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT">1001</a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>If the gimbal manager supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Values</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Point x</td>
-     <td>Point to track x value.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>2: Point y</td>
-     <td>Point to track y value.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>7: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
-     <td>
-     </td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE">MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE">1002</a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>If the gimbal supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Values</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Top left corner x</td>
-     <td>Top left corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>2: Top left corner y</td>
-     <td>Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>3: Bottom right corner x</td>
-     <td>Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>4: Bottom right corner y</td>
-     <td>Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>1 </td>
-    </tr>
-    <tr>
-     <td>7: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
      <td>
      </td>
     </tr>
@@ -16153,6 +14807,107 @@
       -1 
       <em>max:</em>1 <em>increment:</em>2</td>
     </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_CAMERA_TRACK_POINT">MAV_CMD_CAMERA_TRACK_POINT (<a href="#MAV_CMD_CAMERA_TRACK_POINT">2004</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>If the camera supports point visual tracking (CAMERA_CAP_FLAGS_HAS_TRACKING_POINT is set), this command allows to initiate the tracking.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Point x</td>
+     <td>Point to track x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>2: Point y</td>
+     <td>Point to track y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>3: Radius</td>
+     <td>Point radius (normalized 0..1, 0 is image left, 1 is image right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_CAMERA_TRACK_RECTANGLE">MAV_CMD_CAMERA_TRACK_RECTANGLE (<a href="#MAV_CMD_CAMERA_TRACK_RECTANGLE">2005</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>If the camera supports rectangle visual tracking (CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE is set), this command allows to initiate the tracking.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Top left corner x</td>
+     <td>Top left corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>2: Top left corner y</td>
+     <td>Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>3: Bottom right corner x</td>
+     <td>Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+    <tr>
+     <td>4: Bottom right corner y</td>
+     <td>Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_CAMERA_STOP_TRACKING">MAV_CMD_CAMERA_STOP_TRACKING (<a href="#MAV_CMD_CAMERA_STOP_TRACKING">2010</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Stops ongoing tracking.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
    </tbody>
   </table>
   <h3 id="MAV_CMD_VIDEO_START_CAPTURE">MAV_CMD_VIDEO_START_CAPTURE (<a href="#MAV_CMD_VIDEO_START_CAPTURE">2500</a>
@@ -17403,6 +16158,135 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_FIXED_MAG_CAL_YAW">MAV_CMD_FIXED_MAG_CAL_YAW (<a href="#MAV_CMD_FIXED_MAG_CAL_YAW">42006</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Magnetometer calibration based on provided known yaw. This allows for fast calibration using WMM field tables in the vehicle, given only the known yaw of the vehicle. If Latitude and longitude are both zero then use the current vehicle location.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Yaw</td>
+     <td>Yaw of vehicle in earth frame.</td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>2: CompassMask</td>
+     <td>CompassMask, 0 for all.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3: Latitude</td>
+     <td>Latitude.</td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>4: Longitude</td>
+     <td>Longitude.</td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_WINCH">MAV_CMD_DO_WINCH (<a href="#MAV_CMD_DO_WINCH">42600</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Command to operate winch.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Instance</td>
+     <td>Winch instance number.</td>
+     <td>
+      <em>min:</em>1 <em>increment:</em>1</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>2: Action</td>
+     <td>Action to perform.</td>
+     <td>WINCH_ACTIONS</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3: Length</td>
+     <td>Length of cable to release (negative to wind).</td>
+     <td>
+     </td>
+     <td>m</td>
+    </tr>
+    <tr>
+     <td>4: Rate</td>
+     <td>Release rate (negative to wind).</td>
+     <td>
+     </td>
+     <td>m/s</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_WAYPOINT_USER_1">MAV_CMD_WAYPOINT_USER_1 (<a href="#MAV_CMD_WAYPOINT_USER_1">31000</a>
    )
   </h3>
@@ -18219,77 +17103,6 @@
    </tbody>
   </table>
   <h2 id="messages">MAVLink Messages</h2>
-  <h3 id="HEARTBEAT">HEARTBEAT (<a href="#HEARTBEAT">
-    #0
-   </a>
-   )
-  </h3>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>The heartbeat message shows that a system or component is present and responding. The type and autopilot fields (along with the message component id), allow the receiving system to treat further messages from this system appropriately (e.g. by laying out the user interface based on the autopilot). This microservice is documented at https://mavlink.io/en/services/heartbeat.html</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_TYPE">MAV_TYPE</a>
-     </td>
-     <td>Vehicle or component type. For a flight controller component the vehicle type (quadrotor, helicopter, etc.). For other components the component type (e.g. camera, gimbal, etc.). This should be used in preference to component id for identifying the component type.</td>
-    </tr>
-    <tr>
-     <td>autopilot</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
-     </td>
-     <td>Autopilot type / class. Use MAV_AUTOPILOT_INVALID for components that are not flight controllers.</td>
-    </tr>
-    <tr>
-     <td>base_mode</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
-     </td>
-     <td>System mode bitmap.</td>
-    </tr>
-    <tr>
-     <td>custom_mode</td>
-     <td>uint32_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>A bitfield for use for autopilot-specific flags</td>
-    </tr>
-    <tr>
-     <td>system_status</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_STATE">MAV_STATE</a>
-     </td>
-     <td>System status flag.</td>
-    </tr>
-    <tr>
-     <td>mavlink_version</td>
-     <td>uint8_t_mavlink_version</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>MAVLink version, not writable by user, gets added by protocol because of magic data type: uint8_t_mavlink_version</td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="SYS_STATUS">SYS_STATUS (<a href="#SYS_STATUS">
     #1
    </a>
@@ -25011,6 +23824,16 @@
      </td>
      <td>Bitmap for fields that have updated since last message, bit 0 = xacc, bit 12: temperature, bit 31: full reset of attitude/position/velocities/etc was performed in sim.</td>
     </tr>
+    <tr>
+     <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Sensor ID (zero indexed). Used for multiple sensor inputs</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="SIM_STATE">SIM_STATE (<a href="#SIM_STATE">
@@ -25453,6 +24276,15 @@
      <td>
      </td>
      <td>GPS ID (zero indexed). Used for multiple GPS inputs</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">yaw<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t</td>
+     <td>cdeg</td>
+     <td>Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north</td>
     </tr>
    </tbody>
   </table>
@@ -28390,6 +27222,234 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAG_CAL_REPORT">MAG_CAL_REPORT (<a href="#MAG_CAL_REPORT">
+    #192
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Reports results of completed compass calibration. Sent until MAG_CAL_ACK received.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>compass_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Compass being calibrated.</td>
+    </tr>
+    <tr>
+     <td>cal_mask</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Bitmask of compasses being calibrated.</td>
+    </tr>
+    <tr>
+     <td>cal_status</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAG_CAL_STATUS">MAG_CAL_STATUS</a>
+     </td>
+     <td>Calibration Status.</td>
+    </tr>
+    <tr>
+     <td>autosaved</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>0=requires a MAV_CMD_DO_ACCEPT_MAG_CAL, 1=saved to parameters.</td>
+    </tr>
+    <tr>
+     <td>fitness</td>
+     <td>float</td>
+     <td>mgauss</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>RMS milligauss residuals.</td>
+    </tr>
+    <tr>
+     <td>ofs_x</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X offset.</td>
+    </tr>
+    <tr>
+     <td>ofs_y</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y offset.</td>
+    </tr>
+    <tr>
+     <td>ofs_z</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z offset.</td>
+    </tr>
+    <tr>
+     <td>diag_x</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X diagonal (matrix 11).</td>
+    </tr>
+    <tr>
+     <td>diag_y</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y diagonal (matrix 22).</td>
+    </tr>
+    <tr>
+     <td>diag_z</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z diagonal (matrix 33).</td>
+    </tr>
+    <tr>
+     <td>offdiag_x</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X off-diagonal (matrix 12 and 21).</td>
+    </tr>
+    <tr>
+     <td>offdiag_y</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y off-diagonal (matrix 13 and 31).</td>
+    </tr>
+    <tr>
+     <td>offdiag_z</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z off-diagonal (matrix 32 and 23).</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">orientation_confidence<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Confidence in orientation (higher is better).</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">old_orientation<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
+     </td>
+     <td>orientation before calibration.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">new_orientation<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_SENSOR_ORIENTATION">MAV_SENSOR_ORIENTATION</a>
+     </td>
+     <td>orientation after calibration.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">scale_factor<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>field radius correction factor</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="ESTIMATOR_STATUS">ESTIMATOR_STATUS (<a href="#ESTIMATOR_STATUS">
     #230
    </a>
@@ -30956,7 +30016,7 @@
      <td>float[4]</td>
      <td>
      </td>
-     <td>Quaternion of camera orientation (w, x, y, z order, zero-rotation is 0, 0, 0, 0)</td>
+     <td>Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
     </tr>
     <tr>
      <td>image_index</td>
@@ -31516,6 +30576,363 @@
       </a>
      </td>
      <td>Horizontal Field of view</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_FOV_STATUS">CAMERA_FOV_STATUS (<a href="#CAMERA_FOV_STATUS">
+    #271
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about the field of view of a camera. Can be requested with a MAV_CMD_REQUEST_MESSAGE command.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>lat_camera</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude of camera (INT32_MAX if unknown).</td>
+    </tr>
+    <tr>
+     <td>lon_camera</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude of camera (INT32_MAX if unknown).</td>
+    </tr>
+    <tr>
+     <td>alt_camera</td>
+     <td>int32_t</td>
+     <td>mm</td>
+     <td>Altitude (MSL) of camera (INT32_MAX if unknown).</td>
+    </tr>
+    <tr>
+     <td>lat_image</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).</td>
+    </tr>
+    <tr>
+     <td>lon_image</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).</td>
+    </tr>
+    <tr>
+     <td>alt_image</td>
+     <td>int32_t</td>
+     <td>mm</td>
+     <td>Altitude (MSL) of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
+    </tr>
+    <tr>
+     <td>hfov</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Horizontal field of view (NaN if unknown).</td>
+    </tr>
+    <tr>
+     <td>vfov</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Vertical field of view (NaN if unknown).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_IMAGE_STATUS">CAMERA_TRACKING_IMAGE_STATUS (<a href="#CAMERA_TRACKING_IMAGE_STATUS">
+    #275
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Camera tracking status, sent while in active tracking. Use MAV_CMD_SET_MESSAGE_INTERVAL to define message interval.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>tracking_status</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS">CAMERA_TRACKING_STATUS_FLAGS</a>
+     </td>
+     <td>Current tracking status</td>
+    </tr>
+    <tr>
+     <td>tracking_mode</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CAMERA_TRACKING_MODE">CAMERA_TRACKING_MODE</a>
+     </td>
+     <td>Current tracking mode</td>
+    </tr>
+    <tr>
+     <td>target_data</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CAMERA_TRACKING_TARGET_DATA">CAMERA_TRACKING_TARGET_DATA</a>
+     </td>
+     <td>Defines location of target data</td>
+    </tr>
+    <tr>
+     <td>point_x</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked point x value if CAMERA_TRACKING_POINT (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>point_y</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked point y value if CAMERA_TRACKING_POINT (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>radius</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked radius if CAMERA_TRACKING_POINT (normalized 0..1, 0 is image left, 1 is image right), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>rec_top_x</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked rectangle top x value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>rec_top_y</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked rectangle top y value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>rec_bottom_x</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked rectangle bottom x value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>rec_bottom_y</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current tracked rectangle bottom y value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAMERA_TRACKING_GEO_STATUS">CAMERA_TRACKING_GEO_STATUS (<a href="#CAMERA_TRACKING_GEO_STATUS">
+    #276
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Camera tracking status, sent while in active tracking. Use MAV_CMD_SET_MESSAGE_INTERVAL to define message interval.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>tracking_status</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#CAMERA_TRACKING_STATUS_FLAGS">CAMERA_TRACKING_STATUS_FLAGS</a>
+     </td>
+     <td>Current tracking status</td>
+    </tr>
+    <tr>
+     <td>lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Latitude of tracked object</td>
+    </tr>
+    <tr>
+     <td>lon</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Longitude of tracked object</td>
+    </tr>
+    <tr>
+     <td>alt</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Altitude of tracked object(AMSL, WGS84)</td>
+    </tr>
+    <tr>
+     <td>h_acc</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Horizontal accuracy. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>v_acc</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Vertical accuracy. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>vel_n</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>North velocity of tracked object. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>vel_e</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>East velocity of tracked object. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>vel_d</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Down velocity of tracked object. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>vel_acc</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Velocity accuracy. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>dist</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Distance between camera and tracked object. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>hdg</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Heading in radians, in NED. NAN if unknown</td>
+    </tr>
+    <tr>
+     <td>hdg_acc</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Accuracy of heading, in NED. NAN if unknown</td>
     </tr>
    </tbody>
   </table>
@@ -32669,56 +32086,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="PROTOCOL_VERSION">PROTOCOL_VERSION (<a href="#PROTOCOL_VERSION">
-    #300
-   </a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Version and capability of protocol version. This message can be requested with MAV_CMD_REQUEST_MESSAGE and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to a request for PROTOCOL_VERSION to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>version</td>
-     <td>uint16_t</td>
-     <td>Currently active MAVLink version number * 100: v1.0 is 100, v2.0 is 200, etc.</td>
-    </tr>
-    <tr>
-     <td>min_version</td>
-     <td>uint16_t</td>
-     <td>Minimum MAVLink version supported</td>
-    </tr>
-    <tr>
-     <td>max_version</td>
-     <td>uint16_t</td>
-     <td>Maximum MAVLink version supported (set to the same value as version by default)</td>
-    </tr>
-    <tr>
-     <td>spec_version_hash</td>
-     <td>uint8_t[8]</td>
-     <td>The first 8 bytes (not characters printed in hex!) of the git hash.</td>
-    </tr>
-    <tr>
-     <td>library_version_hash</td>
-     <td>uint8_t[8]</td>
-     <td>The first 8 bytes (not characters printed in hex!) of the git hash.</td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="AIS_VESSEL">AIS_VESSEL (<a href="#AIS_VESSEL">
     #301
    </a>
@@ -33102,7 +32469,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Request to read the value of a parameter with the either the param_id string id or param_index.</p>
+   </strong>Request to read the value of a parameter with either the param_id string id or param_index. PARAM_EXT_VALUE or PARAM_EXT_VALUE_TRIMMED should be emitted in response (see field: trimmed).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33132,6 +32499,14 @@
      <td>int16_t</td>
      <td>Parameter index. Set to -1 to use the Parameter ID field as identifier (else param_id will be ignored)</td>
     </tr>
+    <tr>
+     <td style="color:blue;">trimmed<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>Request _TRIMMED variants of PARAM_EXT_ messages. Set to 1 if _TRIMMED message variants are supported, and 0 otherwise. This signals the recipient that _TRIMMED messages are supported by the sender (and should be used if supported by the recipient).</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="PARAM_EXT_REQUEST_LIST">PARAM_EXT_REQUEST_LIST (<a href="#PARAM_EXT_REQUEST_LIST">
@@ -33145,7 +32520,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Request all parameters of this component. After this request, all parameters are emitted.</p>
+   </strong>Request all parameters of this component. All parameters should be emitted in response (as PARAM_EXT_VALUE or PARAM_EXT_VALUE_TRIMMED messages - see field: trimmed).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33165,6 +32540,14 @@
      <td>uint8_t</td>
      <td>Component ID</td>
     </tr>
+    <tr>
+     <td style="color:blue;">trimmed<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>Request _TRIMMED variants of PARAM_EXT_ messages. Set to 1 if _TRIMMED message variants are supported, and 0 otherwise. This signals the recipient that _TRIMMED messages are supported by the sender (and should be used if supported by the recipient).</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="PARAM_EXT_VALUE">PARAM_EXT_VALUE (<a href="#PARAM_EXT_VALUE">
@@ -33173,7 +32556,7 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by PARAM_V3_VALUE (2020-07).
+   <strong>DEPRECATED:</strong> Replaced by PARAM_EXT_VALUE_TRIMMED (2020-07).
 
 
   The new version of this message correctly trims zeros.</p>
@@ -33246,10 +32629,10 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by PARAM_V3_SET (2020-07).
+   <strong>DEPRECATED:</strong> Replaced by PARAM_EXT_SET_TRIMMED (2020-07).
 
 
-  The new second version of this message correctly trims zeros.</p>
+  New version of PARAM_EXT_SET that correctly trims zeros.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33319,10 +32702,10 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by PARAM_V3_ACK (2020-07).
+   <strong>DEPRECATED:</strong> Replaced by PARAM_EXT_ACK_TRIMMED (2020-07).
 
 
-  The new version of this message correctly trims zeros.</p>
+  New version of PARAM_EXT_ACK that correctly trims zeros.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33376,7 +32759,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="PARAM_V3_VALUE">PARAM_V3_VALUE (<a href="#PARAM_V3_VALUE">
+  <h3 id="PARAM_EXT_VALUE_TRIMMED">PARAM_EXT_VALUE_TRIMMED (<a href="#PARAM_EXT_VALUE_TRIMMED">
     #325
    </a>
    )
@@ -33389,7 +32772,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Emit the value of a parameter. The param_count and param_index fields allow the recipient to keep track of received parameters and to re-request missing parameters after a loss or timeout. Replacement for PARAM_EXT_VALUE.</p>
+   </strong>Emit the value of a parameter. The inclusion of param_count and param_index in the message allows the recipient to keep track of received parameters and allows them to re-request missing parameters after a loss or timeout. Replacement for PARAM_EXT_VALUE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33400,23 +32783,6 @@
     </tr>
    </thead>
    <tbody>
-    <tr>
-     <td>param_id</td>
-     <td>char[16]</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
-    </tr>
-    <tr>
-     <td>param_type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
-     </td>
-     <td>Parameter type.</td>
-    </tr>
     <tr>
      <td>param_count</td>
      <td>uint16_t</td>
@@ -33436,6 +32802,23 @@
      <td>Index of this parameter</td>
     </tr>
     <tr>
+     <td>param_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+     </td>
+     <td>Parameter type.</td>
+    </tr>
+    <tr>
+     <td>param_id</td>
+     <td>char[16]</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+    </tr>
+    <tr>
      <td>param_value</td>
      <td>char[128]</td>
      <td>
@@ -33446,7 +32829,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="PARAM_V3_SET">PARAM_V3_SET (<a href="#PARAM_V3_SET">
+  <h3 id="PARAM_EXT_SET_TRIMMED">PARAM_EXT_SET_TRIMMED (<a href="#PARAM_EXT_SET_TRIMMED">
     #326
    </a>
    )
@@ -33459,7 +32842,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Set a parameter value. In order to deal with message loss (and retransmission of PARAM_EXT_SET), when setting a parameter value and the new value is the same as the current value, you will immediately get a PARAM_ACK_ACCEPTED response. If the current state is PARAM_ACK_IN_PROGRESS, you will accordingly receive a PARAM_ACK_IN_PROGRESS in response.</p>
+   </strong>Set a parameter value. In order to deal with message loss (and retransmission of PARAM_EXT_SET_TRIMMED), when setting a parameter value and the new value is the same as the current value, you will immediately get a PARAM_ACK_ACCEPTED response. If the current state is PARAM_ACK_IN_PROGRESS, you will accordingly receive a PARAM_ACK_IN_PROGRESS in response. If there is no response to this message, and it is unknown whether the _TRIMMED messages are supported (because no PARAM_EXT_REQUEST_READ or PARAM_EXT_REQUEST_LIST has been performed yet), then fall back to PARAM_EXT_SET.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33489,6 +32872,14 @@
      <td>Component ID</td>
     </tr>
     <tr>
+     <td>param_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
+     </td>
+     <td>Parameter type.</td>
+    </tr>
+    <tr>
      <td>param_id</td>
      <td>char[16]</td>
      <td>
@@ -33496,14 +32887,6 @@
       </a>
      </td>
      <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
-    </tr>
-    <tr>
-     <td>param_type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
-     </td>
-     <td>Parameter type.</td>
     </tr>
     <tr>
      <td>param_value</td>
@@ -33516,7 +32899,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="PARAM_V3_ACK">PARAM_V3_ACK (<a href="#PARAM_V3_ACK">
+  <h3 id="PARAM_EXT_ACK_TRIMMED">PARAM_EXT_ACK_TRIMMED (<a href="#PARAM_EXT_ACK_TRIMMED">
     #327
    </a>
    )
@@ -33529,7 +32912,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Response from a PARAM_V3_SET message.</p>
+   </strong>Response from a PARAM_EXT_SET_TRIMMED message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33541,13 +32924,12 @@
    </thead>
    <tbody>
     <tr>
-     <td>param_id</td>
-     <td>char[16]</td>
+     <td>param_result</td>
+     <td>uint8_t</td>
      <td>
-      <a href="#">
-      </a>
+      <a href="#PARAM_ACK">PARAM_ACK</a>
      </td>
-     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+     <td>Result code.</td>
     </tr>
     <tr>
      <td>param_type</td>
@@ -33558,12 +32940,13 @@
      <td>Parameter type.</td>
     </tr>
     <tr>
-     <td>param_result</td>
-     <td>uint8_t</td>
+     <td>param_id</td>
+     <td>char[16]</td>
      <td>
-      <a href="#PARAM_ACK">PARAM_ACK</a>
+      <a href="#">
+      </a>
      </td>
-     <td>Result code.</td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
     </tr>
     <tr>
      <td>param_value</td>
@@ -33573,126 +32956,6 @@
       </a>
      </td>
      <td>Parameter value (new value if PARAM_ACK_ACCEPTED, current value otherwise, zeros get trimmed)</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="PARAM_START_TRANSACTION">PARAM_START_TRANSACTION (<a href="#PARAM_START_TRANSACTION">
-    #328
-   </a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Request to start a new parameter transaction. Multiple kinds of transport layers can be used to exchange parameters in the transaction (param, param_ext and mavftp). The response (ack) will contain the same message but with a response attached to it.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>target_system</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>System ID</td>
-    </tr>
-    <tr>
-     <td>target_component</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Component ID</td>
-    </tr>
-    <tr>
-     <td>param_transport</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_TRANSPORT">PARAM_TRANSACTION_TRANSPORT</a>
-     </td>
-     <td>Possible transport layers to set and get parameters via mavlink during a parameter transaction.</td>
-    </tr>
-    <tr>
-     <td>response</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_RESPONSE">PARAM_TRANSACTION_RESPONSE</a>
-     </td>
-     <td>Message acceptance response (sent back to GS).</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="PARAM_COMMIT_TRANSACTION">PARAM_COMMIT_TRANSACTION (<a href="#PARAM_COMMIT_TRANSACTION">
-    #329
-   </a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Request to end the current parameter transaction. This message will have effect only if a transaction was previously opened using the PARAM_START_TRANSACTION message. The response will contain the same message but with a response attached to it. The response can either be a success/failure or and in progress in case the receiving side takes some time to apply the parameters.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>target_system</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>System ID</td>
-    </tr>
-    <tr>
-     <td>target_component</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Component ID</td>
-    </tr>
-    <tr>
-     <td>param_action</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_ACTION">PARAM_TRANSACTION_ACTION</a>
-     </td>
-     <td>Commit or cancel an ongoing transaction.</td>
-    </tr>
-    <tr>
-     <td>response</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#PARAM_TRANSACTION_RESPONSE">PARAM_TRANSACTION_RESPONSE</a>
-     </td>
-     <td>Message acceptance response (sent back to GS).</td>
     </tr>
    </tbody>
   </table>
@@ -35115,8 +34378,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -35814,6 +35075,113 @@
      <td>double[16]</td>
      <td>m</td>
      <td>Distance reported by individual wheel encoders. Forward rotations increase values, reverse rotations decrease them. Not all wheels will necessarily have wheel encoders; the mapping of encoders to wheel positions must be agreed/understood by the endpoints.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="WINCH_STATUS">WINCH_STATUS (<a href="#WINCH_STATUS">
+    #9005
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Winch status.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (synced to UNIX time or since system boot).</td>
+    </tr>
+    <tr>
+     <td>line_length</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Length of line released. NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>speed</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Speed line is being released or retracted. Positive values if being released, negative values if being retracted, NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>tension</td>
+     <td>float</td>
+     <td>kg</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tension on the line. NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>voltage</td>
+     <td>float</td>
+     <td>V</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Voltage of the battery supplying the winch. NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>current</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Current draw from the winch. NaN if unknown</td>
+    </tr>
+    <tr>
+     <td>temperature</td>
+     <td>int16_t</td>
+     <td>degC</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Temperature of the motor. INT16_MAX if unknown</td>
+    </tr>
+    <tr>
+     <td>status</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_FLAG">MAV_WINCH_STATUS_FLAG</a>
+     </td>
+     <td>Status flags</td>
     </tr>
    </tbody>
   </table>
