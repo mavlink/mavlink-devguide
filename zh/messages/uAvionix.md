@@ -2,7 +2,7 @@
 
 # 方言：uAvionix
 
-*这是一种 XML 定义文件的可读形式： [uAvionix.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/uAvionix.xml) 。*
+*This is a human-readable form of the XML definition file: [uAvionix](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/uAvionix).*
 
 <span></span>
 
