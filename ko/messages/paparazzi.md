@@ -2,7 +2,7 @@
 
 # Dialect: paparazzi
 
-*This is a human-readable form of the XML definition file: [paparazzi.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/paparazzi.xml).*
+*This is a human-readable form of the XML definition file: [paparazzi](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/paparazzi).*
 
 <span></span>
 
