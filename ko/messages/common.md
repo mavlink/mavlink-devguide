@@ -2,11 +2,11 @@
 
 # MAVLINK Common Message Set
 
-The MAVLink *common* message set is defined in [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml). It contains the *standard* definitions that are managed by the MAVLink project.
+The MAVLink *common* message set contains *standard* definitions that are managed by the MAVLink project. The definitions cover functionality that is considered useful to most ground control stations and autopilots. MAVLink-compatible systems are expected to use these definitions where possible (if an appropriate message exists) rather than rolling out variants in their own [dialects](../messages/README.md).
 
-The definitions cover functionality that is considered useful to most ground control stations and autopilots. MAVLink-compatible systems are expected to use these definitions where possible (if an appropriate message exists) rather than rolling out variants in their own [dialects](../messages/README.md).
+The original definitions are defined in [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml).
 
-This topic is a human-readable form of [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml).
+> **Tip** The common set `includes` [minimal.xml](minimal.md), which contains the *minimal set* of definitions for any MAVLink system. These definitions are [reproduced at the end of this topic](#minimal).
 
 <span></span>
 
@@ -25,3 +25,9 @@ td {
  
 
 {% include "_html/common.html" %}
+
+# Minimal.xml {#minimal}
+
+The minimal set of definitions required for any MAVLink system are included from [minimal.xml](minimal.md). These are listed below.
+
+{% include "_html/minimal.html" %}
