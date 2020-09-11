@@ -1,7 +1,7 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 # Dialect: uAvionix
 
-*This is a human-readable form of the XML definition file: [uAvionix.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/uAvionix.xml).*
+*This is a human-readable form of the XML definition file: [uAvionix](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/uAvionix).*
 
 <span></span>
 > **Note** MAVLink 2 messages have an ID > 255 and are marked up using **(MAVLink 2)** in their description.
