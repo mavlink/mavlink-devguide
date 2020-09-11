@@ -2,7 +2,7 @@
 
 # Dialect: ualberta
 
-*This is a human-readable form of the XML definition file: [ualberta.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/ualberta.xml).*
+*This is a human-readable form of the XML definition file: [ualberta](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/ualberta).*
 
 <span></span>
 
