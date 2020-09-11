@@ -2,7 +2,7 @@
 
 # Dialect: icarous
 
-*This is a human-readable form of the XML definition file: [icarous.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/icarous.xml).*
+*This is a human-readable form of the XML definition file: [icarous](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/icarous).*
 
 <span></span>
 
