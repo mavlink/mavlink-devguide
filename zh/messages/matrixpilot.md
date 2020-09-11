@@ -2,7 +2,7 @@
 
 # 方言：matrixpilot
 
-*这是一种 XML 定义文件的可读形式： [matrixpilot.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/matrixpilot.xml) 。*
+*This is a human-readable form of the XML definition file: [matrixpilot](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/matrixpilot).*
 
 <span></span>
 
