@@ -2,7 +2,7 @@
 
 # 方言：标准
 
-*这是一种 XML 定义文件的可读形式： [standard.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/standard.xml) 。*
+*This is a human-readable form of the XML definition file: [standard](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/standard).*
 
 <span></span>
 

@@ -2,7 +2,7 @@
 
 # 方言：测试
 
-*这是一种 XML 定义文件的可读形式： [test.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/test.xml) 。*
+*This is a human-readable form of the XML definition file: [test](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/test).*
 
 <span></span>
 

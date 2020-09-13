@@ -2,7 +2,7 @@
 
 # Dialect: matrixpilot
 
-*This is a human-readable form of the XML definition file: [matrixpilot.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/matrixpilot.xml).*
+*This is a human-readable form of the XML definition file: [matrixpilot](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/matrixpilot).*
 
 <span></span>
 

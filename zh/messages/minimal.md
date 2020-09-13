@@ -1,16 +1,20 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 
-# 方言：最小值
+# MAVLink Minimal Set
 
-*这是一种 XML 定义文件的可读形式： [minimal.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/minimal.xml) 。*
+The MAVLink *minimal* set contains the minimal set of definitions for a viable MAVLink system.
+
+The message set is defined in [minimal.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/minimal.xml) and is managed by the MAVLink project.
+
+> **Tip** The minimal set is included (imported into) other xml definition files, including the [MAVLink Common Message Set (common.xml)](minimal.md).
 
 <span></span>
 
-> **Note** MAVLink 2 有一个 ID > 255的消息，并在其描述中使用 **（MAVLink 2）** 进行标记。
+> **Note** MAVLink 2 messages have an ID > 255 and are marked up using **(MAVLink 2)** in their description.
 
 <span id="mav2_extension_field"></span>
 
-> **Note** 已添加到 MAVLink 1 消息中的 MAVLink 2 扩展字段以蓝色显示。 
+> **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue. 
 
 <style>
 td {

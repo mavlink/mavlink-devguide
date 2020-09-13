@@ -1,7 +1,7 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 # Dialect: all
 
-*This is a human-readable form of the XML definition file: [all.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/all.xml).*
+*This is a human-readable form of the XML definition file: [all](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/all).*
 
 <span></span>
 > **Note** MAVLink 2 messages have an ID > 255 and are marked up using **(MAVLink 2)** in their description.

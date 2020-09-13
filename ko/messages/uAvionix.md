@@ -2,7 +2,7 @@
 
 # Dialect: uAvionix
 
-*This is a human-readable form of the XML definition file: [uAvionix.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/uAvionix.xml).*
+*This is a human-readable form of the XML definition file: [uAvionix](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/uAvionix).*
 
 <span></span>
 
