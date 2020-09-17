@@ -13461,7 +13461,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Trigger UAVCAN config. This command will be only accepted if in pre-flight mode.</p>
+   </a>Trigger UAVCAN configuration (actuator ID assignment and direction mapping). Note that this maps to the legacy UAVCAN v0 function UAVCAN_ENUMERATE, which is intended to be executed just once during initial vehicle configuration (it is not a normal pre-flight command and has been poorly named).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13472,7 +13472,7 @@
    <tbody>
     <tr>
      <td>1: Actuator ID</td>
-     <td>1: Trigger actuator ID assignment and direction mapping.</td>
+     <td>1: Trigger actuator ID assignment and direction mapping. 0: Cancel command.</td>
     </tr>
     <tr>
      <td>2</td>
