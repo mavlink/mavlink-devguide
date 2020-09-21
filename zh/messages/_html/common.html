@@ -13461,7 +13461,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Trigger UAVCAN config. This command will be only accepted if in pre-flight mode.</p>
+   </a>Trigger UAVCAN configuration (actuator ID assignment and direction mapping). Note that this maps to the legacy UAVCAN v0 function UAVCAN_ENUMERATE, which is intended to be executed just once during initial vehicle configuration (it is not a normal pre-flight command and has been poorly named).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13472,7 +13472,7 @@
    <tbody>
     <tr>
      <td>1: Actuator ID</td>
-     <td>1: Trigger actuator ID assignment and direction mapping.</td>
+     <td>1: Trigger actuator ID assignment and direction mapping. 0: Cancel command.</td>
     </tr>
     <tr>
      <td>2</td>
@@ -14647,7 +14647,7 @@
      <td>s</td>
     </tr>
     <tr>
-     <td>3: Capture Count</td>
+     <td>3: Total Images</td>
      <td>Total number of images to capture. 0 to capture forever/until MAV_CMD_IMAGE_STOP_CAPTURE.</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
@@ -14656,7 +14656,7 @@
     </tr>
     <tr>
      <td>4: Sequence Number</td>
-     <td>Capture sequence number starting from 1. This is only valid for single-capture (param3 == 1). Increment the capture ID for each capture command to prevent double captures when a command is re-transmitted. Use 0 to ignore it.</td>
+     <td>Capture sequence number starting from 1. This is only valid for single-capture (param3 == 1), otherwise set to 0. Increment the capture ID for each capture command to prevent double captures when a command is re-transmitted.</td>
      <td>
       <em>min:</em>1 <em>increment:</em>1</td>
      <td>
@@ -14664,7 +14664,26 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>Reserved (all remaining params)</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>
+     </td>
      <td>
      </td>
      <td>
@@ -15624,6 +15643,11 @@
   <h3 id="MAV_CMD_NAV_FENCE_RETURN_POINT">MAV_CMD_NAV_FENCE_RETURN_POINT (<a href="#MAV_CMD_NAV_FENCE_RETURN_POINT">5000</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_NAV_RALLY_POINT (2020-09).
+
+
+  This mechanism was superseded by rally points. If rally points are defined then they take precedence.</p>
   <p>
    <a href="#mav_commands">
     [Command]
