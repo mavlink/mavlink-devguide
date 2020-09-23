@@ -137,28 +137,36 @@ The `GIMBAL_MANAGER_INFORMATION` contains important information such as gimbal c
 
 A *Gimbal Manager* should send out [GIMBAL_MANAGER_STATUS](#GIMBAL_MANAGER_STATUS) at a low regular rate (e.g. 5 Hz) to inform the ground station about its status.
 
-### Starting / configuring Gimbal Control
+### Starting / Configuring Gimbal Control
 
-It is possible for multiple components to want to control a gimbal at the same time: e.g. a ground station, a companion computer, or the autopilot running a mission.
+It is possible for multiple components to want to control a gimbal at the same time, e.g.: a ground station, a companion computer, or the autopilot running a mission.
 
-In order to start controlling a gimbal, a component first needs to send the [MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE](#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE) command. This allows setting which MAVLink component (set by system ID and component ID) is in primary control and which one is in secondary control. The gimbal manager is to ignore any gimbal controls which come from MAVLink components that are not explicity set to "in control". This should prevent conflicts between various inputs as long as all components are trying to be fair when using the configure command. To be fair entails the following rules:
+In order to start controlling a gimbal, a component first needs to send the [MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE](#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE) command.
+This allows setting which MAVLink component (set by system ID and component ID) is in primary control and which one is in secondary control.
+The gimbal manager is to ignore any gimbal controls which come from MAVLink components that are not explicity set to "in control".
+This should prevent conflicts between various inputs as long as all components are fair/co-operative when using the configure command.
 
-- Don't send configure command continuously but only once to initiate and once to stop control again.
-- Check the [GIMBAL_MANAGER_STATUS](#GIMBAL_MANAGER_STATUS) about who is in control first and - if possible - warn user about planned action. E.g. if currently the autopilot is in control of the gimbal as part of a mission, the ground station should ask the user first using a pop-up if they really want to take over manual control.
+To be co-operative entails the following rules:
+
+- Don't send the configure manager configure command continuously but only once to initiate and once to stop control again.
+- Check the [GIMBAL_MANAGER_STATUS](#GIMBAL_MANAGER_STATUS) about who is in control first and - if possible - warn user about planned action. For example, if the autopilot is in control of the gimbal as part of a mission, the ground station should ask the user first (i.e. via a pop-up) if they really want to take over manual control.
 - Don't forget to release control when an action/task is finished and set the sysid/compid to 0.
 
-> **Note** It is possible to assign control to another component too, not just to itself. E.g. a smart shot running on a companion computer can set itself to be in primary control but assign a ground station for secondary control to e.g. nudge during the smart shot.
+> **Note** It is possible to assign control to another component too, not just to itself.
+  For example, a smart shot running on a companion computer can set itself to be in primary control but assign a ground station for secondary control to e.g. nudge during the smart shot.
 
-> **Note** The implementation of how primary and secondary control are combined or mixed is not defined by the protocol but up to the implementation. This allows flexibility for different use cases.
+> **Note** The implementation of how primary and secondary control are combined or mixed is not defined by the protocol but up to the implementation.
+  This allows flexibility for different use cases.
 
-#### Manually Controlling a Gimbal using MAVLink
+#### Manual Gimbal Control using MAVLink
 
 A ground station can manually control a gimbal by sending [GIMBAL_MANAGER_SET_MANUAL_CONTROL](#GIMBAL_MANAGER_SET_MANUAL_CONTROL).
-This allows controlling the gimbal with either angles, or angular rates, however at the normalized unit -1..1. The gimbal device is responsible to translate the input based on angle, speed, and "smoothness" settings.
+This allows controlling the gimbal with either angles, or angular rates, using a normalized unit (-1..1).
+The gimbal device is responsible for translating the input based on angle, speed, and "smoothness" settings.
 
-This input can additionally be scaled by the gimbal manager depending on its state. E.g. if the gimbal manager is on a camera and knows the current zoom level / focal length of the camera, it can scale the angular rate down to support smooth paning and tilting.
+This input can additionally be scaled by the gimbal manager depending on its state. For example, if the gimbal manager is on a camera and knows the current zoom level / focal length of the camera, it can scale the angular rate down to support smooth paning and tilting.
 
-#### Controlling Angle and or Angular Rate of Gimbal using MAVLink
+#### Controlling Gimbal Angle and/or Angular Rate using MAVLink
 
 A ground station, companion computer, or other MAVLink component can set the gimbal angle and/or angular rates using the messages [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE) or [GIMBAL_MANAGER_SET_TILTPAN](#GIMBAL_MANAGER_SET_TILTPAN).
 
@@ -189,7 +197,7 @@ This message is a meant as broadcast, so it's set to the GCS, *Gimbal Manager*, 
 
 ### Custom Gimbal Device Settings
 
-Custom gimbal settings can be accomplished using the component information microservice which is based on a [component definition file](../services/component_def.md).(this is similar to the [camera definition file](../services/camera_def.md)).
+Custom gimbal settings can be accomplished using the component information microservice which is based on a [component definition file](../services/component_def.md) (this is similar to the [camera definition file](../services/camera_def.md)).
 
 ## FAQ
 
@@ -222,11 +230,12 @@ The autopilot will have to act as the *Gimbal Manager* and provide the driver an
 
 #### What about RC (non-MAVLink) control?
 
-The autopilot needs to be configured to either accept MAVLink input (so [GIMBAL_MANAGER_SET_MANUAL_CONTROL](#GIMBAL_MANAGER_SET_MANUAL_CONTROL)) or RC control. In both cases, the message is then to be forwarded to the gimbal device using [GIMBAL_DEVICE_SET_MANUAL_CONTROL](#GIMBAL_DEVICE_SET_MANUAL_CONTROL).
+The autopilot needs to be configured to either accept MAVLink input (so [GIMBAL_MANAGER_SET_MANUAL_CONTROL](#GIMBAL_MANAGER_SET_MANUAL_CONTROL)) or RC control.
+In both cases, the message is then to be forwarded to the gimbal device using [GIMBAL_DEVICE_SET_MANUAL_CONTROL](#GIMBAL_DEVICE_SET_MANUAL_CONTROL).
 
 For RC control, the channels will have to be manually mapped/configured to control the gimbal.
-This is in the same way that also RC input to fly needs to be selected from either RC or MAVLink and is up to the implementation.
-The recommendation is to make it configurable using for instance a parameter.
+This is the same approach as is used for managing the input source for flying; it is up to the implementation to select either RC or MAVLink.
+The recommendation is to make it configurable using (for instance) a parameter.
 
 ## Message/Command/Enum Summary
 
