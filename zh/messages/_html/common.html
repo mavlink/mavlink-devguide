@@ -31533,7 +31533,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Name of the gimbal vendor</td>
+     <td>Name of the gimbal vendor.</td>
     </tr>
     <tr>
      <td>model_name</td>
@@ -31544,7 +31544,18 @@
       <a href="#">
       </a>
      </td>
-     <td>Name of the gimbal model</td>
+     <td>Name of the gimbal model.</td>
+    </tr>
+    <tr>
+     <td>custom_name</td>
+     <td>uint8_t[32]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Custom name of the gimbal given to it by the user.</td>
     </tr>
     <tr>
      <td>firmware_version</td>
@@ -31555,7 +31566,29 @@
       <a href="#">
       </a>
      </td>
-     <td>Version of the gimbal firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff)</td>
+     <td>Version of the gimbal firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff).</td>
+    </tr>
+    <tr>
+     <td>hardware_version</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Version of the gimbal hardware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff).</td>
+    </tr>
+    <tr>
+     <td>uid</td>
+     <td>uint64_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>UID of gimbal hardware (0 if unknown).</td>
     </tr>
     <tr>
      <td>cap_flags</td>
@@ -31568,6 +31601,17 @@
      <td>Bitmap of gimbal capability flags.</td>
     </tr>
     <tr>
+     <td>custom_cap_flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Bitmap for use for gimbal-specific capability flags.</td>
+    </tr>
+    <tr>
      <td>tilt_max</td>
      <td>float</td>
      <td>rad</td>
@@ -31575,7 +31619,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Maximum tilt/pitch angle (positive: up, negative: down)</td>
+     <td>Maximum tilt/pitch angle (positive: up, negative: down).</td>
     </tr>
     <tr>
      <td>tilt_min</td>
@@ -31585,7 +31629,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Minimum tilt/pitch angle (positive: up, negative: down)</td>
+     <td>Minimum tilt/pitch angle (positive: up, negative: down).</td>
     </tr>
     <tr>
      <td>tilt_rate_max</td>
@@ -31595,7 +31639,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Maximum tilt/pitch angular rate (positive: up, negative: down)</td>
+     <td>Maximum tilt/pitch angular rate (positive: up, negative: down).</td>
     </tr>
     <tr>
      <td>pan_max</td>
@@ -31605,7 +31649,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Maximum pan/yaw angle (positive: to the right, negative: to the left)</td>
+     <td>Maximum pan/yaw angle (positive: to the right, negative: to the left).</td>
     </tr>
     <tr>
      <td>pan_min</td>
@@ -31615,7 +31659,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Minimum pan/yaw angle (positive: to the right, negative: to the left)</td>
+     <td>Minimum pan/yaw angle (positive: to the right, negative: to the left).</td>
     </tr>
     <tr>
      <td>pan_rate_max</td>
@@ -31625,7 +31669,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Minimum pan/yaw angular rate (positive: to the right, negative: to the left)</td>
+     <td>Minimum pan/yaw angular rate (positive: to the right, negative: to the left).</td>
     </tr>
    </tbody>
   </table>
