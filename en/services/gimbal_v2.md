@@ -231,7 +231,7 @@ The autopilot will have to act as the *Gimbal Manager* and provide the driver an
 #### What about RC (non-MAVLink) control?
 
 The autopilot needs to be configured to either accept MAVLink input (so [GIMBAL_MANAGER_SET_MANUAL_CONTROL](#GIMBAL_MANAGER_SET_MANUAL_CONTROL)) or RC control.
-In both cases, the message is then to be forwarded to the gimbal device using [GIMBAL_DEVICE_SET_MANUAL_CONTROL](#GIMBAL_DEVICE_SET_MANUAL_CONTROL).
+In both cases, the autopilot can then calculate a gimbal angle or angular rate from the manual control input and send the resulting setpoint to the gimbal device.
 
 For RC control, the channels will have to be manually mapped/configured to control the gimbal.
 This is the same approach as is used for managing the input source for flying; it is up to the implementation to select either RC or MAVLink.
@@ -276,7 +276,6 @@ Message | Description
 -- | --
 <span id="GIMBAL_DEVICE_INFORMATION"></span>[GIMBAL_DEVICE_INFORMATION](../messages/common.md#GIMBAL_DEVICE_INFORMATION) | Information about a low level gimbal. This message should be requested by the gimbal manager or a ground station using `MAV_CMD_REQUEST_MESSAGE`.
 <span id="GIMBAL_DEVICE_SET_ATTITUDE"></span>[GIMBAL_DEVICE_SET_ATTITUDE](../messages/common.md#GIMBAL_DEVICE_SET_ATTITUDE) | Low level message to control a gimbal device's attitude. This message is to be sent from the gimbal manager to the gimbal device component. Angles and rates can be set to NaN according to use case.
-<span id="GIMBAL_DEVICE_SET_MANUAL_CONTROL"></span>[GIMBAL_DEVICE_SET_MANUAL_CONTROL](../messages/common.md#GIMBAL_DEVICE_SET_MANUAL_CONTROL) | Low level message to control a gimbal manually, so without units. The actual angles or angular rates will be produced by the gimbal manager based on settings and by the gimbal device if available. This message is sent by the gimbal manager to the gimbal device. Angles and rates can be set to NaN according to use case. The message should not be sent at the same time as GIMBAL_DEVICE_SET_ATTITUDE, otherwise the two setpoints would conflict.
 <span id="GIMBAL_DEVICE_ATTITUDE_STATUS"></span>[GIMBAL_DEVICE_ATTITUDE_STATUS](../messages/common.md#GIMBAL_DEVICE_ATTITUDE_STATUS) | Message reporting the status of a gimbal device. This message should be broadcasted by a gimbal device component.
 
 Command | Description
