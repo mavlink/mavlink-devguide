@@ -12,7 +12,7 @@ The gimbal protocol allows MAVLink control over the attitude/orientation of came
 The orientation can be: controlled by the pilot in real time (e.g. using a joystick from a ground station), set as part of a mission, or moved based on camera tracking.
 
 The protocol also defines what status information is published for developers, configurators, as well as users of the drone.
-It additionally provides guidance to manage conflicts between commands from different sources.
+It additionally provides ways to assign control to different sources.
 
 The protocol supports a number of hardware setups, and enables gimbals with varying capabilities.
 
@@ -35,7 +35,7 @@ The key concept to understand is that a *Gimbal Manager* has a 1:1 relationship 
 
 MAVLink applications (ground stations, developer APIs like the MAVSDK, etc.), and any other software that wants to control a particular gimbal, must do so via its *Gimbal Manager*, using the *Gimbal Manager message set*.
 
-Note that the gimbal manager is (by default) implemented by the autopilot.
+Note that the gimbal manager is (by default) implemented on the autopilot.
 
 
 ### Common Set-ups
@@ -137,11 +137,38 @@ The `GIMBAL_MANAGER_INFORMATION` contains important information such as gimbal c
 
 A *Gimbal Manager* should send out [GIMBAL_MANAGER_STATUS](#GIMBAL_MANAGER_STATUS) at a low regular rate (e.g. 5 Hz) to inform the ground station about its status.
 
-#### Manually Controlling a Gimbal Using MAVLink
+### Starting / Configuring Gimbal Control
 
-A ground station can manually control a gimbal by sending [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE).
-This allows controlling the gimbal with angles, or angular rates, or both.
+It is possible for multiple components to want to control a gimbal at the same time, e.g.: a ground station, a companion computer, or the autopilot running a mission.
 
+In order to start controlling a gimbal, a component first needs to send the [MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE](#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE) command.
+This allows setting which MAVLink component (set by system ID and component ID) is in primary control and which one is in secondary control.
+The gimbal manager is to ignore any gimbal controls which come from MAVLink components that are not explicity set to "in control".
+This should prevent conflicts between various inputs as long as all components are fair/co-operative when using the configure command.
+
+To be co-operative entails the following rules:
+
+- Don't send the configure manager configure command continuously but only once to initiate and once to stop control again.
+- Check the [GIMBAL_MANAGER_STATUS](#GIMBAL_MANAGER_STATUS) about who is in control first and - if possible - warn user about planned action. For example, if the autopilot is in control of the gimbal as part of a mission, the ground station should ask the user first (i.e. via a pop-up) if they really want to take over manual control.
+- Don't forget to release control when an action/task is finished and set the sysid/compid to 0.
+
+> **Note** It is possible to assign control to another component too, not just to itself.
+  For example, a smart shot running on a companion computer can set itself to be in primary control but assign a ground station for secondary control to e.g. nudge during the smart shot.
+
+> **Note** The implementation of how primary and secondary control are combined or mixed is not defined by the protocol but up to the implementation.
+  This allows flexibility for different use cases.
+
+#### Manual Gimbal Control using MAVLink
+
+A ground station can manually control a gimbal by sending [GIMBAL_MANAGER_SET_MANUAL_CONTROL](#GIMBAL_MANAGER_SET_MANUAL_CONTROL).
+This allows controlling the gimbal with either angles, or angular rates, using a normalized unit (-1..1).
+The gimbal device is responsible for translating the input based on angle, speed, and "smoothness" settings.
+
+This input can additionally be scaled by the gimbal manager depending on its state. For example, if the gimbal manager is on a camera and knows the current zoom level / focal length of the camera, it can scale the angular rate down to support smooth paning and tilting.
+
+#### Controlling Gimbal Angle and/or Angular Rate using MAVLink
+
+A ground station, companion computer, or other MAVLink component can set the gimbal angle and/or angular rates using the messages [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE) or [GIMBAL_MANAGER_SET_TILTPAN](#GIMBAL_MANAGER_SET_TILTPAN).
 
 ### Messages between Gimbal Manager and Gimbal Device
 
@@ -168,41 +195,9 @@ The gimbal device should send out its attitude and status in [GIMBAL_DEVICE_ATTI
 
 This message is a meant as broadcast, so it's set to the GCS, *Gimbal Manager*, and all parties on the network (not just *Gimbal Manager*, like all other messages).
 
-### Gimbal Manager Deconfliction Rules
-
-It is possible for multiple components to want to control a gimbal at the same time: e.g. a ground station, a companion computer, or the autopilot running a mission.
-This can create situations where the gimbal would receive conflicting messages from the different components, and hence may behave unintendedly or unexpectedly from the viewpoint of one of the components (and ultimately the user).
-Thus, decision making is required in order to establish proper and predictable gimbal operation.
-
-The *Gimbal Manager* must deconflict the various inputs by implementing the rules below:
-
-1. If an attitude has been set using a command ([DO_GIMBAL_MANAGER_TILTPAN](#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN), [DO_SET_ROI_LOCATION](#MAV_CMD_DO_SET_ROI_LOCATION), [DO_GIMBAL_MANAGER_TRACK_POINT](#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT), or [DO_GIMBAL_MANAGER_TRACK_RECTANGLE](#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE) it takes precedence over any other input until a [DO_GIMBAL_MANAGER_TILTPAN](#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN) with `GIMBAL_MANAGER_FLAGS_NONE` or a [DO_SET_ROI_NONE](#MAV_CMD_DO_SET_ROI_NONE) is set.
-   Commands will interfere with each other, whichever command is received last takes precedence.
-2. A gimbal angle or tracking location initiated by a command can be nudged by [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE) if the "nudge bit" is set.
-3. A gimbal angle or tracking location initiated by a command can be overridden by [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE) if the "override bit" is set.
-
-
-#### Nudging
-
-Nudging is a slight deflection/change on top of the set gimbal attitude.
-
-The behaviour is slightly different based on *how* the attitude has been set:
-- `ROI:` while set at ROI, the gimbal can be moved around to look around.
-  If the sticks are let go, it will snap to the new selected ROI if supported and otherwise snap back to the previous one.
-- `TRACK:` while tracking a point or rectangle, nudging will move the gimbal angle only as much as so that the tracked object is still on the image (otherwise it would lose the tracking).
-  If the sticks are let go, it will snap back to have the tracked object centered.
-- `ATTITUDE:` nudging allows deflection of the angle.
-  If the sticks are let go it will go back to the set attitude.
-
-#### Overriding
-
-Overriding means that anything set is ignored.
-It is generally discouraged to use this unless something doesn’t work as intended, a mission is set-up incorrectly, etc.
-
-
 ### Custom Gimbal Device Settings
 
-Custom gimbal settings can be accomplished using the component information microservice which is based on a [component definition file](../services/component_def.md).(this is similar to the [camera definition file](../services/camera_def.md)).
+Custom gimbal settings can be accomplished using the component information microservice which is based on a [component definition file](../services/component_def.md) (this is similar to the [camera definition file](../services/camera_def.md)).
 
 ## FAQ
 
@@ -235,14 +230,12 @@ The autopilot will have to act as the *Gimbal Manager* and provide the driver an
 
 #### What about RC (non-MAVLink) control?
 
-The autopilot needs to be configured to either accept MAVLink input (so [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE)) or RC control.
+The autopilot needs to be configured to either accept MAVLink input (so [GIMBAL_MANAGER_SET_MANUAL_CONTROL](#GIMBAL_MANAGER_SET_MANUAL_CONTROL)) or RC control.
+In both cases, the autopilot can then calculate a gimbal angle or angular rate from the manual control input and send the resulting setpoint to the gimbal device.
 
 For RC control, the channels will have to be manually mapped/configured to control the gimbal.
-It is up to the gimbal manager implementation to deconflict between RC and MAVLink input.
-This is in the same way that also RC input to fly needs to be selected from either RC or MAVLink and is up to the implementation.
-The recommendation is to make it configurable using for instance a parameter.
-
-
+This is the same approach as is used for managing the input source for flying; it is up to the implementation to select either RC or MAVLink.
+The recommendation is to make it configurable using (for instance) a parameter.
 
 ## Message/Command/Enum Summary
 
@@ -259,6 +252,8 @@ Message | Description
 Command | Description
 -- | --
 <span id="MAV_CMD_REQUEST_MESSAGE"></span>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Request the target system(s) emit a single instance of a specified message. This is used to request [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
+<span id="MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE"></span>[MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE) | Gimbal configuration to set which sysid/compid is in primary and secondary control.
+<span id="GIMBAL_MANAGER_SET_MANUAL_CONTROL"></span>[GIMBAL_MANAGER_SET_MANUAL_CONTROL](../messages/common.md#GIMBAL_MANAGER_SET_MANUAL_CONTROL) | High level message to control a gimbal manually, so without units. The actual angles or angular rates will be produced by the gimbal manager based on settings. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.
 <span id="MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN"></span>[MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN) | High level setpoint to be sent to a gimbal manager to set a gimbal attitude. Note: a gimbal is never to react to this command but only the gimbal manager.
 <span id="MAV_CMD_DO_SET_ROI_LOCATION"></span>[MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION) | Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message.
 <span id="MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET"></span>[MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET](../messages/common.md#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET) | Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.
