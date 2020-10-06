@@ -1229,27 +1229,6 @@
      </td>
      <td>Gimbal manager supports to point to a global latitude, longitude, altitude position.</td>
     </tr>
-    <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">
-     <td>1048576</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_FOCAL_LENGTH_SCALE</a>
-     </td>
-     <td>Gimbal manager supports pitching and yawing at an angular velocity scaled by focal length (the more zoomed in, the slower the movement).</td>
-    </tr>
-    <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING">
-     <td>2097152</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_NUDGING</a>
-     </td>
-     <td>Gimbal manager supports nudging when pointing to a location or tracking.</td>
-    </tr>
-    <tr id="GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE">
-     <td>4194304</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE">GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_OVERRIDE</a>
-     </td>
-     <td>Gimbal manager supports overriding when pointing to a location or tracking.</td>
-    </tr>
    </tbody>
   </table>
   <h3 id="GIMBAL_DEVICE_FLAGS">
@@ -1356,29 +1335,8 @@
      </td>
      <td>Based on GIMBAL_DEVICE_FLAGS_YAW_LOCK</td>
     </tr>
-    <tr id="GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH">
-     <td>1048576</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH">GIMBAL_MANAGER_FLAGS_ANGULAR_VELOCITY_RELATIVE_TO_FOCAL_LENGTH</a>
-     </td>
-     <td>Scale angular velocity relative to focal length. This means the gimbal moves slower if it is zoomed in.</td>
-    </tr>
-    <tr id="GIMBAL_MANAGER_FLAGS_NUDGE">
-     <td>2097152</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_FLAGS_NUDGE">GIMBAL_MANAGER_FLAGS_NUDGE</a>
-     </td>
-     <td>Interpret attitude control on top of pointing to a location or tracking. If this flag is set, the quaternion is relative to the existing tracking angle.</td>
-    </tr>
-    <tr id="GIMBAL_MANAGER_FLAGS_OVERRIDE">
-     <td>4194304</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_FLAGS_OVERRIDE">GIMBAL_MANAGER_FLAGS_OVERRIDE</a>
-     </td>
-     <td>Completely override pointing to a location or tracking. If this flag is set, the quaternion is (as usual) according to GIMBAL_MANAGER_FLAGS_YAW_LOCK.</td>
-    </tr>
     <tr id="GIMBAL_MANAGER_FLAGS_NONE">
-     <td>8388608</td>
+     <td>1048576</td>
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_NONE">GIMBAL_MANAGER_FLAGS_NONE</a>
      </td>
@@ -11918,7 +11876,7 @@
    <tbody>
     <tr>
      <td>1: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</td>
      <td>
      </td>
     </tr>
@@ -11974,7 +11932,7 @@
    <tbody>
     <tr>
      <td>1: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</td>
     </tr>
     <tr>
      <td>2</td>
@@ -12019,7 +11977,7 @@
    <tbody>
     <tr>
      <td>1: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</td>
     </tr>
     <tr>
      <td>2</td>
@@ -12071,7 +12029,7 @@
     </tr>
     <tr>
      <td>2: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</td>
      <td>
      </td>
     </tr>
@@ -12337,10 +12295,10 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE (2020-01).
 
 
-  This message has been superseded by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE. The message can still be used to communicate with legacy gimbals implementing it.</p>
+  This message has been superseded by MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE. The message can still be used to communicate with legacy gimbals implementing it.</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -14684,11 +14642,50 @@
     </tr>
     <tr>
      <td>7: Gimbal device ID</td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</td>
      <td>
      </td>
      <td>
      </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE">MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE">1001</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Gimbal configuration to set which sysid/compid is in primary and secondary control.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: sysid primary control</td>
+     <td>Sysid for primary control (0: no one in control).</td>
+    </tr>
+    <tr>
+     <td>2: compid primary control</td>
+     <td>Compid for primary control (0: no one in control).</td>
+    </tr>
+    <tr>
+     <td>3: sysid secondary control</td>
+     <td>Sysid for secondary control (0: no one in control).</td>
+    </tr>
+    <tr>
+     <td>4: compid secondary control</td>
+     <td>Compid for secondary control (0: no one in control).</td>
+    </tr>
+    <tr>
+     <td>7: Gimbal device ID</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</td>
     </tr>
    </tbody>
   </table>
@@ -30364,10 +30361,10 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN (2020-01).
 
 
-  This message is being superseded by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE. The message can still be used to communicate with legacy gimbals implementing it.</p>
+  This message is being superseded by MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN. The message can still be used to communicate with legacy gimbals implementing it.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -31376,6 +31373,50 @@
      </td>
      <td>Gimbal device ID that this gimbal manager is responsible for.</td>
     </tr>
+    <tr>
+     <td>primary_control_sysid</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID of MAVLink component with primary control, 0 for none.</td>
+    </tr>
+    <tr>
+     <td>primary_control_compid</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID of MAVLink component with primary control, 0 for none.</td>
+    </tr>
+    <tr>
+     <td>secondary_control_sysid</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID of MAVLink component with secondary control, 0 for none.</td>
+    </tr>
+    <tr>
+     <td>secondary_control_compid</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID of MAVLink component with secondary control, 0 for none.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="GIMBAL_MANAGER_SET_ATTITUDE">GIMBAL_MANAGER_SET_ATTITUDE (<a href="#GIMBAL_MANAGER_SET_ATTITUDE">
@@ -31444,7 +31485,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</td>
     </tr>
     <tr>
      <td>q</td>
@@ -31502,7 +31543,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about a low level gimbal. This message should be requested by the gimbal manager or a ground station using MAV_CMD_REQUEST_MESSAGE.</p>
+   </strong>Information about a low level gimbal. This message should be requested by the gimbal manager or a ground station using MAV_CMD_REQUEST_MESSAGE. The maximum angles and rates are the limits by hardware. However, the limits by software used are likely different/smaller and dependent on mode/settings/etc..</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -31619,7 +31660,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Maximum tilt/pitch angle (positive: up, negative: down).</td>
+     <td>Maximum hardware tilt/pitch angle (positive: up, negative: down)</td>
     </tr>
     <tr>
      <td>tilt_min</td>
@@ -31629,7 +31670,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Minimum tilt/pitch angle (positive: up, negative: down).</td>
+     <td>Minimum hardware tilt/pitch angle (positive: up, negative: down)</td>
     </tr>
     <tr>
      <td>tilt_rate_max</td>
@@ -31639,7 +31680,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Maximum tilt/pitch angular rate (positive: up, negative: down).</td>
+     <td>Maximum hardware tilt/pitch angular rate (positive: up, negative: down)</td>
     </tr>
     <tr>
      <td>pan_max</td>
@@ -31649,7 +31690,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Maximum pan/yaw angle (positive: to the right, negative: to the left).</td>
+     <td>Maximum hardware pan/yaw angle (positive: to the right, negative: to the left)</td>
     </tr>
     <tr>
      <td>pan_min</td>
@@ -31659,7 +31700,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Minimum pan/yaw angle (positive: to the right, negative: to the left).</td>
+     <td>Minimum hardware pan/yaw angle (positive: to the right, negative: to the left)</td>
     </tr>
     <tr>
      <td>pan_rate_max</td>
@@ -31669,7 +31710,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Minimum pan/yaw angular rate (positive: to the right, negative: to the left).</td>
+     <td>Maximum hardware pan/yaw angular rate (positive: to the right, negative: to the left)</td>
     </tr>
    </tbody>
   </table>
@@ -31919,6 +31960,16 @@
    </thead>
    <tbody>
     <tr>
+     <td>time_boot_us</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
      <td>target_system</td>
      <td>uint8_t</td>
      <td>
@@ -31941,16 +31992,6 @@
      <td>Component ID</td>
     </tr>
     <tr>
-     <td>time_boot_us</td>
-     <td>uint64_t</td>
-     <td>us</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Timestamp (time since system boot).</td>
-    </tr>
-    <tr>
      <td>q</td>
      <td>float[4]</td>
      <td>
@@ -31959,7 +32000,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Quaternion components of autopilot attitude: w, x, y, z (1 0 0 0 is the null-rotation, Hamilton convention).</td>
+     <td>Quaternion components of autopilot attitude: w, x, y, z (1 0 0 0 is the null-rotation, Hamiltonian convention).</td>
     </tr>
     <tr>
      <td>q_estimated_delay_us</td>
@@ -32109,7 +32150,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. (Send command multiple times for more than one but not all gimbals.)</td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</td>
     </tr>
     <tr>
      <td>tilt</td>
@@ -32150,6 +32191,103 @@
       </a>
      </td>
      <td>Pan/yaw angular rate (positive: to the right, negative: to the left, NaN to be ignored).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GIMBAL_MANAGER_SET_MANUAL_CONTROL">GIMBAL_MANAGER_SET_MANUAL_CONTROL (<a href="#GIMBAL_MANAGER_SET_MANUAL_CONTROL">
+    #288
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>High level message to control a gimbal manually. The angles or angular rates are unitless; the actual rates will depend on internal gimbal manager settings/configuration (e.g. set by parameters). This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint32_t</td>
+     <td>
+      <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a>
+     </td>
+     <td>High level gimbal manager flags.</td>
+    </tr>
+    <tr>
+     <td>gimbal_device_id</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</td>
+    </tr>
+    <tr>
+     <td>tilt</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tilt/pitch angle unitless (-1..1, positive: up, negative: down, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>pan</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Pan/yaw angle unitless (-1..1, positive: to the right, negative: to the left, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>tilt_rate</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Tilt/pitch angular rate unitless (-1..1, positive: up, negative: down, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>pan_rate</td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Pan/yaw angular rate unitless (-1..1, positive: to the right, negative: to the left, NaN to be ignored).</td>
     </tr>
    </tbody>
   </table>
