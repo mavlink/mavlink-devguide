@@ -31567,7 +31567,7 @@
     </tr>
     <tr>
      <td>vendor_name</td>
-     <td>uint8_t[32]</td>
+     <td>char[32]</td>
      <td>
      </td>
      <td>
@@ -31578,7 +31578,7 @@
     </tr>
     <tr>
      <td>model_name</td>
-     <td>uint8_t[32]</td>
+     <td>char[32]</td>
      <td>
      </td>
      <td>
@@ -31589,7 +31589,7 @@
     </tr>
     <tr>
      <td>custom_name</td>
-     <td>uint8_t[32]</td>
+     <td>char[32]</td>
      <td>
      </td>
      <td>
@@ -31960,16 +31960,6 @@
    </thead>
    <tbody>
     <tr>
-     <td>time_boot_us</td>
-     <td>uint64_t</td>
-     <td>us</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Timestamp (time since system boot).</td>
-    </tr>
-    <tr>
      <td>target_system</td>
      <td>uint8_t</td>
      <td>
@@ -31992,6 +31982,16 @@
      <td>Component ID</td>
     </tr>
     <tr>
+     <td>time_boot_us</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
      <td>q</td>
      <td>float[4]</td>
      <td>
@@ -32000,7 +32000,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Quaternion components of autopilot attitude: w, x, y, z (1 0 0 0 is the null-rotation, Hamiltonian convention).</td>
+     <td>Quaternion components of autopilot attitude: w, x, y, z (1 0 0 0 is the null-rotation, Hamilton convention).</td>
     </tr>
     <tr>
      <td>q_estimated_delay_us</td>
