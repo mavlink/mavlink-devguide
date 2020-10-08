@@ -42,7 +42,7 @@ Note that the gimbal manager is (by default) implemented on the autopilot.
 
 This section outlines the three most common hardware set-ups.
 
-#### Simple gimbal directly connected to autopilot
+#### Simple Gimbal Directly Connected to Autopilot
 
 In this (default) set-up the autopilot takes the role of the gimbal manager.
 
@@ -368,57 +368,60 @@ sequenceDiagram
 
 In this case the gimbal manager is implemented by the autopilot which "sends" the attitude command (for instance for a survey).
 
-## How to implement the gimbal device interface
+## How to Implement the Gimbal Device Interface
 
 Below is a short summary of all messages that a gimbal device should implement.
 
-### Messages to send
+### Messages to Send
 
-The messages listed should be sent to everyone, so broadcast on the network/on all connections.
+The messages listed should be broadcast on the network/on all connections (sent to everyone).
 
-#### [HEARTBEAT](https://mavlink.io/en/messages/common.html#HEARTBEAT)
+#### [HEARTBEAT](../messages/common.md#HEARTBEAT)
 
-Heartbeats should always be sent, usually at 1 Hz. If the gimbal needs to determine its sysid first, it should wait for the autopilot's heartbeat until starting to send it.
+Heartbeats should always be sent (usually at 1 Hz).
+If the gimbal needs to determine its `sysid` first, it should wait for the autopilot's heartbeat until starting to send it.
 
-- sysid: the same sysid as the autopilot (this can either be done by configuration, or by listening to the autopilot's heartbeat first and then copying the sysid, default: 1)
-- compid: [MAV_COMP_ID_GIMBAL](https://mavlink.io/en/messages/common.html#MAV_COMP_ID_GIMBAL)
-- type: [MAV_TYPE_GIMBAL](https://mavlink.io/en/messages/common.html#MAV_TYPE_GIMBAL)
-- autopilot: [MAV_AUTOPILOT_INVALID](https://mavlink.io/en/messages/common.html#MAV_AUTOPILOT_INVALID)
-- base_mode: 0
-- custom_mode: 0
-- system_status: 0
+- `sysid`: the same sysid as the autopilot (this can either be done by configuration, or by listening to the autopilot's heartbeat first and then copying the sysid, default: 1)
+- `compid`: [MAV_COMP_ID_GIMBAL](../messages/common.md#MAV_COMP_ID_GIMBAL)
+- `type`: [MAV_TYPE_GIMBAL](../messages/common.md#MAV_TYPE_GIMBAL)
+- `autopilot`: [MAV_AUTOPILOT_INVALID](../messages/common.md#MAV_AUTOPILOT_INVALID)
+- `base_mode`: 0
+- `custom_mode`: 0
+- `system_status`: `MAV_STATE_UNINIT`
 
-#### [GIMBAL_DEVICE_ATTITUDE_STATUS](https://mavlink.io/en/messages/common.html#GIMBAL_DEVICE_ATTITUDE_STATUS)
+#### [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS)
 
-The gimbal device should send out its attitude status at a regular rate, e.g. 10 Hz. The fields target_system and target_component can be set to 0 (broadcast) by default.
+The gimbal device should send out its attitude status at a regular rate, e.g. 10 Hz.
+The fields `target_system` and `target_component` can be set to 0 (broadcast) by default.
 
-#### [GIMBAL_DEVICE_INFORMATION](https://mavlink.io/en/messages/common.html#GIMBAL_DEVICE_INFORMATION)
+#### [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION)
 
-The static information about the gimbal device needs to be sent out when requested using [MAV_CMD_REQUEST_MESSAGE](https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_MESSAGE).
+The static information about the gimbal device needs to be sent out when requested using [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE).
 
-### Messages to listen to
+### Messages to Listen To/Handle
 
-#### [GIMBAL_DEVICE_SET_ATTITUDE](https://mavlink.io/en/messages/common.html#GIMBAL_DEVICE_SET_ATTITUDE)
+#### [GIMBAL_DEVICE_SET_ATTITUDE](#GIMBAL_DEVICE_SET_ATTITUDE)
 
-This is the actual attitude setpoint that the gimbal device should follow. Note that the frame of the quaternion setpoint depends on the [GIMBAL_DEVICE_FLAGS](https://mavlink.io/en/messages/common.html#GIMBAL_DEVICE_FLAGS).
+This is the actual attitude setpoint that the gimbal device should follow.
+Note that the frame of the quaternion setpoint depends on the [GIMBAL_DEVICE_FLAGS](#GIMBAL_DEVICE_FLAGS).
 
-#### [AUTOPILOT_STATE_FOR_GIMBAL_DEVICE](https://mavlink.io/en/messages/common.html#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE)
+#### [AUTOPILOT_STATE_FOR_GIMBAL_DEVICE](#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE)
 
-The gimbal device should be able to get all the information from the autopilot that it requires in this once message.
-If something is missing which should be streamed at a high rate, it should be added to this message.
+The gimbal device should be able to get all the information from the autopilot that it requires in this one message.
+If something is missing that should be streamed at a high rate, it should be added to this message.
 
-If this message is not sent by default by the autopilot, or the rate is not ok, the command [MAV_CMD_SET_MESSAGE_INTERVAL](https://mavlink.io/en/messages/common.html#MAV_CMD_SET_MESSAGE_INTERVAL) can be used to request it at a certain rate.
+If this message is not sent by default by the autopilot, or the rate is not ok, the command [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) can be used to request it at a certain rate.
 
-#### [COMMAND_LONG](https://mavlink.io/en/messages/common.html#COMMAND_LONG)
+#### [COMMAND_LONG](../messages/common.md#COMMAND_LONG)
 
 The gimbal device needs to check for commands. See below which commands should get answered.
 
-### Commands to answer
+### Commands to Answer
 
-#### [MAV_CMD_REQUEST_MESSAGE](https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_MESSAGE)
+#### [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE)
 
-The gimbal device should send out messages when they get requested, e.g. [GIMBAL_DEVICE_INFORMATION](https://mavlink.io/en/messages/common.html#GIMBAL_DEVICE_INFORMATION).
+The gimbal device should send out messages when they get requested, e.g. [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).
 
-#### [MAV_CMD_SET_MESSAGE_INTERVAL](https://mavlink.io/en/messages/common.html#MAV_CMD_SET_MESSAGE_INTERVAL)
+#### [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL)
 
 The gimbal device should stream messages at the rate requested.
