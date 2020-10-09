@@ -21717,7 +21717,7 @@
       <a href="#">
       </a>
      </td>
-     <td>WIP: Also used as result_param1, it can be set with a enum containing the errors reasons of why the command was denied or the progress percentage or 255 if unknown the progress when result is MAV_RESULT_IN_PROGRESS.</td>
+     <td>WIP: Also used as result_param1, it can be set with an enum containing the errors reasons of why the command was denied, or the progress percentage when result is MAV_RESULT_IN_PROGRESS (255 if the progress is unknown).</td>
     </tr>
     <tr>
      <td style="color:blue;">result_param2<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21741,7 +21741,7 @@
       <a href="#">
       </a>
      </td>
-     <td>WIP: System which requested the command to be executed</td>
+     <td>WIP: System ID of the target recipient. This is the ID of the system that sent the command for which this COMMAND_ACK is an acknowledgement.</td>
     </tr>
     <tr>
      <td style="color:blue;">target_component<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21753,7 +21753,7 @@
       <a href="#">
       </a>
      </td>
-     <td>WIP: Component which requested the command to be executed</td>
+     <td>WIP: Component ID of the target recipient. This is the ID of the system that sent the command for which this COMMAND_ACK is an acknowledgement.</td>
     </tr>
    </tbody>
   </table>
