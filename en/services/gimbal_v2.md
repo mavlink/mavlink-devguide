@@ -380,7 +380,7 @@ The messages listed should be broadcast on the network/on all connections (sent 
 
 Heartbeats should always be sent (usually at 1 Hz).
 
-> **Note** Gimbals that set their `sysid` from the autopilot will need to wait for the autopilot's heartbeat before emitting their own (note that if the gimbal can receive heartbeats from multiple autopilots then the `sysid` must be explicitly configured.
+> **Note** Gimbals that set their `sysid` from the autopilot will need to wait for the autopilot's heartbeat before emitting their own (note that if the gimbal can receive heartbeats from multiple autopilots then the `sysid` must be explicitly/statically configured).
 
 - `sysid`: the same sysid as the autopilot (this can either be done by configuration, or by listening to the autopilot's heartbeat first and then copying the sysid, default: 1)
 - `compid`: [MAV_COMP_ID_GIMBAL](../messages/common.md#MAV_COMP_ID_GIMBAL)
