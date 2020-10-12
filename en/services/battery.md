@@ -36,7 +36,7 @@ Enum | Description
 On a single-battery system these usually provide the same information as the `BATTERY_STATUS` message.
 
 On multi-battery systems the values are not standardised, and depend on the flight stack and/or flight stack configuration.
-For example, a system may report the same information as the `BATTERY_STATUS`, allow the user to configure which battery is reported (i.e. with a parameter), report the battery with the lowest remaining capacity.
+For example, a system may report the same information as the first `BATTERY_STATUS`, allow the user to configure which battery is reported (i.e. with a parameter), report the battery with the lowest remaining capacity.
 
 > **Note** GCS should not rely on the value of `SYS_STATUS`.
   However it cannot be removed because it is used for battery reporting on many legacy systems (e.g. On-screen displays).
