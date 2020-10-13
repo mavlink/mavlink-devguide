@@ -11948,15 +11948,15 @@
     </tr>
     <tr>
      <td>5: Pitch Offset</td>
-     <td>Pitch offset from next waypoint, positive tilting up</td>
+     <td>Pitch offset from next waypoint, positive pitching up</td>
     </tr>
     <tr>
      <td>6: Roll Offset</td>
-     <td>roll offset from next waypoint, positive banking to the right</td>
+     <td>roll offset from next waypoint, positive rolling to the right</td>
     </tr>
     <tr>
      <td>7: Yaw Offset</td>
-     <td>yaw offset from next waypoint, positive panning to the right</td>
+     <td>yaw offset from next waypoint, positive yawing to the right</td>
     </tr>
    </tbody>
   </table>
@@ -14582,7 +14582,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN">MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN">1000</a>
+  <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW">MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW">1000</a>
    )
   </h3>
   <p style="color:red">
@@ -14602,22 +14602,8 @@
    </thead>
    <tbody>
     <tr>
-     <td>1: Tilt rate</td>
-     <td>Tilt/pitch rate (positive to tilt up).</td>
-     <td>
-     </td>
-     <td>deg/s</td>
-    </tr>
-    <tr>
-     <td>2: Pan rate</td>
-     <td>Pan/yaw rate (positive to pan to the right).</td>
-     <td>
-     </td>
-     <td>deg/s</td>
-    </tr>
-    <tr>
-     <td>3: Tilt angle</td>
-     <td>Tilt/pitch angle (positive to tilt up, relative to vehicle for PAN mode, relative to world horizon for HOLD mode).</td>
+     <td>1: Pitch angle</td>
+     <td>Pitch angle (positive to pitch up, relative to vehicle for FOLLOW mode, relative to world horizon for LOCK mode).</td>
      <td>
       <em>min:</em>
       -180 
@@ -14625,13 +14611,27 @@
      <td>deg</td>
     </tr>
     <tr>
-     <td>4: Pan angle</td>
-     <td>Pan/yaw angle (positive to pan to the right, relative to vehicle for PAN mode, absolute to North for HOLD mode).</td>
+     <td>2: Yaw angle</td>
+     <td>Yaw angle (positive to yaw to the right, relative to vehicle for FOLLOW mode, absolute to North for LOCK mode).</td>
      <td>
       <em>min:</em>
       -180 
       <em>max:</em>180 </td>
      <td>deg</td>
+    </tr>
+    <tr>
+     <td>3: Pitch rate</td>
+     <td>Pitch rate (positive to pitch up).</td>
+     <td>
+     </td>
+     <td>deg/s</td>
+    </tr>
+    <tr>
+     <td>4: Yaw rate</td>
+     <td>Yaw rate (positive to yaw to the right).</td>
+     <td>
+     </td>
+     <td>deg/s</td>
     </tr>
     <tr>
      <td>5: Gimbal manager flags</td>
@@ -21717,7 +21717,7 @@
       <a href="#">
       </a>
      </td>
-     <td>WIP: Also used as result_param1, it can be set with a enum containing the errors reasons of why the command was denied or the progress percentage or 255 if unknown the progress when result is MAV_RESULT_IN_PROGRESS.</td>
+     <td>WIP: Also used as result_param1, it can be set with an enum containing the errors reasons of why the command was denied, or the progress percentage when result is MAV_RESULT_IN_PROGRESS (255 if the progress is unknown).</td>
     </tr>
     <tr>
      <td style="color:blue;">result_param2<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21741,7 +21741,7 @@
       <a href="#">
       </a>
      </td>
-     <td>WIP: System which requested the command to be executed</td>
+     <td>WIP: System ID of the target recipient. This is the ID of the system that sent the command for which this COMMAND_ACK is an acknowledgement.</td>
     </tr>
     <tr>
      <td style="color:blue;">target_component<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21753,7 +21753,7 @@
       <a href="#">
       </a>
      </td>
-     <td>WIP: Component which requested the command to be executed</td>
+     <td>WIP: Component ID of the target recipient. This is the ID of the system that sent the command for which this COMMAND_ACK is an acknowledgement.</td>
     </tr>
    </tbody>
   </table>
@@ -30361,10 +30361,10 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN (2020-01).
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW (2020-01).
 
 
-  This message is being superseded by MAV_CMD_DO_GIMBAL_MANAGER_TILTPAN. The message can still be used to communicate with legacy gimbals implementing it.</p>
+  This message is being superseded by MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW. The message can still be used to communicate with legacy gimbals implementing it.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -31256,64 +31256,64 @@
      <td>Gimbal device ID that this gimbal manager is responsible for.</td>
     </tr>
     <tr>
-     <td>tilt_max</td>
+     <td>roll_min</td>
      <td>float</td>
      <td>rad</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Maximum tilt/pitch angle (positive: up, negative: down)</td>
+     <td>Minimum hardware roll angle (positive: rolling to the right, negative: rolling to the left)</td>
     </tr>
     <tr>
-     <td>tilt_min</td>
+     <td>roll_max</td>
      <td>float</td>
      <td>rad</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Minimum tilt/pitch angle (positive: up, negative: down)</td>
+     <td>Maximum hardware roll angle (positive: rolling to the right, negative: rolling to the left)</td>
     </tr>
     <tr>
-     <td>tilt_rate_max</td>
-     <td>float</td>
-     <td>rad/s</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Maximum tilt/pitch angular rate (positive: up, negative: down)</td>
-    </tr>
-    <tr>
-     <td>pan_max</td>
+     <td>pitch_min</td>
      <td>float</td>
      <td>rad</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Maximum pan/yaw angle (positive: to the right, negative: to the left)</td>
+     <td>Minimum pitch angle (positive: up, negative: down)</td>
     </tr>
     <tr>
-     <td>pan_min</td>
+     <td>pitch_max</td>
      <td>float</td>
      <td>rad</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Minimum pan/yaw angle (positive: to the right, negative: to the left)</td>
+     <td>Maximum pitch angle (positive: up, negative: down)</td>
     </tr>
     <tr>
-     <td>pan_rate_max</td>
+     <td>yaw_min</td>
      <td>float</td>
-     <td>rad/s</td>
+     <td>rad</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Minimum pan/yaw angular rate (positive: to the right, negative: to the left)</td>
+     <td>Minimum yaw angle (positive: to the right, negative: to the left)</td>
+    </tr>
+    <tr>
+     <td>yaw_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum yaw angle (positive: to the right, negative: to the left)</td>
     </tr>
    </tbody>
   </table>
@@ -31506,7 +31506,7 @@
       <a href="#">
       </a>
      </td>
-     <td>X component of angular velocity, positive is banking to the right, NaN to be ignored.</td>
+     <td>X component of angular velocity, positive is rolling to the right, NaN to be ignored.</td>
     </tr>
     <tr>
      <td>angular_velocity_y</td>
@@ -31516,7 +31516,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Y component of angular velocity, positive is tilting up, NaN to be ignored.</td>
+     <td>Y component of angular velocity, positive is pitching up, NaN to be ignored.</td>
     </tr>
     <tr>
      <td>angular_velocity_z</td>
@@ -31526,7 +31526,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Z component of angular velocity, positive is panning to the right, NaN to be ignored.</td>
+     <td>Z component of angular velocity, positive is yawing to the right, NaN to be ignored.</td>
     </tr>
    </tbody>
   </table>
@@ -31653,64 +31653,64 @@
      <td>Bitmap for use for gimbal-specific capability flags.</td>
     </tr>
     <tr>
-     <td>tilt_max</td>
+     <td>roll_min</td>
      <td>float</td>
      <td>rad</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Maximum hardware tilt/pitch angle (positive: up, negative: down)</td>
+     <td>Minimum hardware roll angle (positive: rolling to the right, negative: rolling to the left)</td>
     </tr>
     <tr>
-     <td>tilt_min</td>
+     <td>roll_max</td>
      <td>float</td>
      <td>rad</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Minimum hardware tilt/pitch angle (positive: up, negative: down)</td>
+     <td>Maximum hardware roll angle (positive: rolling to the right, negative: rolling to the left)</td>
     </tr>
     <tr>
-     <td>tilt_rate_max</td>
-     <td>float</td>
-     <td>rad/s</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Maximum hardware tilt/pitch angular rate (positive: up, negative: down)</td>
-    </tr>
-    <tr>
-     <td>pan_max</td>
+     <td>pitch_min</td>
      <td>float</td>
      <td>rad</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Maximum hardware pan/yaw angle (positive: to the right, negative: to the left)</td>
+     <td>Minimum hardware pitch angle (positive: up, negative: down)</td>
     </tr>
     <tr>
-     <td>pan_min</td>
+     <td>pitch_max</td>
      <td>float</td>
      <td>rad</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Minimum hardware pan/yaw angle (positive: to the right, negative: to the left)</td>
+     <td>Maximum hardware pitch angle (positive: up, negative: down)</td>
     </tr>
     <tr>
-     <td>pan_rate_max</td>
+     <td>yaw_min</td>
      <td>float</td>
-     <td>rad/s</td>
+     <td>rad</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Maximum hardware pan/yaw angular rate (positive: to the right, negative: to the left)</td>
+     <td>Minimum hardware yaw angle (positive: to the right, negative: to the left)</td>
+    </tr>
+    <tr>
+     <td>yaw_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum hardware yaw angle (positive: to the right, negative: to the left)</td>
     </tr>
    </tbody>
   </table>
@@ -31790,7 +31790,7 @@
       <a href="#">
       </a>
      </td>
-     <td>X component of angular velocity, positive is banking to the right, NaN to be ignored.</td>
+     <td>X component of angular velocity, positive is rolling to the right, NaN to be ignored.</td>
     </tr>
     <tr>
      <td>angular_velocity_y</td>
@@ -31800,7 +31800,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Y component of angular velocity, positive is tilting up, NaN to be ignored.</td>
+     <td>Y component of angular velocity, positive is pitching up, NaN to be ignored.</td>
     </tr>
     <tr>
      <td>angular_velocity_z</td>
@@ -31810,7 +31810,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Z component of angular velocity, positive is panning to the right, NaN to be ignored.</td>
+     <td>Z component of angular velocity, positive is yawing to the right, NaN to be ignored.</td>
     </tr>
    </tbody>
   </table>
@@ -31827,7 +31827,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Message reporting the status of a gimbal device. This message should be broadcasted by a gimbal device component. The angles encoded in the quaternion are in the global frame (roll: positive is tilt to the right, pitch: positive is tilting up, yaw is turn to the right). This message should be broadcast at a low regular rate (e.g. 10Hz).</p>
+   </strong>Message reporting the status of a gimbal device. This message should be broadcasted by a gimbal device component. The angles encoded in the quaternion are in the global frame (roll: positive is rolling to the right, pitch: positive is pitching up, yaw is turn to the right). This message should be broadcast at a low regular rate (e.g. 10Hz).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32084,7 +32084,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="GIMBAL_MANAGER_SET_TILTPAN">GIMBAL_MANAGER_SET_TILTPAN (<a href="#GIMBAL_MANAGER_SET_TILTPAN">
+  <h3 id="GIMBAL_MANAGER_SET_PITCHYAW">GIMBAL_MANAGER_SET_PITCHYAW (<a href="#GIMBAL_MANAGER_SET_PITCHYAW">
     #287
    </a>
    )
@@ -32097,7 +32097,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>High level message to control a gimbal's tilt and pan angles. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.</p>
+   </strong>High level message to control a gimbal's pitch and yaw angles. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32153,44 +32153,44 @@
      <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</td>
     </tr>
     <tr>
-     <td>tilt</td>
+     <td>pitch</td>
      <td>float</td>
      <td>rad</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Tilt/pitch angle (positive: up, negative: down, NaN to be ignored).</td>
+     <td>Pitch angle (positive: up, negative: down, NaN to be ignored).</td>
     </tr>
     <tr>
-     <td>pan</td>
+     <td>yaw</td>
      <td>float</td>
      <td>rad</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Pan/yaw angle (positive: to the right, negative: to the left, NaN to be ignored).</td>
+     <td>Yaw angle (positive: to the right, negative: to the left, NaN to be ignored).</td>
     </tr>
     <tr>
-     <td>tilt_rate</td>
+     <td>pitch_rate</td>
      <td>float</td>
      <td>rad/s</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Tilt/pitch angular rate (positive: up, negative: down, NaN to be ignored).</td>
+     <td>Pitch angular rate (positive: up, negative: down, NaN to be ignored).</td>
     </tr>
     <tr>
-     <td>pan_rate</td>
+     <td>yaw_rate</td>
      <td>float</td>
      <td>rad/s</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Pan/yaw angular rate (positive: to the right, negative: to the left, NaN to be ignored).</td>
+     <td>Yaw angular rate (positive: to the right, negative: to the left, NaN to be ignored).</td>
     </tr>
    </tbody>
   </table>
@@ -32254,40 +32254,40 @@
      <td>Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).</td>
     </tr>
     <tr>
-     <td>tilt</td>
+     <td>pitch</td>
      <td>float</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Tilt/pitch angle unitless (-1..1, positive: up, negative: down, NaN to be ignored).</td>
+     <td>Pitch angle unitless (-1..1, positive: up, negative: down, NaN to be ignored).</td>
     </tr>
     <tr>
-     <td>pan</td>
+     <td>yaw</td>
      <td>float</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Pan/yaw angle unitless (-1..1, positive: to the right, negative: to the left, NaN to be ignored).</td>
+     <td>Yaw angle unitless (-1..1, positive: to the right, negative: to the left, NaN to be ignored).</td>
     </tr>
     <tr>
-     <td>tilt_rate</td>
+     <td>pitch_rate</td>
      <td>float</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Tilt/pitch angular rate unitless (-1..1, positive: up, negative: down, NaN to be ignored).</td>
+     <td>Pitch angular rate unitless (-1..1, positive: up, negative: down, NaN to be ignored).</td>
     </tr>
     <tr>
-     <td>pan_rate</td>
+     <td>yaw_rate</td>
      <td>float</td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>Pan/yaw angular rate unitless (-1..1, positive: to the right, negative: to the left, NaN to be ignored).</td>
+     <td>Yaw angular rate unitless (-1..1, positive: to the right, negative: to the left, NaN to be ignored).</td>
     </tr>
    </tbody>
   </table>

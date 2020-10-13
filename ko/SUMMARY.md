@@ -59,7 +59,7 @@
   * [착륙 대상 위치 프로토콜](services/landing_target.md)
   * [Ping 프로토콜](services/ping.md)
   * [경로 설정(궤도) 프로토콜](services/trajectory.md)
-  * [지능형 배터리 프로토콜 (진행중)](services/smart_battery.md)
+  * [Battery Protocol](services/battery.md)
   * [지형 프로토콜](services/terrain.md)
   * [터널 프로토콜 ](services/tunnel.md)
   * [오픈 드론 ID 프로토콜 (진행중)](services/opendroneid.md)
