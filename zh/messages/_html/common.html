@@ -1340,7 +1340,7 @@
      <td>
       <a href="#GIMBAL_MANAGER_FLAGS_NONE">GIMBAL_MANAGER_FLAGS_NONE</a>
      </td>
-     <td>This flag can be set to give up control previously set using MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE. This flag must not be combined with other flags.</td>
+     <td>This flag can be set to give up control previously set using MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW. This flag must not be combined with other flags.</td>
     </tr>
    </tbody>
   </table>
@@ -12359,10 +12359,10 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW (2020-01).
 
 
-  This message is ambiguous and inconsistent. It has been superseded by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE and MAV_CMD_DO_SET_ROI_*. The message can still be used to communicate with legacy gimbals implementing it.</p>
+  This message is ambiguous and inconsistent. It has been superseded by MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW and MAV_CMD_DO_SET_ROI_*. The message can still be used to communicate with legacy gimbals implementing it.</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -12972,7 +12972,7 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).</p>
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW (2020-01).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -23681,13 +23681,13 @@
     <tr>
      <td>abs_pressure</td>
      <td>float</td>
-     <td>mbar</td>
+     <td>hPa</td>
      <td>Absolute pressure</td>
     </tr>
     <tr>
      <td>diff_pressure</td>
      <td>float</td>
-     <td>mbar</td>
+     <td>hPa</td>
      <td>Differential pressure</td>
     </tr>
     <tr>
@@ -23899,13 +23899,13 @@
     <tr>
      <td>abs_pressure</td>
      <td>float</td>
-     <td>mbar</td>
+     <td>hPa</td>
      <td>Absolute pressure</td>
     </tr>
     <tr>
      <td>diff_pressure</td>
      <td>float</td>
-     <td>mbar</td>
+     <td>hPa</td>
      <td>Differential pressure (airspeed)</td>
     </tr>
     <tr>
