@@ -37,7 +37,7 @@ MAVLink 的开发者，使用公司及周围社区会定期举办会议，来定
 
 > **Tip** 电话号码可在 *Dronecode 日历* 的[MAVLink Co-ordination](https://www.dronecode.org/calendar/) 中找到。
 
-* **亚欧地区**: <https://zoom.us/j/990208968> 
+* **亚欧地区**: <https://zoom.us/j/95085064707?pwd=VEU4S2UvV0lQTXQ0aTFwTS9CKzZRUT09> 
   * **时间**：星期三 9:00AM CET， 下午 3:00 中国， 5:00PM ACT
   * Zoom Meeting ID: 990 208 968
 
