@@ -121,7 +121,7 @@ The co-ordinate frame of positional parameters is defined in the `MISSION_ITEM_I
 The global frames are prefixed with `MAV_FRAME_GLOBAL_*`. 
 Mission items should use frame variants that have the suffix `_INT`: e.g. `MAV_FRAME_GLOBAL_RELATIVE_ALT_INT`, `MAV_FRAME_GLOBAL_INT`, `MAV_FRAME_GLOBAL_TERRAIN_ALT_INT`.
 When using these frames, latitude and longitude values must be encoded by multiplying the degrees by 1E7 (e.g. the latitude 69.69000000 would be sent as 69.69000000x1E7 = 696900000).
-This convention ensures that no positional information is lost in transmission due to truncation or rounding errors.
+Using int32 of degrees * 10^7 has higher resolution than could be achieved with single floating point.
 
 A number of local frames are also specified.
 Local frame position values that are sent in integer field parameters must be encoded as *position in meters x 1E4* (e.g. 5m would be encoded and sent as 50000).
