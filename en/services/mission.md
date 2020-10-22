@@ -128,14 +128,15 @@ Local frame position values that are sent in integer field parameters must be en
 If sent in messages `float` parameter fields the value should be sent as-is.
 
 
-> **Note** The non-INT global frames (e.g. `MAV_FRAME_GLOBAL_RELATIVE_ALT`) are intended to be used with messages that have `float` fields for positional information (e.g. `MISSION_ITEM`).
-  Position values should be sent unencoded when using these frames (i.e. no need to multiply by 1E7).
+> **Note** Don't use the non-INT *global frames* in mission items (e.g. `MAV_FRAME_GLOBAL_RELATIVE_ALT`).
+  These are intended to be used with messages that have `float` fields for positional information, e.g.: `MISSION_ITEM` (deprecated), `COMMAND_LONG`.
+  If these frames are used, position values should be sent unencoded (i.e. no need to multiply by 1E7).
   
 <span></span>
-> **Note** If a global *non-INT* frame variant is set for a `MISSION_ITEM_INT` the position value should "in theory" be sent as-is (not encoded).
+> **Note** As above, in theory if a global *non-INT* frame variant is set for a `MISSION_ITEM_INT` the position value should be sent as-is (not encoded).
   This will result in the value being rounded when it is sent in the integer value, which will make the value unusable.
-  In practice, while many systems will assume you have encoded the value, you should not rely on this.
-  Use the correct frames!
+  In practice, many systems will assume you have encoded the value, but you should test this for your particular flight stack.
+  Better just to use the correct frames!
 
 
 ## Operations {#operations}
