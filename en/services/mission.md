@@ -105,6 +105,40 @@ Both `MISSION_REQUEST` and `MISSION_ITEM` messages are now deprecated, and shoul
 If `MISSION_REQUEST` is recieved the system should instead respond with [MISSION_ITEM_INT](#MISSION_ITEM_INT) items (as though it  received [MISSION_REQUEST_INT](#MISSION_REQUEST_INT)).
 
 
+## Frames & Positional Information
+
+By convention, mission items use `param5`, `param6`, `param7` for positional information when needed (and otherwise as "free use" parameters).
+The table below shows that the positional parameters can be local (x, y, z), global (latitude, longitude, altitude), and also the data type used to store the parameters in the `MISSION_ITEM_INT` message.
+
+param | type | Local | Global
+--- | --- | --- | --- | ---
+param5 | `int32_t` | x | Latitude
+param6 | `int32_t` | y | Longitude
+param7 | `float` | z | Altitude (global - relative or absolute)
+
+The co-ordinate frame of positional parameters is defined in the `MISSION_ITEM_INT.frame` field using a [MAV_FRAME](#MAV_FRAME) value.
+
+The global frames are prefixed with `MAV_FRAME_GLOBAL_*`. 
+Mission items should use frame variants that have the suffix `_INT`: e.g. `MAV_FRAME_GLOBAL_RELATIVE_ALT_INT`, `MAV_FRAME_GLOBAL_INT`, `MAV_FRAME_GLOBAL_TERRAIN_ALT_INT`.
+When using these frames, latitude and longitude values must be encoded by multiplying the degrees by 1E7 (e.g. the latitude 69.69000000 would be sent as 69.69000000x1E7 = 696900000).
+Using int32 of degrees * 10^7 has higher resolution than could be achieved with single floating point.
+
+A number of local frames are also specified.
+Local frame position values that are sent in integer field parameters must be encoded as *position in meters x 1E4* (e.g. 5m would be encoded and sent as 50000).
+If sent in messages `float` parameter fields the value should be sent as-is.
+
+
+> **Note** Don't use the non-INT *global frames* in mission items (e.g. `MAV_FRAME_GLOBAL_RELATIVE_ALT`).
+  These are intended to be used with messages that have `float` fields for positional information, e.g.: `MISSION_ITEM` (deprecated), `COMMAND_LONG`.
+  If these frames are used, position values should be sent unencoded (i.e. no need to multiply by 1E7).
+  
+<span></span>
+> **Note** As above, in theory if a global *non-INT* frame variant is set for a `MISSION_ITEM_INT` the position value should be sent as-is (not encoded).
+  This will result in the value being rounded when it is sent in the integer value, which will make the value unusable.
+  In practice, many systems will assume you have encoded the value, but you should test this for your particular flight stack.
+  Better just to use the correct frames!
+
+
 ## Operations {#operations}
 
 This section defines all the protocol operations.
