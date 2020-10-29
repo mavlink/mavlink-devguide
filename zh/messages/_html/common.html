@@ -1775,6 +1775,87 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="STORAGE_TYPE">
+   <a href="#STORAGE_TYPE">STORAGE_TYPE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags to indicate the type of storage.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="STORAGE_TYPE_UNKNOWN">
+     <td>0</td>
+     <td>
+      <a href="#STORAGE_TYPE_UNKNOWN">STORAGE_TYPE_UNKNOWN</a>
+     </td>
+     <td>Storage type is not known.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_USB_STICK">
+     <td>1</td>
+     <td>
+      <a href="#STORAGE_TYPE_USB_STICK">STORAGE_TYPE_USB_STICK</a>
+     </td>
+     <td>Storage type is USB device.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_SD">
+     <td>2</td>
+     <td>
+      <a href="#STORAGE_TYPE_SD">STORAGE_TYPE_SD</a>
+     </td>
+     <td>Storage type is SD card.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_MICROSD">
+     <td>3</td>
+     <td>
+      <a href="#STORAGE_TYPE_MICROSD">STORAGE_TYPE_MICROSD</a>
+     </td>
+     <td>Storage type is microSD card.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_CF">
+     <td>4</td>
+     <td>
+      <a href="#STORAGE_TYPE_CF">STORAGE_TYPE_CF</a>
+     </td>
+     <td>Storage type is CFast.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_CFE">
+     <td>5</td>
+     <td>
+      <a href="#STORAGE_TYPE_CFE">STORAGE_TYPE_CFE</a>
+     </td>
+     <td>Storage type is CFexpress.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_XQD">
+     <td>6</td>
+     <td>
+      <a href="#STORAGE_TYPE_XQD">STORAGE_TYPE_XQD</a>
+     </td>
+     <td>Storage type is XQD.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_HD">
+     <td>7</td>
+     <td>
+      <a href="#STORAGE_TYPE_HD">STORAGE_TYPE_HD</a>
+     </td>
+     <td>Storage type is HD mass storage type.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_OTHER">
+     <td>254</td>
+     <td>
+      <a href="#STORAGE_TYPE_OTHER">STORAGE_TYPE_OTHER</a>
+     </td>
+     <td>Storage type is other, not listed type.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="ORBIT_YAW_BEHAVIOUR">
    <a href="#ORBIT_YAW_BEHAVIOUR">ORBIT_YAW_BEHAVIOUR</a>
   </h3>
@@ -30136,6 +30217,33 @@
       </a>
      </td>
      <td>Write speed.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">type<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#STORAGE_TYPE">STORAGE_TYPE</a>
+     </td>
+     <td>Type of storage</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">name<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>char[32]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Textual storage name to be used in UI (microSD 1, Internal Memory, etc.) This is a NULL terminated string. If it is exactly 32 characters long, add a terminating NULL. If this string is empty, the generic type is shown to the user.</td>
     </tr>
    </tbody>
   </table>
