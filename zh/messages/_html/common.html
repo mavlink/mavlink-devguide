@@ -1335,13 +1335,6 @@
      </td>
      <td>Based on GIMBAL_DEVICE_FLAGS_YAW_LOCK</td>
     </tr>
-    <tr id="GIMBAL_MANAGER_FLAGS_NONE">
-     <td>1048576</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_FLAGS_NONE">GIMBAL_MANAGER_FLAGS_NONE</a>
-     </td>
-     <td>This flag can be set to give up control previously set using MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW. This flag must not be combined with other flags.</td>
-    </tr>
    </tbody>
   </table>
   <h3 id="GIMBAL_DEVICE_ERROR_FLAGS">
@@ -14750,19 +14743,19 @@
    <tbody>
     <tr>
      <td>1: sysid primary control</td>
-     <td>Sysid for primary control (0: no one in control).</td>
+     <td>Sysid for primary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).</td>
     </tr>
     <tr>
      <td>2: compid primary control</td>
-     <td>Compid for primary control (0: no one in control).</td>
+     <td>Compid for primary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).</td>
     </tr>
     <tr>
      <td>3: sysid secondary control</td>
-     <td>Sysid for secondary control (0: no one in control).</td>
+     <td>Sysid for secondary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).</td>
     </tr>
     <tr>
      <td>4: compid secondary control</td>
-     <td>Compid for secondary control (0: no one in control).</td>
+     <td>Compid for secondary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).</td>
     </tr>
     <tr>
      <td>7: Gimbal device ID</td>
