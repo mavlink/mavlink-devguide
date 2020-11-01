@@ -1335,13 +1335,6 @@
      </td>
      <td>Based on GIMBAL_DEVICE_FLAGS_YAW_LOCK</td>
     </tr>
-    <tr id="GIMBAL_MANAGER_FLAGS_NONE">
-     <td>1048576</td>
-     <td>
-      <a href="#GIMBAL_MANAGER_FLAGS_NONE">GIMBAL_MANAGER_FLAGS_NONE</a>
-     </td>
-     <td>This flag can be set to give up control previously set using MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE. This flag must not be combined with other flags.</td>
-    </tr>
    </tbody>
   </table>
   <h3 id="GIMBAL_DEVICE_ERROR_FLAGS">
@@ -1772,6 +1765,87 @@
       <a href="#STORAGE_STATUS_NOT_SUPPORTED">STORAGE_STATUS_NOT_SUPPORTED</a>
      </td>
      <td>Camera does not supply storage status information. Capacity information in STORAGE_INFORMATION fields will be ignored.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="STORAGE_TYPE">
+   <a href="#STORAGE_TYPE">STORAGE_TYPE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags to indicate the type of storage.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="STORAGE_TYPE_UNKNOWN">
+     <td>0</td>
+     <td>
+      <a href="#STORAGE_TYPE_UNKNOWN">STORAGE_TYPE_UNKNOWN</a>
+     </td>
+     <td>Storage type is not known.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_USB_STICK">
+     <td>1</td>
+     <td>
+      <a href="#STORAGE_TYPE_USB_STICK">STORAGE_TYPE_USB_STICK</a>
+     </td>
+     <td>Storage type is USB device.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_SD">
+     <td>2</td>
+     <td>
+      <a href="#STORAGE_TYPE_SD">STORAGE_TYPE_SD</a>
+     </td>
+     <td>Storage type is SD card.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_MICROSD">
+     <td>3</td>
+     <td>
+      <a href="#STORAGE_TYPE_MICROSD">STORAGE_TYPE_MICROSD</a>
+     </td>
+     <td>Storage type is microSD card.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_CF">
+     <td>4</td>
+     <td>
+      <a href="#STORAGE_TYPE_CF">STORAGE_TYPE_CF</a>
+     </td>
+     <td>Storage type is CFast.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_CFE">
+     <td>5</td>
+     <td>
+      <a href="#STORAGE_TYPE_CFE">STORAGE_TYPE_CFE</a>
+     </td>
+     <td>Storage type is CFexpress.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_XQD">
+     <td>6</td>
+     <td>
+      <a href="#STORAGE_TYPE_XQD">STORAGE_TYPE_XQD</a>
+     </td>
+     <td>Storage type is XQD.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_HD">
+     <td>7</td>
+     <td>
+      <a href="#STORAGE_TYPE_HD">STORAGE_TYPE_HD</a>
+     </td>
+     <td>Storage type is HD mass storage type.</td>
+    </tr>
+    <tr id="STORAGE_TYPE_OTHER">
+     <td>254</td>
+     <td>
+      <a href="#STORAGE_TYPE_OTHER">STORAGE_TYPE_OTHER</a>
+     </td>
+     <td>Storage type is other, not listed type.</td>
     </tr>
    </tbody>
   </table>
@@ -12359,10 +12433,10 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW (2020-01).
 
 
-  This message is ambiguous and inconsistent. It has been superseded by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE and MAV_CMD_DO_SET_ROI_*. The message can still be used to communicate with legacy gimbals implementing it.</p>
+  This message is ambiguous and inconsistent. It has been superseded by MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW and MAV_CMD_DO_SET_ROI_*. The message can still be used to communicate with legacy gimbals implementing it.</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -12972,7 +13046,7 @@
    )
   </h3>
   <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_ATTITUDE (2020-01).</p>
+   <strong>DEPRECATED:</strong> Replaced by MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW (2020-01).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -14669,19 +14743,19 @@
    <tbody>
     <tr>
      <td>1: sysid primary control</td>
-     <td>Sysid for primary control (0: no one in control).</td>
+     <td>Sysid for primary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).</td>
     </tr>
     <tr>
      <td>2: compid primary control</td>
-     <td>Compid for primary control (0: no one in control).</td>
+     <td>Compid for primary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).</td>
     </tr>
     <tr>
      <td>3: sysid secondary control</td>
-     <td>Sysid for secondary control (0: no one in control).</td>
+     <td>Sysid for secondary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).</td>
     </tr>
     <tr>
      <td>4: compid secondary control</td>
-     <td>Compid for secondary control (0: no one in control).</td>
+     <td>Compid for secondary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).</td>
     </tr>
     <tr>
      <td>7: Gimbal device ID</td>
@@ -21486,7 +21560,7 @@
       <a href="#">
       </a>
      </td>
-     <td>autocontinue to next wp</td>
+     <td>Not used (set 0).</td>
     </tr>
     <tr>
      <td>param1</td>
@@ -23681,13 +23755,13 @@
     <tr>
      <td>abs_pressure</td>
      <td>float</td>
-     <td>mbar</td>
+     <td>hPa</td>
      <td>Absolute pressure</td>
     </tr>
     <tr>
      <td>diff_pressure</td>
      <td>float</td>
-     <td>mbar</td>
+     <td>hPa</td>
      <td>Differential pressure</td>
     </tr>
     <tr>
@@ -23899,13 +23973,13 @@
     <tr>
      <td>abs_pressure</td>
      <td>float</td>
-     <td>mbar</td>
+     <td>hPa</td>
      <td>Absolute pressure</td>
     </tr>
     <tr>
      <td>diff_pressure</td>
      <td>float</td>
-     <td>mbar</td>
+     <td>hPa</td>
      <td>Differential pressure (airspeed)</td>
     </tr>
     <tr>
@@ -28181,6 +28255,8 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by HIGH_LATENCY2 (2020-10).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -30134,6 +30210,33 @@
       </a>
      </td>
      <td>Write speed.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">type<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#STORAGE_TYPE">STORAGE_TYPE</a>
+     </td>
+     <td>Type of storage</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">name<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>char[32]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Textual storage name to be used in UI (microSD 1, Internal Memory, etc.) This is a NULL terminated string. If it is exactly 32 characters long, add a terminating NULL. If this string is empty, the generic type is shown to the user.</td>
     </tr>
    </tbody>
   </table>
