@@ -52,16 +52,16 @@ The first four parameters (shown above) can be used for any purpose - this depen
 
 The remaining message fields are used for addressing, defining the mission type, specifying the reference frame used for x, y, z in `MAV_CMD_NAV_*` messages, etc.:
 
-| Field Name       | Type     | Values             | Description                                                                                                                                                                                          |
-| ---------------- | -------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| target_system    | uint8_t  |                    | System ID                                                                                                                                                                                            |
-| target_component | uint8_t  |                    | Component ID                                                                                                                                                                                         |
-| seq              | uint16_t |                    | Sequence number for item within mission (indexed from 0).                                                                                                                                            |
-| frame            | uint8_t  | MAV_FRAME          | The coordinate system of the waypoint.  
+| Field Name       | Type     | Values                                  | Description                                                                                                                                                                                          |
+| ---------------- | -------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| target_system    | uint8_t  |                                         | System ID                                                                                                                                                                                            |
+| target_component | uint8_t  |                                         | Component ID                                                                                                                                                                                         |
+| seq              | uint16_t |                                         | Sequence number for item within mission (indexed from 0).                                                                                                                                            |
+| frame            | uint8_t  | [MAV_FRAME](#MAV_FRAME)                 | The coordinate system of the waypoint.  
 ArduPilot and PX4 both only support global frames in MAVLink commands (local frames may be supported if the same command is sent via the command protocol). |
-| mission_type     | uint8_t  | MAV_MISSION_TYPE | [Mission type](#mission_types).                                                                                                                                                                      |
-| current          | uint8_t  | false:0, true:1    | When downloading, whether the item is the current mission item.                                                                                                                                      |
-| autocontinue     | uint8_t  |                    | Autocontinue to next waypoint when the command completes.                                                                                                                                            |
+| mission_type     | uint8_t  | [MAV_MISSION_TYPE](#MAV_MISSION_TYPE) | [Mission type](#mission_types).                                                                                                                                                                      |
+| current          | uint8_t  | false:0, true:1                         | When downloading, whether the item is the current mission item.                                                                                                                                      |
+| autocontinue     | uint8_t  |                                         | Autocontinue to next waypoint when the command completes.                                                                                                                                            |
 
 ## Message/Enum Summary
 
@@ -114,6 +114,16 @@ A number of local frames are also specified. Local frame position values that ar
 <span></span>
 
 > **Note** As above, in theory if a global *non-INT* frame variant is set for a `MISSION_ITEM_INT` the position value should be sent as-is (not encoded). This will result in the value being rounded when it is sent in the integer value, which will make the value unusable. In practice, many systems will assume you have encoded the value, but you should test this for your particular flight stack. Better just to use the correct frames!
+
+<span></span>
+
+> **Warning** Don't use [MAV_FRAME_MISSION](../messages/common.md#MAV_FRAME_MISSION) for mission items that contain positional data; this does not correspond to any particular real frame, and so will be ambiguous. `MAV_FRAME_MISSION` should be used for mission items that use params5 and param6 for other purposes.
+
+## Param 5, 6 For Non-Positional Data
+
+Param5, param6, param7 may also be used for non-positional information. In this case the [MISSION_ITEM_INT.frame](#MISSION_ITEM_INT) should be set to [MAV_FRAME_MISSION](../messages/common.md#MAV_FRAME_MISSION) (this is equivalent to say "the frame data is irrelevant").
+
+As param5 and param6 are sent in *integer* fields, generally you should design mission items/MAV_CMDs such that these only include integer data (and are sent as-is/unscaled). If these must be used for real numbers and scaling is required, then this must be noted in the mission item itself.
 
 ## Operations {#operations}
 
