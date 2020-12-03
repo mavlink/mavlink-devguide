@@ -1,6 +1,6 @@
 # Extended Parameter Protocol
 
-The *Extended Parameter Protocol* is an extended version of the [Parameter Protocol](../services/parameter.md) that adds support for large non-float parameter values, including strings.
+The *Extended Parameter Protocol* is an extended version of the [Parameter Protocol](../services/parameter.md) that adds support for larger custom parameter types e.g. strings.
 It is used to exchange configuration settings between MAVLink components, and in particular configuration settings that may be more than just numeric values.
 
 The protocol shares most of the same benefits and limitations of the original protocol, and similar (but not identical) operation sequences.
