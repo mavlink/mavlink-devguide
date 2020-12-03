@@ -37,7 +37,7 @@ The string is terminated with a NULL (`\0`) character if there are less than 16 
 
 Values are byte-wise encoded *within* the `param_value` field, which is a `char[128]`.
 The `param_type` ([MAV_PARAM_EXT_TYPE](#MAV_PARAM_EXT_TYPE)) is used to indicate the actual type of the data so that it can be decoded by the recipient.
-Supported types are: 8, 16, 32 and 64-bit signed and unsigned integers, 32 and 64-bit floating point numbers, and a "custom type" which may used for strings.
+Supported types are: 8, 16, 32 and 64-bit signed and unsigned integers, 32 and 64-bit floating point numbers, and a "custom type" which may used for e.g. strings.
 
 The encoding is best described by example [as shown below](#c_encoding).
 
@@ -268,4 +268,3 @@ The sequence of operations is:
 ## Implementations
 
 *QGroundControl*: [QGCCameraIO.h](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.h), [QGCCameraIO.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)
-
