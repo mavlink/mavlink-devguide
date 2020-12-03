@@ -261,6 +261,8 @@ When the user makes a selection, the GCS will send the new option using the [PAR
 
 When the GCS requires a current option for a given parameter, it will use the [PARAM\_EXT\_REQUEST\_READ](../messages/common.md#PARAM_EXT_REQUEST_READ) message and it will expect in response a [PARAM\_EXT\_VALUE](../messages/common.md#PARAM_EXT_VALUE) message.
 
+> **Note** For more detailed information about the protocol see: [Extended Parameter Protocol](../services/parameter_ext.md).
+
 ## Full Camera Definition File Example {#full_example}
 
 ```XML
