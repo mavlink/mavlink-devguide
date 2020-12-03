@@ -12892,6 +12892,66 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_DO_AUTOTUNE_ENABLE">MAV_CMD_DO_AUTOTUNE_ENABLE (<a href="#MAV_CMD_DO_AUTOTUNE_ENABLE">212</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Enable/disable autotune.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Enable</td>
+     <td>Enable (1: enable, 0:disable).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_NAV_SET_YAW_SPEED">MAV_CMD_NAV_SET_YAW_SPEED (<a href="#MAV_CMD_NAV_SET_YAW_SPEED">213</a>
    )
   </h3>
@@ -13839,6 +13899,80 @@
     <tr>
      <td>7: Altitude/Z</td>
      <td>Altitude/Z position.</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_OBLIQUE_SURVEY">MAV_CMD_OBLIQUE_SURVEY (<a href="#MAV_CMD_OBLIQUE_SURVEY">260</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Mission command to set a Camera Auto Mount Pivoting Oblique Survey (Replaces CAM_TRIGG_DIST for this purpose). The camera is triggered each time this distance is exceeded, then the mount moves to the next position. Params 4~6 set-up the angle limits and number of positions for oblique survey, where mount-enabled vehicles automatically roll the camera between shots to emulate an oblique camera setup (providing an increased HFOV). This command can also be used to set the shutter integration time for the camera.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Distance</td>
+     <td>Camera trigger distance. 0 to stop triggering.</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>m</td>
+    </tr>
+    <tr>
+     <td>2: Shutter</td>
+     <td>Camera shutter integration time. 0 to ignore</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+     <td>ms</td>
+    </tr>
+    <tr>
+     <td>3: Min Interval</td>
+     <td>The minimum interval in which the camera is capable of taking subsequent pictures repeatedly. 0 to ignore.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>10000 <em>increment:</em>1</td>
+     <td>ms</td>
+    </tr>
+    <tr>
+     <td>4: Positions</td>
+     <td>Total number of roll positions at which the camera will capture photos (images captures spread evenly across the limits defined by param5).</td>
+     <td>
+      <em>min:</em>2 <em>increment:</em>1</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5: Roll Angle</td>
+     <td>Angle limits that the camera can be rolled to left and right of center.</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>6: Pitch Angle</td>
+     <td>Fixed pitch angle that the camera will hold in oblique mode if the mount is actuated in the pitch axis.</td>
+     <td>
+      <em>min:</em>
+      -180 
+      <em>max:</em>180 </td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty</td>
      <td>
      </td>
      <td>
@@ -15226,8 +15360,6 @@
   <h3 id="MAV_CMD_VIDEO_START_STREAMING">MAV_CMD_VIDEO_START_STREAMING (<a href="#MAV_CMD_VIDEO_START_STREAMING">2502</a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -15252,8 +15384,6 @@
   <h3 id="MAV_CMD_VIDEO_STOP_STREAMING">MAV_CMD_VIDEO_STOP_STREAMING (<a href="#MAV_CMD_VIDEO_STOP_STREAMING">2503</a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -15876,10 +16006,10 @@
       <em>min:</em>3 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>2</td>
-     <td>Reserved</td>
+     <td>2: Inclusion Group</td>
+     <td>Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group, must be the same for all points in each polygon</td>
      <td>
-     </td>
+      <em>min:</em>0 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
@@ -15985,6 +16115,7 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Values</th>
      <th>Units</th>
     </tr>
    </thead>
@@ -15992,11 +16123,15 @@
     <tr>
      <td>1: Radius</td>
      <td>Radius.</td>
+     <td>
+     </td>
      <td>m</td>
     </tr>
     <tr>
-     <td>2</td>
-     <td>Reserved</td>
+     <td>2: Inclusion Group</td>
+     <td>Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
@@ -16005,10 +16140,14 @@
      <td>Reserved</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Reserved</td>
+     <td>
+     </td>
      <td>
      </td>
     </tr>
@@ -16017,16 +16156,22 @@
      <td>Latitude</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6: Longitude</td>
      <td>Longitude</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7</td>
      <td>Reserved</td>
+     <td>
+     </td>
      <td>
      </td>
     </tr>
@@ -21551,7 +21696,7 @@
       <a href="#">
       </a>
      </td>
-     <td>false:0, true:1</td>
+     <td>Not used.</td>
     </tr>
     <tr>
      <td>autocontinue</td>
@@ -30412,8 +30557,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -30691,8 +30834,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -30842,8 +30983,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -34377,8 +34516,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -35428,8 +35565,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
