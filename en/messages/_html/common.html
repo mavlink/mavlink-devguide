@@ -5928,6 +5928,59 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="ATTITUDE_TARGET_TYPEMASK">
+   <a href="#ATTITUDE_TARGET_TYPEMASK">ATTITUDE_TARGET_TYPEMASK</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Bitmap to indicate which dimensions should be ignored by the vehicle: a value of 0b00000000 indicates that none of the setpoint dimensions should be ignored.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="ATTITUDE_TARGET_TYPEMASK_BODY_ROLL_RATE_IGNORE">
+     <td>1</td>
+     <td>
+      <a href="#ATTITUDE_TARGET_TYPEMASK_BODY_ROLL_RATE_IGNORE">ATTITUDE_TARGET_TYPEMASK_BODY_ROLL_RATE_IGNORE</a>
+     </td>
+     <td>Ignore body roll rate</td>
+    </tr>
+    <tr id="ATTITUDE_TARGET_TYPEMASK_BODY_PITCH_RATE_IGNORE">
+     <td>2</td>
+     <td>
+      <a href="#ATTITUDE_TARGET_TYPEMASK_BODY_PITCH_RATE_IGNORE">ATTITUDE_TARGET_TYPEMASK_BODY_PITCH_RATE_IGNORE</a>
+     </td>
+     <td>Ignore body pitch rate</td>
+    </tr>
+    <tr id="ATTITUDE_TARGET_TYPEMASK_BODY_YAW_RATE_IGNORE">
+     <td>4</td>
+     <td>
+      <a href="#ATTITUDE_TARGET_TYPEMASK_BODY_YAW_RATE_IGNORE">ATTITUDE_TARGET_TYPEMASK_BODY_YAW_RATE_IGNORE</a>
+     </td>
+     <td>Ignore body yaw rate</td>
+    </tr>
+    <tr id="ATTITUDE_TARGET_TYPEMASK_THROTTLE_IGNORE">
+     <td>64</td>
+     <td>
+      <a href="#ATTITUDE_TARGET_TYPEMASK_THROTTLE_IGNORE">ATTITUDE_TARGET_TYPEMASK_THROTTLE_IGNORE</a>
+     </td>
+     <td>Ignore throttle</td>
+    </tr>
+    <tr id="ATTITUDE_TARGET_TYPEMASK_ATTITUDE_IGNORE">
+     <td>128</td>
+     <td>
+      <a href="#ATTITUDE_TARGET_TYPEMASK_ATTITUDE_IGNORE">ATTITUDE_TARGET_TYPEMASK_ATTITUDE_IGNORE</a>
+     </td>
+     <td>Ignore attitude</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="UTM_FLIGHT_STATE">
    <a href="#UTM_FLIGHT_STATE">UTM_FLIGHT_STATE</a>
   </h3>
@@ -22106,6 +22159,7 @@
      <th>Field Name</th>
      <th>Type</th>
      <th>Units</th>
+     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -22114,12 +22168,20 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
      <td>target_system</td>
      <td>uint8_t</td>
      <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
      </td>
      <td>System ID</td>
     </tr>
@@ -22128,6 +22190,10 @@
      <td>uint8_t</td>
      <td>
      </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Component ID</td>
     </tr>
     <tr>
@@ -22135,12 +22201,19 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Mappings: If any of these bits are set, the corresponding input should be ignored: bit 1: body roll rate, bit 2: body pitch rate, bit 3: body yaw rate. bit 4-bit 6: reserved, bit 7: throttle, bit 8: attitude</td>
+     <td>
+      <a href="#ATTITUDE_TARGET_TYPEMASK">ATTITUDE_TARGET_TYPEMASK</a>
+     </td>
+     <td>Bitmap to indicate which dimensions should be ignored by the vehicle.</td>
     </tr>
     <tr>
      <td>q</td>
      <td>float[4]</td>
      <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
      </td>
      <td>Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
     </tr>
@@ -22148,24 +22221,40 @@
      <td>body_roll_rate</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Body roll rate</td>
     </tr>
     <tr>
      <td>body_pitch_rate</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Body pitch rate</td>
     </tr>
     <tr>
      <td>body_yaw_rate</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Body yaw rate</td>
     </tr>
     <tr>
      <td>thrust</td>
      <td>float</td>
      <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
      </td>
      <td>Collective thrust, normalized to 0 .. 1 (-1 .. 1 for vehicles capable of reverse trust)</td>
     </tr>
@@ -22186,6 +22275,7 @@
      <th>Field Name</th>
      <th>Type</th>
      <th>Units</th>
+     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -22194,6 +22284,10 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
@@ -22201,12 +22295,19 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Mappings: If any of these bits are set, the corresponding input should be ignored: bit 1: body roll rate, bit 2: body pitch rate, bit 3: body yaw rate. bit 4-bit 7: reserved, bit 8: attitude</td>
+     <td>
+      <a href="#ATTITUDE_TARGET_TYPEMASK">ATTITUDE_TARGET_TYPEMASK</a>
+     </td>
+     <td>Bitmap to indicate which dimensions should be ignored by the vehicle.</td>
     </tr>
     <tr>
      <td>q</td>
      <td>float[4]</td>
      <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
      </td>
      <td>Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
     </tr>
@@ -22214,24 +22315,40 @@
      <td>body_roll_rate</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Body roll rate</td>
     </tr>
     <tr>
      <td>body_pitch_rate</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Body pitch rate</td>
     </tr>
     <tr>
      <td>body_yaw_rate</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
      <td>Body yaw rate</td>
     </tr>
     <tr>
      <td>thrust</td>
      <td>float</td>
      <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
      </td>
      <td>Collective thrust, normalized to 0 .. 1 (-1 .. 1 for vehicles capable of reverse trust)</td>
     </tr>
