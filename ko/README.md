@@ -48,6 +48,7 @@ MAVLink 프로젝트에는 [mavgen](getting_started/generate_libraries.md#mavgen
 | Clojure               | [clj-mavlink](https://github.com/WickedShell/clj-mavlink)   |     예      |     예      |  예  | Clojure용 MAVLink 바인딩이 있습니다.                                                                    |
 | Go                    | [gomavlib](https://github.com/gswly/gomavlib)               |     예      |     예      |  예  |                                                                                                |
 | Haskell               | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)    |    아니요     |     예      | 아니요 |                                                                                                |
+| Rust                  | [rust-mavlink](https://github.com/mavlink/rust-mavlink)     |     Y      |     Y      |     | Rust MAVLink generated code                                                                    |
 
 ## 미리 빌드한 MAVLink C 라이브러리 {#prebuilt_libraries}
 
