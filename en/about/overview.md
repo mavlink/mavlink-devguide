@@ -1,7 +1,8 @@
 # Protocol Overview
 
 MAVLink is a binary telemetry protocol designed for resource-constrained systems and bandwidth-constrained links. 
-MAVLink is deployed in two major versions: v1.0 and v2.0, which is backwards-compatible (v2.0 implementations can parse and send v1.0 packets). Telemetry data streams are sent in a multicast design while protocol aspects that change the system configuration and require guaranteed delivery like the [mission protocol](../services/mission.md) or [parameter protocol](../services/parameter.md) are point-to-point with retransmission.
+MAVLink is deployed in two major versions: v1.0 and v2.0, which is backwards-compatible (v2.0 implementations can parse and send v1.0 packets).
+Telemetry data streams are sent in a multicast design while protocol aspects that change the system configuration and require guaranteed delivery like the [mission protocol](../services/mission.md) or [parameter protocol](../services/parameter.md) are point-to-point with retransmission.
 
 
 ## MAVLink 2 Packet Format
@@ -63,5 +64,9 @@ In most cases where these fields are used the sub-protocol also ensures guarante
 
 ## Integrity Checks / Checksum
 
-MAVLink implements two integrity checks: The first check is on the integrity of the packet during transmission using the CRC-16/MCRF4XX checksum. This however only ensures that the data has not been altered on the link - it does not ensure consistency with the data definition. The second integrity check is on the [data description](https://en.wikipedia.org/wiki/Data_definition_language) to ensure that two messages with the same ID are indeed containing the same information. To achieve this the data definition itself is run through CRC-16-CCITT and the resulting value is used to seed the packet CRC. Most reference implementations store this constant in an array named **CRC\_EXTRA**.
+MAVLink implements two integrity checks: The first check is on the integrity of the packet during transmission using the CRC-16/MCRF4XX checksum.
+This however only ensures that the data has not been altered on the link - it does not ensure consistency with the data definition.
+The second integrity check is on the [data description](https://en.wikipedia.org/wiki/Data_definition_language) to ensure that two messages with the same ID are indeed containing the same information.
+To achieve this the data definition itself is run through CRC-16-CCITT and the resulting value is used to seed the packet CRC.
+Most reference implementations store this constant in an array named **CRC\_EXTRA**.
 
