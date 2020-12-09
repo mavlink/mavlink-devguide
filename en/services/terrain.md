@@ -55,4 +55,8 @@ The sequence for a GCS to check the autopilot terrain cache at a particular loca
 In summary, the sequence is:
 1. GCS sends [TERRAIN_CHECK](#TERRAIN_CHECK) to the vehicle to request terrain information at a specific location.
 1. The drone responds with a [TERRAIN_REPORT](#TERRAIN_REPORT) message containing the tile information it has for that location.
-   - The GCS can verify that the terrain report matches a terrain check by comparing the latitude/longitude fields for both messages.
+   If it does not have tile information for the specified location, then the request is ignored.
+1. GCS can verify that the terrain report matches a terrain check by comparing the latitude/longitude fields for both messages.
+ 
+> **Note** The protocol does not define how the ground station handles the case if no `TERRAIN_REPORT` is received (although it might resend the request after a timeout).
+   
