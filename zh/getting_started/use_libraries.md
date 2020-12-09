@@ -15,3 +15,5 @@
 * JavaScript (*mavgen*)
 * Lua (*mavgen*)
 * Java (*mavgen*)
+* [Go (*gomavlib*)](https://pkg.go.dev/github.com/aler9/gomavlib)
+* [Go (*go-mavlink1*)](https://github.com/mgr9525/go-mavlink1)

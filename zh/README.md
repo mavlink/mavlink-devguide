@@ -47,6 +47,7 @@ MAVLink项目所包含的 [mavgen](getting_started/generate_libraries.md#mavgen)
 | Swift                 | [mavgen](getting_started/generate_libraries.md#mavgen)      |     Y      |            |         |                                                                                                           |
 | Clojure               | [clj-mavlink](https://github.com/WickedShell/clj-mavlink)   |     Y      |     Y      |    Y    | Clojure MAVLink Bindings.                                                                                 |
 | Go                    | [gomavlib](https://github.com/gswly/gomavlib)               |     Y      |     Y      |    Y    |                                                                                                           |
+| Go                    | [go-mavlink1](https://github.com/mgr9525/go-mavlink1)       |     Y      |     N      |    N    | Golang MAVLink v1                                                                                         |
 | Haskell               | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)    |     N      |     Y      |    N    |                                                                                                           |
 | Rust                  | [rust-mavlink](https://github.com/mavlink/rust-mavlink)     |     Y      |     Y      |         | Rust MAVLink generated code                                                                               |
 
