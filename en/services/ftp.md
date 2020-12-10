@@ -446,7 +446,8 @@ The implementation on PX4 only supports a single session.
 
 ## CRC32 Implementation
 
-The CRC32 calculation used by MAVLink FTP is similar to but different from the ISO 3309 standard based on the polygon 0x04C11DB7, which is also referred to the CRC32 based on Gary Brown's work.
+The CRC32 algorithm used by MAVLink FTP is similar to (but different from) the ISO 3309 standard based on the polygon 0x04C11DB7.
+It is commonly referred to as "the CRC32 based on Gary Brown's work".
 
 The difference of the MAVLink implementation versus the standard are:
 - Start at 0 instead of `0xFFFFFFFF`.
