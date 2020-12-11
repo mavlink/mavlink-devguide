@@ -1594,67 +1594,6 @@
    </strong>
    <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
   </blockquote>
-  <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the MAV_CMD entries</p>
-  <h3 id="MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE (<a href="#MAV_CMD_REQUEST_MESSAGE">512</a>
-   )
-  </h3>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Request the target system(s) emit a single instance of a specified message (i.e. a "one-shot" version of MAV_CMD_SET_MESSAGE_INTERVAL).</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Values</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Message ID</td>
-     <td>The MAVLink message ID of the requested message.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>16777215 <em>increment:</em>1</td>
-    </tr>
-    <tr>
-     <td>2: Req Param 1</td>
-     <td>Use for index ID, if required. Otherwise, the use of this parameter (if any) must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>3: Req Param 2</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>4: Req Param 3</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>5: Req Param 4</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>6: Req Param 5</td>
-     <td>The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0).</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>7: Response Target</td>
-     <td>Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requestor, 2: broadcast.</td>
-     <td>
-      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
-    </tr>
-   </tbody>
-  </table>
   <h2 id="messages">MAVLink Messages</h2>
   <h3 id="HEARTBEAT">HEARTBEAT (<a href="#HEARTBEAT">
     #0
