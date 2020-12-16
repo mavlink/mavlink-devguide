@@ -15,10 +15,28 @@
 
   <dt>How reliable is MAVLink?</dt>
   <dd>Very. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, and the well-established ITU X.25 checksum for packet corruption detection.</dd>
+
+  <dt>How can I tell which messages are supported by a particular system?</dt>
+  <dd>
+  Each system is expected to document its own support for MAVLink microservices, messages and commands.
+  
+  Unfortunately this information is often unavailable and/or difficult to infer from code. 
+  Some links/information that you may find helpful are provided below:
+  <ul>
+  <li>Coarse-grained capabilities can be obtained from <a href="../messages/common.md#AUTOPILOT_VERSION">AUTOPILOT_VERSION.capabilities</a> (see <a href="../messages/common.md#MAV_PROTOCOL_CAPABILITY">MAV_PROTOCOL_CAPABILITY</a>).</li>
+  <li>The basic set of Mission Commands supported in <emphasis>QGroundControl</emphasis> should work on most systems (e.g. commands for takeoff, landing, waypoints).</li>
+  <li>The messages/commands in a dialect file typically work for the associated system (unless deprecated). <strong>Common.xml</strong> contains some commands that may not be implemented.</li>
+  <li>ArduPilot lists some (non exhaustive) information about supported messages: <a href="http://ardupilot.org/copter/docs/mission-command-list.html ">Mission Command List (Copter)</a>, <a href="http://ardupilot.org/copter/docs/common-mavlink-mission-command-messages-mav_cmd.html">MAVLink Mission Command Messages (MAV_CMD)</a>, <a href="http://ardupilot.org/dev/docs/copter-commands-in-guided-mode.html">Copter Commands (Guided Mode)</a>, <a href="http://ardupilot.org/dev/docs/plane-commands-in-guided-mode.html">Plane Commands (Guided Mode)</a>.</li>
+  <li>ArduPilot messages are handled in <a href="https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/GCS_Mavlink.cpp">GCS_Mavlink.cpp</a> (there is a version for each vehicle type). Commands in missions are handled in <a href="https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/mode_auto.cpp">mode_auto.cpp</a> (Copter), <a href="https://github.com/ArduPilot/ardupilot/blob/master/ArduPlane/commands_logic.cpp">commands_logic.cpp</a> (Plane).</li>
+  <li>PX4 messages are handled in <a href="https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_receiver.cpp">mavlink_receiver.cpp</a> and <a href="https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_messages.cpp">mavlink_messages.cpp</a>. Commands in missions are handled in <a href="https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_mission.cpp">mavlink_mission.cpp</a>.</li>
+  </ul>
+  </dd>
+ 
   
   <dt>How secure is MAVLink?</dt>
   <dd>MAVLink provides <a href="../guide/message_signing.md">message signing</a>, which allows systems to authenticate that messages are from a trusted source. MAVLink does not provide message encryption.  
   </dd>
+
 </dl>
 
 
