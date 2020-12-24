@@ -1,13 +1,13 @@
 # Image Transmission Protocol
 
+> **Warning** The [Camera Protocol](../services/camera.md) and [MAVLink FTP](../services/ftp.md) are recommended for sending images, video and files.
+>
+>  This protocol is not intended for general image transmission use (it was originally designed as a simple protocol for transfering small images over a low bandwidth channel from an optical flow sensor to a GCS).
+
 The image transmission protocol uses MAVLink as the communication channel to transport any kind of image (raw images, Kinect data, etc.) from one MAVLink node to another.
 It basically takes a live camera image, splits it into small chunks and sends it over MAVLink.  
 
 This topic describes how the image streaming functionality works and covers both the communication protocol and implementation details (for a vehicle and *QGroundControl*).
-
-> **Note** At time of writing (2020) the protocol is mainly used to transfer images from a vehicle to *QGroundControl* (to show PX4 Flow images for focusing).
-  The protocol could also be used to send any other file types.
-
 
 ## Communication
 
