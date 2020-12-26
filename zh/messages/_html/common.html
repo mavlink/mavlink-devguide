@@ -18260,7 +18260,9 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Set a parameter value (write new value to permanent storage). Within a transaction the recieving componenent should respond with PARAM_ACK_TRANSACTION to the setter component. IMPORTANT: If sent outside a transaction the receiving component should acknowledge the new parameter value by broadcasting a PARAM_VALUE message to all communication partners (broadcasting ensures that multiple GCS all have an up-to-date list of all parameters). If the sending GCS did not receive a PARAM_VALUE or PARAM_ACK_TRANSACTION message within its timeout time, it should re-send the PARAM_SET message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
+   </a>Set a parameter value (write new value to permanent storage).
+        The receiving component should acknowledge the new parameter value by broadcasting a PARAM_VALUE message (broadcasting ensures that multiple GCS all have an up-to-date list of all parameters). If the sending GCS did not receive a PARAM_VALUE within its timeout time, it should re-send the PARAM_SET message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html.
+        PARAM_SET may also be called within the context of a transaction (started with MAV_CMD_PARAM_TRANSACTION). Within a transaction the receiving component should respond with PARAM_ACK_TRANSACTION to the setter component (instead of broadcasting PARAM_VALUE), and PARAM_SET should be re-sent if this is ACK not received.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21375,7 +21377,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>The RAW values of the RC channels sent to the MAV to override info received from the RC radio. A value of UINT16_MAX means no change to that channel. A value of 0 means control of that channel should be released back to the RC radio. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. Individual receivers/transmitters might violate this specification.</p>
+   </a>The RAW values of the RC channels sent to the MAV to override info received from the RC radio. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. Individual receivers/transmitters might violate this specification.  Note carefully the semantic differences between the first 8 channels and the subsequent channels</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21404,49 +21406,49 @@
      <td>chan1_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 1 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 1 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan2_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 2 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 2 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan3_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 3 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 3 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan4_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 4 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 4 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan5_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 5 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 5 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan6_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 6 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 6 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan7_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 7 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 7 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan8_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 8 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 8 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan9_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21455,7 +21457,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 9 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 9 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan10_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21464,7 +21466,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 10 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 10 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan11_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21473,7 +21475,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 11 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 11 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan12_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21482,7 +21484,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 12 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 12 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan13_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21491,7 +21493,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 13 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 13 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan14_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21500,7 +21502,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 14 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 14 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan15_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21509,7 +21511,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 15 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 15 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan16_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21518,7 +21520,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 16 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 16 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan17_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21527,7 +21529,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 17 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 17 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan18_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21536,7 +21538,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 18 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 18 val1ue. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
    </tbody>
   </table>
