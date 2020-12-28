@@ -1,6 +1,6 @@
 # 包的序列化
 
-本主题提供有关 MAVLink 数据包序列化、 (包括 MAVLink v1 和 v1 数据包的线格式)、 消息有效负载中字段的排序、和 CRC_EXTRA 用于确保发件人和收件人共享兼容的邮件定义。
+This topic provides detailed information about about MAVLink packet serialization, including the over-the-wire formats for MAVLink v1 and v2 packets, the ordering of fields in the message payload, and the CRC_EXTRA used for ensuring that the sender and reciever share a compatible message definition.
 
 主要是为正在创建/维护 MAVLink 生成器的开发者
 
@@ -60,7 +60,7 @@ Whatever language you are using, the resulting binary data will be the same:
 | 6                                   | `uint8_t compid`           | 组件ID (发送者)                        | 1 - 255      | *component* 发送消息ID。 Used to differentiate *components* in a *system* (e.g. autopilot and a camera). Use appropriate values in [MAV_COMPONENT](../messages/common.md#MAV_COMPONENT). Note that the broadcast address `MAV_COMP_ID_ALL` may not be used in this field as it is an invalid *source* address. |
 | <span id="v2_msgid"></span>7至9        | `uint32_t msgid:24`        | 消息 ID (低、中级、高字节)                  | 0 - 16777215 | 有效载荷中的 *message type * 的 id。 用于将数据解码回消息对象。                                                                                                                                                                                                                                                                |
 | <span id="v2_payload"></span>10至 (n+10) | `uint8_t payload[max 255]` | [负载](#payload)                    |              | 消息数据。 取决于消息类型 (即消息 ID) 和内容。                                                                                                                                                                                                                                                                               |
-| (n+10) to (n+11)                    | `uint16_t checksum`        | [Checksum](#checksum)(低字节, 高字节)   |              | X.25 CRC 表示消息 (不包括 `magic` 字节)。 包括 [CRC_EXTERA](#crc_extra) 字节。                                                                                                                                                                                                                                           |
+| (n+10) to (n+11)                    | `uint16_t checksum`        | [Checksum](#checksum)(低字节, 高字节)   |              | CRC-16/MCRF4XX for message (excluding `magic` byte). 包括 [CRC_EXTERA](#crc_extra) 字节。                                                                                                                                                                                                                      |
 | (n+12) to (n+25)                    | `uint8_t signature[13]`    | [签名](../guide/message_signing.md) |              | (可选) 签名以确保链接不受篡改。                                                                                                                                                                                                                                                                                         |
 
 - The minimum packet length is 12 bytes for acknowledgment packets without payload.
@@ -81,7 +81,7 @@ Whatever language you are using, the resulting binary data will be the same:
 | 4                                 | `uint8_t compid`           | 组件ID                            | 1 - 255           | *component* 发送消息ID。 用于区分 *system* 中的组件 (例如自动驾驶仪和相机)。 Use appropriate values in [MAV_COMPONENT](../messages/common.md#MAV_COMPONENT). Note that the broadcast address `MAV_COMP_ID_ALL` may not be used in this field as it is an invalid *source* address. |
 | <span id="v1_msgid"></span>5        | `uint8_t msgid`            | 消息 ID                           | 0 - 255           | 有效载荷中的 *message type * 的 id。 用于将数据解码回消息对象。                                                                                                                                                                                                                 |
 | <span id="v1_payload"></span>6至 (n+6) | `uint8_t payload[max 255]` | 有效负载数据                          |                   | 消息数据。 内容取决于消息类型(即消息ID)。                                                                                                                                                                                                                                    |
-| (n+6) to (n+7)                    | `uint16_t checksum`        | [Checksum](#checksum)(低字节, 高字节) |                   | X.25 CRC 表示消息 (不包括 `magic` 字节)。 包括 [CRC_EXTERA](#crc_extra) 字节。                                                                                                                                                                                            |
+| (n+6) to (n+7)                    | `uint16_t checksum`        | [Checksum](#checksum)(低字节, 高字节) |                   | CRC-16/MCRF4XX for message (excluding `magic` byte). 包括 [CRC_EXTERA](#crc_extra) 字节。                                                                                                                                                                       |
 
 - 最低数据包长度是8字节，用于没有有效载荷确认数据包。
 - 最大的数据包长度是完整有效载荷263字节。
@@ -100,7 +100,7 @@ Whatever language you are using, the resulting binary data will be the same:
 
 ## 兼容性标记 (MAVLink 2) {#compat_flags}
 
-兼容性标记用于显示功能，无法阻止 MAVLink 库处理数据包 (即使不能识别此功能)。 例如，这可能包括一个标志，以表明数据包应被视为“高度优先级”， (因为数据包格式和结构不受影响，这种信息可以通过任何 MAVLink 执行处理)。
+兼容性标记用于显示功能，无法阻止 MAVLink 库处理数据包 (即使不能识别此功能)。 This might include, for example, a flag to indicate that a packet should be treated as "high priority" (such a messages could be handled by any MAVLink implementation because packet format and structure is not affected).
 
 一个 MAVLink 执行可以安全地忽略它在 `compat_latime` 字段中不识别的旗帜。
 
@@ -135,7 +135,7 @@ MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减�
 
 上述重新排序的唯一例外是 [MAVLink 2 扩展字段](../guide/define_xml_element.md#message_extensions)。 扩展字段以 XML-Declaration 的顺序发送，不包括在[CRC_EXTERA](#crc_extra) 计算中。 这允许新的扩展字段在消息结束后附加，但不打破二进制兼容性。
 
-> **Warning** 此订单是独特的，可以通过使用稳定的分类算法，很容易在协议中轻松实现。 替代索引要么效率低下，不利于 MAVLink 应用的典型目标架构，或者要支持按变量大小为顺序的函数调用，而不是应用的上下文。 这将导致序列化函数的功能签名非常混乱。
+> **Warning** 此订单是独特的，可以通过使用稳定的分类算法，很容易在协议中轻松实现。 The alternative to using sorting would be either to use inefficient alignment, which is bad for the target architectures for typical MAVLink applications, or to have function calls in the order of the variable size instead of the application context. 这将导致序列化函数的功能签名非常混乱。
 
 <!-- FYI: Field ordering is in pymavlink/generator/mavparse.py - see https://github.com/mavlink/mavlink-devguide/pull/27#issuecomment-349215965 for info -->
 
@@ -143,7 +143,7 @@ MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减�
 
 *MAVLink 2* 在序列化有效载荷发送之前截断任何空的(零填充) 字节。 这与 *MAVLink 1*，在这种情况下，所有字段都发送了字节，因此，这是这样。
 
-保存的实际字段/字节取决于消息及其内容 (MAVLink [field reordering](../guide/serialization.md#field_reordering) 意味着，我们可以说，任何截断字段通常都是最小的数据大小或扩展字段)。
+The actual fields affected/bytes saved depends on the message and its content (MAVLink [field reordering](../guide/serialization.md#field_reordering) means that all we can say is that any truncated fields will typically be those with the smallest data size, or extension fields).
 
 > **Note** The first byte of the payload is never truncated, even if the payload consists entirely of zeros.
 
@@ -192,10 +192,10 @@ def message_checksum(msg):
 
 <!-- From https://github.com/mavlink/pymavlink/blob/master/generator/mavparse.py#L385 -->
 
-> **Note** This uses the same x25 checksum that is used at runtime. It calculates a CRC over the message name (such as “RAW_IMU”) followed by the type and name of each field, space separated. The order of the fields is the order they are sent over the wire. For arrays, the array length is also added.
+> **Note** This uses the same CRC-16/MCRF4XX checksum that is used at runtime. It calculates a CRC over the message name (such as “RAW_IMU”) followed by the type and name of each field, space separated. The order of the fields is the order they are sent over the wire. For arrays, the array length is also added.
 
 ## 校验和 {#checksum}
 
-The packet format includes a 2-byte CRC to allow detection of message corruption. The checksum is the same as used in ITU X.25 and SAE AS-4 standards ([CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check#Polynomial_representations_of_cyclic_redundancy_checks)), documented in [SAE AS5669A](http://www.sae.org/servlets/productDetail?PROD_TYP=STD&PROD_CD=AS5669A). See the MAVLink source code for [the documented C-implementation](https://github.com/mavlink/c_library_v2/blob/master/checksum.h).
+The packet format includes a 2-byte CRC-16/MCRF4XX to allow detection of message corruption. See the MAVLink source code for [the documented C-implementation](https://github.com/mavlink/c_library_v2/blob/master/checksum.h).
 
 The CRC covers the whole message, excluding `magic` byte and the signature (if present). The CRC includes the [CRC_EXTRA](#crc_extra) byte, which is used to ensure that the sending and receiving systems share a common understanding of the message definition.

@@ -7,18 +7,18 @@ MAVLink 为一种设计用于资源受限系统及带宽受限链路的二进制
 以下为在链路上传输的 [MAVLink v2](../guide/mavlink_2.md) 数据包格式。 内存中的表示方式可能会有所不同。
 
 ```C
-uint8_t magic;              ///< 协议的魔术标记
-uint8_t len;                ///< 负载的长度
-uint8_t incompat_flags;     ///<  必须要解释的标志
-uint8_t compat_flags;       ///<  可以忽略的标志
-uint8_t seq;                ///< 数据包序列号
-uint8_t sysid;              ///< 发送方的消息 ID 号
-uint8_t compid;             ///< 发送方组件的消息 ID 号
-uint8_t msgid 0:7;          ///< 消息 ID 号的前8位
-uint8_t msgid 8:15;         ///< 消息 ID 号的中间8位
-uint8_t msgid 16:23;        ///< 消息 ID 号的最后8位
-uint8_t payload[max 255];   ///< 负载最大 255 个字节
-uint16_t checksum;          ///< X.25 CRC
+uint8_t magic;              ///< protocol magic marker
+uint8_t len;                ///< Length of payload
+uint8_t incompat_flags;     ///< flags that must be understood
+uint8_t compat_flags;       ///< flags that can be ignored if not understood
+uint8_t seq;                ///< Sequence of packet
+uint8_t sysid;              ///< ID of message sender system/aircraft
+uint8_t compid;             ///< ID of the message sender component
+uint8_t msgid 0:7;          ///< first 8 bits of the ID of the message
+uint8_t msgid 8:15;         ///< middle 8 bits of the ID of the message
+uint8_t msgid 16:23;        ///< last 8 bits of the ID of the message
+uint8_t payload[max 255];   ///< A maximum of 255 payload bytes
+uint16_t checksum;          ///< CRC-16/MCRF4XX
 ```
 
 ```C
@@ -51,4 +51,4 @@ Mavlink 是为混合网络系统构建的。在这些网络中，高速数据流
 
 ## 完整性检查/校验和
 
-MAVLink 使用了两种方法检测完整性：第一道为发送过程中使用 X.25 校验和 （[CRC-16-CCITT](https://en.wikipedia.org/wiki/Cyclic_redundancy_check)）检测数据包的完整性。 但是这只能保证数据没被链路改变，不能保证数据定义的一致性。 第二道检测为[数据描述](https://en.wikipedia.org/wiki/Data_definition_language)阶段，它保证具有同样 ID 的两个信息确实包含同样的消息。 为了达到此目的，数据定义本身也进行了 CRC-16-CCITT ，结果用作此数据包 CRC 的种子。 在多种参考应用中，存储此常数的数组称作 **CRC\_EXTRA** 。
+MAVLink implements two integrity checks: The first check is on the integrity of the packet during transmission using the CRC-16/MCRF4XX checksum. 但是这只能保证数据没被链路改变，不能保证数据定义的一致性。 第二道检测为[数据描述](https://en.wikipedia.org/wiki/Data_definition_language)阶段，它保证具有同样 ID 的两个信息确实包含同样的消息。 为了达到此目的，数据定义本身也进行了 CRC-16-CCITT ，结果用作此数据包 CRC 的种子。 在多种参考应用中，存储此常数的数组称作 **CRC\_EXTRA** 。

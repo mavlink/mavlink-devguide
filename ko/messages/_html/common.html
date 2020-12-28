@@ -3456,13 +3456,6 @@
      </td>
      <td>Roll: 90, Pitch: 315</td>
     </tr>
-    <tr id="MAV_SENSOR_ROTATION_ROLL_270_YAW_180">
-     <td>41</td>
-     <td>
-      <a href="#MAV_SENSOR_ROTATION_ROLL_270_YAW_180">MAV_SENSOR_ROTATION_ROLL_270_YAW_180</a>
-     </td>
-     <td>Roll: 270, Yaw: 180</td>
-    </tr>
     <tr id="MAV_SENSOR_ROTATION_CUSTOM">
      <td>100</td>
      <td>
@@ -18260,7 +18253,9 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Set a parameter value (write new value to permanent storage). Within a transaction the recieving componenent should respond with PARAM_ACK_TRANSACTION to the setter component. IMPORTANT: If sent outside a transaction the receiving component should acknowledge the new parameter value by broadcasting a PARAM_VALUE message to all communication partners (broadcasting ensures that multiple GCS all have an up-to-date list of all parameters). If the sending GCS did not receive a PARAM_VALUE or PARAM_ACK_TRANSACTION message within its timeout time, it should re-send the PARAM_SET message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html</p>
+   </a>Set a parameter value (write new value to permanent storage).
+        The receiving component should acknowledge the new parameter value by broadcasting a PARAM_VALUE message (broadcasting ensures that multiple GCS all have an up-to-date list of all parameters). If the sending GCS did not receive a PARAM_VALUE within its timeout time, it should re-send the PARAM_SET message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html.
+        PARAM_SET may also be called within the context of a transaction (started with MAV_CMD_PARAM_TRANSACTION). Within a transaction the receiving component should respond with PARAM_ACK_TRANSACTION to the setter component (instead of broadcasting PARAM_VALUE), and PARAM_SET should be re-sent if this is ACK not received.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21375,7 +21370,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>The RAW values of the RC channels sent to the MAV to override info received from the RC radio. A value of UINT16_MAX means no change to that channel. A value of 0 means control of that channel should be released back to the RC radio. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. Individual receivers/transmitters might violate this specification.</p>
+   </a>The RAW values of the RC channels sent to the MAV to override info received from the RC radio. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. Individual receivers/transmitters might violate this specification.  Note carefully the semantic differences between the first 8 channels and the subsequent channels</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21404,49 +21399,49 @@
      <td>chan1_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 1 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 1 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan2_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 2 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 2 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan3_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 3 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 3 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan4_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 4 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 4 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan5_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 5 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 5 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan6_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 6 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 6 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan7_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 7 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 7 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td>chan8_raw</td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 8 value. A value of UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 8 value. A value of UINT16_MAX means to ignore this field. A value of 0 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan9_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21455,7 +21450,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 9 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 9 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan10_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21464,7 +21459,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 10 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 10 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan11_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21473,7 +21468,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 11 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 11 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan12_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21482,7 +21477,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 12 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 12 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan13_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21491,7 +21486,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 13 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 13 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan14_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21500,7 +21495,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 14 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 14 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan15_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21509,7 +21504,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 15 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 15 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan16_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21518,7 +21513,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 16 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 16 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan17_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21527,7 +21522,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 17 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 17 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
     <tr>
      <td style="color:blue;">chan18_raw<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -21536,7 +21531,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 18 value. A value of 0 or UINT16_MAX means to ignore this field.</td>
+     <td>RC channel 18 val1ue. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
    </tbody>
   </table>
@@ -33343,7 +33338,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Request to read the value of a parameter with either the param_id string id or param_index. PARAM_EXT_VALUE or PARAM_EXT_VALUE_TRIMMED should be emitted in response (see field: trimmed).</p>
+   </strong>Request to read the value of a parameter with either the param_id string id or param_index. PARAM_EXT_VALUE should be emitted in response.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33373,14 +33368,6 @@
      <td>int16_t</td>
      <td>Parameter index. Set to -1 to use the Parameter ID field as identifier (else param_id will be ignored)</td>
     </tr>
-    <tr>
-     <td style="color:blue;">trimmed<a href="#mav2_extension_field" title="MAVLink2 extension field">
-       **
-      </a>
-     </td>
-     <td>uint8_t</td>
-     <td>Request _TRIMMED variants of PARAM_EXT_ messages. Set to 1 if _TRIMMED message variants are supported, and 0 otherwise. This signals the recipient that _TRIMMED messages are supported by the sender (and should be used if supported by the recipient).</td>
-    </tr>
    </tbody>
   </table>
   <h3 id="PARAM_EXT_REQUEST_LIST">PARAM_EXT_REQUEST_LIST (<a href="#PARAM_EXT_REQUEST_LIST">
@@ -33394,7 +33381,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Request all parameters of this component. All parameters should be emitted in response (as PARAM_EXT_VALUE or PARAM_EXT_VALUE_TRIMMED messages - see field: trimmed).</p>
+   </strong>Request all parameters of this component. All parameters should be emitted in response as PARAM_EXT_VALUE.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33414,14 +33401,6 @@
      <td>uint8_t</td>
      <td>Component ID</td>
     </tr>
-    <tr>
-     <td style="color:blue;">trimmed<a href="#mav2_extension_field" title="MAVLink2 extension field">
-       **
-      </a>
-     </td>
-     <td>uint8_t</td>
-     <td>Request _TRIMMED variants of PARAM_EXT_ messages. Set to 1 if _TRIMMED message variants are supported, and 0 otherwise. This signals the recipient that _TRIMMED messages are supported by the sender (and should be used if supported by the recipient).</td>
-    </tr>
    </tbody>
   </table>
   <h3 id="PARAM_EXT_VALUE">PARAM_EXT_VALUE (<a href="#PARAM_EXT_VALUE">
@@ -33429,11 +33408,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by PARAM_EXT_VALUE_TRIMMED (2020-07).
-
-
-  The new version of this message correctly trims zeros.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33502,11 +33476,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by PARAM_EXT_SET_TRIMMED (2020-07).
-
-
-  New version of PARAM_EXT_SET that correctly trims zeros.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33575,11 +33544,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by PARAM_EXT_ACK_TRIMMED (2020-07).
-
-
-  New version of PARAM_EXT_ACK that correctly trims zeros.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33630,206 +33594,6 @@
       <a href="#PARAM_ACK">PARAM_ACK</a>
      </td>
      <td>Result code.</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="PARAM_EXT_VALUE_TRIMMED">PARAM_EXT_VALUE_TRIMMED (<a href="#PARAM_EXT_VALUE_TRIMMED">
-    #325
-   </a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Emit the value of a parameter. The inclusion of param_count and param_index in the message allows the recipient to keep track of received parameters and allows them to re-request missing parameters after a loss or timeout. Replacement for PARAM_EXT_VALUE.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>param_count</td>
-     <td>uint16_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Total number of parameters</td>
-    </tr>
-    <tr>
-     <td>param_index</td>
-     <td>uint16_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Index of this parameter</td>
-    </tr>
-    <tr>
-     <td>param_type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
-     </td>
-     <td>Parameter type.</td>
-    </tr>
-    <tr>
-     <td>param_id</td>
-     <td>char[16]</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
-    </tr>
-    <tr>
-     <td>param_value</td>
-     <td>char[128]</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Parameter value (zeros get trimmed)</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="PARAM_EXT_SET_TRIMMED">PARAM_EXT_SET_TRIMMED (<a href="#PARAM_EXT_SET_TRIMMED">
-    #326
-   </a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Set a parameter value. In order to deal with message loss (and retransmission of PARAM_EXT_SET_TRIMMED), when setting a parameter value and the new value is the same as the current value, you will immediately get a PARAM_ACK_ACCEPTED response. If the current state is PARAM_ACK_IN_PROGRESS, you will accordingly receive a PARAM_ACK_IN_PROGRESS in response. If there is no response to this message, and it is unknown whether the _TRIMMED messages are supported (because no PARAM_EXT_REQUEST_READ or PARAM_EXT_REQUEST_LIST has been performed yet), then fall back to PARAM_EXT_SET.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>target_system</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>System ID</td>
-    </tr>
-    <tr>
-     <td>target_component</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Component ID</td>
-    </tr>
-    <tr>
-     <td>param_type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
-     </td>
-     <td>Parameter type.</td>
-    </tr>
-    <tr>
-     <td>param_id</td>
-     <td>char[16]</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
-    </tr>
-    <tr>
-     <td>param_value</td>
-     <td>char[128]</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Parameter value (zeros get trimmed)</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="PARAM_EXT_ACK_TRIMMED">PARAM_EXT_ACK_TRIMMED (<a href="#PARAM_EXT_ACK_TRIMMED">
-    #327
-   </a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Response from a PARAM_EXT_SET_TRIMMED message.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>param_result</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#PARAM_ACK">PARAM_ACK</a>
-     </td>
-     <td>Result code.</td>
-    </tr>
-    <tr>
-     <td>param_type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_PARAM_EXT_TYPE">MAV_PARAM_EXT_TYPE</a>
-     </td>
-     <td>Parameter type.</td>
-    </tr>
-    <tr>
-     <td>param_id</td>
-     <td>char[16]</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
-    </tr>
-    <tr>
-     <td>param_value</td>
-     <td>char[128]</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Parameter value (new value if PARAM_ACK_ACCEPTED, current value otherwise, zeros get trimmed)</td>
     </tr>
    </tbody>
   </table>
