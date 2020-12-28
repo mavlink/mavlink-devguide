@@ -198,6 +198,7 @@ The `<param>` tag is used in the [MAV_CMD](../messages/common.md#mav_commands) e
    - `display`(可选)：这应当设置为 `display="bitmask"` 用于 bitsword 字段 (指向必须作为复选框显示数字的地面站)。
    - `print_format`(可选)：TBD。
    - `default`(可选)：TBD。
+   - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`. > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series. 
 - [deprecated](#deprecated)/[wip](#wip)(可选)：一个标签，表明该消息已被废弃或“正在进行中的工作”。
 - `扩展` (可选)：此自闭标签被用于表明随后的字段仅适用于 MAVLink 2。 
    - 标记应该用于MAVLink 1 信息 (id < 256) 已扩展到MAVLink2。 
