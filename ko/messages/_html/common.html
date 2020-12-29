@@ -26484,15 +26484,10 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>DEPRECATED:</strong> Replaced by  (2020-08).
-
-
-  Deprecated (without replacement) as is not part of terrain protocol: https://mavlink.io/en/services/terrain.html.</p>
   <p>
    <a href="#messages">
     [Message]
-   </a>Request that the vehicle report terrain height at the given location. Used by GCS to check if vehicle has all terrain data needed for a mission.</p>
+   </a>Request that the vehicle report terrain height at the given location (expected response is a TERRAIN_REPORT). Used by GCS to check if vehicle has all terrain data needed for a mission.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26525,7 +26520,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Streamed from drone to report progress of terrain map download (or response from a TERRAIN_CHECK request - deprecated). See terrain protocol docs: https://mavlink.io/en/services/terrain.html</p>
+   </a>Streamed from drone to report progress of terrain map download (initiated by TERRAIN_REQUEST), or sent as a response to a TERRAIN_CHECK request. See terrain protocol docs: https://mavlink.io/en/services/terrain.html</p>
   <table class="sortable">
    <thead>
     <tr>
