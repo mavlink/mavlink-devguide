@@ -64,5 +64,7 @@
   * [Terrain Protocol](services/terrain.md)
   * [Tunnel Protocol](services/tunnel.md)
   * [Open Drone ID Protocol (WIP)](services/opendroneid.md)
+  * [High Latency Protocol](services/high_latency.md)
+  
 * [Contributing](contributing/contributing.md)
 * [Support](about/support.md)
