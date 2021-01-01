@@ -43,7 +43,8 @@
     * [ualberta.xml](messages/ualberta.md)
     * [uAvionix.xml](messages/uAvionix.md)
 * [Messages (common)](messages/common.md)
-* [Microservices](services/README.md) 
+* [Microservices](services/README.md)
+  
   * [Heartbeat/Connection Protocol](services/heartbeat.md)
   * [Mission Protocol](services/mission.md)
   * [Parameter Protocol](services/parameter.md)
@@ -64,5 +65,8 @@
   * [Terrain Protocol](services/terrain.md)
   * [Tunnel Protocol](services/tunnel.md)
   * [Open Drone ID Protocol (WIP)](services/opendroneid.md)
+  * [High Latency Protocol](services/high_latency.md)
+
 * [Contributing](contributing/contributing.md)
+
 * [Support](about/support.md)

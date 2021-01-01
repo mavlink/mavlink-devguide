@@ -28,3 +28,4 @@ The main microservices are shown in the sidebar (most are listed below):
 * [Terrain Protocol](../services/terrain.md)
 * [Tunnel Protocol](../services/tunnel.md)
 * [Open Drone ID Protocol (WIP)](../services/opendroneid.md)
+* [High Latency Protocol](../services/high_latency.md)

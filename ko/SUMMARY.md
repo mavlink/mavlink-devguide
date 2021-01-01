@@ -43,7 +43,8 @@
     * [ualberta.xml](messages/ualberta.md)
     * [uAvionix.xml](messages/uAvionix.md)
 * [메세지 (공통)](messages/common.md)
-* [마이크로 서비스](services/README.md) 
+* [Microservices](services/README.md)
+  
   * [주기 신호/연결 프로토콜](services/heartbeat.md)
   * [미션 프로토콜](services/mission.md)
   * [매개변수 프로토콜](services/parameter.md)
@@ -64,5 +65,8 @@
   * [Terrain Protocol](services/terrain.md)
   * [Tunnel Protocol](services/tunnel.md)
   * [Open Drone ID Protocol (WIP)](services/opendroneid.md)
-* [기여 ](contributing/contributing.md)
+  * [High Latency Protocol](services/high_latency.md)
+
+* [Contributing](contributing/contributing.md)
+
 * [지원](about/support.md)
