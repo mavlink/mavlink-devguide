@@ -53,7 +53,7 @@ JavaScript (Stable) | [mavgen](getting_started/generate_libraries.md#mavgen) | Y
 JavaScript (NextGen) | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y | New mavgen JavaScript library. Full test suite, resulting library produces binary compatible output compared to C bindings. Slightly incompatible with previous version, but not hard to migrate.
 TypeScript/JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | N | TypeScript classes which can be used with [node-mavlink](https://github.com/ifrunistuttgart/node-mavlink)
 Lua     | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | ? | 
-WLua     | [mavgen](getting_started/generate_libraries.md#mavgen) | ? | ? | ? | Wireshare Lua bindings.
+WLua     | [mavgen](getting_started/generate_libraries.md#mavgen) | ? | ? | ? | Wireshark Lua bindings.
 Swift   | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
 Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y | Clojure MAVLink Bindings.
 Go      | [gomavlib](https://github.com/gswly/gomavlib) | Y | Y | Y |
