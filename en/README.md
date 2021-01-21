@@ -49,9 +49,11 @@ C#      | [mavgen](getting_started/generate_libraries.md#mavgen) | Y |  |  |
 Objective C | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
 Java    | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | |
 Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | Y | Y | Y | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
-JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | N | 
+JavaScript (Stable) | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | N | Old mavgen JavaScript binding (has known bugs and no test suite). 
+JavaScript (NextGen) | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y | New mavgen JavaScript library. Full test suite, resulting library produces binary compatible output compared to C bindings. Slightly incompatible with previous version, but not hard to migrate.
 TypeScript/JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | N | TypeScript classes which can be used with [node-mavlink](https://github.com/ifrunistuttgart/node-mavlink)
-Lua     | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | | 
+Lua     | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | ? | 
+WLua     | [mavgen](getting_started/generate_libraries.md#mavgen) | ? | ? | ? | Wireshare Lua bindings.
 Swift   | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
 Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y | Clojure MAVLink Bindings.
 Go      | [gomavlib](https://github.com/gswly/gomavlib) | Y | Y | Y |
