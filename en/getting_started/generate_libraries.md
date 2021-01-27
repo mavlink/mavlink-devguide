@@ -38,6 +38,13 @@ Generator Steps:
    > **Note** If using a custom dialect, first copy it into the above directory (if the dialect is dependent on **common.xml** it must be located in the same directory).
 1. Choose an output directory (e.g. **mavlink/include**).
 1. Select the target output programming language.
+
+   ![mavgenerate UI - language list](../../assets/mavgen/malink_gen_ui_languages.png)
+   
+   > **Note** There are three JavaScript options:
+     - `JavaScript_Stable` is an older version that only supports MAVLink 1.0,
+     - `JavaScript_NextGen` is a more recent version that supports MAVLink 1 and 2 along with signing.
+     - `JavaScript` is a "proxy" for the recommended version. Currently this is `JavaScript_Stable`.
 1. Select the target MAVLink protocol version (ideally 2.0)
    > **Caution** Generation will fail if the protocol is not [supported](../README.md#supported_languages) by the selected programming language.
 1. Optionally check *Validate* and/or  *Validate Units* (if checked validates XML specifications).
@@ -46,8 +53,8 @@ Generator Steps:
 
 ## Mavgen (Command Line) {#mavgen}
 
-**mavgen.py** is a command-line tool for generating MAVLink libraries for different programming languages. 
-After the `mavlink` directory has been added to the `PYTHONPATH`, it can be run by executing from the command line. 
+**mavgen.py** is a command-line tool for generating MAVLink libraries for different programming languages.
+After the `mavlink` directory has been added to the `PYTHONPATH`, it can be run by executing from the command line.
 
 > **Tip** This is the backend used by [mavgenerate](#mavgenerate). The documentation below explains all the options for both tools. 
 
@@ -63,7 +70,7 @@ python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generate
 The full syntax and options can be output by running *mavgen* with the `-h` flag (reproduced below):
 ```
 usage: mavgen.py [-h] [-o OUTPUT]
-                 [--lang {C,CS,JavaScript,TypeScript,Python,WLua,ObjC,Swift,Java,C++11}]
+                 [--lang {C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python,Lua,WLua,ObjC,Swift,Java,C++11}]
                  [--wire-protocol {0.9,1.0,2.0}] [--no-validate]
                  [--error-limit ERROR_LIMIT] [--strict-units]
                  XML [XML ...]
@@ -77,7 +84,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -o OUTPUT, --output OUTPUT
                         output directory.
-  --lang {C,CS,JavaScript,TypeScript,Python,WLua,ObjC,Swift,Java,C++11}
+  --lang {C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python,Lua,WLua,ObjC,Swift,Java,C++11}
                         language of generated code [default: Python]
   --wire-protocol {0.9,1.0,2.0}
                         MAVLink protocol version. [default: 1.0]

@@ -26,41 +26,40 @@ MAVLink was first released early 2009 by Lorenz Meier and has now a [significant
 - Very efficient. MAVLink 1 has just 8 bytes overhead per packet, including start sign and packet drop detection. MAVLink 2 has just 14 bytes of overhead (but is a much more secure and extensible protocol).
   Because MAVLink doesn't require any additional framing it is very well suited for applications with very limited communication bandwidth.
 - Very reliable. MAVLink has been used since 2009 to communicate between many different vehicles, ground stations (and other nodes) over varied and challenging communication channels (high latency/noise). It provides methods for detecting packet drops, corruption, and for packet authentication.
-- Supports [many programming languages](#supported_languages), running on numerous microcontrollers/operating systems (including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS).
+- [Many programming languages](#supported_languages) are supported, running on numerous microcontrollers/operating systems (including ARM7, ATMega, dsPic, STM32 and Windows, Linux, MacOS, Android and iOS).
 - Allows up to 255 concurrent systems on the network (vehicles, ground stations, etc.)
 - Enables both offboard and onboard communications (e.g. between a GCS and drone, and between drone autopilot and MAVLink enabled drone camera).
 
 
-## Supported Languages {#supported_languages}
+## Language/Generator List {#supported_languages}
 
-The MAVLink project includes the [mavgen](getting_started/generate_libraries.md#mavgen) and [mavgenerate](getting_started/generate_libraries.md#mavgenerate) tools that can be used to create MAVLink libraries for a number of programming languages. 
-Additional generators have been provided by other projects. 
+The MAVLink project includes the [mavgen](getting_started/generate_libraries.md#mavgen) and [mavgenerate](getting_started/generate_libraries.md#mavgenerate) tools that can be used to create MAVLink libraries for a number of programming languages.
+Additional generators have been provided by other projects.
 
 > **Note** The MAVLink project has not validated and does not provide technical support for generators other than *mavgen* and *mavgenerate*.
 
 The table below shows the available languages/generators, along with their support for MAVLink v1, [MAVLink 2](guide/mavlink_2.md) and [Message Signing](guide/message_signing.md).
 
 Language | Generator | MAVLink v1 | MAVLink v2 | Signing | Notes
-:--- | :--- | :---:| :---: | :---: | :---
-C       | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y | This is the MAVLink project reference implementation. [Generated libraries](#prebuilt_libraries) are also published for both protocol versions.
-C++11   | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y | 
-Python (2.7+, 3.3+) | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y | 
-C#      | [mavgen](getting_started/generate_libraries.md#mavgen) | Y |  |  |
-Objective C | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
-Java    | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | |
-Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | Y | Y | Y | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
-JavaScript (Stable) | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | N | Old mavgen JavaScript binding (has known bugs and no test suite). 
-JavaScript (NextGen) | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | Y | New mavgen JavaScript library. Full test suite, resulting library produces binary compatible output compared to C bindings. Slightly incompatible with previous version, but not hard to migrate.
-TypeScript/JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | N | TypeScript classes which can be used with [node-mavlink](https://github.com/ifrunistuttgart/node-mavlink)
-Lua     | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | Y | ? | 
+:--- | :--- | :---:| :---: | :---
+C       | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; | This is the MAVLink project reference implementation. [Generated libraries](#prebuilt_libraries) are also published for both protocol versions.
+C++11   | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; |  | 
+Python (2.7+, 3.3+) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; | Python bindings. Library also available on PyPi: [pymavlink](https://pypi.org/project/pymavlink/).
+C#      | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; |  |  | | 
+Objective C | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | | 
+Java    | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | | | 
+Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | &check; | &check; | &check; | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
+JavaScript (Stable) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &cross; | Old mavgen JavaScript binding (has known bugs and no test suite). 
+JavaScript (NextGen) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; | New mavgen JavaScript library. Full test suite, resulting library produces binary compatible output compared to C bindings. Slightly incompatible with previous version, but not hard to migrate.
+TypeScript/JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &cross; | TypeScript classes which can be used with [node-mavlink](https://github.com/ifrunistuttgart/node-mavlink)
+Lua     | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | ? | 
 WLua     | [mavgen](getting_started/generate_libraries.md#mavgen) | ? | ? | ? | Wireshark Lua bindings.
-Swift   | [mavgen](getting_started/generate_libraries.md#mavgen) | Y | | | 
-Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | Y | Y | Y | Clojure MAVLink Bindings.
-Go      | [gomavlib](https://github.com/gswly/gomavlib) | Y | Y | Y |
-Go      | [go-mavlink1](https://github.com/mgr9525/go-mavlink1) | Y | N | N | Golang MAVLink v1
-Haskell | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)| N | Y | N |  
-Rust | [rust-mavlink](https://github.com/mavlink/rust-mavlink)| Y | Y |  |  Rust MAVLink generated code
-
+Swift   | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | | 
+Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | &check; | &check; | &check; | Clojure MAVLink Bindings.
+Go      | [gomavlib](https://github.com/gswly/gomavlib) | &check; | &check; | &check; | Go library with support for MAVLink 1, 2 and signing, test suite, and [documentation](https://pkg.go.dev/github.com/aler9/gomavlib)
+Go      | [go-mavlink1](https://github.com/mgr9525/go-mavlink1) | &check; | &cross;|  &cross; | Golang MAVLink v1
+Haskell | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)| &cross; | &check; | &cross; | 
+Rust | [rust-mavlink](https://github.com/mavlink/rust-mavlink)| &check; | &check; |  | Rust MAVLink generated code. Has tests and minimal docs.
 
 
 ## Prebuilt MAVLink C Libraries {#prebuilt_libraries}
@@ -98,5 +97,3 @@ The MAVLink protocol is hosted under the governance of the [Dronecode Project](h
 <a href="https://www.dronecode.org/" style="padding:20px" ><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" width="110px"/></a>
 <a href="https://www.linuxfoundation.org/projects" style="padding:20px;"><img src="../assets/site/logo_linux_foundation.png" alt="Linux Foundation Logo" width="80px" /></a>
 <div style="padding:10px">&nbsp;</div>
-
-
