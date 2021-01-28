@@ -52,9 +52,9 @@ Java    | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | |
 Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | &check; | &check; | &check; | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
 JavaScript (Stable) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &cross; | Old mavgen JavaScript binding (has known bugs and no test suite). 
 JavaScript (NextGen) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; | New mavgen JavaScript library. Full test suite, resulting library produces binary compatible output compared to C bindings. Slightly incompatible with previous version, but not hard to migrate.
-TypeScript/JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &cross; | TypeScript classes which can be used with [node-mavlink](https://github.com/ifrunistuttgart/node-mavlink)
+TypeScript/JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &cross; | TypeScript classes which can be used with [node-mavlink](https://github.com/ifrunistuttgart/node-mavlink).
 Lua     | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &cross; | Lua library. Does not support zero trimming of MAVLink 2 messages.
-WLua     | [mavgen](getting_started/generate_libraries.md#mavgen) | ? | ? | ? | Wireshark Lua bindings.
+WLua (Wireshark Lua bindings)| [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | NA | Allow MAVLink-aware packet inspection in Wireshark. Generated lua scripts should be copied to the Wireshark plugin directory (e.g. **wireshark/plugins/mavlink.lua**).
 Swift   | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | | 
 Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | &check; | &check; | &check; | Clojure MAVLink Bindings.
 Go      | [gomavlib](https://github.com/gswly/gomavlib) | &check; | &check; | &check; | Go library with support for MAVLink 1, 2 and signing, test suite, and [documentation](https://pkg.go.dev/github.com/aler9/gomavlib)
