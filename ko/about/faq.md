@@ -19,6 +19,24 @@
   <dt>MAVLINK는 얼마나 안전한가요?</dt>
   <dd>MAVLINK는 시스템이 신뢰할 수 있는 출처에서 오는 메시지임을 인증하도록 <a href="../guide/message_signing.md">message signing</a>을 사용합니다. MAVLINK는 메시지 암호화를 제공하지 않습니다.  
   </dd>
+  
+  <dt>What version of MAVLink should I use?</dt>
+  <dd>You should use the <a href="../guide/mavlink_2.md">MAVLink 2</a> protocol where at all possible (it fixes a number of limitations of earlier versions). 
+  The <em>MAVLink 2</em> libraries also support <em>MAVLink 1</em>, so you can use them to communicate with legacy systems if needed. 
+  </dd>
+  
+ <dt>How often is MAVLink updated/released?</dt>
+  <dd>
+
+
+  <ul>
+    <li>The underlying over-the-wire format is rarely updated (we're only up to <em>MAVLink 2</em>, which was introduced in 2017).
+    </li>
+    <li>New <a href="../messages/common.md">messages</a>/<a href="../services/README.md">microservices</a> are frequently added. This is a backwards compatible change, and users are expected to regularly update their libraries to support new messages.</li>
+    <li>Messages are rarely modified (or removed) such that they would become incompatible. If this is needed the project will update the MAVLink minor version number and notify users through the <a href="https://groups.google.com/forum/#!forum/mavlink">mailing list</a> (users can also query the version in code).</li>
+  </ul>
+  </dd>
+  
 </dl>
 
 ## 개발자
