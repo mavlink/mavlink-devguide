@@ -37,7 +37,15 @@ python3 -m mavgenerate
 
 2. 选择输出路径(例如**mavlink/include**)。
 
-3. 选择目标生成编程语言。
+3. Select the target output programming language.
+    
+    ![mavgenerate UI - language list](../../assets/mavgen/malink_gen_ui_languages.png)
+    
+    > **Note** There are three JavaScript options:
+    
+    - `JavaScript_Stable` is an older version that only supports MAVLink 1.0,
+    - `JavaScript_NextGen` is a more recent version that supports MAVLink 1 and 2 along with signing.
+    - `JavaScript` is a "proxy" for the recommended version. Currently this is `JavaScript_Stable`.
 4. 选择目标MAVLink协议版本(最好是2.0)>**注意**如果目标编程语言不[支持](../README.md#supported_languages)所选协议，则会生成失败。
 5. 可以选择是否检查*验证*和/或*验证单元*(如果选择是，则验证XML规范)。
 6. 点击**生成**按钮生成资源文件。
@@ -60,7 +68,7 @@ python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generate
 *mavgen*可以通过使用`-h`参数来查看所有语法和选项。(复制在下面)：
 
     usage: mavgen.py [-h] [-o OUTPUT]
-                     [--lang {C,CS,JavaScript,TypeScript,Python,WLua,ObjC,Swift,Java,C++11}]
+                     [--lang {C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python,Lua,WLua,ObjC,Swift,Java,C++11}]
                      [--wire-protocol {0.9,1.0,2.0}] [--no-validate]
                      [--error-limit ERROR_LIMIT] [--strict-units]
                      XML [XML ...]
@@ -74,7 +82,7 @@ python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generate
       -h, --help            show this help message and exit
       -o OUTPUT, --output OUTPUT
                             output directory.
-      --lang {C,CS,JavaScript,TypeScript,Python,WLua,ObjC,Swift,Java,C++11}
+      --lang {C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python,Lua,WLua,ObjC,Swift,Java,C++11}
                             language of generated code [default: Python]
       --wire-protocol {0.9,1.0,2.0}
                             MAVLink protocol version. [默认：1.0]

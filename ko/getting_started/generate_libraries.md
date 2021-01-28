@@ -38,6 +38,14 @@ Generator Steps:
 2. Choose an output directory (e.g. **mavlink/include**).
 
 3. Select the target output programming language.
+    
+    ![mavgenerate UI - language list](../../assets/mavgen/malink_gen_ui_languages.png)
+    
+    > **Note** There are three JavaScript options:
+    
+    - `JavaScript_Stable` is an older version that only supports MAVLink 1.0,
+    - `JavaScript_NextGen` is a more recent version that supports MAVLink 1 and 2 along with signing.
+    - `JavaScript` is a "proxy" for the recommended version. Currently this is `JavaScript_Stable`.
 4. Select the target MAVLink protocol version (ideally 2.0) > **Caution** Generation will fail if the protocol is not [supported](../README.md#supported_languages) by the selected programming language.
 5. Optionally check *Validate* and/or *Validate Units* (if checked validates XML specifications).
 6. Click **Generate** to create the source files.
@@ -60,7 +68,7 @@ python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generate
 The full syntax and options can be output by running *mavgen* with the `-h` flag (reproduced below):
 
     usage: mavgen.py [-h] [-o OUTPUT]
-                     [--lang {C,CS,JavaScript,TypeScript,Python,WLua,ObjC,Swift,Java,C++11}]
+                     [--lang {C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python,Lua,WLua,ObjC,Swift,Java,C++11}]
                      [--wire-protocol {0.9,1.0,2.0}] [--no-validate]
                      [--error-limit ERROR_LIMIT] [--strict-units]
                      XML [XML ...]
@@ -74,7 +82,7 @@ The full syntax and options can be output by running *mavgen* with the `-h` flag
       -h, --help            show this help message and exit
       -o OUTPUT, --output OUTPUT
                             output directory.
-      --lang {C,CS,JavaScript,TypeScript,Python,WLua,ObjC,Swift,Java,C++11}
+      --lang {C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python,Lua,WLua,ObjC,Swift,Java,C++11}
                             language of generated code [default: Python]
       --wire-protocol {0.9,1.0,2.0}
                             MAVLink protocol version. [default: 1.0]

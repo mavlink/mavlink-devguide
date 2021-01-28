@@ -84,8 +84,7 @@
      <td>not specified</td>
     </tr>
     <tr id="GSM_MODEM_TYPE_HUAWEI_E3372">
-     <td>
-     </td>
+     <td>1</td>
      <td>
       <a href="#GSM_MODEM_TYPE_HUAWEI_E3372">GSM_MODEM_TYPE_HUAWEI_E3372</a>
      </td>
@@ -1689,6 +1688,134 @@
       </a>
      </td>
      <td>RSRQ (LTE only) as reported by modem (unconverted)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SATCOM_LINK_STATUS">SATCOM_LINK_STATUS (<a href="#SATCOM_LINK_STATUS">
+    #214
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Status of the SatCom link</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>timestamp</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp</td>
+    </tr>
+    <tr>
+     <td>last_heartbeat</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp of the last successful sbd session</td>
+    </tr>
+    <tr>
+     <td>failed_sessions</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Number of failed sessions</td>
+    </tr>
+    <tr>
+     <td>successful_sessions</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Number of successful sessions</td>
+    </tr>
+    <tr>
+     <td>signal_quality</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Signal quality</td>
+    </tr>
+    <tr>
+     <td>ring_pending</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Ring call pending</td>
+    </tr>
+    <tr>
+     <td>tx_session_pending</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Transmission session pending</td>
+    </tr>
+    <tr>
+     <td>rx_session_pending</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Receiving session pending</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SENSOR_AIRFLOW_ANGLES">SENSOR_AIRFLOW_ANGLES (<a href="#SENSOR_AIRFLOW_ANGLES">
+    #215
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Calibrated airflow angle measurements</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>timestamp</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp</td>
+    </tr>
+    <tr>
+     <td>angleofattack</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Angle of attack</td>
+    </tr>
+    <tr>
+     <td>angleofattack_valid</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Angle of attack measurement valid</td>
+    </tr>
+    <tr>
+     <td>sideslip</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>Sideslip angle</td>
+    </tr>
+    <tr>
+     <td>sideslip_valid</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Sideslip angle measurement valid</td>
     </tr>
    </tbody>
   </table>
