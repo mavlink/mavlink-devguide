@@ -32,3 +32,6 @@ The main microservices are shown in the sidebar (most are listed below):
 * [Tunnel Protocol](../services/tunnel.md)
 * [Open Drone ID Protocol (WIP)](../services/opendroneid.md)
 * [High Latency Protocol](../services/high_latency.md)
+* [Component Information Protocol](../services/component_information.md)
+
+
