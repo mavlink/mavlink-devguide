@@ -60,7 +60,7 @@ Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | &check; | 
 Go      | [gomavlib](https://github.com/gswly/gomavlib) | &check; | &check; | &check; | Go library with support for MAVLink 1, 2 and signing, test suite, and [documentation](https://pkg.go.dev/github.com/aler9/gomavlib)
 Go      | [go-mavlink1](https://github.com/mgr9525/go-mavlink1) | &check; | &cross;|  &cross; | Golang MAVLink v1
 Haskell | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)| &cross; | &check; | &cross; | 
-Rust | [rust-mavlink](https://github.com/mavlink/rust-mavlink)| &check; | &check; |  | Rust MAVLink generated code. Has tests and minimal docs.
+Rust | [rust-mavlink](https://github.com/mavlink/rust-mavlink)| &check; | &check; |  | Rust MAVLink generated code. Has [tests](https://github.com/mavlink/rust-mavlink/tree/master/tests) and [docs](https://docs.rs/mavlink/latest/mavlink/).
 
 
 ## Prebuilt MAVLink C Libraries {#prebuilt_libraries}
