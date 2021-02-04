@@ -214,9 +214,7 @@ The only exception to this are integrated solutions containing a camera and gimb
 #### How to test Gimbal Device?
 
 A *Gimbal Device* can be tested by connecting it to an autopilot with a *Gimbal Manager*.
-To avoid having to do a full setup including autopilot, a direct test using MAVSDK is planned.
-
-<!-- TODO: add link to MAVSDK test once it exists. -->
+To avoid having to do a full setup including autopilot, a [direct test using MAVSDK](https://github.com/mavlink/MAVSDK/tree/develop/examples/gimbal_device_tester) is available.
 
 #### How to control a gimbal with the old MAVLink protocol?
 
