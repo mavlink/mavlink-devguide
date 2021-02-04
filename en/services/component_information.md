@@ -56,7 +56,8 @@ Schema versions are backwards compatible - i.e. a ground station that was able t
 
 Generally this means that new versions may add fields but should not delete them, and also that a recipient can ignore fields that it does not understand.
 
-The schema are *managed* in the same way as the standard MAVLink definitions (i.e. breaking changes are avoided and modifications require consensus of the MAVLink stakeholders (as provided by the MAVLink dev call).
+The schema are currently a work in progress and can be modified as needed.
+Once accepted, they will be under change control (*managed* in a similar way to standard MAVLink messages).
 
 ## File Locations/URLs
 
@@ -73,8 +74,12 @@ A URI string indicating the file location is returned in the [COMPONENT_INFORMAT
 
 ## File Compression
 
-Component information files may be **.xz** compressed (this is recommended when files are hosted on the device).
+Component information files may be **.xz** compressed (this is recommended for files that are hosted on the device).
 
+> **Note** The prototype implementation generates and compresses component information files at build time.
+  No compression library is required within the flight stack itself. 
+
+<span></span>
 > **Warning** Systems that *request* component information **must** support extraction of **.xz**-compressed JSON files.
 
 <span></span>
