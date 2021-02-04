@@ -18,7 +18,7 @@ Component information is requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQU
 > **Note** Request `COMP_METADATA_TYPE_VERSION` metadata first, because it provides information about the other data types the component supports.
 
 A [COMPONENT_INFORMATION](#COMPONENT_INFORMATION) message is returned containing a URI for the requested [component information file](#schema_files) (hosted either on the device or the Internet), along with a uid that can be used to determine if the file has changed since last downloaded (effectively a hash for the file).
-The requestor can use the URI to download and parse the file (which may be [**.xz** compressed](#file-compression)) for the requested information . 
+The requestor can use the URI to download and parse the file (which may be [**.xz** compressed](#file-compression)) for the requested information. 
 
 In addition, the `COMPONENT_INFORMATION` may include a URI and uid for a translation file.
 If supplied, this contains translation strings for the information file specified in the message, in [QGroundControl JSON translation file format](https://github.com/mavlink/qgroundcontrol/blob/master/translations/README.md) (superseding any translations in the information file).
