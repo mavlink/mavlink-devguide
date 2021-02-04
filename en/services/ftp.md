@@ -473,8 +473,8 @@ For example:
   ## FTP resource 'camera.xml' from current component
   mftp://camera.xml
   ```
-- A GCS connected to an autopilot through a companion computer would need to specify the component ID of the autopilot (1), so that the request is redirected:
-  ```
-  ## FTP resource '/info/version.json' from component with id 2
-  mftp://[;comp=1]/info/version.json
+- A GCS connected to an autopilot through a companion computer might host the metadata on the companion (e.g. due to lack of flash space, faster download or if there's a central MAVFTP server on the vehicle), so it would need to specify the component ID of the component running on the companion (e.g. 100 for the camera), so that the request is redirected:
+  ` ``
+  ## FTP resource '/info/version.json' from component with id 100
+  mftp://[;comp=100]/info/version.json
   ```
