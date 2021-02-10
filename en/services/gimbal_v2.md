@@ -197,7 +197,7 @@ This message is a meant as broadcast, so it's set to the GCS, *Gimbal Manager*, 
 
 ### Custom Gimbal Device Settings
 
-Custom gimbal settings can be accomplished using the component information microservice which is based on a [component definition file](../services/component_def.md) (this is similar to the [camera definition file](../services/camera_def.md)).
+Custom gimbal settings can be accomplished using the component information microservice which is based on a [component information file](../services/component_information.md) (this is similar to the [camera definition file](../services/camera_def.md)).
 
 ## FAQ
 
