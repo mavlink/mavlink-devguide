@@ -90,7 +90,7 @@ Component information files may be **.xz** compressed (this is recommended for f
 
 ### Discovery Mechanism
 
-A system can query whether another component supports the protocol by sending the command [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) (specifying the [COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) message) and the type of information required `COMP_METADATA_TYPE_VERSION`.
+A system can query whether another component supports the protocol by sending the command [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) (specifying the [COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) message and the type of information required `COMP_METADATA_TYPE_VERSION`).
 
 The component will respond with `COMPONENT_INFORMATION.component_definition_uri` containing a valid URI if the protocol is supported.
 If the protocol is not supported the component will ACK that the message with `MAV_RESULT_UNSUPPORTED`, `MAV_RESULT_DENIED` or `MAV_RESULT_FAILED`, or return a `null` value in the component definition URI.
