@@ -63,7 +63,7 @@ Once accepted, they will be under change control (*managed* in a similar way to 
 
 [Version metadata](#COMP_METADATA_TYPE_VERSION) *must* be stored on the device, while other component information files may be hosted on either the device or on the internet.
 
-> **Note** Where permitted by memory constraints, it is better to host component information on the device (so that it is always available and cannot get out of sync).
+> **Note** Where permitted by memory constraints you should host component information on the device (so that it is always available and cannot get out of sync).
 
 A URI string indicating the file location is returned in the [COMPONENT_INFORMATION.metadata_uri](#COMPONENT_INFORMATION) field:
 - Files on the Internet are downloaded using HTTPS or HTTP via a normal web URL (e.g. `https://some_domain/component_information/parameters.json`).
@@ -86,34 +86,44 @@ Component information files may be **.xz** compressed (this is recommended for f
 > **Tip** The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems.
 
 
-
 ## Sequences
 
-### Get Component Information
+### Discovery Mechanism
 
-The "high level" sequence for getting component information of any type is given below.
+A system can query whether another component supports the protocol by sending the command [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) (specifying the [COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) message) and the type of information required `COMP_METADATA_TYPE_VERSION`.
 
-The sequence should be run first with `COMP_METADATA_TYPE_VERSION` to get the set of metadata types supported by the component (see `supportedCompMetadataTypes` key in the version metadata).
-It can then be run for the other types once they are known.
+The component will respond with `COMPONENT_INFORMATION.component_definition_uri` containing a valid URI if the protocol is supported.
+If the protocol is not supported the component will ACK that the message with `MAV_RESULT_UNSUPPORTED`, `MAV_RESULT_DENIED` or `MAV_RESULT_FAILED`, or return a `null` value in the component definition URI.
 
-> **Note** A component that supports this service must support the `COMP_METADATA_TYPE_VERSION` type and return a component file URI that is hosted on the vehicle (accessed using MAVLink FTP).
+[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENvbXBvbmVudFxuICAgIE5vdGUgb3ZlciBDb21wb25lbnQsIEdDUzogR0NTOiBSZXF1ZXN0IHZlcnNpb24gaW5mb3JtYXRpb24gKENPTVBfTUVUQURBVEFfVFlQRV9WRVJTSU9OKS5cbiAgICBHQ1MtPj5Db21wb25lbnQ6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFKDxicj4gcGFyYW0xPTM5NSw8YnI-IHBhcmFtMj1DT01QX01FVEFEQVRBX1RZUEVfVkVSU0lPTilcbiAgICBHQ1MtLT4-R0NTOiBTdGFydCBBQ0sgcmVjZWl2ZSB0aW1lb3V0XG4gICAgICBDb21wb25lbnQtPj5HQ1M6IENNRF9BQ0tcbiAgICAgIENvbXBvbmVudC0-PkdDUzogQ09NUE9ORU5UX0lORk9STUFUSU9OKG1ldGFkYXRhX3VyaSxtZXRhZGF0YV91aWQpXG4gICAgTm90ZSBvdmVyIENvbXBvbmVudCwgR0NTOiBHQ1MgZ2V0cyBjb21wb25lbnQgaW5mb3JtYXRpb24gZmlsZSBmcm9tICdtZXRhZGF0YV91cmknPGJyPihvciB1c2VzIHN0b3JlZCBpbmZvcm1hdGlvbiBpZiAnbWV0YWRhdGFfdWlkJyBtYXRjaGVzIGNhY2hlKS48YnI-SXQgY2FuIHRoZW4gZmluZCBvdXQgd2hhdCBvdGhlciB0eXBlcyBvZiBpbmZvcm1hdGlvbiBhcmUgc3VwcG9ydGVkLiBcblxuICAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENvbXBvbmVudFxuICAgIE5vdGUgb3ZlciBDb21wb25lbnQsIEdDUzogR0NTOiBSZXF1ZXN0IHZlcnNpb24gaW5mb3JtYXRpb24gKENPTVBfTUVUQURBVEFfVFlQRV9WRVJTSU9OKS5cbiAgICBHQ1MtPj5Db21wb25lbnQ6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFKDxicj4gcGFyYW0xPTM5NSw8YnI-IHBhcmFtMj1DT01QX01FVEFEQVRBX1RZUEVfVkVSU0lPTilcbiAgICBHQ1MtLT4-R0NTOiBTdGFydCBBQ0sgcmVjZWl2ZSB0aW1lb3V0XG4gICAgICBDb21wb25lbnQtPj5HQ1M6IENNRF9BQ0tcbiAgICAgIENvbXBvbmVudC0-PkdDUzogQ09NUE9ORU5UX0lORk9STUFUSU9OKG1ldGFkYXRhX3VyaSxtZXRhZGF0YV91aWQpXG4gICAgTm90ZSBvdmVyIENvbXBvbmVudCwgR0NTOiBHQ1MgZ2V0cyBjb21wb25lbnQgaW5mb3JtYXRpb24gZmlsZSBmcm9tICdtZXRhZGF0YV91cmknPGJyPihvciB1c2VzIHN0b3JlZCBpbmZvcm1hdGlvbiBpZiAnbWV0YWRhdGFfdWlkJyBtYXRjaGVzIGNhY2hlKS48YnI-SXQgY2FuIHRoZW4gZmluZCBvdXQgd2hhdCBvdGhlciB0eXBlcyBvZiBpbmZvcm1hdGlvbiBhcmUgc3VwcG9ydGVkLiBcblxuICAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
 
-
-[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENvbXBvbmVudFxuICAgIE5vdGUgb3ZlciBDb21wb25lbnQsIEdDUzogR0NTOiBSZXF1ZXN0IGluZm9ybWF0aW9uIG9mIHBhcnRpY3VsYXIgdHlwZSAoZS5nLiBDT01QX01FVEFEQVRBX1RZUEVfVkVSU0lPTikuXG4gICAgR0NTLT4-Q29tcG9uZW50OiBNQVZfQ01EX1JFUVVFU1RfTUVTU0FHRSg8YnI-IHBhcmFtMT0zOTUsPGJyPiBwYXJhbTI9Q09NUF9NRVRBREFUQV9UWVBFX1hYWFgpXG4gICAgR0NTLS0-PkdDUzogU3RhcnQgQUNLIHJlY2VpdmUgdGltZW91dFxuICAgICAgQ29tcG9uZW50LT4-R0NTOiBDTURfQUNLXG4gICAgICBDb21wb25lbnQtPj5HQ1M6IENPTVBPTkVOVF9JTkZPUk1BVElPTihtZXRhZGF0YV91cmksbWV0YWRhdGFfdWlkKVxuICAgIE5vdGUgb3ZlciBDb21wb25lbnQsIEdDUzogR0NTIGdldHMgZmlsZSBmcm9tICdtZXRhZGF0YV91cmknPGJyPihvciB1c2VzIHN0b3JlZCBpbmZvcm1hdGlvbiBpZiAnbWV0YWRhdGFfdWlkJyBtYXRjaGVzIGNhY2hlKS4gXG5cbiAgICIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENvbXBvbmVudFxuICAgIE5vdGUgb3ZlciBDb21wb25lbnQsIEdDUzogR0NTOiBSZXF1ZXN0IGluZm9ybWF0aW9uIG9mIHBhcnRpY3VsYXIgdHlwZSAoZS5nLiBDT01QX01FVEFEQVRBX1RZUEVfVkVSU0lPTikuXG4gICAgR0NTLT4-Q29tcG9uZW50OiBNQVZfQ01EX1JFUVVFU1RfTUVTU0FHRSg8YnI-IHBhcmFtMT0zOTUsPGJyPiBwYXJhbTI9Q09NUF9NRVRBREFUQV9UWVBFX1hYWFgpXG4gICAgR0NTLS0-PkdDUzogU3RhcnQgQUNLIHJlY2VpdmUgdGltZW91dFxuICAgICAgQ29tcG9uZW50LT4-R0NTOiBDTURfQUNLXG4gICAgICBDb21wb25lbnQtPj5HQ1M6IENPTVBPTkVOVF9JTkZPUk1BVElPTihtZXRhZGF0YV91cmksbWV0YWRhdGFfdWlkKVxuICAgIE5vdGUgb3ZlciBDb21wb25lbnQsIEdDUzogR0NTIGdldHMgZmlsZSBmcm9tICdtZXRhZGF0YV91cmknPGJyPihvciB1c2VzIHN0b3JlZCBpbmZvcm1hdGlvbiBpZiAnbWV0YWRhdGFfdWlkJyBtYXRjaGVzIGNhY2hlKS4gXG5cbiAgICIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+> **Note** A component that supports this service must support the `COMP_METADATA_TYPE_VERSION` type and return a component file URI *that is hosted on the vehicle* (accessed using MAVLink FTP).
 
 In summary:
 1. Send `MAV_CMD_REQUEST_MESSAGE` specifying `param1=395` and `param2=COMP_METADATA_TYPE_VERSION`.
    - This is a normal [command protocol](../services/command.md) request with timeouts and resends based on the ACK.
-1. The component will ACK the command and immediately send the requested `COMPONENT_INFORMATION` message (populated with appropriate information and translation uri and uids).
+1. The component will ACK the command and immediately send the requested `COMPONENT_INFORMATION` message (populated with URI and UIDs for the version information).
+   - A `CMD_ACK` of anything other than `MAV_RESULT_ACCEPTED` indicates the protocol is not supported (sequence completes).
 1. GCS waits for the `COMPONENT_INFORMATION` message
    - If not recieved the GCS should resend the request (typically in the application level).
    - Once information is received the GCS checks if `COMPONENT_INFORMATION.metadata_uid` matches cached component information.
      If so, the sequence is **complete**.
      Otherwise ...
-1. GCS downloads the file specified in the `metadata_uri` (also the translation files, if any).
-   For `COMP_METADATA_TYPE_VERSION` the file must be hosted on the vehicle and downloaded using [MAVLink FTP](../services/ftp.md).
+1. GCS downloads the file specified in the `metadata_uri` using MAVLink FTP (also the translation files, if any).
 1. GCS parses version metadata for `supportedCompMetadataTypes` and caches the results.
-1. The sequence above is repeated to get the other supported data types (either immediately, or as needed).
+1. The sequence above can be repeated to get the other supported data types (either immediately, or as needed).
+
+A GCS can discover all components in the system by monitoring the channel for `HEARTBEAT` ids, and then send the above request to each of them to verify whether the protocol is supported.
+
+Alternatively, a GCS can also broadcast the request; all components that support the protocol should respond with `COMPONENT_INFORMATION`.
+
+### Get Component Information
+
+After using `COMP_METADATA_TYPE_VERSION` to get the set of metadata types supported by a component (see `supportedCompMetadataTypes` key in the version metadata) these can be queried separately using the same sequence.
+
+The sequence is exactly the same except that a different (supported) [metadata type](#COMP_METADATA_TYPE_VERSION) is specified.
+
+[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENvbXBvbmVudFxuICAgIE5vdGUgb3ZlciBDb21wb25lbnQsIEdDUzogR0NTOiBSZXF1ZXN0IGluZm9ybWF0aW9uIG9mIHBhcnRpY3VsYXIgdHlwZSAoZS5nLiBDT01QX01FVEFEQVRBX1RZUEVfWFhYWCkuXG4gICAgR0NTLT4-Q29tcG9uZW50OiBNQVZfQ01EX1JFUVVFU1RfTUVTU0FHRSg8YnI-IHBhcmFtMT0zOTUsPGJyPiBwYXJhbTI9Q09NUF9NRVRBREFUQV9UWVBFX1hYWFgpIFxuICAgIEdDUy0tPj5HQ1M6IFN0YXJ0IEFDSyByZWNlaXZlIHRpbWVvdXRcbiAgICAgIENvbXBvbmVudC0-PkdDUzogQ01EX0FDS1xuICAgICAgQ29tcG9uZW50LT4-R0NTOiBDT01QT05FTlRfSU5GT1JNQVRJT04obWV0YWRhdGFfdXJpLG1ldGFkYXRhX3VpZClcbiAgICBOb3RlIG92ZXIgQ29tcG9uZW50LCBHQ1M6IEdDUyBnZXRzIGZpbGUgZnJvbSAnbWV0YWRhdGFfdXJpJzxicj4ob3IgdXNlcyBzdG9yZWQgaW5mb3JtYXRpb24gaWYgJ21ldGFkYXRhX3VpZCcgbWF0Y2hlcyBjYWNoZSkuIFxuXG4gICAiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENvbXBvbmVudFxuICAgIE5vdGUgb3ZlciBDb21wb25lbnQsIEdDUzogR0NTOiBSZXF1ZXN0IGluZm9ybWF0aW9uIG9mIHBhcnRpY3VsYXIgdHlwZSAoZS5nLiBDT01QX01FVEFEQVRBX1RZUEVfWFhYWCkuXG4gICAgR0NTLT4-Q29tcG9uZW50OiBNQVZfQ01EX1JFUVVFU1RfTUVTU0FHRSg8YnI-IHBhcmFtMT0zOTUsPGJyPiBwYXJhbTI9Q09NUF9NRVRBREFUQV9UWVBFX1hYWFgpIFxuICAgIEdDUy0tPj5HQ1M6IFN0YXJ0IEFDSyByZWNlaXZlIHRpbWVvdXRcbiAgICAgIENvbXBvbmVudC0-PkdDUzogQ01EX0FDS1xuICAgICAgQ29tcG9uZW50LT4-R0NTOiBDT01QT05FTlRfSU5GT1JNQVRJT04obWV0YWRhdGFfdXJpLG1ldGFkYXRhX3VpZClcbiAgICBOb3RlIG92ZXIgQ29tcG9uZW50LCBHQ1M6IEdDUyBnZXRzIGZpbGUgZnJvbSAnbWV0YWRhdGFfdXJpJzxicj4ob3IgdXNlcyBzdG9yZWQgaW5mb3JtYXRpb24gaWYgJ21ldGFkYXRhX3VpZCcgbWF0Y2hlcyBjYWNoZSkuIFxuXG4gICAiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
 
 ## Open Issues
