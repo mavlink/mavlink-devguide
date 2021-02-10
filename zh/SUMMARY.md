@@ -54,7 +54,6 @@
     * [Camera Definition](services/camera_def.md)
   * [Gimbal Protocol v2](services/gimbal_v2.md) 
     * [Gimbal Protocol v1 (superseded)](services/gimbal.md)
-  * [Component Definition](services/component_def.md)
   * [Arm Authorization Protocol](services/arm_authorization.md)
   * [Image Transmission Protocol](services/image_transmission.md)
   * [File Transfer Protocol (FTP)](services/ftp.md)
@@ -66,6 +65,7 @@
   * [Tunnel Protocol](services/tunnel.md)
   * [Open Drone ID Protocol (WIP)](services/opendroneid.md)
   * [High Latency Protocol](services/high_latency.md)
+  * [Component Information Protocol (WIP)](services/component_information.md)
 
 * [Contributing](contributing/contributing.md)
 

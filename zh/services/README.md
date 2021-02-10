@@ -17,7 +17,6 @@ The main microservices are shown in the sidebar (most are listed below):
   * [Camera Definition](../services/camera_def.md)
 * [Gimbal Protocol v2](../services/gimbal_v2.md) 
   * [Gimbal Protocol v1 (superseded)](../services/gimbal.md)
-* [Component Definition](../services/component_def.md)
 * [Arm Authorization Protocol](../services/arm_authorization.md)
 * [Image Transmission Protocol](../services/image_transmission.md)
 * [File Transfer Protocol (FTP)](../services/ftp.md)
@@ -29,3 +28,4 @@ The main microservices are shown in the sidebar (most are listed below):
 * [Tunnel Protocol](../services/tunnel.md)
 * [Open Drone ID Protocol (WIP)](../services/opendroneid.md)
 * [High Latency Protocol](../services/high_latency.md)
+* [Component Information Protocol](../services/component_information.md)
