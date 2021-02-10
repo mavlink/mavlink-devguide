@@ -454,3 +454,27 @@ The difference of the MAVLink implementation versus the standard are:
 - Missing final XOR out operation with `0xFFFFFFFF`.
 
 The effects of the initial value and final XOR operation are documented in this [brief tutorial on CRC computation of the Linux kernel](https://github.com/torvalds/linux/blob/master/Documentation/staging/crc32.rst).
+
+## MAVLink FTP URL Scheme
+
+Resources to be downloaded using MAVLink FTP can be referenced using the following URL-like format:
+```
+mftp://[;comp=<id>]<path>
+```
+Where:
+- `path`: the location of the resource on the target component.
+- `id`: target *component ID* of the component hosting the resource.
+  The `[;comp=<id>]` part is optional (if omitted, the resource is downloaded from the current component).
+  It should be specified if the request must be redirected 
+
+For example:
+- A GCS connected to an autopilot might download a file using the following URL:
+  ```
+  ## FTP resource 'camera.xml' from current component
+  mftp://camera.xml
+  ```
+- A GCS connected to an autopilot through a companion computer might host the metadata on the companion (e.g. due to lack of flash space, faster download or if there's a central MAVFTP server on the vehicle), so it would need to specify the component ID of the component running on the companion (e.g. 100 for the camera), so that the request is redirected:
+  ` ``
+  ## FTP resource '/info/version.json' from component with id 100
+  mftp://[;comp=100]/info/version.json
+  ```
