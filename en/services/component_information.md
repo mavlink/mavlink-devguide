@@ -126,3 +126,13 @@ In summary:
 ### Schema Management
 
 Schema *management* has not yet been signed off.
+
+### Guaranteed Availablility of Component Information
+
+There is a concern that vehicles reliant on internet-hosted component information files may stop working if the hosting ceases.
+
+This can generally be avoided by hosting the files compressed on-vehicle.
+
+We propose that manufacturers that use autopilots with limited flash (1MB or below) and do custom firmware development should host the files in github.
+
+> **Note** File URLs are max 70 chars. If hosted within MAVLink we propose allocated numbers for URLs.  
