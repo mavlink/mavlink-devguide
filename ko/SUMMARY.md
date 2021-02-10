@@ -66,6 +66,7 @@
   * [Tunnel Protocol](services/tunnel.md)
   * [Open Drone ID Protocol (WIP)](services/opendroneid.md)
   * [High Latency Protocol](services/high_latency.md)
+  * [Component Information Protocol (WIP)](services/component_information.md)
 
 * [Contributing](contributing/contributing.md)
 
