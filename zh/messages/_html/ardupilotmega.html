@@ -2471,6 +2471,14 @@
      <td>
      </td>
     </tr>
+    <tr id="PLANE_MODE_THERMAL">
+     <td>24</td>
+     <td>
+      <a href="#PLANE_MODE_THERMAL">PLANE_MODE_THERMAL</a>
+     </td>
+     <td>
+     </td>
+    </tr>
    </tbody>
   </table>
   <h3 id="COPTER_MODE">
@@ -8691,6 +8699,124 @@
       </a>
      </td>
      <td>OSD parameter increment.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="OBSTACLE_DISTANCE_3D">OBSTACLE_DISTANCE_3D (<a href="#OBSTACLE_DISTANCE_3D">
+    #11037
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Obstacle located as a 3D vector.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>sensor_type</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_DISTANCE_SENSOR">MAV_DISTANCE_SENSOR</a>
+     </td>
+     <td>Class id of the distance sensor type.</td>
+    </tr>
+    <tr>
+     <td>frame</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_FRAME">MAV_FRAME</a>
+     </td>
+     <td>Coordinate frame of reference.</td>
+    </tr>
+    <tr>
+     <td>obstacle_id</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Unique ID given to each obstacle so that its movement can be tracked. Use UINT16_MAX if object ID is unknown or cannot be determined.</td>
+    </tr>
+    <tr>
+     <td>x</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>X position of the obstacle.</td>
+    </tr>
+    <tr>
+     <td>y</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Y position of the obstacle.</td>
+    </tr>
+    <tr>
+     <td>z</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Z position of the obstacle.</td>
+    </tr>
+    <tr>
+     <td>min_distance</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Minimum distance the sensor can measure.</td>
+    </tr>
+    <tr>
+     <td>max_distance</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Maximum distance the sensor can measure.</td>
     </tr>
    </tbody>
   </table>
