@@ -5487,24 +5487,24 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="CAMERA_TRACKING_NONE">
+    <tr id="CAMERA_TRACKING_MODE_NONE">
      <td>0</td>
      <td>
-      <a href="#CAMERA_TRACKING_NONE">CAMERA_TRACKING_NONE</a>
+      <a href="#CAMERA_TRACKING_MODE_NONE">CAMERA_TRACKING_MODE_NONE</a>
      </td>
      <td>Not tracking</td>
     </tr>
-    <tr id="CAMERA_TRACKING_POINT">
+    <tr id="CAMERA_TRACKING_MODE_POINT">
      <td>1</td>
      <td>
-      <a href="#CAMERA_TRACKING_POINT">CAMERA_TRACKING_POINT</a>
+      <a href="#CAMERA_TRACKING_MODE_POINT">CAMERA_TRACKING_MODE_POINT</a>
      </td>
      <td>Target is a point</td>
     </tr>
-    <tr id="CAMERA_TRACKING_RECTANGLE">
+    <tr id="CAMERA_TRACKING_MODE_RECTANGLE">
      <td>2</td>
      <td>
-      <a href="#CAMERA_TRACKING_RECTANGLE">CAMERA_TRACKING_RECTANGLE</a>
+      <a href="#CAMERA_TRACKING_MODE_RECTANGLE">CAMERA_TRACKING_MODE_RECTANGLE</a>
      </td>
      <td>Target is a rectangle</td>
     </tr>
@@ -9247,7 +9247,7 @@
     </tr>
     <tr>
      <td>3</td>
-     <td>Empty</td>
+     <td>Empty.</td>
      <td>
      </td>
      <td>
@@ -11502,7 +11502,7 @@
    <tbody>
     <tr>
      <td>1: Altitude</td>
-     <td>Altitude</td>
+     <td>Altitude.</td>
      <td>
      </td>
      <td>m</td>
@@ -12079,11 +12079,11 @@
     </tr>
     <tr>
      <td>6: Roll Offset</td>
-     <td>roll offset from next waypoint, positive rolling to the right</td>
+     <td>Roll offset from next waypoint, positive rolling to the right</td>
     </tr>
     <tr>
      <td>7: Yaw Offset</td>
-     <td>yaw offset from next waypoint, positive yawing to the right</td>
+     <td>Yaw offset from next waypoint, positive yawing to the right</td>
     </tr>
    </tbody>
   </table>
@@ -21526,7 +21526,7 @@
      </td>
      <td>uint16_t</td>
      <td>us</td>
-     <td>RC channel 18 val1ue. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
+     <td>RC channel 18 value. A value of 0 or UINT16_MAX means to ignore this field. A value of UINT16_MAX-1 means to release this channel back to the RC radio.</td>
     </tr>
    </tbody>
   </table>
@@ -24718,14 +24718,16 @@
     <tr>
      <td>eph</td>
      <td>uint16_t</td>
-     <td>cm</td>
-     <td>GPS HDOP horizontal dilution of position. If unknown, set to: 65535</td>
+     <td>
+     </td>
+     <td>GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>epv</td>
      <td>uint16_t</td>
-     <td>cm</td>
-     <td>GPS VDOP vertical dilution of position. If unknown, set to: 65535</td>
+     <td>
+     </td>
+     <td>GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>vel</td>
@@ -25466,22 +25468,24 @@
     <tr>
      <td>eph</td>
      <td>uint16_t</td>
-     <td>cm</td>
+     <td>
+     </td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>GPS HDOP horizontal dilution of position. If unknown, set to: UINT16_MAX</td>
+     <td>GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>epv</td>
      <td>uint16_t</td>
-     <td>cm</td>
+     <td>
+     </td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>GPS VDOP vertical dilution of position. If unknown, set to: UINT16_MAX</td>
+     <td>GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>vel</td>
@@ -28420,22 +28424,24 @@
     <tr>
      <td>hdop</td>
      <td>float</td>
-     <td>m</td>
+     <td>
+     </td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>GPS HDOP horizontal dilution of position</td>
+     <td>GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>vdop</td>
      <td>float</td>
-     <td>m</td>
+     <td>
+     </td>
      <td>
       <a href="#">
       </a>
      </td>
-     <td>GPS VDOP vertical dilution of position</td>
+     <td>GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>vn</td>
@@ -31395,7 +31401,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Current tracked point x value if CAMERA_TRACKING_POINT (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
+     <td>Current tracked point x value if CAMERA_TRACKING_MODE_POINT (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
     </tr>
     <tr>
      <td>point_y</td>
@@ -31404,7 +31410,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Current tracked point y value if CAMERA_TRACKING_POINT (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
+     <td>Current tracked point y value if CAMERA_TRACKING_MODE_POINT (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
     </tr>
     <tr>
      <td>radius</td>
@@ -31413,7 +31419,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Current tracked radius if CAMERA_TRACKING_POINT (normalized 0..1, 0 is image left, 1 is image right), NAN if unknown</td>
+     <td>Current tracked radius if CAMERA_TRACKING_MODE_POINT (normalized 0..1, 0 is image left, 1 is image right), NAN if unknown</td>
     </tr>
     <tr>
      <td>rec_top_x</td>
@@ -31422,7 +31428,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Current tracked rectangle top x value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
+     <td>Current tracked rectangle top x value if CAMERA_TRACKING_MODE_RECTANGLE (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
     </tr>
     <tr>
      <td>rec_top_y</td>
@@ -31431,7 +31437,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Current tracked rectangle top y value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
+     <td>Current tracked rectangle top y value if CAMERA_TRACKING_MODE_RECTANGLE (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
     </tr>
     <tr>
      <td>rec_bottom_x</td>
@@ -31440,7 +31446,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Current tracked rectangle bottom x value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
+     <td>Current tracked rectangle bottom x value if CAMERA_TRACKING_MODE_RECTANGLE (normalized 0..1, 0 is left, 1 is right), NAN if unknown</td>
     </tr>
     <tr>
      <td>rec_bottom_y</td>
@@ -31449,7 +31455,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Current tracked rectangle bottom y value if CAMERA_TRACKING_RECTANGLE (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
+     <td>Current tracked rectangle bottom y value if CAMERA_TRACKING_MODE_RECTANGLE (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown</td>
     </tr>
    </tbody>
   </table>
