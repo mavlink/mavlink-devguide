@@ -545,12 +545,12 @@
      </td>
      <td>0x20000000 Avoidance/collision prevention</td>
     </tr>
-    <tr id="MAV_SYS_STATUS_SENSOR_PORPULSION">
+    <tr id="MAV_SYS_STATUS_SENSOR_PROPULSION">
      <td>1073741824</td>
      <td>
-      <a href="#MAV_SYS_STATUS_SENSOR_PORPULSION">MAV_SYS_STATUS_SENSOR_PORPULSION</a>
+      <a href="#MAV_SYS_STATUS_SENSOR_PROPULSION">MAV_SYS_STATUS_SENSOR_PROPULSION</a>
      </td>
-     <td>0x40000000 porpulsion (actuator, esc, motor or propellor)</td>
+     <td>0x40000000 propulsion (actuator, esc, motor or propellor)</td>
     </tr>
    </tbody>
   </table>
@@ -763,8 +763,7 @@
    </thead>
    <tbody>
     <tr id="MAVLINK_DATA_STREAM_IMG_JPEG">
-     <td>
-     </td>
+     <td>0</td>
      <td>
       <a href="#MAVLINK_DATA_STREAM_IMG_JPEG">MAVLINK_DATA_STREAM_IMG_JPEG</a>
      </td>
@@ -772,8 +771,7 @@
      </td>
     </tr>
     <tr id="MAVLINK_DATA_STREAM_IMG_BMP">
-     <td>
-     </td>
+     <td>1</td>
      <td>
       <a href="#MAVLINK_DATA_STREAM_IMG_BMP">MAVLINK_DATA_STREAM_IMG_BMP</a>
      </td>
@@ -781,8 +779,7 @@
      </td>
     </tr>
     <tr id="MAVLINK_DATA_STREAM_IMG_RAW8U">
-     <td>
-     </td>
+     <td>2</td>
      <td>
       <a href="#MAVLINK_DATA_STREAM_IMG_RAW8U">MAVLINK_DATA_STREAM_IMG_RAW8U</a>
      </td>
@@ -790,8 +787,7 @@
      </td>
     </tr>
     <tr id="MAVLINK_DATA_STREAM_IMG_RAW32U">
-     <td>
-     </td>
+     <td>3</td>
      <td>
       <a href="#MAVLINK_DATA_STREAM_IMG_RAW32U">MAVLINK_DATA_STREAM_IMG_RAW32U</a>
      </td>
@@ -799,8 +795,7 @@
      </td>
     </tr>
     <tr id="MAVLINK_DATA_STREAM_IMG_PGM">
-     <td>
-     </td>
+     <td>4</td>
      <td>
       <a href="#MAVLINK_DATA_STREAM_IMG_PGM">MAVLINK_DATA_STREAM_IMG_PGM</a>
      </td>
@@ -808,8 +803,7 @@
      </td>
     </tr>
     <tr id="MAVLINK_DATA_STREAM_IMG_PNG">
-     <td>
-     </td>
+     <td>5</td>
      <td>
       <a href="#MAVLINK_DATA_STREAM_IMG_PNG">MAVLINK_DATA_STREAM_IMG_PNG</a>
      </td>
@@ -2344,72 +2338,63 @@
    </thead>
    <tbody>
     <tr id="MAV_CMD_ACK_OK">
-     <td>
-     </td>
+     <td>0</td>
      <td>
       <a href="#MAV_CMD_ACK_OK">MAV_CMD_ACK_OK</a>
      </td>
      <td>Command / mission item is ok.</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_FAIL">
-     <td>
-     </td>
+     <td>1</td>
      <td>
       <a href="#MAV_CMD_ACK_ERR_FAIL">MAV_CMD_ACK_ERR_FAIL</a>
      </td>
      <td>Generic error message if none of the other reasons fails or if no detailed error reporting is implemented.</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_ACCESS_DENIED">
-     <td>
-     </td>
+     <td>2</td>
      <td>
       <a href="#MAV_CMD_ACK_ERR_ACCESS_DENIED">MAV_CMD_ACK_ERR_ACCESS_DENIED</a>
      </td>
      <td>The system is refusing to accept this command from this source / communication partner.</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_NOT_SUPPORTED">
-     <td>
-     </td>
+     <td>3</td>
      <td>
       <a href="#MAV_CMD_ACK_ERR_NOT_SUPPORTED">MAV_CMD_ACK_ERR_NOT_SUPPORTED</a>
      </td>
      <td>Command or mission item is not supported, other commands would be accepted.</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_COORDINATE_FRAME_NOT_SUPPORTED">
-     <td>
-     </td>
+     <td>4</td>
      <td>
       <a href="#MAV_CMD_ACK_ERR_COORDINATE_FRAME_NOT_SUPPORTED">MAV_CMD_ACK_ERR_COORDINATE_FRAME_NOT_SUPPORTED</a>
      </td>
      <td>The coordinate frame of this command / mission item is not supported.</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_COORDINATES_OUT_OF_RANGE">
-     <td>
-     </td>
+     <td>5</td>
      <td>
       <a href="#MAV_CMD_ACK_ERR_COORDINATES_OUT_OF_RANGE">MAV_CMD_ACK_ERR_COORDINATES_OUT_OF_RANGE</a>
      </td>
      <td>The coordinate frame of this command is ok, but he coordinate values exceed the safety limits of this system. This is a generic error, please use the more specific error messages below if possible.</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_X_LAT_OUT_OF_RANGE">
-     <td>
-     </td>
+     <td>6</td>
      <td>
       <a href="#MAV_CMD_ACK_ERR_X_LAT_OUT_OF_RANGE">MAV_CMD_ACK_ERR_X_LAT_OUT_OF_RANGE</a>
      </td>
      <td>The X or latitude value is out of range.</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_Y_LON_OUT_OF_RANGE">
-     <td>
-     </td>
+     <td>7</td>
      <td>
       <a href="#MAV_CMD_ACK_ERR_Y_LON_OUT_OF_RANGE">MAV_CMD_ACK_ERR_Y_LON_OUT_OF_RANGE</a>
      </td>
      <td>The Y or longitude value is out of range.</td>
     </tr>
     <tr id="MAV_CMD_ACK_ERR_Z_ALT_OUT_OF_RANGE">
-     <td>
-     </td>
+     <td>8</td>
      <td>
       <a href="#MAV_CMD_ACK_ERR_Z_ALT_OUT_OF_RANGE">MAV_CMD_ACK_ERR_Z_ALT_OUT_OF_RANGE</a>
      </td>
@@ -5533,31 +5518,31 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="CAMERA_TRACKING_TARGET_NONE">
+    <tr id="CAMERA_TRACKING_TARGET_DATA_NONE">
      <td>0</td>
      <td>
-      <a href="#CAMERA_TRACKING_TARGET_NONE">CAMERA_TRACKING_TARGET_NONE</a>
+      <a href="#CAMERA_TRACKING_TARGET_DATA_NONE">CAMERA_TRACKING_TARGET_DATA_NONE</a>
      </td>
      <td>No target data</td>
     </tr>
-    <tr id="CAMERA_TRACKING_TARGET_EMBEDDED">
+    <tr id="CAMERA_TRACKING_TARGET_DATA_EMBEDDED">
      <td>1</td>
      <td>
-      <a href="#CAMERA_TRACKING_TARGET_EMBEDDED">CAMERA_TRACKING_TARGET_EMBEDDED</a>
+      <a href="#CAMERA_TRACKING_TARGET_DATA_EMBEDDED">CAMERA_TRACKING_TARGET_DATA_EMBEDDED</a>
      </td>
      <td>Target data embedded in image data (proprietary)</td>
     </tr>
-    <tr id="CAMERA_TRACKING_TARGET_RENDERED">
+    <tr id="CAMERA_TRACKING_TARGET_DATA_RENDERED">
      <td>2</td>
      <td>
-      <a href="#CAMERA_TRACKING_TARGET_RENDERED">CAMERA_TRACKING_TARGET_RENDERED</a>
+      <a href="#CAMERA_TRACKING_TARGET_DATA_RENDERED">CAMERA_TRACKING_TARGET_DATA_RENDERED</a>
      </td>
      <td>Target data rendered in image</td>
     </tr>
-    <tr id="CAMERA_TRACKING_TARGET_IN_STATUS">
+    <tr id="CAMERA_TRACKING_TARGET_DATA_IN_STATUS">
      <td>4</td>
      <td>
-      <a href="#CAMERA_TRACKING_TARGET_IN_STATUS">CAMERA_TRACKING_TARGET_IN_STATUS</a>
+      <a href="#CAMERA_TRACKING_TARGET_DATA_IN_STATUS">CAMERA_TRACKING_TARGET_DATA_IN_STATUS</a>
      </td>
      <td>Target data within status message (Point or Rectangle)</td>
     </tr>
@@ -16045,7 +16030,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Fence return point. There can only be one fence return point.</p>
+   </a>Fence return point (there can only be one such point in a geofence definition). If rally points are supported they should be used instead.</p>
   <table class="sortable">
    <thead>
     <tr>
