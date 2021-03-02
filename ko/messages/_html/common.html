@@ -15851,8 +15851,14 @@
    <tbody>
     <tr>
      <td>1: State</td>
-     <td>The target VTOL state. Only MAV_VTOL_STATE_MC and MAV_VTOL_STATE_FW can be used.</td>
+     <td>The target VTOL state. For normal transitions, only MAV_VTOL_STATE_MC and MAV_VTOL_STATE_FW can be used.</td>
      <td>MAV_VTOL_STATE</td>
+    </tr>
+    <tr>
+     <td>2: Immediate</td>
+     <td>Force immediate transition to the specified MAV_VTOL_STATE. 1: Force immediate, 0: normal transition. Can be used, for example, to trigger an emergency "Quadchute". Caution: Can be dangerous/damage vehicle, depending on autopilot implementation of this command.</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
