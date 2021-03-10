@@ -370,6 +370,9 @@ In this case the gimbal manager is implemented by the autopilot which "sends" th
 
 Below is a short summary of all messages that a gimbal device should implement.
 
+> **Note** A *Gimbal Device* can be tested by connecting it to an autopilot with a *Gimbal Manager*.
+  To avoid having to do a full setup including autopilot, a [direct test using MAVSDK](https://github.com/mavlink/MAVSDK/tree/develop/examples/gimbal_device_tester) is available.
+
 ### Messages to Send
 
 The messages listed should be broadcast on the network/on all connections (sent to everyone).
