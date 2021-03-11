@@ -8230,15 +8230,14 @@
     <tr>
      <td>angle_delta</td>
      <td>float[3]</td>
-     <td>
-     </td>
-     <td>Defines a rotation vector in body frame that rotates the vehicle from the previous to the current orientation.</td>
+     <td>rad</td>
+     <td>Defines a rotation vector [roll, pitch, yaw] to the current MAV_FRAME_BODY_FRD from the previous MAV_FRAME_BODY_FRD.</td>
     </tr>
     <tr>
      <td>position_delta</td>
      <td>float[3]</td>
      <td>m</td>
-     <td>Change in position from previous to current frame rotated into body frame (0=forward, 1=right, 2=down).</td>
+     <td>Change in position to the current MAV_FRAME_BODY_FRD from the previous FRAME_BODY_FRD rotated to the current MAV_FRAME_BODY_FRD.</td>
     </tr>
     <tr>
      <td>confidence</td>
