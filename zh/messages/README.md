@@ -4,7 +4,7 @@
 
 MAVLink *dialects* 一种 XML 文件，用来定义 *protocol-* 和 *vendor-specific* 消息， 枚举和命令。
 
-方言可能 *include* 其它 MAVLink XML 文件。 一种典型的模式是方言包含 [common.xml](../messages/common.md) （其中包括 *MAVLink standard definitions* ），使用供应商或协议特定消息对其进行扩展。 While a dialect can include any other message definition, only a single level of nesting is supported ([at time of writing](https://github.com/ArduPilot/pymavlink/pull/248)).
+Dialects may *include* other MAVLink XML files, which may in turn contain other XML files. 一种典型的模式是方言包含 [common.xml](../messages/common.md) （其中包括 *MAVLink standard definitions* ），使用供应商或协议特定消息对其进行扩展。 At time of writing up to 5 levels of XML file nesting are allowed (see `MAXIMUM_INCLUDE_FILE_NESTING` in [mavgen.py](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavgen.py#L44)).
 
 > **Note** MAVLink的供应商分支可能包含尚未合并的方言消息，因此不会出现在本文档中。
 

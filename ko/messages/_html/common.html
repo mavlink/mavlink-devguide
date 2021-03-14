@@ -4010,6 +4010,20 @@
      </td>
      <td>Vehicle voltage is not compatible with this battery (batteries on same power rail should have similar voltage).</td>
     </tr>
+    <tr id="MAV_BATTERY_FAULT_INCOMPATIBLE_FIRMWARE">
+     <td>128</td>
+     <td>
+      <a href="#MAV_BATTERY_FAULT_INCOMPATIBLE_FIRMWARE">MAV_BATTERY_FAULT_INCOMPATIBLE_FIRMWARE</a>
+     </td>
+     <td>Battery firmware is not compatible with current autopilot firmware.</td>
+    </tr>
+    <tr id="BATTERY_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION">
+     <td>256</td>
+     <td>
+      <a href="#BATTERY_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION">BATTERY_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION</a>
+     </td>
+     <td>Battery is not compatible due to cell configuration (e.g. 5s1p when vehicle requires 6s).</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_GENERATOR_STATUS_FLAG">
@@ -18385,7 +18399,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
+     <td>GPS HDOP horizontal dilution of position (unitless * 100). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>epv</td>
@@ -18396,7 +18410,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
+     <td>GPS VDOP vertical dilution of position (unitless * 100). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>vel</td>
@@ -24718,14 +24732,14 @@
      <td>uint16_t</td>
      <td>
      </td>
-     <td>GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
+     <td>GPS HDOP horizontal dilution of position (unitless * 100). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>epv</td>
      <td>uint16_t</td>
      <td>
      </td>
-     <td>GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
+     <td>GPS VDOP vertical dilution of position (unitless * 100). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>vel</td>
@@ -25472,7 +25486,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS HDOP horizontal dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
+     <td>GPS HDOP horizontal dilution of position (unitless * 100). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>epv</td>
@@ -25483,7 +25497,7 @@
       <a href="#">
       </a>
      </td>
-     <td>GPS VDOP vertical dilution of position (unitless). If unknown, set to: UINT16_MAX</td>
+     <td>GPS VDOP vertical dilution of position (unitless * 100). If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>vel</td>
