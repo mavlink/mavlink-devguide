@@ -82,7 +82,7 @@ MAVLink 프로젝트에는 [mavgen](getting_started/generate_libraries.md#mavgen
 
 MAVLink 프로토콜은 [드론코드 프로젝트](https://www.dronecode.org/) 관리 체계에서 제공합니다.
 
-<a href="https://www.dronecode.org/" style="padding:20px"><img src="../assets/site/logo_dronecode.png" alt="드론코드 로고" width="110px"/></a>
+<a href="https://www.dronecode.org/" style="padding:20px" ><img src="../assets/site/logo_dronecode.png" alt="드론코드 로고" width="110px"/></a>
 <a href="https://www.linuxfoundation.org/projects" style="padding:20px;"><img src="../assets/site/logo_linux_foundation.png" alt="리눅스 재단 로고" width="80px" /></a>
 
 <div style="padding:10px">&nbsp;</div>
