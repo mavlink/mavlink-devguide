@@ -57,8 +57,8 @@ Every component must have a system-unique component id, which is used for routin
   New code must not make any assumption about the type from the id used (type is determined from `HEARTBEAT.type`).
 
 MAVLink recommends that *by default* components use a type-appropriate component id from [MAV_COMPONENT](../messages/common.md#MAV_COMPONENT), and provide an interface to change the component id if needed.
-For example, a gimbal component might use use [MAV_COMP_ID_GIMBAL](../messages/common.md#MAV_COMP_ID_GIMBAL) or [MAV_COMP_ID_GIMBAL`n`](../messages/common.md#MAV_COMP_ID_GIMBAL2), and should not use `MAV_COMP_ID_GPS2`.
+For example, a camera component might use any of the [MAV_COMP_ID_CAMERA`n`](../messages/common.md#MAV_COMP_ID_GIMBAL) ids, and should not use `MAV_COMP_ID_GPS2`.
 
 > **Tip** Using type-specific component ids:
-  - makes id clashes less likely "out of the box" (unless two components of the same type are present on the same system).
-  - reduces the impact on legacy code that determines component type from the id. 
+>  - makes id clashes less likely "out of the box" (unless two components of the same type are present on the same system).
+>  - reduces the impact on legacy code that determines component type from the id. 
