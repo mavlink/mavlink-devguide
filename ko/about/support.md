@@ -36,6 +36,6 @@ Meeting agenda (and historical meeting minutes) are available on the [MAVLink wi
 There is a recurring bi-weekly call which covers Asia-Europe overlap (there is also a reserved call slot for a Europe-Americas overlap on PST timezone that can be used when needed).
 
 - **Call:** <https://meet.jit.si/mavlink>
-- **Time:** Wednesday 9:00AM CET, 3:00 PM China, 5:00PM ACT
+- **Time:** Wednesday 8:00AM CET, 3:00 PM China, 5:00PM ACT
 
 > **Tip** The call is shown as *MAVLink Co-ordination* in the [Dronecode calendar](https://www.dronecode.org/calendar/).

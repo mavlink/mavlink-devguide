@@ -82,7 +82,7 @@ MAVLink项目所包含的 [mavgen](getting_started/generate_libraries.md#mavgen)
 
 MAVLink协议托管在 [Dronecode 项目 ](https://www.dronecode.org/) 下。
 
-<a href="https://www.dronecode.org/" style="padding:20px"><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" width="110px"/></a>
+<a href="https://www.dronecode.org/" style="padding:20px" ><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" width="110px"/></a>
 <a href="https://www.linuxfoundation.org/projects" style="padding:20px;"><img src="../assets/site/logo_linux_foundation.png" alt="Linux Foundation Logo" width="80px" /></a>
 
 <div style="padding:10px">&nbsp;</div>
