@@ -28,6 +28,7 @@
   * [Scripts](guide/scripts.md)
   * [MAVLink XML Schema](guide/xml_schema.md)
   * [Defining XML Enums/Messages](guide/define_xml_element.md)
+  * [MAVLink CRCs](guide/crc.md)
   * [Dialects](messages/README.md)
     * [ardupilotmega.xml](messages/ardupilotmega.md)
     * [ASLUAV.xml](messages/ASLUAV.md)
