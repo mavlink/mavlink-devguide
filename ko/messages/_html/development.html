@@ -1,0 +1,65 @@
+<html>
+ <body>
+  <p>
+   <strong>MAVLink Include Files:</strong>
+   <a href="standard.md">standard.xml</a>
+  </p>
+  <h2>MAVLink Protocol Version</h2>
+  <p>The current MAVLink version is 2.0. The minor version numbers (after the dot) range from 1-255.</p>
+  <p>This file has protocol dialect: 0.</p>
+  <h2 id="enums">MAVLink Type Enumerations</h2>
+  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+  </blockquote>
+  <h2 id="messages">MAVLink Messages</h2>
+  <h3 id="MISSION_CHECKSUM">MISSION_CHECKSUM (<a href="#MISSION_CHECKSUM">
+    #53
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Checksum for the current mission, rally points or geofence plan (a GCS can use this checksum to determine if it has a matching plan definition).
+        This message must be broadcast following any change to a plan (immediately after the MISSION_ACK that completes the plan upload sequence).
+        It may also be requested using MAV_CMD_REQUEST_MESSAGE, where param 2 indicates the plan type for which the hash is required.
+        The checksum must be calculated on the autopilot, but may also be calculated by the GCS.
+        The checksum uses the same CRC32 algorithm as MAVLink FTP (https://mavlink.io/en/services/ftp.html#crc32-implementation).
+        It is run over each item in the plan in seq order (excluding the home location if present in the plan), and covers the following fields (in order):
+        frame, command, autocontinue, param1, param2, param3, param4, param5, param6, param7.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>mission_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
+     </td>
+     <td>Mission type.</td>
+    </tr>
+    <tr>
+     <td>checksum</td>
+     <td>uint32_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>CRC32 checksum of current plan for specified type.</td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>
