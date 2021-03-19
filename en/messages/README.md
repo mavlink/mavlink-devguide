@@ -18,6 +18,7 @@ The human-readable forms of the XML dialect files are linked below:
 * [all.xml](all.md)
 * [ardupilotmega.xml](ardupilotmega.md)
 * [autoquad.xml](autoquad.md)
+* [development.xml](development.md)
 * [icarous.xml](icarous.md)
 * [matrixpilot.xml](matrixpilot.md)
 * [minimal.xml](minimal.md)
