@@ -16,6 +16,7 @@ XML 方言文件的可读格式链接如下：
 * [all.xml](all.md)
 * [ardupilotmega.xml](ardupilotmega.md)
 * [autoquad.xml](autoquad.md)
+* [development.xml](development.md)
 * [icarous.xml](icarous.md)
 * [matrixpilot.xml](matrixpilot.md)
 * [minimal.xml](minimal.md)
