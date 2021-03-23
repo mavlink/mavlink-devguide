@@ -16,4 +16,5 @@
 * [脚本](../guide/scripts.md)
 * [MAVLink XML 概要](../guide/xml_schema.md)
 * [Defining XML 类型 / 消息](../guide/define_xml_element.md)
-* [语言](../messages/README.md)
+* [MAVLink CRCs](../guide/crc.md)
+* [Dialects](../messages/README.md)
