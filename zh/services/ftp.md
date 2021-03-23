@@ -428,14 +428,7 @@ The implementation on PX4 only supports a single session.
 
 ## CRC32 Implementation
 
-The CRC32 algorithm used by MAVLink FTP is similar to (but different from) the ISO 3309 standard based on the polygon 0x04C11DB7. It is commonly referred to as "the CRC32 based on Gary Brown's work".
-
-The difference of the MAVLink implementation versus the standard are:
-
-- Start at 0 instead of `0xFFFFFFFF`.
-- Missing final XOR out operation with `0xFFFFFFFF`.
-
-The effects of the initial value and final XOR operation are documented in this [brief tutorial on CRC computation of the Linux kernel](https://github.com/torvalds/linux/blob/master/Documentation/staging/crc32.rst).
+The CRC32 algorithm used by MAVLink FTP is described in [MAVLink CRCs](../guide/crc.md).
 
 ## MAVLink FTP URL Scheme
 
