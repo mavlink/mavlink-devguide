@@ -19,4 +19,4 @@ The effects of the initial value and final XOR operation are documented in this 
 
 This implementation is currently used in:
 - [File Transfer Protocol (FTP)](../services/ftp.md)
-* [Parameter Protocol > PX4 Implementation](../services/parameter.md#px4) (Stack-specific hash of cached parameters).
+* [Parameter Protocol > PX4 Implementation](../services/parameter.md#px4) (Implementation-specific hash of cached parameters).
