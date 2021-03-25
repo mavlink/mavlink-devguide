@@ -8,6 +8,68 @@
   <p>The current MAVLink version is 2.0. The minor version numbers (after the dot) range from 1-255.</p>
   <p>This file has protocol dialect: 0.</p>
   <h2 id="enums">MAVLink Type Enumerations</h2>
+  <h3 id="WIFI_NETWORK_SECURITY">
+   <a href="#WIFI_NETWORK_SECURITY">WIFI_NETWORK_SECURITY</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>WiFi wireless security protocols.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="WIFI_NETWORK_SECURITY_UNDEFINED">
+     <td>0</td>
+     <td>
+      <a href="#WIFI_NETWORK_SECURITY_UNDEFINED">WIFI_NETWORK_SECURITY_UNDEFINED</a>
+     </td>
+     <td>Undefined or unknown security protocol.</td>
+    </tr>
+    <tr id="WIFI_NETWORK_SECURITY_OPEN">
+     <td>1</td>
+     <td>
+      <a href="#WIFI_NETWORK_SECURITY_OPEN">WIFI_NETWORK_SECURITY_OPEN</a>
+     </td>
+     <td>Open network, no security.</td>
+    </tr>
+    <tr id="WIFI_NETWORK_SECURITY_WEP">
+     <td>2</td>
+     <td>
+      <a href="#WIFI_NETWORK_SECURITY_WEP">WIFI_NETWORK_SECURITY_WEP</a>
+     </td>
+     <td>WEP.</td>
+    </tr>
+    <tr id="WIFI_NETWORK_SECURITY_WPA1">
+     <td>3</td>
+     <td>
+      <a href="#WIFI_NETWORK_SECURITY_WPA1">WIFI_NETWORK_SECURITY_WPA1</a>
+     </td>
+     <td>WPA1.</td>
+    </tr>
+    <tr id="WIFI_NETWORK_SECURITY_WPA2">
+     <td>4</td>
+     <td>
+      <a href="#WIFI_NETWORK_SECURITY_WPA2">WIFI_NETWORK_SECURITY_WPA2</a>
+     </td>
+     <td>WPA2.</td>
+    </tr>
+    <tr id="WIFI_NETWORK_SECURITY_WPA3">
+     <td>5</td>
+     <td>
+      <a href="#WIFI_NETWORK_SECURITY_WPA3">WIFI_NETWORK_SECURITY_WPA3</a>
+     </td>
+     <td>WPA3.</td>
+    </tr>
+   </tbody>
+  </table>
+  <a id="MAV_CMD">
+  </a>
   <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
@@ -58,6 +120,87 @@
       </a>
      </td>
      <td>CRC32 checksum of current plan for specified type.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="WIFI_NETWORK_INFO">WIFI_NETWORK_INFO (<a href="#WIFI_NETWORK_INFO">
+    #298
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Detected WiFi network status information. This message is sent per each WiFi network detected in range with known SSID and general status parameters.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>ssid</td>
+     <td>char[32]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Name of Wi-Fi network (SSID).</td>
+    </tr>
+    <tr>
+     <td>channel_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>WiFi network operating channel ID. Set to 0 if unknown or unidentified.</td>
+    </tr>
+    <tr>
+     <td>signal_quality</td>
+     <td>uint8_t</td>
+     <td>
+      %
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>WiFi network signal quality.</td>
+    </tr>
+    <tr>
+     <td>data_rate</td>
+     <td>uint16_t</td>
+     <td>MiB/s</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>WiFi network data rate. Set to UINT16_MAX if data_rate information is not supplied.</td>
+    </tr>
+    <tr>
+     <td>security</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#WIFI_NETWORK_SECURITY">WIFI_NETWORK_SECURITY</a>
+     </td>
+     <td>WiFi network security type.</td>
     </tr>
    </tbody>
   </table>
