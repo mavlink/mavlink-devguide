@@ -2085,12 +2085,12 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="COMP_METADATA_TYPE_VERSION">
+    <tr id="COMP_METADATA_TYPE_GENERAL">
      <td>0</td>
      <td>
-      <a href="#COMP_METADATA_TYPE_VERSION">COMP_METADATA_TYPE_VERSION</a>
+      <a href="#COMP_METADATA_TYPE_GENERAL">COMP_METADATA_TYPE_GENERAL</a>
      </td>
-     <td>Version information which also includes information on other optional supported COMP_METADATA_TYPE's. Must be supported. Only downloadable from vehicle.</td>
+     <td>General information which also includes information on other optional supported COMP_METADATA_TYPE's. Must be supported. Only downloadable from vehicle.</td>
     </tr>
     <tr id="COMP_METADATA_TYPE_PARAMETER">
      <td>1</td>
@@ -2105,6 +2105,13 @@
       <a href="#COMP_METADATA_TYPE_COMMANDS">COMP_METADATA_TYPE_COMMANDS</a>
      </td>
      <td>Meta data which specifies the commands the vehicle supports. (WIP)</td>
+    </tr>
+    <tr id="COMP_METADATA_TYPE_PERIPHERALS">
+     <td>3</td>
+     <td>
+      <a href="#COMP_METADATA_TYPE_PERIPHERALS">COMP_METADATA_TYPE_PERIPHERALS</a>
+     </td>
+     <td>Meta data which specifies potential external peripherals that do not talk MAVLink</td>
     </tr>
    </tbody>
   </table>
@@ -5971,6 +5978,13 @@
      </td>
      <td>Ignore body yaw rate</td>
     </tr>
+    <tr id="ATTITUDE_TARGET_TYPEMASK_THRUST_BODY_SET">
+     <td>32</td>
+     <td>
+      <a href="#ATTITUDE_TARGET_TYPEMASK_THRUST_BODY_SET">ATTITUDE_TARGET_TYPEMASK_THRUST_BODY_SET</a>
+     </td>
+     <td>Use 3D body thrust setpoint instead of throttle</td>
+    </tr>
     <tr id="ATTITUDE_TARGET_TYPEMASK_THROTTLE_IGNORE">
      <td>64</td>
      <td>
@@ -8896,6 +8910,8 @@
     </tr>
    </tbody>
   </table>
+  <a id="MAV_CMD">
+  </a>
   <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
@@ -22327,6 +22343,20 @@
      </td>
      <td>Collective thrust, normalized to 0 .. 1 (-1 .. 1 for vehicles capable of reverse trust)</td>
     </tr>
+    <tr>
+     <td style="color:blue;">thrust_body<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float[3]</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>3D thrust setpoint in the body NED frame, normalized to -1 .. 1</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="ATTITUDE_TARGET">ATTITUDE_TARGET (<a href="#ATTITUDE_TARGET">
@@ -35438,14 +35468,13 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about a component. For camera components instead use CAMERA_INFORMATION, and for autopilots use AUTOPILOT_VERSION. Components including GCSes should consider supporting requests of this message via MAV_CMD_REQUEST_MESSAGE.</p>
+   </strong>Information about a component. For camera components instead use CAMERA_INFORMATION, and for autopilots additionally use AUTOPILOT_VERSION. Components including GCSes should consider supporting requests of this message via MAV_CMD_REQUEST_MESSAGE.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Field Name</th>
      <th>Type</th>
      <th>Units</th>
-     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -35454,65 +35483,37 @@
      <td>time_boot_ms</td>
      <td>uint32_t</td>
      <td>ms</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
      <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
-     <td>metadata_type</td>
+     <td>general_metadata_file_crc</td>
      <td>uint32_t</td>
      <td>
      </td>
-     <td>
-      <a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>
-     </td>
-     <td>The type of metadata being requested.</td>
+     <td>CRC32 of the TYPE_GENERAL file (can be used by a GCS for file caching).</td>
     </tr>
     <tr>
-     <td>metadata_uid</td>
+     <td>general_metadata_uri</td>
+     <td>char[100]</td>
+     <td>
+     </td>
+     <td>Component definition URI for TYPE_GENERAL. This must be a MAVLink FTP URI and the file might be compressed with xz.</td>
+    </tr>
+    <tr>
+     <td>peripherals_metadata_file_crc</td>
      <td>uint32_t</td>
      <td>
      </td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Unique uid for this metadata which a gcs can use for created cached metadata and understanding whether it's cache it up to date or whether it needs to download new data.</td>
+     <td>CRC32 of the TYPE_PERIPHERALS file (can be used by a GCS for file caching).</td>
     </tr>
     <tr>
-     <td>metadata_uri</td>
-     <td>char[70]</td>
+     <td>peripherals_metadata_uri</td>
+     <td>char[100]</td>
      <td>
      </td>
      <td>
-      <a href="#">
-      </a>
+      (Optional) Component definition URI for TYPE_PERIPHERALS. This must be a MAVLink FTP URI and the file might be compressed with xz.
      </td>
-     <td>Component definition URI. If prefix mavlinkftp:// file is downloaded from vehicle over mavlink ftp protocol. If prefix http[s]:// file is downloaded over internet. Files are json format. They can end in .gz to indicate file is in gzip format.</td>
-    </tr>
-    <tr>
-     <td>translation_uid</td>
-     <td>uint32_t</td>
-     <td>
-     </td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Unique uid for the translation file associated with the metadata.</td>
-    </tr>
-    <tr>
-     <td>translation_uri</td>
-     <td>char[70]</td>
-     <td>
-     </td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>The translations for strings within the metadata file. If null the either do not exist or may be included in the metadata file itself. The translations specified here supercede any which may be in the metadata file itself. The uri format is the same as component_metadata_uri . Files are in Json Translation spec format. Empty string indicates no tranlsation file.</td>
     </tr>
    </tbody>
   </table>
