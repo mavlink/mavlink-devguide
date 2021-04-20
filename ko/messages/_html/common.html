@@ -25594,6 +25594,71 @@
      </td>
      <td>Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north.</td>
     </tr>
+    <tr>
+     <td style="color:blue;">alt_ellipsoid<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>int32_t</td>
+     <td>mm</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Altitude (above WGS84, EGM96 ellipsoid). Positive for up.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">h_acc<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint32_t</td>
+     <td>mm</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Position uncertainty.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">v_acc<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint32_t</td>
+     <td>mm</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Altitude uncertainty.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">vel_acc<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint32_t</td>
+     <td>mm</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Speed uncertainty.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">hdg_acc<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint32_t</td>
+     <td>degE5</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Heading / track uncertainty</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="POWER_STATUS">POWER_STATUS (<a href="#POWER_STATUS">
@@ -30381,7 +30446,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Camera definition URI (if any, otherwise only basic functions will be available). HTTP- (http://) and MAVLink FTP- (mavlinkftp://) formatted URIs are allowed (and both must be supported by any GCS that implements the Camera Protocol).</td>
+     <td>Camera definition URI (if any, otherwise only basic functions will be available). HTTP- (http://) and MAVLink FTP- (mavlinkftp://) formatted URIs are allowed (and both must be supported by any GCS that implements the Camera Protocol). The definition file may be xz compressed, which will be indicated by the file extension .xml.xz (a GCS that implements the protocol must support decompressing the file).</td>
     </tr>
    </tbody>
   </table>
