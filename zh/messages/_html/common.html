@@ -4759,8 +4759,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>
-  </p>
+   </a>Sequence that motors are tested when using MAV_CMD_DO_MOTOR_TEST.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -4775,21 +4774,21 @@
      <td>
       <a href="#MOTOR_TEST_ORDER_DEFAULT">MOTOR_TEST_ORDER_DEFAULT</a>
      </td>
-     <td>default autopilot motor test method</td>
+     <td>Default autopilot motor test method.</td>
     </tr>
     <tr id="MOTOR_TEST_ORDER_SEQUENCE">
      <td>1</td>
      <td>
       <a href="#MOTOR_TEST_ORDER_SEQUENCE">MOTOR_TEST_ORDER_SEQUENCE</a>
      </td>
-     <td>motor numbers are specified as their index in a predefined vehicle-specific sequence</td>
+     <td>Motor numbers are specified as their index in a predefined vehicle-specific sequence.</td>
     </tr>
     <tr id="MOTOR_TEST_ORDER_BOARD">
      <td>2</td>
      <td>
       <a href="#MOTOR_TEST_ORDER_BOARD">MOTOR_TEST_ORDER_BOARD</a>
      </td>
-     <td>motor numbers are specified as the output as labeled on the board</td>
+     <td>Motor numbers are specified as the output as labeled on the board.</td>
     </tr>
    </tbody>
   </table>
@@ -4799,8 +4798,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>
-  </p>
+   </a>Defines how throttle value is represented in MAV_CMD_DO_MOTOR_TEST.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -4815,28 +4813,28 @@
      <td>
       <a href="#MOTOR_TEST_THROTTLE_PERCENT">MOTOR_TEST_THROTTLE_PERCENT</a>
      </td>
-     <td>throttle as a percentage from 0 ~ 100</td>
+     <td>Throttle as a percentage (0 ~ 100)</td>
     </tr>
     <tr id="MOTOR_TEST_THROTTLE_PWM">
      <td>1</td>
      <td>
       <a href="#MOTOR_TEST_THROTTLE_PWM">MOTOR_TEST_THROTTLE_PWM</a>
      </td>
-     <td>throttle as an absolute PWM value (normally in range of 1000~2000)</td>
+     <td>Throttle as an absolute PWM value (normally in range of 1000~2000).</td>
     </tr>
     <tr id="MOTOR_TEST_THROTTLE_PILOT">
      <td>2</td>
      <td>
       <a href="#MOTOR_TEST_THROTTLE_PILOT">MOTOR_TEST_THROTTLE_PILOT</a>
      </td>
-     <td>throttle pass-through from pilot's transmitter</td>
+     <td>Throttle pass-through from pilot's transmitter.</td>
     </tr>
     <tr id="MOTOR_TEST_COMPASS_CAL">
      <td>3</td>
      <td>
       <a href="#MOTOR_TEST_COMPASS_CAL">MOTOR_TEST_COMPASS_CAL</a>
      </td>
-     <td>per-motor compass calibration test</td>
+     <td>Per-motor compass calibration test.</td>
     </tr>
    </tbody>
   </table>
@@ -12782,7 +12780,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Mission command to perform motor test.</p>
+   </a>Command to perform motor test.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12795,7 +12793,7 @@
    <tbody>
     <tr>
      <td>1: Instance</td>
-     <td>Motor instance number. (from 1 to max number of motors on the vehicle)</td>
+     <td>Motor instance number (from 1 to max number of motors on the vehicle).</td>
      <td>
       <em>min:</em>1 <em>increment:</em>1</td>
      <td>
@@ -12803,14 +12801,14 @@
     </tr>
     <tr>
      <td>2: Throttle Type</td>
-     <td>Throttle type.</td>
+     <td>Throttle type (whether the Throttle Value in param3 is a percentage, PWM value, etc.)</td>
      <td>MOTOR_TEST_THROTTLE_TYPE</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3: Throttle</td>
-     <td>Throttle.</td>
+     <td>Throttle value.</td>
      <td>
      </td>
      <td>
@@ -12818,14 +12816,14 @@
     </tr>
     <tr>
      <td>4: Timeout</td>
-     <td>Timeout.</td>
+     <td>Timeout between tests that are run in sequence.</td>
      <td>
       <em>min:</em>0 </td>
      <td>s</td>
     </tr>
     <tr>
      <td>5: Motor Count</td>
-     <td>Motor count. (number of motors to test to test in sequence, waiting for the timeout above between them; 0=1 motor, 1=1 motor, 2=2 motors...)</td>
+     <td>Motor count. Number of motors to test in sequence: 0/1=one motor, 2= two motors, etc. The Timeout (param4) is used between tests.</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
      <td>
