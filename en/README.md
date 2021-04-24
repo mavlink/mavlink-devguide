@@ -61,6 +61,7 @@ Go      | [gomavlib](https://github.com/gswly/gomavlib) | &check; | &check; | &c
 Go      | [go-mavlink1](https://github.com/mgr9525/go-mavlink1) | &check; | &cross;|  &cross; | Golang MAVLink v1
 Haskell | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)| &cross; | &check; | &cross; | 
 Rust | [rust-mavlink](https://github.com/mavlink/rust-mavlink)| &check; | &check; |  | Rust MAVLink generated code. Has [tests](https://github.com/mavlink/rust-mavlink/tree/master/tests) and [docs](https://docs.rs/mavlink/latest/mavlink/).
+C       | [fastMavlink](https://github.com/olliw42/fastmavlink) | &check; | &check; |  &cross; | Highly efficient C library with python code generators. Has [docs](https://github.com/olliw42/fastmavlink), [examples](https://github.com/olliw42/fastmavlink/tree/master/examples), [test](https://github.com/olliw42/fastmavlink/tree/master/tests), support for [routing](https://github.com/olliw42/fastmavlink#router) and [mavgen mimicry](https://github.com/olliw42/fastmavlink#pymavlink-mavgen-mimicry).
 
 
 ## Prebuilt MAVLink C Libraries {#prebuilt_libraries}
