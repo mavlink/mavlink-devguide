@@ -26,7 +26,7 @@ The sections below explain how to contribute to each category and how to raise a
 
 MAVLink generators create MAVLink libraries from the XML definitions for different programming languages ([supported language list here](../README.md#supported_languages)).
 
-Support for new programming languages can be added either to the [mavgen](../getting_started/generate_libraries.html#mavgen) generator (source code in [ArduPilot/pymavlink](https://github.com/ArduPilot/pymavlink)) or as a stand alone generator.
+Support for new programming languages can be added either to the [mavgen](../getting_started/generate_libraries.md#mavgen) generator (source code in [ArduPilot/pymavlink](https://github.com/ArduPilot/pymavlink)) or as a stand alone generator.
 
 The broad requirements for inclusion in the project are:
 - Project team should be able to commit to supporting the generator. 

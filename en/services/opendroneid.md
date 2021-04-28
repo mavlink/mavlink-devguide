@@ -115,7 +115,7 @@ For transceiver components (with component ids [MAV_COMP_ID_ODID_TXRX_1](../mess
 Please see further details in the [Heartbeat documentation](heartbeat.md).
 
 The MAVLink [HEARTBEAT](../messages/common.md#HEARTBEAT) message also serves as the way for receiver components to identify the `systemid` of the GCS.
-The GCS will send out MAVLink [HEARTBEAT](../messages/common.md#HEARTBEAT) messages with its `systemid` field set to the GCS system ID and the type set to [MAV_TYPE_GCS](../message/common.md#MAV_TYPE_GCS).
+The GCS will send out MAVLink [HEARTBEAT](../messages/common.md#HEARTBEAT) messages with its `systemid` field set to the GCS system ID and the type set to [MAV_TYPE_GCS](../messages/common.md#MAV_TYPE_GCS).
 The receiver components shall interpret all MAVLink Open Drone ID messages from that system ID, as coming from the GCS.
 There is no dedicated component ID for GCSs, hence the system ID must be used instead for identifying the GCS.
 
