@@ -818,8 +818,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>
-  </p>
+   </a>Actions following geofence breach.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -834,14 +833,14 @@
      <td>
       <a href="#FENCE_ACTION_NONE">FENCE_ACTION_NONE</a>
      </td>
-     <td>Disable fenced mode</td>
+     <td>Disable fenced mode. If used in a plan this would mean the next fence is disabled.</td>
     </tr>
     <tr id="FENCE_ACTION_GUIDED">
      <td>1</td>
      <td>
       <a href="#FENCE_ACTION_GUIDED">FENCE_ACTION_GUIDED</a>
      </td>
-     <td>Switched to guided mode to return point (fence point 0)</td>
+     <td>Fly to geofence MAV_CMD_NAV_FENCE_RETURN_POINT in GUIDED mode. Note: This action is only supported by ArduPlane, and may not be supported in all versions.</td>
     </tr>
     <tr id="FENCE_ACTION_REPORT">
      <td>2</td>
@@ -855,14 +854,35 @@
      <td>
       <a href="#FENCE_ACTION_GUIDED_THR_PASS">FENCE_ACTION_GUIDED_THR_PASS</a>
      </td>
-     <td>Switched to guided mode to return point (fence point 0) with manual throttle control</td>
+     <td>Fly to geofence MAV_CMD_NAV_FENCE_RETURN_POINT with manual throttle control in GUIDED mode. Note: This action is only supported by ArduPlane, and may not be supported in all versions.</td>
     </tr>
     <tr id="FENCE_ACTION_RTL">
      <td>4</td>
      <td>
       <a href="#FENCE_ACTION_RTL">FENCE_ACTION_RTL</a>
      </td>
-     <td>Switch to RTL (return to launch) mode and head for the return point.</td>
+     <td>Return/RTL mode.</td>
+    </tr>
+    <tr id="FENCE_ACTION_HOLD">
+     <td>5</td>
+     <td>
+      <a href="#FENCE_ACTION_HOLD">FENCE_ACTION_HOLD</a>
+     </td>
+     <td>Hold at current location.</td>
+    </tr>
+    <tr id="FENCE_ACTION_TERMINATE">
+     <td>6</td>
+     <td>
+      <a href="#FENCE_ACTION_TERMINATE">FENCE_ACTION_TERMINATE</a>
+     </td>
+     <td>Termination failsafe. Motors are shut down (some flight stacks may trigger other failsafe actions).</td>
+    </tr>
+    <tr id="FENCE_ACTION_LAND">
+     <td>7</td>
+     <td>
+      <a href="#FENCE_ACTION_LAND">FENCE_ACTION_LAND</a>
+     </td>
+     <td>Land at current location.</td>
     </tr>
    </tbody>
   </table>
