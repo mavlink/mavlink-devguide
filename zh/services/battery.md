@@ -3,7 +3,7 @@
 MAVLink provides a number of messages for providing battery information:
 - [BATTERY_STATUS](#BATTERY_STATUS): Battery status information that changes regularly.
   - Emitted for both "dumb" and "smart" batteries at around 0.5 Hz (for each battery).
-  - Smart batteries may provide [fault](#MAV_BATTERY_FAULT) and [mode](MAV_BATTERY_MODE) information in this message, which are typically not provided by "dumb" batteries.
+  - Smart batteries may provide [fault](#MAV_BATTERY_FAULT) and [mode](#MAV_BATTERY_MODE) information in this message, which are typically not provided by "dumb" batteries.
 - [SMART_BATTERY_INFO](#SMART_BATTERY_INFO): Battery information that changes rarely, if ever (e.g. device name).
   - Should be emitted smart batteries.
   - Emit on connection and/or when requested using [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE).
