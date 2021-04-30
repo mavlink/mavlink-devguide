@@ -2133,6 +2133,13 @@
      </td>
      <td>Meta data which specifies potential external peripherals that do not talk MAVLink</td>
     </tr>
+    <tr id="COMP_METADATA_TYPE_EVENTS">
+     <td>4</td>
+     <td>
+      <a href="#COMP_METADATA_TYPE_EVENTS">COMP_METADATA_TYPE_EVENTS</a>
+     </td>
+     <td>Meta data for events interface</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="PARAM_TRANSACTION_TRANSPORT">
@@ -8925,6 +8932,56 @@
      </td>
      <td>
      </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_EVENT_ERROR_REASON">
+   <a href="#MAV_EVENT_ERROR_REASON">MAV_EVENT_ERROR_REASON</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Reason for an event error response.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_EVENT_ERROR_REASON_UNAVAILABLE">
+     <td>0</td>
+     <td>
+      <a href="#MAV_EVENT_ERROR_REASON_UNAVAILABLE">MAV_EVENT_ERROR_REASON_UNAVAILABLE</a>
+     </td>
+     <td>The requested event is not available (anymore).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_EVENT_CURRENT_SEQUENCE_FLAGS">
+   <a href="#MAV_EVENT_CURRENT_SEQUENCE_FLAGS">MAV_EVENT_CURRENT_SEQUENCE_FLAGS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags for CURRENT_EVENT_SEQUENCE.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_EVENT_CURRENT_SEQUENCE_FLAGS_RESET">
+     <td>1</td>
+     <td>
+      <a href="#MAV_EVENT_CURRENT_SEQUENCE_FLAGS_RESET">MAV_EVENT_CURRENT_SEQUENCE_FLAGS_RESET</a>
+     </td>
+     <td>A sequence reset has happened (e.g. vehicle reboot).</td>
     </tr>
    </tbody>
   </table>
@@ -35708,6 +35765,238 @@
       <a href="#TUNE_FORMAT">TUNE_FORMAT</a>
      </td>
      <td>Bitfield of supported tune formats.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="EVENT">EVENT (<a href="#EVENT">
+    #410
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Event message. Each new event from a particular component gets a new sequence number. The same message might be sent multiple times if (re-)requested. Most events are broadcast, some can be specific to a target component (as receivers keep track of the sequence for missed events, all events need to be broadcast. Thus we use destination_component instead of target_component).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>destination_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>destination_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>id</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Event ID (as defined in the component metadata)</td>
+    </tr>
+    <tr>
+     <td>event_time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>Timestamp (time since system boot when the event happened).</td>
+    </tr>
+    <tr>
+     <td>sequence</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Sequence number.</td>
+    </tr>
+    <tr>
+     <td>log_levels</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Log levels: 4 bits MSB: internal (for logging purposes), 4 bits LSB: external. Levels: Emergency = 0, Alert = 1, Critical = 2, Error = 3, Warning = 4, Notice = 5, Info = 6, Debug = 7, Protocol = 8, Disabled = 9</td>
+    </tr>
+    <tr>
+     <td>arguments</td>
+     <td>uint8_t[40]</td>
+     <td>
+     </td>
+     <td>Arguments (depend on event ID).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CURRENT_EVENT_SEQUENCE">CURRENT_EVENT_SEQUENCE (<a href="#CURRENT_EVENT_SEQUENCE">
+    #411
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Regular broadcast for the current latest event sequence number for a component. This is used to check for dropped events.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>sequence</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Sequence number.</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_EVENT_CURRENT_SEQUENCE_FLAGS">MAV_EVENT_CURRENT_SEQUENCE_FLAGS</a>
+     </td>
+     <td>Flag bitset.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="REQUEST_EVENT">REQUEST_EVENT (<a href="#REQUEST_EVENT">
+    #412
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Request one or more events to be (re-)sent. If first_sequence==last_sequence, only a single event is requested. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an EVENT or EVENT_ERROR response.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>first_sequence</td>
+     <td>uint16_t</td>
+     <td>First sequence number of the requested event.</td>
+    </tr>
+    <tr>
+     <td>last_sequence</td>
+     <td>uint16_t</td>
+     <td>Last sequence number of the requested event.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="RESPONSE_EVENT_ERROR">RESPONSE_EVENT_ERROR (<a href="#RESPONSE_EVENT_ERROR">
+    #413
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Response to a REQUEST_EVENT in case of an error (e.g. the event is not available anymore).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>sequence</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Sequence number.</td>
+    </tr>
+    <tr>
+     <td>sequence_oldest_available</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Oldest Sequence number that is still available after the sequence set in REQUEST_EVENT.</td>
+    </tr>
+    <tr>
+     <td>reason</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_EVENT_ERROR_REASON">MAV_EVENT_ERROR_REASON</a>
+     </td>
+     <td>Error reason.</td>
     </tr>
    </tbody>
   </table>
