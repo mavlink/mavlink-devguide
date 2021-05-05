@@ -39,7 +39,7 @@ The sections below lists MAVLink generators and their associated programming lan
 The MAVLink organisation provides (and supports) the [mavgen](getting_started/generate_libraries.md#mavgen), [mavgenerate](getting_started/generate_libraries.md#mavgenerate) and [rust-mavlink](https://github.com/mavlink/rust-mavlink) tools.
 
 Language | Generator | MAVLink v1 | [MAVLink 2](guide/mavlink_2.md) | [Signing](guide/message_signing.md) | Notes
-:--- | :--- | :---:| :---: | :---
+:--- | :--- | :---:| :---: | :--- | :---
 C       | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; | This is the MAVLink project reference implementation. [Generated libraries](#prebuilt_libraries) are also published for both protocol versions.
 C++11   | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; |  | 
 Python (2.7+, 3.3+) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; | Python bindings. Library also available on PyPi: [pymavlink](https://pypi.org/project/pymavlink/).
@@ -60,7 +60,7 @@ Rust | [rust-mavlink](https://github.com/mavlink/rust-mavlink)| &check; | &check
 The following generators are delivered by independent projects (and supported by those projects).
 
 Language | Generator | MAVLink v1 | [MAVLink 2](guide/mavlink_2.md) | [Signing](guide/message_signing.md) | Notes
-:--- | :--- | :---:| :---: | :---
+:--- | :--- | :---:| :---: | :--- | :---
 C       | [fastMavlink](https://github.com/olliw42/fastmavlink) | &check; | &check; |  &cross; | Highly efficient C library with python code generators. Has [docs](https://github.com/olliw42/fastmavlink), [examples](https://github.com/olliw42/fastmavlink/tree/master/examples), [test](https://github.com/olliw42/fastmavlink/tree/master/tests), support for [routing](https://github.com/olliw42/fastmavlink#router) and [mavgen mimicry](https://github.com/olliw42/fastmavlink#pymavlink-mavgen-mimicry).
 Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | &check; | &check; | &check; | Clojure MAVLink Bindings.
 Go      | [gomavlib](https://github.com/gswly/gomavlib) | &check; | &check; | &check; | Go library with support for MAVLink 1, 2 and signing, test suite, and [documentation](https://pkg.go.dev/github.com/aler9/gomavlib)
