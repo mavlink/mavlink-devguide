@@ -67,6 +67,7 @@ Go      | [gomavlib](https://github.com/gswly/gomavlib) | &check; | &check; | &c
 Go      | [go-mavlink1](https://github.com/mgr9525/go-mavlink1) | &check; | &cross;|  &cross; | Golang MAVLink v1
 Haskell | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)| &cross; | &check; | &cross; | 
 Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | &check; | &check; | &check; | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
+TypeScript/JavaScript/npm | [node-mavlink](https://github.com/padcom/node-mavlink#readme) | &check; | &check; | &check; | TypeScript code generator for data classes with tools to receive and send messages. [Getting started](https://github.com/padcom/node-mavlink#getting-started) guide and inline JSDoc, along with some [examples](https://github.com/padcom/node-mavlink/tree/master/examples).
 
 
 ## Prebuilt MAVLink C Libraries {#prebuilt_libraries}
