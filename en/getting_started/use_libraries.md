@@ -5,19 +5,22 @@ The linked documents explain how to use the MAVLink libraries for different prog
 > **Note** Not all of the libraries are documented. 
   If you have experience with the other libraries, please help us update those sections!
 
-* [C (*mavgen*)](../mavgen_c/README.md)
-* [Python (*mavgen*)](../mavgen_python/README.md)
-* [Java](https://github.com/dronefleet/mavlink) (*dronefleet*) - documented on linked project site
-* Java (*mavgen*)
-* [Clojure](https://github.com/WickedShell/clj-mavlink) (*clj-mavlink*) - documented on linked project site
-* C++11 (*mavgen*)
-* C-Sharp (*mavgen*)
-* Objective C (*mavgen*)
-* JavaScript (*mavgen*)
-* [TypeScript/JavaScript (node-mavlink)](https://github.com/padcom/node-mavlink#readme)
-* Lua (*mavgen*)
-* Swift (*mavgen*)
-* [Go (*gomavlib*)](https://pkg.go.dev/github.com/aler9/gomavlib)
-* [Go (*go-mavlink1*)](https://github.com/mgr9525/go-mavlink1)
-* [Rust (*rust-mavlink*)](https://docs.rs/mavlink/latest/mavlink/)
-* [C (*fastMavlink*)](https://github.com/olliw42/fastmavlink)
+* Mavgen
+  * [C](../mavgen_c/README.md)
+  * [Python ("Pymavlink")](../mavgen_python/README.md)
+  * C++11
+  * C-Sharp
+  * Java
+  * JavaScript
+  * Lua
+  * Objective C
+  * Swift
+
+* External
+  * [C (*fastMavlink*)](https://github.com/olliw42/fastmavlink)
+  * [Clojure](https://github.com/WickedShell/clj-mavlink) (*clj-mavlink*) - documented on linked project site
+  * [Go (*gomavlib*)](https://pkg.go.dev/github.com/aler9/gomavlib)
+  * [Go (*go-mavlink1*)](https://github.com/mgr9525/go-mavlink1)
+  * [Java (*dronefleet*)](https://github.com/dronefleet/mavlink) - documented on linked project site
+  * [Rust (*rust-mavlink*)](https://docs.rs/mavlink/latest/mavlink/)
+  * [TypeScript/JavaScript (node-mavlink)](https://github.com/padcom/node-mavlink#readme)
