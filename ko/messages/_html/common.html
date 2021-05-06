@@ -818,7 +818,8 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Actions following geofence breach.</p>
+   </a>
+  </p>
   <table class="sortable">
    <thead>
     <tr>
@@ -833,14 +834,14 @@
      <td>
       <a href="#FENCE_ACTION_NONE">FENCE_ACTION_NONE</a>
      </td>
-     <td>Disable fenced mode. If used in a plan this would mean the next fence is disabled.</td>
+     <td>Disable fenced mode</td>
     </tr>
     <tr id="FENCE_ACTION_GUIDED">
      <td>1</td>
      <td>
       <a href="#FENCE_ACTION_GUIDED">FENCE_ACTION_GUIDED</a>
      </td>
-     <td>Fly to geofence MAV_CMD_NAV_FENCE_RETURN_POINT in GUIDED mode. Note: This action is only supported by ArduPlane, and may not be supported in all versions.</td>
+     <td>Switched to guided mode to return point (fence point 0)</td>
     </tr>
     <tr id="FENCE_ACTION_REPORT">
      <td>2</td>
@@ -854,35 +855,14 @@
      <td>
       <a href="#FENCE_ACTION_GUIDED_THR_PASS">FENCE_ACTION_GUIDED_THR_PASS</a>
      </td>
-     <td>Fly to geofence MAV_CMD_NAV_FENCE_RETURN_POINT with manual throttle control in GUIDED mode. Note: This action is only supported by ArduPlane, and may not be supported in all versions.</td>
+     <td>Switched to guided mode to return point (fence point 0) with manual throttle control</td>
     </tr>
     <tr id="FENCE_ACTION_RTL">
      <td>4</td>
      <td>
       <a href="#FENCE_ACTION_RTL">FENCE_ACTION_RTL</a>
      </td>
-     <td>Return/RTL mode.</td>
-    </tr>
-    <tr id="FENCE_ACTION_HOLD">
-     <td>5</td>
-     <td>
-      <a href="#FENCE_ACTION_HOLD">FENCE_ACTION_HOLD</a>
-     </td>
-     <td>Hold at current location.</td>
-    </tr>
-    <tr id="FENCE_ACTION_TERMINATE">
-     <td>6</td>
-     <td>
-      <a href="#FENCE_ACTION_TERMINATE">FENCE_ACTION_TERMINATE</a>
-     </td>
-     <td>Termination failsafe. Motors are shut down (some flight stacks may trigger other failsafe actions).</td>
-    </tr>
-    <tr id="FENCE_ACTION_LAND">
-     <td>7</td>
-     <td>
-      <a href="#FENCE_ACTION_LAND">FENCE_ACTION_LAND</a>
-     </td>
-     <td>Land at current location.</td>
+     <td>Switch to RTL (return to launch) mode and head for the return point.</td>
     </tr>
    </tbody>
   </table>
@@ -18532,7 +18512,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Number of satellites visible. If unknown, set to 255</td>
+     <td>Number of satellites visible. If unknown, set to UINT8_MAX</td>
     </tr>
     <tr>
      <td style="color:blue;">alt_ellipsoid<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -18610,7 +18590,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north.</td>
+     <td>Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use UINT16_MAX if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north.</td>
     </tr>
    </tbody>
   </table>
@@ -19360,7 +19340,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Receive signal strength indicator in device-dependent units/scale. Values: [0-254], 255: invalid/unknown.</td>
+     <td>Receive signal strength indicator in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown.</td>
     </tr>
    </tbody>
   </table>
@@ -19449,7 +19429,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Receive signal strength indicator in device-dependent units/scale. Values: [0-254], 255: invalid/unknown.</td>
+     <td>Receive signal strength indicator in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown.</td>
     </tr>
    </tbody>
   </table>
@@ -21306,7 +21286,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Receive signal strength indicator in device-dependent units/scale. Values: [0-254], 255: invalid/unknown.</td>
+     <td>Receive signal strength indicator in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown.</td>
     </tr>
    </tbody>
   </table>
@@ -22149,7 +22129,7 @@
       <a href="#">
       </a>
      </td>
-     <td>WIP: Also used as result_param1, it can be set with an enum containing the errors reasons of why the command was denied, or the progress percentage when result is MAV_RESULT_IN_PROGRESS (255 if the progress is unknown).</td>
+     <td>WIP: Also used as result_param1, it can be set with an enum containing the errors reasons of why the command was denied, or the progress percentage when result is MAV_RESULT_IN_PROGRESS (UINT8_MAX if the progress is unknown).</td>
     </tr>
     <tr>
      <td style="color:blue;">result_param2<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -23648,7 +23628,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Receive signal strength indicator in device-dependent units/scale. Values: [0-254], 255: invalid/unknown.</td>
+     <td>Receive signal strength indicator in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown.</td>
     </tr>
    </tbody>
   </table>
@@ -24630,14 +24610,14 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Local (message sender) recieved signal strength indication in device-dependent units/scale. Values: [0-254], 255: invalid/unknown.</td>
+     <td>Local (message sender) recieved signal strength indication in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown.</td>
     </tr>
     <tr>
      <td>remrssi</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Remote (message receiver) signal strength indication in device-dependent units/scale. Values: [0-254], 255: invalid/unknown.</td>
+     <td>Remote (message receiver) signal strength indication in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown.</td>
     </tr>
     <tr>
      <td>txbuf</td>
@@ -24652,14 +24632,14 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Local background noise level. These are device dependent RSSI values (scale as approx 2x dB on SiK radios). Values: [0-254], 255: invalid/unknown.</td>
+     <td>Local background noise level. These are device dependent RSSI values (scale as approx 2x dB on SiK radios). Values: [0-254], UINT8_MAX: invalid/unknown.</td>
     </tr>
     <tr>
      <td>remnoise</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Remote background noise level. These are device dependent RSSI values (scale as approx 2x dB on SiK radios). Values: [0-254], 255: invalid/unknown.</td>
+     <td>Remote background noise level. These are device dependent RSSI values (scale as approx 2x dB on SiK radios). Values: [0-254], UINT8_MAX: invalid/unknown.</td>
     </tr>
     <tr>
      <td>rxerrors</td>
@@ -24850,7 +24830,7 @@
      <td>vel</td>
      <td>uint16_t</td>
      <td>cm/s</td>
-     <td>GPS ground speed. If unknown, set to: 65535</td>
+     <td>GPS ground speed. If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>vn</td>
@@ -24874,14 +24854,14 @@
      <td>cog</td>
      <td>uint16_t</td>
      <td>cdeg</td>
-     <td>Course over ground (NOT heading, but direction of movement), 0.0..359.99 degrees. If unknown, set to: 65535</td>
+     <td>Course over ground (NOT heading, but direction of movement), 0.0..359.99 degrees. If unknown, set to: UINT16_MAX</td>
     </tr>
     <tr>
      <td>satellites_visible</td>
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Number of satellites visible. If unknown, set to 255</td>
+     <td>Number of satellites visible. If unknown, set to UINT8_MAX</td>
     </tr>
     <tr>
      <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -25633,7 +25613,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Number of satellites visible. If unknown, set to 255</td>
+     <td>Number of satellites visible. If unknown, set to UINT8_MAX</td>
     </tr>
     <tr>
      <td>dgps_numch</td>
@@ -25667,7 +25647,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use 65535 if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north.</td>
+     <td>Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use UINT16_MAX if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north.</td>
     </tr>
     <tr>
      <td style="color:blue;">alt_ellipsoid<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -26503,7 +26483,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Measurement variance. Max standard deviation is 6cm. 255 if unknown.</td>
+     <td>Measurement variance. Max standard deviation is 6cm. UINT8_MAX if unknown.</td>
     </tr>
     <tr>
      <td style="color:blue;">horizontal_fov<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -27201,7 +27181,7 @@
      <td>
      </td>
      <td>
-      (1 0 0 0 for unknown)
+      (0 0 0 0 for unknown)
      </td>
     </tr>
     <tr>
@@ -28946,7 +28926,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Number of satellites visible. If unknown, set to 255</td>
+     <td>Number of satellites visible. If unknown, set to UINT8_MAX</td>
     </tr>
     <tr>
      <td>gps_fix_type</td>
@@ -31073,7 +31053,7 @@
      <td>first_message_offset</td>
      <td>uint8_t</td>
      <td>bytes</td>
-     <td>offset into data where first message starts. This can be used for recovery, when a previous message got lost (set to 255 if no start exists).</td>
+     <td>offset into data where first message starts. This can be used for recovery, when a previous message got lost (set to UINT8_MAX if no start exists).</td>
     </tr>
     <tr>
      <td>data</td>
@@ -31137,7 +31117,7 @@
      <td>first_message_offset</td>
      <td>uint8_t</td>
      <td>bytes</td>
-     <td>offset into data where first message starts. This can be used for recovery, when a previous message got lost (set to 255 if no start exists).</td>
+     <td>offset into data where first message starts. This can be used for recovery, when a previous message got lost (set to UINT8_MAX if no start exists).</td>
     </tr>
     <tr>
      <td>data</td>
@@ -33501,7 +33481,7 @@
      <td>uint32_t</td>
      <td>
      </td>
-     <td>Version control system (VCS) revision identifier (e.g. git short commit hash). Zero if unknown.</td>
+     <td>Version control system (VCS) revision identifier (e.g. git short commit hash). 0 if unknown.</td>
     </tr>
    </tbody>
   </table>

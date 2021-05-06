@@ -18,3 +18,4 @@ The linked documents explain how to use the MAVLink libraries for different prog
 * [Go (*gomavlib*)](https://pkg.go.dev/github.com/aler9/gomavlib)
 * [Go (*go-mavlink1*)](https://github.com/mgr9525/go-mavlink1)
 * [Rust (*rust-mavlink*)](https://docs.rs/mavlink/latest/mavlink/)
+* [C (*fastMavlink*)](https://github.com/olliw42/fastmavlink)

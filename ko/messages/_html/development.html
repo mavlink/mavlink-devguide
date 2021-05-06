@@ -129,37 +129,6 @@
    </strong>
    <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
   </blockquote>
-  <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. NaN and INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current yaw or latitude rather than a specific value). See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the MAV_CMD entries</p>
-  <h3 id="MAV_CMD_SET_FENCE_BREACH_ACTION">MAV_CMD_SET_FENCE_BREACH_ACTION (<a href="#MAV_CMD_SET_FENCE_BREACH_ACTION">5005</a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Sets the action on geofence breach.
-          If sent using the command protocol this sets the system-default geofence action.
-          As part of a mission protocol plan it sets the fence action for the next complete geofence definition *after* the command.
-          Note: A fence action defined in a plan will override the default system setting (even if the system-default is `FENCE_ACTION_NONE`).
-          Note: Every geofence in a plan can have its own action; if no fence action is defined for a particular fence the system-default will be used.
-          Note: The flight stack should reject a plan or command that uses a geofence action that it does not support and send a STATUSTEXT with the reason.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Values</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Action</td>
-     <td>Fence action on breach.</td>
-     <td>FENCE_ACTION</td>
-    </tr>
-   </tbody>
-  </table>
   <h2 id="messages">MAVLink Messages</h2>
   <h3 id="MISSION_CHECKSUM">MISSION_CHECKSUM (<a href="#MISSION_CHECKSUM">
     #53
