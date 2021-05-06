@@ -49,8 +49,6 @@ Java    | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | |
 JavaScript (Stable) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &cross; | Old mavgen JavaScript binding (has known bugs and no test suite). 
 JavaScript (NextGen) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; | New mavgen JavaScript library. Full test suite, resulting library produces binary compatible output compared to C bindings. Slightly incompatible with previous version, but not hard to migrate.
 TypeScript/JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &cross; | TypeScript classes which can be used with [node-mavlink](https://github.com/ifrunistuttgart/node-mavlink).
-TypeScript/JavaScript/npm | [node-mavlink](https://github.com/padcom/node-mavlink#readme) | &check; | &check; | &check; | TypeScript code generator for data classes with too
-ls to receive and send messages. All with inline JSDoc to get you started quickly.
 Lua     | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &cross; | Lua library. Does not support zero trimming of MAVLink 2 messages.
 WLua (Wireshark Lua bindings)| [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | NA | Allow MAVLink-aware packet inspection in Wireshark. Generated lua scripts should be copied to the Wireshark plugin directory (e.g. **wireshark/plugins/mavlink.lua**).
 Swift   | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | | 
@@ -69,6 +67,7 @@ Go      | [gomavlib](https://github.com/gswly/gomavlib) | &check; | &check; | &c
 Go      | [go-mavlink1](https://github.com/mgr9525/go-mavlink1) | &check; | &cross;|  &cross; | Golang MAVLink v1
 Haskell | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)| &cross; | &check; | &cross; | 
 Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | &check; | &check; | &check; | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
+TypeScript/JavaScript/npm | [node-mavlink](https://github.com/padcom/node-mavlink#readme) | &check; | &check; | &check; | TypeScript code generator for data classes with tools to receive and send messages. [Getting started](https://github.com/padcom/node-mavlink#getting-started) guide and inline JSDoc, along with some [examples](https://github.com/padcom/node-mavlink/tree/master/examples).
 
 
 ## Prebuilt MAVLink C Libraries {#prebuilt_libraries}
