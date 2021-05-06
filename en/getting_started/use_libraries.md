@@ -14,6 +14,7 @@ The linked documents explain how to use the MAVLink libraries for different prog
 * C-Sharp (*mavgen*)
 * Objective C (*mavgen*)
 * JavaScript (*mavgen*)
+* [TypeScript/JavaScript (node-mavlink)](https://github.com/padcom/node-mavlink#readme)
 * Lua (*mavgen*)
 * Swift (*mavgen*)
 * [Go (*gomavlib*)](https://pkg.go.dev/github.com/aler9/gomavlib)
