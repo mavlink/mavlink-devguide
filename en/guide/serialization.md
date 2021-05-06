@@ -60,7 +60,7 @@ Byte Index | C version | Content | Value | Explanation
 5 | `uint8_t sysid`  | System ID (sender)     | 1 - 255 | ID of *system* (vehicle) sending the message. Used to differentiate systems on network. Note that the broadcast address 0 may not be used in this field as it is an invalid *source* address.
 6 | `uint8_t compid` | Component ID (sender)   | 1 - 255 | ID of *component* sending the message. Used to differentiate *components* in a *system* (e.g. autopilot and a camera). Use appropriate values in [MAV_COMPONENT](../messages/common.md#MAV_COMPONENT). Note that the broadcast address `MAV_COMP_ID_ALL` may not be used in this field as it is an invalid *source* address.
 <span id="v2_msgid"></span>7 to 9 | `uint32_t msgid:24` | Message ID (low, middle, high bytes) | 0 - 16777215 | ID of *message type* in payload. Used to decode data back into message object.
-<span id="v2_payload"></span>10 to (n+9) | `uint8_t payload[max 255]` | [Payload](#payload) | | Message data. Depends on message type (i.e. Message ID) and contents.
+<span id="v2_payload"></span>For _n_-byte payload:<br>`n=0`: NA, `n=1`: 10, `n=2`: 10-11, `n>2`: 10 to 9+n | `uint8_t payload[max 255]` | [Payload](#payload) | | Message data. Depends on message type (i.e. Message ID) and contents.
 (n+10) to (n+11) | `uint16_t checksum` | [Checksum](#checksum) (low byte, high byte) | | CRC-16/MCRF4XX for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte.
 (n+12) to (n+25) | `uint8_t signature[13]`| [Signature](../guide/message_signing.md) | | (Optional) Signature to ensure the link is tamper-proof.
 
@@ -82,7 +82,7 @@ Byte Index | C version | Content | Value | Explanation
 3 | `uint8_t sysid` | System ID      | 1 - 255 | ID of *system* (vehicle) sending the message. Used to differentiate systems on network. Note that the broadcast address 0 may not be used in this field as it is an invalid *source* address.
 4 | `uint8_t compid`| Component ID   | 1 - 255 | ID of *component* sending the message. Used to differentiate components in a *system* (e.g. autopilot and a camera). Use appropriate values in [MAV_COMPONENT](../messages/common.md#MAV_COMPONENT). Note that the broadcast address `MAV_COMP_ID_ALL` may not be used in this field as it is an invalid *source* address.
 <span id="v1_msgid"></span>5 | `uint8_t msgid` | Message ID     | 0 - 255 | ID of *message type* in payload. Used to decode data back into message object.
-<span id="v1_payload"></span>6 to (n+5) | `uint8_t payload[max 255]` | Payload data | | Message data. Content depends on message type (i.e. Message ID).
+<span id="v1_payload"></span>For _n_-byte payload:<br>`n=0`: NA, `n=1`: 6, `n=2`: 6 to 7, `n>2`: 6 to 5+n | `uint8_t payload[max 255]` | Payload data | | Message data. Content depends on message type (i.e. Message ID).
 (n+6) to (n+7) | `uint16_t checksum` | [Checksum](#checksum) (low byte, high byte) | | CRC-16/MCRF4XX for message (excluding `magic` byte). Includes [CRC_EXTRA](#crc_extra) byte.
 
 * The minimum packet length is 8 bytes for acknowledgment packets without payload.
