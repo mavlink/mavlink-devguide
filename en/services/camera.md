@@ -6,6 +6,13 @@ It also includes messages to query and configure the onboard camera storage.
 
 > **Tip** The [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) provides an implementation of this protocol.
 
+> **Warning** We are transitioning from specific request commands to a single generic requestor.
+> GCS and Camera server systems should support both approaches as we migrate to exclusive use of the new method (documented here).
+> For more information see [Migration Notes for GCS & Camera Servers](#).
+
+
+
+
 ## Camera Connection
 
 Camera components are expected to follow the [Heartbeat/Connection Protocol](../services/heartbeat.md) and sent a constant flow of heartbeats (nominally at 1Hz).
@@ -264,13 +271,6 @@ Other components like a GCS will typically only use the camera `BATTERY_STATUS.b
 
 ## Message/Enum Summary
 
-> **Note** We are transitioning from specific request commands (e.g. [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION)) to the more general [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE).
-The transition works like this:
-1. Camera servers need to handle both, the new generic and old specific commands for now.
-2. Ground stations will move from using the old specific commands to using both. They can try the new one and if they don't get an answer without a timeot they need to fall back to the previous command.
-3. After the new commands have been established in server and ground stations after some time (1-2 years), the old specific commands can more and more be removed from the implementations.
-
-
 Message | Description | Status
 -- | -- | ---
 <span id="MAV_CMD_REQUEST_MESSAGE"></span>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Send command to request any message | to be used
@@ -304,4 +304,21 @@ Enum | Description
 <span id="CAMERA_MODE"></span>[CAMERA_MODE](../messages/common.md#CAMERA_MODE) | Camera mode (image, video, survey etc.). Received in [CAMERA_SETTINGS](#CAMERA_SETTINGS).
 <span id="VIDEO_STREAM_TYPE"></span>[VIDEO_STREAM_TYPE](../messages/common.md#VIDEO_STREAM_TYPE) | Type of stream - e.g. RTSP, MPEG. Received in [VIDEO_STREAM_INFORMATION ](#VIDEO_STREAM_INFORMATION).
 <span id="VIDEO_STREAM_STATUS_FLAGS"></span>[VIDEO_STREAM_STATUS_FLAGS](../messages/common.md#VIDEO_STREAM_TYPE) | Bitmap of stream status flags - e.g. zoom, thermal imaging, etc. Received in [VIDEO_STREAM_INFORMATION ](#VIDEO_STREAM_INFORMATION).
+
+
+## Migration Notes for GCS & Camera Servers
+
+The original definition of this protocol used specific commands to query for each type of information requested from the camera: [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) (for [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION)), [MAV_CMD_REQUEST_CAMERA_SETTINGS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_SETTINGS), [MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS), 
+[MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION), [MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION).
+
+The latest version replaces all of these specific commands with the general requestor [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE).
+
+Cameras are expected to use/migrate to the latest versions of the protocol.
+Ground stations, and camera servers are expected to support both versions of the protocol as we migrate to exclusive use of `MAV_CMD_REQUEST_MESSAGE`. 
+
+The transition works like this:
+1. Camera servers need to handle both approaches for now (i.e. support both new generic and old specific commands).
+2. Ground stations will move from using the old specific commands to using both. They can try the new one and if they don't get an answer within a timeout they need to fall back to the previous command.
+3. After the new commands have been established in server and ground stations, the old specific commands may be removed from the implementations.
+   We estimate this will be 2023-2024 timeframes.
 
