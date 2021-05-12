@@ -28,7 +28,7 @@ The camera identification operation identifies all the available cameras and det
 
 > **Tip** Camera identification must be carried out before all other operations!
 
-The first time a heartbeat is received from a new camera component, the GCS will send it a [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) message.
+The first time a heartbeat is received from a new camera component, the GCS will send it a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message asking for [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION).
 The camera will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result.
 On success (result is [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) the camera component must then send a [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
 
@@ -40,15 +40,15 @@ sequenceDiagram;
     participant GCS
     participant Camera
     Camera->>GCS: HEARTBEAT [cmp id: MAV_COMP_ID_CAMERA] (first)
-    GCS->>Camera: MAV_CMD_REQUEST_CAMERA_INFORMATION
+    GCS->>Camera: MAV_CMD_REQUEST_MESSAGE
     GCS->>GCS: Start timeout
     Camera->>GCS: COMMAND_ACK
     Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info.
     Camera->>GCS: CAMERA_INFORMATION
 -->
 
-The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment (if no `COMMAND_ACK` response is received for `MAV_CMD_REQUEST_CAMERA_INFORMATION` the command will be re-sent a number of times before failing).
-If `CAMERA_INFORMATION` is not received after receiving an ACK with `MAV_RESULT_ACCEPTED`, the protocol assumes the message was lost, and the cycle of sending `MAV_CMD_REQUEST_CAMERA_INFORMATION` is repeated.
+The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment (if no `COMMAND_ACK` response is received for `MAV_CMD_REQUEST_MESSAGE` the command will be re-sent a number of times before failing).
+If `CAMERA_INFORMATION` is not received after receiving an ACK with `MAV_RESULT_ACCEPTED`, the protocol assumes the message was lost, and the cycle of sending `MAV_CMD_REQUEST_MESSAGE` is repeated.
 If `CAMERA_INFORMATION` is still not received after three cycle repeats, the GCS may assume that the camera is not supported.
 
 The `CAMERA_INFORMATION` response contains the bare minimum information about the camera and what it can or cannot do.
@@ -78,7 +78,7 @@ The GCS can determine if it needs to make sure the camera is in the proper mode 
 In addition, some cameras can capture images in any mode but with different resolutions.
 For example, a 20 megapixel camera would take a full resolution image when set to `CAMERA_MODE_IMAGE` but only at the current video resolution if it is set to `CAMERA_MODE_VIDEO`.
 
-To get the current mode, the GCS would send a [MAV_CMD_REQUEST_CAMERA_SETTINGS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_SETTINGS) command.
+To get the current mode, the GCS would send a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command asking for [CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS).
 The camera component will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result.
 On success (`COMMAND_ACK.result` is [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) the camera must then send a [CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS) message.
 The current mode is the `CAMERA_SETTINGS.mode_id` field.
@@ -91,7 +91,7 @@ The sequence is shown below:
 sequenceDiagram;
     participant GCS
     participant Camera
-    GCS->>Camera: MAV_CMD_REQUEST_CAMERA_SETTINGS
+    GCS->>Camera: MAV_CMD_REQUEST_MESSAGE
     GCS->>GCS: Start timeout
     Camera->>GCS: COMMAND_ACK
     Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info.
@@ -123,14 +123,14 @@ sequenceDiagram;
 ### Storage Status
 
 Before capturing images and/or videos, a GCS should query the storage status to determine if the camera has enough free space for these operations (and provide the user with feedback as to the current storage status).
-The GCS will send the [MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION) command and it expects a [STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) response.
+The GCS will send the [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command and it expects a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message back as well as a [STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) response.
 For formatting (or erasing depending on your implementation), the GCS will send a [MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) command.
 
 
 ### Camera Capture Status
 
 In addition to querying about storage status, the GCS will also request the current *Camera Capture Status* in order to provide the user with proper UI indicators.
-The GCS will send a [MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS) command and it expects a [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) response.
+The GCS will send a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command asking for [[CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS)] and it expects a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message back as well as a [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) response.
 
 
 ### Still Image Capture
@@ -173,7 +173,7 @@ sequenceDiagram;
 The message sequence for *interactive user-initiated image capture* through a GUI is slightly different.
 In this case the GCS should:
 - Confirm that the camera is *ready* to take images before allowing the user to request image capture.
-  - It does this by by sending [MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS).
+  - It does this by by sending [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
   - The camera should return a `MAV_RESULT` and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
   - The GCS should check that the status is "Idle" before enabling camera capture in the GUI.
 - Send [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) specifying a single image (only).
@@ -186,7 +186,7 @@ The sequence is as shown below:
 sequenceDiagram;
     participant GCS
     participant Camera
-    GCS->>Camera: MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS
+    GCS->>Camera: MAV_CMD_REQUEST_MESSAGE
     GCS->>GCS: Start timeout
     Camera->>GCS: MAV_RESULT_ACCEPTED
     GCS->>GCS: Start timeout
@@ -237,7 +237,7 @@ sequenceDiagram;
     participant GCS
     participant Camera
     Note over GCS,Camera: IF CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM<br>in CAMERA_INFORMATION.flags<br>request all streams.
-    GCS->>Camera: MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION ( param1=0 )
+    GCS->>Camera: MAV_CMD_REQUEST_MESSAGE
     GCS->>GCS: Start timeout
     Camera->>GCS: MAV_RESULT_ACCEPTED
     Note over Camera,GCS: Camera sends information for<br> all streams.
@@ -249,7 +249,7 @@ sequenceDiagram;
 The steps are:
 1. GCS follows the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
 1. GCS checks if [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) contains the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag.
-1. If so, the GCS sends the [MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION) message to the camera requesting the video streaming configuration for all streams - `param1=0`).
+1. If so, the GCS sends the [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message to the camera requesting the video streaming configuration for all streams - `param2=0`).
    > **Note** A GCS can also request information for a particular stream by setting its id in `param1`.
 1. Camera returns a [VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) message for the specified stream or all streams it supports.
 
@@ -262,33 +262,40 @@ Camera components that are powered from their own battery should publish [BATTER
 
 Other components like a GCS will typically only use the camera `BATTERY_STATUS.battery_remaining` field (or possibly `time_remaining`); generally other fields can be set as "not supported".
 
-
 ## Message/Enum Summary
 
-Message | Description
--- | --
-<span id="MAV_CMD_REQUEST_CAMERA_INFORMATION"></span>[MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) | Send command to request [CAMERA_INFORMATION](#CAMERA_INFORMATION).
+> **Note** We are transitioning from specific request commands (e.g. [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION)) to the more general [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE).
+The transition works like this:
+1. Camera servers need to handle both, the new generic and old specific commands for now.
+2. Ground stations will move from using the old specific commands to using both. They can try the new one and if they don't get an answer without a timeot they need to fall back to the previous command.
+3. After the new commands have been established in server and ground stations after some time (1-2 years), the old specific commands can more and more be removed from the implementations.
+
+
+Message | Description | Status
+-- | -- | ---
+<span id="MAV_CMD_REQUEST_MESSAGE"></span>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Send command to request any message | to be used
 <span id="CAMERA_INFORMATION"></span>[CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) | Basic information about camera including supported features and URI link to extended information (`cam_definition_uri` field).
-<span id="MAV_CMD_REQUEST_CAMERA_SETTINGS"></span>[MAV_CMD_REQUEST_CAMERA_SETTINGS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_SETTINGS) | Send command to request [CAMERA_SETTINGS](#CAMERA_SETTINGS).
-<span id="CAMERA_SETTINGS"></span>[CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS) | Timestamp and camera mode information.
-<span id="MAV_CMD_SET_CAMERA_MODE"></span>[MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) | Send command to set [CAMERA_MODE](#CAMERA_MODE).
-<span id="MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION"></span>[MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION) | Send command to request [VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFORMATION). This is sent once for each camera when a camera is detected and it has set the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag within the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message `flags` field.
-<span id="VIDEO_STREAM_INFORMATION"></span>[VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) | Information defining a video stream configuration. If a camera has more than one video stream, it would send one of this for each video stream, with their specific configuration. Each stream must have its own, unique `stream_id`.
-<span id="MAV_CMD_REQUEST_VIDEO_STREAM_STATUS"></span>[MAV_CMD_REQUEST_VIDEO_STREAM_STATUS](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS) | Send command to request [VIDEO_STREAM_STATUS](#VIDEO_STREAM_STATUS). This is sent whenever there is a mode change (when [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) is sent.) It allows the camera to update the stream configuration when a camera mode change occurs.
-<span id="VIDEO_STREAM_STATUS"></span>[VIDEO_STREAM_STATUS](../messages/common.md#VIDEO_STREAM_STATUS) | Information updating a video stream configuration. <!-- TBD? -->
-<span id="MAV_CMD_REQUEST_STORAGE_INFORMATION"></span>[MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION) | Send command to request [STORAGE_INFORMATION](#storage_information).
-<span id="storage_information"></span>[STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) | Storage information (e.g. number and type of storage devices, total/used/available capacity, read/write speeds).
-<span id="MAV_CMD_STORAGE_FORMAT"></span>[MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) | Send command to format the specified storage device.
-<span id="MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS"></span>[MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS) | Send command to request [CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS).
-<span id="CAMERA_CAPTURE_STATUS"></span>[CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) | Camera capture status, including current capture type (if any), capture interval, available capacity.
-<span id="MAV_CMD_IMAGE_START_CAPTURE"></span>[MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) | Send command to start image capture, specifying the duration between captures and total number of images to capture.
-<span id="MAV_CMD_IMAGE_STOP_CAPTURE"></span>[MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) | Send command to stop image capture.
-<span id="CAMERA_IMAGE_CAPTURED"></span>[CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) | Information about image captured (returned to GPS every time an image is captured).
-<span id="MAV_CMD_VIDEO_START_CAPTURE"></span>[MAV_CMD_VIDEO_START_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_START_CAPTURE) | Send command to start video capture, specifying the frequency that [CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS) messages should be sent while recording.
-<span id="MAV_CMD_VIDEO_STOP_CAPTURE"></span>[MAV_CMD_VIDEO_STOP_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_STOP_CAPTURE) | Send command to stop video capture.
-<span id="CAMERA_IMAGE_CAPTURED"></span>[CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) | Information about image captured (returned to GPS every time an image is captured).
-<span id="MAV_CMD_VIDEO_START_STREAMING"></span>[MAV_CMD_VIDEO_START_STREAMING](../messages/common.md#MAV_CMD_VIDEO_START_STREAMING) | Send command to start video streaming for the given Stream ID (`stream_id`.) This is mostly for streaming protocols that _push_ a stream. If your camera uses a connection based streaming configuration (RTSP, TCP, etc.), you may ignore it if you don't need it but note that you still must ACK the command, like all `MAV_CMD_XXX` commands. When using a connection based streaming configuration, the GCS will connect the stream from its side. When a camera offers more than one stream and the user switches from one stream to another, the GCS will send a [MAV_CMD_VIDEO_STOP_STREAMING](../messages/common.md#MAV_CMD_VIDEO_STOP_STREAMING) command targeting the current Stream ID followed by a [MAV_CMD_VIDEO_START_STREAMING](../messages/common.md#MAV_CMD_VIDEO_START_STREAMING) targeting the newly selected Stream ID.
-<span id="MAV_CMD_VIDEO_STOP_STREAMING"></span>[MAV_CMD_VIDEO_STOP_STREAMING](../messages/common.md#MAV_CMD_VIDEO_STOP_STREAMING) | Send command to stop video streaming for the given Stream ID (`stream_id`.) This is mostly for streaming protocols that _push_ a stream. If your camera uses a connection based streaming configuration (RTSP, TCP, etc.), you may ignore it if you don't need it but note that you still must ACK the command, like all `MAV_CMD_XXX` commands. When using a connection based streaming configuration, the GCS will disconnect the stream from its side. When a camera offers more than one stream and the user switches from one stream to another, the GCS will send a [MAV_CMD_VIDEO_STOP_STREAMING](../messages/common.md#MAV_CMD_VIDEO_STOP_STREAMING) command targeting the current Stream ID followed by a [MAV_CMD_VIDEO_START_STREAMING](../messages/common.md#MAV_CMD_VIDEO_START_STREAMING) targeting the newly selected Stream ID.
+<span id="CAMERA_SETTINGS"></span>[CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS) | Timestamp and camera mode information. |
+<span id="MAV_CMD_SET_CAMERA_MODE"></span>[MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) | Send command to set [CAMERA_MODE](#CAMERA_MODE). |
+<span id="VIDEO_STREAM_INFORMATION"></span>[VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) | Information defining a video stream configuration. If a camera has more than one video stream, it would send one of this for each video stream, with their specific configuration. Each stream must have its own, unique `stream_id`. |
+<span id="VIDEO_STREAM_STATUS"></span>[VIDEO_STREAM_STATUS](../messages/common.md#VIDEO_STREAM_STATUS) | Information updating a video stream configuration. <!-- TBD? --> |
+<span id="storage_information"></span>[STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) | Storage information (e.g. number and type of storage devices, total/used/available capacity, read/write speeds). |
+<span id="MAV_CMD_STORAGE_FORMAT"></span>[MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) | Send command to format the specified storage device. |
+<span id="CAMERA_CAPTURE_STATUS"></span>[CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) | Camera capture status, including current capture type (if any), capture interval, available capacity. |
+<span id="MAV_CMD_IMAGE_START_CAPTURE"></span>[MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) | Send command to start image capture, specifying the duration between captures and total number of images to capture. |
+<span id="MAV_CMD_IMAGE_STOP_CAPTURE"></span>[MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) | Send command to stop image capture. |
+<span id="CAMERA_IMAGE_CAPTURED"></span>[CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) | Information about image captured (returned to GPS every time an image is captured). |
+<span id="MAV_CMD_VIDEO_START_CAPTURE"></span>[MAV_CMD_VIDEO_START_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_START_CAPTURE) | Send command to start video capture, specifying the frequency that [CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS) messages should be sent while recording. |
+<span id="MAV_CMD_VIDEO_STOP_CAPTURE"></span>[MAV_CMD_VIDEO_STOP_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_STOP_CAPTURE) | Send command to stop video capture. |
+<span id="CAMERA_IMAGE_CAPTURED"></span>[CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) | Information about image captured (returned to GPS every time an image is captured). |
+<span id="MAV_CMD_VIDEO_START_STREAMING"></span>[MAV_CMD_VIDEO_START_STREAMING](../messages/common.md#MAV_CMD_VIDEO_START_STREAMING) | Send command to start video streaming for the given Stream ID (`stream_id`.) This is mostly for streaming protocols that _push_ a stream. If your camera uses a connection based streaming configuration (RTSP, TCP, etc.), you may ignore it if you don't need it but note that you still must ACK the command, like all `MAV_CMD_XXX` commands. When using a connection based streaming configuration, the GCS will connect the stream from its side. When a camera offers more than one stream and the user switches from one stream to another, the GCS will send a [MAV_CMD_VIDEO_STOP_STREAMING](../messages/common.md#MAV_CMD_VIDEO_STOP_STREAMING) command targeting the current Stream ID followed by a [MAV_CMD_VIDEO_START_STREAMING](../messages/common.md#MAV_CMD_VIDEO_START_STREAMING) targeting the newly selected Stream ID. |
+<span id="MAV_CMD_VIDEO_STOP_STREAMING"></span>[MAV_CMD_VIDEO_STOP_STREAMING](../messages/common.md#MAV_CMD_VIDEO_STOP_STREAMING) | Send command to stop video streaming for the given Stream ID (`stream_id`.) This is mostly for streaming protocols that _push_ a stream. If your camera uses a connection based streaming configuration (RTSP, TCP, etc.), you may ignore it if you don't need it but note that you still must ACK the command, like all `MAV_CMD_XXX` commands. When using a connection based streaming configuration, the GCS will disconnect the stream from its side. When a camera offers more than one stream and the user switches from one stream to another, the GCS will send a [MAV_CMD_VIDEO_STOP_STREAMING](../messages/common.md#MAV_CMD_VIDEO_STOP_STREAMING) command targeting the current Stream ID followed by a [MAV_CMD_VIDEO_START_STREAMING](../messages/common.md#MAV_CMD_VIDEO_START_STREAMING) targeting the newly selected Stream ID. |
+<span id="MAV_CMD_REQUEST_CAMERA_SETTINGS"></span>[MAV_CMD_REQUEST_CAMERA_SETTINGS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_SETTINGS) | Send command to request [CAMERA_SETTINGS](#CAMERA_SETTINGS). | deprecated
+<span id="MAV_CMD_REQUEST_CAMERA_INFORMATION"></span>[MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) | Send command to request [CAMERA_INFORMATION](#CAMERA_INFORMATION). | deprecated
+<span id="MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION"></span>[MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION) | Send command to request [VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFORMATION). This is sent once for each camera when a camera is detected and it has set the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag within the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message `flags` field. | deprecated
+<span id="MAV_CMD_REQUEST_VIDEO_STREAM_STATUS"></span>[MAV_CMD_REQUEST_VIDEO_STREAM_STATUS](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS) | Send command to request [VIDEO_STREAM_STATUS](#VIDEO_STREAM_STATUS). This is sent whenever there is a mode change (when [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) is sent.) It allows the camera to update the stream configuration when a camera mode change occurs. | deprecated
+<span id="MAV_CMD_REQUEST_STORAGE_INFORMATION"></span>[MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION) | Send command to request [STORAGE_INFORMATION](#storage_information). | deprecated
+<span id="MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS"></span>[MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS) | Send command to request [CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS). | deprecated
 
 
 Enum | Description
