@@ -6,12 +6,10 @@ It also includes messages to query and configure the onboard camera storage.
 
 > **Tip** The [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) provides an implementation of this protocol.
 
+<span></span>
 > **Warning** We are transitioning from specific request commands to a single generic requestor.
-> GCS and Camera server systems should support both approaches as we migrate to exclusive use of the new method (documented here).
-> For more information see [Migration Notes for GCS & Camera Servers](#).
-
-
-
+  GCS and MAVLink SDKs/apps should support both approaches as we migrate to exclusive use of the new method (documented here).
+  For more information see [Migration Notes for GCS & Camera Servers](#migration-notes-for-gcs--mavlink-sdks).
 
 ## Camera Connection
 
@@ -306,7 +304,7 @@ Enum | Description
 <span id="VIDEO_STREAM_STATUS_FLAGS"></span>[VIDEO_STREAM_STATUS_FLAGS](../messages/common.md#VIDEO_STREAM_TYPE) | Bitmap of stream status flags - e.g. zoom, thermal imaging, etc. Received in [VIDEO_STREAM_INFORMATION ](#VIDEO_STREAM_INFORMATION).
 
 
-## Migration Notes for GCS & Camera Servers
+## Migration Notes for GCS & MAVLink SDKs
 
 The original definition of this protocol used specific commands to query for each type of information requested from the camera: [MAV_CMD_REQUEST_CAMERA_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_CAMERA_INFORMATION) (for [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION)), [MAV_CMD_REQUEST_CAMERA_SETTINGS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_SETTINGS), [MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS), 
 [MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION), [MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION).
@@ -314,7 +312,7 @@ The original definition of this protocol used specific commands to query for eac
 The latest version replaces all of these specific commands with the general requestor [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE).
 
 Cameras are expected to use/migrate to the latest versions of the protocol.
-Ground stations, and camera servers are expected to support both versions of the protocol as we migrate to exclusive use of `MAV_CMD_REQUEST_MESSAGE`. 
+Ground stations and MAVLink SDKs are expected to support both versions of the protocol as we migrate to exclusive use of `MAV_CMD_REQUEST_MESSAGE`.
 
 The transition works like this:
 1. Camera servers need to handle both approaches for now (i.e. support both new generic and old specific commands).
