@@ -1,7 +1,7 @@
 # Camera Definition File
 
-A GCS will build a Camera Controller UI for image capture, video capture and video streaming using information provided by the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message. 
-For very simple cameras, the information in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message itself is sufficient to construct the UI. 
+A GCS will build a Camera Controller UI for image capture, video capture and video streaming using information provided by the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
+For very simple cameras, the information in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message itself is sufficient to construct the UI.
 For more advanced cameras (with settings and options) the information required to build the UI must be supplied in a *Camera Definition File* that is located at the URI specified in the message's `cam_definition_uri` field.
 
 The *Camera Definition File* contains all the camera settings, the options for each setting, and exclusion lists (options that invalidate or are conditional on other settings).
@@ -44,7 +44,7 @@ All fields are self explanatory:
 
 An extended set of parameter messages is used to define settings and options.
 These minimally have a parameter name, type and default value (types can be predefined or arbitrary - though arbitrary types are only supported by custom camera controllers).
-They will also have a description that is displayed to the user and the set of possible options. 
+They will also have a description that is displayed to the user and the set of possible options.
 
 Parameters can be simple or quite complex, depending on the behavior they change.
 
@@ -104,7 +104,7 @@ In this case, the GCS will automatically build a drop down list with the options
 
 #### Common Parameters
 
-_Common Parameters_ are reserved parameter names for which the GCS can build specific UI controls (if found in a camera definition). 
+_Common Parameters_ are reserved parameter names for which the GCS can build specific UI controls (if found in a camera definition).
 
 > **Note** These parameters are common to many cameras (though their valid options vary considerably).
 
