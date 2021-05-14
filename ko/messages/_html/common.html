@@ -9918,7 +9918,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Start orbiting on the circumference of a circle defined by the parameters. Setting any value NaN results in using defaults.</p>
+   </a>Start orbiting on the circumference of a circle defined by the parameters. Setting values to NaN/INT32_MAX (as appropriate) results in using defaults.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -9931,14 +9931,14 @@
    <tbody>
     <tr>
      <td>1: Radius</td>
-     <td>Radius of the circle. positive: Orbit clockwise. negative: Orbit counter-clockwise.</td>
+     <td>Radius of the circle. Positive: orbit clockwise. Negative: orbit counter-clockwise. NaN: Use vehicle default radius, or current radius if already orbiting.</td>
      <td>
      </td>
      <td>m</td>
     </tr>
     <tr>
      <td>2: Velocity</td>
-     <td>Tangential Velocity. NaN: Vehicle configuration default.</td>
+     <td>Tangential Velocity. NaN: Use vehicle default velocity, or current velocity if already orbiting.</td>
      <td>
      </td>
      <td>m/s</td>
@@ -9951,16 +9951,15 @@
      </td>
     </tr>
     <tr>
-     <td>4</td>
-     <td>Reserved (e.g. for dynamic center beacon options)</td>
+     <td>4: Orbits</td>
+     <td>Orbit around the centre point for this many radians (i.e. for a three-quarter orbit set 270*Pi/180). 0: Orbit forever. NaN: Use vehicle default, or current value if already orbiting.</td>
      <td>
-     </td>
-     <td>
-     </td>
+      <em>min:</em>0 </td>
+     <td>rad</td>
     </tr>
     <tr>
      <td>5: Latitude/X</td>
-     <td>Center point latitude (if no MAV_FRAME specified) / X coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
+     <td>Center point latitude (if no MAV_FRAME specified) / X coordinate according to MAV_FRAME. INT32_MAX (or NaN if sent in COMMAND_LONG): Use current vehicle position, or current center if already orbiting.</td>
      <td>
      </td>
      <td>
@@ -9968,7 +9967,7 @@
     </tr>
     <tr>
      <td>6: Longitude/Y</td>
-     <td>Center point longitude (if no MAV_FRAME specified) / Y coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
+     <td>Center point longitude (if no MAV_FRAME specified) / Y coordinate according to MAV_FRAME. INT32_MAX (or NaN if sent in COMMAND_LONG): Use current vehicle position, or current center if already orbiting.</td>
      <td>
      </td>
      <td>
@@ -9976,7 +9975,7 @@
     </tr>
     <tr>
      <td>7: Altitude/Z</td>
-     <td>Center point altitude (MSL) (if no MAV_FRAME specified) / Z coordinate according to MAV_FRAME. NaN: Use current vehicle position or current center if already orbiting.</td>
+     <td>Center point altitude (MSL) (if no MAV_FRAME specified) / Z coordinate according to MAV_FRAME. NaN: Use current vehicle altitude.</td>
      <td>
      </td>
      <td>
@@ -21857,7 +21856,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Message encoding a command with parameters as scaled integers. Scaling depends on the actual command value. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
+   </a>Message encoding a command with parameters as scaled integers. Scaling depends on the actual command value. NaN or INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current latitude, yaw rather than a specific value). The command microservice is documented at https://mavlink.io/en/services/command.html</p>
   <table class="sortable">
    <thead>
     <tr>
