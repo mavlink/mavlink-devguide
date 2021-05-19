@@ -6,58 +6,33 @@
 
 ## 先决条件
 
-使用*MAVLink工具*的要求是：
+The requirements for using the *MAVLink generator* are:
 
-* Python 3.3+ (recommended) or Python 2.7+
+* Python 3.3+
 * Python [future](http://python-future.org/)模块
-* (可选) Python[Tklnter](https://wiki.python.org/moin/TkInter)模块(如果需要使用图形用户界面)。
+* [TkInter](https://wiki.python.org/moin/TkInter) (required to use the GUI tool).
 * 环境变量`PYTHONPATH`必须包含*mavlink*存储库的目录路径。
 
-## 安装步骤
+If you are creating new XML definitions you should also install lxml and libxml2 for XML validation and formatting.
 
-主要安装步骤是：
+## Installation
 
-1. Install Python 3.3+ (or Python 2.7+): 
+To install the MAVLink tools:
+
+1. Install Python 3.6+: 
     * **Windows:**从[Python for Windows](https://www.python.org/downloads/)下载。
-    * **Ubuntu Linux 18.04:** Python 3 (and Python 2.7+) are already present. 如果你使用的是Python3，则需要安装*pip3*安装包管理工具。 ```sudo apt-get install python3-pip```
-
-2. Install the *future* module:
-    
+    * **Ubuntu Linux** Python 3 is present on 18.04 and 20.04 by default but you will need to install the *pip3* package manager: ```sudo apt install python3-pip```
+2. Install the *future* module: 
     * **Windows:** ```pip3 install future```
-    * **Linux:**
-        
-        Python 3:
-        
-            pip3 install --user future
-            
-        
-        Python 2:
-        
-            pip install --user future
-            
+    * **Linux:** ```pip3 install --user future```
+3. (Recommended) Install modules for XML validation and formatting: 
+    * **Linux:** ```sudo apt install python3-lxml libxml2-utils``` 
+4. (Optional) Install TkInter 
+    * **Windows:** Installed already as part of *Python for Windows*
+    * **Linux:** Enter the following terminal command: ```sudo apt install python3-tk```
+5. Clone the [mavlink repo](https://github.com/mavlink/mavlink) (or your fork) into a user-writable directory: ```git clone https://github.com/mavlink/mavlink.git --recursive```
+6. Set `PYTHONPATH` to the directory path containing your *mavlink* repository. 
+    * **Windows:** `set PYTHONPATH=C:\path_to_root_of_cloned_mavlink_repository`
+    * **Linux:** `PYTHONPATH=path_to_root_of_cloned_mavlink_repository`
 
-3. (可选) 安装Tklnter
-    
-    * **Windows:**已作为*Python for Windows*的一部分被安装。
-    * **Linux:** Enter the following terminal command:
-        
-        Python 3:
-        
-            sudo apt-get install python3-tk
-            
-        
-        Python 2:
-        
-            sudo apt-get install python-tk
-            
-
-4. 将[mavlink repo](https://github.com/mavlink/mavlink)(或你的fork) 克隆到一个用户可写目录中：
-    
-        git clone https://github.com/mavlink/mavlink.git --recursive
-        
-
-5. 设置环境变量`PYTHONPATH`包含你的*mavlink*仓库路径。 
-    * **Windows:**`set PYTHONPATH=C:\your_path_to_mavlink_clone`
-    * **Linux:** `PYTHONPATH=your_path_to_mavlink_clone`
-
-现在你可以开始[生成MAVLink库](../getting_started/generate_libraries.md)。
+Now you are ready to [Generate MAVLink Libraries](../getting_started/generate_libraries.md).
