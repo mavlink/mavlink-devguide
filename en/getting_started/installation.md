@@ -22,7 +22,7 @@ If you are creating new XML definitions you should also install lxml and libxml2
 
 To install the MAVLink tools:
 
-1. Install Python 3.3+:
+1. Install Python 3.6+:
    * **Windows:** Download from [Python for Windows](https://www.python.org/downloads/)
    * **Ubuntu Linux** Python 3 is present on 18.04 and 20.04 by default but you will need to install the *pip3* package manager:
      ```
