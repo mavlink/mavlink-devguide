@@ -8806,6 +8806,47 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="NAV_VTOL_LAND_OPTIONS">
+   <a href="#NAV_VTOL_LAND_OPTIONS">NAV_VTOL_LAND_OPTIONS</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="NAV_VTOL_LAND_OPTIONS_DEFAULT">
+     <td>0</td>
+     <td>
+      <a href="#NAV_VTOL_LAND_OPTIONS_DEFAULT">NAV_VTOL_LAND_OPTIONS_DEFAULT</a>
+     </td>
+     <td>Default autopilot landing behaviour.</td>
+    </tr>
+    <tr id="NAV_VTOL_LAND_OPTIONS_FW_DESCENT">
+     <td>1</td>
+     <td>
+      <a href="#NAV_VTOL_LAND_OPTIONS_FW_DESCENT">NAV_VTOL_LAND_OPTIONS_FW_DESCENT</a>
+     </td>
+     <td>Descend in fixed wing mode, transitioning to multicopter mode for vertical landing when close to the ground.
+          The fixed wing descent pattern is at the discretion of the vehicle (e.g. transition altitude, loiter direction, radius, and speed, etc.).</td>
+    </tr>
+    <tr id="NAV_VTOL_LAND_OPTIONS_HOVER_DESCENT">
+     <td>2</td>
+     <td>
+      <a href="#NAV_VTOL_LAND_OPTIONS_HOVER_DESCENT">NAV_VTOL_LAND_OPTIONS_HOVER_DESCENT</a>
+     </td>
+     <td>Land in multicopter mode on reaching the landing co-ordinates (the whole landing is by "hover descent").</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_WINCH_STATUS_FLAG">
    <a href="#MAV_WINCH_STATUS_FLAG">MAV_WINCH_STATUS_FLAG</a>
   </h3>
@@ -10276,13 +10317,15 @@
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Values</th>
      <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
-     <td>1</td>
-     <td>Empty</td>
+     <td>1: Land Options</td>
+     <td>Landing behaviour.</td>
+     <td>NAV_VTOL_LAND_OPTIONS</td>
      <td>
      </td>
     </tr>
@@ -10291,20 +10334,28 @@
      <td>Empty</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3: Approach Altitude</td>
      <td>Approach altitude (with the same reference as the Altitude field). NaN if unspecified.</td>
+     <td>
+     </td>
      <td>m</td>
     </tr>
     <tr>
      <td>4: Yaw</td>
      <td>Yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).</td>
+     <td>
+     </td>
      <td>deg</td>
     </tr>
     <tr>
      <td>5: Latitude</td>
      <td>Latitude</td>
+     <td>
+     </td>
      <td>
      </td>
     </tr>
@@ -10313,10 +10364,14 @@
      <td>Longitude</td>
      <td>
      </td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>7: Ground Altitude</td>
      <td>Altitude (ground level)</td>
+     <td>
+     </td>
      <td>m</td>
     </tr>
    </tbody>
