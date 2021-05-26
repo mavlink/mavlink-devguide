@@ -4,6 +4,20 @@ High latency links (e.g. Iridium Satellite links) provide global connectivity, a
 
 The protocol provides a heartbeat-like message ([HIGH_LATENCY2](#HIGH_LATENCY2)) for transmitting just the most important telemetry at low rate, and a command ([MAV_CMD_CONTROL_HIGH_LATENCY](#MAV_CMD_CONTROL_HIGH_LATENCY)) for enabling/disabling the high latency link when needed (i.e. when no lower-latency link is available).
 
+## Heartbeat/Routing
+
+High latency links are expensive. In order to reduce traffic to the bare minimum, some of the fundamental assumptions of MAVLink are explicitly broken:
+- [HEARTBEAT](../messages/common.md#HEARTBEAT) messages are not emitted on the channel (either by the autopilot or GCS).
+
+  > **Note** The heartbeat is used to build MAVLInk routing tables between channels. Commands addressed specifically to the high latency component may not be routed from another channel (i.e. you can connect to the component from a GCS directly, but not via a MAVLink router).
+- Broadcast messages from the network should not be automatically sent over the high latency channel.
+
+The other rules are essentially the same but there are some implications of the above changes:
+- Broadcast messages from the high latency channel should be routed to other nodes on the network as usual. Note that this in reality most systems on a high latency network **only** send `HIGH_LATENCY2`.
+- Addressed messages should be sent over the high latency channel (in both directions) in accordance with the normal routing rules. In practice the lack of `HEARTBEAT` means that addressed messages are unlikely to arrive, and hence be sent.
+
+The implication is that while all components on a MAVLink network will get [HIGH_LATENCY2](#HIGH_LATENCY2) updates, only the directly connected GCS (or other component) will be able to command the vehicle.
+
 
 ## Message/Enum Summary
 
@@ -12,14 +26,14 @@ The protocol provides a heartbeat-like message ([HIGH_LATENCY2](#HIGH_LATENCY2))
 | <a id="HIGH_LATENCY2"></a>[HIGH_LATENCY2](../messages/common.md#HIGH_LATENCY2) | A heartbeat-like message that contains all the most important (but not time-sensitive) telemetry for sending over high latency links. |
 
 
-| Command                                                                                                                               | Description                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| <span id="MAV_CMD_CONTROL_HIGH_LATENCY"></span>[MAV_CMD_CONTROL_HIGH_LATENCY](../messages/common.md#MAV_CMD_CONTROL_HIGH_LATENCY) | Command to start/stop transmitting high latency telemetry (`HIGH_LATENCY2`). |
+| Command                                                                                                         | Description                                                                  |
+| --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| <a id="MAV_CMD_CONTROL_HIGH_LATENCY"></a>[MAV_CMD_CONTROL_HIGH_LATENCY](../messages/common.md#MAV_CMD_CONTROL_HIGH_LATENCY) | Command to start/stop transmitting high latency telemetry (`HIGH_LATENCY2`). |
 
 
-| Enum                                                                                         | Description                                                    |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| <span id="HL_FAILURE_FLAG"></span>[HL_FAILURE_FLAG](../messages/common.md#HL_FAILURE_FLAG) | Flags to report failure cases over the high latency telemetry. |
+| Enum                                                                                | Description                                                    |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| <a id="HL_FAILURE_FLAG"></a>[HL_FAILURE_FLAG](../messages/common.md#HL_FAILURE_FLAG) | Flags to report failure cases over the high latency telemetry. |
 
 
 ## Sequences
