@@ -214,34 +214,34 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
 > 在消息中的 `<extensions>` 标记之后定义的任何字段都是扩展字段。 例如, `OPTICAL_FLOW` 具有 `flow_rate_x` 和 `flow_rate_y` 字段, 这些字段将仅在 MAVLink 2 中发送:
 > 
 > ```xml
-    <message id="100" name="OPTICAL_FLOW">
-      <description>Optical flow from a flow sensor (e.g. optical mouse sensor)</description>
-      <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX)</field>
-      <field type="uint8_t" name="sensor_id">Sensor ID</field>
-      <field type="int16_t" name="flow_x" units="dpixels">Flow in pixels * 10 in x-sensor direction (dezi-pixels)</field>
-      <field type="int16_t" name="flow_y" units="dpixels">Flow in pixels * 10 in y-sensor direction (dezi-pixels)</field>
-      <field type="float" name="flow_comp_m_x" units="m">Flow in meters in x-sensor direction, angular-speed compensated</field>
-      <field type="float" name="flow_comp_m_y" units="m">Flow in meters in y-sensor direction, angular-speed compensated</field>
-      <field type="uint8_t" name="quality">Optical flow quality / confidence. 0: bad, 255: maximum quality</field>
-      <field type="float" name="ground_distance" units="m">Ground distance in meters. Positive value: distance known. Negative value: Unknown distance</field>
-      <extensions/>
-      <field type="float" name="flow_rate_x" units="rad/s">Flow rate in radians/second about X axis</field>
-      <field type="float" name="flow_rate_y" units="rad/s">Flow rate in radians/second about Y axis</field>
-    </message>
-```
-
-扩展消息的规则是：
-
-- 扩展字段可以添加任何 id 的信息，包括 MAVLink 1 消息id 范围内的信息。
-- 当消息使用 *MAVLink 1*协议编码时发送扩展字段。 
-- 如果没有扩展字段的实施收到，则字段不会被看到。
-- 如果由没有扩展字段的实现发送, 则收件人将看到扩展字段的零值。
-- 扩展字段是 [not reordered](../guide/serialization.md#field_reordering) 或在序列化消息时包含在 [CRC_EXTRA](../guide/serialization.md#crc_extra) 中。
-- 必须将新的扩展字段添加到消息定义的末尾 (对于扩展字段, 序列化顺序由 XML 定义顺序定义)。
-
-否则规则相同；添加后，你不能修改或删除字段。 但是, 只要不超过最大字段数或有效负载大小限制, 就可以继续向消息末尾添加新字段。
-
-<!-- A FEW NOTES
+>     <message id="100" name="OPTICAL_FLOW">
+>       <description>Optical flow from a flow sensor (e.g. optical mouse sensor)</description>
+>       <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX)</field>
+>       <field type="uint8_t" name="sensor_id">Sensor ID</field>
+>       <field type="int16_t" name="flow_x" units="dpixels">Flow in pixels * 10 in x-sensor direction (dezi-pixels)</field>
+>       <field type="int16_t" name="flow_y" units="dpixels">Flow in pixels * 10 in y-sensor direction (dezi-pixels)</field>
+>       <field type="float" name="flow_comp_m_x" units="m">Flow in meters in x-sensor direction, angular-speed compensated</field>
+>       <field type="float" name="flow_comp_m_y" units="m">Flow in meters in y-sensor direction, angular-speed compensated</field>
+>       <field type="uint8_t" name="quality">Optical flow quality / confidence. 0: bad, 255: maximum quality</field>
+>       <field type="float" name="ground_distance" units="m">Ground distance in meters. Positive value: distance known. Negative value: Unknown distance</field>
+>       <extensions/>
+>       <field type="float" name="flow_rate_x" units="rad/s">Flow rate in radians/second about X axis</field>
+>       <field type="float" name="flow_rate_y" units="rad/s">Flow rate in radians/second about Y axis</field>
+>     </message>
+> ```
+> 
+> 扩展消息的规则是：
+> 
+> - 扩展字段可以添加任何 id 的信息，包括 MAVLink 1 消息id 范围内的信息。
+> - 当消息使用 *MAVLink 1*协议编码时发送扩展字段。 
+> - 如果没有扩展字段的实施收到，则字段不会被看到。
+> - 如果由没有扩展字段的实现发送, 则收件人将看到扩展字段的零值。
+> - 扩展字段是 [not reordered](../guide/serialization.md#field_reordering) 或在序列化消息时包含在 [CRC_EXTRA](../guide/serialization.md#crc_extra) 中。
+> - 必须将新的扩展字段添加到消息定义的末尾 (对于扩展字段, 序列化顺序由 XML 定义顺序定义)。
+> 
+> 否则规则相同；添加后，你不能修改或删除字段。 但是, 只要不超过最大字段数或有效负载大小限制, 就可以继续向消息末尾添加新字段。
+> 
+> <!-- A FEW NOTES
 
 common.xml
 
@@ -267,157 +267,157 @@ Open questions:
   - ?
 
 -->
-
-## 枚举 {#enums}
-
-[Enums](../guide/xml_schema.md#enum) 用于定义可用作消息中的选项的命名值, 例如, 用于表示错误、状态或模式。
-
-每个枚举都具有必需的 `name` 属性, 并且可能包含支持的值的多个 `entry` 元素 (具有枚举唯一名称)。 *相同* 的 `enum` 可以用 **common.xml** 和多种语支声明。 生成的库将合并条目值, 如果有任何重复的名称, 则应报告错误。
-
-典型的枚举 ([LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE)) 如下所示:
-
-```xml
-<enum name="LANDING_TARGET_TYPE">
-    <description>Type of landing target</description>
-    <entry value="0" name="LANDING_TARGET_TYPE_LIGHT_BEACON">
-        <description>Landing target signaled by light beacon (ex: IR-LOCK)</description>
-    </entry>
-    <entry value="1" name="LANDING_TARGET_TYPE_RADIO_BEACON">
-        <description>Landing target signaled by radio beacon (ex: ILS, NDB)</description>
-    </entry>
-    <entry value="2" name="LANDING_TARGET_TYPE_VISION_FIDUCIAL">
-        <description>Landing target represented by a fiducial marker (ex: ARTag)</description>
-    </entry>
-    <entry value="3" name="LANDING_TARGET_TYPE_VISION_OTHER">
-        <description>Landing target represented by a pre-defined visual shape/feature (ex: X-marker, H-marker, square)</description>
-    </entry>
-```
-
-### 创建枚举
-
-在 **common.xml** 和/或 *dialect* 文件中的 `<enums></enums>` 标记之间必须声明枚举。 每个枚举都是使用 ` <enum name="SOME_NAME"> 定义的..。 </enum> ` 标记 (带有 `name` 属性)。
-
-> **Tip** **common.xml** 或 *dialect* 文件中定义的枚举之间没有区别 (除了管理命名空间)。
-
-枚举的主要规则是:
-
-- 枚举 **must** 包括强制 `name` 属性。 
-  - 对于共享相同 `name` 的所有枚举, 将合并条目。
-- 枚举 *should* (非常强烈推荐) 包括 `description`。 <!-- update if this becomes mandatory --> If enums are merged, only one description will be used (usually the first that is encountered).
-
-- 枚举 *may* 标记为已弃用。
-- 枚举 *must* 至少有一个枚举项。
-- 条目： 
-  - *必须* 具有 `name` 属性。 
-    - `name` 在枚举中的所有条目中必须是唯一的。
-    - 通过 *convention*, `name` 应以枚举名称 (例如枚举 `LANDING_TARGET_TYPE` 具有条目 `LANDING_TARGET_TYPE_LIGHT_BEACON`) 作为前缀。
-  - *should* 具有 `value` 属性, 如果分配了该属性, 则在 (合并) 枚举中必须是唯一的。 Missing values will automatically be sequentially assigned (starting from 1, if the first value is not assigned). > **Tip** We recommend you assign values because then new entries can be added within the range without breaking compatibility.
-  - *should*(非常强烈建议) 包括 `description` 元素。 
-  - 可能表示位掩码, 在这种情况下, 值将增加2。
-  - *may* 标记为已弃用。
-
-> **Warning** 您不能依赖特定的生成器来完全测试是否符合上述规则。 *mavgen* 在列表中重复名称测试，重复 (合并) 枚举条目的名字，重复数字。
-
-### 修改 Enum
-
-更改名称或删除 *将会* 发送任何使用与生成的图书馆旧版本不符的清单消息。 同样，更改 `名称` 或 `值`，或删除枚举条目，*将会* 发送信息，以使用与生成的图书馆的老版本不一致的。
-
-在添加新的枚举条目/值时，必须注意 *可能* 使生成的图书馆不兼容：
-
-- 自动生成条目值可能更改
-- 客户端代码可能无法处理新值。
-
-如果需要通过这些方式更改枚举，则有几个选项：
-
-- 可以用预定条目创建一个新枚举。 在某些时候, 旧消息可能会被标记为 [deprecated](../guide/xml_schema.md#deprecated)。
-- 可以更新消息, 并迭代语支版本号。 
-
-无论如何，消息的所有用户都需要与新的客户端库更新。
-
-> **Tip** 在提出修改 **common.xml** 之前, 要检查主要利益相关者的代码库, 以确认影响。
-
-对于 **common.xml** 中的一个清单，要么更改，要么需要主要利益攸关方的同意
-
-- 在 MAVLink 开发者会议上创建 PR 和讨论。
-
-可以在不打破二进制兼容性的情况下，修改枚举/枚举条目描述。 还应当注意确保改变解释方式的任何变化由利益攸关方商定，并由适当的版本控制加以处理。
-
-枚举很少被删除，因为这可能打破与传统的 MAVLink 1 硬件的兼容性，这些硬件不可能更新到最新版本。
-
-## 命令 {#mavlink_commands}
-
-MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#mav_commands) enum. 它们用于界定在自主任务(见[Mission Protocol](../services/mission.md))，或以任何方式发送命令(见[Command Protocol](../services/command.md))。
-
-> **Tip** The schema for commands is documented [here](../guide/xml_schema.md#MAV_CMD).
-
-一个典型的任务命令是([MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT)) 如下：
-
-```xml
-    <enum name="MAV_CMD">
-      <description>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data.</description>
-      <entry value="16" name="MAV_CMD_NAV_WAYPOINT">
-        <description>Navigate to waypoint.</description>
-        <param index="1">Hold time in decimal seconds. (ignored by fixed wing, time to stay at waypoint for rotary wing)</param>
-        <param index="2">Acceptance radius in meters (if the sphere with this radius is hit, the waypoint counts as reached)</param>
-        <param index="3">0 to pass through the WP, if &gt; 0 radius in meters to pass by WP. Positive value for clockwise orbit, negative value for counter-clockwise orbit. Allows trajectory control.</param>
-        <param index="4">Desired yaw angle at waypoint (rotary wing). NaN for unchanged.</param>
-        <param index="5">Latitude</param>
-        <param index="6">Longitude</param>
-        <param index="7">Altitude</param>
-      </entry>
-      ...
-    </enum>
-```
-
-MAVLink 命令规则和其他的 [enums](#enums) 极其相同。 还有一些其他公约。
-
-### 命令 (条目) 值 {#command_values}
-
-所有任务命令条目 *必须* 具有价值(这不是由工具链强制执行的，而是与其他清单一样，它减少了所有无意改变和拆散其他系统的值的机会)。
-
-对于 Mavlink 每个语支都被分配到一个特定的范围, 从中可以选择 id。 这可确保任何语支都可以包含任何其他语支 (或 **common. xml**), 而不会发生冲突。 它还意味着，消息可以从语支到 **common.xml** 而不需要修改的任何代码。
-
-语支可以在其范围内选择任何信息。 然而，我们建议，所有*related* 命令都保留在同一块ID中，如果今后可能有更类似的命令，那么空格可能会被留待新的命令。
-
-分配范围如下。
-
-| 语支                | 范围            |
-| ----------------- | ------------- |
-| Common.xml        | 0 - 39999     |
-| asluav.xml        | 40001 - 41999 |
-| ArduPilotMega.xml | 42000 - 42999 |
-| slugs.xml         | 10001 - 11999 |
-
-> **Tip** 如果要创建新的公共语支, [create an issue](https://github.com/mavlink/mavlink/issues/new) 以请求您自己的消息 Id 范围。 对于私有语支, 您可以使用任何您喜欢的版本。
-
-有一些常见的命令和 ardupilot 命令超出了范围 (例如16、200等)。 通常, 您只会使用这些范围, 以便为新命令提供一个与相关命令相关的 id。 这可以做到, 前提是 *mavlink/mavlink* 存储库中的任何其他 xml 文件都不使用命令 id 值。
-
-### 条目名称 {#command_names}
-
-与其他枚举一样, 枚举条目名称应以枚举名称 (即 `MAV_CMD_`) 作为前缀。 此外, 还有一些其他用于常见命令类型的 "标准" 前缀:
-
-- `MAV_CMD_NAV_`: `NAV` 命令用于导航/移动命令 (以特定方式转到特定航点或移动的命令)。
-- `MAV_CMD_DO_`: `DO` 命令用于设置模式、改变高度或速度等。
-- `MAV_CMD_CONDITION_`: `CONDITION_` 命令用于定义任务状态机移动到下一个项目之前的条件 (例如, 在拍照前到达航点之后的一段时间)。
-- `MAV_CMD_REQUEST_`: 用于请求系统的信息。
-
-> **Tip** 上述前缀的规则是灵活的；有些 DO 命令可能是合理的 NAV 命令。 在某些情况下, 要求提供信息可能是一种 `MAV_CMD_REQUEST_`, 而在另一些情况下, 它可能是一条独立的消息。
-
-### 参数 (参数) {#param}
-
-消息数据在 [param](../guide/xml_schema.md#param) 值/属性中进行编码。
-
-#### 标准映射
-
-参数 (`params`) 必须具有1到7之间的索引。
-
-如果命令包含位置信息，这总是存储在：参数5 (x/纬度)、参数6 (y/经度)、参数7 (z, 高度)。 该值是本地 (x, y, z) 还是全局 (纬度、经度、高度) 取决于命令和使用的帧 (通常在父消息中定义的帧)。
-
-#### 数据类型
-
-`参数` 索引 1-4 的数据，7 总是在一个大小 `浮动`，而索引5，6也可作为`int 32`(视所使用的消息而定)。 这意味着不应使用指数5和6用于可能需要以浮动点值发送的数据（例如`NaN`）。
-
-<!-- 
+> 
+> ## 枚举 {#enums}
+> 
+> [Enums](../guide/xml_schema.md#enum) 用于定义可用作消息中的选项的命名值, 例如, 用于表示错误、状态或模式。
+> 
+> 每个枚举都具有必需的 `name` 属性, 并且可能包含支持的值的多个 `entry` 元素 (具有枚举唯一名称)。 *相同* 的 `enum` 可以用 **common.xml** 和多种语支声明。 生成的库将合并条目值, 如果有任何重复的名称, 则应报告错误。
+> 
+> 典型的枚举 ([LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE)) 如下所示:
+> 
+> ```xml
+> <enum name="LANDING_TARGET_TYPE">
+>     <description>Type of landing target</description>
+>     <entry value="0" name="LANDING_TARGET_TYPE_LIGHT_BEACON">
+>         <description>Landing target signaled by light beacon (ex: IR-LOCK)</description>
+>     </entry>
+>     <entry value="1" name="LANDING_TARGET_TYPE_RADIO_BEACON">
+>         <description>Landing target signaled by radio beacon (ex: ILS, NDB)</description>
+>     </entry>
+>     <entry value="2" name="LANDING_TARGET_TYPE_VISION_FIDUCIAL">
+>         <description>Landing target represented by a fiducial marker (ex: ARTag)</description>
+>     </entry>
+>     <entry value="3" name="LANDING_TARGET_TYPE_VISION_OTHER">
+>         <description>Landing target represented by a pre-defined visual shape/feature (ex: X-marker, H-marker, square)</description>
+>     </entry>
+> ```
+> 
+> ### 创建枚举
+> 
+> 在 **common.xml** 和/或 *dialect* 文件中的 `<enums></enums>` 标记之间必须声明枚举。 每个枚举都是使用 ` <enum name="SOME_NAME"> 定义的..。 </enum> ` 标记 (带有 `name` 属性)。
+> 
+> > **Tip** **common.xml** 或 *dialect* 文件中定义的枚举之间没有区别 (除了管理命名空间)。
+> 
+> 枚举的主要规则是:
+> 
+> - 枚举 **must** 包括强制 `name` 属性。 
+>   - 对于共享相同 `name` 的所有枚举, 将合并条目。
+> - 枚举 *should* (非常强烈推荐) 包括 `description`。 <!-- update if this becomes mandatory --> If enums are merged, only one description will be used (usually the first that is encountered).
+> 
+> - 枚举 *may* 标记为已弃用。
+> - 枚举 *must* 至少有一个枚举项。
+> - 条目： 
+>   - *必须* 具有 `name` 属性。 
+>     - `name` 在枚举中的所有条目中必须是唯一的。
+>     - 通过 *convention*, `name` 应以枚举名称 (例如枚举 `LANDING_TARGET_TYPE` 具有条目 `LANDING_TARGET_TYPE_LIGHT_BEACON`) 作为前缀。
+>   - *should* 具有 `value` 属性, 如果分配了该属性, 则在 (合并) 枚举中必须是唯一的。 Missing values will automatically be sequentially assigned (starting from 1, if the first value is not assigned). > **Tip** We recommend you assign values because then new entries can be added within the range without breaking compatibility.
+>   - *should*(非常强烈建议) 包括 `description` 元素。 
+>   - 可能表示位掩码, 在这种情况下, 值将增加2。
+>   - *may* 标记为已弃用。
+> 
+> > **Warning** 您不能依赖特定的生成器来完全测试是否符合上述规则。 *mavgen* 在列表中重复名称测试，重复 (合并) 枚举条目的名字，重复数字。
+> 
+> ### 修改 Enum
+> 
+> 更改名称或删除 *将会* 发送任何使用与生成的图书馆旧版本不符的清单消息。 同样，更改 `名称` 或 `值`，或删除枚举条目，*将会* 发送信息，以使用与生成的图书馆的老版本不一致的。
+> 
+> 在添加新的枚举条目/值时，必须注意 *可能* 使生成的图书馆不兼容：
+> 
+> - 自动生成条目值可能更改
+> - 客户端代码可能无法处理新值。
+> 
+> 如果需要通过这些方式更改枚举，则有几个选项：
+> 
+> - 可以用预定条目创建一个新枚举。 在某些时候, 旧消息可能会被标记为 [deprecated](../guide/xml_schema.md#deprecated)。
+> - 可以更新消息, 并迭代语支版本号。 
+> 
+> 无论如何，消息的所有用户都需要与新的客户端库更新。
+> 
+> > **Tip** 在提出修改 **common.xml** 之前, 要检查主要利益相关者的代码库, 以确认影响。
+> 
+> 对于 **common.xml** 中的一个清单，要么更改，要么需要主要利益攸关方的同意
+> 
+> - 在 MAVLink 开发者会议上创建 PR 和讨论。
+> 
+> 可以在不打破二进制兼容性的情况下，修改枚举/枚举条目描述。 还应当注意确保改变解释方式的任何变化由利益攸关方商定，并由适当的版本控制加以处理。
+> 
+> 枚举很少被删除，因为这可能打破与传统的 MAVLink 1 硬件的兼容性，这些硬件不可能更新到最新版本。
+> 
+> ## 命令 {#mavlink_commands}
+> 
+> MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#mav_commands) enum. 它们用于界定在自主任务(见[Mission Protocol](../services/mission.md))，或以任何方式发送命令(见[Command Protocol](../services/command.md))。
+> 
+> > **Tip** The schema for commands is documented [here](../guide/xml_schema.md#MAV_CMD).
+> 
+> 一个典型的任务命令是([MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT)) 如下：
+> 
+> ```xml
+>     <enum name="MAV_CMD">
+>       <description>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data.</description>
+>       <entry value="16" name="MAV_CMD_NAV_WAYPOINT">
+>         <description>Navigate to waypoint.</description>
+>         <param index="1">Hold time in decimal seconds. (ignored by fixed wing, time to stay at waypoint for rotary wing)</param>
+>         <param index="2">Acceptance radius in meters (if the sphere with this radius is hit, the waypoint counts as reached)</param>
+>         <param index="3">0 to pass through the WP, if &gt; 0 radius in meters to pass by WP. Positive value for clockwise orbit, negative value for counter-clockwise orbit. Allows trajectory control.</param>
+>         <param index="4">Desired yaw angle at waypoint (rotary wing). NaN for unchanged.</param>
+>         <param index="5">Latitude</param>
+>         <param index="6">Longitude</param>
+>         <param index="7">Altitude</param>
+>       </entry>
+>       ...
+>     </enum>
+> ```
+> 
+> MAVLink 命令规则和其他的 [enums](#enums) 极其相同。 还有一些其他公约。
+> 
+> ### 命令 (条目) 值 {#command_values}
+> 
+> 所有任务命令条目 *必须* 具有价值(这不是由工具链强制执行的，而是与其他清单一样，它减少了所有无意改变和拆散其他系统的值的机会)。
+> 
+> 对于 Mavlink 每个语支都被分配到一个特定的范围, 从中可以选择 id。 这可确保任何语支都可以包含任何其他语支 (或 **common. xml**), 而不会发生冲突。 它还意味着，消息可以从语支到 **common.xml** 而不需要修改的任何代码。
+> 
+> 语支可以在其范围内选择任何信息。 然而，我们建议，所有*related* 命令都保留在同一块ID中，如果今后可能有更类似的命令，那么空格可能会被留待新的命令。
+> 
+> 分配范围如下。
+> 
+> | 语支                | 范围            |
+> | ----------------- | ------------- |
+> | Common.xml        | 0 - 39999     |
+> | asluav.xml        | 40001 - 41999 |
+> | ArduPilotMega.xml | 42000 - 42999 |
+> | slugs.xml         | 10001 - 11999 |
+> 
+> > **Tip** 如果要创建新的公共语支, [create an issue](https://github.com/mavlink/mavlink/issues/new) 以请求您自己的消息 Id 范围。 对于私有语支, 您可以使用任何您喜欢的版本。
+> 
+> 有一些常见的命令和 ardupilot 命令超出了范围 (例如16、200等)。 通常, 您只会使用这些范围, 以便为新命令提供一个与相关命令相关的 id。 这可以做到, 前提是 *mavlink/mavlink* 存储库中的任何其他 xml 文件都不使用命令 id 值。
+> 
+> ### 条目名称 {#command_names}
+> 
+> 与其他枚举一样, 枚举条目名称应以枚举名称 (即 `MAV_CMD_`) 作为前缀。 此外, 还有一些其他用于常见命令类型的 "标准" 前缀:
+> 
+> - `MAV_CMD_NAV_`: `NAV` 命令用于导航/移动命令 (以特定方式转到特定航点或移动的命令)。
+> - `MAV_CMD_DO_`: `DO` 命令用于设置模式、改变高度或速度等。
+> - `MAV_CMD_CONDITION_`: `CONDITION_` 命令用于定义任务状态机移动到下一个项目之前的条件 (例如, 在拍照前到达航点之后的一段时间)。
+> - `MAV_CMD_REQUEST_`: 用于请求系统的信息。
+> 
+> > **Tip** 上述前缀的规则是灵活的；有些 DO 命令可能是合理的 NAV 命令。 在某些情况下, 要求提供信息可能是一种 `MAV_CMD_REQUEST_`, 而在另一些情况下, 它可能是一条独立的消息。
+> 
+> ### 参数 (参数) {#param}
+> 
+> 消息数据在 [param](../guide/xml_schema.md#param) 值/属性中进行编码。
+> 
+> #### 标准映射
+> 
+> 参数 (`params`) 必须具有1到7之间的索引。
+> 
+> 如果命令包含位置信息，这总是存储在：参数5 (x/纬度)、参数6 (y/经度)、参数7 (z, 高度)。 该值是本地 (x, y, z) 还是全局 (纬度、经度、高度) 取决于命令和使用的帧 (通常在父消息中定义的帧)。
+> 
+> #### 数据类型
+> 
+> `参数` 索引 1-4 的数据，7 总是在一个大小 `浮动`，而索引5，6也可作为`int 32`(视所使用的消息而定)。 这意味着不应使用指数5和6用于可能需要以浮动点值发送的数据（例如`NaN`）。
+> 
+> <!-- 
 ArduPilot: 211, 212, 83, 42000-42005, 42424 (MAG_CAL) 42426, 42650
 ASLUAV : 40001,40002
 Autoquad 1,2,4
@@ -425,43 +425,43 @@ Common - 16 - 34, 80-85, 92 - 95, 112-115, 159, 176 - 186, 189 - 252, 300, 400, 
 matrixpilot : 0
 Slugs - 10001 - 10015
 -->
-
-#### 保留/未定义的参数 {#reserved}
-
-许多命令没有*需要* 7 (或任何) `参数` 值。 这些未使用的参数可以被视为 *reserved*, 允许在以后需要扩展命令时重复使用这些参数。
-
-保留的 `param` **must** 始终以默认值为 `0` 或 `NaN` (这会被接收者解释为 "无操作" 或 "不受支持") 发送。 如果重复使用, 原始默认值仍然必须表示 "无操作", 以便更新后的系统仍然可以与尚未更新的系统进行交互。
-
-> **Note** 不幸的是, 这意味着保留的 `param` 必须在声明命令时决定其默认值! 默认值以后不能从 `NaN` 更改为 `0` (或者签证反之亦然), 而不会出现潜在的兼容性问题。
-
-若要将 `param` 声明为具有 `NaN` `default` 值的 `reserved`, 应使用以下语法。
-
-    <param index="3" reserved="True" default="NaN" />
-    
-
-> **Warning** 索引值`5`和`6`参数不应授予`默认` 的 `NaN`， 因为如果这些参数在`COMMAND_INT`或`MISSION_INT`这些参数是集成器 (因此没有代表`导航`)。
-
-To declare a param as `reserved` with `default` value of `0` simply omit the `param` from the definition. This is the default - it is equivalent to:
-
-```xml
-<param index="3" reserved="True" default="0" />
-```
-
-如果您仅有一个未使用的 `参数` 我们建议你不要声明。 如果您有一个以上的，您可能希望明确定义它，默认为 `NaN` 这样，您可以稍后将您的命令扩展到默认。
-
-#### GUI Param Attributes
-
-A number of [param](../guide/xml_schema.md#param) attributes are provided as "GUI hints".
-
-These attributes are used to better display params:
-
-- `label` - Label for param in GCS/UI. All words in label should be capitalised (e.g. "Hold Altitude").
-- `units` - SI units for the value.
-- `decimalPlaces` - Hint to a UI about how many decimal places to use if the parameter value is displayed.
-
-These attributes help a GCS customise the editing experience (e.g. controls can choose to only offer allowed values).
-
-- `enum` - Enum containing possible values for the parameter (if applicable).
-- `increment` - Allowed increments for the parameter value.
-- `minValue` - Minimum value for param.
-- `maxValue` - Maximum value for the param.
+> 
+> #### 保留/未定义的参数 {#reserved}
+> 
+> 许多命令没有*需要* 7 (或任何) `参数` 值。 这些未使用的参数可以被视为 *reserved*, 允许在以后需要扩展命令时重复使用这些参数。
+> 
+> 保留的 `param` **must** 始终以默认值为 `0` 或 `NaN` (这会被接收者解释为 "无操作" 或 "不受支持") 发送。 如果重复使用, 原始默认值仍然必须表示 "无操作", 以便更新后的系统仍然可以与尚未更新的系统进行交互。
+> 
+> > **Note** 不幸的是, 这意味着保留的 `param` 必须在声明命令时决定其默认值! 默认值以后不能从 `NaN` 更改为 `0` (或者签证反之亦然), 而不会出现潜在的兼容性问题。
+> 
+> 若要将 `param` 声明为具有 `NaN` `default` 值的 `reserved`, 应使用以下语法。
+> 
+>     <param index="3" reserved="True" default="NaN" />
+>     
+> 
+> > **Warning** 索引值`5`和`6`参数不应授予`默认` 的 `NaN`， 因为如果这些参数在`COMMAND_INT`或`MISSION_INT`这些参数是集成器 (因此没有代表`导航`)。
+> 
+> To declare a param as `reserved` with `default` value of `0` simply omit the `param` from the definition. This is the default - it is equivalent to:
+> 
+> ```xml
+> <param index="3" reserved="True" default="0" />
+> ```
+> 
+> 如果您仅有一个未使用的 `参数` 我们建议你不要声明。 如果您有一个以上的，您可能希望明确定义它，默认为 `NaN` 这样，您可以稍后将您的命令扩展到默认。
+> 
+> #### GUI Param Attributes
+> 
+> A number of [param](../guide/xml_schema.md#param) attributes are provided as "GUI hints".
+> 
+> These attributes are used to better display params:
+> 
+> - `label` - Label for param in GCS/UI. All words in label should be capitalised (e.g. "Hold Altitude").
+> - `units` - SI units for the value.
+> - `decimalPlaces` - Hint to a UI about how many decimal places to use if the parameter value is displayed.
+> 
+> These attributes help a GCS customise the editing experience (e.g. controls can choose to only offer allowed values).
+> 
+> - `enum` - Enum containing possible values for the parameter (if applicable).
+> - `increment` - Allowed increments for the parameter value.
+> - `minValue` - Minimum value for param.
+> - `maxValue` - Maximum value for the param.
