@@ -17,7 +17,7 @@ In order to reduce traffic to the bare minimum, some of the fundamental assumpti
 
 The other rules are essentially the same but there are some implications of the above changes:
 - Broadcast messages from the high latency channel should be routed to other nodes on the network as usual.
-  Usually only `HIGH_LATENCY2` is broadcast.
+  Note that this in reality most systems on a high latency network **only** send `HIGH_LATENCY2`.
 - Addressed messages should be sent over the high latency channel (in both directions) in accordance with the normal routing rules.
   In practice the lack of `HEARTBEAT` means that addressed messages are unlikely to arrive, and hence be sent.
 
@@ -33,12 +33,12 @@ Message | Description
 
 Command | Description
 -- | --
-<span id="MAV_CMD_CONTROL_HIGH_LATENCY"></span>[MAV_CMD_CONTROL_HIGH_LATENCY](../messages/common.md#MAV_CMD_CONTROL_HIGH_LATENCY) | Command to start/stop transmitting high latency telemetry (`HIGH_LATENCY2`).
+<a id="MAV_CMD_CONTROL_HIGH_LATENCY"></a>[MAV_CMD_CONTROL_HIGH_LATENCY](../messages/common.md#MAV_CMD_CONTROL_HIGH_LATENCY) | Command to start/stop transmitting high latency telemetry (`HIGH_LATENCY2`).
 
 
 Enum | Description
 -- | --
-<span id="HL_FAILURE_FLAG"></span>[HL_FAILURE_FLAG](../messages/common.md#HL_FAILURE_FLAG) | Flags to report failure cases over the high latency telemetry.
+<a id="HL_FAILURE_FLAG"></a>[HL_FAILURE_FLAG](../messages/common.md#HL_FAILURE_FLAG) | Flags to report failure cases over the high latency telemetry.
 
 
 ## Sequences
