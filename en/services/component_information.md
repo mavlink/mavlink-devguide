@@ -67,7 +67,7 @@ Other component information files may be hosted on either the device or on the i
 
 Files on the device are downloaded using [MAVLink FTP](../services/ftp.md).
 The URI format is defined in [MAVLink FTP URL Scheme](../services/ftp.md#mavlink-ftp-url-scheme).
-A typical parameter metadata URI might look like this: `mftp://[;comp=1]/component_information/parameters.json.xz`.
+A typical parameter metadata URI might look like this: `mftp:///component_information/parameters.json.xz`.
 
 Files on the Internet are downloaded using HTTPS or HTTP via a normal web URL (e.g. `https://some_domain/component_information/parameters.json`).
 
