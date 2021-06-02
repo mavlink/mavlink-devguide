@@ -68,6 +68,6 @@
   * [Open Drone ID Protocol (WIP)](services/opendroneid.md)
   * [High Latency Protocol](services/high_latency.md)
   * [Component Information Protocol (WIP)](services/component_information.md)
-  
+  * [Payload Control Protocols](services/payload_control.md)
 * [Contributing](contributing/contributing.md)
 * [Support](about/support.md)
