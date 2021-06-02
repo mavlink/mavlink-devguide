@@ -23,7 +23,7 @@ There is no mechanism, for example, to provide an update if the set of supported
 
 Message | Description
 -- | --
-<a id="COMPONENT_INFORMATION"></a>[COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) | Message providing a download url and CRC for the [general metadata](#COMP_METADATA_TYPE_GENERAL) component information file (and optionally the [non-MAVLink peripherals metadata](#COMP_METADATA_TYPE_PERIPHERALS)). The message is requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
+<a id="COMPONENT_INFORMATION"></a>[COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) | Message providing a download url and [CRC](#metadata-caching-crc) for the [general metadata](#COMP_METADATA_TYPE_GENERAL) component information file (and optionally the [non-MAVLink peripherals metadata](#COMP_METADATA_TYPE_PERIPHERALS)). The message is requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 <a id="MAV_CMD_REQUEST_MESSAGE"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Use this command to request that a component emit [COMPONENT_INFORMATION](#COMPONENT_INFORMATION). Use `param1=395` (the message id of `COMPONENT_INFORMATION`).
 
 
@@ -72,6 +72,14 @@ A typical parameter metadata URI might look like this: `mftp:///component_inform
 Files on the Internet are downloaded using HTTPS or HTTP via a normal web URL (e.g. `https://some_domain/component_information/parameters.json`).
 
 
+## Metadata Caching (CRC)
+
+The [COMPONENT_INFORMATION](#COMPONENT_INFORMATION) message includes `general_metadata_file_crc` and `peripherals_metadata_file_crc` fields, which contain [CRC32](../crc.md#crc32-algorithm) values calculated for the files referenced in fields `general_metadata_uri` and `peripherals_metadata_uri` (respectively).
+A ground station should cache downloaded component metadata and only update it if the CRC value changes.
+
+The [general metadata file](#COMP_METADATA_TYPE_GENERAL) similarly provides both file locations and [CRC32](../crc.md#crc32-algorithm) values for other metadata supported by a component.
+
+
 ## File Compression
 
 Component information files may be **.xz** compressed (this is recommended for files that are hosted on the device).
@@ -88,6 +96,13 @@ Component information files may be **.xz** compressed (this is recommended for f
 
 ## Sequences
 
+### Component Discovery
+
+A GCS can *broadcast* the `MAV_CMD_REQUEST_MESSAGE` specifying `param1=395`; all components that support the protocol should respond with `COMPONENT_INFORMATION`.
+
+A GCS can further discover all components in the system by monitoring the channel for `HEARTBEAT` ids, and then send the request to each of them to [verify whether the protocol is supported](#check-protocol-is-supported).
+The broadcast approach is recommended for GCSes that don't track all components on the link.
+
 ### Check Protocol is Supported
 
 A system can query whether another component supports the protocol by sending the command [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) (specifying the [COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) message).
@@ -96,6 +111,8 @@ The component will respond with `COMPONENT_INFORMATION.general_metadata_uri` con
 If the protocol is not supported the component will ACK that the message with `MAV_RESULT_UNSUPPORTED`, `MAV_RESULT_DENIED` or `MAV_RESULT_FAILED`, or return a `null` value in `general_metadata_uri`.
 
 > **Note** A component that supports this service must return a general metadata file URI *that is hosted on the vehicle* (accessed using MAVLink FTP).
+
+
 
 ### Get MetaData
 
@@ -112,19 +129,14 @@ In summary:
 1. GCS waits for the `COMPONENT_INFORMATION` message
    - If not recieved the GCS should resend the request (typically in the application level).
    - Once information is received:
-     - the GCS checks if `COMPONENT_INFORMATION.general_metadata_file_crc` matches its cached CRC value. If so, there is no need to download the general metadata file (or other files it references) as it has not changed since the last download.
-	 - the GCS checks if `COMPONENT_INFORMATION.peripherals_metadata_file_crc` matches its cached CRC value. If so, there is no need to download the peripherals metadata file (or other files it references).
-     If present it will also check the `COMPONENT_INFORMATION.peripherals_metadata_file_crc` matches the cached value.
+     - the GCS checks if `COMPONENT_INFORMATION.general_metadata_file_crc` matches its cached CRC value.
+	   If so, there is no need to download the [general metadata file](#COMP_METADATA_TYPE_GENERAL) (or other files it references) as it has not changed since the last download.
+	 - the GCS checks if `COMPONENT_INFORMATION.peripherals_metadata_uri` if supplied, and (if so) whether the `peripherals_metadata_file_crc` field matches the cached value.
 	 
 	 If the cached values do not match the associated files should be downloaded and parsed ....
 1. GCS downloads the file specified in the `general_metadata_uri` using MAVLink FTP.
-1. GCS parses the general metadata for other supported metadata locations, and then downloads the files via MAVFTP or HTTP (either immediately, or as needed).
-
-A GCS can discover all components in the system by monitoring the channel for `HEARTBEAT` ids, and then send the above request to each of them to verify whether the protocol is supported.
-
-Alternatively, a GCS can also broadcast the request; all components that support the protocol should respond with `COMPONENT_INFORMATION`.
-
-
+1. GCS parses the general metadata for other supported metadata locations, and then downloads the files via MAVFTP or HTTP(s).
+   This may be done immediately, or as needed.
 
 
 ## Open Issues
@@ -145,5 +157,3 @@ There is a concern that vehicles reliant on internet-hosted component informatio
 This can generally be avoided by hosting the files compressed on-vehicle.
 
 We propose that manufacturers that use autopilots with limited flash (1MB or below) and do custom firmware development should host the files in github.
-
-> **Note** File URLs are max 100 chars.
