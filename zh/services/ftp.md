@@ -66,9 +66,9 @@ The opcodes that may be sent by the GCS (client) to the drone (server) are liste
 - Reads can be issued to any offset in the file for any number of bytes, so reconstructing portions of the file to deal with lost packets should be easy.  
 - For best download performance, try to keep two `Read` packets in flight. |
 | <span id="CreateFile"></span> 6   | CreateFile                       | Creates file at `<path>` for writing, returns `<session>`.  
-- Creates the file (path) and allocates a *session number*. All parent directories must exist. If the file already existed, then this call will truncate it. Equivalent UNIX flags: (O_CREAT | O_TRUNC O_WRONLY)  
+- Creates the file (path) and allocates a *session number*. All parent directories must exist. If the file already existed, then this call will truncate it. Equivalent UNIX flags: (O_CREAT &#124; O_TRUNC &#124; O_WRONLY)  
 - Sends an ACK packet with the allocated session number on success, or a NAK packet with an error code on error (i.e. [FileExists](#FileExists) if the `path` already exists).  
-- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.                                                                                  |
+- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.                                                                      |
 | <span id="WriteFile"></span> 7   | WriteFile                        | Writes `<size>` bytes to `<offset>` in `<session>`.  
 - Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | <span id="RemoveFile"></span> 8   | RemoveFile                       | Remove file at `<path>`.  
@@ -79,9 +79,9 @@ The opcodes that may be sent by the GCS (client) to the drone (server) are liste
 | <span id="RemoveDirectory"></span> 10  | RemoveDirectory                  | Removes directory at `<path>`. The directory must be empty.   
 - Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | <span id="OpenFileWO"></span> 11 | OpenFileWO                       | Opens file at `<path>` for writing, returns `<session>`.   
-- Opens the file (`path`) and allocates a *session number*. The file will be created if it does not exist. Equivalent UNIX flags: (O_CREAT | O_WRONLY)  
+- Opens the file (`path`) and allocates a *session number*. The file will be created if it does not exist. Equivalent UNIX flags: (O_CREAT &#124; O_WRONLY)  
 - Sends an ACK packet with the allocated *session number* on success, otherwise a NAK packet with an error code.  
-- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.                                                                                                                                                                                                           |
+- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.                                                                                                                                                                                                      |
 | <span id="TruncateFile"></span> 12 | TruncateFile                     | Truncate file at `<path>` to `<offset>` length.  
 - Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | <span id="Rename"></span> 13 | Rename                           | Rename `<path1>` to `<path2>`.  
@@ -448,4 +448,6 @@ For example:
         ## FTP resource 'camera.xml' from current component
         mftp://camera.xml
 
-- A GCS connected to an autopilot through a companion computer might host the metadata on the companion (e.g. due to lack of flash space, faster download or if there's a central MAVFTP server on the vehicle), so it would need to specify the component ID of the component running on the companion (e.g. 100 for the camera), so that the request is redirected: ` `` ## FTP resource '/info/version.json' from component with id 100 mftp://[;comp=100]/info/version.json ```
+- A GCS connected to an autopilot through a companion computer might host the metadata on the companion (e.g. due to lack of flash space, faster download or if there's a central MAVFTP server on the vehicle), so it would need to specify the component ID of the component running on the companion (e.g. 100 for the camera), so that the request is redirected: 
+        ## FTP resource '/info/version.json' from component with id 100
+        mftp://[;comp=100]/info/version.json
