@@ -1,4 +1,4 @@
-# Payload Control Protocols
+# Payload Protocols
 
 MAVLink defines a number of commands for directly controlling [particular types of payloads](#payload-specific-commands) like winches and grippers, and for controlling [arbitary/undefined payloads](#arbitraryunknown-payload-commands).
 In addition it includes commands that are designed for [automated positioning and deployment of a payload/payloads](#payload-deployment-commands).
@@ -40,9 +40,10 @@ Message | Description
 
 > **Note** **Implementations:**
   - `MAV_CMD_DO_SET_SERVO` is impemented on both ArduPilot and PX4.
-    In both cases instance numbers map to AUX outputs.
+    In both cases instance numbers map to corresponding AUX outputs.
   - `MAV_CMD_DO_SET_ACTUATOR` is impemented only on PX4 (June 2021).
-    Only three outputs can be set (param 1, 2, 3), and these are mapped by parameters to AUX outputs chosen by the user (though there is nothing to stop them being mapped to other busses).
+    Parameters `param1`, `param2`, and `param3` are usually mapped to the `AUX1`, `AUX2`, `AUX3` outputs, while command parameters `param4` to `param7` are unused/ignored
+    The mapping is defined in a mixer file, and hence might be different on some airframes.
 	For more information see the [PX4 User Guide](https://docs.px4.io/master/en/payloads/#mission-triggering).
 
 ## Payload Deployment Commands
