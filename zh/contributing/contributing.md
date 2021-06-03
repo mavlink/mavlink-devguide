@@ -22,15 +22,15 @@ The sections below explain how to contribute to each category and how to raise a
 - Reach out to the community on Slack and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
 - Address concerns by pushing more commits to the pull request
 
-## How to Contribute New Programming Language Support
+## How to Contribute to Mavgen
 
-MAVLink generators create MAVLink libraries from the XML definitions for different programming languages ([supported language list here](../README.md#supported_languages)).
+Changes to the [mavgen](../getting_started/generate_libraries.md#mavgen) generator must be added as pull requests through the [ArduPilot/pymavlink](https://github.com/ArduPilot/pymavlink) project.
 
-Support for new programming languages can be added either to the [mavgen](../getting_started/generate_libraries.md#mavgen) generator (source code in [ArduPilot/pymavlink](https://github.com/ArduPilot/pymavlink)) or as a stand alone generator.
+Changes to existing generator code (e.g. bug fixes) are automatically tested by continuous integration (github actions). Once you have made against your PR pass, the changes will be reviewed by a project team member.
 
-The broad requirements for inclusion in the project are:
+More significant changes to the generator, such as the addition of a new programming language, will require:
 
-- Project team should be able to commit to supporting the generator. 
+- Project team should be able to commit to supporting the generator.
 - `common.xml` and all official dialect XML files should parse, validate, and be able to encode/decode for all the messages.
 - Failures should be handled gracefully (not result in exceptions/segfaults).
 - Enum values that are not explicitly defined in XML should be automatically and sequentially allocated.
@@ -41,7 +41,13 @@ Ideally:
 - Libraries should support both MAVLink 2 and MAVLink 1
 - Any message with arbitrary field values can be successfully encoded and decoded.
 - Errors/warnings should be reported for invalid payloads - e.g. oversize, duplicate command or message ids, etc.
-- Deep dialect inclusion/nesting should be supported (minimum is 3 levels).
+- Deep dialect inclusion/nesting should be supported (minimum is 5 levels).
+
+## How to Contribute Stand Alone Generators
+
+We would prefer that new languages are supported via [mavgen](../getting_started/generate_libraries.md#mavgen) rather than "standalone generators", as this provides a consistent inteface for end users, and ensures that source files are parsed and handled consistently.
+
+That said will consider moving stand-alone generators into the MAVLink project under the same conditions as for new mavgen generator code (see section above). Primarily this means that the team developing the generator must provide sufficient validation that the generator works and commitment to support it.
 
 ## How to Open a Pull Request
 
