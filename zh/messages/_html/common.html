@@ -2095,7 +2095,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Possible values for COMPONENT_INFORMATION.comp_metadata_type.</p>
+   </a>Supported component metadata types. These are used in the "general" metadata file returned by COMPONENT_INFORMATION to provide information about supported metadata types. The types are not used directly in MAVLink messages.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2110,7 +2110,7 @@
      <td>
       <a href="#COMP_METADATA_TYPE_GENERAL">COMP_METADATA_TYPE_GENERAL</a>
      </td>
-     <td>General information which also includes information on other optional supported COMP_METADATA_TYPE's. Must be supported. Only downloadable from vehicle.</td>
+     <td>General information about the component. General metadata includes information about other COMP_METADATA_TYPEs supported by the component. This type must be supported and must be downloadable from vehicle.</td>
     </tr>
     <tr id="COMP_METADATA_TYPE_PARAMETER">
      <td>1</td>
@@ -2124,21 +2124,21 @@
      <td>
       <a href="#COMP_METADATA_TYPE_COMMANDS">COMP_METADATA_TYPE_COMMANDS</a>
      </td>
-     <td>Meta data which specifies the commands the vehicle supports. (WIP)</td>
+     <td>Meta data that specifies which commands and command parameters the vehicle supports. (WIP)</td>
     </tr>
     <tr id="COMP_METADATA_TYPE_PERIPHERALS">
      <td>3</td>
      <td>
       <a href="#COMP_METADATA_TYPE_PERIPHERALS">COMP_METADATA_TYPE_PERIPHERALS</a>
      </td>
-     <td>Meta data which specifies potential external peripherals that do not talk MAVLink</td>
+     <td>Meta data that specifies external non-MAVLink peripherals.</td>
     </tr>
     <tr id="COMP_METADATA_TYPE_EVENTS">
      <td>4</td>
      <td>
       <a href="#COMP_METADATA_TYPE_EVENTS">COMP_METADATA_TYPE_EVENTS</a>
      </td>
-     <td>Meta data for events interface</td>
+     <td>Meta data for the events interface.</td>
     </tr>
    </tbody>
   </table>
