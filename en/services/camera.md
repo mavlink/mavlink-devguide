@@ -216,6 +216,7 @@ Individual entries can be requested using [MAV_CMD_REQUEST_MESSAGE](../messages/
 
 The camera image log iterates "forever" (but may be explicitly reset using [MAV_CMD_STORAGE_FORMAT.param3=1](../messages/common.md#MAV_CMD_STORAGE_FORMAT)).
 
+Individual images can be deleted from the camera image log using [MAV_CMD_DELETE_IMAGE] command where `param1="the index of the image to delete"`
 
 ### Video Capture
 
