@@ -122,7 +122,7 @@ tcpdump -i eth0 -w mavlink-capture.pcap
 
 `tcpdump` must be installed on the remote machine.
 
-When you are connected to the remote machine via USB-C you can stream the tcpdump to your local machine instead of logging it to a file.
+When you can access the remote machine with SSH you can stream the tcpdump to your local machine instead of logging it to a file.
 *Wireshark* can open this stream and show the decoded MAVLink messages using the tools and filters from above.
 
 ```
