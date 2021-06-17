@@ -29,6 +29,7 @@
   * [MAVLink XML Schema](guide/xml_schema.md)
   * [Defining XML Enums/Messages](guide/define_xml_element.md)
   * [MAVLink CRC](guide/crc.md)
+  * [Debugging with Wireshark](guide/wireshark.md)
   * [Dialects](messages/README.md)
     * [ASLUAV.xml](messages/ASLUAV.md)
     * [all.xml](messages/all.md)
