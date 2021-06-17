@@ -148,10 +148,10 @@ ssh root@10.41.1.1 -p 33333 "tcpdump -s 0 -U -n -w - -i lo not port 33333" > /tm
 
 ## Measuring MAVLink data rates using Wireshark
 
-Once you will have your MAVLink stream decoded in *Wireshark*.
-You can monitor message rates for the whole stream or just specific messages by using the Wireshark IO graphs.
+After the plugin is setup in Wireshark ad you have started to capture a stream you can use the Wireshark IO graphsto  monitor message rates for either the whole stream or just specific messages.
+
 To do this you need to go to **Statistics > I/O Graphs** and you will get a new window.
 Now you will a plot of the data rate of all packets you are analyzing.
-YOu can filter for the usual *Wireshark* filters and the new MAVLink ones introduced by the LUA script.
+You can filter for the usual *Wireshark* filters and the new MAVLink ones introduced by the LUA script.
 
-It is advised to change the y axis to bits or bytes and to reduce the x axis to 10ms or faster to get meaningful plots.
+We recommend changing the y axis to bits or bytes and to reduce the x axis to 10ms or faster to get meaningful plots.
