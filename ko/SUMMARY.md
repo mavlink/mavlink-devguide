@@ -29,6 +29,7 @@
   * [MAVLink XML 스키마](guide/xml_schema.md)
   * [XML 기수/메세지 정의](guide/define_xml_element.md)
   * [MAVLink CRC](guide/crc.md)
+  * [Debugging with Wireshark](guide/wireshark.md)
   * [Dialects](messages/README.md) 
     * [ASLUAV.xml](messages/ASLUAV.md)
     * [all.xml](messages/all.md)
