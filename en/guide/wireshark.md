@@ -131,6 +131,8 @@ wireshark -k -i /tmp/mavlink &
 ssh root@10.41.1.1 -p 33333 "tcpdump -s 0 -U -n -w - -i lo not port 33333" > /tmp/mavlink;
 ```
 
+> **Note** Username, IP and port above have to be adjusted to the configuration on the remote machine.
+
 1. `mkfifo /tmp/mavlink` Creates a named pipe that is used to stream the data.
 1. `wireshark -k -i /tmp/mavlink &` Start *Wireshark*, open the named pipe as input and start the capture immediately. 
 1. Start the data stream on the remote machine and pipe it into the named pipe on your local machine.
