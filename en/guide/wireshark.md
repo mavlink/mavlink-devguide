@@ -1,5 +1,19 @@
 # Parsing MAVLink in Wireshark
 
+[Wireshark](https://www.wireshark.org/) is an extremely popular "general purpose" network protocol analyzer that can be used to inspect and analyse MAVLink traffic.
+
+The benefits of using *Wireshark* over other alternatives are:
+- it can view _all_ traffic on a network interface (GCS tools like [MAVLink Inspector](https://docs.qgroundcontrol.com/master/en/analyze_view/mavlink_inspector.html) often only analyse incoming traffic).
+- you can use it to analyse traffic logged on a companion computer (this allows analysis of traffic between the companion computer and flight controller, which might otherwise not be visible to *Wireshark*).
+-  it is easy to update for new custom messages and dialects. 
+   Rebuilding *QGroundControl* so you can use it analyse custom messages is much harder!
+
+This topic shows how to generate a Wireshark plugin for a particular dialect file and install it on Wireshark, and how to perform basic filtering.
+It also provides an overview of how you can use *tcpdump* for collecting traffic on a linux computer (for later analysis).
+
+> **Note** You will need to regenerate and reimport the plugin (as shown below) if your dialect changes.
+
+
 ## Generate MAVLink Lua Plugin for Wireshark
 
 First you will need to generate a *Wireshark* plugin that includes definitions for the MAVLink messages that you want it to handle.
@@ -16,34 +30,79 @@ The steps are:
    ```
    The plugin would be created in the current directory as: **mavlink_2_common.lua**. 
 
-> **Note** You will need to regenerate and reimport the plugin (as shown below) if your dialect changes.
+
+## Update Plugin with Correct Ports
+
+The last few lines of the plugin file specify the ports to be monitored: 14550 and 14580.
+```
+-- bind protocol dissector to port 14550 and 14580
+
+local udp_dissector_table = DissectorTable.get("udp.port")
+udp_dissector_table:add(14550, mavlink_proto)
+udp_dissector_table:add(14580, mavlink_proto)
+```
+These are the correct ports to monitor network traffic between a simulated autopilot and a GCS and offboard API.
+
+If you want to monitor other interfaces then you can modify or add to these lines and then save the plugin file.
+This might be necessary, for example, in order to monitor traffic recorded on the interface between a companion computer and a flight controller.
+
 
 ## Import Lua Plugin into WireShark
 
-The import the plugin into *Wireshark*
+To import the plugin into *Wireshark*:
 
 1. Copy the plugin file into the wireshare plugins directory.
-   - On Linux systems this might be: `~/.wireshark/plugins`
-     - If you are running *Wireshark* with sudo then do:
-       - `sudo su`
-       - Copy it into `/root/.local/lib/wireshark`
-  - On Windows this might be: `Program Files/Wireshark/plugins`.
-1. The last few lines of the plugin file specify the ports to be monitored.
-   By default these are 14550 and 14580, the ports for communication with a GCS and Offboard control.
-   Change these lines and save the file if your system uses different ports.
+   - On Linux systems this might be: `~/.wireshark/plugins`. Note that users will need to be added to the `wireshark` group to use the tool.)
+   - On Windows this might be: `Program Files/Wireshark/plugins`.
 1. Open *Wireshark* and follow the menu: **Help > About Wireshark > Plugins**
 
    You should find the plugin in the list.
    For example, with the plugin created in the previous section you would see `mavlink_2_common.lua` 
 
-## View Simulator Traffic
+## View Traffic on Wireshark
 
-You can view simulator traffic using directly using Wireshark.
-Simply select the interface for loopback traffic in the GUI.
-This will display all messages on the interface, with MAVLink message names next to each udp packet that contains a MAVLink message.
+Wireshark can inspect any interface on the host computer on which it is running.
+So you can use it to inspect traffic between a GCS and running on the same computer and a real or simulated computer.
 
-You can filter on MAVLink properties to control which traffic is displayed.
-For example, the filter `mavlink_proto.sysid == 1` will filter on all messages that have a system id of 1, while `mavlink_proto.msgid==0 && mavlink_proto.compid == 1` will filter on HEARTBEAT messages (`msgid==0`) from an autopilot (`compid==1`).
+For example assuming you have a simulator and ground station running on the same computer, select the **Adapter for loopback traffic capture**.
+
+![Wireshark: Select loopback adapter](../../assets/wireshark/select_loopback_adapter.jpg)
+
+This will display all traffic on the interface.
+With the MAVLink WLua plugin installed, MAVLink message names are displayed next to each UDP packet that contains a MAVLink message.
+
+![Wireshark: Live unfiltered traffic](../../assets/wireshark/live_output_all.jpg)
+
+You can filter to show _just_ the MAVLink traffic using `mavlink_proto` in the filter box (below we also filter on `not icmp` to remove additional control packets).
+
+![Wireshark: Live traffic filtered to show only MAVLink packets](../../assets/wireshark/live_output_filtered.jpg)
+
+Click on a particular message to find out its details.
+Below you can see the payload and the header details for an `ATTITUDE_TARGET` message:
+
+![Wireshark: Packet details](../../assets/wireshark/mavlink_message_details.jpg)
+
+
+## Filtering using MAVLink Properties
+
+In addition to using filters for the usual *Wireshark* things (e.g. ips and ports) you can also use the new MAVLink filters.
+
+> **Note** This works the same way for live view and for a *pcapng* file loaded into *Wireshark*
+
+We already saw you can filter for MAVLink packets using `mavlink_proto`
+The following is a filter example:
+
+```
+mavlink_proto.msgid==0 && mavlink_proto.compid == 1 && 
+(ip.addr == 10.0.115.155 && ip.dst == 10.0.115.141)
+```
+
+This means to filter for:
+
+- Mavlink msgid=`HEARTBEAT`
+- Mavlink src compid=`AUTOPILOT`
+- src IP=`10.0.115.155`
+- dst IP=`10.0.115.141`
 
 
 ## Capture MAVLink Stream
@@ -57,28 +116,11 @@ apt install tcpdump
 tcpdump -i eth0 -w mavlink-capture.pcap
 ```
 
-## Analyze MAVLink Network Capture
 
-Now open the *pcapng* file in *Wireshark* and you should see all the MAVLink message names next to each udp packet that contains a MAVLink message.
-
-Now you can use filters to filter the usual *Wireshark* things (eg. ips and ports) and also use the new MAVLink filters.
-The following is a filter example:
-
-```
-mavlink_proto.msgid==0 && mavlink_proto.compid == 1 && 
-(ip.addr == 10.0.115.155 && ip.dst == 10.0.115.141)
-```
-
-This means to filter for:
-
-- Mavlink msgid=HEARTBEAT
-- Mavlink src compid=AUTOPILOT
-- src IP=10.0.115.155
-- dst IP=10.0.115.141
 
 ## Capture tcpdump (MAVLink) data live from a remote machine on a local WireShark
 
-`tcpdump` has to be installed on the remote machine.
+`tcpdump` must be installed on the remote machine.
 
 When you are connected to the remote machine via USB-C you can stream the tcpdump to your local machine instead of logging it to a file.
 *Wireshark* can open this stream and show the decoded MAVLink messages using the tools and filters from above.
@@ -96,7 +138,7 @@ ssh root@10.41.1.1 -p 33333 "tcpdump -s 0 -U -n -w - -i lo not port 33333" > /tm
    - `-s 0` Set snapshot length to default
    - `-U` Stream packet output packet-buffered, don’t wait for a full buffer
    - `-n` Don't convert addresses (i.e., host addresses, port numbers, etc.) to names
-   - `-w` -` Write raw data to standard output (piped to the local machine)
+   - `-w -` Write raw data to standard output (piped to the local machine)
    - `-i lo` Define which interface to listen on.
      This will listen to the loopback interface, you can change this to the Ethernet, USB or modem interface.
    - `not port 33333` Don’t capture the data created by the SSH session.
@@ -107,5 +149,7 @@ ssh root@10.41.1.1 -p 33333 "tcpdump -s 0 -U -n -w - -i lo not port 33333" > /tm
 Once you will have your MAVLink stream decoded in *Wireshark*.
 You can monitor message rates for the whole stream or just specific messages by using the Wireshark IO graphs.
 To do this you need to go to **Statistics > I/O Graphs** and you will get a new window.
-Now you will a plot of the data rate of all packets you are analyzing but you can easily filter for the usual *Wireshark* filters (including the new MAVLink ones introduced by the LUA script).
+Now you will a plot of the data rate of all packets you are analyzing.
+YOu can filter for the usual *Wireshark* filters and the new MAVLink ones introduced by the LUA script.
+
 It is advised to change the y axis to bits or bytes and to reduce the x axis to 10ms or faster to get meaningful plots.
