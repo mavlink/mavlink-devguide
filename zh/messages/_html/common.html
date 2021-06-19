@@ -14244,6 +14244,23 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_RUN_PREARM_CHECKS">MAV_CMD_RUN_PREARM_CHECKS (<a href="#MAV_CMD_RUN_PREARM_CHECKS">401</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Instructs system to run pre-arm checks. This command should return MAV_RESULT_TEMPORARILY_REJECTED in the case the system is armed, otherwise MAV_RESULT_ACCEPTED. Note that the return value from executing this command does not indicate whether the vehicle is armable or not, just whether the system has successfully run/is currently running the checks.  The result of the checks is reflected in the SYS_STATUS message.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_ILLUMINATOR_ON_OFF">MAV_CMD_ILLUMINATOR_ON_OFF (<a href="#MAV_CMD_ILLUMINATOR_ON_OFF">405</a>
    )
   </h3>
