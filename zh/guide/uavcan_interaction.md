@@ -13,9 +13,9 @@ UAVCAN 的一般说明和规格可在<http://uavcan.org>上查阅。
 
 ### UCAN Node 识别
 
-每个 UCAN 节点都有一个称为“node ID”的总线上唯一的标识符。 节点 id 是间隔 [1, 127] 中的整数, 其中值1通常由自动驾驶仪或其他类型的中央控制单元使用, 和值126和127通常由调试或监视设备使用。
+每个 UAVCAN 节点都有一个称为“node ID”的总线上唯一的标识符。 节点 id 是间隔 [1, 127] 中的整数, 其中值1通常由自动驾驶仪或其他类型的中央控制单元使用, 和值126和127通常由调试或监视设备使用。
 
-每个能够通过 MAVLink 和 UCAVAN 通信的单位必须使用相同的数字，用于 MAVLink 组件ID 和 UCAN Node ID，否则可能会出现严重的不一致之处。 通常情况下, 如果有一个非冗余自动驾驶仪, 其 UAVCAN 节点 id 和 MAVLink 组件 id 将设置为 1 (1)。
+每个能够通过 MAVLink 和 UAVCAN 通信的单位必须使用相同的数字，用于 MAVLink 组件ID 和 UCAN Node ID，否则可能会出现严重的不一致之处。 通常情况下, 如果有一个非冗余自动驾驶仪, 其 UAVCAN 节点 id 和 MAVLink 组件 id 将设置为 1 (1)。
 
 与给定 UAVCAN 节点相关的每个输出/传入的 MAVLink 消息/命令都将其字段 组件 id 设置为与所述 UAVCAN 节点的节点 id 相同的值。
 
@@ -45,9 +45,9 @@ UAVCAN 节点通常能够通过标准服务类型 `uavcan.protocol.GetNodeInfo` 
 
 ## 配置参数管理
 
-UCAVAN定义了一套标准服务类型，以便利配置参数管理在 UCAVAN 节点上。 相关的数据类型定义可在命名空间 `uavcen.protocol.made` 中找到。
+UAVCAN定义了一套标准服务类型，以便利配置参数管理在 UCAVAN 节点上。 相关的数据类型定义可在命名空间 `uavcen.protocol.made` 中找到。
 
-UCAVAN-MAVLink 桥没有为配置参数管理定义任何额外信息。 相反，以下标准信息经常使用：
+UAVCAN-MAVLink 桥没有为配置参数管理定义任何额外信息。 相反，以下标准信息经常使用：
 
 * `PARAM_RECAT_LIST` - 用于请求指定的 UAVCAN 节点的配置参数列表。 记住，UAVCAN 节点是通过字段组件ID指定的。
 * `PARAM_VALUE` - 被桥节点用来报告配置参数的值。 节点ID已反映在字段组件ID中。
