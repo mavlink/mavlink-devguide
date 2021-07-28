@@ -1,9 +1,19 @@
 # High Latency Protocol
 
-High latency links (e.g. Iridium Satellite links) provide global connectivity, albeit with significant message latency (> 1 second) and high cost-per-message.
+High Latency (HL) links, for example made using the [Iridium Satellite network](Iridium Satellite), provide global connectivity, albeit with significant message latency (> 1 second) and high cost-per-message.
 Generally the cost and latency means that high-latency links are only used when there is no lower-latency alternative, and when active the links should only send essential information or commands.
 
-The protocol provides a heartbeat-like message ([HIGH_LATENCY2](#HIGH_LATENCY2)) for transmitting just the most important telemetry at low rate, and a command ([MAV_CMD_CONTROL_HIGH_LATENCY](#MAV_CMD_CONTROL_HIGH_LATENCY)) for enabling/disabling the high latency link when needed (i.e. when no lower-latency link is available).
+The protocol provides a heartbeat-like message ([HIGH_LATENCY2](#HIGH_LATENCY2)) for transmitting just the most important telemetry at low rate, and a command ([MAV_CMD_CONTROL_HIGH_LATENCY](#MAV_CMD_CONTROL_HIGH_LATENCY)) for enabling/disabling the HL link when needed (i.e. when no lower-latency link is available).
+
+## Minimize Traffic on the High Latency Link
+
+The GCS should carefully manage what data is sent to/requested from the autopilot on the HL link, in order to avoid congestion and minimize the cost of using the channel:
+
+- Ground stations should not upload or download missions, waypoints or geofences on the HL link (i.e. should not use the [mission protocol](../services/mission.md)).
+- Ground stations should not update or synchronise parameters over the HL channel (i.e. using the [parameter protocol](../services/parameter.md)).
+- [HEARTBEAT](../messages/common.md#HEARTBEAT) messages should not be sent over the HL channel.
+  See the section below for more information.
+
 
 ## Heartbeat/Routing
 
@@ -13,16 +23,13 @@ In order to reduce traffic to the bare minimum, some of the fundamental assumpti
   > **Note** The heartbeat is used to build MAVLink routing tables between channels.
     Commands addressed specifically to the high latency component may not be routed from another channel (i.e. you can connect to the component from a GCS directly, but not via a MAVLink router).
 - Only the [command protocol](../services/command.md) service messages and [HIGH_LATENCY2](#HIGH_LATENCY2) message should be sent over the high latency channel.
-- Ground stations should not send or receive [mission protocol](../services/mission.md) items or [parameter protocol](../services/parameter.md) items over the high latency channel in order to prevent congestion.
 
 The other rules are essentially the same but there are some implications of the above changes:
 - Messages from the high latency channel should be routed to other nodes on the network as usual.
   Note that this in reality most systems on a high latency network **only** send `HIGH_LATENCY2`.
 - Addressed messages should be sent over the high latency channel (in both directions) in accordance with the normal routing rules.
   In practice the lack of `HEARTBEAT` means that addressed messages are unlikely to arrive, and hence be sent.
-- Parameters, waypoints, geofences and rally points will not be downloaded over a high latency channel.
-- The GCS should carefully manage what messages to send to the autopilot, in order to avoid congestion on the high latency link
-
+  
 The implication is that while all components on a MAVLink network will get [HIGH_LATENCY2](#HIGH_LATENCY2) updates, only the directly connected GCS (or other component) will be able send [command protocol](../services/command.md) messages to the vehicle.
 
 
@@ -45,7 +52,9 @@ Enum | Description
 
 ## Sequences
 
-A GCS will typically have one or more (low latency) links that are used for vehicle communications. Separate to this are any high latency links. The high latency links may be active simultaneous to the low latency links during handover operations.
+A GCS will typically have one or more (low latency) links that are used for vehicle communications.
+Separate to this are any high latency links.
+The high latency links may be active simultaneous to the low latency links during handover operations.
 
 A typical flight sequence will look like:
 - Vehicle starts up on the ground with low latency links active
