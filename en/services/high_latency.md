@@ -1,7 +1,7 @@
 # High Latency Protocol
 
-High Latency (HL) links, for example made using the [Iridium Satellite network](Iridium Satellite), provide global connectivity, albeit with significant message latency (> 1 second) and high cost-per-message.
-Generally the cost and latency means that high-latency links are only used when there is no lower-latency alternative, and when active the links should only send essential information or commands.
+High Latency (HL) links, for example made using the [Iridium Satellite network](https://www.iridium.com/), provide global connectivity, albeit with significant message latency (> 1 second) and high cost-per-message.
+Generally the cost and latency means that high-latency links are only used when there is no lower-latency alternative, and should only send essential information or commands.
 
 The protocol provides a heartbeat-like message ([HIGH_LATENCY2](#HIGH_LATENCY2)) for transmitting just the most important telemetry at low rate, and a command ([MAV_CMD_CONTROL_HIGH_LATENCY](#MAV_CMD_CONTROL_HIGH_LATENCY)) for enabling/disabling the HL link when needed (i.e. when no lower-latency link is available).
 
@@ -11,13 +11,12 @@ The GCS should carefully manage what data is sent to/requested from the autopilo
 
 - Ground stations should not upload or download missions, waypoints or geofences on the HL link (i.e. should not use the [mission protocol](../services/mission.md)).
 - Ground stations should not update or synchronise parameters over the HL channel (i.e. using the [parameter protocol](../services/parameter.md)).
-- [HEARTBEAT](../messages/common.md#HEARTBEAT) messages should not be sent over the HL channel.
-  See the section below for more information.
+- [HEARTBEAT](../messages/common.md#HEARTBEAT) messages should not be sent over the HL channel (see the section below for more information).
 
+Typically the initial connection with a GCS is made over a low latency link (often before takeoff), so that the above data can be transferred before switching to the HL link.
 
 ## Heartbeat/Routing
 
-High latency links are expensive.
 In order to reduce traffic to the bare minimum, some of the fundamental assumptions of MAVLink are explicitly broken:
 - [HEARTBEAT](../messages/common.md#HEARTBEAT) messages are not emitted on the channel (either by the autopilot or GCS).
   > **Note** The heartbeat is used to build MAVLink routing tables between channels.
@@ -54,7 +53,7 @@ Enum | Description
 
 A GCS should only upload/download missions, geofences, rally points, and parameters when connected over a _low latency_ link.
 Generally a vehicle is connected to the GCS via a low latency link for initial synchronisation of parameters etc., and will reconnect whenever the low latency vehicle is available.
-When the link is not available it will switch to the high latency link and primarily just monitor the high latency telementry. 
+When the link is not available it will switch to the high latency link and primarily just monitor the high latency telemetry. 
 
 A typical flight sequence might therefore look like:
 - Vehicle is started and connects to ground station over low latency link (e.g. USB cable, Telemetry radio).
@@ -71,13 +70,12 @@ The diagram below shows a GCS switching from a higher-latency primary link to a 
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogRHJvbmUgY29ubmVjdGVkIG92ZXIgSEwgY29ubmVjdGlvblxuICAgIERyb25lLT4-R0NTOiBISUdIX0xBVEVOQ1kyXG4gICAgRHJvbmUtPj5HQ1M6IC4uLlxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IExvd2VyIGxhdGVuY3kgY29ubmVjdGlvbiBhdmFpbGFibGUuIFN0b3AgSEwgY29ubmVjdGlvbi5cbiAgICBHQ1MtPj5Ecm9uZTogTUFWX0NNRF9DT05UUk9MX0hJR0hfTEFURU5DWShwYXJhbTE9MClcbiAgICBEcm9uZS0-PkdDUzogTm9ybWFsIGxhdGVuY3kgbWVzc2FnZXMgb3ZlciBuZXcgY2hhbm5lbC4uLlxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IFByaW1hcnkgY29ubmVjdGlvbiBkcm9wcyBvdXQuIFN0YXJ0IEhMIGNvbm5lY3Rpb24uXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfQ09OVFJPTF9ISUdIX0xBVEVOQ1kocGFyYW0xPTEpXG4gICAgRHJvbmUtPj5HQ1M6IEhJR0hfTEFURU5DWTIiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogRHJvbmUgY29ubmVjdGVkIG92ZXIgSEwgY29ubmVjdGlvblxuICAgIERyb25lLT4-R0NTOiBISUdIX0xBVEVOQ1kyXG4gICAgRHJvbmUtPj5HQ1M6IC4uLlxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IExvd2VyIGxhdGVuY3kgY29ubmVjdGlvbiBhdmFpbGFibGUuIFN0b3AgSEwgY29ubmVjdGlvbi5cbiAgICBHQ1MtPj5Ecm9uZTogTUFWX0NNRF9DT05UUk9MX0hJR0hfTEFURU5DWShwYXJhbTE9MClcbiAgICBEcm9uZS0-PkdDUzogTm9ybWFsIGxhdGVuY3kgbWVzc2FnZXMgb3ZlciBuZXcgY2hhbm5lbC4uLlxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IFByaW1hcnkgY29ubmVjdGlvbiBkcm9wcyBvdXQuIFN0YXJ0IEhMIGNvbm5lY3Rpb24uXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfQ09OVFJPTF9ISUdIX0xBVEVOQ1kocGFyYW0xPTEpXG4gICAgRHJvbmUtPj5HQ1M6IEhJR0hfTEFURU5DWTIiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
-The sequence above assumes that high latency links are only enabled _after_ the GCS has lost low latency links.
-A system may also support a handover model, where the high latency link is established before the low latency link is dropped (i.e. the high latency link may be enabled by sending `MAV_CMD_CONTROL_HIGH_LATENCY` over the low latency link prior to loss of coverage).
 
-This approach ensures no break in telemetry; sending the MAV_CMD_CONTROL_HIGH_LATENCY on the high latency link _after_ loss of the low latency link may mean a wait of several 10's of seconds before the first HIGH_LATENCY2 message appears at the GCS.
+### Explicit Handover
 
-If using a handover model:
-- The GCS and autopilot should be able to work with a mixed regime of low and high latency links.
-- Any [command protocol](../services/command.md) messages should be sent over all available links.
+A ground station may also support a handover model, where the high latency link is established before the low latency link is dropped (i.e. the high latency link may be enabled by sending `MAV_CMD_CONTROL_HIGH_LATENCY` over the low latency link prior to loss of coverage).
 
+This approach allows the GCS to verify that the high latency link is available before losing the low latency connection.
 
+If using this model the GCS and autopilot should be able to work with a mixed regime of low and high latency links.
+Specifically, this means that they should be able to handle the case where the same message is sent over different both channels.
