@@ -20,8 +20,10 @@ If it does not support *MAVLink 2* it should `NACK` the command.
 The GCS should fall back to a timeout in case the command interface is not implemented properly. The diagram below illustrates the complete sequence.
 
 
-{% mermaid %}
+[![Mermaid sequence: Request protocol version](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9QUk9UT0NPTF9WRVJTSU9OXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IFBST1RPQ09MX1ZFUlNJT04gaW4gTUFWTGluayAyIGZyYW1pbmdcbiAgICBHQ1MtPj5Ecm9uZTogSWYgQUNLOiBTd2l0Y2hlcyB0byBNQVZMaW5rIDJcbiAgICBEcm9uZS0-PkdDUzogU3dpdGNoZXMgdG8gTUFWTGluayAyIG9uIHJlY2VpdmUiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9QUk9UT0NPTF9WRVJTSU9OXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IFBST1RPQ09MX1ZFUlNJT04gaW4gTUFWTGluayAyIGZyYW1pbmdcbiAgICBHQ1MtPj5Ecm9uZTogSWYgQUNLOiBTd2l0Y2hlcyB0byBNQVZMaW5rIDJcbiAgICBEcm9uZS0-PkdDUzogU3dpdGNoZXMgdG8gTUFWTGluayAyIG9uIHJlY2VpdmUiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
+
+<!-- Original sequence
 sequenceDiagram;
     participant GCS
     participant Drone
@@ -30,8 +32,14 @@ sequenceDiagram;
     Drone->>GCS: PROTOCOL_VERSION in MAVLink 2 framing
     GCS->>Drone: If ACK: Switches to MAVLink 2
     Drone->>GCS: Switches to MAVLink 2 on receive
+-->
 
-{% endmermaid %}
+### Semi-Transparent Legacy Radios
+
+Some popular legacy radios (e.g. the SiK radio series) operate in semi-transparent mode by injecting [RADIO_STATUS](../messages/common.md#RADIO_STATUS) messages into the MAVLink message stream. Per MAVLink spec these should actually emit a heartbeat with the same system ID and a different component ID than the autopilot to be discoverable. 
+However, an additional heartbeat could be an issue for deployed systems. 
+Therefore these radios can alternatively confirm their *MAVLink 2* compliance by emitting `RADIO_STATUS` in v2 message format after receiving the first MAVLink v2 frame.
+
 
 ### Semi-transparent Legacy Radios
 

@@ -1,57 +1,68 @@
 # Image Transmission Protocol
 
-The image transmission protocol uses MAVLink as the communication channel to transport any kind of image (raw images, Kinect data, etc.) from one MAVLink node to another. It basically takes a live camera image, splits it into small chunks and sends it over MAVLink.  
+> **Warning** The [Camera Protocol](../services/camera.md) and [MAVLink FTP](../services/ftp.md) are recommended for sending images, video and files.
+>
+>  This protocol is not intended for general image transmission use (it was originally designed as a simple protocol for transfering small images over a low bandwidth channel from an optical flow sensor to a GCS).
+
+The image transmission protocol uses MAVLink as the communication channel to transport any kind of image (raw images, Kinect data, etc.) from one MAVLink node to another.
+It basically takes a live camera image, splits it into small chunks and sends it over MAVLink.  
 
 This topic describes how the image streaming functionality works and covers both the communication protocol and implementation details (for a vehicle and *QGroundControl*).
 
-> **Note** At time of writing (March 2018) the protocol is mainly used to transfer images from a vehicle to *QGroundControl* (to show PX4 Flow images for focusing). The protocol could also be used to send any other file types.
-
-
 ## Communication
 
-The image streaming component uses two MAVLink messages: A handshake message, [DATA_TRANSMISSION_HANDSHAKE](../messages/common.md#DATA_TRANSMISSION_HANDSHAKE), to initiate, control and stop the image streaming; and a data container message, [ENCAPSULATED_DATA](../messages/common.md#ENCAPSULATED_DATA), to transport the image data.
+The image streaming component uses two MAVLink messages: a handshake message, [DATA_TRANSMISSION_HANDSHAKE](../messages/common.md#DATA_TRANSMISSION_HANDSHAKE), to initiate image streaming and describe the image to be sent, and a data container message, [ENCAPSULATED_DATA](../messages/common.md#ENCAPSULATED_DATA), to transport the image data.
 
-{% mermaid %}
+[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFJlcXVlc3QgaW1hZ2UgKERBVEFfVFJBTlNNSVNTSU9OX0hBTkRTSEFLRSlcbiAgICBEcm9uZS0-PkRyb25lOiBXYWl0IGZvciBpbWFnZSBmcm9tIGNhbWVyYS4gXG4gICAgRHJvbmUtPj5Ecm9uZTogRW5jb2RlIGltYWdlIChKUEVHKS5cbiAgICBEcm9uZS0-PkdDUzogU2VuZCBpbWFnZSBtZXRhZGF0YSAoREFUQV9UUkFOU01JU1NJT05fSEFORFNIQUtFKVxuICAgIERyb25lLT4-RHJvbmU6IFNwbGl0IGltYWdlIGludG8gY2h1bmtzLlxuICAgIERyb25lLT4-R0NTOiBTZW5kIGltYWdlIGNodW5rcyAoRU5DQVBTVUxBVEVEX0RBVEEpXG4gICAgR0NTLT4-R0NTOiBSZWNlaXZlIGltYWdlIGNodW5rcy5cbiAgICBHQ1MtPj5HQ1M6IFJlLWFzc2VtYmxlIGltYWdlIGFuZCBkaXNwbGF5LlxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IE1BViB1c2VzIERBVEFfVFJBTlNNSVNTSU9OX0hBTkRTSEFLRSB0byBpbmRpY2F0ZSBzdGFydCBvZiBuZXcgaW1hZ2VcblxuXG4gICAgR0NTLT4-RHJvbmU6IFJlcXVlc3QgdG8gc3RvcCBpbWFnZSBzdHJlYW0gKERBVEFfVFJBTlNNSVNTSU9OX0hBTkRTSEFLRSlcbiAgICBEcm9uZS0-PkRyb25lOiBTdG9wIGltYWdlIHByZXBhcmF0aW9uXG4gICAgRHJvbmUtPj5HQ1M6IEFja25vd2xlZGdlIHRvIHN0b3AgaW1hZ2Ugc3RyZWFtICg_KSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFJlcXVlc3QgaW1hZ2UgKERBVEFfVFJBTlNNSVNTSU9OX0hBTkRTSEFLRSlcbiAgICBEcm9uZS0-PkRyb25lOiBXYWl0IGZvciBpbWFnZSBmcm9tIGNhbWVyYS4gXG4gICAgRHJvbmUtPj5Ecm9uZTogRW5jb2RlIGltYWdlIChKUEVHKS5cbiAgICBEcm9uZS0-PkdDUzogU2VuZCBpbWFnZSBtZXRhZGF0YSAoREFUQV9UUkFOU01JU1NJT05fSEFORFNIQUtFKVxuICAgIERyb25lLT4-RHJvbmU6IFNwbGl0IGltYWdlIGludG8gY2h1bmtzLlxuICAgIERyb25lLT4-R0NTOiBTZW5kIGltYWdlIGNodW5rcyAoRU5DQVBTVUxBVEVEX0RBVEEpXG4gICAgR0NTLT4-R0NTOiBSZWNlaXZlIGltYWdlIGNodW5rcy5cbiAgICBHQ1MtPj5HQ1M6IFJlLWFzc2VtYmxlIGltYWdlIGFuZCBkaXNwbGF5LlxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IE1BViB1c2VzIERBVEFfVFJBTlNNSVNTSU9OX0hBTkRTSEFLRSB0byBpbmRpY2F0ZSBzdGFydCBvZiBuZXcgaW1hZ2VcblxuXG4gICAgR0NTLT4-RHJvbmU6IFJlcXVlc3QgdG8gc3RvcCBpbWFnZSBzdHJlYW0gKERBVEFfVFJBTlNNSVNTSU9OX0hBTkRTSEFLRSlcbiAgICBEcm9uZS0-PkRyb25lOiBTdG9wIGltYWdlIHByZXBhcmF0aW9uXG4gICAgRHJvbmUtPj5HQ1M6IEFja25vd2xlZGdlIHRvIHN0b3AgaW1hZ2Ugc3RyZWFtICg_KSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!-- Original diagram
 sequenceDiagram;
     participant GCS
     participant Drone
-    GCS->>Drone: Request to start image stream
+    GCS->>Drone: Request image (DATA_TRANSMISSION_HANDSHAKE)
     Drone->>Drone: Wait for image from camera. 
     Drone->>Drone: Encode image (JPEG).
-    Drone->>GCS: Send image meta data
+    Drone->>GCS: Send image metadata (DATA_TRANSMISSION_HANDSHAKE)
     Drone->>Drone: Split image into chunks.
-    Drone->>GCS: Send image chunks.
+    Drone->>GCS: Send image chunks (ENCAPSULATED_DATA)
     GCS->>GCS: Receive image chunks.
     GCS->>GCS: Re-assemble image and display.
-    GCS->>Drone: Request to stop image stream
+    Note over GCS,Drone: MAV uses DATA_TRANSMISSION_HANDSHAKE to indicate start of new image
+    GCS->>Drone: Request to stop image stream (DATA_TRANSMISSION_HANDSHAKE)
     Drone->>Drone: Stop image preparation
-    Drone->>GCS: Acknowledge to stop image stream
-{% endmermaid %}
+    Drone->>GCS: Acknowledge to stop image stream (?)
+-->
 
 
-1. The communication is initiated by the *QGroundControl* with a request to start the stream. To do so, one must set the following fields in the MAVLink message:
-  * `target`: to the ID of the targeted MAV,
-  * `state`: to 0 for a request,
-  * `id`: an ID for the image stream, 
-    > **Note** For the moment, the image streamer only supports one stream per image type and therefore requires you to set the `id` to the same integer as the `type` field.
-  * `type`: any of the types in the enum [MAVLINK_DATA_STREAM_TYPE](../messages/common.md#MAVLINK_DATA_STREAM_TYPE) in **mavlink.h**,
-  * `freq`: bigger than 0 for "frames per seconds", lower than 0 for "seconds per frame"
+1. The communication is initiated by the *QGroundControl* with a `DATA_TRANSMISSION_HANDSHAKE` request to start the stream.
+   The messages should specify:
+   * `type`: any of the types in the enum [MAVLINK_DATA_STREAM_TYPE](../messages/common.md#MAVLINK_DATA_STREAM_TYPE) in **mavlink.h**,
+   * `jpg_quality`: Desired image quality (for lossy formats like JPEG).
+   * All other fields must be zero in the initial request.
 
-It is possible to request for a specific image quality. To do so, you must set the ''quality'' field. All other fields should be zero in the initial request.
+1. When the targeted MAV receives the handshake request, it sends back a `DATA_TRANSMISSION_HANDSHAKE`.
+   This acts provides acknowledgment of the request and information about the image that is about to be streamed:
+   * `type`: Type of image to be streamed (same as requested type)
+   * `size`: Image size in bytes.
+   * `width`: Image width in pixels.
+   * `height`: Image height in pixels.
+   * `packets`: number of MAVLink `ENCAPSULATED_DATA` packets to be sent
+   * `payload`: Size of the payload of each data packet (normally 252 bytes)
+   * `jpg_quality`: Image quality (same as requested)
 
-1. When the targeted MAV receives the handshake request, it sends back an acknowledgment and starts the image stream at the requested framerate. The handshake ACK packet normally contains the same values as requested by the GCS (`state` set to 1, because it's an ACK), and adds data about the size of the next sent image:
-  * The field `packets` contains the number of MAVLink `ENCAPSULATED_DATA` packets,
-  * the field `payload` specifies the size of the payload of each data packet (normally 252 bytes),
-  * and the `size` field specifies the image size in bytes.
-
-1. The image data is then split into chunks to fit into normal MAVLink messages. They are then packed into `ENCAPSULATED_DATA` packets and sent over MAVLink. Every packet contains a sequence number as well as the ID of the image stream it belongs to. The image streamer now sends periodically new images, there is no further interaction needed. Every new image comes with a new `DATA_TRANSMISSION_HANDSHAKE` ACK packet with updated image `size`, `packets` and `payload` fields. After this ACK packet, the new image arrives as a series of `ENCAPSULATED_DATA` packets.
+1. The image data is then split into chunks to fit into `ENCAPSULATED_DATA` message and sent over MAVLink.
+   Every packet contains a sequence number as well as the ID of the image stream it belongs to.
+   
+1. The image streamer periodically sends new images without further interaction.
+   Every new image comes with a new `DATA_TRANSMISSION_HANDSHAKE` ACK packet with updated image `size`, `packets` and `payload` fields.
+   After this ACK packet, the new image arrives as a series of `ENCAPSULATED_DATA` packets.
    > **Note** The sequence number starts at 0 for every new image of the stream.
 
-1. To stop an image stream you must send a new `DATA_TRANSMISSION_HANDSHAKE` request packet with the frequency set to 0. The MAVLink node will acknowledge this by sending back an ACK packet containing the same data as in the request.
-
-
+1. To stop an image stream a GSC must send a new `DATA_TRANSMISSION_HANDSHAKE` request packet, with all 0 values.
+   The MAVLink node will acknowledge this by sending back `DATA_TRANSMISSION_HANDSHAKE` also containing 0 values.
 
 ## Usage / Configuration
+
 To use the two modules on your MAV, you have to do the following steps:
 
 - Compile the `mavconn` middleware for your MAV: [Guide](https://www.pixhawk.org/wiki/software/mavconn/start), [Github](https://github.com/pixhawk/mavconn).

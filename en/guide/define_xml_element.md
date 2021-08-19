@@ -6,11 +6,14 @@ This topic provides practical guidance for defining and extending MAVLink XML el
 
 > **Note** For detailed information about the file format see [MAVLink XML Schema](../guide/xml_schema.md) (you can also inspect [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialect files). 
 
+<span></span>
+> **Tip** Before submitting a pull request for a change to a [dialect xml file](../messages/README.md), you should first [regenerate the dialect library](../getting_started/generate_libraries.md) *with validation enabled*, and then run the [./scripts/format_xml.sh](https://github.com/mavlink/mavlink/blob/master/scripts/format_xml.sh) script.
+
 ## Messages vs Commands
 
 There are two ways to send information between MAVLink systems (including commands, information and acknowledgments):
 * [Messages](#messages) are encoded using `message` elements. The message structure/fields and handling are largely unconstrained (i.e. up to the creator).
-* [MAVLink Commands](#mavlink_commands) are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum, and encoded into real messages that are sent using the [Mission Protocol](../services/mission.md) or [Command Protocol](../services/command.md). 
+* [MAVLink Commands](#mavlink_commands) are defined as entries in the [MAV_CMD](../messages/common.md#mav_commands) enum, and encoded into real messages that are sent using the [Mission Protocol](../services/mission.md) or [Command Protocol](../services/command.md). 
   Their structure is defined (they have 7 `float` parameters *or* 5 `float` and 2 `int32_t` parameters) and handling/responses depend on the protocol used to send them.
 
 The guidance below provides some suggestions on when one or the other might be more appropriate.
@@ -289,7 +292,6 @@ Open questions:
 -->
 
 
-
 ## Enums {#enums}
 
 [Enums](../guide/xml_schema.md#enum) are used to define named values that may be used as options in messages - for example to represent errors, states, or modes.
@@ -337,7 +339,8 @@ The main rules for enums are:
     - The `name` must be unique across all entries in the enum.
     - By *convention*, the `name` should be prefixed with the enum name (e.g. enum `LANDING_TARGET_TYPE` has entry `LANDING_TARGET_TYPE_LIGHT_BEACON`).
   - *should* have a `value` attribute, and if assigned this must be unique within the (merged) enum.
-    A value will be automatically created for the generated library if not assigned, but this is not recommended.
+    Missing values will automatically be sequentially assigned (starting from 1, if the first value is not assigned).
+    > **Tip** We recommend you assign values because then new entries can be added within the range without breaking compatibility.
   - *should* (very highly recommended) include a `description` element. 
   - may represent bitmasks, in which case values will increase by a power of 2.
   - *may* be marked as deprecated.
@@ -375,8 +378,10 @@ Enums are very rarely deleted, as this may break compatibility with legacy MAVLi
 
 ## Commands {#mavlink_commands}
 
-MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
-They are used to define operations used in autonomous missions (see [Mission Protocol](../services/mission.md) or to send commands in any mode (see [Command Protocol](../services/command.md)).
+MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#mav_commands) enum.
+They are used to define operations used in autonomous missions (see [Mission Protocol](../services/mission.md)) or to send commands in any mode (see [Command Protocol](../services/command.md)).
+
+> **Tip** The schema for commands is documented [here](../guide/xml_schema.md#MAV_CMD).
 
 A typical mission command is ([MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT)) is shown below:
 
@@ -414,7 +419,7 @@ The allocated ranges are listed below.
 
 Dialect | Range
 --- | ---
-Common.xml | 30000 - 39999
+Common.xml | 0 - 39999
 asluav.xml | 40001 - 41999
 ArduPilotMega.xml | 42000 - 42999
 slugs.xml | 10001 - 11999
@@ -438,11 +443,21 @@ In addition, there are some other "standard" prefixes which are used for common 
 > **Tip** The rules for the above prefixes are flexible; some DO commands might reasonably be NAV commands.
   Ins some cases a request for information might be a `MAV_CMD_REQUEST_` and in others it might be a stand alone message.
   
-### Standard Mappings
+### Parameters (param) {#param}
 
-Commands have an index from 1 to 7. 
+Message data is encoded in the [param](../guide/xml_schema.md#param) values/attributes. 
+
+#### Standard Mappings
+
+Parameters (`params`) must have an index from 1 to 7. 
+
 Where a command contains position information, this is always stored in: Param 5 (x / latitude), Param 6 (y / longitude), Param 7 (z, altitude). 
 Whether the value is local (x,y,z) or global (latitude, longitude, altitude) depends on the command and the frame used (frame often defined in the parent message).
+
+#### Data types
+
+The `param` data for index 1-4, 7 are always exchanged in a field with size `float`, while index 5, 6 may also be sent as an `int32` (depending on the message used).
+The implication is that index 5 and 6 should not be used for data that may need to be sent in a floating point value (like a `NaN`).
 
 
 <!-- 
@@ -453,3 +468,46 @@ Common - 16 - 34, 80-85, 92 - 95, 112-115, 159, 176 - 186, 189 - 252, 300, 400, 
 matrixpilot : 0
 Slugs - 10001 - 10015
 -->
+
+#### Reserved/Undefined Parameters {#reserved}
+
+Many commands do not *need* seven (or any) `param` values.
+These unused parameters can be treated as *reserved*, allowing them to be reused later if the command needs to be extended.
+
+A reserved `param` **must** always be sent with a (default) value of *either* `0` or `NaN` (which will be interpreted by recipient as "no action" or "not supported").
+If the param is reused the original default value must still mean "no action", so that an updated system can still interact with a system that has not been updated.
+
+> **Note** Unfortunately this means that a reserved `param` must have its default value decided when the command is declared!
+  The default value cannot later be changed from `NaN` to `0` (or visa versa) without potential compatibility issues.
+
+To declare a `param` as `reserved` with `default` value of `NaN` you should use the following syntax. 
+```
+<param index="3" reserved="True" default="NaN" />
+```
+
+> **Warning** Params with index values `5` and `6` should not be given a `default` of `NaN` , because if these are sent in a `COMMAND_INT` or `MISSION_INT` these parameters are integers (and hence there is no way to represent an `NaN`).
+
+To declare a param as `reserved` with `default` value of `0` simply omit the `param` from the definition. This is the default - it is equivalent to: 
+```xml
+<param index="3" reserved="True" default="0" />
+```
+
+If you have just one unused `param` we recommend you simply don't declare it. 
+If you have more than one, you may wish to explicitly define it with default of `NaN` so that you can extend your command later with ether default. 
+
+
+#### GUI Param Attributes
+
+A number of [param](../guide/xml_schema.md#param) attributes are provided as "GUI hints". 
+
+These attributes are used to better display params:
+- `label` - Label for param in GCS/UI.
+  All words in label should be capitalised (e.g. "Hold Altitude").
+- `units` - SI units for the value.
+- `decimalPlaces` - Hint to a UI about how many decimal places to use if the parameter value is displayed.
+
+These attributes help a GCS customise the editing experience (e.g. controls can choose to only offer allowed values).
+- `enum` - Enum containing possible values for the parameter (if applicable).
+- `increment` - Allowed increments for the parameter value.
+- `minValue` - Minimum value for param.
+- `maxValue` - Maximum value for the param.

@@ -1,44 +1,38 @@
-# Installing MAVLink
+# 安装 MAVLink
 
-This topic explains how to install the [MAVLink toolchain](https://github.com/mavlink/mavlink), including both [XML message definitions](../messages/README.md) and the GUI/command line tools that use them to [Generate MAVLink Source Files](../getting_started/generate_libraries.md).
+本章主要说明如何安装[MAVLink工具链](https://github.com/mavlink/mavlink)，包括[XML消息定义](../messages/README.md)和用于[生成MAVLINK源文件](../getting_started/generate_libraries.md)的图形用户界面/命令行工具。
 
-> **Tip** You do not need to install or generate the source files if you are using the C programming language and a standard [dialect](../messages/README.md#dialects). Just get the [prebuilt libraries](../README.md#prebuilt_libraries) and then jump to [Using C Libraries](../mavgen_c/README.md).
+> **建议**如果你使用的是C编程语言和标准[方言](../messages/README.md#dialects)，则不需要安装或者生成源文件。 只需要获取[预构建的库](../README.md#prebuilt_libraries)然后跳转到[Using C Libraries](../mavgen_c/README.md)。
 
-## Prerequisites
+## 先决条件
 
-The requirements for using the *MAVLink tools* are:
+The requirements for using the *MAVLink generator* are:
 
-* Python 2.7+ or Python 3.3+
-* Python [future](http://python-future.org/) module
-* (Optional) Python [TkInter](https://wiki.python.org/moin/TkInter) module (required to use the GUI tool).
-* `PYTHONPATH` environment variable must be set to the directory path containing the *mavlink* repository.
+* Python 3.3+
+* Python [future](http://python-future.org/)模块
+* [TkInter](https://wiki.python.org/moin/TkInter) (required to use the GUI tool).
+* 环境变量`PYTHONPATH`必须包含*mavlink*存储库的目录路径。
 
-## Installation Steps
+If you are creating new XML definitions you should also install lxml and libxml2 for XML validation and formatting.
 
-The main installation steps are:
+## Installation
 
-1. Install Python 2.7+ or 3.3+. 
-    * **Windows:** Download from [Python for Windows](https://www.python.org/downloads/)
-    * **Ubuntu Linux 16.04:** Python 2.7 and Python 3.0 are already present. If you are using Python3 you will need to install the *pip3* package manager: ```sudo apt-get install python3-pip```
+To install the MAVLink tools:
+
+1. Install Python 3.6+: 
+    * **Windows:**从[Python for Windows](https://www.python.org/downloads/)下载。
+    * **Ubuntu Linux** Python 3 is present on 18.04 and 20.04 by default but you will need to install the *pip3* package manager: ```sudo apt install python3-pip```
 2. Install the *future* module: 
-    * **Windows:** ```pip install future```
-    * **Linux:** ```pip install --user future```
-
-3. (Optionally) Install TkInter
-    
+    * **Windows:** ```pip3 install future```
+    * **Linux:** ```pip3 install --user future```
+3. (Recommended) Install modules for XML validation and formatting: 
+    * **Linux:** ```sudo apt install python3-lxml libxml2-utils``` 
+4. (Optional) Install TkInter 
     * **Windows:** Installed already as part of *Python for Windows*
-    * **Linux:** Enter the following terminal command: ```sudo apt-get install python-tk```
-
-4. Clone the [mavlink repo](https://github.com/mavlink/mavlink) (or your fork) into a user-writable directory:
-    
-        git clone https://github.com/mavlink/mavlink.git
-        git submodule update --init --recursive
-        
-    
-    > **Note** Alternatively you can do this in one line: ```git clone https://github.com/mavlink/mavlink.git --recursive```
-
-5. Set `PYTHONPATH` to the directory path containing your *mavlink* repository. 
-    * **Windows:** `set PYTHONPATH=C:\your_path_to_mavlink_clone`
-    * **Linux:** `PYTHONPATH=your_path_to_mavlink_clone`
+    * **Linux:** Enter the following terminal command: ```sudo apt install python3-tk```
+5. Clone the [mavlink repo](https://github.com/mavlink/mavlink) (or your fork) into a user-writable directory: ```git clone https://github.com/mavlink/mavlink.git --recursive```
+6. Set `PYTHONPATH` to the directory path containing your *mavlink* repository. 
+    * **Windows:** `set PYTHONPATH=C:\path_to_root_of_cloned_mavlink_repository`
+    * **Linux:** `PYTHONPATH=path_to_root_of_cloned_mavlink_repository`
 
 Now you are ready to [Generate MAVLink Libraries](../getting_started/generate_libraries.md).

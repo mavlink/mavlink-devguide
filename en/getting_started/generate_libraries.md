@@ -2,9 +2,13 @@
 
 Language-specific MAVLink libraries can be created from [XML Message Definitions](../messages/README.md) using *code generator* tools.
 
-The available code generators and supported output languages for each version of the MAVLink protocol are listed in [Supported Languages](../README.md#supported_languages) (these include C, C#, Java, Python etc).
+This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line).
 
-This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line) (other code generators are documented by their associated projects).
+> **Note** These generators can build MAVLink 2 libraries for C, C++11, Python, Typescript, Java, and WLua (supporting both MAVLink 2 and 1), and MAVLink 1 (only) libraries for: C#, JavaScript, ObjC, Swift.
+
+<span></span>
+> **Tip** Generators for other programming languages are supported and documented in independent progects.
+  For more information see [Supported Languages](../README.md#supported_languages).
 
 
 ## Pre-requisites
@@ -14,7 +18,7 @@ This topic shows how to use the two code generators provided with the MAVLink pr
    > **Note** *mavgen* can handle dialects that have relative paths for included XML files (e.g typically [common.xml](../messages/common.md)), but other generators may not. 
      We recommend putting custom dialects in the same folder as the ones that come with the *mavlink/mavlink* repository.
 
-## Mavenerate (GUI) {#mavgenerate}
+## Mavgenerate (GUI) {#mavgenerate}
 
 **mavgenerate.py** is GUI code generator for MAVLink, written in Python.
 
@@ -23,17 +27,24 @@ This topic shows how to use the two code generators provided with the MAVLink pr
 The GUI can be launched from anywhere using Python's `-m` argument:
 
 ```sh
-python -m mavgenerate
+python3 -m mavgenerate
 ```
 
 ![mavgenerate UI](../../assets/mavgen/mavlink_generator.png)
 
 Generator Steps:
-1. Choose the target XML file (typically in [mavlink/message_definitions/1.0](https://github.com/mavlink/mavlink/tree/master/message_definitions/1.0)).
+1. Choose the target XML file (typically in [mavlink/message_definitions/1.0](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0)).
 
    > **Note** If using a custom dialect, first copy it into the above directory (if the dialect is dependent on **common.xml** it must be located in the same directory).
 1. Choose an output directory (e.g. **mavlink/include**).
 1. Select the target output programming language.
+
+   ![mavgenerate UI - language list](../../assets/mavgen/malink_gen_ui_languages.png)
+   
+   > **Note** There are three JavaScript options:
+     - `JavaScript_Stable` is an older version that only supports MAVLink 1.0,
+     - `JavaScript_NextGen` is a more recent version that supports MAVLink 1 and 2 along with signing.
+     - `JavaScript` is a "proxy" for the recommended version. Currently this is `JavaScript_Stable`.
 1. Select the target MAVLink protocol version (ideally 2.0)
    > **Caution** Generation will fail if the protocol is not [supported](../README.md#supported_languages) by the selected programming language.
 1. Optionally check *Validate* and/or  *Validate Units* (if checked validates XML specifications).
@@ -42,14 +53,14 @@ Generator Steps:
 
 ## Mavgen (Command Line) {#mavgen}
 
-**mavgen.py** is a command-line tool for generating MAVLink libraries for different programming languages. 
-After the `mavlink` directory has been added to the `PYTHONPATH`, it can be run by executing from the command line. 
+**mavgen.py** is a command-line tool for generating MAVLink libraries for different programming languages.
+After the `mavlink` directory has been added to the `PYTHONPATH`, it can be run by executing from the command line.
 
 > **Tip** This is the backend used by [mavgenerate](#mavgenerate). The documentation below explains all the options for both tools. 
 
 For example, to generate *MAVLink 2* C libraries for a dialect named **your_custom_dialect.xml**.
 ```sh
-python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
+python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
 ```
 
 > **Note** The syntax for for generating Python modules is the same, except that the `--output` specifies a *filename* rather than a directory.
@@ -59,7 +70,7 @@ python -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated
 The full syntax and options can be output by running *mavgen* with the `-h` flag (reproduced below):
 ```
 usage: mavgen.py [-h] [-o OUTPUT]
-                 [--lang {C,CS,JavaScript,Python,WLua,ObjC,Swift,Java,C++11}]
+                 [--lang {C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python,Lua,WLua,ObjC,Swift,Java,C++11}]
                  [--wire-protocol {0.9,1.0,2.0}] [--no-validate]
                  [--error-limit ERROR_LIMIT] [--strict-units]
                  XML [XML ...]
@@ -73,7 +84,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -o OUTPUT, --output OUTPUT
                         output directory.
-  --lang {C,CS,JavaScript,Python,WLua,ObjC,Swift,Java,C++11}
+  --lang {C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python,Lua,WLua,ObjC,Swift,Java,C++11}
                         language of generated code [default: Python]
   --wire-protocol {0.9,1.0,2.0}
                         MAVLink protocol version. [default: 1.0]

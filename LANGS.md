@@ -1,4 +1,4 @@
 * [English](en/)
-* [Korean (한국어)](kr/)
-<!-- * [Chinese (中文)](zh/) -->
+* [Chinese (中文)](zh/) 
+* [Korean (한국어)](ko/)
 <!-- * [Español](es/) -->

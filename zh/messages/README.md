@@ -1,34 +1,27 @@
 <!-- THIS FILE IS AUTO-GENERATED (DO NOT UPDATE GITBOOK): https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 
-# Message Definitions
+# 方言 {#dialects}
 
-MAVLink messages are defined in XML files in the [mavlink/message definitions](https://github.com/mavlink/mavlink/blob/master/message_definitions/) folder. The messages that are common to all systems are defined in [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml) (only messages contained in this file are considered standard messages).
+MAVLink *dialects* 一种 XML 文件，用来定义 *protocol-* 和 *vendor-specific* 消息， 枚举和命令。
 
-The common messages are provided as human-readable tables in: [Common](../messages/common.md).
+Dialects may *include* other MAVLink XML files, which may in turn contain other XML files. 一种典型的模式是方言包含 [common.xml](../messages/common.md) （其中包括 *MAVLink standard definitions* ），使用供应商或协议特定消息对其进行扩展。 At time of writing up to 5 levels of XML file nesting are allowed (see `MAXIMUM_INCLUDE_FILE_NESTING` in [mavgen.py](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavgen.py#L44)).
 
-## Vendor Specific Extensions (Dialects) {#dialects}
+> **Note** MAVLink的供应商分支可能包含尚未合并的方言消息，因此不会出现在本文档中。
 
-MAVLink protocol-specific and vendor-specific messages (dialects) are stored in separate XML files. These often include the [common](../messages/common.md) message definition, extending it with needed vendor or protocol specific messages.
+多个方言文件在 [mavlink/message definitions](https://github.com/mavlink/mavlink/blob/master/message_definitions/) 中并存于单独的 XML文件。
 
-> **Note** While a dialect can include any other message definition, care should be taken when including a definition file that includes another file (only a single level of nesting is tested).
+XML 方言文件的可读格式链接如下：
 
-<span></span>
-
-> **Note** Vendor forks of MAVLink may contain messages that are not yet merged, and hence will not appear in this documentation.
-
-The human-readable forms of all the XML files are linked below:
-
-* [ardupilotmega.xml](ardupilotmega.md)
 * [ASLUAV.xml](ASLUAV.md)
-* [autoquad.xml](autoquad.md)
-* [common.xml](common.md)
+* [all.xml](all.md)
+* [ardupilotmega.xml](ardupilotmega.md)
+* [development.xml](development.md)
 * [icarous.xml](icarous.md)
 * [matrixpilot.xml](matrixpilot.md)
 * [minimal.xml](minimal.md)
 * [paparazzi.xml](paparazzi.md)
 * [python_array_test.xml](python_array_test.md)
-* [slugs.xml](slugs.md)
 * [standard.xml](standard.md)
 * [test.xml](test.md)
-* [ualberta.xml](ualberta.md)
 * [uAvionix.xml](uAvionix.md)
+* [ualberta.xml](ualberta.md)

@@ -1,9 +1,16 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
 # MAVLINK Common Message Set
 
-These messages define the common message set, which is the reference message set implemented by most ground control stations and autopilots.
+The MAVLink *common* message set contains *standard* definitions that are managed by the MAVLink project.
+The definitions cover functionality that is considered useful to most ground control stations and autopilots.
+MAVLink-compatible systems are expected to use these definitions where possible (if an appropriate message exists) rather than rolling out variants in their own [dialects](../messages/README.md).
 
-*This is a human-readable form of the XML definition file: [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml).*
+The original definitions are defined in [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml).
+
+> **Tip** The common set `includes` [minimal.xml](minimal.md), which contains the *minimal set* of definitions for any MAVLink system.
+  These definitions are [reproduced at the end of this topic](#minimal).
+
+
 
 <span></span>
 > **Note** MAVLink 2 messages have an ID > 255 and are marked up using **(MAVLink 2)** in their description.
@@ -17,5 +24,14 @@ td {
 }
 </style>
 
+
 {% include "_html/common.html" %}
 
+
+# Minimal.xml {#minimal}
+
+The minimal set of definitions required for any MAVLink system are included from [minimal.xml](minimal.md).
+These are listed below.
+
+
+{% include "_html/minimal.html" %}

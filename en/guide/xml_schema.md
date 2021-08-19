@@ -33,7 +33,6 @@ The broad structure for MAVLink XML files is given below.
 </mavlink>
 ```
 
-
 The main tags are listed below (all are optional):
 
 - `include`: This tag is used to specify any other XML files included in your dialect.
@@ -51,22 +50,15 @@ The main tags are listed below (all are optional):
 * [messages](#messages): Dialect-specific messages can be defined in this block (if none are defined in the file, the block is optional/can be removed).
 
 
-### Enum Definition (enums) {#enum}
+## Enum Definition (enums) {#enum}
 
-Enums are used to define named values that may be used as options in messages - for example to define errors, states, or modes. 
+Enums are used to define named values that may be used as options in messages - for example to define errors, states, or modes.
+There is also a special enum `MAV_CMD` that is used to define MAVLink commands.
 
-> **Tip** [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#MAV_CMD) enum.
+Enums are defined within the `<enums> ... </enums>` blocks (as discussed in the previous section) using `<enum> ... </enum>` tags.
+Enum *values* are defined within the enum using `<entry> ... </entry>` tags.
 
-All enums are defined within the `<enums> ... </enums>` blocks (as discussed in the previous section). Enum values are defined within `<enum>` tags.
-
-The main `enum` tags/fields are:
-* `name`: The name of the enum (mandatory). This is a string of capitalized, underscore-separated words.
-* `description` (optional): A string describing the purpose of the enum
-* `entry` (optional): An entry (zero or more entries can be specified for each enum)
-* [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
-
-As a concrete example, the definition of the [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) message is given below.
-
+For example, the definition of the [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) message is given below:
 ```xml
 <enum name="LANDING_TARGET_TYPE">
     <description>Type of landing target</description>
@@ -82,60 +74,112 @@ As a concrete example, the definition of the [LANDING_TARGET_TYPE](../messages/c
     <entry value="3" name="LANDING_TARGET_TYPE_VISION_OTHER">
         <description>Landing target represented by a pre-defined visual shape/feature (ex: X-marker, H-marker, square)</description>
     </entry>
+</enum>
 ```
 
+The main `enum` tags/fields are:
+* `name`: The name of the enum (mandatory). This is a string of capitalized, underscore-separated words.
+* `description` (optional): A string describing the purpose of the enum
+* `entry` (optional): An entry (zero or more entries can be specified for each enum)
+* [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
 
-#### entry {#entry}
+> **Tip** [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
+
+### entry {#entry}
 
 The "normal" enum `entry` tags/fields are:
 * `name`: The name of the enum value (mandatory). This is a string of capitalized, underscore-separated words.
 * `value` (optional): The *value* for the entry (a number).
 * `description` (optional): A description of the entry.
-* [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the enum is deprecated or "work in progress". 
+* [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the enum is deprecated or "work in progress".
 
-[MAV_CMD](../messages/common.md#MAV_CMD) entries may additionally define these tags/fields:
-* [param](#param) (optional): A param value.
+> **Note** An `entry` may also define the optional elements: `param`, `hasLocation`, and `isDestination`.
+  In practice these should only be used in the `enum` named [MAV_CMD](#MAV_CMD) (described below).
+
+
+## MAVLink Commands (enum MAV_CMD) {#MAV_CMD}
+
+Individual `entry` values in the `enum` named [MAV_CMD](#MAV_CMD) are use to define *MAVLink Commands*.
+Each command has a `value` (its "command number") and specifies up to 7 parameters.
+
+> **Note** These parameters are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages ([Mission Protocol](../services/mission.md)), or [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages ([Command Protocol](../services/command.md)).
+
+For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE):
+
+```xml
+<enum name="MAV_CMD">
+....
+    <entry value="94" name="MAV_CMD_NAV_PAYLOAD_PLACE">
+        <description>Descend and place payload. Vehicle descends until it detects a hanging payload has reached the ground, the gripper is opened to release the payload</description>
+        <param index="1">Maximum distance to descend (meters)</param>
+        <param index="2">Empty</param>
+        <param index="3">Empty</param>
+        <param index="4">Empty</param>
+        <param index="5">Latitude (deg * 1E7)</param>
+        <param index="6">Longitude (deg * 1E7)</param>
+        <param index="7">Altitude (meters)</param>
+</entry>
+...
+</enum>
+```
+
+MAV_CMD entry `value` elements may additionally define these tags/fields:
+* [param](#param) (optional): Up to 7 param tags, numbered using an `index` attribute.
 * One (but not both) of:
   * `hasLocation` (optional): A boolean (default true) that provides a hint to a GCS that the entry should be displayed as a "standalone" location - rather than as a destination on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values but which are not on the vehicle path (e.g.: [MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION)).
   * `isDestination` (optional): A boolean (default true) that provides a hint to a GCS that the entry is a location that should be displayed as a point on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values and which are on the vehicle path (e.g.: [MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT) and [MAV_CMD_NAV_LAND](../messages/common.md#MAV_CMD_NAV_LAND)).
 
 
-#### param {#param}
+### param {#param}
 
-The `<param>` tag is used in the [MAV_CMD](../messages/common.md#MAV_CMD) enum as part of defining mission commands.
-Params must include an attribute `index` (with value from 1 to 7) and contain a parameter description string.
+The `<param>` tag is used in the [MAV_CMD](../messages/common.md#mav_commands) enum as part of defining mission commands.
+Each entry value may have up to 7 params declared, with `index` values from 1-7. 
 
-A `param` may also include the following optional attributes (which may be used by a GUI for parameter display and editing):
-- `label` - Display name to represent the parameter in a GCS or other UI
+A `param` **must** include the following attribute:
+- `index` - The parameter number (1 - 7).
+
+A `param` **should** have:
+- `description`: Parameter description string (tag body)
+
+A `param` **should** also include the following optional attributes where appropriate (which may be used by a GUI for parameter display and editing):
+- `label` - Display name to represent the parameter in a GCS or other UI. 
+  All words in label should be capitalised.
 - `units` - SI units for the value.
 - `enum` - Enum containing possible values for the parameter (if applicable).
 - `decimalPlaces` - Hint to a UI about how many decimal places to use if the parameter value is displayed.
 - `increment` - Allowed increments for the parameter value.
 - `minValue` - Minimum value for param.
 - `maxValue` - Maximum value for the param.
+- `reserved` - Boolean indicating whether param is reserved for future use. If the attributes is not declared, then implicitly `reserved="False"`.
+  > **Tip** See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
+- `default` - Default value for the `param` 
+  (primarily used for `reserved` params, where the value is `0` or `NaN`).
 
-> **Note** MAVLink commands are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages as part of the [Mission Protocol](../services/mission.md). 
-  Some commands can be sent outside of missions in [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages.
 
-For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE)
+## Message Definition (messages) {#messages}
+
+Messages are defined within the `<messages> ... </messages>` block using `<message>...</message>` tags.
+Individual fields to be encoded in the message payload are defined using `<field> ... </field>` tags
+
+For example,the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) message is given below (this message was chosen because it contains many of the main fields and attributes. 
 
 ```xml
-<entry value="94" name="MAV_CMD_NAV_PAYLOAD_PLACE">
-    <description>Descend and place payload. Vehicle descends until it detects a hanging payload has reached the ground, the gripper is opened to release the payload</description>
-    <param index="1">Maximum distance to descend (meters)</param>
-    <param index="2">Empty</param>
-    <param index="3">Empty</param>
-    <param index="4">Empty</param>
-    <param index="5">Latitude (deg * 1E7)</param>
-    <param index="6">Longitude (deg * 1E7)</param>
-    <param index="7">Altitude (meters)</param>
-</entry>
+    <message id="147" name="BATTERY_STATUS">
+      <description>Battery information</description>
+      <field type="uint8_t" name="id">Battery ID</field>
+      <field type="uint8_t" name="battery_function" enum="MAV_BATTERY_FUNCTION">Function of the battery</field>
+      <field type="uint8_t" name="type" enum="MAV_BATTERY_TYPE">Type (chemistry) of the battery</field>
+      <field type="int16_t" name="temperature" units="cdegC">Temperature of the battery. INT16_MAX for unknown temperature.</field>
+      <field type="uint16_t[10]" name="voltages" units="mV">Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value.</field>
+      <field type="int16_t" name="current_battery" units="cA">Battery current, -1: autopilot does not measure the current</field>
+      <field type="int32_t" name="current_consumed" units="mAh">Consumed charge, -1: autopilot does not provide consumption estimate</field>
+      <field type="int32_t" name="energy_consumed" units="hJ">Consumed energy, -1: autopilot does not provide energy consumption estimate</field>
+      <field type="int8_t" name="battery_remaining" units="%">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</field>
+      <extensions/>
+      <field type="int32_t" name="time_remaining" units="s">Remaining battery time, 0: autopilot does not provide remaining battery time estimate</field>
+      <field type="uint8_t" name="charge_state" enum="MAV_BATTERY_CHARGE_STATE">State for extent of discharge, provided by autopilot for warning or external reactions</field>
+    </message>
 ```
-
-
-### Message Definition (messages) {#messages}
-
-All messages are defined within the `<messages> ... </messages>` block (as discussed in the previous section) using `<message>...</message>` tags.
 
 The main message tags/fields are:
 
@@ -162,37 +206,18 @@ The main message tags/fields are:
   - `display` (optional): This should be set as `display="bitmask"` for bitmask fields (hint to ground station that enum values must be displayed as checkboxes).
   - `print_format` (optional): TBD.
   - `default` (optional): TBD.
+  - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`.
+    > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series. 
 - [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the message is deprecated or "work in progress".
 - `extensions` (optional): This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only. 
   - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2. 
 
-As a concrete example, the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) message is given below.
 
-> **Note** This message was chosen as it contains many of the main fields and attributes. 
-
-```xml
-    <message id="147" name="BATTERY_STATUS">
-      <description>Battery information</description>
-      <field type="uint8_t" name="id">Battery ID</field>
-      <field type="uint8_t" name="battery_function" enum="MAV_BATTERY_FUNCTION">Function of the battery</field>
-      <field type="uint8_t" name="type" enum="MAV_BATTERY_TYPE">Type (chemistry) of the battery</field>
-      <field type="int16_t" name="temperature" units="cdegC">Temperature of the battery. INT16_MAX for unknown temperature.</field>
-      <field type="uint16_t[10]" name="voltages" units="mV">Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value.</field>
-      <field type="int16_t" name="current_battery" units="cA">Battery current, -1: autopilot does not measure the current</field>
-      <field type="int32_t" name="current_consumed" units="mAh">Consumed charge, -1: autopilot does not provide consumption estimate</field>
-      <field type="int32_t" name="energy_consumed" units="hJ">Consumed energy, -1: autopilot does not provide energy consumption estimate</field>
-      <field type="int8_t" name="battery_remaining" units="%">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</field>
-      <extensions/>
-      <field type="int32_t" name="time_remaining" units="s">Remaining battery time, 0: autopilot does not provide remaining battery time estimate</field>
-      <field type="uint8_t" name="charge_state" enum="MAV_BATTERY_CHARGE_STATE">State for extent of discharge, provided by autopilot for warning or external reactions</field>
-    </message>
-```
-
-### Others Tags
+## Common Tags
 
 This section lists a number of tags can be used in a number of other types - e.g. messages and enums.
 
-#### deprecated {#deprecated}
+### deprecated {#deprecated}
 
 The `<deprecated>` tag can be used in an [enum](#enum), enum [entry](#entry) (value) or [message](#message) to indicate that the item has been superseded. 
 The tag attributes indicates the time of deprecation and the replacement item, while the element may (optionally) contain a string with additional information about the deprecation.
@@ -213,7 +238,7 @@ The `deprecated` attributes are:
 
 
 
-#### wip {#wip}
+### wip {#wip}
 
 The `<wip>` tag can be used in an enum [entry](#entry) (value) or [message](#message) to indicate that the item is a "work in progress". 
 The element may (optionally) contain a string with additional information about the new item.

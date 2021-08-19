@@ -1,0 +1,1266 @@
+<html>
+ <body>
+  <p>
+   <strong>MAVLink Include Files:</strong> <a href="common.md">common.xml</a>
+  </p>
+  <h2 id="enums">MAVLink类型枚举</h2>
+  <h3 id="SLUGS_MODE">
+   <a href="#SLUGS_MODE">SLUGS_MODE</a>
+  </h3>
+  <p>
+   <a href="#enums">[Enum]</a> Slugs-specific 导航模式</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="SLUGS_MODE_NONE">
+     <td>0</td>
+     <td>
+      <a href="#SLUGS_MODE_NONE">SLUGS_MODE_NONE</a>
+     </td>
+     <td>SLUGS 模式不变。</td>
+    </tr>
+    <tr id="SLUGS_MODE_LIFTOFF">
+     <td>1</td>
+     <td>
+      <a href="#SLUGS_MODE_LIFTOFF">SLUGS_MODE_LIFTOFF</a>
+     </td>
+     <td>车辆处于升空模式。</td>
+    </tr>
+    <tr id="SLUGS_MODE_PASSTHROUGH">
+     <td>2</td>
+     <td>
+      <a href="#SLUGS_MODE_PASSTHROUGH">SLUGS_MODE_PASSTHROUGH</a>
+     </td>
+     <td>车辆处于直通模式，由驾驶员控制。</td>
+    </tr>
+    <tr id="SLUGS_MODE_WAYPOINT">
+     <td>3</td>
+     <td>
+      <a href="#SLUGS_MODE_WAYPOINT">SLUGS_MODE_WAYPOINT</a>
+     </td>
+     <td>车辆处于航点模式，导航到航点。</td>
+    </tr>
+    <tr id="SLUGS_MODE_MID_LEVEL">
+     <td>4</td>
+     <td>
+      <a href="#SLUGS_MODE_MID_LEVEL">SLUGS_MODE_MID_LEVEL</a>
+     </td>
+     <td>车辆正在执行中级命令。</td>
+    </tr>
+    <tr id="SLUGS_MODE_RETURNING">
+     <td>5</td>
+     <td>
+      <a href="#SLUGS_MODE_RETURNING">SLUGS_MODE_RETURNING</a>
+     </td>
+     <td>车辆返回原位。</td>
+    </tr>
+    <tr id="SLUGS_MODE_LANDING">
+     <td>6</td>
+     <td>
+      <a href="#SLUGS_MODE_LANDING">SLUGS_MODE_LANDING</a>
+     </td>
+     <td>车辆在着陆。</td>
+    </tr>
+    <tr id="SLUGS_MODE_LOST">
+     <td>7</td>
+     <td>
+      <a href="#SLUGS_MODE_LOST">SLUGS_MODE_LOST</a>
+     </td>
+     <td>与车辆连接断开。</td>
+    </tr>
+    <tr id="SLUGS_MODE_SELECTIVE_PASSTHROUGH">
+     <td>8</td>
+     <td>
+      <a href="#SLUGS_MODE_SELECTIVE_PASSTHROUGH">SLUGS_MODE_SELECTIVE_PASSTHROUGH</a>
+     </td>
+     <td>车辆采用选择性通道模式，其中选择操作是手动控制的。 </td>
+    </tr>
+    <tr id="SLUGS_MODE_ISR">
+     <td>9</td>
+     <td>
+      <a href="#SLUGS_MODE_ISR">SLUGS_MODE_ISR</a>
+     </td>
+     <td>车辆处于 ISR 模式，在 ISR_LOCATION 信息指定的点执行侦察。 </td>
+    </tr>
+    <tr id="SLUGS_MODE_LINE_PATROL">
+     <td>10</td>
+     <td>
+      <a href="#SLUGS_MODE_LINE_PATROL">SLUGS_MODE_LINE_PATROL</a>
+     </td>
+     <td>车辆沿航路点之间的路线巡逻。</td>
+    </tr>
+    <tr id="SLUGS_MODE_GROUNDED">
+     <td>11</td>
+     <td>
+      <a href="#SLUGS_MODE_GROUNDED">SLUGS_MODE_GROUNDED</a>
+     </td>
+     <td>车辆接地或发生错误。</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CONTROL_SURFACE_FLAG">
+   <a href="#CONTROL_SURFACE_FLAG">CONTROL_SURFACE_FLAG</a>
+  </h3>
+  <p>
+   <a href="#enums">[Enum]</a> 这些标志对选定通道模式的控制面进行编码。  如果设置了一个位，那么驾驶员控制台可以控制操作台，如果没有，那么自动驾驶仪可以控操作台。 </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CONTROL_SURFACE_FLAG_THROTTLE">
+     <td>128</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_THROTTLE">CONTROL_SURFACE_FLAG_THROTTLE</a>
+     </td>
+     <td>0b10000000 油门控制通过驾驶员控制台。 </td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_LEFT_AILERON">
+     <td>64
+</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_LEFT_AILERON">CONTROL_SURFACE_FLAG_LEFT_AILERON</a>
+     </td>
+     <td>0b01000000 左副翼操纵杆通过飞行员控制台。</td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_RIGHT_AILERON">
+     <td>32</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_RIGHT_AILERON">CONTROL_SURFACE_FLAG_RIGHT_AILERON</a>
+     </td>
+     <td>0b00100000 右副翼操纵杆通过驾驶员控制台。 </td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_RUDDER">
+     <td>16</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_RUDDER">CONTROL_SURFACE_FLAG_RUDDER</a>
+     </td>
+     <td>0b00010000 方向舵控制通过驾驶员控制台。 </td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_LEFT_ELEVATOR">
+     <td>8</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_LEFT_ELEVATOR">CONTROL_SURFACE_FLAG_LEFT_ELEVATOR</a>
+     </td>
+     <td>0b00001000 左升降舵操纵杆通过驾驶员操纵台。 </td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_RIGHT_ELEVATOR">
+     <td>4</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_RIGHT_ELEVATOR">CONTROL_SURFACE_FLAG_RIGHT_ELEVATOR</a>
+     </td>
+     <td>0b00000100 右升降舵操纵杆通过驾驶员操纵台。 </td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_LEFT_FLAP">
+     <td>2</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_LEFT_FLAP">CONTROL_SURFACE_FLAG_LEFT_FLAP</a>
+     </td>
+     <td>0b00000010 左襟翼控制通过驾驶员控制台。 </td>
+    </tr>
+    <tr id="CONTROL_SURFACE_FLAG_RIGHT_FLAP">
+     <td>1</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG_RIGHT_FLAP">CONTROL_SURFACE_FLAG_RIGHT_FLAP</a>
+     </td>
+     <td>0b00000001 右襟翼控制通过驾驶员控制台。</td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 id="mav_commands">MAVLink 命令（MAV_CMD）</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink 命令（MAV_CMD）和消息是不同的！ 这些命令定义了最多7个参数的值，这些参数打包在“任务协议”和“命令协议”中使用的 INSIDE 特定消息中。 执行任务或者需要从请求中确认和/或重试逻辑时使用命令。 否则使用消息。</p>
+  </blockquote>
+  <p>
+  </p>
+  <h3 id="MAV_CMD_DO_NOTHING">MAV_CMD_DO_NOTHING（<a href="#MAV_CMD_DO_NOTHING">10001</a>）
+  </h3>
+  <p>
+   <a href="#mav_commands">[Command]</a> 无动作。</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>参数（:Label）</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>1表示保险，0表示解除保险</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_RETURN_TO_BASE">MAV_CMD_RETURN_TO_BASE（<a href="#MAV_CMD_RETURN_TO_BASE">10011</a>）
+  </h3>
+  <p>
+   <a href="#mav_commands">[Command]</a> 将车辆返航。 </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>参数（:Label）</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>0：返航，1：跟踪移动点</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_STOP_RETURN_TO_BASE">MAV_CMD_STOP_RETURN_TO_BASE （<a href="#MAV_CMD_STOP_RETURN_TO_BASE">10012</a>）
+  </h3>
+  <p>
+   <a href="#mav_commands">[Command]</a> 停止车辆返航并复飞。</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>参数（:Label）</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_TURN_LIGHT">MAV_CMD_TURN_LIGHT （<a href="#MAV_CMD_TURN_LIGHT">10013</a>）
+  </h3>
+  <p>
+   <a href="#mav_commands">[Command]</a> 打开或关闭车辆的可见光或红外线灯。 </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>参数（:Label）</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>0：可见灯光，1：红外灯</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>0：开启，1：关闭</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_GET_MID_LEVEL_COMMANDS">MAV_CMD_GET_MID_LEVEL_COMMANDS（<a href="#MAV_CMD_GET_MID_LEVEL_COMMANDS">10014</a>）
+  </h3>
+  <p>
+   <a href="#mav_commands">[Command]</a> 请求车辆将当前的中级命令发送到地面站。</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>参数（:Label）</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_MIDLEVEL_STORAGE">MAV_CMD_MIDLEVEL_STORAGE（<a href="#MAV_CMD_MIDLEVEL_STORAGE">10015</a>）
+  </h3>
+  <p>
+   <a href="#mav_commands">[Command]</a> 请求存储中级命令。</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>参数（:Label）</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>中级命令存储：0：从闪存/ EEPROM读取，1：写入闪存/ EEPROM</td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 id="messages">MAVLink 消息</h2>
+  <h3 id="CPU_LOAD">CPU_LOAD（<a href="#CPU_LOAD">#170</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 传感器和DSC控制负载。 </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>sensLoad</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>传感器 DSC 负载</td>
+    </tr>
+    <tr>
+     <td>ctrlLoad</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>控制 DSC 负载</td>
+    </tr>
+    <tr>
+     <td>batVolt</td>
+     <td>uint16_t</td>
+     <td>毫伏</td>
+     <td>电池电压</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SENSOR_BIAS">SENSOR_BIAS（<a href="#SENSOR_BIAS">#172</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 加速度计和陀螺仪偏差。 </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>axBias</td>
+     <td>float</td>
+     <td>米/秒</td>
+     <td>加速度计 X 偏差</td>
+    </tr>
+    <tr>
+     <td>ayBias</td>
+     <td>float</td>
+     <td>米/秒</td>
+     <td>加速度计 Y 偏差</td>
+    </tr>
+    <tr>
+     <td>azBias</td>
+     <td>float</td>
+     <td>米/秒</td>
+     <td>加速度计 Z 偏差</td>
+    </tr>
+    <tr>
+     <td>gxBias</td>
+     <td>float</td>
+     <td>度/秒</td>
+     <td>陀螺仪 X 偏差</td>
+    </tr>
+    <tr>
+     <td>gyBias</td>
+     <td>float</td>
+     <td>度/秒</td>
+     <td>陀螺仪 Y 偏差</td>
+    </tr>
+    <tr>
+     <td>gzBias</td>
+     <td>float</td>
+     <td>度/秒</td>
+     <td>陀螺仪 Z 偏差</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="DIAGNOSTIC">DIAGNOSTIC（<a href="#DIAGNOSTIC">#173</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 可配置诊断信息。 </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>diagFl1</td>
+     <td>float</td>
+     <td>诊断 float 1</td>
+    </tr>
+    <tr>
+     <td>diagFl2</td>
+     <td>float</td>
+     <td>诊断 float 2</td>
+    </tr>
+    <tr>
+     <td>diagFl3</td>
+     <td>float</td>
+     <td>诊断 float 3</td>
+    </tr>
+    <tr>
+     <td>diagSh1</td>
+     <td>int16_t</td>
+     <td>诊断 short 1</td>
+    </tr>
+    <tr>
+     <td>diagSh2</td>
+     <td>int16_t</td>
+     <td>诊断 short 2</td>
+    </tr>
+    <tr>
+     <td>diagSh3</td>
+     <td>int16_t</td>
+     <td>诊断 short 3</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SLUGS_NAVIGATION">SLUGS_NAVIGATION（<a href="#SLUGS_NAVIGATION">#176</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 导航算法中使用的数据。 </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>u_m</td>
+     <td>float</td>
+     <td>米/秒</td>
+     <td>在导航滤波之前测量的空速 </td>
+    </tr>
+    <tr>
+     <td>phi_c</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>横滚指令</td>
+    </tr>
+    <tr>
+     <td>theta_c</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>俯仰指令</td>
+    </tr>
+    <tr>
+     <td>psiDot_c</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>偏航速率指令</td>
+    </tr>
+    <tr>
+     <td>ay_body</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>机体加速度的 Y 分量</td>
+    </tr>
+    <tr>
+     <td>totalDist</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>在此导航段上要行驶的总距离</td>
+    </tr>
+    <tr>
+     <td>dist2Go</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>在此导航段上要行驶的剩余距离</td>
+    </tr>
+    <tr>
+     <td>fromWP</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>来源工作包</td>
+    </tr>
+    <tr>
+     <td>toWP</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>目标工作包</td>
+    </tr>
+    <tr>
+     <td>h_c</td>
+     <td>uint16_t</td>
+     <td>分米</td>
+     <td>高度命令（MSL）</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="DATA_LOG">DATA_LOG（<a href="#DATA_LOG">#177</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 可在Simulink内部使用的可配置数据日志探针</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>fl_1</td>
+     <td>float</td>
+     <td>日志值 1</td>
+    </tr>
+    <tr>
+     <td>fl_2</td>
+     <td>float</td>
+     <td>日志值 2</td>
+    </tr>
+    <tr>
+     <td>fl_3</td>
+     <td>float</td>
+     <td>日志值 3</td>
+    </tr>
+    <tr>
+     <td>fl_4</td>
+     <td>float</td>
+     <td>日志值 4</td>
+    </tr>
+    <tr>
+     <td>fl_5</td>
+     <td>float</td>
+     <td>日志值 5</td>
+    </tr>
+    <tr>
+     <td>fl_6</td>
+     <td>float</td>
+     <td>日志值 6</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GPS_DATE_TIME">GPS_DATE_TIME（<a href="#GPS_DATE_TIME">#179</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 驾驶员控制台 PWM 消息。</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>year</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Gps 报告的年份</td>
+    </tr>
+    <tr>
+     <td>month</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Gps 报告的年份</td>
+    </tr>
+    <tr>
+     <td>day</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Gps 报告的天数</td>
+    </tr>
+    <tr>
+     <td>hour</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Gps 报告的小时</td>
+    </tr>
+    <tr>
+     <td>min</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Gps 报告的分钟</td>
+    </tr>
+    <tr>
+     <td>sec</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Gps 报告的秒数</td>
+    </tr>
+    <tr>
+     <td>clockStat</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>时钟状态。 见 OEMStar 手册的第 211 页表 47</td>
+    </tr>
+    <tr>
+     <td>visSat</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Gps报告的可见卫星 </td>
+    </tr>
+    <tr>
+     <td>useSat</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>解决方案中使用的卫星 </td>
+    </tr>
+    <tr>
+     <td>GppGl</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>解决方案中的 GPS + GLONASS 卫星</td>
+    </tr>
+    <tr>
+     <td>sigUsedMask</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>GPS和GLONASS使用掩码（位 0 GPS_used？ 位 4 bit_4 GLONASS_used？）</td>
+    </tr>
+    <tr>
+     <td>percentUsed</td>
+     <td>uint8_t</td>
+     <td>
+      %
+     </td>
+     <td>使用GPS的百分比</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MID_LVL_CMDS">MID_LVL_CMDS（<a href="#MID_LVL_CMDS">#180</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 从地面站发送到自动驾驶仪的中级命令。  只有在地面以中级命令模式操作时才会发送这些命令。 </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>系统设置命令</td>
+    </tr>
+    <tr>
+     <td>hCommand</td>
+     <td>float</td>
+     <td>米</td>
+     <td>高度指令（MSL） </td>
+    </tr>
+    <tr>
+     <td>uCommand</td>
+     <td>float</td>
+     <td>米/秒</td>
+     <td>空速指令</td>
+    </tr>
+    <tr>
+     <td>rCommand</td>
+     <td>float</td>
+     <td>度/秒</td>
+     <td>偏航速率指令</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CTRL_SRFC_PT">CTRL_SRFC_PT（<a href="#CTRL_SRFC_PT">#181 </0）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 该消息将控制界面设置为选择性通道模式。</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>值</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>系统设置命令</td>
+    </tr>
+    <tr>
+     <td>bitfieldPt</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#CONTROL_SURFACE_FLAG">CONTROL_SURFACE_FLAG</a>
+     </td>
+     <td>包含通道配置的位字段，请参阅 CONTROL_SURFACE_FLAG ENUM 。</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SLUGS_CAMERA_ORDER">SLUGS_CAMERA_ORDER（<a href="#SLUGS_CAMERA_ORDER">#184</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 订单生成到 SLUGS 像机支架。</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>系统报告动作</td>
+    </tr>
+    <tr>
+     <td>pan</td>
+     <td>int8_t</td>
+     <td>将支座定为平移：-1 向左，0 不平移，+1 向右</td>
+    </tr>
+    <tr>
+     <td>tilt</td>
+     <td>int8_t</td>
+     <td>将支座定位倾斜：-1 向下，0 不倾斜，+1 向上 </td>
+    </tr>
+    <tr>
+     <td>zoom</td>
+     <td>int8_t</td>
+     <td>将缩放值排序为 0 到 10 </td>
+    </tr>
+    <tr>
+     <td>moveHome</td>
+     <td>int8_t</td>
+     <td>命令像机移回原处。 设置此字段时，将忽略其他字段。 1：移回原点，0：忽略</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CONTROL_SURFACE">CONTROL_SURFACE（<a href="#CONTROL_SURFACE">#185</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 对操作台的控制；待命的和命令到原点。 </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>系统设置命令</td>
+    </tr>
+    <tr>
+     <td>idSurface</td>
+     <td>uint8_t</td>
+     <td>ID 控制台发送 0：油门 1：副翼 2：升降舵 3：方向舵 </td>
+    </tr>
+    <tr>
+     <td>mControl</td>
+     <td>float</td>
+     <td>待定</td>
+    </tr>
+    <tr>
+     <td>bControl</td>
+     <td>float</td>
+     <td>命令回原点</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SLUGS_MOBILE_LOCATION">SLUGS_MOBILE_LOCATION（<a href="#SLUGS_MOBILE_LOCATION">#186</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 将移动地面站的最新已知位置发送到无人机。 启用追踪移动设备时非常相关。</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>系统报告动作</td>
+    </tr>
+    <tr>
+     <td>latitude</td>
+     <td>float</td>
+     <td>度</td>
+     <td>移动纬度</td>
+    </tr>
+    <tr>
+     <td>longitude</td>
+     <td>float</td>
+     <td>度</td>
+     <td>移动经度</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SLUGS_CONFIGURATION_CAMERA">SLUGS_CONFIGURATION_CAMERA（<a href="#SLUGS_CONFIGURATION_CAMERA">#188</a>）
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]</a> 控制相机。</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>系统设置命令</td>
+    </tr>
+    <tr>
+     <td>idOrder</td>
+     <td>uint8_t</td>
+     <td>ID 0：亮度 1：光圈 2：光圈 3：ICR 4：背光 </td>
+    </tr>
+    <tr>
+     <td>order</td>
+     <td>uint8_t</td>
+     <td>1：上/开 2：下/关 3：自动/复位/无动作 </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ISR_LOCATION">ISR_LOCATION (<a href="#ISR_LOCATION">
+    #189
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]</a> 传送时钟的位置 </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>系统报告动作</td>
+    </tr>
+    <tr>
+     <td>latitude</td>
+     <td>float</td>
+     <td>度</td>
+     <td>ISR 纬度</td>
+    </tr>
+    <tr>
+     <td>longitude</td>
+     <td>float</td>
+     <td>度</td>
+     <td>ISR 经度</td>
+    </tr>
+    <tr>
+     <td>height</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>ISR 高度</td>
+    </tr>
+    <tr>
+     <td>option1</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>选项 1</td>
+    </tr>
+    <tr>
+     <td>option2</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>选项 2</td>
+    </tr>
+    <tr>
+     <td>option3</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>选项 3</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="VOLT_SENSOR">VOLT_SENSOR (<a href="#VOLT_SENSOR">
+    #191
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]</a> 传输电压和电流传感器的读数</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>r2Type</td>
+     <td>uint8_t</td>
+     <td>它是计数到2的值：0 -  当前，1 - 前声纳，2 - 后声纳，3 - RPM</td>
+    </tr>
+    <tr>
+     <td>voltage</td>
+     <td>uint16_t</td>
+     <td>PWM 电压 0 uS = 0V，20 uS = 21.5V</td>
+    </tr>
+    <tr>
+     <td>reading2</td>
+     <td>uint16_t</td>
+     <td>取决于 r2Type 的值（0）电流消耗（单位：uS），20 uS=90安培（1）距离（单位：cm）（2）距离（单位：cm）（3）绝对值 </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="PTZ_STATUS">PTZ_STATUS (<a href="#PTZ_STATUS">
+    #192
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]</a> 传输像机单元的实际“平移”，“倾斜”和“缩放”值</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>zoom</td>
+     <td>uint8_t</td>
+     <td>实际缩放值</td>
+    </tr>
+    <tr>
+     <td>pan</td>
+     <td>int16_t</td>
+     <td>以10度为单位的平移值</td>
+    </tr>
+    <tr>
+     <td>tilt</td>
+     <td>int16_t</td>
+     <td>以10度为单位的倾斜值</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="UAV_STATUS">UAV_STATUS (<a href="#UAV_STATUS">
+    #193
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]</a> 传输飞行中无人机的实际状态值</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>系统报告动作</td>
+    </tr>
+    <tr>
+     <td>latitude</td>
+     <td>float</td>
+     <td>度</td>
+     <td>无人机纬度</td>
+    </tr>
+    <tr>
+     <td>longitude</td>
+     <td>float</td>
+     <td>度</td>
+     <td>无人机经度</td>
+    </tr>
+    <tr>
+     <td>altitude</td>
+     <td>float</td>
+     <td>米</td>
+     <td>无人机高度</td>
+    </tr>
+    <tr>
+     <td>speed</td>
+     <td>float</td>
+     <td>米/秒</td>
+     <td>无人机速度</td>
+    </tr>
+    <tr>
+     <td>course</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>无人机航向</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="STATUS_GPS">STATUS_GPS (<a href="#STATUS_GPS">
+    #194
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]</a> 包含GPS读数的状态</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>csFails</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>校验和失败的次数 </td>
+    </tr>
+    <tr>
+     <td>gpsQuality</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>质量指示器，0 = 固定不可用或无效，1 = GPS固定，2 = C / A差分GPS，6 = 航位推算模式，7 = 手动输入模式（固定位置），8 = 仿真器模式，9 = WAAS a</td>
+    </tr>
+    <tr>
+     <td>msgsType</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>指示是否接收到 GN、GL 或 GP 消息 </td>
+    </tr>
+    <tr>
+     <td>posStatus</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>A = 数据有效，V = 数据无效</td>
+    </tr>
+    <tr>
+     <td>magVar</td>
+     <td>float</td>
+     <td>度</td>
+     <td>磁偏差</td>
+    </tr>
+    <tr>
+     <td>magDir</td>
+     <td>int8_t</td>
+     <td>
+     </td>
+     <td>磁变化方向 E/W。  向东变化（E）减去真实路线，向西变化（W）增加真实路线</td>
+    </tr>
+    <tr>
+     <td>modeInd</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>定位系统模式指示器。 A - 自主；D - 微分；E - 估计（航位推算）模式；M - 手动输入；N - 数据无效</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="NOVATEL_DIAG">NOVATEL_DIAG (<a href="#NOVATEL_DIAG">
+    #195
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]</a> 从Novatel OEMStar GPS传输诊断数据</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>timeStatus</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>时间状态。 见 Novatel OEMStar 手册的第 27 页表 8</td>
+    </tr>
+    <tr>
+     <td>receiverStatus</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>状态位字段。 见 Novatel OEMstar 手册的第 350 页表 69</td>
+    </tr>
+    <tr>
+     <td>solStatus</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>解决方案状态。 见 197 页表 44</td>
+    </tr>
+    <tr>
+     <td>posType</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>位置类型。 见 196 页表 43</td>
+    </tr>
+    <tr>
+     <td>velType</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>速度类型。 见 196 页表 43</td>
+    </tr>
+    <tr>
+     <td>posSolAge</td>
+     <td>float</td>
+     <td>秒</td>
+     <td>位置解决方案的时间</td>
+    </tr>
+    <tr>
+     <td>csFails</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>自启动后 CRC 失败的次数</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SENSOR_DIAG">SENSOR_DIAG (<a href="#SENSOR_DIAG">
+    #196
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a> 诊断数据传感器 MCU</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>float1</td>
+     <td>float</td>
+     <td>浮动字段 1 </td>
+    </tr>
+    <tr>
+     <td>float2</td>
+     <td>float</td>
+     <td>浮动字段 2 </td>
+    </tr>
+    <tr>
+     <td>int1</td>
+     <td>int16_t</td>
+     <td>Int 16 字段 1 </td>
+    </tr>
+    <tr>
+     <td>char1</td>
+     <td>int8_t</td>
+     <td>Int 8 字段 1 </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="BOOT">BOOT (<a href="#BOOT">
+    #197
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a> 引导消息指示系统正在启动。 板载软件版本允许跟踪板载软件/固件版本。 此消息允许传感器和控制MCU在启动时通信版本号。</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>version</td>
+     <td>uint32_t</td>
+     <td>板载软件版本</td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>

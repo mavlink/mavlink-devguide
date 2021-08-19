@@ -19,13 +19,16 @@ The protocol defines two 8-bit fields that can (optionally) be specified in the 
 - `target_component`: Component that should execute the command (requires `target_system`).
 
 MAVLink components are expected to process messages that have a matching system/component id and broadcast messages.
-They are expected to route/resend messages that are intended for other (or all) recipients to other active channels 
+They are expected to route/resend messages that are intended for other (or all) recipients to other active channels
 (i.e. MAVLink systems may be connected across different transports, connected by a MAVLink system that routes the messages).
 Broadcast messages are forwarded to all channels that haven't seen the message. 
 Addressed messages are resent on a new channel *iff* the system has previously seen a message from the target on that channel 
 (messages are not resent if the addressee is not known or is on the original/incoming channel). 
 
 > **Warning** Forwarded messages must not be changed/repackaged by the forwarding system (the original message is passed to the new link).
+
+<span></span>
+> **Note** Systems should, where possible, forward messages according to the routing rules *even if they are unable to process them* (e.g. signed messages that cannot be authenticated). Messages that are not supported/understood by the library should be forwarded as though they were broadcast messages (in this case the target system/component ids cannot be read).
 
 ## Routing Detail
 
@@ -54,22 +57,21 @@ The generated code for the MAVLink v1 C Library has no specific support for rout
 To extract this information you will need to use the normal methods provided for reading payload fields, and match on the field names.
 
 The MAVLink v2 generator for the C library has been updated to make it easier to get the destination system and component ID from the payload (when these are assigned). 
-Specifically, the `mavlink_msg_entry_t` structure contains flags to tell you if the message contains target system/component information (`FLAG_HAVE_TARGET_SYSTEM`, `FLAG_HAVE_TARGET_COMPONENT`) and offsets into the payload that you can use to get these ids (`target_system_ofs` and `target_system_ofs`, respectively). The MAVLink helper method `const mavlink_msg_entry_t*` [`mavlink_get_msg_entry(uint32_t msgid)`](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h) can be used to get this structure from the message id.
+Specifically, the `mavlink_msg_entry_t` structure contains flags to tell you if the message contains target system/component information (`FLAG_HAVE_TARGET_SYSTEM`, `FLAG_HAVE_TARGET_COMPONENT`) and offsets into the payload that you can use to get these ids (`target_system_ofs` and `target_component_ofs`, respectively). The MAVLink helper method `const mavlink_msg_entry_t*` [`mavlink_get_msg_entry(uint32_t msgid)`](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h) can be used to get this structure from the message id.
 
 <!-- note: A real example of above would be good in the C docs, and then we should just link to them here -->
 
 ## MAVLink 2 Routing
 
 Unsigned MAVLink 2 packets are routed in the same way as MAVLink 1 packets.
-Signed packets may have some special routing requirements (see [Routing Signed Packets](#routing_signed_packets) below).
-
 
 ## Routing Signed Packets {#routing_signed_packets}
 
-Routing signed packets is largely undefined at time of writing (for example, it is not clear whether a router should simply forward a signed message or decode and recode with its own keys).
+Signed packets should be routed in the same way as any other packet.
 
-> **Note** The discussion can be tracked in [MAVLink/#984](https://github.com/mavlink/mavlink/issues/984)
-
+In particular, a routing system should:
+- not change the message in any way (including replacing the original signature).
+- forward a message according to normal rules even if it cannot be authenticated (or even understand) and hence cannot be processed locally.
 
 ## Router Implementation
 

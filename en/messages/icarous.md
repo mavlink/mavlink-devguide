@@ -1,7 +1,7 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_gitbook.py -->
-# MAVLINK Message Set: icarous.xml
+# Dialect: icarous
 
-*This is a human-readable form of the XML definition file: [icarous.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/icarous.xml).*
+*This is a human-readable form of the XML definition file: [icarous](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/icarous).*
 
 <span></span>
 > **Note** MAVLink 2 messages have an ID > 255 and are marked up using **(MAVLink 2)** in their description.
@@ -14,6 +14,7 @@ td {
     vertical-align:top;
 }
 </style>
+
 
 {% include "_html/icarous.html" %}
 

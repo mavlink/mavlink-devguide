@@ -11,7 +11,9 @@ This topic describes how the image streaming functionality works and covers both
 
 The image streaming component uses two MAVLink messages: A handshake message, [DATA_TRANSMISSION_HANDSHAKE](../messages/common.md#DATA_TRANSMISSION_HANDSHAKE), to initiate, control and stop the image streaming; and a data container message, [ENCAPSULATED_DATA](../messages/common.md#ENCAPSULATED_DATA), to transport the image data.
 
-{% mermaid %}
+[![Mermaid Diagram](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFJlcXVlc3QgdG8gc3RhcnQgaW1hZ2Ugc3RyZWFtXG4gICAgRHJvbmUtPj5Ecm9uZTogV2FpdCBmb3IgaW1hZ2UgZnJvbSBjYW1lcmEuIFxuICAgIERyb25lLT4-RHJvbmU6IEVuY29kZSBpbWFnZSAoSlBFRykuXG4gICAgRHJvbmUtPj5HQ1M6IFNlbmQgaW1hZ2UgbWV0YSBkYXRhXG4gICAgRHJvbmUtPj5Ecm9uZTogU3BsaXQgaW1hZ2UgaW50byBjaHVua3MuXG4gICAgRHJvbmUtPj5HQ1M6IFNlbmQgaW1hZ2UgY2h1bmtzLlxuICAgIEdDUy0-PkdDUzogUmVjZWl2ZSBpbWFnZSBjaHVua3MuXG4gICAgR0NTLT4-R0NTOiBSZS1hc3NlbWJsZSBpbWFnZSBhbmQgZGlzcGxheS5cbiAgICBHQ1MtPj5Ecm9uZTogUmVxdWVzdCB0byBzdG9wIGltYWdlIHN0cmVhbVxuICAgIERyb25lLT4-RHJvbmU6IFN0b3AgaW1hZ2UgcHJlcGFyYXRpb25cbiAgICBEcm9uZS0-PkdDUzogQWNrbm93bGVkZ2UgdG8gc3RvcCBpbWFnZSBzdHJlYW0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFJlcXVlc3QgdG8gc3RhcnQgaW1hZ2Ugc3RyZWFtXG4gICAgRHJvbmUtPj5Ecm9uZTogV2FpdCBmb3IgaW1hZ2UgZnJvbSBjYW1lcmEuIFxuICAgIERyb25lLT4-RHJvbmU6IEVuY29kZSBpbWFnZSAoSlBFRykuXG4gICAgRHJvbmUtPj5HQ1M6IFNlbmQgaW1hZ2UgbWV0YSBkYXRhXG4gICAgRHJvbmUtPj5Ecm9uZTogU3BsaXQgaW1hZ2UgaW50byBjaHVua3MuXG4gICAgRHJvbmUtPj5HQ1M6IFNlbmQgaW1hZ2UgY2h1bmtzLlxuICAgIEdDUy0-PkdDUzogUmVjZWl2ZSBpbWFnZSBjaHVua3MuXG4gICAgR0NTLT4-R0NTOiBSZS1hc3NlbWJsZSBpbWFnZSBhbmQgZGlzcGxheS5cbiAgICBHQ1MtPj5Ecm9uZTogUmVxdWVzdCB0byBzdG9wIGltYWdlIHN0cmVhbVxuICAgIERyb25lLT4-RHJvbmU6IFN0b3AgaW1hZ2UgcHJlcGFyYXRpb25cbiAgICBEcm9uZS0-PkdDUzogQWNrbm93bGVkZ2UgdG8gc3RvcCBpbWFnZSBzdHJlYW0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
+<!-- Original diagram
 sequenceDiagram;
     participant GCS
     participant Drone
@@ -26,7 +28,7 @@ sequenceDiagram;
     GCS->>Drone: Request to stop image stream
     Drone->>Drone: Stop image preparation
     Drone->>GCS: Acknowledge to stop image stream
-{% endmermaid %}
+-->
 
 
 1. The communication is initiated by the *QGroundControl* with a request to start the stream. To do so, one must set the following fields in the MAVLink message:

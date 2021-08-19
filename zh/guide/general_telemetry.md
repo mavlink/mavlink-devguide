@@ -1,3 +1,3 @@
-# General Telemetry
+# 通用遥测
 
-MAVLink is designed to support sending continuous telemetry streams including position, velocity, attitude and similar key states of a drone.
+MAVLink 旨在支持发送连续的遥测流, 包括无人机的位置、速度、姿态和类似的关键状态。

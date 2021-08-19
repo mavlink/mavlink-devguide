@@ -1,0 +1,275 @@
+<html>
+ <body>
+  <p>
+   <strong>MAVLink Include Files:</strong> <a href="common.md">common.xml</a>
+  </p>
+  <h2 id="enums">MAVLink类型枚举</h2>
+  <h3 id="UALBERTA_AUTOPILOT_MODE">
+   <a href="#UALBERTA_AUTOPILOT_MODE">UALBERTA_AUTOPILOT_MODE</a>
+  </h3>
+  <p>
+   <a href="#enums">[Enum]</a> 适用于 ualberta 无人机的可用自动驾驶仪模式</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MODE_MANUAL_DIRECT">
+     <td>1</td>
+     <td>
+      <a href="#MODE_MANUAL_DIRECT">MODE_MANUAL_DIRECT</a>
+     </td>
+     <td>原始输入脉冲宽度发送到输出</td>
+    </tr>
+    <tr id="MODE_MANUAL_SCALED">
+     <td>2</td>
+     <td>
+      <a href="#MODE_MANUAL_SCALED">MODE_MANUAL_SCALED</a>
+     </td>
+     <td>使用校准对输入进行归一化，将其转换回原始脉冲宽度以输出</td>
+    </tr>
+    <tr id="MODE_AUTO_PID_ATT">
+     <td>3</td>
+     <td>
+      <a href="#MODE_AUTO_PID_ATT">MODE_AUTO_PID_ATT</a>
+     </td>
+     <td>dfsdfs</td>
+    </tr>
+    <tr id="MODE_AUTO_PID_VEL">
+     <td>4</td>
+     <td>
+      <a href="#MODE_AUTO_PID_VEL">MODE_AUTO_PID_VEL</a>
+     </td>
+     <td>dfsfds</td>
+    </tr>
+    <tr id="MODE_AUTO_PID_POS">
+     <td>5</td>
+     <td>
+      <a href="#MODE_AUTO_PID_POS">MODE_AUTO_PID_POS</a>
+     </td>
+     <td>dfsdfsdfs</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="UALBERTA_NAV_MODE">
+   <a href="#UALBERTA_NAV_MODE">UALBERTA_NAV_MODE</a>
+  </h3>
+  <p>
+   <a href="#enums">[Enum]</a> 导航滤波模式</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="NAV_AHRS_INIT">
+     <td>1</td>
+     <td>
+      <a href="#NAV_AHRS_INIT">NAV_AHRS_INIT</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="NAV_AHRS">
+     <td>2</td>
+     <td>
+      <a href="#NAV_AHRS">NAV_AHRS</a>
+     </td>
+     <td>AHRS 模式</td>
+    </tr>
+    <tr id="NAV_INS_GPS_INIT">
+     <td>3</td>
+     <td>
+      <a href="#NAV_INS_GPS_INIT">NAV_INS_GPS_INIT</a>
+     </td>
+     <td>INS/GPS 初始化模式</td>
+    </tr>
+    <tr id="NAV_INS_GPS">
+     <td>4</td>
+     <td>
+      <a href="#NAV_INS_GPS">NAV_INS_GPS</a>
+     </td>
+     <td>INS/GPS模式</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="UALBERTA_PILOT_MODE">
+   <a href="#UALBERTA_PILOT_MODE">UALBERTA_PILOT_MODE</a>
+  </h3>
+  <p>
+   <a href="#enums">[Enum]</a> 驾驶员当前命令的模式</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="PILOT_MANUAL">
+     <td>1</td>
+     <td>
+      <a href="#PILOT_MANUAL">PILOT_MANUAL</a>
+     </td>
+     <td>sdf</td>
+    </tr>
+    <tr id="PILOT_AUTO">
+     <td>2</td>
+     <td>
+      <a href="#PILOT_AUTO">PILOT_AUTO</a>
+     </td>
+     <td>dfs</td>
+    </tr>
+    <tr id="PILOT_ROTO">
+     <td>3</td>
+     <td>
+      <a href="#PILOT_ROTO">PILOT_ROTO</a>
+     </td>
+     <td>旋转模式</td>
+    </tr>
+   </tbody>
+  </table>
+  <a id="MAV_CMD">
+  </a>
+  <h2 id="mav_commands">MAVLink 命令（MAV_CMD）</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink 命令（MAV_CMD）和消息是不同的！ 这些命令定义了最多7个参数的值，这些参数打包在“任务协议”和“命令协议”中使用的 INSIDE 特定消息中。 执行任务或者需要从请求中确认和/或重试逻辑时使用命令。 否则使用消息。</p>
+  </blockquote>
+  <h2 id="messages">MAVLink 消息</h2>
+  <h3 id="NAV_FILTER_BIAS">NAV_FILTER_BIAS （<a href="#NAV_FILTER_BIAS">#220</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 导航滤波器的加速度计和陀螺仪偏置</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>usec</td>
+     <td>uint64_t</td>
+     <td>时间戳(微秒)</td>
+    </tr>
+    <tr>
+     <td>accel_0</td>
+     <td>float</td>
+     <td>b_f[0]</td>
+    </tr>
+    <tr>
+     <td>accel_1</td>
+     <td>float</td>
+     <td>b_f[1]</td>
+    </tr>
+    <tr>
+     <td>accel_2</td>
+     <td>float</td>
+     <td>b_f[2]</td>
+    </tr>
+    <tr>
+     <td>gyro_0</td>
+     <td>float</td>
+     <td>b_f[0]</td>
+    </tr>
+    <tr>
+     <td>gyro_1</td>
+     <td>float</td>
+     <td>b_f[1]</td>
+    </tr>
+    <tr>
+     <td>gyro_2</td>
+     <td>float</td>
+     <td>b_f[2]</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="RADIO_CALIBRATION">RADIO_CALIBRATION（<a href="#RADIO_CALIBRATION">#221</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> 无线电的完整校准参数集</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>副翼</td>
+     <td>uint16_t[3]</td>
+     <td>副翼设定点：左，中，右</td>
+    </tr>
+    <tr>
+     <td>升降舵</td>
+     <td>uint16_t[3]</td>
+     <td>升降舵设定点：机头向下，居中，机头向上</td>
+    </tr>
+    <tr>
+     <td>方向舵</td>
+     <td>uint16_t[3]</td>
+     <td>方向舵设定点：机头向左，机头向居中，机头向右</td>
+    </tr>
+    <tr>
+     <td>陀螺仪</td>
+     <td>uint16_t[2]</td>
+     <td>尾陀螺仪模式/增益设定点：航向保持，速率模式</td>
+    </tr>
+    <tr>
+     <td>俯仰角</td>
+     <td>uint16_t[5]</td>
+     <td>俯仰角曲线设定点（每25％）</td>
+    </tr>
+    <tr>
+     <td>油门</td>
+     <td>uint16_t[5]</td>
+     <td>油门曲线设置点(每 25%)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="UALBERTA_SYS_STATUS">UALBERTA_SYS_STATUS（<a href="#UALBERTA_SYS_STATUS">#222</a>）
+  </h3>
+  <p>
+   <a href="#messages">[Message]</a> ualberta 无人机特定的系统状态</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>模式</td>
+     <td>uint8_t</td>
+     <td>系统模式，见 UALBERTA_AUTOPILOT_MODE ENUM</td>
+    </tr>
+    <tr>
+     <td>导航模式</td>
+     <td>uint8_t</td>
+     <td>导航模式，见 UALBERTA_NAV_MODE ENUM</td>
+    </tr>
+    <tr>
+     <td>驾驶员</td>
+     <td>uint8_t</td>
+     <td>驾驶员模式，参见 UALBERTA_PILOT_MODE</td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>

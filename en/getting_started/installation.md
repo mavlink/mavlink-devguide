@@ -9,52 +9,51 @@ including both [XML message definitions](../messages/README.md) and the GUI/comm
 
 ## Prerequisites
 
-The requirements for using the *MAVLink tools* are: 
+The requirements for using the *MAVLink generator* are: 
 
-* Python 2.7+ or Python 3.3+
+* Python 3.3+
 * Python [future](http://python-future.org/) module
-* (Optional) Python [TkInter](https://wiki.python.org/moin/TkInter) module (required to use the GUI tool).
+* [TkInter](https://wiki.python.org/moin/TkInter) (required to use the GUI tool).
 * `PYTHONPATH` environment variable must be set to the directory path containing the *mavlink* repository.
 
-## Installation Steps
+If you are creating new XML definitions you should also install lxml and libxml2 for XML validation and formatting.
 
-The main installation steps are:
+## Installation
 
-1. Install Python 2.7+ or 3.3+. 
+To install the MAVLink tools:
+
+1. Install Python 3.6+:
    * **Windows:** Download from [Python for Windows](https://www.python.org/downloads/)
-   * **Ubuntu Linux 16.04:** Python 2.7 and Python 3.0 are already present. 
-     If you are using Python3 you will need to install the *pip3* package manager:
+   * **Ubuntu Linux** Python 3 is present on 18.04 and 20.04 by default but you will need to install the *pip3* package manager:
      ```
-     sudo apt-get install python3-pip
+     sudo apt install python3-pip
      ```
 1. Install the *future* module:
    * **Windows:**
      ```
-     pip install future
+     pip3 install future
      ```
    * **Linux:**
      ```
-     pip install --user future
+     pip3 install --user future
      ```
-1. (Optionally) Install TkInter
+1. (Recommended) Install modules for XML validation and formatting:
+   * **Linux:**
+     ```
+     sudo apt install python3-lxml libxml2-utils
+     ```	 
+1. (Optional) Install TkInter
     * **Windows:** Installed already as part of *Python for Windows*
     * **Linux:** Enter the following terminal command:
       ```
-      sudo apt-get install python-tk
+      sudo apt install python3-tk
       ```
-
 1. Clone the [mavlink repo](https://github.com/mavlink/mavlink) (or your fork) into a user-writable directory:
    ```
-   git clone https://github.com/mavlink/mavlink.git
-   git submodule update --init --recursive
+   git clone https://github.com/mavlink/mavlink.git --recursive
    ```
-   > **Note** Alternatively you can do this in one line:
-     ```
-     git clone https://github.com/mavlink/mavlink.git --recursive
-     ```
 1. Set `PYTHONPATH` to the directory path containing your *mavlink* repository.
-   * **Windows:** `set PYTHONPATH=C:\your_path_to_mavlink_clone`
-   * **Linux:** `PYTHONPATH=your_path_to_mavlink_clone`
+   * **Windows:** `set PYTHONPATH=C:\path_to_root_of_cloned_mavlink_repository`
+   * **Linux:** `PYTHONPATH=path_to_root_of_cloned_mavlink_repository`
 
 Now you are ready to [Generate MAVLink Libraries](../getting_started/generate_libraries.md).
-

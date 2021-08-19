@@ -1,0 +1,342 @@
+<html>
+ <body>
+  <h2 id="enums">MAVLink 类型枚举</h2>
+  <h3 id="ICAROUS_TRACK_BAND_TYPES">
+   <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="ICAROUS_TRACK_BAND_TYPE_NONE">
+     <td>0</td>
+     <td>
+      <a href="#ICAROUS_TRACK_BAND_TYPE_NONE">ICAROUS_TRACK_BAND_TYPE_NONE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="ICAROUS_TRACK_BAND_TYPE_NEAR">
+     <td>1</td>
+     <td>
+      <a href="#ICAROUS_TRACK_BAND_TYPE_NEAR">ICAROUS_TRACK_BAND_TYPE_NEAR</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="ICAROUS_TRACK_BAND_TYPE_RECOVERY">
+     <td>2</td>
+     <td>
+      <a href="#ICAROUS_TRACK_BAND_TYPE_RECOVERY">ICAROUS_TRACK_BAND_TYPE_RECOVERY</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ICAROUS_FMS_STATE">
+   <a href="#ICAROUS_FMS_STATE">ICAROUS_FMS_STATE</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>值</th>
+     <th>字段名称</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="ICAROUS_FMS_STATE_IDLE">
+     <td>0</td>
+     <td>
+      <a href="#ICAROUS_FMS_STATE_IDLE">ICAROUS_FMS_STATE_IDLE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="ICAROUS_FMS_STATE_TAKEOFF">
+     <td>1</td>
+     <td>
+      <a href="#ICAROUS_FMS_STATE_TAKEOFF">ICAROUS_FMS_STATE_TAKEOFF</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="ICAROUS_FMS_STATE_CLIMB">
+     <td>2</td>
+     <td>
+      <a href="#ICAROUS_FMS_STATE_CLIMB">ICAROUS_FMS_STATE_CLIMB</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="ICAROUS_FMS_STATE_CRUISE">
+     <td>3</td>
+     <td>
+      <a href="#ICAROUS_FMS_STATE_CRUISE">ICAROUS_FMS_STATE_CRUISE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="ICAROUS_FMS_STATE_APPROACH">
+     <td>4</td>
+     <td>
+      <a href="#ICAROUS_FMS_STATE_APPROACH">ICAROUS_FMS_STATE_APPROACH</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="ICAROUS_FMS_STATE_LAND">
+     <td>5</td>
+     <td>
+      <a href="#ICAROUS_FMS_STATE_LAND">ICAROUS_FMS_STATE_LAND</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <a id="MAV_CMD">
+  </a>
+  <h2 id="mav_commands">MAVLink 命令（MAV_CMD）</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink 指令（MAV_CMD）和消息是不同的！ 这个命令在“任务协议”和“指令协议”中定义了最多7个参数的值，并将其嵌入在特定消息中。 执行任务中的操作，或者如果需要请求的确认和/或重试逻辑使用命令。 否则使用消息。</p>
+  </blockquote>
+  <h2 id="messages">MAVLink 消息</h2>
+  <h3 id="ICAROUS_HEARTBEAT">ICAROUS_HEARTBEAT (<a href="#ICAROUS_HEARTBEAT">
+    #42000
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong> ICAROUS 状态信息</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>值</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>status</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#ICAROUS_FMS_STATE">ICAROUS_FMS_STATE</a>
+     </td>
+     <td>参见 FMS_STATE 编码。</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ICAROUS_KINEMATIC_BANDS">ICAROUS_KINEMATIC_BANDS (<a href="#ICAROUS_KINEMATIC_BANDS">
+    #42001
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong> Daidalus 的运动多波段（轨迹）输出 </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>字段名称</th>
+     <th>类型</th>
+     <th>单位</th>
+     <th>值</th>
+     <th>参数描述</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>numBands</td>
+     <td>int8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>轨道带数</td>
+    </tr>
+    <tr>
+     <td>type1</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
+     </td>
+     <td>见 TRACK_BAND_TYPES 编码。</td>
+    </tr>
+    <tr>
+     <td>min1</td>
+     <td>float</td>
+     <td>度</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>最小角度（度）</td>
+    </tr>
+    <tr>
+     <td>max1</td>
+     <td>float</td>
+     <td>度</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>最大角度（度）</td>
+    </tr>
+    <tr>
+     <td>type2</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
+     </td>
+     <td>见 TRACK_BAND_TYPES 编码。</td>
+    </tr>
+    <tr>
+     <td>min2</td>
+     <td>float</td>
+     <td>度</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>最小角度（度）</td>
+    </tr>
+    <tr>
+     <td>max2</td>
+     <td>float</td>
+     <td>度</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>最大角度（度）</td>
+    </tr>
+    <tr>
+     <td>type3</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
+     </td>
+     <td>见 TRACK_BAND_TYPES 编码。</td>
+    </tr>
+    <tr>
+     <td>min3</td>
+     <td>float</td>
+     <td>度</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>最小角度（度）</td>
+    </tr>
+    <tr>
+     <td>max3</td>
+     <td>float</td>
+     <td>度</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>最大角度（度）</td>
+    </tr>
+    <tr>
+     <td>type4</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
+     </td>
+     <td>见 TRACK_BAND_TYPES 编码。</td>
+    </tr>
+    <tr>
+     <td>min4</td>
+     <td>float</td>
+     <td>度</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>最小角度（度）</td>
+    </tr>
+    <tr>
+     <td>max4</td>
+     <td>float</td>
+     <td>度</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>最大角度（度）</td>
+    </tr>
+    <tr>
+     <td>type5</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ICAROUS_TRACK_BAND_TYPES">ICAROUS_TRACK_BAND_TYPES</a>
+     </td>
+     <td>见 TRACK_BAND_TYPES 编码。</td>
+    </tr>
+    <tr>
+     <td>min5</td>
+     <td>float</td>
+     <td>度</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>最小角度（度）</td>
+    </tr>
+    <tr>
+     <td>max5</td>
+     <td>float</td>
+     <td>度</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>最大角度（度）</td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>
