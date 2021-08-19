@@ -43,7 +43,7 @@ Language | Generator | MAVLink v1 | [MAVLink 2](guide/mavlink_2.md) | [Signing](
 C       | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; | This is the MAVLink project reference implementation. [Generated libraries](#prebuilt_libraries) are also published for both protocol versions.
 C++11   | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; |  | 
 Python (2.7+, 3.3+) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; | Python bindings. Library also available on PyPi: [pymavlink](https://pypi.org/project/pymavlink/).
-C#      | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; |  |  | | 
+C#      | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; |  | | 
 Objective C | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | | 
 Java    | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | | | 
 JavaScript (Stable) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &cross; | Old mavgen JavaScript binding (has known bugs and no test suite). 
