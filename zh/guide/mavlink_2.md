@@ -10,9 +10,9 @@
 
 * 24 位消息 ID - 允许 16 000多万枚独特的信息定义(MAVLink 1 仅限256)
 * [Packet signing](../guide/message_signing.md) - 验证消息是由信任系统发送的。
-* [消息扩展](../guide/define_xml_element.md#message_extensions) - 在现有的 MAVLink 消息定义中添加新的字段，但不打破未更新的接收器的二进制兼容性。 
-* [Empty-byte payload truncation](../guide/serialization.md#payload_truncation) - 在序列化有效载荷末尾的空的 (零填充) 字节在输出之前被移除 (所有字节都发送到 *MAVLink 1*, 无论内容如何)。 
-* [Compatibility Flags](../guide/serialization.md#compat_flags)/[Incompatibility Flags](../guide/serialization.md#incompat_flags) - Allow for backwards compatible evolution of the protocol by indicating frames that must be handled in a special/non-standard way (packets with compatibility flags can still be handled in the standard way, while packets with incompatibility flags must be dropped if the flag is not supported).
+* [消息扩展](../guide/define_xml_element.md#message_extensions) - 在现有的 MAVLink 消息定义中添加新的字段，但不打破未更新的接收器的二进制兼容性。
+* [Empty-byte payload truncation](../guide/serialization.md#payload_truncation) - Empty (zero-filled) bytes at the end of the serialized payload must be removed before sending (All bytes were sent in *MAVLink 1*, regardless of content). 
+* [Compatibility Flags](../guide/serialization.md#compat_flags)/[Incompatibility Flags](../guide/serialization.md#incompat_flags) - Allow for backwards compatible evolution of the protocol by indicating frames that must be handled in a special/non-standard way (packets with compatibility flags can still be handled in the standard way, while packets with incompatibility flags must be dropped if the flage is not supported).
 
 > **Tip** *MAVLink 2* [design document](https://docs.google.com/document/d/1XtbD0ORNkhZ8eKrsbSIZNLyg9sFRXMXbsR2mp37KbIg/edit?usp=sharing) 提供了关于更新的额外背景信息。
 
