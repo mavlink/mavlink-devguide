@@ -54,6 +54,6 @@ To install the MAVLink tools:
    ```
 1. Set `PYTHONPATH` to the directory path containing your *mavlink* repository.
    * **Windows:** `set PYTHONPATH=C:\path_to_root_of_cloned_mavlink_repository`
-   * **Linux:** `PYTHONPATH=path_to_root_of_cloned_mavlink_repository`
+   * **Linux:** `export PYTHONPATH=path_to_root_of_cloned_mavlink_repository`
 
 Now you are ready to [Generate MAVLink Libraries](../getting_started/generate_libraries.md).
