@@ -16,8 +16,8 @@ The heartbeat allows other components to:
 
 | Enum                                                                            | Description                                                                                                                                                                                                                                          |
 | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span id="MAV_TYPE"></span>[MAV_TYPE](../messages/common.md#MAV_TYPE)             | Type of the component. Flight controllers must report the type of the vehicle on which they are mounted (e.g. MAV_TYPE_OCTOROTOR). All other components must report a value appropriate for their type (e.g. a camera must use MAV_TYPE_CAMERA). |
-| <span id="MAV_AUTOPILOT"></span>[MAV_AUTOPILOT](../messages/common.md#MAV_AUTOPILOT)   | Autopilot type / class.                                                                                                                                                                                                                              |
+| <span id="MAV_TYPE"></span>[MAV_TYPE](../messages/common.md#MAV_TYPE)             | Type of the component. Flight controllers must report the type of the vehicle on which they are mounted (e.g. MAV_TYPE_OCTOROTOR). All other components must report a value appropriate for their type (e.g. a camera must use `MAV_TYPE_CAMERA`). |
+| <span id="MAV_AUTOPILOT"></span>[MAV_AUTOPILOT](../messages/common.md#MAV_AUTOPILOT)   | Autopilot type / class. Set to `MAV_AUTOPILOT_INVALID` for components that are not flight controllers (e.g. ground stations, gimbals, etc.).                                                                                                         |
 | <span id="MAV_MODE_FLAG"></span>[MAV_MODE_FLAG](../messages/common.md#MAV_MODE_FLAG) | System mode bitmap.                                                                                                                                                                                                                                  |
 | <span id="MAV_STATE"></span>[MAV_STATE](../messages/common.md#MAV_STATE)           | System status flag.                                                                                                                                                                                                                                  |
 
@@ -42,10 +42,12 @@ For example, *QGroundControl* will only connect to a vehicle system (i.e. not an
 
 ## Component Identity
 
-The *type* ([MAV_TYPE](#MAV_TYPE)) of a component is obtained from its [HEARTBEAT.type](#HEARTBEAT) field.
+The *type* of a component is obtained from its [`HEARTBEAT.type`](#HEARTBEAT) ([`MAV_TYPE`](#MAV_TYPE)) and [`HEARTBEAT.autopilot`](#HEARTBEAT) ([`MAV_AUTOPILOT`](#MAV_AUTOPILOT)) fields:
 
-- A flight controller component will use a `MAV_TYPE` corresponding to a particular vehicle - e.g. `MAV_TYPE_FIXED_WING`, `MAV_TYPE_QUADROTOR` etc. (the use of any of these "vehicle types" indicates the component is a flight controller).
-- Any other component should use its actual type, e.g. `MAV_TYPE_GIMBAL`, `MAV_TYPE_BATTERY`, etc.
+- A flight controller component must use a `MAV_TYPE` corresponding to a particular vehicle (e.g. `MAV_TYPE_FIXED_WING`, `MAV_TYPE_QUADROTOR` etc.), and set `HEARTBEAT.autopilot` to a valid flight stack.
+- All other components must use a `MAV_TYPE` corresponding to the actual type (e.g.: `MAV_TYPE_GIMBAL`, `MAV_TYPE_BATTERY`, etc.), and should set `HEARTBEAT.autopilot` to `MAV_AUTOPILOT_INVALID`.
+
+> **Tip** The recommended way to recognise an autopilot component is to check that `HEARTBEAT.type` is not `MAV_AUTOPILOT_INVALID`.
 
 Every component must have a system-unique component id, which is used for routing and for identifying multiple instances of a particular component type.
 
