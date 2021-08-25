@@ -49,7 +49,7 @@ QGC also uses the specific type of vehicle and other heartbeat information to co
 
 The _type_ of a component is obtained from its [`HEARTBEAT.type`](#HEARTBEAT) ([`MAV_TYPE`](#MAV_TYPE)) and [`HEARTBEAT.autopilot`](#HEARTBEAT) ([`MAV_AUTOPILOT`](#MAV_AUTOPILOT)) fields:
 - A flight controller component will use a `MAV_TYPE` corresponding to a particular vehicle - e.g. `MAV_TYPE_FIXED_WING`, `MAV_TYPE_QUADROTOR` etc. (the use of any of these "vehicle types" indicates the component is a flight controller).
-- All other components should use a `MAV_TYPE` corresponding to the action type, e.g.: `MAV_TYPE_GIMBAL`, `MAV_TYPE_BATTERY`, etc.
+- All other components should use a `MAV_TYPE` corresponding to the actual type, e.g.: `MAV_TYPE_GIMBAL`, `MAV_TYPE_BATTERY`, etc.
 - A flight controller component will set `HEARTBEAT.autopilot` to a valid flight stack; all other components must set `MAV_AUTOPILOT_INVALID`.
   The easiest way to recognise an autopilot component is therefore to check that `HEARTBEAT.type` is not `MAV_AUTOPILOT_INVALID`.
 
