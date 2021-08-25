@@ -48,10 +48,10 @@ QGC also uses the specific type of vehicle and other heartbeat information to co
 ## Component Identity
 
 The _type_ of a component is obtained from its [`HEARTBEAT.type`](#HEARTBEAT) ([`MAV_TYPE`](#MAV_TYPE)) and [`HEARTBEAT.autopilot`](#HEARTBEAT) ([`MAV_AUTOPILOT`](#MAV_AUTOPILOT)) fields:
-- A flight controller component will use a `MAV_TYPE` corresponding to a particular vehicle - e.g. `MAV_TYPE_FIXED_WING`, `MAV_TYPE_QUADROTOR` etc. (the use of any of these "vehicle types" indicates the component is a flight controller).
-- All other components should use a `MAV_TYPE` corresponding to the actual type, e.g.: `MAV_TYPE_GIMBAL`, `MAV_TYPE_BATTERY`, etc.
-- A flight controller component will set `HEARTBEAT.autopilot` to a valid flight stack; all other components must set `MAV_AUTOPILOT_INVALID`.
-  The easiest way to recognise an autopilot component is therefore to check that `HEARTBEAT.type` is not `MAV_AUTOPILOT_INVALID`.
+- A flight controller component must use a `MAV_TYPE` corresponding to a particular vehicle (e.g. `MAV_TYPE_FIXED_WING`, `MAV_TYPE_QUADROTOR` etc.), and set `HEARTBEAT.autopilot` to a valid flight stack.
+- All other components must use a `MAV_TYPE` corresponding to the actual type (e.g.: `MAV_TYPE_GIMBAL`, `MAV_TYPE_BATTERY`, etc.), and should set `HEARTBEAT.autopilot` to `MAV_AUTOPILOT_INVALID`.
+  
+> **Tip** The recommended way to recognise an autopilot component is to check that `HEARTBEAT.type` is not `MAV_AUTOPILOT_INVALID`.
 
 Every component must have a system-unique component id, which is used for routing and for identifying multiple instances of a particular component type.
 
