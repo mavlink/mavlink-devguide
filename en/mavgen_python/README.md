@@ -1,7 +1,7 @@
 # Using Pymavlink Libraries (mavgen)
 
 Pymavlink is a *low level* and *general purpose* MAVLink message processing library, written in Python.
-It has been used to implement MAVLink communications many types of MAVLink systems, including a GCS (MAVProxy), Developer APIs (DroneKit) and numerous companion computer MAVLink applications.
+It has been used to implement MAVLink communications in many types of MAVLink systems, including a GCS (MAVProxy), Developer APIs (DroneKit) and numerous companion computer MAVLink applications.
 
 The library can be used with Python 2.7+ (recommended) or Python 3.5+ and supports both MAVLink 1 and MAVLink 2 versions of the protocol.
 
@@ -54,7 +54,7 @@ The libraries can then be used in the same way as those installed using *pip*.
 
 The *pymavlink* package includes the dialect-specific generated modules, which provide low-level functionality to encode and decode messages, and apply and check signatures.
 
-Generally speaking, most developers will use the **mavutil** module to set up and manage the communication channel (because it makes get started very easy). This module provides simple mechanisms for setting up links, sending and receiving messages, and querying some basic autopilot properties (e.g. flight mode). It provides access to the dialect module used for encoding/decoding/signing via an attribute (`mav`).
+Generally speaking, most developers will use the **mavutil** module to set up and manage the communication channel (because it makes getting started very easy). This module provides simple mechanisms for setting up links, sending and receiving messages, and querying some basic autopilot properties (e.g. flight mode). It provides access to the dialect module used for encoding/decoding/signing via an attribute (`mav`).
 
 There are several main caveats to be aware of when using **mavutil**:
 - The link does not properly handle multiple systems running on the same port. 
@@ -129,7 +129,7 @@ the_connection = mavutil.mavlink_connection('udpin:localhost:14540')
 # Wait for the first heartbeat 
 #   This sets the system and component ID of remote system for the link
 the_connection.wait_heartbeat()
-print("Heartbeat from system (system %u component %u)" % (the_connection.target_system, the_connection.target_system))
+print("Heartbeat from system (system %u component %u)" % (the_connection.target_system, the_connection.target_component))
 
 # Once connected, use 'the_connection' to get and send messages
 ```
@@ -221,13 +221,13 @@ For example, if you're using a **mavutil** link named [the_connection](#setting_
 
 ```python
 try: 
-    altitude=the_connection.messages['GPS_RAW_INT'].alt  # Note, you can access message fields as attributes!
-    timestamp=the_connection.time_since('GPS_RAW_INT')
+    altitude = the_connection.messages['GPS_RAW_INT'].alt  # Note, you can access message fields as attributes!
+    timestamp = the_connection.time_since('GPS_RAW_INT')
 except:
     print('No GPS_RAW_INT message received')
 ```
 
-Alternatively can use the **mavutil** `recv_match()` method to wait for and intercept messages as they arrive:
+Alternatively you can use the **mavutil** `recv_match()` method to wait for and intercept messages as they arrive:
 ```python
 def recv_match(self, condition=None, type=None, blocking=False, timeout=None):
     '''Receive the next MAVLink message that matches the given type and condition
@@ -242,7 +242,7 @@ For example using `the_connection` set up as before, you can wait for *any* mess
 ```python
 msg = the_connection.recv_match(blocking=True)
 ```
-If you instead want to want to just get a particular message with particular attribute values you might instead do:
+If you instead want to just get a particular message with particular attribute values you might instead do:
 ```
 # Wait for a 'SYS_STATUS' message with the specified values.
 msg = the_connection.recv_match(type='SYS_STATUS', condition='SYS_STATUS.mode==2 and SYS_STATUS.nav_mode==4', blocking=True)
@@ -324,7 +324,7 @@ the_connection.mav.heartbeat_send(mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
 
 > **Note** The various types used above come from `enum` in the dialect file.
 
-The rate at which the heartbeat should be sent depends on the channel, but is nominally 1Hz.
+The rate at which the heartbeat should be sent depends on the channel, but is normally 1Hz.
 
 Generally it should be sent from the same thread as all other messages (to ensure that the heartbeat is only published when the thread is healthy).
 
@@ -336,7 +336,7 @@ Pymavlink supports [Message Signing](../guide/message_signing.md) (authenticatio
 The library implements almost all of the expected behaviour for you. 
 All you need to do is provide a secret key and initial timestamp, and (optionally) set whether or not outgoing messages should be signed, a link id, and a callback for determining which unsigned messages (if any) will be accepted.
 
-The way that you do this depends on whether you're using **mavutil** to manage the connection or using a `MAVLink` object directly.
+The way you do this depends on whether you're using **mavutil** to manage the connection or using a `MAVLink` object directly.
 
 > **Note** While not covered in this topic, you should also write code to:
 > * Save and load the key and last-timestamp from permanent storage
@@ -347,7 +347,7 @@ The way that you do this depends on whether you're using **mavutil** to manage t
 If you're using the `MAVLink` class directly, you can use the **`MAVLink.signing`** attribute to access a `MAVLinkSigning` object and set the required attributes.
 
 The [example/mavtest.py](https://github.com/ArduPilot/pymavlink/blob/master/examples/mavtest.py) script shows how to do this using an arbitrary secret key:
-```
+```python
 # Create a MAVLink instance (in this case on a file object "f")
 mav = mavlink.MAVLink(f)
 
@@ -362,11 +362,11 @@ if signing:
   The initial timestamp should be based on current system time. 
   For more information see [Message Signing](../guide/message_signing.md#timestamp).
 
-#### Signing using Mavutil
+#### Signing using mavutil
 
 If you're using **mavutil** to manage the connection then you can set up/disable signing using the methods shown below:
 
-```
+```python
 #Setup signing
 def setup_signing(self, secret_key, sign_outgoing=True, allow_unsigned_callback=None, initial_timestamp=None, link_id=None)
 
@@ -427,7 +427,7 @@ There is no requirement that the same link ID be used in both directions however
 
 ## Examples
 
-There are a number useful examples and complete systems based on pymavlink:
+There are a number of useful examples and complete systems based on pymavlink:
 - The [pymavlink submodule](https://github.com/ArduPilot/pymavlink/tree/master/examples) contains a number of simple examples.
 - [MAVProxy](http://ardupilot.github.io/MAVProxy/html/development/index.html) is a command-line, console based UAV ground station software package for MAVLink based systems. 
   - It demonstrates most of the features of using the MAVLink module. 
