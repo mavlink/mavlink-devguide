@@ -15,11 +15,12 @@ At the bottom of this page, you can find a [full example](#full_example) of a *C
 
 ## File Compression
 
-In order to reduce file size on the camera and during transfer, a definition file may be compressed using *gzip*.
-If the URL of the definition file ends with `.xml.gz` it is the gzip compressed stream of the text file.
+Camera definition files may be **.xz** compressed (this is recommended for files that are hosted on the camera component/device).
 
-> **Note** The file stream is compressed but it is not an archive like `.zip` or `.tar.gz` (so there is no folder structure).
+> **Warning** Systems that *request* camera definition files **must** support extraction of **.xz**-compressed JSON files.
 
+<span></span>
+> **Tip** The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems.
 
 ## Schema
 
