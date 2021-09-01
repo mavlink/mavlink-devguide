@@ -12,7 +12,7 @@ GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消
 
 Camera definition files may be **.xz** compressed (this is recommended for files that are hosted on the camera component/device).
 
-> **Warning** Systems that *request* camera definition files **must** support extraction of **.xz**-compressed JSON files.
+> **Warning** Systems that *request* camera definition files **must** support extraction of **.xz**-compressed definition files.
 
 <span></span>
 
