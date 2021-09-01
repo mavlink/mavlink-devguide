@@ -17,7 +17,7 @@ At the bottom of this page, you can find a [full example](#full_example) of a *C
 
 Camera definition files may be **.xz** compressed (this is recommended for files that are hosted on the camera component/device).
 
-> **Warning** Systems that *request* camera definition files **must** support extraction of **.xz**-compressed JSON files.
+> **Warning** Systems that *request* camera definition files **must** support extraction of **.xz**-compressed definition files.
 
 <span></span>
 > **Tip** The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems.
