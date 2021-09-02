@@ -7,7 +7,7 @@ This topic shows how to use the two code generators provided with the MAVLink pr
 > **Note** These generators can build MAVLink 2 libraries for C, C++11, Python, Typescript, Java, and WLua (supporting both MAVLink 2 and 1), and MAVLink 1 (only) libraries for: C#, JavaScript, ObjC, Swift.
 
 <span></span>
-> **Tip** Generators for other programming languages are supported and documented in independent progects.
+> **Tip** Generators for other programming languages are supported and documented in independent projects.
   For more information see [Supported Languages](../README.md#supported_languages).
 
 
