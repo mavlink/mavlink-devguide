@@ -20605,72 +20605,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MISSION_CHANGED">MISSION_CHANGED (<a href="#MISSION_CHANGED">
-    #52
-   </a>
-   )
-  </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>A broadcast message to notify any ground station or SDK if a mission, geofence or safe points have changed on the vehicle.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>start_index</td>
-     <td>int16_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>Start index for partial mission change (-1 for all items).</td>
-    </tr>
-    <tr>
-     <td>end_index</td>
-     <td>int16_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>End index of a partial mission change. -1 is a synonym for the last mission item (i.e. selects all items from start_index). Ignore field if start_index=-1.</td>
-    </tr>
-    <tr>
-     <td>origin_sysid</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#">
-      </a>
-     </td>
-     <td>System ID of the author of the new mission.</td>
-    </tr>
-    <tr>
-     <td>origin_compid</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
-     </td>
-     <td>Compnent ID of the author of the new mission.</td>
-    </tr>
-    <tr>
-     <td>mission_type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-     </td>
-     <td>Mission type.</td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="SAFETY_SET_ALLOWED_AREA">SAFETY_SET_ALLOWED_AREA (<a href="#SAFETY_SET_ALLOWED_AREA">
     #54
    </a>
@@ -21528,7 +21462,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>This message provides an API for manually controlling the vehicle using standard joystick axes nomenclature, along with a joystick-like input device. Unused axes can be disabled an buttons are also transmit as boolean values of their</p>
+   </a>This message provides an API for manually controlling the vehicle using standard joystick axes nomenclature, along with a joystick-like input device. Unused axes can be disabled and buttons states are transmitted as individual on/off bits of a bitmask</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21566,7 +21500,39 @@
     <tr>
      <td>buttons</td>
      <td>uint16_t</td>
-     <td>A bitfield corresponding to the joystick buttons' current state, 1 for pressed, 0 for released. The lowest bit corresponds to Button 1.</td>
+     <td>A bitfield corresponding to the joystick buttons' 0-15 current state, 1 for pressed, 0 for released. The lowest bit corresponds to Button 1.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">buttons2<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t</td>
+     <td>A bitfield corresponding to the joystick buttons' 16-31 current state, 1 for pressed, 0 for released. The lowest bit corresponds to Button 16.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">enabled_extensions<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>Set bits to 1 to indicate which of the following extension fields contain valid data: bit 0: pitch, bit 1: roll.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">s<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>int16_t</td>
+     <td>Pitch-only-axis, normalized to the range [-1000,1000]. Generally corresponds to pitch on vehicles with additional degrees of freedom. Valid if bit 0 of enabled_extensions field is set. Set to 0 if invalid.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">t<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>int16_t</td>
+     <td>Roll-only-axis, normalized to the range [-1000,1000]. Generally corresponds to roll on vehicles with additional degrees of freedom. Valid if bit 1 of enabled_extensions field is set. Set to 0 if invalid.</td>
     </tr>
    </tbody>
   </table>
@@ -34713,8 +34679,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
