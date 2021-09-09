@@ -37,7 +37,7 @@ Message | Description
 
 > **Note** **Implementations:**
   - `MAV_CMD_DO_SET_ACTUATOR` is more recent than `MAV_CMD_DO_SET_SERVO`, but has not yet been widely adopted.
-  - `MAV_CMD_DO_SET_SERVO` is impemented on both ArduPilot and PX4.
+  - `MAV_CMD_DO_SET_SERVO` is impemented on both ArduPilot and PX4 (Missions only).
     In both cases instance numbers map to corresponding AUX outputs.
   - `MAV_CMD_DO_SET_ACTUATOR` is implemented only on PX4 (June 2021).
     Parameters `param1`, `param2`, and `param3` are usually mapped to the `AUX1`, `AUX2`, `AUX3` outputs, while command parameters `param4` to `param7` are unused/ignored
