@@ -16,7 +16,7 @@ Message | Description
 -- | --
 <a id="MAV_CMD_DO_GRIPPER"></a>[MAV_CMD_DO_GRIPPER](../messages/common.md#MAV_CMD_DO_GRIPPER) | Command to engage and release a gripper.
 <a id="MAV_CMD_DO_WINCH"></a>[MAV_CMD_DO_WINCH](../messages/common.md#MAV_CMD_DO_WINCH) | Command to operate a specified winch.
-<a id="MAV_CMD_ILLUMINATOR_ON_OFF"></a>[MAV_CMD_ILLUMINATOR_ON_OFF](../messages/common.md#MAV_CMD_ILLUMINATOR_ON_OFF) | Command to turn illuminators ON/OFF. An illuminator is a light source that for lighting up dark areas external to the sytstem, such as a torch or searchlight.
+<a id="MAV_CMD_ILLUMINATOR_ON_OFF"></a>[MAV_CMD_ILLUMINATOR_ON_OFF](../messages/common.md#MAV_CMD_ILLUMINATOR_ON_OFF) | Command to turn illuminators ON/OFF. An illuminator is a light source that for lighting up dark areas external to the system, such as a headlight or searchlight.
 
 
 ## Generic Payload Commands
