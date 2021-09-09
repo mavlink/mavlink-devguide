@@ -32,7 +32,7 @@ Message | Description
 <a id="MAV_CMD_DO_SET_ACTUATOR"></a>[MAV_CMD_DO_SET_ACTUATOR](../messages/common.md#MAV_CMD_DO_SET_ACTUATOR) | Sets actuators (e.g. servos) to a desired value. The actuator numbers are mapped to specific outputs (e.g. on any MAIN or AUX PWM or UAVCAN) using a flight-stack specific mechanism (for example, parameters).
 <a id="MAV_CMD_DO_SET_SERVO"></a>[MAV_CMD_DO_SET_SERVO](../messages/common.md#MAV_CMD_DO_SET_SERVO) | Sets a servo, identified by a specified instance number, to a specified PWM value.
 <a id="MAV_CMD_DO_SET_RELAY"></a>[MAV_CMD_DO_SET_RELAY](../messages/common.md#MAV_CMD_DO_SET_RELAY) | Set a specified relay instance on or off.
-<a id="MAV_CMD_DO_REPEAT_RELAY"></a>[MAV_CMD_DO_REPEAT_RELAY](../messages/common.md#MAV_CMD_DO_REPEAT_RELAY) | SCycle a relay on and off for a desired number of cycles with a desired period.
+<a id="MAV_CMD_DO_REPEAT_RELAY"></a>[MAV_CMD_DO_REPEAT_RELAY](../messages/common.md#MAV_CMD_DO_REPEAT_RELAY) | Cycle a relay on and off for a desired number of cycles with a desired period.
 
 
 > **Note** **Implementations:**
