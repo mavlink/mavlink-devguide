@@ -52,6 +52,7 @@
   * [Parameter Protocol](services/parameter.md)
   * [Extended Parameter Protocol](services/parameter_ext.md)
   * [Command Protocol](services/command.md)
+  * [Manual Control (Joystick) Protocol](services/manual_control.md)
   * [Camera Protocol](services/camera.md)
     * [Camera Definition](services/camera_def.md)
   * [Gimbal Protocol v2](services/gimbal_v2.md)
