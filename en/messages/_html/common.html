@@ -611,14 +611,14 @@
      <td>
       <a href="#MAV_FRAME_GLOBAL_INT">MAV_FRAME_GLOBAL_INT</a>
      </td>
-     <td>Global (WGS84) coordinate frame (scaled) + MSL altitude. First value / x: latitude in degrees*1.0e-7, second value / y: longitude in degrees*1.0e-7, third value / z: positive altitude over mean sea level (MSL).</td>
+     <td>Global (WGS84) coordinate frame (scaled) + MSL altitude. First value / x: latitude in degrees*1E7, second value / y: longitude in degrees*1E7, third value / z: positive altitude over mean sea level (MSL).</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_RELATIVE_ALT_INT">
      <td>6</td>
      <td>
       <a href="#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT">MAV_FRAME_GLOBAL_RELATIVE_ALT_INT</a>
      </td>
-     <td>Global (WGS84) coordinate frame (scaled) + altitude relative to the home position. First value / x: latitude in degrees*10e-7, second value / y: longitude in degrees*10e-7, third value / z: positive altitude with 0 being at the altitude of the home location.</td>
+     <td>Global (WGS84) coordinate frame (scaled) + altitude relative to the home position. First value / x: latitude in degrees*1E7, second value / y: longitude in degrees*1E7, third value / z: positive altitude with 0 being at the altitude of the home location.</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_OFFSET_NED">
      <td>7</td>
@@ -657,7 +657,7 @@
      <td>
       <a href="#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT">MAV_FRAME_GLOBAL_TERRAIN_ALT_INT</a>
      </td>
-     <td>Global (WGS84) coordinate frame (scaled) with AGL altitude (at the waypoint coordinate). First value / x: latitude in degrees*10e-7, second value / y: longitude in degrees*10e-7, third value / z: positive altitude in meters with 0 being at ground level in terrain model.</td>
+     <td>Global (WGS84) coordinate frame (scaled) with AGL altitude (at the waypoint coordinate). First value / x: latitude in degrees*1E7, second value / y: longitude in degrees*1E7, third value / z: positive altitude in meters with 0 being at ground level in terrain model.</td>
     </tr>
     <tr id="MAV_FRAME_BODY_FRD">
      <td>12</td>
@@ -6301,6 +6301,13 @@
      </td>
      <td>UTM (Unmanned Traffic Management) assigned UUID (RFC4122).</td>
     </tr>
+    <tr id="MAV_ODID_ID_TYPE_SPECIFIC_SESSION_ID">
+     <td>4</td>
+     <td>
+      <a href="#MAV_ODID_ID_TYPE_SPECIFIC_SESSION_ID">MAV_ODID_ID_TYPE_SPECIFIC_SESSION_ID</a>
+     </td>
+     <td>A 20 byte ID for a specific flight/session. The exact ID type is indicated by the first byte of uas_id and these type values are managed by ICAO.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_ODID_UA_TYPE">
@@ -6928,6 +6935,13 @@
       <a href="#MAV_ODID_AUTH_TYPE_NETWORK_REMOTE_ID">MAV_ODID_AUTH_TYPE_NETWORK_REMOTE_ID</a>
      </td>
      <td>Authentication is provided by Network Remote ID.</td>
+    </tr>
+    <tr id="MAV_ODID_AUTH_TYPE_SPECIFIC_AUTHENTICATION">
+     <td>5</td>
+     <td>
+      <a href="#MAV_ODID_AUTH_TYPE_SPECIFIC_AUTHENTICATION">MAV_ODID_AUTH_TYPE_SPECIFIC_AUTHENTICATION</a>
+     </td>
+     <td>The exact authentication type is indicated by the first byte of authentication_data and these type values are managed by ICAO.</td>
     </tr>
    </tbody>
   </table>
@@ -36090,7 +36104,7 @@
       <a href="#">
       </a>
      </td>
-     <td>Seconds after the full hour with reference to UTC time. Typically the GPS outputs a time-of-week value in milliseconds. First convert that to UTC and then convert for this field using ((float) (time_week_ms % (60*60*1000))) / 1000.</td>
+     <td>Seconds after the full hour with reference to UTC time. Typically the GPS outputs a time-of-week value in milliseconds. First convert that to UTC and then convert for this field using ((float) (time_week_ms % (60*60*1000))) / 1000. If unknown: 0xFFFF.</td>
     </tr>
     <tr>
      <td>timestamp_accuracy</td>
@@ -36181,10 +36195,10 @@
       <a href="#">
       </a>
      </td>
-     <td>Allowed range is 0 - 4.</td>
+     <td>Allowed range is 0 - 15.</td>
     </tr>
     <tr>
-     <td>page_count</td>
+     <td>last_page_index</td>
      <td>uint8_t</td>
      <td>
      </td>
@@ -36192,7 +36206,7 @@
       <a href="#">
       </a>
      </td>
-     <td>This field is only present for page 0. Allowed range is 0 - 5.</td>
+     <td>This field is only present for page 0. Allowed range is 0 - 15. See the description of struct ODID_Auth_data at https://github.com/opendroneid/opendroneid-core-c/blob/master/libopendroneid/opendroneid.h.</td>
     </tr>
     <tr>
      <td>length</td>
@@ -36202,7 +36216,7 @@
       <a href="#">
       </a>
      </td>
-     <td>This field is only present for page 0. Total bytes of authentication_data from all data pages. Allowed range is 0 - 109 (17 + 23*4).</td>
+     <td>This field is only present for page 0. Total bytes of authentication_data from all data pages. See the description of struct ODID_Auth_data at https://github.com/opendroneid/opendroneid-core-c/blob/master/libopendroneid/opendroneid.h.</td>
     </tr>
     <tr>
      <td>timestamp</td>
@@ -36456,6 +36470,16 @@
      </td>
      <td>When classification_type is MAV_ODID_CLASSIFICATION_TYPE_EU, specifies the class of the UA.</td>
     </tr>
+    <tr>
+     <td>operator_altitude_geo</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Geodetic altitude of the operator relative to WGS84. If unknown: -1000 m.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="OPEN_DRONE_ID_OPERATOR_ID">OPEN_DRONE_ID_OPERATOR_ID (<a href="#OPEN_DRONE_ID_OPERATOR_ID">
@@ -36567,6 +36591,13 @@
      <td>Component ID (0 for broadcast).</td>
     </tr>
     <tr>
+     <td>id_or_mac</td>
+     <td>uint8_t[20]</td>
+     <td>
+     </td>
+     <td>Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.</td>
+    </tr>
+    <tr>
      <td>single_message_size</td>
      <td>uint8_t</td>
      <td>bytes</td>
@@ -36577,11 +36608,11 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Number of encoded messages in the pack (not the number of bytes). Allowed range is 1 - 10.</td>
+     <td>Number of encoded messages in the pack (not the number of bytes). Allowed range is 1 - 9.</td>
     </tr>
     <tr>
      <td>messages</td>
-     <td>uint8_t[250]</td>
+     <td>uint8_t[225]</td>
      <td>
      </td>
      <td>Concatenation of encoded OpenDroneID messages. Shall be filled with nulls in the unused portion of the field.</td>
