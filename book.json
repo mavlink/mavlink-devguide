@@ -16,7 +16,6 @@
         "bulk-redirect@git+https://github.com/Dronecode/gitbook-plugin-bulk-redirect.git",
         "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git",
         "-mermaid",
-        "-stub-out-blocks@git+https://github.com/hamishwillee/gitbook-plugin-stub-out-blocks.git",
         "theme-dronecode@git+https://github.com/dronecode/theme-dronecode.git",
         "html-minifier"
     ],
