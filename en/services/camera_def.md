@@ -101,7 +101,9 @@ More common are parameters that provide options:
 </parameter>
 ```
 
-In this case, the GCS will automatically build a drop down list with the options defined within the `options` group. When sending/receiving the options, the `value` field is used and it is not in any way interpreted by the GCS. The `name` field is used for display only. In other words, using the example above, when the user selects *Sunset*, the GCS will send a [PARAM\_EXT\_SET](../messages/common.md#PARAM_EXT_SET) message with the id `CAM_WBMODE` and a uint32 value of 3.
+In this case, the GCS will automatically build a drop down list with the options defined within the `options` group.
+When sending/receiving the options, the `value` field is used and it is not in any way interpreted by the GCS.
+The `name` field is used for display only. In other words, using the example above, when the user selects *Sunset*, the GCS will send a [PARAM\_EXT\_SET](../messages/common.md#PARAM_EXT_SET) message with the id `CAM_WBMODE` and a uint32 value of 3.
 
 #### Common Parameters
 
@@ -113,16 +115,33 @@ Parameter | Description
 -- | --
 CAM_APERTURE | Aperture
 CAM_EV | Exposure Compensation (usually only used for automatic exposure modes)
+CAM_VIDEV | Exposure compensation (Video)
+CAM_PHOTOEV | Exposure compensation (Photo)
 CAM_EXPMODE | Exposure Mode (Manual, Auto, Program Auto, Aperture Priority, etc.)
 CAM_ISO | ISO
+CAM_VIDISO | ISO (Video)
+CAM_PHOTOISO | ISO (Photo)
 CAM_METERING | Metering Mode
 CAM_SHUTTERSPD | Shutter speed
-CAM_VIDRES | Video Resolution (for video capture)
+CAM_VID_SHUTSPD | Shutter speed (Video)
+CAM_PHOTOSHUTSPD | Shutter speed (Photo)
+CAM_VIDRES | Video Resolution (Video)
 CAM_WBMODE | White Balance Mode
+CAM_VIDSTREAM - Video stream selection (video playback)
+CAM_VIDFPS | Video frame rate (video capture)
+CAM_VIDFOV | Video field of view (video capture)
+CAM_VIDFMT | Video encoding format
+CAM_PHOTORATIO | Photo Aspect Ratio
+CAM_PHOTOFMT | Photo image (saving) format
+CAM_PHOTOSIZE | Photo size
+CAM_PHOTOQUAL | Photo image (saving) quality (for compressed modes)
+
 
 #### Exclusion Rules
 
-Some parameters are only relevant when some other parameter is set to some specific option. For example, shutter speed, aperture and ISO would only be available when the camera is set to *manual* exposure mode and not shown when the camera is set to *auto* exposure mode. Conversely, *EV* (Exposure Compensation) is only used when the camera is set to *auto* and hidden otherwise. To specify this behavior, you would use the `exclusion` element:
+Some parameters are only relevant when some other parameter is set to some specific option.
+For example, shutter speed, aperture and ISO would only be available when the camera is set to *manual* exposure mode and not shown when the camera is set to *auto* exposure mode.
+Conversely, *EV* (Exposure Compensation) is only used when the camera is set to *auto* and hidden otherwise. To specify this behavior, you would use the `exclusion` element:
 
 ```XML
 <parameter name="CAM_EXPMODE" type="uint32" default="0">
