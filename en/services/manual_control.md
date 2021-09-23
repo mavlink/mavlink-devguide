@@ -2,7 +2,9 @@
 
 The Manual Control Protocol enables controlling a system using standard joystick axes nomenclature, along with a joystick-like input device. 
  
-The protocol is implemented with just the [`MANUAL_CONTROL`](../messages/common.md#MANUAL_CONTROL) message. It consists of the `target` system to be controlled, four primary axes (`x`, `y`, `z`, `r`), two extension axes (`s`, `t`), and two 16-bit fields to represent the states of up to 32 buttons (`buttons`, `buttons2`). Unused axes can be disabled, and the extension axes must be explicitly enabled using bits 0 and 1 of the `enabled_extensions` field.
+The protocol is implemented with just the [`MANUAL_CONTROL`](../messages/common.md#MANUAL_CONTROL) message.
+It consists of the `target` system to be controlled, four primary axes (`x`, `y`, `z`, `r`), two extension axes (`s`, `t`), and two 16-bit fields to represent the states of up to 32 buttons (`buttons`, `buttons2`).
+Unused axes can be disabled, and the extension axes must be explicitly enabled using bits 0 and 1 of the `enabled_extensions` field.
 
 ## Mapping Axes
 
@@ -10,7 +12,7 @@ Manual control is performed in the vehicle-frame. All axis values are normalised
 
 ### Rotation-Focused Control
 
-The typical axis assignments for a thrust- and rotation-controlled vehicle (e.g. quadcopters, planes) are
+The typical axis assignments for a thrust- and rotation-controlled vehicle (e.g. planes, multicopters) are listed below.
 
 field | motion axis | +ve direction | -ve direction
 -- | -- | -- | --
@@ -21,7 +23,7 @@ field | motion axis | +ve direction | -ve direction
 
 ### Directional Control
 
-Vehicles with direct control over vehicle translation directions typically use
+Vehicles with direct control over vehicle translation directions (multicopters) typically use the following mappings.
 
 field | motion axis | +ve direction | -ve direction
 -- | -- | -- | --
@@ -34,25 +36,33 @@ field | motion axis | +ve direction | -ve direction
 
 ## Mapping Buttons
 
-Button functions are vehicle-specific and determined in the vehicle firmware. They are generally user-configurable using firmware parameters (e.g. ArduCopter's [`BTN_FUNCn`](https://ardupilot.org/copter/docs/parameters.html#btn-func1-button-pin-1-rc-channel-function) or ArduSub's [`BTNn_FUNCTION`](https://www.ardusub.com/developers/full-parameter-list.html#btnnfunction-function-for-button)), through the [Parameter](./parameter.md) or [Extended Parameter](./parameter_ext.md) protocols.
+Button functions are vehicle-specific and determined in the vehicle firmware.
+They are generally user-configurable using firmware parameters (e.g. ArduCopter's [`BTN_FUNCn`](https://ardupilot.org/copter/docs/parameters.html#btn-func1-button-pin-1-rc-channel-function) or ArduSub's [`BTNn_FUNCTION`](https://www.ardusub.com/developers/full-parameter-list.html#btnnfunction-function-for-button)), through the [Parameter](./parameter.md) or [Extended Parameter](./parameter_ext.md) protocols.
 
-The `buttons` field is required, and corresponds to the first 16 buttons. `buttons2` is an [extension](https://mavlink.io/en/guide/define_xml_element.html#message_extensions), and corresponds to the optional second set of 16 buttons.
+The `buttons` field is required, and corresponds to the first 16 buttons.
+
+`buttons2` is an [extension](https://mavlink.io/en/guide/define_xml_element.html#message_extensions), and corresponds to the optional second set of 16 buttons.
 
 ## Future Extensions
 
-The Manual Control Protocol is by intent relatively simple and abstract, and provides a simple way of controlling the main motion of a vehicle, along with several arbitrary features that can be configured predominantly in firmware. This has the benefit that new vehicle types with unusual functions can be set up to operate with minimal changes required to the mavlink protocol or existing ground control station (GCS) software. It also allows new GCS softwares to provide a simple level of control over several mavlink-compatible vehicles.
+The Manual Control Protocol is by intent relatively simple and abstract, and provides a simple way of controlling the main motion of a vehicle, along with several arbitrary features that can be configured predominantly in firmware.
+This has the benefit that new vehicle types with unusual functions can be set up to operate with minimal changes required to the MAVLink protocol or existing ground control station (GCS) software.
+It also allows new GCS software to provide a simple level of control over several MAVLink-compatible vehicles.
 
-As vehicle design matures, and features increase in complexity beyond what can be reasonably controlled with 6 motion axes and a set of binary buttons states, it is recommended to implement additional targetted mavlink commands (see the [Command Protocol](./command.md)), and handle more complex inputs in the GCS to reduce vehicle firmware complexity.
+As vehicle design matures, and features increase in complexity beyond what can be reasonably controlled with 6 motion axes and a set of binary buttons states, it is recommended to implement additional targetted MAVLink commands (see the [Command Protocol](./command.md)), and handle more complex inputs in the GCS to reduce vehicle firmware complexity.
 
 ## Alternatives
 
-Vehicles using radio control, or at least that support the [`RC_CHANNELS`](../messages/common.md#RC_CHANNELS) messages, can alternatively be controlled by sending information as a set of up to 18 channel values using [`RC_CHANNELS_OVERRIDE`](../messages/common.md#RC_CHANNELS_OVERRIDE). Channels can be mapped to firmware parameters using [`PARAM_MAP_RC`](../messages/common.md#PARAM_MAP_RC), and the autopilot can use the current parameter values at each point in time to determine control actions.
+Vehicles using radio control, or at least that support the [`RC_CHANNELS`](../messages/common.md#RC_CHANNELS) messages, can alternatively be controlled by sending information as a set of up to 18 channel values using [`RC_CHANNELS_OVERRIDE`](../messages/common.md#RC_CHANNELS_OVERRIDE).
+Channels can be mapped to firmware parameters using [`PARAM_MAP_RC`](../messages/common.md#PARAM_MAP_RC), and the autopilot can use the current parameter values at each point in time to determine control actions.
 
-It's worth noting that the generality of RC channels control is a double-edged sword - it is incredibly versatile, and can be used to provide support for several arbitrary control axes, but the user-defined in-vehicle nature of the mapped parameters means additional setup is frequently required for compatibility with GCSs, and there are no guarantees that multiple vehicles running the same firmware will have the same channel-parameter mapping. This is a similar issue to the `MANUAL_CONTROL` buttons, so to minimise firmware complexity and maximise interoperability between a vehicle type and GCSs it's recommended to use targetted mavlink commands where possible.
+It's worth noting that the generality of RC channels control is a double-edged sword - it is incredibly versatile, and can be used to provide support for several arbitrary control axes, but the user-defined in-vehicle nature of the mapped parameters means additional setup is frequently required for compatibility with GCSs, and there are no guarantees that multiple vehicles running the same firmware will have the same channel-parameter mapping.
+This is a similar issue to the `MANUAL_CONTROL` buttons, so to minimise firmware complexity and maximise interoperability between a vehicle type and GCSs it's recommended to use targetted MAVLink commands where possible.
 
 ## Implementations
 
-The protocol has been implemented in various GCSs and vehicle firmwares. These implementations can be used in your own code within the terms of their software licenses.
+The protocol has been implemented in various GCSs and vehicle firmwares.
+These implementations can be used in your own code within the terms of their software licenses.
 
 ### Ground Control Stations
 
