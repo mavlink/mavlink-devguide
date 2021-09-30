@@ -1906,6 +1906,46 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL">
+   <a href="#MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL">MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_LOW">
+     <td>0</td>
+     <td>
+      <a href="#MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_LOW">MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_LOW</a>
+     </td>
+     <td>Switch Low.</td>
+    </tr>
+    <tr id="MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_MIDDLE">
+     <td>1</td>
+     <td>
+      <a href="#MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_MIDDLE">MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_MIDDLE</a>
+     </td>
+     <td>Switch Middle.</td>
+    </tr>
+    <tr id="MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_HIGH">
+     <td>2</td>
+     <td>
+      <a href="#MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_HIGH">MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_HIGH</a>
+     </td>
+     <td>Switch High.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="LED_CONTROL_PATTERN">
    <a href="#LED_CONTROL_PATTERN">LED_CONTROL_PATTERN</a>
   </h3>
@@ -2689,6 +2729,14 @@
      <td>
      </td>
     </tr>
+    <tr id="COPTER_MODE_AUTO_RTL">
+     <td>27</td>
+     <td>
+      <a href="#COPTER_MODE_AUTO_RTL">COPTER_MODE_AUTO_RTL</a>
+     </td>
+     <td>
+     </td>
+    </tr>
    </tbody>
   </table>
   <h3 id="SUB_MODE">
@@ -3230,6 +3278,125 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_DO_SEND_SCRIPT_MESSAGE">MAV_CMD_DO_SEND_SCRIPT_MESSAGE (<a href="#MAV_CMD_DO_SEND_SCRIPT_MESSAGE">217</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Pass instructions onto scripting, a script should be checking for a new command</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: ID</td>
+     <td>uint16 ID value to be passed to scripting</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>65535 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>2: param 1</td>
+     <td>float value to be passed to scripting</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3: param 2</td>
+     <td>float value to be passed to scripting</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4: param 3</td>
+     <td>float value to be passed to scripting</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_AUX_FUNCTION">MAV_CMD_DO_AUX_FUNCTION (<a href="#MAV_CMD_DO_AUX_FUNCTION">218</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Execute auxiliary function</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: AuxiliaryFunction</td>
+     <td>Auxiliary Function.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>2: SwitchPosition</td>
+     <td>Switch Level.</td>
+     <td>MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_NAV_ALTITUDE_WAIT">MAV_CMD_NAV_ALTITUDE_WAIT (<a href="#MAV_CMD_NAV_ALTITUDE_WAIT">83</a>
    )
   </h3>
@@ -3583,6 +3750,66 @@
      <td>3: Field Z</td>
      <td>Field strength Z.</td>
      <td>mgauss</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_SET_EKF_SOURCE_SET">MAV_CMD_SET_EKF_SOURCE_SET (<a href="#MAV_CMD_SET_EKF_SOURCE_SET">42007</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Set EKF sensor source set.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: SourceSetId</td>
+     <td>Source Set Id.</td>
+     <td>
+      <em>min:</em>1 <em>max:</em>3 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
@@ -7122,6 +7349,30 @@
      </td>
      <td>D component.</td>
     </tr>
+    <tr>
+     <td style="color:blue;">SRate<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>Slew rate.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">PDmod<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>float</td>
+     <td>
+      <a href="#">
+      </a>
+     </td>
+     <td>P/D oscillation modifier.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="DEEPSTALL">DEEPSTALL (<a href="#DEEPSTALL">
@@ -8878,6 +9129,153 @@
       </a>
      </td>
      <td>Maximum distance the sensor can measure.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="WATER_DEPTH">WATER_DEPTH (<a href="#WATER_DEPTH">
+    #11038
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Water depth</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>Timestamp (time since system boot)</td>
+    </tr>
+    <tr>
+     <td>id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Onboard ID of the sensor</td>
+    </tr>
+    <tr>
+     <td>healthy</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Sensor data healthy (0=unhealthy, 1=healthy)</td>
+    </tr>
+    <tr>
+     <td>lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude</td>
+    </tr>
+    <tr>
+     <td>lng</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude</td>
+    </tr>
+    <tr>
+     <td>alt</td>
+     <td>float</td>
+     <td>m</td>
+     <td>Altitude (MSL) of vehicle</td>
+    </tr>
+    <tr>
+     <td>roll</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Roll angle</td>
+    </tr>
+    <tr>
+     <td>pitch</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Pitch angle</td>
+    </tr>
+    <tr>
+     <td>yaw</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>Yaw angle</td>
+    </tr>
+    <tr>
+     <td>distance</td>
+     <td>float</td>
+     <td>m</td>
+     <td>Distance (uncorrected)</td>
+    </tr>
+    <tr>
+     <td>temperature</td>
+     <td>float</td>
+     <td>degC</td>
+     <td>Water temperature</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MCU_STATUS">MCU_STATUS (<a href="#MCU_STATUS">
+    #11039
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>The MCU status, giving MCU temperature and voltage. The min and max voltages are to allow for detecting power supply instability.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>MCU instance</td>
+    </tr>
+    <tr>
+     <td>MCU_temperature</td>
+     <td>int16_t</td>
+     <td>cdegC</td>
+     <td>MCU Internal temperature</td>
+    </tr>
+    <tr>
+     <td>MCU_voltage</td>
+     <td>uint16_t</td>
+     <td>mV</td>
+     <td>MCU voltage</td>
+    </tr>
+    <tr>
+     <td>MCU_voltage_min</td>
+     <td>uint16_t</td>
+     <td>mV</td>
+     <td>MCU voltage minimum</td>
+    </tr>
+    <tr>
+     <td>MCU_voltage_max</td>
+     <td>uint16_t</td>
+     <td>mV</td>
+     <td>MCU voltage maximum</td>
     </tr>
    </tbody>
   </table>

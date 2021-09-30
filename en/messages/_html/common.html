@@ -560,8 +560,21 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>
-  </p>
+   </a>Co-ordinate frames used by MAVLink. Not all frames are supported by all commands, messages, or vehicles.
+      
+      Global frames use the following naming conventions:
+      - `GLOBAL`: Global co-ordinate frame with WGS84 latitude/longitude and altitude positive over mean sea level (MSL) by default. 
+        The following modifiers may be used with `GLOBAL`:
+        - `RELATIVE_ALT`: Altitude is relative to the vehicle home position rather than MSL
+        - `TERRAIN_ALT`: Altitude is relative to ground level rather than MSL
+        - `INT`: Latitude/longitude (in degrees) are scaled by multiplying by 1E7  
+
+      Local frames use the following naming conventions:
+      - `LOCAL`: Origin of local frame is fixed relative to earth. Unless otherwise specified this origin is the origin of the vehicle position-estimator ("EKF").
+      - `BODY`: Origin of local frame travels with the vehicle. NOTE, `BODY` does NOT indicate alignment of frame axis with vehicle attitude.
+      - `OFFSET`: Deprecated synonym for `BODY` (origin travels with the vehicle). Not to be used for new frames.
+
+      Some deprecated frames do not follow these conventions (e.g. MAV_FRAME_BODY_NED and MAV_FRAME_BODY_OFFSET_NED).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -583,7 +596,7 @@
      <td>
       <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>
      </td>
-     <td>Local coordinate frame, Z-down (x: North, y: East, z: Down).</td>
+     <td>NED local tangent frame (x: North, y: East, z: Down) with origin fixed relative to earth.</td>
     </tr>
     <tr id="MAV_FRAME_MISSION">
      <td>2</td>
@@ -604,7 +617,7 @@
      <td>
       <a href="#MAV_FRAME_LOCAL_ENU">MAV_FRAME_LOCAL_ENU</a>
      </td>
-     <td>Local coordinate frame, Z-up (x: East, y: North, z: Up).</td>
+     <td>ENU local tangent frame (x: East, y: North, z: Up) with origin fixed relative to earth.</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_INT">
      <td>5</td>
@@ -625,7 +638,7 @@
      <td>
       <a href="#MAV_FRAME_LOCAL_OFFSET_NED">MAV_FRAME_LOCAL_OFFSET_NED</a>
      </td>
-     <td>Offset to the current local frame. Anything expressed in this frame should be added to the current local frame position.</td>
+     <td>NED local tangent frame (x: North, y: East, z: Down) with origin that travels with the vehicle.</td>
     </tr>
     <tr id="MAV_FRAME_BODY_NED">
      <td>8</td>
@@ -634,7 +647,7 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_BODY_FRD (2019-08).</p>
      </td>
-     <td>Setpoint in body NED frame. This makes sense if all position control is externalized - e.g. useful to command 2 m/s^2 acceleration to the right.</td>
+     <td>Same as MAV_FRAME_LOCAL_NED when used to represent position values. Same as MAV_FRAME_BODY_FRD when used with velocity/accelaration values.</td>
     </tr>
     <tr id="MAV_FRAME_BODY_OFFSET_NED">
      <td>9</td>
@@ -643,7 +656,7 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by MAV_FRAME_BODY_FRD (2019-08).</p>
      </td>
-     <td>Offset in body NED frame. This makes sense if adding setpoints to the current flight path, to avoid an obstacle - e.g. useful to command 2 m/s^2 acceleration to the east.</td>
+     <td>This is the same as MAV_FRAME_BODY_FRD.</td>
     </tr>
     <tr id="MAV_FRAME_GLOBAL_TERRAIN_ALT">
      <td>10</td>
@@ -664,7 +677,7 @@
      <td>
       <a href="#MAV_FRAME_BODY_FRD">MAV_FRAME_BODY_FRD</a>
      </td>
-     <td>Body fixed frame of reference, Z-down (x: Forward, y: Right, z: Down).</td>
+     <td>FRD local tangent frame (x: Forward, y: Right, z: Down) with origin that travels with vehicle. The forward axis is aligned to the front of the vehicle in the horizontal plane.</td>
     </tr>
     <tr id="MAV_FRAME_RESERVED_13">
      <td>13</td>
@@ -734,14 +747,14 @@
      <td>
       <a href="#MAV_FRAME_LOCAL_FRD">MAV_FRAME_LOCAL_FRD</a>
      </td>
-     <td>Forward, Right, Down coordinate frame. This is a local frame with Z-down and arbitrary F/R alignment (i.e. not aligned with NED/earth frame).</td>
+     <td>FRD local tangent frame (x: Forward, y: Right, z: Down) with origin fixed relative to earth. The forward axis is aligned to the front of the vehicle in the horizontal plane.</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_FLU">
      <td>21</td>
      <td>
       <a href="#MAV_FRAME_LOCAL_FLU">MAV_FRAME_LOCAL_FLU</a>
      </td>
-     <td>Forward, Left, Up coordinate frame. This is a local frame with Z-up and arbitrary F/L alignment (i.e. not aligned with ENU/earth frame).</td>
+     <td>FLU local tangent frame (x: Forward, y: Left, z: Up) with origin fixed relative to earth. The forward axis is aligned to the front of the vehicle in the horizontal plane.</td>
     </tr>
    </tbody>
   </table>
@@ -13675,16 +13688,16 @@
       <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>3</td>
-     <td>WIP: 0: Do nothing for camera, 1: Reboot onboard camera, 2: Shutdown onboard camera, 3: Reboot onboard camera and keep it in the bootloader until upgraded</td>
+     <td>3: Component action</td>
+     <td>0: Do nothing for component, 1: Reboot component, 2: Shutdown component, 3: Reboot component and keep it in the bootloader until upgraded</td>
      <td>
-     </td>
+      <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>4</td>
-     <td>WIP: 0: Do nothing for mount (e.g. gimbal), 1: Reboot mount, 2: Shutdown mount, 3: Reboot mount and keep it in the bootloader until upgraded</td>
+     <td>4: Component ID</td>
+     <td>MAVLink Component ID targeted in param3 (0 for all components).</td>
      <td>
-     </td>
+      <em>min:</em>0 <em>max:</em>255 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>5</td>
@@ -36131,7 +36144,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Authentication message. The Authentication Message defines a field that can provide a means of authenticity for the identity of the UAS (Unmanned Aircraft System). The Authentication message can have two different formats. Five data pages are supported. For data page 0, the fields PageCount, Length and TimeStamp are present and AuthData is only 17 bytes. For data page 1 through 4, PageCount, Length and TimeStamp are not present and the size of AuthData is 23 bytes.</p>
+   </strong>Data for filling the OpenDroneID Authentication message. The Authentication Message defines a field that can provide a means of authenticity for the identity of the UAS (Unmanned Aircraft System). The Authentication message can have two different formats. Five data pages are supported. For data page 0, the fields PageCount, Length and TimeStamp are present and AuthData is only 17 bytes. For data page 1 through 15, PageCount, Length and TimeStamp are not present and the size of AuthData is 23 bytes.</p>
   <table class="sortable">
    <thead>
     <tr>
