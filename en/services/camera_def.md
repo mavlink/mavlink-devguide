@@ -123,7 +123,7 @@ CAM_VIDISO | ISO (Video)
 CAM_PHOTOISO | ISO (Photo)
 CAM_METERING | Metering Mode
 CAM_SHUTTERSPD | Shutter speed
-CAM_VID_SHUTSPD | Shutter speed (Video)
+CAM_VIDSHUTSPD | Shutter speed (Video)
 CAM_PHOTOSHUTSPD | Shutter speed (Photo)
 CAM_VIDRES | Video Resolution (Video)
 CAM_WBMODE | White Balance Mode
