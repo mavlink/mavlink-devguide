@@ -1890,6 +1890,52 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="STORAGE_USAGE_FLAG">
+   <a href="#STORAGE_USAGE_FLAG">STORAGE_USAGE_FLAG</a>
+  </h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags to indicate usage for a particular storage (see `STORAGE_INFORMATION.storage_usage` and `MAV_CMD_SET_STORAGE_USAGE`).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="STORAGE_USAGE_FLAG_SET">
+     <td>1</td>
+     <td>
+      <a href="#STORAGE_USAGE_FLAG_SET">STORAGE_USAGE_FLAG_SET</a>
+     </td>
+     <td>Always set to 1 (indicates `STORAGE_INFORMATION.storage_usage` is supported).</td>
+    </tr>
+    <tr id="STORAGE_USAGE_FLAG_PHOTO">
+     <td>2</td>
+     <td>
+      <a href="#STORAGE_USAGE_FLAG_PHOTO">STORAGE_USAGE_FLAG_PHOTO</a>
+     </td>
+     <td>Storage for saving photos.</td>
+    </tr>
+    <tr id="STORAGE_USAGE_FLAG_VIDEO">
+     <td>4</td>
+     <td>
+      <a href="#STORAGE_USAGE_FLAG_VIDEO">STORAGE_USAGE_FLAG_VIDEO</a>
+     </td>
+     <td>Storage for saving videos.</td>
+    </tr>
+    <tr id="STORAGE_USAGE_FLAG_LOGS">
+     <td>8</td>
+     <td>
+      <a href="#STORAGE_USAGE_FLAG_LOGS">STORAGE_USAGE_FLAG_LOGS</a>
+     </td>
+     <td>Storage for saving logs.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="ORBIT_YAW_BEHAVIOUR">
    <a href="#ORBIT_YAW_BEHAVIOUR">ORBIT_YAW_BEHAVIOUR</a>
   </h3>
@@ -14824,6 +14870,39 @@
      </td>
      <td>
      </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_SET_STORAGE_USAGE">MAV_CMD_SET_STORAGE_USAGE (<a href="#MAV_CMD_SET_STORAGE_USAGE">533</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Set that a particular storage is the preferred location for saving photos, videos, and/or other media (e.g. to set that an SD card is used for storing videos).
+          There can only be one preferred save location for each particular media type: setting a media usage flag will clear/reset that same flag if set on any other storage.
+          If no flag is set the system should use its default storage.
+          A target system can choose to always use default storage, in which case it should ACK the command with MAV_RESULT_UNSUPPORTED.
+          A target system can choose to not allow a particular storage to be set as preferred storage, in which case it should ACK the command with MAV_RESULT_DENIED.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Storage ID</td>
+     <td>Storage ID (1 for first, 2 for second, etc.)</td>
+     <td>
+      <em>min:</em>0 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>2: Usage</td>
+     <td>Usage flags</td>
+     <td>STORAGE_USAGE_FLAG</td>
     </tr>
    </tbody>
   </table>
@@ -30560,6 +30639,22 @@
       </a>
      </td>
      <td>Textual storage name to be used in UI (microSD 1, Internal Memory, etc.) This is a NULL terminated string. If it is exactly 32 characters long, add a terminating NULL. If this string is empty, the generic type is shown to the user.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">storage_usage<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#STORAGE_USAGE_FLAG">STORAGE_USAGE_FLAG</a>
+     </td>
+     <td>Flags indicating whether this instance is preferred storage for photos, videos, etc.
+        Note: Implementations should initially set the flags on the system-default storage id used for saving media (if possible/supported).
+        This setting can then be overridden using `MAV_CMD_SET_STORAGE_USAGE`.
+        If the media usage flags are not set, a GCS may assume storage ID 1 is the default storage for all media types.</td>
     </tr>
    </tbody>
   </table>
