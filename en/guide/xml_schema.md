@@ -221,8 +221,8 @@ The main message tags/fields are:
 
     Arrays represent multiple fields in just record.
     The following notation is used to indicate the `invalid` value for elements of the array:
-    - `invalid="value"`: Set the _first element_ of the array to `value` indicate that the whole array is invalid.
-    - `invalid="[value]"`: Set any element of the array to `value` to indicate that the particular element is invalid
+    - `invalid="[value]"`: Set any element of the array to `value` to indicate that the element is invalid.
+    - `invalid="[value,]"`: Set the _first element_ of the array to `value` indicate that the whole array is invalid.
     - `invalid="[value1,,,value4,]"`: Set the invalid value for each of the elements separately in a comma separated list.
        Elements without invalid values are left empty and a comma at end of the list indicates that all subsequent elements have no invalid value.
        So the example above provides invalid values for elements 1 and 4, and indicates that elements 2, 3 and any elements >4 have no invalid value.
