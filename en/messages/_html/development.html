@@ -784,5 +784,95 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="GROUP_START">GROUP_START (<a href="#GROUP_START">
+    #414
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Emitted during mission execution when control reaches MAV_CMD_GROUP_START.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>group_id</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Mission-unique group id (from MAV_CMD_GROUP_START).</td>
+    </tr>
+    <tr>
+     <td>mission_checksum</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>CRC32 checksum of current plan for MAV_MISSION_TYPE_ALL. As defined in MISSION_CHECKSUM message.</td>
+    </tr>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot).
+        The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GROUP_END">GROUP_END (<a href="#GROUP_END">
+    #415
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Emitted during mission execution when control reaches MAV_CMD_GROUP_END.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>group_id</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Mission-unique group id (from MAV_CMD_GROUP_END).</td>
+    </tr>
+    <tr>
+     <td>mission_checksum</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>CRC32 checksum of current plan for MAV_MISSION_TYPE_ALL. As defined in MISSION_CHECKSUM message.</td>
+    </tr>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot).
+        The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+    </tr>
+   </tbody>
+  </table>
  </body>
 </html>
