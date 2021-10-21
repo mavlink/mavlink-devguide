@@ -8692,6 +8692,248 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="HIL_SENSOR_UPDATED_FLAGS">HIL_SENSOR_UPDATED_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags in the <a href="#HIL_SENSOR">HIL_SENSOR</a> message indicate which fields have updated since the last message</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="HIL_SENSOR_UPDATED_NONE">
+     <td>0</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_NONE">HIL_SENSOR_UPDATED_NONE</a>
+     </td>
+     <td>None of the fields in <a href="#HIL_SENSOR">HIL_SENSOR</a> have been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_XACC">
+     <td>1</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_XACC">HIL_SENSOR_UPDATED_XACC</a>
+     </td>
+     <td>The value in the xacc field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_YACC">
+     <td>2</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_YACC">HIL_SENSOR_UPDATED_YACC</a>
+     </td>
+     <td>The value in the yacc field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_ZACC">
+     <td>4</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_ZACC">HIL_SENSOR_UPDATED_ZACC</a>
+     </td>
+     <td>The value in the zacc field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_XGYRO">
+     <td>8</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_XGYRO">HIL_SENSOR_UPDATED_XGYRO</a>
+     </td>
+     <td>The value in the xgyro field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_YGYRO">
+     <td>16</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_YGYRO">HIL_SENSOR_UPDATED_YGYRO</a>
+     </td>
+     <td>The value in the ygyro field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_ZGYRO">
+     <td>32</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_ZGYRO">HIL_SENSOR_UPDATED_ZGYRO</a>
+     </td>
+     <td>The value in the zgyro field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_XMAG">
+     <td>64</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_XMAG">HIL_SENSOR_UPDATED_XMAG</a>
+     </td>
+     <td>The value in the xmag field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_YMAG">
+     <td>128</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_YMAG">HIL_SENSOR_UPDATED_YMAG</a>
+     </td>
+     <td>The value in the ymag field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_ZMAG">
+     <td>256</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_ZMAG">HIL_SENSOR_UPDATED_ZMAG</a>
+     </td>
+     <td>The value in the zmag field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_ABS_PRESSURE">
+     <td>512</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_ABS_PRESSURE">HIL_SENSOR_UPDATED_ABS_PRESSURE</a>
+     </td>
+     <td>The value in the abs_pressure field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_DIFF_PRESSURE">
+     <td>1024</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_DIFF_PRESSURE">HIL_SENSOR_UPDATED_DIFF_PRESSURE</a>
+     </td>
+     <td>The value in the diff_pressure field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_PRESSURE_ALT">
+     <td>2048</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_PRESSURE_ALT">HIL_SENSOR_UPDATED_PRESSURE_ALT</a>
+     </td>
+     <td>The value in the pressure_alt field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_TEMPERATURE">
+     <td>4096</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_TEMPERATURE">HIL_SENSOR_UPDATED_TEMPERATURE</a>
+     </td>
+     <td>The value in the temperature field has been updated</td>
+    </tr>
+    <tr id="HIL_SENSOR_UPDATED_RESET">
+     <td>2147483648</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_RESET">HIL_SENSOR_UPDATED_RESET</a>
+     </td>
+     <td>Full reset of attitude/position/velocities/etc was performed in sim (Bit 31).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="HIGHRES_IMU_UPDATED_FLAGS">HIGHRES_IMU_UPDATED_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags in the <a href="#HIGHRES_IMU">HIGHRES_IMU</a> message indicate which fields have updated since the last message</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="HIGHRES_IMU_UPDATED_NONE">
+     <td>0</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_NONE">HIGHRES_IMU_UPDATED_NONE</a>
+     </td>
+     <td>None of the fields in <a href="#HIGHRES_IMU">HIGHRES_IMU</a> have been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_XACC">
+     <td>1</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_XACC">HIGHRES_IMU_UPDATED_XACC</a>
+     </td>
+     <td>The value in the xacc field has been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_YACC">
+     <td>2</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_YACC">HIGHRES_IMU_UPDATED_YACC</a>
+     </td>
+     <td>The value in the yacc field has been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_ZACC">
+     <td>4</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_ZACC">HIGHRES_IMU_UPDATED_ZACC</a>
+     </td>
+     <td>The value in the zacc field has been updated since</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_XGYRO">
+     <td>8</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_XGYRO">HIGHRES_IMU_UPDATED_XGYRO</a>
+     </td>
+     <td>The value in the xgyro field has been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_YGYRO">
+     <td>16</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_YGYRO">HIGHRES_IMU_UPDATED_YGYRO</a>
+     </td>
+     <td>The value in the ygyro field has been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_ZGYRO">
+     <td>32</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_ZGYRO">HIGHRES_IMU_UPDATED_ZGYRO</a>
+     </td>
+     <td>The value in the zgyro field has been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_XMAG">
+     <td>64</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_XMAG">HIGHRES_IMU_UPDATED_XMAG</a>
+     </td>
+     <td>The value in the xmag field has been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_YMAG">
+     <td>128</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_YMAG">HIGHRES_IMU_UPDATED_YMAG</a>
+     </td>
+     <td>The value in the ymag field has been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_ZMAG">
+     <td>256</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_ZMAG">HIGHRES_IMU_UPDATED_ZMAG</a>
+     </td>
+     <td>The value in the zmag field has been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_ABS_PRESSURE">
+     <td>512</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_ABS_PRESSURE">HIGHRES_IMU_UPDATED_ABS_PRESSURE</a>
+     </td>
+     <td>The value in the abs_pressure field has been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_DIFF_PRESSURE">
+     <td>1024</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_DIFF_PRESSURE">HIGHRES_IMU_UPDATED_DIFF_PRESSURE</a>
+     </td>
+     <td>The value in the diff_pressure field has been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_PRESSURE_ALT">
+     <td>2048</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_PRESSURE_ALT">HIGHRES_IMU_UPDATED_PRESSURE_ALT</a>
+     </td>
+     <td>The value in the pressure_alt field has been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_TEMPERATURE">
+     <td>4096</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_TEMPERATURE">HIGHRES_IMU_UPDATED_TEMPERATURE</a>
+     </td>
+     <td>The value in the temperature field has been updated</td>
+    </tr>
+    <tr id="HIGHRES_IMU_UPDATED_ALL">
+     <td>65535</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_ALL">HIGHRES_IMU_UPDATED_ALL</a>
+     </td>
+     <td>All fields in <a href="#HIGHRES_IMU">HIGHRES_IMU</a> have been updated.</td>
+    </tr>
+   </tbody>
+  </table>
   <a id="MAV_CMD">
   </a>
   <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
@@ -23400,6 +23642,7 @@
      <th>Field Name</th>
      <th>Type</th>
      <th>Units</th>
+     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -23408,77 +23651,103 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
+     <td>
+     </td>
      <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>xacc</td>
      <td>float</td>
      <td>m/s/s</td>
+     <td>
+     </td>
      <td>X acceleration</td>
     </tr>
     <tr>
      <td>yacc</td>
      <td>float</td>
      <td>m/s/s</td>
+     <td>
+     </td>
      <td>Y acceleration</td>
     </tr>
     <tr>
      <td>zacc</td>
      <td>float</td>
      <td>m/s/s</td>
+     <td>
+     </td>
      <td>Z acceleration</td>
     </tr>
     <tr>
      <td>xgyro</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+     </td>
      <td>Angular speed around X axis</td>
     </tr>
     <tr>
      <td>ygyro</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+     </td>
      <td>Angular speed around Y axis</td>
     </tr>
     <tr>
      <td>zgyro</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+     </td>
      <td>Angular speed around Z axis</td>
     </tr>
     <tr>
      <td>xmag</td>
      <td>float</td>
      <td>gauss</td>
+     <td>
+     </td>
      <td>X Magnetic field</td>
     </tr>
     <tr>
      <td>ymag</td>
      <td>float</td>
      <td>gauss</td>
+     <td>
+     </td>
      <td>Y Magnetic field</td>
     </tr>
     <tr>
      <td>zmag</td>
      <td>float</td>
      <td>gauss</td>
+     <td>
+     </td>
      <td>Z Magnetic field</td>
     </tr>
     <tr>
      <td>abs_pressure</td>
      <td>float</td>
      <td>hPa</td>
+     <td>
+     </td>
      <td>Absolute pressure</td>
     </tr>
     <tr>
      <td>diff_pressure</td>
      <td>float</td>
      <td>hPa</td>
+     <td>
+     </td>
      <td>Differential pressure</td>
     </tr>
     <tr>
      <td>pressure_alt</td>
      <td>float</td>
+     <td>
+     </td>
      <td>
      </td>
      <td>Altitude calculated from pressure</td>
@@ -23487,6 +23756,8 @@
      <td>temperature</td>
      <td>float</td>
      <td>degC</td>
+     <td>
+     </td>
      <td>Temperature</td>
     </tr>
     <tr>
@@ -23494,7 +23765,10 @@
      <td>uint16_t</td>
      <td>
      </td>
-     <td>Bitmap for fields that have updated since last message, bit 0 = xacc, bit 12: temperature</td>
+     <td>
+      <a href="#HIGHRES_IMU_UPDATED_FLAGS">HIGHRES_IMU_UPDATED_FLAGS</a>
+     </td>
+     <td>Bitmap for fields that have updated since last message</td>
     </tr>
     <tr>
      <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -23502,6 +23776,8 @@
       </a>
      </td>
      <td>uint8_t</td>
+     <td>
+     </td>
      <td>
      </td>
      <td>Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0)</td>
@@ -23618,6 +23894,7 @@
      <th>Field Name</th>
      <th>Type</th>
      <th>Units</th>
+     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -23626,77 +23903,103 @@
      <td>time_usec</td>
      <td>uint64_t</td>
      <td>us</td>
+     <td>
+     </td>
      <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
     <tr>
      <td>xacc</td>
      <td>float</td>
      <td>m/s/s</td>
+     <td>
+     </td>
      <td>X acceleration</td>
     </tr>
     <tr>
      <td>yacc</td>
      <td>float</td>
      <td>m/s/s</td>
+     <td>
+     </td>
      <td>Y acceleration</td>
     </tr>
     <tr>
      <td>zacc</td>
      <td>float</td>
      <td>m/s/s</td>
+     <td>
+     </td>
      <td>Z acceleration</td>
     </tr>
     <tr>
      <td>xgyro</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+     </td>
      <td>Angular speed around X axis in body frame</td>
     </tr>
     <tr>
      <td>ygyro</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+     </td>
      <td>Angular speed around Y axis in body frame</td>
     </tr>
     <tr>
      <td>zgyro</td>
      <td>float</td>
      <td>rad/s</td>
+     <td>
+     </td>
      <td>Angular speed around Z axis in body frame</td>
     </tr>
     <tr>
      <td>xmag</td>
      <td>float</td>
      <td>gauss</td>
+     <td>
+     </td>
      <td>X Magnetic field</td>
     </tr>
     <tr>
      <td>ymag</td>
      <td>float</td>
      <td>gauss</td>
+     <td>
+     </td>
      <td>Y Magnetic field</td>
     </tr>
     <tr>
      <td>zmag</td>
      <td>float</td>
      <td>gauss</td>
+     <td>
+     </td>
      <td>Z Magnetic field</td>
     </tr>
     <tr>
      <td>abs_pressure</td>
      <td>float</td>
      <td>hPa</td>
+     <td>
+     </td>
      <td>Absolute pressure</td>
     </tr>
     <tr>
      <td>diff_pressure</td>
      <td>float</td>
      <td>hPa</td>
+     <td>
+     </td>
      <td>Differential pressure (airspeed)</td>
     </tr>
     <tr>
      <td>pressure_alt</td>
      <td>float</td>
+     <td>
+     </td>
      <td>
      </td>
      <td>Altitude calculated from pressure</td>
@@ -23705,6 +24008,8 @@
      <td>temperature</td>
      <td>float</td>
      <td>degC</td>
+     <td>
+     </td>
      <td>Temperature</td>
     </tr>
     <tr>
@@ -23712,7 +24017,10 @@
      <td>uint32_t</td>
      <td>
      </td>
-     <td>Bitmap for fields that have updated since last message, bit 0 = xacc, bit 12: temperature, bit 31: full reset of attitude/position/velocities/etc was performed in sim.</td>
+     <td>
+      <a href="#HIL_SENSOR_UPDATED_FLAGS">HIL_SENSOR_UPDATED_FLAGS</a>
+     </td>
+     <td>Bitmap for fields that have updated since last message</td>
     </tr>
     <tr>
      <td style="color:blue;">id<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -23720,6 +24028,8 @@
       </a>
      </td>
      <td>uint8_t</td>
+     <td>
+     </td>
      <td>
      </td>
      <td>Sensor ID (zero indexed). Used for multiple sensor inputs</td>
