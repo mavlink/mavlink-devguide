@@ -161,19 +161,22 @@ For example,the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY
 
 ```xml
     <message id="147" name="BATTERY_STATUS">
-      <description>Battery information</description>
-      <field type="uint8_t" name="id">Battery ID</field>
+      <description>Battery information. Updates GCS with flight controller battery status. Smart batteries also use this message, but may additionally send SMART_BATTERY_INFO.</description>
+      <field type="uint8_t" name="id" instance="true">Battery ID</field>
       <field type="uint8_t" name="battery_function" enum="MAV_BATTERY_FUNCTION">Function of the battery</field>
       <field type="uint8_t" name="type" enum="MAV_BATTERY_TYPE">Type (chemistry) of the battery</field>
-      <field type="int16_t" name="temperature" units="cdegC">Temperature of the battery. INT16_MAX for unknown temperature.</field>
-      <field type="uint16_t[10]" name="voltages" units="mV">Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value.</field>
-      <field type="int16_t" name="current_battery" units="cA">Battery current, -1: autopilot does not measure the current</field>
-      <field type="int32_t" name="current_consumed" units="mAh">Consumed charge, -1: autopilot does not provide consumption estimate</field>
-      <field type="int32_t" name="energy_consumed" units="hJ">Consumed energy, -1: autopilot does not provide energy consumption estimate</field>
-      <field type="int8_t" name="battery_remaining" units="%">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</field>
+      <field type="int16_t" name="temperature" units="cdegC" invalid="INT16_MAX">Temperature of the battery. INT16_MAX for unknown temperature.</field>
+      <field type="uint16_t[10]" name="voltages" units="mV" invalid="[UINT16_MAX]">Battery voltage of cells 1 to 10 (see voltages_ext for cells 11-14). Cells in this field above the valid cell count for this battery should have the UINT16_MAX value. If individual cell voltages are unknown or not measured for this battery, then the overall battery voltage should be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining voltage. This can be extended to multiple cells if the total voltage is greater than 2 * (UINT16_MAX - 1).</field>
+      <field type="int16_t" name="current_battery" units="cA" invalid="-1">Battery current, -1: autopilot does not measure the current</field>
+      <field type="int32_t" name="current_consumed" units="mAh" invalid="-1">Consumed charge, -1: autopilot does not provide consumption estimate</field>
+      <field type="int32_t" name="energy_consumed" units="hJ" invalid="-1">Consumed energy, -1: autopilot does not provide energy consumption estimate</field>
+      <field type="int8_t" name="battery_remaining" units="%" invalid="-1">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</field>
       <extensions/>
-      <field type="int32_t" name="time_remaining" units="s">Remaining battery time, 0: autopilot does not provide remaining battery time estimate</field>
+      <field type="int32_t" name="time_remaining" units="s" invalid="0">Remaining battery time, 0: autopilot does not provide remaining battery time estimate</field>
       <field type="uint8_t" name="charge_state" enum="MAV_BATTERY_CHARGE_STATE">State for extent of discharge, provided by autopilot for warning or external reactions</field>
+      <field type="uint16_t[4]" name="voltages_ext" units="mV" invalid="[0]">Battery voltages for cells 11 to 14. Cells above the valid cell count for this battery should have a value of 0, where zero indicates not supported (note, this is different than for the voltages field and allows empty byte truncation). If the measured value is 0 then 1 should be sent instead.</field>
+      <field type="uint8_t" name="mode" enum="MAV_BATTERY_MODE">Battery mode. Default (0) is that battery mode reporting is not supported or battery is in normal-use mode.</field>
+      <field type="uint32_t" name="fault_bitmask" display="bitmask" enum="MAV_BATTERY_FAULT">Fault/health indications. These should be set when charge_state is MAV_BATTERY_CHARGE_STATE_FAILED or MAV_BATTERY_CHARGE_STATE_UNHEALTHY (if not, fault reporting is not supported).</field>
     </message>
 ```
 
@@ -189,7 +192,8 @@ The main message tags/fields are:
       - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1. > **Note** IDs are precious in MAVLink 1!
    - `name`: The name attribute provides a human readable form for the message (ie "BATTERY_STATUS"). It is used for naming helper functions in generated libraries, but is not sent over the wire.
 - `description`: Human readable description of message, shown in user interfaces and in code comments. This should contain all information (and hyperlinks) to fully understand the message.
-- `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire). 
+- `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire).
+   
    - `type`: Similar to a field in a C `struct` - the size of the data required to store/represent the data type. 
       - Fields can be signed/unsigned integers of size 8, 16, 23, 64 bits (`{u)int8_t`, `(u)int16_t`, `(u)int32_t`, `(u)int64_t`), single/double precision IEEE754 floating point numbers. They can also be arrays of the other types - e.g. `uint16_t[10]`. 
    - `name`: Name of the field (used in code).
@@ -198,8 +202,22 @@ The main message tags/fields are:
    - `display` (optional): This should be set as `display="bitmask"` for bitmask fields (hint to ground station that enum values must be displayed as checkboxes).
    - `print_format` (optional): TBD.
    - `default` (optional): TBD.
-   - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`. > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series. 
+   - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`.
+      
+      > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
+   
+   - `invalid`: The value that will be sent in the field if the sender is unable to supply valid information (the recipient should ignore the field if it has this value). For example, `BATTERY_STATUS.current_battery` has an invalid value of `-1`, so a battery that does not measure supplied *current* should set `BATTERY_STATUS.current_battery` to `-1`.
+      
+      Where possible the invalid value should be selected to outside the expected/valid range of the field (`0` is preferred if it not an acceptable value for the field). For integers we usually select the largest possible value (i.e. `UINT16_MAX`, `INT16_MAX`, `UINT8_MAX`, `UINT8_MAX`). For floats we usually select `invalid="NaN"`.
+      
+      Arrays represent multiple fields in just record. The following notation is used to indicate the `invalid` value for elements of the array:
+      
+      - `invalid="[value]"`: Set any element of the array to `value` to indicate that the element is invalid.
+      - `invalid="[value,]"`: Set the *first element* of the array to `value` indicate that the whole array is invalid.
+      - `invalid="[value1,,,value4,]"`: Set the invalid value for each of the elements separately in a comma separated list. Elements without invalid values are left empty and a comma at end of the list indicates that all subsequent elements have no invalid value. So the example above provides invalid values for elements 1 and 4, and indicates that elements 2, 3 and any elements >4 have no invalid value.
+
 - [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the message is deprecated or "work in progress".
+
 - `extensions` (optional): This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only. 
    - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2. 
 
