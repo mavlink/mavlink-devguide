@@ -363,6 +363,70 @@
   </table>
   <p>
   </p>
+  <h3 id="MAV_CMD_DO_UPGRADE">MAV_CMD_DO_UPGRADE (<a href="#MAV_CMD_DO_UPGRADE">247</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request a target system to start an upgrade of one (or all) of its components.
+          For example, the command might be sent to a companion computer to cause it to upgrade a connected flight controller.
+          The system doing the upgrade will report progress using the normal command protocol sequence for a long running operation.
+          Command protocol information: https://mavlink.io/en/services/command.html.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Component ID</td>
+     <td>Component id of the component to be upgraded. If set to 0, all components should be upgraded.</td>
+     <td>
+      <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
+     </td>
+    </tr>
+    <tr>
+     <td>2: Reboot</td>
+     <td>0: Do not reboot component after the action is executed, 1: Reboot component after the action is executed.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>WIP: upgrade progress report rate (can be used for more granular control).</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_GROUP_START">MAV_CMD_GROUP_START (<a href="#MAV_CMD_GROUP_START">301</a>
    )
   </h3>
