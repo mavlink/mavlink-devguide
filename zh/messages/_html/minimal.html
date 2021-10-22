@@ -3,9 +3,7 @@
   <h2>MAVLink 协议版本</h2>
   <p>当前的 MAVLink 版本是 2.3。 二级版本号（点后）的范围是 1-255 。</p>
   <h2 id="enums">MAVLink 枚举类型</h2>
-  <h3 id="MAV_AUTOPILOT">
-   <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
-  </h3>
+  <h3 id="MAV_AUTOPILOT">MAV_AUTOPILOT</h3>
   <p>
    <a href="#enums">
     [Enum]
@@ -159,11 +157,16 @@
      </td>
      <td>AirRails - http://uaventure.com</td>
     </tr>
+    <tr id="MAV_AUTOPILOT_REFLEX">
+     <td>20</td>
+     <td>
+      <a href="#MAV_AUTOPILOT_REFLEX">MAV_AUTOPILOT_REFLEX</a>
+     </td>
+     <td>Fusion Reflex - https://fusion.engineering</td>
+    </tr>
    </tbody>
   </table>
-  <h3 id="MAV_TYPE">
-   <a href="#MAV_TYPE">MAV_TYPE</a>
-  </h3>
+  <h3 id="MAV_TYPE">MAV_TYPE</h3>
   <p>
    <a href="#enums">
     [Enum]
@@ -445,9 +448,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_MODE_FLAG">
-   <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
-  </h3>
+  <h3 id="MAV_MODE_FLAG">MAV_MODE_FLAG</h3>
   <p>
    <a href="#enums">
     [Enum]
@@ -466,7 +467,7 @@
      <td>
       <a href="#MAV_MODE_FLAG_SAFETY_ARMED">MAV_MODE_FLAG_SAFETY_ARMED</a>
      </td>
-     <td>0b10000000 MAV safety set to armed. Motors are enabled / running / can start. Ready to fly. Additional note: this flag is to be ignore when sent in the command MAV_CMD_DO_SET_MODE and MAV_CMD_COMPONENT_ARM_DISARM shall be used instead. The flag can still be used to report the armed state.</td>
+     <td>0b10000000 MAV safety set to armed. Motors are enabled / running / can start. Ready to fly. Additional note: this flag is to be ignore when sent in the command <a href="#MAV_CMD_DO_SET_MODE">MAV_CMD_DO_SET_MODE</a> and <a href="#MAV_CMD_COMPONENT_ARM_DISARM">MAV_CMD_COMPONENT_ARM_DISARM</a> shall be used instead. The flag can still be used to report the armed state.</td>
     </tr>
     <tr id="MAV_MODE_FLAG_MANUAL_INPUT_ENABLED">
      <td>64</td>
@@ -519,9 +520,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_MODE_FLAG_DECODE_POSITION">
-   <a href="#MAV_MODE_FLAG_DECODE_POSITION">MAV_MODE_FLAG_DECODE_POSITION</a>
-  </h3>
+  <h3 id="MAV_MODE_FLAG_DECODE_POSITION">MAV_MODE_FLAG_DECODE_POSITION</h3>
   <p>
    <a href="#enums">
     [Enum]
@@ -593,9 +592,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_STATE">
-   <a href="#MAV_STATE">MAV_STATE</a>
-  </h3>
+  <h3 id="MAV_STATE">MAV_STATE</h3>
   <p>
    <a href="#enums">
     [Enum]
@@ -675,14 +672,12 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_COMPONENT">
-   <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
-  </h3>
+  <h3 id="MAV_COMPONENT">MAV_COMPONENT</h3>
   <p>
    <a href="#enums">
     [Enum]
    </a>Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.).
-      Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The MAV_COMP_ID_ALL value is used to indicate messages that must be processed by all components.
+      Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The <a href="#MAV_COMP_ID_ALL">MAV_COMP_ID_ALL</a> value is used to indicate messages that must be processed by all components.
       When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded.</p>
   <table class="sortable">
    <thead>
@@ -1013,7 +1008,7 @@
      <td>
       <a href="#MAV_COMP_ID_TELEMETRY_RADIO">MAV_COMP_ID_TELEMETRY_RADIO</a>
      </td>
-     <td>Telemetry radio (e.g. SiK radio, or other component that emits RADIO_STATUS messages).</td>
+     <td>Telemetry radio (e.g. SiK radio, or other component that emits <a href="#RADIO_STATUS">RADIO_STATUS</a> messages).</td>
     </tr>
     <tr id="MAV_COMP_ID_USER45">
      <td>69</td>
@@ -1412,10 +1407,10 @@
      <td>
       <a href="#MAV_COMP_ID_QX1_GIMBAL">MAV_COMP_ID_QX1_GIMBAL</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_COMP_ID_GIMBAL (2018-11).
+       <strong>DEPRECATED:</strong> Replaced by <a href="#MAV_COMP_ID_GIMBAL">MAV_COMP_ID_GIMBAL</a> (2018-11).
 
 
-  All gimbals should use MAV_COMP_ID_GIMBAL.</p>
+  All gimbals should use <a href="#MAV_COMP_ID_GIMBAL">MAV_COMP_ID_GIMBAL</a>.</p>
      </td>
      <td>Gimbal ID for QX1.</td>
     </tr>
@@ -1627,7 +1622,7 @@
      <td>
       <a href="#MAV_COMP_ID_SYSTEM_CONTROL">MAV_COMP_ID_SYSTEM_CONTROL</a>
       <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by MAV_COMP_ID_ALL (2018-11).
+       <strong>DEPRECATED:</strong> Replaced by <a href="#MAV_COMP_ID_ALL">MAV_COMP_ID_ALL</a> (2018-11).
 
 
   System control does not require a separate component ID.</p>
@@ -1678,7 +1673,7 @@
      <td>
       <a href="#MAV_AUTOPILOT">MAV_AUTOPILOT</a>
      </td>
-     <td>Autopilot type / class. Use MAV_AUTOPILOT_INVALID for components that are not flight controllers.</td>
+     <td>Autopilot type / class. Use <a href="#MAV_AUTOPILOT_INVALID">MAV_AUTOPILOT_INVALID</a> for components that are not flight controllers.</td>
     </tr>
     <tr>
      <td>base_mode</td>
@@ -1692,8 +1687,6 @@
      <td>custom_mode</td>
      <td>uint32_t</td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>A bitfield for use for autopilot-specific flags</td>
     </tr>
@@ -1709,8 +1702,6 @@
      <td>mavlink_version</td>
      <td>uint8_t_mavlink_version</td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>MAVLink version, not writable by user, gets added by protocol because of magic data type: uint8_t_mavlink_version</td>
     </tr>
@@ -1729,7 +1720,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Version and capability of protocol version. This message can be requested with MAV_CMD_REQUEST_MESSAGE and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to a request for PROTOCOL_VERSION to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.</p>
+   </strong>Version and capability of protocol version. This message can be requested with <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to a request for <a href="#PROTOCOL_VERSION">PROTOCOL_VERSION</a> to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.</p>
   <table class="sortable">
    <thead>
     <tr>

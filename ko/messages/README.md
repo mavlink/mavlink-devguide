@@ -14,7 +14,7 @@ The following XML definition files are considered standard/core (i.e. not dialec
 * [standard.xml](standard.md) - the standard set of entities that are implemented by almost all flight stacks (at least 2, in a compatible way). This `includes` [minimal.xml](minimal.md).
 * [common.xml](../messages/common.md) - the set of entitites that have been implemented in at least one core flight stack. This `includes` [standard.xml](minimal.md)
 
-Further, [all.xml](all.md) is a *special case*. Where includes all dialect and standard files, where possible, and can be used to verify that there are no ID clashes (and can potentially be used by GCS to communicate with any core dialect).
+Further, [all.xml](all.md) is a *special case*. It includes almost all other XML definition files, and can be used to verify that there are no ID clashes (and can potentially be used by GCS to communicate with any core dialect).
 
 > **Note** We are still working towards moving the truly standard entities from **common.xml** to **standard.xml** Currently you should include [common.xml](../messages/common.md)
 

@@ -8,9 +8,7 @@
   <p>The current MAVLink version is 2.0. The minor version numbers (after the dot) range from 1-255.</p>
   <p>This file has protocol dialect: 0.</p>
   <h2 id="enums">MAVLink Type Enumerations</h2>
-  <h3 id="WIFI_NETWORK_SECURITY">
-   <a href="#WIFI_NETWORK_SECURITY">WIFI_NETWORK_SECURITY</a>
-  </h3>
+  <h3 id="WIFI_NETWORK_SECURITY">WIFI_NETWORK_SECURITY</h3>
   <p>
    <a href="#enums">
     [Enum]
@@ -68,9 +66,7 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="AIRSPEED_SENSOR_TYPE">
-   <a href="#AIRSPEED_SENSOR_TYPE">AIRSPEED_SENSOR_TYPE</a>
-  </h3>
+  <h3 id="AIRSPEED_SENSOR_TYPE">AIRSPEED_SENSOR_TYPE</h3>
   <p>
    <a href="#enums">
     [Enum]
@@ -121,6 +117,173 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="PARAM_TRANSACTION_TRANSPORT">PARAM_TRANSACTION_TRANSPORT</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Possible transport layers to set and get parameters via mavlink during a parameter transaction.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="PARAM_TRANSACTION_TRANSPORT_PARAM">
+     <td>0</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_TRANSPORT_PARAM">PARAM_TRANSACTION_TRANSPORT_PARAM</a>
+     </td>
+     <td>Transaction over param transport.</td>
+    </tr>
+    <tr id="PARAM_TRANSACTION_TRANSPORT_PARAM_EXT">
+     <td>1</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_TRANSPORT_PARAM_EXT">PARAM_TRANSACTION_TRANSPORT_PARAM_EXT</a>
+     </td>
+     <td>Transaction over param_ext transport.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="PARAM_TRANSACTION_ACTION">PARAM_TRANSACTION_ACTION</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Possible parameter transaction actions.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="PARAM_TRANSACTION_ACTION_START">
+     <td>0</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_ACTION_START">PARAM_TRANSACTION_ACTION_START</a>
+     </td>
+     <td>Commit the current parameter transaction.</td>
+    </tr>
+    <tr id="PARAM_TRANSACTION_ACTION_COMMIT">
+     <td>1</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_ACTION_COMMIT">PARAM_TRANSACTION_ACTION_COMMIT</a>
+     </td>
+     <td>Commit the current parameter transaction.</td>
+    </tr>
+    <tr id="PARAM_TRANSACTION_ACTION_CANCEL">
+     <td>2</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_ACTION_CANCEL">PARAM_TRANSACTION_ACTION_CANCEL</a>
+     </td>
+     <td>Cancel the current parameter transaction.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CELLULAR_NETWORK_RADIO_TYPE">CELLULAR_NETWORK_RADIO_TYPE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Cellular network radio type</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CELLULAR_NETWORK_RADIO_TYPE_NONE">
+     <td>0</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_RADIO_TYPE_NONE">CELLULAR_NETWORK_RADIO_TYPE_NONE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_RADIO_TYPE_GSM">
+     <td>1</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_RADIO_TYPE_GSM">CELLULAR_NETWORK_RADIO_TYPE_GSM</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_RADIO_TYPE_CDMA">
+     <td>2</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_RADIO_TYPE_CDMA">CELLULAR_NETWORK_RADIO_TYPE_CDMA</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_RADIO_TYPE_WCDMA">
+     <td>3</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_RADIO_TYPE_WCDMA">CELLULAR_NETWORK_RADIO_TYPE_WCDMA</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_RADIO_TYPE_LTE">
+     <td>4</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_RADIO_TYPE_LTE">CELLULAR_NETWORK_RADIO_TYPE_LTE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CELLULAR_NETWORK_FAILED_REASON">CELLULAR_NETWORK_FAILED_REASON</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>These flags are used to diagnose the failure state of CELLULAR_STATUS</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CELLULAR_NETWORK_FAILED_REASON_NONE">
+     <td>0</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_FAILED_REASON_NONE">CELLULAR_NETWORK_FAILED_REASON_NONE</a>
+     </td>
+     <td>No error</td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_FAILED_REASON_UNKNOWN">
+     <td>1</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_FAILED_REASON_UNKNOWN">CELLULAR_NETWORK_FAILED_REASON_UNKNOWN</a>
+     </td>
+     <td>Error state is unknown</td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_FAILED_REASON_SIM_MISSING">
+     <td>2</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_FAILED_REASON_SIM_MISSING">CELLULAR_NETWORK_FAILED_REASON_SIM_MISSING</a>
+     </td>
+     <td>SIM is required for the modem but missing</td>
+    </tr>
+    <tr id="CELLULAR_NETWORK_FAILED_REASON_SIM_ERROR">
+     <td>3</td>
+     <td>
+      <a href="#CELLULAR_NETWORK_FAILED_REASON_SIM_ERROR">CELLULAR_NETWORK_FAILED_REASON_SIM_ERROR</a>
+     </td>
+     <td>SIM is available, but not usuable for connection</td>
+    </tr>
+   </tbody>
+  </table>
   <a id="MAV_CMD">
   </a>
   <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
@@ -129,14 +292,268 @@
    </strong>
    <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
   </blockquote>
+  <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. NaN and INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current yaw or latitude rather than a specific value). See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the <a href="#mav_commands">MAV_CMD</a> entries</p>
+  <h3 id="MAV_CMD_PARAM_TRANSACTION">MAV_CMD_PARAM_TRANSACTION (<a href="#MAV_CMD_PARAM_TRANSACTION">900</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request to start or end a parameter transaction. Multiple kinds of transport layers can be used to exchange parameters in the transaction (param, param_ext and mavftp). The command response can either be a success/failure or an in progress in case the receiving side takes some time to apply the parameters.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Action</td>
+     <td>Action to be performed (start, commit, cancel, etc.)</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_ACTION">PARAM_TRANSACTION_ACTION</a>
+     </td>
+    </tr>
+    <tr>
+     <td>2: Transport</td>
+     <td>Possible transport layers to set and get parameters via mavlink during a parameter transaction.</td>
+     <td>
+      <a href="#PARAM_TRANSACTION_TRANSPORT">PARAM_TRANSACTION_TRANSPORT</a>
+     </td>
+    </tr>
+    <tr>
+     <td>3: Transaction ID</td>
+     <td>Identifier for a specific transaction.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_SET_FENCE_BREACH_ACTION">MAV_CMD_SET_FENCE_BREACH_ACTION (<a href="#MAV_CMD_SET_FENCE_BREACH_ACTION">5010</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Sets the action on geofence breach.
+          If sent using the command protocol this sets the system-default geofence action.
+          As part of a mission protocol plan it sets the fence action for the next complete geofence definition *after* the command.
+          Note: A fence action defined in a plan will override the default system setting (even if the system-default is `FENCE_ACTION_NONE`).
+          Note: Every geofence in a plan can have its own action; if no fence action is defined for a particular fence the system-default will be used.
+          Note: The flight stack should reject a plan or command that uses a geofence action that it does not support and send a STATUSTEXT with the reason.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Action</td>
+     <td>Fence action on breach.</td>
+     <td>
+      <a href="#FENCE_ACTION">FENCE_ACTION</a>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+  </p>
+  <h3 id="MAV_CMD_DO_UPGRADE">MAV_CMD_DO_UPGRADE (<a href="#MAV_CMD_DO_UPGRADE">247</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request a target system to start an upgrade of one (or all) of its components.
+          For example, the command might be sent to a companion computer to cause it to upgrade a connected flight controller.
+          The system doing the upgrade will report progress using the normal command protocol sequence for a long running operation.
+          Command protocol information: https://mavlink.io/en/services/command.html.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Component ID</td>
+     <td>Component id of the component to be upgraded. If set to 0, all components should be upgraded.</td>
+     <td>
+      <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
+     </td>
+    </tr>
+    <tr>
+     <td>2: Reboot</td>
+     <td>0: Do not reboot component after the action is executed, 1: Reboot component after the action is executed.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Reserved</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>WIP: upgrade progress report rate (can be used for more granular control).</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_GROUP_START">MAV_CMD_GROUP_START (<a href="#MAV_CMD_GROUP_START">301</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Define start of a group of mission items. When control reaches this command a <a href="#GROUP_START">GROUP_START</a> message is emitted.
+          The end of a group is marked using <a href="#MAV_CMD_GROUP_END">MAV_CMD_GROUP_END</a> with the same group id.
+          Group ids are expected, but not required, to iterate sequentially.
+          Groups can be nested.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Group ID</td>
+     <td>Mission-unique group id.
+          Group id is limited because only 24 bit integer can be stored in 32 bit float.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>16777216 <em>increment:</em>1</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_GROUP_END">MAV_CMD_GROUP_END (<a href="#MAV_CMD_GROUP_END">302</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Define end of a group of mission items. When control reaches this command a <a href="#GROUP_END">GROUP_END</a> message is emitted.
+          The start of the group is marked is marked using <a href="#MAV_CMD_GROUP_START">MAV_CMD_GROUP_START</a> with the same group id.
+          Group ids are expected, but not required, to iterate sequentially.
+          Groups can be nested.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Group ID</td>
+     <td>Mission-unique group id.
+          Group id is limited because only 24 bit integer can be stored in 32 bit float.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>16777216 <em>increment:</em>1</td>
+    </tr>
+   </tbody>
+  </table>
   <h2 id="messages">MAVLink Messages</h2>
+  <h3 id="PARAM_ACK_TRANSACTION">PARAM_ACK_TRANSACTION (<a href="#PARAM_ACK_TRANSACTION">
+    #19
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>Response from a <a href="#PARAM_SET">PARAM_SET</a> message when it is used in a transaction.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Id of system that sent <a href="#PARAM_SET">PARAM_SET</a> message.</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Id of system that sent <a href="#PARAM_SET">PARAM_SET</a> message.</td>
+    </tr>
+    <tr>
+     <td>param_id</td>
+     <td>char[16]</td>
+     <td>
+     </td>
+     <td>Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string</td>
+    </tr>
+    <tr>
+     <td>param_value</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Parameter value (new value if <a href="#PARAM_ACCEPTED">PARAM_ACCEPTED</a>, current value otherwise)</td>
+    </tr>
+    <tr>
+     <td>param_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_PARAM_TYPE">MAV_PARAM_TYPE</a>
+     </td>
+     <td>Parameter type.</td>
+    </tr>
+    <tr>
+     <td>param_result</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#PARAM_ACK">PARAM_ACK</a>
+     </td>
+     <td>Result code.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MISSION_CHANGED">MISSION_CHANGED (<a href="#MISSION_CHANGED">
     #52
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -155,8 +572,6 @@
      <td>start_index</td>
      <td>int16_t</td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>Start index for partial mission change (-1 for all items).</td>
     </tr>
@@ -164,8 +579,6 @@
      <td>end_index</td>
      <td>int16_t</td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>End index of a partial mission change. -1 is a synonym for the last mission item (i.e. selects all items from start_index). Ignore field if start_index=-1.</td>
     </tr>
@@ -173,8 +586,6 @@
      <td>origin_sysid</td>
      <td>uint8_t</td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>System ID of the author of the new mission.</td>
     </tr>
@@ -201,18 +612,18 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
-   </a>Checksum for the current mission, rally points or geofence plan (a GCS can use this checksum to determine if it has a matching plan definition).
-        This message must be broadcast following any change to a plan (immediately after the MISSION_ACK that completes the plan upload sequence).
-        It may also be requested using MAV_CMD_REQUEST_MESSAGE, where param 2 indicates the plan type for which the hash is required.
+   </a>Checksum for the current mission, rally point or geofence plan, or for the "combined" plan (a GCS can use these checksums to determine if it has matching plans).
+        This message must be broadcast with the appropriate checksum following any change to a mission, geofence or rally point definition
+        (immediately after the <a href="#MISSION_ACK">MISSION_ACK</a> that completes the upload sequence).
+        It may also be requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>, where param 2 indicates the plan type for which the checksum is required.
         The checksum must be calculated on the autopilot, but may also be calculated by the GCS.
         The checksum uses the same CRC32 algorithm as MAVLink FTP (https://mavlink.io/en/services/ftp.html#crc32-implementation).
-        It is run over each item in the plan in seq order (excluding the home location if present in the plan), and covers the following fields (in order):
-        frame, command, autocontinue, param1, param2, param3, param4, param5, param6, param7.</p>
+        The checksum for a mission, geofence or rally point definition is run over each item in the plan in seq order (excluding the home location if present in the plan), and covers the following fields (in order):
+        frame, command, autocontinue, param1, param2, param3, param4, param5, param6, param7.
+        The checksum for the whole plan (MAV_MISSION_TYPE_ALL) is calculated using the same approach, running over each sub-plan in the following order: mission, geofence then rally point.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -235,8 +646,6 @@
      <td>checksum</td>
      <td>uint32_t</td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>CRC32 checksum of current plan for specified type.</td>
     </tr>
@@ -247,8 +656,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -273,8 +680,6 @@
      <td>
      </td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>Sensor ID.</td>
     </tr>
@@ -283,8 +688,6 @@
      <td>float</td>
      <td>m/s</td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>Calibrated airspeed (CAS) if available, otherwise indicated airspeed (IAS).</td>
     </tr>
@@ -293,8 +696,6 @@
      <td>int16_t</td>
      <td>cdegC</td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>Temperature. INT16_MAX for value unknown/not supplied.</td>
     </tr>
@@ -303,8 +704,6 @@
      <td>float</td>
      <td>hPa</td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>Differential pressure. NaN for value unknown/not supplied.</td>
     </tr>
@@ -313,8 +712,6 @@
      <td>float</td>
      <td>hPa</td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>Static pressure. NaN for value unknown/not supplied.</td>
     </tr>
@@ -323,8 +720,6 @@
      <td>float</td>
      <td>m/s</td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>Error/accuracy. NaN for value unknown/not supplied.</td>
     </tr>
@@ -345,8 +740,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -371,8 +764,6 @@
      <td>
      </td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>Name of Wi-Fi network (SSID).</td>
     </tr>
@@ -382,8 +773,6 @@
      <td>
      </td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>WiFi network operating channel ID. Set to 0 if unknown or unidentified.</td>
     </tr>
@@ -394,8 +783,6 @@
       %
      </td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>WiFi network signal quality.</td>
     </tr>
@@ -404,8 +791,6 @@
      <td>uint16_t</td>
      <td>MiB/s</td>
      <td>
-      <a href="#">
-      </a>
      </td>
      <td>WiFi network data rate. Set to UINT16_MAX if data_rate information is not supplied.</td>
     </tr>
@@ -418,6 +803,96 @@
       <a href="#WIFI_NETWORK_SECURITY">WIFI_NETWORK_SECURITY</a>
      </td>
      <td>WiFi network security type.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GROUP_START">GROUP_START (<a href="#GROUP_START">
+    #414
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Emitted during mission execution when control reaches <a href="#MAV_CMD_GROUP_START">MAV_CMD_GROUP_START</a>.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>group_id</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Mission-unique group id (from MAV_CMD_GROUP_START).</td>
+    </tr>
+    <tr>
+     <td>mission_checksum</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>CRC32 checksum of current plan for <a href="#MAV_MISSION_TYPE_ALL">MAV_MISSION_TYPE_ALL</a>. As defined in <a href="#MISSION_CHECKSUM">MISSION_CHECKSUM</a> message.</td>
+    </tr>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot).
+        The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="GROUP_END">GROUP_END (<a href="#GROUP_END">
+    #415
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Emitted during mission execution when control reaches <a href="#MAV_CMD_GROUP_END">MAV_CMD_GROUP_END</a>.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>group_id</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Mission-unique group id (from MAV_CMD_GROUP_END).</td>
+    </tr>
+    <tr>
+     <td>mission_checksum</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>CRC32 checksum of current plan for <a href="#MAV_MISSION_TYPE_ALL">MAV_MISSION_TYPE_ALL</a>. As defined in <a href="#MISSION_CHECKSUM">MISSION_CHECKSUM</a> message.</td>
+    </tr>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>Timestamp (UNIX Epoch time or time since system boot).
+        The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
     </tr>
    </tbody>
   </table>
