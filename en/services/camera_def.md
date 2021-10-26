@@ -127,7 +127,7 @@ CAM_VIDSHUTSPD | Shutter speed (Video)
 CAM_PHOTOSHUTSPD | Shutter speed (Photo)
 CAM_VIDRES | Video Resolution (Video)
 CAM_WBMODE | White Balance Mode
-CAM_VIDSTREAM - Video stream selection (video playback)
+CAM_VIDSTREAM | Video stream selection (video playback)
 CAM_VIDFPS | Video frame rate (video capture)
 CAM_VIDFOV | Video field of view (video capture)
 CAM_VIDFMT | Video encoding format
