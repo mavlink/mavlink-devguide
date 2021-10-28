@@ -100,7 +100,30 @@ In this case, the GCS will automatically build a drop down list with the options
 
 > **Note** These parameters are common to many cameras (though their valid options vary considerably).
 
-Parameter | Description -- | -- CAM_APERTURE | Aperture CAM_EV | Exposure Compensation (usually only used for automatic exposure modes) CAM_VIDEV | Exposure compensation (Video) CAM_PHOTOEV | Exposure compensation (Photo) CAM_EXPMODE | Exposure Mode (Manual, Auto, Program Auto, Aperture Priority, etc.) CAM_ISO | ISO CAM_VIDISO | ISO (Video) CAM_PHOTOISO | ISO (Photo) CAM_METERING | Metering Mode CAM_SHUTTERSPD | Shutter speed CAM_VIDSHUTSPD | Shutter speed (Video) CAM_PHOTOSHUTSPD | Shutter speed (Photo) CAM_VIDRES | Video Resolution (Video) CAM_WBMODE | White Balance Mode CAM_VIDSTREAM - Video stream selection (video playback) CAM_VIDFPS | Video frame rate (video capture) CAM_VIDFOV | Video field of view (video capture) CAM_VIDFMT | Video encoding format CAM_PHOTORATIO | Photo Aspect Ratio CAM_PHOTOFMT | Photo image (saving) format CAM_PHOTOSIZE | Photo size CAM_PHOTOQUAL | Photo image (saving) quality (for compressed modes)
+| Parameter        | Description                                                            |
+| ---------------- | ---------------------------------------------------------------------- |
+| CAM_APERTURE     | Aperture                                                               |
+| CAM_EV           | Exposure Compensation (usually only used for automatic exposure modes) |
+| CAM_VIDEV        | Exposure compensation (Video)                                          |
+| CAM_PHOTOEV      | Exposure compensation (Photo)                                          |
+| CAM_EXPMODE      | Exposure Mode (Manual, Auto, Program Auto, Aperture Priority, etc.)    |
+| CAM_ISO          | ISO                                                                    |
+| CAM_VIDISO       | ISO (Video)                                                            |
+| CAM_PHOTOISO     | ISO (Photo)                                                            |
+| CAM_METERING     | Metering Mode                                                          |
+| CAM_SHUTTERSPD   | Shutter speed                                                          |
+| CAM_VIDSHUTSPD   | Shutter speed (Video)                                                  |
+| CAM_PHOTOSHUTSPD | Shutter speed (Photo)                                                  |
+| CAM_VIDRES       | Video Resolution (Video)                                               |
+| CAM_WBMODE       | White Balance Mode                                                     |
+| CAM_VIDSTREAM    | Video stream selection (video playback)                                |
+| CAM_VIDFPS       | Video frame rate (video capture)                                       |
+| CAM_VIDFOV       | Video field of view (video capture)                                    |
+| CAM_VIDFMT       | Video encoding format                                                  |
+| CAM_PHOTORATIO   | Photo Aspect Ratio                                                     |
+| CAM_PHOTOFMT     | Photo image (saving) format                                            |
+| CAM_PHOTOSIZE    | Photo size                                                             |
+| CAM_PHOTOQUAL    | Photo image (saving) quality (for compressed modes)                    |
 
 #### Exclusion Rules
 
