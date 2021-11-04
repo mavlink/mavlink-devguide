@@ -2199,7 +2199,7 @@
      <td>
       <a href="#MAV_DATA_STREAM_POSITION">MAV_DATA_STREAM_POSITION</a>
      </td>
-     <td>Enable <a href="#LOCAL_POSITION">LOCAL_POSITION</a>, GLOBAL_POSITION/GLOBAL_POSITION_INT messages.</td>
+     <td>Enable <a href="#LOCAL_POSITION">LOCAL_POSITION</a>, <a href="#GLOBAL_POSITION_INT">GLOBAL_POSITION_INT</a> messages.</td>
     </tr>
     <tr id="MAV_DATA_STREAM_EXTRA1">
      <td>10</td>
@@ -18414,7 +18414,7 @@
    <a href="#messages">
     [Message]
    </a>The global position, as returned by the Global Positioning System (GPS). This is
-                NOT the global position estimate of the system, but rather a RAW sensor value. See message <a href="#GLOBAL_POSITION">GLOBAL_POSITION</a> for the global position estimate.</p>
+                NOT the global position estimate of the system, but rather a RAW sensor value. See message <a href="#GLOBAL_POSITION_INT">GLOBAL_POSITION_INT</a> for the global position estimate.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18587,7 +18587,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>The positioning status, as reported by GPS. This message is intended to display status information about each satellite visible to the receiver. See message <a href="#GLOBAL_POSITION">GLOBAL_POSITION</a> for the global position estimate. This message can contain information for up to 20 satellites.</p>
+   </a>The positioning status, as reported by GPS. This message is intended to display status information about each satellite visible to the receiver. See message <a href="#GLOBAL_POSITION_INT">GLOBAL_POSITION_INT</a> for the global position estimate. This message can contain information for up to 20 satellites.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24413,7 +24413,7 @@
    <a href="#messages">
     [Message]
    </a>The global position, as returned by the Global Positioning System (GPS). This is
-                 NOT the global position estimate of the sytem, but rather a RAW sensor value. See message <a href="#GLOBAL_POSITION">GLOBAL_POSITION</a> for the global position estimate.</p>
+                 NOT the global position estimate of the sytem, but rather a RAW sensor value. See message <a href="#GLOBAL_POSITION_INT">GLOBAL_POSITION_INT</a> for the global position estimate.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -27091,7 +27091,7 @@
      <td>uint32_t</td>
      <td>
      </td>
-     <td>HW / board version (last 8 bytes should be silicon ID, if any)</td>
+     <td>HW / board version (last 8 bits should be silicon ID, if any). The first 16 bits of this field specify https://github.com/PX4/PX4-Bootloader/blob/master/board_types.txt</td>
     </tr>
     <tr>
      <td>flight_custom_version</td>
@@ -33349,15 +33349,15 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Configure cellular modems. This message is re-emitted as an acknowledgement by the modem. The message may also be explicitly requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>.</p>
+   </strong>Configure cellular modems.
+        This message is re-emitted as an acknowledgement by the modem.
+        The message may also be explicitly requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
