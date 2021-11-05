@@ -272,7 +272,7 @@ Other components like a GCS will typically only use the camera `BATTERY_STATUS.b
 Message | Description | Status
 -- | -- | ---
 <a id="MAV_CMD_REQUEST_MESSAGE"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Send command to request any message | to be used
-<a id="CAMERA_INFORMATION"></a>[CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) | Basic information about camera including supported features and URI link to extended information (`cam_definition_uri` field).
+<a id="CAMERA_INFORMATION"></a>[CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) | Basic information about camera including supported features and URI link to extended information (`cam_definition_uri` field). |
 <a id="CAMERA_SETTINGS"></a>[CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS) | Timestamp and camera mode information. |
 <a id="MAV_CMD_SET_CAMERA_MODE"></a>[MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) | Send command to set [CAMERA_MODE](#CAMERA_MODE). |
 <a id="VIDEO_STREAM_INFORMATION"></a>[VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) | Information defining a video stream configuration. If a camera has more than one video stream, it would send one of this for each video stream, with their specific configuration. Each stream must have its own, unique `stream_id`. |
