@@ -219,14 +219,14 @@ The main message tags/fields are:
     For integers we usually select the largest possible value (i.e. `UINT16_MAX`, `INT16_MAX`, `UINT8_MAX`, `UINT8_MAX`).
     For floats we usually select `invalid="NaN"`.
 
-    Arrays represent multiple fields in just record.
-    The following notation is used to indicate the `invalid` value for elements of the array:
-    - `invalid="[value]"`: Set any element of the array to `value` to indicate that the element is invalid.
-    - `invalid="[value,]"`: Set the _first element_ of the array to `value` indicate that the whole array is invalid.
-    - `invalid="[value1,,,value4,]"`: Set the invalid value for each of the elements separately in a comma separated list.
-       Elements without invalid values are left empty and a comma at end of the list indicates that all subsequent elements have no invalid value.
-       So the example above provides invalid values for elements 1 and 4, and indicates that elements 2, 3 and any elements >4 have no invalid value.
-
+    Arrays represent multiple elements, some (or all) of which may need to be marked as invalid.
+    The following notation is used to indicate the invalid values for elements of the array:
+    - `invalid="[value]"`: Array elements that contain `value` are invalid.
+    - `invalid="[value:]"`: All array elements are invalid if the _first_ array element is set to `value`.
+    - `invalid="[value1,,value3,]"`: The invalid value for each element is the corresponding value specified in a comma separated list.
+       If no value is set for an item then it has no invalid value.
+       The example above provides invalid values for elements 1 and 3, and indicates that elements 2 and any elements >4 have no invalid value.
+       
 - [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the message is deprecated or "work in progress".
 - `extensions` (optional): This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only. 
   - The tag should be used for MAVLink 1 messages only (id < 256) that have been extended in MAVLink 2. 
