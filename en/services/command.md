@@ -84,6 +84,9 @@ The drone should cancel the operation and complete the sequence by sending `COMM
 - If cancellation is not supported the drone can just continue to send progress updates until completion.
 - If the sequence has already completed (or is idle) the cancel command should be ignored.
 
+If the _same_ long running command is recieved while the command is in progress it is treated as a request for a progress update. 
+The target system should just respond with `MAV_RESULT_IN_PROGRESS` and the progress.
+
 > **Note** If another command is received while handling a command (long running or otherwise) the new command should be rejected with `MAV_RESULT_TEMPORARILY_REJECTED`.
   What this means is that to restart an operation (i.e. with new parameters) it must first be cancelled.
   
