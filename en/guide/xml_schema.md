@@ -212,20 +212,22 @@ The main message tags/fields are:
   - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`.
     > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
 
-  - `invalid`: The value that will be sent in the field if the sender is unable to supply valid information (the recipient should ignore the field if it has this value).
-    For example, `BATTERY_STATUS.current_battery` has an invalid value of `-1`, so a battery that does not measure supplied _current_ should set `BATTERY_STATUS.current_battery` to `-1`.
+  - `invalid`: Specifies a value that can be set on a field to indicate that the data is _invalid_: the recipient should ignore the field if it has this value.
+    For example, `BATTERY_STATUS.current_battery` specifies `invalid="-1"`, so a battery that does not measure supplied _current_ should set `BATTERY_STATUS.current_battery` to `-1`.
 
-    Where possible the invalid value should be selected to outside the expected/valid range of the field (`0` is preferred if it not an acceptable value for the field).
+    Where possible the value that indicates the field is invalid should be selected to outside the expected/valid range of the field (`0` is preferred if it is not an acceptable value for the field).
     For integers we usually select the largest possible value (i.e. `UINT16_MAX`, `INT16_MAX`, `UINT8_MAX`, `UINT8_MAX`).
     For floats we usually select `invalid="NaN"`.
 
-    Arrays represent multiple elements, some (or all) of which may need to be marked as invalid.
-    The following notation is used to indicate the invalid values for elements of the array:
+    Arrays represent multiple elements, some (or all) of which may need to be marked as `invalid`.
+    The following notation is used to specify the values that indicate elements of the array are invalid:
     - `invalid="[value]"`: Array elements that contain `value` are invalid.
     - `invalid="[value:]"`: All array elements are invalid if the _first_ array element is set to `value`.
-    - `invalid="[value1,,value3,]"`: The invalid value for each element is the corresponding value specified in a comma separated list.
-       If no value is set for an item then it has no invalid value.
-       The example above provides invalid values for elements 1 and 3, and indicates that elements 2 and any elements >4 have no invalid value.
+    - `invalid="[value1,,value3,]"`: Array elements are invalid if they contain the value specified in the corresponding position of the comma separated list.
+       If the a position in the list is empty, there is no way to indicate the corresponding array element is invalid.
+       The example above indicates that elements 1 and 3 are invalid if they contain `value1` and `value3`, respectively.
+       For element 2 and any elements >4 the invalid property of the field cannot be set.
+    - `invalid="[value1,]"`: The first array element is invalid if it contains `value1`: the invalid property cannot be set for all other elements.
        
 - [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the message is deprecated or "work in progress".
 - `extensions` (optional): This self-closing tag is used to indicate that subsequent fields apply to MAVLink 2 only. 
