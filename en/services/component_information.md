@@ -138,31 +138,41 @@ In summary:
 1. GCS parses the general metadata for other supported metadata locations, and then downloads the files via MAVFTP or HTTP(s).
    This may be done immediately, or as needed.
 
-## Metadata types
+## Metadata Types
+
 ### Actuators (COMP_METADATA_TYPE_ACTUATORS)
 
-This metadata is specific for an autopilot and contains information about actuator output drivers, supported geometries and their configuration parameters.
-It allows a GCS to provide a generic UI to configure and test actuators and vehicle geometries.
-Detailed information can be found in the schema [file](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.schema.json), and there's also an [example](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.example.json).
+The actuators metadata allows a GCS to create a UI to configure and test actuators, and configure vehicle geometries, without having to understand anything about the underlying flight stack.
 
-Specifically, this information is provided:
+
+> **Note** The mechanism works similarly to [camera definition files](../services/camera_def.md).
+> It can be used for flight stacks that allow outputs and geometry definition to be configured using parameters.
+> If flight stack outputs or geometries cannot be configured using parameters, it can still be used to display the current geometry and outpu mappings and to test outputs.
+
+The definition contains information about actuator output drivers (e.g. PWM MAIN or UAVCAN), the functions that can be assigned to each output channel, supported geometries, and their configuration parameters.
+Detailed information can be found in the [schema file](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.schema.json), and there's also an [example](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.example.json).
+
+Specifically, the following information is provided:
+
 - A list of actuator output drivers (e.g. PWM MAIN or UAVCAN): `outputs_v1`.
   This can be hardware-specific.
   Each output driver contains one or more groups of output channels.
   A group contains a common set of configuration parameters, indexed for each channel.
   A parameter may be assigned a specific meaning, e.g. `disarmed`.
-  A GCS can use this information to provide specific actions for these (w/o having to know all `disarmed` parameters a priori).
+  A GCS can use this information to provide specific actions for these (without having to know all `disarmed` parameters a priori).
 
-- Actuator output functions: `functions_v1`. An output function is what the user configures to run on a specific output channel, e.g. Motor 1 or Landing Gear.
-  Each actuator output channel is expected to provide a parameter to configure its output function.
+- Actuator output functions: `functions_v1`.
+  A list of the output functions (hardware) that can be connected to a particular output channel, for example: Motor 1, Landing Gear, Camera capture.
+  Each actuator output channel is expected to provide a parameter that can be used to configure its output function.
 
-- A geometry/mixer section: `mixer_v1`. This contains a list of geometries, where at most one geometry is selected (via parameter), and a list of actuator types.
-  An actuator type (e.g. `servo` or `motor`) contains limits and defaults for actuator testing, and a set of output function values that belong to this type.
+- A geometry/mixer section: `mixer_v1`.
+  A list of frame geometries, where at most one geometry is selected (via parameter), and a list of actuator types.
+  An actuator type (e.g. `servo` or `motor`) contains limits and defaults for actuator testing, and a set of output function values that can be assigned to this type.
   A GCS may use the type to render the geometry, so it can display different images depending on the type.
 
   Each mixer contains one or more groups of actuators, where each group belongs to an actuator type.
-  The group can contain a fixed or configurable amount of actuators and a set of indexed configuration parameters.
-  If the size is fix, the actuator group can contain lists of fixed values, e.g. to provide position information for non-configurable actuators.
+  The group can contain a fixed or configurable number of actuators and a set of indexed configuration parameters.
+  If the size is fixed, the actuator group can contain lists of fixed values, e.g. to provide position information for non-configurable actuators.
   As with the actuator outputs, parameters may be assigned a specific meaning, e.g. `posx`, which hints to the GCS that this parameter/value defines the x position of the actuator.
   This can be used to dynamically render a vehicle's geometry.
 
