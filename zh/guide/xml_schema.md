@@ -206,15 +206,16 @@ The `<param>` tag is used in the [MAV_CMD](../messages/common.md#mav_commands) e
       
       > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
    
-   - `invalid`: The value that will be sent in the field if the sender is unable to supply valid information (the recipient should ignore the field if it has this value). For example, `BATTERY_STATUS.current_battery` has an invalid value of `-1`, so a battery that does not measure supplied *current* should set `BATTERY_STATUS.current_battery` to `-1`.
+   - `invalid`: Specifies a value that can be set on a field to indicate that the data is *invalid*: the recipient should ignore the field if it has this value. For example, `BATTERY_STATUS.current_battery` specifies `invalid="-1"`, so a battery that does not measure supplied *current* should set `BATTERY_STATUS.current_battery` to `-1`.
       
-      Where possible the invalid value should be selected to outside the expected/valid range of the field (`0` is preferred if it not an acceptable value for the field). For integers we usually select the largest possible value (i.e. `UINT16_MAX`, `INT16_MAX`, `UINT8_MAX`, `UINT8_MAX`). For floats we usually select `invalid="NaN"`.
+      Where possible the value that indicates the field is invalid should be selected to outside the expected/valid range of the field (`0` is preferred if it is not an acceptable value for the field). For integers we usually select the largest possible value (i.e. `UINT16_MAX`, `INT16_MAX`, `UINT8_MAX`, `UINT8_MAX`). For floats we usually select `invalid="NaN"`.
       
-      Arrays represent multiple fields in just record. The following notation is used to indicate the `invalid` value for elements of the array:
+      Arrays represent multiple elements, some (or all) of which may need to be marked as `invalid`. The following notation is used to specify the values that indicate elements of the array are invalid:
       
-      - `invalid="[value]"`: Set any element of the array to `value` to indicate that the element is invalid.
-      - `invalid="[value,]"`: Set the *first element* of the array to `value` indicate that the whole array is invalid.
-      - `invalid="[value1,,,value4,]"`: Set the invalid value for each of the elements separately in a comma separated list. Elements without invalid values are left empty and a comma at end of the list indicates that all subsequent elements have no invalid value. So the example above provides invalid values for elements 1 and 4, and indicates that elements 2, 3 and any elements >4 have no invalid value.
+      - `invalid="[value]"`: Array elements that contain `value` are invalid.
+      - `invalid="[value:]"`: All array elements are invalid if the *first* array element is set to `value`.
+      - `invalid="[value1,,value3,]"`: Array elements are invalid if they contain the value specified in the corresponding position of the comma separated list. If the a position in the list is empty, there is no way to indicate the corresponding array element is invalid. The example above indicates that elements 1 and 3 are invalid if they contain `value1` and `value3`, respectively. For element 2 and any elements >4 the invalid property of the field cannot be set.
+      - `invalid="[value1,]"`: The first array element is invalid if it contains `value1`: the invalid property cannot be set for all other elements.
 
 - [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the message is deprecated or "work in progress".
 
