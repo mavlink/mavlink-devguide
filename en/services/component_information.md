@@ -44,7 +44,7 @@ Type | Type Id | Schema | Description
 <a id="COMP_METADATA_TYPE_COMMANDS"></a> Command protocol metadata | [COMP_METADATA_TYPE_COMMANDS](../messages/common.md#COMP_METADATA_TYPE_COMMANDS) | TBD | Information about which commands and command paramters are supported in via the command protocol.
 <a id="COMP_METADATA_TYPE_PERIPHERALS"></a> Peripheral metadata |  [COMP_METADATA_TYPE_PERIPHERALS](../messages/common.md#COMP_METADATA_TYPE_PERIPHERALS) | [peripherals.json](https://github.com/mavlink/mavlink/blob/master/component_information/peripherals.json) | Information about non-MAVLink peripherals connected to vehicle (on boot).
 <a id="COMP_METADATA_TYPE_EVENTS"></a> Event metadata | [COMP_METADATA_TYPE_EVENTS](../messages/common.md#COMP_METADATA_TYPE_EVENTS) | TBD | Information about events interface support by the vehicle. 
-
+<a id="COMP_METADATA_TYPE_ACTUATORS"></a> Event metadata | [COMP_METADATA_TYPE_ACTUATORS](../messages/common.md#COMP_METADATA_TYPE_ACTUATORS) | [actuators.schema.json ](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.schema.json) | Metadata for actuator configuration (motors, servos and vehicle geometry) and testing. 
 
 All schema files are *versioned* using a `version` integer.
 
@@ -130,7 +130,7 @@ In summary:
    - If not recieved the GCS should resend the request (typically in the application level).
    - Once information is received:
      - the GCS checks if `COMPONENT_INFORMATION.general_metadata_file_crc` matches its cached CRC value.
-	   If so, there is no need to download the [general metadata file](#COMP_METADATA_TYPE_GENERAL) (or other files it references) as it has not changed since the last download.
+       If so, there is no need to download the [general metadata file](#COMP_METADATA_TYPE_GENERAL) (or other files it references) as it has not changed since the last download.
 	 - the GCS checks if `COMPONENT_INFORMATION.peripherals_metadata_uri` if supplied, and (if so) whether the `peripherals_metadata_file_crc` field matches the cached value.
 	 
 	 If the cached values do not match the associated files should be downloaded and parsed ....
