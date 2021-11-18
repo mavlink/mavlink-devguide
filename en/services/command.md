@@ -83,11 +83,15 @@ Long running operations may be cancelled by sending the [COMMAND_CANCEL](#COMMAN
 The drone should cancel the operation and complete the sequence by sending `COMMAND_ACK` with `COMMAND_ACK.result=MAV_RESULT_CANCELLED`
 - If cancellation is not supported the drone can just continue to send progress updates until completion.
 - If the sequence has already completed (or is idle) the cancel command should be ignored.
-
-> **Note** If another command is received while handling a command (long running or otherwise) the new command should be rejected with `MAV_RESULT_TEMPORARILY_REJECTED`.
-  What this means is that to restart an operation (i.e. with new parameters) it must first be cancelled.
-  
+ 
 The rate at which progress messages are emitted is system-dependent.
 Generally though, the GCS should have a much increased timeout after receiving an ACK with `MAV_RESULT_IN_PROGRESS`.
   
 If a timeout is triggered when waiting for a progress or completion update, the GCS should terminate the sequence (return to the idle state) and notify the user if appropriate.
+
+Only one instance of a _particular_ long running command can execute at a time; to restart a long running operation (i.e. with new parameters) it must first be cancelled!
+If the same command is recieved while the operation is in progress the new command should be ACKed with `MAV_RESULT_TEMPORARILY_REJECTED` (to indicate that the target is busy).
+
+The protocol allows for _different_ long running commands to run in parallel, if supported by the state machine of the recieving flight stack.
+If a flight stack does not support multiple commands running in parallel it should ACK new commands with `MAV_RESULT_TEMPORARILY_REJECTED` (with the possible exception of the [COMMAND_CANCEL](#COMMAND_CANCEL), which might be used to cancel the first request).
+ 
