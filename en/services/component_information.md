@@ -44,7 +44,7 @@ Type | Type Id | Schema | Description
 <a id="COMP_METADATA_TYPE_COMMANDS"></a> Command protocol metadata | [COMP_METADATA_TYPE_COMMANDS](../messages/common.md#COMP_METADATA_TYPE_COMMANDS) | TBD | Information about which commands and command paramters are supported in via the command protocol.
 <a id="COMP_METADATA_TYPE_PERIPHERALS"></a> Peripheral metadata |  [COMP_METADATA_TYPE_PERIPHERALS](../messages/common.md#COMP_METADATA_TYPE_PERIPHERALS) | [peripherals.json](https://github.com/mavlink/mavlink/blob/master/component_information/peripherals.json) | Information about non-MAVLink peripherals connected to vehicle (on boot).
 <a id="COMP_METADATA_TYPE_EVENTS"></a> Event metadata | [COMP_METADATA_TYPE_EVENTS](../messages/common.md#COMP_METADATA_TYPE_EVENTS) | TBD | Information about events interface support by the vehicle. 
-
+<a id="COMP_METADATA_TYPE_ACTUATORS"></a> Event metadata | [COMP_METADATA_TYPE_ACTUATORS](../messages/common.md#COMP_METADATA_TYPE_ACTUATORS) | [actuators.schema.json ](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.schema.json) | Metadata for actuator configuration (motors, servos and vehicle geometry) and testing. 
 
 All schema files are *versioned* using a `version` integer.
 
@@ -91,7 +91,7 @@ Component information files may be **.xz** compressed (this is recommended for f
 > **Warning** Systems that *request* component information **must** support extraction of **.xz**-compressed JSON files.
 
 <span></span>
-> **Tip** The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems.
+> **Tip** The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems and cross-platform C/C++ projects.
 
 
 ## Sequences
@@ -103,7 +103,7 @@ A GCS can *broadcast* the `MAV_CMD_REQUEST_MESSAGE` specifying `param1=395`; all
 A GCS can further discover all components in the system by monitoring the channel for `HEARTBEAT` ids, and then send the request to each of them to [verify whether the protocol is supported](#check-protocol-is-supported).
 The broadcast approach is recommended for GCSes that don't track all components on the link.
 
-### Check Protocol is Supported
+### Check if Protocol is Supported
 
 A system can query whether another component supports the protocol by sending the command [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) (specifying the [COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) message).
 
@@ -130,13 +130,58 @@ In summary:
    - If not recieved the GCS should resend the request (typically in the application level).
    - Once information is received:
      - the GCS checks if `COMPONENT_INFORMATION.general_metadata_file_crc` matches its cached CRC value.
-	   If so, there is no need to download the [general metadata file](#COMP_METADATA_TYPE_GENERAL) (or other files it references) as it has not changed since the last download.
+       If so, there is no need to download the [general metadata file](#COMP_METADATA_TYPE_GENERAL) (or other files it references) as it has not changed since the last download.
 	 - the GCS checks if `COMPONENT_INFORMATION.peripherals_metadata_uri` if supplied, and (if so) whether the `peripherals_metadata_file_crc` field matches the cached value.
 	 
 	 If the cached values do not match the associated files should be downloaded and parsed ....
 1. GCS downloads the file specified in the `general_metadata_uri` using MAVLink FTP.
 1. GCS parses the general metadata for other supported metadata locations, and then downloads the files via MAVFTP or HTTP(s).
    This may be done immediately, or as needed.
+
+## Metadata Types
+
+### Actuators (COMP_METADATA_TYPE_ACTUATORS)
+
+The actuators metadata allows a GCS to create a UI to configure and test actuators, and configure vehicle geometries, without having to understand anything about the underlying flight stack.
+
+
+> **Note** The mechanism works similarly to [camera definition files](../services/camera_def.md).
+> It can be used for flight stacks that allow outputs and geometry definition to be configured using parameters.
+> If flight stack outputs or geometries cannot be configured using parameters, the mechanism can still be used to display the current geometry and output mappings, and to test outputs.
+
+The definition contains information about actuator output drivers (e.g. PWM MAIN or UAVCAN), the functions that can be assigned to each output channel, supported geometries, and their configuration parameters.
+Detailed information can be found in the [schema file](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.schema.json), and there's also an [example](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.example.json).
+
+Specifically, the following information is provided:
+
+- A list of actuator output drivers (e.g. PWM MAIN or UAVCAN): `outputs_v1`.
+  This can be hardware-specific.
+  Each output driver contains one or more groups of output channels.
+  A group contains a common set of configuration parameters, indexed for each channel.
+  A parameter may be assigned a specific meaning, e.g. `disarmed`.
+  A GCS can use this information to provide specific actions for these (without having to know all `disarmed` parameters a priori).
+
+- Actuator output functions: `functions_v1`.
+  A list of the output functions (hardware) that can be connected to a particular output channel, for example: Motor 1, Landing Gear, Camera capture.
+  Each actuator output channel is expected to provide a parameter that can be used to configure its output function.
+
+- A geometry/mixer section: `mixer_v1`.
+  A list of frame geometries, where at most one geometry is selected (via parameter), and a list of actuator types.
+  An actuator type (e.g. `servo` or `motor`) contains limits and defaults for actuator testing, and a set of output function values that can be assigned to this type.
+  A GCS may use the type to render the geometry, so it can display different images depending on the type.
+
+  Each mixer contains one or more groups of actuators, where each group belongs to an actuator type.
+  The group can contain a fixed or configurable number of actuators and a set of indexed configuration parameters.
+  If the size is fixed, the actuator group can contain lists of fixed values, e.g. to provide position information for non-configurable actuators.
+  As with the actuator outputs, parameters may be assigned a specific meaning, e.g. `posx`, which hints to the GCS that this parameter/value defines the x position of the actuator.
+  This can be used to dynamically render a vehicle's geometry.
+
+  Additionally there is an optional list of rules.
+  Rules are used to constrain or hide/disable geometry parameters depending on the value of a selection parameter.
+  For example there could be a parameter to select the control surface type, and three parameters to configure the roll, pitch and yaw torque.
+  When the user sets the type to 'Left Aileron', certain restrictions to roll and pitch torque are applied, and the yaw torque is hidden.
+
+A GCS can provide a UI for testing outputs based on the configured output functions, by iterating over all output channels and collecting the configured actuator output functions, and then utilizing the `MAV_CMD_ACTUATOR_TEST` command.
 
 
 ## Open Issues
