@@ -147,7 +147,7 @@ The actuators metadata allows a GCS to create a UI to configure and test actuato
 
 > **Note** The mechanism works similarly to [camera definition files](../services/camera_def.md).
 > It can be used for flight stacks that allow outputs and geometry definition to be configured using parameters.
-> If flight stack outputs or geometries cannot be configured using parameters, it can still be used to display the current geometry and outpu mappings and to test outputs.
+> If flight stack outputs or geometries cannot be configured using parameters, the mechanism can still be used to display the current geometry and output mappings, and to test outputs.
 
 The definition contains information about actuator output drivers (e.g. PWM MAIN or UAVCAN), the functions that can be assigned to each output channel, supported geometries, and their configuration parameters.
 Detailed information can be found in the [schema file](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.schema.json), and there's also an [example](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.example.json).
