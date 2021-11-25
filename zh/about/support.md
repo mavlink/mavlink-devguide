@@ -36,6 +36,4 @@ MAVLink 的开发者，使用公司及周围社区会定期举办会议，来定
 每逢双周热线会覆盖亚欧地区（当需要时，会为欧美 PST 时区的用户预留通话时间）。
 
 - **Call:** <https://meet.jit.si/mavlink>
-- **Time:** Wednesday 11:00AM CET, 5:00 PM China, 7:00PM ACT
-
-> **Tip** 电话号码可在 *Dronecode 日历* 的[MAVLink Co-ordination](https://www.dronecode.org/calendar/) 中找到。
+- **Time:** See [Dronecode calendar](https://www.dronecode.org/calendar/)
