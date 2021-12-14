@@ -100,16 +100,30 @@ In this case, the GCS will automatically build a drop down list with the options
 
 > **Note** These parameters are common to many cameras (though their valid options vary considerably).
 
-| 参数             | 描述                   |
-| -------------- | -------------------- |
-| CAM_APERTURE   | 光圈                   |
-| CAM_EV         | 曝光补偿(通常只用于自动曝光模式)    |
-| CAM_EXPMODE    | 曝光模式(手动，自动，程序，光圈优先等) |
-| CAM_ISO        | 感光度                  |
-| CAM_METERING   | 测光模式                 |
-| CAM_SHUTTERSPD | 快门速度                 |
-| CAM_VIDRES     | 视频分辨率(只用于视频捕获)       |
-| CAM_WBMODE     | 白平衡模式                |
+| Parameter        | Description                                                            |
+| ---------------- | ---------------------------------------------------------------------- |
+| CAM_APERTURE     | Aperture                                                               |
+| CAM_EV           | Exposure Compensation (usually only used for automatic exposure modes) |
+| CAM_VIDEV        | Exposure compensation (Video)                                          |
+| CAM_PHOTOEV      | Exposure compensation (Photo)                                          |
+| CAM_EXPMODE      | Exposure Mode (Manual, Auto, Program Auto, Aperture Priority, etc.)    |
+| CAM_ISO          | ISO                                                                    |
+| CAM_VIDISO       | ISO (Video)                                                            |
+| CAM_PHOTOISO     | ISO (Photo)                                                            |
+| CAM_METERING     | Metering Mode                                                          |
+| CAM_SHUTTERSPD   | Shutter speed                                                          |
+| CAM_VIDSHUTSPD   | Shutter speed (Video)                                                  |
+| CAM_PHOTOSHUTSPD | Shutter speed (Photo)                                                  |
+| CAM_VIDRES       | Video Resolution (Video)                                               |
+| CAM_WBMODE       | White Balance Mode                                                     |
+| CAM_VIDSTREAM    | Video stream selection (video playback)                                |
+| CAM_VIDFPS       | Video frame rate (video capture)                                       |
+| CAM_VIDFOV       | Video field of view (video capture)                                    |
+| CAM_VIDFMT       | Video encoding format                                                  |
+| CAM_PHOTORATIO   | Photo Aspect Ratio                                                     |
+| CAM_PHOTOFMT     | Photo image (saving) format                                            |
+| CAM_PHOTOSIZE    | Photo size                                                             |
+| CAM_PHOTOQUAL    | Photo image (saving) quality (for compressed modes)                    |
 
 #### 排除(某些参数) 的语法
 

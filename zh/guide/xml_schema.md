@@ -161,19 +161,22 @@ The `<param>` tag is used in the [MAV_CMD](../messages/common.md#mav_commands) e
 
 ```xml
     <message id="147" name="BATTERY_STATUS">
-      <description>Battery information</description>
-      <field type="uint8_t" name="id">Battery ID</field>
+      <description>Battery information. Updates GCS with flight controller battery status. Smart batteries also use this message, but may additionally send SMART_BATTERY_INFO.</description>
+      <field type="uint8_t" name="id" instance="true">Battery ID</field>
       <field type="uint8_t" name="battery_function" enum="MAV_BATTERY_FUNCTION">Function of the battery</field>
       <field type="uint8_t" name="type" enum="MAV_BATTERY_TYPE">Type (chemistry) of the battery</field>
-      <field type="int16_t" name="temperature" units="cdegC">Temperature of the battery. INT16_MAX for unknown temperature.</field>
-      <field type="uint16_t[10]" name="voltages" units="mV">Battery voltage of cells. Cells above the valid cell count for this battery should have the UINT16_MAX value.</field>
-      <field type="int16_t" name="current_battery" units="cA">Battery current, -1: autopilot does not measure the current</field>
-      <field type="int32_t" name="current_consumed" units="mAh">Consumed charge, -1: autopilot does not provide consumption estimate</field>
-      <field type="int32_t" name="energy_consumed" units="hJ">Consumed energy, -1: autopilot does not provide energy consumption estimate</field>
-      <field type="int8_t" name="battery_remaining" units="%">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</field>
+      <field type="int16_t" name="temperature" units="cdegC" invalid="INT16_MAX">Temperature of the battery. INT16_MAX for unknown temperature.</field>
+      <field type="uint16_t[10]" name="voltages" units="mV" invalid="[UINT16_MAX]">Battery voltage of cells 1 to 10 (see voltages_ext for cells 11-14). Cells in this field above the valid cell count for this battery should have the UINT16_MAX value. If individual cell voltages are unknown or not measured for this battery, then the overall battery voltage should be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining voltage. This can be extended to multiple cells if the total voltage is greater than 2 * (UINT16_MAX - 1).</field>
+      <field type="int16_t" name="current_battery" units="cA" invalid="-1">Battery current, -1: autopilot does not measure the current</field>
+      <field type="int32_t" name="current_consumed" units="mAh" invalid="-1">Consumed charge, -1: autopilot does not provide consumption estimate</field>
+      <field type="int32_t" name="energy_consumed" units="hJ" invalid="-1">Consumed energy, -1: autopilot does not provide energy consumption estimate</field>
+      <field type="int8_t" name="battery_remaining" units="%" invalid="-1">Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery.</field>
       <extensions/>
-      <field type="int32_t" name="time_remaining" units="s">Remaining battery time, 0: autopilot does not provide remaining battery time estimate</field>
+      <field type="int32_t" name="time_remaining" units="s" invalid="0">Remaining battery time, 0: autopilot does not provide remaining battery time estimate</field>
       <field type="uint8_t" name="charge_state" enum="MAV_BATTERY_CHARGE_STATE">State for extent of discharge, provided by autopilot for warning or external reactions</field>
+      <field type="uint16_t[4]" name="voltages_ext" units="mV" invalid="[0]">Battery voltages for cells 11 to 14. Cells above the valid cell count for this battery should have a value of 0, where zero indicates not supported (note, this is different than for the voltages field and allows empty byte truncation). If the measured value is 0 then 1 should be sent instead.</field>
+      <field type="uint8_t" name="mode" enum="MAV_BATTERY_MODE">Battery mode. Default (0) is that battery mode reporting is not supported or battery is in normal-use mode.</field>
+      <field type="uint32_t" name="fault_bitmask" display="bitmask" enum="MAV_BATTERY_FAULT">Fault/health indications. These should be set when charge_state is MAV_BATTERY_CHARGE_STATE_FAILED or MAV_BATTERY_CHARGE_STATE_UNHEALTHY (if not, fault reporting is not supported).</field>
     </message>
 ```
 
@@ -189,7 +192,8 @@ The `<param>` tag is used in the [MAV_CMD](../messages/common.md#mav_commands) e
       - 255以下所有值都被认为是保留的，除非报文也打算用于 MAVLink 1。 >**注意** ID 在 MAVLink 1 中很宝贵！
    - `name`：名称属性为消息提供了人类可读的表格 (比如 "BATERY_STATUS") 它用于在生成的库命名辅助功能，但并没有通过总线发送。
 - `description`(可选)：用户界面和代码评论中显示的信息可读描述。 这应当包含所有信息（以及超链接），以便充分了解信息。
-- `field`: 编码消息的一个字段。 字段值是 GUI 文档中使用的名称/文本字符串(但不通过总线发送)。 
+- `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire).
+   
    - `type`: 类似于 C `struct` - 存储/代表数据类型所需数据大小。 
       - 字段可签名/无签名，大小 8、16、23、64位(`{u)int8_t`, `(u)int16_t`, `(u>(u)int 32_t`, `(u>(u)int64_int`), 单一/双精度精度IEEE754 浮点数。 它们也可以是其他类型——例如`uint16_t[10]`。 
    - `name`：字段名称 (在代码中使用)。
@@ -198,8 +202,23 @@ The `<param>` tag is used in the [MAV_CMD](../messages/common.md#mav_commands) e
    - `display`(可选)：这应当设置为 `display="bitmask"` 用于 bitsword 字段 (指向必须作为复选框显示数字的地面站)。
    - `print_format`(可选)：TBD。
    - `default`(可选)：TBD。
-   - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`. > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series. 
-- [deprecated](#deprecated)/[wip](#wip)(可选)：一个标签，表明该消息已被废弃或“正在进行中的工作”。
+   - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`.
+      
+      > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
+   
+   - `invalid`: Specifies a value that can be set on a field to indicate that the data is *invalid*: the recipient should ignore the field if it has this value. For example, `BATTERY_STATUS.current_battery` specifies `invalid="-1"`, so a battery that does not measure supplied *current* should set `BATTERY_STATUS.current_battery` to `-1`.
+      
+      Where possible the value that indicates the field is invalid should be selected to outside the expected/valid range of the field (`0` is preferred if it is not an acceptable value for the field). For integers we usually select the largest possible value (i.e. `UINT16_MAX`, `INT16_MAX`, `UINT8_MAX`, `UINT8_MAX`). For floats we usually select `invalid="NaN"`.
+      
+      Arrays represent multiple elements, some (or all) of which may need to be marked as `invalid`. The following notation is used to specify the values that indicate elements of the array are invalid:
+      
+      - `invalid="[value]"`: Array elements that contain `value` are invalid.
+      - `invalid="[value:]"`: All array elements are invalid if the *first* array element is set to `value`.
+      - `invalid="[value1,,value3,]"`: Array elements are invalid if they contain the value specified in the corresponding position of the comma separated list. If the a position in the list is empty, there is no way to indicate the corresponding array element is invalid. The example above indicates that elements 1 and 3 are invalid if they contain `value1` and `value3`, respectively. For element 2 and any elements >4 the invalid property of the field cannot be set.
+      - `invalid="[value1,]"`: The first array element is invalid if it contains `value1`: the invalid property cannot be set for all other elements.
+
+- [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the message is deprecated or "work in progress".
+
 - `扩展` (可选)：此自闭标签被用于表明随后的字段仅适用于 MAVLink 2。 
    - 标记应该用于MAVLink 1 信息 (id < 256) 已扩展到MAVLink2。 
 

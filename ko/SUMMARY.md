@@ -46,13 +46,13 @@
     * [uAvionix.xml](messages/uAvionix.md)
     * [ualberta.xml](messages/ualberta.md)
 * [메세지 (공통)](messages/common.md)
-* [Microservices](services/README.md)
-  
+* [Microservices](services/README.md) 
   * [주기 신호/연결 프로토콜](services/heartbeat.md)
   * [미션 프로토콜](services/mission.md)
   * [매개변수 프로토콜](services/parameter.md)
   * [Extended Parameter Protocol](services/parameter_ext.md)
   * [Command Protocol](services/command.md)
+  * [Manual Control (Joystick) Protocol](services/manual_control.md)
   * [Camera Protocol](services/camera.md) 
     * [Camera Definition](services/camera_def.md)
   * [Gimbal Protocol v2](services/gimbal_v2.md) 
@@ -69,7 +69,8 @@
   * [Open Drone ID Protocol (WIP)](services/opendroneid.md)
   * [High Latency Protocol](services/high_latency.md)
   * [Component Information Protocol (WIP)](services/component_information.md)
-
+  * [Payload Protocols](services/payload.md)
+  * [Traffic Managment (UTM/ADS-B)](services/traffic_management.md)
+  * [Events Interface (WIP)](services/events.md)
 * [Contributing](contributing/contributing.md)
-
 * [지원](about/support.md)

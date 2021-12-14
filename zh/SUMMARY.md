@@ -46,13 +46,13 @@
     * [uAvionix.xml](messages/uAvionix.md)
     * [ualberta.xml](messages/ualberta.md)
 * [Messages (common)](messages/common.md)
-* [Microservices](services/README.md)
-  
+* [Microservices](services/README.md) 
   * [Heartbeat/Connection Protocol](services/heartbeat.md)
   * [Mission Protocol](services/mission.md)
   * [Parameter Protocol](services/parameter.md)
   * [Extended Parameter Protocol](services/parameter_ext.md)
   * [Command Protocol](services/command.md)
+  * [Manual Control (Joystick) Protocol](services/manual_control.md)
   * [Camera Protocol](services/camera.md) 
     * [Camera Definition](services/camera_def.md)
   * [Gimbal Protocol v2](services/gimbal_v2.md) 
@@ -69,7 +69,8 @@
   * [Open Drone ID Protocol (WIP)](services/opendroneid.md)
   * [High Latency Protocol](services/high_latency.md)
   * [Component Information Protocol (WIP)](services/component_information.md)
-
+  * [Payload Protocols](services/payload.md)
+  * [Traffic Managment (UTM/ADS-B)](services/traffic_management.md)
+  * [Events Interface (WIP)](services/events.md)
 * [Contributing](contributing/contributing.md)
-
 * [Support](about/support.md)

@@ -8,7 +8,7 @@ This topic shows how to use the two code generators provided with the MAVLink pr
 
 <span></span>
 
-> **Tip** Generators for other programming languages are supported and documented in independent progects. For more information see [Supported Languages](../README.md#supported_languages).
+> **Tip** Generators for other programming languages are supported and documented in independent projects. For more information see [Supported Languages](../README.md#supported_languages).
 
 ## 先决条件
 
