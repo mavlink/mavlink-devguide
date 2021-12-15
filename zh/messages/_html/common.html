@@ -9040,7 +9040,7 @@
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
    </strong>
-   <p>MAVLink 指令（MAV_CMD）和消息是不同的！ 这个命令在“任务协议”和“指令协议”中定义了最多7个参数的值，并将其嵌入在特定消息中。 使用该指令模式执行任务或者需要获取确认反馈信息时，请根据返回内容使用重新发送逻辑 否则使用mavlink的message。</p>
+   <p>MAVLink commands (MAV_CMD) and messages are different! 这个命令在“任务协议”和“指令协议”中定义了最多7个参数的值，并将其嵌入在特定消息中。 使用该指令模式执行任务或者需要获取确认反馈信息时，请根据返回内容使用重新发送逻辑 否则使用mavlink的message。</p>
   </blockquote>
   <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. NaN and INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current yaw or latitude rather than a specific value). See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the <a href="#mav_commands">MAV_CMD</a> entries</p>
   <h3 id="MAV_CMD_NAV_WAYPOINT">MAV_CMD_NAV_WAYPOINT (<a href="#MAV_CMD_NAV_WAYPOINT">16</a>
