@@ -90,11 +90,11 @@
   </table>
   <a id="MAV_CMD">
   </a>
-  <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
+  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
    </strong>
-   <p>MAVLink commands (<a href="#mav_commands">MAV_CMD</a>) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
   </blockquote>
   <p>
   </p>
@@ -190,7 +190,7 @@
   </table>
   <h2 id="messages">MAVLink Messages</h2>
   <h3 id="COMMAND_INT_STAMPED">COMMAND_INT_STAMPED (<a href="#COMMAND_INT_STAMPED">
-    #223
+    #78
    </a>
    )
   </h3>
@@ -318,7 +318,7 @@
    </tbody>
   </table>
   <h3 id="COMMAND_LONG_STAMPED">COMMAND_LONG_STAMPED (<a href="#COMMAND_LONG_STAMPED">
-    #224
+    #79
    </a>
    )
   </h3>
@@ -431,17 +431,14 @@
    </tbody>
   </table>
   <h3 id="SENS_POWER">SENS_POWER (<a href="#SENS_POWER">
-    #8002
+    #201
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Voltage and current sensor data</p>
+   </a>Voltage and current sensor data</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -479,17 +476,14 @@
    </tbody>
   </table>
   <h3 id="SENS_MPPT">SENS_MPPT (<a href="#SENS_MPPT">
-    #8003
+    #202
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Maximum Power Point Tracker (MPPT) sensor data for solar module power performance tracking</p>
+   </a>Maximum Power Point Tracker (MPPT) sensor data for solar module power performance tracking</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -584,17 +578,14 @@
    </tbody>
   </table>
   <h3 id="ASLCTRL_DATA">ASLCTRL_DATA (<a href="#ASLCTRL_DATA">
-    #8004
+    #203
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>ASL-fixed-wing controller data</p>
+   </a>ASL-fixed-wing controller data</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -790,17 +781,14 @@
    </tbody>
   </table>
   <h3 id="ASLCTRL_DEBUG">ASLCTRL_DEBUG (<a href="#ASLCTRL_DEBUG">
-    #8005
+    #204
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>ASL-fixed-wing controller debug data</p>
+   </a>ASL-fixed-wing controller debug data</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -868,17 +856,14 @@
    </tbody>
   </table>
   <h3 id="ASLUAV_STATUS">ASLUAV_STATUS (<a href="#ASLUAV_STATUS">
-    #8006
+    #205
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Extended state information for ASLUAVs</p>
+   </a>Extended state information for ASLUAVs</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -911,17 +896,14 @@
    </tbody>
   </table>
   <h3 id="EKF_EXT">EKF_EXT (<a href="#EKF_EXT">
-    #8007
+    #206
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Extended EKF state estimates for ASLUAVs</p>
+   </a>Extended EKF state estimates for ASLUAVs</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -977,17 +959,14 @@
    </tbody>
   </table>
   <h3 id="ASL_OBCTRL">ASL_OBCTRL (<a href="#ASL_OBCTRL">
-    #8008
+    #207
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Off-board controls/commands for ASLUAVs</p>
+   </a>Off-board controls/commands for ASLUAVs</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1056,17 +1035,14 @@
    </tbody>
   </table>
   <h3 id="SENS_ATMOS">SENS_ATMOS (<a href="#SENS_ATMOS">
-    #8009
+    #208
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Atmospheric sensors (temperature, humidity, ...)</p>
+   </a>Atmospheric sensors (temperature, humidity, ...)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1100,17 +1076,14 @@
    </tbody>
   </table>
   <h3 id="SENS_BATMON">SENS_BATMON (<a href="#SENS_BATMON">
-    #8010
+    #209
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Battery pack monitoring data for Li-Ion batteries</p>
+   </a>Battery pack monitoring data for Li-Ion batteries</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1219,17 +1192,14 @@
    </tbody>
   </table>
   <h3 id="FW_SOARING_DATA">FW_SOARING_DATA (<a href="#FW_SOARING_DATA">
-    #8011
+    #210
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Fixed-wing soaring (i.e. thermal seeking) data</p>
+   </a>Fixed-wing soaring (i.e. thermal seeking) data</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1404,17 +1374,14 @@
    </tbody>
   </table>
   <h3 id="SENSORPOD_STATUS">SENSORPOD_STATUS (<a href="#SENSORPOD_STATUS">
-    #8012
+    #211
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Monitoring of sensorpod status</p>
+   </a>Monitoring of sensorpod status</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1482,17 +1449,14 @@
    </tbody>
   </table>
   <h3 id="SENS_POWER_BOARD">SENS_POWER_BOARD (<a href="#SENS_POWER_BOARD">
-    #8013
+    #212
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Monitoring of power board status</p>
+   </a>Monitoring of power board status</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1580,17 +1544,14 @@
    </tbody>
   </table>
   <h3 id="GSM_LINK_STATUS">GSM_LINK_STATUS (<a href="#GSM_LINK_STATUS">
-    #8014
+    #213
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Status of GSM modem (connected to onboard computer)</p>
+   </a>Status of GSM modem (connected to onboard computer)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1669,17 +1630,14 @@
    </tbody>
   </table>
   <h3 id="SATCOM_LINK_STATUS">SATCOM_LINK_STATUS (<a href="#SATCOM_LINK_STATUS">
-    #8015
+    #214
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Status of the SatCom link</p>
+   </a>Status of the SatCom link</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1747,17 +1705,14 @@
    </tbody>
   </table>
   <h3 id="SENSOR_AIRFLOW_ANGLES">SENSOR_AIRFLOW_ANGLES (<a href="#SENSOR_AIRFLOW_ANGLES">
-    #8016
+    #215
    </a>
    )
   </h3>
   <p>
    <a href="#messages">
     [Message]
-   </a>
-   <strong>
-    (MAVLink 2)
-   </strong>Calibrated airflow angle measurements</p>
+   </a>Calibrated airflow angle measurements</p>
   <table class="sortable">
    <thead>
     <tr>
