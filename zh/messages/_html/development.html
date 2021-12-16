@@ -184,13 +184,71 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="COMPONENT_CAP_FLAGS1">COMPONENT_CAP_FLAGS1</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Component capability flags 1 (Bitmap)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="COMPONENT_CAP_FLAGS1_PARAM">
+     <td>1</td>
+     <td>
+      <a href="#COMPONENT_CAP_FLAGS1_PARAM">COMPONENT_CAP_FLAGS1_PARAM</a>
+     </td>
+     <td>Component has parameters, and supports the parameter protocol (PARAM messages).</td>
+    </tr>
+    <tr id="COMPONENT_CAP_FLAGS1_PARAM_EXT">
+     <td>2</td>
+     <td>
+      <a href="#COMPONENT_CAP_FLAGS1_PARAM_EXT">COMPONENT_CAP_FLAGS1_PARAM_EXT</a>
+     </td>
+     <td>Component has parameters, and supports the extended parameter protocol (<a href="#PARAM_EXT">PARAM_EXT</a> messages).</td>
+    </tr>
+    <tr id="COMPONENT_CAP_FLAGS1_COMPONENT_INFORMATION">
+     <td>4</td>
+     <td>
+      <a href="#COMPONENT_CAP_FLAGS1_COMPONENT_INFORMATION">COMPONENT_CAP_FLAGS1_COMPONENT_INFORMATION</a>
+     </td>
+     <td>Component supports the component information protocol.</td>
+    </tr>
+    <tr id="COMPONENT_CAP_FLAGS1_GIMBAL_V2">
+     <td>8</td>
+     <td>
+      <a href="#COMPONENT_CAP_FLAGS1_GIMBAL_V2">COMPONENT_CAP_FLAGS1_GIMBAL_V2</a>
+     </td>
+     <td>Component supports the gimbal v2 protocol.</td>
+    </tr>
+    <tr id="COMPONENT_CAP_FLAGS1_MAVLINK_FTP">
+     <td>16</td>
+     <td>
+      <a href="#COMPONENT_CAP_FLAGS1_MAVLINK_FTP">COMPONENT_CAP_FLAGS1_MAVLINK_FTP</a>
+     </td>
+     <td>Component supports the MAVLink FTP protocol.</td>
+    </tr>
+    <tr id="COMPONENT_CAP_FLAGS1_EVENTS_INTERFACE">
+     <td>32</td>
+     <td>
+      <a href="#COMPONENT_CAP_FLAGS1_EVENTS_INTERFACE">COMPONENT_CAP_FLAGS1_EVENTS_INTERFACE</a>
+     </td>
+     <td>Component supports the events interface protocol.</td>
+    </tr>
+   </tbody>
+  </table>
   <a id="MAV_CMD">
   </a>
-  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
    </strong>
-   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+   <p>MAVLink commands (<a href="#mav_commands">MAV_CMD</a>) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
   </blockquote>
   <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. NaN and INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current yaw or latitude rather than a specific value). See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the <a href="#mav_commands">MAV_CMD</a> entries</p>
   <h3 id="MAV_CMD_PARAM_TRANSACTION">MAV_CMD_PARAM_TRANSACTION (<a href="#MAV_CMD_PARAM_TRANSACTION">900</a>
@@ -240,7 +298,7 @@
    </a>Sets the action on geofence breach.
           If sent using the command protocol this sets the system-default geofence action.
           As part of a mission protocol plan it sets the fence action for the next complete geofence definition *after* the command.
-          Note: A fence action defined in a plan will override the default system setting (even if the system-default is `FENCE_ACTION_NONE`).
+          Note: A fence action defined in a plan will override the default system setting (even if the system-default is `<a href="#FENCE_ACTION_NONE">FENCE_ACTION_NONE</a>`).
           Note: Every geofence in a plan can have its own action; if no fence action is defined for a particular fence the system-default will be used.
           Note: The flight stack should reject a plan or command that uses a geofence action that it does not support and send a STATUSTEXT with the reason.</p>
   <table class="sortable">
@@ -523,7 +581,7 @@
         The checksum uses the same CRC32 algorithm as MAVLink FTP (https://mavlink.io/en/services/ftp.html#crc32-implementation).
         The checksum for a mission, geofence or rally point definition is run over each item in the plan in seq order (excluding the home location if present in the plan), and covers the following fields (in order):
         frame, command, autocontinue, param1, param2, param3, param4, param5, param6, param7.
-        The checksum for the whole plan (MAV_MISSION_TYPE_ALL) is calculated using the same approach, running over each sub-plan in the following order: mission, geofence then rally point.</p>
+        The checksum for the whole plan (<a href="#MAV_MISSION_TYPE_ALL">MAV_MISSION_TYPE_ALL</a>) is calculated using the same approach, running over each sub-plan in the following order: mission, geofence then rally point.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -706,6 +764,85 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="COMPONENT_INFORMATION_BASIC">COMPONENT_INFORMATION_BASIC (<a href="#COMPONENT_INFORMATION_BASIC">
+    #396
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Basic component information data.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>vendor_name</td>
+     <td>uint8_t[32]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Name of the component vendor</td>
+    </tr>
+    <tr>
+     <td>model_name</td>
+     <td>uint8_t[32]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Name of the component model</td>
+    </tr>
+    <tr>
+     <td>software_version</td>
+     <td>char[24]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Sofware version. The version format can be custom, recommended is SEMVER 'major.minor.patch'.</td>
+    </tr>
+    <tr>
+     <td>hardware_version</td>
+     <td>char[24]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Hardware version. The version format can be custom, recommended is SEMVER 'major.minor.patch'.</td>
+    </tr>
+    <tr>
+     <td>component_cap_flags1</td>
+     <td>uint64_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#COMPONENT_CAP_FLAGS1">COMPONENT_CAP_FLAGS1</a>
+     </td>
+     <td>Component capability flags 1 (this is called 1, so that number 2 could be added in the future).</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="GROUP_START">GROUP_START (<a href="#GROUP_START">
     #414
    </a>
@@ -733,7 +870,7 @@
      <td>uint32_t</td>
      <td>
      </td>
-     <td>Mission-unique group id (from MAV_CMD_GROUP_START).</td>
+     <td>Mission-unique group id (from <a href="#MAV_CMD_GROUP_START">MAV_CMD_GROUP_START</a>).</td>
     </tr>
     <tr>
      <td>mission_checksum</td>
@@ -778,7 +915,7 @@
      <td>uint32_t</td>
      <td>
      </td>
-     <td>Mission-unique group id (from MAV_CMD_GROUP_END).</td>
+     <td>Mission-unique group id (from <a href="#MAV_CMD_GROUP_END">MAV_CMD_GROUP_END</a>).</td>
     </tr>
     <tr>
      <td>mission_checksum</td>
