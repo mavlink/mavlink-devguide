@@ -2,7 +2,7 @@
 
 > **Warning** This service is still marked as "work in progress", and should not be relied upon in production.
 
-The *Component Information Protocol* is a MAVLink service for requesting information from (and about) MAVLink components. 
+The *Component Information Protocol* is a MAVLink service for requesting information from (and about) MAVLink components.
 It is intended to provide autopilot- and version- independent feature discovery and configuration, allowing a GCS to configure its UI and/or a device without knowing anything about the connected system.
 
 Information shared using this service may include:
@@ -13,7 +13,7 @@ Information shared using this service may include:
 - Self-describing configuration UIs (i.e. similar to MAVLink camera configuration files).
 - Translations of other metadata.
 
-Component information is specified in [approriately formatted JSON  files](#schema_files) (which may be [**.xz** compressed](#file-compression)).
+Component information is specified in [appropriately formatted JSON  files](#schema_files) (which may be [**.xz** compressed](#file-compression)).
 The component information protocol is used to request the location of the [general metadata file](#COMP_METADATA_TYPE_GENERAL) file, which is then parsed to get the location of most other [metadata files](#schema_files) supported by the component.
 
 Information supplied by the service is assumed to be invariant after boot.
@@ -85,7 +85,7 @@ The [general metadata file](#COMP_METADATA_TYPE_GENERAL) similarly provides both
 Component information files may be **.xz** compressed (this is recommended for files that are hosted on the device).
 
 > **Note** The prototype implementation generates and compresses component information files at build time.
-  No compression library is required within the flight stack itself. 
+  No compression library is required within the flight stack itself.
 
 <span></span>
 > **Warning** Systems that *request* component information **must** support extraction of **.xz**-compressed JSON files.
@@ -132,7 +132,7 @@ In summary:
      - the GCS checks if `COMPONENT_INFORMATION.general_metadata_file_crc` matches its cached CRC value.
        If so, there is no need to download the [general metadata file](#COMP_METADATA_TYPE_GENERAL) (or other files it references) as it has not changed since the last download.
 	 - the GCS checks if `COMPONENT_INFORMATION.peripherals_metadata_uri` if supplied, and (if so) whether the `peripherals_metadata_file_crc` field matches the cached value.
-	 
+
 	 If the cached values do not match the associated files should be downloaded and parsed ....
 1. GCS downloads the file specified in the `general_metadata_uri` using MAVLink FTP.
 1. GCS parses the general metadata for other supported metadata locations, and then downloads the files via MAVFTP or HTTP(s).
