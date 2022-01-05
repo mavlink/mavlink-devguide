@@ -12,7 +12,7 @@ Information shared using this service may include:
 - Self-describing configuration UIs (i.e. similar to MAVLink camera configuration files).
 - Translations of other metadata.
 
-Component information is specified in [approriately formatted JSON  files](#schema_files) (which may be [**.xz** compressed](#file-compression)). The component information protocol is used to request the location of the [general metadata file](#COMP_METADATA_TYPE_GENERAL) file, which is then parsed to get the location of most other [metadata files](#schema_files) supported by the component.
+Component information is specified in [appropriately formatted JSON  files](#schema_files) (which may be [**.xz** compressed](#file-compression)). The component information protocol is used to request the location of the [general metadata file](#COMP_METADATA_TYPE_GENERAL) file, which is then parsed to get the location of most other [metadata files](#schema_files) supported by the component.
 
 Information supplied by the service is assumed to be invariant after boot. There is no mechanism, for example, to provide an update if the set of supported parameters was to change after boot.
 
@@ -75,7 +75,7 @@ The [general metadata file](#COMP_METADATA_TYPE_GENERAL) similarly provides both
 
 Component information files may be **.xz** compressed (this is recommended for files that are hosted on the device).
 
-> **Note** The prototype implementation generates and compresses component information files at build time. No compression library is required within the flight stack itself. 
+> **Note** The prototype implementation generates and compresses component information files at build time. No compression library is required within the flight stack itself.
 
 <span></span>
 > **Warning** Systems that *request* component information **must** support extraction of **.xz**-compressed JSON files.
