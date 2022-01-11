@@ -190,6 +190,20 @@
      </td>
      <td>End a REPL session.</td>
     </tr>
+    <tr id="SCRIPTING_CMD_STOP">
+     <td>2</td>
+     <td>
+      <a href="#SCRIPTING_CMD_STOP">SCRIPTING_CMD_STOP</a>
+     </td>
+     <td>Stop execution of scripts.</td>
+    </tr>
+    <tr id="SCRIPTING_CMD_STOP_AND_RESTART">
+     <td>3</td>
+     <td>
+      <a href="#SCRIPTING_CMD_STOP_AND_RESTART">SCRIPTING_CMD_STOP_AND_RESTART</a>
+     </td>
+     <td>Stop execution of scripts and restart.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="LIMITS_STATE">LIMITS_STATE</h3>
@@ -4480,6 +4494,65 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_NAV_SCRIPT_TIME">MAV_CMD_NAV_SCRIPT_TIME (<a href="#MAV_CMD_NAV_SCRIPT_TIME">42702</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Scripting command as NAV command with wait for completion.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: command</td>
+     <td>integer command number (0 to 255)</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>2: timeout</td>
+     <td>timeout for operation in seconds. Zero means no timeout (0 to 255)</td>
+     <td>s</td>
+    </tr>
+    <tr>
+     <td>3: arg1</td>
+     <td>argument1.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4: arg2</td>
+     <td>argument2.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_GUIDED_CHANGE_SPEED">MAV_CMD_GUIDED_CHANGE_SPEED (<a href="#MAV_CMD_GUIDED_CHANGE_SPEED">43000</a>
    )
   </h3>
@@ -4861,7 +4934,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>State of APM memory.</p>
+   </a>State of autopilot RAM.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -5243,13 +5316,14 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Message with some status from APM to GCS about camera or antenna mount.</p>
+   </a>Message with some status from autopilot to GCS about camera or antenna mount.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Field Name</th>
      <th>Type</th>
      <th>Units</th>
+     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -5259,11 +5333,15 @@
      <td>uint8_t</td>
      <td>
      </td>
+     <td>
+     </td>
      <td>System ID.</td>
     </tr>
     <tr>
      <td>target_component</td>
      <td>uint8_t</td>
+     <td>
+     </td>
      <td>
      </td>
      <td>Component ID.</td>
@@ -5272,19 +5350,38 @@
      <td>pointing_a</td>
      <td>int32_t</td>
      <td>cdeg</td>
+     <td>
+     </td>
      <td>Pitch.</td>
     </tr>
     <tr>
      <td>pointing_b</td>
      <td>int32_t</td>
      <td>cdeg</td>
+     <td>
+     </td>
      <td>Roll.</td>
     </tr>
     <tr>
      <td>pointing_c</td>
      <td>int32_t</td>
      <td>cdeg</td>
+     <td>
+     </td>
      <td>Yaw.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">mount_mode<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_MOUNT_MODE">MAV_MOUNT_MODE</a>
+     </td>
+     <td>Mount operating mode.</td>
     </tr>
    </tbody>
   </table>
