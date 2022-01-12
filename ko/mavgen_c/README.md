@@ -26,7 +26,7 @@ This will automatically add the header files for all messages in your dialect, a
 
 > **Warning** Only include the header file for a single dialect. If you need to support messages from a *number of dialects* then create a new "parent" dialect XML file that includes them (and use its generated header as shown above).
 
-<span></span>
+<a></a>
 
 > **Tip** *Do not include the individual message files*. If you generate your own headers, you will have to add their output location to your C compiler's search path.
 
@@ -47,13 +47,17 @@ mavlink_system_t mavlink_system = {
 
 ### Build Warnings
 
+#### `-Waddress-of-packed-member`
+
 Building the headers may result in warnings like:
 
     mavlink/common/../mavlink_helpers.h:86:24: warning: taking address of packed member of ‘__mavlink_message’ may result in an unaligned pointer value [-Waddress-of-packed-member]
        86 |  crc_accumulate_buffer(&msg->checksum, _MAV_PAYLOAD(msg), msg->len);
     
 
-These warnings are commonly suppressed/ignored. For example, you can do this in CMake using `target_compile_options(mavlink_c INTERFACE -Wno-address-of-packed-member -Wno-cast-align)`
+These can be ignored because MAVLink re-orders packed structures such that values are properly aligned. Specifically all 4-byte values are aligned on 4-byte boundaries (by putting them first), all 2-byte values come after those and are hence also aligned, and last of all come the the 1-byte values.
+
+You can supress the warnings in CMake using `target_compile_options(mavlink_c INTERFACE -Wno-address-of-packed-member -Wno-cast-align)`.
 
 ## Upgrading Library from MAVLink 1
 
