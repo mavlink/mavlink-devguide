@@ -1,0 +1,1960 @@
+<html>
+ <body>
+  <p>
+   <strong>MAVLink Include Files:</strong>
+   <a href="ardupilotmega.md">ardupilotmega.xml</a>
+  </p>
+  <h2>MAVLink Protocol Version</h2>
+  <p>The current MAVLink version is 2.1. The minor version numbers (after the dot) range from 1-255.</p>
+  <p>This file has protocol dialect: 0.</p>
+  <h2 id="enums">MAVLink Type Enumerations</h2>
+  <h3 id="MAV_STORM32_TUNNEL_PAYLOAD_TYPE">MAV_STORM32_TUNNEL_PAYLOAD_TYPE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH1_IN">
+     <td>200</td>
+     <td>
+      <a href="#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH1_IN">MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH1_IN</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH1_OUT">
+     <td>201</td>
+     <td>
+      <a href="#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH1_OUT">MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH1_OUT</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH2_IN">
+     <td>202</td>
+     <td>
+      <a href="#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH2_IN">MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH2_IN</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH2_OUT">
+     <td>203</td>
+     <td>
+      <a href="#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH2_OUT">MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH2_OUT</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH3_IN">
+     <td>204</td>
+     <td>
+      <a href="#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH3_IN">MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH3_IN</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH3_OUT">
+     <td>205</td>
+     <td>
+      <a href="#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH3_OUT">MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH3_OUT</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED6">
+     <td>206</td>
+     <td>
+      <a href="#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED6">MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED6</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED7">
+     <td>207</td>
+     <td>
+      <a href="#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED7">MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED7</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED8">
+     <td>208</td>
+     <td>
+      <a href="#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED8">MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED8</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+    <tr id="MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9">
+     <td>209</td>
+     <td>
+      <a href="#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9">MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9</a>
+     </td>
+     <td>Registered for STorM32 gimbal controller.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_STORM32_GIMBAL_PREARM_FLAGS">MAV_STORM32_GIMBAL_PREARM_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>STorM32 gimbal prearm check flags.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_IS_NORMAL">
+     <td>1</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_IS_NORMAL">MAV_STORM32_GIMBAL_PREARM_FLAGS_IS_NORMAL</a>
+     </td>
+     <td>STorM32 gimbal is in normal state.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_IMUS_WORKING">
+     <td>2</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_IMUS_WORKING">MAV_STORM32_GIMBAL_PREARM_FLAGS_IMUS_WORKING</a>
+     </td>
+     <td>The IMUs are healthy and working normally.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_MOTORS_WORKING">
+     <td>4</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_MOTORS_WORKING">MAV_STORM32_GIMBAL_PREARM_FLAGS_MOTORS_WORKING</a>
+     </td>
+     <td>The motors are active and working normally.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_ENCODERS_WORKING">
+     <td>8</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_ENCODERS_WORKING">MAV_STORM32_GIMBAL_PREARM_FLAGS_ENCODERS_WORKING</a>
+     </td>
+     <td>The encoders are healthy and working normally.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_VOLTAGE_OK">
+     <td>16</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_VOLTAGE_OK">MAV_STORM32_GIMBAL_PREARM_FLAGS_VOLTAGE_OK</a>
+     </td>
+     <td>A battery voltage is applied and is in range.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_VIRTUALCHANNELS_RECEIVING">
+     <td>32</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_VIRTUALCHANNELS_RECEIVING">MAV_STORM32_GIMBAL_PREARM_FLAGS_VIRTUALCHANNELS_RECEIVING</a>
+     </td>
+     <td>
+      ???.
+     </td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_MAVLINK_RECEIVING">
+     <td>64</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_MAVLINK_RECEIVING">MAV_STORM32_GIMBAL_PREARM_FLAGS_MAVLINK_RECEIVING</a>
+     </td>
+     <td>Mavlink messages are being received.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_STORM32LINK_QFIX">
+     <td>128</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_STORM32LINK_QFIX">MAV_STORM32_GIMBAL_PREARM_FLAGS_STORM32LINK_QFIX</a>
+     </td>
+     <td>The STorM32Link data indicates QFix.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_STORM32LINK_WORKING">
+     <td>256</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_STORM32LINK_WORKING">MAV_STORM32_GIMBAL_PREARM_FLAGS_STORM32LINK_WORKING</a>
+     </td>
+     <td>The STorM32Link is working.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_CAMERA_CONNECTED">
+     <td>512</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_CAMERA_CONNECTED">MAV_STORM32_GIMBAL_PREARM_FLAGS_CAMERA_CONNECTED</a>
+     </td>
+     <td>The camera has been found and is connected.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_AUX0_LOW">
+     <td>1024</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_AUX0_LOW">MAV_STORM32_GIMBAL_PREARM_FLAGS_AUX0_LOW</a>
+     </td>
+     <td>The signal on the AUX0 input pin is low.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_AUX1_LOW">
+     <td>2048</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_AUX1_LOW">MAV_STORM32_GIMBAL_PREARM_FLAGS_AUX1_LOW</a>
+     </td>
+     <td>The signal on the AUX1 input pin is low.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_PREARM_FLAGS_NTLOGGER_WORKING">
+     <td>4096</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_PREARM_FLAGS_NTLOGGER_WORKING">MAV_STORM32_GIMBAL_PREARM_FLAGS_NTLOGGER_WORKING</a>
+     </td>
+     <td>The NTLogger is working normally.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_STORM32_CAMERA_PREARM_FLAGS">MAV_STORM32_CAMERA_PREARM_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>STorM32 camera prearm check flags.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_STORM32_CAMERA_PREARM_FLAGS_CONNECTED">
+     <td>1</td>
+     <td>
+      <a href="#MAV_STORM32_CAMERA_PREARM_FLAGS_CONNECTED">MAV_STORM32_CAMERA_PREARM_FLAGS_CONNECTED</a>
+     </td>
+     <td>The camera has been found and is connected.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal device capability flags.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT">
+     <td>1</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT</a>
+     </td>
+     <td>Gimbal device supports a retracted position.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL">
+     <td>2</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL</a>
+     </td>
+     <td>Gimbal device supports a horizontal, forward looking position, stabilized. Can also be used to reset the gimbal's orientation.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS">
+     <td>4</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_AXIS</a>
+     </td>
+     <td>Gimbal device supports rotating around roll axis.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW">
+     <td>8</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_FOLLOW</a>
+     </td>
+     <td>Gimbal device supports to follow a roll angle relative to the vehicle.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK">
+     <td>16</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_ROLL_LOCK</a>
+     </td>
+     <td>Gimbal device supports locking to an roll angle (generally that's the default).</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS">
+     <td>32</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_AXIS</a>
+     </td>
+     <td>Gimbal device supports rotating around pitch axis.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW">
+     <td>64</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_FOLLOW</a>
+     </td>
+     <td>Gimbal device supports to follow a pitch angle relative to the vehicle.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK">
+     <td>128</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_PITCH_LOCK</a>
+     </td>
+     <td>Gimbal device supports locking to an pitch angle (generally that's the default).</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS">
+     <td>256</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_AXIS</a>
+     </td>
+     <td>Gimbal device supports rotating around yaw axis.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW">
+     <td>512</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_FOLLOW</a>
+     </td>
+     <td>Gimbal device supports to follow a yaw angle relative to the vehicle (generally that's the default).</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK">
+     <td>1024</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_YAW_LOCK</a>
+     </td>
+     <td>Gimbal device supports locking to a heading angle.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_INFINITE_YAW">
+     <td>2048</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_INFINITE_YAW">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_INFINITE_YAW</a>
+     </td>
+     <td>Gimbal device supports yawing/panning infinitely (e.g. using a slip ring).</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_ABSOLUTE_YAW">
+     <td>65536</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_ABSOLUTE_YAW">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_ABSOLUTE_YAW</a>
+     </td>
+     <td>Gimbal device supports absolute yaw angles (this usually requires support by an autopilot, and can be dynamic, i.e., go on and off during runtime).</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_RC">
+     <td>131072</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_RC">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS_HAS_RC</a>
+     </td>
+     <td>Gimbal device supports control via an RC input signal.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_STORM32_GIMBAL_DEVICE_FLAGS">MAV_STORM32_GIMBAL_DEVICE_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags for gimbal device operation. Used for setting and reporting, unless specified otherwise. Settings which are in violation of the capability flags are ignored by the gimbal device.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_FLAGS_RETRACT">
+     <td>1</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS_RETRACT">MAV_STORM32_GIMBAL_DEVICE_FLAGS_RETRACT</a>
+     </td>
+     <td>Retracted safe position (no stabilization), takes presedence over NEUTRAL flag. If supported by the gimbal, the angles in the retracted position can be set in addition.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_FLAGS_NEUTRAL">
+     <td>2</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS_NEUTRAL">MAV_STORM32_GIMBAL_DEVICE_FLAGS_NEUTRAL</a>
+     </td>
+     <td>Neutral position (horizontal, forward looking, with stabiliziation).</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_FLAGS_ROLL_LOCK">
+     <td>4</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS_ROLL_LOCK">MAV_STORM32_GIMBAL_DEVICE_FLAGS_ROLL_LOCK</a>
+     </td>
+     <td>Lock roll angle to absolute angle relative to horizon (not relative to drone). This is generally the default.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_FLAGS_PITCH_LOCK">
+     <td>8</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS_PITCH_LOCK">MAV_STORM32_GIMBAL_DEVICE_FLAGS_PITCH_LOCK</a>
+     </td>
+     <td>Lock pitch angle to absolute angle relative to horizon (not relative to drone). This is generally the default.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_FLAGS_YAW_LOCK">
+     <td>16</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS_YAW_LOCK">MAV_STORM32_GIMBAL_DEVICE_FLAGS_YAW_LOCK</a>
+     </td>
+     <td>Lock yaw angle to absolute angle relative to earth (not relative to drone). When the <a href="#YAW_ABSOLUTE">YAW_ABSOLUTE</a> flag is set, the quaternion is in the Earth frame with the x-axis pointing North (yaw absolute), else it is in the Earth frame rotated so that the x-axis is pointing forward (yaw relative to vehicle).</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_FLAGS_CAN_ACCEPT_YAW_ABSOLUTE">
+     <td>256</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS_CAN_ACCEPT_YAW_ABSOLUTE">MAV_STORM32_GIMBAL_DEVICE_FLAGS_CAN_ACCEPT_YAW_ABSOLUTE</a>
+     </td>
+     <td>Gimbal device can accept absolute yaw angle input. This flag cannot be set, is only for reporting (attempts to set it are rejected by the gimbal device).</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_FLAGS_YAW_ABSOLUTE">
+     <td>512</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS_YAW_ABSOLUTE">MAV_STORM32_GIMBAL_DEVICE_FLAGS_YAW_ABSOLUTE</a>
+     </td>
+     <td>Yaw angle is absolute (is only accepted if <a href="#CAN_ACCEPT_YAW_ABSOLUTE">CAN_ACCEPT_YAW_ABSOLUTE</a> is set). If this flag is set, the quaternion is in the Earth frame with the x-axis pointing North (yaw absolute), else it is in the Earth frame rotated so that the x-axis is pointing forward (yaw relative to vehicle).</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_FLAGS_RC_EXCLUSIVE">
+     <td>1024</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS_RC_EXCLUSIVE">MAV_STORM32_GIMBAL_DEVICE_FLAGS_RC_EXCLUSIVE</a>
+     </td>
+     <td>RC control. The RC input signal fed to the gimbal device exclusively controls the gimbal's orientation. Overrides <a href="#RC_MIXED">RC_MIXED</a> flag if that is also set.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_FLAGS_RC_MIXED">
+     <td>2048</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS_RC_MIXED">MAV_STORM32_GIMBAL_DEVICE_FLAGS_RC_MIXED</a>
+     </td>
+     <td>RC control. The RC input signal fed to the gimbal device is mixed into the gimbal's orientation. Is overriden by <a href="#RC_EXCLUSIVE">RC_EXCLUSIVE</a> flag if that is also set.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_FLAGS_NONE">
+     <td>65535</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS_NONE">MAV_STORM32_GIMBAL_DEVICE_FLAGS_NONE</a>
+     </td>
+     <td>UINT16_MAX = ignore.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS">MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal device error and condition flags (0 means no error or other condition).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT">
+     <td>1</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT">MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT</a>
+     </td>
+     <td>Gimbal device is limited by hardware roll limit.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT">
+     <td>2</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT">MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT</a>
+     </td>
+     <td>Gimbal device is limited by hardware pitch limit.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT">
+     <td>4</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT">MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_AT_YAW_LIMIT</a>
+     </td>
+     <td>Gimbal device is limited by hardware yaw limit.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR">
+     <td>8</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR">MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_ENCODER_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal device's encoders.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR">
+     <td>16</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR">MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_POWER_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal device's power source.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR">
+     <td>32</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR">MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal device's motors.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR">
+     <td>64</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR">MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal device's software.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR">
+     <td>128</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR">MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_COMMS_ERROR</a>
+     </td>
+     <td>There is an error with the gimbal device's communication.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_CALIBRATION_RUNNING">
+     <td>256</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_CALIBRATION_RUNNING">MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_CALIBRATION_RUNNING</a>
+     </td>
+     <td>Gimbal device is currently calibrating (not an error).</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_NO_MANAGER">
+     <td>32768</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_NO_MANAGER">MAV_STORM32_GIMBAL_DEVICE_ERROR_FLAGS_NO_MANAGER</a>
+     </td>
+     <td>Gimbal device is not assigned to a gimbal manager (not an error).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS">MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal manager capability flags.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS_HAS_PROFILES">
+     <td>1</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS_HAS_PROFILES">MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS_HAS_PROFILES</a>
+     </td>
+     <td>The gimbal manager supports several profiles.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_CHANGE">
+     <td>2</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_CHANGE">MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS_SUPPORTS_CHANGE</a>
+     </td>
+     <td>The gimbal manager supports changing the gimbal manager during run time, i.e. can be enabled/disabled.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_STORM32_GIMBAL_MANAGER_FLAGS">MAV_STORM32_GIMBAL_MANAGER_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags for gimbal manager operation. Used for setting and reporting, unless specified otherwise. If a setting is accepted by the gimbal manger, is reported in the STORM32_GIMBAL_MANAGER_STATUS message.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_FLAGS_NONE">
+     <td>0</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS_NONE">MAV_STORM32_GIMBAL_MANAGER_FLAGS_NONE</a>
+     </td>
+     <td>0 = ignore.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_FLAGS_RC_ACTIVE">
+     <td>1</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS_RC_ACTIVE">MAV_STORM32_GIMBAL_MANAGER_FLAGS_RC_ACTIVE</a>
+     </td>
+     <td>Request to set RC input to active, or report RC input is active. Implies RC mixed. RC exclusive is achieved by setting all clients to inactive.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_ONBOARD_ACTIVE">
+     <td>2</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_ONBOARD_ACTIVE">MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_ONBOARD_ACTIVE</a>
+     </td>
+     <td>Request to set onboard/companion computer client to active, or report this client is active.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_AUTOPILOT_ACTIVE">
+     <td>4</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_AUTOPILOT_ACTIVE">MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_AUTOPILOT_ACTIVE</a>
+     </td>
+     <td>Request to set autopliot client to active, or report this client is active.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_GCS_ACTIVE">
+     <td>8</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_GCS_ACTIVE">MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_GCS_ACTIVE</a>
+     </td>
+     <td>Request to set GCS client to active, or report this client is active.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_CAMERA_ACTIVE">
+     <td>16</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_CAMERA_ACTIVE">MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_CAMERA_ACTIVE</a>
+     </td>
+     <td>Request to set camera client to active, or report this client is active.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_GCS2_ACTIVE">
+     <td>32</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_GCS2_ACTIVE">MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_GCS2_ACTIVE</a>
+     </td>
+     <td>Request to set GCS2 client to active, or report this client is active.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_CAMERA2_ACTIVE">
+     <td>64</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_CAMERA2_ACTIVE">MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_CAMERA2_ACTIVE</a>
+     </td>
+     <td>Request to set camera2 client to active, or report this client is active.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_CUSTOM_ACTIVE">
+     <td>128</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_CUSTOM_ACTIVE">MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_CUSTOM_ACTIVE</a>
+     </td>
+     <td>Request to set custom client to active, or report this client is active.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_CUSTOM2_ACTIVE">
+     <td>256</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_CUSTOM2_ACTIVE">MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_CUSTOM2_ACTIVE</a>
+     </td>
+     <td>Request to set custom2 client to active, or report this client is active.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_FLAGS_SET_SUPERVISON">
+     <td>512</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS_SET_SUPERVISON">MAV_STORM32_GIMBAL_MANAGER_FLAGS_SET_SUPERVISON</a>
+     </td>
+     <td>Request supervision. This flag is only for setting, it is not reported.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_FLAGS_SET_RELEASE">
+     <td>1024</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS_SET_RELEASE">MAV_STORM32_GIMBAL_MANAGER_FLAGS_SET_RELEASE</a>
+     </td>
+     <td>Release supervision. This flag is only for setting, it is not reported.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_STORM32_GIMBAL_MANAGER_CLIENT">MAV_STORM32_GIMBAL_MANAGER_CLIENT</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal manager client ID. In a prioritizing profile, the priorities are determined by the implementation; they could e.g. be custom1 &gt; onboard &gt; GCS &gt; autopilot/camera &gt; GCS2 &gt; custom2.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_CLIENT_NONE">
+     <td>0</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT_NONE">MAV_STORM32_GIMBAL_MANAGER_CLIENT_NONE</a>
+     </td>
+     <td>For convenience.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_CLIENT_ONBOARD">
+     <td>1</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT_ONBOARD">MAV_STORM32_GIMBAL_MANAGER_CLIENT_ONBOARD</a>
+     </td>
+     <td>This is the onboard/companion computer client.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_CLIENT_AUTOPILOT">
+     <td>2</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT_AUTOPILOT">MAV_STORM32_GIMBAL_MANAGER_CLIENT_AUTOPILOT</a>
+     </td>
+     <td>This is the autopilot client.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_CLIENT_GCS">
+     <td>3</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT_GCS">MAV_STORM32_GIMBAL_MANAGER_CLIENT_GCS</a>
+     </td>
+     <td>This is the GCS client.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_CLIENT_CAMERA">
+     <td>4</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT_CAMERA">MAV_STORM32_GIMBAL_MANAGER_CLIENT_CAMERA</a>
+     </td>
+     <td>This is the camera client.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_CLIENT_GCS2">
+     <td>5</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT_GCS2">MAV_STORM32_GIMBAL_MANAGER_CLIENT_GCS2</a>
+     </td>
+     <td>This is the GCS2 client.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_CLIENT_CAMERA2">
+     <td>6</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT_CAMERA2">MAV_STORM32_GIMBAL_MANAGER_CLIENT_CAMERA2</a>
+     </td>
+     <td>This is the camera2 client.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_CLIENT_CUSTOM">
+     <td>7</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT_CUSTOM">MAV_STORM32_GIMBAL_MANAGER_CLIENT_CUSTOM</a>
+     </td>
+     <td>This is the custom client.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_CLIENT_CUSTOM2">
+     <td>8</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT_CUSTOM2">MAV_STORM32_GIMBAL_MANAGER_CLIENT_CUSTOM2</a>
+     </td>
+     <td>This is the custom2 client.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_STORM32_GIMBAL_MANAGER_SETUP_FLAGS">MAV_STORM32_GIMBAL_MANAGER_SETUP_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Flags for gimbal manager set up. Used for setting and reporting, unless specified otherwise.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_SETUP_FLAGS_ENABLE">
+     <td>16384</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_SETUP_FLAGS_ENABLE">MAV_STORM32_GIMBAL_MANAGER_SETUP_FLAGS_ENABLE</a>
+     </td>
+     <td>Enable gimbal manager. This flag is only for setting, is not reported.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_SETUP_FLAGS_DISABLE">
+     <td>32768</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_SETUP_FLAGS_DISABLE">MAV_STORM32_GIMBAL_MANAGER_SETUP_FLAGS_DISABLE</a>
+     </td>
+     <td>Disable gimbal manager. This flag is only for setting, is not reported.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_STORM32_GIMBAL_MANAGER_PROFILE">MAV_STORM32_GIMBAL_MANAGER_PROFILE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal manager profiles. Only standard profiles are defined. Any implementation can define it's own profile in addition, and should use enum values &gt; 16.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_PROFILE_DEFAULT">
+     <td>0</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_PROFILE_DEFAULT">MAV_STORM32_GIMBAL_MANAGER_PROFILE_DEFAULT</a>
+     </td>
+     <td>Default profile. Implementation specific.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_PROFILE_CUSTOM">
+     <td>1</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_PROFILE_CUSTOM">MAV_STORM32_GIMBAL_MANAGER_PROFILE_CUSTOM</a>
+     </td>
+     <td>Custom profile. Configurable profile according to the STorM32 definition. Is configured with STORM32_GIMBAL_MANAGER_PROFIL.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_PROFILE_COOPERATIVE">
+     <td>2</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_PROFILE_COOPERATIVE">MAV_STORM32_GIMBAL_MANAGER_PROFILE_COOPERATIVE</a>
+     </td>
+     <td>Default cooperative profile. Uses STorM32 custom profile with default settings to achieve cooperative behavior.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_PROFILE_EXCLUSIVE">
+     <td>3</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_PROFILE_EXCLUSIVE">MAV_STORM32_GIMBAL_MANAGER_PROFILE_EXCLUSIVE</a>
+     </td>
+     <td>Default exclusive profile. Uses STorM32 custom profile with default settings to achieve exclusive behavior.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_PROFILE_PRIORITY_COOPERATIVE">
+     <td>4</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_PROFILE_PRIORITY_COOPERATIVE">MAV_STORM32_GIMBAL_MANAGER_PROFILE_PRIORITY_COOPERATIVE</a>
+     </td>
+     <td>Default priority profile with cooperative behavior for equal priority. Uses STorM32 custom profile with default settings to achieve priority-based behavior.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_MANAGER_PROFILE_PRIORITY_EXCLUSIVE">
+     <td>5</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_PROFILE_PRIORITY_EXCLUSIVE">MAV_STORM32_GIMBAL_MANAGER_PROFILE_PRIORITY_EXCLUSIVE</a>
+     </td>
+     <td>Default priority profile with exclusive behavior for equal priority. Uses STorM32 custom profile with default settings to achieve priority-based behavior.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_STORM32_GIMBAL_ACTION">MAV_STORM32_GIMBAL_ACTION</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Gimbal actions.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_STORM32_GIMBAL_ACTION_RECENTER">
+     <td>1</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_ACTION_RECENTER">MAV_STORM32_GIMBAL_ACTION_RECENTER</a>
+     </td>
+     <td>Trigger the gimbal device to recenter the gimbal.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_ACTION_CALIBRATION">
+     <td>2</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_ACTION_CALIBRATION">MAV_STORM32_GIMBAL_ACTION_CALIBRATION</a>
+     </td>
+     <td>Trigger the gimbal device to run a calibration.</td>
+    </tr>
+    <tr id="MAV_STORM32_GIMBAL_ACTION_DISCOVER_MANAGER">
+     <td>3</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_ACTION_DISCOVER_MANAGER">MAV_STORM32_GIMBAL_ACTION_DISCOVER_MANAGER</a>
+     </td>
+     <td>Trigger gimbal device to (re)discover the gimbal manager during run time.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_QSHOT_MODE">MAV_QSHOT_MODE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Enumeration of possible shot modes.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_QSHOT_MODE_UNDEFINED">
+     <td>0</td>
+     <td>
+      <a href="#MAV_QSHOT_MODE_UNDEFINED">MAV_QSHOT_MODE_UNDEFINED</a>
+     </td>
+     <td>Undefined shot mode. Can be used to determine if qshots should be used or not.</td>
+    </tr>
+    <tr id="MAV_QSHOT_MODE_DEFAULT">
+     <td>1</td>
+     <td>
+      <a href="#MAV_QSHOT_MODE_DEFAULT">MAV_QSHOT_MODE_DEFAULT</a>
+     </td>
+     <td>Start normal gimbal operation. Is usally used to return back from a shot.</td>
+    </tr>
+    <tr id="MAV_QSHOT_MODE_GIMBAL_RETRACT">
+     <td>2</td>
+     <td>
+      <a href="#MAV_QSHOT_MODE_GIMBAL_RETRACT">MAV_QSHOT_MODE_GIMBAL_RETRACT</a>
+     </td>
+     <td>Load and keep safe gimbal position and stop stabilization.</td>
+    </tr>
+    <tr id="MAV_QSHOT_MODE_GIMBAL_NEUTRAL">
+     <td>3</td>
+     <td>
+      <a href="#MAV_QSHOT_MODE_GIMBAL_NEUTRAL">MAV_QSHOT_MODE_GIMBAL_NEUTRAL</a>
+     </td>
+     <td>Load neutral gimbal position and keep it while stabilizing.</td>
+    </tr>
+    <tr id="MAV_QSHOT_MODE_GIMBAL_MISSION">
+     <td>4</td>
+     <td>
+      <a href="#MAV_QSHOT_MODE_GIMBAL_MISSION">MAV_QSHOT_MODE_GIMBAL_MISSION</a>
+     </td>
+     <td>Start mission with gimbal control.</td>
+    </tr>
+    <tr id="MAV_QSHOT_MODE_GIMBAL_RC_CONTROL">
+     <td>5</td>
+     <td>
+      <a href="#MAV_QSHOT_MODE_GIMBAL_RC_CONTROL">MAV_QSHOT_MODE_GIMBAL_RC_CONTROL</a>
+     </td>
+     <td>Start RC gimbal control.</td>
+    </tr>
+    <tr id="MAV_QSHOT_MODE_POI_TARGETING">
+     <td>6</td>
+     <td>
+      <a href="#MAV_QSHOT_MODE_POI_TARGETING">MAV_QSHOT_MODE_POI_TARGETING</a>
+     </td>
+     <td>Start gimbal tracking the point specified by Lat, Lon, Alt.</td>
+    </tr>
+    <tr id="MAV_QSHOT_MODE_SYSID_TARGETING">
+     <td>7</td>
+     <td>
+      <a href="#MAV_QSHOT_MODE_SYSID_TARGETING">MAV_QSHOT_MODE_SYSID_TARGETING</a>
+     </td>
+     <td>Start gimbal tracking the system with specified system ID.</td>
+    </tr>
+    <tr id="MAV_QSHOT_MODE_CABLECAM_2POINT">
+     <td>8</td>
+     <td>
+      <a href="#MAV_QSHOT_MODE_CABLECAM_2POINT">MAV_QSHOT_MODE_CABLECAM_2POINT</a>
+     </td>
+     <td>Start 2-point cable cam quick shot.</td>
+    </tr>
+    <tr id="MAV_QSHOT_MODE_HOME_TARGETING">
+     <td>9</td>
+     <td>
+      <a href="#MAV_QSHOT_MODE_HOME_TARGETING">MAV_QSHOT_MODE_HOME_TARGETING</a>
+     </td>
+     <td>Start gimbal tracking the home location.</td>
+    </tr>
+   </tbody>
+  </table>
+  <a id="MAV_CMD">
+  </a>
+  <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink commands (<a href="#mav_commands">MAV_CMD</a>) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+  </blockquote>
+  <p>
+  </p>
+  <h3 id="MAV_CMD_STORM32_DO_GIMBAL_MANAGER_CONTROL_PITCHYAW">MAV_CMD_STORM32_DO_GIMBAL_MANAGER_CONTROL_PITCHYAW (<a href="#MAV_CMD_STORM32_DO_GIMBAL_MANAGER_CONTROL_PITCHYAW">60002</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Command to a gimbal manager to control the gimbal tilt and pan angles. It is possible to set combinations of the values below. E.g. an angle as well as a desired angular rate can be used to get to this angle at a certain angular rate, or an angular rate only will result in continuous turning. NaN is to be used to signal unset. A gimbal device is never to react to this command.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Pitch angle</td>
+     <td>Pitch/tilt angle (positive: tilt up, NaN to be ignored).</td>
+     <td>
+      <em>min:</em>
+      -180 
+      <em>max:</em>180 </td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>2: Yaw angle</td>
+     <td>Yaw/pan angle (positive: pan to the right, the frame is determined by the STORM32_GIMBAL_DEVICE_FLAGS_YAW_ABSOLUTE flag, NaN to be ignored).</td>
+     <td>
+      <em>min:</em>
+      -180 
+      <em>max:</em>180 </td>
+     <td>deg</td>
+    </tr>
+    <tr>
+     <td>3: Pitch rate</td>
+     <td>Pitch/tilt rate (positive: tilt up, NaN to be ignored).</td>
+     <td>
+     </td>
+     <td>deg/s</td>
+    </tr>
+    <tr>
+     <td>4: Yaw rate</td>
+     <td>Yaw/pan rate (positive: pan to the right, the frame is determined by the STORM32_GIMBAL_DEVICE_FLAGS_YAW_ABSOLUTE flag, NaN to be ignored).</td>
+     <td>
+     </td>
+     <td>deg/s</td>
+    </tr>
+    <tr>
+     <td>5: Gimbal device flags</td>
+     <td>Gimbal device flags.</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS">MAV_STORM32_GIMBAL_DEVICE_FLAGS</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6: Gimbal manager flags</td>
+     <td>Gimbal manager flags.</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS">MAV_STORM32_GIMBAL_MANAGER_FLAGS</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7: Gimbal ID and client ID</td>
+     <td>Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals, send command multiple times for more than one but not all gimbals). The client is copied into bits 8-15.</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_STORM32_DO_GIMBAL_MANAGER_SETUP">MAV_CMD_STORM32_DO_GIMBAL_MANAGER_SETUP (<a href="#MAV_CMD_STORM32_DO_GIMBAL_MANAGER_SETUP">60010</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Command to configure a gimbal manager. A gimbal device is never to react to this command. The selected profile is reported in the STORM32_GIMBAL_MANAGER_STATUS message.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Profile</td>
+     <td>Gimbal manager profile (0 = default).</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_PROFILE">MAV_STORM32_GIMBAL_MANAGER_PROFILE</a>
+     </td>
+    </tr>
+    <tr>
+     <td>2: Setup flags</td>
+     <td>Gimbal manager setup flags (0 = none).</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_SETUP_FLAGS">MAV_STORM32_GIMBAL_MANAGER_SETUP_FLAGS</a>
+     </td>
+    </tr>
+    <tr>
+     <td>7: Gimbal ID</td>
+     <td>Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals). Send command multiple times for more than one but not all gimbals.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_STORM32_DO_GIMBAL_ACTION">MAV_CMD_STORM32_DO_GIMBAL_ACTION (<a href="#MAV_CMD_STORM32_DO_GIMBAL_ACTION">60011</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Command to initiate gimbal actions. Usually performed by the gimbal device, but some can also be done by the gimbal manager. It is hence best to broadcast this command.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Action</td>
+     <td>Gimbal action to initiate (0 = none).</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_ACTION">MAV_STORM32_GIMBAL_ACTION</a>
+     </td>
+    </tr>
+    <tr>
+     <td>7: Gimbal ID</td>
+     <td>Gimbal ID of the gimbal to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals). Send command multiple times for more than one but not all gimbals.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_QSHOT_DO_CONFIGURE">MAV_CMD_QSHOT_DO_CONFIGURE (<a href="#MAV_CMD_QSHOT_DO_CONFIGURE">60020</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Command to set the shot manager mode.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Mode</td>
+     <td>Set shot mode.</td>
+     <td>
+      <a href="#MAV_QSHOT_MODE">MAV_QSHOT_MODE</a>
+     </td>
+    </tr>
+    <tr>
+     <td>2: Shot state or command</td>
+     <td>Set shot state or command. The allowed values are specific to the selected shot mode.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 id="messages">MAVLink Messages</h2>
+  <h3 id="STORM32_GIMBAL_DEVICE_STATUS">STORM32_GIMBAL_DEVICE_STATUS (<a href="#STORM32_GIMBAL_DEVICE_STATUS">
+    #60001
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Message reporting the current status of a gimbal device. This message should be broadcasted by a gimbal device component at a low regular rate (e.g. 4 Hz). For higher rates it should be emitted with a target.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS">MAV_STORM32_GIMBAL_DEVICE_FLAGS</a>
+     </td>
+     <td>Gimbal device flags currently applied.</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation). The frame depends on the STORM32_GIMBAL_DEVICE_FLAGS_YAW_ABSOLUTE flag.</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_x</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+     </td>
+     <td>X component of angular velocity (NaN if unknown).</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_y</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+     </td>
+     <td>Y component of angular velocity (NaN if unknown).</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_z</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+     </td>
+     <td>Z component of angular velocity (the frame depends on the STORM32_GIMBAL_DEVICE_FLAGS_YAW_ABSOLUTE flag, NaN if unknown).</td>
+    </tr>
+    <tr>
+     <td>yaw_absolute</td>
+     <td>float</td>
+     <td>deg</td>
+     <td>
+     </td>
+     <td>Yaw in absolute frame relative to Earth's North, north is 0 (NaN if unknown).</td>
+    </tr>
+    <tr>
+     <td>failure_flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS">GIMBAL_DEVICE_ERROR_FLAGS</a>
+     </td>
+     <td>Failure flags (0 for no failure).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="STORM32_GIMBAL_DEVICE_CONTROL">STORM32_GIMBAL_DEVICE_CONTROL (<a href="#STORM32_GIMBAL_DEVICE_CONTROL">
+    #60002
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Message to a gimbal device to control its attitude. This message is to be sent from the gimbal manager to the gimbal device. Angles and rates can be set to NaN according to use case.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS">MAV_STORM32_GIMBAL_DEVICE_FLAGS</a>
+     </td>
+     <td>Gimbal device flags (UINT16_MAX to be ignored).</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation, the frame is determined by the STORM32_GIMBAL_DEVICE_FLAGS_YAW_ABSOLUTE flag, set first element to NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_x</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+     </td>
+     <td>X component of angular velocity (positive: roll to the right, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_y</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+     </td>
+     <td>Y component of angular velocity (positive: tilt up, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_z</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+     </td>
+     <td>Z component of angular velocity (positive: pan to the right, the frame is determined by the STORM32_GIMBAL_DEVICE_FLAGS_YAW_ABSOLUTE flag, NaN to be ignored).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="STORM32_GIMBAL_MANAGER_INFORMATION">STORM32_GIMBAL_MANAGER_INFORMATION (<a href="#STORM32_GIMBAL_MANAGER_INFORMATION">
+    #60010
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about a gimbal manager. This message should be requested by a ground station using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>. It mirrors some fields of the STORM32_GIMBAL_DEVICE_INFORMATION message, but not all. If the additional information is desired, also STORM32_GIMBAL_DEVICE_INFORMATION should be requested.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>gimbal_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Gimbal ID (component ID or 1-6 for non-MAVLink gimbal) that this gimbal manager is responsible for.</td>
+    </tr>
+    <tr>
+     <td>device_cap_flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS">MAV_STORM32_GIMBAL_DEVICE_CAP_FLAGS</a>
+     </td>
+     <td>Gimbal device capability flags.</td>
+    </tr>
+    <tr>
+     <td>manager_cap_flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS">MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS</a>
+     </td>
+     <td>Gimbal manager capability flags.</td>
+    </tr>
+    <tr>
+     <td>roll_min</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+     </td>
+     <td>Hardware minimum roll angle (positive: roll to the right, NaN if unknown).</td>
+    </tr>
+    <tr>
+     <td>roll_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+     </td>
+     <td>Hardware maximum roll angle (positive: roll to the right, NaN if unknown).</td>
+    </tr>
+    <tr>
+     <td>pitch_min</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+     </td>
+     <td>Hardware minimum pitch/tilt angle (positive: tilt up, NaN if unknown).</td>
+    </tr>
+    <tr>
+     <td>pitch_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+     </td>
+     <td>Hardware maximum pitch/tilt angle (positive: tilt up, NaN if unknown).</td>
+    </tr>
+    <tr>
+     <td>yaw_min</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+     </td>
+     <td>Hardware minimum yaw/pan angle (positive: pan to the right, relative to the vehicle/gimbal base, NaN if unknown).</td>
+    </tr>
+    <tr>
+     <td>yaw_max</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+     </td>
+     <td>Hardware maximum yaw/pan angle (positive: pan to the right, relative to the vehicle/gimbal base, NaN if unknown).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="STORM32_GIMBAL_MANAGER_STATUS">STORM32_GIMBAL_MANAGER_STATUS (<a href="#STORM32_GIMBAL_MANAGER_STATUS">
+    #60011
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Message reporting the current status of a gimbal manager. This message should be broadcast at a low regular rate (e.g. 1 Hz, may be increase momentarily to e.g. 5 Hz for a period of 1 sec after a change).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>gimbal_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Gimbal ID (component ID or 1-6 for non-MAVLink gimbal) that this gimbal manager is responsible for.</td>
+    </tr>
+    <tr>
+     <td>supervisor</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT">MAV_STORM32_GIMBAL_MANAGER_CLIENT</a>
+     </td>
+     <td>Client who is currently supervisor (0 = none).</td>
+    </tr>
+    <tr>
+     <td>device_flags</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS">MAV_STORM32_GIMBAL_DEVICE_FLAGS</a>
+     </td>
+     <td>Gimbal device flags currently applied.</td>
+    </tr>
+    <tr>
+     <td>manager_flags</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS">MAV_STORM32_GIMBAL_MANAGER_FLAGS</a>
+     </td>
+     <td>Gimbal manager flags currently applied.</td>
+    </tr>
+    <tr>
+     <td>profile</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_PROFILE">MAV_STORM32_GIMBAL_MANAGER_PROFILE</a>
+     </td>
+     <td>Profile currently applied (0 = default).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="STORM32_GIMBAL_MANAGER_CONTROL">STORM32_GIMBAL_MANAGER_CONTROL (<a href="#STORM32_GIMBAL_MANAGER_CONTROL">
+    #60012
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Message to a gimbal manager to control the gimbal attitude. Angles and rates can be set to NaN according to use case. A gimbal device is never to react to this message.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>gimbal_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals, send command multiple times for more than one but not all gimbals).</td>
+    </tr>
+    <tr>
+     <td>client</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT">MAV_STORM32_GIMBAL_MANAGER_CLIENT</a>
+     </td>
+     <td>Client which is contacting the gimbal manager (must be set).</td>
+    </tr>
+    <tr>
+     <td>device_flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS">MAV_STORM32_GIMBAL_DEVICE_FLAGS</a>
+     </td>
+     <td>Gimbal device flags (UINT16_MAX to be ignored).</td>
+    </tr>
+    <tr>
+     <td>manager_flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS">MAV_STORM32_GIMBAL_MANAGER_FLAGS</a>
+     </td>
+     <td>Gimbal manager flags (0 to be ignored).</td>
+    </tr>
+    <tr>
+     <td>q</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation, the frame is determined by the <a href="#GIMBAL_MANAGER_FLAGS_ABSOLUTE_YAW">GIMBAL_MANAGER_FLAGS_ABSOLUTE_YAW</a> flag, set first element to NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_x</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+     </td>
+     <td>X component of angular velocity (positive: roll to the right, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_y</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+     </td>
+     <td>Y component of angular velocity (positive: tilt up, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>angular_velocity_z</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+     </td>
+     <td>Z component of angular velocity (positive: pan to the right, the frame is determined by the STORM32_GIMBAL_DEVICE_FLAGS_YAW_ABSOLUTE flag, NaN to be ignored).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="STORM32_GIMBAL_MANAGER_CONTROL_PITCHYAW">STORM32_GIMBAL_MANAGER_CONTROL_PITCHYAW (<a href="#STORM32_GIMBAL_MANAGER_CONTROL_PITCHYAW">
+    #60013
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Message to a gimbal manager to control the gimbal tilt and pan angles. Angles and rates can be set to NaN according to use case. A gimbal device is never to react to this message.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>gimbal_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals, send command multiple times for more than one but not all gimbals).</td>
+    </tr>
+    <tr>
+     <td>client</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT">MAV_STORM32_GIMBAL_MANAGER_CLIENT</a>
+     </td>
+     <td>Client which is contacting the gimbal manager (must be set).</td>
+    </tr>
+    <tr>
+     <td>device_flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_DEVICE_FLAGS">MAV_STORM32_GIMBAL_DEVICE_FLAGS</a>
+     </td>
+     <td>Gimbal device flags (UINT16_MAX to be ignored).</td>
+    </tr>
+    <tr>
+     <td>manager_flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_FLAGS">MAV_STORM32_GIMBAL_MANAGER_FLAGS</a>
+     </td>
+     <td>Gimbal manager flags (0 to be ignored).</td>
+    </tr>
+    <tr>
+     <td>pitch</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+     </td>
+     <td>Pitch/tilt angle (positive: tilt up, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>yaw</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+     </td>
+     <td>Yaw/pan angle (positive: pan the right, the frame is determined by the STORM32_GIMBAL_DEVICE_FLAGS_YAW_ABSOLUTE flag, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>pitch_rate</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+     </td>
+     <td>Pitch/tilt angular rate (positive: tilt up, NaN to be ignored).</td>
+    </tr>
+    <tr>
+     <td>yaw_rate</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>
+     </td>
+     <td>Yaw/pan angular rate (positive: pan to the right, the frame is determined by the STORM32_GIMBAL_DEVICE_FLAGS_YAW_ABSOLUTE flag, NaN to be ignored).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="STORM32_GIMBAL_MANAGER_CORRECT_ROLL">STORM32_GIMBAL_MANAGER_CORRECT_ROLL (<a href="#STORM32_GIMBAL_MANAGER_CORRECT_ROLL">
+    #60014
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Message to a gimbal manager to correct the gimbal roll angle. This message is typically used to manually correct for a tilted horizon in operation. A gimbal device is never to react to this message.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>gimbal_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals, send command multiple times for more than one but not all gimbals).</td>
+    </tr>
+    <tr>
+     <td>client</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_CLIENT">MAV_STORM32_GIMBAL_MANAGER_CLIENT</a>
+     </td>
+     <td>Client which is contacting the gimbal manager (must be set).</td>
+    </tr>
+    <tr>
+     <td>roll</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+     </td>
+     <td>Roll angle (positive to roll to the right).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="STORM32_GIMBAL_MANAGER_PROFILE">STORM32_GIMBAL_MANAGER_PROFILE (<a href="#STORM32_GIMBAL_MANAGER_PROFILE">
+    #60015
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Message to set a gimbal manager profile. A gimbal device is never to react to this command. The selected profile is reported in the STORM32_GIMBAL_MANAGER_STATUS message.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>gimbal_id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals, send command multiple times for more than one but not all gimbals).</td>
+    </tr>
+    <tr>
+     <td>profile</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_STORM32_GIMBAL_MANAGER_PROFILE">MAV_STORM32_GIMBAL_MANAGER_PROFILE</a>
+     </td>
+     <td>Profile to be applied (0 = default).</td>
+    </tr>
+    <tr>
+     <td>priorities</td>
+     <td>uint8_t[8]</td>
+     <td>
+     </td>
+     <td>Priorities for custom profile.</td>
+    </tr>
+    <tr>
+     <td>profile_flags</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Profile flags for custom profile (0 = default).</td>
+    </tr>
+    <tr>
+     <td>rc_timeout</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Rc timeouts for custom profile (0 = infinite, in uints of 100 ms).</td>
+    </tr>
+    <tr>
+     <td>timeouts</td>
+     <td>uint8_t[8]</td>
+     <td>
+     </td>
+     <td>Timeouts for custom profile (0 = infinite, in uints of 100 ms).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="QSHOT_STATUS">QSHOT_STATUS (<a href="#QSHOT_STATUS">
+    #60020
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Information about the shot operation.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>mode</td>
+     <td>uint16_t</td>
+     <td>
+      <a href="#MAV_QSHOT_MODE">MAV_QSHOT_MODE</a>
+     </td>
+     <td>Current shot mode.</td>
+    </tr>
+    <tr>
+     <td>shot_state</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Current state in the shot. States are specific to the selected shot mode.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="COMPONENT_PREARM_STATUS">COMPONENT_PREARM_STATUS (<a href="#COMPONENT_PREARM_STATUS">
+    #60025
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Message reporting the status of the prearm checks. The flags are component specific.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID</td>
+    </tr>
+    <tr>
+     <td>enabled_flags</td>
+     <td>uint32_t</td>
+     <td>Currently enabled prearm checks. 0 means no checks are being performed, UINT32_MAX means not known.</td>
+    </tr>
+    <tr>
+     <td>fail_flags</td>
+     <td>uint32_t</td>
+     <td>Currently not passed prearm checks. 0 means all checks have been passed.</td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>
