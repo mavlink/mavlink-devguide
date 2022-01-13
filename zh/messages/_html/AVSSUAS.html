@@ -1,0 +1,736 @@
+<html>
+ <body>
+  <p>
+   <strong>MAVLink Include Files:</strong>
+   <a href="common.md">common.xml</a>
+  </p>
+  <h2>MAVLink Protocol Version</h2>
+  <p>The current MAVLink version is 2.1. The minor version numbers (after the dot) range from 1-255.</p>
+  <p>This file has protocol dialect: 1.</p>
+  <h2 id="enums">MAVLink Type Enumerations</h2>
+  <h3 id="MAV_AVSS_COMMAND_FAILURE_REASON">MAV_AVSS_COMMAND_FAILURE_REASON</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="PRS_NOT_STEADY">
+     <td>1</td>
+     <td>
+      <a href="#PRS_NOT_STEADY">PRS_NOT_STEADY</a>
+     </td>
+     <td>AVSS defined command failure reason. PRS not steady.</td>
+    </tr>
+    <tr id="PRS_DTM_NOT_ARMED">
+     <td>2</td>
+     <td>
+      <a href="#PRS_DTM_NOT_ARMED">PRS_DTM_NOT_ARMED</a>
+     </td>
+     <td>AVSS defined command failure reason. PRS DTM not armed.</td>
+    </tr>
+    <tr id="PRS_OTM_NOT_ARMED">
+     <td>3</td>
+     <td>
+      <a href="#PRS_OTM_NOT_ARMED">PRS_OTM_NOT_ARMED</a>
+     </td>
+     <td>AVSS defined command failure reason. PRS OTM not armed.</td>
+    </tr>
+   </tbody>
+  </table>
+  <a id="MAV_CMD">
+  </a>
+  <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink commands (<a href="#mav_commands">MAV_CMD</a>) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+  </blockquote>
+  <p>
+  </p>
+  <h3 id="MAV_CMD_PRS_SET_ARM">MAV_CMD_PRS_SET_ARM (<a href="#MAV_CMD_PRS_SET_ARM">60050</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command. Set PRS arm statuses.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: ARM status</td>
+     <td>PRS arm statuses</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_PRS_GET_ARM">MAV_CMD_PRS_GET_ARM (<a href="#MAV_CMD_PRS_GET_ARM">60051</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command. Gets PRS arm statuses</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_PRS_GET_BATTERY">MAV_CMD_PRS_GET_BATTERY (<a href="#MAV_CMD_PRS_GET_BATTERY">60052</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command.  Get the PRS battery voltage in millivolts</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_PRS_GET_ERR">MAV_CMD_PRS_GET_ERR (<a href="#MAV_CMD_PRS_GET_ERR">60053</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command. Get the PRS error statuses.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_PRS_SET_ARM_ALTI">MAV_CMD_PRS_SET_ARM_ALTI (<a href="#MAV_CMD_PRS_SET_ARM_ALTI">60070</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command. Set the ATS arming altitude in meters.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Altitude</td>
+     <td>ATS arming altitude</td>
+     <td>m</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_PRS_GET_ARM_ALTI">MAV_CMD_PRS_GET_ARM_ALTI (<a href="#MAV_CMD_PRS_GET_ARM_ALTI">60071</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command. Get the ATS arming altitude in meters.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_PRS_SHUTDOWN">MAV_CMD_PRS_SHUTDOWN (<a href="#MAV_CMD_PRS_SHUTDOWN">60072</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command. Shuts down the PRS system.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_PRS_SET_CHARGE_MV">MAV_CMD_PRS_SET_CHARGE_MV (<a href="#MAV_CMD_PRS_SET_CHARGE_MV">60073</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command. Set the threshold to charge from outside in millivolts</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Charge Threshold</td>
+     <td>Charge Threshold</td>
+     <td>mV</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_PRS_GET_CHARGE_MV">MAV_CMD_PRS_GET_CHARGE_MV (<a href="#MAV_CMD_PRS_GET_CHARGE_MV">60074</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command. Get the threshold to charge from outside in millivolts.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_PRS_SET_TIMEOUT">MAV_CMD_PRS_SET_TIMEOUT (<a href="#MAV_CMD_PRS_SET_TIMEOUT">60075</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command. Set the timeout between FTS request and deploying the chute.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Timeout</td>
+     <td>User defined</td>
+     <td>ms</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_PRS_GET_TIMEOUT">MAV_CMD_PRS_GET_TIMEOUT (<a href="#MAV_CMD_PRS_GET_TIMEOUT">60076</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command. Get the timeout between FTS request and deploying the chute.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_PRS_SET_FTS_CONNECT">MAV_CMD_PRS_SET_FTS_CONNECT (<a href="#MAV_CMD_PRS_SET_FTS_CONNECT">60077</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command. Set up the PRS to connect to the drone..</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_PRS_GET_FTS_CONNECT">MAV_CMD_PRS_GET_FTS_CONNECT (<a href="#MAV_CMD_PRS_GET_FTS_CONNECT">60078</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>AVSS defined command. Get the connection status of PRS and drone.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>User defined</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>User defined</td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 id="messages">MAVLink Messages</h2>
+  <h3 id="AVSS_PRS_SYS_STATUS">AVSS_PRS_SYS_STATUS (<a href="#AVSS_PRS_SYS_STATUS">
+    #60050
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>AVSS PRS system status.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>arm_status</td>
+     <td>uint8_t</td>
+     <td>PRS arm statuses</td>
+    </tr>
+    <tr>
+     <td>battery_status</td>
+     <td>uint16_t</td>
+     <td>Estimated battery run-time without a remote connection and PRS battery voltage</td>
+    </tr>
+    <tr>
+     <td>error_status</td>
+     <td>uint32_t</td>
+     <td>PRS error statuses</td>
+    </tr>
+    <tr>
+     <td>change_status</td>
+     <td>uint8_t</td>
+     <td>PRS battery change statuses</td>
+    </tr>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>Time since PRS system boot</td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>
