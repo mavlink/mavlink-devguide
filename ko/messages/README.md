@@ -27,6 +27,7 @@ Core dialects are stored in [mavlink/message definitions](https://github.com/mav
 Human-readable forms of all the the core dialects are linked below:
 
 * [ASLUAV.xml](ASLUAV.md)
+* [AVSSUAS.xml](AVSSUAS.md)
 * [all.xml](all.md)
 * [ardupilotmega.xml](ardupilotmega.md)
 * [development.xml](development.md)
@@ -34,6 +35,7 @@ Human-readable forms of all the the core dialects are linked below:
 * [matrixpilot.xml](matrixpilot.md)
 * [paparazzi.xml](paparazzi.md)
 * [python_array_test.xml](python_array_test.md)
+* [storm32.xml](storm32.md)
 * [test.xml](test.md)
 * [uAvionix.xml](uAvionix.md)
 * [ualberta.xml](ualberta.md)

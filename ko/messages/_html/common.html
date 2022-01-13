@@ -3840,7 +3840,8 @@
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT">MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT</a>
      </td>
-     <td>Autopilot supports MISSION float message type.</td>
+     <td>Autopilot supports the <a href="#MISSION_ITEM">MISSION_ITEM</a> float message type.
+          Note that <a href="#MISSION_ITEM">MISSION_ITEM</a> is deprecated, and autopilots should use <a href="#MISSION_INT">MISSION_INT</a> instead.</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT">
      <td>2</td>
@@ -3853,13 +3854,9 @@
      <td>4</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_MISSION_INT">MAV_PROTOCOL_CAPABILITY_MISSION_INT</a>
-      <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by  (2020-06).
-
-
-  This flag must always be set if missions are supported, because missions must always use <a href="#MISSION_ITEM_INT">MISSION_ITEM_INT</a> (rather than <a href="#MISSION_ITEM">MISSION_ITEM</a>, which is deprecated).</p>
      </td>
-     <td>Autopilot supports <a href="#MISSION_ITEM_INT">MISSION_ITEM_INT</a> scaled integer message type.</td>
+     <td>Autopilot supports <a href="#MISSION_ITEM_INT">MISSION_ITEM_INT</a> scaled integer message type.
+          Note that this flag must always be set if missions are supported, because missions must always use <a href="#MISSION_ITEM_INT">MISSION_ITEM_INT</a> (rather than <a href="#MISSION_ITEM">MISSION_ITEM</a>, which is deprecated).</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_COMMAND_INT">
      <td>8</td>
@@ -3868,12 +3865,12 @@
      </td>
      <td>Autopilot supports <a href="#COMMAND_INT">COMMAND_INT</a> scaled integer message type.</td>
     </tr>
-    <tr id="MAV_PROTOCOL_CAPABILITY_PARAM_UNION">
+    <tr id="MAV_PROTOCOL_CAPABILITY_RESERVED1">
      <td>16</td>
      <td>
-      <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_UNION">MAV_PROTOCOL_CAPABILITY_PARAM_UNION</a>
+      <a href="#MAV_PROTOCOL_CAPABILITY_RESERVED1">MAV_PROTOCOL_CAPABILITY_RESERVED1</a>
      </td>
-     <td>Autopilot supports the new param union message type.</td>
+     <td>Reserved for future use.</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_FTP">
      <td>32</td>
