@@ -184,78 +184,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="COMPONENT_CAP_FLAGS1">COMPONENT_CAP_FLAGS1</h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>Component capability flags 1 (Bitmap)</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="COMPONENT_CAP_FLAGS1_PARAM">
-     <td>1</td>
-     <td>
-      <a href="#COMPONENT_CAP_FLAGS1_PARAM">COMPONENT_CAP_FLAGS1_PARAM</a>
-     </td>
-     <td>Component has parameters, and supports the parameter protocol (PARAM messages).</td>
-    </tr>
-    <tr id="COMPONENT_CAP_FLAGS1_PARAM_EXT">
-     <td>2</td>
-     <td>
-      <a href="#COMPONENT_CAP_FLAGS1_PARAM_EXT">COMPONENT_CAP_FLAGS1_PARAM_EXT</a>
-     </td>
-     <td>Component has parameters, and supports the extended parameter protocol (<a href="#PARAM_EXT">PARAM_EXT</a> messages).</td>
-    </tr>
-    <tr id="COMPONENT_CAP_FLAGS1_COMPONENT_INFORMATION">
-     <td>4</td>
-     <td>
-      <a href="#COMPONENT_CAP_FLAGS1_COMPONENT_INFORMATION">COMPONENT_CAP_FLAGS1_COMPONENT_INFORMATION</a>
-     </td>
-     <td>Component supports the component information protocol.</td>
-    </tr>
-    <tr id="COMPONENT_CAP_FLAGS1_GIMBAL_V2">
-     <td>8</td>
-     <td>
-      <a href="#COMPONENT_CAP_FLAGS1_GIMBAL_V2">COMPONENT_CAP_FLAGS1_GIMBAL_V2</a>
-     </td>
-     <td>Component supports the gimbal v2 protocol.</td>
-    </tr>
-    <tr id="COMPONENT_CAP_FLAGS1_MAVLINK_FTP">
-     <td>16</td>
-     <td>
-      <a href="#COMPONENT_CAP_FLAGS1_MAVLINK_FTP">COMPONENT_CAP_FLAGS1_MAVLINK_FTP</a>
-     </td>
-     <td>Component supports the MAVLink FTP protocol.</td>
-    </tr>
-    <tr id="COMPONENT_CAP_FLAGS1_EVENTS_INTERFACE">
-     <td>32</td>
-     <td>
-      <a href="#COMPONENT_CAP_FLAGS1_EVENTS_INTERFACE">COMPONENT_CAP_FLAGS1_EVENTS_INTERFACE</a>
-     </td>
-     <td>Component supports the events interface protocol.</td>
-    </tr>
-    <tr id="COMPONENT_CAP_FLAGS1_CAMERA">
-     <td>64</td>
-     <td>
-      <a href="#COMPONENT_CAP_FLAGS1_CAMERA">COMPONENT_CAP_FLAGS1_CAMERA</a>
-     </td>
-     <td>Component supports the camera v1 protocol.</td>
-    </tr>
-    <tr id="COMPONENT_CAP_FLAGS1_CAMERA_V2">
-     <td>128</td>
-     <td>
-      <a href="#COMPONENT_CAP_FLAGS1_CAMERA_V2">COMPONENT_CAP_FLAGS1_CAMERA_V2</a>
-     </td>
-     <td>Component supports the camera v2 protocol.</td>
-    </tr>
-   </tbody>
-  </table>
   <a id="MAV_CMD">
   </a>
   <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
@@ -846,14 +774,14 @@
      <td>Hardware version. The version format can be custom, recommended is SEMVER 'major.minor.patch'.</td>
     </tr>
     <tr>
-     <td>component_cap_flags1</td>
+     <td>capabilities</td>
      <td>uint64_t</td>
      <td>
      </td>
      <td>
-      <a href="#COMPONENT_CAP_FLAGS1">COMPONENT_CAP_FLAGS1</a>
+      <a href="#MAV_PROTOCOL_CAPABILITY">MAV_PROTOCOL_CAPABILITY</a>
      </td>
-     <td>Component capability flags 1 (this is called 1, so that number 2 could be added in the future).</td>
+     <td>Component capability flags</td>
     </tr>
    </tbody>
   </table>
