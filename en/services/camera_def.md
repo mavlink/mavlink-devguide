@@ -285,10 +285,8 @@ When the GCS requires a current option for a given parameter, it will use the [P
 
 ## Full Camera Definition File Example {#full_example}
 
-{% include "camera_def.xml" %}
-
-
-[XX]()
+An example camera defintition file is listed below.
+This can be downloaded from github here: [camera_definition_example.xml](https://raw.githubusercontent.com/mavlink/mavlink-devguide/master/en/services/camera_definition_example.xml). 
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" ?>
