@@ -9499,6 +9499,47 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="CAN_FILTER_OP">CAN_FILTER_OP</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CAN_FILTER_REPLACE">
+     <td>0</td>
+     <td>
+      <a href="#CAN_FILTER_REPLACE">CAN_FILTER_REPLACE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="CAN_FILTER_ADD">
+     <td>1</td>
+     <td>
+      <a href="#CAN_FILTER_ADD">CAN_FILTER_ADD</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="CAN_FILTER_REMOVE">
+     <td>2</td>
+     <td>
+      <a href="#CAN_FILTER_REMOVE">CAN_FILTER_REMOVE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <a id="MAV_CMD">
   </a>
   <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
@@ -18307,6 +18348,51 @@
     <tr>
      <td>7</td>
      <td>User defined</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_CAN_FORWARD">MAV_CMD_CAN_FORWARD (<a href="#MAV_CMD_CAN_FORWARD">32000</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request forwarding of CAN packets from the given CAN bus to this component. CAN Frames are sent using <a href="#CAN_FRAME">CAN_FRAME</a> and <a href="#CANFD_FRAME">CANFD_FRAME</a> messages</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: bus</td>
+     <td>Bus number (0 to disable forwarding, 1 for first bus, 2 for 2nd bus, 3 for 3rd bus).</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
     </tr>
    </tbody>
   </table>
@@ -34852,6 +34938,59 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="CAN_FRAME">CAN_FRAME (<a href="#CAN_FRAME">
+    #386
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>A forwarded CAN frame as requested by <a href="#MAV_CMD_CAN_FORWARD">MAV_CMD_CAN_FORWARD</a>.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID.</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID.</td>
+    </tr>
+    <tr>
+     <td>bus</td>
+     <td>uint8_t</td>
+     <td>Bus number</td>
+    </tr>
+    <tr>
+     <td>len</td>
+     <td>uint8_t</td>
+     <td>Frame length</td>
+    </tr>
+    <tr>
+     <td>id</td>
+     <td>uint32_t</td>
+     <td>Frame ID</td>
+    </tr>
+    <tr>
+     <td>data</td>
+     <td>uint8_t[8]</td>
+     <td>Frame data</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="ONBOARD_COMPUTER_STATUS">ONBOARD_COMPUTER_STATUS (<a href="#ONBOARD_COMPUTER_STATUS">
     #390
    </a>
@@ -35385,6 +35524,126 @@
       <a href="#MAV_EVENT_ERROR_REASON">MAV_EVENT_ERROR_REASON</a>
      </td>
      <td>Error reason.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CANFD_FRAME">CANFD_FRAME (<a href="#CANFD_FRAME">
+    #387
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>A forwarded CANFD frame as requested by <a href="#MAV_CMD_CAN_FORWARD">MAV_CMD_CAN_FORWARD</a>. These are separated from <a href="#CAN_FRAME">CAN_FRAME</a> as they need different handling (eg. TAO handling)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID.</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID.</td>
+    </tr>
+    <tr>
+     <td>bus</td>
+     <td>uint8_t</td>
+     <td>bus number</td>
+    </tr>
+    <tr>
+     <td>len</td>
+     <td>uint8_t</td>
+     <td>Frame length</td>
+    </tr>
+    <tr>
+     <td>id</td>
+     <td>uint32_t</td>
+     <td>Frame ID</td>
+    </tr>
+    <tr>
+     <td>data</td>
+     <td>uint8_t[64]</td>
+     <td>Frame data</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAN_FILTER_MODIFY">CAN_FILTER_MODIFY (<a href="#CAN_FILTER_MODIFY">
+    #388
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Modify the filter of what CAN messages to forward over the mavlink. This can be used to make CAN forwarding work well on low bandwith links. The filtering is applied on bits 8 to 24 of the CAN id (2nd and 3rd bytes) which corresponds to the DroneCAN message ID for DroneCAN. Filters with more than 16 IDs can be constructed by sending multiple <a href="#CAN_FILTER_MODIFY">CAN_FILTER_MODIFY</a> messages.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>System ID.</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Component ID.</td>
+    </tr>
+    <tr>
+     <td>bus</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>bus number</td>
+    </tr>
+    <tr>
+     <td>operation</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CAN_FILTER_OP">CAN_FILTER_OP</a>
+     </td>
+     <td>what operation to perform on the filter list. See <a href="#CAN_FILTER_OP">CAN_FILTER_OP</a> enum.</td>
+    </tr>
+    <tr>
+     <td>num_ids</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>number of IDs in filter list</td>
+    </tr>
+    <tr>
+     <td>ids</td>
+     <td>uint16_t[16]</td>
+     <td>
+     </td>
+     <td>filter IDs, length num_ids</td>
     </tr>
    </tbody>
   </table>
