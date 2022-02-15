@@ -17,21 +17,23 @@ The key/value pair has a number of important properties:
 
 Message | Description
 -- | --
-<span id="PARAM_REQUEST_LIST"></span>[PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_LIST) | Request all parameters. The recipient broadcast all parameter values using [PARAM_VALUE](#PARAM_VALUE).
-<span id="PARAM_REQUEST_READ"></span>[PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) | Request a single parameter. The recipient broadcasts the specified parameter value using [PARAM_VALUE](#PARAM_VALUE).
-<span id="PARAM_SET"></span>[PARAM_SET](../messages/common.md#PARAM_SET) | Send command to set a specified parameter to a value. After the value has been set (whether successful or not), the recipient should broadcast the current value using [PARAM_VALUE](#PARAM_VALUE).
-<span id="PARAM_VALUE"></span>[PARAM_VALUE](../messages/common.md#PARAM_VALUE) | The current value of a parameter, broadcast in response to a request to get one or more parameters ([PARAM_REQUEST_READ](#PARAM_REQUEST_READ), [PARAM_REQUEST_LIST](#PARAM_REQUEST_LIST)) or whenever a parameter is set ([PARAM_SET](#PARAM_SET)) or changes.
+<a id="PARAM_REQUEST_LIST"></a>[PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_LIST) | Request all parameters. The recipient broadcast all parameter values using [PARAM_VALUE](#PARAM_VALUE).
+<a id="PARAM_REQUEST_READ"></a>[PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) | Request a single parameter. The recipient broadcasts the specified parameter value using [PARAM_VALUE](#PARAM_VALUE).
+<a id="PARAM_SET"></a>[PARAM_SET](../messages/common.md#PARAM_SET) | Send command to set a specified parameter to a value. After the value has been set (whether successful or not), the recipient should broadcast the current value using [PARAM_VALUE](#PARAM_VALUE).
+<a id="PARAM_VALUE"></a>[PARAM_VALUE](../messages/common.md#PARAM_VALUE) | The current value of a parameter, broadcast in response to a request to get one or more parameters ([PARAM_REQUEST_READ](#PARAM_REQUEST_READ), [PARAM_REQUEST_LIST](#PARAM_REQUEST_LIST)) or whenever a parameter is set ([PARAM_SET](#PARAM_SET)) or changes.
 
 Enum | Description
 -- | --
-<span id="MAV_PARAM_TYPE"></span>[MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE) | [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE) store/encode parameter values within a `float` field. This type conveys the real type of the encoded parameter value, e.g. `MAV_PARAM_TYPE_UINT16`, `MAV_PARAM_TYPE_INT32`, etc.
+<a id="MAV_PARAM_TYPE"></a>[MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE) | [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE) store/encode parameter values within a `float` field. This type conveys the real type of the encoded parameter value, e.g. `MAV_PARAM_TYPE_UINT16`, `MAV_PARAM_TYPE_INT32`, etc.
 
 
-## Parameter Encoding
+## Parameter Names
 
 Parameters names/ids are set in the `param_id` field of messages where they are used.
 The `param_id` string can store up to 16 characters. 
 The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars.
+
+## Parameter Encoding
 
 Values are byte-wise encoded *within* the `param_value` field, an IEE754 single-precision, 4 byte, floating point value. 
 The `param_type` ([MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE)) is used to indicate the actual type of the data so that it can be decoded by the recipient. 
