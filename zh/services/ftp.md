@@ -1,6 +1,8 @@
 # File Transfer Protocol (FTP)
 
-The FTP Protocol enables an FTP-like file transfer protocol over MAVLink. It supports common FTP operations like: reading, truncating, writing, removing and creating files, listing and removing directories.
+The File Transfer Protocol (FTP) enables file transfer over MAVLink. It supports common FTP operations like: reading, truncating, writing, removing and creating files, listing and removing directories.
+
+> **Note** MAVLink FTP implementation closely follows the design of the original internet [FTP protocol](https://en.wikipedia.org/wiki/File_Transfer_Protocol) in terms of the message structure, sequences, and the supported opcodes/operations. Developers can read the Internet protocol RFCs to understand MAVLink FTP.
 
 The protocol follows a client-server pattern, where all commands are sent by the GCS (client), and the Drone (server) responds either with an ACK containing the requested information, or a NAK containing an error. The GCS sets a timeout after most commands, and may resend the command if it is triggered. The drone must re-send its response if a request with the same sequence number is received.
 
