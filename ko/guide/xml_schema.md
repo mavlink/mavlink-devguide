@@ -155,7 +155,7 @@ A `param` **should** also include the following optional attributes where approp
 
 ## Message Definition (messages) {#messages}
 
-Messages are defined within the `<messages> ... </messages>` block using `<message>...</message>` tags. Individual fields to be encoded in the message payload are defined using `<field> ... </field>` tags
+Messages are defined within the `<messages> ... </messages>` block using `<message>...</message>` tags. Individual fields to be encoded in the message payload are defined using `<field> ... </field>` tags. Every message must have at least one field.
 
 For example,the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) message is given below (this message was chosen because it contains many of the main fields and attributes.
 
@@ -192,7 +192,7 @@ The main message tags/fields are:
       - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1. > **Note** IDs are precious in MAVLink 1!
    - `name`: The name attribute provides a human readable form for the message (ie "BATTERY_STATUS"). It is used for naming helper functions in generated libraries, but is not sent over the wire.
 - `description`: Human readable description of message, shown in user interfaces and in code comments. This should contain all information (and hyperlinks) to fully understand the message.
-- `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire).
+- `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire). Every message must have at least one field.
    
    - `type`: Similar to a field in a C `struct` - the size of the data required to store/represent the data type. 
       - Fields can be signed/unsigned integers of size 8, 16, 23, 64 bits (`{u)int8_t`, `(u)int16_t`, `(u)int32_t`, `(u)int64_t`), single/double precision IEEE754 floating point numbers. They can also be arrays of the other types - e.g. `uint16_t[10]`. 
