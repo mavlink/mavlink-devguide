@@ -2,10 +2,12 @@
  <body>
   <p>
    <strong>MAVLink Include Files:</strong>
-   <a href="common.md">common.xml</a>
+   <a href="../../message_definitions/v1.0/common.md">
+    ../../message_definitions/v1.0/common.xml
+   </a>
   </p>
   <h2>MAVLink Protocol Version</h2>
-  <p>The current MAVLink version is 2.1. The minor version numbers (after the dot) range from 1-255.</p>
+  <p>The current MAVLink version is 2.2. The minor version numbers (after the dot) range from 1-255.</p>
   <p>This file has protocol dialect: 1.</p>
   <h2 id="enums">MAVLink Type Enumerations</h2>
   <h3 id="MAV_AVSS_COMMAND_FAILURE_REASON">MAV_AVSS_COMMAND_FAILURE_REASON</h3>
@@ -43,6 +45,173 @@
       <a href="#PRS_OTM_NOT_ARMED">PRS_OTM_NOT_ARMED</a>
      </td>
      <td>AVSS defined command failure reason. PRS OTM not armed.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AVSS_M300_OPERATION_MODE">AVSS_M300_OPERATION_MODE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MODE_M300_MANUAL_CTRL">
+     <td>0</td>
+     <td>
+      <a href="#MODE_M300_MANUAL_CTRL">MODE_M300_MANUAL_CTRL</a>
+     </td>
+     <td>In manual control mode</td>
+    </tr>
+    <tr id="MODE_M300_ATTITUDE">
+     <td>1</td>
+     <td>
+      <a href="#MODE_M300_ATTITUDE">MODE_M300_ATTITUDE</a>
+     </td>
+     <td>In attitude mode</td>
+    </tr>
+    <tr id="MODE_M300_P_GPS">
+     <td>6</td>
+     <td>
+      <a href="#MODE_M300_P_GPS">MODE_M300_P_GPS</a>
+     </td>
+     <td>In GPS mode</td>
+    </tr>
+    <tr id="MODE_M300_HOTPOINT_MODE ">
+     <td>9</td>
+     <td>
+      <a href="#MODE_M300_HOTPOINT_MODE ">MODE_M300_HOTPOINT_MODE</a>
+     </td>
+     <td>In hotpoint mode</td>
+    </tr>
+    <tr id="MODE_M300_ASSISTED_TAKEOFF">
+     <td>10</td>
+     <td>
+      <a href="#MODE_M300_ASSISTED_TAKEOFF">MODE_M300_ASSISTED_TAKEOFF</a>
+     </td>
+     <td>In assisted takeoff mode</td>
+    </tr>
+    <tr id="MODE_M300_AUTO_TAKEOFF">
+     <td>11</td>
+     <td>
+      <a href="#MODE_M300_AUTO_TAKEOFF">MODE_M300_AUTO_TAKEOFF</a>
+     </td>
+     <td>In auto takeoff mode</td>
+    </tr>
+    <tr id="MODE_M300_AUTO_LANDING">
+     <td>12</td>
+     <td>
+      <a href="#MODE_M300_AUTO_LANDING">MODE_M300_AUTO_LANDING</a>
+     </td>
+     <td>In auto landing mode</td>
+    </tr>
+    <tr id="MODE_M300_NAVI_GO_HOME">
+     <td>15</td>
+     <td>
+      <a href="#MODE_M300_NAVI_GO_HOME">MODE_M300_NAVI_GO_HOME</a>
+     </td>
+     <td>In go home mode</td>
+    </tr>
+    <tr id="MODE_M300_NAVI_SDK_CTRL ">
+     <td>17</td>
+     <td>
+      <a href="#MODE_M300_NAVI_SDK_CTRL ">MODE_M300_NAVI_SDK_CTRL</a>
+     </td>
+     <td>In sdk control mode</td>
+    </tr>
+    <tr id="MODE_M300_S_SPORT">
+     <td>31</td>
+     <td>
+      <a href="#MODE_M300_S_SPORT">MODE_M300_S_SPORT</a>
+     </td>
+     <td>In sport mode</td>
+    </tr>
+    <tr id=" MODE_M300_FORCE_AUTO_LANDING">
+     <td>33</td>
+     <td>
+      <a href="# MODE_M300_FORCE_AUTO_LANDING">MODE_M300_FORCE_AUTO_LANDING</a>
+     </td>
+     <td>In force auto landing mode</td>
+    </tr>
+    <tr id="MODE_M300_T_TRIPOD">
+     <td>38</td>
+     <td>
+      <a href="#MODE_M300_T_TRIPOD">MODE_M300_T_TRIPOD</a>
+     </td>
+     <td>In tripod mode</td>
+    </tr>
+    <tr id="MODE_M300_SEARCH_MODE">
+     <td>40</td>
+     <td>
+      <a href="#MODE_M300_SEARCH_MODE">MODE_M300_SEARCH_MODE</a>
+     </td>
+     <td>In search mode</td>
+    </tr>
+    <tr id="MODE_M300_ENGINE_START">
+     <td>41</td>
+     <td>
+      <a href="#MODE_M300_ENGINE_START">MODE_M300_ENGINE_START</a>
+     </td>
+     <td>In engine mode</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AVSS_HORSEFLY_OPERATION_MODE">AVSS_HORSEFLY_OPERATION_MODE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MODE_HORSEFLY_MANUAL_CTRL">
+     <td>0</td>
+     <td>
+      <a href="#MODE_HORSEFLY_MANUAL_CTRL">MODE_HORSEFLY_MANUAL_CTRL</a>
+     </td>
+     <td>In manual control mode</td>
+    </tr>
+    <tr id="MODE_HORSEFLY_AUTO_TAKEOFF">
+     <td>1</td>
+     <td>
+      <a href="#MODE_HORSEFLY_AUTO_TAKEOFF">MODE_HORSEFLY_AUTO_TAKEOFF</a>
+     </td>
+     <td>In auto takeoff mode</td>
+    </tr>
+    <tr id="MODE_HORSEFLY_AUTO_LANDING">
+     <td>2</td>
+     <td>
+      <a href="#MODE_HORSEFLY_AUTO_LANDING">MODE_HORSEFLY_AUTO_LANDING</a>
+     </td>
+     <td>In auto landing mode</td>
+    </tr>
+    <tr id="MODE_HORSEFLY_NAVI_GO_HOME">
+     <td>3</td>
+     <td>
+      <a href="#MODE_HORSEFLY_NAVI_GO_HOME">MODE_HORSEFLY_NAVI_GO_HOME</a>
+     </td>
+     <td>In go home mode</td>
+    </tr>
+    <tr id="MODE_HORSEFLY_DROP">
+     <td>4</td>
+     <td>
+      <a href="#MODE_HORSEFLY_DROP">MODE_HORSEFLY_DROP</a>
+     </td>
+     <td>In drop mode</td>
     </tr>
    </tbody>
   </table>
@@ -385,304 +554,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MAV_CMD_PRS_SET_CHARGE_MV">MAV_CMD_PRS_SET_CHARGE_MV (<a href="#MAV_CMD_PRS_SET_CHARGE_MV">60073</a>
-   )
-  </h3>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>AVSS defined command. Set the threshold to charge from outside in millivolts</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Units</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Charge Threshold</td>
-     <td>Charge Threshold</td>
-     <td>mV</td>
-    </tr>
-    <tr>
-     <td>2</td>
-     <td>User defined</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>3</td>
-     <td>User defined</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>4</td>
-     <td>User defined</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>5</td>
-     <td>User defined</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>6</td>
-     <td>User defined</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>7</td>
-     <td>User defined</td>
-     <td>
-     </td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_PRS_GET_CHARGE_MV">MAV_CMD_PRS_GET_CHARGE_MV (<a href="#MAV_CMD_PRS_GET_CHARGE_MV">60074</a>
-   )
-  </h3>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>AVSS defined command. Get the threshold to charge from outside in millivolts.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>2</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>3</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>4</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>5</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>6</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>7</td>
-     <td>User defined</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_PRS_SET_TIMEOUT">MAV_CMD_PRS_SET_TIMEOUT (<a href="#MAV_CMD_PRS_SET_TIMEOUT">60075</a>
-   )
-  </h3>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>AVSS defined command. Set the timeout between FTS request and deploying the chute.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Units</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: Timeout</td>
-     <td>User defined</td>
-     <td>ms</td>
-    </tr>
-    <tr>
-     <td>2</td>
-     <td>User defined</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>3</td>
-     <td>User defined</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>4</td>
-     <td>User defined</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>5</td>
-     <td>User defined</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>6</td>
-     <td>User defined</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>7</td>
-     <td>User defined</td>
-     <td>
-     </td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_PRS_GET_TIMEOUT">MAV_CMD_PRS_GET_TIMEOUT (<a href="#MAV_CMD_PRS_GET_TIMEOUT">60076</a>
-   )
-  </h3>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>AVSS defined command. Get the timeout between FTS request and deploying the chute.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>2</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>3</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>4</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>5</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>6</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>7</td>
-     <td>User defined</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_PRS_SET_FTS_CONNECT">MAV_CMD_PRS_SET_FTS_CONNECT (<a href="#MAV_CMD_PRS_SET_FTS_CONNECT">60077</a>
-   )
-  </h3>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>AVSS defined command. Set up the PRS to connect to the drone..</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>2</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>3</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>4</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>5</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>6</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>7</td>
-     <td>User defined</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_PRS_GET_FTS_CONNECT">MAV_CMD_PRS_GET_FTS_CONNECT (<a href="#MAV_CMD_PRS_GET_FTS_CONNECT">60078</a>
-   )
-  </h3>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>AVSS defined command. Get the connection status of PRS and drone.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>2</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>3</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>4</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>5</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>6</td>
-     <td>User defined</td>
-    </tr>
-    <tr>
-     <td>7</td>
-     <td>User defined</td>
-    </tr>
-   </tbody>
-  </table>
   <h2 id="messages">MAVLink Messages</h2>
   <h3 id="AVSS_PRS_SYS_STATUS">AVSS_PRS_SYS_STATUS (<a href="#AVSS_PRS_SYS_STATUS">
     #60050
@@ -701,34 +572,242 @@
     <tr>
      <th>Field Name</th>
      <th>Type</th>
+     <th>Units</th>
      <th>Description</th>
     </tr>
    </thead>
    <tbody>
     <tr>
-     <td>arm_status</td>
-     <td>uint8_t</td>
-     <td>PRS arm statuses</td>
-    </tr>
-    <tr>
-     <td>battery_status</td>
-     <td>uint16_t</td>
-     <td>Estimated battery run-time without a remote connection and PRS battery voltage</td>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>Timestamp (time since PRS boot).</td>
     </tr>
     <tr>
      <td>error_status</td>
      <td>uint32_t</td>
+     <td>
+     </td>
      <td>PRS error statuses</td>
     </tr>
     <tr>
-     <td>change_status</td>
-     <td>uint8_t</td>
-     <td>PRS battery change statuses</td>
+     <td>battery_status</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Estimated battery run-time without a remote connection and PRS battery voltage</td>
     </tr>
+    <tr>
+     <td>arm_status</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>PRS arm statuses</td>
+    </tr>
+    <tr>
+     <td>charge_status</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>PRS battery charge statuses</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AVSS_DRONE_POSITION">AVSS_DRONE_POSITION (<a href="#AVSS_DRONE_POSITION">
+    #60051
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Drone position.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
     <tr>
      <td>time_boot_ms</td>
      <td>uint32_t</td>
-     <td>Time since PRS system boot</td>
+     <td>ms</td>
+     <td>Timestamp (time since FC boot).</td>
+    </tr>
+    <tr>
+     <td>lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude, expressed</td>
+    </tr>
+    <tr>
+     <td>lon</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude, expressed</td>
+    </tr>
+    <tr>
+     <td>alt</td>
+     <td>int32_t</td>
+     <td>mm</td>
+     <td>Altitude (MSL). Note that virtually all GPS modules provide both WGS84 and MSL.</td>
+    </tr>
+    <tr>
+     <td>ground_alt</td>
+     <td>float</td>
+     <td>m</td>
+     <td>Altitude above ground, This altitude is measured by a ultrasound, Laser rangefinder or millimeter-wave radar</td>
+    </tr>
+    <tr>
+     <td>barometer_alt</td>
+     <td>float</td>
+     <td>m</td>
+     <td>This altitude is measured by a barometer</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AVSS_DRONE_IMU">AVSS_DRONE_IMU (<a href="#AVSS_DRONE_IMU">
+    #60052
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Drone IMU data. Quaternion order is w, x, y, z and a zero rotation would be expressed as (1 0 0 0).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>Timestamp (time since FC boot).</td>
+    </tr>
+    <tr>
+     <td>q1</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Quaternion component 1, w (1 in null-rotation)</td>
+    </tr>
+    <tr>
+     <td>q2</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Quaternion component 2, x (0 in null-rotation)</td>
+    </tr>
+    <tr>
+     <td>q3</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Quaternion component 3, y (0 in null-rotation)</td>
+    </tr>
+    <tr>
+     <td>q4</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>Quaternion component 4, z (0 in null-rotation)</td>
+    </tr>
+    <tr>
+     <td>xacc</td>
+     <td>float</td>
+     <td>m/s/s</td>
+     <td>X acceleration</td>
+    </tr>
+    <tr>
+     <td>yacc</td>
+     <td>float</td>
+     <td>m/s/s</td>
+     <td>Y acceleration</td>
+    </tr>
+    <tr>
+     <td>zacc</td>
+     <td>float</td>
+     <td>m/s/s</td>
+     <td>Z acceleration</td>
+    </tr>
+    <tr>
+     <td>xgyro</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Angular speed around X axis</td>
+    </tr>
+    <tr>
+     <td>ygyro</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Angular speed around Y axis</td>
+    </tr>
+    <tr>
+     <td>zgyro</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Angular speed around Z axis</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AVSS_DRONE_OPERATION_MODE">AVSS_DRONE_OPERATION_MODE (<a href="#AVSS_DRONE_OPERATION_MODE">
+    #60053
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Drone operation mode.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>Timestamp (time since FC boot).</td>
+    </tr>
+    <tr>
+     <td>M300_operation_mode</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>DJI M300 operation mode</td>
+    </tr>
+    <tr>
+     <td>horsefly_operation_mode</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>horsefly operation mode</td>
     </tr>
    </tbody>
   </table>

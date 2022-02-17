@@ -155,7 +155,7 @@ The `<param>` tag is used in the [MAV_CMD](../messages/common.md#mav_commands) e
 
 ## 消息定义(消息) {#messages}
 
-所有消息都是在 ` <messages> 中定义的..。 </messages>` 使用 `<message>...</message>` 标签的方块。 正在使用 `<field>... </field>` 标签。
+所有消息都是在 ` <messages> 中定义的..。 </messages>` 使用 `<message>...</message>` 标签的方块。 正在使用 `<field>... </field>` tags. Every message must have at least one field.
 
 例如，以下文对[BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) 消息的定义 (选择了该消息因为它包含了许多主要字段和属性）
 
@@ -192,7 +192,7 @@ The `<param>` tag is used in the [MAV_CMD](../messages/common.md#mav_commands) e
       - 255以下所有值都被认为是保留的，除非报文也打算用于 MAVLink 1。 >**注意** ID 在 MAVLink 1 中很宝贵！
    - `name`：名称属性为消息提供了人类可读的表格 (比如 "BATERY_STATUS") 它用于在生成的库命名辅助功能，但并没有通过总线发送。
 - `description`(可选)：用户界面和代码评论中显示的信息可读描述。 这应当包含所有信息（以及超链接），以便充分了解信息。
-- `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire).
+- `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire). Every message must have at least one field.
    
    - `type`: 类似于 C `struct` - 存储/代表数据类型所需数据大小。 
       - 字段可签名/无签名，大小 8、16、23、64位(`{u)int8_t`, `(u)int16_t`, `(u>(u)int 32_t`, `(u>(u)int64_int`), 单一/双精度精度IEEE754 浮点数。 它们也可以是其他类型——例如`uint16_t[10]`。 
