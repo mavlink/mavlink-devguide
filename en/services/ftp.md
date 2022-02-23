@@ -15,14 +15,17 @@ All messages (commands, ACK, NAK) are exchanged inside [FILE_TRANSFER_PROTOCOL](
 This message type definition is minimal, with fields for specifying the target network, system and component, and for an "arbitrary" variable-length payload. 
 
 The different commands and other information required to implement the protocol are encoded *within* in the `FILE_TRANSFER_PROTOCOL` payload.
-This topic explains the encoding, packing format, commands and errors, and the order in which the commands are sent to implement the core FTP functionality. 
-
-> **Note** The encoding and content of the payload field are not mandated by the specification - and can be extension specific.
-  This topic covers the encoding that has been used by *QGroundControl* and PX4.
-
-A MAVLink system that supports this protocol should also set the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag in the [AUTOPILOT_VERSION.capability](../messages/common.md#AUTOPILOT_VERSION) field.
+This topic explains the encoding, packing format, commands and errors, and the order in which the commands are sent to implement the core FTP functionality.
 
 
+## Protocol Discovery
+
+FTP (v1) is supported if the [AUTOPILOT_VERSION.capability](../messages/common.md#AUTOPILOT_VERSION) field has the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag set.
+
+This flag should only be set by a MAVLink component that supports the specific version of the protocol defined in this document.
+
+> **Note** The encoding and content of the `FILE_TRANSFER_PROTOCOL` payload field are not mandated by the specification, and other encoding schemes might be used, for example, in private networks.
+  If you have implemented a private encoding or different version you **must not** set the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag.
 
 ## Payload Format {#payload}
 
@@ -301,8 +304,6 @@ The sequence of operations for getting a directory listing is shown below (assum
 
 [![Mermaid Sequence: List Directory](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogUmVxdWVzdCBlbnRyaWVzIGZyb20gaW5kZXggKG9mZnNldCkgMC48YnI-T25lIG9yIG1vcmUgZW50cmllcyByZXR1cm5lZCBpbiBBQ0suXG4gICAgR0NTLT4-RHJvbmU6IExpc3REaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCksIG9mZnNldD0wIClcbiAgICBEcm9uZS0-PkdDUzogQUNLKHNpemUsIGRhdGE9ZW50cmllc19hdF9vZmZzZXRfMClcbiAgICBOb3RlIG92ZXIgR0NTLERyb25lOiBSZXBlYXQgcmVxdWVzdCBpbiBjeWNsZSB0byBnZXQgYWxsPGJyPmVudHJpZXMgKGVhY2ggdGltZSBzZXQgb2Zmc2V0IHRvPGJyPmVudHJ5IGluZGV4IGp1c3QgYWZ0ZXIgbGFzdCBvbmU8YnI-cmVjZWl2ZWQpLlxuICAgIEdDUy0-PkRyb25lOiBMaXN0RGlyZWN0b3J5KCBkYXRhWzBdPXBhdGgsIHNpemU9bGVuKHBhdGgpLCBvZmZzZXQ9Li4uKVxuICAgIERyb25lLT4-R0NTOiBBQ0soc2l6ZSwgZGF0YT1lbnRyaWVzX2F0X29mZnNldClcbiAgICBOb3RlIG92ZXIgR0NTLERyb25lOiBEcm9uZSBOQUNLIHdpdGggRU9GIHdoZW4gYWxsPGJyPmVudHJpZXMgcmV0dXJuZWQ8YnI-KGUuZy4gcmVxdWVzdCB3aXRoOjxicj5vZmZzZXQgPj0gbnVtYmVyIG9mIGVudHJpZXMpLlxuICAgIEdDUy0-PkRyb25lOiAgTGlzdERpcmVjdG9yeSggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSwgb2Zmc2V0PXRvb19iaWcgKVxuICAgIERyb25lLT4-R0NTOiBOQUNLKHNpemU9MSwgZGF0YVswXT1FT0YpIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSBvdmVyIEdDUyxEcm9uZTogUmVxdWVzdCBlbnRyaWVzIGZyb20gaW5kZXggKG9mZnNldCkgMC48YnI-T25lIG9yIG1vcmUgZW50cmllcyByZXR1cm5lZCBpbiBBQ0suXG4gICAgR0NTLT4-RHJvbmU6IExpc3REaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCksIG9mZnNldD0wIClcbiAgICBEcm9uZS0-PkdDUzogQUNLKHNpemUsIGRhdGE9ZW50cmllc19hdF9vZmZzZXRfMClcbiAgICBOb3RlIG92ZXIgR0NTLERyb25lOiBSZXBlYXQgcmVxdWVzdCBpbiBjeWNsZSB0byBnZXQgYWxsPGJyPmVudHJpZXMgKGVhY2ggdGltZSBzZXQgb2Zmc2V0IHRvPGJyPmVudHJ5IGluZGV4IGp1c3QgYWZ0ZXIgbGFzdCBvbmU8YnI-cmVjZWl2ZWQpLlxuICAgIEdDUy0-PkRyb25lOiBMaXN0RGlyZWN0b3J5KCBkYXRhWzBdPXBhdGgsIHNpemU9bGVuKHBhdGgpLCBvZmZzZXQ9Li4uKVxuICAgIERyb25lLT4-R0NTOiBBQ0soc2l6ZSwgZGF0YT1lbnRyaWVzX2F0X29mZnNldClcbiAgICBOb3RlIG92ZXIgR0NTLERyb25lOiBEcm9uZSBOQUNLIHdpdGggRU9GIHdoZW4gYWxsPGJyPmVudHJpZXMgcmV0dXJuZWQ8YnI-KGUuZy4gcmVxdWVzdCB3aXRoOjxicj5vZmZzZXQgPj0gbnVtYmVyIG9mIGVudHJpZXMpLlxuICAgIEdDUy0-PkRyb25lOiAgTGlzdERpcmVjdG9yeSggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSwgb2Zmc2V0PXRvb19iaWcgKVxuICAgIERyb25lLT4-R0NTOiBOQUNLKHNpemU9MSwgZGF0YVswXT1FT0YpIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
 
-
-
 <!-- original sequence
 sequenceDiagram;
     participant GCS
@@ -317,7 +318,6 @@ sequenceDiagram;
     GCS->>Drone:  ListDirectory( data[0]=path, size=len(path), offset=too_big )
     Drone->>GCS: NACK(size=1, data[0]=EOF)
 -->
-
 
 The sequence of operations is:
 1. GCS sends [ListDirectory](#ListDirectory) command specifying a directory path and the **index** of an entry.
@@ -423,12 +423,10 @@ kCmdOpenFileRO
 -->
 
 
+## Implementations
 
-
-## C Implementation
-
-The FTP Protocol has been implemented (minimally) in C by PX4 <!-- and ArduPilot Flight Stacks, --> and *QGroundControl*.  
-This implementation can be used in your own code within the terms of their software licenses.
+The FTP v1 Protocol has been implemented (at least) in PX4, ArduPilot, QGroundControl and MAVSDK.
+Those implementations can be used in your own code within the terms of their software licenses.
 
 PX4 Implementation:
 * [src/modules/mavlink/mavlink_ftp.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.cpp)
