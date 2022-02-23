@@ -3877,7 +3877,7 @@
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_FTP">MAV_PROTOCOL_CAPABILITY_FTP</a>
      </td>
-     <td>Autopilot supports the new <a href="#FILE_TRANSFER_PROTOCOL">FILE_TRANSFER_PROTOCOL</a> message type.</td>
+     <td>Autopilot supports the File Transfer Protocol v1: https://mavlink.io/en/services/ftp.html.</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_SET_ATTITUDE_TARGET">
      <td>64</td>
@@ -3919,7 +3919,7 @@
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION">MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION</a>
      </td>
-     <td>Autopilot supports the flight termination command.</td>
+     <td>Autopilot supports the <a href="#MAV_CMD_DO_FLIGHTTERMINATION">MAV_CMD_DO_FLIGHTTERMINATION</a> command (flight termination).</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION">
      <td>4096</td>
@@ -12106,7 +12106,13 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Terminate flight immediately</p>
+   </a>Terminate flight immediately.
+          Flight termination immediately and irreversably terminates the current flight, returning the vehicle to ground.
+          The vehicle will ignore RC or other input until it has been power-cycled.
+          Termination may trigger safety measures, including: disabling motors and deployment of parachute on multicopters, and setting flight surfaces to initiate a landing pattern on fixed-wing).
+          On multicopters without a parachute it may trigger a crash landing.
+          Support for this command can be tested using the protocol bit: <a href="#MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION">MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION</a>.
+          Support for this command can also be tested by sending the command with param1=0 (&lt; 0.5); the ACK should be either <a href="#MAV_RESULT_FAILED">MAV_RESULT_FAILED</a> or <a href="#MAV_RESULT_UNSUPPORTED">MAV_RESULT_UNSUPPORTED</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12118,7 +12124,7 @@
    <tbody>
     <tr>
      <td>1: Terminate</td>
-     <td>Flight termination activated if &gt; 0.5</td>
+     <td>Flight termination activated if &gt; 0.5. Otherwise not activated and ACK with <a href="#MAV_RESULT_FAILED">MAV_RESULT_FAILED</a>.</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -25002,7 +25008,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>File transfer message</p>
+   </a>File transfer protocol message: https://mavlink.io/en/services/ftp.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25030,7 +25036,7 @@
     <tr>
      <td>payload</td>
      <td>uint8_t[251]</td>
-     <td>Variable length payload. The length is defined by the remaining message length when subtracting the header and other fields.  The entire content of this block is opaque unless you understand any the encoding message_type.  The particular encoding used can be extension specific and might not always be documented as part of the mavlink specification.</td>
+     <td>Variable length payload. The length is defined by the remaining message length when subtracting the header and other fields. The content/format of this block is defined in https://mavlink.io/en/services/ftp.html.</td>
     </tr>
    </tbody>
   </table>
