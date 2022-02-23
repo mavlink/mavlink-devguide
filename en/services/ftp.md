@@ -1,4 +1,4 @@
-# File Transfer Protocol (v1)
+# File Transfer Protocol (FTP)
 
 The File Transfer Protocol (FTP) enables file transfer over MAVLink.
 It supports common FTP operations like: reading, truncating, writing, removing and creating files, listing and removing directories.
@@ -20,9 +20,9 @@ This topic explains the encoding, packing format, commands and errors, and the o
 
 ## Protocol Discovery
 
-FTP v1 is supported if the [AUTOPILOT_VERSION.capability](../messages/common.md#AUTOPILOT_VERSION) field has the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag set.
+FTP is supported if the [AUTOPILOT_VERSION.capability](../messages/common.md#AUTOPILOT_VERSION) field has the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag set.
 
-This flag should only be set by a MAVLink component that supports the specific version of the protocol defined here.
+This flag should only be set by a MAVLink component that supports the specific version of the protocol defined in this document.
 
 > **Note** The encoding and content of the `FILE_TRANSFER_PROTOCOL` payload field are not mandated by the specification, and other encoding schemes might be used, for example, in private networks.
   If you have implemented a private encoding or different version you **must not** set the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag.
