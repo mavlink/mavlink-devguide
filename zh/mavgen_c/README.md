@@ -14,16 +14,6 @@ If you need libraries for a custom dialect then you will need to [install mavgen
 
 The libraries can be placed/generated anywhere in your project tree. The example below shows them located in: **generated/include/mavlink/v2.0/**.
 
-## Upgrading Library from MAVLink 1
-
-The *MAVLink 1* pre-built library [mavlink/c_library_v1](https://github.com/mavlink/c_library_v1) can be upgraded by simply dropping in the *MAVLink 2* library from Github: [mavlink/c_library_v2](https://github.com/mavlink/c_library_v2).
-
-The *MAVLink 2* C library offers the same range of APIs as was offered by *MAVLink 1*.
-
-> **Note** The major change from an API perspective is that you don't need to provide a message CRC table any more, or message length table. These have been folded into a single packed table, replacing the old table which was indexed by `msgId`. That was necessary to cope with the much larger 24 bit namespace of message IDs.
-
-*MAVLink 2* usage is covered in the following sections (this includes [Working with MAVLink 1](#mavlink_1) which explains how you can communicate with both *MAVLink 2* and *MAVLink 1* (only) libraries.
-
 ## Adding Libraries
 
 To use MAVLink in your C project, include the **mavlink.h** header file for your dialect:
@@ -36,7 +26,7 @@ This will automatically add the header files for all messages in your dialect, a
 
 > **Warning** Only include the header file for a single dialect. If you need to support messages from a *number of dialects* then create a new "parent" dialect XML file that includes them (and use its generated header as shown above).
 
-<span></span>
+<a></a>
 
 > **Tip** *Do not include the individual message files*. If you generate your own headers, you will have to add their output location to your C compiler's search path.
 
@@ -54,6 +44,30 @@ mavlink_system_t mavlink_system = {
     1  // Component ID (a MAV_COMPONENT value)
 }; 
 ```
+
+### Build Warnings
+
+#### `-Waddress-of-packed-member`
+
+Building the headers may result in warnings like:
+
+    mavlink/common/../mavlink_helpers.h:86:24: warning: taking address of packed member of ‘__mavlink_message’ may result in an unaligned pointer value [-Waddress-of-packed-member]
+       86 |  crc_accumulate_buffer(&msg->checksum, _MAV_PAYLOAD(msg), msg->len);
+    
+
+These can be ignored because MAVLink re-orders packed structures such that values are properly aligned. Specifically all 4-byte values are aligned on 4-byte boundaries (by putting them first), all 2-byte values come after those and are hence also aligned, and last of all come the the 1-byte values.
+
+You can supress the warnings in CMake using `target_compile_options(mavlink_c INTERFACE -Wno-address-of-packed-member -Wno-cast-align)`.
+
+## Upgrading Library from MAVLink 1
+
+The *MAVLink 1* pre-built library [mavlink/c_library_v1](https://github.com/mavlink/c_library_v1) can be upgraded by simply dropping in the *MAVLink 2* library from Github: [mavlink/c_library_v2](https://github.com/mavlink/c_library_v2).
+
+The *MAVLink 2* C library offers the same range of APIs as was offered by *MAVLink 1*.
+
+> **Note** The major change from an API perspective is that you don't need to provide a message CRC table any more, or message length table. These have been folded into a single packed table, replacing the old table which was indexed by `msgId`. That was necessary to cope with the much larger 24 bit namespace of message IDs.
+
+*MAVLink 2* usage is covered in the following sections (this includes [Working with MAVLink 1](#mavlink_1) which explains how you can communicate with both *MAVLink 2* and *MAVLink 1* (only) libraries.
 
 ## Multiple Streams ("channels") {#channels}
 

@@ -111,7 +111,7 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
 
 [Messages](../guide/xml_schema.md#messages) 用于在 MAVLink 系统之间发送数据(包括命令、信息和识别)。
 
-每条消息都具有必需的 `id`、`name` 和 `description` 属性。 [Serialised packets](../guide/serialization.md#packet_format) 包括 `id` 在 [消息id](../guide/serialization.md#v1_msgid) 部分和 [有效载荷](../guide/serialization.md#v1_payload) 部分内信息数据编码格式。 `name` 一般用于生成编解码特殊消息类型的名称方法。 当收到消息时，MAVLink 库提取消息id，以确定特定消息，并且使用找到适当命名的方法来解码有效载荷。
+Every message has mandatory `id`, `name`, and `description` attributes, and at least one `field`. [Serialised packets](../guide/serialization.md#packet_format) 包括 `id` 在 [消息id](../guide/serialization.md#v1_msgid) 部分和 [有效载荷](../guide/serialization.md#v1_payload) 部分内信息数据编码格式。 `name` 一般用于生成编解码特殊消息类型的名称方法。 当收到消息时，MAVLink 库提取消息id，以确定特定消息，并且使用找到适当命名的方法来解码有效载荷。
 
 一个典型的信息 ([SAFETY_SET_ALLOWED_AREA](../messages/common.md#SAFETY_SET_ALLOWED_AREA)) 如下：
 
@@ -144,12 +144,12 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
 
 - 消息 *应该*(非常高度推荐) 包含 `description`. <!-- update if this becomes mandatory -->
 
-- [Point to point messages](../about/overview.md#point_to_point) *必须* 包括 `target_system`（恰如上文所示）
+- [Point to point messages](../about/overview.md#point_to_point) *must* include a `field` for `target_system` (exactly as shown above).
 
-- [Point to point messages](../about/overview.md#point_to_point) *必须* 包括一个字段 `目标组件` (完全如上所示)。
+- [Point to point messages](../about/overview.md#point_to_point) that are relevant to components *must* include a `field` for `target_component`(exactly as shown above).
 - 总有效载荷大小(对于所有字段) 不得超过255字节。
 - 所有其他字段都是可选的。
-- 可能没有超过64个字段。
+- There must be at least one field and no more than 64 fields.
 - &lt;wip/&gt; 标签可以添加到仍在测试的信息。
 - 字段 
   - 消息中必须具有唯一的 `name`。
@@ -157,7 +157,7 @@ MAVLink 系统通常 fork，并保留此仓库的副本(例如：[ArduPilot/mavl
   - *应该* 使用 `units` 属性, 而不是在描述中包括单位。 每个字段只能有 **一个** 或没有单位。
   - *应该* 使用`enum` 属性，可能结果是有限的/很好的理解。
 
-> **Warning** 您不能依赖生成器来完全测试是否符合上述规则。 *mavgen* 代码生成器测试重复的消息 id、重复的字段名称和具有64个以上字段的消息。 它不会检查其他问题 (例如重复的名称或过大的有效负载)。 其他生成器可能提供更好的验证
+> **Warning** 您不能依赖生成器来完全测试是否符合上述规则。 The *mavgen* code generator tests for duplicate message ids, duplicate field names, messages with no fields, and messages with more than 64 fields. 它不会检查其他问题 (例如重复的名称或过大的有效负载)。 其他生成器可能提供更好的验证
 
 #### 消息 id 范围 {#message_id_ranges}
 

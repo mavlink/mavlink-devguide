@@ -1,7 +1,10 @@
 # File Transfer Protocol (v1)
 
-The File Transfer Protocol (FTP) enables an [FTP-like](https://en.wikipedia.org/wiki/File_Transfer_Protocol) file transfer protocol over MAVLink.
+The File Transfer Protocol (FTP) enables file transfer over MAVLink.
 It supports common FTP operations like: reading, truncating, writing, removing and creating files, listing and removing directories.
+
+> **Note** MAVLink FTP implementation closely follows the design of the original internet [FTP protocol](https://en.wikipedia.org/wiki/File_Transfer_Protocol) in terms of the message structure, sequences, and the supported opcodes/operations.
+> Developers can read the Internet protocol RFCs to understand MAVLink FTP.
 
 The protocol follows a client-server pattern, where all commands are sent by the GCS (client), 
 and the Drone (server) responds either with an ACK containing the requested information, or a NAK containing an error. 
@@ -59,22 +62,21 @@ The opcodes that may be sent by the GCS (client) to the drone (server) are liste
 Opcode | Name | Description
 --- | --- | ---
 0   | None | Ignored, always ACKed
-<span id="TerminateSession"></span> 1 | TerminateSession | Terminates open Read `session`.<br>- Closes the file associated with (`session`) and frees the session ID for re-use. 
-<span id="ResetSessions"></span> 2   | ResetSessions | Terminates *all* open read sessions.<br>- Clears all state held by the drone (server); closes all open files, etc.<br>- Sends an ACK reply with no data. <!-- Note, is same as Terminate, but does not check if file session exists -->
-<span id="ListDirectory"></span> 3   | [ListDirectory](#list_directory) | List directory entry information (files, folders etc.) in `<path>`, starting from a specified entry index (`<offset>`).<br>- Response is an ACK packet with one or more entries on success, otherwise a NAK packet with an error code.<br>- Completion is indicated by a NACK with EOF in response to a requested index (`offset`) beyond the list of entries.<br>- The directory is closed after the operation, so this leaves no state on the server.
-<span id="OpenFileRO"></span> 4      | OpenFileRO | Opens file at `<path>` for reading, returns `<session>`<br>- The `path` is stored in the [payload](#payload) `data`. The drone opens the file (`path`) and allocates a *session number*. The file must exist.<br>- An ACK packet must include the allocated `session` and the data size of the file to be opened (`size`)<br>- A NAK packet must contain [error information](#error_codes) . Typical error codes for this command are `NoSessionsAvailable`, `FileExists`. <br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
-<span id="ReadFile"></span> 5        | ReadFile | Reads `<size>` bytes from `<offset>` in `<session>`.<br>- Seeks to (`offset`) in the file opened in (session) and reads (`size`) bytes into the result buffer.<br>- Sends an ACK packet with the result buffer on success, otherwise a NAK packet with an error code. For short reads or reads beyond the end of a file, the (`size`) field in the ACK packet will indicate the actual number of bytes read.<br>- Reads can be issued to any offset in the file for any number of bytes, so reconstructing portions of the file to deal with lost packets should be easy.<br>- For best download performance, try to keep two `Read` packets in flight.
-<span id="CreateFile"></span> 6      | CreateFile | Creates file at `<path>` for writing, returns `<session>`.<br>- Creates the file (path) and allocates a *session number*. All parent directories must exist. If the file already existed, then this call will truncate it. Equivalent UNIX flags: (O_CREAT &#124; O_TRUNC &#124; O_WRONLY)<br>- Sends an ACK packet with the allocated session number on success, or a NAK packet with an error code on error (i.e. [FileExists](#FileExists) if the `path` already exists).<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
-<span id="WriteFile"></span> 7       | WriteFile | Writes `<size>` bytes to `<offset>` in `<session>`.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
-<span id="RemoveFile"></span> 8      | RemoveFile | Remove file at `<path>`.<br>- ACK reply with no data on success.<br>- NAK packet with [error information](#error_codes) on failure.
-<span id="CreateDirectory"></span> 9 | CreateDirectory | Creates directory at `<path>`.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
-<span id="RemoveDirectory"></span> 10 | RemoveDirectory | Removes directory at `<path>`. The directory must be empty. <br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
-<span id="OpenFileWO"></span> 11     | OpenFileWO | Opens file at `<path>` for writing, returns `<session>`. <br>- Opens the file (`path`) and allocates a *session number*. The file will be created if it does not exist. Equivalent UNIX flags: (O_CREAT	&#124; O_WRONLY)<br>- Sends an ACK packet with the allocated *session number* on success, otherwise a NAK packet with an error code.<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
-<span id="TruncateFile"></span> 12   | TruncateFile | Truncate file at `<path>` to `<offset>` length.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
-<span id="Rename"></span> 13         | Rename | Rename `<path1>` to `<path2>`.<br>- Sends an ACK reply the no data on success, otherwise a NAK packet with an error code (i.e. if the source path does not exist).
-<span id="CalcFileCRC32"></span> 14  | CalcFileCRC32 | Calculate CRC32 for file at `<path>`.<br>- Sends an ACK reply with the checksum on success, otherwise a NAK packet with an error code.
-<span id="BurstReadFile"></span> 15  | BurstReadFile | Burst download session file.
-
+<a id="TerminateSession"></a> 1 | TerminateSession | Terminates open Read `session`.<br>- Closes the file associated with (`session`) and frees the session ID for re-use. 
+<a id="ResetSessions"></a> 2   | ResetSessions | Terminates *all* open read sessions.<br>- Clears all state held by the drone (server); closes all open files, etc.<br>- Sends an ACK reply with no data. <!-- Note, is same as Terminate, but does not check if file session exists -->
+<a id="ListDirectory"></a> 3   | [ListDirectory](#list_directory) | List directory entry information (files, folders etc.) in `<path>`, starting from a specified entry index (`<offset>`).<br>- Response is an ACK packet with one or more entries on success, otherwise a NAK packet with an error code.<br>- Completion is indicated by a NACK with EOF in response to a requested index (`offset`) beyond the list of entries.<br>- The directory is closed after the operation, so this leaves no state on the server.
+<a id="OpenFileRO"></a> 4      | [OpenFileRO](#reading-a-file) | Opens file at `<path>` for reading, returns `<session>`<br>- The `path` is stored in the [payload](#payload) `data`. The drone opens the file (`path`) and allocates a *session number*. The file must exist.<br>- An ACK packet must include the allocated `session` and the data size of the file to be opened (`size`)<br>- A NAK packet must contain [error information](#error_codes) . Typical error codes for this command are `NoSessionsAvailable`, `FileExists`. <br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
+<a id="ReadFile"></a> 5        | ReadFile | Reads `<size>` bytes from `<offset>` in `<session>`.<br>- Seeks to (`offset`) in the file opened in (session) and reads (`size`) bytes into the result buffer.<br>- Sends an ACK packet with the result buffer on success, otherwise a NAK packet with an error code. For short reads or reads beyond the end of a file, the (`size`) field in the ACK packet will indicate the actual number of bytes read.<br>- Reads can be issued to any offset in the file for any number of bytes, so reconstructing portions of the file to deal with lost packets should be easy.<br>- For best download performance, try to keep two `Read` packets in flight.
+<a id="CreateFile"></a> 6      | CreateFile | Creates file at `<path>` for writing, returns `<session>`.<br>- Creates the file (path) and allocates a *session number*. All parent directories must exist. If the file already existed, then this call will truncate it. Equivalent UNIX flags: (O_CREAT &#124; O_TRUNC &#124; O_WRONLY)<br>- Sends an ACK packet with the allocated session number on success, or a NAK packet with an error code on error (i.e. [FileExists](#FileExists) if the `path` already exists).<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
+<a id="WriteFile"></a> 7       | WriteFile | Writes `<size>` bytes to `<offset>` in `<session>`.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
+<a id="RemoveFile"></a> 8      | [RemoveFile](#remove-file) | Remove file at `<path>`.<br>- ACK reply with no data on success.<br>- NAK packet with [error information](#error_codes) on failure.
+<a id="CreateDirectory"></a> 9 | [CreateDirectory](#create-directory) | Creates directory at `<path>`.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
+<a id="RemoveDirectory"></a> 10 | [RemoveDirectory](#remove-directory) | Removes directory at `<path>`. The directory must be empty. <br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
+<a id="OpenFileWO"></a> 11     | OpenFileWO | Opens file at `<path>` for writing, returns `<session>`. <br>- Opens the file (`path`) and allocates a *session number*. The file will be created if it does not exist. Equivalent UNIX flags: (O_CREAT	&#124; O_WRONLY)<br>- Sends an ACK packet with the allocated *session number* on success, otherwise a NAK packet with an error code.<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
+<a id="TruncateFile"></a> 12   | [TruncateFile](#truncate-file) | Truncate file at `<path>` to `<offset>` length.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
+<a id="Rename"></a> 13         | Rename | Rename `<path1>` to `<path2>`.<br>- Sends an ACK reply the no data on success, otherwise a NAK packet with an error code (i.e. if the source path does not exist).
+<a id="CalcFileCRC32"></a> 14  | CalcFileCRC32 | Calculate CRC32 for file at `<path>`.<br>- Sends an ACK reply with the checksum on success, otherwise a NAK packet with an error code.
+<a id="BurstReadFile"></a> 15  | BurstReadFile | Burst download session file.
 
 The drone (server) will respond with/send the following opcodes for any of the above messages (ACK response on success or a NAK in the event of an error).
 
@@ -106,17 +108,17 @@ The payload `size` field must be set to either 1 or 2, depending on whether or n
 
 Error | Name | Description
 --- | --- | ---
-<span id="None"></span>0                | None            | No error
-<span id="Fail"></span>1                | Fail            | Unknown failure
-<span id="FailErrno"></span>2           | FailErrno       | Command failed, Err number sent back in `PayloadHeader.data[1]`. This is a file-system error number understood by the server operating system.
-<span id="InvalidDataSize"></span>3     | InvalidDataSize | Payload `size` is invalid
-<span id="InvalidSession"></span>4      | InvalidSession  | Session is not currently open
-<span id="NoSessionsAvailable"></span>5 | NoSessionsAvailable | All available sessions are already in use.
-<span id="EOF"></span>6                 | EOF             | Offset past end of file for `ListDirectory` and `ReadFile` commands.
-<span id="UnknownCommand"></span>7      | UnknownCommand  | Unknown command / opcode
-<span id="FileExists"></span>8          | FileExists      | File/directory already exists
-<span id="FileProtected"></span>9       | FileProtected   | File/directory is write protected
-<span id="FileNotFound"></span>10       | FileNotFound    | File/directory not found
+<a id="None"></a>0                | None            | No error
+<a id="Fail"></a>1                | Fail            | Unknown failure
+<a id="FailErrno"></a>2           | FailErrno       | Command failed, Err number sent back in `PayloadHeader.data[1]`. This is a file-system error number understood by the server operating system.
+<a id="InvalidDataSize"></a>3     | InvalidDataSize | Payload `size` is invalid
+<a id="InvalidSession"></a>4      | InvalidSession  | Session is not currently open
+<a id="NoSessionsAvailable"></a>5 | NoSessionsAvailable | All available sessions are already in use.
+<a id="EOF"></a>6                 | EOF             | Offset past end of file for `ListDirectory` and `ReadFile` commands.
+<a id="UnknownCommand"></a>7      | UnknownCommand  | Unknown command / opcode
+<a id="FileExists"></a>8          | FileExists      | File/directory already exists
+<a id="FileProtected"></a>9       | FileProtected   | File/directory is write protected
+<a id="FileNotFound"></a>10       | FileNotFound    | File/directory not found
 
 
 ## Timeouts/Resending {#timeouts}
@@ -140,7 +142,6 @@ GCS recommended settings:
 
 
 ## FTP Operations
-
 
 ### Reading a File
 

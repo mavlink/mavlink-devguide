@@ -542,6 +542,36 @@
      </td>
      <td>0x40000000 propulsion (actuator, esc, motor or propellor)</td>
     </tr>
+    <tr id="MAV_SYS_STATUS_EXTENSION_USED">
+     <td>2147483648</td>
+     <td>
+      <a href="#MAV_SYS_STATUS_EXTENSION_USED">MAV_SYS_STATUS_EXTENSION_USED</a>
+     </td>
+     <td>0x80000000 Extended bit-field are used for further sensor status bits (needs to be set in onboard_control_sensors_present only)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_SYS_STATUS_SENSOR_EXTENDED">MAV_SYS_STATUS_SENSOR_EXTENDED</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>These encode the sensors whose status is sent as part of the <a href="#SYS_STATUS">SYS_STATUS</a> message in the extended fields.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_SYS_STATUS_RECOVERY_SYSTEM">
+     <td>1</td>
+     <td>
+      <a href="#MAV_SYS_STATUS_RECOVERY_SYSTEM">MAV_SYS_STATUS_RECOVERY_SYSTEM</a>
+     </td>
+     <td>0x01 Recovery system (parachute, balloon, retracts etc)</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_FRAME">MAV_FRAME</h3>
@@ -551,18 +581,18 @@
    </a>Co-ordinate frames used by MAVLink. Not all frames are supported by all commands, messages, or vehicles.
       
       Global frames use the following naming conventions:
-      - `GLOBAL`: Global co-ordinate frame with WGS84 latitude/longitude and altitude positive over mean sea level (MSL) by default. 
-        The following modifiers may be used with `GLOBAL`:
-        - `RELATIVE_ALT`: Altitude is relative to the vehicle home position rather than MSL
-        - `TERRAIN_ALT`: Altitude is relative to ground level rather than MSL
-        - `INT`: Latitude/longitude (in degrees) are scaled by multiplying by 1E7  
+      - "GLOBAL": Global co-ordinate frame with WGS84 latitude/longitude and altitude positive over mean sea level (MSL) by default. 
+        The following modifiers may be used with "GLOBAL":
+        - "RELATIVE_ALT": Altitude is relative to the vehicle home position rather than MSL.
+        - "TERRAIN_ALT": Altitude is relative to ground level rather than MSL.
+        - "INT": Latitude/longitude (in degrees) are scaled by multiplying by 1E7.
 
       Local frames use the following naming conventions:
-      - `LOCAL`: Origin of local frame is fixed relative to earth. Unless otherwise specified this origin is the origin of the vehicle position-estimator ("EKF").
-      - `BODY`: Origin of local frame travels with the vehicle. NOTE, `BODY` does NOT indicate alignment of frame axis with vehicle attitude.
-      - `OFFSET`: Deprecated synonym for `BODY` (origin travels with the vehicle). Not to be used for new frames.
+      - "LOCAL": Origin of local frame is fixed relative to earth. Unless otherwise specified this origin is the origin of the vehicle position-estimator ("EKF").
+      - "BODY": Origin of local frame travels with the vehicle. NOTE, "BODY" does NOT indicate alignment of frame axis with vehicle attitude.
+      - "OFFSET": Deprecated synonym for "BODY" (origin travels with the vehicle). Not to be used for new frames.
 
-      Some deprecated frames do not follow these conventions (e.g. <a href="#MAV_FRAME_BODY_NED">MAV_FRAME_BODY_NED</a> and MAV_FRAME_BODY_OFFSET_NED).</p>
+      Some deprecated frames do not follow these conventions (e.g. <a href="#MAV_FRAME_BODY_NED">MAV_FRAME_BODY_NED</a> and <a href="#MAV_FRAME_BODY_OFFSET_NED">MAV_FRAME_BODY_OFFSET_NED</a>).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1136,7 +1166,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Gimbal manager high level capability flags (bitmap). The first 16 bits are identical to the <a href="#GIMBAL_DEVICE_CAP_FLAGS">GIMBAL_DEVICE_CAP_FLAGS</a> which are identical with <a href="#GIMBAL_DEVICE_FLAGS">GIMBAL_DEVICE_FLAGS</a>. However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags.</p>
+   </a>Gimbal manager high level capability flags (bitmap). The first 16 bits are identical to the <a href="#GIMBAL_DEVICE_CAP_FLAGS">GIMBAL_DEVICE_CAP_FLAGS</a>. However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1272,7 +1302,7 @@
      <td>
       <a href="#GIMBAL_DEVICE_FLAGS_NEUTRAL">GIMBAL_DEVICE_FLAGS_NEUTRAL</a>
      </td>
-     <td>Set to neutral position (horizontal, forward looking, with stabiliziation), takes presedence over all other flags except RETRACT.</td>
+     <td>Set to neutral/default position, taking precedence over all other flags except RETRACT. Neutral is commonly forward-facing and horizontal (pitch=yaw=0) but may be any orientation.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_FLAGS_ROLL_LOCK">
      <td>4</td>
@@ -1301,7 +1331,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Flags for high level gimbal manager operation The first 16 bytes are identical to the <a href="#GIMBAL_DEVICE_FLAGS">GIMBAL_DEVICE_FLAGS</a>.</p>
+   </a>Flags for high level gimbal manager operation The first 16 bits are identical to the <a href="#GIMBAL_DEVICE_FLAGS">GIMBAL_DEVICE_FLAGS</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1476,21 +1506,63 @@
      <td>
       <a href="#WINCH_RELAXED">WINCH_RELAXED</a>
      </td>
-     <td>Relax winch.</td>
+     <td>Allow motor to freewheel.</td>
     </tr>
     <tr id="WINCH_RELATIVE_LENGTH_CONTROL">
      <td>1</td>
      <td>
       <a href="#WINCH_RELATIVE_LENGTH_CONTROL">WINCH_RELATIVE_LENGTH_CONTROL</a>
      </td>
-     <td>Wind or unwind specified length of cable, optionally using specified rate.</td>
+     <td>Wind or unwind specified length of line, optionally using specified rate.</td>
     </tr>
     <tr id="WINCH_RATE_CONTROL">
      <td>2</td>
      <td>
       <a href="#WINCH_RATE_CONTROL">WINCH_RATE_CONTROL</a>
      </td>
-     <td>Wind or unwind cable at specified rate.</td>
+     <td>Wind or unwind line at specified rate.</td>
+    </tr>
+    <tr id="WINCH_LOCK">
+     <td>3</td>
+     <td>
+      <a href="#WINCH_LOCK">WINCH_LOCK</a>
+     </td>
+     <td>Perform the locking sequence to relieve motor while in the fully retracted position. Only action and instance command parameters are used, others are ignored.</td>
+    </tr>
+    <tr id="WINCH_DELIVER">
+     <td>4</td>
+     <td>
+      <a href="#WINCH_DELIVER">WINCH_DELIVER</a>
+     </td>
+     <td>Sequence of drop, slow down, touch down, reel up, lock. Only action and instance command parameters are used, others are ignored.</td>
+    </tr>
+    <tr id="WINCH_HOLD">
+     <td>5</td>
+     <td>
+      <a href="#WINCH_HOLD">WINCH_HOLD</a>
+     </td>
+     <td>Engage motor and hold current position. Only action and instance command parameters are used, others are ignored.</td>
+    </tr>
+    <tr id="WINCH_RETRACT">
+     <td>6</td>
+     <td>
+      <a href="#WINCH_RETRACT">WINCH_RETRACT</a>
+     </td>
+     <td>Return the reel to the fully retracted position. Only action and instance command parameters are used, others are ignored.</td>
+    </tr>
+    <tr id="WINCH_LOAD_LINE">
+     <td>7</td>
+     <td>
+      <a href="#WINCH_LOAD_LINE">WINCH_LOAD_LINE</a>
+     </td>
+     <td>Load the reel with line. The winch will calculate the total loaded length and stop when the tension exceeds a threshold. Only action and instance command parameters are used, others are ignored.</td>
+    </tr>
+    <tr id="WINCH_ABANDON_LINE">
+     <td>8</td>
+     <td>
+      <a href="#WINCH_ABANDON_LINE">WINCH_ABANDON_LINE</a>
+     </td>
+     <td>Spool out the entire length of the line. Only action and instance command parameters are used, others are ignored.</td>
     </tr>
    </tbody>
   </table>
@@ -1846,7 +1918,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Flags to indicate usage for a particular storage (see `STORAGE_INFORMATION.storage_usage` and `MAV_CMD_SET_STORAGE_USAGE`).</p>
+   </a>Flags to indicate usage for a particular storage (see <a href="#STORAGE_INFORMATION">STORAGE_INFORMATION</a>.storage_usage and <a href="#MAV_CMD_SET_STORAGE_USAGE">MAV_CMD_SET_STORAGE_USAGE</a>).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1861,7 +1933,7 @@
      <td>
       <a href="#STORAGE_USAGE_FLAG_SET">STORAGE_USAGE_FLAG_SET</a>
      </td>
-     <td>Always set to 1 (indicates `STORAGE_INFORMATION.storage_usage` is supported).</td>
+     <td>Always set to 1 (indicates <a href="#STORAGE_INFORMATION">STORAGE_INFORMATION</a>.storage_usage is supported).</td>
     </tr>
     <tr id="STORAGE_USAGE_FLAG_PHOTO">
      <td>2</td>
@@ -2139,6 +2211,362 @@
      </td>
      <td>Meta data for the events interface.</td>
     </tr>
+    <tr id="COMP_METADATA_TYPE_ACTUATORS">
+     <td>5</td>
+     <td>
+      <a href="#COMP_METADATA_TYPE_ACTUATORS">COMP_METADATA_TYPE_ACTUATORS</a>
+     </td>
+     <td>Meta data for actuator configuration (motors, servos and vehicle geometry) and testing.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ACTUATOR_CONFIGURATION">ACTUATOR_CONFIGURATION</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Actuator configuration, used to change a setting on an actuator. Component information metadata can be used to know which outputs support which commands.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="ACTUATOR_CONFIGURATION_NONE">
+     <td>0</td>
+     <td>
+      <a href="#ACTUATOR_CONFIGURATION_NONE">ACTUATOR_CONFIGURATION_NONE</a>
+     </td>
+     <td>Do nothing.</td>
+    </tr>
+    <tr id="ACTUATOR_CONFIGURATION_BEEP">
+     <td>1</td>
+     <td>
+      <a href="#ACTUATOR_CONFIGURATION_BEEP">ACTUATOR_CONFIGURATION_BEEP</a>
+     </td>
+     <td>Command the actuator to beep now.</td>
+    </tr>
+    <tr id="ACTUATOR_CONFIGURATION_3D_MODE_ON">
+     <td>2</td>
+     <td>
+      <a href="#ACTUATOR_CONFIGURATION_3D_MODE_ON">ACTUATOR_CONFIGURATION_3D_MODE_ON</a>
+     </td>
+     <td>Permanently set the actuator (ESC) to 3D mode (reversible thrust).</td>
+    </tr>
+    <tr id="ACTUATOR_CONFIGURATION_3D_MODE_OFF">
+     <td>3</td>
+     <td>
+      <a href="#ACTUATOR_CONFIGURATION_3D_MODE_OFF">ACTUATOR_CONFIGURATION_3D_MODE_OFF</a>
+     </td>
+     <td>Permanently set the actuator (ESC) to non 3D mode (non-reversible thrust).</td>
+    </tr>
+    <tr id="ACTUATOR_CONFIGURATION_SPIN_DIRECTION1">
+     <td>4</td>
+     <td>
+      <a href="#ACTUATOR_CONFIGURATION_SPIN_DIRECTION1">ACTUATOR_CONFIGURATION_SPIN_DIRECTION1</a>
+     </td>
+     <td>Permanently set the actuator (ESC) to spin direction 1 (which can be clockwise or counter-clockwise).</td>
+    </tr>
+    <tr id="ACTUATOR_CONFIGURATION_SPIN_DIRECTION2">
+     <td>5</td>
+     <td>
+      <a href="#ACTUATOR_CONFIGURATION_SPIN_DIRECTION2">ACTUATOR_CONFIGURATION_SPIN_DIRECTION2</a>
+     </td>
+     <td>Permanently set the actuator (ESC) to spin direction 2 (opposite of direction 1).</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ACTUATOR_OUTPUT_FUNCTION">ACTUATOR_OUTPUT_FUNCTION</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Actuator output function. Values greater or equal to 1000 are autopilot-specific.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_NONE">
+     <td>0</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_NONE">ACTUATOR_OUTPUT_FUNCTION_NONE</a>
+     </td>
+     <td>No function (disabled).</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR1">
+     <td>1</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR1">ACTUATOR_OUTPUT_FUNCTION_MOTOR1</a>
+     </td>
+     <td>Motor 1</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR2">
+     <td>2</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR2">ACTUATOR_OUTPUT_FUNCTION_MOTOR2</a>
+     </td>
+     <td>Motor 2</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR3">
+     <td>3</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR3">ACTUATOR_OUTPUT_FUNCTION_MOTOR3</a>
+     </td>
+     <td>Motor 3</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR4">
+     <td>4</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR4">ACTUATOR_OUTPUT_FUNCTION_MOTOR4</a>
+     </td>
+     <td>Motor 4</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR5">
+     <td>5</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR5">ACTUATOR_OUTPUT_FUNCTION_MOTOR5</a>
+     </td>
+     <td>Motor 5</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR6">
+     <td>6</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR6">ACTUATOR_OUTPUT_FUNCTION_MOTOR6</a>
+     </td>
+     <td>Motor 6</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR7">
+     <td>7</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR7">ACTUATOR_OUTPUT_FUNCTION_MOTOR7</a>
+     </td>
+     <td>Motor 7</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR8">
+     <td>8</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR8">ACTUATOR_OUTPUT_FUNCTION_MOTOR8</a>
+     </td>
+     <td>Motor 8</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR9">
+     <td>9</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR9">ACTUATOR_OUTPUT_FUNCTION_MOTOR9</a>
+     </td>
+     <td>Motor 9</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR10">
+     <td>10</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR10">ACTUATOR_OUTPUT_FUNCTION_MOTOR10</a>
+     </td>
+     <td>Motor 10</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR11">
+     <td>11</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR11">ACTUATOR_OUTPUT_FUNCTION_MOTOR11</a>
+     </td>
+     <td>Motor 11</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR12">
+     <td>12</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR12">ACTUATOR_OUTPUT_FUNCTION_MOTOR12</a>
+     </td>
+     <td>Motor 12</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR13">
+     <td>13</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR13">ACTUATOR_OUTPUT_FUNCTION_MOTOR13</a>
+     </td>
+     <td>Motor 13</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR14">
+     <td>14</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR14">ACTUATOR_OUTPUT_FUNCTION_MOTOR14</a>
+     </td>
+     <td>Motor 14</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR15">
+     <td>15</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR15">ACTUATOR_OUTPUT_FUNCTION_MOTOR15</a>
+     </td>
+     <td>Motor 15</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_MOTOR16">
+     <td>16</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_MOTOR16">ACTUATOR_OUTPUT_FUNCTION_MOTOR16</a>
+     </td>
+     <td>Motor 16</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO1">
+     <td>33</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO1">ACTUATOR_OUTPUT_FUNCTION_SERVO1</a>
+     </td>
+     <td>Servo 1</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO2">
+     <td>34</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO2">ACTUATOR_OUTPUT_FUNCTION_SERVO2</a>
+     </td>
+     <td>Servo 2</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO3">
+     <td>35</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO3">ACTUATOR_OUTPUT_FUNCTION_SERVO3</a>
+     </td>
+     <td>Servo 3</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO4">
+     <td>36</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO4">ACTUATOR_OUTPUT_FUNCTION_SERVO4</a>
+     </td>
+     <td>Servo 4</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO5">
+     <td>37</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO5">ACTUATOR_OUTPUT_FUNCTION_SERVO5</a>
+     </td>
+     <td>Servo 5</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO6">
+     <td>38</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO6">ACTUATOR_OUTPUT_FUNCTION_SERVO6</a>
+     </td>
+     <td>Servo 6</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO7">
+     <td>39</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO7">ACTUATOR_OUTPUT_FUNCTION_SERVO7</a>
+     </td>
+     <td>Servo 7</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO8">
+     <td>40</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO8">ACTUATOR_OUTPUT_FUNCTION_SERVO8</a>
+     </td>
+     <td>Servo 8</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO9">
+     <td>41</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO9">ACTUATOR_OUTPUT_FUNCTION_SERVO9</a>
+     </td>
+     <td>Servo 9</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO10">
+     <td>42</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO10">ACTUATOR_OUTPUT_FUNCTION_SERVO10</a>
+     </td>
+     <td>Servo 10</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO11">
+     <td>43</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO11">ACTUATOR_OUTPUT_FUNCTION_SERVO11</a>
+     </td>
+     <td>Servo 11</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO12">
+     <td>44</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO12">ACTUATOR_OUTPUT_FUNCTION_SERVO12</a>
+     </td>
+     <td>Servo 12</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO13">
+     <td>45</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO13">ACTUATOR_OUTPUT_FUNCTION_SERVO13</a>
+     </td>
+     <td>Servo 13</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO14">
+     <td>46</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO14">ACTUATOR_OUTPUT_FUNCTION_SERVO14</a>
+     </td>
+     <td>Servo 14</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO15">
+     <td>47</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO15">ACTUATOR_OUTPUT_FUNCTION_SERVO15</a>
+     </td>
+     <td>Servo 15</td>
+    </tr>
+    <tr id="ACTUATOR_OUTPUT_FUNCTION_SERVO16">
+     <td>48</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION_SERVO16">ACTUATOR_OUTPUT_FUNCTION_SERVO16</a>
+     </td>
+     <td>Servo 16</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AUTOTUNE_AXIS">AUTOTUNE_AXIS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Enable axes that will be tuned via autotuning. Used in <a href="#MAV_CMD_DO_AUTOTUNE_ENABLE">MAV_CMD_DO_AUTOTUNE_ENABLE</a>.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="AUTOTUNE_AXIS_DEFAULT">
+     <td>0</td>
+     <td>
+      <a href="#AUTOTUNE_AXIS_DEFAULT">AUTOTUNE_AXIS_DEFAULT</a>
+     </td>
+     <td>Flight stack tunes axis according to its default settings.</td>
+    </tr>
+    <tr id="AUTOTUNE_AXIS_ROLL">
+     <td>1</td>
+     <td>
+      <a href="#AUTOTUNE_AXIS_ROLL">AUTOTUNE_AXIS_ROLL</a>
+     </td>
+     <td>Autotune roll axis.</td>
+    </tr>
+    <tr id="AUTOTUNE_AXIS_PITCH">
+     <td>2</td>
+     <td>
+      <a href="#AUTOTUNE_AXIS_PITCH">AUTOTUNE_AXIS_PITCH</a>
+     </td>
+     <td>Autotune pitch axis.</td>
+    </tr>
+    <tr id="AUTOTUNE_AXIS_YAW">
+     <td>4</td>
+     <td>
+      <a href="#AUTOTUNE_AXIS_YAW">AUTOTUNE_AXIS_YAW</a>
+     </td>
+     <td>Autotune yaw axis.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_DATA_STREAM">MAV_DATA_STREAM</h3>
@@ -2232,7 +2660,7 @@
     [Enum]
    </a>The ROI (region of interest) for the vehicle. This can be
                 be used by the vehicle for camera/vehicle attitude alignment (see
-                MAV_CMD_NAV_ROI).</p>
+                <a href="#MAV_CMD_NAV_ROI">MAV_CMD_NAV_ROI</a>).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -2541,7 +2969,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Result from a MAVLink command (MAV_CMD)</p>
+   </a>Result from a MAVLink command (<a href="#mav_commands">MAV_CMD</a>)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -3412,7 +3840,8 @@
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT">MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT</a>
      </td>
-     <td>Autopilot supports MISSION float message type.</td>
+     <td>Autopilot supports the <a href="#MISSION_ITEM">MISSION_ITEM</a> float message type.
+          Note that <a href="#MISSION_ITEM">MISSION_ITEM</a> is deprecated, and autopilots should use <a href="#MISSION_INT">MISSION_INT</a> instead.</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT">
      <td>2</td>
@@ -3425,13 +3854,9 @@
      <td>4</td>
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_MISSION_INT">MAV_PROTOCOL_CAPABILITY_MISSION_INT</a>
-      <p style="color:red">
-       <strong>DEPRECATED:</strong> Replaced by  (2020-06).
-
-
-  This flag must always be set if missions are supported, because missions must always use <a href="#MISSION_ITEM_INT">MISSION_ITEM_INT</a> (rather than <a href="#MISSION_ITEM">MISSION_ITEM</a>, which is deprecated).</p>
      </td>
-     <td>Autopilot supports <a href="#MISSION_ITEM_INT">MISSION_ITEM_INT</a> scaled integer message type.</td>
+     <td>Autopilot supports <a href="#MISSION_ITEM_INT">MISSION_ITEM_INT</a> scaled integer message type.
+          Note that this flag must always be set if missions are supported, because missions must always use <a href="#MISSION_ITEM_INT">MISSION_ITEM_INT</a> (rather than <a href="#MISSION_ITEM">MISSION_ITEM</a>, which is deprecated).</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_COMMAND_INT">
      <td>8</td>
@@ -3452,7 +3877,7 @@
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_FTP">MAV_PROTOCOL_CAPABILITY_FTP</a>
      </td>
-     <td>Autopilot supports the new <a href="#FILE_TRANSFER_PROTOCOL">FILE_TRANSFER_PROTOCOL</a> message type.</td>
+     <td>Autopilot supports the File Transfer Protocol v1: https://mavlink.io/en/services/ftp.html.</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_SET_ATTITUDE_TARGET">
      <td>64</td>
@@ -3494,7 +3919,7 @@
      <td>
       <a href="#MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION">MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION</a>
      </td>
-     <td>Autopilot supports the flight termination command.</td>
+     <td>Autopilot supports the <a href="#MAV_CMD_DO_FLIGHTTERMINATION">MAV_CMD_DO_FLIGHTTERMINATION</a> command (flight termination).</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION">
      <td>4096</td>
@@ -3524,12 +3949,12 @@
      </td>
      <td>Autopilot supports mission rally point protocol.</td>
     </tr>
-    <tr id="MAV_PROTOCOL_CAPABILITY_FLIGHT_INFORMATION">
+    <tr id="MAV_PROTOCOL_CAPABILITY_RESERVED2">
      <td>65536</td>
      <td>
-      <a href="#MAV_PROTOCOL_CAPABILITY_FLIGHT_INFORMATION">MAV_PROTOCOL_CAPABILITY_FLIGHT_INFORMATION</a>
+      <a href="#MAV_PROTOCOL_CAPABILITY_RESERVED2">MAV_PROTOCOL_CAPABILITY_RESERVED2</a>
      </td>
-     <td>Autopilot supports the flight information protocol.</td>
+     <td>Reserved for future use.</td>
     </tr>
    </tbody>
   </table>
@@ -3950,7 +4375,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Flags to report status/failure cases for a power generator (used in GENERATOR_STATUS). Note that FAULTS are conditions that cause the generator to fail. Warnings are conditions that require attention before the next use (they indicate the system is not operating properly).</p>
+   </a>Flags to report status/failure cases for a power generator (used in <a href="#GENERATOR_STATUS">GENERATOR_STATUS</a>). Note that FAULTS are conditions that cause the generator to fail. Warnings are conditions that require attention before the next use (they indicate the system is not operating properly).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -5173,7 +5598,7 @@
      <td>
       <a href="#CAMERA_CAP_FLAGS_HAS_MODES">CAMERA_CAP_FLAGS_HAS_MODES</a>
      </td>
-     <td>Camera has separate Video and Image/Photo modes (MAV_CMD_SET_CAMERA_MODE)</td>
+     <td>Camera has separate Video and Image/Photo modes (<a href="#MAV_CMD_SET_CAMERA_MODE">MAV_CMD_SET_CAMERA_MODE</a>)</td>
     </tr>
     <tr id="CAMERA_CAP_FLAGS_CAN_CAPTURE_IMAGE_IN_VIDEO_MODE">
      <td>8</td>
@@ -5194,21 +5619,21 @@
      <td>
       <a href="#CAMERA_CAP_FLAGS_HAS_IMAGE_SURVEY_MODE">CAMERA_CAP_FLAGS_HAS_IMAGE_SURVEY_MODE</a>
      </td>
-     <td>Camera has image survey mode (MAV_CMD_SET_CAMERA_MODE)</td>
+     <td>Camera has image survey mode (<a href="#MAV_CMD_SET_CAMERA_MODE">MAV_CMD_SET_CAMERA_MODE</a>)</td>
     </tr>
     <tr id="CAMERA_CAP_FLAGS_HAS_BASIC_ZOOM">
      <td>64</td>
      <td>
       <a href="#CAMERA_CAP_FLAGS_HAS_BASIC_ZOOM">CAMERA_CAP_FLAGS_HAS_BASIC_ZOOM</a>
      </td>
-     <td>Camera has basic zoom control (MAV_CMD_SET_CAMERA_ZOOM)</td>
+     <td>Camera has basic zoom control (<a href="#MAV_CMD_SET_CAMERA_ZOOM">MAV_CMD_SET_CAMERA_ZOOM</a>)</td>
     </tr>
     <tr id="CAMERA_CAP_FLAGS_HAS_BASIC_FOCUS">
      <td>128</td>
      <td>
       <a href="#CAMERA_CAP_FLAGS_HAS_BASIC_FOCUS">CAMERA_CAP_FLAGS_HAS_BASIC_FOCUS</a>
      </td>
-     <td>Camera has basic focus control (MAV_CMD_SET_CAMERA_FOCUS)</td>
+     <td>Camera has basic focus control (<a href="#MAV_CMD_SET_CAMERA_FOCUS">MAV_CMD_SET_CAMERA_FOCUS</a>)</td>
     </tr>
     <tr id="CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM">
      <td>256</td>
@@ -5236,7 +5661,7 @@
      <td>
       <a href="#CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS">CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS</a>
      </td>
-     <td>Camera supports tracking geo status (CAMERA_TRACKING_GEO_STATUS).</td>
+     <td>Camera supports tracking geo status (<a href="#CAMERA_TRACKING_GEO_STATUS">CAMERA_TRACKING_GEO_STATUS</a>).</td>
     </tr>
    </tbody>
   </table>
@@ -5517,6 +5942,27 @@
       <a href="#FOCUS_TYPE_METERS">FOCUS_TYPE_METERS</a>
      </td>
      <td>Focus value in metres. Note that there is no message to get the valid focus range of the camera, so this can type can only be used for cameras where the range is known (implying that this cannot reliably be used in a GCS for an arbitrary camera).</td>
+    </tr>
+    <tr id="FOCUS_TYPE_AUTO">
+     <td>4</td>
+     <td>
+      <a href="#FOCUS_TYPE_AUTO">FOCUS_TYPE_AUTO</a>
+     </td>
+     <td>Focus automatically.</td>
+    </tr>
+    <tr id="FOCUS_TYPE_AUTO_SINGLE">
+     <td>5</td>
+     <td>
+      <a href="#FOCUS_TYPE_AUTO_SINGLE">FOCUS_TYPE_AUTO_SINGLE</a>
+     </td>
+     <td>Single auto focus. Mainly used for still pictures. Usually abbreviated as AF-S.</td>
+    </tr>
+    <tr id="FOCUS_TYPE_AUTO_CONTINUOUS">
+     <td>6</td>
+     <td>
+      <a href="#FOCUS_TYPE_AUTO_CONTINUOUS">FOCUS_TYPE_AUTO_CONTINUOUS</a>
+     </td>
+     <td>Continuous auto focus. Mainly used for dynamic scenes. Abbreviated as AF-C.</td>
     </tr>
    </tbody>
   </table>
@@ -6182,7 +6628,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Precision land modes (used in MAV_CMD_NAV_LAND).</p>
+   </a>Precision land modes (used in <a href="#MAV_CMD_NAV_LAND">MAV_CMD_NAV_LAND</a>).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -7279,36 +7725,6 @@
       <a href="#TUNE_FORMAT_MML_MODERN">TUNE_FORMAT_MML_MODERN</a>
      </td>
      <td>Format is Modern Music Markup Language (MML): https://en.wikipedia.org/wiki/Music_Macro_Language#Modern_MML.</td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="COMPONENT_CAP_FLAGS">COMPONENT_CAP_FLAGS</h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>Component capability flags (Bitmap)</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="COMPONENT_CAP_FLAGS_PARAM">
-     <td>1</td>
-     <td>
-      <a href="#COMPONENT_CAP_FLAGS_PARAM">COMPONENT_CAP_FLAGS_PARAM</a>
-     </td>
-     <td>Component has parameters, and supports the parameter protocol (PARAM messages).</td>
-    </tr>
-    <tr id="COMPONENT_CAP_FLAGS_PARAM_EXT">
-     <td>2</td>
-     <td>
-      <a href="#COMPONENT_CAP_FLAGS_PARAM_EXT">COMPONENT_CAP_FLAGS_PARAM_EXT</a>
-     </td>
-     <td>Component has parameters, and supports the extended parameter protocol (PARAM_EXT messages).</td>
     </tr>
    </tbody>
   </table>
@@ -8647,7 +9063,7 @@
      <td>
       <a href="#MAV_WINCH_STATUS_FULLY_RETRACTED">MAV_WINCH_STATUS_FULLY_RETRACTED</a>
      </td>
-     <td>Winch thread is fully retracted</td>
+     <td>Winch line is fully retracted</td>
     </tr>
     <tr id="MAV_WINCH_STATUS_MOVING">
      <td>4</td>
@@ -8661,7 +9077,56 @@
      <td>
       <a href="#MAV_WINCH_STATUS_CLUTCH_ENGAGED">MAV_WINCH_STATUS_CLUTCH_ENGAGED</a>
      </td>
-     <td>Winch clutch is engaged allowing motor to move freely</td>
+     <td>Winch clutch is engaged allowing motor to move freely.</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_LOCKED">
+     <td>16</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_LOCKED">MAV_WINCH_STATUS_LOCKED</a>
+     </td>
+     <td>Winch is locked by locking mechanism.</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_DROPPING">
+     <td>32</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_DROPPING">MAV_WINCH_STATUS_DROPPING</a>
+     </td>
+     <td>Winch is gravity dropping payload.</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_ARRESTING">
+     <td>64</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_ARRESTING">MAV_WINCH_STATUS_ARRESTING</a>
+     </td>
+     <td>Winch is arresting payload descent.</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_GROUND_SENSE">
+     <td>128</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_GROUND_SENSE">MAV_WINCH_STATUS_GROUND_SENSE</a>
+     </td>
+     <td>Winch is using torque measurements to sense the ground.</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_RETRACTING">
+     <td>256</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_RETRACTING">MAV_WINCH_STATUS_RETRACTING</a>
+     </td>
+     <td>Winch is returning to the fully retracted position.</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_REDELIVER">
+     <td>512</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_REDELIVER">MAV_WINCH_STATUS_REDELIVER</a>
+     </td>
+     <td>Winch is redelivering the payload. This is a failover state if the line tension goes above a threshold during RETRACTING.</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_ABANDON_LINE">
+     <td>1024</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_ABANDON_LINE">MAV_WINCH_STATUS_ABANDON_LINE</a>
+     </td>
+     <td>Winch is abandoning the line and possibly payload. Winch unspools the entire calculated line length. This is a failover state from REDELIVER if the number of attemps exceeds a threshold.</td>
     </tr>
    </tbody>
   </table>
@@ -9034,13 +9499,54 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="CAN_FILTER_OP">CAN_FILTER_OP</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CAN_FILTER_REPLACE">
+     <td>0</td>
+     <td>
+      <a href="#CAN_FILTER_REPLACE">CAN_FILTER_REPLACE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="CAN_FILTER_ADD">
+     <td>1</td>
+     <td>
+      <a href="#CAN_FILTER_ADD">CAN_FILTER_ADD</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="CAN_FILTER_REMOVE">
+     <td>2</td>
+     <td>
+      <a href="#CAN_FILTER_REMOVE">CAN_FILTER_REMOVE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <a id="MAV_CMD">
   </a>
-  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
    </strong>
-   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+   <p>MAVLink commands (<a href="#mav_commands">MAV_CMD</a>) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
   </blockquote>
   <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. NaN and INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current yaw or latitude rather than a specific value). See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the <a href="#mav_commands">MAV_CMD</a> entries</p>
   <h3 id="MAV_CMD_NAV_WAYPOINT">MAV_CMD_NAV_WAYPOINT (<a href="#MAV_CMD_NAV_WAYPOINT">16</a>
@@ -10012,7 +10518,7 @@
     </tr>
     <tr>
      <td>5: Latitude/X</td>
-     <td>Center point latitude (if no <a href="#MAV_FRAME">MAV_FRAME</a> specified) / X coordinate according to <a href="#MAV_FRAME">MAV_FRAME</a>. INT32_MAX (or NaN if sent in COMMAND_LONG): Use current vehicle position, or current center if already orbiting.</td>
+     <td>Center point latitude (if no <a href="#MAV_FRAME">MAV_FRAME</a> specified) / X coordinate according to <a href="#MAV_FRAME">MAV_FRAME</a>. INT32_MAX (or NaN if sent in <a href="#COMMAND_LONG">COMMAND_LONG</a>): Use current vehicle position, or current center if already orbiting.</td>
      <td>
      </td>
      <td>
@@ -10020,7 +10526,7 @@
     </tr>
     <tr>
      <td>6: Longitude/Y</td>
-     <td>Center point longitude (if no <a href="#MAV_FRAME">MAV_FRAME</a> specified) / Y coordinate according to <a href="#MAV_FRAME">MAV_FRAME</a>. INT32_MAX (or NaN if sent in COMMAND_LONG): Use current vehicle position, or current center if already orbiting.</td>
+     <td>Center point longitude (if no <a href="#MAV_FRAME">MAV_FRAME</a> specified) / Y coordinate according to <a href="#MAV_FRAME">MAV_FRAME</a>. INT32_MAX (or NaN if sent in <a href="#COMMAND_LONG">COMMAND_LONG</a>): Use current vehicle position, or current center if already orbiting.</td>
      <td>
      </td>
      <td>
@@ -10081,7 +10587,7 @@
     </tr>
     <tr>
      <td>5: X</td>
-     <td>x the location of the fixed ROI (see MAV_FRAME)</td>
+     <td>x the location of the fixed ROI (see <a href="#MAV_FRAME">MAV_FRAME</a>)</td>
      <td>
      </td>
     </tr>
@@ -11600,7 +12106,13 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Terminate flight immediately</p>
+   </a>Terminate flight immediately.
+          Flight termination immediately and irreversably terminates the current flight, returning the vehicle to ground.
+          The vehicle will ignore RC or other input until it has been power-cycled.
+          Termination may trigger safety measures, including: disabling motors and deployment of parachute on multicopters, and setting flight surfaces to initiate a landing pattern on fixed-wing).
+          On multicopters without a parachute it may trigger a crash landing.
+          Support for this command can be tested using the protocol bit: <a href="#MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION">MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION</a>.
+          Support for this command can also be tested by sending the command with param1=0 (&lt; 0.5); the ACK should be either <a href="#MAV_RESULT_FAILED">MAV_RESULT_FAILED</a> or <a href="#MAV_RESULT_UNSUPPORTED">MAV_RESULT_UNSUPPORTED</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11612,7 +12124,7 @@
    <tbody>
     <tr>
      <td>1: Terminate</td>
-     <td>Flight termination activated if &gt; 0.5</td>
+     <td>Flight termination activated if &gt; 0.5. Otherwise not activated and ACK with <a href="#MAV_RESULT_FAILED">MAV_RESULT_FAILED</a>.</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
@@ -13155,9 +13667,10 @@
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>2</td>
-     <td>Empty.</td>
+     <td>2: Axis</td>
+     <td>Specify which axis are autotuned. 0 indicates autopilot default settings.</td>
      <td>
+      <a href="#AUTOTUNE_AXIS">AUTOTUNE_AXIS</a>
      </td>
     </tr>
     <tr>
@@ -13897,7 +14410,7 @@
    <tbody>
     <tr>
      <td>1: Parameter Storage</td>
-     <td>Parameter storage: 0: READ FROM FLASH/EEPROM, 1: WRITE CURRENT TO FLASH/EEPROM, 2: Reset to defaults, 3: Reset sensor calibration parameter data to factory default (or firmware default if not available)</td>
+     <td>Parameter storage: 0: Read from flash/EEPROM, 1: Write current parameter data to flash/EEPROM, 2: Reset to defaults, 3: Reset sensor calibration parameter data to factory default (or firmware default if not available)</td>
      <td>
       <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
      <td>
@@ -13905,7 +14418,7 @@
     </tr>
     <tr>
      <td>2: Mission Storage</td>
-     <td>Mission storage: 0: READ FROM FLASH/EEPROM, 1: WRITE CURRENT TO FLASH/EEPROM, 2: Reset to defaults</td>
+     <td>Mission storage: 0: Read from FLASH/EEPROM, 1: Write current data to flash/EEPROM, 2: Reset to defaults</td>
      <td>
       <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
      <td>
@@ -14020,7 +14533,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Override current mission with command to pause mission, pause mission and move to position, continue/resume mission. When param 1 indicates that the mission is paused (MAV_GOTO_DO_HOLD), param 2 defines whether it holds in place or moves to another position.</p>
+   </a>Override current mission with command to pause mission, pause mission and move to position, continue/resume mission. When param 1 indicates that the mission is paused (<a href="#MAV_GOTO_DO_HOLD">MAV_GOTO_DO_HOLD</a>), param 2 defines whether it holds in place or moves to another position.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14190,6 +14703,145 @@
      <td>last_item:  the last mission item to run (after this item is run, the mission ends)</td>
      <td>
       <em>min:</em>0 <em>increment:</em>1</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_ACTUATOR_TEST">MAV_CMD_ACTUATOR_TEST (<a href="#MAV_CMD_ACTUATOR_TEST">310</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Actuator testing command. This is similar to <a href="#MAV_CMD_DO_MOTOR_TEST">MAV_CMD_DO_MOTOR_TEST</a> but operates on the level of output functions, i.e. it is possible to test Motor1 independent from which output it is configured on. Autopilots typically refuse this command while armed.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Value</td>
+     <td>Output value: 1 means maximum positive output, 0 to center servos or minimum motor thrust (expected to spin), -1 for maximum negative (if not supported by the motors, i.e. motor is not reversible, smaller than 0 maps to NaN). And NaN maps to disarmed (stop the motors).</td>
+     <td>
+      <em>min:</em>
+      -1 
+      <em>max:</em>1 </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>2: Timeout</td>
+     <td>Timeout after which the test command expires and the output is restored to the previous value. A timeout has to be set for safety reasons. A timeout of 0 means to restore the previous value immediately.</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>3 </td>
+     <td>s</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Reserved (set to 0)</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Reserved (set to 0)</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5: Output Function</td>
+     <td>Actuator Output function</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION">ACTUATOR_OUTPUT_FUNCTION</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Reserved (set to 0)</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Reserved (set to 0)</td>
+     <td>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_CONFIGURE_ACTUATOR">MAV_CMD_CONFIGURE_ACTUATOR (<a href="#MAV_CMD_CONFIGURE_ACTUATOR">311</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Actuator configuration command.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Configuration</td>
+     <td>Actuator configuration action</td>
+     <td>
+      <a href="#ACTUATOR_CONFIGURATION">ACTUATOR_CONFIGURATION</a>
+     </td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Reserved (set to 0)</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Reserved (set to 0)</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Reserved (set to 0)</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5: Output Function</td>
+     <td>Actuator Output function</td>
+     <td>
+      <a href="#ACTUATOR_OUTPUT_FUNCTION">ACTUATOR_OUTPUT_FUNCTION</a>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Reserved (set to 0)</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Reserved (set to 0)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -14454,7 +15106,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request the target system(s) emit a single instance of a specified message (i.e. a "one-shot" version of MAV_CMD_SET_MESSAGE_INTERVAL).</p>
+   </a>Request the target system(s) emit a single instance of a specified message (i.e. a "one-shot" version of <a href="#MAV_CMD_SET_MESSAGE_INTERVAL">MAV_CMD_SET_MESSAGE_INTERVAL</a>).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14580,7 +15232,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request camera information (CAMERA_INFORMATION).</p>
+   </a>Request camera information (<a href="#CAMERA_INFORMATION">CAMERA_INFORMATION</a>).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14612,7 +15264,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request camera settings (CAMERA_SETTINGS).</p>
+   </a>Request camera settings (<a href="#CAMERA_SETTINGS">CAMERA_SETTINGS</a>).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14644,7 +15296,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request storage information (STORAGE_INFORMATION). Use the command's target_component to target a specific component's storage.</p>
+   </a>Request storage information (<a href="#STORAGE_INFORMATION">STORAGE_INFORMATION</a>). Use the command's target_component to target a specific component's storage.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14724,7 +15376,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request camera capture status (CAMERA_CAPTURE_STATUS)</p>
+   </a>Request camera capture status (<a href="#CAMERA_CAPTURE_STATUS">CAMERA_CAPTURE_STATUS</a>)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14756,7 +15408,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request flight information (FLIGHT_INFORMATION)</p>
+   </a>Request flight information (<a href="#FLIGHT_INFORMATION">FLIGHT_INFORMATION</a>)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14841,22 +15493,19 @@
     </tr>
     <tr>
      <td>3</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
@@ -14893,22 +15542,19 @@
     </tr>
     <tr>
      <td>3</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
@@ -14945,22 +15591,19 @@
     </tr>
     <tr>
      <td>3</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
@@ -15214,8 +15857,7 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
      <td>
@@ -15223,8 +15865,7 @@
     </tr>
     <tr>
      <td>6</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
      <td>
@@ -15232,8 +15873,7 @@
     </tr>
     <tr>
      <td>7</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
      <td>
@@ -15262,23 +15902,19 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
     </tr>
     <tr>
      <td>3</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
     </tr>
     <tr>
      <td>4</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
     </tr>
     <tr>
      <td>7</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
     </tr>
    </tbody>
   </table>
@@ -15308,29 +15944,25 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
@@ -15386,7 +16018,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>If the camera supports point visual tracking (CAMERA_CAP_FLAGS_HAS_TRACKING_POINT is set), this command allows to initiate the tracking.</p>
+   </a>If the camera supports point visual tracking (<a href="#CAMERA_CAP_FLAGS_HAS_TRACKING_POINT">CAMERA_CAP_FLAGS_HAS_TRACKING_POINT</a> is set), this command allows to initiate the tracking.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15424,7 +16056,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>If the camera supports rectangle visual tracking (CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE is set), this command allows to initiate the tracking.</p>
+   </a>If the camera supports rectangle visual tracking (<a href="#CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE">CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE</a> is set), this command allows to initiate the tracking.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15513,8 +16145,7 @@
     </tr>
     <tr>
      <td>3</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
      <td>
@@ -15522,8 +16153,7 @@
     </tr>
     <tr>
      <td>4</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
      <td>
@@ -15531,8 +16161,7 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
      <td>
@@ -15540,8 +16169,7 @@
     </tr>
     <tr>
      <td>6</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
      <td>
@@ -15549,8 +16177,7 @@
     </tr>
     <tr>
      <td>7</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
      <td>
@@ -15582,43 +16209,37 @@
     </tr>
     <tr>
      <td>2</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>3</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>5</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
@@ -15680,7 +16301,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request video stream information (VIDEO_STREAM_INFORMATION)</p>
+   </a>Request video stream information (<a href="#VIDEO_STREAM_INFORMATION">VIDEO_STREAM_INFORMATION</a>)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15706,7 +16327,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request video stream status (VIDEO_STREAM_STATUS)</p>
+   </a>Request video stream status (<a href="#VIDEO_STREAM_STATUS">VIDEO_STREAM_STATUS</a>)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15862,36 +16483,31 @@
     </tr>
     <tr>
      <td>3</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>4</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>5</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>7</td>
-     <td>
-     </td>
+     <td>Reserved (set to NaN)</td>
      <td>
      </td>
     </tr>
@@ -16888,7 +17504,7 @@
     </tr>
     <tr>
      <td>3: Length</td>
-     <td>Length of cable to release (negative to wind).</td>
+     <td>Length of line to release (negative to wind).</td>
      <td>
      </td>
      <td>m</td>
@@ -17741,6 +18357,51 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_CMD_CAN_FORWARD">MAV_CMD_CAN_FORWARD (<a href="#MAV_CMD_CAN_FORWARD">32000</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Request forwarding of CAN packets from the given CAN bus to this component. CAN Frames are sent using <a href="#CAN_FRAME">CAN_FRAME</a> and <a href="#CANFD_FRAME">CANFD_FRAME</a> messages</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: bus</td>
+     <td>Bus number (0 to disable forwarding, 1 for first bus, 2 for 2nd bus, 3 for 3rd bus).</td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+    </tr>
+   </tbody>
+  </table>
   <h2 id="messages">MAVLink Messages</h2>
   <h3 id="SYS_STATUS">SYS_STATUS (<a href="#SYS_STATUS">
     #1
@@ -17878,6 +18539,45 @@
      <td>
      </td>
      <td>Autopilot-specific errors</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">onboard_control_sensors_present_extended<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_SYS_STATUS_SENSOR_EXTENDED">MAV_SYS_STATUS_SENSOR_EXTENDED</a>
+     </td>
+     <td>Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">onboard_control_sensors_enabled_extended<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_SYS_STATUS_SENSOR_EXTENDED">MAV_SYS_STATUS_SENSOR_EXTENDED</a>
+     </td>
+     <td>Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">onboard_control_sensors_health_extended<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_SYS_STATUS_SENSOR_EXTENDED">MAV_SYS_STATUS_SENSOR_EXTENDED</a>
+     </td>
+     <td>Bitmap showing which onboard controllers and sensors have an error (or are operational). Value of 0: error. Value of 1: healthy.</td>
     </tr>
    </tbody>
   </table>
@@ -18356,7 +19056,7 @@
     [Message]
    </a>Set a parameter value (write new value to permanent storage).
         The receiving component should acknowledge the new parameter value by broadcasting a <a href="#PARAM_VALUE">PARAM_VALUE</a> message (broadcasting ensures that multiple GCS all have an up-to-date list of all parameters). If the sending GCS did not receive a <a href="#PARAM_VALUE">PARAM_VALUE</a> within its timeout time, it should re-send the <a href="#PARAM_SET">PARAM_SET</a> message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html.
-        <a href="#PARAM_SET">PARAM_SET</a> may also be called within the context of a transaction (started with MAV_CMD_PARAM_TRANSACTION). Within a transaction the receiving component should respond with <a href="#PARAM_ACK_TRANSACTION">PARAM_ACK_TRANSACTION</a> to the setter component (instead of broadcasting PARAM_VALUE), and <a href="#PARAM_SET">PARAM_SET</a> should be re-sent if this is ACK not received.</p>
+        <a href="#PARAM_SET">PARAM_SET</a> may also be called within the context of a transaction (started with <a href="#MAV_CMD_PARAM_TRANSACTION">MAV_CMD_PARAM_TRANSACTION</a>). Within a transaction the receiving component should respond with <a href="#PARAM_ACK_TRANSACTION">PARAM_ACK_TRANSACTION</a> to the setter component (instead of broadcasting <a href="#PARAM_VALUE">PARAM_VALUE</a>), and <a href="#PARAM_SET">PARAM_SET</a> should be re-sent if this is ACK not received.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23103,7 +23803,7 @@
      </td>
      <td>
      </td>
-     <td>Navigation mode (MAV_NAV_MODE)</td>
+     <td>Navigation mode (<a href="#MAV_NAV_MODE">MAV_NAV_MODE</a>)</td>
     </tr>
    </tbody>
   </table>
@@ -23221,7 +23921,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Sent from autopilot to simulation. Hardware in the loop control outputs (replacement for HIL_CONTROLS)</p>
+   </a>Sent from autopilot to simulation. Hardware in the loop control outputs (replacement for <a href="#HIL_CONTROLS">HIL_CONTROLS</a>)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24308,7 +25008,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>File transfer message</p>
+   </a>File transfer protocol message: https://mavlink.io/en/services/ftp.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -24336,7 +25036,7 @@
     <tr>
      <td>payload</td>
      <td>uint8_t[251]</td>
-     <td>Variable length payload. The length is defined by the remaining message length when subtracting the header and other fields.  The entire content of this block is opaque unless you understand any the encoding message_type.  The particular encoding used can be extension specific and might not always be documented as part of the mavlink specification.</td>
+     <td>Variable length payload. The length is defined by the remaining message length when subtracting the header and other fields. The content/format of this block is defined in https://mavlink.io/en/services/ftp.html.</td>
     </tr>
    </tbody>
   </table>
@@ -25901,7 +26601,7 @@
      <td>bytes</td>
      <td>
      </td>
-     <td>Payload size per packet (normally 253 byte, see DATA field size in message ENCAPSULATED_DATA) (set on ACK only).</td>
+     <td>Payload size per packet (normally 253 byte, see DATA field size in message <a href="#ENCAPSULATED_DATA">ENCAPSULATED_DATA</a>) (set on ACK only).</td>
     </tr>
     <tr>
      <td>jpg_quality</td>
@@ -26189,7 +26889,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Request that the vehicle report terrain height at the given location (expected response is a TERRAIN_REPORT). Used by GCS to check if vehicle has all terrain data needed for a mission.</p>
+   </a>Request that the vehicle report terrain height at the given location (expected response is a <a href="#TERRAIN_REPORT">TERRAIN_REPORT</a>). Used by GCS to check if vehicle has all terrain data needed for a mission.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -26222,7 +26922,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Streamed from drone to report progress of terrain map download (initiated by TERRAIN_REQUEST), or sent as a response to a <a href="#TERRAIN_CHECK">TERRAIN_CHECK</a> request. See terrain protocol docs: https://mavlink.io/en/services/terrain.html</p>
+   </a>Streamed from drone to report progress of terrain map download (initiated by <a href="#TERRAIN_REQUEST">TERRAIN_REQUEST</a>), or sent as a response to a <a href="#TERRAIN_CHECK">TERRAIN_CHECK</a> request. See terrain protocol docs: https://mavlink.io/en/services/terrain.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28767,6 +29467,11 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by <a href="#MAV_CMD_DO_SET_HOME">MAV_CMD_DO_SET_HOME</a> (2022-02).
+
+
+  This message is being superseded by <a href="#MAV_CMD_DO_SET_HOME">MAV_CMD_DO_SET_HOME</a>.  Using the command protocols allows a GCS to detect setting of the home position has failed.</p>
   <p>
    <a href="#messages">
     [Message]
@@ -29822,7 +30527,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about a storage medium. This message is sent in response to a request with <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> and whenever the status of the storage changes (STORAGE_STATUS). Use <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>.param2 to indicate the index/id of requested storage: 0 for all, 1 for first, 2 for second, etc.</p>
+   </strong>Information about a storage medium. This message is sent in response to a request with <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> and whenever the status of the storage changes (<a href="#STORAGE_STATUS">STORAGE_STATUS</a>). Use <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>.param2 to indicate the index/id of requested storage: 0 for all, 1 for first, 2 for second, etc.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29876,7 +30581,7 @@
      <td>MiB</td>
      <td>
      </td>
-     <td>Total capacity. If storage is not ready (STORAGE_STATUS_READY) value will be ignored.</td>
+     <td>Total capacity. If storage is not ready (<a href="#STORAGE_STATUS_READY">STORAGE_STATUS_READY</a>) value will be ignored.</td>
     </tr>
     <tr>
      <td>used_capacity</td>
@@ -29884,7 +30589,7 @@
      <td>MiB</td>
      <td>
      </td>
-     <td>Used capacity. If storage is not ready (STORAGE_STATUS_READY) value will be ignored.</td>
+     <td>Used capacity. If storage is not ready (<a href="#STORAGE_STATUS_READY">STORAGE_STATUS_READY</a>) value will be ignored.</td>
     </tr>
     <tr>
      <td>available_capacity</td>
@@ -29892,7 +30597,7 @@
      <td>MiB</td>
      <td>
      </td>
-     <td>Available storage capacity. If storage is not ready (STORAGE_STATUS_READY) value will be ignored.</td>
+     <td>Available storage capacity. If storage is not ready (<a href="#STORAGE_STATUS_READY">STORAGE_STATUS_READY</a>) value will be ignored.</td>
     </tr>
     <tr>
      <td>read_speed</td>
@@ -29948,7 +30653,7 @@
      </td>
      <td>Flags indicating whether this instance is preferred storage for photos, videos, etc.
         Note: Implementations should initially set the flags on the system-default storage id used for saving media (if possible/supported).
-        This setting can then be overridden using `MAV_CMD_SET_STORAGE_USAGE`.
+        This setting can then be overridden using <a href="#MAV_CMD_SET_STORAGE_USAGE">MAV_CMD_SET_STORAGE_USAGE</a>.
         If the media usage flags are not set, a GCS may assume storage ID 1 is the default storage for all media types.</td>
     </tr>
    </tbody>
@@ -30021,7 +30726,7 @@
      <td>int32_t</td>
      <td>
      </td>
-     <td>Total number of images captured ('forever', or until reset using MAV_CMD_STORAGE_FORMAT).</td>
+     <td>Total number of images captured ('forever', or until reset using <a href="#MAV_CMD_STORAGE_FORMAT">MAV_CMD_STORAGE_FORMAT</a>).</td>
     </tr>
    </tbody>
   </table>
@@ -30036,7 +30741,13 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about a captured image. This is emitted every time a message is captured. It may be re-requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>, using param2 to indicate the sequence number for the missing image.</p>
+   </strong>Information about a captured image. This is emitted every time a message is captured.
+        <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> can be used to (re)request this message for a specific sequence number or range of sequence numbers:
+        <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>.param2 indicates the sequence number the first image to send, or set to -1 to send the message for all sequence numbers.
+        <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>.param3 is used to specify a range of messages to send:
+        set to 0 (default) to send just the the message for the sequence number in param 2,
+        set to -1 to send the message for the sequence number in param 2 and all the following sequence numbers, 
+        set to the sequence number of the final message in the range.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30131,7 +30842,8 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about flight since last arming.</p>
+   </strong>Information about flight since last arming.
+        This can be requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30242,7 +30954,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>A message containing logged data (see also MAV_CMD_LOGGING_START)</p>
+   </strong>A message containing logged data (see also <a href="#MAV_CMD_LOGGING_START">MAV_CMD_LOGGING_START</a>)</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -30393,7 +31105,7 @@
     <tr>
      <td>sequence</td>
      <td>uint16_t</td>
-     <td>sequence number (must match the one in LOGGING_DATA_ACKED)</td>
+     <td>sequence number (must match the one in <a href="#LOGGING_DATA_ACKED">LOGGING_DATA_ACKED</a>)</td>
     </tr>
    </tbody>
   </table>
@@ -31483,7 +32195,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Message reporting the status of a gimbal device. This message should be broadcasted by a gimbal device component. The angles encoded in the quaternion are in the global frame (roll: positive is rolling to the right, pitch: positive is pitching up, yaw is turn to the right). This message should be broadcast at a low regular rate (e.g. 10Hz).</p>
+   </strong>Message reporting the status of a gimbal device. This message should be broadcasted by a gimbal device component. The angles encoded in the quaternion are relative to absolute North if the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a> is set (roll: positive is rolling to the right, pitch: positive is pitching up, yaw is turn to the right) or relative to the vehicle heading if the flag is not set. This message should be broadcast at a low regular rate (e.g. 10Hz).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32372,7 +33084,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>General information describing a particular UAVCAN node. Please refer to the definition of the UAVCAN service "uavcan.protocol.GetNodeInfo" for the background information. This message should be emitted by the system whenever a new node appears online, or an existing node reboots. Additionally, it can be emitted upon request from the other end of the MAVLink channel (see MAV_CMD_UAVCAN_GET_NODE_INFO). It is also not prohibited to emit this message unconditionally at a low frequency. The UAVCAN specification is available at http://uavcan.org.</p>
+   </strong>General information describing a particular UAVCAN node. Please refer to the definition of the UAVCAN service "uavcan.protocol.GetNodeInfo" for the background information. This message should be emitted by the system whenever a new node appears online, or an existing node reboots. Additionally, it can be emitted upon request from the other end of the MAVLink channel (see <a href="#MAV_CMD_UAVCAN_GET_NODE_INFO">MAV_CMD_UAVCAN_GET_NODE_INFO</a>). It is also not prohibited to emit this message unconditionally at a low frequency. The UAVCAN specification is available at http://uavcan.org.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32593,7 +33305,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Set a parameter value. In order to deal with message loss (and retransmission of PARAM_EXT_SET), when setting a parameter value and the new value is the same as the current value, you will immediately get a <a href="#PARAM_ACK_ACCEPTED">PARAM_ACK_ACCEPTED</a> response. If the current state is <a href="#PARAM_ACK_IN_PROGRESS">PARAM_ACK_IN_PROGRESS</a>, you will accordingly receive a <a href="#PARAM_ACK_IN_PROGRESS">PARAM_ACK_IN_PROGRESS</a> in response.</p>
+   </strong>Set a parameter value. In order to deal with message loss (and retransmission of <a href="#PARAM_EXT_SET">PARAM_EXT_SET</a>), when setting a parameter value and the new value is the same as the current value, you will immediately get a <a href="#PARAM_ACK_ACCEPTED">PARAM_ACK_ACCEPTED</a> response. If the current state is <a href="#PARAM_ACK_IN_PROGRESS">PARAM_ACK_IN_PROGRESS</a>, you will accordingly receive a <a href="#PARAM_ACK_IN_PROGRESS">PARAM_ACK_IN_PROGRESS</a> in response.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -32994,7 +33706,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Describe a trajectory using an array of up-to 5 waypoints in the local frame (MAV_FRAME_LOCAL_NED).</p>
+   </strong>Describe a trajectory using an array of up-to 5 waypoints in the local frame (<a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33134,7 +33846,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Describe a trajectory using an array of up-to 5 bezier control points in the local frame (MAV_FRAME_LOCAL_NED).</p>
+   </strong>Describe a trajectory using an array of up-to 5 bezier control points in the local frame (<a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33705,7 +34417,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Vehicle status report that is sent out while orbit execution is in progress (see MAV_CMD_DO_ORBIT).</p>
+   </strong>Vehicle status report that is sent out while orbit execution is in progress (see <a href="#MAV_CMD_DO_ORBIT">MAV_CMD_DO_ORBIT</a>).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -34232,6 +34944,59 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="CAN_FRAME">CAN_FRAME (<a href="#CAN_FRAME">
+    #386
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>A forwarded CAN frame as requested by <a href="#MAV_CMD_CAN_FORWARD">MAV_CMD_CAN_FORWARD</a>.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID.</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID.</td>
+    </tr>
+    <tr>
+     <td>bus</td>
+     <td>uint8_t</td>
+     <td>Bus number</td>
+    </tr>
+    <tr>
+     <td>len</td>
+     <td>uint8_t</td>
+     <td>Frame length</td>
+    </tr>
+    <tr>
+     <td>id</td>
+     <td>uint32_t</td>
+     <td>Frame ID</td>
+    </tr>
+    <tr>
+     <td>data</td>
+     <td>uint8_t[8]</td>
+     <td>Frame data</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="ONBOARD_COMPUTER_STATUS">ONBOARD_COMPUTER_STATUS (<a href="#ONBOARD_COMPUTER_STATUS">
     #390
    </a>
@@ -34420,7 +35185,7 @@
      <td>uint32_t</td>
      <td>
      </td>
-     <td>CRC32 of the <a href="#TYPE_GENERAL">TYPE_GENERAL</a> file (can be used by a GCS for file caching).</td>
+     <td>CRC32 of the <a href="#TYPE_GENERAL">TYPE_GENERAL</a> file (can be used by a GCS for file caching). The general metadata file contains URLs to other files of different type according to <a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>.</td>
     </tr>
     <tr>
      <td>general_metadata_uri</td>
@@ -34442,7 +35207,7 @@
      <td>
      </td>
      <td>
-      (Optional) Component definition URI for <a href="#TYPE_PERIPHERALS">TYPE_PERIPHERALS</a>. This must be a MAVLink FTP URI and the file might be compressed with xz.
+      (Optional) Component definition URI for <a href="#TYPE_PERIPHERALS">TYPE_PERIPHERALS</a>. This must be a MAVLink FTP URI and the file might be compressed with xz. Peripherals are listed as a separate URL and not included in the general metadata file because it will likely be generated at runtime while the general (and other referenced files) might be generated at compile time.
      </td>
     </tr>
    </tbody>
@@ -34765,6 +35530,126 @@
       <a href="#MAV_EVENT_ERROR_REASON">MAV_EVENT_ERROR_REASON</a>
      </td>
      <td>Error reason.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CANFD_FRAME">CANFD_FRAME (<a href="#CANFD_FRAME">
+    #387
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>A forwarded CANFD frame as requested by <a href="#MAV_CMD_CAN_FORWARD">MAV_CMD_CAN_FORWARD</a>. These are separated from <a href="#CAN_FRAME">CAN_FRAME</a> as they need different handling (eg. TAO handling)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>System ID.</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>Component ID.</td>
+    </tr>
+    <tr>
+     <td>bus</td>
+     <td>uint8_t</td>
+     <td>bus number</td>
+    </tr>
+    <tr>
+     <td>len</td>
+     <td>uint8_t</td>
+     <td>Frame length</td>
+    </tr>
+    <tr>
+     <td>id</td>
+     <td>uint32_t</td>
+     <td>Frame ID</td>
+    </tr>
+    <tr>
+     <td>data</td>
+     <td>uint8_t[64]</td>
+     <td>Frame data</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="CAN_FILTER_MODIFY">CAN_FILTER_MODIFY (<a href="#CAN_FILTER_MODIFY">
+    #388
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Modify the filter of what CAN messages to forward over the mavlink. This can be used to make CAN forwarding work well on low bandwith links. The filtering is applied on bits 8 to 24 of the CAN id (2nd and 3rd bytes) which corresponds to the DroneCAN message ID for DroneCAN. Filters with more than 16 IDs can be constructed by sending multiple <a href="#CAN_FILTER_MODIFY">CAN_FILTER_MODIFY</a> messages.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>System ID.</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Component ID.</td>
+    </tr>
+    <tr>
+     <td>bus</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>bus number</td>
+    </tr>
+    <tr>
+     <td>operation</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#CAN_FILTER_OP">CAN_FILTER_OP</a>
+     </td>
+     <td>what operation to perform on the filter list. See <a href="#CAN_FILTER_OP">CAN_FILTER_OP</a> enum.</td>
+    </tr>
+    <tr>
+     <td>num_ids</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>number of IDs in filter list</td>
+    </tr>
+    <tr>
+     <td>ids</td>
+     <td>uint16_t[16]</td>
+     <td>
+     </td>
+     <td>filter IDs, length num_ids</td>
     </tr>
    </tbody>
   </table>

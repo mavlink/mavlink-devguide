@@ -111,7 +111,7 @@ To create a new dialect file:
 
 [Messages](../guide/xml_schema.md#messages) are used to send data between MAVLink systems (including commands, information and acknowledgments).
 
-Every message has mandatory `id`, `name`, and `description` attributes. [Serialised packets](../guide/serialization.md#packet_format) include the `id` in the [message id](../guide/serialization.md#v1_msgid) section and an encoded form of the message data within the [payload](../guide/serialization.md#v1_payload) section. The `name` is typically used by generators to name methods for encoding and decoding the specific message type. When a message is received the MAVLink library extracts the message id to determine the specific message, and uses that to find the appropriately named method for decoding the payload.
+Every message has mandatory `id`, `name`, and `description` attributes, and at least one `field`. [Serialised packets](../guide/serialization.md#packet_format) include the `id` in the [message id](../guide/serialization.md#v1_msgid) section and an encoded form of the message data within the [payload](../guide/serialization.md#v1_payload) section. The `name` is typically used by generators to name methods for encoding and decoding the specific message type. When a message is received the MAVLink library extracts the message id to determine the specific message, and uses that to find the appropriately named method for decoding the payload.
 
 A typical message ([SAFETY_SET_ALLOWED_AREA](../messages/common.md#SAFETY_SET_ALLOWED_AREA)) is shown below:
 
@@ -144,12 +144,12 @@ The main rules for messages are:
 
 - Messages *should* (very highly recommended) include a `description`. <!-- update if this becomes mandatory -->
 
-- [Point to point messages](../about/overview.md#point_to_point) *must* include a field for `target_system` (exactly as shown above).
+- [Point to point messages](../about/overview.md#point_to_point) *must* include a `field` for `target_system` (exactly as shown above).
 
-- [Point to point messages](../about/overview.md#point_to_point) that are relevant to components *must* include a field for `target_component`(exactly as shown above).
+- [Point to point messages](../about/overview.md#point_to_point) that are relevant to components *must* include a `field` for `target_component`(exactly as shown above).
 - The total payload size (for all fields) must not exceed 255 bytes.
 - All other fields are optional.
-- There may be no more than 64 fields.
+- There must be at least one field and no more than 64 fields.
 - The `<wip/>` tag may be added to messages that are still being tested.
 - Fields: 
   - must have unique `name`s within a message.
@@ -157,7 +157,7 @@ The main rules for messages are:
   - *should* use the `units` attribute rather than including units in the description. Each field should only have **one** or no units.
   - *should* use the `enum` attribute where possible results are finite/well understood.
 
-> **Warning** You cannot rely on generators to fully test for compliance with the above rules. The *mavgen* code generator tests for duplicate message ids, duplicate field names and messages with more than 64 fields. It does not check for other issues (e.g. duplicate names, or over-size payloads). Other generators may provide better validation
+> **Warning** You cannot rely on generators to fully test for compliance with the above rules. The *mavgen* code generator tests for duplicate message ids, duplicate field names, messages with no fields, and messages with more than 64 fields. It does not check for other issues (e.g. duplicate names, or over-size payloads). Other generators may provide better validation
 
 #### Message Id Ranges {#message_id_ranges}
 

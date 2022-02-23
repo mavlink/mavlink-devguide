@@ -170,7 +170,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a> 在 HEARTBEAT 消息中报告的 MAVLINK 组件类型。 Flight controllers must report the type of the vehicle on which they are mounted (e.g. MAV_TYPE_OCTOROTOR). All other components must report a value appropriate for their type (e.g. a camera must use MAV_TYPE_CAMERA).</p>
+   </a> 在 HEARTBEAT 消息中报告的 MAVLINK 组件类型。 Flight controllers must report the type of the vehicle on which they are mounted (e.g. <a href="#MAV_TYPE_OCTOROTOR">MAV_TYPE_OCTOROTOR</a>). All other components must report a value appropriate for their type (e.g. a camera must use <a href="#MAV_TYPE_CAMERA">MAV_TYPE_CAMERA</a>).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -445,6 +445,41 @@
       <a href="#MAV_TYPE_PARACHUTE">MAV_TYPE_PARACHUTE</a>
      </td>
      <td>Parachute</td>
+    </tr>
+    <tr id="MAV_TYPE_LOG">
+     <td>38</td>
+     <td>
+      <a href="#MAV_TYPE_LOG">MAV_TYPE_LOG</a>
+     </td>
+     <td>Log</td>
+    </tr>
+    <tr id="MAV_TYPE_OSD">
+     <td>39</td>
+     <td>
+      <a href="#MAV_TYPE_OSD">MAV_TYPE_OSD</a>
+     </td>
+     <td>OSD</td>
+    </tr>
+    <tr id="MAV_TYPE_IMU">
+     <td>40</td>
+     <td>
+      <a href="#MAV_TYPE_IMU">MAV_TYPE_IMU</a>
+     </td>
+     <td>IMU</td>
+    </tr>
+    <tr id="MAV_TYPE_GPS">
+     <td>41</td>
+     <td>
+      <a href="#MAV_TYPE_GPS">MAV_TYPE_GPS</a>
+     </td>
+     <td>GPS</td>
+    </tr>
+    <tr id="MAV_TYPE_WINCH">
+     <td>42</td>
+     <td>
+      <a href="#MAV_TYPE_WINCH">MAV_TYPE_WINCH</a>
+     </td>
+     <td>Winch</td>
     </tr>
    </tbody>
   </table>
@@ -1477,6 +1512,13 @@
      </td>
      <td>Battery #2.</td>
     </tr>
+    <tr id="MAV_COMP_ID_MAVCAN">
+     <td>189</td>
+     <td>
+      <a href="#MAV_COMP_ID_MAVCAN">MAV_COMP_ID_MAVCAN</a>
+     </td>
+     <td>CAN over MAVLink client.</td>
+    </tr>
     <tr id="MAV_COMP_ID_MISSIONPLANNER">
      <td>190</td>
      <td>
@@ -1633,11 +1675,11 @@
   </table>
   <a id="MAV_CMD">
   </a>
-  <h2 id="mav_commands">MAVLink Commands (MAV_CMD)</h2>
+  <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
   <blockquote class="alert alert-info clearfix">
    <strong class="fa fa-2x fa-edit">
    </strong>
-   <p>MAVLink commands (MAV_CMD) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+   <p>MAVLink commands (<a href="#mav_commands">MAV_CMD</a>) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
   </blockquote>
   <h2 id="messages">MAVLink Messages</h2>
   <h3 id="HEARTBEAT">HEARTBEAT (<a href="#HEARTBEAT">

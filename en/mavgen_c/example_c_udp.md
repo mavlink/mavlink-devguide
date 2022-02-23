@@ -4,15 +4,22 @@ The [MAVLink UDP Example](https://github.com/mavlink/mavlink/tree/master/example
 *QGroundControl* responds with heartbeats and other messages, which are then printed by this program.
 
 > **Note** The example should work on any Unix-like system (Linux, MacOS, BSD, etc.). 
-  These instructions were tested on a clean *Ubuntu LTS 16.04* installation using the default version of *gcc* (5.4.0).
+  These instructions were tested on a clean *Ubuntu LTS 20.04* installation using the default version of *gcc* (9.3.0).
 
 ## Building/Running the Example
 
 The following instructions show how to build and run the example.
 
-1. [Install MAVLink](../getting_started/installation.md) and [generate](../getting_started/generate_libraries.md) the MAVLink 1.0 libraries into the **mavlink/include** directory.
+1. [Install MAVLink](../getting_started/installation.md) and [generate](../getting_started/generate_libraries.md) the MAVLink 2.0 libraries into the **mavlink/include** directory.
+   For example, to generate the headers for common.xml you could use the command line:
+   ```
+   python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=./include/ message_definitions/v1.0/common.xml
+   ```
+  
+   > **Tip** Alternatively you can clone the [mavlink/mavlink](https://github.com/mavlink/mavlink/) repository and [Download prebuilt headers](../README.md#prebuilt_libraries) to the same location.
 
-   > **Tip** Alternatively you can clone the [mavlink/mavlink](https://github.com/mavlink/mavlink/) repository and [Download prebuilt headers](../README.md#prebuilt_libraries) to the same location.  We recommend that you use MAVLink 1.0 headers as some ground control software may not yet support MAVLink 2.0.
+   <span></span>
+   > **Note** The example will not work with MAVLink 1 because it uses a message that includes extension fields which do not exist in MAVLink 1 (`SYS_STATUS`).
 
    <span></span>
    > **Note** You can put/generate the library wherever you like, but the build command below assumes they are located in directory named **include** below the MAVLink root directory.
