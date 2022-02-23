@@ -20,7 +20,7 @@ This topic explains the encoding, packing format, commands and errors, and the o
 
 ## Protocol Discovery
 
-FTP is supported if the [AUTOPILOT_VERSION.capability](../messages/common.md#AUTOPILOT_VERSION) field has the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag set.
+FTP (v1) is supported if the [AUTOPILOT_VERSION.capability](../messages/common.md#AUTOPILOT_VERSION) field has the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag set.
 
 This flag should only be set by a MAVLink component that supports the specific version of the protocol defined in this document.
 
