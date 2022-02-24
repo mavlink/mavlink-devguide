@@ -438,7 +438,7 @@ The sequence of operations is:
    - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = 4, `data` = length of file that has been opened. 
    - NAK with [error information](#error_codes), e.g. `NoSessionsAvailable`, `FileExists`. 
      The client may cancel the operation, depending on the error.
-1. Server sends stream of [BurstReadFile](#BurstReadFile) commands to client (without ack) until whole file sent.
+1. Server sends stream of [BurstReadFile](#BurstReadFile) data to client (without ack) until whole file sent, or a server-defined burst size limit is reached.
    - The payload must specify: `session`=current session, `size`=size of data to read, `offset`= position in data to start reading for current chunk.
    - The payload must specify `burst_complete=0` for all chunks, except the last one, which must set `burst_complete=1`.
    
