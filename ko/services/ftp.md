@@ -10,9 +10,13 @@ All messages (commands, ACK, NAK) are exchanged inside [FILE_TRANSFER_PROTOCOL](
 
 The different commands and other information required to implement the protocol are encoded *within* in the `FILE_TRANSFER_PROTOCOL` payload. This topic explains the encoding, packing format, commands and errors, and the order in which the commands are sent to implement the core FTP functionality.
 
-> **Note** The encoding and content of the payload field are not mandated by the specification - and can be extension specific. This topic covers the encoding that has been used by *QGroundControl* and PX4.
+## Protocol Discovery
 
-A MAVLink system that supports this protocol should also set the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag in the [AUTOPILOT_VERSION.capability](../messages/common.md#AUTOPILOT_VERSION) field.
+FTP (v1) is supported if the [AUTOPILOT_VERSION.capability](../messages/common.md#AUTOPILOT_VERSION) field has the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag set.
+
+This flag should only be set by a MAVLink component that supports the specific version of the protocol defined in this document.
+
+> **Note** The encoding and content of the `FILE_TRANSFER_PROTOCOL` payload field are not mandated by the specification, and other encoding schemes might be used, for example, in private networks. If you have implemented a private encoding or different version you **must not** set the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag.
 
 ## Payload Format {#payload}
 
@@ -405,12 +409,9 @@ kCmdBurstReadFile</p></li>
 
 <p>-->
 
-## C Implementation
+## Implementations
 
-The FTP Protocol has been implemented (minimally) in C by PX4 <!-- and ArduPilot Flight Stacks, --> and 
-
-*QGroundControl*.  
-This implementation can be used in your own code within the terms of their software licenses.
+The FTP v1 Protocol has been implemented (at least) in PX4, ArduPilot, QGroundControl and MAVSDK. Those implementations can be used in your own code within the terms of their software licenses.
 
 PX4 Implementation:
 
