@@ -2181,7 +2181,7 @@
      <td>
       <a href="#COMP_METADATA_TYPE_GENERAL">COMP_METADATA_TYPE_GENERAL</a>
      </td>
-     <td>General information about the component. General metadata includes information about other COMP_METADATA_TYPEs supported by the component. This type must be supported and must be downloadable from vehicle.</td>
+     <td>General information about the component. General metadata includes information about other metadata types supported by the component. Files of this type must be supported, and must be downloadable from vehicle using a MAVLink FTP URI.</td>
     </tr>
     <tr id="COMP_METADATA_TYPE_PARAMETER">
      <td>1</td>
@@ -35163,7 +35163,14 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Information about a component. For camera components instead use <a href="#CAMERA_INFORMATION">CAMERA_INFORMATION</a>, and for autopilots additionally use <a href="#AUTOPILOT_VERSION">AUTOPILOT_VERSION</a>. Components including GCSes should consider supporting requests of this message via <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>.</p>
+   </strong>Component information message, which may be requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>.
+        
+        This contains MAVLink FTP URIs for the component's general and peripherals metadata files along with their CRCs (which can be used for file caching).
+        The files must be hosted on the component, and may be xz compressed.
+        The general metadata file can be read to get the locations of additional metadata files (<a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>), which may be hosted either on the vehicle or the Internet.
+        For more information see: https://mavlink.io/en/services/component_information.html.
+        
+        Note: Camera components should use <a href="#CAMERA_INFORMATION">CAMERA_INFORMATION</a> instead, and autopilots may use both this message and <a href="#AUTOPILOT_VERSION">AUTOPILOT_VERSION</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -35185,21 +35192,21 @@
      <td>uint32_t</td>
      <td>
      </td>
-     <td>CRC32 of the <a href="#TYPE_GENERAL">TYPE_GENERAL</a> file (can be used by a GCS for file caching). The general metadata file contains URLs to other files of different type according to <a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>.</td>
+     <td>CRC32 of the general metadata file (general_metadata_uri).</td>
     </tr>
     <tr>
      <td>general_metadata_uri</td>
      <td>char[100]</td>
      <td>
      </td>
-     <td>Component definition URI for <a href="#TYPE_GENERAL">TYPE_GENERAL</a>. This must be a MAVLink FTP URI and the file might be compressed with xz.</td>
+     <td>MAVLink FTP URI for the general metadata file (<a href="#COMP_METADATA_TYPE_GENERAL">COMP_METADATA_TYPE_GENERAL</a>), which may be compressed with xz. The file contains general component metadata, and may contain URI links for additional metadata (see <a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>). The information is static from boot, and may be generated at compile time.</td>
     </tr>
     <tr>
      <td>peripherals_metadata_file_crc</td>
      <td>uint32_t</td>
      <td>
      </td>
-     <td>CRC32 of the <a href="#TYPE_PERIPHERALS">TYPE_PERIPHERALS</a> file (can be used by a GCS for file caching).</td>
+     <td>CRC32 of peripherals metadata file (peripherals_metadata_uri).</td>
     </tr>
     <tr>
      <td>peripherals_metadata_uri</td>
@@ -35207,7 +35214,7 @@
      <td>
      </td>
      <td>
-      (Optional) Component definition URI for <a href="#TYPE_PERIPHERALS">TYPE_PERIPHERALS</a>. This must be a MAVLink FTP URI and the file might be compressed with xz. Peripherals are listed as a separate URL and not included in the general metadata file because it will likely be generated at runtime while the general (and other referenced files) might be generated at compile time.
+      (Optional) MAVLink FTP URI for the peripherals metadata file (<a href="#COMP_METADATA_TYPE_PERIPHERALS">COMP_METADATA_TYPE_PERIPHERALS</a>), which may be compressed with xz. This contains data about "attached components" such as UAVCAN nodes. The peripherals are in a separate file because the information must be generated dynamically at runtime.
      </td>
     </tr>
    </tbody>
