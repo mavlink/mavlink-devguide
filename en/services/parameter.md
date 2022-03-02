@@ -28,13 +28,13 @@ Enum | Description
 
 Flags | Description
 -- | --
-<a id="MAV_PROTOCOL_CAPABILITY_PARAM_UNION"></a>[MAV_PROTOCOL_CAPABILITY_PARAM_UNION](../messages/common.md#MAV_PROTOCOL_CAPABILITY_PARAM_UNION) | Parameter values are [byte-wise encoded](#parameter-encoding) in the [PARAM_SET.param_value](#PARAM_SET) and [PARAM_VALUE.param_value](#PARAM_VALUE) fields (`float`).
-<a id="MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT"></a>[MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT](../messages/common.md#MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT) | Parameter values are [encoded using C casts](#parameter-encoding) into the [PARAM_SET.param_value](#PARAM_SET) and [PARAM_VALUE.param_value](#PARAM_VALUE) fields (`float`).
+<a id="MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE"></a>[MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](../messages/common.md#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) | Parameter values are [byte-wise encoded](#parameter-encoding) in the [PARAM_SET.param_value](#PARAM_SET) and [PARAM_VALUE.param_value](#PARAM_VALUE) fields (`float`).
+<a id="MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST"></a>[MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](../messages/common.md#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) | Parameter values are [encoded using C casts](#parameter-encoding) into the [PARAM_SET.param_value](#PARAM_SET) and [PARAM_VALUE.param_value](#PARAM_VALUE) fields (`float`).
 
 
 ## Protocol Discovery
 
-Support for the parameter protocol is indicated if either [MAV_PROTOCOL_CAPABILITY_PARAM_UNION](#MAV_PROTOCOL_CAPABILITY_PARAM_UNION) or [MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT](#MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT) protocol bits are set in [AUTOPILOT_VERSION.capabilities](../messages/common.md#AUTOPILOT_VERSION).
+Support for the parameter protocol is indicated if either [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) protocol bits are set in [AUTOPILOT_VERSION.capabilities](../messages/common.md#AUTOPILOT_VERSION).
 
 These protocol bits indicate different bytewise and C-style [parameter value encoding](#parameter-encoding) respectively.
 
@@ -61,7 +61,7 @@ Two encoding approaches are supported:
 
 Byte wise encoding is recommended as it allows very large integers to be exchanged (e.g. 1E7 scaled integers can be useful for encoding some types of data, but lose precision if cast directly to floats).
 
-A component should support only one type, and indicate that type by setting the [MAV_PROTOCOL_CAPABILITY_PARAM_UNION](#MAV_PROTOCOL_CAPABILITY_PARAM_UNION) (byte-wise encoding) or [MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT](#MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT) (C-style encoding) protocol bits in [AUTOPILOT_VERSION.capabilities](../messages/common.md#AUTOPILOT_VERSION).
+A component should support only one type, and indicate that type by setting the [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) (byte-wise encoding) or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) (C-style encoding) protocol bits in [AUTOPILOT_VERSION.capabilities](../messages/common.md#AUTOPILOT_VERSION).
 A GCS may support both types and use the type that is indicated by the target component.
 
 
@@ -257,7 +257,7 @@ The sequence of operations is:
 
 PX4 is compatible with the specification:
 - Byte-wise encoding of parameters is supported.
-  Note however that PX4 does not set `MAV_PROTOCOL_CAPABILITY_PARAM_UNION` (at time of writing - PX4 v1.12).
+  Note however that PX4 does not set `MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE` (at time of writing - PX4 v1.12).
 - Only float and Int32 parameters are used.
 
 PX4 provides an addition off-spec mechanism that allows a GCS to *cache* parameters.
@@ -275,7 +275,7 @@ Source files:
 
 ArduPilot implements a largely compatible version of this protocol.
 - C-style encoding of parameters is supported.
-  Note however that ArduPilot does not set `MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT`.
+  Note however that ArduPilot does not set `MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST`.
   
 Off spec-behaviour:
 - `PARAM_VALUE` is not emitted after the parameter update with the new value (or the old value if update failed).
