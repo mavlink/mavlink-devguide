@@ -258,6 +258,7 @@ The sequence of operations is:
 PX4 is compatible with the specification:
 - Byte-wise encoding of parameters is supported.
   Note however that PX4 does not set `MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE` (at time of writing - PX4 v1.12).
+  See [PX4-Autopilot/issues/19275](https://github.com/PX4/PX4-Autopilot/issues/19275)
 - Only float and Int32 parameters are used.
 
 PX4 provides an addition off-spec mechanism that allows a GCS to *cache* parameters.
