@@ -3843,12 +3843,13 @@
      <td>Autopilot supports the <a href="#MISSION_ITEM">MISSION_ITEM</a> float message type.
           Note that <a href="#MISSION_ITEM">MISSION_ITEM</a> is deprecated, and autopilots should use <a href="#MISSION_INT">MISSION_INT</a> instead.</td>
     </tr>
-    <tr id="MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT">
+    <tr id="MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST">
      <td>2</td>
      <td>
-      <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT">MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT</a>
+      <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST">MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST</a>
      </td>
-     <td>Autopilot supports the new param float message type.</td>
+     <td>Parameter protocol uses C-cast of parameter values to set the param_value (float) fields: https://mavlink.io/en/services/parameter.html#parameter-encoding.
+          Note that either this flag or <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE">MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE</a> should be set if the parameter protocol is supported.</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_MISSION_INT">
      <td>4</td>
@@ -3865,12 +3866,13 @@
      </td>
      <td>Autopilot supports <a href="#COMMAND_INT">COMMAND_INT</a> scaled integer message type.</td>
     </tr>
-    <tr id="MAV_PROTOCOL_CAPABILITY_PARAM_UNION">
+    <tr id="MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE">
      <td>16</td>
      <td>
-      <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_UNION">MAV_PROTOCOL_CAPABILITY_PARAM_UNION</a>
+      <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE">MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE</a>
      </td>
-     <td>Autopilot supports the new param union message type.</td>
+     <td>Parameter protocol uses byte-wise encoding of parameter values into param_value (float) fields: https://mavlink.io/en/services/parameter.html#parameter-encoding.
+          Note that either this flag or <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE">MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE</a> should be set if the parameter protocol is supported.</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_FTP">
      <td>32</td>
@@ -30445,7 +30447,7 @@
      </td>
      <td>
      </td>
-     <td>Camera definition URI (if any, otherwise only basic functions will be available). HTTP- (http://) and MAVLink FTP- (mavlinkftp://) formatted URIs are allowed (and both must be supported by any GCS that implements the Camera Protocol). The definition file may be xz compressed, which will be indicated by the file extension .xml.xz (a GCS that implements the protocol must support decompressing the file).</td>
+     <td>Camera definition URI (if any, otherwise only basic functions will be available). HTTP- (http://) and MAVLink FTP- (mavlinkftp://) formatted URIs are allowed (and both must be supported by any GCS that implements the Camera Protocol). The definition file may be xz compressed, which will be indicated by the file extension .xml.xz (a GCS that implements the protocol must support decompressing the file). The string needs to be zero terminated.</td>
     </tr>
    </tbody>
   </table>
@@ -35199,7 +35201,7 @@
      <td>char[100]</td>
      <td>
      </td>
-     <td>MAVLink FTP URI for the general metadata file (<a href="#COMP_METADATA_TYPE_GENERAL">COMP_METADATA_TYPE_GENERAL</a>), which may be compressed with xz. The file contains general component metadata, and may contain URI links for additional metadata (see <a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>). The information is static from boot, and may be generated at compile time.</td>
+     <td>MAVLink FTP URI for the general metadata file (<a href="#COMP_METADATA_TYPE_GENERAL">COMP_METADATA_TYPE_GENERAL</a>), which may be compressed with xz. The file contains general component metadata, and may contain URI links for additional metadata (see <a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>). The information is static from boot, and may be generated at compile time. The string needs to be zero terminated.</td>
     </tr>
     <tr>
      <td>peripherals_metadata_file_crc</td>
@@ -35214,7 +35216,7 @@
      <td>
      </td>
      <td>
-      (Optional) MAVLink FTP URI for the peripherals metadata file (<a href="#COMP_METADATA_TYPE_PERIPHERALS">COMP_METADATA_TYPE_PERIPHERALS</a>), which may be compressed with xz. This contains data about "attached components" such as UAVCAN nodes. The peripherals are in a separate file because the information must be generated dynamically at runtime.
+      (Optional) MAVLink FTP URI for the peripherals metadata file (<a href="#COMP_METADATA_TYPE_PERIPHERALS">COMP_METADATA_TYPE_PERIPHERALS</a>), which may be compressed with xz. This contains data about "attached components" such as UAVCAN nodes. The peripherals are in a separate file because the information must be generated dynamically at runtime. The string needs to be zero terminated.
      </td>
     </tr>
    </tbody>
