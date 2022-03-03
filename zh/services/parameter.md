@@ -24,19 +24,39 @@ The key/value pair has a number of important properties:
 | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="MAV_PARAM_TYPE"></a>[MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE) | [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE) store/encode parameter values within a `float` field. This type conveys the real type of the encoded parameter value, e.g. `MAV_PARAM_TYPE_UINT16`, `MAV_PARAM_TYPE_INT32`, etc. |
 
+| Flags                                                                                                                                             | Description                                                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE"></a>[MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](../messages/common.md#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) | Parameter values are [byte-wise encoded](#parameter-encoding) in the [PARAM_SET.param_value](#PARAM_SET) and [PARAM_VALUE.param_value](#PARAM_VALUE) fields (`float`).       |
+| <a id="MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST"></a>[MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](../messages/common.md#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST)   | Parameter values are [encoded using C casts](#parameter-encoding) into the [PARAM_SET.param_value](#PARAM_SET) and [PARAM_VALUE.param_value](#PARAM_VALUE) fields (`float`). |
+
+## Protocol Discovery
+
+Support for the parameter protocol is indicated if either [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) protocol bits are set in [AUTOPILOT_VERSION.capabilities](../messages/common.md#AUTOPILOT_VERSION).
+
+These protocol bits indicate different bytewise and C-style [parameter value encoding](#parameter-encoding) respectively.
+
+> **Note** The protocol may still be supported even if neither protocol bit is set. To use the protocol in this case, a connected system would need to have prior knowledge of connected component.
+
 ## Parameter Names
 
 Parameters names/ids are set in the `param_id` field of messages where they are used. The `param_id` string can store up to 16 characters. The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars.
 
 ## Parameter Encoding
 
-Values are byte-wise encoded *within* the `param_value` field, an IEE754 single-precision, 4 byte, floating point value. The `param_type` ([MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE)) is used to indicate the actual type of the data so that it can be decoded by the recipient. Supported types are: 8, 16, 32 and 64-bit signed and unsigned integers, and 32 and 64-bit floating point numbers.
+Parameter values are encoded in the `param_value` field, an IEE754 single-precision, 4 byte, floating point value (see [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE)). The `param_type` ([MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE)) is used to indicate the actual type of the data, so that it can be decoded by the recipient. Supported types are: 8, 16, 32 and 64-bit signed and unsigned integers, and 32 and 64-bit floating point numbers.
 
-> **Note** A byte-wise conversion is needed, rather than a simple cast, to enable larger integers to be exchanged (e.g. 1E7 scaled integers can be useful for encoding some types of data, but lose precision if cast directly to floats).
+Two encoding approaches are supported:
 
-### Mavgen C API
+- **Byte-wise encoding:** The parameter's bytes are copied directly into the bytes used for the field. A 32-bit integer is sent as 32 bits of data.
+- **C-style cast:** The parameter value is converted to a `float`. This may result in some loss of precision as a `float` can represent an integer with up to 24 bits of pecision.
 
-The C API provides a convenient `union` that allows you to bytewise convert between any of the supported types: `mavlink_param_union_t` ([mavlink_types.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_types.h)). For example, below we shown how you can set the union integer field but pass the float value to the sending function:
+Byte wise encoding is recommended as it allows very large integers to be exchanged (e.g. 1E7 scaled integers can be useful for encoding some types of data, but lose precision if cast directly to floats).
+
+A component should support only one type, and indicate that type by setting the [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) (byte-wise encoding) or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST) (C-style encoding) protocol bits in [AUTOPILOT_VERSION.capabilities](../messages/common.md#AUTOPILOT_VERSION). A GCS may support both types and use the type that is indicated by the target component.
+
+### Bytewise Encoding: Mavgen C API
+
+The C API provides a convenient `union` that allows you to bytewise convert between any of the supported types: `mavlink_param_union_t` ([mavlink_types.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_types.h)). For example, below we shown how you can set the union integer field, and then pass the float value to the sending function:
 
 ```c
 mavlink_param_union_t param;
@@ -48,11 +68,23 @@ param.type = MAV_PARAM_TYPE_INT32;
 mavlink_msg_param_set_send(xxx, xxx, param.param_float, param.type, xxx);
 ```
 
-### Mavgen Python API (Pymavlink)
+### Bytewise Encoding: Mavgen Python API
 
 Pymavlink does not include special support to byte-wise encode the non-float data types (unsurprisingly, because Python effectively "hides" low level data types from users). When working with a system that supports non-float parameters (e.g. PX4) you will need to do the encoding/decoding yourself when sending and receiving messages.
 
 There is a good example of how to do this in the Pymavlink [mavparm.py](https://github.com/ArduPilot/pymavlink/blob/master/mavparm.py) module (see `MAVParmDict.mavset()`).
+
+## Parameter Types
+
+The allowed parameter types are given in [MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE).
+
+Note that not all types are supported: for example PX4 supports only INT32 and FLOAT. A GCS can infer the supported types from the parameters it is sent.
+
+## Parameter Metadata
+
+Parameter metadata is additional information about a parameters that allow them to be safely used in a ground station. This might include a description and listing of possible values.
+
+The [Component Information Protocol](../services/component_information.md) has been proposed as a mechanism for getting this information directly from a vehicle.
 
 ## Parameter Caching {#parameter_caching}
 
@@ -189,9 +221,12 @@ The sequence of operations is:
 
 ### PX4
 
-PX4 implements the protocol in a way that is compatible with this specification. Only float and Int32 parameters are used.
+PX4 is compatible with the specification:
 
-PX4 additionally provides a mechanism that allows a GCS to *cache* parameters, which significantly reduces ready-to-use time for the GCS if parameters have not been changed since the previous parameter sync. The way that this mechanism works is that when the list of parameters is requested, PX4 first sends a `PARAM_VALUE` with the `param_index` of `INT16_MAX` (in code, referred to as `PARAM_HASH`) containing a *hash* of the parameter set.
+- Byte-wise encoding of parameters is supported. Note however that PX4 does not set `MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE` (at time of writing - PX4 v1.12). See [PX4-Autopilot/issues/19275](https://github.com/PX4/PX4-Autopilot/issues/19275)
+- Only float and Int32 parameters are used.
+
+PX4 provides an addition off-spec mechanism that allows a GCS to *cache* parameters. This significantly reduces ready-to-use time for the GCS if parameters have not been changed since the previous parameter sync. The way that this mechanism works is that when the list of parameters is requested, PX4 first sends a `PARAM_VALUE` with the `param_index` of `INT16_MAX` (in code, referred to as `PARAM_HASH`) containing a *hash* of the parameter set.
 
 This hash is calculated by computing the [MAVLink CRC32](../guide/crc.md) over all param names and values (see the `param_hash_check()` in source [here](https://github.com/PX4/Firmware/blob/v1.9.0-alpha/src/lib/parameters/parameters.cpp#L1329)). If the GCS has a matching hash value it can immediately start using its cached parameters (rather than having to wait while all the rest of the parameters upload).
 
@@ -202,17 +237,20 @@ Source files:
 
 ### ArduPilot
 
-ArduPilot implements an incompatible version of this protocol.
+ArduPilot implements a largely compatible version of this protocol.
 
-The implementation uses the same message types and workflow. The main difference is that ArduPilot encodes data within parameter message value fields (floats) using a normal C cast rather than a byte-wise copy (and expects incoming messages to use the same encoding). This can result in significant rounding errors.
+- C-style encoding of parameters is supported. Note however that ArduPilot does not set `MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST`.
 
-Other known differences are:
+Off spec-behaviour:
+
+- `PARAM_VALUE` is not emitted after the parameter update with the new value (or the old value if update failed).
+
+Compatible differences:
 
 - Parameter sets can be enabled/disabled during operation. This can invalidate the set of synchronized parameters and make access to parameters by index unreliable.
 - `PARAM_SET` 
   - `param_type` in the message is ignored. The data type is obtained by checking stored type info (via name lookup).
   - The data type is used to constrain and round the received value before it is stored (as a float).
-  - A `PARAM_VALUE` is not emitted after the parameter update with the new value (or the old value if update failed).
 
 Source files:
 
