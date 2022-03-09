@@ -66,9 +66,9 @@ Opcode | Name | Description
 <a id="ResetSessions"></a> 2   | ResetSessions | Terminates *all* open read sessions.<br>- Clears all state held by the drone (server); closes all open files, etc.<br>- Sends an ACK reply with no data. <!-- Note, is same as Terminate, but does not check if file session exists -->
 <a id="ListDirectory"></a> 3   | [ListDirectory](#list_directory) | List directory entry information (files, folders etc.) in `<path>`, starting from a specified entry index (`<offset>`).<br>- Response is an ACK packet with one or more entries on success, otherwise a NAK packet with an error code.<br>- Completion is indicated by a NACK with EOF in response to a requested index (`offset`) beyond the list of entries.<br>- The directory is closed after the operation, so this leaves no state on the server.
 <a id="OpenFileRO"></a> 4      | [OpenFileRO](#reading-a-file) | Opens file at `<path>` for reading, returns `<session>`<br>- The `path` is stored in the [payload](#payload) `data`. The drone opens the file (`path`) and allocates a *session number*. The file must exist.<br>- An ACK packet must include the allocated `session` and the data size of the file to be opened (`size`)<br>- A NAK packet must contain [error information](#error_codes) . Typical error codes for this command are `NoSessionsAvailable`, `FileExists`. <br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
-<a id="ReadFile"></a> 5        | ReadFile | Reads `<size>` bytes from `<offset>` in `<session>`.<br>- Seeks to (`offset`) in the file opened in (session) and reads (`size`) bytes into the result buffer.<br>- Sends an ACK packet with the result buffer on success, otherwise a NAK packet with an error code. For short reads or reads beyond the end of a file, the (`size`) field in the ACK packet will indicate the actual number of bytes read.<br>- Reads can be issued to any offset in the file for any number of bytes, so reconstructing portions of the file to deal with lost packets should be easy.<br>- For best download performance, try to keep two `Read` packets in flight.
-<a id="CreateFile"></a> 6      | CreateFile | Creates file at `<path>` for writing, returns `<session>`.<br>- Creates the file (path) and allocates a *session number*. All parent directories must exist. If the file already existed, then this call will truncate it. Equivalent UNIX flags: (O_CREAT &#124; O_TRUNC &#124; O_WRONLY)<br>- Sends an ACK packet with the allocated session number on success, or a NAK packet with an error code on error (i.e. [FileExists](#FileExists) if the `path` already exists).<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
-<a id="WriteFile"></a> 7       | WriteFile | Writes `<size>` bytes to `<offset>` in `<session>`.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
+<a id="ReadFile"></a> 5        | [ReadFile](#reading-a-file-readfile) | Reads `<size>` bytes from `<offset>` in `<session>`.<br>- Seeks to (`offset`) in the file opened in (session) and reads (`size`) bytes into the result buffer.<br>- Sends an ACK packet with the result buffer on success, otherwise a NAK packet with an error code. For short reads or reads beyond the end of a file, the (`size`) field in the ACK packet will indicate the actual number of bytes read.<br>- Reads can be issued to any offset in the file for any number of bytes, so reconstructing portions of the file to deal with lost packets should be easy.<br>- For best download performance, try to keep two `Read` packets in flight.
+<a id="CreateFile"></a> 6      | `CreateFile` | Creates file at `<path>` for writing, returns `<session>`.<br>- Creates the file (path) and allocates a *session number*. All parent directories must exist. If the file already existed, then this call will truncate it. Equivalent UNIX flags: (O_CREAT &#124; O_TRUNC &#124; O_WRONLY)<br>- Sends an ACK packet with the allocated session number on success, or a NAK packet with an error code on error (i.e. [FileExists](#FileExists) if the `path` already exists).<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
+<a id="WriteFile"></a> 7       | `WriteFile` | Writes `<size>` bytes to `<offset>` in `<session>`.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
 <a id="RemoveFile"></a> 8      | [RemoveFile](#remove-file) | Remove file at `<path>`.<br>- ACK reply with no data on success.<br>- NAK packet with [error information](#error_codes) on failure.
 <a id="CreateDirectory"></a> 9 | [CreateDirectory](#create-directory) | Creates directory at `<path>`.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
 <a id="RemoveDirectory"></a> 10 | [RemoveDirectory](#remove-directory) | Removes directory at `<path>`. The directory must be empty. <br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
@@ -76,7 +76,7 @@ Opcode | Name | Description
 <a id="TruncateFile"></a> 12   | [TruncateFile](#truncate-file) | Truncate file at `<path>` to `<offset>` length.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
 <a id="Rename"></a> 13         | Rename | Rename `<path1>` to `<path2>`.<br>- Sends an ACK reply the no data on success, otherwise a NAK packet with an error code (i.e. if the source path does not exist).
 <a id="CalcFileCRC32"></a> 14  | CalcFileCRC32 | Calculate CRC32 for file at `<path>`.<br>- Sends an ACK reply with the checksum on success, otherwise a NAK packet with an error code.
-<a id="BurstReadFile"></a> 15  | BurstReadFile | Burst download session file.
+<a id="BurstReadFile"></a> 15  | [BurstReadFile](#reading-a-file-burstreadfile) | Burst-read parts of a file. Messages in the burst are streamed (without ACK) until the burst is complete (as indicated by the field `burst_complete` being set to `1`). Parts of a burst that are dropped may be fetched using a burst or [ReadFile](#ReadFile).
 
 The drone (server) will respond with/send the following opcodes for any of the above messages (ACK response on success or a NAK in the event of an error).
 
@@ -143,9 +143,16 @@ GCS recommended settings:
 
 ## FTP Operations
 
-### Reading a File
+### Reading a File (`ReadFile`)
 
-The sequence of operations for downloading (reading) a file, assuming there are no timeouts and all operations/requests succeed, is shown below.
+After opening a file session, [ReadFile](#ReadFile) is called to request a message sized chunk of the file, which is then returned to the client in an `ACK` message.
+The process is repeated at different offsets until the whole file has been retrieved.
+The file session is then closed.
+
+> **Note** [Burst reading a file](#reading-a-file-burstreadfile) is a (generally) faster alternative to this approach.
+
+The sequence of operations for downloading (reading) a file using [ReadFile] is shown below.
+This assumes that there are no timeouts and all operations/requests succeed.
 
 [![Mermaid Sequence: Reading a File](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IE9wZW4gZmlsZVxuICAgIEdDUy0-PkRyb25lOiAgT3BlbkZpbGVSTyggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSApXG4gICAgRHJvbmUtLT4-R0NTOiBBQ0soIHNlc3Npb24sIHNpemU9NCwgZGF0YT1sZW4oZmlsZSkgKVxuICAgIE5vdGUgcmlnaHQgb2YgR0NTOiBSZWFkIGZpbGUgaW4gY2h1bmtzPGJyPihjYWxsIGF0IG9mZnNldClcbiAgICBHQ1MtPj5Ecm9uZTogIFJlYWRGaWxlKHNlc3Npb24sIHNpemUsIG9mZnNldClcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSyhzZXNzaW9uLCBzaXplPWxlbihidWZmZXIpLCBkYXRhWzBdPWJ1ZmZlcilcbiAgICBOb3RlIHJpZ2h0IG9mIEdDUzogQ29udGludWUgdW50aWwgTkFLPGJyPiB3aXRoIEVPRlxuICAgIERyb25lLS0-PkdDUzogTkFLKHNlc3Npb24sIHNpemU9MSwgZGF0YT1FT0YpXG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IENsb3NlIHNlc3Npb25cbiAgICBHQ1MtPj5Ecm9uZTogIFRlcm1pbmF0ZVNlc3Npb24oc2Vzc2lvbilcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSygpIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IE9wZW4gZmlsZVxuICAgIEdDUy0-PkRyb25lOiAgT3BlbkZpbGVSTyggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSApXG4gICAgRHJvbmUtLT4-R0NTOiBBQ0soIHNlc3Npb24sIHNpemU9NCwgZGF0YT1sZW4oZmlsZSkgKVxuICAgIE5vdGUgcmlnaHQgb2YgR0NTOiBSZWFkIGZpbGUgaW4gY2h1bmtzPGJyPihjYWxsIGF0IG9mZnNldClcbiAgICBHQ1MtPj5Ecm9uZTogIFJlYWRGaWxlKHNlc3Npb24sIHNpemUsIG9mZnNldClcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSyhzZXNzaW9uLCBzaXplPWxlbihidWZmZXIpLCBkYXRhWzBdPWJ1ZmZlcilcbiAgICBOb3RlIHJpZ2h0IG9mIEdDUzogQ29udGludWUgdW50aWwgTkFLPGJyPiB3aXRoIEVPRlxuICAgIERyb25lLS0-PkdDUzogTkFLKHNlc3Npb24sIHNpemU9MSwgZGF0YT1FT0YpXG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IENsb3NlIHNlc3Npb25cbiAgICBHQ1MtPj5Ecm9uZTogIFRlcm1pbmF0ZVNlc3Npb24oc2Vzc2lvbilcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSygpIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
 
@@ -185,6 +192,68 @@ The sequence of operations is:
    The drone should send an ACK/NAK, but this may (generally speaking) be ignored by the GCS.
 
 The GSC should create a timeout after `OpenFileRO` and `ReadFile` commands are sent and resend the messages as needed (and [described above](#timeouts)).
+A timeout is not set for `TerminateSession` (the server may ignore failure of the command or the ACK).
+
+
+### Reading a File (`BurstReadFile`)
+
+After opening a file for reading, it is read in "bursts".
+Each burst delivers a part of the file as a stream of messages.
+The last message in the burst is indicated by setting `burst_complete=1` (without any ACKs).
+
+The client tracks the recieved chunks.
+On completion of the burst (or the file), if there are any missing parts of the file it can request them using either another burst or using [ReadFile](#reading-a-file-readfile).
+
+> **Note** Burst read is a (generally) faster alternative to using [ReadFile](#ReadFile) to [read a file](#reading-a-file-readfile).
+> This is because fewer messages are sent and need to be waited on.
+
+The sequence of operations for a burst read is shown below (assuming there are no timeouts and all operations/requests succeed).
+
+[![Mermaid Sequence: Burst read directory](https://mermaid.ink/img/pako:eNqtVE2P0zAQ_Ssjn1Ipu-pKnAKtBIW9ILFSy42iyE0mjYVjB3tCtaz2vzOOk34stKxYemgSz7x58549fhCFLVFkwuP3Dk2B75XcOtm8XhvgXysdqUK10hAstEJDv6-v0P1AF9c_WUKw_DlkpzGYwV2LBiqlEZLKOth0zhM4lKUy28kR1qltTWCrAZ_BMvTFuXYsEJNj-Go-Hwl6hluOL-8SKCXJL9Ovs1ZSnYJXP3Gm0SThcwIDXQRecYmR6u3iYwIevVfWDKhXaV-rRwfyPfqs0CVrAqoxilUmSvWQOGxREow-wwa13QGvGNyx4Moj-Wc5cfCu34aQsudLmJBq5aGQHkPxWHg2nZyz7V2oFpoO3h3JH4FH9gUncmXyvoF_9_GkDJw6qrHqBY3txSd4YrmN72sET4u6M9980KdMwSHPp2j0EHaK6mhSXtim1Ug4m57r9VT-vumn8D_6semqCt0k3R-3YeF_cb0pOucYmfM30vwFzNfX1xdMvuWB1JL3ouGW5PZwankT6Wl7Ny9Td3NQF58sLg_k-ZAYdvb5Ui-PoTT30Cjfn44wKh66_v2kVUj2Iyk3XGoCbMcY_AvLQlses0Er7GoMf1YPw1hYrbEgLM_N3md0jTKScBUrjK5dnCwOilQ0DJWq5Iv7ISSvBV8BDa5Fxq8lVrLTtBZr88ipXcvW4YdSkXUiq6T2mArZkV3dm0Jk5Dock4bLf8h6_AUnGRvv)](https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNqtVE2P0zAQ_Ssjn1Ipu-pKnAKtBIW9ILFSy42iyE0mjYVjB3tCtaz2vzOOk34stKxYemgSz7x58549fhCFLVFkwuP3Dk2B75XcOtm8XhvgXysdqUK10hAstEJDv6-v0P1AF9c_WUKw_DlkpzGYwV2LBiqlEZLKOth0zhM4lKUy28kR1qltTWCrAZ_BMvTFuXYsEJNj-Go-Hwl6hluOL-8SKCXJL9Ovs1ZSnYJXP3Gm0SThcwIDXQRecYmR6u3iYwIevVfWDKhXaV-rRwfyPfqs0CVrAqoxilUmSvWQOGxREow-wwa13QGvGNyx4Moj-Wc5cfCu34aQsudLmJBq5aGQHkPxWHg2nZyz7V2oFpoO3h3JH4FH9gUncmXyvoF_9_GkDJw6qrHqBY3txSd4YrmN72sET4u6M9980KdMwSHPp2j0EHaK6mhSXtim1Ug4m57r9VT-vumn8D_6semqCt0k3R-3YeF_cb0pOucYmfM30vwFzNfX1xdMvuWB1JL3ouGW5PZwankT6Wl7Ny9Td3NQF58sLg_k-ZAYdvb5Ui-PoTT30Cjfn44wKh66_v2kVUj2Iyk3XGoCbMcY_AvLQlses0Er7GoMf1YPw1hYrbEgLM_N3md0jTKScBUrjK5dnCwOilQ0DJWq5Iv7ISSvBV8BDa5Fxq8lVrLTtBZr88ipXcvW4YdSkXUiq6T2mArZkV3dm0Jk5Dock4bLf8h6_AUnGRvv)
+
+<!-- Original Diagram
+sequenceDiagram;
+    participant Client
+    participant Server
+    Note right of Client: Open file for burst reading
+    Client->>Server:  BurstReadFile( data[0]=path, size=len(path) )
+    Server-- >>Client: ACK( session, size=4, data=len(file) )
+    Note left of Server: Server streams data in chunks with burst_complete=0
+    Server-- >>Client: BurstReadFile(session,burst_complete=0, offset=0, size=len(buffer), data[0]=buffer)
+    Server-- >>Client: BurstReadFile(session,burst_complete=0, offset=n, size=len(buffer), data[0]=buffer)
+    Note left of Server: When complete, send last chunk with burst_complete=1
+    Server-- >>Client: BurstReadFile(session,burst_complete=1, offset=last_chunk, size=len(buffer), data[0]=buffer)
+    Note right of Client: Read any missing chunks using ReadFile at offset
+    Client- >>Server:  ReadFile(session, size, offset)
+    Server-- >>Client: ACK(session, size=len(buffer), data[0]=buffer)
+    Note right of Client: Close session when whole data file collected
+    Client- >>Server:  TerminateSession(session)
+    Server-- >>Client: ACK()
+-->
+
+The sequence of operations is:
+1. GCS (client) sends [OpenFileRO](#OpenFileRO) command specifying the file path to open.
+   - The payload must specify: `data[0]`= file path string, `size`=length of file path string.
+1. Drone (server) responds with either 
+   - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = 4, `data` = length of file that has been opened.
+   - NAK with [error information](#error_codes), e.g. `NoSessionsAvailable`, `FileExists`. 
+     The GCS may cancel the operation, depending on the error.
+1. Client (i.e. GCS) sends [BurstReadFile](#BurstReadFile) command specifying the part of the file that it wants to get.
+   - The payload must specify: `session`: the current session id, `offset` = offset in file of start of burst, `data`= length of burst, `size`=4.
+1. Server (drone) responds with either 
+   - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = 4, `data` = lenght of file in burst. 
+   - NAK with [error information](#error_codes). The client may cancel the operation, depending on the error.
+1. Server sends stream of [BurstReadFile](#BurstReadFile) data to client (without ACK) until the whole burst is sent, or a server-defined burst size limit is reached.
+   - The payload must specify: `session`=current session, `size`=size of data to read, `offset`= position in original data of current chunk.
+   - The payload must specify `burst_complete=0` for all chunks, except the last one, which must set `burst_complete=1`.
+1. Client repeats the `BurstReadFile` cycle at different offsets until the whole file is retrieved.
+1. The client must maintain its own record of the received (and missing) chunks.
+   It may request any missing chunks at either the end of a  burst or at the end of the file. 
+   Missing chunks can be requested using either `BurstReadFile` or `ReadFile`.
+1. Client sends [TerminateSession](#TerminateSession) to close the file once all the chunks have been downloaded
+   The server should send an ACK/NAK, but this may (generally speaking) be ignored by the client.
+
+The client should create a timeout while waiting for a new `BurstReadFile`, and on expiry may request missing parts of the file using either `BurstReadFile` or `ReadFile`
 A timeout is not set for `TerminateSession` (the server may ignore failure of the command or the ACK).
 
 
@@ -401,26 +470,6 @@ The sequence of operations is:
 
 The GSC should create a timeout after the `RemoveDirectory` command is sent and resend the message as needed (and [described above](#timeouts)).
 
-
-### Burst Read File
-
-TBD
-
-<!-- Not clear how this is kicked off by QGC.
-https://github.com/mavlink/qgroundcontrol/blob/master/src/uas/FileManager.cc#L579 
-streamPath() calls 
-_downloadWorker(from, downloadDir, false /* stream file */); - false means stream file
-
-
-kCmdOpenFileRO
-  - in _openAckResponse with opp kCOOpenBurst - change operation to kCOBurst
-  - new session! This is the burst session.
-  Set kCmdBurstReadFile 
-  
-  Ends when we hit EOF
-  kCmdBurstReadFile
-  
--->
 
 
 ## Implementations
