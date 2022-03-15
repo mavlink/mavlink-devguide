@@ -3843,13 +3843,14 @@
      <td>Autopilot supports the <a href="#MISSION_ITEM">MISSION_ITEM</a> float message type.
           Note that <a href="#MISSION_ITEM">MISSION_ITEM</a> is deprecated, and autopilots should use <a href="#MISSION_INT">MISSION_INT</a> instead.</td>
     </tr>
-    <tr id="MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST">
+    <tr id="MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT">
      <td>2</td>
      <td>
-      <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST">MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST</a>
+      <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT">MAV_PROTOCOL_CAPABILITY_PARAM_FLOAT</a>
+      <p style="color:red">
+       <strong>DEPRECATED:</strong> Replaced by <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST">MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST</a> (2022-03).</p>
      </td>
-     <td>Parameter protocol uses C-cast of parameter values to set the param_value (float) fields: https://mavlink.io/en/services/parameter.html#parameter-encoding.
-          Note that either this flag or <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE">MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE</a> should be set if the parameter protocol is supported.</td>
+     <td>Autopilot supports the new param float message type.</td>
     </tr>
     <tr id="MAV_PROTOCOL_CAPABILITY_MISSION_INT">
      <td>4</td>
@@ -3957,6 +3958,14 @@
       <a href="#MAV_PROTOCOL_CAPABILITY_RESERVED2">MAV_PROTOCOL_CAPABILITY_RESERVED2</a>
      </td>
      <td>Reserved for future use.</td>
+    </tr>
+    <tr id="MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST">
+     <td>131072</td>
+     <td>
+      <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST">MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST</a>
+     </td>
+     <td>Parameter protocol uses C-cast of parameter values to set the param_value (float) fields: https://mavlink.io/en/services/parameter.html#parameter-encoding.
+          Note that either this flag or <a href="#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE">MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE</a> should be set if the parameter protocol is supported.</td>
     </tr>
    </tbody>
   </table>
