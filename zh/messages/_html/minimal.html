@@ -318,35 +318,35 @@
      <td>
       <a href="#MAV_TYPE_VTOL_DUOROTOR">MAV_TYPE_VTOL_DUOROTOR</a>
      </td>
-     <td>Two-rotor VTOL using control surfaces in vertical operation in addition. Tailsitter.</td>
+     <td>Two-rotor Tailsitter VTOL that additionally uses control surfaces in vertical operation. Note: should be named <a href="#MAV_TYPE_VTOL_TAILSITTER_DUOROTOR">MAV_TYPE_VTOL_TAILSITTER_DUOROTOR</a>.</td>
     </tr>
     <tr id="MAV_TYPE_VTOL_QUADROTOR">
      <td>20</td>
      <td>
       <a href="#MAV_TYPE_VTOL_QUADROTOR">MAV_TYPE_VTOL_QUADROTOR</a>
      </td>
-     <td>Quad-rotor VTOL using a V-shaped quad config in vertical operation. Tailsitter.</td>
+     <td>Quad-rotor Tailsitter VTOL using a V-shaped quad config in vertical operation. Note: should be named <a href="#MAV_TYPE_VTOL_TAILSITTER_QUADROTOR">MAV_TYPE_VTOL_TAILSITTER_QUADROTOR</a>.</td>
     </tr>
     <tr id="MAV_TYPE_VTOL_TILTROTOR">
      <td>21</td>
      <td>
       <a href="#MAV_TYPE_VTOL_TILTROTOR">MAV_TYPE_VTOL_TILTROTOR</a>
      </td>
-     <td>Tiltrotor VTOL</td>
+     <td>Tiltrotor VTOL. Fuselage and wings stay (nominally) horizontal in all flight phases. It able to tilt (some) rotors to provide thrust in cruise flight.</td>
     </tr>
-    <tr id="MAV_TYPE_VTOL_RESERVED2">
+    <tr id="MAV_TYPE_VTOL_FIXEDROTOR">
      <td>22</td>
      <td>
-      <a href="#MAV_TYPE_VTOL_RESERVED2">MAV_TYPE_VTOL_RESERVED2</a>
+      <a href="#MAV_TYPE_VTOL_FIXEDROTOR">MAV_TYPE_VTOL_FIXEDROTOR</a>
      </td>
-     <td>VTOL reserved 2</td>
+     <td>VTOL with separate fixed rotors for hover and cruise flight. Fuselage and wings stay (nominally) horizontal in all flight phases.</td>
     </tr>
-    <tr id="MAV_TYPE_VTOL_RESERVED3">
+    <tr id="MAV_TYPE_VTOL_TAILSITTER">
      <td>23</td>
      <td>
-      <a href="#MAV_TYPE_VTOL_RESERVED3">MAV_TYPE_VTOL_RESERVED3</a>
+      <a href="#MAV_TYPE_VTOL_TAILSITTER">MAV_TYPE_VTOL_TAILSITTER</a>
      </td>
-     <td>VTOL reserved 3</td>
+     <td>Tailsitter VTOL. Fuselage and wings orientation changes depending on flight phase: vertical for hover, horizontal for cruise. Use more specific VTOL <a href="#MAV_TYPE_VTOL_DUOROTOR">MAV_TYPE_VTOL_DUOROTOR</a> or <a href="#MAV_TYPE_VTOL_QUADROTOR">MAV_TYPE_VTOL_QUADROTOR</a> if appropriate.</td>
     </tr>
     <tr id="MAV_TYPE_VTOL_RESERVED4">
      <td>24</td>
