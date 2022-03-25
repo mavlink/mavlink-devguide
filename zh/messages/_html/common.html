@@ -29820,7 +29820,10 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>The interval between messages for a particular MAVLink message ID. This message is the response to the <a href="#MAV_CMD_GET_MESSAGE_INTERVAL">MAV_CMD_GET_MESSAGE_INTERVAL</a> command. This interface replaces <a href="#DATA_STREAM">DATA_STREAM</a>.</p>
+   </a>The interval between messages for a particular MAVLink message ID.
+        This message is sent in response to the <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> command with param1=244 (this message) and param2=message_id (the id of the message for which the interval is required).
+	It may also be sent in response to <a href="#MAV_CMD_GET_MESSAGE_INTERVAL">MAV_CMD_GET_MESSAGE_INTERVAL</a>.
+	This interface replaces <a href="#DATA_STREAM">DATA_STREAM</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33074,8 +33077,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
