@@ -5,24 +5,11 @@
 
 ## Relevant specifications {#specifications}
 
-### United States {#us}
+The MAVLink messages defined for usage with Open Drone ID are compliant with the following standards:
+* ASTM F3411 Specification for Remote ID and Tracking
+* ASD-STAN prEN 4709-002 Direct Remote Identification
 
-The ASTM F3411 Specification for Remote ID and Tracking has been defined to specify how Unmanned Aircraft (UA) or Unmanned Aircraft Systems (UAS) can publish their ID, location, altitude etc., either via direct broadcast (Bluetooth or Wi-Fi), or via an internet connection to a Remote ID server.
-
-Version 1.0 of the standard is currently [available](https://www.astm.org/Standards/F3411.htm).
-An updated version 1.1 is in the final stages of being finalized (September 2021).
-It contains smaller changes/additions to make the message content etc. better suited to meet the [rule](https://www.regulations.gov/document/FAA-2019-1100-53264) defined by the [FAA](https://www.faa.gov/uas/getting_started/remote_id/) (Federal Aviation Administration) for [UAS flights](https://www.faa.gov/uas/commercial_operators/operations_over_people/) in the United States.
-Additionally, a Means of Compliance document is being drafted by ASTM, containing further implementation requirements and test specifications.
-Together, the two documents will allow manufacturers of UAS and remote ID broadcast modules (for retro-fit on UAs without built-in remote ID support) to implement remote ID support and create the necessary Declaration of Compliance document, which must be submitted to the FAA.
-
-### Europe {#europe}
-
-To meet the European Commission Delegated Regulation [2019/945](https://eur-lex.europa.eu/eli/reg_del/2019/945/2020-08-09) and the Commission Implementing Regulation [2019/947](https://eur-lex.europa.eu/eli/reg_impl/2019/947/2021-08-05), ASD-STAN has developed the prEN 4709-002 Direct Remote Identification standard.
-This standard specifies broadcast methods for Remote ID (Bluetooth and Wi-Fi) that are compliant with the ASTM F3411 specification.
-See the summary [whitepaper](https://asd-stan.org/wp-content/uploads/ASD-STAN_DRI_Introduction_to_the_European_digital_RID_UAS_Standard.pdf).
-The final version is not yet published (September 2021).
-An earlier draft is available [here](https://asd-stan.org/downloads/din-en-4709-0022021-02/).
-Be aware, that multiple changes were done after this draft version was made available and it should not be used as a reference for any implementations.
+For additional details, please see [here](https://github.com/opendroneid/opendroneid-core-c#relevant-specifications).
 
 ## Broadcast methods and impact on the message design {#broadcast_methods}
 
@@ -35,7 +22,7 @@ Four different broadcast methods are defined:
 The broadcast method used with Bluetooth Legacy Advertising signals impose a strict size limitation on the amount of data that can be transmitted in each radio burst.
 Therefore the relevant data is divided into different categories and each category is transmitted via its own message.
 
-The ASTM Remote ID standard defines 6 such messages and an additional 7th message type for packing multiple messages together into a message pack (used when transmitting on Wi-Fi NaN, Wi-Fi Beacon or Bluetooth Long Range with Extended Advertising).
+The standards defines 6 such messages and an additional 7th message type for packing multiple messages together into a message pack (used when transmitting on Wi-Fi NaN, Wi-Fi Beacon or Bluetooth Long Range with Extended Advertising).
 To support easy data transfers to/from a drone ID transmitter/receiver, MAVLink messages supporting all the fields of the drone ID messages have been made available.
 See [Messages](#messages) below.
 
@@ -58,7 +45,7 @@ ASTM | ASD-STAN | MAVLink | Purpose
 Basic ID | Basic ID | [OPEN_DRONE_ID_BASIC_ID](../messages/common.md#OPEN_DRONE_ID_BASIC_ID) | Provides an ID for the UA, characterizes the type of ID and identifies the type of UA.
 Location | Location | [OPEN_DRONE_ID_LOCATION](../messages/common.md#OPEN_DRONE_ID_LOCATION) | Provides location, altitude, direction, and speed of the UA.
 Authentication | Not specified (reserved) | [OPEN_DRONE_ID_AUTHENTICATION](../messages/common.md#OPEN_DRONE_ID_AUTHENTICATION) | Provides authentication data for the UA.
-Self-ID | Self-ID | [OPEN_DRONE_ID_SELF_ID](../messages/common.md#OPEN_DRONE_ID_SELF_ID) | Plain text message that can be used by Operators to identify themselves and the purpose of an operation.
+Self-ID | Self-ID | [OPEN_DRONE_ID_SELF_ID](../messages/common.md#OPEN_DRONE_ID_SELF_ID) | Plain text message that can be used by Operators to identify themselves and the purpose of an operation. Can also be used to provide optional additional clarification in an emergency/remote ID system failure situation.
 System | System | [OPEN_DRONE_ID_SYSTEM](../messages/common.md#OPEN_DRONE_ID_SYSTEM) | Includes Remote Pilot location, multiple aircraft information (group), if applicable, and additional system information.
 Operator ID | Operator ID | [OPEN_DRONE_ID_OPERATOR_ID](../messages/common.md#OPEN_DRONE_ID_OPERATOR_ID) | Provides the Operator ID.
 Message Pack | Message Pack | [OPEN_DRONE_ID_MESSAGE_PACK](../messages/common.md#OPEN_DRONE_ID_MESSAGE_PACK) | A payload mechanism for combining the messages above into a single message pack. Used with Bluetooth Extended Advertising, Wi-Fi NaN and Wi-Fi Beacon.
@@ -69,13 +56,14 @@ Message Pack | Message Pack | [OPEN_DRONE_ID_MESSAGE_PACK](../messages/common.md
 
 The [Open Drone ID Core C Library](https://github.com/opendroneid/opendroneid-core-c) contains code for decoding the MAVLink messages and "compressing" the data into data structures for transmission over Bluetooth or Wi-Fi (or vice-versa).
 
-The ASTM Remote ID standard requires that the Location message is broadcast/published at least once per second.
-The rest of the messages must be broadcast/published once per 3 seconds (requirements from local legislation might be different).
+The standards requires that the Location message is broadcast/published at least once per second.
+The rest of the messages must be broadcast/published once per 3 seconds (requirements from local legislation might be different.
+Please see [here](https://github.com/opendroneid/opendroneid-core-c#comparison)).
 Not all message types are mandatory to broadcast.
 
-The ASTM Remote ID standard does not impose any requirements for a drone to be capable of receiving ASTM drone ID messages, nor any requirements for reacting to their content (requirements from local legislation might be different).
+The standards do not impose any requirements for a drone to be capable of receiving drone ID messages, nor any requirements for reacting to their content (requirements from local legislation might be different).
 
-An example Android receiver implementation for broadcast ASTM drone ID messages is available here: [OpenDroneID Android receiver application](https://github.com/opendroneid/receiver-android).
+An example Android receiver implementation for broadcast drone ID messages is available here: [OpenDroneID Android receiver application](https://github.com/opendroneid/receiver-android).
 
 Code related to (Internet) Network Remote ID can be found in the [InterUSS Project](https://github.com/interuss) and https://github.com/uastech/standards (Unofficial reference for UAS-related APIs).
 
