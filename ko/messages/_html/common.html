@@ -7027,6 +7027,13 @@
      </td>
      <td>The UA is having an emergency.</td>
     </tr>
+    <tr id="MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE">
+     <td>4</td>
+     <td>
+      <a href="#MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE">MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE</a>
+     </td>
+     <td>The remote ID system is failing or unreliable in some way.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_ODID_HEIGHT_REF">MAV_ODID_HEIGHT_REF</h3>
@@ -7494,7 +7501,21 @@
      <td>
       <a href="#MAV_ODID_DESC_TYPE_TEXT">MAV_ODID_DESC_TYPE_TEXT</a>
      </td>
-     <td>Free-form text description of the purpose of the flight.</td>
+     <td>Optional free-form text description of the purpose of the flight.</td>
+    </tr>
+    <tr id="MAV_ODID_DESC_TYPE_EMERGENCY">
+     <td>1</td>
+     <td>
+      <a href="#MAV_ODID_DESC_TYPE_EMERGENCY">MAV_ODID_DESC_TYPE_EMERGENCY</a>
+     </td>
+     <td>Optional additional clarification when status == <a href="#MAV_ODID_STATUS_EMERGENCY">MAV_ODID_STATUS_EMERGENCY</a>.</td>
+    </tr>
+    <tr id="MAV_ODID_DESC_TYPE_EXTENDED_STATUS">
+     <td>2</td>
+     <td>
+      <a href="#MAV_ODID_DESC_TYPE_EXTENDED_STATUS">MAV_ODID_DESC_TYPE_EXTENDED_STATUS</a>
+     </td>
+     <td>Optional additional clarification when status != <a href="#MAV_ODID_STATUS_EMERGENCY">MAV_ODID_STATUS_EMERGENCY</a>.</td>
     </tr>
    </tbody>
   </table>
@@ -7518,21 +7539,21 @@
      <td>
       <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE_TAKEOFF">MAV_ODID_OPERATOR_LOCATION_TYPE_TAKEOFF</a>
      </td>
-     <td>The location of the operator is the same as the take-off location.</td>
+     <td>The location/altitude of the operator is the same as the take-off location.</td>
     </tr>
     <tr id="MAV_ODID_OPERATOR_LOCATION_TYPE_LIVE_GNSS">
      <td>1</td>
      <td>
       <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE_LIVE_GNSS">MAV_ODID_OPERATOR_LOCATION_TYPE_LIVE_GNSS</a>
      </td>
-     <td>The location of the operator is based on live GNSS data.</td>
+     <td>The location/altitude of the operator is dynamic. E.g. based on live GNSS data.</td>
     </tr>
     <tr id="MAV_ODID_OPERATOR_LOCATION_TYPE_FIXED">
      <td>2</td>
      <td>
       <a href="#MAV_ODID_OPERATOR_LOCATION_TYPE_FIXED">MAV_ODID_OPERATOR_LOCATION_TYPE_FIXED</a>
      </td>
-     <td>The location of the operator is a fixed location.</td>
+     <td>The location/altitude of the operator are fixed values.</td>
     </tr>
    </tbody>
   </table>
@@ -36055,7 +36076,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Basic ID message. This and the below messages are primarily meant for feeding data to/from an OpenDroneID implementation. E.g. https://github.com/opendroneid/opendroneid-core-c. These messages are compatible with the ASTM Remote ID standard at https://www.astm.org/Standards/F3411.htm and the ASD-STAN Direct Remote ID standard. The usage of these messages is documented at https://mavlink.io/en/services/opendroneid.html.</p>
+   </strong>Data for filling the OpenDroneID Basic ID message. This and the below messages are primarily meant for feeding data to/from an OpenDroneID implementation. E.g. https://github.com/opendroneid/opendroneid-core-c. These messages are compatible with the ASTM F3411 Remote ID standard and the ASD-STAN prEN 4709-002 Direct Remote ID standard. Additional information and usage of these messages is documented at https://mavlink.io/en/services/opendroneid.html.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -36321,7 +36342,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Authentication message. The Authentication Message defines a field that can provide a means of authenticity for the identity of the UAS (Unmanned Aircraft System). The Authentication message can have two different formats. Five data pages are supported. For data page 0, the fields PageCount, Length and TimeStamp are present and AuthData is only 17 bytes. For data page 1 through 15, PageCount, Length and TimeStamp are not present and the size of AuthData is 23 bytes.</p>
+   </strong>Data for filling the OpenDroneID Authentication message. The Authentication Message defines a field that can provide a means of authenticity for the identity of the UAS (Unmanned Aircraft System). The Authentication message can have two different formats. For data page 0, the fields PageCount, Length and TimeStamp are present and AuthData is only 17 bytes. For data page 1 through 15, PageCount, Length and TimeStamp are not present and the size of AuthData is 23 bytes.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -36428,7 +36449,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for filling the OpenDroneID Self ID message. The Self ID Message is an opportunity for the operator to (optionally) declare their identity and purpose of the flight. This message can provide additional information that could reduce the threat profile of a UA (Unmanned Aircraft) flying in a particular area or manner.</p>
+   </strong>Data for filling the OpenDroneID Self ID message. The Self ID Message is an opportunity for the operator to (optionally) declare their identity and purpose of the flight. This message can provide additional information that could reduce the threat profile of a UA (Unmanned Aircraft) flying in a particular area or manner. This message can also be used to provide optional additional clarification in an emergency/remote ID system failure situation.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -36490,7 +36511,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Data for filling the OpenDroneID System message. The System Message contains general system information including the operator location and possible aircraft group information.</p>
+   </strong>Data for filling the OpenDroneID System message. The System Message contains general system information including the operator location/altitude and possible aircraft group and/or category/class information.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -36626,6 +36647,14 @@
      </td>
      <td>Geodetic altitude of the operator relative to WGS84. If unknown: -1000 m.</td>
     </tr>
+    <tr>
+     <td>timestamp</td>
+     <td>uint32_t</td>
+     <td>s</td>
+     <td>
+     </td>
+     <td>32 bit Unix Timestamp in seconds since 00:00:00 01/01/2019.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="OPEN_DRONE_ID_OPERATOR_ID">OPEN_DRONE_ID_OPERATOR_ID (<a href="#OPEN_DRONE_ID_OPERATOR_ID">
@@ -36703,7 +36732,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>An OpenDroneID message pack is a container for multiple encoded OpenDroneID messages (i.e. not in the format given for the above messages descriptions but after encoding into the compressed OpenDroneID byte format). Used e.g. when transmitting on Bluetooth 5.0 Long Range/Extended Advertising or on WiFi Neighbor Aware Networking.</p>
+   </strong>An OpenDroneID message pack is a container for multiple encoded OpenDroneID messages (i.e. not in the format given for the above message descriptions but after encoding into the compressed OpenDroneID byte format). Used e.g. when transmitting on Bluetooth 5.0 Long Range/Extended Advertising or on WiFi Neighbor Aware Networking or on WiFi Beacon.</p>
   <table class="sortable">
    <thead>
     <tr>
