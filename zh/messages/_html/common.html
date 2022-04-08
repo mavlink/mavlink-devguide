@@ -2569,6 +2569,96 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="PREFLIGHT_STORAGE_PARAMETER_ACTION">PREFLIGHT_STORAGE_PARAMETER_ACTION</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Actions for reading/writing parameters between persistent and volatile storage when using <a href="#MAV_CMD_PREFLIGHT_STORAGE">MAV_CMD_PREFLIGHT_STORAGE</a>.
+        (Commonly parameters are loaded from persistent storage (flash/EEPROM) into volatile storage (RAM) on startup and written back when they are changed.)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="PARAM_READ_PERSISTENT">
+     <td>0</td>
+     <td>
+      <a href="#PARAM_READ_PERSISTENT">PARAM_READ_PERSISTENT</a>
+     </td>
+     <td>Read all parameters from persistent storage. Replaces values in volatile storage.</td>
+    </tr>
+    <tr id="PARAM_WRITE_PERSISTENT">
+     <td>1</td>
+     <td>
+      <a href="#PARAM_WRITE_PERSISTENT">PARAM_WRITE_PERSISTENT</a>
+     </td>
+     <td>Write all parameter values to persistent storage (flash/EEPROM)</td>
+    </tr>
+    <tr id="PARAM_RESET_CONFIG_DEFAULT">
+     <td>2</td>
+     <td>
+      <a href="#PARAM_RESET_CONFIG_DEFAULT">PARAM_RESET_CONFIG_DEFAULT</a>
+     </td>
+     <td>Reset all user configurable parameters to their default value (including airframe selection, sensor calibration data, safety settings, and so on). Does not reset values that contain operation counters and vehicle computed statistics.</td>
+    </tr>
+    <tr id="PARAM_RESET_SENSOR_DEFAULT">
+     <td>3</td>
+     <td>
+      <a href="#PARAM_RESET_SENSOR_DEFAULT">PARAM_RESET_SENSOR_DEFAULT</a>
+     </td>
+     <td>Reset only sensor calibration parameters to factory defaults (or firmware default if not available)</td>
+    </tr>
+    <tr id="PARAM_RESET_ALL_DEFAULT">
+     <td>4</td>
+     <td>
+      <a href="#PARAM_RESET_ALL_DEFAULT">PARAM_RESET_ALL_DEFAULT</a>
+     </td>
+     <td>Reset all parameters, including operation counters, to default values</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="PREFLIGHT_STORAGE_MISSION_ACTION">PREFLIGHT_STORAGE_MISSION_ACTION</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Actions for reading and writing plan information (mission, rally points, geofence) between persistent and volatile storage when using <a href="#MAV_CMD_PREFLIGHT_STORAGE">MAV_CMD_PREFLIGHT_STORAGE</a>.
+        (Commonly missions are loaded from persistent storage (flash/EEPROM) into volatile storage (RAM) on startup and written back when they are changed.)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MISSION_READ_PERSISTENT">
+     <td>0</td>
+     <td>
+      <a href="#MISSION_READ_PERSISTENT">MISSION_READ_PERSISTENT</a>
+     </td>
+     <td>Read current mission data from persistent storage</td>
+    </tr>
+    <tr id="MISSION_WRITE_PERSISTENT">
+     <td>1</td>
+     <td>
+      <a href="#MISSION_WRITE_PERSISTENT">MISSION_WRITE_PERSISTENT</a>
+     </td>
+     <td>Write current mission data to persistent storage</td>
+    </tr>
+    <tr id="MISSION_RESET_DEFAULT">
+     <td>2</td>
+     <td>
+      <a href="#MISSION_RESET_DEFAULT">MISSION_RESET_DEFAULT</a>
+     </td>
+     <td>Erase all mission data stored on the vehicle (both persistent and volatile storage)</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_DATA_STREAM">MAV_DATA_STREAM</h3>
   <p style="color:red">
    <strong>DEPRECATED:</strong> Replaced by <a href="#MESSAGE_INTERVAL">MESSAGE_INTERVAL</a> (2015-06).</p>
@@ -14678,17 +14768,19 @@
    <tbody>
     <tr>
      <td>1: Parameter Storage</td>
-     <td>Parameter storage: 0: Read from flash/EEPROM, 1: Write current parameter data to flash/EEPROM, 2: Reset to defaults, 3: Reset sensor calibration parameter data to factory default (or firmware default if not available)</td>
+     <td>Action to perform on the persistent parameter storage</td>
      <td>
-      <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
+      <a href="#PREFLIGHT_STORAGE_PARAMETER_ACTION">PREFLIGHT_STORAGE_PARAMETER_ACTION</a>
+     </td>
      <td>
      </td>
     </tr>
     <tr>
      <td>2: Mission Storage</td>
-     <td>Mission storage: 0: Read from FLASH/EEPROM, 1: Write current data to flash/EEPROM, 2: Reset to defaults</td>
+     <td>Action to perform on the persistent mission storage</td>
      <td>
-      <em>min:</em>0 <em>max:</em>2 <em>increment:</em>1</td>
+      <a href="#PREFLIGHT_STORAGE_MISSION_ACTION">PREFLIGHT_STORAGE_MISSION_ACTION</a>
+     </td>
      <td>
      </td>
     </tr>
