@@ -45,7 +45,7 @@ C++11   | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &ch
 Python (2.7+, 3.3+) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; | Python bindings. Library also available on PyPi: [pymavlink](https://pypi.org/project/pymavlink/).
 C#      | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; |  | | 
 Objective C | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | | 
-Java    | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | | | 
+Java    | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; |  | Dronefleet offers a more idiomatic generated library | 
 JavaScript (Stable) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &cross; | Old mavgen JavaScript binding (has known bugs and no test suite). 
 JavaScript (NextGen) | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &check; | New mavgen JavaScript library. Full test suite, resulting library produces binary compatible output compared to C bindings. Slightly incompatible with previous version, but not hard to migrate.
 TypeScript/JavaScript | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | &cross; | TypeScript classes which can be used with [node-mavlink](https://github.com/ifrunistuttgart/node-mavlink).
