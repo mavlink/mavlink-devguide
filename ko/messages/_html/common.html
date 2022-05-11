@@ -2166,7 +2166,7 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Supported component metadata types. These are used in the "general" metadata file returned by <a href="#COMPONENT_INFORMATION">COMPONENT_INFORMATION</a> to provide information about supported metadata types. The types are not used directly in MAVLink messages.</p>
+   </a>Supported component metadata types. These are used in the "general" metadata file returned by <a href="#COMPONENT_METADATA">COMPONENT_METADATA</a> to provide information about supported metadata types. The types are not used directly in MAVLink messages.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15280,6 +15280,8 @@
   <h3 id="MAV_CMD_GET_HOME_POSITION">MAV_CMD_GET_HOME_POSITION (<a href="#MAV_CMD_GET_HOME_POSITION">410</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> (2022-04).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -15394,10 +15396,13 @@
   <h3 id="MAV_CMD_GET_MESSAGE_INTERVAL">MAV_CMD_GET_MESSAGE_INTERVAL (<a href="#MAV_CMD_GET_MESSAGE_INTERVAL">510</a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> (2022-04).</p>
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request the interval between messages for a particular MAVLink message ID. The receiver should ACK the command and then emit its response in a <a href="#MESSAGE_INTERVAL">MESSAGE_INTERVAL</a> message.</p>
+   </a>Request the interval between messages for a particular MAVLink message ID.
+          The receiver should ACK the command and then emit its response in a <a href="#MESSAGE_INTERVAL">MESSAGE_INTERVAL</a> message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29738,7 +29743,12 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>This message can be requested by sending the <a href="#MAV_CMD_GET_HOME_POSITION">MAV_CMD_GET_HOME_POSITION</a> command. The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
+   </a>This message can be requested by sending the <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> with param1=242 (or the <a href="#MAV_CMD_GET_HOME_POSITION">MAV_CMD_GET_HOME_POSITION</a> command).
+	The position the system will return to and land on.
+	The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after.
+	The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface.
+	Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach.
+	The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -35516,21 +35526,14 @@
    )
   </h3>
   <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+   <strong>DEPRECATED:</strong> Replaced by <a href="#COMPONENT_METADATA">COMPONENT_METADATA</a> (2022-04).</p>
   <p>
    <a href="#messages">
     [Message]
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Component information message, which may be requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>.
-        
-        This contains MAVLink FTP URIs for the component's general and peripherals metadata files along with their CRCs (which can be used for file caching).
-        The files must be hosted on the component, and may be xz compressed.
-        The general metadata file can be read to get the locations of additional metadata files (<a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>), which may be hosted either on the vehicle or the Internet.
-        For more information see: https://mavlink.io/en/services/component_information.html.
-        
-        Note: Camera components should use <a href="#CAMERA_INFORMATION">CAMERA_INFORMATION</a> instead, and autopilots may use both this message and <a href="#AUTOPILOT_VERSION">AUTOPILOT_VERSION</a>.</p>
+   </strong>Component information message, which may be requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -35576,6 +35579,61 @@
      <td>
       (Optional) MAVLink FTP URI for the peripherals metadata file (<a href="#COMP_METADATA_TYPE_PERIPHERALS">COMP_METADATA_TYPE_PERIPHERALS</a>), which may be compressed with xz. This contains data about "attached components" such as UAVCAN nodes. The peripherals are in a separate file because the information must be generated dynamically at runtime. The string needs to be zero terminated.
      </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="COMPONENT_METADATA">COMPONENT_METADATA (<a href="#COMPONENT_METADATA">
+    #397
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Component metadata message, which may be requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>.
+        
+        This contains the MAVLink FTP URI and CRC for the component's general metadata file.
+        The file must be hosted on the component, and may be xz compressed.
+        The file CRC can be used for file caching.
+        
+        The general metadata file can be read to get the locations of other metadata files (<a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>) and translations, which may be hosted either on the vehicle or the internet.
+        For more information see: https://mavlink.io/en/services/component_information.html.
+        
+        Note: Camera components should use <a href="#CAMERA_INFORMATION">CAMERA_INFORMATION</a> instead, and autopilots may use both this message and <a href="#AUTOPILOT_VERSION">AUTOPILOT_VERSION</a>.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>file_crc</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>CRC32 of the general metadata file.</td>
+    </tr>
+    <tr>
+     <td>uri</td>
+     <td>char[100]</td>
+     <td>
+     </td>
+     <td>MAVLink FTP URI for the general metadata file (<a href="#COMP_METADATA_TYPE_GENERAL">COMP_METADATA_TYPE_GENERAL</a>), which may be compressed with xz. The file contains general component metadata, and may contain URI links for additional metadata (see <a href="#COMP_METADATA_TYPE">COMP_METADATA_TYPE</a>). The information is static from boot, and may be generated at compile time. The string needs to be zero terminated.</td>
     </tr>
    </tbody>
   </table>
