@@ -320,6 +320,75 @@
    <p>MAVLink commands (<a href="#mav_commands">MAV_CMD</a>) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
   </blockquote>
   <p>Commands to be executed by the MAV. They can be executed on user request, or as part of a mission script. If the action is used in a mission, the parameter mapping to the waypoint/mission message is as follows: Param 1, Param 2, Param 3, Param 4, X: Param 5, Y:Param 6, Z:Param 7. This command list is similar what ARINC 424 is for commercial aircraft: A data format how to interpret waypoint/mission data. NaN and INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current yaw or latitude rather than a specific value). See https://mavlink.io/en/guide/xml_schema.html#MAV_CMD for information about the structure of the <a href="#mav_commands">MAV_CMD</a> entries</p>
+  <h3 id="MAV_CMD_DO_FIGURE_EIGHT">MAV_CMD_DO_FIGURE_EIGHT (<a href="#MAV_CMD_DO_FIGURE_EIGHT">35</a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Fly a figure eight path as defined by the parameters.
+          Set parameters to NaN/INT32_MAX (as appropriate) to use system-default values.
+          The command is intended for fixed wing vehicles (and VTOL hybrids flying in fixed-wing mode), allowing POI tracking for gimbals that don't support infinite rotation.
+          This command only defines the flight path. Speed should be set independently (use e.g. <a href="#MAV_CMD_DO_CHANGE_SPEED">MAV_CMD_DO_CHANGE_SPEED</a>).
+          Yaw and other degrees of freedom are not specified, and will be flight-stack specific (on vehicles where they can be controlled independent of the heading).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Major Radius</td>
+     <td>Major axis radius of the figure eight. Positive: orbit the north circle clockwise. Negative: orbit the north circle counter-clockwise.
+        NaN: The radius will be set to 2.5 times the minor radius and direction is clockwise.
+        Must be greater or equal to two times the minor radius for feasible values.</td>
+     <td>m</td>
+    </tr>
+    <tr>
+     <td>2: Minor Radius</td>
+     <td>Minor axis radius of the figure eight. Defines the radius of the two circles that make up the figure. Negative value has no effect.
+        NaN: The radius will be set to the default loiter radius.</td>
+     <td>m</td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Reserved (set to NaN)</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4: Orientation</td>
+     <td>Orientation of the figure eight major axis with respect to true north (range: [-pi,pi]). NaN: use default orientation aligned to true north.</td>
+     <td>rad</td>
+    </tr>
+    <tr>
+     <td>5: Latitude/X</td>
+     <td>Center point latitude/X coordinate according to <a href="#MAV_FRAME">MAV_FRAME</a>. If no <a href="#MAV_FRAME">MAV_FRAME</a> specified, <a href="#MAV_FRAME_GLOBAL">MAV_FRAME_GLOBAL</a> is assumed.
+        INT32_MAX or NaN: Use current vehicle position, or current center if already loitering.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6: Longitude/Y</td>
+     <td>Center point longitude/Y coordinate according to <a href="#MAV_FRAME">MAV_FRAME</a>. If no <a href="#MAV_FRAME">MAV_FRAME</a> specified, <a href="#MAV_FRAME_GLOBAL">MAV_FRAME_GLOBAL</a> is assumed.
+        INT32_MAX or NaN: Use current vehicle position, or current center if already loitering.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7: Altitude/Z</td>
+     <td>Center point altitude MSL/Z coordinate according to <a href="#MAV_FRAME">MAV_FRAME</a>. If no <a href="#MAV_FRAME">MAV_FRAME</a> specified, <a href="#MAV_FRAME_GLOBAL">MAV_FRAME_GLOBAL</a> is assumed.
+        INT32_MAX or NaN: Use current vehicle altitude.</td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_CMD_PARAM_TRANSACTION">MAV_CMD_PARAM_TRANSACTION (<a href="#MAV_CMD_PARAM_TRANSACTION">900</a>
    )
   </h3>
@@ -892,6 +961,101 @@
       <a href="#WIFI_NETWORK_SECURITY">WIFI_NETWORK_SECURITY</a>
      </td>
      <td>WiFi network security type.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="FIGURE_EIGHT_EXECUTION_STATUS">FIGURE_EIGHT_EXECUTION_STATUS (<a href="#FIGURE_EIGHT_EXECUTION_STATUS">
+    #361
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Vehicle status report that is sent out while figure eight execution is in progress (see <a href="#MAV_CMD_DO_FIGURE_EIGHT">MAV_CMD_DO_FIGURE_EIGHT</a>).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_usec</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+     </td>
+     <td>Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+    </tr>
+    <tr>
+     <td>major_radius</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+     </td>
+     <td>Major axis radius of the figure eight. Positive: orbit the north circle clockwise. Negative: orbit the north circle counter-clockwise.</td>
+    </tr>
+    <tr>
+     <td>minor_radius</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+     </td>
+     <td>Minor axis radius of the figure eight. Defines the radius of two circles that make up the figure.</td>
+    </tr>
+    <tr>
+     <td>orientation</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+     </td>
+     <td>Orientation of the figure eight major axis with respect to true north in [-pi,pi).</td>
+    </tr>
+    <tr>
+     <td>frame</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_FRAME">MAV_FRAME</a>
+     </td>
+     <td>The coordinate system of the fields: x, y, z.</td>
+    </tr>
+    <tr>
+     <td>x</td>
+     <td>int32_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>X coordinate of center point. Coordinate system depends on frame field.</td>
+    </tr>
+    <tr>
+     <td>y</td>
+     <td>int32_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Y coordinate of center point. Coordinate system depends on frame field.</td>
+    </tr>
+    <tr>
+     <td>z</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+     </td>
+     <td>Altitude of center point. Coordinate system depends on frame field.</td>
     </tr>
    </tbody>
   </table>
