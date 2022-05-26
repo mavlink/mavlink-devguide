@@ -628,7 +628,8 @@
      <td>
       <a href="#MAV_FRAME_GLOBAL_RELATIVE_ALT">MAV_FRAME_GLOBAL_RELATIVE_ALT</a>
      </td>
-     <td>Global (WGS84) coordinate frame + altitude relative to the home position. First value / x: latitude, second value / y: longitude, third value / z: positive altitude with 0 being at the altitude of the home location.</td>
+     <td>Global (WGS84) coordinate frame + altitude relative to the home position.
+          First value / x: latitude, second value / y: longitude, third value / z: positive altitude with 0 being at the altitude of the home position.</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_ENU">
      <td>4</td>
@@ -649,7 +650,8 @@
      <td>
       <a href="#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT">MAV_FRAME_GLOBAL_RELATIVE_ALT_INT</a>
      </td>
-     <td>Global (WGS84) coordinate frame (scaled) + altitude relative to the home position. First value / x: latitude in degrees*1E7, second value / y: longitude in degrees*1E7, third value / z: positive altitude with 0 being at the altitude of the home location.</td>
+     <td>Global (WGS84) coordinate frame (scaled) + altitude relative to the home position.
+          First value / x: latitude in degrees*1E7, second value / y: longitude in degrees*1E7, third value / z: positive altitude with 0 being at the altitude of the home position.</td>
     </tr>
     <tr id="MAV_FRAME_LOCAL_OFFSET_NED">
      <td>7</td>
@@ -1058,7 +1060,7 @@
      <td>
       <a href="#MAV_MOUNT_MODE_HOME_LOCATION">MAV_MOUNT_MODE_HOME_LOCATION</a>
      </td>
-     <td>Gimbal tracks home location</td>
+     <td>Gimbal tracks home position</td>
     </tr>
    </tbody>
   </table>
@@ -12050,7 +12052,10 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Changes the home location either to the current location or a specified location.</p>
+   </a>Sets the home position to either to the current position or a specified position.
+          The home position is the default position that the system will return to and land on.
+          The position is set automatically by the system during the takeoff (and may also be set using this command).
+          Note: the current home position may be emitted in a <a href="#HOME_POSITION">HOME_POSITION</a> message on request (using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> with param1=242).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15285,7 +15290,8 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request the home position from the vehicle.</p>
+   </a>Request the home position from the vehicle.
+	  The vehicle will ACK the command and then emit the <a href="#HOME_POSITION">HOME_POSITION</a> message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28892,7 +28898,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Wind covariance estimate from vehicle.</p>
+   </a>Wind estimate from vehicle. Note that despite the name, this message does not actually contain any covariances but instead variability and accuracy fields in terms of standard deviation (1-STD).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -28913,49 +28919,49 @@
      <td>wind_x</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Wind in X (NED) direction</td>
+     <td>Wind in North (NED) direction (NAN if unknown)</td>
     </tr>
     <tr>
      <td>wind_y</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Wind in Y (NED) direction</td>
+     <td>Wind in East (NED) direction (NAN if unknown)</td>
     </tr>
     <tr>
      <td>wind_z</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Wind in Z (NED) direction</td>
+     <td>Wind in down (NED) direction (NAN if unknown)</td>
     </tr>
     <tr>
      <td>var_horiz</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Variability of the wind in XY. RMS of a 1 Hz lowpassed wind estimate.</td>
+     <td>Variability of wind in XY, 1-STD estimated from a 1 Hz lowpassed wind estimate (NAN if unknown)</td>
     </tr>
     <tr>
      <td>var_vert</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Variability of the wind in Z. RMS of a 1 Hz lowpassed wind estimate.</td>
+     <td>Variability of wind in Z, 1-STD estimated from a 1 Hz lowpassed wind estimate (NAN if unknown)</td>
     </tr>
     <tr>
      <td>wind_alt</td>
      <td>float</td>
      <td>m</td>
-     <td>Altitude (MSL) that this measurement was taken at</td>
+     <td>Altitude (MSL) that this measurement was taken at (NAN if unknown)</td>
     </tr>
     <tr>
      <td>horiz_accuracy</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Horizontal speed 1-STD accuracy</td>
+     <td>Horizontal speed 1-STD accuracy (0 if unknown)</td>
     </tr>
     <tr>
      <td>vert_accuracy</td>
      <td>float</td>
      <td>m/s</td>
-     <td>Vertical speed 1-STD accuracy</td>
+     <td>Vertical speed 1-STD accuracy (0 if unknown)</td>
     </tr>
    </tbody>
   </table>
@@ -29745,12 +29751,13 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>This message can be requested by sending the <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> with param1=242 (or the <a href="#MAV_CMD_GET_HOME_POSITION">MAV_CMD_GET_HOME_POSITION</a> command).
-	The position the system will return to and land on.
-	The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after.
+   </a>Contains the home position.
+	The home position is the default position that the system will return to and land on.
+	The position must be set automatically by the system during the takeoff, and may also be explicitly set using <a href="#MAV_CMD_DO_SET_HOME">MAV_CMD_DO_SET_HOME</a>.
 	The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface.
 	Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach.
-	The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
+	The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.
+        Note: this message can be requested by sending the <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> with param1=242 (or the deprecated <a href="#MAV_CMD_GET_HOME_POSITION">MAV_CMD_GET_HOME_POSITION</a> command).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -29842,11 +29849,17 @@
    <strong>DEPRECATED:</strong> Replaced by <a href="#MAV_CMD_DO_SET_HOME">MAV_CMD_DO_SET_HOME</a> (2022-02).
 
 
-  This message is being superseded by <a href="#MAV_CMD_DO_SET_HOME">MAV_CMD_DO_SET_HOME</a>.  Using the command protocols allows a GCS to detect setting of the home position has failed.</p>
+  The command protocol version (<a href="#MAV_CMD_DO_SET_HOME">MAV_CMD_DO_SET_HOME</a>) allows a GCS to detect when setting the home position has failed.</p>
   <p>
    <a href="#messages">
     [Message]
-   </a>The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</p>
+   </a>Sets the home position.
+	The home position is the default position that the system will return to and land on.
+        The position is set automatically by the system during the takeoff (and may also be set using this message).
+        The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface.
+        Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach.
+        The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.
+        Note: the current home position may be emitted in a <a href="#HOME_POSITION">HOME_POSITION</a> message on request (using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> with param1=242).</p>
   <table class="sortable">
    <thead>
     <tr>
