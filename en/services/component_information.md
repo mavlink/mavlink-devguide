@@ -1,8 +1,9 @@
-# Component Information Protocol (WIP)
+# Component Metadata Protocol (WIP)
 
 > **Warning** This service is still marked as "work in progress", and should not be relied upon in production.
+> It has also evolved since first created as the "Component Information Protocol".
 
-The *Component Information Protocol* is a MAVLink service for requesting information from (and about) MAVLink components.
+The *Component Metadata Protocol* is a MAVLink service for requesting metadata from (and about) MAVLink components.
 It is intended to provide autopilot- and version- independent feature discovery and configuration, allowing a GCS to configure its UI and/or a device without knowing anything about the connected system.
 
 Information shared using this service may include:
@@ -13,8 +14,8 @@ Information shared using this service may include:
 - Self-describing configuration UIs (i.e. similar to MAVLink camera configuration files).
 - Translations of other metadata.
 
-Component information is specified in [appropriately formatted JSON  files](#schema_files) (which may be [**.xz** compressed](#file-compression)).
-The component information protocol is used to request the location of the [general metadata file](#COMP_METADATA_TYPE_GENERAL) file, which is then parsed to get the location of most other [metadata files](#schema_files) supported by the component.
+Component metadata is specified in [appropriately formatted JSON  files](#schema_files) (which may be [**.xz** compressed](#file-compression)).
+The component metadata protocol is used to request the location of the [general metadata file](#COMP_METADATA_TYPE_GENERAL) file, which is then parsed to get the location of other [metadata files](#schema_files) supported by the component.
 
 Information supplied by the service is assumed to be invariant after boot.
 There is no mechanism, for example, to provide an update if the set of supported parameters was to change after boot.
@@ -23,28 +24,29 @@ There is no mechanism, for example, to provide an update if the set of supported
 
 Message | Description
 -- | --
-<a id="COMPONENT_INFORMATION"></a>[COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) | Message providing a download url and [CRC](#metadata-caching-crc) for the [general metadata](#COMP_METADATA_TYPE_GENERAL) component information file (and optionally the [non-MAVLink peripherals metadata](#COMP_METADATA_TYPE_PERIPHERALS)). The message is requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
-<a id="MAV_CMD_REQUEST_MESSAGE"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Use this command to request that a component emit [COMPONENT_INFORMATION](#COMPONENT_INFORMATION). Use `param1=395` (the message id of `COMPONENT_INFORMATION`).
+<a id="COMPONENT_METADATA"></a>[COMPONENT_METADATA](../messages/common.md#COMPONENT_METADATA) | Message providing a download url and [CRC](#metadata-caching-crc) for the [general metadata](#COMP_METADATA_TYPE_GENERAL) component information file. The message is requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
+<a id="MAV_CMD_REQUEST_MESSAGE"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Use this command to request that a component emit [COMPONENT_METADATA](#COMPONENT_METADATA). Use `param1=397` (the message id of `COMPONENT_METADATA`).
 
 
 Enum | Description
 -- | --
 <a id="COMP_METADATA_TYPE"></a>[COMP_METADATA_TYPE](../messages/common.md#COMP_METADATA_TYPE) | Types of component metadata supported by the protocol - e.g. general information, parameter metadata, supported commands, events, peripherals, etc. The type identifiers are used in the "general" metadata file to identify the sections that provide information about each supported type of metadata.
 
+> **Note** [COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) is not used by thie service (it is a deprecated legacy version of [COMPONENT_METADATA](../messages/common.md#COMPONENT_METADATA)).
 
 ## Component Information File Format (Schema) {#schema_files}
 
-Component information files are written in JSON and must conform to the schema definitions found in the folder [/component_information](https://github.com/mavlink/mavlink/tree/master/component_information).
+Component information files are written in JSON and must conform to the schema definitions found in the folder [/component_metadata](https://github.com/mavlink/mavlink/tree/master/component_metadata).
 The component information file types and schema are (at time of writing):
 
 Type | Type Id | Schema | Description
 --- |--- | --- | ---
-<a id="COMP_METADATA_TYPE_GENERAL"></a>General metadata | [COMP_METADATA_TYPE_GENERAL](../messages/common.md#COMP_METADATA_TYPE_GENERAL) | [general.schema.json](https://github.com/mavlink/mavlink/blob/master/component_information/general.schema.json) | General information about the component including hardware/firmware vendor version. This metadata includes information about all the other metadata types are supported by the component and where their metadata files are located. This metadata type must be supported if this protocol is supported and the file must be present on vehicle and delivered by MAVLink FTP. Note however that you never actually need to specify this type!
-<a id="COMP_METADATA_TYPE_PARAMETER"></a>Parameter metadata | [COMP_METADATA_TYPE_PARAMETER](../messages/common.md#COMP_METADATA_TYPE_PARAMETER) | [parameter.schema.json](https://github.com/mavlink/mavlink/blob/master/component_information/parameter.schema.json) | Information about parameters supported by the vehicle (on boot).
+<a id="COMP_METADATA_TYPE_GENERAL"></a>General metadata | [COMP_METADATA_TYPE_GENERAL](../messages/common.md#COMP_METADATA_TYPE_GENERAL) | [general.schema.json](https://github.com/mavlink/mavlink/blob/master/component_metadata/general.schema.json) | General information about the component including hardware/firmware vendor version. This metadata includes information about all the other metadata types are supported by the component and where their metadata files are located. This metadata type must be supported if this protocol is supported and the file must be present on vehicle and delivered by MAVLink FTP. Note however that you never actually need to specify this type!
+<a id="COMP_METADATA_TYPE_PARAMETER"></a>Parameter metadata | [COMP_METADATA_TYPE_PARAMETER](../messages/common.md#COMP_METADATA_TYPE_PARAMETER) | [parameter.schema.json](https://github.com/mavlink/mavlink/blob/master/component_metadata/parameter.schema.json) | Information about parameters supported by the vehicle (on boot).
 <a id="COMP_METADATA_TYPE_COMMANDS"></a> Command protocol metadata | [COMP_METADATA_TYPE_COMMANDS](../messages/common.md#COMP_METADATA_TYPE_COMMANDS) | TBD | Information about which commands and command paramters are supported in via the command protocol.
-<a id="COMP_METADATA_TYPE_PERIPHERALS"></a> Peripheral metadata |  [COMP_METADATA_TYPE_PERIPHERALS](../messages/common.md#COMP_METADATA_TYPE_PERIPHERALS) | [peripherals.schema.json](https://github.com/mavlink/mavlink/blob/master/component_information/peripherals.schema.json) | Information about non-MAVLink peripherals connected to vehicle (on boot).
+<a id="COMP_METADATA_TYPE_PERIPHERALS"></a> Peripheral metadata |  [COMP_METADATA_TYPE_PERIPHERALS](../messages/common.md#COMP_METADATA_TYPE_PERIPHERALS) | [peripherals.schema.json](https://github.com/mavlink/mavlink/blob/master/component_metadata/peripherals.schema.json) | Information about non-MAVLink peripherals connected to vehicle (on boot).
 <a id="COMP_METADATA_TYPE_EVENTS"></a> Event metadata | [COMP_METADATA_TYPE_EVENTS](../messages/common.md#COMP_METADATA_TYPE_EVENTS) | TBD | Information about events interface support by the vehicle.
-<a id="COMP_METADATA_TYPE_ACTUATORS"></a> Event metadata | [COMP_METADATA_TYPE_ACTUATORS](../messages/common.md#COMP_METADATA_TYPE_ACTUATORS) | [actuators.schema.json ](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.schema.json) | Metadata for actuator configuration (motors, servos and vehicle geometry) and testing.
+<a id="COMP_METADATA_TYPE_ACTUATORS"></a> Event metadata | [COMP_METADATA_TYPE_ACTUATORS](../messages/common.md#COMP_METADATA_TYPE_ACTUATORS) | [actuators.schema.json ](https://github.com/mavlink/mavlink/blob/master/component_metadata/actuators.schema.json) | Metadata for actuator configuration (motors, servos and vehicle geometry) and testing.
 
 All schema files are *versioned* using a `version` integer.
 
@@ -55,11 +57,10 @@ Generally this means that new versions may add fields but should not delete them
 The schema are currently a work in progress and can be modified as needed.
 Once accepted, they will be under change control (*managed* in a similar way to standard MAVLink messages).
 
-
 ## File Locations/URLs
 
-[General metadata](#COMP_METADATA_TYPE_GENERAL) files and [peripherals metadata](#COMP_METADATA_TYPE_PERIPHERALS) files (if supported) *must* be stored on the device, and will usually be [**.xz** compressed](#file-compression).
-The location of these files is returned in the [COMPONENT_INFORMATION](#COMPONENT_INFORMATION) `general_metadata_uri` and `peripherals_metadata_uri` fields, respectively.
+[General metadata](#COMP_METADATA_TYPE_GENERAL) files *must* be stored on the device, and will usually be [**.xz** compressed](#file-compression).
+The location of these files is returned in the [COMPONENT_METADATA](#COMPONENT_METADATA) `uri` field.
 
 Other component information files may be hosted on either the device or on the internet.
 
@@ -67,18 +68,18 @@ Other component information files may be hosted on either the device or on the i
 
 Files on the device are downloaded using [MAVLink FTP](../services/ftp.md).
 The URI format is defined in [MAVLink FTP URL Scheme](../services/ftp.md#mavlink-ftp-url-scheme).
-A typical parameter metadata URI might look like this: `mftp:///component_information/parameters.json.xz`.
+A typical parameter metadata URI might look like this: `mftp:///component_metadata/parameters.json.xz`.
 
-Files on the Internet are downloaded using HTTPS or HTTP via a normal web URL (e.g. `https://some_domain/component_information/parameters.json`).
+Files on the Internet are downloaded using HTTPS or HTTP via a normal web URL (e.g. `https://some_domain/component_metadata/parameters.json`).
 
 
 ## Metadata Caching (CRC)
 
-The [COMPONENT_INFORMATION](#COMPONENT_INFORMATION) message includes `general_metadata_file_crc` and `peripherals_metadata_file_crc` fields, which contain [CRC32](../crc.md#crc32-algorithm) values calculated for the files referenced in fields `general_metadata_uri` and `peripherals_metadata_uri` (respectively).
+The [COMPONENT_METADATA](#COMPONENT_METADATA) message includes the `file_crc` field, which contain [CRC32](../crc.md#crc32-algorithm) values calculated for the file referenced in the `uri` field.
 A ground station should cache downloaded component metadata and only update it if the CRC value changes.
 
-The [general metadata file](#COMP_METADATA_TYPE_GENERAL) similarly provides both file locations and [CRC32](../crc.md#crc32-algorithm) values for other metadata supported by a component.
-
+The [general metadata file](#COMP_METADATA_TYPE_GENERAL) similarly provides file locations for other metadata supported by a component.
+It will also include [CRC32](../crc.md#crc32-algorithm) values any files that contain only static data (no CRC32 should be supplied for metadata files that might be updated dynamically).
 
 ## File Compression
 
@@ -98,43 +99,39 @@ Component information files may be **.xz** compressed (this is recommended for f
 
 ### Component Discovery
 
-A GCS can *broadcast* the `MAV_CMD_REQUEST_MESSAGE` specifying `param1=395`; all components that support the protocol should respond with `COMPONENT_INFORMATION`.
+A GCS can *broadcast* the `MAV_CMD_REQUEST_MESSAGE` specifying `param1=397`; all components that support the protocol should respond with `COMPONENT_METADATA`.
 
 A GCS can further discover all components in the system by monitoring the channel for `HEARTBEAT` ids, and then send the request to each of them to [verify whether the protocol is supported](#check-protocol-is-supported).
 The broadcast approach is recommended for GCSes that don't track all components on the link.
 
 ### Check if Protocol is Supported
 
-A system can query whether another component supports the protocol by sending the command [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) (specifying the [COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) message).
+A system can query whether another component supports the protocol by sending the command [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) (specifying the [COMPONENT_METADATA](../messages/common.md#COMPONENT_METADATA) message).
 
-The component will respond with `COMPONENT_INFORMATION.general_metadata_uri` containing a valid URI if the protocol is supported.
-If the protocol is not supported the component will ACK that the message with `MAV_RESULT_UNSUPPORTED`, `MAV_RESULT_DENIED` or `MAV_RESULT_FAILED`, or return a `null` value in `general_metadata_uri`.
+The component will respond with `COMPONENT_METADATA.uri` containing a valid URI if the protocol is supported.
+If the protocol is not supported the component will ACK that the message with `MAV_RESULT_UNSUPPORTED`, `MAV_RESULT_DENIED` or `MAV_RESULT_FAILED`, or return a `null` value in `uri`.
 
 > **Note** A component that supports this service must return a general metadata file URI *that is hosted on the vehicle* (accessed using MAVLink FTP).
-
-
 
 ### Get MetaData
 
 The basic sequence is shown below.
 
-[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENvbXBvbmVudFxuICAgIE5vdGUgb3ZlciBDb21wb25lbnQsIEdDUzogR0NTOiBSZXF1ZXN0IGNvbXBvbmVudCBpbmZvcm1hdGlvbi5cbiAgICBHQ1MtPj5Db21wb25lbnQ6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFKHBhcmFtMT0zOTUpXG4gICAgR0NTLS0-PkdDUzogU3RhcnQgQUNLIHJlY2VpdmUgdGltZW91dFxuICAgICAgQ29tcG9uZW50LT4-R0NTOiBDTURfQUNLXG4gICAgICBDb21wb25lbnQtPj5HQ1M6IENPTVBPTkVOVF9JTkZPUk1BVElPTiggZ2VuZXJhbF9tZXRhZGF0YV91cmksIC4uLilcbiAgICBOb3RlIG92ZXIgQ29tcG9uZW50LCBHQ1M6IEdDUyBjaGVjayBpZiBnZW5lcmFsIG1ldGFkYXRhIGhhcyBjaGFuZ2VkICh1c2luZyBzdXBwbGllZCBDUkMpLiBcbiAgICBOb3RlIG92ZXIgQ29tcG9uZW50LCBHQ1M6IEdDUyBkb3dubG9hZCBnZW5lcmFsIG1ldGFkYXRhIGZpbGUgdXNpbmcgTUFWRlRQIGFuZCBwYXJzZS4gXG4gICAgTm90ZSBvdmVyIENvbXBvbmVudCwgR0NTOiBHQ1MgZG93bmxvYWQgb3RoZXIgbWV0YWRhdGEgdHlwZXMgcmVmZXJlbmNlZCBpbiBnZW5lcmFsIG1ldGFkYXRhPGJyPiAoZnJvbSBkZXZpY2Ugb3IgSW50ZXJuZXQpLiBcbiAgICAgIFxuICAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENvbXBvbmVudFxuICAgIE5vdGUgb3ZlciBDb21wb25lbnQsIEdDUzogR0NTOiBSZXF1ZXN0IGNvbXBvbmVudCBpbmZvcm1hdGlvbi5cbiAgICBHQ1MtPj5Db21wb25lbnQ6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFKHBhcmFtMT0zOTUpXG4gICAgR0NTLS0-PkdDUzogU3RhcnQgQUNLIHJlY2VpdmUgdGltZW91dFxuICAgICAgQ29tcG9uZW50LT4-R0NTOiBDTURfQUNLXG4gICAgICBDb21wb25lbnQtPj5HQ1M6IENPTVBPTkVOVF9JTkZPUk1BVElPTiggZ2VuZXJhbF9tZXRhZGF0YV91cmksIC4uLilcbiAgICBOb3RlIG92ZXIgQ29tcG9uZW50LCBHQ1M6IEdDUyBjaGVjayBpZiBnZW5lcmFsIG1ldGFkYXRhIGhhcyBjaGFuZ2VkICh1c2luZyBzdXBwbGllZCBDUkMpLiBcbiAgICBOb3RlIG92ZXIgQ29tcG9uZW50LCBHQ1M6IEdDUyBkb3dubG9hZCBnZW5lcmFsIG1ldGFkYXRhIGZpbGUgdXNpbmcgTUFWRlRQIGFuZCBwYXJzZS4gXG4gICAgTm90ZSBvdmVyIENvbXBvbmVudCwgR0NTOiBHQ1MgZG93bmxvYWQgb3RoZXIgbWV0YWRhdGEgdHlwZXMgcmVmZXJlbmNlZCBpbiBnZW5lcmFsIG1ldGFkYXRhPGJyPiAoZnJvbSBkZXZpY2Ugb3IgSW50ZXJuZXQpLiBcbiAgICAgIFxuICAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+[![](https://mermaid.ink/img/pako:eNqVUt9r2zAQ_lcOPaWQFUofytwtYBy3jJG0i9M9GcJVOidiluTK54xS-r_vXLtZSym0fpH16ftxOt2D0sGQSlRLdx15TXOL24juvPQgX4ORrbYNeoastuT5LV5Q3FMc8GVggiDbEZ2OquSwrvqclkEH1wQvEFhfheiQbfDHg8vA_TKbDSYJLNLfm2wx36zyXzd5sd4s8qJIL_OJlIHu5Pvp17OjV0qRPucVLKVCmv2ESJrsnoCto9CNF4Gx0BeKPkj4759fLa6vlvmyL2OdztN1OoEu2ilUtqaNjvroY70AvSP950kFyL0F7LAVFP2WDEy61votZKtMOvTf-xg-6G7CX18HNK8CBk9p58X6GtCb_iFb-rxn4J2wHDEaZAS-b6iVBlcU-xkyfcVb8hSxPpC-3cYZTKoYHBjaWy1JEX54puiJD9eCYVVT5UiGwhoZzYceKpVEOipVIr-GKuxqLlXpH4XaNRJAubEcokoqrFuaKuw4FPdeq4RjR8-kcbxH1uM_z7kA6w)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNqVUt9r2zAQ_lcOPaWQFUofytwtYBy3jJG0i9M9GcJVOidiluTK54xS-r_vXLtZSym0fpH16ftxOt2D0sGQSlRLdx15TXOL24juvPQgX4ORrbYNeoastuT5LV5Q3FMc8GVggiDbEZ2OquSwrvqclkEH1wQvEFhfheiQbfDHg8vA_TKbDSYJLNLfm2wx36zyXzd5sd4s8qJIL_OJlIHu5Pvp17OjV0qRPucVLKVCmv2ESJrsnoCto9CNF4Gx0BeKPkj4759fLa6vlvmyL2OdztN1OoEu2ilUtqaNjvroY70AvSP950kFyL0F7LAVFP2WDEy61votZKtMOvTf-xg-6G7CX18HNK8CBk9p58X6GtCb_iFb-rxn4J2wHDEaZAS-b6iVBlcU-xkyfcVb8hSxPpC-3cYZTKoYHBjaWy1JEX54puiJD9eCYVVT5UiGwhoZzYceKpVEOipVIr-GKuxqLlXpH4XaNRJAubEcokoqrFuaKuw4FPdeq4RjR8-kcbxH1uM_z7kA6w)
 
 
 In summary:
-1. GCS sends `MAV_CMD_REQUEST_MESSAGE` specifying `param1=395`.
+1. GCS (client) sends `MAV_CMD_REQUEST_MESSAGE` to component (server) specifying `param1=397`.
    - This is a normal [command protocol](../services/command.md) request with timeouts and resends based on the ACK.
-1. The component will ACK the command and immediately send the requested `COMPONENT_INFORMATION` message (populated with URI and CRC for the general metadata file, and optionally with the URI and CRC for the non-MAVLink peripherals metadata file).
+1. The component will ACK the command and immediately send the requested `COMPONENT_METADATA` message (populated with URI and CRC for the general metadata file).
    - A `CMD_ACK` of anything other than `MAV_RESULT_ACCEPTED` indicates the protocol is not supported (sequence completes).
-1. GCS waits for the `COMPONENT_INFORMATION` message
+1. GCS waits for the `COMPONENT_METADATA` message
    - If not recieved the GCS should resend the request (typically in the application level).
    - Once information is received:
-     - the GCS checks if `COMPONENT_INFORMATION.general_metadata_file_crc` matches its cached CRC value.
+     - the GCS checks if `COMPONENT_METADATA.file_crc` matches its cached CRC value.
        If so, there is no need to download the [general metadata file](#COMP_METADATA_TYPE_GENERAL) (or other files it references) as it has not changed since the last download.
-	 - the GCS checks if `COMPONENT_INFORMATION.peripherals_metadata_uri` if supplied, and (if so) whether the `peripherals_metadata_file_crc` field matches the cached value.
-
-	 If the cached values do not match the associated files should be downloaded and parsed ....
-1. GCS downloads the file specified in the `general_metadata_uri` using MAVLink FTP.
+       If the cached values do not match the associated files should be downloaded and parsed (vehicle firmware has updated).
+1. GCS downloads the file specified in the `uri` using MAVLink FTP.
 1. GCS parses the general metadata for other supported metadata locations, and then downloads the files via MAVFTP or HTTP(s).
    This may be done immediately, or as needed.
 
@@ -144,13 +141,12 @@ In summary:
 
 The actuators metadata allows a GCS to create a UI to configure and test actuators, and configure vehicle geometries, without having to understand anything about the underlying flight stack.
 
-
 > **Note** The mechanism works similarly to [camera definition files](../services/camera_def.md).
 > It can be used for flight stacks that allow outputs and geometry definition to be configured using parameters.
 > If flight stack outputs or geometries cannot be configured using parameters, the mechanism can still be used to display the current geometry and output mappings, and to test outputs.
 
 The definition contains information about actuator output drivers (e.g. PWM MAIN or UAVCAN), the functions that can be assigned to each output channel, supported geometries, and their configuration parameters.
-Detailed information can be found in the [schema file](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.schema.json), and there's also an [example](https://github.com/mavlink/mavlink/blob/master/component_information/actuators.example.json).
+Detailed information can be found in the [schema file](https://github.com/mavlink/mavlink/blob/master/component_metadata/actuators.schema.json), and there's also an [example](https://github.com/mavlink/mavlink/blob/master/component_metadata/actuators.example.json).
 
 Specifically, the following information is provided:
 
@@ -188,8 +184,13 @@ A GCS can provide a UI for testing outputs based on the configured output functi
 
 ### Translations
 
-- A method for setting/updating the translation file has not yet been determined (if hosted on a server, a component never sees the file, which might be changed any time)
-- There is no end-to-end prototype of the translation system, so there may still be other issues.
+The proposal is:
+- File format be Qt's `.ts` file format, wrapped in a custom container format.
+- General metadata will contain the location of translation file URIs, but not their CRC.
+- A GCS or other system that needs translation data is expected to poll for it and download it regularly (e.g. on boot).
+  If it is not possible to detect the file has changed on the server, a GCS should update anyway on a regular basis. 
+
+This is being prototyped. Once there is a working version, the approach will be documented here.
 
 ### Schema Management
 
