@@ -1,7 +1,6 @@
-# Installing MAVLink
+# Installing MAVLink Toolchain
 
-This topic explains how to install the [MAVLink toolchain](https://github.com/mavlink/mavlink), 
-including both [XML message definitions](../messages/README.md) and the GUI/command line tools that use them to [Generate MAVLink Source Files](../getting_started/generate_libraries.md).
+This topic explains how to install the [MAVLink toolchain](https://github.com/mavlink/mavlink). The toolchain includes the [XML message definitions](../messages/README.md) as well as the the GUI/command line tools that use the definitions to [Generate MAVLink Source Files](../getting_started/generate_libraries.md).
 
 > **Tip** You do not need to install or generate the source files if you are using the C programming language and a standard [dialect](../messages/README.md#dialects).
   Just get the [prebuilt libraries](../README.md#prebuilt_libraries) and then jump to [Using C Libraries](../mavgen_c/README.md).
@@ -20,7 +19,7 @@ If you are creating new XML definitions you should also install lxml and libxml2
 
 ## Installation
 
-To install the MAVLink tools:
+To install the MAVLink toolchain:
 
 1. Install Python 3.6+:
    * **Windows:** Download from [Python for Windows](https://www.python.org/downloads/)
@@ -28,6 +27,7 @@ To install the MAVLink tools:
      ```
      sudo apt install python3-pip
      ```
+
 1. Install the *future* module:
    * **Windows:**
      ```
@@ -37,22 +37,26 @@ To install the MAVLink tools:
      ```
      pip3 install --user future
      ```
+
 1. (Recommended) Install modules for XML validation and formatting:
    * **Linux:**
      ```
      sudo apt install python3-lxml libxml2-utils
      ```	 
-1. (Optional) Install TkInter
+
+1. Install TkInter
     * **Windows:** Installed already as part of *Python for Windows*
     * **Linux:** Enter the following terminal command:
       ```
       sudo apt install python3-tk
       ```
-1. Clone the [mavlink repo](https://github.com/mavlink/mavlink) (or your fork) into a user-writable directory:
+
+1. Clone the official [mavlink repo](https://github.com/mavlink/mavlink) or your fork with your custom dialect:
    ```
    git clone https://github.com/mavlink/mavlink.git --recursive
    ```
-1. Set `PYTHONPATH` to the directory path containing your *mavlink* repository.
+
+1. Set `PYTHONPATH` to the directory path containing your *mavlink* repository. This will allow you to launch the tool from anywhere using Python's module argument `python3 -m mavgenerate`.
    * **Windows:** `set PYTHONPATH=C:\path_to_root_of_cloned_mavlink_repository`
    * **Linux:** `PYTHONPATH=path_to_root_of_cloned_mavlink_repository`
 
