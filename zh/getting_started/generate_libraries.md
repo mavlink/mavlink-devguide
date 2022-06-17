@@ -2,9 +2,12 @@
 
 通过使用[代码生成器](../messages/README.md)从*XML格式定义的消息*中生成不同编程语言使用的MAVLink库文件。
 
-This topic shows how to use the two code generators provided with the MAVLink project: [mavgenerate](#mavgenerate) (GUI) and [mavgen](#mavgen) (command line).
+This page shows how to use the following two code generators provided with the MAVLink project:
 
-> **Note** These generators can build MAVLink 2 libraries for C, C++11, Python, Typescript, Java, and WLua (supporting both MAVLink 2 and 1), and MAVLink 1 (only) libraries for: C#, JavaScript, ObjC, Swift.
+- GUI tool: [mavgenerate](#mavgenerate)
+- Command line tool: [mavgen](#mavgen), which is the backend tool used also by mavgenerate
+
+> **Note** These generators can build MAVLink 2 and MAVLink 1 libraries for the following programming languages: C, C++11, Python, Typescript, Java, and WLua. The following programming languages are supported for MAVLink 1 libraries only: C#, JavaScript, ObjC, Swift.
 
 <span></span>
 
@@ -12,10 +15,10 @@ This topic shows how to use the two code generators provided with the MAVLink pr
 
 ## 先决条件
 
-1. 你必须已经[安装了MAVLink](../getting_started/installation.md)(包括工具和[XML消息定义](../messages/README.md))。
-2. 如果你要生成[自定义消息](../messages/README.md#dialects)，请将文件复制到目录[message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0)文件夹中。 >**注意***mavgen*可以处理包含XML文件相对路径的方言(例如，最常见的[common.xml](../messages/common.md))，但是其他生成器可能不行。 我们建议将自定义文件放在与*mavlink/mavlink*存储库相同的文件夹中。
+1. You must already have [Installed the MAVLink toolchain](../getting_started/installation.md), which includes the mavgenerate and mavgen tools used below as well as the [XML Message Definitions](../messages/README.md).
+2. If you are generating messages for a [custom dialect](../messages/README.md#dialects), copy the dialect [XML definition file(s)](../messages/README.md#xml-definition-files--dialects) into the directory [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0). >**注意***mavgen*可以处理包含XML文件相对路径的方言(例如，最常见的[common.xml](../messages/common.md))，但是其他生成器可能不行。 We recommend putting custom dialects in the same folder as the ones that come with the [mavlink/mavlink](https://github.com/mavlink/mavlink) repository.
 
-## Mavgenerate (GUI) {#mavgenerate}
+## Building MAVLink libraries using the Mavgenerate GUI {#mavgenerate}
 
 **mavgenerate.py**是用Python语言编写的MAVLink的图形用户界面代码生成器。
 
@@ -29,7 +32,7 @@ python3 -m mavgenerate
 
 ![mavgenerate 界面](../../assets/mavgen/mavlink_generator.png)
 
-代码生成器使用步骤：
+Steps for generating the MAVLink library code:
 
 1. Choose the target XML file (typically in [mavlink/message_definitions/1.0](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0)).
     
@@ -41,22 +44,27 @@ python3 -m mavgenerate
     
     ![mavgenerate UI - language list](../../assets/mavgen/malink_gen_ui_languages.png)
     
-    > **Note** There are three JavaScript options:
+    For JavaScript in particular there are three options:
     
     - `JavaScript_Stable` is an older version that only supports MAVLink 1.0,
     - `JavaScript_NextGen` is a more recent version that supports MAVLink 1 and 2 along with signing.
     - `JavaScript` is a "proxy" for the recommended version. Currently this is `JavaScript_Stable`.
-4. 选择目标MAVLink协议版本(最好是2.0)>**注意**如果目标编程语言不[支持](../README.md#supported_languages)所选协议，则会生成失败。
-5. 可以选择是否检查*验证*和/或*验证单元*(如果选择是，则验证XML规范)。
-6. 点击**生成**按钮生成资源文件。
 
-## Mavgen(命令行) {#mavgen}
+4. Select the target MAVLink protocol version. Ideally use 2.0 if the generator supports it.
+    
+    > **Caution** Generation will fail if the protocol is not [supported](../README.md#supported_languages) by the selected programming language.
 
-**mavgen.py**是一个命令行工具，用于为不同编程语言生成MAVLink库。 将`mavlink`路径添加到`PYTHONPATH`后，可以通过命令行来运行它。
+5. Optionally check *Validate* and/or *Validate Units*, which validates XML specifications.
 
-> **Tip** This is the backend used by [mavgenerate](#mavgenerate). The documentation below explains all the options for both tools.
+6. Click **Generate** to create the source files for the MAVLink library and the chosen dialect.
 
-举例来说，为*your_custom_dialect.xml*自定义消息生成**MAVLink 2**的C语言库。
+## Building MAVLink libraries using the Mavgen Command Line Tool {#mavgen}
+
+**mavgen.py** is a command line tool for generating MAVLink libraries for various programming languages. 将`mavlink`路径添加到`PYTHONPATH`后，可以通过命令行来运行它。
+
+> **Tip** Mavgen is the backend used by [mavgenerate](#mavgenerate). The documentation below explains all the options for both tools.
+
+Below is an example for how to generate *MAVLink 2* libraries for the C programming language using a dialect named **your_custom_dialect.xml**:
 
 ```sh
 python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
@@ -65,7 +73,7 @@ python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generate
 > **Note** The syntax for for generating Python modules is the same, except that the `--output` specifies a *filename* rather than a directory. <!-- https://github.com/ArduPilot/pymavlink/issues/203 -->
 
 <span id="mavgen_options"></span>
-*mavgen*可以通过使用`-h`参数来查看所有语法和选项。(复制在下面)：
+The full syntax and options can be output by running `mavgen.py -h` flag, which is reproduced below:
 
     usage: mavgen.py [-h] [-o OUTPUT]
                      [--lang {C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python,Lua,WLua,ObjC,Swift,Java,C++11}]
