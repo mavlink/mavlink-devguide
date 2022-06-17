@@ -5,7 +5,7 @@ It is field-proven and deployed in many products where it serves as interoperabi
 
 This topic explains how to get and use the library.
 
-## Getting Libraries {#get_libraries}
+## Getting the C MAVLink Libraries {#get_libraries}
 
 If you are using a [standard dialect](../messages/README.md#dialects) then download the *MAVLink 2* library from Github: [c_library_v2](https://github.com/mavlink/c_library_v2).
 
