@@ -68,7 +68,7 @@
   * [Tunnel Protocol](services/tunnel.md)
   * [Open Drone ID Protocol (WIP)](services/opendroneid.md)
   * [High Latency Protocol](services/high_latency.md)
-  * [Component Information Protocol (WIP)](services/component_information.md)
+  * [Component Metadata Protocol (WIP)](services/component_information.md)
   * [Payload Protocols](services/payload.md)
   * [Traffic Managment (UTM/ADS-B)](services/traffic_management.md)
   * [Events Interface (WIP)](services/events.md)
