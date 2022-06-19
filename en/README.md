@@ -63,6 +63,7 @@ Language | Generator | MAVLink v1 | [MAVLink 2](guide/mavlink_2.md) | [Signing](
 :--- | :--- | :---:| :---: | :--- | :---
 C       | [fastMavlink](https://github.com/olliw42/fastmavlink) | &check; | &check; |  &cross; | Highly efficient C library with python code generators. Has [docs](https://github.com/olliw42/fastmavlink), [examples](https://github.com/olliw42/fastmavlink/tree/master/examples), [test](https://github.com/olliw42/fastmavlink/tree/master/tests), support for [routing](https://github.com/olliw42/fastmavlink#router) and [mavgen mimicry](https://github.com/olliw42/fastmavlink#pymavlink-mavgen-mimicry).
 Clojure | [clj-mavlink](https://github.com/WickedShell/clj-mavlink) | &check; | &check; | &check; | Clojure MAVLink Bindings.
+Dart | [dart_mavlink](https://github.com/nus/dart_mavlink) | &check; | &check; | &cross; | MAVLink library for Dart.
 Go      | [gomavlib](https://github.com/gswly/gomavlib) | &check; | &check; | &check; | Go library with support for MAVLink 1, 2 and signing, test suite, and [documentation](https://pkg.go.dev/github.com/aler9/gomavlib)
 Go      | [go-mavlink1](https://github.com/mgr9525/go-mavlink1) | &check; | &cross;|  &cross; | Golang MAVLink v1
 Haskell | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)| &cross; | &check; | &cross; | 

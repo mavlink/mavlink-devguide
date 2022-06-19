@@ -20,6 +20,7 @@
   
   * [C (*fastMavlink*)](https://github.com/olliw42/fastmavlink)
   * [Clojure](https://github.com/WickedShell/clj-mavlink) (*clj-mavlink*) - documented on linked project site
+  * [Dart (*dart_mavlink*)](https://github.com/nus/dart_mavlink)
   * [Go (*gomavlib*)](https://pkg.go.dev/github.com/aler9/gomavlib)
   * [Go (*go-mavlink1*)](https://github.com/mgr9525/go-mavlink1)
   * [Java (*dronefleet*)](https://github.com/dronefleet/mavlink) - documented on linked project site
