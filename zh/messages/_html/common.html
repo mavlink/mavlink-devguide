@@ -15247,7 +15247,7 @@
     [Command]
    </a>Instructs a target system to run pre-arm checks.
           This allows preflight checks to be run on demand, which may be useful on systems that normally run them at low rate, or which do not trigger checks when the armable state might have changed.
-          This command should should return <a href="#MAV_RESULT_ACCEPTED">MAV_RESULT_ACCEPTED</a> if it will run the checks.
+          This command should return <a href="#MAV_RESULT_ACCEPTED">MAV_RESULT_ACCEPTED</a> if it will run the checks.
           The results of the checks are usually then reported in <a href="#SYS_STATUS">SYS_STATUS</a> messages (this is system-specific).
           The command should return <a href="#MAV_RESULT_TEMPORARILY_REJECTED">MAV_RESULT_TEMPORARILY_REJECTED</a> if the system is already armed.</p>
   <table class="sortable">
