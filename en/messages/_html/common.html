@@ -578,10 +578,10 @@
   <p>
    <a href="#enums">
     [Enum]
-   </a>Co-ordinate frames used by MAVLink. Not all frames are supported by all commands, messages, or vehicles.
+   </a>Coordinate frames used by MAVLink. Not all frames are supported by all commands, messages, or vehicles.
       
       Global frames use the following naming conventions:
-      - "GLOBAL": Global co-ordinate frame with WGS84 latitude/longitude and altitude positive over mean sea level (MSL) by default. 
+      - "GLOBAL": Global coordinate frame with WGS84 latitude/longitude and altitude positive over mean sea level (MSL) by default. 
         The following modifiers may be used with "GLOBAL":
         - "RELATIVE_ALT": Altitude is relative to the vehicle home position rather than MSL.
         - "TERRAIN_ALT": Altitude is relative to ground level rather than MSL.
@@ -667,7 +667,7 @@
       <p style="color:red">
        <strong>DEPRECATED:</strong> Replaced by <a href="#MAV_FRAME_BODY_FRD">MAV_FRAME_BODY_FRD</a> (2019-08).</p>
      </td>
-     <td>Same as <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a> when used to represent position values. Same as <a href="#MAV_FRAME_BODY_FRD">MAV_FRAME_BODY_FRD</a> when used with velocity/accelaration values.</td>
+     <td>Same as <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a> when used to represent position values. Same as <a href="#MAV_FRAME_BODY_FRD">MAV_FRAME_BODY_FRD</a> when used with velocity/acceleration values.</td>
     </tr>
     <tr id="MAV_FRAME_BODY_OFFSET_NED">
      <td>9</td>
@@ -6000,7 +6000,7 @@
      <td>
       <a href="#ZOOM_TYPE_FOCAL_LENGTH">ZOOM_TYPE_FOCAL_LENGTH</a>
      </td>
-     <td>Zoom value/variable focal length in milimetres. Note that there is no message to get the valid zoom range of the camera, so this can type can only be used for cameras where the zoom range is known (implying that this cannot reliably be used in a GCS for an arbitrary camera)</td>
+     <td>Zoom value/variable focal length in millimetres. Note that there is no message to get the valid zoom range of the camera, so this can type can only be used for cameras where the zoom range is known (implying that this cannot reliably be used in a GCS for an arbitrary camera)</td>
     </tr>
    </tbody>
   </table>
@@ -6109,7 +6109,7 @@
      <td>
       <a href="#PARAM_ACK_IN_PROGRESS">PARAM_ACK_IN_PROGRESS</a>
      </td>
-     <td>Parameter value received but not yet set/accepted. A subsequent <a href="#PARAM_ACK_TRANSACTION">PARAM_ACK_TRANSACTION</a> or <a href="#PARAM_EXT_ACK">PARAM_EXT_ACK</a> with the final result will follow once operation is completed. This is returned immediately for parameters that take longer to set, indicating taht the the parameter was recieved and does not need to be resent.</td>
+     <td>Parameter value received but not yet set/accepted. A subsequent <a href="#PARAM_ACK_TRANSACTION">PARAM_ACK_TRANSACTION</a> or <a href="#PARAM_EXT_ACK">PARAM_EXT_ACK</a> with the final result will follow once operation is completed. This is returned immediately for parameters that take longer to set, indicating that the the parameter was received and does not need to be resent.</td>
     </tr>
    </tbody>
   </table>
@@ -6667,7 +6667,7 @@
      <td>
       <a href="#CELLULAR_NETWORK_FAILED_REASON_SIM_ERROR">CELLULAR_NETWORK_FAILED_REASON_SIM_ERROR</a>
      </td>
-     <td>SIM is available, but not usuable for connection</td>
+     <td>SIM is available, but not usable for connection</td>
     </tr>
    </tbody>
   </table>
@@ -9157,7 +9157,7 @@
      <td>
       <a href="#NAV_VTOL_LAND_OPTIONS_HOVER_DESCENT">NAV_VTOL_LAND_OPTIONS_HOVER_DESCENT</a>
      </td>
-     <td>Land in multicopter mode on reaching the landing co-ordinates (the whole landing is by "hover descent").</td>
+     <td>Land in multicopter mode on reaching the landing coordinates (the whole landing is by "hover descent").</td>
     </tr>
    </tbody>
   </table>
@@ -9250,7 +9250,7 @@
      <td>
       <a href="#MAV_WINCH_STATUS_ABANDON_LINE">MAV_WINCH_STATUS_ABANDON_LINE</a>
      </td>
-     <td>Winch is abandoning the line and possibly payload. Winch unspools the entire calculated line length. This is a failover state from REDELIVER if the number of attemps exceeds a threshold.</td>
+     <td>Winch is abandoning the line and possibly payload. Winch unspools the entire calculated line length. This is a failover state from REDELIVER if the number of attempts exceeds a threshold.</td>
     </tr>
    </tbody>
   </table>
@@ -21251,7 +21251,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Sets the GPS co-ordinates of the vehicle local origin (0,0,0) position. Vehicle should emit <a href="#GPS_GLOBAL_ORIGIN">GPS_GLOBAL_ORIGIN</a> irrespective of whether the origin is changed. This enables transform between the local coordinate frame and the global (GPS) coordinate frame, which may be necessary when (for example) indoor and outdoor settings are connected and the MAV should move from in- to outdoor.</p>
+   </a>Sets the GPS coordinates of the vehicle local origin (0,0,0) position. Vehicle should emit <a href="#GPS_GLOBAL_ORIGIN">GPS_GLOBAL_ORIGIN</a> irrespective of whether the origin is changed. This enables transform between the local coordinate frame and the global (GPS) coordinate frame, which may be necessary when (for example) indoor and outdoor settings are connected and the MAV should move from in- to outdoor.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -21306,7 +21306,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Publishes the GPS co-ordinates of the vehicle local origin (0,0,0) position. Emitted whenever a new GPS-Local position mapping is requested or set - e.g. following <a href="#SET_GPS_GLOBAL_ORIGIN">SET_GPS_GLOBAL_ORIGIN</a> message.</p>
+   </a>Publishes the GPS coordinates of the vehicle local origin (0,0,0) position. Emitted whenever a new GPS-Local position mapping is requested or set - e.g. following <a href="#SET_GPS_GLOBAL_ORIGIN">SET_GPS_GLOBAL_ORIGIN</a> message.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -25327,7 +25327,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Local (message sender) recieved signal strength indication in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown.</td>
+     <td>Local (message sender) received signal strength indication in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown.</td>
     </tr>
     <tr>
      <td>remrssi</td>
@@ -25487,7 +25487,7 @@
    <a href="#messages">
     [Message]
    </a>The global position, as returned by the Global Positioning System (GPS). This is
-                 NOT the global position estimate of the sytem, but rather a RAW sensor value. See message <a href="#GLOBAL_POSITION_INT">GLOBAL_POSITION_INT</a> for the global position estimate.</p>
+                 NOT the global position estimate of the system, but rather a RAW sensor value. See message <a href="#GLOBAL_POSITION_INT">GLOBAL_POSITION_INT</a> for the global position estimate.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -36063,7 +36063,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Modify the filter of what CAN messages to forward over the mavlink. This can be used to make CAN forwarding work well on low bandwith links. The filtering is applied on bits 8 to 24 of the CAN id (2nd and 3rd bytes) which corresponds to the DroneCAN message ID for DroneCAN. Filters with more than 16 IDs can be constructed by sending multiple <a href="#CAN_FILTER_MODIFY">CAN_FILTER_MODIFY</a> messages.</p>
+   </strong>Modify the filter of what CAN messages to forward over the mavlink. This can be used to make CAN forwarding work well on low bandwidth links. The filtering is applied on bits 8 to 24 of the CAN id (2nd and 3rd bytes) which corresponds to the DroneCAN message ID for DroneCAN. Filters with more than 16 IDs can be constructed by sending multiple <a href="#CAN_FILTER_MODIFY">CAN_FILTER_MODIFY</a> messages.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -36958,7 +36958,7 @@
      <td>single_message_size</td>
      <td>uint8_t</td>
      <td>bytes</td>
-     <td>This field must currently always be equal to 25 (bytes), since all encoded OpenDroneID messages are specificed to have this length.</td>
+     <td>This field must currently always be equal to 25 (bytes), since all encoded OpenDroneID messages are specified to have this length.</td>
     </tr>
     <tr>
      <td>msg_pack_size</td>
