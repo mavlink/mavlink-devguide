@@ -4,7 +4,7 @@ This protocol is used to estimate the time offsets between system clocks on two 
 This is useful because it allows ....
 
 The protocol uses just one message [TIMESYNC](#TIMESYNC), which has two `int64_t` fields, `tc1` and `ts1`. 
-The message is sent out with a timestamp in `ts1` (current unix timestamp *1000).
+The message is sent out with a nanosecond timestamp in `ts1` (current unix timestamp *1e9).
 This is mirrored back by the remote system, along with its own timestamp.
 The first system can then determine the round-trip time, and estimate the timestamp offset.
 This sequence is run multiple times to remove the transient channel and processor usage from the offset calculation.
