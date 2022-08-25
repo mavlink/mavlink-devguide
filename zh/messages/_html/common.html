@@ -7822,6 +7822,37 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_ODID_ARM_STATUS">MAV_ODID_ARM_STATUS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_ODID_ARM_STATUS_GOOD_TO_ARM">
+     <td>0</td>
+     <td>
+      <a href="#MAV_ODID_ARM_STATUS_GOOD_TO_ARM">MAV_ODID_ARM_STATUS_GOOD_TO_ARM</a>
+     </td>
+     <td>Passing arming checks.</td>
+    </tr>
+    <tr id="MAV_ODID_ARM_STATUS_PRE_ARM_FAIL_GENERIC">
+     <td>1</td>
+     <td>
+      <a href="#MAV_ODID_ARM_STATUS_PRE_ARM_FAIL_GENERIC">MAV_ODID_ARM_STATUS_PRE_ARM_FAIL_GENERIC</a>
+     </td>
+     <td>Generic arming failure, see error string for details.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="TUNE_FORMAT">TUNE_FORMAT</h3>
   <p>
    <a href="#enums">
@@ -9897,6 +9928,66 @@
       <a href="#MAV_FTP_OPCODE_NAK">MAV_FTP_OPCODE_NAK</a>
      </td>
      <td>NAK: NAK response</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MISSION_STATE">MISSION_STATE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>States of the mission state machine.
+        Note that these states are independent of whether the mission is in a mode that can execute mission items or not (is suspended).
+        They may not all be relevant on all vehicles.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MISSION_STATE_UNKNOWN">
+     <td>0</td>
+     <td>
+      <a href="#MISSION_STATE_UNKNOWN">MISSION_STATE_UNKNOWN</a>
+     </td>
+     <td>The mission status reporting is not supported.</td>
+    </tr>
+    <tr id="MISSION_STATE_NO_MISSION">
+     <td>1</td>
+     <td>
+      <a href="#MISSION_STATE_NO_MISSION">MISSION_STATE_NO_MISSION</a>
+     </td>
+     <td>No mission on the vehicle.</td>
+    </tr>
+    <tr id="MISSION_STATE_NOT_STARTED">
+     <td>2</td>
+     <td>
+      <a href="#MISSION_STATE_NOT_STARTED">MISSION_STATE_NOT_STARTED</a>
+     </td>
+     <td>Mission has not started. This is the case after a mission has uploaded but not yet started executing.</td>
+    </tr>
+    <tr id="MISSION_STATE_ACTIVE">
+     <td>3</td>
+     <td>
+      <a href="#MISSION_STATE_ACTIVE">MISSION_STATE_ACTIVE</a>
+     </td>
+     <td>Mission is active, and will execute mission items when in auto mode.</td>
+    </tr>
+    <tr id="MISSION_STATE_PAUSED">
+     <td>4</td>
+     <td>
+      <a href="#MISSION_STATE_PAUSED">MISSION_STATE_PAUSED</a>
+     </td>
+     <td>Mission is paused when in auto mode.</td>
+    </tr>
+    <tr id="MISSION_STATE_COMPLETE">
+     <td>5</td>
+     <td>
+      <a href="#MISSION_STATE_COMPLETE">MISSION_STATE_COMPLETE</a>
+     </td>
+     <td>Mission has executed all mission items.</td>
     </tr>
    </tbody>
   </table>
@@ -20837,7 +20928,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Autocontinue to next waypoint</td>
+     <td>Autocontinue to next waypoint. 0: false, 1: true. Set false to pause mission after the item completes.</td>
     </tr>
     <tr>
      <td>param1</td>
@@ -21002,12 +21093,15 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Message that announces the sequence number of the current active mission item. The MAV will fly towards this mission item.</p>
+   </a>Message that announces the sequence number of the current target mission item (that the system will fly towards/execute when the mission is running).
+        This message should be streamed all the time (nominally at 1Hz).
+        This message should be emitted following a call to <a href="#MAV_CMD_DO_SET_MISSION_CURRENT">MAV_CMD_DO_SET_MISSION_CURRENT</a> or <a href="#SET_MISSION_CURRENT">SET_MISSION_CURRENT</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Field Name</th>
      <th>Type</th>
+     <th>Values</th>
      <th>Description</th>
     </tr>
    </thead>
@@ -21015,7 +21109,40 @@
     <tr>
      <td>seq</td>
      <td>uint16_t</td>
+     <td>
+     </td>
      <td>Sequence</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">total<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>Total number of mission items. 0: Not supported, UINT16_MAX if no mission is present on the vehicle.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">mission_state<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MISSION_STATE">MISSION_STATE</a>
+     </td>
+     <td>Mission state machine state. <a href="#MISSION_STATE_UNKNOWN">MISSION_STATE_UNKNOWN</a> if state reporting not supported.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">mission_mode<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Vehicle is in a mode that can execute mission items or suspended. 0: Unknown, 1: In mission mode, 2: Suspended (not in mission mode).</td>
     </tr>
    </tbody>
   </table>
@@ -22569,7 +22696,7 @@
      <td>uint8_t</td>
      <td>
      </td>
-     <td>Autocontinue to next waypoint</td>
+     <td>Autocontinue to next waypoint. 0: false, 1: true. Set false to pause mission after the item completes.</td>
     </tr>
     <tr>
      <td>param1</td>
@@ -36973,6 +37100,111 @@
      <td>
      </td>
      <td>Concatenation of encoded OpenDroneID messages. Shall be filled with nulls in the unused portion of the field.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="OPEN_DRONE_ID_ARM_STATUS">OPEN_DRONE_ID_ARM_STATUS (<a href="#OPEN_DRONE_ID_ARM_STATUS">
+    #12918
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Transmitter (remote ID system) is enabled and ready to start sending location and other required information. This is streamed by transmitter. A flight controller uses it as a condition to arm.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>status</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#MAV_ODID_ARM_STATUS">MAV_ODID_ARM_STATUS</a>
+     </td>
+     <td>Status level indicating if arming is allowed.</td>
+    </tr>
+    <tr>
+     <td>error</td>
+     <td>char[50]</td>
+     <td>
+     </td>
+     <td>Text error message, should be empty if status is good to arm. Fill with nulls in unused portion.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="OPEN_DRONE_ID_SYSTEM_UPDATE">OPEN_DRONE_ID_SYSTEM_UPDATE (<a href="#OPEN_DRONE_ID_SYSTEM_UPDATE">
+    #12919
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Update the data in the <a href="#OPEN_DRONE_ID_SYSTEM">OPEN_DRONE_ID_SYSTEM</a> message with new location information. This can be sent to update the location information for the operator when no other information in the SYSTEM message has changed. This message allows for efficient operation on radio links which have limited uplink bandwidth while meeting requirements for update frequency of the operator location.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>operator_latitude</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude of the operator. If unknown: 0 (both Lat/Lon).</td>
+    </tr>
+    <tr>
+     <td>operator_longitude</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude of the operator. If unknown: 0 (both Lat/Lon).</td>
+    </tr>
+    <tr>
+     <td>operator_altitude_geo</td>
+     <td>float</td>
+     <td>m</td>
+     <td>Geodetic altitude of the operator relative to WGS84. If unknown: -1000 m.</td>
+    </tr>
+    <tr>
+     <td>timestamp</td>
+     <td>uint32_t</td>
+     <td>s</td>
+     <td>32 bit Unix Timestamp in seconds since 00:00:00 01/01/2019.</td>
     </tr>
    </tbody>
   </table>
