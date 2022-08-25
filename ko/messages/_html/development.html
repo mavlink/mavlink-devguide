@@ -707,64 +707,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MISSION_CHANGED">MISSION_CHANGED (<a href="#MISSION_CHANGED">
-    #52
-   </a>
-   )
-  </h3>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>A broadcast message to notify any ground station or SDK if a mission, geofence or safe points have changed on the vehicle.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>start_index</td>
-     <td>int16_t</td>
-     <td>
-     </td>
-     <td>Start index for partial mission change (-1 for all items).</td>
-    </tr>
-    <tr>
-     <td>end_index</td>
-     <td>int16_t</td>
-     <td>
-     </td>
-     <td>End index of a partial mission change. -1 is a synonym for the last mission item (i.e. selects all items from start_index). Ignore field if start_index=-1.</td>
-    </tr>
-    <tr>
-     <td>origin_sysid</td>
-     <td>uint8_t</td>
-     <td>
-     </td>
-     <td>System ID of the author of the new mission.</td>
-    </tr>
-    <tr>
-     <td>origin_compid</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_COMPONENT">MAV_COMPONENT</a>
-     </td>
-     <td>Component ID of the author of the new mission.</td>
-    </tr>
-    <tr>
-     <td>mission_type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-     </td>
-     <td>Mission type.</td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="MISSION_CHECKSUM">MISSION_CHECKSUM (<a href="#MISSION_CHECKSUM">
     #53
    </a>
