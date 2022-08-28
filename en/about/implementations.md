@@ -16,7 +16,7 @@ The following autopilots are known to support MAVLink and are actively being dev
 ## Ground Stations
 
 * [QGroundControl](http://qgroundcontrol.com/) (original reference implementation)
-  * Branded/modified variants include: [AutoQuad GCS](http://autoquad.org/software-downloads/?category=2), [SmartAP GCS](http://sky-drones.com/smartap-gcs), [Yuneec Datapilot](http://us.yuneec.com/comm-en-datapilot), [Sentera Groundstation](https://sentera.com/phx-drone/), [WingtraPilot](https://wingtra.com/software/), [APM Planner 2](http://ardupilot.org/planner2/index.html).
+  * Branded/modified variants include: [AutoQuad GCS](http://autoquad.org/software-downloads/?category=2), [SmartAP GCS](http://sky-drones.com/smartap-gcs), [Yuneec Datapilot](http://us.yuneec.com/comm-en-datapilot), [Sentera Groundstation](https://sentera.com/phx-drone/), [WingtraPilot](https://wingtra.com/software/), [APM Planner 2](http://ardupilot.org/planner2/index.html) [SohaPlanner(RTL , Persian , Free)] (https://gs.simorghsoha.ir).
 * [Mission Planner](http://ardupilot.org/planner/)
 * [MAVProxy](http://ardupilot.github.io/MAVProxy/html/index.html)
 * [UgCS (Universal Ground Control Station)](https://www.ugcs.com/)
