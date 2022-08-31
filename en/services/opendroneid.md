@@ -10,6 +10,7 @@ The MAVLink messages defined for usage with Open Drone ID are compliant with the
 * ASD-STAN prEN 4709-002 Direct Remote Identification
 
 For additional details, please see [here](https://github.com/opendroneid/opendroneid-core-c#relevant-specifications).
+In general, the front page of the [opendroneid core-c](https://github.com/opendroneid/opendroneid-core-c) repository has lots of pointers to additional information and SW projects related to drone ID.
 
 ## Broadcast methods and impact on the message design {#broadcast_methods}
 
@@ -49,6 +50,9 @@ Self-ID | Self-ID | [OPEN_DRONE_ID_SELF_ID](../messages/common.md#OPEN_DRONE_ID_
 System | System | [OPEN_DRONE_ID_SYSTEM](../messages/common.md#OPEN_DRONE_ID_SYSTEM) | Includes Remote Pilot location, multiple aircraft information (group), if applicable, and additional system information.
 Operator ID | Operator ID | [OPEN_DRONE_ID_OPERATOR_ID](../messages/common.md#OPEN_DRONE_ID_OPERATOR_ID) | Provides the Operator ID.
 Message Pack | Message Pack | [OPEN_DRONE_ID_MESSAGE_PACK](../messages/common.md#OPEN_DRONE_ID_MESSAGE_PACK) | A payload mechanism for combining the messages above into a single message pack. Used with Bluetooth Extended Advertising, Wi-Fi NaN and Wi-Fi Beacon.
+- | - | [OPEN_DRONE_ID_ARM_STATUS](../messages/common.md#OPEN_DRONE_ID_ARM_STATUS) | Broadcasted once per second from the drone ID transmitter/receiver components, to indicate their state. Similar to [Heartbeat](#heartbeat), but with additional text information in the error field when they are not ready to arm.
+- | - | [OPEN_DRONE_ID_SYSTEM_UPDATE](../messages/common.md#OPEN_DRONE_ID_SYSTEM_UPDATE) | A subset of the SYSTEM message, containing only fields that must be updated regularly by the GCS. Can optionally be used instead of the full SYSTEM message, to reduce the traffic on the control link.
+
 
 > **Note** The raw byte layout of the MAVLink messages is not exactly the same as what a drone ID Bluetooth/Wi-Fi transmitter will transmit over the air.
   Slight compression is applied.
@@ -56,16 +60,35 @@ Message Pack | Message Pack | [OPEN_DRONE_ID_MESSAGE_PACK](../messages/common.md
 
 The [Open Drone ID Core C Library](https://github.com/opendroneid/opendroneid-core-c) contains code for decoding the MAVLink messages and "compressing" the data into data structures for transmission over Bluetooth or Wi-Fi (or vice-versa).
 
-The standards requires that the Location message is broadcast/published at least once per second.
-The rest of the messages must be broadcast/published once per 3 seconds (requirements from local legislation might be different.
-Please see [here](https://github.com/opendroneid/opendroneid-core-c#comparison)).
-Not all message types are mandatory to broadcast.
-
 The standards do not impose any requirements for a drone to be capable of receiving drone ID messages, nor any requirements for reacting to their content (requirements from local legislation might be different).
 
-An example Android receiver implementation for broadcast drone ID messages is available here: [OpenDroneID Android receiver application](https://github.com/opendroneid/receiver-android).
+An example Android receiver implementation for broadcast drone ID messages is [available here](https://play.google.com/store/apps/details?id=org.opendroneid.android_osm) ([source codes](https://github.com/opendroneid/receiver-android)).
 
 Code related to (Internet) Network Remote ID can be found in the [InterUSS Project](https://github.com/interuss) and https://github.com/uastech/standards (Unofficial reference for UAS-related APIs).
+
+## Message update rates {#update_rates}
+
+The standards require that the Location message is broadcast/published from the transmitter at least once per second.
+The rest of the messages must be broadcast/published once per 3 seconds (the rules in some regions have tightened this requirement to 1 second for also the Basic ID and the System message.
+Please see [here](https://github.com/opendroneid/opendroneid-core-c#comparison)).
+
+Not all message types or fields within a message type are mandatory to broadcast/publish.
+The mandatory message set vary from region to region.
+Please see the [summary](https://github.com/opendroneid/opendroneid-core-c#comparison).
+
+The standards require that the data contained in any transmitted/published message (on the air/internet) is not older than 1 second (e.g. location data, timestamps etc.).
+
+The integrator of the UAS must consider the combination of the above requirements when deciding the internal update rates for each component in the MAVLink network that generate data for the drone ID transmitter.
+It should be expected that there will be some delays from e.g. the GCS sending a System message via the flight controller to the transmitter component, which gather this and data from other messages together and generate the final message data set, which is transmitted/published on the air.
+Each of these components will be running on their own update and forward/relay cycle and can thus introduce delays.
+I.e. running everything at exactly one second cycles probably will lead to violations of the data "freshness" requirement.
+But going to the other extreme of forcing all messages to be at 10+ Hz would likely lead to unnecessary airwave noise on the (Command and Control) C2 link/Wi-Fi/Bluetooth spectrum.
+Some suitable balance of refresh rates for each component involved must be found.
+
+Transmitting using Bluetooth 4 Legacy Advertising introduces additional complexity to this.
+For Bluetooth 5, Wi-Fi Beacon/NaN, all messages are packed together and transmitted in a single advertisement by the transmitter component.
+Bluetooth 4 can only transmit 25 bytes and thus can fit only a single message.
+Since typically at least three messages must be transmitted on the air per second, the BT4 transmitter must advertise at least every 333 ms.
 
 
 ## Routing Drone ID MAVLink messages inside the UAS {#routing}
@@ -99,21 +122,16 @@ If the GCS is capable of regularly updating its own location, these updates are 
 There is no need for the GCS to listen to drone ID MAVLink messages.
 
 The UAS has one or more transmitters for publishing the drone ID data to the rest of the world, either via Bluetooth or Wi-Fi broadcasts, or via an internet connection to an internet Remote ID server.
-The transmitter components will listen to the MAVLink messages from the flight controller and the GCS but should ignore messages where the `compid` [field](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/mavlink_types.h#L116) is set to [MAV_COMP_ID_ODID_TXRX_1](../messages/common.md#MAV_COMP_ID_ODID_TXRX_1), [MAV_COMP_ID_ODID_TXRX_2](../messages/common.md#MAV_COMP_ID_ODID_TXRX_2) or [MAV_COMP_ID_ODID_TXRX_3](../messages/common.md#MAV_COMP_ID_ODID_TXRX_3).
-The method for the receivers to identify MAVLink messages from the GCS, is described in the [Heartbeat](#heartbeat) section below.
+The transmitter components will listen to the MAVLink messages from the flight controller and the GCS but should ignore messages where the `compid` [field](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/mavlink_types.h#L116) is set to [MAV_COMP_ID_ODID_TXRX_1](../messages/common.md#MAV_COMP_ID_ODID_TXRX_1), [MAV_COMP_ID_ODID_TXRX_2](../messages/common.md#MAV_COMP_ID_ODID_TXRX_2) or [MAV_COMP_ID_ODID_TXRX_3](../messages/common.md#MAV_COMP_ID_ODID_TXRX_3) (those would have originated from a drone ID receiver component and would be the drone ID information from [other UAs](other_ua)).
+The method for the transmitters to identify MAVLink messages from the GCS, is described in the [Heartbeat](#heartbeat) section below.
 
 Optionally, further restrictions on which transmitter component should receive a message can be enforced if the sender fills the `target_system` and/or `target_component` fields of the MAVLink message.
-Receivers should only listen to messages that have these fields set to either zero (broadcast) or the receiver's own system ID and/or component ID.
+Components should only listen to messages that have these fields set to either zero (broadcast) or the component's own system ID and/or component ID.
 This can be useful if e.g. there are two UA connected to a single GCS.
 The GCS can then direct information to specific MAV_COMP_ID_ODID_TXRX_x components on a specific UA.
-By default, all senders of drone ID MAVLink messages must fill the `target_system` and `target_component` fields with zero, to indicate a broadcast to all receivers.
+By default, all senders of drone ID MAVLink messages must fill the `target_system` and `target_component` fields with zero, to indicate a broadcast to all components.
 
-> **Note** WIP: Security of drone ID data is currently quite open and it is unclear if it will be required in some locations or for some use cases.
- Most likely the transmitter components will be the ones to generate the signature for the Authentication message but the signing mechanism and how the key(s) for this is managed is open.
-
-> **Note** WIP: How will the Internet transceiver be configured? It needs to know what server(s) to connect to, credentials etc.
-
-### Open Drone ID data from other UA {#other_ua}
+### Open Drone ID data from other UA(s) {#other_ua}
 
 It is possible that the transmitter components also work as receivers, for obtaining drone ID data from surrounding UAs.
 When publishing the received drone ID data as internal MAVLink messages, they must set the `compid` [field](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/mavlink_types.h#L116) to their own MAV_COMP_ID_ODID_TXRX_n ID to make it possible to distinguish this data from the drone ID data of the UA itself.
@@ -130,14 +148,37 @@ See [below](#combining) on how to combine remote ID data from other UAs.
 Each component involved in the drone ID MAVLink message exchange, is required to regularly send out MAVLink [HEARTBEAT](../messages/common.md#HEARTBEAT) messages in order to facilitate discovery and monitoring of the component in the UAS.
 Please see further details in the [Heartbeat documentation](heartbeat.md).
 
-For transceiver components (with `compid`s [MAV_COMP_ID_ODID_TXRX_1](../messages/common.md#MAV_COMP_ID_ODID_TXRX_1), [MAV_COMP_ID_ODID_TXRX_2](../messages/common.md#MAV_COMP_ID_ODID_TXRX_2) or [MAV_COMP_ID_ODID_TXRX_3](../messages/common.md#MAV_COMP_ID_ODID_TXRX_3)), the `type` field in the [HEARTBEAT](../messages/common.md#HEARTBEAT) message must be filled with [MAV_TYPE_ODID](../messages/common.md#MAV_TYPE_ODID).
+For transmitter/receiver components (with `compid`s [MAV_COMP_ID_ODID_TXRX_1](../messages/common.md#MAV_COMP_ID_ODID_TXRX_1), [MAV_COMP_ID_ODID_TXRX_2](../messages/common.md#MAV_COMP_ID_ODID_TXRX_2) or [MAV_COMP_ID_ODID_TXRX_3](../messages/common.md#MAV_COMP_ID_ODID_TXRX_3)), the `type` field in the [HEARTBEAT](../messages/common.md#HEARTBEAT) message must be filled with [MAV_TYPE_ODID](../messages/common.md#MAV_TYPE_ODID).
 
 
-The MAVLink [HEARTBEAT](../messages/common.md#HEARTBEAT) message serves as the way for receiver components to identify the `sysid` of the GCS.
+The MAVLink [HEARTBEAT](../messages/common.md#HEARTBEAT) message serves as the way for transmitter/receiver components to identify the `sysid` of the GCS.
 The GCS will send out MAVLink [HEARTBEAT](../messages/common.md#HEARTBEAT) messages with its `sysid` [field](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/mavlink_types.h#L115) set to the GCS's system ID and the `type` set to [MAV_TYPE_GCS](../messages/common.md#MAV_TYPE_GCS).
-The receiver components shall interpret all MAVLink Open Drone ID messages from that system ID, as coming from the GCS.
+The transmitter/receiver components shall interpret all MAVLink Open Drone ID messages from that system ID, as coming from the GCS.
 There is no dedicated component ID for GCSs, hence the system ID must be used instead for identifying the GCS.
 
+
+## Possible future improvements {#improvements}
+
+The current set of MAVLink messages do not provide any means for controlling some of the transmitter component details.
+The transmitter must be hard-coded by the manufacturer to a certain configuration.
+Some discussion and proposal for this type of messages can be found [here](https://github.com/mavlink/mavlink/pull/1865).
+It would be useful to control e.g. the following items:
+* Starting/stopping transmission
+* Configure the transmission method (BT4, BT5, Beacon, NaN)
+* Wi-Fi channel configuration for Beacon
+* Message update rates on the air
+
+No region currently require drone ID publication via the internet (Network Remote ID).
+However, it is possible that in the future this will change from being optional to mandatory for some use cases/regions as a part of the [UTM](https://www.faa.gov/uas/research_development/traffic_management)/[USpace](https://www.easa.europa.eu/what-u-space) efforts.
+Currently there are no suitable MAVLink messages defined to configure a Network ID transceiver.
+Messages to specify the server(s) to connect to, credentials etc. would be needed.
+
+Security of drone ID data is partly under definition.
+The Japan rule requires a signature of the drone ID data to be transmitted in the Auth message.
+The details are in [Japanese](https://github.com/opendroneid/opendroneid-core-c#japan).
+No such requirement currently exists for the US and EU.
+It is possible that some use cases in the future might require more security related activities for drone ID data.
+Some additional protocol specification work is being drafted by the IETF in the [DRIP](https://github.com/ietf-wg-drip) working group.
 
 ## UAS with multiple transmitters and/or receivers {#multiple_transceivers}
 
