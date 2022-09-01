@@ -14543,14 +14543,6 @@
      </td>
     </tr>
     <tr>
-     <td>5</td>
-     <td>Empty</td>
-     <td>
-     </td>
-     <td>
-     </td>
-    </tr>
-    <tr>
      <td>6</td>
      <td>Empty</td>
      <td>
@@ -14574,7 +14566,19 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Set the mission item with sequence number seq as current item. This means that the MAV will continue to this mission item on the shortest path (not following the mission items in-between).</p>
+   </a>Set the mission item with sequence number seq as the current item and emit <a href="#MISSION_CURRENT">MISSION_CURRENT</a> (whether or not the mission number changed).
+          If a mission is currently being executed, the system will continue to this new mission item on the shortest path, skipping any intermediate mission items.
+	  Note that mission jump repeat counters are not reset unless param2 is set (see <a href="#MAV_CMD_DO_JUMP">MAV_CMD_DO_JUMP</a> param2).
+
+          This command may trigger a mission state-machine change on some systems: for example from <a href="#MISSION_STATE_NOT_STARTED">MISSION_STATE_NOT_STARTED</a> or <a href="#MISSION_STATE_PAUSED">MISSION_STATE_PAUSED</a> to <a href="#MISSION_STATE_ACTIVE">MISSION_STATE_ACTIVE</a>.
+          If the system is in mission mode, on those systems this command might therefore start, restart or resume the mission.
+          If the system is not in mission mode this command must not trigger a switch to mission mode.
+
+          The mission may be "reset" using param2.
+          Resetting sets jump counters to initial values (to reset counters without changing the current mission item set the param1 to `-1`).
+          Resetting also explicitly changes a mission state of <a href="#MISSION_STATE_COMPLETE">MISSION_STATE_COMPLETE</a> to <a href="#MISSION_STATE_PAUSED">MISSION_STATE_PAUSED</a> or <a href="#MISSION_STATE_ACTIVE">MISSION_STATE_ACTIVE</a>, potentially allowing it to resume when it is (next) in a mission mode.
+
+	  The command will ACK with <a href="#MAV_RESULT_FAILED">MAV_RESULT_FAILED</a> if the sequence number is out of range (including if there is no mission item).</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -14586,15 +14590,17 @@
    <tbody>
     <tr>
      <td>1: Number</td>
-     <td>Mission sequence value to set</td>
+     <td>Mission sequence value to set. -1 for the current mission item (use to reset mission without changing current mission item).</td>
      <td>
-      <em>min:</em>0 <em>increment:</em>1</td>
+      <em>min:</em>
+      -1 
+      <em>increment:</em>1</td>
     </tr>
     <tr>
-     <td>2</td>
-     <td>Empty</td>
+     <td>2: Reset Mission</td>
+     <td>Resets mission. 1: true, 0: false. Resets jump counters to initial values and changes mission state "completed" to be "active" or "paused".</td>
      <td>
-     </td>
+      <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
     </tr>
     <tr>
      <td>3</td>
@@ -14604,12 +14610,6 @@
     </tr>
     <tr>
      <td>4</td>
-     <td>Empty</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>5</td>
      <td>Empty</td>
      <td>
      </td>
@@ -21055,10 +21055,18 @@
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>DEPRECATED:</strong> Replaced by <a href="#MAV_CMD_DO_SET_MISSION_CURRENT">MAV_CMD_DO_SET_MISSION_CURRENT</a> (2022-08).</p>
   <p>
    <a href="#messages">
     [Message]
-   </a>Set the mission item with sequence number seq as current item. This means that the MAV will continue to this mission item on the shortest path (not following the mission items in-between).</p>
+   </a>Set the mission item with sequence number seq as the current item and emit <a href="#MISSION_CURRENT">MISSION_CURRENT</a> (whether or not the mission number changed).
+        If a mission is currently being executed, the system will continue to this new mission item on the shortest path, skipping any intermediate mission items.
+        Note that mission jump repeat counters are not reset (see <a href="#MAV_CMD_DO_JUMP">MAV_CMD_DO_JUMP</a> param2).
+
+        This message may trigger a mission state-machine change on some systems: for example from <a href="#MISSION_STATE_NOT_STARTED">MISSION_STATE_NOT_STARTED</a> or <a href="#MISSION_STATE_PAUSED">MISSION_STATE_PAUSED</a> to <a href="#MISSION_STATE_ACTIVE">MISSION_STATE_ACTIVE</a>.
+        If the system is in mission mode, on those systems this command might therefore start, restart or resume the mission.
+        If the system is not in mission mode this message must not trigger a switch to mission mode.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -36385,8 +36393,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -36455,8 +36461,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -36651,8 +36655,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -36758,8 +36760,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -36820,8 +36820,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -36979,8 +36977,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -37041,8 +37037,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -37108,8 +37102,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -37149,8 +37141,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
