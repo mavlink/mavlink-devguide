@@ -72,6 +72,6 @@
   * [Payload Protocols](services/payload.md)
   * [Traffic Managment (UTM/ADS-B)](services/traffic_management.md)
   * [Events Interface (WIP)](services/events.md)
-  * [Time Synchronization (timesync)](services/timesync_v1.md)
+  * [Time Synchronization](services/timesync.md)
 * [Contributing](contributing/contributing.md)
 * [Support](about/support.md)
