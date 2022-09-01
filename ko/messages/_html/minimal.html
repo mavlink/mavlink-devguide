@@ -1667,9 +1667,9 @@
        <strong>DEPRECATED:</strong> Replaced by <a href="#MAV_COMP_ID_ALL">MAV_COMP_ID_ALL</a> (2018-11).
 
 
-  System control does not require a separate component ID.</p>
+  System control does not require a separate component ID. Instead, system commands should be sent with target_component=MAV_COMP_ID_ALL allowing the target component to use any appropriate component id.</p>
      </td>
-     <td>Component for handling system messages (e.g. to ARM, takeoff, etc.).</td>
+     <td>Deprecated, don't use. Component for handling system messages (e.g. to ARM, takeoff, etc.).</td>
     </tr>
    </tbody>
   </table>
