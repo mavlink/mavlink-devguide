@@ -1,7 +1,5 @@
 # Open Drone ID (WIP)
 
-> **Note** The Open Drone ID messages are tagged in the definition file as "work in progress".
-  They may still change and should not be used in production environments.
 
 Direct Remote Identification (DRI) or Remote ID (RID) is/will be a mandatory technology for Unmanned Aircrafts (UA) in Japan, the United States of America and the European Union.
 [Data](https://github.com/opendroneid/opendroneid-core-c#comparison) such as the UA real-time location/altitude, UA serial number, operator ID/location etc. are broadcast via either Wi-Fi or Bluetooth from the UA.
@@ -37,7 +35,7 @@ See [Messages](#messages) below.
 
 There are multiple possible use cases for the MAVLink drone ID messages:
 * A flight controller sends ID, location etc. data to an onboard Bluetooth/Wi-Fi RID transmitter component.
-* An onboard Bluetooth/Wi-Fi receiver picks up drone ID messages from surrounding aircrafts, relays this information using MAVLink drone ID messages to the flight controller, which then uses the information e.g. for Detect And Avoid (DAA) calculations.
+* An onboard Bluetooth/Wi-Fi receiver picks up drone ID messages from surrounding aircraft, relays this information using MAVLink drone ID messages to the flight controller, which then uses the information e.g. for Detect And Avoid (DAA) calculations.
 * A drone sends MAVLink drone ID messages via its control link to the Ground Control Station (GCS).
   The GCS is connected via the Internet to a Remote ID server, which stores and publishes the drone's ID, location etc.
 * As above but in the other direction for DAA calculations.
@@ -56,8 +54,8 @@ Self-ID | Self-ID | [OPEN_DRONE_ID_SELF_ID](../messages/common.md#OPEN_DRONE_ID_
 <a id="OPEN_DRONE_ID_SYSTEM"></a>System | System | [OPEN_DRONE_ID_SYSTEM](../messages/common.md#OPEN_DRONE_ID_SYSTEM) | Includes Remote Pilot location, multiple aircraft information (group), if applicable, and additional system information.
 Operator ID | Operator ID | [OPEN_DRONE_ID_OPERATOR_ID](../messages/common.md#OPEN_DRONE_ID_OPERATOR_ID) | Provides the Operator ID.
 Message Pack | Message Pack | [OPEN_DRONE_ID_MESSAGE_PACK](../messages/common.md#OPEN_DRONE_ID_MESSAGE_PACK) | A payload mechanism for combining the messages above into a single message pack. Used with Bluetooth Extended Advertising, Wi-Fi NaN and Wi-Fi Beacon.
-- | - | [OPEN_DRONE_ID_ARM_STATUS](../messages/common.md#OPEN_DRONE_ID_ARM_STATUS) | Broadcasted once per second from the RID transmitter/receiver components, to indicate their state. Similar to [Heartbeat](#heartbeat), but with additional text information in the error field when they are not ready to arm.
-- | - | [OPEN_DRONE_ID_SYSTEM_UPDATE](../messages/common.md#OPEN_DRONE_ID_SYSTEM_UPDATE) | A subset of the SYSTEM message, containing only fields that must be updated regularly by the GCS. Can optionally be used instead of the full SYSTEM message, to reduce the traffic on the control link.
+- | - | [OPEN_DRONE_ID_ARM_STATUS](../messages/common.md#OPEN_DRONE_ID_ARM_STATUS) | Broadcast once per second from the RID transmitter/receiver components, to indicate their state. Similar to [Heartbeat](#heartbeat), but with additional text information in the error field when they are not ready to arm.
+- | - | [OPEN_DRONE_ID_SYSTEM_UPDATE](../messages/common.md#OPEN_DRONE_ID_SYSTEM_UPDATE) | A subset of the [OPEN_DRONE_ID_SYSTEM](#OPEN_DRONE_ID_SYSTEM) message, containing only fields that must be updated regularly by the GCS. Can optionally be used instead of the full `OPEN_DRONE_ID_SYSTEM` message, to reduce the traffic on the control link.
 
 
 > **Note** The raw byte layout of the MAVLink messages is not exactly the same as what a RID Bluetooth/Wi-Fi transmitter component will broadcast over the air.
