@@ -3,6 +3,12 @@
 > **Note** The Open Drone ID messages are tagged in the definition file as "work in progress".
   They may still change and should not be used in production environments.
 
+Direct Remote Identification (DRI) or Remote ID (RID) is/will be a mandatory technology for Unmanned Aircrafts (UA) in Japan, the United States of America and the European Union.
+[Data](https://github.com/opendroneid/opendroneid-core-c#comparison) such as the UA real-time location/altitude, UA serial number, operator ID/location etc. are broadcast via either Wi-Fi or Bluetooth from the UA.
+[Open Drone ID](https://github.com/opendroneid/opendroneid-core-c) is an open source implementation of RID.
+
+The terms Remote ID and drone ID are used interchangeably in the text below.
+
 ## Relevant specifications {#specifications}
 
 The MAVLink messages defined for usage with Open Drone ID are compliant with the following standards:
