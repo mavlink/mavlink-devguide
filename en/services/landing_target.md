@@ -71,5 +71,5 @@ position_valid | uint8_t | | | Boolean indicating whether these position field v
 > **Tip** 
 > - PX4 supports this form of positioning in [MAV_FRAME_LOCAL_NED](../messages/common.md#MAV_FRAME_LOCAL_NED) (only).
 >   The original (MAVLink 1) fields are ignored.
-> - ArduPilot supports this form of positioning in [MAV_FRAME_BODY_FRD](../messages/common.md#MAV_FRAME_BODY_FRD).
+> - ArduPilot supports this form of positioning in [MAV_FRAME_BODY_FRD](../messages/common.md#MAV_FRAME_BODY_FRD) (only).
 >   `position_valid` must be `1` and `distance` must be filled.
