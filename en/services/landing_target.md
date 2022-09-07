@@ -68,6 +68,8 @@ type | uint8_t | | [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TY
 position_valid | uint8_t | | | Boolean indicating whether these position field values are populated with valid position target information (1: valid, 0: invalid). The default is '0', so that if the fields are not populated the default-zero values are not interpreted as a valid target position.
 
 
-> **Tip** PX4 supports this form of positioning in [MAV_FRAME_LOCAL_NED](../messages/common.md#MAV_FRAME_LOCAL_NED) (only).
-  The original (MAVLink 1) fields are ignored. ArduPilot supports this form of positioning in [MAV_FRAME_BODY_FRD](../messages/common.md#MAV_FRAME_BODY_FRD). position_valid must be 1 and distance must be filled.
-
+> **Tip** 
+> - PX4 supports this form of positioning in [MAV_FRAME_LOCAL_NED](../messages/common.md#MAV_FRAME_LOCAL_NED) (only).
+>   The original (MAVLink 1) fields are ignored.
+> - ArduPilot supports this form of positioning in [MAV_FRAME_BODY_FRD](../messages/common.md#MAV_FRAME_BODY_FRD).
+>   `position_valid` must be `1` and `distance` must be filled.
