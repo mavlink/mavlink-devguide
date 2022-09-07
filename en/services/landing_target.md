@@ -49,7 +49,7 @@ Otherwise the receiver of the message would need to know the camera field of vie
 The sizes in x and y direction are analogous (`size_x`/`size_y`). 
 They describe the angle between the smallest and biggest pixel in x/y direction respectively of the target as seen in the image.
 
-> **Tip** ArduPilot supports messages with these fields if position_valid is zero
+> **Tip** ArduPilot supports messages with these fields if position_valid is `0`.
 
 
 ## Target as Position/Quaternion (MAVLink 2 and later) {#positional}
