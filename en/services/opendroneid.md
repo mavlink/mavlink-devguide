@@ -141,8 +141,8 @@ During flight, if the arm status indicates a failure, similar action must be tak
 The exact strategy on how to avoid having multiple MAVLink components overwriting each-others emergency declarations is not yet fully defined.
 Some preliminary discussion can be found [here](https://github.com/ArduPilot/ArduRemoteID/issues/34).
 
-Optionally, further restrictions on which RID transmitter/receiver component must process a MAVLink message can be enforced if the sender fills the `target_system` and/or `target_component` fields of the MAVLink message.
-RID transmitter/receiver components must only listen to MAVLink messages that have these fields set to either zero (broadcast) or the component's own MAVLink system ID and/or component ID.
+Optionally, further restrictions on which RID transmitter/receiver component must process a MAVLink message can be enforced if the sender fills the `target_system` and `target_component` fields of the MAVLink message.
+RID transmitter/receiver components must only listen to MAVLink messages that have these fields set to either zero (broadcast) or the component's own MAVLink system ID and component ID.
 This can be useful if e.g. there are two UA connected to a single GCS.
 The GCS can then direct information to specific MAV_COMP_ID_ODID_TXRX_x components on a specific UA.
 By default, all senders of drone ID MAVLink messages must fill the `target_system` and `target_component` fields with zero, to indicate a broadcast to all MAVLink components.
