@@ -66,7 +66,7 @@
   * [Battery Protocol](services/battery.md)
   * [Terrain Protocol](services/terrain.md)
   * [Tunnel Protocol](services/tunnel.md)
-  * [Open Drone ID Protocol (WIP)](services/opendroneid.md)
+  * [Open Drone ID Protocol](services/opendroneid.md)
   * [High Latency Protocol](services/high_latency.md)
   * [Component Metadata Protocol (WIP)](services/component_information.md)
   * [Payload Protocols](services/payload.md)
