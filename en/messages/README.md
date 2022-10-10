@@ -49,6 +49,7 @@ The dialect definitions are:
 * [AVSSUAS.xml](AVSSUAS.md)
 * [all.xml](all.md)
 * [ardupilotmega.xml](ardupilotmega.md)
+* [cubepilot.xml](cubepilot.md)
 * [icarous.xml](icarous.md)
 * [matrixpilot.xml](matrixpilot.md)
 * [paparazzi.xml](paparazzi.md)
