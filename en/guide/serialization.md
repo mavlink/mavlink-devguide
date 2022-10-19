@@ -1,48 +1,21 @@
 # Packet Serialization
 
-This topic provides detailed information about about MAVLink packet serialization, including the over-the-wire formats for MAVLink v1 and v2 packets, the ordering of fields in the message payload, and the CRC_EXTRA used for ensuring that the sender and reciever share a compatible message definition.
+This topic provides detailed information about about MAVLink packet serialization, including the over-the-wire formats for MAVLink v1 and v2 packets, the ordering of fields in the message payload, and the `CRC_EXTRA` used for ensuring that the sender and reciever share a compatible message definition.
 
 It is primarily intended for developers who are creating/maintaining a MAVLink generator 
 
 > **Tip** MAVLink users do not typically need to understand the serialization format, as encoding/decoding is handled by the MAVLink libraries.
 
 
-<!--
-## MAVLink Serialization for MAVLink Users
-
-Generally speaking most MAVLink users do not need to understand the details of the serialization format;
-The MAVLink generators create helper APIs that handle message encoding and decoding.
-
-{% method %}
-For example, this function is provided for sending the altitude message. 
-Behind the scenes the serializer takes care of encoding the message and sending it out on the serial port.
-
-{% sample lang="c" %}
-```c
-static inline void mavlink_msg_attitude_send(mavlink_channel_t chan,
-uint32_t time_boot_ms, float roll, float pitch, float yaw,
-float rollspeed, float pitchspeed, float yawspeed);
-```
-
-{% sample lang="python" %}
-```python
-def attitude_send(self, usec, roll, pitch, yaw,
-rollspeed, pitchspeed, yawspeed):
-```
-
-{% endmethod %}
-
-Whatever language you are using, the resulting binary data will be the same:
-
-```
-0x55 0x1C 0x1E <time> <roll> <pitch> <yaw>
-<rollspeed> <pitchspeed> <yawspeed> <crc1> <crc2>
-```
--->
-
 ## Packet Format {#packet_format}
 
 This section shows the serialized message format of MAVLink packets (the format is inspired by the [CAN](https://en.wikipedia.org/wiki/CAN_bus) and SAE AS-4 standards).
+
+Note that multi-byte fields are serialized in little-endian format, and MAVLink libraries are configured by default to run on little-endian hardware.
+You will need to specifically configure MAVLink if it is running on a system that is native big-endian.
+For the C library, this is done by defining `NATIVE_BIG_ENDIAN` (see [protocol.h](https://github.com/mavlink/c_library_v2/blob/master/protocol.h#L10)).
+
+#ifdef NATIVE_BIG_ENDIAN
 
 ### MAVLink 2 Packet Format {#mavlink2_packet_format}
 
@@ -87,7 +60,6 @@ Byte Index | C version | Content | Value | Explanation
 
 * The minimum packet length is 8 bytes for acknowledgment packets without payload.
 * The maximum packet length is 263 bytes for full payload.
-
 
 ## Incompatibility Flags (MAVLink 2) {#incompat_flags}
 
