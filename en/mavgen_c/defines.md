@@ -10,9 +10,9 @@ The following C `#defines` can be set in code in order to tune the setup for use
   See [FAQ > How can I further reduce the generated C library size?](../about/faq.md#developers).
 - `MAVLINK_SIGNING_FLAG_SIGN_OUTGOING` ([mavlink_types.h](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/mavlink_types.h)): Enable/disable outgoing signing.
   See [Enabling Signing on a Channel > Enabling Signing on a Channel](../mavgen_c/message_signing_c.md#enabling_signing_channel)
-- `MAVLINK_EXTERNAL_RX_STATUS` ([mavlink_helpers.h](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/mavlink_helpers.h)): `mavlink_status_t* mavlink_get_channel_status(uint8_t chan)` returns the status of a particular channel using a preallocated array.
+- `MAVLINK_EXTERNAL_RX_STATUS` ([mavlink_helpers.h](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/mavlink_helpers.h)): `mavlink_status_t* mavlink_get_channel_status(uint8_t chan)` returns the status of a particular channel using a preallocated `static` array.
   Define `MAVLINK_EXTERNAL_RX_STATUS` if you want to use your own external array (named `m_mavlink_status`) of `mavlink_status_t` objects.
-- `MAVLINK_EXTERNAL_RX_BUFFER` ([mavlink_helpers.h](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/mavlink_helpers.h)): Set if you want to define your own channel comms buffers.
+- `MAVLINK_EXTERNAL_RX_BUFFER` ([mavlink_helpers.h](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/mavlink_helpers.h)): Set if you want to define your own channel comms buffers on the stack or heap, rather than using the pre-allocated `static` buffers.
   If you define this you will need to declare an array of `mavlink_message_t` (one for each channel) named `m_mavlink_buffer`.
 - `NATIVE_BIG_ENDIAN` ([protocol.h](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/protocol.h)): Enable if using MAVLink on a system that is native big-endian (MAVLINK_LITTLE_ENDIAN is true by default).
 - `MAVLINK_SEPARATE_HELPERS` ([protocol.h](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/protocol.h)): Set to remove all the helpers declared `mavlink_helpers.h`, allowing you to provide an alternative implementation.
