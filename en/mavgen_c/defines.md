@@ -17,7 +17,7 @@ The following C `#defines` can be set in code in order to tune the setup for use
 - `NATIVE_BIG_ENDIAN` ([protocol.h](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/protocol.h)): Enable if using MAVLink on a system that is native big-endian (MAVLINK_LITTLE_ENDIAN is true by default).
 - `MAVLINK_SEPARATE_HELPERS` ([protocol.h](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/protocol.h)): Set to remove all the helpers declared `mavlink_helpers.h`, allowing you to provide an alternative implementation.
 - `MAVLINK_MAX_PAYLOAD_LEN`: Override the maximum payload length.
-  The default maximum payload length is 255 bytes. With care you can override this to reduce memory usage.
+  The default maximum payload length is 255 bytes. With care you can override this to reduce the size, and hence memory usage (note, the maximum size cannot be increased as it is stored in a `uint8_t).
   For example, to reduce the maximum payload to the smallest size supported by a dialect you could do:
   
   ```c
