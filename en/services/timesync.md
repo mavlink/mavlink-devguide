@@ -1,6 +1,6 @@
 # Time Synchronization Protocol v2
 
-This protocol is used to sycnronize clocks on MAVLink components by estimating their time offset. 
+This protocol is used to synchronize clocks on MAVLink components by estimating their time offset. 
 
 The protocol uses just one message [TIMESYNC](#TIMESYNC), which has two `int64_t` fields: `tc1` and `ts1`.
 A component that wants to synchronize clocks sends out a `TIMESYNC` request with its current timestamp in `ts1`.
@@ -10,8 +10,6 @@ The original system can use this information to determine the round-trip time, a
 This sequence is run multiple times and filtered/averaged to reduce the transient effects of the channel and processor usage on the offset calculation.
 
 > **Note** This version replaces [Time Synchronization Protocol v1](#time-synchronization-protocol-v1).
-
-
 
 ## Message/Enum Summary
 
@@ -27,7 +25,7 @@ The sequence is:
 
 1. A component that needs time synchronization sends a `TIMESYNC` request that includes its current nanosecond timestamp in `ts1` (and `tc1 = 0`, indicating it is a request).
    This message may be broadcast, or targeted to a particular component.
-1. A component that receives a `TIMESYNC` request (`TIMESYNC.tc1 == 0`) responds with a `TIMESYNC` response (`tc1 ≠ 0`) that includes original timestamp from the request in `ts1` (mirrored), and its own timestamp in `tc1`.
+1. A component that receives a `TIMESYNC` request (`TIMESYNC.tc1 == 0`) responds with a `TIMESYNC` response (`tc1 ≠ 0`) that includes the original timestamp from the request in `ts1` (mirrored), and its own timestamp in `tc1`.
 1. When the synchronizing component gets a `TIMESYNC` response with its own `target_system` and `target_component` it knows it is a reply to a timesync request that it sent.
 
    From the message the system can:
