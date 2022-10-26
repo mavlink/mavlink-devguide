@@ -15,7 +15,9 @@ Note that multi-byte fields are serialized in little-endian format, and MAVLink 
 You will need to specifically configure MAVLink if it is running on a system that is native big-endian.
 For the C library, this is done by defining `NATIVE_BIG_ENDIAN` (see [protocol.h](https://github.com/mavlink/c_library_v2/blob/master/protocol.h#L10)).
 
+```c
 #ifdef NATIVE_BIG_ENDIAN
+```
 
 ### MAVLink 2 Packet Format {#mavlink2_packet_format}
 
