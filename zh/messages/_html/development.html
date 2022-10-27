@@ -311,6 +311,181 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_BATTERY_STATUS_FLAGS">MAV_BATTERY_STATUS_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Battery status flags for fault, health and state indication.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE">
+     <td>1</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE">MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE</a>
+     </td>
+     <td>The battery is not ready to use (fly).
+          Set if the battery has faults or other conditions that make it unsafe to fly with.
+          Note: It will be the logical OR of other status bits (chosen by the manufacturer/integrator).</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_CHARGING">
+     <td>2</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_CHARGING">MAV_BATTERY_STATUS_FLAGS_CHARGING</a>
+     </td>
+     <td>Battery is charging.</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_CELL_BALANCING">
+     <td>4</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_CELL_BALANCING">MAV_BATTERY_STATUS_FLAGS_CELL_BALANCING</a>
+     </td>
+     <td>Battery is cell balancing (during charging).
+          Not ready to use (<a href="#MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE">MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE</a> may be set).</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_FAULT_CELL_IMBALANCE">
+     <td>8</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_CELL_IMBALANCE">MAV_BATTERY_STATUS_FLAGS_FAULT_CELL_IMBALANCE</a>
+     </td>
+     <td>Battery cells are not balanced.
+          Not ready to use.</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_AUTO_DISCHARGING">
+     <td>16</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_AUTO_DISCHARGING">MAV_BATTERY_STATUS_FLAGS_AUTO_DISCHARGING</a>
+     </td>
+     <td>Battery is auto discharging (towards storage level).
+          Not ready to use (<a href="#MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE">MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE</a> would be set).</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE">
+     <td>32</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE">MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE</a>
+     </td>
+     <td>Battery requires service (not safe to fly). 
+          This is set at vendor discretion.
+          It is likely to be set for most faults, and may also be set according to a maintenance schedule (such as age, or number of recharge cycles, etc.).</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY">
+     <td>64</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY">MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY</a>
+     </td>
+     <td>Battery is faulty and cannot be repaired (not safe to fly). 
+          This is set at vendor discretion.
+          The battery should be disposed of safely.</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED">
+     <td>128</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED">MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED</a>
+     </td>
+     <td>Automatic battery protection monitoring is enabled.
+          When enabled, the system will monitor for certain kinds of faults, such as cells being over-voltage.
+          If a fault is triggered then and protections are enabled then a safety fault (<a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM">MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM</a>) will be set and power from the battery will be stopped.
+          Note that battery protection monitoring should only be enabled when the vehicle is landed. Once the vehicle is armed, or starts moving, the protections should be disabled to prevent false positives from disabling the output.</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM">
+     <td>256</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM">MAV_BATTERY_STATUS_FLAGS_FAULT_PROTECTION_SYSTEM</a>
+     </td>
+     <td>The battery fault protection system had detected a fault and cut all power from the battery.
+          This will only trigger if <a href="#MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED">MAV_BATTERY_STATUS_FLAGS_PROTECTIONS_ENABLED</a> is set.
+          Other faults like <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT">MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT</a> may also be set, indicating the cause of the protection fault.</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT">
+     <td>512</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT">MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_VOLT</a>
+     </td>
+     <td>One or more cells are above their maximum voltage rating.</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT">
+     <td>1024</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT">MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT</a>
+     </td>
+     <td>One or more cells are below their minimum voltage rating.
+          A battery that had deep-discharged might be irrepairably damaged, and set both <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT">MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_VOLT</a> and <a href="#MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY">MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY</a>.</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_TEMPERATURE">
+     <td>2048</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_TEMPERATURE">MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_TEMPERATURE</a>
+     </td>
+     <td>Over-temperature fault.</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_TEMPERATURE">
+     <td>4096</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_TEMPERATURE">MAV_BATTERY_STATUS_FLAGS_FAULT_UNDER_TEMPERATURE</a>
+     </td>
+     <td>Under-temperature fault.</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_CURRENT">
+     <td>8192</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_CURRENT">MAV_BATTERY_STATUS_FLAGS_FAULT_OVER_CURRENT</a>
+     </td>
+     <td>Over-current fault.</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_FAULT_SHORT_CIRCUIT">
+     <td>16384</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_SHORT_CIRCUIT">MAV_BATTERY_STATUS_FLAGS_FAULT_SHORT_CIRCUIT</a>
+     </td>
+     <td>Short circuit event detected.
+          The battery may or may not be safe to use (check other flags).</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_VOLTAGE">
+     <td>32768</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_VOLTAGE">MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_VOLTAGE</a>
+     </td>
+     <td>Voltage not compatible with power rail voltage (batteries on same power rail should have similar voltage).</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_FIRMWARE">
+     <td>65536</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_FIRMWARE">MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_FIRMWARE</a>
+     </td>
+     <td>Battery firmware is not compatible with current autopilot firmware.</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION">
+     <td>131072</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION">MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION</a>
+     </td>
+     <td>Battery is not compatible due to cell configuration (e.g. 5s1p when vehicle requires 6s).</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL">
+     <td>262144</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL">MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL</a>
+     </td>
+     <td>Battery capacity_consumed and capacity_remaining values are relative to a full battery (they sum to the total capacity of the battery).
+          This flag would be set for a smart battery that can accurately determine its remaining charge across vehicle reboots and discharge/recharge cycles.
+          If unset the capacity_consumed indicates the consumption since vehicle power-on, as measured using a power monitor. The capacity_remaining, if provided, indicates the estimated remaining capacity on the assumption that the battery was full on vehicle boot.
+          If unset a GCS is recommended to advise that users fully charge the battery on power on.</td>
+    </tr>
+    <tr id="MAV_BATTERY_STATUS_FLAGS_EXTENDED">
+     <td>4294967295</td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS_EXTENDED">MAV_BATTERY_STATUS_FLAGS_EXTENDED</a>
+     </td>
+     <td>Reserved (not used). If set, this will indicate that an additional status field exists for higher status values.</td>
+    </tr>
+   </tbody>
+  </table>
   <a id="MAV_CMD">
   </a>
   <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
@@ -999,6 +1174,104 @@
      <td>
      </td>
      <td>Altitude of center point. Coordinate system depends on frame field.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="BATTERY_STATUS_V2">BATTERY_STATUS_V2 (<a href="#BATTERY_STATUS_V2">
+    #369
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Battery dynamic information.
+        This should be streamed (nominally at 1Hz).
+        Static/invariant battery information is sent in <a href="#SMART_BATTERY_INFO">SMART_BATTERY_INFO</a>.
+        Note that smart batteries should set the <a href="#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL">MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL</a> bit to indicate that supplied capacity values are relative to a battery that is known to be full.
+        Power monitors would not set this bit, indicating that capacity_consumed is relative to drone power-on, and that other values are estimated based on the assumption that the battery was full on power-on.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Battery ID</td>
+    </tr>
+    <tr>
+     <td>temperature</td>
+     <td>int16_t</td>
+     <td>cdegC</td>
+     <td>
+     </td>
+     <td>Temperature of the whole battery pack (not internal electronics). INT16_MAX field not provided.</td>
+    </tr>
+    <tr>
+     <td>voltage</td>
+     <td>float</td>
+     <td>V</td>
+     <td>
+     </td>
+     <td>Battery voltage (total). NaN: field not provided.</td>
+    </tr>
+    <tr>
+     <td>current</td>
+     <td>float</td>
+     <td>A</td>
+     <td>
+     </td>
+     <td>Battery current (through all cells/loads). Positive value when discharging and negative if charging. NaN: field not provided.</td>
+    </tr>
+    <tr>
+     <td>capacity_consumed</td>
+     <td>float</td>
+     <td>Ah</td>
+     <td>
+     </td>
+     <td>Consumed charge. NaN: field not provided. This is either the consumption since power-on or since the battery was full, depending on the value of <a href="#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL">MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL</a>.</td>
+    </tr>
+    <tr>
+     <td>capacity_remaining</td>
+     <td>float</td>
+     <td>Ah</td>
+     <td>
+     </td>
+     <td>Remaining charge (until empty). UINT32_MAX: field not provided. Note: If <a href="#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL">MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL</a> is unset, this value is based on the assumption the battery was full when the system was powered.</td>
+    </tr>
+    <tr>
+     <td>percent_remaining</td>
+     <td>uint8_t</td>
+     <td>
+      %
+     </td>
+     <td>
+     </td>
+     <td>Remaining battery energy. Values: [0-100], UINT8_MAX: field not provided.</td>
+    </tr>
+    <tr>
+     <td>status_flags</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_BATTERY_STATUS_FLAGS">MAV_BATTERY_STATUS_FLAGS</a>
+     </td>
+     <td>Fault, health, readiness, and other status indications.</td>
     </tr>
    </tbody>
   </table>
