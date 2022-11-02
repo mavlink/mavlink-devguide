@@ -2,7 +2,8 @@
 
 The following C `#defines` can be set in code in order to tune the setup for use on different platforms.
 
-- `MAVLINK_USE_CONVENIENCE_FUNCTIONS` ([protocol.h](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/protocol.h)): Causes convenience functions to be defined, including: `_mav_finalize_message_chan_send()`, `_mavlink_send_uart()`, `_mavlink_resend_uart()`. To use, add `#define MAVLINK_USE_CONVENIENCE_FUNCTIONS` to your code.
+- `MAVLINK_USE_CONVENIENCE_FUNCTIONS` ([protocol.h](https://github.com/ArduPilot/pymavlink/blob/master/generator/C/include_v2.0/protocol.h)): Causes convenience functions to be defined, including: `_mav_finalize_message_chan_send()`, `_mavlink_send_uart()`, `_mavlink_resend_uart()`.
+  Library users may choose not to set this and roll out their own implementations for efficiency (or other) reasons.
 - `MAVLINK_COMM_NUM_BUFFERS`: Sets the maximum number of comms buffers to be used (comms channels).
   By default this is set to 16 on Linux, Windows and macOS, and to 4 on other platforms.
   You might set `#define MAVLINK_COMM_NUM_BUFFERS 2` on an embedded system that would only ever have two channels, in order to reduce memory overheads.
