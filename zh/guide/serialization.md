@@ -1,53 +1,22 @@
 # 包的序列化
 
-This topic provides detailed information about about MAVLink packet serialization, including the over-the-wire formats for MAVLink v1 and v2 packets, the ordering of fields in the message payload, and the CRC_EXTRA used for ensuring that the sender and reciever share a compatible message definition.
+This topic provides detailed information about about MAVLink packet serialization, including the over-the-wire formats for MAVLink v1 and v2 packets, the ordering of fields in the message payload, and the `CRC_EXTRA` used for ensuring that the sender and reciever share a compatible message definition.
 
 主要是为正在创建/维护 MAVLink 生成器的开发者
 
 > **Tip** MAVLink 用户通常不需要理解序列化格式，因为编码/解码由 MAVLink 库处理。
 
-<!--
-## MAVLink Serialization for MAVLink Users
-
-Generally speaking most MAVLink users do not need to understand the details of the serialization format;
-The MAVLink generators create helper APIs that handle message encoding and decoding.
-
-{% method %}
-For example, this function is provided for sending the altitude message. 
-Behind the scenes the serializer takes care of encoding the message and sending it out on the serial port.
-
-{% sample lang="c" %}
-```c
-static inline void mavlink_msg_attitude_send(mavlink_channel_t chan,
-uint32_t time_boot_ms, float roll, float pitch, float yaw,
-float rollspeed, float pitchspeed, float yawspeed);
-```
-
-{% sample lang="python" %}
-```python
-def attitude_send(self, usec, roll, pitch, yaw,
-rollspeed, pitchspeed, yawspeed):
-```
-
-{% endmethod %}
-
-Whatever language you are using, the resulting binary data will be the same:
-
-```
-0x55 0x1C 0x1E <time> <roll> <pitch> <yaw>
-<rollspeed> <pitchspeed> <yawspeed> <crc1> <crc2>
-```
--->
-
 ## 数据包格式 {#packet_format}
 
 本节显示 MAVLink 数据包的序列化消息格式(格式由[CAN](https://en.wikipedia.org/wiki/CAN_bus) 和 SAE AS-4 标准启发)。
 
+Note that multi-byte fields are serialized in little-endian format, and MAVLink libraries are configured by default to run on little-endian hardware.
+
 ### MAVLink 2 的数据包格式 {#mavlink2_packet_format}
 
-下面是 [MAVLink 2 ](../guide/mavlink_2.md) 数据包的线外格式 (内存中的表示形式可能会有所不同)。
+Below is the over-the-wire format for a [MAVLink 2](../guide/mavlink_2.md) packet (the in-memory representation might differ).
 
-![MAVLink v2 数据包](../../assets/packets/packet_mavlink_v2.jpg)
+![MAVLink v2 packet](../../assets/packets/packet_mavlink_v2.jpg)
 
 | 字节索引                                                                                          | C 版本                       | 内容                                | 值            | 说明                                                                                                                                                                                                                                                                                                        |
 | --------------------------------------------------------------------------------------------- | -------------------------- | --------------------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -69,9 +38,9 @@ Whatever language you are using, the resulting binary data will be the same:
 
 ### MAVLink 1 的数据包格式 {#v1_packet_format}
 
-下面是 MAVLink 1 数据包的线外格式 (内存中的表示形式可能会有所不同)。
+Below is the over-the-wire format for a MAVLink 1 packet (the in-memory representation might differ).
 
-![MAVLink v1 数据包](../../assets/packets/packet_mavlink_v1.jpg)
+![MAVLink v1 packet](../../assets/packets/packet_mavlink_v1.jpg)
 
 | 字节索引                                                                                        | C 版本                       | 内容                              | 值                 | 说明                                                                                                                                                                                                                                                         |
 | ------------------------------------------------------------------------------------------- | -------------------------- | ------------------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -90,11 +59,11 @@ Whatever language you are using, the resulting binary data will be the same:
 
 ## 不兼容标记 (MAVLink 2) {#incompat_flags}
 
-使用不兼容的旗帜来显示一个 MAVLink 库必须支持才能处理数据包。 这包括影响数据包格式/订制的任何功能。
+Incompatibility flags are used to indicate features that a MAVLink library must support in order to be able to handle the packet. This includes any feature that affects the packet format/ordering.
 
 > **Note** 如果 `incompat_flags` 字段中的任何标志不识别, 则 MAVLink **必须丢弃**。
 
-支持的不兼容标志包括 (在编写本文时):
+Supported incompatibility flags include (at time of writing):
 
 | 标记                            | C 标志                   | 特性                                                      |
 | ----------------------------- | ---------------------- | ------------------------------------------------------- |
@@ -102,15 +71,15 @@ Whatever language you are using, the resulting binary data will be the same:
 
 ## 兼容性标记 (MAVLink 2) {#compat_flags}
 
-兼容性标记用于显示功能，无法阻止 MAVLink 库处理数据包 (即使不能识别此功能)。 This might include, for example, a flag to indicate that a packet should be treated as "high priority" (such a messages could be handled by any MAVLink implementation because packet format and structure is not affected).
+Compatibility flags are used to indicate features won't prevent a MAVLink library from handling the packet (even if the feature is not understood). This might include, for example, a flag to indicate that a packet should be treated as "high priority" (such a messages could be handled by any MAVLink implementation because packet format and structure is not affected).
 
-一个 MAVLink 执行可以安全地忽略它在 `compat_latime` 字段中不识别的旗帜。
+A MAVLink implementation can safely ignore flags it doesn't understand in the `compat_flags` field.
 
 ## 有效负载格式 {#payload}
 
-MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减少间接开销)! 相反, 发送方和接收方必须对无线格式的消息字段的含义、顺序和大小有共同的标识。
+MAVLink does not include information about the message structure in the payload itself (in order to reduce overhead)! Instead the sender and receiver must share a common understanding of the meaning, order and size of message fields in the over-the-wire format.
 
-消息在 MAVLink 数据包中进行编码:
+Messages are encoded within the MAVLink packet:
 
 - `msgid`(消息id) 字段确定了在数据包中编码的具体消息。
 - `payload` 字段包含消息数据。 
@@ -123,7 +92,7 @@ MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减�
 
 ### 字段重新排序 {#field_reordering}
 
-消息有效载荷字段重新排序，以便传输如下：
+Message payload fields are reordered for transmission as follows:
 
 - Fields are sorted according to their native data size: 
   - `(u)int64_t`, `double` (8 bytes)
@@ -135,7 +104,7 @@ MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减�
 - 已传输的报文与 `construction` 相同，因此代表重新排序的字段
 - `CRC_EXTERA` 字段在重新排序 *后* 计算，这可以确保字段中的错误可以被默认 CRC 发现。 提供的 Python, C 和 C# 参考执行测试，以便正确地重新排序，这只是习惯执行的关切。 
 
-上述重新排序的唯一例外是 [MAVLink 2 扩展字段](../guide/define_xml_element.md#message_extensions)。 扩展字段以 XML-Declaration 的顺序发送，不包括在[CRC_EXTERA](#crc_extra) 计算中。 这允许新的扩展字段在消息结束后附加，但不打破二进制兼容性。
+The only exception to the above reordering is for [MAVLink 2 extension fields](../guide/define_xml_element.md#message_extensions). Extension fields are sent in XML-declaration order and are not included in the [CRC_EXTRA](#crc_extra) calculation. This allows new extension fields to be appended to the end of a message without breaking binary compatibility.
 
 > **Warning** 此订单是独特的，可以通过使用稳定的分类算法，很容易在协议中轻松实现。 The alternative to using sorting would be either to use inefficient alignment, which is bad for the target architectures for typical MAVLink applications, or to have function calls in the order of the variable size instead of the application context. 这将导致序列化函数的功能签名非常混乱。
 
@@ -143,7 +112,7 @@ MAVLink 没有包含关于有效载荷本身的信息结构的信息 (为了减�
 
 ### 空字节有效负载截断 (MAVLink 2) {#payload_truncation}
 
-*MAVLink 2* implementations *must* truncate any empty (zero-filled) bytes at the end of the serialized payload before it is sent. 这与 *MAVLink 1*，在这种情况下，所有字段都发送了字节，因此，这是这样。
+*MAVLink 2* implementations *must* truncate any empty (zero-filled) bytes at the end of the serialized payload before it is sent. This contrasts with *MAVLink 1*, where bytes were sent for all fields regardless of content.
 
 An implementation that receives a (non compliant) MAVLink 2 message with zero-filled trailing bytes must still support decoding of the message (if it is otherwise valid), and provide methods to route/forward the messages. The message may be forwarded either completely unaltered (i.e. with the zeros untrimmed and original CRC) or the forwarding implementation may trim the zeros and recalculate the CRC.
 
