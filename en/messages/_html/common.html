@@ -2,7 +2,7 @@
  <body>
   <p>
    <strong>MAVLink Include Files:</strong>
-   <a href="minimal.md">minimal.xml</a>
+   <a href="standard.md">standard.xml</a>
   </p>
   <h2>MAVLink Protocol Version</h2>
   <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
@@ -1565,6 +1565,13 @@
       <a href="#WINCH_ABANDON_LINE">WINCH_ABANDON_LINE</a>
      </td>
      <td>Spool out the entire length of the line. Only action and instance command parameters are used, others are ignored.</td>
+    </tr>
+    <tr id="WINCH_LOAD_PAYLOAD">
+     <td>9</td>
+     <td>
+      <a href="#WINCH_LOAD_PAYLOAD">WINCH_LOAD_PAYLOAD</a>
+     </td>
+     <td>Spools out just enough to present the hook to the user to load the payload. Only action and instance command parameters are used, others are ignored</td>
     </tr>
    </tbody>
   </table>
@@ -9282,6 +9289,27 @@
       <a href="#MAV_WINCH_STATUS_ABANDON_LINE">MAV_WINCH_STATUS_ABANDON_LINE</a>
      </td>
      <td>Winch is abandoning the line and possibly payload. Winch unspools the entire calculated line length. This is a failover state from REDELIVER if the number of attempts exceeds a threshold.</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_LOCKING">
+     <td>2048</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_LOCKING">MAV_WINCH_STATUS_LOCKING</a>
+     </td>
+     <td>Winch is engaging the locking mechanism.</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_LOAD_LINE">
+     <td>4096</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_LOAD_LINE">MAV_WINCH_STATUS_LOAD_LINE</a>
+     </td>
+     <td>Winch is spooling on line.</td>
+    </tr>
+    <tr id="MAV_WINCH_STATUS_LOAD_PAYLOAD">
+     <td>8192</td>
+     <td>
+      <a href="#MAV_WINCH_STATUS_LOAD_PAYLOAD">MAV_WINCH_STATUS_LOAD_PAYLOAD</a>
+     </td>
+     <td>Winch is loading a payload.</td>
     </tr>
    </tbody>
   </table>
