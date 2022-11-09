@@ -261,6 +261,46 @@ The steps are:
 > **Note** If your camera only provides video streaming and nothing else (no camera features), the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag is the only flag you need to set.
   The GCS will then provide video streaming support and skip camera control.
 
+
+### Camera Tracking
+
+A camera may support tracking a point and/or a rectangle.
+Information about the tracked point is streamed during tracking, and may be passed to a gimbal in order to move the camera to track the target (or control vehicle attitude to track the target).
+
+Tracking support of different types is indicated by the [CAMERA_CAP_FLAGS_HAS_TRACKING_POINT](../messages/common.md#CAMERA_CAP_FLAGS_HAS_TRACKING_POINT) and/or [CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE](../messages/common.md#CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE) flags in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
+
+To start camera tracking a GCS uses either the [MAV_CMD_CAMERA_TRACK_POINT](#MAV_CMD_CAMERA_TRACK_POINT) or [MAV_CMD_CAMERA_TRACK_RECTANGLE](#MAV_CMD_CAMERA_TRACK_RECTANGLE) command.
+To stop any kind of tracking, a GCS uses the [MAV_CMD_CAMERA_STOP_TRACKING](#MAV_CMD_CAMERA_STOP_TRACKING) command.
+
+The [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS) message is streamed during capture (a GCS may set the interval using [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL)).
+This contains information about the tracked point/rectangle in an image, and may be used by the recieving system to determine the location of the target (alongside other information like the [CAMERA_FOV_STATUS](#CAMERA_FOV_STATUS)).
+
+If supported (indicated by `CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS`) the camera will also emit [CAMERA_TRACKING_GEO_STATUS](#CAMERA_TRACKING_GEO_STATUS) at a rate set using [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL).
+This message provides the location of the target in physical co-ordinates that can be passed to a gimbal.
+
+
+### Camera tracking messgae sequence
+
+> **Note** The GCS should already have identified all connected cameras by their heartbeat and followed the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
+
+
+The sequence for tracking a point is shown below (tracking a rectangle is the same sequence but a different tracking command).
+
+[![Mermaid Sequence: tracking info](https://mermaid.ink/img/pako:eNqlVGFvmzAQ_SuWP6USi5ZKWyW2RLIIYWgBIkz7CQm54CTWgs2M2VRV_e8zmCyobaImAQkd9t299853foa5KCi0YU1_N5TndM7IRpLyW8qBfioiFctZRbgCnoPfLjqkpJKY9VAoCsQfKltXy-zYwF8ABwVujDIHrbLFEnk4-4FwlsTI-emHXraK_DD5_ihnjO89_XARxQFK_Cgcr3dkU7fboFYaGChJ8l-Mb0AlGFcGWeN9ms32iAF6yJxgnvXJOiCDMgIp7MIA42shS6KY4CkENyaNSaAz6XwmTezi-2WSIcdxV4k7b91Sbt43im2AqdIkJSVly08SRVveQxqtXj9AnpvhBCX3-BR97CZZ4GLcemvubvyAliNde1JOprd3X6zOvJ1OPhvrbjo5R8YHyIPXzD036nm3ukZ1U1VCnwirAanrpqRgSyW9uVzT16s0vVZlQqwuwNi9vvrQQ4M2AJpHrbcE2LDykezeBT51lmA0-VDMoYqHCPBe4Hg8Pjcfv4B1G3OqdvqjCyeqQdkILwa98ndLOdA_xdOxsxpMI06i1X8mx0p2tGevmpRLB-WqVj4fFFpQe5SEFfpafu6uHKi2tKQptLVZ0DVpdiqFKX_Rrk1V6FF1C6aEhPaa7GpqQdIogZ94Dm0lG7p36q_23uvlH-Jn1w4?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNqlVGFvmzAQ_SuWP6USi5ZKWyW2RLIIYWgBIkz7CQm54CTWgs2M2VRV_e8zmCyobaImAQkd9t299853foa5KCi0YU1_N5TndM7IRpLyW8qBfioiFctZRbgCnoPfLjqkpJKY9VAoCsQfKltXy-zYwF8ABwVujDIHrbLFEnk4-4FwlsTI-emHXraK_DD5_ihnjO89_XARxQFK_Cgcr3dkU7fboFYaGChJ8l-Mb0AlGFcGWeN9ms32iAF6yJxgnvXJOiCDMgIp7MIA42shS6KY4CkENyaNSaAz6XwmTezi-2WSIcdxV4k7b91Sbt43im2AqdIkJSVly08SRVveQxqtXj9AnpvhBCX3-BR97CZZ4GLcemvubvyAliNde1JOprd3X6zOvJ1OPhvrbjo5R8YHyIPXzD036nm3ukZ1U1VCnwirAanrpqRgSyW9uVzT16s0vVZlQqwuwNi9vvrQQ4M2AJpHrbcE2LDykezeBT51lmA0-VDMoYqHCPBe4Hg8Pjcfv4B1G3OqdvqjCyeqQdkILwa98ndLOdA_xdOxsxpMI06i1X8mx0p2tGevmpRLB-WqVj4fFFpQe5SEFfpafu6uHKi2tKQptLVZ0DVpdiqFKX_Rrk1V6FF1C6aEhPaa7GpqQdIogZ94Dm0lG7p36q_23uvlH-Jn1w4)
+
+
+The steps are:
+1. GCS follows the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
+1. GCS checks if [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) contains the `CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE`, `CAMERA_CAP_FLAGS_HAS_TRACKING_POINT`, `CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS`.
+1. If tracking is supported the GCS sends the command to start the type of tracking it wants to do: [MAV_CMD_CAMERA_TRACK_POINT](#MAV_CMD_CAMERA_TRACK_POINT) or [MAV_CMD_CAMERA_TRACK_RECTANGLE](#MAV_CMD_CAMERA_TRACK_RECTANGLE).
+   The sequence above just shows point tracking.
+1. Set the desired rates (intervals) for streaming the tracking status messages.
+1. Camera streams [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS) and/or [CAMERA_TRACKING_GEO_STATUS](#CAMERA_TRACKING_GEO_STATUS). 
+   These are used to provide camera targetting information.
+1. To stop tracking, a GCS uses the [MAV_CMD_CAMERA_STOP_TRACKING](#MAV_CMD_CAMERA_STOP_TRACKING) command.
+   The streaming intervals must also be set to zero.
+
+
 ### Battery Status
 
 Camera components that are powered from their own battery should publish [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) messages.
@@ -270,7 +310,7 @@ Other components like a GCS will typically only use the camera `BATTERY_STATUS.b
 ## Message/Enum Summary
 
 Message | Description | Status
--- | -- | ---
+--- | --- | ---
 <a id="MAV_CMD_REQUEST_MESSAGE"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Send command to request any message | to be used
 <a id="CAMERA_INFORMATION"></a>[CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) | Basic information about camera including supported features and URI link to extended information (`cam_definition_uri` field). |
 <a id="CAMERA_SETTINGS"></a>[CAMERA_SETTINGS](../messages/common.md#CAMERA_SETTINGS) | Timestamp and camera mode information. |
@@ -293,14 +333,23 @@ Message | Description | Status
 <a id="MAV_CMD_REQUEST_VIDEO_STREAM_STATUS"></a>[MAV_CMD_REQUEST_VIDEO_STREAM_STATUS](../messages/common.md#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS) | Send command to request [VIDEO_STREAM_STATUS](#VIDEO_STREAM_STATUS). This is sent whenever there is a mode change (when [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) is sent.) It allows the camera to update the stream configuration when a camera mode change occurs. | deprecated
 <a id="MAV_CMD_REQUEST_STORAGE_INFORMATION"></a>[MAV_CMD_REQUEST_STORAGE_INFORMATION](../messages/common.md#MAV_CMD_REQUEST_STORAGE_INFORMATION) | Send command to request [STORAGE_INFORMATION](#storage_information). | deprecated
 <a id="MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS"></a>[MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS) | Send command to request [CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS). | deprecated
+<a id="CAMERA_FOV_STATUS"></a>[CAMERA_FOV_STATUS](../messages/common.md#CAMERA_FOV_STATUS) | Information about the field of view of a camera. Requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE). | 
+<a id="MAV_CMD_CAMERA_TRACK_POINT"></a>[MAV_CMD_CAMERA_TRACK_POINT](../messages/common.md#MAV_CMD_CAMERA_TRACK_POINT) | Initate visual point tracking, if supported by the camera ([CAMERA_CAP_FLAGS_HAS_TRACKING_POINT](#CAMERA_CAP_FLAGS) is set). | 
+<a id="MAV_CMD_CAMERA_TRACK_RECTANGLE"></a>[MAV_CMD_CAMERA_TRACK_RECTANGLE](../messages/common.md#MAV_CMD_CAMERA_TRACK_RECTANGLE) | initiate visual rectangle tracking, if supported by the camera ([CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE](#CAMERA_CAP_FLAGS) is set) | 
+<a id="MAV_CMD_CAMERA_STOP_TRACKING"></a>[MAV_CMD_CAMERA_STOP_TRACKING](../messages/common.md#MAV_CMD_CAMERA_STOP_TRACKING) | Stop camera tracking (as initiated using `MAV_CMD_CAMERA_TRACK_POINT` or `MAV_CMD_CAMERA_TRACK_RECTANGLE`) | 
+<a id="CAMERA_TRACKING_IMAGE_STATUS"></a>[CAMERA_TRACKING_IMAGE_STATUS](../messages/common.md#CAMERA_TRACKING_IMAGE_STATUS) | Camera tracking status, sent while in active tracking. Use [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) to define message interval. | 
+<a id="CAMERA_TRACKING_GEO_STATUS"></a>[CAMERA_TRACKING_GEO_STATUS](../messages/common.md#CAMERA_TRACKING_GEO_STATUS) | Camera tracking status, sent while in active tracking. Use [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) to define message interval. | 
 
 
 Enum | Description
 -- | --
 <a id="CAMERA_CAP_FLAGS"></a>[CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS) | Camera capability flags (Bitmap). For example: ability to capture images in video mode, support for survey mode etc. Received in [CAMERA_INFORMATION](#CAMERA_INFORMATION).
 <a id="CAMERA_MODE"></a>[CAMERA_MODE](../messages/common.md#CAMERA_MODE) | Camera mode (image, video, survey etc.). Received in [CAMERA_SETTINGS](#CAMERA_SETTINGS).
-<a id="VIDEO_STREAM_TYPE"></a>[VIDEO_STREAM_TYPE](../messages/common.md#VIDEO_STREAM_TYPE) | Type of stream - e.g. RTSP, MPEG. Received in [VIDEO_STREAM_INFORMATION ](#VIDEO_STREAM_INFORMATION).
-<a id="VIDEO_STREAM_STATUS_FLAGS"></a>[VIDEO_STREAM_STATUS_FLAGS](../messages/common.md#VIDEO_STREAM_TYPE) | Bitmap of stream status flags - e.g. zoom, thermal imaging, etc. Received in [VIDEO_STREAM_INFORMATION ](#VIDEO_STREAM_INFORMATION).
+<a id="VIDEO_STREAM_TYPE"></a>[VIDEO_STREAM_TYPE](../messages/common.md#VIDEO_STREAM_TYPE) | Type of stream - e.g. RTSP, MPEG. Received in [VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFORMATION).
+<a id="VIDEO_STREAM_STATUS_FLAGS"></a>[VIDEO_STREAM_STATUS_FLAGS](../messages/common.md#VIDEO_STREAM_TYPE) | Bitmap of stream status flags - e.g. zoom, thermal imaging, etc. Received in [VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFORMATION).
+<a id="CAMERA_TRACKING_STATUS_FLAGS"></a>[CAMERA_TRACKING_STATUS_FLAGS](../messages/common.md#CAMERA_TRACKING_STATUS_FLAGS) | Current tracking status. Received in [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS) amd [CAMERA_TRACKING_GEO_STATUS](#CAMERA_TRACKING_GEO_STATUS).
+<a id="CAMERA_TRACKING_MODE"></a>[CAMERA_TRACKING_MODE](../messages/common.md#CAMERA_TRACKING_MODE) | Current tracking mode. Received in [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS).
+<a id="CAMERA_TRACKING_TARGET_DATA"></a>[CAMERA_TRACKING_TARGET_DATA](../messages/common.md#CAMERA_TRACKING_TARGET_DATA) | Indicates how target data is encoded in image. Received in [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS).
 
 
 ## Migration Notes for GCS & MAVLink SDKs
