@@ -12801,42 +12801,58 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Mission command to perform a landing. This is used as a marker in a mission to tell the autopilot where a sequence of mission items that represents a landing starts. It may also be sent via a <a href="#COMMAND_LONG">COMMAND_LONG</a> to trigger a landing, in which case the nearest (geographically) landing sequence in the mission will be used. The Latitude/Longitude is optional, and may be set to 0 if not needed. If specified then it will be used to help find the closest landing sequence.</p>
+   </a>Mission command to perform a landing. This is used as a marker in a mission to tell the autopilot where a sequence of mission items that represents a landing starts.
+	  It may also be sent via a <a href="#COMMAND_LONG">COMMAND_LONG</a> to trigger a landing, in which case the nearest (geographically) landing sequence in the mission will be used.
+	  The Latitude/Longitude/Altitude is optional, and may be set to 0 if not needed. If specified then it will be used to help find the closest landing sequence.</p>
   <table class="sortable">
    <thead>
     <tr>
      <th>Param (:Label)</th>
      <th>Description</th>
+     <th>Units</th>
     </tr>
    </thead>
    <tbody>
     <tr>
      <td>1</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>2</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>3</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>4</td>
      <td>Empty</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>5: Latitude</td>
      <td>Latitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
      <td>6: Longitude</td>
      <td>Longitude</td>
+     <td>
+     </td>
     </tr>
     <tr>
-     <td>7</td>
-     <td>Empty</td>
+     <td>7: Altitude</td>
+     <td>Altitude</td>
+     <td>m</td>
     </tr>
    </tbody>
   </table>
