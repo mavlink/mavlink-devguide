@@ -25428,13 +25428,13 @@
      <td>lat</td>
      <td>float</td>
      <td>deg</td>
-     <td>Latitude</td>
+     <td>Latitude (lower precision). Both this and the lat_int field should be set.</td>
     </tr>
     <tr>
      <td>lon</td>
      <td>float</td>
      <td>deg</td>
-     <td>Longitude</td>
+     <td>Longitude (lower precision). Both this and the lon_int field should be set.</td>
     </tr>
     <tr>
      <td>alt</td>
@@ -25473,6 +25473,24 @@
      <td>float</td>
      <td>m/s</td>
      <td>True velocity in down direction in earth-fixed NED frame</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">lat_int<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Latitude (higher precision). If 0, recipients should use the lat field value (otherwise this field is preferred).</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">lon_int<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>Longitude (higher precision). If 0, recipients should use the lon field value (otherwise this field is preferred).</td>
     </tr>
    </tbody>
   </table>
