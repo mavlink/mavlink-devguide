@@ -1483,7 +1483,7 @@
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR">GIMBAL_DEVICE_ERROR_FLAGS_MOTOR_ERROR</a>
      </td>
-     <td>There is an error with the gimbal motor's.</td>
+     <td>There is an error with the gimbal motors.</td>
     </tr>
     <tr id="GIMBAL_DEVICE_ERROR_FLAGS_SOFTWARE_ERROR">
      <td>64</td>
@@ -1504,7 +1504,14 @@
      <td>
       <a href="#GIMBAL_DEVICE_ERROR_FLAGS_CALIBRATION_RUNNING">GIMBAL_DEVICE_ERROR_FLAGS_CALIBRATION_RUNNING</a>
      </td>
-     <td>Gimbal is currently calibrating.</td>
+     <td>Gimbal device is currently calibrating.</td>
+    </tr>
+    <tr id="GIMBAL_DEVICE_ERROR_FLAGS_NO_MANAGER">
+     <td>512</td>
+     <td>
+      <a href="#GIMBAL_DEVICE_ERROR_FLAGS_NO_MANAGER">GIMBAL_DEVICE_ERROR_FLAGS_NO_MANAGER</a>
+     </td>
+     <td>Gimbal device is not assigned to a gimbal manager.</td>
     </tr>
    </tbody>
   </table>
@@ -6049,7 +6056,7 @@
      <td>
       <a href="#ZOOM_TYPE_RANGE">ZOOM_TYPE_RANGE</a>
      </td>
-     <td>Zoom value as proportion of full camera range (a value between 0.0 and 100.0)</td>
+     <td>Zoom value as proportion of full camera range (a percentage value between 0.0 and 100.0)</td>
     </tr>
     <tr id="ZOOM_TYPE_FOCAL_LENGTH">
      <td>3</td>
@@ -31170,7 +31177,7 @@
      </td>
      <td>
      </td>
-     <td>Current zoom level (0.0 to 100.0, NaN if not known)</td>
+     <td>Current zoom level as a percentage of the full range (0.0 to 100.0, NaN if not known)</td>
     </tr>
     <tr>
      <td style="color:blue;">focusLevel<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -31182,7 +31189,7 @@
      </td>
      <td>
      </td>
-     <td>Current focus level (0.0 to 100.0, NaN if not known)</td>
+     <td>Current focus level as a percentage of the full range (0.0 to 100.0, NaN if not known)</td>
     </tr>
    </tbody>
   </table>
