@@ -1286,7 +1286,7 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Basic component information data.</p>
+   </strong>Basic component information data. Should be requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> on startup, or when required.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -1307,42 +1307,6 @@
      <td>Timestamp (time since system boot).</td>
     </tr>
     <tr>
-     <td>vendor_name</td>
-     <td>uint8_t[32]</td>
-     <td>
-     </td>
-     <td>
-     </td>
-     <td>Name of the component vendor</td>
-    </tr>
-    <tr>
-     <td>model_name</td>
-     <td>uint8_t[32]</td>
-     <td>
-     </td>
-     <td>
-     </td>
-     <td>Name of the component model</td>
-    </tr>
-    <tr>
-     <td>software_version</td>
-     <td>char[24]</td>
-     <td>
-     </td>
-     <td>
-     </td>
-     <td>Software version. The version format can be custom, recommended is SEMVER 'major.minor.patch'.</td>
-    </tr>
-    <tr>
-     <td>hardware_version</td>
-     <td>char[24]</td>
-     <td>
-     </td>
-     <td>
-     </td>
-     <td>Hardware version. The version format can be custom, recommended is SEMVER 'major.minor.patch'.</td>
-    </tr>
-    <tr>
      <td>capabilities</td>
      <td>uint64_t</td>
      <td>
@@ -1351,6 +1315,51 @@
       <a href="#MAV_PROTOCOL_CAPABILITY">MAV_PROTOCOL_CAPABILITY</a>
      </td>
      <td>Component capability flags</td>
+    </tr>
+    <tr>
+     <td>vendor_name</td>
+     <td>char[32]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Name of the component vendor. Needs to be zero terminated. The field is optional and can be empty/all zeros.</td>
+    </tr>
+    <tr>
+     <td>model_name</td>
+     <td>char[32]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Name of the component model. Needs to be zero terminated. The field is optional and can be empty/all zeros.</td>
+    </tr>
+    <tr>
+     <td>software_version</td>
+     <td>char[24]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Software version. The recommended format is SEMVER: 'major.minor.patch'  (any format may be used). The field must be zero terminated if it has a value. The field is optional and can be empty/all zeros.</td>
+    </tr>
+    <tr>
+     <td>hardware_version</td>
+     <td>char[24]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Hardware version. The recommended format is SEMVER: 'major.minor.patch'  (any format may be used). The field must be zero terminated if it has a value. The field is optional and can be empty/all zeros.</td>
+    </tr>
+    <tr>
+     <td>serial_number</td>
+     <td>char[32]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Hardware serial number. The field must be zero terminated if it has a value. The field is optional and can be empty/all zeros.</td>
     </tr>
    </tbody>
   </table>
