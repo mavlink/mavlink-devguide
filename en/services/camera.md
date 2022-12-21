@@ -270,7 +270,6 @@ Information about the tracked point can be streamed during tracking, and may be 
 Support for tracking different types of targets is indicated by the [CAMERA_CAP_FLAGS_HAS_TRACKING_POINT](../messages/common.md#CAMERA_CAP_FLAGS_HAS_TRACKING_POINT) and/or [CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE](../messages/common.md#CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE) flags in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
 To start camera tracking a GCS uses either the [MAV_CMD_CAMERA_TRACK_POINT](#MAV_CMD_CAMERA_TRACK_POINT) or [MAV_CMD_CAMERA_TRACK_RECTANGLE](#MAV_CMD_CAMERA_TRACK_RECTANGLE) command.
-To stop any kind of tracking, a GCS uses the [MAV_CMD_CAMERA_STOP_TRACKING](#MAV_CMD_CAMERA_STOP_TRACKING) command.
 
 After starting camera tracking you should call [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) to start streaming the [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS) message at your desired rate.
 This message contains information about the tracked point/rectangle in an image, and may be used by the receiving system to determine the location of the target (alongside other information like the [CAMERA_FOV_STATUS](#CAMERA_FOV_STATUS)).
@@ -278,6 +277,8 @@ This message contains information about the tracked point/rectangle in an image,
 If geo-tracking status information is supported (indicated by `CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS`) you should also call [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) to stream [CAMERA_TRACKING_GEO_STATUS](#CAMERA_TRACKING_GEO_STATUS) at your desired rate.
 This message provides the location of the target in physical co-ordinates that can be passed to a gimbal.
 
+To stop any kind of tracking, a GCS uses the [MAV_CMD_CAMERA_STOP_TRACKING](#MAV_CMD_CAMERA_STOP_TRACKING) command.
+After stopping tracking you should call `MAV_CMD_SET_MESSAGE_INTERVAL` to stop streaming `CAMERA_TRACKING_IMAGE_STATUS` and `CAMERA_TRACKING_GEO_STATUS` (set their rates to 0).
 
 ### Camera tracking message sequence
 
