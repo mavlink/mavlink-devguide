@@ -280,7 +280,7 @@ This message provides the location of the target in physical co-ordinates that c
 To stop any kind of tracking, a GCS uses the [MAV_CMD_CAMERA_STOP_TRACKING](#MAV_CMD_CAMERA_STOP_TRACKING) command.
 After stopping tracking you should call `MAV_CMD_SET_MESSAGE_INTERVAL` to stop streaming `CAMERA_TRACKING_IMAGE_STATUS` and `CAMERA_TRACKING_GEO_STATUS` (set their rates to 0).
 
-### Camera tracking message sequence
+#### Camera tracking message sequence
 
 > **Note** The GCS should already have identified all connected cameras by their heartbeat and followed the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
 
