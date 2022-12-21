@@ -265,21 +265,21 @@ The steps are:
 ### Camera Tracking
 
 A camera may support tracking a point and/or a rectangle.
-Information about the tracked point is streamed during tracking, and may be passed to a gimbal in order to move the camera to track the target (or control vehicle attitude to track the target).
+Information about the tracked point can be streamed during tracking, and may be passed to a gimbal in order to move the camera to track the target (or control vehicle attitude to track the target).
 
-Tracking support of different types is indicated by the [CAMERA_CAP_FLAGS_HAS_TRACKING_POINT](../messages/common.md#CAMERA_CAP_FLAGS_HAS_TRACKING_POINT) and/or [CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE](../messages/common.md#CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE) flags in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
+Support for tracking different types of targets is indicated by the [CAMERA_CAP_FLAGS_HAS_TRACKING_POINT](../messages/common.md#CAMERA_CAP_FLAGS_HAS_TRACKING_POINT) and/or [CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE](../messages/common.md#CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE) flags in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
 To start camera tracking a GCS uses either the [MAV_CMD_CAMERA_TRACK_POINT](#MAV_CMD_CAMERA_TRACK_POINT) or [MAV_CMD_CAMERA_TRACK_RECTANGLE](#MAV_CMD_CAMERA_TRACK_RECTANGLE) command.
 To stop any kind of tracking, a GCS uses the [MAV_CMD_CAMERA_STOP_TRACKING](#MAV_CMD_CAMERA_STOP_TRACKING) command.
 
-The [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS) message is streamed during capture (a GCS may set the interval using [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL)).
-This contains information about the tracked point/rectangle in an image, and may be used by the recieving system to determine the location of the target (alongside other information like the [CAMERA_FOV_STATUS](#CAMERA_FOV_STATUS)).
+After starting camera tracking you should call [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) to start streaming the [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS) message at your desired rate.
+This message contains information about the tracked point/rectangle in an image, and may be used by the receiving system to determine the location of the target (alongside other information like the [CAMERA_FOV_STATUS](#CAMERA_FOV_STATUS)).
 
-If supported (indicated by `CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS`) the camera will also emit [CAMERA_TRACKING_GEO_STATUS](#CAMERA_TRACKING_GEO_STATUS) at a rate set using [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL).
+If geo-tracking status information is supported (indicated by `CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS`) you should also call [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) to stream [CAMERA_TRACKING_GEO_STATUS](#CAMERA_TRACKING_GEO_STATUS) at your desired rate.
 This message provides the location of the target in physical co-ordinates that can be passed to a gimbal.
 
 
-### Camera tracking messgae sequence
+### Camera tracking message sequence
 
 > **Note** The GCS should already have identified all connected cameras by their heartbeat and followed the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
 
@@ -335,8 +335,8 @@ Message | Description | Status
 <a id="MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS"></a>[MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS](../messages/common.md#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS) | Send command to request [CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS). | deprecated
 <a id="CAMERA_FOV_STATUS"></a>[CAMERA_FOV_STATUS](../messages/common.md#CAMERA_FOV_STATUS) | Information about the field of view of a camera. Requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE). | 
 <a id="MAV_CMD_CAMERA_TRACK_POINT"></a>[MAV_CMD_CAMERA_TRACK_POINT](../messages/common.md#MAV_CMD_CAMERA_TRACK_POINT) | Initate visual point tracking, if supported by the camera ([CAMERA_CAP_FLAGS_HAS_TRACKING_POINT](#CAMERA_CAP_FLAGS) is set). | 
-<a id="MAV_CMD_CAMERA_TRACK_RECTANGLE"></a>[MAV_CMD_CAMERA_TRACK_RECTANGLE](../messages/common.md#MAV_CMD_CAMERA_TRACK_RECTANGLE) | initiate visual rectangle tracking, if supported by the camera ([CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE](#CAMERA_CAP_FLAGS) is set) | 
-<a id="MAV_CMD_CAMERA_STOP_TRACKING"></a>[MAV_CMD_CAMERA_STOP_TRACKING](../messages/common.md#MAV_CMD_CAMERA_STOP_TRACKING) | Stop camera tracking (as initiated using `MAV_CMD_CAMERA_TRACK_POINT` or `MAV_CMD_CAMERA_TRACK_RECTANGLE`) | 
+<a id="MAV_CMD_CAMERA_TRACK_RECTANGLE"></a>[MAV_CMD_CAMERA_TRACK_RECTANGLE](../messages/common.md#MAV_CMD_CAMERA_TRACK_RECTANGLE) | Initiate visual rectangle tracking, if supported by the camera ([CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE](#CAMERA_CAP_FLAGS) is set).  | 
+<a id="MAV_CMD_CAMERA_STOP_TRACKING"></a>[MAV_CMD_CAMERA_STOP_TRACKING](../messages/common.md#MAV_CMD_CAMERA_STOP_TRACKING) | Stop camera tracking (as initiated using `MAV_CMD_CAMERA_TRACK_POINT` or `MAV_CMD_CAMERA_TRACK_RECTANGLE`).  | 
 <a id="CAMERA_TRACKING_IMAGE_STATUS"></a>[CAMERA_TRACKING_IMAGE_STATUS](../messages/common.md#CAMERA_TRACKING_IMAGE_STATUS) | Camera tracking status, sent while in active tracking. Use [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) to define message interval. | 
 <a id="CAMERA_TRACKING_GEO_STATUS"></a>[CAMERA_TRACKING_GEO_STATUS](../messages/common.md#CAMERA_TRACKING_GEO_STATUS) | Camera tracking status, sent while in active tracking. Use [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) to define message interval. | 
 
