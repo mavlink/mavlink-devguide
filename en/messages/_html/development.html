@@ -66,11 +66,11 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="AIRSPEED_SENSOR_TYPE">AIRSPEED_SENSOR_TYPE</h3>
+  <h3 id="AIRSPEED_SENSOR_FLAGS">AIRSPEED_SENSOR_FLAGS</h3>
   <p>
    <a href="#enums">
     [Enum]
-   </a>Types of airspeed sensor/data. May be be used in AIRSPEED message to estimate accuracy of indicated speed.</p>
+   </a>Airspeed sensor flags</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -80,40 +80,19 @@
     </tr>
    </thead>
    <tbody>
-    <tr id="AIRSPEED_SENSOR_TYPE_UNKNOWN">
+    <tr id="AIRSPEED_SENSOR_UNHEALTHY">
      <td>0</td>
      <td>
-      <a href="#AIRSPEED_SENSOR_TYPE_UNKNOWN">AIRSPEED_SENSOR_TYPE_UNKNOWN</a>
+      <a href="#AIRSPEED_SENSOR_UNHEALTHY">AIRSPEED_SENSOR_UNHEALTHY</a>
      </td>
-     <td>Airspeed sensor type unknown/not supplied.</td>
+     <td>Airspeed sensor is unhealthy</td>
     </tr>
-    <tr id="AIRSPEED_SENSOR_TYPE_DIFFERENTIAL">
+    <tr id="AIRSPEED_SENSOR_USING">
      <td>1</td>
      <td>
-      <a href="#AIRSPEED_SENSOR_TYPE_DIFFERENTIAL">AIRSPEED_SENSOR_TYPE_DIFFERENTIAL</a>
+      <a href="#AIRSPEED_SENSOR_USING">AIRSPEED_SENSOR_USING</a>
      </td>
-     <td>Differential airspeed sensor</td>
-    </tr>
-    <tr id="AIRSPEED_SENSOR_TYPE_MASS_FLOW">
-     <td>2</td>
-     <td>
-      <a href="#AIRSPEED_SENSOR_TYPE_MASS_FLOW">AIRSPEED_SENSOR_TYPE_MASS_FLOW</a>
-     </td>
-     <td>Mass-flow airspeed sensor.</td>
-    </tr>
-    <tr id="AIRSPEED_SENSOR_TYPE_WINDVANE">
-     <td>3</td>
-     <td>
-      <a href="#AIRSPEED_SENSOR_TYPE_WINDVANE">AIRSPEED_SENSOR_TYPE_WINDVANE</a>
-     </td>
-     <td>Windvane airspeed sensor.</td>
-    </tr>
-    <tr id="AIRSPEED_SENSOR_TYPE_SYNTHETIC">
-     <td>4</td>
-     <td>
-      <a href="#AIRSPEED_SENSOR_TYPE_SYNTHETIC">AIRSPEED_SENSOR_TYPE_SYNTHETIC</a>
-     </td>
-     <td>Synthetic/calculated airspeed.</td>
+     <td>True if the data from this sensor is being actively used by the flight controller for guidance, navigation or control.</td>
     </tr>
    </tbody>
   </table>
@@ -964,7 +943,7 @@
      <td>m/s</td>
      <td>
      </td>
-     <td>Calibrated airspeed (CAS) if available, otherwise indicated airspeed (IAS).</td>
+     <td>Calibrated airspeed (CAS).</td>
     </tr>
     <tr>
      <td>temperature</td>
@@ -975,38 +954,22 @@
      <td>Temperature. INT16_MAX for value unknown/not supplied.</td>
     </tr>
     <tr>
-     <td>press_diff</td>
+     <td>raw_press</td>
      <td>float</td>
      <td>hPa</td>
      <td>
      </td>
-     <td>Differential pressure. NaN for value unknown/not supplied.</td>
+     <td>Raw differential pressure. NaN for value unknown/not supplied.</td>
     </tr>
     <tr>
-     <td>press_static</td>
-     <td>float</td>
-     <td>hPa</td>
-     <td>
-     </td>
-     <td>Static pressure. NaN for value unknown/not supplied.</td>
-    </tr>
-    <tr>
-     <td>error</td>
-     <td>float</td>
-     <td>m/s</td>
-     <td>
-     </td>
-     <td>Error/accuracy. NaN for value unknown/not supplied.</td>
-    </tr>
-    <tr>
-     <td>type</td>
+     <td>flags</td>
      <td>uint8_t</td>
      <td>
      </td>
      <td>
-      <a href="#AIRSPEED_SENSOR_TYPE">AIRSPEED_SENSOR_TYPE</a>
+      <a href="#AIRSPEED_SENSOR_FLAGS">AIRSPEED_SENSOR_FLAGS</a>
      </td>
-     <td>Airspeed sensor type. NaN for value unknown/not supplied. Used to estimate accuracy (i.e. as an alternative to using the error field).</td>
+     <td>Airspeed sensor flags.</td>
     </tr>
    </tbody>
   </table>
