@@ -179,18 +179,64 @@ Specifically, the following information is provided:
 
 A GCS can provide a UI for testing outputs based on the configured output functions, by iterating over all output channels and collecting the configured actuator output functions, and then utilizing the `MAV_CMD_ACTUATOR_TEST` command.
 
+## Translation
+High-level, translation works as following:
+- The metadata provider sets the `translationUri` in [general metadata file](#COMP_METADATA_TYPE_GENERAL). There is no CRC as translations might change independently of metadata. Each metadata type has its own url.
+- This url points to a summary json file, containing links and modification timestamps to individual language files.
+- The client (GCS) then downloads the summary file, and the translation file(s) it is interested in. The translation file is a (compressed) .TS file.
+- The client translates the metadata json file(s) (which contains annotations for which tags to translate) using the translation TS.
+
+### Caching
+The following caching strategy is recommended for clients:
+- locally cache the downloaded files for 3 days before re-checking
+- after 3 days try to download the summary again, and if no internet connection, keep using the cached version
+- the translation files can either be downloaded whenever the summary is downloaded or by checking the modification timestamp in the summary
+
+### File formats
+The metadata json contains a **translation** section, such as [this one](https://github.com/mavlink/mavlink/blob/master/component_metadata/parameter.translation.json).
+The translation section follows [this schema](https://github.com/mavlink/mavlink/blob/master/component_metadata/translation.schema.json), which is used to extract the translation strings into a TS file (see below for a script), and by the client to know which strings to translate.
+The TS file may be xz compressed.
+
+This allows to add new metadata without having to change the translation implementation in the client.
+
+The summary json has the following form:
+```json
+{
+    "<locale>": {
+        "url": "<file url>.ts.xz",
+        "last-modified": "<ISO 8601 timestamp>"
+    },
+    // ...
+}
+```
+
+For example:
+```json
+{
+    "fr_FR": {
+        "url": "https://raw.githubusercontent.com/PX4/PX4-Metadata-Translations/main/translated/parameters_fr_FR.ts.xz",
+        "last-modified": "2023-03-22T06:15:59.203476+00:00"
+    },
+    "de_DE": {
+        "url": "https://raw.githubusercontent.com/PX4/PX4-Metadata-Translations/main/translated/parameters_de_DE.ts.xz",
+        "last-modified": "2023-03-22T06:15:59.199476+00:00"
+    }
+}
+```
+
+### Hosting Translations
+Any server can be used to host translations. The following example is based on github.com, as it is easy to set up, automate and download files.
+
+Example repository: https://github.com/PX4/PX4-Metadata-Translations
+
+- It contains the untranslated metadata in `metadata/`
+- From that, `scripts/prepare_ts.py` is used to convert the metadata into a TS file (under `to_translate`)
+- A translation service, such as [crowdin](https://crowdin.com/) can be used to translate the files
+- The translated files are synced back to `translated/`
+- `scripts/update_summary.py` is executed to update the summary json file
+
 
 ## Open Issues
-
-### Translations
-
-The proposal is:
-- File format be Qt's `.ts` file format, wrapped in a custom container format.
-- General metadata will contain the location of translation file URIs, but not their CRC.
-- A GCS or other system that needs translation data is expected to poll for it and download it regularly (e.g. on boot).
-  If it is not possible to detect the file has changed on the server, a GCS should update anyway on a regular basis. 
-
-This is being prototyped. Once there is a working version, the approach will be documented here.
 
 ### Schema Management
 
