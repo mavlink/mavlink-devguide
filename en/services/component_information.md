@@ -182,7 +182,7 @@ A GCS can provide a UI for testing outputs based on the configured output functi
 
 ## Translation
 
-At high-level, metadata translation works as following:
+At high-level, metadata translation works as follows:
 
 - The metadata provider sets the `translationUri` in [general metadata file](#COMP_METADATA_TYPE_GENERAL) for each metadata type that supports translation.
   There is no CRC for the resource pointed to by this URI, as translations might change independently of metadata (for example, adding or changing translations for a particular language, or adding translations for a new language).
@@ -196,9 +196,10 @@ At high-level, metadata translation works as following:
 
 The following caching strategy is recommended for clients:
 
-- locally cache the downloaded files for 3 days before re-checking
-- after 3 days try to download the summary again, and if no internet connection, keep using the cached version
-- the translation files can either be downloaded whenever the summary is downloaded or by checking the modification timestamp in the summary
+- Locally cache the downloaded translation files.
+  These should be used until successfully replaced with a newer version.
+- After 3 days attempt to download the summary JSON file again.
+- Translation files can either be downloaded whenever the summary is downloaded or only when needed (because a modification timestamp has changed in the summary).
 
 ### File Formats
 
@@ -237,15 +238,17 @@ For example:
 
 ### Hosting Translations
 
-Any server can be used to host translations. The following example is based on github.com, as it is easy to set up, automate and download files.
+Any server can be used to host translations.
+The following example uses github.com, as it is easy to set up, automate, and download files.
 
-Example repository: https://github.com/PX4/PX4-Metadata-Translations
+The example repository is https://github.com/PX4/PX4-Metadata-Translations:
 
-- It contains the untranslated metadata in `metadata/`
-- From that, `scripts/prepare_ts.py` is used to convert the metadata into a TS file (under `to_translate`)
+- `metadata/` contains the untranslated metadata JSON files.
+- `to_translate` contains the TS files to translate.
+   This is generated from the files in `metadata/` using `scripts/prepare_ts.py`.
 - A translation service, such as [crowdin](https://crowdin.com/) can be used to translate the files
-- The translated files are synced back to `translated/`
-- `scripts/update_summary.py` is executed to update the summary json file
+- `translated/` contains translated metadata TS files (in this case synced back from Crowdin)
+- `scripts/update_summary.py` is executed to update the summary JSON file with translation file locations and modification dates.
 
 
 ## Open Issues
