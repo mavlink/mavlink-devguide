@@ -185,12 +185,12 @@ A GCS can provide a UI for testing outputs based on the configured output functi
 At high-level, metadata translation works as follows:
 
 - The metadata provider sets the `translationUri` in [general metadata file](#COMP_METADATA_TYPE_GENERAL) for each metadata type that supports translation.
-  There is no CRC for the resource pointed to by this URI, as translations might change independently of metadata (for example, adding or changing translations for a particular language, or adding translations for a new language).
+  Note that the URL has no associated CRC as the translation data can change independently of metadata (for example, adding or changing translations).
 - The `translationUri` URL points to a summary JSON file that contains links to the separate files that contain each translation of the particular metadata type.
-  The translation summary JSON file also contains modification timestamps for each linked translation file so that a GCS can determine whether the file has been updated.
+  The translation summary JSON file also contains modification timestamps for each linked translation file so that a GCS can determine whether a particular file has been updated.
   The translation files are a (compressed) file in [TS file format](https://doc.qt.io/qt-6/linguist-ts-file-format.html).
-- A client (GCS) downloads the summary file then uses its contained to locate and download the translation file(s) it is interested in.
-- The client can then apply the downloaded translations to the metadata json file(s) (which contains annotations for which tags to translate) using the translation TS.
+- A client (GCS) downloads the summary file then uses it to locate and download the translation file(s) it is interested in.
+- The client can then apply the downloaded translations to the metadata json file(s) (which contains annotations for which tags to translate).
 
 ### Caching
 
