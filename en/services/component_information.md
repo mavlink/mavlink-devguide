@@ -7,6 +7,7 @@ The *Component Metadata Protocol* is a MAVLink service for requesting metadata f
 It is intended to provide autopilot- and version- independent feature discovery and configuration, allowing a GCS to configure its UI and/or a device without knowing anything about the connected system.
 
 Information shared using this service may include:
+
 - What types of component information are supported (by this component).
 - What MAVLink commands are supported (both in missions and in other modes).
 - Parameter metadata for parameters supported by the vehicle.
@@ -23,13 +24,13 @@ There is no mechanism, for example, to provide an update if the set of supported
 ## Message/Enum Summary
 
 Message | Description
--- | --
+--- | ---
 <a id="COMPONENT_METADATA"></a>[COMPONENT_METADATA](../messages/common.md#COMPONENT_METADATA) | Message providing a download url and [CRC](#metadata-caching-crc) for the [general metadata](#COMP_METADATA_TYPE_GENERAL) component information file. The message is requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 <a id="MAV_CMD_REQUEST_MESSAGE"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Use this command to request that a component emit [COMPONENT_METADATA](#COMPONENT_METADATA). Use `param1=397` (the message id of `COMPONENT_METADATA`).
 
 
 Enum | Description
--- | --
+--- | ---
 <a id="COMP_METADATA_TYPE"></a>[COMP_METADATA_TYPE](../messages/common.md#COMP_METADATA_TYPE) | Types of component metadata supported by the protocol - e.g. general information, parameter metadata, supported commands, events, peripherals, etc. The type identifiers are used in the "general" metadata file to identify the sections that provide information about each supported type of metadata.
 
 > **Note** [COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) is not used by thie service (it is a deprecated legacy version of [COMPONENT_METADATA](../messages/common.md#COMPONENT_METADATA)).
@@ -180,19 +181,24 @@ Specifically, the following information is provided:
 A GCS can provide a UI for testing outputs based on the configured output functions, by iterating over all output channels and collecting the configured actuator output functions, and then utilizing the `MAV_CMD_ACTUATOR_TEST` command.
 
 ## Translation
+
 High-level, translation works as following:
+
 - The metadata provider sets the `translationUri` in [general metadata file](#COMP_METADATA_TYPE_GENERAL). There is no CRC as translations might change independently of metadata. Each metadata type has its own url.
 - This url points to a summary json file, containing links and modification timestamps to individual language files.
 - The client (GCS) then downloads the summary file, and the translation file(s) it is interested in. The translation file is a (compressed) .TS file.
 - The client translates the metadata json file(s) (which contains annotations for which tags to translate) using the translation TS.
 
 ### Caching
+
 The following caching strategy is recommended for clients:
+
 - locally cache the downloaded files for 3 days before re-checking
 - after 3 days try to download the summary again, and if no internet connection, keep using the cached version
 - the translation files can either be downloaded whenever the summary is downloaded or by checking the modification timestamp in the summary
 
-### File formats
+### File Formats
+
 The metadata json contains a **translation** section, such as [this one](https://github.com/mavlink/mavlink/blob/master/component_metadata/parameter.translation.json).
 The translation section follows [this schema](https://github.com/mavlink/mavlink/blob/master/component_metadata/translation.schema.json), which is used to extract the translation strings into a TS file (see below for a script), and by the client to know which strings to translate.
 The TS file may be xz compressed.
@@ -200,6 +206,7 @@ The TS file may be xz compressed.
 This allows to add new metadata without having to change the translation implementation in the client.
 
 The summary json has the following form:
+
 ```json
 {
     "<locale>": {
@@ -211,6 +218,7 @@ The summary json has the following form:
 ```
 
 For example:
+
 ```json
 {
     "fr_FR": {
@@ -225,6 +233,7 @@ For example:
 ```
 
 ### Hosting Translations
+
 Any server can be used to host translations. The following example is based on github.com, as it is easy to set up, automate and download files.
 
 Example repository: https://github.com/PX4/PX4-Metadata-Translations
