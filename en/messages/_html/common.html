@@ -17256,7 +17256,9 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request. If approved the progress of command_ack message should be set with period of time that this authorization is valid in seconds or in case it was denied it should be set with one of the reasons in <a href="#ARM_AUTH_DENIED_REASON">ARM_AUTH_DENIED_REASON</a>.</p>
+   </a>Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request.
+		If approved the <a href="#COMMAND_ACK">COMMAND_ACK</a> message progress field should be set with period of time that this authorization is valid in seconds.
+		If the authorization is denied <a href="#COMMAND_ACK">COMMAND_ACK</a>.result_param2 should be set with one of the reasons in <a href="#ARM_AUTH_DENIED_REASON">ARM_AUTH_DENIED_REASON</a>.</p>
   <table class="sortable">
    <thead>
     <tr>

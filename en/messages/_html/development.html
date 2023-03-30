@@ -465,6 +465,106 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS">TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>These flags indicate the sensor reporting capabilities for <a href="#TARGET_ABSOLUTE">TARGET_ABSOLUTE</a>.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION">
+     <td>1</td>
+     <td>
+      <a href="#TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION">TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY">
+     <td>2</td>
+     <td>
+      <a href="#TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY">TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION">
+     <td>4</td>
+     <td>
+      <a href="#TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION">TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE">
+     <td>8</td>
+     <td>
+      <a href="#TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE">TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES">
+     <td>16</td>
+     <td>
+      <a href="#TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES">TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="TARGET_OBS_FRAME">TARGET_OBS_FRAME</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>The frame of a target observation from an onboard sensor.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="TARGET_OBS_FRAME_LOCAL_NED">
+     <td>0</td>
+     <td>
+      <a href="#TARGET_OBS_FRAME_LOCAL_NED">TARGET_OBS_FRAME_LOCAL_NED</a>
+     </td>
+     <td>NED local tangent frame (x: North, y: East, z: Down) with origin fixed relative to earth.</td>
+    </tr>
+    <tr id="TARGET_OBS_FRAME_BODY_FRD">
+     <td>1</td>
+     <td>
+      <a href="#TARGET_OBS_FRAME_BODY_FRD">TARGET_OBS_FRAME_BODY_FRD</a>
+     </td>
+     <td>FRD local frame aligned to the vehicle's attitude (x: Forward, y: Right, z: Down) with an origin that travels with vehicle.</td>
+    </tr>
+    <tr id="TARGET_OBS_FRAME_LOCAL_OFFSET_NED">
+     <td>2</td>
+     <td>
+      <a href="#TARGET_OBS_FRAME_LOCAL_OFFSET_NED">TARGET_OBS_FRAME_LOCAL_OFFSET_NED</a>
+     </td>
+     <td>NED local tangent frame (x: North, y: East, z: Down) with an origin that travels with vehicle.</td>
+    </tr>
+    <tr id="TARGET_OBS_FRAME_OTHER">
+     <td>3</td>
+     <td>
+      <a href="#TARGET_OBS_FRAME_OTHER">TARGET_OBS_FRAME_OTHER</a>
+     </td>
+     <td>Other sensor frame for target observations neither in local NED nor in body FRD.</td>
+    </tr>
+   </tbody>
+  </table>
   <a id="MAV_CMD">
   </a>
   <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
@@ -1579,6 +1679,259 @@
      <td>
      </td>
      <td>A bitfield for use for autopilot-specific flags</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="TARGET_ABSOLUTE">TARGET_ABSOLUTE (<a href="#TARGET_ABSOLUTE">
+    #510
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Current motion information from sensors on a target</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>timestamp</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+     </td>
+     <td>Timestamp (UNIX epoch time).</td>
+    </tr>
+    <tr>
+     <td>id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>The ID of the target if multiple targets are present</td>
+    </tr>
+    <tr>
+     <td>sensor_capabilities</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS">TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS</a>
+     </td>
+     <td>Bitmap to indicate the sensor's reporting capabilities</td>
+    </tr>
+    <tr>
+     <td>lat</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
+     </td>
+     <td>Target's latitude (WGS84)</td>
+    </tr>
+    <tr>
+     <td>lon</td>
+     <td>int32_t</td>
+     <td>degE7</td>
+     <td>
+     </td>
+     <td>Target's longitude (WGS84)</td>
+    </tr>
+    <tr>
+     <td>alt</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+     </td>
+     <td>Target's altitude (AMSL)</td>
+    </tr>
+    <tr>
+     <td>vel</td>
+     <td>float[3]</td>
+     <td>m/s</td>
+     <td>
+     </td>
+     <td>Target's velocity in its body frame</td>
+    </tr>
+    <tr>
+     <td>acc</td>
+     <td>float[3]</td>
+     <td>m/s/s</td>
+     <td>
+     </td>
+     <td>Linear target's acceleration in its body frame</td>
+    </tr>
+    <tr>
+     <td>q_target</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Quaternion of the target's orientation from its body frame to the vehicle's NED frame.</td>
+    </tr>
+    <tr>
+     <td>rates</td>
+     <td>float[3]</td>
+     <td>rad/s</td>
+     <td>
+     </td>
+     <td>Target's roll, pitch and yaw rates</td>
+    </tr>
+    <tr>
+     <td>position_std</td>
+     <td>float[2]</td>
+     <td>m</td>
+     <td>
+     </td>
+     <td>Standard deviation of horizontal (eph) and vertical (epv) position errors</td>
+    </tr>
+    <tr>
+     <td>vel_std</td>
+     <td>float[3]</td>
+     <td>m/s</td>
+     <td>
+     </td>
+     <td>Standard deviation of the target's velocity in its body frame</td>
+    </tr>
+    <tr>
+     <td>acc_std</td>
+     <td>float[3]</td>
+     <td>m/s/s</td>
+     <td>
+     </td>
+     <td>Standard deviation of the target's acceleration in its body frame</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="TARGET_RELATIVE">TARGET_RELATIVE (<a href="#TARGET_RELATIVE">
+    #511
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>The location of a target measured by MAV's onboard sensors.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>timestamp</td>
+     <td>uint64_t</td>
+     <td>us</td>
+     <td>
+     </td>
+     <td>Timestamp (UNIX epoch time)</td>
+    </tr>
+    <tr>
+     <td>id</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>The ID of the target if multiple targets are present</td>
+    </tr>
+    <tr>
+     <td>frame</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#TARGET_OBS_FRAME">TARGET_OBS_FRAME</a>
+     </td>
+     <td>Coordinate frame used for following fields.</td>
+    </tr>
+    <tr>
+     <td>x</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+     </td>
+     <td>X Position of the target in TARGET_OBS_FRAME</td>
+    </tr>
+    <tr>
+     <td>y</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+     </td>
+     <td>Y Position of the target in TARGET_OBS_FRAME</td>
+    </tr>
+    <tr>
+     <td>z</td>
+     <td>float</td>
+     <td>m</td>
+     <td>
+     </td>
+     <td>Z Position of the target in TARGET_OBS_FRAME</td>
+    </tr>
+    <tr>
+     <td>pos_std</td>
+     <td>float[3]</td>
+     <td>m</td>
+     <td>
+     </td>
+     <td>Standard deviation of the target's position in TARGET_OBS_FRAME</td>
+    </tr>
+    <tr>
+     <td>yaw_std</td>
+     <td>float</td>
+     <td>rad</td>
+     <td>
+     </td>
+     <td>Standard deviation of the target's orientation in TARGET_OBS_FRAME</td>
+    </tr>
+    <tr>
+     <td>q_target</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Quaternion of the target's orientation from the target's frame to the <a href="#TARGET_OBS_FRAME">TARGET_OBS_FRAME</a> (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
+    </tr>
+    <tr>
+     <td>q_sensor</td>
+     <td>float[4]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Quaternion of the sensor's orientation from <a href="#TARGET_OBS_FRAME">TARGET_OBS_FRAME</a> to vehicle-carried NED. (Ignored if set to (0,0,0,0)) (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
+    </tr>
+    <tr>
+     <td>type</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#LANDING_TARGET_TYPE">LANDING_TARGET_TYPE</a>
+     </td>
+     <td>Type of target</td>
     </tr>
    </tbody>
   </table>
