@@ -35,7 +35,7 @@ The list here contains actively maintained implementations.
 
 * [MAVSDK](https://mavsdk.mavlink.io/develop/en/) - MAVLink API Library (C++, Python, Swift (iOS), Java, JS) that aims to be fully standards-compliant with MAVLink common microservices.
 * [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) - Adds [Camera Protocol](../services/camera.md) interface for cameras connected to Linux computer
-* [Rosetta Drone](https://www.youtube.com/watch?v=rBqEQoVGuzQ) - MAVLink wrapper around DJI SDK (fly a DJI drone with a Mavlink-based GCS, code: https://github.com/diux-dev/rosettadrone).
+* [Rosetta Drone](https://www.youtube.com/watch?v=rBqEQoVGuzQ) - MAVLink wrapper around DJI SDK (fly a DJI drone with a Mavlink-based GCS, code: https://github.com/RosettaDrone/rosettadrone).
 * [pymavlink](https://github.com/ArduPilot/pymavlink) - MAVLink python bindings.
 * [MAVROS](https://github.com/mavlink/mavros) - ROS to MAVLink bridge.
 * [DroneKit](http://dronekit.io/) - MAVLink API Library (Python, Android) and Log analysis tool (optimised for ArduPilot).
