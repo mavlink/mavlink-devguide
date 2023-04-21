@@ -21195,7 +21195,7 @@
      <td>uint16_t</td>
      <td>
      </td>
-     <td>Total number of mission items. 0: Not supported, UINT16_MAX if no mission is present on the vehicle.</td>
+     <td>Total number of mission items on vehicle (on last item, sequence == total). If the autopilot stores its home location as part of the mission this will be excluded from the total. 0: Not supported, UINT16_MAX if no mission is present on the vehicle.</td>
     </tr>
     <tr>
      <td style="color:blue;">mission_state<a href="#mav2_extension_field" title="MAVLink2 extension field">
