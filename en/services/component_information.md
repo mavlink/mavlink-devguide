@@ -7,6 +7,7 @@ The *Component Metadata Protocol* is a MAVLink service for requesting metadata f
 It is intended to provide autopilot- and version- independent feature discovery and configuration, allowing a GCS to configure its UI and/or a device without knowing anything about the connected system.
 
 Information shared using this service may include:
+
 - What types of component information are supported (by this component).
 - What MAVLink commands are supported (both in missions and in other modes).
 - Parameter metadata for parameters supported by the vehicle.
@@ -23,13 +24,13 @@ There is no mechanism, for example, to provide an update if the set of supported
 ## Message/Enum Summary
 
 Message | Description
--- | --
+--- | ---
 <a id="COMPONENT_METADATA"></a>[COMPONENT_METADATA](../messages/common.md#COMPONENT_METADATA) | Message providing a download url and [CRC](#metadata-caching-crc) for the [general metadata](#COMP_METADATA_TYPE_GENERAL) component information file. The message is requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 <a id="MAV_CMD_REQUEST_MESSAGE"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Use this command to request that a component emit [COMPONENT_METADATA](#COMPONENT_METADATA). Use `param1=397` (the message id of `COMPONENT_METADATA`).
 
 
 Enum | Description
--- | --
+--- | ---
 <a id="COMP_METADATA_TYPE"></a>[COMP_METADATA_TYPE](../messages/common.md#COMP_METADATA_TYPE) | Types of component metadata supported by the protocol - e.g. general information, parameter metadata, supported commands, events, peripherals, etc. The type identifiers are used in the "general" metadata file to identify the sections that provide information about each supported type of metadata.
 
 > **Note** [COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) is not used by thie service (it is a deprecated legacy version of [COMPONENT_METADATA](../messages/common.md#COMPONENT_METADATA)).
@@ -179,18 +180,78 @@ Specifically, the following information is provided:
 
 A GCS can provide a UI for testing outputs based on the configured output functions, by iterating over all output channels and collecting the configured actuator output functions, and then utilizing the `MAV_CMD_ACTUATOR_TEST` command.
 
+## Translation
+
+At high-level, metadata translation works as follows:
+
+- The metadata provider sets the `translationUri` in [general metadata file](#COMP_METADATA_TYPE_GENERAL) for each metadata type that supports translation.
+  Note that the URL has no associated CRC as the translation data can change independently of metadata (for example, adding or changing translations).
+- The `translationUri` URL points to a summary JSON file that contains links to the separate files that contain each translation of the particular metadata type.
+  The translation summary JSON file also contains modification timestamps for each linked translation file so that a GCS can determine whether a particular file has been updated.
+  The translation files are in [TS file format](https://doc.qt.io/qt-6/linguist-ts-file-format.html), and may optionally be compressed in .xz format.
+- A client (GCS) downloads the summary file then uses it to locate and download the translation file(s) it is interested in.
+- The client can then apply the downloaded translations to the metadata json file(s) (which contains annotations for which tags to translate).
+
+### Caching
+
+The following caching strategy is recommended for clients:
+
+- Locally cache the downloaded translation files.
+  These should be used until successfully replaced with a newer version.
+- After 3 days attempt to download the summary JSON file again.
+- Translation files can either be downloaded whenever the summary is downloaded or only when needed (because a modification timestamp has changed in the summary).
+
+### File Formats
+
+The metadata json contains a **translation** section, such as [this one](https://github.com/mavlink/mavlink/blob/master/component_metadata/parameter.translation.json).
+The translation section follows [this schema](https://github.com/mavlink/mavlink/blob/master/component_metadata/translation.schema.json), which is used to extract the translation strings into a TS file (see below for a script), and by the client to know which strings to translate.
+The TS file may be xz compressed.
+
+This allows to add new metadata without having to change the translation implementation in the client.
+
+The summary json has the following form:
+
+```json
+{
+    "<locale>": {
+        "url": "<file url>.ts.xz",
+        "last-modified": "<ISO 8601 timestamp>"
+    },
+    // ...
+}
+```
+
+For example:
+
+```json
+{
+    "fr_FR": {
+        "url": "https://raw.githubusercontent.com/PX4/PX4-Metadata-Translations/main/translated/parameters_fr_FR.ts.xz",
+        "last-modified": "2023-03-22T06:15:59.203476+00:00"
+    },
+    "de_DE": {
+        "url": "https://raw.githubusercontent.com/PX4/PX4-Metadata-Translations/main/translated/parameters_de_DE.ts.xz",
+        "last-modified": "2023-03-22T06:15:59.199476+00:00"
+    }
+}
+```
+
+### Hosting Translations
+
+Any server can be used to host translations.
+The following example uses github.com, as it is easy to set up, automate, and download files.
+
+The example repository is https://github.com/PX4/PX4-Metadata-Translations:
+
+- `metadata/` contains the untranslated metadata JSON files.
+- `to_translate` contains the TS files to translate.
+   This is generated from the files in `metadata/` using `scripts/prepare_ts.py`.
+- A translation service, such as [crowdin](https://crowdin.com/) can be used to translate the files
+- `translated/` contains translated metadata TS files (in this case synced back from Crowdin)
+- `scripts/update_summary.py` is executed to update the summary JSON file with translation file locations and modification dates.
+
 
 ## Open Issues
-
-### Translations
-
-The proposal is:
-- File format be Qt's `.ts` file format, wrapped in a custom container format.
-- General metadata will contain the location of translation file URIs, but not their CRC.
-- A GCS or other system that needs translation data is expected to poll for it and download it regularly (e.g. on boot).
-  If it is not possible to detect the file has changed on the server, a GCS should update anyway on a regular basis. 
-
-This is being prototyped. Once there is a working version, the approach will be documented here.
 
 ### Schema Management
 
