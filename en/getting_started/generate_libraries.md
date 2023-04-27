@@ -59,7 +59,7 @@ Steps for generating the MAVLink library code:
 ## Building MAVLink libraries using the Mavgen Command Line Tool {#mavgen}
 
 **mavgen.py** is a command line tool for generating MAVLink libraries for various programming languages.
-After the `mavlink` directory has been added to the `PYTHONPATH`, it can be run by executing from the command line.
+You can run mavgen from the `mavlink` directory. However, if you are outside of the mavlink directory, you need to add the `mavlink` directory to the `PYTHONPATH` environment variable.
 
 > **Tip** Mavgen is the backend used by [mavgenerate](#mavgenerate). The documentation below explains all the options for both tools.
 
