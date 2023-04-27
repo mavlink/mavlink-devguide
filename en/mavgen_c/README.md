@@ -74,11 +74,7 @@ mavlink/common/../mavlink_helpers.h:86:24: warning: taking address of packed mem
    86 |  crc_accumulate_buffer(&msg->checksum, _MAV_PAYLOAD(msg), msg->len);
 ```
 
-These can be ignored because MAVLink re-orders packed structures such that values are properly aligned.
-Specifically all 4-byte values are aligned on 4-byte boundaries (by putting them first), all 2-byte values come after those and are hence also aligned, and last of all come the 
-the 1-byte values.
-
-You can supress the warnings in CMake using `target_compile_options(mavlink_c INTERFACE -Wno-address-of-packed-member -Wno-cast-align)`.
+You can supress the warnings using `-Wno-address-of-packed-member`.
 
 ## Upgrading Library from MAVLink 1
 
