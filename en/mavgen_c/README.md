@@ -5,7 +5,7 @@ It is field-proven and deployed in many products where it serves as interoperabi
 
 This topic explains how to get and use the library.
 
-## Getting the C MAVLink Libraries {#get_libraries}
+## Getting the C MAVLink Library {#get_libraries}
 
 If you are using a [standard dialect](../messages/README.md#dialects) then download the *MAVLink 2* library from Github: [c_library_v2](https://github.com/mavlink/c_library_v2).
 
@@ -16,14 +16,14 @@ If you need libraries for a custom dialect then you will need to [install mavgen
 These can then be used in the same way as the pre-generated libraries.
 
 The libraries can be placed/generated anywhere in your project tree.
-The example below shows them located in: **generated/include/mavlink/v2.0/**.
 
+## Adding Libary to C Project
 
-## Adding Libraries
+This example below assumes the MAVLink headers to be located in: **generated/include/mavlink/**.
 
 To use MAVLink in your C project, include the **mavlink.h** header file for your dialect:
 ```c
-#include <your_dialect/mavlink.h>
+#include <mavlink/your_dialect/mavlink.h>
 ```
 This will automatically add the header files for all messages in your dialect, and for any dialect files that it includes.
 
@@ -34,9 +34,9 @@ This will automatically add the header files for all messages in your dialect, a
 > **Tip** *Do not include the individual message files*.
   If you generate your own headers, you will have to add their output location to your C compiler's search path.
 
-When compiling the project, we recommend that you specify the top-level output directory AND all generated dialects and versions (this will give the greatest compatibility with existing code and examples):
+When compiling the project, make sure to add the include directory:
 ```sh
-$ gcc ... -I generated/include -I generated/include/common ...
+$ gcc ... -I generated/include ...
 ```
 
 In order to *send messages* you will also need to declare a variable `mavlink_system` in the **global scope**, specifying the system id and component ID of your component:
@@ -45,6 +45,29 @@ mavlink_system_t mavlink_system = {
 	1, // System ID (1-255)
 	1  // Component ID (a MAV_COMPONENT value)
 }; 
+## Adding Library to Cmake Prjoect
+
+To include the headers in cmake, install them locally, e.g. into the directory `install`:
+
+```
+cmake -Bbuild -H. -DCMAKE_INSTALL_PREFIX=install -DMAVLINK_DIALECT=common -DMAVLINK_VERSION=2.0
+cmake --build build --target install
+```
+
+Then use `find_package` to get the dependency in `CMakeLists.txt`:
+
+```
+find_package(MAVLink REQUIRED)
+
+add_executable(my_program my_program.c)
+
+target_link_libraries(my_program PRIVATE MAVLink::mavlink)
+```
+
+And pass the local install directory to cmake (adapt to your directory structure):
+```
+cd ../my_program
+cmake -Bbuild -H. -DCMAKE_PREFIX_PATH=../mavlink/install
 ```
 
 ### Build Warnings
@@ -117,7 +140,7 @@ Returns: `0` if the packet decoding is incomplete. `1` if the packet successfull
 
 The code fragment below shows the typical use of this function when reading data from a serial port (`serial`):
 ```cpp
-#include <common/mavlink.h>
+#include <mavlink/common/mavlink.h>
 
 mavlink_status_t status;
 mavlink_message_t msg;
