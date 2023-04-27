@@ -39,12 +39,6 @@ When compiling the project, make sure to add the include directory:
 $ gcc ... -I generated/include ...
 ```
 
-In order to *send messages* you will also need to declare a variable `mavlink_system` in the **global scope**, specifying the system id and component ID of your component:
-```cpp
-mavlink_system_t mavlink_system = {
-	1, // System ID (1-255)
-	1  // Component ID (a MAV_COMPONENT value)
-}; 
 ## Adding Library to Cmake Prjoect
 
 To include the headers in cmake, install them locally, e.g. into the directory `install`:
