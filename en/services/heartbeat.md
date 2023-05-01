@@ -51,7 +51,7 @@ The _type_ of a component is obtained from its [`HEARTBEAT.type`](#HEARTBEAT) ([
 - A flight controller component must use a `MAV_TYPE` corresponding to a particular vehicle (e.g. `MAV_TYPE_FIXED_WING`, `MAV_TYPE_QUADROTOR` etc.), and set `HEARTBEAT.autopilot` to a valid flight stack.
 - All other components must use a `MAV_TYPE` corresponding to the actual type (e.g.: `MAV_TYPE_GIMBAL`, `MAV_TYPE_BATTERY`, etc.), and should set `HEARTBEAT.autopilot` to `MAV_AUTOPILOT_INVALID`.
   
-> **Tip** The recommended way to recognise an autopilot component is to check that `HEARTBEAT.type` is not `MAV_AUTOPILOT_INVALID`.
+> **Tip** The recommended way to recognise an autopilot component is to check that `HEARTBEAT.autopilot` is not `MAV_AUTOPILOT_INVALID`.
 
 Every component must have a system-unique component id, which is used for routing and for identifying multiple instances of a particular component type.
 
