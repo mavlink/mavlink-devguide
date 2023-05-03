@@ -35,6 +35,7 @@ This will automatically add the header files for all messages in your dialect, a
   If you generate your own headers, you will have to add their output location to your C compiler's search path.
 
 When compiling the project, make sure to add the include directory:
+
 ```sh
 $ gcc ... -I generated/include ...
 ```
@@ -74,7 +75,12 @@ mavlink/common/../mavlink_helpers.h:86:24: warning: taking address of packed mem
    86 |  crc_accumulate_buffer(&msg->checksum, _MAV_PAYLOAD(msg), msg->len);
 ```
 
-You can supress the warnings using `-Wno-address-of-packed-member`.
+<!--
+These can be ignored because MAVLink re-orders packed structures such that values are properly aligned. Specifically all 4-byte values are aligned on 4-byte boundaries (by putting them first), all 2-byte values come after those and are hence also aligned, and last of all come the the 1-byte values.
+
+-->
+You can suppress the warnings using `-Wno-address-of-packed-member`.
+
 
 ## Upgrading Library from MAVLink 1
 

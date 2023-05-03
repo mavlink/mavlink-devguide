@@ -28,11 +28,13 @@ To install the MAVLink toolchain:
      ```
 
 1. Clone the official [mavlink repo](https://github.com/mavlink/mavlink) or your fork with your custom dialect:
+
    ```
    git clone https://github.com/mavlink/mavlink.git --recursive
    ```
 
 1. Install the required packages:
+
    ```
    python3 -m pip install -r pymavlink/requirements.txt
    ```
