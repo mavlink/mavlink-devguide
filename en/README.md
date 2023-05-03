@@ -1,8 +1,6 @@
 <span style="float:right; padding:10px; margin-right:20px;"><a href="https://github.com/mavlink/mavlink"><img src="../assets/site/logo_mavlink_small.png" title="MAVLink Logo" width="250px" /></a></span>
 # MAVLink Developer Guide
 
-[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)
-
 MAVLink is a very lightweight messaging protocol for communicating with drones (and between onboard drone components).
 
 MAVLink follows a modern hybrid publish-subscribe and point-to-point design pattern: Data streams are sent / published as **topics** while configuration sub-protocols such as the [mission protocol](services/mission.md) or [parameter protocol](services/parameter.md) are point-to-point with retransmission.
