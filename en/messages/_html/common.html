@@ -6035,6 +6035,13 @@
      </td>
      <td>Zoom value/variable focal length in millimetres. Note that there is no message to get the valid zoom range of the camera, so this can type can only be used for cameras where the zoom range is known (implying that this cannot reliably be used in a GCS for an arbitrary camera)</td>
     </tr>
+    <tr id="ZOOM_TYPE_HORIZONTAL_FOV">
+     <td>4</td>
+     <td>
+      <a href="#ZOOM_TYPE_HORIZONTAL_FOV">ZOOM_TYPE_HORIZONTAL_FOV</a>
+     </td>
+     <td>Zoom value as horizontal field of view in degrees.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="SET_FOCUS_TYPE">SET_FOCUS_TYPE</h3>
@@ -22901,7 +22908,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Send a command with up to seven parameters to the MAV, where params 5 and 6 are integers and the other values are floats. This is preferred over <a href="#COMMAND_LONG">COMMAND_LONG</a> when sending positional data in params 5 and 6, as it allows for greater precision when sending latitudes/longitudes. Param 5 and 6 encode positional data as scaled integers, where the scaling depends on the actual command value. NaN or INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current latitude, yaw rather than a specific value). The command microservice is documented at https://mavlink.io/en/services/command.html</p>
+   </a>Send a command with up to seven parameters to the MAV, where params 5 and 6 are integers and the other values are floats. This is preferred over <a href="#COMMAND_LONG">COMMAND_LONG</a> as it allows the <a href="#MAV_FRAME">MAV_FRAME</a> to be specified for interpreting positional information, such as altitude. <a href="#COMMAND_INT">COMMAND_INT</a> is also preferred when sending latitude and longitude data in params 5 and 6, as it allows for greater precision. Param 5 and 6 encode positional data as scaled integers, where the scaling depends on the actual command value. NaN or INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current latitude, yaw rather than a specific value). The command microservice is documented at https://mavlink.io/en/services/command.html</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23015,7 +23022,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Send a command with up to seven parameters to the MAV. <a href="#COMMAND_INT">COMMAND_INT</a> is generally preferred when sending <a href="#mav_commands">MAV_CMD</a> commands where param 5 and param 6 contain latitude/longitude data, as sending these in floats can result in a significant loss of precision. <a href="#COMMAND_LONG">COMMAND_LONG</a> is required for commands that mandate float values in params 5 and 6. The command microservice is documented at https://mavlink.io/en/services/command.html</p>
+   </a>Send a command with up to seven parameters to the MAV. <a href="#COMMAND_INT">COMMAND_INT</a> is generally preferred when sending <a href="#mav_commands">MAV_CMD</a> commands that include positional information; it offers higher precision and allows the <a href="#MAV_FRAME">MAV_FRAME</a> to be specified (which may otherwise be ambiguous, particularly for altitude). The command microservice is documented at https://mavlink.io/en/services/command.html</p>
   <table class="sortable">
    <thead>
     <tr>
