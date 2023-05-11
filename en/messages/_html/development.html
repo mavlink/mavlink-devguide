@@ -290,6 +290,39 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="MAV_MODE_PROPERTY">MAV_MODE_PROPERTY</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Mode properties.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="MAV_MODE_PROPERTY_ADVANCED">
+     <td>1</td>
+     <td>
+      <a href="#MAV_MODE_PROPERTY_ADVANCED">MAV_MODE_PROPERTY_ADVANCED</a>
+     </td>
+     <td>If set, this mode is an advanced mode.
+          For example a rate-controlled manual mode might be advanced, whereas a position-controlled manual mode is not.
+          A GCS can optionally use this flag to configure the UI for its intended users.</td>
+    </tr>
+    <tr id="MAV_MODE_PROPERTY_NOT_USER_SELECTABLE">
+     <td>2</td>
+     <td>
+      <a href="#MAV_MODE_PROPERTY_NOT_USER_SELECTABLE">MAV_MODE_PROPERTY_NOT_USER_SELECTABLE</a>
+     </td>
+     <td>If set, this mode should not be added to the list of selectable modes.
+          The mode might still be selected by the FC directly (for example as part of a failsafe).</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_BATTERY_STATUS_FLAGS">MAV_BATTERY_STATUS_FLAGS</h3>
   <p>
    <a href="#enums">
@@ -1610,14 +1643,6 @@
      <td>Standard mode.</td>
     </tr>
     <tr>
-     <td>base_mode</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
-     </td>
-     <td>System mode bitmap.</td>
-    </tr>
-    <tr>
      <td>custom_mode</td>
      <td>uint32_t</td>
      <td>
@@ -1625,8 +1650,16 @@
      <td>A bitfield for use for autopilot-specific flags</td>
     </tr>
     <tr>
+     <td>properties</td>
+     <td>uint32_t</td>
+     <td>
+      <a href="#MAV_MODE_PROPERTY">MAV_MODE_PROPERTY</a>
+     </td>
+     <td>Mode properties.</td>
+    </tr>
+    <tr>
      <td>mode_name</td>
-     <td>char[50]</td>
+     <td>char[35]</td>
      <td>
      </td>
      <td>Name of custom mode, with null termination character. Should be omitted for standard modes.</td>
@@ -1666,19 +1699,18 @@
      <td>Standard mode.</td>
     </tr>
     <tr>
-     <td>base_mode</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_MODE_FLAG">MAV_MODE_FLAG</a>
-     </td>
-     <td>System mode bitmap.</td>
-    </tr>
-    <tr>
      <td>custom_mode</td>
      <td>uint32_t</td>
      <td>
      </td>
      <td>A bitfield for use for autopilot-specific flags</td>
+    </tr>
+    <tr>
+     <td>intended_custom_mode</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>The custom_mode of the mode that was last commanded by the user (for example, with <a href="#MAV_CMD_DO_SET_STANDARD_MODE">MAV_CMD_DO_SET_STANDARD_MODE</a>, <a href="#MAV_CMD_DO_SET_MODE">MAV_CMD_DO_SET_MODE</a> or via RC). This should usually be the same as custom_mode. It will be different if the vehicle is unable to enter the intended mode, or has left that mode due to a failsafe condition. 0 indicates the intended custom mode is unknown/not supplied</td>
     </tr>
    </tbody>
   </table>

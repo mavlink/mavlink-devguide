@@ -16243,12 +16243,10 @@
   <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW">MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW">1000</a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>High level setpoint to be sent to a gimbal manager to set a gimbal attitude. It is possible to set combinations of the values below. E.g. an angle as well as a desired angular rate can be used to get to this angle at a certain angular rate, or an angular rate only will result in continuous turning. NaN is to be used to signal unset. Note: a gimbal is never to react to this command but only the gimbal manager.</p>
+   </a>Set gimbal manager pitch/yaw setpoints (low rate command). It is possible to set combinations of the values below. E.g. an angle as well as a desired angular rate can be used to get to this angle at a certain angular rate, or an angular rate only will result in continuous turning. NaN is to be used to signal unset. Note: only the gimbal manager will react to this command - it will be ignored by a gimbal device. Use <a href="#GIMBAL_MANAGER_SET_PITCHYAW">GIMBAL_MANAGER_SET_PITCHYAW</a> if you need to stream pitch/yaw setpoints at higher rate.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16313,8 +16311,6 @@
   <h3 id="MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE">MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE (<a href="#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE">1001</a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -32313,8 +32309,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -32415,8 +32409,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -32505,8 +32497,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
@@ -33132,15 +33122,13 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
    </a>
    <strong>
     (MAVLink 2)
-   </strong>High level message to control a gimbal's pitch and yaw angles. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.</p>
+   </strong>Set gimbal manager pitch and yaw angles (high rate message). This message is to be sent to the gimbal manager (e.g. from a ground station) and will be ignored by gimbal devices. Angles and rates can be set to NaN according to use case. Use <a href="#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW">MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW</a> for low-rate adjustments that require confirmation.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -33228,8 +33216,6 @@
    </a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
