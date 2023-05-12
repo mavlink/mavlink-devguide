@@ -3153,6 +3153,20 @@
      </td>
      <td>Command has been cancelled (as a result of receiving a <a href="#COMMAND_CANCEL">COMMAND_CANCEL</a> message).</td>
     </tr>
+    <tr id="MAV_RESULT_COMMAND_LONG_ONLY">
+     <td>7</td>
+     <td>
+      <a href="#MAV_RESULT_COMMAND_LONG_ONLY">MAV_RESULT_COMMAND_LONG_ONLY</a>
+     </td>
+     <td>Command is valid, but it is only accepted when sent as a <a href="#COMMAND_LONG">COMMAND_LONG</a> (as it has float values for params 5 and 6).</td>
+    </tr>
+    <tr id="MAV_RESULT_COMMAND_INT_ONLY">
+     <td>8</td>
+     <td>
+      <a href="#MAV_RESULT_COMMAND_INT_ONLY">MAV_RESULT_COMMAND_INT_ONLY</a>
+     </td>
+     <td>Command is valid, but it is only accepted when sent as a <a href="#COMMAND_INT">COMMAND_INT</a> (as it encodes a location in params 5, 6 and 7, and hence requires a reference <a href="#MAV_FRAME">MAV_FRAME</a>).</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_MISSION_RESULT">MAV_MISSION_RESULT</h3>
@@ -23123,6 +23137,7 @@
     <tr>
      <th>Field Name</th>
      <th>Type</th>
+     <th>Units</th>
      <th>Values</th>
      <th>Description</th>
     </tr>
@@ -23132,6 +23147,8 @@
      <td>command</td>
      <td>uint16_t</td>
      <td>
+     </td>
+     <td>
       <a href="#MAV_CMD">MAV_CMD</a>
      </td>
      <td>Command ID (of acknowledged command).</td>
@@ -23139,6 +23156,8 @@
     <tr>
      <td>result</td>
      <td>uint8_t</td>
+     <td>
+     </td>
      <td>
       <a href="#MAV_RESULT">MAV_RESULT</a>
      </td>
@@ -23151,8 +23170,11 @@
      </td>
      <td>uint8_t</td>
      <td>
+      %
      </td>
-     <td>Also used as result_param1, it can be set with an enum containing the errors reasons of why the command was denied, or the progress percentage when result is <a href="#MAV_RESULT_IN_PROGRESS">MAV_RESULT_IN_PROGRESS</a> (UINT8_MAX if the progress is unknown).</td>
+     <td>
+     </td>
+     <td>The progress percentage when result is <a href="#MAV_RESULT_IN_PROGRESS">MAV_RESULT_IN_PROGRESS</a>. Values: [0-100], or UINT8_MAX if the progress is unknown.</td>
     </tr>
     <tr>
      <td style="color:blue;">result_param2<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -23162,7 +23184,9 @@
      <td>int32_t</td>
      <td>
      </td>
-     <td>Additional parameter of the result, example: which parameter of <a href="#MAV_CMD_NAV_WAYPOINT">MAV_CMD_NAV_WAYPOINT</a> caused it to be denied.</td>
+     <td>
+     </td>
+     <td>Additional result information. Can be set with a command-specific enum containing command-specific error reasons for why the command might be denied. If used, the associated enum must be documented in the corresponding <a href="#mav_commands">MAV_CMD</a> (this enum should have a 0 value to indicate "unused" or "unknown").</td>
     </tr>
     <tr>
      <td style="color:blue;">target_system<a href="#mav2_extension_field" title="MAVLink2 extension field">
@@ -23170,6 +23194,8 @@
       </a>
      </td>
      <td>uint8_t</td>
+     <td>
+     </td>
      <td>
      </td>
      <td>System ID of the target recipient. This is the ID of the system that sent the command for which this <a href="#COMMAND_ACK">COMMAND_ACK</a> is an acknowledgement.</td>
@@ -23180,6 +23206,8 @@
       </a>
      </td>
      <td>uint8_t</td>
+     <td>
+     </td>
      <td>
      </td>
      <td>Component ID of the target recipient. This is the ID of the system that sent the command for which this <a href="#COMMAND_ACK">COMMAND_ACK</a> is an acknowledgement.</td>
