@@ -33,15 +33,19 @@ The steps are:
 
 ## Update Plugin with Correct Ports
 
-The last few lines of the plugin file specify the ports to be monitored: 14550 and 14580.
+The last few lines of the plugin file specify the ports to be monitored.
+
 ```
 -- bind protocol dissector to port 14550 and 14580
 
 local udp_dissector_table = DissectorTable.get("udp.port")
 udp_dissector_table:add(14550, mavlink_proto)
 udp_dissector_table:add(14580, mavlink_proto)
+udp_dissector_table:add(18570, mavlink_proto)
 ```
-These are the correct ports to monitor network traffic between a simulated autopilot and a GCS and offboard API.
+
+These first two ports are the correct ports to monitor network traffic between a simulated autopilot and a GCS and offboard API.
+The final port (18570) can be used to monitor a simulation running in WSL2.
 
 If you want to monitor other interfaces then you can modify or add to these lines and then save the plugin file.
 This might be necessary, for example, in order to monitor traffic recorded on the interface between a companion computer and a flight controller.
@@ -90,7 +94,7 @@ In addition to using filters for the usual *Wireshark* things (e.g. ips and port
 
 > **Note** This works the same way for live view and for a *pcapng* file loaded into *Wireshark*
 
-We already saw you can filter for MAVLink packets using `mavlink_proto`
+We already saw you can filter for MAVLink packets using `mavlink_proto`.
 The following is a filter example:
 
 ```
