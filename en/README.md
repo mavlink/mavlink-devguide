@@ -67,7 +67,7 @@ Go      | [go-mavlink1](https://github.com/mgr9525/go-mavlink1) | &check; | &cro
 Haskell | [HaskMavlink](https://github.com/SweeWarman/HaskMavlink)| &cross; | &check; | &cross; | 
 Java    | [dronefleet/mavlink](https://github.com/dronefleet/mavlink) | &check; | &check; | &check; | *Idiomatic* Java SDK/API for MAVLink. Provides a gradle plugin for the code generator.
 TypeScript/JavaScript/npm | [node-mavlink](https://github.com/padcom/node-mavlink#readme) | &check; | &check; | &check; | TypeScript code generator for data classes with tools to receive and send messages. [Getting started](https://github.com/padcom/node-mavlink#getting-started) guide and inline JSDoc, along with some [examples](https://github.com/padcom/node-mavlink/tree/master/examples).
-Kotlin  | [mavlink-kotlin](https://github.com/urbanmatrix/mavlink-kotlin) | &check; | &check; | &check; | Uses codegen instead of reflection for performance with Coroutines, RxJava2 and RxJava3 support. Provides a code generator Gradle plugin.
+Kotlin  | [mavlink-kotlin](https://github.com/divyanshupundir/mavlink-kotlin) | &check; | &check; | &check; | Uses codegen instead of reflection for performance with Coroutines, RxJava2 and RxJava3 support. Provides a code generator Gradle plugin.
 
 
 ## Prebuilt MAVLink C Libraries {#prebuilt_libraries}
