@@ -132,4 +132,4 @@ At high level:
   This allows them to be sent in [COMMAND_INT](#COMMAND_INT) with higher precision.
 - Otherwise it is desirable to be able to send commands in either command message.
   Therefore use param 5 and 6 for integers rather than floats if possible.
-  If reserving values, then consider choosing to reserve params 5 and 6.
+  If reserving values, then consider choosing to reserve params 5 and 6, and reserve them with a default value of `0`.
