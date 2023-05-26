@@ -1,0 +1,112 @@
+<html>
+ <body>
+  <h2>MAVLink Protocol Version</h2>
+  <p>The current MAVLink version is 2.3. The minor version numbers (after the dot) range from 1-255.</p>
+  <h2 id="enums">MAVLink Type Enumerations</h2>
+  <h3 id="AIRLINK_AUTH_RESPONSE_TYPE">AIRLINK_AUTH_RESPONSE_TYPE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="AIRLINK_ERROR_LOGIN_OR_PASS">
+     <td>0</td>
+     <td>
+      <a href="#AIRLINK_ERROR_LOGIN_OR_PASS">AIRLINK_ERROR_LOGIN_OR_PASS</a>
+     </td>
+     <td>Login or password error</td>
+    </tr>
+    <tr id="AIRLINK_AUTH_OK">
+     <td>1</td>
+     <td>
+      <a href="#AIRLINK_AUTH_OK">AIRLINK_AUTH_OK</a>
+     </td>
+     <td>Auth successful</td>
+    </tr>
+   </tbody>
+  </table>
+  <a id="MAV_CMD">
+  </a>
+  <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
+  <blockquote class="alert alert-info clearfix">
+   <strong class="fa fa-2x fa-edit">
+   </strong>
+   <p>MAVLink commands (<a href="#mav_commands">MAV_CMD</a>) and messages are different! These commands define the values of up to 7 parameters that are packaged INSIDE specific messages used in the Mission Protocol and Command Protocol. Use commands for actions in missions or if you need acknowledgment and/or retry logic from a request. Otherwise use messages.</p>
+  </blockquote>
+  <h2 id="messages">MAVLink Messages</h2>
+  <h3 id="AIRLINK_AUTH">AIRLINK_AUTH (<a href="#AIRLINK_AUTH">
+    #52000
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Authorization package</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>login</td>
+     <td>char[50]</td>
+     <td>Login</td>
+    </tr>
+    <tr>
+     <td>password</td>
+     <td>char[50]</td>
+     <td>Password</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AIRLINK_AUTH_RESPONSE">AIRLINK_AUTH_RESPONSE (<a href="#AIRLINK_AUTH_RESPONSE">
+    #52001
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Response to the authorization request</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>resp_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#AIRLINK_AUTH_RESPONSE_TYPE">AIRLINK_AUTH_RESPONSE_TYPE</a>
+     </td>
+     <td>Response type</td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
+</html>
