@@ -52,6 +52,24 @@ You will also need to include them in *pymavlink* and install them locally on yo
 
 The generated MAVLink libraries can then be used in the same way as those installed using *pip*.
 
+### Using custom dialect with pymavlink installed pip
+
+Another way to use a custom dialect with a standard installation of *pymavlink* with *pip* is
+1. [Generate](../getting_started/generate_libraries.md) the Python libraries for your dialect.
+1. Copy the generated **.py** dialect file into folder you have the code (for example: customDialect.py)
+1. You need to change one import on the generated file 
+    ```python
+    # from ...generator.mavcrc import x25crc
+    from pymavlink.generator.mavcrc import x25crc
+    ```
+1. And finally use the new dialect in the code 
+    ```python
+    import pymavlink.mavutil as mavutil
+    import customDialec # the file is customDialect.py
+
+    mavutil.mavlink = customDialec
+    mav = mavutil.mavlink_connection(...)
+    ```
 
 ## Using the Python MAVLink Libraries
 
