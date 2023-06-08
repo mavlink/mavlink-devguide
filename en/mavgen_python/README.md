@@ -3,7 +3,7 @@
 Pymavlink is a *low level* and *general purpose* MAVLink message processing library, written in Python.
 It has been used to implement MAVLink communications in many types of MAVLink systems, including a GCS (MAVProxy), Developer APIs (DroneKit) and numerous companion computer MAVLink applications.
 
-The library can be used with Python 2.7+ (recommended) or Python 3.5+ and supports both MAVLink 1 and MAVLink 2 versions of the protocol.
+The library can be used with Python 3.5+ and supports both MAVLink 1 and MAVLink 2 versions of the protocol.
 
 This topic explains how to get and use the *Pymavlink* MAVLink Python libraries (generated using [mavgen](../getting_started/generate_libraries.md#mavgen)).
 
@@ -16,7 +16,10 @@ This topic explains how to get and use the *Pymavlink* MAVLink Python libraries 
   These implement a number of [MAVLink microservices](../about/overview.md).
 
 ## Getting the Python MAVLink Libraries
-The following are instructions for how to obtain the MAVLink libraries for the standard and custom dialects. If the standard dialect is to be used, the instructions are much simpler. For custom dialects the library needs to be generated first.
+
+The following are instructions for how to obtain the MAVLink libraries for the standard and custom dialects.
+If the standard dialect is to be used, the instructions are much simpler.
+For custom dialects the library needs to be generated first.
 
 ### Get the Standard MAVLink Dialect
 
@@ -29,6 +32,7 @@ pip install pymavlink
 
 
 ### Generate a Custom MAVLink Dialect
+
 If you need libraries for a *custom dialect* then you will need to [install the code generator mavgen](../getting_started/installation.md) and [generate](../getting_started/generate_libraries.md) the libraries yourself.
 You will also need to include them in *pymavlink* and install them locally on your system.
 
@@ -38,20 +42,22 @@ You will also need to include them in *pymavlink* and install them locally on yo
    - MAVLink 1: **pymavlink/dialects/v10**
 1. Open a command prompt and navigate to the **pymavlink** directory.
 1. If needed, uninstall previous versions:
+
    ```
    pip uninstall pymavlink
    ```
 1. Install dependencies if you have not previously installed pymavlink using *pip*:
+
    ```
-   pip install lxml future
+   python3 -m pip install -r pymavlink/requirements.txt
    ```
 1. Run the python setup program:
+
    ```bash
    python setup.py install --user
    ```
 
 The generated MAVLink libraries can then be used in the same way as those installed using *pip*.
-
 
 ## Using the Python MAVLink Libraries
 
@@ -59,9 +65,12 @@ The generated MAVLink libraries can then be used in the same way as those instal
 
 The *pymavlink* package includes the dialect-specific generated modules, which provide low-level functionality to encode and decode messages, and apply and check signatures.
 
-Generally speaking, most developers will use the **mavutil** module to set up and manage the communication channel, because it makes getting started very easy. This module provides simple mechanisms for setting up links, sending and receiving messages, and querying some basic autopilot properties such as the currently active flight mode for example. It provides access to the dialect module used for encoding, decoding and signing messages via an attribute (`mav`).
+Generally speaking, most developers will use the **mavutil** module to set up and manage the communication channel, because it makes getting started very easy.
+This module provides simple mechanisms for setting up links, sending and receiving messages, and querying some basic autopilot properties such as the currently active flight mode for example.
+It provides access to the dialect module used for encoding, decoding and signing messages via an attribute (`mav`).
 
 There are several main caveats to be aware of when using **mavutil**:
+
 - The link does not properly handle multiple systems running on the same port. 
   If you need a multi-vehicle network see [source-system-filtering](https://github.com/peterbarker/dronekit-python/tree/source-system-filtering/examples/multivehicle).
 - The module is optimised for ArduPilot and some functions may not work properly on other autopilots.
@@ -72,6 +81,7 @@ There are several main caveats to be aware of when using **mavutil**:
   In particular the connection code and methods to filter incoming messages are useful for any autopilot.
   
 The set of modules in the *pymavlink* package are listed below:
+
 - **\dialects\v20\\*** and **\dialects\v10\\***: Dialect modules corresponding to each source XML [message definition](../messages/README.md) for MAVLink v2 and v1, respectively. 
   Each dialect module contains:
   - constants for all enums and enum values defined in the XML file.
@@ -90,15 +100,16 @@ The set of modules in the *pymavlink* package are listed below:
 - **[mavwp](https://github.com/ArduPilot/pymavlink/blob/master/mavwp.py)**: Load/save waypoints, geofence, rally points.
 - **[mavparm](https://github.com/ArduPilot/pymavlink/blob/master/mavparm.py)**: Load/save sets of MAVLink parameters.
 - **[mavextra](https://github.com/ArduPilot/pymavlink/blob/master/mavextra.py)**: Useful functions for converting values and messages (e.g. metres/second to Km/h, eulers in radians from quaternion etc.).
-- **[mavexpression]()** (internal): MAVLink expression evaluation functions.
+- **[mavexpression](https://github.com/ArduPilot/pymavlink/blob/master/mavexpression.py)** (internal): MAVLink expression evaluation functions.
 
 
 ### Choosing the Dialect/MAVLink Version {#dialect_file}
 
-Choosing the Dialect/MAVLink version depends on whether you are using **mavutil** for link management or working directly with dialect files. 
+Choosing the Dialect/MAVLink version depends on whether you are using **mavutil** for link management or working directly with dialect files.
 
 By default **mavutil** sets up the link to use the MAVLink 1 `ardupilotmega` dialect for sending/receiving. 
 You can change this by setting environment variables:
+
 - `MAVLINK_DIALECT`: Set to string name for the dialect file (without XML extension).
 - `MAVLINK20`: Set to 1 (if unset then default to MAVLink 1)
 - `MDEF`: Location of message definition libraries
@@ -106,6 +117,7 @@ You can change this by setting environment variables:
 > **Tip** You can also change the dialect by passing its name to `mavutil.mavlink_connection()` when [setting up a connection](#setting_up_connection).
 
 If you are not using *mavutil* then you can import the dialect file that you want to use directly:
+
 ```python
 # Import ardupilotmega module for MAVLink 1
 from pymavlink.dialects.v10 import ardupilotmega as mavlink1
@@ -116,7 +128,8 @@ from pymavlink.dialects.v20 import common as mavlink2
 
 ### Setting up a Connection {#setting_up_connection}
 
-The **mavutil** module provides the `mavlink_connection()` method for setting up communication links to MAVLink systems over serial ports, tcp, or udp channels. It can also connect to a file object, which is useful when working with telemetry logs.
+The **mavutil** module provides the `mavlink_connection()` method for setting up communication links to MAVLink systems over serial ports, tcp, or udp channels.
+It can also connect to a file object, which is useful when working with telemetry logs.
 
 > **Warning** The method returns an object that represents a single system, but will collect messages from multiple systems on the link.
   This is OK for two-system networks, but if you need to connect over a multi-vehicle IP network see [source-system-filtering](https://github.com/peterbarker/dronekit-python/tree/source-system-filtering/examples/multivehicle).
@@ -153,11 +166,14 @@ Other `mavlink_connection()` parameters you may wish to change include: `source_
 #### Connection Strings {#connection_string}
 
 The `mavutil.mavlink_connection()` connection string has the format:
+
 ```
 [protocol:]address[:port]
 ```
+
 where:
-- *protocol* (optional): 
+
+- `protocol` (optional): 
   The IP protocol. 
   If not specified pymavlink will attempt to determine if the address is a serial port (e.g. USB) or a file, and if not will default to a UDP address.
   - `tcp`: Initiate a TCP connection on the specified `address` and `port`.
@@ -166,25 +182,24 @@ where:
   - `udpout`: Initiate a TCP connection on the specified `address` and `port`.
   - `udp`: By default, same as `udpin`. Set `mavlink_connection` parameter `input=False` to make same as `udpout`.
   - `udpcast`: Broadcast UDP address and port. This is the same as `udp` with `mavlink_connection()` parameters `input=False` and `broadcast=True`.
-- *address*: IP address, serial port name, or file name
-- *port*: IP port (only if address is an IP address)
+- `address`: IP address, serial port name, or file name
+- `port`: IP port (only if address is an IP address)
 
 Some of the strings you can use for different types of connections are listed below.
 
 Connection type | Connection string
 --- | ---
-Linux computer connected to the vehicle via USB | /dev/ttyUSB0
-Linux computer connected to the vehicle via Serial port (RaspberryPi example) | /dev/ttyAMA0 (also set baud=57600)
-MAVLink API listening for SITL connection via UDP | udpin:localhost:14540 (or udp:localhost:14540, 127.0.0.1:14540,etc.) 
-MAVLink API initiating a connection to SITL via UDP | udpout:localhost:14540 (or udpout:127.0.0.1:14540)
-GCS connected to the vehicle via UDP | 127.0.0.1:14550 or udp:localhost:14550
-SITL connected to the vehicle via TCP | tcp:127.0.0.1:5760 (ArduPilot only, PX4 does not support TCP)
-OSX computer connected to the vehicle via USB | dev/cu.usbmodem1
-Windows computer connected to the vehicle via USB (in this case on COM14) | com14
-Windows computer connected to the vehicle using a 3DR Telemetry Radio on COM14 | com14 (also set baud=57600)
+Linux computer connected to the vehicle via USB | `/dev/ttyUSB0`
+Linux computer connected to the vehicle via serial port (RaspberryPi example) | `/dev/ttyAMA0` (also set `baud=57600`)
+MAVLink API listening for SITL connection via UDP | `udpin:localhost:14540` (or `udp:localhost:14540`, 127.0.0.1:14540,etc.) 
+MAVLink API initiating a connection to SITL via UDP | `udpout:localhost:14540` (or `udpout:127.0.0.1:14540`)
+GCS connected to the vehicle via UDP | `127.0.0.1:14550` or `udp:localhost:14550`
+SITL connected to the vehicle via TCP | `tcp:127.0.0.1:5760` (ArduPilot only, PX4 does not support TCP)
+OSX computer connected to the vehicle via USB | `dev/cu.usbmodem1`
+Windows computer connected to the vehicle via USB (in this case on COM14) | `com14`
+Windows computer connected to the vehicle using a 3DR Telemetry Radio on `COM14` | `com14` (also set `baud=57600`)
 
-> **Note** While MAVLink does not define the UDP ports used for different purposes, there is a *defacto* standard that MAVLink APIs should listen for SITL connections on UDP port 14540 while a GCS should listen for connections on UDP 14550.
-
+> **Note** While MAVLink does not define the UDP ports used for different purposes, there is a *defacto* standard that MAVLink APIs should listen for SITL connections on UDP port `14540` while a GCS should listen for connections on UDP `14550`.
 
 
 ### Sending Messages {#sending}
@@ -233,6 +248,7 @@ except:
 ```
 
 Alternatively you can use the **mavutil** `recv_match()` method to wait for and intercept messages as they arrive:
+
 ```python
 def recv_match(self, condition=None, type=None, blocking=False, timeout=None):
     '''Receive the next MAVLink message that matches the given type and condition
@@ -244,16 +260,19 @@ def recv_match(self, condition=None, type=None, blocking=False, timeout=None):
 ```
 
 For example using `the_connection` set up as before, you can wait for *any* message as shown:
+
 ```python
 msg = the_connection.recv_match(blocking=True)
 ```
 If you instead want to just get a particular message with certain attribute values you might instead do:
+
 ```python
 # Wait for a 'SYS_STATUS' message with the specified values.
 msg = the_connection.recv_match(type='SYS_STATUS', condition='SYS_STATUS.mode==2 and SYS_STATUS.nav_mode==4', blocking=True)
 ```
 
 You should also check that the message is valid before attempting to use it:
+
 ```python
 msg = m.recv_match(type='SYS_STATUS',blocking=True)
 if not msg:
@@ -271,7 +290,6 @@ else:
 The returned object is the subclass of `MAVLink_message` for the specific message. 
 You can access the message fields as class attributes as shown for the mode in the above code fragment.
 If needed, you can query `MAVLink_message` for information about the signature, CRC and other header information.
-
 
 #### Requesting Specific Messages {#specific_messages}
 
