@@ -124,13 +124,14 @@ If a flight stack does not support multiple commands running in parallel it shou
 
 ## Location Commands and Frame Types
 
-Commands that contain a location or altitude should be sent in [COMMAND_INT](#COMMAND_INT) so that the frame can be specified in the `COMMAND_INT.frame` field (as outlined [above](#use-commandint-or-commandlong)), if sent in [COMMAND_LONG](#COMMAND_LONG) the frame is arbitrary, and cannot be predicted.
+Commands that contain a location or altitude should be sent in [COMMAND_INT](#COMMAND_INT) so that the frame can be specified in the `COMMAND_INT.frame` field (as outlined [above](#use-commandint-or-commandlong)).
+If sent in [COMMAND_LONG](#COMMAND_LONG) the frame is arbitrary, and cannot be predicted.
 
 A flight stack that does not support the frame specified in a command (if required by command) should reject it with the [MAV_RESULT](#MAV_RESULT) of `MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME`.
 This allows consumers to attempt the same command with other frames.
 Flight stacks that return `MAV_RESULT_COMMAND_UNSUPPORTED` for this case should be updated to use `MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME`.
 
-Note that it is a compatibility error to ignore the specified frame and use some other arbitrary frame.
+Note that it is an error to ignore the specified frame and use some other arbitrary frame.
 
 ## Designing Commands
 
