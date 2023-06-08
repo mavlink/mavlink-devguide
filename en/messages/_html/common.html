@@ -3167,6 +3167,13 @@
      </td>
      <td>Command is valid, but it is only accepted when sent as a <a href="#COMMAND_INT">COMMAND_INT</a> (as it encodes a location in params 5, 6 and 7, and hence requires a reference <a href="#MAV_FRAME">MAV_FRAME</a>).</td>
     </tr>
+    <tr id="MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME">
+     <td>9</td>
+     <td>
+      <a href="#MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME">MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME</a>
+     </td>
+     <td>Command is invalid because a frame is required and the specified frame is not supported.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MAV_MISSION_RESULT">MAV_MISSION_RESULT</h3>
@@ -10081,7 +10088,9 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Navigate to waypoint.</p>
+   </a>Navigate to waypoint. This is intended for use in missions (for guided commands outside of missions use <a href="#MAV_CMD_DO_REPOSITION">MAV_CMD_DO_REPOSITION</a>).</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10152,6 +10161,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Loiter around this waypoint an unlimited amount of time</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10209,6 +10220,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Loiter around this waypoint for X turns</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10282,6 +10295,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-only moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10399,6 +10414,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Land at location.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10472,6 +10489,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Takeoff from ground / hand. Vehicles that support multiple takeoff modes (e.g. VTOL quadplane) should take off using the currently configured mode.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10529,6 +10548,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Land at local position (local frame only)</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10598,6 +10619,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Takeoff from local position (local frame only)</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10652,6 +10675,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Vehicle following, i.e. this waypoint represents the position of a moving vehicle</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10723,6 +10748,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Continue on the current course and climb/descend to specified altitude.  When the altitude is reached continue to the next command (i.e., don't proceed to the next command until the desired altitude is reached.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -10797,6 +10824,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter at the current position.  Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached. Additionally, if the Heading Required parameter is non-zero the aircraft will not leave the loiter until heading toward the next waypoint.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11002,6 +11031,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Start orbiting on the circumference of a circle defined by the parameters. Setting values to NaN/INT32_MAX (as appropriate) results in using defaults.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11077,6 +11108,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11138,6 +11171,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Control autonomous path planning on the MAV.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11212,6 +11247,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Navigate to waypoint using a spline path.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11286,6 +11323,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Takeoff from ground using VTOL mode, and transition to forward flight with specified heading. The command should be ignored by vehicles that dont support both VTOL and fixed-wing flight (multicopters, boats,etc.).</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11360,6 +11399,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Land using VTOL mode</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11575,6 +11616,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Descend and place payload. Vehicle moves to specified location, descends until it detects a hanging payload has reached the ground, and then releases the payload. If ground is not detected before the reaching the maximum descent value (param1), the command will complete without releasing the payload.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -11767,6 +11810,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Ascend/descend to target altitude at specified rate. Delay mission state machine until desired altitude reached.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12222,6 +12267,8 @@
           The home position is the default position that the system will return to and land on.
           The position is set automatically by the system during the takeoff (and may also be set using this command).
           Note: the current home position may be emitted in a <a href="#HOME_POSITION">HOME_POSITION</a> message on request (using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> with param1=242).</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12851,6 +12898,8 @@
    </a>Mission command to perform a landing. This is used as a marker in a mission to tell the autopilot where a sequence of mission items that represents a landing starts.
 	  It may also be sent via a <a href="#COMMAND_LONG">COMMAND_LONG</a> to trigger a landing, in which case the nearest (geographically) landing sequence in the mission will be used.
 	  The Latitude/Longitude/Altitude is optional, and may be set to 0 if not needed. If specified then it will be used to help find the closest landing sequence.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13026,7 +13075,9 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Reposition the vehicle to a specific WGS84 global position.</p>
+   </a>Reposition the vehicle to a specific WGS84 global position. This command is intended for guided commands (for missions use <a href="#MAV_CMD_NAV_WAYPOINT">MAV_CMD_NAV_WAYPOINT</a> instead).</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13221,6 +13272,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -13476,6 +13529,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -15080,6 +15135,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Override current mission with command to pause mission, pause mission and move to position, continue/resume mission. When param 1 indicates that the mission is paused (<a href="#MAV_GOTO_DO_HOLD">MAV_GOTO_DO_HOLD</a>), param 2 defines whether it holds in place or moves to another position.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -16409,7 +16466,7 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>Reserved (set to NaN)</td>
+     <td>Reserved (set to 0)</td>
      <td>
      </td>
      <td>
@@ -16417,7 +16474,7 @@
     </tr>
     <tr>
      <td>6</td>
-     <td>Reserved (set to NaN)</td>
+     <td>Reserved (set to 0)</td>
      <td>
      </td>
      <td>
@@ -16465,6 +16522,14 @@
      <td>Reserved (set to NaN)</td>
     </tr>
     <tr>
+     <td>5</td>
+     <td>Reserved (set to 0)</td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Reserved (set to 0)</td>
+    </tr>
+    <tr>
      <td>7</td>
      <td>Reserved (set to NaN)</td>
     </tr>
@@ -16509,6 +16574,18 @@
     <tr>
      <td>4</td>
      <td>Reserved (set to NaN)</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Reserved (set to 0)</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Reserved (set to 0)</td>
      <td>
      </td>
     </tr>
@@ -16707,7 +16784,7 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>Reserved (set to NaN)</td>
+     <td>Reserved (set to 0)</td>
      <td>
      </td>
      <td>
@@ -16715,7 +16792,7 @@
     </tr>
     <tr>
      <td>6</td>
-     <td>Reserved (set to NaN)</td>
+     <td>Reserved (set to 0)</td>
      <td>
      </td>
      <td>
@@ -16773,13 +16850,13 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>Reserved (set to NaN)</td>
+     <td>Reserved (set to 0)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>Reserved (set to NaN)</td>
+     <td>Reserved (set to 0)</td>
      <td>
      </td>
     </tr>
@@ -17041,13 +17118,13 @@
     </tr>
     <tr>
      <td>5</td>
-     <td>Reserved (set to NaN)</td>
+     <td>Reserved (set to 0)</td>
      <td>
      </td>
     </tr>
     <tr>
      <td>6</td>
-     <td>Reserved (set to NaN)</td>
+     <td>Reserved (set to 0)</td>
      <td>
      </td>
     </tr>
@@ -17238,6 +17315,8 @@
    <a href="#mav_commands">
     [Command]
    </a>This command sets submode circle when vehicle is in guided mode. Vehicle flies along a circle facing the center of the circle. The user can input the velocity along the circle and change the radius. If no input is given the vehicle will hold position.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17291,6 +17370,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Delay mission state machine until gate has been reached.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17365,6 +17446,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Fence return point (there can only be one such point in a geofence definition). If rally points are supported they should be used instead.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17424,6 +17507,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Fence vertex for an inclusion polygon (the polygon must not be self-intersecting). The vehicle must stay within this area. Minimum of 3 vertices required.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17484,6 +17569,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Fence vertex for an exclusion polygon (the polygon must not be self-intersecting). The vehicle must stay outside this area. Minimum of 3 vertices required.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17544,6 +17631,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Circular fence area. The vehicle must stay inside this area.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17618,6 +17707,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Circular fence area. The vehicle must stay outside this area.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17677,6 +17768,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Rally point. You can have multiple rally points defined.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17828,6 +17921,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Deploy payload on a Lat / Lon / Alt position. This includes the navigation to reach the required release position and velocity.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -17966,6 +18061,8 @@
    <a href="#mav_commands">
     [Command]
    </a>Magnetometer calibration based on provided known yaw. This allows for fast calibration using WMM field tables in the vehicle, given only the known yaw of the vehicle. If Latitude and longitude are both zero then use the current vehicle location.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18097,6 +18194,8 @@
    <a href="#mav_commands">
     [Command]
    </a>User defined waypoint item. Ground Station will show the Vehicle as flying through this item.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18156,6 +18255,8 @@
    <a href="#mav_commands">
     [Command]
    </a>User defined waypoint item. Ground Station will show the Vehicle as flying through this item.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18215,6 +18316,8 @@
    <a href="#mav_commands">
     [Command]
    </a>User defined waypoint item. Ground Station will show the Vehicle as flying through this item.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18274,6 +18377,8 @@
    <a href="#mav_commands">
     [Command]
    </a>User defined waypoint item. Ground Station will show the Vehicle as flying through this item.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18333,6 +18438,8 @@
    <a href="#mav_commands">
     [Command]
    </a>User defined waypoint item. Ground Station will show the Vehicle as flying through this item.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18392,6 +18499,8 @@
    <a href="#mav_commands">
     [Command]
    </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18451,6 +18560,8 @@
    <a href="#mav_commands">
     [Command]
    </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18510,6 +18621,8 @@
    <a href="#mav_commands">
     [Command]
    </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18569,6 +18682,8 @@
    <a href="#mav_commands">
     [Command]
    </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -18628,6 +18743,8 @@
    <a href="#mav_commands">
     [Command]
    </a>User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.</p>
+  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
+        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
