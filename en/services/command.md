@@ -121,7 +121,17 @@ If the same command is recieved while the operation is in progress the new comma
 
 The protocol allows for _different_ long running commands to run in parallel, if supported by the state machine of the recieving flight stack.
 If a flight stack does not support multiple commands running in parallel it should ACK new commands with `MAV_RESULT_TEMPORARILY_REJECTED` (with the possible exception of the [COMMAND_CANCEL](#COMMAND_CANCEL), which might be used to cancel the first request).
- 
+
+## Location Commands and Frame Types
+
+Commands that contain a location or altitude should be sent in [COMMAND_INT](#COMMAND_INT) so that the frame can be specified in the `COMMAND_INT.frame` field (as outlined [above](#use-commandint-or-commandlong)), if sent in [COMMAND_LONG](#COMMAND_LONG) the frame is arbitrary, and cannot be predicted.
+
+A flight stack that does not support the frame specified in a command (if required by command) should reject it with the [MAV_RESULT](#MAV_RESULT) of `MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME`.
+This allows consumers to attempt the same command with other frames.
+Flight stacks that return `MAV_RESULT_COMMAND_UNSUPPORTED` for this case should be updated to use `MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME`.
+
+Note that it is a compatibility error to ignore the specified frame and use some other arbitrary frame.
+
 ## Designing Commands
 
 Guidance for designing commands can be found in [Defining XML Elements > Command values](../guide/define_xml_element.md#command_values).
