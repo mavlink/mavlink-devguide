@@ -93,7 +93,7 @@ The "normal" enum `entry` tags/fields are:
 * `description` (optional): A description of the entry.
 * [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the enum is deprecated or "work in progress".
 
-> **Note** An `entry` may also define the optional elements: `param`, `hasLocation`, and `isDestination`.
+> **Note** An `entry` may also define the optional elements: `param`, `hasLocation`, `isDestination`, `missionOnly`.
   In practice these should only be used in the `enum` named [MAV_CMD](#MAV_CMD) (described below).
 
 
@@ -126,8 +126,11 @@ For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_P
 MAV_CMD entry `value` elements may additionally define these tags/fields:
 * [param](#param) (optional): Up to 7 param tags, numbered using an `index` attribute.
 * One (but not both) of:
-  * `hasLocation` (optional): A boolean (default true) that provides a hint to a GCS that the entry should be displayed as a "standalone" location - rather than as a destination on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values but which are not on the vehicle path (e.g.: [MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION)).
-  * `isDestination` (optional): A boolean (default true) that provides a hint to a GCS that the entry is a location that should be displayed as a point on the flight path. This is applied for entries that contain lat/lon/alt location information in their param 5, 6, and 7 values and which are on the vehicle path (e.g.: [MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT) and [MAV_CMD_NAV_LAND](../messages/common.md#MAV_CMD_NAV_LAND)).
+  * `hasLocation` (optional): A boolean (default true) that provides a hint to a GCS that the entry should be displayed as a "standalone" location - rather than as a destination on the flight path.
+     Apply for MAV_CMDs that contain lat/lon/alt location information in param 5, 6, and 7 values but which are not on the vehicle path (e.g.: [MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION)).
+  * `isDestination` (optional): A boolean (default true) that provides a hint to a GCS that the entry is a location that should be displayed as a point on the flight path.
+    Apply for MAV_CMD that contain lat/lon/alt location information in their param 5, 6, and 7 values, and that set a path/destination (e.g.: [MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT) and [MAV_CMD_NAV_LAND](../messages/common.md#MAV_CMD_NAV_LAND)).
+  * `missionOnly` (optional): Apply with value `true` if the MAV_COMMAND only "makes sense" in a mission. For example, the fence mission commands could not possibly be useful in a command.
 
 
 ### param {#param}
@@ -258,7 +261,6 @@ As a concrete example, below we see that [SET_MODE](../messages/common.md#SET_MO
 The `deprecated` attributes are:
 * `since`: Year/month when deprecation started. Format: `YYYY-MM`.
 * `replaced by`: String of entity that supersedes this item.
-
 
 
 ### wip {#wip}
