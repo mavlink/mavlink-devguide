@@ -14,7 +14,11 @@
     * [Examples](mavgen_c/examples.md)
       * [UART Interface (C)](mavgen_c/example_c_uart.md)
       * [UDP Example (C)](mavgen_c/example_c_udp.md)
-  * [Python (mavgen)](mavgen_python/README.md)
+  * [Pymvalink (Python-mavgen)](mavgen_python/README.md)
+    * [How to Request Messages/Set Message Rates](mavgen_python/howto_requestmessages.md)
+    * [Message Signing](mavgen_python/message_signing.md)
+    * [Examples](mavgen_python/examples.md)
+
 * [Guide](guide/README.md)
   * [MAVLink Versions](guide/mavlink_version.md)
   * [MAVLink 2](guide/mavlink_2.md)
