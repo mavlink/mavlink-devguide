@@ -17971,14 +17971,14 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>Latitude. Note, if used in <a href="#MISSION_ITEM">MISSION_ITEM</a> (deprecated) the units are degrees (unscaled)</td>
+     <td>Latitude.</td>
      <td>
      </td>
      <td>degE7</td>
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>Longitude. Note, if used in <a href="#MISSION_ITEM">MISSION_ITEM</a> (deprecated) the units are degrees (unscaled)</td>
+     <td>Longitude.</td>
      <td>
      </td>
      <td>degE7</td>
@@ -18061,8 +18061,6 @@
    <a href="#mav_commands">
     [Command]
    </a>Magnetometer calibration based on provided known yaw. This allows for fast calibration using WMM field tables in the vehicle, given only the known yaw of the vehicle. If Latitude and longitude are both zero then use the current vehicle location.</p>
-  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
-        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
