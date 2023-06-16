@@ -31174,7 +31174,7 @@
      </td>
      <td>
      </td>
-     <td>Version of the camera firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff)</td>
+     <td>Version of the camera firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff). Use 0 if not known.</td>
     </tr>
     <tr>
      <td>focal_length</td>
@@ -31182,7 +31182,7 @@
      <td>mm</td>
      <td>
      </td>
-     <td>Focal length</td>
+     <td>Focal length. Use NaN if not known.</td>
     </tr>
     <tr>
      <td>sensor_size_h</td>
@@ -31190,7 +31190,7 @@
      <td>mm</td>
      <td>
      </td>
-     <td>Image sensor size horizontal</td>
+     <td>Image sensor size horizontal. Use NaN if not known.</td>
     </tr>
     <tr>
      <td>sensor_size_v</td>
@@ -31198,7 +31198,7 @@
      <td>mm</td>
      <td>
      </td>
-     <td>Image sensor size vertical</td>
+     <td>Image sensor size vertical. Use NaN if not known.</td>
     </tr>
     <tr>
      <td>resolution_h</td>
@@ -31206,7 +31206,7 @@
      <td>pix</td>
      <td>
      </td>
-     <td>Horizontal image resolution</td>
+     <td>Horizontal image resolution. Use 0 if not known.</td>
     </tr>
     <tr>
      <td>resolution_v</td>
@@ -31214,7 +31214,7 @@
      <td>pix</td>
      <td>
      </td>
-     <td>Vertical image resolution</td>
+     <td>Vertical image resolution. Use 0 if not known.</td>
     </tr>
     <tr>
      <td>lens_id</td>
@@ -31223,7 +31223,7 @@
      </td>
      <td>
      </td>
-     <td>Reserved for a lens ID</td>
+     <td>Reserved for a lens ID.  Use 0 if not known.</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -31242,7 +31242,7 @@
      </td>
      <td>
      </td>
-     <td>Camera definition version (iteration)</td>
+     <td>Camera definition version (iteration).  Use 0 if not known.</td>
     </tr>
     <tr>
      <td>cam_definition_uri</td>
@@ -31251,7 +31251,7 @@
      </td>
      <td>
      </td>
-     <td>Camera definition URI (if any, otherwise only basic functions will be available). HTTP- (http://) and MAVLink FTP- (mavlinkftp://) formatted URIs are allowed (and both must be supported by any GCS that implements the Camera Protocol). The definition file may be xz compressed, which will be indicated by the file extension .xml.xz (a GCS that implements the protocol must support decompressing the file). The string needs to be zero terminated.</td>
+     <td>Camera definition URI (if any, otherwise only basic functions will be available). HTTP- (http://) and MAVLink FTP- (mavlinkftp://) formatted URIs are allowed (and both must be supported by any GCS that implements the Camera Protocol). The definition file may be xz compressed, which will be indicated by the file extension .xml.xz (a GCS that implements the protocol must support decompressing the file). The string needs to be zero terminated.  Use a zero-length string if not known.</td>
     </tr>
    </tbody>
   </table>
