@@ -112,8 +112,9 @@ Every *Gimbal Manager* must to publish its associated *Gimbal Device* (there is 
 
 A particular MAVLink component can implement multiple gimbal managers (e.g. an autopilot can implement two gimbal managers in order to control two gimbal devices).
 
+A gimbal manager can "manage" MAVLink gimbal devices as well as non-MAVLink gimbals such as a gimbal connected with proprietary or custom interface such as PWM or SBUS. A non-MAVLink gimbal is signalled and addressed using 2 to 6 as the `gimbal_device_id` instead of the MAVLink component ID.
 
-#### Addressing of Gimbal Devices {#gimbal_device_addressing}
+#### Addressing of Gimbal MAVLink Devices {#gimbal_device_addressing}
 
 *Gimbal Manager* commands and messages have a param field to indicate the component ID of the *Gimbal Device* that they intend to control.
 
@@ -121,6 +122,17 @@ A system that wants to control a *particular* gimbal device will send messages t
 
 If all gimbal devices should be controlled (on the component that has the gimbal managers), this param/field can be set to 0 (signalling "all").
 
+#### Addressing of non-MAVLink gimbal devices  {#non_mavlink_gimbal_device_addressing}
+
+Non-MAVLink gimbal devices are gimbal that don't expose the MAVLink API but instead are connected to the gimbal manager using some other protocol. For instance, this could be a PWM gimbal connected to an autopilot.
+
+For these cases, there needs to be a way to address such a gimbal specifically, and a way to send out the `GIMBAL_DEVICE_` messages, so that they can re mapped back to the respecive gimbal manager.
+
+The solution chosen for this case is to use the numbers 2 to 6 as magic numbers for the `gimbal_device_id`. This means that the numbers 2 to6 can't be used as MAVLink component IDs for any components involved as gimbal managers or gimbal devices.
+
+- A **gimbal manager** advertises that it implements the gimbal device "itself" by setting `gimbal_device_id` to 2 to 6. It will also send out the requested gimbal device messages from the same component ID. It will set the field in `gimbal_device_id` of [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS).
+
+- A **ground station** addresses a gimbal device by sending commands to the gimbal manager and specifiying the `gimbal_device_id` 2 to 6.
 
 ## Implementation and Messages
 
@@ -234,6 +246,14 @@ In both cases, the autopilot can then calculate a gimbal angle or angular rate f
 For RC control, the channels will have to be manually mapped/configured to control the gimbal.
 This is the same approach as is used for managing the input source for flying; it is up to the implementation to select either RC or MAVLink.
 The recommendation is to make it configurable using (for instance) a parameter.
+
+#### What about non-MAVLink gimbals
+
+A non-MAVLink gimbal needs to be connected to a gimbal manager which then takes care of sending the gimbal device messages.
+Since a non-MAVLink gimbal can't be addressed with a MAVLink component ID, the `gimbal_device_id` needs to be set to the magic value 2 to 6 which signals that the gimbal manager also "is" (or fakes to be) the gimbal device.
+
+Also see [how to address non-MAVLink gimbal devices](#non_mavlink_gimbal_device_addressing).
+
 
 ## Message/Command/Enum Summary
 
