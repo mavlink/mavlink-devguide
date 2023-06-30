@@ -32497,7 +32497,7 @@
      </td>
      <td>
      </td>
-     <td>Gimbal device ID that this gimbal manager is responsible for. This should be a MAVLink component ID.</td>
+     <td>Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal).</td>
     </tr>
     <tr>
      <td>roll_min</td>
@@ -32597,7 +32597,7 @@
      </td>
      <td>
      </td>
-     <td>Gimbal device ID that this gimbal manager is responsible for. This should be a MAVLink component ID.</td>
+     <td>Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal).</td>
     </tr>
     <tr>
      <td>primary_control_sysid</td>
@@ -32884,6 +32884,18 @@
      </td>
      <td>Maximum hardware yaw angle (positive: to the right, negative: to the left). NAN if unknown.</td>
     </tr>
+    <tr>
+     <td style="color:blue;">gimbal_device_id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>This field is to be used if the gimbal manager and the gimbal device are the same component and hence have the same component ID. This field is then set to a number between 1-6. If the component ID is separate, this field is not required and must be set to 0.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="GIMBAL_DEVICE_SET_ATTITUDE">GIMBAL_DEVICE_SET_ATTITUDE (<a href="#GIMBAL_DEVICE_SET_ATTITUDE">
@@ -32897,17 +32909,17 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Low level message to control a gimbal device's attitude. 
-	  This message is to be sent from the gimbal manager to the gimbal device component. 
-	  The quaternion and angular velocities can be set to NaN according to use case. 
-	  For the angles encoded in the quaternion and the angular velocities holds: 
-	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> is set, then they are relative to the vehicle heading (vehicle frame). 
-	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> is set, then they are relative to absolute North (earth frame). 
-	  If neither of these flags are set, then (for backwards compatibility) it holds: 
-	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a> is set, then they are relative to absolute North (earth frame), 
-	  else they are relative to the vehicle heading (vehicle frame). 
-	  Setting both <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> and <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> is not allowed. 
-	  These rules are to ensure backwards compatibility. 
+   </strong>Low level message to control a gimbal device's attitude.
+	  This message is to be sent from the gimbal manager to the gimbal device component.
+	  The quaternion and angular velocities can be set to NaN according to use case.
+	  For the angles encoded in the quaternion and the angular velocities holds:
+	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> is set, then they are relative to the vehicle heading (vehicle frame).
+	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> is set, then they are relative to absolute North (earth frame).
+	  If neither of these flags are set, then (for backwards compatibility) it holds:
+	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a> is set, then they are relative to absolute North (earth frame),
+	  else they are relative to the vehicle heading (vehicle frame).
+	  Setting both <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> and <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> is not allowed.
+	  These rules are to ensure backwards compatibility.
 	  New implementations should always set either <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> or <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a>.</p>
   <table class="sortable">
    <thead>
@@ -32994,20 +33006,20 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Message reporting the status of a gimbal device. 
-	  This message should be broadcast by a gimbal device component at a low regular rate (e.g. 5 Hz). 
-	  For the angles encoded in the quaternion and the angular velocities holds: 
-	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> is set, then they are relative to the vehicle heading (vehicle frame). 
-	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> is set, then they are relative to absolute North (earth frame). 
-	  If neither of these flags are set, then (for backwards compatibility) it holds: 
-	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a> is set, then they are relative to absolute North (earth frame), 
-	  else they are relative to the vehicle heading (vehicle frame). 
-	  Other conditions of the flags are not allowed. 
-	  The quaternion and angular velocities in the other frame can be calculated from delta_yaw and delta_yaw_velocity as 
+   </strong>Message reporting the status of a gimbal device.
+	  This message should be broadcast by a gimbal device component at a low regular rate (e.g. 5 Hz).
+	  For the angles encoded in the quaternion and the angular velocities holds:
+	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> is set, then they are relative to the vehicle heading (vehicle frame).
+	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> is set, then they are relative to absolute North (earth frame).
+	  If neither of these flags are set, then (for backwards compatibility) it holds:
+	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a> is set, then they are relative to absolute North (earth frame),
+	  else they are relative to the vehicle heading (vehicle frame).
+	  Other conditions of the flags are not allowed.
+	  The quaternion and angular velocities in the other frame can be calculated from delta_yaw and delta_yaw_velocity as
 	  q_earth = q_delta_yaw * q_vehicle and w_earth = w_delta_yaw_velocity + w_vehicle (if not NaN).
-	  If neither the <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> nor the <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> flag is set, 
+	  If neither the <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> nor the <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> flag is set,
 	  then (for backwards compatibility) the data in the delta_yaw and delta_yaw_velocity fields are to be ignored.
-	  New implementations should always set either <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> or <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a>, 
+	  New implementations should always set either <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> or <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a>,
 	  and always should set delta_yaw and delta_yaw_velocity either to the proper value or NaN.</p>
   <table class="sortable">
    <thead>
@@ -33120,6 +33132,18 @@
      <td>
      </td>
      <td>Yaw angular velocity relating the angular velocities in earth and body frames (see message description). NaN if unknown.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">gimbal_device_id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>This field is to be used if the gimbal manager and the gimbal device are the same component and hence have the same component ID. This field is then set a number between 1-6. If the component ID is separate, this field is not required and must be set to 0.</td>
     </tr>
    </tbody>
   </table>
