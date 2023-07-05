@@ -22,7 +22,7 @@ The MAVLink generator (**mavgen**) can build this plugin for a dialect in the sa
 The steps are:
 1. [Install MAVLink](../getting_started/installation.md) (if you have not already done so).
 1. Build libraries for your target dialect, specifing `WLua` as the target language.
-   This process is described in the toic[Generate MAVLink Libraries](../getting_started/generate_libraries.md).
+   This process is described in the topic [Generate MAVLink Libraries](../getting_started/generate_libraries.md).
 
    For example, to build the MAVLink 2 Wireshark plugin for [common.xml](../messages/common.md) you might use the following command:
    ```bash
