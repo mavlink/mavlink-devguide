@@ -135,7 +135,7 @@ If the `HEARTBEAT` messages are not received within a required time interval, th
 This must also be indicated to the operator of the UAS.
 
 Similarly, the autopilot must listen to the [ARM_STATUS](#OPEN_DRONE_ID_ARM_STATUS) from the RID transmitter component(s) and not allow the UA to be airborne before the RID transmitter component(s) is ready.
-During flight, if the arm status indicates a failure, similar action must be taken as for a lack of `HEARTBEAT` messages.
+During flight, if the arm status indicates a failure, similar action must be taken as for a lack of `HEARTBEAT` messages from the RemoteID.
 A GCS may also listen to the [ARM_STATUS](#OPEN_DRONE_ID_ARM_STATUS) in order to provide more detailed information about UID arming failures.
 
 > **Note** In addition to the above, there are multiple additional different scenarios that must result in the Location status field being set to Emergency or Remote ID System Failure.
