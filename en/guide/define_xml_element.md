@@ -185,7 +185,7 @@ It also means that messages can move from a dialect to common.xml without any co
 
 When creating a new message you should select the next unused id for your dialect (after the last one defined in your target dialect file).
 
-The allocated ranges are listed below.
+Allocated ranges are listed below (a more complete list is provided in the comments in [all.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/all.xml)):
 
 Dialect | Range
 --- | ---
@@ -413,7 +413,7 @@ It also means that messages can move from a dialect to **common.xml** without an
 Dialects can choose any values within their range for any message.
 However we recommend that all *related* commands be kept in the same block of ids, and if there are likely to be more similar commands in future then spaces might be left for new commands. 
 
-The allocated ranges are listed below.
+The allocated ranges are listed below (a more complete list is provided in the comments in [all.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/all.xml)):
 
 Dialect | Range
 --- | ---
