@@ -77,24 +77,30 @@ The following messages and enums are used by the service.
 
 Message | Description
 -- | --
-<span id="MISSION_REQUEST_LIST"></span>[MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST) | Initiate [mission download](#download_mission) from a system by requesting the list of mission items.
-<span id="MISSION_COUNT"></span>[MISSION_COUNT](../messages/common.md#MISSION_COUNT) | Send the number of items in a mission. This is used to initiate [mission upload](#uploading_mission) or as a response to [MISSION_REQUEST_LIST](#MISSION_REQUEST_LIST) when [downloading a mission](#download_mission).
-<span id="MISSION_REQUEST_INT"></span>[MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) | Request mission item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM_INT](#MISSION_ITEM_INT) message. Used for mission [upload](#uploading_mission) and [download](#download_mission).
-<span id="MISSION_ITEM_INT"></span>[MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). Used for mission [upload](#uploading_mission) and [download](#download_mission).
-<span id="MISSION_ACK"></span>[MISSION_ACK](../messages/common.md#MISSION_ACK) | Acknowledgment message when a system completes a [mission operation](#operations) (e.g. sent by autopilot after it has uploaded all mission items). The message includes a [MAV_MISSION_RESULT](#MAV_MISSION_RESULT) indicating either success or the type of failure.
-<span id="MISSION_CURRENT"></span>[MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) | Message containing the current mission item sequence number. This is emitted when the [current mission item is set/changed](#current_mission_item).
-<span id="MISSION_SET_CURRENT"></span>[MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT) | [Set the current mission item](#current_mission_item) by sequence number (continue to this item on the shortest path).
-<span id="STATUSTEXT"></span>[STATUSTEXT](../messages/common.md#STATUSTEXT) | Sent to notify systems when a request to [set the current mission item](#current_mission_item) fails.
-<span id="MISSION_CLEAR_ALL"></span>[MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL) | Message sent to [clear/delete all mission items](#clear_mission) stored on a system.
-<span id="MISSION_ITEM_REACHED"></span>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).
+<a id="MISSION_REQUEST_LIST"></a>[MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST) | Initiate [mission download](#download_mission) from a system by requesting the list of mission items.
+<a id="MISSION_COUNT"></a>[MISSION_COUNT](../messages/common.md#MISSION_COUNT) | Send the number of items in a mission. This is used to initiate [mission upload](#uploading_mission) or as a response to [MISSION_REQUEST_LIST](#MISSION_REQUEST_LIST) when [downloading a mission](#download_mission).
+<a id="MISSION_REQUEST_INT"></a>[MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) | Request mission item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM_INT](#MISSION_ITEM_INT) message. Used for mission [upload](#uploading_mission) and [download](#download_mission).
+<a id="MISSION_ITEM_INT"></a>[MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). Used for mission [upload](#uploading_mission) and [download](#download_mission).
+<a id="MISSION_ACK"></a>[MISSION_ACK](../messages/common.md#MISSION_ACK) | Acknowledgment message when a system completes a [mission operation](#operations) (e.g. sent by autopilot after it has uploaded all mission items). The message includes a [MAV_MISSION_RESULT](#MAV_MISSION_RESULT) indicating either success or the type of failure.
+<a id="MISSION_CURRENT"></a>[MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) | Message containing the current mission item sequence number. This is emitted when the [current mission item is set/changed](#current_mission_item).
+<a id="MISSION_SET_CURRENT"></a>[MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT) | [Set the current mission item](#current_mission_item) by sequence number (continue to this item on the shortest path).
+<a id="STATUSTEXT"></a>[STATUSTEXT](../messages/common.md#STATUSTEXT) | Sent to notify systems when a request to [set the current mission item](#current_mission_item) fails.
+<a id="MISSION_CLEAR_ALL"></a>[MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL) | Message sent to [clear/delete all mission items](#clear_mission) stored on a system.
+<sapan id="MISSION_ITEM_REACHED"></a>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).
 
+
+https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_MISSION_CURRENT
+
+Command | Description
+-- | --
+<a id="MAV_CMD_DO_SET_MISSION_CURRENT"></a>[MAV_CMD_DO_SET_MISSION_CURRENT](../messages/common.md#MAV_CMD_DO_SET_MISSION_CURRENT) | Set current mission item and optionally reset mission counter. Supersedes [MISSION_SET_CURRENT](#MISSION_SET_CURRENT).
 
 Enum | Description
 -- | --
-<span id="MAV_MISSION_TYPE"></span>[MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_TYPE) | [Mission type](#mission_types) for message (mission, geofence, rallypoints).
-<span id="MAV_MISSION_RESULT"></span>[MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT) | Used to indicate the success or failure reason for an operation (e.g. to upload or download a mission). This is carried in a [MISSION_ACK](#MISSION_ACK).
-<span id="MAV_FRAME"></span>[MAV_FRAME](../messages/common.md#MAV_FRAME) | Co-ordinate frame for position/velocity/acceleration data in the message.
-<span id="MAV_CMD"></span>[MAV_CMD](../messages/common.md#mav_commands) | [Mission Items](#mavlink_commands) (and MAVLink commands) sent in [MISSION_ITEM_INT](#MISSION_ITEM_INT).
+<a id="MAV_MISSION_TYPE"></a>[MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_TYPE) | [Mission type](#mission_types) for message (mission, geofence, rallypoints).
+<a id="MAV_MISSION_RESULT"></a>[MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT) | Used to indicate the success or failure reason for an operation (e.g. to upload or download a mission). This is carried in a [MISSION_ACK](#MISSION_ACK).
+<a id="MAV_FRAME"></a>[MAV_FRAME](../messages/common.md#MAV_FRAME) | Co-ordinate frame for position/velocity/acceleration data in the message.
+<a id="MAV_CMD"></a>[MAV_CMD](../messages/common.md#mav_commands) | [Mission Items](#mavlink_commands) (and MAVLink commands) sent in [MISSION_ITEM_INT](#MISSION_ITEM_INT).
 
 
 ## Deprecated Types: MISSION_ITEM {#command_message_type}
@@ -258,14 +264,14 @@ sequenceDiagram;
 -->
 
 In more detail, the sequence of operations is:
-1. GCS/App sends [MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT), specifying the new sequence number (`seq`).
+1. GCS/App sends [MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT) (or [MISSION_SET_CURRENT](#MISSION_SET_CURRENT)), specifying the new sequence number (`seq`).
 1. Drone receives message and attempts to update the current mission sequence number.
    - On success, the Drone must *broadcast* a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message containing the current sequence number (`seq`). 
    - On failure, the Drone must *broadcast* a [STATUSTEXT](../messages/common.md#STATUSTEXT) with a [MAV_SEVERITY](../messages/common.md#MAV_SEVERITY) and a string stating the problem.
      This may be displayed in the UI of receiving systems.
 
 Notes:
-* There is no specific [timeout](#timeout) on the `MISSION_SET_CURRENT` message.
+* There is no specific [timeout](#timeout) on `MISSION_SET_CURRENT` message.
 * The acknowledgment of the message is via broadcast of mission/system status, which is not associated with the original message.
   This differs from [error handling](#errors) in other operations.
   This approach is used because the success/failure is relevant to all mission-handling clients.
