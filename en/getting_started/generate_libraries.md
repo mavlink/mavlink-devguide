@@ -76,10 +76,8 @@ python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generate
 The full syntax and options can be output by running `mavgen.py -h` flag, which is reproduced below:
 
 ```
-usage: mavgen.py [-h] [-o OUTPUT]
-                 [--lang {C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python,Lua,WLua,ObjC,Swift,Java,C++11}]
-                 [--wire-protocol {0.9,1.0,2.0}] [--no-validate]
-                 [--error-limit ERROR_LIMIT] [--strict-units]
+usage: mavgen.py [-h] [-o OUTPUT] [--lang {Ada,C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python2,Python3,Python,Lua,WLua,ObjC,Swift,Java,C++11}]
+                 [--wire-protocol {0.9,1.0,2.0}] [--no-validate] [--error-limit ERROR_LIMIT] [--strict-units]
                  XML [XML ...]
 
 This tool generate implementations from MAVLink message definitions
@@ -87,16 +85,15 @@ This tool generate implementations from MAVLink message definitions
 positional arguments:
   XML                   MAVLink definitions
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -o OUTPUT, --output OUTPUT
                         output directory.
-  --lang {C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python,Lua,WLua,ObjC,Swift,Java,C++11}
+  --lang {Ada,C,CS,JavaScript,JavaScript_Stable,JavaScript_NextGen,TypeScript,Python2,Python3,Python,Lua,WLua,ObjC,Swift,Java,C++11}
                         language of generated code [default: Python]
   --wire-protocol {0.9,1.0,2.0}
                         MAVLink protocol version. [default: 1.0]
-  --no-validate         Do not perform XML validation. Can speed up code
-                        generation if XML files are known to be correct.
+  --no-validate         Do not perform XML validation. Can speed up code generation if XML files are known to be correct.
   --error-limit ERROR_LIMIT
                         maximum number of validation errors to display
   --strict-units        Perform validation of units attributes.
