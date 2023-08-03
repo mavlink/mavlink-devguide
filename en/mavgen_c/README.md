@@ -70,17 +70,18 @@ cmake -Bbuild -H. -DCMAKE_PREFIX_PATH=../mavlink/install
 #### `-Waddress-of-packed-member`
 
 Building the headers may result in warnings like:
+
 ```
 mavlink/common/../mavlink_helpers.h:86:24: warning: taking address of packed member of ‘__mavlink_message’ may result in an unaligned pointer value [-Waddress-of-packed-member]
    86 |  crc_accumulate_buffer(&msg->checksum, _MAV_PAYLOAD(msg), msg->len);
 ```
+The warning indicates the potential for hard faults caused by unaligned access to packed data.
+This does not happen on most of the common architectures on which MAVLink is run, and generally the warning can be supressed.
 
-<!--
-These can be ignored because MAVLink re-orders packed structures such that values are properly aligned. Specifically all 4-byte values are aligned on 4-byte boundaries (by putting them first), all 2-byte values come after those and are hence also aligned, and last of all come the the 1-byte values.
-
--->
 You can suppress the warnings using `-Wno-address-of-packed-member`.
 
+> **Note:** The issue causes hard faults on [Cortex-M0](https://github.com/ArduPilot/pymavlink/issues/5) and other platforms [listed here](https://github.com/ArduPilot/pymavlink/issues/836#issue-1788623502).
+> Please raise issues in [ArduPilot/pymavlink](https://github.com/ArduPilot/pymavlink/) if you find other hardware that is affected.
 
 ## Upgrading Library from MAVLink 1
 
@@ -252,7 +253,6 @@ The library have a number of `#define` values that you can set to enable various
   This allows invalid messages to be caught much sooner. 
   Use if the transmission medium is prone to missing (or extra) characters (e.g. a radio that fades in and out). 
   Only use if the channel will only contain messages types listed in the headers.
-
 
 
 ## Transmitting

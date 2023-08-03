@@ -51,6 +51,7 @@ Lua     | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &ch
 WLua (Wireshark Lua bindings)| [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | &check; | NA | Allow MAVLink-aware packet inspection in Wireshark. Generated lua scripts should be copied to the Wireshark plugin directory (e.g. **wireshark/plugins/mavlink.lua**).
 Swift   | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | | 
 Rust | [rust-mavlink](https://github.com/mavlink/rust-mavlink)| &check; | &check; |  | Rust MAVLink generated code. Has [tests](https://github.com/mavlink/rust-mavlink/tree/master/tests) and [docs](https://docs.rs/mavlink/latest/mavlink/).
+Ada | [mavgen](getting_started/generate_libraries.md#mavgen) | &check; | | | 
 
 
 ### External Generators/Languages

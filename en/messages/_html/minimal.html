@@ -689,14 +689,14 @@
      <td>
       <a href="#MAV_STATE_CRITICAL">MAV_STATE_CRITICAL</a>
      </td>
-     <td>System is in a non-normal flight mode. It can however still navigate.</td>
+     <td>System is in a non-normal flight mode (failsafe). It can however still navigate.</td>
     </tr>
     <tr id="MAV_STATE_EMERGENCY">
      <td>6</td>
      <td>
       <a href="#MAV_STATE_EMERGENCY">MAV_STATE_EMERGENCY</a>
      </td>
-     <td>System is in a non-normal flight mode. It lost control over parts or over the whole airframe. It is in mayday and going down.</td>
+     <td>System is in a non-normal flight mode (failsafe). It lost control over parts or over the whole airframe. It is in mayday and going down.</td>
     </tr>
     <tr id="MAV_STATE_POWEROFF">
      <td>7</td>
@@ -710,7 +710,7 @@
      <td>
       <a href="#MAV_STATE_FLIGHT_TERMINATION">MAV_STATE_FLIGHT_TERMINATION</a>
      </td>
-     <td>System is terminating itself.</td>
+     <td>System is terminating itself (failsafe or commanded).</td>
     </tr>
    </tbody>
   </table>

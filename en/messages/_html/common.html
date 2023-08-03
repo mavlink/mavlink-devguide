@@ -17971,14 +17971,14 @@
     </tr>
     <tr>
      <td>5: Latitude</td>
-     <td>Latitude. Note, if used in <a href="#MISSION_ITEM">MISSION_ITEM</a> (deprecated) the units are degrees (unscaled)</td>
+     <td>Latitude.</td>
      <td>
      </td>
      <td>degE7</td>
     </tr>
     <tr>
      <td>6: Longitude</td>
-     <td>Longitude. Note, if used in <a href="#MISSION_ITEM">MISSION_ITEM</a> (deprecated) the units are degrees (unscaled)</td>
+     <td>Longitude.</td>
      <td>
      </td>
      <td>degE7</td>
@@ -18061,8 +18061,6 @@
    <a href="#mav_commands">
     [Command]
    </a>Magnetometer calibration based on provided known yaw. This allows for fast calibration using WMM field tables in the vehicle, given only the known yaw of the vehicle. If Latitude and longitude are both zero then use the current vehicle location.</p>
-  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
-        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -23505,7 +23503,7 @@
      </td>
      <td>
      </td>
-     <td>Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)</td>
+     <td>Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0) from <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a> to MAV_FRAME_BODY_FRD</td>
     </tr>
     <tr>
      <td>body_roll_rate</td>
@@ -31176,7 +31174,7 @@
      </td>
      <td>
      </td>
-     <td>Version of the camera firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff)</td>
+     <td>Version of the camera firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff). Use 0 if not known.</td>
     </tr>
     <tr>
      <td>focal_length</td>
@@ -31184,7 +31182,7 @@
      <td>mm</td>
      <td>
      </td>
-     <td>Focal length</td>
+     <td>Focal length. Use NaN if not known.</td>
     </tr>
     <tr>
      <td>sensor_size_h</td>
@@ -31192,7 +31190,7 @@
      <td>mm</td>
      <td>
      </td>
-     <td>Image sensor size horizontal</td>
+     <td>Image sensor size horizontal. Use NaN if not known.</td>
     </tr>
     <tr>
      <td>sensor_size_v</td>
@@ -31200,7 +31198,7 @@
      <td>mm</td>
      <td>
      </td>
-     <td>Image sensor size vertical</td>
+     <td>Image sensor size vertical. Use NaN if not known.</td>
     </tr>
     <tr>
      <td>resolution_h</td>
@@ -31208,7 +31206,7 @@
      <td>pix</td>
      <td>
      </td>
-     <td>Horizontal image resolution</td>
+     <td>Horizontal image resolution. Use 0 if not known.</td>
     </tr>
     <tr>
      <td>resolution_v</td>
@@ -31216,7 +31214,7 @@
      <td>pix</td>
      <td>
      </td>
-     <td>Vertical image resolution</td>
+     <td>Vertical image resolution. Use 0 if not known.</td>
     </tr>
     <tr>
      <td>lens_id</td>
@@ -31225,7 +31223,7 @@
      </td>
      <td>
      </td>
-     <td>Reserved for a lens ID</td>
+     <td>Reserved for a lens ID.  Use 0 if not known.</td>
     </tr>
     <tr>
      <td>flags</td>
@@ -31244,7 +31242,7 @@
      </td>
      <td>
      </td>
-     <td>Camera definition version (iteration)</td>
+     <td>Camera definition version (iteration).  Use 0 if not known.</td>
     </tr>
     <tr>
      <td>cam_definition_uri</td>
@@ -31253,7 +31251,19 @@
      </td>
      <td>
      </td>
-     <td>Camera definition URI (if any, otherwise only basic functions will be available). HTTP- (http://) and MAVLink FTP- (mavlinkftp://) formatted URIs are allowed (and both must be supported by any GCS that implements the Camera Protocol). The definition file may be xz compressed, which will be indicated by the file extension .xml.xz (a GCS that implements the protocol must support decompressing the file). The string needs to be zero terminated.</td>
+     <td>Camera definition URI (if any, otherwise only basic functions will be available). HTTP- (http://) and MAVLink FTP- (mavlinkftp://) formatted URIs are allowed (and both must be supported by any GCS that implements the Camera Protocol). The definition file may be xz compressed, which will be indicated by the file extension .xml.xz (a GCS that implements the protocol must support decompressing the file). The string needs to be zero terminated.  Use a zero-length string if not known.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">gimbal_device_id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Gimbal id of a gimbal associated with this camera. This is the component id of the gimbal device, or 1-6 for non mavlink gimbals. Use 0 if no gimbal is associated with the camera.</td>
     </tr>
    </tbody>
   </table>
@@ -32499,7 +32509,7 @@
      </td>
      <td>
      </td>
-     <td>Gimbal device ID that this gimbal manager is responsible for.</td>
+     <td>Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal).</td>
     </tr>
     <tr>
      <td>roll_min</td>
@@ -32599,7 +32609,7 @@
      </td>
      <td>
      </td>
-     <td>Gimbal device ID that this gimbal manager is responsible for.</td>
+     <td>Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal).</td>
     </tr>
     <tr>
      <td>primary_control_sysid</td>
@@ -32886,6 +32896,18 @@
      </td>
      <td>Maximum hardware yaw angle (positive: to the right, negative: to the left). NAN if unknown.</td>
     </tr>
+    <tr>
+     <td style="color:blue;">gimbal_device_id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>This field is to be used if the gimbal manager and the gimbal device are the same component and hence have the same component ID. This field is then set to a number between 1-6. If the component ID is separate, this field is not required and must be set to 0.</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="GIMBAL_DEVICE_SET_ATTITUDE">GIMBAL_DEVICE_SET_ATTITUDE (<a href="#GIMBAL_DEVICE_SET_ATTITUDE">
@@ -32899,17 +32921,17 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Low level message to control a gimbal device's attitude. 
-	  This message is to be sent from the gimbal manager to the gimbal device component. 
-	  The quaternion and angular velocities can be set to NaN according to use case. 
-	  For the angles encoded in the quaternion and the angular velocities holds: 
-	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> is set, then they are relative to the vehicle heading (vehicle frame). 
-	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> is set, then they are relative to absolute North (earth frame). 
-	  If neither of these flags are set, then (for backwards compatibility) it holds: 
-	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a> is set, then they are relative to absolute North (earth frame), 
-	  else they are relative to the vehicle heading (vehicle frame). 
-	  Setting both <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> and <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> is not allowed. 
-	  These rules are to ensure backwards compatibility. 
+   </strong>Low level message to control a gimbal device's attitude.
+	  This message is to be sent from the gimbal manager to the gimbal device component.
+	  The quaternion and angular velocities can be set to NaN according to use case.
+	  For the angles encoded in the quaternion and the angular velocities holds:
+	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> is set, then they are relative to the vehicle heading (vehicle frame).
+	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> is set, then they are relative to absolute North (earth frame).
+	  If neither of these flags are set, then (for backwards compatibility) it holds:
+	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a> is set, then they are relative to absolute North (earth frame),
+	  else they are relative to the vehicle heading (vehicle frame).
+	  Setting both <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> and <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> is not allowed.
+	  These rules are to ensure backwards compatibility.
 	  New implementations should always set either <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> or <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a>.</p>
   <table class="sortable">
    <thead>
@@ -32996,20 +33018,20 @@
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Message reporting the status of a gimbal device. 
-	  This message should be broadcast by a gimbal device component at a low regular rate (e.g. 5 Hz). 
-	  For the angles encoded in the quaternion and the angular velocities holds: 
-	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> is set, then they are relative to the vehicle heading (vehicle frame). 
-	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> is set, then they are relative to absolute North (earth frame). 
-	  If neither of these flags are set, then (for backwards compatibility) it holds: 
-	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a> is set, then they are relative to absolute North (earth frame), 
-	  else they are relative to the vehicle heading (vehicle frame). 
-	  Other conditions of the flags are not allowed. 
-	  The quaternion and angular velocities in the other frame can be calculated from delta_yaw and delta_yaw_velocity as 
+   </strong>Message reporting the status of a gimbal device.
+	  This message should be broadcast by a gimbal device component at a low regular rate (e.g. 5 Hz).
+	  For the angles encoded in the quaternion and the angular velocities holds:
+	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> is set, then they are relative to the vehicle heading (vehicle frame).
+	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> is set, then they are relative to absolute North (earth frame).
+	  If neither of these flags are set, then (for backwards compatibility) it holds:
+	  If the flag <a href="#GIMBAL_DEVICE_FLAGS_YAW_LOCK">GIMBAL_DEVICE_FLAGS_YAW_LOCK</a> is set, then they are relative to absolute North (earth frame),
+	  else they are relative to the vehicle heading (vehicle frame).
+	  Other conditions of the flags are not allowed.
+	  The quaternion and angular velocities in the other frame can be calculated from delta_yaw and delta_yaw_velocity as
 	  q_earth = q_delta_yaw * q_vehicle and w_earth = w_delta_yaw_velocity + w_vehicle (if not NaN).
-	  If neither the <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> nor the <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> flag is set, 
+	  If neither the <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> nor the <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a> flag is set,
 	  then (for backwards compatibility) the data in the delta_yaw and delta_yaw_velocity fields are to be ignored.
-	  New implementations should always set either <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> or <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a>, 
+	  New implementations should always set either <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME</a> or <a href="#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME">GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME</a>,
 	  and always should set delta_yaw and delta_yaw_velocity either to the proper value or NaN.</p>
   <table class="sortable">
    <thead>
@@ -33122,6 +33144,18 @@
      <td>
      </td>
      <td>Yaw angular velocity relating the angular velocities in earth and body frames (see message description). NaN if unknown.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">gimbal_device_id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>This field is to be used if the gimbal manager and the gimbal device are the same component and hence have the same component ID. This field is then set a number between 1-6. If the component ID is separate, this field is not required and must be set to 0.</td>
     </tr>
    </tbody>
   </table>
