@@ -4,12 +4,22 @@ The camera protocol is used to configure camera payloads and request their statu
 It supports photo capture, and video capture and streaming.
 It also includes messages to query and configure the onboard camera storage.
 
-> **Tip** The [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/) provides an implementation of this protocol.
-
-<span></span>
 > **Warning** We are transitioning from specific request commands to a single generic requestor.
-  GCS and MAVLink SDKs/apps should support both approaches as we migrate to exclusive use of the new method (documented here).
-  For more information see [Migration Notes for GCS & Camera Servers](#migration-notes-for-gcs--mavlink-sdks).
+> GCS and MAVLink SDKs/apps should support both approaches as we migrate to exclusive use of the new method (documented here).
+> For more information see [Migration Notes for GCS & Camera Servers](#migration-notes-for-gcs--mavlink-sdks).
+
+## MAVLink Camera Implementations
+
+These cameras have inbuilt support for the MAVLink Camera protocol:
+
+- [Workswell cameras](https://www.drone-thermal-camera.com/): WIRIS Pro, WIRIS Pro SC, WIRIS Security, WIRIS Agro, GIS-320 ([source](https://www.drone-thermal-camera.com/mavlink-interface-for-uav-cameras/)).
+- [PhaseOne Cameras](https://geospatial.phaseone.com/) ([source](https://geospatial.phaseone.com/resources-support/developer/mavlink/)).
+
+Camera Managers provide a MAVLink Camera protocol interface for cameras that don't directly implement MAVLink support.
+These generally run on a companion computer:
+
+- [MAVLink Camera Manager](https://github.com/mavlink/mavlink-camera-manager) (actively maintained)
+- [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/)
 
 ## Camera Connection
 
@@ -18,9 +28,8 @@ Each camera must use a different pre-defined camera component ID: [MAV_COMP_ID_C
 
 The first time a heartbeat is detected from a new camera, a GCS (or other receiving system) should start the [Camera Identification](#camera_identification) process.
 
-> **Note** If a receiving system stops receiving heartbeats from the camera it is assumed to be *disconnected*, and should be removed from the list of available cameras.
-  If heartbeats are again detected, the *camera identification* process below must be restarted from the beginning.
-
+> **Note** If a receiving system stops receiving heartbeats from the camera it is assumed to be _disconnected_, and should be removed from the list of available cameras.
+> If heartbeats are again detected, the _camera identification_ process below must be restarted from the beginning.
 
 ## Basic Camera Operations
 
@@ -38,7 +47,6 @@ The camera will then respond with the a [COMMAND_ACK](../messages/common.md#COMM
 On success (result is [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) the camera component must then send a [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
 
 [![Mermaid Sequence: Camera Id](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIENhbWVyYS0-PkdDUzogSEVBUlRCRUFUIFtjbXAgaWQ6IE1BVl9DT01QX0lEX0NBTUVSQV0gKGZpcnN0KSBcbiAgICBHQ1MtPj5DYW1lcmE6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFKHBhcmFtMT0yNTkpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgQ2FtZXJhLT4-R0NTOiBDT01NQU5EX0FDS1xuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBJZiBNQVZfUkVTVUxUX0FDQ0VQVEVEIHNlbmQgaW5mby5cbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTkZPUk1BVElPTiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIENhbWVyYS0-PkdDUzogSEVBUlRCRUFUIFtjbXAgaWQ6IE1BVl9DT01QX0lEX0NBTUVSQV0gKGZpcnN0KSBcbiAgICBHQ1MtPj5DYW1lcmE6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFKHBhcmFtMT0yNTkpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgQ2FtZXJhLT4-R0NTOiBDT01NQU5EX0FDS1xuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBJZiBNQVZfUkVTVUxUX0FDQ0VQVEVEIHNlbmQgaW5mby5cbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTkZPUk1BVElPTiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
-
 
 <!-- Original diagram
 sequenceDiagram;
@@ -63,8 +71,8 @@ If a camera provides finer control over its settings `CAMERA_INFORMATION.cam_def
 If this URI exists, the GCS will request it, parse it and prepare the UI for the user to control the camera settings.
 
 > **Note** A GCS that implements this protocol is expected to support both HTTP (`http://`) and [MAVLink FTP](../services/ftp.md) (`mftp://`) URIs for download of the camera definition file.
-  If the camera provides an HTTP or MAVLink FTP interface, the definition file can be hosted on the camera itself.
-  Otherwise, it can be *hosted* anywhere (on any reachable server).
+> If the camera provides an HTTP or MAVLink FTP interface, the definition file can be hosted on the camera itself.
+> Otherwise, it can be _hosted_ anywhere (on any reachable server).
 
 The `CAMERA_INFORMATION.cam_definition_version` field should provide a version for the definition file, allowing the GCS to cache it.
 Once downloaded, it would only be requested again if the version number changes.
@@ -72,7 +80,6 @@ Once downloaded, it would only be requested again if the version number changes.
 If a vehicle has more than one camera, each camera will have a different component ID and send its own heartbeat.
 The GCS should create multiple instances of a camera controller based on the component ID of each camera.
 All commands are sent to a specific camera by addressing the command to a specific component ID.
-
 
 ### Camera Modes
 
@@ -104,7 +111,7 @@ sequenceDiagram;
 -->
 
 > **Note** Command acknowledgment and message resending is handled in the same way as for [camera identification](#camera_identification)
-  (if a successful ACK is received the camera will expect the `CAMERA_SETTINGS` message, and repeat the cycle - up to 3 times - until it is received).
+> (if a successful ACK is received the camera will expect the `CAMERA_SETTINGS` message, and repeat the cycle - up to 3 times - until it is received).
 
 To set the camera to a specific mode, the GCS would send the [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) command with the appropriate mode.
 
@@ -124,37 +131,33 @@ sequenceDiagram;
 
 > **Note** The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment.
 
-
 ### Storage Status
 
 Before capturing images and/or videos, a GCS should query the storage status to determine if the camera has enough free space for these operations (and provide the user with feedback as to the current storage status).
 The GCS will send the [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command and it expects a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message back as well as a [STORAGE_INFORMATION](../messages/common.md#STORAGE_INFORMATION) response.
 For formatting (or erasing depending on your implementation), the GCS will send a [MAV_CMD_STORAGE_FORMAT](../messages/common.md#MAV_CMD_STORAGE_FORMAT) command.
 
-
 ### Camera Capture Status
 
-In addition to querying about storage status, the GCS will also request the current *Camera Capture Status* in order to provide the user with proper UI indicators.
+In addition to querying about storage status, the GCS will also request the current _Camera Capture Status_ in order to provide the user with proper UI indicators.
 The GCS will send a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command asking for [[CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS)] and it expects a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message back as well as a [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) response.
-
 
 ### Still Image Capture
 
-A camera supports *still image capture* if the [CAMERA_CAP_FLAGS_CAPTURE_IMAGE](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_IMAGE) bit is set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
+A camera supports _still image capture_ if the [CAMERA_CAP_FLAGS_CAPTURE_IMAGE](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_IMAGE) bit is set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
 A GCS/MAVLink app uses the [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) command to request that the camera capture a specified number of images (or forever), and the duration between them.
 The camera immediately returns the normal command acknowledgment ([MAV_RESULT](../messages/common.md#MAV_RESULT_ACCEPTED)).
 
-Each time an image is captured, the camera *broadcasts* a [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) message.
+Each time an image is captured, the camera _broadcasts_ a [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) message.
 This message not only tells the GCS the image was captured, it is also intended for geo-tagging.
 
-> **Note** The camera must iterate `CAMERA_IMAGE_CAPTURED.image_index` and the counter used in `CAMERA_CAPTURE_STATUS.image_count` for every *new* image capture (these values iterate until explicitly cleared using [MAV_CMD_STORAGE_FORMAT](#MAV_CMD_STORAGE_FORMAT)).
-  The index and total image count can be used to [re-request missing images](#missing_images) (e.g. images captured when the vehicle was out of telemetry range).
-
+> **Note** The camera must iterate `CAMERA_IMAGE_CAPTURED.image_index` and the counter used in `CAMERA_CAPTURE_STATUS.image_count` for every _new_ image capture (these values iterate until explicitly cleared using [MAV_CMD_STORAGE_FORMAT](#MAV_CMD_STORAGE_FORMAT)).
+> The index and total image count can be used to [re-request missing images](#missing_images) (e.g. images captured when the vehicle was out of telemetry range).
 
 The [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) command can optionally be sent to stop an image capture sequence (this is needed if image capture has been set to continue forever).
 
-The still image capture message sequence *for missions* (as described above) is shown below:
+The still image capture message sequence _for missions_ (as described above) is shown below:
 
 [![Mermaid Sequence: Image capture](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9JTUFHRV9TVEFSVF9DQVBUVVJFIChpbnRlcnZhbCwgY291bnQvZm9yZXZlcilcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IE1BVl9SRVNVTFRfQUNDRVBURURcbiAgICBOb3RlIG92ZXIgQ2FtZXJhLEdDUzogQ2FtZXJhIHN0YXJ0IGNhcHR1cmUgb2YgXCJjb3VudFwiIGltYWdlcyBhdCBcImludGVydmFsXCJcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTUFHRV9DQVBUVVJFRCAgKGJyb2FkY2FzdClcbiAgICBDYW1lcmEtPj5HQ1M6IC4uLlxuICAgIENhbWVyYS0-PkdDUzogQ0FNRVJBX0lNQUdFX0NBUFRVUkVEIChicm9hZGNhc3QpXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IChPcHRpb25hbCkgU3RvcCBjYXB0dXJlXG4gICAgR0NTLT4-Q2FtZXJhOiBNQVZfQ01EX0lNQUdFX1NUT1BfQ0FQVFVSRVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9JTUFHRV9TVEFSVF9DQVBUVVJFIChpbnRlcnZhbCwgY291bnQvZm9yZXZlcilcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IE1BVl9SRVNVTFRfQUNDRVBURURcbiAgICBOb3RlIG92ZXIgQ2FtZXJhLEdDUzogQ2FtZXJhIHN0YXJ0IGNhcHR1cmUgb2YgXCJjb3VudFwiIGltYWdlcyBhdCBcImludGVydmFsXCJcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTUFHRV9DQVBUVVJFRCAgKGJyb2FkY2FzdClcbiAgICBDYW1lcmEtPj5HQ1M6IC4uLlxuICAgIENhbWVyYS0-PkdDUzogQ0FNRVJBX0lNQUdFX0NBUFRVUkVEIChicm9hZGNhc3QpXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IChPcHRpb25hbCkgU3RvcCBjYXB0dXJlXG4gICAgR0NTLT4-Q2FtZXJhOiBNQVZfQ01EX0lNQUdFX1NUT1BfQ0FQVFVSRVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
@@ -175,9 +178,10 @@ sequenceDiagram;
     Camera->>GCS: MAV_RESULT_ACCEPTED
 -->
 
-The message sequence for *interactive user-initiated image capture* through a GUI is slightly different.
+The message sequence for _interactive user-initiated image capture_ through a GUI is slightly different.
 In this case the GCS should:
-- Confirm that the camera is *ready* to take images before allowing the user to request image capture.
+
+- Confirm that the camera is _ready_ to take images before allowing the user to request image capture.
   - It does this by by sending [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
   - The camera should return a `MAV_RESULT` and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
   - The GCS should check that the status is "Idle" before enabling camera capture in the GUI.
@@ -216,7 +220,6 @@ Individual entries can be requested using [MAV_CMD_REQUEST_MESSAGE](../messages/
 
 The camera image log iterates "forever" (but may be explicitly reset using [MAV_CMD_STORAGE_FORMAT.param3=1](../messages/common.md#MAV_CMD_STORAGE_FORMAT)).
 
-
 ### Video Capture
 
 A camera supports video capture if the [CAMERA_CAP_FLAGS_CAPTURE_VIDEO](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_VIDEO) bit is set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
@@ -226,14 +229,13 @@ If requested, the [CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS) message is sen
 
 To stop recording, the GCS uses the [MAV_CMD_VIDEO_STOP_CAPTURE](../messages/common.md#MAV_CMD_VIDEO_STOP_CAPTURE) command.
 
-
 ### Video Streaming {#video_streaming}
 
 > **Note** The GCS should already have identified all connected cameras by their heartbeat and followed the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
 
 A camera is capable of streaming video if it sets the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) bit set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
-The sequence for requesting *all* video streams from a particular camera is shown below:
+The sequence for requesting _all_ video streams from a particular camera is shown below:
 
 [![Mermaid Sequence: Video stream info](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIE5vdGUgb3ZlciBHQ1MsQ2FtZXJhOiBJRiBDQU1FUkFfQ0FQX0ZMQUdTX0hBU19WSURFT19TVFJFQU08YnI-aW4gQ0FNRVJBX0lORk9STUFUSU9OLmZsYWdzPGJyPnJlcXVlc3QgYWxsIHN0cmVhbXMuXG4gICAgR0NTLT4-Q2FtZXJhOiBNQVZfQ01EX1JFUVVFU1RfTUVTU0FHRShwYXJhbTE9MjY5LHBhcmFtMj0wKVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRFxuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBDYW1lcmEgc2VuZHMgaW5mb3JtYXRpb24gZm9yPGJyPiBhbGwgc3RyZWFtcy5cbiAgICBDYW1lcmEtPj5HQ1M6IFZJREVPX1NUUkVBTV9JTkZPUk1BVElPTiAoMSlcbiAgICBDYW1lcmEtPj5HQ1M6IC4uLlxuICAgIENhbWVyYS0-PkdDUzogVklERU9fU1RSRUFNX0lORk9STUFUSU9OIChuKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIE5vdGUgb3ZlciBHQ1MsQ2FtZXJhOiBJRiBDQU1FUkFfQ0FQX0ZMQUdTX0hBU19WSURFT19TVFJFQU08YnI-aW4gQ0FNRVJBX0lORk9STUFUSU9OLmZsYWdzPGJyPnJlcXVlc3QgYWxsIHN0cmVhbXMuXG4gICAgR0NTLT4-Q2FtZXJhOiBNQVZfQ01EX1JFUVVFU1RfTUVTU0FHRShwYXJhbTE9MjY5LHBhcmFtMj0wKVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRFxuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBDYW1lcmEgc2VuZHMgaW5mb3JtYXRpb24gZm9yPGJyPiBhbGwgc3RyZWFtcy5cbiAgICBDYW1lcmEtPj5HQ1M6IFZJREVPX1NUUkVBTV9JTkZPUk1BVElPTiAoMSlcbiAgICBDYW1lcmEtPj5HQ1M6IC4uLlxuICAgIENhbWVyYS0-PkdDUzogVklERU9fU1RSRUFNX0lORk9STUFUSU9OIChuKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
@@ -252,6 +254,7 @@ sequenceDiagram;
 -->
 
 The steps are:
+
 1. GCS follows the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
 1. GCS checks if [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) contains the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag.
 1. If so, the GCS sends the [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message to the camera requesting the video streaming configuration (`param1=269`) for all streams (`param2=0`).
@@ -259,8 +262,7 @@ The steps are:
 1. Camera returns a [VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) message for the specified stream or all streams it supports.
 
 > **Note** If your camera only provides video streaming and nothing else (no camera features), the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag is the only flag you need to set.
-  The GCS will then provide video streaming support and skip camera control.
-
+> The GCS will then provide video streaming support and skip camera control.
 
 ### Camera Tracking
 
@@ -284,23 +286,21 @@ After stopping tracking you should call `MAV_CMD_SET_MESSAGE_INTERVAL` to stop s
 
 > **Note** The GCS should already have identified all connected cameras by their heartbeat and followed the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
 
-
 The sequence for tracking a point is shown below (tracking a rectangle is the same sequence but a different tracking command).
 
 [![Mermaid Sequence: tracking info](https://mermaid.ink/img/pako:eNqlVGFvmzAQ_SuWP6USi5ZKWyW2RLIIYWgBIkz7CQm54CTWgs2M2VRV_e8zmCyobaImAQkd9t299853foa5KCi0YU1_N5TndM7IRpLyW8qBfioiFctZRbgCnoPfLjqkpJKY9VAoCsQfKltXy-zYwF8ABwVujDIHrbLFEnk4-4FwlsTI-emHXraK_DD5_ihnjO89_XARxQFK_Cgcr3dkU7fboFYaGChJ8l-Mb0AlGFcGWeN9ms32iAF6yJxgnvXJOiCDMgIp7MIA42shS6KY4CkENyaNSaAz6XwmTezi-2WSIcdxV4k7b91Sbt43im2AqdIkJSVly08SRVveQxqtXj9AnpvhBCX3-BR97CZZ4GLcemvubvyAliNde1JOprd3X6zOvJ1OPhvrbjo5R8YHyIPXzD036nm3ukZ1U1VCnwirAanrpqRgSyW9uVzT16s0vVZlQqwuwNi9vvrQQ4M2AJpHrbcE2LDykezeBT51lmA0-VDMoYqHCPBe4Hg8Pjcfv4B1G3OqdvqjCyeqQdkILwa98ndLOdA_xdOxsxpMI06i1X8mx0p2tGevmpRLB-WqVj4fFFpQe5SEFfpafu6uHKi2tKQptLVZ0DVpdiqFKX_Rrk1V6FF1C6aEhPaa7GpqQdIogZ94Dm0lG7p36q_23uvlH-Jn1w4?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNqlVGFvmzAQ_SuWP6USi5ZKWyW2RLIIYWgBIkz7CQm54CTWgs2M2VRV_e8zmCyobaImAQkd9t299853foa5KCi0YU1_N5TndM7IRpLyW8qBfioiFctZRbgCnoPfLjqkpJKY9VAoCsQfKltXy-zYwF8ABwVujDIHrbLFEnk4-4FwlsTI-emHXraK_DD5_ihnjO89_XARxQFK_Cgcr3dkU7fboFYaGChJ8l-Mb0AlGFcGWeN9ms32iAF6yJxgnvXJOiCDMgIp7MIA42shS6KY4CkENyaNSaAz6XwmTezi-2WSIcdxV4k7b91Sbt43im2AqdIkJSVly08SRVveQxqtXj9AnpvhBCX3-BR97CZZ4GLcemvubvyAliNde1JOprd3X6zOvJ1OPhvrbjo5R8YHyIPXzD036nm3ukZ1U1VCnwirAanrpqRgSyW9uVzT16s0vVZlQqwuwNi9vvrQQ4M2AJpHrbcE2LDykezeBT51lmA0-VDMoYqHCPBe4Hg8Pjcfv4B1G3OqdvqjCyeqQdkILwa98ndLOdA_xdOxsxpMI06i1X8mx0p2tGevmpRLB-WqVj4fFFpQe5SEFfpafu6uHKi2tKQptLVZ0DVpdiqFKX_Rrk1V6FF1C6aEhPaa7GpqQdIogZ94Dm0lG7p36q_23uvlH-Jn1w4)
 
-
 The steps are:
+
 1. GCS follows the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
 1. GCS checks if [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) contains the `CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE`, `CAMERA_CAP_FLAGS_HAS_TRACKING_POINT`, `CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS`.
 1. If tracking is supported the GCS sends the command to start the type of tracking it wants to do: [MAV_CMD_CAMERA_TRACK_POINT](#MAV_CMD_CAMERA_TRACK_POINT) or [MAV_CMD_CAMERA_TRACK_RECTANGLE](#MAV_CMD_CAMERA_TRACK_RECTANGLE).
    The sequence above just shows point tracking.
 1. Set the desired rates (intervals) for streaming the tracking status messages.
-1. Camera streams [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS) and/or [CAMERA_TRACKING_GEO_STATUS](#CAMERA_TRACKING_GEO_STATUS). 
+1. Camera streams [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS) and/or [CAMERA_TRACKING_GEO_STATUS](#CAMERA_TRACKING_GEO_STATUS).
    These are used to provide camera targetting information.
 1. To stop tracking, a GCS uses the [MAV_CMD_CAMERA_STOP_TRACKING](#MAV_CMD_CAMERA_STOP_TRACKING) command.
    The streaming intervals must also be set to zero.
-
 
 ### Battery Status
 
@@ -341,9 +341,8 @@ Message | Description | Status
 <a id="CAMERA_TRACKING_IMAGE_STATUS"></a>[CAMERA_TRACKING_IMAGE_STATUS](../messages/common.md#CAMERA_TRACKING_IMAGE_STATUS) | Camera tracking status, sent while in active tracking. Use [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) to define message interval. | 
 <a id="CAMERA_TRACKING_GEO_STATUS"></a>[CAMERA_TRACKING_GEO_STATUS](../messages/common.md#CAMERA_TRACKING_GEO_STATUS) | Camera tracking status, sent while in active tracking. Use [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) to define message interval. | 
 
-
 Enum | Description
--- | --
+--- | ---
 <a id="CAMERA_CAP_FLAGS"></a>[CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS) | Camera capability flags (Bitmap). For example: ability to capture images in video mode, support for survey mode etc. Received in [CAMERA_INFORMATION](#CAMERA_INFORMATION).
 <a id="CAMERA_MODE"></a>[CAMERA_MODE](../messages/common.md#CAMERA_MODE) | Camera mode (image, video, survey etc.). Received in [CAMERA_SETTINGS](#CAMERA_SETTINGS).
 <a id="VIDEO_STREAM_TYPE"></a>[VIDEO_STREAM_TYPE](../messages/common.md#VIDEO_STREAM_TYPE) | Type of stream - e.g. RTSP, MPEG. Received in [VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFORMATION).
@@ -351,7 +350,6 @@ Enum | Description
 <a id="CAMERA_TRACKING_STATUS_FLAGS"></a>[CAMERA_TRACKING_STATUS_FLAGS](../messages/common.md#CAMERA_TRACKING_STATUS_FLAGS) | Current tracking status. Received in [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS) amd [CAMERA_TRACKING_GEO_STATUS](#CAMERA_TRACKING_GEO_STATUS).
 <a id="CAMERA_TRACKING_MODE"></a>[CAMERA_TRACKING_MODE](../messages/common.md#CAMERA_TRACKING_MODE) | Current tracking mode. Received in [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS).
 <a id="CAMERA_TRACKING_TARGET_DATA"></a>[CAMERA_TRACKING_TARGET_DATA](../messages/common.md#CAMERA_TRACKING_TARGET_DATA) | Indicates how target data is encoded in image. Received in [CAMERA_TRACKING_IMAGE_STATUS](#CAMERA_TRACKING_IMAGE_STATUS).
-
 
 ## Migration Notes for GCS & MAVLink SDKs
 

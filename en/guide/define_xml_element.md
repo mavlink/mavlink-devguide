@@ -156,8 +156,8 @@ The main rules for messages are:
   - These must be unique across the generated library.
   - See [Message Id Ranges](#message_id_ranges) below for more information.
 - Messages *should* (very highly recommended) include a `description`. <!-- update if this becomes mandatory -->
-- [Point to point messages](../about/overview.md#point_to_point) *must* include a `field` for `target_system` (exactly as shown above).
-- [Point to point messages](../about/overview.md#point_to_point) that are relevant to components *must* include a `field` for `target_component`(exactly as shown above).
+- [Point to point messages](../about/overview.md#point-to-point-mode) *must* include a `field` for `target_system` (exactly as shown above).
+- [Point to point messages](../about/overview.md#point-to-point-mode) that are relevant to components *must* include a `field` for `target_component`(exactly as shown above).
 - The total payload size (for all fields) must not exceed 255 bytes.
 - All other fields are optional.
 - There must be at least one field and no more than 64 fields.
