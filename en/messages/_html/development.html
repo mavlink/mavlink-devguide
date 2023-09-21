@@ -382,7 +382,7 @@
      <td>
       <a href="#MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE">MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE</a>
      </td>
-     <td>Battery requires service (not safe to fly). 
+     <td>Battery requires service (not safe to fly).
           This is set at vendor discretion.
           It is likely to be set for most faults, and may also be set according to a maintenance schedule (such as age, or number of recharge cycles, etc.).</td>
     </tr>
@@ -391,7 +391,7 @@
      <td>
       <a href="#MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY">MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY</a>
      </td>
-     <td>Battery is faulty and cannot be repaired (not safe to fly). 
+     <td>Battery is faulty and cannot be repaired (not safe to fly).
           This is set at vendor discretion.
           The battery should be disposed of safely.</td>
     </tr>
@@ -1177,6 +1177,110 @@
       <a href="#WIFI_NETWORK_SECURITY">WIFI_NETWORK_SECURITY</a>
      </td>
      <td>WiFi network security type.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SET_VELOCITY_LIMITS">SET_VELOCITY_LIMITS (<a href="#SET_VELOCITY_LIMITS">
+    #354
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Set temporary maximum limits for horizontal speed, vertical speed and yaw rate.
+        The consumer must stream the current limits in <a href="#VELOCITY_LIMITS">VELOCITY_LIMITS</a> at 1 Hz or more (when limits are being set).
+        The consumer should latch the limits until a new limit is received or the mode is changed.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>horizontal_speed_limit</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Limit for horizontal movement in <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>. NaN: Field not used (ignore)</td>
+    </tr>
+    <tr>
+     <td>vertical_speed_limit</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Limit for vertical movement in <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>. NaN: Field not used (ignore)</td>
+    </tr>
+    <tr>
+     <td>yaw_rate_limit</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Limit for vehicle turn rate around its yaw axis. NaN: Field not used (ignore)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="VELOCITY_LIMITS">VELOCITY_LIMITS (<a href="#VELOCITY_LIMITS">
+    #355
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Current limits for horizontal speed, vertical speed and yaw rate, as set by <a href="#SET_VELOCITY_LIMITS">SET_VELOCITY_LIMITS</a>.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>horizontal_speed_limit</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Limit for horizontal movement in <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>. NaN: No limit applied</td>
+    </tr>
+    <tr>
+     <td>vertical_speed_limit</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Limit for vertical movement in <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>. NaN: No limit applied</td>
+    </tr>
+    <tr>
+     <td>yaw_rate_limit</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Limit for vehicle turn rate around its yaw axis. NaN: No limit applied</td>
     </tr>
    </tbody>
   </table>
