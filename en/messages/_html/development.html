@@ -382,7 +382,7 @@
      <td>
       <a href="#MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE">MAV_BATTERY_STATUS_FLAGS_REQUIRES_SERVICE</a>
      </td>
-     <td>Battery requires service (not safe to fly). 
+     <td>Battery requires service (not safe to fly).
           This is set at vendor discretion.
           It is likely to be set for most faults, and may also be set according to a maintenance schedule (such as age, or number of recharge cycles, etc.).</td>
     </tr>
@@ -391,7 +391,7 @@
      <td>
       <a href="#MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY">MAV_BATTERY_STATUS_FLAGS_BAD_BATTERY</a>
      </td>
-     <td>Battery is faulty and cannot be repaired (not safe to fly). 
+     <td>Battery is faulty and cannot be repaired (not safe to fly).
           This is set at vendor discretion.
           The battery should be disposed of safely.</td>
     </tr>
@@ -1041,50 +1041,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="MISSION_CHECKSUM">MISSION_CHECKSUM (<a href="#MISSION_CHECKSUM">
-    #53
-   </a>
-   )
-  </h3>
-  <p>
-   <a href="#messages">
-    [Message]
-   </a>Checksum for the current mission, rally point or geofence plan, or for the "combined" plan (a GCS can use these checksums to determine if it has matching plans).
-        This message must be broadcast with the appropriate checksum following any change to a mission, geofence or rally point definition
-        (immediately after the <a href="#MISSION_ACK">MISSION_ACK</a> that completes the upload sequence).
-        It may also be requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a>, where param 2 indicates the plan type for which the checksum is required.
-        The checksum must be calculated on the autopilot, but may also be calculated by the GCS.
-        The checksum uses the same CRC32 algorithm as MAVLink FTP (https://mavlink.io/en/services/ftp.html#crc32-implementation).
-        The checksum for a mission, geofence or rally point definition is run over each item in the plan in seq order (excluding the home location if present in the plan), and covers the following fields (in order):
-        frame, command, autocontinue, param1, param2, param3, param4, param5, param6, param7.
-        The checksum for the whole plan (<a href="#MAV_MISSION_TYPE_ALL">MAV_MISSION_TYPE_ALL</a>) is calculated using the same approach, running over each sub-plan in the following order: mission, geofence then rally point.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Field Name</th>
-     <th>Type</th>
-     <th>Values</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>mission_type</td>
-     <td>uint8_t</td>
-     <td>
-      <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
-     </td>
-     <td>Mission type.</td>
-    </tr>
-    <tr>
-     <td>checksum</td>
-     <td>uint32_t</td>
-     <td>
-     </td>
-     <td>CRC32 checksum of current plan for specified type.</td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="AIRSPEED">AIRSPEED (<a href="#AIRSPEED">
     #295
    </a>
@@ -1221,6 +1177,110 @@
       <a href="#WIFI_NETWORK_SECURITY">WIFI_NETWORK_SECURITY</a>
      </td>
      <td>WiFi network security type.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="SET_VELOCITY_LIMITS">SET_VELOCITY_LIMITS (<a href="#SET_VELOCITY_LIMITS">
+    #354
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Set temporary maximum limits for horizontal speed, vertical speed and yaw rate.
+        The consumer must stream the current limits in <a href="#VELOCITY_LIMITS">VELOCITY_LIMITS</a> at 1 Hz or more (when limits are being set).
+        The consumer should latch the limits until a new limit is received or the mode is changed.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>System ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>Component ID (0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>horizontal_speed_limit</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Limit for horizontal movement in <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>. NaN: Field not used (ignore)</td>
+    </tr>
+    <tr>
+     <td>vertical_speed_limit</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Limit for vertical movement in <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>. NaN: Field not used (ignore)</td>
+    </tr>
+    <tr>
+     <td>yaw_rate_limit</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Limit for vehicle turn rate around its yaw axis. NaN: Field not used (ignore)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="VELOCITY_LIMITS">VELOCITY_LIMITS (<a href="#VELOCITY_LIMITS">
+    #355
+   </a>
+   )
+  </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Current limits for horizontal speed, vertical speed and yaw rate, as set by <a href="#SET_VELOCITY_LIMITS">SET_VELOCITY_LIMITS</a>.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>horizontal_speed_limit</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Limit for horizontal movement in <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>. NaN: No limit applied</td>
+    </tr>
+    <tr>
+     <td>vertical_speed_limit</td>
+     <td>float</td>
+     <td>m/s</td>
+     <td>Limit for vertical movement in <a href="#MAV_FRAME_LOCAL_NED">MAV_FRAME_LOCAL_NED</a>. NaN: No limit applied</td>
+    </tr>
+    <tr>
+     <td>yaw_rate_limit</td>
+     <td>float</td>
+     <td>rad/s</td>
+     <td>Limit for vehicle turn rate around its yaw axis. NaN: No limit applied</td>
     </tr>
    </tbody>
   </table>
