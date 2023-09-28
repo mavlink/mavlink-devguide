@@ -5132,6 +5132,50 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="SPEED_TYPE">SPEED_TYPE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Speed setpoint types used in MAV_CMD_DO_CHANGE_SPEED</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="SPEED_TYPE_AIRSPEED">
+     <td>0</td>
+     <td>
+      <a href="#SPEED_TYPE_AIRSPEED">SPEED_TYPE_AIRSPEED</a>
+     </td>
+     <td>Airspeed</td>
+    </tr>
+    <tr id="SPEED_TYPE_GROUNDSPEED">
+     <td>1</td>
+     <td>
+      <a href="#SPEED_TYPE_GROUNDSPEED">SPEED_TYPE_GROUNDSPEED</a>
+     </td>
+     <td>Groundspeed</td>
+    </tr>
+    <tr id="SPEED_TYPE_CLIMB_SPEED">
+     <td>2</td>
+     <td>
+      <a href="#SPEED_TYPE_CLIMB_SPEED">SPEED_TYPE_CLIMB_SPEED</a>
+     </td>
+     <td>Climb speed</td>
+    </tr>
+    <tr id="SPEED_TYPE_DESCENT_SPEED">
+     <td>3</td>
+     <td>
+      <a href="#SPEED_TYPE_DESCENT_SPEED">SPEED_TYPE_DESCENT_SPEED</a>
+     </td>
+     <td>Descent speed</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="ESTIMATOR_STATUS_FLAGS">ESTIMATOR_STATUS_FLAGS</h3>
   <p>
    <a href="#enums">
@@ -12184,7 +12228,7 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Change speed and/or throttle set points. The value persists until it is overridden or there is a mode change.</p>
+   </a>Change speed and/or throttle set points. The value persists until it is overridden or there is a mode change</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -12197,9 +12241,10 @@
    <tbody>
     <tr>
      <td>1: Speed Type</td>
-     <td>Speed type (0=Airspeed, 1=Ground Speed, 2=Climb Speed, 3=Descent Speed)</td>
+     <td>Speed type of value set in param2 (such as airspeed, ground speed, and so on)</td>
      <td>
-      <em>min:</em>0 <em>max:</em>3 <em>increment:</em>1</td>
+      <a href="#SPEED_TYPE">SPEED_TYPE</a>
+     </td>
      <td>
      </td>
     </tr>
