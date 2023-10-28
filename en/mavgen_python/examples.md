@@ -2,7 +2,7 @@
 
 Other examples:
 
-- [ArduPilot/pymavlink/examples](https://github.com/ArduPilot/pymavlink/tree/master/examples) - The Pymvalink submodule contains a number of simple examples.
+- [ArduPilot/pymavlink/examples](https://github.com/ArduPilot/pymavlink/tree/master/examples) - The Pymavlink submodule contains a number of simple examples.
 - [ArduSub Pymavlink Docs](https://www.ardusub.com/developers/pymavlink.html) - A number of useful examples, which use ArduSub and MAVProxy
 
 
