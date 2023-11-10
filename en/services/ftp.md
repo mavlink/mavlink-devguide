@@ -241,8 +241,8 @@ The sequence of operations is:
    - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = 4, `data` = length of file that has been opened.
    - NAK with [error information](#error_codes), e.g. `NoSessionsAvailable`, `FileExists`.
      The GCS may cancel the operation, depending on the error.
-1. Client (i.e. GCS) sends [BurstReadFile](#BurstReadFile) command specifying the part of the file that it wants to get.
-   - The payload must specify: `session`: the current session id, `offset` = offset in file of start of burst, `data`= length of burst, `size`=4.
+1. Client (i.e. GCS) sends [BurstReadFile](#BurstReadFile) command specifying the part of the file that it wants to get from an offset to the end, along with the default size of each burst payload.
+   - The payload must specify: `session`: the current session id, `offset` = offset in file of start of burst, `size`= default length of payload in burst responses, `data` is ignored..
 1. Server (drone) responds with either
    - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = 4, `data` = lenght of file in burst.
    - NAK with [error information](#error_codes). The client may cancel the operation, depending on the error.
