@@ -251,7 +251,7 @@ The sequence of operations is:
    - The payload must specify `burst_complete=0` for all chunks, except the last one, which must set `burst_complete=1`.
 1. Client repeats the `BurstReadFile` cycle at different offsets until the whole file is retrieved.
 1. The client must maintain its own record of the received (and missing) chunks.
-   It may request any missing chunks at either the end of a  burst or at the end of the file.
+   It may request any missing chunks at either the end of a burst or at the end of the file.
    Missing chunks can be requested using either `BurstReadFile` or `ReadFile`.
 1. Client sends [TerminateSession](#TerminateSession) to close the file once all the chunks have been downloaded
    The server should send an ACK/NAK, but this may (generally speaking) be ignored by the client.
