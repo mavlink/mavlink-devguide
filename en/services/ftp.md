@@ -249,7 +249,6 @@ The sequence of operations is:
 1. Server sends stream of [BurstReadFile](#BurstReadFile) data to client (without ACK) until the whole burst is sent, or a server-defined burst size limit is reached.
    - The payload must specify: `session`=current session, `size`=size of data to read per burst message (max equal to payload size = 239), `offset`= position in original data of current chunk.
    - The payload must specify `burst_complete=0` for all chunks, except the last one, which must set `burst_complete=1`.
-1. Client repeats the `BurstReadFile` cycle at different offsets until the whole file is retrieved.
 1. The client must maintain its own record of the received (and missing) chunks.
    It may request any missing chunks at either the end of a burst or at the end of the file.
    Missing chunks can be requested using `ReadFile`.
