@@ -12000,25 +12000,25 @@
    <tbody>
     <tr>
      <td>1: Angle</td>
-     <td>target angle, 0 is north</td>
+     <td>target angle [0-360]. Absolute angles: 0 is north. Relative angle: 0 is initial yaw. Direction set by param3.</td>
      <td>
-     </td>
+      <em>min:</em>0 <em>max:</em>360 </td>
      <td>deg</td>
     </tr>
     <tr>
      <td>2: Angular Speed</td>
      <td>angular speed</td>
      <td>
-     </td>
+      <em>min:</em>0 </td>
      <td>deg/s</td>
     </tr>
     <tr>
      <td>3: Direction</td>
-     <td>direction: -1: counter clockwise, 1: clockwise</td>
+     <td>direction: -1: counter clockwise, 0: shortest direction, 1: clockwise</td>
      <td>
       <em>min:</em>
       -1 
-      <em>max:</em>1 <em>increment:</em>2</td>
+      <em>max:</em>1 <em>increment:</em>1</td>
      <td>
      </td>
     </tr>
