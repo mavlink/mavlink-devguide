@@ -21505,6 +21505,36 @@
      </td>
      <td>Vehicle is in a mode that can execute mission items or suspended. 0: Unknown, 1: In mission mode, 2: Suspended (not in mission mode).</td>
     </tr>
+    <tr>
+     <td style="color:blue;">mission_id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Id of current on-vehicle mission plan, or 0 if IDs are not supported or there is no mission loaded. GCS can use this to track changes to the mission plan type. The same value is returned on mission upload (in the <a href="#MISSION_ACK">MISSION_ACK</a>).</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">fence_id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Id of current on-vehicle fence plan, or 0 if IDs are not supported or there is no fence loaded. GCS can use this to track changes to the fence plan type. The same value is returned on fence upload (in the <a href="#MISSION_ACK">MISSION_ACK</a>).</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">rally_points_id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Id of current on-vehicle rally point plan, or 0 if IDs are not supported or there are no rally points loaded. GCS can use this to track changes to the rally point plan type. The same value is returned on rally point upload (in the <a href="#MISSION_ACK">MISSION_ACK</a>).</td>
+    </tr>
    </tbody>
   </table>
   <h3 id="MISSION_REQUEST_LIST">MISSION_REQUEST_LIST (<a href="#MISSION_REQUEST_LIST">
@@ -21603,6 +21633,21 @@
       <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
      <td>Mission type.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">opaque_id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Id of current on-vehicle mission, fence, or rally point plan (on download from vehicle).
+        This field is used when downloading a plan from a vehicle to a GCS.
+        0 on upload to the vehicle from GCS.
+        0 if plan ids are not supported.
+        The current on-vehicle plan ids are streamed in `<a href="#MISSION_CURRENT">MISSION_CURRENT</a>`, allowing a GCS to determine if any part of the plan has changed and needs to be re-uploaded.
+        The ids are recalculated by the vehicle when any part of the on-vehicle plan changes (when a new plan is uploaded, the vehicle returns the new id to the GCS in <a href="#MISSION_ACK">MISSION_ACK</a>).</td>
     </tr>
    </tbody>
   </table>
@@ -21728,6 +21773,21 @@
       <a href="#MAV_MISSION_TYPE">MAV_MISSION_TYPE</a>
      </td>
      <td>Mission type.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">opaque_id<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>Id of new on-vehicle mission, fence, or rally point plan (on upload to vehicle).
+        The id is calculated and returned by a vehicle when a new plan is uploaded by a GCS.
+        The only requirement on the id is that it must change when there is any change to the on-vehicle plan type (there is no requirement that the id be globally unique).
+        0 on download from the vehicle to the GCS (on download the ID is set in <a href="#MISSION_COUNT">MISSION_COUNT</a>).
+        0 if plan ids are not supported.
+        The current on-vehicle plan ids are streamed in `<a href="#MISSION_CURRENT">MISSION_CURRENT</a>`, allowing a GCS to determine if any part of the plan has changed and needs to be re-uploaded.</td>
     </tr>
    </tbody>
   </table>
