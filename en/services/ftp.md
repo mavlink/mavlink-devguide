@@ -6,13 +6,13 @@ It supports common FTP operations like: reading, truncating, writing, removing a
 > **Note** MAVLink FTP implementation closely follows the design of the original internet [FTP protocol](https://en.wikipedia.org/wiki/File_Transfer_Protocol) in terms of the message structure, sequences, and the supported opcodes/operations.
 > Developers can read the Internet protocol RFCs to understand MAVLink FTP.
 
-The protocol follows a client-server pattern, where all commands are sent by the GCS (client), 
-and the Drone (server) responds either with an ACK containing the requested information, or a NAK containing an error. 
+The protocol follows a client-server pattern, where all commands are sent by the GCS (client),
+and the Drone (server) responds either with an ACK containing the requested information, or a NAK containing an error.
 The GCS sets a timeout after most commands, and may resend the command if it is triggered.
 The drone must re-send its response if a request with the same sequence number is received.
 
 All messages (commands, ACK, NAK) are exchanged inside [FILE_TRANSFER_PROTOCOL](../messages/common.md#FILE_TRANSFER_PROTOCOL) messages.
-This message type definition is minimal, with fields for specifying the target network, system and component, and for an "arbitrary" variable-length payload. 
+This message type definition is minimal, with fields for specifying the target network, system and component, and for an "arbitrary" variable-length payload.
 
 The different commands and other information required to implement the protocol are encoded *within* in the `FILE_TRANSFER_PROTOCOL` payload.
 This topic explains the encoding, packing format, commands and errors, and the order in which the commands are sent to implement the core FTP functionality.
@@ -29,8 +29,8 @@ This flag should only be set by a MAVLink component that supports the specific v
 
 ## Payload Format {#payload}
 
-The `FILE_TRANSFER_PROTOCOL` payload is encoded with the information required for the various FTP messages. 
-This includes fields for holding the command that is being sent, the sequence number of the current FTP message (for multi-message data transfers), 
+The `FILE_TRANSFER_PROTOCOL` payload is encoded with the information required for the various FTP messages.
+This includes fields for holding the command that is being sent, the sequence number of the current FTP message (for multi-message data transfers),
 the size of information in the data part of the message etc.
 
 > **Tip** Readers will note that the FTP payload format is very similar to the packet format used for serializing MAVLink itself.
@@ -45,7 +45,7 @@ Byte Index | C version | Content | Value | Explanation
 2 | `uint8_t session`   | Session id | 0 - 255 | Session id for read/write operations (the server may use this to reference the file handle and information about the progress of read/write operations).
 3 | `uint8_t opcode`    | [OpCode](#opcodes) (id) | 0 - 255 | Ids for particular commands and ACK/NAK messages.
 4 | `uint8_t size`      | Size         | 0 - 255 | Depends on [OpCode](#opcodes). For Reads/Writes this is the size of the `data` transported. For NAK it is the number of bytes used for [error information](#error_codes) (1 or 2).
-5 | `uint8_t req_opcode`| Request [OpCode](#opcodes) | 0 - 255 | OpCode (of original message) returned in an ACK or NAK response. 
+5 | `uint8_t req_opcode`| Request [OpCode](#opcodes) | 0 - 255 | OpCode (of original message) returned in an ACK or NAK response.
 6 | `uint8_t burst_complete` | Burst complete | 0, 1 | Code to indicate if a burst is complete. 1: set of burst packets complete, 0: More burst packets coming.<br>- Only used if `req_opcode` is [BurstReadFile](#BurstReadFile).
 7 | `uint8_t padding` | Padding | | 32 bit alignment padding.
 8 to 11 | `uint32_t offset` | Content offset | | Offsets into data to be sent for [ListDirectory](#ListDirectory) and [ReadFile](#ReadFile) commands.
@@ -62,7 +62,7 @@ The opcodes that may be sent by the GCS (client) to the drone (server) are liste
 Opcode | Name | Description
 --- | --- | ---
 0   | None | Ignored, always ACKed
-<a id="TerminateSession"></a> 1 | TerminateSession | Terminates open Read `session`.<br>- Closes the file associated with (`session`) and frees the session ID for re-use. 
+<a id="TerminateSession"></a> 1 | TerminateSession | Terminates open Read `session`.<br>- Closes the file associated with (`session`) and frees the session ID for re-use.
 <a id="ResetSessions"></a> 2   | ResetSessions | Terminates *all* open read sessions.<br>- Clears all state held by the drone (server); closes all open files, etc.<br>- Sends an ACK reply with no data. <!-- Note, is same as Terminate, but does not check if file session exists -->
 <a id="ListDirectory"></a> 3   | [ListDirectory](#list_directory) | List directory entry information (files, folders etc.) in `<path>`, starting from a specified entry index (`<offset>`).<br>- Response is an ACK packet with one or more entries on success, otherwise a NAK packet with an error code.<br>- Completion is indicated by a NACK with EOF in response to a requested index (`offset`) beyond the list of entries.<br>- The directory is closed after the operation, so this leaves no state on the server.
 <a id="OpenFileRO"></a> 4      | [OpenFileRO](#reading-a-file) | Opens file at `<path>` for reading, returns `<session>`<br>- The `path` is stored in the [payload](#payload) `data`. The drone opens the file (`path`) and allocates a *session number*. The file must exist.<br>- An ACK packet must include the allocated `session` and the data size of the file to be opened (`size`)<br>- A NAK packet must contain [error information](#error_codes) . Typical error codes for this command are `NoSessionsAvailable`, `FileExists`. <br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
@@ -76,7 +76,7 @@ Opcode | Name | Description
 <a id="TruncateFile"></a> 12   | [TruncateFile](#truncate-file) | Truncate file at `<path>` to `<offset>` length.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
 <a id="Rename"></a> 13         | Rename | Rename `<path1>` to `<path2>`.<br>- Sends an ACK reply the no data on success, otherwise a NAK packet with an error code (i.e. if the source path does not exist).
 <a id="CalcFileCRC32"></a> 14  | CalcFileCRC32 | Calculate CRC32 for file at `<path>`.<br>- Sends an ACK reply with the checksum on success, otherwise a NAK packet with an error code.
-<a id="BurstReadFile"></a> 15  | [BurstReadFile](#reading-a-file-burstreadfile) | Burst-read parts of a file. Messages in the burst are streamed (without ACK) until the burst is complete (as indicated by the field `burst_complete` being set to `1`). Parts of a burst that are dropped may be fetched using a burst or [ReadFile](#ReadFile).
+<a id="BurstReadFile"></a> 15  | [BurstReadFile](#reading-a-file-burstreadfile) | Burst-read parts of a file. Messages in the burst are streamed (without ACK) until the burst is complete (as indicated by the field `burst_complete` being set to `1`). Parts of a burst that are dropped may be fetched using [ReadFile](#ReadFile).
 
 The drone (server) will respond with/send the following opcodes for any of the above messages (ACK response on success or a NAK in the event of an error).
 
@@ -87,20 +87,20 @@ Opcode | Name | Description
 
 
 Notes:
-* An ACK response may additionally return requested data in the payload (e.g. `OpenFileRO` returns the session and file size, `ReadFile` returns the requested file data, etc.). 
-* The NAK response includes [error information](#error_codes) in the payload `data`. 
+* An ACK response may additionally return requested data in the payload (e.g. `OpenFileRO` returns the session and file size, `ReadFile` returns the requested file data, etc.).
+* The NAK response includes [error information](#error_codes) in the payload `data`.
 
 
 ## NAK Error Information {#error_codes}
 
 NAK responses must include one of the errors codes listed below in the [payload](#payload) `data[0]` field.
 
-An appropriate error code must be used if one is defined. 
+An appropriate error code must be used if one is defined.
 If no appropriate error code exists, the Drone (server) may respond with [Fail](#Fail) or [FailErrno](#FailErrno).
 
 If the error code is `FailErrno`, then `data[1]` must additionally contain an error number. This error number is a file-system specific error code (understood by the server).
 
-The payload `size` field must be set to either 1 or 2, depending on whether or not `FailErrno` is specified. 
+The payload `size` field must be set to either 1 or 2, depending on whether or not `FailErrno` is specified.
 
 > **Note** These are **errors**. Normally if the GCS receives an error it should not attempt to continue the FTP operation, but instead return to an idle state.
 
@@ -125,9 +125,9 @@ Error | Name | Description
 
 The GCS (client) starts a timeout after most commands are sent (these are cleared if an ACK/NAK is received).
 
-> **Note** Timeouts may not be set for some messages. For example, a timeout need not set for [ResetSessions](#ResetSessions) as the message should always succeed. 
+> **Note** Timeouts may not be set for some messages. For example, a timeout need not set for [ResetSessions](#ResetSessions) as the message should always succeed.
 
-If a timeout activates either the command or its response is assumed to have been lost, 
+If a timeout activates either the command or its response is assumed to have been lost,
 and the command should be re-sent with the same sequence number etc.
 A number of retries are allowed, after which the GCS should fail the whole download and reset to an idle state.
 
@@ -176,19 +176,19 @@ sequenceDiagram;
 The sequence of operations is:
 1. GCS (client) sends [OpenFileRO](#OpenFileRO) command specifying the file path to open.
    - The payload must specify: `data[0]`= file path string, `size`=length of file path string.
-1. Drone (server) responds with either 
-   - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = 4, `data` = length of file that has been opened. 
-   - NAK with [error information](#error_codes), e.g. `NoSessionsAvailable`, `FileExists`. 
+1. Drone (server) responds with either
+   - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = 4, `data` = length of file that has been opened.
+   - NAK with [error information](#error_codes), e.g. `NoSessionsAvailable`, `FileExists`.
      The GCS may cancel the operation, depending on the error.
-1. GCS sends [ReadFile](#ReadFile) commands to download a chunk of data from the file. 
+1. GCS sends [ReadFile](#ReadFile) commands to download a chunk of data from the file.
    - The payload must specify: `session`=current session, `size`=size of data to read, `offset`= position in data to start reading
-1. Drone responds to each message with either 
+1. Drone responds to each message with either
    - ACK on success. The [payload](#payload) fields are: `data` = data chunk requested, `size` = size of data in the `data` field.
    - NAK on failure with [error information](#error_codes).
 1. The ReadFile/ACK sequence above is repeated at different offsets to download the whole file.
-   - Eventually the GCS will (must) request an offset past the end of the file. 
+   - Eventually the GCS will (must) request an offset past the end of the file.
    - The Drone will return a NAK with error code EOF. The GCS uses this message to recognise the download is complete.
-1. GCS sends [TerminateSession](#TerminateSession) to close the file. 
+1. GCS sends [TerminateSession](#TerminateSession) to close the file.
    The drone should send an ACK/NAK, but this may (generally speaking) be ignored by the GCS.
 
 The GSC should create a timeout after `OpenFileRO` and `ReadFile` commands are sent and resend the messages as needed (and [described above](#timeouts)).
@@ -209,47 +209,49 @@ On completion of the burst (or the file), if there are any missing parts of the 
 
 The sequence of operations for a burst read is shown below (assuming there are no timeouts and all operations/requests succeed).
 
-[![Mermaid Sequence: Burst read directory](https://mermaid.ink/img/pako:eNqtVE2P0zAQ_Ssjn1Ipu-pKnAKtBIW9ILFSy42iyE0mjYVjB3tCtaz2vzOOk34stKxYemgSz7x58549fhCFLVFkwuP3Dk2B75XcOtm8XhvgXysdqUK10hAstEJDv6-v0P1AF9c_WUKw_DlkpzGYwV2LBiqlEZLKOth0zhM4lKUy28kR1qltTWCrAZ_BMvTFuXYsEJNj-Go-Hwl6hluOL-8SKCXJL9Ovs1ZSnYJXP3Gm0SThcwIDXQRecYmR6u3iYwIevVfWDKhXaV-rRwfyPfqs0CVrAqoxilUmSvWQOGxREow-wwa13QGvGNyx4Moj-Wc5cfCu34aQsudLmJBq5aGQHkPxWHg2nZyz7V2oFpoO3h3JH4FH9gUncmXyvoF_9_GkDJw6qrHqBY3txSd4YrmN72sET4u6M9980KdMwSHPp2j0EHaK6mhSXtim1Ug4m57r9VT-vumn8D_6semqCt0k3R-3YeF_cb0pOucYmfM30vwFzNfX1xdMvuWB1JL3ouGW5PZwankT6Wl7Ny9Td3NQF58sLg_k-ZAYdvb5Ui-PoTT30Cjfn44wKh66_v2kVUj2Iyk3XGoCbMcY_AvLQlses0Er7GoMf1YPw1hYrbEgLM_N3md0jTKScBUrjK5dnCwOilQ0DJWq5Iv7ISSvBV8BDa5Fxq8lVrLTtBZr88ipXcvW4YdSkXUiq6T2mArZkV3dm0Jk5Dock4bLf8h6_AUnGRvv)](https://mermaid-js.github.io/mermaid-live-editor/edit/#pako:eNqtVE2P0zAQ_Ssjn1Ipu-pKnAKtBIW9ILFSy42iyE0mjYVjB3tCtaz2vzOOk34stKxYemgSz7x58549fhCFLVFkwuP3Dk2B75XcOtm8XhvgXysdqUK10hAstEJDv6-v0P1AF9c_WUKw_DlkpzGYwV2LBiqlEZLKOth0zhM4lKUy28kR1qltTWCrAZ_BMvTFuXYsEJNj-Go-Hwl6hluOL-8SKCXJL9Ovs1ZSnYJXP3Gm0SThcwIDXQRecYmR6u3iYwIevVfWDKhXaV-rRwfyPfqs0CVrAqoxilUmSvWQOGxREow-wwa13QGvGNyx4Moj-Wc5cfCu34aQsudLmJBq5aGQHkPxWHg2nZyz7V2oFpoO3h3JH4FH9gUncmXyvoF_9_GkDJw6qrHqBY3txSd4YrmN72sET4u6M9980KdMwSHPp2j0EHaK6mhSXtim1Ug4m57r9VT-vumn8D_6semqCt0k3R-3YeF_cb0pOucYmfM30vwFzNfX1xdMvuWB1JL3ouGW5PZwankT6Wl7Ny9Td3NQF58sLg_k-ZAYdvb5Ui-PoTT30Cjfn44wKh66_v2kVUj2Iyk3XGoCbMcY_AvLQlses0Er7GoMf1YPw1hYrbEgLM_N3md0jTKScBUrjK5dnCwOilQ0DJWq5Iv7ISSvBV8BDa5Fxq8lVrLTtBZr88ipXcvW4YdSkXUiq6T2mArZkV3dm0Jk5Dock4bLf8h6_AUnGRvv)
+[![Mermaid Sequence: Burst read file](https://mermaid.ink/img/pako:eNqlVE1v2zAM_SuETw7gBimwk7cE2NL1MmAFkt2WwVBkOhYmS55EL-iK_vdRlp1kLZIVbQ6xJX48vkfSD4m0JSZ54vFXh0bijRI7J5r3GwP8a4UjJVUrDMFSKzT0_H6N7je6eP_VEoLl4-CdRWMOdy0aqJRGSCvrYNs5T-BQlMrsJiexTu1qAlsN8TmsQl3sa8cE0TmarxaLEaBHuGX76i6FUpD4PvsxbwXVGXj1B-caTRqOExjgYuAVpxihPi6_pODRe2XNEPUu63P10QH8EH2W6Io5AdUYySoTqXpIHbYoCEadYYva7oFvDO6ZcOWR_IuUOGrXtyG4HPBSBqRaeZDCY0geE89nk3OyfQrZQtFBuxP6Y-AgRFChaNEVEf20UI1VX8SYMj7BE5fY-F6_oIOsO_PTh5qUkWzy3PmRN-wV1ZFYIW3TaiSczy716VDn06BnlYfWbbuqQjfJDoMxXLwN4YPsnGP_gs9IizfgTafTC4Le8sJowao3XJLYHaeKu0VPy7t-DafrI6f4ZEpFgCwGx9C7lxO8vBzC3EOjfN__MMAeuv79n0mE9LAoYsupJsAijMb_oCy15eEfuMK-xvBn9bAi0mqNkrA8txHf0DXKCMJ1zDCqdnFa2JhkScOhQpX8OX0IzpuEF7PBTZLza4mV6DRtko15ZNeuZenwc6nIuiSvhPaYJaIju743MsnJdTg6DZ_kwevxL7_b9qs)](pako:eNqlVE1v2zAM_SuETw7gBimwk7cE2NL1MmAFkt2WwVBkOhYmS55EL-iK_vdRlp1kLZIVbQ6xJX48vkfSD4m0JSZ54vFXh0bijRI7J5r3GwP8a4UjJVUrDMFSKzT0_H6N7je6eP_VEoLl4-CdRWMOdy0aqJRGSCvrYNs5T-BQlMrsJiexTu1qAlsN8TmsQl3sa8cE0TmarxaLEaBHuGX76i6FUpD4PvsxbwXVGXj1B-caTRqOExjgYuAVpxihPi6_pODRe2XNEPUu63P10QH8EH2W6Io5AdUYySoTqXpIHbYoCEadYYva7oFvDO6ZcOWR_IuUOGrXtyG4HPBSBqRaeZDCY0geE89nk3OyfQrZQtFBuxP6Y-AgRFChaNEVEf20UI1VX8SYMj7BE5fY-F6_oIOsO_PTh5qUkWzy3PmRN-wV1ZFYIW3TaiSczy716VDn06BnlYfWbbuqQjfJDoMxXLwN4YPsnGP_gs9IizfgTafTC4Le8sJowao3XJLYHaeKu0VPy7t-DafrI6f4ZEpFgCwGx9C7lxO8vBzC3EOjfN__MMAeuv79n0mE9LAoYsupJsAijMb_oCy15eEfuMK-xvBn9bAi0mqNkrA8txHf0DXKCMJ1zDCqdnFa2JhkScOhQpX8OX0IzpuEF7PBTZLza4mV6DRtko15ZNeuZenwc6nIuiSvhPaYJaIju743MsnJdTg6DZ_kwevxL7_b9qs)
 
 <!-- Original Diagram
 sequenceDiagram;
     participant Client
     participant Server
-    Note right of Client: Open file for burst reading
-    Client->>Server:  BurstReadFile( data[0]=path, size=len(path) )
-    Server-- >>Client: ACK( session, size=4, data=len(file) )
-    Note left of Server: Server streams data in chunks with burst_complete=0
-    Server-- >>Client: BurstReadFile(session,burst_complete=0, offset=0, size=len(buffer), data[0]=buffer)
-    Server-- >>Client: BurstReadFile(session,burst_complete=0, offset=n, size=len(buffer), data[0]=buffer)
-    Note left of Server: When complete, send last chunk with burst_complete=1
-    Server-- >>Client: BurstReadFile(session,burst_complete=1, offset=last_chunk, size=len(buffer), data[0]=buffer)
-    Note right of Client: Read any missing chunks using ReadFile at offset
-    Client- >>Server:  ReadFile(session, size, offset)
-    Server-- >>Client: ACK(session, size=len(buffer), data[0]=buffer)
-    Note right of Client: Close session when whole data file collected
-    Client- >>Server:  TerminateSession(session)
-    Server-- >>Client: ACK()
+    Note over Client,Server: Open file (for burst reading)
+    Note right of Client: Request open file
+    Client->>Server:  OpenFileRO( data[0]=path, size=len(path) )
+    Server->>Client: ACK( session, size=4, data=len(file) )
+    Note over Client,Server: Read the file in bursts (repeat sequence below at new offsets)
+    Note right of Client: Request burst read part of the file (in this case at offset=0)
+    Client->>Server:  BurstReadFile( session, offset=0, size=data_per_burst )
+    Note left of Server: Server streams data in chunks at increasing offsets with burst_complete=0
+    Server->>Client: ACK(session, burst_complete=0, offset=0, size=len(buffer), data[0]=buffer)
+    Server->>Client: ACK(session, burst_complete=0, offset=<current_offet>, size=len(buffer), data[0]=buffer)
+    Server->>Client: ...
+    Note left of Server: For last message in burst set burst_complete=1
+    Server->>Client: ACK(session, burst_complete=1, offset=<offset_of_last_burst_chunk>, size=len(buffer), data[0]=buffer)
+    Note over Client,Server: Read any missing parts using BurstReadFile (sequence above) or ReadFile
+    Note over Client,Server: Close session when whole file collected
+    Client->>Server:  TerminateSession(session)
+    Server->>Client: ACK()
 -->
 
 The sequence of operations is:
 1. GCS (client) sends [OpenFileRO](#OpenFileRO) command specifying the file path to open.
    - The payload must specify: `data[0]`= file path string, `size`=length of file path string.
-1. Drone (server) responds with either 
+1. Drone (server) responds with either
    - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = 4, `data` = length of file that has been opened.
-   - NAK with [error information](#error_codes), e.g. `NoSessionsAvailable`, `FileExists`. 
+   - NAK with [error information](#error_codes), e.g. `NoSessionsAvailable`, `FileExists`.
      The GCS may cancel the operation, depending on the error.
-1. Client (i.e. GCS) sends [BurstReadFile](#BurstReadFile) command specifying the part of the file that it wants to get.
-   - The payload must specify: `session`: the current session id, `offset` = offset in file of start of burst, `data`= length of burst, `size`=4.
-1. Server (drone) responds with either 
-   - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = 4, `data` = lenght of file in burst. 
+1. Client (i.e. GCS) sends [BurstReadFile](#BurstReadFile) command specifying the part of the file that it wants to get from an offset to the end, along with the default size of each burst payload.
+   - The payload must specify: `session`: the current session id, `offset` = offset in file of start of burst, `size`= default length of payload in burst responses, `data` is ignored.
+1. Server (drone) responds with either
+   - ACK on success. The [payload](#payload) must specify fields: `session` = file session id, `size` = 4, `data` = length of file in burst.
    - NAK with [error information](#error_codes). The client may cancel the operation, depending on the error.
 1. Server sends stream of [BurstReadFile](#BurstReadFile) data to client (without ACK) until the whole burst is sent, or a server-defined burst size limit is reached.
-   - The payload must specify: `session`=current session, `size`=size of data to read, `offset`= position in original data of current chunk.
+   - The payload must specify: `session`=current session, `size`=size of data to read per burst message (max equal to payload size = 239), `offset`= position in original data of current chunk.
    - The payload must specify `burst_complete=0` for all chunks, except the last one, which must set `burst_complete=1`.
-1. Client repeats the `BurstReadFile` cycle at different offsets until the whole file is retrieved.
 1. The client must maintain its own record of the received (and missing) chunks.
-   It may request any missing chunks at either the end of a  burst or at the end of the file. 
-   Missing chunks can be requested using either `BurstReadFile` or `ReadFile`.
+   It may request any missing chunks at either the end of a burst or at the end of the file.
+   Missing chunks can be requested using `ReadFile`.
 1. Client sends [TerminateSession](#TerminateSession) to close the file once all the chunks have been downloaded
    The server should send an ACK/NAK, but this may (generally speaking) be ignored by the client.
 
@@ -281,26 +283,26 @@ sequenceDiagram;
 The sequence of operations is:
 1. GCS (client) sends [CreateFile](#CreateFile) command specifying the file path where the file is to be uploaded.
    - The payload must specify: `data[0]`= target file path string, `size`=length of file path string.
-1. Drone (server) attempts to create the file, and responds with either 
-   - ACK on success. The [payload](#payload) must specify fields: `session` = new file session id, `size` = 0. 
-   - NAK with [error information](#error_codes). 
+1. Drone (server) attempts to create the file, and responds with either
+   - ACK on success. The [payload](#payload) must specify fields: `session` = new file session id, `size` = 0.
+   - NAK with [error information](#error_codes).
      - The GCS should cancel the whole operation on error.
      - If there is a sequence error at this stage the GCS should send a command to `ResetSessions`
-1. GCS sends [WriteFile](#WriteFile) commands to upload a chunk of data to the Drone. 
+1. GCS sends [WriteFile](#WriteFile) commands to upload a chunk of data to the Drone.
    - The payload must specify: `session`=current session id, `data`=file chunk,`size`=length of `data`, `offset`= offset of data to write
-1. Drone responds to each message with either 
+1. Drone responds to each message with either
    - ACK on success. The [payload](#payload) fields are: `size` = 0.
-   - NAK on failure with [error information](#error_codes). 
+   - NAK on failure with [error information](#error_codes).
      - The GCS should cancel the whole upload operation by sending a command to `ResetSessions` if there is an NAK.
 1. The WriteFile/ACK sequence above is repeated at different offsets to upload the whole file.
    Once the GCS determines that the upload is complete it moves to the next step.
-1. GCS sends [TerminateSession](#TerminateSession) to close the file. 
+1. GCS sends [TerminateSession](#TerminateSession) to close the file.
    The drone should send an ACK/NAK, but this may (generally speaking) be ignored by the GCS.
 
 The GSC should create a timeout after `CreateFile` and `WriteFile` commands are sent, and resend the messages as needed (and [described above](#timeouts)).
 A timeout is not set for `TerminateSession` (the server may ignore failure of the command or the ACK).
 
-> **Warning** PX4 and *QGroundControl* implement this slightly differently than outlined above. 
+> **Warning** PX4 and *QGroundControl* implement this slightly differently than outlined above.
   The implementation only has a single session (id=0) so only a single operation can be active at a time.
   As a result, this operation should only be started if no other operation is active.
   The drone expects that the session id will be set to zero by the sender of `CreateFile`.
@@ -310,7 +312,7 @@ A timeout is not set for `TerminateSession` (the server may ignore failure of th
 
 ### Remove File
 
-> **Note** `RemoveFile` handling is implemented in PX4 but not in *QGroundControl*. 
+> **Note** `RemoveFile` handling is implemented in PX4 but not in *QGroundControl*.
   GCS behaviour is therefore not fully defined/tested.
 
 The sequence of operations for removing a file is shown below (assuming there are no timeouts and all operations/requests succeed).
@@ -341,7 +343,7 @@ The GSC should create a timeout after the `RemoveFile` command is sent and resen
 
 The sequence of operations for truncating a file is shown below (assuming there are no timeouts and all operations/requests succeed).
 
-> **Note** `TruncateFile` handling is implemented in PX4 but not in *QGroundControl*. 
+> **Note** `TruncateFile` handling is implemented in PX4 but not in *QGroundControl*.
   GCS behaviour is therefore not fully defined/tested.
 
 [![Mermaid Sequence: Truncate file](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBUcnVuY2F0ZUZpbGUgPGJyPiggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSwgb2Zmc2V0PW9mZnNldCB0byB0cnVuY2F0ZSApXG4gICAgRHJvbmUtLT4-R0NTOiBBQ0soc2l6ZT0wKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBUcnVuY2F0ZUZpbGUgPGJyPiggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSwgb2Zmc2V0PW9mZnNldCB0byB0cnVuY2F0ZSApXG4gICAgRHJvbmUtLT4-R0NTOiBBQ0soc2l6ZT0wKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
@@ -355,12 +357,12 @@ sequenceDiagram;
 -->
 
 The sequence of operations is:
-1. GCS sends [TruncateFile](#TruncateFile) command specifying file to truncate and the offset for truncation. 
+1. GCS sends [TruncateFile](#TruncateFile) command specifying file to truncate and the offset for truncation.
    - The payload must specify: `data[0]`= file path string, `size` = length of file path string, `offset` = truncation point in file (amount of data to keep).
 1. Drone attempts to truncate file, and responds to the message with either:
-   - ACK on success, containing payload `size`=0 (i.e. no data). 
+   - ACK on success, containing payload `size`=0 (i.e. no data).
      - The request should succeed if the offset is the same as the file size, and may be attempted if the offset is zero (i.e. truncate whole file).
-   - NAK on failure, with [error information](#error_codes). 
+   - NAK on failure, with [error information](#error_codes).
      - The request should fail if the offset is 0 (truncate whole file) and for normal file system errors.
    - The drone must clean up any resources associated with the request after sending the response.
 
@@ -417,7 +419,7 @@ Generally errors are unrecoverable, and the drone must clean up all resources (i
 
 ### Create Directory
 
-The sequence of operations for creating a directory is shown below (assuming there are no timeouts and all operations/requests succeed). 
+The sequence of operations for creating a directory is shown below (assuming there are no timeouts and all operations/requests succeed).
 Note that this operation will fail if the directory is not empty.
 
 [![Mermaid Sequence: Create Directory](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBDcmVhdGVEaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCkgKVxuICAgIERyb25lLS0-PkdDUzogQUNLKHNpemU9MCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBDcmVhdGVEaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCkgKVxuICAgIERyb25lLS0-PkdDUzogQUNLKHNpemU9MCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
@@ -443,10 +445,10 @@ The GSC should not create timeouts or handle the NAK case (other than to report 
 
 ### Remove Directory
 
-> **Note** `RemoveDirectory` handling is implemented in PX4 but not in *QGroundControl*. 
+> **Note** `RemoveDirectory` handling is implemented in PX4 but not in *QGroundControl*.
   GCS behaviour is therefore not fully defined/tested.
 
-The sequence of operations for removing a directory is shown below (assuming there are no timeouts and all operations/requests succeed). 
+The sequence of operations for removing a directory is shown below (assuming there are no timeouts and all operations/requests succeed).
 Note that this operation will fail if the directory is not empty.
 
 [![Mermaid Sequence: Remove directory](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBSZW1vdmVEaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCkgKVxuICAgIERyb25lLS0-PkdDUzogQUNLKHNpemU9MCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBSZW1vdmVEaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCkgKVxuICAgIERyb25lLS0-PkdDUzogQUNLKHNpemU9MCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
@@ -506,7 +508,7 @@ Where:
 - `path`: the location of the resource on the target component.
 - `id`: target *component ID* of the component hosting the resource.
   The `[;comp=<id>]` part is optional (if omitted, the resource is downloaded from the current component).
-  It should be specified if the request must be redirected 
+  It should be specified if the request must be redirected
 
 For example:
 - A GCS connected to an autopilot might download a file using the following URL:

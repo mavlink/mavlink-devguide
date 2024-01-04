@@ -34,6 +34,146 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE">AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="AIRLINK_HPR_PARTNER_NOT_READY">
+     <td>0</td>
+     <td>
+      <a href="#AIRLINK_HPR_PARTNER_NOT_READY">AIRLINK_HPR_PARTNER_NOT_READY</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIRLINK_HPR_PARTNER_READY">
+     <td>1</td>
+     <td>
+      <a href="#AIRLINK_HPR_PARTNER_READY">AIRLINK_HPR_PARTNER_READY</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AIRLINK_EYE_IP_VERSION">AIRLINK_EYE_IP_VERSION</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="AIRLINK_IP_V4">
+     <td>0</td>
+     <td>
+      <a href="#AIRLINK_IP_V4">AIRLINK_IP_V4</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIRLINK_IP_V6">
+     <td>1</td>
+     <td>
+      <a href="#AIRLINK_IP_V6">AIRLINK_IP_V6</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AIRLINK_EYE_HOLE_PUSH_TYPE">AIRLINK_EYE_HOLE_PUSH_TYPE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="AIRLINK_HP_NOT_PENETRATED">
+     <td>0</td>
+     <td>
+      <a href="#AIRLINK_HP_NOT_PENETRATED">AIRLINK_HP_NOT_PENETRATED</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIRLINK_HP_BROKEN">
+     <td>1</td>
+     <td>
+      <a href="#AIRLINK_HP_BROKEN">AIRLINK_HP_BROKEN</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AIRLINK_EYE_TURN_INIT_TYPE">AIRLINK_EYE_TURN_INIT_TYPE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="AIRLINK_TURN_INIT_START">
+     <td>0</td>
+     <td>
+      <a href="#AIRLINK_TURN_INIT_START">AIRLINK_TURN_INIT_START</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIRLINK_TURN_INIT_OK">
+     <td>1</td>
+     <td>
+      <a href="#AIRLINK_TURN_INIT_OK">AIRLINK_TURN_INIT_OK</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr id="AIRLINK_TURN_INIT_BAD">
+     <td>2</td>
+     <td>
+      <a href="#AIRLINK_TURN_INIT_BAD">AIRLINK_TURN_INIT_BAD</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+   </tbody>
+  </table>
   <a id="MAV_CMD">
   </a>
   <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
@@ -105,6 +245,163 @@
       <a href="#AIRLINK_AUTH_RESPONSE_TYPE">AIRLINK_AUTH_RESPONSE_TYPE</a>
      </td>
      <td>Response type</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AIRLINK_EYE_GS_HOLE_PUSH_REQUEST">AIRLINK_EYE_GS_HOLE_PUSH_REQUEST (<a href="#AIRLINK_EYE_GS_HOLE_PUSH_REQUEST">
+    #52002
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Request to hole punching</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>resp_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE">AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE</a>
+     </td>
+     <td>Hole push response type</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AIRLINK_EYE_GS_HOLE_PUSH_RESPONSE">AIRLINK_EYE_GS_HOLE_PUSH_RESPONSE (<a href="#AIRLINK_EYE_GS_HOLE_PUSH_RESPONSE">
+    #52003
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Response information about the connected device</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>resp_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE">AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE</a>
+     </td>
+     <td>Hole push response type</td>
+    </tr>
+    <tr>
+     <td>ip_version</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#AIRLINK_EYE_IP_VERSION">AIRLINK_EYE_IP_VERSION</a>
+     </td>
+     <td>ip version</td>
+    </tr>
+    <tr>
+     <td>ip_address_4</td>
+     <td>uint8_t[4]</td>
+     <td>
+     </td>
+     <td>ip 4 address</td>
+    </tr>
+    <tr>
+     <td>ip_address_6</td>
+     <td>uint8_t[16]</td>
+     <td>
+     </td>
+     <td>ip 6 address</td>
+    </tr>
+    <tr>
+     <td>ip_port</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>port</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AIRLINK_EYE_HP">AIRLINK_EYE_HP (<a href="#AIRLINK_EYE_HP">
+    #52004
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>A package with information about the hole punching status. It is used for constant sending to avoid NAT closing timeout.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>resp_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#AIRLINK_EYE_HOLE_PUSH_TYPE">AIRLINK_EYE_HOLE_PUSH_TYPE</a>
+     </td>
+     <td>Hole push response type</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="AIRLINK_EYE_TURN_INIT">AIRLINK_EYE_TURN_INIT (<a href="#AIRLINK_EYE_TURN_INIT">
+    #52005
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Initializing the TURN protocol</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>resp_type</td>
+     <td>uint8_t</td>
+     <td>
+      <a href="#AIRLINK_EYE_TURN_INIT_TYPE">AIRLINK_EYE_TURN_INIT_TYPE</a>
+     </td>
+     <td>Turn init type</td>
     </tr>
    </tbody>
   </table>

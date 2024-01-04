@@ -136,39 +136,6 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="SPEED_TYPE">SPEED_TYPE</h3>
-  <p>
-   <a href="#enums">
-    [Enum]
-   </a>
-  </p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Value</th>
-     <th>Field Name</th>
-     <th>Description</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr id="SPEED_TYPE_AIRSPEED">
-     <td>0</td>
-     <td>
-      <a href="#SPEED_TYPE_AIRSPEED">SPEED_TYPE_AIRSPEED</a>
-     </td>
-     <td>
-     </td>
-    </tr>
-    <tr id="SPEED_TYPE_GROUNDSPEED">
-     <td>1</td>
-     <td>
-      <a href="#SPEED_TYPE_GROUNDSPEED">SPEED_TYPE_GROUNDSPEED</a>
-     </td>
-     <td>
-     </td>
-    </tr>
-   </tbody>
-  </table>
   <h3 id="SCRIPTING_CMD">SCRIPTING_CMD</h3>
   <p>
    <a href="#enums">
@@ -4834,65 +4801,6 @@
      </td>
      <td>
      </td>
-    </tr>
-   </tbody>
-  </table>
-  <h3 id="MAV_CMD_EXTERNAL_POSITION_ESTIMATE">MAV_CMD_EXTERNAL_POSITION_ESTIMATE (<a href="#MAV_CMD_EXTERNAL_POSITION_ESTIMATE">43003</a>
-   )
-  </h3>
-  <p>
-   <a href="#mav_commands">
-    [Command]
-   </a>Provide an external position estimate for use when dead-reckoning. This is meant to be used for occasional position resets that may be provided by a external system such as a remote pilot using landmarks over a video link.</p>
-  <p>Send this command in a <a href="#COMMAND_INT">COMMAND_INT</a> (if supported by your flight stack), as it specifies positional information.
-        If sent in a <a href="#COMMAND_LONG">COMMAND_LONG</a>, no frame of reference can be set, and lat/lon values in param 5/6 are less precise.</p>
-  <table class="sortable">
-   <thead>
-    <tr>
-     <th>Param (:Label)</th>
-     <th>Description</th>
-     <th>Units</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <td>1: transmission_time</td>
-     <td>Timestamp that this message was sent as a time in the transmitters time domain. The sender should wrap this time back to zero based on required timing accuracy for the application and the limitations of a 32 bit float. For example, wrapping at 10 hours would give approximately 1ms accuracy. Recipient must handle time wrap in any timing jitter correction applied to this field. Wrap rollover time should not be at not more than 250 seconds, which would give approximately 10 microsecond accuracy.</td>
-     <td>s</td>
-    </tr>
-    <tr>
-     <td>2: processing_time</td>
-     <td>The time spent in processing the sensor data that is the basis for this position. The recipient can use this to improve time alignment of the data. Set to zero if not known.</td>
-     <td>s</td>
-    </tr>
-    <tr>
-     <td>3: accuracy</td>
-     <td>estimated one standard deviation accuracy of the measurement. Set to NaN if not known.</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>4</td>
-     <td>Empty</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>5: Latitude</td>
-     <td>Latitude</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>6: Longitude</td>
-     <td>Longitude</td>
-     <td>
-     </td>
-    </tr>
-    <tr>
-     <td>7: Altitude</td>
-     <td>Altitude, not used. Should be sent as NaN. May be supported in a future version of this message.</td>
-     <td>m</td>
     </tr>
    </tbody>
   </table>
