@@ -82,14 +82,11 @@ Message | Description
 <a id="MISSION_REQUEST_INT"></a>[MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT) | Request mission item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM_INT](#MISSION_ITEM_INT) message. Used for mission [upload](#uploading_mission) and [download](#download_mission).
 <a id="MISSION_ITEM_INT"></a>[MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). Used for mission [upload](#uploading_mission) and [download](#download_mission).
 <a id="MISSION_ACK"></a>[MISSION_ACK](../messages/common.md#MISSION_ACK) | Acknowledgment message when a system completes a [mission operation](#operations) (e.g. sent by autopilot after it has uploaded all mission items). The message includes a [MAV_MISSION_RESULT](#MAV_MISSION_RESULT) indicating either success or the type of failure.
-<a id="MISSION_CURRENT"></a>[MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) | Message containing the current mission item sequence number. This is emitted when the [current mission item is set/changed](#current_mission_item).
+<a id="MISSION_CURRENT"></a>[MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) | Message containing the current mission item sequence number, mission status, current mission ids, and other information. This is streamed and also emitted when the [current mission item is set/changed](#current_mission_item).
 <a id="MISSION_SET_CURRENT"></a>[MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT) | [Set the current mission item](#current_mission_item) by sequence number (continue to this item on the shortest path).
 <a id="STATUSTEXT"></a>[STATUSTEXT](../messages/common.md#STATUSTEXT) | Sent to notify systems when a request to [set the current mission item](#current_mission_item) fails.
 <a id="MISSION_CLEAR_ALL"></a>[MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL) | Message sent to [clear/delete all mission items](#clear_mission) stored on a system.
-<sapan id="MISSION_ITEM_REACHED"></a>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).
-
-
-https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_MISSION_CURRENT
+<a id="MISSION_ITEM_REACHED"></a>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).
 
 Command | Description
 -- | --
@@ -102,14 +99,12 @@ Enum | Description
 <a id="MAV_FRAME"></a>[MAV_FRAME](../messages/common.md#MAV_FRAME) | Co-ordinate frame for position/velocity/acceleration data in the message.
 <a id="MAV_CMD"></a>[MAV_CMD](../messages/common.md#mav_commands) | [Mission Items](#mavlink_commands) (and MAVLink commands) sent in [MISSION_ITEM_INT](#MISSION_ITEM_INT).
 
-
 ## Deprecated Types: MISSION_ITEM {#command_message_type}
 
 The legacy version of the protocol also supported [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) for requesting that a mission be sent as a sequence of [MISSION_ITEM](../messages/common.md#MISSION_ITEM) messages.
 
 Both `MISSION_REQUEST` and `MISSION_ITEM` messages are now deprecated, and should no longer be sent.
 If `MISSION_REQUEST` is recieved the system should instead respond with [MISSION_ITEM_INT](#MISSION_ITEM_INT) items (as though it  received [MISSION_REQUEST_INT](#MISSION_REQUEST_INT)).
-
 
 ## Frames & Positional Information
 
@@ -149,17 +144,33 @@ If sent in messages `float` parameter fields the value should be sent as-is.
 
 ## Param 5, 6 For Non-Positional Data
 
-Param5, param6, param7 may also be used for non-positional information.
+`Param5`, `param6`, `param7` may also be used for non-positional information.
 In this case the [MISSION_ITEM_INT.frame](#MISSION_ITEM_INT) should be set to [MAV_FRAME_MISSION](../messages/common.md#MAV_FRAME_MISSION) (this is equivalent to say "the frame data is irrelevant").
 
 As param5 and param6 are sent in *integer* fields, generally you should design mission items/MAV_CMDs such that these only include integer data (and are sent as-is/unscaled).
 If these must be used for real numbers and scaling is required, then this must be noted in the mission item itself.
 
-
 ## Operations {#operations}
 
 This section defines all the protocol operations.
 
+### Detecting Mission/Plan Changes
+
+Mission upload and download can be expensive operations, in particular for large missions.
+A GCS can avoid unnecessary uploads and downloads by first checking whether it has a matching id(s) for the corresponding plan on the vehicle.
+
+The current id for different parts of the plan are streamed in [MISSION_CURRENT](#MISSION_CURRENT) message, using the appropriately named fields: `mission_id`, `fence_id`, `rally_points_id`.
+These values are `0` if there is no plan uploaded, or if detecting plan changes is not supported by the flight stack.
+
+The IDs are generated by the flight stack when a new mission, rally point, or geofence, is _uploaded_ to the vehicle (at which point it also starts publishing the value in [MISSION_CURRENT](#MISSION_CURRENT)).
+MAVLink puts no particular requirements on _how_ the "opaque_id" values are calculated by the flight stack (this is why they are named "opaque").
+The only expectation is that the scheme used makes it unlikely that the GCS will incorrectly determine that it has a matching plan (a flight stack might use file hashes, plan checksums, pseudo-random numbers, or some other technique).
+
+On upload, the generated ID is sent to the GCS in the final part of the upload sequence in the [MISSION_ACK.opaque_id](#MISSION_ACK) field.
+On download, the stored ID is sent to the GCS in the [MISSION_COUNT.opaque_id](#MISSION_COUNT) field.
+
+The GCS should store the value of the ID from the flight stack as the "current id" for whatever part of the plan was uploaded/download.
+It can then monitor `MISSION_CURRENT`, and check its cached values against the current plan ids to determine whether it has a matching mission, or needs to download the mission from the vehicle.
 
 ### Upload a Mission to the Vehicle {#uploading_mission}
 
@@ -197,8 +208,10 @@ In more detail, the sequence of operations is:
    - The drone should set the new mission to be the current mission, discarding the original data.
    - The drone considers the upload complete.
 1. GCS receives `MISSION_ACK` containing `MAV_MISSION_ACCEPTED` to indicate the operation is complete.
+   - The GCS should store `MISSION_ACK.opaque_id` (the current id of the uploaded plan) and can use it later to [check for plan changes](#detecting-missionplan-changes).
 
-Note:
+Notes:
+
 - A [timeout](#timeout) is set for every message that requires a response (e.g. `MISSION_REQUEST_INT`).
   If the timeout expires without a response being received then the request must be resent.
 - Mission items must be received in order.
@@ -209,7 +222,6 @@ Note:
 - The sequence above shows the [mission items](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages. 
   Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way.
 - Uploading an empty mission ([MISSION_COUNT](../messages/common.md#MISSION_COUNT) is 0) has the same effect as [clearing the mission](#clear_mission).
-
 
 ### Download a Mission from the Vehicle {#download_mission}
 
@@ -235,10 +247,13 @@ sequenceDiagram;
 -->
 
 The sequence is similar to that for [uploading a mission](#uploading_mission).
-The main difference is that the client (e.g. GCS) sends [MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST), which triggers the autopilot to respond with the current count of items. 
+The main difference is that the client (e.g. GCS) sends [MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST), which triggers the autopilot to respond with the current count of items ([MISSION_COUNT](#MISSION_COUNT)).
 This starts a cycle where the GCS requests mission items, and the drone supplies them.
 
 Note:
+
+- The [MISSION_COUNT.opaque_id](#MISSION_COUNT) is the stored ID of the part of the plan that is being uploaded from the vehicle.
+  This should be stored by the GCS so that it can later check that its plan matches that on the vehicle.
 - A [timeout](#timeout) is set for every message that requires a response (e.g. `MISSION_REQUEST_INT`).
   If the timeout expires without a response being received then the request must be resent.
 - Mission items must be received in order.
