@@ -28622,7 +28622,7 @@
   <p>
    <a href="#messages">
     [Message]
-   </a>Battery information. Updates GCS with flight controller battery status. Smart batteries also use this message, but may additionally send <a href="#SMART_BATTERY_INFO">SMART_BATTERY_INFO</a>.</p>
+   </a>Battery information. Updates GCS with flight controller battery status. Smart batteries also use this message, but may additionally send <a href="#BATTERY_INFO">BATTERY_INFO</a>.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -35649,18 +35649,22 @@
     </tr>
    </tbody>
   </table>
-  <h3 id="SMART_BATTERY_INFO">SMART_BATTERY_INFO (<a href="#SMART_BATTERY_INFO">
+  <h3 id="BATTERY_INFO">BATTERY_INFO (<a href="#BATTERY_INFO">
     #370
    </a>
    )
   </h3>
+  <p style="color:red">
+   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#messages">
     [Message]
    </a>
    <strong>
     (MAVLink 2)
-   </strong>Smart Battery information (static/infrequent update). Use for updates from: smart battery to flight stack, flight stack to GCS. Use <a href="#BATTERY_STATUS">BATTERY_STATUS</a> for smart battery frequent updates.</p>
+   </strong>Battery information that is static, or requires infrequent update.
+        This message should requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> and/or streamed at very low rate.
+        <a href="#BATTERY_STATUS_V2">BATTERY_STATUS_V2</a> is used for higher-rate battery status information.</p>
   <table class="sortable">
    <thead>
     <tr>
@@ -35689,7 +35693,7 @@
      <td>
       <a href="#MAV_BATTERY_FUNCTION">MAV_BATTERY_FUNCTION</a>
      </td>
-     <td>Function of the battery</td>
+     <td>Function of the battery.</td>
     </tr>
     <tr>
      <td>type</td>
@@ -35699,23 +35703,26 @@
      <td>
       <a href="#MAV_BATTERY_TYPE">MAV_BATTERY_TYPE</a>
      </td>
-     <td>Type (chemistry) of the battery</td>
+     <td>Type (chemistry) of the battery.</td>
     </tr>
     <tr>
-     <td>capacity_full_specification</td>
-     <td>int32_t</td>
-     <td>mAh</td>
+     <td>state_of_health</td>
+     <td>uint8_t</td>
+     <td>
+      %
+     </td>
      <td>
      </td>
-     <td>Capacity when full according to manufacturer, -1: field not provided.</td>
+     <td>State of Health (SOH) estimate. Typically 100% at the time of manufacture and will decrease over time and use. -1: field not provided.</td>
     </tr>
     <tr>
-     <td>capacity_full</td>
-     <td>int32_t</td>
-     <td>mAh</td>
+     <td>cells_in_series</td>
+     <td>uint8_t</td>
      <td>
      </td>
-     <td>Capacity when full (accounting for battery degradation), -1: field not provided.</td>
+     <td>
+     </td>
+     <td>Number of battery cells in series. 0: field not provided.</td>
     </tr>
     <tr>
      <td>cycle_count</td>
@@ -35724,25 +35731,7 @@
      </td>
      <td>
      </td>
-     <td>Charge/discharge cycle count. UINT16_MAX: field not provided.</td>
-    </tr>
-    <tr>
-     <td>serial_number</td>
-     <td>char[16]</td>
-     <td>
-     </td>
-     <td>
-     </td>
-     <td>Serial number in ASCII characters, 0 terminated. All 0: field not provided.</td>
-    </tr>
-    <tr>
-     <td>device_name</td>
-     <td>char[50]</td>
-     <td>
-     </td>
-     <td>
-     </td>
-     <td>Static device name in ASCII characters, 0 terminated. All 0: field not provided. Encode as manufacturer name then product name separated using an underscore.</td>
+     <td>Lifetime count of the number of charge/discharge cycles (https://en.wikipedia.org/wiki/Charge_cycle). UINT16_MAX: field not provided.</td>
     </tr>
     <tr>
      <td>weight</td>
@@ -35754,84 +35743,110 @@
     </tr>
     <tr>
      <td>discharge_minimum_voltage</td>
-     <td>uint16_t</td>
-     <td>mV</td>
+     <td>float</td>
+     <td>V</td>
      <td>
      </td>
-     <td>Minimum per-cell voltage when discharging. If not supplied set to UINT16_MAX value.</td>
+     <td>Minimum per-cell voltage when discharging. 0: field not provided.</td>
     </tr>
     <tr>
      <td>charging_minimum_voltage</td>
-     <td>uint16_t</td>
-     <td>mV</td>
+     <td>float</td>
+     <td>V</td>
      <td>
      </td>
-     <td>Minimum per-cell voltage when charging. If not supplied set to UINT16_MAX value.</td>
+     <td>Minimum per-cell voltage when charging. 0: field not provided.</td>
     </tr>
     <tr>
      <td>resting_minimum_voltage</td>
-     <td>uint16_t</td>
-     <td>mV</td>
+     <td>float</td>
+     <td>V</td>
      <td>
      </td>
-     <td>Minimum per-cell voltage when resting. If not supplied set to UINT16_MAX value.</td>
+     <td>Minimum per-cell voltage when resting. 0: field not provided.</td>
     </tr>
     <tr>
-     <td style="color:blue;">charging_maximum_voltage<a href="#mav2_extension_field" title="MAVLink2 extension field">
-       **
-      </a>
-     </td>
-     <td>uint16_t</td>
-     <td>mV</td>
+     <td>charging_maximum_voltage</td>
+     <td>float</td>
+     <td>V</td>
      <td>
      </td>
      <td>Maximum per-cell voltage when charged. 0: field not provided.</td>
     </tr>
     <tr>
-     <td style="color:blue;">cells_in_series<a href="#mav2_extension_field" title="MAVLink2 extension field">
-       **
-      </a>
-     </td>
-     <td>uint8_t</td>
+     <td>charging_maximum_current</td>
+     <td>float</td>
+     <td>A</td>
      <td>
      </td>
-     <td>
-     </td>
-     <td>Number of battery cells in series. 0: field not provided.</td>
+     <td>Maximum pack continuous charge current. 0: field not provided.</td>
     </tr>
     <tr>
-     <td style="color:blue;">discharge_maximum_current<a href="#mav2_extension_field" title="MAVLink2 extension field">
-       **
-      </a>
+     <td>nominal_voltage</td>
+     <td>float</td>
+     <td>V</td>
+     <td>
      </td>
-     <td>uint32_t</td>
-     <td>mA</td>
+     <td>Battery nominal voltage. Used for conversion between Wh and Ah. 0: field not provided.</td>
+    </tr>
+    <tr>
+     <td>discharge_maximum_current</td>
+     <td>float</td>
+     <td>A</td>
      <td>
      </td>
      <td>Maximum pack discharge current. 0: field not provided.</td>
     </tr>
     <tr>
-     <td style="color:blue;">discharge_maximum_burst_current<a href="#mav2_extension_field" title="MAVLink2 extension field">
-       **
-      </a>
-     </td>
-     <td>uint32_t</td>
-     <td>mA</td>
+     <td>discharge_maximum_burst_current</td>
+     <td>float</td>
+     <td>A</td>
      <td>
      </td>
      <td>Maximum pack discharge burst current. 0: field not provided.</td>
     </tr>
     <tr>
-     <td style="color:blue;">manufacture_date<a href="#mav2_extension_field" title="MAVLink2 extension field">
-       **
-      </a>
+     <td>design_capacity</td>
+     <td>float</td>
+     <td>Ah</td>
+     <td>
      </td>
-     <td>char[11]</td>
+     <td>Fully charged design capacity. 0: field not provided.</td>
+    </tr>
+    <tr>
+     <td>full_charge_capacity</td>
+     <td>float</td>
+     <td>Ah</td>
+     <td>
+     </td>
+     <td>Predicted battery capacity when fully charged (accounting for battery degradation). NAN: field not provided.</td>
+    </tr>
+    <tr>
+     <td>manufacture_date</td>
+     <td>char[9]</td>
      <td>
      </td>
      <td>
      </td>
-     <td>Manufacture date (DD/MM/YYYY) in ASCII characters, 0 terminated. All 0: field not provided.</td>
+     <td>Manufacture date (DDMMYYYY) in ASCII characters, 0 terminated. All 0: field not provided.</td>
+    </tr>
+    <tr>
+     <td>serial_number</td>
+     <td>char[32]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Serial number in ASCII characters, 0 terminated. All 0: field not provided.</td>
+    </tr>
+    <tr>
+     <td>name</td>
+     <td>char[50]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Battery device name. Formatted as manufacturer name then product name, separated with an underscore (in ASCII characters), 0 terminated. All 0: field not provided.</td>
     </tr>
    </tbody>
   </table>
