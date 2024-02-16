@@ -122,6 +122,7 @@ CAM_ISO | ISO
 CAM_VIDISO | ISO (Video)
 CAM_PHOTOISO | ISO (Photo)
 CAM_METERING | Metering Mode
+CAM_MODE | Camera Mode. This parameter is used to change the camera mode (via [PARAM_EXT_SET](../messages/common.md#PARAM_EXT_SET)) for cameras that support different settings/options (ISO, video/image resolution, frame rates, encoding format, etc.) for image and video capture  [camera modes](../messages/common.md#CAMERA_MODE).<br><br>If it is not defined then [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) can be used to set the mode instead (this command is ignored if  `CAM_MODE`  is defined), and any configuration settings/options will be common to all modes.<br><br>There is an example `CAM_MODE` definition with additional detail [below](#cam_mode_example).
 CAM_SHUTTERSPD | Shutter speed
 CAM_VIDSHUTSPD | Shutter speed (Video)
 CAM_PHOTOSHUTSPD | Shutter speed (Photo)
@@ -196,7 +197,10 @@ There are cases where an option change requires a parameter to be updated. For e
 
 This tells the GCS that when the `CAM_EXPMODE` parameter changes, the `CAM_APERTURE`, `CAM_SHUTTERSPD` and the `CAM_ISO` parameters must be updated (requested from the camera).
 
-#### Range Limit
+#### Range Limit {#cam_mode_example}
+
+A *range limit* allows you to specify the valid options of one parameter based on the value of any other.
+For example, below we describe how you might set the available ISO options in video mode as compared to photo mode.
 
 Suppose your camera has the following ISO options:
 
@@ -219,7 +223,9 @@ Suppose your camera has the following ISO options:
 </parameter>
 ```
 
-But this full range is only available when in *Photo Mode*. For whatever reason, when the camera is set to *Video Mode*, only a subset of the above range is valid. In this case, you would use the `parameterrange` element:
+But this full range is only available when in *Photo Mode*. 
+For whatever reason, when the camera is set to *Video Mode*, only a subset of the above range is valid. 
+In this case, you would use the `parameterrange` element:
 
 ```XML
 <parameter name="CAM_MODE" type="uint32" default="1" control="0">
@@ -247,7 +253,9 @@ But this full range is only available when in *Photo Mode*. For whatever reason,
 
 This indicates to the GCS that when the `CAM_MODE` parameter is set to *Video*, only the given range for the `CAM_ISO` parameter is valid. It additionally gives a condition that this is only the case when the `CAM_EXPOSURE` mode is set to *Manual* (1).
 
-This example also tells the GCS not to display this parameter to the user (`control=“0”`). Camera Mode is a standard parameter defined in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way. The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur.
+This example also tells the GCS not to display this parameter to the user (`control=“0”`). 
+Camera Mode is a standard parameter defined in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way. 
+The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur.
 
 ### Localization
 
