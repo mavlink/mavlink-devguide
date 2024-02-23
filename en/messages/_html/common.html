@@ -10117,6 +10117,36 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="SAFETY_SWITCH_STATE">SAFETY_SWITCH_STATE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Possible safety switch states.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="SAFETY_SWITCH_STATE_SAFE">
+     <td>0</td>
+     <td>
+      <a href="#SAFETY_SWITCH_STATE_SAFE">SAFETY_SWITCH_STATE_SAFE</a>
+     </td>
+     <td>Safety switch is engaged and vehicle should be safe to approach.</td>
+    </tr>
+    <tr id="SAFETY_SWITCH_STATE_DANGEROUS">
+     <td>1</td>
+     <td>
+      <a href="#SAFETY_SWITCH_STATE_DANGEROUS">SAFETY_SWITCH_STATE_DANGEROUS</a>
+     </td>
+     <td>Safety switch is NOT engaged and motors, propellers and other actuators should be considered active.</td>
+    </tr>
+   </tbody>
+  </table>
   <a id="MAV_CMD">
   </a>
   <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
@@ -17964,6 +17994,67 @@
     <tr>
      <td>7</td>
      <td>Reserved (set to 0)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_SET_SAFETY_SWITCH_STATE">MAV_CMD_DO_SET_SAFETY_SWITCH_STATE (<a href="#MAV_CMD_DO_SET_SAFETY_SWITCH_STATE">5300</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Change state of safety switch.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Desired State</td>
+     <td>New safety switch state.</td>
+     <td>
+      <a href="#SAFETY_SWITCH_STATE">SAFETY_SWITCH_STATE</a>
+     </td>
+    </tr>
+    <tr>
+     <td>2</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>3</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Empty</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>5</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>6</td>
+     <td>Empty.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>7</td>
+     <td>Empty.</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
