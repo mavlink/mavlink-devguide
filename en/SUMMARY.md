@@ -25,6 +25,7 @@
   * [Message Signing](guide/message_signing.md)
   * [Serialization](guide/serialization.md)
   * [Routing](guide/routing.md)
+    * [MAVLink Router](guide/mavlink_router.md)
   * [General Telemetry](guide/general_telemetry.md)
   * [Offboard Control](guide/offboard_control.md)
   * [File Formats](file_formats/README.md)
