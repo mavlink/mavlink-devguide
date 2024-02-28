@@ -2,7 +2,7 @@
 
 A MAVLink network may include redundant links.
 For example, a vehicle might have two telemetry radios for connecting to a ground station, or a telemetry radio for near-communication and a satellite connection for long range communication.
-In these cases, the same message or command may reach the reciever by two paths.
+In these cases, the same message or command may reach the receiver by several paths.
 Further, even on a single channel, it is possible that the same command is sent (and received) multiple times, due to loss of the original acknowledgement.
 
 MAVLink has no in-built mechanism for deconflicting messages received from multiple channels.
