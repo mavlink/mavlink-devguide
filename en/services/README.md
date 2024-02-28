@@ -23,6 +23,7 @@ The main microservices are shown in the sidebar (most are listed below):
   * [Gimbal Protocol v1 (superseded)](../services/gimbal.md)
 * [Arm Authorization Protocol](../services/arm_authorization.md)
 * [Image Transmission Protocol](../services/image_transmission.md)
+* [Offboard Control Protocol](../services/offboard_control.md)
 * [File Transfer Protocol (FTP)](../services/ftp.md)
 * [Landing Target Protocol](../services/landing_target.md)
 * [Ping Protocol](../services/ping.md)
