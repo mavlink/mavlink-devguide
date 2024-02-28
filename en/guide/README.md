@@ -11,7 +11,6 @@ The topics linked from the sidebar (and listed below):
 * [Serialization](../guide/serialization.md)
 * [Routing](../guide/routing.md)
 * [General Telemetry](../guide/general_telemetry.md)
-* [Offboard Control](../guide/offboard_control.md)
 * [UAVCAN Interaction](../guide/uavcan_interaction.md)
 * [Scripts](../guide/scripts.md)
 * [Debugging with Wireshark](../guide/wireshark.md)
