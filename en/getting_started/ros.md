@@ -10,6 +10,7 @@ To add MAVlink [messages/dialects](../messages/README.md) while working with ROS
    ```
 
    or source `devel/setup.bash` of your catkin workspace to override the library directory.
-1. In the `mavlink-gbp-release`, add the new MAVlink message to `common.xml` or add the new dialect `dialect_name.xml` in the `message definitions`. 
+
+1. In the `mavlink-gbp-release`, add the new MAVlink message to `common.xml` or add the new dialect `dialect_name.xml` in the `message definitions`.
    Do not checkout your MAVlink branch because it is not the version synced with ROS.
 1. Generate the MAVlink headers `catkin build mavlink`. You can find the headers in `~/catkin_ws/build/mavlink/include/`.

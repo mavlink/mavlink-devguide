@@ -10,19 +10,18 @@ If no acknowledgement is received the command must be automatically re-sent.
 
 ## Message/Enum Summary
 
-Message | Description
--- | --
-<a id="COMMAND_INT"></a>[COMMAND_INT](../messages/common.md#COMMAND_INT) | Message for encoding a command ([MAV_CMD](#MAV_CMD)). The message encodes commands into up to 7 parameters: parameters 1-4, 7 are floats, and parameters 5,6 are scaled integers. The scaled integers are used for positional information (scaling depends on the actual command value). The coordinate frame of positional parameters is explicitly specified in a frame field. Commands that require float-only properties in parameters 5, 6 cannot be sent in this message (e.g. commands where NaN has an explicit meaning).
-<a id="COMMAND_LONG"></a>[COMMAND_LONG](../messages/common.md#COMMAND_LONG) | Message for encoding a command ([MAV_CMD](#MAV_CMD)). The mesage encodes commands into up to 7 float parameters. The coordinate frame used for positional co-ordinates is implementation dependent. Any command may be packaged in this message, but there may be some loss of precision for positional co-ordinates (latitude, longitude).
-<a id="COMMAND_ACK"></a>[COMMAND_ACK](../messages/common.md#COMMAND_ACK) | Command acknowledgement. Includes result (success, failure, still in progress) and may include progress information and additional detail about failure reasons.
-<a id="COMMAND_CANCEL"></a>[COMMAND_CANCEL](../messages/common.md#COMMAND_CANCEL) | Cancel a long running command.
+| Message                                                                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="COMMAND_INT"></a>[COMMAND_INT](../messages/common.md#COMMAND_INT)          | Message for encoding a command ([MAV_CMD](#MAV_CMD)). The message encodes commands into up to 7 parameters: parameters 1-4, 7 are floats, and parameters 5,6 are scaled integers. The scaled integers are used for positional information (scaling depends on the actual command value). The coordinate frame of positional parameters is explicitly specified in a frame field. Commands that require float-only properties in parameters 5, 6 cannot be sent in this message (e.g. commands where NaN has an explicit meaning). |
+| <a id="COMMAND_LONG"></a>[COMMAND_LONG](../messages/common.md#COMMAND_LONG)       | Message for encoding a command ([MAV_CMD](#MAV_CMD)). The mesage encodes commands into up to 7 float parameters. The coordinate frame used for positional co-ordinates is implementation dependent. Any command may be packaged in this message, but there may be some loss of precision for positional co-ordinates (latitude, longitude).                                                                                                                                                                                       |
+| <a id="COMMAND_ACK"></a>[COMMAND_ACK](../messages/common.md#COMMAND_ACK)          | Command acknowledgement. Includes result (success, failure, still in progress) and may include progress information and additional detail about failure reasons.                                                                                                                                                                                                                                                                                                                                                                  |
+| <a id="COMMAND_CANCEL"></a>[COMMAND_CANCEL](../messages/common.md#COMMAND_CANCEL) | Cancel a long running command.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
-
-Enum | Description
--- | --
-<a id="MAV_CMD"></a>[MAV_CMD](../messages/common.md#mav_commands) | Commands to be executed/sent in the command messages.
-<a id="MAV_FRAME"></a>[MAV_FRAME](../messages/common.md#MAV_FRAME) | Coordinate frame. Used in `COMMAND_INT` to specify the co-ordinate frame of any positional parameters.
-<a id="MAV_RESULT"></a>[MAV_RESULT](../messages/common.md#MAV_RESULT) | Result of command, included in [COMMAND_ACK.result](#COMMAND_ACK).
+| Enum                                                                  | Description                                                                                            |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| <a id="MAV_CMD"></a>[MAV_CMD](../messages/common.md#mav_commands)     | Commands to be executed/sent in the command messages.                                                  |
+| <a id="MAV_FRAME"></a>[MAV_FRAME](../messages/common.md#MAV_FRAME)    | Coordinate frame. Used in `COMMAND_INT` to specify the co-ordinate frame of any positional parameters. |
+| <a id="MAV_RESULT"></a>[MAV_RESULT](../messages/common.md#MAV_RESULT) | Result of command, included in [COMMAND_ACK.result](#COMMAND_ACK).                                     |
 
 ## Use COMMAND_INT or COMMAND_LONG?
 
@@ -36,7 +35,7 @@ Commands that are not positional or that specify integers in params 5 and 6 can 
 
 Flight stacks may support commands in either message `COMMAND_INT` or `COMMAND_LONG` or both, albeit with a loss of precision, rounding errors, and/or undefined frames of reference.
 However they are encouraged to only support positional commands in `COMMAND_INT`, and commands that have float values in param 5 and 6 in `COMMAND_LONG`.
-The flight stack can reject commands sent in the "wrong" message type using the [COMMAND_ACK.result](#COMMAND_ACK) of `MAV_RESULT_COMMAND_LONG_ONLY` or `MAV_RESULT_COMMAND_INT_ONLY`, as appropriate. 
+The flight stack can reject commands sent in the "wrong" message type using the [COMMAND_ACK.result](#COMMAND_ACK) of `MAV_RESULT_COMMAND_LONG_ONLY` or `MAV_RESULT_COMMAND_INT_ONLY`, as appropriate.
 Flight stacks that only support a particular command in a particular message type can more generally use these result values to indicate the correct message type for a command.
 
 ## Sequences
@@ -85,12 +84,11 @@ sequenceDiagram;
 
 ### Long Running Commands {#long_running_commands}
 
-Some commands are *long running*, and cannot complete immediately. 
-The drone reports its progress by sending `COMMMAND_ACK` messages with [COMMAND_ACK.result=MAV_RESULT_IN_PROGRESS](../messages/common.md#MAV_RESULT_IN_PROGRESS) and the progress as a percentage in `COMMMAND_ACK.progress` ([0-100] percent complete, 255 if progress not supplied). 
+Some commands are _long running_, and cannot complete immediately.
+The drone reports its progress by sending `COMMMAND_ACK` messages with [COMMAND_ACK.result=MAV_RESULT_IN_PROGRESS](../messages/common.md#MAV_RESULT_IN_PROGRESS) and the progress as a percentage in `COMMMAND_ACK.progress` ([0-100] percent complete, 255 if progress not supplied).
 When the operation completes, the drone must terminate with a `COMMMAND_ACK` containing the final [result](#MAV_RESULT) of the operation: `MAV_RESULT_ACCEPTED`, `MAV_RESULT_FAILED`, `MAV_RESULT_CANCELLED`).
 
 [![Mermaid Sequence: MAV_RESULT_IN_PROGRESS](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IENPTU1BTkRfTE9ORygpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLKHJlc3VsdD1NQVZfUkVTVUxUX0lOX1BST0dSRVNTLHByb2dyZXNzPT8pXG4gICAgR0NTLT4-R0NTOiBTdGFydCAobG9uZ2VyKSB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLKHJlc3VsdD1NQVZfUkVTVUxUX0lOX1BST0dSRVNTLHByb2dyZXNzPT8pXG4gICAgR0NTLT4-R0NTOiBTdGFydCAobG9uZ2VyKSB0aW1lb3V0XG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IC4uLlxuICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDSyhyZXN1bHQ9TUFWX1JFU1VMVF9BQ0NFUFRFRCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IENPTU1BTkRfTE9ORygpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLKHJlc3VsdD1NQVZfUkVTVUxUX0lOX1BST0dSRVNTLHByb2dyZXNzPT8pXG4gICAgR0NTLT4-R0NTOiBTdGFydCAobG9uZ2VyKSB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IENPTU1BTkRfQUNLKHJlc3VsdD1NQVZfUkVTVUxUX0lOX1BST0dSRVNTLHByb2dyZXNzPT8pXG4gICAgR0NTLT4-R0NTOiBTdGFydCAobG9uZ2VyKSB0aW1lb3V0XG4gICAgTm90ZSByaWdodCBvZiBHQ1M6IC4uLlxuICAgIERyb25lLT4-R0NTOiBDT01NQU5EX0FDSyhyZXN1bHQ9TUFWX1JFU1VMVF9BQ0NFUFRFRCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
-
 
 <!-- Original sequence
 sequenceDiagram;
@@ -108,12 +106,13 @@ sequenceDiagram;
 
 Long running operations may be cancelled by sending the [COMMAND_CANCEL](#COMMAND_CANCEL) message.
 The drone should cancel the operation and complete the sequence by sending `COMMAND_ACK` with `COMMAND_ACK.result=MAV_RESULT_CANCELLED`
+
 - If cancellation is not supported the drone can just continue to send progress updates until completion.
 - If the sequence has already completed (or is idle) the cancel command should be ignored.
- 
+
 The rate at which progress messages are emitted is system-dependent.
 Generally though, the GCS should have a much increased timeout after receiving an ACK with `MAV_RESULT_IN_PROGRESS`.
-  
+
 If a timeout is triggered when waiting for a progress or completion update, the GCS should terminate the sequence (return to the idle state) and notify the user if appropriate.
 
 Only one instance of a _particular_ long running command can execute at a time; to restart a long running operation (i.e. with new parameters) it must first be cancelled!

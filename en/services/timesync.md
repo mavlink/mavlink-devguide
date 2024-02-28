@@ -1,6 +1,6 @@
 # Time Synchronization Protocol v2
 
-This protocol is used to synchronize clocks on MAVLink components by estimating their time offset. 
+This protocol is used to synchronize clocks on MAVLink components by estimating their time offset.
 
 The protocol uses just one message [TIMESYNC](#TIMESYNC), which has two `int64_t` fields: `tc1` and `ts1`.
 A component that wants to synchronize clocks sends out a `TIMESYNC` request with its current timestamp in `ts1`.
@@ -13,9 +13,9 @@ This sequence is run multiple times and filtered/averaged to reduce the transien
 
 ## Message/Enum Summary
 
-Message | Description
--- | --
-<a id="TIMESYNC"></a>[TIMESYNC](../messages/common.md#TIMESYNC) | Time synchronization message.
+| Message                                                         | Description                   |
+| --------------------------------------------------------------- | ----------------------------- |
+| <a id="TIMESYNC"></a>[TIMESYNC](../messages/common.md#TIMESYNC) | Time synchronization message. |
 
 ## Sequences
 
@@ -29,7 +29,7 @@ The sequence is:
 1. When the synchronizing component gets a `TIMESYNC` response with its own `target_system` and `target_component` it knows it is a reply to a timesync request that it sent.
 
    From the message the system can:
-   
+
    - determine the round trip time (by comparing its current timestamp with the original stamp that was returned in the message in `ts1`).
    - estimate the offset between system timestamps, using the round trip time and the timestamp sent back by the remote system.
 
@@ -44,7 +44,6 @@ A graph showing the "noise" when estimating the offset is given below (from PX4)
 
 ![Timesync offsets](../../assets/protocols/timesync/timesync_offsets_graph.png)
 
-
 ## Time Synchronization Protocol v1
 
 Version 1 of the timesync protocol uses the same message and sequences as version 2.
@@ -56,6 +55,7 @@ This could result in unreliable timesync if there are multiple synchronizing com
 > This allows filtering of the response to a particular system (but not component), reducing the risk of clashes.
 
 <span></span>
+
 > **Note** Version 2 makes adds the target address, so a syncing system can filter on just the responses to its requests.
 
 ## Implementations
