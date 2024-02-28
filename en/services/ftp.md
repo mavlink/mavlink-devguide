@@ -14,9 +14,8 @@ The drone must re-send its response if a request with the same sequence number i
 All messages (commands, ACK, NAK) are exchanged inside [FILE_TRANSFER_PROTOCOL](../messages/common.md#FILE_TRANSFER_PROTOCOL) messages.
 This message type definition is minimal, with fields for specifying the target network, system and component, and for an "arbitrary" variable-length payload.
 
-The different commands and other information required to implement the protocol are encoded *within* in the `FILE_TRANSFER_PROTOCOL` payload.
+The different commands and other information required to implement the protocol are encoded _within_ in the `FILE_TRANSFER_PROTOCOL` payload.
 This topic explains the encoding, packing format, commands and errors, and the order in which the commands are sent to implement the core FTP functionality.
-
 
 ## Protocol Discovery
 
@@ -25,7 +24,7 @@ FTP (v1) is supported if the [AUTOPILOT_VERSION.capability](../messages/common.m
 This flag should only be set by a MAVLink component that supports the specific version of the protocol defined in this document.
 
 > **Note** The encoding and content of the `FILE_TRANSFER_PROTOCOL` payload field are not mandated by the specification, and other encoding schemes might be used, for example, in private networks.
-  If you have implemented a private encoding or different version you **must not** set the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag.
+> If you have implemented a private encoding or different version you **must not** set the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag.
 
 ## Payload Format {#payload}
 
@@ -35,22 +34,21 @@ the size of information in the data part of the message etc.
 
 > **Tip** Readers will note that the FTP payload format is very similar to the packet format used for serializing MAVLink itself.
 
-Below is the over-the-wire format for the payload part of the [FILE_TRANSFER_PROTOCOL](../messages/common.md#FILE_TRANSFER_PROTOCOL) message on PX4/*QGroundControl*.
+Below is the over-the-wire format for the payload part of the [FILE_TRANSFER_PROTOCOL](../messages/common.md#FILE_TRANSFER_PROTOCOL) message on PX4/_QGroundControl_.
 
 ![FILE_TRANSFER_PROTOCOL Payload format - QGC](../../assets/packets/ftp_transfer_payload_data_qgc.jpg)
 
-Byte Index | C version | Content | Value | Explanation
---- | --- | --- | --- | ---
-0 to 1 | `uint16_t seq_number` | Sequence number for message | 0&nbsp;-&nbsp;65535 | All *new* messages between the GCS and drone iterate this number. Re-sent commands/ACK/NAK should use the previous response's sequence number.
-2 | `uint8_t session`   | Session id | 0 - 255 | Session id for read/write operations (the server may use this to reference the file handle and information about the progress of read/write operations).
-3 | `uint8_t opcode`    | [OpCode](#opcodes) (id) | 0 - 255 | Ids for particular commands and ACK/NAK messages.
-4 | `uint8_t size`      | Size         | 0 - 255 | Depends on [OpCode](#opcodes). For Reads/Writes this is the size of the `data` transported. For NAK it is the number of bytes used for [error information](#error_codes) (1 or 2).
-5 | `uint8_t req_opcode`| Request [OpCode](#opcodes) | 0 - 255 | OpCode (of original message) returned in an ACK or NAK response.
-6 | `uint8_t burst_complete` | Burst complete | 0, 1 | Code to indicate if a burst is complete. 1: set of burst packets complete, 0: More burst packets coming.<br>- Only used if `req_opcode` is [BurstReadFile](#BurstReadFile).
-7 | `uint8_t padding` | Padding | | 32 bit alignment padding.
-8 to 11 | `uint32_t offset` | Content offset | | Offsets into data to be sent for [ListDirectory](#ListDirectory) and [ReadFile](#ReadFile) commands.
-12 to (max) 251| `uint8_t data[]` | Data | | Command/response data. Varies by [OpCode](#opcodes). This contains the `path` for operations that act on a file or directory. For an ACK for a read or write this is the requested information. For an ACK for a `OpenFileRO` operation this is the size of the file that was opened. For a NAK the first byte is the [error code](#error_codes) and the (optional) second byte may be an error number.
-
+| Byte Index      | C version                | Content                     | Value               | Explanation                                                                                                                                                                                                                                                                                                                                                                                             |
+| --------------- | ------------------------ | --------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0 to 1          | `uint16_t seq_number`    | Sequence number for message | 0&nbsp;-&nbsp;65535 | All _new_ messages between the GCS and drone iterate this number. Re-sent commands/ACK/NAK should use the previous response's sequence number.                                                                                                                                                                                                                                                          |
+| 2               | `uint8_t session`        | Session id                  | 0 - 255             | Session id for read/write operations (the server may use this to reference the file handle and information about the progress of read/write operations).                                                                                                                                                                                                                                                |
+| 3               | `uint8_t opcode`         | [OpCode](#opcodes) (id)     | 0 - 255             | Ids for particular commands and ACK/NAK messages.                                                                                                                                                                                                                                                                                                                                                       |
+| 4               | `uint8_t size`           | Size                        | 0 - 255             | Depends on [OpCode](#opcodes). For Reads/Writes this is the size of the `data` transported. For NAK it is the number of bytes used for [error information](#error_codes) (1 or 2).                                                                                                                                                                                                                      |
+| 5               | `uint8_t req_opcode`     | Request [OpCode](#opcodes)  | 0 - 255             | OpCode (of original message) returned in an ACK or NAK response.                                                                                                                                                                                                                                                                                                                                        |
+| 6               | `uint8_t burst_complete` | Burst complete              | 0, 1                | Code to indicate if a burst is complete. 1: set of burst packets complete, 0: More burst packets coming.<br>- Only used if `req_opcode` is [BurstReadFile](#BurstReadFile).                                                                                                                                                                                                                             |
+| 7               | `uint8_t padding`        | Padding                     |                     | 32 bit alignment padding.                                                                                                                                                                                                                                                                                                                                                                               |
+| 8 to 11         | `uint32_t offset`        | Content offset              |                     | Offsets into data to be sent for [ListDirectory](#ListDirectory) and [ReadFile](#ReadFile) commands.                                                                                                                                                                                                                                                                                                    |
+| 12 to (max) 251 | `uint8_t data[]`         | Data                        |                     | Command/response data. Varies by [OpCode](#opcodes). This contains the `path` for operations that act on a file or directory. For an ACK for a read or write this is the requested information. For an ACK for a `OpenFileRO` operation this is the size of the file that was opened. For a NAK the first byte is the [error code](#error_codes) and the (optional) second byte may be an error number. |
 
 ## OpCodes/Command {#opcodes}
 
@@ -58,38 +56,36 @@ The opcodes that may be sent by the GCS (client) to the drone (server) are liste
 
 <!--  uint8_t enum Opcode: https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.h -->
 
-
-Opcode | Name | Description
---- | --- | ---
-0   | None | Ignored, always ACKed
-<a id="TerminateSession"></a> 1 | TerminateSession | Terminates open Read `session`.<br>- Closes the file associated with (`session`) and frees the session ID for re-use.
-<a id="ResetSessions"></a> 2   | ResetSessions | Terminates *all* open read sessions.<br>- Clears all state held by the drone (server); closes all open files, etc.<br>- Sends an ACK reply with no data. <!-- Note, is same as Terminate, but does not check if file session exists -->
-<a id="ListDirectory"></a> 3   | [ListDirectory](#list_directory) | List directory entry information (files, folders etc.) in `<path>`, starting from a specified entry index (`<offset>`).<br>- Response is an ACK packet with one or more entries on success, otherwise a NAK packet with an error code.<br>- Completion is indicated by a NACK with EOF in response to a requested index (`offset`) beyond the list of entries.<br>- The directory is closed after the operation, so this leaves no state on the server.
-<a id="OpenFileRO"></a> 4      | [OpenFileRO](#reading-a-file) | Opens file at `<path>` for reading, returns `<session>`<br>- The `path` is stored in the [payload](#payload) `data`. The drone opens the file (`path`) and allocates a *session number*. The file must exist.<br>- An ACK packet must include the allocated `session` and the data size of the file to be opened (`size`)<br>- A NAK packet must contain [error information](#error_codes) . Typical error codes for this command are `NoSessionsAvailable`, `FileExists`. <br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
-<a id="ReadFile"></a> 5        | [ReadFile](#reading-a-file-readfile) | Reads `<size>` bytes from `<offset>` in `<session>`.<br>- Seeks to (`offset`) in the file opened in (session) and reads (`size`) bytes into the result buffer.<br>- Sends an ACK packet with the result buffer on success, otherwise a NAK packet with an error code. For short reads or reads beyond the end of a file, the (`size`) field in the ACK packet will indicate the actual number of bytes read.<br>- Reads can be issued to any offset in the file for any number of bytes, so reconstructing portions of the file to deal with lost packets should be easy.<br>- For best download performance, try to keep two `Read` packets in flight.
-<a id="CreateFile"></a> 6      | `CreateFile` | Creates file at `<path>` for writing, returns `<session>`.<br>- Creates the file (path) and allocates a *session number*. All parent directories must exist. If the file already existed, then this call will truncate it. Equivalent UNIX flags: (O_CREAT &#124; O_TRUNC &#124; O_WRONLY)<br>- Sends an ACK packet with the allocated session number on success, or a NAK packet with an error code on error (i.e. [FileExists](#FileExists) if the `path` already exists).<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
-<a id="WriteFile"></a> 7       | `WriteFile` | Writes `<size>` bytes to `<offset>` in `<session>`.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
-<a id="RemoveFile"></a> 8      | [RemoveFile](#remove-file) | Remove file at `<path>`.<br>- ACK reply with no data on success.<br>- NAK packet with [error information](#error_codes) on failure.
-<a id="CreateDirectory"></a> 9 | [CreateDirectory](#create-directory) | Creates directory at `<path>`.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
-<a id="RemoveDirectory"></a> 10 | [RemoveDirectory](#remove-directory) | Removes directory at `<path>`. The directory must be empty. <br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
-<a id="OpenFileWO"></a> 11     | OpenFileWO | Opens file at `<path>` for writing, returns `<session>`. <br>- Opens the file (`path`) and allocates a *session number*. The file will be created if it does not exist. Equivalent UNIX flags: (O_CREAT	&#124; O_WRONLY)<br>- Sends an ACK packet with the allocated *session number* on success, otherwise a NAK packet with an error code.<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.
-<a id="TruncateFile"></a> 12   | [TruncateFile](#truncate-file) | Truncate file at `<path>` to `<offset>` length.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.
-<a id="Rename"></a> 13         | Rename | Rename `<path1>` to `<path2>`.<br>- Sends an ACK reply the no data on success, otherwise a NAK packet with an error code (i.e. if the source path does not exist).
-<a id="CalcFileCRC32"></a> 14  | CalcFileCRC32 | Calculate CRC32 for file at `<path>`.<br>- Sends an ACK reply with the checksum on success, otherwise a NAK packet with an error code.
-<a id="BurstReadFile"></a> 15  | [BurstReadFile](#reading-a-file-burstreadfile) | Burst-read parts of a file. Messages in the burst are streamed (without ACK) until the burst is complete (as indicated by the field `burst_complete` being set to `1`). Parts of a burst that are dropped may be fetched using [ReadFile](#ReadFile).
+| Opcode                          | Name                                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0                               | None                                           | Ignored, always ACKed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| <a id="TerminateSession"></a> 1 | TerminateSession                               | Terminates open Read `session`.<br>- Closes the file associated with (`session`) and frees the session ID for re-use.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| <a id="ResetSessions"></a> 2    | ResetSessions                                  | Terminates _all_ open read sessions.<br>- Clears all state held by the drone (server); closes all open files, etc.<br>- Sends an ACK reply with no data. <!-- Note, is same as Terminate, but does not check if file session exists -->                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| <a id="ListDirectory"></a> 3    | [ListDirectory](#list_directory)               | List directory entry information (files, folders etc.) in `<path>`, starting from a specified entry index (`<offset>`).<br>- Response is an ACK packet with one or more entries on success, otherwise a NAK packet with an error code.<br>- Completion is indicated by a NACK with EOF in response to a requested index (`offset`) beyond the list of entries.<br>- The directory is closed after the operation, so this leaves no state on the server.                                                                                                                                                                                                 |
+| <a id="OpenFileRO"></a> 4       | [OpenFileRO](#reading-a-file)                  | Opens file at `<path>` for reading, returns `<session>`<br>- The `path` is stored in the [payload](#payload) `data`. The drone opens the file (`path`) and allocates a _session number_. The file must exist.<br>- An ACK packet must include the allocated `session` and the data size of the file to be opened (`size`)<br>- A NAK packet must contain [error information](#error_codes) . Typical error codes for this command are `NoSessionsAvailable`, `FileExists`. <br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.                                                                    |
+| <a id="ReadFile"></a> 5         | [ReadFile](#reading-a-file-readfile)           | Reads `<size>` bytes from `<offset>` in `<session>`.<br>- Seeks to (`offset`) in the file opened in (session) and reads (`size`) bytes into the result buffer.<br>- Sends an ACK packet with the result buffer on success, otherwise a NAK packet with an error code. For short reads or reads beyond the end of a file, the (`size`) field in the ACK packet will indicate the actual number of bytes read.<br>- Reads can be issued to any offset in the file for any number of bytes, so reconstructing portions of the file to deal with lost packets should be easy.<br>- For best download performance, try to keep two `Read` packets in flight. |
+| <a id="CreateFile"></a> 6       | `CreateFile`                                   | Creates file at `<path>` for writing, returns `<session>`.<br>- Creates the file (path) and allocates a _session number_. All parent directories must exist. If the file already existed, then this call will truncate it. Equivalent UNIX flags: (O_CREAT &#124; O_TRUNC &#124; O_WRONLY)<br>- Sends an ACK packet with the allocated session number on success, or a NAK packet with an error code on error (i.e. [FileExists](#FileExists) if the `path` already exists).<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.                                                                   |
+| <a id="WriteFile"></a> 7        | `WriteFile`                                    | Writes `<size>` bytes to `<offset>` in `<session>`.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| <a id="RemoveFile"></a> 8       | [RemoveFile](#remove-file)                     | Remove file at `<path>`.<br>- ACK reply with no data on success.<br>- NAK packet with [error information](#error_codes) on failure.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| <a id="CreateDirectory"></a> 9  | [CreateDirectory](#create-directory)           | Creates directory at `<path>`.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| <a id="RemoveDirectory"></a> 10 | [RemoveDirectory](#remove-directory)           | Removes directory at `<path>`. The directory must be empty. <br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| <a id="OpenFileWO"></a> 11      | OpenFileWO                                     | Opens file at `<path>` for writing, returns `<session>`. <br>- Opens the file (`path`) and allocates a _session number_. The file will be created if it does not exist. Equivalent UNIX flags: (O_CREAT &#124; O_WRONLY)<br>- Sends an ACK packet with the allocated _session number_ on success, otherwise a NAK packet with an error code.<br>- The file remains open after the operation, and must eventually be closed by `Reset` or `Terminate`.                                                                                                                                                                                                   |
+| <a id="TruncateFile"></a> 12    | [TruncateFile](#truncate-file)                 | Truncate file at `<path>` to `<offset>` length.<br>- Sends an ACK reply with no data on success, otherwise a NAK packet with an error code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| <a id="Rename"></a> 13          | Rename                                         | Rename `<path1>` to `<path2>`.<br>- Sends an ACK reply the no data on success, otherwise a NAK packet with an error code (i.e. if the source path does not exist).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| <a id="CalcFileCRC32"></a> 14   | CalcFileCRC32                                  | Calculate CRC32 for file at `<path>`.<br>- Sends an ACK reply with the checksum on success, otherwise a NAK packet with an error code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| <a id="BurstReadFile"></a> 15   | [BurstReadFile](#reading-a-file-burstreadfile) | Burst-read parts of a file. Messages in the burst are streamed (without ACK) until the burst is complete (as indicated by the field `burst_complete` being set to `1`). Parts of a burst that are dropped may be fetched using [ReadFile](#ReadFile).                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 The drone (server) will respond with/send the following opcodes for any of the above messages (ACK response on success or a NAK in the event of an error).
 
-Opcode | Name | Description
---- | --- | ---
-128 | ACK | ACK response.
-129 | NAK | NAK response.
-
+| Opcode | Name | Description   |
+| ------ | ---- | ------------- |
+| 128    | ACK  | ACK response. |
+| 129    | NAK  | NAK response. |
 
 Notes:
-* An ACK response may additionally return requested data in the payload (e.g. `OpenFileRO` returns the session and file size, `ReadFile` returns the requested file data, etc.).
-* The NAK response includes [error information](#error_codes) in the payload `data`.
 
+- An ACK response may additionally return requested data in the payload (e.g. `OpenFileRO` returns the session and file size, `ReadFile` returns the requested file data, etc.).
+- The NAK response includes [error information](#error_codes) in the payload `data`.
 
 ## NAK Error Information {#error_codes}
 
@@ -106,20 +102,19 @@ The payload `size` field must be set to either 1 or 2, depending on whether or n
 
 <!--  uint8_t enum ErrorCode: https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.h -->
 
-Error | Name | Description
---- | --- | ---
-<a id="None"></a>0                | None            | No error
-<a id="Fail"></a>1                | Fail            | Unknown failure
-<a id="FailErrno"></a>2           | FailErrno       | Command failed, Err number sent back in `PayloadHeader.data[1]`. This is a file-system error number understood by the server operating system.
-<a id="InvalidDataSize"></a>3     | InvalidDataSize | Payload `size` is invalid
-<a id="InvalidSession"></a>4      | InvalidSession  | Session is not currently open
-<a id="NoSessionsAvailable"></a>5 | NoSessionsAvailable | All available sessions are already in use.
-<a id="EOF"></a>6                 | EOF             | Offset past end of file for `ListDirectory` and `ReadFile` commands.
-<a id="UnknownCommand"></a>7      | UnknownCommand  | Unknown command / opcode
-<a id="FileExists"></a>8          | FileExists      | File/directory already exists
-<a id="FileProtected"></a>9       | FileProtected   | File/directory is write protected
-<a id="FileNotFound"></a>10       | FileNotFound    | File/directory not found
-
+| Error                             | Name                | Description                                                                                                                                    |
+| --------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="None"></a>0                | None                | No error                                                                                                                                       |
+| <a id="Fail"></a>1                | Fail                | Unknown failure                                                                                                                                |
+| <a id="FailErrno"></a>2           | FailErrno           | Command failed, Err number sent back in `PayloadHeader.data[1]`. This is a file-system error number understood by the server operating system. |
+| <a id="InvalidDataSize"></a>3     | InvalidDataSize     | Payload `size` is invalid                                                                                                                      |
+| <a id="InvalidSession"></a>4      | InvalidSession      | Session is not currently open                                                                                                                  |
+| <a id="NoSessionsAvailable"></a>5 | NoSessionsAvailable | All available sessions are already in use.                                                                                                     |
+| <a id="EOF"></a>6                 | EOF                 | Offset past end of file for `ListDirectory` and `ReadFile` commands.                                                                           |
+| <a id="UnknownCommand"></a>7      | UnknownCommand      | Unknown command / opcode                                                                                                                       |
+| <a id="FileExists"></a>8          | FileExists          | File/directory already exists                                                                                                                  |
+| <a id="FileProtected"></a>9       | FileProtected       | File/directory is write protected                                                                                                              |
+| <a id="FileNotFound"></a>10       | FileNotFound        | File/directory not found                                                                                                                       |
 
 ## Timeouts/Resending {#timeouts}
 
@@ -137,9 +132,9 @@ In this case it should resend the response (the sequence number is not iterated,
 The drone has no timeout mechanism; it only ever responds to commands and does not expect any responses.
 
 GCS recommended settings:
+
 - ACK/NAK timeout: 50 milliseconds
 - Command retries: 6
-
 
 ## FTP Operations
 
@@ -174,6 +169,7 @@ sequenceDiagram;
 -->
 
 The sequence of operations is:
+
 1. GCS (client) sends [OpenFileRO](#OpenFileRO) command specifying the file path to open.
    - The payload must specify: `data[0]`= file path string, `size`=length of file path string.
 1. Drone (server) responds with either
@@ -193,7 +189,6 @@ The sequence of operations is:
 
 The GSC should create a timeout after `OpenFileRO` and `ReadFile` commands are sent and resend the messages as needed (and [described above](#timeouts)).
 A timeout is not set for `TerminateSession` (the server may ignore failure of the command or the ACK).
-
 
 ### Reading a File (`BurstReadFile`)
 
@@ -235,6 +230,7 @@ sequenceDiagram;
 -->
 
 The sequence of operations is:
+
 1. GCS (client) sends [OpenFileRO](#OpenFileRO) command specifying the file path to open.
    - The payload must specify: `data[0]`= file path string, `size`=length of file path string.
 1. Drone (server) responds with either
@@ -258,7 +254,6 @@ The sequence of operations is:
 The client should create a timeout while waiting for a new `BurstReadFile`, and on expiry may request missing parts of the file using either `BurstReadFile` or `ReadFile`
 A timeout is not set for `TerminateSession` (the server may ignore failure of the command or the ACK).
 
-
 ### Uploading a File
 
 The sequence of operations for uploading a file to the drone, assuming there are no timeouts and all operations/requests succeed, is shown below.
@@ -281,6 +276,7 @@ sequenceDiagram;
 -->
 
 The sequence of operations is:
+
 1. GCS (client) sends [CreateFile](#CreateFile) command specifying the file path where the file is to be uploaded.
    - The payload must specify: `data[0]`= target file path string, `size`=length of file path string.
 1. Drone (server) attempts to create the file, and responds with either
@@ -302,23 +298,21 @@ The sequence of operations is:
 The GSC should create a timeout after `CreateFile` and `WriteFile` commands are sent, and resend the messages as needed (and [described above](#timeouts)).
 A timeout is not set for `TerminateSession` (the server may ignore failure of the command or the ACK).
 
-> **Warning** PX4 and *QGroundControl* implement this slightly differently than outlined above.
-  The implementation only has a single session (id=0) so only a single operation can be active at a time.
-  As a result, this operation should only be started if no other operation is active.
-  The drone expects that the session id will be set to zero by the sender of `CreateFile`.
-  Last of all, the GCS sends `ResetSessions` rather than `TerminateSession`.
-  While you can send either if talking to PX4, if the protocol is implemented elsewhere calling `ResetSessions` may break other communications.
-
+> **Warning** PX4 and _QGroundControl_ implement this slightly differently than outlined above.
+> The implementation only has a single session (id=0) so only a single operation can be active at a time.
+> As a result, this operation should only be started if no other operation is active.
+> The drone expects that the session id will be set to zero by the sender of `CreateFile`.
+> Last of all, the GCS sends `ResetSessions` rather than `TerminateSession`.
+> While you can send either if talking to PX4, if the protocol is implemented elsewhere calling `ResetSessions` may break other communications.
 
 ### Remove File
 
-> **Note** `RemoveFile` handling is implemented in PX4 but not in *QGroundControl*.
-  GCS behaviour is therefore not fully defined/tested.
+> **Note** `RemoveFile` handling is implemented in PX4 but not in _QGroundControl_.
+> GCS behaviour is therefore not fully defined/tested.
 
 The sequence of operations for removing a file is shown below (assuming there are no timeouts and all operations/requests succeed).
 
 [![Mermaid Sequence: Removing a file](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBSZW1vdmVGaWxlKCBkYXRhWzBdPXBhdGgsIHNpemU9bGVuKHBhdGgpIClcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSyhzaXplPTApIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBSZW1vdmVGaWxlKCBkYXRhWzBdPXBhdGgsIHNpemU9bGVuKHBhdGgpIClcbiAgICBEcm9uZS0tPj5HQ1M6IEFDSyhzaXplPTApIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
-
 
 <!-- Original Sequence
 sequenceDiagram;
@@ -329,6 +323,7 @@ sequenceDiagram;
 -->
 
 The sequence of operations is:
+
 1. GCS sends [RemoveFile](#RemoveFile) command specifying the full path of the file to be deleted.
    - The payload must specify: `data[0]`= file path string, `size`=length of file path string.
 1. Drone attempts to delete file, and responds to the message with either:
@@ -338,13 +333,12 @@ The sequence of operations is:
 
 The GSC should create a timeout after the `RemoveFile` command is sent and resend the message as needed (and [described above](#timeouts)).
 
-
 ### Truncate File
 
 The sequence of operations for truncating a file is shown below (assuming there are no timeouts and all operations/requests succeed).
 
-> **Note** `TruncateFile` handling is implemented in PX4 but not in *QGroundControl*.
-  GCS behaviour is therefore not fully defined/tested.
+> **Note** `TruncateFile` handling is implemented in PX4 but not in _QGroundControl_.
+> GCS behaviour is therefore not fully defined/tested.
 
 [![Mermaid Sequence: Truncate file](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBUcnVuY2F0ZUZpbGUgPGJyPiggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSwgb2Zmc2V0PW9mZnNldCB0byB0cnVuY2F0ZSApXG4gICAgRHJvbmUtLT4-R0NTOiBBQ0soc2l6ZT0wKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBUcnVuY2F0ZUZpbGUgPGJyPiggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSwgb2Zmc2V0PW9mZnNldCB0byB0cnVuY2F0ZSApXG4gICAgRHJvbmUtLT4-R0NTOiBBQ0soc2l6ZT0wKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
@@ -357,6 +351,7 @@ sequenceDiagram;
 -->
 
 The sequence of operations is:
+
 1. GCS sends [TruncateFile](#TruncateFile) command specifying file to truncate and the offset for truncation.
    - The payload must specify: `data[0]`= file path string, `size` = length of file path string, `offset` = truncation point in file (amount of data to keep).
 1. Drone attempts to truncate file, and responds to the message with either:
@@ -367,7 +362,6 @@ The sequence of operations is:
    - The drone must clean up any resources associated with the request after sending the response.
 
 The GSC should create a timeout after the `TruncateFile` command is sent and resend the message as needed (and [described above](#timeouts)).
-
 
 ### List Directory {#list_directory}
 
@@ -391,6 +385,7 @@ sequenceDiagram;
 -->
 
 The sequence of operations is:
+
 1. GCS sends [ListDirectory](#ListDirectory) command specifying a directory path and the **index** of an entry.
    - The [payload](#payload) must specify:
      - `data[0]` = file path
@@ -403,19 +398,17 @@ The sequence of operations is:
        ```
        <type><file_or_folder_name>\t<file_size_in_bytes>\0
        ```
-       For example, given five files named *TestFile1.xml* to *TestFile5.xml*, the entries returned at offset 2 might look like: `FTestFile3.xml\t223\0FTestFile4.xml\t755568\0FTestFile5.xml\t11111\0`
+       For example, given five files named _TestFile1.xml_ to _TestFile5.xml_, the entries returned at offset 2 might look like: `FTestFile3.xml\t223\0FTestFile4.xml\t755568\0FTestFile5.xml\t11111\0`
      - `size` = The size of the `data`.
 1. The operation is then repeated at different offsets to download the whole directory listing.
    > **Note** The offset for each request will depend on how many entries were returned by the previous request(s).
 1. The operation completes when the GCS requests an entry index (`offset`) greater than or equal to the number of entries.
    In this case the drone responds with a [NAK](#error_codes) containing [EOF](#EOF) (end of file).
 
-
 The GSC should create a timeout after the `ListDirectory` command is sent and resend the message as needed (and [described above](#timeouts)).
 
 The drone may also [NAK](#error_codes) with an unexpected error.
 Generally errors are unrecoverable, and the drone must clean up all resources (i.e. close file handles) associated with the request after sending the NAK.
-
 
 ### Create Directory
 
@@ -433,6 +426,7 @@ sequenceDiagram;
 -->
 
 The sequence of operations is:
+
 1. GCS sends [CreateDirectory](#CreateDirectory) command specifying the full path of the directory to be created.
    - The payload must specify: `data[0]`= directory path string, `size`=length of directory path string.
 1. Drone attempts to create directory, and responds to the message with either:
@@ -442,17 +436,15 @@ The sequence of operations is:
 
 The GSC should not create timeouts or handle the NAK case (other than to report an error to the user).
 
-
 ### Remove Directory
 
-> **Note** `RemoveDirectory` handling is implemented in PX4 but not in *QGroundControl*.
-  GCS behaviour is therefore not fully defined/tested.
+> **Note** `RemoveDirectory` handling is implemented in PX4 but not in _QGroundControl_.
+> GCS behaviour is therefore not fully defined/tested.
 
 The sequence of operations for removing a directory is shown below (assuming there are no timeouts and all operations/requests succeed).
 Note that this operation will fail if the directory is not empty.
 
 [![Mermaid Sequence: Remove directory](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBSZW1vdmVEaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCkgKVxuICAgIERyb25lLS0-PkdDUzogQUNLKHNpemU9MCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBSZW1vdmVEaXJlY3RvcnkoIGRhdGFbMF09cGF0aCwgc2l6ZT1sZW4ocGF0aCkgKVxuICAgIERyb25lLS0-PkdDUzogQUNLKHNpemU9MCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
-
 
 <!-- Original Diagram
 sequenceDiagram;
@@ -463,6 +455,7 @@ sequenceDiagram;
 -->
 
 The sequence of operations is:
+
 1. GCS sends [RemoveDirectory](#RemoveDirectory) command specifying the full path of the directory to be deleted.
    - The payload must specify: `data[0]`= directory path string, `size`=length of directory path string.
 1. Drone attempts to delete directory, and responds to the message with either:
@@ -472,21 +465,20 @@ The sequence of operations is:
 
 The GSC should create a timeout after the `RemoveDirectory` command is sent and resend the message as needed (and [described above](#timeouts)).
 
-
-
 ## Implementations
 
 The FTP v1 Protocol has been implemented (at least) in PX4, ArduPilot, QGroundControl and MAVSDK.
 Those implementations can be used in your own code within the terms of their software licenses.
 
 PX4 Implementation:
-* [src/modules/mavlink/mavlink_ftp.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.cpp)
-* [src/modules/mavlink/mavlink_ftp.h](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.h)
 
-*QGroundControl* implementation:
-* [src/uas/FileManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/FTPManager.cc)
-* [/src/uas/FileManager.h](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/FTPManager.h)
+- [src/modules/mavlink/mavlink_ftp.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.cpp)
+- [src/modules/mavlink/mavlink_ftp.h](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.h)
 
+_QGroundControl_ implementation:
+
+- [src/uas/FileManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/FTPManager.cc)
+- [/src/uas/FileManager.h](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/FTPManager.h)
 
 Everything is run by the master (QGC in this case); the slave simply responds to packets in order as they arrive. There’s buffering in the server for a little overlap (two packets in the queue at a time). This is a tradeoff between memory and link latency which may need to be reconsidered at some point.
 
@@ -501,16 +493,20 @@ The CRC32 algorithm used by MAVLink FTP is described in [MAVLink CRCs](../guide/
 ## MAVLink FTP URL Scheme
 
 Resources to be downloaded using MAVLink FTP can be referenced using the following URL-like format:
+
 ```
 mftp://[;comp=<id>]<path>
 ```
+
 Where:
+
 - `path`: the location of the resource on the target component.
-- `id`: target *component ID* of the component hosting the resource.
+- `id`: target _component ID_ of the component hosting the resource.
   The `[;comp=<id>]` part is optional (if omitted, the resource is downloaded from the current component).
   It should be specified if the request must be redirected
 
 For example:
+
 - A GCS connected to an autopilot might download a file using the following URL:
   ```
   ## FTP resource 'camera.xml' from current component

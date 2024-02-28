@@ -1,31 +1,29 @@
 # Extended Parameter Protocol
 
-The *Extended Parameter Protocol* is an extended version of the [Parameter Protocol](../services/parameter.md) that adds support for larger custom parameter types e.g. strings.
+The _Extended Parameter Protocol_ is an extended version of the [Parameter Protocol](../services/parameter.md) that adds support for larger custom parameter types e.g. strings.
 It can be used to exchange configuration settings between MAVLink components, and in particular configuration settings that may be more than just numeric values.
 
 The protocol shares most of the same benefits and limitations of the original protocol, and similar (but not identical) operation sequences.
 The main difference is that when [writing a parameter](#write) the system emits one or more [PARAM_EXT_ACK](#PARAM_EXT_ACK) messages (rather than [PARAM_EXT_VALUE](#PARAM_EXT_VALUE), as you would expect from the original protocol).
-This allows the *Extended Parameter Protocol* to differentiate between the case where a write fails (or is in progress) and the case where the value update simply went missing.
+This allows the _Extended Parameter Protocol_ to differentiate between the case where a write fails (or is in progress) and the case where the value update simply went missing.
 
 > **Note** The extensions were invented for the [Camera Protocol](../services/camera.md), which uses them to request/set parameter values specified in a [Camera Definition File](../services/camera_def.md).
-  At time of writing the protocol is supported by *QGroundControl* for this purpose, but is not otherwise supported by flight stacks.
-
+> At time of writing the protocol is supported by _QGroundControl_ for this purpose, but is not otherwise supported by flight stacks.
 
 ## Message/Enum Summary
 
-Message | Description
--- | --
-<span id="PARAM_EXT_REQUEST_LIST"></span>[PARAM_EXT_REQUEST_LIST](../messages/common.md#PARAM_EXT_REQUEST_LIST) | Request all parameters of this component. On receiving this request, the requested component will emit all parameter values using [PARAM_EXT_VALUE](#PARAM_EXT_VALUE).
-<span id="PARAM_EXT_VALUE"></span>[PARAM_EXT_VALUE](../messages/common.md#PARAM_EXT_VALUE) | Emit the value of a parameter, following a [PARAM_EXT_REQUEST_LIST](#PARAM_EXT_REQUEST_LIST) or [PARAM_EXT_REQUEST_READ](#PARAM_EXT_REQUEST_READ). The message includes `param_count` and `param_index` which the recipient can use to track received parameters and re-request missing parameters after a timeout.
-<span id="PARAM_EXT_REQUEST_READ"></span>[PARAM_EXT_REQUEST_READ](../messages/common.md#PARAM_EXT_REQUEST_READ) | Request the value of a specific parameter using either its `param_id` or `param_index`. Expects a response in a [PARAM_EXT_VALUE](#PARAM_EXT_VALUE).
-<span id="PARAM_EXT_SET"></span>[PARAM_EXT_SET](../messages/common.md#PARAM_EXT_SET) | Set a parameter value. Expects immediate response [PARAM_EXT_ACK](#PARAM_EXT_ACK) with result indicating success, failure, or that the request is still in progress (`PARAM_ACK_IN_PROGRESS`). If in progress, additional update [PARAM_EXT_ACK](#PARAM_EXT_ACK) messages are expected.
-<span id="PARAM_EXT_ACK"></span>[PARAM_EXT_ACK](../messages/common.md#PARAM_EXT_ACK) | Response from a [PARAM_EXT_SET](#PARAM_EXT_SET) message, which indicates whether the value was accepted (set), failed, setting is still in progress, or that the specified parameter is invalid/unsupported.
+| Message                                                                                                         | Description                                                                                                                                                                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span id="PARAM_EXT_REQUEST_LIST"></span>[PARAM_EXT_REQUEST_LIST](../messages/common.md#PARAM_EXT_REQUEST_LIST) | Request all parameters of this component. On receiving this request, the requested component will emit all parameter values using [PARAM_EXT_VALUE](#PARAM_EXT_VALUE).                                                                                                                                              |
+| <span id="PARAM_EXT_VALUE"></span>[PARAM_EXT_VALUE](../messages/common.md#PARAM_EXT_VALUE)                      | Emit the value of a parameter, following a [PARAM_EXT_REQUEST_LIST](#PARAM_EXT_REQUEST_LIST) or [PARAM_EXT_REQUEST_READ](#PARAM_EXT_REQUEST_READ). The message includes `param_count` and `param_index` which the recipient can use to track received parameters and re-request missing parameters after a timeout. |
+| <span id="PARAM_EXT_REQUEST_READ"></span>[PARAM_EXT_REQUEST_READ](../messages/common.md#PARAM_EXT_REQUEST_READ) | Request the value of a specific parameter using either its `param_id` or `param_index`. Expects a response in a [PARAM_EXT_VALUE](#PARAM_EXT_VALUE).                                                                                                                                                                |
+| <span id="PARAM_EXT_SET"></span>[PARAM_EXT_SET](../messages/common.md#PARAM_EXT_SET)                            | Set a parameter value. Expects immediate response [PARAM_EXT_ACK](#PARAM_EXT_ACK) with result indicating success, failure, or that the request is still in progress (`PARAM_ACK_IN_PROGRESS`). If in progress, additional update [PARAM_EXT_ACK](#PARAM_EXT_ACK) messages are expected.                             |
+| <span id="PARAM_EXT_ACK"></span>[PARAM_EXT_ACK](../messages/common.md#PARAM_EXT_ACK)                            | Response from a [PARAM_EXT_SET](#PARAM_EXT_SET) message, which indicates whether the value was accepted (set), failed, setting is still in progress, or that the specified parameter is invalid/unsupported.                                                                                                        |
 
-Enum | Description
--- | --
-<span id="MAV_PARAM_EXT_TYPE"></span>[MAV_PARAM_EXT_TYPE](../messages/common.md#MAV_PARAM_EXT_TYPE) | Specifies the datatype of a MAVLink extended parameter (parameter values are [encoded](#parameter_encoding) within the a `char[128]` array in the messages). This type conveys the *real type* of the encoded parameter value, e.g. `MAV_PARAM_EXT_TYPE_REAL32`.
-<span id="PARAM_ACK"></span>[PARAM_ACK](../messages/common.md#PARAM_ACK) | Request acknowledgment status value, sent in an [PARAM_EXT_ACK](#PARAM_EXT_ACK) as a response to a [PARAM_EXT_SET](#PARAM_EXT_SET) message. A request can be accepted, fail, in-progress, or unsupported (indicating the specified parameter does not exist or has an invalid value or value type).
-
+| Enum                                                                                                | Description                                                                                                                                                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <span id="MAV_PARAM_EXT_TYPE"></span>[MAV_PARAM_EXT_TYPE](../messages/common.md#MAV_PARAM_EXT_TYPE) | Specifies the datatype of a MAVLink extended parameter (parameter values are [encoded](#parameter_encoding) within the a `char[128]` array in the messages). This type conveys the _real type_ of the encoded parameter value, e.g. `MAV_PARAM_EXT_TYPE_REAL32`.                                    |
+| <span id="PARAM_ACK"></span>[PARAM_ACK](../messages/common.md#PARAM_ACK)                            | Request acknowledgment status value, sent in an [PARAM_EXT_ACK](#PARAM_EXT_ACK) as a response to a [PARAM_EXT_SET](#PARAM_EXT_SET) message. A request can be accepted, fail, in-progress, or unsupported (indicating the specified parameter does not exist or has an invalid value or value type). |
 
 ## Parameter Encoding {#parameter_encoding}
 
@@ -35,7 +33,7 @@ The string is terminated with a NULL (`\0`) character if there are less than 16 
 
 > **Note** Names (as above) are the same as for the [Parameter Protocol](../services/parameter.md#parameter_encoding).
 
-Values are byte-wise encoded *within* the `param_value` field, which is a `char[128]`.
+Values are byte-wise encoded _within_ the `param_value` field, which is a `char[128]`.
 The `param_type` ([MAV_PARAM_EXT_TYPE](#MAV_PARAM_EXT_TYPE)) is used to indicate the actual type of the data so that it can be decoded by the recipient.
 Supported types are: 8, 16, 32 and 64-bit signed and unsigned integers, 32 and 64-bit floating point numbers, and a "custom type" which may used for e.g. strings.
 
@@ -46,6 +44,7 @@ The encoding is best described by example [as shown below](#c_encoding).
 To send the parameter, the data is written into a union structure then memcpy used to copy the data into the message `char[128]` field.
 
 The union structure might look like this:
+
 ```cpp
 MAVPACKED(
 typedef struct {
@@ -67,6 +66,7 @@ typedef struct {
 ```
 
 To send the parameter, the data is written into the union value of the correct type and then memcpy used to copy it to the message data.
+
 ```cpp
 // Create C object for message data and zero fill
 mavlink_param_ext_set_t p;
@@ -86,6 +86,7 @@ memcpy(&p.param_value[0], &union_value.bytes[0], MAVLINK_MSG_PARAM_EXT_SET_FIELD
 ```
 
 Receiving and decoding a parameter is even simpler:
+
 ```cpp
 // 'value' is the char[128] from the message
 // 'param_type' is the param_type value from the message
@@ -106,11 +107,11 @@ switch (param_type) {
 }
 ```
 
-*QGroundControl* provides real code examples here:
-- Union structure: [QGCCameraIO.h::param_ext_union_t](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.h)
-- Send a parameter (encode in `char[128]`): [QGCCameraIO.cc::QGCCameraParamIO::_sendParameter()](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)
-- Receive a parameter and get typed value: [QGCCameraIO.cc::QGCCameraParamIO::_valueFromMessage()](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)
+_QGroundControl_ provides real code examples here:
 
+- Union structure: [QGCCameraIO.h::param_ext_union_t](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.h)
+- Send a parameter (encode in `char[128]`): [QGCCameraIO.cc::QGCCameraParamIO::\_sendParameter()](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)
+- Receive a parameter and get typed value: [QGCCameraIO.cc::QGCCameraParamIO::\_valueFromMessage()](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)
 
 ## Parameter Caching {#parameter_caching}
 
@@ -118,23 +119,22 @@ A GCS or other component may choose to maintain a cache of parameter values for 
 
 The cache can be populated initially by first [reading the full parameter list](#read_all) at least once, and then updated by monitoring for [PARAM_EXT_ACK](#PARAM_EXT_ACK) messages with `PARAM_ACK_ACCEPTED` (which are emitted whenever a parameter is successfully [written/changed](#write)).
 
-A system may also monitor for [PARAM_EXT_VALUE](#PARAM_EXT_VALUE) originating from other components/systems requesting parameter values. 
+A system may also monitor for [PARAM_EXT_VALUE](#PARAM_EXT_VALUE) originating from other components/systems requesting parameter values.
 
 > **Note** Cache synchronisation is not guaranteed; a component may [miss parameter update messages](#monitoring_unreliable) due to changes by other components.
-
-
 
 ## Limitations {#limitations}
 
 ### Parameters Table is Invariant {#parameters_invariant}
 
-The protocol *requires* that the parameter set does not change during normal operation/after parameters have been read.
+The protocol _requires_ that the parameter set does not change during normal operation/after parameters have been read.
 
 If a component can add parameters during (or after) initial synchronization the protocol cannot guarantee reliable/robust synchronization, because there is no way to notify that the parameter set has changed and a new sync is required.
 
-When requesting parameters from such a components, the risk of problems can be *reduced* (but not removed) if:
-* The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter may change on systems where parameters can be added/removed).
-* [PARAM_EXT_VALUE.param_count](../messages/common.md#PARAM_EXT_VALUE) may be monitored.
+When requesting parameters from such a components, the risk of problems can be _reduced_ (but not removed) if:
+
+- The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter may change on systems where parameters can be added/removed).
+- [PARAM_EXT_VALUE.param_count](../messages/common.md#PARAM_EXT_VALUE) may be monitored.
   If this changes the parameter set should be re-sychronised.
 
 ### Parameter Synchronisation Can Fail {#monitoring_unreliable}
@@ -146,11 +146,9 @@ This approach may fail for components that did not originate the change, as they
 
 A component may mitigate this risk by, for example, sending the `PARAM_EXT_ACK` multiple times after a parameter is changed.
 
-
 ## Parameter Operations
 
 This section defines the state machine/message sequences for all parameter operations.
-
 
 ### Read All Parameters {#read_all}
 
@@ -183,14 +181,13 @@ The sequence of operations is:
    - Components with no parameters should ignore the request.
 1. GCS starts timeout after each `PARAM_EXT_VALUE` message in order to detect when parameters are no longer being sent (that the operation has completed).
 
-
 Notes:
-- The GCS/API may accumulate the received parameters for each component and can determine if any are missing/not received (`PARAM_EXT_VALUE` contains the total number of params and index of current param). 
-- Handling of missing params is GCS-dependent. 
-  *QGroundControl*, for example, [individually requests](#read_single) each missing parameter by index.
+
+- The GCS/API may accumulate the received parameters for each component and can determine if any are missing/not received (`PARAM_EXT_VALUE` contains the total number of params and index of current param).
+- Handling of missing params is GCS-dependent.
+  _QGroundControl_, for example, [individually requests](#read_single) each missing parameter by index.
 - If a component does not any parameters then it will ignore a `PARAM_EXT_REQUEST_LIST` request.
   The sender should simply timeout (after resends) if no `PARAM_EXT_VALUE` is received.
-
 
 ### Read Single Parameter {#read_single}
 
@@ -206,7 +203,7 @@ sequenceDiagram;
     GCS->>GCS: Start receive timeout
     Drone->>GCS: PARAM_EXT_VALUE
     GCS-- >Drone: Re-request parameter value on timeout
---> 
+-->
 
 The sequence of operations is:
 
@@ -217,7 +214,6 @@ The sequence of operations is:
 
 The drone may restart the sequence if the `PARAM_EXT_VALUE` acknowledgment is not received within the timeout.
 
-
 ### Write Parameters {#write}
 
 Parameters are written individually using [PARAM_EXT_SET](#PARAM_EXT_SET).
@@ -225,7 +221,6 @@ The recipient will respond with [PARAM_EXT_ACK](#PARAM_EXT_ACK) indicating succe
 On receipt of `PARAM_ACK_IN_PROGRESS` the component setting the parameter will extend its timeout (`PARAM_EXT_ACK` will be re-sent when the write completes)
 
 Parameters can be written individually by sending the parameter name and value pair to the GCS, as shown:
-
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFBBUkFNX0VYVF9TRVQgKHBhcmFtIGlkLCB2YWx1ZSwgLi4uKVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dCAoZm9yIFBBUkFNX0VYVF9BQ0spXG4gICAgRHJvbmUtPj5Ecm9uZTogV3JpdGUgcGFyYW1ldGVyIHZhbHVlXG4gICAgRHJvbmUtPj5HQ1M6IFBBUkFNX0VYVF9BQ0sgKG5hbWUsIHZhbHVlLCByZXN1bHQgLi4uKVxuICAgIEdDUy0-PkdDUzogKG9wdGlvbmFsKSBVcGRhdGUgY2FjaGUgZm9yIFBBUkFNX0VYVF9BQ0tcbiAgICBHQ1MtLT4-RHJvbmU6IE9uIHRpbWVvdXQgcmVzdGFydCB0aGlzIHNlcXVlbmNlIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQiLCJ0aGVtZVZhcmlhYmxlcyI6eyJiYWNrZ3JvdW5kIjoid2hpdGUiLCJwcmltYXJ5Q29sb3IiOiIjRUNFQ0ZGIiwic2Vjb25kYXJ5Q29sb3IiOiIjZmZmZmRlIiwidGVydGlhcnlDb2xvciI6ImhzbCg4MCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwicHJpbWFyeUJvcmRlckNvbG9yIjoiaHNsKDI0MCwgNjAlLCA4Ni4yNzQ1MDk4MDM5JSkiLCJzZWNvbmRhcnlCb3JkZXJDb2xvciI6ImhzbCg2MCwgNjAlLCA4My41Mjk0MTE3NjQ3JSkiLCJ0ZXJ0aWFyeUJvcmRlckNvbG9yIjoiaHNsKDgwLCA2MCUsIDg2LjI3NDUwOTgwMzklKSIsInByaW1hcnlUZXh0Q29sb3IiOiIjMTMxMzAwIiwic2Vjb25kYXJ5VGV4dENvbG9yIjoiIzAwMDAyMSIsInRlcnRpYXJ5VGV4dENvbG9yIjoicmdiKDkuNTAwMDAwMDAwMSwgOS41MDAwMDAwMDAxLCA5LjUwMDAwMDAwMDEpIiwibGluZUNvbG9yIjoiIzMzMzMzMyIsInRleHRDb2xvciI6IiMzMzMiLCJtYWluQmtnIjoiI0VDRUNGRiIsInNlY29uZEJrZyI6IiNmZmZmZGUiLCJib3JkZXIxIjoiIzkzNzBEQiIsImJvcmRlcjIiOiIjYWFhYTMzIiwiYXJyb3doZWFkQ29sb3IiOiIjMzMzMzMzIiwiZm9udEZhbWlseSI6IlwidHJlYnVjaGV0IG1zXCIsIHZlcmRhbmEsIGFyaWFsIiwiZm9udFNpemUiOiIxNnB4IiwibGFiZWxCYWNrZ3JvdW5kIjoiI2U4ZThlOCIsIm5vZGVCa2ciOiIjRUNFQ0ZGIiwibm9kZUJvcmRlciI6IiM5MzcwREIiLCJjbHVzdGVyQmtnIjoiI2ZmZmZkZSIsImNsdXN0ZXJCb3JkZXIiOiIjYWFhYTMzIiwiZGVmYXVsdExpbmtDb2xvciI6IiMzMzMzMzMiLCJ0aXRsZUNvbG9yIjoiIzMzMyIsImVkZ2VMYWJlbEJhY2tncm91bmQiOiIjZThlOGU4IiwiYWN0b3JCb3JkZXIiOiJoc2woMjU5LjYyNjE2ODIyNDMsIDU5Ljc3NjUzNjMxMjglLCA4Ny45MDE5NjA3ODQzJSkiLCJhY3RvckJrZyI6IiNFQ0VDRkYiLCJhY3RvclRleHRDb2xvciI6ImJsYWNrIiwiYWN0b3JMaW5lQ29sb3IiOiJncmV5Iiwic2lnbmFsQ29sb3IiOiIjMzMzIiwic2lnbmFsVGV4dENvbG9yIjoiIzMzMyIsImxhYmVsQm94QmtnQ29sb3IiOiIjRUNFQ0ZGIiwibGFiZWxCb3hCb3JkZXJDb2xvciI6ImhzbCgyNTkuNjI2MTY4MjI0MywgNTkuNzc2NTM2MzEyOCUsIDg3LjkwMTk2MDc4NDMlKSIsImxhYmVsVGV4dENvbG9yIjoiYmxhY2siLCJsb29wVGV4dENvbG9yIjoiYmxhY2siLCJub3RlQm9yZGVyQ29sb3IiOiIjYWFhYTMzIiwibm90ZUJrZ0NvbG9yIjoiI2ZmZjVhZCIsIm5vdGVUZXh0Q29sb3IiOiJibGFjayIsImFjdGl2YXRpb25Cb3JkZXJDb2xvciI6IiM2NjYiLCJhY3RpdmF0aW9uQmtnQ29sb3IiOiIjZjRmNGY0Iiwic2VxdWVuY2VOdW1iZXJDb2xvciI6IndoaXRlIiwic2VjdGlvbkJrZ0NvbG9yIjoicmdiYSgxMDIsIDEwMiwgMjU1LCAwLjQ5KSIsImFsdFNlY3Rpb25Ca2dDb2xvciI6IndoaXRlIiwic2VjdGlvbkJrZ0NvbG9yMiI6IiNmZmY0MDAiLCJ0YXNrQm9yZGVyQ29sb3IiOiIjNTM0ZmJjIiwidGFza0JrZ0NvbG9yIjoiIzhhOTBkZCIsInRhc2tUZXh0TGlnaHRDb2xvciI6IndoaXRlIiwidGFza1RleHRDb2xvciI6IndoaXRlIiwidGFza1RleHREYXJrQ29sb3IiOiJibGFjayIsInRhc2tUZXh0T3V0c2lkZUNvbG9yIjoiYmxhY2siLCJ0YXNrVGV4dENsaWNrYWJsZUNvbG9yIjoiIzAwMzE2MyIsImFjdGl2ZVRhc2tCb3JkZXJDb2xvciI6IiM1MzRmYmMiLCJhY3RpdmVUYXNrQmtnQ29sb3IiOiIjYmZjN2ZmIiwiZ3JpZENvbG9yIjoibGlnaHRncmV5IiwiZG9uZVRhc2tCa2dDb2xvciI6ImxpZ2h0Z3JleSIsImRvbmVUYXNrQm9yZGVyQ29sb3IiOiJncmV5IiwiY3JpdEJvcmRlckNvbG9yIjoiI2ZmODg4OCIsImNyaXRCa2dDb2xvciI6InJlZCIsInRvZGF5TGluZUNvbG9yIjoicmVkIiwibGFiZWxDb2xvciI6ImJsYWNrIiwiZXJyb3JCa2dDb2xvciI6IiM1NTIyMjIiLCJlcnJvclRleHRDb2xvciI6IiM1NTIyMjIiLCJjbGFzc1RleHQiOiIjMTMxMzAwIiwiZmlsbFR5cGUwIjoiI0VDRUNGRiIsImZpbGxUeXBlMSI6IiNmZmZmZGUiLCJmaWxsVHlwZTIiOiJoc2woMzA0LCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJmaWxsVHlwZTMiOiJoc2woMTI0LCAxMDAlLCA5My41Mjk0MTE3NjQ3JSkiLCJmaWxsVHlwZTQiOiJoc2woMTc2LCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJmaWxsVHlwZTUiOiJoc2woLTQsIDEwMCUsIDkzLjUyOTQxMTc2NDclKSIsImZpbGxUeXBlNiI6ImhzbCg4LCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJmaWxsVHlwZTciOiJoc2woMTg4LCAxMDAlLCA5My41Mjk0MTE3NjQ3JSkifX0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFBBUkFNX0VYVF9TRVQgKHBhcmFtIGlkLCB2YWx1ZSwgLi4uKVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dCAoZm9yIFBBUkFNX0VYVF9BQ0spXG4gICAgRHJvbmUtPj5Ecm9uZTogV3JpdGUgcGFyYW1ldGVyIHZhbHVlXG4gICAgRHJvbmUtPj5HQ1M6IFBBUkFNX0VYVF9BQ0sgKG5hbWUsIHZhbHVlLCByZXN1bHQgLi4uKVxuICAgIEdDUy0-PkdDUzogKG9wdGlvbmFsKSBVcGRhdGUgY2FjaGUgZm9yIFBBUkFNX0VYVF9BQ0tcbiAgICBHQ1MtLT4-RHJvbmU6IE9uIHRpbWVvdXQgcmVzdGFydCB0aGlzIHNlcXVlbmNlIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQiLCJ0aGVtZVZhcmlhYmxlcyI6eyJiYWNrZ3JvdW5kIjoid2hpdGUiLCJwcmltYXJ5Q29sb3IiOiIjRUNFQ0ZGIiwic2Vjb25kYXJ5Q29sb3IiOiIjZmZmZmRlIiwidGVydGlhcnlDb2xvciI6ImhzbCg4MCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwicHJpbWFyeUJvcmRlckNvbG9yIjoiaHNsKDI0MCwgNjAlLCA4Ni4yNzQ1MDk4MDM5JSkiLCJzZWNvbmRhcnlCb3JkZXJDb2xvciI6ImhzbCg2MCwgNjAlLCA4My41Mjk0MTE3NjQ3JSkiLCJ0ZXJ0aWFyeUJvcmRlckNvbG9yIjoiaHNsKDgwLCA2MCUsIDg2LjI3NDUwOTgwMzklKSIsInByaW1hcnlUZXh0Q29sb3IiOiIjMTMxMzAwIiwic2Vjb25kYXJ5VGV4dENvbG9yIjoiIzAwMDAyMSIsInRlcnRpYXJ5VGV4dENvbG9yIjoicmdiKDkuNTAwMDAwMDAwMSwgOS41MDAwMDAwMDAxLCA5LjUwMDAwMDAwMDEpIiwibGluZUNvbG9yIjoiIzMzMzMzMyIsInRleHRDb2xvciI6IiMzMzMiLCJtYWluQmtnIjoiI0VDRUNGRiIsInNlY29uZEJrZyI6IiNmZmZmZGUiLCJib3JkZXIxIjoiIzkzNzBEQiIsImJvcmRlcjIiOiIjYWFhYTMzIiwiYXJyb3doZWFkQ29sb3IiOiIjMzMzMzMzIiwiZm9udEZhbWlseSI6IlwidHJlYnVjaGV0IG1zXCIsIHZlcmRhbmEsIGFyaWFsIiwiZm9udFNpemUiOiIxNnB4IiwibGFiZWxCYWNrZ3JvdW5kIjoiI2U4ZThlOCIsIm5vZGVCa2ciOiIjRUNFQ0ZGIiwibm9kZUJvcmRlciI6IiM5MzcwREIiLCJjbHVzdGVyQmtnIjoiI2ZmZmZkZSIsImNsdXN0ZXJCb3JkZXIiOiIjYWFhYTMzIiwiZGVmYXVsdExpbmtDb2xvciI6IiMzMzMzMzMiLCJ0aXRsZUNvbG9yIjoiIzMzMyIsImVkZ2VMYWJlbEJhY2tncm91bmQiOiIjZThlOGU4IiwiYWN0b3JCb3JkZXIiOiJoc2woMjU5LjYyNjE2ODIyNDMsIDU5Ljc3NjUzNjMxMjglLCA4Ny45MDE5NjA3ODQzJSkiLCJhY3RvckJrZyI6IiNFQ0VDRkYiLCJhY3RvclRleHRDb2xvciI6ImJsYWNrIiwiYWN0b3JMaW5lQ29sb3IiOiJncmV5Iiwic2lnbmFsQ29sb3IiOiIjMzMzIiwic2lnbmFsVGV4dENvbG9yIjoiIzMzMyIsImxhYmVsQm94QmtnQ29sb3IiOiIjRUNFQ0ZGIiwibGFiZWxCb3hCb3JkZXJDb2xvciI6ImhzbCgyNTkuNjI2MTY4MjI0MywgNTkuNzc2NTM2MzEyOCUsIDg3LjkwMTk2MDc4NDMlKSIsImxhYmVsVGV4dENvbG9yIjoiYmxhY2siLCJsb29wVGV4dENvbG9yIjoiYmxhY2siLCJub3RlQm9yZGVyQ29sb3IiOiIjYWFhYTMzIiwibm90ZUJrZ0NvbG9yIjoiI2ZmZjVhZCIsIm5vdGVUZXh0Q29sb3IiOiJibGFjayIsImFjdGl2YXRpb25Cb3JkZXJDb2xvciI6IiM2NjYiLCJhY3RpdmF0aW9uQmtnQ29sb3IiOiIjZjRmNGY0Iiwic2VxdWVuY2VOdW1iZXJDb2xvciI6IndoaXRlIiwic2VjdGlvbkJrZ0NvbG9yIjoicmdiYSgxMDIsIDEwMiwgMjU1LCAwLjQ5KSIsImFsdFNlY3Rpb25Ca2dDb2xvciI6IndoaXRlIiwic2VjdGlvbkJrZ0NvbG9yMiI6IiNmZmY0MDAiLCJ0YXNrQm9yZGVyQ29sb3IiOiIjNTM0ZmJjIiwidGFza0JrZ0NvbG9yIjoiIzhhOTBkZCIsInRhc2tUZXh0TGlnaHRDb2xvciI6IndoaXRlIiwidGFza1RleHRDb2xvciI6IndoaXRlIiwidGFza1RleHREYXJrQ29sb3IiOiJibGFjayIsInRhc2tUZXh0T3V0c2lkZUNvbG9yIjoiYmxhY2siLCJ0YXNrVGV4dENsaWNrYWJsZUNvbG9yIjoiIzAwMzE2MyIsImFjdGl2ZVRhc2tCb3JkZXJDb2xvciI6IiM1MzRmYmMiLCJhY3RpdmVUYXNrQmtnQ29sb3IiOiIjYmZjN2ZmIiwiZ3JpZENvbG9yIjoibGlnaHRncmV5IiwiZG9uZVRhc2tCa2dDb2xvciI6ImxpZ2h0Z3JleSIsImRvbmVUYXNrQm9yZGVyQ29sb3IiOiJncmV5IiwiY3JpdEJvcmRlckNvbG9yIjoiI2ZmODg4OCIsImNyaXRCa2dDb2xvciI6InJlZCIsInRvZGF5TGluZUNvbG9yIjoicmVkIiwibGFiZWxDb2xvciI6ImJsYWNrIiwiZXJyb3JCa2dDb2xvciI6IiM1NTIyMjIiLCJlcnJvclRleHRDb2xvciI6IiM1NTIyMjIiLCJjbGFzc1RleHQiOiIjMTMxMzAwIiwiZmlsbFR5cGUwIjoiI0VDRUNGRiIsImZpbGxUeXBlMSI6IiNmZmZmZGUiLCJmaWxsVHlwZTIiOiJoc2woMzA0LCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJmaWxsVHlwZTMiOiJoc2woMTI0LCAxMDAlLCA5My41Mjk0MTE3NjQ3JSkiLCJmaWxsVHlwZTQiOiJoc2woMTc2LCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJmaWxsVHlwZTUiOiJoc2woLTQsIDEwMCUsIDkzLjUyOTQxMTc2NDclKSIsImZpbGxUeXBlNiI6ImhzbCg4LCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJmaWxsVHlwZTciOiJoc2woMTg4LCAxMDAlLCA5My41Mjk0MTE3NjQ3JSkifX0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
@@ -263,7 +258,7 @@ The sequence of operations is:
 
 1. GCS (client) sends [PARAM_EXT_SET](../messages/common.md#PARAM_EXT_SET) specifying the param name to update and its new value (also target system/component and the param type).
 1. GCS starts timout waiting for acknowledgment (in the form of a [PARAM_EXT_ACK](../messages/common.md#PARAM_EXT_ACK) message).
-1. Drone (starts to) write parameter and responds by *broadcasting* a `PARAM_EXT_ACK`.
+1. Drone (starts to) write parameter and responds by _broadcasting_ a `PARAM_EXT_ACK`.
    - If the write succeeded the `PARAM_EXT_ACK` will contain a result of `PARAM_ACK_ACCEPTED` and the updated parameter value.
    - If the parameter was unknown or of an unsupported type `PARAM_EXT_ACK` will contain a result of `PARAM_ACK_VALUE_UNSUPPORTED` and the current parameter value will be XXXXX.
    - If the write failed for another reason then `PARAM_EXT_ACK` will contain a result of `PARAM_ACK_FAILED` and the current parameter value.
@@ -273,7 +268,6 @@ The sequence of operations is:
 1. GCS should update the [parameter cache](#parameter_caching) (if used) with the new value.
 1. The GCS may restart the sequence if an expected `PARAM_EXT_ACK` is not received within the timeout, or if the write operation fails.
 
-
 ## Implementations
 
-*QGroundControl*: [QGCCameraIO.h](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.h), [QGCCameraIO.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)
+_QGroundControl_: [QGCCameraIO.h](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.h), [QGCCameraIO.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)

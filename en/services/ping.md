@@ -21,40 +21,44 @@ sequenceDiagram;
     PING(ing)->>PING(ing): Calculate round-trip time
 -->
 
-
 The ping**ing** system initially populates a PING message with:
+
 - `time_usec`: Current system timestamp.
-- `seq`: Current `PING` sequence number (n, n+1, ...). 
+- `seq`: Current `PING` sequence number (n, n+1, ...).
   This should be iterated for every `PING` message sent and overflow back to zero.
 - `target_system` and `target_component`: 0 (indicates a PING request).
 - The message header automatically includes the sender system.
 
 The message may be received by multiple systems.
 All ping**ed** systems should respond with another `PING` message where:
-- The *original* timestamp and sequence number from the receive `PING` are sent back in the response.
+
+- The _original_ timestamp and sequence number from the receive `PING` are sent back in the response.
 - `target_system` and `target_component` are set to the ids of the pinging system from the incoming ping message header.
 
 The original ping**ing** system:
+
 - Receives a `PING` message with `target_system` and `target_component` matching its address.
   > **Tip** Any non-zero target system/component indicates a response message.
-    The matching ids inform the system that it is the intended recipient.
+  > The matching ids inform the system that it is the intended recipient.
 - The system calculates the latency from the current system time and the time in the response `PING` for the matching sequence number.
 - A system that is sending a single `PING` can use a timeout to detect a dropped packet.
   A system that is streaming (multiple) `PING` messages should not start detecting dropped packets until after the first responses have been received (to ensure that dropped packets are not just "late").
 
 ## C Implementation
 
-The protocol has been implemented in C by PX4 and *QGroundControl*.
+The protocol has been implemented in C by PX4 and _QGroundControl_.
 This implementation can be used in your own code within the terms of their software licenses.
 
 PX4 Implementation:
+
 - [mavlink_messages.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_messages.cpp)
 - [mavlink_receiver.cpp](https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_receiver.cpp)
 
-*QGroundControl* implementation:
+_QGroundControl_ implementation:
+
 - [src/Vehicle/Vehicle.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/Vehicle.cc)
 
-<!-- 
+<!--
 ArduPilot
 * TBD - can't find any example it has been implemented.
 -->

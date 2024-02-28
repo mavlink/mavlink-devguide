@@ -2,12 +2,12 @@
 
 > **Warning** The [Camera Protocol](../services/camera.md) and [MAVLink FTP](../services/ftp.md) are recommended for sending images, video and files.
 >
->  This protocol is not intended for general image transmission use (it was originally designed as a simple protocol for transfering small images over a low bandwidth channel from an optical flow sensor to a GCS).
+> This protocol is not intended for general image transmission use (it was originally designed as a simple protocol for transfering small images over a low bandwidth channel from an optical flow sensor to a GCS).
 
 The image transmission protocol uses MAVLink as the communication channel to transport any kind of image (raw images, Kinect data, etc.) from one MAVLink node to another.
-It basically takes a live camera image, splits it into small chunks and sends it over MAVLink.  
+It basically takes a live camera image, splits it into small chunks and sends it over MAVLink.
 
-This topic describes how the image streaming functionality works and covers both the communication protocol and implementation details (for a vehicle and *QGroundControl*).
+This topic describes how the image streaming functionality works and covers both the communication protocol and implementation details (for a vehicle and _QGroundControl_).
 
 ## Communication
 
@@ -20,7 +20,7 @@ sequenceDiagram;
     participant GCS
     participant Drone
     GCS->>Drone: Request image (DATA_TRANSMISSION_HANDSHAKE)
-    Drone->>Drone: Wait for image from camera. 
+    Drone->>Drone: Wait for image from camera.
     Drone->>Drone: Encode image (JPEG).
     Drone->>GCS: Send image metadata (DATA_TRANSMISSION_HANDSHAKE)
     Drone->>Drone: Split image into chunks.
@@ -33,29 +33,30 @@ sequenceDiagram;
     Drone->>GCS: Acknowledge to stop image stream (?)
 -->
 
-
-1. The communication is initiated by the *QGroundControl* with a `DATA_TRANSMISSION_HANDSHAKE` request to start the stream.
+1. The communication is initiated by the _QGroundControl_ with a `DATA_TRANSMISSION_HANDSHAKE` request to start the stream.
    The messages should specify:
-   * `type`: any of the types in the enum [MAVLINK_DATA_STREAM_TYPE](../messages/common.md#MAVLINK_DATA_STREAM_TYPE) in **mavlink.h**,
-   * `jpg_quality`: Desired image quality (for lossy formats like JPEG).
-   * All other fields must be zero in the initial request.
+
+   - `type`: any of the types in the enum [MAVLINK_DATA_STREAM_TYPE](../messages/common.md#MAVLINK_DATA_STREAM_TYPE) in **mavlink.h**,
+   - `jpg_quality`: Desired image quality (for lossy formats like JPEG).
+   - All other fields must be zero in the initial request.
 
 1. When the targeted MAV receives the handshake request, it sends back a `DATA_TRANSMISSION_HANDSHAKE`.
    This acts provides acknowledgment of the request and information about the image that is about to be streamed:
-   * `type`: Type of image to be streamed (same as requested type)
-   * `size`: Image size in bytes.
-   * `width`: Image width in pixels.
-   * `height`: Image height in pixels.
-   * `packets`: number of MAVLink `ENCAPSULATED_DATA` packets to be sent
-   * `payload`: Size of the payload of each data packet (normally 252 bytes)
-   * `jpg_quality`: Image quality (same as requested)
+
+   - `type`: Type of image to be streamed (same as requested type)
+   - `size`: Image size in bytes.
+   - `width`: Image width in pixels.
+   - `height`: Image height in pixels.
+   - `packets`: number of MAVLink `ENCAPSULATED_DATA` packets to be sent
+   - `payload`: Size of the payload of each data packet (normally 252 bytes)
+   - `jpg_quality`: Image quality (same as requested)
 
 1. The image data is then split into chunks to fit into `ENCAPSULATED_DATA` message and sent over MAVLink.
    Every packet contains a sequence number as well as the ID of the image stream it belongs to.
-   
 1. The image streamer periodically sends new images without further interaction.
    Every new image comes with a new `DATA_TRANSMISSION_HANDSHAKE` ACK packet with updated image `size`, `packets` and `payload` fields.
    After this ACK packet, the new image arrives as a series of `ENCAPSULATED_DATA` packets.
+
    > **Note** The sequence number starts at 0 for every new image of the stream.
 
 1. To stop an image stream a GSC must send a new `DATA_TRANSMISSION_HANDSHAKE` request packet, with all 0 values.
@@ -66,24 +67,23 @@ sequenceDiagram;
 To use the two modules on your MAV, you have to do the following steps:
 
 - Compile the `mavconn` middleware for your MAV: [Guide](https://www.pixhawk.org/wiki/software/mavconn/start), [Github](https://github.com/pixhawk/mavconn).
-- Start at least these components on the MAV: 
+- Start at least these components on the MAV:
   ```
   px_mavlink_bridge_udp &
   px_system_control --heartbeat &
   px_camera -o lcm &
   ```
-- Compile and start *QGroundControl*.
+- Compile and start _QGroundControl_.
 - Start the image streaming component (you can add the `-v` flag to see some more output): `px_imagestreamer`.
 - Initiate the image stream: Open the HUD widget, right-click into the widget and choose **Enable live Image Streaming**.
 
 You should now be able to see the live video feed with one image per second (default, hardcoded at the moment).
 
-
-## Developer 
+## Developer
 
 Out-of-the-box, the image streaming component only implements JPEG streaming of the camera image. To implement your own image stream, you have to do the following:
 
-* Write a MAVLink handler, which handles requests to start image streams of your type of choice.
-* Write a data handler, which takes your desired data (i.e. a stereo camera image), encodes it into the format of your choice (i.e. rawimage, JPEG, BMP) and splits/sends the data over MAVLink.
-* Extend the data/message handler in the UAS component of *QGroundControl* to correctly handle your data (i.e. unpacking of the chosen format).
-* Write or extend a widget to display your data according to your wishes.
+- Write a MAVLink handler, which handles requests to start image streams of your type of choice.
+- Write a data handler, which takes your desired data (i.e. a stereo camera image), encodes it into the format of your choice (i.e. rawimage, JPEG, BMP) and splits/sends the data over MAVLink.
+- Extend the data/message handler in the UAS component of _QGroundControl_ to correctly handle your data (i.e. unpacking of the chosen format).
+- Write or extend a widget to display your data according to your wishes.

@@ -1,9 +1,10 @@
 # Gimbal Protocol (v2)
 
 > **Note** This version is marked as work-in-progress.
-  This means that it is still subject to change.
+> This means that it is still subject to change.
 
 <span></span>
+
 > **Note** This version supersedes [Gimbal Protocol v1](../services/gimbal.md)
 
 ## Introduction
@@ -23,20 +24,20 @@ The protocol supports a number of hardware setups, and enables gimbals with vary
 ### Gimbal Manager and Gimbal Device
 
 To accommodate gimbals with varying capabilities, and various hardware setups, "a gimbal" is conceptually split into two parts:
+
 - **Gimbal Device:** the actual gimbal device, hardware and software.
 - **Gimbal Manager:** software to deconflict gimbal messages and commands from different sources, and to abstract the capabilities of the **Gimbal Device** from gimbal users.
 
-The *Gimbal Manager* and *Gimbal Device* expose respective *message sets* that can be used for: gimbal manager/device discovery, querying capabilities, publishing status, and various types of orientation/attitude control.
+The _Gimbal Manager_ and _Gimbal Device_ expose respective _message sets_ that can be used for: gimbal manager/device discovery, querying capabilities, publishing status, and various types of orientation/attitude control.
 
-The key concept to understand is that a *Gimbal Manager* has a 1:1 relationship with a particular *Gimbal Device*, and is the only party on the MAVLink network that is allowed to directly command that device - it does so using the *Gimbal Device message set*.
+The key concept to understand is that a _Gimbal Manager_ has a 1:1 relationship with a particular _Gimbal Device_, and is the only party on the MAVLink network that is allowed to directly command that device - it does so using the _Gimbal Device message set_.
 
-> **Note** The *Gimbal Device* must act only upon messages that come from the associated *Gimbal Manager*!
-  The device will however *broadcast* its status to all parties on the network (not just its manager).
+> **Note** The _Gimbal Device_ must act only upon messages that come from the associated _Gimbal Manager_!
+> The device will however _broadcast_ its status to all parties on the network (not just its manager).
 
-MAVLink applications (ground stations, developer APIs like the MAVSDK, etc.), and any other software that wants to control a particular gimbal, must do so via its *Gimbal Manager*, using the *Gimbal Manager message set*.
+MAVLink applications (ground stations, developer APIs like the MAVSDK, etc.), and any other software that wants to control a particular gimbal, must do so via its _Gimbal Manager_, using the _Gimbal Manager message set_.
 
 Note that the gimbal manager is (by default) implemented on the autopilot.
-
 
 ### Common Set-ups
 
@@ -59,7 +60,7 @@ graph LR
 
 #### Standalone Integrated Camera/Gimbal
 
-In this set-up the integrated camera/gimbal itself can be the *Gimbal Manager*.
+In this set-up the integrated camera/gimbal itself can be the _Gimbal Manager_.
 
 Therefore, the gimbal device interface is internal (no implementation is required).
 
@@ -74,13 +75,12 @@ graph LR
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3RcIl1cblx0Z1tcIkNhbWVyYSAvIEdpbWJhbCAoR2ltYmFsIE1hbmFnZXIpXCJdXG5cdGdjc1tcIkdyb3VuZCBTdGF0aW9uXCJdXG5cdGFwIC0tLXxcIkdpbWJhbCBtYW5hZ2VyIG1lc3NhZ2VzXCJ8IGdcblx0Z2NzIC0tLXxcIkdpbWJhbCBtYW5hZ2VyIG1lc3NhZ2VzXCJ8ZyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3RcIl1cblx0Z1tcIkNhbWVyYSAvIEdpbWJhbCAoR2ltYmFsIE1hbmFnZXIpXCJdXG5cdGdjc1tcIkdyb3VuZCBTdGF0aW9uXCJdXG5cdGFwIC0tLXxcIkdpbWJhbCBtYW5hZ2VyIG1lc3NhZ2VzXCJ8IGdcblx0Z2NzIC0tLXxcIkdpbWJhbCBtYW5hZ2VyIG1lc3NhZ2VzXCJ8ZyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
-
 #### Onboard Computer with Camera and Gimbal Connected to Autopilot
 
-In this set-up the *Gimbal Manager* can be on the onboard computer.
+In this set-up the _Gimbal Manager_ can be on the onboard computer.
 
-Commands from the GCS (etc.) are sent to the *Gimbal Manager* on the companion computer.
-Messages from the *Gimbal Manager* to the *Gimbal Device* need to be sent to/routed through the autopilot.
+Commands from the GCS (etc.) are sent to the _Gimbal Manager_ on the companion computer.
+Messages from the _Gimbal Manager_ to the _Gimbal Device_ need to be sent to/routed through the autopilot.
 
 <!-- Mermaid graph:
 graph LR
@@ -95,7 +95,6 @@ graph LR
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3RcIl1cblx0Y2NbXCJDb21wYW5pb24gKEdpbWJhbCBNYW5hZ2VyKVwiXVxuXHRnW1wiR2ltYmFsIERldmljZVwiXVxuXHRnY3NbXCJHcm91bmQgU3RhdGlvblwiXVxuXHRhcCAtLS18XCJHaW1iYWwgZGV2aWNlIG1lc3NhZ2VzXCJ8Z1xuXHRhcCAtLS18XCJHaW1iYWwgZGV2aWNlIG1lc3NhZ2VzXCJ8Y2Ncblx0Z2NzIC0tLXxcIkdpbWJhbCBtYW5hZ2VyIG1lc3NhZ2VzXCJ8Y2MiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0YXBbXCJBdXRvcGlsb3RcIl1cblx0Y2NbXCJDb21wYW5pb24gKEdpbWJhbCBNYW5hZ2VyKVwiXVxuXHRnW1wiR2ltYmFsIERldmljZVwiXVxuXHRnY3NbXCJHcm91bmQgU3RhdGlvblwiXVxuXHRhcCAtLS18XCJHaW1iYWwgZGV2aWNlIG1lc3NhZ2VzXCJ8Z1xuXHRhcCAtLS18XCJHaW1iYWwgZGV2aWNlIG1lc3NhZ2VzXCJ8Y2Ncblx0Z2NzIC0tLXxcIkdpbWJhbCBtYW5hZ2VyIG1lc3NhZ2VzXCJ8Y2MiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
-
 ### Multiple Gimbals
 
 Multiple gimbals per drone are supported.
@@ -108,7 +107,7 @@ The listed component IDs should be used where possible (other ids may be used as
 
 #### Mapping from Gimbal Managers to Gimbal Devices
 
-Every *Gimbal Manager* must to publish its associated *Gimbal Device* (there is a 1:1 relationship) in its [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) message.
+Every _Gimbal Manager_ must to publish its associated _Gimbal Device_ (there is a 1:1 relationship) in its [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) message.
 
 A particular MAVLink component can implement multiple gimbal managers (e.g. an autopilot can implement two gimbal managers in order to control two gimbal devices).
 
@@ -116,13 +115,13 @@ A gimbal manager can "manage" MAVLink gimbal devices as well as non-MAVLink gimb
 
 #### Addressing of Gimbal MAVLink Devices {#gimbal_device_addressing}
 
-*Gimbal Manager* commands and messages have a param field to indicate the component ID of the *Gimbal Device* that they intend to control.
+_Gimbal Manager_ commands and messages have a param field to indicate the component ID of the _Gimbal Device_ that they intend to control.
 
-A system that wants to control a *particular* gimbal device will send messages to the component that has the manager(s), specifying the particular device to be controlled.
+A system that wants to control a _particular_ gimbal device will send messages to the component that has the manager(s), specifying the particular device to be controlled.
 
 If all gimbal devices should be controlled (on the component that has the gimbal managers), this param/field can be set to 0 (signalling "all").
 
-#### Addressing of non-MAVLink gimbal devices  {#non_mavlink_gimbal_device_addressing}
+#### Addressing of non-MAVLink gimbal devices {#non_mavlink_gimbal_device_addressing}
 
 Non-MAVLink gimbal devices are gimbals that don't expose the MAVLink API, but instead are connected to the gimbal manager using some other protocol.
 For instance, this could be a PWM gimbal connected to an autopilot.
@@ -144,11 +143,11 @@ The solution chosen for this case is to use the numbers 1 to 6 as magic numbers 
 A ground station should initially discover all gimbal managers by sending a broadcast [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) for [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
 Every gimbal manager should respond with `GIMBAL_MANAGER_INFORMATION`.
 
-The `GIMBAL_MANAGER_INFORMATION` contains important information such as gimbal capabilities ([GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS)), maximum angles and angle rates, as well as the `gimbal_component` which is the component ID of the *Gimbal Device* controlled by this *Gimbal Manager*.
+The `GIMBAL_MANAGER_INFORMATION` contains important information such as gimbal capabilities ([GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS)), maximum angles and angle rates, as well as the `gimbal_component` which is the component ID of the _Gimbal Device_ controlled by this _Gimbal Manager_.
 
 #### Gimbal Manager Status
 
-A *Gimbal Manager* should send out [GIMBAL_MANAGER_STATUS](#GIMBAL_MANAGER_STATUS) at a low regular rate (e.g. 5 Hz) to inform the ground station about its status.
+A _Gimbal Manager_ should send out [GIMBAL_MANAGER_STATUS](#GIMBAL_MANAGER_STATUS) at a low regular rate (e.g. 5 Hz) to inform the ground station about its status.
 
 ### Starting / Configuring Gimbal Control
 
@@ -166,10 +165,10 @@ To be co-operative entails the following rules:
 - Don't forget to release control when an action/task is finished and set the sysid/compid to 0.
 
 > **Note** It is possible to assign control to another component too, not just to itself.
-  For example, a smart shot running on a companion computer can set itself to be in primary control but assign a ground station for secondary control to e.g. nudge during the smart shot.
+> For example, a smart shot running on a companion computer can set itself to be in primary control but assign a ground station for secondary control to e.g. nudge during the smart shot.
 
 > **Note** The implementation of how primary and secondary control are combined or mixed is not defined by the protocol but up to the implementation.
-  This allows flexibility for different use cases.
+> This allows flexibility for different use cases.
 
 #### Manual Gimbal Control using MAVLink
 
@@ -187,26 +186,26 @@ A ground station, companion computer, or other MAVLink component can set the gim
 
 #### Discovery of Gimbal Device
 
-The MAVlink node where the *Gimbal Manager* is implemented needs to discover *Gimbal Devices* by sending a broadcast [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE_2) for [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).
+The MAVlink node where the _Gimbal Manager_ is implemented needs to discover _Gimbal Devices_ by sending a broadcast [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE_2) for [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).
 Every gimbal device should respond with `GIMBAL_DEVICE_INFORMATION`.
 
-The MAVLink node should then create as many *Gimbal Manager* instances as *Gimbal Devices* found.
+The MAVLink node should then create as many _Gimbal Manager_ instances as _Gimbal Devices_ found.
 
 #### Control of a Gimbal Device
 
-To control the angle and/or angular rate of the *Gimbal Device*, use the message [GIMBAL_DEVICE_SET_ATTITUDE](#GIMBAL_DEVICE_SET_ATTITUDE).
+To control the angle and/or angular rate of the _Gimbal Device_, use the message [GIMBAL_DEVICE_SET_ATTITUDE](#GIMBAL_DEVICE_SET_ATTITUDE).
 If the gimbal manager has multiple gimbal control inputs available it should deconflict them as explained below.
 
 #### Autopilot State for Gimbal Device
 
 The autopilot should also send the message [AUTOPILOT_STATE_FOR_GIMBAL_DEVICE](#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE) to the gimbal device.
-This data is required by the *Gimbal Device* attitude estimator (horizon compensation), as well as to anticipate the vehicle's movements (e.g. the feed forward angular velocity in z-axis, so the current yaw intention).
+This data is required by the _Gimbal Device_ attitude estimator (horizon compensation), as well as to anticipate the vehicle's movements (e.g. the feed forward angular velocity in z-axis, so the current yaw intention).
 
 ### Gimbal Device Broadcast/Status Messages
 
 The gimbal device should send out its attitude and status in [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS) at a regular rate, e.g. 10 Hz.
 
-This message is a meant as broadcast, so it's set to the GCS, *Gimbal Manager*, and all parties on the network (not just *Gimbal Manager*, like all other messages).
+This message is a meant as broadcast, so it's set to the GCS, _Gimbal Manager_, and all parties on the network (not just _Gimbal Manager_, like all other messages).
 
 ### Custom Gimbal Device Settings
 
@@ -221,23 +220,23 @@ This needs to be either done manually by configuration, or alternatively, the co
 
 #### When is Gimbal Device also a Gimbal Manager?
 
-The default case should be to use the *Gimbal Manager* in the autopilot.
+The default case should be to use the _Gimbal Manager_ in the autopilot.
 The only exception to this are integrated solutions containing a camera and gimbal for functionality like visual tracking.
 
 #### How to test Gimbal Device?
 
-A *Gimbal Device* can be tested by connecting it to an autopilot with a *Gimbal Manager*.
+A _Gimbal Device_ can be tested by connecting it to an autopilot with a _Gimbal Manager_.
 To avoid having to do a full setup including autopilot, a [direct test using MAVSDK](https://github.com/mavlink/MAVSDK/tree/develop/examples/gimbal_device_tester) is available.
 
 #### How to control a gimbal with the old MAVLink protocol?
 
 Gimbals that use the (old) [Gimbal Protocol v1](../services/gimbal.md) should still be supported by autopilot software.
-Basically, the *Gimbal Manager* needs to translate the commands to the old protocol.
+Basically, the _Gimbal Manager_ needs to translate the commands to the old protocol.
 
 #### How to control a gimbal without MAVLink support?
 
 Gimbals controlled using a protocol like PPM, PWM, SBUS or something proprietary can still be supported.
-The autopilot will have to act as the *Gimbal Manager* and provide the driver and translation to the respective protocol.
+The autopilot will have to act as the _Gimbal Manager_ and provide the driver and translation to the respective protocol.
 
 #### What about RC (non-MAVLink) control?
 
@@ -256,60 +255,56 @@ This signals that the gimbal manager also is also acting as the gimbal device.
 
 Also see [how to address non-MAVLink gimbal devices](#non_mavlink_gimbal_device_addressing).
 
-
 ## Message/Command/Enum Summary
 
 ### Gimbal Manager Messages
 
 This is the set of messages/enums for communicating with the gimbal manager (by ground station, autopilot, etc.).
 
-Message | Description
--- | --
-<a id="GIMBAL_MANAGER_INFORMATION"></a>[GIMBAL_MANAGER_INFORMATION](../messages/common.md#GIMBAL_MANAGER_INFORMATION) | Information about a high level gimbal manager. This message should be requested by a ground station using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
-<a id="GIMBAL_MANAGER_STATUS"></a>[GIMBAL_MANAGER_STATUS](../messages/common.md#GIMBAL_MANAGER_STATUS) | Current status about a high level gimbal manager. This message should be broadcast at a low regular rate (e.g. 5Hz).
-<a id="GIMBAL_MANAGER_SET_ATTITUDE"></a>[GIMBAL_MANAGER_SET_ATTITUDE](../messages/common.md#GIMBAL_MANAGER_SET_ATTITUDE) | High level message to control a gimbal's attitude. This message is to be sent to the gimbal manager (e.g. from a ground station).
-<a id="GIMBAL_MANAGER_SET_MANUAL_CONTROL"></a>[GIMBAL_MANAGER_SET_MANUAL_CONTROL](../messages/common.md#GIMBAL_MANAGER_SET_MANUAL_CONTROL) | High level message to control a gimbal manually, so without units. The actual angles or angular rates will be produced by the gimbal manager based on settings. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.
-<a id="GIMBAL_MANAGER_SET_PITCHYAW"></a>[GIMBAL_MANAGER_SET_PITCHYAW](../messages/common.md#GIMBAL_MANAGER_SET_PITCHYAW) | High level message to control a gimbal's pitch and yaw angles. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.
+| Message                                                                                                                                    | Description                                                                                                                                                                                                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="GIMBAL_MANAGER_INFORMATION"></a>[GIMBAL_MANAGER_INFORMATION](../messages/common.md#GIMBAL_MANAGER_INFORMATION)                      | Information about a high level gimbal manager. This message should be requested by a ground station using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).                                                                                                                                           |
+| <a id="GIMBAL_MANAGER_STATUS"></a>[GIMBAL_MANAGER_STATUS](../messages/common.md#GIMBAL_MANAGER_STATUS)                                     | Current status about a high level gimbal manager. This message should be broadcast at a low regular rate (e.g. 5Hz).                                                                                                                                                                                     |
+| <a id="GIMBAL_MANAGER_SET_ATTITUDE"></a>[GIMBAL_MANAGER_SET_ATTITUDE](../messages/common.md#GIMBAL_MANAGER_SET_ATTITUDE)                   | High level message to control a gimbal's attitude. This message is to be sent to the gimbal manager (e.g. from a ground station).                                                                                                                                                                        |
+| <a id="GIMBAL_MANAGER_SET_MANUAL_CONTROL"></a>[GIMBAL_MANAGER_SET_MANUAL_CONTROL](../messages/common.md#GIMBAL_MANAGER_SET_MANUAL_CONTROL) | High level message to control a gimbal manually, so without units. The actual angles or angular rates will be produced by the gimbal manager based on settings. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case. |
+| <a id="GIMBAL_MANAGER_SET_PITCHYAW"></a>[GIMBAL_MANAGER_SET_PITCHYAW](../messages/common.md#GIMBAL_MANAGER_SET_PITCHYAW)                   | High level message to control a gimbal's pitch and yaw angles. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.                                                                                                  |
 
+| Command                                                                                                                                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="MAV_CMD_REQUEST_MESSAGE"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE)                                                       | Request the target system(s) emit a single instance of a specified message. This is used to request [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).                                                                                                                                                                                                                                                                                                                                     |
+| <a id="MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE"></a>[MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE)                   | Gimbal configuration to set which sysid/compid is in primary and secondary control.                                                                                                                                                                                                                                                                                                                                                                                                                |
+| <a id="MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW"></a>[MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW)                      | High level setpoint to be sent to a gimbal manager to set a gimbal attitude. Note: a gimbal is never to react to this command but only the gimbal manager.                                                                                                                                                                                                                                                                                                                                         |
+| <a id="MAV_CMD_DO_SET_ROI_LOCATION"></a>[MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION)                                           | Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message.                                                                                                                                                                                     |
+| <a id="MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET"></a>[MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET](../messages/common.md#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET)                            | Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.                                                                                                                            |
+| <a id="MAV_CMD_DO_SET_ROI_SYSID"></a>[MAV_CMD_DO_SET_ROI_SYSID](../messages/common.md#MAV_CMD_DO_SET_ROI_SYSID)                                                    | Mount tracks system with specified system ID. Determination of target vehicle position may be done with GLOBAL_POSITION_INT or any other means. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.                                                                                                                                                                                                                          |
+| <a id="MAV_CMD_DO_SET_ROI_NONE"></a>[MAV_CMD_DO_SET_ROI_NONE](../messages/common.md#MAV_CMD_DO_SET_ROI_NONE)                                                       | Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message. After this command the gimbal manager should go back to manual input if available, and otherwise assume a neutral position. |
+| <a id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT"></a>[MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT)             | If the gimbal manager supports visual tracking (`GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT` is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.                                                                                                                                                                                                     |
+| <a id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE"></a>[MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE) | If the gimbal supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.                                                                                                                                                                                                           |
 
-Command | Description
--- | --
-<a id="MAV_CMD_REQUEST_MESSAGE"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Request the target system(s) emit a single instance of a specified message. This is used to request [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
-<a id="MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE"></a>[MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE) | Gimbal configuration to set which sysid/compid is in primary and secondary control.
-<a id="MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW"></a>[MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) | High level setpoint to be sent to a gimbal manager to set a gimbal attitude. Note: a gimbal is never to react to this command but only the gimbal manager.
-<a id="MAV_CMD_DO_SET_ROI_LOCATION"></a>[MAV_CMD_DO_SET_ROI_LOCATION](../messages/common.md#MAV_CMD_DO_SET_ROI_LOCATION) | Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message.
-<a id="MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET"></a>[MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET](../messages/common.md#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET) | Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.
-<a id="MAV_CMD_DO_SET_ROI_SYSID"></a>[MAV_CMD_DO_SET_ROI_SYSID](../messages/common.md#MAV_CMD_DO_SET_ROI_SYSID) | Mount tracks system with specified system ID. Determination of target vehicle position may be done with GLOBAL_POSITION_INT or any other means. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.
-<a id="MAV_CMD_DO_SET_ROI_NONE"></a>[MAV_CMD_DO_SET_ROI_NONE](../messages/common.md#MAV_CMD_DO_SET_ROI_NONE) | Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message. After this command the gimbal manager should go back to manual input if available, and otherwise assume a neutral position.
-<a id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT"></a>[MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_POINT) | If the gimbal manager supports visual tracking (`GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_POINT` is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.
-<a id="MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE"></a>[MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE](../messages/common.md#MAV_CMD_DO_GIMBAL_MANAGER_TRACK_RECTANGLE) | If the gimbal supports visual tracking (GIMBAL_MANAGER_CAP_FLAGS_HAS_TRACKING_RECTANGLE is set), this command allows to initiate the tracking. Such a tracking gimbal manager would usually be an integrated camera/gimbal, or alternatively a companion computer connected to a camera.
-
-Enum | Description
--- | --
-<a id="GIMBAL_MANAGER_FLAGS"></a>[GIMBAL_MANAGER_FLAGS](../messages/common.md#GIMBAL_MANAGER_FLAGS) | Flags for high level gimbal manager operation.<br>The first 16 bytes are identical to the [GIMBAL_DEVICE_FLAGS](#GIMBAL_DEVICE_FLAGS). Used in [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW), [GIMBAL_MANAGER_STATUS ](#GIMBAL_MANAGER_STATUS ), [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE).
-<a id="GIMBAL_MANAGER_CAP_FLAGS"></a>[GIMBAL_MANAGER_CAP_FLAGS](../messages/common.md#GIMBAL_MANAGER_CAP_FLAGS) | Gimbal manager high level capability flags (bitmap).<br>The first 16 bits are identical to the GIMBAL_DEVICE_CAP_FLAGS which are identical with GIMBAL_DEVICE_FLAGS. However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags. Used in [GIMBAL_MANAGER_INFORMATION ](#GIMBAL_MANAGER_INFORMATION)
-
+| Enum                                                                                                            | Description                                                                                                                                                                                                                                                                                                                                                                   |
+| --------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="GIMBAL_MANAGER_FLAGS"></a>[GIMBAL_MANAGER_FLAGS](../messages/common.md#GIMBAL_MANAGER_FLAGS)             | Flags for high level gimbal manager operation.<br>The first 16 bytes are identical to the [GIMBAL_DEVICE_FLAGS](#GIMBAL_DEVICE_FLAGS). Used in [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW), [GIMBAL_MANAGER_STATUS ](#GIMBAL_MANAGER_STATUS), [GIMBAL_MANAGER_SET_ATTITUDE](#GIMBAL_MANAGER_SET_ATTITUDE).                                      |
+| <a id="GIMBAL_MANAGER_CAP_FLAGS"></a>[GIMBAL_MANAGER_CAP_FLAGS](../messages/common.md#GIMBAL_MANAGER_CAP_FLAGS) | Gimbal manager high level capability flags (bitmap).<br>The first 16 bits are identical to the GIMBAL_DEVICE_CAP_FLAGS which are identical with GIMBAL_DEVICE_FLAGS. However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags. Used in [GIMBAL_MANAGER_INFORMATION ](#GIMBAL_MANAGER_INFORMATION) |
 
 ### Gimbal Device Messages
 
 This is the set of messages/enums for communication between gimbal manager and gimbal device.
 
-Message | Description
--- | --
-<a id="GIMBAL_DEVICE_INFORMATION"></a>[GIMBAL_DEVICE_INFORMATION](../messages/common.md#GIMBAL_DEVICE_INFORMATION) | Information about a low level gimbal. This message should be requested by the gimbal manager or a ground station using `MAV_CMD_REQUEST_MESSAGE`.
-<a id="GIMBAL_DEVICE_SET_ATTITUDE"></a>[GIMBAL_DEVICE_SET_ATTITUDE](../messages/common.md#GIMBAL_DEVICE_SET_ATTITUDE) | Low level message to control a gimbal device's attitude. This message is to be sent from the gimbal manager to the gimbal device component. Angles and rates can be set to NaN according to use case.
-<a id="GIMBAL_DEVICE_ATTITUDE_STATUS"></a>[GIMBAL_DEVICE_ATTITUDE_STATUS](../messages/common.md#GIMBAL_DEVICE_ATTITUDE_STATUS) | Message reporting the status of a gimbal device. This message should be broadcasted by a gimbal device component.
+| Message                                                                                                                        | Description                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="GIMBAL_DEVICE_INFORMATION"></a>[GIMBAL_DEVICE_INFORMATION](../messages/common.md#GIMBAL_DEVICE_INFORMATION)             | Information about a low level gimbal. This message should be requested by the gimbal manager or a ground station using `MAV_CMD_REQUEST_MESSAGE`.                                                     |
+| <a id="GIMBAL_DEVICE_SET_ATTITUDE"></a>[GIMBAL_DEVICE_SET_ATTITUDE](../messages/common.md#GIMBAL_DEVICE_SET_ATTITUDE)          | Low level message to control a gimbal device's attitude. This message is to be sent from the gimbal manager to the gimbal device component. Angles and rates can be set to NaN according to use case. |
+| <a id="GIMBAL_DEVICE_ATTITUDE_STATUS"></a>[GIMBAL_DEVICE_ATTITUDE_STATUS](../messages/common.md#GIMBAL_DEVICE_ATTITUDE_STATUS) | Message reporting the status of a gimbal device. This message should be broadcasted by a gimbal device component.                                                                                     |
 
-Command | Description
--- | --
-<a id="MAV_CMD_REQUEST_MESSAGE_2"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Request the target system(s) emit a single instance of a specified message. This is used to request [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).
+| Command                                                                                                        | Description                                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a id="MAV_CMD_REQUEST_MESSAGE_2"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Request the target system(s) emit a single instance of a specified message. This is used to request [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION). |
 
-Enum | Description
--- | --
-<a id="GIMBAL_DEVICE_CAP_FLAGS"></a>[GIMBAL_DEVICE_CAP_FLAGS](../messages/common.md#GIMBAL_DEVICE_CAP_FLAGS) | Gimbal device (low level) capability flags (bitmap).<br>Used in [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).
-<a id="GIMBAL_DEVICE_FLAGS"></a>[GIMBAL_DEVICE_FLAGS](../messages/common.md#GIMBAL_DEVICE_FLAGS) | Flags for gimbal device (lower level) operation.<br>Used in [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS) and [GIMBAL_DEVICE_SET_ATTITUDE](#GIMBAL_DEVICE_SET_ATTITUDE).
-<a id="GIMBAL_DEVICE_ERROR_FLAGS"></a>[GIMBAL_DEVICE_ERROR_FLAGS](../messages/common.md#GIMBAL_DEVICE_ERROR_FLAGS) | Gimbal device (low level) error flags (bitmap, 0 means no error).<br>Used in [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS).
-
+| Enum                                                                                                               | Description                                                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <a id="GIMBAL_DEVICE_CAP_FLAGS"></a>[GIMBAL_DEVICE_CAP_FLAGS](../messages/common.md#GIMBAL_DEVICE_CAP_FLAGS)       | Gimbal device (low level) capability flags (bitmap).<br>Used in [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION).                                                                   |
+| <a id="GIMBAL_DEVICE_FLAGS"></a>[GIMBAL_DEVICE_FLAGS](../messages/common.md#GIMBAL_DEVICE_FLAGS)                   | Flags for gimbal device (lower level) operation.<br>Used in [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS) and [GIMBAL_DEVICE_SET_ATTITUDE](#GIMBAL_DEVICE_SET_ATTITUDE). |
+| <a id="GIMBAL_DEVICE_ERROR_FLAGS"></a>[GIMBAL_DEVICE_ERROR_FLAGS](../messages/common.md#GIMBAL_DEVICE_ERROR_FLAGS) | Gimbal device (low level) error flags (bitmap, 0 means no error).<br>Used in [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS).                                              |
 
 ## Sequences
 
@@ -368,6 +363,7 @@ sequenceDiagram
     Ground Station->>Gimbal Manager: MAV_CMD_DO_SET_ROI_NONE
     Gimbal Manager->>Ground Station: COMMAND_ACK
 -->
+
 [![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgR3JvdW5kIFN0YXRpb25cbiAgICBwYXJ0aWNpcGFudCBHaW1iYWwgTWFuYWdlclxuICAgIHBhcnRpY2lwYW50IEdpbWJhbCBEZXZpY2VcbiAgICBHcm91bmQgU3RhdGlvbi0-PkdpbWJhbCBNYW5hZ2VyOiBNQVZfQ01EX0RPX1NFVF9ST0lfTE9DQVRJT05cbiAgICBHaW1iYWwgTWFuYWdlci0-Pkdyb3VuZCBTdGF0aW9uOiBDT01NQU5EX0FDS1xuICAgIEdpbWJhbCBNYW5hZ2VyLT4-R2ltYmFsIERldmljZTogR0lNQkFMX0RFVklDRV9TRVRfQVRUSVRVREUgKHN0cmVhbSlcbiAgICBHaW1iYWwgRGV2aWNlLT4-R2ltYmFsIE1hbmFnZXI6IEdJTUJBTF9ERVZJQ0VfQVRUSVRVREVfU1RBVFVTIChzdHJlYW0pXG4gICAgR2ltYmFsIERldmljZS0-Pkdyb3VuZCBTdGF0aW9uOiBHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVUyAoc3RyZWFtKVxuICAgIEdyb3VuZCBTdGF0aW9uLT4-R2ltYmFsIE1hbmFnZXI6IE1BVl9DTURfRE9fU0VUX1JPSV9OT05FXG4gICAgR2ltYmFsIE1hbmFnZXItPj5Hcm91bmQgU3RhdGlvbjogQ09NTUFORF9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4gICAgcGFydGljaXBhbnQgR3JvdW5kIFN0YXRpb25cbiAgICBwYXJ0aWNpcGFudCBHaW1iYWwgTWFuYWdlclxuICAgIHBhcnRpY2lwYW50IEdpbWJhbCBEZXZpY2VcbiAgICBHcm91bmQgU3RhdGlvbi0-PkdpbWJhbCBNYW5hZ2VyOiBNQVZfQ01EX0RPX1NFVF9ST0lfTE9DQVRJT05cbiAgICBHaW1iYWwgTWFuYWdlci0-Pkdyb3VuZCBTdGF0aW9uOiBDT01NQU5EX0FDS1xuICAgIEdpbWJhbCBNYW5hZ2VyLT4-R2ltYmFsIERldmljZTogR0lNQkFMX0RFVklDRV9TRVRfQVRUSVRVREUgKHN0cmVhbSlcbiAgICBHaW1iYWwgRGV2aWNlLT4-R2ltYmFsIE1hbmFnZXI6IEdJTUJBTF9ERVZJQ0VfQVRUSVRVREVfU1RBVFVTIChzdHJlYW0pXG4gICAgR2ltYmFsIERldmljZS0-Pkdyb3VuZCBTdGF0aW9uOiBHSU1CQUxfREVWSUNFX0FUVElUVURFX1NUQVRVUyAoc3RyZWFtKVxuICAgIEdyb3VuZCBTdGF0aW9uLT4-R2ltYmFsIE1hbmFnZXI6IE1BVl9DTURfRE9fU0VUX1JPSV9OT05FXG4gICAgR2ltYmFsIE1hbmFnZXItPj5Hcm91bmQgU3RhdGlvbjogQ09NTUFORF9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
 ROI can be started using a command and should also be stopped again with a command. The ROI command is translated to a gimbal attitude in the the gimbal manager.
@@ -394,8 +390,8 @@ In this case the gimbal manager is implemented by the autopilot which "sends" th
 
 Below is a short summary of all messages that a gimbal device should implement.
 
-> **Note** A *Gimbal Device* can be tested by connecting it to an autopilot with a *Gimbal Manager*.
-  To avoid having to do a full setup including autopilot, a [direct test using MAVSDK](https://github.com/mavlink/MAVSDK/tree/develop/examples/gimbal_device_tester) is available.
+> **Note** A _Gimbal Device_ can be tested by connecting it to an autopilot with a _Gimbal Manager_.
+> To avoid having to do a full setup including autopilot, a [direct test using MAVSDK](https://github.com/mavlink/MAVSDK/tree/develop/examples/gimbal_device_tester) is available.
 
 ### Messages to Send
 
