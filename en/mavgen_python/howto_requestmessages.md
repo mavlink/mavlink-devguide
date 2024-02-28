@@ -1,6 +1,6 @@
 #### How to Request & Stream Messages
 
-A remote system will typically stream a *default* set of messages to a connected GCS, camera or other system.
+A remote system will typically stream a _default_ set of messages to a connected GCS, camera or other system.
 This default set may be hard coded, and is necessarily limited to reduce traffic on the channel.
 
 A system can request that additional messages are sent as a stream, or change the rate at which existing streamed messages are sent, using the [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) command.
@@ -41,7 +41,7 @@ message = connection.mav.command_long_encode(
         0        # param6 (unused)
         )
 
-# Send the COMMAND_LONG     
+# Send the COMMAND_LONG
 connection.mav.send(message)
 
 # Wait for a response (blocking) to the MAV_CMD_SET_MESSAGE_INTERVAL command and print result
@@ -51,5 +51,3 @@ if response and response.command == mavutil.mavlink.MAV_CMD_SET_MESSAGE_INTERVAL
 else:
     print("Command failed")
 ```
-
-
