@@ -379,6 +379,51 @@ Note:
 - [timeouts](#timeout) are not considered errors.
 - Out-of-sequence messages in mission upload/download are recoverable, and are not treated as errors.
 
+## Executing Missions
+
+Following mission upload, or vehicle restart, or mission reset, all jump counter loops are set to their initial values.
+Unless a mission has just been uploaded that explicitly sets the current mission item, the current mission item is set to 1.
+
+The mission is executed when the vehicle is armed and in the flight stack's mission mode.
+While executing, the vehicle will progress sequentially through the mission items, looping and jumping in response to jump commands.
+
+The mission can be paused by changing to another flight mode, such as Hold/loiter, and restarted by changing back to mission mode (when armed).
+On restart the vehicle will _generally_ continue towards the same waypoint item as when it was paused.
+In some cases flight stacks may start from the preceding waypoint, for example, a paused camera survey may restart on the previous waypoint to ensure the whole paused leg is captured.
+Note that there is no concept of "stopping" a mission independent of pausing it.
+
+On completion of all mission items the mission will "complete".
+At this point some flight stacks will loiter within the mission mode, while others will transition to some other mode (such as "Hold") and not allow you to return to mission mode.
+In either case, the mission cannot be restarted unless it is [reset](#resetting-missions) (which usually happens after the vehicle lands and disarms).
+
+While the mission is executing the current mission item can be changed via MAVLink ([MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT)).
+Note however that this does not reset the jump counters, and if the mission is complete, will not restart the mission.
+
+### Starting Missions
+
+A flight stack will usually run mission checks before allowing a vehicle to enter the mission executing mode (typically checks are run when first executing a mission, but some flight stacks might also check before continuing a paused mission).
+
+Provided the checks pass, you can start a mission by either switching to mission mode and arming, or arming and switching to mission mode.
+With mavlink we can change the mode using [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) to set the mode and ARM using[MAV_CMD_COMPONENT_ARM_DISARM](../messages/common.md#MAV_CMD_COMPONENT_ARM_DISARM).
+
+If supported the [MAV_CMD_MISSION_START](../messages/common.md#MAV_CMD_MISSION_START) command will both arm the vehicle (if necessary) and switch to the mission mode.
+This command also allows you to specify a particular start and end item in the mission.
+
+### Pausing/Stopping Missions
+
+Pause and stop missions by changing mode.
+In MAVLink this can be done using [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) (generally a vehicle will also support changing modes via an RC controller/joystick too).
+
+### Resetting Missions
+
+Once a mission has started it will iterate through the mission items, jumping and looping as indicated by jump mission items, until it completes.
+While the mission is running you can change the current mission item, but this does not reset the jump counters used for loops, and once the mission is complete, changing the current mission item will not restart it.
+
+The mission will reset after you land and the vehicle disarms.
+It is also reset following a vehicle reboot.
+
+[MAV_CMD_DO_SET_MISSION_CURRENT.param2](../messages/common.md#MAV_CMD_DO_SET_MISSION_CURRENT) can also be used to reset the mission, if supported on the flight stack.
+
 ## Mission File Formats
 
 The _defacto_ standard file format for exchanging missions/plans is discussed in: [File Formats > Mission Plain-Text File Format](../file_formats/README.md#mission_plain_text_file).
