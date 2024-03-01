@@ -997,6 +997,58 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="FENCE_TYPE">FENCE_TYPE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>
+  </p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="FENCE_TYPE_ALL">
+     <td>0</td>
+     <td>
+      <a href="#FENCE_TYPE_ALL">FENCE_TYPE_ALL</a>
+     </td>
+     <td>All fence types</td>
+    </tr>
+    <tr id="FENCE_TYPE_ALT_MAX">
+     <td>1</td>
+     <td>
+      <a href="#FENCE_TYPE_ALT_MAX">FENCE_TYPE_ALT_MAX</a>
+     </td>
+     <td>Maximum altitude fence</td>
+    </tr>
+    <tr id="FENCE_TYPE_CIRCLE">
+     <td>2</td>
+     <td>
+      <a href="#FENCE_TYPE_CIRCLE">FENCE_TYPE_CIRCLE</a>
+     </td>
+     <td>Circle fence</td>
+    </tr>
+    <tr id="FENCE_TYPE_POLYGON">
+     <td>4</td>
+     <td>
+      <a href="#FENCE_TYPE_POLYGON">FENCE_TYPE_POLYGON</a>
+     </td>
+     <td>Polygon fence</td>
+    </tr>
+    <tr id="FENCE_TYPE_ALT_MIN">
+     <td>8</td>
+     <td>
+      <a href="#FENCE_TYPE_ALT_MIN">FENCE_TYPE_ALT_MIN</a>
+     </td>
+     <td>Minimum altitude fence</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="MAV_MOUNT_MODE">MAV_MOUNT_MODE</h3>
   <p style="color:red">
    <strong>DEPRECATED:</strong> Replaced by <a href="#GIMBAL_MANAGER_FLAGS">GIMBAL_MANAGER_FLAGS</a> (2020-01).</p>
@@ -14100,9 +14152,10 @@
      </td>
     </tr>
     <tr>
-     <td>2</td>
-     <td>Empty</td>
+     <td>2: Types</td>
+     <td>Fence types to enable or disable as a bitmask. A value of 0 indicates that all fences should be enabled or disabled. This parameter is ignored if param 1 has the value 2</td>
      <td>
+      <a href="#FENCE_TYPE">FENCE_TYPE</a>
      </td>
     </tr>
     <tr>
