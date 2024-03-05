@@ -418,7 +418,7 @@ In MAVLink this can be done using [MAV_CMD_DO_SET_MODE](../messages/common.md#MA
 ### Resetting Missions
 
 Once a mission has started it will iterate through the mission items, jumping and looping as indicated by jump mission items, until it completes.
-While the mission is running you can change the current mission item, but this does not reset the jump counters used for loops, and once the mission is complete, changing the current mission item will not restart it.
+While the mission is running you can change the current mission item, but this does not by reset the jump counters used for loops, and once the mission is complete, changing the current mission item will not restart it (with an exception outlined below).
 
 The mission will reset after you land and the vehicle disarms.
 It is also reset following a vehicle reboot.
