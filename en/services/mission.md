@@ -401,7 +401,7 @@ At this point some flight stacks will loiter within the mission mode, while othe
 In either case, the mission cannot be restarted unless it is [reset](#resetting-missions).
 
 While the mission is executing the current mission item can be changed via MAVLink ([MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT)).
-Note however that this does not reset the jump counters, and if the mission is complete, will not restart the mission.
+Note however that unless the command [resets the mission](#resetting-missions), this does not reset the jump counters, and if the mission is complete, will not restart the mission.
 
 ### Starting Missions
 
