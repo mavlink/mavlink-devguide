@@ -385,7 +385,10 @@ Following full mission upload, or vehicle restart, or mission reset, all jump co
 The current mission item is normally reset to one on mission reset or vehicle restart, or on mission upload when the vehicle is landed.
 The current mission item may retain its current value if a mission is uploaded in-air or it may be set to the mission item that has `current` set in a mission item (this field is ignored in ArduPilot but respected by PX4).
 
-The mission is executed when the vehicle is armed and in the flight stack's mission mode.
+For a mission to be executed the vehicle must be armed and in the flight stack's mission mode.
+There may (or may not) be further requirements to start a mission.
+For example PX4 will start as soon as you arm in mission mode, while ArduCopter in its default configuration requires that the throttle is raised.
+Similarly, planes that are configured for throttle/hand launch may require a minimum acceleration before the mission is executed. 
 While executing, the vehicle will progress sequentially through the mission items, looping and jumping in response to jump commands.
 
 The mission can be paused by changing to another flight mode, such as Hold/loiter, and restarted by changing back to mission mode (when armed).
