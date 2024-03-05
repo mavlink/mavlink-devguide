@@ -381,8 +381,9 @@ Note:
 
 ## Executing Missions
 
-Following mission upload, or vehicle restart, or mission reset, all jump counter loops are set to their initial values.
-Unless a mission has just been uploaded that explicitly sets the current mission item, the current mission item is set to 1.
+Following full mission upload, or vehicle restart, or mission reset, all jump counter loops are set to their initial values.
+The current mission item is normally reset to one on mission reset or vehicle restart, or on mission upload when the vehicle is landed.
+The current mission item may retain its current value if a mission is uploaded in-air or it may be set to the mission item that has `current` set in a mission item (this field is ignored in ArduPilot but respected by PX4).
 
 The mission is executed when the vehicle is armed and in the flight stack's mission mode.
 While executing, the vehicle will progress sequentially through the mission items, looping and jumping in response to jump commands.
