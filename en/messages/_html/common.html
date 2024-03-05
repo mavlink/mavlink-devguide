@@ -6226,6 +6226,50 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="CAMERA_SOURCE">CAMERA_SOURCE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Camera sources for MAV_CMD_SET_CAMERA_SOURCE</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="CAMERA_SOURCE_DEFAULT">
+     <td>0</td>
+     <td>
+      <a href="#CAMERA_SOURCE_DEFAULT">CAMERA_SOURCE_DEFAULT</a>
+     </td>
+     <td>Default camera source.</td>
+    </tr>
+    <tr id="CAMERA_SOURCE_RGB">
+     <td>1</td>
+     <td>
+      <a href="#CAMERA_SOURCE_RGB">CAMERA_SOURCE_RGB</a>
+     </td>
+     <td>RGB camera source.</td>
+    </tr>
+    <tr id="CAMERA_SOURCE_IR">
+     <td>2</td>
+     <td>
+      <a href="#CAMERA_SOURCE_IR">CAMERA_SOURCE_IR</a>
+     </td>
+     <td>IR camera source.</td>
+    </tr>
+    <tr id="CAMERA_SOURCE_NDVI">
+     <td>3</td>
+     <td>
+      <a href="#CAMERA_SOURCE_NDVI">CAMERA_SOURCE_NDVI</a>
+     </td>
+     <td>NDVI camera source.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="PARAM_ACK">PARAM_ACK</h3>
   <p>
    <a href="#enums">
@@ -16397,6 +16441,44 @@
      <td>Usage flags</td>
      <td>
       <a href="#STORAGE_USAGE_FLAG">STORAGE_USAGE_FLAG</a>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_SET_CAMERA_SOURCE">MAV_CMD_SET_CAMERA_SOURCE (<a href="#MAV_CMD_SET_CAMERA_SOURCE">534</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Set camera source. Changes the camera's active sources on cameras with multiple image sensors.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: device id</td>
+     <td>Component Id of camera to address or 1-6 for non-MAVLink cameras, 0 for all cameras.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>2: primary source</td>
+     <td>Primary Source</td>
+     <td>
+      <a href="#CAMERA_SOURCE">CAMERA_SOURCE</a>
+     </td>
+    </tr>
+    <tr>
+     <td>3: secondary source</td>
+     <td>Secondary Source. If non-zero the second source will be displayed as picture-in-picture.</td>
+     <td>
+      <a href="#CAMERA_SOURCE">CAMERA_SOURCE</a>
      </td>
     </tr>
    </tbody>
