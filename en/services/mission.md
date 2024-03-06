@@ -1,19 +1,23 @@
 # Mission Protocol
 
-The mission sub-protocol allows a GCS or developer API to exchange _mission_ (flight plan), _geofence_ and _safe point_ information with a drone/component.
+The mission protocol allows a GCS or developer API to exchange _mission_ (flight plan), _geofence_ and _safe point_ information with a drone/component, and to control [mission execution](#executing-missions).
 
 The protocol covers:
 
-- Operations to upload, download and clear missions, set/get the current mission item number, and get notification when the current mission item has changed.
+- Operations to upload, download and clear missions and other [plan types](#mission_types)
+- Operations to start, pause, and continue a mission, to set/get the current mission item number, and to get notification about the current mission state.
 - Message type(s) and enumerations for exchanging mission items.
 - Mission Items ("MAVLink commands") that are common to most systems.
 
 The protocol supports re-request of messages that have not arrived, which allows missions to be reliably transferred over a lossy link.
 
-## Mission Types {#mission_types}
+## Plan Types {#mission_types}
 
-MAVLink 2 supports three types of "missions": flight plans, geofences and rally/safe points.
-The protocol uses the same sequence of operations for all types (albeit with different types of [Mission Items](#mavlink_commands)).
+MAVLink 2 supports three types of "plans" within the mission protocol: flight plans ("missions"), geofence definitions, and rally/safe points.
+Mission plans are autonomously executed flight plans that are primarily executed in a "mission mode", with the main exception being mission-defined landing patterns, which are may also be used for fixed wing landings in return mode (RTL).
+Geofence definitions apply to all modes when enabled, and rally/safe points are generally used to provide safe alternative destinations in return mode (RTL).
+
+The mission protocol uses the same sequence of operations to upload and download all these types (albeit with different types of [Mission Items](#mavlink_commands)).
 The mission types must be stored and handled separately/independently.
 
 Mission protocol messages include the type of associated mission in the `mission_type` field (a MAVLink 2 message extension).
@@ -24,6 +28,7 @@ The field takes one of the [MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_
 
 ## Mission Items (MAVLink Commands) {#mavlink_commands}
 
+Mission items define the waypoints and other operations in a mission, and the definitions of rally (safety) points and geofences.
 Mission items for all the [mission types](#mission_types) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
 > **Note** [MAV_CMD](../messages/common.md#mav_commands) is used to define commands that can be used in missions ("mission items") and commands that can be sent outside of a mission context (using the [Command Protocol](../services/command.md)).
@@ -70,9 +75,7 @@ The remaining message fields are used for addressing, defining the mission type,
 | current          | uint8_t  | false:0, true:1                       | When downloading, whether the item is the current mission item.                                                                                                                                       |
 | autocontinue     | uint8_t  |                                       | Autocontinue to next waypoint when the command completes.                                                                                                                                             |
 
-## Message/Enum Summary
-
-The following messages and enums are used by the service.
+## Message/Enum Summary (Plan Upload/Download)
 
 | Message                                                                                             | Description                                                                                                                                                                                                                                                            |
 | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -81,15 +84,7 @@ The following messages and enums are used by the service.
 | <a id="MISSION_REQUEST_INT"></a>[MISSION_REQUEST_INT](../messages/common.md#MISSION_REQUEST_INT)    | Request mission item data for a specific sequence number be sent by the recipient using a [MISSION_ITEM_INT](#MISSION_ITEM_INT) message. Used for mission [upload](#uploading_mission) and [download](#download_mission).                                              |
 | <a id="MISSION_ITEM_INT"></a>[MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT)             | Message encoding a [mission item/command](#mavlink_commands) (defined in a [MAV_CMD](#MAV_CMD)). Used for mission [upload](#uploading_mission) and [download](#download_mission).                                                                                      |
 | <a id="MISSION_ACK"></a>[MISSION_ACK](../messages/common.md#MISSION_ACK)                            | Acknowledgment message when a system completes a [mission operation](#operations) (e.g. sent by autopilot after it has uploaded all mission items). The message includes a [MAV_MISSION_RESULT](#MAV_MISSION_RESULT) indicating either success or the type of failure. |
-| <a id="MISSION_CURRENT"></a>[MISSION_CURRENT](../messages/common.md#MISSION_CURRENT)                | Message containing the current mission item sequence number, mission status, current mission ids, and other information. This is streamed and also emitted when the [current mission item is set/changed](#current_mission_item).                                      |
-| <a id="MISSION_SET_CURRENT"></a>[MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT)    | [Set the current mission item](#current_mission_item) by sequence number (continue to this item on the shortest path).                                                                                                                                                 |
-| <a id="STATUSTEXT"></a>[STATUSTEXT](../messages/common.md#STATUSTEXT)                               | Sent to notify systems when a request to [set the current mission item](#current_mission_item) fails.                                                                                                                                                                  |
 | <a id="MISSION_CLEAR_ALL"></a>[MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)          | Message sent to [clear/delete all mission items](#clear_mission) stored on a system.                                                                                                                                                                                   |
-| <a id="MISSION_ITEM_REACHED"></a>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).                                                                                                                                                           |
-
-| Command                                                                                                                           | Description                                                                                                            |
-| --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| <a id="MAV_CMD_DO_SET_MISSION_CURRENT"></a>[MAV_CMD_DO_SET_MISSION_CURRENT](../messages/common.md#MAV_CMD_DO_SET_MISSION_CURRENT) | Set current mission item and optionally reset mission counter. Supersedes [MISSION_SET_CURRENT](#MISSION_SET_CURRENT). |
 
 | Enum                                                                                          | Description                                                                                                                                               |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -98,12 +93,34 @@ The following messages and enums are used by the service.
 | <a id="MAV_FRAME"></a>[MAV_FRAME](../messages/common.md#MAV_FRAME)                            | Co-ordinate frame for position/velocity/acceleration data in the message.                                                                                 |
 | <a id="MAV_CMD"></a>[MAV_CMD](../messages/common.md#mav_commands)                             | [Mission Items](#mavlink_commands) (and MAVLink commands) sent in [MISSION_ITEM_INT](#MISSION_ITEM_INT).                                                  |
 
-## Deprecated Types: MISSION_ITEM {#command_message_type}
+## Message/Enum Summary (Mission Execution)
 
-The legacy version of the protocol also supported [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) for requesting that a mission be sent as a sequence of [MISSION_ITEM](../messages/common.md#MISSION_ITEM) messages.
+The following are generally used for controlling [mission execution](#executing-missions).
+
+| Message                                                                                             | Description                                                                                                                                                                                                                       |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="MISSION_CURRENT"></a>[MISSION_CURRENT](../messages/common.md#MISSION_CURRENT)                | Message containing the current mission item sequence number, mission status, current mission ids, and other information. This is streamed and also emitted when the [current mission item is set/changed](#current_mission_item). |
+| <a id="STATUSTEXT"></a>[STATUSTEXT](../messages/common.md#STATUSTEXT)                               | Sent to notify systems when a request to [set the current mission item](#current_mission_item) fails.                                                                                                                             |
+| <a id="MISSION_ITEM_REACHED"></a>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).                                                                                                                      |
+
+| Command                                                                                                                           | Description                                                                                                            |
+| --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| <a id="MAV_CMD_DO_PAUSE_CONTINUE "></a>[MAV_CMD_DO_PAUSE_CONTINUE](../messages/common.md#MAV_CMD_DO_PAUSE_CONTINUE)               | Pause and restart a mission.                                                                                           |
+| <a id="MAV_CMD_DO_SET_MISSION_CURRENT"></a>[MAV_CMD_DO_SET_MISSION_CURRENT](../messages/common.md#MAV_CMD_DO_SET_MISSION_CURRENT) | Set current mission item and optionally reset mission counter. Supersedes [MISSION_SET_CURRENT](#MISSION_SET_CURRENT). |
+
+## Deprecated Types
+
+### MISSION_ITEM {#command_message_type}
+
+The legacy version of the protocol supported [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) for requesting that a mission be sent as a sequence of [MISSION_ITEM](../messages/common.md#MISSION_ITEM) messages.
 
 Both `MISSION_REQUEST` and `MISSION_ITEM` messages are now deprecated, and should no longer be sent.
-If `MISSION_REQUEST` is recieved the system should instead respond with [MISSION_ITEM_INT](#MISSION_ITEM_INT) items (as though it received [MISSION_REQUEST_INT](#MISSION_REQUEST_INT)).
+If `MISSION_REQUEST` is received the system should instead respond with [MISSION_ITEM_INT](#MISSION_ITEM_INT) items (as though it received [MISSION_REQUEST_INT](#MISSION_REQUEST_INT)).
+
+### MISSION_SET_CURRENT
+
+The [MISSION_SET_CURRENT](../messages/common.md#MISSION_SET_CURRENT) message is deprecated.
+The command [MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT) should be used instead.
 
 ## Frames & Positional Information
 
@@ -151,9 +168,9 @@ In this case the [MISSION_ITEM_INT.frame](#MISSION_ITEM_INT) should be set to [M
 As param5 and param6 are sent in _integer_ fields, generally you should design mission items/MAV_CMDs such that these only include integer data (and are sent as-is/unscaled).
 If these must be used for real numbers and scaling is required, then this must be noted in the mission item itself.
 
-## Operations {#operations}
+## Plan Upload/Download {#operations}
 
-This section defines all the protocol operations.
+This section defines protocol operations for exchanging mission plans between a drone and ground station.
 
 ### Detecting Mission/Plan Changes
 
@@ -273,43 +290,6 @@ Note:
 - The sequence above shows the [mission items](#mavlink_commands) packaged in [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages.
   Protocol implementations must also support [MISSION_ITEM](../messages/common.md#MISSION_ITEM) and [MISSION_REQUEST](../messages/common.md#MISSION_REQUEST) in the same way.
 
-### Set Current Mission Item {#current_mission_item}
-
-The diagram below shows the communication sequence to set the current mission item.
-
-[![Mermaid Diagram: Set mission item](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fU0VUX0NVUlJFTlRcbiAgICBEcm9uZS0tPj5HQ1M6IE1JU1NJT05fQ1VSUkVOVCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fU0VUX0NVUlJFTlRcbiAgICBEcm9uZS0tPj5HQ1M6IE1JU1NJT05fQ1VSUkVOVCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
-
-<!-- Original sequence
-sequenceDiagram;
-    participant GCS
-    participant Drone
-    GCS->>Drone: MISSION_SET_CURRENT
-    Drone-- >>GCS: MISSION_CURRENT
--->
-
-In more detail, the sequence of operations is:
-
-1. GCS/App sends [MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT) (or [MISSION_SET_CURRENT](#MISSION_SET_CURRENT)), specifying the new sequence number (`seq`).
-1. Drone receives message and attempts to update the current mission sequence number.
-   - On success, the Drone must _broadcast_ a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message containing the current sequence number (`seq`).
-   - On failure, the Drone must _broadcast_ a [STATUSTEXT](../messages/common.md#STATUSTEXT) with a [MAV_SEVERITY](../messages/common.md#MAV_SEVERITY) and a string stating the problem.
-     This may be displayed in the UI of receiving systems.
-
-Notes:
-
-- There is no specific [timeout](#timeout) on `MISSION_SET_CURRENT` message.
-- The acknowledgment of the message is via broadcast of mission/system status, which is not associated with the original message.
-  This differs from [error handling](#errors) in other operations.
-  This approach is used because the success/failure is relevant to all mission-handling clients.
-
-### Monitor Mission Progress {#monitor_progress}
-
-GCS/developer API can monitor progress by handling the appropriate messages sent by the drone:
-
-- The vehicle must broadcast a [MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) message whenever a new mission item is reached.
-  The message contains the `seq` number of the current mission item.
-- The vehicle must also broadcast a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message if the [current mission item](#current_mission_item) is changed.
-
 ### Clear Missions {#clear_mission}
 
 The diagram below shows the communication sequence to clear the mission from a drone (assuming all operations succeed).
@@ -381,17 +361,19 @@ Note:
 
 ## Executing Missions
 
-Following full mission upload, or vehicle restart, or mission reset, all jump counter loops are set to their initial values.
-The current mission item is normally reset to one on mission reset or vehicle restart, or on mission upload when the vehicle is landed.
-The current mission item may retain its current value if a mission is uploaded in-air or it may be set to the mission item that has `current` set in a mission item (this field is ignored in ArduPilot but respected by PX4).
+Following a [mission reset](#resetting-missions), for example after rebooting the vehicle, all jump counter loops are set to their initial values and the current mission item is set to 1.
 
 For a mission to be executed the vehicle must be armed and in the flight stack's mission mode.
 There may (or may not) be further requirements to start a mission.
-For example PX4 will start as soon as you arm in mission mode, while ArduCopter in its default configuration requires that the throttle is raised.
-Similarly, planes that are configured for throttle/hand launch may require a minimum acceleration before the mission is executed. 
+For example PX4 will start as soon as you arm in mission mode, while ArduCopter (in its default configuration) requires that the throttle is raised.
+Similarly, planes that are configured for throttle/hand launch may require a minimum acceleration before the mission execution starts.
 While executing, the vehicle will progress sequentially through the mission items, looping and jumping in response to jump commands.
 
-The mission can be paused by changing to another flight mode, such as Hold/loiter, and restarted by changing back to mission mode (when armed).
+A mission can be paused and restarted by calling [MAV_CMD_DO_PAUSE_CONTINUE](#MAV_CMD_DO_PAUSE_CONTINUE).
+Pausing a mission causes fixed wing vehicles (planes) to loiter in a circular flight pattern, while hovering vehicles will loiter/hold in place.
+Note that pausing may be implemented by forcing a mode change, such as to Hold/Loiter mode, or by pausing within the mission mode context.
+
+A mission may also be paused by changing to another flight mode, such as Hold/loiter, and restarted by changing back to mission mode (when armed).
 On restart the vehicle will _generally_ continue towards the same waypoint item as when it was paused.
 In some cases flight stacks may start from the preceding waypoint, for example, a paused camera survey may restart on the previous waypoint to ensure the whole paused leg is captured.
 Note that there is no concept of "stopping" a mission independent of pausing it.
@@ -407,26 +389,84 @@ Note however that unless the command [resets the mission](#resetting-missions), 
 
 A flight stack will usually run mission checks before allowing a vehicle to enter the mission executing mode (typically checks are run when first executing a mission, but some flight stacks might also check before continuing a paused mission).
 
-Provided the checks pass, you can start a mission by either switching to mission mode and arming, or arming and switching to mission mode.
-With mavlink we can change the mode using [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) to set the mode and ARM using[MAV_CMD_COMPONENT_ARM_DISARM](../messages/common.md#MAV_CMD_COMPONENT_ARM_DISARM).
+Provided the checks pass, you can start a mission by switching to mission mode and arming (or arming and switching to mission mode).
+Depending on the vehicle type you may also need to provide an additional trigger, such as increasing throttle, or a hand/catapult launch.
 
-If supported the [MAV_CMD_MISSION_START](../messages/common.md#MAV_CMD_MISSION_START) command will both arm the vehicle (if necessary) and switch to the mission mode.
+You can use the [MAV_CMD_MISSION_START](../messages/common.md#MAV_CMD_MISSION_START) command to both arm the vehicle (if necessary) and switch to the mission mode - but not to provide any additional trigger, if required.
 This command also allows you to specify a particular start and end item in the mission.
+
+The arm/mode change operation can also be done using [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) and [MAV_CMD_COMPONENT_ARM_DISARM](../messages/common.md#MAV_CMD_COMPONENT_ARM_DISARM).
 
 ### Pausing/Stopping Missions
 
-Pause and stop missions by changing mode.
-In MAVLink this can be done using [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) (generally a vehicle will also support changing modes via an RC controller/joystick too).
+To pause/restart a mission call [MAV_CMD_DO_PAUSE_CONTINUE](#MAV_CMD_DO_PAUSE_CONTINUE).
+Pausing a mission causes vehicles to loiter (forward-flying vehicles fly in a circle, vehicle that can hold position do so).
+
+You can also pause/restart a mission by switching between mission mode and any other mode.
+This can be done, for example, using [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) (generally a vehicle will also support changing modes via an RC controller/joystick too).
 
 ### Resetting Missions
 
 Once a mission has started it will iterate through the mission items, jumping and looping as indicated by jump mission items, until it completes.
-While the mission is running you can change the current mission item, but this does not by reset the jump counters used for loops, and once the mission is complete, changing the current mission item will not restart it (with an exception outlined below).
+Once complete the mission must be _reset_ before it can be restarted.
+Resetting removes the "complete" flag so the mission can execute.
+It should also set the current mission item to 0 and reset the loop counters used to track how many times each JUMP command in the mission has looped.
 
-The mission will reset after you land and the vehicle disarms.
-It is also reset following a vehicle reboot.
+A mission will reset when:
 
-[MAV_CMD_DO_SET_MISSION_CURRENT.param2](../messages/common.md#MAV_CMD_DO_SET_MISSION_CURRENT) can also be used to reset the mission, if supported on the flight stack.
+- The vehicle is rebooted (on all flight stacks).
+- A full mission is uploaded. A partial upload may not reset jump counters/mission execution.
+- On disarming for **some vehicles** and configurations.
+  This depends on whether the vehicle needs to continue a mission after landing/disarming.
+- When [MAV_CMD_DO_SET_MISSION_CURRENT](#current_mission_item) is used to set the mission current to `0`.
+  Note that PX4 clears the complete flag and sets the mission item to zero, but does not reset jump counters.
+  <!-- Should we fix "[MAV_CMD_DO_SET_MISSION_CURRENT.param2](../messages/common.md#MAV_CMD_DO_SET_MISSION_CURRENT) can also be used to reset the mission, if supported on the flight stack." -->
+
+### Set Current Mission Item {#current_mission_item}
+
+The [MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT) command can be used to change the current mission item, and hence the target waypoint for either a running or paused mission.
+Note that setting a non-zero positive mission item number will not reset mission jump counters, or restart a completed mission (even though the current mission item would change).
+If the mission item is set to `0` the mission will be [reset](#resetting-missions) (on PX4 jump counters are not reset).
+
+> **Note** The current mission item may also be set on mission upload by applying the `current` field on one mission item.
+> The field is not needed because you can aways set the current mission item after upload.
+> This field is ignored in ArduPilot but respected by PX4.
+
+The diagram below shows the communication sequence to set the current mission item.
+
+[![Mermaid Diagram: Set mission item](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fU0VUX0NVUlJFTlRcbiAgICBEcm9uZS0tPj5HQ1M6IE1JU1NJT05fQ1VSUkVOVCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fU0VUX0NVUlJFTlRcbiAgICBEcm9uZS0tPj5HQ1M6IE1JU1NJT05fQ1VSUkVOVCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+<!-- Original sequence
+sequenceDiagram;
+    participant GCS
+    participant Drone
+    GCS->>Drone: MISSION_SET_CURRENT
+    Drone-- >>GCS: MISSION_CURRENT
+-->
+
+In more detail, the sequence of operations is:
+
+1. GCS/App sends [MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT).
+1. Drone receives message and attempts to update the current mission sequence number.
+   - On success, the Drone must _broadcast_ a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message containing the current sequence number (`seq`).
+   - On failure, the Drone must _broadcast_ a [STATUSTEXT](../messages/common.md#STATUSTEXT) with a [MAV_SEVERITY](../messages/common.md#MAV_SEVERITY) and a string stating the problem.
+     This may be displayed in the UI of receiving systems.
+
+Notes:
+
+- There is no specific [timeout](#timeout) on `MISSION_SET_CURRENT` message.
+- The acknowledgment of the message is via broadcast of mission/system status, which is not associated with the original message.
+  This differs from [error handling](#errors) in other operations.
+  This approach is used because the success/failure is relevant to all mission-handling clients.
+
+### Monitor Mission Progress {#monitor_progress}
+
+GCS/developer API can monitor progress by handling the appropriate messages sent by the drone:
+
+- The vehicle must broadcast a [MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) message whenever a new mission item is reached.
+  The message contains the `seq` number of the current mission item.
+- The vehicle must also stream a [MISSION_CURRENT](../messages/common.md#MISSION_CURRENT) message and also emit it if the [current mission item](#current_mission_item) is changed.
+  This includes the current mission item, the state of the mission (paused, etc.), and unique ids for the current plan types (these can be used to detect when a plan has changed).
 
 ## Mission File Formats
 
