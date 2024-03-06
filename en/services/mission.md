@@ -361,37 +361,22 @@ Note:
 
 ## Executing Missions
 
-Following a [mission reset](#resetting-missions), for example after rebooting the vehicle, all jump counter loops are set to their initial values and the current mission item is set to 1.
-
-For a mission to be executed the vehicle must be armed and in the flight stack's mission mode.
-There may (or may not) be further requirements to start a mission.
-For example PX4 will start as soon as you arm in mission mode, while ArduCopter (in its default configuration) requires that the throttle is raised.
-Similarly, planes that are configured for throttle/hand launch may require a minimum acceleration before the mission execution starts.
-While executing, the vehicle will progress sequentially through the mission items, looping and jumping in response to jump commands.
-
-A mission can be paused and restarted by calling [MAV_CMD_DO_PAUSE_CONTINUE](#MAV_CMD_DO_PAUSE_CONTINUE).
-Pausing a mission causes fixed wing vehicles (planes) to loiter in a circular flight pattern, while hovering vehicles will loiter/hold in place.
-Note that pausing may be implemented by forcing a mode change, such as to Hold/Loiter mode, or by pausing within the mission mode context.
-
-A mission may also be paused by changing to another flight mode, such as Hold/loiter, and restarted by changing back to mission mode (when armed).
-On restart the vehicle will _generally_ continue towards the same waypoint item as when it was paused.
-In some cases flight stacks may start from the preceding waypoint, for example, a paused camera survey may restart on the previous waypoint to ensure the whole paused leg is captured.
-Note that there is no concept of "stopping" a mission independent of pausing it.
+Once the mission is started it will progress sequentially through the mission items, looping and jumping in response to jump commands.
+It can be paused and restarted, and the current mission item can be changed.
 
 On completion of all mission items the mission will "complete".
-At this point some flight stacks will loiter within the mission mode, while others will transition to some other mode (such as "Hold") and not allow you to return to mission mode.
+At this point some flight stacks will loiter within the mission mode, while others will transition to some other mode (such as "Hold" or "Return") and not allow you to return to mission mode.
 In either case, the mission cannot be restarted unless it is [reset](#resetting-missions).
-
-While the mission is executing the current mission item can be changed via MAVLink ([MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT)).
-Note however that unless the command [resets the mission](#resetting-missions), this does not reset the jump counters, and if the mission is complete, will not restart the mission.
 
 ### Starting Missions
 
-A flight stack will usually run mission checks before allowing a vehicle to enter the mission executing mode (typically checks are run when first executing a mission, but some flight stacks might also check before continuing a paused mission).
+For a mission to be executed the vehicle must be armed and in the flight stack's mission mode:
 
-Provided the checks pass, you can start a mission by switching to mission mode and arming (or arming and switching to mission mode).
-Depending on the vehicle type you may also need to provide an additional trigger, such as increasing throttle, or a hand/catapult launch.
-
+- A flight stack will usually run mission checks before allowing a vehicle to enter the mission executing mode (typically checks are run when first executing a mission, but some flight stacks might also check before continuing a paused mission).
+- There may (or may not) be further requirements to start a mission depending on flight stack, vehicle type, and configuration.
+  For example PX4 multicopter will start as soon as you arm in mission mode, while ArduCopter (in its default configuration) requires that the throttle is raised.
+  Similarly, planes that are configured for throttle/hand launch may require a minimum acceleration before the mission execution starts.
+  
 You can use the [MAV_CMD_MISSION_START](../messages/common.md#MAV_CMD_MISSION_START) command to both arm the vehicle (if necessary) and switch to the mission mode - but not to provide any additional trigger, if required.
 This command also allows you to specify a particular start and end item in the mission.
 
@@ -399,28 +384,16 @@ The arm/mode change operation can also be done using [MAV_CMD_DO_SET_MODE](../me
 
 ### Pausing/Stopping Missions
 
-To pause/restart a mission call [MAV_CMD_DO_PAUSE_CONTINUE](#MAV_CMD_DO_PAUSE_CONTINUE).
-Pausing a mission causes vehicles to loiter (forward-flying vehicles fly in a circle, vehicle that can hold position do so).
+To pause/restart a mission call [MAV_CMD_DO_PAUSE_CONTINUE](#MAV_CMD_DO_PAUSE_CONTINUE) (there is no concept of "stopping" a mission independent of pausing it).
 
-You can also pause/restart a mission by switching between mission mode and any other mode.
+Pausing a mission causes vehicles to loiter (forward-flying vehicles fly in a circle, vehicles that can hold position do so).
+Note that pausing may be implemented by forcing a mode change, such as to Hold/Loiter mode, or by pausing within the mission mode context.
+On restart the vehicle will _generally_ continue towards the same waypoint item as when it was paused.
+In some cases flight stacks may start from the preceding waypoint, for example, a paused camera survey may restart on the previous waypoint to ensure the whole paused leg is captured.
+
+A mission may also be paused by changing to another flight mode, such as Hold/loiter, and restarted by changing back to mission mode (when armed).
 This can be done, for example, using [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) (generally a vehicle will also support changing modes via an RC controller/joystick too).
-
-### Resetting Missions
-
-Once a mission has started it will iterate through the mission items, jumping and looping as indicated by jump mission items, until it completes.
-Once complete the mission must be _reset_ before it can be restarted.
-Resetting removes the "complete" flag so the mission can execute.
-It should also set the current mission item to 0 and reset the loop counters used to track how many times each JUMP command in the mission has looped.
-
-A mission will reset when:
-
-- The vehicle is rebooted (on all flight stacks).
-- A full mission is uploaded. A partial upload may not reset jump counters/mission execution.
-- On disarming for **some vehicles** and configurations.
-  This depends on whether the vehicle needs to continue a mission after landing/disarming.
-- When [MAV_CMD_DO_SET_MISSION_CURRENT](#current_mission_item) is used to set the mission current to `0`.
-  Note that PX4 clears the complete flag and sets the mission item to zero, but does not reset jump counters.
-  <!-- Should we fix "[MAV_CMD_DO_SET_MISSION_CURRENT.param2](../messages/common.md#MAV_CMD_DO_SET_MISSION_CURRENT) can also be used to reset the mission, if supported on the flight stack." -->
+Note that if you change to modes that use mission functionality, such as a fixed wing return mode that uses a mission-defined landing mode, the vehicle may switch back to mission mode for the implementation.
 
 ### Set Current Mission Item {#current_mission_item}
 
@@ -458,6 +431,23 @@ Notes:
 - The acknowledgment of the message is via broadcast of mission/system status, which is not associated with the original message.
   This differs from [error handling](#errors) in other operations.
   This approach is used because the success/failure is relevant to all mission-handling clients.
+
+### Resetting Missions
+
+Once a mission has started it will iterate through the mission items, jumping and looping as indicated by jump mission items, until it completes.
+Once complete the mission must be _reset_ before it can be restarted.
+Resetting removes the "complete" flag so the mission can execute.
+It should also set the current mission item to 0 and reset the loop counters used to track how many times each JUMP command in the mission has looped.
+
+A mission will reset when:
+
+- The vehicle is rebooted (on all flight stacks).
+- A full mission is uploaded. A partial upload may not reset jump counters/mission execution.
+- On disarming for **some vehicles** and configurations.
+  This depends on whether the vehicle needs to continue a mission after landing/disarming.
+- When [MAV_CMD_DO_SET_MISSION_CURRENT](#current_mission_item) is used to set the mission current to `0`.
+  Note that PX4 clears the complete flag and sets the mission item to zero, but does not reset jump counters.
+  <!-- Should we fix "[MAV_CMD_DO_SET_MISSION_CURRENT.param2](../messages/common.md#MAV_CMD_DO_SET_MISSION_CURRENT) can also be used to reset the mission, if supported on the flight stack." -->
 
 ### Monitor Mission Progress {#monitor_progress}
 
