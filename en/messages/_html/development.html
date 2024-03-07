@@ -598,6 +598,36 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="RADIO_RC_CHANNELS_FLAGS">RADIO_RC_CHANNELS_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>RADIO_RC_CHANNELS flags (bitmask).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="RADIO_RC_CHANNELS_FLAGS_FAILSAFE">
+     <td>1</td>
+     <td>
+      <a href="#RADIO_RC_CHANNELS_FLAGS_FAILSAFE">RADIO_RC_CHANNELS_FLAGS_FAILSAFE</a>
+     </td>
+     <td>Failsafe is active. The content of the RC channels data in the <a href="#RADIO_RC_CHANNELS">RADIO_RC_CHANNELS</a> message is implementation dependent.</td>
+    </tr>
+    <tr id="RADIO_RC_CHANNELS_FLAGS_OUTDATED">
+     <td>2</td>
+     <td>
+      <a href="#RADIO_RC_CHANNELS_FLAGS_OUTDATED">RADIO_RC_CHANNELS_FLAGS_OUTDATED</a>
+     </td>
+     <td>Channel data may be out of date. This is set when the receiver is unable to validate incoming data from the transmitter and has therefore resent the last valid data it received.</td>
+    </tr>
+   </tbody>
+  </table>
   <a id="MAV_CMD">
   </a>
   <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
@@ -940,6 +970,50 @@
     <tr>
      <td>7</td>
      <td>Reserved (set to 0)</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_SET_SYS_CMP_ID">MAV_CMD_DO_SET_SYS_CMP_ID (<a href="#MAV_CMD_DO_SET_SYS_CMP_ID">610</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Set system and component id.
+          This allows moving of a system and all its components to a new system id, or moving a particular component to a new system/component id.
+          Recipients must reject command addressed to broadcast system ID.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: System ID</td>
+     <td>New system ID for target component(s). 0: ignore and reject command (broadcast system ID not allowed).</td>
+     <td>
+      <em>min:</em>1 <em>max:</em>255 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>2: Component ID</td>
+     <td>New component ID for target component(s). 0: ignore (component IDs don't change).</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>255 <em>increment:</em>1</td>
+    </tr>
+    <tr>
+     <td>3: Reboot</td>
+     <td>Reboot components after ID change. Any non-zero value triggers the reboot.</td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>4</td>
+     <td>Reserved (set to NaN)</td>
+     <td>
+     </td>
     </tr>
    </tbody>
   </table>
@@ -1698,6 +1772,101 @@
      <td>us</td>
      <td>Timestamp (UNIX Epoch time or time since system boot).
         The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="RADIO_RC_CHANNELS">RADIO_RC_CHANNELS (<a href="#RADIO_RC_CHANNELS">
+    #420
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>RC channel outputs from a MAVLink RC receiver for input to a flight controller or other components (allows an RC receiver to connect via MAVLink instead of some other protocol such as PPM-Sum or S.BUS).
+        Note that this is not intended to be an over-the-air format, and does not replace <a href="#RC_CHANNELS">RC_CHANNELS</a> and similar messages reported by the flight controller.
+        The target_system field should normally be set to the system id of the system to control, typically the flight controller.
+        The target_component field can normally be set to 0, so that all components of the system can receive the message.
+        The channels array field can publish up to 32 channels; the number of channel items used in the array is specified in the count field.
+        The time_last_update_ms field contains the timestamp of the last received valid channels data in the receiver's time domain.
+        The count field indicates the first index of the channel array that is not used for channel data (this and later indexes are zero-filled).
+        The <a href="#RADIO_RC_CHANNELS_FLAGS_OUTDATED">RADIO_RC_CHANNELS_FLAGS_OUTDATED</a> flag is set by the receiver if the channels data is not up-to-date (for example, if new data from the transmitter could not be validated so the last valid data is resent).
+        The <a href="#RADIO_RC_CHANNELS_FLAGS_FAILSAFE">RADIO_RC_CHANNELS_FLAGS_FAILSAFE</a> failsafe flag is set by the receiver if the receiver's failsafe condition is met (implementation dependent, e.g., connection to the RC radio is lost).
+        In this case time_last_update_ms still contains the timestamp of the last valid channels data, but the content of the channels data is not defined by the protocol (it is up to the implementation of the receiver).
+        For instance, the channels data could contain failsafe values configured in the receiver; the default is to carry the last valid data.
+        Note: The RC channels fields are extensions to ensure that they are located at the end of the serialized payload and subject to MAVLink's trailing-zero trimming.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>target_system</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>System ID (ID of target system, normally flight controller).</td>
+    </tr>
+    <tr>
+     <td>target_component</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Component ID (normally 0 for broadcast).</td>
+    </tr>
+    <tr>
+     <td>time_last_update_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+     </td>
+     <td>Time when the data in the channels field were last updated (time since boot in the receiver's time domain).</td>
+    </tr>
+    <tr>
+     <td>flags</td>
+     <td>uint16_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#RADIO_RC_CHANNELS_FLAGS">RADIO_RC_CHANNELS_FLAGS</a>
+     </td>
+     <td>Radio RC channels status flags.</td>
+    </tr>
+    <tr>
+     <td>count</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Total number of RC channels being received. This can be larger than 32, indicating that more channels are available but not given in this message.</td>
+    </tr>
+    <tr>
+     <td style="color:blue;">channels<a href="#mav2_extension_field" title="MAVLink2 extension field">
+       **
+      </a>
+     </td>
+     <td>int16_t[32]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>RC channels.
+        Channel values are in centered 13 bit format. Range is -4096 to 4096, center is 0. Conversion to PWM is x * 5/32 + 1500.
+        Channels with indexes equal or above count should be set to 0, to benefit from MAVLink's trailing-zero trimming.</td>
     </tr>
    </tbody>
   </table>
