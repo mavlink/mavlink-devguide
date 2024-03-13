@@ -255,16 +255,18 @@ This signals that the gimbal manager also is also acting as the gimbal device.
 
 Also see [how to address non-MAVLink gimbal devices](#non_mavlink_gimbal_device_addressing).
 
-#### How to interpret correctly GIMBAL_DEVICE_ATTITUDE_STATUS yaw gimbal angle
-We need to check the flags field as follows:
+#### How to interpret `GIMBAL_DEVICE_ATTITUDE_STATUS` yaw gimbal angle
 
-- GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME: If set, yaw will be relative to vehicle.
-- GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME: If set, yaw will be relative to North
-- **Only if none of the above are set**, we must check for GIMBAL_DEVICE_FLAGS_YAW_LOCK: if this one is set yaw will be relative to North, if this flag is not set
-  either, yaw will be relative to vehicle. 
+The [GIMBAL_DEVICE_ATTITUDE_STATUS.flags](#GIMBAL_DEVICE_ATTITUDE_STATUS) field must report the frame used for reported yaw values as **either**:
 
-For manufacturers working on new devices, it is preferred to use GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME and GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME. But for 
-backwards compatibility GIMBAL_DEVICE_FLAGS_YAW_LOCK is also valid, and some systems could report their flags this way.
+- `GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME`: Yaw is relative to vehicle.
+- `GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME`: Yaw is relative to north.
+
+Older devices may use the deprecated `GIMBAL_DEVICE_FLAGS_YAW_LOCK` to indicate that the yaw is relative to north, and un-set to indicate that yaw is relative to the vehicle.
+This should only be checked if the two flags above are not set!
+
+> **Note** Manufacturers working on new gimbal devices should set either `GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME` or `GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME`.
+> Components recieving the message should also handle `GIMBAL_DEVICE_FLAGS_YAW_LOCK` for backwards compatibility with older devices.
 
 ## Message/Command/Enum Summary
 
