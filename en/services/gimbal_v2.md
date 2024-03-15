@@ -262,8 +262,8 @@ The [GIMBAL_DEVICE_ATTITUDE_STATUS.flags](#GIMBAL_DEVICE_ATTITUDE_STATUS) field 
 - `GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME`: Yaw is relative to vehicle.
 - `GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME`: Yaw is relative to north.
 
-Older devices may use the deprecated `GIMBAL_DEVICE_FLAGS_YAW_LOCK` to indicate that the yaw is relative to north, and un-set to indicate that yaw is relative to the vehicle.
-This should only be checked if the two flags above are not set!
+For older devices, if neither of the flags above are set, the yaw frame must be inferred from the `GIMBAL_DEVICE_FLAGS_YAW_LOCK`.
+If it is set, the yaw is relative to North, otherwise to the front of the vehicle.
 
 > **Note** Manufacturers working on new gimbal devices should set either `GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME` or `GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME`.
 > Components recieving the message should also handle `GIMBAL_DEVICE_FLAGS_YAW_LOCK` for backwards compatibility with older devices.
