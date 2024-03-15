@@ -255,6 +255,19 @@ This signals that the gimbal manager also is also acting as the gimbal device.
 
 Also see [how to address non-MAVLink gimbal devices](#non_mavlink_gimbal_device_addressing).
 
+#### How to interpret `GIMBAL_DEVICE_ATTITUDE_STATUS` yaw gimbal angle
+
+The [GIMBAL_DEVICE_ATTITUDE_STATUS.flags](#GIMBAL_DEVICE_ATTITUDE_STATUS) field must report the frame used for reported yaw values as **either**:
+
+- `GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME`: Yaw is relative to vehicle.
+- `GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME`: Yaw is relative to north.
+
+For older devices, if neither of the flags above are set, the yaw frame must be inferred from the `GIMBAL_DEVICE_FLAGS_YAW_LOCK`.
+If it is set, the yaw is relative to North, otherwise to the front of the vehicle.
+
+> **Note** Manufacturers working on new gimbal devices should set either `GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME` or `GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME`.
+> Components recieving the message should also handle `GIMBAL_DEVICE_FLAGS_YAW_LOCK` for backwards compatibility with older devices.
+
 ## Message/Command/Enum Summary
 
 ### Gimbal Manager Messages
