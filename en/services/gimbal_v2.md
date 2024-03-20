@@ -265,8 +265,10 @@ The [GIMBAL_DEVICE_ATTITUDE_STATUS.flags](#GIMBAL_DEVICE_ATTITUDE_STATUS) field 
 For older devices, if neither of the flags above are set, the yaw frame must be inferred from the `GIMBAL_DEVICE_FLAGS_YAW_LOCK`.
 If it is set, the yaw is relative to North, otherwise to the front of the vehicle.
 
-> **Note** Manufacturers working on new gimbal devices should set either `GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME` or `GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME`.
-> Components recieving the message should also handle `GIMBAL_DEVICE_FLAGS_YAW_LOCK` for backwards compatibility with older devices.
+Manufacturers working on new gimbal devices should use either `GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME` or `GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME` in `GIMBAL_DEVICE_ATTITUDE_STATUS` to report the yaw frame.
+Components recieving the message should also handle `GIMBAL_DEVICE_FLAGS_YAW_LOCK` for backwards compatibility with older devices.
+
+> **Note** `GIMBAL_DEVICE_FLAGS_YAW_LOCK` must still be used when _setting_ an attitude target (in [GIMBAL_DEVICE_SET_ATTITUDE.flags](#GIMBAL_DEVICE_SET_ATTITUDE)), in order to specify that the target angles are relative to North.
 
 ## Message/Command/Enum Summary
 
