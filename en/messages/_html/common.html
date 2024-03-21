@@ -16656,7 +16656,7 @@
 
           When used in a mission, an autopilot should execute the <a href="#mav_commands">MAV_CMD</a> for a specified local camera (param1 = 1-6), or resend it as a command if it is intended for a MAVLink camera (param1 = 7 - 255), setting the command's target_component as the param1 value (and setting param1 in the command to zero).
           If the param1 is 0 the autopilot should do both.
-          
+
           When sent in a command the target MAVLink address is set using target_component.
           If addressed specifically to an autopilot: param1 should be used in the same way as it is for missions (though command should NACK with <a href="#MAV_RESULT_DENIED">MAV_RESULT_DENIED</a> if a specified local camera does not exist).
           If addressed to a MAVLink camera, param 1 can be used to address all cameras (0), or to separately address 1 to 7 individual sensors. Other values should be NACKed with <a href="#MAV_RESULT_DENIED">MAV_RESULT_DENIED</a>.
@@ -16735,7 +16735,7 @@
    <a href="#mav_commands">
     [Command]
    </a>Stop image capture sequence.
-        
+
           Param1 (id) may be used to specify the target camera: 0: all cameras, 1 to 6: autopilot-connected cameras, 7-255: MAVLink camera component ID.
           It is needed in order to target specific cameras connected to the autopilot, or specific sensors in a multi-sensor camera (neither of which have a distinct MAVLink component ID).
           It is also needed to specify the target camera in missions.
@@ -16934,7 +16934,7 @@
     </tr>
     <tr>
      <td>3: Radius</td>
-     <td>Point radius (normalized 0..1, 0 is image left, 1 is image right).</td>
+     <td>Point radius (normalized 0..1, 0 is one pixel, 1 is full image width).</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 </td>
     </tr>
@@ -26037,22 +26037,19 @@
     <tr>
      <td>roll</td>
      <td>float</td>
-     <td>
-     </td>
+     <td>rad</td>
      <td>Attitude roll expressed as Euler angles, not recommended except for human-readable outputs</td>
     </tr>
     <tr>
      <td>pitch</td>
      <td>float</td>
-     <td>
-     </td>
+     <td>rad</td>
      <td>Attitude pitch expressed as Euler angles, not recommended except for human-readable outputs</td>
     </tr>
     <tr>
      <td>yaw</td>
      <td>float</td>
-     <td>
-     </td>
+     <td>rad</td>
      <td>Attitude yaw expressed as Euler angles, not recommended except for human-readable outputs</td>
     </tr>
     <tr>
