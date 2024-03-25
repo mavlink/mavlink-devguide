@@ -11,6 +11,7 @@
 * [Using MAVLink Libraries](getting_started/use_libraries.md)
   * [C (mavgen)](mavgen_c/README.md)
     * [Message Signing](mavgen_c/message_signing_c.md)
+    * [C Defines](mavgen_c/defines.md)
     * [Examples](mavgen_c/examples.md)
       * [UART Interface (C)](mavgen_c/example_c_uart.md)
       * [UDP Example (C)](mavgen_c/example_c_udp.md)
