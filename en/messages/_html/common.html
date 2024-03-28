@@ -14131,7 +14131,11 @@
   <p>
    <a href="#mav_commands">
     [Command]
-   </a>Mission command to enable the geofence</p>
+   </a>Enable the geofence.
+          This can be used in a mission or via the command protocol.
+          The persistence/lifetime of the setting is undefined.
+          Depending on flight stack implementation it may persist until superseded, or it may revert to a system default at the end of a mission.
+          Flight stacks typically reset the setting to system defaults on reboot.</p>
   <table class="sortable">
    <thead>
     <tr>
