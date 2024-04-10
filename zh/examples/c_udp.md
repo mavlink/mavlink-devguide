@@ -16,7 +16,7 @@
     
     > **注意** 您可以在您喜欢的地方放置/生成的库，但下面的建设命令假定它们位于 **包括** 在 MAVLink 根目录下。
 
-2. 打开终端并导航到 [实例/linux](https://github.com/mavlink/mavlink/tree/master/examples/linux)
+2. 打开终端并导航到 [实例/c](https://github.com/mavlink/mavlink/tree/master/examples/c)
 
 3. 使用下列命令编译GCC：
     
@@ -42,7 +42,7 @@
 
 6. 例子应该开始显示终端收到的数据：
     
-        ~/github/mavlink/examples/linux$ ./mavlink_udp
+        ~/github/mavlink/examples/c$ ./mavlink_udp
         Bytes Received: 17
         Datagram: fe 09 00 ff 00 00 00 00 00 00 06 08 c0 04 03 19 87 
         Received packet: SYS: 255, COMP: 0, LEN: 9, MSG ID: 0
