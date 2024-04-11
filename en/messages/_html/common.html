@@ -10256,6 +10256,80 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="ILLUMINATOR_MODE">ILLUMINATOR_MODE</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Modes of illuminator</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="ILLUMINATOR_MODE_UNKNOWN">
+     <td>0</td>
+     <td>
+      <a href="#ILLUMINATOR_MODE_UNKNOWN">ILLUMINATOR_MODE_UNKNOWN</a>
+     </td>
+     <td>Illuminator mode is not specified/unknown</td>
+    </tr>
+    <tr id="ILLUMINATOR_MODE_INTERNAL_CONTROL">
+     <td>1</td>
+     <td>
+      <a href="#ILLUMINATOR_MODE_INTERNAL_CONTROL">ILLUMINATOR_MODE_INTERNAL_CONTROL</a>
+     </td>
+     <td>Illuminator behavior is controlled by <a href="#MAV_CMD_DO_ILLUMINATOR_CONFIGURE">MAV_CMD_DO_ILLUMINATOR_CONFIGURE</a> settings</td>
+    </tr>
+    <tr id="ILLUMINATOR_MODE_EXTERNAL_SYNC">
+     <td>2</td>
+     <td>
+      <a href="#ILLUMINATOR_MODE_EXTERNAL_SYNC">ILLUMINATOR_MODE_EXTERNAL_SYNC</a>
+     </td>
+     <td>Illuminator behavior is controlled by external factors: e.g. an external hardware signal</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ILLUMINATOR_ERROR_FLAGS">ILLUMINATOR_ERROR_FLAGS</h3>
+  <p>
+   <a href="#enums">
+    [Enum]
+   </a>Illuminator module error flags (bitmap, 0 means no error)</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Value</th>
+     <th>Field Name</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr id="ILLUMINATOR_ERROR_FLAGS_THERMAL_THROTTLING">
+     <td>1</td>
+     <td>
+      <a href="#ILLUMINATOR_ERROR_FLAGS_THERMAL_THROTTLING">ILLUMINATOR_ERROR_FLAGS_THERMAL_THROTTLING</a>
+     </td>
+     <td>Illuminator thermal throttling error.</td>
+    </tr>
+    <tr id="ILLUMINATOR_ERROR_FLAGS_OVER_TEMPERATURE_SHUTDOWN">
+     <td>2</td>
+     <td>
+      <a href="#ILLUMINATOR_ERROR_FLAGS_OVER_TEMPERATURE_SHUTDOWN">ILLUMINATOR_ERROR_FLAGS_OVER_TEMPERATURE_SHUTDOWN</a>
+     </td>
+     <td>Illuminator over temperature shutdown error.</td>
+    </tr>
+    <tr id="ILLUMINATOR_ERROR_FLAGS_THERMISTOR_FAILURE">
+     <td>3</td>
+     <td>
+      <a href="#ILLUMINATOR_ERROR_FLAGS_THERMISTOR_FAILURE">ILLUMINATOR_ERROR_FLAGS_THERMISTOR_FAILURE</a>
+     </td>
+     <td>Illuminator thermistor failure.</td>
+    </tr>
+   </tbody>
+  </table>
   <a id="MAV_CMD">
   </a>
   <h2 id="mav_commands">MAVLink Commands (<a href="#mav_commands">MAV_CMD</a>)</h2>
@@ -15778,8 +15852,6 @@
   <h3 id="MAV_CMD_ILLUMINATOR_ON_OFF">MAV_CMD_ILLUMINATOR_ON_OFF (<a href="#MAV_CMD_ILLUMINATOR_ON_OFF">405</a>
    )
   </h3>
-  <p style="color:red">
-   <strong>WORK IN PROGRESS:</strong> Do not use in stable production environments (it may change).</p>
   <p>
    <a href="#mav_commands">
     [Command]
@@ -15798,6 +15870,59 @@
      <td>0: Illuminators OFF, 1: Illuminators ON</td>
      <td>
       <em>min:</em>0 <em>max:</em>1 <em>increment:</em>1</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="MAV_CMD_DO_ILLUMINATOR_CONFIGURE">MAV_CMD_DO_ILLUMINATOR_CONFIGURE (<a href="#MAV_CMD_DO_ILLUMINATOR_CONFIGURE">406</a>
+   )
+  </h3>
+  <p>
+   <a href="#mav_commands">
+    [Command]
+   </a>Configures illuminator settings. An illuminator is a light source that is used for lighting up dark areas external to the system: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light).</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Param (:Label)</th>
+     <th>Description</th>
+     <th>Values</th>
+     <th>Units</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>1: Mode</td>
+     <td>Mode</td>
+     <td>
+      <a href="#ILLUMINATOR_MODE">ILLUMINATOR_MODE</a>
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>2: Brightness</td>
+     <td>0%: Off, 100%: Max Brightness</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>100 </td>
+     <td>
+      %
+     </td>
+    </tr>
+    <tr>
+     <td>3: Strobe Period</td>
+     <td>Strobe period in seconds where 0 means strobing is not used</td>
+     <td>
+      <em>min:</em>0 </td>
+     <td>s</td>
+    </tr>
+    <tr>
+     <td>4: Strobe Duty</td>
+     <td>Strobe duty cycle where 100% means it is on constantly and 0 means strobing is not used</td>
+     <td>
+      <em>min:</em>0 <em>max:</em>100 </td>
+     <td>
+      %
+     </td>
     </tr>
    </tbody>
   </table>
@@ -36704,6 +36829,102 @@
     </tr>
    </tbody>
   </table>
+  <h3 id="COMPONENT_INFORMATION_BASIC">COMPONENT_INFORMATION_BASIC (<a href="#COMPONENT_INFORMATION_BASIC">
+    #396
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Basic component information data. Should be requested using <a href="#MAV_CMD_REQUEST_MESSAGE">MAV_CMD_REQUEST_MESSAGE</a> on startup, or when required.</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>time_boot_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+     </td>
+     <td>Timestamp (time since system boot).</td>
+    </tr>
+    <tr>
+     <td>capabilities</td>
+     <td>uint64_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#MAV_PROTOCOL_CAPABILITY">MAV_PROTOCOL_CAPABILITY</a>
+     </td>
+     <td>Component capability flags</td>
+    </tr>
+    <tr>
+     <td>time_manufacture_s</td>
+     <td>uint32_t</td>
+     <td>s</td>
+     <td>
+     </td>
+     <td>Date of manufacture as a UNIX Epoch time (since 1.1.1970) in seconds.</td>
+    </tr>
+    <tr>
+     <td>vendor_name</td>
+     <td>char[32]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Name of the component vendor. Needs to be zero terminated. The field is optional and can be empty/all zeros.</td>
+    </tr>
+    <tr>
+     <td>model_name</td>
+     <td>char[32]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Name of the component model. Needs to be zero terminated. The field is optional and can be empty/all zeros.</td>
+    </tr>
+    <tr>
+     <td>software_version</td>
+     <td>char[24]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Software version. The recommended format is SEMVER: 'major.minor.patch'  (any format may be used). The field must be zero terminated if it has a value. The field is optional and can be empty/all zeros.</td>
+    </tr>
+    <tr>
+     <td>hardware_version</td>
+     <td>char[24]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Hardware version. The recommended format is SEMVER: 'major.minor.patch'  (any format may be used). The field must be zero terminated if it has a value. The field is optional and can be empty/all zeros.</td>
+    </tr>
+    <tr>
+     <td>serial_number</td>
+     <td>char[32]</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Hardware serial number. The field must be zero terminated if it has a value. The field is optional and can be empty/all zeros.</td>
+    </tr>
+   </tbody>
+  </table>
   <h3 id="COMPONENT_METADATA">COMPONENT_METADATA (<a href="#COMPONENT_METADATA">
     #397
    </a>
@@ -37077,6 +37298,131 @@
       <a href="#MAV_EVENT_ERROR_REASON">MAV_EVENT_ERROR_REASON</a>
      </td>
      <td>Error reason.</td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 id="ILLUMINATOR_STATUS">ILLUMINATOR_STATUS (<a href="#ILLUMINATOR_STATUS">
+    #440
+   </a>
+   )
+  </h3>
+  <p>
+   <a href="#messages">
+    [Message]
+   </a>
+   <strong>
+    (MAVLink 2)
+   </strong>Illuminator status</p>
+  <table class="sortable">
+   <thead>
+    <tr>
+     <th>Field Name</th>
+     <th>Type</th>
+     <th>Units</th>
+     <th>Values</th>
+     <th>Description</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>uptime_ms</td>
+     <td>uint32_t</td>
+     <td>ms</td>
+     <td>
+     </td>
+     <td>Time since the start-up of the illuminator in ms</td>
+    </tr>
+    <tr>
+     <td>enable</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>0: Illuminators OFF, 1: Illuminators ON</td>
+    </tr>
+    <tr>
+     <td>mode_bitmask</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ILLUMINATOR_MODE">ILLUMINATOR_MODE</a>
+     </td>
+     <td>Supported illuminator modes</td>
+    </tr>
+    <tr>
+     <td>error_status</td>
+     <td>uint32_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ILLUMINATOR_ERROR_FLAGS">ILLUMINATOR_ERROR_FLAGS</a>
+     </td>
+     <td>Errors</td>
+    </tr>
+    <tr>
+     <td>mode</td>
+     <td>uint8_t</td>
+     <td>
+     </td>
+     <td>
+      <a href="#ILLUMINATOR_MODE">ILLUMINATOR_MODE</a>
+     </td>
+     <td>Illuminator mode</td>
+    </tr>
+    <tr>
+     <td>brightness</td>
+     <td>float</td>
+     <td>
+      %
+     </td>
+     <td>
+     </td>
+     <td>Illuminator brightness</td>
+    </tr>
+    <tr>
+     <td>strobe_period</td>
+     <td>float</td>
+     <td>s</td>
+     <td>
+     </td>
+     <td>Illuminator strobing period in seconds</td>
+    </tr>
+    <tr>
+     <td>strobe_duty_cycle</td>
+     <td>float</td>
+     <td>
+      %
+     </td>
+     <td>
+     </td>
+     <td>Illuminator strobing duty cycle</td>
+    </tr>
+    <tr>
+     <td>temp_c</td>
+     <td>float</td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>Temperature in Celsius</td>
+    </tr>
+    <tr>
+     <td>min_strobe_period</td>
+     <td>float</td>
+     <td>s</td>
+     <td>
+     </td>
+     <td>Minimum strobing period in seconds</td>
+    </tr>
+    <tr>
+     <td>max_strobe_period</td>
+     <td>float</td>
+     <td>s</td>
+     <td>
+     </td>
+     <td>Maximum strobing period in seconds</td>
     </tr>
    </tbody>
   </table>
