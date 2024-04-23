@@ -81,7 +81,7 @@ In particular, a routing system should:
 
 ## Router Implementation
 
-The [MAVLink Router](https://github.com/01org/mavlink-router) created by Intel allows to mix-and-match different IP protocols with serial ports and route MAVLink traffic.
+The [MAVLink Router](https://github.com/mavlink-router/mavlink-router) can be used to mix-and-match different IP protocols with serial ports in order to route MAVLink traffic.
 
 ## Further Information
 
