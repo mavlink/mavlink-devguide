@@ -146,8 +146,8 @@ The GCS will send a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQU
 
 A camera supports _still image capture_ if the [CAMERA_CAP_FLAGS_CAPTURE_IMAGE](../messages/common.md#CAMERA_CAP_FLAGS_CAPTURE_IMAGE) bit is set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
-A GCS/MAVLink app uses the [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) command to request that the camera capture a specified number of images (or forever), and the duration between them.
-The camera immediately returns the normal command acknowledgment ([MAV_RESULT](../messages/common.md#MAV_RESULT_ACCEPTED)).
+The [MAV_CMD_IMAGE_START_CAPTURE](#MAV_CMD_IMAGE_START_CAPTURE) command can be sent to request that a camera capture a specified number of images (or forever), and the duration between them.
+The camera returns the normal command acknowledgment ([MAV_RESULT](../messages/common.md#MAV_RESULT_ACCEPTED)).
 
 Each time an image is captured, the camera _broadcasts_ a [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) message.
 This message not only tells the GCS the image was captured, it is also intended for geo-tagging.
@@ -157,39 +157,11 @@ This message not only tells the GCS the image was captured, it is also intended 
 
 The [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) command can optionally be sent to stop an image capture sequence (this is needed if image capture has been set to continue forever).
 
-The still image capture message sequence _for missions_ (as described above) is shown below:
+#### Interactive/User-initiated Image Capture
 
-[![Mermaid Sequence: Image capture](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9JTUFHRV9TVEFSVF9DQVBUVVJFIChpbnRlcnZhbCwgY291bnQvZm9yZXZlcilcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IE1BVl9SRVNVTFRfQUNDRVBURURcbiAgICBOb3RlIG92ZXIgQ2FtZXJhLEdDUzogQ2FtZXJhIHN0YXJ0IGNhcHR1cmUgb2YgXCJjb3VudFwiIGltYWdlcyBhdCBcImludGVydmFsXCJcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTUFHRV9DQVBUVVJFRCAgKGJyb2FkY2FzdClcbiAgICBDYW1lcmEtPj5HQ1M6IC4uLlxuICAgIENhbWVyYS0-PkdDUzogQ0FNRVJBX0lNQUdFX0NBUFRVUkVEIChicm9hZGNhc3QpXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IChPcHRpb25hbCkgU3RvcCBjYXB0dXJlXG4gICAgR0NTLT4-Q2FtZXJhOiBNQVZfQ01EX0lNQUdFX1NUT1BfQ0FQVFVSRVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9JTUFHRV9TVEFSVF9DQVBUVVJFIChpbnRlcnZhbCwgY291bnQvZm9yZXZlcilcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IE1BVl9SRVNVTFRfQUNDRVBURURcbiAgICBOb3RlIG92ZXIgQ2FtZXJhLEdDUzogQ2FtZXJhIHN0YXJ0IGNhcHR1cmUgb2YgXCJjb3VudFwiIGltYWdlcyBhdCBcImludGVydmFsXCJcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTUFHRV9DQVBUVVJFRCAgKGJyb2FkY2FzdClcbiAgICBDYW1lcmEtPj5HQ1M6IC4uLlxuICAgIENhbWVyYS0-PkdDUzogQ0FNRVJBX0lNQUdFX0NBUFRVUkVEIChicm9hZGNhc3QpXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IChPcHRpb25hbCkgU3RvcCBjYXB0dXJlXG4gICAgR0NTLT4-Q2FtZXJhOiBNQVZfQ01EX0lNQUdFX1NUT1BfQ0FQVFVSRVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dFxuICAgIENhbWVyYS0-PkdDUzogTUFWX1JFU1VMVF9BQ0NFUFRFRCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+The message sequence for _interactive user-initiated image capture_ through a GUI is shown below:
 
-<!-- Original sequence
-sequenceDiagram;
-    participant GCS
-    participant Camera
-    GCS->>Camera: MAV_CMD_IMAGE_START_CAPTURE (interval, count/forever)
-    GCS->>GCS: Start timeout
-    Camera->>GCS: MAV_RESULT_ACCEPTED
-    Note over Camera,GCS: Camera start capture of "count" images at "interval"
-    Camera->>GCS: CAMERA_IMAGE_CAPTURED  (broadcast)
-    Camera->>GCS: ...
-    Camera->>GCS: CAMERA_IMAGE_CAPTURED (broadcast)
-    Note over Camera,GCS: (Optional) Stop capture
-    GCS->>Camera: MAV_CMD_IMAGE_STOP_CAPTURE
-    GCS->>GCS: Start timeout
-    Camera->>GCS: MAV_RESULT_ACCEPTED
--->
-
-The message sequence for _interactive user-initiated image capture_ through a GUI is slightly different.
-In this case the GCS should:
-
-- Confirm that the camera is _ready_ to take images before allowing the user to request image capture.
-  - It does this by by sending [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
-  - The camera should return a `MAV_RESULT` and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
-  - The GCS should check that the status is "Idle" before enabling camera capture in the GUI.
-- Send [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) specifying a single image (only).
-
-The sequence is as shown below:
-
-[![Mermaid Sequence: Interactive user intiated image capture](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9SRVFVRVNUX01FU1NBR0UocGFyYW0xPTI2MilcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IE1BVl9SRVNVTFRfQUNDRVBURURcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9DQVBUVVJFX1NUQVRVUyAoc3RhdHVzKVxuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBSZXBlYXQgdW50aWwgc3RhdHVzIGlzIElETEVcbiAgICBHQ1MtPj5DYW1lcmE6IE1BVl9DTURfSU1BR0VfU1RBUlRfQ0FQVFVSRSAoaW50ZXJ2YWwsIGNvdW50L2ZvcmV2ZXIpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgQ2FtZXJhLT4-R0NTOiBNQVZfUkVTVUxUX0FDQ0VQVEVEXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IENhbWVyYSBzdGFydCBjYXB0dXJlIG9mIDEgaW1hZ2VcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTUFHRV9DQVBUVVJFRCAgKGJyb2FkY2FzdCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIEdDUy0-PkNhbWVyYTogTUFWX0NNRF9SRVFVRVNUX01FU1NBR0UocGFyYW0xPTI2MilcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IE1BVl9SRVNVTFRfQUNDRVBURURcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9DQVBUVVJFX1NUQVRVUyAoc3RhdHVzKVxuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBSZXBlYXQgdW50aWwgc3RhdHVzIGlzIElETEVcbiAgICBHQ1MtPj5DYW1lcmE6IE1BVl9DTURfSU1BR0VfU1RBUlRfQ0FQVFVSRSAoaW50ZXJ2YWwsIGNvdW50L2ZvcmV2ZXIpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgQ2FtZXJhLT4-R0NTOiBNQVZfUkVTVUxUX0FDQ0VQVEVEXG4gICAgTm90ZSBvdmVyIENhbWVyYSxHQ1M6IENhbWVyYSBzdGFydCBjYXB0dXJlIG9mIDEgaW1hZ2VcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTUFHRV9DQVBUVVJFRCAgKGJyb2FkY2FzdCkiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+[![Mermaid Sequence: Interactive user intiated image capture](https://mermaid.ink/img/pako:eNqtUk1Lw0AQ_SvDnlqoSHvwELEQkqUUGqlJ6ikQxmRSF5ps3MwWpPS_uzEpCEpBcU_D7PuYN8xJFLok4YmO3iw1BYUK9wbr-6wB91o0rArVYsOwCpLvzQBrMjj0HzUT6COZsTtzDA_iXrhzSD-SsZ8H_jbdxTJPUj_djYIOd7NcDiQPIv85D6Iwj-XTTiZpHskk8Vdy4myxnj8s7hbTr7RPk4TdTMCqJm15-B3kLoBeNJbJbpPmfhDIbSrD34v8GAEmHSPbbnp9CS0hg21YHWDAg-pgHW7ktRWsIxe894nTiytMVMNkjniYQaGd4G2lDTm__1zKzyGGuh_fyRbYsjUOVcEcVI17-vM-h5RjvhBg8mI0lgV2PBUz4Qg1qtKd6KnXyAS_Uk2Z8FxZUoX2wJnImrOD2rZEJlkq1kZ4FR46mgm0rJP3phAeG0sX0HjmI-r8AbXo9M4?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNqtUk1Lw0AQ_SvDnlqoSHvwELEQkqUUGqlJ6ikQxmRSF5ps3MwWpPS_uzEpCEpBcU_D7PuYN8xJFLok4YmO3iw1BYUK9wbr-6wB91o0rArVYsOwCpLvzQBrMjj0HzUT6COZsTtzDA_iXrhzSD-SsZ8H_jbdxTJPUj_djYIOd7NcDiQPIv85D6Iwj-XTTiZpHskk8Vdy4myxnj8s7hbTr7RPk4TdTMCqJm15-B3kLoBeNJbJbpPmfhDIbSrD34v8GAEmHSPbbnp9CS0hg21YHWDAg-pgHW7ktRWsIxe894nTiytMVMNkjniYQaGd4G2lDTm__1zKzyGGuh_fyRbYsjUOVcEcVI17-vM-h5RjvhBg8mI0lgV2PBUz4Qg1qtKd6KnXyAS_Uk2Z8FxZUoX2wJnImrOD2rZEJlkq1kZ4FR46mgm0rJP3phAeG0sX0HjmI-r8AbXo9M4)
 
 <!-- Original sequence
 sequenceDiagram;
@@ -208,6 +180,28 @@ sequenceDiagram;
     GCS->>GCS: Start timeout
     Camera->>GCS: CAMERA_IMAGE_CAPTURED  (broadcast)
 -->
+
+In this case the GCS should:
+
+- Confirm that the camera is _ready_ to take images before allowing the user to request image capture.
+  - It does this by by sending [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
+  - The camera should return a `MAV_RESULT` and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
+  - The GCS should check that the status is "Idle" before enabling camera capture in the GUI.
+- Send [MAV_CMD_IMAGE_START_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_START_CAPTURE) specifying a single image (only).
+
+> **Note** Historically image capture was performed for all cameras attached to the flight controller.
+> If supported by the flight stack, the `id` (`param1`) can now be used to direct the commands to [a particular camera](#camera-addressing-in-commands) attached to the flight controller.
+
+#### Image capture in Missions
+
+The `MAV_CMD_IMAGE_START_CAPTURE` and `MAV_CMD_IMAGE_STOP_CAPTURE` MAV_CMD's can also appear in missions, which are executed by the flight stack.
+
+If the flight stack does not support the `id` parameter, the camera MAV_CMDs are executed on all cameras on the system.
+In this case the flight stack will start/stop capture for any cameras connected to the flight controller, and also broadcast the MAV_CMD to all MAVLink cameras on the same vehicle using the [command protocol](../services/command.md)
+
+If the flight stack does [support the `id` parameter](#camera-addressing-in-missions) then `id` of 1-6 are executed on the specific camera attached to the flight controller, while values of 7-255 cause the MAV_CMD to be emitted using the [command protocol](../services/command.md) with the specified value as the component ID.
+A value of 0 for the `id` means "broadcast".
+
 
 ### Request Lost CAMERA_IMAGE_CAPTURED Messages {#missing_images}
 
@@ -307,6 +301,56 @@ The steps are:
 Camera components that are powered from their own battery should publish [BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) messages.
 
 Other components like a GCS will typically only use the camera `BATTERY_STATUS.battery_remaining` field (or possibly `time_remaining`); generally other fields can be set as "not supported".
+
+
+## Camera Addressing
+
+Camera commands are addressed to specific MAVLink nodes using their system and component.
+
+Some commands also have an `id` parameter (such as`MAV_CMD_IMAGE_START_CAPTURE.param1`) that, if present and supported, provides a further routing hint to target a specific camera on the target component.
+This is used to provide addressing for non-MAVLink cameras attached to the autopilot, addressing of separate sensors on a MAVLink camera, and to allow specific cameras to be triggered in missions.
+
+Currently `id` is supported in:
+
+- [MAV_CMD_IMAGE_START_CAPTURE](#MAV_CMD_IMAGE_START_CAPTURE)
+- [MAV_CMD_IMAGE_STOP_CAPTURE](#MAV_CMD_IMAGE_STOP_CAPTURE)
+
+### Camera Addressing in Commands
+
+When using a camera MAV_CMD with the [command protocol](../services/command.md):
+
+- To send a command to all cameras on the vehicle/system:
+  - Set the vehicle system id
+  - Set the component id to 0 (broadcast).
+  - Set the `id` parameter to 0 if present (any other value should be NACKED).
+- To send a command to a non-MAVLink camera attached to the flight controller:
+  - Set the vehicle system id
+  - Set the component id of the flight controller.
+  - Set the `id` parameter (if present) to 1 to 6, indicating the specific camera.
+  - The flight stack should map the id to the correct camera.
+  - If `id` is not supported by the flight stack, or not present in the particular command then all cameras connected to the autopilot will recieve the message (separate addressing of cameras is not possible).
+- To send a command to a MAVLink camera:
+  - Specify the vehicle system id.
+  - Specify the camera component id.
+  - Set the `id` parameter (if present) to a value > 1 to indicate a specific sensor on the camera (e.g. visible light vs IR), or 0 to indicate all/any sensors.
+  - If `id` is not supported by the camera or is set to 0 then all sensors should be triggered.
+
+### Camera Addressing in Missions
+
+When using a camera MAV_CMD in a mission, the `id` parameter (if present) indicates the target camera:
+
+- 1 - 6 indicates a flight-stack connected camera
+- 7-255 is the component id of a MAVLink connected camera.
+  Note that component ids 1-6 should never be used for MAVLink cameras!
+- 0 indicates  "all connected cameras".
+
+A flight stack that supports the `id` (for a particular MAV_CMD) should handle the command itself if the value is `1`-`6`.
+For other values it should emit the same MAV_CMD using the command protocol, addressed to the corresponding component.
+
+If the `id` is not supported then a flight stack will typically just emit the MAV_CMD as a command using the broadcast component id.
+This will trigger all cameras on the system, which is the default/legacy behaviour.
+
+Note that there is no way to address a specific sensor on a MAVLink camera in a mission.
 
 ## Message/Enum Summary
 
