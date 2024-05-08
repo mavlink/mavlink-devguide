@@ -1,8 +1,13 @@
-# Camera Protocol
+# Camera Protocol v2
 
-The camera protocol is used to configure camera payloads and request their status.
-It supports photo capture, and video capture and streaming.
-It also includes messages to query and configure the onboard camera storage.
+The camera protocol v2 is used to configure camera payloads and request their status.
+It provides basic methods for photo capture, video capture and streaming, setting zoom and focus, querying and configuring camera storage, and selecting multiple cameras.
+It also defines a camera definition file format that allows a GCS to generate a configuration UI for setting any property of the camera using parameters.
+
+> **Note** This protocol supersedes [Camera Protocol v1 (Simple Trigger Protocol)](../services/camera_v1.md).
+> The older protocol enables camera triggering, but does not support other features or querying camera capabilities.
+
+<span></span>
 
 > **Warning** We are transitioning from specific request commands to a single generic requestor.
 > GCS and MAVLink SDKs/apps should support both approaches as we migrate to exclusive use of the new method (documented here).
@@ -10,16 +15,17 @@ It also includes messages to query and configure the onboard camera storage.
 
 ## MAVLink Camera Implementations
 
-These cameras have inbuilt support for the MAVLink Camera protocol:
-
-- [Workswell cameras](https://www.drone-thermal-camera.com/): WIRIS Pro, WIRIS Pro SC, WIRIS Security, WIRIS Agro, GIS-320 ([source](https://www.drone-thermal-camera.com/mavlink-interface-for-uav-cameras/)).
-- [PhaseOne Cameras](https://geospatial.phaseone.com/) ([source](https://geospatial.phaseone.com/resources-support/developer/mavlink/)).
-
 Camera Managers provide a MAVLink Camera protocol interface for cameras that don't directly implement MAVLink support.
 These generally run on a companion computer:
 
 - [MAVLink Camera Manager](https://github.com/mavlink/mavlink-camera-manager) (actively maintained)
 - [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/)
+- [SIYI A8 mini camera manager](https://github.com/julianoes/siyi-a8-mini-camera-manager) - MAVSDK-plugin based camera manager for the [SIYI A8 mini](https://shop.siyi.biz/products/siyi-a8-mini) (includes tutorial).
+
+These cameras have inbuilt support for MAVLink (but not necessarily camera protocol v2):
+
+- [PhaseOne Cameras](https://geospatial.phaseone.com/) ([source](https://geospatial.phaseone.com/resources-support/developer/mavlink/)).
+- [Workswell cameras](https://www.drone-thermal-camera.com/): WIRIS Pro, WIRIS Pro SC, WIRIS Security, WIRIS Agro, GIS-320 ([source](https://www.drone-thermal-camera.com/mavlink-interface-for-uav-cameras/)).
 
 ## Camera Connection
 

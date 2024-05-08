@@ -1,8 +1,8 @@
 # Camera Definition File
 
 A GCS will build a Camera Controller UI for image capture, video capture and video streaming using information provided by the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
-For very simple cameras, the information in the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message itself is sufficient to construct the UI.
-For more advanced cameras (with settings and options) the information required to build the UI must be supplied in a _Camera Definition File_ that is located at the URI specified in the message's `cam_definition_uri` field.
+For simple cameras, the information in the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message itself is sufficient to construct the UI.
+For more advanced cameras (with settings and options) the information required to build the UI can be supplied in a _Camera Definition File_ that is located at the URI specified in the message's `cam_definition_uri` field.
 
 The _Camera Definition File_ contains all the camera settings, the options for each setting, and exclusion lists (options that invalidate or are conditional on other settings).
 In addition, it may contain localisations of GUI strings for display to the user.
