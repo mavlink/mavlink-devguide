@@ -27,10 +27,12 @@ These cameras have inbuilt support for MAVLink (but not necessarily camera proto
 - [PhaseOne Cameras](https://geospatial.phaseone.com/) ([source](https://geospatial.phaseone.com/resources-support/developer/mavlink/)).
 - [Workswell cameras](https://www.drone-thermal-camera.com/): WIRIS Pro, WIRIS Pro SC, WIRIS Security, WIRIS Agro, GIS-320 ([source](https://www.drone-thermal-camera.com/mavlink-interface-for-uav-cameras/)).
 
-## Camera Connection
+## Camera Discovery/Connection
 
 Camera components are expected to follow the [Heartbeat/Connection Protocol](../services/heartbeat.md) and sent a constant flow of heartbeats (nominally at 1Hz).
-Each camera must use a different pre-defined camera component ID: [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA) to [MAV_COMP_ID_CAMERA6](../messages/common.md#MAV_COMP_ID_CAMERA6).
+Cameras must set a [HEARTBEAT.type](../messages/common.md#HEARTBEAT) of [MAV_TYPE_CAMERA](../messages/common.md#MAV_TYPE_CAMERA).
+Each camera must use a different pre-defined camera component ID.
+Values of [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA) to [MAV_COMP_ID_CAMERA6](../messages/common.md#MAV_COMP_ID_CAMERA6) are recommended, but in theory any camera ID may be used.
 
 The first time a heartbeat is detected from a new camera, a GCS (or other receiving system) should start the [Camera Identification](#camera_identification) process.
 
