@@ -5899,7 +5899,7 @@ Loiter around this waypoint for X turns
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Turns) | Number of turns. | min: 0 |   
-2 (Heading Required) | Leave loiter circle only once heading towards the next waypoint (0 = False) | min: 0 min: 1 inc: 1 |   
+2 (Heading Required) | Leave loiter circle only once heading towards the next waypoint (0 = False) | min: 0 max: 1 inc: 1 |   
 3 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise |   | m 
 4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. |   |   
 5 (Latitude) | Latitude |   |   
@@ -5914,7 +5914,7 @@ Loiter at the specified latitude, longitude and altitude for a certain amount of
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Time) | Loiter time (only starts once Lat, Lon and Alt is reached). | min: 0 | s 
-2 (Heading Required) | Leave loiter circle only once heading towards the next waypoint (0 = False) | min: 0 min: 1 inc: 1 |   
+2 (Heading Required) | Leave loiter circle only once heading towards the next waypoint (0 = False) | min: 0 max: 1 inc: 1 |   
 3 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise. |   | m 
 4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. |   |   
 5 (Latitude) | Latitude |   |   
@@ -5973,7 +5973,7 @@ Land at local position (local frame only)
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Target) | Landing target number (if available) | min: 0 |   
+1 (Target) | Landing target number (if available) | min: 0 inc: 1 |   
 2 (Offset) | Maximum accepted offset from desired landing position - computed magnitude from spherical coordinates: d = sqrt(x^2 + y^2 + z^2), which gives the maximum accepted distance between the desired landing position and the position where the vehicle is about to land | min: 0 | m 
 3 (Descend Rate) | Landing descend rate |   | m/s 
 4 (Yaw) | Desired yaw angle |   | rad 
@@ -6003,7 +6003,7 @@ Vehicle following, i.e. this waypoint represents the position of a moving vehicl
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Following) | Following logic to use (e.g. loitering or sinusoidal following) - depends on specific autopilot implementation | |   
+1 (Following) | Following logic to use (e.g. loitering or sinusoidal following) - depends on specific autopilot implementation | inc: 1 |   
 2 (Ground Speed) | Ground speed of vehicle to be followed |   | m/s 
 3 (Radius) | Radius around waypoint. If positive loiter clockwise, else counter-clockwise |   | m 
 4 (Yaw) | Desired yaw angle. |   | deg 
@@ -6018,7 +6018,7 @@ Continue on the current course and climb/descend to specified altitude.  When th
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Action) | Climb or Descend (0 = Neutral, command completes when within 5m of this command's altitude, 1 = Climbing, command completes when at or above this command's altitude, 2 = Descending, command completes when at or below this command's altitude. | min: 0 min: 2 inc: 1 |   
+1 (Action) | Climb or Descend (0 = Neutral, command completes when within 5m of this command's altitude, 1 = Climbing, command completes when at or above this command's altitude, 2 = Descending, command completes when at or below this command's altitude. | min: 0 max: 2 inc: 1 |   
 2 | Empty |   |   
 3 | Empty |   |   
 4 | Empty |   |   
@@ -6033,10 +6033,10 @@ Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Heading Required) | Leave loiter circle only once heading towards the next waypoint (0 = False) | min: 0 min: 1 inc: 1 |   
+1 (Heading Required) | Leave loiter circle only once heading towards the next waypoint (0 = False) | min: 0 max: 1 inc: 1 |   
 2 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter. |   | m 
 3 | Empty |   |   
-4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. | min: 0 min: 1 inc: 1 |   
+4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. | min: 0 max: 1 inc: 1 |   
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
 7 (Altitude) | Altitude |   | m 
@@ -6048,10 +6048,10 @@ Begin following a target
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (System ID) | System ID (of the FOLLOW_TARGET beacon). Send 0 to disable follow-me and return to the default position hold mode. | min: 0 min: 255 inc: 1 |   
+1 (System ID) | System ID (of the FOLLOW_TARGET beacon). Send 0 to disable follow-me and return to the default position hold mode. | min: 0 max: 255 inc: 1 |   
 2 | Reserved |   |   
 3 | Reserved |   |   
-4 (Altitude Mode) | Altitude mode: 0: Keep current altitude, 1: keep altitude difference to target, 2: go to a fixed altitude above home. | min: 0 min: 2 inc: 1 |   
+4 (Altitude Mode) | Altitude mode: 0: Keep current altitude, 1: keep altitude difference to target, 2: go to a fixed altitude above home. | min: 0 max: 2 inc: 1 |   
 5 (Altitude) | Altitude above home. (used if mode=2) |   | m 
 6 | Reserved |   |   
 7 (Time to Land) | Time to land in which the MAV should go to the default position hold mode after a message RX timeout. | min: 0 | s 
@@ -6098,8 +6098,8 @@ Sets the region of interest (ROI) for a sensor set or the vehicle itself. This c
 Param (Label) | Description | Values
 --- | --- | ---
 1 (ROI Mode) | Region of interest mode. | [MAV_ROI](#MAV_ROI) 
-2 (WP Index) | Waypoint index/ target ID. (see MAV_ROI enum) | min: 0 
-3 (ROI Index) | ROI index (allows a vehicle to manage multiple ROI's) | min: 0 
+2 (WP Index) | Waypoint index/ target ID. (see MAV_ROI enum) | min: 0 inc: 1 
+3 (ROI Index) | ROI index (allows a vehicle to manage multiple ROI's) | min: 0 inc: 1 
 4 | Empty |   
 5 (X) | x the location of the fixed ROI (see MAV_FRAME) |   
 6 (Y) | y |   
@@ -6112,8 +6112,8 @@ Control autonomous path planning on the MAV.
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Local Ctrl) | 0: Disable local obstacle avoidance / local path planning (without resetting map), 1: Enable local path planning, 2: Enable and reset local path planning | min: 0 min: 2 inc: 1 |   
-2 (Global Ctrl) | 0: Disable full path planning (without resetting map), 1: Enable, 2: Enable and reset map/occupancy grid, 3: Enable and reset planned route, but not occupancy grid | min: 0 min: 3 inc: 1 |   
+1 (Local Ctrl) | 0: Disable local obstacle avoidance / local path planning (without resetting map), 1: Enable local path planning, 2: Enable and reset local path planning | min: 0 max: 2 inc: 1 |   
+2 (Global Ctrl) | 0: Disable full path planning (without resetting map), 1: Enable, 2: Enable and reset map/occupancy grid, 3: Enable and reset planned route, but not occupancy grid | min: 0 max: 3 inc: 1 |   
 3 | Empty |   |   
 4 (Yaw) | Yaw angle at goal |   | deg 
 5 (Latitude/X) | Latitude/X of goal |   |   
@@ -6172,7 +6172,7 @@ hand control over to an external controller
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Enable) | On / Off (> 0.5f on) | min: 0 min: 1 inc: 1 
+1 (Enable) | On / Off (> 0.5f on) | min: 0 max: 1 inc: 1 
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
@@ -6187,10 +6187,10 @@ Delay the next navigation command a number of seconds or until a specified time
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Delay) | Delay (-1 to enable time-of-day fields) | min: -1 | s 
-2 (Hour) | hour (24h format, UTC, -1 to ignore) | min: -1 min: 23 inc: 1 |   
-3 (Minute) | minute (24h format, UTC, -1 to ignore) | min: -1 min: 59 inc: 1 |   
-4 (Second) | second (24h format, UTC, -1 to ignore) | min: -1 min: 59 inc: 1 |   
+1 (Delay) | Delay (-1 to enable time-of-day fields) | min: -1 inc: 1 | s 
+2 (Hour) | hour (24h format, UTC, -1 to ignore) | min: -1 max: 23 inc: 1 |   
+3 (Minute) | minute (24h format, UTC, -1 to ignore) | min: -1 max: 59 inc: 1 |   
+4 (Second) | second (24h format, UTC, -1 to ignore) | min: -1 max: 59 inc: 1 |   
 5 | Empty |   |   
 6 | Empty |   |   
 7 | Empty |   |   
@@ -6277,10 +6277,10 @@ Reach a certain target angle.
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Angle) | target angle [0-360]. Absolute angles: 0 is north. Relative angle: 0 is initial yaw. Direction set by param3. | min: 0 min: 360 inc: None | deg 
+1 (Angle) | target angle [0-360]. Absolute angles: 0 is north. Relative angle: 0 is initial yaw. Direction set by param3. | min: 0 max: 360 | deg 
 2 (Angular Speed) | angular speed | min: 0 | deg/s 
-3 (Direction) | direction: -1: counter clockwise, 0: shortest direction, 1: clockwise | min: -1 min: 1 inc: 1 |   
-4 (Relative) | 0: absolute angle, 1: relative offset | min: 0 min: 1 inc: 1 |   
+3 (Direction) | direction: -1: counter clockwise, 0: shortest direction, 1: clockwise | min: -1 max: 1 inc: 1 |   
+4 (Relative) | 0: absolute angle, 1: relative offset | min: 0 max: 1 inc: 1 |   
 5 | Empty |   |   
 6 | Empty |   |   
 7 | Empty |   |   
@@ -6322,8 +6322,8 @@ Jump to the desired command in the mission list.  Repeat this action only the sp
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Number) | Sequence number | min: 0 
-2 (Repeat) | Repeat count | min: 0 
+1 (Number) | Sequence number | min: 0 inc: 1 
+2 (Repeat) | Repeat count | min: 0 inc: 1 
 3 | Empty |   
 4 | Empty |   
 5 | Empty |   
@@ -6355,10 +6355,10 @@ Note: the current home position may be emitted in a [HOME_POSITION](#HOME_POSITI
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Use Current) | Use current (1=use current location, 0=use specified location) | min: 0 min: 1 inc: 1 |   
-2 (Roll) | Roll angle (of surface). Range: -180..180 degrees. NAN or 0 means value not set. 0.01 indicates zero roll. | min: -180 min: 180 inc: None | deg 
-3 (Pitch) | Pitch angle (of surface). Range: -90..90 degrees. NAN or 0 means value not set. 0.01 means zero pitch. | min: -90 min: 90 inc: None | deg 
-4 (Yaw) | Yaw angle. NaN to use default heading. Range: -180..180 degrees. | min: -180 min: 180 inc: None | deg 
+1 (Use Current) | Use current (1=use current location, 0=use specified location) | min: 0 max: 1 inc: 1 |   
+2 (Roll) | Roll angle (of surface). Range: -180..180 degrees. NAN or 0 means value not set. 0.01 indicates zero roll. | min: -180 max: 180 | deg 
+3 (Pitch) | Pitch angle (of surface). Range: -90..90 degrees. NAN or 0 means value not set. 0.01 means zero pitch. | min: -90 max: 90 | deg 
+4 (Yaw) | Yaw angle. NaN to use default heading. Range: -180..180 degrees. | min: -180 max: 180 | deg 
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
 7 (Altitude) | Altitude |   | m 
@@ -6372,7 +6372,7 @@ Set a system parameter.  Caution!  Use of this command requires knowledge of the
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Number) | Parameter number | min: 0 
+1 (Number) | Parameter number | min: 0 inc: 1 
 2 (Value) | Parameter value |   
 3 | Empty |   
 4 | Empty |   
@@ -6387,8 +6387,8 @@ Set a relay to a condition.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Instance) | Relay instance number. | min: 0 
-2 (Setting) | Setting. (1=on, 0=off, others possible depending on system hardware) | min: 0 
+1 (Instance) | Relay instance number. | min: 0 inc: 1 
+2 (Setting) | Setting. (1=on, 0=off, others possible depending on system hardware) | min: 0 inc: 1 
 3 | Empty |   
 4 | Empty |   
 5 | Empty |   
@@ -6402,8 +6402,8 @@ Cycle a relay on and off for a desired number of cycles with a desired period.
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Instance) | Relay instance number. | min: 0 |   
-2 (Count) | Cycle count. | min: 1 |   
+1 (Instance) | Relay instance number. | min: 0 inc: 1 |   
+2 (Count) | Cycle count. | min: 1 inc: 1 |   
 3 (Time) | Cycle time. | min: 0 | s 
 4 | Empty |   |   
 5 | Empty |   |   
@@ -6417,8 +6417,8 @@ Set a servo to a desired PWM value.
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Instance) | Servo instance number. | min: 0 |   
-2 (PWM) | Pulse Width Modulation. | min: 0 | us 
+1 (Instance) | Servo instance number. | min: 0 inc: 1 |   
+2 (PWM) | Pulse Width Modulation. | min: 0 inc: 1 | us 
 3 | Empty |   |   
 4 | Empty |   |   
 5 | Empty |   |   
@@ -6432,9 +6432,9 @@ Cycle a between its nominal setting and a desired PWM for a desired number of cy
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Instance) | Servo instance number. | min: 0 |   
-2 (PWM) | Pulse Width Modulation. | min: 0 | us 
-3 (Count) | Cycle count. | min: 1 |   
+1 (Instance) | Servo instance number. | min: 0 inc: 1 |   
+2 (PWM) | Pulse Width Modulation. | min: 0 inc: 1 | us 
+3 (Count) | Cycle count. | min: 1 inc: 1 |   
 4 (Time) | Cycle time. | min: 0 | s 
 5 | Empty |   |   
 6 | Empty |   |   
@@ -6454,7 +6454,7 @@ Support for this command can also be tested by sending the command with param1=0
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Terminate) | Flight termination activated if > 0.5. Otherwise not activated and ACK with MAV_RESULT_FAILED. | min: 0 min: 1 inc: 1 
+1 (Terminate) | Flight termination activated if > 0.5. Otherwise not activated and ACK with MAV_RESULT_FAILED. | min: 0 max: 1 inc: 1 
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
@@ -6484,13 +6484,13 @@ Sets actuators (e.g. servos) to a desired value. The actuator numbers are mapped
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Actuator 1) | Actuator 1 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 min: 1 inc: None 
-2 (Actuator 2) | Actuator 2 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 min: 1 inc: None 
-3 (Actuator 3) | Actuator 3 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 min: 1 inc: None 
-4 (Actuator 4) | Actuator 4 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 min: 1 inc: None 
-5 (Actuator 5) | Actuator 5 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 min: 1 inc: None 
-6 (Actuator 6) | Actuator 6 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 min: 1 inc: None 
-7 (Index) | Index of actuator set (i.e if set to 1, Actuator 1 becomes Actuator 7) | min: 0 
+1 (Actuator 1) | Actuator 1 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
+2 (Actuator 2) | Actuator 2 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
+3 (Actuator 3) | Actuator 3 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
+4 (Actuator 4) | Actuator 4 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
+5 (Actuator 5) | Actuator 5 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
+6 (Actuator 6) | Actuator 6 value, scaled from [-1 to 1]. NaN to ignore. | min: -1 max: 1 
+7 (Index) | Index of actuator set (i.e if set to 1, Actuator 1 becomes Actuator 7) | min: 0 inc: 1 
 
 
 ### MAV_CMD_DO_RETURN_PATH_START (188) — [WIP] {#MAV_CMD_DO_RETURN_PATH_START}
@@ -6588,7 +6588,7 @@ If in a GPS controlled position mode, hold the current position or continue.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Continue) | 0: Pause current mission or reposition command, hold current position. 1: Continue mission. A VTOL capable vehicle should enter hover mode (multicopter and VTOL planes). A plane should loiter with the default loiter radius. | min: 0 min: 1 inc: 1 
+1 (Continue) | 0: Pause current mission or reposition command, hold current position. 1: Continue mission. A VTOL capable vehicle should enter hover mode (multicopter and VTOL planes). A plane should loiter with the default loiter radius. | min: 0 max: 1 inc: 1 
 2 | Reserved |   
 3 | Reserved |   
 4 | Reserved |   
@@ -6603,7 +6603,7 @@ Set moving direction to forward or reverse.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Reverse) | Direction (0=Forward, 1=Reverse) | min: 0 min: 1 inc: 1 
+1 (Reverse) | Direction (0=Forward, 1=Reverse) | min: 0 max: 1 inc: 1 
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
@@ -6663,7 +6663,7 @@ Mount tracks system with specified system ID. Determination of target vehicle po
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (System ID) | System ID | min: 1 min: 255 inc: 1 
+1 (System ID) | System ID | min: 1 max: 255 inc: 1 
 2 (Gimbal device ID) | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). |   
 
 
@@ -6673,10 +6673,10 @@ Control onboard camera system.
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (ID) | Camera ID (-1 for all) | min: -1 |   
-2 (Transmission) | Transmission: 0: disabled, 1: enabled compressed, 2: enabled raw | min: 0 min: 2 inc: 1 |   
+1 (ID) | Camera ID (-1 for all) | min: -1 inc: 1 |   
+2 (Transmission) | Transmission: 0: disabled, 1: enabled compressed, 2: enabled raw | min: 0 max: 2 inc: 1 |   
 3 (Interval) | Transmission mode: 0: video stream, >0: single images every n seconds | min: 0 | s 
-4 (Recording) | Recording: 0: disabled, 1: enabled compressed, 2: enabled raw | min: 0 min: 2 inc: 1 |   
+4 (Recording) | Recording: 0: disabled, 1: enabled compressed, 2: enabled raw | min: 0 max: 2 inc: 1 |   
 5 | Empty |   |   
 6 | Empty |   |   
 7 | Empty |   |   
@@ -6691,8 +6691,8 @@ Sets the region of interest (ROI) for a sensor set or the vehicle itself. This c
 Param (Label) | Description | Values
 --- | --- | ---
 1 (ROI Mode) | Region of interest mode. | [MAV_ROI](#MAV_ROI) 
-2 (WP Index) | Waypoint index/ target ID (depends on param 1). | min: 0 
-3 (ROI Index) | Region of interest index. (allows a vehicle to manage multiple ROI's) | min: 0 
+2 (WP Index) | Waypoint index/ target ID (depends on param 1). | min: 0 inc: 1 
+3 (ROI Index) | Region of interest index. (allows a vehicle to manage multiple ROI's) | min: 0 inc: 1 
 4 | Empty |   
 5 | MAV_ROI_WPNEXT: pitch offset from next waypoint, MAV_ROI_LOCATION: latitude |   
 6 | MAV_ROI_WPNEXT: roll offset from next waypoint, MAV_ROI_LOCATION: longitude |   
@@ -6705,13 +6705,13 @@ Configure digital camera. This is a fallback message for systems that have not y
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Mode) | Modes: P, TV, AV, M, Etc. | min: 0 |   
-2 (Shutter Speed) | Shutter speed: Divisor number for one second. | min: 0 |   
+1 (Mode) | Modes: P, TV, AV, M, Etc. | min: 0 inc: 1 |   
+2 (Shutter Speed) | Shutter speed: Divisor number for one second. | min: 0 inc: 1 |   
 3 (Aperture) | Aperture: F stop number. | min: 0 |   
-4 (ISO) | ISO number e.g. 80, 100, 200, Etc. | min: 0 |   
+4 (ISO) | ISO number e.g. 80, 100, 200, Etc. | min: 0 inc: 1 |   
 5 (Exposure) | Exposure type enumerator. |   |   
 6 (Command Identity) | Command Identity. |   |   
-7 (Engine Cut-off) | Main engine cut-off time before camera trigger. (0 means no cut-off) | min: 0 | ds 
+7 (Engine Cut-off) | Main engine cut-off time before camera trigger. (0 means no cut-off) | min: 0 inc: 1 | ds 
 
 
 ### MAV_CMD_DO_DIGICAM_CONTROL (203) {#MAV_CMD_DO_DIGICAM_CONTROL}
@@ -6738,9 +6738,9 @@ Mission command to configure a camera or antenna mount
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Mode) | Mount operation mode | [MAV_MOUNT_MODE](#MAV_MOUNT_MODE) 
-2 (Stabilize Roll) | stabilize roll? (1 = yes, 0 = no) | min: 0 min: 1 inc: 1 
-3 (Stabilize Pitch) | stabilize pitch? (1 = yes, 0 = no) | min: 0 min: 1 inc: 1 
-4 (Stabilize Yaw) | stabilize yaw? (1 = yes, 0 = no) | min: 0 min: 1 inc: 1 
+2 (Stabilize Roll) | stabilize roll? (1 = yes, 0 = no) | min: 0 max: 1 inc: 1 
+3 (Stabilize Pitch) | stabilize pitch? (1 = yes, 0 = no) | min: 0 max: 1 inc: 1 
+4 (Stabilize Yaw) | stabilize yaw? (1 = yes, 0 = no) | min: 0 max: 1 inc: 1 
 5 (Roll Input Mode) | roll input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame) |   
 6 (Pitch Input Mode) | pitch input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame) |   
 7 (Yaw Input Mode) | yaw input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame) |   
@@ -6770,8 +6770,8 @@ Mission command to set camera trigger distance for this flight. The camera is tr
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Distance) | Camera trigger distance. 0 to stop triggering. | min: 0 | m 
-2 (Shutter) | Camera shutter integration time. -1 or 0 to ignore | min: -1 | ms 
-3 (Trigger) | Trigger camera once immediately. (0 = no trigger, 1 = trigger) | min: 0 min: 1 inc: 1 |   
+2 (Shutter) | Camera shutter integration time. -1 or 0 to ignore | min: -1 inc: 1 | ms 
+3 (Trigger) | Trigger camera once immediately. (0 = no trigger, 1 = trigger) | min: 0 max: 1 inc: 1 |   
 4 | Empty |   |   
 5 | Empty |   |   
 6 | Empty |   |   
@@ -6788,7 +6788,7 @@ Flight stacks typically reset the setting to system defaults on reboot.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Enable) | enable? (0=disable, 1=enable, 2=disable_floor_only) | min: 0 min: 2 inc: 1 
+1 (Enable) | enable? (0=disable, 1=enable, 2=disable_floor_only) | min: 0 max: 2 inc: 1 
 2 (Types) | Fence types to enable or disable as a bitmask. A value of 0 indicates that all fences should be enabled or disabled. This parameter is ignored if param 1 has the value 2 | [FENCE_TYPE](#FENCE_TYPE) 
 3 | Empty |   
 4 | Empty |   
@@ -6818,11 +6818,11 @@ Command to perform motor test.
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Instance) | Motor instance number (from 1 to max number of motors on the vehicle). | min: 1 |   
+1 (Instance) | Motor instance number (from 1 to max number of motors on the vehicle). | min: 1 inc: 1 |   
 2 (Throttle Type) | Throttle type (whether the Throttle Value in param3 is a percentage, PWM value, etc.) | [MOTOR_TEST_THROTTLE_TYPE](#MOTOR_TEST_THROTTLE_TYPE) |   
 3 (Throttle) | Throttle value. |   |   
 4 (Timeout) | Timeout between tests that are run in sequence. | min: 0 | s 
-5 (Motor Count) | Motor count. Number of motors to test in sequence: 0/1=one motor, 2= two motors, etc. The Timeout (param4) is used between tests. | min: 0 |   
+5 (Motor Count) | Motor count. Number of motors to test in sequence: 0/1=one motor, 2= two motors, etc. The Timeout (param4) is used between tests. | min: 0 inc: 1 |   
 6 (Test Order) | Motor test order. | [MOTOR_TEST_ORDER](#MOTOR_TEST_ORDER) |   
 7 | Empty |   |   
 
@@ -6833,7 +6833,7 @@ Change to/from inverted flight.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Inverted) | Inverted flight. (0=normal, 1=inverted) | min: 0 min: 1 inc: 1 
+1 (Inverted) | Inverted flight. (0=normal, 1=inverted) | min: 0 max: 1 inc: 1 
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
@@ -6848,7 +6848,7 @@ Mission command to operate a gripper.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Instance) | Gripper instance number. | min: 1 
+1 (Instance) | Gripper instance number. | min: 1 inc: 1 
 2 (Action) | Gripper action to perform. | [GRIPPER_ACTIONS](#GRIPPER_ACTIONS) 
 3 | Empty |   
 4 | Empty |   
@@ -6863,7 +6863,7 @@ Enable/disable autotune.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Enable) | Enable (1: enable, 0:disable). | min: 0 min: 1 inc: 1 
+1 (Enable) | Enable (1: enable, 0:disable). | min: 0 max: 1 inc: 1 
 2 (Axis) | Specify which axis are autotuned. 0 indicates autopilot default settings. | [AUTOTUNE_AXIS](#AUTOTUNE_AXIS) 
 3 | Empty. |   
 4 | Empty. |   
@@ -6880,7 +6880,7 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Yaw) | Yaw angle to adjust steering by. |   | deg 
 2 (Speed) | Speed. |   | m/s 
-3 (Angle) | Final angle. (0=absolute, 1=relative) | min: 0 min: 1 inc: 1 |   
+3 (Angle) | Final angle. (0=absolute, 1=relative) | min: 0 max: 1 inc: 1 |   
 4 | Empty |   |   
 5 | Empty |   |   
 6 | Empty |   |   
@@ -6893,8 +6893,8 @@ Mission command to set camera trigger interval for this flight. If triggering is
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Trigger Cycle) | Camera trigger cycle time. -1 or 0 to ignore. | min: -1 | ms 
-2 (Shutter Integration) | Camera shutter integration time. Should be less than trigger cycle time. -1 or 0 to ignore. | min: -1 | ms 
+1 (Trigger Cycle) | Camera trigger cycle time. -1 or 0 to ignore. | min: -1 inc: 1 | ms 
+2 (Shutter Integration) | Camera shutter integration time. Should be less than trigger cycle time. -1 or 0 to ignore. | min: -1 inc: 1 | ms 
 3 | Empty |   |   
 4 | Empty |   |   
 5 | Empty |   |   
@@ -6925,8 +6925,8 @@ set id of master controller
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (System ID) | System ID | min: 0 min: 255 inc: 1 
-2 (Component ID) | Component ID | min: 0 min: 255 inc: 1 
+1 (System ID) | System ID | min: 0 max: 255 inc: 1 
+2 (Component ID) | Component ID | min: 0 max: 255 inc: 1 
 3 | Empty |   
 4 | Empty |   
 5 | Empty |   
@@ -6955,8 +6955,8 @@ Control vehicle engine. This is interpreted by the vehicles engine controller to
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Start Engine) | 0: Stop engine, 1:Start Engine | min: 0 min: 1 inc: 1 |   
-2 (Cold Start) | 0: Warm start, 1:Cold start. Controls use of choke where applicable | min: 0 min: 1 inc: 1 |   
+1 (Start Engine) | 0: Stop engine, 1:Start Engine | min: 0 max: 1 inc: 1 |   
+2 (Cold Start) | 0: Warm start, 1:Cold start. Controls use of choke where applicable | min: 0 max: 1 inc: 1 |   
 3 (Height Delay) | Height delay. This is for commanding engine start only after the vehicle has gained the specified height. Used in VTOL vehicles during takeoff to start engine after the aircraft is off the ground. Zero for no delay. | min: 0 | m 
 4 | Empty |   |   
 5 | Empty |   |   
@@ -6982,8 +6982,8 @@ The command will ACK with [MAV_RESULT_FAILED](#MAV_RESULT_FAILED) if the sequenc
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Number) | Mission sequence value to set. -1 for the current mission item (use to reset mission without changing current mission item). | min: -1 
-2 (Reset Mission) | Resets mission. 1: true, 0: false. Resets jump counters to initial values and changes mission state "completed" to be "active" or "paused". | min: 0 min: 1 inc: 1 
+1 (Number) | Mission sequence value to set. -1 for the current mission item (use to reset mission without changing current mission item). | min: -1 inc: 1 
+2 (Reset Mission) | Resets mission. 1: true, 0: false. Resets jump counters to initial values and changes mission state "completed" to be "active" or "paused". | min: 0 max: 1 inc: 1 
 3 | Empty |   
 4 | Empty |   
 5 | Empty |   
@@ -7012,13 +7012,13 @@ Trigger calibration. This command will be only accepted if in pre-flight mode. E
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Gyro Temperature) | 1: gyro calibration, 3: gyro temperature calibration | min: 0 min: 3 inc: 1 
-2 (Magnetometer) | 1: magnetometer calibration | min: 0 min: 1 inc: 1 
-3 (Ground Pressure) | 1: ground pressure calibration | min: 0 min: 1 inc: 1 
-4 (Remote Control) | 1: radio RC calibration, 2: RC trim calibration | min: 0 min: 1 inc: 1 
-5 (Accelerometer) | 1: accelerometer calibration, 2: board level calibration, 3: accelerometer temperature calibration, 4: simple accelerometer calibration | min: 0 min: 4 inc: 1 
-6 (Compmot or Airspeed) | 1: APM: compass/motor interference calibration (PX4: airspeed calibration, deprecated), 2: airspeed calibration | min: 0 min: 2 inc: 1 
-7 (ESC or Baro) | 1: ESC calibration, 3: barometer temperature calibration | min: 0 min: 3 inc: 1 
+1 (Gyro Temperature) | 1: gyro calibration, 3: gyro temperature calibration | min: 0 max: 3 inc: 1 
+2 (Magnetometer) | 1: magnetometer calibration | min: 0 max: 1 inc: 1 
+3 (Ground Pressure) | 1: ground pressure calibration | min: 0 max: 1 inc: 1 
+4 (Remote Control) | 1: radio RC calibration, 2: RC trim calibration | min: 0 max: 1 inc: 1 
+5 (Accelerometer) | 1: accelerometer calibration, 2: board level calibration, 3: accelerometer temperature calibration, 4: simple accelerometer calibration | min: 0 max: 4 inc: 1 
+6 (Compmot or Airspeed) | 1: APM: compass/motor interference calibration (PX4: airspeed calibration, deprecated), 2: airspeed calibration | min: 0 max: 2 inc: 1 
+7 (ESC or Baro) | 1: ESC calibration, 3: barometer temperature calibration | min: 0 max: 3 inc: 1 
 
 
 ### MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS (242) {#MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS}
@@ -7027,7 +7027,7 @@ Set sensor offsets. This command will be only accepted if in pre-flight mode.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Sensor Type) | Sensor to adjust the offsets for: 0: gyros, 1: accelerometer, 2: magnetometer, 3: barometer, 4: optical flow, 5: second magnetometer, 6: third magnetometer | min: 0 min: 6 inc: 1 
+1 (Sensor Type) | Sensor to adjust the offsets for: 0: gyros, 1: accelerometer, 2: magnetometer, 3: barometer, 4: optical flow, 5: second magnetometer, 6: third magnetometer | min: 0 max: 6 inc: 1 
 2 (X Offset) | X axis offset (or generic dimension 1), in the sensor's raw units |   
 3 (Y Offset) | Y axis offset (or generic dimension 2), in the sensor's raw units |   
 4 (Z Offset) | Z axis offset (or generic dimension 3), in the sensor's raw units |   
@@ -7059,7 +7059,7 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Parameter Storage) | Action to perform on the persistent parameter storage | [PREFLIGHT_STORAGE_PARAMETER_ACTION](#PREFLIGHT_STORAGE_PARAMETER_ACTION) |   
 2 (Mission Storage) | Action to perform on the persistent mission storage | [PREFLIGHT_STORAGE_MISSION_ACTION](#PREFLIGHT_STORAGE_MISSION_ACTION) |   
-3 (Logging Rate) | Onboard logging: 0: Ignore, 1: Start default rate logging, -1: Stop logging, > 1: logging rate (e.g. set to 1000 for 1000 Hz logging) | min: -1 | Hz 
+3 (Logging Rate) | Onboard logging: 0: Ignore, 1: Start default rate logging, -1: Stop logging, > 1: logging rate (e.g. set to 1000 for 1000 Hz logging) | min: -1 inc: 1 | Hz 
 4 | Reserved |   |   
 5 | Empty |   |   
 6 | Empty |   |   
@@ -7072,10 +7072,10 @@ Request the reboot or shutdown of system components.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Autopilot) | 0: Do nothing for autopilot, 1: Reboot autopilot, 2: Shutdown autopilot, 3: Reboot autopilot and keep it in the bootloader until upgraded. | min: 0 min: 3 inc: 1 
-2 (Companion) | 0: Do nothing for onboard computer, 1: Reboot onboard computer, 2: Shutdown onboard computer, 3: Reboot onboard computer and keep it in the bootloader until upgraded. | min: 0 min: 3 inc: 1 
-3 (Component action) | 0: Do nothing for component, 1: Reboot component, 2: Shutdown component, 3: Reboot component and keep it in the bootloader until upgraded | min: 0 min: 3 inc: 1 
-4 (Component ID) | MAVLink Component ID targeted in param3 (0 for all components). | min: 0 min: 255 inc: 1 
+1 (Autopilot) | 0: Do nothing for autopilot, 1: Reboot autopilot, 2: Shutdown autopilot, 3: Reboot autopilot and keep it in the bootloader until upgraded. | min: 0 max: 3 inc: 1 
+2 (Companion) | 0: Do nothing for onboard computer, 1: Reboot onboard computer, 2: Shutdown onboard computer, 3: Reboot onboard computer and keep it in the bootloader until upgraded. | min: 0 max: 3 inc: 1 
+3 (Component action) | 0: Do nothing for component, 1: Reboot component, 2: Shutdown component, 3: Reboot component and keep it in the bootloader until upgraded | min: 0 max: 3 inc: 1 
+4 (Component ID) | MAVLink Component ID targeted in param3 (0 for all components). | min: 0 max: 255 inc: 1 
 5 | Reserved (set to 0) |   
 6 | Reserved (set to 0) |   
 7 | WIP: ID (e.g. camera ID -1 for all IDs) |   
@@ -7103,11 +7103,11 @@ Mission command to set a Camera Auto Mount Pivoting Oblique Survey (Replaces [CA
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Distance) | Camera trigger distance. 0 to stop triggering. | min: 0 | m 
-2 (Shutter) | Camera shutter integration time. 0 to ignore | min: 0 | ms 
-3 (Min Interval) | The minimum interval in which the camera is capable of taking subsequent pictures repeatedly. 0 to ignore. | min: 0 min: 10000 inc: 1 | ms 
-4 (Positions) | Total number of roll positions at which the camera will capture photos (images captures spread evenly across the limits defined by param5). | min: 2 |   
+2 (Shutter) | Camera shutter integration time. 0 to ignore | min: 0 inc: 1 | ms 
+3 (Min Interval) | The minimum interval in which the camera is capable of taking subsequent pictures repeatedly. 0 to ignore. | min: 0 max: 10000 inc: 1 | ms 
+4 (Positions) | Total number of roll positions at which the camera will capture photos (images captures spread evenly across the limits defined by param5). | min: 2 inc: 1 |   
 5 (Roll Angle) | Angle limits that the camera can be rolled to left and right of center. | min: 0 | deg 
-6 (Pitch Angle) | Fixed pitch angle that the camera will hold in oblique mode if the mount is actuated in the pitch axis. | min: -180 min: 180 inc: None | deg 
+6 (Pitch Angle) | Fixed pitch angle that the camera will hold in oblique mode if the mount is actuated in the pitch axis. | min: -180 max: 180 | deg 
 7 | Empty |   |   
 
 
@@ -7117,8 +7117,8 @@ start running a mission
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (First Item) | first_item: the first mission item to run | min: 0 
-2 (Last Item) | last_item:  the last mission item to run (after this item is run, the mission ends) | min: 0 
+1 (First Item) | first_item: the first mission item to run | min: 0 inc: 1 
+2 (Last Item) | last_item:  the last mission item to run (after this item is run, the mission ends) | min: 0 inc: 1 
 
 
 ### MAV_CMD_ACTUATOR_TEST (310) {#MAV_CMD_ACTUATOR_TEST}
@@ -7127,8 +7127,8 @@ Actuator testing command. This is similar to [MAV_CMD_DO_MOTOR_TEST](#MAV_CMD_DO
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Value) | Output value: 1 means maximum positive output, 0 to center servos or minimum motor thrust (expected to spin), -1 for maximum negative (if not supported by the motors, i.e. motor is not reversible, smaller than 0 maps to NaN). And NaN maps to disarmed (stop the motors). | min: -1 min: 1 inc: None |   
-2 (Timeout) | Timeout after which the test command expires and the output is restored to the previous value. A timeout has to be set for safety reasons. A timeout of 0 means to restore the previous value immediately. | min: 0 min: 3 inc: None | s 
+1 (Value) | Output value: 1 means maximum positive output, 0 to center servos or minimum motor thrust (expected to spin), -1 for maximum negative (if not supported by the motors, i.e. motor is not reversible, smaller than 0 maps to NaN). And NaN maps to disarmed (stop the motors). | min: -1 max: 1 |   
+2 (Timeout) | Timeout after which the test command expires and the output is restored to the previous value. A timeout has to be set for safety reasons. A timeout of 0 means to restore the previous value immediately. | min: 0 max: 3 | s 
 3 | |   |   
 4 | |   |   
 5 (Output Function) | Actuator Output function | [ACTUATOR_OUTPUT_FUNCTION](#ACTUATOR_OUTPUT_FUNCTION) |   
@@ -7157,8 +7157,8 @@ Arms / Disarms a component
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Arm) | 0: disarm, 1: arm | min: 0 min: 1 inc: 1 
-2 (Force) | 0: arm-disarm unless prevented by safety checks (i.e. when landed), 21196: force arming/disarming (e.g. allow arming to override preflight checks and disarming in flight) | min: 0 min: 21196 inc: 21196 
+1 (Arm) | 0: disarm, 1: arm | min: 0 max: 1 inc: 1 
+2 (Force) | 0: arm-disarm unless prevented by safety checks (i.e. when landed), 21196: force arming/disarming (e.g. allow arming to override preflight checks and disarming in flight) | min: 0 max: 21196 inc: 21196 
 
 
 ### MAV_CMD_RUN_PREARM_CHECKS (401) {#MAV_CMD_RUN_PREARM_CHECKS}
@@ -7180,7 +7180,7 @@ Turns illuminators ON/OFF. An illuminator is a light source that is used for lig
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Enable) | 0: Illuminators OFF, 1: Illuminators ON | min: 0 min: 1 inc: 1 
+1 (Enable) | 0: Illuminators OFF, 1: Illuminators ON | min: 0 max: 1 inc: 1 
 
 
 ### MAV_CMD_DO_ILLUMINATOR_CONFIGURE (406) {#MAV_CMD_DO_ILLUMINATOR_CONFIGURE}
@@ -7190,9 +7190,9 @@ Configures illuminator settings. An illuminator is a light source that is used f
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Mode) | Mode | [ILLUMINATOR_MODE](#ILLUMINATOR_MODE) |   
-2 (Brightness) | 0%: Off, 100%: Max Brightness | min: 0 min: 100 inc: None | % 
+2 (Brightness) | 0%: Off, 100%: Max Brightness | min: 0 max: 100 | % 
 3 (Strobe Period) | Strobe period in seconds where 0 means strobing is not used | min: 0 | s 
-4 (Strobe Duty) | Strobe duty cycle where 100% means it is on constantly and 0 means strobing is not used | min: 0 min: 100 inc: None | % 
+4 (Strobe Duty) | Strobe duty cycle where 100% means it is on constantly and 0 means strobing is not used | min: 0 max: 100 | % 
 
 
 ### MAV_CMD_GET_HOME_POSITION (410) — [DEP] {#MAV_CMD_GET_HOME_POSITION}
@@ -7244,7 +7244,7 @@ The receiver should ACK the command and then emit its response in a [MESSAGE_INT
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Message ID) | The MAVLink message ID | min: 0 min: 16777215 inc: 1 
+1 (Message ID) | The MAVLink message ID | min: 0 max: 16777215 inc: 1 
 
 
 ### MAV_CMD_SET_MESSAGE_INTERVAL (511) {#MAV_CMD_SET_MESSAGE_INTERVAL}
@@ -7253,9 +7253,9 @@ Set the interval between messages for a particular MAVLink message ID. This inte
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Message ID) | The MAVLink message ID | min: 0 min: 16777215 inc: 1 |   
-2 (Interval) | The interval between two messages. -1: disable. 0: request default rate (which may be zero). | min: -1 | us 
-7 (Response Target) | Target address of message stream (if message has target address fields). 0: Flight-stack default (recommended), 1: address of requestor, 2: broadcast. | min: 0 min: 2 inc: 1 |   
+1 (Message ID) | The MAVLink message ID | min: 0 max: 16777215 inc: 1 |   
+2 (Interval) | The interval between two messages. -1: disable. 0: request default rate (which may be zero). | min: -1 inc: 1 | us 
+7 (Response Target) | Target address of message stream (if message has target address fields). 0: Flight-stack default (recommended), 1: address of requestor, 2: broadcast. | min: 0 max: 2 inc: 1 |   
 
 
 ### MAV_CMD_REQUEST_MESSAGE (512) {#MAV_CMD_REQUEST_MESSAGE}
@@ -7264,13 +7264,13 @@ Request the target system(s) emit a single instance of a specified message (i.e.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Message ID) | The MAVLink message ID of the requested message. | min: 0 min: 16777215 inc: 1 
+1 (Message ID) | The MAVLink message ID of the requested message. | min: 0 max: 16777215 inc: 1 
 2 (Req Param 1) | Use for index ID, if required. Otherwise, the use of this parameter (if any) must be defined in the requested message. By default assumed not used (0). |   
 3 (Req Param 2) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0). |   
 4 (Req Param 3) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0). |   
 5 (Req Param 4) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0). |   
 6 (Req Param 5) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0). |   
-7 (Response Target) | Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requestor, 2: broadcast. | min: 0 min: 2 inc: 1 
+7 (Response Target) | Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requestor, 2: broadcast. | min: 0 max: 2 inc: 1 
 
 
 ### MAV_CMD_REQUEST_PROTOCOL_VERSION (519) — [DEP] {#MAV_CMD_REQUEST_PROTOCOL_VERSION}
@@ -7281,7 +7281,7 @@ Request MAVLink protocol version compatibility. All receivers should ACK the com
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Protocol) | 1: Request supported protocol versions by all nodes on the network | min: 0 min: 1 inc: 1 
+1 (Protocol) | 1: Request supported protocol versions by all nodes on the network | min: 0 max: 1 inc: 1 
 2 | Reserved (all remaining params) |   
 
 
@@ -7293,7 +7293,7 @@ Request autopilot capabilities. The receiver should ACK the command and then emi
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Version) | 1: Request autopilot version | min: 0 min: 1 inc: 1 
+1 (Version) | 1: Request autopilot version | min: 0 max: 1 inc: 1 
 2 | Reserved (all remaining params) |   
 
 
@@ -7305,7 +7305,7 @@ Request camera information ([CAMERA_INFORMATION](#CAMERA_INFORMATION)).
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Capabilities) | 0: No action 1: Request camera capabilities | min: 0 min: 1 inc: 1 
+1 (Capabilities) | 0: No action 1: Request camera capabilities | min: 0 max: 1 inc: 1 
 2 | Reserved (all remaining params) |   
 
 
@@ -7317,7 +7317,7 @@ Request camera settings ([CAMERA_SETTINGS](#CAMERA_SETTINGS)).
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Settings) | 0: No Action 1: Request camera settings | min: 0 min: 1 inc: 1 
+1 (Settings) | 0: No Action 1: Request camera settings | min: 0 max: 1 inc: 1 
 2 | Reserved (all remaining params) |   
 
 
@@ -7329,8 +7329,8 @@ Request storage information ([STORAGE_INFORMATION](#STORAGE_INFORMATION)). Use t
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Storage ID) | Storage ID (0 for all, 1 for first, 2 for second, etc.) | min: 0 
-2 (Information) | 0: No Action 1: Request storage information | min: 0 min: 1 inc: 1 
+1 (Storage ID) | Storage ID (0 for all, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
+2 (Information) | 0: No Action 1: Request storage information | min: 0 max: 1 inc: 1 
 3 | Reserved (all remaining params) |   
 
 
@@ -7340,9 +7340,9 @@ Format a storage medium. Once format is complete, a [STORAGE_INFORMATION](#STORA
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Storage ID) | Storage ID (1 for first, 2 for second, etc.) | min: 0 
-2 (Format) | Format storage (and reset image log). 0: No action 1: Format storage | min: 0 min: 1 inc: 1 
-3 (Reset Image Log) | Reset Image Log (without formatting storage medium). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index. 0: No action 1: Reset Image Log | min: 0 min: 1 inc: 1 
+1 (Storage ID) | Storage ID (1 for first, 2 for second, etc.) | min: 0 inc: 1 
+2 (Format) | Format storage (and reset image log). 0: No action 1: Format storage | min: 0 max: 1 inc: 1 
+3 (Reset Image Log) | Reset Image Log (without formatting storage medium). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index. 0: No action 1: Reset Image Log | min: 0 max: 1 inc: 1 
 4 | Reserved (all remaining params) |   
 
 
@@ -7354,7 +7354,7 @@ Request camera capture status ([CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS))
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Capture Status) | 0: No Action 1: Request camera capture status | min: 0 min: 1 inc: 1 
+1 (Capture Status) | 0: No Action 1: Request camera capture status | min: 0 max: 1 inc: 1 
 2 | Reserved (all remaining params) |   
 
 
@@ -7366,7 +7366,7 @@ Request flight information ([FLIGHT_INFORMATION](#FLIGHT_INFORMATION))
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Flight Information) | 1: Request flight information | min: 0 min: 1 inc: 1 
+1 (Flight Information) | 1: Request flight information | min: 0 max: 1 inc: 1 
 2 | Reserved (all remaining params) |   
 
 
@@ -7376,7 +7376,7 @@ Reset all camera settings to Factory Default
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Reset) | 0: No Action 1: Reset all settings | min: 0 min: 1 inc: 1 
+1 (Reset) | 0: No Action 1: Reset all settings | min: 0 max: 1 inc: 1 
 2 | Reserved (all remaining params) |   
 
 
@@ -7430,7 +7430,7 @@ A target system can choose to not allow a particular storage to be set as prefer
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Storage ID) | Storage ID (1 for first, 2 for second, etc.) | min: 0 
+1 (Storage ID) | Storage ID (1 for first, 2 for second, etc.) | min: 0 inc: 1 
 2 (Usage) | Usage flags | [STORAGE_USAGE_FLAG](#STORAGE_USAGE_FLAG) 
 
 
@@ -7451,7 +7451,7 @@ Tagged jump target. Can be jumped to with [MAV_CMD_DO_JUMP_TAG](#MAV_CMD_DO_JUMP
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Tag) | Tag. | min: 0 
+1 (Tag) | Tag. | min: 0 inc: 1 
 
 
 ### MAV_CMD_DO_JUMP_TAG (601) {#MAV_CMD_DO_JUMP_TAG}
@@ -7460,8 +7460,8 @@ Jump to the matching tag in the mission list. Repeat this action for the specifi
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Tag) | Target tag to jump to. | min: 0 
-2 (Repeat) | Repeat count. | min: 0 
+1 (Tag) | Target tag to jump to. | min: 0 inc: 1 
+2 (Repeat) | Repeat count. | min: 0 inc: 1 
 
 
 ### MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW (1000) {#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW}
@@ -7470,8 +7470,8 @@ Set gimbal manager pitch/yaw setpoints (low rate command). It is possible to set
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Pitch angle) | Pitch angle (positive to pitch up, relative to vehicle for FOLLOW mode, relative to world horizon for LOCK mode). | min: -180 min: 180 inc: None | deg 
-2 (Yaw angle) | Yaw angle (positive to yaw to the right, relative to vehicle for FOLLOW mode, absolute to North for LOCK mode). | min: -180 min: 180 inc: None | deg 
+1 (Pitch angle) | Pitch angle (positive to pitch up, relative to vehicle for FOLLOW mode, relative to world horizon for LOCK mode). | min: -180 max: 180 | deg 
+2 (Yaw angle) | Yaw angle (positive to yaw to the right, relative to vehicle for FOLLOW mode, absolute to North for LOCK mode). | min: -180 max: 180 | deg 
 3 (Pitch rate) | Pitch rate (positive to pitch up). |   | deg/s 
 4 (Yaw rate) | Yaw rate (positive to yaw to the right). |   | deg/s 
 5 (Gimbal manager flags) | Gimbal manager flags to use. | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) |   
@@ -7510,10 +7510,10 @@ If the command is broadcast (target_component is 0) then param 1 should be set t
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (id) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras that don't have a distinct component id (such as autopilot-attached cameras). 0: all cameras. This is used to specifically target autopilot-connected cameras or individual sensors in a multi-sensor MAVLink camera. It is also used to target specific cameras when the MAV_CMD is used in a mission | min: 0 min: 255 inc: 1 |   
+1 (id) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras that don't have a distinct component id (such as autopilot-attached cameras). 0: all cameras. This is used to specifically target autopilot-connected cameras or individual sensors in a multi-sensor MAVLink camera. It is also used to target specific cameras when the MAV_CMD is used in a mission | min: 0 max: 255 inc: 1 |   
 2 (Interval) | Desired elapsed time between two consecutive pictures (in seconds). Minimum values depend on hardware (typically greater than 2 seconds). | min: 0 | s 
-3 (Total Images) | Total number of images to capture. 0 to capture forever/until MAV_CMD_IMAGE_STOP_CAPTURE. | min: 0 |   
-4 (Sequence Number) | Capture sequence number starting from 1. This is only valid for single-capture (param3 == 1), otherwise set to 0. Increment the capture ID for each capture command to prevent double captures when a command is re-transmitted. | min: 1 |   
+3 (Total Images) | Total number of images to capture. 0 to capture forever/until MAV_CMD_IMAGE_STOP_CAPTURE. | min: 0 inc: 1 |   
+4 (Sequence Number) | Capture sequence number starting from 1. This is only valid for single-capture (param3 == 1), otherwise set to 0. Increment the capture ID for each capture command to prevent double captures when a command is re-transmitted. | min: 1 inc: 1 |   
 5 | |   |   
 6 | |   |   
 7 | |   |   
@@ -7538,7 +7538,7 @@ If the command is broadcast (target_component is 0) then param 1 should be set t
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (id) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras that don't have a distinct component id (such as autopilot-attached cameras). 0: all cameras. This is used to specifically target autopilot-connected cameras or individual sensors in a multi-sensor MAVLink camera. It is also used to target specific cameras when the MAV_CMD is used in a mission | min: 0 min: 255 inc: 1 
+1 (id) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras that don't have a distinct component id (such as autopilot-attached cameras). 0: all cameras. This is used to specifically target autopilot-connected cameras or individual sensors in a multi-sensor MAVLink camera. It is also used to target specific cameras when the MAV_CMD is used in a mission | min: 0 max: 255 inc: 1 
 2 | |   
 3 | |   
 4 | |   
@@ -7555,7 +7555,7 @@ Re-request a [CAMERA_IMAGE_CAPTURED](#CAMERA_IMAGE_CAPTURED) message.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Number) | Sequence number for missing CAMERA_IMAGE_CAPTURED message | min: 0 
+1 (Number) | Sequence number for missing CAMERA_IMAGE_CAPTURED message | min: 0 inc: 1 
 2 | |   
 3 | |   
 4 | |   
@@ -7570,9 +7570,9 @@ Enable or disable on-board camera triggering system.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Enable) | Trigger enable/disable (0 for disable, 1 for start), -1 to ignore | min: -1 min: 1 inc: 1 
-2 (Reset) | 1 to reset the trigger sequence, -1 or 0 to ignore | min: -1 min: 1 inc: 1 
-3 (Pause) | 1 to pause triggering, but without switching the camera off or retracting it. -1 to ignore | min: -1 min: 1 inc: 2 
+1 (Enable) | Trigger enable/disable (0 for disable, 1 for start), -1 to ignore | min: -1 max: 1 inc: 1 
+2 (Reset) | 1 to reset the trigger sequence, -1 or 0 to ignore | min: -1 max: 1 inc: 1 
+3 (Pause) | 1 to pause triggering, but without switching the camera off or retracting it. -1 to ignore | min: -1 max: 1 inc: 2 
 
 
 ### MAV_CMD_CAMERA_TRACK_POINT (2004) {#MAV_CMD_CAMERA_TRACK_POINT}
@@ -7581,9 +7581,9 @@ If the camera supports point visual tracking ([CAMERA_CAP_FLAGS_HAS_TRACKING_POI
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Point x) | Point to track x value (normalized 0..1, 0 is left, 1 is right). | min: 0 min: 1 inc: None 
-2 (Point y) | Point to track y value (normalized 0..1, 0 is top, 1 is bottom). | min: 0 min: 1 inc: None 
-3 (Radius) | Point radius (normalized 0..1, 0 is one pixel, 1 is full image width). | min: 0 min: 1 inc: None 
+1 (Point x) | Point to track x value (normalized 0..1, 0 is left, 1 is right). | min: 0 max: 1 
+2 (Point y) | Point to track y value (normalized 0..1, 0 is top, 1 is bottom). | min: 0 max: 1 
+3 (Radius) | Point radius (normalized 0..1, 0 is one pixel, 1 is full image width). | min: 0 max: 1 
 
 
 ### MAV_CMD_CAMERA_TRACK_RECTANGLE (2005) {#MAV_CMD_CAMERA_TRACK_RECTANGLE}
@@ -7592,10 +7592,10 @@ If the camera supports rectangle visual tracking ([CAMERA_CAP_FLAGS_HAS_TRACKING
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Top left corner x) | Top left corner of rectangle x value (normalized 0..1, 0 is left, 1 is right). | min: 0 min: 1 inc: None 
-2 (Top left corner y) | Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom). | min: 0 min: 1 inc: None 
-3 (Bottom right corner x) | Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right). | min: 0 min: 1 inc: None 
-4 (Bottom right corner y) | Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom). | min: 0 min: 1 inc: None 
+1 (Top left corner x) | Top left corner of rectangle x value (normalized 0..1, 0 is left, 1 is right). | min: 0 max: 1 
+2 (Top left corner y) | Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom). | min: 0 max: 1 
+3 (Bottom right corner x) | Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right). | min: 0 max: 1 
+4 (Bottom right corner y) | Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom). | min: 0 max: 1 
 
 
 ### MAV_CMD_CAMERA_STOP_TRACKING (2010) {#MAV_CMD_CAMERA_STOP_TRACKING}
@@ -7612,7 +7612,7 @@ Starts video capture (recording).
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Stream ID) | Video Stream ID (0 for all streams) | min: 0 |   
+1 (Stream ID) | Video Stream ID (0 for all streams) | min: 0 inc: 1 |   
 2 (Status Frequency) | Frequency CAMERA_CAPTURE_STATUS messages should be sent while recording (0 for no messages, otherwise frequency) | min: 0 | Hz 
 3 | |   |   
 4 | |   |   
@@ -7627,7 +7627,7 @@ Stop the current video capture (recording).
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Stream ID) | Video Stream ID (0 for all streams) | min: 0 
+1 (Stream ID) | Video Stream ID (0 for all streams) | min: 0 inc: 1 
 2 | |   
 3 | |   
 4 | |   
@@ -7642,7 +7642,7 @@ Start video streaming
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 
+1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
 
 
 ### MAV_CMD_VIDEO_STOP_STREAMING (2503) {#MAV_CMD_VIDEO_STOP_STREAMING}
@@ -7651,7 +7651,7 @@ Stop the given video stream
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 
+1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
 
 
 ### MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION (2504) — [DEP] {#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION}
@@ -7662,7 +7662,7 @@ Request video stream information ([VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFOR
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 
+1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
 
 
 ### MAV_CMD_REQUEST_VIDEO_STREAM_STATUS (2505) — [DEP] {#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS}
@@ -7673,7 +7673,7 @@ Request video stream status ([VIDEO_STREAM_STATUS](#VIDEO_STREAM_STATUS))
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 
+1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
 
 
 ### MAV_CMD_LOGGING_START (2510) {#MAV_CMD_LOGGING_START}
@@ -7682,7 +7682,7 @@ Request to start streaming logging data over MAVLink (see also [LOGGING_DATA](#L
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Format) | Format: 0: ULog | min: 0 
+1 (Format) | Format: 0: ULog | min: 0 inc: 1 
 2 | Reserved (set to 0) |   
 3 | Reserved (set to 0) |   
 4 | Reserved (set to 0) |   
@@ -7710,7 +7710,7 @@ Param (Label) | Description
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Landing Gear ID) | Landing gear ID (default: 0, -1 for all) | min: -1 
+1 (Landing Gear ID) | Landing gear ID (default: 0, -1 for all) | min: -1 inc: 1 
 2 (Landing Gear Position) | Landing gear position (Down: 0, Up: 1, NaN for no change) |   
 3 | |   
 4 | |   
@@ -7725,7 +7725,7 @@ Request to start/stop transmitting over the high latency telemetry
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Enable) | Control transmission over high latency telemetry (0: stop, 1: start) | min: 0 min: 1 inc: 1 
+1 (Enable) | Control transmission over high latency telemetry (0: stop, 1: start) | min: 0 max: 1 inc: 1 
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
@@ -7765,7 +7765,7 @@ If the authorization is denied [COMMAND_ACK](#COMMAND_ACK).result_param2 should 
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (System ID) | Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle | min: 0 min: 255 inc: 1 
+1 (System ID) | Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle | min: 0 max: 255 inc: 1 
 
 
 ### MAV_CMD_SET_GUIDED_SUBMODE_STANDARD (4000) {#MAV_CMD_SET_GUIDED_SUBMODE_STANDARD}
@@ -7798,8 +7798,8 @@ Delay mission state machine until gate has been reached.
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Geometry) | Geometry: 0: orthogonal to path between previous and next waypoint. | min: 0 |   
-2 (UseAltitude) | Altitude: 0: ignore altitude | min: 0 min: 1 inc: 1 |   
+1 (Geometry) | Geometry: 0: orthogonal to path between previous and next waypoint. | min: 0 inc: 1 |   
+2 (UseAltitude) | Altitude: 0: ignore altitude | min: 0 max: 1 inc: 1 |   
 3 | Empty |   |   
 4 | Empty |   |   
 5 (Latitude) | Latitude |   |   
@@ -7828,8 +7828,8 @@ Fence vertex for an inclusion polygon (the polygon must not be self-intersecting
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Vertex Count) | Polygon vertex count | min: 3 
-2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group, must be the same for all points in each polygon | min: 0 
+1 (Vertex Count) | Polygon vertex count | min: 3 inc: 1 
+2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group, must be the same for all points in each polygon | min: 0 inc: 1 
 3 | Reserved |   
 4 | Reserved |   
 5 (Latitude) | Latitude |   
@@ -7843,7 +7843,7 @@ Fence vertex for an exclusion polygon (the polygon must not be self-intersecting
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Vertex Count) | Polygon vertex count | min: 3 
+1 (Vertex Count) | Polygon vertex count | min: 3 inc: 1 
 2 | Reserved |   
 3 | Reserved |   
 4 | Reserved |   
@@ -7859,7 +7859,7 @@ Circular fence area. The vehicle must stay inside this area.
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Radius) | Radius. |   | m 
-2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group | min: 0 |   
+2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group | min: 0 inc: 1 |   
 3 | Reserved |   |   
 4 | Reserved |   |   
 5 (Latitude) | Latitude |   |   
@@ -7950,8 +7950,8 @@ Deploy payload on a Lat / Lon / Alt position. This includes the navigation to re
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Operation Mode) | Operation mode. 0: prepare single payload deploy (overwriting previous requests), but do not execute it. 1: execute payload deploy immediately (rejecting further deploy commands during execution, but allowing abort). 2: add payload deploy to existing deployment list. | min: 0 min: 2 inc: 1 |   
-2 (Approach Vector) | Desired approach vector in compass heading. A negative value indicates the system can define the approach vector at will. | min: -1 min: 360 inc: None | deg 
+1 (Operation Mode) | Operation mode. 0: prepare single payload deploy (overwriting previous requests), but do not execute it. 1: execute payload deploy immediately (rejecting further deploy commands during execution, but allowing abort). 2: add payload deploy to existing deployment list. | min: 0 max: 2 inc: 1 |   
+2 (Approach Vector) | Desired approach vector in compass heading. A negative value indicates the system can define the approach vector at will. | min: -1 max: 360 | deg 
 3 (Ground Speed) | Desired ground speed at release time. This can be overridden by the airframe in case it needs to meet minimum airspeed. A negative value indicates the system can define the ground speed at will. | min: -1 |   
 4 (Altitude Clearance) | Minimum altitude clearance to the release position. A negative value indicates the system can define the clearance at will. | min: -1 | m 
 5 (Latitude) | Latitude. |   | degE7 
@@ -7967,7 +7967,7 @@ Control the payload deployment.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Operation Mode) | Operation mode. 0: Abort deployment, continue normal mission. 1: switch to payload deployment mode. 100: delete first payload deployment request. 101: delete all payload deployment requests. | min: 0 min: 101 inc: 1 
+1 (Operation Mode) | Operation mode. 0: Abort deployment, continue normal mission. 1: switch to payload deployment mode. 100: delete first payload deployment request. 101: delete all payload deployment requests. | min: 0 max: 101 inc: 1 
 2 | Reserved |   
 3 | Reserved |   
 4 | Reserved |   
@@ -8237,7 +8237,7 @@ Command to operate winch.
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Instance) | Winch instance number. | min: 1 |   
+1 (Instance) | Winch instance number. | min: 1 inc: 1 |   
 2 (Action) | Action to perform. | [WINCH_ACTIONS](#WINCH_ACTIONS) |   
 3 (Length) | Length of line to release (negative to wind). |   | m 
 4 (Rate) | Release rate (negative to wind). |   | m/s 

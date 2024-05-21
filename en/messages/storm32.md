@@ -1678,8 +1678,8 @@ Command to a gimbal manager to control the gimbal tilt and pan angles. It is pos
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Pitch angle) | Pitch/tilt angle (positive: tilt up). NaN to be ignored. | min: -180 min: 180 inc: None | deg 
-2 (Yaw angle) | Yaw/pan angle (positive: pan to the right). NaN to be ignored. The frame is determined by the GIMBAL_DEVICE_FLAGS_YAW_IN_xxx_FRAME flags. | min: -180 min: 180 inc: None | deg 
+1 (Pitch angle) | Pitch/tilt angle (positive: tilt up). NaN to be ignored. | min: -180 max: 180 | deg 
+2 (Yaw angle) | Yaw/pan angle (positive: pan to the right). NaN to be ignored. The frame is determined by the GIMBAL_DEVICE_FLAGS_YAW_IN_xxx_FRAME flags. | min: -180 max: 180 | deg 
 3 (Pitch rate) | Pitch/tilt rate (positive: tilt up). NaN to be ignored. |   | deg/s 
 4 (Yaw rate) | Yaw/pan rate (positive: pan to the right). NaN to be ignored. The frame is determined by the GIMBAL_DEVICE_FLAGS_YAW_IN_xxx_FRAME flags. |   | deg/s 
 5 (Gimbal device flags) | Gimbal device flags to be applied. | [GIMBAL_DEVICE_FLAGS](#GIMBAL_DEVICE_FLAGS) |   

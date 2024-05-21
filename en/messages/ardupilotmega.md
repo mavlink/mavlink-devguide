@@ -2500,7 +2500,7 @@ Control attached liquid sprayer
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Sprayer Enable) | 0: disable sprayer. 1: enable sprayer. | min: 0 min: 1 inc: 1 
+1 (Sprayer Enable) | 0: disable sprayer. 1: enable sprayer. | min: 0 max: 1 inc: 1 
 2 | Empty. |   
 3 | Empty. |   
 4 | Empty. |   
@@ -2515,7 +2515,7 @@ Pass instructions onto scripting, a script should be checking for a new command
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (ID) | uint16 ID value to be passed to scripting | min: 0 min: 65535 inc: 1 
+1 (ID) | uint16 ID value to be passed to scripting | min: 0 max: 65535 inc: 1 
 2 (param 1) | float value to be passed to scripting |   
 3 (param 2) | float value to be passed to scripting |   
 4 (param 3) | float value to be passed to scripting |   
@@ -2778,7 +2778,7 @@ PAUSE button has been clicked.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Shot Mode) | 1 if Solo is in a shot mode, 0 otherwise. | min: 0 min: 1 inc: 1 
+1 (Shot Mode) | 1 if Solo is in a shot mode, 0 otherwise. | min: 0 max: 1 inc: 1 
 2 | Empty. |   
 3 | Empty. |   
 4 | Empty. |   
@@ -2827,7 +2827,7 @@ Set EKF sensor source set.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (SourceSetId) | Source Set Id. | min: 1 min: 3 inc: 1 
+1 (SourceSetId) | Source Set Id. | min: 1 max: 3 inc: 1 
 2 | Empty. |   
 3 | Empty. |   
 4 | Empty. |   
@@ -2842,11 +2842,11 @@ Initiate a magnetometer calibration.
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Magnetometers Bitmask) | Bitmask of magnetometers to calibrate. Use 0 to calibrate all sensors that can be started (sensors may not start if disabled, unhealthy, etc.). The command will NACK if calibration does not start for a sensor explicitly specified by the bitmask. | min: 0 min: 255 inc: 1 |   
-2 (Retry on Failure) | Automatically retry on failure (0=no retry, 1=retry). | min: 0 min: 1 inc: 1 |   
-3 (Autosave) | Save without user input (0=require input, 1=autosave). | min: 0 min: 1 inc: 1 |   
+1 (Magnetometers Bitmask) | Bitmask of magnetometers to calibrate. Use 0 to calibrate all sensors that can be started (sensors may not start if disabled, unhealthy, etc.). The command will NACK if calibration does not start for a sensor explicitly specified by the bitmask. | min: 0 max: 255 inc: 1 |   
+2 (Retry on Failure) | Automatically retry on failure (0=no retry, 1=retry). | min: 0 max: 1 inc: 1 |   
+3 (Autosave) | Save without user input (0=require input, 1=autosave). | min: 0 max: 1 inc: 1 |   
 4 (Delay) | Delay. |   | s 
-5 (Autoreboot) | Autoreboot (0=user reboot, 1=autoreboot). | min: 0 min: 1 inc: 1 |   
+5 (Autoreboot) | Autoreboot (0=user reboot, 1=autoreboot). | min: 0 max: 1 inc: 1 |   
 6 | Empty. |   |   
 7 | Empty. |   |   
 
@@ -2857,7 +2857,7 @@ Accept a magnetometer calibration.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Magnetometers Bitmask) | Bitmask of magnetometers that calibration is accepted (0 means all). | min: 0 min: 255 inc: 1 
+1 (Magnetometers Bitmask) | Bitmask of magnetometers that calibration is accepted (0 means all). | min: 0 max: 255 inc: 1 
 2 | Empty. |   
 3 | Empty. |   
 4 | Empty. |   
@@ -2872,7 +2872,7 @@ Cancel a running magnetometer calibration.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Magnetometers Bitmask) | Bitmask of magnetometers to cancel a running calibration (0 means all). | min: 0 min: 255 inc: 1 
+1 (Magnetometers Bitmask) | Bitmask of magnetometers to cancel a running calibration (0 means all). | min: 0 max: 255 inc: 1 
 2 | Empty. |   
 3 | Empty. |   
 4 | Empty. |   
@@ -2887,7 +2887,7 @@ Command autopilot to get into factory test/diagnostic mode.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Test Mode) | 0: activate test mode, 1: exit test mode. | min: 0 min: 1 inc: 1 
+1 (Test Mode) | 0: activate test mode, 1: exit test mode. | min: 0 max: 1 inc: 1 
 2 | Empty. |   
 3 | Empty. |   
 4 | Empty. |   
@@ -2948,7 +2948,7 @@ Reports progress and success or failure of gimbal axis calibration procedure.
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Axis) | Gimbal axis we're reporting calibration progress for. | [GIMBAL_AXIS](#GIMBAL_AXIS) |   
-2 (Progress) | Current calibration progress for this axis. | min: 0 min: 100 inc: None | % 
+2 (Progress) | Current calibration progress for this axis. | min: 0 max: 100 | % 
 3 (Status) | Status of the calibration. | [GIMBAL_AXIS_CALIBRATION_STATUS](#GIMBAL_AXIS_CALIBRATION_STATUS) |   
 4 | Empty. |   |   
 5 | Empty. |   |   
@@ -2998,7 +2998,7 @@ Param (Label) | Description | Values
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
-5 (Magic Number) | Magic number - set to 290876 to actually flash | 
+5 (Magic Number) | Magic number - set to 290876 to actually flash | inc: 1 
 6 | Empty |   
 7 | Empty |   
 
@@ -3010,7 +3010,7 @@ Reset battery capacity for batteries that accumulate consumed battery via integr
 Param (Label) | Description | Values
 --- | --- | ---
 1 (battery mask) | Bitmask of batteries to reset. Least significant bit is for the first battery. |   
-2 (percentage) | Battery percentage remaining to set. | min: 0 min: 100 inc: 1 
+2 (percentage) | Battery percentage remaining to set. | min: 0 max: 100 inc: 1 
 
 
 ### MAV_CMD_DEBUG_TRAP (42700) {#MAV_CMD_DEBUG_TRAP}
@@ -3104,7 +3104,7 @@ Change to target heading at a given rate, overriding previous heading/s. This sl
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (heading type) | course-over-ground or raw vehicle heading. | [HEADING_TYPE](#HEADING_TYPE) |   
-2 (heading target) | Target heading. | min: 0 min: 359.99 inc: None | deg 
+2 (heading target) | Target heading. | min: 0 max: 359.99 | deg 
 3 (heading rate-of-change) | Maximum centripetal accelearation, ie rate of change,  toward new heading. |   | m/s/s 
 4 | Empty |   |   
 5 | Empty |   |   

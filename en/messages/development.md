@@ -1385,7 +1385,7 @@ Command protocol information: https://mavlink.io/en/services/command.html.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Component ID) | Component id of the component to be upgraded. If set to 0, all components should be upgraded. | [MAV_COMPONENT](#MAV_COMPONENT) 
-2 (Reboot) | 0: Do not reboot component after the action is executed, 1: Reboot component after the action is executed. | min: 0 min: 1 inc: 1 
+2 (Reboot) | 0: Do not reboot component after the action is executed, 1: Reboot component after the action is executed. | min: 0 max: 1 inc: 1 
 3 | Reserved |   
 4 | Reserved |   
 5 | Reserved |   
@@ -1430,7 +1430,7 @@ Groups can be nested.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Group ID) | Mission-unique group id.<br>Group id is limited because only 24 bit integer can be stored in 32 bit float. | min: 0 min: 16777216 inc: 1 
+1 (Group ID) | Mission-unique group id.<br>Group id is limited because only 24 bit integer can be stored in 32 bit float. | min: 0 max: 16777216 inc: 1 
 
 
 ### MAV_CMD_GROUP_END (302) — [WIP] {#MAV_CMD_GROUP_END}
@@ -1445,7 +1445,7 @@ Groups can be nested.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Group ID) | Mission-unique group id.<br>Group id is limited because only 24 bit integer can be stored in 32 bit float. | min: 0 min: 16777216 inc: 1 
+1 (Group ID) | Mission-unique group id.<br>Group id is limited because only 24 bit integer can be stored in 32 bit float. | min: 0 max: 16777216 inc: 1 
 
 
 ### MAV_CMD_ACTUATOR_TEST (310) — \[from: [common](../messages/common.md#MAV_CMD_ACTUATOR_TEST)\] {#MAV_CMD_ACTUATOR_TEST}
@@ -1531,8 +1531,8 @@ Recipients must reject command addressed to broadcast system ID.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (System ID) | New system ID for target component(s). 0: ignore and reject command (broadcast system ID not allowed). | min: 1 min: 255 inc: 1 
-2 (Component ID) | New component ID for target component(s). 0: ignore (component IDs don't change). | min: 0 min: 255 inc: 1 
+1 (System ID) | New system ID for target component(s). 0: ignore and reject command (broadcast system ID not allowed). | min: 1 max: 255 inc: 1 
+2 (Component ID) | New component ID for target component(s). 0: ignore (component IDs don't change). | min: 0 max: 255 inc: 1 
 3 (Reboot) | Reboot components after ID change. Any non-zero value triggers the reboot. |   
 4 | |   
 
@@ -1630,7 +1630,7 @@ See https://mavlink.io/en/services/opendroneid.html for more information.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Number) | Set/unset emergency 0: unset, 1: set | min: 0 
+1 (Number) | Set/unset emergency 0: unset, 1: set | min: 0 inc: 1 
 2 | |   
 3 | |   
 4 | Empty |   
