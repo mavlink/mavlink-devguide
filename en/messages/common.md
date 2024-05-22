@@ -7384,7 +7384,7 @@ Set camera running mode. Use NaN for reserved values. GCS will send a [MAV_CMD_R
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 | Reserved (Set to 0) |   
+1 (id) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras that don't have a distinct component id (such as autopilot-attached cameras). 0: all cameras. This is used to specifically target autopilot-connected cameras or individual sensors in a multi-sensor MAVLink camera. It is also used to target specific cameras when the MAV_CMD is used in a mission |   
 2 (Camera Mode) | Camera mode | [CAMERA_MODE](#CAMERA_MODE) 
 3 | |   
 4 | |   
