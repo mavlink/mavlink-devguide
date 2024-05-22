@@ -25,13 +25,11 @@ span.warning {
 
 ## Summary
 
-XML entities defined in this file (not included):
-
-- Messages: [NAV_FILTER_BIAS](#NAV_FILTER_BIAS), [RADIO_CALIBRATION](#RADIO_CALIBRATION), [UALBERTA_SYS_STATUS](#UALBERTA_SYS_STATUS)
-
-- Enums: [UALBERTA_AUTOPILOT_MODE](#UALBERTA_AUTOPILOT_MODE), [UALBERTA_NAV_MODE](#UALBERTA_NAV_MODE), [UALBERTA_PILOT_MODE](#UALBERTA_PILOT_MODE)
-
-- Commands: None
+Type | Defined | Included
+--- | --- | ---
+[Messages](#messages) | 3 | 223
+[Enums](#enumerated-types) | 3 | 141
+[Commands](#mav_commands) | 164 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 

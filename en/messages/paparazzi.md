@@ -27,13 +27,11 @@ span.warning {
 
 ## Summary
 
-XML entities defined in this file (not included):
-
-- Messages: [SCRIPT_ITEM](#SCRIPT_ITEM), [SCRIPT_REQUEST](#SCRIPT_REQUEST), [SCRIPT_REQUEST_LIST](#SCRIPT_REQUEST_LIST), [SCRIPT_COUNT](#SCRIPT_COUNT), [SCRIPT_CURRENT](#SCRIPT_CURRENT)
-
-- Enums: None
-
-- Commands: None
+Type | Defined | Included
+--- | --- | ---
+[Messages](#messages) | 5 | 223
+[Enums](#enumerated-types) | 0 | 141
+[Commands](#mav_commands) | 164 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 

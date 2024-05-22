@@ -31,13 +31,11 @@ span.warning {
 
 ## Summary
 
-XML entities defined in this file (not included):
-
-- Messages: None
-
-- Enums: None
-
-- Commands: None
+Type | Defined | Included
+--- | --- | ---
+[Messages](#messages) | 0 | 2
+[Enums](#enumerated-types) | 0 | 6
+Commands | 0 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 

@@ -25,13 +25,11 @@ span.warning {
 
 ## Summary
 
-XML entities defined in this file (not included):
-
-- Messages: [COMMAND_INT_STAMPED](#COMMAND_INT_STAMPED), [COMMAND_LONG_STAMPED](#COMMAND_LONG_STAMPED), [SENS_POWER](#SENS_POWER), [SENS_MPPT](#SENS_MPPT), [ASLCTRL_DATA](#ASLCTRL_DATA), [ASLCTRL_DEBUG](#ASLCTRL_DEBUG), [ASLUAV_STATUS](#ASLUAV_STATUS), [EKF_EXT](#EKF_EXT), [ASL_OBCTRL](#ASL_OBCTRL), [SENS_ATMOS](#SENS_ATMOS), [SENS_BATMON](#SENS_BATMON), [FW_SOARING_DATA](#FW_SOARING_DATA), [SENSORPOD_STATUS](#SENSORPOD_STATUS), [SENS_POWER_BOARD](#SENS_POWER_BOARD), [GSM_LINK_STATUS](#GSM_LINK_STATUS), [SATCOM_LINK_STATUS](#SATCOM_LINK_STATUS), [SENSOR_AIRFLOW_ANGLES](#SENSOR_AIRFLOW_ANGLES)
-
-- Enums: [GSM_LINK_TYPE](#GSM_LINK_TYPE), [GSM_MODEM_TYPE](#GSM_MODEM_TYPE)
-
-- Commands: [MAV_CMD_RESET_MPPT](#MAV_CMD_RESET_MPPT), [MAV_CMD_PAYLOAD_CONTROL](#MAV_CMD_PAYLOAD_CONTROL)
+Type | Defined | Included
+--- | --- | ---
+[Messages](#messages) | 17 | 223
+[Enums](#enumerated-types) | 2 | 141
+[Commands](#mav_commands) | 166 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 

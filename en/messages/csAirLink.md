@@ -27,13 +27,11 @@ span.warning {
 
 ## Summary
 
-XML entities defined in this file (not included):
-
-- Messages: [AIRLINK_AUTH](#AIRLINK_AUTH), [AIRLINK_AUTH_RESPONSE](#AIRLINK_AUTH_RESPONSE), [AIRLINK_EYE_GS_HOLE_PUSH_REQUEST](#AIRLINK_EYE_GS_HOLE_PUSH_REQUEST), [AIRLINK_EYE_GS_HOLE_PUSH_RESPONSE](#AIRLINK_EYE_GS_HOLE_PUSH_RESPONSE), [AIRLINK_EYE_HP](#AIRLINK_EYE_HP), [AIRLINK_EYE_TURN_INIT](#AIRLINK_EYE_TURN_INIT)
-
-- Enums: [AIRLINK_AUTH_RESPONSE_TYPE](#AIRLINK_AUTH_RESPONSE_TYPE), [AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE](#AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE), [AIRLINK_EYE_IP_VERSION](#AIRLINK_EYE_IP_VERSION), [AIRLINK_EYE_HOLE_PUSH_TYPE](#AIRLINK_EYE_HOLE_PUSH_TYPE), [AIRLINK_EYE_TURN_INIT_TYPE](#AIRLINK_EYE_TURN_INIT_TYPE)
-
-- Commands: None
+Type | Defined | Included
+--- | --- | ---
+[Messages](#messages) | 6 | 0
+[Enums](#enumerated-types) | 5 | 0
+Commands | 0 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 

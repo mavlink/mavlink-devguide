@@ -25,13 +25,11 @@ span.warning {
 
 ## Summary
 
-XML entities defined in this file (not included):
-
-- Messages: [CUBEPILOT_RAW_RC](#CUBEPILOT_RAW_RC), [HERELINK_VIDEO_STREAM_INFORMATION](#HERELINK_VIDEO_STREAM_INFORMATION), [HERELINK_TELEM](#HERELINK_TELEM), [CUBEPILOT_FIRMWARE_UPDATE_START](#CUBEPILOT_FIRMWARE_UPDATE_START), [CUBEPILOT_FIRMWARE_UPDATE_RESP](#CUBEPILOT_FIRMWARE_UPDATE_RESP)
-
-- Enums: None
-
-- Commands: None
+Type | Defined | Included
+--- | --- | ---
+[Messages](#messages) | 5 | 223
+[Enums](#enumerated-types) | 0 | 141
+[Commands](#mav_commands) | 164 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 

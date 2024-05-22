@@ -25,13 +25,11 @@ span.warning {
 
 ## Summary
 
-XML entities defined in this file (not included):
-
-- Messages: [ARRAY_TEST_0](#ARRAY_TEST_0), [ARRAY_TEST_1](#ARRAY_TEST_1), [ARRAY_TEST_3](#ARRAY_TEST_3), [ARRAY_TEST_4](#ARRAY_TEST_4), [ARRAY_TEST_5](#ARRAY_TEST_5), [ARRAY_TEST_6](#ARRAY_TEST_6), [ARRAY_TEST_7](#ARRAY_TEST_7), [ARRAY_TEST_8](#ARRAY_TEST_8)
-
-- Enums: None
-
-- Commands: None
+Type | Defined | Included
+--- | --- | ---
+[Messages](#messages) | 8 | 223
+[Enums](#enumerated-types) | 0 | 141
+[Commands](#mav_commands) | 164 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 

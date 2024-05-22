@@ -25,13 +25,11 @@ span.warning {
 
 ## Summary
 
-XML entities defined in this file (not included):
-
-- Messages: [ICAROUS_HEARTBEAT](#ICAROUS_HEARTBEAT), [ICAROUS_KINEMATIC_BANDS](#ICAROUS_KINEMATIC_BANDS)
-
-- Enums: [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES), [ICAROUS_FMS_STATE](#ICAROUS_FMS_STATE)
-
-- Commands: None
+Type | Defined | Included
+--- | --- | ---
+[Messages](#messages) | 2 | 0
+[Enums](#enumerated-types) | 2 | 0
+Commands | 0 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 

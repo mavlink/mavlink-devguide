@@ -33,13 +33,11 @@ span.warning {
 
 ## Summary
 
-XML entities defined in this file (not included):
-
-- Messages: [HEARTBEAT](#HEARTBEAT), [PROTOCOL_VERSION](#PROTOCOL_VERSION)
-
-- Enums: [MAV_AUTOPILOT](#MAV_AUTOPILOT), [MAV_TYPE](#MAV_TYPE), [MAV_MODE_FLAG](#MAV_MODE_FLAG), [MAV_MODE_FLAG_DECODE_POSITION](#MAV_MODE_FLAG_DECODE_POSITION), [MAV_STATE](#MAV_STATE), [MAV_COMPONENT](#MAV_COMPONENT)
-
-- Commands: None
+Type | Defined | Included
+--- | --- | ---
+[Messages](#messages) | 2 | 0
+[Enums](#enumerated-types) | 6 | 0
+Commands | 0 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 

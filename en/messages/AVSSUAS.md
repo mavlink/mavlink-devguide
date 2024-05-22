@@ -29,13 +29,11 @@ span.warning {
 
 ## Summary
 
-XML entities defined in this file (not included):
-
-- Messages: [AVSS_PRS_SYS_STATUS](#AVSS_PRS_SYS_STATUS), [AVSS_DRONE_POSITION](#AVSS_DRONE_POSITION), [AVSS_DRONE_IMU](#AVSS_DRONE_IMU), [AVSS_DRONE_OPERATION_MODE](#AVSS_DRONE_OPERATION_MODE)
-
-- Enums: [MAV_AVSS_COMMAND_FAILURE_REASON](#MAV_AVSS_COMMAND_FAILURE_REASON), [AVSS_M300_OPERATION_MODE](#AVSS_M300_OPERATION_MODE), [AVSS_HORSEFLY_OPERATION_MODE](#AVSS_HORSEFLY_OPERATION_MODE)
-
-- Commands: [MAV_CMD_PRS_SET_ARM](#MAV_CMD_PRS_SET_ARM), [MAV_CMD_PRS_GET_ARM](#MAV_CMD_PRS_GET_ARM), [MAV_CMD_PRS_GET_BATTERY](#MAV_CMD_PRS_GET_BATTERY), [MAV_CMD_PRS_GET_ERR](#MAV_CMD_PRS_GET_ERR), [MAV_CMD_PRS_SET_ARM_ALTI](#MAV_CMD_PRS_SET_ARM_ALTI), [MAV_CMD_PRS_GET_ARM_ALTI](#MAV_CMD_PRS_GET_ARM_ALTI), [MAV_CMD_PRS_SHUTDOWN](#MAV_CMD_PRS_SHUTDOWN)
+Type | Defined | Included
+--- | --- | ---
+[Messages](#messages) | 4 | 223
+[Enums](#enumerated-types) | 3 | 141
+[Commands](#mav_commands) | 171 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
