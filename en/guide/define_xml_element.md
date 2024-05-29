@@ -81,9 +81,9 @@ Where you define an element depends on whether it is common or a dialect, and wh
 
 To create a new dialect file:
 
-1.  Fork [mavlink/mavlink](https://github.com/mavlink/mavlink/) for your system and clone to your system
-1.  Create a dialect file named after your MAVLink system (e.g. flight stack) in **message_definitions/v1.0/**
-1.  Copy the following text into the new file.
+1. Fork [mavlink/mavlink](https://github.com/mavlink/mavlink/) for your system and clone to your system
+1. Create a dialect file named after your MAVLink system (e.g. flight stack) in **message_definitions/v1.0/**
+1. Copy the following text into the new file.
 
     ```xml
     <?xml version="1.0"?>
@@ -109,19 +109,20 @@ To create a new dialect file:
     - imports **common.xml** (`<include>common.xml</include>`)
     - takes its version from **common.xml** (which is why the `version` tags are commented out).
 
-1.  Update the `include`(s):
+1. Update the `include`(s):
     - if the dialect is not based on **common.xml** remove the existing `include` line
     - Add additional `<include> </include>` elements to import additional files/dialects.
       > **Note** Includes in nested files are ignored.
-1.  Update the `version`:
+1. Update the `version`:
     - Most dialects should leave the version commented out (i.e. all dialects that include **common.xml**).
     - Dialects that are _not_ based on **common.xml** can uncomment the `<version>6</version>` line and use whatever version is desired.
+
       > **Note** The `version` specified in the top level file is used by default, if present.
           If it is not present in the file, then a `version` from an included file is used.
-1.  Update the `<dialect>8</dialect>` line to replace `8` with the next-largest unused dialect number (based on the other files in the folder).
-1.  Optionally remove the `enums` or `messages` sections if you don't plan on declaring any elements of these types.
-1.  Add enums or messages as described in the following sections.
-1.  Save the file, and create a PR to push it back to the **mavlink/mavlink** project repo.
+1. Update the `<dialect>8</dialect>` line to replace `8` with the next-largest unused dialect number (based on the other files in the folder).
+1. Optionally remove the `enums` or `messages` sections if you don't plan on declaring any elements of these types.
+1. Add enums or messages as described in the following sections.
+1. Save the file, and create a PR to push it back to the **mavlink/mavlink** project repo.
 
 ## Messages {#messages}
 

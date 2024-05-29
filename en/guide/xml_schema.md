@@ -43,12 +43,12 @@ The main tags are listed below (all are optional):
   - Nested `include` of files is not supported (only files specified in the top level `include` are imported).
   - When building, generator toolchains will merge/append enums in all files, and report duplicate enum entries and messages.
 
-* `version`: The minor version number for the release, as included in the [HEARTBEAT](../messages/common.md#HEARTBEAT message) `mavlink_version` field.
+- `version`: The minor version number for the release, as included in the [HEARTBEAT](../messages/common.md#HEARTBEAT message) `mavlink_version` field.
   - For dialects that `include` **common.xml** the tag should be removed so that the `version` from **common.xml** is used (`version` from top level file will be used if specified).
   - For private dialects you can use whatever version you like.
-* `dialect`: This number is unique for your dialect. You should use: TBD <!-- how are these allocated -->
-* [enums](#enum): Dialect-specific enums can be defined in this block (if none are defined in the file, the block is optional/can be removed).
-* [messages](#messages): Dialect-specific messages can be defined in this block (if none are defined in the file, the block is optional/can be removed).
+- `dialect`: This number is unique for your dialect. You should use: TBD <!-- how are these allocated -->
+- [enums](#enum): Dialect-specific enums can be defined in this block (if none are defined in the file, the block is optional/can be removed).
+- [messages](#messages): Dialect-specific messages can be defined in this block (if none are defined in the file, the block is optional/can be removed).
 
 ## Enum Definition (enums) {#enum}
 
@@ -158,6 +158,8 @@ A `param` **should** also include the following optional attributes where approp
 - `increment` - Allowed increments for the parameter value.
 - `minValue` - Minimum value for param.
 - `maxValue` - Maximum value for the param.
+- `multiplier` - Multiply by this value to get the unscaled original value.
+  This is primarily intended for specifying any scaling applied to unitless values, where scaling is not encoded in the `units`.
 - `reserved` - Boolean indicating whether param is reserved for future use. If the attributes is not declared, then implicitly `reserved="False"`.
   > **Tip** See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
 - `default` - Default value for the `param`
@@ -216,9 +218,17 @@ The main message tags/fields are:
   - `name`: Name of the field (used in code).
   - [enum](#enum) (optional): Name of an `enum` defining possible values of the field (e.g. `MAV_BATTERY_CHARGE_STATE`).
   - `units` (optional): The units for message `field`s that take numeric values (not enums). These are defined in the [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd) (search on _name="SI_Unit"_)
+  - `multiplier` (optional) - Multiply by this value to get the unscaled original value.
+    Allowed values are defined in the [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd) (search on `name="factor"`).
+    For example, [GPS_STATUS](../messages/common.md#GPS_STATUS) is a value in degrees (0-360) sent in a byte field (0-255).
+    To get the original value, scale by multiplying the value with the multiplier (`360/256`).
+    This is currently only used for values where scaling is not encoded in the `units`.
   - `display` (optional): This should be set as `display="bitmask"` for bitmask fields (hint to ground station that enum values must be displayed as checkboxes).
   - `print_format` (optional): TBD.
   - `default` (optional): TBD.
+  - `increment` - Allowed increments for the increment value.
+  - `minValue` - Minimum value for field.
+  - `maxValue` - Maximum value for the field.
   - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`.
 
     > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
