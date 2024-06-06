@@ -35,8 +35,8 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 15 | 223
-[Enums](#enumerated-types) | 10 | 141
+[Messages](#messages) | 16 | 223
+[Enums](#enumerated-types) | 11 | 141
 [Commands](#mav_commands) | 173 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -548,6 +548,37 @@ status_flags | `uint32_t` | | [MAV_BATTERY_STATUS_FLAGS](#MAV_BATTERY_STATUS_FLA
 
 ### BATTERY_INFO (370) — \[from: [common](../messages/common.md#BATTERY_INFO)\] [WIP] {#BATTERY_INFO}
 
+### FUEL_STATUS (371) — [WIP] {#FUEL_STATUS}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Fuel status.
+
+This message provides "generic" fuel level information for display in a GCS and for triggering failsafes in an autopilot.
+The fuel type and associated units for fields in this message are defined in the enum [MAV_FUEL_TYPE](#MAV_FUEL_TYPE).
+
+The reported `consumed_fuel` and `remaining_fuel` must only be supplied if measured: they must not be inferred from the `maximum_fuel` and the other value.
+A recipient can assume that if these fields are supplied they are accurate.
+If not provided, the recipient can infer `remaining_fuel` from `maximum_fuel` and `consumed_fuel` on the assumption that the fuel was initially at its maximum (this is what battery monitors assume).
+Note however that this is an assumption, and the UI should prompt the user appropriately (i.e. notify user that they should fill the tank before boot).
+
+This kind of information may also be sent in fuel-specific messages such as [BATTERY_STATUS_V2](#BATTERY_STATUS_V2).
+If both messages are sent for the same fuel system, the ids and corresponding information must match.
+
+This should be streamed (nominally at 0.1 Hz).
+
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+id | `uint8_t` | | | Fuel ID. Must match ID of other messages for same fuel system, such as [BATTERY_STATUS_V2](#BATTERY_STATUS_V2).<br>Messages with same value are from the same source (instance). 
+maximum_fuel | `float` | | | Capacity when full. Must be provided. 
+consumed_fuel | `float` | | invalid:NaN | Consumed fuel (measured). This value should not be inferred: if not measured set to NaN. NaN: field not provided. 
+remaining_fuel | `float` | | invalid:NaN | Remaining fuel until empty (measured). The value should not be inferred: if not measured set to NaN. NaN: field not provided. 
+percent_remaining | `uint8_t` | % | invalid:UINT8_MAX | Percentage of remaining fuel, relative to full. Values: [0-100], UINT8_MAX: field not provided. 
+flow_rate | `float` | | invalid:NaN | Positive value when emptying/using, and negative if filling/replacing. NaN: field not provided. 
+temperature | `float` | K | invalid:NaN | Fuel temperature. NaN: field not provided. 
+fuel_type | `uint32_t` | | [MAV_FUEL_TYPE](#MAV_FUEL_TYPE) | Fuel type. Defines units for fuel capacity and consumption fields above. 
+
+
 ### GENERATOR_STATUS (373) — \[from: [common](../messages/common.md#GENERATOR_STATUS)\] {#GENERATOR_STATUS}
 
 ### ACTUATOR_OUTPUT_STATUS (375) — \[from: [common](../messages/common.md#ACTUATOR_OUTPUT_STATUS)\] {#ACTUATOR_OUTPUT_STATUS}
@@ -907,6 +938,18 @@ Value | Name | Description
 --- | --- | ---
 <a id='RADIO_RC_CHANNELS_FLAGS_FAILSAFE'></a>1 | [RADIO_RC_CHANNELS_FLAGS_FAILSAFE](#RADIO_RC_CHANNELS_FLAGS_FAILSAFE) | Failsafe is active. The content of the RC channels data in the [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) message is implementation dependent. 
 <a id='RADIO_RC_CHANNELS_FLAGS_OUTDATED'></a>2 | [RADIO_RC_CHANNELS_FLAGS_OUTDATED](#RADIO_RC_CHANNELS_FLAGS_OUTDATED) | Channel data may be out of date. This is set when the receiver is unable to validate incoming data from the transmitter and has therefore resent the last valid data it received. 
+
+### MAV_FUEL_TYPE — [WIP] {#MAV_FUEL_TYPE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Fuel types for use in [FUEL_TYPE](#FUEL_TYPE). Fuel types specify the units for the maximum, available and consumed fuel, and for the flow rates.
+
+Value | Name | Description
+--- | --- | ---
+<a id='MAV_FUEL_TYPE_UNKNOWN'></a>0 | [MAV_FUEL_TYPE_UNKNOWN](#MAV_FUEL_TYPE_UNKNOWN) | Not specified. Fuel levels are normalized (i.e. maximum is 1, and other levels are relative to 1. 
+<a id='MAV_FUEL_TYPE_LIQUID'></a>1 | [MAV_FUEL_TYPE_LIQUID](#MAV_FUEL_TYPE_LIQUID) | A generic liquid fuel. Fuel levels are in millilitres (ml). Fuel rates are in millilitres/second. 
+<a id='MAV_FUEL_TYPE_GAS'></a>2 | [MAV_FUEL_TYPE_GAS](#MAV_FUEL_TYPE_GAS) | A gas tank. Fuel levels are in kilo-Pascal (kPa), and flow rates are in milliliters per second (ml/s). 
 
 ### FIRMWARE_VERSION_TYPE — \[from: [common](../messages/common.md#FIRMWARE_VERSION_TYPE)\] {#FIRMWARE_VERSION_TYPE}
 

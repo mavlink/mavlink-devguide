@@ -53,8 +53,8 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 0 | 360
-[Enums](#enumerated-types) | 0 | 227
+[Messages](#messages) | 0 | 361
+[Enums](#enumerated-types) | 0 | 228
 [Commands](#mav_commands) | 216 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -566,6 +566,8 @@ The following sections list all entities in the dialect (both included and defin
 ### BATTERY_STATUS_V2 (369) — \[from: [development](../messages/development.md#BATTERY_STATUS_V2)\] [WIP] {#BATTERY_STATUS_V2}
 
 ### BATTERY_INFO (370) — \[from: [common](../messages/common.md#BATTERY_INFO)\] [WIP] {#BATTERY_INFO}
+
+### FUEL_STATUS (371) — \[from: [development](../messages/development.md#FUEL_STATUS)\] [WIP] {#FUEL_STATUS}
 
 ### GENERATOR_STATUS (373) — \[from: [common](../messages/common.md#GENERATOR_STATUS)\] {#GENERATOR_STATUS}
 
@@ -1208,6 +1210,8 @@ The following sections list all entities in the dialect (both included and defin
 ### TARGET_OBS_FRAME — \[from: [development](../messages/development.md#TARGET_OBS_FRAME)\] [WIP] {#TARGET_OBS_FRAME}
 
 ### RADIO_RC_CHANNELS_FLAGS — \[from: [development](../messages/development.md#RADIO_RC_CHANNELS_FLAGS)\] [WIP] {#RADIO_RC_CHANNELS_FLAGS}
+
+### MAV_FUEL_TYPE — \[from: [development](../messages/development.md#MAV_FUEL_TYPE)\] [WIP] {#MAV_FUEL_TYPE}
 
 ### UALBERTA_AUTOPILOT_MODE — \[from: [ualberta](../messages/ualberta.md#UALBERTA_AUTOPILOT_MODE)\] {#UALBERTA_AUTOPILOT_MODE}
 
