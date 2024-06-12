@@ -35,8 +35,8 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 16 | 223
-[Enums](#enumerated-types) | 11 | 141
+[Messages](#messages) | 17 | 223
+[Enums](#enumerated-types) | 16 | 141
 [Commands](#mav_commands) | 173 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -720,6 +720,28 @@ seq | `uint8_t` | Sequence number. The value iterates sequentially whenever [AVA
 
 ### ILLUMINATOR_STATUS (440) — \[from: [common](../messages/common.md#ILLUMINATOR_STATUS)\] {#ILLUMINATOR_STATUS}
 
+### GNSS_INTEGRITY (441) — [WIP] {#GNSS_INTEGRITY}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Information about key components of GNSS receivers, like signal authentication, interference and system errors.
+
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+id | `uint8_t` | | | GNSS receiver id. Must match instance ids of other messages from same receiver.<br>Messages with same value are from the same source (instance). 
+system_errors | `uint32_t` | | [GPS_SYSTEM_ERROR_FLAGS](#GPS_SYSTEM_ERROR_FLAGS) | Errors in the GPS system. 
+authentication_state | `uint8_t` | | [GPS_AUTHENTICATION_STATE](#GPS_AUTHENTICATION_STATE) | Signal authentication state of the GPS system. 
+jamming_state | `uint8_t` | | [GPS_JAMMING_STATE](#GPS_JAMMING_STATE) | Signal jamming state of the GPS system. 
+spoofing_state | `uint8_t` | | [GPS_SPOOFING_STATE](#GPS_SPOOFING_STATE) | Signal spoofing state of the GPS system. 
+raim_state | `uint8_t` | | [GPS_RAIM_STATE](#GPS_RAIM_STATE) | The state of the RAIM processing. 
+raim_hfom | `uint16_t` | cm | invalid:UINT16_MAX | Horizontal expected accuracy using satellites successfully validated using RAIM. 
+raim_vfom | `uint16_t` | cm | invalid:UINT16_MAX | Vertical expected accuracy using satellites successfully validated using RAIM. 
+corrections_quality | `uint8_t` | | invalid:UINT8_MAX min:0 max:10 | An abstract value representing the estimated quality of incoming corrections, or 255 if not available. 
+system_status_summary | `uint8_t` | | invalid:UINT8_MAX min:0 max:10 | An abstract value representing the overall status of the receiver, or 255 if not available. 
+gnss_signal_quality | `uint8_t` | | invalid:UINT8_MAX min:0 max:10 | An abstract value representing the quality of incoming GNSS signals, or 255 if not available. 
+post_processing_quality | `uint8_t` | | invalid:UINT8_MAX min:0 max:10 | An abstract value representing the estimated PPK quality, or 255 if not available. 
+
+
 ### TARGET_ABSOLUTE (510) — [WIP] {#TARGET_ABSOLUTE}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
@@ -950,6 +972,75 @@ Value | Name | Description
 <a id='MAV_FUEL_TYPE_UNKNOWN'></a>0 | [MAV_FUEL_TYPE_UNKNOWN](#MAV_FUEL_TYPE_UNKNOWN) | Not specified. Fuel levels are normalized (i.e. maximum is 1, and other levels are relative to 1. 
 <a id='MAV_FUEL_TYPE_LIQUID'></a>1 | [MAV_FUEL_TYPE_LIQUID](#MAV_FUEL_TYPE_LIQUID) | A generic liquid fuel. Fuel levels are in millilitres (ml). Fuel rates are in millilitres/second. 
 <a id='MAV_FUEL_TYPE_GAS'></a>2 | [MAV_FUEL_TYPE_GAS](#MAV_FUEL_TYPE_GAS) | A gas tank. Fuel levels are in kilo-Pascal (kPa), and flow rates are in milliliters per second (ml/s). 
+
+### GPS_SYSTEM_ERROR_FLAGS — [WIP] {#GPS_SYSTEM_ERROR_FLAGS}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+(Bitmask) Flags indicating errors in a GPS receiver.
+
+Value | Name | Description
+--- | --- | ---
+<a id='GPS_SYSTEM_ERROR_INCOMING_CORRECTIONS'></a>1 | [GPS_SYSTEM_ERROR_INCOMING_CORRECTIONS](#GPS_SYSTEM_ERROR_INCOMING_CORRECTIONS) | There are problems with incoming correction streams. 
+<a id='GPS_SYSTEM_ERROR_CONFIGURATION'></a>2 | [GPS_SYSTEM_ERROR_CONFIGURATION](#GPS_SYSTEM_ERROR_CONFIGURATION) | There are problems with the configuration. 
+<a id='GPS_SYSTEM_ERROR_SOFTWARE'></a>4 | [GPS_SYSTEM_ERROR_SOFTWARE](#GPS_SYSTEM_ERROR_SOFTWARE) | There are problems with the software on the GPS receiver. 
+<a id='GPS_SYSTEM_ERROR_ANTENNA'></a>8 | [GPS_SYSTEM_ERROR_ANTENNA](#GPS_SYSTEM_ERROR_ANTENNA) | There are problems with an antenna connected to the GPS receiver. 
+<a id='GPS_SYSTEM_ERROR_EVENT_CONGESTION'></a>16 | [GPS_SYSTEM_ERROR_EVENT_CONGESTION](#GPS_SYSTEM_ERROR_EVENT_CONGESTION) | There are problems handling all incoming events. 
+<a id='GPS_SYSTEM_ERROR_CPU_OVERLOAD'></a>32 | [GPS_SYSTEM_ERROR_CPU_OVERLOAD](#GPS_SYSTEM_ERROR_CPU_OVERLOAD) | The GPS receiver CPU is overloaded. 
+<a id='GPS_SYSTEM_ERROR_OUTPUT_CONGESTION'></a>64 | [GPS_SYSTEM_ERROR_OUTPUT_CONGESTION](#GPS_SYSTEM_ERROR_OUTPUT_CONGESTION) | The GPS receiver is experiencing output congestion. 
+
+### GPS_AUTHENTICATION_STATE — [WIP] {#GPS_AUTHENTICATION_STATE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Signal authentication state in a GPS receiver.
+
+Value | Name | Description
+--- | --- | ---
+<a id='GPS_AUTHENTICATION_STATE_UNKNOWN'></a>0 | [GPS_AUTHENTICATION_STATE_UNKNOWN](#GPS_AUTHENTICATION_STATE_UNKNOWN) | The GPS receiver does not provide GPS signal authentication info. 
+<a id='GPS_AUTHENTICATION_STATE_INITIALIZING'></a>1 | [GPS_AUTHENTICATION_STATE_INITIALIZING](#GPS_AUTHENTICATION_STATE_INITIALIZING) | The GPS receiver is initializing signal authentication. 
+<a id='GPS_AUTHENTICATION_STATE_ERROR'></a>2 | [GPS_AUTHENTICATION_STATE_ERROR](#GPS_AUTHENTICATION_STATE_ERROR) | The GPS receiver encountered an error while initializing signal authentication. 
+<a id='GPS_AUTHENTICATION_STATE_OK'></a>3 | [GPS_AUTHENTICATION_STATE_OK](#GPS_AUTHENTICATION_STATE_OK) | The GPS receiver has correctly authenticated all signals. 
+<a id='GPS_AUTHENTICATION_STATE_DISABLED'></a>4 | [GPS_AUTHENTICATION_STATE_DISABLED](#GPS_AUTHENTICATION_STATE_DISABLED) | GPS signal authentication is disabled on the receiver. 
+
+### GPS_JAMMING_STATE — [WIP] {#GPS_JAMMING_STATE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Signal jamming state in a GPS receiver.
+
+Value | Name | Description
+--- | --- | ---
+<a id='GPS_JAMMING_STATE_UNKNOWN'></a>0 | [GPS_JAMMING_STATE_UNKNOWN](#GPS_JAMMING_STATE_UNKNOWN) | The GPS receiver does not provide GPS signal jamming info. 
+<a id='GPS_JAMMING_STATE_OK'></a>1 | [GPS_JAMMING_STATE_OK](#GPS_JAMMING_STATE_OK) | The GPS receiver detected no signal jamming. 
+<a id='GPS_JAMMING_STATE_MITIGATED'></a>2 | [GPS_JAMMING_STATE_MITIGATED](#GPS_JAMMING_STATE_MITIGATED) | The GPS receiver detected and mitigated signal jamming. 
+<a id='GPS_JAMMING_STATE_DETECTED'></a>3 | [GPS_JAMMING_STATE_DETECTED](#GPS_JAMMING_STATE_DETECTED) | The GPS receiver detected signal jamming. 
+
+### GPS_SPOOFING_STATE — [WIP] {#GPS_SPOOFING_STATE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Signal spoofing state in a GPS receiver.
+
+Value | Name | Description
+--- | --- | ---
+<a id='GPS_SPOOFING_STATE_UNKNOWN'></a>0 | [GPS_SPOOFING_STATE_UNKNOWN](#GPS_SPOOFING_STATE_UNKNOWN) | The GPS receiver does not provide GPS signal spoofing info. 
+<a id='GPS_SPOOFING_STATE_OK'></a>1 | [GPS_SPOOFING_STATE_OK](#GPS_SPOOFING_STATE_OK) | The GPS receiver detected no signal spoofing. 
+<a id='GPS_SPOOFING_STATE_MITIGATED'></a>2 | [GPS_SPOOFING_STATE_MITIGATED](#GPS_SPOOFING_STATE_MITIGATED) | The GPS receiver detected and mitigated signal spoofing. 
+<a id='GPS_SPOOFING_STATE_DETECTED'></a>3 | [GPS_SPOOFING_STATE_DETECTED](#GPS_SPOOFING_STATE_DETECTED) | The GPS receiver detected signal spoofing but still has a fix. 
+
+### GPS_RAIM_STATE — [WIP] {#GPS_RAIM_STATE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+State of RAIM processing.
+
+Value | Name | Description
+--- | --- | ---
+<a id='GPS_RAIM_STATE_UNKNOWN'></a>0 | [GPS_RAIM_STATE_UNKNOWN](#GPS_RAIM_STATE_UNKNOWN) | RAIM capability is unknown. 
+<a id='GPS_RAIM_STATE_DISABLED'></a>1 | [GPS_RAIM_STATE_DISABLED](#GPS_RAIM_STATE_DISABLED) | RAIM is disabled. 
+<a id='GPS_RAIM_STATE_OK'></a>2 | [GPS_RAIM_STATE_OK](#GPS_RAIM_STATE_OK) | RAIM integrity check was successful. 
+<a id='GPS_RAIM_STATE_FAILED'></a>3 | [GPS_RAIM_STATE_FAILED](#GPS_RAIM_STATE_FAILED) | RAIM integrity check failed. 
 
 ### FIRMWARE_VERSION_TYPE — \[from: [common](../messages/common.md#FIRMWARE_VERSION_TYPE)\] {#FIRMWARE_VERSION_TYPE}
 

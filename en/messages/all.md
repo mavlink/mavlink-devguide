@@ -53,8 +53,8 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 0 | 361
-[Enums](#enumerated-types) | 0 | 228
+[Messages](#messages) | 0 | 362
+[Enums](#enumerated-types) | 0 | 233
 [Commands](#mav_commands) | 216 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -616,6 +616,8 @@ The following sections list all entities in the dialect (both included and defin
 ### AVAILABLE_MODES_MONITOR (437) — \[from: [development](../messages/development.md#AVAILABLE_MODES_MONITOR)\] [WIP] {#AVAILABLE_MODES_MONITOR}
 
 ### ILLUMINATOR_STATUS (440) — \[from: [common](../messages/common.md#ILLUMINATOR_STATUS)\] {#ILLUMINATOR_STATUS}
+
+### GNSS_INTEGRITY (441) — \[from: [development](../messages/development.md#GNSS_INTEGRITY)\] [WIP] {#GNSS_INTEGRITY}
 
 ### TARGET_ABSOLUTE (510) — \[from: [development](../messages/development.md#TARGET_ABSOLUTE)\] [WIP] {#TARGET_ABSOLUTE}
 
@@ -1212,6 +1214,16 @@ The following sections list all entities in the dialect (both included and defin
 ### RADIO_RC_CHANNELS_FLAGS — \[from: [development](../messages/development.md#RADIO_RC_CHANNELS_FLAGS)\] [WIP] {#RADIO_RC_CHANNELS_FLAGS}
 
 ### MAV_FUEL_TYPE — \[from: [development](../messages/development.md#MAV_FUEL_TYPE)\] [WIP] {#MAV_FUEL_TYPE}
+
+### GPS_SYSTEM_ERROR_FLAGS — \[from: [development](../messages/development.md#GPS_SYSTEM_ERROR_FLAGS)\] [WIP] {#GPS_SYSTEM_ERROR_FLAGS}
+
+### GPS_AUTHENTICATION_STATE — \[from: [development](../messages/development.md#GPS_AUTHENTICATION_STATE)\] [WIP] {#GPS_AUTHENTICATION_STATE}
+
+### GPS_JAMMING_STATE — \[from: [development](../messages/development.md#GPS_JAMMING_STATE)\] [WIP] {#GPS_JAMMING_STATE}
+
+### GPS_SPOOFING_STATE — \[from: [development](../messages/development.md#GPS_SPOOFING_STATE)\] [WIP] {#GPS_SPOOFING_STATE}
+
+### GPS_RAIM_STATE — \[from: [development](../messages/development.md#GPS_RAIM_STATE)\] [WIP] {#GPS_RAIM_STATE}
 
 ### UALBERTA_AUTOPILOT_MODE — \[from: [ualberta](../messages/ualberta.md#UALBERTA_AUTOPILOT_MODE)\] {#UALBERTA_AUTOPILOT_MODE}
 
