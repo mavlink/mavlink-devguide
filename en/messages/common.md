@@ -2344,7 +2344,7 @@ callsign | `char[9]` | | | The callsign, 8+null
 emitter_type | `uint8_t` | | [ADSB_EMITTER_TYPE](#ADSB_EMITTER_TYPE) | ADSB emitter type. 
 tslc | `uint8_t` | s | | Time since last communication in seconds 
 flags | `uint16_t` | | [ADSB_FLAGS](#ADSB_FLAGS) | Bitmap to indicate various statuses including valid data fields 
-squawk | `uint16_t` | | | Squawk code 
+squawk | `uint16_t` | | | Squawk code. Note that the code is in decimal: e.g. 7700 (general emergency) is encoded as binary 0b0001_1110_0001_0100, not(!) as 0b0000_111_111_000_000 
 
 
 ### COLLISION (247) {#COLLISION}
