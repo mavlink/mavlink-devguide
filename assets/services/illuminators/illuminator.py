@@ -75,7 +75,7 @@ def handle_command_long(msg, mavlink_connection_out):
             publish_component_information_basic(mavlink_connection_out)
         else:
             mavlink_connection_out.mav.command_ack_send(
-                msg.command, result=mavutil.mavlink.MAV_RESULT_UNSUPPORTED
+                msg.command, result=mavutil.mavlink.MAV_RESULT_DENIED
             )
 
     # MAV_CMD_SET_MESSAGE_INTERVAL
