@@ -55,7 +55,7 @@ Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 0 | 362
 [Enums](#enumerated-types) | 0 | 233
-[Commands](#mav_commands) | 216 | 0
+[Commands](#mav_commands) | 217 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -1666,6 +1666,8 @@ The following sections list all entities in the dialect (both included and defin
 ### MAV_CMD_GUIDED_CHANGE_HEADING (43002) — \[from: [ardupilotmega](../messages/ardupilotmega.md#MAV_CMD_GUIDED_CHANGE_HEADING)\] {#MAV_CMD_GUIDED_CHANGE_HEADING}
 
 ### MAV_CMD_EXTERNAL_POSITION_ESTIMATE (43003) — \[from: [common](../messages/common.md#MAV_CMD_EXTERNAL_POSITION_ESTIMATE)\] {#MAV_CMD_EXTERNAL_POSITION_ESTIMATE}
+
+### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — \[from: [development](../messages/development.md#MAV_CMD_EXTERNAL_WIND_ESTIMATE)\] [WIP] {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
 
 ### MAV_CMD_STORM32_DO_GIMBAL_MANAGER_CONTROL_PITCHYAW (60002) — \[from: [storm32](../messages/storm32.md#MAV_CMD_STORM32_DO_GIMBAL_MANAGER_CONTROL_PITCHYAW)\] {#MAV_CMD_STORM32_DO_GIMBAL_MANAGER_CONTROL_PITCHYAW}
 
