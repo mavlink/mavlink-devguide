@@ -217,38 +217,38 @@ The global position, as returned by the Global Positioning System (GPS). This is
 
 NOT the global position estimate of the system, but rather a RAW sensor value. See message [GLOBAL_POSITION_INT](#GLOBAL_POSITION_INT) for the global position estimate.
 
-Field Name | Type | Units | Values | Description
---- | --- | --- | --- | ---
-time_usec | `uint64_t` | us | | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
-fix_type | `uint8_t` | | [GPS_FIX_TYPE](#GPS_FIX_TYPE) | GPS fix type. 
-lat | `int32_t` | degE7 | | Latitude (WGS84, EGM96 ellipsoid) 
-lon | `int32_t` | degE7 | | Longitude (WGS84, EGM96 ellipsoid) 
-alt | `int32_t` | mm | | Altitude (MSL). Positive for up. Note that virtually all GPS modules provide the MSL altitude in addition to the WGS84 altitude. 
-eph | `uint16_t` | | invalid:UINT16_MAX | GPS HDOP horizontal dilution of position (unitless * 100). If unknown, set to: UINT16_MAX 
-epv | `uint16_t` | | invalid:UINT16_MAX | GPS VDOP vertical dilution of position (unitless * 100). If unknown, set to: UINT16_MAX 
-vel | `uint16_t` | cm/s | invalid:UINT16_MAX | GPS ground speed. If unknown, set to: UINT16_MAX 
-cog | `uint16_t` | cdeg | invalid:UINT16_MAX | Course over ground (NOT heading, but direction of movement) in degrees * 100, 0.0..359.99 degrees. If unknown, set to: UINT16_MAX 
-satellites_visible | `uint8_t` | | invalid:UINT8_MAX | Number of satellites visible. If unknown, set to UINT8_MAX 
-<span class='ext'>alt_ellipsoid</span> <a href='#mav2_extension_field'>++</a> | `int32_t` | mm | | Altitude (above WGS84, EGM96 ellipsoid). Positive for up. 
-<span class='ext'>h_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm | | Position uncertainty. 
-<span class='ext'>v_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm | | Altitude uncertainty. 
-<span class='ext'>vel_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm | | Speed uncertainty. 
-<span class='ext'>hdg_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | degE5 | | Heading / track uncertainty 
-<span class='ext'>yaw</span> <a href='#mav2_extension_field'>++</a> | `uint16_t` | cdeg | invalid:0 | Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use UINT16_MAX if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north. 
+Field Name | Type | Units | Multiplier | Values | Description
+--- | --- | --- | --- | --- | ---
+time_usec | `uint64_t` | us | | | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
+fix_type | `uint8_t` | | | [GPS_FIX_TYPE](#GPS_FIX_TYPE) | GPS fix type. 
+lat | `int32_t` | degE7 | | | Latitude (WGS84, EGM96 ellipsoid) 
+lon | `int32_t` | degE7 | | | Longitude (WGS84, EGM96 ellipsoid) 
+alt | `int32_t` | mm | | | Altitude (MSL). Positive for up. Note that virtually all GPS modules provide the MSL altitude in addition to the WGS84 altitude. 
+eph | `uint16_t` | | 1E-2 | invalid:UINT16_MAX | GPS HDOP horizontal dilution of position (unitless * 100). If unknown, set to: UINT16_MAX 
+epv | `uint16_t` | | 1E-2 | invalid:UINT16_MAX | GPS VDOP vertical dilution of position (unitless * 100). If unknown, set to: UINT16_MAX 
+vel | `uint16_t` | cm/s | | invalid:UINT16_MAX | GPS ground speed. If unknown, set to: UINT16_MAX 
+cog | `uint16_t` | cdeg | | invalid:UINT16_MAX | Course over ground (NOT heading, but direction of movement) in degrees * 100, 0.0..359.99 degrees. If unknown, set to: UINT16_MAX 
+satellites_visible | `uint8_t` | | | invalid:UINT8_MAX | Number of satellites visible. If unknown, set to UINT8_MAX 
+<span class='ext'>alt_ellipsoid</span> <a href='#mav2_extension_field'>++</a> | `int32_t` | mm | | | Altitude (above WGS84, EGM96 ellipsoid). Positive for up. 
+<span class='ext'>h_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm | | | Position uncertainty. 
+<span class='ext'>v_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm | | | Altitude uncertainty. 
+<span class='ext'>vel_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm | | | Speed uncertainty. 
+<span class='ext'>hdg_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | degE5 | | | Heading / track uncertainty 
+<span class='ext'>yaw</span> <a href='#mav2_extension_field'>++</a> | `uint16_t` | cdeg | | invalid:0 | Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use UINT16_MAX if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north. 
 
 
 ### GPS_STATUS (25) {#GPS_STATUS}
 
 The positioning status, as reported by GPS. This message is intended to display status information about each satellite visible to the receiver. See message [GLOBAL_POSITION_INT](#GLOBAL_POSITION_INT) for the global position estimate. This message can contain information for up to 20 satellites.
 
-Field Name | Type | Units | Description
---- | --- | --- | ---
-satellites_visible | `uint8_t` | | Number of satellites visible 
-satellite_prn | `uint8_t[20]` | | Global satellite ID 
-satellite_used | `uint8_t[20]` | | 0: Satellite not used, 1: used for localization 
-satellite_elevation | `uint8_t[20]` | deg | Elevation (0: right on top of receiver, 90: on the horizon) of satellite 
-satellite_azimuth | `uint8_t[20]` | deg | Direction of satellite, 0: 0 deg, 255: 360 deg. 
-satellite_snr | `uint8_t[20]` | dB | Signal to noise ratio of satellite 
+Field Name | Type | Units | Multiplier | Description
+--- | --- | --- | --- | ---
+satellites_visible | `uint8_t` | | | Number of satellites visible 
+satellite_prn | `uint8_t[20]` | | | Global satellite ID 
+satellite_used | `uint8_t[20]` | | | 0: Satellite not used, 1: used for localization 
+satellite_elevation | `uint8_t[20]` | deg | | Elevation (0: right on top of receiver, 90: on the horizon) of satellite 
+satellite_azimuth | `uint8_t[20]` | deg | 360/255 | Direction of satellite, 0: 0 deg, 255: 360 deg. 
+satellite_snr | `uint8_t[20]` | dB | | Signal to noise ratio of satellite 
 
 
 ### SCALED_IMU (26) {#SCALED_IMU}
@@ -1452,23 +1452,23 @@ The global position, as returned by the Global Positioning System (GPS). This is
 
 NOT the global position estimate of the system, but rather a RAW sensor value. See message [GLOBAL_POSITION_INT](#GLOBAL_POSITION_INT) for the global position estimate.
 
-Field Name | Type | Units | Description
---- | --- | --- | ---
-time_usec | `uint64_t` | us | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
-fix_type | `uint8_t` | | 0-1: no fix, 2: 2D fix, 3: 3D fix. Some applications will not use the value of this field unless it is at least two, so always correctly fill in the fix. 
-lat | `int32_t` | degE7 | Latitude (WGS84) 
-lon | `int32_t` | degE7 | Longitude (WGS84) 
-alt | `int32_t` | mm | Altitude (MSL). Positive for up. 
-eph | `uint16_t` | | GPS HDOP horizontal dilution of position (unitless * 100). If unknown, set to: UINT16_MAX 
-epv | `uint16_t` | | GPS VDOP vertical dilution of position (unitless * 100). If unknown, set to: UINT16_MAX 
-vel | `uint16_t` | cm/s | GPS ground speed. If unknown, set to: UINT16_MAX 
-vn | `int16_t` | cm/s | GPS velocity in north direction in earth-fixed NED frame 
-ve | `int16_t` | cm/s | GPS velocity in east direction in earth-fixed NED frame 
-vd | `int16_t` | cm/s | GPS velocity in down direction in earth-fixed NED frame 
-cog | `uint16_t` | cdeg | Course over ground (NOT heading, but direction of movement), 0.0..359.99 degrees. If unknown, set to: UINT16_MAX 
-satellites_visible | `uint8_t` | | Number of satellites visible. If unknown, set to UINT8_MAX 
-<span class='ext'>id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | GPS ID (zero indexed). Used for multiple GPS inputs 
-<span class='ext'>yaw</span> <a href='#mav2_extension_field'>++</a> | `uint16_t` | cdeg | Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north 
+Field Name | Type | Units | Multiplier | Description
+--- | --- | --- | --- | ---
+time_usec | `uint64_t` | us | | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. 
+fix_type | `uint8_t` | | | 0-1: no fix, 2: 2D fix, 3: 3D fix. Some applications will not use the value of this field unless it is at least two, so always correctly fill in the fix. 
+lat | `int32_t` | degE7 | | Latitude (WGS84) 
+lon | `int32_t` | degE7 | | Longitude (WGS84) 
+alt | `int32_t` | mm | | Altitude (MSL). Positive for up. 
+eph | `uint16_t` | | 1E-2 | GPS HDOP horizontal dilution of position (unitless * 100). If unknown, set to: UINT16_MAX 
+epv | `uint16_t` | | 1E-2 | GPS VDOP vertical dilution of position (unitless * 100). If unknown, set to: UINT16_MAX 
+vel | `uint16_t` | cm/s | | GPS ground speed. If unknown, set to: UINT16_MAX 
+vn | `int16_t` | cm/s | | GPS velocity in north direction in earth-fixed NED frame 
+ve | `int16_t` | cm/s | | GPS velocity in east direction in earth-fixed NED frame 
+vd | `int16_t` | cm/s | | GPS velocity in down direction in earth-fixed NED frame 
+cog | `uint16_t` | cdeg | | Course over ground (NOT heading, but direction of movement), 0.0..359.99 degrees. If unknown, set to: UINT16_MAX 
+satellites_visible | `uint8_t` | | | Number of satellites visible. If unknown, set to UINT8_MAX 
+<span class='ext'>id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | | GPS ID (zero indexed). Used for multiple GPS inputs 
+<span class='ext'>yaw</span> <a href='#mav2_extension_field'>++</a> | `uint16_t` | cdeg | | Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north 
 
 
 ### HIL_OPTICAL_FLOW (114) {#HIL_OPTICAL_FLOW}
