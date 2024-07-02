@@ -1,12 +1,10 @@
 # Illuminator Protocol
 
-## Introduction
-
 The illuminator protocol allows MAVLink control over the behavior of lights, LEDs, and/or emitters mounted or integrated on the drone.
 The protocol currently allows for the following control: brightness, on/off, and a strobe feature.
 
-Along with this, the illuminator protocol also publishes status information for developers or users. The status messaging encompasses the current configuration of the illuminator and the health of the illuminator device.
-
+Along with this, the illuminator protocol also publishes status information for developers or users.
+The status messaging encompasses the current configuration of the illuminator and the health of the illuminator device.
 
 ## MAVLink Illuminator Implementations
 
@@ -16,33 +14,40 @@ These illuminators have built-in MAVLink support:
 
 ## Message/Enum Summary
 
-| Message                                                                                                                                       | Description                                                                                                                                                                                |
-| --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <span id="COMPONENT_INFORMATION_BASIC"></span>[COMPONENT_INFORMATION_BASIC](../messages/common.md#COMPONENT_INFORMATION_BASIC)                | Basic illuminator information data. Should be requested using [MAV_CMD_REQUEST_MESSAGE ](https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_MESSAGE) on startup, or when required. |
-| <span id="MAV_CMD_ILLUMINATOR_ON_OFF"></span>[MAV_CMD_ILLUMINATOR_ON_OFF](../messages/common.md#MAV_CMD_ILLUMINATOR_ON_OFF)                   | Turns illuminators ON/OFF.                                                                                                                                                                 |
-| <span id="MAV_CMD_DO_ILLUMINATOR_CONFIGURE"></span>[MAV_CMD_DO_ILLUMINATOR_CONFIGURE](../messages/common.md#MAV_CMD_DO_ILLUMINATOR_CONFIGURE) | Configures illuminator settings.                                                                                                                                                           |
-| <span id="ILLUMINATOR_STATUS"></span>[ILLUMINATOR_STATUS](../messages/common.md#ILLUMINATOR_STATUS)                                           | Current status of the illuminator. Recommended to publish this at a regular rate.                                                                                                          |
+| Message                                                                                       | Description                                                                                                                                    |
+| --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="COMPONENT_INFORMATION_BASIC"></a>[COMPONENT_INFORMATION_BASIC][CMPNT_INFO_BSC]         | Basic illuminator information data. Should be requested using [MAV_CMD_REQUEST_MESSAGE][MAV_CMD_REQUEST_MESSAGE] on startup, or when required. |
+| <a id="MAV_CMD_ILLUMINATOR_ON_OFF"></a>[MAV_CMD_ILLUMINATOR_ON_OFF][ILLUM_ON_OFF]             | Turns illuminators ON/OFF.                                                                                                                     |
+| <a id="MAV_CMD_DO_ILLUMINATOR_CONFIGURE"></a>[MAV_CMD_DO_ILLUMINATOR_CONFIGURE][DO_ILLM_CNFG] | Configures illuminator settings.                                                                                                               |
+| <a id="ILLUMINATOR_STATUS"></a>[ILLUMINATOR_STATUS](../messages/common.md#ILLUMINATOR_STATUS) | Current status of the illuminator. Recommended to publish this at a regular rate.                                                              |
 
+<!-- reference links to make table above easier to edit -->
 
-| Enum Values                                                                                                              | Description               |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------- |
-| <span id="MAV_TYPE_ILLUMINATOR"></span>[MAV_TYPE_ILLUMINATOR](../messages/minimal.md#MAV_TYPE_ILLUMINATOR)                                    | Type of the component (illuminator).                                                                                                                                                       |
-| <span id="MAV_COMP_ID_ILLUMINATOR"></span>[MAV_COMP_ID_ILLUMINATOR](../messages/minimal.md#MAV_COMP_ID_ILLUMINATOR)                           | ID of the component (illuminator).                                                                                                                                                         |
+[DO_ILLM_CNFG]: ../messages/common.md#MAV_CMD_DO_ILLUMINATOR_CONFIGURE
+[MAV_CMD_REQUEST_MESSAGE]: ../messages/common.md#MAV_CMD_REQUEST_MESSAGE
+[CMPNT_INFO_BSC]: ../messages/common.md#COMPONENT_INFORMATION_BASIC
+[ILLUM_ON_OFF]: ../messages/common.md#MAV_CMD_ILLUMINATOR_ON_OFF
 
-| Enum                                                                                                               | Description               |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------- |
-| <span id="ILLUMINATOR_MODE"></span>[ILLUMINATOR_MODE](../messages/common.md#ILLUMINATOR_MODE)                      | Illuminator modes.        |
-| <span id="ILLUMINATOR_ERROR_FLAGS"></span>[ILLUMINATOR_ERROR_FLAGS](../messages/common.md#ILLUMINATOR_ERROR_FLAGS) | Fault/health indications. |
+| Enum Values                                                                                                   | Description                          |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| <a id="MAV_TYPE_ILLUMINATOR"></a>[MAV_TYPE_ILLUMINATOR](../messages/minimal.md#MAV_TYPE_ILLUMINATOR)          | Type of the component (illuminator). |
+| <a id="MAV_COMP_ID_ILLUMINATOR"></a>[MAV_COMP_ID_ILLUMINATOR](../messages/minimal.md#MAV_COMP_ID_ILLUMINATOR) | ID of the component (illuminator).   |
 
-
+| Enum                                                                                                         | Description               |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------- |
+| <a id="ILLUMINATOR_MODE"></a>[ILLUMINATOR_MODE](../messages/common.md#ILLUMINATOR_MODE)                      | Illuminator modes.        |
+| <a id="ILLUMINATOR_ERROR_FLAGS"></a>[ILLUMINATOR_ERROR_FLAGS](../messages/common.md#ILLUMINATOR_ERROR_FLAGS) | Fault/health indications. |
 
 ## Implementation and Messages
 
 ### Illuminator Connection
 
-Illuminators are expected to follow the [Heartbeat/Connection Protocol](https://github.com/mavlink/mavlink-devguide/blob/master/en/services/heartbeat.md) and send a constant flow of heartbeats (nominally at 1Hz). Illuminators are identified via their type [MAV_TYPE_ILLUMINATOR](#MAV_TYPE_ILLUMINATOR).
+Illuminators are expected to follow the [Heartbeat/Connection Protocol](../services/heartbeat.md) and send a constant flow of heartbeats (nominally at 1Hz).
+Illuminators are identified via their type [MAV_TYPE_ILLUMINATOR](#MAV_TYPE_ILLUMINATOR).
 Individual illuminators are distinguished via their unique component ID, which by default should be [MAV_COMP_ID_ILLUMINATOR](#MAV_COMP_ID_ILLUMINATOR) (though this is not mandated and any ID may be used).
-Once a heartbeat is received, the drone can then send a [MAV_CMD_REQUEST_MESSAGE ](https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_MESSAGE) command to the illuminator to receive information, set settings, or control the illuminator. An example below illustrates how a drone can request the status of the illuminator.
+Once a heartbeat is received, the drone can then send a [MAV_CMD_REQUEST_MESSAGE ][MAV_CMD_REQUEST_MESSAGE] command to the illuminator to receive information, set settings, or control the illuminator.
+An example below illustrates how a drone can request the status of the illuminator.
+
 <!-- Mermaid graph:
 sequenceDiagram;
     participant Drone
@@ -75,7 +80,7 @@ Optional parameters can be left empty or set to zero.
 
 ### ON/OFF
 
-The [MAV_CMD_ILLUMINATOR_ON_OFF](#MAV_CMD_ILLUMINATOR_ON_OFF) command is used to enable/disable the illuminator. 
+The [MAV_CMD_ILLUMINATOR_ON_OFF](#MAV_CMD_ILLUMINATOR_ON_OFF) command is used to enable/disable the illuminator.
 It's usage can be seen below:
 
 <!-- Mermaid graph:
@@ -89,13 +94,17 @@ sequenceDiagram;
 
 [![](https://mermaid.ink/img/pako:eNplkMFqwzAMhl_F6LRCd-jVZYWQpBBImtGkOxmMSLTNLLYzVz6M0nef2zLWMV0kpE__j3SCwY8EEo70GckNVBh8C2jXyokUMwY2g5nRsSiCd_S_XU1TtMYh-3AbXrnHzeZuIEWTvei8KXRV14em2mV9u9ftTrfbrXhIamhX4kmsFn8VrlmKjpOdYGPJR74Rd9q_3MVjX3aHutdZnpfPfVnAEiwFi2ZMJ54uuwr4nSwpkKkcMXwoUO6cOIzsuy83gOQQaQlxHpF_3gHyFacjnb8BIBNkuQ?type=png)](https://mermaid.live/edit#pako:eNplkMFqwzAMhl_F6LRCd-jVZYWQpBBImtGkOxmMSLTNLLYzVz6M0nef2zLWMV0kpE__j3SCwY8EEo70GckNVBh8C2jXyokUMwY2g5nRsSiCd_S_XU1TtMYh-3AbXrnHzeZuIEWTvei8KXRV14em2mV9u9ftTrfbrXhIamhX4kmsFn8VrlmKjpOdYGPJR74Rd9q_3MVjX3aHutdZnpfPfVnAEiwFi2ZMJ54uuwr4nSwpkKkcMXwoUO6cOIzsuy83gOQQaQlxHpF_3gHyFacjnb8BIBNkuQ)
 
-
 ### CONFIGURE
 
-The [MAV_CMD_DO_ILLUMINATOR_CONFIGURE](#MAV_CMD_DO_ILLUMINATOR_CONFIGURE) command controls the illuminator's settings. This will adjust how the illuminator behaves when enabled. The operation follows the normal [Command Protocol](https://github.com/mavlink/mavlink-devguide/blob/master/en/services/command.md) rules for command/acknowledgment. The four parameters for this command are: Mode, Brightness, Strobe Period, Strobe Duty.
+The [MAV_CMD_DO_ILLUMINATOR_CONFIGURE](#MAV_CMD_DO_ILLUMINATOR_CONFIGURE) command controls the illuminator's settings. This will adjust how the illuminator behaves when enabled.
+The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment. The four parameters for this command are: Mode, Brightness, Strobe Period, Strobe Duty.
 
-Illuminators can be set in different modes which can change the behavior of the illuminator (described in a separate section, [Modes](#MODES)). The brightness can be set via "Brightness" as a percentage value (0-100%). Illuminators may also have the functionality to strobe the light source. This behavior is configured via "Strobe Period" and "Strobe Duty". These parameters can be set to 0 when not used. "Strobe Period" is in seconds and "Strobe Duty" is a percentage value (indicating the % of time in the "Strobe Period" the illuminator is enabled).
-
+Illuminators can be set in different modes which can change the behavior of the illuminator (described in a separate section, [Modes](#MODES)).
+The brightness can be set via "Brightness" as a percentage value (0-100%).
+Illuminators may also have the functionality to strobe the light source.
+This behavior is configured via "Strobe Period" and "Strobe Duty".
+These parameters can be set to `0` when not used.
+"Strobe Period" is in seconds and "Strobe Duty" is a percentage value (indicating the % of time in the "Strobe Period" the illuminator is enabled).
 
 #### MODES
 
@@ -111,9 +120,11 @@ The [ILLUMINATOR_STATUS](#ILLUMINATOR_STATUS) message can be requested to receiv
 
 #### ILLUMINATOR_ERROR_FLAGS
 
-The [ILLUMINATOR_ERROR_FLAGS](#ILLUMINATOR_ERROR_FLAGS) can be used to indicate if there is any issue with the illuminator. At this time, there are three flags. If there is no error and the illuminator is behaving as normal, the [ILLUMINATOR_ERROR_FLAGS](#ILLUMINATOR_ERROR_FLAGS) bitmap will be 0. If [ILLUMINATOR_ERROR_FLAGS](#ILLUMINATOR_ERROR_FLAGS) is set to 1 or 2, this indicates an error related to the temperature of the illuminator.
+The [ILLUMINATOR_ERROR_FLAGS](#ILLUMINATOR_ERROR_FLAGS) can be used to indicate if there is any issue with the illuminator. At this time, there are three flags. If there is no error and the illuminator is behaving as normal, the [ILLUMINATOR_ERROR_FLAGS](#ILLUMINATOR_ERROR_FLAGS) bitmap will be 0.
+If [ILLUMINATOR_ERROR_FLAGS](#ILLUMINATOR_ERROR_FLAGS) is set to 1 or 2, this indicates an error related to the temperature of the illuminator.
 
-"1" indicates `ILLUMINATOR_ERROR_FLAGS_THERMAL_THROTTLING` as in the illuminator is throttling its output due to a thermal issue. "2" indicates `ILLUMINATOR_ERROR_FLAGS_OVER_TEMPERATURE_SHUTDOWN` which means that the illuminator is shutting off due to passing some temperature threshold.
+`1` indicates `ILLUMINATOR_ERROR_FLAGS_THERMAL_THROTTLING` as in the illuminator is throttling its output due to a thermal issue.
+`2` indicates `ILLUMINATOR_ERROR_FLAGS_OVER_TEMPERATURE_SHUTDOWN` which means that the illuminator is shutting off due to passing some temperature threshold.
 
 The status message utilization can be seen below:
 
@@ -133,11 +144,14 @@ The status message utilization can be seen below:
 
 ## Test Script
 
-#### Description
+### Description
 
-The test suite included in `illuminator.py` allows for testing both sides of the illuminator interaction. The first script `illuminator.py` will emulate a standard illuminator module. The second script will run a standard test suite against the emulator, testing all commands listed in this document.
+The test suite included in [assets/services/illuminators](https://github.com/mavlink/mavlink-devguide/blob/master/assets/services/illuminators/) allows for testing both sides of the illuminator interaction.
 
-##### Instructions
+- [illuminator.py](https://github.com/mavlink/mavlink-devguide/blob/master/assets/services/illuminators/illuminator.py) emulates a standard illuminator module.
+- [test_illuminator.py](https://github.com/mavlink/mavlink-devguide/blob/master/assets/services/illuminators/test_illuminator.py) runs a standard test suite against the emulator, testing all commands listed in this document.
+
+### Instructions
 
 1. Run simple illuminator emulator `python3 illuminator.py`
 2. Run test `python3 -m unittest -v test_illuminator.py`
