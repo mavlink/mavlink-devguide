@@ -64,6 +64,7 @@
   * [Gimbal Protocol v2](services/gimbal_v2.md)
     * [Gimbal Protocol v1 (superseded)](services/gimbal.md)
   * [Arm Authorization Protocol](services/arm_authorization.md)
+  * [Illuminator Protocol](services/illuminator.md)
   * [Image Transmission Protocol](services/image_transmission.md)
   * [Offboard Control Protocol](services/offboard_control.md)
   * [File Transfer Protocol (FTP)](services/ftp.md)
