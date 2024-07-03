@@ -11,6 +11,7 @@ The topics linked from the sidebar (and listed below):
 - [Serialization](../guide/serialization.md)
 - [Routing](../guide/routing.md)
 - [Redundancy/Message De-duplication](../guide/redundancy_deduplication.md)
+- [Packet Loss Calculation](../guide/packet_loss.md)
 - [General Telemetry](../guide/general_telemetry.md)
 - [UAVCAN Interaction](../guide/uavcan_interaction.md)
 - [Scripts](../guide/scripts.md)

@@ -26,6 +26,7 @@
   * [Serialization](guide/serialization.md)
   * [Routing](guide/routing.md)
   * [Redundancy/Message De-duplication](guide/redundancy_deduplication.md)
+  * [Packet Loss Calculation](guide/packet_loss.md)
   * [General Telemetry](guide/general_telemetry.md)
   * [File Formats](file_formats/README.md)
   * [UAVCAN Interaction](guide/uavcan_interaction.md)
