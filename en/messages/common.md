@@ -375,7 +375,7 @@ time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot).
 lat | `int32_t` | degE7 | Latitude, expressed 
 lon | `int32_t` | degE7 | Longitude, expressed 
 alt | `int32_t` | mm | Altitude (MSL). Note that virtually all GPS modules provide both WGS84 and MSL. 
-relative_alt | `int32_t` | mm | Altitude above ground 
+relative_alt | `int32_t` | mm | Altitude above home 
 vx | `int16_t` | cm/s | Ground X Speed (Latitude, positive north) 
 vy | `int16_t` | cm/s | Ground Y Speed (Longitude, positive east) 
 vz | `int16_t` | cm/s | Ground Z Speed (Altitude, positive down) 
