@@ -2502,6 +2502,7 @@ flags | `uint32_t` | | [CAMERA_CAP_FLAGS](#CAMERA_CAP_FLAGS) | Bitmap of camera 
 cam_definition_version | `uint16_t` | | | Camera definition version (iteration).  Use 0 if not known. 
 cam_definition_uri | `char[140]` | | | Camera definition URI (if any, otherwise only basic functions will be available). HTTP- (http://) and MAVLink FTP- (mavlinkftp://) formatted URIs are allowed (and both must be supported by any GCS that implements the Camera Protocol). The definition file may be xz compressed, which will be indicated by the file extension .xml.xz (a GCS that implements the protocol must support decompressing the file). The string needs to be zero terminated.  Use a zero-length string if not known. 
 <span class='ext'>gimbal_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | invalid:0 | Gimbal id of a gimbal associated with this camera. This is the component id of the gimbal device, or 1-6 for non mavlink gimbals. Use 0 if no gimbal is associated with the camera. 
+<span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | invalid:0 | Camera id of a camera associated with this component. This is the component id of a proxied MAVLink camera, or 1-6 for a non-MAVLink camera attached to the component. Use 0 if the component is a camera (not something else providing access to a camera). 
 
 
 ### CAMERA_SETTINGS (260) {#CAMERA_SETTINGS}
