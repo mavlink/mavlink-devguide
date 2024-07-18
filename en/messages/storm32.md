@@ -32,7 +32,7 @@ span.warning {
 Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 8 | 304
-[Enums](#enumerated-types) | 8 | 201
+[Enums](#enumerated-types) | 8 | 202
 [Commands](#mav_commands) | 198 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -1123,6 +1123,8 @@ Value | Name | Description
 ### VIDEO_STREAM_STATUS_FLAGS — \[from: [common](../messages/common.md#VIDEO_STREAM_STATUS_FLAGS)\] {#VIDEO_STREAM_STATUS_FLAGS}
 
 ### VIDEO_STREAM_TYPE — \[from: [common](../messages/common.md#VIDEO_STREAM_TYPE)\] {#VIDEO_STREAM_TYPE}
+
+### VIDEO_STREAM_ENCODING — \[from: [common](../messages/common.md#VIDEO_STREAM_ENCODING)\] {#VIDEO_STREAM_ENCODING}
 
 ### CAMERA_TRACKING_STATUS_FLAGS — \[from: [common](../messages/common.md#CAMERA_TRACKING_STATUS_FLAGS)\] {#CAMERA_TRACKING_STATUS_FLAGS}
 

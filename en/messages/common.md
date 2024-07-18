@@ -37,7 +37,7 @@ span.warning {
 Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 221 | 2
-[Enums](#enumerated-types) | 135 | 6
+[Enums](#enumerated-types) | 136 | 6
 [Commands](#mav_commands) | 164 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -2668,6 +2668,7 @@ rotation | `uint16_t` | deg | | Video image rotation clockwise.
 hfov | `uint16_t` | deg | | Horizontal Field of view. 
 name | `char[32]` | | | Stream name. 
 uri | `char[160]` | | | Video stream URI (TCP or RTSP URI ground station should connect to) or port number (UDP port ground station should listen to). 
+<span class='ext'>encoding</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | [VIDEO_STREAM_ENCODING](#VIDEO_STREAM_ENCODING) | Encoding of stream. 
 
 
 ### VIDEO_STREAM_STATUS (270) {#VIDEO_STREAM_STATUS}
@@ -5027,7 +5028,17 @@ Value | Name | Description
 <a id='VIDEO_STREAM_TYPE_RTSP'></a>0 | [VIDEO_STREAM_TYPE_RTSP](#VIDEO_STREAM_TYPE_RTSP) | Stream is RTSP 
 <a id='VIDEO_STREAM_TYPE_RTPUDP'></a>1 | [VIDEO_STREAM_TYPE_RTPUDP](#VIDEO_STREAM_TYPE_RTPUDP) | Stream is RTP UDP (URI gives the port number) 
 <a id='VIDEO_STREAM_TYPE_TCP_MPEG'></a>2 | [VIDEO_STREAM_TYPE_TCP_MPEG](#VIDEO_STREAM_TYPE_TCP_MPEG) | Stream is MPEG on TCP 
-<a id='VIDEO_STREAM_TYPE_MPEG_TS_H264'></a>3 | [VIDEO_STREAM_TYPE_MPEG_TS_H264](#VIDEO_STREAM_TYPE_MPEG_TS_H264) | Stream is h.264 on MPEG TS (URI gives the port number) 
+<a id='VIDEO_STREAM_TYPE_MPEG_TS'></a>3 | [VIDEO_STREAM_TYPE_MPEG_TS](#VIDEO_STREAM_TYPE_MPEG_TS) | Stream is MPEG TS (URI gives the port number) 
+
+### VIDEO_STREAM_ENCODING {#VIDEO_STREAM_ENCODING}
+
+Video stream encodings
+
+Value | Name | Description
+--- | --- | ---
+<a id='VIDEO_STREAM_ENCODING_UNKNOWN'></a>0 | [VIDEO_STREAM_ENCODING_UNKNOWN](#VIDEO_STREAM_ENCODING_UNKNOWN) | Stream encoding is unknown 
+<a id='VIDEO_STREAM_ENCODING_H264'></a>1 | [VIDEO_STREAM_ENCODING_H264](#VIDEO_STREAM_ENCODING_H264) | Stream encoding is H.264 
+<a id='VIDEO_STREAM_ENCODING_H265'></a>2 | [VIDEO_STREAM_ENCODING_H265](#VIDEO_STREAM_ENCODING_H265) | Stream encoding is H.265 
 
 ### CAMERA_TRACKING_STATUS_FLAGS {#CAMERA_TRACKING_STATUS_FLAGS}
 
