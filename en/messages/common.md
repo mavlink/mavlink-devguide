@@ -4238,6 +4238,7 @@ Value | Name | Description
 <a id='ORBIT_YAW_BEHAVIOUR_UNCONTROLLED'></a>2 | [ORBIT_YAW_BEHAVIOUR_UNCONTROLLED](#ORBIT_YAW_BEHAVIOUR_UNCONTROLLED) | Yaw uncontrolled. 
 <a id='ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE'></a>3 | [ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE](#ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TANGENT_TO_CIRCLE) | Vehicle front follows flight path (tangential to circle). 
 <a id='ORBIT_YAW_BEHAVIOUR_RC_CONTROLLED'></a>4 | [ORBIT_YAW_BEHAVIOUR_RC_CONTROLLED](#ORBIT_YAW_BEHAVIOUR_RC_CONTROLLED) | Yaw controlled by RC input. 
+<a id='ORBIT_YAW_BEHAVIOUR_UNCHANGED'></a>5 | [ORBIT_YAW_BEHAVIOUR_UNCHANGED](#ORBIT_YAW_BEHAVIOUR_UNCHANGED) | Vehicle uses current yaw behaviour (unchanged). The vehicle-default yaw behaviour is used if this value is specified when orbit is first commanded. 
 
 ### WIFI_CONFIG_AP_RESPONSE {#WIFI_CONFIG_AP_RESPONSE}
 
