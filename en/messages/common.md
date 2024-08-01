@@ -4425,7 +4425,7 @@ Value | Name | Description
 
 ### MAV_ROI — [DEP] {#MAV_ROI}
 
-<span class="warning">**DEPRECATED:** Replaced By MAV_CMD_DO_SET_ROI_* (2018-01)</span>
+<span class="warning">**DEPRECATED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
 The ROI (region of interest) for the vehicle. This can be
 
@@ -6385,7 +6385,7 @@ Param (Label) | Description | Values | Units
 
 ### MAV_CMD_NAV_ROI (80) — [DEP] {#MAV_CMD_NAV_ROI}
 
-<span class="warning">**DEPRECATED:** Replaced By MAV_CMD_DO_SET_ROI_* (2018-01)</span>
+<span class="warning">**DEPRECATED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
 Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.
 
@@ -6978,7 +6978,7 @@ Param (Label) | Description | Values | Units
 
 ### MAV_CMD_DO_SET_ROI (201) — [DEP] {#MAV_CMD_DO_SET_ROI}
 
-<span class="warning">**DEPRECATED:** Replaced By MAV_CMD_DO_SET_ROI_* (2018-01)</span>
+<span class="warning">**DEPRECATED:** Replaced By `MAV_CMD_DO_SET_ROI_*` (2018-01)</span>
 
 Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.
 
@@ -7042,7 +7042,7 @@ Param (Label) | Description | Values
 
 ### MAV_CMD_DO_MOUNT_CONTROL (205) — [DEP] {#MAV_CMD_DO_MOUNT_CONTROL}
 
-<span class="warning">**DEPRECATED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) (2020-01) — This message is ambiguous and inconsistent. It has been superseded by [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) and MAV_CMD_DO_SET_ROI_*. The message can still be used to communicate with legacy gimbals implementing it.)</span>
+<span class="warning">**DEPRECATED:** Replaced By [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) (2020-01) — This message is ambiguous and inconsistent. It has been superseded by [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) and `MAV_CMD_DO_SET_ROI_*` variants. The message can still be used to communicate with legacy gimbals implementing it.)</span>
 
 Mission command to control a camera or antenna mount
 
