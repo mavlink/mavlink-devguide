@@ -3,7 +3,14 @@
 
 # Dialect: cubepilot
 
-*This is a human-readable form of the XML definition file: [cubepilot](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/cubepilot).*
+> **Warning** [cubepilot.xml](https://github.com/CubePilot/mavlink/blob/master/message_definitions/v1.0/cubepilot.xml) contains the accurate and up-to-date documentation for this dialect.
+> The documentation below may not be accurate if the dialect owner has not pushed changes.
+
+These messages define the [CubePilot](http://www.cubepilot.com) specific dialect (as pushed to the [mavlink/mavlink](https://github.com/mavlink/mavlink) GitHub repository by the dialect owner).
+
+This topic is a human-readable form of the XML definition file: [cubepilot.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/cubepilot.xml).
+
+    
 
 <span id="mav2_extension_field"></span>
 

@@ -3,11 +3,13 @@
 
 # Dialect: ArduPilotMega
 
-These messages define the ArduPilot specific message set, which is custom to [http://ardupilot.org](http://ardupilot.org).
+> **Warning** [ardupilotmega.xml](https://github.com/ArduPilot/mavlink/blob/master/message_definitions/v1.0/ardupilotmega.xml) contains the accurate and up-to-date documentation for this dialect.
+> The documentation below may not be accurate if the dialect owner has not pushed changes.
+
+These messages define the [ArduPilot](http://ardupilot.org) specific dialect (as pushed to the [mavlink/mavlink](https://github.com/mavlink/mavlink) GitHub repository by the dialect owner).
 
 This topic is a human-readable form of the XML definition file: [ardupilotmega.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/ardupilotmega.xml).
 
-> **Warning** The ArduPilot MAVLink fork of [ardupilotmega.xml](https://github.com/ArduPilot/mavlink/blob/master/message_definitions/v1.0/ardupilotmega.xml) may contain messages that have not yet been merged into this documentation.
     
 
 <span id="mav2_extension_field"></span>

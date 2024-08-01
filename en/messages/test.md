@@ -3,7 +3,10 @@
 
 # Dialect: test
 
-*This is a human-readable form of the XML definition file: [test](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/test).*
+The test dialect is used for testing XML file parsing.
+
+This topic is a human-readable form of the XML definition file: [test.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/test.xml).
+
 
 <span id="mav2_extension_field"></span>
 

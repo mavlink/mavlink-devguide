@@ -3,7 +3,7 @@
 
 # Dialect: all
 
-This dialect is intended to `include` all other [dialects](../messages/README.md) in the mavlink/mavlink repository (including [external dialects](https://github.com/mavlink/mavlink/tree/master/external/dialects#mavlink-external-dialects)).
+This dialect is intended to `include` all other [dialects](../messages/README.md) in the [mavlink/mavlink](https://github.com/mavlink/mavlink) repository (including [external dialects](https://github.com/mavlink/mavlink/tree/master/external/dialects#mavlink-external-dialects)).
 
 Dialects that are in **all.xml** are guaranteed to not have clashes in messages, enums, enum ids, and MAV_CMDs.
 This ensure that:
@@ -11,8 +11,12 @@ This ensure that:
 - Systems based on these dialects can co-exist on the same MAVLink network.
 - A Ground Station might (optionally) use libraries generated from **all.xml** to communicate using any of the dialects.
 
-> **Warning** New dialect files in the official repository must be added to **all.xml** and restrict themselves to using ids in their own allocated range.
-A few older dialects are not included because these operate in completely closed networks or because they are only used for tests.
+> **Warning**
+>
+> - New dialect files in the official repository must be added to **all.xml** and restrict themselves to using ids in their own allocated range.
+> - Dialects should push changes to mavlink/mavlink in order to avoid potential clashes from changes to other dialects.
+>
+> A few older dialects are not included because these operate in completely closed networks or because they are only used for tests.
 
 This topic is a human-readable form of the XML definition file: [all.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/all.xml).
 

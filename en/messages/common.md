@@ -46,6 +46,18 @@ The following sections list all entities in the dialect (both included and defin
 
 ### HEARTBEAT (0) — \[from: [minimal](../messages/minimal.md#HEARTBEAT)\] {#HEARTBEAT}
 
+The heartbeat message shows that a system or component is present and responding. The type and autopilot fields (along with the message component id), allow the receiving system to treat further messages from this system appropriately (e.g. by laying out the user interface based on the autopilot). This microservice is documented at https://mavlink.io/en/services/heartbeat.html
+
+Field Name | Type | Values | Description
+--- | --- | --- | ---
+type | `uint8_t` | [MAV_TYPE](#MAV_TYPE) | Vehicle or component type. For a flight controller component the vehicle type (quadrotor, helicopter, etc.). For other components the component type (e.g. camera, gimbal, etc.). This should be used in preference to component id for identifying the component type. 
+autopilot | `uint8_t` | [MAV_AUTOPILOT](#MAV_AUTOPILOT) | Autopilot type / class. Use [MAV_AUTOPILOT_INVALID](#MAV_AUTOPILOT_INVALID) for components that are not flight controllers. 
+base_mode | `uint8_t` | [MAV_MODE_FLAG](#MAV_MODE_FLAG) | System mode bitmap. 
+custom_mode | `uint32_t` | | A bitfield for use for autopilot-specific flags 
+system_status | `uint8_t` | [MAV_STATE](#MAV_STATE) | System status flag. 
+mavlink_version | `uint8_t_mavlink_version` | | MAVLink version, not writable by user, gets added by protocol because of magic data type: uint8_t_mavlink_version 
+
+
 ### SYS_STATUS (1) {#SYS_STATUS}
 
 The general system state. If the system is following the MAVLink standard, the system state is mainly defined by three orthogonal states/modes: The system mode, which is either LOCKED (motors shut down and locked), MANUAL (system under RC control), GUIDED (system with autonomous position control, position setpoint controlled manually) or AUTO (system guided by path/waypoint planner). The [NAV_MODE](#NAV_MODE) defined the current flight state: LIFTOFF (often an open-loop maneuver), LANDING, WAYPOINTS or VECTOR. This represents the internal navigation state machine. The system status shows whether the system is currently active or not and if an emergency occurred. During the CRITICAL and EMERGENCY states the MAV is still considered to be active, but should start emergency procedures autonomously. After a failure occurred it should first move from active to critical to allow manual intervention and then move to emergency after a certain timeout.
@@ -2979,6 +2991,19 @@ password | `char[64]` | | Password. Blank for an open AP. MD5 hash when message 
 
 ### PROTOCOL_VERSION (300) — \[from: [minimal](../messages/minimal.md#PROTOCOL_VERSION)\] [WIP] {#PROTOCOL_VERSION}
 
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Version and capability of protocol version. This message can be requested with [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to a request for [PROTOCOL_VERSION](#PROTOCOL_VERSION) to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.
+
+Field Name | Type | Description
+--- | --- | ---
+version | `uint16_t` | Currently active MAVLink version number * 100: v1.0 is 100, v2.0 is 200, etc. 
+min_version | `uint16_t` | Minimum MAVLink version supported 
+max_version | `uint16_t` | Maximum MAVLink version supported (set to the same value as version by default) 
+spec_version_hash | `uint8_t[8]` | The first 8 bytes (not characters printed in hex!) of the git hash. 
+library_version_hash | `uint8_t[8]` | The first 8 bytes (not characters printed in hex!) of the git hash. 
+
+
 ### AIS_VESSEL (301) {#AIS_VESSEL}
 
 The location and information of an AIS vessel
@@ -5861,15 +5886,273 @@ Value | Name | Description
 
 ### MAV_AUTOPILOT — \[from: [minimal](../messages/minimal.md#MAV_AUTOPILOT)\] {#MAV_AUTOPILOT}
 
+Micro air vehicle / autopilot classes. This identifies the individual model.
+
+Value | Name | Description
+--- | --- | ---
+<a id='MAV_AUTOPILOT_GENERIC'></a>0 | [MAV_AUTOPILOT_GENERIC](#MAV_AUTOPILOT_GENERIC) | Generic autopilot, full support for everything 
+<a id='MAV_AUTOPILOT_RESERVED'></a>1 | [MAV_AUTOPILOT_RESERVED](#MAV_AUTOPILOT_RESERVED) | Reserved for future use. 
+<a id='MAV_AUTOPILOT_SLUGS'></a>2 | [MAV_AUTOPILOT_SLUGS](#MAV_AUTOPILOT_SLUGS) | SLUGS autopilot, http://slugsuav.soe.ucsc.edu 
+<a id='MAV_AUTOPILOT_ARDUPILOTMEGA'></a>3 | [MAV_AUTOPILOT_ARDUPILOTMEGA](#MAV_AUTOPILOT_ARDUPILOTMEGA) | ArduPilot - Plane/Copter/Rover/Sub/Tracker, https://ardupilot.org 
+<a id='MAV_AUTOPILOT_OPENPILOT'></a>4 | [MAV_AUTOPILOT_OPENPILOT](#MAV_AUTOPILOT_OPENPILOT) | OpenPilot, http://openpilot.org 
+<a id='MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY'></a>5 | [MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY](#MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY) | Generic autopilot only supporting simple waypoints 
+<a id='MAV_AUTOPILOT_GENERIC_WAYPOINTS_AND_SIMPLE_NAVIGATION_ONLY'></a>6 | [MAV_AUTOPILOT_GENERIC_WAYPOINTS_AND_SIMPLE_NAVIGATION_ONLY](#MAV_AUTOPILOT_GENERIC_WAYPOINTS_AND_SIMPLE_NAVIGATION_ONLY) | Generic autopilot supporting waypoints and other simple navigation commands 
+<a id='MAV_AUTOPILOT_GENERIC_MISSION_FULL'></a>7 | [MAV_AUTOPILOT_GENERIC_MISSION_FULL](#MAV_AUTOPILOT_GENERIC_MISSION_FULL) | Generic autopilot supporting the full mission command set 
+<a id='MAV_AUTOPILOT_INVALID'></a>8 | [MAV_AUTOPILOT_INVALID](#MAV_AUTOPILOT_INVALID) | No valid autopilot, e.g. a GCS or other MAVLink component 
+<a id='MAV_AUTOPILOT_PPZ'></a>9 | [MAV_AUTOPILOT_PPZ](#MAV_AUTOPILOT_PPZ) | PPZ UAV - http://nongnu.org/paparazzi 
+<a id='MAV_AUTOPILOT_UDB'></a>10 | [MAV_AUTOPILOT_UDB](#MAV_AUTOPILOT_UDB) | UAV Dev Board 
+<a id='MAV_AUTOPILOT_FP'></a>11 | [MAV_AUTOPILOT_FP](#MAV_AUTOPILOT_FP) | FlexiPilot 
+<a id='MAV_AUTOPILOT_PX4'></a>12 | [MAV_AUTOPILOT_PX4](#MAV_AUTOPILOT_PX4) | PX4 Autopilot - http://px4.io/ 
+<a id='MAV_AUTOPILOT_SMACCMPILOT'></a>13 | [MAV_AUTOPILOT_SMACCMPILOT](#MAV_AUTOPILOT_SMACCMPILOT) | SMACCMPilot - http://smaccmpilot.org 
+<a id='MAV_AUTOPILOT_AUTOQUAD'></a>14 | [MAV_AUTOPILOT_AUTOQUAD](#MAV_AUTOPILOT_AUTOQUAD) | AutoQuad -- http://autoquad.org 
+<a id='MAV_AUTOPILOT_ARMAZILA'></a>15 | [MAV_AUTOPILOT_ARMAZILA](#MAV_AUTOPILOT_ARMAZILA) | Armazila -- http://armazila.com 
+<a id='MAV_AUTOPILOT_AEROB'></a>16 | [MAV_AUTOPILOT_AEROB](#MAV_AUTOPILOT_AEROB) | Aerob -- http://aerob.ru 
+<a id='MAV_AUTOPILOT_ASLUAV'></a>17 | [MAV_AUTOPILOT_ASLUAV](#MAV_AUTOPILOT_ASLUAV) | ASLUAV autopilot -- http://www.asl.ethz.ch 
+<a id='MAV_AUTOPILOT_SMARTAP'></a>18 | [MAV_AUTOPILOT_SMARTAP](#MAV_AUTOPILOT_SMARTAP) | SmartAP Autopilot - http://sky-drones.com 
+<a id='MAV_AUTOPILOT_AIRRAILS'></a>19 | [MAV_AUTOPILOT_AIRRAILS](#MAV_AUTOPILOT_AIRRAILS) | AirRails - http://uaventure.com 
+<a id='MAV_AUTOPILOT_REFLEX'></a>20 | [MAV_AUTOPILOT_REFLEX](#MAV_AUTOPILOT_REFLEX) | Fusion Reflex - https://fusion.engineering 
+
 ### MAV_TYPE — \[from: [minimal](../messages/minimal.md#MAV_TYPE)\] {#MAV_TYPE}
+
+MAVLINK component type reported in HEARTBEAT message. Flight controllers must report the type of the vehicle on which they are mounted (e.g. [MAV_TYPE_OCTOROTOR](#MAV_TYPE_OCTOROTOR)). All other components must report a value appropriate for their type (e.g. a camera must use [MAV_TYPE_CAMERA](#MAV_TYPE_CAMERA)).
+
+Value | Name | Description
+--- | --- | ---
+<a id='MAV_TYPE_GENERIC'></a>0 | [MAV_TYPE_GENERIC](#MAV_TYPE_GENERIC) | Generic micro air vehicle 
+<a id='MAV_TYPE_FIXED_WING'></a>1 | [MAV_TYPE_FIXED_WING](#MAV_TYPE_FIXED_WING) | Fixed wing aircraft. 
+<a id='MAV_TYPE_QUADROTOR'></a>2 | [MAV_TYPE_QUADROTOR](#MAV_TYPE_QUADROTOR) | Quadrotor 
+<a id='MAV_TYPE_COAXIAL'></a>3 | [MAV_TYPE_COAXIAL](#MAV_TYPE_COAXIAL) | Coaxial helicopter 
+<a id='MAV_TYPE_HELICOPTER'></a>4 | [MAV_TYPE_HELICOPTER](#MAV_TYPE_HELICOPTER) | Normal helicopter with tail rotor. 
+<a id='MAV_TYPE_ANTENNA_TRACKER'></a>5 | [MAV_TYPE_ANTENNA_TRACKER](#MAV_TYPE_ANTENNA_TRACKER) | Ground installation 
+<a id='MAV_TYPE_GCS'></a>6 | [MAV_TYPE_GCS](#MAV_TYPE_GCS) | Operator control unit / ground control station 
+<a id='MAV_TYPE_AIRSHIP'></a>7 | [MAV_TYPE_AIRSHIP](#MAV_TYPE_AIRSHIP) | Airship, controlled 
+<a id='MAV_TYPE_FREE_BALLOON'></a>8 | [MAV_TYPE_FREE_BALLOON](#MAV_TYPE_FREE_BALLOON) | Free balloon, uncontrolled 
+<a id='MAV_TYPE_ROCKET'></a>9 | [MAV_TYPE_ROCKET](#MAV_TYPE_ROCKET) | Rocket 
+<a id='MAV_TYPE_GROUND_ROVER'></a>10 | [MAV_TYPE_GROUND_ROVER](#MAV_TYPE_GROUND_ROVER) | Ground rover 
+<a id='MAV_TYPE_SURFACE_BOAT'></a>11 | [MAV_TYPE_SURFACE_BOAT](#MAV_TYPE_SURFACE_BOAT) | Surface vessel, boat, ship 
+<a id='MAV_TYPE_SUBMARINE'></a>12 | [MAV_TYPE_SUBMARINE](#MAV_TYPE_SUBMARINE) | Submarine 
+<a id='MAV_TYPE_HEXAROTOR'></a>13 | [MAV_TYPE_HEXAROTOR](#MAV_TYPE_HEXAROTOR) | Hexarotor 
+<a id='MAV_TYPE_OCTOROTOR'></a>14 | [MAV_TYPE_OCTOROTOR](#MAV_TYPE_OCTOROTOR) | Octorotor 
+<a id='MAV_TYPE_TRICOPTER'></a>15 | [MAV_TYPE_TRICOPTER](#MAV_TYPE_TRICOPTER) | Tricopter 
+<a id='MAV_TYPE_FLAPPING_WING'></a>16 | [MAV_TYPE_FLAPPING_WING](#MAV_TYPE_FLAPPING_WING) | Flapping wing 
+<a id='MAV_TYPE_KITE'></a>17 | [MAV_TYPE_KITE](#MAV_TYPE_KITE) | Kite 
+<a id='MAV_TYPE_ONBOARD_CONTROLLER'></a>18 | [MAV_TYPE_ONBOARD_CONTROLLER](#MAV_TYPE_ONBOARD_CONTROLLER) | Onboard companion controller 
+<a id='MAV_TYPE_VTOL_TAILSITTER_DUOROTOR'></a>19 | [MAV_TYPE_VTOL_TAILSITTER_DUOROTOR](#MAV_TYPE_VTOL_TAILSITTER_DUOROTOR) | Two-rotor Tailsitter VTOL that additionally uses control surfaces in vertical operation. Note, value previously named [MAV_TYPE_VTOL_DUOROTOR](#MAV_TYPE_VTOL_DUOROTOR). 
+<a id='MAV_TYPE_VTOL_TAILSITTER_QUADROTOR'></a>20 | [MAV_TYPE_VTOL_TAILSITTER_QUADROTOR](#MAV_TYPE_VTOL_TAILSITTER_QUADROTOR) | Quad-rotor Tailsitter VTOL using a V-shaped quad config in vertical operation. Note: value previously named [MAV_TYPE_VTOL_QUADROTOR](#MAV_TYPE_VTOL_QUADROTOR). 
+<a id='MAV_TYPE_VTOL_TILTROTOR'></a>21 | [MAV_TYPE_VTOL_TILTROTOR](#MAV_TYPE_VTOL_TILTROTOR) | Tiltrotor VTOL. Fuselage and wings stay (nominally) horizontal in all flight phases. It able to tilt (some) rotors to provide thrust in cruise flight. 
+<a id='MAV_TYPE_VTOL_FIXEDROTOR'></a>22 | [MAV_TYPE_VTOL_FIXEDROTOR](#MAV_TYPE_VTOL_FIXEDROTOR) | VTOL with separate fixed rotors for hover and cruise flight. Fuselage and wings stay (nominally) horizontal in all flight phases. 
+<a id='MAV_TYPE_VTOL_TAILSITTER'></a>23 | [MAV_TYPE_VTOL_TAILSITTER](#MAV_TYPE_VTOL_TAILSITTER) | Tailsitter VTOL. Fuselage and wings orientation changes depending on flight phase: vertical for hover, horizontal for cruise. Use more specific VTOL [MAV_TYPE_VTOL_TAILSITTER_DUOROTOR](#MAV_TYPE_VTOL_TAILSITTER_DUOROTOR) or [MAV_TYPE_VTOL_TAILSITTER_QUADROTOR](#MAV_TYPE_VTOL_TAILSITTER_QUADROTOR) if appropriate. 
+<a id='MAV_TYPE_VTOL_TILTWING'></a>24 | [MAV_TYPE_VTOL_TILTWING](#MAV_TYPE_VTOL_TILTWING) | Tiltwing VTOL. Fuselage stays horizontal in all flight phases. The whole wing, along with any attached engine, can tilt between vertical and horizontal mode. 
+<a id='MAV_TYPE_VTOL_RESERVED5'></a>25 | [MAV_TYPE_VTOL_RESERVED5](#MAV_TYPE_VTOL_RESERVED5) | VTOL reserved 5 
+<a id='MAV_TYPE_GIMBAL'></a>26 | [MAV_TYPE_GIMBAL](#MAV_TYPE_GIMBAL) | Gimbal 
+<a id='MAV_TYPE_ADSB'></a>27 | [MAV_TYPE_ADSB](#MAV_TYPE_ADSB) | ADSB system 
+<a id='MAV_TYPE_PARAFOIL'></a>28 | [MAV_TYPE_PARAFOIL](#MAV_TYPE_PARAFOIL) | Steerable, nonrigid airfoil 
+<a id='MAV_TYPE_DODECAROTOR'></a>29 | [MAV_TYPE_DODECAROTOR](#MAV_TYPE_DODECAROTOR) | Dodecarotor 
+<a id='MAV_TYPE_CAMERA'></a>30 | [MAV_TYPE_CAMERA](#MAV_TYPE_CAMERA) | Camera 
+<a id='MAV_TYPE_CHARGING_STATION'></a>31 | [MAV_TYPE_CHARGING_STATION](#MAV_TYPE_CHARGING_STATION) | Charging station 
+<a id='MAV_TYPE_FLARM'></a>32 | [MAV_TYPE_FLARM](#MAV_TYPE_FLARM) | FLARM collision avoidance system 
+<a id='MAV_TYPE_SERVO'></a>33 | [MAV_TYPE_SERVO](#MAV_TYPE_SERVO) | Servo 
+<a id='MAV_TYPE_ODID'></a>34 | [MAV_TYPE_ODID](#MAV_TYPE_ODID) | Open Drone ID. See https://mavlink.io/en/services/opendroneid.html. 
+<a id='MAV_TYPE_DECAROTOR'></a>35 | [MAV_TYPE_DECAROTOR](#MAV_TYPE_DECAROTOR) | Decarotor 
+<a id='MAV_TYPE_BATTERY'></a>36 | [MAV_TYPE_BATTERY](#MAV_TYPE_BATTERY) | Battery 
+<a id='MAV_TYPE_PARACHUTE'></a>37 | [MAV_TYPE_PARACHUTE](#MAV_TYPE_PARACHUTE) | Parachute 
+<a id='MAV_TYPE_LOG'></a>38 | [MAV_TYPE_LOG](#MAV_TYPE_LOG) | Log 
+<a id='MAV_TYPE_OSD'></a>39 | [MAV_TYPE_OSD](#MAV_TYPE_OSD) | OSD 
+<a id='MAV_TYPE_IMU'></a>40 | [MAV_TYPE_IMU](#MAV_TYPE_IMU) | IMU 
+<a id='MAV_TYPE_GPS'></a>41 | [MAV_TYPE_GPS](#MAV_TYPE_GPS) | GPS 
+<a id='MAV_TYPE_WINCH'></a>42 | [MAV_TYPE_WINCH](#MAV_TYPE_WINCH) | Winch 
+<a id='MAV_TYPE_GENERIC_MULTIROTOR'></a>43 | [MAV_TYPE_GENERIC_MULTIROTOR](#MAV_TYPE_GENERIC_MULTIROTOR) | Generic multirotor that does not fit into a specific type or whose type is unknown 
+<a id='MAV_TYPE_ILLUMINATOR'></a>44 | [MAV_TYPE_ILLUMINATOR](#MAV_TYPE_ILLUMINATOR) | Illuminator. An illuminator is a light source that is used for lighting up dark areas external to the sytstem: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light). 
 
 ### MAV_MODE_FLAG — \[from: [minimal](../messages/minimal.md#MAV_MODE_FLAG)\] {#MAV_MODE_FLAG}
 
+(Bitmask) These flags encode the MAV mode.
+
+Value | Name | Description
+--- | --- | ---
+<a id='MAV_MODE_FLAG_CUSTOM_MODE_ENABLED'></a>1 | [MAV_MODE_FLAG_CUSTOM_MODE_ENABLED](#MAV_MODE_FLAG_CUSTOM_MODE_ENABLED) | 0b00000001 Reserved for future use. 
+<a id='MAV_MODE_FLAG_TEST_ENABLED'></a>2 | [MAV_MODE_FLAG_TEST_ENABLED](#MAV_MODE_FLAG_TEST_ENABLED) | 0b00000010 system has a test mode enabled. This flag is intended for temporary system tests and should not be used for stable implementations. 
+<a id='MAV_MODE_FLAG_AUTO_ENABLED'></a>4 | [MAV_MODE_FLAG_AUTO_ENABLED](#MAV_MODE_FLAG_AUTO_ENABLED) | 0b00000100 autonomous mode enabled, system finds its own goal positions. Guided flag can be set or not, depends on the actual implementation. 
+<a id='MAV_MODE_FLAG_GUIDED_ENABLED'></a>8 | [MAV_MODE_FLAG_GUIDED_ENABLED](#MAV_MODE_FLAG_GUIDED_ENABLED) | 0b00001000 guided mode enabled, system flies waypoints / mission items. 
+<a id='MAV_MODE_FLAG_STABILIZE_ENABLED'></a>16 | [MAV_MODE_FLAG_STABILIZE_ENABLED](#MAV_MODE_FLAG_STABILIZE_ENABLED) | 0b00010000 system stabilizes electronically its attitude (and optionally position). It needs however further control inputs to move around. 
+<a id='MAV_MODE_FLAG_HIL_ENABLED'></a>32 | [MAV_MODE_FLAG_HIL_ENABLED](#MAV_MODE_FLAG_HIL_ENABLED) | 0b00100000 hardware in the loop simulation. All motors / actuators are blocked, but internal software is full operational. 
+<a id='MAV_MODE_FLAG_MANUAL_INPUT_ENABLED'></a>64 | [MAV_MODE_FLAG_MANUAL_INPUT_ENABLED](#MAV_MODE_FLAG_MANUAL_INPUT_ENABLED) | 0b01000000 remote control input is enabled. 
+<a id='MAV_MODE_FLAG_SAFETY_ARMED'></a>128 | [MAV_MODE_FLAG_SAFETY_ARMED](#MAV_MODE_FLAG_SAFETY_ARMED) | 0b10000000 MAV safety set to armed. Motors are enabled / running / can start. Ready to fly. Additional note: this flag is to be ignore when sent in the command [MAV_CMD_DO_SET_MODE](#MAV_CMD_DO_SET_MODE) and [MAV_CMD_COMPONENT_ARM_DISARM](#MAV_CMD_COMPONENT_ARM_DISARM) shall be used instead. The flag can still be used to report the armed state. 
+
 ### MAV_MODE_FLAG_DECODE_POSITION — \[from: [minimal](../messages/minimal.md#MAV_MODE_FLAG_DECODE_POSITION)\] {#MAV_MODE_FLAG_DECODE_POSITION}
+
+(Bitmask) These values encode the bit positions of the decode position. These values can be used to read the value of a flag bit by combining the base_mode variable with AND with the flag position value. The result will be either 0 or 1, depending on if the flag is set or not.
+
+Value | Name | Description
+--- | --- | ---
+<a id='MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE'></a>1 | [MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE](#MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE) | Eighth bit: 00000001 
+<a id='MAV_MODE_FLAG_DECODE_POSITION_TEST'></a>2 | [MAV_MODE_FLAG_DECODE_POSITION_TEST](#MAV_MODE_FLAG_DECODE_POSITION_TEST) | Seventh bit: 00000010 
+<a id='MAV_MODE_FLAG_DECODE_POSITION_AUTO'></a>4 | [MAV_MODE_FLAG_DECODE_POSITION_AUTO](#MAV_MODE_FLAG_DECODE_POSITION_AUTO) | Sixth bit:   00000100 
+<a id='MAV_MODE_FLAG_DECODE_POSITION_GUIDED'></a>8 | [MAV_MODE_FLAG_DECODE_POSITION_GUIDED](#MAV_MODE_FLAG_DECODE_POSITION_GUIDED) | Fifth bit:  00001000 
+<a id='MAV_MODE_FLAG_DECODE_POSITION_STABILIZE'></a>16 | [MAV_MODE_FLAG_DECODE_POSITION_STABILIZE](#MAV_MODE_FLAG_DECODE_POSITION_STABILIZE) | Fourth bit: 00010000 
+<a id='MAV_MODE_FLAG_DECODE_POSITION_HIL'></a>32 | [MAV_MODE_FLAG_DECODE_POSITION_HIL](#MAV_MODE_FLAG_DECODE_POSITION_HIL) | Third bit:  00100000 
+<a id='MAV_MODE_FLAG_DECODE_POSITION_MANUAL'></a>64 | [MAV_MODE_FLAG_DECODE_POSITION_MANUAL](#MAV_MODE_FLAG_DECODE_POSITION_MANUAL) | Second bit: 01000000 
+<a id='MAV_MODE_FLAG_DECODE_POSITION_SAFETY'></a>128 | [MAV_MODE_FLAG_DECODE_POSITION_SAFETY](#MAV_MODE_FLAG_DECODE_POSITION_SAFETY) | First bit:  10000000 
 
 ### MAV_STATE — \[from: [minimal](../messages/minimal.md#MAV_STATE)\] {#MAV_STATE}
 
+Value | Name | Description
+--- | --- | ---
+<a id='MAV_STATE_UNINIT'></a>0 | [MAV_STATE_UNINIT](#MAV_STATE_UNINIT) | Uninitialized system, state is unknown. 
+<a id='MAV_STATE_BOOT'></a>1 | [MAV_STATE_BOOT](#MAV_STATE_BOOT) | System is booting up. 
+<a id='MAV_STATE_CALIBRATING'></a>2 | [MAV_STATE_CALIBRATING](#MAV_STATE_CALIBRATING) | System is calibrating and not flight-ready. 
+<a id='MAV_STATE_STANDBY'></a>3 | [MAV_STATE_STANDBY](#MAV_STATE_STANDBY) | System is grounded and on standby. It can be launched any time. 
+<a id='MAV_STATE_ACTIVE'></a>4 | [MAV_STATE_ACTIVE](#MAV_STATE_ACTIVE) | System is active and might be already airborne. Motors are engaged. 
+<a id='MAV_STATE_CRITICAL'></a>5 | [MAV_STATE_CRITICAL](#MAV_STATE_CRITICAL) | System is in a non-normal flight mode (failsafe). It can however still navigate. 
+<a id='MAV_STATE_EMERGENCY'></a>6 | [MAV_STATE_EMERGENCY](#MAV_STATE_EMERGENCY) | System is in a non-normal flight mode (failsafe). It lost control over parts or over the whole airframe. It is in mayday and going down. 
+<a id='MAV_STATE_POWEROFF'></a>7 | [MAV_STATE_POWEROFF](#MAV_STATE_POWEROFF) | System just initialized its power-down sequence, will shut down now. 
+<a id='MAV_STATE_FLIGHT_TERMINATION'></a>8 | [MAV_STATE_FLIGHT_TERMINATION](#MAV_STATE_FLIGHT_TERMINATION) | System is terminating itself (failsafe or commanded). 
+
 ### MAV_COMPONENT — \[from: [minimal](../messages/minimal.md#MAV_COMPONENT)\] {#MAV_COMPONENT}
+
+Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.).
+
+Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The [MAV_COMP_ID_ALL](#MAV_COMP_ID_ALL) value is used to indicate messages that must be processed by all components.
+When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded.
+
+Value | Name | Description
+--- | --- | ---
+<a id='MAV_COMP_ID_ALL'></a>0 | [MAV_COMP_ID_ALL](#MAV_COMP_ID_ALL) | Target id (target_component) used to broadcast messages to all components of the receiving system. Components should attempt to process messages with this component ID and forward to components on any other interfaces. Note: This is not a valid *source* component id for a message. 
+<a id='MAV_COMP_ID_AUTOPILOT1'></a>1 | [MAV_COMP_ID_AUTOPILOT1](#MAV_COMP_ID_AUTOPILOT1) | System flight controller component ("autopilot"). Only one autopilot is expected in a particular system. 
+<a id='MAV_COMP_ID_USER1'></a>25 | [MAV_COMP_ID_USER1](#MAV_COMP_ID_USER1) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER2'></a>26 | [MAV_COMP_ID_USER2](#MAV_COMP_ID_USER2) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER3'></a>27 | [MAV_COMP_ID_USER3](#MAV_COMP_ID_USER3) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER4'></a>28 | [MAV_COMP_ID_USER4](#MAV_COMP_ID_USER4) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER5'></a>29 | [MAV_COMP_ID_USER5](#MAV_COMP_ID_USER5) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER6'></a>30 | [MAV_COMP_ID_USER6](#MAV_COMP_ID_USER6) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER7'></a>31 | [MAV_COMP_ID_USER7](#MAV_COMP_ID_USER7) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER8'></a>32 | [MAV_COMP_ID_USER8](#MAV_COMP_ID_USER8) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER9'></a>33 | [MAV_COMP_ID_USER9](#MAV_COMP_ID_USER9) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER10'></a>34 | [MAV_COMP_ID_USER10](#MAV_COMP_ID_USER10) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER11'></a>35 | [MAV_COMP_ID_USER11](#MAV_COMP_ID_USER11) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER12'></a>36 | [MAV_COMP_ID_USER12](#MAV_COMP_ID_USER12) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER13'></a>37 | [MAV_COMP_ID_USER13](#MAV_COMP_ID_USER13) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER14'></a>38 | [MAV_COMP_ID_USER14](#MAV_COMP_ID_USER14) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER15'></a>39 | [MAV_COMP_ID_USER15](#MAV_COMP_ID_USER15) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER16'></a>40 | [MAV_COMP_ID_USER16](#MAV_COMP_ID_USER16) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER17'></a>41 | [MAV_COMP_ID_USER17](#MAV_COMP_ID_USER17) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER18'></a>42 | [MAV_COMP_ID_USER18](#MAV_COMP_ID_USER18) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER19'></a>43 | [MAV_COMP_ID_USER19](#MAV_COMP_ID_USER19) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER20'></a>44 | [MAV_COMP_ID_USER20](#MAV_COMP_ID_USER20) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER21'></a>45 | [MAV_COMP_ID_USER21](#MAV_COMP_ID_USER21) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER22'></a>46 | [MAV_COMP_ID_USER22](#MAV_COMP_ID_USER22) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER23'></a>47 | [MAV_COMP_ID_USER23](#MAV_COMP_ID_USER23) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER24'></a>48 | [MAV_COMP_ID_USER24](#MAV_COMP_ID_USER24) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER25'></a>49 | [MAV_COMP_ID_USER25](#MAV_COMP_ID_USER25) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER26'></a>50 | [MAV_COMP_ID_USER26](#MAV_COMP_ID_USER26) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER27'></a>51 | [MAV_COMP_ID_USER27](#MAV_COMP_ID_USER27) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER28'></a>52 | [MAV_COMP_ID_USER28](#MAV_COMP_ID_USER28) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER29'></a>53 | [MAV_COMP_ID_USER29](#MAV_COMP_ID_USER29) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER30'></a>54 | [MAV_COMP_ID_USER30](#MAV_COMP_ID_USER30) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER31'></a>55 | [MAV_COMP_ID_USER31](#MAV_COMP_ID_USER31) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER32'></a>56 | [MAV_COMP_ID_USER32](#MAV_COMP_ID_USER32) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER33'></a>57 | [MAV_COMP_ID_USER33](#MAV_COMP_ID_USER33) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER34'></a>58 | [MAV_COMP_ID_USER34](#MAV_COMP_ID_USER34) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER35'></a>59 | [MAV_COMP_ID_USER35](#MAV_COMP_ID_USER35) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER36'></a>60 | [MAV_COMP_ID_USER36](#MAV_COMP_ID_USER36) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER37'></a>61 | [MAV_COMP_ID_USER37](#MAV_COMP_ID_USER37) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER38'></a>62 | [MAV_COMP_ID_USER38](#MAV_COMP_ID_USER38) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER39'></a>63 | [MAV_COMP_ID_USER39](#MAV_COMP_ID_USER39) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER40'></a>64 | [MAV_COMP_ID_USER40](#MAV_COMP_ID_USER40) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER41'></a>65 | [MAV_COMP_ID_USER41](#MAV_COMP_ID_USER41) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER42'></a>66 | [MAV_COMP_ID_USER42](#MAV_COMP_ID_USER42) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER43'></a>67 | [MAV_COMP_ID_USER43](#MAV_COMP_ID_USER43) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_TELEMETRY_RADIO'></a>68 | [MAV_COMP_ID_TELEMETRY_RADIO](#MAV_COMP_ID_TELEMETRY_RADIO) | Telemetry radio (e.g. SiK radio, or other component that emits [RADIO_STATUS](#RADIO_STATUS) messages). 
+<a id='MAV_COMP_ID_USER45'></a>69 | [MAV_COMP_ID_USER45](#MAV_COMP_ID_USER45) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER46'></a>70 | [MAV_COMP_ID_USER46](#MAV_COMP_ID_USER46) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER47'></a>71 | [MAV_COMP_ID_USER47](#MAV_COMP_ID_USER47) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER48'></a>72 | [MAV_COMP_ID_USER48](#MAV_COMP_ID_USER48) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER49'></a>73 | [MAV_COMP_ID_USER49](#MAV_COMP_ID_USER49) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER50'></a>74 | [MAV_COMP_ID_USER50](#MAV_COMP_ID_USER50) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER51'></a>75 | [MAV_COMP_ID_USER51](#MAV_COMP_ID_USER51) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER52'></a>76 | [MAV_COMP_ID_USER52](#MAV_COMP_ID_USER52) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER53'></a>77 | [MAV_COMP_ID_USER53](#MAV_COMP_ID_USER53) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER54'></a>78 | [MAV_COMP_ID_USER54](#MAV_COMP_ID_USER54) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER55'></a>79 | [MAV_COMP_ID_USER55](#MAV_COMP_ID_USER55) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER56'></a>80 | [MAV_COMP_ID_USER56](#MAV_COMP_ID_USER56) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER57'></a>81 | [MAV_COMP_ID_USER57](#MAV_COMP_ID_USER57) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER58'></a>82 | [MAV_COMP_ID_USER58](#MAV_COMP_ID_USER58) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER59'></a>83 | [MAV_COMP_ID_USER59](#MAV_COMP_ID_USER59) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER60'></a>84 | [MAV_COMP_ID_USER60](#MAV_COMP_ID_USER60) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER61'></a>85 | [MAV_COMP_ID_USER61](#MAV_COMP_ID_USER61) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER62'></a>86 | [MAV_COMP_ID_USER62](#MAV_COMP_ID_USER62) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER63'></a>87 | [MAV_COMP_ID_USER63](#MAV_COMP_ID_USER63) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER64'></a>88 | [MAV_COMP_ID_USER64](#MAV_COMP_ID_USER64) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER65'></a>89 | [MAV_COMP_ID_USER65](#MAV_COMP_ID_USER65) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER66'></a>90 | [MAV_COMP_ID_USER66](#MAV_COMP_ID_USER66) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER67'></a>91 | [MAV_COMP_ID_USER67](#MAV_COMP_ID_USER67) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER68'></a>92 | [MAV_COMP_ID_USER68](#MAV_COMP_ID_USER68) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER69'></a>93 | [MAV_COMP_ID_USER69](#MAV_COMP_ID_USER69) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER70'></a>94 | [MAV_COMP_ID_USER70](#MAV_COMP_ID_USER70) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER71'></a>95 | [MAV_COMP_ID_USER71](#MAV_COMP_ID_USER71) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER72'></a>96 | [MAV_COMP_ID_USER72](#MAV_COMP_ID_USER72) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER73'></a>97 | [MAV_COMP_ID_USER73](#MAV_COMP_ID_USER73) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER74'></a>98 | [MAV_COMP_ID_USER74](#MAV_COMP_ID_USER74) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_USER75'></a>99 | [MAV_COMP_ID_USER75](#MAV_COMP_ID_USER75) | Id for a component on privately managed MAVLink network. Can be used for any purpose but may not be published by components outside of the private network. 
+<a id='MAV_COMP_ID_CAMERA'></a>100 | [MAV_COMP_ID_CAMERA](#MAV_COMP_ID_CAMERA) | Camera #1. 
+<a id='MAV_COMP_ID_CAMERA2'></a>101 | [MAV_COMP_ID_CAMERA2](#MAV_COMP_ID_CAMERA2) | Camera #2. 
+<a id='MAV_COMP_ID_CAMERA3'></a>102 | [MAV_COMP_ID_CAMERA3](#MAV_COMP_ID_CAMERA3) | Camera #3. 
+<a id='MAV_COMP_ID_CAMERA4'></a>103 | [MAV_COMP_ID_CAMERA4](#MAV_COMP_ID_CAMERA4) | Camera #4. 
+<a id='MAV_COMP_ID_CAMERA5'></a>104 | [MAV_COMP_ID_CAMERA5](#MAV_COMP_ID_CAMERA5) | Camera #5. 
+<a id='MAV_COMP_ID_CAMERA6'></a>105 | [MAV_COMP_ID_CAMERA6](#MAV_COMP_ID_CAMERA6) | Camera #6. 
+<a id='MAV_COMP_ID_SERVO1'></a>140 | [MAV_COMP_ID_SERVO1](#MAV_COMP_ID_SERVO1) | Servo #1. 
+<a id='MAV_COMP_ID_SERVO2'></a>141 | [MAV_COMP_ID_SERVO2](#MAV_COMP_ID_SERVO2) | Servo #2. 
+<a id='MAV_COMP_ID_SERVO3'></a>142 | [MAV_COMP_ID_SERVO3](#MAV_COMP_ID_SERVO3) | Servo #3. 
+<a id='MAV_COMP_ID_SERVO4'></a>143 | [MAV_COMP_ID_SERVO4](#MAV_COMP_ID_SERVO4) | Servo #4. 
+<a id='MAV_COMP_ID_SERVO5'></a>144 | [MAV_COMP_ID_SERVO5](#MAV_COMP_ID_SERVO5) | Servo #5. 
+<a id='MAV_COMP_ID_SERVO6'></a>145 | [MAV_COMP_ID_SERVO6](#MAV_COMP_ID_SERVO6) | Servo #6. 
+<a id='MAV_COMP_ID_SERVO7'></a>146 | [MAV_COMP_ID_SERVO7](#MAV_COMP_ID_SERVO7) | Servo #7. 
+<a id='MAV_COMP_ID_SERVO8'></a>147 | [MAV_COMP_ID_SERVO8](#MAV_COMP_ID_SERVO8) | Servo #8. 
+<a id='MAV_COMP_ID_SERVO9'></a>148 | [MAV_COMP_ID_SERVO9](#MAV_COMP_ID_SERVO9) | Servo #9. 
+<a id='MAV_COMP_ID_SERVO10'></a>149 | [MAV_COMP_ID_SERVO10](#MAV_COMP_ID_SERVO10) | Servo #10. 
+<a id='MAV_COMP_ID_SERVO11'></a>150 | [MAV_COMP_ID_SERVO11](#MAV_COMP_ID_SERVO11) | Servo #11. 
+<a id='MAV_COMP_ID_SERVO12'></a>151 | [MAV_COMP_ID_SERVO12](#MAV_COMP_ID_SERVO12) | Servo #12. 
+<a id='MAV_COMP_ID_SERVO13'></a>152 | [MAV_COMP_ID_SERVO13](#MAV_COMP_ID_SERVO13) | Servo #13. 
+<a id='MAV_COMP_ID_SERVO14'></a>153 | [MAV_COMP_ID_SERVO14](#MAV_COMP_ID_SERVO14) | Servo #14. 
+<a id='MAV_COMP_ID_GIMBAL'></a>154 | [MAV_COMP_ID_GIMBAL](#MAV_COMP_ID_GIMBAL) | Gimbal #1. 
+<a id='MAV_COMP_ID_LOG'></a>155 | [MAV_COMP_ID_LOG](#MAV_COMP_ID_LOG) | Logging component. 
+<a id='MAV_COMP_ID_ADSB'></a>156 | [MAV_COMP_ID_ADSB](#MAV_COMP_ID_ADSB) | Automatic Dependent Surveillance-Broadcast (ADS-B) component. 
+<a id='MAV_COMP_ID_OSD'></a>157 | [MAV_COMP_ID_OSD](#MAV_COMP_ID_OSD) | On Screen Display (OSD) devices for video links. 
+<a id='MAV_COMP_ID_PERIPHERAL'></a>158 | [MAV_COMP_ID_PERIPHERAL](#MAV_COMP_ID_PERIPHERAL) | Generic autopilot peripheral component ID. Meant for devices that do not implement the parameter microservice. 
+<a id='MAV_COMP_ID_QX1_GIMBAL'></a>159 | [MAV_COMP_ID_QX1_GIMBAL](#MAV_COMP_ID_QX1_GIMBAL) | Gimbal ID for QX1.<b><span class="warning">**DEPRECATED:** Replaced By [MAV_COMP_ID_GIMBAL](#MAV_COMP_ID_GIMBAL) (2018-11) — All gimbals should use [MAV_COMP_ID_GIMBAL](#MAV_COMP_ID_GIMBAL).)</span> 
+<a id='MAV_COMP_ID_FLARM'></a>160 | [MAV_COMP_ID_FLARM](#MAV_COMP_ID_FLARM) | FLARM collision alert component. 
+<a id='MAV_COMP_ID_PARACHUTE'></a>161 | [MAV_COMP_ID_PARACHUTE](#MAV_COMP_ID_PARACHUTE) | Parachute component. 
+<a id='MAV_COMP_ID_WINCH'></a>169 | [MAV_COMP_ID_WINCH](#MAV_COMP_ID_WINCH) | Winch component. 
+<a id='MAV_COMP_ID_GIMBAL2'></a>171 | [MAV_COMP_ID_GIMBAL2](#MAV_COMP_ID_GIMBAL2) | Gimbal #2. 
+<a id='MAV_COMP_ID_GIMBAL3'></a>172 | [MAV_COMP_ID_GIMBAL3](#MAV_COMP_ID_GIMBAL3) | Gimbal #3. 
+<a id='MAV_COMP_ID_GIMBAL4'></a>173 | [MAV_COMP_ID_GIMBAL4](#MAV_COMP_ID_GIMBAL4) | Gimbal #4 
+<a id='MAV_COMP_ID_GIMBAL5'></a>174 | [MAV_COMP_ID_GIMBAL5](#MAV_COMP_ID_GIMBAL5) | Gimbal #5. 
+<a id='MAV_COMP_ID_GIMBAL6'></a>175 | [MAV_COMP_ID_GIMBAL6](#MAV_COMP_ID_GIMBAL6) | Gimbal #6. 
+<a id='MAV_COMP_ID_BATTERY'></a>180 | [MAV_COMP_ID_BATTERY](#MAV_COMP_ID_BATTERY) | Battery #1. 
+<a id='MAV_COMP_ID_BATTERY2'></a>181 | [MAV_COMP_ID_BATTERY2](#MAV_COMP_ID_BATTERY2) | Battery #2. 
+<a id='MAV_COMP_ID_MAVCAN'></a>189 | [MAV_COMP_ID_MAVCAN](#MAV_COMP_ID_MAVCAN) | CAN over MAVLink client. 
+<a id='MAV_COMP_ID_MISSIONPLANNER'></a>190 | [MAV_COMP_ID_MISSIONPLANNER](#MAV_COMP_ID_MISSIONPLANNER) | Component that can generate/supply a mission flight plan (e.g. GCS or developer API). 
+<a id='MAV_COMP_ID_ONBOARD_COMPUTER'></a>191 | [MAV_COMP_ID_ONBOARD_COMPUTER](#MAV_COMP_ID_ONBOARD_COMPUTER) | Component that lives on the onboard computer (companion computer) and has some generic functionalities, such as settings system parameters and monitoring the status of some processes that don't directly speak mavlink and so on. 
+<a id='MAV_COMP_ID_ONBOARD_COMPUTER2'></a>192 | [MAV_COMP_ID_ONBOARD_COMPUTER2](#MAV_COMP_ID_ONBOARD_COMPUTER2) | Component that lives on the onboard computer (companion computer) and has some generic functionalities, such as settings system parameters and monitoring the status of some processes that don't directly speak mavlink and so on. 
+<a id='MAV_COMP_ID_ONBOARD_COMPUTER3'></a>193 | [MAV_COMP_ID_ONBOARD_COMPUTER3](#MAV_COMP_ID_ONBOARD_COMPUTER3) | Component that lives on the onboard computer (companion computer) and has some generic functionalities, such as settings system parameters and monitoring the status of some processes that don't directly speak mavlink and so on. 
+<a id='MAV_COMP_ID_ONBOARD_COMPUTER4'></a>194 | [MAV_COMP_ID_ONBOARD_COMPUTER4](#MAV_COMP_ID_ONBOARD_COMPUTER4) | Component that lives on the onboard computer (companion computer) and has some generic functionalities, such as settings system parameters and monitoring the status of some processes that don't directly speak mavlink and so on. 
+<a id='MAV_COMP_ID_PATHPLANNER'></a>195 | [MAV_COMP_ID_PATHPLANNER](#MAV_COMP_ID_PATHPLANNER) | Component that finds an optimal path between points based on a certain constraint (e.g. minimum snap, shortest path, cost, etc.). 
+<a id='MAV_COMP_ID_OBSTACLE_AVOIDANCE'></a>196 | [MAV_COMP_ID_OBSTACLE_AVOIDANCE](#MAV_COMP_ID_OBSTACLE_AVOIDANCE) | Component that plans a collision free path between two points. 
+<a id='MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY'></a>197 | [MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY](#MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY) | Component that provides position estimates using VIO techniques. 
+<a id='MAV_COMP_ID_PAIRING_MANAGER'></a>198 | [MAV_COMP_ID_PAIRING_MANAGER](#MAV_COMP_ID_PAIRING_MANAGER) | Component that manages pairing of vehicle and GCS. 
+<a id='MAV_COMP_ID_IMU'></a>200 | [MAV_COMP_ID_IMU](#MAV_COMP_ID_IMU) | Inertial Measurement Unit (IMU) #1. 
+<a id='MAV_COMP_ID_IMU_2'></a>201 | [MAV_COMP_ID_IMU_2](#MAV_COMP_ID_IMU_2) | Inertial Measurement Unit (IMU) #2. 
+<a id='MAV_COMP_ID_IMU_3'></a>202 | [MAV_COMP_ID_IMU_3](#MAV_COMP_ID_IMU_3) | Inertial Measurement Unit (IMU) #3. 
+<a id='MAV_COMP_ID_GPS'></a>220 | [MAV_COMP_ID_GPS](#MAV_COMP_ID_GPS) | GPS #1. 
+<a id='MAV_COMP_ID_GPS2'></a>221 | [MAV_COMP_ID_GPS2](#MAV_COMP_ID_GPS2) | GPS #2. 
+<a id='MAV_COMP_ID_ODID_TXRX_1'></a>236 | [MAV_COMP_ID_ODID_TXRX_1](#MAV_COMP_ID_ODID_TXRX_1) | Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet). 
+<a id='MAV_COMP_ID_ODID_TXRX_2'></a>237 | [MAV_COMP_ID_ODID_TXRX_2](#MAV_COMP_ID_ODID_TXRX_2) | Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet). 
+<a id='MAV_COMP_ID_ODID_TXRX_3'></a>238 | [MAV_COMP_ID_ODID_TXRX_3](#MAV_COMP_ID_ODID_TXRX_3) | Open Drone ID transmitter/receiver (Bluetooth/WiFi/Internet). 
+<a id='MAV_COMP_ID_UDP_BRIDGE'></a>240 | [MAV_COMP_ID_UDP_BRIDGE](#MAV_COMP_ID_UDP_BRIDGE) | Component to bridge MAVLink to UDP (i.e. from a UART). 
+<a id='MAV_COMP_ID_UART_BRIDGE'></a>241 | [MAV_COMP_ID_UART_BRIDGE](#MAV_COMP_ID_UART_BRIDGE) | Component to bridge to UART (i.e. from UDP). 
+<a id='MAV_COMP_ID_TUNNEL_NODE'></a>242 | [MAV_COMP_ID_TUNNEL_NODE](#MAV_COMP_ID_TUNNEL_NODE) | Component handling TUNNEL messages (e.g. vendor specific GUI of a component). 
+<a id='MAV_COMP_ID_ILLUMINATOR'></a>243 | [MAV_COMP_ID_ILLUMINATOR](#MAV_COMP_ID_ILLUMINATOR) | Illuminator 
+<a id='MAV_COMP_ID_SYSTEM_CONTROL'></a>250 | [MAV_COMP_ID_SYSTEM_CONTROL](#MAV_COMP_ID_SYSTEM_CONTROL) | Deprecated, don't use. Component for handling system messages (e.g. to ARM, takeoff, etc.).<b><span class="warning">**DEPRECATED:** Replaced By [MAV_COMP_ID_ALL](#MAV_COMP_ID_ALL) (2018-11) — System control does not require a separate component ID. Instead, system commands should be sent with target_component=MAV_COMP_ID_ALL allowing the target component to use any appropriate component id.)</span> 
 
 ## Commands (MAV_CMD) {#mav_commands}
 

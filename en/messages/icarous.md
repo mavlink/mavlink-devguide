@@ -3,7 +3,11 @@
 
 # Dialect: icarous
 
-*This is a human-readable form of the XML definition file: [icarous](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/icarous).*
+> **Warning** This topic documents the version of the dialect file in the [mavlink/mavlink](https://github.com/mavlink/mavlink) Github repository, which may not be up to date with the file in the source repository (it is up to the dialect owner to push changes when needed).
+> The source repo should be listed in the comments at the top of the XML definition file listed below (but may not be).
+
+This topic is a human-readable form of the XML definition file: [icarous.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/icarous.xml).
+
 
 <span id="mav2_extension_field"></span>
 
