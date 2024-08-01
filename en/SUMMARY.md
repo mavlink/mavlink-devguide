@@ -39,7 +39,6 @@
     * [ASLUAV.xml](messages/ASLUAV.md)
     * [all.xml](messages/all.md)
     * [ardupilotmega.xml](messages/ardupilotmega.md)
-    * [autoquad.xml](messages/autoquad.md)
     * [development.xml](messages/development.md)
     * [icarous.xml](messages/icarous.md)
     * [matrixpilot.xml](messages/matrixpilot.md)
