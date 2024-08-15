@@ -62,8 +62,6 @@ When using a camera MAV_CMD with the [command protocol](../services/command.md):
   - Specify the vehicle system id.
   - Specify the camera component id.
   - Set the `id` parameter to 0.
-    - If the MAVLink camera has multiple sensors (e.g. visible light vs IR) you could set a value from 1-6 to indicate which sensor process the command.
-    - If `id` is not supported by the camera or is set to 0 then all sensors should be triggered.
 
 #### Camera Addressing in Missions
 
