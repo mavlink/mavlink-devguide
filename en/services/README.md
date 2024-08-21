@@ -36,6 +36,7 @@ The main microservices are shown in the sidebar (most are listed below):
 - [Open Drone ID Protocol](../services/opendroneid.md)
 - [High Latency Protocol](../services/high_latency.md)
 - [Component Metadata Protocol (WIP)](../services/component_information.md)
+- [MAVLink Id Assignment (sysid, compid)](../services/mavlink_id_assignment.md)
 - [Payload Protocol](../services/payload.md)
 - [Traffic Managment (UTM/ADS-B)](../services/traffic_management.md)
 - [Events Interface (WIP)](../services/events.md)
