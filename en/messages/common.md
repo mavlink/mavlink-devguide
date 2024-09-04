@@ -2514,7 +2514,7 @@ flags | `uint32_t` | | [CAMERA_CAP_FLAGS](#CAMERA_CAP_FLAGS) | Bitmap of camera 
 cam_definition_version | `uint16_t` | | | Camera definition version (iteration).  Use 0 if not known. 
 cam_definition_uri | `char[140]` | | | Camera definition URI (if any, otherwise only basic functions will be available). HTTP- (http://) and MAVLink FTP- (mavlinkftp://) formatted URIs are allowed (and both must be supported by any GCS that implements the Camera Protocol). The definition file may be xz compressed, which will be indicated by the file extension .xml.xz (a GCS that implements the protocol must support decompressing the file). The string needs to be zero terminated.  Use a zero-length string if not known. 
 <span class='ext'>gimbal_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | invalid:0 | Gimbal id of a gimbal associated with this camera. This is the component id of the gimbal device, or 1-6 for non mavlink gimbals. Use 0 if no gimbal is associated with the camera. 
-<span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | invalid:0 | Camera id of a camera associated with this component. This is the component id of a proxied MAVLink camera, or 1-6 for a non-MAVLink camera attached to the component. Use 0 if the component is a camera (not something else providing access to a camera). 
+<span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | default:0 min:0 max:6 | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
 
 
 ### CAMERA_SETTINGS (260) {#CAMERA_SETTINGS}
@@ -2527,6 +2527,7 @@ time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot).
 mode_id | `uint8_t` | | [CAMERA_MODE](#CAMERA_MODE) | Camera mode 
 <span class='ext'>zoomLevel</span> <a href='#mav2_extension_field'>++</a> | `float` | | invalid:NaN | Current zoom level as a percentage of the full range (0.0 to 100.0, NaN if not known) 
 <span class='ext'>focusLevel</span> <a href='#mav2_extension_field'>++</a> | `float` | | invalid:NaN | Current focus level as a percentage of the full range (0.0 to 100.0, NaN if not known) 
+<span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | default:0 min:0 max:6 | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
 
 
 ### STORAGE_INFORMATION (261) {#STORAGE_INFORMATION}
@@ -2562,6 +2563,7 @@ image_interval | `float` | s | Image capture interval
 recording_time_ms | `uint32_t` | ms | Elapsed time since recording started (0: Not supported/available). A GCS should compute recording time and use non-zero values of this field to correct any discrepancy. 
 available_capacity | `float` | MiB | Available storage capacity. 
 <span class='ext'>image_count</span> <a href='#mav2_extension_field'>++</a> | `int32_t` | | Total number of images captured ('forever', or until reset using [MAV_CMD_STORAGE_FORMAT](#MAV_CMD_STORAGE_FORMAT)). 
+<span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
 
 
 ### CAMERA_IMAGE_CAPTURED (263) {#CAMERA_IMAGE_CAPTURED}
@@ -2681,6 +2683,7 @@ hfov | `uint16_t` | deg | | Horizontal Field of view.
 name | `char[32]` | | | Stream name. 
 uri | `char[160]` | | | Video stream URI (TCP or RTSP URI ground station should connect to) or port number (UDP port ground station should listen to). 
 <span class='ext'>encoding</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | [VIDEO_STREAM_ENCODING](#VIDEO_STREAM_ENCODING) | Encoding of stream. 
+<span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | default:0 min:0 max:6 | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
 
 
 ### VIDEO_STREAM_STATUS (270) {#VIDEO_STREAM_STATUS}
@@ -2697,6 +2700,7 @@ resolution_v | `uint16_t` | pix | | Vertical resolution
 bitrate | `uint32_t` | bits/s | | Bit rate 
 rotation | `uint16_t` | deg | | Video image rotation clockwise 
 hfov | `uint16_t` | deg | | Horizontal Field of view 
+<span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | default:0 min:0 max:6 | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
 
 
 ### CAMERA_FOV_STATUS (271) {#CAMERA_FOV_STATUS}
@@ -2715,6 +2719,7 @@ alt_image | `int32_t` | mm | Altitude (MSL) of center of image (INT32_MAX if unk
 q | `float[4]` | | Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0) 
 hfov | `float` | deg | Horizontal field of view (NaN if unknown). 
 vfov | `float` | deg | Vertical field of view (NaN if unknown). 
+<span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
 
 
 ### CAMERA_TRACKING_IMAGE_STATUS (275) {#CAMERA_TRACKING_IMAGE_STATUS}
@@ -2733,6 +2738,7 @@ rec_top_x | `float` | invalid:NaN | Current tracked rectangle top x value if [CA
 rec_top_y | `float` | invalid:NaN | Current tracked rectangle top y value if [CAMERA_TRACKING_MODE_RECTANGLE](#CAMERA_TRACKING_MODE_RECTANGLE) (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown 
 rec_bottom_x | `float` | invalid:NaN | Current tracked rectangle bottom x value if [CAMERA_TRACKING_MODE_RECTANGLE](#CAMERA_TRACKING_MODE_RECTANGLE) (normalized 0..1, 0 is left, 1 is right), NAN if unknown 
 rec_bottom_y | `float` | invalid:NaN | Current tracked rectangle bottom y value if [CAMERA_TRACKING_MODE_RECTANGLE](#CAMERA_TRACKING_MODE_RECTANGLE) (normalized 0..1, 0 is top, 1 is bottom), NAN if unknown 
+<span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | default:0 min:0 max:6 | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
 
 
 ### CAMERA_TRACKING_GEO_STATUS (276) {#CAMERA_TRACKING_GEO_STATUS}
@@ -2754,6 +2760,7 @@ vel_acc | `float` | m/s | invalid:NaN | Velocity accuracy. NAN if unknown
 dist | `float` | m | invalid:NaN | Distance between camera and tracked object. NAN if unknown 
 hdg | `float` | rad | invalid:NaN | Heading in radians, in NED. NAN if unknown 
 hdg_acc | `float` | rad | invalid:NaN | Accuracy of heading, in NED. NAN if unknown 
+<span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | default:0 min:0 max:6 | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
 
 
 ### GIMBAL_MANAGER_INFORMATION (280) {#GIMBAL_MANAGER_INFORMATION}
@@ -7066,7 +7073,7 @@ Param (Label) | Description | Values | Units
 1 (Distance) | Camera trigger distance. 0 to stop triggering. | min: 0 | m 
 2 (Shutter) | Camera shutter integration time. -1 or 0 to ignore | min: -1 inc: 1 | ms 
 3 (Trigger) | Trigger camera once immediately. (0 = no trigger, 1 = trigger) | min: 0 max: 1 inc: 1 |   
-4 | Empty |   |   
+4 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |   
 5 | Empty |   |   
 6 | Empty |   |   
 7 | Empty |   |   
@@ -7189,7 +7196,7 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Trigger Cycle) | Camera trigger cycle time. -1 or 0 to ignore. | min: -1 inc: 1 | ms 
 2 (Shutter Integration) | Camera shutter integration time. Should be less than trigger cycle time. -1 or 0 to ignore. | min: -1 inc: 1 | ms 
-3 | Empty |   |   
+3 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |   
 4 | Empty |   |   
 5 | Empty |   |   
 6 | Empty |   |   
@@ -7671,7 +7678,7 @@ Reset all camera settings to Factory Default
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Reset) | 0: No Action 1: Reset all settings | min: 0 max: 1 inc: 1 
-2 | Reserved (all remaining params) |   
+2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 
 
 ### MAV_CMD_SET_CAMERA_MODE (530) {#MAV_CMD_SET_CAMERA_MODE}
@@ -7680,7 +7687,7 @@ Set camera running mode. Use NaN for reserved values. GCS will send a [MAV_CMD_R
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (id) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras that don't have a distinct component id (such as autopilot-attached cameras). 0: all cameras. This is used to specifically target autopilot-connected cameras or individual sensors in a multi-sensor MAVLink camera. It is also used to target specific cameras when the MAV_CMD is used in a mission |   
+1 (id) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 2 (Camera Mode) | Camera mode | [CAMERA_MODE](#CAMERA_MODE) 
 3 | |   
 4 | |   
@@ -7695,9 +7702,8 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Zoom Type) | Zoom type | [CAMERA_ZOOM_TYPE](#CAMERA_ZOOM_TYPE) 
 2 (Zoom Value) | Zoom value. The range of valid values depend on the zoom type. |   
-3 | |   
+3 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 4 | |   
-7 | |   
 
 
 ### MAV_CMD_SET_CAMERA_FOCUS (532) {#MAV_CMD_SET_CAMERA_FOCUS}
@@ -7708,9 +7714,8 @@ Param (Label) | Description | Values
 --- | --- | ---
 1 (Focus Type) | Focus type | [SET_FOCUS_TYPE](#SET_FOCUS_TYPE) 
 2 (Focus Value) | Focus value |   
-3 | |   
+3 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 4 | |   
-7 | |   
 
 
 ### MAV_CMD_SET_STORAGE_USAGE (533) {#MAV_CMD_SET_STORAGE_USAGE}
@@ -7804,7 +7809,7 @@ If the command is broadcast (target_component is 0) then param 1 should be set t
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (id) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras that don't have a distinct component id (such as autopilot-attached cameras). 0: all cameras. This is used to specifically target autopilot-connected cameras or individual sensors in a multi-sensor MAVLink camera. It is also used to target specific cameras when the MAV_CMD is used in a mission | min: 0 max: 255 inc: 1 |   
+1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |   
 2 (Interval) | Desired elapsed time between two consecutive pictures (in seconds). Minimum values depend on hardware (typically greater than 2 seconds). | min: 0 | s 
 3 (Total Images) | Total number of images to capture. 0 to capture forever/until MAV_CMD_IMAGE_STOP_CAPTURE. | min: 0 inc: 1 |   
 4 (Sequence Number) | Capture sequence number starting from 1. This is only valid for single-capture (param3 == 1), otherwise set to 0. Increment the capture ID for each capture command to prevent double captures when a command is re-transmitted. | min: 1 inc: 1 |   
@@ -7832,7 +7837,7 @@ If the command is broadcast (target_component is 0) then param 1 should be set t
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (id) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras that don't have a distinct component id (such as autopilot-attached cameras). 0: all cameras. This is used to specifically target autopilot-connected cameras or individual sensors in a multi-sensor MAVLink camera. It is also used to target specific cameras when the MAV_CMD is used in a mission | min: 0 max: 255 inc: 1 
+1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 2 | |   
 3 | |   
 4 | |   
@@ -7867,6 +7872,7 @@ Param (Label) | Description | Values
 1 (Enable) | Trigger enable/disable (0 for disable, 1 for start), -1 to ignore | min: -1 max: 1 inc: 1 
 2 (Reset) | 1 to reset the trigger sequence, -1 or 0 to ignore | min: -1 max: 1 inc: 1 
 3 (Pause) | 1 to pause triggering, but without switching the camera off or retracting it. -1 to ignore | min: -1 max: 1 inc: 2 
+4 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 
 
 ### MAV_CMD_CAMERA_TRACK_POINT (2004) {#MAV_CMD_CAMERA_TRACK_POINT}
@@ -7878,6 +7884,7 @@ Param (Label) | Description | Values
 1 (Point x) | Point to track x value (normalized 0..1, 0 is left, 1 is right). | min: 0 max: 1 
 2 (Point y) | Point to track y value (normalized 0..1, 0 is top, 1 is bottom). | min: 0 max: 1 
 3 (Radius) | Point radius (normalized 0..1, 0 is one pixel, 1 is full image width). | min: 0 max: 1 
+4 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 
 
 ### MAV_CMD_CAMERA_TRACK_RECTANGLE (2005) {#MAV_CMD_CAMERA_TRACK_RECTANGLE}
@@ -7890,14 +7897,16 @@ Param (Label) | Description | Values
 2 (Top left corner y) | Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom). | min: 0 max: 1 
 3 (Bottom right corner x) | Bottom right corner of rectangle x value (normalized 0..1, 0 is left, 1 is right). | min: 0 max: 1 
 4 (Bottom right corner y) | Bottom right corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom). | min: 0 max: 1 
+5 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 
 
 ### MAV_CMD_CAMERA_STOP_TRACKING (2010) {#MAV_CMD_CAMERA_STOP_TRACKING}
 
 Stops ongoing tracking.
 
-Param (Label) | Description
---- | ---
+Param (Label) | Description | Values
+--- | --- | ---
+1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 
 
 ### MAV_CMD_VIDEO_START_CAPTURE (2500) {#MAV_CMD_VIDEO_START_CAPTURE}
@@ -7908,7 +7917,7 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Stream ID) | Video Stream ID (0 for all streams) | min: 0 inc: 1 |   
 2 (Status Frequency) | Frequency CAMERA_CAPTURE_STATUS messages should be sent while recording (0 for no messages, otherwise frequency) | min: 0 | Hz 
-3 | |   |   
+3 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |   
 4 | |   |   
 5 | |   |   
 6 | |   |   
@@ -7922,7 +7931,7 @@ Stop the current video capture (recording).
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Stream ID) | Video Stream ID (0 for all streams) | min: 0 inc: 1 
-2 | |   
+2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 3 | |   
 4 | |   
 5 | |   
@@ -7937,6 +7946,7 @@ Start video streaming
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
+2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 
 
 ### MAV_CMD_VIDEO_STOP_STREAMING (2503) {#MAV_CMD_VIDEO_STOP_STREAMING}
@@ -7946,6 +7956,7 @@ Stop the given video stream
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
+2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 
 
 ### MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION (2504) — [DEP] {#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION}
