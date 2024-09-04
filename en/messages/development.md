@@ -35,7 +35,7 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 17 | 223
+[Messages](#messages) | 17 | 224
 [Enums](#enumerated-types) | 16 | 142
 [Commands](#mav_commands) | 174 | 0
 
@@ -378,6 +378,8 @@ param_result | `uint8_t` | [PARAM_ACK](#PARAM_ACK) | Result code.
 ### CAMERA_TRACKING_IMAGE_STATUS (275) — \[from: [common](../messages/common.md#CAMERA_TRACKING_IMAGE_STATUS)\] {#CAMERA_TRACKING_IMAGE_STATUS}
 
 ### CAMERA_TRACKING_GEO_STATUS (276) — \[from: [common](../messages/common.md#CAMERA_TRACKING_GEO_STATUS)\] {#CAMERA_TRACKING_GEO_STATUS}
+
+### CAMERA_THERMAL_RANGE (277) — \[from: [common](../messages/common.md#CAMERA_THERMAL_RANGE)\] [WIP] {#CAMERA_THERMAL_RANGE}
 
 ### GIMBAL_MANAGER_INFORMATION (280) — \[from: [common](../messages/common.md#GIMBAL_MANAGER_INFORMATION)\] {#GIMBAL_MANAGER_INFORMATION}
 
