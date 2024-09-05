@@ -106,17 +106,17 @@ It contains a bitmap of [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAG
 
 > **Tip** Camera identification must be carried out before all other camera operations!
 
-The first time a heartbeat is received from a new camera component, the GCS should send it a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message asking for [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) (message id 259).
+The first time a heartbeat is received from a new camera component ([HEARTBEAT.type=MAV_TYPE_CAMERA](../messages/common.md#MAV_TYPE_CAMERA)), the GCS should send it a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message asking for [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) (message id 259).
 The camera will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result.
 On success (result is [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) the camera component must then send a [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
 
-[![Mermaid Sequence: Camera Id](https://mermaid.ink/img/pako:eNp9ktFKwzAUhl8l5GqDKSh4YcVBbOMsLt1sO2-shNCcanBNapoKMvbuZu0Up7BchZPvy_nDyQaXRgIOcAvvHegSIiVerKivCo38aoR1qlSN0A7Nwux_kZHHudJvKBQ1WDGcH9ZOplNvBuiOkjS_oSRHT2XdICWDHcjDBVvyOOIhYTQlz2hUKdu6MRqu8qb3Dy_ceyziKX1Y0SznjGYZmdGRDybqs-vzi8vxb71vnzmfGjlVg-ncsZw-ECNJxEl4P2CJcYDMB9g_wqTH46qPk9JsNc-9FNJlTiPUgpZI6cqcHu3VP5rHye0iZSSPFwmeYA_UQkk_k83OLbB7hRoKHPithEp0a1fgQm892jVSOKBSOWNxUIl1CxMsOmeyT13iwNkOvqH9XH8o6CU2DL__A9svQqCk4A?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNp9ktFKwzAUhl8l5GqDKSh4YcVBbOMsLt1sO2-shNCcanBNapoKMvbuZu0Up7BchZPvy_nDyQaXRgIOcAvvHegSIiVerKivCo38aoR1qlSN0A7Nwux_kZHHudJvKBQ1WDGcH9ZOplNvBuiOkjS_oSRHT2XdICWDHcjDBVvyOOIhYTQlz2hUKdu6MRqu8qb3Dy_ceyziKX1Y0SznjGYZmdGRDybqs-vzi8vxb71vnzmfGjlVg-ncsZw-ECNJxEl4P2CJcYDMB9g_wqTH46qPk9JsNc-9FNJlTiPUgpZI6cqcHu3VP5rHye0iZSSPFwmeYA_UQkk_k83OLbB7hRoKHPithEp0a1fgQm892jVSOKBSOWNxUIl1CxMsOmeyT13iwNkOvqH9XH8o6CU2DL__A9svQqCk4A)
+[![Mermaid Sequence: Camera Type](https://mermaid.ink/img/pako:eNp9kVFLwzAYRf9KyJPCFBR8sOIgpnEOl3Y2mSBWSmi_anBNapsKY-y_L2tVnMLyFJJz8t1w1zi3BeAAt_DRgckh1Oq1UdVVapBftWqcznWtjEMTKv4fcvI40-YdUVVBo4b7_bOT8dibAbpjJJE3jEj07FY1BDssk09zllHCWUJeBtmz3th_YmApD7OEPSyYkBlnQpAJO_JRVHV2fX5xefxb7wcK53MipyuwnTuUjMackyjMCL0fsMg6QPYTmj_CqMenZR8nYWIxk16ibC5ZiFowBdKmtKcHZ_V_zabRbZxwIqdxhEfYA5XShW9hvXNT7N6gghQHfltAqbqlS3FqNh7t6kI5YIV2tsFBqZYtjLDqnBUrk-PANR18Q19N_lDQS3you299swXuYKDj?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNp9kVFLwzAYRf9KyJPCFBR8sOIgpnEOl3Y2mSBWSmi_anBNapsKY-y_L2tVnMLyFJJz8t1w1zi3BeAAt_DRgckh1Oq1UdVVapBftWqcznWtjEMTKv4fcvI40-YdUVVBo4b7_bOT8dibAbpjJJE3jEj07FY1BDssk09zllHCWUJeBtmz3th_YmApD7OEPSyYkBlnQpAJO_JRVHV2fX5xefxb7wcK53MipyuwnTuUjMackyjMCL0fsMg6QPYTmj_CqMenZR8nYWIxk16ibC5ZiFowBdKmtKcHZ_V_zabRbZxwIqdxhEfYA5XShW9hvXNT7N6gghQHfltAqbqlS3FqNh7t6kI5YIV2tsFBqZYtjLDqnBUrk-PANR18Q19N_lDQS3you299swXuYKDj)
 
 <!-- Original diagram
 sequenceDiagram;
     participant GCS
     participant MAVLink Camera
-    MAVLink Camera->>GCS: HEARTBEAT [cmp id: MAV_COMP_ID_CAMERA] (first)
+    MAVLink Camera->>GCS: HEARTBEAT [type: MAV_TYPE_CAMERA]
     GCS->>MAVLink Camera: MAV_CMD_REQUEST_MESSAGE(param1=259)
     GCS->>GCS: Start timeout
     MAVLink Camera->>GCS: COMMAND_ACK
