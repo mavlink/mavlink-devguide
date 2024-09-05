@@ -33,7 +33,7 @@ MAVLink cameras are identified and addressed by their system and component id.
 
 Components that have non-MAVLink cameras attached, such as companion computers, are expected expose each of them as a separate MAVLink camera component with its own `HEARTBEAT`.
 
-The exception is the _autopilot_ component, which can "proxy" up to 6 attached non-MAVLink cameras: these are identified by a "camera device id" in messages and commands.
+The exception is the _autopilot_ component, which can "proxy" up to 6 attached non-MAVLink cameras: these are identified by a `camera_device_id` field in messages and `Target Camera ID` label in commands.
 
 #### Camera Messages
 
@@ -49,6 +49,7 @@ MAVLink cameras are sent commands addressed using their system and component ids
 
 To send commands to autopilot-attached cameras, the command should be send to the autopilot component.
 The device id of the target attached camera must further be set in the command's `Target Camera ID` parameter (the index and precise label of this parameter may vary).
+The autopilot is required to respond to the command with `COMMAND_ACK`, populating the [COMMAND_ACK.result_param2](../messages/common.md#COMMAND_ACK) field with the id of the targetted autopilot connected camera, if any.
 
 Note that the `Target Camera ID` parameter should be set to `0` in order to target all cameras, or if targeting a MAVLink camera.
 
@@ -63,8 +64,8 @@ When using a camera MAV_CMD in a mission, the `id` parameter (if present) indica
 
 When processing a camera item in a mission the autopilot should:
 
-- For `id` values of `1`-`6`, perform the specified camera action on the connected camera if it exists, and otherwise log an error.
-- For other `id` values, re-emit the `MAV_CMD` using the command protocol, setting the target component id to the `id` set in the camera mission item.
+- For `Target Camera ID` values of `1`-`6`, perform the specified camera action on the connected camera if it exists, and otherwise log an error.
+- For other `Target Camera ID` values, re-emit the `MAV_CMD` using the command protocol, setting the target component id to the `id` set in the camera mission item.
   It should also log any errors from the returned `COMMAND_ACK`.
 
 > **Note** Flight stacks that predate using a camera id typically re-emit the mission command addressed either to the broadcast component id (`0`) or to [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA).
@@ -81,8 +82,8 @@ Values of [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA) to [MAV
 
 A GCS should start the [Camera Identification](#camera_identification) process the first time it detects a `HEARTBEAT` from a new:
 
-- Autopilot, in order to detect autopilot-connected cameras.
 - MAVLink camera component.
+- Autopilot, in order to detect autopilot-connected cameras.
 
 > **Note** If a receiving system stops receiving heartbeats from the camera it is assumed to be _disconnected_, and should be removed from the list of available cameras.
 > If heartbeats are again detected, the _camera identification_ process below must be restarted from the beginning.
