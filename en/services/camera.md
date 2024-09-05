@@ -27,50 +27,127 @@ These cameras have inbuilt support for MAVLink (but not necessarily camera proto
 - [PhaseOne Cameras](https://geospatial.phaseone.com/) ([source](https://geospatial.phaseone.com/resources-support/developer/mavlink/)).
 - [Workswell cameras](https://www.drone-thermal-camera.com/): WIRIS Pro, WIRIS Pro SC, WIRIS Security, WIRIS Agro, GIS-320 ([source](https://www.drone-thermal-camera.com/mavlink-interface-for-uav-cameras/)).
 
-## Camera Discovery/Connection
+### Camera Addressing
 
-Camera components are expected to follow the [Heartbeat/Connection Protocol](../services/heartbeat.md) and sent a constant flow of heartbeats (nominally at 1Hz).
+MAVLink cameras are identified and addressed by their system and component id.
+
+Components that have non-MAVLink cameras attached, such as companion computers, are expected expose each of them as a separate MAVLink camera component with its own `HEARTBEAT`.
+
+The exception is the _autopilot_ component, which can "proxy" up to 6 attached non-MAVLink cameras: these are identified by a `camera_device_id` field in messages and `Target Camera ID` label in commands.
+
+#### Camera Messages
+
+All MAVLink components include their system id and component id fields in the [MAVLink packet header](../guide/serialization.md#mavlink2_packet_format) when sending messages.
+As each MAVLink camera component (with [HEARTBEAT.type=MAV_TYPE_CAMERA](../messages/common.md#HEARTBEAT)) represents just one camera, these ids can be used to uniquely identify the camera associated with a message.
+
+non-MAVLink cameras attached to the autopilot are identified first by the autopilot system/component id, and then by a `camera_device_id` field in the message payload (all camera messages should have an id field with this or a similar name).
+An autopilot should set this to the id of the associated camera device, and otherwise this should always be set to zero.
+
+#### Camera Addressing in Commands
+
+MAVLink cameras are sent commands addressed using their system and component ids (just as when addressing commands to any other component).
+
+To send commands to autopilot-attached cameras, the command should be send to the autopilot component.
+The device id of the target attached camera must further be set in the command's `Target Camera ID` parameter (the index and precise label of this parameter may vary).
+The autopilot is required to respond to the command with `COMMAND_ACK`, populating the [COMMAND_ACK.result_param2](../messages/common.md#COMMAND_ACK) field with the id of the targetted autopilot connected camera, if any.
+
+Note that the `Target Camera ID` parameter should be set to `0` in order to target all cameras, or if targeting a MAVLink camera.
+
+#### Camera Addressing in Missions
+
+When using a camera MAV_CMD in a mission, the `id` parameter (if present) indicates the target camera:
+
+- 1 - 6 indicates a flight-stack connected camera
+- 7-255 is the component id of a MAVLink connected camera.
+  Note that component ids 1-6 should never be used for MAVLink cameras!
+- 0 indicates "all connected cameras".
+
+When processing a camera item in a mission the autopilot should:
+
+- For `Target Camera ID` values of `1`-`6`, perform the specified camera action on the connected camera if it exists, and otherwise log an error.
+- For other `Target Camera ID` values, re-emit the `MAV_CMD` using the command protocol, setting the target component id to the `id` set in the camera mission item.
+  It should also log any errors from the returned `COMMAND_ACK`.
+
+> **Note** Flight stacks that predate using a camera id typically re-emit the mission command addressed either to the broadcast component id (`0`) or to [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA).
+> The former triggers all cameras on the system, while the later provides better command handling because there is only one `COMMAND_ACK`.
+
+## Camera Discovery
+
+### Connection
+
+MAVLink Camera components are expected to follow the [Heartbeat/Connection Protocol](../services/heartbeat.md) and sent a constant flow of heartbeats (nominally at 1Hz).
 Cameras must set a [HEARTBEAT.type](../messages/common.md#HEARTBEAT) of [MAV_TYPE_CAMERA](../messages/common.md#MAV_TYPE_CAMERA).
 Each camera must use a different pre-defined camera component ID.
-Values of [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA) to [MAV_COMP_ID_CAMERA6](../messages/common.md#MAV_COMP_ID_CAMERA6) are recommended, but in theory any camera ID may be used.
+Values of [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA) to [MAV_COMP_ID_CAMERA6](../messages/common.md#MAV_COMP_ID_CAMERA6) are recommended, but in theory any camera ID may be used except for 0 to 6 (which are reserved for cameras proxied by another component, such as the autopilot).
 
-The first time a heartbeat is detected from a new camera, a GCS (or other receiving system) should start the [Camera Identification](#camera_identification) process.
+A GCS should start the [Camera Identification](#camera_identification) process the first time it detects a `HEARTBEAT` from a new:
+
+- MAVLink camera component.
+- Autopilot, in order to detect autopilot-connected cameras.
 
 > **Note** If a receiving system stops receiving heartbeats from the camera it is assumed to be _disconnected_, and should be removed from the list of available cameras.
 > If heartbeats are again detected, the _camera identification_ process below must be restarted from the beginning.
 
-## Basic Camera Operations
+<span></span>
 
-The [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION) provides information about camera capabilities.
-It contains a bitmap of [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS) values that tell the GCS if the camera supports still image capture, video capture, or video streaming, and if it needs to be in a certain mode for capture, etc.
+> **Note** If a vehicle has more than one MAVLink camera, each camera will have a different component ID and send its own heartbeat.
+> The vehicle autopilot might also have directly connected cameras, which are separately addressed by a camera device id.
+> The GCS should create multiple instances of a camera controller based on the component ID of each camera, and also the component ID of the autopilot and each of its attached camera devices.
+> All commands are sent to a specific camera by addressing the command to a specific component ID, and additionally the camera device id for autopilots.
 
 ### Camera Identification {#camera_identification}
 
-The camera identification operation identifies all the available cameras and determines their capabilities.
+The camera identification operation identifies all the available cameras associated with a system and determines their capabilities.
+It is used to discover both MAVLink cameras and non-MAVLink cameras attached to the autopilot.
 
-> **Tip** Camera identification must be carried out before all other operations!
+The process involves requesting the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message from autopilots and MAVLink cameras as they are discovered.
+`CAMERA_INFORMATION.flags` provides information about camera capabilities.
+It contains a bitmap of [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS) values that tell the GCS if the camera supports still image capture, video capture, or video streaming, and if it needs to be in a certain mode for capture, etc.
 
-The first time a heartbeat is received from a new camera component, the GCS will send it a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message asking for [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) (message id 259).
+> **Tip** Camera identification must be carried out before all other camera operations!
+
+The first time a heartbeat is received from a new camera component ([HEARTBEAT.type=MAV_TYPE_CAMERA](../messages/common.md#MAV_TYPE_CAMERA)), the GCS should send it a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message asking for [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) (message id 259).
 The camera will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result.
 On success (result is [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED)) the camera component must then send a [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
 
-[![Mermaid Sequence: Camera Id](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIENhbWVyYS0-PkdDUzogSEVBUlRCRUFUIFtjbXAgaWQ6IE1BVl9DT01QX0lEX0NBTUVSQV0gKGZpcnN0KSBcbiAgICBHQ1MtPj5DYW1lcmE6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFKHBhcmFtMT0yNTkpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgQ2FtZXJhLT4-R0NTOiBDT01NQU5EX0FDS1xuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBJZiBNQVZfUkVTVUxUX0FDQ0VQVEVEIHNlbmQgaW5mby5cbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTkZPUk1BVElPTiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IENhbWVyYVxuICAgIENhbWVyYS0-PkdDUzogSEVBUlRCRUFUIFtjbXAgaWQ6IE1BVl9DT01QX0lEX0NBTUVSQV0gKGZpcnN0KSBcbiAgICBHQ1MtPj5DYW1lcmE6IE1BVl9DTURfUkVRVUVTVF9NRVNTQUdFKHBhcmFtMT0yNTkpXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgQ2FtZXJhLT4-R0NTOiBDT01NQU5EX0FDS1xuICAgIE5vdGUgb3ZlciBDYW1lcmEsR0NTOiBJZiBNQVZfUkVTVUxUX0FDQ0VQVEVEIHNlbmQgaW5mby5cbiAgICBDYW1lcmEtPj5HQ1M6IENBTUVSQV9JTkZPUk1BVElPTiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+[![Mermaid Sequence: Camera Type](https://mermaid.ink/img/pako:eNp9kVFLwzAYRf9KyJPCFBR8sOIgpnEOl3Y2mSBWSmi_anBNapsKY-y_L2tVnMLyFJJz8t1w1zi3BeAAt_DRgckh1Oq1UdVVapBftWqcznWtjEMTKv4fcvI40-YdUVVBo4b7_bOT8dibAbpjJJE3jEj07FY1BDssk09zllHCWUJeBtmz3th_YmApD7OEPSyYkBlnQpAJO_JRVHV2fX5xefxb7wcK53MipyuwnTuUjMackyjMCL0fsMg6QPYTmj_CqMenZR8nYWIxk16ibC5ZiFowBdKmtKcHZ_V_zabRbZxwIqdxhEfYA5XShW9hvXNT7N6gghQHfltAqbqlS3FqNh7t6kI5YIV2tsFBqZYtjLDqnBUrk-PANR18Q19N_lDQS3you299swXuYKDj?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNp9kVFLwzAYRf9KyJPCFBR8sOIgpnEOl3Y2mSBWSmi_anBNapsKY-y_L2tVnMLyFJJz8t1w1zi3BeAAt_DRgckh1Oq1UdVVapBftWqcznWtjEMTKv4fcvI40-YdUVVBo4b7_bOT8dibAbpjJJE3jEj07FY1BDssk09zllHCWUJeBtmz3th_YmApD7OEPSyYkBlnQpAJO_JRVHV2fX5xefxb7wcK53MipyuwnTuUjMackyjMCL0fsMg6QPYTmj_CqMenZR8nYWIxk16ibC5ZiFowBdKmtKcHZ_V_zabRbZxwIqdxhEfYA5XShW9hvXNT7N6gghQHfltAqbqlS3FqNh7t6kI5YIV2tsFBqZYtjLDqnBUrk-PANR18Q19N_lDQS3you299swXuYKDj)
 
 <!-- Original diagram
 sequenceDiagram;
     participant GCS
-    participant Camera
-    Camera->>GCS: HEARTBEAT [cmp id: MAV_COMP_ID_CAMERA] (first)
-    GCS->>Camera: MAV_CMD_REQUEST_MESSAGE(param1=259)
+    participant MAVLink Camera
+    MAVLink Camera->>GCS: HEARTBEAT [type: MAV_TYPE_CAMERA]
+    GCS->>MAVLink Camera: MAV_CMD_REQUEST_MESSAGE(param1=259)
     GCS->>GCS: Start timeout
-    Camera->>GCS: COMMAND_ACK
-    Note over Camera,GCS: If MAV_RESULT_ACCEPTED send info.
-    Camera->>GCS: CAMERA_INFORMATION
+    MAVLink Camera->>GCS: COMMAND_ACK
+    Note over MAVLink Camera,GCS: If MAV_RESULT_ACCEPTED send info.
+    MAVLink Camera->>GCS: CAMERA_INFORMATION
 -->
 
 The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment (if no `COMMAND_ACK` response is received for `MAV_CMD_REQUEST_MESSAGE` the command will be re-sent a number of times before failing).
 If `CAMERA_INFORMATION` is not received after receiving an ACK with `MAV_RESULT_ACCEPTED`, the protocol assumes the message was lost, and the cycle of sending `MAV_CMD_REQUEST_MESSAGE` is repeated.
 If `CAMERA_INFORMATION` is still not received after three cycle repeats, the GCS may assume that the camera is not supported.
+
+The first time a heartbeat is received from an autopilot, the GCS follow the same process to query for information about directly connected cameras.
+The only difference is that the autopilot should return a `CAMERA_INFORMATION` message for each connected camera, populated with its `camera_device_id`.
+
+[![Mermaid Sequence: Autopilot](https://mermaid.ink/img/pako:eNqlkl9LwzAUxb9KyNMKczBBwcoGsY2zuLSzzXyxEkJzq4H1j206kOF3N2vnFGT4YJ6Se3_3nAO5O5xVCrCLW3jroMzA1_KlkcV1WiJ7atkYnelalgYtvOR3kXSmqvWmMkPr-Dybzy3vojtKYn5DCUdPWVEjrVzEyKPwIrYSgS_ImkerYBnx6TMa5bppjYMGJTttNY56hzHmi5g-rGnCBaNJQhZ0ZNPIYjo7v7hyfk727omxUZHRBVTdqYQ2CiOhjeLdD0RYGUDVFppvdtyTQd6HiGmyXnLLe3TFqY9aKBXSZV5NTjkQRmMigvA2ihnhQRSOMllAI4WCrc5AaDWbOn-YTyaTff8fFpcOHmNbK6RW9sN3e6kUm1coIMWuvSrIZbcxKU7LD4t2tZIGqNKmarCby00LYyytc_JeZtg1TQdf0GFpjhT0Q2zYrH7BPj4B4RLFGw?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNqlkl9LwzAUxb9KyNMKczBBwcoGsY2zuLSzzXyxEkJzq4H1j206kOF3N2vnFGT4YJ6Se3_3nAO5O5xVCrCLW3jroMzA1_KlkcV1WiJ7atkYnelalgYtvOR3kXSmqvWmMkPr-Dybzy3vojtKYn5DCUdPWVEjrVzEyKPwIrYSgS_ImkerYBnx6TMa5bppjYMGJTttNY56hzHmi5g-rGnCBaNJQhZ0ZNPIYjo7v7hyfk727omxUZHRBVTdqYQ2CiOhjeLdD0RYGUDVFppvdtyTQd6HiGmyXnLLe3TFqY9aKBXSZV5NTjkQRmMigvA2ihnhQRSOMllAI4WCrc5AaDWbOn-YTyaTff8fFpcOHmNbK6RW9sN3e6kUm1coIMWuvSrIZbcxKU7LD4t2tZIGqNKmarCby00LYyytc_JeZtg1TQdf0GFpjhT0Q2zYrH7BPj4B4RLFGw)
+
+<!-- Original diagram
+sequenceDiagram;
+    participant GCS
+    participant Autopilot
+    Autopilot->>GCS: HEARTBEAT [cmp id: MAV_COMP_ID_AUTOPILOT1] (first)
+    GCS->>Autopilot: MAV_CMD_REQUEST_MESSAGE(param1=259)
+    GCS->>GCS: Start timeout
+    Autopilot->>GCS: COMMAND_ACK
+    Note over Autopilot,GCS: If MAV_RESULT_ACCEPTED send info.
+    Autopilot->>GCS: CAMERA_INFORMATION(camera_device_id=1)
+    Note over Autopilot,GCS: ...
+    Autopilot->>GCS: CAMERA_INFORMATION(camera_device_id=6)
+-->
+
+#### Additional Camera Information
 
 The `CAMERA_INFORMATION` response contains the bare minimum information about the camera and what it can or cannot do.
 This is sufficient for basic image and/or video capture.
@@ -78,16 +155,14 @@ This is sufficient for basic image and/or video capture.
 If a camera provides finer control over its settings `CAMERA_INFORMATION.cam_definition_uri` will include a URI to a [Camera Definition File](../services/camera_def.md).
 If this URI exists, the GCS will request it, parse it and prepare the UI for the user to control the camera settings.
 
+The `CAMERA_INFORMATION.cam_definition_version` field should provide a version for the definition file, allowing the GCS to cache it.
+Once downloaded, it would only be requested again if the version number changes.
+
 > **Note** A GCS that implements this protocol is expected to support both HTTP (`http://`) and [MAVLink FTP](../services/ftp.md) (`mftp://`) URIs for download of the camera definition file.
 > If the camera provides an HTTP or MAVLink FTP interface, the definition file can be hosted on the camera itself.
 > Otherwise, it can be _hosted_ anywhere (on any reachable server).
 
-The `CAMERA_INFORMATION.cam_definition_version` field should provide a version for the definition file, allowing the GCS to cache it.
-Once downloaded, it would only be requested again if the version number changes.
-
-If a vehicle has more than one camera, each camera will have a different component ID and send its own heartbeat.
-The GCS should create multiple instances of a camera controller based on the component ID of each camera.
-All commands are sent to a specific camera by addressing the command to a specific component ID.
+## Basic Camera Operations
 
 ### Camera Modes
 
@@ -147,8 +222,10 @@ For formatting (or erasing depending on your implementation), the GCS will send 
 
 ### Camera Capture Status
 
-In addition to querying about storage status, the GCS will also request the current _Camera Capture Status_ in order to provide the user with proper UI indicators.
-The GCS will send a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) command asking for [[CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS)] and it expects a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message back as well as a [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) response.
+In addition to querying about storage status, the GCS should also stream the _Camera Capture Status_ in order to provide the user with proper UI indicators.
+
+This can be done by sending a [MAV_CMD_SET_MESSAGE_INTERVAL](../messages/common.md#MAV_CMD_SET_MESSAGE_INTERVAL) command asking for [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS).
+The command it expects a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message back and then [CAMERA_CAPTURE_STATUS](../messages/common.md#CAMERA_CAPTURE_STATUS) should be streamed at the specified rate.
 
 ### Still Image Capture
 
