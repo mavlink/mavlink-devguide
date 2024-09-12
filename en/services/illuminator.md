@@ -1,6 +1,6 @@
 # Illuminator Protocol
 
-The illuminator protocol allows MAVLink control over the behavior of lights, LEDs, and/or emitters mounted or integrated on the drone.
+The illuminator protocol allows MAVLink control over the behaviour of lights, LEDs, and/or emitters mounted or integrated on the drone.
 The protocol currently allows for the following control: brightness, on/off, and a strobe feature.
 
 Along with this, the illuminator protocol also publishes status information for developers or users.
@@ -12,14 +12,17 @@ These illuminators have built-in MAVLink support:
 
 - Skydio Spotlight for X10
 
-## Message/Enum Summary
+## Message/Command/Enum Summary
 
 | Message                                                                                       | Description                                                                                                                                    |
 | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="COMPONENT_INFORMATION_BASIC"></a>[COMPONENT_INFORMATION_BASIC][CMPNT_INFO_BSC]         | Basic illuminator information data. Should be requested using [MAV_CMD_REQUEST_MESSAGE][MAV_CMD_REQUEST_MESSAGE] on startup, or when required. |
-| <a id="MAV_CMD_ILLUMINATOR_ON_OFF"></a>[MAV_CMD_ILLUMINATOR_ON_OFF][ILLUM_ON_OFF]             | Turns illuminators ON/OFF.                                                                                                                     |
-| <a id="MAV_CMD_DO_ILLUMINATOR_CONFIGURE"></a>[MAV_CMD_DO_ILLUMINATOR_CONFIGURE][DO_ILLM_CNFG] | Configures illuminator settings.                                                                                                               |
 | <a id="ILLUMINATOR_STATUS"></a>[ILLUMINATOR_STATUS](../messages/common.md#ILLUMINATOR_STATUS) | Current status of the illuminator. Recommended to publish this at a regular rate.                                                              |
+
+| Command                                                                                       | Description                      |
+| --------------------------------------------------------------------------------------------- | -------------------------------- |
+| <a id="MAV_CMD_ILLUMINATOR_ON_OFF"></a>[MAV_CMD_ILLUMINATOR_ON_OFF][ILLUM_ON_OFF]             | Turns illuminators ON/OFF.       |
+| <a id="MAV_CMD_DO_ILLUMINATOR_CONFIGURE"></a>[MAV_CMD_DO_ILLUMINATOR_CONFIGURE][DO_ILLM_CNFG] | Configures illuminator settings. |
 
 <!-- reference links to make table above easier to edit -->
 
