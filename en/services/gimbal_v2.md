@@ -140,8 +140,8 @@ The solution chosen for this case is to use the numbers 1 to 6 as magic numbers 
 
 #### Discovery of Gimbal Manager
 
-A ground station should initially discover all gimbal managers by sending a broadcast [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) for [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
-Every gimbal manager should respond with `GIMBAL_MANAGER_INFORMATION`.
+A ground station should monitor for HEARTBEAT messages from all new components, and send a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) for [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
+Gimbal managers should respond with `GIMBAL_MANAGER_INFORMATION`.
 
 The `GIMBAL_MANAGER_INFORMATION` contains important information such as gimbal capabilities ([GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS)), maximum angles and angle rates, as well as the `gimbal_component` which is the component ID of the _Gimbal Device_ controlled by this _Gimbal Manager_.
 
