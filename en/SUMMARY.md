@@ -70,6 +70,7 @@
   * [Landing Target Protocol](services/landing_target.md)
   * [Ping Protocol](services/ping.md)
   * [Path Planning (Trajectory) Protocol](services/trajectory.md)
+  * [Parachute Protocol](services/parachute.md)
   * [Battery Protocol](services/battery.md)
   * [Terrain Protocol](services/terrain.md)
   * [Tunnel Protocol](services/tunnel.md)
