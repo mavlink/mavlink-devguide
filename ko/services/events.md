@@ -10,7 +10,6 @@ The interface provides for both common events that are shared by flight stacks o
 
 > **Note** The events interface is intended to replace the widespread use of [STATUSTEXT](../messages/common.md#STATUSTEXT) messages, which are not really fit for purpose.
 
-
 ## Key features
 
 The following key features are provided by the interface:
@@ -41,13 +40,10 @@ The following key features are provided by the interface:
 | <a id="REQUEST_EVENT"></a>[REQUEST_EVENT](../messages/common.md#REQUEST_EVENT)                     | Request one or more events to be (re-)sent. If first_sequence==last_sequence, only a single event is requested. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an EVENT or EVENT_ERROR response.                                                                                                          |
 | <a id="RESPONSE_EVENT_ERROR"></a>[RESPONSE_EVENT_ERROR](../messages/common.md#RESPONSE_EVENT_ERROR)     | Response to a [REQUEST_EVENT](#REQUEST_EVENT) if there is an error requesting an event, including the reason. The most common reason would be that the event is not longer available (has been discarded).                                                                                                                                                                                  |
 
-
 | Enum                                                                                                          | Description                                                                                                                                                                            |
 | ------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="MAV_EVENT_CURRENT_SEQUENCE_FLAGS"></a>[MAV_EVENT_CURRENT_SEQUENCE_FLAGS](../messages/common.md#CURRENT_EVENT_SEQUENCE) | Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE). For exmaple, to indicate when the sequence has reset.                                                                   |
 | <a id="MAV_EVENT_ERROR_REASON"></a>[MAV_EVENT_ERROR_REASON](../messages/common.md#MAV_EVENT_ERROR_REASON)             | Reasons for an error, as provided in [RESPONSE_EVENT_ERROR](#RESPONSE_EVENT_ERROR). For example, common error would be that the event is not available (i.e. it has been discarded). |
-
-
 
 ## Implementations
 

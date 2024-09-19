@@ -8,7 +8,6 @@ The protocol is by intent relatively simple and abstract, and provides a simple 
 
 This allows GCS software to provide a simple level of control for many types of vehicles, and allows new vehicle types with unusual functions to operate with minimal (if any) changes to the MAVLink protocol or existing ground control station (GCS) software.
 
-
 ## Mapping Axes
 
 Manual control is performed in the vehicle-frame. All axis values are normalised to the range -1000 to 1000.
@@ -40,13 +39,13 @@ Vehicles with direct control over vehicle translation directions (multicopters) 
 ## Mapping Buttons
 
 Button functions are vehicle/flight-stack dependent:
+
 - ArduPilot treats button values as user-configurable using firmware parameters (e.g. ArduCopter's [`BTN_FUNCn`](https://ardupilot.org/copter/docs/parameters.html#btn-func1-button-pin-1-rc-channel-function) or ArduSub's [`BTNn_FUNCTION`](https://www.ardusub.com/developers/full-parameter-list.html#btnnfunction-function-for-button)), through the [Parameter](./parameter.md) or [Extended Parameter](./parameter_ext.md) protocols.
 - PX4 defines fixed meanings to some of the `buttons` values, and these are mapped to user-selected functions by the ground station.
 
 The `buttons` field is required, and corresponds to the first 16 buttons.
 
 `buttons2` is an [extension](https://mavlink.io/en/guide/define_xml_element.html#message_extensions), and corresponds to the optional second set of 16 buttons.
-
 
 ## Alternatives
 
@@ -63,9 +62,11 @@ The protocol has been implemented in various GCSs and vehicle firmwares. These i
 The protocol has been implemented in _QGroundControl_ and _Mission Planner_.
 
 _QGroundControl_ implementation:
+
 - [src/Joystick/Joystick.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Joystick/Joystick.cc) (in `_handleAxis` method)
 
 _MissionPlanner_ implementation:
+
 - [MainV2.cs](https://github.com/ArduPilot/MissionPlanner/blob/master/MainV2.cs) (in `joysticksend` method)
 
 ### Vehicle Firmwares
@@ -73,9 +74,11 @@ _MissionPlanner_ implementation:
 The protocol has been implemented in PX4, and in the Copter, Plane, Rover, and Sub vehicle firmwares in ArduPilot.
 
 PX4 Implementation:
+
 - [mavlink_receiver.cpp](https://github.com/PX4/PX4-Autopilot/blob/master/src/modules/mavlink/mavlink_receiver.cpp) (in `handle_message_manual_control` method)
 
 ArduPilot Implementations:
+
 - [ArduCopter/GCS_Mavlink.cpp](https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/GCS_Mavlink.cpp) (in `handleMessage` method)
 - [ArduPlane/GCS_Mavlink.cpp](https://github.com/ArduPilot/ardupilot/blob/master/ArduPlane/GCS_Mavlink.cpp) (in `handleMessage` method)
 - [ArduRover/GCS_Mavlink.cpp](https://github.com/ArduPilot/ardupilot/blob/master/ArduRover/GCS_Mavlink.cpp) (in `handle_manual_control` method)

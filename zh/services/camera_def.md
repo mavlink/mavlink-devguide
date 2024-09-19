@@ -1,12 +1,12 @@
 # 相机定义文件
 
-GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消息提供的信息，为相机组件生成用于图像捕获、视频捕获和视频流的控制UI界面。 对于那些简易相机组件，[CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消息中包含的信息已经足够用于构建UI界面了。 对于更高级的相机组件 (有很多可选的配置项) 用于构建UI的信息需要由一个 *Camera Definition File* 文件提供。该文件位于 `cam_definition_uri` 字段指向的链接地址。
+GCS会根据 [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消息提供的信息，为相机组件生成用于图像捕获、视频捕获和视频流的控制UI界面。 对于那些简易相机组件，[CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) 消息中包含的信息已经足够用于构建UI界面了。 对于更高级的相机组件 (有很多可选的配置项) 用于构建UI的信息需要由一个 *Camera Definition File* 文件提供。该文件位于 `cam_definition_uri` 字段指向的链接地址。 For simple cameras, the information in the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message itself is sufficient to construct the UI. For more advanced cameras (with settings and options) the information required to build the UI can be supplied in a *Camera Definition File* that is located at the URI specified in the message's `cam_definition_uri` field.
 
-*Camera Definition File* 包含所有的相机配置项，每项配置的所有可选项，以及例外清单(已停用或者有前提条件要求的选项)。 另外，它可能还包含本土化的用户界面文字内容，用来展示给用户。
+*Camera Definition File* 包含所有的相机配置项，每项配置的所有可选项，以及例外清单(已停用或者有前提条件要求的选项)。 另外，它可能还包含本土化的用户界面文字内容，用来展示给用户。 另外，它可能还包含本土化的用户界面文字内容，用来展示给用户。
 
 在这一章的最后，我们给出了 *Camera Definition File* 的一份完整示例 [full example](#full_example) 。
 
-> **Note** 之所以需要 *Camera Definition File* 文件，是因为在不同型号的相机之间，其配置项大不相同。 要为每一种型号的相机、每一个可能的配置选项都单独创建MAVLink消息，是很不明智的。
+> **Note** 之所以需要 *Camera Definition File* 文件，是因为在不同型号的相机之间，其配置项大不相同。 要为每一种型号的相机、每一个可能的配置选项都单独创建MAVLink消息，是很不明智的。 要为每一种型号的相机、每一个可能的配置选项都单独创建MAVLink消息，是很不明智的。
 
 ## File Compression
 
@@ -22,9 +22,9 @@ Camera definition files may be **.xz** compressed (this is recommended for files
 
 The XML file has 3 main sections (elements):
 
-* 定义
-* 参数
-* 本土化
+- 定义
+- 参数
+- 本土化
 
 ### 定义
 
@@ -49,18 +49,18 @@ Parameters can be simple or quite complex, depending on the behavior they change
 
 The type of the parameter follows the enum [MAV_PARAM_EXT_TYPE](../messages/common.md#MAV_PARAM_EXT_TYPE_UINT8). Within the XML file, these are defined as:
 
-* bool (按 uint8 类型处理)
-* uint8
-* int8
-* uint16
-* int16
-* uint32
-* int32
-* uint64
-* int64
-* float
-* double
-* custom(自定义)
+- bool (按 uint8 类型处理)
+- uint8
+- int8
+- uint16
+- int16
+- uint32
+- int32
+- uint64
+- int64
+- float
+- double
+- custom(自定义)
 
 The `custom` type is a special case that allows for arbitrary data structures of up to 128 bytes. However these are not supported by default - you would need to extend or write your own camera controller within the GCS to interpret this type.
 
@@ -233,7 +233,7 @@ But this full range is only available when in *Photo Mode*. For whatever reason,
 
 This indicates to the GCS that when the `CAM_MODE` parameter is set to *Video*, only the given range for the `CAM_ISO` parameter is valid. It additionally gives a condition that this is only the case when the `CAM_EXPOSURE` mode is set to *Manual* (1).
 
-This example also tells the GCS not to display this parameter to the user (`control=“0”`). Camera Mode is a standard parameter defined in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way. The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur.
+This example also tells the GCS not to display this parameter to the user (`control=“0”`). The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur. Camera Mode is a standard parameter defined in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way.
 
 ### 本土化
 

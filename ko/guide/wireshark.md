@@ -3,33 +3,36 @@
 [Wireshark](https://www.wireshark.org/) is an extremely popular "general purpose" network protocol analyzer that can be used to inspect and analyse MAVLink traffic.
 
 The benefits of using *Wireshark* over other alternatives are:
+
 - it can view _all_ traffic on a network interface (GCS tools like [MAVLink Inspector](https://docs.qgroundcontrol.com/master/en/analyze_view/mavlink_inspector.html) often only analyse incoming traffic).
 - you can use it to analyse traffic logged on a companion computer (this allows analysis of traffic between the companion computer and flight controller, which might otherwise not be visible to *Wireshark*).
--  it is easy to update for new custom messages and dialects. Rebuilding *QGroundControl* so you can use it analyse custom messages is much harder!
+- it is easy to update for new custom messages and dialects. Rebuilding *QGroundControl* so you can use it analyse custom messages is much harder!
 
 This topic shows how to generate a Wireshark plugin for a particular dialect file and install it on Wireshark, and how to perform basic filtering. It also provides an overview of how you can use *tcpdump* for collecting traffic on a linux computer (for later analysis).
 
 > **Note** You will need to regenerate and reimport the plugin (as shown below) if your dialect changes.
-
 
 ## Generate MAVLink Lua Plugin for Wireshark
 
 First you will need to generate a *Wireshark* plugin that includes definitions for the MAVLink messages that you want it to handle. The MAVLink generator (**mavgen**) can build this plugin for a dialect in the same way as it builds MAVLink libraries for other programming languages.
 
 The steps are:
+
 1. [Install MAVLink](../getting_started/installation.md) (if you have not already done so).
 1. Build libraries for your target dialect, specifing `WLua` as the target language. This process is described in the toic[Generate MAVLink Libraries](../getting_started/generate_libraries.md).
 
    For example, to build the MAVLink 2 Wireshark plugin for [common.xml](../messages/common.md) you might use the following command:
+
    ```bash
    python3 -m pymavlink.tools.mavgen --lang=WLua --wire-protocol=2.0 --output=mavlink_2_common message_definitions/v1.0/common.xml
    ```
-   The plugin would be created in the current directory as: **mavlink_2_common.lua**.
 
+   The plugin would be created in the current directory as: **mavlink_2_common.lua**.
 
 ## Update Plugin with Correct Ports
 
 The last few lines of the plugin file specify the ports to be monitored: 14550 and 14580.
+
 ```
 -- bind protocol dissector to port 14550 and 14580
 
@@ -37,10 +40,10 @@ local udp_dissector_table = DissectorTable.get("udp.port")
 udp_dissector_table:add(14550, mavlink_proto)
 udp_dissector_table:add(14580, mavlink_proto)
 ```
-These are the correct ports to monitor network traffic between a simulated autopilot and a GCS and offboard API.
+
+These are the correct ports to monitor network traffic between a simulated autopilot and a GCS and offboard API. The final port (18570) can be used to monitor a simulation running in WSL2.
 
 If you want to monitor other interfaces then you can modify or add to these lines and then save the plugin file. This might be necessary, for example, in order to monitor traffic recorded on the interface between a companion computer and a flight controller.
-
 
 ## Import Lua Plugin into WireShark
 
@@ -73,14 +76,13 @@ Click on a particular message to find out its details. Below you can see the pay
 
 ![Wireshark: Packet details](../../assets/wireshark/mavlink_message_details.jpg)
 
-
 ## Filtering using MAVLink Properties
 
 In addition to using filters for the usual *Wireshark* things (e.g. ips and ports) you can also use the new MAVLink filters.
 
 > **Note** This works the same way for live view and for a *pcapng* file loaded into *Wireshark*
 
-We already saw you can filter for MAVLink packets using `mavlink_proto` The following is a filter example:
+We already saw you can filter for MAVLink packets using `mavlink_proto` The following is a filter example: The following is a filter example:
 
 ```
 mavlink_proto.msgid==0 && mavlink_proto.compid == 1 && 
@@ -94,7 +96,6 @@ This means to filter for:
 - src IP=`10.0.115.155`
 - dst IP=`10.0.115.141`
 
-
 ## Capture MAVLink Stream
 
 On Linux you can use *tcpdump* to capture stream on a specific interface. This can be performed either on your laptop or on the offboard computer:
@@ -104,8 +105,6 @@ apt update
 apt install tcpdump
 tcpdump -i eth0 -w mavlink-capture.pcap
 ```
-
-
 
 ## Capture tcpdump (MAVLink) data live from a remote machine on a local WireShark
 

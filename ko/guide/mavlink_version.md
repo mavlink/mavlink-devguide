@@ -2,8 +2,8 @@
 
 MAVLink has been deployed in a number of versions:
 
-* [MAVLink 2.0](../guide/mavlink_2.md): Current/recommended major version. Adopted by major users early 2017. 
-* *MAVLink v1.0*: Widely adopted around 2013. Still used by a number of legacy peripherals.
+- [MAVLink 2.0](../guide/mavlink_2.md): Current/recommended major version. Adopted by major users early 2017.
+- *MAVLink v1.0*: Widely adopted around 2013. Still used by a number of legacy peripherals.
 
 The *MAVLink 2.0* C/C++ and Python libraries are backwards compatible with MAVLink 1.0 (support both protocols). [Version Handshaking](#version_handshaking) and [Negotiating Versions](#negotiating_versions) explain how to choose which version is used.
 
@@ -13,16 +13,16 @@ The *MAVLink 2.0* C/C++ and Python libraries are backwards compatible with MAVLi
 
 A library's MAVLink support can be determined in a number of ways:
 
-* [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION)`.capabilities` can be checked against the [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag to verify MAVLink 2 support.
-* [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION).`version` contains the MAVLink version number multiplied by 100: v1.0 is 100, <!-- v2.0 is 200, --> v2.3 is 203 etc.
+- [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION)`.capabilities` can be checked against the [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag to verify MAVLink 2 support.
+- [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION).`version` contains the MAVLink version number multiplied by 100: v1.0 is 100, <!-- v2.0 is 200, --> v2.3 is 203 etc.
 
-* [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number. This is the `<version>` field defined in the [Message Definitions](../messages/README.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
-* The major version can be determined from the packet start marker byte:
-  
-  * MAVLink 1: `0xFE` 
-  * MAVLink 2: `0xFD`
-  
-  > **Note** A MAVLink library that does not support a protocol version will not recognise the protocol start marker; so no messages will even be detected (see [Serialization](../guide/serialization.md)).
+- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number. This is the `<version>` field defined in the [Message Definitions](../messages/README.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
+- The major version can be determined from the packet start marker byte:
+    
+    - MAVLink 1: `0xFE`
+    - MAVLink 2: `0xFD`
+    
+    > **Note** A MAVLink library that does not support a protocol version will not recognise the protocol start marker; so no messages will even be detected (see [Serialization](../guide/serialization.md)).
 
 > **Tip** While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
 
@@ -73,10 +73,10 @@ Vehicle and GCS implementations will support both *MAVLink 1* and *MAVLink 2* fo
 
 The following is meant to capture best practice for vehicle firmware and GCS authors:
 
-* Vehicle implementations should have a way to enable/disable the sending of *MAVLink 2* messages. This should preferably be on a per-link (channel) basis to allow for some peripherals to be *MAVLink 1* while others are *MAVLink 2*. It is acceptable for this option to require a reboot of the flight controller to take effect.
-* If signing is enabled then the vehicle should immediately start sending *signed* *MAVLink 2* on startup.
-* If signing is not enabled and *MAVLink 2* is enabled then the vehicle may choose to start by sending *MAVLink 1* and switch to *MAVLink 2* on a link when it first receives a *MAVLink 2* message on the link.
-* Vehicles should set the `MAV_PROTOCOL_CAPABILITY_MAVLINK2` capability flag in the `AUTOPILOT_VERSION` message if *MAVLink 2* is available on a link. This should be set in the case where the link is currently sending *MAVLink 1* packets but *MAVLink 2* packets will be accepted and will cause a switch to *MAVLink 2*.
-* GCS implementations can choose to either automatically switch to *MAVLink 2* where available or to have a configuration option for *MAVLink 2*.
-* If the GCS chooses to use a configuration option then when the option is enabled it should send *MAVLink 2* on starting the link.
-* If the GCS chooses to use automatic switching then it should switch to sending *MAVLink 2* if either it receives a *MAVLink 2* message on the link or by asking for the `AUTOPILOT_VERSION` message to be sent and seeing the `MAV_PROTOCOL_CAPABILITY_MAVLINK2` flag is set.
+- Vehicle implementations should have a way to enable/disable the sending of *MAVLink 2* messages. This should preferably be on a per-link (channel) basis to allow for some peripherals to be *MAVLink 1* while others are *MAVLink 2*. It is acceptable for this option to require a reboot of the flight controller to take effect.
+- If signing is enabled then the vehicle should immediately start sending *signed* *MAVLink 2* on startup.
+- If signing is not enabled and *MAVLink 2* is enabled then the vehicle may choose to start by sending *MAVLink 1* and switch to *MAVLink 2* on a link when it first receives a *MAVLink 2* message on the link.
+- Vehicles should set the `MAV_PROTOCOL_CAPABILITY_MAVLINK2` capability flag in the `AUTOPILOT_VERSION` message if *MAVLink 2* is available on a link. This should be set in the case where the link is currently sending *MAVLink 1* packets but *MAVLink 2* packets will be accepted and will cause a switch to *MAVLink 2*.
+- GCS implementations can choose to either automatically switch to *MAVLink 2* where available or to have a configuration option for *MAVLink 2*.
+- If the GCS chooses to use a configuration option then when the option is enabled it should send *MAVLink 2* on starting the link.
+- If the GCS chooses to use automatic switching then it should switch to sending *MAVLink 2* if either it receives a *MAVLink 2* message on the link or by asking for the `AUTOPILOT_VERSION` message to be sent and seeing the `MAV_PROTOCOL_CAPABILITY_MAVLINK2` flag is set.

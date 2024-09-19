@@ -37,7 +37,6 @@ A graph showing the "noise" when estimating the offset is given below (from PX4)
 
 ![Timesync offsets](../../assets/protocols/timesync/timesync_offsets_graph.png)
 
-
 ## Time Synchronization Protocol v1
 
 Version 1 of the timesync protocol uses the same message and sequences as version 2.
@@ -47,6 +46,7 @@ The difference is the `TIMESYNC` message in version 1 did not have `target_syste
 > **Note** ArduPilot encodes the system id in `TIMESYNC.ts1` of the request. This allows filtering of the response to a particular system (but not component), reducing the risk of clashes.
 
 <span></span>
+
 > **Note** Version 2 makes adds the target address, so a syncing system can filter on just the responses to its requests.
 
 ## Implementations

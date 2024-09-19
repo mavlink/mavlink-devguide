@@ -13,4 +13,4 @@
 
 3. In the `mavlink-gbp-release`, add the new MAVlink message to `common.xml` or add the new dialect `dialect_name.xml` in the `message definitions`. Do not checkout your MAVlink branch because it is not the version synced with ROS.
 
-4. 采用命令 `catkin build mavlink`生成MAVlink 标头。 您可以在目录`~/catkin_ws/build/mavlink/include/` 中找到标头（俗称，头文件）。
+4. 采用命令 `catkin build mavlink`生成MAVlink 标头。 您可以在目录`~/catkin_ws/build/mavlink/include/` 中找到标头（俗称，头文件）。 您可以在目录`~/catkin_ws/build/mavlink/include/` 中找到标头（俗称，头文件）。

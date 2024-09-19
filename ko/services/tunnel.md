@@ -17,8 +17,8 @@ Vendors can use any value above 32767 for `MAV_TUNNEL_PAYLOAD_TYPE` in their own
 | <span id="TUNNEL"></span>[TUNNEL](../messages/common.md#TUNNEL) | Message for transporting "arbitrary" variable-length data from one component to another (broadcast is not forbidden, but discouraged). |
 
 
-| Enum                                                                                                | Description                                                                                                                                                                               |
-| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Enum                                                                                                                 | Description                                                                                                                                                                               |
+| -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <span id="MAV_TUNNEL_PAYLOAD_TYPE"></span>[MAV_TUNNEL_PAYLOAD_TYPE](../messages/common.md#MAV_TUNNEL_PAYLOAD_TYPE) | A code that identifies the format of the payload (0 for unknown, which is the default). You can use any value over 32768 for on private networks or [register a payload type](#register). |
 
 

@@ -28,7 +28,7 @@ The [LANDING_TARGET](../messages/common.md#LANDING_TARGET) fields that are relat
 
 The positional information can be interpreted as described below.
 
-Imagine a ray pointing from the camera's principal point to the target. The x angle (`angle_x`) is the angle spanned by that ray and the x-axis of the image plane. The same holds for the y angle (`angle_y`). In other words, the x angle is a function of the x pixel coordinate of the target (denoted by *u̅* in the image below), the y angle is a function of the y pixel coordinate (denoted *v* in the image below). Using the angle rather than *u̅/v̅* pixel coordinates has the advantage that the effect of the camera lens is already accounted for. Otherwise the receiver of the message would need to know the camera field of view etc.
+Imagine a ray pointing from the camera's principal point to the target. The x angle (`angle_x`) is the angle spanned by that ray and the x-axis of the image plane. The same holds for the y angle (`angle_y`). Otherwise the receiver of the message would need to know the camera field of view etc. In other words, the x angle is a function of the x pixel coordinate of the target (denoted by *u̅* in the image below), the y angle is a function of the y pixel coordinate (denoted *v* in the image below). Using the angle rather than *u̅/v̅* pixel coordinates has the advantage that the effect of the camera lens is already accounted for.
 
 ![Landing Target Fields](../../assets/protocols/landing_target_definitions.png)
 
@@ -50,4 +50,7 @@ The message fields that are used to provide target information as a position/qua
 | type           | uint8_t  |       | [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) | Type of landing target                                                                                                                                                                                                                                                  |
 | position_valid | uint8_t  |       |                                                                    | Boolean indicating whether these position field values are populated with valid position target information (1: valid, 0: invalid). The default is '0', so that if the fields are not populated the default-zero values are not interpreted as a valid target position. |
 
-> **Tip** - PX4 supports this form of positioning in [MAV_FRAME_LOCAL_NED](../messages/common.md#MAV_FRAME_LOCAL_NED) (only). The original (MAVLink 1) fields are ignored. - ArduPilot supports this form of positioning in [MAV_FRAME_BODY_FRD](../messages/common.md#MAV_FRAME_BODY_FRD) (only). `position_valid` must be `1` and `distance` must be filled.
+> **Tip**
+> 
+> - **Tip** - PX4 supports this form of positioning in [MAV_FRAME_LOCAL_NED](../messages/common.md#MAV_FRAME_LOCAL_NED) (only). The original (MAVLink 1) fields are ignored.
+> - - ArduPilot supports this form of positioning in [MAV_FRAME_BODY_FRD](../messages/common.md#MAV_FRAME_BODY_FRD) (only). `position_valid` must be `1` and `distance` must be filled.
