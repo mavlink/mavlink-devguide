@@ -10,14 +10,14 @@ By default the gimbal should be communicating with the component ID [MAV_COMP_ID
 
 The commands to use mavlink gimbals are [MAV_CMD_DO_MOUNT_CONFIGURE](#MAV_CMD_DO_MOUNT_CONFIGURE) and [MAV_CMD_DO_MOUNT_CONTROL](#MAV_CMD_DO_MOUNT_CONTROL). [MAV_CMD_DO_MOUNT_CONTROL_QUAT](#MAV_CMD_DO_MOUNT_CONTROL_QUAT) is also defined but does not seem to be implemented by any systems at time of writing.
 
-| Command                                                                                                           | Description                                                         |
-| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| <a id="MAV_CMD_DO_MOUNT_CONFIGURE"></a>[MAV_CMD_DO_MOUNT_CONFIGURE](../messages/common.md#MAV_CMD_DO_MOUNT_CONFIGURE)       | Configure a camera or antenna mount                                 |
-| <a id="MAV_CMD_DO_MOUNT_CONTROL"></a>[MAV_CMD_DO_MOUNT_CONTROL](../messages/common.md#MAV_CMD_DO_MOUNT_CONTROL)           | Control mount                                                       |
+| Command                                                                                                                            | Description                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| <a id="MAV_CMD_DO_MOUNT_CONFIGURE"></a>[MAV_CMD_DO_MOUNT_CONFIGURE](../messages/common.md#MAV_CMD_DO_MOUNT_CONFIGURE)          | Configure a camera or antenna mount                                 |
+| <a id="MAV_CMD_DO_MOUNT_CONTROL"></a>[MAV_CMD_DO_MOUNT_CONTROL](../messages/common.md#MAV_CMD_DO_MOUNT_CONTROL)                | Control mount                                                       |
 | <a id="MAV_CMD_DO_MOUNT_CONTROL_QUAT"></a>[MAV_CMD_DO_MOUNT_CONTROL_QUAT](../messages/common.md#MAV_CMD_DO_MOUNT_CONTROL_QUAT) | Control a camera or antenna mount, using a quaternion as reference. |
 
-| Enum                                                                              | Description                                    |
-| --------------------------------------------------------------------------------- | ---------------------------------------------- |
+| Enum                                                                                | Description                                    |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------- |
 | <a id="MAV_MOUNT_MODE"></a>[MAV_MOUNT_MODE](../messages/common.md#MAV_MOUNT_MODE) | Enumeration of possible mount operation modes. |
 
 ## Command to Reboot or Shutdown Gimbal
