@@ -20,7 +20,7 @@ The following are instructions for how to obtain the MAVLink libraries for the s
 
 If you need a [standard dialect](../messages/README.md#dialects) then you can install these (for both MAVLink 1 and 2) with *pymavlink* using *pip*:
 
-```bash
+```sh
 pip install pymavlink
 ```
 
@@ -35,11 +35,20 @@ If you need libraries for a *custom dialect* then you will need to [install the 
   - MAVLink 2: **pymavlink/dialects/v20**
   - MAVLink 1: **pymavlink/dialects/v10**
 3. Open a command prompt and navigate to the **pymavlink** directory.
-4. If needed, uninstall previous versions: ```pip uninstall pymavlink```
-5. Install dependencies if you have not previously installed pymavlink using *pip*: ```pip install lxml future```
-6. Run the python setup program: 
-      bash
-       python setup.py install --user
+4. If needed, uninstall previous versions:
+  
+      pip uninstall pymavlink
+
+5. Install dependencies if you have not previously installed pymavlink using *pip*:
+  
+      sh
+       python3 -m pip install -r pymavlink/requirements.txt
+
+6. http://python.dronekit.io/
+  
+      Run the python setup program: 
+          bash
+           python setup.py install --user
 
 The generated MAVLink libraries can then be used in the same way as those installed using *pip*.
 
@@ -126,10 +135,12 @@ print("Heartbeat from system (system %u component %u)" % (the_connection.target_
 # Once connected, use 'the_connection' to get and send messages
 ```
 
-> **Note** The `udpin` prefix used above creates a socket to *listen for* a UDP connection on the specified port. This is the normal way to connect an autopilot simulator). The complementary `udpout` prefix creates a socket that *initiates* an IP connection: 
-> 
->     python
->       the_connection = mavutil.mavlink_connection('udpout:localhost:14540')
+> **Note** The `udpin` prefix used above creates a socket to *listen for* a UDP connection on the specified port. This is the normal way to connect an autopilot simulator). The complementary `udpout` prefix creates a socket that *initiates* an IP connection:
+
+```python
+python
+    the_connection = mavutil.mavlink_connection('udpout:localhost:14540')
+```
 
 Generally the API selects a sensible baud rate for the connection type. Other `mavlink_connection()` parameters you may wish to change include: `source_system` (default 255), `source_component` (default 0) and `dialect` (default ArduPilot).
 
@@ -142,7 +153,7 @@ The `mavutil.mavlink_connection()` connection string has the format:
 
 where:
 
-- *protocol* (optional): The IP protocol. If not specified pymavlink will attempt to determine if the address is a serial port (e.g. USB) or a file, and if not will default to a UDP address. 
+- `protocol` (optional): The IP protocol. If not specified pymavlink will attempt to determine if the address is a serial port (e.g. USB) or a file, and if not will default to a UDP address. 
   - `tcp`: Initiate a TCP connection on the specified `address` and `port`.
   - `tcpin`: Listen for a TCP connection on the specified `address` and `port`.
   - `udpin`: Listen for a UDP connection on the specified `address` and `port`.
@@ -156,15 +167,15 @@ Some of the strings you can use for different types of connections are listed be
 
 | Connection type                                                                | Connection string                                                    |
 | ------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
-| Linux computer connected to the vehicle via USB                                | /dev/ttyUSB0                                                         |
+| Linux computer connected to the vehicle via USB                                | `/dev/ttyUSB0`                                                       |
 | Linux computer connected to the vehicle via Serial port (RaspberryPi example)  | /dev/ttyAMA0 (also set baud=57600)                                   |
 | MAVLink API listening for SITL connection via UDP                              | udpin:localhost:14540 (or udp:localhost:14540, 127.0.0.1:14540,etc.) |
 | MAVLink API initiating a connection to SITL via UDP                            | udpout:localhost:14540 (or udpout:127.0.0.1:14540)                   |
 | GCS connected to the vehicle via UDP                                           | 127.0.0.1:14550 or udp:localhost:14550                               |
 | SITL connected to the vehicle via TCP                                          | tcp:127.0.0.1:5760 (ArduPilot only, PX4 does not support TCP)        |
-| OSX computer connected to the vehicle via USB                                  | dev/cu.usbmodem1                                                     |
-| Windows computer connected to the vehicle via USB (in this case on COM14)      | com14                                                                |
-| Windows computer connected to the vehicle using a 3DR Telemetry Radio on COM14 | com14 (also set baud=57600)                                          |
+| OSX computer connected to the vehicle via USB                                  | `dev/cu.usbmodem1`                                                   |
+| Windows computer connected to the vehicle via USB (in this case on COM14)      | `com14`                                                              |
+| Windows computer connected to the vehicle using a 3DR Telemetry Radio on COM14 | `com14` (also set `baud=57600`)                                      |
 
 > **Note** While MAVLink does not define the UDP ports used for different purposes, there is a *defacto* standard that MAVLink APIs should listen for SITL connections on UDP port 14540 while a GCS should listen for connections on UDP 14550.
 
@@ -216,7 +227,7 @@ def recv_match(self, condition=None, type=None, blocking=False, timeout=None):
     '''Receive the next MAVLink message that matches the given type and condition
     type:        Message name(s) as a string or list of strings - e.g. 'SYS_STATUS'
     condition:   Condition based on message values - e.g. 'SYS_STATUS.mode==2 and SYS_STATUS.nav_mode==4'
-    blocking:    Set to wait until message arrives before method completes. 
+    blocking:    Set to wait until message arrives before method completes.
     timeout:     ? <!-- timeout for blocking message when the system will return. Is this just a time? -->
     '''
 ```
@@ -256,15 +267,9 @@ The returned object is the subclass of `MAVLink_message` for the specific messag
 
 A remote system will typically stream a *default* set of messages to a connected GCS, camera or other system. This default set may be hard coded, and is necessarily limited to reduce traffic on the channel.
 
-Typically a system can also request that additional information be provided by sending the [REQUEST_DATA_STREAM](../messages/common.md#REQUEST_DATA_STREAM) message, specifying the required stream(s) ([MAV_DATA_STREAM](../messages/common.md#MAV_DATA_STREAM)) and rate.
+Typically a system can also request that additional information be provided by sending the [REQUEST_DATA_STREAM](../messages/common.md#REQUEST_DATA_STREAM) message, specifying the required stream(s) ([MAV_DATA_STREAM](../messages/common.md#MAV_DATA_STREAM)) and rate. This can be sent in either a [COMMAND_LONG](../messages/common.md#COMMAND_LONG) or [COMMAND_INT](../messages/common.md#COMMAND_INT), if supported by the flight stack.
 
-The message is sent using `request_data_stream_send()` (below `arg.rate` would be the desired transmission rate)
-
-```python
-# Request all data streams
-the_connection.mav.request_data_stream_send(the_connection.target_system, the_connection.target_component,
-                                        mavutil.mavlink.MAV_DATA_STREAM_ALL, args.rate, 1)
-```
+For more information see [How to request messages](../mavgen_python/howto_requestmessages.md)
 
 ### Publishing a Heartbeat {#heartbeat}
 
@@ -295,11 +300,11 @@ def heartbeat_send(self, type, autopilot, base_mode, custom_mode, system_status,
 Assuming you are using a **mavutil** link named [the_connection](#listen), which is returned by `mavutil.mavlink_connection()`, you can send a heartbeat as follows:
 
 ```python
-# Send heartbeat from a GCS (types are define as enum in the dialect file). 
+# Send heartbeat from a GCS (types are define as enum in the dialect file).
 the_connection.mav.heartbeat_send(mavutil.mavlink.MAV_TYPE_GCS,
                                                 mavutil.mavlink.MAV_AUTOPILOT_INVALID, 0, 0, 0)
 
-# Send heartbeat from a MAVLink application. 
+# Send heartbeat from a MAVLink application.
 the_connection.mav.heartbeat_send(mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
                                                 mavutil.mavlink.MAV_AUTOPILOT_INVALID, 0, 0, 0)
 ```
@@ -316,99 +321,11 @@ Pymavlink supports [Message Signing](../guide/message_signing.md) (authenticatio
 
 The Pymavlink library already implements almost all of the expected behaviour for signing messages. All you need to do is provide a secret key and initial timestamp, optionally specify whether or not outgoing messages should be signed, a link id, and a callback for determining which unsigned messages (if any) will be accepted.
 
-The way you do this depends on whether you are using **mavutil** to manage the connection or using a `MAVLink` object directly.
-
-> **Note** While not covered in this topic, you should also write code to: * Save and load the key and last-timestamp from permanent storage * Implement a mechanism to create and share the key. For more information see [Message Signing > Secret Key Management](../guide/message_signing.md#secret_key).
-
-#### Signing using MAVLink Class
-
-If you are using the `MAVLink` class directly, you can use the **`MAVLink.signing`** attribute to access a `MAVLinkSigning` object and set the required attributes.
-
-The [example/mavtest.py](https://github.com/ArduPilot/pymavlink/blob/master/examples/mavtest.py) script shows how to do this using an arbitrary secret key:
-
-```python
-# Create a MAVLink instance (in this case on a file object "f")
-mav = mavlink.MAVLink(f)
-
-if signing:
-    mav.signing.secret_key = chr(42)*32
-    mav.signing.link_id = 0
-    mav.signing.timestamp = 0
-    mav.signing.sign_outgoing = True
-```
-
-> **Note** The `MAVLink` class does not ensure that your `link_id` or *initial* `timestamp` are appropriate. The initial timestamp should be based on current system time. For more information see [Message Signing](../guide/message_signing.md#timestamp).
-
-#### Signing using mavutil
-
-If you are using **mavutil** to manage the connection then you can set up/disable signing using the methods shown below:
-
-```python
-#Setup signing
-def setup_signing(self, secret_key, sign_outgoing=True, allow_unsigned_callback=None, initial_timestamp=None, link_id=None)
-
-# Disable signing (clear secret key and all the other settings specified with setup_signing)
-def disable_signing(self):
-```
-
-The `setup_signing()` method sets up the `MAVLink` object owned by the connection and provides some additional code:
-
-- If `link_id` is not specified then internally the value is iterated.
-- If `initial_timestamp` is not set then an appropriate value for current time is populated from the underlying OS.
-
-#### Using allow_unsigned_callback
-
-[Message Signing > Accepting Unsigned Packets](../guide/message_signing.md#accepting_unsigned_packets) and [Accepting Incorrectly Signed Packets](../guide/message_signing.md#accepting_incorrectly_signed_packets) specify that a message signing implementation should provide mechanisms such that library users can choose to conditionally accept unsigned or incorrectly signed packets.
-
-Pymavlink provides the optional `allow_unsigned_callback()` callback for this purpose. The prototype for this function is:
-
-```python
-bool allow_unsigned_callback(self, msgId)
-```
-
-If set as part of the signing configuration then this function will be called on any unsigned packet (including all *MAVLink 1* packets) or any packet where the signature is incorrect. If the function returns `False` the message will be dropped (otherwise it will be handled as though signed).
-
-The rules for what unsigned packets should be accepted is implementation specific, but it is suggested the implementations always accept `RADIO_STATUS` packets for feedback from 3DR radios (which don't support signing)
-
-For example:
-
-```python
-# Assuming you already have a connection set up
-the_connection = mavutil.mavlink_connection(...)
-
-# Create a callback to specify the messages to accept
-def my_allow_unsigned_callback(self,msgId):
-    #Allow radio status messages
-    if msgId==mavutil.mavlink.MAVLINK_MSG_ID_RADIO_STATUS:
-        return True
-    return False
-
-# Pass the callback  to the connection (here we also pass an arbitrary secret key)
-secret_key = chr(42)*32
-the_connection.setup_signing(secret_key, sign_outgoing=True, allow_unsigned_callback=my_allow_unsigned_callback)
-```
-
-<!--  NOT SURE WHAT WE NEED TO SAY HERE. TEMPTED TO MOVE THIS SECTION INTO PARENT DOC about MESSAGE SIGNING 
-#### Handling Link IDs {#handling_link_ids}
-
-The purpose of the `link_id` field in the *MAVLink 2* signing structure is to prevent cross-channel replay attacks. 
-Without the `link_id` an attacker could record a packet (such as a disarm request) on one channel, then play it back on a different channel.
-
-The intention with the link IDs is that each channel of communication between an autopilot and a GCS uses a different link ID. 
-There is no requirement that the same link ID be used in both directions however.
--->
+For more information see [Message Signing](../guide/message_signing.md#timestamp).
 
 ## Examples
 
-There are a number of useful examples and complete systems based on pymavlink:
-
-- The [pymavlink submodule](https://github.com/ArduPilot/pymavlink/tree/master/examples) contains a number of simple examples.
-- [MAVProxy](http://ardupilot.github.io/MAVProxy/html/development/index.html) is a command line, console based UAV ground station software package for MAVLink based systems. 
-  - It demonstrates most of the features of using the MAVLink module. 
-  - The source code can be found here: https://github.com/ArduPilot/MAVProxy
-- [DroneKit-Python](http://python.dronekit.io/) is a developer API that builds on Pymavlink. 
-  - It implements a simpler high-level API for accessing vehicle information and also implementations of some of the [MAVLink sub-protocols/microservices](../services/README.md) (eg. mission protocol).
-  - The source code can be found here: https://github.com/dronekit/dronekit-python
+See [Examples (pymavlink)](../mavgen_python/examples.md)
 
 ## Support
 
