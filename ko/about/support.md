@@ -1,6 +1,6 @@
 # Support
 
-## Mailing List/Discussion {#support}
+## Mailing List/Discussion
 
 The core development team and community are active on the [mailing list](https://groups.google.com/forum/#!forum/mavlink).
 
