@@ -51,7 +51,7 @@ PX4 Implementation:
 
 * [src/Vehicle/Vehicle.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/Vehicle.cc)
 
-<!-- 
+<!--
 ArduPilot
 
 * TBD - can't find any example it has been implemented.
