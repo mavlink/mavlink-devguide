@@ -63,7 +63,7 @@ Where you define an element depends on whether it is common or a dialect, and wh
 
 - Add these elements to the dialect file in the owning system's fork of the repo.
 - Raise a PR with your suggested changes and discuss with the dialect project through that mechanism.
-- The dialect project should then (ideally) push the changes back to *mavlink/mavlink*. 
+- The dialect project should then (ideally) push the changes back to *mavlink/mavlink*.
 
 **Elements for a private project**
 
@@ -75,34 +75,33 @@ To create a new dialect file:
 
 1. Fork [mavlink/mavlink](https://github.com/mavlink/mavlink/) for your system and clone to your system
 2. Create a dialect file named after your MAVLink system (e.g. flight stack) in **message_definitions/v1.0/**
-3. Copy the following text into the new file. ```xml <?xml version="1.0"?> <mavlink>
+3. Copy the following text into the new file.
   
-         <include>common.xml</include>
-         <!-- <version>9</version> -->
-         <dialect>8</dialect>
+      <include>common.xml</include>
+           <!-- <version>9</version> -->
+           <dialect>8</dialect>
       
-         <enums>
-             <!-- Enums are defined here (optional) -->
-         </enums>
+           <enums>
+               <!-- Enums are defined here (optional) -->
+           </enums>
       
-         <messages>
-             <!-- Messages are defined here (optional) -->
-         </messages>
+           <messages>
+               <!-- Messages are defined here (optional) -->
+           </messages>
       
-  
-  </mavlink> ``` The template assumes that your dialect:
-  
-  - imports **common.xml** (`<include>common.xml</include>`)
-  - takes its version from **common.xml** (which is why the `version` tags are commented out).
 
-4. Update the `include`(s):
+4. if the dialect is not based on **common.xml** remove the existing `include` line
   
-  - if the dialect is not based on **common.xml** remove the existing `include` line
-  - Add additional `<include> </include>` elements to import additional files/dialects. > **Note** Includes in nested files are ignored.
-5. Update the `version`: 
-  - Most dialects should leave the version commented out (i.e. all dialects that include **common.xml**).
-  - Dialects that are *not* based on **common.xml** can uncomment the `<version>6</version>` line and use whatever version is desired. > **Note** The `version` specified in the top level file is used by default, if present. If it is not present in the file, then a `version` from an included file is used. 
+  > > **Note** Includes in nested files are ignored.
+
+5. Most dialects should leave the version commented out (i.e. all dialects that include **common.xml**). Dialects that are *not* based on **common.xml** can uncomment the `<version>6</version>` line and use whatever version is desired.
+  
+        > <strong>Note</strong> The <code>version specified in the top level file is used by default, if present.
+            If it is not present in the file, then a version from an included file is used.
+      </code>
+
 6. Update the `<dialect>8</dialect>` line to replace `8` with the next-largest unused dialect number (based on the other files in the folder).
+
 7. Optionally remove the `enums` or `messages` sections if you don't plan on declaring any elements of these types.
 8. Add enums or messages as described in the following sections.
 9. Save the file, and create a PR to push it back to the **mavlink/mavlink** project repo.
@@ -167,7 +166,7 @@ For MAVLink 2, each dialect is allocated a specific range from which an id can b
 
 When creating a new message you should select the next unused id for your dialect (after the last one defined in your target dialect file).
 
-The allocated ranges are listed below.
+Allocated ranges are listed below (a more complete list is provided in the comments in [all.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/all.xml)):
 
 | Dialect           | Range         |
 | ----------------- | ------------- |
@@ -178,7 +177,9 @@ The allocated ranges are listed below.
 
 > **Tip** If you are creating a new public dialect, [create an issue](https://github.com/mavlink/mavlink/issues/new) to request your own message id range. For private dialects, you can use whatever range you like.
 
-You should not create messages with ids in the "MAVLink 1" range (MAVLink v1 only has 8 bit message IDs, and hence can only support messages with ids 0 - 255). <!-- Note, historically ids 150 to 230 were reserved for dialects. People should not be creating messages in this range, so I'm not going to explain that-->
+You should not create messages with ids in the "MAVLink 1" range (MAVLink v1 only has 8 bit message IDs, and hence can only support messages with ids 0 - 255). 
+
+<!-- Note, historically ids 150 to 230 were reserved for dialects. People should not be creating messages in this range, so I'm not going to explain that-->
 
 ### Modifying a Message
 
@@ -233,7 +234,7 @@ Any field that is defined after the `<extensions>` tag in a message is an extens
 The rules for extensions messages are:
 
 - Extension fields can be added messages with any id, including those in the MAVLink 1 message id range.
-- Extension fields are not sent when a message is encoded using the *MAVLink 1* protocol. 
+- Extension fields are not sent when a message is encoded using the *MAVLink 1* protocol.
 - If received by an implementation that doesn't have the extensions fields then the fields will not be seen.
 - If sent by an implementation that doesn't have the extensions fields then the recipient will see zero values for the extensions fields.
 - Extension fields are [not reordered](../guide/serialization.md#field_reordering) or included in the [CRC_EXTRA](../guide/serialization.md#crc_extra) when messages are serialized.
@@ -312,7 +313,7 @@ The main rules for enums are:
     - The `name` must be unique across all entries in the enum.
     - By *convention*, the `name` should be prefixed with the enum name (e.g. enum `LANDING_TARGET_TYPE` has entry `LANDING_TARGET_TYPE_LIGHT_BEACON`).
   - *should* have a `value` attribute, and if assigned this must be unique within the (merged) enum. Missing values will automatically be sequentially assigned (starting from 1, if the first value is not assigned). > **Tip** We recommend you assign values because then new entries can be added within the range without breaking compatibility.
-  - *should* (very highly recommended) include a `description` element. 
+  - *should* (very highly recommended) include a `description` element.
   - may represent bitmasks, in which case values will increase by a power of 2.
   - *may* be marked as deprecated.
 
@@ -330,7 +331,7 @@ Care must be taken when adding a new enum entry/value as this *may* make the gen
 If an enum needs to be changed then there are several options:
 
 - A new enum can be created with the desired entries. At some point the old enum may be marked as [deprecated](../guide/xml_schema.md#deprecated).
-- The enum can be updated, and the dialect version number iterated. 
+- The enum can be updated, and the dialect version number iterated.
 
 For either case, all users of the enum will need to be updated with new generated libraries.
 
@@ -346,7 +347,7 @@ Enums are very rarely deleted, as this may break compatibility with legacy MAVLi
 
 ## Commands {#mavlink_commands}
 
-MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#mav_commands) enum. They are used to define operations used in autonomous missions (see [Mission Protocol](../services/mission.md)) or to send commands in any mode (see [Command Protocol](../services/command.md)).
+They are used to define operations used in autonomous missions (see [Mission Protocol](../services/mission.md)) or to send commands in any mode (see [Command Protocol](../services/command.md)). MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
 > **Tip** The schema for commands is documented [here](../guide/xml_schema.md#MAV_CMD).
 
@@ -379,7 +380,7 @@ Each dialect is allocated a specific range from which entry ids can be selected.
 
 Dialects can choose any values within their range for any message. However we recommend that all *related* commands be kept in the same block of ids, and if there are likely to be more similar commands in future then spaces might be left for new commands.
 
-The allocated ranges are listed below.
+The allocated ranges are listed below (a more complete list is provided in the comments in [all.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/all.xml)):
 
 | Dialect           | Range         |
 | ----------------- | ------------- |
@@ -417,7 +418,7 @@ Where a command contains position information, this is always stored in: Param 5
 
 The `param` data for index 1-4, 7 are always exchanged in a field with size `float`, while index 5, 6 may also be sent as an `int32` (depending on the message used). The implication is that index 5 and 6 should not be used for data that may need to be sent in a floating point value (like a `NaN`).
 
-<!-- 
+<!--
 ArduPilot: 211, 212, 83, 42000-42005, 42424 (MAG_CAL) 42426, 42650
 ASLUAV : 40001,40002
 Autoquad 1,2,4
