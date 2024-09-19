@@ -6,7 +6,6 @@ The protocol shares most of the same benefits and limitations of the original pr
 
 > **Note** The extensions were invented for the [Camera Protocol](../services/camera.md), which uses them to request/set parameter values specified in a [Camera Definition File](../services/camera_def.md). At time of writing the protocol is supported by *QGroundControl* for this purpose, but is not otherwise supported by flight stacks.
 
-
 ## Message/Enum Summary
 
 | Message                                                                                                           | Description                                                                                                                                                                                                                                                                                                             |
@@ -21,7 +20,6 @@ The protocol shares most of the same benefits and limitations of the original pr
 | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <span id="MAV_PARAM_EXT_TYPE"></span>[MAV_PARAM_EXT_TYPE](../messages/common.md#MAV_PARAM_EXT_TYPE) | Specifies the datatype of a MAVLink extended parameter (parameter values are [encoded](#parameter_encoding) within the a `char[128]` array in the messages). This type conveys the *real type* of the encoded parameter value, e.g. `MAV_PARAM_EXT_TYPE_REAL32`.                                        |
 | <span id="PARAM_ACK"></span>[PARAM_ACK](../messages/common.md#PARAM_ACK)                              | Request acknowledgment status value, sent in an [PARAM_EXT_ACK](#PARAM_EXT_ACK) as a response to a [PARAM_EXT_SET](#PARAM_EXT_SET) message. A request can be accepted, fail, in-progress, or unsupported (indicating the specified parameter does not exist or has an invalid value or value type). |
-
 
 ## Parameter Encoding {#parameter_encoding}
 
@@ -38,6 +36,7 @@ The encoding is best described by example [as shown below](#c_encoding).
 To send the parameter, the data is written into a union structure then memcpy used to copy the data into the message `char[128]` field.
 
 The union structure might look like this:
+
 ```cpp
 MAVPACKED(
 typedef struct {
@@ -59,6 +58,7 @@ typedef struct {
 ```
 
 To send the parameter, the data is written into the union value of the correct type and then memcpy used to copy it to the message data.
+
 ```cpp
 // Create C object for message data and zero fill
 mavlink_param_ext_set_t p;
@@ -78,6 +78,7 @@ memcpy(&p.param_value[0], &union_value.bytes[0], MAVLINK_MSG_PARAM_EXT_SET_FIELD
 ```
 
 Receiving and decoding a parameter is even simpler:
+
 ```cpp
 // 'value' is the char[128] from the message
 // 'param_type' is the param_type value from the message
@@ -99,10 +100,10 @@ switch (param_type) {
 ```
 
 *QGroundControl* provides real code examples here:
+
 - Union structure: [QGCCameraIO.h::param_ext_union_t](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.h)
 - Send a parameter (encode in `char[128]`): [QGCCameraIO.cc::QGCCameraParamIO::_sendParameter()](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)
 - Receive a parameter and get typed value: [QGCCameraIO.cc::QGCCameraParamIO::_valueFromMessage()](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)
-
 
 ## Parameter Caching {#parameter_caching}
 
@@ -114,8 +115,6 @@ A system may also monitor for [PARAM_EXT_VALUE](#PARAM_EXT_VALUE) originating fr
 
 > **Note** Cache synchronisation is not guaranteed; a component may [miss parameter update messages](#monitoring_unreliable) due to changes by other components.
 
-
-
 ## Limitations {#limitations}
 
 ### Parameters Table is Invariant {#parameters_invariant}
@@ -125,8 +124,9 @@ The protocol *requires* that the parameter set does not change during normal ope
 If a component can add parameters during (or after) initial synchronization the protocol cannot guarantee reliable/robust synchronization, because there is no way to notify that the parameter set has changed and a new sync is required.
 
 When requesting parameters from such a components, the risk of problems can be *reduced* (but not removed) if:
-* The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter may change on systems where parameters can be added/removed).
-* [PARAM_EXT_VALUE.param_count](../messages/common.md#PARAM_EXT_VALUE) may be monitored. If this changes the parameter set should be re-sychronised.
+
+- The `param_id` is used to read parameters where possible (the mapping of `param_index` to a particular parameter may change on systems where parameters can be added/removed).
+- [PARAM_EXT_VALUE.param_count](../messages/common.md#PARAM_EXT_VALUE) may be monitored. If this changes the parameter set should be re-sychronised.
 
 ### Parameter Synchronisation Can Fail {#monitoring_unreliable}
 
@@ -136,11 +136,9 @@ This works for the originator of a parameter change, which can resend the reques
 
 A component may mitigate this risk by, for example, sending the `PARAM_EXT_ACK` multiple times after a parameter is changed.
 
-
 ## Parameter Operations
 
 This section defines the state machine/message sequences for all parameter operations.
-
 
 ### Read All Parameters {#read_all}
 
@@ -171,12 +169,11 @@ The sequence of operations is:
    - Components with no parameters should ignore the request.
 1. GCS starts timeout after each `PARAM_EXT_VALUE` message in order to detect when parameters are no longer being sent (that the operation has completed).
 
-
 Notes:
+
 - The GCS/API may accumulate the received parameters for each component and can determine if any are missing/not received (`PARAM_EXT_VALUE` contains the total number of params and index of current param).
 - Handling of missing params is GCS-dependent. *QGroundControl*, for example, [individually requests](#read_single) each missing parameter by index.
 - If a component does not any parameters then it will ignore a `PARAM_EXT_REQUEST_LIST` request. The sender should simply timeout (after resends) if no `PARAM_EXT_VALUE` is received.
-
 
 ### Read Single Parameter {#read_single}
 
@@ -203,13 +200,11 @@ The sequence of operations is:
 
 The drone may restart the sequence if the `PARAM_EXT_VALUE` acknowledgment is not received within the timeout.
 
-
 ### Write Parameters {#write}
 
 Parameters are written individually using [PARAM_EXT_SET](#PARAM_EXT_SET). The recipient will respond with [PARAM_EXT_ACK](#PARAM_EXT_ACK) indicating success, failure, or that the write is still in progress (`PARAM_ACK_IN_PROGRESS`). On receipt of `PARAM_ACK_IN_PROGRESS` the component setting the parameter will extend its timeout (`PARAM_EXT_ACK` will be re-sent when the write completes)
 
 Parameters can be written individually by sending the parameter name and value pair to the GCS, as shown:
-
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFBBUkFNX0VYVF9TRVQgKHBhcmFtIGlkLCB2YWx1ZSwgLi4uKVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dCAoZm9yIFBBUkFNX0VYVF9BQ0spXG4gICAgRHJvbmUtPj5Ecm9uZTogV3JpdGUgcGFyYW1ldGVyIHZhbHVlXG4gICAgRHJvbmUtPj5HQ1M6IFBBUkFNX0VYVF9BQ0sgKG5hbWUsIHZhbHVlLCByZXN1bHQgLi4uKVxuICAgIEdDUy0-PkdDUzogKG9wdGlvbmFsKSBVcGRhdGUgY2FjaGUgZm9yIFBBUkFNX0VYVF9BQ0tcbiAgICBHQ1MtLT4-RHJvbmU6IE9uIHRpbWVvdXQgcmVzdGFydCB0aGlzIHNlcXVlbmNlIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQiLCJ0aGVtZVZhcmlhYmxlcyI6eyJiYWNrZ3JvdW5kIjoid2hpdGUiLCJwcmltYXJ5Q29sb3IiOiIjRUNFQ0ZGIiwic2Vjb25kYXJ5Q29sb3IiOiIjZmZmZmRlIiwidGVydGlhcnlDb2xvciI6ImhzbCg4MCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwicHJpbWFyeUJvcmRlckNvbG9yIjoiaHNsKDI0MCwgNjAlLCA4Ni4yNzQ1MDk4MDM5JSkiLCJzZWNvbmRhcnlCb3JkZXJDb2xvciI6ImhzbCg2MCwgNjAlLCA4My41Mjk0MTE3NjQ3JSkiLCJ0ZXJ0aWFyeUJvcmRlckNvbG9yIjoiaHNsKDgwLCA2MCUsIDg2LjI3NDUwOTgwMzklKSIsInByaW1hcnlUZXh0Q29sb3IiOiIjMTMxMzAwIiwic2Vjb25kYXJ5VGV4dENvbG9yIjoiIzAwMDAyMSIsInRlcnRpYXJ5VGV4dENvbG9yIjoicmdiKDkuNTAwMDAwMDAwMSwgOS41MDAwMDAwMDAxLCA5LjUwMDAwMDAwMDEpIiwibGluZUNvbG9yIjoiIzMzMzMzMyIsInRleHRDb2xvciI6IiMzMzMiLCJtYWluQmtnIjoiI0VDRUNGRiIsInNlY29uZEJrZyI6IiNmZmZmZGUiLCJib3JkZXIxIjoiIzkzNzBEQiIsImJvcmRlcjIiOiIjYWFhYTMzIiwiYXJyb3doZWFkQ29sb3IiOiIjMzMzMzMzIiwiZm9udEZhbWlseSI6IlwidHJlYnVjaGV0IG1zXCIsIHZlcmRhbmEsIGFyaWFsIiwiZm9udFNpemUiOiIxNnB4IiwibGFiZWxCYWNrZ3JvdW5kIjoiI2U4ZThlOCIsIm5vZGVCa2ciOiIjRUNFQ0ZGIiwibm9kZUJvcmRlciI6IiM5MzcwREIiLCJjbHVzdGVyQmtnIjoiI2ZmZmZkZSIsImNsdXN0ZXJCb3JkZXIiOiIjYWFhYTMzIiwiZGVmYXVsdExpbmtDb2xvciI6IiMzMzMzMzMiLCJ0aXRsZUNvbG9yIjoiIzMzMyIsImVkZ2VMYWJlbEJhY2tncm91bmQiOiIjZThlOGU4IiwiYWN0b3JCb3JkZXIiOiJoc2woMjU5LjYyNjE2ODIyNDMsIDU5Ljc3NjUzNjMxMjglLCA4Ny45MDE5NjA3ODQzJSkiLCJhY3RvckJrZyI6IiNFQ0VDRkYiLCJhY3RvclRleHRDb2xvciI6ImJsYWNrIiwiYWN0b3JMaW5lQ29sb3IiOiJncmV5Iiwic2lnbmFsQ29sb3IiOiIjMzMzIiwic2lnbmFsVGV4dENvbG9yIjoiIzMzMyIsImxhYmVsQm94QmtnQ29sb3IiOiIjRUNFQ0ZGIiwibGFiZWxCb3hCb3JkZXJDb2xvciI6ImhzbCgyNTkuNjI2MTY4MjI0MywgNTkuNzc2NTM2MzEyOCUsIDg3LjkwMTk2MDc4NDMlKSIsImxhYmVsVGV4dENvbG9yIjoiYmxhY2siLCJsb29wVGV4dENvbG9yIjoiYmxhY2siLCJub3RlQm9yZGVyQ29sb3IiOiIjYWFhYTMzIiwibm90ZUJrZ0NvbG9yIjoiI2ZmZjVhZCIsIm5vdGVUZXh0Q29sb3IiOiJibGFjayIsImFjdGl2YXRpb25Cb3JkZXJDb2xvciI6IiM2NjYiLCJhY3RpdmF0aW9uQmtnQ29sb3IiOiIjZjRmNGY0Iiwic2VxdWVuY2VOdW1iZXJDb2xvciI6IndoaXRlIiwic2VjdGlvbkJrZ0NvbG9yIjoicmdiYSgxMDIsIDEwMiwgMjU1LCAwLjQ5KSIsImFsdFNlY3Rpb25Ca2dDb2xvciI6IndoaXRlIiwic2VjdGlvbkJrZ0NvbG9yMiI6IiNmZmY0MDAiLCJ0YXNrQm9yZGVyQ29sb3IiOiIjNTM0ZmJjIiwidGFza0JrZ0NvbG9yIjoiIzhhOTBkZCIsInRhc2tUZXh0TGlnaHRDb2xvciI6IndoaXRlIiwidGFza1RleHRDb2xvciI6IndoaXRlIiwidGFza1RleHREYXJrQ29sb3IiOiJibGFjayIsInRhc2tUZXh0T3V0c2lkZUNvbG9yIjoiYmxhY2siLCJ0YXNrVGV4dENsaWNrYWJsZUNvbG9yIjoiIzAwMzE2MyIsImFjdGl2ZVRhc2tCb3JkZXJDb2xvciI6IiM1MzRmYmMiLCJhY3RpdmVUYXNrQmtnQ29sb3IiOiIjYmZjN2ZmIiwiZ3JpZENvbG9yIjoibGlnaHRncmV5IiwiZG9uZVRhc2tCa2dDb2xvciI6ImxpZ2h0Z3JleSIsImRvbmVUYXNrQm9yZGVyQ29sb3IiOiJncmV5IiwiY3JpdEJvcmRlckNvbG9yIjoiI2ZmODg4OCIsImNyaXRCa2dDb2xvciI6InJlZCIsInRvZGF5TGluZUNvbG9yIjoicmVkIiwibGFiZWxDb2xvciI6ImJsYWNrIiwiZXJyb3JCa2dDb2xvciI6IiM1NTIyMjIiLCJlcnJvclRleHRDb2xvciI6IiM1NTIyMjIiLCJjbGFzc1RleHQiOiIjMTMxMzAwIiwiZmlsbFR5cGUwIjoiI0VDRUNGRiIsImZpbGxUeXBlMSI6IiNmZmZmZGUiLCJmaWxsVHlwZTIiOiJoc2woMzA0LCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJmaWxsVHlwZTMiOiJoc2woMTI0LCAxMDAlLCA5My41Mjk0MTE3NjQ3JSkiLCJmaWxsVHlwZTQiOiJoc2woMTc2LCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJmaWxsVHlwZTUiOiJoc2woLTQsIDEwMCUsIDkzLjUyOTQxMTc2NDclKSIsImZpbGxUeXBlNiI6ImhzbCg4LCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJmaWxsVHlwZTciOiJoc2woMTg4LCAxMDAlLCA5My41Mjk0MTE3NjQ3JSkifX0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IFBBUkFNX0VYVF9TRVQgKHBhcmFtIGlkLCB2YWx1ZSwgLi4uKVxuICAgIEdDUy0-PkdDUzogU3RhcnQgdGltZW91dCAoZm9yIFBBUkFNX0VYVF9BQ0spXG4gICAgRHJvbmUtPj5Ecm9uZTogV3JpdGUgcGFyYW1ldGVyIHZhbHVlXG4gICAgRHJvbmUtPj5HQ1M6IFBBUkFNX0VYVF9BQ0sgKG5hbWUsIHZhbHVlLCByZXN1bHQgLi4uKVxuICAgIEdDUy0-PkdDUzogKG9wdGlvbmFsKSBVcGRhdGUgY2FjaGUgZm9yIFBBUkFNX0VYVF9BQ0tcbiAgICBHQ1MtLT4-RHJvbmU6IE9uIHRpbWVvdXQgcmVzdGFydCB0aGlzIHNlcXVlbmNlIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQiLCJ0aGVtZVZhcmlhYmxlcyI6eyJiYWNrZ3JvdW5kIjoid2hpdGUiLCJwcmltYXJ5Q29sb3IiOiIjRUNFQ0ZGIiwic2Vjb25kYXJ5Q29sb3IiOiIjZmZmZmRlIiwidGVydGlhcnlDb2xvciI6ImhzbCg4MCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwicHJpbWFyeUJvcmRlckNvbG9yIjoiaHNsKDI0MCwgNjAlLCA4Ni4yNzQ1MDk4MDM5JSkiLCJzZWNvbmRhcnlCb3JkZXJDb2xvciI6ImhzbCg2MCwgNjAlLCA4My41Mjk0MTE3NjQ3JSkiLCJ0ZXJ0aWFyeUJvcmRlckNvbG9yIjoiaHNsKDgwLCA2MCUsIDg2LjI3NDUwOTgwMzklKSIsInByaW1hcnlUZXh0Q29sb3IiOiIjMTMxMzAwIiwic2Vjb25kYXJ5VGV4dENvbG9yIjoiIzAwMDAyMSIsInRlcnRpYXJ5VGV4dENvbG9yIjoicmdiKDkuNTAwMDAwMDAwMSwgOS41MDAwMDAwMDAxLCA5LjUwMDAwMDAwMDEpIiwibGluZUNvbG9yIjoiIzMzMzMzMyIsInRleHRDb2xvciI6IiMzMzMiLCJtYWluQmtnIjoiI0VDRUNGRiIsInNlY29uZEJrZyI6IiNmZmZmZGUiLCJib3JkZXIxIjoiIzkzNzBEQiIsImJvcmRlcjIiOiIjYWFhYTMzIiwiYXJyb3doZWFkQ29sb3IiOiIjMzMzMzMzIiwiZm9udEZhbWlseSI6IlwidHJlYnVjaGV0IG1zXCIsIHZlcmRhbmEsIGFyaWFsIiwiZm9udFNpemUiOiIxNnB4IiwibGFiZWxCYWNrZ3JvdW5kIjoiI2U4ZThlOCIsIm5vZGVCa2ciOiIjRUNFQ0ZGIiwibm9kZUJvcmRlciI6IiM5MzcwREIiLCJjbHVzdGVyQmtnIjoiI2ZmZmZkZSIsImNsdXN0ZXJCb3JkZXIiOiIjYWFhYTMzIiwiZGVmYXVsdExpbmtDb2xvciI6IiMzMzMzMzMiLCJ0aXRsZUNvbG9yIjoiIzMzMyIsImVkZ2VMYWJlbEJhY2tncm91bmQiOiIjZThlOGU4IiwiYWN0b3JCb3JkZXIiOiJoc2woMjU5LjYyNjE2ODIyNDMsIDU5Ljc3NjUzNjMxMjglLCA4Ny45MDE5NjA3ODQzJSkiLCJhY3RvckJrZyI6IiNFQ0VDRkYiLCJhY3RvclRleHRDb2xvciI6ImJsYWNrIiwiYWN0b3JMaW5lQ29sb3IiOiJncmV5Iiwic2lnbmFsQ29sb3IiOiIjMzMzIiwic2lnbmFsVGV4dENvbG9yIjoiIzMzMyIsImxhYmVsQm94QmtnQ29sb3IiOiIjRUNFQ0ZGIiwibGFiZWxCb3hCb3JkZXJDb2xvciI6ImhzbCgyNTkuNjI2MTY4MjI0MywgNTkuNzc2NTM2MzEyOCUsIDg3LjkwMTk2MDc4NDMlKSIsImxhYmVsVGV4dENvbG9yIjoiYmxhY2siLCJsb29wVGV4dENvbG9yIjoiYmxhY2siLCJub3RlQm9yZGVyQ29sb3IiOiIjYWFhYTMzIiwibm90ZUJrZ0NvbG9yIjoiI2ZmZjVhZCIsIm5vdGVUZXh0Q29sb3IiOiJibGFjayIsImFjdGl2YXRpb25Cb3JkZXJDb2xvciI6IiM2NjYiLCJhY3RpdmF0aW9uQmtnQ29sb3IiOiIjZjRmNGY0Iiwic2VxdWVuY2VOdW1iZXJDb2xvciI6IndoaXRlIiwic2VjdGlvbkJrZ0NvbG9yIjoicmdiYSgxMDIsIDEwMiwgMjU1LCAwLjQ5KSIsImFsdFNlY3Rpb25Ca2dDb2xvciI6IndoaXRlIiwic2VjdGlvbkJrZ0NvbG9yMiI6IiNmZmY0MDAiLCJ0YXNrQm9yZGVyQ29sb3IiOiIjNTM0ZmJjIiwidGFza0JrZ0NvbG9yIjoiIzhhOTBkZCIsInRhc2tUZXh0TGlnaHRDb2xvciI6IndoaXRlIiwidGFza1RleHRDb2xvciI6IndoaXRlIiwidGFza1RleHREYXJrQ29sb3IiOiJibGFjayIsInRhc2tUZXh0T3V0c2lkZUNvbG9yIjoiYmxhY2siLCJ0YXNrVGV4dENsaWNrYWJsZUNvbG9yIjoiIzAwMzE2MyIsImFjdGl2ZVRhc2tCb3JkZXJDb2xvciI6IiM1MzRmYmMiLCJhY3RpdmVUYXNrQmtnQ29sb3IiOiIjYmZjN2ZmIiwiZ3JpZENvbG9yIjoibGlnaHRncmV5IiwiZG9uZVRhc2tCa2dDb2xvciI6ImxpZ2h0Z3JleSIsImRvbmVUYXNrQm9yZGVyQ29sb3IiOiJncmV5IiwiY3JpdEJvcmRlckNvbG9yIjoiI2ZmODg4OCIsImNyaXRCa2dDb2xvciI6InJlZCIsInRvZGF5TGluZUNvbG9yIjoicmVkIiwibGFiZWxDb2xvciI6ImJsYWNrIiwiZXJyb3JCa2dDb2xvciI6IiM1NTIyMjIiLCJlcnJvclRleHRDb2xvciI6IiM1NTIyMjIiLCJjbGFzc1RleHQiOiIjMTMxMzAwIiwiZmlsbFR5cGUwIjoiI0VDRUNGRiIsImZpbGxUeXBlMSI6IiNmZmZmZGUiLCJmaWxsVHlwZTIiOiJoc2woMzA0LCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJmaWxsVHlwZTMiOiJoc2woMTI0LCAxMDAlLCA5My41Mjk0MTE3NjQ3JSkiLCJmaWxsVHlwZTQiOiJoc2woMTc2LCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJmaWxsVHlwZTUiOiJoc2woLTQsIDEwMCUsIDkzLjUyOTQxMTc2NDclKSIsImZpbGxUeXBlNiI6ImhzbCg4LCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJmaWxsVHlwZTciOiJoc2woMTg4LCAxMDAlLCA5My41Mjk0MTE3NjQ3JSkifX0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
@@ -256,7 +251,6 @@ The sequence of operations is:
    - If the write operation is long-running the `PARAM_EXT_ACK` will contain a result of `PARAM_ACK_IN_PROGRESS` and the XXXX parameter value. In this case the recipient should increase their timeout and way for another `PARAM_EXT_ACK`. `PARAM_EXT_ACK` should be resent when the operation completes.
 1. GCS should update the [parameter cache](#parameter_caching) (if used) with the new value.
 1. The GCS may restart the sequence if an expected `PARAM_EXT_ACK` is not received within the timeout, or if the write operation fails.
-
 
 ## Implementations
 
