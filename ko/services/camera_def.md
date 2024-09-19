@@ -22,9 +22,9 @@ Camera definition files may be **.xz** compressed (this is recommended for files
 
 The XML file has 3 main sections (elements):
 
-* Definition
-* Parameters
-* Localization
+- Definition
+- Parameters
+- Localization
 
 ### Definition
 
@@ -49,18 +49,18 @@ Parameters can be simple or quite complex, depending on the behavior they change
 
 The type of the parameter follows the enum [MAV_PARAM_EXT_TYPE](../messages/common.md#MAV_PARAM_EXT_TYPE_UINT8). Within the XML file, these are defined as:
 
-* bool (internally treated as a uint8)
-* uint8
-* int8
-* uint16
-* int16
-* uint32
-* int32
-* uint64
-* int64
-* float
-* double
-* custom
+- bool (internally treated as a uint8)
+- uint8
+- int8
+- uint16
+- int16
+- uint32
+- int32
+- uint64
+- int64
+- float
+- double
+- custom
 
 The `custom` type is a special case that allows for arbitrary data structures of up to 128 bytes. However these are not supported by default - you would need to extend or write your own camera controller within the GCS to interpret this type.
 
@@ -233,7 +233,7 @@ But this full range is only available when in *Photo Mode*. For whatever reason,
 
 This indicates to the GCS that when the `CAM_MODE` parameter is set to *Video*, only the given range for the `CAM_ISO` parameter is valid. It additionally gives a condition that this is only the case when the `CAM_EXPOSURE` mode is set to *Manual* (1).
 
-This example also tells the GCS not to display this parameter to the user (`control=“0”`). Camera Mode is a standard parameter defined in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way. The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur.
+This example also tells the GCS not to display this parameter to the user (`control=“0”`). The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur. Camera Mode is a standard parameter defined in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way.
 
 ### Localization
 
