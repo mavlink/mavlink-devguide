@@ -1,10 +1,10 @@
 # 飞控通讯协议概况
 
-MAVLink 为一种设计用于资源受限系统及带宽受限链路的二进制遥测协议。 MAVLink 主要发行了两个版本: v1.0 和 v2.0 ，这两个版本向后兼容 （即 v2.0 版可以分析和发送 v1.0 版数据包)。 遥测数据流是以广播方式发送的， 而协议方面改变了系统配置， 并保证诸如[任务协议](../services/mission.md)或参数协议</1 > 这类点对点式、需重新传输的消息。</p> 
+MAVLink 为一种设计用于资源受限系统及带宽受限链路的二进制遥测协议。 MAVLink 主要发行了两个版本: v1.0 和 v2.0 ，这两个版本向后兼容 （即 v2.0 版可以分析和发送 v1.0 版数据包)。 遥测数据流是以广播方式发送的， 而协议方面改变了系统配置， 并保证诸如[任务协议](../services/mission.md)或参数协议</1> 这类点对点式、需重新传输的消息。 MAVLink 主要发行了两个版本: v1.0 和 v2.0 ，这两个版本向后兼容 （即 v2.0 版可以分析和发送 v1.0 版数据包)。 遥测数据流是以广播方式发送的， 而协议方面改变了系统配置， 并保证诸如[任务协议](../services/mission.md)或参数协议</1 > 这类点对点式、需重新传输的消息。</p> 
 
 ## MAVLink 2 的数据包格式
 
-以下为在链路上传输的 [MAVLink v2](../guide/mavlink_2.md) 数据包格式。 内存中的表示方式可能会有所不同。
+以下为在链路上传输的 [MAVLink v2](../guide/mavlink_2.md) 数据包格式。 内存中的表示方式可能会有所不同。 内存中的表示方式可能会有所不同。
 
 ```C
 uint8_t magic;              ///< protocol magic marker
@@ -25,7 +25,7 @@ uint16_t checksum;          ///< CRC-16/MCRF4XX
 uint8_t signature[13];      ///< 保证正确连接的签名（可选）
 ```
 
-> **Note** The [MAVLink 1 版本的数据包](../guide/serialization.md#v1_packet_format) 与此类似，但是省略了 `incompat_flags`，`compat_flags` 及`signature`，且消息地址为单个字节。 消息信息参加 [Serialization > 数据包格式](../guide/serialization.md#packet_format).
+> **Note** The [MAVLink 1 版本的数据包](../guide/serialization.md#v1_packet_format) 与此类似，但是省略了 `incompat_flags`，`compat_flags` 及`signature`，且消息地址为单个字节。 消息信息参加 [Serialization > 数据包格式](../guide/serialization.md#packet_format). 消息信息参加 [Serialization > 数据包格式](../guide/serialization.md#packet_format).
 
 ## 串行化
 
@@ -37,7 +37,7 @@ MAVLink 链路上的数据包格式是专为资源受限优化过的，所以其
 
 Mavlink 是为混合网络系统构建的。在这些网络中，高速数据流从数据源（通常是无人机）流向数据接收器 （通常是地面站），但是它与确保是发送的数据流是混合在一起的。 关键之处在于， 对于多数**遥测数据流**而言，都没有一个已知的或单一的接收。相反，机载计算机、地面站和云系统都需要同样的数据流。
 
-另一方面，配置**机载任务**或使用**机载参数**的方式改变系统配置需要采用确保式的点对点通信。 通过使用多种发送方式，MAVLink 可达到很高的效率。
+另一方面，配置**机载任务**或使用**机载参数**的方式改变系统配置需要采用确保式的点对点通信。 通过使用多种发送方式，MAVLink 可达到很高的效率。 通过使用多种发送方式，MAVLink 可达到很高的效率。
 
 ## 主题模式（发布-订阅式）
 
@@ -51,4 +51,4 @@ Mavlink 是为混合网络系统构建的。在这些网络中，高速数据流
 
 ## 完整性检查/校验和
 
-MAVLink implements two integrity checks: The first check is on the integrity of the packet during transmission using the CRC-16/MCRF4XX checksum. 但是这只能保证数据没被链路改变，不能保证数据定义的一致性。 第二道检测为[数据描述](https://en.wikipedia.org/wiki/Data_definition_language)阶段，它保证具有同样 ID 的两个信息确实包含同样的消息。 为了达到此目的，数据定义本身也进行了 CRC-16-CCITT ，结果用作此数据包 CRC 的种子。 在多种参考应用中，存储此常数的数组称作 **CRC\_EXTRA** 。
+MAVLink implements two integrity checks: The first check is on the integrity of the packet during transmission using the CRC-16/MCRF4XX checksum. 但是这只能保证数据没被链路改变，不能保证数据定义的一致性。 第二道检测为[数据描述](https://en.wikipedia.org/wiki/Data_definition_language)阶段，它保证具有同样 ID 的两个信息确实包含同样的消息。 为了达到此目的，数据定义本身也进行了 CRC-16-CCITT ，结果用作此数据包 CRC 的种子。 Most reference implementations store this constant in an array named **CRC_EXTRA**.
