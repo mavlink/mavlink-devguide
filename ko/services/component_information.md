@@ -5,6 +5,7 @@
 The *Component Metadata Protocol* is a MAVLink service for requesting metadata from (and about) MAVLink components. It is intended to provide autopilot- and version- independent feature discovery and configuration, allowing a GCS to configure its UI and/or a device without knowing anything about the connected system.
 
 Information shared using this service may include:
+
 - What types of component information are supported (by this component).
 - What MAVLink commands are supported (both in missions and in other modes).
 - Parameter metadata for parameters supported by the vehicle.
@@ -12,7 +13,7 @@ Information shared using this service may include:
 - Self-describing configuration UIs (i.e. similar to MAVLink camera configuration files).
 - Translations of other metadata.
 
-Component metadata is specified in [appropriately formatted JSON  files](#schema_files) (which may be [**.xz** compressed](#file-compression)). The component metadata protocol is used to request the location of the [general metadata file](#COMP_METADATA_TYPE_GENERAL) file, which is then parsed to get the location of other [metadata files](#schema_files) supported by the component.
+It will also include [CRC32](../crc.md#crc32-algorithm) values any files that contain only static data (no CRC32 should be supplied for metadata files that might be updated dynamically). The [general metadata file](#COMP_METADATA_TYPE_GENERAL) similarly provides file locations for other metadata supported by a component.
 
 Information supplied by the service is assumed to be invariant after boot. There is no mechanism, for example, to provide an update if the set of supported parameters was to change after boot.
 
@@ -22,7 +23,6 @@ Information supplied by the service is assumed to be invariant after boot. There
 | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="COMPONENT_METADATA"></a>[COMPONENT_METADATA](../messages/common.md#COMPONENT_METADATA)             | Message providing a download url and [CRC](#metadata-caching-crc) for the [general metadata](#COMP_METADATA_TYPE_GENERAL) component information file. The message is requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE). |
 | <a id="MAV_CMD_REQUEST_MESSAGE"></a>[MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) | Use this command to request that a component emit [COMPONENT_METADATA](#COMPONENT_METADATA). Use `param1=397` (the message id of `COMPONENT_METADATA`).                                                                                     |
-
 
 | Enum                                                                                      | Description                                                                                                                                                                                                                                                                                               |
 | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -63,12 +63,11 @@ Files on the device are downloaded using [MAVLink FTP](../services/ftp.md). The 
 
 Files on the Internet are downloaded using HTTPS or HTTP via a normal web URL (e.g. `https://some_domain/component_metadata/parameters.json`).
 
-
 ## Metadata Caching (CRC)
 
 The [COMPONENT_METADATA](#COMPONENT_METADATA) message includes the `file_crc` field, which contain [CRC32](../crc.md#crc32-algorithm) values calculated for the file referenced in the `uri` field. A ground station should cache downloaded component metadata and only update it if the CRC value changes.
 
-The [general metadata file](#COMP_METADATA_TYPE_GENERAL) similarly provides file locations for other metadata supported by a component. It will also include [CRC32](../crc.md#crc32-algorithm) values any files that contain only static data (no CRC32 should be supplied for metadata files that might be updated dynamically).
+The component metadata protocol is used to request the location of the [general metadata file](#COMP_METADATA_TYPE_GENERAL) file, which is then parsed to get the location of other [metadata files](#schema_files) supported by the component. It will also include [CRC32](../crc.md#crc32-algorithm) values any files that contain only static data (no CRC32 should be supplied for metadata files that might be updated dynamically).
 
 ## File Compression
 
@@ -77,11 +76,12 @@ Component information files may be **.xz** compressed (this is recommended for f
 > **Note** The prototype implementation generates and compresses component information files at build time. No compression library is required within the flight stack itself.
 
 <span></span>
+
 > **Warning** Systems that *request* component information **must** support extraction of **.xz**-compressed JSON files.
 
 <span></span>
-> **Tip** The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems and cross-platform C/C++ projects.
 
+> **Tip** The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems and cross-platform C/C++ projects.
 
 ## Sequences
 
@@ -105,8 +105,8 @@ The basic sequence is shown below.
 
 [![](https://mermaid.ink/img/pako:eNqVUt9r2zAQ_lcOPaWQFUofytwtYBy3jJG0i9M9GcJVOidiluTK54xS-r_vXLtZSym0fpH16ftxOt2D0sGQSlRLdx15TXOL24juvPQgX4ORrbYNeoastuT5LV5Q3FMc8GVggiDbEZ2OquSwrvqclkEH1wQvEFhfheiQbfDHg8vA_TKbDSYJLNLfm2wx36zyXzd5sd4s8qJIL_OJlIHu5Pvp17OjV0qRPucVLKVCmv2ESJrsnoCto9CNF4Gx0BeKPkj4759fLa6vlvmyL2OdztN1OoEu2ilUtqaNjvroY70AvSP950kFyL0F7LAVFP2WDEy61votZKtMOvTf-xg-6G7CX18HNK8CBk9p58X6GtCb_iFb-rxn4J2wHDEaZAS-b6iVBlcU-xkyfcVb8hSxPpC-3cYZTKoYHBjaWy1JEX54puiJD9eCYVVT5UiGwhoZzYceKpVEOipVIr-GKuxqLlXpH4XaNRJAubEcokoqrFuaKuw4FPdeq4RjR8-kcbxH1uM_z7kA6w)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNqVUt9r2zAQ_lcOPaWQFUofytwtYBy3jJG0i9M9GcJVOidiluTK54xS-r_vXLtZSym0fpH16ftxOt2D0sGQSlRLdx15TXOL24juvPQgX4ORrbYNeoastuT5LV5Q3FMc8GVggiDbEZ2OquSwrvqclkEH1wQvEFhfheiQbfDHg8vA_TKbDSYJLNLfm2wx36zyXzd5sd4s8qJIL_OJlIHu5Pvp17OjV0qRPucVLKVCmv2ESJrsnoCto9CNF4Gx0BeKPkj4759fLa6vlvmyL2OdztN1OoEu2ilUtqaNjvroY70AvSP950kFyL0F7LAVFP2WDEy61votZKtMOvTf-xg-6G7CX18HNK8CBk9p58X6GtCb_iFb-rxn4J2wHDEaZAS-b6iVBlcU-xkyfcVb8hSxPpC-3cYZTKoYHBjaWy1JEX54puiJD9eCYVVT5UiGwhoZzYceKpVEOipVIr-GKuxqLlXpH4XaNRJAubEcokoqrFuaKuw4FPdeq4RjR8-kcbxH1uM_z7kA6w)
 
-
 In summary:
+
 1. GCS (client) sends `MAV_CMD_REQUEST_MESSAGE` to component (server) specifying `param1=397`.
    - This is a normal [command protocol](../services/command.md) request with timeouts and resends based on the ACK.
 1. The component will ACK the command and immediately send the requested `COMPONENT_METADATA` message (populated with URI and CRC for the general metadata file).
@@ -142,17 +142,69 @@ Specifically, the following information is provided:
 
 A GCS can provide a UI for testing outputs based on the configured output functions, by iterating over all output channels and collecting the configured actuator output functions, and then utilizing the `MAV_CMD_ACTUATOR_TEST` command.
 
+## Translations
+
+At high-level, metadata translation works as follows:
+
+- The metadata provider sets the `translationUri` in [general metadata file](#COMP_METADATA_TYPE_GENERAL) for each metadata type that supports translation. Note that the URL has no associated CRC as the translation data can change independently of metadata (for example, adding or changing translations).
+- The `translationUri` URL points to a summary JSON file that contains links to the separate files that contain each translation of the particular metadata type. The translation summary JSON file also contains modification timestamps for each linked translation file so that a GCS can determine whether a particular file has been updated. The translation files are in [TS file format](https://doc.qt.io/qt-6/linguist-ts-file-format.html), and may optionally be compressed in .xz format.
+- A client (GCS) downloads the summary file then uses it to locate and download the translation file(s) it is interested in.
+- The client can then apply the downloaded translations to the metadata json file(s) (which contains annotations for which tags to translate).
+
+### Caching
+
+The following caching strategy is recommended for clients:
+
+- Locally cache the downloaded translation files. These should be used until successfully replaced with a newer version.
+- After 3 days attempt to download the summary JSON file again.
+- Translation files can either be downloaded whenever the summary is downloaded or only when needed (because a modification timestamp has changed in the summary).
+
+### File Formats
+
+Component metadata is specified in [appropriately formatted JSON  files](#schema_files) (which may be [**.xz** compressed](#file-compression)). The translation section follows [this schema](https://github.com/mavlink/mavlink/blob/master/component_metadata/translation.schema.json), which is used to extract the translation strings into a TS file (see below for a script), and by the client to know which strings to translate. The TS file may be xz compressed.
+
+This allows to add new metadata without having to change the translation implementation in the client.
+
+The summary json has the following form:
+
+```json
+{
+  "<locale>": {
+    "url": "<file url>.ts.xz",
+    "last-modified": "<ISO 8601 timestamp>"
+  }
+  // ...
+}
+```
+
+For example:
+
+```json
+{
+  "fr_FR": {
+    "url": "https://raw.githubusercontent.com/PX4/PX4-Metadata-Translations/main/translated/parameters_fr_FR.ts.xz",
+    "last-modified": "2023-03-22T06:15:59.203476+00:00"
+  },
+  "de_DE": {
+    "url": "https://raw.githubusercontent.com/PX4/PX4-Metadata-Translations/main/translated/parameters_de_DE.ts.xz",
+    "last-modified": "2023-03-22T06:15:59.199476+00:00"
+  }
+}
+```
+
+### General metadata will contain the location of translation file URIs, but not their CRC.
+
+Any server can be used to host translations. The following example uses github.com, as it is easy to set up, automate, and download files.
+
+The example repository is https://github.com/PX4/PX4-Metadata-Translations:
+
+- `metadata/` contains the untranslated metadata JSON files.
+- `to_translate` contains the TS files to translate. This is generated from the files in `metadata/` using `scripts/prepare_ts.py`.
+- A translation service, such as [crowdin](https://crowdin.com/) can be used to translate the files
+- `translated/` contains translated metadata TS files (in this case synced back from Crowdin)
+- `scripts/update_summary.py` is executed to update the summary JSON file with translation file locations and modification dates.
 
 ## Open Issues
-
-### Translations
-
-The proposal is:
-- File format be Qt's `.ts` file format, wrapped in a custom container format.
-- General metadata will contain the location of translation file URIs, but not their CRC.
-- A GCS or other system that needs translation data is expected to poll for it and download it regularly (e.g. on boot). If it is not possible to detect the file has changed on the server, a GCS should update anyway on a regular basis.
-
-This is being prototyped. Once there is a working version, the approach will be documented here.
 
 ### Schema Management
 
