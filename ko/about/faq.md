@@ -28,7 +28,6 @@
  <dt>How often is MAVLink updated/released?</dt>
   <dd>
 
-
   <ul>
     <li>The underlying over-the-wire format is rarely updated (we're only up to <em>MAVLink 2</em>, which was introduced in 2017).
     </li>
