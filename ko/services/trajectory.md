@@ -10,7 +10,7 @@ The (autopilot) system that requires path-planning sends messages containing its
 
 [![Mermaid Sequence: Trajectory](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEF1dG9waWxvdFxuICAgIHBhcnRpY2lwYW50IENvbXBhbmlvblxuICAgIEF1dG9waWxvdC0-PkNvbXBhbmlvbjogRGVzaXJlZCBwYXRoL3RyYWplY3RvcnlcbiAgICBDb21wYW5pb24tPj5Db21wYW5pb246IENhbGN1bGF0ZSBiZXN0IHRyYWplY3RvcnlcbiAgICBDb21wYW5pb24tLT4-QXV0b3BpbG90OiBUYXJnZXQgc2V0cG9pbnQgKGlmIHJlcXVpcmVkKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEF1dG9waWxvdFxuICAgIHBhcnRpY2lwYW50IENvbXBhbmlvblxuICAgIEF1dG9waWxvdC0-PkNvbXBhbmlvbjogRGVzaXJlZCBwYXRoL3RyYWplY3RvcnlcbiAgICBDb21wYW5pb24tPj5Db21wYW5pb246IENhbGN1bGF0ZSBiZXN0IHRyYWplY3RvcnlcbiAgICBDb21wYW5pb24tLT4-QXV0b3BpbG90OiBUYXJnZXQgc2V0cG9pbnQgKGlmIHJlcXVpcmVkKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
-<!-- 
+<!--
 sequenceDiagram;
     participant Autopilot
     participant Companion
@@ -36,8 +36,8 @@ When specifying a desired path (using either message):
   - For waypoint trajectories the current position usually needs either `position` or `velocity` fields, and either `yaw` or `yaw_speed` (not all of them)
 - It may not be necessary to specify a waypoint or curve point for every array index. 
   - For waypoint trajectories you might only need to specify points for the current position, current waypoint, and the next waypoint.
-- It may not be necessary to set a value for every field in a waypoint. 
-- Array indexes and field values that are not used should be set as NaN. 
+- It may not be necessary to set a value for every field in a waypoint.
+- Array indexes and field values that are not used should be set as NaN.
 
 When specifying a target setpoint, the values should be set in the first point of the message (0th array element). All other array fields should be set to NaN.
 
