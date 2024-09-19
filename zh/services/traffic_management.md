@@ -2,18 +2,18 @@
 
 Air traffic management and avoidance systems enable vehicles to share their position and planned path or trajectory with other vehicles (and ground stations), allowing them to take appropriate action to avoid collisions.
 
-The approaches used to share information vary; some systems use transponders to detect and publish to local traffic, while others publish to/receive information from Internet services that aggregate the data from many vehicles. Some systems might use both approaches!
+The approaches used to share information vary; some systems use transponders to detect and publish to local traffic, while others publish to/receive information from Internet services that aggregate the data from many vehicles. Some systems might use both approaches! Some systems might use both approaches!
 
 The approaches used to handle potential collisions depend on the flight stack, and might include: warning the user, holding, landing, pausing a mission etc.
 
 There are two main traffic management systems supported by MAVLink:
+
 - [Unmanned Aircraft System Traffic Management (UTM)](https://www.faa.gov/uas/research_development/traffic_management/) - an avoidance system focussing on UAVs.
-- [Automatic Dependent Surveillance–Broadcast (ADS-B](https://en.wikipedia.org/wiki/Automatic_Dependent_Surveillance%E2%80%93Broadcast) - an avoidance system developed for manned aircraft and extended to UAVs. > **Note** Flarm is a transponder-based system that integrates with MAVLink using the ADS-B messages.
+- [Automatic Dependent Surveillance–Broadcast (ADS-B](https://en.wikipedia.org/wiki/Automatic_Dependent_Surveillance%E2%80%93Broadcast) - an avoidance system developed for manned aircraft and extended to UAVs. > **Note** Flarm is a transponder-based system that integrates with MAVLink using the ADS-B messages. > **Note** Flarm is a transponder-based system that integrates with MAVLink using the ADS-B messages.
 
-The two systems share sigificant overlap and have very similar messages. Both have a single message that encapsulates the vehicle position and trajectory: [UTM_GLOBAL_POSITION](#UTM_GLOBAL_POSITION) and [ADSB_VEHICLE](#ADSB_VEHICLE). A flight controller will typically recieve these messages from the appropriate transponder or service, and may also publish them to a transponder or service.
+The two systems share sigificant overlap and have very similar messages. The two systems share sigificant overlap and have very similar messages. Both have a single message that encapsulates the vehicle position and trajectory: [UTM_GLOBAL_POSITION](#UTM_GLOBAL_POSITION) and [ADSB_VEHICLE](#ADSB_VEHICLE). A flight controller will typically recieve these messages from the appropriate transponder or service, and may also publish them to a transponder or service. A flight controller will typically recieve these messages from the appropriate transponder or service, and may also publish them to a transponder or service.
 
-> **Note** The [Open Drone ID](https://mavlink.io/en/services/opendroneid.html) service provides additional information about vehicle identity. This is still a "work in progress", and there are no known MAVLink implementations,
-
+> **Note** The [Open Drone ID](https://mavlink.io/en/services/opendroneid.html) service provides additional information about vehicle identity. This is still a "work in progress", and there are no known MAVLink implementations, This is still a "work in progress", and there are no known MAVLink implementations,
 
 ## Message/Enum Summary
 
@@ -27,7 +27,6 @@ The two systems share sigificant overlap and have very similar messages. Both ha
 | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | <a id="UTM_FLIGHT_STATE"></a>[UTM_FLIGHT_STATE](../messages/common.md#UTM_FLIGHT_STATE)         | Flight state of the vehicle: unknown, landed, flying, emergency etc.                                         |
 | <a id="UTM_DATA_AVAIL_FLAGS"></a>[UTM_DATA_AVAIL_FLAGS](../messages/common.md#UTM_DATA_AVAIL_FLAGS) | Flags that indicate which of the fields in [UTM_GLOBAL_POSITION](#UTM_GLOBAL_POSITION) contain valid data. |
-
 
 ### Automatic Dependent Surveillance–Broadcast (ADS-B)
 
@@ -51,11 +50,14 @@ The two systems share sigificant overlap and have very similar messages. Both ha
 ## Implementations
 
 PX4:
+
 - [UAS Traffic Management (UTM)](https://docs.px4.io/master/en/advanced_features/traffic_avoidance_utm.html)
 - [ADS-B](https://docs.px4.io/master/en/advanced_features/traffic_avoidance_adsb.html)
 
 ArduPilot:
+
 - [ADS-B](https://ardupilot.org/copter/docs/common-ads-b-receiver.html)
 
 QGroundControl:
+
 - [General Settings > ADS-B Server](https://docs.qgroundcontrol.com/master/en/SettingsView/General.html#adsb_server) (connects to an ADS-B server to display nearby traffic).
