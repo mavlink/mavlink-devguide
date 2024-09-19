@@ -309,7 +309,7 @@ Value | Name | Description
 <a id='MAV_COMP_ID_ADSB'></a>156 | [MAV_COMP_ID_ADSB](#MAV_COMP_ID_ADSB) | Automatic Dependent Surveillance-Broadcast (ADS-B) component. 
 <a id='MAV_COMP_ID_OSD'></a>157 | [MAV_COMP_ID_OSD](#MAV_COMP_ID_OSD) | On Screen Display (OSD) devices for video links. 
 <a id='MAV_COMP_ID_PERIPHERAL'></a>158 | [MAV_COMP_ID_PERIPHERAL](#MAV_COMP_ID_PERIPHERAL) | Generic autopilot peripheral component ID. Meant for devices that do not implement the parameter microservice. 
-<a id='MAV_COMP_ID_QX1_GIMBAL'></a>159 | [MAV_COMP_ID_QX1_GIMBAL](#MAV_COMP_ID_QX1_GIMBAL) | Gimbal ID for QX1.<b><span class="warning">**DEPRECATED:** Replaced By [MAV_COMP_ID_GIMBAL](#MAV_COMP_ID_GIMBAL) (2018-11) — All gimbals should use [MAV_COMP_ID_GIMBAL](#MAV_COMP_ID_GIMBAL).)</span> 
+<a id='MAV_COMP_ID_QX1_GIMBAL'></a>159 | [MAV_COMP_ID_QX1_GIMBAL](#MAV_COMP_ID_QX1_GIMBAL) | Gimbal ID for QX1.<span class="warning">**DEPRECATED:** Replaced By [MAV_COMP_ID_GIMBAL](#MAV_COMP_ID_GIMBAL) (2018-11) — All gimbals should use [MAV_COMP_ID_GIMBAL](#MAV_COMP_ID_GIMBAL).)</span> 
 <a id='MAV_COMP_ID_FLARM'></a>160 | [MAV_COMP_ID_FLARM](#MAV_COMP_ID_FLARM) | FLARM collision alert component. 
 <a id='MAV_COMP_ID_PARACHUTE'></a>161 | [MAV_COMP_ID_PARACHUTE](#MAV_COMP_ID_PARACHUTE) | Parachute component. 
 <a id='MAV_COMP_ID_WINCH'></a>169 | [MAV_COMP_ID_WINCH](#MAV_COMP_ID_WINCH) | Winch component. 
@@ -342,5 +342,5 @@ Value | Name | Description
 <a id='MAV_COMP_ID_UART_BRIDGE'></a>241 | [MAV_COMP_ID_UART_BRIDGE](#MAV_COMP_ID_UART_BRIDGE) | Component to bridge to UART (i.e. from UDP). 
 <a id='MAV_COMP_ID_TUNNEL_NODE'></a>242 | [MAV_COMP_ID_TUNNEL_NODE](#MAV_COMP_ID_TUNNEL_NODE) | Component handling TUNNEL messages (e.g. vendor specific GUI of a component). 
 <a id='MAV_COMP_ID_ILLUMINATOR'></a>243 | [MAV_COMP_ID_ILLUMINATOR](#MAV_COMP_ID_ILLUMINATOR) | Illuminator 
-<a id='MAV_COMP_ID_SYSTEM_CONTROL'></a>250 | [MAV_COMP_ID_SYSTEM_CONTROL](#MAV_COMP_ID_SYSTEM_CONTROL) | Deprecated, don't use. Component for handling system messages (e.g. to ARM, takeoff, etc.).<b><span class="warning">**DEPRECATED:** Replaced By [MAV_COMP_ID_ALL](#MAV_COMP_ID_ALL) (2018-11) — System control does not require a separate component ID. Instead, system commands should be sent with target_component=MAV_COMP_ID_ALL allowing the target component to use any appropriate component id.)</span> 
+<a id='MAV_COMP_ID_SYSTEM_CONTROL'></a>250 | [MAV_COMP_ID_SYSTEM_CONTROL](#MAV_COMP_ID_SYSTEM_CONTROL) | Deprecated, don't use. Component for handling system messages (e.g. to ARM, takeoff, etc.).<span class="warning">**DEPRECATED:** Replaced By [MAV_COMP_ID_ALL](#MAV_COMP_ID_ALL) (2018-11) — System control does not require a separate component ID. Instead, system commands should be sent with target_component=MAV_COMP_ID_ALL allowing the target component to use any appropriate component id.)</span> 
 
