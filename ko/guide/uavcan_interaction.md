@@ -8,8 +8,8 @@ The general description and specification of UAVCAN is available at <http://uavc
 
 The text below will be referring to the following terms:
 
-* **Bridge node** - the piece of on-board equipment that bridges the on-board UAVCAN bus and the MAVLink connection. This function is often performed by the flight management unit, e.g. Pixhawk.
-* **Remote equipment** - the other end of the MAVLink channel, e.g. the ground control station.
+- **Bridge node** - the piece of on-board equipment that bridges the on-board UAVCAN bus and the MAVLink connection. This function is often performed by the flight management unit, e.g. Pixhawk.
+- **Remote equipment** - the other end of the MAVLink channel, e.g. the ground control station.
 
 ### UAVCAN Node Identification
 
@@ -37,11 +37,11 @@ The corresponding MAVLink message is `UAVCAN_NODE_INFO`. Its fields are direct m
 
 The bridge node must emit the message `UAVCAN_NODE_INFO` in the following cases:
 
-* Reception of a service response of type `uavcan.protocol.GetNodeInfo`. In turn, this service must be invoked when the following conditions are observed on the bus (please read the UAVCAN specification for a more detailed description of the principles of bus monitoring): 
-    * A new node has appeared online.
-    * A known node has restarted.
-* Reception of the MAVLink command `MAV_CMD_UAVCAN_GET_NODE_INFO`. In this case, the bridge node is required to emit `UAVCAN_NODE_INFO` once for every known node.
-* It is also allowed, but not required, to unconditionally emit messages `UAVCAN_NODE_INFO` at a very low rate, in order to guarantee that the remote equipment always has a valid model of the on-board UAVCAN bus.
+- Reception of a service response of type `uavcan.protocol.GetNodeInfo`. In turn, this service must be invoked when the following conditions are observed on the bus (please read the UAVCAN specification for a more detailed description of the principles of bus monitoring): 
+    - A new node has appeared online.
+    - A known node has restarted.
+- Reception of the MAVLink command `MAV_CMD_UAVCAN_GET_NODE_INFO`. In this case, the bridge node is required to emit `UAVCAN_NODE_INFO` once for every known node.
+- It is also allowed, but not required, to unconditionally emit messages `UAVCAN_NODE_INFO` at a very low rate, in order to guarantee that the remote equipment always has a valid model of the on-board UAVCAN bus.
 
 ## Configuration Parameter Management
 
@@ -49,9 +49,9 @@ UAVCAN defines a set of standard service types that facilitate the management of
 
 The UAVCAN-MAVLink bridge does not define any additional messages for configuration parameter management. Instead, the following standard messages are used in the regular way:
 
-* `PARAM_REQUEST_LIST` - used to request the list of configuration parameters from the specified UAVCAN node. Remember that the UAVCAN node is specified via the field Component ID.
-* `PARAM_VALUE` - used by the bridge node to report the value of a configuration parameter. The node ID is reflected in the field Component ID.
-* `PARAM_SET` - used by the remote equipment to set the value of a configuration parameter. The node ID is reflected in the field Component ID.
+- `PARAM_REQUEST_LIST` - used to request the list of configuration parameters from the specified UAVCAN node. Remember that the UAVCAN node is specified via the field Component ID.
+- `PARAM_VALUE` - used by the bridge node to report the value of a configuration parameter. The node ID is reflected in the field Component ID.
+- `PARAM_SET` - used by the remote equipment to set the value of a configuration parameter. The node ID is reflected in the field Component ID.
 
 Note that the maximum length of a configuration parameter name is defined differently in UAVCAN and MAVLink. In MAVLink, the maximum length is 16 characters, whereas in UAVCAN the limit is 92 characters. Should the bridge node encounter long configuration parameter names that exceed the MAVLink's limit, it should exercise its best effort to reduce the name length presented on the MAVLink side while avoiding ambiguity. Designers of UAVCAN nodes, on their part, should avoid using configuration parameter names more than 16 characters long, until this deficiency of the MAVLink protocol is fixed.
 
