@@ -6,8 +6,8 @@ This topic provides general overview of message signing, which will be useful bo
 
 More detailed information for developers using existing MAVLink libraries can be found here:
 
-* [C Message Signing](../mavgen_c/message_signing_c.md) (mavgen)
-* [Pymavlink Message Signing](../mavgen_python/README.md#message_signing) (mavgen) <!-- Others?  -->
+- [C Message Signing](../mavgen_c/message_signing_c.md) (mavgen)
+- [Pymavlink Message Signing](../mavgen_python/README.md#message_signing) (mavgen) <!-- Others?  -->
 
 ## Frame Format
 
@@ -59,13 +59,13 @@ A MAVLink-enabled device may not know the current GMT time, for example if it do
 
 Systems should implement the following rules to obtain a reliable timestamp:
 
-* The current timestamp should be stored regularly in persistent storage (ideally at least once a minute)
-* The timestamp used on startup should be the maximum of the timestamp implied by the system clock and the stored timestamp
-* If the system does not have an RTC mechanism then it should update its timestamp when GPS lock is achieved. The maximum of the timestamp from the GPS and the stored timestamp should be used.
-* The timestamp should be incremented by one on each message sent from a particular link.
-* When a correctly signed message is decoded the timestamp should be replaced by the timestamp of the incoming message if that timestamp is greater than the current timestamp. > **Note** The link timestamp must never be updated with the timestamp from an incorrectly signed packet (even if these are being [accepted](#accepting_incorrectly_signed_packets)).
-* The timestamp on incoming signed messages should be checked against the previous timestamp for the incoming `(linkID,srcSystem,SrcComponent)` tuple and the message rejected if it is smaller.
-* If there is no previous message with the given `(linkID,srcSystem,SrcComponent)` then the timestamp should be accepted if it not more than 6 million (one minute) behind the current timestamp.
+- The current timestamp should be stored regularly in persistent storage (ideally at least once a minute)
+- The timestamp used on startup should be the maximum of the timestamp implied by the system clock and the stored timestamp
+- If the system does not have an RTC mechanism then it should update its timestamp when GPS lock is achieved. The maximum of the timestamp from the GPS and the stored timestamp should be used.
+- The timestamp should be incremented by one on each message sent from a particular link.
+- When a correctly signed message is decoded the timestamp should be replaced by the timestamp of the incoming message if that timestamp is greater than the current timestamp. > **Note** The link timestamp must never be updated with the timestamp from an incorrectly signed packet (even if these are being [accepted](#accepting_incorrectly_signed_packets)).
+- The timestamp on incoming signed messages should be checked against the previous timestamp for the incoming `(linkID,srcSystem,SrcComponent)` tuple and the message rejected if it is smaller.
+- If there is no previous message with the given `(linkID,srcSystem,SrcComponent)` then the timestamp should be accepted if it not more than 6 million (one minute) behind the current timestamp.
 
 > **Tip** For devices that store the timestamp in persistent storage, implementations can prevent race conditions by storing two timestamp values. On write the smaller of the two values should be updated. On read the larger of the two values should be used.
 
@@ -73,9 +73,9 @@ Systems should implement the following rules to obtain a reliable timestamp:
 
 When a signed packet arrives it should be discarded if the:
 
-* Timestamp is older than the previous packet from the same logical stream - where a logical stream is defined as the sequence of MAVLink packets with the same (`SystemID`, `ComponentID`, `LinkID`) tuple.
-* Computed 48 bit signature does not match the signature included in the packet. 
-* The timestamp is more than 1 minute (6,000,000) behind the local system’s timestamp.
+- Timestamp is older than the previous packet from the same logical stream - where a logical stream is defined as the sequence of MAVLink packets with the same (`SystemID`, `ComponentID`, `LinkID`) tuple.
+- Computed 48 bit signature does not match the signature included in the packet.
+- The timestamp is more than 1 minute (6,000,000) behind the local system’s timestamp.
 
 ## Accepting Unsigned Packets {#accepting_unsigned_packets}
 
@@ -87,11 +87,11 @@ The rules for accepting these packets will be implementation specific, but could
 
 Some suggestions for when to accept unsigned packets:
 
-* Accept all unsigned packets based on a system-specific parameter.
-* Accept all unsigned packets if the connection is over a "secure channel" (e.g. local USB cable or local wired Ethernet cable).
-* `RADIO_STATUS` packets are always accepted without signing (to make life easier for telemetry radios).
-* Accept all unsigned packets when in an "unsigned mode" (perhaps triggered by a hardware button pressed on boot).
-* Accept all unsigned packets until a signed packet is received (unconditionally), then move to the more restricted signing rules above.
+- Accept all unsigned packets based on a system-specific parameter.
+- Accept all unsigned packets if the connection is over a "secure channel" (e.g. local USB cable or local wired Ethernet cable).
+- `RADIO_STATUS` packets are always accepted without signing (to make life easier for telemetry radios).
+- Accept all unsigned packets when in an "unsigned mode" (perhaps triggered by a hardware button pressed on boot).
+- Accept all unsigned packets until a signed packet is received (unconditionally), then move to the more restricted signing rules above.
 
 ## Accepting Incorrectly Signed Packets {#accepting_incorrectly_signed_packets}
 
@@ -111,8 +111,8 @@ The secret key should be stored in persistent storage, and must not be exposed v
 
 The method of generating the secret key is implementation dependent. For example, it could be generated by:
 
-* A user-entered string that is then run through SHA-256.
-* A random key generator.
+- A user-entered string that is then run through SHA-256.
+- A random key generator.
 
 The secret key may be shared to other devices using the [SETUP_SIGNING](../messages/common.md#SETUP_SIGNING) message. The message should only ever be sent over a secure link (e.g. USB or wired Ethernet) as a direct message to each connected `system_id`/`component_id`. The receiving system must be set up to process the message and store the received secret key to the appropriate permanent storage.
 
@@ -134,8 +134,8 @@ Similarly, signed packets should have the signature [incompatibility bit](../gui
 
 The [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) contains additional information, including:
 
-* Reasoning behind the design decisions.
-* Evaluation of security effectiveness, including resistance to replay and offline attacks.
-* Assumptions.
+- Reasoning behind the design decisions.
+- Evaluation of security effectiveness, including resistance to replay and offline attacks.
+- Assumptions.
 
 > **Note** Much of this content is derived from the [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) (Google Doc).
