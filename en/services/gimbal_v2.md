@@ -105,13 +105,13 @@ Other ids may be used as long as the [MAV_TYPE](../messages/common.md#MAV_TYPE) 
 
 #### Mapping from Gimbal Managers to Gimbal Devices
 
-Every _Gimbal Manager_ has a single associated _Gimbal Device_ (there is a 1:1 relationship) that it controls.
+Every _Gimbal Manager_ has a single associated _Gimbal Device_ that it controls (there is a 1:1 relationship).
 A particular MAVLink component, such as an autopilot, can implement multiple gimbal managers in order to control two or more gimbal devices.
-The identity of a gimbal device, and hence its associated manager, are represented by a "gimbal device id".
+The identity of a gimbal device and its associated manager, are represented by a "gimbal device id".
 This id is used to differentiate messages from different gimbal managers, and also to target a particular gimbal in commands/messages sent to the component that is hosting its gimbal manager.
 
 A _Gimbal Manager_ publishes the id of its associated device in the `gimbal_device_id` field of the [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) message (this same field name is present in all gimbal manager messages so you can identify the source).
-Similarly, commands that can be set to a gimbal manager include a field with label `Gimbal device ID` that can be used to send the command to a particular gimbal device.
+Similarly, commands that can be sent to a gimbal manager include a parameter with label `Gimbal device ID` that indicates the particular gimbal manager (and device).
 
 - A system that wants to control a _particular_ gimbal device will send messages to the component that has the manager(s), such as an autopilot, specifying the device id of the gimbal to be controlled.
 - A system that wants to control _all_ gimbal devices managed by gimbal managers on a particular component, would send the command/message to that component and set the device id to `0`.
@@ -147,10 +147,16 @@ As with autopilot-attached cameras it would need to respond as a gimbal manager,
 
 #### Discovery of Gimbal Manager
 
-A ground station should monitor for HEARTBEAT messages from all new components, and send a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) for [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
-Gimbal managers should respond with `GIMBAL_MANAGER_INFORMATION`.
+A ground station should monitor for `HEARTBEAT` messages from all new components and check their capabilities by requesting [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) for autopilots and [COMPONENT_INFORMATION_BASIC](../messages/common.md#COMPONENT_INFORMATION_BASIC) for other components (see [HEARTBEAT/Connection protocol](../services/heartbeat.md)).
 
-The `GIMBAL_MANAGER_INFORMATION` contains important information such as gimbal capabilities ([GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS)), maximum angles and angle rates, as well as the `gimbal_component` which is the component ID of the _Gimbal Device_ controlled by this _Gimbal Manager_.
+If the `capabilities` field of the above message(s) has the flag [MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER](../messages/common.md#MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER) set:
+
+- GCS should send a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) to the component for [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
+- Component should respond by emitting a `GIMBAL_MANAGER_INFORMATION` message for each gimbal manager that it implements.
+
+The `GIMBAL_MANAGER_INFORMATION` contains important information a particular gimbal, such as its capabilities ([GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS)), maximum angles and angle rates, as well as the `gimbal_device_id` which identifies the specific gimbal device controlled by a particular _Gimbal Manager_.
+
+> **Warning** A GCS should always request `GIMBAL_MANAGER_INFORMATION` from autopilot components prior to: PX4 v1.14, ArduPilot-4.5 (when the protocol bit was added).
 
 #### Gimbal Manager Status
 
