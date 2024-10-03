@@ -18,7 +18,7 @@ The following are instructions for how to obtain the MAVLink libraries for the s
 
 ### Get the Standard MAVLink Dialect
 
-If you need a [standard dialect](../messages/README.md#dialects) then you can install these (for both MAVLink 1 and 2) with *pymavlink* using *pip*:
+If you need a [standard dialect](../messages/index.md#dialects) then you can install these (for both MAVLink 1 and 2) with *pymavlink* using *pip*:
 
 ```sh
 pip install pymavlink
@@ -64,13 +64,13 @@ There are several main caveats to be aware of when using **mavutil**:
 
 - The link does not properly handle multiple systems running on the same port. If you need a multi-vehicle network see [source-system-filtering](https://github.com/peterbarker/dronekit-python/tree/source-system-filtering/examples/multivehicle).
 - The module is optimised for ArduPilot and some functions may not work properly on other autopilots.
-- **mavutil** is still a relatively low-level MAVLink API. It has limited support for even the most common [MAVLink microservices](../services/README.md).
+- **mavutil** is still a relatively low-level MAVLink API. It has limited support for even the most common [MAVLink microservices](../services/index.md).
 
 > **Tip** You don't have to use **mavutil** but it includes a lot of useful code that you might otherwise have to write from scratch. In particular the connection code and methods to filter incoming messages are useful for any autopilot.
 
 The set of modules in the *pymavlink* package are listed below:
 
-- **\dialects\v20\\*** and **\dialects\v10\\***: Dialect modules corresponding to each source XML [message definition](../messages/README.md) for MAVLink v2 and v1, respectively. Each dialect module contains: 
+- **\dialects\v20\\*** and **\dialects\v10\\***: Dialect modules corresponding to each source XML [message definition](../messages/index.md) for MAVLink v2 and v1, respectively. Each dialect module contains: 
   - constants for all enums and enum values defined in the XML file.
   - a set of constants for message identifiers.
   - a class for each type of MAVLink message defined in the XML file.
@@ -181,7 +181,7 @@ Some of the strings you can use for different types of connections are listed be
 
 ### Sending Messages {#sending}
 
-`MAVLink` is the main protocol handling class. It is defined in each dialect module, and includes a `<message_name>_send()` method for all messages in the dialect's [message definition](../messages/README.md).
+`MAVLink` is the main protocol handling class. It is defined in each dialect module, and includes a `<message_name>_send()` method for all messages in the dialect's [message definition](../messages/index.md).
 
 The message field values are passed as arguments to the function. Fields that are the same for all messages are defined in the class - e.g. source system, source component. Each message is documented in the dialect source code, even when it was [automatically generated](../getting_started/generate_libraries.md).
 

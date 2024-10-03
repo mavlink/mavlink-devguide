@@ -19,7 +19,7 @@ A library's MAVLink support can be determined in a number of ways:
 - [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION)`.capabilities` can be checked against the [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag to verify MAVLink 2 support.
 - [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION).`version` contains the MAVLink version number multiplied by 100: v1.0 is 100, <!-- v2.0 is 200, --> v2.3 is 203 etc.
 - [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number.
-  This is the `<version>` field defined in the [Message Definitions](../messages/README.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
+  This is the `<version>` field defined in the [Message Definitions](../messages/index.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
 - The major version can be determined from the packet start marker byte:
 
   - MAVLink 1: `0xFE`

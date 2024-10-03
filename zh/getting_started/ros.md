@@ -1,8 +1,8 @@
 # 针对ROS 生成源文件
 
-如果在使用 ros 时，需要添加基于MAVlink的[messages/dialects](../messages/README.md)，具体实施步骤如下:
+如果在使用 ros 时，需要添加基于MAVlink的[messages/dialects](../messages/index.md)，具体实施步骤如下:
 
-1. 按照 [MAVROS 源安装说明](https://github.com/mavlink/mavros/blob/master/mavros/README.md#source-installation)，安装官方专门为ROS发布的 mavlink 库——mavlink-gbp-release。
+1. 按照 [MAVROS 源安装说明](https://github.com/mavlink/mavros/blob/master/mavros/index.md#source-installation)，安装官方专门为ROS发布的 mavlink 库——mavlink-gbp-release。
 2. Uninstall the MAVlink package for ROS if previously installed.
     
     ```sh

@@ -6,7 +6,7 @@ MAVLink is a very lightweight messaging protocol for communicating with drones (
 
 MAVLink follows a modern hybrid publish-subscribe and point-to-point design pattern: Data streams are sent / published as **topics** while configuration sub-protocols such as the [mission protocol](services/mission.md) or [parameter protocol](services/parameter.md) are point-to-point with retransmission.
 
-Messages are [defined within XML files](messages/README.md).
+Messages are [defined within XML files](messages/index.md).
 Each XML file defines the message set supported by a particular MAVLink system, also referred to as a "dialect".
 The reference message set that is implemented by _most_ ground control stations and autopilots is defined in [common.xml](messages/common.md) (most dialects _build on top of_ this definition).
 
@@ -78,12 +78,12 @@ The following generators are delivered by independent projects (and supported by
 
 ## Prebuilt MAVLink C Libraries {#prebuilt_libraries}
 
-_C_ MAVLink Source Files (only) are auto-generated for the latest versions of all message [specifications/dialects](messages/README.md) (for both MAVLink 1 and 2):
+_C_ MAVLink Source Files (only) are auto-generated for the latest versions of all message [specifications/dialects](messages/index.md) (for both MAVLink 1 and 2):
 
 - [c_library_v2](https://github.com/mavlink/c_library_v2) (MAVLink 2)
 - [c_library_v1](https://github.com/mavlink/c_library_v1) (MAVLink 1)
 
-[Using C Libraries](mavgen_c/README.md) explains how to use these libraries.
+[Using C Libraries](mavgen_c/index.md) explains how to use these libraries.
 
 ## Support {#support}
 

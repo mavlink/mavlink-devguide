@@ -7,7 +7,7 @@
 有关使用现有 mavlink 库的开发人员的更多详细信息, 请参见:
 
 - [C 消息签名](../mavgen_c/message_signing_c.md)(mavgen)
-- [Pymavlink 消息签名](../mavgen_python/README.md#message_signing)(mavgen) <!-- Others?  -->
+- [Pymavlink 消息签名](../mavgen_python/index.md#message_signing)(mavgen) <!-- Others?  -->
 
 ## 帧格式
 
@@ -105,7 +105,7 @@ MAVLink 库应该提供一种机制, 允许系统有条件地接受签名不正�
 
 密钥是32字节的二进制数据, 用于创建可由密钥的其他持有者验证的消息签名。 密钥应在网络中的一个系统 (通常是 GCS) 上创建, 并通过安全通道共享到其他受信任的设备。 系统必须具有共享密钥才能进行通信。 密钥应在网络中的一个系统 (通常是 GCS) 上创建, 并通过安全通道共享到其他受信任的设备。 系统必须具有共享密钥才能进行通信。
 
-> **Note** *mavgen* [C](../mavgen_c/message_signing_c.md) 和 [Python](../mavgen_python/README.md#message_signing) 库每个链接仅支持一个密钥。 这是库的选择, 而不是协议的限制/要求。 相反, 实现可以存储一个密钥池, 并/或在每个连接的基础上管理密钥。 这是库的选择, 而不是协议的限制/要求。 相反, 实现可以存储一个密钥池, 并/或在每个连接的基础上管理密钥。
+> **Note** *mavgen* [C](../mavgen_c/message_signing_c.md) 和 [Python](../mavgen_python/index.md#message_signing) 库每个链接仅支持一个密钥。 这是库的选择, 而不是协议的限制/要求。 相反, 实现可以存储一个密钥池, 并/或在每个连接的基础上管理密钥。 这是库的选择, 而不是协议的限制/要求。 相反, 实现可以存储一个密钥池, 并/或在每个连接的基础上管理密钥。
 
 密钥应存储在持久存储设备中, 并且不得通过任何可公开访问的通信协议公开。 密钥应存储在持久存储设备中, 并且不得通过任何可公开访问的通信协议公开。 特别是, 密钥不得在可以用于公共日志分析的 MAVLink 参数、MAVLink 日志文件或数据闪存日志文件中公开。
 

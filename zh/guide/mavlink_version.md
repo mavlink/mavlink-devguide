@@ -16,7 +16,7 @@ MAVLink 已部署在若干版本中：
 - [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) 可以根据 [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) 标志检查 `.capabilities`, 以验证 MAVLink 2 支持。
 - [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION), 我的时间, 我的`version` 包含 MAVLink 版本号乘以100: v1.0 为 100, <!--v2.0 为 200,--> v2.3 为203等。
 
-- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` 字段包含次要版本号。 [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` 字段包含次要版本号。 这是 [Message Definitions](../messages/README.md) (`version` 在 [common.xml](../messages/common.md) 中定义的 `<version>` 字段, 用于依赖于通用消息集的语支)。
+- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` 字段包含次要版本号。 [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` 字段包含次要版本号。 这是 [Message Definitions](../messages/index.md) (`version` 在 [common.xml](../messages/common.md) 中定义的 `<version>` 字段, 用于依赖于通用消息集的语支)。
 - 主要版本可以从数据包起始标记字节中确定:
     
     - MAVLink 1: `0xFE`

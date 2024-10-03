@@ -7,7 +7,7 @@ This topic explains how to get and use the library.
 
 ## Getting the C MAVLink Library {#get_libraries}
 
-If you are using a [standard dialect](../messages/README.md#dialects) then download the _MAVLink 2_ library from Github: [c_library_v2](https://github.com/mavlink/c_library_v2).
+If you are using a [standard dialect](../messages/index.md#dialects) then download the _MAVLink 2_ library from Github: [c_library_v2](https://github.com/mavlink/c_library_v2).
 
 > **Tip** The MAVLink 2 library supports both MAVLink 2 and MAVLink 1, and is rebuilt for all the _standard dialects_ whenever any of the definitions in the _mavlink/mavlink_ repo change.
 > It supersedes the MAVLink 1 library ([c_library_v1](https://github.com/mavlink/c_library_v1)), and should be used by preference.
@@ -280,7 +280,7 @@ The topic [C Message Signing](../mavgen_c/message_signing_c.md) explains the rem
 
 The sections above explain how you can send and receive messages.
 What messages are sent/received depends on the systems that you're working with.
-The set of messages that most systems can send are documented in [common.xml](../messages/common.md) and there are various microservices [microservices](../services/README.md) that you may want to use.
+The set of messages that most systems can send are documented in [common.xml](../messages/common.md) and there are various microservices [microservices](../services/index.md) that you may want to use.
 
 Minimally MAVLink components should implement the [HEARTBEAT/Connection protocol](../services/heartbeat.md) as this is used by other systems as proof-of-life for the component, and also for [routing](../guide/routing.md).
 

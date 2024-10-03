@@ -1,7 +1,7 @@
 # MAVLink 2
 
 _MAVLink 2_ is a backward-compatible update to the MAVLink protocol that has been designed to bring more flexibility and security to MAVLink communication.
-_MAVLink 2_ bindings have been developed for C, C++11 and Python (see [Supported Languages](../README.md#supported_languages)).
+_MAVLink 2_ bindings have been developed for C, C++11 and Python (see [Supported Languages](../index.md#supported_languages)).
 
 This topic provides links to the main new features in MAVLink 2 and how it is used.
 
@@ -26,4 +26,4 @@ The key new features of _MAVLink 2_ are:
 ### C Implementation
 
 The MAVLink 2 C library is backwards compatible with MAVLink 1.
-Information on how to upgrade the library and work with MAVLink 1 is covered in [Using C MAVLink Libraries (mavgen)](../mavgen_c/README.md).
+Information on how to upgrade the library and work with MAVLink 1 is covered in [Using C MAVLink Libraries (mavgen)](../mavgen_c/index.md).

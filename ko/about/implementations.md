@@ -28,7 +28,7 @@ The following autopilots are known to support MAVLink and are actively being dev
 
 ## MAVLink Wrapper/Developer APIs
 
-A number of higher level APIs have been written to simplify interacting with MAVLink autopilots, cameras, ground stations, etc. (MAVLink is a relatively low-level API). These wrappers typically provide implementations of the main [microservices](../services/README.md) and simple/specific interfaces for sending commands and accessing vehicle information.
+A number of higher level APIs have been written to simplify interacting with MAVLink autopilots, cameras, ground stations, etc. (MAVLink is a relatively low-level API). These wrappers typically provide implementations of the main [microservices](../services/index.md) and simple/specific interfaces for sending commands and accessing vehicle information.
 
 The list here contains actively maintained implementations:
 

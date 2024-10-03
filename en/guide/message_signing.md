@@ -8,7 +8,7 @@ It explains how a system can determine if a message is signed and whether the si
 More detailed information for developers using existing MAVLink libraries can be found here:
 
 - [C Message Signing](../mavgen_c/message_signing_c.md) (mavgen)
-- [Pymavlink Message Signing](../mavgen_python/README.md#message_signing) (mavgen)
+- [Pymavlink Message Signing](../mavgen_python/index.md#message_signing) (mavgen)
 <!-- Others?  -->
 
 ## Frame Format
@@ -120,7 +120,7 @@ A secret key is 32 bytes of binary data that are used to create message signatur
 The key should be created on one system in the network (often a GCS) and shared to other trusted devices via secure channels.
 Systems must have a shared key in order to be able to communicate.
 
-> **Note** The _mavgen_ [C](../mavgen_c/message_signing_c.md) and [Python](../mavgen_python/README.md#message_signing) libraries support only one key per link.
+> **Note** The _mavgen_ [C](../mavgen_c/message_signing_c.md) and [Python](../mavgen_python/index.md#message_signing) libraries support only one key per link.
 > This is a choice of the library and not a limit/requirement of the protocol.
 > An implementation might instead store a pool of keys, and/or manage keys on a per-connection basis.
 
