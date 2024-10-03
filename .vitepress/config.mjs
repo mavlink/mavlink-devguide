@@ -6,17 +6,16 @@ import tabsPlugin from "@red-asuka/vitepress-plugin-tabs";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "PX4 Guide (main)",
-  description: "PX4 User and Developer Guide",
-  base: process.env.BRANCH_NAME
-    ? "/" + process.env.BRANCH_NAME + "/"
-    : "/px4_user_guide/",
+  title: "MAVLink Guide",
+  description: "MAVLink Developer Guide",
+  base: process.env.BRANCH_NAME ? "/" + process.env.BRANCH_NAME + "/" : "",
+
   srcExclude: [
     "de/**/*.md",
     "ja/**/*.md",
     "ru/**/*.md",
     "tr/**/*.md",
-    "kr/**/*.md",
+    //"ko/**/*.md",
     //"zh/**/*.md",
     "uk/**/*.md",
     "**/_*.md", //Remove source docs that start with "_" (included/not rendered)
@@ -40,9 +39,9 @@ export default defineConfig({
           pattern: ({ filePath, frontmatter }) => {
             if (frontmatter.newEditLink) {
               //newEditLink defines a frontmatter key you can use to append a path to main
-              return `https://github.com/PX4/PX4-user_guide/edit/main/${frontmatter.newEditLink}`;
+              return `https://github.com/mavlink/mavlink-devguide/edit/master/${frontmatter.newEditLink}`;
             } else {
-              return `https://github.com/PX4/PX4-user_guide/edit/main/${filePath}`;
+              return `https://github.com/mavlink/mavlink-devguide/edit/master/${filePath}`;
             }
           },
           text: "Edit on GitHub",
@@ -77,95 +76,81 @@ export default defineConfig({
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: "/px4-logo.svg",
+    siteTitle: false,
+    logo: {
+      light: "/assets/site/logo_mavlink_header_lightmode.png",
+      dark: "/assets/site/logo_mavlink_header_darkmode.png",
+      alt: "",
+    },
     sidebar: getSidebar.sidebar("en"),
+    externalLinkIcon: true,
 
     editLink: {
-      pattern: "https://crowdin.com/project/px4-user-guide",
+      pattern: "https://crowdin.com/project/mavlink",
       text: "Edit translation on Crowdin",
     },
 
     search: {
       provider: "local",
-      /*
-      provider: process.env.BRANCH_NAME ? "algolia" : "local",
-      options: {
-        appId: "HHWW7I44JO",
-        apiKey: "48919e1dffc6e0ce4c0d6331343d2c0e",
-        indexName: "px4",
-        searchParameters: {
-          facetFilters: [`version:${process.env.BRANCH_NAME}`],
-        },
-      },
-      */
     },
 
     nav: [
       {
-        text: "PX4",
+        text: "Messages",
+        link: "/en/messages/common.md",
+      },
+      {
+        text: "FAQ",
+        link: "/en/about/faq.md",
+      },
+      {
+        text: "Implementations",
         items: [
           {
-            text: "Website",
-            link: "https://px4.io/",
-            ariaLabel: "PX4 website link",
+            text: "ArduPilot",
+            link: "http://ardupilot.org/",
           },
           {
-            text: "Autopilot Source Code",
-            link: "https://github.com/PX4/PX4-Autopilot",
+            text: "PX4",
+            link: "http://px4.io/",
           },
           {
-            text: "Docs Source Code",
-            link: "https://github.com/PX4/PX4-user_guide",
+            text: "Other",
+            link: "/en/about/implementations.md",
           },
         ],
       },
       {
-        text: "Dronecode",
+        text: "Languages",
         items: [
           {
-            text: "QGroundControl",
-            link: "http://qgroundcontrol.com/",
+            text: "C (mavgen)",
+            link: "/en/mavgen_c/",
           },
           {
-            text: "MAVSDK",
-            link: "https://mavsdk.mavlink.io/",
+            text: "Python (Pymavlink)",
+            link: "/en/mavgen_python/",
           },
           {
-            text: "MAVLINK",
-            link: "https://mavlink.io/en/",
-          },
-          {
-            text: "QGroundControl Guide",
-            link: "https://docs.qgroundcontrol.com/master/en/qgc-user-guide/",
-          },
-          {
-            text: "Dronecode Camera Manager",
-            link: "https://camera-manager.dronecode.org/en/",
+            text: "Other",
+            link: "/en/#supported_languages",
           },
         ],
       },
+
       {
         text: "Support",
-        link: "https://docs.px4.io/main/en/contribute/support.html",
-      },
-      {
-        text: "Version",
-        items: [
-          { text: "main", link: "https://docs.px4.io/main/en/" },
-          { text: "v1.14", link: "https://docs.px4.io/v1.14/en/" },
-          { text: "v1.13", link: "https://docs.px4.io/v1.13/en/" },
-          { text: "v1.12", link: "https://docs.px4.io/v1.12/en/" },
-          { text: "v1.11", link: "https://docs.px4.io/v1.11/en/" },
-        ],
+        link: "/en/about/support.md",
       },
     ],
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/PX4/PX4-user_guide" },
+      { icon: "github", link: "https://github.com/mavlink/mavlink" },
     ],
   },
 
   head: [
+    ["link", { rel: "icon", href: "/en/favicon.ico" }],
     [
       "script",
       {
