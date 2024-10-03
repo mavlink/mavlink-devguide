@@ -43,7 +43,7 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
- :root {
+:root {
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
   --vp-c-default-3: var(--vp-c-gray-3);
@@ -137,9 +137,6 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
-
-
-
 /**
  * Component: Medium Zoom: https://github.com/vuejs/vitepress/issues/854
  * -------------------------------------------------------------------------- */
@@ -152,11 +149,54 @@
   z-index: 21;
 }
 
-
 /**
  * Override styles as needed
  * -------------------------------------------------------------------------- */
 
- .vp-doc img {
+.vp-doc img {
   display: inline; /* block by default set by vitepress */
 }
+
+/* Make content area a little wider to improve tables */
+.content-container {
+  max-width: 100% !important;
+}
+@media (min-width: 1280px) {
+  .content {
+    min-width: 940px !important;
+  }
+}
+
+/* Make page width larger  */
+@media (min-width: 1440px) {
+  .VPSidebar {
+    padding-left: 32px !important;
+    width: var(--vp-sidebar-width) !important;
+  }
+  .VPContent.has-sidebar {
+    padding-left: var(--vp-sidebar-width) !important;
+    padding-right: 0 !important;
+  }
+
+  .VPNavBar.has-sidebar .title {
+    padding-left: 32px !important;
+  }
+
+  .VPNavBar.has-sidebar .content {
+    padding-left: var(--vp-sidebar-width) !important;
+    padding-right: 32px !important;
+  }
+}
+
+/* Make content area a little wider to improve tables
+- Disabled version, that is OK but not quite as good as one above */
+/*
+.content-container {
+  max-width: 100% !important;
+}
+@media (min-width: 1280px) {
+  .content {
+    min-width: 940px !important;
+  }
+}
+*/
