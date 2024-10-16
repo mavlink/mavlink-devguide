@@ -195,7 +195,7 @@ There are cases where an option change requires a parameter to be updated. For e
 
 This tells the GCS that when the `CAM_EXPMODE` parameter changes, the `CAM_APERTURE`, `CAM_SHUTTERSPD` and the `CAM_ISO` parameters must be updated (requested from the camera).
 
-#### Option range Limit
+#### Option Range Limit
 
 Suppose your camera has the following ISO options:
 
@@ -248,7 +248,7 @@ This indicates to the GCS that when the `CAM_MODE` parameter is set to _Video_, 
 
 This example also tells the GCS not to display this parameter to the user (`control=“0”`). Camera Mode is a standard parameter defined in the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way. The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur.
 
-#### Param ranges
+#### Param Ranges
 
 It is also possible to define param ranges without individual options, but by specifiying the minimum, maximum, and optionally a step size:
 
