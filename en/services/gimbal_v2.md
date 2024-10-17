@@ -100,7 +100,7 @@ Multiple gimbals per drone are supported.
 Multiple component IDs are reserved for MAVLink gimbal devices: `MAV_COMP_ID_GIMBAL`, `MAV_COMP_ID_GIMBAL2`, `MAV_COMP_ID_GIMBAL3`, `MAV_COMP_ID_GIMBAL4`, `MAV_COMP_ID_GIMBAL5`, `MAV_COMP_ID_GIMBAL6`.
 
 The listed component IDs should be used where possible.
-Ids `0-7` may not be used.
+Ids `0-6` may not be used.
 Other ids may be used as long as the [MAV_TYPE](../messages/common.md#MAV_TYPE) is correctly set to [MAV_TYPE_GIMBAL](../messages/common.md#MAV_TYPE_GIMBAL).
 
 #### Mapping from Gimbal Managers to Gimbal Devices
