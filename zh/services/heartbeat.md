@@ -10,16 +10,16 @@ The heartbeat allows other components to:
 
 ## Message/Enum Summary
 
-| Message                                                                  | Description                                                                                                                     |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| <span id="HEARTBEAT"></span>[HEARTBEAT](../messages/common.md#HEARTBEAT) | Broadcast that a MAVLink component is present and responding, along with its type ([MAV_TYPE](#MAV_TYPE)) and other properties. |
+| Message                                                            | Description                                                                                                                     |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="HEARTBEAT"></a>[HEARTBEAT](../messages/common.md#HEARTBEAT) | Broadcast that a MAVLink component is present and responding, along with its type ([MAV_TYPE](#MAV_TYPE)) and other properties. |
 
-| Enum                                                                                   | Description                                                                                                                                                                                                                                          |
-| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <span id="MAV_TYPE"></span>[MAV_TYPE](../messages/common.md#MAV_TYPE)                  | Type of the component. Flight controllers must report the type of the vehicle on which they are mounted (e.g. MAV_TYPE_OCTOROTOR). All other components must report a value appropriate for their type (e.g. a camera must use `MAV_TYPE_CAMERA`). |
-| <span id="MAV_AUTOPILOT"></span>[MAV_AUTOPILOT](../messages/common.md#MAV_AUTOPILOT)   | Autopilot type / class. Set to `MAV_AUTOPILOT_INVALID` for components that are not flight controllers (e.g. ground stations, gimbals, etc.).                                                                                                         |
-| <span id="MAV_MODE_FLAG"></span>[MAV_MODE_FLAG](../messages/common.md#MAV_MODE_FLAG) | System mode bitmap.                                                                                                                                                                                                                                  |
-| <span id="MAV_STATE"></span>[MAV_STATE](../messages/common.md#MAV_STATE)               | System status flag.                                                                                                                                                                                                                                  |
+| Enum                                                                             | Description                                                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id="MAV_TYPE"></a>[MAV_TYPE](../messages/common.md#MAV_TYPE)                  | Type of the component. Flight controllers must report the type of the vehicle on which they are mounted (e.g. MAV_TYPE_OCTOROTOR). All other components must report a value appropriate for their type (e.g. a camera must use `MAV_TYPE_CAMERA`). |
+| <a id="MAV_AUTOPILOT"></a>[MAV_AUTOPILOT](../messages/common.md#MAV_AUTOPILOT)   | Autopilot type / class. Set to `MAV_AUTOPILOT_INVALID` for components that are not flight controllers (e.g. ground stations, gimbals, etc.).                                                                                                         |
+| <a id="MAV_MODE_FLAG"></a>[MAV_MODE_FLAG](../messages/common.md#MAV_MODE_FLAG) | System mode bitmap.                                                                                                                                                                                                                                  |
+| <a id="MAV_STATE"></a>[MAV_STATE](../messages/common.md#MAV_STATE)               | System status flag.                                                                                                                                                                                                                                  |
 
 ## HEARTBEAT Broadcast Frequency
 
@@ -59,3 +59,9 @@ MAVLink recommends that *by default* components use a type-appropriate component
 > 
 > - **Tip** Using type-specific component ids: - makes id clashes less likely "out of the box" (unless two components of the same type are present on the same system).
 > - - reduces the impact on legacy code that determines component type from the id.
+
+## Component Capabilities
+
+The basic properties and capabilities of an autopilot can be determined by requesting the [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) message using [MAV_CMD_REQUEST_MESSAGE](../services/gimbal_v2.md#MAV_CMD_REQUEST_MESSAGE), and for other components by requesting [COMPONENT_INFORMATION_BASIC](../messages/common.md#COMPONENT_INFORMATION_BASIC). This should normally be done on discovery of a new component, and the results cached.
+
+The information includes hardware and software versioning information, and also the `capabilities`, a bitmap of the MAVLink services/protocols ([MAV_PROTOCOL_CAPABILITY](../messages/common.md#MAV_PROTOCOL_CAPABILITY)) supported by the component.
