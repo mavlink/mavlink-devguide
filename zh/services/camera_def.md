@@ -182,7 +182,7 @@ There are cases where an option change requires a parameter to be updated. For e
 
 This tells the GCS that when the `CAM_EXPMODE` parameter changes, the `CAM_APERTURE`, `CAM_SHUTTERSPD` and the `CAM_ISO` parameters must be updated (requested from the camera).
 
-#### 范围限制
+#### Option Range Limit
 
 Suppose your camera has the following ISO options:
 
@@ -234,6 +234,33 @@ But this full range is only available when in *Photo Mode*. For whatever reason,
 This indicates to the GCS that when the `CAM_MODE` parameter is set to *Video*, only the given range for the `CAM_ISO` parameter is valid. It additionally gives a condition that this is only the case when the `CAM_EXPOSURE` mode is set to *Manual* (1).
 
 This example also tells the GCS not to display this parameter to the user (`control=“0”`). The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur. Camera Mode is a standard parameter defined in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way.
+
+#### Param Ranges
+
+It is also possible to define param ranges without individual options, but by specifiying the minimum, maximum, and optionally a step size:
+
+```xml
+<parameter name="CAM_APERTURE" type="float" default="2.8" min="2.8" max="14.0" step="0.1">
+    <description>Aperture</description>
+</parameter>
+```
+
+This would be equivalent to:
+
+```xml
+<parameter name="CAM_APERTURE" type="float" default="2.8">
+    <description>Aperture</description>
+    <options>
+      <roption name="2.8" value="2.8" />
+      <roption name="2.9" value="2.9" />
+      ...
+      <roption name="13.9" value="13.9" />
+      <roption name="14" value="14" />
+    </options>
+</parameter>
+```
+
+Note that this approach cannot be used in conjunction with exclusions or option range limits (defined with `parameterrange`). Therefore it is recommended for cases where the range of allowed values does not vary with any other camera mode or setting.
 
 ### 本土化
 
