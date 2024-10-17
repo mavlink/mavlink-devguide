@@ -1,11 +1,7 @@
 # Gimbal Protocol (v2)
 
-> **Note** This version is marked as work-in-progress.
-> This means that it is still subject to change.
-
-<span></span>
-
 > **Note** This version supersedes [Gimbal Protocol v1](../services/gimbal.md)
+> Existing functionality is now fixed, but compatible changes may still be added.
 
 ## Introduction
 
@@ -101,38 +97,49 @@ Multiple gimbals per drone are supported.
 
 #### Component IDs
 
-Multiple component IDs are reserved for gimbal devices: `MAV_COMP_ID_GIMBAL`, `MAV_COMP_ID_GIMBAL2`, `MAV_COMP_ID_GIMBAL3`, `MAV_COMP_ID_GIMBAL4`, `MAV_COMP_ID_GIMBAL5`, `MAV_COMP_ID_GIMBAL6`.
+Multiple component IDs are reserved for MAVLink gimbal devices: `MAV_COMP_ID_GIMBAL`, `MAV_COMP_ID_GIMBAL2`, `MAV_COMP_ID_GIMBAL3`, `MAV_COMP_ID_GIMBAL4`, `MAV_COMP_ID_GIMBAL5`, `MAV_COMP_ID_GIMBAL6`.
 
-The listed component IDs should be used where possible (other ids may be used as long as the [MAV_TYPE](../messages/common.md#MAV_TYPE) is correctly set to [MAV_TYPE_GIMBAL](../messages/common.md#MAV_TYPE_GIMBAL)).
+The listed component IDs should be used where possible.
+Ids `0-6` may not be used.
+Other ids may be used as long as the [MAV_TYPE](../messages/common.md#MAV_TYPE) is correctly set to [MAV_TYPE_GIMBAL](../messages/common.md#MAV_TYPE_GIMBAL).
 
 #### Mapping from Gimbal Managers to Gimbal Devices
 
-Every _Gimbal Manager_ must to publish its associated _Gimbal Device_ (there is a 1:1 relationship) in its [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) message.
+Every _Gimbal Manager_ has a single associated _Gimbal Device_ that it controls (there is a 1:1 relationship).
+A particular MAVLink component, such as an autopilot, can implement multiple gimbal managers in order to control two or more gimbal devices.
+The identity of a gimbal device and its associated manager, are represented by a "gimbal device id".
+This id is used to differentiate messages from different gimbal managers, and also to target a particular gimbal in commands/messages sent to the component that is hosting its gimbal manager.
 
-A particular MAVLink component can implement multiple gimbal managers (e.g. an autopilot can implement two gimbal managers in order to control two gimbal devices).
+A _Gimbal Manager_ publishes the id of its associated device in the `gimbal_device_id` field of the [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION) message (this same field name is present in all gimbal manager messages so you can identify the source).
+Similarly, commands that can be sent to a gimbal manager include a parameter with label `Gimbal device ID` that indicates the particular gimbal manager (and device).
 
-A gimbal manager can "manage" MAVLink gimbal devices as well as non-MAVLink gimbals such as a gimbal connected with proprietary or custom interface such as PWM or SBUS. A non-MAVLink gimbal is signalled and addressed using 1 to 6 as the `gimbal_device_id` instead of the MAVLink component ID.
+- A system that wants to control a _particular_ gimbal device will send messages to the component that has the manager(s), such as an autopilot, specifying the device id of the gimbal to be controlled.
+- A system that wants to control _all_ gimbal devices managed by gimbal managers on a particular component, would send the command/message to that component and set the device id to `0`.
 
 #### Addressing of Gimbal MAVLink Devices {#gimbal_device_addressing}
 
-_Gimbal Manager_ commands and messages have a param field to indicate the component ID of the _Gimbal Device_ that they intend to control.
+For MAVLink gimbal devices the gimbal device id (`gimbal_device_id`) is the MAVLink [component ID of the gimbal device](#component-ids) controlled by the gimbal manager.
 
-A system that wants to control a _particular_ gimbal device will send messages to the component that has the manager(s), specifying the particular device to be controlled.
-
-If all gimbal devices should be controlled (on the component that has the gimbal managers), this param/field can be set to 0 (signalling "all").
+The gimbal manager processes commands for its associated device, sending appropriate/corresponding _gimbal device commands_ to the MAVLink gimbal device.
 
 #### Addressing of non-MAVLink gimbal devices {#non_mavlink_gimbal_device_addressing}
 
-Non-MAVLink gimbal devices are gimbals that don't expose the MAVLink API, but instead are connected to the gimbal manager using some other protocol.
+Non-MAVLink gimbal devices are gimbals that don't expose a MAVLink Gimbal Device (or manager) API, but instead are connected to the gimbal manager using some other protocol.
 For instance, this could be a PWM gimbal connected to an autopilot.
+Since the gimbal device is not a MAVLink component, it does not have a unique MAVLink component ID that can be used for the gimbal device id.
+Therefore you either have to make it into a MAVLink component (so it has an id) or assign it a particular non-MAVLink id.
 
-For these cases, there needs to be a way to address such a gimbal specifically, and a way to send out the `GIMBAL_DEVICE_` messages, so that they can re mapped back to the respective gimbal manager.
+Autopilots are expected to implement gimbal managers for each attached gimbal and assign each a unique gimbal device id between `1` and `6` (which is why these values can't be used as MAVLink component IDs for gimbal devices).
+This id would then be used in gimbal manager messages sent by the autopilot, and for addressing the particular gimbal in commands.
+The autopilot would directly control attached gimbals in response to gimbal manager commands.
+In addition to sending _gimbal manager messages_ when appropriate, it should also send/stream required _gimbal device messages_, such as [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS).
 
-The solution chosen for this case is to use the numbers 1 to 6 as magic numbers for the `gimbal_device_id`. This means that the numbers 1 to 6 can't be used as MAVLink component IDs for any components involved as gimbal managers or gimbal devices.
+All other hardware with attached gimbal devices, such as a companion computers, are expected to implement them as separate MAVLink components, with their own MAVLink component ID that can be used for addressing.
+For example, a companion computer with an attached gimbal would appear as two MAVLink components: a companion computer and a gimbal.
+The gimbal component would identify as a type `MAV_TYPE_GIMBAL` and assert that it implements the gimbal manager protocol.
+As with autopilot-attached cameras it would need to respond as a gimbal manager, and also stream required gimbal device messages.
 
-- A **gimbal manager** advertises that it implements the gimbal device "itself" by setting `gimbal_device_id` to 1 to 6. It will also send out the requested gimbal device messages from the same component ID. It will set the field in `gimbal_device_id` of [GIMBAL_DEVICE_ATTITUDE_STATUS](#GIMBAL_DEVICE_ATTITUDE_STATUS).
-
-- A **ground station** addresses a gimbal device by sending commands to the gimbal manager and specifying the `gimbal_device_id` 1 to 6.
+> **Note** Implementing each attached camera as a separate MAVLink component allows cameras attached to a companion computer to be separately addressed in missions executed on the autopilot.
 
 ## Implementation and Messages
 
@@ -140,10 +147,16 @@ The solution chosen for this case is to use the numbers 1 to 6 as magic numbers 
 
 #### Discovery of Gimbal Manager
 
-A ground station should monitor for HEARTBEAT messages from all new components, and send a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) for [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
-Gimbal managers should respond with `GIMBAL_MANAGER_INFORMATION`.
+A ground station should monitor for `HEARTBEAT` messages from all new components and check their capabilities by requesting [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) for autopilots and [COMPONENT_INFORMATION_BASIC](../messages/common.md#COMPONENT_INFORMATION_BASIC) for other components (see [HEARTBEAT/Connection protocol](../services/heartbeat.md)).
 
-The `GIMBAL_MANAGER_INFORMATION` contains important information such as gimbal capabilities ([GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS)), maximum angles and angle rates, as well as the `gimbal_component` which is the component ID of the _Gimbal Device_ controlled by this _Gimbal Manager_.
+If the `capabilities` field of the above message(s) has the flag [MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER](../messages/common.md#MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER) set:
+
+- GCS should send a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) to the component for [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION).
+- Component should respond by emitting a `GIMBAL_MANAGER_INFORMATION` message for each gimbal manager that it implements.
+
+The `GIMBAL_MANAGER_INFORMATION` contains important information a particular gimbal, such as its capabilities ([GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS)), maximum angles and angle rates, as well as the `gimbal_device_id` which identifies the specific gimbal device controlled by a particular _Gimbal Manager_.
+
+> **Warning** A GCS should always request `GIMBAL_MANAGER_INFORMATION` from autopilot components prior to: PX4 v1.16, ArduPilot-4.5 (when the protocol bit was added).
 
 #### Gimbal Manager Status
 
