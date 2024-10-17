@@ -6,9 +6,9 @@ MAVLink defines a number of commands for directly controlling [particular types 
 
 ## Payload-Specific Commands
 
-MAVLink defines a number of commands for controlling specific _types_ of payload hardware, including: winches, grippers, spotlights, etc. These commands may be used in both [missions](../services/mission.md) and [commands](services/command.md), if supported by the target system.
+MAVLink defines a number of commands for controlling specific _types_ of payload hardware, including: winches, grippers, spotlights, etc. These commands may be used in both [missions](../services/mission.md) and [commands](../services/command.md), if supported by the target system.
 
-They should be used (where supported) in preference to [arbitrary payload commands](#arbitraryunknown-payload-commands), as generally they provide more "tailored" control over the payload, a better GCS user experience, and more informative logs.
+They should be used (where supported) in preference to [generic payload commands](#generic-payload-commands), as generally they provide more "tailored" control over the payload, a better GCS user experience, and more informative logs.
 
 | Message                                                                                                     | Description                                                                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
