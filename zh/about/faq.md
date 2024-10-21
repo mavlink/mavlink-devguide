@@ -31,7 +31,7 @@
   <ul>
     <li>底层的序列化方式很少更新(只在2017年引入 <em>MAVLink 2</em>时进行了更新)。
     </li>
-    <li>新的 <a href="../messages/common.md">消息</a>/<a href="../services/README.md">微服务</a>经常添加。 这些更新是后向兼容，用户可定期更新其使用的库以支持新的消息。</li>
+    <li>新的 <a href="../messages/common.md">消息</a>/<a href="../services/index.md">微服务</a>经常添加。 这些更新是后向兼容，用户可定期更新其使用的库以支持新的消息。</li>
     <li>消息很少被修改(或删除)，以防止它们变得不兼容。 如果需要更新，项目将通过更新MAVLink次要版本号，并通过 <a href="https://groups.google.com/forum/#!forum/mavlink">邮件列表</a> 通知用户(用户也可以在代码中查询版本)。</li>
   </ul>
   </dd>
@@ -46,7 +46,7 @@
   </dt>
   
   <dd>
-    可以，没有任何使用限制。 可以，没有任何使用限制。 生成的 mavlink 库的头文件可在遵循 * MIT许可证* 的条件下使用 （有关详细信息，请参阅： <a href="../README.md#license">Introduction> 许可证 </0>）。 </dd> 
+    可以，没有任何使用限制。 可以，没有任何使用限制。 生成的 mavlink 库的头文件可在遵循 * MIT许可证* 的条件下使用 （有关详细信息，请参阅： <a href="../index.md#license">Introduction> 许可证 </0>）。 </dd> 
     
     <dt>
       MAVLink 如何检测数据流中的各类消息并进行解码？
@@ -93,7 +93,7 @@
     </dt>
     
     <dd>
-      可以，在安全测试时必须十分小心。 可以，在安全测试时必须十分小心。 作为多个自动驾驶仪中对安全至关重要的组件，MAVLink 已经经历了多年的测试。 请向MAVLink的技术支持推荐你所想到的新功能。 请在 MAVLink <a href="../README.md#support">支持频道</a> 上建议新的功能。
+      可以，在安全测试时必须十分小心。 可以，在安全测试时必须十分小心。 作为多个自动驾驶仪中对安全至关重要的组件，MAVLink 已经经历了多年的测试。 请向MAVLink的技术支持推荐你所想到的新功能。 请在 MAVLink <a href="../index.md#support">支持频道</a> 上建议新的功能。
     </dd>
     
     <dt>

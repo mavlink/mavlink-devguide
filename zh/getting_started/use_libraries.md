@@ -6,8 +6,8 @@
 
 - Mavgen
   
-  - [C](../mavgen_c/README.md)
-  - [Python ("Pymavlink")](../mavgen_python/README.md)
+  - [C](../mavgen_c/index.md)
+  - [Python ("Pymavlink")](../mavgen_python/index.md)
   - C++11
   - C-Sharp
   - Java

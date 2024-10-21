@@ -1,6 +1,6 @@
 # Generating MAVLink Libraries
 
-Language-specific MAVLink libraries can be created from [XML Message Definitions](../messages/README.md) using *code generator* tools.
+Language-specific MAVLink libraries can be created from [XML Message Definitions](../messages/index.md) using *code generator* tools.
 
 This page shows how to use the following two code generators provided with the MAVLink project:
 
@@ -11,12 +11,12 @@ This page shows how to use the following two code generators provided with the M
 
 <span></span>
 
-> **Tip** Generators for other programming languages are supported and documented in independent projects. For more information see [Supported Languages](../README.md#supported_languages).
+> **Tip** Generators for other programming languages are supported and documented in independent projects. For more information see [Supported Languages](../index.md#supported_languages).
 
 ## Pre-requisites
 
-1. You must already have [Installed the MAVLink toolchain](../getting_started/installation.md), which includes the mavgenerate and mavgen tools used below as well as the [XML Message Definitions](../messages/README.md).
-2. > **Note** *mavgen* can handle dialects that have relative paths for included XML files (e.g typically [common.xml](../messages/common.md)), but other generators may not. If you are generating messages for a [custom dialect](../messages/README.md#dialects), copy the dialect [XML definition file(s)](../messages/README.md#xml-definition-files--dialects) into the directory [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0). We recommend putting custom dialects in the same folder as the ones that come with the [mavlink/mavlink](https://github.com/mavlink/mavlink) repository.
+1. You must already have [Installed the MAVLink toolchain](../getting_started/installation.md), which includes the mavgenerate and mavgen tools used below as well as the [XML Message Definitions](../messages/index.md).
+2. > **Note** *mavgen* can handle dialects that have relative paths for included XML files (e.g typically [common.xml](../messages/common.md)), but other generators may not. If you are generating messages for a [custom dialect](../messages/index.md#dialects), copy the dialect [XML definition file(s)](../messages/index.md#xml-definition-files--dialects) into the directory [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0). We recommend putting custom dialects in the same folder as the ones that come with the [mavlink/mavlink](https://github.com/mavlink/mavlink) repository.
 
 ## Building MAVLink libraries using the Mavgenerate GUI {#mavgenerate}
 
@@ -52,7 +52,7 @@ Steps for generating the MAVLink library code:
 
 1. Select the target MAVLink protocol version. Ideally use 2.0 if the generator supports it.
     
-    > **Caution** Generation will fail if the protocol is not [supported](../README.md#supported_languages) by the selected programming language.
+    > **Caution** Generation will fail if the protocol is not [supported](../index.md#supported_languages) by the selected programming language.
 
 2. Optionally check *Validate* and/or *Validate Units*, which validates XML specifications.
 

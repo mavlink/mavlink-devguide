@@ -1,6 +1,6 @@
 # MAVLink 2
 
-*MAVLink 2* 是对 MAVLink 协议的一个后兼容更新，目的是使MAVLink 通信有更多的灵活性和安全性。 *MAVLink 2* 是对 MAVLink 协议的一个后兼容更新，目的是使MAVLink 通信有更多的灵活性和安全性。 *MAVLink 2* 为C、C++11 和 Python 开发了绑定(见[支持的语言](../README.md#supported_languages))。
+*MAVLink 2* 是对 MAVLink 协议的一个后兼容更新，目的是使MAVLink 通信有更多的灵活性和安全性。 *MAVLink 2* 是对 MAVLink 协议的一个后兼容更新，目的是使MAVLink 通信有更多的灵活性和安全性。 *MAVLink 2* 为C、C++11 和 Python 开发了绑定(见[支持的语言](../index.md#supported_languages))。
 
 此主题与 MAVLink 2 的主要新功能链接，以及如何使用。
 
@@ -24,4 +24,4 @@
 
 ### C 接口
 
-MAVLink 2 C库向下兼容 MAVLink 1。 MAVLink 2 C库向下兼容 MAVLink 1。 关于如何升级库并与 MAVLink 1 工作的信息载于[使用 C MAVLink 库(mavgen)](../mavgen_c/README.md)。
+MAVLink 2 C库向下兼容 MAVLink 1。 MAVLink 2 C库向下兼容 MAVLink 1。 关于如何升级库并与 MAVLink 1 工作的信息载于[使用 C MAVLink 库(mavgen)](../mavgen_c/index.md)。

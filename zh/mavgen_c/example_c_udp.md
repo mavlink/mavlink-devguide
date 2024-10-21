@@ -14,7 +14,7 @@ The following instructions show how to build and run the example.
    python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=./include/ message_definitions/v1.0/common.xml
    ```
 
-   > **Tip** Alternatively you can clone the [mavlink/mavlink](https://github.com/mavlink/mavlink/) repository and [Download prebuilt headers](../README.md#prebuilt_libraries) to the same location.
+   > **Tip** Alternatively you can clone the [mavlink/mavlink](https://github.com/mavlink/mavlink/) repository and [Download prebuilt headers](../index.md#prebuilt_libraries) to the same location.
 
 <span></span>
 

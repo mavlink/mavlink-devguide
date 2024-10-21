@@ -10,7 +10,7 @@ The following instructions show how to build and run the example.
 
 1. [Install MAVLink](../getting_started/installation.md) and [generate](../getting_started/generate_libraries.md) the MAVLink 1.0 libraries into the **mavlink/include** directory.
     
-    > **Tip** Alternatively you can clone the [mavlink/mavlink](https://github.com/mavlink/mavlink/) repository and [Download prebuilt headers](../README.md#prebuilt_libraries) to the same location. We recommend that you use MAVLink 1.0 headers as some ground control software may not yet support MAVLink 2.0.
+    > **Tip** Alternatively you can clone the [mavlink/mavlink](https://github.com/mavlink/mavlink/) repository and [Download prebuilt headers](../index.md#prebuilt_libraries) to the same location. We recommend that you use MAVLink 1.0 headers as some ground control software may not yet support MAVLink 2.0.
     
     <span></span>
     

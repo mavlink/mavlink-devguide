@@ -84,7 +84,7 @@ Messages are encoded within the MAVLink packet:
 
 - The `msgid` (message id) field identifies the specific message encoded in the packet.
 - The `payload` field contains the message data.
-  - MAVLink [reorders the message fields](#field_reordering) in the payload for over-the-wire transmission (from the order in the original [XML Message Definitions](../messages/README.md)).
+  - MAVLink [reorders the message fields](#field_reordering) in the payload for over-the-wire transmission (from the order in the original [XML Message Definitions](../messages/index.md)).
   - MAVLink 2 [truncates](../guide/mavlink_2.md#packet_truncation) any zero-filled bytes at the end of the payload before the message is sent and sets the packet `len` field appropriately (MAVLink 1 always sends all bytes).
 - The `len` field contains the length of the payload data.
 - A [CRC_EXTRA](#crc_extra) byte is added to the message [checksum](#checksum).
@@ -138,7 +138,7 @@ The actual fields affected/bytes saved depends on the message and its content
 
 The `CRC_EXTRA` CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message.
 
-> **Tip** Changes in [message specifications](../messages/README.md) that might make the over-the-wire format incompatible include: new/removed fields, or changes to field name, data type, order, or array length.
+> **Tip** Changes in [message specifications](../messages/index.md) that might make the over-the-wire format incompatible include: new/removed fields, or changes to field name, data type, order, or array length.
 
 When the MAVLink code generator runs, it takes a checksum of the XML structure for each message and creates an array define `MAVLINK_MESSAGE_CRCS`.
 This is used to initialise the `mavlink_message_crcs[]` array in the C/C++ implementation, and is similarly used in the Python (or any other, such as the C# and JavaScript) implementation.

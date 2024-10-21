@@ -381,7 +381,7 @@ Note:
 
 ## Mission File Formats
 
-The _defacto_ standard file format for exchanging missions/plans is discussed in: [File Formats > Mission Plain-Text File Format](../file_formats/README.md#mission_plain_text_file).
+The _defacto_ standard file format for exchanging missions/plans is discussed in: [File Formats > Mission Plain-Text File Format](../file_formats/index.md#mission_plain_text_file).
 
 ## Mission Command Detail
 

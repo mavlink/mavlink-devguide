@@ -31,7 +31,7 @@
   <ul>
     <li>The underlying over-the-wire format is rarely updated (we're only up to <em>MAVLink 2</em>, which was introduced in 2017).
     </li>
-    <li>New <a href="../messages/common.md">messages</a>/<a href="../services/README.md">microservices</a> are frequently added. This is a backwards compatible change, and users are expected to regularly update their libraries to support new messages.</li>
+    <li>New <a href="../messages/common.md">messages</a>/<a href="../services/index.md">microservices</a> are frequently added. This is a backwards compatible change, and users are expected to regularly update their libraries to support new messages.</li>
     <li>Messages are rarely modified (or removed) such that they would become incompatible. If this is needed the project will update the MAVLink minor version number and notify users through the <a href="https://groups.google.com/forum/#!forum/mavlink">mailing list</a> (users can also query the version in code).</li>
   </ul>
   </dd>
@@ -42,7 +42,7 @@
 
 <dl>
   <dt>MAVLINK를 소스 코드를 공개하지 않는 어플리케이션에서 저작권 문제 없이 사용할 수 있나요?</dt>
-  <dd>어떠한 제한 없이 MAVLINK를 사용할 수 있습니다. 생성된 MAVLINK 라이브러리 헤더는 *MIT 라이센스*(자세한 정보는 <a href="../README.md#license">Introduction > License</a>를 참조하세요.)하에 사용할 수 있도록 만들어졌습니다.
+  <dd>어떠한 제한 없이 MAVLINK를 사용할 수 있습니다. 생성된 MAVLINK 라이브러리 헤더는 *MIT 라이센스*(자세한 정보는 <a href="../index.md#license">Introduction > License</a>를 참조하세요.)하에 사용할 수 있도록 만들어졌습니다.
   </dd>
 
   <dt>MAVLink는 어떻게 메시지를 감지하고 바이트 스트림으로 디코딩하나요?</dt>
@@ -64,7 +64,7 @@
 
   <dt>디코딩/인코딩 루틴이나 다른 요소들을 개선하는데 도움을 주고 싶습니다. MAVLink가 바뀔 수도 있나요?</dt>
   <dd>매우 엄밀한 안전 테스트를 거치는 경우에 그럴 수 있습니다. 
-  MAVLink는 많은 autopilot 시스템에서 중요한 안전 요소로 사용되기 때문에 다년간의 시험을 거칩니다. MAVLink <a href="../README.md#support">지원 채널</a>에 새 기능을 제안해주세요.</dd>
+  MAVLink는 많은 autopilot 시스템에서 중요한 안전 요소로 사용되기 때문에 다년간의 시험을 거칩니다. MAVLink <a href="../index.md#support">지원 채널</a>에 새 기능을 제안해주세요.</dd>
 
   <dt>How can I further reduce the generated C library size?</dt>
   <dd>On extremely resource-constrained systems you may be able to reduce the size of the generated library by setting <code>MAVLINK_COMM_NUM_BUFFERS=1</code> and <code>MAVLINK_MAX_PAYLOAD_LEN</code>="size of your largest buffer" (assuming only one comm link and that your payload is less than the maximum supported by MAVLink).

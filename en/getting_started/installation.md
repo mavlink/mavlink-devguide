@@ -1,9 +1,9 @@
 # Installing MAVLink Toolchain
 
-This topic explains how to install the [MAVLink toolchain](https://github.com/mavlink/mavlink). The toolchain includes the [XML message definitions](../messages/README.md) as well as the the GUI/command line tools that use the definitions to [Generate MAVLink Source Files](../getting_started/generate_libraries.md).
+This topic explains how to install the [MAVLink toolchain](https://github.com/mavlink/mavlink). The toolchain includes the [XML message definitions](../messages/index.md) as well as the the GUI/command line tools that use the definitions to [Generate MAVLink Source Files](../getting_started/generate_libraries.md).
 
-> **Tip** You do not need to install or generate the source files if you are using the C programming language and a standard [dialect](../messages/README.md#dialects).
-> Just get the [prebuilt libraries](../README.md#prebuilt_libraries) and then jump to [Using C Libraries](../mavgen_c/README.md).
+> **Tip** You do not need to install or generate the source files if you are using the C programming language and a standard [dialect](../messages/index.md#dialects).
+> Just get the [prebuilt libraries](../index.md#prebuilt_libraries) and then jump to [Using C Libraries](../mavgen_c/index.md).
 
 ## Prerequisites
 

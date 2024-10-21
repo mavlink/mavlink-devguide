@@ -6,7 +6,7 @@
 
 - [MAVLink 版本](../guide/mavlink_version.md)
 - [MAVLink 2](../guide/mavlink_2.md)
-- [微服务器](../services/README.md) (子协议)
+- [微服务器](../services/index.md) (子协议)
 - [消息签名](../guide/message_signing.md)
 - [串行化](../guide/serialization.md)
 - [路由](../guide/routing.md)
@@ -19,4 +19,4 @@
 - [MAVLink XML Schema](../guide/xml_schema.md)
 - [Defining XML Enums/Messages](../guide/define_xml_element.md)
 - [MAVLink CRCs](../guide/crc.md)
-- [Dialects](../messages/README.md)
+- [Dialects](../messages/index.md)

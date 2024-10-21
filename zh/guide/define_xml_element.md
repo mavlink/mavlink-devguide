@@ -1,6 +1,6 @@
 # 如何定义 MAVLink 消息（Messages）& 枚举（Enums）
 
-MAVLink 枚举、消息、命令和其他元素是 [defined within xml 文件 ](../messages/README.md) 中，然后使用 *code generator * 转换为 [已支持编程语言 ](../README.md#supported_languages) 的库。
+MAVLink 枚举、消息、命令和其他元素是 [defined within xml 文件 ](../messages/index.md) 中，然后使用 *code generator * 转换为 [已支持编程语言 ](../index.md#supported_languages) 的库。
 
 本主题为定义和扩展 MAVLink XML 元素，包括约定和最佳实践，提供了实用指南。
 
@@ -8,7 +8,7 @@ MAVLink 枚举、消息、命令和其他元素是 [defined within xml 文件 ](
 
 <span></span>
 
-> **Tip** 在提交对 [dialect xml fille](../messages/README.md) 进行更改的请求之前, 应首先 [regenerate the dialect library](../getting_started/generate_libraries.md) *with validation enabled*), 然后运行 [./scripts/format_xml.sh](https://github.com/mavlink/mavlink/blob/master/scripts/format_xml.sh) 脚本。
+> **Tip** 在提交对 [dialect xml fille](../messages/index.md) 进行更改的请求之前, 应首先 [regenerate the dialect library](../getting_started/generate_libraries.md) *with validation enabled*), 然后运行 [./scripts/format_xml.sh](https://github.com/mavlink/mavlink/blob/master/scripts/format_xml.sh) 脚本。
 
 ## 消息与命令
 
