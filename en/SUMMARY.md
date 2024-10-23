@@ -81,6 +81,6 @@
   * [Traffic Management (UTM/ADS-B)](services/traffic_management.md)
   * [Events Interface (WIP)](services/events.md)
   * [Time Synchronization](services/timesync.md)
-  * [Multi GCS Control Protocol](services/multi_gcs.md)
+  * [Multi GCS Control Protocol (WIP)](services/multi_gcs.md)
 * [Contributing](contributing/contributing.md)
 * [Support](about/support.md)
