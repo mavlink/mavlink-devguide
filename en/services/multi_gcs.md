@@ -1,6 +1,6 @@
 # Multi GCS protocol
 ## Introduction
-A controlled vehicle should only accept MAVLink commands (or command-like messages) that are sent by the controlling GCS, or from other components with the same system id. Commands from other system should be rejected with MAV_RESULT_PERMISSION_DENIED (except for this command, which may be acknowledged with MAV_RESULT_ACCEPTED if control is granted).
+A controlled vehicle should only accept MAVLink commands (or command-like messages) that are sent by the controlling GCS, or from other components with the same system id. Commands from other system should be rejected with [MAV_RESULT_PERMISSION_DENIED](../messages/common.md#MAV_RESULT_PERMISSION_DENIED) (except for this command, which may be acknowledged with [MAV_RESULT_ACCEPTED](../messages/common.md#MAV_RESULT_ACCEPTED) if control is granted).
 
 The command is sent by a GCS to the autopilot component to request or release control of a system, specifying whether subsequent takeover requests from another GCS are automatically granted, or require permission.
 The autopilot should grant control to the GCS if the system does not require takeover permission (or is uncontrolled) and ACK the request with MAV_RESULT_ACCEPTED.
