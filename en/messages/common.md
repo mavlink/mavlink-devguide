@@ -37,7 +37,7 @@ span.warning {
 Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 222 | 2
-[Enums](#enumerated-types) | 136 | 6
+[Enums](#enumerated-types) | 137 | 6
 [Commands](#mav_commands) | 164 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -5199,12 +5199,22 @@ Value | Name | Description
 
 ### RC_TYPE {#RC_TYPE}
 
-RC type
+RC type. Used in [MAV_CMD_START_RX_PAIR](#MAV_CMD_START_RX_PAIR).
 
 Value | Name | Description
 --- | --- | ---
-<a id='RC_TYPE_SPEKTRUM_DSM2'></a>0 | [RC_TYPE_SPEKTRUM_DSM2](#RC_TYPE_SPEKTRUM_DSM2) | Spektrum DSM2 
-<a id='RC_TYPE_SPEKTRUM_DSMX'></a>1 | [RC_TYPE_SPEKTRUM_DSMX](#RC_TYPE_SPEKTRUM_DSMX) | Spektrum DSMX 
+<a id='RC_TYPE_SPEKTRUM'></a>0 | [RC_TYPE_SPEKTRUM](#RC_TYPE_SPEKTRUM) | Spektrum 
+<a id='RC_TYPE_CRSF'></a>1 | [RC_TYPE_CRSF](#RC_TYPE_CRSF) | CRSF 
+
+### RC_SUB_TYPE {#RC_SUB_TYPE}
+
+RC sub-type of types defined in [RC_TYPE](#RC_TYPE). Used in [MAV_CMD_START_RX_PAIR](#MAV_CMD_START_RX_PAIR). Ignored if value does not correspond to the set [RC_TYPE](#RC_TYPE).
+
+Value | Name | Description
+--- | --- | ---
+<a id='RC_SUB_TYPE_SPEKTRUM_DSM2'></a>0 | [RC_SUB_TYPE_SPEKTRUM_DSM2](#RC_SUB_TYPE_SPEKTRUM_DSM2) | Spektrum DSM2 
+<a id='RC_SUB_TYPE_SPEKTRUM_DSMX'></a>1 | [RC_SUB_TYPE_SPEKTRUM_DSMX](#RC_SUB_TYPE_SPEKTRUM_DSMX) | Spektrum DSMX 
+<a id='RC_SUB_TYPE_SPEKTRUM_DSMX8'></a>2 | [RC_SUB_TYPE_SPEKTRUM_DSMX8](#RC_SUB_TYPE_SPEKTRUM_DSMX8) | Spektrum DSMX8 
 
 ### POSITION_TARGET_TYPEMASK {#POSITION_TARGET_TYPEMASK}
 
@@ -7556,8 +7566,8 @@ Starts receiver pairing.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Spektrum) | 0:Spektrum. |   
-2 (RC Type) | RC type. | [RC_TYPE](#RC_TYPE) 
+1 (RC Type) | RC type. | [RC_TYPE](#RC_TYPE) 
+2 (RC Sub Type) | RC sub type. | [RC_SUB_TYPE](#RC_SUB_TYPE) 
 
 
 ### MAV_CMD_GET_MESSAGE_INTERVAL (510) — [DEP] {#MAV_CMD_GET_MESSAGE_INTERVAL}
