@@ -34,7 +34,7 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 222     | 2        |
-| [Enums](#enumerated-types) | 136     | 6        |
+| [Enums](#enumerated-types) | 137     | 6        |
 | [Commands](#mav_commands)  | 164     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -4945,12 +4945,22 @@ Camera Modes.
 
 ### RC_TYPE {#RC_TYPE}
 
-RC type
+RC type. Used in [MAV_CMD_START_RX_PAIR](#MAV_CMD_START_RX_PAIR).
 
-| Value                        | Name                                              | Description   |
-| ---------------------------- | ------------------------------------------------- | ------------- |
-| <a id='RC_TYPE_SPEKTRUM_DSM2'></a>0 | [RC_TYPE_SPEKTRUM_DSM2](#RC_TYPE_SPEKTRUM_DSM2) | Spektrum DSM2 |
-| <a id='RC_TYPE_SPEKTRUM_DSMX'></a>1 | [RC_TYPE_SPEKTRUM_DSMX](#RC_TYPE_SPEKTRUM_DSMX) | Spektrum DSMX |
+| Value                        | Name                                    | Description |
+| ---------------------------- | --------------------------------------- | ----------- |
+| <a id='RC_TYPE_SPEKTRUM'></a>0 | [RC_TYPE_SPEKTRUM](#RC_TYPE_SPEKTRUM) | Spektrum    |
+| <a id='RC_TYPE_CRSF'></a>1 | [RC_TYPE_CRSF](#RC_TYPE_CRSF)         | CRSF        |
+
+### RC_SUB_TYPE {#RC_SUB_TYPE}
+
+RC sub-type of types defined in [RC_TYPE](#RC_TYPE). Used in [MAV_CMD_START_RX_PAIR](#MAV_CMD_START_RX_PAIR). Ignored if value does not correspond to the set [RC_TYPE](#RC_TYPE).
+
+| Value                        | Name                                                          | Description    |
+| ---------------------------- | ------------------------------------------------------------- | -------------- |
+| <a id='RC_SUB_TYPE_SPEKTRUM_DSM2'></a>0 | [RC_SUB_TYPE_SPEKTRUM_DSM2](#RC_SUB_TYPE_SPEKTRUM_DSM2)   | Spektrum DSM2  |
+| <a id='RC_SUB_TYPE_SPEKTRUM_DSMX'></a>1 | [RC_SUB_TYPE_SPEKTRUM_DSMX](#RC_SUB_TYPE_SPEKTRUM_DSMX)   | Spektrum DSMX  |
+| <a id='RC_SUB_TYPE_SPEKTRUM_DSMX8'></a>2 | [RC_SUB_TYPE_SPEKTRUM_DSMX8](#RC_SUB_TYPE_SPEKTRUM_DSMX8) | Spektrum DSMX8 |
 
 ### POSITION_TARGET_TYPEMASK {#POSITION_TARGET_TYPEMASK}
 
@@ -5123,18 +5133,18 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_STATUS {#MAV_ODID_STATUS}
 
-| Value                        | Name                                                                                        | Description                                                |
-| ---------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| <a id='MAV_ODID_STATUS_UNDECLARED'></a>0 | [MAV_ODID_STATUS_UNDECLARED](#MAV_ODID_STATUS_UNDECLARED)                                 | The status of the (UA) Unmanned Aircraft is undefined.     |
-| <a id='MAV_ODID_STATUS_GROUND'></a>1 | [MAV_ODID_STATUS_GROUND](#MAV_ODID_STATUS_GROUND)                                         | The UA is on the ground.                                   |
-| <a id='MAV_ODID_STATUS_AIRBORNE'></a>2 | [MAV_ODID_STATUS_AIRBORNE](#MAV_ODID_STATUS_AIRBORNE)                                     | The UA is in the air.                                      |
-| <a id='MAV_ODID_STATUS_EMERGENCY'></a>3 | [MAV_ODID_STATUS_EMERGENCY](#MAV_ODID_STATUS_EMERGENCY)                                   | The UA is having an emergency.                             |
+| Value                         | Name                                                                                        | Description                                                |
+| ----------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| <a id='MAV_ODID_STATUS_UNDECLARED'></a>0  | [MAV_ODID_STATUS_UNDECLARED](#MAV_ODID_STATUS_UNDECLARED)                                 | The status of the (UA) Unmanned Aircraft is undefined.     |
+| <a id='MAV_ODID_STATUS_GROUND'></a>1  | [MAV_ODID_STATUS_GROUND](#MAV_ODID_STATUS_GROUND)                                         | The UA is on the ground.                                   |
+| <a id='MAV_ODID_STATUS_AIRBORNE'></a>2  | [MAV_ODID_STATUS_AIRBORNE](#MAV_ODID_STATUS_AIRBORNE)                                     | The UA is in the air.                                      |
+| <a id='MAV_ODID_STATUS_EMERGENCY'></a>3  | [MAV_ODID_STATUS_EMERGENCY](#MAV_ODID_STATUS_EMERGENCY)                                   | The UA is having an emergency.                             |
 | <a id='MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE'></a>4 | [MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE](#MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE) | The remote ID system is failing or unreliable in some way. |
 
 ### MAV_ODID_HEIGHT_REF {#MAV_ODID_HEIGHT_REF}
 
-| Value                        | Name                                                                      | Description                                            |
-| ---------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------ |
+| Value                         | Name                                                                      | Description                                            |
+| ----------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------ |
 | <a id='MAV_ODID_HEIGHT_REF_OVER_TAKEOFF'></a>0 | [MAV_ODID_HEIGHT_REF_OVER_TAKEOFF](#MAV_ODID_HEIGHT_REF_OVER_TAKEOFF) | The height field is relative to the take-off location. |
 | <a id='MAV_ODID_HEIGHT_REF_OVER_GROUND'></a>1 | [MAV_ODID_HEIGHT_REF_OVER_GROUND](#MAV_ODID_HEIGHT_REF_OVER_GROUND)   | The height field is relative to ground.                |
 
@@ -7182,10 +7192,10 @@ Inject artificial failure for testing purposes. Note that autopilots should impl
 
 Starts receiver pairing.
 
-| Param (Label) | Description | Values              |
-| ------------- | ----------- | ------------------- |
-| 1 (Spektrum)  | 0:Spektrum. |                     |
-| 2 (RC Type)   | RC type.    | [RC_TYPE](#RC_TYPE) |
+| Param (Label)   | Description  | Values                        |
+| --------------- | ------------ | ----------------------------- |
+| 1 (RC Type)     | RC type.     | [RC_TYPE](#RC_TYPE)           |
+| 2 (RC Sub Type) | RC sub type. | [RC_SUB_TYPE](#RC_SUB_TYPE) |
 
 ### MAV_CMD_GET_MESSAGE_INTERVAL (510) — [DEP] {#MAV_CMD_GET_MESSAGE_INTERVAL}
 
