@@ -57,9 +57,9 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 0 | 363
-[Enums](#enumerated-types) | 0 | 234
-[Commands](#mav_commands) | 217 | 0
+[Messages](#messages) | 0 | 364
+[Enums](#enumerated-types) | 0 | 235
+[Commands](#mav_commands) | 218 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -628,6 +628,8 @@ The following sections list all entities in the dialect (both included and defin
 ### TARGET_ABSOLUTE (510) — \[from: [development](../messages/development.md#TARGET_ABSOLUTE)\] [WIP] {#TARGET_ABSOLUTE}
 
 ### TARGET_RELATIVE (511) — \[from: [development](../messages/development.md#TARGET_RELATIVE)\] [WIP] {#TARGET_RELATIVE}
+
+### CONTROL_STATUS (512) — \[from: [development](../messages/development.md#CONTROL_STATUS)\] [WIP] {#CONTROL_STATUS}
 
 ### SENS_POWER (8002) — \[from: [ASLUAV](../messages/ASLUAV.md#SENS_POWER)\] {#SENS_POWER}
 
@@ -1215,6 +1217,8 @@ The following sections list all entities in the dialect (both included and defin
 
 ### MAV_BATTERY_STATUS_FLAGS — \[from: [development](../messages/development.md#MAV_BATTERY_STATUS_FLAGS)\] [WIP] {#MAV_BATTERY_STATUS_FLAGS}
 
+### GCS_CONTROL_STATUS_FLAGS — \[from: [development](../messages/development.md#GCS_CONTROL_STATUS_FLAGS)\] [WIP] {#GCS_CONTROL_STATUS_FLAGS}
+
 ### TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS — \[from: [development](../messages/development.md#TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS)\] [WIP] {#TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS}
 
 ### TARGET_OBS_FRAME — \[from: [development](../messages/development.md#TARGET_OBS_FRAME)\] [WIP] {#TARGET_OBS_FRAME}
@@ -1676,6 +1680,8 @@ The following sections list all entities in the dialect (both included and defin
 ### MAV_CMD_EXTERNAL_POSITION_ESTIMATE (43003) — \[from: [common](../messages/common.md#MAV_CMD_EXTERNAL_POSITION_ESTIMATE)\] {#MAV_CMD_EXTERNAL_POSITION_ESTIMATE}
 
 ### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — \[from: [development](../messages/development.md#MAV_CMD_EXTERNAL_WIND_ESTIMATE)\] [WIP] {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
+
+### MAV_CMD_REQUEST_OPERATOR_CONTROL (43005) — \[from: [development](../messages/development.md#MAV_CMD_REQUEST_OPERATOR_CONTROL)\] [WIP] {#MAV_CMD_REQUEST_OPERATOR_CONTROL}
 
 ### MAV_CMD_STORM32_DO_GIMBAL_MANAGER_CONTROL_PITCHYAW (60002) — \[from: [storm32](../messages/storm32.md#MAV_CMD_STORM32_DO_GIMBAL_MANAGER_CONTROL_PITCHYAW)\] {#MAV_CMD_STORM32_DO_GIMBAL_MANAGER_CONTROL_PITCHYAW}
 

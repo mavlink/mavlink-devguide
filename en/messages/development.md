@@ -35,9 +35,9 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 17 | 224
-[Enums](#enumerated-types) | 16 | 142
-[Commands](#mav_commands) | 174 | 0
+[Messages](#messages) | 18 | 224
+[Enums](#enumerated-types) | 17 | 142
+[Commands](#mav_commands) | 175 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -788,6 +788,18 @@ q_sensor | `float[4]` | | | Quaternion of the sensor's orientation from [TARGET_
 type | `uint8_t` | | [LANDING_TARGET_TYPE](#LANDING_TARGET_TYPE) | Type of target 
 
 
+### CONTROL_STATUS (512) — [WIP] {#CONTROL_STATUS}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Information about GCS in control of this MAV. This should be broadcast at low rate (nominally 1 Hz) and emitted when ownership or takeover status change. Control over MAV is requested using [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL).
+
+Field Name | Type | Values | Description
+--- | --- | --- | ---
+sysid_in_control | `uint8_t` | | System ID of GCS MAVLink component in control (0: no GCS in control). 
+flags | `uint8_t` | [GCS_CONTROL_STATUS_FLAGS](#GCS_CONTROL_STATUS_FLAGS) | Control status. For example, whether takeover is allowed, and whether this message instance defines the default controlling GCS for the whole system. 
+
+
 ### WHEEL_DISTANCE (9000) — \[from: [common](../messages/common.md#WHEEL_DISTANCE)\] {#WHEEL_DISTANCE}
 
 ### WINCH_STATUS (9005) — \[from: [common](../messages/common.md#WINCH_STATUS)\] {#WINCH_STATUS}
@@ -924,6 +936,17 @@ Value | Name | Description
 <a id='MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION'></a>131072 | [MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION](#MAV_BATTERY_STATUS_FLAGS_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION) | Battery is not compatible due to cell configuration (e.g. 5s1p when vehicle requires 6s). 
 <a id='MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL'></a>262144 | [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL) | Battery capacity_consumed and capacity_remaining values are relative to a full battery (they sum to the total capacity of the battery).<br>This flag would be set for a smart battery that can accurately determine its remaining charge across vehicle reboots and discharge/recharge cycles.<br>If unset the capacity_consumed indicates the consumption since vehicle power-on, as measured using a power monitor. The capacity_remaining, if provided, indicates the estimated remaining capacity on the assumption that the battery was full on vehicle boot.<br>If unset a GCS is recommended to advise that users fully charge the battery on power on. 
 <a id='MAV_BATTERY_STATUS_FLAGS_EXTENDED'></a>4294967295 | [MAV_BATTERY_STATUS_FLAGS_EXTENDED](#MAV_BATTERY_STATUS_FLAGS_EXTENDED) | Reserved (not used). If set, this will indicate that an additional status field exists for higher status values. 
+
+### GCS_CONTROL_STATUS_FLAGS — [WIP] {#GCS_CONTROL_STATUS_FLAGS}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+(Bitmask) [CONTROL_STATUS](#CONTROL_STATUS) flags.
+
+Value | Name | Description
+--- | --- | ---
+<a id='GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER'></a>1 | [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER) | If set, this [CONTROL_STATUS](#CONTROL_STATUS) publishes the controlling GCS for the whole system. If unset, the [CONTROL_STATUS](#CONTROL_STATUS) indicates the controlling GCS for just the component emitting the message. Note that to request control of the system a GCS should send [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) to the component emitting [CONTROL_STATUS](#CONTROL_STATUS) with this flag set. 
+<a id='GCS_CONTROL_STATUS_FLAGS_TAKEOVER_ALLOWED'></a>2 | [GCS_CONTROL_STATUS_FLAGS_TAKEOVER_ALLOWED](#GCS_CONTROL_STATUS_FLAGS_TAKEOVER_ALLOWED) | Takeover allowed (requests for control will be granted). If not set requests for control will be rejected, but the controlling GCS will be notified (and may release control or allow takeover). 
 
 ### TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS — [WIP] {#TARGET_ABSOLUTE_SENSOR_CAPABILITY_FLAGS}
 
@@ -1835,5 +1858,50 @@ Param (Label) | Description | Values | Units
 5 | Empty |   |   
 6 | Empty |   |   
 7 | Empty |   |   
+
+
+### MAV_CMD_REQUEST_OPERATOR_CONTROL (43005) — [WIP] {#MAV_CMD_REQUEST_OPERATOR_CONTROL}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Request GCS control of a system (or of a specific component in a system).
+
+
+A controlled system should only accept MAVLink commands and command-like messages that are sent by its controlling GCS, or from other components with the same system id.
+Commands from other systems should be rejected with [MAV_RESULT_PERMISSION_DENIED](#MAV_RESULT_PERMISSION_DENIED) (except for this command, which may be acknowledged with [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED) if control is granted).
+Command-like messages should be ignored (or rejected if that is supported by their associated protocol).
+
+GCS control of the whole system is managed via a single component that we will refer to here as the "system manager component".
+This component streams the [CONTROL_STATUS](#CONTROL_STATUS) message and sets the [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER) flag.
+Other components in the system should monitor for the [CONTROL_STATUS](#CONTROL_STATUS) message with this flag, and set their controlling GCS to match its published system id.
+A GCS that wants to control the system should also monitor for the same message and flag, and address the [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) to its component id.
+Note that integrators are required to ensure that there is only one system manager component in the system (i.e. one component emitting the message with [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER) set).
+
+The [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) command is sent by a GCS to the system manager component to request or release control of a system, specifying whether subsequent takeover requests from another GCS are automatically granted, or require permission.
+
+The system manager component should grant control to the GCS if the system does not require takeover permission (or is uncontrolled) and ACK the request with [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED).
+The system manager component should then stream [CONTROL_STATUS](#CONTROL_STATUS) indicating its controlling system: all other components with the same system id should monitor this message and set their own controlling GCS to match that of the system manager component.
+
+If the system manager component cannot grant control (because takeover requires permission), the request should be rejected with [MAV_RESULT_PERMISSION_DENIED](#MAV_RESULT_PERMISSION_DENIED).
+The system manager component should then send this same command to the current owning GCS in order to notify of the request.
+The owning GCS would ACK with [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED), and might choose to release control of the vehicle, or re-request control with the takeover bit set to allow permission.
+Note that the pilots of both GCS should co-ordinate safe handover offline.
+
+Note that in most systems the only controlled component will be the "system manager component", and that will be the autopilot.
+However separate GCS control of a particular component is also permitted, if supported by the component.
+In this case the GCS will address [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) to the specific component it wants to control.
+The component will then stream [CONTROL_STATUS](#CONTROL_STATUS) for its controlling GCS (it must not set [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER)).
+The component should fall back to the system GCS (if any) when it is not directly controlled, and may stop emitting [CONTROL_STATUS](#CONTROL_STATUS).
+The flow is otherwise the same as for requesting control over the whole system.
+
+Param (Label) | Description
+--- | ---
+1 (Sysid requesting control) | System ID of GCS requesting control. 0 when command sent from GCS to autopilot (autopilot determines requesting GCS sysid from message header). Sysid of GCS requesting control when command sent by autopilot to controlling GCS. 
+2 (Action) | 0: Release control, 1: Request control. 
+3 (Allow takeover) | Enable automatic granting of ownership on request (by default reject request and notify current owner). 0: Ask current owner and reject request, 1: Allow automatic takeover. 
+4 | Empty 
+5 | Empty 
+6 | Empty 
+7 | Empty 
 
 
