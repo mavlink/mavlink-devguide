@@ -40,6 +40,6 @@ The main microservices are shown in the sidebar (most are listed below):
 - [Payload Protocol](../services/payload.md)
 - [Traffic Management (UTM/ADS-B)](../services/traffic_management.md)
 - [Events Interface (WIP)](../services/events.md)
-- [Standard Flight Modes](../services/standard_modes.md)
+- [Standard Flight Modes (WIP)](../services/standard_modes.md)
 - [Time Synchronization](../services/timesync.md)
 - [Illuminator Protocol](../services/illuminator.md)
