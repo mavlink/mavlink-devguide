@@ -34,7 +34,7 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 222     | 2        |
-| [Enums](#enumerated-types) | 136     | 6        |
+| [Enums](#enumerated-types) | 137     | 6        |
 | [Commands](#mav_commands)  | 164     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -4247,18 +4247,19 @@ Specifies the datatype of a MAVLink extended parameter.
 
 Result from a MAVLink command ([MAV_CMD](#mav_commands))
 
-| Value                        | Name                                                                                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| ---------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id='MAV_RESULT_ACCEPTED'></a>0 | [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED)                                             | Command is valid (is supported and has valid parameters), and was executed.                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| <a id='MAV_RESULT_TEMPORARILY_REJECTED'></a>1 | [MAV_RESULT_TEMPORARILY_REJECTED](#MAV_RESULT_TEMPORARILY_REJECTED)                     | Command is valid, but cannot be executed at this time. This is used to indicate a problem that should be fixed just by waiting (e.g. a state machine is busy, can't arm because have not got GPS lock, etc.). Retrying later should work.                                                                                                                                                                                                                                                    |
-| <a id='MAV_RESULT_DENIED'></a>2 | [MAV_RESULT_DENIED](#MAV_RESULT_DENIED)                                                 | Command is invalid (is supported but has invalid parameters). Retrying same command and parameters will not work.                                                                                                                                                                                                                                                                                                                                                                            |
-| <a id='MAV_RESULT_UNSUPPORTED'></a>3 | [MAV_RESULT_UNSUPPORTED](#MAV_RESULT_UNSUPPORTED)                                       | Command is not supported (unknown).                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| <a id='MAV_RESULT_FAILED'></a>4 | [MAV_RESULT_FAILED](#MAV_RESULT_FAILED)                                                 | Command is valid, but execution has failed. This is used to indicate any non-temporary or unexpected problem, i.e. any problem that must be fixed before the command can succeed/be retried. For example, attempting to write a file when out of memory, attempting to arm when sensors are not calibrated, etc.                                                                                                                                                                             |
-| <a id='MAV_RESULT_IN_PROGRESS'></a>5 | [MAV_RESULT_IN_PROGRESS](#MAV_RESULT_IN_PROGRESS)                                       | Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further [COMMAND_ACK](#COMMAND_ACK) messages with result [MAV_RESULT_IN_PROGRESS](#MAV_RESULT_IN_PROGRESS) (at a rate decided by the implementation), and must terminate by sending a [COMMAND_ACK](#COMMAND_ACK) message with final result of the operation. The [COMMAND_ACK](#COMMAND_ACK).progress field can be used to indicate the progress of the operation. |
-| <a id='MAV_RESULT_CANCELLED'></a>6 | [MAV_RESULT_CANCELLED](#MAV_RESULT_CANCELLED)                                           | Command has been cancelled (as a result of receiving a [COMMAND_CANCEL](#COMMAND_CANCEL) message).                                                                                                                                                                                                                                                                                                                                                                                           |
-| <a id='MAV_RESULT_COMMAND_LONG_ONLY'></a>7 | [MAV_RESULT_COMMAND_LONG_ONLY](#MAV_RESULT_COMMAND_LONG_ONLY)                         | Command is only accepted when sent as a [COMMAND_LONG](#COMMAND_LONG).                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| <a id='MAV_RESULT_COMMAND_INT_ONLY'></a>8 | [MAV_RESULT_COMMAND_INT_ONLY](#MAV_RESULT_COMMAND_INT_ONLY)                           | Command is only accepted when sent as a [COMMAND_INT](#COMMAND_INT).                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| <a id='MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME'></a>9 | [MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME](#MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME) | Command is invalid because a frame is required and the specified frame is not supported.                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Value                         | Name                                                                                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ----------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='MAV_RESULT_ACCEPTED'></a>0  | [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED)                                             | Command is valid (is supported and has valid parameters), and was executed.                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| <a id='MAV_RESULT_TEMPORARILY_REJECTED'></a>1  | [MAV_RESULT_TEMPORARILY_REJECTED](#MAV_RESULT_TEMPORARILY_REJECTED)                     | Command is valid, but cannot be executed at this time. This is used to indicate a problem that should be fixed just by waiting (e.g. a state machine is busy, can't arm because have not got GPS lock, etc.). Retrying later should work.                                                                                                                                                                                                                                                    |
+| <a id='MAV_RESULT_DENIED'></a>2  | [MAV_RESULT_DENIED](#MAV_RESULT_DENIED)                                                 | Command is invalid (is supported but has invalid parameters). Retrying same command and parameters will not work.                                                                                                                                                                                                                                                                                                                                                                            |
+| <a id='MAV_RESULT_UNSUPPORTED'></a>3  | [MAV_RESULT_UNSUPPORTED](#MAV_RESULT_UNSUPPORTED)                                       | Command is not supported (unknown).                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| <a id='MAV_RESULT_FAILED'></a>4  | [MAV_RESULT_FAILED](#MAV_RESULT_FAILED)                                                 | Command is valid, but execution has failed. This is used to indicate any non-temporary or unexpected problem, i.e. any problem that must be fixed before the command can succeed/be retried. For example, attempting to write a file when out of memory, attempting to arm when sensors are not calibrated, etc.                                                                                                                                                                             |
+| <a id='MAV_RESULT_IN_PROGRESS'></a>5  | [MAV_RESULT_IN_PROGRESS](#MAV_RESULT_IN_PROGRESS)                                       | Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further [COMMAND_ACK](#COMMAND_ACK) messages with result [MAV_RESULT_IN_PROGRESS](#MAV_RESULT_IN_PROGRESS) (at a rate decided by the implementation), and must terminate by sending a [COMMAND_ACK](#COMMAND_ACK) message with final result of the operation. The [COMMAND_ACK](#COMMAND_ACK).progress field can be used to indicate the progress of the operation. |
+| <a id='MAV_RESULT_CANCELLED'></a>6  | [MAV_RESULT_CANCELLED](#MAV_RESULT_CANCELLED)                                           | Command has been cancelled (as a result of receiving a [COMMAND_CANCEL](#COMMAND_CANCEL) message).                                                                                                                                                                                                                                                                                                                                                                                           |
+| <a id='MAV_RESULT_COMMAND_LONG_ONLY'></a>7  | [MAV_RESULT_COMMAND_LONG_ONLY](#MAV_RESULT_COMMAND_LONG_ONLY)                         | Command is only accepted when sent as a [COMMAND_LONG](#COMMAND_LONG).                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| <a id='MAV_RESULT_COMMAND_INT_ONLY'></a>8  | [MAV_RESULT_COMMAND_INT_ONLY](#MAV_RESULT_COMMAND_INT_ONLY)                           | Command is only accepted when sent as a [COMMAND_INT](#COMMAND_INT).                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| <a id='MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME'></a>9  | [MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME](#MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME) | Command is invalid because a frame is required and the specified frame is not supported.                                                                                                                                                                                                                                                                                                                                                                                                     |
+| <a id='MAV_RESULT_PERMISSION_DENIED'></a>10 | [MAV_RESULT_PERMISSION_DENIED](#MAV_RESULT_PERMISSION_DENIED)                           | Sender is not authorized to control this MAV component. Control may be requested using [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL).                                                                                                                                                                                                                                                                                                                            |
 
 ### MAV_MISSION_RESULT {#MAV_MISSION_RESULT}
 
@@ -4435,6 +4436,7 @@ Note that either this flag or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV
 | <a id='MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST'></a>131072 | [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST)                                 | Parameter protocol uses C-cast of parameter values to set the param_value (float) fields: https://mavlink.io/en/services/parameter.html#parameter-encoding.  
 Note that either this flag or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) should be set if the parameter protocol is supported.     |
 | <a id='MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER'></a>262144 | [MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER](#MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER) | This component implements/is a gimbal manager. This means the [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION), and other messages can be requested.                                                                                                                                                                                           |
+| <a id='MAV_PROTOCOL_CAPABILITY_COMPONENT_ACCEPTS_GCS_CONTROL'></a>524288 | [MAV_PROTOCOL_CAPABILITY_COMPONENT_ACCEPTS_GCS_CONTROL](#MAV_PROTOCOL_CAPABILITY_COMPONENT_ACCEPTS_GCS_CONTROL)             | Component supports locking control to a particular GCS independent of its system (via [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL)).                                                                                                                                                                                         |
 
 ### MAV_MISSION_TYPE {#MAV_MISSION_TYPE}
 
@@ -4943,12 +4945,22 @@ Camera Modes.
 
 ### RC_TYPE {#RC_TYPE}
 
-RC type
+RC type. Used in [MAV_CMD_START_RX_PAIR](#MAV_CMD_START_RX_PAIR).
 
-| Value                        | Name                                              | Description   |
-| ---------------------------- | ------------------------------------------------- | ------------- |
-| <a id='RC_TYPE_SPEKTRUM_DSM2'></a>0 | [RC_TYPE_SPEKTRUM_DSM2](#RC_TYPE_SPEKTRUM_DSM2) | Spektrum DSM2 |
-| <a id='RC_TYPE_SPEKTRUM_DSMX'></a>1 | [RC_TYPE_SPEKTRUM_DSMX](#RC_TYPE_SPEKTRUM_DSMX) | Spektrum DSMX |
+| Value                        | Name                                    | Description |
+| ---------------------------- | --------------------------------------- | ----------- |
+| <a id='RC_TYPE_SPEKTRUM'></a>0 | [RC_TYPE_SPEKTRUM](#RC_TYPE_SPEKTRUM) | Spektrum    |
+| <a id='RC_TYPE_CRSF'></a>1 | [RC_TYPE_CRSF](#RC_TYPE_CRSF)         | CRSF        |
+
+### RC_SUB_TYPE {#RC_SUB_TYPE}
+
+RC sub-type of types defined in [RC_TYPE](#RC_TYPE). Used in [MAV_CMD_START_RX_PAIR](#MAV_CMD_START_RX_PAIR). Ignored if value does not correspond to the set [RC_TYPE](#RC_TYPE).
+
+| Value                        | Name                                                          | Description    |
+| ---------------------------- | ------------------------------------------------------------- | -------------- |
+| <a id='RC_SUB_TYPE_SPEKTRUM_DSM2'></a>0 | [RC_SUB_TYPE_SPEKTRUM_DSM2](#RC_SUB_TYPE_SPEKTRUM_DSM2)   | Spektrum DSM2  |
+| <a id='RC_SUB_TYPE_SPEKTRUM_DSMX'></a>1 | [RC_SUB_TYPE_SPEKTRUM_DSMX](#RC_SUB_TYPE_SPEKTRUM_DSMX)   | Spektrum DSMX  |
+| <a id='RC_SUB_TYPE_SPEKTRUM_DSMX8'></a>2 | [RC_SUB_TYPE_SPEKTRUM_DSMX8](#RC_SUB_TYPE_SPEKTRUM_DSMX8) | Spektrum DSMX8 |
 
 ### POSITION_TARGET_TYPEMASK {#POSITION_TARGET_TYPEMASK}
 
@@ -5121,18 +5133,18 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_STATUS {#MAV_ODID_STATUS}
 
-| Value                        | Name                                                                                        | Description                                                |
-| ---------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| <a id='MAV_ODID_STATUS_UNDECLARED'></a>0 | [MAV_ODID_STATUS_UNDECLARED](#MAV_ODID_STATUS_UNDECLARED)                                 | The status of the (UA) Unmanned Aircraft is undefined.     |
-| <a id='MAV_ODID_STATUS_GROUND'></a>1 | [MAV_ODID_STATUS_GROUND](#MAV_ODID_STATUS_GROUND)                                         | The UA is on the ground.                                   |
-| <a id='MAV_ODID_STATUS_AIRBORNE'></a>2 | [MAV_ODID_STATUS_AIRBORNE](#MAV_ODID_STATUS_AIRBORNE)                                     | The UA is in the air.                                      |
-| <a id='MAV_ODID_STATUS_EMERGENCY'></a>3 | [MAV_ODID_STATUS_EMERGENCY](#MAV_ODID_STATUS_EMERGENCY)                                   | The UA is having an emergency.                             |
+| Value                         | Name                                                                                        | Description                                                |
+| ----------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| <a id='MAV_ODID_STATUS_UNDECLARED'></a>0  | [MAV_ODID_STATUS_UNDECLARED](#MAV_ODID_STATUS_UNDECLARED)                                 | The status of the (UA) Unmanned Aircraft is undefined.     |
+| <a id='MAV_ODID_STATUS_GROUND'></a>1  | [MAV_ODID_STATUS_GROUND](#MAV_ODID_STATUS_GROUND)                                         | The UA is on the ground.                                   |
+| <a id='MAV_ODID_STATUS_AIRBORNE'></a>2  | [MAV_ODID_STATUS_AIRBORNE](#MAV_ODID_STATUS_AIRBORNE)                                     | The UA is in the air.                                      |
+| <a id='MAV_ODID_STATUS_EMERGENCY'></a>3  | [MAV_ODID_STATUS_EMERGENCY](#MAV_ODID_STATUS_EMERGENCY)                                   | The UA is having an emergency.                             |
 | <a id='MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE'></a>4 | [MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE](#MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE) | The remote ID system is failing or unreliable in some way. |
 
 ### MAV_ODID_HEIGHT_REF {#MAV_ODID_HEIGHT_REF}
 
-| Value                        | Name                                                                      | Description                                            |
-| ---------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------ |
+| Value                         | Name                                                                      | Description                                            |
+| ----------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------ |
 | <a id='MAV_ODID_HEIGHT_REF_OVER_TAKEOFF'></a>0 | [MAV_ODID_HEIGHT_REF_OVER_TAKEOFF](#MAV_ODID_HEIGHT_REF_OVER_TAKEOFF) | The height field is relative to the take-off location. |
 | <a id='MAV_ODID_HEIGHT_REF_OVER_GROUND'></a>1 | [MAV_ODID_HEIGHT_REF_OVER_GROUND](#MAV_ODID_HEIGHT_REF_OVER_GROUND)   | The height field is relative to ground.                |
 
@@ -5140,8 +5152,8 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 | Value                          | Name                                                        | Description                                                          |
 | ------------------------------ | ----------------------------------------------------------- | -------------------------------------------------------------------- |
-| <a id='MAV_ODID_HOR_ACC_UNKNOWN'></a>0   | [MAV_ODID_HOR_ACC_UNKNOWN](#MAV_ODID_HOR_ACC_UNKNOWN)   | The horizontal accuracy is unknown.                                  |
-| <a id='MAV_ODID_HOR_ACC_10NM'></a>1   | [MAV_ODID_HOR_ACC_10NM](#MAV_ODID_HOR_ACC_10NM)         | The horizontal accuracy is smaller than 10 Nautical Miles. 18.52 km. |
+| <a id='MAV_ODID_HOR_ACC_UNKNOWN'></a>0  | [MAV_ODID_HOR_ACC_UNKNOWN](#MAV_ODID_HOR_ACC_UNKNOWN)   | The horizontal accuracy is unknown.                                  |
+| <a id='MAV_ODID_HOR_ACC_10NM'></a>1  | [MAV_ODID_HOR_ACC_10NM](#MAV_ODID_HOR_ACC_10NM)         | The horizontal accuracy is smaller than 10 Nautical Miles. 18.52 km. |
 | <a id='MAV_ODID_HOR_ACC_4NM'></a>2  | [MAV_ODID_HOR_ACC_4NM](#MAV_ODID_HOR_ACC_4NM)           | The horizontal accuracy is smaller than 4 Nautical Miles. 7.408 km.  |
 | <a id='MAV_ODID_HOR_ACC_2NM'></a>3  | [MAV_ODID_HOR_ACC_2NM](#MAV_ODID_HOR_ACC_2NM)           | The horizontal accuracy is smaller than 2 Nautical Miles. 3.704 km.  |
 | <a id='MAV_ODID_HOR_ACC_1NM'></a>4  | [MAV_ODID_HOR_ACC_1NM](#MAV_ODID_HOR_ACC_1NM)           | The horizontal accuracy is smaller than 1 Nautical Miles. 1.852 km.  |
@@ -7180,10 +7192,10 @@ Inject artificial failure for testing purposes. Note that autopilots should impl
 
 Starts receiver pairing.
 
-| Param (Label) | Description | Values              |
-| ------------- | ----------- | ------------------- |
-| 1 (Spektrum)  | 0:Spektrum. |                     |
-| 2 (RC Type)   | RC type.    | [RC_TYPE](#RC_TYPE) |
+| Param (Label)   | Description  | Values                        |
+| --------------- | ------------ | ----------------------------- |
+| 1 (RC Type)     | RC type.     | [RC_TYPE](#RC_TYPE)           |
+| 2 (RC Sub Type) | RC sub type. | [RC_SUB_TYPE](#RC_SUB_TYPE) |
 
 ### MAV_CMD_GET_MESSAGE_INTERVAL (510) — [DEP] {#MAV_CMD_GET_MESSAGE_INTERVAL}
 
