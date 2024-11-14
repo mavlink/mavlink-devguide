@@ -36,7 +36,7 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 222 | 2
+[Messages](#messages) | 223 | 2
 [Enums](#enumerated-types) | 137 | 6
 [Commands](#mav_commands) | 164 | 0
 
@@ -3340,7 +3340,34 @@ y | `int32_t` | | | Y coordinate of center point.  Coordinate system depends on 
 z | `float` | m | | Altitude of center point. Coordinate system depends on frame field. 
 
 
-### BATTERY_INFO (370) — [WIP] {#BATTERY_INFO}
+### SMART_BATTERY_INFO (370) — [DEP] {#SMART_BATTERY_INFO}
+
+<span class="warning">**DEPRECATED:** Replaced By [BATTERY_INFO](#BATTERY_INFO) (2024-02) — The [BATTERY_INFO](#BATTERY_INFO) message is better aligned with UAVCAN messages, and in any case is useful even if a battery is not "smart".)</span>
+
+Smart Battery information (static/infrequent update). Use for updates from: smart battery to flight stack, flight stack to GCS. Use [BATTERY_STATUS](#BATTERY_STATUS) for the frequent battery updates.
+
+Field Name | Type | Units | Values | Description
+--- | --- | --- | --- | ---
+id | `uint8_t` | | | Battery ID<br>Messages with same value are from the same source (instance). 
+battery_function | `uint8_t` | | [MAV_BATTERY_FUNCTION](#MAV_BATTERY_FUNCTION) | Function of the battery 
+type | `uint8_t` | | [MAV_BATTERY_TYPE](#MAV_BATTERY_TYPE) | Type (chemistry) of the battery 
+capacity_full_specification | `int32_t` | mAh | invalid:-1 | Capacity when full according to manufacturer, -1: field not provided. 
+capacity_full | `int32_t` | mAh | invalid:-1 | Capacity when full (accounting for battery degradation), -1: field not provided. 
+cycle_count | `uint16_t` | | invalid:UINT16_MAX | Charge/discharge cycle count. UINT16_MAX: field not provided. 
+serial_number | `char[16]` | | invalid:[0] | Serial number in ASCII characters, 0 terminated. All 0: field not provided. 
+device_name | `char[50]` | | invalid:[0] | Static device name in ASCII characters, 0 terminated. All 0: field not provided. Encode as manufacturer name then product name separated using an underscore. 
+weight | `uint16_t` | g | invalid:0 | Battery weight. 0: field not provided. 
+discharge_minimum_voltage | `uint16_t` | mV | invalid:UINT16_MAX | Minimum per-cell voltage when discharging. If not supplied set to UINT16_MAX value. 
+charging_minimum_voltage | `uint16_t` | mV | invalid:UINT16_MAX | Minimum per-cell voltage when charging. If not supplied set to UINT16_MAX value. 
+resting_minimum_voltage | `uint16_t` | mV | invalid:UINT16_MAX | Minimum per-cell voltage when resting. If not supplied set to UINT16_MAX value. 
+<span class='ext'>charging_maximum_voltage</span> <a href='#mav2_extension_field'>++</a> | `uint16_t` | mV | invalid:0 | Maximum per-cell voltage when charged. 0: field not provided. 
+<span class='ext'>cells_in_series</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | invalid:0 | Number of battery cells in series. 0: field not provided. 
+<span class='ext'>discharge_maximum_current</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mA | invalid:0 | Maximum pack discharge current. 0: field not provided. 
+<span class='ext'>discharge_maximum_burst_current</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mA | invalid:0 | Maximum pack discharge burst current. 0: field not provided. 
+<span class='ext'>manufacture_date</span> <a href='#mav2_extension_field'>++</a> | `char[11]` | | invalid:[0] | Manufacture date (DD/MM/YYYY) in ASCII characters, 0 terminated. All 0: field not provided. 
+
+
+### BATTERY_INFO (372) — [WIP] {#BATTERY_INFO}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
