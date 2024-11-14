@@ -32,7 +32,7 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 8       | 305      |
+| [Messages](#messages)      | 8       | 306      |
 | [Enums](#enumerated-types) | 8       | 203      |
 | [Commands](#mav_commands)  | 198     | 0        |
 
