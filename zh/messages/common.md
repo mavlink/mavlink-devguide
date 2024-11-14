@@ -33,7 +33,7 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 222     | 2        |
+| [Messages](#messages)      | 223     | 2        |
 | [Enums](#enumerated-types) | 137     | 6        |
 | [Commands](#mav_commands)  | 164     | 0        |
 
@@ -3120,7 +3120,34 @@ Vehicle status report that is sent out while orbit execution is in progress (see
 | y          | `int32_t`  |       |                         | Y coordinate of center point. Coordinate system depends on frame field: local = x position in meters * 1e4, global = latitude in degrees * 1e7.                                      |
 | z          | `float`    | m     |                         | Altitude of center point. Coordinate system depends on frame field.                                                                                                                    |
 
-### BATTERY_INFO (370) — [WIP] {#BATTERY_INFO}
+### SMART_BATTERY_INFO (370) — [DEP] {#SMART_BATTERY_INFO}
+
+<span class="warning"><strong>DEPRECATED:</strong> Replaced By <a href="#BATTERY_INFO">BATTERY_INFO</a> (2024-02) — The <a href="#BATTERY_INFO">BATTERY_INFO</a> message is better aligned with UAVCAN messages, and in any case is useful even if a battery is not "smart".)</span>
+
+Smart Battery information (static/infrequent update). Use for updates from: smart battery to flight stack, flight stack to GCS. Use [BATTERY_STATUS](#BATTERY_STATUS) for the frequent battery updates.
+
+| Field Name                                              | Type       | Units | Values                                          | Description                                                                                                                                                   |
+| ------------------------------------------------------- | ---------- | ----- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                                                      | `uint8_t`  |       |                                                 | Battery ID  
+Messages with same value are from the same source (instance).                                                                                    |
+| battery_function                                        | `uint8_t`  |       | [MAV_BATTERY_FUNCTION](#MAV_BATTERY_FUNCTION) | Function of the battery                                                                                                                                       |
+| type                                                    | `uint8_t`  |       | [MAV_BATTERY_TYPE](#MAV_BATTERY_TYPE)         | Type (chemistry) of the battery                                                                                                                               |
+| capacity_full_specification                           | `int32_t`  | mAh   | invalid:-1                                      | Capacity when full according to manufacturer, -1: field not provided.                                                                                         |
+| capacity_full                                           | `int32_t`  | mAh   | invalid:-1                                      | Capacity when full (accounting for battery degradation), -1: field not provided.                                                                              |
+| cycle_count                                             | `uint16_t` |       | invalid:UINT16_MAX                              | Charge/discharge cycle count. UINT16_MAX: field not provided.                                                                                                 |
+| serial_number                                           | `char[16]` |       | invalid:[0]                                     | Serial number in ASCII characters, 0 terminated. All 0: field not provided.                                                                                   |
+| device_name                                             | `char[50]` |       | invalid:[0]                                     | Static device name in ASCII characters, 0 terminated. All 0: field not provided. Encode as manufacturer name then product name separated using an underscore. |
+| weight                                                  | `uint16_t` | g     | invalid:0                                       | Battery weight. 0: field not provided.                                                                                                                        |
+| discharge_minimum_voltage                             | `uint16_t` | mV    | invalid:UINT16_MAX                              | Minimum per-cell voltage when discharging. If not supplied set to UINT16_MAX value.                                                                           |
+| charging_minimum_voltage                              | `uint16_t` | mV    | invalid:UINT16_MAX                              | Minimum per-cell voltage when charging. If not supplied set to UINT16_MAX value.                                                                              |
+| resting_minimum_voltage                               | `uint16_t` | mV    | invalid:UINT16_MAX                              | Minimum per-cell voltage when resting. If not supplied set to UINT16_MAX value.                                                                               |
+| <span class='ext'>charging_maximum_voltage</span> [++](#mav2_extension_field) | `uint16_t` | mV    | invalid:0                                       | Maximum per-cell voltage when charged. 0: field not provided.                                                                                                 |
+| <span class='ext'>cells_in_series</span> [++](#mav2_extension_field) | `uint8_t`  |       | invalid:0                                       | Number of battery cells in series. 0: field not provided.                                                                                                     |
+| <span class='ext'>discharge_maximum_current</span> [++](#mav2_extension_field) | `uint32_t` | mA    | invalid:0                                       | Maximum pack discharge current. 0: field not provided.                                                                                                        |
+| <span class='ext'>discharge_maximum_burst_current</span> [++](#mav2_extension_field) | `uint32_t` | mA    | invalid:0                                       | Maximum pack discharge burst current. 0: field not provided.                                                                                                  |
+| <span class='ext'>manufacture_date</span> [++](#mav2_extension_field) | `char[11]` |       | invalid:[0]                                     | Manufacture date (DD/MM/YYYY) in ASCII characters, 0 terminated. All 0: field not provided.                                                                   |
+
+### BATTERY_INFO (372) — [WIP] {#BATTERY_INFO}
 
 <span class="warning"><strong>WORK IN PROGRESS</strong>: Do not use in stable production environments (it may change).</span>
 
@@ -5112,22 +5139,22 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_UA_TYPE {#MAV_ODID_UA_TYPE}
 
-| Value                         | Name                                                                                            | Description                                                                             |
-| ----------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| <a id='MAV_ODID_UA_TYPE_NONE'></a>0  | [MAV_ODID_UA_TYPE_NONE](#MAV_ODID_UA_TYPE_NONE)                                             | No UA (Unmanned Aircraft) type defined.                                                 |
-| <a id='MAV_ODID_UA_TYPE_AEROPLANE'></a>1  | [MAV_ODID_UA_TYPE_AEROPLANE](#MAV_ODID_UA_TYPE_AEROPLANE)                                   | Aeroplane/Airplane. Fixed wing.                                                         |
-| <a id='MAV_ODID_UA_TYPE_HELICOPTER_OR_MULTIROTOR'></a>2  | [MAV_ODID_UA_TYPE_HELICOPTER_OR_MULTIROTOR](#MAV_ODID_UA_TYPE_HELICOPTER_OR_MULTIROTOR)   | Helicopter or multirotor.                                                               |
-| <a id='MAV_ODID_UA_TYPE_GYROPLANE'></a>3  | [MAV_ODID_UA_TYPE_GYROPLANE](#MAV_ODID_UA_TYPE_GYROPLANE)                                   | Gyroplane.                                                                              |
-| <a id='MAV_ODID_UA_TYPE_HYBRID_LIFT'></a>4  | [MAV_ODID_UA_TYPE_HYBRID_LIFT](#MAV_ODID_UA_TYPE_HYBRID_LIFT)                               | VTOL (Vertical Take-Off and Landing). Fixed wing aircraft that can take off vertically. |
-| <a id='MAV_ODID_UA_TYPE_ORNITHOPTER'></a>5  | [MAV_ODID_UA_TYPE_ORNITHOPTER](#MAV_ODID_UA_TYPE_ORNITHOPTER)                               | Ornithopter.                                                                            |
-| <a id='MAV_ODID_UA_TYPE_GLIDER'></a>6  | [MAV_ODID_UA_TYPE_GLIDER](#MAV_ODID_UA_TYPE_GLIDER)                                         | Glider.                                                                                 |
-| <a id='MAV_ODID_UA_TYPE_KITE'></a>7  | [MAV_ODID_UA_TYPE_KITE](#MAV_ODID_UA_TYPE_KITE)                                             | Kite.                                                                                   |
-| <a id='MAV_ODID_UA_TYPE_FREE_BALLOON'></a>8  | [MAV_ODID_UA_TYPE_FREE_BALLOON](#MAV_ODID_UA_TYPE_FREE_BALLOON)                             | Free Balloon.                                                                           |
-| <a id='MAV_ODID_UA_TYPE_CAPTIVE_BALLOON'></a>9  | [MAV_ODID_UA_TYPE_CAPTIVE_BALLOON](#MAV_ODID_UA_TYPE_CAPTIVE_BALLOON)                       | Captive Balloon.                                                                        |
-| <a id='MAV_ODID_UA_TYPE_AIRSHIP'></a>10 | [MAV_ODID_UA_TYPE_AIRSHIP](#MAV_ODID_UA_TYPE_AIRSHIP)                                       | Airship. E.g. a blimp.                                                                  |
-| <a id='MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE'></a>11 | [MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE](#MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE)             | Free Fall/Parachute (unpowered).                                                        |
-| <a id='MAV_ODID_UA_TYPE_ROCKET'></a>12 | [MAV_ODID_UA_TYPE_ROCKET](#MAV_ODID_UA_TYPE_ROCKET)                                         | Rocket.                                                                                 |
-| <a id='MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT'></a>13 | [MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT](#MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT) | Tethered powered aircraft.                                                              |
+| Value                          | Name                                                                                            | Description                                                                             |
+| ------------------------------ | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| <a id='MAV_ODID_UA_TYPE_NONE'></a>0   | [MAV_ODID_UA_TYPE_NONE](#MAV_ODID_UA_TYPE_NONE)                                             | No UA (Unmanned Aircraft) type defined.                                                 |
+| <a id='MAV_ODID_UA_TYPE_AEROPLANE'></a>1   | [MAV_ODID_UA_TYPE_AEROPLANE](#MAV_ODID_UA_TYPE_AEROPLANE)                                   | Aeroplane/Airplane. Fixed wing.                                                         |
+| <a id='MAV_ODID_UA_TYPE_HELICOPTER_OR_MULTIROTOR'></a>2   | [MAV_ODID_UA_TYPE_HELICOPTER_OR_MULTIROTOR](#MAV_ODID_UA_TYPE_HELICOPTER_OR_MULTIROTOR)   | Helicopter or multirotor.                                                               |
+| <a id='MAV_ODID_UA_TYPE_GYROPLANE'></a>3   | [MAV_ODID_UA_TYPE_GYROPLANE](#MAV_ODID_UA_TYPE_GYROPLANE)                                   | Gyroplane.                                                                              |
+| <a id='MAV_ODID_UA_TYPE_HYBRID_LIFT'></a>4   | [MAV_ODID_UA_TYPE_HYBRID_LIFT](#MAV_ODID_UA_TYPE_HYBRID_LIFT)                               | VTOL (Vertical Take-Off and Landing). Fixed wing aircraft that can take off vertically. |
+| <a id='MAV_ODID_UA_TYPE_ORNITHOPTER'></a>5   | [MAV_ODID_UA_TYPE_ORNITHOPTER](#MAV_ODID_UA_TYPE_ORNITHOPTER)                               | Ornithopter.                                                                            |
+| <a id='MAV_ODID_UA_TYPE_GLIDER'></a>6   | [MAV_ODID_UA_TYPE_GLIDER](#MAV_ODID_UA_TYPE_GLIDER)                                         | Glider.                                                                                 |
+| <a id='MAV_ODID_UA_TYPE_KITE'></a>7   | [MAV_ODID_UA_TYPE_KITE](#MAV_ODID_UA_TYPE_KITE)                                             | Kite.                                                                                   |
+| <a id='MAV_ODID_UA_TYPE_FREE_BALLOON'></a>8   | [MAV_ODID_UA_TYPE_FREE_BALLOON](#MAV_ODID_UA_TYPE_FREE_BALLOON)                             | Free Balloon.                                                                           |
+| <a id='MAV_ODID_UA_TYPE_CAPTIVE_BALLOON'></a>9   | [MAV_ODID_UA_TYPE_CAPTIVE_BALLOON](#MAV_ODID_UA_TYPE_CAPTIVE_BALLOON)                       | Captive Balloon.                                                                        |
+| <a id='MAV_ODID_UA_TYPE_AIRSHIP'></a>10  | [MAV_ODID_UA_TYPE_AIRSHIP](#MAV_ODID_UA_TYPE_AIRSHIP)                                       | Airship. E.g. a blimp.                                                                  |
+| <a id='MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE'></a>11  | [MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE](#MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE)             | Free Fall/Parachute (unpowered).                                                        |
+| <a id='MAV_ODID_UA_TYPE_ROCKET'></a>12  | [MAV_ODID_UA_TYPE_ROCKET](#MAV_ODID_UA_TYPE_ROCKET)                                         | Rocket.                                                                                 |
+| <a id='MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT'></a>13  | [MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT](#MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT) | Tethered powered aircraft.                                                              |
 | <a id='MAV_ODID_UA_TYPE_GROUND_OBSTACLE'></a>14 | [MAV_ODID_UA_TYPE_GROUND_OBSTACLE](#MAV_ODID_UA_TYPE_GROUND_OBSTACLE)                       | Ground Obstacle.                                                                        |
 | <a id='MAV_ODID_UA_TYPE_OTHER'></a>15 | [MAV_ODID_UA_TYPE_OTHER](#MAV_ODID_UA_TYPE_OTHER)                                           | Other type of aircraft not listed earlier.                                              |
 
@@ -5135,10 +5162,10 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 | Value                         | Name                                                                                        | Description                                                |
 | ----------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| <a id='MAV_ODID_STATUS_UNDECLARED'></a>0  | [MAV_ODID_STATUS_UNDECLARED](#MAV_ODID_STATUS_UNDECLARED)                                 | The status of the (UA) Unmanned Aircraft is undefined.     |
-| <a id='MAV_ODID_STATUS_GROUND'></a>1  | [MAV_ODID_STATUS_GROUND](#MAV_ODID_STATUS_GROUND)                                         | The UA is on the ground.                                   |
-| <a id='MAV_ODID_STATUS_AIRBORNE'></a>2  | [MAV_ODID_STATUS_AIRBORNE](#MAV_ODID_STATUS_AIRBORNE)                                     | The UA is in the air.                                      |
-| <a id='MAV_ODID_STATUS_EMERGENCY'></a>3  | [MAV_ODID_STATUS_EMERGENCY](#MAV_ODID_STATUS_EMERGENCY)                                   | The UA is having an emergency.                             |
+| <a id='MAV_ODID_STATUS_UNDECLARED'></a>0 | [MAV_ODID_STATUS_UNDECLARED](#MAV_ODID_STATUS_UNDECLARED)                                 | The status of the (UA) Unmanned Aircraft is undefined.     |
+| <a id='MAV_ODID_STATUS_GROUND'></a>1 | [MAV_ODID_STATUS_GROUND](#MAV_ODID_STATUS_GROUND)                                         | The UA is on the ground.                                   |
+| <a id='MAV_ODID_STATUS_AIRBORNE'></a>2 | [MAV_ODID_STATUS_AIRBORNE](#MAV_ODID_STATUS_AIRBORNE)                                     | The UA is in the air.                                      |
+| <a id='MAV_ODID_STATUS_EMERGENCY'></a>3 | [MAV_ODID_STATUS_EMERGENCY](#MAV_ODID_STATUS_EMERGENCY)                                   | The UA is having an emergency.                             |
 | <a id='MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE'></a>4 | [MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE](#MAV_ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE) | The remote ID system is failing or unreliable in some way. |
 
 ### MAV_ODID_HEIGHT_REF {#MAV_ODID_HEIGHT_REF}
