@@ -35,8 +35,8 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 18 | 225
-[Enums](#enumerated-types) | 17 | 143
+[Messages](#messages) | 17 | 225
+[Enums](#enumerated-types) | 16 | 143
 [Commands](#mav_commands) | 175 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -72,21 +72,6 @@ airspeed | `float` | m/s | | Calibrated airspeed (CAS).
 temperature | `int16_t` | cdegC | | Temperature. INT16_MAX for value unknown/not supplied. 
 raw_press | `float` | hPa | | Raw differential pressure. NaN for value unknown/not supplied. 
 flags | `uint8_t` | | [AIRSPEED_SENSOR_FLAGS](#AIRSPEED_SENSOR_FLAGS) | Airspeed sensor flags. 
-
-
-### WIFI_NETWORK_INFO (298) — [WIP] {#WIFI_NETWORK_INFO}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Detected WiFi network status information. This message is sent per each WiFi network detected in range with known SSID and general status parameters.
-
-Field Name | Type | Units | Values | Description
---- | --- | --- | --- | ---
-ssid | `char[32]` | | | Name of Wi-Fi network (SSID). 
-channel_id | `uint8_t` | | | WiFi network operating channel ID. Set to 0 if unknown or unidentified. 
-signal_quality | `uint8_t` | % | | WiFi network signal quality. 
-data_rate | `uint16_t` | MiB/s | | WiFi network data rate. Set to UINT16_MAX if data_rate information is not supplied. 
-security | `uint8_t` | | [WIFI_NETWORK_SECURITY](#WIFI_NETWORK_SECURITY) | WiFi network security type. 
 
 
 ### SET_VELOCITY_LIMITS (354) — [WIP] {#SET_VELOCITY_LIMITS}
@@ -377,21 +362,6 @@ flags | `uint8_t` | [GCS_CONTROL_STATUS_FLAGS](#GCS_CONTROL_STATUS_FLAGS) | Cont
 
 
 ## Enumerated Types
-
-### WIFI_NETWORK_SECURITY — [WIP] {#WIFI_NETWORK_SECURITY}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-WiFi wireless security protocols.
-
-Value | Name | Description
---- | --- | ---
-<a id='WIFI_NETWORK_SECURITY_UNDEFINED'></a>0 | [WIFI_NETWORK_SECURITY_UNDEFINED](#WIFI_NETWORK_SECURITY_UNDEFINED) | Undefined or unknown security protocol. 
-<a id='WIFI_NETWORK_SECURITY_OPEN'></a>1 | [WIFI_NETWORK_SECURITY_OPEN](#WIFI_NETWORK_SECURITY_OPEN) | Open network, no security. 
-<a id='WIFI_NETWORK_SECURITY_WEP'></a>2 | [WIFI_NETWORK_SECURITY_WEP](#WIFI_NETWORK_SECURITY_WEP) | WEP. 
-<a id='WIFI_NETWORK_SECURITY_WPA1'></a>3 | [WIFI_NETWORK_SECURITY_WPA1](#WIFI_NETWORK_SECURITY_WPA1) | WPA1. 
-<a id='WIFI_NETWORK_SECURITY_WPA2'></a>4 | [WIFI_NETWORK_SECURITY_WPA2](#WIFI_NETWORK_SECURITY_WPA2) | WPA2. 
-<a id='WIFI_NETWORK_SECURITY_WPA3'></a>5 | [WIFI_NETWORK_SECURITY_WPA3](#WIFI_NETWORK_SECURITY_WPA3) | WPA3. 
 
 ### AIRSPEED_SENSOR_FLAGS — [WIP] {#AIRSPEED_SENSOR_FLAGS}
 
