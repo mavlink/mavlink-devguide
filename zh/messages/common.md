@@ -33,8 +33,8 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 223     | 2        |
-| [Enums](#enumerated-types) | 137     | 6        |
+| [Messages](#messages)      | 224     | 2        |
+| [Enums](#enumerated-types) | 138     | 6        |
 | [Commands](#mav_commands)  | 164     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -3147,6 +3147,30 @@ Messages with same value are from the same source (instance).                   
 | <span class='ext'>discharge_maximum_burst_current</span> [++](#mav2_extension_field) | `uint32_t` | mA    | invalid:0                                       | Maximum pack discharge burst current. 0: field not provided.                                                                                                  |
 | <span class='ext'>manufacture_date</span> [++](#mav2_extension_field) | `char[11]` |       | invalid:[0]                                     | Manufacture date (DD/MM/YYYY) in ASCII characters, 0 terminated. All 0: field not provided.                                                                   |
 
+### FUEL_STATUS (371) {#FUEL_STATUS}
+
+Fuel status.
+
+This message provides "generic" fuel level information for display in a GCS and for triggering failsafes in an autopilot. The fuel type and associated units for fields in this message are defined in the enum [MAV_FUEL_TYPE](#MAV_FUEL_TYPE).
+
+The reported `consumed_fuel` and `remaining_fuel` must only be supplied if measured: they must not be inferred from the `maximum_fuel` and the other value. A recipient can assume that if these fields are supplied they are accurate. If not provided, the recipient can infer `remaining_fuel` from `maximum_fuel` and `consumed_fuel` on the assumption that the fuel was initially at its maximum (this is what battery monitors assume). Note however that this is an assumption, and the UI should prompt the user appropriately (i.e. notify user that they should fill the tank before boot).
+
+This kind of information may also be sent in fuel-specific messages such as [BATTERY_STATUS_V2](#BATTERY_STATUS_V2). If both messages are sent for the same fuel system, the ids and corresponding information must match.
+
+This should be streamed (nominally at 0.1 Hz).
+
+| Field Name        | Type       | Units | Values                            | Description                                                                                                                                                                       |
+| ----------------- | ---------- | ----- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                | `uint8_t`  |       |                                   | Fuel ID. Must match ID of other messages for same fuel system, such as [BATTERY_STATUS_V2](#BATTERY_STATUS_V2).  
+Messages with same value are from the same source (instance). |
+| maximum_fuel      | `float`    |       |                                   | Capacity when full. Must be provided.                                                                                                                                             |
+| consumed_fuel     | `float`    |       | invalid:NaN                       | Consumed fuel (measured). This value should not be inferred: if not measured set to NaN. NaN: field not provided.                                                                 |
+| remaining_fuel    | `float`    |       | invalid:NaN                       | Remaining fuel until empty (measured). The value should not be inferred: if not measured set to NaN. NaN: field not provided.                                                     |
+| percent_remaining | `uint8_t`  | %     | invalid:UINT8_MAX                 | Percentage of remaining fuel, relative to full. Values: [0-100], UINT8_MAX: field not provided.                                                                                   |
+| flow_rate         | `float`    |       | invalid:NaN                       | Positive value when emptying/using, and negative if filling/replacing. NaN: field not provided.                                                                                   |
+| temperature       | `float`    | K     | invalid:NaN                       | Fuel temperature. NaN: field not provided.                                                                                                                                        |
+| fuel_type         | `uint32_t` |       | [MAV_FUEL_TYPE](#MAV_FUEL_TYPE) | Fuel type. Defines units for fuel capacity and consumption fields above.                                                                                                          |
+
 ### BATTERY_INFO (372) — [WIP] {#BATTERY_INFO}
 
 <span class="warning"><strong>WORK IN PROGRESS</strong>: Do not use in stable production environments (it may change).</span>
@@ -4557,6 +4581,16 @@ Battery mode. Note, the normal operation mode (i.e. when flying) should be repor
 | <a id='MAV_BATTERY_FAULT_INCOMPATIBLE_FIRMWARE'></a>128 | [MAV_BATTERY_FAULT_INCOMPATIBLE_FIRMWARE](#MAV_BATTERY_FAULT_INCOMPATIBLE_FIRMWARE)               | Battery firmware is not compatible with current autopilot firmware.                                                                                       |
 | <a id='BATTERY_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION'></a>256 | [BATTERY_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION](#BATTERY_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION) | Battery is not compatible due to cell configuration (e.g. 5s1p when vehicle requires 6s).                                                                 |
 
+### MAV_FUEL_TYPE {#MAV_FUEL_TYPE}
+
+Fuel types for use in [FUEL_TYPE](#FUEL_TYPE). Fuel types specify the units for the maximum, available and consumed fuel, and for the flow rates.
+
+| Value                        | Name                                              | Description                                                                                            |
+| ---------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| <a id='MAV_FUEL_TYPE_UNKNOWN'></a>0 | [MAV_FUEL_TYPE_UNKNOWN](#MAV_FUEL_TYPE_UNKNOWN) | Not specified. Fuel levels are normalized (i.e. maximum is 1, and other levels are relative to 1).     |
+| <a id='MAV_FUEL_TYPE_LIQUID'></a>1 | [MAV_FUEL_TYPE_LIQUID](#MAV_FUEL_TYPE_LIQUID)   | A generic liquid fuel. Fuel levels are in millilitres (ml). Fuel rates are in millilitres/second.      |
+| <a id='MAV_FUEL_TYPE_GAS'></a>2 | [MAV_FUEL_TYPE_GAS](#MAV_FUEL_TYPE_GAS)         | A gas tank. Fuel levels are in kilo-Pascal (kPa), and flow rates are in milliliters per second (ml/s). |
+
 ### MAV_GENERATOR_STATUS_FLAG {#MAV_GENERATOR_STATUS_FLAG}
 
 (Bitmask) Flags to report status/failure cases for a power generator (used in [GENERATOR_STATUS](#GENERATOR_STATUS)). Note that FAULTS are conditions that cause the generator to fail. Warnings are conditions that require attention before the next use (they indicate the system is not operating properly).
@@ -5152,9 +5186,9 @@ Parachute actions. Trigger release and enable/disable auto-release.
 | <a id='MAV_ODID_UA_TYPE_FREE_BALLOON'></a>8   | [MAV_ODID_UA_TYPE_FREE_BALLOON](#MAV_ODID_UA_TYPE_FREE_BALLOON)                             | Free Balloon.                                                                           |
 | <a id='MAV_ODID_UA_TYPE_CAPTIVE_BALLOON'></a>9   | [MAV_ODID_UA_TYPE_CAPTIVE_BALLOON](#MAV_ODID_UA_TYPE_CAPTIVE_BALLOON)                       | Captive Balloon.                                                                        |
 | <a id='MAV_ODID_UA_TYPE_AIRSHIP'></a>10  | [MAV_ODID_UA_TYPE_AIRSHIP](#MAV_ODID_UA_TYPE_AIRSHIP)                                       | Airship. E.g. a blimp.                                                                  |
-| <a id='MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE'></a>11  | [MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE](#MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE)             | Free Fall/Parachute (unpowered).                                                        |
-| <a id='MAV_ODID_UA_TYPE_ROCKET'></a>12  | [MAV_ODID_UA_TYPE_ROCKET](#MAV_ODID_UA_TYPE_ROCKET)                                         | Rocket.                                                                                 |
-| <a id='MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT'></a>13  | [MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT](#MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT) | Tethered powered aircraft.                                                              |
+| <a id='MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE'></a>11 | [MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE](#MAV_ODID_UA_TYPE_FREE_FALL_PARACHUTE)             | Free Fall/Parachute (unpowered).                                                        |
+| <a id='MAV_ODID_UA_TYPE_ROCKET'></a>12 | [MAV_ODID_UA_TYPE_ROCKET](#MAV_ODID_UA_TYPE_ROCKET)                                         | Rocket.                                                                                 |
+| <a id='MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT'></a>13 | [MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT](#MAV_ODID_UA_TYPE_TETHERED_POWERED_AIRCRAFT) | Tethered powered aircraft.                                                              |
 | <a id='MAV_ODID_UA_TYPE_GROUND_OBSTACLE'></a>14 | [MAV_ODID_UA_TYPE_GROUND_OBSTACLE](#MAV_ODID_UA_TYPE_GROUND_OBSTACLE)                       | Ground Obstacle.                                                                        |
 | <a id='MAV_ODID_UA_TYPE_OTHER'></a>15 | [MAV_ODID_UA_TYPE_OTHER](#MAV_ODID_UA_TYPE_OTHER)                                           | Other type of aircraft not listed earlier.                                              |
 
