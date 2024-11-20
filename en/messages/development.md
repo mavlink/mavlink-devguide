@@ -37,7 +37,7 @@ Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 16 | 226
 [Enums](#enumerated-types) | 15 | 144
-[Commands](#mav_commands) | 175 | 0
+[Commands](#mav_commands) | 173 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -608,36 +608,6 @@ Param (Label) | Description | Values
 5 | |   
 6 | |   
 7 | |   
-
-
-### MAV_CMD_GROUP_START (301) — [WIP] {#MAV_CMD_GROUP_START}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Define start of a group of mission items. When control reaches this command a [GROUP_START](#GROUP_START) message is emitted.
-
-The end of a group is marked using [MAV_CMD_GROUP_END](#MAV_CMD_GROUP_END) with the same group id.
-Group ids are expected, but not required, to iterate sequentially.
-Groups can be nested.
-
-Param (Label) | Description | Values
---- | --- | ---
-1 (Group ID) | Mission-unique group id.<br>Group id is limited because only 24 bit integer can be stored in 32 bit float. | min: 0 max: 16777216 inc: 1 
-
-
-### MAV_CMD_GROUP_END (302) — [WIP] {#MAV_CMD_GROUP_END}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Define end of a group of mission items. When control reaches this command a [GROUP_END](#GROUP_END) message is emitted.
-
-The start of the group is marked is marked using [MAV_CMD_GROUP_START](#MAV_CMD_GROUP_START) with the same group id.
-Group ids are expected, but not required, to iterate sequentially.
-Groups can be nested.
-
-Param (Label) | Description | Values
---- | --- | ---
-1 (Group ID) | Mission-unique group id.<br>Group id is limited because only 24 bit integer can be stored in 32 bit float. | min: 0 max: 16777216 inc: 1 
 
 
 ### MAV_CMD_SET_AT_S_PARAM (550) — [WIP] {#MAV_CMD_SET_AT_S_PARAM}
