@@ -32,8 +32,8 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 18      | 225      |
-| [Enums](#enumerated-types) | 17      | 143      |
+| [Messages](#messages)      | 17      | 225      |
+| [Enums](#enumerated-types) | 16      | 143      |
 | [Commands](#mav_commands)  | 175     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -69,21 +69,6 @@ Airspeed information from a sensor.
 | temperature | `int16_t` | cdegC |                                                   | Temperature. INT16_MAX for value unknown/not supplied.                            |
 | raw_press   | `float`   | hPa   |                                                   | Raw differential pressure. NaN for value unknown/not supplied.                    |
 | flags       | `uint8_t` |       | [AIRSPEED_SENSOR_FLAGS](#AIRSPEED_SENSOR_FLAGS) | Airspeed sensor flags.                                                            |
-
-
-### WIFI_NETWORK_INFO (298) — [WIP] {#WIFI_NETWORK_INFO}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Detected WiFi network status information. This message is sent per each WiFi network detected in range with known SSID and general status parameters.
-
-| Field Name     | Type       | Units | Values                                            | Description                                                                           |
-| -------------- | ---------- | ----- | ------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| ssid           | `char[32]` |       |                                                   | Name of Wi-Fi network (SSID).                                                         |
-| channel_id     | `uint8_t`  |       |                                                   | WiFi network operating channel ID. Set to 0 if unknown or unidentified.               |
-| signal_quality | `uint8_t`  | %     |                                                   | WiFi network signal quality.                                                          |
-| data_rate      | `uint16_t` | MiB/s |                                                   | WiFi network data rate. Set to UINT16_MAX if data_rate information is not supplied. |
-| security       | `uint8_t`  |       | [WIFI_NETWORK_SECURITY](#WIFI_NETWORK_SECURITY) | WiFi network security type.                                                           |
 
 
 ### SET_VELOCITY_LIMITS (354) — [WIP] {#SET_VELOCITY_LIMITS}
@@ -350,21 +335,6 @@ Information about GCS in control of this MAV. This should be broadcast at low ra
 
 ## Enumerated Types
 
-### WIFI_NETWORK_SECURITY — [WIP] {#WIFI_NETWORK_SECURITY}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-WiFi wireless security protocols.
-
-| Value                      | Name                                                                  | Description                             |
-| -------------------------- | --------------------------------------------------------------------- | --------------------------------------- |
-| <a id='WIFI_NETWORK_SECURITY_UNDEFINED'></a>0 | [WIFI_NETWORK_SECURITY_UNDEFINED](#WIFI_NETWORK_SECURITY_UNDEFINED) | Undefined or unknown security protocol. |
-| <a id='WIFI_NETWORK_SECURITY_OPEN'></a>1 | [WIFI_NETWORK_SECURITY_OPEN](#WIFI_NETWORK_SECURITY_OPEN)           | Open network, no security.              |
-| <a id='WIFI_NETWORK_SECURITY_WEP'></a>2 | [WIFI_NETWORK_SECURITY_WEP](#WIFI_NETWORK_SECURITY_WEP)             | WEP.                                    |
-| <a id='WIFI_NETWORK_SECURITY_WPA1'></a>3 | [WIFI_NETWORK_SECURITY_WPA1](#WIFI_NETWORK_SECURITY_WPA1)           | WPA1.                                   |
-| <a id='WIFI_NETWORK_SECURITY_WPA2'></a>4 | [WIFI_NETWORK_SECURITY_WPA2](#WIFI_NETWORK_SECURITY_WPA2)           | WPA2.                                   |
-| <a id='WIFI_NETWORK_SECURITY_WPA3'></a>5 | [WIFI_NETWORK_SECURITY_WPA3](#WIFI_NETWORK_SECURITY_WPA3)           | WPA3.                                   |
-
 ### AIRSPEED_SENSOR_FLAGS — [WIP] {#AIRSPEED_SENSOR_FLAGS}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
@@ -382,8 +352,8 @@ WiFi wireless security protocols.
 
 Possible transport layers to set and get parameters via mavlink during a parameter transaction.
 
-| Value                       | Name                                                                                | Description                           |
-| --------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------- |
+| Value                      | Name                                                                                | Description                           |
+| -------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------- |
 | <a id='PARAM_TRANSACTION_TRANSPORT_PARAM'></a>0 | [PARAM_TRANSACTION_TRANSPORT_PARAM](#PARAM_TRANSACTION_TRANSPORT_PARAM)           | Transaction over param transport.     |
 | <a id='PARAM_TRANSACTION_TRANSPORT_PARAM_EXT'></a>1 | [PARAM_TRANSACTION_TRANSPORT_PARAM_EXT](#PARAM_TRANSACTION_TRANSPORT_PARAM_EXT) | Transaction over param_ext transport. |
 
@@ -393,8 +363,8 @@ Possible transport layers to set and get parameters via mavlink during a paramet
 
 Possible parameter transaction actions.
 
-| Value                       | Name                                                                  | Description                               |
-| --------------------------- | --------------------------------------------------------------------- | ----------------------------------------- |
+| Value                      | Name                                                                  | Description                               |
+| -------------------------- | --------------------------------------------------------------------- | ----------------------------------------- |
 | <a id='PARAM_TRANSACTION_ACTION_START'></a>0 | [PARAM_TRANSACTION_ACTION_START](#PARAM_TRANSACTION_ACTION_START)   | Commit the current parameter transaction. |
 | <a id='PARAM_TRANSACTION_ACTION_COMMIT'></a>1 | [PARAM_TRANSACTION_ACTION_COMMIT](#PARAM_TRANSACTION_ACTION_COMMIT) | Commit the current parameter transaction. |
 | <a id='PARAM_TRANSACTION_ACTION_CANCEL'></a>2 | [PARAM_TRANSACTION_ACTION_CANCEL](#PARAM_TRANSACTION_ACTION_CANCEL) | Cancel the current parameter transaction. |
@@ -409,7 +379,7 @@ For example, most flight stack have the concept of a "return" or "RTL" mode that
 
 | Value                       | Name                                                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | --------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <a id='MAV_STANDARD_MODE_NON_STANDARD'></a>0 | [MAV_STANDARD_MODE_NON_STANDARD](#MAV_STANDARD_MODE_NON_STANDARD)   | Non standard mode.<br>This may be used when reporting the mode if the current flight mode is not a standard mode.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <a id='MAV_STANDARD_MODE_NON_STANDARD'></a>0  | [MAV_STANDARD_MODE_NON_STANDARD](#MAV_STANDARD_MODE_NON_STANDARD)   | Non standard mode.<br>This may be used when reporting the mode if the current flight mode is not a standard mode.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | <a id='MAV_STANDARD_MODE_POSITION_HOLD'></a>1 | [MAV_STANDARD_MODE_POSITION_HOLD](#MAV_STANDARD_MODE_POSITION_HOLD) | Position mode (manual).<br>Position-controlled and stabilized manual mode.<br>When sticks are released vehicles return to their level-flight orientation and hold both position and altitude against wind and external forces.<br>This mode can only be set by vehicles that can hold a fixed position.<br>Multicopter (MC) vehicles actively brake and hold both position and altitude against wind and external forces.<br>Hybrid MC/FW ("VTOL") vehicles first transition to multicopter mode (if needed) but otherwise behave in the same way as MC vehicles.<br>Fixed-wing (FW) vehicles must not support this mode.<br>Other vehicle types must not support this mode (this may be revisited through the PR process).                                                                                                                                              |
 | <a id='MAV_STANDARD_MODE_ORBIT'></a>2 | [MAV_STANDARD_MODE_ORBIT](#MAV_STANDARD_MODE_ORBIT)                   | Orbit (manual).<br>Position-controlled and stabilized manual mode.<br>The vehicle circles around a fixed setpoint in the horizontal plane at a particular radius, altitude, and direction.<br>Flight stacks may further allow manual control over the setpoint position, radius, direction, speed, and/or altitude of the circle, but this is not mandated.<br>Flight stacks may support the [MAV_CMD_DO_ORBIT](https://mavlink.io/en/messages/common.html#MAV_CMD_DO_ORBIT) for changing the orbit parameters.<br>MC and FW vehicles may support this mode.<br>Hybrid MC/FW ("VTOL") vehicles may support this mode in MC/FW or both modes; if the mode is not supported by the current configuration the vehicle should transition to the supported configuration.<br>Other vehicle types must not support this mode (this may be revisited through the PR process). |
 | <a id='MAV_STANDARD_MODE_CRUISE'></a>3 | [MAV_STANDARD_MODE_CRUISE](#MAV_STANDARD_MODE_CRUISE)                 | Cruise mode (manual).<br>Position-controlled and stabilized manual mode.<br>When sticks are released vehicles return to their level-flight orientation and hold their original track against wind and external forces.<br>Fixed-wing (FW) vehicles level orientation and maintain current track and altitude against wind and external forces.<br>Hybrid MC/FW ("VTOL") vehicles first transition to FW mode (if needed) but otherwise behave in the same way as MC vehicles.<br>Multicopter (MC) vehicles must not support this mode.<br>Other vehicle types must not support this mode (this may be revisited through the PR process).                                                                                                                                                                                                                                       |
