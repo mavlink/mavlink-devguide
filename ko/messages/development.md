@@ -739,26 +739,7 @@ This is for compliance with MOC ASTM docs, specifically F358 section 7.7: "Emerg
 | 7             | Empty                                |               |
 
 
-### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — [WIP] {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Set an external estimate of wind direction and speed.
-
-This might be used to provide an initial wind estimate to the estimator (EKF) in the case where the vehicle is wind dead-reckoning, extending the time when operating without GPS before before position drift builds to an unsafe level. For this use case the command might reasonably be sent every few minutes when operating at altitude, and the value is cleared if the estimator resets itself.
-
-| Param (Label)           | Description                                                          | Values          | Units |
-| ----------------------- | -------------------------------------------------------------------- | --------------- | ----- |
-| 1 (Wind speed)          | Horizontal wind speed.                                               | min: 0          | m/s   |
-| 2 (Wind speed accuracy) | Estimated 1 sigma accuracy of wind speed. Set to NaN if unknown.     |                 | m/s   |
-| 3 (Direction)           | Azimuth (relative to true north) from where the wind is blowing.     | min: 0 max: 360 | deg   |
-| 4 (Direction accuracy)  | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |                 | deg   |
-| 5                       | Empty                                                                |                 |       |
-| 6                       | Empty                                                                |                 |       |
-| 7                       | Empty                                                                |                 |       |
-
-
-### MAV_CMD_REQUEST_OPERATOR_CONTROL (43005) — [WIP] {#MAV_CMD_REQUEST_OPERATOR_CONTROL}
+### MAV_CMD_REQUEST_OPERATOR_CONTROL (32100) — [WIP] {#MAV_CMD_REQUEST_OPERATOR_CONTROL}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
@@ -785,6 +766,25 @@ Note that in most systems the only controlled component will be the "system mana
 | 4                            | Empty                                                                                                                                                                                                                              |
 | 5                            | Empty                                                                                                                                                                                                                              |
 | 6                            | Empty                                                                                                                                                                                                                              |
-| 7                            | Empty                                                                                                                                                                                                                              | 
+| 7                            | Empty                                                                                                                                                                                                                              |
+
+
+### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — [WIP] {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Set an external estimate of wind direction and speed.
+
+This might be used to provide an initial wind estimate to the estimator (EKF) in the case where the vehicle is wind dead-reckoning, extending the time when operating without GPS before before position drift builds to an unsafe level. For this use case the command might reasonably be sent every few minutes when operating at altitude, and the value is cleared if the estimator resets itself.
+
+| Param (Label)           | Description                                                          | Values          | Units |
+| ----------------------- | -------------------------------------------------------------------- | --------------- | ----- |
+| 1 (Wind speed)          | Horizontal wind speed.                                               | min: 0          | m/s   |
+| 2 (Wind speed accuracy) | Estimated 1 sigma accuracy of wind speed. Set to NaN if unknown.     |                 | m/s   |
+| 3 (Direction)           | Azimuth (relative to true north) from where the wind is blowing.     | min: 0 max: 360 | deg   |
+| 4 (Direction accuracy)  | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |                 | deg   |
+| 5                       | Empty                                                                |                 |       |
+| 6                       | Empty                                                                |                 |       |
+| 7                       | Empty                                                                |                 |       |   
 
 
