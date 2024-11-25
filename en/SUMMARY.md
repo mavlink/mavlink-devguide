@@ -82,5 +82,6 @@
   * [Events Interface (WIP)](services/events.md)
   * [Standard Flight Modes (WIP)](services/standard_modes.md)
   * [Time Synchronization](services/timesync.md)
+  * [Multi GCS Control Protocol (WIP)](services/multi_gcs.md)
 * [Contributing](contributing/contributing.md)
 * [Support](about/support.md)

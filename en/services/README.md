@@ -43,3 +43,4 @@ The main microservices are shown in the sidebar (most are listed below):
 - [Standard Flight Modes (WIP)](../services/standard_modes.md)
 - [Time Synchronization](../services/timesync.md)
 - [Illuminator Protocol](../services/illuminator.md)
+- [Multi GCS Control Protocol (WIP)](../services/multi_gcs.md)
