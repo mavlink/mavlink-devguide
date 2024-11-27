@@ -57,7 +57,7 @@ That said will consider moving stand-alone generators into the MAVLink project u
         git checkout -b mydescriptivebranchname
         
     
-    > **Note** *Always* branch off master for new features.
+    > [!NOTE] *Always* branch off master for new features.
 
 3. Commit your changes with a descriptive commit message.
 
