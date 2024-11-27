@@ -68,6 +68,7 @@ jobs:
           rm -rf mavlink.io/*
           cp -r ~/_book/* mavlink.io/
           cd mavlink.io
+          echo "mavlink.io" > CNAME
           git config user.email "bot@px4.io"
           git config user.name "PX4BuildBot"
           git add *
