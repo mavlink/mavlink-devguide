@@ -1,4 +1,4 @@
-name: Docs
+name: Docs Deploy
 
 on:
   push:
@@ -6,8 +6,6 @@ on:
       - master
     tags:
       - 'v*'
-    paths:
-      - './**'
   pull_request:
     paths:
       - './**'
@@ -63,9 +61,13 @@ jobs:
           GIT_PASS: ${{ secrets.PX4BUILDBOT_PASS }}
         run: |
           git clone https://${{ secrets.PX4BUILDBOT_USER }}:${{ secrets.PX4BUILDBOT_ACCESSTOKEN }}@github.com/mavlink/mavlink.io.git
-          rm -rf mavlink.io/${{ env.BRANCH_NAME }}
-          mkdir -p mavlink.io/${{ env.BRANCH_NAME }}
-          cp -r ~/_book/* mavlink.io/${{ env.BRANCH_NAME }}/
+          # rm -rf mavlink.io/${{ env.BRANCH_NAME }}
+          # mkdir -p mavlink.io/${{ env.BRANCH_NAME }}
+          # cp -r ~/_book/* mavlink.io/${{ env.BRANCH_NAME }}/
+          rm -rf mavlink.io
+          mkdir -p mavlink.io
+          cp -r ~/_book/* mavlink.io/
+          
           cd mavlink.io
           git config user.email "bot@px4.io"
           git config user.name "PX4BuildBot"
