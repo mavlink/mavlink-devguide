@@ -32,9 +32,9 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 18      | 225      |
-| [Enums](#enumerated-types) | 17      | 143      |
-| [Commands](#mav_commands)  | 175     | 0        |
+| [Messages](#messages)      | 16      | 226      |
+| [Enums](#enumerated-types) | 15      | 144      |
+| [Commands](#mav_commands)  | 173     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -69,21 +69,6 @@ Airspeed information from a sensor.
 | temperature | `int16_t` | cdegC |                                                   | Temperature. INT16_MAX for value unknown/not supplied.                            |
 | raw_press   | `float`   | hPa   |                                                   | Raw differential pressure. NaN for value unknown/not supplied.                    |
 | flags       | `uint8_t` |       | [AIRSPEED_SENSOR_FLAGS](#AIRSPEED_SENSOR_FLAGS) | Airspeed sensor flags.                                                            |
-
-
-### WIFI_NETWORK_INFO (298) — [WIP] {#WIFI_NETWORK_INFO}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Detected WiFi network status information. This message is sent per each WiFi network detected in range with known SSID and general status parameters.
-
-| Field Name     | Type       | Units | Values                                            | Description                                                                           |
-| -------------- | ---------- | ----- | ------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| ssid           | `char[32]` |       |                                                   | Name of Wi-Fi network (SSID).                                                         |
-| channel_id     | `uint8_t`  |       |                                                   | WiFi network operating channel ID. Set to 0 if unknown or unidentified.               |
-| signal_quality | `uint8_t`  | %     |                                                   | WiFi network signal quality.                                                          |
-| data_rate      | `uint16_t` | MiB/s |                                                   | WiFi network data rate. Set to UINT16_MAX if data_rate information is not supplied. |
-| security       | `uint8_t`  |       | [WIFI_NETWORK_SECURITY](#WIFI_NETWORK_SECURITY) | WiFi network security type.                                                           |
 
 
 ### SET_VELOCITY_LIMITS (354) — [WIP] {#SET_VELOCITY_LIMITS}
@@ -152,32 +137,6 @@ This should be streamed (nominally at 1Hz). Static/invariant battery information
 | capacity_remaining | `float`    | Ah    | invalid:NaN                                             | Remaining charge (until empty). NaN: field not provided. Note: If [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL) is unset, this value is based on the assumption the battery was full when the system was powered. |
 | percent_remaining  | `uint8_t`  | %     | invalid:UINT8_MAX                                       | Remaining battery energy. Values: [0-100], UINT8_MAX: field not provided.                                                                                                                                                                                                           |
 | status_flags       | `uint32_t` |       | [MAV_BATTERY_STATUS_FLAGS](#MAV_BATTERY_STATUS_FLAGS) | Fault, health, readiness, and other status indications.                                                                                                                                                                                                                             |
-
-
-### FUEL_STATUS (371) — [WIP] {#FUEL_STATUS}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Fuel status.
-
-This message provides "generic" fuel level information for display in a GCS and for triggering failsafes in an autopilot. The fuel type and associated units for fields in this message are defined in the enum [MAV_FUEL_TYPE](#MAV_FUEL_TYPE).
-
-The reported `consumed_fuel` and `remaining_fuel` must only be supplied if measured: they must not be inferred from the `maximum_fuel` and the other value. A recipient can assume that if these fields are supplied they are accurate. If not provided, the recipient can infer `remaining_fuel` from `maximum_fuel` and `consumed_fuel` on the assumption that the fuel was initially at its maximum (this is what battery monitors assume). Note however that this is an assumption, and the UI should prompt the user appropriately (i.e. notify user that they should fill the tank before boot).
-
-This kind of information may also be sent in fuel-specific messages such as [BATTERY_STATUS_V2](#BATTERY_STATUS_V2). If both messages are sent for the same fuel system, the ids and corresponding information must match.
-
-This should be streamed (nominally at 0.1 Hz).
-
-| Field Name        | Type       | Units | Values                            | Description                                                                                                                                                                              |
-| ----------------- | ---------- | ----- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id                | `uint8_t`  |       |                                   | Fuel ID. Must match ID of other messages for same fuel system, such as [BATTERY_STATUS_V2](#BATTERY_STATUS_V2).<br>Messages with same value are from the same source (instance). |
-| maximum_fuel      | `float`    |       |                                   | Capacity when full. Must be provided.                                                                                                                                                    |
-| consumed_fuel     | `float`    |       | invalid:NaN                       | Consumed fuel (measured). This value should not be inferred: if not measured set to NaN. NaN: field not provided.                                                                        |
-| remaining_fuel    | `float`    |       | invalid:NaN                       | Remaining fuel until empty (measured). The value should not be inferred: if not measured set to NaN. NaN: field not provided.                                                            |
-| percent_remaining | `uint8_t`  | %     | invalid:UINT8_MAX                 | Percentage of remaining fuel, relative to full. Values: [0-100], UINT8_MAX: field not provided.                                                                                          |
-| flow_rate         | `float`    |       | invalid:NaN                       | Positive value when emptying/using, and negative if filling/replacing. NaN: field not provided.                                                                                          |
-| temperature       | `float`    | K     | invalid:NaN                       | Fuel temperature. NaN: field not provided.                                                                                                                                               |
-| fuel_type         | `uint32_t` |       | [MAV_FUEL_TYPE](#MAV_FUEL_TYPE) | Fuel type. Defines units for fuel capacity and consumption fields above.                                                                                                                 |
 
 
 ### GROUP_START (414) — [WIP] {#GROUP_START}
@@ -350,21 +309,6 @@ Information about GCS in control of this MAV. This should be broadcast at low ra
 
 ## Enumerated Types
 
-### WIFI_NETWORK_SECURITY — [WIP] {#WIFI_NETWORK_SECURITY}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-WiFi wireless security protocols.
-
-| Value                      | Name                                                                  | Description                             |
-| -------------------------- | --------------------------------------------------------------------- | --------------------------------------- |
-| <a id='WIFI_NETWORK_SECURITY_UNDEFINED'></a>0 | [WIFI_NETWORK_SECURITY_UNDEFINED](#WIFI_NETWORK_SECURITY_UNDEFINED) | Undefined or unknown security protocol. |
-| <a id='WIFI_NETWORK_SECURITY_OPEN'></a>1 | [WIFI_NETWORK_SECURITY_OPEN](#WIFI_NETWORK_SECURITY_OPEN)           | Open network, no security.              |
-| <a id='WIFI_NETWORK_SECURITY_WEP'></a>2 | [WIFI_NETWORK_SECURITY_WEP](#WIFI_NETWORK_SECURITY_WEP)             | WEP.                                    |
-| <a id='WIFI_NETWORK_SECURITY_WPA1'></a>3 | [WIFI_NETWORK_SECURITY_WPA1](#WIFI_NETWORK_SECURITY_WPA1)           | WPA1.                                   |
-| <a id='WIFI_NETWORK_SECURITY_WPA2'></a>4 | [WIFI_NETWORK_SECURITY_WPA2](#WIFI_NETWORK_SECURITY_WPA2)           | WPA2.                                   |
-| <a id='WIFI_NETWORK_SECURITY_WPA3'></a>5 | [WIFI_NETWORK_SECURITY_WPA3](#WIFI_NETWORK_SECURITY_WPA3)           | WPA3.                                   |
-
 ### AIRSPEED_SENSOR_FLAGS — [WIP] {#AIRSPEED_SENSOR_FLAGS}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
@@ -382,8 +326,8 @@ WiFi wireless security protocols.
 
 Possible transport layers to set and get parameters via mavlink during a parameter transaction.
 
-| Value                       | Name                                                                                | Description                           |
-| --------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------- |
+| Value                      | Name                                                                                | Description                           |
+| -------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------- |
 | <a id='PARAM_TRANSACTION_TRANSPORT_PARAM'></a>0 | [PARAM_TRANSACTION_TRANSPORT_PARAM](#PARAM_TRANSACTION_TRANSPORT_PARAM)           | Transaction over param transport.     |
 | <a id='PARAM_TRANSACTION_TRANSPORT_PARAM_EXT'></a>1 | [PARAM_TRANSACTION_TRANSPORT_PARAM_EXT](#PARAM_TRANSACTION_TRANSPORT_PARAM_EXT) | Transaction over param_ext transport. |
 
@@ -393,8 +337,8 @@ Possible transport layers to set and get parameters via mavlink during a paramet
 
 Possible parameter transaction actions.
 
-| Value                       | Name                                                                  | Description                               |
-| --------------------------- | --------------------------------------------------------------------- | ----------------------------------------- |
+| Value                      | Name                                                                  | Description                               |
+| -------------------------- | --------------------------------------------------------------------- | ----------------------------------------- |
 | <a id='PARAM_TRANSACTION_ACTION_START'></a>0 | [PARAM_TRANSACTION_ACTION_START](#PARAM_TRANSACTION_ACTION_START)   | Commit the current parameter transaction. |
 | <a id='PARAM_TRANSACTION_ACTION_COMMIT'></a>1 | [PARAM_TRANSACTION_ACTION_COMMIT](#PARAM_TRANSACTION_ACTION_COMMIT) | Commit the current parameter transaction. |
 | <a id='PARAM_TRANSACTION_ACTION_CANCEL'></a>2 | [PARAM_TRANSACTION_ACTION_CANCEL](#PARAM_TRANSACTION_ACTION_CANCEL) | Cancel the current parameter transaction. |
@@ -409,7 +353,7 @@ For example, most flight stack have the concept of a "return" or "RTL" mode that
 
 | Value                       | Name                                                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | --------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <a id='MAV_STANDARD_MODE_NON_STANDARD'></a>0 | [MAV_STANDARD_MODE_NON_STANDARD](#MAV_STANDARD_MODE_NON_STANDARD)   | Non standard mode.<br>This may be used when reporting the mode if the current flight mode is not a standard mode.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <a id='MAV_STANDARD_MODE_NON_STANDARD'></a>0  | [MAV_STANDARD_MODE_NON_STANDARD](#MAV_STANDARD_MODE_NON_STANDARD)   | Non standard mode.<br>This may be used when reporting the mode if the current flight mode is not a standard mode.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | <a id='MAV_STANDARD_MODE_POSITION_HOLD'></a>1 | [MAV_STANDARD_MODE_POSITION_HOLD](#MAV_STANDARD_MODE_POSITION_HOLD) | Position mode (manual).<br>Position-controlled and stabilized manual mode.<br>When sticks are released vehicles return to their level-flight orientation and hold both position and altitude against wind and external forces.<br>This mode can only be set by vehicles that can hold a fixed position.<br>Multicopter (MC) vehicles actively brake and hold both position and altitude against wind and external forces.<br>Hybrid MC/FW ("VTOL") vehicles first transition to multicopter mode (if needed) but otherwise behave in the same way as MC vehicles.<br>Fixed-wing (FW) vehicles must not support this mode.<br>Other vehicle types must not support this mode (this may be revisited through the PR process).                                                                                                                                              |
 | <a id='MAV_STANDARD_MODE_ORBIT'></a>2 | [MAV_STANDARD_MODE_ORBIT](#MAV_STANDARD_MODE_ORBIT)                   | Orbit (manual).<br>Position-controlled and stabilized manual mode.<br>The vehicle circles around a fixed setpoint in the horizontal plane at a particular radius, altitude, and direction.<br>Flight stacks may further allow manual control over the setpoint position, radius, direction, speed, and/or altitude of the circle, but this is not mandated.<br>Flight stacks may support the [MAV_CMD_DO_ORBIT](https://mavlink.io/en/messages/common.html#MAV_CMD_DO_ORBIT) for changing the orbit parameters.<br>MC and FW vehicles may support this mode.<br>Hybrid MC/FW ("VTOL") vehicles may support this mode in MC/FW or both modes; if the mode is not supported by the current configuration the vehicle should transition to the supported configuration.<br>Other vehicle types must not support this mode (this may be revisited through the PR process). |
 | <a id='MAV_STANDARD_MODE_CRUISE'></a>3 | [MAV_STANDARD_MODE_CRUISE](#MAV_STANDARD_MODE_CRUISE)                 | Cruise mode (manual).<br>Position-controlled and stabilized manual mode.<br>When sticks are released vehicles return to their level-flight orientation and hold their original track against wind and external forces.<br>Fixed-wing (FW) vehicles level orientation and maintain current track and altitude against wind and external forces.<br>Hybrid MC/FW ("VTOL") vehicles first transition to FW mode (if needed) but otherwise behave in the same way as MC vehicles.<br>Multicopter (MC) vehicles must not support this mode.<br>Other vehicle types must not support this mode (this may be revisited through the PR process).                                                                                                                                                                                                                                       |
@@ -508,18 +452,6 @@ The frame of a target observation from an onboard sensor.
 | --------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='RADIO_RC_CHANNELS_FLAGS_FAILSAFE'></a>1 | [RADIO_RC_CHANNELS_FLAGS_FAILSAFE](#RADIO_RC_CHANNELS_FLAGS_FAILSAFE) | Failsafe is active. The content of the RC channels data in the [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) message is implementation dependent.                                     |
 | <a id='RADIO_RC_CHANNELS_FLAGS_OUTDATED'></a>2 | [RADIO_RC_CHANNELS_FLAGS_OUTDATED](#RADIO_RC_CHANNELS_FLAGS_OUTDATED) | Channel data may be out of date. This is set when the receiver is unable to validate incoming data from the transmitter and has therefore resent the last valid data it received. |
-
-### MAV_FUEL_TYPE — [WIP] {#MAV_FUEL_TYPE}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Fuel types for use in [FUEL_TYPE](#FUEL_TYPE). Fuel types specify the units for the maximum, available and consumed fuel, and for the flow rates.
-
-| Value                       | Name                                              | Description                                                                                            |
-| --------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| <a id='MAV_FUEL_TYPE_UNKNOWN'></a>0 | [MAV_FUEL_TYPE_UNKNOWN](#MAV_FUEL_TYPE_UNKNOWN) | Not specified. Fuel levels are normalized (i.e. maximum is 1, and other levels are relative to 1.      |
-| <a id='MAV_FUEL_TYPE_LIQUID'></a>1 | [MAV_FUEL_TYPE_LIQUID](#MAV_FUEL_TYPE_LIQUID)   | A generic liquid fuel. Fuel levels are in millilitres (ml). Fuel rates are in millilitres/second.      |
-| <a id='MAV_FUEL_TYPE_GAS'></a>2 | [MAV_FUEL_TYPE_GAS](#MAV_FUEL_TYPE_GAS)         | A gas tank. Fuel levels are in kilo-Pascal (kPa), and flow rates are in milliliters per second (ml/s). |
 
 ### GPS_SYSTEM_ERROR_FLAGS — [WIP] {#GPS_SYSTEM_ERROR_FLAGS}
 
@@ -649,32 +581,6 @@ If the mode is not supported the vehicle should ACK with [MAV_RESULT_FAILED](#MA
 | 7                 |                  |                                           |
 
 
-### MAV_CMD_GROUP_START (301) — [WIP] {#MAV_CMD_GROUP_START}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Define start of a group of mission items. When control reaches this command a [GROUP_START](#GROUP_START) message is emitted.
-
-The end of a group is marked using [MAV_CMD_GROUP_END](#MAV_CMD_GROUP_END) with the same group id. Group ids are expected, but not required, to iterate sequentially. Groups can be nested.
-
-| Param (Label) | Description                                                                                                      | Values                      |
-| ------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| 1 (Group ID)  | Mission-unique group id.<br>Group id is limited because only 24 bit integer can be stored in 32 bit float. | min: 0 max: 16777216 inc: 1 |
-
-
-### MAV_CMD_GROUP_END (302) — [WIP] {#MAV_CMD_GROUP_END}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Define end of a group of mission items. When control reaches this command a [GROUP_END](#GROUP_END) message is emitted.
-
-The start of the group is marked is marked using [MAV_CMD_GROUP_START](#MAV_CMD_GROUP_START) with the same group id. Group ids are expected, but not required, to iterate sequentially. Groups can be nested.
-
-| Param (Label) | Description                                                                                                      | Values                      |
-| ------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| 1 (Group ID)  | Mission-unique group id.<br>Group id is limited because only 24 bit integer can be stored in 32 bit float. | min: 0 max: 16777216 inc: 1 |
-
-
 ### MAV_CMD_SET_AT_S_PARAM (550) — [WIP] {#MAV_CMD_SET_AT_S_PARAM}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
@@ -739,6 +645,36 @@ This is for compliance with MOC ASTM docs, specifically F358 section 7.7: "Emerg
 | 7             | Empty                                |               |
 
 
+### MAV_CMD_REQUEST_OPERATOR_CONTROL (32100) — [WIP] {#MAV_CMD_REQUEST_OPERATOR_CONTROL}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Request GCS control of a system (or of a specific component in a system).
+
+
+A controlled system should only accept MAVLink commands and command-like messages that are sent by its controlling GCS, or from other components with the same system id. Commands from other systems should be rejected with [MAV_RESULT_FAILED](#MAV_RESULT_FAILED) (except for this command, which may be acknowledged with [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED) if control is granted). Command-like messages should be ignored (or rejected if that is supported by their associated protocol).
+
+GCS control of the whole system is managed via a single component that we will refer to here as the "system manager component". This component streams the [CONTROL_STATUS](#CONTROL_STATUS) message and sets the [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER) flag. Other components in the system should monitor for the [CONTROL_STATUS](#CONTROL_STATUS) message with this flag, and set their controlling GCS to match its published system id. A GCS that wants to control the system should also monitor for the same message and flag, and address the [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) to its component id. Note that integrators are required to ensure that there is only one system manager component in the system (i.e. one component emitting the message with [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER) set).
+
+The [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) command is sent by a GCS to the system manager component to request or release control of a system, specifying whether subsequent takeover requests from another GCS are automatically granted, or require permission.
+
+The system manager component should grant control to the GCS if the system does not require takeover permission (or is uncontrolled) and ACK the request with [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED). The system manager component should then stream [CONTROL_STATUS](#CONTROL_STATUS) indicating its controlling system: all other components with the same system id should monitor this message and set their own controlling GCS to match that of the system manager component.
+
+If the system manager component cannot grant control (because takeover requires permission), the request should be rejected with [MAV_RESULT_FAILED](#MAV_RESULT_FAILED). The system manager component should then send this same command to the current owning GCS in order to notify of the request. The owning GCS would ACK with [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED), and might choose to release control of the vehicle, or re-request control with the takeover bit set to allow permission. In case it choses to re-request control with takeover bit set to allow permission, requestor GCS will only have 10 seconds to get control, otherwise owning GCS will re-request control with takeover bit set to disallow permission, and requestor GCS will need repeat the request if still interested in getting control. Note that the pilots of both GCS should co-ordinate safe handover offline.
+
+Note that in most systems the only controlled component will be the "system manager component", and that will be the autopilot. However separate GCS control of a particular component is also permitted, if supported by the component. In this case the GCS will address [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) to the specific component it wants to control. The component will then stream [CONTROL_STATUS](#CONTROL_STATUS) for its controlling GCS (it must not set [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER)). The component should fall back to the system GCS (if any) when it is not directly controlled, and may stop emitting [CONTROL_STATUS](#CONTROL_STATUS). The flow is otherwise the same as for requesting control over the whole system.
+
+| Param (Label)                | Description                                                                                                                                                                                                                        | Values         | Units |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ----- |
+| 1 (Sysid requesting control) | System ID of GCS requesting control. 0 when command sent from GCS to autopilot (autopilot determines requesting GCS sysid from message header). Sysid of GCS requesting control when command sent by autopilot to controlling GCS. |                |       |
+| 2 (Action)                   | 0: Release control, 1: Request control.                                                                                                                                                                                            |                |       |
+| 3 (Allow takeover)           | Enable automatic granting of ownership on request (by default reject request and notify current owner). 0: Ask current owner and reject request, 1: Allow automatic takeover.                                                      |                |       |
+| 4 (Request timeout)          | Timeout in seconds before a request to a GCS to allow takeover is assumed to be rejected. This is used to display the timeout graphically on requestor and GCS in control.                                                         | min: 3 max: 60 | s     |
+| 5                            | Empty                                                                                                                                                                                                                              |                |       |
+| 6                            | Empty                                                                                                                                                                                                                              |                |       |
+| 7                            | Empty                                                                                                                                                                                                                              |                |       |
+
+
 ### MAV_CMD_EXTERNAL_WIND_ESTIMATE (43004) — [WIP] {#MAV_CMD_EXTERNAL_WIND_ESTIMATE}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
@@ -755,36 +691,6 @@ This might be used to provide an initial wind estimate to the estimator (EKF) in
 | 4 (Direction accuracy)  | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |                 | deg   |
 | 5                       | Empty                                                                |                 |       |
 | 6                       | Empty                                                                |                 |       |
-| 7                       | Empty                                                                |                 |       |
-
-
-### MAV_CMD_REQUEST_OPERATOR_CONTROL (43005) — [WIP] {#MAV_CMD_REQUEST_OPERATOR_CONTROL}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Request GCS control of a system (or of a specific component in a system).
-
-
-A controlled system should only accept MAVLink commands and command-like messages that are sent by its controlling GCS, or from other components with the same system id. Commands from other systems should be rejected with [MAV_RESULT_PERMISSION_DENIED](#MAV_RESULT_PERMISSION_DENIED) (except for this command, which may be acknowledged with [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED) if control is granted). Command-like messages should be ignored (or rejected if that is supported by their associated protocol).
-
-GCS control of the whole system is managed via a single component that we will refer to here as the "system manager component". This component streams the [CONTROL_STATUS](#CONTROL_STATUS) message and sets the [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER) flag. Other components in the system should monitor for the [CONTROL_STATUS](#CONTROL_STATUS) message with this flag, and set their controlling GCS to match its published system id. A GCS that wants to control the system should also monitor for the same message and flag, and address the [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) to its component id. Note that integrators are required to ensure that there is only one system manager component in the system (i.e. one component emitting the message with [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER) set).
-
-The [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) command is sent by a GCS to the system manager component to request or release control of a system, specifying whether subsequent takeover requests from another GCS are automatically granted, or require permission.
-
-The system manager component should grant control to the GCS if the system does not require takeover permission (or is uncontrolled) and ACK the request with [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED). The system manager component should then stream [CONTROL_STATUS](#CONTROL_STATUS) indicating its controlling system: all other components with the same system id should monitor this message and set their own controlling GCS to match that of the system manager component.
-
-If the system manager component cannot grant control (because takeover requires permission), the request should be rejected with [MAV_RESULT_PERMISSION_DENIED](#MAV_RESULT_PERMISSION_DENIED). The system manager component should then send this same command to the current owning GCS in order to notify of the request. The owning GCS would ACK with [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED), and might choose to release control of the vehicle, or re-request control with the takeover bit set to allow permission. Note that the pilots of both GCS should co-ordinate safe handover offline.
-
-Note that in most systems the only controlled component will be the "system manager component", and that will be the autopilot. However separate GCS control of a particular component is also permitted, if supported by the component. In this case the GCS will address [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) to the specific component it wants to control. The component will then stream [CONTROL_STATUS](#CONTROL_STATUS) for its controlling GCS (it must not set [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER)). The component should fall back to the system GCS (if any) when it is not directly controlled, and may stop emitting [CONTROL_STATUS](#CONTROL_STATUS). The flow is otherwise the same as for requesting control over the whole system.
-
-| Param (Label)                | Description                                                                                                                                                                                                                        |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1 (Sysid requesting control) | System ID of GCS requesting control. 0 when command sent from GCS to autopilot (autopilot determines requesting GCS sysid from message header). Sysid of GCS requesting control when command sent by autopilot to controlling GCS. |
-| 2 (Action)                   | 0: Release control, 1: Request control.                                                                                                                                                                                            |
-| 3 (Allow takeover)           | Enable automatic granting of ownership on request (by default reject request and notify current owner). 0: Ask current owner and reject request, 1: Allow automatic takeover.                                                      |
-| 4                            | Empty                                                                                                                                                                                                                              |
-| 5                            | Empty                                                                                                                                                                                                                              |
-| 6                            | Empty                                                                                                                                                                                                                              |
-| 7                            | Empty                                                                                                                                                                                                                              | 
+| 7                       | Empty                                                                |                 |       |   
 
 
