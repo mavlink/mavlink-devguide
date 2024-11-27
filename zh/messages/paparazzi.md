@@ -27,44 +27,44 @@ span.warning {
 
 - [common.xml](../messages/common.md)
 
-## Summary
+## 概览
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 5       | 226      |
-| [Enums](#enumerated-types) | 0       | 144      |
-| [Commands](#mav_commands)  | 164     | 0        |
+| Type                    | Defined | Included |
+| ----------------------- | ------- | -------- |
+| [消息](#messages)         | 5       | 226      |
+| [枚举](#enumerated-types) | 0       | 144      |
+| [命令](#mav_commands)     | 164     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ### SCRIPT_ITEM (180) {#SCRIPT_ITEM}
 
-Message encoding a mission script item. This message is emitted upon a request for the next script item.
+Message encoding a mission script item. 此消息在请求下一个脚本项时发出。
 
-| Field Name       | Type       | Description                                      |
-| ---------------- | ---------- | ------------------------------------------------ |
-| target_system    | `uint8_t`  | System ID                                        |
-| target_component | `uint8_t`  | Component ID                                     |
-| seq              | `uint16_t` | Sequence                                         |
-| name             | `char[50]` | The name of the mission script, NULL terminated. |
+| Field Name       | Type       | 描述            |
+| ---------------- | ---------- | ------------- |
+| target_system    | `uint8_t`  | System ID     |
+| target_component | `uint8_t`  | Component ID  |
+| seq              | `uint16_t` | 序列            |
+| name             | `char[50]` | 任务脚本的名称，空终止符。 |
 
 ### SCRIPT_REQUEST (181) {#SCRIPT_REQUEST}
 
 Request script item with the sequence number seq. The response of the system to this message should be a [SCRIPT_ITEM](#SCRIPT_ITEM) message.
 
-| Field Name       | Type       | Description  |
+| Field Name       | Type       | 描述           |
 | ---------------- | ---------- | ------------ |
 | target_system    | `uint8_t`  | System ID    |
 | target_component | `uint8_t`  | Component ID |
-| seq              | `uint16_t` | Sequence     |
+| seq              | `uint16_t` | 序列           |
 
 ### SCRIPT_REQUEST_LIST (182) {#SCRIPT_REQUEST_LIST}
 
 Request the overall list of mission items from the system/component.
 
-| Field Name       | Type      | Description  |
+| Field Name       | Type      | 描述           |
 | ---------------- | --------- | ------------ |
 | target_system    | `uint8_t` | System ID    |
 | target_component | `uint8_t` | Component ID |
@@ -73,19 +73,19 @@ Request the overall list of mission items from the system/component.
 
 This message is emitted as response to [SCRIPT_REQUEST_LIST](#SCRIPT_REQUEST_LIST) by the MAV to get the number of mission scripts.
 
-| Field Name       | Type       | Description                            |
-| ---------------- | ---------- | -------------------------------------- |
-| target_system    | `uint8_t`  | System ID                              |
-| target_component | `uint8_t`  | Component ID                           |
-| count            | `uint16_t` | Number of script items in the sequence |
+| Field Name       | Type       | 描述           |
+| ---------------- | ---------- | ------------ |
+| target_system    | `uint8_t`  | System ID    |
+| target_component | `uint8_t`  | Component ID |
+| count            | `uint16_t` | 序列中的脚本项数     |
 
 ### SCRIPT_CURRENT (184) {#SCRIPT_CURRENT}
 
 This message informs about the currently active SCRIPT.
 
-| Field Name | Type       | Description     |
-| ---------- | ---------- | --------------- |
-| seq        | `uint16_t` | Active Sequence |
+| Field Name | Type       | 描述   |
+| ---------- | ---------- | ---- |
+| seq        | `uint16_t` | 活动序列 |
 
 ## Enumerated Types
 
