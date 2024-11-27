@@ -12,14 +12,19 @@ There are two main traffic management systems supported by MAVLink:
 
 - [Unmanned Aircraft System Traffic Management (UTM)](https://www.faa.gov/uas/research_development/traffic_management/) - an avoidance system focussing on UAVs.
 - [Automatic Dependent Surveillance–Broadcast (ADS-B](https://en.wikipedia.org/wiki/Automatic_Dependent_Surveillance%E2%80%93Broadcast) - an avoidance system developed for manned aircraft and extended to UAVs.
-  > **Note** Flarm is a transponder-based system that integrates with MAVLink using the ADS-B messages.
 
-The two systems share sigificant overlap and have very similar messages.
+  ::: info
+  FLARM is a transponder-based system that integrates with MAVLink using the ADS-B messages.
+  :::
+
+The two systems share significant overlap and have very similar messages.
 Both have a single message that encapsulates the vehicle position and trajectory: [UTM_GLOBAL_POSITION](#UTM_GLOBAL_POSITION) and [ADSB_VEHICLE](#ADSB_VEHICLE).
 A flight controller will typically recieve these messages from the appropriate transponder or service, and may also publish them to a transponder or service.
 
-> **Note** The [Open Drone ID](https://mavlink.io/en/services/opendroneid.html) service provides additional information about vehicle identity.
-> This is still a "work in progress", and there are no known MAVLink implementations,
+::: info
+The [Open Drone ID](https://mavlink.io/en/services/opendroneid.html) service provides additional information about vehicle identity.
+This is still a "work in progress", and there are no known MAVLink implementations,
+:::
 
 ## Message/Enum Summary
 

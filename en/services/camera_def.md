@@ -1,26 +1,30 @@
 # Camera Definition File
 
 A GCS will build a Camera Controller UI for image capture, video capture and video streaming using information provided by the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
-For very simple cameras, the information in the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message itself is sufficient to construct the UI.
-For more advanced cameras (with settings and options) the information required to build the UI must be supplied in a _Camera Definition File_ that is located at the URI specified in the message's `cam_definition_uri` field.
+For simple cameras, the information in the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message itself is sufficient to construct the UI.
+For more advanced cameras (with settings and options) the information required to build the UI can be supplied in a _Camera Definition File_ that is located at the URI specified in the message's `cam_definition_uri` field.
 
 The _Camera Definition File_ contains all the camera settings, the options for each setting, and exclusion lists (options that invalidate or are conditional on other settings).
 In addition, it may contain localisations of GUI strings for display to the user.
 
 At the bottom of this page, you can find a [full example](#full_example) of a _Camera Definition File_.
 
-> **Note** A _Camera Definition File_ is required because the camera options differ so greatly between cameras.
-> It is not reasonable to create specific MAVLink messages for each and every possible option and to tell the GCS the valid options for each camera setting.
+::: info
+A _Camera Definition File_ is required because the camera options differ so greatly between cameras.
+It is not reasonable to create specific MAVLink messages for each and every possible option and to tell the GCS the valid options for each camera setting.
+:::
 
 ## File Compression
 
 Camera definition files may be **.xz** compressed (this is recommended for files that are hosted on the camera component/device).
 
-> **Warning** Systems that _request_ camera definition files **must** support extraction of **.xz**-compressed definition files.
+::: warning
+Systems that _request_ camera definition files **must** support extraction of **.xz**-compressed definition files.
+:::
 
-<span></span>
-
-> **Tip** The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems.
+::: tip
+The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems.
+:::
 
 ## Schema
 
@@ -49,9 +53,11 @@ They will also have a description that is displayed to the user and the set of p
 
 Parameters can be simple or quite complex, depending on the behavior they change.
 
-> **Note** The parameter `CAM_MODE` must be part of the parameter list.
-> It maps to the command [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE).
-> It enables exposure of different settings based on the mode, so photo settings in photo mode and video settings in video mode.
+::: info
+The parameter `CAM_MODE` must be part of the parameter list.
+It maps to the command [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE).
+It enables exposure of different settings based on the mode, so photo settings in photo mode and video settings in video mode.
+:::
 
 #### Parameter Types
 
@@ -109,7 +115,9 @@ The `name` field is used for display only. In other words, using the example abo
 
 _Common Parameters_ are reserved parameter names for which the GCS can build specific UI controls (if found in a camera definition).
 
-> **Note** These parameters are common to many cameras (though their valid options vary considerably).
+::: info
+These parameters are common to many cameras (though their valid options vary considerably).
+:::
 
 | Parameter        | Description                                                            |
 | ---------------- | ---------------------------------------------------------------------- |
@@ -195,7 +203,7 @@ There are cases where an option change requires a parameter to be updated. For e
 
 This tells the GCS that when the `CAM_EXPMODE` parameter changes, the `CAM_APERTURE`, `CAM_SHUTTERSPD` and the `CAM_ISO` parameters must be updated (requested from the camera).
 
-#### Range Limit
+#### Option Range Limit
 
 Suppose your camera has the following ISO options:
 
@@ -248,6 +256,34 @@ This indicates to the GCS that when the `CAM_MODE` parameter is set to _Video_, 
 
 This example also tells the GCS not to display this parameter to the user (`control=“0”`). Camera Mode is a standard parameter defined in the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way. The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur.
 
+#### Param Ranges
+
+It is also possible to define param ranges without individual options, but by specifiying the minimum, maximum, and optionally a step size:
+
+```xml
+<parameter name="CAM_APERTURE" type="float" default="2.8" min="2.8" max="14.0" step="0.1">
+    <description>Aperture</description>
+</parameter>
+```
+
+This would be equivalent to:
+
+```xml
+<parameter name="CAM_APERTURE" type="float" default="2.8">
+    <description>Aperture</description>
+    <options>
+      <roption name="2.8" value="2.8" />
+      <roption name="2.9" value="2.9" />
+      ...
+      <roption name="13.9" value="13.9" />
+      <roption name="14" value="14" />
+    </options>
+</parameter>
+```
+
+Note that this approach cannot be used in conjunction with exclusions or option range limits (defined with `parameterrange`).
+Therefore it is recommended for cases where the range of allowed values does not vary with any other camera mode or setting.
+
 ### Localization
 
 The `localization` element is used for defining localized strings for display to users. If found, the GCS will use to replace all `description` and options `name` values found in the file with the strings defined here. Here is an example for German localization (de_DE):
@@ -279,12 +315,14 @@ When the user makes a selection, the GCS will send the new option using the [PAR
 
 When the GCS requires a current option for a given parameter, it will use the [PARAM_EXT_REQUEST_READ](../messages/common.md#PARAM_EXT_REQUEST_READ) message and it will expect in response a [PARAM_EXT_VALUE](../messages/common.md#PARAM_EXT_VALUE) message.
 
-> **Note** For more detailed information about the protocol see: [Extended Parameter Protocol](../services/parameter_ext.md).
+::: info
+For more detailed information about the protocol see: [Extended Parameter Protocol](../services/parameter_ext.md).
+:::
 
 ## Full Camera Definition File Example {#full_example}
 
-An example camera defintition file is listed below.
-This can be downloaded from github here: [camera_definition_example.xml](https://raw.githubusercontent.com/mavlink/mavlink-devguide/master/en/services/camera_definition_example.xml).
+An example camera definition file is listed below.
+This can be downloaded from GitHub here: [camera_definition_example.xml](https://raw.githubusercontent.com/mavlink/mavlink-devguide/master/en/services/camera_definition_example.xml).
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" ?>

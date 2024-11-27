@@ -7,13 +7,12 @@
 ## https://docs.npmjs.com/misc/faq#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-# Book build output
-_book
-
-# eBook build output
-*.epub
-*.mobi
-*.pdf
 
 # Temp files
 *.bak
+
+
+# vitepress - user guide
+node_modules/
+.vitepress/cache/
+.vitepress/dist/

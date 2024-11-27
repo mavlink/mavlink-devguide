@@ -4,7 +4,7 @@
 
 <dl>
   <dt>MAVLINK는 얼마나 효율적인가요?</dt>
-  <dd>MAVLINK는 매우 효율적인 프로토콜입니다. MAVLINK 1은 시작 신호(start sign)와 패킷 손실 탐지(packet drop detection)를 포함해 패킷당 8 바이트의 오버헤드를 가집니다. Mavlink 2는 14 바이트(부호를 포함하는 경우, 27 바이트)의 오버헤드를 가지지만, 훨씬 더 확장성 있는 프로토콜입니다.</dd>
+  <dd>MAVLINK는 매우 효율적인 프로토콜입니다. MAVLink 1은 시작 부호와 패킷 손실 탐지 부분을 포함하여 패킷당 8바이트의 크기를 가집니다. Mavlink 2는 14 바이트(부호를 포함하는 경우, 27 바이트)의 오버헤드를 가지지만, 훨씬 더 확장성 있는 프로토콜입니다.</dd>
 
   <dt>MAVLINK가 지원하는 기기 댓수는 몇대인가요?</dt>
   <dd>1부터 255까지의 범위(0은 유효한 ID가 아닙니다)의 시스템 ID를 가지는 총 255개의 기기를 지원합니다.
@@ -14,36 +14,35 @@
   <dd>MAVLINK는 ARM7, ATMega, dsPic, STM32등의 마이크로컨트롤러와 Windows, Linux, MacOS, Android와 iOS등의 운영체제에서 작동하는 것으로 보입니다.</dd>
 
   <dt>MAVLINK를 얼마나 믿을 수 있나요?</dt>
-  <dd>상당히 신뢰할 수 있습니다. MAVLink는 다양하고 까다로운 통신 채널(높은 지연율/잡음) 환경에서 다양한 기기와 지상국(및 다른 노드) 간 통신을 위해 2009년부터 사용되었습니다. MAVLINK는 패킷 손실 탐지와 패킷 결성 체크를 위해 잘 알려진 ITU X.25 체크섬 메서드를 사용합니다.</dd>
-  
+  <dd>상당히 신뢰할 수 있습니다. MAVLink는 여건이 혹독한 다양한 통신 채널(높은 지연율/잡음) 환경에서 다양한 기체, 지상 관제국(및 타 노드)간의 통신 수행 목적으로 2009년부터 사용했습니다. MAVLINK는 패킷 손실 탐지와 패킷 결성 체크를 위해 잘 알려진 ITU X.25 체크섬 메서드를 사용합니다.</dd>
+
   <dt>MAVLINK는 얼마나 안전한가요?</dt>
   <dd>MAVLINK는 시스템이 신뢰할 수 있는 출처에서 오는 메시지임을 인증하도록 <a href="../guide/message_signing.md">message signing</a>을 사용합니다. MAVLINK는 메시지 암호화를 제공하지 않습니다.  
   </dd>
-  
+
   <dt>What version of MAVLink should I use?</dt>
   <dd>You should use the <a href="../guide/mavlink_2.md">MAVLink 2</a> protocol where at all possible (it fixes a number of limitations of earlier versions). 
   The <em>MAVLink 2</em> libraries also support <em>MAVLink 1</em>, so you can use them to communicate with legacy systems if needed. 
   </dd>
-  
+
  <dt>How often is MAVLink updated/released?</dt>
   <dd>
-
 
   <ul>
     <li>The underlying over-the-wire format is rarely updated (we're only up to <em>MAVLink 2</em>, which was introduced in 2017).
     </li>
-    <li>New <a href="../messages/common.md">messages</a>/<a href="../services/README.md">microservices</a> are frequently added. This is a backwards compatible change, and users are expected to regularly update their libraries to support new messages.</li>
+    <li>New <a href="../messages/common.md">messages</a>/<a href="../services/index.md">microservices</a> are frequently added. This is a backwards compatible change, and users are expected to regularly update their libraries to support new messages.</li>
     <li>Messages are rarely modified (or removed) such that they would become incompatible. If this is needed the project will update the MAVLink minor version number and notify users through the <a href="https://groups.google.com/forum/#!forum/mavlink">mailing list</a> (users can also query the version in code).</li>
   </ul>
   </dd>
-  
+
 </dl>
 
 ## 개발자
 
 <dl>
   <dt>MAVLINK를 소스 코드를 공개하지 않는 어플리케이션에서 저작권 문제 없이 사용할 수 있나요?</dt>
-  <dd>어떠한 제한 없이 MAVLINK를 사용할 수 있습니다. 생성된 MAVLINK 라이브러리 헤더는 *MIT 라이센스*(자세한 정보는 <a href="../README.md#license">Introduction > License</a>를 참조하세요.)하에 사용할 수 있도록 만들어졌습니다.
+  <dd>어떠한 제한 없이 MAVLINK를 사용할 수 있습니다. The generated MAVLink library headers are made available under the *MIT license* (for more information see: <a href="../index.md#license">Introduction > License</a>).
   </dd>
 
   <dt>MAVLink는 어떻게 메시지를 감지하고 바이트 스트림으로 디코딩하나요?</dt>
@@ -57,7 +56,7 @@
 
   <dt>MAVLink 헤더의 시퀀스 넘버(Sequence number)는 왜 필요한가요?</dt>
   <dd>MAVLink는 무인 항공 시스템의 안전에 중요한 구성 요소의 일부입니다. 많은 패킷을 버리는 나쁜 통신 링크는 비행체의 안전을 위협할 수 있고, 모니터링이 필요합니다. 헤더에 시퀀스를 가지는 것은 MAVLink가 패킷 손실률에 관한 피드백을 지속적으로 제공할 수 있도록 하여 비행체나 관제국이 조치를 취할수 있도록 합니다.</dd>
-  
+
   <dt>왜 CRC_EXTRA가 패킷 무결성 체크섬에 필요한가요?</dt>
   <dd>CRC_EXTRA의 CRC는 송수신자 각자가 지정 메시지의 유선 형식을 이해하는지 검증하는 용도로 활용합니다   (프로토콜 구조가 단순하여 메시지 구조에 페이로드가 들어있지 않기 때문에 필요함).
   MAVLink 0.9에서는 CRC를 사용하지 않았습니다(다만 길이 검사는 진행했습니다). 
@@ -65,7 +64,7 @@
 
   <dt>디코딩/인코딩 루틴이나 다른 요소들을 개선하는데 도움을 주고 싶습니다. MAVLink가 바뀔 수도 있나요?</dt>
   <dd>매우 엄밀한 안전 테스트를 거치는 경우에 그럴 수 있습니다. 
-  MAVLink는 많은 autopilot 시스템에서 중요한 안전 요소로 사용되기 때문에 다년간의 시험을 거칩니다. MAVLink <a href="../README.md#support">지원 채널</a>에 새 기능을 제안해주세요.</dd>
+  MAVLink는 많은 autopilot 시스템에서 중요한 안전 요소로 사용되기 때문에 다년간의 시험을 거칩니다. Please suggest new features on the MAVLink <a href="../index.md#support">support channels</a>.</dd>
 
   <dt>How can I further reduce the generated C library size?</dt>
   <dd>On extremely resource-constrained systems you may be able to reduce the size of the generated library by setting <code>MAVLINK_COMM_NUM_BUFFERS=1</code> and <code>MAVLINK_MAX_PAYLOAD_LEN</code>="size of your largest buffer" (assuming only one comm link and that your payload is less than the maximum supported by MAVLink).

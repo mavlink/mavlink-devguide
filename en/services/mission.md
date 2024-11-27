@@ -20,15 +20,19 @@ Mission protocol messages include the type of associated mission in the `mission
 The field takes one of the [MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_TYPE) enum values:
 [MAV_MISSION_TYPE_MISSION](../messages/common.md#MAV_MISSION_TYPE_MISSION), [MAV_MISSION_TYPE_FENCE](../messages/common.md#MAV_MISSION_TYPE_FENCE), [MAV_MISSION_TYPE_RALLY](../messages/common.md#MAV_MISSION_TYPE_RALLY).
 
-> **Note** MAVLink 1 supports only "regular" flight-plan missions (this is implied/not explicitly set).
+::: info
+MAVLink 1 supports only "regular" flight-plan missions (this is implied/not explicitly set).
+:::
 
 ## Mission Items (MAVLink Commands) {#mavlink_commands}
 
 Mission items for all the [mission types](#mission_types) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
-> **Note** [MAV_CMD](../messages/common.md#mav_commands) is used to define commands that can be used in missions ("mission items") and commands that can be sent outside of a mission context (using the [Command Protocol](../services/command.md)).
-> Some `MAV_CMD` can be used with both mission and command protocols.
-> Not all commands/mission items are supported on all systems (or for all flight modes).
+::: info
+[MAV_CMD](../messages/common.md#mav_commands) is used to define commands that can be used in missions ("mission items") and commands that can be sent outside of a mission context (using the [Command Protocol](../services/command.md)).
+Some `MAV_CMD` can be used with both mission and command protocols.
+Not all commands/mission items are supported on all systems (or for all flight modes).
+:::
 
 The items for the different types of mission are identified using a simple name prefix convention:
 
@@ -127,21 +131,23 @@ A number of local frames are also specified.
 Local frame position values that are sent in integer field parameters must be encoded as _position in meters x 1E4_ (e.g. 5m would be encoded and sent as 50000).
 If sent in messages `float` parameter fields the value should be sent as-is.
 
-> **Note** Don't use the non-INT _global frames_ in mission items (e.g. `MAV_FRAME_GLOBAL_RELATIVE_ALT`).
-> These are intended to be used with messages that have `float` fields for positional information, e.g.: `MISSION_ITEM` (deprecated), `COMMAND_LONG`.
-> If these frames are used, position values should be sent unencoded (i.e. no need to multiply by 1E7).
+::: info
+Don't use the non-INT _global frames_ in mission items (e.g. `MAV_FRAME_GLOBAL_RELATIVE_ALT`).
+These are intended to be used with messages that have `float` fields for positional information, e.g.: `MISSION_ITEM` (deprecated), `COMMAND_LONG`.
+If these frames are used, position values should be sent unencoded (i.e. no need to multiply by 1E7).
+:::
 
-<span></span>
+::: info
+As above, in theory if a global _non-INT_ frame variant is set for a `MISSION_ITEM_INT` the position value should be sent as-is (not encoded).
+This will result in the value being rounded when it is sent in the integer value, which will make the value unusable.
+In practice, many systems will assume you have encoded the value, but you should test this for your particular flight stack.
+Better just to use the correct frames!
+:::
 
-> **Note** As above, in theory if a global _non-INT_ frame variant is set for a `MISSION_ITEM_INT` the position value should be sent as-is (not encoded).
-> This will result in the value being rounded when it is sent in the integer value, which will make the value unusable.
-> In practice, many systems will assume you have encoded the value, but you should test this for your particular flight stack.
-> Better just to use the correct frames!
-
-<span></span>
-
-> **Warning** Don't use [MAV_FRAME_MISSION](../messages/common.md#MAV_FRAME_MISSION) for mission items that contain positional data; this does not correspond to any particular real frame, and so will be ambiguous.
-> `MAV_FRAME_MISSION` should be used for mission items that use params5 and param6 for other purposes.
+::: warning
+Don't use [MAV_FRAME_MISSION](../messages/common.md#MAV_FRAME_MISSION) for mission items that contain positional data; this does not correspond to any particular real frame, and so will be ambiguous.
+`MAV_FRAME_MISSION` should be used for mission items that use params5 and param6 for other purposes.
+:::
 
 ## Param 5, 6 For Non-Positional Data
 
@@ -177,13 +183,15 @@ It can then monitor `MISSION_CURRENT`, and check its cached values against the c
 
 The diagram below shows the communication sequence to upload a mission to a drone (assuming all operations succeed).
 
-> **Warning** Mission update must be robust!
-> A new mission should be fully uploaded and accepted before the old mission is replaced/removed.
+::: warning
+Mission update must be robust!
+A new mission should be fully uploaded and accepted before the old mission is replaced/removed.
+:::
 
-<span></span>
-
-> **Note** Mission upload/download can be bandwidth intensive and time consuming
-> [Check for plan changes](#detecting-missionplan-changes) before uploading (or downloading) a mission.
+:::
+Mission upload/download can be bandwidth intensive and time consuming
+[Check for plan changes](#detecting-missionplan-changes) before uploading (or downloading) a mission.
+:::
 
 [![Mission Upload Sequence](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ09VTlRcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9SRVFVRVNUX0lOVCAoMClcbiAgICBEcm9uZS0-PkRyb25lOiBTdGFydCB0aW1lb3V0XG4gICAgR0NTLS0-PkRyb25lOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgRHJvbmUtPj5HQ1M6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgRHJvbmUtPj5Ecm9uZTogU3RhcnQgdGltZW91dFxuICAgIEdDUy0tPj5Ecm9uZTogTUlTU0lPTl9JVEVNX0lOVCAoY291bnQtMSlcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1JU1NJT05fQ09VTlRcbiAgICBHQ1MtPj5HQ1M6IFN0YXJ0IHRpbWVvdXRcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9SRVFVRVNUX0lOVCAoMClcbiAgICBEcm9uZS0-PkRyb25lOiBTdGFydCB0aW1lb3V0XG4gICAgR0NTLS0-PkRyb25lOiBNSVNTSU9OX0lURU1fSU5UICgwKVxuICAgIE5vdGUgb3ZlciBHQ1MsRHJvbmU6IC4uLiBpdGVyYXRlIHRocm91Z2ggaXRlbXMgLi4uXG4gICAgRHJvbmUtPj5HQ1M6IE1JU1NJT05fUkVRVUVTVF9JTlQgKGNvdW50LTEpXG4gICAgRHJvbmUtPj5Ecm9uZTogU3RhcnQgdGltZW91dFxuICAgIEdDUy0tPj5Ecm9uZTogTUlTU0lPTl9JVEVNX0lOVCAoY291bnQtMSlcbiAgICBEcm9uZS0-PkdDUzogTUlTU0lPTl9BQ0siLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
@@ -232,8 +240,10 @@ Notes:
 
 ### Download a Mission from the Vehicle {#download_mission}
 
-> **Note** Mission upload/download can also be bandwidth intensive and time consuming.
-> [Check for plan changes](#detecting-missionplan-changes) before downloading (or uploading) a mission.
+::: info
+Mission upload/download can also be bandwidth intensive and time consuming.
+[Check for plan changes](#detecting-missionplan-changes) before downloading (or uploading) a mission.
+:::
 
 The diagram below shows the communication sequence to download a mission from a drone (assuming all operations succeed).
 
@@ -381,7 +391,7 @@ Note:
 
 ## Mission File Formats
 
-The _defacto_ standard file format for exchanging missions/plans is discussed in: [File Formats > Mission Plain-Text File Format](../file_formats/README.md#mission_plain_text_file).
+The _defacto_ standard file format for exchanging missions/plans is discussed in: [File Formats > Mission Plain-Text File Format](../file_formats/index.md#mission_plain_text_file).
 
 ## Mission Command Detail
 
@@ -413,7 +423,9 @@ The location and fixed-wing loiter radius parameters are common to all commands:
 The loiter time and turns are set in param 1 for the respective messages.
 The direction of loiter for `MAV_CMD_NAV_LOITER_UNLIM` can be set using `param4` (Yaw).
 
-> **Note** The remaining parameters (xtrack and heading) apply only to forward flying aircraft (not multicopters!)
+::: info
+The remaining parameters (xtrack and heading) apply only to forward flying aircraft (not multicopters!)
+:::
 
 Xtrack and heading define the location at which a forward flying (fixed wing) vehicle will _exit the loiter circle, and its path to the next waypoint_ (these apply only to apply to only `MAV_CMD_NAV_LOITER_TIME` and `MAV_CMD_NAV_LOITER_TURNS`).
 
@@ -502,8 +514,10 @@ Source:
 
 Mission upload, download, clearing missions, and monitoring progress are supported.
 
-> **Note** ArduPilot implements also partial mission upload using `MISSION_WRITE_PARTIAL_LIST`, but not partial mission download (`MISSION_REQUEST_PARTIAL_LIST`).
-> Partial mission upload/download is not an official/standardised part of the mission service.
+::: info
+ArduPilot implements also partial mission upload using `MISSION_WRITE_PARTIAL_LIST`, but not partial mission download (`MISSION_REQUEST_PARTIAL_LIST`).
+Partial mission upload/download is not an official/standardised part of the mission service.
+:::
 
 ArduPilot's implementation differs from this specification (non-exhaustively):
 

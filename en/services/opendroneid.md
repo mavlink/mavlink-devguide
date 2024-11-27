@@ -59,9 +59,11 @@ The ASTM, ASD-STAN and MAVLink messages are listed below.
 | \_                                                      | \_                       | [OPEN_DRONE_ID_ARM_STATUS](../messages/common.md#OPEN_DRONE_ID_ARM_STATUS)         | Sent by RID transmitter/receiver components to indicate that the RID system is "ready to use". This should be used as an arming condition for the flight stack. Note that this differs from the [HEARTBEAT](#heartbeat) which indicates that the component is "alive" but not necessarily ready to use.                                                                                                                                                                    |
 | \_                                                      | \_                       | [OPEN_DRONE_ID_SYSTEM_UPDATE](../messages/common.md#OPEN_DRONE_ID_SYSTEM_UPDATE)   | A subset of the [OPEN_DRONE_ID_SYSTEM](#OPEN_DRONE_ID_SYSTEM) message, containing only the fields that must be updated at a high rate. Typically sent from the GCS to provide data to the RID transmitter component. If both `OPEN_DRONE_ID_SYSTEM` and `OPEN_DRONE_ID_SYSTEM_UPDATE` are used, the more efficient `OPEN_DRONE_ID_SYSTEM_UPDATE` will be used at a high rate and the full `OPEN_DRONE_ID_SYSTEM` at a low rate, to reduce the traffic on the control link. |
 
-> **Note** The raw byte layout of the MAVLink messages is not exactly the same as what a RID Bluetooth/Wi-Fi transmitter component will broadcast over the air.
-> Slight compression is applied.
-> Example code for this conversion can be found in the project: [Open Drone ID Core C Library](https://github.com/opendroneid/opendroneid-core-c).
+::: info
+The raw byte layout of the MAVLink messages is not exactly the same as what a RID Bluetooth/Wi-Fi transmitter component will broadcast over the air.
+Slight compression is applied.
+Example code for this conversion can be found in the project: [Open Drone ID Core C Library](https://github.com/opendroneid/opendroneid-core-c).
+:::
 
 The [Open Drone ID Core C Library](https://github.com/opendroneid/opendroneid-core-c) contains code for decoding the MAVLink messages and "compressing" the data into data structures for broadcast over Bluetooth or Wi-Fi (or vice-versa for reception).
 
@@ -139,9 +141,11 @@ Similarly, the autopilot must listen to the [ARM_STATUS](#OPEN_DRONE_ID_ARM_STAT
 During flight, if the arm status indicates a failure, similar action must be taken as for a lack of `HEARTBEAT` messages from the RemoteID.
 The [ARM_STATUS](#OPEN_DRONE_ID_ARM_STATUS) message must also be routed to a GCS, if present, allowing it to provide more detailed information about RemoteID arming failures.
 
-> **Note** In addition to the above, there are multiple additional different scenarios that must result in the Location status field being set to Emergency or Remote ID System Failure.
-> The exact strategy on how to avoid having multiple MAVLink components overwriting each-others emergency declarations is not yet fully defined.
-> Some preliminary discussion can be found [here](https://github.com/ArduPilot/ArduRemoteID/issues/34).
+::: info
+In addition to the above, there are multiple additional different scenarios that must result in the Location status field being set to Emergency or Remote ID System Failure.
+The exact strategy on how to avoid having multiple MAVLink components overwriting each-others emergency declarations is not yet fully defined.
+Some preliminary discussion can be found [here](https://github.com/ArduPilot/ArduRemoteID/issues/34).
+:::
 
 Optionally, further restrictions on which RID transmitter/receiver component must process a MAVLink message can be enforced if the sender fills the `target_system` and `target_component` fields of the MAVLink message.
 RID transmitter/receiver components must only listen to MAVLink messages that have these fields set to either zero (broadcast) or the component's own MAVLink system ID and component ID.

@@ -8,7 +8,9 @@ While this is the canonical reference, it is easier to understand the XML file b
 
 The broad structure for MAVLink XML files is given below.
 
-> **Note** If you're creating a custom dialect file your file structure should be similar to the one below (but may omit any/all sections).
+::: info
+If you're creating a custom dialect file your file structure should be similar to the one below (but may omit any/all sections).
+:::
 
 ```xml
 <?xml version="1.0"?>
@@ -36,6 +38,7 @@ The broad structure for MAVLink XML files is given below.
 The main tags are listed below (all are optional):
 
 - `include`: This tag is used to specify any other XML files included in your dialect.
+
   - Typically dialect files will include _common.xml_ as shown above.
   - You can include multiple files using separate tags.
   - The path to included files can be relative to your dialect file.
@@ -43,12 +46,12 @@ The main tags are listed below (all are optional):
   - Nested `include` of files is not supported (only files specified in the top level `include` are imported).
   - When building, generator toolchains will merge/append enums in all files, and report duplicate enum entries and messages.
 
-* `version`: The minor version number for the release, as included in the [HEARTBEAT](../messages/common.md#HEARTBEAT message) `mavlink_version` field.
+- `version`: The minor version number for the release, as included in the [HEARTBEAT](../messages/common.md#HEARTBEAT message) `mavlink_version` field.
   - For dialects that `include` **common.xml** the tag should be removed so that the `version` from **common.xml** is used (`version` from top level file will be used if specified).
   - For private dialects you can use whatever version you like.
-* `dialect`: This number is unique for your dialect. You should use: TBD <!-- how are these allocated -->
-* [enums](#enum): Dialect-specific enums can be defined in this block (if none are defined in the file, the block is optional/can be removed).
-* [messages](#messages): Dialect-specific messages can be defined in this block (if none are defined in the file, the block is optional/can be removed).
+- `dialect`: This number is unique for your dialect. You should use: TBD <!-- how are these allocated -->
+- [enums](#enum): Dialect-specific enums can be defined in this block (if none are defined in the file, the block is optional/can be removed).
+- [messages](#messages): Dialect-specific messages can be defined in this block (if none are defined in the file, the block is optional/can be removed).
 
 ## Enum Definition (enums) {#enum}
 
@@ -85,7 +88,9 @@ The main `enum` tags/fields are:
 - `entry` (optional): An entry (zero or more entries can be specified for each enum)
 - [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
 
-> **Tip** [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
+::: tip
+[MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
+:::
 
 ### entry {#entry}
 
@@ -96,15 +101,19 @@ The "normal" enum `entry` tags/fields are:
 - `description` (optional): A description of the entry.
 - [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the enum is deprecated or "work in progress".
 
-> **Note** An `entry` may also define the optional elements: `param`, `hasLocation`, `isDestination`, `missionOnly`.
-> In practice these should only be used in the `enum` named [MAV_CMD](#MAV_CMD) (described below).
+::: info
+An `entry` may also define the optional elements: `param`, `hasLocation`, `isDestination`, `missionOnly`.
+In practice these should only be used in the `enum` named [MAV_CMD](#MAV_CMD) (described below).
+:::
 
 ## MAVLink Commands (enum MAV_CMD) {#MAV_CMD}
 
 Individual `entry` values in the `enum` named [MAV_CMD](#MAV_CMD) are use to define _MAVLink Commands_.
 Each command has a `value` (its "command number") and specifies up to 7 parameters.
 
-> **Note** These parameters are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages ([Mission Protocol](../services/mission.md)), or [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages ([Command Protocol](../services/command.md)).
+::: info
+These parameters are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages ([Mission Protocol](../services/mission.md)), or [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages ([Command Protocol](../services/command.md)).
+:::
 
 For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE):
 
@@ -158,8 +167,14 @@ A `param` **should** also include the following optional attributes where approp
 - `increment` - Allowed increments for the parameter value.
 - `minValue` - Minimum value for param.
 - `maxValue` - Maximum value for the param.
+- `multiplier` - Multiply by this value to get the unscaled original value.
+  This is primarily intended for specifying any scaling applied to unitless values, where scaling is not encoded in the `units`.
 - `reserved` - Boolean indicating whether param is reserved for future use. If the attributes is not declared, then implicitly `reserved="False"`.
-  > **Tip** See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
+
+  ::: tip
+  See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
+  :::
+
 - `default` - Default value for the `param`
   (primarily used for `reserved` params, where the value is `0` or `NaN`).
 
@@ -195,16 +210,24 @@ For example,the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY
 The main message tags/fields are:
 
 - `message`: Each message is encapsulated by `message` tags, with the following attributes
+
   - `id`: The id attribute is the unique index number of this message (in the example above: 147).
+
     - For MAVLink 1:
       - Valid numbers range from 0 to 255.
       - The ids 0-149 and 230-255 are reserved for _common.xml_.
         Dialects can use 180-229 for custom messages (provided these are not used by other included dialects).
     - For [MAVLink 2](../guide/mavlink_2.md):
+
       - Valid numbers range from 0 to 16777215.
       - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1.
-        > **Note** IDs are precious in MAVLink 1!
+
+        ::: info
+        IDs are precious in MAVLink 1!
+        :::
+
   - `name`: The name attribute provides a human readable form for the message (ie "BATTERY_STATUS"). It is used for naming helper functions in generated libraries, but is not sent over the wire.
+
 - `description`: Human readable description of message, shown in user interfaces and in code comments.
   This should contain all information (and hyperlinks) to fully understand the message.
 - `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire).
@@ -216,12 +239,22 @@ The main message tags/fields are:
   - `name`: Name of the field (used in code).
   - [enum](#enum) (optional): Name of an `enum` defining possible values of the field (e.g. `MAV_BATTERY_CHARGE_STATE`).
   - `units` (optional): The units for message `field`s that take numeric values (not enums). These are defined in the [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd) (search on _name="SI_Unit"_)
+  - `multiplier` (optional) - Multiply by this value to get the unscaled original value.
+    Allowed values are defined in the [schema](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavschema.xsd) (search on `name="factor"`).
+    For example, [GPS_STATUS](../messages/common.md#GPS_STATUS) is a value in degrees (0-360) sent in a byte field (0-255).
+    To get the original value, scale by multiplying the value with the multiplier (`360/256`).
+    This is currently only used for values where scaling is not encoded in the `units`.
   - `display` (optional): This should be set as `display="bitmask"` for bitmask fields (hint to ground station that enum values must be displayed as checkboxes).
   - `print_format` (optional): TBD.
   - `default` (optional): TBD.
+  - `increment` - Allowed increments for the increment value.
+  - `minValue` - Minimum value for field.
+  - `maxValue` - Maximum value for the field.
   - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`.
 
-    > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
+    ::: info
+    This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
+    :::
 
   - `invalid`: Specifies a value that can be set on a field to indicate that the data is _invalid_: the recipient should ignore the field if it has this value.
     For example, `BATTERY_STATUS.current_battery` specifies `invalid="-1"`, so a battery that does not measure supplied _current_ should set `BATTERY_STATUS.current_battery` to `-1`.
@@ -256,7 +289,9 @@ The tag attributes indicates the time of deprecation and the replacement item, w
 
 The generator toolchain can be configured to conditionally build messages omitting the `deprecated` entries.
 
-> **Tip** An entity should be marked as deprecated only when the main users have had an opportunity to update to the new method.
+::: tip
+An entity should be marked as deprecated only when the main users have had an opportunity to update to the new method.
+:::
 
 As a concrete example, below we see that [SET_MODE](../messages/common.md#SET_MODE) is deprecated and replaced by [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) on `2015-12`.
 

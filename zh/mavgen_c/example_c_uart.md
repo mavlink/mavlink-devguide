@@ -1,4 +1,4 @@
-# MAVLink C UART Interface Example
+# MAVLink C UART 接口示例
 
 The [C-UART Interface Example](https://github.com/mavlink/c_uart_interface_example) is a simple C example of a MAVLink to UART interface for Unix-like systems.
 

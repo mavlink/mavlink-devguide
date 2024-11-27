@@ -1,7 +1,9 @@
 # Component Metadata Protocol (WIP)
 
-> **Warning** This service is still marked as "work in progress", and should not be relied upon in production.
-> It has also evolved since first created as the "Component Information Protocol".
+::: warning
+This service is still marked as "work in progress", and should not be relied upon in production.
+It has also evolved since first created as the "Component Information Protocol".
+:::
 
 The _Component Metadata Protocol_ is a MAVLink service for requesting metadata from (and about) MAVLink components.
 It is intended to provide autopilot- and version- independent feature discovery and configuration, allowing a GCS to configure its UI and/or a device without knowing anything about the connected system.
@@ -32,7 +34,9 @@ There is no mechanism, for example, to provide an update if the set of supported
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="COMP_METADATA_TYPE"></a>[COMP_METADATA_TYPE](../messages/common.md#COMP_METADATA_TYPE) | Types of component metadata supported by the protocol - e.g. general information, parameter metadata, supported commands, events, peripherals, etc. The type identifiers are used in the "general" metadata file to identify the sections that provide information about each supported type of metadata. |
 
-> **Note** [COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) is not used by thie service (it is a deprecated legacy version of [COMPONENT_METADATA](../messages/common.md#COMPONENT_METADATA)).
+::: info
+[COMPONENT_INFORMATION](../messages/common.md#COMPONENT_INFORMATION) is not used by thie service (it is a deprecated legacy version of [COMPONENT_METADATA](../messages/common.md#COMPONENT_METADATA)).
+:::
 
 ## Component Information File Format (Schema) {#schema_files}
 
@@ -64,7 +68,9 @@ The location of these files is returned in the [COMPONENT_METADATA](#COMPONENT_M
 
 Other component information files may be hosted on either the device or on the internet.
 
-> **Note** Where permitted by memory constraints you should host component information on the device (so that it is always available and cannot get out of sync).
+::: info
+Where permitted by memory constraints you should host component information on the device (so that it is always available and cannot get out of sync).
+:::
 
 Files on the device are downloaded using [MAVLink FTP](../services/ftp.md).
 The URI format is defined in [MAVLink FTP URL Scheme](../services/ftp.md#mavlink-ftp-url-scheme).
@@ -84,16 +90,18 @@ It will also include [CRC32](../crc.md#crc32-algorithm) values any files that co
 
 Component information files may be **.xz** compressed (this is recommended for files that are hosted on the device).
 
-> **Note** The prototype implementation generates and compresses component information files at build time.
-> No compression library is required within the flight stack itself.
+::: info
+The prototype implementation generates and compresses component information files at build time.
+No compression library is required within the flight stack itself.
+:::
 
-<span></span>
+::: warning
+Systems that _request_ component information **must** support extraction of **.xz**-compressed JSON files.
+:::
 
-> **Warning** Systems that _request_ component information **must** support extraction of **.xz**-compressed JSON files.
-
-<span></span>
-
-> **Tip** The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems and cross-platform C/C++ projects.
+::: tip
+The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems and cross-platform C/C++ projects.
+:::
 
 ## Sequences
 
@@ -111,7 +119,9 @@ A system can query whether another component supports the protocol by sending th
 The component will respond with `COMPONENT_METADATA.uri` containing a valid URI if the protocol is supported.
 If the protocol is not supported the component will ACK that the message with `MAV_RESULT_UNSUPPORTED`, `MAV_RESULT_DENIED` or `MAV_RESULT_FAILED`, or return a `null` value in `uri`.
 
-> **Note** A component that supports this service must return a general metadata file URI _that is hosted on the vehicle_ (accessed using MAVLink FTP).
+::: info
+A component that supports this service must return a general metadata file URI _that is hosted on the vehicle_ (accessed using MAVLink FTP).
+:::
 
 ### Get MetaData
 
@@ -141,9 +151,11 @@ In summary:
 
 The actuators metadata allows a GCS to create a UI to configure and test actuators, and configure vehicle geometries, without having to understand anything about the underlying flight stack.
 
-> **Note** The mechanism works similarly to [camera definition files](../services/camera_def.md).
-> It can be used for flight stacks that allow outputs and geometry definition to be configured using parameters.
-> If flight stack outputs or geometries cannot be configured using parameters, the mechanism can still be used to display the current geometry and output mappings, and to test outputs.
+::: info
+The mechanism works similarly to [camera definition files](../services/camera_def.md).
+It can be used for flight stacks that allow outputs and geometry definition to be configured using parameters.
+If flight stack outputs or geometries cannot be configured using parameters, the mechanism can still be used to display the current geometry and output mappings, and to test outputs.
+:::
 
 The definition contains information about actuator output drivers (e.g. PWM MAIN or UAVCAN), the functions that can be assigned to each output channel, supported geometries, and their configuration parameters.
 Detailed information can be found in the [schema file](https://github.com/mavlink/mavlink/blob/master/component_metadata/actuators.schema.json), and there's also an [example](https://github.com/mavlink/mavlink/blob/master/component_metadata/actuators.example.json).
