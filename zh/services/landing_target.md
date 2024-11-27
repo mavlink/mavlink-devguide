@@ -18,13 +18,13 @@ Different systems may support either (or presumably both) sets of fields. These 
 
 The [LANDING_TARGET](../messages/common.md#LANDING_TARGET) fields that are relative to a captured image are shown below:
 
-| Field Name | Type  | Units | Values | Description                                                      |
-| ---------- | ----- | ----- | ------ | ---------------------------------------------------------------- |
-| angle_x    | float | rad   |        | X-axis angular offset of the target from the center of the image |
-| angle_y    | float | rad   |        | Y-axis angular offset of the target from the center of the image |
-| distance   | float | m     |        | Distance to the target from the vehicle                          |
-| size_x     | float | rad   |        | Size of target along x-axis                                      |
-| size_y     | float | rad   |        | Size of target along y-axis                                      |
+| Field Name | Type  | Units | 值 | 描述                                                               |
+| ---------- | ----- | ----- | - | ---------------------------------------------------------------- |
+| angle_x    | float | rad   |   | X-axis angular offset of the target from the center of the image |
+| angle_y    | float | rad   |   | Y-axis angular offset of the target from the center of the image |
+| distance   | float | m     |   | Distance to the target from the vehicle                          |
+| size_x     | float | rad   |   | Size of target along x-axis                                      |
+| size_y     | float | rad   |   | Size of target along y-axis                                      |
 
 The positional information can be interpreted as described below.
 
@@ -40,7 +40,7 @@ The sizes in x and y direction are analogous (`size_x`/`size_y`). They describe 
 
 The message fields that are used to provide target information as a position/quaternion are shown below. Field meaning and use is clear from the description.
 
-| Field Name     | Type     | Units | Values                                                             | Description                                                                                                                                                                                                                                                             |
+| Field Name     | Type     | Units | 值                                                                  | 描述                                                                                                                                                                                                                                                                      |
 | -------------- | -------- | ----- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | frame          | uint8_t  |       | [MAV_FRAME](../messages/common.md#MAV_FRAME)                       | Coordinate frame used for following fields.                                                                                                                                                                                                                             |
 | x              | float    | m     |                                                                    | X Position of the landing target in `MAV_FRAME`                                                                                                                                                                                                                         |
