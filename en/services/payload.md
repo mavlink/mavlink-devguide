@@ -44,7 +44,7 @@ Use the [commands for known payload types](#payload-specific-commands) where pos
     For more information see the [PX4 User Guide](https://docs.px4.io/master/en/payloads/#mission-triggering).
 - `MAV_CMD_DO_SET_SERVO` is implemented on both ArduPilot and PX4 (Missions only).
   In both cases instance numbers map to corresponding AUX outputs.
-  
+
 :::
 
 ## Payload Deployment Commands
@@ -61,5 +61,5 @@ These commands can be used to deploy a payload at a specfic location, controllin
 - [MAV_CMD_NAV_PAYLOAD_PLACE](#MAV_CMD_NAV_PAYLOAD_PLACE) is implemented in ArduPilot only, and can be used in missions.
 - [MAV_CMD_PAYLOAD_PREPARE_DEPLOY](../messages/common.md#MAV_CMD_PAYLOAD_PREPARE_DEPLOY) and [MAV_CMD_PAYLOAD_CONTROL_DEPLOY](../messages/common.md#MAV_CMD_PAYLOAD_PREPARE_DEPLOY) are not supported on any known flight stack.
   They are deprecated and should not be used.
-  
+
 :::

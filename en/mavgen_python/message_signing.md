@@ -9,6 +9,7 @@ The way you do this depends on whether you are using **mavutil** to manage the c
 
 ::: info
 While not covered in this topic, you should also write code to:
+
 - Save and load the key and last-timestamp from permanent storage
 - Implement a mechanism to create and share the key. For more information see [Message Signing > Secret Key Management](../guide/message_signing.md#secret_key).
 

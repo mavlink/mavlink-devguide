@@ -38,6 +38,7 @@ If you're creating a custom dialect file your file structure should be similar t
 The main tags are listed below (all are optional):
 
 - `include`: This tag is used to specify any other XML files included in your dialect.
+
   - Typically dialect files will include _common.xml_ as shown above.
   - You can include multiple files using separate tags.
   - The path to included files can be relative to your dialect file.
@@ -209,12 +210,15 @@ For example,the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY
 The main message tags/fields are:
 
 - `message`: Each message is encapsulated by `message` tags, with the following attributes
+
   - `id`: The id attribute is the unique index number of this message (in the example above: 147).
+
     - For MAVLink 1:
       - Valid numbers range from 0 to 255.
       - The ids 0-149 and 230-255 are reserved for _common.xml_.
         Dialects can use 180-229 for custom messages (provided these are not used by other included dialects).
     - For [MAVLink 2](../guide/mavlink_2.md):
+
       - Valid numbers range from 0 to 16777215.
       - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1.
 
@@ -223,6 +227,7 @@ The main message tags/fields are:
         :::
 
   - `name`: The name attribute provides a human readable form for the message (ie "BATTERY_STATUS"). It is used for naming helper functions in generated libraries, but is not sent over the wire.
+
 - `description`: Human readable description of message, shown in user interfaces and in code comments.
   This should contain all information (and hyperlinks) to fully understand the message.
 - `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire).

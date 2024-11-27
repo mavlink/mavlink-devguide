@@ -78,6 +78,7 @@ To use the two modules on your MAV, you have to do the following steps:
   px_system_control --heartbeat &
   px_camera -o lcm &
   ```
+
 - Compile and start _QGroundControl_.
 - Start the image streaming component (you can add the `-v` flag to see some more output): `px_imagestreamer`.
 - Initiate the image stream: Open the HUD widget, right-click into the widget and choose **Enable live Image Streaming**.

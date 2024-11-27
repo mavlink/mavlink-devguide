@@ -25,7 +25,7 @@ In order to reduce traffic to the bare minimum, some of the fundamental assumpti
   The heartbeat is used to build MAVLink routing tables between channels.
   Commands addressed specifically to the high latency component may not be routed from another channel (i.e. you can connect to the component from a GCS directly, but not via a MAVLink router).
   :::
-  
+
 - Only the [command protocol](../services/command.md) service messages and [HIGH_LATENCY2](#HIGH_LATENCY2) message should be sent over the high latency channel.
 
 The other rules are essentially the same but there are some implications of the above changes:

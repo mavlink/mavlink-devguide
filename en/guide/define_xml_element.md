@@ -91,46 +91,48 @@ To create a new dialect file:
 1. Create a dialect file named after your MAVLink system (e.g. flight stack) in **message_definitions/v1.0/**
 1. Copy the following text into the new file.
 
-    ```xml
-    <?xml version="1.0"?>
-    <mavlink>
+   ```xml
+   <?xml version="1.0"?>
+   <mavlink>
 
-        <include>common.xml</include>
-        <!-- <version>9</version> -->
-        <dialect>8</dialect>
+       <include>common.xml</include>
+       <!-- <version>9</version> -->
+       <dialect>8</dialect>
 
-        <enums>
-            <!-- Enums are defined here (optional) -->
-        </enums>
+       <enums>
+           <!-- Enums are defined here (optional) -->
+       </enums>
 
-        <messages>
-            <!-- Messages are defined here (optional) -->
-        </messages>
+       <messages>
+           <!-- Messages are defined here (optional) -->
+       </messages>
 
-    </mavlink>
-    ```
+   </mavlink>
+   ```
 
-    The template assumes that your dialect:
+   The template assumes that your dialect:
 
-    - imports **common.xml** (`<include>common.xml</include>`)
-    - takes its version from **common.xml** (which is why the `version` tags are commented out).
+   - imports **common.xml** (`<include>common.xml</include>`)
+   - takes its version from **common.xml** (which is why the `version` tags are commented out).
 
 1. Update the `include`(s):
-    - if the dialect is not based on **common.xml** remove the existing `include` line
-    - Add additional `<include> </include>` elements to import additional files/dialects.
 
-      ::: info
-      Includes in nested files are ignored.
-      :::
+   - if the dialect is not based on **common.xml** remove the existing `include` line
+   - Add additional `<include> </include>` elements to import additional files/dialects.
+
+     ::: info
+     Includes in nested files are ignored.
+     :::
 
 1. Update the `version`:
-    - Most dialects should leave the version commented out (i.e. all dialects that include **common.xml**).
-    - Dialects that are _not_ based on **common.xml** can uncomment the `<version>6</version>` line and use whatever version is desired.
 
-      ::: info
-      The `version` specified in the top level file is used by default, if present.
-      If it is not present in the file, then a `version` from an included file is used.
-      :::
+   - Most dialects should leave the version commented out (i.e. all dialects that include **common.xml**).
+   - Dialects that are _not_ based on **common.xml** can uncomment the `<version>6</version>` line and use whatever version is desired.
+
+     ::: info
+     The `version` specified in the top level file is used by default, if present.
+     If it is not present in the file, then a `version` from an included file is used.
+     :::
 
 1. Update the `<dialect>8</dialect>` line to replace `8` with the next-largest unused dialect number (based on the other files in the folder).
 1. Optionally remove the `enums` or `messages` sections if you don't plan on declaring any elements of these types.
@@ -364,6 +366,7 @@ The main rules for enums are:
 - Enums _may_ be marked as deprecated.
 - Enums _must_ have at least one enum entry.
 - Entries:
+
   - _must_ have a `name` attribute.
     - The `name` must be unique across all entries in the enum.
     - By _convention_, the `name` should be prefixed with the enum name (e.g. enum `LANDING_TARGET_TYPE` has entry `LANDING_TARGET_TYPE_LIGHT_BEACON`).

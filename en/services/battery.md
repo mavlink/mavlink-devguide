@@ -11,7 +11,7 @@ MAVLink provides a number of messages for providing battery information:
   `BATTERY_STATUS` is expected to be superseded by [BATTERY_STATUS_V2](../messages/development.html#BATTERY_STATUS_V2).
   For more information see [RFC 0018 - Improved Battery Status Reporting](https://github.com/mavlink/rfcs/pull/19).
   :::
-  
+
 - [BATTERY_INFO](#BATTERY_INFO): Battery information that changes rarely, if ever (e.g. device name):
 
   - Emit on connection and/or when requested using [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE).
@@ -26,13 +26,13 @@ A GCS is expected to provide enough information from the individual battery repo
 
 ## Message/Enum Summary
 
-| Message                                                                                 | Description                                                                                                                         |
-| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Message                                                                           | Description                                                                                                                         |
+| --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="BATTERY_STATUS"></a>[BATTERY_STATUS](../messages/common.md#BATTERY_STATUS) | Battery message used for frequent status update - e.g. of current capacity, voltages, faults, etc.                                  |
 | <a id="BATTERY_INFO"></a>[BATTERY_INFO](../messages/common.md#BATTERY_INFO) (WIP) | Battery message used for invariant or infrequently changing data - e.g. battery name, battery full/empty capacity and voltages etc. |
 
-| Enum                                                                                             | Description               |
-| ------------------------------------------------------------------------------------------------ | ------------------------- |
+| Enum                                                                                       | Description               |
+| ------------------------------------------------------------------------------------------ | ------------------------- |
 | <a id="MAV_BATTERY_FAULT"></a>[MAV_BATTERY_FAULT](../messages/common.md#MAV_BATTERY_FAULT) | Fault/health indications. |
 | <a id="MAV_BATTERY_MODE"></a>[MAV_BATTERY_MODE](../messages/common.md#MAV_BATTERY_MODE)    | Battery mode.             |
 

@@ -248,7 +248,7 @@ The sequence of operations is:
    The Drone must acknowledge the `PARAM_SET` by broadcasting a `PARAM_VALUE` even if the write operation fails.
    In this case the `PARAM_VALUE` will be the current/unchanged parameter value.
    :::
-   
+
 1. GCS should update the [parameter cache](#parameter_caching) (if used) with the new value.
 1. The GCS may restart the sequence if the expected `PARAM_VALUE` is not received within the timeout, or if the write operation fails (the value returned in `PARAM_VALUE` does not match the value set).
 

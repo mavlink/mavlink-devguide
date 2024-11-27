@@ -26,7 +26,7 @@ The following instructions show how to build and run the example.
    ::: info
    The example will not work with MAVLink 1 because it uses a message that includes extension fields which do not exist in MAVLink 1 (`SYS_STATUS`).
    :::
-   
+
    ::: info
    You can put/generate the library wherever you like, but the build command below assumes they are located in directory named **include** below the MAVLink root directory.
    :::
