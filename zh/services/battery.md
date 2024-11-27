@@ -7,7 +7,7 @@ MAVLink provides a number of messages for providing battery information:
   - Emitted for both "dumb" and "smart" batteries at around 0.5 Hz (for each battery).
   - Smart batteries may provide [fault](#MAV_BATTERY_FAULT) and [mode](#MAV_BATTERY_MODE) information in this message, which are typically not provided by "dumb" batteries.
 
-  > **Note** `BATTERY_STATUS` is expected to be superseded by [BATTERY_STATUS_V2](../messages/development.html#BATTERY_STATUS_V2). For more information see [RFC 0018 - Improved Battery Status Reporting](https://github.com/mavlink/rfcs/pull/19).
+  > [!NOTE] `BATTERY_STATUS` is expected to be superseded by [BATTERY_STATUS_V2](../messages/development.html#BATTERY_STATUS_V2). For more information see [RFC 0018 - Improved Battery Status Reporting](https://github.com/mavlink/rfcs/pull/19).
 
 - [SMART_BATTERY_INFO](#SMART_BATTERY_INFO): Battery information that changes rarely, if ever (e.g. device name).
 
@@ -15,7 +15,7 @@ MAVLink provides a number of messages for providing battery information:
 
 The messages should be sent individually for each battery in the system (the messages have an instance id field that is used to identify the corresponding battery). It is up to the GCS to provide an appropriate mechanism that allows the user to assess the aggregate battery status on systems that have multiple batteries. It is up to the GCS to provide an appropriate mechanism that allows the user to assess the aggregate battery status on systems that have multiple batteries.
 
-> **Note** There is no standardized mechanism to report the "aggregate" battery state on a multi-battery system. **Note** There is no standardized mechanism to report the "aggregate" battery state on a multi-battery system. A GCS is expected to provide enough information from the individual battery reports to allow a user to make a reasonable assessment of vehicle battery status.
+> [!NOTE] There is no standardized mechanism to report the "aggregate" battery state on a multi-battery system. **Note** There is no standardized mechanism to report the "aggregate" battery state on a multi-battery system. A GCS is expected to provide enough information from the individual battery reports to allow a user to make a reasonable assessment of vehicle battery status.
 
 ## Message/Enum Summary
 
@@ -37,7 +37,7 @@ Smart batteries that are distinct components on the MAVLink network must:
 
 - emit a [HEARTBEAT](../messages/common.md#HEARTBEAT) with `HEARTBEAT.type`=[MAV_TYPE_BATTERY](../messages/common.md#MAV_TYPE_BATTERY) -have a unique component ID within the MAVLink system. [MAV_COMP_ID_BATTERY](../messages/common.md#MAV_COMP_ID_BATTERY) and [MAV_COMP_ID_BATTERY2](../messages/common.md#MAV_COMP_ID_BATTERY2) should be used by default for the first two battery instances. Subsequent instances can use any spare/unused ID. [MAV_COMP_ID_BATTERY](../messages/common.md#MAV_COMP_ID_BATTERY) and [MAV_COMP_ID_BATTERY2](../messages/common.md#MAV_COMP_ID_BATTERY2) should be used by default for the first two battery instances. Subsequent instances can use any spare/unused ID.
 
-> **Note** Ground stations (and other components) that are interested in battery messages should differentiate batteries based on `BATTERY_STATUS.id`/`SMART_BATTERY_INFO.id`.
+> [!NOTE] Ground stations (and other components) that are interested in battery messages should differentiate batteries based on `BATTERY_STATUS.id`/`BATTERY_INFO.id`.
 
 ## A Note on SYS_STATUS
 
@@ -47,4 +47,4 @@ On a single-battery system these usually provide the same information as the `BA
 
 On multi-battery systems the values are not standardised, and depend on the flight stack and/or flight stack configuration. On multi-battery systems the values are not standardised, and depend on the flight stack and/or flight stack configuration. For example, a system may report the same information as the first `BATTERY_STATUS`, allow the user to configure which battery is reported (i.e. with a parameter), report the battery with the lowest remaining capacity.
 
-> **Note** GCS should not rely on the value of `SYS_STATUS`. However it cannot be removed because it is used for battery reporting on many legacy systems (e.g. On-screen displays). However it cannot be removed because it is used for battery reporting on many legacy systems (e.g. On-screen displays).
+> [!NOTE] GCS should not rely on the value of `SYS_STATUS`. However it cannot be removed because it is used for battery reporting on many legacy systems (e.g. On-screen displays).
