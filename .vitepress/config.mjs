@@ -8,8 +8,8 @@ import tabsPlugin from "@red-asuka/vitepress-plugin-tabs";
 export default defineConfig({
   title: "MAVLink Guide",
   description: "MAVLink Developer Guide",
-  base: process.env.BRANCH_NAME ? "/" + process.env.BRANCH_NAME + "/" : "",
-
+  //base: process.env.BRANCH_NAME ? "/" + process.env.BRANCH_NAME + "/" : "", //Build doesn't use branches!
+  base: "",
   srcExclude: [
     "de/**/*.md",
     "ja/**/*.md",
