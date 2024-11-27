@@ -1,16 +1,6 @@
 name: Docs
 
 on:
-  push:
-    branches:
-      - master
-    tags:
-      - 'v*'
-    paths:
-      - './**'
-  pull_request:
-    paths:
-      - './**'
 
   workflow_dispatch:
 
