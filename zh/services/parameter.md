@@ -13,18 +13,18 @@ The key/value pair has a number of important properties:
 
 ## Message/Enum Summary
 
-| Message                                                                                         | Description                                                                                                                                                                                                                                                        |
+| 消息                                                                                              | 描述                                                                                                                                                                                                                                                                 |
 | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id="PARAM_REQUEST_LIST"></a>[PARAM_REQUEST_LIST](../messages/common.md#PARAM_REQUEST_LIST) | Request all parameters. The recipient broadcast all parameter values using [PARAM_VALUE](#PARAM_VALUE).                                                                                                                                                            |
 | <a id="PARAM_REQUEST_READ"></a>[PARAM_REQUEST_READ](../messages/common.md#PARAM_REQUEST_READ) | Request a single parameter. The recipient broadcasts the specified parameter value using [PARAM_VALUE](#PARAM_VALUE).                                                                                                                                              |
 | <a id="PARAM_SET"></a>[PARAM_SET](../messages/common.md#PARAM_SET)                              | Send command to set a specified parameter to a value. After the value has been set (whether successful or not), the recipient should broadcast the current value using [PARAM_VALUE](#PARAM_VALUE).                                                                |
 | <a id="PARAM_VALUE"></a>[PARAM_VALUE](../messages/common.md#PARAM_VALUE)                        | The current value of a parameter, broadcast in response to a request to get one or more parameters ([PARAM_REQUEST_READ](#PARAM_REQUEST_READ), [PARAM_REQUEST_LIST](#PARAM_REQUEST_LIST)) or whenever a parameter is set ([PARAM_SET](#PARAM_SET)) or changes. |
 
-| Enum                                                                                | Description                                                                                                                                                                                                                              |
+| Enum                                                                                | 描述                                                                                                                                                                                                                                       |
 | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="MAV_PARAM_TYPE"></a>[MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE) | [PARAM_SET](#PARAM_SET) and [PARAM_VALUE](#PARAM_VALUE) store/encode parameter values within a `float` field. This type conveys the real type of the encoded parameter value, e.g. `MAV_PARAM_TYPE_UINT16`, `MAV_PARAM_TYPE_INT32`, etc. |
 
-| Flags                                                                                                                                                                              | Description                                                                                                                                                                      |
+| Flags                                                                                                                                                                              | 描述                                                                                                                                                                               |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE"></a>[MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](../messages/common.md#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) | Parameter values are [byte-wise encoded](#parameter-encoding) in the [PARAM_SET.param_value](#PARAM_SET) and [PARAM_VALUE.param_value](#PARAM_VALUE) fields (`float`).       |
 | <a id="MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST"></a>[MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](../messages/common.md#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST)     | Parameter values are [encoded using C casts](#parameter-encoding) into the [PARAM_SET.param_value](#PARAM_SET) and [PARAM_VALUE.param_value](#PARAM_VALUE) fields (`float`). |
@@ -39,7 +39,7 @@ These protocol bits indicate different bytewise and C-style [parameter value enc
 
 ## Parameter Names
 
-Parameters names/ids are set in the `param_id` field of messages where they are used. The `param_id` string can store up to 16 characters. The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars.
+Parameters names/ids are set in the `param_id` field of messages where they are used. Parameters names/ids are set in the `param_id` field of messages where they are used. The `param_id` string can store up to 16 characters. The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars. The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars.
 
 ## Parameter Encoding
 
@@ -74,7 +74,7 @@ Pymavlink does not include special support to byte-wise encode the non-float dat
 
 There is a good example of how to do this in the Pymavlink [mavparm.py](https://github.com/ArduPilot/pymavlink/blob/master/mavparm.py) module (see `MAVParmDict.mavset()`).
 
-## Parameter Types
+## 参数类型
 
 The allowed parameter types are given in [MAV_PARAM_TYPE](../messages/common.md#MAV_PARAM_TYPE).
 
