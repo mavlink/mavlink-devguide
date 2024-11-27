@@ -94,7 +94,8 @@ The _MAVLink 1_ pre-built library [mavlink/c_library_v1](https://github.com/mavl
 
 The _MAVLink 2_ C library offers the same range of APIs as was offered by _MAVLink 1_.
 
-> **Note** The major change from an API perspective is that you don't need to provide a message CRC table any more, or message length table.
+> [!NOTE]
+> The major change from an API perspective is that you don't need to provide a message CRC table any more, or message length table.
 > These have been folded into a single packed table, replacing the old table which was indexed by `msgId`.
 > That was necessary to cope with the much larger 24 bit namespace of message IDs.
 
@@ -244,7 +245,8 @@ A [MAVLink Command](../services/command.md) encodes a command defined in a [MAV_
 
 Command packets are parsed and decoded in the same way as [any other payload](#decode_payload) - i.e. you switch on message id of `MAVLINK_MSG_ID_COMMAND_INT`/`MAVLINK_MSG_ID_COMMAND_LONG` and call the decoder functions `mavlink_msg_command_int_decode()`/`mavlink_msg_command_long_decode()` (respectively) to get a C struct mapping the original message.
 
-> **Note** The message types differ in that `COMMAND_INT` has `int32` types for parameter fields 6 and 7 (instead of `float`) and also includes a field for the geometric frame of reference of any positional information in the command.
+> [!NOTE]
+> The message types differ in that `COMMAND_INT` has `int32` types for parameter fields 6 and 7 (instead of `float`) and also includes a field for the geometric frame of reference of any positional information in the command.
 
 To decode the specific command you then switch on the value of the `mavlink_command_int_t.command` or `mavlink_command_long_t.command` field, which contains the particular `MAV_CMD` id.
 
@@ -314,7 +316,8 @@ if (msg->magic == MAVLINK_STX_MAVLINK1) {
 
 In most cases this should not be necessary as the XML message definition files for _MAVLink 1_ and _MAVLink 2_ are the same, so you can treat incoming _MAVLink 1_ messages the same as _MAVLink 2_ messages.
 
-> **Note** _MAVLink 1_ is restricted to message IDs less than 256, so any messages with a higher message ID won't be received as _MAVLink 1_.
+> [!NOTE]
+> _MAVLink 1_ is restricted to message IDs less than 256, so any messages with a higher message ID won't be received as _MAVLink 1_.
 
 It is advisable to switch to _MAVLink 2_ when the communication partner sends _MAVLink 2_ (see [Version Handshaking](../guide/mavlink_version.md#version_handshaking)). The minimal solution is to watch incoming packets using code similar to this:
 

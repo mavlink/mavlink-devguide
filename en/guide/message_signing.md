@@ -18,7 +18,8 @@ The signed packet format is shown below.
 
 ![MAVLink 2 Signed](../../assets/packets/packet_mavlink_v2_signing.png)
 
-> **Note** The [incompatibility flags](../guide/mavlink_2.md#incompat_flags) in the packet header are used to indicate that the MAVLink library must reject the packet if it does not understand or cannot handle the flag.
+> [!NOTE]
+> The [incompatibility flags](../guide/mavlink_2.md#incompat_flags) in the packet header are used to indicate that the MAVLink library must reject the packet if it does not understand or cannot handle the flag.
 > In other words, a MAVLink library that does not support signing must drop signed packets.
 > The C library uses [MAVLINK_IFLAG_SIGNED](../guide/mavlink_2.md#MAVLINK_IFLAG_SIGNED) to represent the "supports message signing" bit.
 
@@ -43,7 +44,8 @@ The monotonically increasing [timestamp](#timestamp) rule is applied separately 
 (SystemID,ComponentID,LinkID)
 ```
 
-> **Note** For more information see [C Message Signing > Handling Link IDs](../mavgen_c/message_signing_c.md#handling_link_ids).
+> [!NOTE]
+> For more information see [C Message Signing > Handling Link IDs](../mavgen_c/message_signing_c.md#handling_link_ids).
 
 ### Signature {#signature}
 
@@ -60,7 +62,8 @@ signature = sha256_48(secret_key + header + payload + CRC + link-ID + timestamp)
 
 The timestamp is a 48 bit number with units of 10 microseconds since 1st January 2015 GMT. For systems where the time since 1/1/1970 is available (the unix epoch) you can use an offset in seconds of 1420070400.
 
-> **Note** This is a loose definition, as the various update mechanisms detailed below may result in the timestamp being significantly different from actual GMT time.
+> [!NOTE]
+> This is a loose definition, as the various update mechanisms detailed below may result in the timestamp being significantly different from actual GMT time.
 
 All timestamps generated must be at least 1 more than the previous timestamp sent in the same session for the same link/`(SystemID, ComponentID, LinkID)` tuple.
 The timestamp may get ahead of GMT time if there is a burst of packets at a rate of more than 100 thousand packets per second.
@@ -74,7 +77,10 @@ Systems should implement the following rules to obtain a reliable timestamp:
 - If the system does not have an RTC mechanism then it should update its timestamp when GPS lock is achieved. The maximum of the timestamp from the GPS and the stored timestamp should be used.
 - The timestamp should be incremented by one on each message sent from a particular link.
 - When a correctly signed message is decoded the timestamp should be replaced by the timestamp of the incoming message if that timestamp is greater than the current timestamp.
-  > **Note** The link timestamp must never be updated with the timestamp from an incorrectly signed packet (even if these are being [accepted](#accepting_incorrectly_signed_packets)).
+
+  > [!NOTE]
+  > The link timestamp must never be updated with the timestamp from an incorrectly signed packet (even if these are being [accepted](#accepting_incorrectly_signed_packets)).
+
 - The timestamp on incoming signed messages should be checked against the previous timestamp for the incoming `(linkID,srcSystem,SrcComponent)` tuple and the message rejected if it is smaller.
 - If there is no previous message with the given `(linkID,srcSystem,SrcComponent)` then the timestamp should be accepted if it not more than 6 million (one minute) behind the current timestamp.
 
@@ -95,7 +101,8 @@ MAVLink libraries should provide a mechanism that allows a system to conditional
 
 The rules for accepting these packets will be implementation specific, but could be based on a combination of a parameter setting, transport type, message type, (in)compatibility flags etc.
 
-> **Note** All packets that do not meet the system-specific unsigned packet acceptance rules must be rejected
+> [!NOTE]
+> All packets that do not meet the system-specific unsigned packet acceptance rules must be rejected
 > (otherwise there is no benefit gained from signing/authentication).
 
 Some suggestions for when to accept unsigned packets:
@@ -112,7 +119,8 @@ MAVLink libraries should provide a mechanism that allows a system to conditional
 
 This feature might be useful for finding a lost vehicle with a corrupted secret key (the GCS could choose to still display position information, albeit ideally with a different "untrusted" icon).
 
-> **Note** A system that is accepting incorrectly signed packets should provide a highly conspicuous indication that the connection is _unsafe_/_insecure_. Malformed signed packets indicate a bad configuration, transport failure, protocol failure, or hostile manipulation.
+> [!NOTE]
+> A system that is accepting incorrectly signed packets should provide a highly conspicuous indication that the connection is _unsafe_/_insecure_. Malformed signed packets indicate a bad configuration, transport failure, protocol failure, or hostile manipulation.
 
 ## Secret Key Management {#secret_key}
 
@@ -120,7 +128,8 @@ A secret key is 32 bytes of binary data that are used to create message signatur
 The key should be created on one system in the network (often a GCS) and shared to other trusted devices via secure channels.
 Systems must have a shared key in order to be able to communicate.
 
-> **Note** The _mavgen_ [C](../mavgen_c/message_signing_c.md) and [Python](../mavgen_python/README.md#message_signing) libraries support only one key per link.
+> [!NOTE]
+> The _mavgen_ [C](../mavgen_c/message_signing_c.md) and [Python](../mavgen_python/index.md#message_signing) libraries support only one key per link.
 > This is a choice of the library and not a limit/requirement of the protocol.
 > An implementation might instead store a pool of keys, and/or manage keys on a per-connection basis.
 
@@ -162,4 +171,5 @@ The [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWA
 - Evaluation of security effectiveness, including resistance to replay and offline attacks.
 - Assumptions.
 
-> **Note** Much of this content is derived from the [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) (Google Doc).
+> [!NOTE]
+> Much of this content is derived from the [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) (Google Doc).

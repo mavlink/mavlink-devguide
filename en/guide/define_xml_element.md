@@ -4,7 +4,8 @@ MAVLink enums, messages, commands, and other elements are [defined within XML fi
 
 This topic provides practical guidance for defining and extending MAVLink XML elements, including conventions and best-practice.
 
-> **Note** For detailed information about the file format see [MAVLink XML Schema](../guide/xml_schema.md) (you can also inspect [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialect files).
+> [!NOTE]
+> For detailed information about the file format see [MAVLink XML Schema](../guide/xml_schema.md) (you can also inspect [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialect files).
 
 <span></span>
 
@@ -46,9 +47,8 @@ MAVLink systems typically fork and maintain a copy of this repo (e.g. [ArduPilot
 
 > **Tip** The official repo is forked and/or cloned into your environment when you [Install MAVLink](../getting_started/installation.md).
 
-<span></span>
-
-> **Note** A project/dialect doesn't _have to_ push changes back to MAVLink.
+> [!NOTE]
+> A project/dialect doesn't _have to_ push changes back to MAVLink.
 > However this makes sense if you want to publish your messages more widely, and potentially get them moved into the **common.xml** message set.
 
 ## Where Should MAVLink Elements be Created?
@@ -57,7 +57,8 @@ The enums and messages that are generally useful for many flight stacks and grou
 The MAVLink elements supported by a particular autopilot system or protocol are referred to as _dialects_.
 The _dialects_ are stored in separate XML files, which typically `include` (import) **common.xml** and define just the elements needed for system-specific functionality.
 
-> **Note** When a MAVLink library is generated from a dialect file, code is created for all messages in both the dialect and any included files (e.g. **common.xml**), and entries for a particular enum are merged.
+> [!NOTE]
+> When a MAVLink library is generated from a dialect file, code is created for all messages in both the dialect and any included files (e.g. **common.xml**), and entries for a particular enum are merged.
 > The generator reports errors if there are name or id clashes between imported messages or enum entries.
 
 Where you define an element depends on whether it is common or a dialect, and whether the project is public or private.
@@ -112,13 +113,18 @@ To create a new dialect file:
 1. Update the `include`(s):
     - if the dialect is not based on **common.xml** remove the existing `include` line
     - Add additional `<include> </include>` elements to import additional files/dialects.
-      > **Note** Includes in nested files are ignored.
+
+      > [!NOTE]
+      > Includes in nested files are ignored.
+
 1. Update the `version`:
     - Most dialects should leave the version commented out (i.e. all dialects that include **common.xml**).
     - Dialects that are _not_ based on **common.xml** can uncomment the `<version>6</version>` line and use whatever version is desired.
 
-      > **Note** The `version` specified in the top level file is used by default, if present.
-          If it is not present in the file, then a `version` from an included file is used.
+      > [!NOTE]
+      > The `version` specified in the top level file is used by default, if present.
+      > If it is not present in the file, then a `version` from an included file is used.
+
 1. Update the `<dialect>8</dialect>` line to replace `8` with the next-largest unused dialect number (based on the other files in the folder).
 1. Optionally remove the `enums` or `messages` sections if you don't plan on declaring any elements of these types.
 1. Add enums or messages as described in the following sections.
@@ -482,7 +488,8 @@ These unused parameters can be treated as _reserved_, allowing them to be reused
 A reserved `param` **must** always be sent with a (default) value of _either_ `0` or `NaN` (which will be interpreted by recipient as "no action" or "not supported").
 If the param is reused the original default value must still mean "no action", so that an updated system can still interact with a system that has not been updated.
 
-> **Note** Unfortunately this means that a reserved `param` must have its default value decided when the command is declared!
+> [!NOTE]
+> Unfortunately this means that a reserved `param` must have its default value decided when the command is declared!
 > The default value cannot later be changed from `NaN` to `0` (or visa versa) without potential compatibility issues.
 
 To declare a `param` as `reserved` with `default` value of `NaN` you should use the following syntax.

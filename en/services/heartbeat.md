@@ -42,7 +42,8 @@ The `HEARTBEAT` may also used by GCS (or Developer API) to determine if it **can
 For example, _QGroundControl_ will only connect to a vehicle system (i.e. not another GCS, gimbal, or onboard controller), and also checks that it has a non-zero system ID before displaying the vehicle connected message.
 QGC also uses the specific type of vehicle and other heartbeat information to control layout of the GUI.
 
-> **Note** The specific code for connecting to _QGroundControl_ can be found in [MultiVehicleManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/MultiVehicleManager.cc) (see `void MultiVehicleManager::_vehicleHeartbeatInfo`).
+> [!NOTE]
+> The specific code for connecting to _QGroundControl_ can be found in [MultiVehicleManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/MultiVehicleManager.cc) (see `void MultiVehicleManager::_vehicleHeartbeatInfo`).
 
 ## Component Identity
 

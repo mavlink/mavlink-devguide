@@ -12,7 +12,8 @@ Radio beacons and different types of visual markers and tags are also supported.
 The message used by this protocol is [LANDING_TARGET](../messages/common.md#LANDING_TARGET).
 This is _broadcast_ by the positioning system to indicate the position of a particular target at a particular time.
 
-> **Note** The required broadcast rate depends on the landing speed and desired accuracy;
+> [!NOTE]
+> The required broadcast rate depends on the landing speed and desired accuracy;
 > start with rates between 10 Hz and 50 Hz and tune performance as needed.
 
 The original MAVLink 1 message was designed with the assumption that the target is captured from a downward facing camera, and provides fields that are relative to the captured image.

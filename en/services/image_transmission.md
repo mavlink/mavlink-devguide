@@ -57,7 +57,8 @@ sequenceDiagram;
    Every new image comes with a new `DATA_TRANSMISSION_HANDSHAKE` ACK packet with updated image `size`, `packets` and `payload` fields.
    After this ACK packet, the new image arrives as a series of `ENCAPSULATED_DATA` packets.
 
-   > **Note** The sequence number starts at 0 for every new image of the stream.
+   > [!NOTE]
+   > The sequence number starts at 0 for every new image of the stream.
 
 1. To stop an image stream a GSC must send a new `DATA_TRANSMISSION_HANDSHAKE` request packet, with all 0 values.
    The MAVLink node will acknowledge this by sending back `DATA_TRANSMISSION_HANDSHAKE` also containing 0 values.

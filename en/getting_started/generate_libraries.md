@@ -7,7 +7,8 @@ This page shows how to use the following two code generators provided with the M
 - GUI tool: [mavgenerate](#mavgenerate)
 - Command line tool: [mavgen](#mavgen), which is the backend tool used also by mavgenerate
 
-> **Note** These generators can build MAVLink 2 and MAVLink 1 libraries for the following programming languages: C, C++11, Python, Typescript, Java, and WLua. The following programming languages are supported for MAVLink 1 libraries only: C#, JavaScript, ObjC, Swift.
+> [!NOTE]
+> These generators can build MAVLink 2 and MAVLink 1 libraries for the following programming languages: C, C++11, Python, Typescript, Java, and WLua. The following programming languages are supported for MAVLink 1 libraries only: C#, JavaScript, ObjC, Swift.
 
 <span></span>
 
@@ -16,16 +17,19 @@ This page shows how to use the following two code generators provided with the M
 
 ## Pre-requisites
 
-1. You must already have [Installed the MAVLink toolchain](../getting_started/installation.md), which includes the mavgenerate and mavgen tools used below as well as the [XML Message Definitions](../messages/README.md).
-1. If you are generating messages for a [custom dialect](../messages/README.md#dialects), copy the dialect [XML definition file(s)](../messages/README.md#xml-definition-files--dialects) into the directory [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0).
-   > **Note** _mavgen_ can handle dialects that have relative paths for included XML files (e.g typically [common.xml](../messages/common.md)), but other generators may not.
+1. You must already have [Installed the MAVLink toolchain](../getting_started/installation.md), which includes the mavgenerate and mavgen tools used below as well as the [XML Message Definitions](../messages/index.md).
+1. If you are generating messages for a [custom dialect](../messages/index.md#dialects), copy the dialect [XML definition file(s)](../messages/index.md#xml-definition-files--dialects) into the directory [message_definitions/v1.0/](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0).
+
+   > [!NOTE]
+   > _mavgen_ can handle dialects that have relative paths for included XML files (e.g typically [common.xml](../messages/common.md)), but other generators may not.
    > We recommend putting custom dialects in the same folder as the ones that come with the [mavlink/mavlink](https://github.com/mavlink/mavlink) repository.
 
 ## Building MAVLink libraries using the Mavgenerate GUI {#mavgenerate}
 
 **mavgenerate.py** is GUI code generator for MAVLink, written in Python.
 
-> **Note** _Mavgenerate_ provides a GUI front end to the [mavgen](#mavgen) command line code generator, and supports the same [options](#mavgen_options).
+> [!NOTE]
+> _Mavgenerate_ provides a GUI front end to the [mavgen](#mavgen) command line code generator, and supports the same [options](#mavgen_options).
 
 The GUI can be launched from anywhere using Python's `-m` argument:
 
@@ -39,7 +43,8 @@ Steps for generating the MAVLink library code:
 
 1. Choose the target XML file (typically in [mavlink/message_definitions/1.0](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0)).
 
-   > **Note** If using a custom dialect, first copy it into the above directory (if the dialect is dependent on **common.xml** it must be located in the same directory).
+   > [!NOTE]
+   > If using a custom dialect, first copy it into the above directory (if the dialect is dependent on **common.xml** it must be located in the same directory).
 
 1. Choose an output directory (e.g. **mavlink/include**).
 1. Select the target output programming language.
@@ -73,7 +78,8 @@ Below is an example for how to generate _MAVLink 2_ libraries for the C programm
 python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=generated/include/mavlink/v2.0 message_definitions/v1.0/your_custom_dialect.xml
 ```
 
-> **Note** The syntax for for generating Python modules is the same, except that the `--output` specifies a _filename_ rather than a directory.
+> [!NOTE]
+> The syntax for for generating Python modules is the same, except that the `--output` specifies a _filename_ rather than a directory.
 
   <!-- https://github.com/ArduPilot/pymavlink/issues/203 -->
 

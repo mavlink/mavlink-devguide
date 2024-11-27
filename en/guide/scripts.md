@@ -15,4 +15,5 @@ The scripts can be executed by running Python with the `-m` switch, which indica
 python -m pymavlink.tools.mavlogdump test_run.mavlink
 ```
 
-> **Note** Using the `-m` switch is the proper way to run Python scripts that are part of a library as per PEP-328 (and the rejected PEP-3122).
+> [!NOTE]
+> Using the `-m` switch is the proper way to run Python scripts that are part of a library as per PEP-328 (and the rejected PEP-3122).

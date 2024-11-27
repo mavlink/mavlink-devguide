@@ -12,7 +12,8 @@ For example, the interface might be used notifying of arming readiness, calibrat
 The interface provides for both common events that are shared by flight stacks or other components, and events that are specific to an implementation.
 MAVLink "common" events are defined in [mavlink/libevents/events/common.json](https://github.com/mavlink/libevents/blob/master/events/common.json).
 
-> **Note** The events interface is intended to replace the widespread use of [STATUSTEXT](../messages/common.md#STATUSTEXT) messages, which are not really fit for purpose.
+> [!NOTE]
+> The events interface is intended to replace the widespread use of [STATUSTEXT](../messages/common.md#STATUSTEXT) messages, which are not really fit for purpose.
 
 ## Key features
 

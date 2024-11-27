@@ -3,7 +3,8 @@
 The File Transfer Protocol (FTP) enables file transfer over MAVLink.
 It supports common FTP operations like: reading, truncating, writing, removing and creating files, listing and removing directories.
 
-> **Note** MAVLink FTP implementation closely follows the design of the original internet [FTP protocol](https://en.wikipedia.org/wiki/File_Transfer_Protocol) in terms of the message structure, sequences, and the supported opcodes/operations.
+> [!NOTE]
+> MAVLink FTP implementation closely follows the design of the original internet [FTP protocol](https://en.wikipedia.org/wiki/File_Transfer_Protocol) in terms of the message structure, sequences, and the supported opcodes/operations.
 > Developers can read the Internet protocol RFCs to understand MAVLink FTP.
 
 The protocol follows a client-server pattern, where all commands are sent by the GCS (client),
@@ -23,7 +24,8 @@ FTP (v1) is supported if the [AUTOPILOT_VERSION.capability](../messages/common.m
 
 This flag should only be set by a MAVLink component that supports the specific version of the protocol defined in this document.
 
-> **Note** The encoding and content of the `FILE_TRANSFER_PROTOCOL` payload field are not mandated by the specification, and other encoding schemes might be used, for example, in private networks.
+> [!NOTE]
+> The encoding and content of the `FILE_TRANSFER_PROTOCOL` payload field are not mandated by the specification, and other encoding schemes might be used, for example, in private networks.
 > If you have implemented a private encoding or different version you **must not** set the [MAV_PROTOCOL_CAPABILITY_FTP](../messages/common.md#MAV_PROTOCOL_CAPABILITY_FTP) flag.
 
 ## Payload Format {#payload}
@@ -98,7 +100,8 @@ If the error code is `FailErrno`, then `data[1]` must additionally contain an er
 
 The payload `size` field must be set to either 1 or 2, depending on whether or not `FailErrno` is specified.
 
-> **Note** These are **errors**. Normally if the GCS receives an error it should not attempt to continue the FTP operation, but instead return to an idle state.
+> [!NOTE]
+> These are **errors**. Normally if the GCS receives an error it should not attempt to continue the FTP operation, but instead return to an idle state.
 
 <!--  uint8_t enum ErrorCode: https://github.com/PX4/Firmware/blob/master/src/modules/mavlink/mavlink_ftp.h -->
 
@@ -120,7 +123,8 @@ The payload `size` field must be set to either 1 or 2, depending on whether or n
 
 The GCS (client) starts a timeout after most commands are sent (these are cleared if an ACK/NAK is received).
 
-> **Note** Timeouts may not be set for some messages. For example, a timeout need not set for [ResetSessions](#ResetSessions) as the message should always succeed.
+> [!NOTE]
+> Timeouts may not be set for some messages. For example, a timeout need not set for [ResetSessions](#ResetSessions) as the message should always succeed.
 
 If a timeout activates either the command or its response is assumed to have been lost,
 and the command should be re-sent with the same sequence number etc.
@@ -144,7 +148,8 @@ After opening a file session, [ReadFile](#ReadFile) is called to request a messa
 The process is repeated at different offsets until the whole file has been retrieved.
 The file session is then closed.
 
-> **Note** [Burst reading a file](#reading-a-file-burstreadfile) is a (generally) faster alternative to this approach.
+> [!NOTE]
+> [Burst reading a file](#reading-a-file-burstreadfile) is a (generally) faster alternative to this approach.
 
 The sequence of operations for downloading (reading) a file using [ReadFile] is shown below.
 This assumes that there are no timeouts and all operations/requests succeed.
@@ -199,7 +204,8 @@ The last message in the burst is indicated by setting `burst_complete=1` (withou
 The client tracks the recieved chunks.
 On completion of the burst (or the file), if there are any missing parts of the file it can request them using either another burst or using [ReadFile](#reading-a-file-readfile).
 
-> **Note** Burst read is a (generally) faster alternative to using [ReadFile](#ReadFile) to [read a file](#reading-a-file-readfile).
+> [!NOTE]
+> Burst read is a (generally) faster alternative to using [ReadFile](#ReadFile) to [read a file](#reading-a-file-readfile).
 > This is because fewer messages are sent and need to be waited on.
 
 The sequence of operations for a burst read is shown below (assuming there are no timeouts and all operations/requests succeed).
@@ -307,7 +313,8 @@ A timeout is not set for `TerminateSession` (the server may ignore failure of th
 
 ### Remove File
 
-> **Note** `RemoveFile` handling is implemented in PX4 but not in _QGroundControl_.
+> [!NOTE]
+> `RemoveFile` handling is implemented in PX4 but not in _QGroundControl_.
 > GCS behaviour is therefore not fully defined/tested.
 
 The sequence of operations for removing a file is shown below (assuming there are no timeouts and all operations/requests succeed).
@@ -337,7 +344,8 @@ The GSC should create a timeout after the `RemoveFile` command is sent and resen
 
 The sequence of operations for truncating a file is shown below (assuming there are no timeouts and all operations/requests succeed).
 
-> **Note** `TruncateFile` handling is implemented in PX4 but not in _QGroundControl_.
+> [!NOTE]
+> `TruncateFile` handling is implemented in PX4 but not in _QGroundControl_.
 > GCS behaviour is therefore not fully defined/tested.
 
 [![Mermaid Sequence: Truncate file](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBUcnVuY2F0ZUZpbGUgPGJyPiggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSwgb2Zmc2V0PW9mZnNldCB0byB0cnVuY2F0ZSApXG4gICAgRHJvbmUtLT4-R0NTOiBBQ0soc2l6ZT0wKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6ICBUcnVuY2F0ZUZpbGUgPGJyPiggZGF0YVswXT1wYXRoLCBzaXplPWxlbihwYXRoKSwgb2Zmc2V0PW9mZnNldCB0byB0cnVuY2F0ZSApXG4gICAgRHJvbmUtLT4-R0NTOiBBQ0soc2l6ZT0wKSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
@@ -401,7 +409,10 @@ The sequence of operations is:
        For example, given five files named _TestFile1.xml_ to _TestFile5.xml_, the entries returned at offset 2 might look like: `FTestFile3.xml\t223\0FTestFile4.xml\t755568\0FTestFile5.xml\t11111\0`
      - `size` = The size of the `data`.
 1. The operation is then repeated at different offsets to download the whole directory listing.
-   > **Note** The offset for each request will depend on how many entries were returned by the previous request(s).
+
+   > [!NOTE]
+   > The offset for each request will depend on how many entries were returned by the previous request(s).
+
 1. The operation completes when the GCS requests an entry index (`offset`) greater than or equal to the number of entries.
    In this case the drone responds with a [NAK](#error_codes) containing [EOF](#EOF) (end of file).
 
@@ -438,7 +449,8 @@ The GSC should not create timeouts or handle the NAK case (other than to report 
 
 ### Remove Directory
 
-> **Note** `RemoveDirectory` handling is implemented in PX4 but not in _QGroundControl_.
+> [!NOTE]
+> `RemoveDirectory` handling is implemented in PX4 but not in _QGroundControl_.
 > GCS behaviour is therefore not fully defined/tested.
 
 The sequence of operations for removing a directory is shown below (assuming there are no timeouts and all operations/requests succeed).

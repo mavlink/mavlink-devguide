@@ -8,7 +8,8 @@ While this is the canonical reference, it is easier to understand the XML file b
 
 The broad structure for MAVLink XML files is given below.
 
-> **Note** If you're creating a custom dialect file your file structure should be similar to the one below (but may omit any/all sections).
+> [!NOTE]
+> If you're creating a custom dialect file your file structure should be similar to the one below (but may omit any/all sections).
 
 ```xml
 <?xml version="1.0"?>
@@ -96,7 +97,8 @@ The "normal" enum `entry` tags/fields are:
 - `description` (optional): A description of the entry.
 - [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the enum is deprecated or "work in progress".
 
-> **Note** An `entry` may also define the optional elements: `param`, `hasLocation`, `isDestination`, `missionOnly`.
+> [!NOTE]
+> An `entry` may also define the optional elements: `param`, `hasLocation`, `isDestination`, `missionOnly`.
 > In practice these should only be used in the `enum` named [MAV_CMD](#MAV_CMD) (described below).
 
 ## MAVLink Commands (enum MAV_CMD) {#MAV_CMD}
@@ -104,7 +106,8 @@ The "normal" enum `entry` tags/fields are:
 Individual `entry` values in the `enum` named [MAV_CMD](#MAV_CMD) are use to define _MAVLink Commands_.
 Each command has a `value` (its "command number") and specifies up to 7 parameters.
 
-> **Note** These parameters are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages ([Mission Protocol](../services/mission.md)), or [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages ([Command Protocol](../services/command.md)).
+> [!NOTE]
+> These parameters are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages ([Mission Protocol](../services/mission.md)), or [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages ([Command Protocol](../services/command.md)).
 
 For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE):
 
@@ -205,7 +208,10 @@ The main message tags/fields are:
     - For [MAVLink 2](../guide/mavlink_2.md):
       - Valid numbers range from 0 to 16777215.
       - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1.
-        > **Note** IDs are precious in MAVLink 1!
+
+        > [!NOTE]
+        > IDs are precious in MAVLink 1!
+
   - `name`: The name attribute provides a human readable form for the message (ie "BATTERY_STATUS"). It is used for naming helper functions in generated libraries, but is not sent over the wire.
 - `description`: Human readable description of message, shown in user interfaces and in code comments.
   This should contain all information (and hyperlinks) to fully understand the message.
@@ -231,7 +237,8 @@ The main message tags/fields are:
   - `maxValue` - Maximum value for the field.
   - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`.
 
-    > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
+    > [!NOTE]
+    > This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
 
   - `invalid`: Specifies a value that can be set on a field to indicate that the data is _invalid_: the recipient should ignore the field if it has this value.
     For example, `BATTERY_STATUS.current_battery` specifies `invalid="-1"`, so a battery that does not measure supplied _current_ should set `BATTERY_STATUS.current_battery` to `-1`.

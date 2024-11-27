@@ -61,7 +61,8 @@ Primarily this means that the team developing the generator must provide suffici
    git checkout -b mydescriptivebranchname
    ```
 
-   > **Note** _Always_ branch off master for new features.
+   > [!NOTE]
+   > _Always_ branch off master for new features.
 
 3. Commit your changes with a descriptive commit message.
 

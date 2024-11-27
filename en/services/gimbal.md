@@ -26,7 +26,8 @@ The commands to use mavlink gimbals are
 
 To reboot or shut down a gimbal send the command [MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN](../messages/common.md#MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN). The options to be set for the gimbal are found in `param4`.
 
-> **Note** This is the same message/process as for autopilot systems.
+> [!NOTE]
+> This is the same message/process as for autopilot systems.
 
 ## Telemetry from Gimbal
 
