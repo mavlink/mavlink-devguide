@@ -2,12 +2,12 @@
 
 以下链接文档解释了如何将 mavlink 库用于不同的编程语言 (通过不同的代码生成器生成)。
 
-> **Note**并非所有库都有文档记录。 如果您有使用其他库的经验, 请帮助我们更新这些部分! 如果您有使用其他库的经验, 请帮助我们更新这些部分!
+> [!NOTE] Not all of the libraries are documented. 如果您有使用其他库的经验, 请帮助我们更新这些部分!
 
 - Mavgen
   
-  - [C](../mavgen_c/README.md)
-  - [Python ("Pymavlink")](../mavgen_python/README.md)
+  - [C](../mavgen_c/index.md)
+  - [Python ("Pymavlink")](../mavgen_python/index.md)
   - C++11
   - C-Sharp
   - Java

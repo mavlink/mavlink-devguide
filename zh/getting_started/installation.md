@@ -1,8 +1,8 @@
 # 安装MAVLink工具链
 
-本主题介绍如何安装[MAVLink工具链](https://github.com/mavlink/mavlink)。 该工具链包括[XML 消息定义](../messages/README.md)以及使用这些GUI命令行工具定义生成[MAVLink 源文件](../getting_started/generate_libraries.md)。
+本主题介绍如何安装[MAVLink工具链](https://github.com/mavlink/mavlink)。 The toolchain includes the [XML message definitions](../messages/index.md) as well as the the GUI/command line tools that use the definitions to [Generate MAVLink Source Files](../getting_started/generate_libraries.md).
 
-> **建议**如果你使用的是C编程语言和标准[方言](../messages/README.md#dialects)，则不需要安装或者生成源文件。 **建议**如果你使用的是C编程语言和标准[方言](../messages/README.md#dialects)，则不需要安装或者生成源文件。 只需要获取[预构建的库](../README.md#prebuilt_libraries)然后跳转到[Using C Libraries](../mavgen_c/README.md)。
+> [!TIP] You do not need to install or generate the source files if you are using the C programming language and a standard [dialect](../messages/index.md#dialects). Just get the [prebuilt libraries](../index.md#prebuilt_libraries) and then jump to [Using C Libraries](../mavgen_c/index.md).
 
 ## 先决条件
 

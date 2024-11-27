@@ -6,17 +6,15 @@ The *Camera Definition File* contains all the camera settings, the options for e
 
 At the bottom of this page, you can find a [full example](#full_example) of a *Camera Definition File*.
 
-> **Note** A *Camera Definition File* is required because the camera options differ so greatly between cameras. It is not reasonable to create specific MAVLink messages for each and every possible option and to tell the GCS the valid options for each camera setting.
+> [!NOTE] A *Camera Definition File* is required because the camera options differ so greatly between cameras. It is not reasonable to create specific MAVLink messages for each and every possible option and to tell the GCS the valid options for each camera setting.
 
 ## File Compression
 
 Camera definition files may be **.xz** compressed (this is recommended for files that are hosted on the camera component/device).
 
-> **Warning** Systems that *request* camera definition files **must** support extraction of **.xz**-compressed definition files.
-
-<span></span>
-
-> **Tip** The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems.
+> [!WARNING] Systems that *request* camera definition files **must** support extraction of **.xz**-compressed definition files.
+> 
+> [!TIP] The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems.
 
 ## Schema
 
@@ -43,7 +41,7 @@ An extended set of parameter messages is used to define settings and options. Th
 
 Parameters can be simple or quite complex, depending on the behavior they change.
 
-> **Note** The parameter `CAM_MODE` must be part of the parameter list. It maps to the command [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE). It enables exposure of different settings based on the mode, so photo settings in photo mode and video settings in video mode.
+> [!NOTE] The parameter `CAM_MODE` must be part of the parameter list. It maps to the command [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE). It enables exposure of different settings based on the mode, so photo settings in photo mode and video settings in video mode.
 
 #### Parameter Types
 
@@ -92,13 +90,13 @@ More common are parameters that provide options:
 </parameter>
 ```
 
-In this case, the GCS will automatically build a drop down list with the options defined within the `options` group. When sending/receiving the options, the `value` field is used and it is not in any way interpreted by the GCS. The `name` field is used for display only. In other words, using the example above, when the user selects *Sunset*, the GCS will send a [PARAM\_EXT\_SET](../messages/common.md#PARAM_EXT_SET) message with the id `CAM_WBMODE` and a uint32 value of 3.
+In this case, the GCS will automatically build a drop down list with the options defined within the `options` group. When sending/receiving the options, the `value` field is used and it is not in any way interpreted by the GCS. The `name` field is used for display only. In other words, using the example above, when the user selects *Sunset*, the GCS will send a [PARAM_EXT_SET](../messages/common.md#PARAM_EXT_SET) message with the id `CAM_WBMODE` and a uint32 value of 3.
 
 #### Common Parameters
 
 *Common Parameters* are reserved parameter names for which the GCS can build specific UI controls (if found in a camera definition).
 
-> **Note** These parameters are common to many cameras (though their valid options vary considerably).
+> [!NOTE] These parameters are common to many cameras (though their valid options vary considerably).
 
 | Parameter        | Description                                                            |
 | ---------------- | ---------------------------------------------------------------------- |
@@ -233,7 +231,7 @@ But this full range is only available when in *Photo Mode*. For whatever reason,
 
 This indicates to the GCS that when the `CAM_MODE` parameter is set to *Video*, only the given range for the `CAM_ISO` parameter is valid. It additionally gives a condition that this is only the case when the `CAM_EXPOSURE` mode is set to *Manual* (1).
 
-This example also tells the GCS not to display this parameter to the user (`control=“0”`). The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur. Camera Mode is a standard parameter defined in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way.
+This example also tells the GCS not to display this parameter to the user (`control=“0”`). Camera Mode is a standard parameter defined in the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way. The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur.
 
 #### Param Ranges
 
@@ -287,17 +285,17 @@ When the GCS loads and parses the XML file, it will check and see if it can find
 
 ## Protocol Definition
 
-Once the Camera Definition File is loaded by the GCS, it will request all parameters from the camera using the [PARAM\_EXT\_REQUEST\_LIST](../messages/common.md#PARAM_EXT_REQUEST_LIST) message. In response, the camera will send back all parameters using the [PARAM\_EXT\_VALUE](../messages/common.md#PARAM_EXT_VALUE) message.
+Once the Camera Definition File is loaded by the GCS, it will request all parameters from the camera using the [PARAM_EXT_REQUEST_LIST](../messages/common.md#PARAM_EXT_REQUEST_LIST) message. In response, the camera will send back all parameters using the [PARAM_EXT_VALUE](../messages/common.md#PARAM_EXT_VALUE) message.
 
-When the user makes a selection, the GCS will send the new option using the [PARAM\_EXT\_SET](../messages/common.md#PARAM_EXT_SET) message and it will expect in response a [PARAM\_EXT\_ACK](../messages/common.md#PARAM_EXT_ACK) message.
+When the user makes a selection, the GCS will send the new option using the [PARAM_EXT_SET](../messages/common.md#PARAM_EXT_SET) message and it will expect in response a [PARAM_EXT_ACK](../messages/common.md#PARAM_EXT_ACK) message.
 
-When the GCS requires a current option for a given parameter, it will use the [PARAM\_EXT\_REQUEST\_READ](../messages/common.md#PARAM_EXT_REQUEST_READ) message and it will expect in response a [PARAM\_EXT\_VALUE](../messages/common.md#PARAM_EXT_VALUE) message.
+When the GCS requires a current option for a given parameter, it will use the [PARAM_EXT_REQUEST_READ](../messages/common.md#PARAM_EXT_REQUEST_READ) message and it will expect in response a [PARAM_EXT_VALUE](../messages/common.md#PARAM_EXT_VALUE) message.
 
-> **Note** For more detailed information about the protocol see: [Extended Parameter Protocol](../services/parameter_ext.md).
+> [!NOTE] For more detailed information about the protocol see: [Extended Parameter Protocol](../services/parameter_ext.md).
 
 ## Full Camera Definition File Example {#full_example}
 
-An example camera defintition file is listed below. This can be downloaded from github here: [camera_definition_example.xml](https://raw.githubusercontent.com/mavlink/mavlink-devguide/master/en/services/camera_definition_example.xml).
+An example camera definition file is listed below. This can be downloaded from GitHub here: [camera_definition_example.xml](https://raw.githubusercontent.com/mavlink/mavlink-devguide/master/en/services/camera_definition_example.xml).
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" ?>

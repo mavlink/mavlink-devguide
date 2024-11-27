@@ -4,7 +4,7 @@ This topic provides detailed information about about MAVLink packet serializatio
 
 It is primarily intended for developers who are creating/maintaining a MAVLink generator
 
-> **Tip** MAVLink users do not typically need to understand the serialization format, as encoding/decoding is handled by the MAVLink libraries.
+> [!TIP] MAVLink users do not typically need to understand the serialization format, as encoding/decoding is handled by the MAVLink libraries.
 
 ## Packet Format {#packet_format}
 
@@ -61,7 +61,7 @@ Below is the over-the-wire format for a MAVLink 1 packet (the in-memory represen
 
 Incompatibility flags are used to indicate features that a MAVLink library must support in order to be able to handle the packet. This includes any feature that affects the packet format/ordering.
 
-> **Note** A MAVLink implementation **must discard** a packet if it does not understand any flag in the `incompat_flags` field.
+> [!NOTE] A MAVLink implementation **must discard** a packet if it does not understand any flag in the `incompat_flags` field.
 
 Supported incompatibility flags include (at time of writing):
 
@@ -83,12 +83,12 @@ Messages are encoded within the MAVLink packet:
 
 - The `msgid` (message id) field identifies the specific message encoded in the packet.
 - The `payload` field contains the message data. 
-  - MAVLink [reorders the message fields](#field_reordering) in the payload for over-the-wire transmission (from the order in the original [XML Message Definitions](../messages/README.md)).
+  - MAVLink [reorders the message fields](#field_reordering) in the payload for over-the-wire transmission (from the order in the original [XML Message Definitions](../messages/index.md)).
   - MAVLink 2 [truncates](../guide/mavlink_2.md#packet_truncation) any zero-filled bytes at the end of the payload before the message is sent and sets the packet `len` field appropriately (MAVLink 1 always sends all bytes).
 - The `len` field contains the length of the payload data.
 - A [CRC_EXTRA](#crc_extra) byte is added to the message [checksum](#checksum). A receiver can use this to confirm that it is compatible with the payload message format/definition.
   
-  > **Tip** A MAVLink library should notify a bad CRC during decoding if a message specification is incompatible (e.g. the C library [mavlink_parse_char()](../getting_started/use_libraries.md#receiving) gives a status `MAVLINK_FRAMING_BAD_CRC`).
+  > [!TIP] A MAVLink library should notify a bad CRC during decoding if a message specification is incompatible (e.g. the C library [mavlink_parse_char()](../getting_started/use_libraries.md#receiving) gives a status `MAVLINK_FRAMING_BAD_CRC`).
 
 ### Field Reordering {#field_reordering}
 
@@ -106,7 +106,7 @@ Message payload fields are reordered for transmission as follows:
 
 The only exception to the above reordering is for [MAVLink 2 extension fields](../guide/define_xml_element.md#message_extensions). Extension fields are sent in XML-declaration order and are not included in the [CRC_EXTRA](#crc_extra) calculation. This allows new extension fields to be appended to the end of a message without breaking binary compatibility.
 
-> **Warning** This ordering is unique and can be easily implemented in a protocol generator by using a stable sorting algorithm. The alternative to using sorting would be either to use inefficient alignment, which is bad for the target architectures for typical MAVLink applications, or to have function calls in the order of the variable size instead of the application context. This would lead to very confusing function signatures of serialization functions.
+> [!WARNING] This ordering is unique and can be easily implemented in a protocol generator by using a stable sorting algorithm. The alternative to using sorting would be either to use inefficient alignment, which is bad for the target architectures for typical MAVLink applications, or to have function calls in the order of the variable size instead of the application context. This would lead to very confusing function signatures of serialization functions.
 
 <!-- FYI: Field ordering is in pymavlink/generator/mavparse.py - see https://github.com/mavlink/mavlink-devguide/pull/27#issuecomment-349215965 for info -->
 
@@ -118,17 +118,15 @@ An implementation that receives a (non compliant) MAVLink 2 message with zero-fi
 
 The actual fields affected/bytes saved depends on the message and its content (MAVLink [field reordering](../guide/serialization.md#field_reordering) means that all we can say is that any truncated fields will typically be those with the smallest data size, or extension fields).
 
-> **Note** The first byte of the payload is never truncated, even if the payload consists entirely of zeros.
-
-<span></span>
-
-> **Note** The protocol only truncates empty bytes at the end of the serialized message payload; any null bytes/empty fields within the body of the payload are not affected.
+> [!NOTE] The first byte of the payload is never truncated, even if the payload consists entirely of zeros.
+> 
+> [!NOTE] The protocol only truncates empty bytes at the end of the serialized message payload; any null bytes/empty fields within the body of the payload are not affected.
 
 ### CRC_EXTRA Calculation {#crc_extra}
 
 The `CRC_EXTRA` CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message.
 
-> **Tip** Changes in [message specifications](../messages/README.md) that might make the over-the-wire format incompatible include: new/removed fields, or changes to field name, data type, order, or array length.
+> [!TIP] Changes in [message specifications](../messages/index.md) that might make the over-the-wire format incompatible include: new/removed fields, or changes to field name, data type, order, or array length.
 
 When the MAVLink code generator runs, it takes a checksum of the XML structure for each message and creates an array define `MAVLINK_MESSAGE_CRCS`. This is used to initialise the `mavlink_message_crcs[]` array in the C/C++ implementation, and is similarly used in the Python (or any other, such as the C# and JavaScript) implementation.
 
@@ -140,7 +138,7 @@ If you are doing your own implementation of MAVLink you can get this checksum in
 
 As MAVLink internally reorders the message fields according to their size to prevent word / halfword alignment issues (see [Data structure alignment](http://en.wikipedia.org/wiki/Data%20structure%20alignment) (Wikipedia) for further reference), and a wrongly implemented reordering potentially can cause inconsistencies as well, the `CRC_EXTRA` is calculated based on the over-the-air message layout rather than the XML order.
 
-> **Note** [MAVLink 2 extension fields](../guide/define_xml_element.md#message_extensions) are not included in the `CRC_EXTRA` calculation.
+> [!NOTE] [MAVLink 2 extension fields](../guide/define_xml_element.md#message_extensions) are not included in the `CRC_EXTRA` calculation.
 
 This is the Python code that calculates the `CRC_EXTRA` seed:
 
@@ -165,7 +163,7 @@ def message_checksum(msg):
 
 <!-- From https://github.com/mavlink/pymavlink/blob/master/generator/mavparse.py#L385 -->
 
-> **Note** This uses the same CRC-16/MCRF4XX checksum that is used at runtime. It calculates a CRC over the message name (such as “RAW_IMU”) followed by the type and name of each field, space separated. The order of the fields is the order they are sent over the wire. For arrays, the array length is also added.
+> [!NOTE] This uses the same CRC-16/MCRF4XX checksum that is used at runtime. It calculates a CRC over the message name (such as “RAW_IMU”) followed by the type and name of each field, space separated. The order of the fields is the order they are sent over the wire. For arrays, the array length is also added.
 
 ## Checksum {#checksum}
 

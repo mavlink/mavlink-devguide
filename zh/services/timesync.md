@@ -6,7 +6,7 @@ The protocol uses just one message [TIMESYNC](#TIMESYNC), which has two `int64_t
 
 This sequence is run multiple times and filtered/averaged to reduce the transient effects of the channel and processor usage on the offset calculation.
 
-> **Note** This version replaces [Time Synchronization Protocol v1](#time-synchronization-protocol-v1).
+> [!NOTE] This version replaces [Time Synchronization Protocol v1](#time-synchronization-protocol-v1).
 
 ## Message/Enum Summary
 
@@ -29,7 +29,7 @@ The sequence is:
    - determine the round trip time (by comparing its current timestamp with the original stamp that was returned in the message in `ts1`).
    - estimate the offset between system timestamps, using the round trip time and the timestamp sent back by the remote system.
 
-   > **Note** `TIMESYNC` responses to the broadcast address indicate that the remote system supports [Time Synchronization Protocol v1](#time-synchronization-protocol-v1). Synchronization may be unreliable if there are multiple sychronising components on the network (report/log an error and upgrade the remote system). The component should ignore responses to all other addresses. Synchronization may be unreliable if there are multiple sychronising components on the network (report/log an error and upgrade the remote system). The component should ignore responses to all other addresses.
+   > [!NOTE] `TIMESYNC` responses to the broadcast address indicate that the remote system supports [Time Synchronization Protocol v1](#time-synchronization-protocol-v1). Synchronization may be unreliable if there are multiple sychronising components on the network (report/log an error and upgrade the remote system). The component should ignore responses to all other addresses.
 
 The offset is an estimate because the time spent, both inbound and outbound, will change over time based on things like link congestion and processing time. Therefore the above sequence might be run a significant number of times, and filtering used to remove outlying estimates. Therefore the above sequence might be run a significant number of times, and filtering used to remove outlying estimates.
 
@@ -43,11 +43,9 @@ Version 1 of the timesync protocol uses the same message and sequences as versio
 
 The difference is the `TIMESYNC` message in version 1 did not have `target_system` and `target_component` fields, and so the message was always broadcast. This could result in unreliable timesync if there are multiple synchronizing components on the network, because there is no way for a component to know whether a `TIMESYNC` response is to its request. This could result in unreliable timesync if there are multiple synchronizing components on the network, because there is no way for a component to know whether a `TIMESYNC` response is to its request.
 
-> **Note** ArduPilot encodes the system id in `TIMESYNC.ts1` of the request. This allows filtering of the response to a particular system (but not component), reducing the risk of clashes. This allows filtering of the response to a particular system (but not component), reducing the risk of clashes.
+> [!NOTE] ArduPilot encodes the system id in `TIMESYNC.ts1` of the request. This allows filtering of the response to a particular system (but not component), reducing the risk of clashes.
 
-<span></span>
-
-> **Note** Version 2 makes adds the target address, so a syncing system can filter on just the responses to its requests.
+> [!NOTE] Version 2 makes adds the target address, so a syncing system can filter on just the responses to its requests.
 
 ## Implementations
 

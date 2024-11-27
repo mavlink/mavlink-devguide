@@ -57,7 +57,7 @@ That said will consider moving stand-alone generators into the MAVLink project u
         git 结帐 -b mydescriptivrancanchname
         
     
-    > **Note***Always* 分支从主分支的新功能。
+    > [!NOTE] *Always* branch off master for new features.
 
 3. 用描述性承诺消息提交您的更改。
 

@@ -25,7 +25,7 @@ uint16_t checksum;          ///< CRC-16/MCRF4XX
 uint8_t signature[13];      ///< Signature which allows ensuring that the link is tamper-proof (optional)
 ```
 
-> **Note** The [MAVLink 1 packet format](../guide/serialization.md#v1_packet_format) is similar, but omits `incompat_flags`, `compat_flags` and `signature`, and only has a single byte for the message address. For more information see [Serialization > Packet Format](../guide/serialization.md#packet_format).
+> [!NOTE] The [MAVLink 1 packet format](../guide/serialization.md#v1_packet_format) is similar, but omits `incompat_flags`, `compat_flags` and `signature`, and only has a single byte for the message address. For more information see [Serialization > Packet Format](../guide/serialization.md#packet_format).
 
 ## Serialization
 

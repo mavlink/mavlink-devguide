@@ -10,7 +10,7 @@ The benefits of using *Wireshark* over other alternatives are:
 
 This topic shows how to generate a Wireshark plugin for a particular dialect file and install it on Wireshark, and how to perform basic filtering. It also provides an overview of how you can use *tcpdump* for collecting traffic on a linux computer (for later analysis).
 
-> **Note** You will need to regenerate and reimport the plugin (as shown below) if your dialect changes.
+> [!NOTE] You will need to regenerate and reimport the plugin (as shown below) if your dialect changes.
 
 ## Generate MAVLink Lua Plugin for Wireshark
 
@@ -80,7 +80,7 @@ Click on a particular message to find out its details. Below you can see the pay
 
 In addition to using filters for the usual *Wireshark* things (e.g. ips and ports) you can also use the new MAVLink filters.
 
-> **Note** This works the same way for live view and for a *pcapng* file loaded into *Wireshark*
+> [!NOTE] This works the same way for live view and for a _pcapng_ file loaded into _Wireshark_
 
 We already saw you can filter for MAVLink packets using `mavlink_proto` The following is a filter example: The following is a filter example:
 
@@ -118,7 +118,7 @@ wireshark -k -i /tmp/mavlink &
 ssh root@10.41.1.1 -p 33333 "tcpdump -s 0 -U -n -w - -i lo not port 33333" > /tmp/mavlink;
 ```
 
-> **Note** Username, IP and port above have to be adjusted to the configuration on the remote machine.
+> [!NOTE] Username, IP and port above have to be adjusted to the configuration on the remote machine.
 
 1. `mkfifo /tmp/mavlink` Creates a named pipe that is used to stream the data.
 1. `wireshark -k -i /tmp/mavlink &` Start *Wireshark*, open the named pipe as input and start the capture immediately.

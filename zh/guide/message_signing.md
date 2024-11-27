@@ -7,7 +7,7 @@
 有关使用现有 mavlink 库的开发人员的更多详细信息, 请参见:
 
 - [C 消息签名](../mavgen_c/message_signing_c.md)(mavgen)
-- [Pymavlink 消息签名](../mavgen_python/README.md#message_signing)(mavgen) <!-- Others?  -->
+- [Pymavlink Message Signing](../mavgen_python/index.md#message_signing) (mavgen) <!-- Others?  -->
 
 ## 帧格式
 
@@ -15,7 +15,7 @@
 
 ![MAVLink 2 签名](../../assets/packets/packet_mavlink_v2_signing.png)
 
-> **Note** 数据包标头中的 [incompatibility 标志 ](../guide/mavlink_2.md#incompat_flags) 用于指示如果 MAVLink 不识别或无法处理标志, 则必须拒绝数据包。 换句话说, 不支持签名的 MAVLink 库必须丢弃签名的数据包。 C 库使用 [MAVLINK_IFLAG_SIGNED](../guide/mavlink_2.md#MAVLINK_IFLAG_SIGNED) 表示 "支持消息签名" 位。 换句话说, 不支持签名的 MAVLink 库必须丢弃签名的数据包。 C 库使用 [MAVLINK_IFLAG_SIGNED](../guide/mavlink_2.md#MAVLINK_IFLAG_SIGNED) 表示 "支持消息签名" 位。
+> [!NOTE] The [incompatibility flags](../guide/mavlink_2.md#incompat_flags) in the packet header are used to indicate that the MAVLink library must reject the packet if it does not understand or cannot handle the flag. 换句话说, 不支持签名的 MAVLink 库必须丢弃签名的数据包。 C 库使用 [MAVLINK_IFLAG_SIGNED](../guide/mavlink_2.md#MAVLINK_IFLAG_SIGNED) 表示 "支持消息签名" 位。
 
 签字的13字节为：
 
@@ -36,7 +36,7 @@
     (系统 id、组件 id、链接 id)
     
 
-> **Note** 有关详细信息, 请参阅 [C Message Signing > Handling Link IDs](../mavgen_c/message_signing_c.md#handling_link_ids)。
+> [!NOTE] For more information see [C Message Signing > Handling Link IDs](../mavgen_c/message_signing_c.md#handling_link_ids).
 
 ### 签名 {#signature}
 
@@ -51,7 +51,7 @@
 
 时间戳是48位，从2015年1月1日起，单位为10微秒。 对于1/1/1970年以来可用的系统（unexpoch），你可以在 14200004 秒内使用抵消。
 
-> **Note** 这是一个松散的定义, 因为下面详细介绍的各种更新机制可能会导致时间戳与实际 GMT 时间有显著差异。
+> [!NOTE] This is a loose definition, as the various update mechanisms detailed below may result in the timestamp being significantly different from actual GMT time.
 
 生成的所有时间戳必须至少比同一会话中为同一链接 `(SystemID、组件 id、LinkID)` 元组发送的上一个时间戳多1个时间戳。 如果数据包以每秒100 000多包的速度破裂，时间戳可能提前 GMT 时间。 如果数据包以每秒100 000多包的速度破裂，时间戳可能提前 GMT 时间。
 
@@ -63,11 +63,15 @@ MAVLink 启用的设备可能不知道当前的 GMT 时间，例如，如果没�
 - 启动时使用的时间戳应该是系统时钟和存储时间戳所隐含的时间戳的最大值
 - 如果该系统没有一个 RTC 机制，则应当更新其在全球定位系统锁定时时的时间戳。 应该使用全球定位系统和存储时间戳的最大时间戳。 应该使用全球定位系统和存储时间戳的最大时间戳。
 - 从特定链接发送的每个消息中，时间戳应增加一个。
-- 当正确签名的信息被解码时，时间戳比当前时间戳高时，时间戳应替换。 当正确签名的信息被解码时，时间戳比当前时间戳高时，时间戳应替换。 > **Note** 链接的时间戳绝对不能来自错误签名的包（即使它们已经被 [accepted](#accepting_incorrectly_signed_packets)）
-- 收到的信息上的时间戳，应当与收到的 `(linkID,srcSystem,Srcontents)` 的输出时间戳进行检查，如果信息较小，则该消息被否决。
+- When a correctly signed message is decoded the timestamp should be replaced by the timestamp of the incoming message if that timestamp is greater than the current timestamp.
+    
+    > [!NOTE] The link timestamp must never be updated with the timestamp from an incorrectly signed packet (even if these are being [accepted](#accepting_incorrectly_signed_packets)).
+
+- The timestamp on incoming signed messages should be checked against the previous timestamp for the incoming `(linkID,srcSystem,SrcComponent)` tuple and the message rejected if it is smaller.
+
 - 如果没有之前的信息与给定的 `(linkID,srcSystem,Srcontent)` 那么，如果时间戳不超过600万(1分钟)，则应接受时间戳。
 
-> **Tip** 对于在持久存储中存储时间戳的设备, 实现可以通过存储两个时间戳值来防止抢占条件。 在写入时, 应更新两个值中较小的值。 在读取时, 应使用两个值中较大的值。 在写入时, 应更新两个值中较小的值。 在读取时, 应使用两个值中较大的值。
+> [!TIP] For devices that store the timestamp in persistent storage, implementations can prevent race conditions by storing two timestamp values. 在写入时, 应更新两个值中较小的值。 在读取时, 应使用两个值中较大的值。
 
 ## 接受签名包 {#accept_signed_packets}
 
@@ -83,7 +87,7 @@ MAVLink 库应该提供一种机制, 允许系统有条件地接受 *unsigned* �
 
 接受这些数据包的规则将是特定于实现的, 但可以基于参数设置、传输类型、消息类型、(in) 兼容性标志等的组合。
 
-> **Note** 所有不符合系统特定的未签名数据包接受规则的数据包都必须被拒绝 (否则将无法从登录/身份验证中获得任何好处)。
+> [!NOTE] All packets that do not meet the system-specific unsigned packet acceptance rules must be rejected (otherwise there is no benefit gained from signing/authentication).
 
 关于何时接受未签名数据包的一些建议:
 
@@ -99,13 +103,13 @@ MAVLink 库应该提供一种机制, 允许系统有条件地接受签名不正�
 
 此功能可能有助于查找带有损坏的密钥的失联飞机 (gcs 可以选择仍然显示位置信息, 尽管理想情况下使用不同的 "不受信任" 图标)。
 
-> **Note** 接受签名不正确的数据包的系统应提供一个非常明显的指示, 表明连接 *unsafe*/*insecure*。 格式错误的签名数据包表示配置错误、传输失败、协议失败或恶意操作。 格式错误的签名数据包表示配置错误、传输失败、协议失败或恶意操作。
+> [!NOTE] A system that is accepting incorrectly signed packets should provide a highly conspicuous indication that the connection is *unsafe*/*insecure*. 格式错误的签名数据包表示配置错误、传输失败、协议失败或恶意操作。
 
 ## 密钥管理 {#secret_key}
 
 密钥是32字节的二进制数据, 用于创建可由密钥的其他持有者验证的消息签名。 密钥应在网络中的一个系统 (通常是 GCS) 上创建, 并通过安全通道共享到其他受信任的设备。 系统必须具有共享密钥才能进行通信。 密钥应在网络中的一个系统 (通常是 GCS) 上创建, 并通过安全通道共享到其他受信任的设备。 系统必须具有共享密钥才能进行通信。
 
-> **Note** *mavgen* [C](../mavgen_c/message_signing_c.md) 和 [Python](../mavgen_python/README.md#message_signing) 库每个链接仅支持一个密钥。 这是库的选择, 而不是协议的限制/要求。 相反, 实现可以存储一个密钥池, 并/或在每个连接的基础上管理密钥。 这是库的选择, 而不是协议的限制/要求。 相反, 实现可以存储一个密钥池, 并/或在每个连接的基础上管理密钥。
+> [!NOTE] The *mavgen* [C](../mavgen_c/message_signing_c.md) and [Python](../mavgen_python/index.md#message_signing) libraries support only one key per link. 这是库的选择, 而不是协议的限制/要求。 相反, 实现可以存储一个密钥池, 并/或在每个连接的基础上管理密钥。
 
 密钥应存储在持久存储设备中, 并且不得通过任何可公开访问的通信协议公开。 密钥应存储在持久存储设备中, 并且不得通过任何可公开访问的通信协议公开。 特别是, 密钥不得在可以用于公共日志分析的 MAVLink 参数、MAVLink 日志文件或数据闪存日志文件中公开。
 
@@ -122,7 +126,7 @@ MAVLink 库应该提供一种机制, 允许系统有条件地接受签名不正�
 
 不通过 USB 提供 MAVLink 的自动驾驶仪可能会创建一个模块, 可以从命令行界面 (例如 nsh) 设置密钥。
 
-> **Tip** 我们建议 GCS 实现生成密钥, 并通过安全链接 (例如 USB) 与连接的系统共享密钥。 可以将接收系统配置为忽略安全通道上的消息签名 (即接受所有 [signed](#accept_signed_packets)、[unsigned](#accepting_unsigned_packets) 或 [incorrectly signed](#accepting_incorrectly_signed_packets) 数据包), 以便可以重置已丢失或损坏的密钥。 可以将接收系统配置为忽略安全通道上的消息签名 (即接受所有 [signed](#accept_signed_packets)、[unsigned](#accepting_unsigned_packets) 或 [incorrectly signed](#accepting_incorrectly_signed_packets) 数据包), 以便可以重置已丢失或损坏的密钥。
+> [!TIP] We recommend that GCS implementations should generate the secret key and share this with connected systems over a secure link (e.g. USB). 可以将接收系统配置为忽略安全通道上的消息签名 (即接受所有 [signed](#accept_signed_packets)、[unsigned](#accepting_unsigned_packets) 或 [incorrectly signed](#accepting_incorrectly_signed_packets) 数据包), 以便可以重置已丢失或损坏的密钥。
 
 ## 日志记录
 
@@ -138,4 +142,4 @@ MAVLink 库应该提供一种机制, 允许系统有条件地接受签名不正�
 - 评价安全效力，包括抵制重播和脱机攻击。
 - 假设。
 
-> **Note** 这些内容大部分来自 [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) (Google Doc)。
+> [!NOTE] Much of this content is derived from the [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) (Google Doc).
