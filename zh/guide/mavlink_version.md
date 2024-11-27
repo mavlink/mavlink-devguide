@@ -2,39 +2,50 @@
 
 MAVLink 已部署在若干版本中：
 
-- [MAVLink 2.0](../guide/mavlink_2.md)：当前/推荐的主要版本。 2017年初被主要用户采用。 2017年初被主要用户采用。
-- *MAVLink v1.0 *: 2013年前后广泛采用。 仍被许多传统的外围设备使用。 仍被许多传统的外围设备使用。
+- [MAVLink 2.0](../guide/mavlink_2.md): Current/recommended major version. 2017年初被主要用户采用。
+- _MAVLink v1.0_: Widely adopted around 2013. 仍被许多传统的外围设备使用。
 
-*MAVLink 2.0* C/C++ 和 Python 库向后兼容的 MAVLink 1.0 (支持这两个协议)。 [Version Handshaking](#version_handshaking) 和 [Negotiating Version](#negotiating_versions) 解释了如何选择使用哪种版本。 [Version Handshaking](#version_handshaking) 和 [Negotiating Version](#negotiating_versions) 解释了如何选择使用哪种版本。
+The _MAVLink 2.0_ C/C++ and Python libraries are backwards compatible with MAVLink 1.0 (support both protocols).
+[Version Handshaking](#version_handshaking) and [Negotiating Versions](#negotiating_versions) explain how to choose which version is used.
 
-> [!NOTE] *MAVLink v0.9* is a pre-release version that is no longer supported. 相关的信息于2018年8月删除。 旧代码可能存在于生成器和测试代码。
+> [!NOTE]
+> _MAVLink v0.9_ is a pre-release version that is no longer supported.
+> 相关的信息于2018年8月删除。
+> 旧代码可能存在于生成器和测试代码。
 
 ## 确定协议/消息版本
 
 库的 MAVLink 支持可以通过多种方式来确定:
 
-- [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) 可以根据 [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) 标志检查 `.capabilities`, 以验证 MAVLink 2 支持。
-- [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION), 我的时间, 我的`version` 包含 MAVLink 版本号乘以100: v1.0 为 100, <!--v2.0 为 200,--> v2.3 为203等。
-
-- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` 字段包含次要版本号。 This is the `<version>` field defined in the [Message Definitions](../messages/index.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
+- [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION)`.capabilities` can be checked against the [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag to verify MAVLink 2 support.
+- [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION).`version` contains the MAVLink version number multiplied by 100: v1.0 is 100, <!-- v2.0 is 200, --> v2.3 is 203 etc.
+- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number.
+  This is the `<version>` field defined in the [Message Definitions](../messages/index.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
 - 主要版本可以从数据包起始标记字节中确定:
-    
-    - MAVLink 1: `0xFE`
-    - MAVLink 2: `0xFD`
-    
-    > [!NOTE] A MAVLink library that does not support a protocol version will not recognise the protocol start marker; so no messages will even be detected (see [Serialization](../guide/serialization.md)).
 
-> [!TIP] While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
+  - MAVLink 1: `0xFE`
 
-## 版本握手 {#version_handshaking}
+  - MAVLink 2: `0xFD`
 
-对 *MAVLink 2 * 的支持在 [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) 消息中由 [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) 标志表示。
+  > [!NOTE]> A MAVLink library that does not support a protocol version will not recognise the protocol start marker;
+  > > so no messages will even be detected (see [Serialization](../guide/serialization.md)).
 
-如果自动驾驶仪和 gcs 之间的通信链接是完全透明的, 这就足够了。 但是, 大多数通信链路并不完全透明, 因为它们要么包括路由, 要么在数据化上固定长度的无线实现的情况下。 为了测试链接, *MAVLink 2 * 握手协议发送一个 *MAVLink 2 * 帧来测试完整的通信链。
+> [!TIP]
+> While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
 
-为此, GCS 将发送带有命令 ID [MAV_CMD_REQUEST_PROTOCOL_VERSION](../messages/common.md#MAV_CMD_REQUEST_PROTOCOL_VERSION) 的 [COMMAND_LONG](../messages/common.md#COMMAND_LONG) 或 [COMMAND_INT](../messages/common.md#COMMAND_INT) 消息。
+## Version Handshaking {#version_handshaking}
 
-如果系统支持 *MAVLink 2 * 并且握手时, 它将以 [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION) **编码为 MAVLink 2 包**。 如果它不支持 *MAVLink 2 * 则回 `NACK` 命令。 如果命令接口未得到适当执行，GCS应返回超时。 如果它不支持 *MAVLink 2 * 则回 `NACK` 命令。 如果命令接口未得到适当执行，GCS应返回超时。
+Support for _MAVLink 2_ is indicated in the [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) message by the [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag.
+
+如果自动驾驶仪和 gcs 之间的通信链接是完全透明的, 这就足够了。
+但是, 大多数通信链路并不完全透明, 因为它们要么包括路由, 要么在数据化上固定长度的无线实现的情况下。
+In order to also test the link, the _MAVLink 2_ handshake protocol sends a _MAVLink 2_ frame to test the complete communication chain.
+
+To do so, the GCS sends a [COMMAND_LONG](../messages/common.md#COMMAND_LONG) or [COMMAND_INT](../messages/common.md#COMMAND_INT) message with the command ID [MAV_CMD_REQUEST_PROTOCOL_VERSION](../messages/common.md#MAV_CMD_REQUEST_PROTOCOL_VERSION).
+
+If the system supports _MAVLink 2_ and the handshake it will respond with [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION) **encoded as MAVLink 2 packet**.
+If it does not support _MAVLink 2_ it should `NACK` the command.
+如果命令接口未得到适当执行，GCS应返回超时。
 
 下表显示完整顺序。
 
@@ -53,30 +64,39 @@ sequenceDiagram;
 
 ### 半透明的传输
 
-Some popular legacy radios (e.g. the SiK radio series) operate in semi-transparent mode by injecting [RADIO_STATUS](../messages/common.md#RADIO_STATUS) messages into the MAVLink message stream. Per MAVLink spec these should actually emit a heartbeat with the same system ID and a different component ID than the autopilot to be discoverable. However, an additional heartbeat could be an issue for deployed systems. Therefore these radios can alternatively confirm their *MAVLink 2* compliance by emitting `RADIO_STATUS` in v2 message format after receiving the first MAVLink v2 frame.
+Some popular legacy radios (e.g. the SiK radio series) operate in semi-transparent mode by injecting [RADIO_STATUS](../messages/common.md#RADIO_STATUS) messages into the MAVLink message stream. Per MAVLink spec these should actually emit a heartbeat with the same system ID and a different component ID than the autopilot to be discoverable.
+However, an additional heartbeat could be an issue for deployed systems.
+Therefore these radios can alternatively confirm their _MAVLink 2_ compliance by emitting `RADIO_STATUS` in v2 message format after receiving the first MAVLink v2 frame.
 
 ## 版本和签名
 
-The supported MAVLink library implementations enable different MAVLink versions on a per-channel basis, where a *channel* refers to a particular link in/out of a MAVLink system or component (e.g. a serial port or UDP port).
+The supported MAVLink library implementations enable different MAVLink versions on a per-channel basis, where a _channel_ refers to a particular link in/out of a MAVLink system or component (e.g. a serial port or UDP port).
 
 As a result, all [connections](../services/heartbeat.md) to other components over a particular channel must share the same MAVLink version. If a system is using signing, then all connections via the same channel must also be signing messages with the same key.
 
-> [!NOTE] A system cannot use a single channel to connect to signed MAVLink 2 systems, unsigned MAVLink 2 systems, and/or MAVLink 1 components.
+> [!NOTE]
+> A system cannot use a single channel to connect to signed MAVLink 2 systems, unsigned MAVLink 2 systems, and/or MAVLink 1 components.
 
-Currently most MAVLink networks are configured to use unsigned MAVLink 2 messages. MAVLink 1 is primarily used to allow autopilots to connect to legacy MAVLink peripherals, and this is done via a separate channel. Signed networks will need to use a further separate channel to connect to other signed systems.
+Currently most MAVLink networks are configured to use unsigned MAVLink 2 messages.
+MAVLink 1 is primarily used to allow autopilots to connect to legacy MAVLink peripherals, and this is done via a separate channel.
+Signed networks will need to use a further separate channel to connect to other signed systems.
 
 The next section explains how a system/channel should negotiate the version to use.
 
-## 协商版本 {#negotiating_versions}
+## Negotiating Versions {#negotiating_versions}
 
-Vehicle and GCS implementations will support both *MAVLink 1* and *MAVLink 2* for quite some time. We would like most users to receive the benefit of *MAVLink 2*, while still supporting implementations that don't yet support *MAVLink 2*.
+Vehicle and GCS implementations will support both _MAVLink 1_ and _MAVLink 2_ for quite some time.
+We would like most users to receive the benefit of _MAVLink 2_, while still supporting implementations that don't yet support _MAVLink 2_.
 
 The following is meant to capture best practice for vehicle firmware and GCS authors:
 
-- 飞机实现应该有一种方法来启用/禁用发送 *MAVLink 2 * 消息。 这最好是在每个链路 (通道) 的基础上, 以允许某些外围设备 *MAVLink 1 * 而其他外围设备 *MAVLink 2 *。 此选项要求重新启动飞行控制器才能生效是可以接受的。
-- 如果启用了签名, 则飞机应在启动时立即开始发送 *signed* *MAVLink 2 *。
-- 如果未启用签名, 并且启用了 *MAVLink 2 *, 则飞机可以选择通过发送 *MAVLink 1 * 启动, 并在首次收到链接上的 *MAVLink 2 * 消息时切换到链接上的 *MAVLink 2 *。
-- 如果链接上有 *MAVLink 2 *, 则飞机应在 `AUTOPILOT_VERSION` 消息中设置 `MAV_PROTOCOL_CAPABILITY_MAVLINK2` 能力标志。 如果链接上有 *MAVLink 2 *, 则飞机应在 `AUTOPILOT_VERSION` 消息中设置 `MAV_PROTOCOL_CAPABILITY_MAVLINK2` 能力标志。 如果链接当前正在发送 *MAVLink 1 * 数据包, 但 *MAVLink 2 * 数据包将被接受, 并将导致切换到 *MAVLink 2 * 的情况下, 应设置此设置。
-- GCS 实现可以选择自动切换到 *MAVLink 2 * (如果可用), 也可以选择具有 *MAVLink 2 * 的配置选项。
-- 如果 GCS 选择使用配置选项, 则在启用该选项时, 它应在启动链接时发送 *MAVLink 2 *。
-- 如果 GCS 选择使用自动切换, 则应切换到发送 *MAVLink 2 * 如果它在链接上收到 *MAVLink 2 * 消息, 或者要求发送 `AUTOPILOT_VERSION` 消息并查看 `MAV_PROTOCOL_CAPABILITY_设置了 mallink2` 标志。
+- Vehicle implementations should have a way to enable/disable the sending of _MAVLink 2_ messages.
+  This should preferably be on a per-link (channel) basis to allow for some peripherals to be _MAVLink 1_ while others are _MAVLink 2_.
+  此选项要求重新启动飞行控制器才能生效是可以接受的。
+- If signing is enabled then the vehicle should immediately start sending _signed_ _MAVLink 2_ on startup.
+- If signing is not enabled and _MAVLink 2_ is enabled then the vehicle may choose to start by sending _MAVLink 1_ and switch to _MAVLink 2_ on a link when it first receives a _MAVLink 2_ message on the link.
+- Vehicles should set the `MAV_PROTOCOL_CAPABILITY_MAVLINK2` capability flag in the `AUTOPILOT_VERSION` message if _MAVLink 2_ is available on a link.
+  This should be set in the case where the link is currently sending _MAVLink 1_ packets but _MAVLink 2_ packets will be accepted and will cause a switch to _MAVLink 2_.
+- GCS implementations can choose to either automatically switch to _MAVLink 2_ where available or to have a configuration option for _MAVLink 2_.
+- If the GCS chooses to use a configuration option then when the option is enabled it should send _MAVLink 2_ on starting the link.
+- If the GCS chooses to use automatic switching then it should switch to sending _MAVLink 2_ if either it receives a _MAVLink 2_ message on the link or by asking for the `AUTOPILOT_VERSION` message to be sent and seeing the `MAV_PROTOCOL_CAPABILITY_MAVLINK2` flag is set.
