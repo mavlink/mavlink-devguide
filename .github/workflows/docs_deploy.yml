@@ -65,11 +65,11 @@ jobs:
           # mkdir -p mavlink.io/${{ env.BRANCH_NAME }}
           # cp -r ~/_book/* mavlink.io/${{ env.BRANCH_NAME }}/
           rm -rf mavlink.io/*
-          mkdir -p mavlink.io
+          # mkdir -p mavlink.io
           cp -r ~/_book/* mavlink.io/          
           cd mavlink.io
           git config user.email "bot@px4.io"
           git config user.name "PX4BuildBot"
-          git add ${{ env.BRANCH_NAME }}
+          git add *
           git commit -a -m "MAVLink docs build update `date`"
           git push origin master
