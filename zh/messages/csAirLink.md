@@ -29,32 +29,32 @@ span.warning {
 
 None
 
-## Summary
+## 概览
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 6       | 0        |
 | [Enums](#enumerated-types) | 5       | 0        |
-| Commands                   | 0       | 0        |
+| 命令                         | 0       | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ### AIRLINK_AUTH (52000) {#AIRLINK_AUTH}
 
 Authorization package
 
-| Field Name | Type       | Description |
-| ---------- | ---------- | ----------- |
-| login      | `char[50]` | Login       |
-| password   | `char[50]` | Password    |
+| Field Name | Type       | 描述       |
+| ---------- | ---------- | -------- |
+| login      | `char[50]` | Login    |
+| password   | `char[50]` | Password |
 
 ### AIRLINK_AUTH_RESPONSE (52001) {#AIRLINK_AUTH_RESPONSE}
 
 Response to the authorization request
 
-| Field Name                     | Type      | Values                                                                                                                   | Description   |
+| Field Name                     | Type      | 值                                                                                                                        | 描述            |
 | ------------------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------ | ------------- |
 | resp_type | `uint8_t` | [AIRLINK_AUTH_RESPONSE_TYPE](#AIRLINK_AUTH_RESPONSE_TYPE) | Response type |
 
@@ -62,7 +62,7 @@ Response to the authorization request
 
 Request to hole punching
 
-| Field Name                     | Type      | Values                                                                                                                                                                                                  | Description             |
+| Field Name                     | Type      | 值                                                                                                                                                                                                       | 描述                      |
 | ------------------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | resp_type | `uint8_t` | [AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE](#AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE) | Hole push response type |
 
@@ -70,7 +70,7 @@ Request to hole punching
 
 Response information about the connected device
 
-| Field Name                                             | Type          | Values                                                                                                                                                                                                  | Description             |
+| Field Name                                             | Type          | 值                                                                                                                                                                                                       | 描述                      |
 | ------------------------------------------------------ | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | resp_type                         | `uint8_t`     | [AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE](#AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE) | Hole push response type |
 | ip_version                        | `uint8_t`     | [AIRLINK_EYE_IP_VERSION](#AIRLINK_EYE_IP_VERSION)                                                                                        | ip version              |
@@ -82,7 +82,7 @@ Response information about the connected device
 
 A package with information about the hole punching status. It is used for constant sending to avoid NAT closing timeout.
 
-| Field Name                     | Type      | Values                                                                                                                                        | Description             |
+| Field Name                     | Type      | 值                                                                                                                                             | 描述                      |
 | ------------------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | resp_type | `uint8_t` | [AIRLINK_EYE_HOLE_PUSH_TYPE](#AIRLINK_EYE_HOLE_PUSH_TYPE) | Hole push response type |
 
@@ -90,7 +90,7 @@ A package with information about the hole punching status. It is used for consta
 
 Initializing the TURN protocol
 
-| Field Name                     | Type      | Values                                                                                                                                        | Description    |
+| Field Name                     | Type      | 值                                                                                                                                             | 描述             |
 | ------------------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
 | resp_type | `uint8_t` | [AIRLINK_EYE_TURN_INIT_TYPE](#AIRLINK_EYE_TURN_INIT_TYPE) | Turn init type |
 
@@ -98,36 +98,36 @@ Initializing the TURN protocol
 
 ### AIRLINK_AUTH_RESPONSE_TYPE {#AIRLINK_AUTH_RESPONSE_TYPE}
 
-| Value                                     | Name                                                                                                                                            | Description             |
+| 值                                         | Name                                                                                                                                            | 描述                      |
 | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | <a id='AIRLINK_ERROR_LOGIN_OR_PASS'></a>0 | [AIRLINK_ERROR_LOGIN_OR_PASS](#AIRLINK_ERROR_LOGIN_OR_PASS) | Login or password error |
 | <a id='AIRLINK_AUTH_OK'></a>1             | [AIRLINK_AUTH_OK](#AIRLINK_AUTH_OK)                                                                   | Auth successful         |
 
 ### AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE {#AIRLINK_EYE_GS_HOLE_PUSH_RESP_TYPE}
 
-| Value                                       | Name                                                                                                                                                | Description |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| <a id='AIRLINK_HPR_PARTNER_NOT_READY'></a>0 | [AIRLINK_HPR_PARTNER_NOT_READY](#AIRLINK_HPR_PARTNER_NOT_READY) |             |
-| <a id='AIRLINK_HPR_PARTNER_READY'></a>1     | [AIRLINK_HPR_PARTNER_READY](#AIRLINK_HPR_PARTNER_READY)                              |             |
+| 值                                           | Name                                                                                                                                                | 描述 |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | -- |
+| <a id='AIRLINK_HPR_PARTNER_NOT_READY'></a>0 | [AIRLINK_HPR_PARTNER_NOT_READY](#AIRLINK_HPR_PARTNER_NOT_READY) |    |
+| <a id='AIRLINK_HPR_PARTNER_READY'></a>1     | [AIRLINK_HPR_PARTNER_READY](#AIRLINK_HPR_PARTNER_READY)                              |    |
 
 ### AIRLINK_EYE_IP_VERSION {#AIRLINK_EYE_IP_VERSION}
 
-| Value                       | Name                                                                      | Description |
-| --------------------------- | ------------------------------------------------------------------------- | ----------- |
-| <a id='AIRLINK_IP_V4'></a>0 | [AIRLINK_IP_V4](#AIRLINK_IP_V4) |             |
-| <a id='AIRLINK_IP_V6'></a>1 | [AIRLINK_IP_V6](#AIRLINK_IP_V6) |             |
+| 值                           | Name                                                                      | 描述 |
+| --------------------------- | ------------------------------------------------------------------------- | -- |
+| <a id='AIRLINK_IP_V4'></a>0 | [AIRLINK_IP_V4](#AIRLINK_IP_V4) |    |
+| <a id='AIRLINK_IP_V6'></a>1 | [AIRLINK_IP_V6](#AIRLINK_IP_V6) |    |
 
 ### AIRLINK_EYE_HOLE_PUSH_TYPE {#AIRLINK_EYE_HOLE_PUSH_TYPE}
 
-| Value                                   | Name                                                                                                                   | Description |
-| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------- |
-| <a id='AIRLINK_HP_NOT_PENETRATED'></a>0 | [AIRLINK_HP_NOT_PENETRATED](#AIRLINK_HP_NOT_PENETRATED) |             |
-| <a id='AIRLINK_HP_BROKEN'></a>1         | [AIRLINK_HP_BROKEN](#AIRLINK_HP_BROKEN)                                      |             |
+| 值                                       | Name                                                                                                                   | 描述 |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | -- |
+| <a id='AIRLINK_HP_NOT_PENETRATED'></a>0 | [AIRLINK_HP_NOT_PENETRATED](#AIRLINK_HP_NOT_PENETRATED) |    |
+| <a id='AIRLINK_HP_BROKEN'></a>1         | [AIRLINK_HP_BROKEN](#AIRLINK_HP_BROKEN)                                      |    |
 
 ### AIRLINK_EYE_TURN_INIT_TYPE {#AIRLINK_EYE_TURN_INIT_TYPE}
 
-| Value                                 | Name                                                                                                               | Description |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------- |
-| <a id='AIRLINK_TURN_INIT_START'></a>0 | [AIRLINK_TURN_INIT_START](#AIRLINK_TURN_INIT_START) |             |
-| <a id='AIRLINK_TURN_INIT_OK'></a>1    | [AIRLINK_TURN_INIT_OK](#AIRLINK_TURN_INIT_OK)       |             |
-| <a id='AIRLINK_TURN_INIT_BAD'></a>2   | [AIRLINK_TURN_INIT_BAD](#AIRLINK_TURN_INIT_BAD)     |             |
+| 值                                     | Name                                                                                                               | 描述 |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | -- |
+| <a id='AIRLINK_TURN_INIT_START'></a>0 | [AIRLINK_TURN_INIT_START](#AIRLINK_TURN_INIT_START) |    |
+| <a id='AIRLINK_TURN_INIT_OK'></a>1    | [AIRLINK_TURN_INIT_OK](#AIRLINK_TURN_INIT_OK)       |    |
+| <a id='AIRLINK_TURN_INIT_BAD'></a>2   | [AIRLINK_TURN_INIT_BAD](#AIRLINK_TURN_INIT_BAD)     |    |
