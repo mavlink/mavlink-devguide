@@ -78,8 +78,8 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     siteTitle: false,
     logo: {
-      light: "/assets/site/logo_mavlink_header_lightmode.png",
-      dark: "/assets/site/logo_mavlink_header_darkmode.png",
+      light: "/site/logo_mavlink_header_lightmode.png",
+      dark: "/site/logo_mavlink_header_darkmode.png",
       alt: "",
     },
     sidebar: getSidebar.sidebar("en"),
