@@ -25,23 +25,23 @@ span.warning {
 
 None
 
-## Summary
+## 概览
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 2       | 0        |
-| [Enums](#enumerated-types) | 2       | 0        |
-| Commands                   | 0       | 0        |
+| Type                    | Defined | Included |
+| ----------------------- | ------- | -------- |
+| [消息](#messages)         | 2       | 0        |
+| [枚举](#enumerated-types) | 2       | 0        |
+| 命令                      | 0       | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ### ICAROUS_HEARTBEAT (42000) {#ICAROUS_HEARTBEAT}
 
 ICAROUS heartbeat
 
-| Field Name | Type      | Values                                    | Description                           |
+| Field Name | Type      | 值                                         | 描述                                    |
 | ---------- | --------- | ----------------------------------------- | ------------------------------------- |
 | status     | `uint8_t` | [ICAROUS_FMS_STATE](#ICAROUS_FMS_STATE) | See the [FMS_STATE](#FMS_STATE) enum. |
 
@@ -49,42 +49,42 @@ ICAROUS heartbeat
 
 Kinematic multi bands (track) output from Daidalus
 
-| Field Name | Type      | Units | Values                                                  | Description                                           |
+| Field Name | Type      | Units | 值                                                       | 描述                                                    |
 | ---------- | --------- | ----- | ------------------------------------------------------- | ----------------------------------------------------- |
-| numBands   | `int8_t`  |       |                                                         | Number of track bands                                 |
+| numBands   | `int8_t`  |       |                                                         | 轨道带数                                                  |
 | type1      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | See the [TRACK_BAND_TYPES](#TRACK_BAND_TYPES) enum. |
-| min1       | `float`   | deg   |                                                         | min angle (degrees)                                   |
-| max1       | `float`   | deg   |                                                         | max angle (degrees)                                   |
+| min1       | `float`   | 度     |                                                         | 最小角度（度）                                               |
+| max1       | `float`   | 度     |                                                         | 最大角度（度）                                               |
 | type2      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | See the [TRACK_BAND_TYPES](#TRACK_BAND_TYPES) enum. |
-| min2       | `float`   | deg   |                                                         | min angle (degrees)                                   |
-| max2       | `float`   | deg   |                                                         | max angle (degrees)                                   |
+| min2       | `float`   | 度     |                                                         | 最小角度（度）                                               |
+| max2       | `float`   | 度     |                                                         | 最大角度（度）                                               |
 | type3      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | See the [TRACK_BAND_TYPES](#TRACK_BAND_TYPES) enum. |
-| min3       | `float`   | deg   |                                                         | min angle (degrees)                                   |
-| max3       | `float`   | deg   |                                                         | max angle (degrees)                                   |
+| min3       | `float`   | 度     |                                                         | 最小角度（度）                                               |
+| max3       | `float`   | 度     |                                                         | 最大角度（度）                                               |
 | type4      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | See the [TRACK_BAND_TYPES](#TRACK_BAND_TYPES) enum. |
-| min4       | `float`   | deg   |                                                         | min angle (degrees)                                   |
-| max4       | `float`   | deg   |                                                         | max angle (degrees)                                   |
+| min4       | `float`   | 度     |                                                         | 最小角度（度）                                               |
+| max4       | `float`   | 度     |                                                         | 最大角度（度）                                               |
 | type5      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | See the [TRACK_BAND_TYPES](#TRACK_BAND_TYPES) enum. |
-| min5       | `float`   | deg   |                                                         | min angle (degrees)                                   |
-| max5       | `float`   | deg   |                                                         | max angle (degrees)                                   |
+| min5       | `float`   | 度     |                                                         | 最小角度（度）                                               |
+| max5       | `float`   | 度     |                                                         | 最大角度（度）                                               |
 
 ## Enumerated Types
 
 ### ICAROUS_TRACK_BAND_TYPES {#ICAROUS_TRACK_BAND_TYPES}
 
-| Value                      | Name                                                                      | Description |
-| -------------------------- | ------------------------------------------------------------------------- | ----------- |
-| <a id='ICAROUS_TRACK_BAND_TYPE_NONE'></a>0 | [ICAROUS_TRACK_BAND_TYPE_NONE](#ICAROUS_TRACK_BAND_TYPE_NONE)         |             |
-| <a id='ICAROUS_TRACK_BAND_TYPE_NEAR'></a>1 | [ICAROUS_TRACK_BAND_TYPE_NEAR](#ICAROUS_TRACK_BAND_TYPE_NEAR)         |             |
-| <a id='ICAROUS_TRACK_BAND_TYPE_RECOVERY'></a>2 | [ICAROUS_TRACK_BAND_TYPE_RECOVERY](#ICAROUS_TRACK_BAND_TYPE_RECOVERY) |             |
+| 值                          | Name                                                                      | 描述 |
+| -------------------------- | ------------------------------------------------------------------------- | -- |
+| <a id='ICAROUS_TRACK_BAND_TYPE_NONE'></a>0 | [ICAROUS_TRACK_BAND_TYPE_NONE](#ICAROUS_TRACK_BAND_TYPE_NONE)         |    |
+| <a id='ICAROUS_TRACK_BAND_TYPE_NEAR'></a>1 | [ICAROUS_TRACK_BAND_TYPE_NEAR](#ICAROUS_TRACK_BAND_TYPE_NEAR)         |    |
+| <a id='ICAROUS_TRACK_BAND_TYPE_RECOVERY'></a>2 | [ICAROUS_TRACK_BAND_TYPE_RECOVERY](#ICAROUS_TRACK_BAND_TYPE_RECOVERY) |    |
 
 ### ICAROUS_FMS_STATE {#ICAROUS_FMS_STATE}
 
-| Value                      | Name                                                        | Description |
-| -------------------------- | ----------------------------------------------------------- | ----------- |
-| <a id='ICAROUS_FMS_STATE_IDLE'></a>0 | [ICAROUS_FMS_STATE_IDLE](#ICAROUS_FMS_STATE_IDLE)         |             |
-| <a id='ICAROUS_FMS_STATE_TAKEOFF'></a>1 | [ICAROUS_FMS_STATE_TAKEOFF](#ICAROUS_FMS_STATE_TAKEOFF)   |             |
-| <a id='ICAROUS_FMS_STATE_CLIMB'></a>2 | [ICAROUS_FMS_STATE_CLIMB](#ICAROUS_FMS_STATE_CLIMB)       |             |
-| <a id='ICAROUS_FMS_STATE_CRUISE'></a>3 | [ICAROUS_FMS_STATE_CRUISE](#ICAROUS_FMS_STATE_CRUISE)     |             |
-| <a id='ICAROUS_FMS_STATE_APPROACH'></a>4 | [ICAROUS_FMS_STATE_APPROACH](#ICAROUS_FMS_STATE_APPROACH) |             |
-| <a id='ICAROUS_FMS_STATE_LAND'></a>5 | [ICAROUS_FMS_STATE_LAND](#ICAROUS_FMS_STATE_LAND)         |             |
+| 值                          | Name                                                        | 描述 |
+| -------------------------- | ----------------------------------------------------------- | -- |
+| <a id='ICAROUS_FMS_STATE_IDLE'></a>0 | [ICAROUS_FMS_STATE_IDLE](#ICAROUS_FMS_STATE_IDLE)         |    |
+| <a id='ICAROUS_FMS_STATE_TAKEOFF'></a>1 | [ICAROUS_FMS_STATE_TAKEOFF](#ICAROUS_FMS_STATE_TAKEOFF)   |    |
+| <a id='ICAROUS_FMS_STATE_CLIMB'></a>2 | [ICAROUS_FMS_STATE_CLIMB](#ICAROUS_FMS_STATE_CLIMB)       |    |
+| <a id='ICAROUS_FMS_STATE_CRUISE'></a>3 | [ICAROUS_FMS_STATE_CRUISE](#ICAROUS_FMS_STATE_CRUISE)     |    |
+| <a id='ICAROUS_FMS_STATE_APPROACH'></a>4 | [ICAROUS_FMS_STATE_APPROACH](#ICAROUS_FMS_STATE_APPROACH) |    |
+| <a id='ICAROUS_FMS_STATE_LAND'></a>5 | [ICAROUS_FMS_STATE_LAND](#ICAROUS_FMS_STATE_LAND)         |    |
