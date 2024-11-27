@@ -4,7 +4,7 @@ The path planning protocol (a.k.a. trajectory interface) is a general-purpose pr
 
 The protocol is primarily intended for cases where constraints on the path to a destination are unknown or may change dynamically, but it can also be used for any other path management activities. Examples include: *obstacle avoidance* when following a preplanned mission, determining paths for self forming/healing swarms, offloading geofence management to a companion computer, etc.
 
-## Overview
+## 综述
 
 The (autopilot) system that requires path-planning sends messages containing its current position and desired trajectory. The path planning system (companion computer) analyses the desired route, and sends back a stream of messages with setpoints for a new path.
 
