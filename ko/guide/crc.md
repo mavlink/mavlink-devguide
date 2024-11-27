@@ -2,11 +2,9 @@
 
 MAVLink services that need to use a Cyclic Redundancy Check (CRC) should choose the CRC32 algorithm described below.
 
-> **Note** Using the same CRC implementation for all cases means that only one implementation is required. Do not introduce another unless there without a compelling technical reason.
+> [!NOTE] Using the same CRC implementation for all cases means that only one implementation is required. Do not introduce another unless there without a compelling technical reason.
 
-<span></span>
-
-> **Note** This CRC is [used for higher level services](#implementations) (it is not related to the CRC16 used for the checksum in [MAVLink serialization](serialization.md#checksum)).
+> [!NOTE] This CRC is [used for higher level services](#implementations) (it is not related to the CRC16 used for the checksum in [MAVLink serialization](serialization.md#checksum)).
 
 ## CRC32 Algorithm
 
