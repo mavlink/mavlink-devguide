@@ -1,20 +1,27 @@
 # Camera Definition File
 
-A GCS will build a Camera Controller UI for image capture, video capture and video streaming using information provided by the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message. For very simple cameras, the information in the [CAMERA\_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message itself is sufficient to construct the UI. For more advanced cameras (with settings and options) the information required to build the UI must be supplied in a *Camera Definition File* that is located at the URI specified in the message's `cam_definition_uri` field.
+A GCS will build a Camera Controller UI for image capture, video capture and video streaming using information provided by the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message.
+For simple cameras, the information in the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message itself is sufficient to construct the UI.
+For more advanced cameras (with settings and options) the information required to build the UI can be supplied in a _Camera Definition File_ that is located at the URI specified in the message's `cam_definition_uri` field.
 
-The *Camera Definition File* contains all the camera settings, the options for each setting, and exclusion lists (options that invalidate or are conditional on other settings). In addition, it may contain localisations of GUI strings for display to the user.
+The _Camera Definition File_ contains all the camera settings, the options for each setting, and exclusion lists (options that invalidate or are conditional on other settings).
+In addition, it may contain localisations of GUI strings for display to the user.
 
-At the bottom of this page, you can find a [full example](#full_example) of a *Camera Definition File*.
+At the bottom of this page, you can find a [full example](#full_example) of a _Camera Definition File_.
 
-> [!NOTE] A *Camera Definition File* is required because the camera options differ so greatly between cameras. It is not reasonable to create specific MAVLink messages for each and every possible option and to tell the GCS the valid options for each camera setting.
+> [!NOTE]
+> A _Camera Definition File_ is required because the camera options differ so greatly between cameras.
+> It is not reasonable to create specific MAVLink messages for each and every possible option and to tell the GCS the valid options for each camera setting.
 
 ## File Compression
 
 Camera definition files may be **.xz** compressed (this is recommended for files that are hosted on the camera component/device).
 
-> [!WARNING] Systems that *request* camera definition files **must** support extraction of **.xz**-compressed definition files.
-> 
-> [!TIP] The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems.
+> [!WARNING]
+> Systems that _request_ camera definition files **must** support extraction of **.xz**-compressed definition files.
+
+> [!TIP]
+> The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems.
 
 ## Schema
 
@@ -37,11 +44,16 @@ All fields are self explanatory:
 
 ### Parameters
 
-An extended set of parameter messages is used to define settings and options. These minimally have a parameter name, type and default value (types can be predefined or arbitrary - though arbitrary types are only supported by custom camera controllers). They will also have a description that is displayed to the user and the set of possible options.
+An extended set of parameter messages is used to define settings and options.
+These minimally have a parameter name, type and default value (types can be predefined or arbitrary - though arbitrary types are only supported by custom camera controllers).
+They will also have a description that is displayed to the user and the set of possible options.
 
 Parameters can be simple or quite complex, depending on the behavior they change.
 
-> [!NOTE] The parameter `CAM_MODE` must be part of the parameter list. It maps to the command [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE). It enables exposure of different settings based on the mode, so photo settings in photo mode and video settings in video mode.
+> [!NOTE]
+> The parameter `CAM_MODE` must be part of the parameter list.
+> It maps to the command [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE).
+> It enables exposure of different settings based on the mode, so photo settings in photo mode and video settings in video mode.
 
 #### Parameter Types
 
@@ -72,7 +84,8 @@ The simplest parameter would be a boolean type, which inherently (and automatica
 </parameter>
 ```
 
-The `name` attribute is the name of the parameter. This is the name used when requesting or setting the parameter's value using the extended parameter messages. The `description` is what is shown to the user.
+The `name` attribute is the name of the parameter. This is the name used when requesting or setting the parameter's value using the extended parameter messages.
+The `description` is what is shown to the user.
 
 More common are parameters that provide options:
 
@@ -90,42 +103,47 @@ More common are parameters that provide options:
 </parameter>
 ```
 
-In this case, the GCS will automatically build a drop down list with the options defined within the `options` group. When sending/receiving the options, the `value` field is used and it is not in any way interpreted by the GCS. The `name` field is used for display only. In other words, using the example above, when the user selects *Sunset*, the GCS will send a [PARAM_EXT_SET](../messages/common.md#PARAM_EXT_SET) message with the id `CAM_WBMODE` and a uint32 value of 3.
+In this case, the GCS will automatically build a drop down list with the options defined within the `options` group.
+When sending/receiving the options, the `value` field is used and it is not in any way interpreted by the GCS.
+The `name` field is used for display only. In other words, using the example above, when the user selects _Sunset_, the GCS will send a [PARAM_EXT_SET](../messages/common.md#PARAM_EXT_SET) message with the id `CAM_WBMODE` and a uint32 value of 3.
 
 #### Common Parameters
 
-*Common Parameters* are reserved parameter names for which the GCS can build specific UI controls (if found in a camera definition).
+_Common Parameters_ are reserved parameter names for which the GCS can build specific UI controls (if found in a camera definition).
 
-> [!NOTE] These parameters are common to many cameras (though their valid options vary considerably).
+> [!NOTE]
+> These parameters are common to many cameras (though their valid options vary considerably).
 
-| Parameter        | Description                                                            |
-| ---------------- | ---------------------------------------------------------------------- |
-| CAM_APERTURE     | Aperture                                                               |
-| CAM_EV           | Exposure Compensation (usually only used for automatic exposure modes) |
-| CAM_VIDEV        | Exposure compensation (Video)                                          |
-| CAM_PHOTOEV      | Exposure compensation (Photo)                                          |
-| CAM_EXPMODE      | Exposure Mode (Manual, Auto, Program Auto, Aperture Priority, etc.)    |
-| CAM_ISO          | ISO                                                                    |
-| CAM_VIDISO       | ISO (Video)                                                            |
-| CAM_PHOTOISO     | ISO (Photo)                                                            |
-| CAM_METERING     | Metering Mode                                                          |
-| CAM_SHUTTERSPD   | Shutter speed                                                          |
-| CAM_VIDSHUTSPD   | Shutter speed (Video)                                                  |
-| CAM_PHOTOSHUTSPD | Shutter speed (Photo)                                                  |
-| CAM_VIDRES       | Video Resolution (Video)                                               |
-| CAM_WBMODE       | White Balance Mode                                                     |
-| CAM_VIDSTREAM    | Video stream selection (video playback)                                |
-| CAM_VIDFPS       | Video frame rate (video capture)                                       |
-| CAM_VIDFOV       | Video field of view (video capture)                                    |
-| CAM_VIDFMT       | Video encoding format                                                  |
-| CAM_PHOTORATIO   | Photo Aspect Ratio                                                     |
-| CAM_PHOTOFMT     | Photo image (saving) format                                            |
-| CAM_PHOTOSIZE    | Photo size                                                             |
-| CAM_PHOTOQUAL    | Photo image (saving) quality (for compressed modes)                    |
+| Parameter                             | Description                                                                                            |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| CAM_APERTURE     | Aperture                                                                                               |
+| CAM_EV           | Exposure Compensation (usually only used for automatic exposure modes)              |
+| CAM_VIDEV        | Exposure compensation (Video)                                                       |
+| CAM_PHOTOEV      | Exposure compensation (Photo)                                                       |
+| CAM_EXPMODE      | Exposure Mode (Manual, Auto, Program Auto, Aperture Priority, etc.) |
+| CAM_ISO          | ISO                                                                                                    |
+| CAM_VIDISO       | ISO (Video)                                                                         |
+| CAM_PHOTOISO     | ISO (Photo)                                                                         |
+| CAM_METERING     | Metering Mode                                                                                          |
+| CAM_SHUTTERSPD   | Shutter speed                                                                                          |
+| CAM_VIDSHUTSPD   | Shutter speed (Video)                                                               |
+| CAM_PHOTOSHUTSPD | Shutter speed (Photo)                                                               |
+| CAM_VIDRES       | Video Resolution (Video)                                                            |
+| CAM_WBMODE       | White Balance Mode                                                                                     |
+| CAM_VIDSTREAM    | Video stream selection (video playback)                                             |
+| CAM_VIDFPS       | Video frame rate (video capture)                                                    |
+| CAM_VIDFOV       | Video field of view (video capture)                                                 |
+| CAM_VIDFMT       | Video encoding format                                                                                  |
+| CAM_PHOTORATIO   | Photo Aspect Ratio                                                                                     |
+| CAM_PHOTOFMT     | Photo image (saving) format                                                         |
+| CAM_PHOTOSIZE    | Photo size                                                                                             |
+| CAM_PHOTOQUAL    | Photo image (saving) quality (for compressed modes)              |
 
 #### Exclusion Rules
 
-Some parameters are only relevant when some other parameter is set to some specific option. For example, shutter speed, aperture and ISO would only be available when the camera is set to *manual* exposure mode and not shown when the camera is set to *auto* exposure mode. Conversely, *EV* (Exposure Compensation) is only used when the camera is set to *auto* and hidden otherwise. To specify this behavior, you would use the `exclusion` element:
+Some parameters are only relevant when some other parameter is set to some specific option.
+For example, shutter speed, aperture and ISO would only be available when the camera is set to _manual_ exposure mode and not shown when the camera is set to _auto_ exposure mode.
+Conversely, _EV_ (Exposure Compensation) is only used when the camera is set to _auto_ and hidden otherwise. To specify this behavior, you would use the `exclusion` element:
 
 ```XML
 <parameter name="CAM_EXPMODE" type="uint32" default="0">
@@ -147,11 +165,11 @@ Some parameters are only relevant when some other parameter is set to some speci
 </parameter>
 ```
 
-The above example describes an *Exposure Mode* parameter and its two options: *Auto* and *Manual*. When the option is set to *Auto*, the `CAM_APERTURE`, `CAM_ISO` and `CAM_SHUTTERSPD` parameters (defined elsewhere in the parameter list) are hidden from the UI as they are not applicable. On the other hand, if the option is set to *Manual*, the `CAM_EV` parameter is hidden as it is not applicable while the camera is in *Manual Exposure Mode*.
+The above example describes an _Exposure Mode_ parameter and its two options: _Auto_ and _Manual_. When the option is set to _Auto_, the `CAM_APERTURE`, `CAM_ISO` and `CAM_SHUTTERSPD` parameters (defined elsewhere in the parameter list) are hidden from the UI as they are not applicable. On the other hand, if the option is set to _Manual_, the `CAM_EV` parameter is hidden as it is not applicable while the camera is in _Manual Exposure Mode_.
 
 #### Required Option Updates
 
-There are cases where an option change requires a parameter to be updated. For example, using the example above, when the camera is set to *Auto Exposure Mode*, it internally might change the Aperture, ISO and Shutter speed. When the user switches back to *Manual Exposure Mode*, the GCS must request an update for the current Aperture, ISO and Shutter speed as they may have changed. To do this, you would use the `update` element:
+There are cases where an option change requires a parameter to be updated. For example, using the example above, when the camera is set to _Auto Exposure Mode_, it internally might change the Aperture, ISO and Shutter speed. When the user switches back to _Manual Exposure Mode_, the GCS must request an update for the current Aperture, ISO and Shutter speed as they may have changed. To do this, you would use the `update` element:
 
 ```XML
 <parameter name="CAM_EXPMODE" type="uint32" default="0">
@@ -203,7 +221,7 @@ Suppose your camera has the following ISO options:
 </parameter>
 ```
 
-But this full range is only available when in *Photo Mode*. For whatever reason, when the camera is set to *Video Mode*, only a subset of the above range is valid. In this case, you would use the `parameterrange` element:
+But this full range is only available when in _Photo Mode_. For whatever reason, when the camera is set to _Video Mode_, only a subset of the above range is valid. In this case, you would use the `parameterrange` element:
 
 ```XML
 <parameter name="CAM_MODE" type="uint32" default="1" control="0">
@@ -229,7 +247,7 @@ But this full range is only available when in *Photo Mode*. For whatever reason,
 </parameter>
 ```
 
-This indicates to the GCS that when the `CAM_MODE` parameter is set to *Video*, only the given range for the `CAM_ISO` parameter is valid. It additionally gives a condition that this is only the case when the `CAM_EXPOSURE` mode is set to *Manual* (1).
+This indicates to the GCS that when the `CAM_MODE` parameter is set to _Video_, only the given range for the `CAM_ISO` parameter is valid. It additionally gives a condition that this is only the case when the `CAM_EXPOSURE` mode is set to _Manual_ (1).
 
 This example also tells the GCS not to display this parameter to the user (`control=“0”`). Camera Mode is a standard parameter defined in the [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) message and it’s handled by the GCS in that way. The parameter definition above was created in order to tell the GCS the rules that are applied when changes to the camera mode occur.
 
@@ -258,7 +276,8 @@ This would be equivalent to:
 </parameter>
 ```
 
-Note that this approach cannot be used in conjunction with exclusions or option range limits (defined with `parameterrange`). Therefore it is recommended for cases where the range of allowed values does not vary with any other camera mode or setting.
+Note that this approach cannot be used in conjunction with exclusions or option range limits (defined with `parameterrange`).
+Therefore it is recommended for cases where the range of allowed values does not vary with any other camera mode or setting.
 
 ### Localization
 
@@ -291,11 +310,13 @@ When the user makes a selection, the GCS will send the new option using the [PAR
 
 When the GCS requires a current option for a given parameter, it will use the [PARAM_EXT_REQUEST_READ](../messages/common.md#PARAM_EXT_REQUEST_READ) message and it will expect in response a [PARAM_EXT_VALUE](../messages/common.md#PARAM_EXT_VALUE) message.
 
-> [!NOTE] For more detailed information about the protocol see: [Extended Parameter Protocol](../services/parameter_ext.md).
+> [!NOTE]
+> For more detailed information about the protocol see: [Extended Parameter Protocol](../services/parameter_ext.md).
 
 ## Full Camera Definition File Example {#full_example}
 
-An example camera definition file is listed below. This can be downloaded from GitHub here: [camera_definition_example.xml](https://raw.githubusercontent.com/mavlink/mavlink-devguide/master/en/services/camera_definition_example.xml).
+An example camera definition file is listed below.
+This can be downloaded from GitHub here: [camera_definition_example.xml](https://raw.githubusercontent.com/mavlink/mavlink-devguide/master/en/services/camera_definition_example.xml).
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" ?>

@@ -1,4 +1,4 @@
-# Guide
+# 안내서
 
 This section contains guide material for understanding and using MAVLink, including the different [versions](../guide/mavlink_version.md) and [microservices](../services/index.md).
 
@@ -16,7 +16,7 @@ The topics linked from the sidebar (and listed below):
 - [UAVCAN Interaction](../guide/uavcan_interaction.md)
 - [Scripts](../guide/scripts.md)
 - [Debugging with Wireshark](../guide/wireshark.md)
-- [MAVLink XML 스키마](../guide/xml_schema.md)
-- [XML 기수/메세지 정의](../guide/define_xml_element.md)
+- [MAVLink XML Schema](../guide/xml_schema.md)
+- [Defining XML Enums/Messages](../guide/define_xml_element.md)
 - [MAVLink CRCs](../guide/crc.md)
 - [Dialects](../messages/index.md)
