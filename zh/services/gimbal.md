@@ -1,6 +1,7 @@
 # Gimbal Configuration Protocol (v1)
 
-> [!WARNING] This service defintion has been superseded by [Gimbal Protocol v2](../services/gimbal.md) (gimbal manufacturers/GCSs/autopilots are expected to use the new API, but the old API is still in broad use, and there is no plan to for it to be removed).
+> [!WARNING]
+> This service defintion has been superseded by [Gimbal Protocol v2](../services/gimbal.md) (gimbal manufacturers/GCSs/autopilots are expected to use the new API, but the old API is still in broad use, and there is no plan to for it to be removed).
 
 The gimbal configuration message set uses a number of commands and few special-purpose messages to configure a payload mount.
 
@@ -8,23 +9,26 @@ By default the gimbal should be communicating with the component ID [MAV_COMP_ID
 
 ## Commands to Configure and Control Gimbal
 
-The commands to use mavlink gimbals are [MAV_CMD_DO_MOUNT_CONFIGURE](#MAV_CMD_DO_MOUNT_CONFIGURE) and [MAV_CMD_DO_MOUNT_CONTROL](#MAV_CMD_DO_MOUNT_CONTROL). [MAV_CMD_DO_MOUNT_CONTROL_QUAT](#MAV_CMD_DO_MOUNT_CONTROL_QUAT) is also defined but does not seem to be implemented by any systems at time of writing.
+The commands to use mavlink gimbals are
+[MAV_CMD_DO_MOUNT_CONFIGURE](#MAV_CMD_DO_MOUNT_CONFIGURE) and [MAV_CMD_DO_MOUNT_CONTROL](#MAV_CMD_DO_MOUNT_CONTROL).
+[MAV_CMD_DO_MOUNT_CONTROL_QUAT](#MAV_CMD_DO_MOUNT_CONTROL_QUAT) is also defined but does not seem to be implemented by any systems at time of writing.
 
-| Command                                                                                                                            | 描述                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| <a id="MAV_CMD_DO_MOUNT_CONFIGURE"></a>[MAV_CMD_DO_MOUNT_CONFIGURE](../messages/common.md#MAV_CMD_DO_MOUNT_CONFIGURE)          | Configure a camera or antenna mount                                 |
-| <a id="MAV_CMD_DO_MOUNT_CONTROL"></a>[MAV_CMD_DO_MOUNT_CONTROL](../messages/common.md#MAV_CMD_DO_MOUNT_CONTROL)                | Control mount                                                       |
+| Command                                                                                                                                                                                                                                 | 描述                                                                                  |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| <a id="MAV_CMD_DO_MOUNT_CONFIGURE"></a>[MAV_CMD_DO_MOUNT_CONFIGURE](../messages/common.md#MAV_CMD_DO_MOUNT_CONFIGURE)                               | Configure a camera or antenna mount                                                 |
+| <a id="MAV_CMD_DO_MOUNT_CONTROL"></a>[MAV_CMD_DO_MOUNT_CONTROL](../messages/common.md#MAV_CMD_DO_MOUNT_CONTROL)                                     | Control mount                                                                       |
 | <a id="MAV_CMD_DO_MOUNT_CONTROL_QUAT"></a>[MAV_CMD_DO_MOUNT_CONTROL_QUAT](../messages/common.md#MAV_CMD_DO_MOUNT_CONTROL_QUAT) | Control a camera or antenna mount, using a quaternion as reference. |
 
-| Enum                                                                                | 描述                                             |
-| ----------------------------------------------------------------------------------- | ---------------------------------------------- |
+| Enum                                                                                                                        | 描述                                                             |
+| --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
 | <a id="MAV_MOUNT_MODE"></a>[MAV_MOUNT_MODE](../messages/common.md#MAV_MOUNT_MODE) | Enumeration of possible mount operation modes. |
 
 ## Command to Reboot or Shutdown Gimbal
 
 To reboot or shut down a gimbal send the command [MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN](../messages/common.md#MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN). The options to be set for the gimbal are found in `param4`.
 
-> [!NOTE] This is the same message/process as for autopilot systems.
+> [!NOTE]
+> This is the same message/process as for autopilot systems.
 
 ## Telemetry from Gimbal
 
@@ -46,6 +50,7 @@ This version of the gimbal protocol (v1) has a number of known issues:
 - Unused `DO_MOUNT_CONTROL_QUAT`.
 - Confusion and conflicts between gimbal commands used between ground station and gimbal messages between autopilot and gimbal.
 - Commands require acknowledgements back and are therefore not suitable for higher rate setpoint streams for manual control.
-- Control conflicts between different sources. It is not clear what takes precedence and how the deconfliction between different sources and commands should be implemented.
+- Control conflicts between different sources.
+  It is not clear what takes precedence and how the deconfliction between different sources and commands should be implemented.
 
 If possible migrate to [Gimbal Protocol v2](../services/gimbal.md) which addresses these issues.
