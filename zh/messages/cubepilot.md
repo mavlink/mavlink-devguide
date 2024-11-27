@@ -28,32 +28,32 @@ span.warning {
 
 - [common.xml](../messages/common.md)
 
-## Summary
+## 概览
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 5       | 226      |
-| [Enums](#enumerated-types) | 0       | 144      |
-| [Commands](#mav_commands)  | 164     | 0        |
+| Type                    | Defined | Included |
+| ----------------------- | ------- | -------- |
+| [消息](#messages)         | 5       | 226      |
+| [枚举](#enumerated-types) | 0       | 144      |
+| [命令](#mav_commands)     | 164     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ### CUBEPILOT_RAW_RC (50001) {#CUBEPILOT_RAW_RC}
 
 Raw RC Data
 
-| Field Name | Type          | Description |
-| ---------- | ------------- | ----------- |
-| rc_raw     | `uint8_t[32]` |             |
+| Field Name | Type          | 描述 |
+| ---------- | ------------- | -- |
+| rc_raw     | `uint8_t[32]` |    |
 
 
 ### HERELINK_VIDEO_STREAM_INFORMATION (50002) {#HERELINK_VIDEO_STREAM_INFORMATION}
 
 Information about video stream
 
-| Field Name   | Type        | Units  | Description                                                                                                                    |
+| Field Name   | Type        | Units  | 描述                                                                                                                             |
 | ------------ | ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | camera_id    | `uint8_t`   |        | Video Stream ID (1 for first, 2 for second, etc.)                                                                              |
 | status       | `uint8_t`   |        | Number of streams available.                                                                                                   |
@@ -61,7 +61,7 @@ Information about video stream
 | resolution_h | `uint16_t`  | pix    | Horizontal resolution.                                                                                                         |
 | resolution_v | `uint16_t`  | pix    | Vertical resolution.                                                                                                           |
 | bitrate      | `uint32_t`  | bits/s | Bit rate.                                                                                                                      |
-| rotation     | `uint16_t`  | deg    | Video image rotation clockwise.                                                                                                |
+| rotation     | `uint16_t`  | 度      | Video image rotation clockwise.                                                                                                |
 | uri          | `char[230]` |        | Video stream URI (TCP or RTSP URI ground station should connect to) or port number (UDP port ground station should listen to). |
 
 
@@ -69,22 +69,22 @@ Information about video stream
 
 Herelink Telemetry
 
-| Field Name | Type       | Description |
-| ---------- | ---------- | ----------- |
-| rssi       | `uint8_t`  |             |
-| snr        | `int16_t`  |             |
-| rf_freq    | `uint32_t` |             |
-| link_bw    | `uint32_t` |             |
-| link_rate  | `uint32_t` |             |
-| cpu_temp   | `int16_t`  |             |
-| board_temp | `int16_t`  |             |
+| Field Name | Type       | 描述 |
+| ---------- | ---------- | -- |
+| rssi       | `uint8_t`  |    |
+| snr        | `int16_t`  |    |
+| rf_freq    | `uint32_t` |    |
+| link_bw    | `uint32_t` |    |
+| link_rate  | `uint32_t` |    |
+| cpu_temp   | `int16_t`  |    |
+| board_temp | `int16_t`  |    |
 
 
 ### CUBEPILOT_FIRMWARE_UPDATE_START (50004) {#CUBEPILOT_FIRMWARE_UPDATE_START}
 
 Start firmware update with encapsulated data.
 
-| Field Name       | Type       | Units | Description   |
+| Field Name       | Type       | Units | 描述            |
 | ---------------- | ---------- | ----- | ------------- |
 | target_system    | `uint8_t`  |       | System ID.    |
 | target_component | `uint8_t`  |       | Component ID. |
@@ -96,7 +96,7 @@ Start firmware update with encapsulated data.
 
 offset response to encapsulated data.
 
-| Field Name       | Type       | Units | Description   |
+| Field Name       | Type       | Units | 描述            |
 | ---------------- | ---------- | ----- | ------------- |
 | target_system    | `uint8_t`  |       | System ID.    |
 | target_component | `uint8_t`  |       | Component ID. |

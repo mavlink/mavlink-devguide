@@ -28,7 +28,7 @@ span.warning {
 
 - [ardupilotmega.xml](../messages/ardupilotmega.md)
 
-## Summary
+## 목차
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |

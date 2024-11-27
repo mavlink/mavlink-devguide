@@ -28,23 +28,23 @@ span.warning {
 
 - [common.xml](../messages/common.md)
 
-## Summary
+## 概览
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 4       | 226      |
-| [Enums](#enumerated-types) | 3       | 144      |
-| [Commands](#mav_commands)  | 171     | 0        |
+| Type                    | Defined | Included |
+| ----------------------- | ------- | -------- |
+| [消息](#messages)         | 4       | 226      |
+| [枚举](#enumerated-types) | 3       | 144      |
+| [命令](#mav_commands)     | 171     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ### AVSS_PRS_SYS_STATUS (60050) {#AVSS_PRS_SYS_STATUS}
 
 AVSS PRS system status.
 
-| Field Name     | Type       | Units | Description                                                                    |
+| Field Name     | Type       | Units | 描述                                                                             |
 | -------------- | ---------- | ----- | ------------------------------------------------------------------------------ |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since PRS boot).                                               |
 | error_status   | `uint32_t` |       | PRS error statuses                                                             |
@@ -57,12 +57,12 @@ AVSS PRS system status.
 
 Drone position.
 
-| Field Name     | Type       | Units | Description                                                                                                  |
+| Field Name     | Type       | Units | 描述                                                                                                           |
 | -------------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------ |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since FC boot).                                                                              |
 | lat            | `int32_t`  | degE7 | Latitude, expressed                                                                                          |
 | lon            | `int32_t`  | degE7 | Longitude, expressed                                                                                         |
-| alt            | `int32_t`  | mm    | Altitude (MSL). Note that virtually all GPS modules provide both WGS84 and MSL.                              |
+| alt            | `int32_t`  | 毫米    | Altitude (MSL). Note that virtually all GPS modules provide both WGS84 and MSL.                              |
 | ground_alt     | `float`    | m     | Altitude above ground, This altitude is measured by a ultrasound, Laser rangefinder or millimeter-wave radar |
 | barometer_alt  | `float`    | m     | This altitude is measured by a barometer                                                                     |
 
@@ -71,7 +71,7 @@ Drone position.
 
 Drone IMU data. Quaternion order is w, x, y, z and a zero rotation would be expressed as (1 0 0 0).
 
-| Field Name     | Type       | Units | Description                                    |
+| Field Name     | Type       | Units | 描述                                             |
 | -------------- | ---------- | ----- | ---------------------------------------------- |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since FC boot).                |
 | q1             | `float`    |       | Quaternion component 1, w (1 in null-rotation) |
@@ -90,7 +90,7 @@ Drone IMU data. Quaternion order is w, x, y, z and a zero rotation would be expr
 
 Drone operation mode.
 
-| Field Name                | Type       | Units | Description                     |
+| Field Name                | Type       | Units | 描述                              |
 | ------------------------- | ---------- | ----- | ------------------------------- |
 | time_boot_ms            | `uint32_t` | ms    | Timestamp (time since FC boot). |
 | M300_operation_mode     | `uint8_t`  |       | DJI M300 operation mode         |
@@ -101,7 +101,7 @@ Drone operation mode.
 
 ### MAV_AVSS_COMMAND_FAILURE_REASON {#MAV_AVSS_COMMAND_FAILURE_REASON}
 
-| Value                      | Name                                      | Description                                             |
+| 值                          | Name                                      | 描述                                                      |
 | -------------------------- | ----------------------------------------- | ------------------------------------------------------- |
 | <a id='PRS_NOT_STEADY'></a>1 | [PRS_NOT_STEADY](#PRS_NOT_STEADY)       | AVSS defined command failure reason. PRS not steady.    |
 | <a id='PRS_DTM_NOT_ARMED'></a>2 | [PRS_DTM_NOT_ARMED](#PRS_DTM_NOT_ARMED) | AVSS defined command failure reason. PRS DTM not armed. |
@@ -109,7 +109,7 @@ Drone operation mode.
 
 ### AVSS_M300_OPERATION_MODE {#AVSS_M300_OPERATION_MODE}
 
-| Value                        | Name                                                              | Description                |
+| 值                            | Name                                                              | 描述                         |
 | ---------------------------- | ----------------------------------------------------------------- | -------------------------- |
 | <a id='MODE_M300_MANUAL_CTRL'></a>0   | [MODE_M300_MANUAL_CTRL](#MODE_M300_MANUAL_CTRL)                 | In manual control mode     |
 | <a id='MODE_M300_ATTITUDE'></a>1   | [MODE_M300_ATTITUDE](#MODE_M300_ATTITUDE)                       | In attitude mode           |
@@ -128,7 +128,7 @@ Drone operation mode.
 
 ### AVSS_HORSEFLY_OPERATION_MODE {#AVSS_HORSEFLY_OPERATION_MODE}
 
-| Value                       | Name                                                          | Description            |
+| 值                           | Name                                                          | 描述                     |
 | --------------------------- | ------------------------------------------------------------- | ---------------------- |
 | <a id='MODE_HORSEFLY_MANUAL_CTRL'></a>0 | [MODE_HORSEFLY_MANUAL_CTRL](#MODE_HORSEFLY_MANUAL_CTRL)     | In manual control mode |
 | <a id='MODE_HORSEFLY_AUTO_TAKEOFF'></a>1 | [MODE_HORSEFLY_AUTO_TAKEOFF](#MODE_HORSEFLY_AUTO_TAKEOFF)   | In auto takeoff mode   |
@@ -142,7 +142,7 @@ Drone operation mode.
 
 AVSS defined command. Set PRS arm statuses.
 
-| Param (Label)  | Description      |
+| Param (Label)  | 描述               |
 | -------------- | ---------------- |
 | 1 (ARM status) | PRS arm statuses |
 | 2              | User defined     |
@@ -157,7 +157,7 @@ AVSS defined command. Set PRS arm statuses.
 
 AVSS defined command. Gets PRS arm statuses
 
-| Param (Label) | Description  |
+| Param (Label) | 描述           |
 | ------------- | ------------ |
 | 1             | User defined |
 | 2             | User defined |
@@ -172,7 +172,7 @@ AVSS defined command. Gets PRS arm statuses
 
 AVSS defined command.  Get the PRS battery voltage in millivolts
 
-| Param (Label) | Description  |
+| Param (Label) | 描述           |
 | ------------- | ------------ |
 | 1             | User defined |
 | 2             | User defined |
@@ -187,7 +187,7 @@ AVSS defined command.  Get the PRS battery voltage in millivolts
 
 AVSS defined command. Get the PRS error statuses.
 
-| Param (Label) | Description  |
+| Param (Label) | 描述           |
 | ------------- | ------------ |
 | 1             | User defined |
 | 2             | User defined |
@@ -202,7 +202,7 @@ AVSS defined command. Get the PRS error statuses.
 
 AVSS defined command. Set the ATS arming altitude in meters.
 
-| Param (Label) | Description         | Units |
+| Param (Label) | 描述                  | Units |
 | ------------- | ------------------- | ----- |
 | 1 (Altitude)  | ATS arming altitude | m     |
 | 2             | User defined        |       |
@@ -217,7 +217,7 @@ AVSS defined command. Set the ATS arming altitude in meters.
 
 AVSS defined command. Get the ATS arming altitude in meters.
 
-| Param (Label) | Description  |
+| Param (Label) | 描述           |
 | ------------- | ------------ |
 | 1             | User defined |
 | 2             | User defined |
@@ -232,7 +232,7 @@ AVSS defined command. Get the ATS arming altitude in meters.
 
 AVSS defined command. Shuts down the PRS system.
 
-| Param (Label) | Description  |
+| Param (Label) | 描述           |
 | ------------- | ------------ |
 | 1             | User defined |
 | 2             | User defined |

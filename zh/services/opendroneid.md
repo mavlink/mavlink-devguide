@@ -36,7 +36,7 @@ There are multiple possible use cases for the MAVLink drone ID messages:
 - As above but in the other direction for DAA calculations.
 - A Remote ID Display application (RID) on the GCS listens to all drone ID data received from surrounding UAs and displays their position to the operator.
 
-## Messages {#messages}
+## 消息 {#messages}
 
 The ASTM, ASD-STAN and MAVLink messages are listed below.
 
@@ -86,7 +86,7 @@ All senders of MAVLink drone ID messages must fill the `sysid` [field](https://g
 
 The MAVLink components or systems that will typically generate drone ID MAVLink messages are listed in the table below:
 
-| Component/System                                                             | Description                                                                                                                                            |
+| Component/System                                                             | 描述                                                                                                                                                     |
 | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [MAV_COMP_ID_AUTOPILOT1](../messages/common.md#MAV_COMP_ID_AUTOPILOT1)     | The flight controller/autopilot. Knows the ID of the UA, the current location, altitude, speed etc.                                                    |
 | Ground Control Station                                                       | GCS with a human user interface for inputting the operator ID, text description of the flight purpose, method for obtaining the operator location etc. |

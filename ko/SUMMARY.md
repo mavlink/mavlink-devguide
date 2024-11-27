@@ -85,5 +85,5 @@
   * [Events Interface (WIP)](services/events.md)
   * [Standard Flight Modes (WIP)](services/standard_modes.md)
   * [Time Synchronization](services/timesync.md)
-* [Contributing](contributing/contributing.md)
+* [기여](contributing/contributing.md)
 * [지원](about/support.md)

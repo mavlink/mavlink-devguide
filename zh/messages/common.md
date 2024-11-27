@@ -29,23 +29,23 @@ span.warning {
 
 - [Minimal.xml](../messages/standard.md)
 
-## Summary
+## 概览
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 224     | 2        |
-| [Enums](#enumerated-types) | 138     | 6        |
-| [Commands](#mav_commands)  | 164     | 0        |
+| Type                    | Defined | Included |
+| ----------------------- | ------- | -------- |
+| [消息](#messages)         | 224     | 2        |
+| [枚举](#enumerated-types) | 138     | 6        |
+| [命令](#mav_commands)     | 164     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ### HEARTBEAT (0) — \[from: [minimal](../messages/minimal.md#HEARTBEAT)\] {#HEARTBEAT}
 
 The heartbeat message shows that a system or component is present and responding. The type and autopilot fields (along with the message component id), allow the receiving system to treat further messages from this system appropriately (e.g. by laying out the user interface based on the autopilot). This microservice is documented at https://mavlink.io/en/services/heartbeat.html
 
-| Field Name      | Type                      | Values                            | Description                                                                                                                                                                                                                                                             |
+| Field Name      | Type                      | 值                                 | 描述                                                                                                                                                                                                                                                                      |
 | --------------- | ------------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | type            | `uint8_t`                 | [MAV_TYPE](#MAV_TYPE)             | Vehicle or component type. For a flight controller component the vehicle type (quadrotor, helicopter, etc.). For other components the component type (e.g. camera, gimbal, etc.). This should be used in preference to component id for identifying the component type. |
 | autopilot       | `uint8_t`                 | [MAV_AUTOPILOT](#MAV_AUTOPILOT)   | Autopilot type / class. Use [MAV_AUTOPILOT_INVALID](#MAV_AUTOPILOT_INVALID) for components that are not flight controllers.                                                                                                                                           |
@@ -58,7 +58,7 @@ The heartbeat message shows that a system or component is present and responding
 
 The general system state. If the system is following the MAVLink standard, the system state is mainly defined by three orthogonal states/modes: The system mode, which is either LOCKED (motors shut down and locked), MANUAL (system under RC control), GUIDED (system with autonomous position control, position setpoint controlled manually) or AUTO (system guided by path/waypoint planner). The [NAV_MODE](#NAV_MODE) defined the current flight state: LIFTOFF (often an open-loop maneuver), LANDING, WAYPOINTS or VECTOR. This represents the internal navigation state machine. The system status shows whether the system is currently active or not and if an emergency occurred. During the CRITICAL and EMERGENCY states the MAV is still considered to be active, but should start emergency procedures autonomously. After a failure occurred it should first move from active to critical to allow manual intervention and then move to emergency after a certain timeout.
 
-| Field Name                                            | Type       | Units | Values                                                                | Description                                                                                                                        |
+| Field Name                                            | Type       | Units | 值                                                                     | 描述                                                                                                                                 |
 | ----------------------------------------------------- | ---------- | ----- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | onboard_control_sensors_present                     | `uint32_t` |       | [MAV_SYS_STATUS_SENSOR](#MAV_SYS_STATUS_SENSOR)                     | Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present.                    |
 | onboard_control_sensors_enabled                     | `uint32_t` |       | [MAV_SYS_STATUS_SENSOR](#MAV_SYS_STATUS_SENSOR)                     | Bitmap showing which onboard controllers and sensors are enabled: Value of 0: not enabled. Value of 1: enabled.                    |
@@ -81,7 +81,7 @@ The general system state. If the system is following the MAVLink standard, the s
 
 The system time is the time of the master clock, typically the computer clock of the main onboard computer.
 
-| Field Name       | Type       | Units | Description                         |
+| Field Name       | Type       | Units | 描述                                  |
 | ---------------- | ---------- | ----- | ----------------------------------- |
 | time_unix_usec | `uint64_t` | us    | Timestamp (UNIX epoch time).        |
 | time_boot_ms   | `uint32_t` | ms    | Timestamp (time since system boot). |
@@ -92,7 +92,7 @@ The system time is the time of the master clock, typically the computer clock of
 
 A ping message either requesting or responding to a ping. This allows to measure the system latencies, including serial port, radio modem and UDP connections. The ping microservice is documented at https://mavlink.io/en/services/ping.html
 
-| Field Name       | Type       | Units | Description                                                                                                                                                                            |
+| Field Name       | Type       | Units | 描述                                                                                                                                                                                     |
 | ---------------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec        | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | seq              | `uint32_t` |       | PING sequence                                                                                                                                                                          |
@@ -103,7 +103,7 @@ A ping message either requesting or responding to a ping. This allows to measure
 
 Request to control this MAV
 
-| Field Name      | Type       | Units | Description                                                                                                                                                                                                                                                |
+| Field Name      | Type       | Units | 描述                                                                                                                                                                                                                                                         |
 | --------------- | ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system   | `uint8_t`  |       | System the GCS requests control for                                                                                                                                                                                                                        |
 | control_request | `uint8_t`  |       | 0: request control of this MAV, 1: Release control of this MAV                                                                                                                                                                                             |
@@ -114,7 +114,7 @@ Request to control this MAV
 
 Accept / deny control of this MAV
 
-| Field Name      | Type      | Description                                                                                                    |
+| Field Name      | Type      | 描述                                                                                                             |
 | --------------- | --------- | -------------------------------------------------------------------------------------------------------------- |
 | gcs_system_id | `uint8_t` | ID of the GCS this message                                                                                     |
 | control_request | `uint8_t` | 0: request control of this MAV, 1: Release control of this MAV                                                 |
@@ -124,9 +124,9 @@ Accept / deny control of this MAV
 
 Emit an encrypted signature / key identifying this system. PLEASE NOTE: This protocol has been kept simple, so transmitting the key requires an encrypted channel for true safety.
 
-| Field Name | Type       | Description |
-| ---------- | ---------- | ----------- |
-| key        | `char[32]` | key         |
+| Field Name | Type       | 描述  |
+| ---------- | ---------- | --- |
+| key        | `char[32]` | key |
 
 ### LINK_NODE_STATUS (8) — [WIP] {#LINK_NODE_STATUS}
 
@@ -134,7 +134,7 @@ Emit an encrypted signature / key identifying this system. PLEASE NOTE: This pro
 
 Status generated in each node in the communication chain and injected into MAVLink stream.
 
-| Field Name        | Type       | Units   | Description                                                                  |
+| Field Name        | Type       | Units   | 描述                                                                           |
 | ----------------- | ---------- | ------- | ---------------------------------------------------------------------------- |
 | timestamp         | `uint64_t` | ms      | Timestamp (time since system boot).                                          |
 | tx_buf            | `uint8_t`  | %       | Remaining free transmit buffer space                                         |
@@ -154,7 +154,7 @@ Status generated in each node in the communication chain and injected into MAVLi
 
 Set the system mode, as defined by enum [MAV_MODE](#MAV_MODE). There is no target component id as the mode is by definition for the overall aircraft, not only for one component.
 
-| Field Name    | Type       | Values                | Description                                                                 |
+| Field Name    | Type       | 值                     | 描述                                                                          |
 | ------------- | ---------- | --------------------- | --------------------------------------------------------------------------- |
 | target_system | `uint8_t`  |                       | The system setting the mode                                                 |
 | base_mode     | `uint8_t`  | [MAV_MODE](#MAV_MODE) | The new base mode.                                                          |
@@ -164,7 +164,7 @@ Set the system mode, as defined by enum [MAV_MODE](#MAV_MODE). There is no targe
 
 Request to read the onboard parameter with the param_id string id. Onboard parameters are stored as key[const char*] -> value[float]. This allows to send a parameter to any other component (such as the GCS) without the need of previous knowledge of possible parameter names. Thus the same GCS can store different parameters for different autopilots. See also https://mavlink.io/en/services/parameter.html for a full documentation of QGroundControl and IMU code.
 
-| Field Name       | Type       | Description                                                                                                                                                                                                                                            |
+| Field Name       | Type       | 描述                                                                                                                                                                                                                                                     |
 | ---------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | target_system    | `uint8_t`  | System ID                                                                                                                                                                                                                                              |
 | target_component | `uint8_t`  | Component ID                                                                                                                                                                                                                                           |
@@ -175,7 +175,7 @@ Request to read the onboard parameter with the param_id string id. Onboard param
 
 Request all parameters of this component. After this request, all parameters are emitted. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html
 
-| Field Name       | Type      | Description  |
+| Field Name       | Type      | 描述           |
 | ---------------- | --------- | ------------ |
 | target_system    | `uint8_t` | System ID    |
 | target_component | `uint8_t` | Component ID |
@@ -184,7 +184,7 @@ Request all parameters of this component. After this request, all parameters are
 
 Emit the value of a onboard parameter. The inclusion of param_count and param_index in the message allows the recipient to keep track of received parameters and allows him to re-request missing parameters after a loss or timeout. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html
 
-| Field Name  | Type       | Values                              | Description                                                                                                                                                                                                                                            |
+| Field Name  | Type       | 值                                   | 描述                                                                                                                                                                                                                                                     |
 | ----------- | ---------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | param_id    | `char[16]` |                                     | Onboard parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string |
 | param_value | `float`    |                                     | Onboard parameter value                                                                                                                                                                                                                                |
@@ -198,7 +198,7 @@ Set a parameter value (write new value to permanent storage).
 
 The receiving component should acknowledge the new parameter value by broadcasting a [PARAM_VALUE](#PARAM_VALUE) message (broadcasting ensures that multiple GCS all have an up-to-date list of all parameters). If the sending GCS did not receive a [PARAM_VALUE](#PARAM_VALUE) within its timeout time, it should re-send the [PARAM_SET](#PARAM_SET) message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html. [PARAM_SET](#PARAM_SET) may also be called within the context of a transaction (started with [MAV_CMD_PARAM_TRANSACTION](#MAV_CMD_PARAM_TRANSACTION)). Within a transaction the receiving component should respond with [PARAM_ACK_TRANSACTION](#PARAM_ACK_TRANSACTION) to the setter component (instead of broadcasting [PARAM_VALUE](#PARAM_VALUE)), and [PARAM_SET](#PARAM_SET) should be re-sent if this is ACK not received.
 
-| Field Name       | Type       | Values                              | Description                                                                                                                                                                                                                                            |
+| Field Name       | Type       | 值                                   | 描述                                                                                                                                                                                                                                                     |
 | ---------------- | ---------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | target_system    | `uint8_t`  |                                     | System ID                                                                                                                                                                                                                                              |
 | target_component | `uint8_t`  |                                     | Component ID                                                                                                                                                                                                                                           |
@@ -212,22 +212,22 @@ The global position, as returned by the Global Positioning System (GPS). This is
 
 NOT the global position estimate of the system, but rather a RAW sensor value. See message [GLOBAL_POSITION_INT](#GLOBAL_POSITION_INT) for the global position estimate.
 
-| Field Name                                             | Type       | Units | Multiplier | Values                          | Description                                                                                                                                                                                |
+| Field Name                                             | Type       | Units | Multiplier | 值                               | 描述                                                                                                                                                                                         |
 | ------------------------------------------------------ | ---------- | ----- | ---------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | time_usec                                              | `uint64_t` | us    |            |                                 | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.     |
 | fix_type                                               | `uint8_t`  |       |            | [GPS_FIX_TYPE](#GPS_FIX_TYPE) | GPS fix type.                                                                                                                                                                              |
 | lat                                                    | `int32_t`  | degE7 |            |                                 | Latitude (WGS84, EGM96 ellipsoid)                                                                                                                                                          |
 | lon                                                    | `int32_t`  | degE7 |            |                                 | Longitude (WGS84, EGM96 ellipsoid)                                                                                                                                                         |
-| alt                                                    | `int32_t`  | mm    |            |                                 | Altitude (MSL). Positive for up. Note that virtually all GPS modules provide the MSL altitude in addition to the WGS84 altitude.                                                           |
+| alt                                                    | `int32_t`  | 毫米    |            |                                 | Altitude (MSL). Positive for up. Note that virtually all GPS modules provide the MSL altitude in addition to the WGS84 altitude.                                                           |
 | eph                                                    | `uint16_t` |       | 1E-2       | invalid:UINT16_MAX              | GPS HDOP horizontal dilution of position (unitless * 100). If unknown, set to: UINT16_MAX                                                                                                  |
 | epv                                                    | `uint16_t` |       | 1E-2       | invalid:UINT16_MAX              | GPS VDOP vertical dilution of position (unitless * 100). If unknown, set to: UINT16_MAX                                                                                                    |
-| vel                                                    | `uint16_t` | cm/s  |            | invalid:UINT16_MAX              | GPS ground speed. If unknown, set to: UINT16_MAX                                                                                                                                           |
+| vel                                                    | `uint16_t` | 厘米/秒  |            | invalid:UINT16_MAX              | GPS ground speed. If unknown, set to: UINT16_MAX                                                                                                                                           |
 | cog                                                    | `uint16_t` | cdeg  |            | invalid:UINT16_MAX              | Course over ground (NOT heading, but direction of movement) in degrees * 100, 0.0..359.99 degrees. If unknown, set to: UINT16_MAX                                                          |
-| satellites_visible                                     | `uint8_t`  |       |            | invalid:UINT8_MAX               | Number of satellites visible. If unknown, set to UINT8_MAX                                                                                                                                 |
-| <span class='ext'>alt_ellipsoid</span> [++](#mav2_extension_field)  | `int32_t`  | mm    |            |                                 | Altitude (above WGS84, EGM96 ellipsoid). Positive for up.                                                                                                                                  |
-| <span class='ext'>h_acc</span> [++](#mav2_extension_field)  | `uint32_t` | mm    |            |                                 | Position uncertainty.                                                                                                                                                                      |
-| <span class='ext'>v_acc</span> [++](#mav2_extension_field)  | `uint32_t` | mm    |            |                                 | Altitude uncertainty.                                                                                                                                                                      |
-| <span class='ext'>vel_acc</span> [++](#mav2_extension_field) | `uint32_t` | mm/s  |            |                                 | Speed uncertainty.                                                                                                                                                                         |
+| satellites_visible                                     | `uint8_t`  |       |            | invalid:UINT8_MAX               | 可见卫星数量。 If unknown, set to UINT8_MAX                                                                                                                                                       |
+| <span class='ext'>alt_ellipsoid</span> [++](#mav2_extension_field)  | `int32_t`  | 毫米    |            |                                 | Altitude (above WGS84, EGM96 ellipsoid). Positive for up.                                                                                                                                  |
+| <span class='ext'>h_acc</span> [++](#mav2_extension_field)  | `uint32_t` | 毫米    |            |                                 | Position uncertainty.                                                                                                                                                                      |
+| <span class='ext'>v_acc</span> [++](#mav2_extension_field)  | `uint32_t` | 毫米    |            |                                 | Altitude uncertainty.                                                                                                                                                                      |
+| <span class='ext'>vel_acc</span> [++](#mav2_extension_field) | `uint32_t` | 毫米/秒  |            |                                 | Speed uncertainty.                                                                                                                                                                         |
 | <span class='ext'>hdg_acc</span> [++](#mav2_extension_field) | `uint32_t` | degE5 |            |                                 | Heading / track uncertainty                                                                                                                                                                |
 | <span class='ext'>yaw</span> [++](#mav2_extension_field) | `uint16_t` | cdeg  |            | invalid:0                       | Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use UINT16_MAX if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north. |
 
@@ -235,20 +235,20 @@ NOT the global position estimate of the system, but rather a RAW sensor value. S
 
 The positioning status, as reported by GPS. This message is intended to display status information about each satellite visible to the receiver. See message [GLOBAL_POSITION_INT](#GLOBAL_POSITION_INT) for the global position estimate. This message can contain information for up to 20 satellites.
 
-| Field Name          | Type          | Units | Multiplier | Description                                                              |
+| Field Name          | Type          | Units | Multiplier | 描述                                                                       |
 | ------------------- | ------------- | ----- | ---------- | ------------------------------------------------------------------------ |
 | satellites_visible  | `uint8_t`     |       |            | Number of satellites visible                                             |
 | satellite_prn       | `uint8_t[20]` |       |            | Global satellite ID                                                      |
 | satellite_used      | `uint8_t[20]` |       |            | 0: Satellite not used, 1: used for localization                          |
-| satellite_elevation | `uint8_t[20]` | deg   |            | Elevation (0: right on top of receiver, 90: on the horizon) of satellite |
-| satellite_azimuth   | `uint8_t[20]` | deg   | 360/255    | Direction of satellite, 0: 0 deg, 255: 360 deg.                          |
+| satellite_elevation | `uint8_t[20]` | 度     |            | Elevation (0: right on top of receiver, 90: on the horizon) of satellite |
+| satellite_azimuth   | `uint8_t[20]` | 度     | 360/255    | Direction of satellite, 0: 0 deg, 255: 360 deg.                          |
 | satellite_snr       | `uint8_t[20]` | dB    |            | Signal to noise ratio of satellite                                       |
 
 ### SCALED_IMU (26) {#SCALED_IMU}
 
 The RAW IMU readings for the usual 9DOF sensor setup. This message should contain the scaled values to the described units
 
-| Field Name                                             | Type       | Units  | Description                                                                                          |
+| Field Name                                             | Type       | Units  | 描述                                                                                                   |
 | ------------------------------------------------------ | ---------- | ------ | ---------------------------------------------------------------------------------------------------- |
 | time_boot_ms                                         | `uint32_t` | ms     | Timestamp (time since system boot).                                                                  |
 | xacc                                                   | `int16_t`  | mG     | X acceleration                                                                                       |
@@ -266,7 +266,7 @@ The RAW IMU readings for the usual 9DOF sensor setup. This message should contai
 
 The RAW IMU readings for a 9DOF sensor, which is identified by the id (default IMU1). This message should always contain the true raw values without any scaling to allow data capture and system debugging.
 
-| Field Name                                             | Type       | Units | Description                                                                                                                                                                            |
+| Field Name                                             | Type       | Units | 描述                                                                                                                                                                                     |
 | ------------------------------------------------------ | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                              | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | xacc                                                   | `int16_t`  |       | X acceleration (raw)                                                                                                                                                                   |
@@ -286,7 +286,7 @@ Messages with same value are from the same source (instance).                  |
 
 The RAW pressure readings for the typical setup of one absolute pressure and one differential pressure sensor. The sensor values should be the raw, UNSCALED ADC values.
 
-| Field Name  | Type       | Units | Description                                                                                                                                                                            |
+| Field Name  | Type       | Units | 描述                                                                                                                                                                                     |
 | ----------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec   | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | press_abs   | `int16_t`  |       | Absolute pressure (raw)                                                                                                                                                                |
@@ -298,7 +298,7 @@ The RAW pressure readings for the typical setup of one absolute pressure and one
 
 The pressure readings for the typical setup of one absolute and differential pressure sensor. The units are as specified in each field.
 
-| Field Name                                             | Type       | Units | Description                                                                                    |
+| Field Name                                             | Type       | Units | 描述                                                                                             |
 | ------------------------------------------------------ | ---------- | ----- | ---------------------------------------------------------------------------------------------- |
 | time_boot_ms                                         | `uint32_t` | ms    | Timestamp (time since system boot).                                                            |
 | press_abs                                              | `float`    | hPa   | Absolute pressure                                                                              |
@@ -310,11 +310,11 @@ The pressure readings for the typical setup of one absolute and differential pre
 
 The attitude in the aeronautical frame (right-handed, Z-down, Y-right, X-front, ZYX, intrinsic).
 
-| Field Name     | Type       | Units | Description                         |
+| Field Name     | Type       | Units | 描述                                  |
 | -------------- | ---------- | ----- | ----------------------------------- |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot). |
 | roll           | `float`    | rad   | Roll angle (-pi..+pi)               |
-| pitch          | `float`    | rad   | Pitch angle (-pi..+pi)              |
+| 俯仰角            | `float`    | rad   | Pitch angle (-pi..+pi)              |
 | yaw            | `float`    | rad   | Yaw angle (-pi..+pi)                |
 | rollspeed      | `float`    | rad/s | Roll angular speed                  |
 | pitchspeed     | `float`    | rad/s | Pitch angular speed                 |
@@ -324,7 +324,7 @@ The attitude in the aeronautical frame (right-handed, Z-down, Y-right, X-front, 
 
 The attitude in the aeronautical frame (right-handed, Z-down, X-front, Y-right), expressed as quaternion. Quaternion order is w, x, y, z and a zero rotation would be expressed as (1 0 0 0).
 
-| Field Name                                             | Type       | Units | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Field Name                                             | Type       | Units | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ------------------------------------------------------ | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms                                         | `uint32_t` | ms    | Timestamp (time since system boot).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | q1                                                     | `float`    |       | Quaternion component 1, w (1 in null-rotation)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -340,7 +340,7 @@ The attitude in the aeronautical frame (right-handed, Z-down, X-front, Y-right),
 
 The filtered local position (e.g. fused computer vision and accelerometers). Coordinate frame is right-handed, Z-axis down (aeronautical frame, NED / north-east-down convention)
 
-| Field Name     | Type       | Units | Description                         |
+| Field Name     | Type       | Units | 描述                                  |
 | -------------- | ---------- | ----- | ----------------------------------- |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot). |
 | x              | `float`    | m     | X Position                          |
@@ -356,23 +356,23 @@ The filtered global position (e.g. fused GPS and accelerometers). The position i
 
 is designed as scaled integer message since the resolution of float is not sufficient.
 
-| Field Name     | Type       | Units | Description                                                                      |
+| Field Name     | Type       | Units | 描述                                                                               |
 | -------------- | ---------- | ----- | -------------------------------------------------------------------------------- |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot).                                              |
 | lat            | `int32_t`  | degE7 | Latitude, expressed                                                              |
 | lon            | `int32_t`  | degE7 | Longitude, expressed                                                             |
-| alt            | `int32_t`  | mm    | Altitude (MSL). Note that virtually all GPS modules provide both WGS84 and MSL.  |
-| relative_alt   | `int32_t`  | mm    | Altitude above home                                                              |
-| vx             | `int16_t`  | cm/s  | Ground X Speed (Latitude, positive north)                                        |
-| vy             | `int16_t`  | cm/s  | Ground Y Speed (Longitude, positive east)                                        |
-| vz             | `int16_t`  | cm/s  | Ground Z Speed (Altitude, positive down)                                         |
+| alt            | `int32_t`  | 毫米    | Altitude (MSL). Note that virtually all GPS modules provide both WGS84 and MSL.  |
+| relative_alt   | `int32_t`  | 毫米    | Altitude above home                                                              |
+| vx             | `int16_t`  | 厘米/秒  | Ground X Speed (Latitude, positive north)                                        |
+| vy             | `int16_t`  | 厘米/秒  | Ground Y Speed (Longitude, positive east)                                        |
+| vz             | `int16_t`  | 厘米/秒  | Ground Z Speed (Altitude, positive down)                                         |
 | hdg            | `uint16_t` | cdeg  | Vehicle heading (yaw angle), 0.0..359.99 degrees. If unknown, set to: UINT16_MAX |
 
 ### RC_CHANNELS_SCALED (34) {#RC_CHANNELS_SCALED}
 
 The scaled values of the RC channels received: (-100%) -10000, (0%) 0, (100%) 10000. Channels that are inactive should be set to INT16_MAX.
 
-| Field Name     | Type       | Units | Description                                                                                                     |
+| Field Name     | Type       | Units | 描述                                                                                                              |
 | -------------- | ---------- | ----- | --------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot).                                                                             |
 | port           | `uint8_t`  |       | Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.  |
@@ -390,7 +390,7 @@ The scaled values of the RC channels received: (-100%) -10000, (0%) 0, (100%) 10
 
 The RAW values of the RC channels received. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. A value of UINT16_MAX implies the channel is unused. Individual receivers/transmitters might violate this specification.
 
-| Field Name     | Type       | Units | Description                                                                                                     |
+| Field Name     | Type       | Units | 描述                                                                                                              |
 | -------------- | ---------- | ----- | --------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot).                                                                             |
 | port           | `uint8_t`  |       | Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.  |
@@ -408,7 +408,7 @@ The RAW values of the RC channels received. The standard PPM modulation is as fo
 
 Superseded by [ACTUATOR_OUTPUT_STATUS](#ACTUATOR_OUTPUT_STATUS). The RAW values of the servo outputs (for RC input from the remote, use the [RC_CHANNELS](#RC_CHANNELS) messages). The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%.
 
-| Field Name                                             | Type       | Units | Description                                                                                                                                                                            |
+| Field Name                                             | Type       | Units | 描述                                                                                                                                                                                     |
 | ------------------------------------------------------ | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                              | `uint32_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | port                                                   | `uint8_t`  |       | Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX.                                                                         |
@@ -433,7 +433,7 @@ Superseded by [ACTUATOR_OUTPUT_STATUS](#ACTUATOR_OUTPUT_STATUS). The RAW values 
 
 Request a partial list of mission items from the system/component. https://mavlink.io/en/services/mission.html. If start and end index are the same, just send one waypoint.
 
-| Field Name                                             | Type      | Values                                  | Description                                                                     |
+| Field Name                                             | Type      | 值                                       | 描述                                                                              |
 | ------------------------------------------------------ | --------- | --------------------------------------- | ------------------------------------------------------------------------------- |
 | target_system                                          | `uint8_t` |                                         | System ID                                                                       |
 | target_component                                       | `uint8_t` |                                         | Component ID                                                                    |
@@ -445,7 +445,7 @@ Request a partial list of mission items from the system/component. https://mavli
 
 This message is sent to the MAV to write a partial list. If start index == end index, only one item will be transmitted / updated. If the start index is NOT 0 and above the current list size, this request should be REJECTED!
 
-| Field Name                                             | Type      | Values                                  | Description                                                                            |
+| Field Name                                             | Type      | 值                                       | 描述                                                                                     |
 | ------------------------------------------------------ | --------- | --------------------------------------- | -------------------------------------------------------------------------------------- |
 | target_system                                          | `uint8_t` |                                         | System ID                                                                              |
 | target_component                                       | `uint8_t` |                                         | Component ID                                                                           |
@@ -461,11 +461,11 @@ Message encoding a mission item. This message is emitted to announce
 
 the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). NaN may be used to indicate an optional/default value (e.g. to use the system's current latitude or yaw rather than a specific value). See also https://mavlink.io/en/services/mission.html.
 
-| Field Name                                             | Type       | Values                                  | Description                                                                                            |
+| Field Name                                             | Type       | 值                                       | 描述                                                                                                     |
 | ------------------------------------------------------ | ---------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | target_system                                          | `uint8_t`  |                                         | System ID                                                                                              |
 | target_component                                       | `uint8_t`  |                                         | Component ID                                                                                           |
-| seq                                                    | `uint16_t` |                                         | Sequence                                                                                               |
+| seq                                                    | `uint16_t` |                                         | 序列                                                                                                     |
 | frame                                                  | `uint8_t`  | [MAV_FRAME](#MAV_FRAME)                 | The coordinate system of the waypoint.                                                                 |
 | command                                                | `uint16_t` | [MAV_CMD](#mav_commands)                | The scheduled action for the waypoint.                                                                 |
 | current                                                | `uint8_t`  |                                         | false:0, true:1                                                                                        |
@@ -485,11 +485,11 @@ the presence of a mission item and to set a mission item on the system. The miss
 
 Request the information of the mission item with the sequence number seq. The response of the system to this message should be a [MISSION_ITEM](#MISSION_ITEM) message. https://mavlink.io/en/services/mission.html
 
-| Field Name                                             | Type       | Values                                  | Description   |
+| Field Name                                             | Type       | 值                                       | 描述            |
 | ------------------------------------------------------ | ---------- | --------------------------------------- | ------------- |
 | target_system                                          | `uint8_t`  |                                         | System ID     |
 | target_component                                       | `uint8_t`  |                                         | Component ID  |
-| seq                                                    | `uint16_t` |                                         | Sequence      |
+| seq                                                    | `uint16_t` |                                         | 序列            |
 | <span class='ext'>mission_type</span> [++](#mav2_extension_field) | `uint8_t`  | [MAV_MISSION_TYPE](#MAV_MISSION_TYPE) | Mission type. |
 
 ### MISSION_SET_CURRENT (41) — [DEP] {#MISSION_SET_CURRENT}
@@ -500,19 +500,19 @@ Set the mission item with sequence number seq as the current item and emit [MISS
 
 This message may trigger a mission state-machine change on some systems: for example from [MISSION_STATE_NOT_STARTED](#MISSION_STATE_NOT_STARTED) or [MISSION_STATE_PAUSED](#MISSION_STATE_PAUSED) to [MISSION_STATE_ACTIVE](#MISSION_STATE_ACTIVE). If the system is in mission mode, on those systems this command might therefore start, restart or resume the mission. If the system is not in mission mode this message must not trigger a switch to mission mode.
 
-| Field Name       | Type       | Description  |
+| Field Name       | Type       | 描述           |
 | ---------------- | ---------- | ------------ |
 | target_system    | `uint8_t`  | System ID    |
 | target_component | `uint8_t`  | Component ID |
-| seq              | `uint16_t` | Sequence     |
+| seq              | `uint16_t` | 序列           |
 
 ### MISSION_CURRENT (42) {#MISSION_CURRENT}
 
 Message that announces the sequence number of the current target mission item (that the system will fly towards/execute when the mission is running). This message should be streamed all the time (nominally at 1Hz). This message should be emitted following a call to [MAV_CMD_DO_SET_MISSION_CURRENT](#MAV_CMD_DO_SET_MISSION_CURRENT) or [SET_MISSION_CURRENT](#SET_MISSION_CURRENT).
 
-| Field Name                                             | Type       | Values                                    | Description                                                                                                                                                                                                                                                          |
+| Field Name                                             | Type       | 值                                         | 描述                                                                                                                                                                                                                                                                   |
 | ------------------------------------------------------ | ---------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| seq                                                    | `uint16_t` |                                           | Sequence                                                                                                                                                                                                                                                             |
+| seq                                                    | `uint16_t` |                                           | 序列                                                                                                                                                                                                                                                                   |
 | <span class='ext'>total</span> [++](#mav2_extension_field) | `uint16_t` | invalid:UINT16_MAX                        | Total number of mission items on vehicle (on last item, sequence == total). If the autopilot stores its home location as part of the mission this will be excluded from the total. 0: Not supported, UINT16_MAX if no mission is present on the vehicle.             |
 | <span class='ext'>mission_state</span> [++](#mav2_extension_field) | `uint8_t`  | invalid:0 [MISSION_STATE](#MISSION_STATE) | Mission state machine state. [MISSION_STATE_UNKNOWN](#MISSION_STATE_UNKNOWN) if state reporting not supported.                                                                                                                                                     |
 | <span class='ext'>mission_mode</span> [++](#mav2_extension_field) | `uint8_t`  | invalid:0                                 | Vehicle is in a mode that can execute mission items or suspended. 0: Unknown, 1: In mission mode, 2: Suspended (not in mission mode).                                                                                                                                |
@@ -524,7 +524,7 @@ Message that announces the sequence number of the current target mission item (t
 
 Request the overall list of mission items from the system/component.
 
-| Field Name                                             | Type      | Values                                  | Description   |
+| Field Name                                             | Type      | 值                                       | 描述            |
 | ------------------------------------------------------ | --------- | --------------------------------------- | ------------- |
 | target_system                                          | `uint8_t` |                                         | System ID     |
 | target_component                                       | `uint8_t` |                                         | Component ID  |
@@ -534,7 +534,7 @@ Request the overall list of mission items from the system/component.
 
 This message is emitted as response to [MISSION_REQUEST_LIST](#MISSION_REQUEST_LIST) by the MAV and to initiate a write transaction. The GCS can then request the individual mission item based on the knowledge of the total number of waypoints.
 
-| Field Name                                             | Type       | Values                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Field Name                                             | Type       | 值                                       | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | ------------------------------------------------------ | ---------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | target_system                                          | `uint8_t`  |                                         | System ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | target_component                                       | `uint8_t`  |                                         | Component ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -551,7 +551,7 @@ The ids are recalculated by the vehicle when any part of the on-vehicle plan cha
 
 Delete all mission items at once.
 
-| Field Name                                             | Type      | Values                                  | Description   |
+| Field Name                                             | Type      | 值                                       | 描述            |
 | ------------------------------------------------------ | --------- | --------------------------------------- | ------------- |
 | target_system                                          | `uint8_t` |                                         | System ID     |
 | target_component                                       | `uint8_t` |                                         | Component ID  |
@@ -561,15 +561,15 @@ Delete all mission items at once.
 
 A certain mission item has been reached. The system will either hold this position (or circle on the orbit) or (if the autocontinue on the WP was set) continue to the next waypoint.
 
-| Field Name | Type       | Description |
-| ---------- | ---------- | ----------- |
-| seq        | `uint16_t` | Sequence    |
+| Field Name | Type       | 描述 |
+| ---------- | ---------- | -- |
+| seq        | `uint16_t` | 序列 |
 
 ### MISSION_ACK (47) {#MISSION_ACK}
 
 Acknowledgment message during waypoint handling. The type field states if this message is a positive ack (type=0) or if an error happened (type=non-zero).
 
-| Field Name                                             | Type       | Values                                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Field Name                                             | Type       | 值                                           | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ------------------------------------------------------ | ---------- | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system                                          | `uint8_t`  |                                             | System ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | target_component                                       | `uint8_t`  |                                             | Component ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -586,30 +586,30 @@ The current on-vehicle plan ids are streamed in `[MISSION_CURRENT](#MISSION_CURR
 
 Sets the GPS coordinates of the vehicle local origin (0,0,0) position. Vehicle should emit [GPS_GLOBAL_ORIGIN](#GPS_GLOBAL_ORIGIN) irrespective of whether the origin is changed. This enables transform between the local coordinate frame and the global (GPS) coordinate frame, which may be necessary when (for example) indoor and outdoor settings are connected and the MAV should move from in- to outdoor.
 
-| Field Name                                             | Type       | Units | Description                                                                                                                                                                            |
+| Field Name                                             | Type       | Units | 描述                                                                                                                                                                                     |
 | ------------------------------------------------------ | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system                                          | `uint8_t`  |       | System ID                                                                                                                                                                              |
 | latitude                                               | `int32_t`  | degE7 | Latitude (WGS84)                                                                                                                                                                       |
 | longitude                                              | `int32_t`  | degE7 | Longitude (WGS84)                                                                                                                                                                      |
-| altitude                                               | `int32_t`  | mm    | Altitude (MSL). Positive for up.                                                                                                                                                       |
+| altitude                                               | `int32_t`  | 毫米    | Altitude (MSL). Positive for up.                                                                                                                                                       |
 | <span class='ext'>time_usec</span> [++](#mav2_extension_field) | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 
 ### GPS_GLOBAL_ORIGIN (49) {#GPS_GLOBAL_ORIGIN}
 
 Publishes the GPS coordinates of the vehicle local origin (0,0,0) position. Emitted whenever a new GPS-Local position mapping is requested or set - e.g. following [SET_GPS_GLOBAL_ORIGIN](#SET_GPS_GLOBAL_ORIGIN) message.
 
-| Field Name                                             | Type       | Units | Description                                                                                                                                                                            |
+| Field Name                                             | Type       | Units | 描述                                                                                                                                                                                     |
 | ------------------------------------------------------ | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | latitude                                               | `int32_t`  | degE7 | Latitude (WGS84)                                                                                                                                                                       |
 | longitude                                              | `int32_t`  | degE7 | Longitude (WGS84)                                                                                                                                                                      |
-| altitude                                               | `int32_t`  | mm    | Altitude (MSL). Positive for up.                                                                                                                                                       |
+| altitude                                               | `int32_t`  | 毫米    | Altitude (MSL). Positive for up.                                                                                                                                                       |
 | <span class='ext'>time_usec</span> [++](#mav2_extension_field) | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 
 ### PARAM_MAP_RC (50) {#PARAM_MAP_RC}
 
 Bind a RC channel to a parameter. The parameter should change according to the RC channel value.
 
-| Field Name                   | Type       | Description                                                                                                                                                                                                                                            |
+| Field Name                   | Type       | 描述                                                                                                                                                                                                                                                     |
 | ---------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | target_system                | `uint8_t`  | System ID                                                                                                                                                                                                                                              |
 | target_component             | `uint8_t`  | Component ID                                                                                                                                                                                                                                           |
@@ -625,18 +625,18 @@ Bind a RC channel to a parameter. The parameter should change according to the R
 
 Request the information of the mission item with the sequence number seq. The response of the system to this message should be a [MISSION_ITEM_INT](#MISSION_ITEM_INT) message. https://mavlink.io/en/services/mission.html
 
-| Field Name                                             | Type       | Values                                  | Description   |
+| Field Name                                             | Type       | 值                                       | 描述            |
 | ------------------------------------------------------ | ---------- | --------------------------------------- | ------------- |
 | target_system                                          | `uint8_t`  |                                         | System ID     |
 | target_component                                       | `uint8_t`  |                                         | Component ID  |
-| seq                                                    | `uint16_t` |                                         | Sequence      |
+| seq                                                    | `uint16_t` |                                         | 序列            |
 | <span class='ext'>mission_type</span> [++](#mav2_extension_field) | `uint8_t`  | [MAV_MISSION_TYPE](#MAV_MISSION_TYPE) | Mission type. |
 
 ### SAFETY_SET_ALLOWED_AREA (54) {#SAFETY_SET_ALLOWED_AREA}
 
 Set a safety zone (volume), which is defined by two corners of a cube. This message can be used to tell the MAV which setpoints/waypoints to accept and which to reject. Safety areas are often enforced by national or competition regulations.
 
-| Field Name       | Type      | Units | Values                  | Description                                                                                                   |
+| Field Name       | Type      | Units | 值                       | 描述                                                                                                            |
 | ---------------- | --------- | ----- | ----------------------- | ------------------------------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t` |       |                         | System ID                                                                                                     |
 | target_component | `uint8_t` |       |                         | Component ID                                                                                                  |
@@ -652,7 +652,7 @@ Set a safety zone (volume), which is defined by two corners of a cube. This mess
 
 Read out the safety zone the MAV currently assumes.
 
-| Field Name | Type      | Units | Values                  | Description                                                                                                   |
+| Field Name | Type      | Units | 值                       | 描述                                                                                                            |
 | ---------- | --------- | ----- | ----------------------- | ------------------------------------------------------------------------------------------------------------- |
 | frame      | `uint8_t` |       | [MAV_FRAME](#MAV_FRAME) | Coordinate frame. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down. |
 | p1x        | `float`   | m     |                         | x position 1 / Latitude 1                                                                                     |
@@ -666,7 +666,7 @@ Read out the safety zone the MAV currently assumes.
 
 The attitude in the aeronautical frame (right-handed, Z-down, X-front, Y-right), expressed as quaternion. Quaternion order is w, x, y, z and a zero rotation would be expressed as (1 0 0 0).
 
-| Field Name | Type       | Units | Description                                                                                                                                                                                                                              |
+| Field Name | Type       | Units | 描述                                                                                                                                                                                                                                       |
 | ---------- | ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec  | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.                                                   |
 | q          | `float[4]` |       | Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation)                                                                                                                                                                         |
@@ -679,12 +679,12 @@ The attitude in the aeronautical frame (right-handed, Z-down, X-front, Y-right),
 
 The state of the navigation and position controller.
 
-| Field Name     | Type       | Units | Description                           |
+| Field Name     | Type       | Units | 描述                                    |
 | -------------- | ---------- | ----- | ------------------------------------- |
-| nav_roll       | `float`    | deg   | Current desired roll                  |
-| nav_pitch      | `float`    | deg   | Current desired pitch                 |
-| nav_bearing    | `int16_t`  | deg   | Current desired heading               |
-| target_bearing | `int16_t`  | deg   | Bearing to current waypoint/target    |
+| nav_roll       | `float`    | 度     | Current desired roll                  |
+| nav_pitch      | `float`    | 度     | Current desired pitch                 |
+| nav_bearing    | `int16_t`  | 度     | Current desired heading               |
+| target_bearing | `int16_t`  | 度     | Bearing to current waypoint/target    |
 | wp_dist        | `uint16_t` | m     | Distance to active waypoint           |
 | alt_error      | `float`    | m     | Current altitude error                |
 | aspd_error     | `float`    | m/s   | Current airspeed error                |
@@ -694,14 +694,14 @@ The state of the navigation and position controller.
 
 The filtered global position (e.g. fused GPS and accelerometers). The position is in GPS-frame (right-handed, Z-up). It is designed as scaled integer message since the resolution of float is not sufficient. NOTE: This message is intended for onboard networks / companion computers and higher-bandwidth links and optimized for accuracy and completeness. Please use the [GLOBAL_POSITION_INT](#GLOBAL_POSITION_INT) message for a minimal subset.
 
-| Field Name     | Type        | Units | Values                                      | Description                                                                                                                                                                                                                                                          |
+| Field Name     | Type        | Units | 值                                           | 描述                                                                                                                                                                                                                                                                   |
 | -------------- | ----------- | ----- | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec      | `uint64_t`  | us    |                                             | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.                                                                               |
 | estimator_type | `uint8_t`   |       | [MAV_ESTIMATOR_TYPE](#MAV_ESTIMATOR_TYPE) | Class id of the estimator this estimate originated from.                                                                                                                                                                                                             |
 | lat            | `int32_t`   | degE7 |                                             | Latitude                                                                                                                                                                                                                                                             |
 | lon            | `int32_t`   | degE7 |                                             | Longitude                                                                                                                                                                                                                                                            |
-| alt            | `int32_t`   | mm    |                                             | Altitude in meters above MSL                                                                                                                                                                                                                                         |
-| relative_alt   | `int32_t`   | mm    |                                             | Altitude above ground                                                                                                                                                                                                                                                |
+| alt            | `int32_t`   | 毫米    |                                             | Altitude in meters above MSL                                                                                                                                                                                                                                         |
+| relative_alt   | `int32_t`   | 毫米    |                                             | Altitude above ground                                                                                                                                                                                                                                                |
 | vx             | `float`     | m/s   |                                             | Ground X Speed (Latitude)                                                                                                                                                                                                                                            |
 | vy             | `float`     | m/s   |                                             | Ground Y Speed (Longitude)                                                                                                                                                                                                                                           |
 | vz             | `float`     | m/s   |                                             | Ground Z Speed (Altitude)                                                                                                                                                                                                                                            |
@@ -711,7 +711,7 @@ The filtered global position (e.g. fused GPS and accelerometers). The position i
 
 The filtered local position (e.g. fused computer vision and accelerometers). Coordinate frame is right-handed, Z-axis down (aeronautical frame, NED / north-east-down convention)
 
-| Field Name     | Type        | Units | Values                                      | Description                                                                                                                                                                                                                                                                                                |
+| Field Name     | Type        | Units | 值                                           | 描述                                                                                                                                                                                                                                                                                                         |
 | -------------- | ----------- | ----- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec      | `uint64_t`  | us    |                                             | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.                                                                                                                     |
 | estimator_type | `uint8_t`   |       | [MAV_ESTIMATOR_TYPE](#MAV_ESTIMATOR_TYPE) | Class id of the estimator this estimate originated from.                                                                                                                                                                                                                                                   |
@@ -730,7 +730,7 @@ The filtered local position (e.g. fused computer vision and accelerometers). Coo
 
 The PPM values of the RC channels received. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. A value of UINT16_MAX implies the channel is unused. Individual receivers/transmitters might violate this specification.
 
-| Field Name     | Type       | Units | Description                                                                                                                                                                                                  |
+| Field Name     | Type       | Units | 描述                                                                                                                                                                                                           |
 | -------------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot).                                                                                                                                                                          |
 | chancount      | `uint8_t`  |       | Total number of RC channels being received. This can be larger than 18, indicating that more channels are available but not given in this message. This value should be 0 when no RC channels are available. |
@@ -760,7 +760,7 @@ The PPM values of the RC channels received. The standard PPM modulation is as fo
 
 Request a data stream.
 
-| Field Name         | Type       | Units | Description                                      |
+| Field Name         | Type       | Units | 描述                                               |
 | ------------------ | ---------- | ----- | ------------------------------------------------ |
 | target_system      | `uint8_t`  |       | The target requested to send the message stream. |
 | target_component   | `uint8_t`  |       | The target requested to send the message stream. |
@@ -774,7 +774,7 @@ Request a data stream.
 
 Data stream status information.
 
-| Field Name   | Type       | Units | Description                               |
+| Field Name   | Type       | Units | 描述                                        |
 | ------------ | ---------- | ----- | ----------------------------------------- |
 | stream_id    | `uint8_t`  |       | The ID of the requested data stream       |
 | message_rate | `uint16_t` | Hz    | The message rate                          |
@@ -784,7 +784,7 @@ Data stream status information.
 
 This message provides an API for manually controlling the vehicle using standard joystick axes nomenclature, along with a joystick-like input device. Unused axes can be disabled and buttons states are transmitted as individual on/off bits of a bitmask
 
-| Field Name                                             | Type       | Description                                                                                                                                                                                                                                                                                                                      |
+| Field Name                                             | Type       | 描述                                                                                                                                                                                                                                                                                                                               |
 | ------------------------------------------------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target                                                 | `uint8_t`  | The system to be controlled.                                                                                                                                                                                                                                                                                                     |
 | x                                                      | `int16_t`  | X-axis, normalized to the range [-1000,1000]. A value of INT16_MAX indicates that this axis is invalid. Generally corresponds to forward(1000)-backward(-1000) movement on a joystick and the pitch of a vehicle.                                                                                                                |
@@ -807,7 +807,7 @@ This message provides an API for manually controlling the vehicle using standard
 
 The RAW values of the RC channels sent to the MAV to override info received from the RC radio. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. Individual receivers/transmitters might violate this specification. Note carefully the semantic differences between the first 8 channels and the subsequent channels
 
-| Field Name                                             | Type       | Units | Description                                                                                                                                               |
+| Field Name                                             | Type       | Units | 描述                                                                                                                                                        |
 | ------------------------------------------------------ | ---------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system                                          | `uint8_t`  |       | System ID                                                                                                                                                 |
 | target_component                                       | `uint8_t`  |       | Component ID                                                                                                                                              |
@@ -836,7 +836,7 @@ Message encoding a mission item. This message is emitted to announce
 
 the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). NaN or INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current latitude, yaw rather than a specific value). See also https://mavlink.io/en/services/mission.html.
 
-| Field Name                                             | Type       | Values                                  | Description                                                                                                                    |
+| Field Name                                             | Type       | 值                                       | 描述                                                                                                                             |
 | ------------------------------------------------------ | ---------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | target_system                                          | `uint8_t`  |                                         | System ID                                                                                                                      |
 | target_component                                       | `uint8_t`  |                                         | Component ID                                                                                                                   |
@@ -858,12 +858,12 @@ the presence of a mission item and to set a mission item on the system. The miss
 
 Metrics typically displayed on a HUD for fixed wing aircraft.
 
-| Field Name  | Type       | Units | Description                                                                                                                                                                                                         |
+| Field Name  | Type       | Units | 描述                                                                                                                                                                                                                  |
 | ----------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | airspeed    | `float`    | m/s   | Vehicle speed in form appropriate for vehicle type. For standard aircraft this is typically calibrated airspeed (CAS) or indicated airspeed (IAS) - either of which can be used by a pilot to estimate stall speed. |
 | groundspeed | `float`    | m/s   | Current ground speed.                                                                                                                                                                                               |
-| heading     | `int16_t`  | deg   | Current heading in compass units (0-360, 0=north).                                                                                                                                                                  |
-| throttle    | `uint16_t` | %     | Current throttle setting (0 to 100).                                                                                                                                                                                |
+| heading     | `int16_t`  | 度     | Current heading in compass units (0-360, 0=north).                                                                                                                                                                  |
+| 油门          | `uint16_t` | %     | Current throttle setting (0 to 100).                                                                                                                                                                                |
 | alt         | `float`    | m     | Current altitude (MSL).                                                                                                                                                                                             |
 | climb       | `float`    | m/s   | Current climb rate.                                                                                                                                                                                                 |
 
@@ -871,7 +871,7 @@ Metrics typically displayed on a HUD for fixed wing aircraft.
 
 Send a command with up to seven parameters to the MAV, where params 5 and 6 are integers and the other values are floats. This is preferred over [COMMAND_LONG](#COMMAND_LONG) as it allows the [MAV_FRAME](#MAV_FRAME) to be specified for interpreting positional information, such as altitude. [COMMAND_INT](#COMMAND_INT) is also preferred when sending latitude and longitude data in params 5 and 6, as it allows for greater precision. Param 5 and 6 encode positional data as scaled integers, where the scaling depends on the actual command value. NaN or INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current latitude, yaw rather than a specific value). The command microservice is documented at https://mavlink.io/en/services/command.html
 
-| Field Name       | Type       | Values                   | Description                                                                                 |
+| Field Name       | Type       | 值                        | 描述                                                                                          |
 | ---------------- | ---------- | ------------------------ | ------------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t`  |                          | System ID                                                                                   |
 | target_component | `uint8_t`  |                          | Component ID                                                                                |
@@ -891,7 +891,7 @@ Send a command with up to seven parameters to the MAV, where params 5 and 6 are 
 
 Send a command with up to seven parameters to the MAV. [COMMAND_INT](#COMMAND_INT) is generally preferred when sending [MAV_CMD](#mav_commands) commands that include positional information; it offers higher precision and allows the [MAV_FRAME](#MAV_FRAME) to be specified (which may otherwise be ambiguous, particularly for altitude). The command microservice is documented at https://mavlink.io/en/services/command.html
 
-| Field Name       | Type       | Values                   | Description                                                                                      |
+| Field Name       | Type       | 值                        | 描述                                                                                               |
 | ---------------- | ---------- | ------------------------ | ------------------------------------------------------------------------------------------------ |
 | target_system    | `uint8_t`  |                          | System which should execute the command                                                          |
 | target_component | `uint8_t`  |                          | Component which should execute the command, 0 for all components                                 |
@@ -909,7 +909,7 @@ Send a command with up to seven parameters to the MAV. [COMMAND_INT](#COMMAND_IN
 
 Report status of a command. Includes feedback whether the command was executed. The command microservice is documented at https://mavlink.io/en/services/command.html
 
-| Field Name                                             | Type       | Units | Values                    | Description                                                                                                                                                                                                                                                                                                              |
+| Field Name                                             | Type       | Units | 值                         | 描述                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------------------ | ---------- | ----- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | command                                                | `uint16_t` |       | [MAV_CMD](#mav_commands)  | Command ID (of acknowledged command).                                                                                                                                                                                                                                                                                    |
 | result                                                 | `uint8_t`  |       | [MAV_RESULT](#MAV_RESULT) | Result of command.                                                                                                                                                                                                                                                                                                       |
@@ -924,7 +924,7 @@ Report status of a command. Includes feedback whether the command was executed. 
 
 Cancel a long running command. The target system should respond with a [COMMAND_ACK](#COMMAND_ACK) to the original command with result=MAV_RESULT_CANCELLED if the long running process was cancelled. If it has already completed, the cancel action can be ignored. The cancel action can be retried until some sort of acknowledgement to the original command has been received. The command microservice is documented at https://mavlink.io/en/services/command.html
 
-| Field Name       | Type       | Values                   | Description                                                         |
+| Field Name       | Type       | 值                        | 描述                                                                  |
 | ---------------- | ---------- | ------------------------ | ------------------------------------------------------------------- |
 | target_system    | `uint8_t`  |                          | System executing long running command. Should not be broadcast (0). |
 | target_component | `uint8_t`  |                          | Component executing long running command.                           |
@@ -934,11 +934,11 @@ Cancel a long running command. The target system should respond with a [COMMAND_
 
 Setpoint in roll, pitch, yaw and thrust from the operator
 
-| Field Name               | Type       | Units | Description                             |
+| Field Name               | Type       | Units | 描述                                      |
 | ------------------------ | ---------- | ----- | --------------------------------------- |
 | time_boot_ms           | `uint32_t` | ms    | Timestamp (time since system boot).     |
 | roll                     | `float`    | rad/s | Desired roll rate                       |
-| pitch                    | `float`    | rad/s | Desired pitch rate                      |
+| 俯仰角                      | `float`    | rad/s | Desired pitch rate                      |
 | yaw                      | `float`    | rad/s | Desired yaw rate                        |
 | thrust                   | `float`    |       | Collective thrust, normalized to 0 .. 1 |
 | mode_switch              | `uint8_t`  |       | Flight mode switch position, 0.. 255    |
@@ -948,7 +948,7 @@ Setpoint in roll, pitch, yaw and thrust from the operator
 
 Sets a desired vehicle attitude. Used by an external controller to command the vehicle (manual controller or other system).
 
-| Field Name                                             | Type       | Units | Values                                                  | Description                                                                                                                                                           |
+| Field Name                                             | Type       | Units | 值                                                       | 描述                                                                                                                                                                    |
 | ------------------------------------------------------ | ---------- | ----- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms                                         | `uint32_t` | ms    |                                                         | Timestamp (time since system boot).                                                                                                                                   |
 | target_system                                          | `uint8_t`  |       |                                                         | System ID                                                                                                                                                             |
@@ -965,7 +965,7 @@ Sets a desired vehicle attitude. Used by an external controller to command the v
 
 Reports the current commanded attitude of the vehicle as specified by the autopilot. This should match the commands sent in a [SET_ATTITUDE_TARGET](#SET_ATTITUDE_TARGET) message if the vehicle is being controlled this way.
 
-| Field Name        | Type       | Units | Values                                                  | Description                                                                             |
+| Field Name        | Type       | Units | 值                                                       | 描述                                                                                      |
 | ----------------- | ---------- | ----- | ------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | time_boot_ms    | `uint32_t` | ms    |                                                         | Timestamp (time since system boot).                                                     |
 | type_mask         | `uint8_t`  |       | [ATTITUDE_TARGET_TYPEMASK](#ATTITUDE_TARGET_TYPEMASK) | Bitmap to indicate which dimensions should be ignored by the vehicle.                   |
@@ -979,7 +979,7 @@ Reports the current commanded attitude of the vehicle as specified by the autopi
 
 Sets a desired vehicle position in a local north-east-down coordinate frame. Used by an external controller to command the vehicle (manual controller or other system).
 
-| Field Name       | Type       | Units | Values                                                  | Description                                                                                                                                                                                                                                               |
+| Field Name       | Type       | Units | 值                                                       | 描述                                                                                                                                                                                                                                                        |
 | ---------------- | ---------- | ----- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms   | `uint32_t` | ms    |                                                         | Timestamp (time since system boot).                                                                                                                                                                                                                       |
 | target_system    | `uint8_t`  |       |                                                         | System ID                                                                                                                                                                                                                                                 |
@@ -1002,7 +1002,7 @@ Sets a desired vehicle position in a local north-east-down coordinate frame. Use
 
 Reports the current commanded vehicle position, velocity, and acceleration as specified by the autopilot. This should match the commands sent in [SET_POSITION_TARGET_LOCAL_NED](#SET_POSITION_TARGET_LOCAL_NED) if the vehicle is being controlled this way.
 
-| Field Name       | Type       | Units | Values                                                  | Description                                                                                                                                                                                                                                               |
+| Field Name       | Type       | Units | 值                                                       | 描述                                                                                                                                                                                                                                                        |
 | ---------------- | ---------- | ----- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms   | `uint32_t` | ms    |                                                         | Timestamp (time since system boot).                                                                                                                                                                                                                       |
 | coordinate_frame | `uint8_t`  |       | [MAV_FRAME](#MAV_FRAME)                                 | Valid options are: [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED) = 1, [MAV_FRAME_LOCAL_OFFSET_NED](#MAV_FRAME_LOCAL_OFFSET_NED) = 7, [MAV_FRAME_BODY_NED](#MAV_FRAME_BODY_NED) = 8, [MAV_FRAME_BODY_OFFSET_NED](#MAV_FRAME_BODY_OFFSET_NED) = 9 |
@@ -1023,7 +1023,7 @@ Reports the current commanded vehicle position, velocity, and acceleration as sp
 
 Sets a desired vehicle position, velocity, and/or acceleration in a global coordinate system (WGS84). Used by an external controller to command the vehicle (manual controller or other system).
 
-| Field Name       | Type       | Units | Values                                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Field Name       | Type       | Units | 值                                                       | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ---------------- | ---------- | ----- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | time_boot_ms   | `uint32_t` | ms    |                                                         | Timestamp (time since system boot). The rationale for the timestamp in the setpoint is to allow the system to compensate for the transport delay of the setpoint. This allows the system to compensate processing latency.                                                                                                                                                                                                                                               |
 | target_system    | `uint8_t`  |       |                                                         | System ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -1046,7 +1046,7 @@ Sets a desired vehicle position, velocity, and/or acceleration in a global coord
 
 Reports the current commanded vehicle position, velocity, and acceleration as specified by the autopilot. This should match the commands sent in [SET_POSITION_TARGET_GLOBAL_INT](#SET_POSITION_TARGET_GLOBAL_INT) if the vehicle is being controlled this way.
 
-| Field Name       | Type       | Units | Values                                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Field Name       | Type       | Units | 值                                                       | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ---------------- | ---------- | ----- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | time_boot_ms   | `uint32_t` | ms    |                                                         | Timestamp (time since system boot). The rationale for the timestamp in the setpoint is to allow the system to compensate for the transport delay of the setpoint. This allows the system to compensate processing latency.                                                                                                                                                                                                                                               |
 | coordinate_frame | `uint8_t`  |       | [MAV_FRAME](#MAV_FRAME)                                 | Valid options are: [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL) = 0, [MAV_FRAME_GLOBAL_RELATIVE_ALT](#MAV_FRAME_GLOBAL_RELATIVE_ALT) = 3, [MAV_FRAME_GLOBAL_TERRAIN_ALT](#MAV_FRAME_GLOBAL_TERRAIN_ALT) = 10 ([MAV_FRAME_GLOBAL_INT](#MAV_FRAME_GLOBAL_INT), [MAV_FRAME_GLOBAL_RELATIVE_ALT_INT](#MAV_FRAME_GLOBAL_RELATIVE_ALT_INT), [MAV_FRAME_GLOBAL_TERRAIN_ALT_INT](#MAV_FRAME_GLOBAL_TERRAIN_ALT_INT) are allowed synonyms, but have been deprecated) |
@@ -1067,14 +1067,14 @@ Reports the current commanded vehicle position, velocity, and acceleration as sp
 
 The offset in X, Y, Z and yaw between the [LOCAL_POSITION_NED](#LOCAL_POSITION_NED) messages of MAV X and the global coordinate frame in NED coordinates. Coordinate frame is right-handed, Z-axis down (aeronautical frame, NED / north-east-down convention)
 
-| Field Name     | Type       | Units | Description                         |
+| Field Name     | Type       | Units | 描述                                  |
 | -------------- | ---------- | ----- | ----------------------------------- |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot). |
 | x              | `float`    | m     | X Position                          |
 | y              | `float`    | m     | Y Position                          |
 | z              | `float`    | m     | Z Position                          |
 | roll           | `float`    | rad   | Roll                                |
-| pitch          | `float`    | rad   | Pitch                               |
+| 俯仰角            | `float`    | rad   | Pitch                               |
 | yaw            | `float`    | rad   | Yaw                                 |
 
 ### HIL_STATE (90) — [DEP] {#HIL_STATE}
@@ -1083,21 +1083,21 @@ The offset in X, Y, Z and yaw between the [LOCAL_POSITION_NED](#LOCAL_POSITION_N
 
 Sent from simulation to autopilot. This packet is useful for high throughput applications such as hardware in the loop simulations.
 
-| Field Name | Type       | Units | Description                                                                                                                                                                            |
+| Field Name | Type       | Units | 描述                                                                                                                                                                                     |
 | ---------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec  | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | roll       | `float`    | rad   | Roll angle                                                                                                                                                                             |
-| pitch      | `float`    | rad   | Pitch angle                                                                                                                                                                            |
+| 俯仰角        | `float`    | rad   | Pitch angle                                                                                                                                                                            |
 | yaw        | `float`    | rad   | Yaw angle                                                                                                                                                                              |
 | rollspeed  | `float`    | rad/s | Body frame roll / phi angular speed                                                                                                                                                    |
 | pitchspeed | `float`    | rad/s | Body frame pitch / theta angular speed                                                                                                                                                 |
 | yawspeed   | `float`    | rad/s | Body frame yaw / psi angular speed                                                                                                                                                     |
 | lat        | `int32_t`  | degE7 | Latitude                                                                                                                                                                               |
 | lon        | `int32_t`  | degE7 | Longitude                                                                                                                                                                              |
-| alt        | `int32_t`  | mm    | Altitude                                                                                                                                                                               |
-| vx         | `int16_t`  | cm/s  | Ground X Speed (Latitude)                                                                                                                                                              |
-| vy         | `int16_t`  | cm/s  | Ground Y Speed (Longitude)                                                                                                                                                             |
-| vz         | `int16_t`  | cm/s  | Ground Z Speed (Altitude)                                                                                                                                                              |
+| alt        | `int32_t`  | 毫米    | Altitude                                                                                                                                                                               |
+| vx         | `int16_t`  | 厘米/秒  | Ground X Speed (Latitude)                                                                                                                                                              |
+| vy         | `int16_t`  | 厘米/秒  | Ground Y Speed (Longitude)                                                                                                                                                             |
+| vz         | `int16_t`  | 厘米/秒  | Ground Z Speed (Altitude)                                                                                                                                                              |
 | xacc       | `int16_t`  | mG    | X acceleration                                                                                                                                                                         |
 | yacc       | `int16_t`  | mG    | Y acceleration                                                                                                                                                                         |
 | zacc       | `int16_t`  | mG    | Z acceleration                                                                                                                                                                         |
@@ -1106,25 +1106,25 @@ Sent from simulation to autopilot. This packet is useful for high throughput app
 
 Sent from autopilot to simulation. Hardware in the loop control outputs
 
-| Field Name     | Type       | Units | Values                | Description                                                                                                                                                                            |
+| Field Name     | Type       | Units | 值                     | 描述                                                                                                                                                                                     |
 | -------------- | ---------- | ----- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec      | `uint64_t` | us    |                       | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | roll_ailerons  | `float`    |       |                       | Control output -1 .. 1                                                                                                                                                                 |
 | pitch_elevator | `float`    |       |                       | Control output -1 .. 1                                                                                                                                                                 |
 | yaw_rudder     | `float`    |       |                       | Control output -1 .. 1                                                                                                                                                                 |
-| throttle       | `float`    |       |                       | Throttle 0 .. 1                                                                                                                                                                        |
+| 油门             | `float`    |       |                       | Throttle 0 .. 1                                                                                                                                                                        |
 | aux1           | `float`    |       |                       | Aux 1, -1 .. 1                                                                                                                                                                         |
 | aux2           | `float`    |       |                       | Aux 2, -1 .. 1                                                                                                                                                                         |
 | aux3           | `float`    |       |                       | Aux 3, -1 .. 1                                                                                                                                                                         |
 | aux4           | `float`    |       |                       | Aux 4, -1 .. 1                                                                                                                                                                         |
-| mode           | `uint8_t`  |       | [MAV_MODE](#MAV_MODE) | System mode.                                                                                                                                                                           |
-| nav_mode       | `uint8_t`  |       |                       | Navigation mode ([MAV_NAV_MODE](#MAV_NAV_MODE))                                                                                                                                      |
+| 模式             | `uint8_t`  |       | [MAV_MODE](#MAV_MODE) | System mode.                                                                                                                                                                           |
+| 导航模式           | `uint8_t`  |       |                       | Navigation mode ([MAV_NAV_MODE](#MAV_NAV_MODE))                                                                                                                                      |
 
 ### HIL_RC_INPUTS_RAW (92) {#HIL_RC_INPUTS_RAW}
 
 Sent from simulation to autopilot. The RAW values of the RC channels received. The standard PPM modulation is as follows: 1000 microseconds: 0%, 2000 microseconds: 100%. Individual receivers/transmitters might violate this specification.
 
-| Field Name | Type       | Units | Description                                                                                                                                                                            |
+| Field Name | Type       | Units | 描述                                                                                                                                                                                     |
 | ---------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec  | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | chan1_raw  | `uint16_t` | us    | RC channel 1 value                                                                                                                                                                     |
@@ -1145,18 +1145,18 @@ Sent from simulation to autopilot. The RAW values of the RC channels received. T
 
 Sent from autopilot to simulation. Hardware in the loop control outputs (replacement for [HIL_CONTROLS](#HIL_CONTROLS))
 
-| Field Name | Type        | Units | Values                            | Description                                                                                                                                                                            |
+| Field Name | Type        | Units | 值                                 | 描述                                                                                                                                                                                     |
 | ---------- | ----------- | ----- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec  | `uint64_t`  | us    |                                   | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | controls   | `float[16]` |       |                                   | Control outputs -1 .. 1. Channel assignment depends on the simulated hardware.                                                                                                         |
-| mode       | `uint8_t`   |       | [MAV_MODE_FLAG](#MAV_MODE_FLAG) | System mode. Includes arming state.                                                                                                                                                    |
+| 模式         | `uint8_t`   |       | [MAV_MODE_FLAG](#MAV_MODE_FLAG) | System mode. Includes arming state.                                                                                                                                                    |
 | flags      | `uint64_t`  |       |                                   | Flags as bitfield, 1: indicate simulation using lockstep.                                                                                                                              |
 
 ### OPTICAL_FLOW (100) {#OPTICAL_FLOW}
 
 Optical flow from a flow sensor (e.g. optical mouse sensor)
 
-| Field Name                                             | Type       | Units | Description                                                                                                                                                                            |
+| Field Name                                             | Type       | Units | 描述                                                                                                                                                                                     |
 | ------------------------------------------------------ | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                              | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | sensor_id                                              | `uint8_t`  |       | Sensor ID                                                                                                                                                                              |
@@ -1173,14 +1173,14 @@ Optical flow from a flow sensor (e.g. optical mouse sensor)
 
 Global position/attitude estimate from a vision source.
 
-| Field Name                                             | Type        | Units | Description                                                                                                                                                                                                                                                                                |
+| Field Name                                             | Type        | Units | 描述                                                                                                                                                                                                                                                                                         |
 | ------------------------------------------------------ | ----------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | usec                                                   | `uint64_t`  | us    | Timestamp (UNIX time or since system boot)                                                                                                                                                                                                                                                 |
 | x                                                      | `float`     | m     | Global X position                                                                                                                                                                                                                                                                          |
 | y                                                      | `float`     | m     | Global Y position                                                                                                                                                                                                                                                                          |
 | z                                                      | `float`     | m     | Global Z position                                                                                                                                                                                                                                                                          |
 | roll                                                   | `float`     | rad   | Roll angle                                                                                                                                                                                                                                                                                 |
-| pitch                                                  | `float`     | rad   | Pitch angle                                                                                                                                                                                                                                                                                |
+| 俯仰角                                                    | `float`     | rad   | Pitch angle                                                                                                                                                                                                                                                                                |
 | yaw                                                    | `float`     | rad   | Yaw angle                                                                                                                                                                                                                                                                                  |
 | <span class='ext'>covariance</span> [++](#mav2_extension_field) | `float[21]` |       | Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x_global, y_global, z_global, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array. |
 | <span class='ext'>reset_counter</span> [++](#mav2_extension_field) | `uint8_t`   |       | Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.                            |
@@ -1189,14 +1189,14 @@ Global position/attitude estimate from a vision source.
 
 Local position/attitude estimate from a vision source.
 
-| Field Name                                             | Type        | Units | Description                                                                                                                                                                                                                                                         |
+| Field Name                                             | Type        | Units | 描述                                                                                                                                                                                                                                                                  |
 | ------------------------------------------------------ | ----------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | usec                                                   | `uint64_t`  | us    | Timestamp (UNIX time or time since system boot)                                                                                                                                                                                                                     |
 | x                                                      | `float`     | m     | Local X position                                                                                                                                                                                                                                                    |
 | y                                                      | `float`     | m     | Local Y position                                                                                                                                                                                                                                                    |
 | z                                                      | `float`     | m     | Local Z position                                                                                                                                                                                                                                                    |
 | roll                                                   | `float`     | rad   | Roll angle                                                                                                                                                                                                                                                          |
-| pitch                                                  | `float`     | rad   | Pitch angle                                                                                                                                                                                                                                                         |
+| 俯仰角                                                    | `float`     | rad   | Pitch angle                                                                                                                                                                                                                                                         |
 | yaw                                                    | `float`     | rad   | Yaw angle                                                                                                                                                                                                                                                           |
 | <span class='ext'>covariance</span> [++](#mav2_extension_field) | `float[21]` |       | Row-major representation of pose 6x6 cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array. |
 | <span class='ext'>reset_counter</span> [++](#mav2_extension_field) | `uint8_t`   |       | Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps.     |
@@ -1205,7 +1205,7 @@ Local position/attitude estimate from a vision source.
 
 Speed estimate from a vision source.
 
-| Field Name                                             | Type       | Units | Description                                                                                                                                                                                                                                                     |
+| Field Name                                             | Type       | Units | 描述                                                                                                                                                                                                                                                              |
 | ------------------------------------------------------ | ---------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | usec                                                   | `uint64_t` | us    | Timestamp (UNIX time or time since system boot)                                                                                                                                                                                                                 |
 | x                                                      | `float`    | m/s   | Global X speed                                                                                                                                                                                                                                                  |
@@ -1218,14 +1218,14 @@ Speed estimate from a vision source.
 
 Global position estimate from a Vicon motion system source.
 
-| Field Name                                             | Type        | Units | Description                                                                                                                                                                                                                                                         |
+| Field Name                                             | Type        | Units | 描述                                                                                                                                                                                                                                                                  |
 | ------------------------------------------------------ | ----------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | usec                                                   | `uint64_t`  | us    | Timestamp (UNIX time or time since system boot)                                                                                                                                                                                                                     |
 | x                                                      | `float`     | m     | Global X position                                                                                                                                                                                                                                                   |
 | y                                                      | `float`     | m     | Global Y position                                                                                                                                                                                                                                                   |
 | z                                                      | `float`     | m     | Global Z position                                                                                                                                                                                                                                                   |
 | roll                                                   | `float`     | rad   | Roll angle                                                                                                                                                                                                                                                          |
-| pitch                                                  | `float`     | rad   | Pitch angle                                                                                                                                                                                                                                                         |
+| 俯仰角                                                    | `float`     | rad   | Pitch angle                                                                                                                                                                                                                                                         |
 | yaw                                                    | `float`     | rad   | Yaw angle                                                                                                                                                                                                                                                           |
 | <span class='ext'>covariance</span> [++](#mav2_extension_field) | `float[21]` |       | Row-major representation of 6x6 pose cross-covariance matrix upper right triangle (states: x, y, z, roll, pitch, yaw; first six entries are the first ROW, next five entries are the second ROW, etc.). If unknown, assign NaN value to first element in the array. |
 
@@ -1233,7 +1233,7 @@ Global position estimate from a Vicon motion system source.
 
 The IMU readings in SI units in NED body frame
 
-| Field Name                                             | Type       | Units | Values                                                    | Description                                                                                                                                                                            |
+| Field Name                                             | Type       | Units | 值                                                         | 描述                                                                                                                                                                                     |
 | ------------------------------------------------------ | ---------- | ----- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                              | `uint64_t` | us    |                                                           | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | xacc                                                   | `float`    | m/s/s |                                                           | X acceleration                                                                                                                                                                         |
@@ -1257,7 +1257,7 @@ Messages with same value are from the same source (instance).                  |
 
 Optical flow from an angular rate flow sensor (e.g. PX4FLOW or mouse sensor)
 
-| Field Name               | Type       | Units | Description                                                                                                                                                                            |
+| Field Name               | Type       | Units | 描述                                                                                                                                                                                     |
 | ------------------------ | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | sensor_id                | `uint8_t`  |       | Sensor ID  
@@ -1277,7 +1277,7 @@ Messages with same value are from the same source (instance).                   
 
 The IMU readings in SI units in NED body frame
 
-| Field Name                                             | Type       | Units | Values                                                  | Description                                                                                                                                                                            |
+| Field Name                                             | Type       | Units | 值                                                       | 描述                                                                                                                                                                                     |
 | ------------------------------------------------------ | ---------- | ----- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                              | `uint64_t` | us    |                                                         | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | xacc                                                   | `float`    | m/s/s |                                                         | X acceleration                                                                                                                                                                         |
@@ -1300,14 +1300,14 @@ The IMU readings in SI units in NED body frame
 
 Status of simulation environment, if used
 
-| Field Name                                             | Type      | Units | Description                                                                                                        |
+| Field Name                                             | Type      | Units | 描述                                                                                                                 |
 | ------------------------------------------------------ | --------- | ----- | ------------------------------------------------------------------------------------------------------------------ |
 | q1                                                     | `float`   |       | True attitude quaternion component 1, w (1 in null-rotation)                                                       |
 | q2                                                     | `float`   |       | True attitude quaternion component 2, x (0 in null-rotation)                                                       |
 | q3                                                     | `float`   |       | True attitude quaternion component 3, y (0 in null-rotation)                                                       |
 | q4                                                     | `float`   |       | True attitude quaternion component 4, z (0 in null-rotation)                                                       |
 | roll                                                   | `float`   | rad   | Attitude roll expressed as Euler angles, not recommended except for human-readable outputs                         |
-| pitch                                                  | `float`   | rad   | Attitude pitch expressed as Euler angles, not recommended except for human-readable outputs                        |
+| 俯仰角                                                    | `float`   | rad   | Attitude pitch expressed as Euler angles, not recommended except for human-readable outputs                        |
 | yaw                                                    | `float`   | rad   | Attitude yaw expressed as Euler angles, not recommended except for human-readable outputs                          |
 | xacc                                                   | `float`   | m/s/s | X acceleration                                                                                                     |
 | yacc                                                   | `float`   | m/s/s | Y acceleration                                                                                                     |
@@ -1315,8 +1315,8 @@ Status of simulation environment, if used
 | xgyro                                                  | `float`   | rad/s | Angular speed around X axis                                                                                        |
 | ygyro                                                  | `float`   | rad/s | Angular speed around Y axis                                                                                        |
 | zgyro                                                  | `float`   | rad/s | Angular speed around Z axis                                                                                        |
-| lat                                                    | `float`   | deg   | Latitude (lower precision). Both this and the lat_int field should be set.                                         |
-| lon                                                    | `float`   | deg   | Longitude (lower precision). Both this and the lon_int field should be set.                                        |
+| lat                                                    | `float`   | 度     | Latitude (lower precision). Both this and the lat_int field should be set.                                         |
+| lon                                                    | `float`   | 度     | Longitude (lower precision). Both this and the lon_int field should be set.                                        |
 | alt                                                    | `float`   | m     | Altitude                                                                                                           |
 | std_dev_horz                                         | `float`   |       | Horizontal position standard deviation                                                                             |
 | std_dev_vert                                         | `float`   |       | Vertical position standard deviation                                                                               |
@@ -1330,7 +1330,7 @@ Status of simulation environment, if used
 
 Status generated by radio and injected into MAVLink stream.
 
-| Field Name | Type       | Units | Description                                                                                                                                               |
+| Field Name | Type       | Units | 描述                                                                                                                                                        |
 | ---------- | ---------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | rssi       | `uint8_t`  |       | Local (message sender) received signal strength indication in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown.                  |
 | remrssi    | `uint8_t`  |       | Remote (message receiver) signal strength indication in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown.                        |
@@ -1344,7 +1344,7 @@ Status generated by radio and injected into MAVLink stream.
 
 File transfer protocol message: https://mavlink.io/en/services/ftp.html.
 
-| Field Name       | Type           | Description                                                                                                                                                                                                          |
+| Field Name       | Type           | 描述                                                                                                                                                                                                                   |
 | ---------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_network   | `uint8_t`      | Network ID (0 for broadcast)                                                                                                                                                                                         |
 | target_system    | `uint8_t`      | System ID (0 for broadcast)                                                                                                                                                                                          |
@@ -1355,7 +1355,7 @@ File transfer protocol message: https://mavlink.io/en/services/ftp.html.
 
 Time synchronization message. The message is used for both timesync requests and responses. The request is sent with `ts1=syncing component timestamp` and `tc1=0`, and may be broadcast or targeted to a specific system/component. The response is sent with `ts1=syncing component timestamp` (mirror back unchanged), and `tc1=responding component timestamp`, with the `target_system` and `target_component` set to ids of the original request. Systems can determine if they are receiving a request or response based on the value of `tc`. If the response has `target_system==target_component==0` the remote system has not been updated to use the component IDs and cannot reliably timesync; the requestor may report an error. Timestamps are UNIX Epoch time or time since system boot in nanoseconds (the timestamp format can be inferred by checking for the magnitude of the number; generally it doesn't matter as only the offset is used). The message sequence is repeated numerous times with results being filtered/averaged to estimate the offset.
 
-| Field Name                                             | Type      | Units | Description                                                                                                                              |
+| Field Name                                             | Type      | Units | 描述                                                                                                                                       |
 | ------------------------------------------------------ | --------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | tc1                                                    | `int64_t` | ns    | Time sync timestamp 1. Syncing: 0. Responding: Timestamp of responding component.                                                        |
 | ts1                                                    | `int64_t` | ns    | Time sync timestamp 2. Timestamp of syncing component (mirrored in response).                                                            |
@@ -1366,7 +1366,7 @@ Time synchronization message. The message is used for both timesync requests and
 
 Camera-IMU triggering and synchronisation message.
 
-| Field Name | Type       | Units | Description                                                                                                                                                                                            |
+| Field Name | Type       | Units | 描述                                                                                                                                                                                                     |
 | ---------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | time_usec  | `uint64_t` | us    | Timestamp for image frame (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | seq        | `uint32_t` |       | Image frame sequence                                                                                                                                                                                   |
@@ -1377,21 +1377,21 @@ The global position, as returned by the Global Positioning System (GPS). This is
 
 NOT the global position estimate of the system, but rather a RAW sensor value. See message [GLOBAL_POSITION_INT](#GLOBAL_POSITION_INT) for the global position estimate.
 
-| Field Name                                             | Type       | Units | Multiplier | Description                                                                                                                                                                            |
+| Field Name                                             | Type       | Units | Multiplier | 描述                                                                                                                                                                                     |
 | ------------------------------------------------------ | ---------- | ----- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                              | `uint64_t` | us    |            | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | fix_type                                               | `uint8_t`  |       |            | 0-1: no fix, 2: 2D fix, 3: 3D fix. Some applications will not use the value of this field unless it is at least two, so always correctly fill in the fix.                              |
 | lat                                                    | `int32_t`  | degE7 |            | Latitude (WGS84)                                                                                                                                                                       |
 | lon                                                    | `int32_t`  | degE7 |            | Longitude (WGS84)                                                                                                                                                                      |
-| alt                                                    | `int32_t`  | mm    |            | Altitude (MSL). Positive for up.                                                                                                                                                       |
+| alt                                                    | `int32_t`  | 毫米    |            | Altitude (MSL). Positive for up.                                                                                                                                                       |
 | eph                                                    | `uint16_t` |       | 1E-2       | GPS HDOP horizontal dilution of position (unitless * 100). If unknown, set to: UINT16_MAX                                                                                              |
 | epv                                                    | `uint16_t` |       | 1E-2       | GPS VDOP vertical dilution of position (unitless * 100). If unknown, set to: UINT16_MAX                                                                                                |
-| vel                                                    | `uint16_t` | cm/s  |            | GPS ground speed. If unknown, set to: UINT16_MAX                                                                                                                                       |
-| vn                                                     | `int16_t`  | cm/s  |            | GPS velocity in north direction in earth-fixed NED frame                                                                                                                               |
-| ve                                                     | `int16_t`  | cm/s  |            | GPS velocity in east direction in earth-fixed NED frame                                                                                                                                |
-| vd                                                     | `int16_t`  | cm/s  |            | GPS velocity in down direction in earth-fixed NED frame                                                                                                                                |
+| vel                                                    | `uint16_t` | 厘米/秒  |            | GPS ground speed. If unknown, set to: UINT16_MAX                                                                                                                                       |
+| vn                                                     | `int16_t`  | 厘米/秒  |            | GPS velocity in north direction in earth-fixed NED frame                                                                                                                               |
+| ve                                                     | `int16_t`  | 厘米/秒  |            | GPS velocity in east direction in earth-fixed NED frame                                                                                                                                |
+| vd                                                     | `int16_t`  | 厘米/秒  |            | GPS velocity in down direction in earth-fixed NED frame                                                                                                                                |
 | cog                                                    | `uint16_t` | cdeg  |            | Course over ground (NOT heading, but direction of movement), 0.0..359.99 degrees. If unknown, set to: UINT16_MAX                                                                       |
-| satellites_visible                                     | `uint8_t`  |       |            | Number of satellites visible. If unknown, set to UINT8_MAX                                                                                                                             |
+| satellites_visible                                     | `uint8_t`  |       |            | 可见卫星数量。 If unknown, set to UINT8_MAX                                                                                                                                                   |
 | <span class='ext'>id</span> [++](#mav2_extension_field) | `uint8_t`  |       |            | GPS ID (zero indexed). Used for multiple GPS inputs                                                                                                                                    |
 | <span class='ext'>yaw</span> [++](#mav2_extension_field) | `uint16_t` | cdeg  |            | Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north                                                                                                |
 
@@ -1399,7 +1399,7 @@ NOT the global position estimate of the system, but rather a RAW sensor value. S
 
 Simulated optical flow from a flow sensor (e.g. PX4FLOW or optical mouse sensor)
 
-| Field Name               | Type       | Units | Description                                                                                                                                                                            |
+| Field Name               | Type       | Units | 描述                                                                                                                                                                                     |
 | ------------------------ | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | sensor_id                | `uint8_t`  |       | Sensor ID                                                                                                                                                                              |
@@ -1418,7 +1418,7 @@ Simulated optical flow from a flow sensor (e.g. PX4FLOW or optical mouse sensor)
 
 Sent from simulation to autopilot, avoids in contrast to [HIL_STATE](#HIL_STATE) singularities. This packet is useful for high throughput applications such as hardware in the loop simulations.
 
-| Field Name          | Type       | Units | Description                                                                                                                                                                            |
+| Field Name          | Type       | Units | 描述                                                                                                                                                                                     |
 | ------------------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec           | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | attitude_quaternion | `float[4]` |       | Vehicle attitude expressed as normalized quaternion in w, x, y, z order (with 1 0 0 0 being the null-rotation)                                                                         |
@@ -1427,12 +1427,12 @@ Sent from simulation to autopilot, avoids in contrast to [HIL_STATE](#HIL_STATE)
 | yawspeed            | `float`    | rad/s | Body frame yaw / psi angular speed                                                                                                                                                     |
 | lat                 | `int32_t`  | degE7 | Latitude                                                                                                                                                                               |
 | lon                 | `int32_t`  | degE7 | Longitude                                                                                                                                                                              |
-| alt                 | `int32_t`  | mm    | Altitude                                                                                                                                                                               |
-| vx                  | `int16_t`  | cm/s  | Ground X Speed (Latitude)                                                                                                                                                              |
-| vy                  | `int16_t`  | cm/s  | Ground Y Speed (Longitude)                                                                                                                                                             |
-| vz                  | `int16_t`  | cm/s  | Ground Z Speed (Altitude)                                                                                                                                                              |
-| ind_airspeed        | `uint16_t` | cm/s  | Indicated airspeed                                                                                                                                                                     |
-| true_airspeed       | `uint16_t` | cm/s  | True airspeed                                                                                                                                                                          |
+| alt                 | `int32_t`  | 毫米    | Altitude                                                                                                                                                                               |
+| vx                  | `int16_t`  | 厘米/秒  | Ground X Speed (Latitude)                                                                                                                                                              |
+| vy                  | `int16_t`  | 厘米/秒  | Ground Y Speed (Longitude)                                                                                                                                                             |
+| vz                  | `int16_t`  | 厘米/秒  | Ground Z Speed (Altitude)                                                                                                                                                              |
+| ind_airspeed        | `uint16_t` | 厘米/秒  | Indicated airspeed                                                                                                                                                                     |
+| true_airspeed       | `uint16_t` | 厘米/秒  | True airspeed                                                                                                                                                                          |
 | xacc                | `int16_t`  | mG    | X acceleration                                                                                                                                                                         |
 | yacc                | `int16_t`  | mG    | Y acceleration                                                                                                                                                                         |
 | zacc                | `int16_t`  | mG    | Z acceleration                                                                                                                                                                         |
@@ -1441,7 +1441,7 @@ Sent from simulation to autopilot, avoids in contrast to [HIL_STATE](#HIL_STATE)
 
 The RAW IMU readings for secondary 9DOF sensor setup. This message should contain the scaled values to the described units
 
-| Field Name                                             | Type       | Units  | Description                                                                                          |
+| Field Name                                             | Type       | Units  | 描述                                                                                                   |
 | ------------------------------------------------------ | ---------- | ------ | ---------------------------------------------------------------------------------------------------- |
 | time_boot_ms                                         | `uint32_t` | ms     | Timestamp (time since system boot).                                                                  |
 | xacc                                                   | `int16_t`  | mG     | X acceleration                                                                                       |
@@ -1459,7 +1459,7 @@ The RAW IMU readings for secondary 9DOF sensor setup. This message should contai
 
 Request a list of available logs. On some systems calling this may stop on-board logging until [LOG_REQUEST_END](#LOG_REQUEST_END) is called. If there are no log files available this request shall be answered with one [LOG_ENTRY](#LOG_ENTRY) message with id = 0 and num_logs = 0.
 
-| Field Name       | Type       | Description                             |
+| Field Name       | Type       | 描述                                      |
 | ---------------- | ---------- | --------------------------------------- |
 | target_system    | `uint8_t`  | System ID                               |
 | target_component | `uint8_t`  | Component ID                            |
@@ -1470,7 +1470,7 @@ Request a list of available logs. On some systems calling this may stop on-board
 
 Reply to [LOG_REQUEST_LIST](#LOG_REQUEST_LIST)
 
-| Field Name     | Type       | Units | Description                                            |
+| Field Name     | Type       | Units | 描述                                                     |
 | -------------- | ---------- | ----- | ------------------------------------------------------ |
 | id             | `uint16_t` |       | Log id                                                 |
 | num_logs       | `uint16_t` |       | Total number of logs                                   |
@@ -1482,7 +1482,7 @@ Reply to [LOG_REQUEST_LIST](#LOG_REQUEST_LIST)
 
 Request a chunk of a log
 
-| Field Name       | Type       | Units | Description                                 |
+| Field Name       | Type       | Units | 描述                                          |
 | ---------------- | ---------- | ----- | ------------------------------------------- |
 | target_system    | `uint8_t`  |       | System ID                                   |
 | target_component | `uint8_t`  |       | Component ID                                |
@@ -1494,7 +1494,7 @@ Request a chunk of a log
 
 Reply to [LOG_REQUEST_DATA](#LOG_REQUEST_DATA)
 
-| Field Name | Type          | Units | Description                                 |
+| Field Name | Type          | Units | 描述                                          |
 | ---------- | ------------- | ----- | ------------------------------------------- |
 | id         | `uint16_t`    |       | Log id (from [LOG_ENTRY](#LOG_ENTRY) reply) |
 | ofs        | `uint32_t`    |       | Offset into the log                         |
@@ -1505,7 +1505,7 @@ Reply to [LOG_REQUEST_DATA](#LOG_REQUEST_DATA)
 
 Erase all logs
 
-| Field Name       | Type      | Description  |
+| Field Name       | Type      | 描述           |
 | ---------------- | --------- | ------------ |
 | target_system    | `uint8_t` | System ID    |
 | target_component | `uint8_t` | Component ID |
@@ -1514,7 +1514,7 @@ Erase all logs
 
 Stop log transfer and resume normal logging
 
-| Field Name       | Type      | Description  |
+| Field Name       | Type      | 描述           |
 | ---------------- | --------- | ------------ |
 | target_system    | `uint8_t` | System ID    |
 | target_component | `uint8_t` | Component ID |
@@ -1525,7 +1525,7 @@ Stop log transfer and resume normal logging
 
 Data for injecting into the onboard GPS (used for DGPS)
 
-| Field Name       | Type           | Units | Description                                          |
+| Field Name       | Type           | Units | 描述                                                   |
 | ---------------- | -------------- | ----- | ---------------------------------------------------- |
 | target_system    | `uint8_t`      |       | System ID                                            |
 | target_component | `uint8_t`      |       | Component ID                                         |
@@ -1536,32 +1536,32 @@ Data for injecting into the onboard GPS (used for DGPS)
 
 Second GPS data.
 
-| Field Name                                              | Type       | Units | Values                          | Description                                                                                                                                                                                |
+| Field Name                                              | Type       | Units | 值                               | 描述                                                                                                                                                                                         |
 | ------------------------------------------------------- | ---------- | ----- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | time_usec                                               | `uint64_t` | us    |                                 | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.     |
 | fix_type                                                | `uint8_t`  |       | [GPS_FIX_TYPE](#GPS_FIX_TYPE) | GPS fix type.                                                                                                                                                                              |
 | lat                                                     | `int32_t`  | degE7 |                                 | Latitude (WGS84)                                                                                                                                                                           |
 | lon                                                     | `int32_t`  | degE7 |                                 | Longitude (WGS84)                                                                                                                                                                          |
-| alt                                                     | `int32_t`  | mm    |                                 | Altitude (MSL). Positive for up.                                                                                                                                                           |
+| alt                                                     | `int32_t`  | 毫米    |                                 | Altitude (MSL). Positive for up.                                                                                                                                                           |
 | eph                                                     | `uint16_t` |       | invalid:UINT16_MAX              | GPS HDOP horizontal dilution of position (unitless * 100). If unknown, set to: UINT16_MAX                                                                                                  |
 | epv                                                     | `uint16_t` |       | invalid:UINT16_MAX              | GPS VDOP vertical dilution of position (unitless * 100). If unknown, set to: UINT16_MAX                                                                                                    |
-| vel                                                     | `uint16_t` | cm/s  | invalid:UINT16_MAX              | GPS ground speed. If unknown, set to: UINT16_MAX                                                                                                                                           |
+| vel                                                     | `uint16_t` | 厘米/秒  | invalid:UINT16_MAX              | GPS ground speed. If unknown, set to: UINT16_MAX                                                                                                                                           |
 | cog                                                     | `uint16_t` | cdeg  | invalid:UINT16_MAX              | Course over ground (NOT heading, but direction of movement): 0.0..359.99 degrees. If unknown, set to: UINT16_MAX                                                                           |
-| satellites_visible                                      | `uint8_t`  |       | invalid:UINT8_MAX               | Number of satellites visible. If unknown, set to UINT8_MAX                                                                                                                                 |
+| satellites_visible                                      | `uint8_t`  |       | invalid:UINT8_MAX               | 可见卫星数量。 If unknown, set to UINT8_MAX                                                                                                                                                       |
 | dgps_numch                                              | `uint8_t`  |       |                                 | Number of DGPS satellites                                                                                                                                                                  |
 | dgps_age                                                | `uint32_t` | ms    |                                 | Age of DGPS info                                                                                                                                                                           |
 | <span class='ext'>yaw</span> [++](#mav2_extension_field)  | `uint16_t` | cdeg  | invalid:0                       | Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use UINT16_MAX if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north. |
-| <span class='ext'>alt_ellipsoid</span> [++](#mav2_extension_field)  | `int32_t`  | mm    |                                 | Altitude (above WGS84, EGM96 ellipsoid). Positive for up.                                                                                                                                  |
-| <span class='ext'>h_acc</span> [++](#mav2_extension_field)  | `uint32_t` | mm    |                                 | Position uncertainty.                                                                                                                                                                      |
-| <span class='ext'>v_acc</span> [++](#mav2_extension_field) | `uint32_t` | mm    |                                 | Altitude uncertainty.                                                                                                                                                                      |
-| <span class='ext'>vel_acc</span> [++](#mav2_extension_field) | `uint32_t` | mm/s  |                                 | Speed uncertainty.                                                                                                                                                                         |
+| <span class='ext'>alt_ellipsoid</span> [++](#mav2_extension_field)  | `int32_t`  | 毫米    |                                 | Altitude (above WGS84, EGM96 ellipsoid). Positive for up.                                                                                                                                  |
+| <span class='ext'>h_acc</span> [++](#mav2_extension_field)  | `uint32_t` | 毫米    |                                 | Position uncertainty.                                                                                                                                                                      |
+| <span class='ext'>v_acc</span> [++](#mav2_extension_field) | `uint32_t` | 毫米    |                                 | Altitude uncertainty.                                                                                                                                                                      |
+| <span class='ext'>vel_acc</span> [++](#mav2_extension_field) | `uint32_t` | 毫米/秒  |                                 | Speed uncertainty.                                                                                                                                                                         |
 | <span class='ext'>hdg_acc</span> [++](#mav2_extension_field) | `uint32_t` | degE5 |                                 | Heading / track uncertainty                                                                                                                                                                |
 
 ### POWER_STATUS (125) {#POWER_STATUS}
 
 Power supply status
 
-| Field Name | Type       | Units | Values                                  | Description                          |
+| Field Name | Type       | Units | 值                                       | 描述                                   |
 | ---------- | ---------- | ----- | --------------------------------------- | ------------------------------------ |
 | Vcc        | `uint16_t` | mV    |                                         | 5V rail voltage.                     |
 | Vservo     | `uint16_t` | mV    |                                         | Servo rail voltage.                  |
@@ -1571,7 +1571,7 @@ Power supply status
 
 Control a serial port. This can be used for raw access to an onboard serial peripheral such as a GPS or telemetry radio. It is designed to make it possible to update the devices firmware via MAVLink messages or change the devices settings. A message with zero bytes can be used to change just the baudrate.
 
-| Field Name                                              | Type          | Units  | Values                                        | Description                                 |
+| Field Name                                              | Type          | Units  | 值                                             | 描述                                          |
 | ------------------------------------------------------- | ------------- | ------ | --------------------------------------------- | ------------------------------------------- |
 | device                                                  | `uint8_t`     |        | [SERIAL_CONTROL_DEV](#SERIAL_CONTROL_DEV)   | Serial control device type.                 |
 | flags                                                   | `uint8_t`     |        | [SERIAL_CONTROL_FLAG](#SERIAL_CONTROL_FLAG) | Bitmap of serial control flags.             |
@@ -1586,7 +1586,7 @@ Control a serial port. This can be used for raw access to an onboard serial peri
 
 RTK GPS data. Gives information on the relative baseline calculation the GPS is reporting
 
-| Field Name              | Type       | Units | Values                                                              | Description                                        |
+| Field Name              | Type       | Units | 值                                                                   | 描述                                                 |
 | ----------------------- | ---------- | ----- | ------------------------------------------------------------------- | -------------------------------------------------- |
 | time_last_baseline_ms | `uint32_t` | ms    |                                                                     | Time since boot of last baseline message received. |
 | rtk_receiver_id       | `uint8_t`  |       |                                                                     | Identification of connected RTK receiver.          |
@@ -1596,9 +1596,9 @@ RTK GPS data. Gives information on the relative baseline calculation the GPS is 
 | rtk_rate                | `uint8_t`  | Hz    |                                                                     | Rate of baseline messages being received by GPS    |
 | nsats                   | `uint8_t`  |       |                                                                     | Current number of sats used for RTK calculation.   |
 | baseline_coords_type  | `uint8_t`  |       | [RTK_BASELINE_COORDINATE_SYSTEM](#RTK_BASELINE_COORDINATE_SYSTEM) | Coordinate system of baseline                      |
-| baseline_a_mm         | `int32_t`  | mm    |                                                                     | Current baseline in ECEF x or NED north component. |
-| baseline_b_mm         | `int32_t`  | mm    |                                                                     | Current baseline in ECEF y or NED east component.  |
-| baseline_c_mm         | `int32_t`  | mm    |                                                                     | Current baseline in ECEF z or NED down component.  |
+| baseline_a_mm         | `int32_t`  | 毫米    |                                                                     | Current baseline in ECEF x or NED north component. |
+| baseline_b_mm         | `int32_t`  | 毫米    |                                                                     | Current baseline in ECEF y or NED east component.  |
+| baseline_c_mm         | `int32_t`  | 毫米    |                                                                     | Current baseline in ECEF z or NED down component.  |
 | accuracy                | `uint32_t` |       |                                                                     | Current estimate of baseline accuracy.             |
 | iar_num_hypotheses    | `int32_t`  |       |                                                                     | Current number of integer ambiguity hypotheses.    |
 
@@ -1606,7 +1606,7 @@ RTK GPS data. Gives information on the relative baseline calculation the GPS is 
 
 RTK GPS data. Gives information on the relative baseline calculation the GPS is reporting
 
-| Field Name              | Type       | Units | Values                                                              | Description                                        |
+| Field Name              | Type       | Units | 值                                                                   | 描述                                                 |
 | ----------------------- | ---------- | ----- | ------------------------------------------------------------------- | -------------------------------------------------- |
 | time_last_baseline_ms | `uint32_t` | ms    |                                                                     | Time since boot of last baseline message received. |
 | rtk_receiver_id       | `uint8_t`  |       |                                                                     | Identification of connected RTK receiver.          |
@@ -1616,9 +1616,9 @@ RTK GPS data. Gives information on the relative baseline calculation the GPS is 
 | rtk_rate                | `uint8_t`  | Hz    |                                                                     | Rate of baseline messages being received by GPS    |
 | nsats                   | `uint8_t`  |       |                                                                     | Current number of sats used for RTK calculation.   |
 | baseline_coords_type  | `uint8_t`  |       | [RTK_BASELINE_COORDINATE_SYSTEM](#RTK_BASELINE_COORDINATE_SYSTEM) | Coordinate system of baseline                      |
-| baseline_a_mm         | `int32_t`  | mm    |                                                                     | Current baseline in ECEF x or NED north component. |
-| baseline_b_mm         | `int32_t`  | mm    |                                                                     | Current baseline in ECEF y or NED east component.  |
-| baseline_c_mm         | `int32_t`  | mm    |                                                                     | Current baseline in ECEF z or NED down component.  |
+| baseline_a_mm         | `int32_t`  | 毫米    |                                                                     | Current baseline in ECEF x or NED north component. |
+| baseline_b_mm         | `int32_t`  | 毫米    |                                                                     | Current baseline in ECEF y or NED east component.  |
+| baseline_c_mm         | `int32_t`  | 毫米    |                                                                     | Current baseline in ECEF z or NED down component.  |
 | accuracy                | `uint32_t` |       |                                                                     | Current estimate of baseline accuracy.             |
 | iar_num_hypotheses    | `int32_t`  |       |                                                                     | Current number of integer ambiguity hypotheses.    |
 
@@ -1626,7 +1626,7 @@ RTK GPS data. Gives information on the relative baseline calculation the GPS is 
 
 The RAW IMU readings for 3rd 9DOF sensor setup. This message should contain the scaled values to the described units
 
-| Field Name                                              | Type       | Units  | Description                                                                                          |
+| Field Name                                              | Type       | Units  | 描述                                                                                                   |
 | ------------------------------------------------------- | ---------- | ------ | ---------------------------------------------------------------------------------------------------- |
 | time_boot_ms                                          | `uint32_t` | ms     | Timestamp (time since system boot).                                                                  |
 | xacc                                                    | `int16_t`  | mG     | X acceleration                                                                                       |
@@ -1644,7 +1644,7 @@ The RAW IMU readings for 3rd 9DOF sensor setup. This message should contain the 
 
 Handshake message to initiate, control and stop image streaming when using the Image Transmission Protocol: https://mavlink.io/en/services/image_transmission.html.
 
-| Field Name  | Type       | Units | Values                                                  | Description                                                                                                                            |
+| Field Name  | Type       | Units | 值                                                       | 描述                                                                                                                                     |
 | ----------- | ---------- | ----- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | type        | `uint8_t`  |       | [MAVLINK_DATA_STREAM_TYPE](#MAVLINK_DATA_STREAM_TYPE) | Type of requested/acknowledged data.                                                                                                   |
 | size        | `uint32_t` | bytes |                                                         | total data size (set on ACK only).                                                                                                     |
@@ -1658,7 +1658,7 @@ Handshake message to initiate, control and stop image streaming when using the I
 
 Data packet for images sent using the Image Transmission Protocol: https://mavlink.io/en/services/image_transmission.html.
 
-| Field Name | Type           | Description                                             |
+| Field Name | Type           | 描述                                                      |
 | ---------- | -------------- | ------------------------------------------------------- |
 | seqnr      | `uint16_t`     | sequence number (starting with 0 on every transmission) |
 | data       | `uint8_t[253]` | image data bytes                                        |
@@ -1667,12 +1667,12 @@ Data packet for images sent using the Image Transmission Protocol: https://mavli
 
 Distance sensor information for an onboard rangefinder.
 
-| Field Name                                              | Type       | Units | Values                                              | Description                                                                                                                                                                                                                                                                                                                                                                  |
+| Field Name                                              | Type       | Units | 值                                                   | 描述                                                                                                                                                                                                                                                                                                                                                                           |
 | ------------------------------------------------------- | ---------- | ----- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms                                          | `uint32_t` | ms    |                                                     | Timestamp (time since system boot).                                                                                                                                                                                                                                                                                                                                          |
-| min_distance                                            | `uint16_t` | cm    |                                                     | Minimum distance the sensor can measure                                                                                                                                                                                                                                                                                                                                      |
-| max_distance                                            | `uint16_t` | cm    |                                                     | Maximum distance the sensor can measure                                                                                                                                                                                                                                                                                                                                      |
-| current_distance                                        | `uint16_t` | cm    |                                                     | Current distance reading                                                                                                                                                                                                                                                                                                                                                     |
+| min_distance                                            | `uint16_t` | 厘米    |                                                     | Minimum distance the sensor can measure                                                                                                                                                                                                                                                                                                                                      |
+| max_distance                                            | `uint16_t` | 厘米    |                                                     | Maximum distance the sensor can measure                                                                                                                                                                                                                                                                                                                                      |
+| current_distance                                        | `uint16_t` | 厘米    |                                                     | Current distance reading                                                                                                                                                                                                                                                                                                                                                     |
 | type                                                    | `uint8_t`  |       | [MAV_DISTANCE_SENSOR](#MAV_DISTANCE_SENSOR)       | Type of distance sensor.                                                                                                                                                                                                                                                                                                                                                     |
 | id                                                      | `uint8_t`  |       |                                                     | Onboard ID of the sensor  
 Messages with same value are from the same source (instance).                                                                                                                                                                                                                                                                                     |
@@ -1687,7 +1687,7 @@ Messages with same value are from the same source (instance).                   
 
 Request for terrain data and terrain status. See terrain protocol docs: https://mavlink.io/en/services/terrain.html
 
-| Field Name   | Type       | Units | Description                                                            |
+| Field Name   | Type       | Units | 描述                                                                     |
 | ------------ | ---------- | ----- | ---------------------------------------------------------------------- |
 | lat          | `int32_t`  | degE7 | Latitude of SW corner of first grid                                    |
 | lon          | `int32_t`  | degE7 | Longitude of SW corner of first grid                                   |
@@ -1698,7 +1698,7 @@ Request for terrain data and terrain status. See terrain protocol docs: https://
 
 Terrain data sent from GCS. The lat/lon and grid_spacing must be the same as a lat/lon from a [TERRAIN_REQUEST](#TERRAIN_REQUEST). See terrain protocol docs: https://mavlink.io/en/services/terrain.html
 
-| Field Name   | Type          | Units | Description                          |
+| Field Name   | Type          | Units | 描述                                   |
 | ------------ | ------------- | ----- | ------------------------------------ |
 | lat          | `int32_t`     | degE7 | Latitude of SW corner of first grid  |
 | lon          | `int32_t`     | degE7 | Longitude of SW corner of first grid |
@@ -1708,18 +1708,18 @@ Terrain data sent from GCS. The lat/lon and grid_spacing must be the same as a l
 
 ### TERRAIN_CHECK (135) {#TERRAIN_CHECK}
 
-Request that the vehicle report terrain height at the given location (expected response is a [TERRAIN_REPORT](#TERRAIN_REPORT)). Used by GCS to check if vehicle has all terrain data needed for a mission.
+Request that the vehicle report terrain height at the given location (expected response is a [TERRAIN_REPORT](#TERRAIN_REPORT)). Used by GCS to check if vehicle has all terrain data needed for a mission. Used by GCS to check if vehicle has all terrain data needed for a mission.
 
-| Field Name | Type      | Units | Description |
-| ---------- | --------- | ----- | ----------- |
-| lat        | `int32_t` | degE7 | Latitude    |
-| lon        | `int32_t` | degE7 | Longitude   |
+| Field Name | Type      | Units | 描述        |
+| ---------- | --------- | ----- | --------- |
+| lat        | `int32_t` | degE7 | Latitude  |
+| lon        | `int32_t` | degE7 | Longitude |
 
 ### TERRAIN_REPORT (136) {#TERRAIN_REPORT}
 
 Streamed from drone to report progress of terrain map download (initiated by [TERRAIN_REQUEST](#TERRAIN_REQUEST)), or sent as a response to a [TERRAIN_CHECK](#TERRAIN_CHECK) request. See terrain protocol docs: https://mavlink.io/en/services/terrain.html
 
-| Field Name     | Type       | Units | Description                                                           |
+| Field Name     | Type       | Units | 描述                                                                    |
 | -------------- | ---------- | ----- | --------------------------------------------------------------------- |
 | lat            | `int32_t`  | degE7 | Latitude                                                              |
 | lon            | `int32_t`  | degE7 | Longitude                                                             |
@@ -1733,7 +1733,7 @@ Streamed from drone to report progress of terrain map download (initiated by [TE
 
 Barometer readings for 2nd barometer
 
-| Field Name                                              | Type       | Units | Description                                                                                    |
+| Field Name                                              | Type       | Units | 描述                                                                                             |
 | ------------------------------------------------------- | ---------- | ----- | ---------------------------------------------------------------------------------------------- |
 | time_boot_ms                                          | `uint32_t` | ms    | Timestamp (time since system boot).                                                            |
 | press_abs                                               | `float`    | hPa   | Absolute pressure                                                                              |
@@ -1745,7 +1745,7 @@ Barometer readings for 2nd barometer
 
 Motion capture attitude and position
 
-| Field Name                                              | Type        | Units | Description                                                                                                                                                                                                                                                           |
+| Field Name                                              | Type        | Units | 描述                                                                                                                                                                                                                                                                    |
 | ------------------------------------------------------- | ----------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                               | `uint64_t`  | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.                                                                                |
 | q                                                       | `float[4]`  |       | Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)                                                                                                                                                                                                   |
@@ -1758,7 +1758,7 @@ Motion capture attitude and position
 
 Set the vehicle attitude and body angular rates.
 
-| Field Name       | Type       | Units | Description                                                                                                                                                                                                                                                                                                                                                        |
+| Field Name       | Type       | Units | 描述                                                                                                                                                                                                                                                                                                                                                                 |
 | ---------------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | time_usec        | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.                                                                                                                                                                             |
 | group_mlx        | `uint8_t`  |       | Actuator group. The "_mlx" indicates this is a multi-instance message and a MAVLink parser should use this field to difference between instances.                                                                                                                                                                                                                  |
@@ -1770,7 +1770,7 @@ Set the vehicle attitude and body angular rates.
 
 Set the vehicle attitude and body angular rates.
 
-| Field Name | Type       | Units | Description                                                                                                                                                                                                                                                                                                                                                        |
+| Field Name | Type       | Units | 描述                                                                                                                                                                                                                                                                                                                                                                 |
 | ---------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | time_usec  | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.                                                                                                                                                                             |
 | group_mlx  | `uint8_t`  |       | Actuator group. The "_mlx" indicates this is a multi-instance message and a MAVLink parser should use this field to difference between instances.                                                                                                                                                                                                                  |
@@ -1780,7 +1780,7 @@ Set the vehicle attitude and body angular rates.
 
 The current system altitude.
 
-| Field Name         | Type       | Units | Description                                                                                                                                                                                                                                                                                                                                                                           |
+| Field Name         | Type       | Units | 描述                                                                                                                                                                                                                                                                                                                                                                                    |
 | ------------------ | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec          | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.                                                                                                                                                                                                |
 | altitude_monotonic | `float`    | m     | This altitude measure is initialized on system boot and monotonic (it is never reset, but represents the local altitude change). The only guarantee on this field is that it will never be reset and is consistent within a flight. The recommended value for this field is the uncorrected barometric altitude at boot time. This altitude will also drift and vary between flights. |
@@ -1794,7 +1794,7 @@ The current system altitude.
 
 The autopilot is requesting a resource (file, binary, other type of data)
 
-| Field Name    | Type           | Description                                                                                                                                        |
+| Field Name    | Type           | 描述                                                                                                                                                 |
 | ------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | request_id    | `uint8_t`      | Request ID. This ID should be re-used when sending back URI contents                                                                               |
 | uri_type      | `uint8_t`      | The type of requested URI. 0 = a file via URL. 1 = a UAVCAN binary                                                                                 |
@@ -1806,7 +1806,7 @@ The autopilot is requesting a resource (file, binary, other type of data)
 
 Barometer readings for 3rd barometer
 
-| Field Name                                              | Type       | Units | Description                                                                                    |
+| Field Name                                              | Type       | Units | 描述                                                                                             |
 | ------------------------------------------------------- | ---------- | ----- | ---------------------------------------------------------------------------------------------- |
 | time_boot_ms                                          | `uint32_t` | ms    | Timestamp (time since system boot).                                                            |
 | press_abs                                               | `float`    | hPa   | Absolute pressure                                                                              |
@@ -1818,7 +1818,7 @@ Barometer readings for 3rd barometer
 
 Current motion information from a designated system
 
-| Field Name       | Type       | Units | Description                                                                                     |
+| Field Name       | Type       | Units | 描述                                                                                              |
 | ---------------- | ---------- | ----- | ----------------------------------------------------------------------------------------------- |
 | timestamp        | `uint64_t` | ms    | Timestamp (time since system boot).                                                             |
 | est_capabilities | `uint8_t`  |       | bit positions for tracker reporting capabilities (POS = 0, VEL = 1, ACCEL = 2, ATT + RATES = 3) |
@@ -1836,7 +1836,7 @@ Current motion information from a designated system
 
 The smoothed, monotonic system state used to feed the control loops of the system.
 
-| Field Name   | Type       | Units | Description                                                                                                                                                                            |
+| Field Name   | Type       | Units | 描述                                                                                                                                                                                     |
 | ------------ | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec    | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | x_acc        | `float`    | m/s/s | X acceleration in body frame                                                                                                                                                           |
@@ -1860,7 +1860,7 @@ The smoothed, monotonic system state used to feed the control loops of the syste
 
 Battery information. Updates GCS with flight controller battery status. Smart batteries also use this message, but may additionally send [BATTERY_INFO](#BATTERY_INFO).
 
-| Field Name                                              | Type           | Units | Values                                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Field Name                                              | Type           | Units | 值                                                       | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ------------------------------------------------------- | -------------- | ----- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | id                                                      | `uint8_t`      |       |                                                         | Battery ID  
 Messages with same value are from the same source (instance).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -1882,7 +1882,7 @@ Messages with same value are from the same source (instance).                   
 
 Version and capability of autopilot software. This should be emitted in response to a request with [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 
-| Field Name                                              | Type          | Values                                                | Description                                                                                                                                                                                               |
+| Field Name                                              | Type          | 值                                                     | 描述                                                                                                                                                                                                        |
 | ------------------------------------------------------- | ------------- | ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | capabilities                                            | `uint64_t`    | [MAV_PROTOCOL_CAPABILITY](#MAV_PROTOCOL_CAPABILITY) | Bitmap of capabilities                                                                                                                                                                                    |
 | flight_sw_version                                     | `uint32_t`    |                                                       | Firmware version number                                                                                                                                                                                   |
@@ -1901,7 +1901,7 @@ Version and capability of autopilot software. This should be emitted in response
 
 The location of a landing target. See: https://mavlink.io/en/services/landing_target.html
 
-| Field Name                                              | Type       | Units | Values                                        | Description                                                                                                                                                                            |
+| Field Name                                              | Type       | Units | 值                                             | 描述                                                                                                                                                                                     |
 | ------------------------------------------------------- | ---------- | ----- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                               | `uint64_t` | us    |                                               | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | target_num                                              | `uint8_t`  |       |                                               | The ID of the target if multiple targets are present                                                                                                                                   |
@@ -1922,7 +1922,7 @@ The location of a landing target. See: https://mavlink.io/en/services/landing_ta
 
 Status of geo-fencing. Sent in extended status stream when fencing enabled.
 
-| Field Name                                              | Type       | Units | Values                            | Description                                                |
+| Field Name                                              | Type       | Units | 值                                 | 描述                                                         |
 | ------------------------------------------------------- | ---------- | ----- | --------------------------------- | ---------------------------------------------------------- |
 | breach_status                                           | `uint8_t`  |       |                                   | Breach status (0 if currently inside fence, 1 if outside). |
 | breach_count                                            | `uint16_t` |       |                                   | Number of fence breaches.                                  |
@@ -1934,7 +1934,7 @@ Status of geo-fencing. Sent in extended status stream when fencing enabled.
 
 Reports results of completed compass calibration. Sent until [MAG_CAL_ACK](#MAG_CAL_ACK) received.
 
-| Field Name                                              | Type      | Units  | Values                                              | Description                                                                                      |
+| Field Name                                              | Type      | Units  | 值                                                   | 描述                                                                                               |
 | ------------------------------------------------------- | --------- | ------ | --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | compass_id                                              | `uint8_t` |        |                                                     | Compass being calibrated.  
 Messages with same value are from the same source (instance).        |
@@ -1960,7 +1960,7 @@ Messages with same value are from the same source (instance).        |
 
 EFI status output
 
-| Field Name                                              | Type      | Units    | Description                                                                                                                                  |
+| Field Name                                              | Type      | Units    | 描述                                                                                                                                           |
 | ------------------------------------------------------- | --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | health                                                  | `uint8_t` |          | EFI health status                                                                                                                            |
 | ecu_index                                               | `float`   |          | ECU index                                                                                                                                    |
@@ -1974,7 +1974,7 @@ EFI status output
 | intake_manifold_pressure                              | `float`   | kPa      | Intake manifold pressure(                                                                                                                    |
 | intake_manifold_temperature                           | `float`   | degC     | Intake manifold temperature                                                                                                                  |
 | cylinder_head_temperature                             | `float`   | degC     | Cylinder head temperature                                                                                                                    |
-| ignition_timing                                         | `float`   | deg      | Ignition timing (Crank angle degrees)                                                                                                        |
+| ignition_timing                                         | `float`   | 度        | Ignition timing (Crank angle degrees)                                                                                                        |
 | injection_time                                          | `float`   | ms       | Injection time                                                                                                                               |
 | exhaust_gas_temperature                               | `float`   | degC     | Exhaust gas temperature                                                                                                                      |
 | throttle_out                                            | `float`   | %        | Output throttle                                                                                                                              |
@@ -1986,7 +1986,7 @@ EFI status output
 
 Estimator status message including flags, innovation test ratios and estimated accuracies. The flags message is an integer bitmask containing information on which EKF outputs are valid. See the [ESTIMATOR_STATUS_FLAGS](#ESTIMATOR_STATUS_FLAGS) enum definition for further information. The innovation test ratios show the magnitude of the sensor innovation divided by the innovation check threshold. Under normal operation the innovation test ratios should be below 0.5 with occasional values up to 1.0. Values greater than 1.0 should be rare under normal operation and indicate that a measurement has been rejected by the filter. The user should be notified if an innovation test ratio greater than 1.0 is recorded. Notifications for values in the range between 0.5 and 1.0 should be optional and controllable by the user.
 
-| Field Name           | Type       | Units | Values                                              | Description                                                                                                                                                                            |
+| Field Name           | Type       | Units | 值                                                   | 描述                                                                                                                                                                                     |
 | -------------------- | ---------- | ----- | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec            | `uint64_t` | us    |                                                     | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | flags                | `uint16_t` |       | [ESTIMATOR_STATUS_FLAGS](#ESTIMATOR_STATUS_FLAGS) | Bitmap indicating which EKF outputs are valid.                                                                                                                                         |
@@ -2003,7 +2003,7 @@ Estimator status message including flags, innovation test ratios and estimated a
 
 Wind estimate from vehicle. Note that despite the name, this message does not actually contain any covariances but instead variability and accuracy fields in terms of standard deviation (1-STD).
 
-| Field Name     | Type       | Units | Description                                                                                                                                                                            |
+| Field Name     | Type       | Units | 描述                                                                                                                                                                                     |
 | -------------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec      | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | wind_x         | `float`    | m/s   | Wind in North (NED) direction (NAN if unknown)                                                                                                                                         |
@@ -2019,7 +2019,7 @@ Wind estimate from vehicle. Note that despite the name, this message does not ac
 
 GPS sensor input message. This is a raw sensor value sent by the GPS. This is NOT the global position estimate of the system.
 
-| Field Name                                              | Type       | Units | Values                                              | Description                                                                                                                                                                            |
+| Field Name                                              | Type       | Units | 值                                                   | 描述                                                                                                                                                                                     |
 | ------------------------------------------------------- | ---------- | ----- | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                               | `uint64_t` | us    |                                                     | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | gps_id                                                  | `uint8_t`  |       |                                                     | ID of the GPS for multiple GPS inputs  
@@ -2039,14 +2039,14 @@ Messages with same value are from the same source (instance).                   
 | speed_accuracy                                          | `float`    | m/s   |                                                     | GPS speed accuracy                                                                                                                                                                     |
 | horiz_accuracy                                          | `float`    | m     |                                                     | GPS horizontal accuracy                                                                                                                                                                |
 | vert_accuracy                                           | `float`    | m     |                                                     | GPS vertical accuracy                                                                                                                                                                  |
-| satellites_visible                                      | `uint8_t`  |       |                                                     | Number of satellites visible.                                                                                                                                                          |
+| satellites_visible                                      | `uint8_t`  |       |                                                     | 可见卫星数量。                                                                                                                                                                                |
 | <span class='ext'>yaw</span> [++](#mav2_extension_field) | `uint16_t` | cdeg  |                                                     | Yaw of vehicle relative to Earth's North, zero means not available, use 36000 for north                                                                                                |
 
 ### GPS_RTCM_DATA (233) {#GPS_RTCM_DATA}
 
 RTCM message for injecting into the onboard GPS (used for DGPS)
 
-| Field Name | Type           | Units | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Field Name | Type           | Units | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ---------- | -------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | flags      | `uint8_t`      |       | LSB: 1 means message is fragmented, next 2 bits are the fragment ID, the remaining 5 bits are used for the sequence ID. Messages are only to be flushed to the GPS when the entire message has been reconstructed on the autopilot. The fragment ID specifies which order the fragments should be assembled into a buffer, while the sequence ID is used to detect a mismatch between different buffers. The buffer is considered fully reconstructed when either all 4 fragments are present, or all the fragments before the first fragment with a non full payload is received. This management is used to ensure that normal GPS operation doesn't corrupt RTCM data, and to recover from a unreliable transport delivery order. |
 | len        | `uint8_t`      | bytes | data length                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -2058,15 +2058,15 @@ RTCM message for injecting into the onboard GPS (used for DGPS)
 
 Message appropriate for high latency connections like Iridium
 
-| Field Name        | Type       | Units | Values                                  | Description                                                                                                                 |
+| Field Name        | Type       | Units | 值                                       | 描述                                                                                                                          |
 | ----------------- | ---------- | ----- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | base_mode         | `uint8_t`  |       | [MAV_MODE_FLAG](#MAV_MODE_FLAG)       | Bitmap of enabled system modes.                                                                                             |
 | custom_mode       | `uint32_t` |       |                                         | A bitfield for use for autopilot-specific flags.                                                                            |
 | landed_state      | `uint8_t`  |       | [MAV_LANDED_STATE](#MAV_LANDED_STATE) | The landed state. Is set to [MAV_LANDED_STATE_UNDEFINED](#MAV_LANDED_STATE_UNDEFINED) if landed state is unknown.         |
 | roll              | `int16_t`  | cdeg  |                                         | roll                                                                                                                        |
-| pitch             | `int16_t`  | cdeg  |                                         | pitch                                                                                                                       |
+| 俯仰角               | `int16_t`  | cdeg  |                                         | 俯仰角                                                                                                                         |
 | heading           | `uint16_t` | cdeg  |                                         | heading                                                                                                                     |
-| throttle          | `int8_t`   | %     |                                         | throttle (percentage)                                                                                                       |
+| 油门                | `int8_t`   | %     |                                         | throttle (percentage)                                                                                                       |
 | heading_sp        | `int16_t`  | cdeg  |                                         | heading setpoint                                                                                                            |
 | latitude          | `int32_t`  | degE7 |                                         | Latitude                                                                                                                    |
 | longitude         | `int32_t`  | degE7 |                                         | Longitude                                                                                                                   |
@@ -2076,7 +2076,7 @@ Message appropriate for high latency connections like Iridium
 | airspeed_sp       | `uint8_t`  | m/s   |                                         | airspeed setpoint                                                                                                           |
 | groundspeed       | `uint8_t`  | m/s   |                                         | groundspeed                                                                                                                 |
 | climb_rate        | `int8_t`   | m/s   |                                         | climb rate                                                                                                                  |
-| gps_nsat          | `uint8_t`  |       | invalid:UINT8_MAX                       | Number of satellites visible. If unknown, set to UINT8_MAX                                                                  |
+| gps_nsat          | `uint8_t`  |       | invalid:UINT8_MAX                       | 可见卫星数量。 If unknown, set to UINT8_MAX                                                                                        |
 | gps_fix_type    | `uint8_t`  |       | [GPS_FIX_TYPE](#GPS_FIX_TYPE)         | GPS Fix type.                                                                                                               |
 | battery_remaining | `uint8_t`  | %     |                                         | Remaining battery (percentage)                                                                                              |
 | temperature       | `int8_t`   | degC  |                                         | Autopilot temperature (degrees C)                                                                                           |
@@ -2089,7 +2089,7 @@ Message appropriate for high latency connections like Iridium
 
 Message appropriate for high latency connections like Iridium (version 2)
 
-| Field Name      | Type       | Units | Values                                | Description                                                                                                                   |
+| Field Name      | Type       | Units | 值                                     | 描述                                                                                                                            |
 | --------------- | ---------- | ----- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | timestamp       | `uint32_t` | ms    |                                       | Timestamp (milliseconds since boot or Unix epoch)                                                                             |
 | type            | `uint8_t`  |       | [MAV_TYPE](#MAV_TYPE)                 | Type of the MAV (quadrotor, helicopter, etc.)                                                                                 |
@@ -2102,7 +2102,7 @@ Message appropriate for high latency connections like Iridium (version 2)
 | heading         | `uint8_t`  | deg/2 |                                       | Heading                                                                                                                       |
 | target_heading  | `uint8_t`  | deg/2 |                                       | Heading setpoint                                                                                                              |
 | target_distance | `uint16_t` | dam   |                                       | Distance to target waypoint or position                                                                                       |
-| throttle        | `uint8_t`  | %     |                                       | Throttle                                                                                                                      |
+| 油门              | `uint8_t`  | %     |                                       | Throttle                                                                                                                      |
 | airspeed        | `uint8_t`  | m/s*5 |                                       | Airspeed                                                                                                                      |
 | airspeed_sp     | `uint8_t`  | m/s*5 |                                       | Airspeed setpoint                                                                                                             |
 | groundspeed     | `uint8_t`  | m/s*5 |                                       | Groundspeed                                                                                                                   |
@@ -2123,7 +2123,7 @@ Message appropriate for high latency connections like Iridium (version 2)
 
 Vibration levels and accelerometer clipping
 
-| Field Name  | Type       | Units | Description                                                                                                                                                                            |
+| Field Name  | Type       | Units | 描述                                                                                                                                                                                     |
 | ----------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec   | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | vibration_x | `float`    |       | Vibration levels on X-axis                                                                                                                                                             |
@@ -2137,11 +2137,11 @@ Vibration levels and accelerometer clipping
 
 Contains the home position. The home position is the default position that the system will return to and land on. The position must be set automatically by the system during the takeoff, and may also be explicitly set using [MAV_CMD_DO_SET_HOME](#MAV_CMD_DO_SET_HOME). The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector. Note: this message can be requested by sending the [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) with param1=242 (or the deprecated [MAV_CMD_GET_HOME_POSITION](#MAV_CMD_GET_HOME_POSITION) command).
 
-| Field Name                                              | Type       | Units | Description                                                                                                                                                                                                                                                                                                                                                        |
+| Field Name                                              | Type       | Units | 描述                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------------------------------------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | latitude                                                | `int32_t`  | degE7 | Latitude (WGS84)                                                                                                                                                                                                                                                                                                                                                   |
 | longitude                                               | `int32_t`  | degE7 | Longitude (WGS84)                                                                                                                                                                                                                                                                                                                                                  |
-| altitude                                                | `int32_t`  | mm    | Altitude (MSL). Positive for up.                                                                                                                                                                                                                                                                                                                                   |
+| altitude                                                | `int32_t`  | 毫米    | Altitude (MSL). Positive for up.                                                                                                                                                                                                                                                                                                                                   |
 | x                                                       | `float`    | m     | Local X position of this position in the local coordinate frame (NED)                                                                                                                                                                                                                                                                                              |
 | y                                                       | `float`    | m     | Local Y position of this position in the local coordinate frame (NED)                                                                                                                                                                                                                                                                                              |
 | z                                                       | `float`    | m     | Local Z position of this position in the local coordinate frame (NED: positive "down")                                                                                                                                                                                                                                                                             |
@@ -2159,12 +2159,12 @@ All fields should be set to NaN if an accurate quaternion for both heading and s
 
 Sets the home position. The home position is the default position that the system will return to and land on. The position is set automatically by the system during the takeoff (and may also be set using this message). The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector. Note: the current home position may be emitted in a [HOME_POSITION](#HOME_POSITION) message on request (using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) with param1=242).
 
-| Field Name                                              | Type       | Units | Description                                                                                                                                                                                                                                                                                                                                                        |
+| Field Name                                              | Type       | Units | 描述                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------------------------------------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | target_system                                           | `uint8_t`  |       | System ID.                                                                                                                                                                                                                                                                                                                                                         |
 | latitude                                                | `int32_t`  | degE7 | Latitude (WGS84)                                                                                                                                                                                                                                                                                                                                                   |
 | longitude                                               | `int32_t`  | degE7 | Longitude (WGS84)                                                                                                                                                                                                                                                                                                                                                  |
-| altitude                                                | `int32_t`  | mm    | Altitude (MSL). Positive for up.                                                                                                                                                                                                                                                                                                                                   |
+| altitude                                                | `int32_t`  | 毫米    | Altitude (MSL). Positive for up.                                                                                                                                                                                                                                                                                                                                   |
 | x                                                       | `float`    | m     | Local X position of this position in the local coordinate frame (NED)                                                                                                                                                                                                                                                                                              |
 | y                                                       | `float`    | m     | Local Y position of this position in the local coordinate frame (NED)                                                                                                                                                                                                                                                                                              |
 | z                                                       | `float`    | m     | Local Z position of this position in the local coordinate frame (NED: positive "down")                                                                                                                                                                                                                                                                             |
@@ -2178,7 +2178,7 @@ Sets the home position. The home position is the default position that the syste
 
 The interval between messages for a particular MAVLink message ID. This message is sent in response to the [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) command with param1=244 (this message) and param2=message_id (the id of the message for which the interval is required). It may also be sent in response to [MAV_CMD_GET_MESSAGE_INTERVAL](#MAV_CMD_GET_MESSAGE_INTERVAL). This interface replaces [DATA_STREAM](#DATA_STREAM).
 
-| Field Name  | Type       | Units | Description                                                                                                                                                          |
+| Field Name  | Type       | Units | 描述                                                                                                                                                                   |
 | ----------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | message_id  | `uint16_t` |       | The ID of the requested MAVLink message. v1.0 is limited to 254 messages.                                                                                            |
 | interval_us | `int32_t`  | us    | The interval between two messages. A value of -1 indicates this stream is disabled, 0 indicates it is not available, > 0 indicates the interval at which it is sent. |
@@ -2187,7 +2187,7 @@ The interval between messages for a particular MAVLink message ID. This message 
 
 Provides state for additional features
 
-| Field Name   | Type      | Values                                  | Description                                                                                                                          |
+| Field Name   | Type      | 值                                       | 描述                                                                                                                                   |
 | ------------ | --------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | vtol_state   | `uint8_t` | [MAV_VTOL_STATE](#MAV_VTOL_STATE)     | The VTOL state if applicable. Is set to [MAV_VTOL_STATE_UNDEFINED](#MAV_VTOL_STATE_UNDEFINED) if UAV is not in VTOL configuration. |
 | landed_state | `uint8_t` | [MAV_LANDED_STATE](#MAV_LANDED_STATE) | The landed state. Is set to [MAV_LANDED_STATE_UNDEFINED](#MAV_LANDED_STATE_UNDEFINED) if landed state is unknown.                  |
@@ -2196,16 +2196,16 @@ Provides state for additional features
 
 The location and information of an ADSB vehicle
 
-| Field Name    | Type       | Units | Values                                      | Description                                                                                                                                                     |
+| Field Name    | Type       | Units | 值                                           | 描述                                                                                                                                                              |
 | ------------- | ---------- | ----- | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ICAO_address  | `uint32_t` |       |                                             | ICAO address                                                                                                                                                    |
 | lat           | `int32_t`  | degE7 |                                             | Latitude                                                                                                                                                        |
 | lon           | `int32_t`  | degE7 |                                             | Longitude                                                                                                                                                       |
 | altitude_type | `uint8_t`  |       | [ADSB_ALTITUDE_TYPE](#ADSB_ALTITUDE_TYPE) | ADSB altitude type.                                                                                                                                             |
-| altitude      | `int32_t`  | mm    |                                             | Altitude(ASL)                                                                                                                                                   |
+| altitude      | `int32_t`  | 毫米    |                                             | Altitude(ASL)                                                                                                                                                   |
 | heading       | `uint16_t` | cdeg  |                                             | Course over ground                                                                                                                                              |
-| hor_velocity  | `uint16_t` | cm/s  |                                             | The horizontal velocity                                                                                                                                         |
-| ver_velocity  | `int16_t`  | cm/s  |                                             | The vertical velocity. Positive is up                                                                                                                           |
+| hor_velocity  | `uint16_t` | 厘米/秒  |                                             | The horizontal velocity                                                                                                                                         |
+| ver_velocity  | `int16_t`  | 厘米/秒  |                                             | The vertical velocity. Positive is up                                                                                                                           |
 | callsign      | `char[9]`  |       |                                             | The callsign, 8+null                                                                                                                                            |
 | emitter_type  | `uint8_t`  |       | [ADSB_EMITTER_TYPE](#ADSB_EMITTER_TYPE)   | ADSB emitter type.                                                                                                                                              |
 | tslc          | `uint8_t`  | s     |                                             | Time since last communication in seconds                                                                                                                        |
@@ -2216,7 +2216,7 @@ The location and information of an ADSB vehicle
 
 Information about a potential collision
 
-| Field Name                 | Type       | Units | Values                                                      | Description                                            |
+| Field Name                 | Type       | Units | 值                                                           | 描述                                                     |
 | -------------------------- | ---------- | ----- | ----------------------------------------------------------- | ------------------------------------------------------ |
 | src                        | `uint8_t`  |       | [MAV_COLLISION_SRC](#MAV_COLLISION_SRC)                   | Collision data source                                  |
 | id                         | `uint32_t` |       |                                                             | Unique identifier, domain based on src field           |
@@ -2230,7 +2230,7 @@ Information about a potential collision
 
 Message implementing parts of the V2 payload specs in V1 frames for transitional support.
 
-| Field Name       | Type           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Field Name       | Type           | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ---------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_network   | `uint8_t`      | Network ID (0 for broadcast)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | target_system    | `uint8_t`      | System ID (0 for broadcast)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -2242,7 +2242,7 @@ Message implementing parts of the V2 payload specs in V1 frames for transitional
 
 Send raw controller memory. The use of this message is discouraged for normal packets, but a quite efficient way for testing new messages and getting experimental debug output.
 
-| Field Name | Type         | Description                                                                                                |
+| Field Name | Type         | 描述                                                                                                         |
 | ---------- | ------------ | ---------------------------------------------------------------------------------------------------------- |
 | address    | `uint16_t`   | Starting address of the debug variables                                                                    |
 | ver        | `uint8_t`    | Version code of the type variable. 0=unknown, type ignored and assumed int16_t. 1=as below                 |
@@ -2253,7 +2253,7 @@ Send raw controller memory. The use of this message is discouraged for normal pa
 
 To debug something using a named 3D vector.
 
-| Field Name | Type       | Units | Description                                                                                                                                                                            |
+| Field Name | Type       | Units | 描述                                                                                                                                                                                     |
 | ---------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name       | `char[10]` |       | Name  
 Messages with same value are from the same source (instance).                                                                                                                   |
@@ -2266,7 +2266,7 @@ Messages with same value are from the same source (instance).                   
 
 Send a key-value pair as float. The use of this message is discouraged for normal packets, but a quite efficient way for testing new messages and getting experimental debug output.
 
-| Field Name     | Type       | Units | Description                                                                                |
+| Field Name     | Type       | Units | 描述                                                                                         |
 | -------------- | ---------- | ----- | ------------------------------------------------------------------------------------------ |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot).                                                        |
 | name           | `char[10]` |       | Name of the debug variable  
@@ -2277,7 +2277,7 @@ Messages with same value are from the same source (instance). |
 
 Send a key-value pair as integer. The use of this message is discouraged for normal packets, but a quite efficient way for testing new messages and getting experimental debug output.
 
-| Field Name     | Type       | Units | Description                                                                                |
+| Field Name     | Type       | Units | 描述                                                                                         |
 | -------------- | ---------- | ----- | ------------------------------------------------------------------------------------------ |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot).                                                        |
 | name           | `char[10]` |       | Name of the debug variable  
@@ -2288,7 +2288,7 @@ Messages with same value are from the same source (instance). |
 
 Status text message. These messages are printed in yellow in the COMM console of QGroundControl. WARNING: They consume quite some bandwidth, so use only for important status and error messages. If implemented wisely, these messages are buffered on the MCU and sent only at a limited rate (e.g. 10 Hz).
 
-| Field Name                                              | Type       | Values                        | Description                                                                                                                                                                                                                                                 |
+| Field Name                                              | Type       | 值                             | 描述                                                                                                                                                                                                                                                          |
 | ------------------------------------------------------- | ---------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | severity                                                | `uint8_t`  | [MAV_SEVERITY](#MAV_SEVERITY) | Severity of status. Relies on the definitions within RFC-5424.                                                                                                                                                                                              |
 | text                                                    | `char[50]` |                               | Status text message, without null termination character                                                                                                                                                                                                     |
@@ -2299,7 +2299,7 @@ Status text message. These messages are printed in yellow in the COMM console of
 
 Send a debug value. The index is used to discriminate between values. These values show up in the plot of QGroundControl as DEBUG N.
 
-| Field Name     | Type       | Units | Description                         |
+| Field Name     | Type       | Units | 描述                                  |
 | -------------- | ---------- | ----- | ----------------------------------- |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot). |
 | ind            | `uint8_t`  |       | index of debug variable             |
@@ -2309,7 +2309,7 @@ Send a debug value. The index is used to discriminate between values. These valu
 
 Setup a MAVLink2 signing key. If called with secret_key of all zero and zero initial_timestamp will disable signing
 
-| Field Name        | Type          | Description                |
+| Field Name        | Type          | 描述                         |
 | ----------------- | ------------- | -------------------------- |
 | target_system     | `uint8_t`     | system id of the target    |
 | target_component  | `uint8_t`     | component ID of the target |
@@ -2320,7 +2320,7 @@ Setup a MAVLink2 signing key. If called with secret_key of all zero and zero ini
 
 Report button state change.
 
-| Field Name       | Type       | Units | Description                          |
+| Field Name       | Type       | Units | 描述                                   |
 | ---------------- | ---------- | ----- | ------------------------------------ |
 | time_boot_ms   | `uint32_t` | ms    | Timestamp (time since system boot).  |
 | last_change_ms | `uint32_t` | ms    | Time of last change of button state. |
@@ -2332,7 +2332,7 @@ Report button state change.
 
 Control vehicle tone generation (buzzer).
 
-| Field Name                                              | Type        | Description                       |
+| Field Name                                              | Type        | 描述                                |
 | ------------------------------------------------------- | ----------- | --------------------------------- |
 | target_system                                           | `uint8_t`   | System ID                         |
 | target_component                                        | `uint8_t`   | Component ID                      |
@@ -2343,15 +2343,15 @@ Control vehicle tone generation (buzzer).
 
 Information about a camera. Can be requested with a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) command.
 
-| Field Name                                              | Type          | Units | Values                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Field Name                                              | Type          | Units | 值                                       | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ------------------------------------------------------- | ------------- | ----- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms                                          | `uint32_t`    | ms    |                                         | Timestamp (time since system boot).                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | vendor_name                                             | `uint8_t[32]` |       |                                         | Name of the camera vendor                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | model_name                                              | `uint8_t[32]` |       |                                         | Name of the camera model                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | firmware_version                                        | `uint32_t`    |       | invalid:0                               | Version of the camera firmware, encoded as: (Dev & 0xff) << 24 | (Patch & 0xff) << 16 | (Minor & 0xff) << 8 | (Major & 0xff). Use 0 if not known.                                                                                                                                                                                                                                                                                                                                                   |
-| focal_length                                            | `float`       | mm    | invalid:NaN                             | Focal length. Use NaN if not known.                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| sensor_size_h                                         | `float`       | mm    | invalid:NaN                             | Image sensor size horizontal. Use NaN if not known.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| sensor_size_v                                         | `float`       | mm    | invalid:NaN                             | Image sensor size vertical. Use NaN if not known.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| focal_length                                            | `float`       | 毫米    | invalid:NaN                             | Focal length. Use NaN if not known.                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| sensor_size_h                                         | `float`       | 毫米    | invalid:NaN                             | Image sensor size horizontal. Use NaN if not known.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| sensor_size_v                                         | `float`       | 毫米    | invalid:NaN                             | Image sensor size vertical. Use NaN if not known.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | resolution_h                                            | `uint16_t`    | pix   | invalid:0                               | Horizontal image resolution. Use 0 if not known.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | resolution_v                                            | `uint16_t`    | pix   | invalid:0                               | Vertical image resolution. Use 0 if not known.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | lens_id                                                 | `uint8_t`     |       | invalid:0                               | Reserved for a lens ID. Use 0 if not known.                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -2365,7 +2365,7 @@ Information about a camera. Can be requested with a [MAV_CMD_REQUEST_MESSAGE](#M
 
 Settings of a camera. Can be requested with a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) command.
 
-| Field Name                                              | Type       | Units | Values                      | Description                                                                                                                           |
+| Field Name                                              | Type       | Units | 值                           | 描述                                                                                                                                    |
 | ------------------------------------------------------- | ---------- | ----- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms                                          | `uint32_t` | ms    |                             | Timestamp (time since system boot).                                                                                                   |
 | mode_id                                                 | `uint8_t`  |       | [CAMERA_MODE](#CAMERA_MODE) | Camera mode                                                                                                                           |
@@ -2377,7 +2377,7 @@ Settings of a camera. Can be requested with a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD
 
 Information about a storage medium. This message is sent in response to a request with [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) and whenever the status of the storage changes ([STORAGE_STATUS](#STORAGE_STATUS)). Use [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).param2 to indicate the index/id of requested storage: 0 for all, 1 for first, 2 for second, etc.
 
-| Field Name                                              | Type       | Units | Values                                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Field Name                                              | Type       | Units | 值                                           | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ------------------------------------------------------- | ---------- | ----- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | time_boot_ms                                          | `uint32_t` | ms    |                                             | Timestamp (time since system boot).                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | storage_id                                              | `uint8_t`  |       |                                             | Storage ID (1 for first, 2 for second, etc.)  
@@ -2400,7 +2400,7 @@ If the media usage flags are not set, a GCS may assume storage ID 1 is the defau
 
 Information about the status of a capture. Can be requested with a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) command.
 
-| Field Name                                              | Type       | Units | Description                                                                                                                                                              |
+| Field Name                                              | Type       | Units | 描述                                                                                                                                                                       |
 | ------------------------------------------------------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | time_boot_ms                                          | `uint32_t` | ms    | Timestamp (time since system boot).                                                                                                                                      |
 | image_status                                            | `uint8_t`  |       | Current status of image capturing (0: idle, 1: capture in progress, 2: interval set but idle, 3: interval set and capture in progress)                                   |
@@ -2417,15 +2417,15 @@ Information about a captured image. This is emitted every time a message is capt
 
 [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) can be used to (re)request this message for a specific sequence number or range of sequence numbers: [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).param2 indicates the sequence number the first image to send, or set to -1 to send the message for all sequence numbers. [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).param3 is used to specify a range of messages to send: set to 0 (default) to send just the the message for the sequence number in param 2, set to -1 to send the message for the sequence number in param 2 and all the following sequence numbers, set to the sequence number of the final message in the range.
 
-| Field Name     | Type        | Units | Description                                                                                                                        |
+| Field Name     | Type        | Units | 描述                                                                                                                                 |
 | -------------- | ----------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms | `uint32_t`  | ms    | Timestamp (time since system boot).                                                                                                |
 | time_utc       | `uint64_t`  | us    | Timestamp (time since UNIX epoch) in UTC. 0 for unknown.                                                                           |
 | camera_id      | `uint8_t`   |       | Deprecated/unused. Component IDs are used to differentiate multiple cameras.                                                       |
 | lat            | `int32_t`   | degE7 | Latitude where image was taken                                                                                                     |
 | lon            | `int32_t`   | degE7 | Longitude where capture was taken                                                                                                  |
-| alt            | `int32_t`   | mm    | Altitude (MSL) where image was taken                                                                                               |
-| relative_alt   | `int32_t`   | mm    | Altitude above ground                                                                                                              |
+| alt            | `int32_t`   | 毫米    | Altitude (MSL) where image was taken                                                                                               |
+| relative_alt   | `int32_t`   | 毫米    | Altitude above ground                                                                                                              |
 | q              | `float[4]`  |       | Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)                                                   |
 | image_index    | `int32_t`   |       | Zero based index of this image (i.e. a new image will have index [CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS).image count -1) |
 | capture_result | `int8_t`    |       | Boolean indicating success (1) or failure (0) while capturing this image.                                                          |
@@ -2437,7 +2437,7 @@ Flight information.
 
 This includes time since boot for arm, takeoff, and land, and a flight number. Takeoff and landing values reset to zero on arm. This can be requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE). Note, some fields are misnamed - timestamps are from boot (not UTC) and the flight_uuid is a sequence number.
 
-| Field Name                                              | Type       | Units | Description                                                                                                  |
+| Field Name                                              | Type       | Units | 描述                                                                                                           |
 | ------------------------------------------------------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------ |
 | time_boot_ms                                          | `uint32_t` | ms    | Timestamp (time since system boot).                                                                          |
 | arming_time_utc                                       | `uint64_t` | us    | Timestamp at arming (since system boot). Set to 0 on boot. Set value on arming. Note, field is misnamed UTC. |
@@ -2451,19 +2451,19 @@ This includes time since boot for arm, takeoff, and land, and a flight number. T
 
 Orientation of a mount
 
-| Field Name                                              | Type       | Units | Description                                                                           |
+| Field Name                                              | Type       | Units | 描述                                                                                    |
 | ------------------------------------------------------- | ---------- | ----- | ------------------------------------------------------------------------------------- |
 | time_boot_ms                                          | `uint32_t` | ms    | Timestamp (time since system boot).                                                   |
-| roll                                                    | `float`    | deg   | Roll in global frame (set to NaN for invalid).                                        |
-| pitch                                                   | `float`    | deg   | Pitch in global frame (set to NaN for invalid).                                       |
-| yaw                                                     | `float`    | deg   | Yaw relative to vehicle (set to NaN for invalid).                                     |
-| <span class='ext'>yaw_absolute</span> [++](#mav2_extension_field) | `float`    | deg   | Yaw in absolute frame relative to Earth's North, north is 0 (set to NaN for invalid). |
+| roll                                                    | `float`    | 度     | Roll in global frame (set to NaN for invalid).                                        |
+| 俯仰角                                                     | `float`    | 度     | Pitch in global frame (set to NaN for invalid).                                       |
+| yaw                                                     | `float`    | 度     | Yaw relative to vehicle (set to NaN for invalid).                                     |
+| <span class='ext'>yaw_absolute</span> [++](#mav2_extension_field) | `float`    | 度     | Yaw in absolute frame relative to Earth's North, north is 0 (set to NaN for invalid). |
 
 ### LOGGING_DATA (266) {#LOGGING_DATA}
 
 A message containing logged data (see also [MAV_CMD_LOGGING_START](#MAV_CMD_LOGGING_START))
 
-| Field Name             | Type           | Units | Description                                                                                                                                         |
+| Field Name             | Type           | Units | 描述                                                                                                                                                  |
 | ---------------------- | -------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system          | `uint8_t`      |       | system ID of the target                                                                                                                             |
 | target_component       | `uint8_t`      |       | component ID of the target                                                                                                                          |
@@ -2476,7 +2476,7 @@ A message containing logged data (see also [MAV_CMD_LOGGING_START](#MAV_CMD_LOGG
 
 A message containing logged data which requires a [LOGGING_ACK](#LOGGING_ACK) to be sent back
 
-| Field Name             | Type           | Units | Description                                                                                                                                         |
+| Field Name             | Type           | Units | 描述                                                                                                                                                  |
 | ---------------------- | -------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system          | `uint8_t`      |       | system ID of the target                                                                                                                             |
 | target_component       | `uint8_t`      |       | component ID of the target                                                                                                                          |
@@ -2489,7 +2489,7 @@ A message containing logged data which requires a [LOGGING_ACK](#LOGGING_ACK) to
 
 An ack for a [LOGGING_DATA_ACKED](#LOGGING_DATA_ACKED) message
 
-| Field Name       | Type       | Description                                                                         |
+| Field Name       | Type       | 描述                                                                                  |
 | ---------------- | ---------- | ----------------------------------------------------------------------------------- |
 | target_system    | `uint8_t`  | system ID of the target                                                             |
 | target_component | `uint8_t`  | component ID of the target                                                          |
@@ -2499,7 +2499,7 @@ An ack for a [LOGGING_DATA_ACKED](#LOGGING_DATA_ACKED) message
 
 Information about video stream. It may be requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE), where param2 indicates the video stream id: 0 for all streams, 1 for first, 2 for second, etc.
 
-| Field Name                                              | Type        | Units  | Values                                                    | Description                                                                                                                           |
+| Field Name                                              | Type        | Units  | 值                                                         | 描述                                                                                                                                    |
 | ------------------------------------------------------- | ----------- | ------ | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | stream_id                                               | `uint8_t`   |        |                                                           | Video Stream ID (1 for first, 2 for second, etc.)  
 Messages with same value are from the same source (instance).                     |
@@ -2510,8 +2510,8 @@ Messages with same value are from the same source (instance).                   
 | resolution_h                                            | `uint16_t`  | pix    |                                                           | Horizontal resolution.                                                                                                                |
 | resolution_v                                            | `uint16_t`  | pix    |                                                           | Vertical resolution.                                                                                                                  |
 | bitrate                                                 | `uint32_t`  | bits/s |                                                           | Bit rate.                                                                                                                             |
-| rotation                                                | `uint16_t`  | deg    |                                                           | Video image rotation clockwise.                                                                                                       |
-| hfov                                                    | `uint16_t`  | deg    |                                                           | Horizontal Field of view.                                                                                                             |
+| rotation                                                | `uint16_t`  | 度      |                                                           | Video image rotation clockwise.                                                                                                       |
+| hfov                                                    | `uint16_t`  | 度      |                                                           | Horizontal Field of view.                                                                                                             |
 | name                                                    | `char[32]`  |        |                                                           | Stream name.                                                                                                                          |
 | uri                                                     | `char[160]` |        |                                                           | Video stream URI (TCP or RTSP URI ground station should connect to) or port number (UDP port ground station should listen to).        |
 | <span class='ext'>encoding</span> [++](#mav2_extension_field) | `uint8_t`   |        | [VIDEO_STREAM_ENCODING](#VIDEO_STREAM_ENCODING)         | Encoding of stream.                                                                                                                   |
@@ -2521,7 +2521,7 @@ Messages with same value are from the same source (instance).                   
 
 Information about the status of a video stream. It may be requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 
-| Field Name                                              | Type       | Units  | Values                                                    | Description                                                                                                                           |
+| Field Name                                              | Type       | Units  | 值                                                         | 描述                                                                                                                                    |
 | ------------------------------------------------------- | ---------- | ------ | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | stream_id                                               | `uint8_t`  |        |                                                           | Video Stream ID (1 for first, 2 for second, etc.)  
 Messages with same value are from the same source (instance).                     |
@@ -2530,33 +2530,33 @@ Messages with same value are from the same source (instance).                   
 | resolution_h                                            | `uint16_t` | pix    |                                                           | Horizontal resolution                                                                                                                 |
 | resolution_v                                            | `uint16_t` | pix    |                                                           | Vertical resolution                                                                                                                   |
 | bitrate                                                 | `uint32_t` | bits/s |                                                           | Bit rate                                                                                                                              |
-| rotation                                                | `uint16_t` | deg    |                                                           | Video image rotation clockwise                                                                                                        |
-| hfov                                                    | `uint16_t` | deg    |                                                           | Horizontal Field of view                                                                                                              |
+| rotation                                                | `uint16_t` | 度      |                                                           | Video image rotation clockwise                                                                                                        |
+| hfov                                                    | `uint16_t` | 度      |                                                           | Horizontal Field of view                                                                                                              |
 | <span class='ext'>camera_device_id</span> [++](#mav2_extension_field) | `uint8_t`  |        | default:0 min:0 max:6                                     | Camera id of a non-MAVLink camera attached to an autopilot (1-6). 0 if the component is a MAVLink camera (with its own component id). |
 
 ### CAMERA_FOV_STATUS (271) {#CAMERA_FOV_STATUS}
 
 Information about the field of view of a camera. Can be requested with a [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) command.
 
-| Field Name                                              | Type       | Units | Description                                                                                                                           |
+| Field Name                                              | Type       | Units | 描述                                                                                                                                    |
 | ------------------------------------------------------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms                                          | `uint32_t` | ms    | Timestamp (time since system boot).                                                                                                   |
 | lat_camera                                              | `int32_t`  | degE7 | Latitude of camera (INT32_MAX if unknown).                                                                                            |
 | lon_camera                                              | `int32_t`  | degE7 | Longitude of camera (INT32_MAX if unknown).                                                                                           |
-| alt_camera                                              | `int32_t`  | mm    | Altitude (MSL) of camera (INT32_MAX if unknown).                                                                                      |
+| alt_camera                                              | `int32_t`  | 毫米    | Altitude (MSL) of camera (INT32_MAX if unknown).                                                                                      |
 | lat_image                                               | `int32_t`  | degE7 | Latitude of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).                        |
 | lon_image                                               | `int32_t`  | degE7 | Longitude of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).                       |
-| alt_image                                               | `int32_t`  | mm    | Altitude (MSL) of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).                  |
+| alt_image                                               | `int32_t`  | 毫米    | Altitude (MSL) of center of image (INT32_MAX if unknown, INT32_MIN if at infinity, not intersecting with horizon).                  |
 | q                                                       | `float[4]` |       | Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0)                                                      |
-| hfov                                                    | `float`    | deg   | Horizontal field of view (NaN if unknown).                                                                                            |
-| vfov                                                    | `float`    | deg   | Vertical field of view (NaN if unknown).                                                                                              |
+| hfov                                                    | `float`    | 度     | Horizontal field of view (NaN if unknown).                                                                                            |
+| vfov                                                    | `float`    | 度     | Vertical field of view (NaN if unknown).                                                                                              |
 | <span class='ext'>camera_device_id</span> [++](#mav2_extension_field) | `uint8_t`  |       | Camera id of a non-MAVLink camera attached to an autopilot (1-6). 0 if the component is a MAVLink camera (with its own component id). |
 
 ### CAMERA_TRACKING_IMAGE_STATUS (275) {#CAMERA_TRACKING_IMAGE_STATUS}
 
 Camera tracking status, sent while in active tracking. Use [MAV_CMD_SET_MESSAGE_INTERVAL](#MAV_CMD_SET_MESSAGE_INTERVAL) to define message interval.
 
-| Field Name                                              | Type      | Values                                                          | Description                                                                                                                                                              |
+| Field Name                                              | Type      | 值                                                               | 描述                                                                                                                                                                       |
 | ------------------------------------------------------- | --------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | tracking_status                                         | `uint8_t` | [CAMERA_TRACKING_STATUS_FLAGS](#CAMERA_TRACKING_STATUS_FLAGS) | Current tracking status                                                                                                                                                  |
 | tracking_mode                                           | `uint8_t` | [CAMERA_TRACKING_MODE](#CAMERA_TRACKING_MODE)                 | Current tracking mode                                                                                                                                                    |
@@ -2574,7 +2574,7 @@ Camera tracking status, sent while in active tracking. Use [MAV_CMD_SET_MESSAGE_
 
 Camera tracking status, sent while in active tracking. Use [MAV_CMD_SET_MESSAGE_INTERVAL](#MAV_CMD_SET_MESSAGE_INTERVAL) to define message interval.
 
-| Field Name                                              | Type      | Units | Values                                                          | Description                                                                                                                           |
+| Field Name                                              | Type      | Units | 值                                                               | 描述                                                                                                                                    |
 | ------------------------------------------------------- | --------- | ----- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | tracking_status                                         | `uint8_t` |       | [CAMERA_TRACKING_STATUS_FLAGS](#CAMERA_TRACKING_STATUS_FLAGS) | Current tracking status                                                                                                               |
 | lat                                                     | `int32_t` | degE7 |                                                                 | Latitude of tracked object                                                                                                            |
@@ -2597,7 +2597,7 @@ Camera tracking status, sent while in active tracking. Use [MAV_CMD_SET_MESSAGE_
 
 Camera absolute thermal range. This can be streamed when the associated [VIDEO_STREAM_STATUS](#VIDEO_STREAM_STATUS) `flag` field bit [VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED](#VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED) is set, but a GCS may choose to only request it for the current active stream. Use [MAV_CMD_SET_MESSAGE_INTERVAL](#MAV_CMD_SET_MESSAGE_INTERVAL) to define message interval (param3 indicates the stream id of the current camera, or 0 for all streams, param4 indicates the target camera_device_id for autopilot-attached cameras or 0 for MAVLink cameras).
 
-| Field Name         | Type       | Units | Description                                                                                                                           |
+| Field Name         | Type       | Units | 描述                                                                                                                                    |
 | ------------------ | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms     | `uint32_t` | ms    | Timestamp (time since system boot).                                                                                                   |
 | stream_id          | `uint8_t`  |       | Video Stream ID (1 for first, 2 for second, etc.)  
@@ -2614,7 +2614,7 @@ Messages with same value are from the same source (instance).                   
 
 Information about a high level gimbal manager. This message should be requested by a ground station using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 
-| Field Name         | Type       | Units | Values                                                  | Description                                                                                                                                                                                  |
+| Field Name         | Type       | Units | 值                                                       | 描述                                                                                                                                                                                           |
 | ------------------ | ---------- | ----- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms     | `uint32_t` | ms    |                                                         | Timestamp (time since system boot).                                                                                                                                                          |
 | cap_flags          | `uint32_t` |       | [GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS) | Bitmap of gimbal capability flags.                                                                                                                                                           |
@@ -2631,7 +2631,7 @@ Messages with same value are from the same source (instance). |
 
 Current status about a high level gimbal manager. This message should be broadcast at a low regular rate (e.g. 5Hz).
 
-| Field Name                 | Type       | Units | Values                                          | Description                                                                                                                                                                                  |
+| Field Name                 | Type       | Units | 值                                               | 描述                                                                                                                                                                                           |
 | -------------------------- | ---------- | ----- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms             | `uint32_t` | ms    |                                                 | Timestamp (time since system boot).                                                                                                                                                          |
 | flags                      | `uint32_t` |       | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags currently applied.                                                                                                                                           |
@@ -2646,7 +2646,7 @@ Messages with same value are from the same source (instance). |
 
 High level message to control a gimbal's attitude. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.
 
-| Field Name           | Type       | Units | Values                                          | Description                                                                                                                                                                                                                                               |
+| Field Name           | Type       | Units | 值                                               | 描述                                                                                                                                                                                                                                                        |
 | -------------------- | ---------- | ----- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system        | `uint8_t`  |       |                                                 | System ID                                                                                                                                                                                                                                                 |
 | target_component     | `uint8_t`  |       |                                                 | Component ID                                                                                                                                                                                                                                              |
@@ -2662,7 +2662,7 @@ Messages with same value are from the same source (instance). |
 
 Information about a low level gimbal. This message should be requested by the gimbal manager or a ground station using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE). The maximum angles and rates are the limits by hardware. However, the limits by software used are likely different/smaller and dependent on mode/settings/etc..
 
-| Field Name                                              | Type       | Units | Values                                                | Description                                                                                                                                                                                                                                                         |
+| Field Name                                              | Type       | Units | 值                                                     | 描述                                                                                                                                                                                                                                                                  |
 | ------------------------------------------------------- | ---------- | ----- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms                                          | `uint32_t` | ms    |                                                       | Timestamp (time since system boot).                                                                                                                                                                                                                                 |
 | vendor_name                                             | `char[32]` |       |                                                       | Name of the gimbal vendor.                                                                                                                                                                                                                                          |
@@ -2687,7 +2687,7 @@ Low level message to control a gimbal device's attitude.
 
 This message is to be sent from the gimbal manager to the gimbal device component. The quaternion and angular velocities can be set to NaN according to use case. For the angles encoded in the quaternion and the angular velocities holds: If the flag [GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME](#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME) is set, then they are relative to the vehicle heading (vehicle frame). If the flag [GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME) is set, then they are relative to absolute North (earth frame). If neither of these flags are set, then (for backwards compatibility) it holds: If the flag [GIMBAL_DEVICE_FLAGS_YAW_LOCK](#GIMBAL_DEVICE_FLAGS_YAW_LOCK) is set, then they are relative to absolute North (earth frame), else they are relative to the vehicle heading (vehicle frame). Setting both [GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME](#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME) and [GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME) is not allowed. These rules are to ensure backwards compatibility. New implementations should always set either [GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME](#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME) or [GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME).
 
-| Field Name           | Type       | Units | Values                                        | Description                                                                                                                                           |
+| Field Name           | Type       | Units | 值                                             | 描述                                                                                                                                                    |
 | -------------------- | ---------- | ----- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system        | `uint8_t`  |       |                                               | System ID                                                                                                                                             |
 | target_component     | `uint8_t`  |       |                                               | Component ID                                                                                                                                          |
@@ -2703,7 +2703,7 @@ Message reporting the status of a gimbal device.
 
 This message should be broadcast by a gimbal device component at a low regular rate (e.g. 5 Hz). For the angles encoded in the quaternion and the angular velocities holds: If the flag [GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME](#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME) is set, then they are relative to the vehicle heading (vehicle frame). If the flag [GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME) is set, then they are relative to absolute North (earth frame). If neither of these flags are set, then (for backwards compatibility) it holds: If the flag [GIMBAL_DEVICE_FLAGS_YAW_LOCK](#GIMBAL_DEVICE_FLAGS_YAW_LOCK) is set, then they are relative to absolute North (earth frame), else they are relative to the vehicle heading (vehicle frame). Other conditions of the flags are not allowed. The quaternion and angular velocities in the other frame can be calculated from delta_yaw and delta_yaw_velocity as q_earth = q_delta_yaw * q_vehicle and w_earth = w_delta_yaw_velocity + w_vehicle (if not NaN). If neither the [GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME](#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME) nor the [GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME) flag is set, then (for backwards compatibility) the data in the delta_yaw and delta_yaw_velocity fields are to be ignored. New implementations should always set either [GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME](#GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME) or [GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME](#GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME), and always should set delta_yaw and delta_yaw_velocity either to the proper value or NaN.
 
-| Field Name                                              | Type       | Units | Values                                                    | Description                                                                                                                                                                                                                                                      |
+| Field Name                                              | Type       | Units | 值                                                         | 描述                                                                                                                                                                                                                                                               |
 | ------------------------------------------------------- | ---------- | ----- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system                                           | `uint8_t`  |       |                                                           | System ID                                                                                                                                                                                                                                                        |
 | target_component                                        | `uint8_t`  |       |                                                           | Component ID                                                                                                                                                                                                                                                     |
@@ -2722,7 +2722,7 @@ This message should be broadcast by a gimbal device component at a low regular r
 
 Low level message containing autopilot state relevant for a gimbal device. This message is to be sent from the autopilot to the gimbal device component. The data of this message are for the gimbal device's estimator corrections, in particular horizon compensation, as well as indicates autopilot control intentions, e.g. feed forward angular control in the z-axis.
 
-| Field Name                                              | Type       | Units | Values                                                                       | Description                                                                                                                                               |
+| Field Name                                              | Type       | Units | 值                                                                            | 描述                                                                                                                                                        |
 | ------------------------------------------------------- | ---------- | ----- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system                                           | `uint8_t`  |       |                                                                              | System ID                                                                                                                                                 |
 | target_component                                        | `uint8_t`  |       |                                                                              | Component ID                                                                                                                                              |
@@ -2742,14 +2742,14 @@ Low level message containing autopilot state relevant for a gimbal device. This 
 
 Set gimbal manager pitch and yaw angles (high rate message). This message is to be sent to the gimbal manager (e.g. from a ground station) and will be ignored by gimbal devices. Angles and rates can be set to NaN according to use case. Use [MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW](#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW) for low-rate adjustments that require confirmation.
 
-| Field Name         | Type       | Units | Values                                          | Description                                                                                                                                                                                                                                               |
+| Field Name         | Type       | Units | 值                                               | 描述                                                                                                                                                                                                                                                        |
 | ------------------ | ---------- | ----- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system      | `uint8_t`  |       |                                                 | System ID                                                                                                                                                                                                                                                 |
 | target_component   | `uint8_t`  |       |                                                 | Component ID                                                                                                                                                                                                                                              |
 | flags              | `uint32_t` |       | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags to use.                                                                                                                                                                                                                   |
 | gimbal_device_id | `uint8_t`  |       |                                                 | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).  
 Messages with same value are from the same source (instance). |
-| pitch              | `float`    | rad   | invalid:NaN                                     | Pitch angle (positive: up, negative: down, NaN to be ignored).                                                                                                                                                                                            |
+| 俯仰角                | `float`    | rad   | invalid:NaN                                     | Pitch angle (positive: up, negative: down, NaN to be ignored).                                                                                                                                                                                            |
 | yaw                | `float`    | rad   | invalid:NaN                                     | Yaw angle (positive: to the right, negative: to the left, NaN to be ignored).                                                                                                                                                                             |
 | pitch_rate         | `float`    | rad/s | invalid:NaN                                     | Pitch angular rate (positive: up, negative: down, NaN to be ignored).                                                                                                                                                                                     |
 | yaw_rate           | `float`    | rad/s | invalid:NaN                                     | Yaw angular rate (positive: to the right, negative: to the left, NaN to be ignored).                                                                                                                                                                      |
@@ -2758,14 +2758,14 @@ Messages with same value are from the same source (instance). |
 
 High level message to control a gimbal manually. The angles or angular rates are unitless; the actual rates will depend on internal gimbal manager settings/configuration (e.g. set by parameters). This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case.
 
-| Field Name         | Type       | Values                                          | Description                                                                                                                                                                                                                                               |
+| Field Name         | Type       | 值                                               | 描述                                                                                                                                                                                                                                                        |
 | ------------------ | ---------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system      | `uint8_t`  |                                                 | System ID                                                                                                                                                                                                                                                 |
 | target_component   | `uint8_t`  |                                                 | Component ID                                                                                                                                                                                                                                              |
 | flags              | `uint32_t` | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) | High level gimbal manager flags.                                                                                                                                                                                                                          |
 | gimbal_device_id | `uint8_t`  |                                                 | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals).  
 Messages with same value are from the same source (instance). |
-| pitch              | `float`    | invalid:NaN                                     | Pitch angle unitless (-1..1, positive: up, negative: down, NaN to be ignored).                                                                                                                                                                            |
+| 俯仰角                | `float`    | invalid:NaN                                     | Pitch angle unitless (-1..1, positive: up, negative: down, NaN to be ignored).                                                                                                                                                                            |
 | yaw                | `float`    | invalid:NaN                                     | Yaw angle unitless (-1..1, positive: to the right, negative: to the left, NaN to be ignored).                                                                                                                                                             |
 | pitch_rate         | `float`    | invalid:NaN                                     | Pitch angular rate unitless (-1..1, positive: up, negative: down, NaN to be ignored).                                                                                                                                                                     |
 | yaw_rate           | `float`    | invalid:NaN                                     | Yaw angular rate unitless (-1..1, positive: to the right, negative: to the left, NaN to be ignored).                                                                                                                                                      |
@@ -2776,7 +2776,7 @@ Messages with same value are from the same source (instance). |
 
 ESC information for lower rate streaming. Recommended streaming rate 1Hz. See [ESC_STATUS](#ESC_STATUS) for higher-rate ESC data.
 
-| Field Name      | Type          | Units | Values                                        | Description                                                                                                                                                                         |
+| Field Name      | Type          | Units | 值                                             | 描述                                                                                                                                                                                  |
 | --------------- | ------------- | ----- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | index           | `uint8_t`     |       |                                               | Index of the first ESC in this message. minValue = 0, maxValue = 60, increment = 4.  
 Messages with same value are from the same source (instance).                                 |
@@ -2795,7 +2795,7 @@ Messages with same value are from the same source (instance).                   
 
 ESC information for higher rate streaming. Recommended streaming rate is ~10 Hz. Information that changes more slowly is sent in [ESC_INFO](#ESC_INFO). It should typically only be streamed on high-bandwidth links (i.e. to a companion computer).
 
-| Field Name | Type         | Units | Description                                                                                                                                                                         |
+| Field Name | Type         | Units | 描述                                                                                                                                                                                  |
 | ---------- | ------------ | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | index      | `uint8_t`    |       | Index of the first ESC in this message. minValue = 0, maxValue = 60, increment = 4.  
 Messages with same value are from the same source (instance).                                 |
@@ -2808,7 +2808,7 @@ Messages with same value are from the same source (instance).                   
 
 Configure WiFi AP SSID, password, and mode. This message is re-emitted as an acknowledgement by the AP. The message may also be explicitly requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE)
 
-| Field Name                                              | Type       | Values                                                | Description                                                                                                        |
+| Field Name                                              | Type       | 值                                                     | 描述                                                                                                                 |
 | ------------------------------------------------------- | ---------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | ssid                                                    | `char[32]` |                                                       | Name of Wi-Fi network (SSID). Blank to leave it unchanged when setting. Current SSID when sent back as a response. |
 | password                                                | `char[64]` |                                                       | Password. Blank for an open AP. MD5 hash when message is sent back as a response.                                  |
@@ -2821,7 +2821,7 @@ Configure WiFi AP SSID, password, and mode. This message is re-emitted as an ack
 
 Version and capability of protocol version. This message can be requested with [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to a request for [PROTOCOL_VERSION](#PROTOCOL_VERSION) to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly.
 
-| Field Name             | Type         | Description                                                                     |
+| Field Name             | Type         | 描述                                                                              |
 | ---------------------- | ------------ | ------------------------------------------------------------------------------- |
 | version                | `uint16_t`   | Currently active MAVLink version number * 100: v1.0 is 100, v2.0 is 200, etc.   |
 | min_version            | `uint16_t`   | Minimum MAVLink version supported                                               |
@@ -2833,14 +2833,14 @@ Version and capability of protocol version. This message can be requested with [
 
 The location and information of an AIS vessel
 
-| Field Name          | Type       | Units  | Values                              | Description                                                      |
+| Field Name          | Type       | Units  | 值                                   | 描述                                                               |
 | ------------------- | ---------- | ------ | ----------------------------------- | ---------------------------------------------------------------- |
 | MMSI                | `uint32_t` |        |                                     | Mobile Marine Service Identifier, 9 decimal digits               |
 | lat                 | `int32_t`  | degE7  |                                     | Latitude                                                         |
 | lon                 | `int32_t`  | degE7  |                                     | Longitude                                                        |
 | COG                 | `uint16_t` | cdeg   |                                     | Course over ground                                               |
 | heading             | `uint16_t` | cdeg   |                                     | True heading                                                     |
-| velocity            | `uint16_t` | cm/s   |                                     | Speed over ground                                                |
+| velocity            | `uint16_t` | 厘米/秒   |                                     | Speed over ground                                                |
 | turn_rate           | `int8_t`   | cdeg/s |                                     | Turn rate                                                        |
 | navigational_status | `uint8_t`  |        | [AIS_NAV_STATUS](#AIS_NAV_STATUS) | Navigational status                                              |
 | type                | `uint8_t`  |        | [AIS_TYPE](#AIS_TYPE)               | Type of vessels                                                  |
@@ -2857,12 +2857,12 @@ The location and information of an AIS vessel
 
 General status information of an UAVCAN node. Please refer to the definition of the UAVCAN message "uavcan.protocol.NodeStatus" for the background information. The UAVCAN specification is available at http://uavcan.org.
 
-| Field Name                    | Type       | Units | Values                                      | Description                                                                                                                                                                            |
+| Field Name                    | Type       | Units | 值                                           | 描述                                                                                                                                                                                     |
 | ----------------------------- | ---------- | ----- | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                     | `uint64_t` | us    |                                             | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | uptime_sec                    | `uint32_t` | s     |                                             | Time since the start-up of the node.                                                                                                                                                   |
 | health                        | `uint8_t`  |       | [UAVCAN_NODE_HEALTH](#UAVCAN_NODE_HEALTH) | Generalized node health status.                                                                                                                                                        |
-| mode                          | `uint8_t`  |       | [UAVCAN_NODE_MODE](#UAVCAN_NODE_MODE)     | Generalized operating mode.                                                                                                                                                            |
+| 模式                            | `uint8_t`  |       | [UAVCAN_NODE_MODE](#UAVCAN_NODE_MODE)     | Generalized operating mode.                                                                                                                                                            |
 | sub_mode                      | `uint8_t`  |       |                                             | Not used currently.                                                                                                                                                                    |
 | vendor_specific_status_code | `uint16_t` |       |                                             | Vendor-specific status information.                                                                                                                                                    |
 
@@ -2870,7 +2870,7 @@ General status information of an UAVCAN node. Please refer to the definition of 
 
 General information describing a particular UAVCAN node. Please refer to the definition of the UAVCAN service "uavcan.protocol.GetNodeInfo" for the background information. This message should be emitted by the system whenever a new node appears online, or an existing node reboots. Additionally, it can be emitted upon request from the other end of the MAVLink channel (see [MAV_CMD_UAVCAN_GET_NODE_INFO](#MAV_CMD_UAVCAN_GET_NODE_INFO)). It is also not prohibited to emit this message unconditionally at a low frequency. The UAVCAN specification is available at http://uavcan.org.
 
-| Field Name         | Type          | Units | Description                                                                                                                                                                            |
+| Field Name         | Type          | Units | 描述                                                                                                                                                                                     |
 | ------------------ | ------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec          | `uint64_t`    | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | uptime_sec         | `uint32_t`    | s     | Time since the start-up of the node.                                                                                                                                                   |
@@ -2886,7 +2886,7 @@ General information describing a particular UAVCAN node. Please refer to the def
 
 Request to read the value of a parameter with either the param_id string id or param_index. [PARAM_EXT_VALUE](#PARAM_EXT_VALUE) should be emitted in response.
 
-| Field Name       | Type       | Description                                                                                                                                                                                                                                    |
+| Field Name       | Type       | 描述                                                                                                                                                                                                                                             |
 | ---------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t`  | System ID                                                                                                                                                                                                                                      |
 | target_component | `uint8_t`  | Component ID                                                                                                                                                                                                                                   |
@@ -2897,7 +2897,7 @@ Request to read the value of a parameter with either the param_id string id or p
 
 Request all parameters of this component. All parameters should be emitted in response as [PARAM_EXT_VALUE](#PARAM_EXT_VALUE).
 
-| Field Name       | Type      | Description  |
+| Field Name       | Type      | 描述           |
 | ---------------- | --------- | ------------ |
 | target_system    | `uint8_t` | System ID    |
 | target_component | `uint8_t` | Component ID |
@@ -2906,7 +2906,7 @@ Request all parameters of this component. All parameters should be emitted in re
 
 Emit the value of a parameter. The inclusion of param_count and param_index in the message allows the recipient to keep track of received parameters and allows them to re-request missing parameters after a loss or timeout.
 
-| Field Name  | Type        | Values                                      | Description                                                                                                                                                                                                                                    |
+| Field Name  | Type        | 值                                           | 描述                                                                                                                                                                                                                                             |
 | ----------- | ----------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | param_id    | `char[16]`  |                                             | Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string |
 | param_value | `char[128]` |                                             | Parameter value                                                                                                                                                                                                                                |
@@ -2918,7 +2918,7 @@ Emit the value of a parameter. The inclusion of param_count and param_index in t
 
 Set a parameter value. In order to deal with message loss (and retransmission of [PARAM_EXT_SET](#PARAM_EXT_SET)), when setting a parameter value and the new value is the same as the current value, you will immediately get a [PARAM_ACK_ACCEPTED](#PARAM_ACK_ACCEPTED) response. If the current state is [PARAM_ACK_IN_PROGRESS](#PARAM_ACK_IN_PROGRESS), you will accordingly receive a [PARAM_ACK_IN_PROGRESS](#PARAM_ACK_IN_PROGRESS) in response.
 
-| Field Name       | Type        | Values                                      | Description                                                                                                                                                                                                                                    |
+| Field Name       | Type        | 值                                           | 描述                                                                                                                                                                                                                                             |
 | ---------------- | ----------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t`   |                                             | System ID                                                                                                                                                                                                                                      |
 | target_component | `uint8_t`   |                                             | Component ID                                                                                                                                                                                                                                   |
@@ -2930,7 +2930,7 @@ Set a parameter value. In order to deal with message loss (and retransmission of
 
 Response from a [PARAM_EXT_SET](#PARAM_EXT_SET) message.
 
-| Field Name   | Type        | Values                                      | Description                                                                                                                                                                                                                                    |
+| Field Name   | Type        | 值                                           | 描述                                                                                                                                                                                                                                             |
 | ------------ | ----------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | param_id     | `char[16]`  |                                             | Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string |
 | param_value  | `char[128]` |                                             | Parameter value (new value if [PARAM_ACK_ACCEPTED](#PARAM_ACK_ACCEPTED), current value otherwise)                                                                                                                                            |
@@ -2941,23 +2941,23 @@ Response from a [PARAM_EXT_SET](#PARAM_EXT_SET) message.
 
 Obstacle distances in front of the sensor, starting from the left in increment degrees to the right
 
-| Field Name                                              | Type           | Units | Values                                        | Description                                                                                                                                                                                                                                                                                                                                                                         |
+| Field Name                                              | Type           | Units | 值                                             | 描述                                                                                                                                                                                                                                                                                                                                                                                  |
 | ------------------------------------------------------- | -------------- | ----- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                               | `uint64_t`     | us    |                                               | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.                                                                                                                                                                                              |
 | sensor_type                                             | `uint8_t`      |       | [MAV_DISTANCE_SENSOR](#MAV_DISTANCE_SENSOR) | Class id of the distance sensor type.                                                                                                                                                                                                                                                                                                                                               |
-| distances                                               | `uint16_t[72]` | cm    | invalid:[UINT16_MAX]                          | Distance of obstacles around the vehicle with index 0 corresponding to north + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm. |
-| increment                                               | `uint8_t`      | deg   |                                               | Angular width in degrees of each array element. Increment direction is clockwise. This field is ignored if increment_f is non-zero.                                                                                                                                                                                                                                                 |
-| min_distance                                            | `uint16_t`     | cm    |                                               | Minimum distance the sensor can measure.                                                                                                                                                                                                                                                                                                                                            |
-| max_distance                                            | `uint16_t`     | cm    |                                               | Maximum distance the sensor can measure.                                                                                                                                                                                                                                                                                                                                            |
-| <span class='ext'>increment_f</span> [++](#mav2_extension_field) | `float`        | deg   |                                               | Angular width in degrees of each array element as a float. If non-zero then this value is used instead of the uint8_t increment field. Positive is clockwise direction, negative is counter-clockwise.                                                                                                                                                                              |
-| <span class='ext'>angle_offset</span> [++](#mav2_extension_field) | `float`        | deg   |                                               | Relative angle offset of the 0-index element in the distances array. Value of 0 corresponds to forward. Positive is clockwise direction, negative is counter-clockwise.                                                                                                                                                                                                             |
+| distances                                               | `uint16_t[72]` | 厘米    | invalid:[UINT16_MAX]                          | Distance of obstacles around the vehicle with index 0 corresponding to north + angle_offset, unless otherwise specified in the frame. A value of 0 is valid and means that the obstacle is practically touching the sensor. A value of max_distance +1 means no obstacle is present. A value of UINT16_MAX for unknown/not used. In a array element, one unit corresponds to 1cm. |
+| increment                                               | `uint8_t`      | 度     |                                               | Angular width in degrees of each array element. Increment direction is clockwise. This field is ignored if increment_f is non-zero.                                                                                                                                                                                                                                                 |
+| min_distance                                            | `uint16_t`     | 厘米    |                                               | Minimum distance the sensor can measure.                                                                                                                                                                                                                                                                                                                                            |
+| max_distance                                            | `uint16_t`     | 厘米    |                                               | Maximum distance the sensor can measure.                                                                                                                                                                                                                                                                                                                                            |
+| <span class='ext'>increment_f</span> [++](#mav2_extension_field) | `float`        | 度     |                                               | Angular width in degrees of each array element as a float. If non-zero then this value is used instead of the uint8_t increment field. Positive is clockwise direction, negative is counter-clockwise.                                                                                                                                                                              |
+| <span class='ext'>angle_offset</span> [++](#mav2_extension_field) | `float`        | 度     |                                               | Relative angle offset of the 0-index element in the distances array. Value of 0 corresponds to forward. Positive is clockwise direction, negative is counter-clockwise.                                                                                                                                                                                                             |
 | <span class='ext'>frame</span> [++](#mav2_extension_field) | `uint8_t`      |       | [MAV_FRAME](#MAV_FRAME)                       | Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL), which is north aligned. For body-mounted sensors use [MAV_FRAME_BODY_FRD](#MAV_FRAME_BODY_FRD), which is vehicle front aligned.                                                                                                            |
 
 ### ODOMETRY (331) {#ODOMETRY}
 
 Odometry message to communicate odometry information with an external interface. Fits ROS REP 147 standard for aerial vehicles (http://www.ros.org/reps/rep-0147.html).
 
-| Field Name                                              | Type        | Units | Values                                      | Description                                                                                                                                                                                                                                                                                 |
+| Field Name                                              | Type        | Units | 值                                           | 描述                                                                                                                                                                                                                                                                                          |
 | ------------------------------------------------------- | ----------- | ----- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                               | `uint64_t`  | us    |                                             | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.                                                                                                      |
 | frame_id                                                | `uint8_t`   |       | [MAV_FRAME](#MAV_FRAME)                     | Coordinate frame of reference for the pose data.                                                                                                                                                                                                                                            |
@@ -2982,7 +2982,7 @@ Odometry message to communicate odometry information with an external interface.
 
 Describe a trajectory using an array of up-to 5 waypoints in the local frame ([MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED)).
 
-| Field Name   | Type          | Units | Values                                        | Description                                                                                                                                                                            |
+| Field Name   | Type          | Units | 值                                             | 描述                                                                                                                                                                                     |
 | ------------ | ------------- | ----- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec    | `uint64_t`    | us    |                                               | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | valid_points | `uint8_t`     |       |                                               | Number of valid points (up-to 5 waypoints are possible)                                                                                                                                |
@@ -3003,7 +3003,7 @@ Describe a trajectory using an array of up-to 5 waypoints in the local frame ([M
 
 Describe a trajectory using an array of up-to 5 bezier control points in the local frame ([MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED)).
 
-| Field Name   | Type       | Units | Description                                                                                                                                                                            |
+| Field Name   | Type       | Units | 描述                                                                                                                                                                                     |
 | ------------ | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec    | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | valid_points | `uint8_t`  |       | Number of valid control points (up-to 5 points are possible)                                                                                                                           |
@@ -3017,7 +3017,7 @@ Describe a trajectory using an array of up-to 5 bezier control points in the loc
 
 Report current used cellular network status
 
-| Field Name     | Type       | Values                                                              | Description                                                                                    |
+| Field Name     | Type       | 值                                                                   | 描述                                                                                             |
 | -------------- | ---------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | status         | `uint8_t`  | [CELLULAR_STATUS_FLAG](#CELLULAR_STATUS_FLAG)                     | Cellular modem status                                                                          |
 | failure_reason | `uint8_t`  | [CELLULAR_NETWORK_FAILED_REASON](#CELLULAR_NETWORK_FAILED_REASON) | Failure reason when status in in [CELLULAR_STATUS_FLAG_FAILED](#CELLULAR_STATUS_FLAG_FAILED) |
@@ -3031,7 +3031,7 @@ Report current used cellular network status
 
 Status of the Iridium SBD link.
 
-| Field Name           | Type       | Units | Description                                                                                                                                                                            |
+| Field Name           | Type       | Units | 描述                                                                                                                                                                                     |
 | -------------------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | timestamp            | `uint64_t` | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | last_heartbeat       | `uint64_t` | us    | Timestamp of the last successful sbd session. The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.          |
@@ -3048,7 +3048,7 @@ Configure cellular modems.
 
 This message is re-emitted as an acknowledgement by the modem. The message may also be explicitly requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 
-| Field Name | Type       | Values                                                  | Description                                                                                                                      |
+| Field Name | Type       | 值                                                       | 描述                                                                                                                               |
 | ---------- | ---------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | enable_lte | `uint8_t`  |                                                         | Enable/disable LTE. 0: setting unchanged, 1: disabled, 2: enabled. Current setting when sent back as a response.                 |
 | enable_pin | `uint8_t`  |                                                         | Enable/disable PIN on the SIM card. 0: setting unchanged, 1: disabled, 2: enabled. Current setting when sent back as a response. |
@@ -3063,7 +3063,7 @@ This message is re-emitted as an acknowledgement by the modem. The message may a
 
 RPM sensor data message.
 
-| Field Name | Type      | Units | Description                          |
+| Field Name | Type      | Units | 描述                                   |
 | ---------- | --------- | ----- | ------------------------------------ |
 | index      | `uint8_t` |       | Index of this RPM sensor (0-indexed) |
 | frequency  | `float`   | rpm   | Indicated rate                       |
@@ -3072,23 +3072,23 @@ RPM sensor data message.
 
 The global position resulting from GPS and sensor fusion.
 
-| Field Name   | Type          | Units | Values                                          | Description                                                         |
+| Field Name   | Type          | Units | 值                                               | 描述                                                                  |
 | ------------ | ------------- | ----- | ----------------------------------------------- | ------------------------------------------------------------------- |
 | time         | `uint64_t`    | us    |                                                 | Time of applicability of position (microseconds since UNIX epoch).  |
 | uas_id       | `uint8_t[18]` |       |                                                 | Unique UAS ID.                                                      |
 | lat          | `int32_t`     | degE7 |                                                 | Latitude (WGS84)                                                    |
 | lon          | `int32_t`     | degE7 |                                                 | Longitude (WGS84)                                                   |
-| alt          | `int32_t`     | mm    |                                                 | Altitude (WGS84)                                                    |
-| relative_alt | `int32_t`     | mm    |                                                 | Altitude above ground                                               |
-| vx           | `int16_t`     | cm/s  |                                                 | Ground X speed (latitude, positive north)                           |
-| vy           | `int16_t`     | cm/s  |                                                 | Ground Y speed (longitude, positive east)                           |
-| vz           | `int16_t`     | cm/s  |                                                 | Ground Z speed (altitude, positive down)                            |
-| h_acc        | `uint16_t`    | mm    |                                                 | Horizontal position uncertainty (standard deviation)                |
-| v_acc        | `uint16_t`    | mm    |                                                 | Altitude uncertainty (standard deviation)                           |
-| vel_acc      | `uint16_t`    | cm/s  |                                                 | Speed uncertainty (standard deviation)                              |
+| alt          | `int32_t`     | 毫米    |                                                 | Altitude (WGS84)                                                    |
+| relative_alt | `int32_t`     | 毫米    |                                                 | Altitude above ground                                               |
+| vx           | `int16_t`     | 厘米/秒  |                                                 | Ground X speed (latitude, positive north)                           |
+| vy           | `int16_t`     | 厘米/秒  |                                                 | Ground Y speed (longitude, positive east)                           |
+| vz           | `int16_t`     | 厘米/秒  |                                                 | Ground Z speed (altitude, positive down)                            |
+| h_acc        | `uint16_t`    | 毫米    |                                                 | Horizontal position uncertainty (standard deviation)                |
+| v_acc        | `uint16_t`    | 毫米    |                                                 | Altitude uncertainty (standard deviation)                           |
+| vel_acc      | `uint16_t`    | 厘米/秒  |                                                 | Speed uncertainty (standard deviation)                              |
 | next_lat     | `int32_t`     | degE7 |                                                 | Next waypoint, latitude (WGS84)                                     |
 | next_lon     | `int32_t`     | degE7 |                                                 | Next waypoint, longitude (WGS84)                                    |
-| next_alt     | `int32_t`     | mm    |                                                 | Next waypoint, altitude (WGS84)                                     |
+| next_alt     | `int32_t`     | 毫米    |                                                 | Next waypoint, altitude (WGS84)                                     |
 | update_rate  | `uint16_t`    | cs    | invalid:0                                       | Time until next update. Set to 0 if unknown or in data driven mode. |
 | flight_state | `uint8_t`     |       | [UTM_FLIGHT_STATE](#UTM_FLIGHT_STATE)         | Flight state                                                        |
 | flags        | `uint8_t`     |       | [UTM_DATA_AVAIL_FLAGS](#UTM_DATA_AVAIL_FLAGS) | Bitwise OR combination of the data available flags.                 |
@@ -3097,7 +3097,7 @@ The global position resulting from GPS and sensor fusion.
 
 Large debug/prototyping array. The message uses the maximum available payload for data. The array_id and name fields are used to discriminate between messages in code and in user interfaces (respectively). Do not use in production code.
 
-| Field Name                                              | Type        | Units | Description                                                                                                                                                                            |
+| Field Name                                              | Type        | Units | 描述                                                                                                                                                                                     |
 | ------------------------------------------------------- | ----------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                               | `uint64_t`  | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | name                                                    | `char[10]`  |       | Name, for human-friendly display in a Ground Control Station                                                                                                                           |
@@ -3111,7 +3111,7 @@ Messages with same value are from the same source (instance).                   
 
 Vehicle status report that is sent out while orbit execution is in progress (see [MAV_CMD_DO_ORBIT](#MAV_CMD_DO_ORBIT)).
 
-| Field Name | Type       | Units | Values                  | Description                                                                                                                                                                            |
+| Field Name | Type       | Units | 值                       | 描述                                                                                                                                                                                     |
 | ---------- | ---------- | ----- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec  | `uint64_t` | us    |                         | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | radius     | `float`    | m     |                         | Radius of the orbit circle. Positive values orbit clockwise, negative values orbit counter-clockwise.                                                                                  |
@@ -3126,7 +3126,7 @@ Vehicle status report that is sent out while orbit execution is in progress (see
 
 Smart Battery information (static/infrequent update). Use for updates from: smart battery to flight stack, flight stack to GCS. Use [BATTERY_STATUS](#BATTERY_STATUS) for the frequent battery updates.
 
-| Field Name                                              | Type       | Units | Values                                          | Description                                                                                                                                                   |
+| Field Name                                              | Type       | Units | 值                                               | 描述                                                                                                                                                            |
 | ------------------------------------------------------- | ---------- | ----- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | id                                                      | `uint8_t`  |       |                                                 | Battery ID  
 Messages with same value are from the same source (instance).                                                                                    |
@@ -3159,7 +3159,7 @@ This kind of information may also be sent in fuel-specific messages such as [BAT
 
 This should be streamed (nominally at 0.1 Hz).
 
-| Field Name        | Type       | Units | Values                            | Description                                                                                                                                                                       |
+| Field Name        | Type       | Units | 值                                 | 描述                                                                                                                                                                                |
 | ----------------- | ---------- | ----- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | id                | `uint8_t`  |       |                                   | Fuel ID. Must match ID of other messages for same fuel system, such as [BATTERY_STATUS_V2](#BATTERY_STATUS_V2).  
 Messages with same value are from the same source (instance). |
@@ -3177,7 +3177,7 @@ Messages with same value are from the same source (instance). |
 
 Battery information that is static, or requires infrequent update. This message should requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) and/or streamed at very low rate. [BATTERY_STATUS_V2](#BATTERY_STATUS_V2) is used for higher-rate battery status information.
 
-| Field Name                        | Type       | Units | Values                                          | Description                                                                                                                                                         |
+| Field Name                        | Type       | Units | 值                                               | 描述                                                                                                                                                                  |
 | --------------------------------- | ---------- | ----- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | id                                | `uint8_t`  |       |                                                 | Battery ID  
 Messages with same value are from the same source (instance).                                                                                          |
@@ -3205,7 +3205,7 @@ Messages with same value are from the same source (instance).                   
 
 Telemetry of power generation system. Alternator or mechanical generator.
 
-| Field Name               | Type       | Units | Values                                                    | Description                                                                                                                                                      |
+| Field Name               | Type       | Units | 值                                                         | 描述                                                                                                                                                               |
 | ------------------------ | ---------- | ----- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | status                   | `uint64_t` |       | [MAV_GENERATOR_STATUS_FLAG](#MAV_GENERATOR_STATUS_FLAG) | Status flags.                                                                                                                                                    |
 | generator_speed          | `uint16_t` | rpm   | invalid:UINT16_MAX                                        | Speed of electrical generator or alternator. UINT16_MAX: field not provided.                                                                                     |
@@ -3223,7 +3223,7 @@ Telemetry of power generation system. Alternator or mechanical generator.
 
 The raw values of the actuator outputs (e.g. on Pixhawk, from MAIN, AUX ports). This message supersedes [SERVO_OUTPUT_RAW](#SERVO_OUTPUT_RAW).
 
-| Field Name | Type        | Units | Description                                                              |
+| Field Name | Type        | Units | 描述                                                                       |
 | ---------- | ----------- | ----- | ------------------------------------------------------------------------ |
 | time_usec  | `uint64_t`  | us    | Timestamp (since system boot).                                           |
 | active     | `uint32_t`  |       | Active outputs                                                           |
@@ -3235,7 +3235,7 @@ The raw values of the actuator outputs (e.g. on Pixhawk, from MAIN, AUX ports). 
 
 Time/duration estimates for various events and actions given the current vehicle state and position.
 
-| Field Name          | Type      | Units | Description                                                                                                                                                                                                  |
+| Field Name          | Type      | Units | 描述                                                                                                                                                                                                           |
 | ------------------- | --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | safe_return         | `int32_t` | s     | Estimated time to complete the vehicle's configured "safe return" action from its current position (e.g. RTL, Smart RTL, etc.). -1 indicates that the vehicle is landed, or that no time estimate available. |
 | land                | `int32_t` | s     | Estimated time for vehicle to complete the LAND action from its current position. -1 indicates that the vehicle is landed, or that no time estimate available.                                               |
@@ -3247,7 +3247,7 @@ Time/duration estimates for various events and actions given the current vehicle
 
 Message for transporting "arbitrary" variable-length data from one component to another (broadcast is not forbidden, but discouraged). The encoding of the data is usually extension specific, i.e. determined by the source, and is usually not documented as part of the MAVLink specification.
 
-| Field Name       | Type           | Values                                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Field Name       | Type           | 值                                                     | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | ---------------- | -------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t`      |                                                       | System ID (can be 0 for broadcast, but this is discouraged)                                                                                                                                                                                                                                                                                                                                                                                                    |
 | target_component | `uint8_t`      |                                                       | Component ID (can be 0 for broadcast, but this is discouraged)                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -3259,7 +3259,7 @@ Message for transporting "arbitrary" variable-length data from one component to 
 
 A forwarded CAN frame as requested by [MAV_CMD_CAN_FORWARD](#MAV_CMD_CAN_FORWARD).
 
-| Field Name       | Type         | Description   |
+| Field Name       | Type         | 描述            |
 | ---------------- | ------------ | ------------- |
 | target_system    | `uint8_t`    | System ID.    |
 | target_component | `uint8_t`    | Component ID. |
@@ -3272,7 +3272,7 @@ A forwarded CAN frame as requested by [MAV_CMD_CAN_FORWARD](#MAV_CMD_CAN_FORWARD
 
 A forwarded CANFD frame as requested by [MAV_CMD_CAN_FORWARD](#MAV_CMD_CAN_FORWARD). These are separated from [CAN_FRAME](#CAN_FRAME) as they need different handling (eg. TAO handling)
 
-| Field Name       | Type          | Description   |
+| Field Name       | Type          | 描述            |
 | ---------------- | ------------- | ------------- |
 | target_system    | `uint8_t`     | System ID.    |
 | target_component | `uint8_t`     | Component ID. |
@@ -3285,7 +3285,7 @@ A forwarded CANFD frame as requested by [MAV_CMD_CAN_FORWARD](#MAV_CMD_CAN_FORWA
 
 Modify the filter of what CAN messages to forward over the mavlink. This can be used to make CAN forwarding work well on low bandwidth links. The filtering is applied on bits 8 to 24 of the CAN id (2nd and 3rd bytes) which corresponds to the DroneCAN message ID for DroneCAN. Filters with more than 16 IDs can be constructed by sending multiple [CAN_FILTER_MODIFY](#CAN_FILTER_MODIFY) messages.
 
-| Field Name       | Type           | Values                            | Description                                                                               |
+| Field Name       | Type           | 值                                 | 描述                                                                                        |
 | ---------------- | -------------- | --------------------------------- | ----------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t`      |                                   | System ID.                                                                                |
 | target_component | `uint8_t`      |                                   | Component ID.                                                                             |
@@ -3300,7 +3300,7 @@ Modify the filter of what CAN messages to forward over the mavlink. This can be 
 
 Hardware status sent by an onboard computer.
 
-| Field Name        | Type          | Units | Description                                                                                                                                                                                                              |
+| Field Name        | Type          | Units | 描述                                                                                                                                                                                                                       |
 | ----------------- | ------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | time_usec         | `uint64_t`    | us    | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.                                   |
 | uptime            | `uint32_t`    | ms    | Time since system boot.                                                                                                                                                                                                  |
@@ -3329,7 +3329,7 @@ Hardware status sent by an onboard computer.
 
 Component information message, which may be requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 
-| Field Name                      | Type        | Units | Description                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Field Name                      | Type        | Units | 描述                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ------------------------------- | ----------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms                  | `uint32_t`  | ms    | Timestamp (time since system boot).                                                                                                                                                                                                                                                                                                                                                                                 |
 | general_metadata_file_crc     | `uint32_t`  |       | CRC32 of the general metadata file (general_metadata_uri).                                                                                                                                                                                                                                                                                                                                                        |
@@ -3341,7 +3341,7 @@ Component information message, which may be requested using [MAV_CMD_REQUEST_MES
 
 Basic component information data. Should be requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) on startup, or when required.
 
-| Field Name           | Type       | Units | Values                                                | Description                                                                                                                                                                                              |
+| Field Name           | Type       | Units | 值                                                     | 描述                                                                                                                                                                                                       |
 | -------------------- | ---------- | ----- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms       | `uint32_t` | ms    |                                                       | Timestamp (time since system boot).                                                                                                                                                                      |
 | capabilities         | `uint64_t` |       | [MAV_PROTOCOL_CAPABILITY](#MAV_PROTOCOL_CAPABILITY) | Component capability flags                                                                                                                                                                               |
@@ -3364,7 +3364,7 @@ The general metadata file can be read to get the locations of other metadata fil
 
 Note: Camera components should use [CAMERA_INFORMATION](#CAMERA_INFORMATION) instead, and autopilots may use both this message and [AUTOPILOT_VERSION](#AUTOPILOT_VERSION).
 
-| Field Name     | Type        | Units | Description                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Field Name     | Type        | Units | 描述                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | -------------- | ----------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms | `uint32_t`  | ms    | Timestamp (time since system boot).                                                                                                                                                                                                                                                                                                                                                                                 |
 | file_crc       | `uint32_t`  |       | CRC32 of the general metadata file.                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -3374,7 +3374,7 @@ Note: Camera components should use [CAMERA_INFORMATION](#CAMERA_INFORMATION) ins
 
 Play vehicle tone/tune (buzzer). Supersedes message [PLAY_TUNE](#PLAY_TUNE).
 
-| Field Name       | Type        | Values                      | Description                                  |
+| Field Name       | Type        | 值                           | 描述                                           |
 | ---------------- | ----------- | --------------------------- | -------------------------------------------- |
 | target_system    | `uint8_t`   |                             | System ID                                    |
 | target_component | `uint8_t`   |                             | Component ID                                 |
@@ -3385,7 +3385,7 @@ Play vehicle tone/tune (buzzer). Supersedes message [PLAY_TUNE](#PLAY_TUNE).
 
 Tune formats supported by vehicle. This should be emitted as response to [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 
-| Field Name       | Type       | Values                      | Description                         |
+| Field Name       | Type       | 值                           | 描述                                  |
 | ---------------- | ---------- | --------------------------- | ----------------------------------- |
 | target_system    | `uint8_t`  |                             | System ID                           |
 | target_component | `uint8_t`  |                             | Component ID                        |
@@ -3395,9 +3395,9 @@ Tune formats supported by vehicle. This should be emitted as response to [MAV_CM
 
 <span class="warning"><strong>WORK IN PROGRESS</strong>: Do not use in stable production environments (it may change).</span>
 
-Event message. Each new event from a particular component gets a new sequence number. The same message might be sent multiple times if (re-)requested. Most events are broadcast, some can be specific to a target component (as receivers keep track of the sequence for missed events, all events need to be broadcast. Thus we use destination_component instead of target_component).
+Event message. Each new event from a particular component gets a new sequence number. The same message might be sent multiple times if (re-)requested. Event message. Each new event from a particular component gets a new sequence number. The same message might be sent multiple times if (re-)requested. Most events are broadcast, some can be specific to a target component (as receivers keep track of the sequence for missed events, all events need to be broadcast. Thus we use destination_component instead of target_component). Thus we use destination_component instead of target_component).
 
-| Field Name            | Type          | Units | Description                                                                                                                                                                                                        |
+| Field Name            | Type          | Units | 描述                                                                                                                                                                                                                 |
 | --------------------- | ------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | destination_component | `uint8_t`     |       | Component ID                                                                                                                                                                                                       |
 | destination_system    | `uint8_t`     |       | System ID                                                                                                                                                                                                          |
@@ -3411,9 +3411,9 @@ Event message. Each new event from a particular component gets a new sequence nu
 
 <span class="warning"><strong>WORK IN PROGRESS</strong>: Do not use in stable production environments (it may change).</span>
 
-Regular broadcast for the current latest event sequence number for a component. This is used to check for dropped events.
+Regular broadcast for the current latest event sequence number for a component. This is used to check for dropped events. This is used to check for dropped events.
 
-| Field Name | Type       | Values                                                                    | Description      |
+| Field Name | Type       | 值                                                                         | 描述               |
 | ---------- | ---------- | ------------------------------------------------------------------------- | ---------------- |
 | sequence   | `uint16_t` |                                                                           | Sequence number. |
 | flags      | `uint8_t`  | [MAV_EVENT_CURRENT_SEQUENCE_FLAGS](#MAV_EVENT_CURRENT_SEQUENCE_FLAGS) | Flag bitset.     |
@@ -3422,9 +3422,9 @@ Regular broadcast for the current latest event sequence number for a component. 
 
 <span class="warning"><strong>WORK IN PROGRESS</strong>: Do not use in stable production environments (it may change).</span>
 
-Request one or more events to be (re-)sent. If first_sequence==last_sequence, only a single event is requested. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an EVENT or [EVENT_ERROR](#EVENT_ERROR) response.
+Request one or more events to be (re-)sent. Request one or more events to be (re-)sent. If first_sequence==last_sequence, only a single event is requested. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an EVENT or EVENT_ERROR response. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an EVENT or [EVENT_ERROR](#EVENT_ERROR) response.
 
-| Field Name       | Type       | Description                                   |
+| Field Name       | Type       | 描述                                            |
 | ---------------- | ---------- | --------------------------------------------- |
 | target_system    | `uint8_t`  | System ID                                     |
 | target_component | `uint8_t`  | Component ID                                  |
@@ -3437,7 +3437,7 @@ Request one or more events to be (re-)sent. If first_sequence==last_sequence, on
 
 Response to a [REQUEST_EVENT](#REQUEST_EVENT) in case of an error (e.g. the event is not available anymore).
 
-| Field Name                  | Type       | Values                                              | Description                                                                                               |
+| Field Name                  | Type       | 值                                                   | 描述                                                                                                        |
 | --------------------------- | ---------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | target_system               | `uint8_t`  |                                                     | System ID                                                                                                 |
 | target_component            | `uint8_t`  |                                                     | Component ID                                                                                              |
@@ -3449,13 +3449,13 @@ Response to a [REQUEST_EVENT](#REQUEST_EVENT) in case of an error (e.g. the even
 
 Illuminator status
 
-| Field Name          | Type       | Units | Values                                                | Description                                      |
+| Field Name          | Type       | Units | 值                                                     | 描述                                               |
 | ------------------- | ---------- | ----- | ----------------------------------------------------- | ------------------------------------------------ |
 | uptime_ms           | `uint32_t` | ms    |                                                       | Time since the start-up of the illuminator in ms |
 | enable              | `uint8_t`  |       |                                                       | 0: Illuminators OFF, 1: Illuminators ON          |
 | mode_bitmask        | `uint8_t`  |       | [ILLUMINATOR_MODE](#ILLUMINATOR_MODE)                 | Supported illuminator modes                      |
 | error_status        | `uint32_t` |       | [ILLUMINATOR_ERROR_FLAGS](#ILLUMINATOR_ERROR_FLAGS) | Errors                                           |
-| mode                | `uint8_t`  |       | [ILLUMINATOR_MODE](#ILLUMINATOR_MODE)                 | Illuminator mode                                 |
+| 模式                  | `uint8_t`  |       | [ILLUMINATOR_MODE](#ILLUMINATOR_MODE)                 | Illuminator mode                                 |
 | brightness          | `float`    | %     |                                                       | Illuminator brightness                           |
 | strobe_period       | `float`    | s     |                                                       | Illuminator strobing period in seconds           |
 | strobe_duty_cycle | `float`    | %     |                                                       | Illuminator strobing duty cycle                  |
@@ -3467,7 +3467,7 @@ Illuminator status
 
 Cumulative distance traveled for each reported wheel.
 
-| Field Name | Type         | Units | Description                                                                                                                                                                                                                                                     |
+| Field Name | Type         | Units | 描述                                                                                                                                                                                                                                                              |
 | ---------- | ------------ | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec  | `uint64_t`   | us    | Timestamp (synced to UNIX time or since system boot).                                                                                                                                                                                                           |
 | count      | `uint8_t`    |       | Number of wheels reported.                                                                                                                                                                                                                                      |
@@ -3477,7 +3477,7 @@ Cumulative distance traveled for each reported wheel.
 
 Winch status.
 
-| Field Name  | Type       | Units | Values                                            | Description                                                                                                                      |
+| Field Name  | Type       | Units | 值                                                 | 描述                                                                                                                               |
 | ----------- | ---------- | ----- | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec   | `uint64_t` | us    |                                                   | Timestamp (synced to UNIX time or since system boot).                                                                            |
 | line_length | `float`    | m     | invalid:NaN                                       | Length of line released. NaN if unknown                                                                                          |
@@ -3492,7 +3492,7 @@ Winch status.
 
 Data for filling the OpenDroneID Basic ID message. This and the below messages are primarily meant for feeding data to/from an OpenDroneID implementation. E.g. https://github.com/opendroneid/opendroneid-core-c. These messages are compatible with the ASTM F3411 Remote ID standard and the ASD-STAN prEN 4709-002 Direct Remote ID standard. Additional information and usage of these messages is documented at https://mavlink.io/en/services/opendroneid.html.
 
-| Field Name       | Type          | Values                                  | Description                                                                                                                                 |
+| Field Name       | Type          | 值                                       | 描述                                                                                                                                          |
 | ---------------- | ------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t`     |                                         | System ID (0 for broadcast).                                                                                                                |
 | target_component | `uint8_t`     |                                         | Component ID (0 for broadcast).                                                                                                             |
@@ -3505,15 +3505,15 @@ Data for filling the OpenDroneID Basic ID message. This and the below messages a
 
 Data for filling the OpenDroneID Location message. The float data types are 32-bit IEEE 754. The Location message provides the location, altitude, direction and speed of the aircraft.
 
-| Field Name          | Type          | Units | Values                                        | Description                                                                                                                                                                                                                                                   |
+| Field Name          | Type          | Units | 值                                             | 描述                                                                                                                                                                                                                                                            |
 | ------------------- | ------------- | ----- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system       | `uint8_t`     |       |                                               | System ID (0 for broadcast).                                                                                                                                                                                                                                  |
 | target_component    | `uint8_t`     |       |                                               | Component ID (0 for broadcast).                                                                                                                                                                                                                               |
 | id_or_mac         | `uint8_t[20]` |       |                                               | Only used for drone ID data received from other UAs. See detailed description at https://mavlink.io/en/services/opendroneid.html.                                                                                                                             |
 | status              | `uint8_t`     |       | [MAV_ODID_STATUS](#MAV_ODID_STATUS)         | Indicates whether the unmanned aircraft is on the ground or in the air.                                                                                                                                                                                       |
 | direction           | `uint16_t`    | cdeg  | invalid:36100                                 | Direction over ground (not heading, but direction of movement) measured clockwise from true North: 0 - 35999 centi-degrees. If unknown: 36100 centi-degrees.                                                                                                  |
-| speed_horizontal    | `uint16_t`    | cm/s  |                                               | Ground speed. Positive only. If unknown: 25500 cm/s. If speed is larger than 25425 cm/s, use 25425 cm/s.                                                                                                                                                      |
-| speed_vertical      | `int16_t`     | cm/s  |                                               | The vertical speed. Up is positive. If unknown: 6300 cm/s. If speed is larger than 6200 cm/s, use 6200 cm/s. If lower than -6200 cm/s, use -6200 cm/s.                                                                                                        |
+| speed_horizontal    | `uint16_t`    | 厘米/秒  |                                               | Ground speed. Positive only. If unknown: 25500 cm/s. If speed is larger than 25425 cm/s, use 25425 cm/s.                                                                                                                                                      |
+| speed_vertical      | `int16_t`     | 厘米/秒  |                                               | The vertical speed. Up is positive. If unknown: 6300 cm/s. If speed is larger than 6200 cm/s, use 6200 cm/s. If lower than -6200 cm/s, use -6200 cm/s.                                                                                                        |
 | latitude            | `int32_t`     | degE7 | invalid:0                                     | Current latitude of the unmanned aircraft. If unknown: 0 (both Lat/Lon).                                                                                                                                                                                      |
 | longitude           | `int32_t`     | degE7 | invalid:0                                     | Current longitude of the unmanned aircraft. If unknown: 0 (both Lat/Lon).                                                                                                                                                                                     |
 | altitude_barometric | `float`       | m     | invalid:-1000                                 | The altitude calculated from the barometric pressue. Reference is against 29.92inHg or 1013.2mb. If unknown: -1000 m.                                                                                                                                         |
@@ -3531,7 +3531,7 @@ Data for filling the OpenDroneID Location message. The float data types are 32-b
 
 Data for filling the OpenDroneID Authentication message. The Authentication Message defines a field that can provide a means of authenticity for the identity of the UAS (Unmanned Aircraft System). The Authentication message can have two different formats. For data page 0, the fields PageCount, Length and TimeStamp are present and AuthData is only 17 bytes. For data page 1 through 15, PageCount, Length and TimeStamp are not present and the size of AuthData is 23 bytes.
 
-| Field Name          | Type          | Units | Values                                      | Description                                                                                                                                                                                                                                  |
+| Field Name          | Type          | Units | 值                                           | 描述                                                                                                                                                                                                                                           |
 | ------------------- | ------------- | ----- | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system       | `uint8_t`     |       |                                             | System ID (0 for broadcast).                                                                                                                                                                                                                 |
 | target_component    | `uint8_t`     |       |                                             | Component ID (0 for broadcast).                                                                                                                                                                                                              |
@@ -3547,7 +3547,7 @@ Data for filling the OpenDroneID Authentication message. The Authentication Mess
 
 Data for filling the OpenDroneID Self ID message. The Self ID Message is an opportunity for the operator to (optionally) declare their identity and purpose of the flight. This message can provide additional information that could reduce the threat profile of a UA (Unmanned Aircraft) flying in a particular area or manner. This message can also be used to provide optional additional clarification in an emergency/remote ID system failure situation.
 
-| Field Name       | Type          | Values                                      | Description                                                                                                                       |
+| Field Name       | Type          | 值                                           | 描述                                                                                                                                |
 | ---------------- | ------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t`     |                                             | System ID (0 for broadcast).                                                                                                      |
 | target_component | `uint8_t`     |                                             | Component ID (0 for broadcast).                                                                                                   |
@@ -3559,7 +3559,7 @@ Data for filling the OpenDroneID Self ID message. The Self ID Message is an oppo
 
 Data for filling the OpenDroneID System message. The System Message contains general system information including the operator location/altitude and possible aircraft group and/or category/class information.
 
-| Field Name               | Type          | Units | Values                                                                  | Description                                                                                                                            |
+| Field Name               | Type          | Units | 值                                                                       | 描述                                                                                                                                     |
 | ------------------------ | ------------- | ----- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system            | `uint8_t`     |       |                                                                         | System ID (0 for broadcast).                                                                                                           |
 | target_component         | `uint8_t`     |       |                                                                         | Component ID (0 for broadcast).                                                                                                        |
@@ -3581,7 +3581,7 @@ Data for filling the OpenDroneID System message. The System Message contains gen
 
 Data for filling the OpenDroneID Operator ID message, which contains the CAA (Civil Aviation Authority) issued operator ID.
 
-| Field Name         | Type          | Values                                                      | Description                                                                                                                       |
+| Field Name         | Type          | 值                                                           | 描述                                                                                                                                |
 | ------------------ | ------------- | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | target_system      | `uint8_t`     |                                                             | System ID (0 for broadcast).                                                                                                      |
 | target_component   | `uint8_t`     |                                                             | Component ID (0 for broadcast).                                                                                                   |
@@ -3593,7 +3593,7 @@ Data for filling the OpenDroneID Operator ID message, which contains the CAA (Ci
 
 An OpenDroneID message pack is a container for multiple encoded OpenDroneID messages (i.e. not in the format given for the above message descriptions but after encoding into the compressed OpenDroneID byte format). Used e.g. when transmitting on Bluetooth 5.0 Long Range/Extended Advertising or on WiFi Neighbor Aware Networking or on WiFi Beacon.
 
-| Field Name            | Type           | Units | Description                                                                                                                        |
+| Field Name            | Type           | Units | 描述                                                                                                                                 |
 | --------------------- | -------------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | target_system         | `uint8_t`      |       | System ID (0 for broadcast).                                                                                                       |
 | target_component      | `uint8_t`      |       | Component ID (0 for broadcast).                                                                                                    |
@@ -3606,7 +3606,7 @@ An OpenDroneID message pack is a container for multiple encoded OpenDroneID mess
 
 Transmitter (remote ID system) is enabled and ready to start sending location and other required information. This is streamed by transmitter. A flight controller uses it as a condition to arm.
 
-| Field Name | Type       | Values                                        | Description                                                                                      |
+| Field Name | Type       | 值                                             | 描述                                                                                               |
 | ---------- | ---------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | status     | `uint8_t`  | [MAV_ODID_ARM_STATUS](#MAV_ODID_ARM_STATUS) | Status level indicating if arming is allowed.                                                    |
 | error      | `char[50]` |                                               | Text error message, should be empty if status is good to arm. Fill with nulls in unused portion. |
@@ -3615,7 +3615,7 @@ Transmitter (remote ID system) is enabled and ready to start sending location an
 
 Update the data in the [OPEN_DRONE_ID_SYSTEM](#OPEN_DRONE_ID_SYSTEM) message with new location information. This can be sent to update the location information for the operator when no other information in the SYSTEM message has changed. This message allows for efficient operation on radio links which have limited uplink bandwidth while meeting requirements for update frequency of the operator location.
 
-| Field Name              | Type       | Units | Description                                                               |
+| Field Name              | Type       | Units | 描述                                                                        |
 | ----------------------- | ---------- | ----- | ------------------------------------------------------------------------- |
 | target_system           | `uint8_t`  |       | System ID (0 for broadcast).                                              |
 | target_component        | `uint8_t`  |       | Component ID (0 for broadcast).                                           |
@@ -3628,7 +3628,7 @@ Update the data in the [OPEN_DRONE_ID_SYSTEM](#OPEN_DRONE_ID_SYSTEM) message wit
 
 Temperature and humidity from hygrometer.
 
-| Field Name  | Type       | Units | Description                                                                   |
+| Field Name  | Type       | Units | 描述                                                                            |
 | ----------- | ---------- | ----- | ----------------------------------------------------------------------------- |
 | id          | `uint8_t`  |       | Hygrometer ID  
 Messages with same value are from the same source (instance). |
@@ -3641,7 +3641,7 @@ Messages with same value are from the same source (instance). |
 
 These values define the type of firmware release. These values indicate the first version or release of this type. For example the first alpha release would be 64, the second would be 65.
 
-| Value                          | Name                                                                | Description             |
+| 值                              | Name                                                                | 描述                      |
 | ------------------------------ | ------------------------------------------------------------------- | ----------------------- |
 | <a id='FIRMWARE_VERSION_TYPE_DEV'></a>0   | [FIRMWARE_VERSION_TYPE_DEV](#FIRMWARE_VERSION_TYPE_DEV)           | development release     |
 | <a id='FIRMWARE_VERSION_TYPE_ALPHA'></a>64  | [FIRMWARE_VERSION_TYPE_ALPHA](#FIRMWARE_VERSION_TYPE_ALPHA)       | alpha release           |
@@ -3653,7 +3653,7 @@ These values define the type of firmware release. These values indicate the firs
 
 (Bitmask) Flags to report failure cases over the high latency telemetry.
 
-| Value                           | Name                                                                                | Description                                                              |
+| 值                               | Name                                                                                | 描述                                                                       |
 | ------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | <a id='HL_FAILURE_FLAG_GPS'></a>1    | [HL_FAILURE_FLAG_GPS](#HL_FAILURE_FLAG_GPS)                                       | GPS failure.                                                             |
 | <a id='HL_FAILURE_FLAG_DIFFERENTIAL_PRESSURE'></a>2    | [HL_FAILURE_FLAG_DIFFERENTIAL_PRESSURE](#HL_FAILURE_FLAG_DIFFERENTIAL_PRESSURE) | Differential pressure sensor failure.                                    |
@@ -3674,7 +3674,7 @@ These values define the type of firmware release. These values indicate the firs
 
 Actions that may be specified in [MAV_CMD_OVERRIDE_GOTO](#MAV_CMD_OVERRIDE_GOTO) to override mission execution.
 
-| Value                        | Name                                                                            | Description                                                                        |
+| 值                            | Name                                                                            | 描述                                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | <a id='MAV_GOTO_DO_HOLD'></a>0 | [MAV_GOTO_DO_HOLD](#MAV_GOTO_DO_HOLD)                                         | Hold at the current position.                                                      |
 | <a id='MAV_GOTO_DO_CONTINUE'></a>1 | [MAV_GOTO_DO_CONTINUE](#MAV_GOTO_DO_CONTINUE)                                 | Continue with the next item in mission execution.                                  |
@@ -3687,7 +3687,7 @@ These defines are predefined OR-combined mode flags. There is no need to use val
 
 simplifies the use of the mode flags. Note that manual input is enabled in all modes as a safety override.
 
-| Value                          | Name                                                          | Description                                                                                                                                     |
+| 值                              | Name                                                          | 描述                                                                                                                                              |
 | ------------------------------ | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_MODE_PREFLIGHT'></a>0   | [MAV_MODE_PREFLIGHT](#MAV_MODE_PREFLIGHT)                   | System is not ready to fly, booting, calibrating, etc. No flag is set.                                                                          |
 | <a id='MAV_MODE_MANUAL_DISARMED'></a>64  | [MAV_MODE_MANUAL_DISARMED](#MAV_MODE_MANUAL_DISARMED)       | System is allowed to be active, under manual (RC) control, no stabilization                                                                     |
@@ -3705,7 +3705,7 @@ simplifies the use of the mode flags. Note that manual input is enabled in all m
 
 (Bitmask) These encode the sensors whose status is sent as part of the [SYS_STATUS](#SYS_STATUS) message.
 
-| Value                                 | Name                                                                                              | Description                                                                                                                       |
+| 值                                     | Name                                                                                              | 描述                                                                                                                                |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_SYS_STATUS_SENSOR_3D_GYRO'></a>1          | [MAV_SYS_STATUS_SENSOR_3D_GYRO](#MAV_SYS_STATUS_SENSOR_3D_GYRO)                               | 0x01 3D gyro                                                                                                                      |
 | <a id='MAV_SYS_STATUS_SENSOR_3D_ACCEL'></a>2          | [MAV_SYS_STATUS_SENSOR_3D_ACCEL](#MAV_SYS_STATUS_SENSOR_3D_ACCEL)                             | 0x02 3D accelerometer                                                                                                             |
@@ -3744,7 +3744,7 @@ simplifies the use of the mode flags. Note that manual input is enabled in all m
 
 (Bitmask) These encode the sensors whose status is sent as part of the [SYS_STATUS](#SYS_STATUS) message in the extended fields.
 
-| Value                        | Name                                                                  | Description                                             |
+| 值                            | Name                                                                  | 描述                                                      |
 | ---------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------- |
 | <a id='MAV_SYS_STATUS_RECOVERY_SYSTEM'></a>1 | [MAV_SYS_STATUS_RECOVERY_SYSTEM](#MAV_SYS_STATUS_RECOVERY_SYSTEM) | 0x01 Recovery system (parachute, balloon, retracts etc) |
 
@@ -3767,7 +3767,7 @@ Local frames use the following naming conventions:
 
 Some deprecated frames do not follow these conventions (e.g. [MAV_FRAME_BODY_NED](#MAV_FRAME_BODY_NED) and [MAV_FRAME_BODY_OFFSET_NED](#MAV_FRAME_BODY_OFFSET_NED)).
 
-| Value                         | Name                                                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 值                             | Name                                                                        | 描述                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_FRAME_GLOBAL'></a>0  | [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL)                                     | Global (WGS84) coordinate frame + altitude relative to mean sea level (MSL).                                                                                                                                                                                                                                                                                                                                          |
 | <a id='MAV_FRAME_LOCAL_NED'></a>1  | [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED)                               | NED local tangent frame (x: North, y: East, z: Down) with origin fixed relative to earth.                                                                                                                                                                                                                                                                                                                             |
@@ -3794,20 +3794,20 @@ Some deprecated frames do not follow these conventions (e.g. [MAV_FRAME_BODY_NED
 
 ### MAVLINK_DATA_STREAM_TYPE {#MAVLINK_DATA_STREAM_TYPE}
 
-| Value                        | Name                                                                  | Description |
-| ---------------------------- | --------------------------------------------------------------------- | ----------- |
-| <a id='MAVLINK_DATA_STREAM_IMG_JPEG'></a>0 | [MAVLINK_DATA_STREAM_IMG_JPEG](#MAVLINK_DATA_STREAM_IMG_JPEG)     |             |
-| <a id='MAVLINK_DATA_STREAM_IMG_BMP'></a>1 | [MAVLINK_DATA_STREAM_IMG_BMP](#MAVLINK_DATA_STREAM_IMG_BMP)       |             |
-| <a id='MAVLINK_DATA_STREAM_IMG_RAW8U'></a>2 | [MAVLINK_DATA_STREAM_IMG_RAW8U](#MAVLINK_DATA_STREAM_IMG_RAW8U)   |             |
-| <a id='MAVLINK_DATA_STREAM_IMG_RAW32U'></a>3 | [MAVLINK_DATA_STREAM_IMG_RAW32U](#MAVLINK_DATA_STREAM_IMG_RAW32U) |             |
-| <a id='MAVLINK_DATA_STREAM_IMG_PGM'></a>4 | [MAVLINK_DATA_STREAM_IMG_PGM](#MAVLINK_DATA_STREAM_IMG_PGM)       |             |
-| <a id='MAVLINK_DATA_STREAM_IMG_PNG'></a>5 | [MAVLINK_DATA_STREAM_IMG_PNG](#MAVLINK_DATA_STREAM_IMG_PNG)       |             |
+| 值                            | Name                                                                  | 描述 |
+| ---------------------------- | --------------------------------------------------------------------- | -- |
+| <a id='MAVLINK_DATA_STREAM_IMG_JPEG'></a>0 | [MAVLINK_DATA_STREAM_IMG_JPEG](#MAVLINK_DATA_STREAM_IMG_JPEG)     |    |
+| <a id='MAVLINK_DATA_STREAM_IMG_BMP'></a>1 | [MAVLINK_DATA_STREAM_IMG_BMP](#MAVLINK_DATA_STREAM_IMG_BMP)       |    |
+| <a id='MAVLINK_DATA_STREAM_IMG_RAW8U'></a>2 | [MAVLINK_DATA_STREAM_IMG_RAW8U](#MAVLINK_DATA_STREAM_IMG_RAW8U)   |    |
+| <a id='MAVLINK_DATA_STREAM_IMG_RAW32U'></a>3 | [MAVLINK_DATA_STREAM_IMG_RAW32U](#MAVLINK_DATA_STREAM_IMG_RAW32U) |    |
+| <a id='MAVLINK_DATA_STREAM_IMG_PGM'></a>4 | [MAVLINK_DATA_STREAM_IMG_PGM](#MAVLINK_DATA_STREAM_IMG_PGM)       |    |
+| <a id='MAVLINK_DATA_STREAM_IMG_PNG'></a>5 | [MAVLINK_DATA_STREAM_IMG_PNG](#MAVLINK_DATA_STREAM_IMG_PNG)       |    |
 
 ### FENCE_ACTION {#FENCE_ACTION}
 
 Actions following geofence breach.
 
-| Value                        | Name                                                              | Description                                                                                                                                                                                                                    |
+| 值                            | Name                                                              | 描述                                                                                                                                                                                                                             |
 | ---------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id='FENCE_ACTION_NONE'></a>0 | [FENCE_ACTION_NONE](#FENCE_ACTION_NONE)                         | Disable fenced mode. If used in a plan this would mean the next fence is disabled.                                                                                                                                             |
 | <a id='FENCE_ACTION_GUIDED'></a>1 | [FENCE_ACTION_GUIDED](#FENCE_ACTION_GUIDED)                     | Fly to geofence [MAV_CMD_NAV_FENCE_RETURN_POINT](#MAV_CMD_NAV_FENCE_RETURN_POINT) in GUIDED mode. Note: This action is only supported by ArduPlane, and may not be supported in all versions.                              |
@@ -3820,7 +3820,7 @@ Actions following geofence breach.
 
 ### FENCE_BREACH {#FENCE_BREACH}
 
-| Value                        | Name                                              | Description               |
+| 值                            | Name                                              | 描述                        |
 | ---------------------------- | ------------------------------------------------- | ------------------------- |
 | <a id='FENCE_BREACH_NONE'></a>0 | [FENCE_BREACH_NONE](#FENCE_BREACH_NONE)         | No last fence breach      |
 | <a id='FENCE_BREACH_MINALT'></a>1 | [FENCE_BREACH_MINALT](#FENCE_BREACH_MINALT)     | Breached minimum altitude |
@@ -3831,7 +3831,7 @@ Actions following geofence breach.
 
 Actions being taken to mitigate/prevent fence breach
 
-| Value                        | Name                                                    | Description                                |
+| 值                            | Name                                                    | 描述                                         |
 | ---------------------------- | ------------------------------------------------------- | ------------------------------------------ |
 | <a id='FENCE_MITIGATE_UNKNOWN'></a>0 | [FENCE_MITIGATE_UNKNOWN](#FENCE_MITIGATE_UNKNOWN)     | Unknown                                    |
 | <a id='FENCE_MITIGATE_NONE'></a>1 | [FENCE_MITIGATE_NONE](#FENCE_MITIGATE_NONE)           | No actions being taken                     |
@@ -3841,7 +3841,7 @@ Actions being taken to mitigate/prevent fence breach
 
 (Bitmask)
 
-| Value                        | Name                                        | Description            |
+| 值                            | Name                                        | 描述                     |
 | ---------------------------- | ------------------------------------------- | ---------------------- |
 | <a id='FENCE_TYPE_ALL'></a>0 | [FENCE_TYPE_ALL](#FENCE_TYPE_ALL)         | All fence types        |
 | <a id='FENCE_TYPE_ALT_MAX'></a>1 | [FENCE_TYPE_ALT_MAX](#FENCE_TYPE_ALT_MAX) | Maximum altitude fence |
@@ -3855,7 +3855,7 @@ Actions being taken to mitigate/prevent fence breach
 
 Enumeration of possible mount operation modes. This message is used by obsolete/deprecated gimbal messages.
 
-| Value                        | Name                                                                      | Description                                                                               |
+| 值                            | Name                                                                      | 描述                                                                                        |
 | ---------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | <a id='MAV_MOUNT_MODE_RETRACT'></a>0 | [MAV_MOUNT_MODE_RETRACT](#MAV_MOUNT_MODE_RETRACT)                       | Load and keep safe position (Roll,Pitch,Yaw) from permanent memory and stop stabilization |
 | <a id='MAV_MOUNT_MODE_NEUTRAL'></a>1 | [MAV_MOUNT_MODE_NEUTRAL](#MAV_MOUNT_MODE_NEUTRAL)                       | Load and keep neutral position (Roll,Pitch,Yaw) from permanent memory.                    |
@@ -3869,7 +3869,7 @@ Enumeration of possible mount operation modes. This message is used by obsolete/
 
 (Bitmask) Gimbal device (low level) capability flags (bitmap).
 
-| Value                           | Name                                                                                                                | Description                                                                                                                                                                                                                                                                                                                                                                                                       |
+| 值                               | Name                                                                                                                | 描述                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT'></a>1    | [GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT](#GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT)                                     | Gimbal device supports a retracted position.                                                                                                                                                                                                                                                                                                                                                                      |
 | <a id='GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL'></a>2    | [GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL](#GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL)                                     | Gimbal device supports a horizontal, forward looking position, stabilized.                                                                                                                                                                                                                                                                                                                                        |
@@ -3890,7 +3890,7 @@ Enumeration of possible mount operation modes. This message is used by obsolete/
 
 (Bitmask) Gimbal manager high level capability flags (bitmap). The first 16 bits are identical to the [GIMBAL_DEVICE_CAP_FLAGS](#GIMBAL_DEVICE_CAP_FLAGS). However, the gimbal manager does not need to copy the flags from the gimbal but can also enhance the capabilities and thus add flags.
 
-| Value                             | Name                                                                                                                  | Description                                                                                                                   |
+| 值                                 | Name                                                                                                                  | 描述                                                                                                                            |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | <a id='GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT'></a>1      | [GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT](#GIMBAL_MANAGER_CAP_FLAGS_HAS_RETRACT)                                     | Based on [GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT](#GIMBAL_DEVICE_CAP_FLAGS_HAS_RETRACT).                                     |
 | <a id='GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL'></a>2      | [GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL](#GIMBAL_MANAGER_CAP_FLAGS_HAS_NEUTRAL)                                     | Based on [GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL](#GIMBAL_DEVICE_CAP_FLAGS_HAS_NEUTRAL).                                     |
@@ -3913,7 +3913,7 @@ Enumeration of possible mount operation modes. This message is used by obsolete/
 
 (Bitmask) Flags for gimbal device (lower level) operation.
 
-| Value                          | Name                                                                                                    | Description                                                                                                                                                                                                                                                                                                                                               |
+| 值                              | Name                                                                                                    | 描述                                                                                                                                                                                                                                                                                                                                                        |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='GIMBAL_DEVICE_FLAGS_RETRACT'></a>1   | [GIMBAL_DEVICE_FLAGS_RETRACT](#GIMBAL_DEVICE_FLAGS_RETRACT)                                           | Set to retracted safe position (no stabilization), takes precedence over all other flags.                                                                                                                                                                                                                                                                 |
 | <a id='GIMBAL_DEVICE_FLAGS_NEUTRAL'></a>2   | [GIMBAL_DEVICE_FLAGS_NEUTRAL](#GIMBAL_DEVICE_FLAGS_NEUTRAL)                                           | Set to neutral/default position, taking precedence over all other flags except RETRACT. Neutral is commonly forward-facing and horizontal (roll=pitch=yaw=0) but may be any orientation.                                                                                                                                                                  |
@@ -3930,7 +3930,7 @@ Enumeration of possible mount operation modes. This message is used by obsolete/
 
 (Bitmask) Flags for high level gimbal manager operation The first 16 bits are identical to the [GIMBAL_DEVICE_FLAGS](#GIMBAL_DEVICE_FLAGS).
 
-| Value                          | Name                                                                                                      | Description                                                                                                       |
+| 值                              | Name                                                                                                      | 描述                                                                                                                |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | <a id='GIMBAL_MANAGER_FLAGS_RETRACT'></a>1   | [GIMBAL_MANAGER_FLAGS_RETRACT](#GIMBAL_MANAGER_FLAGS_RETRACT)                                           | Based on [GIMBAL_DEVICE_FLAGS_RETRACT](#GIMBAL_DEVICE_FLAGS_RETRACT).                                           |
 | <a id='GIMBAL_MANAGER_FLAGS_NEUTRAL'></a>2   | [GIMBAL_MANAGER_FLAGS_NEUTRAL](#GIMBAL_MANAGER_FLAGS_NEUTRAL)                                           | Based on [GIMBAL_DEVICE_FLAGS_NEUTRAL](#GIMBAL_DEVICE_FLAGS_NEUTRAL).                                           |
@@ -3947,7 +3947,7 @@ Enumeration of possible mount operation modes. This message is used by obsolete/
 
 (Bitmask) Gimbal device (low level) error flags (bitmap, 0 means no error)
 
-| Value                          | Name                                                                                                | Description                                        |
+| 值                              | Name                                                                                                | 描述                                                 |
 | ------------------------------ | --------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
 | <a id='GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT'></a>1   | [GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT](#GIMBAL_DEVICE_ERROR_FLAGS_AT_ROLL_LIMIT)           | Gimbal device is limited by hardware roll limit.   |
 | <a id='GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT'></a>2   | [GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT](#GIMBAL_DEVICE_ERROR_FLAGS_AT_PITCH_LIMIT)         | Gimbal device is limited by hardware pitch limit.  |
@@ -3964,7 +3964,7 @@ Enumeration of possible mount operation modes. This message is used by obsolete/
 
 Gripper actions.
 
-| Value                        | Name                                                | Description              |
+| 值                            | Name                                                | 描述                       |
 | ---------------------------- | --------------------------------------------------- | ------------------------ |
 | <a id='GRIPPER_ACTION_RELEASE'></a>0 | [GRIPPER_ACTION_RELEASE](#GRIPPER_ACTION_RELEASE) | Gripper release cargo.   |
 | <a id='GRIPPER_ACTION_GRAB'></a>1 | [GRIPPER_ACTION_GRAB](#GRIPPER_ACTION_GRAB)       | Gripper grab onto cargo. |
@@ -3973,7 +3973,7 @@ Gripper actions.
 
 Winch actions.
 
-| Value                        | Name                                                              | Description                                                                                                                                                                                        |
+| 值                            | Name                                                              | 描述                                                                                                                                                                                                 |
 | ---------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='WINCH_RELAXED'></a>0 | [WINCH_RELAXED](#WINCH_RELAXED)                                   | Allow motor to freewheel.                                                                                                                                                                          |
 | <a id='WINCH_RELATIVE_LENGTH_CONTROL'></a>1 | [WINCH_RELATIVE_LENGTH_CONTROL](#WINCH_RELATIVE_LENGTH_CONTROL) | Wind or unwind specified length of line, optionally using specified rate.                                                                                                                          |
@@ -3990,7 +3990,7 @@ Winch actions.
 
 Generalized UAVCAN node health
 
-| Value                        | Name                                                          | Description                                                                         |
+| 值                            | Name                                                          | 描述                                                                                  |
 | ---------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | <a id='UAVCAN_NODE_HEALTH_OK'></a>0 | [UAVCAN_NODE_HEALTH_OK](#UAVCAN_NODE_HEALTH_OK)             | The node is functioning properly.                                                   |
 | <a id='UAVCAN_NODE_HEALTH_WARNING'></a>1 | [UAVCAN_NODE_HEALTH_WARNING](#UAVCAN_NODE_HEALTH_WARNING)   | A critical parameter went out of range or the node has encountered a minor failure. |
@@ -4001,7 +4001,7 @@ Generalized UAVCAN node health
 
 Generalized UAVCAN node mode
 
-| Value                        | Name                                                                      | Description                                                               |
+| 值                            | Name                                                                      | 描述                                                                        |
 | ---------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | <a id='UAVCAN_NODE_MODE_OPERATIONAL'></a>0 | [UAVCAN_NODE_MODE_OPERATIONAL](#UAVCAN_NODE_MODE_OPERATIONAL)           | The node is performing its primary functions.                             |
 | <a id='UAVCAN_NODE_MODE_INITIALIZATION'></a>1 | [UAVCAN_NODE_MODE_INITIALIZATION](#UAVCAN_NODE_MODE_INITIALIZATION)     | The node is initializing; this mode is entered immediately after startup. |
@@ -4013,7 +4013,7 @@ Generalized UAVCAN node mode
 
 Indicates the ESC connection type.
 
-| Value                        | Name                                                          | Description               |
+| 值                            | Name                                                          | 描述                        |
 | ---------------------------- | ------------------------------------------------------------- | ------------------------- |
 | <a id='ESC_CONNECTION_TYPE_PPM'></a>0 | [ESC_CONNECTION_TYPE_PPM](#ESC_CONNECTION_TYPE_PPM)         | Traditional PPM ESC.      |
 | <a id='ESC_CONNECTION_TYPE_SERIAL'></a>1 | [ESC_CONNECTION_TYPE_SERIAL](#ESC_CONNECTION_TYPE_SERIAL)   | Serial Bus connected ESC. |
@@ -4026,7 +4026,7 @@ Indicates the ESC connection type.
 
 (Bitmask) Flags to report ESC failures.
 
-| Value                         | Name                                                            | Description                                      |
+| 值                             | Name                                                            | 描述                                               |
 | ----------------------------- | --------------------------------------------------------------- | ------------------------------------------------ |
 | <a id='ESC_FAILURE_NONE'></a>0  | [ESC_FAILURE_NONE](#ESC_FAILURE_NONE)                         | No ESC failure.                                  |
 | <a id='ESC_FAILURE_OVER_CURRENT'></a>1  | [ESC_FAILURE_OVER_CURRENT](#ESC_FAILURE_OVER_CURRENT)         | Over current failure.                            |
@@ -4041,7 +4041,7 @@ Indicates the ESC connection type.
 
 Flags to indicate the status of camera storage.
 
-| Value                        | Name                                                            | Description                                                                                                                                    |
+| 值                            | Name                                                            | 描述                                                                                                                                             |
 | ---------------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='STORAGE_STATUS_EMPTY'></a>0 | [STORAGE_STATUS_EMPTY](#STORAGE_STATUS_EMPTY)                 | Storage is missing (no microSD card loaded for example.)                                                                                       |
 | <a id='STORAGE_STATUS_UNFORMATTED'></a>1 | [STORAGE_STATUS_UNFORMATTED](#STORAGE_STATUS_UNFORMATTED)     | Storage present but unformatted.                                                                                                               |
@@ -4052,7 +4052,7 @@ Flags to indicate the status of camera storage.
 
 Flags to indicate the type of storage.
 
-| Value                          | Name                                                | Description                             |
+| 值                              | Name                                                | 描述                                      |
 | ------------------------------ | --------------------------------------------------- | --------------------------------------- |
 | <a id='STORAGE_TYPE_UNKNOWN'></a>0   | [STORAGE_TYPE_UNKNOWN](#STORAGE_TYPE_UNKNOWN)     | Storage type is not known.              |
 | <a id='STORAGE_TYPE_USB_STICK'></a>1   | [STORAGE_TYPE_USB_STICK](#STORAGE_TYPE_USB_STICK) | Storage type is USB device.             |
@@ -4068,7 +4068,7 @@ Flags to indicate the type of storage.
 
 Flags to indicate usage for a particular storage (see [STORAGE_INFORMATION](#STORAGE_INFORMATION).storage_usage and [MAV_CMD_SET_STORAGE_USAGE](#MAV_CMD_SET_STORAGE_USAGE)).
 
-| Value                        | Name                                                    | Description                                                                                         |
+| 值                            | Name                                                    | 描述                                                                                                  |
 | ---------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | <a id='STORAGE_USAGE_FLAG_SET'></a>1 | [STORAGE_USAGE_FLAG_SET](#STORAGE_USAGE_FLAG_SET)     | Always set to 1 (indicates [STORAGE_INFORMATION](#STORAGE_INFORMATION).storage_usage is supported). |
 | <a id='STORAGE_USAGE_FLAG_PHOTO'></a>2 | [STORAGE_USAGE_FLAG_PHOTO](#STORAGE_USAGE_FLAG_PHOTO) | Storage for saving photos.                                                                          |
@@ -4079,7 +4079,7 @@ Flags to indicate usage for a particular storage (see [STORAGE_INFORMATION](#STO
 
 Yaw behaviour during orbit flight.
 
-| Value                        | Name                                                                                                        | Description                                                                                                                                         |
+| 值                            | Name                                                                                                        | 描述                                                                                                                                                  |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TO_CIRCLE_CENTER'></a>0 | [ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TO_CIRCLE_CENTER](#ORBIT_YAW_BEHAVIOUR_HOLD_FRONT_TO_CIRCLE_CENTER)   | Vehicle front points to the center (default).                                                                                                       |
 | <a id='ORBIT_YAW_BEHAVIOUR_HOLD_INITIAL_HEADING'></a>1 | [ORBIT_YAW_BEHAVIOUR_HOLD_INITIAL_HEADING](#ORBIT_YAW_BEHAVIOUR_HOLD_INITIAL_HEADING)                   | Vehicle front holds heading when message received.                                                                                                  |
@@ -4092,7 +4092,7 @@ Yaw behaviour during orbit flight.
 
 Possible responses from a [WIFI_CONFIG_AP](#WIFI_CONFIG_AP) message.
 
-| Value                        | Name                                                                                  | Description                                                                             |
+| 值                            | Name                                                                                  | 描述                                                                                      |
 | ---------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | <a id='WIFI_CONFIG_AP_RESPONSE_UNDEFINED'></a>0 | [WIFI_CONFIG_AP_RESPONSE_UNDEFINED](#WIFI_CONFIG_AP_RESPONSE_UNDEFINED)           | Undefined response. Likely an indicative of a system that doesn't support this request. |
 | <a id='WIFI_CONFIG_AP_RESPONSE_ACCEPTED'></a>1 | [WIFI_CONFIG_AP_RESPONSE_ACCEPTED](#WIFI_CONFIG_AP_RESPONSE_ACCEPTED)             | Changes accepted.                                                                       |
@@ -4105,7 +4105,7 @@ Possible responses from a [WIFI_CONFIG_AP](#WIFI_CONFIG_AP) message.
 
 Possible responses from a [CELLULAR_CONFIG](#CELLULAR_CONFIG) message.
 
-| Value                        | Name                                                                              | Description                          |
+| 值                            | Name                                                                              | 描述                                   |
 | ---------------------------- | --------------------------------------------------------------------------------- | ------------------------------------ |
 | <a id='CELLULAR_CONFIG_RESPONSE_ACCEPTED'></a>0 | [CELLULAR_CONFIG_RESPONSE_ACCEPTED](#CELLULAR_CONFIG_RESPONSE_ACCEPTED)         | Changes accepted.                    |
 | <a id='CELLULAR_CONFIG_RESPONSE_APN_ERROR'></a>1 | [CELLULAR_CONFIG_RESPONSE_APN_ERROR](#CELLULAR_CONFIG_RESPONSE_APN_ERROR)     | Invalid APN.                         |
@@ -4117,7 +4117,7 @@ Possible responses from a [CELLULAR_CONFIG](#CELLULAR_CONFIG) message.
 
 WiFi Mode.
 
-| Value                        | Name                                                                | Description                                                               |
+| 值                            | Name                                                                | 描述                                                                        |
 | ---------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | <a id='WIFI_CONFIG_AP_MODE_UNDEFINED'></a>0 | [WIFI_CONFIG_AP_MODE_UNDEFINED](#WIFI_CONFIG_AP_MODE_UNDEFINED) | WiFi mode is undefined.                                                   |
 | <a id='WIFI_CONFIG_AP_MODE_AP'></a>1 | [WIFI_CONFIG_AP_MODE_AP](#WIFI_CONFIG_AP_MODE_AP)               | WiFi configured as an access point.                                       |
@@ -4128,7 +4128,7 @@ WiFi Mode.
 
 Supported component metadata types. These are used in the "general" metadata file returned by [COMPONENT_METADATA](#COMPONENT_METADATA) to provide information about supported metadata types. The types are not used directly in MAVLink messages.
 
-| Value                        | Name                                                                | Description                                                                                                                                                                                                                                |
+| 值                            | Name                                                                | 描述                                                                                                                                                                                                                                         |
 | ---------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id='COMP_METADATA_TYPE_GENERAL'></a>0 | [COMP_METADATA_TYPE_GENERAL](#COMP_METADATA_TYPE_GENERAL)         | General information about the component. General metadata includes information about other metadata types supported by the component. Files of this type must be supported, and must be downloadable from vehicle using a MAVLink FTP URI. |
 | <a id='COMP_METADATA_TYPE_PARAMETER'></a>1 | [COMP_METADATA_TYPE_PARAMETER](#COMP_METADATA_TYPE_PARAMETER)     | Parameter meta data.                                                                                                                                                                                                                       |
@@ -4141,7 +4141,7 @@ Supported component metadata types. These are used in the "general" metadata fil
 
 Actuator configuration, used to change a setting on an actuator. Component information metadata can be used to know which outputs support which commands.
 
-| Value                        | Name                                                                                | Description                                                                                           |
+| 值                            | Name                                                                                | 描述                                                                                                    |
 | ---------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | <a id='ACTUATOR_CONFIGURATION_NONE'></a>0 | [ACTUATOR_CONFIGURATION_NONE](#ACTUATOR_CONFIGURATION_NONE)                       | Do nothing.                                                                                           |
 | <a id='ACTUATOR_CONFIGURATION_BEEP'></a>1 | [ACTUATOR_CONFIGURATION_BEEP](#ACTUATOR_CONFIGURATION_BEEP)                       | Command the actuator to beep now.                                                                     |
@@ -4154,7 +4154,7 @@ Actuator configuration, used to change a setting on an actuator. Component infor
 
 Actuator output function. Values greater or equal to 1000 are autopilot-specific.
 
-| Value                         | Name                                                                    | Description             |
+| 值                             | Name                                                                    | 描述                      |
 | ----------------------------- | ----------------------------------------------------------------------- | ----------------------- |
 | <a id='ACTUATOR_OUTPUT_FUNCTION_NONE'></a>0  | [ACTUATOR_OUTPUT_FUNCTION_NONE](#ACTUATOR_OUTPUT_FUNCTION_NONE)       | No function (disabled). |
 | <a id='ACTUATOR_OUTPUT_FUNCTION_MOTOR1'></a>1  | [ACTUATOR_OUTPUT_FUNCTION_MOTOR1](#ACTUATOR_OUTPUT_FUNCTION_MOTOR1)   | Motor 1                 |
@@ -4194,7 +4194,7 @@ Actuator output function. Values greater or equal to 1000 are autopilot-specific
 
 (Bitmask) Enable axes that will be tuned via autotuning. Used in [MAV_CMD_DO_AUTOTUNE_ENABLE](#MAV_CMD_DO_AUTOTUNE_ENABLE).
 
-| Value                        | Name                                              | Description                                                |
+| 值                            | Name                                              | 描述                                                         |
 | ---------------------------- | ------------------------------------------------- | ---------------------------------------------------------- |
 | <a id='AUTOTUNE_AXIS_DEFAULT'></a>0 | [AUTOTUNE_AXIS_DEFAULT](#AUTOTUNE_AXIS_DEFAULT) | Flight stack tunes axis according to its default settings. |
 | <a id='AUTOTUNE_AXIS_ROLL'></a>1 | [AUTOTUNE_AXIS_ROLL](#AUTOTUNE_AXIS_ROLL)       | Autotune roll axis.                                        |
@@ -4205,7 +4205,7 @@ Actuator output function. Values greater or equal to 1000 are autopilot-specific
 
 Actions for reading/writing parameters between persistent and volatile storage when using [MAV_CMD_PREFLIGHT_STORAGE](#MAV_CMD_PREFLIGHT_STORAGE). (Commonly parameters are loaded from persistent storage (flash/EEPROM) into volatile storage (RAM) on startup and written back when they are changed.)
 
-| Value                        | Name                                                        | Description                                                                                                                                                                                                                               |
+| 值                            | Name                                                        | 描述                                                                                                                                                                                                                                        |
 | ---------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='PARAM_READ_PERSISTENT'></a>0 | [PARAM_READ_PERSISTENT](#PARAM_READ_PERSISTENT)           | Read all parameters from persistent storage. Replaces values in volatile storage.                                                                                                                                                         |
 | <a id='PARAM_WRITE_PERSISTENT'></a>1 | [PARAM_WRITE_PERSISTENT](#PARAM_WRITE_PERSISTENT)         | Write all parameter values to persistent storage (flash/EEPROM)                                                                                                                                                                           |
@@ -4217,7 +4217,7 @@ Actions for reading/writing parameters between persistent and volatile storage w
 
 Actions for reading and writing plan information (mission, rally points, geofence) between persistent and volatile storage when using [MAV_CMD_PREFLIGHT_STORAGE](#MAV_CMD_PREFLIGHT_STORAGE). (Commonly missions are loaded from persistent storage (flash/EEPROM) into volatile storage (RAM) on startup and written back when they are changed.)
 
-| Value                        | Name                                                    | Description                                                                         |
+| 值                            | Name                                                    | 描述                                                                                  |
 | ---------------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | <a id='MISSION_READ_PERSISTENT'></a>0 | [MISSION_READ_PERSISTENT](#MISSION_READ_PERSISTENT)   | Read current mission data from persistent storage                                   |
 | <a id='MISSION_WRITE_PERSISTENT'></a>1 | [MISSION_WRITE_PERSISTENT](#MISSION_WRITE_PERSISTENT) | Write current mission data to persistent storage                                    |
@@ -4231,7 +4231,7 @@ A data stream is not a fixed set of messages, but rather a
 
 recommendation to the autopilot software. Individual autopilots may or may not obey the recommended messages.
 
-| Value                         | Name                                                                    | Description                                                                                                                                                                         |
+| 值                             | Name                                                                    | 描述                                                                                                                                                                                  |
 | ----------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_DATA_STREAM_ALL'></a>0  | [MAV_DATA_STREAM_ALL](#MAV_DATA_STREAM_ALL)                           | Enable all data streams                                                                                                                                                             |
 | <a id='MAV_DATA_STREAM_RAW_SENSORS'></a>1  | [MAV_DATA_STREAM_RAW_SENSORS](#MAV_DATA_STREAM_RAW_SENSORS)         | Enable [IMU_RAW](#IMU_RAW), [GPS_RAW](#GPS_RAW), [GPS_STATUS](#GPS_STATUS) packets.                                                                                                 |
@@ -4251,7 +4251,7 @@ The ROI (region of interest) for the vehicle. This can be
 
 be used by the vehicle for camera/vehicle attitude alignment (see [MAV_CMD_NAV_ROI](#MAV_CMD_NAV_ROI)).
 
-| Value                        | Name                                    | Description                                                      |
+| 值                            | Name                                    | 描述                                                               |
 | ---------------------------- | --------------------------------------- | ---------------------------------------------------------------- |
 | <a id='MAV_ROI_NONE'></a>0 | [MAV_ROI_NONE](#MAV_ROI_NONE)         | No region of interest.                                           |
 | <a id='MAV_ROI_WPNEXT'></a>1 | [MAV_ROI_WPNEXT](#MAV_ROI_WPNEXT)     | Point toward next waypoint, with optional pitch/roll/yaw offset. |
@@ -4263,7 +4263,7 @@ be used by the vehicle for camera/vehicle attitude alignment (see [MAV_CMD_NAV_R
 
 Specifies the datatype of a MAVLink parameter.
 
-| Value                         | Name                                              | Description             |
+| 值                             | Name                                              | 描述                      |
 | ----------------------------- | ------------------------------------------------- | ----------------------- |
 | <a id='MAV_PARAM_TYPE_UINT8'></a>1  | [MAV_PARAM_TYPE_UINT8](#MAV_PARAM_TYPE_UINT8)   | 8-bit unsigned integer  |
 | <a id='MAV_PARAM_TYPE_INT8'></a>2  | [MAV_PARAM_TYPE_INT8](#MAV_PARAM_TYPE_INT8)     | 8-bit signed integer    |
@@ -4280,7 +4280,7 @@ Specifies the datatype of a MAVLink parameter.
 
 Specifies the datatype of a MAVLink extended parameter.
 
-| Value                         | Name                                                        | Description             |
+| 值                             | Name                                                        | 描述                      |
 | ----------------------------- | ----------------------------------------------------------- | ----------------------- |
 | <a id='MAV_PARAM_EXT_TYPE_UINT8'></a>1  | [MAV_PARAM_EXT_TYPE_UINT8](#MAV_PARAM_EXT_TYPE_UINT8)   | 8-bit unsigned integer  |
 | <a id='MAV_PARAM_EXT_TYPE_INT8'></a>2  | [MAV_PARAM_EXT_TYPE_INT8](#MAV_PARAM_EXT_TYPE_INT8)     | 8-bit signed integer    |
@@ -4298,7 +4298,7 @@ Specifies the datatype of a MAVLink extended parameter.
 
 Result from a MAVLink command ([MAV_CMD](#mav_commands))
 
-| Value                        | Name                                                                                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| 值                            | Name                                                                                      | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ---------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_RESULT_ACCEPTED'></a>0 | [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED)                                             | Command is valid (is supported and has valid parameters), and was executed.                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | <a id='MAV_RESULT_TEMPORARILY_REJECTED'></a>1 | [MAV_RESULT_TEMPORARILY_REJECTED](#MAV_RESULT_TEMPORARILY_REJECTED)                     | Command is valid, but cannot be executed at this time. This is used to indicate a problem that should be fixed just by waiting (e.g. a state machine is busy, can't arm because have not got GPS lock, etc.). Retrying later should work.                                                                                                                                                                                                                                                    |
@@ -4315,7 +4315,7 @@ Result from a MAVLink command ([MAV_CMD](#mav_commands))
 
 Result of mission operation (in a [MISSION_ACK](#MISSION_ACK) message).
 
-| Value                         | Name                                                                  | Description                                                                  |
+| 值                             | Name                                                                  | 描述                                                                           |
 | ----------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | <a id='MAV_MISSION_ACCEPTED'></a>0  | [MAV_MISSION_ACCEPTED](#MAV_MISSION_ACCEPTED)                       | mission accepted OK                                                          |
 | <a id='MAV_MISSION_ERROR'></a>1  | [MAV_MISSION_ERROR](#MAV_MISSION_ERROR)                             | Generic error / not accepting mission commands at all right now.             |
@@ -4338,7 +4338,7 @@ Result of mission operation (in a [MISSION_ACK](#MISSION_ACK) message).
 
 Indicates the severity level, generally used for status messages to indicate their relative urgency. Based on RFC-5424 using expanded definitions at: http://www.kiwisyslog.com/kb/info:-syslog-message-levels/.
 
-| Value                        | Name                                                | Description                                                                                                                       |
+| 值                            | Name                                                | 描述                                                                                                                                |
 | ---------------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_SEVERITY_EMERGENCY'></a>0 | [MAV_SEVERITY_EMERGENCY](#MAV_SEVERITY_EMERGENCY) | System is unusable. This is a "panic" condition.                                                                                  |
 | <a id='MAV_SEVERITY_ALERT'></a>1 | [MAV_SEVERITY_ALERT](#MAV_SEVERITY_ALERT)         | Action should be taken immediately. Indicates error in non-critical systems.                                                      |
@@ -4353,7 +4353,7 @@ Indicates the severity level, generally used for status messages to indicate the
 
 (Bitmask) Power supply status flags (bitmask)
 
-| Value                         | Name                                                                                            | Description                                         |
+| 值                             | Name                                                                                            | 描述                                                  |
 | ----------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------- |
 | <a id='MAV_POWER_STATUS_BRICK_VALID'></a>1  | [MAV_POWER_STATUS_BRICK_VALID](#MAV_POWER_STATUS_BRICK_VALID)                               | main brick power supply valid                       |
 | <a id='MAV_POWER_STATUS_SERVO_VALID'></a>2  | [MAV_POWER_STATUS_SERVO_VALID](#MAV_POWER_STATUS_SERVO_VALID)                               | main servo power supply valid for FMU               |
@@ -4366,7 +4366,7 @@ Indicates the severity level, generally used for status messages to indicate the
 
 [SERIAL_CONTROL](#SERIAL_CONTROL) device types
 
-| Value                          | Name                                                      | Description           |
+| 值                              | Name                                                      | 描述                    |
 | ------------------------------ | --------------------------------------------------------- | --------------------- |
 | <a id='SERIAL_CONTROL_DEV_TELEM1'></a>0   | [SERIAL_CONTROL_DEV_TELEM1](#SERIAL_CONTROL_DEV_TELEM1) | First telemetry port  |
 | <a id='SERIAL_CONTROL_DEV_TELEM2'></a>1   | [SERIAL_CONTROL_DEV_TELEM2](#SERIAL_CONTROL_DEV_TELEM2) | Second telemetry port |
@@ -4388,7 +4388,7 @@ Indicates the severity level, generally used for status messages to indicate the
 
 (Bitmask) [SERIAL_CONTROL](#SERIAL_CONTROL) flags (bitmask)
 
-| Value                         | Name                                                              | Description                                                                                                                                                                                                                                      |
+| 值                             | Name                                                              | 描述                                                                                                                                                                                                                                               |
 | ----------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id='SERIAL_CONTROL_FLAG_REPLY'></a>1  | [SERIAL_CONTROL_FLAG_REPLY](#SERIAL_CONTROL_FLAG_REPLY)         | Set if this is a reply                                                                                                                                                                                                                           |
 | <a id='SERIAL_CONTROL_FLAG_RESPOND'></a>2  | [SERIAL_CONTROL_FLAG_RESPOND](#SERIAL_CONTROL_FLAG_RESPOND)     | Set if the sender wants the receiver to send a response as another [SERIAL_CONTROL](#SERIAL_CONTROL) message                                                                                                                                     |
@@ -4400,7 +4400,7 @@ Indicates the severity level, generally used for status messages to indicate the
 
 Enumeration of distance sensor types
 
-| Value                        | Name                                                                | Description                                                   |
+| 值                            | Name                                                                | 描述                                                            |
 | ---------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------- |
 | <a id='MAV_DISTANCE_SENSOR_LASER'></a>0 | [MAV_DISTANCE_SENSOR_LASER](#MAV_DISTANCE_SENSOR_LASER)           | Laser rangefinder, e.g. LightWare SF02/F or PulsedLight units |
 | <a id='MAV_DISTANCE_SENSOR_ULTRASOUND'></a>1 | [MAV_DISTANCE_SENSOR_ULTRASOUND](#MAV_DISTANCE_SENSOR_ULTRASOUND) | Ultrasound rangefinder, e.g. MaxBotix units                   |
@@ -4412,7 +4412,7 @@ Enumeration of distance sensor types
 
 Enumeration of sensor orientation, according to its rotations
 
-| Value                          | Name                                                                                                  | Description                   |
+| 值                              | Name                                                                                                  | 描述                            |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------- | ----------------------------- |
 | <a id='MAV_SENSOR_ROTATION_NONE'></a>0   | [MAV_SENSOR_ROTATION_NONE](#MAV_SENSOR_ROTATION_NONE)                                               | Roll: 0, Pitch: 0, Yaw: 0     |
 | <a id='MAV_SENSOR_ROTATION_YAW_45'></a>1   | [MAV_SENSOR_ROTATION_YAW_45](#MAV_SENSOR_ROTATION_YAW_45)                                         | Roll: 0, Pitch: 0, Yaw: 45    |
@@ -4461,7 +4461,7 @@ Enumeration of sensor orientation, according to its rotations
 
 (Bitmask) Bitmask of (optional) autopilot capabilities (64 bit). If a bit is set, the autopilot supports this capability.
 
-| Value                             | Name                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                               |
+| 值                                 | Name                                                                                                                              | 描述                                                                                                                                                                                                                                                                                                                                                        |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT'></a>1      | [MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT](#MAV_PROTOCOL_CAPABILITY_MISSION_FLOAT)                                               | Autopilot supports the [MISSION_ITEM](#MISSION_ITEM) float message type.  
 Note that [MISSION_ITEM](#MISSION_ITEM) is deprecated, and autopilots should use [MISSION_INT](#MISSION_INT) instead.                                                                                                                                                          |
@@ -4476,13 +4476,13 @@ Note that either this flag or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV
 | <a id='MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED'></a>128    | [MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED](#MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED)             | Autopilot supports commanding position and velocity targets in local NED frame.                                                                                                                                                                                                                                                                           |
 | <a id='MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT'></a>256    | [MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT](#MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT)           | Autopilot supports commanding position and velocity targets in global scaled integers.                                                                                                                                                                                                                                                                    |
 | <a id='MAV_PROTOCOL_CAPABILITY_TERRAIN'></a>512    | [MAV_PROTOCOL_CAPABILITY_TERRAIN](#MAV_PROTOCOL_CAPABILITY_TERRAIN)                                                             | Autopilot supports terrain protocol / data handling.                                                                                                                                                                                                                                                                                                      |
-| <a id='MAV_PROTOCOL_CAPABILITY_RESERVED3'></a>1024   | [MAV_PROTOCOL_CAPABILITY_RESERVED3](#MAV_PROTOCOL_CAPABILITY_RESERVED3)                                                         | Reserved for future use.                                                                                                                                                                                                                                                                                                                                  |
+| <a id='MAV_PROTOCOL_CAPABILITY_RESERVED3'></a>1024   | [MAV_PROTOCOL_CAPABILITY_RESERVED3](#MAV_PROTOCOL_CAPABILITY_RESERVED3)                                                         | 保留以备将来使用。                                                                                                                                                                                                                                                                                                                                                 |
 | <a id='MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION'></a>2048   | [MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION](#MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION)                                     | Autopilot supports the [MAV_CMD_DO_FLIGHTTERMINATION](#MAV_CMD_DO_FLIGHTTERMINATION) command (flight termination).                                                                                                                                                                                                                                      |
 | <a id='MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION'></a>4096   | [MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION](#MAV_PROTOCOL_CAPABILITY_COMPASS_CALIBRATION)                                   | Autopilot supports onboard compass calibration.                                                                                                                                                                                                                                                                                                           |
 | <a id='MAV_PROTOCOL_CAPABILITY_MAVLINK2'></a>8192   | [MAV_PROTOCOL_CAPABILITY_MAVLINK2](#MAV_PROTOCOL_CAPABILITY_MAVLINK2)                                                           | Autopilot supports MAVLink version 2.                                                                                                                                                                                                                                                                                                                     |
 | <a id='MAV_PROTOCOL_CAPABILITY_MISSION_FENCE'></a>16384  | [MAV_PROTOCOL_CAPABILITY_MISSION_FENCE](#MAV_PROTOCOL_CAPABILITY_MISSION_FENCE)                                               | Autopilot supports mission fence protocol.                                                                                                                                                                                                                                                                                                                |
 | <a id='MAV_PROTOCOL_CAPABILITY_MISSION_RALLY'></a>32768  | [MAV_PROTOCOL_CAPABILITY_MISSION_RALLY](#MAV_PROTOCOL_CAPABILITY_MISSION_RALLY)                                               | Autopilot supports mission rally point protocol.                                                                                                                                                                                                                                                                                                          |
-| <a id='MAV_PROTOCOL_CAPABILITY_RESERVED2'></a>65536  | [MAV_PROTOCOL_CAPABILITY_RESERVED2](#MAV_PROTOCOL_CAPABILITY_RESERVED2)                                                         | Reserved for future use.                                                                                                                                                                                                                                                                                                                                  |
+| <a id='MAV_PROTOCOL_CAPABILITY_RESERVED2'></a>65536  | [MAV_PROTOCOL_CAPABILITY_RESERVED2](#MAV_PROTOCOL_CAPABILITY_RESERVED2)                                                         | 保留以备将来使用。                                                                                                                                                                                                                                                                                                                                                 |
 | <a id='MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST'></a>131072 | [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_C_CAST)                                 | Parameter protocol uses C-cast of parameter values to set the param_value (float) fields: https://mavlink.io/en/services/parameter.html#parameter-encoding.  
 Note that either this flag or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE) should be set if the parameter protocol is supported.     |
 | <a id='MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER'></a>262144 | [MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER](#MAV_PROTOCOL_CAPABILITY_COMPONENT_IMPLEMENTS_GIMBAL_MANAGER) | This component implements/is a gimbal manager. This means the [GIMBAL_MANAGER_INFORMATION](#GIMBAL_MANAGER_INFORMATION), and other messages can be requested.                                                                                                                                                                                           |
@@ -4492,7 +4492,7 @@ Note that either this flag or [MAV_PROTOCOL_CAPABILITY_PARAM_ENCODE_BYTEWISE](#M
 
 Type of mission items being requested/sent in mission protocol.
 
-| Value                          | Name                                                    | Description                                                                                                                                                               |
+| 值                              | Name                                                    | 描述                                                                                                                                                                        |
 | ------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_MISSION_TYPE_MISSION'></a>0   | [MAV_MISSION_TYPE_MISSION](#MAV_MISSION_TYPE_MISSION) | Items are mission commands for main mission.                                                                                                                              |
 | <a id='MAV_MISSION_TYPE_FENCE'></a>1   | [MAV_MISSION_TYPE_FENCE](#MAV_MISSION_TYPE_FENCE)     | Specifies GeoFence area(s). Items are MAV_CMD_NAV_FENCE_ GeoFence items.                                                                                              |
@@ -4503,7 +4503,7 @@ Type of mission items being requested/sent in mission protocol.
 
 Enumeration of estimator types
 
-| Value                        | Name                                                            | Description                                                     |
+| 值                            | Name                                                            | 描述                                                              |
 | ---------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | <a id='MAV_ESTIMATOR_TYPE_UNKNOWN'></a>0 | [MAV_ESTIMATOR_TYPE_UNKNOWN](#MAV_ESTIMATOR_TYPE_UNKNOWN)     | Unknown type of the estimator.                                  |
 | <a id='MAV_ESTIMATOR_TYPE_NAIVE'></a>1 | [MAV_ESTIMATOR_TYPE_NAIVE](#MAV_ESTIMATOR_TYPE_NAIVE)         | This is a naive estimator without any real covariance feedback. |
@@ -4519,7 +4519,7 @@ Enumeration of estimator types
 
 Enumeration of battery types
 
-| Value                        | Name                                                    | Description                    |
+| 值                            | Name                                                    | 描述                             |
 | ---------------------------- | ------------------------------------------------------- | ------------------------------ |
 | <a id='MAV_BATTERY_TYPE_UNKNOWN'></a>0 | [MAV_BATTERY_TYPE_UNKNOWN](#MAV_BATTERY_TYPE_UNKNOWN) | Not specified.                 |
 | <a id='MAV_BATTERY_TYPE_LIPO'></a>1 | [MAV_BATTERY_TYPE_LIPO](#MAV_BATTERY_TYPE_LIPO)       | Lithium polymer battery        |
@@ -4531,7 +4531,7 @@ Enumeration of battery types
 
 Enumeration of battery functions
 
-| Value                        | Name                                                                  | Description                         |
+| 值                            | Name                                                                  | 描述                                  |
 | ---------------------------- | --------------------------------------------------------------------- | ----------------------------------- |
 | <a id='MAV_BATTERY_FUNCTION_UNKNOWN'></a>0 | [MAV_BATTERY_FUNCTION_UNKNOWN](#MAV_BATTERY_FUNCTION_UNKNOWN)       | Battery function is unknown         |
 | <a id='MAV_BATTERY_FUNCTION_ALL'></a>1 | [MAV_BATTERY_FUNCTION_ALL](#MAV_BATTERY_FUNCTION_ALL)               | Battery supports all flight systems |
@@ -4543,7 +4543,7 @@ Enumeration of battery functions
 
 Enumeration for battery charge states.
 
-| Value                        | Name                                                                          | Description                                                                                                                                                                     |
+| 值                            | Name                                                                          | 描述                                                                                                                                                                              |
 | ---------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_BATTERY_CHARGE_STATE_UNDEFINED'></a>0 | [MAV_BATTERY_CHARGE_STATE_UNDEFINED](#MAV_BATTERY_CHARGE_STATE_UNDEFINED) | Low battery state is not provided                                                                                                                                               |
 | <a id='MAV_BATTERY_CHARGE_STATE_OK'></a>1 | [MAV_BATTERY_CHARGE_STATE_OK](#MAV_BATTERY_CHARGE_STATE_OK)               | Battery is not in low state. Normal operation.                                                                                                                                  |
@@ -4558,7 +4558,7 @@ Enumeration for battery charge states.
 
 Battery mode. Note, the normal operation mode (i.e. when flying) should be reported as [MAV_BATTERY_MODE_UNKNOWN](#MAV_BATTERY_MODE_UNKNOWN) to allow message trimming in normal flight.
 
-| Value                        | Name                                                                        | Description                                                                                                   |
+| 值                            | Name                                                                        | 描述                                                                                                            |
 | ---------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_BATTERY_MODE_UNKNOWN'></a>0 | [MAV_BATTERY_MODE_UNKNOWN](#MAV_BATTERY_MODE_UNKNOWN)                     | Battery mode not supported/unknown battery mode/normal operation.                                             |
 | <a id='MAV_BATTERY_MODE_AUTO_DISCHARGING'></a>1 | [MAV_BATTERY_MODE_AUTO_DISCHARGING](#MAV_BATTERY_MODE_AUTO_DISCHARGING) | Battery is auto discharging (towards storage level).                                                          |
@@ -4568,7 +4568,7 @@ Battery mode. Note, the normal operation mode (i.e. when flying) should be repor
 
 (Bitmask) Smart battery supply status/fault flags (bitmask) for health indication. The battery must also report either [MAV_BATTERY_CHARGE_STATE_FAILED](#MAV_BATTERY_CHARGE_STATE_FAILED) or [MAV_BATTERY_CHARGE_STATE_UNHEALTHY](#MAV_BATTERY_CHARGE_STATE_UNHEALTHY) if any of these are set.
 
-| Value                          | Name                                                                                                  | Description                                                                                                                                               |
+| 值                              | Name                                                                                                  | 描述                                                                                                                                                        |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_BATTERY_FAULT_DEEP_DISCHARGE'></a>1   | [MAV_BATTERY_FAULT_DEEP_DISCHARGE](#MAV_BATTERY_FAULT_DEEP_DISCHARGE)                             | Battery has deep discharged.                                                                                                                              |
 | <a id='MAV_BATTERY_FAULT_SPIKES'></a>2   | [MAV_BATTERY_FAULT_SPIKES](#MAV_BATTERY_FAULT_SPIKES)                                               | Voltage spikes.                                                                                                                                           |
@@ -4584,7 +4584,7 @@ Battery mode. Note, the normal operation mode (i.e. when flying) should be repor
 
 Fuel types for use in [FUEL_TYPE](#FUEL_TYPE). Fuel types specify the units for the maximum, available and consumed fuel, and for the flow rates.
 
-| Value                        | Name                                              | Description                                                                                            |
+| 值                            | Name                                              | 描述                                                                                                     |
 | ---------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | <a id='MAV_FUEL_TYPE_UNKNOWN'></a>0 | [MAV_FUEL_TYPE_UNKNOWN](#MAV_FUEL_TYPE_UNKNOWN) | Not specified. Fuel levels are normalized (i.e. maximum is 1, and other levels are relative to 1).     |
 | <a id='MAV_FUEL_TYPE_LIQUID'></a>1 | [MAV_FUEL_TYPE_LIQUID](#MAV_FUEL_TYPE_LIQUID)   | A generic liquid fuel. Fuel levels are in millilitres (ml). Fuel rates are in millilitres/second.      |
@@ -4594,7 +4594,7 @@ Fuel types for use in [FUEL_TYPE](#FUEL_TYPE). Fuel types specify the units for 
 
 (Bitmask) Flags to report status/failure cases for a power generator (used in [GENERATOR_STATUS](#GENERATOR_STATUS)). Note that FAULTS are conditions that cause the generator to fail. Warnings are conditions that require attention before the next use (they indicate the system is not operating properly).
 
-| Value                              | Name                                                                                                                            | Description                                                                                                                                                                            |
+| 值                                  | Name                                                                                                                            | 描述                                                                                                                                                                                     |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_GENERATOR_STATUS_FLAG_OFF'></a>1       | [MAV_GENERATOR_STATUS_FLAG_OFF](#MAV_GENERATOR_STATUS_FLAG_OFF)                                                             | Generator is off.                                                                                                                                                                      |
 | <a id='MAV_GENERATOR_STATUS_FLAG_READY'></a>2       | [MAV_GENERATOR_STATUS_FLAG_READY](#MAV_GENERATOR_STATUS_FLAG_READY)                                                         | Generator is ready to start generating power.                                                                                                                                          |
@@ -4624,7 +4624,7 @@ Fuel types for use in [FUEL_TYPE](#FUEL_TYPE). Fuel types specify the units for 
 
 Enumeration of VTOL states
 
-| Value                        | Name                                                                    | Description                                          |
+| 值                            | Name                                                                    | 描述                                                   |
 | ---------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------- |
 | <a id='MAV_VTOL_STATE_UNDEFINED'></a>0 | [MAV_VTOL_STATE_UNDEFINED](#MAV_VTOL_STATE_UNDEFINED)                 | MAV is not configured as VTOL                        |
 | <a id='MAV_VTOL_STATE_TRANSITION_TO_FW'></a>1 | [MAV_VTOL_STATE_TRANSITION_TO_FW](#MAV_VTOL_STATE_TRANSITION_TO_FW) | VTOL is in transition from multicopter to fixed-wing |
@@ -4636,7 +4636,7 @@ Enumeration of VTOL states
 
 Enumeration of landed detector states
 
-| Value                        | Name                                                          | Description                 |
+| 值                            | Name                                                          | 描述                          |
 | ---------------------------- | ------------------------------------------------------------- | --------------------------- |
 | <a id='MAV_LANDED_STATE_UNDEFINED'></a>0 | [MAV_LANDED_STATE_UNDEFINED](#MAV_LANDED_STATE_UNDEFINED)   | MAV landed state is unknown |
 | <a id='MAV_LANDED_STATE_ON_GROUND'></a>1 | [MAV_LANDED_STATE_ON_GROUND](#MAV_LANDED_STATE_ON_GROUND) | MAV is landed (on ground)   |
@@ -4648,7 +4648,7 @@ Enumeration of landed detector states
 
 Enumeration of the ADSB altimeter types
 
-| Value                        | Name                                                                    | Description                                              |
+| 值                            | Name                                                                    | 描述                                                       |
 | ---------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------- |
 | <a id='ADSB_ALTITUDE_TYPE_PRESSURE_QNH'></a>0 | [ADSB_ALTITUDE_TYPE_PRESSURE_QNH](#ADSB_ALTITUDE_TYPE_PRESSURE_QNH) | Altitude reported from a Baro source using QNH reference |
 | <a id='ADSB_ALTITUDE_TYPE_GEOMETRIC'></a>1 | [ADSB_ALTITUDE_TYPE_GEOMETRIC](#ADSB_ALTITUDE_TYPE_GEOMETRIC)         | Altitude reported from a GNSS source                     |
@@ -4657,51 +4657,51 @@ Enumeration of the ADSB altimeter types
 
 ADSB classification for the type of vehicle emitting the transponder signal
 
-| Value                         | Name                                                                            | Description |
-| ----------------------------- | ------------------------------------------------------------------------------- | ----------- |
-| <a id='ADSB_EMITTER_TYPE_NO_INFO'></a>0  | [ADSB_EMITTER_TYPE_NO_INFO](#ADSB_EMITTER_TYPE_NO_INFO)                     |             |
-| <a id='ADSB_EMITTER_TYPE_LIGHT'></a>1  | [ADSB_EMITTER_TYPE_LIGHT](#ADSB_EMITTER_TYPE_LIGHT)                           |             |
-| <a id='ADSB_EMITTER_TYPE_SMALL'></a>2  | [ADSB_EMITTER_TYPE_SMALL](#ADSB_EMITTER_TYPE_SMALL)                           |             |
-| <a id='ADSB_EMITTER_TYPE_LARGE'></a>3  | [ADSB_EMITTER_TYPE_LARGE](#ADSB_EMITTER_TYPE_LARGE)                           |             |
-| <a id='ADSB_EMITTER_TYPE_HIGH_VORTEX_LARGE'></a>4  | [ADSB_EMITTER_TYPE_HIGH_VORTEX_LARGE](#ADSB_EMITTER_TYPE_HIGH_VORTEX_LARGE) |             |
-| <a id='ADSB_EMITTER_TYPE_HEAVY'></a>5  | [ADSB_EMITTER_TYPE_HEAVY](#ADSB_EMITTER_TYPE_HEAVY)                           |             |
-| <a id='ADSB_EMITTER_TYPE_HIGHLY_MANUV'></a>6  | [ADSB_EMITTER_TYPE_HIGHLY_MANUV](#ADSB_EMITTER_TYPE_HIGHLY_MANUV)           |             |
-| <a id='ADSB_EMITTER_TYPE_ROTOCRAFT'></a>7  | [ADSB_EMITTER_TYPE_ROTOCRAFT](#ADSB_EMITTER_TYPE_ROTOCRAFT)                   |             |
-| <a id='ADSB_EMITTER_TYPE_UNASSIGNED'></a>8  | [ADSB_EMITTER_TYPE_UNASSIGNED](#ADSB_EMITTER_TYPE_UNASSIGNED)                 |             |
-| <a id='ADSB_EMITTER_TYPE_GLIDER'></a>9  | [ADSB_EMITTER_TYPE_GLIDER](#ADSB_EMITTER_TYPE_GLIDER)                         |             |
-| <a id='ADSB_EMITTER_TYPE_LIGHTER_AIR'></a>10 | [ADSB_EMITTER_TYPE_LIGHTER_AIR](#ADSB_EMITTER_TYPE_LIGHTER_AIR)             |             |
-| <a id='ADSB_EMITTER_TYPE_PARACHUTE'></a>11 | [ADSB_EMITTER_TYPE_PARACHUTE](#ADSB_EMITTER_TYPE_PARACHUTE)                   |             |
-| <a id='ADSB_EMITTER_TYPE_ULTRA_LIGHT'></a>12 | [ADSB_EMITTER_TYPE_ULTRA_LIGHT](#ADSB_EMITTER_TYPE_ULTRA_LIGHT)             |             |
-| <a id='ADSB_EMITTER_TYPE_UNASSIGNED2'></a>13 | [ADSB_EMITTER_TYPE_UNASSIGNED2](#ADSB_EMITTER_TYPE_UNASSIGNED2)               |             |
-| <a id='ADSB_EMITTER_TYPE_UAV'></a>14 | [ADSB_EMITTER_TYPE_UAV](#ADSB_EMITTER_TYPE_UAV)                               |             |
-| <a id='ADSB_EMITTER_TYPE_SPACE'></a>15 | [ADSB_EMITTER_TYPE_SPACE](#ADSB_EMITTER_TYPE_SPACE)                           |             |
-| <a id='ADSB_EMITTER_TYPE_UNASSGINED3'></a>16 | [ADSB_EMITTER_TYPE_UNASSGINED3](#ADSB_EMITTER_TYPE_UNASSGINED3)               |             |
-| <a id='ADSB_EMITTER_TYPE_EMERGENCY_SURFACE'></a>17 | [ADSB_EMITTER_TYPE_EMERGENCY_SURFACE](#ADSB_EMITTER_TYPE_EMERGENCY_SURFACE) |             |
-| <a id='ADSB_EMITTER_TYPE_SERVICE_SURFACE'></a>18 | [ADSB_EMITTER_TYPE_SERVICE_SURFACE](#ADSB_EMITTER_TYPE_SERVICE_SURFACE)     |             |
-| <a id='ADSB_EMITTER_TYPE_POINT_OBSTACLE'></a>19 | [ADSB_EMITTER_TYPE_POINT_OBSTACLE](#ADSB_EMITTER_TYPE_POINT_OBSTACLE)       |             |
+| 值                             | Name                                                                            | 描述 |
+| ----------------------------- | ------------------------------------------------------------------------------- | -- |
+| <a id='ADSB_EMITTER_TYPE_NO_INFO'></a>0  | [ADSB_EMITTER_TYPE_NO_INFO](#ADSB_EMITTER_TYPE_NO_INFO)                     |    |
+| <a id='ADSB_EMITTER_TYPE_LIGHT'></a>1  | [ADSB_EMITTER_TYPE_LIGHT](#ADSB_EMITTER_TYPE_LIGHT)                           |    |
+| <a id='ADSB_EMITTER_TYPE_SMALL'></a>2  | [ADSB_EMITTER_TYPE_SMALL](#ADSB_EMITTER_TYPE_SMALL)                           |    |
+| <a id='ADSB_EMITTER_TYPE_LARGE'></a>3  | [ADSB_EMITTER_TYPE_LARGE](#ADSB_EMITTER_TYPE_LARGE)                           |    |
+| <a id='ADSB_EMITTER_TYPE_HIGH_VORTEX_LARGE'></a>4  | [ADSB_EMITTER_TYPE_HIGH_VORTEX_LARGE](#ADSB_EMITTER_TYPE_HIGH_VORTEX_LARGE) |    |
+| <a id='ADSB_EMITTER_TYPE_HEAVY'></a>5  | [ADSB_EMITTER_TYPE_HEAVY](#ADSB_EMITTER_TYPE_HEAVY)                           |    |
+| <a id='ADSB_EMITTER_TYPE_HIGHLY_MANUV'></a>6  | [ADSB_EMITTER_TYPE_HIGHLY_MANUV](#ADSB_EMITTER_TYPE_HIGHLY_MANUV)           |    |
+| <a id='ADSB_EMITTER_TYPE_ROTOCRAFT'></a>7  | [ADSB_EMITTER_TYPE_ROTOCRAFT](#ADSB_EMITTER_TYPE_ROTOCRAFT)                   |    |
+| <a id='ADSB_EMITTER_TYPE_UNASSIGNED'></a>8  | [ADSB_EMITTER_TYPE_UNASSIGNED](#ADSB_EMITTER_TYPE_UNASSIGNED)                 |    |
+| <a id='ADSB_EMITTER_TYPE_GLIDER'></a>9  | [ADSB_EMITTER_TYPE_GLIDER](#ADSB_EMITTER_TYPE_GLIDER)                         |    |
+| <a id='ADSB_EMITTER_TYPE_LIGHTER_AIR'></a>10 | [ADSB_EMITTER_TYPE_LIGHTER_AIR](#ADSB_EMITTER_TYPE_LIGHTER_AIR)             |    |
+| <a id='ADSB_EMITTER_TYPE_PARACHUTE'></a>11 | [ADSB_EMITTER_TYPE_PARACHUTE](#ADSB_EMITTER_TYPE_PARACHUTE)                   |    |
+| <a id='ADSB_EMITTER_TYPE_ULTRA_LIGHT'></a>12 | [ADSB_EMITTER_TYPE_ULTRA_LIGHT](#ADSB_EMITTER_TYPE_ULTRA_LIGHT)             |    |
+| <a id='ADSB_EMITTER_TYPE_UNASSIGNED2'></a>13 | [ADSB_EMITTER_TYPE_UNASSIGNED2](#ADSB_EMITTER_TYPE_UNASSIGNED2)               |    |
+| <a id='ADSB_EMITTER_TYPE_UAV'></a>14 | [ADSB_EMITTER_TYPE_UAV](#ADSB_EMITTER_TYPE_UAV)                               |    |
+| <a id='ADSB_EMITTER_TYPE_SPACE'></a>15 | [ADSB_EMITTER_TYPE_SPACE](#ADSB_EMITTER_TYPE_SPACE)                           |    |
+| <a id='ADSB_EMITTER_TYPE_UNASSGINED3'></a>16 | [ADSB_EMITTER_TYPE_UNASSGINED3](#ADSB_EMITTER_TYPE_UNASSGINED3)               |    |
+| <a id='ADSB_EMITTER_TYPE_EMERGENCY_SURFACE'></a>17 | [ADSB_EMITTER_TYPE_EMERGENCY_SURFACE](#ADSB_EMITTER_TYPE_EMERGENCY_SURFACE) |    |
+| <a id='ADSB_EMITTER_TYPE_SERVICE_SURFACE'></a>18 | [ADSB_EMITTER_TYPE_SERVICE_SURFACE](#ADSB_EMITTER_TYPE_SERVICE_SURFACE)     |    |
+| <a id='ADSB_EMITTER_TYPE_POINT_OBSTACLE'></a>19 | [ADSB_EMITTER_TYPE_POINT_OBSTACLE](#ADSB_EMITTER_TYPE_POINT_OBSTACLE)       |    |
 
 ### ADSB_FLAGS {#ADSB_FLAGS}
 
 (Bitmask) These flags indicate status such as data validity of each data source. Set = data valid
 
-| Value                            | Name                                                                          | Description |
-| -------------------------------- | ----------------------------------------------------------------------------- | ----------- |
-| <a id='ADSB_FLAGS_VALID_COORDS'></a>1     | [ADSB_FLAGS_VALID_COORDS](#ADSB_FLAGS_VALID_COORDS)                         |             |
-| <a id='ADSB_FLAGS_VALID_ALTITUDE'></a>2     | [ADSB_FLAGS_VALID_ALTITUDE](#ADSB_FLAGS_VALID_ALTITUDE)                     |             |
-| <a id='ADSB_FLAGS_VALID_HEADING'></a>4     | [ADSB_FLAGS_VALID_HEADING](#ADSB_FLAGS_VALID_HEADING)                       |             |
-| <a id='ADSB_FLAGS_VALID_VELOCITY'></a>8     | [ADSB_FLAGS_VALID_VELOCITY](#ADSB_FLAGS_VALID_VELOCITY)                     |             |
-| <a id='ADSB_FLAGS_VALID_CALLSIGN'></a>16    | [ADSB_FLAGS_VALID_CALLSIGN](#ADSB_FLAGS_VALID_CALLSIGN)                     |             |
-| <a id='ADSB_FLAGS_VALID_SQUAWK'></a>32    | [ADSB_FLAGS_VALID_SQUAWK](#ADSB_FLAGS_VALID_SQUAWK)                         |             |
-| <a id='ADSB_FLAGS_SIMULATED'></a>64    | [ADSB_FLAGS_SIMULATED](#ADSB_FLAGS_SIMULATED)                               |             |
-| <a id='ADSB_FLAGS_VERTICAL_VELOCITY_VALID'></a>128   | [ADSB_FLAGS_VERTICAL_VELOCITY_VALID](#ADSB_FLAGS_VERTICAL_VELOCITY_VALID) |             |
-| <a id='ADSB_FLAGS_BARO_VALID'></a>256   | [ADSB_FLAGS_BARO_VALID](#ADSB_FLAGS_BARO_VALID)                             |             |
-| <a id='ADSB_FLAGS_SOURCE_UAT'></a>32768 | [ADSB_FLAGS_SOURCE_UAT](#ADSB_FLAGS_SOURCE_UAT)                             |             |
+| 值                                | Name                                                                          | 描述 |
+| -------------------------------- | ----------------------------------------------------------------------------- | -- |
+| <a id='ADSB_FLAGS_VALID_COORDS'></a>1     | [ADSB_FLAGS_VALID_COORDS](#ADSB_FLAGS_VALID_COORDS)                         |    |
+| <a id='ADSB_FLAGS_VALID_ALTITUDE'></a>2     | [ADSB_FLAGS_VALID_ALTITUDE](#ADSB_FLAGS_VALID_ALTITUDE)                     |    |
+| <a id='ADSB_FLAGS_VALID_HEADING'></a>4     | [ADSB_FLAGS_VALID_HEADING](#ADSB_FLAGS_VALID_HEADING)                       |    |
+| <a id='ADSB_FLAGS_VALID_VELOCITY'></a>8     | [ADSB_FLAGS_VALID_VELOCITY](#ADSB_FLAGS_VALID_VELOCITY)                     |    |
+| <a id='ADSB_FLAGS_VALID_CALLSIGN'></a>16    | [ADSB_FLAGS_VALID_CALLSIGN](#ADSB_FLAGS_VALID_CALLSIGN)                     |    |
+| <a id='ADSB_FLAGS_VALID_SQUAWK'></a>32    | [ADSB_FLAGS_VALID_SQUAWK](#ADSB_FLAGS_VALID_SQUAWK)                         |    |
+| <a id='ADSB_FLAGS_SIMULATED'></a>64    | [ADSB_FLAGS_SIMULATED](#ADSB_FLAGS_SIMULATED)                               |    |
+| <a id='ADSB_FLAGS_VERTICAL_VELOCITY_VALID'></a>128   | [ADSB_FLAGS_VERTICAL_VELOCITY_VALID](#ADSB_FLAGS_VERTICAL_VELOCITY_VALID) |    |
+| <a id='ADSB_FLAGS_BARO_VALID'></a>256   | [ADSB_FLAGS_BARO_VALID](#ADSB_FLAGS_BARO_VALID)                             |    |
+| <a id='ADSB_FLAGS_SOURCE_UAT'></a>32768 | [ADSB_FLAGS_SOURCE_UAT](#ADSB_FLAGS_SOURCE_UAT)                             |    |
 
 ### MAV_DO_REPOSITION_FLAGS {#MAV_DO_REPOSITION_FLAGS}
 
 (Bitmask) Bitmap of options for the [MAV_CMD_DO_REPOSITION](#MAV_CMD_DO_REPOSITION)
 
-| Value                        | Name                                                                            | Description                                                                                               |
+| 值                            | Name                                                                            | 描述                                                                                                        |
 | ---------------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_DO_REPOSITION_FLAGS_CHANGE_MODE'></a>1 | [MAV_DO_REPOSITION_FLAGS_CHANGE_MODE](#MAV_DO_REPOSITION_FLAGS_CHANGE_MODE) | The aircraft should immediately transition into guided. This should not be set for follow me applications |
 
@@ -4709,7 +4709,7 @@ ADSB classification for the type of vehicle emitting the transponder signal
 
 Speed setpoint types used in [MAV_CMD_DO_CHANGE_SPEED](#MAV_CMD_DO_CHANGE_SPEED)
 
-| Value                        | Name                                                    | Description   |
+| 值                            | Name                                                    | 描述            |
 | ---------------------------- | ------------------------------------------------------- | ------------- |
 | <a id='SPEED_TYPE_AIRSPEED'></a>0 | [SPEED_TYPE_AIRSPEED](#SPEED_TYPE_AIRSPEED)           | Airspeed      |
 | <a id='SPEED_TYPE_GROUNDSPEED'></a>1 | [SPEED_TYPE_GROUNDSPEED](#SPEED_TYPE_GROUNDSPEED)     | Groundspeed   |
@@ -4720,7 +4720,7 @@ Speed setpoint types used in [MAV_CMD_DO_CHANGE_SPEED](#MAV_CMD_DO_CHANGE_SPEED)
 
 (Bitmask) Flags in [ESTIMATOR_STATUS](#ESTIMATOR_STATUS) message
 
-| Value                           | Name                                                              | Description                                                                                                    |
+| 值                               | Name                                                              | 描述                                                                                                             |
 | ------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | <a id='ESTIMATOR_ATTITUDE'></a>1    | [ESTIMATOR_ATTITUDE](#ESTIMATOR_ATTITUDE)                         | True if the attitude estimate is good                                                                          |
 | <a id='ESTIMATOR_VELOCITY_HORIZ'></a>2    | [ESTIMATOR_VELOCITY_HORIZ](#ESTIMATOR_VELOCITY_HORIZ)           | True if the horizontal velocity estimate is good                                                               |
@@ -4739,7 +4739,7 @@ Speed setpoint types used in [MAV_CMD_DO_CHANGE_SPEED](#MAV_CMD_DO_CHANGE_SPEED)
 
 Sequence that motors are tested when using [MAV_CMD_DO_MOTOR_TEST](#MAV_CMD_DO_MOTOR_TEST).
 
-| Value                        | Name                                                      | Description                                                                           |
+| 值                            | Name                                                      | 描述                                                                                    |
 | ---------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | <a id='MOTOR_TEST_ORDER_DEFAULT'></a>0 | [MOTOR_TEST_ORDER_DEFAULT](#MOTOR_TEST_ORDER_DEFAULT)   | Default autopilot motor test method.                                                  |
 | <a id='MOTOR_TEST_ORDER_SEQUENCE'></a>1 | [MOTOR_TEST_ORDER_SEQUENCE](#MOTOR_TEST_ORDER_SEQUENCE) | Motor numbers are specified as their index in a predefined vehicle-specific sequence. |
@@ -4749,7 +4749,7 @@ Sequence that motors are tested when using [MAV_CMD_DO_MOTOR_TEST](#MAV_CMD_DO_M
 
 Defines how throttle value is represented in [MAV_CMD_DO_MOTOR_TEST](#MAV_CMD_DO_MOTOR_TEST).
 
-| Value                        | Name                                                          | Description                                                         |
+| 值                            | Name                                                          | 描述                                                                  |
 | ---------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------- |
 | <a id='MOTOR_TEST_THROTTLE_PERCENT'></a>0 | [MOTOR_TEST_THROTTLE_PERCENT](#MOTOR_TEST_THROTTLE_PERCENT) | Throttle as a percentage (0 ~ 100)                                  |
 | <a id='MOTOR_TEST_THROTTLE_PWM'></a>1 | [MOTOR_TEST_THROTTLE_PWM](#MOTOR_TEST_THROTTLE_PWM)         | Throttle as an absolute PWM value (normally in range of 1000~2000). |
@@ -4760,7 +4760,7 @@ Defines how throttle value is represented in [MAV_CMD_DO_MOTOR_TEST](#MAV_CMD_DO
 
 (Bitmask)
 
-| Value                          | Name                                                                                        | Description                                  |
+| 值                              | Name                                                                                        | 描述                                           |
 | ------------------------------ | ------------------------------------------------------------------------------------------- | -------------------------------------------- |
 | <a id='GPS_INPUT_IGNORE_FLAG_ALT'></a>1   | [GPS_INPUT_IGNORE_FLAG_ALT](#GPS_INPUT_IGNORE_FLAG_ALT)                                 | ignore altitude field                        |
 | <a id='GPS_INPUT_IGNORE_FLAG_HDOP'></a>2   | [GPS_INPUT_IGNORE_FLAG_HDOP](#GPS_INPUT_IGNORE_FLAG_HDOP)                               | ignore hdop field                            |
@@ -4775,7 +4775,7 @@ Defines how throttle value is represented in [MAV_CMD_DO_MOTOR_TEST](#MAV_CMD_DO
 
 Possible actions an aircraft can take to avoid a collision.
 
-| Value                        | Name                                                                                    | Description                                                       |
+| 值                            | Name                                                                                    | 描述                                                                |
 | ---------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | <a id='MAV_COLLISION_ACTION_NONE'></a>0 | [MAV_COLLISION_ACTION_NONE](#MAV_COLLISION_ACTION_NONE)                               | Ignore any potential collisions                                   |
 | <a id='MAV_COLLISION_ACTION_REPORT'></a>1 | [MAV_COLLISION_ACTION_REPORT](#MAV_COLLISION_ACTION_REPORT)                           | Report potential collision                                        |
@@ -4789,7 +4789,7 @@ Possible actions an aircraft can take to avoid a collision.
 
 Aircraft-rated danger from this threat.
 
-| Value                        | Name                                                                    | Description                                              |
+| 值                            | Name                                                                    | 描述                                                       |
 | ---------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------- |
 | <a id='MAV_COLLISION_THREAT_LEVEL_NONE'></a>0 | [MAV_COLLISION_THREAT_LEVEL_NONE](#MAV_COLLISION_THREAT_LEVEL_NONE) | Not a threat                                             |
 | <a id='MAV_COLLISION_THREAT_LEVEL_LOW'></a>1 | [MAV_COLLISION_THREAT_LEVEL_LOW](#MAV_COLLISION_THREAT_LEVEL_LOW)   | Craft is mildly concerned about this threat              |
@@ -4799,7 +4799,7 @@ Aircraft-rated danger from this threat.
 
 Source of information about this collision.
 
-| Value                        | Name                                                                                        | Description                                               |
+| 值                            | Name                                                                                        | 描述                                                        |
 | ---------------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | <a id='MAV_COLLISION_SRC_ADSB'></a>0 | [MAV_COLLISION_SRC_ADSB](#MAV_COLLISION_SRC_ADSB)                                         | ID field references [ADSB_VEHICLE](#ADSB_VEHICLE) packets |
 | <a id='MAV_COLLISION_SRC_MAVLINK_GPS_GLOBAL_INT'></a>1 | [MAV_COLLISION_SRC_MAVLINK_GPS_GLOBAL_INT](#MAV_COLLISION_SRC_MAVLINK_GPS_GLOBAL_INT) | ID field references MAVLink SRC ID                        |
@@ -4808,7 +4808,7 @@ Source of information about this collision.
 
 Type of GPS fix
 
-| Value                        | Name                                                  | Description                                    |
+| 值                            | Name                                                  | 描述                                             |
 | ---------------------------- | ----------------------------------------------------- | ---------------------------------------------- |
 | <a id='GPS_FIX_TYPE_NO_GPS'></a>0 | [GPS_FIX_TYPE_NO_GPS](#GPS_FIX_TYPE_NO_GPS)       | No GPS connected                               |
 | <a id='GPS_FIX_TYPE_NO_FIX'></a>1 | [GPS_FIX_TYPE_NO_FIX](#GPS_FIX_TYPE_NO_FIX)       | No position information, GPS is connected      |
@@ -4824,7 +4824,7 @@ Type of GPS fix
 
 RTK GPS baseline coordinate system, used for RTK corrections
 
-| Value                        | Name                                                                            | Description                                 |
+| 值                            | Name                                                                            | 描述                                          |
 | ---------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------- |
 | <a id='RTK_BASELINE_COORDINATE_SYSTEM_ECEF'></a>0 | [RTK_BASELINE_COORDINATE_SYSTEM_ECEF](#RTK_BASELINE_COORDINATE_SYSTEM_ECEF) | Earth-centered, Earth-fixed                 |
 | <a id='RTK_BASELINE_COORDINATE_SYSTEM_NED'></a>1 | [RTK_BASELINE_COORDINATE_SYSTEM_NED](#RTK_BASELINE_COORDINATE_SYSTEM_NED)   | RTK basestation centered, north, east, down |
@@ -4833,7 +4833,7 @@ RTK GPS baseline coordinate system, used for RTK corrections
 
 Type of landing target
 
-| Value                        | Name                                                                            | Description                                                                                       |
+| 值                            | Name                                                                            | 描述                                                                                                |
 | ---------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | <a id='LANDING_TARGET_TYPE_LIGHT_BEACON'></a>0 | [LANDING_TARGET_TYPE_LIGHT_BEACON](#LANDING_TARGET_TYPE_LIGHT_BEACON)       | Landing target signaled by light beacon (ex: IR-LOCK)                                             |
 | <a id='LANDING_TARGET_TYPE_RADIO_BEACON'></a>1 | [LANDING_TARGET_TYPE_RADIO_BEACON](#LANDING_TARGET_TYPE_RADIO_BEACON)       | Landing target signaled by radio beacon (ex: ILS, NDB)                                            |
@@ -4844,7 +4844,7 @@ Type of landing target
 
 Direction of VTOL transition
 
-| Value                        | Name                                                                                    | Description                                                                                                         |
+| 值                            | Name                                                                                    | 描述                                                                                                                  |
 | ---------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | <a id='VTOL_TRANSITION_HEADING_VEHICLE_DEFAULT'></a>0 | [VTOL_TRANSITION_HEADING_VEHICLE_DEFAULT](#VTOL_TRANSITION_HEADING_VEHICLE_DEFAULT) | Respect the heading configuration of the vehicle.                                                                   |
 | <a id='VTOL_TRANSITION_HEADING_NEXT_WAYPOINT'></a>1 | [VTOL_TRANSITION_HEADING_NEXT_WAYPOINT](#VTOL_TRANSITION_HEADING_NEXT_WAYPOINT)     | Use the heading pointing towards the next waypoint.                                                                 |
@@ -4856,7 +4856,7 @@ Direction of VTOL transition
 
 (Bitmask) Camera capability flags (Bitmap)
 
-| Value                           | Name                                                                                                          | Description                                                                                                                                                                                   |
+| 值                               | Name                                                                                                          | 描述                                                                                                                                                                                            |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='CAMERA_CAP_FLAGS_CAPTURE_VIDEO'></a>1    | [CAMERA_CAP_FLAGS_CAPTURE_VIDEO](#CAMERA_CAP_FLAGS_CAPTURE_VIDEO)                                         | Camera is able to record video                                                                                                                                                                |
 | <a id='CAMERA_CAP_FLAGS_CAPTURE_IMAGE'></a>2    | [CAMERA_CAP_FLAGS_CAPTURE_IMAGE](#CAMERA_CAP_FLAGS_CAPTURE_IMAGE)                                         | Camera is able to capture images                                                                                                                                                              |
@@ -4876,7 +4876,7 @@ Direction of VTOL transition
 
 (Bitmask) Stream status flags (Bitmap)
 
-| Value                        | Name                                                                                                      | Description                                                                                            |
+| 值                            | Name                                                                                                      | 描述                                                                                                     |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | <a id='VIDEO_STREAM_STATUS_FLAGS_RUNNING'></a>1 | [VIDEO_STREAM_STATUS_FLAGS_RUNNING](#VIDEO_STREAM_STATUS_FLAGS_RUNNING)                               | Stream is active (running)                                                                             |
 | <a id='VIDEO_STREAM_STATUS_FLAGS_THERMAL'></a>2 | [VIDEO_STREAM_STATUS_FLAGS_THERMAL](#VIDEO_STREAM_STATUS_FLAGS_THERMAL)                               | Stream is thermal imaging                                                                              |
@@ -4886,7 +4886,7 @@ Direction of VTOL transition
 
 Video stream types
 
-| Value                        | Name                                                          | Description                                   |
+| 值                            | Name                                                          | 描述                                            |
 | ---------------------------- | ------------------------------------------------------------- | --------------------------------------------- |
 | <a id='VIDEO_STREAM_TYPE_RTSP'></a>0 | [VIDEO_STREAM_TYPE_RTSP](#VIDEO_STREAM_TYPE_RTSP)           | Stream is RTSP                                |
 | <a id='VIDEO_STREAM_TYPE_RTPUDP'></a>1 | [VIDEO_STREAM_TYPE_RTPUDP](#VIDEO_STREAM_TYPE_RTPUDP)       | Stream is RTP UDP (URI gives the port number) |
@@ -4897,7 +4897,7 @@ Video stream types
 
 Video stream encodings
 
-| Value                        | Name                                                              | Description                |
+| 值                            | Name                                                              | 描述                         |
 | ---------------------------- | ----------------------------------------------------------------- | -------------------------- |
 | <a id='VIDEO_STREAM_ENCODING_UNKNOWN'></a>0 | [VIDEO_STREAM_ENCODING_UNKNOWN](#VIDEO_STREAM_ENCODING_UNKNOWN) | Stream encoding is unknown |
 | <a id='VIDEO_STREAM_ENCODING_H264'></a>1 | [VIDEO_STREAM_ENCODING_H264](#VIDEO_STREAM_ENCODING_H264)       | Stream encoding is H.264   |
@@ -4907,7 +4907,7 @@ Video stream encodings
 
 Camera tracking status flags
 
-| Value                        | Name                                                                            | Description                    |
+| 值                            | Name                                                                            | 描述                             |
 | ---------------------------- | ------------------------------------------------------------------------------- | ------------------------------ |
 | <a id='CAMERA_TRACKING_STATUS_FLAGS_IDLE'></a>0 | [CAMERA_TRACKING_STATUS_FLAGS_IDLE](#CAMERA_TRACKING_STATUS_FLAGS_IDLE)     | Camera is not tracking         |
 | <a id='CAMERA_TRACKING_STATUS_FLAGS_ACTIVE'></a>1 | [CAMERA_TRACKING_STATUS_FLAGS_ACTIVE](#CAMERA_TRACKING_STATUS_FLAGS_ACTIVE) | Camera is tracking             |
@@ -4917,7 +4917,7 @@ Camera tracking status flags
 
 Camera tracking modes
 
-| Value                        | Name                                                                | Description           |
+| 值                            | Name                                                                | 描述                    |
 | ---------------------------- | ------------------------------------------------------------------- | --------------------- |
 | <a id='CAMERA_TRACKING_MODE_NONE'></a>0 | [CAMERA_TRACKING_MODE_NONE](#CAMERA_TRACKING_MODE_NONE)           | Not tracking          |
 | <a id='CAMERA_TRACKING_MODE_POINT'></a>1 | [CAMERA_TRACKING_MODE_POINT](#CAMERA_TRACKING_MODE_POINT)         | Target is a point     |
@@ -4927,7 +4927,7 @@ Camera tracking modes
 
 (Bitmask) Camera tracking target data (shows where tracked target is within image)
 
-| Value                        | Name                                                                                | Description                                            |
+| 值                            | Name                                                                                | 描述                                                     |
 | ---------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------ |
 | <a id='CAMERA_TRACKING_TARGET_DATA_NONE'></a>0 | [CAMERA_TRACKING_TARGET_DATA_NONE](#CAMERA_TRACKING_TARGET_DATA_NONE)           | No target data                                         |
 | <a id='CAMERA_TRACKING_TARGET_DATA_EMBEDDED'></a>1 | [CAMERA_TRACKING_TARGET_DATA_EMBEDDED](#CAMERA_TRACKING_TARGET_DATA_EMBEDDED)   | Target data embedded in image data (proprietary)       |
@@ -4938,7 +4938,7 @@ Camera tracking modes
 
 Zoom types for [MAV_CMD_SET_CAMERA_ZOOM](#MAV_CMD_SET_CAMERA_ZOOM)
 
-| Value                        | Name                                                    | Description                                                                                                                                                                                                                                                                         |
+| 值                            | Name                                                    | 描述                                                                                                                                                                                                                                                                                  |
 | ---------------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='ZOOM_TYPE_STEP'></a>0 | [ZOOM_TYPE_STEP](#ZOOM_TYPE_STEP)                     | Zoom one step increment (-1 for wide, 1 for tele)                                                                                                                                                                                                                                   |
 | <a id='ZOOM_TYPE_CONTINUOUS'></a>1 | [ZOOM_TYPE_CONTINUOUS](#ZOOM_TYPE_CONTINUOUS)         | Continuous zoom up/down until stopped (-1 for wide, 1 for tele, 0 to stop zooming)                                                                                                                                                                                                  |
@@ -4950,7 +4950,7 @@ Zoom types for [MAV_CMD_SET_CAMERA_ZOOM](#MAV_CMD_SET_CAMERA_ZOOM)
 
 Focus types for [MAV_CMD_SET_CAMERA_FOCUS](#MAV_CMD_SET_CAMERA_FOCUS)
 
-| Value                        | Name                                                        | Description                                                                                                                                                                                                                                            |
+| 值                            | Name                                                        | 描述                                                                                                                                                                                                                                                     |
 | ---------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id='FOCUS_TYPE_STEP'></a>0 | [FOCUS_TYPE_STEP](#FOCUS_TYPE_STEP)                       | Focus one step increment (-1 for focusing in, 1 for focusing out towards infinity).                                                                                                                                                                    |
 | <a id='FOCUS_TYPE_CONTINUOUS'></a>1 | [FOCUS_TYPE_CONTINUOUS](#FOCUS_TYPE_CONTINUOUS)           | Continuous focus up/down until stopped (-1 for focusing in, 1 for focusing out towards infinity, 0 to stop focusing)                                                                                                                                   |
@@ -4964,7 +4964,7 @@ Focus types for [MAV_CMD_SET_CAMERA_FOCUS](#MAV_CMD_SET_CAMERA_FOCUS)
 
 Camera sources for [MAV_CMD_SET_CAMERA_SOURCE](#MAV_CMD_SET_CAMERA_SOURCE)
 
-| Value                        | Name                                              | Description            |
+| 值                            | Name                                              | 描述                     |
 | ---------------------------- | ------------------------------------------------- | ---------------------- |
 | <a id='CAMERA_SOURCE_DEFAULT'></a>0 | [CAMERA_SOURCE_DEFAULT](#CAMERA_SOURCE_DEFAULT) | Default camera source. |
 | <a id='CAMERA_SOURCE_RGB'></a>1 | [CAMERA_SOURCE_RGB](#CAMERA_SOURCE_RGB)         | RGB camera source.     |
@@ -4975,7 +4975,7 @@ Camera sources for [MAV_CMD_SET_CAMERA_SOURCE](#MAV_CMD_SET_CAMERA_SOURCE)
 
 Result from [PARAM_EXT_SET](#PARAM_EXT_SET) message (or a [PARAM_SET](#PARAM_SET) within a transaction).
 
-| Value                        | Name                                                          | Description                                                                                                                                                                                                                                                                                                                                                               |
+| 值                            | Name                                                          | 描述                                                                                                                                                                                                                                                                                                                                                                        |
 | ---------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='PARAM_ACK_ACCEPTED'></a>0 | [PARAM_ACK_ACCEPTED](#PARAM_ACK_ACCEPTED)                   | Parameter value ACCEPTED and SET                                                                                                                                                                                                                                                                                                                                          |
 | <a id='PARAM_ACK_VALUE_UNSUPPORTED'></a>1 | [PARAM_ACK_VALUE_UNSUPPORTED](#PARAM_ACK_VALUE_UNSUPPORTED) | Parameter value UNKNOWN/UNSUPPORTED                                                                                                                                                                                                                                                                                                                                       |
@@ -4986,7 +4986,7 @@ Result from [PARAM_EXT_SET](#PARAM_EXT_SET) message (or a [PARAM_SET](#PARAM_SET
 
 Camera Modes.
 
-| Value                        | Name                                                    | Description                                                                                                  |
+| 值                            | Name                                                    | 描述                                                                                                           |
 | ---------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | <a id='CAMERA_MODE_IMAGE'></a>0 | [CAMERA_MODE_IMAGE](#CAMERA_MODE_IMAGE)               | Camera is in image/photo capture mode.                                                                       |
 | <a id='CAMERA_MODE_VIDEO'></a>1 | [CAMERA_MODE_VIDEO](#CAMERA_MODE_VIDEO)               | Camera is in video capture mode.                                                                             |
@@ -4994,7 +4994,7 @@ Camera Modes.
 
 ### MAV_ARM_AUTH_DENIED_REASON {#MAV_ARM_AUTH_DENIED_REASON}
 
-| Value                        | Name                                                                                              | Description                                                                                                                      |
+| 值                            | Name                                                                                              | 描述                                                                                                                               |
 | ---------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_ARM_AUTH_DENIED_REASON_GENERIC'></a>0 | [MAV_ARM_AUTH_DENIED_REASON_GENERIC](#MAV_ARM_AUTH_DENIED_REASON_GENERIC)                     | Not a specific reason                                                                                                            |
 | <a id='MAV_ARM_AUTH_DENIED_REASON_NONE'></a>1 | [MAV_ARM_AUTH_DENIED_REASON_NONE](#MAV_ARM_AUTH_DENIED_REASON_NONE)                           | Authorizer will send the error as string to GCS                                                                                  |
@@ -5007,16 +5007,16 @@ Camera Modes.
 
 RC type. Used in [MAV_CMD_START_RX_PAIR](#MAV_CMD_START_RX_PAIR).
 
-| Value                        | Name                                    | Description |
-| ---------------------------- | --------------------------------------- | ----------- |
-| <a id='RC_TYPE_SPEKTRUM'></a>0 | [RC_TYPE_SPEKTRUM](#RC_TYPE_SPEKTRUM) | Spektrum    |
-| <a id='RC_TYPE_CRSF'></a>1 | [RC_TYPE_CRSF](#RC_TYPE_CRSF)         | CRSF        |
+| 值                            | Name                                    | 描述       |
+| ---------------------------- | --------------------------------------- | -------- |
+| <a id='RC_TYPE_SPEKTRUM'></a>0 | [RC_TYPE_SPEKTRUM](#RC_TYPE_SPEKTRUM) | Spektrum |
+| <a id='RC_TYPE_CRSF'></a>1 | [RC_TYPE_CRSF](#RC_TYPE_CRSF)         | CRSF     |
 
 ### RC_SUB_TYPE {#RC_SUB_TYPE}
 
 RC sub-type of types defined in [RC_TYPE](#RC_TYPE). Used in [MAV_CMD_START_RX_PAIR](#MAV_CMD_START_RX_PAIR). Ignored if value does not correspond to the set [RC_TYPE](#RC_TYPE).
 
-| Value                        | Name                                                          | Description    |
+| 值                            | Name                                                          | 描述             |
 | ---------------------------- | ------------------------------------------------------------- | -------------- |
 | <a id='RC_SUB_TYPE_SPEKTRUM_DSM2'></a>0 | [RC_SUB_TYPE_SPEKTRUM_DSM2](#RC_SUB_TYPE_SPEKTRUM_DSM2)   | Spektrum DSM2  |
 | <a id='RC_SUB_TYPE_SPEKTRUM_DSMX'></a>1 | [RC_SUB_TYPE_SPEKTRUM_DSMX](#RC_SUB_TYPE_SPEKTRUM_DSMX)   | Spektrum DSMX  |
@@ -5026,7 +5026,7 @@ RC sub-type of types defined in [RC_TYPE](#RC_TYPE). Used in [MAV_CMD_START_RX_P
 
 (Bitmask) Bitmap to indicate which dimensions should be ignored by the vehicle: a value of 0b0000000000000000 or 0b0000001000000000 indicates that none of the setpoint dimensions should be ignored. If bit 9 is set the floats afx afy afz should be interpreted as force instead of acceleration.
 
-| Value                           | Name                                                                                      | Description                       |
+| 值                               | Name                                                                                      | 描述                                |
 | ------------------------------- | ----------------------------------------------------------------------------------------- | --------------------------------- |
 | <a id='POSITION_TARGET_TYPEMASK_X_IGNORE'></a>1    | [POSITION_TARGET_TYPEMASK_X_IGNORE](#POSITION_TARGET_TYPEMASK_X_IGNORE)               | Ignore position x                 |
 | <a id='POSITION_TARGET_TYPEMASK_Y_IGNORE'></a>2    | [POSITION_TARGET_TYPEMASK_Y_IGNORE](#POSITION_TARGET_TYPEMASK_Y_IGNORE)               | Ignore position y                 |
@@ -5045,7 +5045,7 @@ RC sub-type of types defined in [RC_TYPE](#RC_TYPE). Used in [MAV_CMD_START_RX_P
 
 (Bitmask) Bitmap to indicate which dimensions should be ignored by the vehicle: a value of 0b00000000 indicates that none of the setpoint dimensions should be ignored.
 
-| Value                          | Name                                                                                                      | Description                                     |
+| 值                              | Name                                                                                                      | 描述                                              |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
 | <a id='ATTITUDE_TARGET_TYPEMASK_BODY_ROLL_RATE_IGNORE'></a>1   | [ATTITUDE_TARGET_TYPEMASK_BODY_ROLL_RATE_IGNORE](#ATTITUDE_TARGET_TYPEMASK_BODY_ROLL_RATE_IGNORE)   | Ignore body roll rate                           |
 | <a id='ATTITUDE_TARGET_TYPEMASK_BODY_PITCH_RATE_IGNORE'></a>2   | [ATTITUDE_TARGET_TYPEMASK_BODY_PITCH_RATE_IGNORE](#ATTITUDE_TARGET_TYPEMASK_BODY_PITCH_RATE_IGNORE) | Ignore body pitch rate                          |
@@ -5058,7 +5058,7 @@ RC sub-type of types defined in [RC_TYPE](#RC_TYPE). Used in [MAV_CMD_START_RX_P
 
 Airborne status of UAS.
 
-| Value                         | Name                                                        | Description                           |
+| 值                             | Name                                                        | 描述                                    |
 | ----------------------------- | ----------------------------------------------------------- | ------------------------------------- |
 | <a id='UTM_FLIGHT_STATE_UNKNOWN'></a>1  | [UTM_FLIGHT_STATE_UNKNOWN](#UTM_FLIGHT_STATE_UNKNOWN)     | The flight state can't be determined. |
 | <a id='UTM_FLIGHT_STATE_GROUND'></a>2  | [UTM_FLIGHT_STATE_GROUND](#UTM_FLIGHT_STATE_GROUND)       | UAS on ground.                        |
@@ -5070,7 +5070,7 @@ Airborne status of UAS.
 
 (Bitmask) Flags for the global position report.
 
-| Value                          | Name                                                                                                        | Description                                                      |
+| 值                              | Name                                                                                                        | 描述                                                               |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | <a id='UTM_DATA_AVAIL_FLAGS_TIME_VALID'></a>1   | [UTM_DATA_AVAIL_FLAGS_TIME_VALID](#UTM_DATA_AVAIL_FLAGS_TIME_VALID)                                     | The field time contains valid data.                              |
 | <a id='UTM_DATA_AVAIL_FLAGS_UAS_ID_AVAILABLE'></a>2   | [UTM_DATA_AVAIL_FLAGS_UAS_ID_AVAILABLE](#UTM_DATA_AVAIL_FLAGS_UAS_ID_AVAILABLE)                       | The field uas_id contains valid data.                            |
@@ -5085,7 +5085,7 @@ Airborne status of UAS.
 
 These flags encode the cellular network status
 
-| Value                         | Name                                                                        | Description                                                                                                                                                                                           |
+| 值                             | Name                                                                        | 描述                                                                                                                                                                                                    |
 | ----------------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='CELLULAR_STATUS_FLAG_UNKNOWN'></a>0  | [CELLULAR_STATUS_FLAG_UNKNOWN](#CELLULAR_STATUS_FLAG_UNKNOWN)             | State unknown or not reportable.                                                                                                                                                                      |
 | <a id='CELLULAR_STATUS_FLAG_FAILED'></a>1  | [CELLULAR_STATUS_FLAG_FAILED](#CELLULAR_STATUS_FLAG_FAILED)               | Modem is unusable                                                                                                                                                                                     |
@@ -5105,7 +5105,7 @@ These flags encode the cellular network status
 
 These flags are used to diagnose the failure state of [CELLULAR_STATUS](#CELLULAR_STATUS)
 
-| Value                        | Name                                                                                          | Description                                     |
+| 值                            | Name                                                                                          | 描述                                              |
 | ---------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------- |
 | <a id='CELLULAR_NETWORK_FAILED_REASON_NONE'></a>0 | [CELLULAR_NETWORK_FAILED_REASON_NONE](#CELLULAR_NETWORK_FAILED_REASON_NONE)               | No error                                        |
 | <a id='CELLULAR_NETWORK_FAILED_REASON_UNKNOWN'></a>1 | [CELLULAR_NETWORK_FAILED_REASON_UNKNOWN](#CELLULAR_NETWORK_FAILED_REASON_UNKNOWN)         | Error state is unknown                          |
@@ -5116,19 +5116,19 @@ These flags are used to diagnose the failure state of [CELLULAR_STATUS](#CELLULA
 
 Cellular network radio type
 
-| Value                        | Name                                                                        | Description |
-| ---------------------------- | --------------------------------------------------------------------------- | ----------- |
-| <a id='CELLULAR_NETWORK_RADIO_TYPE_NONE'></a>0 | [CELLULAR_NETWORK_RADIO_TYPE_NONE](#CELLULAR_NETWORK_RADIO_TYPE_NONE)   |             |
-| <a id='CELLULAR_NETWORK_RADIO_TYPE_GSM'></a>1 | [CELLULAR_NETWORK_RADIO_TYPE_GSM](#CELLULAR_NETWORK_RADIO_TYPE_GSM)     |             |
-| <a id='CELLULAR_NETWORK_RADIO_TYPE_CDMA'></a>2 | [CELLULAR_NETWORK_RADIO_TYPE_CDMA](#CELLULAR_NETWORK_RADIO_TYPE_CDMA)   |             |
-| <a id='CELLULAR_NETWORK_RADIO_TYPE_WCDMA'></a>3 | [CELLULAR_NETWORK_RADIO_TYPE_WCDMA](#CELLULAR_NETWORK_RADIO_TYPE_WCDMA) |             |
-| <a id='CELLULAR_NETWORK_RADIO_TYPE_LTE'></a>4 | [CELLULAR_NETWORK_RADIO_TYPE_LTE](#CELLULAR_NETWORK_RADIO_TYPE_LTE)     |             |
+| 值                            | Name                                                                        | 描述 |
+| ---------------------------- | --------------------------------------------------------------------------- | -- |
+| <a id='CELLULAR_NETWORK_RADIO_TYPE_NONE'></a>0 | [CELLULAR_NETWORK_RADIO_TYPE_NONE](#CELLULAR_NETWORK_RADIO_TYPE_NONE)   |    |
+| <a id='CELLULAR_NETWORK_RADIO_TYPE_GSM'></a>1 | [CELLULAR_NETWORK_RADIO_TYPE_GSM](#CELLULAR_NETWORK_RADIO_TYPE_GSM)     |    |
+| <a id='CELLULAR_NETWORK_RADIO_TYPE_CDMA'></a>2 | [CELLULAR_NETWORK_RADIO_TYPE_CDMA](#CELLULAR_NETWORK_RADIO_TYPE_CDMA)   |    |
+| <a id='CELLULAR_NETWORK_RADIO_TYPE_WCDMA'></a>3 | [CELLULAR_NETWORK_RADIO_TYPE_WCDMA](#CELLULAR_NETWORK_RADIO_TYPE_WCDMA) |    |
+| <a id='CELLULAR_NETWORK_RADIO_TYPE_LTE'></a>4 | [CELLULAR_NETWORK_RADIO_TYPE_LTE](#CELLULAR_NETWORK_RADIO_TYPE_LTE)     |    |
 
 ### PRECISION_LAND_MODE {#PRECISION_LAND_MODE}
 
 Precision land modes (used in [MAV_CMD_NAV_LAND](#MAV_CMD_NAV_LAND)).
 
-| Value                        | Name                                                                      | Description                                                                                                                    |
+| 值                            | Name                                                                      | 描述                                                                                                                             |
 | ---------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | <a id='PRECISION_LAND_MODE_DISABLED'></a>0 | [PRECISION_LAND_MODE_DISABLED](#PRECISION_LAND_MODE_DISABLED)           | Normal (non-precision) landing.                                                                                                |
 | <a id='PRECISION_LAND_MODE_OPPORTUNISTIC'></a>1 | [PRECISION_LAND_MODE_OPPORTUNISTIC](#PRECISION_LAND_MODE_OPPORTUNISTIC) | Use precision landing if beacon detected when land command accepted, otherwise land normally.                                  |
@@ -5138,7 +5138,7 @@ Precision land modes (used in [MAV_CMD_NAV_LAND](#MAV_CMD_NAV_LAND)).
 
 Parachute actions. Trigger release and enable/disable auto-release.
 
-| Value                        | Name                                    | Description                                                                    |
+| 值                            | Name                                    | 描述                                                                             |
 | ---------------------------- | --------------------------------------- | ------------------------------------------------------------------------------ |
 | <a id='PARACHUTE_DISABLE'></a>0 | [PARACHUTE_DISABLE](#PARACHUTE_DISABLE) | Disable auto-release of parachute (i.e. release triggered by crash detectors). |
 | <a id='PARACHUTE_ENABLE'></a>1 | [PARACHUTE_ENABLE](#PARACHUTE_ENABLE)   | Enable auto-release of parachute.                                              |
@@ -5146,7 +5146,7 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_TUNNEL_PAYLOAD_TYPE {#MAV_TUNNEL_PAYLOAD_TYPE}
 
-| Value                          | Name                                                                                        | Description                               |
+| 值                              | Name                                                                                        | 描述                                        |
 | ------------------------------ | ------------------------------------------------------------------------------------------- | ----------------------------------------- |
 | <a id='MAV_TUNNEL_PAYLOAD_TYPE_UNKNOWN'></a>0   | [MAV_TUNNEL_PAYLOAD_TYPE_UNKNOWN](#MAV_TUNNEL_PAYLOAD_TYPE_UNKNOWN)                     | Encoding of payload unknown.              |
 | <a id='MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0'></a>200 | [MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0](#MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0) | Registered for STorM32 gimbal controller. |
@@ -5162,7 +5162,7 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_ID_TYPE {#MAV_ODID_ID_TYPE}
 
-| Value                        | Name                                                                                | Description                                                                                                                                       |
+| 值                            | Name                                                                                | 描述                                                                                                                                                |
 | ---------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_ODID_ID_TYPE_NONE'></a>0 | [MAV_ODID_ID_TYPE_NONE](#MAV_ODID_ID_TYPE_NONE)                                 | No type defined.                                                                                                                                  |
 | <a id='MAV_ODID_ID_TYPE_SERIAL_NUMBER'></a>1 | [MAV_ODID_ID_TYPE_SERIAL_NUMBER](#MAV_ODID_ID_TYPE_SERIAL_NUMBER)               | Manufacturer Serial Number (ANSI/CTA-2063 format).                                                                                                |
@@ -5172,7 +5172,7 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_UA_TYPE {#MAV_ODID_UA_TYPE}
 
-| Value                          | Name                                                                                            | Description                                                                             |
+| 值                              | Name                                                                                            | 描述                                                                                      |
 | ------------------------------ | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | <a id='MAV_ODID_UA_TYPE_NONE'></a>0   | [MAV_ODID_UA_TYPE_NONE](#MAV_ODID_UA_TYPE_NONE)                                             | No UA (Unmanned Aircraft) type defined.                                                 |
 | <a id='MAV_ODID_UA_TYPE_AEROPLANE'></a>1   | [MAV_ODID_UA_TYPE_AEROPLANE](#MAV_ODID_UA_TYPE_AEROPLANE)                                   | Aeroplane/Airplane. Fixed wing.                                                         |
@@ -5193,7 +5193,7 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_STATUS {#MAV_ODID_STATUS}
 
-| Value                         | Name                                                                                        | Description                                                |
+| 值                             | Name                                                                                        | 描述                                                         |
 | ----------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | <a id='MAV_ODID_STATUS_UNDECLARED'></a>0 | [MAV_ODID_STATUS_UNDECLARED](#MAV_ODID_STATUS_UNDECLARED)                                 | The status of the (UA) Unmanned Aircraft is undefined.     |
 | <a id='MAV_ODID_STATUS_GROUND'></a>1 | [MAV_ODID_STATUS_GROUND](#MAV_ODID_STATUS_GROUND)                                         | The UA is on the ground.                                   |
@@ -5203,14 +5203,14 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_HEIGHT_REF {#MAV_ODID_HEIGHT_REF}
 
-| Value                         | Name                                                                      | Description                                            |
+| 值                             | Name                                                                      | 描述                                                     |
 | ----------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------ |
 | <a id='MAV_ODID_HEIGHT_REF_OVER_TAKEOFF'></a>0 | [MAV_ODID_HEIGHT_REF_OVER_TAKEOFF](#MAV_ODID_HEIGHT_REF_OVER_TAKEOFF) | The height field is relative to the take-off location. |
 | <a id='MAV_ODID_HEIGHT_REF_OVER_GROUND'></a>1 | [MAV_ODID_HEIGHT_REF_OVER_GROUND](#MAV_ODID_HEIGHT_REF_OVER_GROUND)   | The height field is relative to ground.                |
 
 ### MAV_ODID_HOR_ACC {#MAV_ODID_HOR_ACC}
 
-| Value                          | Name                                                        | Description                                                          |
+| 值                              | Name                                                        | 描述                                                                   |
 | ------------------------------ | ----------------------------------------------------------- | -------------------------------------------------------------------- |
 | <a id='MAV_ODID_HOR_ACC_UNKNOWN'></a>0  | [MAV_ODID_HOR_ACC_UNKNOWN](#MAV_ODID_HOR_ACC_UNKNOWN)   | The horizontal accuracy is unknown.                                  |
 | <a id='MAV_ODID_HOR_ACC_10NM'></a>1  | [MAV_ODID_HOR_ACC_10NM](#MAV_ODID_HOR_ACC_10NM)         | The horizontal accuracy is smaller than 10 Nautical Miles. 18.52 km. |
@@ -5228,7 +5228,7 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_VER_ACC {#MAV_ODID_VER_ACC}
 
-| Value                         | Name                                                          | Description                                      |
+| 值                             | Name                                                          | 描述                                               |
 | ----------------------------- | ------------------------------------------------------------- | ------------------------------------------------ |
 | <a id='MAV_ODID_VER_ACC_UNKNOWN'></a>0 | [MAV_ODID_VER_ACC_UNKNOWN](#MAV_ODID_VER_ACC_UNKNOWN)     | The vertical accuracy is unknown.                |
 | <a id='MAV_ODID_VER_ACC_150_METER'></a>1 | [MAV_ODID_VER_ACC_150_METER](#MAV_ODID_VER_ACC_150_METER) | The vertical accuracy is smaller than 150 meter. |
@@ -5240,7 +5240,7 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_SPEED_ACC {#MAV_ODID_SPEED_ACC}
 
-| Value                         | Name                                                                                          | Description                                               |
+| 值                             | Name                                                                                          | 描述                                                        |
 | ----------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | <a id='MAV_ODID_SPEED_ACC_UNKNOWN'></a>0 | [MAV_ODID_SPEED_ACC_UNKNOWN](#MAV_ODID_SPEED_ACC_UNKNOWN)                                 | The speed accuracy is unknown.                            |
 | <a id='MAV_ODID_SPEED_ACC_10_METERS_PER_SECOND'></a>1 | [MAV_ODID_SPEED_ACC_10_METERS_PER_SECOND](#MAV_ODID_SPEED_ACC_10_METERS_PER_SECOND)     | The speed accuracy is smaller than 10 meters per second.  |
@@ -5250,7 +5250,7 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_TIME_ACC {#MAV_ODID_TIME_ACC}
 
-| Value                          | Name                                                                | Description                                                    |
+| 值                              | Name                                                                | 描述                                                             |
 | ------------------------------ | ------------------------------------------------------------------- | -------------------------------------------------------------- |
 | <a id='MAV_ODID_TIME_ACC_UNKNOWN'></a>0  | [MAV_ODID_TIME_ACC_UNKNOWN](#MAV_ODID_TIME_ACC_UNKNOWN)         | The timestamp accuracy is unknown.                             |
 | <a id='MAV_ODID_TIME_ACC_0_1_SECOND'></a>1  | [MAV_ODID_TIME_ACC_0_1_SECOND](#MAV_ODID_TIME_ACC_0_1_SECOND) | The timestamp accuracy is smaller than or equal to 0.1 second. |
@@ -5271,7 +5271,7 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_AUTH_TYPE {#MAV_ODID_AUTH_TYPE}
 
-| Value                         | Name                                                                                          | Description                                                                                                                    |
+| 值                             | Name                                                                                          | 描述                                                                                                                             |
 | ----------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | <a id='MAV_ODID_AUTH_TYPE_NONE'></a>0 | [MAV_ODID_AUTH_TYPE_NONE](#MAV_ODID_AUTH_TYPE_NONE)                                       | No authentication type is specified.                                                                                           |
 | <a id='MAV_ODID_AUTH_TYPE_UAS_ID_SIGNATURE'></a>1 | [MAV_ODID_AUTH_TYPE_UAS_ID_SIGNATURE](#MAV_ODID_AUTH_TYPE_UAS_ID_SIGNATURE)             | Signature for the UAS (Unmanned Aircraft System) ID.                                                                           |
@@ -5282,7 +5282,7 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_DESC_TYPE {#MAV_ODID_DESC_TYPE}
 
-| Value                         | Name                                                                          | Description                                                                                                 |
+| 值                             | Name                                                                          | 描述                                                                                                          |
 | ----------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_ODID_DESC_TYPE_TEXT'></a>0 | [MAV_ODID_DESC_TYPE_TEXT](#MAV_ODID_DESC_TYPE_TEXT)                       | Optional free-form text description of the purpose of the flight.                                           |
 | <a id='MAV_ODID_DESC_TYPE_EMERGENCY'></a>1 | [MAV_ODID_DESC_TYPE_EMERGENCY](#MAV_ODID_DESC_TYPE_EMERGENCY)             | Optional additional clarification when status == [MAV_ODID_STATUS_EMERGENCY](#MAV_ODID_STATUS_EMERGENCY). |
@@ -5290,7 +5290,7 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_OPERATOR_LOCATION_TYPE {#MAV_ODID_OPERATOR_LOCATION_TYPE}
 
-| Value                         | Name                                                                                          | Description                                                                     |
+| 值                             | Name                                                                                          | 描述                                                                              |
 | ----------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | <a id='MAV_ODID_OPERATOR_LOCATION_TYPE_TAKEOFF'></a>0 | [MAV_ODID_OPERATOR_LOCATION_TYPE_TAKEOFF](#MAV_ODID_OPERATOR_LOCATION_TYPE_TAKEOFF)       | The location/altitude of the operator is the same as the take-off location.     |
 | <a id='MAV_ODID_OPERATOR_LOCATION_TYPE_LIVE_GNSS'></a>1 | [MAV_ODID_OPERATOR_LOCATION_TYPE_LIVE_GNSS](#MAV_ODID_OPERATOR_LOCATION_TYPE_LIVE_GNSS) | The location/altitude of the operator is dynamic. E.g. based on live GNSS data. |
@@ -5298,14 +5298,14 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_CLASSIFICATION_TYPE {#MAV_ODID_CLASSIFICATION_TYPE}
 
-| Value                         | Name                                                                                    | Description                                                                    |
+| 值                             | Name                                                                                    | 描述                                                                             |
 | ----------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | <a id='MAV_ODID_CLASSIFICATION_TYPE_UNDECLARED'></a>0 | [MAV_ODID_CLASSIFICATION_TYPE_UNDECLARED](#MAV_ODID_CLASSIFICATION_TYPE_UNDECLARED) | The classification type for the UA is undeclared.                              |
 | <a id='MAV_ODID_CLASSIFICATION_TYPE_EU'></a>1 | [MAV_ODID_CLASSIFICATION_TYPE_EU](#MAV_ODID_CLASSIFICATION_TYPE_EU)                 | The classification type for the UA follows EU (European Union) specifications. |
 
 ### MAV_ODID_CATEGORY_EU {#MAV_ODID_CATEGORY_EU}
 
-| Value                         | Name                                                                    | Description                                                                            |
+| 值                             | Name                                                                    | 描述                                                                                     |
 | ----------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | <a id='MAV_ODID_CATEGORY_EU_UNDECLARED'></a>0 | [MAV_ODID_CATEGORY_EU_UNDECLARED](#MAV_ODID_CATEGORY_EU_UNDECLARED) | The category for the UA, according to the EU specification, is undeclared.             |
 | <a id='MAV_ODID_CATEGORY_EU_OPEN'></a>1 | [MAV_ODID_CATEGORY_EU_OPEN](#MAV_ODID_CATEGORY_EU_OPEN)             | The category for the UA, according to the EU specification, is the Open category.      |
@@ -5314,7 +5314,7 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_CLASS_EU {#MAV_ODID_CLASS_EU}
 
-| Value                         | Name                                                              | Description                                                             |
+| 值                             | Name                                                              | 描述                                                                      |
 | ----------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | <a id='MAV_ODID_CLASS_EU_UNDECLARED'></a>0 | [MAV_ODID_CLASS_EU_UNDECLARED](#MAV_ODID_CLASS_EU_UNDECLARED) | The class for the UA, according to the EU specification, is undeclared. |
 | <a id='MAV_ODID_CLASS_EU_CLASS_0'></a>1 | [MAV_ODID_CLASS_EU_CLASS_0](#MAV_ODID_CLASS_EU_CLASS_0)       | The class for the UA, according to the EU specification, is Class 0.    |
@@ -5327,13 +5327,13 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 ### MAV_ODID_OPERATOR_ID_TYPE {#MAV_ODID_OPERATOR_ID_TYPE}
 
-| Value                         | Name                                                                | Description                                            |
+| 值                             | Name                                                                | 描述                                                     |
 | ----------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------ |
 | <a id='MAV_ODID_OPERATOR_ID_TYPE_CAA'></a>0 | [MAV_ODID_OPERATOR_ID_TYPE_CAA](#MAV_ODID_OPERATOR_ID_TYPE_CAA) | CAA (Civil Aviation Authority) registered operator ID. |
 
 ### MAV_ODID_ARM_STATUS {#MAV_ODID_ARM_STATUS}
 
-| Value                         | Name                                                                                        | Description                                           |
+| 值                             | Name                                                                                        | 描述                                                    |
 | ----------------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | <a id='MAV_ODID_ARM_STATUS_GOOD_TO_ARM'></a>0 | [MAV_ODID_ARM_STATUS_GOOD_TO_ARM](#MAV_ODID_ARM_STATUS_GOOD_TO_ARM)                   | Passing arming checks.                                |
 | <a id='MAV_ODID_ARM_STATUS_PRE_ARM_FAIL_GENERIC'></a>1 | [MAV_ODID_ARM_STATUS_PRE_ARM_FAIL_GENERIC](#MAV_ODID_ARM_STATUS_PRE_ARM_FAIL_GENERIC) | Generic arming failure, see error string for details. |
@@ -5342,7 +5342,7 @@ Parachute actions. Trigger release and enable/disable auto-release.
 
 Tune formats (used for vehicle buzzer/tone generation).
 
-| Value                         | Name                                                | Description                                                                                                    |
+| 值                             | Name                                                | 描述                                                                                                             |
 | ----------------------------- | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | <a id='TUNE_FORMAT_QBASIC1_1'></a>1 | [TUNE_FORMAT_QBASIC1_1](#TUNE_FORMAT_QBASIC1_1)   | Format is QBasic 1.1 Play: https://www.qbasic.net/en/reference/qb11/Statement/PLAY-006.htm.                    |
 | <a id='TUNE_FORMAT_MML_MODERN'></a>2 | [TUNE_FORMAT_MML_MODERN](#TUNE_FORMAT_MML_MODERN) | Format is Modern Music Markup Language (MML): https://en.wikipedia.org/wiki/Music_Macro_Language#Modern_MML. |
@@ -5351,7 +5351,7 @@ Tune formats (used for vehicle buzzer/tone generation).
 
 Type of AIS vessel, enum duplicated from AIS standard, https://gpsd.gitlab.io/gpsd/AIVDM.html
 
-| Value                          | Name                                                                  | Description                                          |
+| 值                              | Name                                                                  | 描述                                                   |
 | ------------------------------ | --------------------------------------------------------------------- | ---------------------------------------------------- |
 | <a id='AIS_TYPE_UNKNOWN'></a>0  | [AIS_TYPE_UNKNOWN](#AIS_TYPE_UNKNOWN)                               | Not available (default).                             |
 | <a id='AIS_TYPE_RESERVED_1'></a>1  | [AIS_TYPE_RESERVED_1](#AIS_TYPE_RESERVED_1)                         |                                                      |
@@ -5458,7 +5458,7 @@ Type of AIS vessel, enum duplicated from AIS standard, https://gpsd.gitlab.io/gp
 
 Navigational status of AIS vessel, enum duplicated from AIS standard, https://gpsd.gitlab.io/gpsd/AIVDM.html
 
-| Value                          | Name                                                                          | Description                    |
+| 值                              | Name                                                                          | 描述                             |
 | ------------------------------ | ----------------------------------------------------------------------------- | ------------------------------ |
 | <a id='UNDER_WAY'></a>0  | [UNDER_WAY](#UNDER_WAY)                                                       | Under way using engine.        |
 | <a id='AIS_NAV_ANCHORED'></a>1  | [AIS_NAV_ANCHORED](#AIS_NAV_ANCHORED)                                       |                                |
@@ -5481,7 +5481,7 @@ Navigational status of AIS vessel, enum duplicated from AIS standard, https://gp
 
 (Bitmask) These flags are used in the [AIS_VESSEL](#AIS_VESSEL).fields bitmask to indicate validity of data in the other message fields. When set, the data is valid.
 
-| Value                            | Name                                                                            | Description                                                                                                 |
+| 值                                | Name                                                                            | 描述                                                                                                          |
 | -------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | <a id='AIS_FLAGS_POSITION_ACCURACY'></a>1    | [AIS_FLAGS_POSITION_ACCURACY](#AIS_FLAGS_POSITION_ACCURACY)                   | 1 = Position accuracy less than 10m, 0 = position accuracy greater than 10m.                                |
 | <a id='AIS_FLAGS_VALID_COG'></a>2    | [AIS_FLAGS_VALID_COG](#AIS_FLAGS_VALID_COG)                                   |                                                                                                             |
@@ -5501,29 +5501,29 @@ Navigational status of AIS vessel, enum duplicated from AIS standard, https://gp
 
 List of possible units where failures can be injected.
 
-| Value                           | Name                                                                            | Description |
-| ------------------------------- | ------------------------------------------------------------------------------- | ----------- |
-| <a id='FAILURE_UNIT_SENSOR_GYRO'></a>0   | [FAILURE_UNIT_SENSOR_GYRO](#FAILURE_UNIT_SENSOR_GYRO)                         |             |
-| <a id='FAILURE_UNIT_SENSOR_ACCEL'></a>1   | [FAILURE_UNIT_SENSOR_ACCEL](#FAILURE_UNIT_SENSOR_ACCEL)                       |             |
-| <a id='FAILURE_UNIT_SENSOR_MAG'></a>2   | [FAILURE_UNIT_SENSOR_MAG](#FAILURE_UNIT_SENSOR_MAG)                           |             |
-| <a id='FAILURE_UNIT_SENSOR_BARO'></a>3   | [FAILURE_UNIT_SENSOR_BARO](#FAILURE_UNIT_SENSOR_BARO)                         |             |
-| <a id='FAILURE_UNIT_SENSOR_GPS'></a>4   | [FAILURE_UNIT_SENSOR_GPS](#FAILURE_UNIT_SENSOR_GPS)                           |             |
-| <a id='FAILURE_UNIT_SENSOR_OPTICAL_FLOW'></a>5   | [FAILURE_UNIT_SENSOR_OPTICAL_FLOW](#FAILURE_UNIT_SENSOR_OPTICAL_FLOW)       |             |
-| <a id='FAILURE_UNIT_SENSOR_VIO'></a>6   | [FAILURE_UNIT_SENSOR_VIO](#FAILURE_UNIT_SENSOR_VIO)                           |             |
-| <a id='FAILURE_UNIT_SENSOR_DISTANCE_SENSOR'></a>7   | [FAILURE_UNIT_SENSOR_DISTANCE_SENSOR](#FAILURE_UNIT_SENSOR_DISTANCE_SENSOR) |             |
-| <a id='FAILURE_UNIT_SENSOR_AIRSPEED'></a>8   | [FAILURE_UNIT_SENSOR_AIRSPEED](#FAILURE_UNIT_SENSOR_AIRSPEED)                 |             |
-| <a id='FAILURE_UNIT_SYSTEM_BATTERY'></a>100 | [FAILURE_UNIT_SYSTEM_BATTERY](#FAILURE_UNIT_SYSTEM_BATTERY)                   |             |
-| <a id='FAILURE_UNIT_SYSTEM_MOTOR'></a>101 | [FAILURE_UNIT_SYSTEM_MOTOR](#FAILURE_UNIT_SYSTEM_MOTOR)                       |             |
-| <a id='FAILURE_UNIT_SYSTEM_SERVO'></a>102 | [FAILURE_UNIT_SYSTEM_SERVO](#FAILURE_UNIT_SYSTEM_SERVO)                       |             |
-| <a id='FAILURE_UNIT_SYSTEM_AVOIDANCE'></a>103 | [FAILURE_UNIT_SYSTEM_AVOIDANCE](#FAILURE_UNIT_SYSTEM_AVOIDANCE)               |             |
-| <a id='FAILURE_UNIT_SYSTEM_RC_SIGNAL'></a>104 | [FAILURE_UNIT_SYSTEM_RC_SIGNAL](#FAILURE_UNIT_SYSTEM_RC_SIGNAL)             |             |
-| <a id='FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL'></a>105 | [FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL](#FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL)   |             |
+| 值                               | Name                                                                            | 描述 |
+| ------------------------------- | ------------------------------------------------------------------------------- | -- |
+| <a id='FAILURE_UNIT_SENSOR_GYRO'></a>0   | [FAILURE_UNIT_SENSOR_GYRO](#FAILURE_UNIT_SENSOR_GYRO)                         |    |
+| <a id='FAILURE_UNIT_SENSOR_ACCEL'></a>1   | [FAILURE_UNIT_SENSOR_ACCEL](#FAILURE_UNIT_SENSOR_ACCEL)                       |    |
+| <a id='FAILURE_UNIT_SENSOR_MAG'></a>2   | [FAILURE_UNIT_SENSOR_MAG](#FAILURE_UNIT_SENSOR_MAG)                           |    |
+| <a id='FAILURE_UNIT_SENSOR_BARO'></a>3   | [FAILURE_UNIT_SENSOR_BARO](#FAILURE_UNIT_SENSOR_BARO)                         |    |
+| <a id='FAILURE_UNIT_SENSOR_GPS'></a>4   | [FAILURE_UNIT_SENSOR_GPS](#FAILURE_UNIT_SENSOR_GPS)                           |    |
+| <a id='FAILURE_UNIT_SENSOR_OPTICAL_FLOW'></a>5   | [FAILURE_UNIT_SENSOR_OPTICAL_FLOW](#FAILURE_UNIT_SENSOR_OPTICAL_FLOW)       |    |
+| <a id='FAILURE_UNIT_SENSOR_VIO'></a>6   | [FAILURE_UNIT_SENSOR_VIO](#FAILURE_UNIT_SENSOR_VIO)                           |    |
+| <a id='FAILURE_UNIT_SENSOR_DISTANCE_SENSOR'></a>7   | [FAILURE_UNIT_SENSOR_DISTANCE_SENSOR](#FAILURE_UNIT_SENSOR_DISTANCE_SENSOR) |    |
+| <a id='FAILURE_UNIT_SENSOR_AIRSPEED'></a>8   | [FAILURE_UNIT_SENSOR_AIRSPEED](#FAILURE_UNIT_SENSOR_AIRSPEED)                 |    |
+| <a id='FAILURE_UNIT_SYSTEM_BATTERY'></a>100 | [FAILURE_UNIT_SYSTEM_BATTERY](#FAILURE_UNIT_SYSTEM_BATTERY)                   |    |
+| <a id='FAILURE_UNIT_SYSTEM_MOTOR'></a>101 | [FAILURE_UNIT_SYSTEM_MOTOR](#FAILURE_UNIT_SYSTEM_MOTOR)                       |    |
+| <a id='FAILURE_UNIT_SYSTEM_SERVO'></a>102 | [FAILURE_UNIT_SYSTEM_SERVO](#FAILURE_UNIT_SYSTEM_SERVO)                       |    |
+| <a id='FAILURE_UNIT_SYSTEM_AVOIDANCE'></a>103 | [FAILURE_UNIT_SYSTEM_AVOIDANCE](#FAILURE_UNIT_SYSTEM_AVOIDANCE)               |    |
+| <a id='FAILURE_UNIT_SYSTEM_RC_SIGNAL'></a>104 | [FAILURE_UNIT_SYSTEM_RC_SIGNAL](#FAILURE_UNIT_SYSTEM_RC_SIGNAL)             |    |
+| <a id='FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL'></a>105 | [FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL](#FAILURE_UNIT_SYSTEM_MAVLINK_SIGNAL)   |    |
 
 ### FAILURE_TYPE {#FAILURE_TYPE}
 
 List of possible failure type to inject.
 
-| Value                         | Name                                                      | Description                                                   |
+| 值                             | Name                                                      | 描述                                                            |
 | ----------------------------- | --------------------------------------------------------- | ------------------------------------------------------------- |
 | <a id='FAILURE_TYPE_OK'></a>0 | [FAILURE_TYPE_OK](#FAILURE_TYPE_OK)                     | No failure injected, used to reset a previous failure.        |
 | <a id='FAILURE_TYPE_OFF'></a>1 | [FAILURE_TYPE_OFF](#FAILURE_TYPE_OFF)                   | Sets unit off, so completely non-responsive.                  |
@@ -5536,7 +5536,7 @@ List of possible failure type to inject.
 
 ### NAV_VTOL_LAND_OPTIONS {#NAV_VTOL_LAND_OPTIONS}
 
-| Value                         | Name                                                                            | Description                                                                                                                                                                                                                                              |
+| 值                             | Name                                                                            | 描述                                                                                                                                                                                                                                                       |
 | ----------------------------- | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='NAV_VTOL_LAND_OPTIONS_DEFAULT'></a>0 | [NAV_VTOL_LAND_OPTIONS_DEFAULT](#NAV_VTOL_LAND_OPTIONS_DEFAULT)             | Default autopilot landing behaviour.                                                                                                                                                                                                                     |
 | <a id='NAV_VTOL_LAND_OPTIONS_FW_DESCENT'></a>1 | [NAV_VTOL_LAND_OPTIONS_FW_DESCENT](#NAV_VTOL_LAND_OPTIONS_FW_DESCENT)       | Descend in fixed wing mode, transitioning to multicopter mode for vertical landing when close to the ground.  
@@ -5547,7 +5547,7 @@ The fixed wing descent pattern is at the discretion of the vehicle (e.g. transit
 
 (Bitmask) Winch status flags used in [WINCH_STATUS](#WINCH_STATUS)
 
-| Value                            | Name                                                                      | Description                                                                                                                                                                                 |
+| 值                                | Name                                                                      | 描述                                                                                                                                                                                          |
 | -------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_WINCH_STATUS_HEALTHY'></a>1    | [MAV_WINCH_STATUS_HEALTHY](#MAV_WINCH_STATUS_HEALTHY)                   | Winch is healthy                                                                                                                                                                            |
 | <a id='MAV_WINCH_STATUS_FULLY_RETRACTED'></a>2    | [MAV_WINCH_STATUS_FULLY_RETRACTED](#MAV_WINCH_STATUS_FULLY_RETRACTED) | Winch line is fully retracted                                                                                                                                                               |
@@ -5566,22 +5566,22 @@ The fixed wing descent pattern is at the discretion of the vehicle (e.g. transit
 
 ### MAG_CAL_STATUS {#MAG_CAL_STATUS}
 
-| Value                         | Name                                                      | Description |
-| ----------------------------- | --------------------------------------------------------- | ----------- |
-| <a id='MAG_CAL_NOT_STARTED'></a>0 | [MAG_CAL_NOT_STARTED](#MAG_CAL_NOT_STARTED)             |             |
-| <a id='MAG_CAL_WAITING_TO_START'></a>1 | [MAG_CAL_WAITING_TO_START](#MAG_CAL_WAITING_TO_START) |             |
-| <a id='MAG_CAL_RUNNING_STEP_ONE'></a>2 | [MAG_CAL_RUNNING_STEP_ONE](#MAG_CAL_RUNNING_STEP_ONE) |             |
-| <a id='MAG_CAL_RUNNING_STEP_TWO'></a>3 | [MAG_CAL_RUNNING_STEP_TWO](#MAG_CAL_RUNNING_STEP_TWO) |             |
-| <a id='MAG_CAL_SUCCESS'></a>4 | [MAG_CAL_SUCCESS](#MAG_CAL_SUCCESS)                     |             |
-| <a id='MAG_CAL_FAILED'></a>5 | [MAG_CAL_FAILED](#MAG_CAL_FAILED)                       |             |
-| <a id='MAG_CAL_BAD_ORIENTATION'></a>6 | [MAG_CAL_BAD_ORIENTATION](#MAG_CAL_BAD_ORIENTATION)     |             |
-| <a id='MAG_CAL_BAD_RADIUS'></a>7 | [MAG_CAL_BAD_RADIUS](#MAG_CAL_BAD_RADIUS)               |             |
+| 值                             | Name                                                      | 描述 |
+| ----------------------------- | --------------------------------------------------------- | -- |
+| <a id='MAG_CAL_NOT_STARTED'></a>0 | [MAG_CAL_NOT_STARTED](#MAG_CAL_NOT_STARTED)             |    |
+| <a id='MAG_CAL_WAITING_TO_START'></a>1 | [MAG_CAL_WAITING_TO_START](#MAG_CAL_WAITING_TO_START) |    |
+| <a id='MAG_CAL_RUNNING_STEP_ONE'></a>2 | [MAG_CAL_RUNNING_STEP_ONE](#MAG_CAL_RUNNING_STEP_ONE) |    |
+| <a id='MAG_CAL_RUNNING_STEP_TWO'></a>3 | [MAG_CAL_RUNNING_STEP_TWO](#MAG_CAL_RUNNING_STEP_TWO) |    |
+| <a id='MAG_CAL_SUCCESS'></a>4 | [MAG_CAL_SUCCESS](#MAG_CAL_SUCCESS)                     |    |
+| <a id='MAG_CAL_FAILED'></a>5 | [MAG_CAL_FAILED](#MAG_CAL_FAILED)                       |    |
+| <a id='MAG_CAL_BAD_ORIENTATION'></a>6 | [MAG_CAL_BAD_ORIENTATION](#MAG_CAL_BAD_ORIENTATION)     |    |
+| <a id='MAG_CAL_BAD_RADIUS'></a>7 | [MAG_CAL_BAD_RADIUS](#MAG_CAL_BAD_RADIUS)               |    |
 
 ### MAV_EVENT_ERROR_REASON {#MAV_EVENT_ERROR_REASON}
 
 Reason for an event error response.
 
-| Value                         | Name                                                                          | Description                                     |
+| 值                             | Name                                                                          | 描述                                              |
 | ----------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------- |
 | <a id='MAV_EVENT_ERROR_REASON_UNAVAILABLE'></a>0 | [MAV_EVENT_ERROR_REASON_UNAVAILABLE](#MAV_EVENT_ERROR_REASON_UNAVAILABLE) | The requested event is not available (anymore). |
 
@@ -5589,7 +5589,7 @@ Reason for an event error response.
 
 Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE).
 
-| Value                         | Name                                                                                  | Description                                          |
+| 值                             | Name                                                                                  | 描述                                                   |
 | ----------------------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | <a id='MAV_EVENT_CURRENT_SEQUENCE_FLAGS_RESET'></a>1 | [MAV_EVENT_CURRENT_SEQUENCE_FLAGS_RESET](#MAV_EVENT_CURRENT_SEQUENCE_FLAGS_RESET) | A sequence reset has happened (e.g. vehicle reboot). |
 
@@ -5597,7 +5597,7 @@ Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE).
 
 (Bitmask) Flags in the [HIL_SENSOR](#HIL_SENSOR) message indicate which fields have updated since the last message
 
-| Value                                  | Name                                                                      | Description                                                                   |
+| 值                                      | Name                                                                      | 描述                                                                            |
 | -------------------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | <a id='HIL_SENSOR_UPDATED_NONE'></a>0          | [HIL_SENSOR_UPDATED_NONE](#HIL_SENSOR_UPDATED_NONE)                     | None of the fields in [HIL_SENSOR](#HIL_SENSOR) have been updated             |
 | <a id='HIL_SENSOR_UPDATED_XACC'></a>1          | [HIL_SENSOR_UPDATED_XACC](#HIL_SENSOR_UPDATED_XACC)                     | The value in the xacc field has been updated                                  |
@@ -5619,7 +5619,7 @@ Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE).
 
 (Bitmask) Flags in the [HIGHRES_IMU](#HIGHRES_IMU) message indicate which fields have updated since the last message
 
-| Value                             | Name                                                                        | Description                                                         |
+| 值                                 | Name                                                                        | 描述                                                                  |
 | --------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | <a id='HIGHRES_IMU_UPDATED_NONE'></a>0     | [HIGHRES_IMU_UPDATED_NONE](#HIGHRES_IMU_UPDATED_NONE)                     | None of the fields in [HIGHRES_IMU](#HIGHRES_IMU) have been updated |
 | <a id='HIGHRES_IMU_UPDATED_XACC'></a>1     | [HIGHRES_IMU_UPDATED_XACC](#HIGHRES_IMU_UPDATED_XACC)                     | The value in the xacc field has been updated                        |
@@ -5639,17 +5639,17 @@ Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE).
 
 ### CAN_FILTER_OP {#CAN_FILTER_OP}
 
-| Value                         | Name                                        | Description |
-| ----------------------------- | ------------------------------------------- | ----------- |
-| <a id='CAN_FILTER_REPLACE'></a>0 | [CAN_FILTER_REPLACE](#CAN_FILTER_REPLACE) |             |
-| <a id='CAN_FILTER_ADD'></a>1 | [CAN_FILTER_ADD](#CAN_FILTER_ADD)         |             |
-| <a id='CAN_FILTER_REMOVE'></a>2 | [CAN_FILTER_REMOVE](#CAN_FILTER_REMOVE)   |             |
+| 值                             | Name                                        | 描述 |
+| ----------------------------- | ------------------------------------------- | -- |
+| <a id='CAN_FILTER_REPLACE'></a>0 | [CAN_FILTER_REPLACE](#CAN_FILTER_REPLACE) |    |
+| <a id='CAN_FILTER_ADD'></a>1 | [CAN_FILTER_ADD](#CAN_FILTER_ADD)         |    |
+| <a id='CAN_FILTER_REMOVE'></a>2 | [CAN_FILTER_REMOVE](#CAN_FILTER_REMOVE)   |    |
 
 ### MAV_FTP_ERR {#MAV_FTP_ERR}
 
 MAV FTP error codes (https://mavlink.io/en/services/ftp.html)
 
-| Value                          | Name                                                                  | Description                                                                                                                                               |
+| 值                              | Name                                                                  | 描述                                                                                                                                                        |
 | ------------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_FTP_ERR_NONE'></a>0  | [MAV_FTP_ERR_NONE](#MAV_FTP_ERR_NONE)                               | None: No error                                                                                                                                            |
 | <a id='MAV_FTP_ERR_FAIL'></a>1  | [MAV_FTP_ERR_FAIL](#MAV_FTP_ERR_FAIL)                               | Fail: Unknown failure                                                                                                                                     |
@@ -5668,7 +5668,7 @@ This is a file-system error number understood by the server operating system. |
 
 MAV FTP opcodes: https://mavlink.io/en/services/ftp.html
 
-| Value                           | Name                                                                  | Description                                                              |
+| 值                               | Name                                                                  | 描述                                                                       |
 | ------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | <a id='MAV_FTP_OPCODE_NONE'></a>0   | [MAV_FTP_OPCODE_NONE](#MAV_FTP_OPCODE_NONE)                         | None. Ignored, always ACKed                                              |
 | <a id='MAV_FTP_OPCODE_TERMINATESESSION'></a>1   | [MAV_FTP_OPCODE_TERMINATESESSION](#MAV_FTP_OPCODE_TERMINATESESSION) | TerminateSession: Terminates open Read session                           |
@@ -5693,7 +5693,7 @@ MAV FTP opcodes: https://mavlink.io/en/services/ftp.html
 
 States of the mission state machine. Note that these states are independent of whether the mission is in a mode that can execute mission items or not (is suspended). They may not all be relevant on all vehicles.
 
-| Value                         | Name                                                      | Description                                                                                           |
+| 值                             | Name                                                      | 描述                                                                                                    |
 | ----------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | <a id='MISSION_STATE_UNKNOWN'></a>0 | [MISSION_STATE_UNKNOWN](#MISSION_STATE_UNKNOWN)         | The mission status reporting is not supported.                                                        |
 | <a id='MISSION_STATE_NO_MISSION'></a>1 | [MISSION_STATE_NO_MISSION](#MISSION_STATE_NO_MISSION)   | No mission on the vehicle.                                                                            |
@@ -5706,7 +5706,7 @@ States of the mission state machine. Note that these states are independent of w
 
 Possible safety switch states.
 
-| Value                         | Name                                                              | Description                                                                                          |
+| 值                             | Name                                                              | 描述                                                                                                   |
 | ----------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | <a id='SAFETY_SWITCH_STATE_SAFE'></a>0 | [SAFETY_SWITCH_STATE_SAFE](#SAFETY_SWITCH_STATE_SAFE)           | Safety switch is engaged and vehicle should be safe to approach.                                     |
 | <a id='SAFETY_SWITCH_STATE_DANGEROUS'></a>1 | [SAFETY_SWITCH_STATE_DANGEROUS](#SAFETY_SWITCH_STATE_DANGEROUS) | Safety switch is NOT engaged and motors, propellers and other actuators should be considered active. |
@@ -5715,7 +5715,7 @@ Possible safety switch states.
 
 Modes of illuminator
 
-| Value                         | Name                                                                      | Description                                                                                                              |
+| 值                             | Name                                                                      | 描述                                                                                                                       |
 | ----------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | <a id='ILLUMINATOR_MODE_UNKNOWN'></a>0 | [ILLUMINATOR_MODE_UNKNOWN](#ILLUMINATOR_MODE_UNKNOWN)                   | Illuminator mode is not specified/unknown                                                                                |
 | <a id='ILLUMINATOR_MODE_INTERNAL_CONTROL'></a>1 | [ILLUMINATOR_MODE_INTERNAL_CONTROL](#ILLUMINATOR_MODE_INTERNAL_CONTROL) | Illuminator behavior is controlled by [MAV_CMD_DO_ILLUMINATOR_CONFIGURE](#MAV_CMD_DO_ILLUMINATOR_CONFIGURE) settings |
@@ -5725,7 +5725,7 @@ Modes of illuminator
 
 (Bitmask) Illuminator module error flags (bitmap, 0 means no error)
 
-| Value                         | Name                                                                                                        | Description                                  |
+| 值                             | Name                                                                                                        | 描述                                           |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
 | <a id='ILLUMINATOR_ERROR_FLAGS_THERMAL_THROTTLING'></a>1 | [ILLUMINATOR_ERROR_FLAGS_THERMAL_THROTTLING](#ILLUMINATOR_ERROR_FLAGS_THERMAL_THROTTLING)               | Illuminator thermal throttling error.        |
 | <a id='ILLUMINATOR_ERROR_FLAGS_OVER_TEMPERATURE_SHUTDOWN'></a>2 | [ILLUMINATOR_ERROR_FLAGS_OVER_TEMPERATURE_SHUTDOWN](#ILLUMINATOR_ERROR_FLAGS_OVER_TEMPERATURE_SHUTDOWN) | Illuminator over temperature shutdown error. |
@@ -5733,29 +5733,29 @@ Modes of illuminator
 
 ### MAV_AUTOPILOT — \[from: [minimal](../messages/minimal.md#MAV_AUTOPILOT)\] {#MAV_AUTOPILOT}
 
-Micro air vehicle / autopilot classes. This identifies the individual model.
+Micro air vehicle / autopilot classes. 这里标明了每个单个模型。
 
-| Value                          | Name                                                                                                                            | Description                                                                 |
+| 值                              | Name                                                                                                                            | 描述                                                                          |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| <a id='MAV_AUTOPILOT_GENERIC'></a>0  | [MAV_AUTOPILOT_GENERIC](#MAV_AUTOPILOT_GENERIC)                                                                               | Generic autopilot, full support for everything                              |
-| <a id='MAV_AUTOPILOT_RESERVED'></a>1  | [MAV_AUTOPILOT_RESERVED](#MAV_AUTOPILOT_RESERVED)                                                                             | Reserved for future use.                                                    |
-| <a id='MAV_AUTOPILOT_SLUGS'></a>2  | [MAV_AUTOPILOT_SLUGS](#MAV_AUTOPILOT_SLUGS)                                                                                   | SLUGS autopilot, http://slugsuav.soe.ucsc.edu                               |
+| <a id='MAV_AUTOPILOT_GENERIC'></a>0  | [MAV_AUTOPILOT_GENERIC](#MAV_AUTOPILOT_GENERIC)                                                                               | 通用自动驾驶仪，完全支持所有                                                              |
+| <a id='MAV_AUTOPILOT_RESERVED'></a>1  | [MAV_AUTOPILOT_RESERVED](#MAV_AUTOPILOT_RESERVED)                                                                             | 保留以备将来使用。                                                                   |
+| <a id='MAV_AUTOPILOT_SLUGS'></a>2  | [MAV_AUTOPILOT_SLUGS](#MAV_AUTOPILOT_SLUGS)                                                                                   | SLUGS 自动驾驶仪，http://slugsuav.soe.ucsc.edu                                    |
 | <a id='MAV_AUTOPILOT_ARDUPILOTMEGA'></a>3  | [MAV_AUTOPILOT_ARDUPILOTMEGA](#MAV_AUTOPILOT_ARDUPILOTMEGA)                                                                   | ArduPilot - Plane/Copter/Rover/Sub/Tracker, https://ardupilot.org           |
-| <a id='MAV_AUTOPILOT_OPENPILOT'></a>4  | [MAV_AUTOPILOT_OPENPILOT](#MAV_AUTOPILOT_OPENPILOT)                                                                           | OpenPilot, http://openpilot.org                                             |
+| <a id='MAV_AUTOPILOT_OPENPILOT'></a>4  | [MAV_AUTOPILOT_OPENPILOT](#MAV_AUTOPILOT_OPENPILOT)                                                                           | OpenPilot，http://openpilot.org                                              |
 | <a id='MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY'></a>5  | [MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY](#MAV_AUTOPILOT_GENERIC_WAYPOINTS_ONLY)                                               | Generic autopilot only supporting simple waypoints                          |
 | <a id='MAV_AUTOPILOT_GENERIC_WAYPOINTS_AND_SIMPLE_NAVIGATION_ONLY'></a>6  | [MAV_AUTOPILOT_GENERIC_WAYPOINTS_AND_SIMPLE_NAVIGATION_ONLY](#MAV_AUTOPILOT_GENERIC_WAYPOINTS_AND_SIMPLE_NAVIGATION_ONLY) | Generic autopilot supporting waypoints and other simple navigation commands |
-| <a id='MAV_AUTOPILOT_GENERIC_MISSION_FULL'></a>7  | [MAV_AUTOPILOT_GENERIC_MISSION_FULL](#MAV_AUTOPILOT_GENERIC_MISSION_FULL)                                                   | Generic autopilot supporting the full mission command set                   |
-| <a id='MAV_AUTOPILOT_INVALID'></a>8  | [MAV_AUTOPILOT_INVALID](#MAV_AUTOPILOT_INVALID)                                                                               | No valid autopilot, e.g. a GCS or other MAVLink component                   |
-| <a id='MAV_AUTOPILOT_PPZ'></a>9  | [MAV_AUTOPILOT_PPZ](#MAV_AUTOPILOT_PPZ)                                                                                       | PPZ UAV - http://nongnu.org/paparazzi                                       |
-| <a id='MAV_AUTOPILOT_UDB'></a>10 | [MAV_AUTOPILOT_UDB](#MAV_AUTOPILOT_UDB)                                                                                       | UAV Dev Board                                                               |
+| <a id='MAV_AUTOPILOT_GENERIC_MISSION_FULL'></a>7  | [MAV_AUTOPILOT_GENERIC_MISSION_FULL](#MAV_AUTOPILOT_GENERIC_MISSION_FULL)                                                   | 支持所有任务命令的通用自动驾驶仪                                                            |
+| <a id='MAV_AUTOPILOT_INVALID'></a>8  | [MAV_AUTOPILOT_INVALID](#MAV_AUTOPILOT_INVALID)                                                                               | 没有有效的自动驾驶仪，例如地面站或其他 MAVLink 组件                                              |
+| <a id='MAV_AUTOPILOT_PPZ'></a>9  | [MAV_AUTOPILOT_PPZ](#MAV_AUTOPILOT_PPZ)                                                                                       | PPZ 无人机 - http://nongnu.org/paparazzi                                       |
+| <a id='MAV_AUTOPILOT_UDB'></a>10 | [MAV_AUTOPILOT_UDB](#MAV_AUTOPILOT_UDB)                                                                                       | 无人机开发板                                                                      |
 | <a id='MAV_AUTOPILOT_FP'></a>11 | [MAV_AUTOPILOT_FP](#MAV_AUTOPILOT_FP)                                                                                         | FlexiPilot                                                                  |
-| <a id='MAV_AUTOPILOT_PX4'></a>12 | [MAV_AUTOPILOT_PX4](#MAV_AUTOPILOT_PX4)                                                                                       | PX4 Autopilot - http://px4.io/                                              |
+| <a id='MAV_AUTOPILOT_PX4'></a>12 | [MAV_AUTOPILOT_PX4](#MAV_AUTOPILOT_PX4)                                                                                       | PX4 自动驾驶仪 - http://px4.io/                                                  |
 | <a id='MAV_AUTOPILOT_SMACCMPILOT'></a>13 | [MAV_AUTOPILOT_SMACCMPILOT](#MAV_AUTOPILOT_SMACCMPILOT)                                                                       | SMACCMPilot - http://smaccmpilot.org                                        |
 | <a id='MAV_AUTOPILOT_AUTOQUAD'></a>14 | [MAV_AUTOPILOT_AUTOQUAD](#MAV_AUTOPILOT_AUTOQUAD)                                                                             | AutoQuad -- http://autoquad.org                                             |
 | <a id='MAV_AUTOPILOT_ARMAZILA'></a>15 | [MAV_AUTOPILOT_ARMAZILA](#MAV_AUTOPILOT_ARMAZILA)                                                                             | Armazila -- http://armazila.com                                             |
 | <a id='MAV_AUTOPILOT_AEROB'></a>16 | [MAV_AUTOPILOT_AEROB](#MAV_AUTOPILOT_AEROB)                                                                                   | Aerob -- http://aerob.ru                                                    |
-| <a id='MAV_AUTOPILOT_ASLUAV'></a>17 | [MAV_AUTOPILOT_ASLUAV](#MAV_AUTOPILOT_ASLUAV)                                                                                 | ASLUAV autopilot -- http://www.asl.ethz.ch                                  |
-| <a id='MAV_AUTOPILOT_SMARTAP'></a>18 | [MAV_AUTOPILOT_SMARTAP](#MAV_AUTOPILOT_SMARTAP)                                                                               | SmartAP Autopilot - http://sky-drones.com                                   |
+| <a id='MAV_AUTOPILOT_ASLUAV'></a>17 | [MAV_AUTOPILOT_ASLUAV](#MAV_AUTOPILOT_ASLUAV)                                                                                 | ASLUAV 自动驾驶仪 -- http://www.asl.ethz.ch                                      |
+| <a id='MAV_AUTOPILOT_SMARTAP'></a>18 | [MAV_AUTOPILOT_SMARTAP](#MAV_AUTOPILOT_SMARTAP)                                                                               | SmartAP自动驾驶仪 - http://sky-drones.com                                        |
 | <a id='MAV_AUTOPILOT_AIRRAILS'></a>19 | [MAV_AUTOPILOT_AIRRAILS](#MAV_AUTOPILOT_AIRRAILS)                                                                             | AirRails - http://uaventure.com                                             |
 | <a id='MAV_AUTOPILOT_REFLEX'></a>20 | [MAV_AUTOPILOT_REFLEX](#MAV_AUTOPILOT_REFLEX)                                                                                 | Fusion Reflex - https://fusion.engineering                                  |
 
@@ -5763,23 +5763,23 @@ Micro air vehicle / autopilot classes. This identifies the individual model.
 
 MAVLINK component type reported in HEARTBEAT message. Flight controllers must report the type of the vehicle on which they are mounted (e.g. [MAV_TYPE_OCTOROTOR](#MAV_TYPE_OCTOROTOR)). All other components must report a value appropriate for their type (e.g. a camera must use [MAV_TYPE_CAMERA](#MAV_TYPE_CAMERA)).
 
-| Value                          | Name                                                                          | Description                                                                                                                                                                                                                                                                                                                       |
+| 值                              | Name                                                                          | 描述                                                                                                                                                                                                                                                                                                                                |
 | ------------------------------ | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id='MAV_TYPE_GENERIC'></a>0  | [MAV_TYPE_GENERIC](#MAV_TYPE_GENERIC)                                       | Generic micro air vehicle                                                                                                                                                                                                                                                                                                         |
-| <a id='MAV_TYPE_FIXED_WING'></a>1  | [MAV_TYPE_FIXED_WING](#MAV_TYPE_FIXED_WING)                                 | Fixed wing aircraft.                                                                                                                                                                                                                                                                                                              |
-| <a id='MAV_TYPE_QUADROTOR'></a>2  | [MAV_TYPE_QUADROTOR](#MAV_TYPE_QUADROTOR)                                   | Quadrotor                                                                                                                                                                                                                                                                                                                         |
-| <a id='MAV_TYPE_COAXIAL'></a>3  | [MAV_TYPE_COAXIAL](#MAV_TYPE_COAXIAL)                                       | Coaxial helicopter                                                                                                                                                                                                                                                                                                                |
-| <a id='MAV_TYPE_HELICOPTER'></a>4  | [MAV_TYPE_HELICOPTER](#MAV_TYPE_HELICOPTER)                                 | Normal helicopter with tail rotor.                                                                                                                                                                                                                                                                                                |
-| <a id='MAV_TYPE_ANTENNA_TRACKER'></a>5  | [MAV_TYPE_ANTENNA_TRACKER](#MAV_TYPE_ANTENNA_TRACKER)                       | Ground installation                                                                                                                                                                                                                                                                                                               |
-| <a id='MAV_TYPE_GCS'></a>6  | [MAV_TYPE_GCS](#MAV_TYPE_GCS)                                               | Operator control unit / ground control station                                                                                                                                                                                                                                                                                    |
-| <a id='MAV_TYPE_AIRSHIP'></a>7  | [MAV_TYPE_AIRSHIP](#MAV_TYPE_AIRSHIP)                                       | Airship, controlled                                                                                                                                                                                                                                                                                                               |
-| <a id='MAV_TYPE_FREE_BALLOON'></a>8  | [MAV_TYPE_FREE_BALLOON](#MAV_TYPE_FREE_BALLOON)                             | Free balloon, uncontrolled                                                                                                                                                                                                                                                                                                        |
-| <a id='MAV_TYPE_ROCKET'></a>9  | [MAV_TYPE_ROCKET](#MAV_TYPE_ROCKET)                                         | Rocket                                                                                                                                                                                                                                                                                                                            |
-| <a id='MAV_TYPE_GROUND_ROVER'></a>10 | [MAV_TYPE_GROUND_ROVER](#MAV_TYPE_GROUND_ROVER)                             | Ground rover                                                                                                                                                                                                                                                                                                                      |
-| <a id='MAV_TYPE_SURFACE_BOAT'></a>11 | [MAV_TYPE_SURFACE_BOAT](#MAV_TYPE_SURFACE_BOAT)                             | Surface vessel, boat, ship                                                                                                                                                                                                                                                                                                        |
-| <a id='MAV_TYPE_SUBMARINE'></a>12 | [MAV_TYPE_SUBMARINE](#MAV_TYPE_SUBMARINE)                                   | Submarine                                                                                                                                                                                                                                                                                                                         |
-| <a id='MAV_TYPE_HEXAROTOR'></a>13 | [MAV_TYPE_HEXAROTOR](#MAV_TYPE_HEXAROTOR)                                   | Hexarotor                                                                                                                                                                                                                                                                                                                         |
-| <a id='MAV_TYPE_OCTOROTOR'></a>14 | [MAV_TYPE_OCTOROTOR](#MAV_TYPE_OCTOROTOR)                                   | Octorotor                                                                                                                                                                                                                                                                                                                         |
+| <a id='MAV_TYPE_GENERIC'></a>0  | [MAV_TYPE_GENERIC](#MAV_TYPE_GENERIC)                                       | 通用微型飞行器                                                                                                                                                                                                                                                                                                                           |
+| <a id='MAV_TYPE_FIXED_WING'></a>1  | [MAV_TYPE_FIXED_WING](#MAV_TYPE_FIXED_WING)                                 | 固定翼。                                                                                                                                                                                                                                                                                                                              |
+| <a id='MAV_TYPE_QUADROTOR'></a>2  | [MAV_TYPE_QUADROTOR](#MAV_TYPE_QUADROTOR)                                   | 四旋翼                                                                                                                                                                                                                                                                                                                               |
+| <a id='MAV_TYPE_COAXIAL'></a>3  | [MAV_TYPE_COAXIAL](#MAV_TYPE_COAXIAL)                                       | 共轴直升机                                                                                                                                                                                                                                                                                                                             |
+| <a id='MAV_TYPE_HELICOPTER'></a>4  | [MAV_TYPE_HELICOPTER](#MAV_TYPE_HELICOPTER)                                 | 带尾桨的普通直升机。                                                                                                                                                                                                                                                                                                                        |
+| <a id='MAV_TYPE_ANTENNA_TRACKER'></a>5  | [MAV_TYPE_ANTENNA_TRACKER](#MAV_TYPE_ANTENNA_TRACKER)                       | 地面安装                                                                                                                                                                                                                                                                                                                              |
+| <a id='MAV_TYPE_GCS'></a>6  | [MAV_TYPE_GCS](#MAV_TYPE_GCS)                                               | 操作员控制单元/地面站                                                                                                                                                                                                                                                                                                                       |
+| <a id='MAV_TYPE_AIRSHIP'></a>7  | [MAV_TYPE_AIRSHIP](#MAV_TYPE_AIRSHIP)                                       | 可控飞艇                                                                                                                                                                                                                                                                                                                              |
+| <a id='MAV_TYPE_FREE_BALLOON'></a>8  | [MAV_TYPE_FREE_BALLOON](#MAV_TYPE_FREE_BALLOON)                             | 不可控的热气球                                                                                                                                                                                                                                                                                                                           |
+| <a id='MAV_TYPE_ROCKET'></a>9  | [MAV_TYPE_ROCKET](#MAV_TYPE_ROCKET)                                         | 火箭                                                                                                                                                                                                                                                                                                                                |
+| <a id='MAV_TYPE_GROUND_ROVER'></a>10 | [MAV_TYPE_GROUND_ROVER](#MAV_TYPE_GROUND_ROVER)                             | 地面小车                                                                                                                                                                                                                                                                                                                              |
+| <a id='MAV_TYPE_SURFACE_BOAT'></a>11 | [MAV_TYPE_SURFACE_BOAT](#MAV_TYPE_SURFACE_BOAT)                             | 水面舰艇，小船，轮船                                                                                                                                                                                                                                                                                                                        |
+| <a id='MAV_TYPE_SUBMARINE'></a>12 | [MAV_TYPE_SUBMARINE](#MAV_TYPE_SUBMARINE)                                   | 潜艇                                                                                                                                                                                                                                                                                                                                |
+| <a id='MAV_TYPE_HEXAROTOR'></a>13 | [MAV_TYPE_HEXAROTOR](#MAV_TYPE_HEXAROTOR)                                   | 六旋翼                                                                                                                                                                                                                                                                                                                               |
+| <a id='MAV_TYPE_OCTOROTOR'></a>14 | [MAV_TYPE_OCTOROTOR](#MAV_TYPE_OCTOROTOR)                                   | 八旋翼                                                                                                                                                                                                                                                                                                                               |
 | <a id='MAV_TYPE_TRICOPTER'></a>15 | [MAV_TYPE_TRICOPTER](#MAV_TYPE_TRICOPTER)                                   | Tricopter                                                                                                                                                                                                                                                                                                                         |
 | <a id='MAV_TYPE_FLAPPING_WING'></a>16 | [MAV_TYPE_FLAPPING_WING](#MAV_TYPE_FLAPPING_WING)                           | Flapping wing                                                                                                                                                                                                                                                                                                                     |
 | <a id='MAV_TYPE_KITE'></a>17 | [MAV_TYPE_KITE](#MAV_TYPE_KITE)                                             | Kite                                                                                                                                                                                                                                                                                                                              |
@@ -5815,7 +5815,7 @@ MAVLINK component type reported in HEARTBEAT message. Flight controllers must re
 
 (Bitmask) These flags encode the MAV mode.
 
-| Value                           | Name                                                                          | Description                                                                                                                                                                                                                                                                                                                                                        |
+| 值                               | Name                                                                          | 描述                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id='MAV_MODE_FLAG_CUSTOM_MODE_ENABLED'></a>1   | [MAV_MODE_FLAG_CUSTOM_MODE_ENABLED](#MAV_MODE_FLAG_CUSTOM_MODE_ENABLED)   | 0b00000001 Reserved for future use.                                                                                                                                                                                                                                                                                                                                |
 | <a id='MAV_MODE_FLAG_TEST_ENABLED'></a>2   | [MAV_MODE_FLAG_TEST_ENABLED](#MAV_MODE_FLAG_TEST_ENABLED)                 | 0b00000010 system has a test mode enabled. This flag is intended for temporary system tests and should not be used for stable implementations.                                                                                                                                                                                                                     |
@@ -5830,7 +5830,7 @@ MAVLINK component type reported in HEARTBEAT message. Flight controllers must re
 
 (Bitmask) These values encode the bit positions of the decode position. These values can be used to read the value of a flag bit by combining the base_mode variable with AND with the flag position value. The result will be either 0 or 1, depending on if the flag is set or not.
 
-| Value                           | Name                                                                                          | Description           |
+| 值                               | Name                                                                                          | 描述                    |
 | ------------------------------- | --------------------------------------------------------------------------------------------- | --------------------- |
 | <a id='MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE'></a>1   | [MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE](#MAV_MODE_FLAG_DECODE_POSITION_CUSTOM_MODE) | Eighth bit: 00000001  |
 | <a id='MAV_MODE_FLAG_DECODE_POSITION_TEST'></a>2   | [MAV_MODE_FLAG_DECODE_POSITION_TEST](#MAV_MODE_FLAG_DECODE_POSITION_TEST)                 | Seventh bit: 00000010 |
@@ -5843,7 +5843,7 @@ MAVLINK component type reported in HEARTBEAT message. Flight controllers must re
 
 ### MAV_STATE — \[from: [minimal](../messages/minimal.md#MAV_STATE)\] {#MAV_STATE}
 
-| Value                         | Name                                                            | Description                                                                                                                              |
+| 值                             | Name                                                            | 描述                                                                                                                                       |
 | ----------------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_STATE_UNINIT'></a>0 | [MAV_STATE_UNINIT](#MAV_STATE_UNINIT)                         | Uninitialized system, state is unknown.                                                                                                  |
 | <a id='MAV_STATE_BOOT'></a>1 | [MAV_STATE_BOOT](#MAV_STATE_BOOT)                             | System is booting up.                                                                                                                    |
@@ -5861,7 +5861,7 @@ Component ids (values) for the different types and instances of onboard hardware
 
 Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The [MAV_COMP_ID_ALL](#MAV_COMP_ID_ALL) value is used to indicate messages that must be processed by all components. When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded.
 
-| Value                           | Name                                                                              | Description                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| 值                               | Name                                                                              | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ------------------------------- | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_COMP_ID_ALL'></a>0   | [MAV_COMP_ID_ALL](#MAV_COMP_ID_ALL)                                             | Target id (target_component) used to broadcast messages to all components of the receiving system. Components should attempt to process messages with this component ID and forward to components on any other interfaces. Note: This is not a valid *source* component id for a message.                                                                                                                                              |
 | <a id='MAV_COMP_ID_AUTOPILOT1'></a>1   | [MAV_COMP_ID_AUTOPILOT1](#MAV_COMP_ID_AUTOPILOT1)                               | System flight controller component ("autopilot"). Only one autopilot is expected in a particular system.                                                                                                                                                                                                                                                                                                                               |
@@ -6006,12 +6006,12 @@ Components must use the appropriate ID in their source address when sending mess
 
 Navigate to waypoint. This is intended for use in missions (for guided commands outside of missions use [MAV_CMD_DO_REPOSITION](#MAV_CMD_DO_REPOSITION)).
 
-| Param (Label)     | Description                                                                                                                                                       | Values | Units |
+| Param (Label)     | 描述                                                                                                                                                                | 值      | Units |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ----- |
 | 1 (Hold)          | Hold time. (ignored by fixed wing, time to stay at waypoint for rotary wing)                                                                                      | min: 0 | s     |
 | 2 (Accept Radius) | Acceptance radius (if the sphere with this radius is hit, the waypoint counts as reached)                                                                         | min: 0 | m     |
 | 3 (Pass Radius)   | 0 to pass through the WP, if > 0 radius to pass by WP. Positive value for clockwise orbit, negative value for counter-clockwise orbit. Allows trajectory control. |        | m     |
-| 4 (Yaw)           | Desired yaw angle at waypoint (rotary wing). NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).                  |        | deg   |
+| 4 (Yaw)           | Desired yaw angle at waypoint (rotary wing). NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).                  |        | 度     |
 | 5 (Latitude)      | Latitude                                                                                                                                                          |        |       |
 | 6 (Longitude)     | Longitude                                                                                                                                                         |        |       |
 | 7 (Altitude)      | Altitude                                                                                                                                                          |        | m     |
@@ -6020,12 +6020,12 @@ Navigate to waypoint. This is intended for use in missions (for guided commands 
 
 Loiter around this waypoint an unlimited amount of time
 
-| Param (Label) | Description                                                                                                                             | Units |
+| Param (Label) | 描述                                                                                                                                      | Units |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----- |
 | 1             | Empty                                                                                                                                   |       |
 | 2             | Empty                                                                                                                                   |       |
 | 3 (Radius)    | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise | m     |
-| 4 (Yaw)       | Desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).                  | deg   |
+| 4 (Yaw)       | Desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).                  | 度     |
 | 5 (Latitude)  | Latitude                                                                                                                                |       |
 | 6 (Longitude) | Longitude                                                                                                                               |       |
 | 7 (Altitude)  | Altitude                                                                                                                                | m     |
@@ -6034,7 +6034,7 @@ Loiter around this waypoint an unlimited amount of time
 
 Loiter around this waypoint for X turns
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Values               | Units |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 值                    | Units |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----- |
 | 1 (Turns)            | Number of turns.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | min: 0               |       |
 | 2 (Heading Required) | Leave loiter circle only once heading towards the next waypoint (0 = False)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | min: 0 max: 1 inc: 1 |       |
@@ -6048,7 +6048,7 @@ Loiter around this waypoint for X turns
 
 Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-only moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint.
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Values               | Units |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 值                    | Units |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----- |
 | 1 (Time)             | Loiter time (only starts once Lat, Lon and Alt is reached).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | min: 0               | s     |
 | 2 (Heading Required) | Leave loiter circle only once heading towards the next waypoint (0 = False)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | min: 0 max: 1 inc: 1 |       |
@@ -6062,26 +6062,26 @@ Loiter at the specified latitude, longitude and altitude for a certain amount of
 
 Return to launch location
 
-| Param (Label) | Description |
-| ------------- | ----------- |
-| 1             | Empty       |
-| 2             | Empty       |
-| 3             | Empty       |
-| 4             | Empty       |
-| 5             | Empty       |
-| 6             | Empty       |
-| 7             | Empty       |
+| Param (Label) | 描述    |
+| ------------- | ----- |
+| 1             | Empty |
+| 2             | Empty |
+| 3             | Empty |
+| 4             | Empty |
+| 5             | Empty |
+| 6             | Empty |
+| 7             | Empty |
 
 ### MAV_CMD_NAV_LAND (21) {#MAV_CMD_NAV_LAND}
 
 Land at location.
 
-| Param (Label) | Description                                                                                                            | Values                                        | Units |
+| Param (Label) | 描述                                                                                                                     | 值                                             | Units |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ----- |
 | 1 (Abort Alt) | Minimum target altitude if landing is aborted (0 = undefined/use system default).                                      |                                               | m     |
 | 2 (Land Mode) | Precision land mode.                                                                                                   | [PRECISION_LAND_MODE](#PRECISION_LAND_MODE) |       |
 | 3             | Empty.                                                                                                                 |                                               |       |
-| 4 (Yaw Angle) | Desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |                                               | deg   |
+| 4 (Yaw Angle) | Desired yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |                                               | 度     |
 | 5 (Latitude)  | Latitude.                                                                                                              |                                               |       |
 | 6 (Longitude) | Longitude.                                                                                                             |                                               |       |
 | 7 (Altitude)  | Landing altitude (ground level in current frame).                                                                      |                                               | m     |
@@ -6090,12 +6090,12 @@ Land at location.
 
 Takeoff from ground / hand. Vehicles that support multiple takeoff modes (e.g. VTOL quadplane) should take off using the currently configured mode.
 
-| Param (Label) | Description                                                                                                                                                            | Units |
+| Param (Label) | 描述                                                                                                                                                                     | Units |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| 1 (Pitch)     | Minimum pitch (if airspeed sensor present), desired pitch without sensor                                                                                               | deg   |
+| 1 (Pitch)     | Minimum pitch (if airspeed sensor present), desired pitch without sensor                                                                                               | 度     |
 | 2             | Empty                                                                                                                                                                  |       |
 | 3             | Empty                                                                                                                                                                  |       |
-| 4 (Yaw)       | Yaw angle (if magnetometer present), ignored without magnetometer. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). | deg   |
+| 4 (Yaw)       | Yaw angle (if magnetometer present), ignored without magnetometer. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). | 度     |
 | 5 (Latitude)  | Latitude                                                                                                                                                               |       |
 | 6 (Longitude) | Longitude                                                                                                                                                              |       |
 | 7 (Altitude)  | Altitude                                                                                                                                                               | m     |
@@ -6104,7 +6104,7 @@ Takeoff from ground / hand. Vehicles that support multiple takeoff modes (e.g. V
 
 Land at local position (local frame only)
 
-| Param (Label)    | Description                                                                                                                                                                                                                                                          | Values        | Units |
+| Param (Label)    | 描述                                                                                                                                                                                                                                                                   | 值             | Units |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ----- |
 | 1 (Target)       | Landing target number (if available)                                                                                                                                                                                                                                 | min: 0 inc: 1 |       |
 | 2 (Offset)       | Maximum accepted offset from desired landing position - computed magnitude from spherical coordinates: d = sqrt(x^2 + y^2 + z^2), which gives the maximum accepted distance between the desired landing position and the position where the vehicle is about to land | min: 0        | m     |
@@ -6118,7 +6118,7 @@ Land at local position (local frame only)
 
 Takeoff from local position (local frame only)
 
-| Param (Label)   | Description                                                                                        | Units |
+| Param (Label)   | 描述                                                                                                 | Units |
 | --------------- | -------------------------------------------------------------------------------------------------- | ----- |
 | 1 (Pitch)       | Minimum pitch (if airspeed sensor present), desired pitch without sensor                           | rad   |
 | 2               | Empty                                                                                              |       |
@@ -6132,12 +6132,12 @@ Takeoff from local position (local frame only)
 
 Vehicle following, i.e. this waypoint represents the position of a moving vehicle
 
-| Param (Label)    | Description                                                                                                    | Values | Units |
+| Param (Label)    | 描述                                                                                                             | 值      | Units |
 | ---------------- | -------------------------------------------------------------------------------------------------------------- | ------ | ----- |
 | 1 (Following)    | Following logic to use (e.g. loitering or sinusoidal following) - depends on specific autopilot implementation | inc: 1 |       |
 | 2 (Ground Speed) | Ground speed of vehicle to be followed                                                                         |        | m/s   |
 | 3 (Radius)       | Radius around waypoint. If positive loiter clockwise, else counter-clockwise                                   |        | m     |
-| 4 (Yaw)          | Desired yaw angle.                                                                                             |        | deg   |
+| 4 (Yaw)          | Desired yaw angle.                                                                                             |        | 度     |
 | 5 (Latitude)     | Latitude                                                                                                       |        |       |
 | 6 (Longitude)    | Longitude                                                                                                      |        |       |
 | 7 (Altitude)     | Altitude                                                                                                       |        | m     |
@@ -6146,7 +6146,7 @@ Vehicle following, i.e. this waypoint represents the position of a moving vehicl
 
 Continue on the current course and climb/descend to specified altitude. When the altitude is reached continue to the next command (i.e., don't proceed to the next command until the desired altitude is reached.
 
-| Param (Label) | Description                                                                                                                                                                                                                                       | Values               | Units |
+| Param (Label) | 描述                                                                                                                                                                                                                                                | 值                    | Units |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----- |
 | 1 (Action)    | Climb or Descend (0 = Neutral, command completes when within 5m of this command's altitude, 1 = Climbing, command completes when at or above this command's altitude, 2 = Descending, command completes when at or below this command's altitude. | min: 0 max: 2 inc: 1 |       |
 | 2             | Empty                                                                                                                                                                                                                                             |                      |       |
@@ -6160,7 +6160,7 @@ Continue on the current course and climb/descend to specified altitude. When the
 
 Begin loiter at the specified Latitude and Longitude. If Lat=Lon=0, then loiter at the current position. Don't consider the navigation command complete (don't leave loiter) until the altitude has been reached. Additionally, if the Heading Required parameter is non-zero the aircraft will not leave the loiter until heading toward the next waypoint.
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Values               | Units |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 值                    | Units |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----- |
 | 1 (Heading Required) | Leave loiter circle only once heading towards the next waypoint (0 = False)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | min: 0 max: 1 inc: 1 |       |
 | 2 (Radius)           | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |                      | m     |
@@ -6174,7 +6174,7 @@ Begin loiter at the specified Latitude and Longitude. If Lat=Lon=0, then loiter 
 
 Begin following a target
 
-| Param (Label)     | Description                                                                                                           | Values                 | Units |
+| Param (Label)     | 描述                                                                                                                    | 值                      | Units |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----- |
 | 1 (System ID)     | System ID (of the FOLLOW_TARGET beacon). Send 0 to disable follow-me and return to the default position hold mode.    | min: 0 max: 255 inc: 1 |       |
 | 2                 | Reserved                                                                                                              |                        |       |
@@ -6188,7 +6188,7 @@ Begin following a target
 
 Reposition the MAV after a follow target command has been sent
 
-| Param (Label)       | Description                                                              | Units |
+| Param (Label)       | 描述                                                                       | Units |
 | ------------------- | ------------------------------------------------------------------------ | ----- |
 | 1 (Camera Q1)       | Camera q1 (where 0 is on the ray from the camera to the tracking device) |       |
 | 2 (Camera Q2)       | Camera q2                                                                |       |
@@ -6204,7 +6204,7 @@ Reposition the MAV after a follow target command has been sent
 
 Start orbiting on the circumference of a circle defined by the parameters. Setting values to NaN/INT32_MAX (as appropriate) results in using defaults.
 
-| Param (Label)    | Description                                                                                                                                                                                                    | Values                                        | Units |
+| Param (Label)    | 描述                                                                                                                                                                                                             | 值                                             | Units |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ----- |
 | 1 (Radius)       | Radius of the circle. Positive: orbit clockwise. Negative: orbit counter-clockwise. NaN: Use vehicle default radius, or current radius if already orbiting.                                                    |                                               | m     |
 | 2 (Velocity)     | Tangential Velocity. NaN: Use vehicle default velocity, or current velocity if already orbiting.                                                                                                               |                                               | m/s   |
@@ -6220,7 +6220,7 @@ Start orbiting on the circumference of a circle defined by the parameters. Setti
 
 Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.
 
-| Param (Label) | Description                                           | Values              |
+| Param (Label) | 描述                                                    | 值                   |
 | ------------- | ----------------------------------------------------- | ------------------- |
 | 1 (ROI Mode)  | Region of interest mode.                              | [MAV_ROI](#MAV_ROI) |
 | 2 (WP Index)  | Waypoint index/ target ID. (see MAV_ROI enum)         | min: 0 inc: 1       |
@@ -6234,12 +6234,12 @@ Sets the region of interest (ROI) for a sensor set or the vehicle itself. This c
 
 Control autonomous path planning on the MAV.
 
-| Param (Label)   | Description                                                                                                                                                         | Values               | Units |
+| Param (Label)   | 描述                                                                                                                                                                  | 值                    | Units |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----- |
 | 1 (Local Ctrl)  | 0: Disable local obstacle avoidance / local path planning (without resetting map), 1: Enable local path planning, 2: Enable and reset local path planning           | min: 0 max: 2 inc: 1 |       |
 | 2 (Global Ctrl) | 0: Disable full path planning (without resetting map), 1: Enable, 2: Enable and reset map/occupancy grid, 3: Enable and reset planned route, but not occupancy grid | min: 0 max: 3 inc: 1 |       |
 | 3               | Empty                                                                                                                                                               |                      |       |
-| 4 (Yaw)         | Yaw angle at goal                                                                                                                                                   |                      | deg   |
+| 4 (Yaw)         | Yaw angle at goal                                                                                                                                                   |                      | 度     |
 | 5 (Latitude/X)  | Latitude/X of goal                                                                                                                                                  |                      |       |
 | 6 (Longitude/Y) | Longitude/Y of goal                                                                                                                                                 |                      |       |
 | 7 (Altitude/Z)  | Altitude/Z of goal                                                                                                                                                  |                      |       |
@@ -6248,7 +6248,7 @@ Control autonomous path planning on the MAV.
 
 Navigate to waypoint using a spline path.
 
-| Param (Label)   | Description                                                                  | Values | Units |
+| Param (Label)   | 描述                                                                           | 值      | Units |
 | --------------- | ---------------------------------------------------------------------------- | ------ | ----- |
 | 1 (Hold)        | Hold time. (ignored by fixed wing, time to stay at waypoint for rotary wing) | min: 0 | s     |
 | 2               | Empty                                                                        |        |       |
@@ -6262,12 +6262,12 @@ Navigate to waypoint using a spline path.
 
 Takeoff from ground using VTOL mode, and transition to forward flight with specified heading. The command should be ignored by vehicles that dont support both VTOL and fixed-wing flight (multicopters, boats,etc.).
 
-| Param (Label)          | Description                                                                                                    | Values                                                | Units |
+| Param (Label)          | 描述                                                                                                             | 值                                                     | Units |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----- |
 | 1                      | Empty                                                                                                          |                                                       |       |
 | 2 (Transition Heading) | Front transition heading.                                                                                      | [VTOL_TRANSITION_HEADING](#VTOL_TRANSITION_HEADING) |       |
 | 3                      | Empty                                                                                                          |                                                       |       |
-| 4 (Yaw Angle)          | Yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |                                                       | deg   |
+| 4 (Yaw Angle)          | Yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). |                                                       | 度     |
 | 5 (Latitude)           | Latitude                                                                                                       |                                                       |       |
 | 6 (Longitude)          | Longitude                                                                                                      |                                                       |       |
 | 7 (Altitude)           | Altitude                                                                                                       |                                                       | m     |
@@ -6276,12 +6276,12 @@ Takeoff from ground using VTOL mode, and transition to forward flight with speci
 
 Land using VTOL mode
 
-| Param (Label)         | Description                                                                                                                  | Values                                            | Units |
+| Param (Label)         | 描述                                                                                                                           | 值                                                 | Units |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ----- |
 | 1 (Land Options)      | Landing behaviour.                                                                                                           | [NAV_VTOL_LAND_OPTIONS](#NAV_VTOL_LAND_OPTIONS) |       |
 | 2                     | Empty                                                                                                                        |                                                   |       |
 | 3 (Approach Altitude) | Approach altitude (with the same reference as the Altitude field). NaN if unspecified.                                       |                                                   | m     |
-| 4 (Yaw)               | Yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).               |                                                   | deg   |
+| 4 (Yaw)               | Yaw angle. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.).               |                                                   | 度     |
 | 5 (Latitude)          | Latitude                                                                                                                     |                                                   |       |
 | 6 (Longitude)         | Longitude                                                                                                                    |                                                   |       |
 | 7 (Ground Altitude)   | Altitude (ground level) relative to the current coordinate frame. NaN to use system default landing altitude (ignore value). |                                                   | m     |
@@ -6290,7 +6290,7 @@ Land using VTOL mode
 
 hand control over to an external controller
 
-| Param (Label) | Description          | Values               |
+| Param (Label) | 描述                   | 值                    |
 | ------------- | -------------------- | -------------------- |
 | 1 (Enable)    | On / Off (> 0.5f on) | min: 0 max: 1 inc: 1 |
 | 2             | Empty                |                      |
@@ -6304,7 +6304,7 @@ hand control over to an external controller
 
 Delay the next navigation command a number of seconds or until a specified time
 
-| Param (Label) | Description                             | Values                 | Units |
+| Param (Label) | 描述                                      | 值                      | Units |
 | ------------- | --------------------------------------- | ---------------------- | ----- |
 | 1 (Delay)     | Delay (-1 to enable time-of-day fields) | min: -1 inc: 1         | s     |
 | 2 (Hour)      | hour (24h format, UTC, -1 to ignore)    | min: -1 max: 23 inc: 1 |       |
@@ -6318,7 +6318,7 @@ Delay the next navigation command a number of seconds or until a specified time
 
 Descend and place payload. Vehicle moves to specified location, descends until it detects a hanging payload has reached the ground, and then releases the payload. If ground is not detected before the reaching the maximum descent value (param1), the command will complete without releasing the payload.
 
-| Param (Label)   | Description                  | Values | Units |
+| Param (Label)   | 描述                           | 值      | Units |
 | --------------- | ---------------------------- | ------ | ----- |
 | 1 (Max Descent) | Maximum distance to descend. | min: 0 | m     |
 | 2               | Empty                        |        |       |
@@ -6332,35 +6332,35 @@ Descend and place payload. Vehicle moves to specified location, descends until i
 
 NOP - This command is only used to mark the upper limit of the NAV/ACTION commands in the enumeration
 
-| Param (Label) | Description |
-| ------------- | ----------- |
-| 1             | Empty       |
-| 2             | Empty       |
-| 3             | Empty       |
-| 4             | Empty       |
-| 5             | Empty       |
-| 6             | Empty       |
-| 7             | Empty       |
+| Param (Label) | 描述    |
+| ------------- | ----- |
+| 1             | Empty |
+| 2             | Empty |
+| 3             | Empty |
+| 4             | Empty |
+| 5             | Empty |
+| 6             | Empty |
+| 7             | Empty |
 
 ### MAV_CMD_CONDITION_DELAY (112) {#MAV_CMD_CONDITION_DELAY}
 
 Delay mission state machine.
 
-| Param (Label) | Description | Values | Units |
-| ------------- | ----------- | ------ | ----- |
-| 1 (Delay)     | Delay       | min: 0 | s     |
-| 2             | Empty       |        |       |
-| 3             | Empty       |        |       |
-| 4             | Empty       |        |       |
-| 5             | Empty       |        |       |
-| 6             | Empty       |        |       |
-| 7             | Empty       |        |       |
+| Param (Label) | 描述    | 值      | Units |
+| ------------- | ----- | ------ | ----- |
+| 1 (Delay)     | Delay | min: 0 | s     |
+| 2             | Empty |        |       |
+| 3             | Empty |        |       |
+| 4             | Empty |        |       |
+| 5             | Empty |        |       |
+| 6             | Empty |        |       |
+| 7             | Empty |        |       |
 
 ### MAV_CMD_CONDITION_CHANGE_ALT (113) {#MAV_CMD_CONDITION_CHANGE_ALT}
 
 Ascend/descend to target altitude at specified rate. Delay mission state machine until desired altitude reached.
 
-| Param (Label) | Description            | Units |
+| Param (Label) | 描述                     | Units |
 | ------------- | ---------------------- | ----- |
 | 1 (Rate)      | Descent / Ascend rate. | m/s   |
 | 2             | Empty                  |       |
@@ -6374,23 +6374,23 @@ Ascend/descend to target altitude at specified rate. Delay mission state machine
 
 Delay mission state machine until within desired distance of next NAV point.
 
-| Param (Label) | Description | Values | Units |
-| ------------- | ----------- | ------ | ----- |
-| 1 (Distance)  | Distance.   | min: 0 | m     |
-| 2             | Empty       |        |       |
-| 3             | Empty       |        |       |
-| 4             | Empty       |        |       |
-| 5             | Empty       |        |       |
-| 6             | Empty       |        |       |
-| 7             | Empty       |        |       |
+| Param (Label) | 描述        | 值      | Units |
+| ------------- | --------- | ------ | ----- |
+| 1 (Distance)  | Distance. | min: 0 | m     |
+| 2             | Empty     |        |       |
+| 3             | Empty     |        |       |
+| 4             | Empty     |        |       |
+| 5             | Empty     |        |       |
+| 6             | Empty     |        |       |
+| 7             | Empty     |        |       |
 
 ### MAV_CMD_CONDITION_YAW (115) {#MAV_CMD_CONDITION_YAW}
 
 Reach a certain target angle.
 
-| Param (Label)     | Description                                                                                                   | Values                | Units |
+| Param (Label)     | 描述                                                                                                            | 值                     | Units |
 | ----------------- | ------------------------------------------------------------------------------------------------------------- | --------------------- | ----- |
-| 1 (Angle)         | target angle [0-360]. Absolute angles: 0 is north. Relative angle: 0 is initial yaw. Direction set by param3. | min: 0 max: 360       | deg   |
+| 1 (Angle)         | target angle [0-360]. Absolute angles: 0 is north. Relative angle: 0 is initial yaw. Direction set by param3. | min: 0 max: 360       | 度     |
 | 2 (Angular Speed) | angular speed                                                                                                 | min: 0                | deg/s |
 | 3 (Direction)     | direction: -1: counter clockwise, 0: shortest direction, 1: clockwise                                         | min: -1 max: 1 inc: 1 |       |
 | 4 (Relative)      | 0: absolute angle, 1: relative offset                                                                         | min: 0 max: 1 inc: 1  |       |
@@ -6402,21 +6402,21 @@ Reach a certain target angle.
 
 NOP - This command is only used to mark the upper limit of the CONDITION commands in the enumeration
 
-| Param (Label) | Description |
-| ------------- | ----------- |
-| 1             | Empty       |
-| 2             | Empty       |
-| 3             | Empty       |
-| 4             | Empty       |
-| 5             | Empty       |
-| 6             | Empty       |
-| 7             | Empty       |
+| Param (Label) | 描述    |
+| ------------- | ----- |
+| 1             | Empty |
+| 2             | Empty |
+| 3             | Empty |
+| 4             | Empty |
+| 5             | Empty |
+| 6             | Empty |
+| 7             | Empty |
 
 ### MAV_CMD_DO_SET_MODE (176) {#MAV_CMD_DO_SET_MODE}
 
 Set system mode.
 
-| Param (Label)      | Description                                                                                                     | Values                |
+| Param (Label)      | 描述                                                                                                              | 值                     |
 | ------------------ | --------------------------------------------------------------------------------------------------------------- | --------------------- |
 | 1 (Mode)           | Mode                                                                                                            | [MAV_MODE](#MAV_MODE) |
 | 2 (Custom Mode)    | Custom mode - this is system specific, please refer to the individual autopilot specifications for details.     |                       |
@@ -6430,7 +6430,7 @@ Set system mode.
 
 Jump to the desired command in the mission list. Repeat this action only the specified number of times
 
-| Param (Label) | Description     | Values        |
+| Param (Label) | 描述              | 值             |
 | ------------- | --------------- | ------------- |
 | 1 (Number)    | Sequence number | min: 0 inc: 1 |
 | 2 (Repeat)    | Repeat count    | min: 0 inc: 1 |
@@ -6444,7 +6444,7 @@ Jump to the desired command in the mission list. Repeat this action only the spe
 
 Change speed and/or throttle set points. The value persists until it is overridden or there is a mode change
 
-| Param (Label)  | Description                                                                              | Values                    | Units |
+| Param (Label)  | 描述                                                                                       | 值                         | Units |
 | -------------- | ---------------------------------------------------------------------------------------- | ------------------------- | ----- |
 | 1 (Speed Type) | Speed type of value set in param2 (such as airspeed, ground speed, and so on)            | [SPEED_TYPE](#SPEED_TYPE) |       |
 | 2 (Speed)      | Speed (-1 indicates no change, -2 indicates return to default vehicle speed)             | min: -2                   | m/s   |
@@ -6458,12 +6458,12 @@ Change speed and/or throttle set points. The value persists until it is overridd
 
 Sets the home position to either to the current position or a specified position. The home position is the default position that the system will return to and land on. The position is set automatically by the system during the takeoff (and may also be set using this command). Note: the current home position may be emitted in a [HOME_POSITION](#HOME_POSITION) message on request (using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE) with param1=242).
 
-| Param (Label)   | Description                                                                                                | Values               | Units |
+| Param (Label)   | 描述                                                                                                         | 值                    | Units |
 | --------------- | ---------------------------------------------------------------------------------------------------------- | -------------------- | ----- |
 | 1 (Use Current) | Use current (1=use current location, 0=use specified location)                                             | min: 0 max: 1 inc: 1 |       |
-| 2 (Roll)        | Roll angle (of surface). Range: -180..180 degrees. NAN or 0 means value not set. 0.01 indicates zero roll. | min: -180 max: 180   | deg   |
-| 3 (Pitch)       | Pitch angle (of surface). Range: -90..90 degrees. NAN or 0 means value not set. 0.01 means zero pitch.     | min: -90 max: 90     | deg   |
-| 4 (Yaw)         | Yaw angle. NaN to use default heading. Range: -180..180 degrees.                                           | min: -180 max: 180   | deg   |
+| 2 (Roll)        | Roll angle (of surface). Range: -180..180 degrees. NAN or 0 means value not set. 0.01 indicates zero roll. | min: -180 max: 180   | 度     |
+| 3 (Pitch)       | Pitch angle (of surface). Range: -90..90 degrees. NAN or 0 means value not set. 0.01 means zero pitch.     | min: -90 max: 90     | 度     |
+| 4 (Yaw)         | Yaw angle. NaN to use default heading. Range: -180..180 degrees.                                           | min: -180 max: 180   | 度     |
 | 5 (Latitude)    | Latitude                                                                                                   |                      |       |
 | 6 (Longitude)   | Longitude                                                                                                  |                      |       |
 | 7 (Altitude)    | Altitude                                                                                                   |                      | m     |
@@ -6474,7 +6474,7 @@ Sets the home position to either to the current position or a specified position
 
 Set a system parameter. Caution! Use of this command requires knowledge of the numeric enumeration value of the parameter.
 
-| Param (Label) | Description      | Values        |
+| Param (Label) | 描述               | 值             |
 | ------------- | ---------------- | ------------- |
 | 1 (Number)    | Parameter number | min: 0 inc: 1 |
 | 2 (Value)     | Parameter value  |               |
@@ -6488,7 +6488,7 @@ Set a system parameter. Caution! Use of this command requires knowledge of the n
 
 Set a relay to a condition.
 
-| Param (Label) | Description                                                          | Values        |
+| Param (Label) | 描述                                                                   | 值             |
 | ------------- | -------------------------------------------------------------------- | ------------- |
 | 1 (Instance)  | Relay instance number.                                               | min: 0 inc: 1 |
 | 2 (Setting)   | Setting. (1=on, 0=off, others possible depending on system hardware) | min: 0 inc: 1 |
@@ -6502,7 +6502,7 @@ Set a relay to a condition.
 
 Cycle a relay on and off for a desired number of cycles with a desired period.
 
-| Param (Label) | Description            | Values        | Units |
+| Param (Label) | 描述                     | 值             | Units |
 | ------------- | ---------------------- | ------------- | ----- |
 | 1 (Instance)  | Relay instance number. | min: 0 inc: 1 |       |
 | 2 (Count)     | Cycle count.           | min: 1 inc: 1 |       |
@@ -6516,7 +6516,7 @@ Cycle a relay on and off for a desired number of cycles with a desired period.
 
 Set a servo to a desired PWM value.
 
-| Param (Label) | Description             | Values        | Units |
+| Param (Label) | 描述                      | 值             | Units |
 | ------------- | ----------------------- | ------------- | ----- |
 | 1 (Instance)  | Servo instance number.  | min: 0 inc: 1 |       |
 | 2 (PWM)       | Pulse Width Modulation. | min: 0 inc: 1 | us    |
@@ -6530,7 +6530,7 @@ Set a servo to a desired PWM value.
 
 Cycle a between its nominal setting and a desired PWM for a desired number of cycles with a desired period.
 
-| Param (Label) | Description             | Values        | Units |
+| Param (Label) | 描述                      | 值             | Units |
 | ------------- | ----------------------- | ------------- | ----- |
 | 1 (Instance)  | Servo instance number.  | min: 0 inc: 1 |       |
 | 2 (PWM)       | Pulse Width Modulation. | min: 0 inc: 1 | us    |
@@ -6546,7 +6546,7 @@ Terminate flight immediately.
 
 Flight termination immediately and irreversibly terminates the current flight, returning the vehicle to ground. The vehicle will ignore RC or other input until it has been power-cycled. Termination may trigger safety measures, including: disabling motors and deployment of parachute on multicopters, and setting flight surfaces to initiate a landing pattern on fixed-wing). On multicopters without a parachute it may trigger a crash landing. Support for this command can be tested using the protocol bit: [MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION](#MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION). Support for this command can also be tested by sending the command with param1=0 (< 0.5); the ACK should be either [MAV_RESULT_FAILED](#MAV_RESULT_FAILED) or [MAV_RESULT_UNSUPPORTED](#MAV_RESULT_UNSUPPORTED).
 
-| Param (Label) | Description                                                                                      | Values               |
+| Param (Label) | 描述                                                                                               | 值                    |
 | ------------- | ------------------------------------------------------------------------------------------------ | -------------------- |
 | 1 (Terminate) | Flight termination activated if > 0.5. Otherwise not activated and ACK with MAV_RESULT_FAILED. | min: 0 max: 1 inc: 1 |
 | 2             | Empty                                                                                            |                      |
@@ -6560,7 +6560,7 @@ Flight termination immediately and irreversibly terminates the current flight, r
 
 Change altitude set point.
 
-| Param (Label) | Description            | Values                  | Units |
+| Param (Label) | 描述                     | 值                       | Units |
 | ------------- | ---------------------- | ----------------------- | ----- |
 | 1 (Altitude)  | Altitude.              |                         | m     |
 | 2 (Frame)     | Frame of new altitude. | [MAV_FRAME](#MAV_FRAME) |       |
@@ -6574,7 +6574,7 @@ Change altitude set point.
 
 Sets actuators (e.g. servos) to a desired value. The actuator numbers are mapped to specific outputs (e.g. on any MAIN or AUX PWM or UAVCAN) using a flight-stack specific mechanism (i.e. a parameter).
 
-| Param (Label)  | Description                                                            | Values         |
+| Param (Label)  | 描述                                                                     | 值              |
 | -------------- | ---------------------------------------------------------------------- | -------------- |
 | 1 (Actuator 1) | Actuator 1 value, scaled from [-1 to 1]. NaN to ignore.                | min: -1 max: 1 |
 | 2 (Actuator 2) | Actuator 2 value, scaled from [-1 to 1]. NaN to ignore.                | min: -1 max: 1 |
@@ -6592,7 +6592,7 @@ Mission item to specify the start of a failsafe/landing return-path segment (the
 
 A vehicle that is using missions for landing (e.g. in a return mode) will join the mission on the closest path of the return-path segment (instead of [MAV_CMD_DO_LAND_START](#MAV_CMD_DO_LAND_START) or the nearest waypoint). The main use case is to minimize the failsafe flight path in corridor missions, where the inbound/outbound paths are constrained (by geofences) to the same particular path. The [MAV_CMD_NAV_RETURN_PATH_START](#MAV_CMD_NAV_RETURN_PATH_START) would be placed at the start of the return path. If a failsafe occurs on the outbound path the vehicle will move to the nearest point on the return path (which is parallel for this kind of mission), effectively turning round and following the shortest path to landing. If a failsafe occurs on the inbound path the vehicle is already on the return segment and will continue to landing. The Latitude/Longitude/Altitude are optional, and may be set to 0 if not needed. If specified, the item defines the waypoint at which the return segment starts. If sent using as a command, the vehicle will perform a mission landing (using the land segment if defined) or reject the command if mission landings are not supported, or no mission landing is defined. When used as a command any position information in the command is ignored.
 
-| Param (Label) | Description              | Units |
+| Param (Label) | 描述                       | Units |
 | ------------- | ------------------------ | ----- |
 | 1             | Empty                    |       |
 | 2             | Empty                    |       |
@@ -6608,21 +6608,21 @@ Mission command to perform a landing. This is used as a marker in a mission to t
 
 It may also be sent via a [COMMAND_LONG](#COMMAND_LONG) to trigger a landing, in which case the nearest (geographically) landing sequence in the mission will be used. The Latitude/Longitude/Altitude is optional, and may be set to 0 if not needed. If specified then it will be used to help find the closest landing sequence.
 
-| Param (Label) | Description | Units |
-| ------------- | ----------- | ----- |
-| 1             | Empty       |       |
-| 2             | Empty       |       |
-| 3             | Empty       |       |
-| 4             | Empty       |       |
-| 5 (Latitude)  | Latitude    |       |
-| 6 (Longitude) | Longitude   |       |
-| 7 (Altitude)  | Altitude    | m     |
+| Param (Label) | 描述        | Units |
+| ------------- | --------- | ----- |
+| 1             | Empty     |       |
+| 2             | Empty     |       |
+| 3             | Empty     |       |
+| 4             | Empty     |       |
+| 5 (Latitude)  | Latitude  |       |
+| 6 (Longitude) | Longitude |       |
+| 7 (Altitude)  | Altitude  | m     |
 
 ### MAV_CMD_DO_RALLY_LAND (190) {#MAV_CMD_DO_RALLY_LAND}
 
 Mission command to perform a landing from a rally point.
 
-| Param (Label) | Description    | Units |
+| Param (Label) | 描述             | Units |
 | ------------- | -------------- | ----- |
 | 1 (Altitude)  | Break altitude | m     |
 | 2 (Speed)     | Landing speed  | m/s   |
@@ -6636,26 +6636,26 @@ Mission command to perform a landing from a rally point.
 
 Mission command to safely abort an autonomous landing.
 
-| Param (Label) | Description | Units |
-| ------------- | ----------- | ----- |
-| 1 (Altitude)  | Altitude    | m     |
-| 2             | Empty       |       |
-| 3             | Empty       |       |
-| 4             | Empty       |       |
-| 5             | Empty       |       |
-| 6             | Empty       |       |
-| 7             | Empty       |       |
+| Param (Label) | 描述       | Units |
+| ------------- | -------- | ----- |
+| 1 (Altitude)  | Altitude | m     |
+| 2             | Empty    |       |
+| 3             | Empty    |       |
+| 4             | Empty    |       |
+| 5             | Empty    |       |
+| 6             | Empty    |       |
+| 7             | Empty    |       |
 
 ### MAV_CMD_DO_REPOSITION (192) {#MAV_CMD_DO_REPOSITION}
 
 Reposition the vehicle to a specific WGS84 global position. This command is intended for guided commands (for missions use [MAV_CMD_NAV_WAYPOINT](#MAV_CMD_NAV_WAYPOINT) instead).
 
-| Param (Label) | Description                                                                                                                                                                                 | Values                                                | Units |
+| Param (Label) | 描述                                                                                                                                                                                          | 值                                                     | Units |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ----- |
 | 1 (Speed)     | Ground speed, less than 0 (-1) for default                                                                                                                                                  | min: -1                                               | m/s   |
 | 2 (Bitmask)   | Bitmask of option flags.                                                                                                                                                                    | [MAV_DO_REPOSITION_FLAGS](#MAV_DO_REPOSITION_FLAGS) |       |
 | 3 (Radius)    | Loiter radius for planes. Positive values only, direction is controlled by Yaw value. A value of zero or NaN is ignored.                                                                    |                                                       | m     |
-| 4 (Yaw)       | Yaw heading. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). For planes indicates loiter direction (0: clockwise, 1: counter clockwise) |                                                       | deg   |
+| 4 (Yaw)       | Yaw heading. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). For planes indicates loiter direction (0: clockwise, 1: counter clockwise) |                                                       | 度     |
 | 5 (Latitude)  | Latitude                                                                                                                                                                                    |                                                       |       |
 | 6 (Longitude) | Longitude                                                                                                                                                                                   |                                                       |       |
 | 7 (Altitude)  | Altitude                                                                                                                                                                                    |                                                       | m     |
@@ -6664,7 +6664,7 @@ Reposition the vehicle to a specific WGS84 global position. This command is inte
 
 If in a GPS controlled position mode, hold the current position or continue.
 
-| Param (Label) | Description                                                                                                                                                                                                                     | Values               |
+| Param (Label) | 描述                                                                                                                                                                                                                              | 值                    |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | 1 (Continue)  | 0: Pause current mission or reposition command, hold current position. 1: Continue mission. A VTOL capable vehicle should enter hover mode (multicopter and VTOL planes). A plane should loiter with the default loiter radius. | min: 0 max: 1 inc: 1 |
 | 2             | Reserved                                                                                                                                                                                                                        |                      |
@@ -6678,7 +6678,7 @@ If in a GPS controlled position mode, hold the current position or continue.
 
 Set moving direction to forward or reverse.
 
-| Param (Label) | Description                      | Values               |
+| Param (Label) | 描述                               | 值                    |
 | ------------- | -------------------------------- | -------------------- |
 | 1 (Reverse)   | Direction (0=Forward, 1=Reverse) | min: 0 max: 1 inc: 1 |
 | 2             | Empty                            |                      |
@@ -6692,7 +6692,7 @@ Set moving direction to forward or reverse.
 
 Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message.
 
-| Param (Label)        | Description                                                                                                                                                                               | Units |
+| Param (Label)        | 描述                                                                                                                                                                                        | Units |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
 | 1 (Gimbal device ID) | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). |       |
 | 2                    | Empty                                                                                                                                                                                     |       |
@@ -6706,21 +6706,21 @@ Sets the region of interest (ROI) to a location. This can then be used by the ve
 
 Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.
 
-| Param (Label)        | Description                                                                                                                                                                               | Units |
+| Param (Label)        | 描述                                                                                                                                                                                        | Units |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
 | 1 (Gimbal device ID) | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). |       |
 | 2                    | Empty                                                                                                                                                                                     |       |
 | 3                    | Empty                                                                                                                                                                                     |       |
 | 4                    | Empty                                                                                                                                                                                     |       |
-| 5 (Pitch Offset)     | Pitch offset from next waypoint, positive pitching up                                                                                                                                     | deg   |
-| 6 (Roll Offset)      | Roll offset from next waypoint, positive rolling to the right                                                                                                                             | deg   |
-| 7 (Yaw Offset)       | Yaw offset from next waypoint, positive yawing to the right                                                                                                                               | deg   |
+| 5 (Pitch Offset)     | Pitch offset from next waypoint, positive pitching up                                                                                                                                     | 度     |
+| 6 (Roll Offset)      | Roll offset from next waypoint, positive rolling to the right                                                                                                                             | 度     |
+| 7 (Yaw Offset)       | Yaw offset from next waypoint, positive yawing to the right                                                                                                                               | 度     |
 
 ### MAV_CMD_DO_SET_ROI_NONE (197) {#MAV_CMD_DO_SET_ROI_NONE}
 
 Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message. After this command the gimbal manager should go back to manual input if available, and otherwise assume a neutral position.
 
-| Param (Label)        | Description                                                                                                                                                                               |
+| Param (Label)        | 描述                                                                                                                                                                                        |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1 (Gimbal device ID) | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). |
 | 2                    | Empty                                                                                                                                                                                     |
@@ -6734,7 +6734,7 @@ Cancels any previous ROI command returning the vehicle/sensors to default flight
 
 Mount tracks system with specified system ID. Determination of target vehicle position may be done with [GLOBAL_POSITION_INT](#GLOBAL_POSITION_INT) or any other means. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message.
 
-| Param (Label)        | Description                                                                                                                                                                               | Values                 |
+| Param (Label)        | 描述                                                                                                                                                                                        | 值                      |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (System ID)        | System ID                                                                                                                                                                                 | min: 1 max: 255 inc: 1 |
 | 2 (Gimbal device ID) | Component ID of gimbal device to address (or 1-6 for non-MAVLink gimbal), 0 for all gimbal device components. Send command multiple times for more than one gimbal (but not all gimbals). |                        |
@@ -6743,7 +6743,7 @@ Mount tracks system with specified system ID. Determination of target vehicle po
 
 Control onboard camera system.
 
-| Param (Label)    | Description                                                           | Values               | Units |
+| Param (Label)    | 描述                                                                    | 值                    | Units |
 | ---------------- | --------------------------------------------------------------------- | -------------------- | ----- |
 | 1 (ID)           | Camera ID (-1 for all)                                                | min: -1 inc: 1       |       |
 | 2 (Transmission) | Transmission: 0: disabled, 1: enabled compressed, 2: enabled raw      | min: 0 max: 2 inc: 1 |       |
@@ -6759,7 +6759,7 @@ Control onboard camera system.
 
 Sets the region of interest (ROI) for a sensor set or the vehicle itself. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras.
 
-| Param (Label) | Description                                                                     | Values              |
+| Param (Label) | 描述                                                                              | 值                   |
 | ------------- | ------------------------------------------------------------------------------- | ------------------- |
 | 1 (ROI Mode)  | Region of interest mode.                                                        | [MAV_ROI](#MAV_ROI) |
 | 2 (WP Index)  | Waypoint index/ target ID (depends on param 1).                                 | min: 0 inc: 1       |
@@ -6773,7 +6773,7 @@ Sets the region of interest (ROI) for a sensor set or the vehicle itself. This c
 
 Configure digital camera. This is a fallback message for systems that have not yet implemented [PARAM_EXT_XXX](#PARAM_EXT_XXX) messages and camera definition files (see https://mavlink.io/en/services/camera_def.html ).
 
-| Param (Label)        | Description                                                          | Values        | Units |
+| Param (Label)        | 描述                                                                   | 值             | Units |
 | -------------------- | -------------------------------------------------------------------- | ------------- | ----- |
 | 1 (Mode)             | Modes: P, TV, AV, M, Etc.                                            | min: 0 inc: 1 |       |
 | 2 (Shutter Speed)    | Shutter speed: Divisor number for one second.                        | min: 0 inc: 1 |       |
@@ -6787,7 +6787,7 @@ Configure digital camera. This is a fallback message for systems that have not y
 
 Control digital camera. This is a fallback message for systems that have not yet implemented [PARAM_EXT_XXX](#PARAM_EXT_XXX) messages and camera definition files (see https://mavlink.io/en/services/camera_def.html ).
 
-| Param (Label)        | Description                                                                                                   |
+| Param (Label)        | 描述                                                                                                            |
 | -------------------- | ------------------------------------------------------------------------------------------------------------- |
 | 1 (Session Control)  | Session control e.g. show/hide lens                                                                           |
 | 2 (Zoom Absolute)    | Zoom's absolute position                                                                                      |
@@ -6803,7 +6803,7 @@ Control digital camera. This is a fallback message for systems that have not yet
 
 Mission command to configure a camera or antenna mount
 
-| Param (Label)        | Description                                                                    | Values                              |
+| Param (Label)        | 描述                                                                             | 值                                   |
 | -------------------- | ------------------------------------------------------------------------------ | ----------------------------------- |
 | 1 (Mode)             | Mount operation mode                                                           | [MAV_MOUNT_MODE](#MAV_MOUNT_MODE) |
 | 2 (Stabilize Roll)   | stabilize roll? (1 = yes, 0 = no)                                              | min: 0 max: 1 inc: 1                |
@@ -6819,7 +6819,7 @@ Mission command to configure a camera or antenna mount
 
 Mission command to control a camera or antenna mount
 
-| Param (Label) | Description                                                                         | Values                              | Units |
+| Param (Label) | 描述                                                                                  | 值                                   | Units |
 | ------------- | ----------------------------------------------------------------------------------- | ----------------------------------- | ----- |
 | 1 (Pitch)     | pitch depending on mount mode (degrees or degrees/second depending on pitch input). |                                     |       |
 | 2 (Roll)      | roll depending on mount mode (degrees or degrees/second depending on roll input).   |                                     |       |
@@ -6833,7 +6833,7 @@ Mission command to control a camera or antenna mount
 
 Mission command to set camera trigger distance for this flight. The camera is triggered each time this distance is exceeded. This command can also be used to set the shutter integration time for the camera.
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 | Units |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                      | Units |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----- |
 | 1 (Distance)         | Camera trigger distance. 0 to stop triggering.                                                                                                                                                                                                                                                                  | min: 0                 | m     |
 | 2 (Shutter)          | Camera shutter integration time. -1 or 0 to ignore                                                                                                                                                                                                                                                              | min: -1 inc: 1         | ms    |
@@ -6847,7 +6847,7 @@ Mission command to set camera trigger distance for this flight. The camera is tr
 
 Enable the geofence. This can be used in a mission or via the command protocol. The persistence/lifetime of the setting is undefined. Depending on flight stack implementation it may persist until superseded, or it may revert to a system default at the end of a mission. Flight stacks typically reset the setting to system defaults on reboot.
 
-| Param (Label) | Description                                                                                                                                                               | Values                    |
+| Param (Label) | 描述                                                                                                                                                                        | 值                         |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
 | 1 (Enable)    | enable? (0=disable, 1=enable, 2=disable_floor_only)                                                                                                                     | min: 0 max: 2 inc: 1      |
 | 2 (Types)     | Fence types to enable or disable as a bitmask. A value of 0 indicates that all fences should be enabled or disabled. This parameter is ignored if param 1 has the value 2 | [FENCE_TYPE](#FENCE_TYPE) |
@@ -6861,21 +6861,21 @@ Enable the geofence. This can be used in a mission or via the command protocol. 
 
 Mission item/command to release a parachute or enable/disable auto release.
 
-| Param (Label) | Description | Values                                |
-| ------------- | ----------- | ------------------------------------- |
-| 1 (Action)    | Action      | [PARACHUTE_ACTION](#PARACHUTE_ACTION) |
-| 2             | Empty       |                                       |
-| 3             | Empty       |                                       |
-| 4             | Empty       |                                       |
-| 5             | Empty       |                                       |
-| 6             | Empty       |                                       |
-| 7             | Empty       |                                       |
+| Param (Label) | 描述     | 值                                     |
+| ------------- | ------ | ------------------------------------- |
+| 1 (Action)    | Action | [PARACHUTE_ACTION](#PARACHUTE_ACTION) |
+| 2             | Empty  |                                       |
+| 3             | Empty  |                                       |
+| 4             | Empty  |                                       |
+| 5             | Empty  |                                       |
+| 6             | Empty  |                                       |
+| 7             | Empty  |                                       |
 
 ### MAV_CMD_DO_MOTOR_TEST (209) {#MAV_CMD_DO_MOTOR_TEST}
 
 Command to perform motor test.
 
-| Param (Label)     | Description                                                                                                                       | Values                                                  | Units |
+| Param (Label)     | 描述                                                                                                                                | 值                                                       | Units |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ----- |
 | 1 (Instance)      | Motor instance number (from 1 to max number of motors on the vehicle).                                                            | min: 1 inc: 1                                           |       |
 | 2 (Throttle Type) | Throttle type (whether the Throttle Value in param3 is a percentage, PWM value, etc.)                                             | [MOTOR_TEST_THROTTLE_TYPE](#MOTOR_TEST_THROTTLE_TYPE) |       |
@@ -6889,7 +6889,7 @@ Command to perform motor test.
 
 Change to/from inverted flight.
 
-| Param (Label) | Description                             | Values               |
+| Param (Label) | 描述                                      | 值                    |
 | ------------- | --------------------------------------- | -------------------- |
 | 1 (Inverted)  | Inverted flight. (0=normal, 1=inverted) | min: 0 max: 1 inc: 1 |
 | 2             | Empty                                   |                      |
@@ -6903,7 +6903,7 @@ Change to/from inverted flight.
 
 Mission command to operate a gripper.
 
-| Param (Label) | Description                | Values                              |
+| Param (Label) | 描述                         | 值                                   |
 | ------------- | -------------------------- | ----------------------------------- |
 | 1 (Instance)  | Gripper instance number.   | min: 1 inc: 1                       |
 | 2 (Action)    | Gripper action to perform. | [GRIPPER_ACTIONS](#GRIPPER_ACTIONS) |
@@ -6917,7 +6917,7 @@ Mission command to operate a gripper.
 
 Enable/disable autotune.
 
-| Param (Label) | Description                                                               | Values                          |
+| Param (Label) | 描述                                                                        | 值                               |
 | ------------- | ------------------------------------------------------------------------- | ------------------------------- |
 | 1 (Enable)    | Enable (1: enable, 0:disable).                                            | min: 0 max: 1 inc: 1            |
 | 2 (Axis)      | Specify which axis are autotuned. 0 indicates autopilot default settings. | [AUTOTUNE_AXIS](#AUTOTUNE_AXIS) |
@@ -6931,9 +6931,9 @@ Enable/disable autotune.
 
 Sets a desired vehicle turn angle and speed change.
 
-| Param (Label) | Description                           | Values               | Units |
+| Param (Label) | 描述                                    | 值                    | Units |
 | ------------- | ------------------------------------- | -------------------- | ----- |
-| 1 (Yaw)       | Yaw angle to adjust steering by.      |                      | deg   |
+| 1 (Yaw)       | Yaw angle to adjust steering by.      |                      | 度     |
 | 2 (Speed)     | Speed.                                |                      | m/s   |
 | 3 (Angle)     | Final angle. (0=absolute, 1=relative) | min: 0 max: 1 inc: 1 |       |
 | 4             | Empty                                 |                      |       |
@@ -6945,7 +6945,7 @@ Sets a desired vehicle turn angle and speed change.
 
 Mission command to set camera trigger interval for this flight. If triggering is enabled, the camera is triggered each time this interval expires. This command can also be used to set the shutter integration time for the camera.
 
-| Param (Label)           | Description                                                                                                                                                                                                                                                                                                     | Values                 | Units |
+| Param (Label)           | 描述                                                                                                                                                                                                                                                                                                              | 值                      | Units |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----- |
 | 1 (Trigger Cycle)       | Camera trigger cycle time. -1 or 0 to ignore.                                                                                                                                                                                                                                                                   | min: -1 inc: 1         | ms    |
 | 2 (Shutter Integration) | Camera shutter integration time. Should be less than trigger cycle time. -1 or 0 to ignore.                                                                                                                                                                                                                     | min: -1 inc: 1         | ms    |
@@ -6961,7 +6961,7 @@ Mission command to set camera trigger interval for this flight. If triggering is
 
 Mission command to control a camera or antenna mount, using a quaternion as reference.
 
-| Param (Label) | Description                                 |
+| Param (Label) | 描述                                          |
 | ------------- | ------------------------------------------- |
 | 1 (Q1)        | quaternion param q1, w (1 in null-rotation) |
 | 2 (Q2)        | quaternion param q2, x (0 in null-rotation) |
@@ -6975,7 +6975,7 @@ Mission command to control a camera or antenna mount, using a quaternion as refe
 
 set id of master controller
 
-| Param (Label)    | Description  | Values                 |
+| Param (Label)    | 描述           | 值                      |
 | ---------------- | ------------ | ---------------------- |
 | 1 (System ID)    | System ID    | min: 0 max: 255 inc: 1 |
 | 2 (Component ID) | Component ID | min: 0 max: 255 inc: 1 |
@@ -6989,7 +6989,7 @@ set id of master controller
 
 Set limits for external control
 
-| Param (Label)         | Description                                                                                                                                                                                                             | Values | Units |
+| Param (Label)         | 描述                                                                                                                                                                                                                      | 值      | Units |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ----- |
 | 1 (Timeout)           | Timeout - maximum time that external controller will be allowed to control vehicle. 0 means no timeout.                                                                                                                 | min: 0 | s     |
 | 2 (Min Altitude)      | Altitude (MSL) min - if vehicle moves below this alt, the command will be aborted and the mission will continue. 0 means no lower altitude limit.                                                                       |        | m     |
@@ -7003,7 +7003,7 @@ Set limits for external control
 
 Control vehicle engine. This is interpreted by the vehicles engine controller to change the target engine state. It is intended for vehicles with internal combustion engines
 
-| Param (Label)    | Description                                                                                                                                                                                                             | Values               | Units |
+| Param (Label)    | 描述                                                                                                                                                                                                                      | 值                    | Units |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----- |
 | 1 (Start Engine) | 0: Stop engine, 1:Start Engine                                                                                                                                                                                          | min: 0 max: 1 inc: 1 |       |
 | 2 (Cold Start)   | 0: Warm start, 1:Cold start. Controls use of choke where applicable                                                                                                                                                     | min: 0 max: 1 inc: 1 |       |
@@ -7023,7 +7023,7 @@ The mission may be "reset" using param2. Resetting sets jump counters to initial
 
 The command will ACK with [MAV_RESULT_FAILED](#MAV_RESULT_FAILED) if the sequence number is out of range (including if there is no mission item).
 
-| Param (Label)     | Description                                                                                                                                 | Values               |
+| Param (Label)     | 描述                                                                                                                                          | 值                    |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | 1 (Number)        | Mission sequence value to set. -1 for the current mission item (use to reset mission without changing current mission item).                | min: -1 inc: 1       |
 | 2 (Reset Mission) | Resets mission. 1: true, 0: false. Resets jump counters to initial values and changes mission state "completed" to be "active" or "paused". | min: 0 max: 1 inc: 1 |
@@ -7037,21 +7037,21 @@ The command will ACK with [MAV_RESULT_FAILED](#MAV_RESULT_FAILED) if the sequenc
 
 NOP - This command is only used to mark the upper limit of the DO commands in the enumeration
 
-| Param (Label) | Description |
-| ------------- | ----------- |
-| 1             | Empty       |
-| 2             | Empty       |
-| 3             | Empty       |
-| 4             | Empty       |
-| 5             | Empty       |
-| 6             | Empty       |
-| 7             | Empty       |
+| Param (Label) | 描述    |
+| ------------- | ----- |
+| 1             | Empty |
+| 2             | Empty |
+| 3             | Empty |
+| 4             | Empty |
+| 5             | Empty |
+| 6             | Empty |
+| 7             | Empty |
 
 ### MAV_CMD_PREFLIGHT_CALIBRATION (241) {#MAV_CMD_PREFLIGHT_CALIBRATION}
 
-Trigger calibration. This command will be only accepted if in pre-flight mode. Except for Temperature Calibration, only one sensor should be set in a single message and all others should be zero.
+Trigger calibration. 只有在飞行前模式下才会接受此命令。 Except for Temperature Calibration, only one sensor should be set in a single message and all others should be zero.
 
-| Param (Label)           | Description                                                                                                                             | Values               |
+| Param (Label)           | 描述                                                                                                                                      | 值                    |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | 1 (Gyro Temperature)    | 1: gyro calibration, 3: gyro temperature calibration                                                                                    | min: 0 max: 3 inc: 1 |
 | 2 (Magnetometer)        | 1: magnetometer calibration                                                                                                             | min: 0 max: 1 inc: 1 |
@@ -7063,9 +7063,9 @@ Trigger calibration. This command will be only accepted if in pre-flight mode. E
 
 ### MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS (242) {#MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS}
 
-Set sensor offsets. This command will be only accepted if in pre-flight mode.
+Set sensor offsets. 只有在飞行前模式下才会接受此命令。
 
-| Param (Label)     | Description                                                                                                                                                 | Values               |
+| Param (Label)     | 描述                                                                                                                                                          | 值                    |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | 1 (Sensor Type)   | Sensor to adjust the offsets for: 0: gyros, 1: accelerometer, 2: magnetometer, 3: barometer, 4: optical flow, 5: second magnetometer, 6: third magnetometer | min: 0 max: 6 inc: 1 |
 | 2 (X Offset)      | X axis offset (or generic dimension 1), in the sensor's raw units                                                                                           |                      |
@@ -7079,7 +7079,7 @@ Set sensor offsets. This command will be only accepted if in pre-flight mode.
 
 Trigger UAVCAN configuration (actuator ID assignment and direction mapping). Note that this maps to the legacy UAVCAN v0 function [UAVCAN_ENUMERATE](#UAVCAN_ENUMERATE), which is intended to be executed just once during initial vehicle configuration (it is not a normal pre-flight command and has been poorly named).
 
-| Param (Label)   | Description                                                                 |
+| Param (Label)   | 描述                                                                          |
 | --------------- | --------------------------------------------------------------------------- |
 | 1 (Actuator ID) | 1: Trigger actuator ID assignment and direction mapping. 0: Cancel command. |
 | 2               | Reserved                                                                    |
@@ -7091,9 +7091,9 @@ Trigger UAVCAN configuration (actuator ID assignment and direction mapping). Not
 
 ### MAV_CMD_PREFLIGHT_STORAGE (245) {#MAV_CMD_PREFLIGHT_STORAGE}
 
-Request storage of different parameter values and logs. This command will be only accepted if in pre-flight mode.
+Request storage of different parameter values and logs. 只有在飞行前模式下才会接受此命令。
 
-| Param (Label)         | Description                                                                                                                           | Values                                                                      | Units |
+| Param (Label)         | 描述                                                                                                                                    | 值                                                                           | Units |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ----- |
 | 1 (Parameter Storage) | Action to perform on the persistent parameter storage                                                                                 | [PREFLIGHT_STORAGE_PARAMETER_ACTION](#PREFLIGHT_STORAGE_PARAMETER_ACTION) |       |
 | 2 (Mission Storage)   | Action to perform on the persistent mission storage                                                                                   | [PREFLIGHT_STORAGE_MISSION_ACTION](#PREFLIGHT_STORAGE_MISSION_ACTION)     |       |
@@ -7107,7 +7107,7 @@ Request storage of different parameter values and logs. This command will be onl
 
 Request the reboot or shutdown of system components.
 
-| Param (Label)        | Description                                                                                                                                                            | Values                 |
+| Param (Label)        | 描述                                                                                                                                                                     | 值                      |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (Autopilot)        | 0: Do nothing for autopilot, 1: Reboot autopilot, 2: Shutdown autopilot, 3: Reboot autopilot and keep it in the bootloader until upgraded.                             | min: 0 max: 3 inc: 1   |
 | 2 (Companion)        | 0: Do nothing for onboard computer, 1: Reboot onboard computer, 2: Shutdown onboard computer, 3: Reboot onboard computer and keep it in the bootloader until upgraded. | min: 0 max: 3 inc: 1   |
@@ -7121,12 +7121,12 @@ Request the reboot or shutdown of system components.
 
 Override current mission with command to pause mission, pause mission and move to position, continue/resume mission. When param 1 indicates that the mission is paused ([MAV_GOTO_DO_HOLD](#MAV_GOTO_DO_HOLD)), param 2 defines whether it holds in place or moves to another position.
 
-| Param (Label)   | Description                                                                                                                                      | Values                  | Units |
+| Param (Label)   | 描述                                                                                                                                               | 值                       | Units |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | ----- |
 | 1 (Continue)    | MAV_GOTO_DO_HOLD: pause mission and either hold or move to specified position (depending on param2), MAV_GOTO_DO_CONTINUE: resume mission. | [MAV_GOTO](#MAV_GOTO)   |       |
 | 2 (Position)    | MAV_GOTO_HOLD_AT_CURRENT_POSITION: hold at current position, MAV_GOTO_HOLD_AT_SPECIFIED_POSITION: hold at specified position.          | [MAV_GOTO](#MAV_GOTO)   |       |
 | 3 (Frame)       | Coordinate frame of hold point.                                                                                                                  | [MAV_FRAME](#MAV_FRAME) |       |
-| 4 (Yaw)         | Desired yaw angle.                                                                                                                               |                         | deg   |
+| 4 (Yaw)         | Desired yaw angle.                                                                                                                               |                         | 度     |
 | 5 (Latitude/X)  | Latitude/X position.                                                                                                                             |                         |       |
 | 6 (Longitude/Y) | Longitude/Y position.                                                                                                                            |                         |       |
 | 7 (Altitude/Z)  | Altitude/Z position.                                                                                                                             |                         |       |
@@ -7135,21 +7135,21 @@ Override current mission with command to pause mission, pause mission and move t
 
 Mission command to set a Camera Auto Mount Pivoting Oblique Survey (Replaces [CAM_TRIGG_DIST](#CAM_TRIGG_DIST) for this purpose). The camera is triggered each time this distance is exceeded, then the mount moves to the next position. Params 4~6 set-up the angle limits and number of positions for oblique survey, where mount-enabled vehicles automatically roll the camera between shots to emulate an oblique camera setup (providing an increased HFOV). This command can also be used to set the shutter integration time for the camera.
 
-| Param (Label)    | Description                                                                                                                                 | Values                   | Units |
+| Param (Label)    | 描述                                                                                                                                          | 值                        | Units |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ----- |
 | 1 (Distance)     | Camera trigger distance. 0 to stop triggering.                                                                                              | min: 0                   | m     |
 | 2 (Shutter)      | Camera shutter integration time. 0 to ignore                                                                                                | min: 0 inc: 1            | ms    |
 | 3 (Min Interval) | The minimum interval in which the camera is capable of taking subsequent pictures repeatedly. 0 to ignore.                                  | min: 0 max: 10000 inc: 1 | ms    |
 | 4 (Positions)    | Total number of roll positions at which the camera will capture photos (images captures spread evenly across the limits defined by param5). | min: 2 inc: 1            |       |
-| 5 (Roll Angle)   | Angle limits that the camera can be rolled to left and right of center.                                                                     | min: 0                   | deg   |
-| 6 (Pitch Angle)  | Fixed pitch angle that the camera will hold in oblique mode if the mount is actuated in the pitch axis.                                     | min: -180 max: 180       | deg   |
+| 5 (Roll Angle)   | Angle limits that the camera can be rolled to left and right of center.                                                                     | min: 0                   | 度     |
+| 6 (Pitch Angle)  | Fixed pitch angle that the camera will hold in oblique mode if the mount is actuated in the pitch axis.                                     | min: -180 max: 180       | 度     |
 | 7                | Empty                                                                                                                                       |                          |       |
 
 ### MAV_CMD_MISSION_START (300) {#MAV_CMD_MISSION_START}
 
 start running a mission
 
-| Param (Label)  | Description                                                                        | Values        |
+| Param (Label)  | 描述                                                                                 | 值             |
 | -------------- | ---------------------------------------------------------------------------------- | ------------- |
 | 1 (First Item) | first_item: the first mission item to run                                          | min: 0 inc: 1 |
 | 2 (Last Item)  | last_item: the last mission item to run (after this item is run, the mission ends) | min: 0 inc: 1 |
@@ -7158,7 +7158,7 @@ start running a mission
 
 Actuator testing command. This is similar to [MAV_CMD_DO_MOTOR_TEST](#MAV_CMD_DO_MOTOR_TEST) but operates on the level of output functions, i.e. it is possible to test Motor1 independent from which output it is configured on. Autopilots typically refuse this command while armed.
 
-| Param (Label)       | Description                                                                                                                                                                                                                                                                   | Values                                                  | Units |
+| Param (Label)       | 描述                                                                                                                                                                                                                                                                            | 值                                                       | Units |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ----- |
 | 1 (Value)           | Output value: 1 means maximum positive output, 0 to center servos or minimum motor thrust (expected to spin), -1 for maximum negative (if not supported by the motors, i.e. motor is not reversible, smaller than 0 maps to NaN). And NaN maps to disarmed (stop the motors). | min: -1 max: 1                                          |       |
 | 2 (Timeout)         | Timeout after which the test command expires and the output is restored to the previous value. A timeout has to be set for safety reasons. A timeout of 0 means to restore the previous value immediately.                                                                    | min: 0 max: 3                                           | s     |
@@ -7172,7 +7172,7 @@ Actuator testing command. This is similar to [MAV_CMD_DO_MOTOR_TEST](#MAV_CMD_DO
 
 Actuator configuration command.
 
-| Param (Label)       | Description                   | Values                                                  |
+| Param (Label)       | 描述                            | 值                                                       |
 | ------------------- | ----------------------------- | ------------------------------------------------------- |
 | 1 (Configuration)   | Actuator configuration action | [ACTUATOR_CONFIGURATION](#ACTUATOR_CONFIGURATION)       |
 | 2                   |                               |                                                         |
@@ -7186,7 +7186,7 @@ Actuator configuration command.
 
 Arms / Disarms a component
 
-| Param (Label) | Description                                                                                                                                                                | Values                       |
+| Param (Label) | 描述                                                                                                                                                                         | 值                            |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
 | 1 (Arm)       | 0: disarm, 1: arm                                                                                                                                                          | min: 0 max: 1 inc: 1         |
 | 2 (Force)     | 0: arm-disarm unless prevented by safety checks (i.e. when landed), 21196: force arming/disarming (e.g. allow arming to override preflight checks and disarming in flight) | min: 0 max: 21196 inc: 21196 |
@@ -7197,15 +7197,15 @@ Instructs a target system to run pre-arm checks.
 
 This allows preflight checks to be run on demand, which may be useful on systems that normally run them at low rate, or which do not trigger checks when the armable state might have changed. This command should return [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED) if it will run the checks. The results of the checks are usually then reported in [SYS_STATUS](#SYS_STATUS) messages (this is system-specific). The command should return [MAV_RESULT_TEMPORARILY_REJECTED](#MAV_RESULT_TEMPORARILY_REJECTED) if the system is already armed.
 
-| Param (Label) | Description |
-| ------------- | ----------- |
-|               |             |
+| Param (Label) | 描述 |
+| ------------- | -- |
+|               |    |
 
 ### MAV_CMD_ILLUMINATOR_ON_OFF (405) {#MAV_CMD_ILLUMINATOR_ON_OFF}
 
 Turns illuminators ON/OFF. An illuminator is a light source that is used for lighting up dark areas external to the system: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light).
 
-| Param (Label) | Description                             | Values               |
+| Param (Label) | 描述                                      | 值                    |
 | ------------- | --------------------------------------- | -------------------- |
 | 1 (Enable)    | 0: Illuminators OFF, 1: Illuminators ON | min: 0 max: 1 inc: 1 |
 
@@ -7213,7 +7213,7 @@ Turns illuminators ON/OFF. An illuminator is a light source that is used for lig
 
 Configures illuminator settings. An illuminator is a light source that is used for lighting up dark areas external to the system: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light).
 
-| Param (Label)     | Description                                                                             | Values                                | Units |
+| Param (Label)     | 描述                                                                                      | 值                                     | Units |
 | ----------------- | --------------------------------------------------------------------------------------- | ------------------------------------- | ----- |
 | 1 (Mode)          | Mode                                                                                    | [ILLUMINATOR_MODE](#ILLUMINATOR_MODE) |       |
 | 2 (Brightness)    | 0%: Off, 100%: Max Brightness                                                           | min: 0 max: 100                       | %     |
@@ -7228,21 +7228,21 @@ Request the home position from the vehicle.
 
 The vehicle will ACK the command and then emit the [HOME_POSITION](#HOME_POSITION) message.
 
-| Param (Label) | Description |
-| ------------- | ----------- |
-| 1             | Reserved    |
-| 2             | Reserved    |
-| 3             | Reserved    |
-| 4             | Reserved    |
-| 5             | Reserved    |
-| 6             | Reserved    |
-| 7             | Reserved    |
+| Param (Label) | 描述       |
+| ------------- | -------- |
+| 1             | Reserved |
+| 2             | Reserved |
+| 3             | Reserved |
+| 4             | Reserved |
+| 5             | Reserved |
+| 6             | Reserved |
+| 7             | Reserved |
 
 ### MAV_CMD_INJECT_FAILURE (420) {#MAV_CMD_INJECT_FAILURE}
 
 Inject artificial failure for testing purposes. Note that autopilots should implement an additional protection before accepting this command such as a specific param setting.
 
-| Param (Label)    | Description                                     | Values                        |
+| Param (Label)    | 描述                                              | 值                             |
 | ---------------- | ----------------------------------------------- | ----------------------------- |
 | 1 (Failure unit) | The unit which is affected by the failure.      | [FAILURE_UNIT](#FAILURE_UNIT) |
 | 2 (Failure type) | The type how the failure manifests itself.      | [FAILURE_TYPE](#FAILURE_TYPE) |
@@ -7252,7 +7252,7 @@ Inject artificial failure for testing purposes. Note that autopilots should impl
 
 Starts receiver pairing.
 
-| Param (Label)   | Description  | Values                        |
+| Param (Label)   | 描述           | 值                             |
 | --------------- | ------------ | ----------------------------- |
 | 1 (RC Type)     | RC type.     | [RC_TYPE](#RC_TYPE)           |
 | 2 (RC Sub Type) | RC sub type. | [RC_SUB_TYPE](#RC_SUB_TYPE) |
@@ -7263,7 +7263,7 @@ Starts receiver pairing.
 
 Request the interval between messages for a particular MAVLink message ID. The receiver should ACK the command and then emit its response in a [MESSAGE_INTERVAL](#MESSAGE_INTERVAL) message.
 
-| Param (Label)  | Description            | Values                      |
+| Param (Label)  | 描述                     | 值                           |
 | -------------- | ---------------------- | --------------------------- |
 | 1 (Message ID) | The MAVLink message ID | min: 0 max: 16777215 inc: 1 |
 
@@ -7271,7 +7271,7 @@ Request the interval between messages for a particular MAVLink message ID. The r
 
 Set the interval between messages for a particular MAVLink message ID. This interface replaces [REQUEST_DATA_STREAM](#REQUEST_DATA_STREAM).
 
-| Param (Label)       | Description                                                                                                                                             | Values                      | Units |
+| Param (Label)       | 描述                                                                                                                                                      | 值                           | Units |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ----- |
 | 1 (Message ID)      | The MAVLink message ID                                                                                                                                  | min: 0 max: 16777215 inc: 1 |       |
 | 2 (Interval)        | The interval between two messages. -1: disable. 0: request default rate (which may be zero).                                                            | min: -1 inc: 1              | us    |
@@ -7285,7 +7285,7 @@ Set the interval between messages for a particular MAVLink message ID. This inte
 
 Request the target system(s) emit a single instance of a specified message (i.e. a "one-shot" version of [MAV_CMD_SET_MESSAGE_INTERVAL](#MAV_CMD_SET_MESSAGE_INTERVAL)).
 
-| Param (Label)       | Description                                                                                                                                             | Values                      |
+| Param (Label)       | 描述                                                                                                                                                      | 值                           |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | 1 (Message ID)      | The MAVLink message ID of the requested message.                                                                                                        | min: 0 max: 16777215 inc: 1 |
 | 2 (Req Param 1)     | Use for index ID, if required. Otherwise, the use of this parameter (if any) must be defined in the requested message. By default assumed not used (0). |                             |
@@ -7301,7 +7301,7 @@ Request the target system(s) emit a single instance of a specified message (i.e.
 
 Request MAVLink protocol version compatibility. All receivers should ACK the command and then emit their capabilities in an [PROTOCOL_VERSION](#PROTOCOL_VERSION) message
 
-| Param (Label) | Description                                                        | Values               |
+| Param (Label) | 描述                                                                 | 值                    |
 | ------------- | ------------------------------------------------------------------ | -------------------- |
 | 1 (Protocol)  | 1: Request supported protocol versions by all nodes on the network | min: 0 max: 1 inc: 1 |
 | 2             | Reserved (all remaining params)                                    |                      |
@@ -7312,7 +7312,7 @@ Request MAVLink protocol version compatibility. All receivers should ACK the com
 
 Request autopilot capabilities. The receiver should ACK the command and then emit its capabilities in an [AUTOPILOT_VERSION](#AUTOPILOT_VERSION) message
 
-| Param (Label) | Description                     | Values               |
+| Param (Label) | 描述                              | 值                    |
 | ------------- | ------------------------------- | -------------------- |
 | 1 (Version)   | 1: Request autopilot version    | min: 0 max: 1 inc: 1 |
 | 2             | Reserved (all remaining params) |                      |
@@ -7323,7 +7323,7 @@ Request autopilot capabilities. The receiver should ACK the command and then emi
 
 Request camera information ([CAMERA_INFORMATION](#CAMERA_INFORMATION)).
 
-| Param (Label)    | Description                                 | Values               |
+| Param (Label)    | 描述                                          | 值                    |
 | ---------------- | ------------------------------------------- | -------------------- |
 | 1 (Capabilities) | 0: No action 1: Request camera capabilities | min: 0 max: 1 inc: 1 |
 | 2                | Reserved (all remaining params)             |                      |
@@ -7334,7 +7334,7 @@ Request camera information ([CAMERA_INFORMATION](#CAMERA_INFORMATION)).
 
 Request camera settings ([CAMERA_SETTINGS](#CAMERA_SETTINGS)).
 
-| Param (Label) | Description                             | Values               |
+| Param (Label) | 描述                                      | 值                    |
 | ------------- | --------------------------------------- | -------------------- |
 | 1 (Settings)  | 0: No Action 1: Request camera settings | min: 0 max: 1 inc: 1 |
 | 2             | Reserved (all remaining params)         |                      |
@@ -7345,7 +7345,7 @@ Request camera settings ([CAMERA_SETTINGS](#CAMERA_SETTINGS)).
 
 Request storage information ([STORAGE_INFORMATION](#STORAGE_INFORMATION)). Use the command's target_component to target a specific component's storage.
 
-| Param (Label)   | Description                                             | Values               |
+| Param (Label)   | 描述                                                      | 值                    |
 | --------------- | ------------------------------------------------------- | -------------------- |
 | 1 (Storage ID)  | Storage ID (0 for all, 1 for first, 2 for second, etc.) | min: 0 inc: 1        |
 | 2 (Information) | 0: No Action 1: Request storage information             | min: 0 max: 1 inc: 1 |
@@ -7355,7 +7355,7 @@ Request storage information ([STORAGE_INFORMATION](#STORAGE_INFORMATION)). Use t
 
 Format a storage medium. Once format is complete, a [STORAGE_INFORMATION](#STORAGE_INFORMATION) message is sent. Use the command's target_component to target a specific component's storage.
 
-| Param (Label)       | Description                                                                                                                                                                         | Values               |
+| Param (Label)       | 描述                                                                                                                                                                                  | 值                    |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
 | 1 (Storage ID)      | Storage ID (1 for first, 2 for second, etc.)                                                                                                                                        | min: 0 inc: 1        |
 | 2 (Format)          | Format storage (and reset image log). 0: No action 1: Format storage                                                                                                                | min: 0 max: 1 inc: 1 |
@@ -7368,7 +7368,7 @@ Format a storage medium. Once format is complete, a [STORAGE_INFORMATION](#STORA
 
 Request camera capture status ([CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS))
 
-| Param (Label)      | Description                                   | Values               |
+| Param (Label)      | 描述                                            | 值                    |
 | ------------------ | --------------------------------------------- | -------------------- |
 | 1 (Capture Status) | 0: No Action 1: Request camera capture status | min: 0 max: 1 inc: 1 |
 | 2                  | Reserved (all remaining params)               |                      |
@@ -7379,7 +7379,7 @@ Request camera capture status ([CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS))
 
 Request flight information ([FLIGHT_INFORMATION](#FLIGHT_INFORMATION))
 
-| Param (Label)          | Description                     | Values               |
+| Param (Label)          | 描述                              | 值                    |
 | ---------------------- | ------------------------------- | -------------------- |
 | 1 (Flight Information) | 1: Request flight information   | min: 0 max: 1 inc: 1 |
 | 2                      | Reserved (all remaining params) |                      |
@@ -7388,7 +7388,7 @@ Request flight information ([FLIGHT_INFORMATION](#FLIGHT_INFORMATION))
 
 Reset all camera settings to Factory Default
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                      |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (Reset)            | 0: No Action 1: Reset all settings                                                                                                                                                                                                                                                                              | min: 0 max: 1 inc: 1   |
 | 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
@@ -7397,7 +7397,7 @@ Reset all camera settings to Factory Default
 
 Set camera running mode. Use NaN for reserved values. GCS will send a [MAV_CMD_REQUEST_VIDEO_STREAM_STATUS](#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS) command after a mode change if the camera supports video streaming.
 
-| Param (Label)   | Description                                                                                                                                                                                                                                                                                                     | Values                      |
+| Param (Label)   | 描述                                                                                                                                                                                                                                                                                                              | 值                           |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | 1 (id)          | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1      |
 | 2 (Camera Mode) | Camera mode                                                                                                                                                                                                                                                                                                     | [CAMERA_MODE](#CAMERA_MODE) |
@@ -7409,7 +7409,7 @@ Set camera running mode. Use NaN for reserved values. GCS will send a [MAV_CMD_R
 
 Set camera zoom. Camera must respond with a [CAMERA_SETTINGS](#CAMERA_SETTINGS) message (on success).
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                                  |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                                       |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
 | 1 (Zoom Type)        | Zoom type                                                                                                                                                                                                                                                                                                       | [CAMERA_ZOOM_TYPE](#CAMERA_ZOOM_TYPE) |
 | 2 (Zoom Value)       | Zoom value. The range of valid values depend on the zoom type.                                                                                                                                                                                                                                                  |                                         |
@@ -7420,7 +7420,7 @@ Set camera zoom. Camera must respond with a [CAMERA_SETTINGS](#CAMERA_SETTINGS) 
 
 Set camera focus. Camera must respond with a [CAMERA_SETTINGS](#CAMERA_SETTINGS) message (on success).
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                              |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                                   |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
 | 1 (Focus Type)       | Focus type                                                                                                                                                                                                                                                                                                      | [SET_FOCUS_TYPE](#SET_FOCUS_TYPE) |
 | 2 (Focus Value)      | Focus value                                                                                                                                                                                                                                                                                                     |                                     |
@@ -7433,7 +7433,7 @@ Set that a particular storage is the preferred location for saving photos, video
 
 There can only be one preferred save location for each particular media type: setting a media usage flag will clear/reset that same flag if set on any other storage. If no flag is set the system should use its default storage. A target system can choose to always use default storage, in which case it should ACK the command with [MAV_RESULT_UNSUPPORTED](#MAV_RESULT_UNSUPPORTED). A target system can choose to not allow a particular storage to be set as preferred storage, in which case it should ACK the command with [MAV_RESULT_DENIED](#MAV_RESULT_DENIED).
 
-| Param (Label)  | Description                                  | Values                                      |
+| Param (Label)  | 描述                                           | 值                                           |
 | -------------- | -------------------------------------------- | ------------------------------------------- |
 | 1 (Storage ID) | Storage ID (1 for first, 2 for second, etc.) | min: 0 inc: 1                               |
 | 2 (Usage)      | Usage flags                                  | [STORAGE_USAGE_FLAG](#STORAGE_USAGE_FLAG) |
@@ -7442,7 +7442,7 @@ There can only be one preferred save location for each particular media type: se
 
 Set camera source. Changes the camera's active sources on cameras with multiple image sensors.
 
-| Param (Label)        | Description                                                                              | Values                          |
+| Param (Label)        | 描述                                                                                       | 值                               |
 | -------------------- | ---------------------------------------------------------------------------------------- | ------------------------------- |
 | 1 (device id)        | Component Id of camera to address or 1-6 for non-MAVLink cameras, 0 for all cameras.     |                                 |
 | 2 (primary source)   | Primary Source                                                                           | [CAMERA_SOURCE](#CAMERA_SOURCE) |
@@ -7452,15 +7452,15 @@ Set camera source. Changes the camera's active sources on cameras with multiple 
 
 Tagged jump target. Can be jumped to with [MAV_CMD_DO_JUMP_TAG](#MAV_CMD_DO_JUMP_TAG).
 
-| Param (Label) | Description | Values        |
-| ------------- | ----------- | ------------- |
-| 1 (Tag)       | Tag.        | min: 0 inc: 1 |
+| Param (Label) | 描述   | 值             |
+| ------------- | ---- | ------------- |
+| 1 (Tag)       | Tag. | min: 0 inc: 1 |
 
 ### MAV_CMD_DO_JUMP_TAG (601) {#MAV_CMD_DO_JUMP_TAG}
 
 Jump to the matching tag in the mission list. Repeat this action for the specified number of times. A mission should contain a single matching tag for each jump. If this is not the case then a jump to a missing tag should complete the mission, and a jump where there are multiple matching tags should always select the one with the lowest mission sequence number.
 
-| Param (Label) | Description            | Values        |
+| Param (Label) | 描述                     | 值             |
 | ------------- | ---------------------- | ------------- |
 | 1 (Tag)       | Target tag to jump to. | min: 0 inc: 1 |
 | 2 (Repeat)    | Repeat count.          | min: 0 inc: 1 |
@@ -7469,10 +7469,10 @@ Jump to the matching tag in the mission list. Repeat this action for the specifi
 
 Set gimbal manager pitch/yaw setpoints (low rate command). It is possible to set combinations of the values below. E.g. an angle as well as a desired angular rate can be used to get to this angle at a certain angular rate, or an angular rate only will result in continuous turning. NaN is to be used to signal unset. Note: only the gimbal manager will react to this command - it will be ignored by a gimbal device. Use [GIMBAL_MANAGER_SET_PITCHYAW](#GIMBAL_MANAGER_SET_PITCHYAW) if you need to stream pitch/yaw setpoints at higher rate.
 
-| Param (Label)            | Description                                                                                                                                                                               | Values                                          | Units |
+| Param (Label)            | 描述                                                                                                                                                                                        | 值                                               | Units |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ----- |
-| 1 (Pitch angle)          | Pitch angle (positive to pitch up, relative to vehicle for FOLLOW mode, relative to world horizon for LOCK mode).                                                                         | min: -180 max: 180                              | deg   |
-| 2 (Yaw angle)            | Yaw angle (positive to yaw to the right, relative to vehicle for FOLLOW mode, absolute to North for LOCK mode).                                                                           | min: -180 max: 180                              | deg   |
+| 1 (Pitch angle)          | Pitch angle (positive to pitch up, relative to vehicle for FOLLOW mode, relative to world horizon for LOCK mode).                                                                         | min: -180 max: 180                              | 度     |
+| 2 (Yaw angle)            | Yaw angle (positive to yaw to the right, relative to vehicle for FOLLOW mode, absolute to North for LOCK mode).                                                                           | min: -180 max: 180                              | 度     |
 | 3 (Pitch rate)           | Pitch rate (positive to pitch up).                                                                                                                                                        |                                                 | deg/s |
 | 4 (Yaw rate)             | Yaw rate (positive to yaw to the right).                                                                                                                                                  |                                                 | deg/s |
 | 5 (Gimbal manager flags) | Gimbal manager flags to use.                                                                                                                                                              | [GIMBAL_MANAGER_FLAGS](#GIMBAL_MANAGER_FLAGS) |       |
@@ -7482,7 +7482,7 @@ Set gimbal manager pitch/yaw setpoints (low rate command). It is possible to set
 
 Gimbal configuration to set which sysid/compid is in primary and secondary control.
 
-| Param (Label)                | Description                                                                                                                                                                                          |
+| Param (Label)                | 描述                                                                                                                                                                                                   |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1 (sysid primary control)    | Sysid for primary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).    |
 | 2 (compid primary control)   | Compid for primary control (0: no one in control, -1: leave unchanged, -2: set itself in control (for missions where the own sysid is still unknown), -3: remove control if currently in control).   |
@@ -7500,7 +7500,7 @@ When used in a mission, an autopilot should execute the [MAV_CMD](#mav_commands)
 
 When sent in a command the target MAVLink address is set using target_component. If addressed specifically to an autopilot: param1 should be used in the same way as it is for missions (though command should NACK with [MAV_RESULT_DENIED](#MAV_RESULT_DENIED) if a specified local camera does not exist). If addressed to a MAVLink camera, param 1 can be used to address all cameras (0), or to separately address 1 to 7 individual sensors. Other values should be NACKed with [MAV_RESULT_DENIED](#MAV_RESULT_DENIED). If the command is broadcast (target_component is 0) then param 1 should be set to 0 (any other value should be NACKED with [MAV_RESULT_DENIED](#MAV_RESULT_DENIED)). An autopilot would trigger any local cameras and forward the command to all channels.
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 | Units |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                      | Units |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----- |
 | 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |       |
 | 2 (Interval)         | Desired elapsed time between two consecutive pictures (in seconds). Minimum values depend on hardware (typically greater than 2 seconds).                                                                                                                                                                       | min: 0                 | s     |
@@ -7520,7 +7520,7 @@ When used in a mission, an autopilot should execute the [MAV_CMD](#mav_commands)
 
 When sent in a command the target MAVLink address is set using target_component. If addressed specifically to an autopilot: param1 should be used in the same way as it is for missions (though command should NACK with [MAV_RESULT_DENIED](#MAV_RESULT_DENIED) if a specified local camera does not exist). If addressed to a MAVLink camera, param1 can be used to address all cameras (0), or to separately address 1 to 7 individual sensors. Other values should be NACKed with [MAV_RESULT_DENIED](#MAV_RESULT_DENIED). If the command is broadcast (target_component is 0) then param 1 should be set to 0 (any other value should be NACKED with [MAV_RESULT_DENIED](#MAV_RESULT_DENIED)). An autopilot would trigger any local cameras and forward the command to all channels.
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                      |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
 | 2                    |                                                                                                                                                                                                                                                                                                                 |                        |
@@ -7536,7 +7536,7 @@ When sent in a command the target MAVLink address is set using target_component.
 
 Re-request a [CAMERA_IMAGE_CAPTURED](#CAMERA_IMAGE_CAPTURED) message.
 
-| Param (Label) | Description                                                 | Values        |
+| Param (Label) | 描述                                                          | 值             |
 | ------------- | ----------------------------------------------------------- | ------------- |
 | 1 (Number)    | Sequence number for missing CAMERA_IMAGE_CAPTURED message | min: 0 inc: 1 |
 | 2             |                                                             |               |
@@ -7550,7 +7550,7 @@ Re-request a [CAMERA_IMAGE_CAPTURED](#CAMERA_IMAGE_CAPTURED) message.
 
 Enable or disable on-board camera triggering system.
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                      |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (Enable)           | Trigger enable/disable (0 for disable, 1 for start), -1 to ignore                                                                                                                                                                                                                                               | min: -1 max: 1 inc: 1  |
 | 2 (Reset)            | 1 to reset the trigger sequence, -1 or 0 to ignore                                                                                                                                                                                                                                                              | min: -1 max: 1 inc: 1  |
@@ -7561,7 +7561,7 @@ Enable or disable on-board camera triggering system.
 
 If the camera supports point visual tracking ([CAMERA_CAP_FLAGS_HAS_TRACKING_POINT](#CAMERA_CAP_FLAGS_HAS_TRACKING_POINT) is set), this command allows to initiate the tracking.
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                      |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (Point x)          | Point to track x value (normalized 0..1, 0 is left, 1 is right).                                                                                                                                                                                                                                                | min: 0 max: 1          |
 | 2 (Point y)          | Point to track y value (normalized 0..1, 0 is top, 1 is bottom).                                                                                                                                                                                                                                                | min: 0 max: 1          |
@@ -7572,7 +7572,7 @@ If the camera supports point visual tracking ([CAMERA_CAP_FLAGS_HAS_TRACKING_POI
 
 If the camera supports rectangle visual tracking ([CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE](#CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE) is set), this command allows to initiate the tracking.
 
-| Param (Label)             | Description                                                                                                                                                                                                                                                                                                     | Values                 |
+| Param (Label)             | 描述                                                                                                                                                                                                                                                                                                              | 值                      |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (Top left corner x)     | Top left corner of rectangle x value (normalized 0..1, 0 is left, 1 is right).                                                                                                                                                                                                                                  | min: 0 max: 1          |
 | 2 (Top left corner y)     | Top left corner of rectangle y value (normalized 0..1, 0 is top, 1 is bottom).                                                                                                                                                                                                                                  | min: 0 max: 1          |
@@ -7584,7 +7584,7 @@ If the camera supports rectangle visual tracking ([CAMERA_CAP_FLAGS_HAS_TRACKING
 
 Stops ongoing tracking.
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                      |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
 
@@ -7592,7 +7592,7 @@ Stops ongoing tracking.
 
 Starts video capture (recording).
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 | Units |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                      | Units |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----- |
 | 1 (Stream ID)        | Video Stream ID (0 for all streams)                                                                                                                                                                                                                                                                             | min: 0 inc: 1          |       |
 | 2 (Status Frequency) | Frequency CAMERA_CAPTURE_STATUS messages should be sent while recording (0 for no messages, otherwise frequency)                                                                                                                                                                                              | min: 0                 | Hz    |
@@ -7606,7 +7606,7 @@ Starts video capture (recording).
 
 Stop the current video capture (recording).
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                      |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (Stream ID)        | Video Stream ID (0 for all streams)                                                                                                                                                                                                                                                                             | min: 0 inc: 1          |
 | 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
@@ -7620,7 +7620,7 @@ Stop the current video capture (recording).
 
 Start video streaming
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                      |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (Stream ID)        | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)                                                                                                                                                                                                                                            | min: 0 inc: 1          |
 | 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
@@ -7629,7 +7629,7 @@ Start video streaming
 
 Stop the given video stream
 
-| Param (Label)        | Description                                                                                                                                                                                                                                                                                                     | Values                 |
+| Param (Label)        | 描述                                                                                                                                                                                                                                                                                                              | 值                      |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (Stream ID)        | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.)                                                                                                                                                                                                                                            | min: 0 inc: 1          |
 | 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |
@@ -7640,7 +7640,7 @@ Stop the given video stream
 
 Request video stream information ([VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFORMATION))
 
-| Param (Label) | Description                                                          | Values        |
+| Param (Label) | 描述                                                                   | 值             |
 | ------------- | -------------------------------------------------------------------- | ------------- |
 | 1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 |
 
@@ -7650,7 +7650,7 @@ Request video stream information ([VIDEO_STREAM_INFORMATION](#VIDEO_STREAM_INFOR
 
 Request video stream status ([VIDEO_STREAM_STATUS](#VIDEO_STREAM_STATUS))
 
-| Param (Label) | Description                                                          | Values        |
+| Param (Label) | 描述                                                                   | 值             |
 | ------------- | -------------------------------------------------------------------- | ------------- |
 | 1 (Stream ID) | Video Stream ID (0 for all streams, 1 for first, 2 for second, etc.) | min: 0 inc: 1 |
 
@@ -7658,7 +7658,7 @@ Request video stream status ([VIDEO_STREAM_STATUS](#VIDEO_STREAM_STATUS))
 
 Request to start streaming logging data over MAVLink (see also [LOGGING_DATA](#LOGGING_DATA) message)
 
-| Param (Label) | Description         | Values        |
+| Param (Label) | 描述                  | 值             |
 | ------------- | ------------------- | ------------- |
 | 1 (Format)    | Format: 0: ULog     | min: 0 inc: 1 |
 | 2             | Reserved (set to 0) |               |
@@ -7672,7 +7672,7 @@ Request to start streaming logging data over MAVLink (see also [LOGGING_DATA](#L
 
 Request to stop streaming log data over MAVLink
 
-| Param (Label) | Description         |
+| Param (Label) | 描述                  |
 | ------------- | ------------------- |
 | 1             | Reserved (set to 0) |
 | 2             | Reserved (set to 0) |
@@ -7684,7 +7684,7 @@ Request to stop streaming log data over MAVLink
 
 ### MAV_CMD_AIRFRAME_CONFIGURATION (2520) {#MAV_CMD_AIRFRAME_CONFIGURATION}
 
-| Param (Label)             | Description                                               | Values         |
+| Param (Label)             | 描述                                                        | 值              |
 | ------------------------- | --------------------------------------------------------- | -------------- |
 | 1 (Landing Gear ID)       | Landing gear ID (default: 0, -1 for all)                  | min: -1 inc: 1 |
 | 2 (Landing Gear Position) | Landing gear position (Down: 0, Up: 1, NaN for no change) |                |
@@ -7698,7 +7698,7 @@ Request to stop streaming log data over MAVLink
 
 Request to start/stop transmitting over the high latency telemetry
 
-| Param (Label) | Description                                                          | Values               |
+| Param (Label) | 描述                                                                   | 值                    |
 | ------------- | -------------------------------------------------------------------- | -------------------- |
 | 1 (Enable)    | Control transmission over high latency telemetry (0: stop, 1: start) | min: 0 max: 1 inc: 1 |
 | 2             | Empty                                                                |                      |
@@ -7712,10 +7712,10 @@ Request to start/stop transmitting over the high latency telemetry
 
 Create a panorama at the current position
 
-| Param (Label)        | Description                                                       | Units |
+| Param (Label)        | 描述                                                                | Units |
 | -------------------- | ----------------------------------------------------------------- | ----- |
-| 1 (Horizontal Angle) | Viewing angle horizontal of the panorama (+- 0.5 the total angle) | deg   |
-| 2 (Vertical Angle)   | Viewing angle vertical of panorama.                               | deg   |
+| 1 (Horizontal Angle) | Viewing angle horizontal of the panorama (+- 0.5 the total angle) | 度     |
+| 2 (Vertical Angle)   | Viewing angle vertical of panorama.                               | 度     |
 | 3 (Horizontal Speed) | Speed of the horizontal rotation.                                 | deg/s |
 | 4 (Vertical Speed)   | Speed of the vertical rotation.                                   | deg/s |
 
@@ -7723,7 +7723,7 @@ Create a panorama at the current position
 
 Request VTOL transition
 
-| Param (Label) | Description                                                                                                                                                                                                                                                             | Values                              |
+| Param (Label) | 描述                                                                                                                                                                                                                                                                      | 值                                   |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
 | 1 (State)     | The target VTOL state. For normal transitions, only MAV_VTOL_STATE_MC and MAV_VTOL_STATE_FW can be used.                                                                                                                                                          | [MAV_VTOL_STATE](#MAV_VTOL_STATE) |
 | 2 (Immediate) | Force immediate transition to the specified MAV_VTOL_STATE. 1: Force immediate, 0: normal transition. Can be used, for example, to trigger an emergency "Quadchute". Caution: Can be dangerous/damage vehicle, depending on autopilot implementation of this command. |                                     |
@@ -7734,7 +7734,7 @@ Request authorization to arm the vehicle to a external entity, the arm authorize
 
 If approved the [COMMAND_ACK](#COMMAND_ACK) message progress field should be set with period of time that this authorization is valid in seconds. If the authorization is denied [COMMAND_ACK](#COMMAND_ACK).result_param2 should be set with one of the reasons in [ARM_AUTH_DENIED_REASON](#ARM_AUTH_DENIED_REASON).
 
-| Param (Label) | Description                                                                                       | Values                 |
+| Param (Label) | 描述                                                                                                | 值                      |
 | ------------- | ------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (System ID) | Vehicle system id, this way ground station can request arm authorization on behalf of any vehicle | min: 0 max: 255 inc: 1 |
 
@@ -7742,15 +7742,15 @@ If approved the [COMMAND_ACK](#COMMAND_ACK) message progress field should be set
 
 This command sets the submode to standard guided when vehicle is in guided mode. The vehicle holds position and altitude and the user can input the desired velocities along all three axes.
 
-| Param (Label) | Description |
-| ------------- | ----------- |
-|               |             |
+| Param (Label) | 描述 |
+| ------------- | -- |
+|               |    |
 
 ### MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE (4001) {#MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE}
 
 This command sets submode circle when vehicle is in guided mode. Vehicle flies along a circle facing the center of the circle. The user can input the velocity along the circle and change the radius. If no input is given the vehicle will hold position.
 
-| Param (Label) | Description                                         | Units |
+| Param (Label) | 描述                                                  | Units |
 | ------------- | --------------------------------------------------- | ----- |
 | 1 (Radius)    | Radius of desired circle in CIRCLE_MODE             | m     |
 | 2             | User defined                                        |       |
@@ -7765,7 +7765,7 @@ This command sets submode circle when vehicle is in guided mode. Vehicle flies a
 
 Delay mission state machine until gate has been reached.
 
-| Param (Label)   | Description                                                         | Values               | Units |
+| Param (Label)   | 描述                                                                  | 值                    | Units |
 | --------------- | ------------------------------------------------------------------- | -------------------- | ----- |
 | 1 (Geometry)    | Geometry: 0: orthogonal to path between previous and next waypoint. | min: 0 inc: 1        |       |
 | 2 (UseAltitude) | Altitude: 0: ignore altitude                                        | min: 0 max: 1 inc: 1 |       |
@@ -7779,21 +7779,21 @@ Delay mission state machine until gate has been reached.
 
 Fence return point (there can only be one such point in a geofence definition). If rally points are supported they should be used instead.
 
-| Param (Label) | Description | Units |
-| ------------- | ----------- | ----- |
-| 1             | Reserved    |       |
-| 2             | Reserved    |       |
-| 3             | Reserved    |       |
-| 4             | Reserved    |       |
-| 5 (Latitude)  | Latitude    |       |
-| 6 (Longitude) | Longitude   |       |
-| 7 (Altitude)  | Altitude    | m     |
+| Param (Label) | 描述        | Units |
+| ------------- | --------- | ----- |
+| 1             | Reserved  |       |
+| 2             | Reserved  |       |
+| 3             | Reserved  |       |
+| 4             | Reserved  |       |
+| 5 (Latitude)  | Latitude  |       |
+| 6 (Longitude) | Longitude |       |
+| 7 (Altitude)  | Altitude  | m     |
 
 ### MAV_CMD_NAV_FENCE_POLYGON_VERTEX_INCLUSION (5001) {#MAV_CMD_NAV_FENCE_POLYGON_VERTEX_INCLUSION}
 
 Fence vertex for an inclusion polygon (the polygon must not be self-intersecting). The vehicle must stay within this area. Minimum of 3 vertices required.
 
-| Param (Label)       | Description                                                                                                                                              | Values        |
+| Param (Label)       | 描述                                                                                                                                                       | 值             |
 | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
 | 1 (Vertex Count)    | Polygon vertex count                                                                                                                                     | min: 3 inc: 1 |
 | 2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group, must be the same for all points in each polygon | min: 0 inc: 1 |
@@ -7807,7 +7807,7 @@ Fence vertex for an inclusion polygon (the polygon must not be self-intersecting
 
 Fence vertex for an exclusion polygon (the polygon must not be self-intersecting). The vehicle must stay outside this area. Minimum of 3 vertices required.
 
-| Param (Label)    | Description          | Values        |
+| Param (Label)    | 描述                   | 值             |
 | ---------------- | -------------------- | ------------- |
 | 1 (Vertex Count) | Polygon vertex count | min: 3 inc: 1 |
 | 2                | Reserved             |               |
@@ -7821,7 +7821,7 @@ Fence vertex for an exclusion polygon (the polygon must not be self-intersecting
 
 Circular fence area. The vehicle must stay inside this area.
 
-| Param (Label)       | Description                                                                                             | Values        | Units |
+| Param (Label)       | 描述                                                                                                      | 值             | Units |
 | ------------------- | ------------------------------------------------------------------------------------------------------- | ------------- | ----- |
 | 1 (Radius)          | Radius.                                                                                                 |               | m     |
 | 2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group | min: 0 inc: 1 |       |
@@ -7835,35 +7835,35 @@ Circular fence area. The vehicle must stay inside this area.
 
 Circular fence area. The vehicle must stay outside this area.
 
-| Param (Label) | Description | Units |
-| ------------- | ----------- | ----- |
-| 1 (Radius)    | Radius.     | m     |
-| 2             | Reserved    |       |
-| 3             | Reserved    |       |
-| 4             | Reserved    |       |
-| 5 (Latitude)  | Latitude    |       |
-| 6 (Longitude) | Longitude   |       |
-| 7             | Reserved    |       |
+| Param (Label) | 描述        | Units |
+| ------------- | --------- | ----- |
+| 1 (Radius)    | Radius.   | m     |
+| 2             | Reserved  |       |
+| 3             | Reserved  |       |
+| 4             | Reserved  |       |
+| 5 (Latitude)  | Latitude  |       |
+| 6 (Longitude) | Longitude |       |
+| 7             | Reserved  |       |
 
 ### MAV_CMD_NAV_RALLY_POINT (5100) {#MAV_CMD_NAV_RALLY_POINT}
 
 Rally point. You can have multiple rally points defined.
 
-| Param (Label) | Description | Units |
-| ------------- | ----------- | ----- |
-| 1             | Reserved    |       |
-| 2             | Reserved    |       |
-| 3             | Reserved    |       |
-| 4             | Reserved    |       |
-| 5 (Latitude)  | Latitude    |       |
-| 6 (Longitude) | Longitude   |       |
-| 7 (Altitude)  | Altitude    | m     |
+| Param (Label) | 描述        | Units |
+| ------------- | --------- | ----- |
+| 1             | Reserved  |       |
+| 2             | Reserved  |       |
+| 3             | Reserved  |       |
+| 4             | Reserved  |       |
+| 5 (Latitude)  | Latitude  |       |
+| 6 (Longitude) | Longitude |       |
+| 7 (Altitude)  | Altitude  | m     |
 
 ### MAV_CMD_UAVCAN_GET_NODE_INFO (5200) {#MAV_CMD_UAVCAN_GET_NODE_INFO}
 
 Commands the vehicle to respond with a sequence of messages [UAVCAN_NODE_INFO](#UAVCAN_NODE_INFO), one message per every UAVCAN node that is online. Note that some of the response messages can be lost, which the receiver can detect easily by checking whether every received [UAVCAN_NODE_STATUS](#UAVCAN_NODE_STATUS) has a matching message [UAVCAN_NODE_INFO](#UAVCAN_NODE_INFO) received earlier; if not, this command should be sent again in order to request re-transmission of the node information messages.
 
-| Param (Label) | Description         |
+| Param (Label) | 描述                  |
 | ------------- | ------------------- |
 | 1             | Reserved (set to 0) |
 | 2             | Reserved (set to 0) |
@@ -7877,7 +7877,7 @@ Commands the vehicle to respond with a sequence of messages [UAVCAN_NODE_INFO](#
 
 Change state of safety switch.
 
-| Param (Label)     | Description              | Values                                        |
+| Param (Label)     | 描述                       | 值                                             |
 | ----------------- | ------------------------ | --------------------------------------------- |
 | 1 (Desired State) | New safety switch state. | [SAFETY_SWITCH_STATE](#SAFETY_SWITCH_STATE) |
 | 2                 | Empty.                   |                                               |
@@ -7891,7 +7891,7 @@ Change state of safety switch.
 
 Trigger the start of an ADSB-out IDENT. This should only be used when requested to do so by an Air Traffic Controller in controlled airspace. This starts the IDENT which is then typically held for 18 seconds by the hardware per the Mode A, C, and S transponder spec.
 
-| Param (Label) | Description         |
+| Param (Label) | 描述                  |
 | ------------- | ------------------- |
 | 1             | Reserved (set to 0) |
 | 2             | Reserved (set to 0) |
@@ -7907,10 +7907,10 @@ Trigger the start of an ADSB-out IDENT. This should only be used when requested 
 
 Deploy payload on a Lat / Lon / Alt position. This includes the navigation to reach the required release position and velocity.
 
-| Param (Label)          | Description                                                                                                                                                                                                                                                                 | Values               | Units |
+| Param (Label)          | 描述                                                                                                                                                                                                                                                                          | 值                    | Units |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----- |
 | 1 (Operation Mode)     | Operation mode. 0: prepare single payload deploy (overwriting previous requests), but do not execute it. 1: execute payload deploy immediately (rejecting further deploy commands during execution, but allowing abort). 2: add payload deploy to existing deployment list. | min: 0 max: 2 inc: 1 |       |
-| 2 (Approach Vector)    | Desired approach vector in compass heading. A negative value indicates the system can define the approach vector at will.                                                                                                                                                   | min: -1 max: 360     | deg   |
+| 2 (Approach Vector)    | Desired approach vector in compass heading. A negative value indicates the system can define the approach vector at will.                                                                                                                                                   | min: -1 max: 360     | 度     |
 | 3 (Ground Speed)       | Desired ground speed at release time. This can be overridden by the airframe in case it needs to meet minimum airspeed. A negative value indicates the system can define the ground speed at will.                                                                          | min: -1              |       |
 | 4 (Altitude Clearance) | Minimum altitude clearance to the release position. A negative value indicates the system can define the clearance at will.                                                                                                                                                 | min: -1              | m     |
 | 5 (Latitude)           | Latitude.                                                                                                                                                                                                                                                                   |                      | degE7 |
@@ -7923,7 +7923,7 @@ Deploy payload on a Lat / Lon / Alt position. This includes the navigation to re
 
 Control the payload deployment.
 
-| Param (Label)      | Description                                                                                                                                                                                    | Values                 |
+| Param (Label)      | 描述                                                                                                                                                                                             | 值                      |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | 1 (Operation Mode) | Operation mode. 0: Abort deployment, continue normal mission. 1: switch to payload deployment mode. 100: delete first payload deployment request. 101: delete all payload deployment requests. | min: 0 max: 101 inc: 1 |
 | 2                  | Reserved                                                                                                                                                                                       |                        |
@@ -7937,7 +7937,7 @@ Control the payload deployment.
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
-| Param (Label) | Description        | Units |
+| Param (Label) | 描述                 | Units |
 | ------------- | ------------------ | ----- |
 | 1             | User defined       |       |
 | 2             | User defined       |       |
@@ -7951,7 +7951,7 @@ User defined waypoint item. Ground Station will show the Vehicle as flying throu
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
-| Param (Label) | Description        | Units |
+| Param (Label) | 描述                 | Units |
 | ------------- | ------------------ | ----- |
 | 1             | User defined       |       |
 | 2             | User defined       |       |
@@ -7965,7 +7965,7 @@ User defined waypoint item. Ground Station will show the Vehicle as flying throu
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
-| Param (Label) | Description        | Units |
+| Param (Label) | 描述                 | Units |
 | ------------- | ------------------ | ----- |
 | 1             | User defined       |       |
 | 2             | User defined       |       |
@@ -7979,7 +7979,7 @@ User defined waypoint item. Ground Station will show the Vehicle as flying throu
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
-| Param (Label) | Description        | Units |
+| Param (Label) | 描述                 | Units |
 | ------------- | ------------------ | ----- |
 | 1             | User defined       |       |
 | 2             | User defined       |       |
@@ -7993,7 +7993,7 @@ User defined waypoint item. Ground Station will show the Vehicle as flying throu
 
 User defined waypoint item. Ground Station will show the Vehicle as flying through this item.
 
-| Param (Label) | Description        | Units |
+| Param (Label) | 描述                 | Units |
 | ------------- | ------------------ | ----- |
 | 1             | User defined       |       |
 | 2             | User defined       |       |
@@ -8007,7 +8007,7 @@ User defined waypoint item. Ground Station will show the Vehicle as flying throu
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
 
-| Param (Label) | Description        | Units |
+| Param (Label) | 描述                 | Units |
 | ------------- | ------------------ | ----- |
 | 1             | User defined       |       |
 | 2             | User defined       |       |
@@ -8021,7 +8021,7 @@ User defined spatial item. Ground Station will not show the Vehicle as flying th
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
 
-| Param (Label) | Description        | Units |
+| Param (Label) | 描述                 | Units |
 | ------------- | ------------------ | ----- |
 | 1             | User defined       |       |
 | 2             | User defined       |       |
@@ -8035,7 +8035,7 @@ User defined spatial item. Ground Station will not show the Vehicle as flying th
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
 
-| Param (Label) | Description        | Units |
+| Param (Label) | 描述                 | Units |
 | ------------- | ------------------ | ----- |
 | 1             | User defined       |       |
 | 2             | User defined       |       |
@@ -8049,7 +8049,7 @@ User defined spatial item. Ground Station will not show the Vehicle as flying th
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
 
-| Param (Label) | Description        | Units |
+| Param (Label) | 描述                 | Units |
 | ------------- | ------------------ | ----- |
 | 1             | User defined       |       |
 | 2             | User defined       |       |
@@ -8063,7 +8063,7 @@ User defined spatial item. Ground Station will not show the Vehicle as flying th
 
 User defined spatial item. Ground Station will not show the Vehicle as flying through this item. Example: ROI item.
 
-| Param (Label) | Description        | Units |
+| Param (Label) | 描述                 | Units |
 | ------------- | ------------------ | ----- |
 | 1             | User defined       |       |
 | 2             | User defined       |       |
@@ -8077,7 +8077,7 @@ User defined spatial item. Ground Station will not show the Vehicle as flying th
 
 User defined command. Ground Station will not show the Vehicle as flying through this item. Example: [MAV_CMD_DO_SET_PARAMETER](#MAV_CMD_DO_SET_PARAMETER) item.
 
-| Param (Label) | Description  |
+| Param (Label) | 描述           |
 | ------------- | ------------ |
 | 1             | User defined |
 | 2             | User defined |
@@ -8091,7 +8091,7 @@ User defined command. Ground Station will not show the Vehicle as flying through
 
 User defined command. Ground Station will not show the Vehicle as flying through this item. Example: [MAV_CMD_DO_SET_PARAMETER](#MAV_CMD_DO_SET_PARAMETER) item.
 
-| Param (Label) | Description  |
+| Param (Label) | 描述           |
 | ------------- | ------------ |
 | 1             | User defined |
 | 2             | User defined |
@@ -8105,7 +8105,7 @@ User defined command. Ground Station will not show the Vehicle as flying through
 
 User defined command. Ground Station will not show the Vehicle as flying through this item. Example: [MAV_CMD_DO_SET_PARAMETER](#MAV_CMD_DO_SET_PARAMETER) item.
 
-| Param (Label) | Description  |
+| Param (Label) | 描述           |
 | ------------- | ------------ |
 | 1             | User defined |
 | 2             | User defined |
@@ -8119,7 +8119,7 @@ User defined command. Ground Station will not show the Vehicle as flying through
 
 User defined command. Ground Station will not show the Vehicle as flying through this item. Example: [MAV_CMD_DO_SET_PARAMETER](#MAV_CMD_DO_SET_PARAMETER) item.
 
-| Param (Label) | Description  |
+| Param (Label) | 描述           |
 | ------------- | ------------ |
 | 1             | User defined |
 | 2             | User defined |
@@ -8133,7 +8133,7 @@ User defined command. Ground Station will not show the Vehicle as flying through
 
 User defined command. Ground Station will not show the Vehicle as flying through this item. Example: [MAV_CMD_DO_SET_PARAMETER](#MAV_CMD_DO_SET_PARAMETER) item.
 
-| Param (Label) | Description  |
+| Param (Label) | 描述           |
 | ------------- | ------------ |
 | 1             | User defined |
 | 2             | User defined |
@@ -8147,7 +8147,7 @@ User defined command. Ground Station will not show the Vehicle as flying through
 
 Request forwarding of CAN packets from the given CAN bus to this component. CAN Frames are sent using [CAN_FRAME](#CAN_FRAME) and [CANFD_FRAME](#CANFD_FRAME) messages
 
-| Param (Label) | Description                                                                          |
+| Param (Label) | 描述                                                                                   |
 | ------------- | ------------------------------------------------------------------------------------ |
 | 1 (bus)       | Bus number (0 to disable forwarding, 1 for first bus, 2 for 2nd bus, 3 for 3rd bus). |
 | 2             | Empty.                                                                               |
@@ -8161,12 +8161,12 @@ Request forwarding of CAN packets from the given CAN bus to this component. CAN 
 
 Magnetometer calibration based on provided known yaw. This allows for fast calibration using WMM field tables in the vehicle, given only the known yaw of the vehicle. If Latitude and longitude are both zero then use the current vehicle location.
 
-| Param (Label)   | Description                    | Units |
+| Param (Label)   | 描述                             | Units |
 | --------------- | ------------------------------ | ----- |
-| 1 (Yaw)         | Yaw of vehicle in earth frame. | deg   |
+| 1 (Yaw)         | Yaw of vehicle in earth frame. | 度     |
 | 2 (CompassMask) | CompassMask, 0 for all.        |       |
-| 3 (Latitude)    | Latitude.                      | deg   |
-| 4 (Longitude)   | Longitude.                     | deg   |
+| 3 (Latitude)    | Latitude.                      | 度     |
+| 4 (Longitude)   | Longitude.                     | 度     |
 | 5               | Empty.                         |       |
 | 6               | Empty.                         |       |
 | 7               | Empty.                         |       |
@@ -8175,7 +8175,7 @@ Magnetometer calibration based on provided known yaw. This allows for fast calib
 
 Command to operate winch.
 
-| Param (Label) | Description                                   | Values                          | Units |
+| Param (Label) | 描述                                            | 值                               | Units |
 | ------------- | --------------------------------------------- | ------------------------------- | ----- |
 | 1 (Instance)  | Winch instance number.                        | min: 1 inc: 1                   |       |
 | 2 (Action)    | Action to perform.                            | [WINCH_ACTIONS](#WINCH_ACTIONS) |       |
@@ -8189,7 +8189,7 @@ Command to operate winch.
 
 Provide an external position estimate for use when dead-reckoning. This is meant to be used for occasional position resets that may be provided by a external system such as a remote pilot using landmarks over a video link.
 
-| Param (Label)         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Units |
+| Param (Label)         | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Units |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
 | 1 (transmission_time) | Timestamp that this message was sent as a time in the transmitters time domain. The sender should wrap this time back to zero based on required timing accuracy for the application and the limitations of a 32 bit float. For example, wrapping at 10 hours would give approximately 1ms accuracy. Recipient must handle time wrap in any timing jitter correction applied to this field. Wrap rollover time should not be at not more than 250 seconds, which would give approximately 10 microsecond accuracy. | s     |
 | 2 (processing_time)   | The time spent in processing the sensor data that is the basis for this position. The recipient can use this to improve time alignment of the data. Set to zero if not known.                                                                                                                                                                                                                                                                                                                                     | s     |

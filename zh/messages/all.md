@@ -50,17 +50,17 @@ span.warning {
 - [cubepilot.xml](../messages/cubepilot.md)
 - [csAirLink.xml](../messages/csAirLink.md)
 
-## Summary
+## 概览
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 0       | 364      |
-| [Enums](#enumerated-types) | 0       | 235      |
-| [Commands](#mav_commands)  | 216     | 0        |
+| Type                    | Defined | Included |
+| ----------------------- | ------- | -------- |
+| [消息](#messages)         | 0       | 364      |
+| [枚举](#enumerated-types) | 0       | 235      |
+| [命令](#mav_commands)     | 216     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ## Enumerated Types
 

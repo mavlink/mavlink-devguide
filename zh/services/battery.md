@@ -19,12 +19,12 @@ The messages should be sent individually for each battery in the system (the mes
 
 ## Message/Enum Summary
 
-| Message                                                                                                  | Description                                                                                                                               |
+| 消息                                                                                                       | 描述                                                                                                                                        |
 | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | !!crwdBlockTags_10_sgaTkcolBdwrc!![BATTERY_STATUS](../messages/common.md#BATTERY_STATUS)               | Battery message used for frequent status update - e.g. of current capacity, voltages, faults, etc.                                        |
 | !!crwdBlockTags_11_sgaTkcolBdwrc!![SMART_BATTERY_INFO](../messages/common.md#SMART_BATTERY_INFO) (WIP) | Smart battery message used for invariant or infrequently changing data - e.g. battery name, battery full/empty capacity and voltages etc. |
 
-| Enum                                                                                             | Description               |
+| Enum                                                                                             | 描述                        |
 | ------------------------------------------------------------------------------------------------ | ------------------------- |
 | !!crwdBlockTags_13_sgaTkcolBdwrc!![MAV_BATTERY_FAULT](../messages/common.md#MAV_BATTERY_FAULT) | Fault/health indications. |
 | !!crwdBlockTags_14_sgaTkcolBdwrc!![MAV_BATTERY_MODE](../messages/common.md#MAV_BATTERY_MODE)   | Smart battery mode.       |

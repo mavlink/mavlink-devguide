@@ -3,7 +3,7 @@
 A MAVLink system consists of one or more MAVLink components that all share the same system id, and that must each have a system-unique component id.
 This topic explains how you can ensure that your components are updated appropriately when the system id of the autopilot is changed, and how to ensure that they each have a unique component id.
 
-## Overview
+## 综述
 
 Generally MAVLink flight stacks give the autopilot component a default system id of 1 and a component id of [MAV_COMP_ID_AUTOPILOT1](../messages/common.md#MAV_COMP_ID_AUTOPILOT1) (also `1`).
 

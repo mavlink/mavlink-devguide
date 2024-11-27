@@ -327,7 +327,7 @@ For more information see [Message Signing](../guide/message_signing.md#timestamp
 
 See [Examples (pymavlink)](../mavgen_python/examples.md)
 
-## Support
+## 지원
 
 Pymavlink questions can be raised in the normal MAVLink [support channels](../about/support.md).
 

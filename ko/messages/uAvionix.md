@@ -25,7 +25,7 @@ span.warning {
 
 - [common.xml](../messages/common.md)
 
-## Summary
+## 목차
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |

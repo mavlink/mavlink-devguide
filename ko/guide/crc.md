@@ -19,7 +19,7 @@ The difference of MAVLink's implementation versus the standard are:
 
 The effects of the initial value and final XOR operation are documented in this [brief tutorial on CRC computation of the Linux kernel](https://github.com/torvalds/linux/blob/master/Documentation/staging/crc32.rst).
 
-## Implementations
+## 구현
 
 This implementation is currently used in:
 

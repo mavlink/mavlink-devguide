@@ -252,6 +252,6 @@ The sequence of operations is:
 1. GCS should update the [parameter cache](#parameter_caching) (if used) with the new value.
 1. The GCS may restart the sequence if an expected `PARAM_EXT_ACK` is not received within the timeout, or if the write operation fails.
 
-## Implementations
+## 구현
 
 *QGroundControl*: [QGCCameraIO.h](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.h), [QGCCameraIO.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Camera/QGCCameraIO.cc)

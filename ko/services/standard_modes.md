@@ -181,7 +181,7 @@ In the worse case, if there is no metadata for a custom mode, the `mode_name` st
 
 Note that the `mode_name` must be human readable and unique for the autopilot.
 
-## Implementations
+## 구현
 
 PX4 v1.15 and later supports this service, including the optional part (`AVAILABLE_MODES_MONITOR`) (this allows ROS2 modes added using the [PX4 ROS 2 Interface Library](https://docs.px4.io/main/en/ros2/px4_ros2_interface_lib.html) to be dynamically updated in a GCS).
 At time of writing it only exposes the standard modes that are common to all vehicles as standard modes, such as takeoff and landing, and missions.

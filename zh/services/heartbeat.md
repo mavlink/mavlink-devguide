@@ -10,11 +10,11 @@ The heartbeat allows other components to:
 
 ## Message/Enum Summary
 
-| Message                                                            | Description                                                                                                                     |
+| 消息                                                                 | 描述                                                                                                                              |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="HEARTBEAT"></a>[HEARTBEAT](../messages/common.md#HEARTBEAT) | Broadcast that a MAVLink component is present and responding, along with its type ([MAV_TYPE](#MAV_TYPE)) and other properties. |
 
-| Enum                                                                             | Description                                                                                                                                                                                                                                          |
+| Enum                                                                             | 描述                                                                                                                                                                                                                                                   |
 | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="MAV_TYPE"></a>[MAV_TYPE](../messages/common.md#MAV_TYPE)                  | Type of the component. Flight controllers must report the type of the vehicle on which they are mounted (e.g. MAV_TYPE_OCTOROTOR). All other components must report a value appropriate for their type (e.g. a camera must use `MAV_TYPE_CAMERA`). |
 | <a id="MAV_AUTOPILOT"></a>[MAV_AUTOPILOT](../messages/common.md#MAV_AUTOPILOT)   | Autopilot type / class. Set to `MAV_AUTOPILOT_INVALID` for components that are not flight controllers (e.g. ground stations, gimbals, etc.).                                                                                                         |

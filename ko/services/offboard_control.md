@@ -33,7 +33,7 @@ Test for setter message support by checking [AUTOPILOT_VERSION.capabilities](../
 Note that support for the protocol/message does not imply that every vehicle will support every possible combination of parameters.
 This can only be inferred from the flight stack documentation.
 
-## Implementations
+## 구현
 
 PX4 supports this protocol in [Offboard mode](https://docs.px4.io/main/en/flight_modes/offboard.html#mavlink-messages).
 The allowed setpoints are documented at that link, and depend on the vehicle type.

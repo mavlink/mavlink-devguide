@@ -100,7 +100,7 @@ In this case, the GCS will automatically build a drop down list with the options
 
 > **Note** These parameters are common to many cameras (though their valid options vary considerably).
 
-| Parameter        | Description                                                            |
+| Parameter        | 描述                                                                     |
 | ---------------- | ---------------------------------------------------------------------- |
 | CAM_APERTURE     | Aperture                                                               |
 | CAM_EV           | Exposure Compensation (usually only used for automatic exposure modes) |

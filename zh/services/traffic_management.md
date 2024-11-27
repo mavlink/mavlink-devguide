@@ -19,28 +19,28 @@ The two systems share sigificant overlap and have very similar messages. The two
 
 ### Unmanned Aircraft System Traffic Management (UTM)
 
-| Message                                                                                     | Description                                               |
+| 消息                                                                                          | 描述                                                        |
 | ------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | <a id="UTM_GLOBAL_POSITION"></a>[UTM_GLOBAL_POSITION](../messages/common.md#UTM_GLOBAL_POSITION) | The global position resulting from GPS and sensor fusion. |
 
-| Enum                                                                                          | Description                                                                                                  |
+| Enum                                                                                          | 描述                                                                                                           |
 | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | <a id="UTM_FLIGHT_STATE"></a>[UTM_FLIGHT_STATE](../messages/common.md#UTM_FLIGHT_STATE)         | Flight state of the vehicle: unknown, landed, flying, emergency etc.                                         |
 | <a id="UTM_DATA_AVAIL_FLAGS"></a>[UTM_DATA_AVAIL_FLAGS](../messages/common.md#UTM_DATA_AVAIL_FLAGS) | Flags that indicate which of the fields in [UTM_GLOBAL_POSITION](#UTM_GLOBAL_POSITION) contain valid data. |
 
 ### Automatic Dependent Surveillance–Broadcast (ADS-B)
 
-| Message                                                                     | Description                                                      |
+| 消息                                                                          | 描述                                                               |
 | --------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | <a id="ADSB_VEHICLE"></a>[ADSB_VEHICLE](../messages/common.md#ADSB_VEHICLE) | XXXXXX The global position resulting from GPS and sensor fusion. |
 
-| Enum                                                                                      | Description                                                                                                                |
+| Enum                                                                                      | 描述                                                                                                                         |
 | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | <a id="ADSB_ALTITUDE_TYPE"></a>[ADSB_ALTITUDE_TYPE](../messages/common.md#ADSB_ALTITUDE_TYPE) | The source of altitude data - e.g. GNSS system or barometer.                                                               |
 | <a id="ADSB_EMITTER_TYPE"></a>[ADSB_EMITTER_TYPE](../messages/common.md#ADSB_EMITTER_TYPE)   | ADSB classification for the type of vehicle emitting the transponder signal (most drones will set `ADSB_EMITTER_TYPE_UAV`) |
 | <a id="ADSB_FLAGS"></a>[ADSB_FLAGS](../messages/common.md#ADSB_FLAGS)                   | Flags that indicate which of the fields in [ADSB_VEHICLE](#ADSB_VEHICLE) contain valid data.                               |
 
-| Ids                                                                                      | Description                                                                                        |
+| Ids                                                                                      | 描述                                                                                                 |
 | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | <a id="MAV_TYPE_ADSB"></a>[MAV_TYPE_ADSB](../messages/common.md#MAV_TYPE_ADSB)          | `MAV_TYPE` for a stand-alone MAVLink ADS-B transponder component (not part of an autopilot)        |
 | <a id="MAV_COMP_ID_ADSB"></a>[MAV_COMP_ID_ADSB](../messages/common.md#MAV_COMP_ID_ADSB)    | MAVLink reserved component id for a MAVLink ADS-B transponder component (not part of an autopilot) |

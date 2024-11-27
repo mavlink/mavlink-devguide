@@ -10,7 +10,7 @@ MAVLink defines a number of commands for controlling specific _types_ of payload
 
 They should be used (where supported) in preference to [generic payload commands](#generic-payload-commands), as generally they provide more "tailored" control over the payload, a better GCS user experience, and more informative logs.
 
-| Message                                                                                                     | Description                                                                                                                                                                                            |
+| 消息                                                                                                          | 描述                                                                                                                                                                                                     |
 | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id="MAV_CMD_DO_GRIPPER"></a>[MAV_CMD_DO_GRIPPER](../messages/common.md#MAV_CMD_DO_GRIPPER)                   | Command to engage and release a gripper.                                                                                                                                                               |
 | <a id="MAV_CMD_DO_WINCH"></a>[MAV_CMD_DO_WINCH](../messages/common.md#MAV_CMD_DO_WINCH)                       | Command to operate a specified winch.                                                                                                                                                                  |
@@ -22,7 +22,7 @@ MAVLink has a number of commands for setting actuator outputs. These can be used
 
 > **Tip** Use the [commands for known payload types](#payload-specific-commands) where possible as they are more intuitive for users, and in logs.
 
-| Message                                                                                               | Description                                                                                                                                                                                                                                                      |
+| 消息                                                                                                    | 描述                                                                                                                                                                                                                                                               |
 | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="MAV_CMD_DO_SET_ACTUATOR"></a>[MAV_CMD_DO_SET_ACTUATOR](../messages/common.md#MAV_CMD_DO_SET_ACTUATOR) | Sets actuators (e.g. servos) to a desired value. Sets actuators (e.g. servos) to a desired value. The actuator numbers are mapped to specific outputs (e.g. on any MAIN or AUX PWM or UAVCAN) using a flight-stack specific mechanism (for example, parameters). |
 | <a id="MAV_CMD_DO_SET_SERVO"></a>[MAV_CMD_DO_SET_SERVO](../messages/common.md#MAV_CMD_DO_SET_SERVO)       | Sets a servo, identified by a specified instance number, to a specified PWM value.                                                                                                                                                                               |
@@ -39,7 +39,7 @@ MAVLink has a number of commands for setting actuator outputs. These can be used
 
 These commands can be used to deploy a payload at a specfic location, controlling the approach and land behaviour.
 
-| Message                                                                                                   | Description                                           |
+| 消息                                                                                                        | 描述                                                    |
 | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | <a id="MAV_CMD_NAV_PAYLOAD_PLACE"></a>[MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE) | Move to target location, descend and release payload. |
 

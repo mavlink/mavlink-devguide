@@ -32,15 +32,15 @@ The implication is that while all components on a MAVLink network will get [HIGH
 
 ## Message/Enum Summary
 
-| Message                                                                       | Description                                                                                                                           |
+| 消息                                                                            | 描述                                                                                                                                    |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="HIGH_LATENCY2"></a>[HIGH_LATENCY2](../messages/common.md#HIGH_LATENCY2) | A heartbeat-like message that contains all the most important (but not time-sensitive) telemetry for sending over high latency links. |
 
-| Command                                                                                                         | Description                                                                  |
+| Command                                                                                                         | 描述                                                                           |
 | --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | <a id="MAV_CMD_CONTROL_HIGH_LATENCY"></a>[MAV_CMD_CONTROL_HIGH_LATENCY](../messages/common.md#MAV_CMD_CONTROL_HIGH_LATENCY) | Command to start/stop transmitting high latency telemetry (`HIGH_LATENCY2`). |
 
-| Enum                                                                                | Description                                                    |
+| Enum                                                                                | 描述                                                             |
 | ----------------------------------------------------------------------------------- | -------------------------------------------------------------- |
 | <a id="HL_FAILURE_FLAG"></a>[HL_FAILURE_FLAG](../messages/common.md#HL_FAILURE_FLAG) | Flags to report failure cases over the high latency telemetry. |
 

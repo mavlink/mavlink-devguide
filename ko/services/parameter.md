@@ -217,7 +217,7 @@ The sequence of operations is:
 
 > **Note** The command [MAV_CMD_DO_SET_PARAMETER](../messages/common.md#MAV_CMD_DO_SET_PARAMETER) is not part of the parameter protocol. If implemented it can be used to set the value of a parameter using the *enumeration* of the parameter within the remote system is known (rather than the id). This has no particular advantage over the parameter protocol methods.
 
-## Implementations
+## 구현
 
 ### PX4
 

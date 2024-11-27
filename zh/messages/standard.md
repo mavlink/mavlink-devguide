@@ -25,16 +25,16 @@ span.warning {
 
 - [minimal.xml](../messages/minimal.md)
 
-## Summary
+## 概览
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 0       | 2        |
-| [Enums](#enumerated-types) | 0       | 6        |
-| Commands                   | 0       | 0        |
+| Type                    | Defined | Included |
+| ----------------------- | ------- | -------- |
+| [消息](#messages)         | 0       | 2        |
+| [枚举](#enumerated-types) | 0       | 6        |
+| 命令                      | 0       | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ## Enumerated Types

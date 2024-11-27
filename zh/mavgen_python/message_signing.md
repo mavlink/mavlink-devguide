@@ -66,7 +66,7 @@ If the function returns `False` the message will be dropped (otherwise it will b
 
 The rules for what unsigned packets should be accepted is implementation specific, but it is suggested the implementations always accept `RADIO_STATUS` packets for feedback from 3DR radios (which don't support signing)
 
-For example:
+例如：
 
 ```python
 # Assuming you already have a connection set up
