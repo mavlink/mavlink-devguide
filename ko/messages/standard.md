@@ -25,7 +25,7 @@ span.warning {
 
 - [minimal.xml](../messages/minimal.md)
 
-## Summary
+## 목차
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
