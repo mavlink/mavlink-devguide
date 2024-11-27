@@ -10,7 +10,7 @@ This sequence is run multiple times and filtered/averaged to reduce the transien
 
 ## Message/Enum Summary
 
-| Message                                                             | Description                   |
+| 消息                                                                  | 描述                            |
 | ------------------------------------------------------------------- | ----------------------------- |
 | <a id="TIMESYNC"></a>[TIMESYNC](../messages/common.md#TIMESYNC) | Time synchronization message. |
 
