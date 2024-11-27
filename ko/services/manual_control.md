@@ -53,7 +53,7 @@ Vehicles may alternatively be controlled by sending information as a set of up t
 
 It's worth noting that the generality of RC channels control is a double-edged sword. It is incredibly versatile, and can be used to provide support for several arbitrary control axes, but the user-defined in-vehicle nature of the mapped parameters means additional setup is frequently required for compatibility with GCSs, and there are no guarantees that multiple vehicles running the same firmware will have the same channel-parameter mapping. This is a similar issue to the `MANUAL_CONTROL` buttons, so to minimise firmware complexity and maximise interoperability between a vehicle type and GCSs it's recommended to use targetted MAVLink commands where possible.
 
-## Implementations
+## 구현
 
 The protocol has been implemented in various GCSs and vehicle firmwares. These implementations can be used in your own code within the terms of their software licenses.
 
