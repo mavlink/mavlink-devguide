@@ -47,7 +47,7 @@ The two systems share sigificant overlap and have very similar messages. Both ha
 | <a id="MAV_TYPE_FLARM"></a>[MAV_TYPE_ADSB](../messages/common.md#MAV_TYPE_FLARM)         | `MAV_TYPE` for a stand-alone MAVLink Flarm transponder component (not part of an autopilot)        |
 | <a id="MAV_COMP_ID_FLARM"></a>[MAV_COMP_ID_FLARM](../messages/common.md#MAV_COMP_ID_FLARM) | MAVLink reserved component id for a MAVLink Flarm transponder component (not part of an autopilot) |
 
-## Implementations
+## 구현
 
 PX4:
 
