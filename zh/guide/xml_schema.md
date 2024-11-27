@@ -8,7 +8,7 @@
 
 MaVLink XML 文件的大致结构如下。
 
-> **Note** 如果要创建自定义语支文件, 文件结构应类似于下面的文件结构 (但可能省略所有部分)。
+> [!NOTE] If you're creating a custom dialect file your file structure should be similar to the one below (but may omit any/all sections).
 
 ```xml
 <?xml version="1.0"?>
@@ -87,7 +87,7 @@ MaVLink XML 文件的大致结构如下。
 - `entry`(可选)：条目 (可以为每个列表指定零或多个条目)
 - [deprecated](#deprecated)(可选)：一个标签，显示已废弃的名单。
 
-> **Tip** [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
+> [!TIP] [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
 ### 条目 {#entry}
 
@@ -98,13 +98,13 @@ MaVLink XML 文件的大致结构如下。
 - `description`(可选)：条目的描述。
 - [deprecated](#deprecated) / [wip](#wip) (可选)：一个标签，表明该清单已被废弃或“正在进行的工作”。
 
-> **Note** An`条目` 也可以定义可选元素 `param`，`assession`，和`istion` 实际上，这些建议只能在 `enum` 叫做 [MAV_CMD](#MAV_CMD)(下文说明)。 实际上，这些建议只能在 `enum` 叫做 [MAV_CMD](#MAV_CMD)(下文说明)。
+> [!NOTE] An `entry` may also define the optional elements: `param`, `hasLocation`, `isDestination`, `missionOnly`. 实际上，这些建议只能在 `enum` 叫做 [MAV_CMD](#MAV_CMD)(下文说明)。
 
 ## MAVLink 命令 (列举 MAV_CMD) {#MAV_CMD}
 
 The `<param>` tag is used in the [MAV_CMD](../messages/common.md#mav_commands) enum as part of defining mission commands. 每个条目值可能超过已申报的7个参数，从 `索引` 值来自1-7。
 
-> **Note** 这些参数在 [MISTION_ITEM](../messages/common.md#MISSION_ITEM) 或 [MISCION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) 消息([Mission Protocol](../services/mission.md))，或 [COMMAND_INT](../messages/common.md#COMMAND_INT) 或 [COMMAND_LONG](../messages/common.md#COMMAND_LONG) 消息([命令议定书](../services/command.md))。
+> [!NOTE] These parameters are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages ([Mission Protocol](../services/mission.md)), or [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages ([Command Protocol](../services/command.md)).
 
 例如，见[MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE):
 
@@ -155,8 +155,11 @@ MAV_CMD 条目 `value` 元素可能会额外定义这些标签/字段：
 - `minValue` - 参数的最低值。
 - `max值`-参数的最大值。
 - `multiplier` - Multiply by this value to get the unscaled original value. This is primarily intended for specifying any scaling applied to unitless values, where scaling is not encoded in the `units`.
-- `reserved` - Boolean indicating whether param is reserved for future use. If the attributes is not declared, then implicitly `reserved="False"`. `reserved` - 布尔值 - 表示是否保留用于未来使用的参数。 如果未宣布属性，则隐含 `reserved="False"`。 > **Tip** 参见 [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) 更多信息。
-- `default` - 默认值 `param` (主要用于 `保留` 参数, 值 `0` 或`NaN`)。
+- `reserved` - Boolean indicating whether param is reserved for future use. If the attributes is not declared, then implicitly `reserved="False"`.
+  
+  > [!TIP] See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
+
+- `default` - Default value for the `param` (primarily used for `reserved` params, where the value is `0` or `NaN`).
 
 ## 消息定义(消息) {#messages}
 
@@ -188,15 +191,23 @@ MAV_CMD 条目 `value` 元素可能会额外定义这些标签/字段：
 
 主要消息标签/字段是：
 
-- `message`: 每个消息被 `message` 标签封装，包含以下属性 
-  - `id`“id”属性是这一信息的独特索引编号(见上文：147)。 
+- `message`: Each message is encapsulated by `message` tags, with the following attributes
+  
+  - `id`: The id attribute is the unique index number of this message (in the example above: 147).
+    
     - 对于 MAVLink 1: 
       - 有效数字介于 0 到 255。
       - ID 0-149 和 230-255 为*common.xml*保留。 语支可以使用180-229 用于自定义消息 (除非这些信息没有被其他包括语支使用)。 Dialects can use 180-229 for custom messages (provided these are not used by other included dialects).
-    - 对于 [MAVLink 2 ](../guide/mavlink_2.md): 
+    
+    - 对于 [MAVLink 2 ](../guide/mavlink_2.md):
+      
       - 有效数字介于0-1677215。
-      - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1. 255以下所有值都被认为是保留的，除非报文也打算用于 MAVLink 1。 >**注意** ID 在 MAVLink 1 中很宝贵！
+      - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1.
+        
+        > [!NOTE] IDs are precious in MAVLink 1!
+  
   - `name`：名称属性为消息提供了人类可读的表格 (比如 "BATERY_STATUS") 它用于在生成的库命名辅助功能，但并没有通过总线发送。 它用于在生成的库命名辅助功能，但并没有通过总线发送。
+
 - `description`(可选)：用户界面和代码评论中显示的信息可读描述。 这应当包含所有信息（以及超链接），以便充分了解信息。 这应当包含所有信息（以及超链接），以便充分了解信息。
 - `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire). Every message must have at least one field.
   
@@ -214,7 +225,7 @@ MAV_CMD 条目 `value` 元素可能会额外定义这些标签/字段：
   - `maxValue` - Maximum value for the field.
   - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`.
     
-    > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
+    > [!NOTE] This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
   
   - `invalid`: Specifies a value that can be set on a field to indicate that the data is *invalid*: the recipient should ignore the field if it has this value. For example, `BATTERY_STATUS.current_battery` specifies `invalid="-1"`, so a battery that does not measure supplied *current* should set `BATTERY_STATUS.current_battery` to `-1`.
     
@@ -242,7 +253,7 @@ MAV_CMD 条目 `value` 元素可能会额外定义这些标签/字段：
 
 生成工具链可以配置为有条件的构建消息，忽略 `deprecated` 的条目。
 
-> **Tip** 只有在主要用户有机会向新方法更新时，一个实体才能被标记为废弃。
+> [!TIP] An entity should be marked as deprecated only when the main users have had an opportunity to update to the new method.
 
 作为一个具体的例子，我们看到 [SET_MODE](../messages/common.md#SET_MODE) 被废弃，由 [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) 在 `2015-12` 上替换。
 
