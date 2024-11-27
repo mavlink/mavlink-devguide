@@ -7,7 +7,7 @@ MAVLink 已部署在若干版本中：
 
 *MAVLink 2.0* C/C++ 和 Python 库向后兼容的 MAVLink 1.0 (支持这两个协议)。 [Version Handshaking](#version_handshaking) 和 [Negotiating Version](#negotiating_versions) 解释了如何选择使用哪种版本。 [Version Handshaking](#version_handshaking) 和 [Negotiating Version](#negotiating_versions) 解释了如何选择使用哪种版本。
 
-> **Note** *MAVLink v0.9* 是不再受支持的预发行版本。 相关的信息于2018年8月删除。 旧代码可能存在于生成器和测试代码。 相关的信息于2018年8月删除。 旧代码可能存在于生成器和测试代码。
+> [!NOTE] *MAVLink v0.9* is a pre-release version that is no longer supported. 相关的信息于2018年8月删除。 旧代码可能存在于生成器和测试代码。
 
 ## 确定协议/消息版本
 
@@ -16,15 +16,15 @@ MAVLink 已部署在若干版本中：
 - [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION) 可以根据 [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) 标志检查 `.capabilities`, 以验证 MAVLink 2 支持。
 - [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION), 我的时间, 我的`version` 包含 MAVLink 版本号乘以100: v1.0 为 100, <!--v2.0 为 200,--> v2.3 为203等。
 
-- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` 字段包含次要版本号。 [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` 字段包含次要版本号。 这是 [Message Definitions](../messages/README.md) (`version` 在 [common.xml](../messages/common.md) 中定义的 `<version>` 字段, 用于依赖于通用消息集的语支)。
+- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` 字段包含次要版本号。 This is the `<version>` field defined in the [Message Definitions](../messages/index.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
 - 主要版本可以从数据包起始标记字节中确定:
     
     - MAVLink 1: `0xFE`
     - MAVLink 2: `0xFD`
     
-    > **Note** 不支持协议版本的 MAVLink 库将无法识别协议启动标记；因此甚至不会检测到任何消息（请参见 [Serialization](../guide/serialization.md)）。
+    > [!NOTE] A MAVLink library that does not support a protocol version will not recognise the protocol start marker; so no messages will even be detected (see [Serialization](../guide/serialization.md)).
 
-> **Tip** 虽然消息不包含版本信息，但额外的 CRC 用于确保一个库只能处理兼容的信息（见[Serialization > CRC_EXTERA](../guide/serialization.md)）。
+> [!TIP] While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
 
 ## 版本握手 {#version_handshaking}
 
@@ -61,7 +61,7 @@ The supported MAVLink library implementations enable different MAVLink versions 
 
 As a result, all [connections](../services/heartbeat.md) to other components over a particular channel must share the same MAVLink version. If a system is using signing, then all connections via the same channel must also be signing messages with the same key.
 
-> **Note** 系统不能使用单个通道连接到签名的 MAVLink 2 系统、未签名的 MAVLink 2 系统和/或 MAVLink 1 组件。
+> [!NOTE] A system cannot use a single channel to connect to signed MAVLink 2 systems, unsigned MAVLink 2 systems, and/or MAVLink 1 components.
 
 Currently most MAVLink networks are configured to use unsigned MAVLink 2 messages. MAVLink 1 is primarily used to allow autopilots to connect to legacy MAVLink peripherals, and this is done via a separate channel. Signed networks will need to use a further separate channel to connect to other signed systems.
 
