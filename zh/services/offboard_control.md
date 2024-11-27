@@ -1,4 +1,4 @@
-# Offboard Control Interface
+# 远程控制接口
 
 The offboard control interface allows an external controller to send low-level attitude, position, velocity, and/or acceleration setpoints to the vehicle.
 
@@ -11,7 +11,7 @@ The particular types of setpoints that are supported, if any, depend on the vehi
 
 ## Message/Enum Summary
 
-| Message                                                                                                                                                                                                               | Description                                                                                                                          |
+| 消息                                                                                                                                                                                                                    | 描述                                                                                                                                   |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id="SET_POSITION_TARGET_LOCAL_NED"></a>[SET_POSITION_TARGET_LOCAL_NED](../messages/common.md#SET_POSITION_TARGET_LOCAL_NED)    | Sets a desired vehicle position, velocity, and/or accelaration setpoint in a local north-east-down coordinate frame. |
 | <a id="SET_POSITION_TARGET_GLOBAL_INT"></a>[SET_POSITION_TARGET_GLOBAL_INT](../messages/common.md#SET_POSITION_TARGET_GLOBAL_INT) | Sets a desired vehicle position, velocity, and/or acceleration in a global coordinate system (WGS84)              |
@@ -20,7 +20,7 @@ The particular types of setpoints that are supported, if any, depend on the vehi
 | <a id="POSITION_TARGET_GLOBAL_INT"></a>[POSITION_TARGET_GLOBAL_INT](../messages/common.md#POSITION_TARGET_GLOBAL_INT)                                  | Publishes current global target (set by `SET_POSITION_TARGET_GLOBAL_INT`).                        |
 | <a id="ATTITUDE_TARGET"></a>[ATTITUDE_TARGET](../messages/common.md#ATTITUDE_TARGET)                                                                                                             | Publishes current attitude target (set by `SET_ATTITUDE_TARGET`).                                 |
 
-| Enum                                                                                                                                                                                                                                                                                                                                                         | Description                                                                                                                                              |
+| Enum                                                                                                                                                                                                                                                                                                                                                         | 描述                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED"></a>[MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED](../messages/common.md#MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_LOCAL_NED)    | Flight stack supports SET_POSITION_TARGET_LOCAL_NED. |
 | <a id="MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT"></a>[MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT](../messages/common.md#MAV_PROTOCOL_CAPABILITY_SET_POSITION_TARGET_GLOBAL_INT) | Flight stack supports SET_POSITION_TARGET_LOCAL_NED. |
