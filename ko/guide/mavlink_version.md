@@ -7,7 +7,7 @@ MAVLink has been deployed in a number of versions:
 
 The *MAVLink 2.0* C/C++ and Python libraries are backwards compatible with MAVLink 1.0 (support both protocols). [Version Handshaking](#version_handshaking) and [Negotiating Versions](#negotiating_versions) explain how to choose which version is used.
 
-> **Note** *MAVLink v0.9* is a pre-release version that is no longer supported. The associated message set deleted in August 2018. Legacy code may be present in generator and test code.
+> [!NOTE] *MAVLink v0.9* is a pre-release version that is no longer supported. The associated message set deleted in August 2018. Legacy code may be present in generator and test code.
 
 ## Determining Protocol/Message Version
 
@@ -16,15 +16,15 @@ A library's MAVLink support can be determined in a number of ways:
 - [AUTOPILOT_VERSION](../messages/common.md#AUTOPILOT_VERSION)`.capabilities` can be checked against the [MAV_PROTOCOL_CAPABILITY_MAVLINK2](../messages/common.md#MAV_PROTOCOL_CAPABILITY_MAVLINK2) flag to verify MAVLink 2 support.
 - [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION).`version` contains the MAVLink version number multiplied by 100: v1.0 is 100, <!-- v2.0 is 200, --> v2.3 is 203 etc.
 
-- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number. This is the `<version>` field defined in the [Message Definitions](../messages/README.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
+- [HEARTBEAT](../messages/common.md#HEARTBEAT)`.mavlink_version` field contains the minor version number. This is the `<version>` field defined in the [Message Definitions](../messages/index.md) (`version` in [common.xml](../messages/common.md) for dialects that depend on the common message set).
 - The major version can be determined from the packet start marker byte:
     
     - MAVLink 1: `0xFE`
     - MAVLink 2: `0xFD`
     
-    > **Note** A MAVLink library that does not support a protocol version will not recognise the protocol start marker; so no messages will even be detected (see [Serialization](../guide/serialization.md)).
+    > [!NOTE] A MAVLink library that does not support a protocol version will not recognise the protocol start marker; so no messages will even be detected (see [Serialization](../guide/serialization.md)).
 
-> **Tip** While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
+> [!TIP] While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
 
 ## Version Handshaking {#version_handshaking}
 
@@ -61,7 +61,7 @@ The supported MAVLink library implementations enable different MAVLink versions 
 
 As a result, all [connections](../services/heartbeat.md) to other components over a particular channel must share the same MAVLink version. If a system is using signing, then all connections via the same channel must also be signing messages with the same key.
 
-> **Note** A system cannot use a single channel to connect to signed MAVLink 2 systems, unsigned MAVLink 2 systems, and/or MAVLink 1 components.
+> [!NOTE] A system cannot use a single channel to connect to signed MAVLink 2 systems, unsigned MAVLink 2 systems, and/or MAVLink 1 components.
 
 Currently most MAVLink networks are configured to use unsigned MAVLink 2 messages. MAVLink 1 is primarily used to allow autopilots to connect to legacy MAVLink peripherals, and this is done via a separate channel. Signed networks will need to use a further separate channel to connect to other signed systems.
 
