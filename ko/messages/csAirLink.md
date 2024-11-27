@@ -29,7 +29,7 @@ span.warning {
 
 None
 
-## Summary
+## 목차
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
