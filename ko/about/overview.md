@@ -32,7 +32,7 @@ uint8_t signature[13];      ///< Signature which allows ensuring that the link i
 > The [MAVLink 1 packet format](../guide/serialization.md#v1_packet_format) is similar, but omits `incompat_flags`, `compat_flags` and `signature`, and only has a single byte for the message address.
 > For more information see [Serialization > Packet Format](../guide/serialization.md#packet_format).
 
-## Serialization
+## 직렬화
 
 The over-the-wire format of MAVLink is optimized for resource-constrained systems and hence the field order is not the same as in the XML specification.
 The over-the-wire generator sorts all fields of the message according to size, with the largest fields (`uint64_t`) first, then down to smaller fields.
