@@ -29,7 +29,7 @@ _QGroundControl_ responds with heartbeats and other messages, which are then pri
 3. 使用下列命令编译GCC：
 
    ```sh
-   gc -std=c99 -I./../包括/common-o mavlink_udp mavlink_udp.c
+   gcc -std=c99 -I ../../include/common -o mavlink_udp mavlink_udp.c
    ```
 
    > [!NOTE]> The MAVLink header directory must be added to the include path.
@@ -38,7 +38,7 @@ _QGroundControl_ responds with heartbeats and other messages, which are then pri
 4. 从终端运行可执行文件：
 
    ```bash
-   /mavlink_udp
+   ./mavlink_udp
    ```
 
    默认情况下，实例将接收本地主机IP地址，1451端口的数据。
