@@ -37,7 +37,7 @@ The items for the different types of mission are identified using a simple name 
 
 Mission items (`MAV_CMD`) are transmitted/encoded in [MISSION_ITEM_INT](#MISSION_ITEM_INT) messages. This message includes fields to identify the particular mission item (command id) and up to 7 command-specific optional parameters.
 
-| Field Name | Type     | Values                                        | Description                                                                                                      |
+| Field Name | Type     | 值                                             | 描述                                                                                                               |
 | ---------- | -------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | command    | uint16_t | [MAV_CMD](../messages/common.md#mav_commands) | Command id, as defined in [MAV_CMD](../messages/common.md#mav_commands).                                         |
 | param1     | float    |                                               | Param #1.                                                                                                        |
@@ -52,7 +52,7 @@ The first four parameters (shown above) can be used for any purpose - this depen
 
 The remaining message fields are used for addressing, defining the mission type, specifying the reference frame used for x, y, z in `MAV_CMD_NAV_*` messages, etc.:
 
-| Field Name       | Type     | Values                                  | Description                                                                                                                                                                                                                                          |
+| Field Name       | Type     | 值                                       | 描述                                                                                                                                                                                                                                                   |
 | ---------------- | -------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system    | uint8_t  |                                         | System ID                                                                                                                                                                                                                                            |
 | target_component | uint8_t  |                                         | Component ID                                                                                                                                                                                                                                         |
@@ -67,7 +67,7 @@ ArduPilot and PX4 both only support global frames in MAVLink commands (local fra
 
 The following messages and enums are used by the service.
 
-| Message                                                                                               | Description                                                                                                                                                                                                                                                              |
+| 消息                                                                                                    | 描述                                                                                                                                                                                                                                                                       |
 | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id="MISSION_REQUEST_LIST"></a>[MISSION_REQUEST_LIST](../messages/common.md#MISSION_REQUEST_LIST) | Initiate [mission download](#download_mission) from a system by requesting the list of mission items.                                                                                                                                                                    |
 | <a id="MISSION_COUNT"></a>[MISSION_COUNT](../messages/common.md#MISSION_COUNT)                        | Send the number of items in a mission. This is used to initiate [mission upload](#uploading_mission) or as a response to [MISSION_REQUEST_LIST](#MISSION_REQUEST_LIST) when [downloading a mission](#download_mission).                                                |
@@ -80,11 +80,11 @@ The following messages and enums are used by the service.
 | <a id="MISSION_CLEAR_ALL"></a>[MISSION_CLEAR_ALL](../messages/common.md#MISSION_CLEAR_ALL)          | Message sent to [clear/delete all mission items](#clear_mission) stored on a system.                                                                                                                                                                                     |
 | <a id="MISSION_ITEM_REACHED"></a>[MISSION_ITEM_REACHED](../messages/common.md#MISSION_ITEM_REACHED) | Message emitted by system whenever it reaches a new waypoint. Used to [monitor progress](#monitor_progress).                                                                                                                                                             |
 
-| Command                                                                                                                               | Description                                                                                                              |
+| Command                                                                                                                               | 描述                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | <a id="MAV_CMD_DO_SET_MISSION_CURRENT"></a>[MAV_CMD_DO_SET_MISSION_CURRENT](../messages/common.md#MAV_CMD_DO_SET_MISSION_CURRENT) | Set current mission item and optionally reset mission counter. Supersedes [MISSION_SET_CURRENT](#MISSION_SET_CURRENT). |
 
-| Enum                                                                                            | Description                                                                                                                                               |
+| Enum                                                                                            | 描述                                                                                                                                                        |
 | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="MAV_MISSION_TYPE"></a>[MAV_MISSION_TYPE](../messages/common.md#MAV_MISSION_TYPE)       | [Mission type](#mission_types) for message (mission, geofence, rallypoints).                                                                              |
 | <a id="MAV_MISSION_RESULT"></a>[MAV_MISSION_RESULT](../messages/common.md#MAV_MISSION_RESULT) | Used to indicate the success or failure reason for an operation (e.g. to upload or download a mission). This is carried in a [MISSION_ACK](#MISSION_ACK). |
@@ -101,7 +101,7 @@ Both `MISSION_REQUEST` and `MISSION_ITEM` messages are now deprecated, and shoul
 
 By convention, mission items use `param5`, `param6`, `param7` for positional information when needed (and otherwise as "free use" parameters). The table below shows that the positional parameters can be local (x, y, z), global (latitude, longitude, altitude), and also the data type used to store the parameters in the `MISSION_ITEM_INT` message.
 
-| param  | type      | Local | Global                                   |
+| 参数     | type      | Local | Global                                   |
 | ------ | --------- | ----- | ---------------------------------------- |
 | param5 | `int32_t` | x     | Latitude                                 |
 | param6 | `int32_t` | y     | Longitude                                |
@@ -345,7 +345,7 @@ The commands are:
 
 The location and fixed-wing loiter radius parameters are common to all commands:
 
-| Param (:Label) | Description                                                                  | Units |
+| Param (:Label) | 描述                                                                           | Units |
 | -------------- | ---------------------------------------------------------------------------- | ----- |
 | 3: Radius      | Radius around waypoint. If positive loiter clockwise, else counter-clockwise | m     |
 | 5: Latitude    | Latitude                                                                     |       |
@@ -358,7 +358,7 @@ The loiter time and turns are set in param 1 for the respective messages. The di
 
 Xtrack and heading define the location at which a forward flying (fixed wing) vehicle will *exit the loiter circle, and its path to the next waypoint* (these apply only to apply to only `MAV_CMD_NAV_LOITER_TIME` and `MAV_CMD_NAV_LOITER_TURNS`).
 
-| Param (:Label)      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Units                   |
+| Param (:Label)      | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Units                   |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | 2: Heading Required | Leave loiter circle only once heading towards the next waypoint (0 = False)                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | min:0 max:1 increment:1 |
 | 4: Xtrack Location  | Sets xtrack path or exit location: 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. |                         |
