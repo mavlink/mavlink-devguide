@@ -28,7 +28,7 @@ MAVLink 已经用于许多自动驾驶仪及地面站中，并已集成于API，
 
 ## MAVLink 封装器/开发者API
 
-为了简化MAVLink 与自动驾驶仪、相机及地面站等的接口，已经开发了多个高级API接口 (MAVLink is a relatively low-level API). (MAVLink is a relatively low-level API). 这些封装器能实现主要功能，并简化了发送命令及获取分析器信息的接口函数。
+为了简化MAVLink 与自动驾驶仪、相机及地面站等的接口，已经开发了多个高级API接口 (MAVLink is a relatively low-level API). (MAVLink is a relatively low-level API). These wrappers typically provide implementations of the main [microservices](../services/index.md) and simple/specific interfaces for sending commands and accessing vehicle information.
 
 The list here contains actively maintained implementations:
 
