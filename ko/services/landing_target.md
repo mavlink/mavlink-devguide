@@ -8,7 +8,7 @@ A positioning system might typically consist of an onboard companion computer wi
 
 The message used by this protocol is [LANDING_TARGET](../messages/common.md#LANDING_TARGET). This is *broadcast* by the positioning system to indicate the position of a particular target at a particular time.
 
-> **Note** The required broadcast rate depends on the landing speed and desired accuracy; start with rates between 10 Hz and 50 Hz and tune performance as needed.
+> [!NOTE] The required broadcast rate depends on the landing speed and desired accuracy; start with rates between 10 Hz and 50 Hz and tune performance as needed.
 
 The original MAVLink 1 message was designed with the assumption that the target is captured from a downward facing camera, and provides fields that are relative to the captured image. MAVLink 2 extended the message to provide positional information in terms of standard frames ([MAV_FRAME](../messages/common.md#MAV_FRAME)), a quaternion and the type of landing targets ([LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE)). This allows more flexibility for the types of target that can be supported, simplifies the code required by the autopilot, and allows the autopilot to control both landing position and orientation on (some) targets.
 
@@ -34,7 +34,7 @@ Imagine a ray pointing from the camera's principal point to the target. The x an
 
 The sizes in x and y direction are analogous (`size_x`/`size_y`). They describe the angle between the smallest and biggest pixel in x/y direction respectively of the target as seen in the image.
 
-> **Tip** ArduPilot supports messages with these fields if position_valid is `0`.
+> [!TIP] ArduPilot supports messages with these fields if position_valid is `0`.
 
 ## Target as Position/Quaternion (MAVLink 2 and later) {#positional}
 
@@ -50,7 +50,4 @@ The message fields that are used to provide target information as a position/qua
 | type           | uint8_t  |       | [LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE) | Type of landing target                                                                                                                                                                                                                                                  |
 | position_valid | uint8_t  |       |                                                                    | Boolean indicating whether these position field values are populated with valid position target information (1: valid, 0: invalid). The default is '0', so that if the fields are not populated the default-zero values are not interpreted as a valid target position. |
 
-> **Tip**
-> 
-> - **Tip** - PX4 supports this form of positioning in [MAV_FRAME_LOCAL_NED](../messages/common.md#MAV_FRAME_LOCAL_NED) (only). The original (MAVLink 1) fields are ignored.
-> - - ArduPilot supports this form of positioning in [MAV_FRAME_BODY_FRD](../messages/common.md#MAV_FRAME_BODY_FRD) (only). `position_valid` must be `1` and `distance` must be filled.
+> [!TIP] - PX4 supports this form of positioning in [MAV_FRAME_LOCAL_NED](../messages/common.md#MAV_FRAME_LOCAL_NED) (only). The original (MAVLink 1) fields are ignored. - ArduPilot supports this form of positioning in [MAV_FRAME_BODY_FRD](../messages/common.md#MAV_FRAME_BODY_FRD) (only). `position_valid` must be `1` and `distance` must be filled.
