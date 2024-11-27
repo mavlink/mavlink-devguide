@@ -2,9 +2,10 @@
 
 The linked documents explain how to use the MAVLink libraries for different programming languages (and from different code generators).
 
-> [!NOTE]
-> Not all of the libraries are documented.
-> If you have experience with the other libraries, please help us update those sections!
+::: info
+Not all of the libraries are documented.
+If you have experience with the other libraries, please help us update those sections!
+:::
 
 - Mavgen
 

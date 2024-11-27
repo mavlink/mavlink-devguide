@@ -42,8 +42,9 @@ The `HEARTBEAT` may also used by GCS (or Developer API) to determine if it **can
 For example, _QGroundControl_ will only connect to a vehicle system (i.e. not another GCS, gimbal, or onboard controller), and also checks that it has a non-zero system ID before displaying the vehicle connected message.
 QGC also uses the specific type of vehicle and other heartbeat information to control layout of the GUI.
 
-> [!NOTE]
-> The specific code for connecting to _QGroundControl_ can be found in [MultiVehicleManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/MultiVehicleManager.cc) (see `void MultiVehicleManager::_vehicleHeartbeatInfo`).
+::: info
+The specific code for connecting to _QGroundControl_ can be found in [MultiVehicleManager.cc](https://github.com/mavlink/qgroundcontrol/blob/master/src/Vehicle/MultiVehicleManager.cc) (see `void MultiVehicleManager::_vehicleHeartbeatInfo`).
+:::
 
 ## Component Identity
 
@@ -52,23 +53,27 @@ The _type_ of a component is obtained from its [`HEARTBEAT.type`](#HEARTBEAT) ([
 - A flight controller component must use a `MAV_TYPE` corresponding to a particular vehicle (e.g. `MAV_TYPE_FIXED_WING`, `MAV_TYPE_QUADROTOR` etc.), and set `HEARTBEAT.autopilot` to a valid flight stack.
 - All other components must use a `MAV_TYPE` corresponding to the actual type (e.g.: `MAV_TYPE_GIMBAL`, `MAV_TYPE_BATTERY`, etc.), and should set `HEARTBEAT.autopilot` to `MAV_AUTOPILOT_INVALID`.
 
-> [!TIP]
-> The recommended way to recognise an autopilot component is to check that `HEARTBEAT.autopilot` is not `MAV_AUTOPILOT_INVALID`.
+::: tip
+The recommended way to recognise an autopilot component is to check that `HEARTBEAT.autopilot` is not `MAV_AUTOPILOT_INVALID`.
+:::
 
 Every component must have a system-unique component id, which is used for routing and for identifying multiple instances of a particular component type.
 
-> [!WARNING]
-> Historically the component id was also used to determine the component type.
-> New code must not make any assumption about the type from the id used (type is determined from `HEARTBEAT.type`).
+::: warning
+Historically the component id was also used to determine the component type.
+New code must not make any assumption about the type from the id used (type is determined from `HEARTBEAT.type`).
+:::
 
 MAVLink recommends that _by default_ components use a type-appropriate component id from [MAV_COMPONENT](../messages/common.md#MAV_COMPONENT), and provide an interface to change the component id if needed.
 For example, a camera component might use any of the [MAV_COMP_ID_CAMERA`n`](../messages/common.md#MAV_COMP_ID_GIMBAL) ids, and should not use `MAV_COMP_ID_GPS2`.
 
-> [!TIP]
-> Using type-specific component ids:
->
-> - makes id clashes less likely "out of the box" (unless two components of the same type are present on the same system).
-> - reduces the impact on legacy code that determines component type from the id.
+::: tip
+Using type-specific component ids:
+
+- makes id clashes less likely "out of the box" (unless two components of the same type are present on the same system).
+- reduces the impact on legacy code that determines component type from the id.
+
+:::
 
 ## Component Capabilities
 

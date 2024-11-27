@@ -7,11 +7,12 @@ All you need to do is provide a secret key and initial timestamp, optionally spe
 
 The way you do this depends on whether you are using **mavutil** to manage the connection or using a `MAVLink` object directly.
 
-> [!NOTE]
-> While not covered in this topic, you should also write code to:
->
-> - Save and load the key and last-timestamp from permanent storage
-> - Implement a mechanism to create and share the key. For more information see [Message Signing > Secret Key Management](../guide/message_signing.md#secret_key).
+::: info
+While not covered in this topic, you should also write code to:
+- Save and load the key and last-timestamp from permanent storage
+- Implement a mechanism to create and share the key. For more information see [Message Signing > Secret Key Management](../guide/message_signing.md#secret_key).
+
+:::
 
 #### Signing using MAVLink Class
 
@@ -30,10 +31,11 @@ if signing:
     mav.signing.sign_outgoing = True
 ```
 
-> [!NOTE]
-> The `MAVLink` class does not ensure that your `link_id` or _initial_ `timestamp` are appropriate.
-> The initial timestamp should be based on current system time.
-> For more information see [Message Signing](../guide/message_signing.md#timestamp).
+::: info
+The `MAVLink` class does not ensure that your `link_id` or _initial_ `timestamp` are appropriate.
+The initial timestamp should be based on current system time.
+For more information see [Message Signing](../guide/message_signing.md#timestamp).
+:::
 
 #### Signing using mavutil
 

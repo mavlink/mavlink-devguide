@@ -1,9 +1,10 @@
 # Image Transmission Protocol
 
-> [!WARNING]
-> The [Camera Protocol](../services/camera.md) and [MAVLink FTP](../services/ftp.md) are recommended for sending images, video and files.
->
-> This protocol is not intended for general image transmission use (it was originally designed as a simple protocol for transfering small images over a low bandwidth channel from an optical flow sensor to a GCS).
+::: warning
+The [Camera Protocol](../services/camera.md) and [MAVLink FTP](../services/ftp.md) are recommended for sending images, video and files.
+
+This protocol is not intended for general image transmission use (it was originally designed as a simple protocol for transfering small images over a low bandwidth channel from an optical flow sensor to a GCS).
+:::
 
 The image transmission protocol uses MAVLink as the communication channel to transport any kind of image (raw images, Kinect data, etc.) from one MAVLink node to another.
 It basically takes a live camera image, splits it into small chunks and sends it over MAVLink.
@@ -58,8 +59,9 @@ sequenceDiagram;
    Every new image comes with a new `DATA_TRANSMISSION_HANDSHAKE` ACK packet with updated image `size`, `packets` and `payload` fields.
    After this ACK packet, the new image arrives as a series of `ENCAPSULATED_DATA` packets.
 
-   > [!NOTE]
-   > The sequence number starts at 0 for every new image of the stream.
+   ::: info
+   The sequence number starts at 0 for every new image of the stream.
+   :::
 
 1. To stop an image stream a GSC must send a new `DATA_TRANSMISSION_HANDSHAKE` request packet, with all 0 values.
    The MAVLink node will acknowledge this by sending back `DATA_TRANSMISSION_HANDSHAKE` also containing 0 values.
@@ -70,6 +72,7 @@ To use the two modules on your MAV, you have to do the following steps:
 
 - Compile the `mavconn` middleware for your MAV: [Guide](https://www.pixhawk.org/wiki/software/mavconn/start), [Github](https://github.com/pixhawk/mavconn).
 - Start at least these components on the MAV:
+
   ```
   px_mavlink_bridge_udp &
   px_system_control --heartbeat &

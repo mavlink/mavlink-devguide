@@ -23,8 +23,9 @@ sequenceDiagram;
 
 When path planning is active, autopilots are expected to navigate using the most recent setpoint from the companion computer (and should have sensible behaviour if setpoints "run out").
 
-> [!NOTE]
-> The path planning system might send setpoints all the time, or only when a desired trajectory cannot be achieved (this depends on the specific service implementation).
+::: info
+The path planning system might send setpoints all the time, or only when a desired trajectory cannot be achieved (this depends on the specific service implementation).
+:::
 
 The protocol defines two messages:
 

@@ -1,8 +1,9 @@
 # Standard Modes Protocol (WIP)
 
-> [!WARNING]
-> This protocol is a work in progress and may change.
-> It has an initial implementation in PX4 and QGroundControl (daily).
+::: warning
+This protocol is a work in progress and may change.
+It has an initial implementation in PX4 and QGroundControl (daily).
+:::
 
 The MAVLink standard modes protocol allows a GCS to construct a UI allowing selection and display of available flight modes without prior knowledge of the connected flight stack.
 
@@ -133,9 +134,10 @@ This will ACK with `MAV_RESULT_ACCEPTED` if the mode can change, and `MAV_RESULT
 
 Custom modes must be set with [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE).
 
-> [!NOTE]
-> If both `standard_mode` and `custom_mode` are set you can determine the mapping between modes and might therefore use [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) to set a standard mode.
-> `MAV_CMD_DO_SET_STANDARD_MODE` is preferred for setting standard modes.
+::: info
+If both `standard_mode` and `custom_mode` are set you can determine the mapping between modes and might therefore use [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) to set a standard mode.
+`MAV_CMD_DO_SET_STANDARD_MODE` is preferred for setting standard modes.
+:::
 
 ### Getting Current Active Mode
 
