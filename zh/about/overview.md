@@ -25,7 +25,7 @@ uint16_t checksum;          ///< CRC-16/MCRF4XX
 uint8_t signature[13];      ///< 保证正确连接的签名（可选）
 ```
 
-> **Note** The [MAVLink 1 版本的数据包](../guide/serialization.md#v1_packet_format) 与此类似，但是省略了 `incompat_flags`，`compat_flags` 及`signature`，且消息地址为单个字节。 消息信息参加 [Serialization > 数据包格式](../guide/serialization.md#packet_format). 消息信息参加 [Serialization > 数据包格式](../guide/serialization.md#packet_format).
+> [!NOTE] The [MAVLink 1 packet format](../guide/serialization.md#v1_packet_format) is similar, but omits `incompat_flags`, `compat_flags` and `signature`, and only has a single byte for the message address. 消息信息参加 [Serialization > 数据包格式](../guide/serialization.md#packet_format).
 
 ## 串行化
 
