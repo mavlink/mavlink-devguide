@@ -2,7 +2,9 @@
 
 The Manual Control Protocol enables controlling a system using a "standard joystick" (or joystick-like input device that supports the same axes nomenclature).
 
-The protocol is implemented with just the [`MANUAL_CONTROL`](../messages/common.md#MANUAL_CONTROL) message. It defines the `target` system to be controlled, the movement in four primary axes (`x`, `y`, `z`, `r`) and two extension axes (`s`, `t`), and two 16-bit fields to represent the states of up to 32 buttons (`buttons`, `buttons2`). Unused axes can be disabled, and the extension axes must be explicitly enabled using bits 0 and 1 of the `enabled_extensions` field.
+The protocol is implemented with just the [`MANUAL_CONTROL`](../messages/common.md#MANUAL_CONTROL) message.
+It defines the `target` system to be controlled, the movement in four primary axes (`x`, `y`, `z`, `r`) and two extension axes (`s`, `t`), and two 16-bit fields to represent the states of up to 32 buttons (`buttons`, `buttons2`).
+Unused axes can be disabled, and the extension axes must be explicitly enabled using bits 0 and 1 of the `enabled_extensions` field.
 
 The protocol is by intent relatively simple and abstract, and provides a simple way of controlling the main motion of a vehicle, along with several arbitrary features that can be triggered using buttons.
 
@@ -10,7 +12,8 @@ This allows GCS software to provide a simple level of control for many types of 
 
 ## Mapping Axes
 
-Manual control is performed in the vehicle-frame. All axis values are normalised to the range -1000 to 1000.
+Manual control is performed in the vehicle-frame.
+All axis values are normalised to the range -1000 to 1000.
 
 ### Rotation-Focused Control
 
@@ -49,13 +52,17 @@ The `buttons` field is required, and corresponds to the first 16 buttons.
 
 ## Alternatives
 
-Vehicles may alternatively be controlled by sending information as a set of up to 18 channel values using [`RC_CHANNELS_OVERRIDE`](../messages/common.md#RC_CHANNELS_OVERRIDE). Channels can be mapped to firmware parameters using [`PARAM_MAP_RC`](../messages/common.md#PARAM_MAP_RC), and the autopilot can use the current parameter values at each point in time to determine control actions.
+Vehicles may alternatively be controlled by sending information as a set of up to 18 channel values using [`RC_CHANNELS_OVERRIDE`](../messages/common.md#RC_CHANNELS_OVERRIDE).
+Channels can be mapped to firmware parameters using [`PARAM_MAP_RC`](../messages/common.md#PARAM_MAP_RC), and the autopilot can use the current parameter values at each point in time to determine control actions.
 
-It's worth noting that the generality of RC channels control is a double-edged sword. It is incredibly versatile, and can be used to provide support for several arbitrary control axes, but the user-defined in-vehicle nature of the mapped parameters means additional setup is frequently required for compatibility with GCSs, and there are no guarantees that multiple vehicles running the same firmware will have the same channel-parameter mapping. This is a similar issue to the `MANUAL_CONTROL` buttons, so to minimise firmware complexity and maximise interoperability between a vehicle type and GCSs it's recommended to use targetted MAVLink commands where possible.
+It's worth noting that the generality of RC channels control is a double-edged sword.
+It is incredibly versatile, and can be used to provide support for several arbitrary control axes, but the user-defined in-vehicle nature of the mapped parameters means additional setup is frequently required for compatibility with GCSs, and there are no guarantees that multiple vehicles running the same firmware will have the same channel-parameter mapping.
+This is a similar issue to the `MANUAL_CONTROL` buttons, so to minimise firmware complexity and maximise interoperability between a vehicle type and GCSs it's recommended to use targetted MAVLink commands where possible.
 
 ## 구현
 
-The protocol has been implemented in various GCSs and vehicle firmwares. These implementations can be used in your own code within the terms of their software licenses.
+The protocol has been implemented in various GCSs and vehicle firmwares.
+These implementations can be used in your own code within the terms of their software licenses.
 
 ### Ground Control Stations
 
