@@ -2,7 +2,7 @@
 
 > **Note** This version supersedes [Gimbal Protocol v1](../services/gimbal.md) Existing functionality is now fixed, but compatible changes may still be added.
 
-## Introduction
+## 소개
 
 The gimbal protocol allows MAVLink control over the attitude/orientation of cameras (or other sensors) mounted on the drone. The orientation can be: controlled by the pilot in real time (e.g. using a joystick from a ground station), set as part of a mission, or moved based on camera tracking.
 
@@ -197,7 +197,7 @@ This message is a meant as broadcast, so it's set to the GCS, *Gimbal Manager*, 
 
 Custom gimbal settings can be accomplished using the component information microservice which is based on a [component information file](../services/component_information.md) (this is similar to the [camera definition file](../services/camera_def.md)).
 
-## FAQ
+## 자주 묻는 질문
 
 #### How to set the System ID of a gimbal device?
 
