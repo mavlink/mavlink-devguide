@@ -389,7 +389,7 @@ The Xtrack parameter independently defines the path and exit location:
   
   ![Loiter angle](../../assets/protocols/mission_loiter/xtrack_30.png)
 
-## Implementations
+## 구현
 
 ### PX4
 
