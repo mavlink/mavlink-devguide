@@ -1,27 +1,30 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_xml_to_markdown.py -->
 
-
 # Dialect: all
 
 This dialect is intended to `include` all other [dialects](../messages/index.md) in the [mavlink/mavlink](https://github.com/mavlink/mavlink) repository (including [external dialects](https://github.com/mavlink/mavlink/tree/master/external/dialects#mavlink-external-dialects)).
 
-Dialects that are in **all.xml** are guaranteed to not have clashes in messages, enums, enum ids, and MAV_CMDs. This ensure that: This ensure that:
+Dialects that are in **all.xml** are guaranteed to not have clashes in messages, enums, enum ids, and MAV_CMDs.
+This ensure that:
 
 - Systems based on these dialects can co-exist on the same MAVLink network.
 - A Ground Station might (optionally) use libraries generated from **all.xml** to communicate using any of the dialects.
 
 > **Warning**
-> 
-> - **Warning** New dialect files in the official repository must be added to **all.xml** and restrict themselves to using ids in their own allocated range. A few older dialects are not included because these operate in completely closed networks or because they are only used for tests.
+>
+> - New dialect files in the official repository must be added to **all.xml** and restrict themselves to using ids in their own allocated range.
 > - Dialects should push changes to mavlink/mavlink in order to avoid potential clashes from changes to other dialects.
-> 
+>
 > A few older dialects are not included because these operate in completely closed networks or because they are only used for tests.
 
 This topic is a human-readable form of the XML definition file: [all.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/all.xml).
 
 <span id="mav2_extension_field"></span>
 
-> **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue. - Entities from dialects are displayed only as headings (with link to original)
+> **Note**
+>
+> - MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
+> - Entities from dialects are displayed only as headings (with link to original)
 
 <style>
 span.ext {
@@ -52,11 +55,11 @@ span.warning {
 
 ## 概览
 
-| Type                    | Defined | Included |
-| ----------------------- | ------- | -------- |
-| [消息](#messages)         | 0       | 364      |
-| [枚举](#enumerated-types) | 0       | 235      |
-| [命令](#mav_commands)     | 216     | 0        |
+| Type                       | Defined | Included |
+| -------------------------- | ------- | -------- |
+| [Messages](#messages)      | 0       | 364      |
+| [Enums](#enumerated-types) | 0       | 235      |
+| [Commands](#mav_commands)  | 216     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -65,4 +68,3 @@ The following sections list all entities in the dialect (both included and defin
 ## Enumerated Types
 
 ## Commands (MAV_CMD) {#mav_commands}
-

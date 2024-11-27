@@ -2,11 +2,17 @@
 
 # Dialect: MAVLINK Standard Message Set (standard.xml)
 
-The MAVLink *standard* message set contains *standard* definitions that are managed by the MAVLink project. The definitions are those that are expected to be implemented in all flight stacks/ground stations AND are likely to be implemented in a compatible way. This is a human-readable form of the XML definition file: [standard](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/standard).
+The MAVLink _standard_ message set contains _standard_ definitions that are managed by the MAVLink project.
+The definitions are those that are expected to be implemented in all flight stacks/ground stations
+AND are likely to be implemented in a compatible way.
+The original definitions are defined in [standard.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/standard.xml).
 
 <span id="mav2_extension_field"></span>
 
-> **Note** MAVLink 2 extension fields that have been added to MAVLink 1 messages are displayed in blue. - Entities from dialects are displayed only as headings (with link to original) 
+> **Note**
+>
+> - MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
+> - Entities from dialects are displayed only as headings (with link to original)
 
 <style>
 span.ext {
@@ -16,8 +22,6 @@ span.warning {
     color: red;
   }
 </style>
-
- 
 
 **Protocol dialect:** 0
 

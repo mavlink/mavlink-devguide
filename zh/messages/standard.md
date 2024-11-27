@@ -2,11 +2,17 @@
 
 # Dialect: MAVLINK Standard Message Set (standard.xml)
 
-The MAVLink *standard* message set contains *standard* definitions that are managed by the MAVLink project. The definitions are those that are expected to be implemented in all flight stacks/ground stations AND are likely to be implemented in a compatible way. This is a human-readable form of the XML definition file: [standard](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/standard).
+The MAVLink _standard_ message set contains _standard_ definitions that are managed by the MAVLink project.
+The definitions are those that are expected to be implemented in all flight stacks/ground stations
+AND are likely to be implemented in a compatible way.
+The original definitions are defined in [standard.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/standard.xml).
 
 <span id="mav2_extension_field"></span>
 
-> **Note** 已添加到 MAVLink 1 消息中的 MAVLink 2 扩展字段以蓝色显示。 - Entities from dialects are displayed only as headings (with link to original) 
+> **Note**
+>
+> - MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
+> - Entities from dialects are displayed only as headings (with link to original)
 
 <style>
 span.ext {
@@ -17,8 +23,6 @@ span.warning {
   }
 </style>
 
- 
-
 **Protocol dialect:** 0
 
 ## MAVLink Include Files
@@ -27,11 +31,11 @@ span.warning {
 
 ## 概览
 
-| Type                    | Defined | Included |
-| ----------------------- | ------- | -------- |
-| [消息](#messages)         | 0       | 2        |
-| [枚举](#enumerated-types) | 0       | 6        |
-| 命令                      | 0       | 0        |
+| Type                       | Defined | Included |
+| -------------------------- | ------- | -------- |
+| [Messages](#messages)      | 0       | 2        |
+| [Enums](#enumerated-types) | 0       | 6        |
+| 命令                         | 0       | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 

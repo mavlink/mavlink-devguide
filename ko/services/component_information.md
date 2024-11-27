@@ -155,7 +155,7 @@ The following caching strategy is recommended for clients:
 - After 3 days attempt to download the summary JSON file again.
 - Translation files can either be downloaded whenever the summary is downloaded or only when needed (because a modification timestamp has changed in the summary).
 
-### File Formats
+### 파일 형식
 
 Component metadata is specified in [appropriately formatted JSON  files](#schema_files) (which may be [**.xz** compressed](#file-compression)). The translation section follows [this schema](https://github.com/mavlink/mavlink/blob/master/component_metadata/translation.schema.json), which is used to extract the translation strings into a TS file (see below for a script), and by the client to know which strings to translate. The TS file may be xz compressed.
 
