@@ -20,7 +20,7 @@ The sections below explain how to contribute to each category and how to raise a
 
 - Open a pull request against the RFC repository containing a new RFC number <https://github.com/mavlink/rfcs> and use the template in the 0000 RFC.
 - Reach out to the community on Slack and the [mailing list](https://groups.google.com/forum/#!forum/mavlink) to raise awareness
-- Address concerns by pushing more commits to the pull request
+- 通过进一步支持拉动请求来解决关注问题
 
 ## How to Contribute to Mavgen
 
@@ -80,6 +80,6 @@ That said will consider moving stand-alone generators into the MAVLink project u
 
 6. 发送 [pull request ](https://github.com/mavlink/mavlink/compare/) 以合并分支中的更改。
 
-## Dev Call {#dev_call}
+## 开发热线 {#dev_call}
 
 We have a regular [dev call](../about/support.md#dev_call) that is open to anyone who is interested in contributing to the project!
