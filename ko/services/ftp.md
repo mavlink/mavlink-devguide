@@ -422,7 +422,7 @@ The sequence of operations is:
 
 The GSC should create a timeout after the `RemoveDirectory` command is sent and resend the message as needed (and [described above](#timeouts)).
 
-## Implementations
+## 구현
 
 The FTP v1 Protocol has been implemented (at least) in PX4, ArduPilot, QGroundControl and MAVSDK. Those implementations can be used in your own code within the terms of their software licenses.
 
