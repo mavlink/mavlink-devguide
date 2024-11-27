@@ -35,7 +35,7 @@ The main microservices are shown in the sidebar (most are listed below):
 - [Component Metadata Protocol (WIP)](../services/component_information.md)
 - [MAVLink Id Assignment (sysid, compid)](../services/mavlink_id_assignment.md)
 - [Payload Protocol](../services/payload.md)
-- [Traffic Management (UTM/ADS-B)](../services/traffic_management.md)
+- [Traffic Managment (UTM/ADS-B)](../services/traffic_management.md)
 - [Events Interface (WIP)](../services/events.md)
 - [Standard Flight Modes (WIP)](../services/standard_modes.md)
 - [Time Synchronization](../services/timesync.md)
