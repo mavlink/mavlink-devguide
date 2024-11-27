@@ -22,7 +22,8 @@ The following section suggests a process to allow MAVLink components to automati
 First change the system ID of the autopilot component.
 This is usually done with a flight-stack specific parameter such as [MAV_SYS_ID](https://docs.px4.io/main/en/advanced_config/parameter_reference.html#MAV_SYS_ID) (PX4) or [SYSID_THISMAV](https://ardupilot.org/copter/docs/parameters.html#sysid-thismav-mavlink-system-id-of-this-vehicle) (ArduCopter).
 
-> **Note** [MAV_CMD_DO_SET_SYS_CMP_ID](../messages/development.md#MAV_CMD_DO_SET_SYS_CMP_ID) is a work-in-progress command for setting and changing system and command ids.
+> [!NOTE]
+> [MAV_CMD_DO_SET_SYS_CMP_ID](../messages/development.md#MAV_CMD_DO_SET_SYS_CMP_ID) is a work-in-progress command for setting and changing system and command ids.
 
 Then reboot the vehicle off-network, so that the only autopilot visible to components should be the one on the vehicle (you can disconnect your telemetry radio, for example).
 
