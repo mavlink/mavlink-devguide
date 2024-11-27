@@ -28,17 +28,17 @@ span.warning {
 
 - [common.xml](../messages/common.md)
 
-## Summary
+## 概览
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 16      | 226      |
-| [Enums](#enumerated-types) | 15      | 144      |
-| [Commands](#mav_commands)  | 173     | 0        |
+| Type                    | Defined | Included |
+| ----------------------- | ------- | -------- |
+| [消息](#messages)         | 16      | 226      |
+| [枚举](#enumerated-types) | 15      | 144      |
+| [命令](#mav_commands)     | 173     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ### PARAM_ACK_TRANSACTION (19) — [WIP] {#PARAM_ACK_TRANSACTION}
 
@@ -46,7 +46,7 @@ The following sections list all entities in the dialect (both included and defin
 
 Response from a [PARAM_SET](#PARAM_SET) message when it is used in a transaction.
 
-| Field Name       | Type       | Values                              | Description                                                                                                                                                                                                                                    |
+| Field Name       | Type       | 值                                   | 描述                                                                                                                                                                                                                                             |
 | ---------------- | ---------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t`  |                                     | Id of system that sent [PARAM_SET](#PARAM_SET) message.                                                                                                                                                                                        |
 | target_component | `uint8_t`  |                                     | Id of system that sent [PARAM_SET](#PARAM_SET) message.                                                                                                                                                                                        |
@@ -62,7 +62,7 @@ Response from a [PARAM_SET](#PARAM_SET) message when it is used in a transaction
 
 Airspeed information from a sensor.
 
-| Field Name  | Type      | Units | Values                                            | Description                                                                       |
+| Field Name  | Type      | Units | 值                                                 | 描述                                                                                |
 | ----------- | --------- | ----- | ------------------------------------------------- | --------------------------------------------------------------------------------- |
 | id          | `uint8_t` |       |                                                   | Sensor ID.<br>Messages with same value are from the same source (instance). |
 | airspeed    | `float`   | m/s   |                                                   | Calibrated airspeed (CAS).                                                        |
@@ -79,7 +79,7 @@ Set temporary maximum limits for horizontal speed, vertical speed and yaw rate.
 
 The consumer must stream the current limits in [VELOCITY_LIMITS](#VELOCITY_LIMITS) at 1 Hz or more (when limits are being set). The consumer should latch the limits until a new limit is received or the mode is changed.
 
-| Field Name               | Type      | Units | Description                                                                                                  |
+| Field Name               | Type      | Units | 描述                                                                                                           |
 | ------------------------ | --------- | ----- | ------------------------------------------------------------------------------------------------------------ |
 | target_system            | `uint8_t` |       | System ID (0 for broadcast).                                                                                 |
 | target_component         | `uint8_t` |       | Component ID (0 for broadcast).                                                                              |
@@ -94,7 +94,7 @@ The consumer must stream the current limits in [VELOCITY_LIMITS](#VELOCITY_LIMIT
 
 Current limits for horizontal speed, vertical speed and yaw rate, as set by [SET_VELOCITY_LIMITS](#SET_VELOCITY_LIMITS).
 
-| Field Name               | Type    | Units | Description                                                                                           |
+| Field Name               | Type    | Units | 描述                                                                                                    |
 | ------------------------ | ------- | ----- | ----------------------------------------------------------------------------------------------------- |
 | horizontal_speed_limit | `float` | m/s   | Limit for horizontal movement in [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED). NaN: No limit applied |
 | vertical_speed_limit   | `float` | m/s   | Limit for vertical movement in [MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED). NaN: No limit applied   |
@@ -107,7 +107,7 @@ Current limits for horizontal speed, vertical speed and yaw rate, as set by [SET
 
 Vehicle status report that is sent out while figure eight execution is in progress (see [MAV_CMD_DO_FIGURE_EIGHT](#MAV_CMD_DO_FIGURE_EIGHT)). This may typically send at low rates: of the order of 2Hz.
 
-| Field Name   | Type       | Units | Values                  | Description                                                                                                                                                                            |
+| Field Name   | Type       | Units | 值                       | 描述                                                                                                                                                                                     |
 | ------------ | ---------- | ----- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec    | `uint64_t` | us    |                         | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
 | major_radius | `float`    | m     |                         | Major axis radius of the figure eight. Positive: orbit the north circle clockwise. Negative: orbit the north circle counter-clockwise.                                                 |
@@ -127,7 +127,7 @@ Battery dynamic information.
 
 This should be streamed (nominally at 1Hz). Static/invariant battery information is sent in [BATTERY_INFO](#BATTERY_INFO). Note that smart batteries should set the [MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL](#MAV_BATTERY_STATUS_FLAGS_CAPACITY_RELATIVE_TO_FULL) bit to indicate that supplied capacity values are relative to a battery that is known to be full. Power monitors would not set this bit, indicating that capacity_consumed is relative to drone power-on, and that other values are estimated based on the assumption that the battery was full on power-on.
 
-| Field Name         | Type       | Units | Values                                                  | Description                                                                                                                                                                                                                                                                         |
+| Field Name         | Type       | Units | 值                                                       | 描述                                                                                                                                                                                                                                                                                  |
 | ------------------ | ---------- | ----- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | id                 | `uint8_t`  |       |                                                         | Battery ID<br>Messages with same value are from the same source (instance).                                                                                                                                                                                                   |
 | temperature        | `int16_t`  | cdegC | invalid:INT16_MAX                                       | Temperature of the whole battery pack (not internal electronics). INT16_MAX field not provided.                                                                                                                                                                                     |
@@ -145,7 +145,7 @@ This should be streamed (nominally at 1Hz). Static/invariant battery information
 
 Emitted during mission execution when control reaches [MAV_CMD_GROUP_START](#MAV_CMD_GROUP_START).
 
-| Field Name       | Type       | Units | Description                                                                                                                                                                                     |
+| Field Name       | Type       | Units | 描述                                                                                                                                                                                              |
 | ---------------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | group_id         | `uint32_t` |       | Mission-unique group id (from [MAV_CMD_GROUP_START](#MAV_CMD_GROUP_START)).                                                                                                                   |
 | mission_checksum | `uint32_t` |       | CRC32 checksum of current plan for [MAV_MISSION_TYPE_ALL](#MAV_MISSION_TYPE_ALL). As defined in [MISSION_CHECKSUM](#MISSION_CHECKSUM) message.                                                |
@@ -158,7 +158,7 @@ Emitted during mission execution when control reaches [MAV_CMD_GROUP_START](#MAV
 
 Emitted during mission execution when control reaches [MAV_CMD_GROUP_END](#MAV_CMD_GROUP_END).
 
-| Field Name       | Type       | Units | Description                                                                                                                                                                                     |
+| Field Name       | Type       | Units | 描述                                                                                                                                                                                              |
 | ---------------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | group_id         | `uint32_t` |       | Mission-unique group id (from [MAV_CMD_GROUP_END](#MAV_CMD_GROUP_END)).                                                                                                                       |
 | mission_checksum | `uint32_t` |       | CRC32 checksum of current plan for [MAV_MISSION_TYPE_ALL](#MAV_MISSION_TYPE_ALL). As defined in [MISSION_CHECKSUM](#MISSION_CHECKSUM) message.                                                |
@@ -173,7 +173,7 @@ RC channel outputs from a MAVLink RC receiver for input to a flight controller o
 
 Note that this is not intended to be an over-the-air format, and does not replace [RC_CHANNELS](#RC_CHANNELS) and similar messages reported by the flight controller. The target_system field should normally be set to the system id of the system to control, typically the flight controller. The target_component field can normally be set to 0, so that all components of the system can receive the message. The channels array field can publish up to 32 channels; the number of channel items used in the array is specified in the count field. The time_last_update_ms field contains the timestamp of the last received valid channels data in the receiver's time domain. The count field indicates the first index of the channel array that is not used for channel data (this and later indexes are zero-filled). The [RADIO_RC_CHANNELS_FLAGS_OUTDATED](#RADIO_RC_CHANNELS_FLAGS_OUTDATED) flag is set by the receiver if the channels data is not up-to-date (for example, if new data from the transmitter could not be validated so the last valid data is resent). The [RADIO_RC_CHANNELS_FLAGS_FAILSAFE](#RADIO_RC_CHANNELS_FLAGS_FAILSAFE) failsafe flag is set by the receiver if the receiver's failsafe condition is met (implementation dependent, e.g., connection to the RC radio is lost). In this case time_last_update_ms still contains the timestamp of the last valid channels data, but the content of the channels data is not defined by the protocol (it is up to the implementation of the receiver). For instance, the channels data could contain failsafe values configured in the receiver; the default is to carry the last valid data. Note: The RC channels fields are extensions to ensure that they are located at the end of the serialized payload and subject to MAVLink's trailing-zero trimming.
 
-| Field Name                                                  | Type          | Units | Values                                                | Description                                                                                                                                                                                                                                                              |
+| Field Name                                                  | Type          | Units | 值                                                     | 描述                                                                                                                                                                                                                                                                       |
 | ----------------------------------------------------------- | ------------- | ----- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | target_system                                               | `uint8_t`     |       |                                                       | System ID (ID of target system, normally flight controller).                                                                                                                                                                                                             |
 | target_component                                            | `uint8_t`     |       |                                                       | Component ID (normally 0 for broadcast).                                                                                                                                                                                                                                 |
@@ -191,7 +191,7 @@ Get information about a particular flight modes.
 
 The message can be enumerated or requested for a particular mode using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE). Specify 0 in param2 to request that the message is emitted for all available modes or the specific index for just one mode. The modes must be available/settable for the current vehicle/frame type. Each modes should only be emitted once (even if it is both standard and custom).
 
-| Field Name    | Type       | Values                                    | Description                                                                                 |
+| Field Name    | Type       | 值                                         | 描述                                                                                          |
 | ------------- | ---------- | ----------------------------------------- | ------------------------------------------------------------------------------------------- |
 | number_modes  | `uint8_t`  |                                           | The total number of available modes for the current vehicle type.                           |
 | mode_index    | `uint8_t`  |                                           | The current mode index within number_modes, indexed from 1.                                 |
@@ -209,7 +209,7 @@ Get the current mode.
 
 This should be emitted on any mode change, and broadcast at low rate (nominally 0.5 Hz). It may be requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 
-| Field Name             | Type       | Values                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Field Name             | Type       | 值                                         | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ---------------------- | ---------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | standard_mode          | `uint8_t`  | [MAV_STANDARD_MODE](#MAV_STANDARD_MODE) | Standard mode.                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | custom_mode            | `uint32_t` |                                           | A bitfield for use for autopilot-specific flags                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -224,7 +224,7 @@ A change to the sequence number indicates that the set of [AVAILABLE_MODES](#AVA
 
 A receiver must re-request all available modes whenever the sequence number changes. This is only emitted after the first change and should then be broadcast at low rate (nominally 0.3 Hz) and on change.
 
-| Field Name | Type      | Description                                                                                                                                                       |
+| Field Name | Type      | 描述                                                                                                                                                                |
 | ---------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | seq        | `uint8_t` | Sequence number. The value iterates sequentially whenever [AVAILABLE_MODES](#AVAILABLE_MODES) changes (e.g. support for a new mode is added/removed dynamically). |
 
@@ -235,7 +235,7 @@ A receiver must re-request all available modes whenever the sequence number chan
 
 Information about key components of GNSS receivers, like signal authentication, interference and system errors.
 
-| Field Name                | Type       | Units | Values                                                  | Description                                                                                                                                            |
+| Field Name                | Type       | Units | 值                                                       | 描述                                                                                                                                                     |
 | ------------------------- | ---------- | ----- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | id                        | `uint8_t`  |       |                                                         | GNSS receiver id. Must match instance ids of other messages from same receiver.<br>Messages with same value are from the same source (instance). |
 | system_errors             | `uint32_t` |       | [GPS_SYSTEM_ERROR_FLAGS](#GPS_SYSTEM_ERROR_FLAGS)     | Errors in the GPS system.                                                                                                                              |
@@ -243,8 +243,8 @@ Information about key components of GNSS receivers, like signal authentication, 
 | jamming_state             | `uint8_t`  |       | [GPS_JAMMING_STATE](#GPS_JAMMING_STATE)               | Signal jamming state of the GPS system.                                                                                                                |
 | spoofing_state            | `uint8_t`  |       | [GPS_SPOOFING_STATE](#GPS_SPOOFING_STATE)             | Signal spoofing state of the GPS system.                                                                                                               |
 | raim_state                | `uint8_t`  |       | [GPS_RAIM_STATE](#GPS_RAIM_STATE)                     | The state of the RAIM processing.                                                                                                                      |
-| raim_hfom                 | `uint16_t` | cm    | invalid:UINT16_MAX                                      | Horizontal expected accuracy using satellites successfully validated using RAIM.                                                                       |
-| raim_vfom                 | `uint16_t` | cm    | invalid:UINT16_MAX                                      | Vertical expected accuracy using satellites successfully validated using RAIM.                                                                         |
+| raim_hfom                 | `uint16_t` | 厘米    | invalid:UINT16_MAX                                      | Horizontal expected accuracy using satellites successfully validated using RAIM.                                                                       |
+| raim_vfom                 | `uint16_t` | 厘米    | invalid:UINT16_MAX                                      | Vertical expected accuracy using satellites successfully validated using RAIM.                                                                         |
 | corrections_quality       | `uint8_t`  |       | invalid:UINT8_MAX min:0 max:10                          | An abstract value representing the estimated quality of incoming corrections, or 255 if not available.                                                 |
 | system_status_summary   | `uint8_t`  |       | invalid:UINT8_MAX min:0 max:10                          | An abstract value representing the overall status of the receiver, or 255 if not available.                                                            |
 | gnss_signal_quality     | `uint8_t`  |       | invalid:UINT8_MAX min:0 max:10                          | An abstract value representing the quality of incoming GNSS signals, or 255 if not available.                                                          |
@@ -257,7 +257,7 @@ Information about key components of GNSS receivers, like signal authentication, 
 
 Current motion information from sensors on a target
 
-| Field Name          | Type       | Units | Values                                                                                  | Description                                                                            |
+| Field Name          | Type       | Units | 值                                                                                       | 描述                                                                                     |
 | ------------------- | ---------- | ----- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | timestamp           | `uint64_t` | us    |                                                                                         | Timestamp (UNIX epoch time).                                                           |
 | id                  | `uint8_t`  |       |                                                                                         | The ID of the target if multiple targets are present                                   |
@@ -280,7 +280,7 @@ Current motion information from sensors on a target
 
 The location of a target measured by MAV's onboard sensors.
 
-| Field Name | Type       | Units | Values                                        | Description                                                                                                                                                                               |
+| Field Name | Type       | Units | 值                                             | 描述                                                                                                                                                                                        |
 | ---------- | ---------- | ----- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | timestamp  | `uint64_t` | us    |                                               | Timestamp (UNIX epoch time)                                                                                                                                                               |
 | id         | `uint8_t`  |       |                                               | The ID of the target if multiple targets are present<br>Messages with same value are from the same source (instance).                                                               |
@@ -301,7 +301,7 @@ The location of a target measured by MAV's onboard sensors.
 
 Information about GCS in control of this MAV. This should be broadcast at low rate (nominally 1 Hz) and emitted when ownership or takeover status change. Control over MAV is requested using [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL).
 
-| Field Name         | Type      | Values                                                  | Description                                                                                                                                           |
+| Field Name         | Type      | 值                                                       | 描述                                                                                                                                                    |
 | ------------------ | --------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | sysid_in_control | `uint8_t` |                                                         | System ID of GCS MAVLink component in control (0: no GCS in control).                                                                                 |
 | flags              | `uint8_t` | [GCS_CONTROL_STATUS_FLAGS](#GCS_CONTROL_STATUS_FLAGS) | Control status. For example, whether takeover is allowed, and whether this message instance defines the default controlling GCS for the whole system. |
@@ -315,7 +315,7 @@ Information about GCS in control of this MAV. This should be broadcast at low ra
 
 (Bitmask) Airspeed sensor flags
 
-| Value                      | Name                                                      | Description                                                                                                            |
+| 值                          | Name                                                      | 描述                                                                                                                     |
 | -------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | <a id='AIRSPEED_SENSOR_UNHEALTHY'></a>0 | [AIRSPEED_SENSOR_UNHEALTHY](#AIRSPEED_SENSOR_UNHEALTHY) | Airspeed sensor is unhealthy                                                                                           |
 | <a id='AIRSPEED_SENSOR_USING'></a>1 | [AIRSPEED_SENSOR_USING](#AIRSPEED_SENSOR_USING)         | True if the data from this sensor is being actively used by the flight controller for guidance, navigation or control. |
@@ -326,7 +326,7 @@ Information about GCS in control of this MAV. This should be broadcast at low ra
 
 Possible transport layers to set and get parameters via mavlink during a parameter transaction.
 
-| Value                      | Name                                                                                | Description                           |
+| 值                          | Name                                                                                | 描述                                    |
 | -------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------- |
 | <a id='PARAM_TRANSACTION_TRANSPORT_PARAM'></a>0 | [PARAM_TRANSACTION_TRANSPORT_PARAM](#PARAM_TRANSACTION_TRANSPORT_PARAM)           | Transaction over param transport.     |
 | <a id='PARAM_TRANSACTION_TRANSPORT_PARAM_EXT'></a>1 | [PARAM_TRANSACTION_TRANSPORT_PARAM_EXT](#PARAM_TRANSACTION_TRANSPORT_PARAM_EXT) | Transaction over param_ext transport. |
@@ -337,7 +337,7 @@ Possible transport layers to set and get parameters via mavlink during a paramet
 
 Possible parameter transaction actions.
 
-| Value                      | Name                                                                  | Description                               |
+| 值                          | Name                                                                  | 描述                                        |
 | -------------------------- | --------------------------------------------------------------------- | ----------------------------------------- |
 | <a id='PARAM_TRANSACTION_ACTION_START'></a>0 | [PARAM_TRANSACTION_ACTION_START](#PARAM_TRANSACTION_ACTION_START)   | Commit the current parameter transaction. |
 | <a id='PARAM_TRANSACTION_ACTION_COMMIT'></a>1 | [PARAM_TRANSACTION_ACTION_COMMIT](#PARAM_TRANSACTION_ACTION_COMMIT) | Commit the current parameter transaction. |
@@ -351,7 +351,7 @@ Standard modes with a well understood meaning across flight stacks and vehicle t
 
 For example, most flight stack have the concept of a "return" or "RTL" mode that takes a vehicle to safety, even though the precise mechanics of this mode may differ. Modes may be set using [MAV_CMD_DO_SET_STANDARD_MODE](#MAV_CMD_DO_SET_STANDARD_MODE).
 
-| Value                       | Name                                                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 值                           | Name                                                                    | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | --------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id='MAV_STANDARD_MODE_NON_STANDARD'></a>0  | [MAV_STANDARD_MODE_NON_STANDARD](#MAV_STANDARD_MODE_NON_STANDARD)   | Non standard mode.<br>This may be used when reporting the mode if the current flight mode is not a standard mode.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | <a id='MAV_STANDARD_MODE_POSITION_HOLD'></a>1 | [MAV_STANDARD_MODE_POSITION_HOLD](#MAV_STANDARD_MODE_POSITION_HOLD) | Position mode (manual).<br>Position-controlled and stabilized manual mode.<br>When sticks are released vehicles return to their level-flight orientation and hold both position and altitude against wind and external forces.<br>This mode can only be set by vehicles that can hold a fixed position.<br>Multicopter (MC) vehicles actively brake and hold both position and altitude against wind and external forces.<br>Hybrid MC/FW ("VTOL") vehicles first transition to multicopter mode (if needed) but otherwise behave in the same way as MC vehicles.<br>Fixed-wing (FW) vehicles must not support this mode.<br>Other vehicle types must not support this mode (this may be revisited through the PR process).                                                                                                                                              |
@@ -370,7 +370,7 @@ For example, most flight stack have the concept of a "return" or "RTL" mode that
 
 (Bitmask) Mode properties.
 
-| Value                       | Name                                                                                | Description                                                                                                                                                                                                                                            |
+| 值                           | Name                                                                                | 描述                                                                                                                                                                                                                                                     |
 | --------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id='MAV_MODE_PROPERTY_ADVANCED'></a>1 | [MAV_MODE_PROPERTY_ADVANCED](#MAV_MODE_PROPERTY_ADVANCED)                         | If set, this mode is an advanced mode.<br>For example a rate-controlled manual mode might be advanced, whereas a position-controlled manual mode is not.<br>A GCS can optionally use this flag to configure the UI for its intended users. |
 | <a id='MAV_MODE_PROPERTY_NOT_USER_SELECTABLE'></a>2 | [MAV_MODE_PROPERTY_NOT_USER_SELECTABLE](#MAV_MODE_PROPERTY_NOT_USER_SELECTABLE) | If set, this mode should not be added to the list of selectable modes.<br>The mode might still be selected by the FC directly (for example as part of a failsafe).                                                                               |
@@ -381,7 +381,7 @@ For example, most flight stack have the concept of a "return" or "RTL" mode that
 
 (Bitmask) Battery status flags for fault, health and state indication.
 
-| Value                                | Name                                                                                                                                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| 值                                    | Name                                                                                                                                      | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id='MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE'></a>1          | [MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE](#MAV_BATTERY_STATUS_FLAGS_NOT_READY_TO_USE)                                             | The battery is not ready to use (fly).<br>Set if the battery has faults or other conditions that make it unsafe to fly with.<br>Note: It will be the logical OR of other status bits (chosen by the manufacturer/integrator).                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | <a id='MAV_BATTERY_STATUS_FLAGS_CHARGING'></a>2          | [MAV_BATTERY_STATUS_FLAGS_CHARGING](#MAV_BATTERY_STATUS_FLAGS_CHARGING)                                                               | Battery is charging.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -410,7 +410,7 @@ For example, most flight stack have the concept of a "return" or "RTL" mode that
 
 (Bitmask) [CONTROL_STATUS](#CONTROL_STATUS) flags.
 
-| Value                       | Name                                                                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| 值                           | Name                                                                                        | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | --------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER'></a>1 | [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER)     | If set, this [CONTROL_STATUS](#CONTROL_STATUS) publishes the controlling GCS for the whole system. If unset, the [CONTROL_STATUS](#CONTROL_STATUS) indicates the controlling GCS for just the component emitting the message. Note that to request control of the system a GCS should send [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) to the component emitting [CONTROL_STATUS](#CONTROL_STATUS) with this flag set. |
 | <a id='GCS_CONTROL_STATUS_FLAGS_TAKEOVER_ALLOWED'></a>2 | [GCS_CONTROL_STATUS_FLAGS_TAKEOVER_ALLOWED](#GCS_CONTROL_STATUS_FLAGS_TAKEOVER_ALLOWED) | Takeover allowed (requests for control will be granted). If not set requests for control will be rejected, but the controlling GCS will be notified (and may release control or allow takeover).                                                                                                                                                                                                                                                     |
@@ -421,13 +421,13 @@ For example, most flight stack have the concept of a "return" or "RTL" mode that
 
 (Bitmask) These flags indicate the sensor reporting capabilities for [TARGET_ABSOLUTE](#TARGET_ABSOLUTE).
 
-| Value                        | Name                                                                                                  | Description |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------- | ----------- |
-| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION'></a>1  | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION)         |             |
-| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY'></a>2  | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY)         |             |
-| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION'></a>4  | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION) |             |
-| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE'></a>8  | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE)         |             |
-| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES'></a>16 | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES)               |             |
+| 值                            | Name                                                                                                  | 描述 |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------- | -- |
+| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION'></a>1  | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_POSITION)         |    |
+| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY'></a>2  | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_VELOCITY)         |    |
+| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION'></a>4  | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_ACCELERATION) |    |
+| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE'></a>8  | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_ATTITUDE)         |    |
+| <a id='TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES'></a>16 | [TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES](#TARGET_ABSOLUTE_SENSOR_CAPABILITY_RATES)               |    |
 
 ### TARGET_OBS_FRAME — [WIP] {#TARGET_OBS_FRAME}
 
@@ -435,7 +435,7 @@ For example, most flight stack have the concept of a "return" or "RTL" mode that
 
 The frame of a target observation from an onboard sensor.
 
-| Value                       | Name                                                                        | Description                                                                                                                 |
+| 值                           | Name                                                                        | 描述                                                                                                                          |
 | --------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | <a id='TARGET_OBS_FRAME_LOCAL_NED'></a>0 | [TARGET_OBS_FRAME_LOCAL_NED](#TARGET_OBS_FRAME_LOCAL_NED)               | NED local tangent frame (x: North, y: East, z: Down) with origin fixed relative to earth.                                   |
 | <a id='TARGET_OBS_FRAME_BODY_FRD'></a>1 | [TARGET_OBS_FRAME_BODY_FRD](#TARGET_OBS_FRAME_BODY_FRD)                 | FRD local frame aligned to the vehicle's attitude (x: Forward, y: Right, z: Down) with an origin that travels with vehicle. |
@@ -448,7 +448,7 @@ The frame of a target observation from an onboard sensor.
 
 (Bitmask) [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) flags (bitmask).
 
-| Value                       | Name                                                                      | Description                                                                                                                                                                       |
+| 值                           | Name                                                                      | 描述                                                                                                                                                                                |
 | --------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='RADIO_RC_CHANNELS_FLAGS_FAILSAFE'></a>1 | [RADIO_RC_CHANNELS_FLAGS_FAILSAFE](#RADIO_RC_CHANNELS_FLAGS_FAILSAFE) | Failsafe is active. The content of the RC channels data in the [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) message is implementation dependent.                                     |
 | <a id='RADIO_RC_CHANNELS_FLAGS_OUTDATED'></a>2 | [RADIO_RC_CHANNELS_FLAGS_OUTDATED](#RADIO_RC_CHANNELS_FLAGS_OUTDATED) | Channel data may be out of date. This is set when the receiver is unable to validate incoming data from the transmitter and has therefore resent the last valid data it received. |
@@ -459,7 +459,7 @@ The frame of a target observation from an onboard sensor.
 
 (Bitmask) Flags indicating errors in a GPS receiver.
 
-| Value                        | Name                                                                                | Description                                                       |
+| 值                            | Name                                                                                | 描述                                                                |
 | ---------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | <a id='GPS_SYSTEM_ERROR_INCOMING_CORRECTIONS'></a>1  | [GPS_SYSTEM_ERROR_INCOMING_CORRECTIONS](#GPS_SYSTEM_ERROR_INCOMING_CORRECTIONS) | There are problems with incoming correction streams.              |
 | <a id='GPS_SYSTEM_ERROR_CONFIGURATION'></a>2  | [GPS_SYSTEM_ERROR_CONFIGURATION](#GPS_SYSTEM_ERROR_CONFIGURATION)                 | There are problems with the configuration.                        |
@@ -475,7 +475,7 @@ The frame of a target observation from an onboard sensor.
 
 Signal authentication state in a GPS receiver.
 
-| Value                       | Name                                                                              | Description                                                                     |
+| 值                           | Name                                                                              | 描述                                                                              |
 | --------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | <a id='GPS_AUTHENTICATION_STATE_UNKNOWN'></a>0 | [GPS_AUTHENTICATION_STATE_UNKNOWN](#GPS_AUTHENTICATION_STATE_UNKNOWN)           | The GPS receiver does not provide GPS signal authentication info.               |
 | <a id='GPS_AUTHENTICATION_STATE_INITIALIZING'></a>1 | [GPS_AUTHENTICATION_STATE_INITIALIZING](#GPS_AUTHENTICATION_STATE_INITIALIZING) | The GPS receiver is initializing signal authentication.                         |
@@ -489,7 +489,7 @@ Signal authentication state in a GPS receiver.
 
 Signal jamming state in a GPS receiver.
 
-| Value                       | Name                                                          | Description                                                |
+| 值                           | Name                                                          | 描述                                                         |
 | --------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------- |
 | <a id='GPS_JAMMING_STATE_UNKNOWN'></a>0 | [GPS_JAMMING_STATE_UNKNOWN](#GPS_JAMMING_STATE_UNKNOWN)     | The GPS receiver does not provide GPS signal jamming info. |
 | <a id='GPS_JAMMING_STATE_OK'></a>1 | [GPS_JAMMING_STATE_OK](#GPS_JAMMING_STATE_OK)               | The GPS receiver detected no signal jamming.               |
@@ -502,7 +502,7 @@ Signal jamming state in a GPS receiver.
 
 Signal spoofing state in a GPS receiver.
 
-| Value                       | Name                                                            | Description                                                    |
+| 值                           | Name                                                            | 描述                                                             |
 | --------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------- |
 | <a id='GPS_SPOOFING_STATE_UNKNOWN'></a>0 | [GPS_SPOOFING_STATE_UNKNOWN](#GPS_SPOOFING_STATE_UNKNOWN)     | The GPS receiver does not provide GPS signal spoofing info.    |
 | <a id='GPS_SPOOFING_STATE_OK'></a>1 | [GPS_SPOOFING_STATE_OK](#GPS_SPOOFING_STATE_OK)               | The GPS receiver detected no signal spoofing.                  |
@@ -515,7 +515,7 @@ Signal spoofing state in a GPS receiver.
 
 State of RAIM processing.
 
-| Value                       | Name                                                  | Description                          |
+| 值                           | Name                                                  | 描述                                   |
 | --------------------------- | ----------------------------------------------------- | ------------------------------------ |
 | <a id='GPS_RAIM_STATE_UNKNOWN'></a>0 | [GPS_RAIM_STATE_UNKNOWN](#GPS_RAIM_STATE_UNKNOWN)   | RAIM capability is unknown.          |
 | <a id='GPS_RAIM_STATE_DISABLED'></a>1 | [GPS_RAIM_STATE_DISABLED](#GPS_RAIM_STATE_DISABLED) | RAIM is disabled.                    |
@@ -532,7 +532,7 @@ Fly a figure eight path as defined by the parameters.
 
 Set parameters to NaN/INT32_MAX (as appropriate) to use system-default values. The command is intended for fixed wing vehicles (and VTOL hybrids flying in fixed-wing mode), allowing POI tracking for gimbals that don't support infinite rotation. This command only defines the flight path. Speed should be set independently (use e.g. [MAV_CMD_DO_CHANGE_SPEED](#MAV_CMD_DO_CHANGE_SPEED)). Yaw and other degrees of freedom are not specified, and will be flight-stack specific (on vehicles where they can be controlled independent of the heading).
 
-| Param (Label)    | Description                                                                                                                                                                                                                                                                                                                | Units |
+| Param (Label)    | 描述                                                                                                                                                                                                                                                                                                                         | Units |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
 | 1 (Major Radius) | Major axis radius of the figure eight. Positive: orbit the north circle clockwise. Negative: orbit the north circle counter-clockwise.<br>NaN: The radius will be set to 2.5 times the minor radius and direction is clockwise.<br>Must be greater or equal to two times the minor radius for feasible values. | m     |
 | 2 (Minor Radius) | Minor axis radius of the figure eight. Defines the radius of the two circles that make up the figure. Negative value has no effect.<br>NaN: The radius will be set to the default loiter radius.                                                                                                                     | m     |
@@ -551,7 +551,7 @@ Request a target system to start an upgrade of one (or all) of its components.
 
 For example, the command might be sent to a companion computer to cause it to upgrade a connected flight controller. The system doing the upgrade will report progress using the normal command protocol sequence for a long running operation. Command protocol information: https://mavlink.io/en/services/command.html.
 
-| Param (Label)    | Description                                                                                                | Values                          |
+| Param (Label)    | 描述                                                                                                         | 值                               |
 | ---------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | 1 (Component ID) | Component id of the component to be upgraded. If set to 0, all components should be upgraded.              | [MAV_COMPONENT](#MAV_COMPONENT) |
 | 2 (Reboot)       | 0: Do not reboot component after the action is executed, 1: Reboot component after the action is executed. | min: 0 max: 1 inc: 1            |
@@ -570,7 +570,7 @@ Enable the specified standard MAVLink mode.
 
 If the mode is not supported the vehicle should ACK with [MAV_RESULT_FAILED](#MAV_RESULT_FAILED).
 
-| Param (Label)     | Description      | Values                                    |
+| Param (Label)     | 描述               | 值                                         |
 | ----------------- | ---------------- | ----------------------------------------- |
 | 1 (Standard Mode) | The mode to set. | [MAV_STANDARD_MODE](#MAV_STANDARD_MODE) |
 | 2                 |                  |                                           |
@@ -587,7 +587,7 @@ If the mode is not supported the vehicle should ACK with [MAV_RESULT_FAILED](#MA
 
 Allows setting an AT S command of an SiK radio.
 
-| Param (Label)      | Description                                       |
+| Param (Label)      | 描述                                                |
 | ------------------ | ------------------------------------------------- |
 | 1 (Radio instance) | The radio instance, one-based, 0 for all.         |
 | 2 (Index)          | The Sx index, e.g. 3 for S3 which is NETID.       |
@@ -604,7 +604,7 @@ Allows setting an AT S command of an SiK radio.
 
 Set system and component id. This allows moving of a system and all its components to a new system id, or moving a particular component to a new system/component id. Recipients must reject command addressed to broadcast system ID.
 
-| Param (Label)    | Description                                                                                            | Values                 |
+| Param (Label)    | 描述                                                                                                     | 值                      |
 | ---------------- | ------------------------------------------------------------------------------------------------------ | ---------------------- |
 | 1 (System ID)    | New system ID for target component(s). 0: ignore and reject command (broadcast system ID not allowed). | min: 1 max: 255 inc: 1 |
 | 2 (Component ID) | New component ID for target component(s). 0: ignore (component IDs don't change).                      | min: 0 max: 255 inc: 1 |
@@ -618,7 +618,7 @@ Set system and component id. This allows moving of a system and all its componen
 
 Request to start or end a parameter transaction. Multiple kinds of transport layers can be used to exchange parameters in the transaction (param, param_ext and mavftp). The command response can either be a success/failure or an in progress in case the receiving side takes some time to apply the parameters.
 
-| Param (Label)      | Description                                                                                     | Values                                                        |
+| Param (Label)      | 描述                                                                                              | 值                                                             |
 | ------------------ | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | 1 (Action)         | Action to be performed (start, commit, cancel, etc.)                                            | [PARAM_TRANSACTION_ACTION](#PARAM_TRANSACTION_ACTION)       |
 | 2 (Transport)      | Possible transport layers to set and get parameters via mavlink during a parameter transaction. | [PARAM_TRANSACTION_TRANSPORT](#PARAM_TRANSACTION_TRANSPORT) |
@@ -633,7 +633,7 @@ Used to manually set/unset emergency status for remote id.
 
 This is for compliance with MOC ASTM docs, specifically F358 section 7.7: "Emergency Status Indicator". The requirement can also be satisfied by automatic setting of the emergency status by flight stack, and that approach is preferred. See https://mavlink.io/en/services/opendroneid.html for more information.
 
-| Param (Label) | Description                          | Values        |
+| Param (Label) | 描述                                   | 值             |
 | ------------- | ------------------------------------ | ------------- |
 | 1 (Number)    | Set/unset emergency 0: unset, 1: set | min: 0 inc: 1 |
 | 2             |                                      |               |
@@ -664,7 +664,7 @@ If the system manager component cannot grant control (because takeover requires 
 
 Note that in most systems the only controlled component will be the "system manager component", and that will be the autopilot. However separate GCS control of a particular component is also permitted, if supported by the component. In this case the GCS will address [MAV_CMD_REQUEST_OPERATOR_CONTROL](#MAV_CMD_REQUEST_OPERATOR_CONTROL) to the specific component it wants to control. The component will then stream [CONTROL_STATUS](#CONTROL_STATUS) for its controlling GCS (it must not set [GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER](#GCS_CONTROL_STATUS_FLAGS_SYSTEM_MANAGER)). The component should fall back to the system GCS (if any) when it is not directly controlled, and may stop emitting [CONTROL_STATUS](#CONTROL_STATUS). The flow is otherwise the same as for requesting control over the whole system.
 
-| Param (Label)                | Description                                                                                                                                                                                                                        | Values         | Units |
+| Param (Label)                | 描述                                                                                                                                                                                                                                 | 值              | Units |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ----- |
 | 1 (Sysid requesting control) | System ID of GCS requesting control. 0 when command sent from GCS to autopilot (autopilot determines requesting GCS sysid from message header). Sysid of GCS requesting control when command sent by autopilot to controlling GCS. |                |       |
 | 2 (Action)                   | 0: Release control, 1: Request control.                                                                                                                                                                                            |                |       |
@@ -683,12 +683,12 @@ Set an external estimate of wind direction and speed.
 
 This might be used to provide an initial wind estimate to the estimator (EKF) in the case where the vehicle is wind dead-reckoning, extending the time when operating without GPS before before position drift builds to an unsafe level. For this use case the command might reasonably be sent every few minutes when operating at altitude, and the value is cleared if the estimator resets itself.
 
-| Param (Label)           | Description                                                          | Values          | Units |
+| Param (Label)           | 描述                                                                   | 值               | Units |
 | ----------------------- | -------------------------------------------------------------------- | --------------- | ----- |
 | 1 (Wind speed)          | Horizontal wind speed.                                               | min: 0          | m/s   |
 | 2 (Wind speed accuracy) | Estimated 1 sigma accuracy of wind speed. Set to NaN if unknown.     |                 | m/s   |
-| 3 (Direction)           | Azimuth (relative to true north) from where the wind is blowing.     | min: 0 max: 360 | deg   |
-| 4 (Direction accuracy)  | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |                 | deg   |
+| 3 (Direction)           | Azimuth (relative to true north) from where the wind is blowing.     | min: 0 max: 360 | 度     |
+| 4 (Direction accuracy)  | Estimated 1 sigma accuracy of wind direction. Set to NaN if unknown. |                 | 度     |
 | 5                       | Empty                                                                |                 |       |
 | 6                       | Empty                                                                |                 |       |
 | 7                       | Empty                                                                |                 |       |   
