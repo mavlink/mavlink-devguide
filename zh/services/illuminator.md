@@ -14,12 +14,12 @@ These illuminators have built-in MAVLink support:
 
 ## Message/Command/Enum Summary
 
-| Message                                                                                                            | Description                                                                                                                                       |
+| 消息                                                                                                                 | 描述                                                                                                                                                |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id="COMPONENT_INFORMATION_BASIC"></a>[COMPONENT\_INFORMATION\_BASIC][CMPNT_INFO_BSC]                            | Basic illuminator information data. Should be requested using [MAV\_CMD\_REQUEST\_MESSAGE][MAV_CMD_REQUEST_MESSAGE] on startup, or when required. |
 | <a id="ILLUMINATOR_STATUS"></a>[ILLUMINATOR_STATUS](../messages/common.md#ILLUMINATOR_STATUS) | Current status of the illuminator. Recommended to publish this at a regular rate.                                 |
 
-| Command                                                                                           | Description                                      |
+| Command                                                                                           | 描述                                               |
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
 | <a id="MAV_CMD_ILLUMINATOR_ON_OFF"></a>[MAV\_CMD\_ILLUMINATOR\_ON\_OFF][ILLUM_ON_OFF]             | Turns illuminators ON/OFF.       |
 | <a id="MAV_CMD_DO_ILLUMINATOR_CONFIGURE"></a>[MAV\_CMD\_DO\_ILLUMINATOR\_CONFIGURE][DO_ILLM_CNFG] | Configures illuminator settings. |
@@ -31,12 +31,12 @@ These illuminators have built-in MAVLink support:
 [CMPNT_INFO_BSC]: ../messages/common.md#COMPONENT_INFORMATION_BASIC
 [ILLUM_ON_OFF]: ../messages/common.md#MAV_CMD_ILLUMINATOR_ON_OFF
 
-| Enum Values                                                                                                                                                                  | Description                                                             |
+| Enum Values                                                                                                                                                                  | 描述                                                                      |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | <a id="MAV_TYPE_ILLUMINATOR"></a>[MAV_TYPE_ILLUMINATOR](../messages/minimal.md#MAV_TYPE_ILLUMINATOR)                               | Type of the component (illuminator). |
 | <a id="MAV_COMP_ID_ILLUMINATOR"></a>[MAV_COMP_ID_ILLUMINATOR](../messages/minimal.md#MAV_COMP_ID_ILLUMINATOR) | ID of the component (illuminator).   |
 
-| Enum                                                                                                                                                   | Description                               |
+| Enum                                                                                                                                                   | 描述                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
 | <a id="ILLUMINATOR_MODE"></a>[ILLUMINATOR_MODE](../messages/common.md#ILLUMINATOR_MODE)                                           | Illuminator modes.        |
 | <a id="ILLUMINATOR_ERROR_FLAGS"></a>[ILLUMINATOR_ERROR_FLAGS](../messages/common.md#ILLUMINATOR_ERROR_FLAGS) | Fault/health indications. |
@@ -69,7 +69,7 @@ sequenceDiagram;
 
 While the `MAV_TYPE` and Component ID help identify the system and component, the [COMPONENT_INFORMATION_BASIC](#COMPONENT_INFORMATION_BASIC) command can be requested to retrieve component information data, which can help further identify the component being communicated with. This data includes `time_boot_ms`, `MAV_PROTOCOL_CAPABILITY`, `vendor_name`, `model_name`, `software_version`, `hardware_version`, and `serial_number`.
 
-| Parameter                 | Description                                                                                                                                                                                                                                          |
+| Parameter                 | 描述                                                                                                                                                                                                                                                   |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `time_boot_ms`            | Time since system boot up in milliseconds.                                                                                                                                                                                           |
 | `MAV_PROTOCOL_CAPABILITY` | Bitmask detailing the component capability flags.                                                                                                                                                                                    |
@@ -147,7 +147,7 @@ The status message utilization can be seen below:
 
 ## Test Script
 
-### Description
+### 描述
 
 The test suite included in [assets/services/illuminators](https://github.com/mavlink/mavlink-devguide/blob/master/assets/services/illuminators/) allows for testing both sides of the illuminator interaction.
 
