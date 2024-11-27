@@ -25,23 +25,23 @@ span.warning {
 
 - [common.xml](../messages/common.md)
 
-## Summary
+## 概览
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 27      | 226      |
-| [Enums](#enumerated-types) | 1       | 144      |
-| [Commands](#mav_commands)  | 165     | 0        |
+| Type                    | Defined | Included |
+| ----------------------- | ------- | -------- |
+| [消息](#messages)         | 27      | 226      |
+| [枚举](#enumerated-types) | 1       | 144      |
+| [命令](#mav_commands)     | 165     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ### FLEXIFUNCTION_SET (150) {#FLEXIFUNCTION_SET}
 
 Depreciated but used as a compiler flag. Do not remove
 
-| Field Name       | Type      | Description  |
+| Field Name       | Type      | 描述           |
 | ---------------- | --------- | ------------ |
 | target_system    | `uint8_t` | System ID    |
 | target_component | `uint8_t` | Component ID |
@@ -50,7 +50,7 @@ Depreciated but used as a compiler flag. Do not remove
 
 Request reading of flexifunction data
 
-| Field Name       | Type      | Description                          |
+| Field Name       | Type      | 描述                                   |
 | ---------------- | --------- | ------------------------------------ |
 | target_system    | `uint8_t` | System ID                            |
 | target_component | `uint8_t` | Component ID                         |
@@ -61,7 +61,7 @@ Request reading of flexifunction data
 
 Flexifunction type and parameters for component at function index from buffer
 
-| Field Name       | Type         | Description                                                                      |
+| Field Name       | Type         | 描述                                                                               |
 | ---------------- | ------------ | -------------------------------------------------------------------------------- |
 | target_system    | `uint8_t`    | System ID                                                                        |
 | target_component | `uint8_t`    | Component ID                                                                     |
@@ -75,7 +75,7 @@ Flexifunction type and parameters for component at function index from buffer
 
 Flexifunction type and parameters for component at function index from buffer
 
-| Field Name       | Type       | Description                           |
+| Field Name       | Type       | 描述                                    |
 | ---------------- | ---------- | ------------------------------------- |
 | target_system    | `uint8_t`  | System ID                             |
 | target_component | `uint8_t`  | Component ID                          |
@@ -86,7 +86,7 @@ Flexifunction type and parameters for component at function index from buffer
 
 Acknowldge success or failure of a flexifunction command
 
-| Field Name       | Type         | Description                             |
+| Field Name       | Type         | 描述                                      |
 | ---------------- | ------------ | --------------------------------------- |
 | target_system    | `uint8_t`    | System ID                               |
 | target_component | `uint8_t`    | Component ID                            |
@@ -99,7 +99,7 @@ Acknowldge success or failure of a flexifunction command
 
 Acknowldge success or failure of a flexifunction command
 
-| Field Name       | Type       | Description                             |
+| Field Name       | Type       | 描述                                      |
 | ---------------- | ---------- | --------------------------------------- |
 | target_system    | `uint8_t`  | System ID                               |
 | target_component | `uint8_t`  | Component ID                            |
@@ -112,7 +112,7 @@ Acknowldge success or failure of a flexifunction command
 
 Acknowldge success or failure of a flexifunction command
 
-| Field Name       | Type      | Description                |
+| Field Name       | Type      | 描述                         |
 | ---------------- | --------- | -------------------------- |
 | target_system    | `uint8_t` | System ID                  |
 | target_component | `uint8_t` | Component ID               |
@@ -122,7 +122,7 @@ Acknowldge success or failure of a flexifunction command
 
 Acknowldge success or failure of a flexifunction command
 
-| Field Name   | Type       | Description           |
+| Field Name   | Type       | 描述                    |
 | ------------ | ---------- | --------------------- |
 | command_type | `uint16_t` | Command acknowledged  |
 | result       | `uint16_t` | result of acknowledge |
@@ -131,7 +131,7 @@ Acknowldge success or failure of a flexifunction command
 
 Backwards compatible MAVLink version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) - F2: Format Part A
 
-| Field Name             | Type       | Description                                           |
+| Field Name             | Type       | 描述                                                    |
 | ---------------------- | ---------- | ----------------------------------------------------- |
 | sue_time               | `uint32_t` | Serial UDB Extra Time                                 |
 | sue_status             | `uint8_t`  | Serial UDB Extra Status                               |
@@ -165,7 +165,7 @@ Backwards compatible MAVLink version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) - 
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) - F2: Part B
 
-| Field Name                     | Type       | Description                               |
+| Field Name                     | Type       | 描述                                        |
 | ------------------------------ | ---------- | ----------------------------------------- |
 | sue_time                       | `uint32_t` | Serial UDB Extra Time                     |
 | sue_pwm_input_1              | `int16_t`  | Serial UDB Extra PWM Input Channel 1      |
@@ -222,7 +222,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) - F2: Part
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F4: format
 
-| Field Name                        | Type      | Description                                                   |
+| Field Name                        | Type      | 描述                                                            |
 | --------------------------------- | --------- | ------------------------------------------------------------- |
 | sue_ROLL_STABILIZATION_AILERONS | `uint8_t` | Serial UDB Extra Roll Stabilization with Ailerons Enabled     |
 | sue_ROLL_STABILIZATION_RUDDER   | `uint8_t` | Serial UDB Extra Roll Stabilization with Rudder Enabled       |
@@ -239,7 +239,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F4: format
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F5: format
 
-| Field Name          | Type    | Description                                                                           |
+| Field Name          | Type    | 描述                                                                                    |
 | ------------------- | ------- | ------------------------------------------------------------------------------------- |
 | sue_YAWKP_AILERON | `float` | Serial UDB [YAWKP_AILERON](#YAWKP_AILERON) Gain for Proporional control of navigation |
 | sue_YAWKD_AILERON | `float` | Serial UDB [YAWKD_AILERON](#YAWKD_AILERON) Gain for Rate control of navigation        |
@@ -250,7 +250,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F5: format
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F6: format
 
-| Field Name            | Type    | Description                                                     |
+| Field Name            | Type    | 描述                                                              |
 | --------------------- | ------- | --------------------------------------------------------------- |
 | sue_PITCHGAIN         | `float` | Serial UDB Extra PITCHGAIN Proportional Control                 |
 | sue_PITCHKD           | `float` | Serial UDB Extra Pitch Rate Control                             |
@@ -262,7 +262,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F6: format
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F7: format
 
-| Field Name           | Type    | Description                                                                                          |
+| Field Name           | Type    | 描述                                                                                                   |
 | -------------------- | ------- | ---------------------------------------------------------------------------------------------------- |
 | sue_YAWKP_RUDDER   | `float` | Serial UDB [YAWKP_RUDDER](#YAWKP_RUDDER) Gain for Proporional control of navigation                  |
 | sue_YAWKD_RUDDER   | `float` | Serial UDB [YAWKD_RUDDER](#YAWKD_RUDDER) Gain for Rate control of navigation                         |
@@ -275,7 +275,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F7: format
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F8: format
 
-| Field Name                    | Type    | Description                                                        |
+| Field Name                    | Type    | 描述                                                                 |
 | ----------------------------- | ------- | ------------------------------------------------------------------ |
 | sue_HEIGHT_TARGET_MAX       | `float` | Serial UDB Extra [HEIGHT_TARGET_MAX](#HEIGHT_TARGET_MAX)         |
 | sue_HEIGHT_TARGET_MIN       | `float` | Serial UDB Extra [HEIGHT_TARGET_MIN](#HEIGHT_TARGET_MIN)         |
@@ -289,7 +289,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F8: format
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F13: format
 
-| Field Name       | Type      | Description                                         |
+| Field Name       | Type      | 描述                                                  |
 | ---------------- | --------- | --------------------------------------------------- |
 | sue_week_no    | `int16_t` | Serial UDB Extra GPS Week Number                    |
 | sue_lat_origin | `int32_t` | Serial UDB Extra MP Origin Latitude                 |
@@ -300,7 +300,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F13: forma
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F14: format
 
-| Field Name             | Type       | Description                                        |
+| Field Name             | Type       | 描述                                                 |
 | ---------------------- | ---------- | -------------------------------------------------- |
 | sue_WIND_ESTIMATION  | `uint8_t`  | Serial UDB Extra Wind Estimation Enabled           |
 | sue_GPS_TYPE         | `uint8_t`  | Serial UDB Extra Type of GPS Unit                  |
@@ -318,7 +318,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F14: forma
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F15 format
 
-| Field Name                    | Type          | Description                                    |
+| Field Name                    | Type          | 描述                                             |
 | ----------------------------- | ------------- | ---------------------------------------------- |
 | sue_ID_VEHICLE_MODEL_NAME | `uint8_t[40]` | Serial UDB Extra Model Name Of Vehicle         |
 | sue_ID_VEHICLE_REGISTRATION | `uint8_t[20]` | Serial UDB Extra Registraton Number of Vehicle |
@@ -327,7 +327,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F15 format
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F16 format
 
-| Field Name                | Type          | Description                                  |
+| Field Name                | Type          | 描述                                           |
 | ------------------------- | ------------- | -------------------------------------------- |
 | sue_ID_LEAD_PILOT       | `uint8_t[40]` | Serial UDB Extra Name of Expected Lead Pilot |
 | sue_ID_DIY_DRONES_URL | `uint8_t[70]` | Serial UDB Extra URL of Lead Pilot or Team   |
@@ -336,7 +336,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F16 format
 
 The altitude measured by sensors and IMU
 
-| Field Name         | Type       | Description                                                                     |
+| Field Name         | Type       | 描述                                                                              |
 | ------------------ | ---------- | ------------------------------------------------------------------------------- |
 | time_boot_ms     | `uint32_t` | Timestamp (milliseconds since system boot)                                      |
 | alt_gps            | `int32_t`  | GPS altitude (MSL) in meters, expressed as * 1000 (millimeters)                 |
@@ -350,7 +350,7 @@ The altitude measured by sensors and IMU
 
 The airspeed measured by sensors and IMU
 
-| Field Name          | Type       | Description                                 |
+| Field Name          | Type       | 描述                                          |
 | ------------------- | ---------- | ------------------------------------------- |
 | time_boot_ms      | `uint32_t` | Timestamp (milliseconds since system boot)  |
 | airspeed_imu        | `int16_t`  | Airspeed estimate from IMU, cm/s            |
@@ -364,7 +364,7 @@ The airspeed measured by sensors and IMU
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F17 format
 
-| Field Name          | Type    | Description                           |
+| Field Name          | Type    | 描述                                    |
 | ------------------- | ------- | ------------------------------------- |
 | sue_feed_forward  | `float` | SUE Feed Forward Gain                 |
 | sue_turn_rate_nav | `float` | SUE Max Turn Rate when Navigating     |
@@ -374,7 +374,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F17 format
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F18 format
 
-| Field Name                 | Type    | Description                  |
+| Field Name                 | Type    | 描述                           |
 | -------------------------- | ------- | ---------------------------- |
 | angle_of_attack_normal   | `float` | SUE Angle of Attack Normal   |
 | angle_of_attack_inverted | `float` | SUE Angle of Attack Inverted |
@@ -386,7 +386,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F18 format
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F19 format
 
-| Field Name                    | Type      | Description                 |
+| Field Name                    | Type      | 描述                          |
 | ----------------------------- | --------- | --------------------------- |
 | sue_aileron_output_channel  | `uint8_t` | SUE aileron output channel  |
 | sue_aileron_reversed        | `uint8_t` | SUE aileron reversed        |
@@ -401,7 +401,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F19 format
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F20 format
 
-| Field Name                  | Type      | Description                        |
+| Field Name                  | Type      | 描述                                 |
 | --------------------------- | --------- | ---------------------------------- |
 | sue_number_of_inputs      | `uint8_t` | SUE Number of Input Channels       |
 | sue_trim_value_input_1  | `int16_t` | SUE UDB PWM Trim Value on Input 1  |
@@ -421,7 +421,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F20 format
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F21 format
 
-| Field Name           | Type      | Description                |
+| Field Name           | Type      | 描述                         |
 | -------------------- | --------- | -------------------------- |
 | sue_accel_x_offset | `int16_t` | SUE X accelerometer offset |
 | sue_accel_y_offset | `int16_t` | SUE Y accelerometer offset |
@@ -434,7 +434,7 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F21 format
 
 Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F22 format
 
-| Field Name                     | Type      | Description                             |
+| Field Name                     | Type      | 描述                                      |
 | ------------------------------ | --------- | --------------------------------------- |
 | sue_accel_x_at_calibration | `int16_t` | SUE X accelerometer at calibration time |
 | sue_accel_y_at_calibration | `int16_t` | SUE Y accelerometer at calibration time |
@@ -449,28 +449,28 @@ Backwards compatible version of [SERIAL_UDB_EXTRA](#SERIAL_UDB_EXTRA) F22 format
 
 Action required when performing [CMD_PREFLIGHT_STORAGE](#CMD_PREFLIGHT_STORAGE)
 
-| Value                      | Name                                                          | Description                           |
-| -------------------------- | ------------------------------------------------------------- | ------------------------------------- |
-| <a id='MAV_PFS_CMD_READ_ALL'></a>0 | [MAV_PFS_CMD_READ_ALL](#MAV_PFS_CMD_READ_ALL)             | Read all parameters from storage      |
-| <a id='MAV_PFS_CMD_WRITE_ALL'></a>1 | [MAV_PFS_CMD_WRITE_ALL](#MAV_PFS_CMD_WRITE_ALL)           | Write all parameters to storage       |
-| <a id='MAV_PFS_CMD_CLEAR_ALL'></a>2 | [MAV_PFS_CMD_CLEAR_ALL](#MAV_PFS_CMD_CLEAR_ALL)           | Clear all parameters in storage       |
-| <a id='MAV_PFS_CMD_READ_SPECIFIC'></a>3 | [MAV_PFS_CMD_READ_SPECIFIC](#MAV_PFS_CMD_READ_SPECIFIC)   | Read specific parameters from storage |
-| <a id='MAV_PFS_CMD_WRITE_SPECIFIC'></a>4 | [MAV_PFS_CMD_WRITE_SPECIFIC](#MAV_PFS_CMD_WRITE_SPECIFIC) | Write specific parameters to storage  |
-| <a id='MAV_PFS_CMD_CLEAR_SPECIFIC'></a>5 | [MAV_PFS_CMD_CLEAR_SPECIFIC](#MAV_PFS_CMD_CLEAR_SPECIFIC) | Clear specific parameters in storage  |
-| <a id='MAV_PFS_CMD_DO_NOTHING'></a>6 | [MAV_PFS_CMD_DO_NOTHING](#MAV_PFS_CMD_DO_NOTHING)         | do nothing                            |
+| 值                          | Name                                                          | 描述         |
+| -------------------------- | ------------------------------------------------------------- | ---------- |
+| <a id='MAV_PFS_CMD_READ_ALL'></a>0 | [MAV_PFS_CMD_READ_ALL](#MAV_PFS_CMD_READ_ALL)             | 从存储读取所有参数  |
+| <a id='MAV_PFS_CMD_WRITE_ALL'></a>1 | [MAV_PFS_CMD_WRITE_ALL](#MAV_PFS_CMD_WRITE_ALL)           | 将所有参数写入到存储 |
+| <a id='MAV_PFS_CMD_CLEAR_ALL'></a>2 | [MAV_PFS_CMD_CLEAR_ALL](#MAV_PFS_CMD_CLEAR_ALL)           | 清除存储中的所有参数 |
+| <a id='MAV_PFS_CMD_READ_SPECIFIC'></a>3 | [MAV_PFS_CMD_READ_SPECIFIC](#MAV_PFS_CMD_READ_SPECIFIC)   | 从存储读取特定参数  |
+| <a id='MAV_PFS_CMD_WRITE_SPECIFIC'></a>4 | [MAV_PFS_CMD_WRITE_SPECIFIC](#MAV_PFS_CMD_WRITE_SPECIFIC) | 将特定参数写入到存储 |
+| <a id='MAV_PFS_CMD_CLEAR_SPECIFIC'></a>5 | [MAV_PFS_CMD_CLEAR_SPECIFIC](#MAV_PFS_CMD_CLEAR_SPECIFIC) | 清除存储中的特定参数 |
+| <a id='MAV_PFS_CMD_DO_NOTHING'></a>6 | [MAV_PFS_CMD_DO_NOTHING](#MAV_PFS_CMD_DO_NOTHING)         | 不进行任何操作    |
 
 ## Commands (MAV_CMD) {#mav_commands}
 
 ### MAV_CMD_PREFLIGHT_STORAGE_ADVANCED (0) {#MAV_CMD_PREFLIGHT_STORAGE_ADVANCED}
 
-Request storage of different parameter values and logs. This command will be only accepted if in pre-flight mode.
+Request storage of different parameter values and logs. 只有在飞行前模式下才会接受此命令。
 
-| Param (Label) | Description                                                                 |
-| ------------- | --------------------------------------------------------------------------- |
-| 1             | Storage action: Action defined by MAV_PREFLIGHT_STORAGE_ACTION_ADVANCED |
-| 2             | Storage area as defined by parameter database                               |
-| 3             | Storage flags as defined by parameter database                              |
-| 4             | Empty                                                                       |
-| 5             | Empty                                                                       |
-| 6             | Empty                                                                       |
-| 7             | Empty                                                                       |
+| Param (Label) | 描述                                             |
+| ------------- | ---------------------------------------------- |
+| 1             | 存储操作：MAV_PREFLIGHT_STORAGE_ACTION_ADVANCED |
+| 2             | 由参数数据库定义的存储区域                                  |
+| 3             | 由参数数据库定义的存储标记                                  |
+| 4             | Empty                                          |
+| 5             | Empty                                          |
+| 6             | Empty                                          |
+| 7             | Empty                                          |
