@@ -27,23 +27,23 @@ span.warning {
 
 None
 
-## Summary
+## 概览
 
-| Type                  | Defined | Included |
-| --------------------- | ------- | -------- |
-| [Messages](#messages) | 1       | 0        |
-| Enums                 | 0       | 0        |
-| Commands              | 0       | 0        |
+| Type            | Defined | Included |
+| --------------- | ------- | -------- |
+| [消息](#messages) | 1       | 0        |
+| 枚举              | 0       | 0        |
+| 命令              | 0       | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ### TEST_TYPES (17000) {#TEST_TYPES}
 
 Test all field types
 
-| Field Name | Type          | Description      |
+| Field Name | Type          | 描述               |
 | ---------- | ------------- | ---------------- |
 | c          | `char`        | char             |
 | s          | `char[10]`    | string           |
