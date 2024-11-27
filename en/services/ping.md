@@ -38,8 +38,11 @@ All ping**ed** systems should respond with another `PING` message where:
 The original ping**ing** system:
 
 - Receives a `PING` message with `target_system` and `target_component` matching its address.
-  > **Tip** Any non-zero target system/component indicates a response message.
+
+  > [!TIP]
+  > Any non-zero target system/component indicates a response message.
   > The matching ids inform the system that it is the intended recipient.
+
 - The system calculates the latency from the current system time and the time in the response `PING` for the matching sequence number.
 - A system that is sending a single `PING` can use a timeout to detect a dropped packet.
   A system that is streaming (multiple) `PING` messages should not start detecting dropped packets until after the first responses have been received (to ensure that dropped packets are not just "late").

@@ -2,7 +2,8 @@
 
 The _Tunnel Protocol_ allows MAVLink to be used as a "dumb channel" to pass data in any format across, through or into a MAVLink network.
 
-> **Warning** **Tunnels use is highly discouraged**, as they lose most of the benefits of MAVLink in terms of efficiently and interoperability.
+> [!WARNING]
+> **Tunnels use is highly discouraged**, as they lose most of the benefits of MAVLink in terms of efficiently and interoperability.
 > You should almost always create "dedicated" MAVLink messages for communicating in a MAVLink system.
 
 An example where this protocol is useful is connecting a _STorM32 gimbal_ to a computer for configuration/debugging (via a USB connection to the autopilot and using MAVLink to carry the native serial protocol between it and the gimbal).
@@ -30,7 +31,8 @@ For wider distribution they should [register the payload type](#register).
 The format of the tunnel message data is indicated by the value of `TUNNEL.payload_type`.
 Vendors can register their own formats in [MAV_TUNNEL_PAYLOAD_TYPE](#MAV_TUNNEL_PAYLOAD_TYPE) by creating a PR to update the enum in [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml).
 
-> **Tip** If you register an enum value in **common.xml** the MAVLink toolchain will generate an error if other dialect attempts to define the same value (if the dialect includes **common.xml**).
+> [!TIP]
+> If you register an enum value in **common.xml** the MAVLink toolchain will generate an error if other dialect attempts to define the same value (if the dialect includes **common.xml**).
 
 The rules for adding new `MAV_TUNNEL_PAYLOAD_TYPE` values are:
 

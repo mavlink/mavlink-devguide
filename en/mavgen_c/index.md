@@ -7,9 +7,10 @@ This topic explains how to get and use the library.
 
 ## Getting the C MAVLink Library {#get_libraries}
 
-If you are using a [standard dialect](../messages/README.md#dialects) then download the _MAVLink 2_ library from Github: [c_library_v2](https://github.com/mavlink/c_library_v2).
+If you are using a [standard dialect](../messages/index.md#dialects) then download the _MAVLink 2_ library from Github: [c_library_v2](https://github.com/mavlink/c_library_v2).
 
-> **Tip** The MAVLink 2 library supports both MAVLink 2 and MAVLink 1, and is rebuilt for all the _standard dialects_ whenever any of the definitions in the _mavlink/mavlink_ repo change.
+> [!TIP]
+> The MAVLink 2 library supports both MAVLink 2 and MAVLink 1, and is rebuilt for all the _standard dialects_ whenever any of the definitions in the _mavlink/mavlink_ repo change.
 > It supersedes the MAVLink 1 library ([c_library_v1](https://github.com/mavlink/c_library_v1)), and should be used by preference.
 
 If you need libraries for a custom dialect then you will need to [install mavgen](../getting_started/installation.md) and [generate](../getting_started/generate_libraries.md) them yourself.
@@ -29,12 +30,12 @@ To use MAVLink in your C project, include the **mavlink.h** header file for your
 
 This will automatically add the header files for all messages in your dialect, and for any dialect files that it includes.
 
-> **Warning** Only include the header file for a single dialect.
+> [!WARNING]
+> Only include the header file for a single dialect.
 > If you need to support messages from a _number of dialects_ then create a new "parent" dialect XML file that includes them (and use its generated header as shown above).
 
-<span></span>
-
-> **Tip** _Do not include the individual message files_.
+> [!TIP]
+> _Do not include the individual message files_.
 > If you generate your own headers, you will have to add their output location to your C compiler's search path.
 
 When compiling the project, make sure to add the include directory:
@@ -94,7 +95,8 @@ The _MAVLink 1_ pre-built library [mavlink/c_library_v1](https://github.com/mavl
 
 The _MAVLink 2_ C library offers the same range of APIs as was offered by _MAVLink 1_.
 
-> **Note** The major change from an API perspective is that you don't need to provide a message CRC table any more, or message length table.
+> [!NOTE]
+> The major change from an API perspective is that you don't need to provide a message CRC table any more, or message length table.
 > These have been folded into a single packed table, replacing the old table which was indexed by `msgId`.
 > That was necessary to cope with the much larger 24 bit namespace of message IDs.
 
@@ -161,7 +163,8 @@ while(serial.bytesAvailable > 0)
 }
 ```
 
-> **Tip** The [mavlink_helpers.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h) include other parser functions: `mavlink_frame_char()` and `mavlink_frame_char_buffer()`.
+> [!TIP]
+> The [mavlink_helpers.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h) include other parser functions: `mavlink_frame_char()` and `mavlink_frame_char_buffer()`.
 > Generally you will want to use `mavlink_parse_char()` (which calls those functions internally), but reviewing the other methods can give you a better understanding of the parsing process.
 
 ### Decoding the Payload {#decode_payload}
@@ -205,7 +208,8 @@ if (mavlink_parse_char(chan, byte, &msg, &status)) {
 The decoder/encoder functions and ids for each message in a dialect can be found in separate header files under the dialect folder.
 The headers are named with a format including the message name (**mavlink_msg\__message_name_.h**)
 
-> **Tip** Individual message definitions for the dialect are pulled in when you include **mavlink.h** for your dialect, so you don't need to include these separately.
+> [!TIP]
+> Individual message definitions for the dialect are pulled in when you include **mavlink.h** for your dialect, so you don't need to include these separately.
 
 The most useful decoding function is named with the pattern **mavlink_msg\__message_name_\_decode()**, and extracts the whole payload into a C struct (with fields mapping to the original XML message definition).
 There are also separate decoder functions to just get the values of individual fields.
@@ -244,7 +248,8 @@ A [MAVLink Command](../services/command.md) encodes a command defined in a [MAV_
 
 Command packets are parsed and decoded in the same way as [any other payload](#decode_payload) - i.e. you switch on message id of `MAVLINK_MSG_ID_COMMAND_INT`/`MAVLINK_MSG_ID_COMMAND_LONG` and call the decoder functions `mavlink_msg_command_int_decode()`/`mavlink_msg_command_long_decode()` (respectively) to get a C struct mapping the original message.
 
-> **Note** The message types differ in that `COMMAND_INT` has `int32` types for parameter fields 6 and 7 (instead of `float`) and also includes a field for the geometric frame of reference of any positional information in the command.
+> [!NOTE]
+> The message types differ in that `COMMAND_INT` has `int32` types for parameter fields 6 and 7 (instead of `float`) and also includes a field for the geometric frame of reference of any positional information in the command.
 
 To decode the specific command you then switch on the value of the `mavlink_command_int_t.command` or `mavlink_command_long_t.command` field, which contains the particular `MAV_CMD` id.
 
@@ -280,7 +285,7 @@ The topic [C Message Signing](../mavgen_c/message_signing_c.md) explains the rem
 
 The sections above explain how you can send and receive messages.
 What messages are sent/received depends on the systems that you're working with.
-The set of messages that most systems can send are documented in [common.xml](../messages/common.md) and there are various microservices [microservices](../services/README.md) that you may want to use.
+The set of messages that most systems can send are documented in [common.xml](../messages/common.md) and there are various microservices [microservices](../services/index.md) that you may want to use.
 
 Minimally MAVLink components should implement the [HEARTBEAT/Connection protocol](../services/heartbeat.md) as this is used by other systems as proof-of-life for the component, and also for [routing](../guide/routing.md).
 
@@ -314,7 +319,8 @@ if (msg->magic == MAVLINK_STX_MAVLINK1) {
 
 In most cases this should not be necessary as the XML message definition files for _MAVLink 1_ and _MAVLink 2_ are the same, so you can treat incoming _MAVLink 1_ messages the same as _MAVLink 2_ messages.
 
-> **Note** _MAVLink 1_ is restricted to message IDs less than 256, so any messages with a higher message ID won't be received as _MAVLink 1_.
+> [!NOTE]
+> _MAVLink 1_ is restricted to message IDs less than 256, so any messages with a higher message ID won't be received as _MAVLink 1_.
 
 It is advisable to switch to _MAVLink 2_ when the communication partner sends _MAVLink 2_ (see [Version Handshaking](../guide/mavlink_version.md#version_handshaking)). The minimal solution is to watch incoming packets using code similar to this:
 

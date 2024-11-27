@@ -31,7 +31,7 @@
   <ul>
     <li>The underlying over-the-wire format is rarely updated (we're only up to <em>MAVLink 2</em>, which was introduced in 2017).
     </li>
-    <li>New <a href="../messages/common.md">messages</a>/<a href="../services/README.md">microservices</a> are frequently added. This is a backwards compatible change, and users are expected to regularly update their libraries to support new messages.</li>
+    <li>New <a href="../messages/common.md">messages</a>/<a href="../services/index.md">microservices</a> are frequently added. This is a backwards compatible change, and users are expected to regularly update their libraries to support new messages.</li>
     <li>Messages are rarely modified (or removed) such that they would become incompatible. If this is needed the project will update the MAVLink minor version number and notify users through the <a href="https://groups.google.com/forum/#!forum/mavlink">mailing list</a> (users can also query the version in code).</li>
   </ul>
   </dd>
@@ -42,7 +42,7 @@
 
 <dl>
   <dt>Can I use MAVLink in a closed source application without copyright issues?</dt>
-  <dd>Yes, without any limitations. The generated MAVLink library headers are made available under the *MIT license* (for more information see: <a href="../README.md#license">Introduction > License</a>).
+  <dd>Yes, without any limitations. The generated MAVLink library headers are made available under the *MIT license* (for more information see: <a href="../index.md#license">Introduction > License</a>).
   </dd>
 
   <dt>How does MAVLink detect and decode messages in the byte stream?</dt>
@@ -67,7 +67,7 @@
 
   <dt>I would like to help improve the decoding/encoding routines or other features. Can MAVLink be changed?</dt>
   <dd>Yes, but only very, very carefully with safety testing. 
-  <br>MAVLink is used as a safety-critical component in many autopilot systems and has undergone many years of testing. Please suggest new features on the MAVLink <a href="../README.md#support">support channels</a>.</dd>
+  <br>MAVLink is used as a safety-critical component in many autopilot systems and has undergone many years of testing. Please suggest new features on the MAVLink <a href="../index.md#support">support channels</a>.</dd>
 
   <dt>How can I further reduce the generated C library size?</dt>
   <dd>On extremely resource-constrained systems you may be able to reduce the size of the generated library by setting <code>MAVLINK_COMM_NUM_BUFFERS=1</code> and <code>MAVLINK_MAX_PAYLOAD_LEN</code>="size of your largest buffer" (assuming only one comm link and that your payload is less than the maximum supported by MAVLink).

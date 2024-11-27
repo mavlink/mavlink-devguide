@@ -1,14 +1,14 @@
 # How to Define MAVLink Messages & Enums
 
-MAVLink enums, messages, commands, and other elements are [defined within XML files](../messages/README.md) and then converted to libraries for [supported programming languages](../README.md#supported_languages) using a _code generator_.
+MAVLink enums, messages, commands, and other elements are [defined within XML files](../messages/index.md) and then converted to libraries for [supported programming languages](../index.md#supported_languages) using a _code generator_.
 
 This topic provides practical guidance for defining and extending MAVLink XML elements, including conventions and best-practice.
 
-> **Note** For detailed information about the file format see [MAVLink XML Schema](../guide/xml_schema.md) (you can also inspect [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialect files).
+> [!NOTE]
+> For detailed information about the file format see [MAVLink XML Schema](../guide/xml_schema.md) (you can also inspect [common.xml](https://github.com/mavlink/mavlink/tree/master/message_definitions/v1.0/common.xml) and other dialect files).
 
-<span></span>
-
-> **Tip** Before submitting a pull request for a change to a [dialect xml file](../messages/README.md), you should first [regenerate the dialect library](../getting_started/generate_libraries.md) _with validation enabled_, and then run the [./scripts/format_xml.sh](https://github.com/mavlink/mavlink/blob/master/scripts/format_xml.sh) script.
+> [!TIP]
+> Before submitting a pull request for a change to a [dialect xml file](../messages/index.md), you should first [regenerate the dialect library](../getting_started/generate_libraries.md) _with validation enabled_, and then run the [./scripts/format_xml.sh](https://github.com/mavlink/mavlink/blob/master/scripts/format_xml.sh) script.
 
 ## Messages vs Commands
 
@@ -44,11 +44,11 @@ The "official" project XML files are stored in the Github repo [mavlink/mavlink]
 
 MAVLink systems typically fork and maintain a copy of this repo (e.g. [ArduPilot/mavlink](https://github.com/ArduPilot/mavlink)). The downstream repo should pull **common.xml** changes (see next section) down from the main repo and push dialect-specific changes back to it.
 
-> **Tip** The official repo is forked and/or cloned into your environment when you [Install MAVLink](../getting_started/installation.md).
+> [!TIP]
+> The official repo is forked and/or cloned into your environment when you [Install MAVLink](../getting_started/installation.md).
 
-<span></span>
-
-> **Note** A project/dialect doesn't _have to_ push changes back to MAVLink.
+> [!NOTE]
+> A project/dialect doesn't _have to_ push changes back to MAVLink.
 > However this makes sense if you want to publish your messages more widely, and potentially get them moved into the **common.xml** message set.
 
 ## Where Should MAVLink Elements be Created?
@@ -57,7 +57,8 @@ The enums and messages that are generally useful for many flight stacks and grou
 The MAVLink elements supported by a particular autopilot system or protocol are referred to as _dialects_.
 The _dialects_ are stored in separate XML files, which typically `include` (import) **common.xml** and define just the elements needed for system-specific functionality.
 
-> **Note** When a MAVLink library is generated from a dialect file, code is created for all messages in both the dialect and any included files (e.g. **common.xml**), and entries for a particular enum are merged.
+> [!NOTE]
+> When a MAVLink library is generated from a dialect file, code is created for all messages in both the dialect and any included files (e.g. **common.xml**), and entries for a particular enum are merged.
 > The generator reports errors if there are name or id clashes between imported messages or enum entries.
 
 Where you define an element depends on whether it is common or a dialect, and whether the project is public or private.
@@ -112,13 +113,18 @@ To create a new dialect file:
 1. Update the `include`(s):
     - if the dialect is not based on **common.xml** remove the existing `include` line
     - Add additional `<include> </include>` elements to import additional files/dialects.
-      > **Note** Includes in nested files are ignored.
+
+      > [!NOTE]
+      > Includes in nested files are ignored.
+
 1. Update the `version`:
     - Most dialects should leave the version commented out (i.e. all dialects that include **common.xml**).
     - Dialects that are _not_ based on **common.xml** can uncomment the `<version>6</version>` line and use whatever version is desired.
 
-      > **Note** The `version` specified in the top level file is used by default, if present.
-          If it is not present in the file, then a `version` from an included file is used.
+      > [!NOTE]
+      > The `version` specified in the top level file is used by default, if present.
+      > If it is not present in the file, then a `version` from an included file is used.
+
 1. Update the `<dialect>8</dialect>` line to replace `8` with the next-largest unused dialect number (based on the other files in the folder).
 1. Optionally remove the `enums` or `messages` sections if you don't plan on declaring any elements of these types.
 1. Add enums or messages as described in the following sections.
@@ -155,7 +161,8 @@ A typical message ([SAFETY_SET_ALLOWED_AREA](../messages/common.md#SAFETY_SET_AL
 Messages must be declared between the `<messages></messages>` tags in either **common.xml** or _dialect_ files.
 Each message is defined using `<message id="" name="LIBRARY_UNIQUE_NAME"> ... </message>` tags (with unique `id` and `name` attributes).
 
-> **Tip** The only only difference between messages defined in **common.xml** or _dialect_ files is they they must use different `id` ranges in order to ensure that the `ids` are unique. See [Message Id Ranges](#message_id_ranges) for more information.
+> [!TIP]
+> The only only difference between messages defined in **common.xml** or _dialect_ files is they they must use different `id` ranges in order to ensure that the `ids` are unique. See [Message Id Ranges](#message_id_ranges) for more information.
 
 The main rules for messages are:
 
@@ -176,7 +183,8 @@ The main rules for messages are:
     Each field should only have **one** or no units.
   - _should_ use the `enum` attribute where possible results are finite/well understood.
 
-> **Warning** You cannot rely on generators to fully test for compliance with the above rules.
+> [!WARNING]
+> You cannot rely on generators to fully test for compliance with the above rules.
 > The _mavgen_ code generator tests for duplicate message ids, duplicate field names, messages with no fields, and messages with more than 64 fields.
 > It does not check for other issues (e.g. duplicate names, or over-size payloads).
 > Other generators may provide better validation
@@ -200,7 +208,8 @@ Allocated ranges are listed below (a more complete list is provided in the comme
 | ArduPilotMega.xml | 11000 - 11999 |
 | icarous.xml       | 42000 - 42999 |
 
-> **Tip** If you are creating a new public dialect, [create an issue](https://github.com/mavlink/mavlink/issues/new) to request your own message id range. For private dialects, you can use whatever range you like.
+> [!TIP]
+> If you are creating a new public dialect, [create an issue](https://github.com/mavlink/mavlink/issues/new) to request your own message id range. For private dialects, you can use whatever range you like.
 
 You should not create messages with ids in the "MAVLink 1" range (MAVLink v1 only has 8 bit message IDs, and hence can only support messages with ids 0 - 255).
 
@@ -212,7 +221,8 @@ Changing the name or id of a message will make it incompatible with older versio
 
 Adding or removing a field, or changing the name or type of a field, will make a message incompatible with older versions of the generated library (the generated message decoding method is hard coded with the field number, [order](../guide/serialization.md#crc_extra), type and position at build time - if these change, decoding will fail).
 
-> **Tip** [Message Extensions](#message_extensions) (see below) allow you to add new fields to a MAVLink 2 message without breaking compatibility for a receiver that has not been updated. Note that you can only add messages, not modify or delete them using this mechanism.
+> [!TIP]
+> [Message Extensions](#message_extensions) (see below) allow you to add new fields to a MAVLink 2 message without breaking compatibility for a receiver that has not been updated. Note that you can only add messages, not modify or delete them using this mechanism.
 
 If a message needs to be changed in these ways then there are several options:
 
@@ -226,7 +236,8 @@ For a message in **common.xml** either change requires the agreement of major st
 
 - Create a PR and discuss in the MAVLink developer meeting.
 
-  > **Tip** Before proposing changes to **common.xml** check the codebase of major stakeholder to confirm impact.
+  > [!TIP]
+  > Before proposing changes to **common.xml** check the codebase of major stakeholder to confirm impact.
 
 It is possible to change the message and field descriptions without breaking binary compatibility.
 Care should still be taken to ensure that any changes that alter the way that the field is interpreted are agreed by stakeholders, and handled with proper version control.
@@ -328,7 +339,8 @@ A typical enum ([LANDING_TARGET_TYPE](../messages/common.md#LANDING_TARGET_TYPE)
 Enums must be declared between the `<enums></enums>` tags in **common.xml** and/or _dialect_ files.
 Each enum is defined using `<enum name="SOME_NAME"> ... </enum>` tags (with a `name` attribute).
 
-> **Tip** There is no difference between enums defined in **common.xml** or _dialect_ files (other than management of the namespace).
+> [!TIP]
+> There is no difference between enums defined in **common.xml** or _dialect_ files (other than management of the namespace).
 
 The main rules for enums are:
 
@@ -344,12 +356,16 @@ The main rules for enums are:
     - By _convention_, the `name` should be prefixed with the enum name (e.g. enum `LANDING_TARGET_TYPE` has entry `LANDING_TARGET_TYPE_LIGHT_BEACON`).
   - _should_ have a `value` attribute, and if assigned this must be unique within the (merged) enum.
     Missing values will automatically be sequentially assigned (starting from 1, if the first value is not assigned).
-    > **Tip** We recommend you assign values because then new entries can be added within the range without breaking compatibility.
+
+    > [!TIP]
+    > We recommend you assign values because then new entries can be added within the range without breaking compatibility.
+
   - _should_ (very highly recommended) include a `description` element.
   - may represent bitmasks, in which case values will increase by a power of 2.
   - _may_ be marked as deprecated.
 
-> **Warning** You cannot rely on specific generators to fully test for compliance with the above rules.
+> [!WARNING]
+> You cannot rely on specific generators to fully test for compliance with the above rules.
 > _mavgen_ tests for duplicate names in enums, duplicate names for (merged) enum entries, duplicate values for enum entries.
 
 ### Modifying an Enum
@@ -370,7 +386,8 @@ If an enum needs to be changed then there are several options:
 
 For either case, all users of the enum will need to be updated with new generated libraries.
 
-> **Tip** Before proposing changes to **common.xml** check the codebase of major stakeholder to confirm impact.
+> [!TIP]
+> Before proposing changes to **common.xml** check the codebase of major stakeholder to confirm impact.
 
 For an enum in **common.xml** either change requires the agreement of major stakeholders
 
@@ -386,7 +403,8 @@ Enums are very rarely deleted, as this may break compatibility with legacy MAVLi
 MAVLink commands are defined as entries in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 They are used to define operations used in autonomous missions (see [Mission Protocol](../services/mission.md)) or to send commands in any mode (see [Command Protocol](../services/command.md)).
 
-> **Tip** The schema for commands is documented [here](../guide/xml_schema.md#MAV_CMD).
+> [!TIP]
+> The schema for commands is documented [here](../guide/xml_schema.md#MAV_CMD).
 
 A typical mission command is ([MAV_CMD_NAV_WAYPOINT](../messages/common.md#MAV_CMD_NAV_WAYPOINT)) is shown below:
 
@@ -430,7 +448,8 @@ The allocated ranges are listed below (a more complete list is provided in the c
 | ArduPilotMega.xml | 42000 - 42999 |
 | slugs.xml         | 10001 - 11999 |
 
-> **Tip** If you are creating a new public dialect, [create an issue](https://github.com/mavlink/mavlink/issues/new) to request your own command id range. For private dialects, you can use whatever range you like.
+> [!TIP]
+> If you are creating a new public dialect, [create an issue](https://github.com/mavlink/mavlink/issues/new) to request your own command id range. For private dialects, you can use whatever range you like.
 
 There are a number of common and ArduPilot commands that are outside the ranges (e.g. 16, 200, etc.).
 Generally you would only use these these ranges in order to give a new command an id that is close to related to that of related commands.
@@ -446,7 +465,8 @@ In addition, there are some other "standard" prefixes which are used for common 
 - `MAV_CMD_CONDITION_`: `CONDITION_` commands are used to define conditions before the mission state machine will move to the next item (e.g. a time after reaching a waypoint before taking a picture).
 - `MAV_CMD_REQUEST_`: For requesting information from a system.
 
-> **Tip** The rules for the above prefixes are flexible; some DO commands might reasonably be NAV commands.
+> [!TIP]
+> The rules for the above prefixes are flexible; some DO commands might reasonably be NAV commands.
 > Ins some cases a request for information might be a `MAV_CMD_REQUEST_` and in others it might be a stand alone message.
 
 ### Parameters (param) {#param}
@@ -482,7 +502,8 @@ These unused parameters can be treated as _reserved_, allowing them to be reused
 A reserved `param` **must** always be sent with a (default) value of _either_ `0` or `NaN` (which will be interpreted by recipient as "no action" or "not supported").
 If the param is reused the original default value must still mean "no action", so that an updated system can still interact with a system that has not been updated.
 
-> **Note** Unfortunately this means that a reserved `param` must have its default value decided when the command is declared!
+> [!NOTE]
+> Unfortunately this means that a reserved `param` must have its default value decided when the command is declared!
 > The default value cannot later be changed from `NaN` to `0` (or visa versa) without potential compatibility issues.
 
 To declare a `param` as `reserved` with `default` value of `NaN` you should use the following syntax.
@@ -491,7 +512,8 @@ To declare a `param` as `reserved` with `default` value of `NaN` you should use 
 <param index="3" reserved="true" default="NaN" />
 ```
 
-> **Warning** Params with index values `5` and `6` should not be given a `default` of `NaN` , because if these are sent in a `COMMAND_INT` or `MISSION_INT` these parameters are integers (and hence there is no way to represent an `NaN`).
+> [!WARNING]
+> Params with index values `5` and `6` should not be given a `default` of `NaN` , because if these are sent in a `COMMAND_INT` or `MISSION_INT` these parameters are integers (and hence there is no way to represent an `NaN`).
 
 To declare a param as `reserved` with `default` value of `0` simply omit the `param` from the definition. This is the default - it is equivalent to:
 

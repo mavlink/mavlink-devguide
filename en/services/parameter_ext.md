@@ -7,7 +7,8 @@ The protocol shares most of the same benefits and limitations of the original pr
 The main difference is that when [writing a parameter](#write) the system emits one or more [PARAM_EXT_ACK](#PARAM_EXT_ACK) messages (rather than [PARAM_EXT_VALUE](#PARAM_EXT_VALUE), as you would expect from the original protocol).
 This allows the _Extended Parameter Protocol_ to differentiate between the case where a write fails (or is in progress) and the case where the value update simply went missing.
 
-> **Note** The extensions were invented for the [Camera Protocol](../services/camera.md), which uses them to request/set parameter values specified in a [Camera Definition File](../services/camera_def.md).
+> [!NOTE]
+> The extensions were invented for the [Camera Protocol](../services/camera.md), which uses them to request/set parameter values specified in a [Camera Definition File](../services/camera_def.md).
 > At time of writing the protocol is supported by _QGroundControl_ for this purpose, but is not otherwise supported by flight stacks.
 
 ## Message/Enum Summary
@@ -31,7 +32,8 @@ Parameters names/ids are set in the `param_id` field of messages where they are 
 The `param_id` string can store up to 16 characters.
 The string is terminated with a NULL (`\0`) character if there are less than 16 human-readable chars, and without a null termination byte if the length is exactly 16 chars.
 
-> **Note** Names (as above) are the same as for the [Parameter Protocol](../services/parameter.md#parameter_encoding).
+> [!NOTE]
+> Names (as above) are the same as for the [Parameter Protocol](../services/parameter.md#parameter_encoding).
 
 Values are byte-wise encoded _within_ the `param_value` field, which is a `char[128]`.
 The `param_type` ([MAV_PARAM_EXT_TYPE](#MAV_PARAM_EXT_TYPE)) is used to indicate the actual type of the data so that it can be decoded by the recipient.
@@ -121,7 +123,8 @@ The cache can be populated initially by first [reading the full parameter list](
 
 A system may also monitor for [PARAM_EXT_VALUE](#PARAM_EXT_VALUE) originating from other components/systems requesting parameter values.
 
-> **Note** Cache synchronisation is not guaranteed; a component may [miss parameter update messages](#monitoring_unreliable) due to changes by other components.
+> [!NOTE]
+> Cache synchronisation is not guaranteed; a component may [miss parameter update messages](#monitoring_unreliable) due to changes by other components.
 
 ## Limitations {#limitations}
 

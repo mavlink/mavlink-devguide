@@ -14,7 +14,8 @@ If directed by the development team, issues may be raised on [Github here](https
 
 MAVLink developers, adopting companies and the surrounding community of users meet regularly to help define the direction of the project, discuss RFCs, Issues and have a Q&A session.
 
-> **Tip** The call is open to anyone who wants to contribute to the ongoing development of the project (not just the dev team).
+> [!TIP]
+> The call is open to anyone who wants to contribute to the ongoing development of the project (not just the dev team).
 > This is a great opportunity to meet the team.
 
 #### Who should attend: {#who-should-attend}

@@ -9,18 +9,19 @@ In addition, it may contain localisations of GUI strings for display to the user
 
 At the bottom of this page, you can find a [full example](#full_example) of a _Camera Definition File_.
 
-> **Note** A _Camera Definition File_ is required because the camera options differ so greatly between cameras.
+> [!NOTE]
+> A _Camera Definition File_ is required because the camera options differ so greatly between cameras.
 > It is not reasonable to create specific MAVLink messages for each and every possible option and to tell the GCS the valid options for each camera setting.
 
 ## File Compression
 
 Camera definition files may be **.xz** compressed (this is recommended for files that are hosted on the camera component/device).
 
-> **Warning** Systems that _request_ camera definition files **must** support extraction of **.xz**-compressed definition files.
+> [!WARNING]
+> Systems that _request_ camera definition files **must** support extraction of **.xz**-compressed definition files.
 
-<span></span>
-
-> **Tip** The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems.
+> [!TIP]
+> The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems.
 
 ## Schema
 
@@ -49,7 +50,8 @@ They will also have a description that is displayed to the user and the set of p
 
 Parameters can be simple or quite complex, depending on the behavior they change.
 
-> **Note** The parameter `CAM_MODE` must be part of the parameter list.
+> [!NOTE]
+> The parameter `CAM_MODE` must be part of the parameter list.
 > It maps to the command [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE).
 > It enables exposure of different settings based on the mode, so photo settings in photo mode and video settings in video mode.
 
@@ -109,7 +111,8 @@ The `name` field is used for display only. In other words, using the example abo
 
 _Common Parameters_ are reserved parameter names for which the GCS can build specific UI controls (if found in a camera definition).
 
-> **Note** These parameters are common to many cameras (though their valid options vary considerably).
+> [!NOTE]
+> These parameters are common to many cameras (though their valid options vary considerably).
 
 | Parameter        | Description                                                            |
 | ---------------- | ---------------------------------------------------------------------- |
@@ -307,12 +310,13 @@ When the user makes a selection, the GCS will send the new option using the [PAR
 
 When the GCS requires a current option for a given parameter, it will use the [PARAM_EXT_REQUEST_READ](../messages/common.md#PARAM_EXT_REQUEST_READ) message and it will expect in response a [PARAM_EXT_VALUE](../messages/common.md#PARAM_EXT_VALUE) message.
 
-> **Note** For more detailed information about the protocol see: [Extended Parameter Protocol](../services/parameter_ext.md).
+> [!NOTE]
+> For more detailed information about the protocol see: [Extended Parameter Protocol](../services/parameter_ext.md).
 
 ## Full Camera Definition File Example {#full_example}
 
-An example camera defintition file is listed below.
-This can be downloaded from github here: [camera_definition_example.xml](https://raw.githubusercontent.com/mavlink/mavlink-devguide/master/en/services/camera_definition_example.xml).
+An example camera definition file is listed below.
+This can be downloaded from GitHub here: [camera_definition_example.xml](https://raw.githubusercontent.com/mavlink/mavlink-devguide/master/en/services/camera_definition_example.xml).
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" ?>
