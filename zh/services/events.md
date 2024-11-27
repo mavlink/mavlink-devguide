@@ -1,6 +1,6 @@
 # Events Interface (WIP)
 
-> **Warning** The Events Interface is a work in progress and may change. It has an initial implementation in PX4 and QGroundControl and is planned for ArduPilot. It has an initial implementation in PX4 and QGroundControl and is planned for ArduPilot.
+> [!WARNING] The Events Interface is a work in progress and may change. It has an initial implementation in PX4 and QGroundControl and is planned for ArduPilot.
 > 
 > The information below is just an overview. The information below is just an overview. Full details of the interface are provided in the: [Events Interface Proposal](https://docs.google.com/document/d/18qdDgfML97lItom09MJhngYnFzAm1zFdmlCKG7TaBpg/edit)
 
@@ -8,7 +8,7 @@ The _Events Interface_ is a generic and flexible mechanism that allows one compo
 
 The interface provides for both common events that are shared by flight stacks or other components, and events that are specific to an implementation. The interface provides for both common events that are shared by flight stacks or other components, and events that are specific to an implementation. MAVLink "common" events are defined in [mavlink/libevents/events/common.json](https://github.com/mavlink/libevents/blob/master/events/common.json).
 
-> **Note** The events interface is intended to replace the widespread use of [STATUSTEXT](../messages/common.md#STATUSTEXT) messages, which are not really fit for purpose.
+> [!NOTE] The events interface is intended to replace the widespread use of [STATUSTEXT](../messages/common.md#STATUSTEXT) messages, which are not really fit for purpose.
 
 ## Key features
 
