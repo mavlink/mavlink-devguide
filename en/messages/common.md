@@ -244,7 +244,7 @@ satellites_visible | `uint8_t` | | | invalid:UINT8_MAX | Number of satellites vi
 <span class='ext'>alt_ellipsoid</span> <a href='#mav2_extension_field'>++</a> | `int32_t` | mm | | | Altitude (above WGS84, EGM96 ellipsoid). Positive for up. 
 <span class='ext'>h_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm | | | Position uncertainty. 
 <span class='ext'>v_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm | | | Altitude uncertainty. 
-<span class='ext'>vel_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm | | | Speed uncertainty. 
+<span class='ext'>vel_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm/s | | | Speed uncertainty. 
 <span class='ext'>hdg_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | degE5 | | | Heading / track uncertainty 
 <span class='ext'>yaw</span> <a href='#mav2_extension_field'>++</a> | `uint16_t` | cdeg | | invalid:0 | Yaw in earth frame from north. Use 0 if this GPS does not provide yaw. Use UINT16_MAX if this GPS is configured to provide yaw and is currently unable to provide it. Use 36000 for north. 
 
@@ -1652,7 +1652,7 @@ dgps_age | `uint32_t` | ms | | Age of DGPS info
 <span class='ext'>alt_ellipsoid</span> <a href='#mav2_extension_field'>++</a> | `int32_t` | mm | | Altitude (above WGS84, EGM96 ellipsoid). Positive for up. 
 <span class='ext'>h_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm | | Position uncertainty. 
 <span class='ext'>v_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm | | Altitude uncertainty. 
-<span class='ext'>vel_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm | | Speed uncertainty. 
+<span class='ext'>vel_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | mm/s | | Speed uncertainty. 
 <span class='ext'>hdg_acc</span> <a href='#mav2_extension_field'>++</a> | `uint32_t` | degE5 | | Heading / track uncertainty 
 
 
