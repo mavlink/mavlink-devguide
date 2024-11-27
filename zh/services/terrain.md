@@ -4,7 +4,7 @@ The *Terrain Protocol* provides a mechanism for a vehicle to get terrain informa
 
 Support for this protocol is indicated by `AUTOPILOT_VERSION.capabilities` by the [MAV_PROTOCOL_CAPABILITY_TERRAIN](../messages/common.md#MAV_PROTOCOL_CAPABILITY_TERRAIN) flag.
 
-> **Note** A vehicle that supports this capability must also support terrain following in missions using the data. **Note** A vehicle that supports this capability must also support terrain following in missions using the data. Note however that a vehicle may also support terrain handling in missions using a distance sensor, even if this protocol is not supported and capability flag is not set.
+> [!NOTE] A vehicle that supports this capability must also support terrain following in missions using the data. **Note** A vehicle that supports this capability must also support terrain following in missions using the data. Note however that a vehicle may also support terrain handling in missions using a distance sensor, even if this protocol is not supported and capability flag is not set.
 
 ## Message/Enum Summary
 
@@ -54,4 +54,4 @@ In summary, the sequence is:
 1. The drone responds with a [TERRAIN_REPORT](#TERRAIN_REPORT) message containing the tile information it has for that location. If it does not have tile information for the specified location, then the request is ignored. If it does not have tile information for the specified location, then the request is ignored.
 1. GCS can verify that the terrain report matches a terrain check by comparing the latitude/longitude fields for both messages.
 
-> **Note** The protocol does not define how the ground station handles the case if no `TERRAIN_REPORT` is received (although it might resend the request after a timeout).
+> [!NOTE] The protocol does not define how the ground station handles the case if no `TERRAIN_REPORT` is received (although it might resend the request after a timeout).
