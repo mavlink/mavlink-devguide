@@ -8,7 +8,7 @@ While this is the canonical reference, it is easier to understand the XML file b
 
 The broad structure for MAVLink XML files is given below.
 
-> **Note** If you're creating a custom dialect file your file structure should be similar to the one below (but may omit any/all sections).
+> [!NOTE] If you're creating a custom dialect file your file structure should be similar to the one below (but may omit any/all sections).
 
 ```xml
 <?xml version="1.0"?>
@@ -87,7 +87,7 @@ The main `enum` tags/fields are:
 - `entry` (optional): An entry (zero or more entries can be specified for each enum)
 - [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
 
-> **Tip** [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
+> [!TIP] [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
 ### entry {#entry}
 
@@ -98,13 +98,13 @@ The "normal" enum `entry` tags/fields are:
 - `description` (optional): A description of the entry.
 - [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the enum is deprecated or "work in progress".
 
-> **Note** An `entry` may also define the optional elements: `param`, `hasLocation`, and `isDestination`. In practice these should only be used in the `enum` named [MAV_CMD](#MAV_CMD) (described below).
+> [!NOTE] An `entry` may also define the optional elements: `param`, `hasLocation`, `isDestination`, `missionOnly`. In practice these should only be used in the `enum` named [MAV_CMD](#MAV_CMD) (described below).
 
 ## MAVLink Commands (enum MAV_CMD) {#MAV_CMD}
 
 Individual `entry` values in the `enum` named [MAV_CMD](#MAV_CMD) are use to define *MAVLink Commands*. Each command has a `value` (its "command number") and specifies up to 7 parameters.
 
-> **Note** These parameters are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages ([Mission Protocol](../services/mission.md)), or [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages ([Command Protocol](../services/command.md)).
+> [!NOTE] These parameters are encoded in [MISSION_ITEM](../messages/common.md#MISSION_ITEM) or [MISSION_ITEM_INT](../messages/common.md#MISSION_ITEM_INT) messages ([Mission Protocol](../services/mission.md)), or [COMMAND_INT](../messages/common.md#COMMAND_INT) or [COMMAND_LONG](../messages/common.md#COMMAND_LONG) messages ([Command Protocol](../services/command.md)).
 
 For example, see [MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE):
 
@@ -155,7 +155,10 @@ A `param` **should** also include the following optional attributes where approp
 - `minValue` - Minimum value for param.
 - `maxValue` - Maximum value for the param.
 - `multiplier` - Multiply by this value to get the unscaled original value. This is primarily intended for specifying any scaling applied to unitless values, where scaling is not encoded in the `units`.
-- `reserved` - Boolean indicating whether param is reserved for future use. If the attributes is not declared, then implicitly `reserved="False"`. > **Tip** See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
+- `reserved` - Boolean indicating whether param is reserved for future use. If the attributes is not declared, then implicitly `reserved="False"`.
+  
+  > [!TIP] See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
+
 - `default` - Default value for the `param` (primarily used for `reserved` params, where the value is `0` or `NaN`).
 
 ## Message Definition (messages) {#messages}
@@ -187,15 +190,23 @@ For example,the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY
 
 The main message tags/fields are:
 
-- `message`: Each message is encapsulated by `message` tags, with the following attributes 
-  - `id`: The id attribute is the unique index number of this message (in the example above: 147). 
+- `message`: Each message is encapsulated by `message` tags, with the following attributes
+  
+  - `id`: The id attribute is the unique index number of this message (in the example above: 147).
+    
     - For MAVLink 1: 
       - Valid numbers range from 0 to 255.
       - The ids 0-149 and 230-255 are reserved for *common.xml*. Dialects can use 180-229 for custom messages (provided these are not used by other included dialects).
-    - For [MAVLink 2](../guide/mavlink_2.md): 
+    
+    - For [MAVLink 2](../guide/mavlink_2.md):
+      
       - Valid numbers range from 0 to 16777215.
-      - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1. > **Note** IDs are precious in MAVLink 1!
+      - All numbers below 255 should be considered reserved unless messages are also intended for MAVLink 1.
+        
+        > [!NOTE] IDs are precious in MAVLink 1!
+  
   - `name`: The name attribute provides a human readable form for the message (ie "BATTERY_STATUS"). It is used for naming helper functions in generated libraries, but is not sent over the wire.
+
 - `description`: Human readable description of message, shown in user interfaces and in code comments. This should contain all information (and hyperlinks) to fully understand the message.
 - `field`: Encodes one field of the message. The field value is its name/text string used in GUI documentation (but not sent over the wire). Every message must have at least one field.
   
@@ -213,7 +224,7 @@ The main message tags/fields are:
   - `maxValue` - Maximum value for the field.
   - `instance`: If `true`, this indicates that the message contains the information for a particular sensor or battery (e.g. Battery 1, Battery 2, etc.) and that this field indicates which sensor. Default is `false`.
     
-    > **Note** This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
+    > [!NOTE] This field allows a recipient automatically associate messages for a particular sensor and plot them in the same series.
   
   - `invalid`: Specifies a value that can be set on a field to indicate that the data is *invalid*: the recipient should ignore the field if it has this value. For example, `BATTERY_STATUS.current_battery` specifies `invalid="-1"`, so a battery that does not measure supplied *current* should set `BATTERY_STATUS.current_battery` to `-1`.
     
@@ -241,7 +252,7 @@ The `<deprecated>` tag can be used in an [enum](#enum), enum [entry](#entry) (va
 
 The generator toolchain can be configured to conditionally build messages omitting the `deprecated` entries.
 
-> **Tip** An entity should be marked as deprecated only when the main users have had an opportunity to update to the new method.
+> [!TIP] An entity should be marked as deprecated only when the main users have had an opportunity to update to the new method.
 
 As a concrete example, below we see that [SET_MODE](../messages/common.md#SET_MODE) is deprecated and replaced by [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) on `2015-12`.
 
