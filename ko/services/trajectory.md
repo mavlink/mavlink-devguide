@@ -43,7 +43,7 @@ When specifying a target setpoint, the values should be set in the first point o
 
 The required message sending update rate depends on the speed of the vehicle and use case.
 
-## Implementations
+## 구현
 
 ### Obstacle Avoidance in PX4 Mission Mode
 
