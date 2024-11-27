@@ -33,23 +33,23 @@ span.warning {
 - [cubepilot.xml](../messages/cubepilot.md)
 - [csAirLink.xml](../messages/csAirLink.md)
 
-## Summary
+## 概览
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 65      | 242      |
-| [Enums](#enumerated-types) | 45      | 159      |
-| [Commands](#mav_commands)  | 195     | 0        |
+| Type                    | Defined | Included |
+| ----------------------- | ------- | -------- |
+| [消息](#messages)         | 65      | 242      |
+| [枚举](#enumerated-types) | 45      | 159      |
+| [命令](#mav_commands)     | 195     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ### SENSOR_OFFSETS (150) {#SENSOR_OFFSETS}
 
 Offsets and calibrations values for hardware sensors. This makes it easier to debug the calibration process.
 
-| Field Name      | Type      | Units | Description                     |
+| Field Name      | Type      | Units | 描述                              |
 | --------------- | --------- | ----- | ------------------------------- |
 | mag_ofs_x     | `int16_t` |       | Magnetometer X offset.          |
 | mag_ofs_y     | `int16_t` |       | Magnetometer Y offset.          |
@@ -70,7 +70,7 @@ Offsets and calibrations values for hardware sensors. This makes it easier to de
 
 Set the magnetometer offsets
 
-| Field Name       | Type      | Description            |
+| Field Name       | Type      | 描述                     |
 | ---------------- | --------- | ---------------------- |
 | target_system    | `uint8_t` | System ID.             |
 | target_component | `uint8_t` | Component ID.          |
@@ -82,7 +82,7 @@ Set the magnetometer offsets
 
 State of autopilot RAM.
 
-| Field Name                                            | Type       | Units | Description           |
+| Field Name                                            | Type       | Units | 描述                    |
 | ----------------------------------------------------- | ---------- | ----- | --------------------- |
 | brkval                                                | `uint16_t` |       | Heap top.             |
 | freemem                                               | `uint16_t` | bytes | Free memory.          |
@@ -92,7 +92,7 @@ State of autopilot RAM.
 
 Raw ADC output.
 
-| Field Name | Type       | Description   |
+| Field Name | Type       | 描述            |
 | ---------- | ---------- | ------------- |
 | adc1       | `uint16_t` | ADC output 1. |
 | adc2       | `uint16_t` | ADC output 2. |
@@ -105,11 +105,11 @@ Raw ADC output.
 
 Configure on-board Camera Control System.
 
-| Field Name       | Type       | Units | Description                                                                                                          |
+| Field Name       | Type       | Units | 描述                                                                                                                   |
 | ---------------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t`  |       | System ID.                                                                                                           |
 | target_component | `uint8_t`  |       | Component ID.                                                                                                        |
-| mode             | `uint8_t`  |       | Mode enumeration from 1 to N //P, TV, AV, M, etc. (0 means ignore).                                                  |
+| 模式               | `uint8_t`  |       | Mode enumeration from 1 to N //P, TV, AV, M, etc. (0 means ignore).                                                  |
 | shutter_speed    | `uint16_t` |       | Divisor number //e.g. 1000 means 1/1000 (0 means ignore).                                                            |
 | aperture         | `uint8_t`  |       | F stop number x 10 //e.g. 28 means 2.8 (0 means ignore).                                                             |
 | iso              | `uint8_t`  |       | ISO enumeration from 1 to N //e.g. 80, 100, 200, Etc (0 means ignore).                                               |
@@ -123,7 +123,7 @@ Configure on-board Camera Control System.
 
 Control on-board Camera Control System to take shots.
 
-| Field Name       | Type      | Description                                                                                                        |
+| Field Name       | Type      | 描述                                                                                                                 |
 | ---------------- | --------- | ------------------------------------------------------------------------------------------------------------------ |
 | target_system    | `uint8_t` | System ID.                                                                                                         |
 | target_component | `uint8_t` | Component ID.                                                                                                      |
@@ -140,7 +140,7 @@ Control on-board Camera Control System to take shots.
 
 Message to configure a camera mount, directional antenna, etc.
 
-| Field Name       | Type      | Values                              | Description           |
+| Field Name       | Type      | 值                                   | 描述                    |
 | ---------------- | --------- | ----------------------------------- | --------------------- |
 | target_system    | `uint8_t` |                                     | System ID.            |
 | target_component | `uint8_t` |                                     | Component ID.         |
@@ -153,7 +153,7 @@ Message to configure a camera mount, directional antenna, etc.
 
 Message to control a camera mount, directional antenna, etc.
 
-| Field Name       | Type      | Description                                                                                  |
+| Field Name       | Type      | 描述                                                                                           |
 | ---------------- | --------- | -------------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t` | System ID.                                                                                   |
 | target_component | `uint8_t` | Component ID.                                                                                |
@@ -166,7 +166,7 @@ Message to control a camera mount, directional antenna, etc.
 
 Message with some status from autopilot to GCS about camera or antenna mount.
 
-| Field Name                                            | Type      | Units | Values                              | Description           |
+| Field Name                                            | Type      | Units | 值                                   | 描述                    |
 | ----------------------------------------------------- | --------- | ----- | ----------------------------------- | --------------------- |
 | target_system                                         | `uint8_t` |       |                                     | System ID.            |
 | target_component                                      | `uint8_t` |       |                                     | Component ID.         |
@@ -179,20 +179,20 @@ Message with some status from autopilot to GCS about camera or antenna mount.
 
 A fence point. Used to set a point when from GCS -> MAV. Also used to return a point from MAV -> GCS.
 
-| Field Name       | Type      | Units | Description                                            |
+| Field Name       | Type      | Units | 描述                                                     |
 | ---------------- | --------- | ----- | ------------------------------------------------------ |
 | target_system    | `uint8_t` |       | System ID.                                             |
 | target_component | `uint8_t` |       | Component ID.                                          |
 | idx              | `uint8_t` |       | Point index (first point is 1, 0 is for return point). |
 | count            | `uint8_t` |       | Total number of points (for sanity checking).          |
-| lat              | `float`   | deg   | Latitude of point.                                     |
-| lng              | `float`   | deg   | Longitude of point.                                    |
+| lat              | `float`   | 度     | Latitude of point.                                     |
+| lng              | `float`   | 度     | Longitude of point.                                    |
 
 ### FENCE_FETCH_POINT (161) {#FENCE_FETCH_POINT}
 
 Request a current fence point from MAV.
 
-| Field Name       | Type      | Description                                            |
+| Field Name       | Type      | 描述                                                     |
 | ---------------- | --------- | ------------------------------------------------------ |
 | target_system    | `uint8_t` | System ID.                                             |
 | target_component | `uint8_t` | Component ID.                                          |
@@ -202,7 +202,7 @@ Request a current fence point from MAV.
 
 Status of DCM attitude estimator.
 
-| Field Name   | Type    | Units | Description                       |
+| Field Name   | Type    | Units | 描述                                |
 | ------------ | ------- | ----- | --------------------------------- |
 | omegaIx      | `float` | rad/s | X gyro drift estimate.            |
 | omegaIy      | `float` | rad/s | Y gyro drift estimate.            |
@@ -216,10 +216,10 @@ Status of DCM attitude estimator.
 
 Status of simulation environment, if used.
 
-| Field Name | Type      | Units | Description                  |
+| Field Name | Type      | Units | 描述                           |
 | ---------- | --------- | ----- | ---------------------------- |
 | roll       | `float`   | rad   | Roll angle.                  |
-| pitch      | `float`   | rad   | Pitch angle.                 |
+| 俯仰角        | `float`   | rad   | Pitch angle.                 |
 | yaw        | `float`   | rad   | Yaw angle.                   |
 | xacc       | `float`   | m/s/s | X acceleration.              |
 | yacc       | `float`   | m/s/s | Y acceleration.              |
@@ -234,7 +234,7 @@ Status of simulation environment, if used.
 
 Status of key hardware.
 
-| Field Name | Type       | Units | Description      |
+| Field Name | Type       | Units | 描述               |
 | ---------- | ---------- | ----- | ---------------- |
 | Vcc        | `uint16_t` | mV    | Board voltage.   |
 | I2Cerr     | `uint8_t`  |       | I2C error count. |
@@ -243,7 +243,7 @@ Status of key hardware.
 
 Status generated by radio.
 
-| Field Name | Type       | Units | Description                       |
+| Field Name | Type       | Units | 描述                                |
 | ---------- | ---------- | ----- | --------------------------------- |
 | rssi       | `uint8_t`  |       | Local signal strength.            |
 | remrssi    | `uint8_t`  |       | Remote signal strength.           |
@@ -257,7 +257,7 @@ Status generated by radio.
 
 Status of AP_Limits. Sent in extended status stream when AP_Limits is enabled.
 
-| Field Name     | Type       | Units | Values                        | Description                                      |
+| Field Name     | Type       | Units | 值                             | 描述                                               |
 | -------------- | ---------- | ----- | ----------------------------- | ------------------------------------------------ |
 | limits_state   | `uint8_t`  |       | [LIMITS_STATE](#LIMITS_STATE) | State of AP_Limits.                              |
 | last_trigger   | `uint32_t` | ms    |                               | Time (since boot) of last breach.                |
@@ -273,9 +273,9 @@ Status of AP_Limits. Sent in extended status stream when AP_Limits is enabled.
 
 Wind estimation.
 
-| Field Name | Type    | Units | Description                                |
+| Field Name | Type    | Units | 描述                                         |
 | ---------- | ------- | ----- | ------------------------------------------ |
-| direction  | `float` | deg   | Wind direction (that wind is coming from). |
+| direction  | `float` | 度     | Wind direction (that wind is coming from). |
 | speed      | `float` | m/s   | Wind speed in ground plane.                |
 | speed_z    | `float` | m/s   | Vertical wind speed.                       |
 
@@ -283,7 +283,7 @@ Wind estimation.
 
 Data packet, size 16.
 
-| Field Name | Type          | Units | Description  |
+| Field Name | Type          | Units | 描述           |
 | ---------- | ------------- | ----- | ------------ |
 | type       | `uint8_t`     |       | Data type.   |
 | len        | `uint8_t`     | bytes | Data length. |
@@ -293,7 +293,7 @@ Data packet, size 16.
 
 Data packet, size 32.
 
-| Field Name | Type          | Units | Description  |
+| Field Name | Type          | Units | 描述           |
 | ---------- | ------------- | ----- | ------------ |
 | type       | `uint8_t`     |       | Data type.   |
 | len        | `uint8_t`     | bytes | Data length. |
@@ -303,7 +303,7 @@ Data packet, size 32.
 
 Data packet, size 64.
 
-| Field Name | Type          | Units | Description  |
+| Field Name | Type          | Units | 描述           |
 | ---------- | ------------- | ----- | ------------ |
 | type       | `uint8_t`     |       | Data type.   |
 | len        | `uint8_t`     | bytes | Data length. |
@@ -313,7 +313,7 @@ Data packet, size 64.
 
 Data packet, size 96.
 
-| Field Name | Type          | Units | Description  |
+| Field Name | Type          | Units | 描述           |
 | ---------- | ------------- | ----- | ------------ |
 | type       | `uint8_t`     |       | Data type.   |
 | len        | `uint8_t`     | bytes | Data length. |
@@ -323,7 +323,7 @@ Data packet, size 96.
 
 Rangefinder reporting.
 
-| Field Name | Type    | Units | Description                               |
+| Field Name | Type    | Units | 描述                                        |
 | ---------- | ------- | ----- | ----------------------------------------- |
 | distance   | `float` | m     | Distance.                                 |
 | voltage    | `float` | V     | Raw voltage if available, zero otherwise. |
@@ -332,7 +332,7 @@ Rangefinder reporting.
 
 Airspeed auto-calibration.
 
-| Field Name    | Type    | Units | Description                       |
+| Field Name    | Type    | Units | 描述                                |
 | ------------- | ------- | ----- | --------------------------------- |
 | vx            | `float` | m/s   | GPS velocity north.               |
 | vy            | `float` | m/s   | GPS velocity east.                |
@@ -351,7 +351,7 @@ Airspeed auto-calibration.
 
 A rally point. Used to set a point when from GCS -> MAV. Also used to return a point from MAV -> GCS.
 
-| Field Name       | Type       | Units | Values                      | Description                                   |
+| Field Name       | Type       | Units | 值                           | 描述                                            |
 | ---------------- | ---------- | ----- | --------------------------- | --------------------------------------------- |
 | target_system    | `uint8_t`  |       |                             | System ID.                                    |
 | target_component | `uint8_t`  |       |                             | Component ID.                                 |
@@ -368,7 +368,7 @@ A rally point. Used to set a point when from GCS -> MAV. Also used to return a p
 
 Request a current rally point from MAV. MAV should respond with a [RALLY_POINT](#RALLY_POINT) message. MAV should not respond if the request is invalid.
 
-| Field Name       | Type      | Description                     |
+| Field Name       | Type      | 描述                              |
 | ---------------- | --------- | ------------------------------- |
 | target_system    | `uint8_t` | System ID.                      |
 | target_component | `uint8_t` | Component ID.                   |
@@ -378,9 +378,9 @@ Request a current rally point from MAV. MAV should respond with a [RALLY_POINT](
 
 Status of compassmot calibration.
 
-| Field Name    | Type       | Units | Description           |
+| Field Name    | Type       | Units | 描述                    |
 | ------------- | ---------- | ----- | --------------------- |
-| throttle      | `uint16_t` | d%    | Throttle.             |
+| 油门            | `uint16_t` | d%    | Throttle.             |
 | current       | `float`    | A     | Current.              |
 | interference  | `uint16_t` | %     | Interference.         |
 | CompensationX | `float`    |       | Motor Compensation X. |
@@ -391,10 +391,10 @@ Status of compassmot calibration.
 
 Status of secondary AHRS filter if available.
 
-| Field Name | Type      | Units | Description     |
+| Field Name | Type      | Units | 描述              |
 | ---------- | --------- | ----- | --------------- |
 | roll       | `float`   | rad   | Roll angle.     |
-| pitch      | `float`   | rad   | Pitch angle.    |
+| 俯仰角        | `float`   | rad   | Pitch angle.    |
 | yaw        | `float`   | rad   | Yaw angle.      |
 | altitude   | `float`   | m     | Altitude (MSL). |
 | lat        | `int32_t` | degE7 | Latitude.       |
@@ -404,7 +404,7 @@ Status of secondary AHRS filter if available.
 
 Camera Event.
 
-| Field Name    | Type       | Units | Values                                        | Description                                                                                        |
+| Field Name    | Type       | Units | 值                                             | 描述                                                                                                 |
 | ------------- | ---------- | ----- | --------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | time_usec     | `uint64_t` | us    |                                               | Image timestamp (since UNIX epoch, according to camera clock).                                     |
 | target_system | `uint8_t`  |       |                                               | System ID.                                                                                         |
@@ -420,7 +420,7 @@ Camera Event.
 
 Camera Capture Feedback.
 
-| Field Name                                            | Type       | Units | Values                                            | Description                                                                                                           |
+| Field Name                                            | Type       | Units | 值                                                 | 描述                                                                                                                    |
 | ----------------------------------------------------- | ---------- | ----- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | time_usec                                             | `uint64_t` | us    |                                                   | Image timestamp (since UNIX epoch), as passed in by [CAMERA_STATUS](#CAMERA_STATUS) message (or autopilot if no CCB). |
 | target_system                                         | `uint8_t`  |       |                                                   | System ID.                                                                                                            |
@@ -430,10 +430,10 @@ Camera Capture Feedback.
 | lng                                                   | `int32_t`  | degE7 |                                                   | Longitude.                                                                                                            |
 | alt_msl                                               | `float`    | m     |                                                   | Altitude (MSL).                                                                                                       |
 | alt_rel                                               | `float`    | m     |                                                   | Altitude (Relative to HOME location).                                                                                 |
-| roll                                                  | `float`    | deg   |                                                   | Camera Roll angle (earth frame, +-180).                                                                               |
-| pitch                                                 | `float`    | deg   |                                                   | Camera Pitch angle (earth frame, +-180).                                                                              |
-| yaw                                                   | `float`    | deg   |                                                   | Camera Yaw (earth frame, 0-360, true).                                                                                |
-| foc_len                                               | `float`    | mm    |                                                   | Focal Length.                                                                                                         |
+| roll                                                  | `float`    | 度     |                                                   | Camera Roll angle (earth frame, +-180).                                                                               |
+| 俯仰角                                                   | `float`    | 度     |                                                   | Camera Pitch angle (earth frame, +-180).                                                                              |
+| yaw                                                   | `float`    | 度     |                                                   | Camera Yaw (earth frame, 0-360, true).                                                                                |
+| foc_len                                               | `float`    | 毫米    |                                                   | Focal Length.                                                                                                         |
 | flags                                                 | `uint8_t`  |       | [CAMERA_FEEDBACK_FLAGS](#CAMERA_FEEDBACK_FLAGS) | Feedback flags.                                                                                                       |
 | <span class='ext'>completed_captures</span> [++](#mav2_extension_field) | `uint16_t` |       |                                                   | Completed image captures.                                                                                             |
 
@@ -443,7 +443,7 @@ Camera Capture Feedback.
 
 2nd Battery status
 
-| Field Name      | Type       | Units | Description                                                  |
+| Field Name      | Type       | Units | 描述                                                           |
 | --------------- | ---------- | ----- | ------------------------------------------------------------ |
 | voltage         | `uint16_t` | mV    | Voltage.                                                     |
 | current_battery | `int16_t`  | cA    | Battery current, -1: autopilot does not measure the current. |
@@ -452,10 +452,10 @@ Camera Capture Feedback.
 
 Status of third AHRS filter if available. This is for ANU research group (Ali and Sean).
 
-| Field Name | Type      | Units | Description     |
+| Field Name | Type      | Units | 描述              |
 | ---------- | --------- | ----- | --------------- |
 | roll       | `float`   | rad   | Roll angle.     |
-| pitch      | `float`   | rad   | Pitch angle.    |
+| 俯仰角        | `float`   | rad   | Pitch angle.    |
 | yaw        | `float`   | rad   | Yaw angle.      |
 | altitude   | `float`   | m     | Altitude (MSL). |
 | lat        | `int32_t` | degE7 | Latitude.       |
@@ -469,7 +469,7 @@ Status of third AHRS filter if available. This is for ANU research group (Ali an
 
 Request the autopilot version from the system/component.
 
-| Field Name       | Type      | Description   |
+| Field Name       | Type      | 描述            |
 | ---------------- | --------- | ------------- |
 | target_system    | `uint8_t` | System ID.    |
 | target_component | `uint8_t` | Component ID. |
@@ -478,7 +478,7 @@ Request the autopilot version from the system/component.
 
 Send a block of log data to remote location.
 
-| Field Name       | Type           | Values                                                                        | Description                     |
+| Field Name       | Type           | 值                                                                             | 描述                              |
 | ---------------- | -------------- | ----------------------------------------------------------------------------- | ------------------------------- |
 | target_system    | `uint8_t`      |                                                                               | System ID.                      |
 | target_component | `uint8_t`      |                                                                               | Component ID.                   |
@@ -489,7 +489,7 @@ Send a block of log data to remote location.
 
 Send Status of each log block that autopilot board might have sent.
 
-| Field Name       | Type       | Values                                                                        | Description                     |
+| Field Name       | Type       | 值                                                                             | 描述                              |
 | ---------------- | ---------- | ----------------------------------------------------------------------------- | ------------------------------- |
 | target_system    | `uint8_t`  |                                                                               | System ID.                      |
 | target_component | `uint8_t`  |                                                                               | Component ID.                   |
@@ -500,7 +500,7 @@ Send Status of each log block that autopilot board might have sent.
 
 Control vehicle LEDs.
 
-| Field Name       | Type          | Description                                             |
+| Field Name       | Type          | 描述                                                      |
 | ---------------- | ------------- | ------------------------------------------------------- |
 | target_system    | `uint8_t`     | System ID.                                              |
 | target_component | `uint8_t`     | Component ID.                                           |
@@ -513,7 +513,7 @@ Control vehicle LEDs.
 
 Reports progress of compass calibration.
 
-| Field Name      | Type          | Units | Values                              | Description                                                                               |
+| Field Name      | Type          | Units | 值                                   | 描述                                                                                        |
 | --------------- | ------------- | ----- | ----------------------------------- | ----------------------------------------------------------------------------------------- |
 | compass_id      | `uint8_t`     |       |                                     | Compass being calibrated.  
 Messages with same value are from the same source (instance). |
@@ -530,7 +530,7 @@ Messages with same value are from the same source (instance). |
 
 EKF Status message including flags and variances.
 
-| Field Name                                            | Type       | Values                                  | Description                   |
+| Field Name                                            | Type       | 值                                       | 描述                            |
 | ----------------------------------------------------- | ---------- | --------------------------------------- | ----------------------------- |
 | flags                                                 | `uint16_t` | [EKF_STATUS_FLAGS](#EKF_STATUS_FLAGS) | Flags.                        |
 | velocity_variance                                     | `float`    |                                         | Velocity variance.            |
@@ -544,7 +544,7 @@ EKF Status message including flags and variances.
 
 PID tuning information.
 
-| Field Name                                            | Type      | Values                                | Description                                                           |
+| Field Name                                            | Type      | 值                                     | 描述                                                                    |
 | ----------------------------------------------------- | --------- | ------------------------------------- | --------------------------------------------------------------------- |
 | axis                                                  | `uint8_t` | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.  
 Messages with same value are from the same source (instance). |
@@ -561,7 +561,7 @@ Messages with same value are from the same source (instance). |
 
 Deepstall path planning.
 
-| Field Name                 | Type      | Units | Values                              | Description                                                                                       |
+| Field Name                 | Type      | Units | 值                                   | 描述                                                                                                |
 | -------------------------- | --------- | ----- | ----------------------------------- | ------------------------------------------------------------------------------------------------- |
 | landing_lat                | `int32_t` | degE7 |                                     | Landing latitude.                                                                                 |
 | landing_lon                | `int32_t` | degE7 |                                     | Landing longitude.                                                                                |
@@ -578,7 +578,7 @@ Deepstall path planning.
 
 3 axis gimbal measurements.
 
-| Field Name         | Type      | Units | Description             |
+| Field Name         | Type      | Units | 描述                      |
 | ------------------ | --------- | ----- | ----------------------- |
 | target_system      | `uint8_t` |       | System ID.              |
 | target_component   | `uint8_t` |       | Component ID.           |
@@ -597,7 +597,7 @@ Deepstall path planning.
 
 Control message for rate gimbal.
 
-| Field Name        | Type      | Units | Description              |
+| Field Name        | Type      | Units | 描述                       |
 | ----------------- | --------- | ----- | ------------------------ |
 | target_system     | `uint8_t` |       | System ID.               |
 | target_component  | `uint8_t` |       | Component ID.            |
@@ -609,7 +609,7 @@ Control message for rate gimbal.
 
 100 Hz gimbal torque command telemetry.
 
-| Field Name       | Type      | Description               |
+| Field Name       | Type      | 描述                        |
 | ---------------- | --------- | ------------------------- |
 | target_system    | `uint8_t` | System ID.                |
 | target_component | `uint8_t` | Component ID.             |
@@ -621,7 +621,7 @@ Control message for rate gimbal.
 
 Heartbeat from a HeroBus attached GoPro.
 
-| Field Name   | Type      | Values                                              | Description             |
+| Field Name   | Type      | 值                                                   | 描述                      |
 | ------------ | --------- | --------------------------------------------------- | ----------------------- |
 | status       | `uint8_t` | [GOPRO_HEARTBEAT_STATUS](#GOPRO_HEARTBEAT_STATUS) | Status.                 |
 | capture_mode | `uint8_t` | [GOPRO_CAPTURE_MODE](#GOPRO_CAPTURE_MODE)         | Current capture mode.   |
@@ -631,7 +631,7 @@ Heartbeat from a HeroBus attached GoPro.
 
 Request a [GOPRO_COMMAND](#GOPRO_COMMAND) response from the GoPro.
 
-| Field Name       | Type      | Values                          | Description   |
+| Field Name       | Type      | 值                               | 描述            |
 | ---------------- | --------- | ------------------------------- | ------------- |
 | target_system    | `uint8_t` |                                 | System ID.    |
 | target_component | `uint8_t` |                                 | Component ID. |
@@ -641,7 +641,7 @@ Request a [GOPRO_COMMAND](#GOPRO_COMMAND) response from the GoPro.
 
 Response from a [GOPRO_COMMAND](#GOPRO_COMMAND) get request.
 
-| Field Name | Type         | Values                                          | Description |
+| Field Name | Type         | 值                                               | 描述          |
 | ---------- | ------------ | ----------------------------------------------- | ----------- |
 | cmd_id     | `uint8_t`    | [GOPRO_COMMAND](#GOPRO_COMMAND)                 | Command ID. |
 | status     | `uint8_t`    | [GOPRO_REQUEST_STATUS](#GOPRO_REQUEST_STATUS) | Status.     |
@@ -651,7 +651,7 @@ Response from a [GOPRO_COMMAND](#GOPRO_COMMAND) get request.
 
 Request to set a [GOPRO_COMMAND](#GOPRO_COMMAND) with a desired.
 
-| Field Name       | Type         | Values                          | Description   |
+| Field Name       | Type         | 值                               | 描述            |
 | ---------------- | ------------ | ------------------------------- | ------------- |
 | target_system    | `uint8_t`    |                                 | System ID.    |
 | target_component | `uint8_t`    |                                 | Component ID. |
@@ -662,7 +662,7 @@ Request to set a [GOPRO_COMMAND](#GOPRO_COMMAND) with a desired.
 
 Response from a [GOPRO_COMMAND](#GOPRO_COMMAND) set request.
 
-| Field Name | Type      | Values                                          | Description |
+| Field Name | Type      | 值                                               | 描述          |
 | ---------- | --------- | ----------------------------------------------- | ----------- |
 | cmd_id     | `uint8_t` | [GOPRO_COMMAND](#GOPRO_COMMAND)                 | Command ID. |
 | status     | `uint8_t` | [GOPRO_REQUEST_STATUS](#GOPRO_REQUEST_STATUS) | Status.     |
@@ -671,7 +671,7 @@ Response from a [GOPRO_COMMAND](#GOPRO_COMMAND) set request.
 
 RPM sensor output.
 
-| Field Name | Type    | Description  |
+| Field Name | Type    | 描述           |
 | ---------- | ------- | ------------ |
 | rpm1       | `float` | RPM Sensor1. |
 | rpm2       | `float` | RPM Sensor2. |
@@ -680,7 +680,7 @@ RPM sensor output.
 
 Read registers for a device.
 
-| Field Name                                            | Type       | Values                                    | Description                      |
+| Field Name                                            | Type       | 值                                         | 描述                               |
 | ----------------------------------------------------- | ---------- | ----------------------------------------- | -------------------------------- |
 | target_system                                         | `uint8_t`  |                                           | System ID.                       |
 | target_component                                      | `uint8_t`  |                                           | Component ID.                    |
@@ -697,7 +697,7 @@ Read registers for a device.
 
 Read registers reply.
 
-| Field Name                                             | Type           | Description                                   |
+| Field Name                                             | Type           | 描述                                            |
 | ------------------------------------------------------ | -------------- | --------------------------------------------- |
 | request_id                                             | `uint32_t`     | Request ID - copied from request.             |
 | result                                                 | `uint8_t`      | 0 for success, anything else is failure code. |
@@ -710,7 +710,7 @@ Read registers reply.
 
 Write registers for a device.
 
-| Field Name                                             | Type           | Values                                    | Description                      |
+| Field Name                                             | Type           | 值                                         | 描述                               |
 | ------------------------------------------------------ | -------------- | ----------------------------------------- | -------------------------------- |
 | target_system                                          | `uint8_t`      |                                           | System ID.                       |
 | target_component                                       | `uint8_t`      |                                           | Component ID.                    |
@@ -728,7 +728,7 @@ Write registers for a device.
 
 Write registers reply.
 
-| Field Name | Type       | Description                                   |
+| Field Name | Type       | 描述                                            |
 | ---------- | ---------- | --------------------------------------------- |
 | request_id | `uint32_t` | Request ID - copied from request.             |
 | result     | `uint8_t`  | 0 for success, anything else is failure code. |
@@ -737,7 +737,7 @@ Write registers reply.
 
 Adaptive Controller tuning information.
 
-| Field Name | Type      | Units | Values                                | Description                                                           |
+| Field Name | Type      | Units | 值                                     | 描述                                                                    |
 | ---------- | --------- | ----- | ------------------------------------- | --------------------------------------------------------------------- |
 | axis       | `uint8_t` |       | [PID_TUNING_AXIS](#PID_TUNING_AXIS) | Axis.  
 Messages with same value are from the same source (instance). |
@@ -758,7 +758,7 @@ Messages with same value are from the same source (instance). |
 
 Camera vision based attitude and position deltas.
 
-| Field Name        | Type       | Units | Description                                                                                                                                                                                             |
+| Field Name        | Type       | Units | 描述                                                                                                                                                                                                      |
 | ----------------- | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_usec         | `uint64_t` | us    | Timestamp (synced to UNIX time or since system boot).                                                                                                                                                   |
 | time_delta_usec | `uint64_t` | us    | Time since the last reported camera frame.                                                                                                                                                              |
@@ -770,17 +770,17 @@ Camera vision based attitude and position deltas.
 
 Angle of Attack and Side Slip Angle.
 
-| Field Name | Type       | Units | Description                           |
+| Field Name | Type       | Units | 描述                                    |
 | ---------- | ---------- | ----- | ------------------------------------- |
 | time_usec  | `uint64_t` | us    | Timestamp (since boot or Unix epoch). |
-| AOA        | `float`    | deg   | Angle of Attack.                      |
-| SSA        | `float`    | deg   | Side Slip Angle.                      |
+| AOA        | `float`    | 度     | Angle of Attack.                      |
+| SSA        | `float`    | 度     | Side Slip Angle.                      |
 
 ### ESC_TELEMETRY_1_TO_4 (11030) {#ESC_TELEMETRY_1_TO_4}
 
 ESC Telemetry Data for ESCs 1 to 4, matching data sent by BLHeli ESCs.
 
-| Field Name   | Type          | Units | Description                                           |
+| Field Name   | Type          | Units | 描述                                                    |
 | ------------ | ------------- | ----- | ----------------------------------------------------- |
 | temperature  | `uint8_t[4]`  | degC  | Temperature.                                          |
 | voltage      | `uint16_t[4]` | cV    | Voltage.                                              |
@@ -793,7 +793,7 @@ ESC Telemetry Data for ESCs 1 to 4, matching data sent by BLHeli ESCs.
 
 ESC Telemetry Data for ESCs 5 to 8, matching data sent by BLHeli ESCs.
 
-| Field Name   | Type          | Units | Description                                           |
+| Field Name   | Type          | Units | 描述                                                    |
 | ------------ | ------------- | ----- | ----------------------------------------------------- |
 | temperature  | `uint8_t[4]`  | degC  | Temperature.                                          |
 | voltage      | `uint16_t[4]` | cV    | Voltage.                                              |
@@ -806,7 +806,7 @@ ESC Telemetry Data for ESCs 5 to 8, matching data sent by BLHeli ESCs.
 
 ESC Telemetry Data for ESCs 9 to 12, matching data sent by BLHeli ESCs.
 
-| Field Name   | Type          | Units | Description                                           |
+| Field Name   | Type          | Units | 描述                                                    |
 | ------------ | ------------- | ----- | ----------------------------------------------------- |
 | temperature  | `uint8_t[4]`  | degC  | Temperature.                                          |
 | voltage      | `uint16_t[4]` | cV    | Voltage.                                              |
@@ -819,7 +819,7 @@ ESC Telemetry Data for ESCs 9 to 12, matching data sent by BLHeli ESCs.
 
 Configure an OSD parameter slot.
 
-| Field Name       | Type       | Values                                            | Description                                                                                                                                                                                                                                            |
+| Field Name       | Type       | 值                                                 | 描述                                                                                                                                                                                                                                                     |
 | ---------------- | ---------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | target_system    | `uint8_t`  |                                                   | System ID.                                                                                                                                                                                                                                             |
 | target_component | `uint8_t`  |                                                   | Component ID.                                                                                                                                                                                                                                          |
@@ -836,7 +836,7 @@ Configure an OSD parameter slot.
 
 Configure OSD parameter reply.
 
-| Field Name | Type       | Values                                              | Description                       |
+| Field Name | Type       | 值                                                   | 描述                                |
 | ---------- | ---------- | --------------------------------------------------- | --------------------------------- |
 | request_id | `uint32_t` |                                                     | Request ID - copied from request. |
 | result     | `uint8_t`  | [OSD_PARAM_CONFIG_ERROR](#OSD_PARAM_CONFIG_ERROR) | Config error type.                |
@@ -845,7 +845,7 @@ Configure OSD parameter reply.
 
 Read a configured an OSD parameter slot.
 
-| Field Name       | Type       | Description                   |
+| Field Name       | Type       | 描述                            |
 | ---------------- | ---------- | ----------------------------- |
 | target_system    | `uint8_t`  | System ID.                    |
 | target_component | `uint8_t`  | Component ID.                 |
@@ -857,7 +857,7 @@ Read a configured an OSD parameter slot.
 
 Read configured OSD parameter reply.
 
-| Field Name  | Type       | Values                                              | Description                                                                                                                                                                                                                                            |
+| Field Name  | Type       | 值                                                   | 描述                                                                                                                                                                                                                                                     |
 | ----------- | ---------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | request_id  | `uint32_t` |                                                     | Request ID - copied from request.                                                                                                                                                                                                                      |
 | result      | `uint8_t`  | [OSD_PARAM_CONFIG_ERROR](#OSD_PARAM_CONFIG_ERROR) | Config error type.                                                                                                                                                                                                                                     |
@@ -873,7 +873,7 @@ Read configured OSD parameter reply.
 
 Obstacle located as a 3D vector.
 
-| Field Name     | Type       | Units | Values                                        | Description                                                                                                                                                                                           |
+| Field Name     | Type       | Units | 值                                             | 描述                                                                                                                                                                                                    |
 | -------------- | ---------- | ----- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms | `uint32_t` | ms    |                                               | Timestamp (time since system boot).                                                                                                                                                                   |
 | sensor_type    | `uint8_t`  |       | [MAV_DISTANCE_SENSOR](#MAV_DISTANCE_SENSOR) | Class id of the distance sensor type.                                                                                                                                                                 |
@@ -890,7 +890,7 @@ Messages with same value are from the same source (instance). |
 
 Water depth
 
-| Field Name     | Type       | Units | Description                                                                              |
+| Field Name     | Type       | Units | 描述                                                                                       |
 | -------------- | ---------- | ----- | ---------------------------------------------------------------------------------------- |
 | time_boot_ms | `uint32_t` | ms    | Timestamp (time since system boot)                                                       |
 | id             | `uint8_t`  |       | Onboard ID of the sensor  
@@ -900,7 +900,7 @@ Messages with same value are from the same source (instance). |
 | lng            | `int32_t`  | degE7 | Longitude                                                                                |
 | alt            | `float`    | m     | Altitude (MSL) of vehicle                                                                |
 | roll           | `float`    | rad   | Roll angle                                                                               |
-| pitch          | `float`    | rad   | Pitch angle                                                                              |
+| 俯仰角            | `float`    | rad   | Pitch angle                                                                              |
 | yaw            | `float`    | rad   | Yaw angle                                                                                |
 | distance       | `float`    | m     | Distance (uncorrected)                                                                   |
 | temperature    | `float`    | degC  | Water temperature                                                                        |
@@ -909,7 +909,7 @@ Messages with same value are from the same source (instance). |
 
 The MCU status, giving MCU temperature and voltage. The min and max voltages are to allow for detecting power supply instability.
 
-| Field Name        | Type       | Units | Description                                                                  |
+| Field Name        | Type       | Units | 描述                                                                           |
 | ----------------- | ---------- | ----- | ---------------------------------------------------------------------------- |
 | id                | `uint8_t`  |       | MCU instance  
 Messages with same value are from the same source (instance). |
@@ -922,27 +922,27 @@ Messages with same value are from the same source (instance). |
 
 ### ACCELCAL_VEHICLE_POS {#ACCELCAL_VEHICLE_POS}
 
-| Value                              | Name                                                              | Description |
-| ---------------------------------- | ----------------------------------------------------------------- | ----------- |
-| <a id='ACCELCAL_VEHICLE_POS_LEVEL'></a>1        | [ACCELCAL_VEHICLE_POS_LEVEL](#ACCELCAL_VEHICLE_POS_LEVEL)       |             |
-| <a id='ACCELCAL_VEHICLE_POS_LEFT'></a>2        | [ACCELCAL_VEHICLE_POS_LEFT](#ACCELCAL_VEHICLE_POS_LEFT)         |             |
-| <a id='ACCELCAL_VEHICLE_POS_RIGHT'></a>3        | [ACCELCAL_VEHICLE_POS_RIGHT](#ACCELCAL_VEHICLE_POS_RIGHT)       |             |
-| <a id='ACCELCAL_VEHICLE_POS_NOSEDOWN'></a>4        | [ACCELCAL_VEHICLE_POS_NOSEDOWN](#ACCELCAL_VEHICLE_POS_NOSEDOWN) |             |
-| <a id='ACCELCAL_VEHICLE_POS_NOSEUP'></a>5        | [ACCELCAL_VEHICLE_POS_NOSEUP](#ACCELCAL_VEHICLE_POS_NOSEUP)     |             |
-| <a id='ACCELCAL_VEHICLE_POS_BACK'></a>6        | [ACCELCAL_VEHICLE_POS_BACK](#ACCELCAL_VEHICLE_POS_BACK)         |             |
-| <a id='ACCELCAL_VEHICLE_POS_SUCCESS'></a>16777215 | [ACCELCAL_VEHICLE_POS_SUCCESS](#ACCELCAL_VEHICLE_POS_SUCCESS)   |             |
-| <a id='ACCELCAL_VEHICLE_POS_FAILED'></a>16777216 | [ACCELCAL_VEHICLE_POS_FAILED](#ACCELCAL_VEHICLE_POS_FAILED)     |             |
+| 值                                  | Name                                                              | 描述 |
+| ---------------------------------- | ----------------------------------------------------------------- | -- |
+| <a id='ACCELCAL_VEHICLE_POS_LEVEL'></a>1        | [ACCELCAL_VEHICLE_POS_LEVEL](#ACCELCAL_VEHICLE_POS_LEVEL)       |    |
+| <a id='ACCELCAL_VEHICLE_POS_LEFT'></a>2        | [ACCELCAL_VEHICLE_POS_LEFT](#ACCELCAL_VEHICLE_POS_LEFT)         |    |
+| <a id='ACCELCAL_VEHICLE_POS_RIGHT'></a>3        | [ACCELCAL_VEHICLE_POS_RIGHT](#ACCELCAL_VEHICLE_POS_RIGHT)       |    |
+| <a id='ACCELCAL_VEHICLE_POS_NOSEDOWN'></a>4        | [ACCELCAL_VEHICLE_POS_NOSEDOWN](#ACCELCAL_VEHICLE_POS_NOSEDOWN) |    |
+| <a id='ACCELCAL_VEHICLE_POS_NOSEUP'></a>5        | [ACCELCAL_VEHICLE_POS_NOSEUP](#ACCELCAL_VEHICLE_POS_NOSEUP)     |    |
+| <a id='ACCELCAL_VEHICLE_POS_BACK'></a>6        | [ACCELCAL_VEHICLE_POS_BACK](#ACCELCAL_VEHICLE_POS_BACK)         |    |
+| <a id='ACCELCAL_VEHICLE_POS_SUCCESS'></a>16777215 | [ACCELCAL_VEHICLE_POS_SUCCESS](#ACCELCAL_VEHICLE_POS_SUCCESS)   |    |
+| <a id='ACCELCAL_VEHICLE_POS_FAILED'></a>16777216 | [ACCELCAL_VEHICLE_POS_FAILED](#ACCELCAL_VEHICLE_POS_FAILED)     |    |
 
 ### HEADING_TYPE {#HEADING_TYPE}
 
-| Value                       | Name                                                                    | Description |
-| --------------------------- | ----------------------------------------------------------------------- | ----------- |
-| <a id='HEADING_TYPE_COURSE_OVER_GROUND'></a>0 | [HEADING_TYPE_COURSE_OVER_GROUND](#HEADING_TYPE_COURSE_OVER_GROUND) |             |
-| <a id='HEADING_TYPE_HEADING'></a>1 | [HEADING_TYPE_HEADING](#HEADING_TYPE_HEADING)                         |             |
+| 值                           | Name                                                                    | 描述 |
+| --------------------------- | ----------------------------------------------------------------------- | -- |
+| <a id='HEADING_TYPE_COURSE_OVER_GROUND'></a>0 | [HEADING_TYPE_COURSE_OVER_GROUND](#HEADING_TYPE_COURSE_OVER_GROUND) |    |
+| <a id='HEADING_TYPE_HEADING'></a>1 | [HEADING_TYPE_HEADING](#HEADING_TYPE_HEADING)                         |    |
 
 ### SCRIPTING_CMD {#SCRIPTING_CMD}
 
-| Value                       | Name                                                                  | Description                            |
+| 值                           | Name                                                                  | 描述                                     |
 | --------------------------- | --------------------------------------------------------------------- | -------------------------------------- |
 | <a id='SCRIPTING_CMD_REPL_START'></a>0 | [SCRIPTING_CMD_REPL_START](#SCRIPTING_CMD_REPL_START)               | Start a REPL session.                  |
 | <a id='SCRIPTING_CMD_REPL_STOP'></a>1 | [SCRIPTING_CMD_REPL_STOP](#SCRIPTING_CMD_REPL_STOP)                 | End a REPL session.                    |
@@ -951,7 +951,7 @@ Messages with same value are from the same source (instance). |
 
 ### LIMITS_STATE {#LIMITS_STATE}
 
-| Value                       | Name                                    | Description                           |
+| 值                           | Name                                    | 描述                                    |
 | --------------------------- | --------------------------------------- | ------------------------------------- |
 | <a id='LIMITS_INIT'></a>0 | [LIMITS_INIT](#LIMITS_INIT)             | Pre-initialization.                   |
 | <a id='LIMITS_DISABLED'></a>1 | [LIMITS_DISABLED](#LIMITS_DISABLED)     | Disabled.                             |
@@ -964,7 +964,7 @@ Messages with same value are from the same source (instance). |
 
 (Bitmask)
 
-| Value                       | Name                              | Description         |
+| 值                           | Name                              | 描述                  |
 | --------------------------- | --------------------------------- | ------------------- |
 | <a id='LIMIT_GPSLOCK'></a>1 | [LIMIT_GPSLOCK](#LIMIT_GPSLOCK)   | Pre-initialization. |
 | <a id='LIMIT_GEOFENCE'></a>2 | [LIMIT_GEOFENCE](#LIMIT_GEOFENCE) | Disabled.           |
@@ -974,14 +974,14 @@ Messages with same value are from the same source (instance). |
 
 (Bitmask) Flags in [RALLY_POINT](#RALLY_POINT) message.
 
-| Value                       | Name                                  | Description                                                                                                                                                                     |
+| 值                           | Name                                  | 描述                                                                                                                                                                              |
 | --------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='FAVORABLE_WIND'></a>1 | [FAVORABLE_WIND](#FAVORABLE_WIND)     | Flag set when requiring favorable winds for landing.                                                                                                                            |
 | <a id='LAND_IMMEDIATELY'></a>2 | [LAND_IMMEDIATELY](#LAND_IMMEDIATELY) | Flag set when plane is to immediately descend to break altitude and land without GCS intervention. Flag not set when plane is to loiter at Rally point until commanded to land. |
 
 ### CAMERA_STATUS_TYPES {#CAMERA_STATUS_TYPES}
 
-| Value                       | Name                                                              | Description                                                              |
+| 值                           | Name                                                              | 描述                                                                       |
 | --------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | <a id='CAMERA_STATUS_TYPE_HEARTBEAT'></a>0 | [CAMERA_STATUS_TYPE_HEARTBEAT](#CAMERA_STATUS_TYPE_HEARTBEAT)   | Camera heartbeat, announce camera component ID at 1Hz.                   |
 | <a id='CAMERA_STATUS_TYPE_TRIGGER'></a>1 | [CAMERA_STATUS_TYPE_TRIGGER](#CAMERA_STATUS_TYPE_TRIGGER)       | Camera image triggered.                                                  |
@@ -993,7 +993,7 @@ Messages with same value are from the same source (instance). |
 
 ### CAMERA_FEEDBACK_FLAGS {#CAMERA_FEEDBACK_FLAGS}
 
-| Value                       | Name                                                          | Description                                                                                                           |
+| 值                           | Name                                                          | 描述                                                                                                                    |
 | --------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | <a id='CAMERA_FEEDBACK_PHOTO'></a>0 | [CAMERA_FEEDBACK_PHOTO](#CAMERA_FEEDBACK_PHOTO)             | Shooting photos, not video.                                                                                           |
 | <a id='CAMERA_FEEDBACK_VIDEO'></a>1 | [CAMERA_FEEDBACK_VIDEO](#CAMERA_FEEDBACK_VIDEO)             | Shooting video, not stills.                                                                                           |
@@ -1003,7 +1003,7 @@ Messages with same value are from the same source (instance). |
 
 ### MAV_MODE_GIMBAL {#MAV_MODE_GIMBAL}
 
-| Value                       | Name                                                                        | Description                                                                                                                                                         |
+| 值                           | Name                                                                        | 描述                                                                                                                                                                  |
 | --------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_MODE_GIMBAL_UNINITIALIZED'></a>0 | [MAV_MODE_GIMBAL_UNINITIALIZED](#MAV_MODE_GIMBAL_UNINITIALIZED)           | Gimbal is powered on but has not started initializing yet.                                                                                                          |
 | <a id='MAV_MODE_GIMBAL_CALIBRATING_PITCH'></a>1 | [MAV_MODE_GIMBAL_CALIBRATING_PITCH](#MAV_MODE_GIMBAL_CALIBRATING_PITCH) | Gimbal is currently running calibration on the pitch axis.                                                                                                          |
@@ -1015,7 +1015,7 @@ Messages with same value are from the same source (instance). |
 
 ### GIMBAL_AXIS {#GIMBAL_AXIS}
 
-| Value                       | Name                                      | Description        |
+| 值                           | Name                                      | 描述                 |
 | --------------------------- | ----------------------------------------- | ------------------ |
 | <a id='GIMBAL_AXIS_YAW'></a>0 | [GIMBAL_AXIS_YAW](#GIMBAL_AXIS_YAW)     | Gimbal yaw axis.   |
 | <a id='GIMBAL_AXIS_PITCH'></a>1 | [GIMBAL_AXIS_PITCH](#GIMBAL_AXIS_PITCH) | Gimbal pitch axis. |
@@ -1023,7 +1023,7 @@ Messages with same value are from the same source (instance). |
 
 ### GIMBAL_AXIS_CALIBRATION_STATUS {#GIMBAL_AXIS_CALIBRATION_STATUS}
 
-| Value                       | Name                                                                                          | Description                      |
+| 值                           | Name                                                                                          | 描述                               |
 | --------------------------- | --------------------------------------------------------------------------------------------- | -------------------------------- |
 | <a id='GIMBAL_AXIS_CALIBRATION_STATUS_IN_PROGRESS'></a>0 | [GIMBAL_AXIS_CALIBRATION_STATUS_IN_PROGRESS](#GIMBAL_AXIS_CALIBRATION_STATUS_IN_PROGRESS) | Axis calibration is in progress. |
 | <a id='GIMBAL_AXIS_CALIBRATION_STATUS_SUCCEEDED'></a>1 | [GIMBAL_AXIS_CALIBRATION_STATUS_SUCCEEDED](#GIMBAL_AXIS_CALIBRATION_STATUS_SUCCEEDED)     | Axis calibration succeeded.      |
@@ -1031,7 +1031,7 @@ Messages with same value are from the same source (instance). |
 
 ### GIMBAL_AXIS_CALIBRATION_REQUIRED {#GIMBAL_AXIS_CALIBRATION_REQUIRED}
 
-| Value                       | Name                                                                                      | Description                                                            |
+| 值                           | Name                                                                                      | 描述                                                                     |
 | --------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | <a id='GIMBAL_AXIS_CALIBRATION_REQUIRED_UNKNOWN'></a>0 | [GIMBAL_AXIS_CALIBRATION_REQUIRED_UNKNOWN](#GIMBAL_AXIS_CALIBRATION_REQUIRED_UNKNOWN) | Whether or not this axis requires calibration is unknown at this time. |
 | <a id='GIMBAL_AXIS_CALIBRATION_REQUIRED_TRUE'></a>1 | [GIMBAL_AXIS_CALIBRATION_REQUIRED_TRUE](#GIMBAL_AXIS_CALIBRATION_REQUIRED_TRUE)       | This axis requires calibration.                                        |
@@ -1039,7 +1039,7 @@ Messages with same value are from the same source (instance). |
 
 ### GOPRO_HEARTBEAT_STATUS {#GOPRO_HEARTBEAT_STATUS}
 
-| Value                       | Name                                                                          | Description                                                                                    |
+| 值                           | Name                                                                          | 描述                                                                                             |
 | --------------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | <a id='GOPRO_HEARTBEAT_STATUS_DISCONNECTED'></a>0 | [GOPRO_HEARTBEAT_STATUS_DISCONNECTED](#GOPRO_HEARTBEAT_STATUS_DISCONNECTED) | No GoPro connected.                                                                            |
 | <a id='GOPRO_HEARTBEAT_STATUS_INCOMPATIBLE'></a>1 | [GOPRO_HEARTBEAT_STATUS_INCOMPATIBLE](#GOPRO_HEARTBEAT_STATUS_INCOMPATIBLE) | The detected GoPro is not HeroBus compatible.                                                  |
@@ -1050,20 +1050,20 @@ Messages with same value are from the same source (instance). |
 
 (Bitmask)
 
-| Value                       | Name                                            | Description                   |
+| 值                           | Name                                            | 描述                            |
 | --------------------------- | ----------------------------------------------- | ----------------------------- |
 | <a id='GOPRO_FLAG_RECORDING'></a>1 | [GOPRO_FLAG_RECORDING](#GOPRO_FLAG_RECORDING) | GoPro is currently recording. |
 
 ### GOPRO_REQUEST_STATUS {#GOPRO_REQUEST_STATUS}
 
-| Value                       | Name                                              | Description                                    |
+| 值                           | Name                                              | 描述                                             |
 | --------------------------- | ------------------------------------------------- | ---------------------------------------------- |
 | <a id='GOPRO_REQUEST_SUCCESS'></a>0 | [GOPRO_REQUEST_SUCCESS](#GOPRO_REQUEST_SUCCESS) | The write message with ID indicated succeeded. |
 | <a id='GOPRO_REQUEST_FAILED'></a>1 | [GOPRO_REQUEST_FAILED](#GOPRO_REQUEST_FAILED)   | The write message with ID indicated failed.    |
 
 ### GOPRO_COMMAND {#GOPRO_COMMAND}
 
-| Value                        | Name                                                                            | Description             |
+| 值                            | Name                                                                            | 描述                      |
 | ---------------------------- | ------------------------------------------------------------------------------- | ----------------------- |
 | <a id='GOPRO_COMMAND_POWER'></a>0  | [GOPRO_COMMAND_POWER](#GOPRO_COMMAND_POWER)                                   | (Get/Set).              |
 | <a id='GOPRO_COMMAND_CAPTURE_MODE'></a>1  | [GOPRO_COMMAND_CAPTURE_MODE](#GOPRO_COMMAND_CAPTURE_MODE)                     | (Get/Set).              |
@@ -1085,7 +1085,7 @@ Messages with same value are from the same source (instance). |
 
 ### GOPRO_CAPTURE_MODE {#GOPRO_CAPTURE_MODE}
 
-| Value                         | Name                                                                | Description                                                                            |
+| 值                             | Name                                                                | 描述                                                                                     |
 | ----------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | <a id='GOPRO_CAPTURE_MODE_VIDEO'></a>0   | [GOPRO_CAPTURE_MODE_VIDEO](#GOPRO_CAPTURE_MODE_VIDEO)             | Video mode.                                                                            |
 | <a id='GOPRO_CAPTURE_MODE_PHOTO'></a>1   | [GOPRO_CAPTURE_MODE_PHOTO](#GOPRO_CAPTURE_MODE_PHOTO)             | Photo mode.                                                                            |
@@ -1098,7 +1098,7 @@ Messages with same value are from the same source (instance). |
 
 ### GOPRO_RESOLUTION {#GOPRO_RESOLUTION}
 
-| Value                         | Name                                                                    | Description                    |
+| 值                             | Name                                                                    | 描述                             |
 | ----------------------------- | ----------------------------------------------------------------------- | ------------------------------ |
 | <a id='GOPRO_RESOLUTION_480p'></a>0   | [GOPRO_RESOLUTION_480p](#GOPRO_RESOLUTION_480p)                       | 848 x 480 (480p).              |
 | <a id='GOPRO_RESOLUTION_720p'></a>1   | [GOPRO_RESOLUTION_720p](#GOPRO_RESOLUTION_720p)                       | 1280 x 720 (720p).             |
@@ -1117,26 +1117,26 @@ Messages with same value are from the same source (instance). |
 
 ### GOPRO_FRAME_RATE {#GOPRO_FRAME_RATE}
 
-| Value                         | Name                                                | Description |
-| ----------------------------- | --------------------------------------------------- | ----------- |
-| <a id='GOPRO_FRAME_RATE_12'></a>0  | [GOPRO_FRAME_RATE_12](#GOPRO_FRAME_RATE_12)       | 12 FPS.     |
-| <a id='GOPRO_FRAME_RATE_15'></a>1  | [GOPRO_FRAME_RATE_15](#GOPRO_FRAME_RATE_15)       | 15 FPS.     |
-| <a id='GOPRO_FRAME_RATE_24'></a>2  | [GOPRO_FRAME_RATE_24](#GOPRO_FRAME_RATE_24)       | 24 FPS.     |
-| <a id='GOPRO_FRAME_RATE_25'></a>3  | [GOPRO_FRAME_RATE_25](#GOPRO_FRAME_RATE_25)       | 25 FPS.     |
-| <a id='GOPRO_FRAME_RATE_30'></a>4  | [GOPRO_FRAME_RATE_30](#GOPRO_FRAME_RATE_30)       | 30 FPS.     |
-| <a id='GOPRO_FRAME_RATE_48'></a>5  | [GOPRO_FRAME_RATE_48](#GOPRO_FRAME_RATE_48)       | 48 FPS.     |
-| <a id='GOPRO_FRAME_RATE_50'></a>6  | [GOPRO_FRAME_RATE_50](#GOPRO_FRAME_RATE_50)       | 50 FPS.     |
-| <a id='GOPRO_FRAME_RATE_60'></a>7  | [GOPRO_FRAME_RATE_60](#GOPRO_FRAME_RATE_60)       | 60 FPS.     |
-| <a id='GOPRO_FRAME_RATE_80'></a>8  | [GOPRO_FRAME_RATE_80](#GOPRO_FRAME_RATE_80)       | 80 FPS.     |
-| <a id='GOPRO_FRAME_RATE_90'></a>9  | [GOPRO_FRAME_RATE_90](#GOPRO_FRAME_RATE_90)       | 90 FPS.     |
-| <a id='GOPRO_FRAME_RATE_100'></a>10 | [GOPRO_FRAME_RATE_100](#GOPRO_FRAME_RATE_100)     | 100 FPS.    |
-| <a id='GOPRO_FRAME_RATE_120'></a>11 | [GOPRO_FRAME_RATE_120](#GOPRO_FRAME_RATE_120)     | 120 FPS.    |
-| <a id='GOPRO_FRAME_RATE_240'></a>12 | [GOPRO_FRAME_RATE_240](#GOPRO_FRAME_RATE_240)     | 240 FPS.    |
-| <a id='GOPRO_FRAME_RATE_12_5'></a>13 | [GOPRO_FRAME_RATE_12_5](#GOPRO_FRAME_RATE_12_5) | 12.5 FPS.   |
+| 值                             | Name                                                | 描述        |
+| ----------------------------- | --------------------------------------------------- | --------- |
+| <a id='GOPRO_FRAME_RATE_12'></a>0  | [GOPRO_FRAME_RATE_12](#GOPRO_FRAME_RATE_12)       | 12 FPS.   |
+| <a id='GOPRO_FRAME_RATE_15'></a>1  | [GOPRO_FRAME_RATE_15](#GOPRO_FRAME_RATE_15)       | 15 FPS.   |
+| <a id='GOPRO_FRAME_RATE_24'></a>2  | [GOPRO_FRAME_RATE_24](#GOPRO_FRAME_RATE_24)       | 24 FPS.   |
+| <a id='GOPRO_FRAME_RATE_25'></a>3  | [GOPRO_FRAME_RATE_25](#GOPRO_FRAME_RATE_25)       | 25 FPS.   |
+| <a id='GOPRO_FRAME_RATE_30'></a>4  | [GOPRO_FRAME_RATE_30](#GOPRO_FRAME_RATE_30)       | 30 FPS.   |
+| <a id='GOPRO_FRAME_RATE_48'></a>5  | [GOPRO_FRAME_RATE_48](#GOPRO_FRAME_RATE_48)       | 48 FPS.   |
+| <a id='GOPRO_FRAME_RATE_50'></a>6  | [GOPRO_FRAME_RATE_50](#GOPRO_FRAME_RATE_50)       | 50 FPS.   |
+| <a id='GOPRO_FRAME_RATE_60'></a>7  | [GOPRO_FRAME_RATE_60](#GOPRO_FRAME_RATE_60)       | 60 FPS.   |
+| <a id='GOPRO_FRAME_RATE_80'></a>8  | [GOPRO_FRAME_RATE_80](#GOPRO_FRAME_RATE_80)       | 80 FPS.   |
+| <a id='GOPRO_FRAME_RATE_90'></a>9  | [GOPRO_FRAME_RATE_90](#GOPRO_FRAME_RATE_90)       | 90 FPS.   |
+| <a id='GOPRO_FRAME_RATE_100'></a>10 | [GOPRO_FRAME_RATE_100](#GOPRO_FRAME_RATE_100)     | 100 FPS.  |
+| <a id='GOPRO_FRAME_RATE_120'></a>11 | [GOPRO_FRAME_RATE_120](#GOPRO_FRAME_RATE_120)     | 120 FPS.  |
+| <a id='GOPRO_FRAME_RATE_240'></a>12 | [GOPRO_FRAME_RATE_240](#GOPRO_FRAME_RATE_240)     | 240 FPS.  |
+| <a id='GOPRO_FRAME_RATE_12_5'></a>13 | [GOPRO_FRAME_RATE_12_5](#GOPRO_FRAME_RATE_12_5) | 12.5 FPS. |
 
 ### GOPRO_FIELD_OF_VIEW {#GOPRO_FIELD_OF_VIEW}
 
-| Value                        | Name                                                          | Description   |
+| 值                            | Name                                                          | 描述            |
 | ---------------------------- | ------------------------------------------------------------- | ------------- |
 | <a id='GOPRO_FIELD_OF_VIEW_WIDE'></a>0 | [GOPRO_FIELD_OF_VIEW_WIDE](#GOPRO_FIELD_OF_VIEW_WIDE)     | 0x00: Wide.   |
 | <a id='GOPRO_FIELD_OF_VIEW_MEDIUM'></a>1 | [GOPRO_FIELD_OF_VIEW_MEDIUM](#GOPRO_FIELD_OF_VIEW_MEDIUM) | 0x01: Medium. |
@@ -1146,13 +1146,13 @@ Messages with same value are from the same source (instance). |
 
 (Bitmask)
 
-| Value                        | Name                                                              | Description    |
+| 值                            | Name                                                              | 描述             |
 | ---------------------------- | ----------------------------------------------------------------- | -------------- |
 | <a id='GOPRO_VIDEO_SETTINGS_TV_MODE'></a>1 | [GOPRO_VIDEO_SETTINGS_TV_MODE](#GOPRO_VIDEO_SETTINGS_TV_MODE) | 0=NTSC, 1=PAL. |
 
 ### GOPRO_PHOTO_RESOLUTION {#GOPRO_PHOTO_RESOLUTION}
 
-| Value                        | Name                                                                        | Description |
+| 值                            | Name                                                                        | 描述          |
 | ---------------------------- | --------------------------------------------------------------------------- | ----------- |
 | <a id='GOPRO_PHOTO_RESOLUTION_5MP_MEDIUM'></a>0 | [GOPRO_PHOTO_RESOLUTION_5MP_MEDIUM](#GOPRO_PHOTO_RESOLUTION_5MP_MEDIUM) | 5MP Medium. |
 | <a id='GOPRO_PHOTO_RESOLUTION_7MP_MEDIUM'></a>1 | [GOPRO_PHOTO_RESOLUTION_7MP_MEDIUM](#GOPRO_PHOTO_RESOLUTION_7MP_MEDIUM) | 7MP Medium. |
@@ -1162,7 +1162,7 @@ Messages with same value are from the same source (instance). |
 
 ### GOPRO_PROTUNE_WHITE_BALANCE {#GOPRO_PROTUNE_WHITE_BALANCE}
 
-| Value                        | Name                                                                        | Description |
+| 值                            | Name                                                                        | 描述          |
 | ---------------------------- | --------------------------------------------------------------------------- | ----------- |
 | <a id='GOPRO_PROTUNE_WHITE_BALANCE_AUTO'></a>0 | [GOPRO_PROTUNE_WHITE_BALANCE_AUTO](#GOPRO_PROTUNE_WHITE_BALANCE_AUTO)   | Auto.       |
 | <a id='GOPRO_PROTUNE_WHITE_BALANCE_3000K'></a>1 | [GOPRO_PROTUNE_WHITE_BALANCE_3000K](#GOPRO_PROTUNE_WHITE_BALANCE_3000K) | 3000K.      |
@@ -1172,14 +1172,14 @@ Messages with same value are from the same source (instance). |
 
 ### GOPRO_PROTUNE_COLOUR {#GOPRO_PROTUNE_COLOUR}
 
-| Value                        | Name                                                              | Description |
-| ---------------------------- | ----------------------------------------------------------------- | ----------- |
-| <a id='GOPRO_PROTUNE_COLOUR_STANDARD'></a>0 | [GOPRO_PROTUNE_COLOUR_STANDARD](#GOPRO_PROTUNE_COLOUR_STANDARD) | Auto.       |
-| <a id='GOPRO_PROTUNE_COLOUR_NEUTRAL'></a>1 | [GOPRO_PROTUNE_COLOUR_NEUTRAL](#GOPRO_PROTUNE_COLOUR_NEUTRAL)   | Neutral.    |
+| 值                            | Name                                                              | 描述       |
+| ---------------------------- | ----------------------------------------------------------------- | -------- |
+| <a id='GOPRO_PROTUNE_COLOUR_STANDARD'></a>0 | [GOPRO_PROTUNE_COLOUR_STANDARD](#GOPRO_PROTUNE_COLOUR_STANDARD) | Auto.    |
+| <a id='GOPRO_PROTUNE_COLOUR_NEUTRAL'></a>1 | [GOPRO_PROTUNE_COLOUR_NEUTRAL](#GOPRO_PROTUNE_COLOUR_NEUTRAL)   | Neutral. |
 
 ### GOPRO_PROTUNE_GAIN {#GOPRO_PROTUNE_GAIN}
 
-| Value                        | Name                                                  | Description             |
+| 值                            | Name                                                  | 描述                      |
 | ---------------------------- | ----------------------------------------------------- | ----------------------- |
 | <a id='GOPRO_PROTUNE_GAIN_400'></a>0 | [GOPRO_PROTUNE_GAIN_400](#GOPRO_PROTUNE_GAIN_400)   | ISO 400.                |
 | <a id='GOPRO_PROTUNE_GAIN_800'></a>1 | [GOPRO_PROTUNE_GAIN_800](#GOPRO_PROTUNE_GAIN_800)   | ISO 800 (Only Hero 4).  |
@@ -1189,7 +1189,7 @@ Messages with same value are from the same source (instance). |
 
 ### GOPRO_PROTUNE_SHARPNESS {#GOPRO_PROTUNE_SHARPNESS}
 
-| Value                        | Name                                                                | Description       |
+| 值                            | Name                                                                | 描述                |
 | ---------------------------- | ------------------------------------------------------------------- | ----------------- |
 | <a id='GOPRO_PROTUNE_SHARPNESS_LOW'></a>0 | [GOPRO_PROTUNE_SHARPNESS_LOW](#GOPRO_PROTUNE_SHARPNESS_LOW)       | Low Sharpness.    |
 | <a id='GOPRO_PROTUNE_SHARPNESS_MEDIUM'></a>1 | [GOPRO_PROTUNE_SHARPNESS_MEDIUM](#GOPRO_PROTUNE_SHARPNESS_MEDIUM) | Medium Sharpness. |
@@ -1197,7 +1197,7 @@ Messages with same value are from the same source (instance). |
 
 ### GOPRO_PROTUNE_EXPOSURE {#GOPRO_PROTUNE_EXPOSURE}
 
-| Value                         | Name                                                                  | Description             |
+| 值                             | Name                                                                  | 描述                      |
 | ----------------------------- | --------------------------------------------------------------------- | ----------------------- |
 | <a id='GOPRO_PROTUNE_EXPOSURE_NEG_5_0'></a>0  | [GOPRO_PROTUNE_EXPOSURE_NEG_5_0](#GOPRO_PROTUNE_EXPOSURE_NEG_5_0) | -5.0 EV (Hero 3+ Only). |
 | <a id='GOPRO_PROTUNE_EXPOSURE_NEG_4_5'></a>1  | [GOPRO_PROTUNE_EXPOSURE_NEG_4_5](#GOPRO_PROTUNE_EXPOSURE_NEG_4_5) | -4.5 EV (Hero 3+ Only). |
@@ -1223,14 +1223,14 @@ Messages with same value are from the same source (instance). |
 
 ### GOPRO_CHARGING {#GOPRO_CHARGING}
 
-| Value                        | Name                                                  | Description        |
+| 值                            | Name                                                  | 描述                 |
 | ---------------------------- | ----------------------------------------------------- | ------------------ |
 | <a id='GOPRO_CHARGING_DISABLED'></a>0 | [GOPRO_CHARGING_DISABLED](#GOPRO_CHARGING_DISABLED) | Charging disabled. |
 | <a id='GOPRO_CHARGING_ENABLED'></a>1 | [GOPRO_CHARGING_ENABLED](#GOPRO_CHARGING_ENABLED)   | Charging enabled.  |
 
 ### GOPRO_MODEL {#GOPRO_MODEL}
 
-| Value                        | Name                                                                  | Description                                      |
+| 值                            | Name                                                                  | 描述                                               |
 | ---------------------------- | --------------------------------------------------------------------- | ------------------------------------------------ |
 | <a id='GOPRO_MODEL_UNKNOWN'></a>0 | [GOPRO_MODEL_UNKNOWN](#GOPRO_MODEL_UNKNOWN)                         | Unknown gopro model.                             |
 | <a id='GOPRO_MODEL_HERO_3_PLUS_SILVER'></a>1 | [GOPRO_MODEL_HERO_3_PLUS_SILVER](#GOPRO_MODEL_HERO_3_PLUS_SILVER) | Hero 3+ Silver (HeroBus not supported by GoPro). |
@@ -1240,7 +1240,7 @@ Messages with same value are from the same source (instance). |
 
 ### GOPRO_BURST_RATE {#GOPRO_BURST_RATE}
 
-| Value                        | Name                                                                      | Description                        |
+| 值                            | Name                                                                      | 描述                                 |
 | ---------------------------- | ------------------------------------------------------------------------- | ---------------------------------- |
 | <a id='GOPRO_BURST_RATE_3_IN_1_SECOND'></a>0 | [GOPRO_BURST_RATE_3_IN_1_SECOND](#GOPRO_BURST_RATE_3_IN_1_SECOND)   | 3 Shots / 1 Second.                |
 | <a id='GOPRO_BURST_RATE_5_IN_1_SECOND'></a>1 | [GOPRO_BURST_RATE_5_IN_1_SECOND](#GOPRO_BURST_RATE_5_IN_1_SECOND)   | 5 Shots / 1 Second.                |
@@ -1254,7 +1254,7 @@ Messages with same value are from the same source (instance). |
 
 ### MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL {#MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL}
 
-| Value                        | Name                                                                                              | Description    |
+| 值                            | Name                                                                                              | 描述             |
 | ---------------------------- | ------------------------------------------------------------------------------------------------- | -------------- |
 | <a id='MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_LOW'></a>0 | [MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_LOW](#MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_LOW)       | Switch Low.    |
 | <a id='MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_MIDDLE'></a>1 | [MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_MIDDLE](#MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL_MIDDLE) | Switch Middle. |
@@ -1262,7 +1262,7 @@ Messages with same value are from the same source (instance). |
 
 ### LED_CONTROL_PATTERN {#LED_CONTROL_PATTERN}
 
-| Value                          | Name                                                                        | Description                                                   |
+| 值                              | Name                                                                        | 描述                                                            |
 | ------------------------------ | --------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | <a id='LED_CONTROL_PATTERN_OFF'></a>0   | [LED_CONTROL_PATTERN_OFF](#LED_CONTROL_PATTERN_OFF)                       | LED patterns off (return control to regular vehicle control). |
 | <a id='LED_CONTROL_PATTERN_FIRMWAREUPDATE'></a>1   | [LED_CONTROL_PATTERN_FIRMWAREUPDATE](#LED_CONTROL_PATTERN_FIRMWAREUPDATE) | LEDs show pattern during firmware update.                     |
@@ -1272,7 +1272,7 @@ Messages with same value are from the same source (instance). |
 
 (Bitmask) Flags in [EKF_STATUS](#EKF_STATUS) message.
 
-| Value                           | Name                                                  | Description                                                                            |
+| 值                               | Name                                                  | 描述                                                                                     |
 | ------------------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | <a id='EKF_ATTITUDE'></a>1    | [EKF_ATTITUDE](#EKF_ATTITUDE)                         | Set if EKF's attitude estimate is good.                                                |
 | <a id='EKF_VELOCITY_HORIZ'></a>2    | [EKF_VELOCITY_HORIZ](#EKF_VELOCITY_HORIZ)           | Set if EKF's horizontal velocity estimate is good.                                     |
@@ -1288,20 +1288,20 @@ Messages with same value are from the same source (instance). |
 
 ### PID_TUNING_AXIS {#PID_TUNING_AXIS}
 
-| Value                        | Name                                        | Description |
-| ---------------------------- | ------------------------------------------- | ----------- |
-| <a id='PID_TUNING_ROLL'></a>1 | [PID_TUNING_ROLL](#PID_TUNING_ROLL)       |             |
-| <a id='PID_TUNING_PITCH'></a>2 | [PID_TUNING_PITCH](#PID_TUNING_PITCH)     |             |
-| <a id='PID_TUNING_YAW'></a>3 | [PID_TUNING_YAW](#PID_TUNING_YAW)         |             |
-| <a id='PID_TUNING_ACCZ'></a>4 | [PID_TUNING_ACCZ](#PID_TUNING_ACCZ)       |             |
-| <a id='PID_TUNING_STEER'></a>5 | [PID_TUNING_STEER](#PID_TUNING_STEER)     |             |
-| <a id='PID_TUNING_LANDING'></a>6 | [PID_TUNING_LANDING](#PID_TUNING_LANDING) |             |
+| 值                            | Name                                        | 描述 |
+| ---------------------------- | ------------------------------------------- | -- |
+| <a id='PID_TUNING_ROLL'></a>1 | [PID_TUNING_ROLL](#PID_TUNING_ROLL)       |    |
+| <a id='PID_TUNING_PITCH'></a>2 | [PID_TUNING_PITCH](#PID_TUNING_PITCH)     |    |
+| <a id='PID_TUNING_YAW'></a>3 | [PID_TUNING_YAW](#PID_TUNING_YAW)         |    |
+| <a id='PID_TUNING_ACCZ'></a>4 | [PID_TUNING_ACCZ](#PID_TUNING_ACCZ)       |    |
+| <a id='PID_TUNING_STEER'></a>5 | [PID_TUNING_STEER](#PID_TUNING_STEER)     |    |
+| <a id='PID_TUNING_LANDING'></a>6 | [PID_TUNING_LANDING](#PID_TUNING_LANDING) |    |
 
 ### MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS {#MAV_REMOTE_LOG_DATA_BLOCK_COMMANDS}
 
 Special ACK block numbers control activation of dataflash log streaming.
 
-| Value                                 | Name                                                                    | Description                            |
+| 值                                     | Name                                                                    | 描述                                     |
 | ------------------------------------- | ----------------------------------------------------------------------- | -------------------------------------- |
 | <a id='MAV_REMOTE_LOG_DATA_BLOCK_STOP'></a>2147483645 | [MAV_REMOTE_LOG_DATA_BLOCK_STOP](#MAV_REMOTE_LOG_DATA_BLOCK_STOP)   | UAV to stop sending DataFlash blocks.  |
 | <a id='MAV_REMOTE_LOG_DATA_BLOCK_START'></a>2147483646 | [MAV_REMOTE_LOG_DATA_BLOCK_START](#MAV_REMOTE_LOG_DATA_BLOCK_START) | UAV to start sending DataFlash blocks. |
@@ -1310,7 +1310,7 @@ Special ACK block numbers control activation of dataflash log streaming.
 
 Possible remote log data block statuses.
 
-| Value                        | Name                                                                  | Description                       |
+| 值                            | Name                                                                  | 描述                                |
 | ---------------------------- | --------------------------------------------------------------------- | --------------------------------- |
 | <a id='MAV_REMOTE_LOG_DATA_BLOCK_NACK'></a>0 | [MAV_REMOTE_LOG_DATA_BLOCK_NACK](#MAV_REMOTE_LOG_DATA_BLOCK_NACK) | This block has NOT been received. |
 | <a id='MAV_REMOTE_LOG_DATA_BLOCK_ACK'></a>1 | [MAV_REMOTE_LOG_DATA_BLOCK_ACK](#MAV_REMOTE_LOG_DATA_BLOCK_ACK)   | This block has been received.     |
@@ -1319,7 +1319,7 @@ Possible remote log data block statuses.
 
 Bus types for device operations.
 
-| Value                        | Name                                              | Description           |
+| 值                            | Name                                              | 描述                    |
 | ---------------------------- | ------------------------------------------------- | --------------------- |
 | <a id='DEVICE_OP_BUSTYPE_I2C'></a>0 | [DEVICE_OP_BUSTYPE_I2C](#DEVICE_OP_BUSTYPE_I2C) | I2C Device operation. |
 | <a id='DEVICE_OP_BUSTYPE_SPI'></a>1 | [DEVICE_OP_BUSTYPE_SPI](#DEVICE_OP_BUSTYPE_SPI) | SPI Device operation. |
@@ -1328,7 +1328,7 @@ Bus types for device operations.
 
 Deepstall flight stage.
 
-| Value                        | Name                                                                        | Description                                                        |
+| 值                            | Name                                                                        | 描述                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | <a id='DEEPSTALL_STAGE_FLY_TO_LANDING'></a>0 | [DEEPSTALL_STAGE_FLY_TO_LANDING](#DEEPSTALL_STAGE_FLY_TO_LANDING)       | Flying to the landing point.                                       |
 | <a id='DEEPSTALL_STAGE_ESTIMATE_WIND'></a>1 | [DEEPSTALL_STAGE_ESTIMATE_WIND](#DEEPSTALL_STAGE_ESTIMATE_WIND)           | Building an estimate of the wind.                                  |
@@ -1342,139 +1342,139 @@ Deepstall flight stage.
 
 A mapping of plane flight modes for custom_mode field of heartbeat.
 
-| Value                         | Name                                                      | Description |
-| ----------------------------- | --------------------------------------------------------- | ----------- |
-| <a id='PLANE_MODE_MANUAL'></a>0  | [PLANE_MODE_MANUAL](#PLANE_MODE_MANUAL)                 |             |
-| <a id='PLANE_MODE_CIRCLE'></a>1  | [PLANE_MODE_CIRCLE](#PLANE_MODE_CIRCLE)                 |             |
-| <a id='PLANE_MODE_STABILIZE'></a>2  | [PLANE_MODE_STABILIZE](#PLANE_MODE_STABILIZE)           |             |
-| <a id='PLANE_MODE_TRAINING'></a>3  | [PLANE_MODE_TRAINING](#PLANE_MODE_TRAINING)             |             |
-| <a id='PLANE_MODE_ACRO'></a>4  | [PLANE_MODE_ACRO](#PLANE_MODE_ACRO)                     |             |
-| <a id='PLANE_MODE_FLY_BY_WIRE_A'></a>5  | [PLANE_MODE_FLY_BY_WIRE_A](#PLANE_MODE_FLY_BY_WIRE_A) |             |
-| <a id='PLANE_MODE_FLY_BY_WIRE_B'></a>6  | [PLANE_MODE_FLY_BY_WIRE_B](#PLANE_MODE_FLY_BY_WIRE_B) |             |
-| <a id='PLANE_MODE_CRUISE'></a>7  | [PLANE_MODE_CRUISE](#PLANE_MODE_CRUISE)                 |             |
-| <a id='PLANE_MODE_AUTOTUNE'></a>8  | [PLANE_MODE_AUTOTUNE](#PLANE_MODE_AUTOTUNE)             |             |
-| <a id='PLANE_MODE_AUTO'></a>10 | [PLANE_MODE_AUTO](#PLANE_MODE_AUTO)                     |             |
-| <a id='PLANE_MODE_RTL'></a>11 | [PLANE_MODE_RTL](#PLANE_MODE_RTL)                       |             |
-| <a id='PLANE_MODE_LOITER'></a>12 | [PLANE_MODE_LOITER](#PLANE_MODE_LOITER)                 |             |
-| <a id='PLANE_MODE_TAKEOFF'></a>13 | [PLANE_MODE_TAKEOFF](#PLANE_MODE_TAKEOFF)               |             |
-| <a id='PLANE_MODE_AVOID_ADSB'></a>14 | [PLANE_MODE_AVOID_ADSB](#PLANE_MODE_AVOID_ADSB)         |             |
-| <a id='PLANE_MODE_GUIDED'></a>15 | [PLANE_MODE_GUIDED](#PLANE_MODE_GUIDED)                 |             |
-| <a id='PLANE_MODE_INITIALIZING'></a>16 | [PLANE_MODE_INITIALIZING](#PLANE_MODE_INITIALIZING)     |             |
-| <a id='PLANE_MODE_QSTABILIZE'></a>17 | [PLANE_MODE_QSTABILIZE](#PLANE_MODE_QSTABILIZE)         |             |
-| <a id='PLANE_MODE_QHOVER'></a>18 | [PLANE_MODE_QHOVER](#PLANE_MODE_QHOVER)                 |             |
-| <a id='PLANE_MODE_QLOITER'></a>19 | [PLANE_MODE_QLOITER](#PLANE_MODE_QLOITER)               |             |
-| <a id='PLANE_MODE_QLAND'></a>20 | [PLANE_MODE_QLAND](#PLANE_MODE_QLAND)                   |             |
-| <a id='PLANE_MODE_QRTL'></a>21 | [PLANE_MODE_QRTL](#PLANE_MODE_QRTL)                     |             |
-| <a id='PLANE_MODE_QAUTOTUNE'></a>22 | [PLANE_MODE_QAUTOTUNE](#PLANE_MODE_QAUTOTUNE)           |             |
-| <a id='PLANE_MODE_QACRO'></a>23 | [PLANE_MODE_QACRO](#PLANE_MODE_QACRO)                   |             |
-| <a id='PLANE_MODE_THERMAL'></a>24 | [PLANE_MODE_THERMAL](#PLANE_MODE_THERMAL)               |             |
+| 值                             | Name                                                      | 描述 |
+| ----------------------------- | --------------------------------------------------------- | -- |
+| <a id='PLANE_MODE_MANUAL'></a>0  | [PLANE_MODE_MANUAL](#PLANE_MODE_MANUAL)                 |    |
+| <a id='PLANE_MODE_CIRCLE'></a>1  | [PLANE_MODE_CIRCLE](#PLANE_MODE_CIRCLE)                 |    |
+| <a id='PLANE_MODE_STABILIZE'></a>2  | [PLANE_MODE_STABILIZE](#PLANE_MODE_STABILIZE)           |    |
+| <a id='PLANE_MODE_TRAINING'></a>3  | [PLANE_MODE_TRAINING](#PLANE_MODE_TRAINING)             |    |
+| <a id='PLANE_MODE_ACRO'></a>4  | [PLANE_MODE_ACRO](#PLANE_MODE_ACRO)                     |    |
+| <a id='PLANE_MODE_FLY_BY_WIRE_A'></a>5  | [PLANE_MODE_FLY_BY_WIRE_A](#PLANE_MODE_FLY_BY_WIRE_A) |    |
+| <a id='PLANE_MODE_FLY_BY_WIRE_B'></a>6  | [PLANE_MODE_FLY_BY_WIRE_B](#PLANE_MODE_FLY_BY_WIRE_B) |    |
+| <a id='PLANE_MODE_CRUISE'></a>7  | [PLANE_MODE_CRUISE](#PLANE_MODE_CRUISE)                 |    |
+| <a id='PLANE_MODE_AUTOTUNE'></a>8  | [PLANE_MODE_AUTOTUNE](#PLANE_MODE_AUTOTUNE)             |    |
+| <a id='PLANE_MODE_AUTO'></a>10 | [PLANE_MODE_AUTO](#PLANE_MODE_AUTO)                     |    |
+| <a id='PLANE_MODE_RTL'></a>11 | [PLANE_MODE_RTL](#PLANE_MODE_RTL)                       |    |
+| <a id='PLANE_MODE_LOITER'></a>12 | [PLANE_MODE_LOITER](#PLANE_MODE_LOITER)                 |    |
+| <a id='PLANE_MODE_TAKEOFF'></a>13 | [PLANE_MODE_TAKEOFF](#PLANE_MODE_TAKEOFF)               |    |
+| <a id='PLANE_MODE_AVOID_ADSB'></a>14 | [PLANE_MODE_AVOID_ADSB](#PLANE_MODE_AVOID_ADSB)         |    |
+| <a id='PLANE_MODE_GUIDED'></a>15 | [PLANE_MODE_GUIDED](#PLANE_MODE_GUIDED)                 |    |
+| <a id='PLANE_MODE_INITIALIZING'></a>16 | [PLANE_MODE_INITIALIZING](#PLANE_MODE_INITIALIZING)     |    |
+| <a id='PLANE_MODE_QSTABILIZE'></a>17 | [PLANE_MODE_QSTABILIZE](#PLANE_MODE_QSTABILIZE)         |    |
+| <a id='PLANE_MODE_QHOVER'></a>18 | [PLANE_MODE_QHOVER](#PLANE_MODE_QHOVER)                 |    |
+| <a id='PLANE_MODE_QLOITER'></a>19 | [PLANE_MODE_QLOITER](#PLANE_MODE_QLOITER)               |    |
+| <a id='PLANE_MODE_QLAND'></a>20 | [PLANE_MODE_QLAND](#PLANE_MODE_QLAND)                   |    |
+| <a id='PLANE_MODE_QRTL'></a>21 | [PLANE_MODE_QRTL](#PLANE_MODE_QRTL)                     |    |
+| <a id='PLANE_MODE_QAUTOTUNE'></a>22 | [PLANE_MODE_QAUTOTUNE](#PLANE_MODE_QAUTOTUNE)           |    |
+| <a id='PLANE_MODE_QACRO'></a>23 | [PLANE_MODE_QACRO](#PLANE_MODE_QACRO)                   |    |
+| <a id='PLANE_MODE_THERMAL'></a>24 | [PLANE_MODE_THERMAL](#PLANE_MODE_THERMAL)               |    |
 
 ### COPTER_MODE {#COPTER_MODE}
 
 A mapping of copter flight modes for custom_mode field of heartbeat.
 
-| Value                         | Name                                                    | Description |
-| ----------------------------- | ------------------------------------------------------- | ----------- |
-| <a id='COPTER_MODE_STABILIZE'></a>0  | [COPTER_MODE_STABILIZE](#COPTER_MODE_STABILIZE)       |             |
-| <a id='COPTER_MODE_ACRO'></a>1  | [COPTER_MODE_ACRO](#COPTER_MODE_ACRO)                 |             |
-| <a id='COPTER_MODE_ALT_HOLD'></a>2  | [COPTER_MODE_ALT_HOLD](#COPTER_MODE_ALT_HOLD)         |             |
-| <a id='COPTER_MODE_AUTO'></a>3  | [COPTER_MODE_AUTO](#COPTER_MODE_AUTO)                 |             |
-| <a id='COPTER_MODE_GUIDED'></a>4  | [COPTER_MODE_GUIDED](#COPTER_MODE_GUIDED)             |             |
-| <a id='COPTER_MODE_LOITER'></a>5  | [COPTER_MODE_LOITER](#COPTER_MODE_LOITER)             |             |
-| <a id='COPTER_MODE_RTL'></a>6  | [COPTER_MODE_RTL](#COPTER_MODE_RTL)                   |             |
-| <a id='COPTER_MODE_CIRCLE'></a>7  | [COPTER_MODE_CIRCLE](#COPTER_MODE_CIRCLE)             |             |
-| <a id='COPTER_MODE_LAND'></a>9  | [COPTER_MODE_LAND](#COPTER_MODE_LAND)                 |             |
-| <a id='COPTER_MODE_DRIFT'></a>11 | [COPTER_MODE_DRIFT](#COPTER_MODE_DRIFT)               |             |
-| <a id='COPTER_MODE_SPORT'></a>13 | [COPTER_MODE_SPORT](#COPTER_MODE_SPORT)               |             |
-| <a id='COPTER_MODE_FLIP'></a>14 | [COPTER_MODE_FLIP](#COPTER_MODE_FLIP)                 |             |
-| <a id='COPTER_MODE_AUTOTUNE'></a>15 | [COPTER_MODE_AUTOTUNE](#COPTER_MODE_AUTOTUNE)         |             |
-| <a id='COPTER_MODE_POSHOLD'></a>16 | [COPTER_MODE_POSHOLD](#COPTER_MODE_POSHOLD)           |             |
-| <a id='COPTER_MODE_BRAKE'></a>17 | [COPTER_MODE_BRAKE](#COPTER_MODE_BRAKE)               |             |
-| <a id='COPTER_MODE_THROW'></a>18 | [COPTER_MODE_THROW](#COPTER_MODE_THROW)               |             |
-| <a id='COPTER_MODE_AVOID_ADSB'></a>19 | [COPTER_MODE_AVOID_ADSB](#COPTER_MODE_AVOID_ADSB)     |             |
-| <a id='COPTER_MODE_GUIDED_NOGPS'></a>20 | [COPTER_MODE_GUIDED_NOGPS](#COPTER_MODE_GUIDED_NOGPS) |             |
-| <a id='COPTER_MODE_SMART_RTL'></a>21 | [COPTER_MODE_SMART_RTL](#COPTER_MODE_SMART_RTL)       |             |
-| <a id='COPTER_MODE_FLOWHOLD'></a>22 | [COPTER_MODE_FLOWHOLD](#COPTER_MODE_FLOWHOLD)         |             |
-| <a id='COPTER_MODE_FOLLOW'></a>23 | [COPTER_MODE_FOLLOW](#COPTER_MODE_FOLLOW)             |             |
-| <a id='COPTER_MODE_ZIGZAG'></a>24 | [COPTER_MODE_ZIGZAG](#COPTER_MODE_ZIGZAG)             |             |
-| <a id='COPTER_MODE_SYSTEMID'></a>25 | [COPTER_MODE_SYSTEMID](#COPTER_MODE_SYSTEMID)         |             |
-| <a id='COPTER_MODE_AUTOROTATE'></a>26 | [COPTER_MODE_AUTOROTATE](#COPTER_MODE_AUTOROTATE)     |             |
-| <a id='COPTER_MODE_AUTO_RTL'></a>27 | [COPTER_MODE_AUTO_RTL](#COPTER_MODE_AUTO_RTL)         |             |
+| 值                             | Name                                                    | 描述 |
+| ----------------------------- | ------------------------------------------------------- | -- |
+| <a id='COPTER_MODE_STABILIZE'></a>0  | [COPTER_MODE_STABILIZE](#COPTER_MODE_STABILIZE)       |    |
+| <a id='COPTER_MODE_ACRO'></a>1  | [COPTER_MODE_ACRO](#COPTER_MODE_ACRO)                 |    |
+| <a id='COPTER_MODE_ALT_HOLD'></a>2  | [COPTER_MODE_ALT_HOLD](#COPTER_MODE_ALT_HOLD)         |    |
+| <a id='COPTER_MODE_AUTO'></a>3  | [COPTER_MODE_AUTO](#COPTER_MODE_AUTO)                 |    |
+| <a id='COPTER_MODE_GUIDED'></a>4  | [COPTER_MODE_GUIDED](#COPTER_MODE_GUIDED)             |    |
+| <a id='COPTER_MODE_LOITER'></a>5  | [COPTER_MODE_LOITER](#COPTER_MODE_LOITER)             |    |
+| <a id='COPTER_MODE_RTL'></a>6  | [COPTER_MODE_RTL](#COPTER_MODE_RTL)                   |    |
+| <a id='COPTER_MODE_CIRCLE'></a>7  | [COPTER_MODE_CIRCLE](#COPTER_MODE_CIRCLE)             |    |
+| <a id='COPTER_MODE_LAND'></a>9  | [COPTER_MODE_LAND](#COPTER_MODE_LAND)                 |    |
+| <a id='COPTER_MODE_DRIFT'></a>11 | [COPTER_MODE_DRIFT](#COPTER_MODE_DRIFT)               |    |
+| <a id='COPTER_MODE_SPORT'></a>13 | [COPTER_MODE_SPORT](#COPTER_MODE_SPORT)               |    |
+| <a id='COPTER_MODE_FLIP'></a>14 | [COPTER_MODE_FLIP](#COPTER_MODE_FLIP)                 |    |
+| <a id='COPTER_MODE_AUTOTUNE'></a>15 | [COPTER_MODE_AUTOTUNE](#COPTER_MODE_AUTOTUNE)         |    |
+| <a id='COPTER_MODE_POSHOLD'></a>16 | [COPTER_MODE_POSHOLD](#COPTER_MODE_POSHOLD)           |    |
+| <a id='COPTER_MODE_BRAKE'></a>17 | [COPTER_MODE_BRAKE](#COPTER_MODE_BRAKE)               |    |
+| <a id='COPTER_MODE_THROW'></a>18 | [COPTER_MODE_THROW](#COPTER_MODE_THROW)               |    |
+| <a id='COPTER_MODE_AVOID_ADSB'></a>19 | [COPTER_MODE_AVOID_ADSB](#COPTER_MODE_AVOID_ADSB)     |    |
+| <a id='COPTER_MODE_GUIDED_NOGPS'></a>20 | [COPTER_MODE_GUIDED_NOGPS](#COPTER_MODE_GUIDED_NOGPS) |    |
+| <a id='COPTER_MODE_SMART_RTL'></a>21 | [COPTER_MODE_SMART_RTL](#COPTER_MODE_SMART_RTL)       |    |
+| <a id='COPTER_MODE_FLOWHOLD'></a>22 | [COPTER_MODE_FLOWHOLD](#COPTER_MODE_FLOWHOLD)         |    |
+| <a id='COPTER_MODE_FOLLOW'></a>23 | [COPTER_MODE_FOLLOW](#COPTER_MODE_FOLLOW)             |    |
+| <a id='COPTER_MODE_ZIGZAG'></a>24 | [COPTER_MODE_ZIGZAG](#COPTER_MODE_ZIGZAG)             |    |
+| <a id='COPTER_MODE_SYSTEMID'></a>25 | [COPTER_MODE_SYSTEMID](#COPTER_MODE_SYSTEMID)         |    |
+| <a id='COPTER_MODE_AUTOROTATE'></a>26 | [COPTER_MODE_AUTOROTATE](#COPTER_MODE_AUTOROTATE)     |    |
+| <a id='COPTER_MODE_AUTO_RTL'></a>27 | [COPTER_MODE_AUTO_RTL](#COPTER_MODE_AUTO_RTL)         |    |
 
 ### SUB_MODE {#SUB_MODE}
 
 A mapping of sub flight modes for custom_mode field of heartbeat.
 
-| Value                         | Name                                        | Description |
-| ----------------------------- | ------------------------------------------- | ----------- |
-| <a id='SUB_MODE_STABILIZE'></a>0  | [SUB_MODE_STABILIZE](#SUB_MODE_STABILIZE) |             |
-| <a id='SUB_MODE_ACRO'></a>1  | [SUB_MODE_ACRO](#SUB_MODE_ACRO)           |             |
-| <a id='SUB_MODE_ALT_HOLD'></a>2  | [SUB_MODE_ALT_HOLD](#SUB_MODE_ALT_HOLD)   |             |
-| <a id='SUB_MODE_AUTO'></a>3  | [SUB_MODE_AUTO](#SUB_MODE_AUTO)           |             |
-| <a id='SUB_MODE_GUIDED'></a>4  | [SUB_MODE_GUIDED](#SUB_MODE_GUIDED)       |             |
-| <a id='SUB_MODE_CIRCLE'></a>7  | [SUB_MODE_CIRCLE](#SUB_MODE_CIRCLE)       |             |
-| <a id='SUB_MODE_SURFACE'></a>9  | [SUB_MODE_SURFACE](#SUB_MODE_SURFACE)     |             |
-| <a id='SUB_MODE_POSHOLD'></a>16 | [SUB_MODE_POSHOLD](#SUB_MODE_POSHOLD)     |             |
-| <a id='SUB_MODE_MANUAL'></a>19 | [SUB_MODE_MANUAL](#SUB_MODE_MANUAL)       |             |
+| 值                             | Name                                        | 描述 |
+| ----------------------------- | ------------------------------------------- | -- |
+| <a id='SUB_MODE_STABILIZE'></a>0  | [SUB_MODE_STABILIZE](#SUB_MODE_STABILIZE) |    |
+| <a id='SUB_MODE_ACRO'></a>1  | [SUB_MODE_ACRO](#SUB_MODE_ACRO)           |    |
+| <a id='SUB_MODE_ALT_HOLD'></a>2  | [SUB_MODE_ALT_HOLD](#SUB_MODE_ALT_HOLD)   |    |
+| <a id='SUB_MODE_AUTO'></a>3  | [SUB_MODE_AUTO](#SUB_MODE_AUTO)           |    |
+| <a id='SUB_MODE_GUIDED'></a>4  | [SUB_MODE_GUIDED](#SUB_MODE_GUIDED)       |    |
+| <a id='SUB_MODE_CIRCLE'></a>7  | [SUB_MODE_CIRCLE](#SUB_MODE_CIRCLE)       |    |
+| <a id='SUB_MODE_SURFACE'></a>9  | [SUB_MODE_SURFACE](#SUB_MODE_SURFACE)     |    |
+| <a id='SUB_MODE_POSHOLD'></a>16 | [SUB_MODE_POSHOLD](#SUB_MODE_POSHOLD)     |    |
+| <a id='SUB_MODE_MANUAL'></a>19 | [SUB_MODE_MANUAL](#SUB_MODE_MANUAL)       |    |
 
 ### ROVER_MODE {#ROVER_MODE}
 
 A mapping of rover flight modes for custom_mode field of heartbeat.
 
-| Value                         | Name                                                  | Description |
-| ----------------------------- | ----------------------------------------------------- | ----------- |
-| <a id='ROVER_MODE_MANUAL'></a>0  | [ROVER_MODE_MANUAL](#ROVER_MODE_MANUAL)             |             |
-| <a id='ROVER_MODE_ACRO'></a>1  | [ROVER_MODE_ACRO](#ROVER_MODE_ACRO)                 |             |
-| <a id='ROVER_MODE_STEERING'></a>3  | [ROVER_MODE_STEERING](#ROVER_MODE_STEERING)         |             |
-| <a id='ROVER_MODE_HOLD'></a>4  | [ROVER_MODE_HOLD](#ROVER_MODE_HOLD)                 |             |
-| <a id='ROVER_MODE_LOITER'></a>5  | [ROVER_MODE_LOITER](#ROVER_MODE_LOITER)             |             |
-| <a id='ROVER_MODE_FOLLOW'></a>6  | [ROVER_MODE_FOLLOW](#ROVER_MODE_FOLLOW)             |             |
-| <a id='ROVER_MODE_SIMPLE'></a>7  | [ROVER_MODE_SIMPLE](#ROVER_MODE_SIMPLE)             |             |
-| <a id='ROVER_MODE_AUTO'></a>10 | [ROVER_MODE_AUTO](#ROVER_MODE_AUTO)                 |             |
-| <a id='ROVER_MODE_RTL'></a>11 | [ROVER_MODE_RTL](#ROVER_MODE_RTL)                   |             |
-| <a id='ROVER_MODE_SMART_RTL'></a>12 | [ROVER_MODE_SMART_RTL](#ROVER_MODE_SMART_RTL)       |             |
-| <a id='ROVER_MODE_GUIDED'></a>15 | [ROVER_MODE_GUIDED](#ROVER_MODE_GUIDED)             |             |
-| <a id='ROVER_MODE_INITIALIZING'></a>16 | [ROVER_MODE_INITIALIZING](#ROVER_MODE_INITIALIZING) |             |
+| 值                             | Name                                                  | 描述 |
+| ----------------------------- | ----------------------------------------------------- | -- |
+| <a id='ROVER_MODE_MANUAL'></a>0  | [ROVER_MODE_MANUAL](#ROVER_MODE_MANUAL)             |    |
+| <a id='ROVER_MODE_ACRO'></a>1  | [ROVER_MODE_ACRO](#ROVER_MODE_ACRO)                 |    |
+| <a id='ROVER_MODE_STEERING'></a>3  | [ROVER_MODE_STEERING](#ROVER_MODE_STEERING)         |    |
+| <a id='ROVER_MODE_HOLD'></a>4  | [ROVER_MODE_HOLD](#ROVER_MODE_HOLD)                 |    |
+| <a id='ROVER_MODE_LOITER'></a>5  | [ROVER_MODE_LOITER](#ROVER_MODE_LOITER)             |    |
+| <a id='ROVER_MODE_FOLLOW'></a>6  | [ROVER_MODE_FOLLOW](#ROVER_MODE_FOLLOW)             |    |
+| <a id='ROVER_MODE_SIMPLE'></a>7  | [ROVER_MODE_SIMPLE](#ROVER_MODE_SIMPLE)             |    |
+| <a id='ROVER_MODE_AUTO'></a>10 | [ROVER_MODE_AUTO](#ROVER_MODE_AUTO)                 |    |
+| <a id='ROVER_MODE_RTL'></a>11 | [ROVER_MODE_RTL](#ROVER_MODE_RTL)                   |    |
+| <a id='ROVER_MODE_SMART_RTL'></a>12 | [ROVER_MODE_SMART_RTL](#ROVER_MODE_SMART_RTL)       |    |
+| <a id='ROVER_MODE_GUIDED'></a>15 | [ROVER_MODE_GUIDED](#ROVER_MODE_GUIDED)             |    |
+| <a id='ROVER_MODE_INITIALIZING'></a>16 | [ROVER_MODE_INITIALIZING](#ROVER_MODE_INITIALIZING) |    |
 
 ### TRACKER_MODE {#TRACKER_MODE}
 
 A mapping of antenna tracker flight modes for custom_mode field of heartbeat.
 
-| Value                         | Name                                                      | Description |
-| ----------------------------- | --------------------------------------------------------- | ----------- |
-| <a id='TRACKER_MODE_MANUAL'></a>0  | [TRACKER_MODE_MANUAL](#TRACKER_MODE_MANUAL)             |             |
-| <a id='TRACKER_MODE_STOP'></a>1  | [TRACKER_MODE_STOP](#TRACKER_MODE_STOP)                 |             |
-| <a id='TRACKER_MODE_SCAN'></a>2  | [TRACKER_MODE_SCAN](#TRACKER_MODE_SCAN)                 |             |
-| <a id='TRACKER_MODE_SERVO_TEST'></a>3  | [TRACKER_MODE_SERVO_TEST](#TRACKER_MODE_SERVO_TEST)     |             |
-| <a id='TRACKER_MODE_AUTO'></a>10 | [TRACKER_MODE_AUTO](#TRACKER_MODE_AUTO)                 |             |
-| <a id='TRACKER_MODE_INITIALIZING'></a>16 | [TRACKER_MODE_INITIALIZING](#TRACKER_MODE_INITIALIZING) |             |
+| 值                             | Name                                                      | 描述 |
+| ----------------------------- | --------------------------------------------------------- | -- |
+| <a id='TRACKER_MODE_MANUAL'></a>0  | [TRACKER_MODE_MANUAL](#TRACKER_MODE_MANUAL)             |    |
+| <a id='TRACKER_MODE_STOP'></a>1  | [TRACKER_MODE_STOP](#TRACKER_MODE_STOP)                 |    |
+| <a id='TRACKER_MODE_SCAN'></a>2  | [TRACKER_MODE_SCAN](#TRACKER_MODE_SCAN)                 |    |
+| <a id='TRACKER_MODE_SERVO_TEST'></a>3  | [TRACKER_MODE_SERVO_TEST](#TRACKER_MODE_SERVO_TEST)     |    |
+| <a id='TRACKER_MODE_AUTO'></a>10 | [TRACKER_MODE_AUTO](#TRACKER_MODE_AUTO)                 |    |
+| <a id='TRACKER_MODE_INITIALIZING'></a>16 | [TRACKER_MODE_INITIALIZING](#TRACKER_MODE_INITIALIZING) |    |
 
 ### OSD_PARAM_CONFIG_TYPE {#OSD_PARAM_CONFIG_TYPE}
 
 The type of parameter for the OSD parameter editor.
 
-| Value                        | Name                                                            | Description |
-| ---------------------------- | --------------------------------------------------------------- | ----------- |
-| <a id='OSD_PARAM_NONE'></a>0 | [OSD_PARAM_NONE](#OSD_PARAM_NONE)                             |             |
-| <a id='OSD_PARAM_SERIAL_PROTOCOL'></a>1 | [OSD_PARAM_SERIAL_PROTOCOL](#OSD_PARAM_SERIAL_PROTOCOL)       |             |
-| <a id='OSD_PARAM_SERVO_FUNCTION'></a>2 | [OSD_PARAM_SERVO_FUNCTION](#OSD_PARAM_SERVO_FUNCTION)         |             |
-| <a id='OSD_PARAM_AUX_FUNCTION'></a>3 | [OSD_PARAM_AUX_FUNCTION](#OSD_PARAM_AUX_FUNCTION)             |             |
-| <a id='OSD_PARAM_FLIGHT_MODE'></a>4 | [OSD_PARAM_FLIGHT_MODE](#OSD_PARAM_FLIGHT_MODE)               |             |
-| <a id='OSD_PARAM_FAILSAFE_ACTION'></a>5 | [OSD_PARAM_FAILSAFE_ACTION](#OSD_PARAM_FAILSAFE_ACTION)       |             |
-| <a id='OSD_PARAM_FAILSAFE_ACTION_1'></a>6 | [OSD_PARAM_FAILSAFE_ACTION_1](#OSD_PARAM_FAILSAFE_ACTION_1) |             |
-| <a id='OSD_PARAM_FAILSAFE_ACTION_2'></a>7 | [OSD_PARAM_FAILSAFE_ACTION_2](#OSD_PARAM_FAILSAFE_ACTION_2) |             |
-| <a id='OSD_PARAM_NUM_TYPES'></a>8 | [OSD_PARAM_NUM_TYPES](#OSD_PARAM_NUM_TYPES)                   |             |
+| 值                            | Name                                                            | 描述 |
+| ---------------------------- | --------------------------------------------------------------- | -- |
+| <a id='OSD_PARAM_NONE'></a>0 | [OSD_PARAM_NONE](#OSD_PARAM_NONE)                             |    |
+| <a id='OSD_PARAM_SERIAL_PROTOCOL'></a>1 | [OSD_PARAM_SERIAL_PROTOCOL](#OSD_PARAM_SERIAL_PROTOCOL)       |    |
+| <a id='OSD_PARAM_SERVO_FUNCTION'></a>2 | [OSD_PARAM_SERVO_FUNCTION](#OSD_PARAM_SERVO_FUNCTION)         |    |
+| <a id='OSD_PARAM_AUX_FUNCTION'></a>3 | [OSD_PARAM_AUX_FUNCTION](#OSD_PARAM_AUX_FUNCTION)             |    |
+| <a id='OSD_PARAM_FLIGHT_MODE'></a>4 | [OSD_PARAM_FLIGHT_MODE](#OSD_PARAM_FLIGHT_MODE)               |    |
+| <a id='OSD_PARAM_FAILSAFE_ACTION'></a>5 | [OSD_PARAM_FAILSAFE_ACTION](#OSD_PARAM_FAILSAFE_ACTION)       |    |
+| <a id='OSD_PARAM_FAILSAFE_ACTION_1'></a>6 | [OSD_PARAM_FAILSAFE_ACTION_1](#OSD_PARAM_FAILSAFE_ACTION_1) |    |
+| <a id='OSD_PARAM_FAILSAFE_ACTION_2'></a>7 | [OSD_PARAM_FAILSAFE_ACTION_2](#OSD_PARAM_FAILSAFE_ACTION_2) |    |
+| <a id='OSD_PARAM_NUM_TYPES'></a>8 | [OSD_PARAM_NUM_TYPES](#OSD_PARAM_NUM_TYPES)                   |    |
 
 ### OSD_PARAM_CONFIG_ERROR {#OSD_PARAM_CONFIG_ERROR}
 
 The error type for the OSD parameter editor.
 
-| Value                        | Name                                                                        | Description |
-| ---------------------------- | --------------------------------------------------------------------------- | ----------- |
-| <a id='OSD_PARAM_SUCCESS'></a>0 | [OSD_PARAM_SUCCESS](#OSD_PARAM_SUCCESS)                                   |             |
-| <a id='OSD_PARAM_INVALID_SCREEN'></a>1 | [OSD_PARAM_INVALID_SCREEN](#OSD_PARAM_INVALID_SCREEN)                     |             |
-| <a id='OSD_PARAM_INVALID_PARAMETER_INDEX'></a>2 | [OSD_PARAM_INVALID_PARAMETER_INDEX](#OSD_PARAM_INVALID_PARAMETER_INDEX) |             |
-| <a id='OSD_PARAM_INVALID_PARAMETER'></a>3 | [OSD_PARAM_INVALID_PARAMETER](#OSD_PARAM_INVALID_PARAMETER)               |             |
+| 值                            | Name                                                                        | 描述 |
+| ---------------------------- | --------------------------------------------------------------------------- | -- |
+| <a id='OSD_PARAM_SUCCESS'></a>0 | [OSD_PARAM_SUCCESS](#OSD_PARAM_SUCCESS)                                   |    |
+| <a id='OSD_PARAM_INVALID_SCREEN'></a>1 | [OSD_PARAM_INVALID_SCREEN](#OSD_PARAM_INVALID_SCREEN)                     |    |
+| <a id='OSD_PARAM_INVALID_PARAMETER_INDEX'></a>2 | [OSD_PARAM_INVALID_PARAMETER_INDEX](#OSD_PARAM_INVALID_PARAMETER_INDEX) |    |
+| <a id='OSD_PARAM_INVALID_PARAMETER'></a>3 | [OSD_PARAM_INVALID_PARAMETER](#OSD_PARAM_INVALID_PARAMETER)               |    |
 
 ## Commands (MAV_CMD) {#mav_commands}
 
@@ -1482,7 +1482,7 @@ The error type for the OSD parameter editor.
 
 Mission command to wait for an altitude or downwards vertical speed. This is meant for high altitude balloon launches, allowing the aircraft to be idle until either an altitude is reached or a negative vertical speed is reached (indicating early balloon burst). The wiggle time is how often to wiggle the control surfaces to prevent them seizing up.
 
-| Param (Label)     | Description                                                         | Units |
+| Param (Label)     | 描述                                                                  | Units |
 | ----------------- | ------------------------------------------------------------------- | ----- |
 | 1 (Altitude)      | Altitude.                                                           | m     |
 | 2 (Descent Speed) | Descent speed.                                                      | m/s   |
@@ -1496,21 +1496,21 @@ Mission command to wait for an altitude or downwards vertical speed. This is mea
 
 Set the distance to be repeated on mission resume
 
-| Param (Label) | Description | Units |
-| ------------- | ----------- | ----- |
-| 1 (Distance)  | Distance.   | m     |
-| 2             | Empty.      |       |
-| 3             | Empty.      |       |
-| 4             | Empty.      |       |
-| 5             | Empty.      |       |
-| 6             | Empty.      |       |
-| 7             | Empty.      |       |
+| Param (Label) | 描述        | Units |
+| ------------- | --------- | ----- |
+| 1 (Distance)  | Distance. | m     |
+| 2             | Empty.    |       |
+| 3             | Empty.    |       |
+| 4             | Empty.    |       |
+| 5             | Empty.    |       |
+| 6             | Empty.    |       |
+| 7             | Empty.    |       |
 
 ### MAV_CMD_DO_SPRAYER (216) {#MAV_CMD_DO_SPRAYER}
 
 Control attached liquid sprayer
 
-| Param (Label)      | Description                            | Values               |
+| Param (Label)      | 描述                                     | 值                    |
 | ------------------ | -------------------------------------- | -------------------- |
 | 1 (Sprayer Enable) | 0: disable sprayer. 1: enable sprayer. | min: 0 max: 1 inc: 1 |
 | 2                  | Empty.                                 |                      |
@@ -1524,7 +1524,7 @@ Control attached liquid sprayer
 
 Pass instructions onto scripting, a script should be checking for a new command
 
-| Param (Label) | Description                               | Values                   |
+| Param (Label) | 描述                                        | 值                        |
 | ------------- | ----------------------------------------- | ------------------------ |
 | 1 (ID)        | uint16 ID value to be passed to scripting | min: 0 max: 65535 inc: 1 |
 | 2 (param 1)   | float value to be passed to scripting     |                          |
@@ -1538,7 +1538,7 @@ Pass instructions onto scripting, a script should be checking for a new command
 
 Execute auxiliary function
 
-| Param (Label)         | Description         | Values                                                                              |
+| Param (Label)         | 描述                  | 值                                                                                   |
 | --------------------- | ------------------- | ----------------------------------------------------------------------------------- |
 | 1 (AuxiliaryFunction) | Auxiliary Function. |                                                                                     |
 | 2 (SwitchPosition)    | Switch Level.       | [MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL](#MAV_CMD_DO_AUX_FUNCTION_SWITCH_LEVEL) |
@@ -1552,35 +1552,35 @@ Execute auxiliary function
 
 A system wide power-off event has been initiated.
 
-| Param (Label) | Description |
-| ------------- | ----------- |
-| 1             | Empty.      |
-| 2             | Empty.      |
-| 3             | Empty.      |
-| 4             | Empty.      |
-| 5             | Empty.      |
-| 6             | Empty.      |
-| 7             | Empty.      |
+| Param (Label) | 描述     |
+| ------------- | ------ |
+| 1             | Empty. |
+| 2             | Empty. |
+| 3             | Empty. |
+| 4             | Empty. |
+| 5             | Empty. |
+| 6             | Empty. |
+| 7             | Empty. |
 
 ### MAV_CMD_SOLO_BTN_FLY_CLICK (42001) {#MAV_CMD_SOLO_BTN_FLY_CLICK}
 
 FLY button has been clicked.
 
-| Param (Label) | Description |
-| ------------- | ----------- |
-| 1             | Empty.      |
-| 2             | Empty.      |
-| 3             | Empty.      |
-| 4             | Empty.      |
-| 5             | Empty.      |
-| 6             | Empty.      |
-| 7             | Empty.      |
+| Param (Label) | 描述     |
+| ------------- | ------ |
+| 1             | Empty. |
+| 2             | Empty. |
+| 3             | Empty. |
+| 4             | Empty. |
+| 5             | Empty. |
+| 6             | Empty. |
+| 7             | Empty. |
 
 ### MAV_CMD_SOLO_BTN_FLY_HOLD (42002) {#MAV_CMD_SOLO_BTN_FLY_HOLD}
 
 FLY button has been held for 1.5 seconds.
 
-| Param (Label)        | Description       | Units |
+| Param (Label)        | 描述                | Units |
 | -------------------- | ----------------- | ----- |
 | 1 (Takeoff Altitude) | Takeoff altitude. | m     |
 | 2                    | Empty.            |       |
@@ -1594,7 +1594,7 @@ FLY button has been held for 1.5 seconds.
 
 PAUSE button has been clicked.
 
-| Param (Label) | Description                               | Values               |
+| Param (Label) | 描述                                        | 值                    |
 | ------------- | ----------------------------------------- | -------------------- |
 | 1 (Shot Mode) | 1 if Solo is in a shot mode, 0 otherwise. | min: 0 max: 1 inc: 1 |
 | 2             | Empty.                                    |                      |
@@ -1610,12 +1610,12 @@ Magnetometer calibration based on fixed position
 
 in earth field given by inclination, declination and intensity.
 
-| Param (Label)   | Description           | Units  |
+| Param (Label)   | 描述                    | Units  |
 | --------------- | --------------------- | ------ |
-| 1 (Declination) | Magnetic declination. | deg    |
-| 2 (Inclination) | Magnetic inclination. | deg    |
+| 1 (Declination) | Magnetic declination. | 度      |
+| 2 (Inclination) | Magnetic inclination. | 度      |
 | 3 (Intensity)   | Magnetic intensity.   | mgauss |
-| 4 (Yaw)         | Yaw.                  | deg    |
+| 4 (Yaw)         | Yaw.                  | 度      |
 | 5               | Empty.                |        |
 | 6               | Empty.                |        |
 | 7               | Empty.                |        |
@@ -1624,7 +1624,7 @@ in earth field given by inclination, declination and intensity.
 
 Magnetometer calibration based on fixed expected field values.
 
-| Param (Label) | Description       | Units  |
+| Param (Label) | 描述                | Units  |
 | ------------- | ----------------- | ------ |
 | 1 (Field X)   | Field strength X. | mgauss |
 | 2 (Field Y)   | Field strength Y. | mgauss |
@@ -1638,7 +1638,7 @@ Magnetometer calibration based on fixed expected field values.
 
 Set EKF sensor source set.
 
-| Param (Label)   | Description    | Values               |
+| Param (Label)   | 描述             | 值                    |
 | --------------- | -------------- | -------------------- |
 | 1 (SourceSetId) | Source Set Id. | min: 1 max: 3 inc: 1 |
 | 2               | Empty.         |                      |
@@ -1652,7 +1652,7 @@ Set EKF sensor source set.
 
 Initiate a magnetometer calibration.
 
-| Param (Label)             | Description                                                                                                                                                                                                                                           | Values                 | Units |
+| Param (Label)             | 描述                                                                                                                                                                                                                                                    | 值                      | Units |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----- |
 | 1 (Magnetometers Bitmask) | Bitmask of magnetometers to calibrate. Use 0 to calibrate all sensors that can be started (sensors may not start if disabled, unhealthy, etc.). The command will NACK if calibration does not start for a sensor explicitly specified by the bitmask. | min: 0 max: 255 inc: 1 |       |
 | 2 (Retry on Failure)      | Automatically retry on failure (0=no retry, 1=retry).                                                                                                                                                                                                 | min: 0 max: 1 inc: 1   |       |
@@ -1666,7 +1666,7 @@ Initiate a magnetometer calibration.
 
 Accept a magnetometer calibration.
 
-| Param (Label)             | Description                                                          | Values                 |
+| Param (Label)             | 描述                                                                   | 值                      |
 | ------------------------- | -------------------------------------------------------------------- | ---------------------- |
 | 1 (Magnetometers Bitmask) | Bitmask of magnetometers that calibration is accepted (0 means all). | min: 0 max: 255 inc: 1 |
 | 2                         | Empty.                                                               |                        |
@@ -1680,7 +1680,7 @@ Accept a magnetometer calibration.
 
 Cancel a running magnetometer calibration.
 
-| Param (Label)             | Description                                                             | Values                 |
+| Param (Label)             | 描述                                                                      | 值                      |
 | ------------------------- | ----------------------------------------------------------------------- | ---------------------- |
 | 1 (Magnetometers Bitmask) | Bitmask of magnetometers to cancel a running calibration (0 means all). | min: 0 max: 255 inc: 1 |
 | 2                         | Empty.                                                                  |                        |
@@ -1694,7 +1694,7 @@ Cancel a running magnetometer calibration.
 
 Command autopilot to get into factory test/diagnostic mode.
 
-| Param (Label) | Description                               | Values               |
+| Param (Label) | 描述                                        | 值                    |
 | ------------- | ----------------------------------------- | -------------------- |
 | 1 (Test Mode) | 0: activate test mode, 1: exit test mode. | min: 0 max: 1 inc: 1 |
 | 2             | Empty.                                    |                      |
@@ -1708,49 +1708,49 @@ Command autopilot to get into factory test/diagnostic mode.
 
 Reply with the version banner.
 
-| Param (Label) | Description |
-| ------------- | ----------- |
-| 1             | Empty.      |
-| 2             | Empty.      |
-| 3             | Empty.      |
-| 4             | Empty.      |
-| 5             | Empty.      |
-| 6             | Empty.      |
-| 7             | Empty.      |
+| Param (Label) | 描述     |
+| ------------- | ------ |
+| 1             | Empty. |
+| 2             | Empty. |
+| 3             | Empty. |
+| 4             | Empty. |
+| 5             | Empty. |
+| 6             | Empty. |
+| 7             | Empty. |
 
 ### MAV_CMD_ACCELCAL_VEHICLE_POS (42429) {#MAV_CMD_ACCELCAL_VEHICLE_POS}
 
 Used when doing accelerometer calibration. When sent to the GCS tells it what position to put the vehicle in. When sent to the vehicle says what position the vehicle is in.
 
-| Param (Label) | Description | Values                                          |
-| ------------- | ----------- | ----------------------------------------------- |
-| 1 (Position)  | Position.   | [ACCELCAL_VEHICLE_POS](#ACCELCAL_VEHICLE_POS) |
-| 2             | Empty.      |                                                 |
-| 3             | Empty.      |                                                 |
-| 4             | Empty.      |                                                 |
-| 5             | Empty.      |                                                 |
-| 6             | Empty.      |                                                 |
-| 7             | Empty.      |                                                 |
+| Param (Label) | 描述        | 值                                               |
+| ------------- | --------- | ----------------------------------------------- |
+| 1 (Position)  | Position. | [ACCELCAL_VEHICLE_POS](#ACCELCAL_VEHICLE_POS) |
+| 2             | Empty.    |                                                 |
+| 3             | Empty.    |                                                 |
+| 4             | Empty.    |                                                 |
+| 5             | Empty.    |                                                 |
+| 6             | Empty.    |                                                 |
+| 7             | Empty.    |                                                 |
 
 ### MAV_CMD_GIMBAL_RESET (42501) {#MAV_CMD_GIMBAL_RESET}
 
 Causes the gimbal to reset and boot as if it was just powered on.
 
-| Param (Label) | Description |
-| ------------- | ----------- |
-| 1             | Empty.      |
-| 2             | Empty.      |
-| 3             | Empty.      |
-| 4             | Empty.      |
-| 5             | Empty.      |
-| 6             | Empty.      |
-| 7             | Empty.      |
+| Param (Label) | 描述     |
+| ------------- | ------ |
+| 1             | Empty. |
+| 2             | Empty. |
+| 3             | Empty. |
+| 4             | Empty. |
+| 5             | Empty. |
+| 6             | Empty. |
+| 7             | Empty. |
 
 ### MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS (42502) {#MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS}
 
 Reports progress and success or failure of gimbal axis calibration procedure.
 
-| Param (Label) | Description                                           | Values                                                              | Units |
+| Param (Label) | 描述                                                    | 值                                                                   | Units |
 | ------------- | ----------------------------------------------------- | ------------------------------------------------------------------- | ----- |
 | 1 (Axis)      | Gimbal axis we're reporting calibration progress for. | [GIMBAL_AXIS](#GIMBAL_AXIS)                                         |       |
 | 2 (Progress)  | Current calibration progress for this axis.           | min: 0 max: 100                                                     | %     |
@@ -1764,21 +1764,21 @@ Reports progress and success or failure of gimbal axis calibration procedure.
 
 Starts commutation calibration on the gimbal.
 
-| Param (Label) | Description |
-| ------------- | ----------- |
-| 1             | Empty.      |
-| 2             | Empty.      |
-| 3             | Empty.      |
-| 4             | Empty.      |
-| 5             | Empty.      |
-| 6             | Empty.      |
-| 7             | Empty.      |
+| Param (Label) | 描述     |
+| ------------- | ------ |
+| 1             | Empty. |
+| 2             | Empty. |
+| 3             | Empty. |
+| 4             | Empty. |
+| 5             | Empty. |
+| 6             | Empty. |
+| 7             | Empty. |
 
 ### MAV_CMD_GIMBAL_FULL_RESET (42505) {#MAV_CMD_GIMBAL_FULL_RESET}
 
 Erases gimbal application and parameters.
 
-| Param (Label) | Description   |
+| Param (Label) | 描述            |
 | ------------- | ------------- |
 | 1             | Magic number. |
 | 2             | Magic number. |
@@ -1792,7 +1792,7 @@ Erases gimbal application and parameters.
 
 Update the bootloader
 
-| Param (Label)    | Description                                    | Values |
+| Param (Label)    | 描述                                             | 值      |
 | ---------------- | ---------------------------------------------- | ------ |
 | 1                | Empty                                          |        |
 | 2                | Empty                                          |        |
@@ -1806,7 +1806,7 @@ Update the bootloader
 
 Reset battery capacity for batteries that accumulate consumed battery via integration.
 
-| Param (Label)    | Description                                                                    | Values                 |
+| Param (Label)    | 描述                                                                             | 值                      |
 | ---------------- | ------------------------------------------------------------------------------ | ---------------------- |
 | 1 (battery mask) | Bitmask of batteries to reset. Least significant bit is for the first battery. |                        |
 | 2 (percentage)   | Battery percentage remaining to set.                                           | min: 0 max: 100 inc: 1 |
@@ -1815,7 +1815,7 @@ Reset battery capacity for batteries that accumulate consumed battery via integr
 
 Issue a trap signal to the autopilot process, presumably to enter the debugger.
 
-| Param (Label) | Description                                   |
+| Param (Label) | 描述                                            |
 | ------------- | --------------------------------------------- |
 | 1             | Magic number - set to 32451 to actually trap. |
 | 2             | Empty.                                        |
@@ -1829,7 +1829,7 @@ Issue a trap signal to the autopilot process, presumably to enter the debugger.
 
 Control onboard scripting.
 
-| Param (Label) | Description                  | Values                          |
+| Param (Label) | 描述                           | 值                               |
 | ------------- | ---------------------------- | ------------------------------- |
 | 1             | Scripting command to execute | [SCRIPTING_CMD](#SCRIPTING_CMD) |
 
@@ -1837,7 +1837,7 @@ Control onboard scripting.
 
 Scripting command as NAV command with wait for completion.
 
-| Param (Label) | Description                                                        | Units |
+| Param (Label) | 描述                                                                 | Units |
 | ------------- | ------------------------------------------------------------------ | ----- |
 | 1 (command)   | integer command number (0 to 255)                                  |       |
 | 2 (timeout)   | timeout for operation in seconds. Zero means no timeout (0 to 255) | s     |
@@ -1851,12 +1851,12 @@ Scripting command as NAV command with wait for completion.
 
 Maintain an attitude for a specified time.
 
-| Param (Label)  | Description                                                              | Units |
+| Param (Label)  | 描述                                                                       | Units |
 | -------------- | ------------------------------------------------------------------------ | ----- |
 | 1 (time)       | Time to maintain specified attitude and climb rate                       | s     |
-| 2 (roll)       | Roll angle in degrees (positive is lean right, negative is lean left)    | deg   |
-| 3 (pitch)      | Pitch angle in degrees (positive is lean back, negative is lean forward) | deg   |
-| 4 (yaw)        | Yaw angle                                                                | deg   |
+| 2 (roll)       | Roll angle in degrees (positive is lean right, negative is lean left)    | 度     |
+| 3 (pitch)      | Pitch angle in degrees (positive is lean back, negative is lean forward) | 度     |
+| 4 (yaw)        | Yaw angle                                                                | 度     |
 | 5 (climb_rate) | Climb rate                                                               | m/s   |
 | 6              | Empty                                                                    |       |
 | 7              | Empty                                                                    |       |
@@ -1865,7 +1865,7 @@ Maintain an attitude for a specified time.
 
 Change flight speed at a given rate. This slews the vehicle at a controllable rate between it's previous speed and the new one. (affects GUIDED only. Outside GUIDED, aircraft ignores these commands. Designed for onboard companion-computer command-and-control, not normally operator/GCS control.)
 
-| Param (Label)            | Description                                   | Values                    | Units |
+| Param (Label)            | 描述                                            | 值                         | Units |
 | ------------------------ | --------------------------------------------- | ------------------------- | ----- |
 | 1 (speed type)           | Airspeed or groundspeed.                      | [SPEED_TYPE](#SPEED_TYPE) |       |
 | 2 (speed target)         | Target Speed                                  |                           | m/s   |
@@ -1879,7 +1879,7 @@ Change flight speed at a given rate. This slews the vehicle at a controllable ra
 
 Change target altitude at a given rate. This slews the vehicle at a controllable rate between it's previous altitude and the new one. (affects GUIDED only. Outside GUIDED, aircraft ignores these commands. Designed for onboard companion-computer command-and-control, not normally operator/GCS control.)
 
-| Param (Label)          | Description                                                                                                                                         | Values | Units |
+| Param (Label)          | 描述                                                                                                                                                  | 值      | Units |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ----- |
 | 1                      | Empty                                                                                                                                               |        |       |
 | 2                      | Empty                                                                                                                                               |        |       |
@@ -1893,10 +1893,10 @@ Change target altitude at a given rate. This slews the vehicle at a controllable
 
 Change to target heading at a given rate, overriding previous heading/s. This slews the vehicle at a controllable rate between it's previous heading and the new one. (affects GUIDED only. Exiting GUIDED returns aircraft to normal behaviour defined elsewhere. Designed for onboard companion-computer command-and-control, not normally operator/GCS control.)
 
-| Param (Label)              | Description                                                               | Values                        | Units |
+| Param (Label)              | 描述                                                                        | 值                             | Units |
 | -------------------------- | ------------------------------------------------------------------------- | ----------------------------- | ----- |
 | 1 (heading type)           | course-over-ground or raw vehicle heading.                                | [HEADING_TYPE](#HEADING_TYPE) |       |
-| 2 (heading target)         | Target heading.                                                           | min: 0 max: 359.99            | deg   |
+| 2 (heading target)         | Target heading.                                                           | min: 0 max: 359.99            | 度     |
 | 3 (heading rate-of-change) | Maximum centripetal accelearation, ie rate of change, toward new heading. |                               | m/s/s |
 | 4                          | Empty                                                                     |                               |       |
 | 5                          | Empty                                                                     |                               |       |
