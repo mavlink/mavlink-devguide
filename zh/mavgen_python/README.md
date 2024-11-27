@@ -54,7 +54,7 @@ The generated MAVLink libraries can then be used in the same way as those instal
 
 ## Using the Python MAVLink Libraries
 
-### Overview
+### 综述
 
 The *pymavlink* package includes the dialect-specific generated modules, which provide low-level functionality to encode and decode messages, and apply and check signatures.
 
@@ -315,7 +315,7 @@ The rate at which the heartbeat should be sent depends on the channel, but is no
 
 Generally it should be sent from the same thread as all other messages. This is in order to ensure that the heartbeat is only published when the thread is healthy.
 
-### Message Signing {#message_signing}
+### 消息签名 {#message_signing}
 
 Pymavlink supports [Message Signing](../guide/message_signing.md) (authentication) when using [MAVLink 2](../guide/mavlink_2.md).
 
@@ -327,7 +327,7 @@ For more information see [Message Signing](../guide/message_signing.md#timestamp
 
 See [Examples (pymavlink)](../mavgen_python/examples.md)
 
-## Support
+## 支持
 
 Pymavlink questions can be raised in the normal MAVLink [support channels](../about/support.md).
 
