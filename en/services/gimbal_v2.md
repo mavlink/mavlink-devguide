@@ -160,7 +160,8 @@ If the `capabilities` field of the above message(s) has the flag [MAV_PROTOCOL_C
 
 The `GIMBAL_MANAGER_INFORMATION` contains important information a particular gimbal, such as its capabilities ([GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS)), maximum angles and angle rates, as well as the `gimbal_device_id` which identifies the specific gimbal device controlled by a particular _Gimbal Manager_.
 
-> **Warning** A GCS should always request `GIMBAL_MANAGER_INFORMATION` from autopilot components prior to: PX4 v1.16, ArduPilot-4.5 (when the protocol bit was added).
+> [!WARNING]
+> A GCS should always request `GIMBAL_MANAGER_INFORMATION` from autopilot components prior to: PX4 v1.16, ArduPilot-4.5 (when the protocol bit was added).
 
 #### Gimbal Manager Status
 

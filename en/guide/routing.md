@@ -26,7 +26,8 @@ Broadcast messages are forwarded to all channels that haven't seen the message.
 Addressed messages are resent on a new channel _iff_ the system has previously seen a message from the target on that channel
 (messages are not resent if the addressee is not known or is on the original/incoming channel).
 
-> **Warning** Forwarded messages must not be changed/repackaged by the forwarding system (the original message is passed to the new link).
+> [!WARNING]
+> Forwarded messages must not be changed/repackaged by the forwarding system (the original message is passed to the new link).
 
 > [!NOTE]
 > Systems should, where possible, forward messages according to the routing rules _even if they are unable to process them_ (e.g. signed messages that cannot be authenticated). Messages that are not supported/understood by the library should be forwarded as though they were broadcast messages (in this case the target system/component ids cannot be read).

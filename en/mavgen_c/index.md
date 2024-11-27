@@ -9,7 +9,8 @@ This topic explains how to get and use the library.
 
 If you are using a [standard dialect](../messages/README.md#dialects) then download the _MAVLink 2_ library from Github: [c_library_v2](https://github.com/mavlink/c_library_v2).
 
-> **Tip** The MAVLink 2 library supports both MAVLink 2 and MAVLink 1, and is rebuilt for all the _standard dialects_ whenever any of the definitions in the _mavlink/mavlink_ repo change.
+> [!TIP]
+> The MAVLink 2 library supports both MAVLink 2 and MAVLink 1, and is rebuilt for all the _standard dialects_ whenever any of the definitions in the _mavlink/mavlink_ repo change.
 > It supersedes the MAVLink 1 library ([c_library_v1](https://github.com/mavlink/c_library_v1)), and should be used by preference.
 
 If you need libraries for a custom dialect then you will need to [install mavgen](../getting_started/installation.md) and [generate](../getting_started/generate_libraries.md) them yourself.
@@ -29,12 +30,12 @@ To use MAVLink in your C project, include the **mavlink.h** header file for your
 
 This will automatically add the header files for all messages in your dialect, and for any dialect files that it includes.
 
-> **Warning** Only include the header file for a single dialect.
+> [!WARNING]
+> Only include the header file for a single dialect.
 > If you need to support messages from a _number of dialects_ then create a new "parent" dialect XML file that includes them (and use its generated header as shown above).
 
-<span></span>
-
-> **Tip** _Do not include the individual message files_.
+> [!TIP]
+> _Do not include the individual message files_.
 > If you generate your own headers, you will have to add their output location to your C compiler's search path.
 
 When compiling the project, make sure to add the include directory:
@@ -162,7 +163,8 @@ while(serial.bytesAvailable > 0)
 }
 ```
 
-> **Tip** The [mavlink_helpers.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h) include other parser functions: `mavlink_frame_char()` and `mavlink_frame_char_buffer()`.
+> [!TIP]
+> The [mavlink_helpers.h](https://github.com/mavlink/c_library_v2/blob/master/mavlink_helpers.h) include other parser functions: `mavlink_frame_char()` and `mavlink_frame_char_buffer()`.
 > Generally you will want to use `mavlink_parse_char()` (which calls those functions internally), but reviewing the other methods can give you a better understanding of the parsing process.
 
 ### Decoding the Payload {#decode_payload}
@@ -206,7 +208,8 @@ if (mavlink_parse_char(chan, byte, &msg, &status)) {
 The decoder/encoder functions and ids for each message in a dialect can be found in separate header files under the dialect folder.
 The headers are named with a format including the message name (**mavlink_msg\__message_name_.h**)
 
-> **Tip** Individual message definitions for the dialect are pulled in when you include **mavlink.h** for your dialect, so you don't need to include these separately.
+> [!TIP]
+> Individual message definitions for the dialect are pulled in when you include **mavlink.h** for your dialect, so you don't need to include these separately.
 
 The most useful decoding function is named with the pattern **mavlink_msg\__message_name_\_decode()**, and extracts the whole payload into a C struct (with fields mapping to the original XML message definition).
 There are also separate decoder functions to just get the values of individual fields.

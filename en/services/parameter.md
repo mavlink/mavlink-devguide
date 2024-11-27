@@ -118,7 +118,8 @@ To get a complete parameter list from a system, send the request parameter messa
 
 All components must respond to parameter request messages addressed to their ID or the ID `MAV_COMP_ID_ALL`.
 
-> **Tip** _QGroundControl_ by default queries all components of the currently connected system (it sends ID `MAV_COMP_ID_ALL`).
+> [!TIP]
+> _QGroundControl_ by default queries all components of the currently connected system (it sends ID `MAV_COMP_ID_ALL`).
 
 ## Limitations {#limitations}
 

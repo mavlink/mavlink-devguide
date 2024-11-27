@@ -140,7 +140,8 @@ If sent in messages `float` parameter fields the value should be sent as-is.
 > In practice, many systems will assume you have encoded the value, but you should test this for your particular flight stack.
 > Better just to use the correct frames!
 
-> **Warning** Don't use [MAV_FRAME_MISSION](../messages/common.md#MAV_FRAME_MISSION) for mission items that contain positional data; this does not correspond to any particular real frame, and so will be ambiguous.
+> [!WARNING]
+> Don't use [MAV_FRAME_MISSION](../messages/common.md#MAV_FRAME_MISSION) for mission items that contain positional data; this does not correspond to any particular real frame, and so will be ambiguous.
 > `MAV_FRAME_MISSION` should be used for mission items that use params5 and param6 for other purposes.
 
 ## Param 5, 6 For Non-Positional Data
@@ -177,7 +178,8 @@ It can then monitor `MISSION_CURRENT`, and check its cached values against the c
 
 The diagram below shows the communication sequence to upload a mission to a drone (assuming all operations succeed).
 
-> **Warning** Mission update must be robust!
+> [!WARNING]
+> Mission update must be robust!
 > A new mission should be fully uploaded and accepted before the old mission is replaced/removed.
 
 > [!NOTE]

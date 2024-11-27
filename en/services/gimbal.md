@@ -1,6 +1,7 @@
 # Gimbal Configuration Protocol (v1)
 
-> **Warning** This service defintion has been superseded by [Gimbal Protocol v2](../services/gimbal.md) (gimbal manufacturers/GCSs/autopilots are expected to use the new API, but the old API is still in broad use, and there is no plan to for it to be removed).
+> [!WARNING]
+> This service defintion has been superseded by [Gimbal Protocol v2](../services/gimbal.md) (gimbal manufacturers/GCSs/autopilots are expected to use the new API, but the old API is still in broad use, and there is no plan to for it to be removed).
 
 The gimbal configuration message set uses a number of commands and few special-purpose messages to configure a payload mount.
 

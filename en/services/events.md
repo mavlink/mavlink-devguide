@@ -1,6 +1,7 @@
 # Events Interface (WIP)
 
-> **Warning** The Events Interface is a work in progress and may change.
+> [!WARNING]
+> The Events Interface is a work in progress and may change.
 > It has an initial implementation in PX4 and QGroundControl and is planned for ArduPilot.
 >
 > The information below is just an overview.

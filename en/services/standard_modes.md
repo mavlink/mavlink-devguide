@@ -1,6 +1,7 @@
 # Standard Modes Protocol (WIP)
 
-> **Warning** This protocol is a work in progress and may change.
+> [!WARNING]
+> This protocol is a work in progress and may change.
 > It has an initial implementation in PX4 and QGroundControl (daily).
 
 The MAVLink standard modes protocol allows a GCS to construct a UI allowing selection and display of available flight modes without prior knowledge of the connected flight stack.

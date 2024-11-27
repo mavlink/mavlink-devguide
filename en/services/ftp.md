@@ -34,7 +34,8 @@ The `FILE_TRANSFER_PROTOCOL` payload is encoded with the information required fo
 This includes fields for holding the command that is being sent, the sequence number of the current FTP message (for multi-message data transfers),
 the size of information in the data part of the message etc.
 
-> **Tip** Readers will note that the FTP payload format is very similar to the packet format used for serializing MAVLink itself.
+> [!TIP]
+> Readers will note that the FTP payload format is very similar to the packet format used for serializing MAVLink itself.
 
 Below is the over-the-wire format for the payload part of the [FILE_TRANSFER_PROTOCOL](../messages/common.md#FILE_TRANSFER_PROTOCOL) message on PX4/_QGroundControl_.
 
@@ -304,7 +305,8 @@ The sequence of operations is:
 The GSC should create a timeout after `CreateFile` and `WriteFile` commands are sent, and resend the messages as needed (and [described above](#timeouts)).
 A timeout is not set for `TerminateSession` (the server may ignore failure of the command or the ACK).
 
-> **Warning** PX4 and _QGroundControl_ implement this slightly differently than outlined above.
+> [!WARNING]
+> PX4 and _QGroundControl_ implement this slightly differently than outlined above.
 > The implementation only has a single session (id=0) so only a single operation can be active at a time.
 > As a result, this operation should only be started if no other operation is active.
 > The drone expects that the session id will be set to zero by the sender of `CreateFile`.

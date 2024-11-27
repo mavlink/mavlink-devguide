@@ -24,7 +24,8 @@ They should be used (where supported) in preference to [generic payload commands
 MAVLink has a number of commands for setting actuator outputs.
 These can be used to control arbitrary/generic payloads.
 
-> **Tip** Use the [commands for known payload types](#payload-specific-commands) where possible as they are more intuitive for users, and in logs.
+> [!TIP]
+> Use the [commands for known payload types](#payload-specific-commands) where possible as they are more intuitive for users, and in logs.
 
 | Message                                                                                                      | Description                                                                                                                                                                                                     |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

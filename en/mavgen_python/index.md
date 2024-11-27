@@ -12,7 +12,8 @@ This topic explains how to get and use the _Pymavlink_ MAVLink Python libraries 
 > MAVLink includes the [Pymavlink](https://github.com/ArduPilot/pymavlink) repository as a submodule.
 > While you can work with that project directly, this documentation explains how to work with _pymavlink_ _**using the MAVLink project**_.
 
-> **Tip** If you are writing a MAVLink application to communicate with an autopilot you may prefer to use a higher level library like [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python) or [DroneKit-Python](http://python.dronekit.io/).
+> [!TIP]
+> If you are writing a MAVLink application to communicate with an autopilot you may prefer to use a higher level library like [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python) or [DroneKit-Python](http://python.dronekit.io/).
 > These implement a number of [MAVLink microservices](../about/overview.md).
 
 ## Getting the Python MAVLink Libraries
@@ -29,7 +30,8 @@ If you need a [standard dialect](../messages/README.md#dialects) then you can in
 pip install pymavlink
 ```
 
-> **Tip** The [PyPi](https://pypi.org/project/pymavlink/) repository takes message definitions from the [ArduPilot/mavlink](https://github.com/ArduPilot/mavlink) fork, which may diverge slightly from _MAVLink/mavlink_.
+> [!TIP]
+> The [PyPi](https://pypi.org/project/pymavlink/) repository takes message definitions from the [ArduPilot/mavlink](https://github.com/ArduPilot/mavlink) fork, which may diverge slightly from _MAVLink/mavlink_.
 
 ### Generate a Custom MAVLink Dialect
 
@@ -79,7 +81,8 @@ There are several main caveats to be aware of when using **mavutil**:
 - **mavutil** is still a relatively low-level MAVLink API.
   It has limited support for even the most common [MAVLink microservices](../services/README.md).
 
-> **Tip** You don't have to use **mavutil** but it includes a lot of useful code that you might otherwise have to write from scratch.
+> [!TIP]
+> You don't have to use **mavutil** but it includes a lot of useful code that you might otherwise have to write from scratch.
 > In particular the connection code and methods to filter incoming messages are useful for any autopilot.
 
 The set of modules in the _pymavlink_ package are listed below:
@@ -115,7 +118,8 @@ You can change this by setting environment variables:
 - `MAVLINK20`: Set to 1 (if unset then default to MAVLink 1)
 - `MDEF`: Location of message definition libraries
 
-> **Tip** You can also change the dialect by passing its name to `mavutil.mavlink_connection()` when [setting up a connection](#setting_up_connection).
+> [!TIP]
+> You can also change the dialect by passing its name to `mavutil.mavlink_connection()` when [setting up a connection](#setting_up_connection).
 
 If you are not using _mavutil_ then you can import the dialect file that you want to use directly:
 
@@ -132,7 +136,8 @@ from pymavlink.dialects.v20 import common as mavlink2
 The **mavutil** module provides the `mavlink_connection()` method for setting up communication links to MAVLink systems over serial ports, tcp, or udp channels.
 It can also connect to a file object, which is useful when working with telemetry logs.
 
-> **Warning** The method returns an object that represents a single system, but will collect messages from multiple systems on the link.
+> [!WARNING]
+> The method returns an object that represents a single system, but will collect messages from multiple systems on the link.
 > This is OK for two-system networks, but if you need to connect over a multi-vehicle IP network see [source-system-filtering](https://github.com/peterbarker/dronekit-python/tree/source-system-filtering/examples/multivehicle).
 
 The `mavlink_connection()` method takes a [connection string](#connection_string) defining the channel, and some optional arguments for setting the baud rate and other properties of the link (the format of the connection string automatically sets, and may override, some optional arguments).

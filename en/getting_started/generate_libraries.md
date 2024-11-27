@@ -10,10 +10,9 @@ This page shows how to use the following two code generators provided with the M
 > [!NOTE]
 > These generators can build MAVLink 2 and MAVLink 1 libraries for the following programming languages: C, C++11, Python, Typescript, Java, and WLua. The following programming languages are supported for MAVLink 1 libraries only: C#, JavaScript, ObjC, Swift.
 
-<span></span>
-
-> **Tip** Generators for other programming languages are supported and documented in independent projects.
-> For more information see [Supported Languages](../README.md#supported_languages).
+> [!TIP]
+> Generators for other programming languages are supported and documented in independent projects.
+> For more information see [Supported Languages](../index.md#supported_languages).
 
 ## Pre-requisites
 
@@ -70,7 +69,9 @@ Steps for generating the MAVLink library code:
 **mavgen.py** is a command line tool for generating MAVLink libraries for various programming languages.
 You can run mavgen from the `mavlink` directory. However, if you are outside of the mavlink directory, you need to add the `mavlink` directory to the `PYTHONPATH` environment variable.
 
-> **Tip** Mavgen is the backend used by [mavgenerate](#mavgenerate). The documentation below explains all the options for both tools.
+> [!TIP]
+> Mavgen is the backend used by [mavgenerate](#mavgenerate).
+> The documentation below explains all the options for both tools.
 
 Below is an example for how to generate _MAVLink 2_ libraries for the C programming language using a dialect named **your_custom_dialect.xml**:
 

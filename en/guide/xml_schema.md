@@ -86,7 +86,8 @@ The main `enum` tags/fields are:
 - `entry` (optional): An entry (zero or more entries can be specified for each enum)
 - [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
 
-> **Tip** [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
+> [!TIP]
+> [MAVLink Commands](#mav_cmd) are defined in the [MAV_CMD](../messages/common.md#mav_commands) enum.
 
 ### entry {#entry}
 
@@ -164,7 +165,10 @@ A `param` **should** also include the following optional attributes where approp
 - `multiplier` - Multiply by this value to get the unscaled original value.
   This is primarily intended for specifying any scaling applied to unitless values, where scaling is not encoded in the `units`.
 - `reserved` - Boolean indicating whether param is reserved for future use. If the attributes is not declared, then implicitly `reserved="False"`.
-  > **Tip** See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
+
+  > [!TIP]
+  > See [Defining XML Enums/Messages > Reserved/Undefined Parameters](../guide/define_xml_element.md#reserved) for more information.
+
 - `default` - Default value for the `param`
   (primarily used for `reserved` params, where the value is `0` or `NaN`).
 
@@ -273,7 +277,8 @@ The tag attributes indicates the time of deprecation and the replacement item, w
 
 The generator toolchain can be configured to conditionally build messages omitting the `deprecated` entries.
 
-> **Tip** An entity should be marked as deprecated only when the main users have had an opportunity to update to the new method.
+> [!TIP]
+> An entity should be marked as deprecated only when the main users have had an opportunity to update to the new method.
 
 As a concrete example, below we see that [SET_MODE](../messages/common.md#SET_MODE) is deprecated and replaced by [MAV_CMD_DO_SET_MODE](../messages/common.md#MAV_CMD_DO_SET_MODE) on `2015-12`.
 

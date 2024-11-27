@@ -4,7 +4,8 @@ This topic provides detailed information about about MAVLink packet serializatio
 
 It is primarily intended for developers who are creating/maintaining a MAVLink generator
 
-> **Tip** MAVLink users do not typically need to understand the serialization format, as encoding/decoding is handled by the MAVLink libraries.
+> [!TIP]
+> MAVLink users do not typically need to understand the serialization format, as encoding/decoding is handled by the MAVLink libraries.
 
 ## Packet Format {#packet_format}
 
@@ -91,7 +92,8 @@ Messages are encoded within the MAVLink packet:
 - A [CRC_EXTRA](#crc_extra) byte is added to the message [checksum](#checksum).
   A receiver can use this to confirm that it is compatible with the payload message format/definition.
 
-  > **Tip** A MAVLink library should notify a bad CRC during decoding if a message specification is incompatible (e.g. the C library [mavlink_parse_char()](../getting_started/use_libraries.md#receiving) gives a status `MAVLINK_FRAMING_BAD_CRC`).
+  > [!TIP]
+  > A MAVLink library should notify a bad CRC during decoding if a message specification is incompatible (e.g. the C library [mavlink_parse_char()](../getting_started/use_libraries.md#receiving) gives a status `MAVLINK_FRAMING_BAD_CRC`).
 
 ### Field Reordering {#field_reordering}
 
@@ -112,7 +114,8 @@ The only exception to the above reordering is for [MAVLink 2 extension fields](.
 Extension fields are sent in XML-declaration order and are not included in the [CRC_EXTRA](#crc_extra) calculation.
 This allows new extension fields to be appended to the end of a message without breaking binary compatibility.
 
-> **Warning** This ordering is unique and can be easily implemented in a protocol generator by using a stable sorting algorithm.
+> [!WARNING]
+> This ordering is unique and can be easily implemented in a protocol generator by using a stable sorting algorithm.
 > The alternative to using sorting would be either to use inefficient alignment, which is bad for the target architectures for typical MAVLink applications, or to have function calls in the order of the variable size instead of the application context.
 > This would lead to very confusing function signatures of serialization functions.
 
@@ -139,7 +142,8 @@ The actual fields affected/bytes saved depends on the message and its content
 
 The `CRC_EXTRA` CRC is used to verify that the sender and receiver have a shared understanding of the over-the-wire format of a particular message.
 
-> **Tip** Changes in [message specifications](../messages/README.md) that might make the over-the-wire format incompatible include: new/removed fields, or changes to field name, data type, order, or array length.
+> [!TIP]
+> Changes in [message specifications](../messages/index.md) that might make the over-the-wire format incompatible include: new/removed fields, or changes to field name, data type, order, or array length.
 
 When the MAVLink code generator runs, it takes a checksum of the XML structure for each message and creates an array define `MAVLINK_MESSAGE_CRCS`.
 This is used to initialise the `mavlink_message_crcs[]` array in the C/C++ implementation, and is similarly used in the Python (or any other, such as the C# and JavaScript) implementation.

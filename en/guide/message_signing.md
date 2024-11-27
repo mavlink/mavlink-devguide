@@ -84,7 +84,8 @@ Systems should implement the following rules to obtain a reliable timestamp:
 - The timestamp on incoming signed messages should be checked against the previous timestamp for the incoming `(linkID,srcSystem,SrcComponent)` tuple and the message rejected if it is smaller.
 - If there is no previous message with the given `(linkID,srcSystem,SrcComponent)` then the timestamp should be accepted if it not more than 6 million (one minute) behind the current timestamp.
 
-> **Tip** For devices that store the timestamp in persistent storage, implementations can prevent race conditions by storing two timestamp values.
+> [!TIP]
+> For devices that store the timestamp in persistent storage, implementations can prevent race conditions by storing two timestamp values.
 > On write the smaller of the two values should be updated. On read the larger of the two values should be used.
 
 ## Accepting Signed Packets {#accept_signed_packets}
@@ -153,7 +154,8 @@ This is to avoid the case where a key received over a secure link (e.g. USB) is 
 
 Autopilots that don't offer MAVLink over USB might create a module that can set the secret key from a command line interface (e.g. the NSH Shell).
 
-> **Tip** We recommend that GCS implementations should generate the secret key and share this with connected systems over a secure link (e.g. USB).
+> [!TIP]
+> We recommend that GCS implementations should generate the secret key and share this with connected systems over a secure link (e.g. USB).
 > The receiving system may be configured to ignore message signatures on the secure channel (i.e. accept all [signed](#accept_signed_packets), [unsigned](#accepting_unsigned_packets) or [incorrectly signed](#accepting_incorrectly_signed_packets) packets), so that it is possible to reset a key that has been lost or corrupted.
 
 ## Logging

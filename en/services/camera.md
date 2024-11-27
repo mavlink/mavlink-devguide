@@ -8,7 +8,8 @@ It also defines a camera definition file format that allows a GCS to generate a 
 > This protocol supersedes [Camera Protocol v1 (Simple Trigger Protocol)](../services/camera_v1.md).
 > The older protocol enables camera triggering, but does not support other features or querying camera capabilities.
 
-> **Warning** We are transitioning from specific request commands to a single generic requestor.
+> [!WARNING]
+> We are transitioning from specific request commands to a single generic requestor.
 > GCS and MAVLink SDKs/apps should support both approaches as we migrate to exclusive use of the new method (documented here).
 > For more information see [Migration Notes for GCS & Camera Servers](#migration-notes-for-gcs--mavlink-sdks).
 
@@ -104,7 +105,8 @@ The process involves requesting the [CAMERA_INFORMATION](../messages/common.md#C
 `CAMERA_INFORMATION.flags` provides information about camera capabilities.
 It contains a bitmap of [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS) values that tell the GCS if the camera supports still image capture, video capture, or video streaming, and if it needs to be in a certain mode for capture, etc.
 
-> **Tip** Camera identification must be carried out before all other camera operations!
+> [!TIP]
+> Camera identification must be carried out before all other camera operations!
 
 The first time a heartbeat is received from a new camera component ([HEARTBEAT.type=MAV_TYPE_CAMERA](../messages/common.md#MAV_TYPE_CAMERA)), the GCS should send it a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message asking for [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) (message id 259).
 The camera will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result.

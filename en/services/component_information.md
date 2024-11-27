@@ -1,6 +1,7 @@
 # Component Metadata Protocol (WIP)
 
-> **Warning** This service is still marked as "work in progress", and should not be relied upon in production.
+> [!WARNING]
+> This service is still marked as "work in progress", and should not be relied upon in production.
 > It has also evolved since first created as the "Component Information Protocol".
 
 The _Component Metadata Protocol_ is a MAVLink service for requesting metadata from (and about) MAVLink components.
@@ -90,9 +91,11 @@ Component information files may be **.xz** compressed (this is recommended for f
 > The prototype implementation generates and compresses component information files at build time.
 > No compression library is required within the flight stack itself.
 
-> **Warning** Systems that _request_ component information **must** support extraction of **.xz**-compressed JSON files.
+> [!WARNING]
+> Systems that _request_ component information **must** support extraction of **.xz**-compressed JSON files.
 
-> **Tip** The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems and cross-platform C/C++ projects.
+> [!TIP]
+> The [Tukaani Project XZ Embedded](https://tukaani.org/xz/embedded.html) library is an easy-to-use XZ compression library for embedded systems and cross-platform C/C++ projects.
 
 ## Sequences
 
