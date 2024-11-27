@@ -11,7 +11,9 @@ The scripts have the following requirements:
 
 The scripts can be executed by running Python with the `-m` switch, which indicates that the given script exists on the `PYTHONPATH`. The following code runs **mavlogdump.py** in **/pymavlink/tools/** on the recorded MAVLink stream `test_run.mavlink` (other scripts in **/tools** and **/scripts** can be run in a similar fashion):
 
-    python -m pymavlink.tools.mavlogdump test_run.mavlink
-    
+```
+python -m pymavlink.tools.mavlogdump test_run.mavlink
+```
 
-> [!NOTE] Using the `-m` switch is the proper way to run Python scripts that are part of a library as per PEP-328 (and the rejected PEP-3122).
+> [!NOTE]
+> Using the `-m` switch is the proper way to run Python scripts that are part of a library as per PEP-328 (and the rejected PEP-3122).
