@@ -25,23 +25,23 @@ span.warning {
 
 - [common.xml](../messages/common.md)
 
-## Summary
+## 概览
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 17      | 226      |
-| [Enums](#enumerated-types) | 2       | 144      |
-| [Commands](#mav_commands)  | 166     | 0        |
+| Type                    | Defined | Included |
+| ----------------------- | ------- | -------- |
+| [消息](#messages)         | 17      | 226      |
+| [枚举](#enumerated-types) | 2       | 144      |
+| [命令](#mav_commands)     | 166     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ### COMMAND_INT_STAMPED (223) {#COMMAND_INT_STAMPED}
 
 Message encoding a command with parameters as scaled integers and additional metadata. Scaling depends on the actual command value.
 
-| Field Name        | Type       | Values                   | Description                                                                                                 |
+| Field Name        | Type       | 值                        | 描述                                                                                                          |
 | ----------------- | ---------- | ------------------------ | ----------------------------------------------------------------------------------------------------------- |
 | utc_time          | `uint32_t` |                          | UTC time, seconds elapsed since 01.01.1970                                                                  |
 | vehicle_timestamp | `uint64_t` |                          | Microseconds elapsed since vehicle boot                                                                     |
@@ -63,7 +63,7 @@ Message encoding a command with parameters as scaled integers and additional met
 
 Send a command with up to seven parameters to the MAV and additional metadata
 
-| Field Name        | Type       | Values                   | Description                                                                                      |
+| Field Name        | Type       | 值                        | 描述                                                                                               |
 | ----------------- | ---------- | ------------------------ | ------------------------------------------------------------------------------------------------ |
 | utc_time          | `uint32_t` |                          | UTC time, seconds elapsed since 01.01.1970                                                       |
 | vehicle_timestamp | `uint64_t` |                          | Microseconds elapsed since vehicle boot                                                          |
@@ -83,7 +83,7 @@ Send a command with up to seven parameters to the MAV and additional metadata
 
 Voltage and current sensor data
 
-| Field Name         | Type    | Units | Description                        |
+| Field Name         | Type    | Units | 描述                                 |
 | ------------------ | ------- | ----- | ---------------------------------- |
 | adc121_vspb_volt | `float` | V     | Power board voltage sensor reading |
 | adc121_cspb_amp  | `float` | A     | Power board current sensor reading |
@@ -94,7 +94,7 @@ Voltage and current sensor data
 
 Maximum Power Point Tracker (MPPT) sensor data for solar module power performance tracking
 
-| Field Name     | Type       | Units | Description         |
+| Field Name     | Type       | Units | 描述                  |
 | -------------- | ---------- | ----- | ------------------- |
 | mppt_timestamp | `uint64_t` | us    | MPPT last timestamp |
 | mppt1_volt     | `float`    | V     | MPPT1 voltage       |
@@ -114,15 +114,15 @@ Maximum Power Point Tracker (MPPT) sensor data for solar module power performanc
 
 ASL-fixed-wing controller data
 
-| Field Name      | Type       | Units | Description                                             |
+| Field Name      | Type       | Units | 描述                                                      |
 | --------------- | ---------- | ----- | ------------------------------------------------------- |
 | timestamp       | `uint64_t` | us    | Timestamp                                               |
 | aslctrl_mode    | `uint8_t`  |       | ASLCTRL control-mode (manual, stabilized, auto, etc...) |
 | h               | `float`    |       | See sourcecode for a description of these values...     |
 | hRef            | `float`    |       |                                                         |
 | hRef_t          | `float`    |       |                                                         |
-| PitchAngle      | `float`    | deg   | Pitch angle                                             |
-| PitchAngleRef   | `float`    | deg   | Pitch angle reference                                   |
+| PitchAngle      | `float`    | 度     | Pitch angle                                             |
+| PitchAngleRef   | `float`    | 度     | Pitch angle reference                                   |
 | q               | `float`    |       |                                                         |
 | qRef            | `float`    |       |                                                         |
 | uElev           | `float`    |       |                                                         |
@@ -131,10 +131,10 @@ ASL-fixed-wing controller data
 | nZ              | `float`    |       |                                                         |
 | AirspeedRef     | `float`    | m/s   | Airspeed reference                                      |
 | SpoilersEngaged | `uint8_t`  |       |                                                         |
-| YawAngle        | `float`    | deg   | Yaw angle                                               |
-| YawAngleRef     | `float`    | deg   | Yaw angle reference                                     |
-| RollAngle       | `float`    | deg   | Roll angle                                              |
-| RollAngleRef    | `float`    | deg   | Roll angle reference                                    |
+| YawAngle        | `float`    | 度     | Yaw angle                                               |
+| YawAngleRef     | `float`    | 度     | Yaw angle reference                                     |
+| RollAngle       | `float`    | 度     | Roll angle                                              |
+| RollAngleRef    | `float`    | 度     | Roll angle reference                                    |
 | p               | `float`    |       |                                                         |
 | pRef            | `float`    |       |                                                         |
 | r               | `float`    |       |                                                         |
@@ -146,25 +146,25 @@ ASL-fixed-wing controller data
 
 ASL-fixed-wing controller debug data
 
-| Field Name | Type       | Description |
-| ---------- | ---------- | ----------- |
-| i32_1      | `uint32_t` | Debug data  |
-| i8_1       | `uint8_t`  | Debug data  |
-| i8_2       | `uint8_t`  | Debug data  |
-| f_1        | `float`    | Debug data  |
-| f_2        | `float`    | Debug data  |
-| f_3        | `float`    | Debug data  |
-| f_4        | `float`    | Debug data  |
-| f_5        | `float`    | Debug data  |
-| f_6        | `float`    | Debug data  |
-| f_7        | `float`    | Debug data  |
-| f_8        | `float`    | Debug data  |
+| Field Name | Type       | 描述         |
+| ---------- | ---------- | ---------- |
+| i32_1      | `uint32_t` | Debug data |
+| i8_1       | `uint8_t`  | Debug data |
+| i8_2       | `uint8_t`  | Debug data |
+| f_1        | `float`    | Debug data |
+| f_2        | `float`    | Debug data |
+| f_3        | `float`    | Debug data |
+| f_4        | `float`    | Debug data |
+| f_5        | `float`    | Debug data |
+| f_6        | `float`    | Debug data |
+| f_7        | `float`    | Debug data |
+| f_8        | `float`    | Debug data |
 
 ### ASLUAV_STATUS (8006) {#ASLUAV_STATUS}
 
 Extended state information for ASLUAVs
 
-| Field Name    | Type         | Description                                          |
+| Field Name    | Type         | 描述                                                   |
 | ------------- | ------------ | ---------------------------------------------------- |
 | LED_status    | `uint8_t`    | Status of the position-indicator LEDs                |
 | SATCOM_status | `uint8_t`    | Status of the IRIDIUM satellite communication system |
@@ -175,7 +175,7 @@ Extended state information for ASLUAVs
 
 Extended EKF state estimates for ASLUAVs
 
-| Field Name | Type       | Units | Description                                            |
+| Field Name | Type       | Units | 描述                                                     |
 | ---------- | ---------- | ----- | ------------------------------------------------------ |
 | timestamp  | `uint64_t` | us    | Time since system start                                |
 | Windspeed  | `float`    | m/s   | Magnitude of wind velocity (in lateral inertial plane) |
@@ -189,7 +189,7 @@ Extended EKF state estimates for ASLUAVs
 
 Off-board controls/commands for ASLUAVs
 
-| Field Name    | Type       | Units | Description               |
+| Field Name    | Type       | Units | 描述                        |
 | ------------- | ---------- | ----- | ------------------------- |
 | timestamp     | `uint64_t` | us    | Time since system start   |
 | uElev         | `float`    |       | Elevator command [~]      |
@@ -204,7 +204,7 @@ Off-board controls/commands for ASLUAVs
 
 Atmospheric sensors (temperature, humidity, ...)
 
-| Field Name  | Type       | Units | Description            |
+| Field Name  | Type       | Units | 描述                     |
 | ----------- | ---------- | ----- | ---------------------- |
 | timestamp   | `uint64_t` | us    | Time since system boot |
 | TempAmbient | `float`    | degC  | Ambient temperature    |
@@ -214,7 +214,7 @@ Atmospheric sensors (temperature, humidity, ...)
 
 Battery pack monitoring data for Li-Ion batteries
 
-| Field Name       | Type       | Units | Description                                         |
+| Field Name       | Type       | Units | 描述                                                  |
 | ---------------- | ---------- | ----- | --------------------------------------------------- |
 | batmon_timestamp | `uint64_t` | us    | Time since system start                             |
 | temperature      | `float`    | degC  | Battery pack temperature                            |
@@ -236,14 +236,14 @@ Battery pack monitoring data for Li-Ion batteries
 
 Fixed-wing soaring (i.e. thermal seeking) data
 
-| Field Name           | Type       | Units | Description                                                    |
+| Field Name           | Type       | Units | 描述                                                             |
 | -------------------- | ---------- | ----- | -------------------------------------------------------------- |
 | timestamp            | `uint64_t` | ms    | Timestamp                                                      |
 | timestampModeChanged | `uint64_t` | ms    | Timestamp since last mode change                               |
 | xW                   | `float`    | m/s   | Thermal core updraft strength                                  |
 | xR                   | `float`    | m     | Thermal radius                                                 |
-| xLat                 | `float`    | deg   | Thermal center latitude                                        |
-| xLon                 | `float`    | deg   | Thermal center longitude                                       |
+| xLat                 | `float`    | 度     | Thermal center latitude                                        |
+| xLon                 | `float`    | 度     | Thermal center longitude                                       |
 | VarW                 | `float`    |       | Variance W                                                     |
 | VarR                 | `float`    |       | Variance R                                                     |
 | VarLat               | `float`    |       | Variance Lat                                                   |
@@ -253,7 +253,7 @@ Fixed-wing soaring (i.e. thermal seeking) data
 | DistToSoarPoint      | `float`    | m     | Distance to soar point                                         |
 | vSinkExp             | `float`    | m/s   | Expected sink rate at current airspeed, roll and throttle      |
 | z1_LocalUpdraftSpeed | `float`    | m/s   | Measurement / updraft speed at current/local airplane position |
-| z2_DeltaRoll         | `float`    | deg   | Measurement / roll angle tracking error                        |
+| z2_DeltaRoll         | `float`    | 度     | Measurement / roll angle tracking error                        |
 | z1_exp               | `float`    |       | Expected measurement 1                                         |
 | z2_exp               | `float`    |       | Expected measurement 2                                         |
 | ThermalGSNorth       | `float`    | m/s   | Thermal drift (from estimator prediction step only)            |
@@ -268,7 +268,7 @@ Fixed-wing soaring (i.e. thermal seeking) data
 
 Monitoring of sensorpod status
 
-| Field Name              | Type       | Units | Description                                                |
+| Field Name              | Type       | Units | 描述                                                         |
 | ----------------------- | ---------- | ----- | ---------------------------------------------------------- |
 | timestamp               | `uint64_t` | ms    | Timestamp in linuxtime (since 1.1.1970)                    |
 | visensor_rate_1       | `uint8_t`  |       | Rate of ROS topic 1                                        |
@@ -283,7 +283,7 @@ Monitoring of sensorpod status
 
 Monitoring of power board status
 
-| Field Name             | Type       | Units | Description                            |
+| Field Name             | Type       | Units | 描述                                     |
 | ---------------------- | ---------- | ----- | -------------------------------------- |
 | timestamp              | `uint64_t` | us    | Timestamp                              |
 | pwr_brd_status       | `uint8_t`  |       | Power board status register            |
@@ -302,7 +302,7 @@ Monitoring of power board status
 
 Status of GSM modem (connected to onboard computer)
 
-| Field Name       | Type       | Units | Values                              | Description                                                   |
+| Field Name       | Type       | Units | 值                                   | 描述                                                            |
 | ---------------- | ---------- | ----- | ----------------------------------- | ------------------------------------------------------------- |
 | timestamp        | `uint64_t` | us    |                                     | Timestamp (of OBC)                                            |
 | gsm_modem_type | `uint8_t`  |       | [GSM_MODEM_TYPE](#GSM_MODEM_TYPE) | GSM modem used                                                |
@@ -316,7 +316,7 @@ Status of GSM modem (connected to onboard computer)
 
 Status of the SatCom link
 
-| Field Name           | Type       | Units | Description                                  |
+| Field Name           | Type       | Units | 描述                                           |
 | -------------------- | ---------- | ----- | -------------------------------------------- |
 | timestamp            | `uint64_t` | us    | Timestamp                                    |
 | last_heartbeat       | `uint64_t` | us    | Timestamp of the last successful sbd session |
@@ -331,19 +331,19 @@ Status of the SatCom link
 
 Calibrated airflow angle measurements
 
-| Field Name          | Type       | Units | Description                       |
+| Field Name          | Type       | Units | 描述                                |
 | ------------------- | ---------- | ----- | --------------------------------- |
 | timestamp           | `uint64_t` | us    | Timestamp                         |
-| angleofattack       | `float`    | deg   | Angle of attack                   |
+| angleofattack       | `float`    | 度     | Angle of attack                   |
 | angleofattack_valid | `uint8_t`  |       | Angle of attack measurement valid |
-| sideslip            | `float`    | deg   | Sideslip angle                    |
+| sideslip            | `float`    | 度     | Sideslip angle                    |
 | sideslip_valid      | `uint8_t`  |       | Sideslip angle measurement valid  |
 
 ## Enumerated Types
 
 ### GSM_LINK_TYPE {#GSM_LINK_TYPE}
 
-| Value                      | Name                                              | Description                |
+| 值                          | Name                                              | 描述                         |
 | -------------------------- | ------------------------------------------------- | -------------------------- |
 | <a id='GSM_LINK_TYPE_NONE'></a>0 | [GSM_LINK_TYPE_NONE](#GSM_LINK_TYPE_NONE)       | no service                 |
 | <a id='GSM_LINK_TYPE_UNKNOWN'></a>1 | [GSM_LINK_TYPE_UNKNOWN](#GSM_LINK_TYPE_UNKNOWN) | link type unknown          |
@@ -353,7 +353,7 @@ Calibrated airflow angle measurements
 
 ### GSM_MODEM_TYPE {#GSM_MODEM_TYPE}
 
-| Value                      | Name                                                            | Description                |
+| 值                          | Name                                                            | 描述                         |
 | -------------------------- | --------------------------------------------------------------- | -------------------------- |
 | <a id='GSM_MODEM_TYPE_UNKNOWN'></a>0 | [GSM_MODEM_TYPE_UNKNOWN](#GSM_MODEM_TYPE_UNKNOWN)             | not specified              |
 | <a id='GSM_MODEM_TYPE_HUAWEI_E3372'></a>1 | [GSM_MODEM_TYPE_HUAWEI_E3372](#GSM_MODEM_TYPE_HUAWEI_E3372) | HUAWEI LTE USB Stick E3372 |
@@ -364,7 +364,7 @@ Calibrated airflow angle measurements
 
 Mission command to reset Maximum Power Point Tracker (MPPT)
 
-| Param (Label) | Description |
+| Param (Label) | 描述          |
 | ------------- | ----------- |
 | 1             | MPPT number |
 | 2             | Empty       |
@@ -378,7 +378,7 @@ Mission command to reset Maximum Power Point Tracker (MPPT)
 
 Mission command to perform a power cycle on payload
 
-| Param (Label) | Description          |
+| Param (Label) | 描述                   |
 | ------------- | -------------------- |
 | 1             | Complete power cycle |
 | 2             | VISensor power cycle |
