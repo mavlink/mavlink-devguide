@@ -29,7 +29,7 @@ span.warning {
 
 - [Minimal.xml](../messages/standard.md)
 
-## Summary
+## 목차
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
