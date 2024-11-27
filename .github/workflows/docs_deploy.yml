@@ -66,7 +66,8 @@ jobs:
           # cp -r ~/_book/* mavlink.io/${{ env.BRANCH_NAME }}/
           rm -rf mavlink.io/*
           # mkdir -p mavlink.io
-          cp -r ~/_book/* mavlink.io/          
+          cp -r ~/_book/* mavlink.io/
+          cp CNAME mavlink.io/
           cd mavlink.io
           git config user.email "bot@px4.io"
           git config user.name "PX4BuildBot"
