@@ -5,9 +5,10 @@ Often the information is defined on one system and used on another (e.g. logs fr
 
 There is a _defacto_ standard used in many GCS systems and developer APIs for storing _mission_ information: [plain-text file format](#mission_plain_text_file).
 
-> [!NOTE]
-> At time of writing there are no MAVLink standards (defacto or otherwise) for: geofence, rally points, parameters etc.
-> There is a discussion about standardising file formats in [Issue #989](https://github.com/mavlink/mavlink/issues/989).
+::: info
+At time of writing there are no MAVLink standards (defacto or otherwise) for: geofence, rally points, parameters etc.
+There is a discussion about standardising file formats in [Issue #989](https://github.com/mavlink/mavlink/issues/989).
+:::
 
 ## Mission Plain-Text File Format {#mission_plain_text_file}
 
@@ -22,8 +23,9 @@ QGC WPL <VERSION>
 <INDEX> <CURRENT WP> <COORD FRAME> <COMMAND> <PARAM1> <PARAM2> <PARAM3> <PARAM4> <PARAM5/X/LATITUDE> <PARAM6/Y/LONGITUDE> <PARAM7/Z/ALTITUDE> <AUTOCONTINUE>
 ```
 
-> [!NOTE]
-> The spaces between the numbers/fields above are `<tab>` (i.e. `\t` in most programming languages).
+::: info
+The spaces between the numbers/fields above are `<tab>` (i.e. `\t` in most programming languages).
+:::
 
 For example:
 

@@ -13,9 +13,10 @@ The reference message set that is implemented by _most_ ground control stations 
 [Code generators](getting_started/generate_libraries.md) create software libraries for [specific programming languages](#supported_languages) from these XML message definitions, which can then be used by drones, ground control stations, and other MAVLink systems to communicate.
 The generated libraries are typically MIT-licensed, and can therefore be _used_ without limits in any closed-source application without publishing the source code of the closed-source application.
 
-> [!NOTE]
-> The C reference implementation is a header-only library that is highly optimized for resource-constrained systems with limited RAM and flash memory.
-> It is field-proven and deployed in many products where it serves as interoperability interface between components of different manufacturers.
+::: info
+The C reference implementation is a header-only library that is highly optimized for resource-constrained systems with limited RAM and flash memory.
+It is field-proven and deployed in many products where it serves as interoperability interface between components of different manufacturers.
+:::
 
 MAVLink was first released early 2009 by Lorenz Meier and has now a [significant number of contributors](https://github.com/mavlink/mavlink/graphs/contributors).
 

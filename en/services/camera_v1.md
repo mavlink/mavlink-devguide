@@ -3,9 +3,10 @@
 The MAVLink Camera Protocol v1 defines a set of commands for configuring a camera to capture images at a particular time or distance interval, and to start/stop/pause/reset triggering.
 It also includes commands to configure/control a video camera.
 
-> [!NOTE]
-> This API has been superseded by [Camera Protocol v2](../services/camera.md), which provides a more natural set of commands for using a camera, along with a comprehensive API for querying camera capabilities.
-> This API is used by some older MAVLink cameras, and can be supported in parallel with the new protocol.
+::: info
+This API has been superseded by [Camera Protocol v2](../services/camera.md), which provides a more natural set of commands for using a camera, along with a comprehensive API for querying camera capabilities.
+This API is used by some older MAVLink cameras, and can be supported in parallel with the new protocol.
+:::
 
 The protocol can be used to control cameras attached to autopilot outputs or standalone MAVLink cameras that support this protocol
 

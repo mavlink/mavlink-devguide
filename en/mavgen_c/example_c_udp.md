@@ -3,9 +3,10 @@
 The [MAVLink UDP Example](https://github.com/mavlink/mavlink/tree/master/examples/linux) is a simple C example that sends some data to _QGroundControl_ using MAVLink over UDP.
 _QGroundControl_ responds with heartbeats and other messages, which are then printed by this program.
 
-> [!NOTE]
-> The example should work on any Unix-like system (Linux, MacOS, BSD, etc.).
-> These instructions were tested on a clean _Ubuntu LTS 20.04_ installation using the default version of _gcc_ (9.3.0).
+::: info
+The example should work on any Unix-like system (Linux, MacOS, BSD, etc.).
+These instructions were tested on a clean _Ubuntu LTS 20.04_ installation using the default version of _gcc_ (9.3.0).
+:::
 
 ## Building/Running the Example
 
@@ -18,14 +19,17 @@ The following instructions show how to build and run the example.
    python3 -m pymavlink.tools.mavgen --lang=C --wire-protocol=2.0 --output=./include/ message_definitions/v1.0/common.xml
    ```
 
-   > [!TIP]
-   > Alternatively you can clone the [mavlink/mavlink](https://github.com/mavlink/mavlink/) repository and [Download prebuilt headers](../index.md#prebuilt_libraries) to the same location.
+   ::: tip
+   Alternatively you can clone the [mavlink/mavlink](https://github.com/mavlink/mavlink/) repository and [Download prebuilt headers](../index.md#prebuilt_libraries) to the same location.
+   :::
 
-   > [!NOTE]
-   > The example will not work with MAVLink 1 because it uses a message that includes extension fields which do not exist in MAVLink 1 (`SYS_STATUS`).
+   ::: info
+   The example will not work with MAVLink 1 because it uses a message that includes extension fields which do not exist in MAVLink 1 (`SYS_STATUS`).
+   :::
 
-   > [!NOTE]
-   > You can put/generate the library wherever you like, but the build command below assumes they are located in directory named **include** below the MAVLink root directory.
+   ::: info
+   You can put/generate the library wherever you like, but the build command below assumes they are located in directory named **include** below the MAVLink root directory.
+   :::
 
 1. Open a terminal and navigate to [examples/linux](https://github.com/mavlink/mavlink/tree/master/examples/linux)
 1. Compile with GCC using the following command:
@@ -34,9 +38,10 @@ The following instructions show how to build and run the example.
    gcc -std=c99 -I ../../include/common -o mavlink_udp mavlink_udp.c
    ```
 
-   > [!NOTE]
-   > The MAVLink header directory must be added to the include path.
-   > The path here assumes you are building the code from the example directory, and that have installed the headers in **mavlink/include**.
+   ::: info
+   The MAVLink header directory must be added to the include path.
+   The path here assumes you are building the code from the example directory, and that have installed the headers in **mavlink/include**.
+   :::
 
 1. Run the executable from the terminal:
 
@@ -51,8 +56,9 @@ The following instructions show how to build and run the example.
 
    _QGroundControl_ immediately starts broadcasting its `HEARTBEAT` on port 14551.
 
-   > [!NOTE]
-   > _QGroundControl_ returns data, but will not actually "connect" to the example (it will continue to display the message _Waiting for Vehicle Connection_).
+   ::: info
+   _QGroundControl_ returns data, but will not actually "connect" to the example (it will continue to display the message _Waiting for Vehicle Connection_).
+   :::
 
 1. The example should start displaying the received data in the terminal:
 

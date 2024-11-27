@@ -8,10 +8,11 @@ MAVLink has been deployed in a number of versions:
 The _MAVLink 2.0_ C/C++ and Python libraries are backwards compatible with MAVLink 1.0 (support both protocols).
 [Version Handshaking](#version_handshaking) and [Negotiating Versions](#negotiating_versions) explain how to choose which version is used.
 
-> [!NOTE]
-> _MAVLink v0.9_ is a pre-release version that is no longer supported.
-> The associated message set deleted in August 2018.
-> Legacy code may be present in generator and test code.
+::: info
+_MAVLink v0.9_ is a pre-release version that is no longer supported.
+The associated message set deleted in August 2018.
+Legacy code may be present in generator and test code.
+:::
 
 ## Determining Protocol/Message Version
 
@@ -26,12 +27,14 @@ A library's MAVLink support can be determined in a number of ways:
   - MAVLink 1: `0xFE`
   - MAVLink 2: `0xFD`
 
-  > [!NOTE]
-  > A MAVLink library that does not support a protocol version will not recognise the protocol start marker;
-  > so no messages will even be detected (see [Serialization](../guide/serialization.md)).
+  ::: info
+  A MAVLink library that does not support a protocol version will not recognise the protocol start marker;
+  so no messages will even be detected (see [Serialization](../guide/serialization.md)).
+  :::
 
-> [!TIP]
-> While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
+::: tip
+While messages do not contain version information, an extra CRC is used to ensure that a library will only process compatible messages (see [Serialization > CRC_EXTRA](../guide/serialization.md)).
+:::
 
 ## Version Handshaking {#version_handshaking}
 
@@ -74,8 +77,9 @@ The supported MAVLink library implementations enable different MAVLink versions 
 
 As a result, all [connections](../services/heartbeat.md) to other components over a particular channel must share the same MAVLink version. If a system is using signing, then all connections via the same channel must also be signing messages with the same key.
 
-> [!NOTE]
-> A system cannot use a single channel to connect to signed MAVLink 2 systems, unsigned MAVLink 2 systems, and/or MAVLink 1 components.
+::: info
+A system cannot use a single channel to connect to signed MAVLink 2 systems, unsigned MAVLink 2 systems, and/or MAVLink 1 components.
+:::
 
 Currently most MAVLink networks are configured to use unsigned MAVLink 2 messages.
 MAVLink 1 is primarily used to allow autopilots to connect to legacy MAVLink peripherals, and this is done via a separate channel.
