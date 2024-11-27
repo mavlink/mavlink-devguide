@@ -1,12 +1,12 @@
 # Guide
 
-This section contains guide material for understanding and using MAVLink, including the different [versions](../guide/mavlink_version.md) and [microservices](../services/README.md).
+This section contains guide material for understanding and using MAVLink, including the different [versions](../guide/mavlink_version.md) and [microservices](../services/index.md).
 
 The topics linked from the sidebar (and listed below):
 
 - [MAVLink Versions](../guide/mavlink_version.md)
 - [MAVLink 2](../guide/mavlink_2.md)
-- [Microservices](../services/README.md) (sub-protocols)
+- [Microservices](../services/index.md) (sub-protocols)
 - [Message Signing](../guide/message_signing.md)
 - [Serialization](../guide/serialization.md)
 - [Routing](../guide/routing.md)
@@ -19,4 +19,4 @@ The topics linked from the sidebar (and listed below):
 - [MAVLink XML Schema](../guide/xml_schema.md)
 - [Defining XML Enums/Messages](../guide/define_xml_element.md)
 - [MAVLink CRCs](../guide/crc.md)
-- [Dialects](../messages/README.md)
+- [Dialects](../messages/index.md)

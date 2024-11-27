@@ -86,7 +86,7 @@ Messages are encoded within the MAVLink packet:
 
 - The `msgid` (message id) field identifies the specific message encoded in the packet.
 - The `payload` field contains the message data.
-  - MAVLink [reorders the message fields](#field_reordering) in the payload for over-the-wire transmission (from the order in the original [XML Message Definitions](../messages/README.md)).
+  - MAVLink [reorders the message fields](#field_reordering) in the payload for over-the-wire transmission (from the order in the original [XML Message Definitions](../messages/index.md)).
   - MAVLink 2 [truncates](../guide/mavlink_2.md#packet_truncation) any zero-filled bytes at the end of the payload before the message is sent and sets the packet `len` field appropriately (MAVLink 1 always sends all bytes).
 - The `len` field contains the length of the payload data.
 - A [CRC_EXTRA](#crc_extra) byte is added to the message [checksum](#checksum).

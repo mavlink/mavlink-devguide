@@ -1,6 +1,6 @@
 # How to Define MAVLink Messages & Enums
 
-MAVLink enums, messages, commands, and other elements are [defined within XML files](../messages/README.md) and then converted to libraries for [supported programming languages](../README.md#supported_languages) using a _code generator_.
+MAVLink enums, messages, commands, and other elements are [defined within XML files](../messages/index.md) and then converted to libraries for [supported programming languages](../index.md#supported_languages) using a _code generator_.
 
 This topic provides practical guidance for defining and extending MAVLink XML elements, including conventions and best-practice.
 

@@ -1,6 +1,6 @@
 # Generating MAVLink Libraries
 
-Language-specific MAVLink libraries can be created from [XML Message Definitions](../messages/README.md) using _code generator_ tools.
+Language-specific MAVLink libraries can be created from [XML Message Definitions](../messages/index.md) using _code generator_ tools.
 
 This page shows how to use the following two code generators provided with the MAVLink project:
 
@@ -58,7 +58,7 @@ Steps for generating the MAVLink library code:
 
 1. Select the target MAVLink protocol version. Ideally use 2.0 if the generator supports it.
 
-   > **Caution** Generation will fail if the protocol is not [supported](../README.md#supported_languages) by the selected programming language.
+   > **Caution** Generation will fail if the protocol is not [supported](../index.md#supported_languages) by the selected programming language.
 
 1. Optionally check _Validate_ and/or _Validate Units_, which validates XML specifications.
 

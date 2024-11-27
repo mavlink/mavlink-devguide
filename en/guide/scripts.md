@@ -7,7 +7,7 @@ The scripts have the following requirements:
 - Python 2.7+ and 3.3+
 - `PYTHONPATH` specifies the directory path that contains the `mavlink` repository.
 - Write access to the entire **mavlink** folder.
-- Your [dialect](../messages/README.md#dialects)'s XML file is in `message_definitions/*/`
+- Your [dialect](../messages/index.md#dialects)'s XML file is in `message_definitions/*/`
 
 The scripts can be executed by running Python with the `-m` switch, which indicates that the given script exists on the `PYTHONPATH`. The following code runs **mavlogdump.py** in **/pymavlink/tools/** on the recorded MAVLink stream `test_run.mavlink` (other scripts in **/tools** and **/scripts** can be run in a similar fashion):
 
