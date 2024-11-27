@@ -28,23 +28,23 @@ span.warning {
 
 - [ardupilotmega.xml](../messages/ardupilotmega.md)
 
-## Summary
+## 概览
 
-| Type                       | Defined | Included |
-| -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 8       | 307      |
-| [Enums](#enumerated-types) | 8       | 204      |
-| [Commands](#mav_commands)  | 198     | 0        |
+| Type                    | Defined | Included |
+| ----------------------- | ------- | -------- |
+| [消息](#messages)         | 8       | 307      |
+| [枚举](#enumerated-types) | 8       | 204      |
+| [命令](#mav_commands)     | 198     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
-## Messages
+## 消息
 
 ### STORM32_GIMBAL_MANAGER_INFORMATION (60010) {#STORM32_GIMBAL_MANAGER_INFORMATION}
 
 Information about a gimbal manager. This message should be requested by a ground station using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE). It mirrors some fields of the [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION) message, but not all. If the additional information is desired, also [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION) should be requested.
 
-| Field Name          | Type       | Units | Values                                                                            | Description                                                                                                                                                                                                               |
+| Field Name          | Type       | Units | 值                                                                                 | 描述                                                                                                                                                                                                                        |
 | ------------------- | ---------- | ----- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | gimbal_id           | `uint8_t`  |       |                                                                                   | Gimbal ID (component ID or 1-6 for non-MAVLink gimbal) that this gimbal manager is responsible for.<br>Messages with same value are from the same source (instance).                                                |
 | device_cap_flags  | `uint32_t` |       | [GIMBAL_DEVICE_CAP_FLAGS](#GIMBAL_DEVICE_CAP_FLAGS)                             | Gimbal device capability flags. Same flags as reported by [GIMBAL_DEVICE_INFORMATION](#GIMBAL_DEVICE_INFORMATION). The flag is only 16 bit wide, but stored in 32 bit, for backwards compatibility (high word is zero). |
@@ -61,7 +61,7 @@ Information about a gimbal manager. This message should be requested by a ground
 
 Message reporting the current status of a gimbal manager. This message should be broadcast at a low regular rate (e.g. 1 Hz, may be increase momentarily to e.g. 5 Hz for a period of 1 sec after a change).
 
-| Field Name    | Type       | Values                                                                        | Description                                                                                                                                                                |
+| Field Name    | Type       | 值                                                                             | 描述                                                                                                                                                                         |
 | ------------- | ---------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | gimbal_id     | `uint8_t`  |                                                                               | Gimbal ID (component ID or 1-6 for non-MAVLink gimbal) that this gimbal manager is responsible for.<br>Messages with same value are from the same source (instance). |
 | supervisor    | `uint8_t`  | [MAV_STORM32_GIMBAL_MANAGER_CLIENT](#MAV_STORM32_GIMBAL_MANAGER_CLIENT)   | Client who is currently supervisor (0 = none).                                                                                                                             |
@@ -74,7 +74,7 @@ Message reporting the current status of a gimbal manager. This message should be
 
 Message to a gimbal manager to control the gimbal attitude. Angles and rates can be set to NaN according to use case. A gimbal device is never to react to this message.
 
-| Field Name           | Type       | Units | Values                                                                              | Description                                                                                                                                                                                                                                           |
+| Field Name           | Type       | Units | 值                                                                                   | 描述                                                                                                                                                                                                                                                    |
 | -------------------- | ---------- | ----- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system        | `uint8_t`  |       |                                                                                     | System ID                                                                                                                                                                                                                                             |
 | target_component     | `uint8_t`  |       |                                                                                     | Component ID                                                                                                                                                                                                                                          |
@@ -92,7 +92,7 @@ Message to a gimbal manager to control the gimbal attitude. Angles and rates can
 
 Message to a gimbal manager to control the gimbal tilt and pan angles. Angles and rates can be set to NaN according to use case. A gimbal device is never to react to this message.
 
-| Field Name       | Type       | Units | Values                                                                              | Description                                                                                                                                                                                                                                           |
+| Field Name       | Type       | Units | 值                                                                                   | 描述                                                                                                                                                                                                                                                    |
 | ---------------- | ---------- | ----- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t`  |       |                                                                                     | System ID                                                                                                                                                                                                                                             |
 | target_component | `uint8_t`  |       |                                                                                     | Component ID                                                                                                                                                                                                                                          |
@@ -100,7 +100,7 @@ Message to a gimbal manager to control the gimbal tilt and pan angles. Angles an
 | client           | `uint8_t`  |       | [MAV_STORM32_GIMBAL_MANAGER_CLIENT](#MAV_STORM32_GIMBAL_MANAGER_CLIENT)         | Client which is contacting the gimbal manager (must be set).                                                                                                                                                                                          |
 | device_flags     | `uint16_t` |       | invalid:UINT16_MAX [GIMBAL_DEVICE_FLAGS](#GIMBAL_DEVICE_FLAGS)                    | Gimbal device flags to be applied (UINT16_MAX to be ignored). Same flags as used in [GIMBAL_DEVICE_SET_ATTITUDE](#GIMBAL_DEVICE_SET_ATTITUDE).                                                                                                      |
 | manager_flags    | `uint16_t` |       | invalid:0 [MAV_STORM32_GIMBAL_MANAGER_FLAGS](#MAV_STORM32_GIMBAL_MANAGER_FLAGS) | Gimbal manager flags to be applied (0 to be ignored).                                                                                                                                                                                                 |
-| pitch            | `float`    | rad   | invalid:NaN                                                                         | Pitch/tilt angle (positive: tilt up). NaN to be ignored.                                                                                                                                                                                              |
+| 俯仰角              | `float`    | rad   | invalid:NaN                                                                         | Pitch/tilt angle (positive: tilt up). NaN to be ignored.                                                                                                                                                                                              |
 | yaw              | `float`    | rad   | invalid:NaN                                                                         | Yaw/pan angle (positive: pan the right). NaN to be ignored. The frame is determined by the GIMBAL_DEVICE_FLAGS_YAW_IN_xxx_FRAME flags.                                                                                                          |
 | pitch_rate       | `float`    | rad/s | invalid:NaN                                                                         | Pitch/tilt angular rate (positive: tilt up). NaN to be ignored.                                                                                                                                                                                       |
 | yaw_rate         | `float`    | rad/s | invalid:NaN                                                                         | Yaw/pan angular rate (positive: pan to the right). NaN to be ignored. The frame is determined by the GIMBAL_DEVICE_FLAGS_YAW_IN_xxx_FRAME flags.                                                                                                |
@@ -110,7 +110,7 @@ Message to a gimbal manager to control the gimbal tilt and pan angles. Angles an
 
 Message to a gimbal manager to correct the gimbal roll angle. This message is typically used to manually correct for a tilted horizon in operation. A gimbal device is never to react to this message.
 
-| Field Name       | Type      | Units | Values                                                                      | Description                                                                                                                                                                                                                                           |
+| Field Name       | Type      | Units | 值                                                                           | 描述                                                                                                                                                                                                                                                    |
 | ---------------- | --------- | ----- | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | target_system    | `uint8_t` |       |                                                                             | System ID                                                                                                                                                                                                                                             |
 | target_component | `uint8_t` |       |                                                                             | Component ID                                                                                                                                                                                                                                          |
@@ -125,9 +125,9 @@ Message to a gimbal manager to correct the gimbal roll angle. This message is ty
 
 Information about the shot operation.
 
-| Field Name | Type       | Values                              | Description                                                               |
+| Field Name | Type       | 值                                   | 描述                                                                        |
 | ---------- | ---------- | ----------------------------------- | ------------------------------------------------------------------------- |
-| mode       | `uint16_t` | [MAV_QSHOT_MODE](#MAV_QSHOT_MODE) | Current shot mode.                                                        |
+| 模式         | `uint16_t` | [MAV_QSHOT_MODE](#MAV_QSHOT_MODE) | Current shot mode.                                                        |
 | shot_state | `uint16_t` |                                     | Current state in the shot. States are specific to the selected shot mode. |
 
 
@@ -135,7 +135,7 @@ Information about the shot operation.
 
 Frsky SPort passthrough multi packet container.
 
-| Field Name     | Type           | Units | Description                                                                                                         |
+| Field Name     | Type           | Units | 描述                                                                                                                  |
 | -------------- | -------------- | ----- | ------------------------------------------------------------------------------------------------------------------- |
 | time_boot_ms | `uint32_t`     | ms    | Timestamp (time since system boot).                                                                                 |
 | count          | `uint8_t`      |       | Number of passthrough packets in this message.                                                                      |
@@ -146,7 +146,7 @@ Frsky SPort passthrough multi packet container.
 
 Parameter multi param value container.
 
-| Field Name          | Type           | Description                                                                                                                     |
+| Field Name          | Type           | 描述                                                                                                                              |
 | ------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | param_count         | `uint16_t`     | Total number of onboard parameters.                                                                                             |
 | param_index_first | `uint16_t`     | Index of the first onboard parameter in this array.                                                                             |
@@ -159,7 +159,7 @@ Parameter multi param value container.
 
 ### MAV_STORM32_TUNNEL_PAYLOAD_TYPE {#MAV_STORM32_TUNNEL_PAYLOAD_TYPE}
 
-| Value                        | Name                                                                                                      | Description                                                                        |
+| 值                            | Name                                                                                                      | 描述                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | <a id='MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH1_IN'></a>200 | [MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH1_IN](#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH1_IN)   | Registered for STorM32 gimbal controller. For communication with gimbal or camera. |
 | <a id='MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH1_OUT'></a>201 | [MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH1_OUT](#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH1_OUT) | Registered for STorM32 gimbal controller. For communication with gimbal or camera. |
@@ -172,7 +172,7 @@ Parameter multi param value container.
 
 (Bitmask) STorM32 gimbal prearm check flags.
 
-| Value                          | Name                                                                                                                          | Description                                    |
+| 值                              | Name                                                                                                                          | 描述                                             |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_IS_NORMAL'></a>1     | [MAV_STORM32_GIMBAL_PREARM_FLAGS_IS_NORMAL](#MAV_STORM32_GIMBAL_PREARM_FLAGS_IS_NORMAL)                                 | STorM32 gimbal is in normal state.             |
 | <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_IMUS_WORKING'></a>2     | [MAV_STORM32_GIMBAL_PREARM_FLAGS_IMUS_WORKING](#MAV_STORM32_GIMBAL_PREARM_FLAGS_IMUS_WORKING)                           | The IMUs are healthy and working normally.     |
@@ -192,7 +192,7 @@ Parameter multi param value container.
 
 (Bitmask) STorM32 camera prearm check flags.
 
-| Value                       | Name                                                                                        | Description                                 |
+| 值                           | Name                                                                                        | 描述                                          |
 | --------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------- |
 | <a id='MAV_STORM32_CAMERA_PREARM_FLAGS_CONNECTED'></a>1 | [MAV_STORM32_CAMERA_PREARM_FLAGS_CONNECTED](#MAV_STORM32_CAMERA_PREARM_FLAGS_CONNECTED) | The camera has been found and is connected. |
 
@@ -200,7 +200,7 @@ Parameter multi param value container.
 
 (Bitmask) Gimbal manager capability flags.
 
-| Value                       | Name                                                                                                          | Description                                   |
+| 值                           | Name                                                                                                          | 描述                                            |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
 | <a id='MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS_HAS_PROFILES'></a>1 | [MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS_HAS_PROFILES](#MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS_HAS_PROFILES) | The gimbal manager supports several profiles. |
 
@@ -208,7 +208,7 @@ Parameter multi param value container.
 
 (Bitmask) Flags for gimbal manager operation. Used for setting and reporting, unless specified otherwise. If a setting has been accepted by the gimbal manager is reported in the STORM32_GIMBAL_MANAGER_STATUS message.
 
-| Value                          | Name                                                                                                                        | Description                                                                                                                                     |
+| 值                              | Name                                                                                                                        | 描述                                                                                                                                              |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | <a id='MAV_STORM32_GIMBAL_MANAGER_FLAGS_NONE'></a>0    | [MAV_STORM32_GIMBAL_MANAGER_FLAGS_NONE](#MAV_STORM32_GIMBAL_MANAGER_FLAGS_NONE)                                         | 0 = ignore.                                                                                                                                     |
 | <a id='MAV_STORM32_GIMBAL_MANAGER_FLAGS_RC_ACTIVE'></a>1    | [MAV_STORM32_GIMBAL_MANAGER_FLAGS_RC_ACTIVE](#MAV_STORM32_GIMBAL_MANAGER_FLAGS_RC_ACTIVE)                             | Request to set RC input to active, or report RC input is active. Implies RC mixed. RC exclusive is achieved by setting all clients to inactive. |
@@ -227,7 +227,7 @@ Parameter multi param value container.
 
 Gimbal manager client ID. In a prioritizing profile, the priorities are determined by the implementation; they could e.g. be custom1 > onboard > GCS > autopilot/camera > GCS2 > custom2.
 
-| Value                       | Name                                                                                            | Description                                    |
+| 值                           | Name                                                                                            | 描述                                             |
 | --------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | <a id='MAV_STORM32_GIMBAL_MANAGER_CLIENT_NONE'></a>0 | [MAV_STORM32_GIMBAL_MANAGER_CLIENT_NONE](#MAV_STORM32_GIMBAL_MANAGER_CLIENT_NONE)           | For convenience.                               |
 | <a id='MAV_STORM32_GIMBAL_MANAGER_CLIENT_ONBOARD'></a>1 | [MAV_STORM32_GIMBAL_MANAGER_CLIENT_ONBOARD](#MAV_STORM32_GIMBAL_MANAGER_CLIENT_ONBOARD)     | This is the onboard/companion computer client. |
@@ -243,7 +243,7 @@ Gimbal manager client ID. In a prioritizing profile, the priorities are determin
 
 Gimbal manager profiles. Only standard profiles are defined. Any implementation can define its own profile(s) in addition, and should use enum values > 16.
 
-| Value                       | Name                                                                                                                      | Description                                                        |
+| 值                           | Name                                                                                                                      | 描述                                                                 |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | <a id='MAV_STORM32_GIMBAL_MANAGER_PROFILE_DEFAULT'></a>0 | [MAV_STORM32_GIMBAL_MANAGER_PROFILE_DEFAULT](#MAV_STORM32_GIMBAL_MANAGER_PROFILE_DEFAULT)                             | Default profile. Implementation specific.                          |
 | <a id='MAV_STORM32_GIMBAL_MANAGER_PROFILE_CUSTOM'></a>1 | [MAV_STORM32_GIMBAL_MANAGER_PROFILE_CUSTOM](#MAV_STORM32_GIMBAL_MANAGER_PROFILE_CUSTOM)                               | Not supported/deprecated.                                          |
@@ -256,7 +256,7 @@ Gimbal manager profiles. Only standard profiles are defined. Any implementation 
 
 Enumeration of possible shot modes.
 
-| Value                       | Name                                                                      | Description                                                                    |
+| 值                           | Name                                                                      | 描述                                                                             |
 | --------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | <a id='MAV_QSHOT_MODE_UNDEFINED'></a>0 | [MAV_QSHOT_MODE_UNDEFINED](#MAV_QSHOT_MODE_UNDEFINED)                   | Undefined shot mode. Can be used to determine if qshots should be used or not. |
 | <a id='MAV_QSHOT_MODE_DEFAULT'></a>1 | [MAV_QSHOT_MODE_DEFAULT](#MAV_QSHOT_MODE_DEFAULT)                       | Start normal gimbal operation. Is usually used to return back from a shot.     |
@@ -275,10 +275,10 @@ Enumeration of possible shot modes.
 
 Command to a gimbal manager to control the gimbal tilt and pan angles. It is possible to set combinations of the values below. E.g. an angle as well as a desired angular rate can be used to get to this angle at a certain angular rate, or an angular rate only will result in continuous turning. NaN is to be used to signal unset. A gimbal device is never to react to this command.
 
-| Param (Label)            | Description                                                                                                                                                                                                         | Values                                                                    | Units |
+| Param (Label)            | 描述                                                                                                                                                                                                                  | 值                                                                         | Units |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ----- |
-| 1 (Pitch angle)          | Pitch/tilt angle (positive: tilt up). NaN to be ignored.                                                                                                                                                            | min: -180 max: 180                                                        | deg   |
-| 2 (Yaw angle)            | Yaw/pan angle (positive: pan to the right). NaN to be ignored. The frame is determined by the GIMBAL_DEVICE_FLAGS_YAW_IN_xxx_FRAME flags.                                                                     | min: -180 max: 180                                                        | deg   |
+| 1 (Pitch angle)          | Pitch/tilt angle (positive: tilt up). NaN to be ignored.                                                                                                                                                            | min: -180 max: 180                                                        | 度     |
+| 2 (Yaw angle)            | Yaw/pan angle (positive: pan to the right). NaN to be ignored. The frame is determined by the GIMBAL_DEVICE_FLAGS_YAW_IN_xxx_FRAME flags.                                                                     | min: -180 max: 180                                                        | 度     |
 | 3 (Pitch rate)           | Pitch/tilt rate (positive: tilt up). NaN to be ignored.                                                                                                                                                             |                                                                           | deg/s |
 | 4 (Yaw rate)             | Yaw/pan rate (positive: pan to the right). NaN to be ignored. The frame is determined by the GIMBAL_DEVICE_FLAGS_YAW_IN_xxx_FRAME flags.                                                                      |                                                                           | deg/s |
 | 5 (Gimbal device flags)  | Gimbal device flags to be applied.                                                                                                                                                                                  | [GIMBAL_DEVICE_FLAGS](#GIMBAL_DEVICE_FLAGS)                             |       |
@@ -292,7 +292,7 @@ Command to a gimbal manager to control the gimbal tilt and pan angles. It is pos
 
 Command to configure a gimbal manager. A gimbal device is never to react to this command. The selected profile is reported in the STORM32_GIMBAL_MANAGER_STATUS message.
 
-| Param (Label) | Description                                                                                                                                                                    | Values                                                                        |
+| Param (Label) | 描述                                                                                                                                                                             | 值                                                                             |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- |
 | 1 (Profile)   | Gimbal manager profile (0 = default).                                                                                                                                          | [MAV_STORM32_GIMBAL_MANAGER_PROFILE](#MAV_STORM32_GIMBAL_MANAGER_PROFILE) |
 | 7 (Gimbal ID) | Gimbal ID of the gimbal manager to address (component ID or 1-6 for non-MAVLink gimbal, 0 for all gimbals). Send command multiple times for more than one but not all gimbals. |                                                                               |
@@ -304,7 +304,7 @@ Command to configure a gimbal manager. A gimbal device is never to react to this
 
 Command to set the shot manager mode.
 
-| Param (Label)             | Description                                                                           | Values                              |
+| Param (Label)             | 描述                                                                                    | 值                                   |
 | ------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------- |
 | 1 (Mode)                  | Set shot mode.                                                                        | [MAV_QSHOT_MODE](#MAV_QSHOT_MODE) |
 | 2 (Shot state or command) | Set shot state or command. The allowed values are specific to the selected shot mode. |                                     |   
