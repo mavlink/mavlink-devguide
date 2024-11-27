@@ -49,6 +49,6 @@ The difference is the `TIMESYNC` message in version 1 did not have `target_syste
 
 > **Note** Version 2 makes adds the target address, so a syncing system can filter on just the responses to its requests.
 
-## Implementations
+## 구현
 
 - PX4: [/src/modules/mavlink/mavlink_timesync.cpp](https://github.com/PX4/PX4-Autopilot/blob/master/src/modules/mavlink/mavlink_timesync.cpp)
