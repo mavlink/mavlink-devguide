@@ -186,6 +186,12 @@
     padding-left: var(--vp-sidebar-width) !important;
     padding-right: 32px !important;
   }
+
+  /* Very hacky */
+  .VPNavBar.has-sidebar #local-search {
+    z-index: 10;
+  }
+
 }
 
 /* Make content area a little wider to improve tables
