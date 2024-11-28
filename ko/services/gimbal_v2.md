@@ -1,8 +1,9 @@
 # Gimbal Protocol (v2)
 
-> [!NOTE]
-> This version supersedes [Gimbal Protocol v1](../services/gimbal.md)
-> Existing functionality is now fixed, but compatible changes may still be added.
+:::info
+This version supersedes [Gimbal Protocol v1](../services/gimbal.md)
+Existing functionality is now fixed, but compatible changes may still be added.
+:::
 
 ## 소개
 
@@ -14,8 +15,9 @@ It additionally provides ways to assign control to different sources.
 
 The protocol supports a number of hardware setups, and enables gimbals with varying capabilities.
 
-> [!NOTE]
-> The original protocol design document [can be found here](https://docs.google.com/document/d/16pekKRXLN2FhlL9YNFP983cjfBKAsDwN0gOSks8USo4/edit?usp=sharing).
+:::info
+The original protocol design document [can be found here](https://docs.google.com/document/d/16pekKRXLN2FhlL9YNFP983cjfBKAsDwN0gOSks8USo4/edit?usp=sharing).
+:::
 
 ## Concepts
 
@@ -30,9 +32,10 @@ The _Gimbal Manager_ and _Gimbal Device_ expose respective _message sets_ that c
 
 The key concept to understand is that a _Gimbal Manager_ has a 1:1 relationship with a particular _Gimbal Device_, and is the only party on the MAVLink network that is allowed to directly command that device - it does so using the _Gimbal Device message set_.
 
-> [!NOTE]
-> The _Gimbal Device_ must act only upon messages that come from the associated _Gimbal Manager_!
-> The device will however _broadcast_ its status to all parties on the network (not just its manager).
+:::info
+The _Gimbal Device_ must act only upon messages that come from the associated _Gimbal Manager_!
+The device will however _broadcast_ its status to all parties on the network (not just its manager).
+:::
 
 MAVLink applications (ground stations, developer APIs like the MAVSDK, etc.), and any other software that wants to control a particular gimbal, must do so via its _Gimbal Manager_, using the _Gimbal Manager message set_.
 
@@ -142,8 +145,9 @@ For example, a companion computer with an attached gimbal would appear as two MA
 The gimbal component would identify as a type `MAV_TYPE_GIMBAL` and assert that it implements the gimbal manager protocol.
 As with autopilot-attached cameras it would need to respond as a gimbal manager, and also stream required gimbal device messages.
 
-> [!NOTE]
-> Implementing each attached camera as a separate MAVLink component allows cameras attached to a companion computer to be separately addressed in missions executed on the autopilot.
+:::info
+Implementing each attached camera as a separate MAVLink component allows cameras attached to a companion computer to be separately addressed in missions executed on the autopilot.
+:::
 
 ## Implementation and Messages
 
@@ -160,8 +164,9 @@ If the `capabilities` field of the above message(s) has the flag [MAV_PROTOCOL_C
 
 The `GIMBAL_MANAGER_INFORMATION` contains important information a particular gimbal, such as its capabilities ([GIMBAL_MANAGER_CAP_FLAGS](#GIMBAL_MANAGER_CAP_FLAGS)), maximum angles and angle rates, as well as the `gimbal_device_id` which identifies the specific gimbal device controlled by a particular _Gimbal Manager_.
 
-> [!WARNING]
-> A GCS should always request `GIMBAL_MANAGER_INFORMATION` from autopilot components prior to: PX4 v1.16, ArduPilot-4.5 (when the protocol bit was added).
+:::warning
+A GCS should always request `GIMBAL_MANAGER_INFORMATION` from autopilot components prior to: PX4 v1.16, ArduPilot-4.5 (when the protocol bit was added).
+:::
 
 #### Gimbal Manager Status
 
@@ -182,13 +187,15 @@ To be co-operative entails the following rules:
 - Check the [GIMBAL_MANAGER_STATUS](#GIMBAL_MANAGER_STATUS) about who is in control first and - if possible - warn user about planned action. For example, if the autopilot is in control of the gimbal as part of a mission, the ground station should ask the user first (i.e. via a pop-up) if they really want to take over manual control.
 - Don't forget to release control when an action/task is finished and set the sysid/compid to 0.
 
-> [!NOTE]
-> It is possible to assign control to another component too, not just to itself.
-> For example, a smart shot running on a companion computer can set itself to be in primary control but assign a ground station for secondary control to e.g. nudge during the smart shot.
+:::info
+It is possible to assign control to another component too, not just to itself.
+For example, a smart shot running on a companion computer can set itself to be in primary control but assign a ground station for secondary control to e.g. nudge during the smart shot.
+:::
 
-> [!NOTE]
-> The implementation of how primary and secondary control are combined or mixed is not defined by the protocol but up to the implementation.
-> This allows flexibility for different use cases.
+:::info
+The implementation of how primary and secondary control are combined or mixed is not defined by the protocol but up to the implementation.
+This allows flexibility for different use cases.
+:::
 
 #### Manual Gimbal Control using MAVLink
 
@@ -285,9 +292,10 @@ The [GIMBAL_DEVICE_ATTITUDE_STATUS.flags](#GIMBAL_DEVICE_ATTITUDE_STATUS) field 
 For older devices, if neither of the flags above are set, the yaw frame must be inferred from the `GIMBAL_DEVICE_FLAGS_YAW_LOCK`.
 If it is set, the yaw is relative to North, otherwise to the front of the vehicle.
 
-> [!NOTE]
-> Manufacturers working on new gimbal devices should set either `GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME` or `GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME`.
-> Components recieving the message should also handle `GIMBAL_DEVICE_FLAGS_YAW_LOCK` for backwards compatibility with older devices.
+:::info
+Manufacturers working on new gimbal devices should set either `GIMBAL_DEVICE_FLAGS_YAW_IN_VEHICLE_FRAME` or `GIMBAL_DEVICE_FLAGS_YAW_IN_EARTH_FRAME`.
+Components receiving the message should also handle `GIMBAL_DEVICE_FLAGS_YAW_LOCK` for backwards compatibility with older devices.
+:::
 
 ## Message/Command/Enum Summary
 
@@ -424,9 +432,10 @@ In this case the gimbal manager is implemented by the autopilot which "sends" th
 
 Below is a short summary of all messages that a gimbal device should implement.
 
-> [!NOTE]
-> A _Gimbal Device_ can be tested by connecting it to an autopilot with a _Gimbal Manager_.
-> To avoid having to do a full setup including autopilot, a [direct test using MAVSDK](https://github.com/mavlink/MAVSDK/tree/develop/examples/gimbal_device_tester) is available.
+:::info
+A _Gimbal Device_ can be tested by connecting it to an autopilot with a _Gimbal Manager_.
+To avoid having to do a full setup including autopilot, a [direct test using MAVSDK](https://github.com/mavlink/MAVSDK/tree/develop/examples/gimbal_device_tester) is available.
+:::
 
 ### Messages to Send
 
@@ -436,8 +445,9 @@ The messages listed should be broadcast on the network/on all connections (sent 
 
 Heartbeats should always be sent (usually at 1 Hz).
 
-> [!NOTE]
-> Gimbals that set their `sysid` from the autopilot will need to wait for the autopilot's heartbeat before emitting their own (note that if the gimbal can receive heartbeats from multiple autopilots then the `sysid` must be explicitly/statically configured).
+:::info
+Gimbals that set their `sysid` from the autopilot will need to wait for the autopilot's heartbeat before emitting their own (note that if the gimbal can receive heartbeats from multiple autopilots then the `sysid` must be explicitly/statically configured).
+:::
 
 - `sysid`: the same sysid as the autopilot (this can either be done by configuration, or by listening to the autopilot's heartbeat first and then copying the sysid, default: 1)
 - `compid`: [MAV_COMP_ID_GIMBAL](../messages/common.md#MAV_COMP_ID_GIMBAL)
