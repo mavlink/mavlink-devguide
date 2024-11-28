@@ -4,14 +4,16 @@ The camera protocol v2 is used to configure camera payloads and request their st
 It provides basic methods for photo capture, video capture and streaming, setting zoom and focus, querying and configuring camera storage, and selecting multiple cameras.
 It also defines a camera definition file format that allows a GCS to generate a configuration UI for setting any property of the camera using parameters.
 
-> [!NOTE]
-> This protocol supersedes [Camera Protocol v1 (Simple Trigger Protocol)](../services/camera_v1.md).
-> The older protocol enables camera triggering, but does not support other features or querying camera capabilities.
+:::info
+This protocol supersedes [Camera Protocol v1 (Simple Trigger Protocol)](../services/camera_v1.md).
+The older protocol enables camera triggering, but does not support other features or querying camera capabilities.
+:::
 
-> [!WARNING]
-> We are transitioning from specific request commands to a single generic requestor.
-> GCS and MAVLink SDKs/apps should support both approaches as we migrate to exclusive use of the new method (documented here).
-> For more information see [Migration Notes for GCS & Camera Servers](#migration-notes-for-gcs--mavlink-sdks).
+:::warning
+We are transitioning from specific request commands to a single generic requestor.
+GCS and MAVLink SDKs/apps should support both approaches as we migrate to exclusive use of the new method (documented here).
+For more information see [Migration Notes for GCS & Camera Servers](#migration-notes-for-gcs--mavlink-sdks).
+:::
 
 ## MAVLink Camera Implementations
 
@@ -68,9 +70,10 @@ When processing a camera item in a mission the autopilot should:
 - For other `Target Camera ID` values, re-emit the `MAV_CMD` using the command protocol, setting the target component id to the `id` set in the camera mission item.
   It should also log any errors from the returned `COMMAND_ACK`.
 
-> [!NOTE]
-> Flight stacks that predate using a camera id typically re-emit the mission command addressed either to the broadcast component id (`0`) or to [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA).
-> The former triggers all cameras on the system, while the later provides better command handling because there is only one `COMMAND_ACK`.
+:::info
+Flight stacks that predate using a camera id typically re-emit the mission command addressed either to the broadcast component id (`0`) or to [MAV_COMP_ID_CAMERA](../messages/common.md#MAV_COMP_ID_CAMERA).
+The former triggers all cameras on the system, while the later provides better command handling because there is only one `COMMAND_ACK`.
+:::
 
 ## The camera identification operation identifies all the available cameras and determines their capabilities.
 
@@ -86,15 +89,17 @@ A GCS should start the [Camera Identification](#camera_identification) process t
 - MAVLink camera component.
 - Autopilot, in order to detect autopilot-connected cameras.
 
-> [!NOTE]
-> If a receiving system stops receiving heartbeats from the camera it is assumed to be _disconnected_, and should be removed from the list of available cameras.
-> If heartbeats are again detected, the _camera identification_ process below must be restarted from the beginning.
+:::info
+If a receiving system stops receiving heartbeats from the camera it is assumed to be _disconnected_, and should be removed from the list of available cameras.
+If heartbeats are again detected, the _camera identification_ process below must be restarted from the beginning.
+:::
 
-> [!NOTE]
-> If a vehicle has more than one MAVLink camera, each camera will have a different component ID and send its own heartbeat.
-> The vehicle autopilot might also have directly connected cameras, which are separately addressed by a camera device id.
-> The GCS should create multiple instances of a camera controller based on the component ID of each camera, and also the component ID of the autopilot and each of its attached camera devices.
-> All commands are sent to a specific camera by addressing the command to a specific component ID, and additionally the camera device id for autopilots.
+:::info
+If a vehicle has more than one MAVLink camera, each camera will have a different component ID and send its own heartbeat.
+The vehicle autopilot might also have directly connected cameras, which are separately addressed by a camera device id.
+The GCS should create multiple instances of a camera controller based on the component ID of each camera, and also the component ID of the autopilot and each of its attached camera devices.
+All commands are sent to a specific camera by addressing the command to a specific component ID, and additionally the camera device id for autopilots.
+:::
 
 ### Camera Identification {#camera_identification}
 
@@ -105,8 +110,9 @@ The process involves requesting the [CAMERA_INFORMATION](../messages/common.md#C
 `CAMERA_INFORMATION.flags` provides information about camera capabilities.
 It contains a bitmap of [CAMERA_CAP_FLAGS](../messages/common.md#CAMERA_CAP_FLAGS) values that tell the GCS if the camera supports still image capture, video capture, or video streaming, and if it needs to be in a certain mode for capture, etc.
 
-> [!TIP]
-> Camera identification must be carried out before all other camera operations!
+:::tip
+Camera identification must be carried out before all other camera operations!
+:::
 
 The first time a heartbeat is received from a new camera component ([HEARTBEAT.type=MAV_TYPE_CAMERA](../messages/common.md#MAV_TYPE_CAMERA)), the GCS should send it a [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message asking for [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) (message id 259).
 The camera will then respond with the a [COMMAND_ACK](../messages/common.md#COMMAND_ACK) message containing a result.
@@ -160,10 +166,11 @@ If this URI exists, the GCS will request it, parse it and prepare the UI for the
 The `CAMERA_INFORMATION.cam_definition_version` field should provide a version for the definition file, allowing the GCS to cache it.
 Once downloaded, it would only be requested again if the version number changes.
 
-> [!NOTE]
-> A GCS that implements this protocol is expected to support both HTTP (`http://`) and [MAVLink FTP](../services/ftp.md) (`mftp://`) URIs for download of the camera definition file.
-> If the camera provides an HTTP or MAVLink FTP interface, the definition file can be hosted on the camera itself.
-> Otherwise, it can be _hosted_ anywhere (on any reachable server).
+:::info
+A GCS that implements this protocol is expected to support both HTTP (`http://`) and [MAVLink FTP](../services/ftp.md) (`mftp://`) URIs for download of the camera definition file.
+If the camera provides an HTTP or MAVLink FTP interface, the definition file can be hosted on the camera itself.
+Otherwise, it can be _hosted_ anywhere (on any reachable server).
+:::
 
 ## 相机基本操作
 
@@ -196,9 +203,9 @@ sequenceDiagram;
     Camera->>GCS: CAMERA_SETTINGS
 -->
 
-> [!NOTE]
-> Command acknowledgment and message resending is handled in the same way as for [camera identification](#camera_identification)
-> (if a successful ACK is received the camera will expect the `CAMERA_SETTINGS` message, and repeat the cycle - up to 3 times - until it is received).
+:::info
+Command acknowledgment and message resending is handled in the same way as for [camera identification](#camera_identification) (if a successful ACK is received the camera will expect the `CAMERA_SETTINGS` message, and repeat the cycle - up to 3 times - until it is received).
+:::
 
 To set the camera to a specific mode, the GCS would send the [MAV_CMD_SET_CAMERA_MODE](../messages/common.md#MAV_CMD_SET_CAMERA_MODE) command with the appropriate mode.
 
@@ -216,8 +223,9 @@ sequenceDiagram;
     Note over Camera,GCS: If MAV_RESULT_ACCEPTED, mode was changed.
 -->
 
-> [!NOTE]
-> The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment.
+:::info
+The operation follows the normal [Command Protocol](../services/command.md) rules for command/acknowledgment.
+:::
 
 ### 存储状态
 
@@ -242,9 +250,10 @@ The camera immediately returns the normal command acknowledgment ([MAV_RESULT](.
 Each time an image is captured, the camera _broadcasts_ a [CAMERA_IMAGE_CAPTURED](../messages/common.md#CAMERA_IMAGE_CAPTURED) message.
 This message not only tells the GCS the image was captured, it is also intended for geo-tagging.
 
-> [!NOTE]
-> The camera must iterate `CAMERA_IMAGE_CAPTURED.image_index` and the counter used in `CAMERA_CAPTURE_STATUS.image_count` for every _new_ image capture (these values iterate until explicitly cleared using [MAV_CMD_STORAGE_FORMAT](#MAV_CMD_STORAGE_FORMAT)).
-> The index and total image count can be used to [re-request missing images](#missing_images) (e.g. images captured when the vehicle was out of telemetry range).
+:::info
+The camera must iterate `CAMERA_IMAGE_CAPTURED.image_index` and the counter used in `CAMERA_CAPTURE_STATUS.image_count` for every _new_ image capture (these values iterate until explicitly cleared using [MAV_CMD_STORAGE_FORMAT](#MAV_CMD_STORAGE_FORMAT)).
+The index and total image count can be used to [re-request missing images](#missing_images) (e.g. images captured when the vehicle was out of telemetry range).
+:::
 
 The [MAV_CMD_IMAGE_STOP_CAPTURE](../messages/common.md#MAV_CMD_IMAGE_STOP_CAPTURE) command can optionally be sent to stop an image capture sequence (this is needed if image capture has been set to continue forever).
 
@@ -322,8 +331,9 @@ To stop recording, the GCS uses the [MAV_CMD_VIDEO_STOP_CAPTURE](../messages/com
 
 ### Video Streaming {#video_streaming}
 
-> [!NOTE]
-> The GCS should already have identified all connected cameras by their heartbeat and followed the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
+:::info
+The GCS should already have identified all connected cameras by their heartbeat and followed the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
+:::
 
 A camera is capable of streaming video if it sets the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) bit set in [CAMERA_INFORMATION.flags](../messages/common.md#CAMERA_INFORMATION).
 
@@ -353,13 +363,16 @@ The steps are:
 
 3. If so, the GCS sends the [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) message to the camera requesting the video streaming configuration (`param1=269`) for all streams (`param2=0`).
 
-   > [!NOTE]> A GCS can also request information for a _particular stream_ by setting its id in `param2`.
+   ::: info
+   A GCS can also request information for a _particular stream_ by setting its id in `param2`.
+   :::
 
 4. Camera returns a [VIDEO_STREAM_INFORMATION](../messages/common.md#VIDEO_STREAM_INFORMATION) message for the specified stream or all streams it supports.
 
-> [!NOTE]
-> If your camera only provides video streaming and nothing else (no camera features), the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag is the only flag you need to set.
-> The GCS will then provide video streaming support and skip camera control.
+:::info
+If your camera only provides video streaming and nothing else (no camera features), the [CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM](../messages/common.md#CAMERA_CAP_FLAGS_HAS_VIDEO_STREAM) flag is the only flag you need to set.
+The GCS will then provide video streaming support and skip camera control.
+:::
 
 ### Video Metadata
 
@@ -379,9 +392,10 @@ The [CAMERA_THERMAL_RANGE](#CAMERA_THERMAL_RANGE) message can be streamed alongs
 The message includes the associated stream and camera id, along with the position and value of the maximum and minimum temperature in the video frame.
 That is sufficient to overlay the hottest and coldest points on a video, and in theory to determine the absolute temperature of all pixels.
 
-> [!NOTE]
-> The message is streamed alongside the video stream, but there is no precise mechanism to synchronize values to frames.
-> The information is therefore an estimate/approximate.
+:::info
+The message is streamed alongside the video stream, but there is no precise mechanism to synchronize values to frames.
+The information is therefore an estimate/approximate.
+:::
 
 The message can be requested for a particular camera and stream using the [MAV_CMD_SET_MESSAGE_INTERVAL](#MAV_CMD_SET_MESSAGE_INTERVAL), when the associated [VIDEO_STREAM_STATUS.flag](#VIDEO_STREAM_STATUS) for the stream has bit [VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED](#VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED) set.
 Note that `MAV_CMD_SET_MESSAGE_INTERVAL.param3` indicates the stream id of the current camera, or 0 for all streams, while `param4` indicates the target `camera_device_id` for autopilot-attached cameras or 0 for MAVLink cameras.
@@ -406,8 +420,9 @@ After stopping tracking you should call `MAV_CMD_SET_MESSAGE_INTERVAL` to stop s
 
 #### Camera tracking message sequence
 
-> [!NOTE]
-> The GCS should already have identified all connected cameras by their heartbeat and followed the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
+:::info
+The GCS should already have identified all connected cameras by their heartbeat and followed the [Camera Identification](#camera_identification) steps to get [CAMERA_INFORMATION](../messages/common.md#CAMERA_INFORMATION) for every camera.
+:::
 
 The sequence for tracking a point is shown below (tracking a rectangle is the same sequence but a different tracking command).
 
