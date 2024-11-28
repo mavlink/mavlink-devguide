@@ -62,8 +62,9 @@ Primarily this means that the team developing the generator must provide suffici
    git 结帐 -b mydescriptivrancanchname
    ```
 
-   > [!NOTE]
-   > _Always_ branch off master for new features.
+   ::: info
+   _Always_ branch off master for new features.
+   :::
 
 3. 用描述性承诺消息提交您的更改。
 

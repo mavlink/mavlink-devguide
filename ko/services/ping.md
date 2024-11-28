@@ -39,8 +39,10 @@ The original ping**ing** system:
 
 - Receives a `PING` message with `target_system` and `target_component` matching its address.
 
-  > [!TIP]> Any non-zero target system/component indicates a response message.
-  > > The matching ids inform the system that it is the intended recipient.
+  ::: tip
+  Any non-zero target system/component indicates a response message.
+  The matching ids inform the system that it is the intended recipient.
+  :::
 
 - The system calculates the latency from the current system time and the time in the response `PING` for the matching sequence number.
 

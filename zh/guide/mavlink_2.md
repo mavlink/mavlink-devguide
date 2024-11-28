@@ -15,8 +15,9 @@ The key new features of _MAVLink 2_ are:
 - [Empty-byte payload truncation](../guide/serialization.md#payload_truncation) - Empty (zero-filled) bytes at the end of the serialized payload must be removed before sending (All bytes were sent in _MAVLink 1_, regardless of content).
 - [Compatibility Flags](../guide/serialization.md#compat_flags)/[Incompatibility Flags](../guide/serialization.md#incompat_flags) - Allow for backwards compatible evolution of the protocol by indicating frames that must be handled in a special/non-standard way (packets with compatibility flags can still be handled in the standard way, while packets with incompatibility flags must be dropped if the flage is not supported).
 
-> [!TIP]
-> The _MAVLink 2_ [design document](https://docs.google.com/document/d/1XtbD0ORNkhZ8eKrsbSIZNLyg9sFRXMXbsR2mp37KbIg/edit?usp=sharing) provides additional background information about the changes.
+:::tip
+The _MAVLink 2_ [design document](https://docs.google.com/document/d/1XtbD0ORNkhZ8eKrsbSIZNLyg9sFRXMXbsR2mp37KbIg/edit?usp=sharing) provides additional background information about the changes.
+:::
 
 ## 升级到 MAVLink 2
 

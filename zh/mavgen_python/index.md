@@ -7,14 +7,16 @@ The library can be used with Python 2.7+ (recommended) or Python 3.5+ and suppor
 
 This topic explains how to get and use the _Pymavlink_ MAVLink Python libraries (generated using [mavgen](../getting_started/generate_libraries.md#mavgen)).
 
-> [!NOTE]
-> Pymavlink is developed in its own [project](https://github.com/ArduPilot/pymavlink), which includes the command line MAVLink generator (mavgen), Python bindings to create _Pymavlink_, and other useful tools and utilities.
-> MAVLink includes the [Pymavlink](https://github.com/ArduPilot/pymavlink) repository as a submodule.
-> While you can work with that project directly, this documentation explains how to work with _pymavlink_ _**using the MAVLink project**_.
+:::info
+Pymavlink is developed in its own [project](https://github.com/ArduPilot/pymavlink), which includes the command line MAVLink generator (mavgen), Python bindings to create _Pymavlink_, and other useful tools and utilities.
+MAVLink includes the [Pymavlink](https://github.com/ArduPilot/pymavlink) repository as a submodule.
+While you can work with that project directly, this documentation explains how to work with _pymavlink_ _**using the MAVLink project**_.
+:::
 
-> [!TIP]
-> If you are writing a MAVLink application to communicate with an autopilot you may prefer to use a higher level library like [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python) or [DroneKit-Python](http://python.dronekit.io/).
-> These implement a number of [MAVLink microservices](../about/overview.md).
+:::tip
+If you are writing a MAVLink application to communicate with an autopilot you may prefer to use a higher level library like [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python) or [DroneKit-Python](http://python.dronekit.io/).
+These implement a number of [MAVLink microservices](../about/overview.md).
+:::
 
 ## Getting the Python MAVLink Libraries
 
@@ -30,8 +32,9 @@ If you need a [standard dialect](../messages/index.md#dialects) then you can ins
 pip install pymavlink
 ```
 
-> [!TIP]
-> The [PyPi](https://pypi.org/project/pymavlink/) repository takes message definitions from the [ArduPilot/mavlink](https://github.com/ArduPilot/mavlink) fork, which may diverge slightly from _MAVLink/mavlink_.
+:::tip
+The [PyPi](https://pypi.org/project/pymavlink/) repository takes message definitions from the [ArduPilot/mavlink](https://github.com/ArduPilot/mavlink) fork, which may diverge slightly from _MAVLink/mavlink_.
+:::
 
 ### Generate a Custom MAVLink Dialect
 
@@ -84,9 +87,10 @@ There are several main caveats to be aware of when using **mavutil**:
 - **mavutil** is still a relatively low-level MAVLink API.
   It has limited support for even the most common [MAVLink microservices](../services/index.md).
 
-> [!TIP]
-> You don't have to use **mavutil** but it includes a lot of useful code that you might otherwise have to write from scratch.
-> In particular the connection code and methods to filter incoming messages are useful for any autopilot.
+:::tip
+You don't have to use **mavutil** but it includes a lot of useful code that you might otherwise have to write from scratch.
+In particular the connection code and methods to filter incoming messages are useful for any autopilot.
+:::
 
 The set of modules in the _pymavlink_ package are listed below:
 
@@ -121,8 +125,9 @@ You can change this by setting environment variables:
 - `MAVLINK20`: Set to 1 (if unset then default to MAVLink 1)
 - `MDEF`: Location of message definition libraries
 
-> [!TIP]
-> You can also change the dialect by passing its name to `mavutil.mavlink_connection()` when [setting up a connection](#setting_up_connection).
+:::tip
+You can also change the dialect by passing its name to `mavutil.mavlink_connection()` when [setting up a connection](#setting_up_connection).
+:::
 
 If you are not using _mavutil_ then you can import the dialect file that you want to use directly:
 
@@ -139,9 +144,10 @@ from pymavlink.dialects.v20 import common as mavlink2
 The **mavutil** module provides the `mavlink_connection()` method for setting up communication links to MAVLink systems over serial ports, tcp, or udp channels.
 It can also connect to a file object, which is useful when working with telemetry logs.
 
-> [!WARNING]
-> The method returns an object that represents a single system, but will collect messages from multiple systems on the link.
-> This is OK for two-system networks, but if you need to connect over a multi-vehicle IP network see [source-system-filtering](https://github.com/peterbarker/dronekit-python/tree/source-system-filtering/examples/multivehicle).
+:::warning
+The method returns an object that represents a single system, but will collect messages from multiple systems on the link.
+This is OK for two-system networks, but if you need to connect over a multi-vehicle IP network see [source-system-filtering](https://github.com/peterbarker/dronekit-python/tree/source-system-filtering/examples/multivehicle).
+:::
 
 The `mavlink_connection()` method takes a [connection string](#connection_string) defining the channel, and some optional arguments for setting the baud rate and other properties of the link (the format of the connection string automatically sets, and may override, some optional arguments).
 
@@ -161,10 +167,11 @@ print("Heartbeat from system (system %u component %u)" % (the_connection.target_
 # Once connected, use 'the_connection' to get and send messages
 ```
 
-> [!NOTE]
-> The `udpin` prefix used above creates a socket to _listen for_ a UDP connection on the specified port.
-> This is the normal way to connect an autopilot simulator).
-> The complementary `udpout` prefix creates a socket that _initiates_ an IP connection:
+:::info
+The `udpin` prefix used above creates a socket to _listen for_ a UDP connection on the specified port.
+This is the normal way to connect an autopilot simulator).
+The complementary `udpout` prefix creates a socket that _initiates_ an IP connection:
+:::
 
 ```python
 python
@@ -210,8 +217,9 @@ Some of the strings you can use for different types of connections are listed be
 | Windows computer connected to the vehicle via USB (in this case on COM14)     | `com14`                                                                                                                                                                     |
 | Windows computer connected to the vehicle using a 3DR Telemetry Radio on `COM14`                 | `com14` (also set `baud=57600`)                                                                                                                          |
 
-> [!NOTE]
-> While MAVLink does not define the UDP ports used for different purposes, there is a _defacto_ standard that MAVLink APIs should listen for SITL connections on UDP port `14540` while a GCS should listen for connections on UDP `14550`.
+:::info
+While MAVLink does not define the UDP ports used for different purposes, there is a _defacto_ standard that MAVLink APIs should listen for SITL connections on UDP port `14540` while a GCS should listen for connections on UDP `14550`.
+:::
 
 ### Sending Messages {#sending}
 
@@ -242,8 +250,9 @@ the_connection.mav.system_time_send(time_unix_usec, time_boot_ms)
 
 Other examples can be seen in [Publishing a Heartbeat](#heartbeat) and [Requesting Specific Messages](#specific_messages) below.
 
-> [!NOTE]
-> If you are not using **mavutil** you will need to create and set up the `MAVLink` object yourself so it knows about the channel that it should use for sending messages, which is represented by the `file` attribute.
+:::info
+If you are not using **mavutil** you will need to create and set up the `MAVLink` object yourself so it knows about the channel that it should use for sending messages, which is represented by the `file` attribute.
+:::
 
 ### Receiving Messages
 
@@ -318,8 +327,9 @@ For more information see [How to request messages](../mavgen_python/howto_reques
 All MAVLink components should periodically broadcast a [HEARTBEAT](../messages/common.md#HEARTBEAT) message and listen for heartbeats from other systems.
 Systems consider themselves [connected](../services/heartbeat.md) to another system as long as they regularly receive a `HEARTBEAT` from it.
 
-> [!NOTE]
-> [Sending Messages](#sending) explains how messages are sent.
+:::info
+[Sending Messages](#sending) explains how messages are sent.
+:::
 
 The `HEARTBEAT` message can be sent using `MAVLink.heartbeat_send()` message in the generated Python dialect file.
 The method definition is provided below:
@@ -354,8 +364,9 @@ the_connection.mav.heartbeat_send(mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
                                                 mavutil.mavlink.MAV_AUTOPILOT_INVALID, 0, 0, 0)
 ```
 
-> [!NOTE]
-> The various types used above come from `enum` in the dialect file.
+:::info
+The various types used above come from `enum` in the dialect file.
+:::
 
 The rate at which the heartbeat should be sent depends on the channel, but is normally 1Hz.
 

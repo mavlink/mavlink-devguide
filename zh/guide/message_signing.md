@@ -19,10 +19,11 @@ For a signed packet the **0x01** bit of the [incompatibility flag field](../guid
 
 ![MAVLink 2 Signed](../../assets/packets/packet_mavlink_v2_signing.png)
 
-> [!NOTE]
-> The [incompatibility flags](../guide/mavlink_2.md#incompat_flags) in the packet header are used to indicate that the MAVLink library must reject the packet if it does not understand or cannot handle the flag.
-> 换句话说, 不支持签名的 MAVLink 库必须丢弃签名的数据包。
-> The C library uses [MAVLINK_IFLAG_SIGNED](../guide/mavlink_2.md#MAVLINK_IFLAG_SIGNED) to represent the "supports message signing" bit.
+:::info
+The [incompatibility flags](../guide/mavlink_2.md#incompat_flags) in the packet header are used to indicate that the MAVLink library must reject the packet if it does not understand or cannot handle the flag.
+In other words, a MAVLink library that does not support signing must drop signed packets.
+The C library uses [MAVLINK_IFLAG_SIGNED](../guide/mavlink_2.md#MAVLINK_IFLAG_SIGNED) to represent the "supports message signing" bit.
+:::
 
 签字的13字节为：
 
@@ -45,8 +46,9 @@ The monotonically increasing [timestamp](#timestamp) rule is applied separately 
 (系统 id、组件 id、链接 id)
 ```
 
-> [!NOTE]
-> For more information see [C Message Signing > Handling Link IDs](../mavgen_c/message_signing_c.md#handling_link_ids).
+:::info
+For more information see [C Message Signing > Handling Link IDs](../mavgen_c/message_signing_c.md#handling_link_ids).
+:::
 
 ### Signature {#signature}
 
@@ -63,8 +65,9 @@ signature = sha256_48(secret_key + header + payload + CRC + link-ID + timestamp)
 
 时间戳是48位，从2015年1月1日起，单位为10微秒。 对于1/1/1970年以来可用的系统（unexpoch），你可以在 14200004 秒内使用抵消。
 
-> [!NOTE]
-> This is a loose definition, as the various update mechanisms detailed below may result in the timestamp being significantly different from actual GMT time.
+:::info
+This is a loose definition, as the various update mechanisms detailed below may result in the timestamp being significantly different from actual GMT time.
+:::
 
 All timestamps generated must be at least 1 more than the previous timestamp sent in the same session for the same link/`(SystemID, ComponentID, LinkID)` tuple.
 如果数据包以每秒100 000多包的速度破裂，时间戳可能提前 GMT 时间。
@@ -83,15 +86,18 @@ MAVLink 启用的设备可能不知道当前的 GMT 时间，例如，如果没�
 
 - When a correctly signed message is decoded the timestamp should be replaced by the timestamp of the incoming message if that timestamp is greater than the current timestamp.
 
-  > [!NOTE]> The link timestamp must never be updated with the timestamp from an incorrectly signed packet (even if these are being [accepted](#accepting_incorrectly_signed_packets)).
+  ::: info
+  The link timestamp must never be updated with the timestamp from an incorrectly signed packet (even if these are being [accepted](#accepting_incorrectly_signed_packets)).
+  :::
 
 - The timestamp on incoming signed messages should be checked against the previous timestamp for the incoming `(linkID,srcSystem,SrcComponent)` tuple and the message rejected if it is smaller.
 
 - If there is no previous message with the given `(linkID,srcSystem,SrcComponent)` then the timestamp should be accepted if it not more than 6 million (one minute) behind the current timestamp.
 
-> [!TIP]
-> For devices that store the timestamp in persistent storage, implementations can prevent race conditions by storing two timestamp values.
-> 在写入时, 应更新两个值中较小的值。 在读取时, 应使用两个值中较大的值。
+:::tip
+For devices that store the timestamp in persistent storage, implementations can prevent race conditions by storing two timestamp values.
+在写入时, 应更新两个值中较小的值。 在读取时, 应使用两个值中较大的值。
+:::
 
 ## Accepting Signed Packets {#accept_signed_packets}
 
@@ -107,9 +113,9 @@ MAVLink libraries should provide a mechanism that allows a system to conditional
 
 接受这些数据包的规则将是特定于实现的, 但可以基于参数设置、传输类型、消息类型、(in) 兼容性标志等的组合。
 
-> [!NOTE]
-> All packets that do not meet the system-specific unsigned packet acceptance rules must be rejected
-> (otherwise there is no benefit gained from signing/authentication).
+:::info
+All packets that do not meet the system-specific unsigned packet acceptance rules must be rejected (otherwise there is no benefit gained from signing/authentication).
+:::
 
 关于何时接受未签名数据包的一些建议:
 
@@ -125,8 +131,9 @@ MAVLink 库应该提供一种机制, 允许系统有条件地接受签名不正�
 
 此功能可能有助于查找带有损坏的密钥的失联飞机 (gcs 可以选择仍然显示位置信息, 尽管理想情况下使用不同的 "不受信任" 图标)。
 
-> [!NOTE]
-> A system that is accepting incorrectly signed packets should provide a highly conspicuous indication that the connection is _unsafe_/_insecure_. 格式错误的签名数据包表示配置错误、传输失败、协议失败或恶意操作。
+:::info
+A system that is accepting incorrectly signed packets should provide a highly conspicuous indication that the connection is _unsafe_/_insecure_. 格式错误的签名数据包表示配置错误、传输失败、协议失败或恶意操作。
+:::
 
 ## Secret Key Management {#secret_key}
 
@@ -134,10 +141,11 @@ MAVLink 库应该提供一种机制, 允许系统有条件地接受签名不正�
 密钥应在网络中的一个系统 (通常是 GCS) 上创建, 并通过安全通道共享到其他受信任的设备。
 系统必须具有共享密钥才能进行通信。
 
-> [!NOTE]
-> The _mavgen_ [C](../mavgen_c/message_signing_c.md) and [Python](../mavgen_python/index.md#message_signing) libraries support only one key per link.
-> 这是库的选择, 而不是协议的限制/要求。
-> 相反, 实现可以存储一个密钥池, 并/或在每个连接的基础上管理密钥。
+:::info
+The _mavgen_ [C](../mavgen_c/message_signing_c.md) and [Python](../mavgen_python/index.md#message_signing) libraries support only one key per link.
+这是库的选择, 而不是协议的限制/要求。
+相反, 实现可以存储一个密钥池, 并/或在每个连接的基础上管理密钥。
+:::
 
 密钥应存储在持久存储设备中, 并且不得通过任何可公开访问的通信协议公开。
 密钥应存储在持久存储设备中, 并且不得通过任何可公开访问的通信协议公开。 特别是, 密钥不得在可以用于公共日志分析的 MAVLink 参数、MAVLink 日志文件或数据闪存日志文件中公开。
@@ -159,9 +167,10 @@ The `SETUP_SIGNING` message should never be broadcast, and received `SETUP_SIGNI
 
 不通过 USB 提供 MAVLink 的自动驾驶仪可能会创建一个模块, 可以从命令行界面 (例如 nsh) 设置密钥。
 
-> [!TIP]
-> We recommend that GCS implementations should generate the secret key and share this with connected systems over a secure link (e.g. USB).
-> The receiving system may be configured to ignore message signatures on the secure channel (i.e. accept all [signed](#accept_signed_packets), [unsigned](#accepting_unsigned_packets) or [incorrectly signed](#accepting_incorrectly_signed_packets) packets), so that it is possible to reset a key that has been lost or corrupted.
+:::tip
+We recommend that GCS implementations should generate the secret key and share this with connected systems over a secure link (e.g. USB).
+The receiving system may be configured to ignore message signatures on the secure channel (i.e. accept all [signed](#accept_signed_packets), [unsigned](#accepting_unsigned_packets) or [incorrectly signed](#accepting_incorrectly_signed_packets) packets), so that it is possible to reset a key that has been lost or corrupted.
+:::
 
 ## 日志记录
 
@@ -178,5 +187,6 @@ The [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWA
 - 评价安全效力，包括抵制重播和脱机攻击。
 - 假设。
 
-> [!NOTE]
-> Much of this content is derived from the [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) (Google Doc).
+:::info
+Much of this content is derived from the [Message Signing Proposal](https://docs.google.com/document/d/1ETle6qQRcaNWAmpG2wz0oOpFKSF_bcTmYMQvtTGI8ns/edit?usp=sharing) (Google Doc).
+:::

@@ -12,8 +12,9 @@ The benefits of using _Wireshark_ over other alternatives are:
 This topic shows how to generate a Wireshark plugin for a particular dialect file and install it on Wireshark, and how to perform basic filtering. It also provides an overview of how you can use <em x-id="3">tcpdump</em> for collecting traffic on a linux computer (for later analysis).
 It also provides an overview of how you can use _tcpdump_ for collecting traffic on a linux computer (for later analysis).
 
-> [!NOTE]
-> You will need to regenerate and reimport the plugin (as shown below) if your dialect changes.
+:::info
+You will need to regenerate and reimport the plugin (as shown below) if your dialect changes.
+:::
 
 ## Generate MAVLink Lua Plugin for Wireshark
 
@@ -92,8 +93,9 @@ Below you can see the payload and the header details for an `ATTITUDE_TARGET` me
 
 In addition to using filters for the usual _Wireshark_ things (e.g. ips and ports) you can also use the new MAVLink filters.
 
-> [!NOTE]
-> This works the same way for live view and for a _pcapng_ file loaded into _Wireshark_
+:::info
+This works the same way for live view and for a _pcapng_ file loaded into _Wireshark_
+:::
 
 We already saw you can filter for MAVLink packets using `mavlink_proto`.
 The following is a filter example:
@@ -134,8 +136,9 @@ wireshark -k -i /tmp/mavlink &
 ssh root@10.41.1.1 -p 33333 "tcpdump -s 0 -U -n -w - -i lo not port 33333" > /tmp/mavlink;
 ```
 
-> [!NOTE]
-> Username, IP and port above have to be adjusted to the configuration on the remote machine.
+:::info
+Username, IP and port above have to be adjusted to the configuration on the remote machine.
+:::
 
 1. `mkfifo /tmp/mavlink` Creates a named pipe that is used to stream the data.
 2. `wireshark -k -i /tmp/mavlink &` Start _Wireshark_, open the named pipe as input and start the capture immediately.
@@ -151,10 +154,10 @@ ssh root@10.41.1.1 -p 33333 "tcpdump -s 0 -U -n -w - -i lo not port 33333" > /tm
 
 ## Measuring MAVLink data rates using Wireshark
 
-After the plugin is setup in Wireshark ad you have started to capture a stream you can use the Wireshark IO graphsto  monitor message rates for either the whole stream or just specific messages.
+After the plugin is setup in Wireshark and you have started to capture a stream you can use the Wireshark IO graphs to monitor message rates for either the whole stream or just specific messages.
 
 To do this you need to go to **Statistics > I/O Graphs** and you will get a new window.
 Now you will a plot of the data rate of all packets you are analyzing.
 You can filter for the usual _Wireshark_ filters and the new MAVLink ones introduced by the LUA script.
 
-We recommend changing the y axis to bits or bytes and to reduce the x axis to 10ms or faster to get meaningful plots.
+We recommend changing the `y` axis to bits or bytes and to reduce the `x` axis to 10ms or faster to get meaningful plots.
