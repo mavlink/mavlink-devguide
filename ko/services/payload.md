@@ -2,7 +2,7 @@
 
 MAVLink defines a number of commands for directly controlling [particular types of payloads](#payload-specific-commands) like winches and grippers, and for controlling [generic payloads](#generic-payload-commands). In addition there are commands for [payload placement in missions](#payload-deployment-commands).
 
-> [!NOTE] [Camera](camera.md) and [Gimbal](gimbal_v2.md) payloads are covered in their own topics.
+::: info [Camera](camera.md) and [Gimbal](gimbal_v2.md) payloads are covered in their own topics. :::
 
 ## Payload-Specific Commands
 
@@ -20,7 +20,7 @@ They should be used (where supported) in preference to [generic payload commands
 
 MAVLink has a number of commands for setting actuator outputs. These can be used to control arbitrary/generic payloads.
 
-> [!TIP] Use the [commands for known payload types](#payload-specific-commands) where possible as they are more intuitive for users, and in logs.
+::: tip Use the [commands for known payload types](#payload-specific-commands) where possible as they are more intuitive for users, and in logs. :::
 
 | Message                                                                                               | Description                                                                                                                                                                                                     |
 | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -29,11 +29,13 @@ MAVLink has a number of commands for setting actuator outputs. These can be used
 | <a id="MAV_CMD_DO_SET_RELAY"></a>[MAV_CMD_DO_SET_RELAY](../messages/common.md#MAV_CMD_DO_SET_RELAY)       | Set a specified relay instance on or off.                                                                                                                                                                       |
 | <a id="MAV_CMD_DO_REPEAT_RELAY"></a>[MAV_CMD_DO_REPEAT_RELAY](../messages/common.md#MAV_CMD_DO_REPEAT_RELAY) | Cycle a relay on and off for a desired number of cycles with a desired period.                                                                                                                                  |
 
-> [!NOTE] **Implementations:**
-> 
-> - `MAV_CMD_DO_SET_ACTUATOR` is more recent than `MAV_CMD_DO_SET_SERVO`, but has not yet been widely adopted. 
->     - Only implemented only on PX4 (June 2021). For more information see the [PX4 User Guide](https://docs.px4.io/master/en/payloads/#mission-triggering).
-> - `MAV_CMD_DO_SET_SERVO` is implemented on both ArduPilot and PX4 (Missions only). In both cases instance numbers map to corresponding AUX outputs.
+::: info **Implementations:**
+
+- `MAV_CMD_DO_SET_ACTUATOR` is more recent than `MAV_CMD_DO_SET_SERVO`, but has not yet been widely adopted.
+  - Only implemented only on PX4 (June 2021). For more information see the [PX4 User Guide](https://docs.px4.io/master/en/payloads/#mission-triggering).
+- `MAV_CMD_DO_SET_SERVO` is implemented on both ArduPilot and PX4 (Missions only). In both cases instance numbers map to corresponding AUX outputs.
+
+:::
 
 ## Payload Deployment Commands
 
@@ -43,7 +45,9 @@ These commands can be used to deploy a payload at a specfic location, controllin
 | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | <a id="MAV_CMD_NAV_PAYLOAD_PLACE"></a>[MAV_CMD_NAV_PAYLOAD_PLACE](../messages/common.md#MAV_CMD_NAV_PAYLOAD_PLACE) | Move to target location, descend and release payload. |
 
-> [!NOTE] **Implementations:**
-> 
-> - [MAV_CMD_NAV_PAYLOAD_PLACE](#MAV_CMD_NAV_PAYLOAD_PLACE) is implemented in ArduPilot only, and can be used in missions.
-> - [MAV_CMD_PAYLOAD_PREPARE_DEPLOY](../messages/common.md#MAV_CMD_PAYLOAD_PREPARE_DEPLOY) and [MAV_CMD_PAYLOAD_CONTROL_DEPLOY](../messages/common.md#MAV_CMD_PAYLOAD_PREPARE_DEPLOY) are not supported on any known flight stack. They are deprecated and should not be used.
+::: info **Implementations:**
+
+- [MAV_CMD_NAV_PAYLOAD_PLACE](#MAV_CMD_NAV_PAYLOAD_PLACE) is implemented in ArduPilot only, and can be used in missions.
+- [MAV_CMD_PAYLOAD_PREPARE_DEPLOY](../messages/common.md#MAV_CMD_PAYLOAD_PREPARE_DEPLOY) and [MAV_CMD_PAYLOAD_CONTROL_DEPLOY](../messages/common.md#MAV_CMD_PAYLOAD_PREPARE_DEPLOY) are not supported on any known flight stack. They are deprecated and should not be used.
+
+:::
