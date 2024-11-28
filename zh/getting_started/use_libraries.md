@@ -2,9 +2,10 @@
 
 以下链接文档解释了如何将 mavlink 库用于不同的编程语言 (通过不同的代码生成器生成)。
 
-> [!NOTE]
-> Not all of the libraries are documented.
-> 如果您有使用其他库的经验, 请帮助我们更新这些部分!
+:::info
+Not all of the libraries are documented.
+If you have experience with the other libraries, please help us update those sections!
+:::
 
 - Mavgen
 
