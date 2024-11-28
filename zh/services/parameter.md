@@ -37,9 +37,10 @@ Support for the parameter protocol is indicated if either [MAV_PROTOCOL_CAPABILI
 
 These protocol bits indicate different bytewise and C-style [parameter value encoding](#parameter-encoding) respectively.
 
-> [!NOTE]
-> The protocol may still be supported even if neither protocol bit is set.
-> To use the protocol in this case, a connected system would need to have prior knowledge of connected component.
+:::info
+The protocol may still be supported even if neither protocol bit is set.
+To use the protocol in this case, a connected system would need to have prior knowledge of connected component.
+:::
 
 ## Parameter Names
 
@@ -106,8 +107,9 @@ A GCS or other component may choose to maintain a cache of parameter values for 
 
 The cache can be populated initially by first [reading the full parameter list](#read_all) at least once, and then updated by monitoring for [PARAM_VALUE](../messages/common.md#PARAM_VALUE) messages (which are emitted whenever a parameter is [written](#write) or otherwise changed).
 
-> [!NOTE]
-> Cache synchronisation is not guaranteed; a component may [miss update messages](#monitoring_unreliable) due to parameter changes by other components.
+:::info
+Cache synchronisation is not guaranteed; a component may [miss update messages](#monitoring_unreliable) due to parameter changes by other components.
+:::
 
 ## Multi-System and Multi-Component Support
 
@@ -118,8 +120,9 @@ To get a complete parameter list from a system, send the request parameter messa
 
 All components must respond to parameter request messages addressed to their ID or the ID `MAV_COMP_ID_ALL`.
 
-> [!TIP]
-> _QGroundControl_ by default queries all components of the currently connected system (it sends ID `MAV_COMP_ID_ALL`).
+:::tip
+_QGroundControl_ by default queries all components of the currently connected system (it sends ID `MAV_COMP_ID_ALL`).
+:::
 
 ## Limitations {#limitations}
 
@@ -211,10 +214,11 @@ The sequence of operations is:
 
 The drone may restart the sequence if the `PARAM_VALUE` acknowledgment is not received within the timeout.
 
-> [!NOTE]
-> There is no formal way for the drone to signal when an invalid parameter is requested (i.e. for a parameter name or id that does not exist).
-> In this case the drone _should_ emit [STATUS_TEXT](../messages/common.md#STATUS_TEXT).
-> The GCS may monitor for the specific notification, but will otherwise fail the request after any timeout/resend cycle completes.
+:::info
+There is no formal way for the drone to signal when an invalid parameter is requested (i.e. for a parameter name or id that does not exist).
+In this case the drone _should_ emit [STATUS_TEXT](../messages/common.md#STATUS_TEXT).
+The GCS may monitor for the specific notification, but will otherwise fail the request after any timeout/resend cycle completes.
+:::
 
 ### Write Parameters {#write}
 
@@ -242,17 +246,20 @@ The sequence of operations is:
 
 3. Drone writes parameter and responds by _broadcasting_ a `PARAM_VALUE` containing the updated parameter value to all components/systems.
 
-   > [!NOTE]> The Drone must acknowledge the `PARAM_SET` by broadcasting a `PARAM_VALUE` even if the write operation fails.
-   > > In this case the `PARAM_VALUE` will be the current/unchanged parameter value.
+   ::: info
+   The Drone must acknowledge the `PARAM_SET` by broadcasting a `PARAM_VALUE` even if the write operation fails.
+   In this case the `PARAM_VALUE` will be the current/unchanged parameter value.
+   :::
 
 4. GCS should update the [parameter cache](#parameter_caching) (if used) with the new value.
 
 5. The GCS may restart the sequence if the expected `PARAM_VALUE` is not received within the timeout, or if the write operation fails (the value returned in `PARAM_VALUE` does not match the value set).
 
-> [!NOTE]
-> The command [MAV_CMD_DO_SET_PARAMETER](../messages/common.md#MAV_CMD_DO_SET_PARAMETER) is not part of the parameter protocol.
-> If implemented it can be used to set the value of a parameter using the _enumeration_ of the parameter within the remote system is known (rather than the id).
-> This has no particular advantage over the parameter protocol methods.
+:::info
+The command [MAV_CMD_DO_SET_PARAMETER](../messages/common.md#MAV_CMD_DO_SET_PARAMETER) is not part of the parameter protocol.
+If implemented it can be used to set the value of a parameter using the _enumeration_ of the parameter within the remote system is known (rather than the id).
+This has no particular advantage over the parameter protocol methods.
+:::
 
 ## Implementations
 
