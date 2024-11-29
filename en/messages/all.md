@@ -3,7 +3,7 @@
 
 # Dialect: all
 
-This dialect is intended to `include` all other [dialects](../messages/index.md) in the [mavlink/mavlink](https://github.com/mavlink/mavlink) repository (including [external dialects](https://github.com/mavlink/mavlink/tree/master/external/dialects#mavlink-external-dialects)).
+This dialect is intended to `include` all other [dialects](../messages/README.md) in the [mavlink/mavlink](https://github.com/mavlink/mavlink) repository (including [external dialects](https://github.com/mavlink/mavlink/tree/master/external/dialects#mavlink-external-dialects)).
 
 Dialects that are in **all.xml** are guaranteed to not have clashes in messages, enums, enum ids, and MAV_CMDs.
 This ensure that:
@@ -57,9 +57,9 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 0 | 364
-[Enums](#enumerated-types) | 0 | 235
-[Commands](#mav_commands) | 216 | 0
+[Messages](#messages) | 0 | 372
+[Enums](#enumerated-types) | 0 | 236
+[Commands](#mav_commands) | 218 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 

@@ -62,3 +62,4 @@ The dialect definitions are:
 - [paparazzi.xml](paparazzi.md)
 - [standard.xml](standard.md)
 - [ualberta.xml](ualberta.md)
+- [loweheiser.xml](loweheiser.md)
