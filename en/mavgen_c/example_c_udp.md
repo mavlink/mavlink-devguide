@@ -31,8 +31,9 @@ The following instructions show how to build and run the example.
    You can put/generate the library wherever you like, but the build command below assumes they are located in directory named **include** below the MAVLink root directory.
    :::
 
-1. Open a terminal and navigate to [examples/c](https://github.com/mavlink/mavlink/tree/master/examples/c)
-1. Compile with GCC using the following command:
+2. Open a terminal and navigate to [examples/c](https://github.com/mavlink/mavlink/tree/master/examples/c)
+
+3. Compile with GCC using the following command:
 
    ```sh
    gcc -std=c99 -I ../../include/common -o mavlink_udp udp_example.c
@@ -43,7 +44,7 @@ The following instructions show how to build and run the example.
    The path here assumes you are building the code from the example directory, and that have installed the headers in **mavlink/include**.
    :::
 
-1. Run the executable from the terminal:
+4. Run the executable from the terminal:
 
    ```bash
    ./mavlink_udp
@@ -52,7 +53,7 @@ The following instructions show how to build and run the example.
    By default, the example will listen for data on the localhost IP address, port 14551.
    You can specify another IP address as a command line argument (use `./mavlink_udp --help` to see usage).
 
-1. Open _QGroundControl_ on the same machine.
+5. Open _QGroundControl_ on the same machine.
 
    _QGroundControl_ immediately starts broadcasting its `HEARTBEAT` on port 14551.
 
@@ -60,7 +61,7 @@ The following instructions show how to build and run the example.
    _QGroundControl_ returns data, but will not actually "connect" to the example (it will continue to display the message _Waiting for Vehicle Connection_).
    :::
 
-1. The example should start displaying the received data in the terminal:
+6. The example should start displaying the received data in the terminal:
 
    ```sh
    ~/github/mavlink/examples/c$ ./mavlink_udp
