@@ -1,6 +1,6 @@
 # MAVLink C UDP Example
 
-The [MAVLink UDP Example](https://github.com/mavlink/mavlink/tree/master/examples/linux) is a simple C example that sends some data to _QGroundControl_ using MAVLink over UDP.
+The [MAVLink UDP Example](https://github.com/mavlink/mavlink/tree/master/examples/c) is a simple C example that sends some data to _QGroundControl_ using MAVLink over UDP.
 _QGroundControl_ responds with heartbeats and other messages, which are then printed by this program.
 
 ::: info
@@ -31,11 +31,12 @@ The following instructions show how to build and run the example.
    You can put/generate the library wherever you like, but the build command below assumes they are located in directory named **include** below the MAVLink root directory.
    :::
 
-1. Open a terminal and navigate to [examples/linux](https://github.com/mavlink/mavlink/tree/master/examples/linux)
-1. Compile with GCC using the following command:
+2. Open a terminal and navigate to [examples/c](https://github.com/mavlink/mavlink/tree/master/examples/c)
+
+3. Compile with GCC using the following command:
 
    ```sh
-   gcc -std=c99 -I ../../include/common -o mavlink_udp mavlink_udp.c
+   gcc -std=c99 -I ../../include/common -o mavlink_udp udp_example.c
    ```
 
    ::: info
@@ -43,7 +44,7 @@ The following instructions show how to build and run the example.
    The path here assumes you are building the code from the example directory, and that have installed the headers in **mavlink/include**.
    :::
 
-1. Run the executable from the terminal:
+4. Run the executable from the terminal:
 
    ```bash
    ./mavlink_udp
@@ -52,7 +53,7 @@ The following instructions show how to build and run the example.
    By default, the example will listen for data on the localhost IP address, port 14551.
    You can specify another IP address as a command line argument (use `./mavlink_udp --help` to see usage).
 
-1. Open _QGroundControl_ on the same machine.
+5. Open _QGroundControl_ on the same machine.
 
    _QGroundControl_ immediately starts broadcasting its `HEARTBEAT` on port 14551.
 
@@ -60,10 +61,10 @@ The following instructions show how to build and run the example.
    _QGroundControl_ returns data, but will not actually "connect" to the example (it will continue to display the message _Waiting for Vehicle Connection_).
    :::
 
-1. The example should start displaying the received data in the terminal:
+6. The example should start displaying the received data in the terminal:
 
    ```sh
-   ~/github/mavlink/examples/linux$ ./mavlink_udp
+   ~/github/mavlink/examples/c$ ./mavlink_udp
    Bytes Received: 17
    Datagram: fe 09 00 ff 00 00 00 00 00 00 06 08 c0 04 03 19 87
    Received packet: SYS: 255, COMP: 0, LEN: 9, MSG ID: 0
