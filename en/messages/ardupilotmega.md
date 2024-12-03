@@ -2112,21 +2112,6 @@ Param (Label) | Description | Values | Units
 7 | Empty |   |   
 
 
-### MAV_CMD_EXTERNAL_POSITION_ESTIMATE (43003) {#MAV_CMD_EXTERNAL_POSITION_ESTIMATE}
-
-Provide an external position estimate for use when dead-reckoning. This is meant to be used for occasional position resets that may be provided by a external system such as a remote pilot using landmarks over a video link.
-
-Param (Label) | Description | Units
---- | --- | ---
-1 (transmission_time) | Timestamp that this message was sent as a time in the transmitters time domain. The sender should wrap this time back to zero based on required timing accuracy for the application and the limitations of a 32 bit float. For example, wrapping at 10 hours would give approximately 1ms accuracy. Recipient must handle time wrap in any timing jitter correction applied to this field. Wrap rollover time should not be at not more than 250 seconds, which would give approximately 10 microsecond accuracy. | s 
-2 (processing_time) | The time spent in processing the sensor data that is the basis for this position. The recipient can use this to improve time alignment of the data. Set to zero if not known. | s 
-3 (accuracy) | estimated one standard deviation accuracy of the measurement. Set to NaN if not known. |   
-4 | Empty |   
-5 (Latitude) | Latitude |   
-6 (Longitude) | Longitude |   
-7 (Altitude) | Altitude, not used. Should be sent as NaN. May be supported in a future version of this message. | m 
-
-
 ### MAV_CMD_SET_HAGL (43005) {#MAV_CMD_SET_HAGL}
 
 Provide a value for height above ground level. This can be used for things like fixed wing and VTOL landing.
