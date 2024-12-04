@@ -1,6 +1,6 @@
 # MAVLink C UDP 示例
 
-The [MAVLink UDP Example](https://github.com/mavlink/mavlink/tree/master/examples/linux) is a simple C example that sends some data to _QGroundControl_ using MAVLink over UDP.
+The [MAVLink UDP Example](https://github.com/mavlink/mavlink/tree/master/examples/c) is a simple C example that sends some data to _QGroundControl_ using MAVLink over UDP.
 _QGroundControl_ responds with heartbeats and other messages, which are then printed by this program.
 
 :::info
@@ -31,12 +31,12 @@ These instructions were tested on a clean _Ubuntu LTS 20.04_ installation using 
    You can put/generate the library wherever you like, but the build command below assumes they are located in directory named **include** below the MAVLink root directory.
    :::
 
-2. Open a terminal and navigate to [examples/linux](https://github.com/mavlink/mavlink/tree/master/examples/linux)
+2. Open a terminal and navigate to [examples/c](https://github.com/mavlink/mavlink/tree/master/examples/c)
 
 3. 使用下列命令编译GCC：
 
    ```sh
-   gcc -std=c99 -I ../../include/common -o mavlink_udp mavlink_udp.c
+   gcc -std=c99 -I ../../include/common -o mavlink_udp udp_example.c
    ```
 
    ::: info
@@ -64,7 +64,7 @@ These instructions were tested on a clean _Ubuntu LTS 20.04_ installation using 
 6. 例子应该开始显示终端收到的数据：
 
    ```sh
-   ~/github/mavlink/examples/linux$ ./mavlink_udp
+   ~/github/mavlink/examples/c$ ./mavlink_udp
    Bytes Received: 17
    Datagram: fe 09 00 ff 00 00 00 00 00 00 06 08 c0 04 03 19 87
    Received packet: SYS: 255, COMP: 0, LEN: 9, MSG ID: 0

@@ -32,6 +32,7 @@ span.warning {
 - [common.xml](../messages/common.md)
 - [uAvionix.xml](../messages/uAvionix.md)
 - [icarous.xml](../messages/icarous.md)
+- [loweheiser.xml](../messages/loweheiser.md)
 - [cubepilot.xml](../messages/cubepilot.md)
 - [csAirLink.xml](../messages/csAirLink.md)
 
@@ -39,15 +40,17 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 65      | 242      |
-| [Enums](#enumerated-types) | 45      | 159      |
-| [Commands](#mav_commands)  | 195     | 0        |
+| [Messages](#messages)      | 72      | 243      |
+| [Enums](#enumerated-types) | 46      | 159      |
+| [Commands](#mav_commands)  | 197     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
 ## Messages
 
-### SENSOR_OFFSETS (150) {#SENSOR_OFFSETS}
+### SENSOR_OFFSETS (150) — [DEP] {#SENSOR_OFFSETS}
+
+<span class="warning">**DEPRECATED:** Replaced By [MAG_CAL_REPORT](#MAG_CAL_REPORT), Accel Parameters, and Gyro Parameters (2022-02)</span>
 
 Offsets and calibrations values for hardware sensors. This makes it easier to debug the calibration process.
 
@@ -733,6 +736,32 @@ Write registers reply.
 | request_id | `uint32_t` | Request ID - copied from request.             |
 | result                          | `uint8_t`  | 0 for success, anything else is failure code. |
 
+### SECURE_COMMAND (11004) {#SECURE_COMMAND}
+
+Send a secure command. Data should be signed with a private key corresponding with a public key known to the recipient. Signature should be over the concatenation of the sequence number (little-endian format), the operation (little-endian format) the data and the session key. For [SECURE_COMMAND_GET_SESSION_KEY](#SECURE_COMMAND_GET_SESSION_KEY) the session key should be zero length. The data array consists of the data followed by the signature. The sum of the data_length and the sig_length cannot be more than 220. The format of the data is command specific.
+
+| Field Name                            | Type           | Values                                                                            | Description                                    |
+| ------------------------------------- | -------------- | --------------------------------------------------------------------------------- | ---------------------------------------------- |
+| target_system    | `uint8_t`      |                                                                                   | System ID.                     |
+| target_component | `uint8_t`      |                                                                                   | Component ID.                  |
+| sequence                              | `uint32_t`     |                                                                                   | Sequence ID for tagging reply. |
+| operation                             | `uint32_t`     | [SECURE_COMMAND_OP](#SECURE_COMMAND_OP) | Operation being requested.     |
+| data_length      | `uint8_t`      |                                                                                   | Data length.                   |
+| sig_length       | `uint8_t`      |                                                                                   | Signature length.              |
+| data                                  | `uint8_t[220]` |                                                                                   | Signed data.                   |
+
+### SECURE_COMMAND_REPLY (11005) {#SECURE_COMMAND_REPLY}
+
+Reply from secure command.
+
+| Field Name                       | Type           | Values                                                                            | Description                                   |
+| -------------------------------- | -------------- | --------------------------------------------------------------------------------- | --------------------------------------------- |
+| sequence                         | `uint32_t`     |                                                                                   | Sequence ID from request.     |
+| operation                        | `uint32_t`     | [SECURE_COMMAND_OP](#SECURE_COMMAND_OP) | Operation that was requested. |
+| result                           | `uint8_t`      | [MAV_RESULT](#MAV_RESULT)                                    | Result of command.            |
+| data_length | `uint8_t`      |                                                                                   | Data length.                  |
+| data                             | `uint8_t[220]` |                                                                                   | Reply data.                   |
+
 ### ADAP_TUNING (11010) {#ADAP_TUNING}
 
 Adaptive Controller tuning information.
@@ -866,9 +895,7 @@ Read configured OSD parameter reply.
 | max_value   | `float`    |                                                                                                                  | OSD parameter maximum value.                                                                                                                                                                                                                              |
 | increment                        | `float`    |                                                                                                                  | OSD parameter increment.                                                                                                                                                                                                                                  |
 
-### OBSTACLE_DISTANCE_3D (11037) — [WIP] {#OBSTACLE_DISTANCE_3D}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### OBSTACLE_DISTANCE_3D (11037) {#OBSTACLE_DISTANCE_3D}
 
 Obstacle located as a 3D vector.
 
@@ -914,6 +941,71 @@ The MCU status, giving MCU temperature and voltage. The min and max voltages are
 | MCU_voltage_min | `uint16_t` | mV    | MCU voltage minimum                                                                                              |
 | MCU_voltage_max | `uint16_t` | mV    | MCU voltage maximum                                                                                              |
 
+### ESC_TELEMETRY_13_TO_16 (11040) {#ESC_TELEMETRY_13_TO_16}
+
+ESC Telemetry Data for ESCs 13 to 16, matching data sent by BLHeli ESCs.
+
+| Field Name   | Type          | Units | Description                                                                              |
+| ------------ | ------------- | ----- | ---------------------------------------------------------------------------------------- |
+| temperature  | `uint8_t[4]`  | degC  | Temperature.                                                             |
+| voltage      | `uint16_t[4]` | cV    | Voltage.                                                                 |
+| current      | `uint16_t[4]` | cA    | Current.                                                                 |
+| totalcurrent | `uint16_t[4]` | mAh   | Total current.                                                           |
+| rpm          | `uint16_t[4]` | rpm   | RPM (eRPM).                                           |
+| count        | `uint16_t[4]` |       | count of telemetry packets received (wraps at 65535). |
+
+### ESC_TELEMETRY_17_TO_20 (11041) {#ESC_TELEMETRY_17_TO_20}
+
+ESC Telemetry Data for ESCs 17 to 20, matching data sent by BLHeli ESCs.
+
+| Field Name   | Type          | Units | Description                                                                              |
+| ------------ | ------------- | ----- | ---------------------------------------------------------------------------------------- |
+| temperature  | `uint8_t[4]`  | degC  | Temperature.                                                             |
+| voltage      | `uint16_t[4]` | cV    | Voltage.                                                                 |
+| current      | `uint16_t[4]` | cA    | Current.                                                                 |
+| totalcurrent | `uint16_t[4]` | mAh   | Total current.                                                           |
+| rpm          | `uint16_t[4]` | rpm   | RPM (eRPM).                                           |
+| count        | `uint16_t[4]` |       | count of telemetry packets received (wraps at 65535). |
+
+### ESC_TELEMETRY_21_TO_24 (11042) {#ESC_TELEMETRY_21_TO_24}
+
+ESC Telemetry Data for ESCs 21 to 24, matching data sent by BLHeli ESCs.
+
+| Field Name   | Type          | Units | Description                                                                              |
+| ------------ | ------------- | ----- | ---------------------------------------------------------------------------------------- |
+| temperature  | `uint8_t[4]`  | degC  | Temperature.                                                             |
+| voltage      | `uint16_t[4]` | cV    | Voltage.                                                                 |
+| current      | `uint16_t[4]` | cA    | Current.                                                                 |
+| totalcurrent | `uint16_t[4]` | mAh   | Total current.                                                           |
+| rpm          | `uint16_t[4]` | rpm   | RPM (eRPM).                                           |
+| count        | `uint16_t[4]` |       | count of telemetry packets received (wraps at 65535). |
+
+### ESC_TELEMETRY_25_TO_28 (11043) {#ESC_TELEMETRY_25_TO_28}
+
+ESC Telemetry Data for ESCs 25 to 28, matching data sent by BLHeli ESCs.
+
+| Field Name   | Type          | Units | Description                                                                              |
+| ------------ | ------------- | ----- | ---------------------------------------------------------------------------------------- |
+| temperature  | `uint8_t[4]`  | degC  | Temperature.                                                             |
+| voltage      | `uint16_t[4]` | cV    | Voltage.                                                                 |
+| current      | `uint16_t[4]` | cA    | Current.                                                                 |
+| totalcurrent | `uint16_t[4]` | mAh   | Total current.                                                           |
+| rpm          | `uint16_t[4]` | rpm   | RPM (eRPM).                                           |
+| count        | `uint16_t[4]` |       | count of telemetry packets received (wraps at 65535). |
+
+### ESC_TELEMETRY_29_TO_32 (11044) {#ESC_TELEMETRY_29_TO_32}
+
+ESC Telemetry Data for ESCs 29 to 32, matching data sent by BLHeli ESCs.
+
+| Field Name   | Type          | Units | Description                                                                              |
+| ------------ | ------------- | ----- | ---------------------------------------------------------------------------------------- |
+| temperature  | `uint8_t[4]`  | degC  | Temperature.                                                             |
+| voltage      | `uint16_t[4]` | cV    | Voltage.                                                                 |
+| current      | `uint16_t[4]` | cA    | Current.                                                                 |
+| totalcurrent | `uint16_t[4]` | mAh   | Total current.                                                           |
+| rpm          | `uint16_t[4]` | rpm   | RPM (eRPM).                                           |
+| count        | `uint16_t[4]` |       | count of telemetry packets received (wraps at 65535). |
+
 ## Enumerated Types
 
 ### ACCELCAL_VEHICLE_POS {#ACCELCAL_VEHICLE_POS}
@@ -935,6 +1027,7 @@ The MCU status, giving MCU temperature and voltage. The min and max voltages are
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | <a id='HEADING_TYPE_COURSE_OVER_GROUND'></a>0 | [HEADING_TYPE_COURSE_OVER_GROUND](#HEADING_TYPE_COURSE_OVER_GROUND) |             |
 | <a id='HEADING_TYPE_HEADING'></a>1            | [HEADING_TYPE_HEADING](#HEADING_TYPE_HEADING)                                                                 |             |
+| <a id='HEADING_TYPE_DEFAULT'></a>2            | [HEADING_TYPE_DEFAULT](#HEADING_TYPE_DEFAULT)                                                                 |             |
 
 ### SCRIPTING_CMD {#SCRIPTING_CMD}
 
@@ -944,6 +1037,19 @@ The MCU status, giving MCU temperature and voltage. The min and max voltages are
 | <a id='SCRIPTING_CMD_REPL_STOP'></a>1        | [SCRIPTING_CMD_REPL_STOP](#SCRIPTING_CMD_REPL_STOP)                                    | End a REPL session.                    |
 | <a id='SCRIPTING_CMD_STOP'></a>2             | [SCRIPTING_CMD_STOP](#SCRIPTING_CMD_STOP)                                                                   | Stop execution of scripts.             |
 | <a id='SCRIPTING_CMD_STOP_AND_RESTART'></a>3 | [SCRIPTING_CMD_STOP_AND_RESTART](#SCRIPTING_CMD_STOP_AND_RESTART) | Stop execution of scripts and restart. |
+
+### SECURE_COMMAND_OP {#SECURE_COMMAND_OP}
+
+| Value                                                 | Name                                                                                                                                                                                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='SECURE_COMMAND_GET_SESSION_KEY'></a>0          | [SECURE_COMMAND_GET_SESSION_KEY](#SECURE_COMMAND_GET_SESSION_KEY)                                        | Get an 8 byte session key which is used for remote secure updates which operate on flight controller data such as bootloader public keys. Return data will be 8 bytes on success. The session key remains valid until either the flight controller reboots or another [SECURE_COMMAND_GET_SESSION_KEY](#SECURE_COMMAND_GET_SESSION_KEY) is run.                                                                        |
+| <a id='SECURE_COMMAND_GET_REMOTEID_SESSION_KEY'></a>1 | [SECURE_COMMAND_GET_REMOTEID_SESSION_KEY](#SECURE_COMMAND_GET_REMOTEID_SESSION_KEY) | Get an 8 byte session key which is used for remote secure updates which operate on RemoteID module data. Return data will be 8 bytes on success. The session key remains valid until either the remote ID module reboots or another [SECURE_COMMAND_GET_REMOTEID_SESSION_KEY](#SECURE_COMMAND_GET_REMOTEID_SESSION_KEY) is run.                                                                   |
+| <a id='SECURE_COMMAND_REMOVE_PUBLIC_KEYS'></a>2       | [SECURE_COMMAND_REMOVE_PUBLIC_KEYS](#SECURE_COMMAND_REMOVE_PUBLIC_KEYS)                                  | Remove range of public keys from the bootloader. Command data consists of two bytes, first byte if index of first public key to remove. Second byte is the number of keys to remove. If all keys are removed then secure boot is disabled and insecure firmware can be loaded.                                                                                                                                                                                                             |
+| <a id='SECURE_COMMAND_GET_PUBLIC_KEYS'></a>3          | [SECURE_COMMAND_GET_PUBLIC_KEYS](#SECURE_COMMAND_GET_PUBLIC_KEYS)                                        | Get current public keys from the bootloader. Command data consists of two bytes, first byte is index of first public key to fetch, 2nd byte is number of keys to fetch. Total data needs to fit in data portion of reply (max 6 keys for 32 byte keys). Reply data has the index of the first key in the first byte, followed by the keys. Returned keys may be less than the number of keys requested if there are less keys installed than requested. |
+| <a id='SECURE_COMMAND_SET_PUBLIC_KEYS'></a>4          | [SECURE_COMMAND_SET_PUBLIC_KEYS](#SECURE_COMMAND_SET_PUBLIC_KEYS)                                        | Set current public keys in the bootloader. Data consists of a one byte public key index followed by the public keys. With 32 byte keys this allows for up to 6 keys to be set in one request. Keys outside of the range that is being set will remain unchanged.                                                                                                                                                                                                                           |
+| <a id='SECURE_COMMAND_GET_REMOTEID_CONFIG'></a>5      | [SECURE_COMMAND_GET_REMOTEID_CONFIG](#SECURE_COMMAND_GET_REMOTEID_CONFIG)                                | Get config data for remote ID module. This command should be sent to the component ID of the flight controller which will forward it to the RemoteID module either over mavlink or DroneCAN. Data format is specific to the RemoteID implementation, see RemoteID firmware documentation for details.                                                                                                                                                                                                      |
+| <a id='SECURE_COMMAND_SET_REMOTEID_CONFIG'></a>6      | [SECURE_COMMAND_SET_REMOTEID_CONFIG](#SECURE_COMMAND_SET_REMOTEID_CONFIG)                                | Set config data for remote ID module. This command should be sent to the component ID of the flight controller which will forward it to the RemoteID module either over mavlink or DroneCAN. Data format is specific to the RemoteID implementation, see RemoteID firmware documentation for details.                                                                                                                                                                                                      |
+| <a id='SECURE_COMMAND_FLASH_BOOTLOADER'></a>7         | [SECURE_COMMAND_FLASH_BOOTLOADER](#SECURE_COMMAND_FLASH_BOOTLOADER)                                                           | Flash bootloader from local storage. Data is the filename to use for the bootloader. This is intended to be used with MAVFtp to upload a new bootloader to a microSD before flashing.                                                                                                                                                                                                                                                                                                                      |
 
 ### LIMITS_STATE {#LIMITS_STATE}
 
@@ -970,10 +1076,12 @@ The MCU status, giving MCU temperature and voltage. The min and max voltages are
 
 (Bitmask) Flags in [RALLY_POINT](#RALLY_POINT) message.
 
-| Value                          | Name                                                       | Description                                                                                                                                                                                                     |
-| ------------------------------ | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id='FAVORABLE_WIND'></a>1   | [FAVORABLE_WIND](#FAVORABLE_WIND)     | Flag set when requiring favorable winds for landing.                                                                                                                                            |
-| <a id='LAND_IMMEDIATELY'></a>2 | [LAND_IMMEDIATELY](#LAND_IMMEDIATELY) | Flag set when plane is to immediately descend to break altitude and land without GCS intervention. Flag not set when plane is to loiter at Rally point until commanded to land. |
+| Value                          | Name                                                                          | Description                                                                                                                                                                                                     |
+| ------------------------------ | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='FAVORABLE_WIND'></a>1   | [FAVORABLE_WIND](#FAVORABLE_WIND)                        | Flag set when requiring favorable winds for landing.                                                                                                                                            |
+| <a id='LAND_IMMEDIATELY'></a>2 | [LAND_IMMEDIATELY](#LAND_IMMEDIATELY)                    | Flag set when plane is to immediately descend to break altitude and land without GCS intervention. Flag not set when plane is to loiter at Rally point until commanded to land. |
+| <a id='ALT_FRAME_VALID'></a>4  | [ALT_FRAME_VALID](#ALT_FRAME_VALID) | True if the following altitude frame value is valid.                                                                                                                                            |
+| <a id='ALT_FRAME'></a>24       | [ALT_FRAME](#ALT_FRAME)                                  | 2 bit value representing altitude frame. 0: absolute, 1: relative home, 2: relative origin, 3: relative terrain                 |
 
 ### CAMERA_STATUS_TYPES {#CAMERA_STATUS_TYPES}
 
@@ -1281,6 +1389,7 @@ The MCU status, giving MCU temperature and voltage. The min and max voltages are
 | <a id='EKF_PRED_POS_HORIZ_REL'></a>256 | [EKF_PRED_POS_HORIZ_REL](#EKF_PRED_POS_HORIZ_REL) | Set if EKF's predicted horizontal position (relative) estimate is good. |
 | <a id='EKF_PRED_POS_HORIZ_ABS'></a>512 | [EKF_PRED_POS_HORIZ_ABS](#EKF_PRED_POS_HORIZ_ABS) | Set if EKF's predicted horizontal position (absolute) estimate is good. |
 | <a id='EKF_UNINITIALIZED'></a>1024     | [EKF_UNINITIALIZED](#EKF_UNINITIALIZED)                                                                          | Set if EKF has never been healthy.                                                         |
+| <a id='EKF_GPS_GLITCHING'></a>32768    | [EKF_GPS_GLITCHING](#EKF_GPS_GLITCHING)                                                     | Set if EKF believes the GPS input data is faulty.                                          |
 
 ### PID_TUNING_AXIS {#PID_TUNING_AXIS}
 
@@ -1839,8 +1948,8 @@ Scripting command as NAV command with wait for completion.
 | 2 (timeout)   | timeout for operation in seconds. Zero means no timeout (0 to 255) | s     |
 | 3 (arg1)      | argument1.                                                                            |       |
 | 4 (arg2)      | argument2.                                                                            |       |
-| 5                                | Empty                                                                                                 |       |
-| 6                                | Empty                                                                                                 |       |
+| 5 (arg3)      | argument3.                                                                            |       |
+| 6 (arg4)      | argument4.                                                                            |       |
 | 7                                | Empty                                                                                                 |       |
 
 ### MAV_CMD_NAV_ATTITUDE_TIME (42703) {#MAV_CMD_NAV_ATTITUDE_TIME}
@@ -1879,7 +1988,7 @@ Change target altitude at a given rate. This slews the vehicle at a controllable
 | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ----- |
 | 1                                         | Empty                                                                                                                                                                                               |                        |       |
 | 2                                         | Empty                                                                                                                                                                                               |                        |       |
-| 3 (alt rate-of-change) | Rate of change, toward new altitude. 0 for maximum rate change. Positive numbers only, as negative numbers will not converge on the new target alt. | min: 0 | m/s/s |
+| 3 (alt rate-of-change) | Rate of change, toward new altitude. 0 for maximum rate change. Positive numbers only, as negative numbers will not converge on the new target alt. | min: 0 | m/s   |
 | 4                                         | Empty                                                                                                                                                                                               |                        |       |
 | 5                                         | Empty                                                                                                                                                                                               |                        |       |
 | 6                                         | Empty                                                                                                                                                                                               |                        |       |
@@ -1898,3 +2007,17 @@ Change to target heading at a given rate, overriding previous heading/s. This sl
 | 5                                             | Empty                                                                                      |                                                                    |       |
 | 6                                             | Empty                                                                                      |                                                                    |       |
 | 7                                             | Empty                                                                                      |                                                                    |       |
+
+### MAV_CMD_SET_HAGL (43005) {#MAV_CMD_SET_HAGL}
+
+Provide a value for height above ground level. This can be used for things like fixed wing and VTOL landing.
+
+| Param (Label) | Description                                                                                                                                  | Units |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| 1 (hagl)      | Height above ground level.                                                                                                   | m     |
+| 2 (accuracy)  | estimated one standard deviation accuracy of the measurement. Set to NaN if not known.                       | m     |
+| 3 (timeout)   | Timeout for this data. The flight controller should only consider this data valid within the timeout window. | s     |
+| 4                                | Empty                                                                                                                                        |       |
+| 5                                | Empty                                                                                                                                        |       |
+| 6                                | Empty                                                                                                                                        |       |
+| 7                                | Empty                                                                                                                                        |       |
