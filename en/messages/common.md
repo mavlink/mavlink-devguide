@@ -2763,9 +2763,7 @@ hdg_acc | `float` | rad | invalid:NaN | Accuracy of heading, in NED. NAN if unkn
 <span class='ext'>camera_device_id</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | default:0 min:0 max:6 | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). 
 
 
-### CAMERA_THERMAL_RANGE (277) — [WIP] {#CAMERA_THERMAL_RANGE}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### CAMERA_THERMAL_RANGE (277) {#CAMERA_THERMAL_RANGE}
 
 Camera absolute thermal range. This can be streamed when the associated [VIDEO_STREAM_STATUS](#VIDEO_STREAM_STATUS) `flag` field bit [VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED](#VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED) is set, but a GCS may choose to only request it for the current active stream. Use [MAV_CMD_SET_MESSAGE_INTERVAL](#MAV_CMD_SET_MESSAGE_INTERVAL) to define message interval (param3 indicates the stream id of the current camera, or 0 for all streams, param4 indicates the target camera_device_id for autopilot-attached cameras or 0 for MAVLink cameras).
 
@@ -5129,7 +5127,7 @@ Value | Name | Description
 <a id='CAMERA_CAP_FLAGS_HAS_TRACKING_POINT'></a>512 | [CAMERA_CAP_FLAGS_HAS_TRACKING_POINT](#CAMERA_CAP_FLAGS_HAS_TRACKING_POINT) | Camera supports tracking of a point on the camera view. 
 <a id='CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE'></a>1024 | [CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE](#CAMERA_CAP_FLAGS_HAS_TRACKING_RECTANGLE) | Camera supports tracking of a selection rectangle on the camera view. 
 <a id='CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS'></a>2048 | [CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS](#CAMERA_CAP_FLAGS_HAS_TRACKING_GEO_STATUS) | Camera supports tracking geo status ([CAMERA_TRACKING_GEO_STATUS](#CAMERA_TRACKING_GEO_STATUS)). 
-<a id='CAMERA_CAP_FLAGS_HAS_THERMAL_RANGE'></a>4096 | [CAMERA_CAP_FLAGS_HAS_THERMAL_RANGE](#CAMERA_CAP_FLAGS_HAS_THERMAL_RANGE) | Camera supports absolute thermal range (request [CAMERA_THERMAL_RANGE](#CAMERA_THERMAL_RANGE) with [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE)) (WIP). 
+<a id='CAMERA_CAP_FLAGS_HAS_THERMAL_RANGE'></a>4096 | [CAMERA_CAP_FLAGS_HAS_THERMAL_RANGE](#CAMERA_CAP_FLAGS_HAS_THERMAL_RANGE) | Camera supports absolute thermal range (request [CAMERA_THERMAL_RANGE](#CAMERA_THERMAL_RANGE) with [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE)). 
 
 ### VIDEO_STREAM_STATUS_FLAGS {#VIDEO_STREAM_STATUS_FLAGS}
 
@@ -5139,7 +5137,7 @@ Value | Name | Description
 --- | --- | ---
 <a id='VIDEO_STREAM_STATUS_FLAGS_RUNNING'></a>1 | [VIDEO_STREAM_STATUS_FLAGS_RUNNING](#VIDEO_STREAM_STATUS_FLAGS_RUNNING) | Stream is active (running) 
 <a id='VIDEO_STREAM_STATUS_FLAGS_THERMAL'></a>2 | [VIDEO_STREAM_STATUS_FLAGS_THERMAL](#VIDEO_STREAM_STATUS_FLAGS_THERMAL) | Stream is thermal imaging 
-<a id='VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED'></a>4 | [VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED](#VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED) | Stream can report absolute thermal range (see [CAMERA_THERMAL_RANGE](#CAMERA_THERMAL_RANGE)). (WIP). 
+<a id='VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED'></a>4 | [VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED](#VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED) | Stream can report absolute thermal range (see [CAMERA_THERMAL_RANGE](#CAMERA_THERMAL_RANGE)). 
 
 ### VIDEO_STREAM_TYPE {#VIDEO_STREAM_TYPE}
 
