@@ -8,10 +8,12 @@ This topic is a human-readable form of the XML definition file: [test.xml](https
 
 <span id="mav2_extension_field"></span>
 
-> **Note**
->
-> - MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
-> - Entities from dialects are displayed only as headings (with link to original)
+::: info
+
+- MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
+- Entities from dialects are displayed only as headings (with link to original)
+
+:::
 
 <style>
 span.ext {
