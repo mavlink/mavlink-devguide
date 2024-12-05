@@ -10,21 +10,24 @@ This ensure that:
 - Systems based on these dialects can co-exist on the same MAVLink network.
 - A Ground Station might (optionally) use libraries generated from **all.xml** to communicate using any of the dialects.
 
-> **Warning**
->
-> - New dialect files in the official repository must be added to **all.xml** and restrict themselves to using ids in their own allocated range.
-> - Dialects should push changes to mavlink/mavlink in order to avoid potential clashes from changes to other dialects.
->
-> A few older dialects are not included because these operate in completely closed networks or because they are only used for tests.
+::: warning
+
+- New dialect files in the official repository must be added to **all.xml** and restrict themselves to using ids in their own allocated range.
+- Dialects should push changes to mavlink/mavlink in order to avoid potential clashes from changes to other dialects.
+
+A few older dialects are not included because these operate in completely closed networks or because they are only used for tests.
+:::
 
 This topic is a human-readable form of the XML definition file: [all.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/all.xml).
 
 <span id="mav2_extension_field"></span>
 
-> **Note**
->
-> - MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
-> - Entities from dialects are displayed only as headings (with link to original)
+::: info
+
+- MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
+- Entities from dialects are displayed only as headings (with link to original)
+
+:::
 
 <style>
 span.ext {
