@@ -2,8 +2,10 @@
 
 # Dialect: cubepilot
 
-> **Warning** [cubepilot.xml](https://github.com/CubePilot/mavlink/blob/master/message_definitions/v1.0/cubepilot.xml) contains the accurate and up-to-date documentation for this dialect.
-> The documentation below may not be accurate if the dialect owner has not pushed changes.
+:::warning
+[cubepilot.xml](https://github.com/CubePilot/mavlink/blob/master/message_definitions/v1.0/cubepilot.xml) contains the accurate and up-to-date documentation for this dialect.
+The documentation here may not be a precise match if, for example, changes have not been pushed by the owner.
+:::
 
 These messages define the [CubePilot](http://www.cubepilot.com) specific dialect (as pushed to the [mavlink/mavlink](https://github.com/mavlink/mavlink) GitHub repository by the dialect owner).
 
@@ -11,10 +13,12 @@ This topic is a human-readable form of the XML definition file: [cubepilot.xml](
 
 <span id="mav2_extension_field"></span>
 
-> **Note**
->
-> - MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
-> - Entities from dialects are displayed only as headings (with link to original)
+::: info
+
+- MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
+- Entities from dialects are displayed only as headings (with link to original)
+
+:::
 
 <style>
 span.ext {
