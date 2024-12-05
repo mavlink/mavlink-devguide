@@ -1,31 +1,37 @@
 <!-- THIS FILE IS AUTO-GENERATED FROM XML: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_xml_to_markdown.py (Do not update mavlink-devguide) -->
 
-# XML Definition Files & Dialects
+# MAVLink-Standard Definitions
 
-MAVLink definitions files can be found in [mavlink/message definitions](https://github.com/mavlink/mavlink/blob/master/message_definitions/).
-These can roughly be divided into:
-
-- [Standard definitions](#standard-definitions) - core definitions shared by many flight stacks
-- [Test definitions](#test-definitions) - definitions to support testing and validation
-- [Dialects](#dialects) - _protocol-_ and _vendor-specific_ messages, enums and commands
+MAVLink definitions for messages, commands, and enums are defined in XML files.
+The **standard definitions** discussed here are those that are managed by the project.
+They are expected to be used in multiple flight stacks and ground stations (see [Dialects](dialects.md) for flight-stack specific XML definitions).
 
 ## Standard Definitions
 
-The following XML definition files are considered standard/core (i.e. not dialects):
+The following XML definition files are managed as part of the standard set:
+
+- [common.xml](common.md) - the set of entities that have been implemented in at least one core flight stack.
+
+  ::: tip
+  Most developers should use this set of definitions.
+  It `includes` [standard.xml](minimal.md), which in turn `includes` [minimal.xml](minimal.md).
+  :::
+
+- [standard.xml](standard.md) - the standard set of entities that are implemented by almost all flight stacks (at least 2, in a compatible way).
 
 - [minimal.xml](minimal.md) - the minimum set of entities (messages, enums, MAV_CMD) required to set up a MAVLink network.
-- [standard.xml](standard.md) - the standard set of entities that are implemented by almost all flight stacks (at least 2, in a compatible way).
-  This `includes` [minimal.xml](minimal.md).
-- [common.xml](common.md) - the set of entities that have been implemented in at least one core flight stack.
-  This `includes` [standard.xml](minimal.md)
 
-> **Note** We are still working towards moving the truly standard entities from **common.xml** to **standard.xml**
-> Currently you should include [common.xml](common.md)
+:::info
+We are still working towards moving the truly standard entities from **common.xml** to **standard.xml**
+:::
 
-In addition:
+## Development Definitions
+
+The following definitions are being considered for inclusion.
+They are a "work in progress" and should not be used in released software.
 
 - [development.xml](development.md) - XML definitions that are _proposed_ for inclusion in the standard definitions.
-  These are work in progress.
+- Any standard definitions that have `<wip />` tags.
 
 ## Test Definitions
 
@@ -33,33 +39,10 @@ The following definitions are used for testing and dialect validation:
 
 - [all.xml](all.md) - This includes all other XML files, and is used to verify that there are no ID clashes (and can potentially be used by GCS to communicate with any core dialect).
 - [test.xml](test.md) - Test XML definition file.
+- [python_array_test.xml](python_array_test.md) - Test XML definition file for arrays.
 
-## Dialects  {#dialects}
+## See Also
 
-MAVLink _dialects_ are XML definition files that define _protocol-_ and _vendor-specific_ messages, enums and commands.
-
-> **Note** Vendor forks of MAVLink may contain XML entities that have not yet been pushed into the main repository (and will not be documented).
-
-Dialects may _include_ other MAVLink XML files, which may in turn contain other XML files (up to 5 levels of XML file nesting are allowed - see `MAXIMUM_INCLUDE_FILE_NESTING` in [mavgen.py](https://github.com/ArduPilot/pymavlink/blob/master/generator/mavgen.py#L44)).
-A typical pattern is for a dialect to include [common.xml](../messages/common.md) (containing the _MAVLink standard definitions_), extending it with vendor or protocol specific messages.
-
-The dialect definitions are:
-
-- [cubepilot.xml](cubepilot.md)
-- [python_array_test.xml](python_array_test.md)
-- [ardupilotmega.xml](ardupilotmega.md)
-- [common.xml](common.md)
-- [development.xml](development.md)
-- [matrixpilot.xml](matrixpilot.md)
-- [ASLUAV.xml](ASLUAV.md)
-- [csAirLink.xml](csAirLink.md)
-- [all.xml](all.md)
-- [storm32.xml](storm32.md)
-- [icarous.xml](icarous.md)
-- [test.xml](test.md)
-- [AVSSUAS.xml](AVSSUAS.md)
-- [uAvionix.xml](uAvionix.md)
-- [minimal.xml](minimal.md)
-- [paparazzi.xml](paparazzi.md)
-- [standard.xml](standard.md)
-- [ualberta.xml](ualberta.md)
+- [Dialects](dialects.md)
+- [XSD schema](../guide/xml_schema.md)
+- [mavlink/message_definitions](https://github.com/mavlink/mavlink/blob/master/message_definitions/) - Source of all XML definition files
