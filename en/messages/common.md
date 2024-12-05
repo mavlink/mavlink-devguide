@@ -1,6 +1,5 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_xml_to_markdown.py -->
 
-
 # MAVLINK Common Message Set (common.xml)
 
 The MAVLink *common* message set contains *standard* definitions that are managed by the MAVLink project.
@@ -9,12 +8,14 @@ MAVLink-compatible systems are expected to use these definitions where possible 
 
 The original definitions are defined in [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml).
 
-
 <span id="mav2_extension_field"></span>
 
-> **Note**
-> - MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
-> - Entities from dialects are displayed only as headings (with link to original)
+::: info
+
+- MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
+- Entities from dialects are displayed only as headings (with link to original)
+
+:::
 
 <style>
 span.ext {

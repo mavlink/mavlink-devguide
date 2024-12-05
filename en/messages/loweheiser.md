@@ -1,19 +1,22 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_xml_to_markdown.py -->
 
-
 # Dialect: loweheiser
 
-> **Warning** This topic documents the version of the dialect file in the [mavlink/mavlink](https://github.com/mavlink/mavlink) Github repository, which may not be up to date with the file in the source repository (it is up to the dialect owner to push changes when needed).
-> The source repo should be listed in the comments at the top of the XML definition file listed below (but may not be).
+::: warning
+This topic documents the version of the dialect file in the [mavlink/mavlink](https://github.com/mavlink/mavlink) Github repository, which may not be up to date with the file in the source repository (it is up to the dialect owner to push changes when needed).
+The source repo should be listed in the comments at the top of the XML definition file listed below (but may not be).
+:::
 
 This topic is a human-readable form of the XML definition file: [loweheiser.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/loweheiser.xml).
 
-
 <span id="mav2_extension_field"></span>
 
-> **Note**
-> - MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
-> - Entities from dialects are displayed only as headings (with link to original)
+::: info
+
+- MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
+- Entities from dialects are displayed only as headings (with link to original)
+
+:::
 
 <style>
 span.ext {
