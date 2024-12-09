@@ -6,14 +6,18 @@ The MAVLink _minimal_ set contains the minimal set of definitions for a viable M
 
 The message set is defined in [minimal.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/minimal.xml) and is managed by the MAVLink project.
 
-> **Tip** The minimal set is included (imported into) other xml definition files, including the [MAVLink Common Message Set (common.xml)](minimal.md).
+:::tip
+The minimal set is included (imported into) other xml definition files, including the [MAVLink Common Message Set (common.xml)](minimal.md).
+:::
 
 <span id="mav2_extension_field"></span>
 
-> **Note**
->
-> - MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
-> - Entities from dialects are displayed only as headings (with link to original)
+::: info
+
+- MAVLink 2 [extension fields](../guide/define_xml_element.md#message_extensions) are displayed in blue.
+- Entities from dialects are displayed only as headings (with link to original)
+
+:::
 
 <style>
 span.ext {
