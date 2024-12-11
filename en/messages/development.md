@@ -36,29 +36,13 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 16 | 226
-[Enums](#enumerated-types) | 15 | 144
-[Commands](#mav_commands) | 173 | 0
+[Messages](#messages) | 15 | 226
+[Enums](#enumerated-types) | 13 | 144
+[Commands](#mav_commands) | 172 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
 ## Messages
-
-### PARAM_ACK_TRANSACTION (19) — [WIP] {#PARAM_ACK_TRANSACTION}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Response from a [PARAM_SET](#PARAM_SET) message when it is used in a transaction.
-
-Field Name | Type | Values | Description
---- | --- | --- | ---
-target_system | `uint8_t` | | Id of system that sent [PARAM_SET](#PARAM_SET) message. 
-target_component | `uint8_t` | | Id of system that sent [PARAM_SET](#PARAM_SET) message. 
-param_id | `char[16]` | | Parameter id, terminated by NULL if the length is less than 16 human-readable chars and WITHOUT null termination (NULL) byte if the length is exactly 16 chars - applications have to provide 16+1 bytes storage if the ID is stored as string 
-param_value | `float` | | Parameter value (new value if [PARAM_ACCEPTED](#PARAM_ACCEPTED), current value otherwise) 
-param_type | `uint8_t` | [MAV_PARAM_TYPE](#MAV_PARAM_TYPE) | Parameter type. 
-param_result | `uint8_t` | [PARAM_ACK](#PARAM_ACK) | Result code. 
-
 
 ### AIRSPEED (295) — [WIP] {#AIRSPEED}
 
@@ -344,29 +328,6 @@ Value | Name | Description
 <a id='AIRSPEED_SENSOR_UNHEALTHY'></a>0 | [AIRSPEED_SENSOR_UNHEALTHY](#AIRSPEED_SENSOR_UNHEALTHY) | Airspeed sensor is unhealthy 
 <a id='AIRSPEED_SENSOR_USING'></a>1 | [AIRSPEED_SENSOR_USING](#AIRSPEED_SENSOR_USING) | True if the data from this sensor is being actively used by the flight controller for guidance, navigation or control. 
 
-### PARAM_TRANSACTION_TRANSPORT — [WIP] {#PARAM_TRANSACTION_TRANSPORT}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Possible transport layers to set and get parameters via mavlink during a parameter transaction.
-
-Value | Name | Description
---- | --- | ---
-<a id='PARAM_TRANSACTION_TRANSPORT_PARAM'></a>0 | [PARAM_TRANSACTION_TRANSPORT_PARAM](#PARAM_TRANSACTION_TRANSPORT_PARAM) | Transaction over param transport. 
-<a id='PARAM_TRANSACTION_TRANSPORT_PARAM_EXT'></a>1 | [PARAM_TRANSACTION_TRANSPORT_PARAM_EXT](#PARAM_TRANSACTION_TRANSPORT_PARAM_EXT) | Transaction over param_ext transport. 
-
-### PARAM_TRANSACTION_ACTION — [WIP] {#PARAM_TRANSACTION_ACTION}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Possible parameter transaction actions.
-
-Value | Name | Description
---- | --- | ---
-<a id='PARAM_TRANSACTION_ACTION_START'></a>0 | [PARAM_TRANSACTION_ACTION_START](#PARAM_TRANSACTION_ACTION_START) | Commit the current parameter transaction. 
-<a id='PARAM_TRANSACTION_ACTION_COMMIT'></a>1 | [PARAM_TRANSACTION_ACTION_COMMIT](#PARAM_TRANSACTION_ACTION_COMMIT) | Commit the current parameter transaction. 
-<a id='PARAM_TRANSACTION_ACTION_CANCEL'></a>2 | [PARAM_TRANSACTION_ACTION_CANCEL](#PARAM_TRANSACTION_ACTION_CANCEL) | Cancel the current parameter transaction. 
-
 ### MAV_STANDARD_MODE — [WIP] {#MAV_STANDARD_MODE}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
@@ -641,19 +602,6 @@ Param (Label) | Description | Values
 2 (Component ID) | New component ID for target component(s). 0: ignore (component IDs don't change). | min: 0 max: 255 inc: 1 
 3 (Reboot) | Reboot components after ID change. Any non-zero value triggers the reboot. |   
 4 | |   
-
-
-### MAV_CMD_PARAM_TRANSACTION (900) — [WIP] {#MAV_CMD_PARAM_TRANSACTION}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Request to start or end a parameter transaction. Multiple kinds of transport layers can be used to exchange parameters in the transaction (param, param_ext and mavftp). The command response can either be a success/failure or an in progress in case the receiving side takes some time to apply the parameters.
-
-Param (Label) | Description | Values
---- | --- | ---
-1 (Action) | Action to be performed (start, commit, cancel, etc.) | [PARAM_TRANSACTION_ACTION](#PARAM_TRANSACTION_ACTION) 
-2 (Transport) | Possible transport layers to set and get parameters via mavlink during a parameter transaction. | [PARAM_TRANSACTION_TRANSPORT](#PARAM_TRANSACTION_TRANSPORT) 
-3 (Transaction ID) | Identifier for a specific transaction. |   
 
 
 ### MAV_CMD_ODID_SET_EMERGENCY (12900) — [WIP] {#MAV_CMD_ODID_SET_EMERGENCY}

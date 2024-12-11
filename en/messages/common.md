@@ -213,7 +213,6 @@ param_index | `uint16_t` | | Index of this onboard parameter
 Set a parameter value (write new value to permanent storage).
 
 The receiving component should acknowledge the new parameter value by broadcasting a [PARAM_VALUE](#PARAM_VALUE) message (broadcasting ensures that multiple GCS all have an up-to-date list of all parameters). If the sending GCS did not receive a [PARAM_VALUE](#PARAM_VALUE) within its timeout time, it should re-send the [PARAM_SET](#PARAM_SET) message. The parameter microservice is documented at https://mavlink.io/en/services/parameter.html.
-[PARAM_SET](#PARAM_SET) may also be called within the context of a transaction (started with [MAV_CMD_PARAM_TRANSACTION](#MAV_CMD_PARAM_TRANSACTION)). Within a transaction the receiving component should respond with [PARAM_ACK_TRANSACTION](#PARAM_ACK_TRANSACTION) to the setter component (instead of broadcasting [PARAM_VALUE](#PARAM_VALUE)), and [PARAM_SET](#PARAM_SET) should be re-sent if this is ACK not received.
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
@@ -5231,14 +5230,14 @@ Value | Name | Description
 
 ### PARAM_ACK {#PARAM_ACK}
 
-Result from [PARAM_EXT_SET](#PARAM_EXT_SET) message (or a [PARAM_SET](#PARAM_SET) within a transaction).
+Result from [PARAM_EXT_SET](#PARAM_EXT_SET) message.
 
 Value | Name | Description
 --- | --- | ---
 <a id='PARAM_ACK_ACCEPTED'></a>0 | [PARAM_ACK_ACCEPTED](#PARAM_ACK_ACCEPTED) | Parameter value ACCEPTED and SET 
 <a id='PARAM_ACK_VALUE_UNSUPPORTED'></a>1 | [PARAM_ACK_VALUE_UNSUPPORTED](#PARAM_ACK_VALUE_UNSUPPORTED) | Parameter value UNKNOWN/UNSUPPORTED 
 <a id='PARAM_ACK_FAILED'></a>2 | [PARAM_ACK_FAILED](#PARAM_ACK_FAILED) | Parameter failed to set 
-<a id='PARAM_ACK_IN_PROGRESS'></a>3 | [PARAM_ACK_IN_PROGRESS](#PARAM_ACK_IN_PROGRESS) | Parameter value received but not yet set/accepted. A subsequent [PARAM_ACK_TRANSACTION](#PARAM_ACK_TRANSACTION) or [PARAM_EXT_ACK](#PARAM_EXT_ACK) with the final result will follow once operation is completed. This is returned immediately for parameters that take longer to set, indicating that the the parameter was received and does not need to be resent. 
+<a id='PARAM_ACK_IN_PROGRESS'></a>3 | [PARAM_ACK_IN_PROGRESS](#PARAM_ACK_IN_PROGRESS) | Parameter value received but not yet set/accepted. A subsequent [PARAM_EXT_ACK](#PARAM_EXT_ACK) with the final result will follow once operation is completed. This is returned immediately for parameters that take longer to set, indicating that the the parameter was received and does not need to be resent. 
 
 ### CAMERA_MODE {#CAMERA_MODE}
 
