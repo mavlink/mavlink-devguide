@@ -95,7 +95,7 @@ time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot).
 
 ### PING (4) — [DEP] {#PING}
 
-<span class="warning">**DEPRECATED:** Replaced By [SYSTEM_TIME](#SYSTEM_TIME) (2011-08) — to be removed / merged with [SYSTEM_TIME](#SYSTEM_TIME))</span>
+<span class="warning">**DEPRECATED:** Replaced By [TIMESYNC](#TIMESYNC)</span>
 
 A ping message either requesting or responding to a ping. This allows to measure the system latencies, including serial port, radio modem and UDP connections. The ping microservice is documented at https://mavlink.io/en/services/ping.html
 
