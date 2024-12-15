@@ -1431,6 +1431,9 @@ payload | `uint8_t[251]` | Variable length payload. The length is defined by the
 
 ### TIMESYNC (111) {#TIMESYNC}
 
+
+Time Synchronization Protocol: https://mavlink.io/en/services/timesync.html.
+
 Time synchronization message.
 The message is used for both timesync requests and responses.
 The request is sent with `ts1=syncing component timestamp` and `tc1=0`, and may be broadcast or targeted to a specific system/component.
