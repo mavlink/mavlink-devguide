@@ -2581,7 +2581,7 @@ Field Name | Type | Units | Description
 --- | --- | --- | ---
 time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot). 
 time_utc | `uint64_t` | us | Timestamp (time since UNIX epoch) in UTC. 0 for unknown. 
-camera_id | `uint8_t` | | Deprecated/unused. Component IDs are used to differentiate multiple cameras. 
+camera_id | `uint8_t` | | Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). Field name is usually camera_device_id. 
 lat | `int32_t` | degE7 | Latitude where image was taken 
 lon | `int32_t` | degE7 | Longitude where capture was taken 
 alt | `int32_t` | mm | Altitude (MSL) where image was taken 
