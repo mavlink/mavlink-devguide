@@ -95,7 +95,7 @@ time_boot_ms | `uint32_t` | ms | Timestamp (time since system boot).
 
 ### PING (4) — [DEP] {#PING}
 
-<span class="warning">**DEPRECATED:** Replaced By [SYSTEM_TIME](#SYSTEM_TIME) (2011-08) — to be removed / merged with [SYSTEM_TIME](#SYSTEM_TIME))</span>
+<span class="warning">**DEPRECATED:** Replaced By TIMESYNC (2011-08) — To be removed / merged with TIMESYNC)</span>
 
 A ping message either requesting or responding to a ping. This allows to measure the system latencies, including serial port, radio modem and UDP connections. The ping microservice is documented at https://mavlink.io/en/services/ping.html
 
@@ -1439,6 +1439,7 @@ Systems can determine if they are receiving a request or response based on the v
 If the response has `target_system==target_component==0` the remote system has not been updated to use the component IDs and cannot reliably timesync; the requestor may report an error.
 Timestamps are UNIX Epoch time or time since system boot in nanoseconds (the timestamp format can be inferred by checking for the magnitude of the number; generally it doesn't matter as only the offset is used).
 The message sequence is repeated numerous times with results being filtered/averaged to estimate the offset.
+See also: https://mavlink.io/en/services/timesync.html.
 
 Field Name | Type | Units | Description
 --- | --- | --- | ---
