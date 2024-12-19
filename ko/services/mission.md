@@ -188,8 +188,8 @@ Mission update must be robust!
 A new mission should be fully uploaded and accepted before the old mission is replaced/removed.
 :::
 
-:::
-Mission upload/download can be bandwidth intensive and time consuming
+:::tip
+Mission upload/download can be bandwidth intensive and time consuming.
 [Check for plan changes](#detecting-missionplan-changes) before uploading (or downloading) a mission.
 :::
 

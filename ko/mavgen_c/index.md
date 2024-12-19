@@ -89,8 +89,10 @@ This does not happen on most of the common architectures on which MAVLink is run
 
 You can suppress the warnings using `-Wno-address-of-packed-member`.
 
-> **Note:** The issue causes hard faults on [Cortex-M0](https://github.com/ArduPilot/pymavlink/issues/5) and other platforms [listed here](https://github.com/ArduPilot/pymavlink/issues/836#issue-1788623502).
-> Please raise issues in [ArduPilot/pymavlink](https://github.com/ArduPilot/pymavlink/) if you find other hardware that is affected.
+:::info
+The issue causes hard faults on [Cortex-M0](https://github.com/ArduPilot/pymavlink/issues/5) and other platforms [listed here](https://github.com/ArduPilot/pymavlink/issues/836#issue-1788623502).
+Please raise issues in [ArduPilot/pymavlink](https://github.com/ArduPilot/pymavlink/) if you find other hardware that is affected.
+:::
 
 ## Upgrading Library from MAVLink 1
 
