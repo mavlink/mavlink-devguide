@@ -36,8 +36,8 @@ span.warning {
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 15 | 226
-[Enums](#enumerated-types) | 13 | 144
+[Messages](#messages) | 12 | 229
+[Enums](#enumerated-types) | 11 | 146
 [Commands](#mav_commands) | 172 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -186,57 +186,6 @@ count | `uint8_t` | | | Total number of RC channels being received. This can be 
 <span class='ext'>channels</span> <a href='#mav2_extension_field'>++</a> | `int16_t[32]` | | min:-4096 max:4096 | RC channels.<br>Channel values are in centered 13 bit format. Range is -4096 to 4096, center is 0. Conversion to PWM is x * 5/32 + 1500.<br>Channels with indexes equal or above count should be set to 0, to benefit from MAVLink's trailing-zero trimming. 
 
 
-### AVAILABLE_MODES (435) — [WIP] {#AVAILABLE_MODES}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Get information about a particular flight modes.
-
-The message can be enumerated or requested for a particular mode using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
-Specify 0 in param2 to request that the message is emitted for all available modes or the specific index for just one mode.
-The modes must be available/settable for the current vehicle/frame type.
-Each modes should only be emitted once (even if it is both standard and custom).
-
-Field Name | Type | Values | Description
---- | --- | --- | ---
-number_modes | `uint8_t` | | The total number of available modes for the current vehicle type. 
-mode_index | `uint8_t` | | The current mode index within number_modes, indexed from 1. 
-standard_mode | `uint8_t` | [MAV_STANDARD_MODE](#MAV_STANDARD_MODE) | Standard mode. 
-custom_mode | `uint32_t` | | A bitfield for use for autopilot-specific flags 
-properties | `uint32_t` | [MAV_MODE_PROPERTY](#MAV_MODE_PROPERTY) | Mode properties. 
-mode_name | `char[35]` | | Name of custom mode, with null termination character. Should be omitted for standard modes. 
-
-
-### CURRENT_MODE (436) — [WIP] {#CURRENT_MODE}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Get the current mode.
-
-This should be emitted on any mode change, and broadcast at low rate (nominally 0.5 Hz).
-It may be requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
-
-Field Name | Type | Values | Description
---- | --- | --- | ---
-standard_mode | `uint8_t` | [MAV_STANDARD_MODE](#MAV_STANDARD_MODE) | Standard mode. 
-custom_mode | `uint32_t` | | A bitfield for use for autopilot-specific flags 
-intended_custom_mode | `uint32_t` | invalid:0 | The custom_mode of the mode that was last commanded by the user (for example, with [MAV_CMD_DO_SET_STANDARD_MODE](#MAV_CMD_DO_SET_STANDARD_MODE), [MAV_CMD_DO_SET_MODE](#MAV_CMD_DO_SET_MODE) or via RC). This should usually be the same as custom_mode. It will be different if the vehicle is unable to enter the intended mode, or has left that mode due to a failsafe condition. 0 indicates the intended custom mode is unknown/not supplied 
-
-
-### AVAILABLE_MODES_MONITOR (437) — [WIP] {#AVAILABLE_MODES_MONITOR}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-A change to the sequence number indicates that the set of [AVAILABLE_MODES](#AVAILABLE_MODES) has changed.
-
-A receiver must re-request all available modes whenever the sequence number changes.
-This is only emitted after the first change and should then be broadcast at low rate (nominally 0.3 Hz) and on change.
-
-Field Name | Type | Description
---- | --- | ---
-seq | `uint8_t` | Sequence number. The value iterates sequentially whenever [AVAILABLE_MODES](#AVAILABLE_MODES) changes (e.g. support for a new mode is added/removed dynamically). 
-
-
 ### GNSS_INTEGRITY (441) — [WIP] {#GNSS_INTEGRITY}
 
 <span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
@@ -327,38 +276,6 @@ Value | Name | Description
 --- | --- | ---
 <a id='AIRSPEED_SENSOR_UNHEALTHY'></a>0 | [AIRSPEED_SENSOR_UNHEALTHY](#AIRSPEED_SENSOR_UNHEALTHY) | Airspeed sensor is unhealthy 
 <a id='AIRSPEED_SENSOR_USING'></a>1 | [AIRSPEED_SENSOR_USING](#AIRSPEED_SENSOR_USING) | True if the data from this sensor is being actively used by the flight controller for guidance, navigation or control. 
-
-### MAV_STANDARD_MODE — [WIP] {#MAV_STANDARD_MODE}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Standard modes with a well understood meaning across flight stacks and vehicle types.
-
-For example, most flight stack have the concept of a "return" or "RTL" mode that takes a vehicle to safety, even though the precise mechanics of this mode may differ.
-Modes may be set using [MAV_CMD_DO_SET_STANDARD_MODE](#MAV_CMD_DO_SET_STANDARD_MODE).
-
-Value | Name | Description
---- | --- | ---
-<a id='MAV_STANDARD_MODE_NON_STANDARD'></a>0 | [MAV_STANDARD_MODE_NON_STANDARD](#MAV_STANDARD_MODE_NON_STANDARD) | Non standard mode.<br>This may be used when reporting the mode if the current flight mode is not a standard mode. 
-<a id='MAV_STANDARD_MODE_POSITION_HOLD'></a>1 | [MAV_STANDARD_MODE_POSITION_HOLD](#MAV_STANDARD_MODE_POSITION_HOLD) | Position mode (manual).<br>Position-controlled and stabilized manual mode.<br>When sticks are released vehicles return to their level-flight orientation and hold both position and altitude against wind and external forces.<br>This mode can only be set by vehicles that can hold a fixed position.<br>Multicopter (MC) vehicles actively brake and hold both position and altitude against wind and external forces.<br>Hybrid MC/FW ("VTOL") vehicles first transition to multicopter mode (if needed) but otherwise behave in the same way as MC vehicles.<br>Fixed-wing (FW) vehicles must not support this mode.<br>Other vehicle types must not support this mode (this may be revisited through the PR process). 
-<a id='MAV_STANDARD_MODE_ORBIT'></a>2 | [MAV_STANDARD_MODE_ORBIT](#MAV_STANDARD_MODE_ORBIT) | Orbit (manual).<br>Position-controlled and stabilized manual mode.<br>The vehicle circles around a fixed setpoint in the horizontal plane at a particular radius, altitude, and direction.<br>Flight stacks may further allow manual control over the setpoint position, radius, direction, speed, and/or altitude of the circle, but this is not mandated.<br>Flight stacks may support the [MAV_CMD_DO_ORBIT](https://mavlink.io/en/messages/common.html#MAV_CMD_DO_ORBIT) for changing the orbit parameters.<br>MC and FW vehicles may support this mode.<br>Hybrid MC/FW ("VTOL") vehicles may support this mode in MC/FW or both modes; if the mode is not supported by the current configuration the vehicle should transition to the supported configuration.<br>Other vehicle types must not support this mode (this may be revisited through the PR process). 
-<a id='MAV_STANDARD_MODE_CRUISE'></a>3 | [MAV_STANDARD_MODE_CRUISE](#MAV_STANDARD_MODE_CRUISE) | Cruise mode (manual).<br>Position-controlled and stabilized manual mode.<br>When sticks are released vehicles return to their level-flight orientation and hold their original track against wind and external forces.<br>Fixed-wing (FW) vehicles level orientation and maintain current track and altitude against wind and external forces.<br>Hybrid MC/FW ("VTOL") vehicles first transition to FW mode (if needed) but otherwise behave in the same way as MC vehicles.<br>Multicopter (MC) vehicles must not support this mode.<br>Other vehicle types must not support this mode (this may be revisited through the PR process). 
-<a id='MAV_STANDARD_MODE_ALTITUDE_HOLD'></a>4 | [MAV_STANDARD_MODE_ALTITUDE_HOLD](#MAV_STANDARD_MODE_ALTITUDE_HOLD) | Altitude hold (manual).<br>Altitude-controlled and stabilized manual mode.<br>When sticks are released vehicles return to their level-flight orientation and hold their altitude.<br>MC vehicles continue with existing momentum and may move with wind (or other external forces).<br>FW vehicles continue with current heading, but may be moved off-track by wind.<br>Hybrid MC/FW ("VTOL") vehicles behave according to their current configuration/mode (FW or MC).<br>Other vehicle types must not support this mode (this may be revisited through the PR process). 
-<a id='MAV_STANDARD_MODE_SAFE_RECOVERY'></a>5 | [MAV_STANDARD_MODE_SAFE_RECOVERY](#MAV_STANDARD_MODE_SAFE_RECOVERY) | Safe recovery mode (auto).<br>Automatic mode that takes vehicle to a predefined safe location via a safe flight path, and may also automatically land the vehicle.<br>This mode is more commonly referred to as RTL and/or or Smart RTL.<br>The precise return location, flight path, and landing behaviour depend on vehicle configuration and type.<br>For example, the vehicle might return to the home/launch location, a rally point, or the start of a mission landing, it might follow a direct path, mission path, or breadcrumb path, and land using a mission landing pattern or some other kind of descent. 
-<a id='MAV_STANDARD_MODE_MISSION'></a>6 | [MAV_STANDARD_MODE_MISSION](#MAV_STANDARD_MODE_MISSION) | Mission mode (automatic).<br>Automatic mode that executes MAVLink missions.<br>Missions are executed from the current waypoint as soon as the mode is enabled. 
-<a id='MAV_STANDARD_MODE_LAND'></a>7 | [MAV_STANDARD_MODE_LAND](#MAV_STANDARD_MODE_LAND) | Land mode (auto).<br>Automatic mode that lands the vehicle at the current location.<br>The precise landing behaviour depends on vehicle configuration and type. 
-<a id='MAV_STANDARD_MODE_TAKEOFF'></a>8 | [MAV_STANDARD_MODE_TAKEOFF](#MAV_STANDARD_MODE_TAKEOFF) | Takeoff mode (auto).<br>Automatic takeoff mode.<br>The precise takeoff behaviour depends on vehicle configuration and type. 
-
-### MAV_MODE_PROPERTY — [WIP] {#MAV_MODE_PROPERTY}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-(Bitmask) Mode properties.
-
-Value | Name | Description
---- | --- | ---
-<a id='MAV_MODE_PROPERTY_ADVANCED'></a>1 | [MAV_MODE_PROPERTY_ADVANCED](#MAV_MODE_PROPERTY_ADVANCED) | If set, this mode is an advanced mode.<br>For example a rate-controlled manual mode might be advanced, whereas a position-controlled manual mode is not.<br>A GCS can optionally use this flag to configure the UI for its intended users. 
-<a id='MAV_MODE_PROPERTY_NOT_USER_SELECTABLE'></a>2 | [MAV_MODE_PROPERTY_NOT_USER_SELECTABLE](#MAV_MODE_PROPERTY_NOT_USER_SELECTABLE) | If set, this mode should not be added to the list of selectable modes.<br>The mode might still be selected by the FC directly (for example as part of a failsafe). 
 
 ### MAV_BATTERY_STATUS_FLAGS — [WIP] {#MAV_BATTERY_STATUS_FLAGS}
 
@@ -550,25 +467,6 @@ Param (Label) | Description | Values
 5 | Reserved |   
 6 | Reserved |   
 7 | WIP: upgrade progress report rate (can be used for more granular control). |   
-
-
-### MAV_CMD_DO_SET_STANDARD_MODE (262) — [WIP] {#MAV_CMD_DO_SET_STANDARD_MODE}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Enable the specified standard MAVLink mode.
-
-If the mode is not supported the vehicle should ACK with [MAV_RESULT_FAILED](#MAV_RESULT_FAILED).
-
-Param (Label) | Description | Values
---- | --- | ---
-1 (Standard Mode) | The mode to set. | [MAV_STANDARD_MODE](#MAV_STANDARD_MODE) 
-2 | |   
-3 | |   
-4 | |   
-5 | |   
-6 | |   
-7 | |   
 
 
 ### MAV_CMD_SET_AT_S_PARAM (550) — [WIP] {#MAV_CMD_SET_AT_S_PARAM}
