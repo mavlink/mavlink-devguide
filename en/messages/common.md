@@ -3693,13 +3693,15 @@ reason | `uint8_t` | [MAV_EVENT_ERROR_REASON](#MAV_EVENT_ERROR_REASON) | Error r
 
 ### AVAILABLE_MODES (435) {#AVAILABLE_MODES}
 
-Get information about a particular flight modes.
+Information about a flight mode.
 
-The message can be enumerated or requested for a particular mode using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
+
+The message can be enumerated to get information for all modes, or requested for a particular mode, using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
 Specify 0 in param2 to request that the message is emitted for all available modes or the specific index for just one mode.
 The modes must be available/settable for the current vehicle/frame type.
 Each mode should only be emitted once (even if it is both standard and custom).
 Note that the current mode should be emitted in [CURRENT_MODE](#CURRENT_MODE), and that if the mode list can change then [AVAILABLE_MODES_MONITOR](#AVAILABLE_MODES_MONITOR) must be emitted on first change and subsequently streamed.
+See https://mavlink.io/en/services/standard_modes.html
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
@@ -3717,6 +3719,7 @@ Get the current mode.
 
 This should be emitted on any mode change, and broadcast at low rate (nominally 0.5 Hz).
 It may be requested using [MAV_CMD_REQUEST_MESSAGE](#MAV_CMD_REQUEST_MESSAGE).
+See https://mavlink.io/en/services/standard_modes.html
 
 Field Name | Type | Values | Description
 --- | --- | --- | ---
@@ -3731,6 +3734,7 @@ A change to the sequence number indicates that the set of [AVAILABLE_MODES](#AVA
 
 A receiver must re-request all available modes whenever the sequence number changes.
 This is only emitted after the first change and should then be broadcast at low rate (nominally 0.3 Hz) and on change.
+See https://mavlink.io/en/services/standard_modes.html
 
 Field Name | Type | Description
 --- | --- | ---
@@ -6040,7 +6044,9 @@ Value | Name | Description
 Standard modes with a well understood meaning across flight stacks and vehicle types.
 
 For example, most flight stack have the concept of a "return" or "RTL" mode that takes a vehicle to safety, even though the precise mechanics of this mode may differ.
-Modes may be set using [MAV_CMD_DO_SET_STANDARD_MODE](#MAV_CMD_DO_SET_STANDARD_MODE).
+The modes supported by a flight stack can be queried using [AVAILABLE_MODES](#AVAILABLE_MODES) and set using [MAV_CMD_DO_SET_STANDARD_MODE](#MAV_CMD_DO_SET_STANDARD_MODE).
+The current mode is streamed in [CURRENT_MODE](#CURRENT_MODE).
+See https://mavlink.io/en/services/standard_modes.html
 
 Value | Name | Description
 --- | --- | ---
@@ -7588,7 +7594,8 @@ Param (Label) | Description | Values | Units
 
 Enable the specified standard MAVLink mode.
 
-If the mode is not supported the vehicle should ACK with [MAV_RESULT_FAILED](#MAV_RESULT_FAILED).
+If the specified mode is not supported, the vehicle should ACK with [MAV_RESULT_FAILED](#MAV_RESULT_FAILED).
+See https://mavlink.io/en/services/standard_modes.html
 
 Param (Label) | Description | Values
 --- | --- | ---
