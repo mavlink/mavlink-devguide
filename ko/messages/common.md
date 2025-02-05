@@ -4146,7 +4146,7 @@ Flags to indicate the type of storage.
 
 ### STORAGE_USAGE_FLAG {#STORAGE_USAGE_FLAG}
 
-Flags to indicate usage for a particular storage (see [STORAGE_INFORMATION](#STORAGE_INFORMATION).storage_usage and [MAV_CMD_SET_STORAGE_USAGE](#MAV_CMD_SET_STORAGE_USAGE)).
+(Bitmask) Flags to indicate usage for a particular storage (see [STORAGE_INFORMATION](#STORAGE_INFORMATION).storage_usage and [MAV_CMD_SET_STORAGE_USAGE](#MAV_CMD_SET_STORAGE_USAGE)).
 
 | Value                                  | Name                                                                                                                 | Description                                                                                                                                                                                      |
 | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
