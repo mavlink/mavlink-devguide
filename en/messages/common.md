@@ -5942,7 +5942,6 @@ Value | Name | Description
 <a id='HIGHRES_IMU_UPDATED_DIFF_PRESSURE'></a>1024 | [HIGHRES_IMU_UPDATED_DIFF_PRESSURE](#HIGHRES_IMU_UPDATED_DIFF_PRESSURE) | The value in the diff_pressure field has been updated 
 <a id='HIGHRES_IMU_UPDATED_PRESSURE_ALT'></a>2048 | [HIGHRES_IMU_UPDATED_PRESSURE_ALT](#HIGHRES_IMU_UPDATED_PRESSURE_ALT) | The value in the pressure_alt field has been updated 
 <a id='HIGHRES_IMU_UPDATED_TEMPERATURE'></a>4096 | [HIGHRES_IMU_UPDATED_TEMPERATURE](#HIGHRES_IMU_UPDATED_TEMPERATURE) | The value in the temperature field has been updated 
-<a id='HIGHRES_IMU_UPDATED_ALL'></a>65535 | [HIGHRES_IMU_UPDATED_ALL](#HIGHRES_IMU_UPDATED_ALL) | All fields in [HIGHRES_IMU](#HIGHRES_IMU) have been updated. 
 
 ### CAN_FILTER_OP {#CAN_FILTER_OP}
 
