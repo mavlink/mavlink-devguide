@@ -274,8 +274,8 @@ flags | `uint8_t` | [GCS_CONTROL_STATUS_FLAGS](#GCS_CONTROL_STATUS_FLAGS) | Cont
 
 Value | Name | Description
 --- | --- | ---
-<a id='AIRSPEED_SENSOR_UNHEALTHY'></a>0 | [AIRSPEED_SENSOR_UNHEALTHY](#AIRSPEED_SENSOR_UNHEALTHY) | Airspeed sensor is unhealthy 
-<a id='AIRSPEED_SENSOR_USING'></a>1 | [AIRSPEED_SENSOR_USING](#AIRSPEED_SENSOR_USING) | True if the data from this sensor is being actively used by the flight controller for guidance, navigation or control. 
+<a id='AIRSPEED_SENSOR_UNHEALTHY'></a>1 | [AIRSPEED_SENSOR_UNHEALTHY](#AIRSPEED_SENSOR_UNHEALTHY) | Airspeed sensor is unhealthy 
+<a id='AIRSPEED_SENSOR_USING'></a>2 | [AIRSPEED_SENSOR_USING](#AIRSPEED_SENSOR_USING) | True if the data from this sensor is being actively used by the flight controller for guidance, navigation or control. 
 
 ### MAV_BATTERY_STATUS_FLAGS — [WIP] {#MAV_BATTERY_STATUS_FLAGS}
 
