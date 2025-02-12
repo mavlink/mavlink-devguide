@@ -31,7 +31,7 @@ features:
   - title: Reliable
     details: Works on high latency/noisy channels. Used in many different systems since 2009.
   - title: Multiple languages/platforms
-    details: Multipole language support generated from XML definitions runs on numerous OS and systems 
+    details: Multiple language support generated from XML definitions runs on numerous OS and systems
   - title: Many concurrent systems
     details: Up to 255 devices on a network
   - title: Multiple vehicles
