@@ -4336,7 +4336,6 @@ Value | Name | Description
 
 Value | Name | Description
 --- | --- | ---
-<a id='ESC_FAILURE_NONE'></a>0 | [ESC_FAILURE_NONE](#ESC_FAILURE_NONE) | No ESC failure. 
 <a id='ESC_FAILURE_OVER_CURRENT'></a>1 | [ESC_FAILURE_OVER_CURRENT](#ESC_FAILURE_OVER_CURRENT) | Over current failure. 
 <a id='ESC_FAILURE_OVER_VOLTAGE'></a>2 | [ESC_FAILURE_OVER_VOLTAGE](#ESC_FAILURE_OVER_VOLTAGE) | Over voltage failure. 
 <a id='ESC_FAILURE_OVER_TEMPERATURE'></a>4 | [ESC_FAILURE_OVER_TEMPERATURE](#ESC_FAILURE_OVER_TEMPERATURE) | Over temperature failure. 
@@ -5237,7 +5236,6 @@ Value | Name | Description
 
 Value | Name | Description
 --- | --- | ---
-<a id='CAMERA_TRACKING_TARGET_DATA_NONE'></a>0 | [CAMERA_TRACKING_TARGET_DATA_NONE](#CAMERA_TRACKING_TARGET_DATA_NONE) | No target data 
 <a id='CAMERA_TRACKING_TARGET_DATA_EMBEDDED'></a>1 | [CAMERA_TRACKING_TARGET_DATA_EMBEDDED](#CAMERA_TRACKING_TARGET_DATA_EMBEDDED) | Target data embedded in image data (proprietary) 
 <a id='CAMERA_TRACKING_TARGET_DATA_RENDERED'></a>2 | [CAMERA_TRACKING_TARGET_DATA_RENDERED](#CAMERA_TRACKING_TARGET_DATA_RENDERED) | Target data rendered in image 
 <a id='CAMERA_TRACKING_TARGET_DATA_IN_STATUS'></a>4 | [CAMERA_TRACKING_TARGET_DATA_IN_STATUS](#CAMERA_TRACKING_TARGET_DATA_IN_STATUS) | Target data within status message (Point or Rectangle) 
@@ -5906,7 +5904,6 @@ Value | Name | Description
 
 Value | Name | Description
 --- | --- | ---
-<a id='HIL_SENSOR_UPDATED_NONE'></a>0 | [HIL_SENSOR_UPDATED_NONE](#HIL_SENSOR_UPDATED_NONE) | None of the fields in [HIL_SENSOR](#HIL_SENSOR) have been updated 
 <a id='HIL_SENSOR_UPDATED_XACC'></a>1 | [HIL_SENSOR_UPDATED_XACC](#HIL_SENSOR_UPDATED_XACC) | The value in the xacc field has been updated 
 <a id='HIL_SENSOR_UPDATED_YACC'></a>2 | [HIL_SENSOR_UPDATED_YACC](#HIL_SENSOR_UPDATED_YACC) | The value in the yacc field has been updated 
 <a id='HIL_SENSOR_UPDATED_ZACC'></a>4 | [HIL_SENSOR_UPDATED_ZACC](#HIL_SENSOR_UPDATED_ZACC) | The value in the zacc field has been updated 
@@ -5928,7 +5925,6 @@ Value | Name | Description
 
 Value | Name | Description
 --- | --- | ---
-<a id='HIGHRES_IMU_UPDATED_NONE'></a>0 | [HIGHRES_IMU_UPDATED_NONE](#HIGHRES_IMU_UPDATED_NONE) | None of the fields in [HIGHRES_IMU](#HIGHRES_IMU) have been updated 
 <a id='HIGHRES_IMU_UPDATED_XACC'></a>1 | [HIGHRES_IMU_UPDATED_XACC](#HIGHRES_IMU_UPDATED_XACC) | The value in the xacc field has been updated 
 <a id='HIGHRES_IMU_UPDATED_YACC'></a>2 | [HIGHRES_IMU_UPDATED_YACC](#HIGHRES_IMU_UPDATED_YACC) | The value in the yacc field has been updated 
 <a id='HIGHRES_IMU_UPDATED_ZACC'></a>4 | [HIGHRES_IMU_UPDATED_ZACC](#HIGHRES_IMU_UPDATED_ZACC) | The value in the zacc field has been updated since 
