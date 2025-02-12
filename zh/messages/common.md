@@ -4108,7 +4108,6 @@ Indicates the ESC connection type.
 
 | 值                                           | Name                                                                                                                         | 描述                                                                                               |
 | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| <a id='ESC_FAILURE_NONE'></a>0              | [ESC_FAILURE_NONE](#ESC_FAILURE_NONE)                                              | No ESC failure.                                                                  |
 | <a id='ESC_FAILURE_OVER_CURRENT'></a>1      | [ESC_FAILURE_OVER_CURRENT](#ESC_FAILURE_OVER_CURRENT)         | Over current failure.                                                            |
 | <a id='ESC_FAILURE_OVER_VOLTAGE'></a>2      | [ESC_FAILURE_OVER_VOLTAGE](#ESC_FAILURE_OVER_VOLTAGE)         | Over voltage failure.                                                            |
 | <a id='ESC_FAILURE_OVER_TEMPERATURE'></a>4  | [ESC_FAILURE_OVER_TEMPERATURE](#ESC_FAILURE_OVER_TEMPERATURE) | Over temperature failure.                                                        |
@@ -5009,7 +5008,6 @@ Camera tracking modes
 
 | 值                                                   | Name                                                                                                                                                                                     | 描述                                                                        |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| <a id='CAMERA_TRACKING_TARGET_DATA_NONE'></a>0      | [CAMERA_TRACKING_TARGET_DATA_NONE](#CAMERA_TRACKING_TARGET_DATA_NONE)                                | No target data                                                            |
 | <a id='CAMERA_TRACKING_TARGET_DATA_EMBEDDED'></a>1  | [CAMERA_TRACKING_TARGET_DATA_EMBEDDED](#CAMERA_TRACKING_TARGET_DATA_EMBEDDED)                        | Target data embedded in image data (proprietary)       |
 | <a id='CAMERA_TRACKING_TARGET_DATA_RENDERED'></a>2  | [CAMERA_TRACKING_TARGET_DATA_RENDERED](#CAMERA_TRACKING_TARGET_DATA_RENDERED)                        | Target data rendered in image                                             |
 | <a id='CAMERA_TRACKING_TARGET_DATA_IN_STATUS'></a>4 | [CAMERA_TRACKING_TARGET_DATA_IN_STATUS](#CAMERA_TRACKING_TARGET_DATA_IN_STATUS) | Target data within status message (Point or Rectangle) |
@@ -5678,7 +5676,6 @@ Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE).
 
 | 值                                                 | Name                                                                                                                                                      | 描述                                                                                                               |
 | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| <a id='HIL_SENSOR_UPDATED_NONE'></a>0             | [HIL_SENSOR_UPDATED_NONE](#HIL_SENSOR_UPDATED_NONE)                                        | None of the fields in [HIL_SENSOR](#HIL_SENSOR) have been updated                           |
 | <a id='HIL_SENSOR_UPDATED_XACC'></a>1             | [HIL_SENSOR_UPDATED_XACC](#HIL_SENSOR_UPDATED_XACC)                                        | The value in the xacc field has been updated                                                                     |
 | <a id='HIL_SENSOR_UPDATED_YACC'></a>2             | [HIL_SENSOR_UPDATED_YACC](#HIL_SENSOR_UPDATED_YACC)                                        | The value in the yacc field has been updated                                                                     |
 | <a id='HIL_SENSOR_UPDATED_ZACC'></a>4             | [HIL_SENSOR_UPDATED_ZACC](#HIL_SENSOR_UPDATED_ZACC)                                        | The value in the zacc field has been updated                                                                     |
@@ -5698,22 +5695,21 @@ Flags for [CURRENT_EVENT_SEQUENCE](#CURRENT_EVENT_SEQUENCE).
 
 (Bitmask) Flags in the [HIGHRES_IMU](#HIGHRES_IMU) message indicate which fields have updated since the last message
 
-| 值                                                  | Name                                                                                                                                                        | 描述                                                                                       |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| <a id='HIGHRES_IMU_UPDATED_NONE'></a>0             | [HIGHRES_IMU_UPDATED_NONE](#HIGHRES_IMU_UPDATED_NONE)                                        | None of the fields in [HIGHRES_IMU](#HIGHRES_IMU) have been updated |
-| <a id='HIGHRES_IMU_UPDATED_XACC'></a>1             | [HIGHRES_IMU_UPDATED_XACC](#HIGHRES_IMU_UPDATED_XACC)                                        | The value in the xacc field has been updated                                             |
-| <a id='HIGHRES_IMU_UPDATED_YACC'></a>2             | [HIGHRES_IMU_UPDATED_YACC](#HIGHRES_IMU_UPDATED_YACC)                                        | The value in the yacc field has been updated                                             |
-| <a id='HIGHRES_IMU_UPDATED_ZACC'></a>4             | [HIGHRES_IMU_UPDATED_ZACC](#HIGHRES_IMU_UPDATED_ZACC)                                        | The value in the zacc field has been updated since                                       |
-| <a id='HIGHRES_IMU_UPDATED_XGYRO'></a>8            | [HIGHRES_IMU_UPDATED_XGYRO](#HIGHRES_IMU_UPDATED_XGYRO)                                      | The value in the xgyro field has been updated                                            |
-| <a id='HIGHRES_IMU_UPDATED_YGYRO'></a>16           | [HIGHRES_IMU_UPDATED_YGYRO](#HIGHRES_IMU_UPDATED_YGYRO)                                      | The value in the ygyro field has been updated                                            |
-| <a id='HIGHRES_IMU_UPDATED_ZGYRO'></a>32           | [HIGHRES_IMU_UPDATED_ZGYRO](#HIGHRES_IMU_UPDATED_ZGYRO)                                      | The value in the zgyro field has been updated                                            |
-| <a id='HIGHRES_IMU_UPDATED_XMAG'></a>64            | [HIGHRES_IMU_UPDATED_XMAG](#HIGHRES_IMU_UPDATED_XMAG)                                        | The value in the xmag field has been updated                                             |
-| <a id='HIGHRES_IMU_UPDATED_YMAG'></a>128           | [HIGHRES_IMU_UPDATED_YMAG](#HIGHRES_IMU_UPDATED_YMAG)                                        | The value in the ymag field has been updated                                             |
-| <a id='HIGHRES_IMU_UPDATED_ZMAG'></a>256           | [HIGHRES_IMU_UPDATED_ZMAG](#HIGHRES_IMU_UPDATED_ZMAG)                                        | The value in the zmag field has been updated                                             |
-| <a id='HIGHRES_IMU_UPDATED_ABS_PRESSURE'></a>512   | [HIGHRES_IMU_UPDATED_ABS_PRESSURE](#HIGHRES_IMU_UPDATED_ABS_PRESSURE)   | The value in the abs_pressure field has been updated                |
-| <a id='HIGHRES_IMU_UPDATED_DIFF_PRESSURE'></a>1024 | [HIGHRES_IMU_UPDATED_DIFF_PRESSURE](#HIGHRES_IMU_UPDATED_DIFF_PRESSURE) | The value in the diff_pressure field has been updated               |
-| <a id='HIGHRES_IMU_UPDATED_PRESSURE_ALT'></a>2048  | [HIGHRES_IMU_UPDATED_PRESSURE_ALT](#HIGHRES_IMU_UPDATED_PRESSURE_ALT)   | The value in the pressure_alt field has been updated                |
-| <a id='HIGHRES_IMU_UPDATED_TEMPERATURE'></a>4096   | [HIGHRES_IMU_UPDATED_TEMPERATURE](#HIGHRES_IMU_UPDATED_TEMPERATURE)                          | The value in the temperature field has been updated                                      |
+| 值                                                  | Name                                                                                                                                                        | 描述                                                                         |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| <a id='HIGHRES_IMU_UPDATED_XACC'></a>1             | [HIGHRES_IMU_UPDATED_XACC](#HIGHRES_IMU_UPDATED_XACC)                                        | The value in the xacc field has been updated                               |
+| <a id='HIGHRES_IMU_UPDATED_YACC'></a>2             | [HIGHRES_IMU_UPDATED_YACC](#HIGHRES_IMU_UPDATED_YACC)                                        | The value in the yacc field has been updated                               |
+| <a id='HIGHRES_IMU_UPDATED_ZACC'></a>4             | [HIGHRES_IMU_UPDATED_ZACC](#HIGHRES_IMU_UPDATED_ZACC)                                        | The value in the zacc field has been updated since                         |
+| <a id='HIGHRES_IMU_UPDATED_XGYRO'></a>8            | [HIGHRES_IMU_UPDATED_XGYRO](#HIGHRES_IMU_UPDATED_XGYRO)                                      | The value in the xgyro field has been updated                              |
+| <a id='HIGHRES_IMU_UPDATED_YGYRO'></a>16           | [HIGHRES_IMU_UPDATED_YGYRO](#HIGHRES_IMU_UPDATED_YGYRO)                                      | The value in the ygyro field has been updated                              |
+| <a id='HIGHRES_IMU_UPDATED_ZGYRO'></a>32           | [HIGHRES_IMU_UPDATED_ZGYRO](#HIGHRES_IMU_UPDATED_ZGYRO)                                      | The value in the zgyro field has been updated                              |
+| <a id='HIGHRES_IMU_UPDATED_XMAG'></a>64            | [HIGHRES_IMU_UPDATED_XMAG](#HIGHRES_IMU_UPDATED_XMAG)                                        | The value in the xmag field has been updated                               |
+| <a id='HIGHRES_IMU_UPDATED_YMAG'></a>128           | [HIGHRES_IMU_UPDATED_YMAG](#HIGHRES_IMU_UPDATED_YMAG)                                        | The value in the ymag field has been updated                               |
+| <a id='HIGHRES_IMU_UPDATED_ZMAG'></a>256           | [HIGHRES_IMU_UPDATED_ZMAG](#HIGHRES_IMU_UPDATED_ZMAG)                                        | The value in the zmag field has been updated                               |
+| <a id='HIGHRES_IMU_UPDATED_ABS_PRESSURE'></a>512   | [HIGHRES_IMU_UPDATED_ABS_PRESSURE](#HIGHRES_IMU_UPDATED_ABS_PRESSURE)   | The value in the abs_pressure field has been updated  |
+| <a id='HIGHRES_IMU_UPDATED_DIFF_PRESSURE'></a>1024 | [HIGHRES_IMU_UPDATED_DIFF_PRESSURE](#HIGHRES_IMU_UPDATED_DIFF_PRESSURE) | The value in the diff_pressure field has been updated |
+| <a id='HIGHRES_IMU_UPDATED_PRESSURE_ALT'></a>2048  | [HIGHRES_IMU_UPDATED_PRESSURE_ALT](#HIGHRES_IMU_UPDATED_PRESSURE_ALT)   | The value in the pressure_alt field has been updated  |
+| <a id='HIGHRES_IMU_UPDATED_TEMPERATURE'></a>4096   | [HIGHRES_IMU_UPDATED_TEMPERATURE](#HIGHRES_IMU_UPDATED_TEMPERATURE)                          | The value in the temperature field has been updated                        |
 
 ### CAN_FILTER_OP {#CAN_FILTER_OP}
 
