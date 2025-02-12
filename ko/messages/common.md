@@ -1104,7 +1104,7 @@ Sent from simulation to autopilot. This packet is useful for high throughput app
 
 ### HIL_CONTROLS (91) {#HIL_CONTROLS}
 
-Sent from autopilot to simulation. Hardware in the loop control outputs
+Sent from autopilot to simulation. Hardware in the loop control outputs. Alternative to [HIL_ACTUATOR_CONTROLS](#HIL_ACTUATOR_CONTROLS).
 
 | Field Name                          | Type       | Units | Values                                     | Description                                                                                                                                                                                                                                                                                  |
 | ----------------------------------- | ---------- | ----- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1143,7 +1143,7 @@ Sent from simulation to autopilot. The RAW values of the RC channels received. T
 
 ### HIL_ACTUATOR_CONTROLS (93) {#HIL_ACTUATOR_CONTROLS}
 
-Sent from autopilot to simulation. Hardware in the loop control outputs (replacement for [HIL_CONTROLS](#HIL_CONTROLS))
+Sent from autopilot to simulation. Hardware in the loop control outputs. Alternative to [HIL_CONTROLS](#HIL_CONTROLS).
 
 | Field Name                     | Type        | Units | Values                                                                    | Description                                                                                                                                                                                                                                                                                  |
 | ------------------------------ | ----------- | ----- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
