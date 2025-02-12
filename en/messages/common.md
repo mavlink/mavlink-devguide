@@ -7747,10 +7747,10 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Message ID) | The MAVLink message ID | min: 0 max: 16777215 inc: 1 |   
 2 (Interval) | The interval between two messages. -1: disable. 0: request default rate (which may be zero). | min: -1 inc: 1 | us 
-3 (Req Param 3) | Use for index ID, if required. Otherwise, the use of this parameter (if any) must be defined in the requested message. By default assumed not used (0). |   |   
+3 (Req Param 3) | Use for index ID, if required. Otherwise, the use of this parameter (if any) must be defined in the requested message. By default assumed not used (0).  When used as an index ID, 0 means "all instances", "1" means the first instance in the sequence (the emitted message will have an id of 0 if message ids are 0-indexed, or 1 if index numbers start from one). |   |   
 4 (Req Param 4) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0). |   |   
-5 (Req Param 5) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0). |   |   
-6 (Req Param 6) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0). |   |   
+5 (Req Param 5) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0/NaN). |   |   
+6 (Req Param 6) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0/NaN). |   |   
 7 (Response Target) | Target address of message stream (if message has target address fields). 0: Flight-stack default (recommended), 1: address of requestor, 2: broadcast. | min: 0 max: 2 inc: 1 |   
 
 
