@@ -2238,7 +2238,7 @@ windspeed | `uint8_t` | m/s*5 | | Windspeed
 wind_heading | `uint8_t` | deg/2 | | Wind heading 
 eph | `uint8_t` | dm | | Maximum error horizontal position since last message 
 epv | `uint8_t` | dm | | Maximum error vertical position since last message 
-temperature_air | `int8_t` | degC | | Air temperature from airspeed sensor 
+temperature_air | `int8_t` | degC | | Air temperature 
 climb_rate | `int8_t` | dm/s | | Maximum climb rate magnitude since last message 
 battery | `int8_t` | % | invalid:-1 | Battery level (-1 if field not provided). 
 wp_num | `uint16_t` | | | Current waypoint number 
