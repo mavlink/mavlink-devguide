@@ -1170,7 +1170,7 @@ zacc | `int16_t` | mG | Z acceleration
 
 ### HIL_CONTROLS (91) {#HIL_CONTROLS}
 
-Sent from autopilot to simulation. Hardware in the loop control outputs
+Sent from autopilot to simulation. Hardware in the loop control outputs. Alternative to [HIL_ACTUATOR_CONTROLS](#HIL_ACTUATOR_CONTROLS).
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
@@ -1211,7 +1211,7 @@ rssi | `uint8_t` | | Receive signal strength indicator in device-dependent units
 
 ### HIL_ACTUATOR_CONTROLS (93) {#HIL_ACTUATOR_CONTROLS}
 
-Sent from autopilot to simulation. Hardware in the loop control outputs (replacement for [HIL_CONTROLS](#HIL_CONTROLS))
+Sent from autopilot to simulation. Hardware in the loop control outputs. Alternative to [HIL_CONTROLS](#HIL_CONTROLS).
 
 Field Name | Type | Units | Values | Description
 --- | --- | --- | --- | ---
