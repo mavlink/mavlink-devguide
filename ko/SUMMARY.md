@@ -67,7 +67,7 @@
   - [Payload Protocols](services/payload.md)
   - [Traffic Managment (UTM/ADS-B)](services/traffic_management.md)
   - [Events Interface (WIP)](services/events.md)
-  - [Standard Flight Modes (WIP)](services/standard_modes.md)
+  - [Standard Flight Modes](services/standard_modes.md)
   - [Time Synchronization](services/timesync.md)
 - [Dialects & Tests](messages/dialects.md) 
   - [ardupilotmega.xml](messages/ardupilotmega.md)

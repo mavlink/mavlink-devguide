@@ -31,6 +31,7 @@ For wider distribution they should [register the payload type](#register).
 
 The format of the tunnel message data is indicated by the value of `TUNNEL.payload_type`.
 Vendors can register their own formats in [MAV_TUNNEL_PAYLOAD_TYPE](#MAV_TUNNEL_PAYLOAD_TYPE) by creating a PR to update the enum in [common.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/common.xml).
+You should register just the payload types you need, give them meaningful names, and justify why they are needed in the PR (i.e. why a MAVLink standard protocol shouldn't be used instead).
 
 :::tip
 If you register an enum value in **common.xml** the MAVLink toolchain will generate an error if other dialect attempts to define the same value (if the dialect includes **common.xml**).
@@ -42,9 +43,9 @@ The rules for adding new `MAV_TUNNEL_PAYLOAD_TYPE` values are:
 2. Enum values are "allocated" to vendors and/or specific hardware in blocks of 10:
    - New blocks must start on the decade boundary (e.g. 200-209, 210-219, etc.).
    - Blocks are allocated sequentially (in the previous point the next block is allocated at 220, not 430).
-   - Vendors may reserve multiple sequential blocks if needed.
-3. Enum values in a block may be explicitly "reserved":
-   - Values should be named using the format `MAV_TUNNEL_PAYLOAD_TYPE_XXXX_RESERVEDYY`, where `XXXX` indicates the vendor or software, and `YY` is an increasing number starting at 0.
-     For example, the _STorM32 gimbal_ might reserve a block of 10 values from `MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED0` to `MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9`.
-   - You do not _have to_ explicitly reserve unused values.
-4. Enum values that are in use should be (re)named to reflect the vendor/software and purpose (e.g. `MAV_TUNNEL_PAYLOAD_TYPE_STORM32_CONFIG`).
+3. Enum values in a block may not be explicitly "reserved".
+
+   ::: info
+   Some values were reserved for `MAV_TUNNEL_PAYLOAD_TYPE_STORM32_`.
+   These have not been removed, but we will not be explicitly reserving in future.
+   :::

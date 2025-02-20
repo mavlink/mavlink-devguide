@@ -1,4 +1,4 @@
-#### How to Request & Stream Messages
+# How to Request & Stream Messages
 
 A remote system will typically stream a _default_ set of messages to a connected GCS, camera or other system.
 This default set may be hard coded, and is necessarily limited to reduce traffic on the channel.

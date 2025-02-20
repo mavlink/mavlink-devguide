@@ -17,17 +17,17 @@ Dialects are not managed by this project!
 
 The dialect definitions are:
 
-- [cubepilot.xml](cubepilot.md)
+- [paparazzi.xml](paparazzi.md)
 - [ardupilotmega.xml](ardupilotmega.md)
-- [matrixpilot.xml](matrixpilot.md)
-- [ASLUAV.xml](ASLUAV.md)
 - [csAirLink.xml](csAirLink.md)
+- [ualberta.xml](ualberta.md)
+- [AVSSUAS.xml](AVSSUAS.md)
 - [storm32.xml](storm32.md)
 - [icarous.xml](icarous.md)
-- [AVSSUAS.xml](AVSSUAS.md)
 - [uAvionix.xml](uAvionix.md)
-- [paparazzi.xml](paparazzi.md)
-- [ualberta.xml](ualberta.md)
+- [ASLUAV.xml](ASLUAV.md)
+- [cubepilot.xml](cubepilot.md)
+- [matrixpilot.xml](matrixpilot.md)
 - [loweheiser.xml](loweheiser.md)
 
 Note that dialects may `include` [MAVLink-Standard Definitions](index.md) or other dialects.

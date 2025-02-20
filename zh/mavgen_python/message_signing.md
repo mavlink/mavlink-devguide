@@ -1,4 +1,4 @@
-## Message Signing (Pymavlink)
+# Message Signing (Pymavlink)
 
 Pymavlink supports [Message Signing](../guide/message_signing.md) (authentication) when using [MAVLink 2](../guide/mavlink_2.md).
 
@@ -15,7 +15,7 @@ While not covered in this topic, you should also write code to:
 
 :::
 
-#### Signing using MAVLink Class
+## Signing using MAVLink Class
 
 If you are using the `MAVLink` class directly, you can use the **`MAVLink.signing`** attribute to access a `MAVLinkSigning` object and set the required attributes.
 
@@ -38,7 +38,7 @@ The initial timestamp should be based on current system time.
 For more information see [Message Signing](../guide/message_signing.md#timestamp).
 :::
 
-#### Signing using mavutil
+## Signing using mavutil
 
 If you are using **mavutil** to manage the connection then you can set up/disable signing using the methods shown below:
 
@@ -55,7 +55,7 @@ The `setup_signing()` method sets up the `MAVLink` object owned by the connectio
 - If `link_id` is not specified then internally the value is iterated.
 - If `initial_timestamp` is not set then an appropriate value for current time is populated from the underlying OS.
 
-#### Using allow_unsigned_callback
+## Using allow_unsigned_callback
 
 [Message Signing > Accepting Unsigned Packets](../guide/message_signing.md#accepting_unsigned_packets) and [Accepting Incorrectly Signed Packets](../guide/message_signing.md#accepting_incorrectly_signed_packets) specify that a message signing implementation should provide mechanisms such that library users can choose to conditionally accept unsigned or incorrectly signed packets.
 
