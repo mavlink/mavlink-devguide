@@ -483,11 +483,10 @@ In addition, there are some other "standard" prefixes which are used for common 
 - `MAV_CMD_NAV_`: `NAV` commands are used for navigation/movement commands (commands to go to a particular waypoint or move in a particular way).
 - `MAV_CMD_DO_`: `DO` commands are used for setting modes, changing altitude or speed etc.
 - `MAV_CMD_CONDITION_`: `CONDITION_` commands are used to define conditions before the mission state machine will move to the next item (e.g. a time after reaching a waypoint before taking a picture).
-- `MAV_CMD_REQUEST_`: For requesting information from a system.
 
 ::: tip
 The rules for the above prefixes are flexible; some DO commands might reasonably be NAV commands.
-In some cases a request for information might be a `MAV_CMD_REQUEST_` and in others it might be a stand alone message.
+It is not uncommon for `DO_` commands to omit the DO, in particular where the rest of the command makes the function obvious.
 :::
 
 ### Parameters (param) {#param}
