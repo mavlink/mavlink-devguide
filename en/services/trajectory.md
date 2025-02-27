@@ -1,5 +1,10 @@
 # Path Planning Protocol (Trajectory Interface)
 
+::: warning
+This interface is deprecated.
+The interface was present in PX4 v1.11 to PX4 v1.14, but is no longer used in any current flight stacks.
+:::
+
 The path planning protocol (a.k.a. trajectory interface) is a general-purpose protocol for a system to request dynamic path planning from another system (i.e. for an autopilot to request a path from a companion computer).
 
 The protocol is primarily intended for cases where constraints on the path to a destination are unknown or may change dynamically, but it can also be used for any other path management activities.
