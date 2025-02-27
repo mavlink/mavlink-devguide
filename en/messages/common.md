@@ -8329,9 +8329,11 @@ Param (Label) | Description | Units
 
 Fence vertex for an inclusion polygon (the polygon must not be self-intersecting). The vehicle must stay within this area. Minimum of 3 vertices required.
 
+The vertices for a polygon must be sent sequentially, each with param1 set to the total number of vertices in the polygon.
+
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Vertex Count) | Polygon vertex count | min: 3 inc: 1 
+1 (Vertex Count) | Polygon vertex count. This is the number of vertices in the current polygon (all vertices will have the same number). | min: 3 inc: 1 
 2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group, must be the same for all points in each polygon | min: 0 inc: 1 
 3 | Reserved |   
 4 | Reserved |   
@@ -8344,9 +8346,11 @@ Param (Label) | Description | Values
 
 Fence vertex for an exclusion polygon (the polygon must not be self-intersecting). The vehicle must stay outside this area. Minimum of 3 vertices required.
 
+The vertices for a polygon must be sent sequentially, each with param1 set to the total number of vertices in the polygon.
+
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Vertex Count) | Polygon vertex count | min: 3 inc: 1 
+1 (Vertex Count) | Polygon vertex count. This is the number of vertices in the current polygon (all vertices will have the same number). | min: 3 inc: 1 
 2 | Reserved |   
 3 | Reserved |   
 4 | Reserved |   
