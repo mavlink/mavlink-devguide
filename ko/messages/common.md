@@ -5838,6 +5838,7 @@ See https://mavlink.io/en/services/standard_modes.html
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id='MAV_MODE_PROPERTY_ADVANCED'></a>1            | [MAV_MODE_PROPERTY_ADVANCED](#MAV_MODE_PROPERTY_ADVANCED)                                                                 | If set, this mode is an advanced mode.<br>For example a rate-controlled manual mode might be advanced, whereas a position-controlled manual mode is not.<br>A GCS can optionally use this flag to configure the UI for its intended users. |
 | <a id='MAV_MODE_PROPERTY_NOT_USER_SELECTABLE'></a>2 | [MAV_MODE_PROPERTY_NOT_USER_SELECTABLE](#MAV_MODE_PROPERTY_NOT_USER_SELECTABLE) | If set, this mode should not be added to the list of selectable modes.<br>The mode might still be selected by the FC directly (for example as part of a failsafe).                                                                      |
+| <a id='MAV_MODE_PROPERTY_AUTO_MODE'></a>4           | [MAV_MODE_PROPERTY_AUTO_MODE](#MAV_MODE_PROPERTY_AUTO_MODE)                                          | If set, this mode is automatically controlled (it may use but does not require a manual controller).<br>If unset the mode is a assumed to require user input (be a manual mode).                                     |
 
 ### MAV_AUTOPILOT — \[from: [minimal](../messages/minimal.md#MAV_AUTOPILOT)\] {#MAV_AUTOPILOT}
 
@@ -7963,29 +7964,33 @@ Fence return point (there can only be one such point in a geofence definition). 
 
 Fence vertex for an inclusion polygon (the polygon must not be self-intersecting). The vehicle must stay within this area. Minimum of 3 vertices required.
 
-| Param (Label)       | Description                                                                                                                                              | Values                                        |
-| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| 1 (Vertex Count)    | Polygon vertex count                                                                                                                                     | min: 3 inc: 1 |
-| 2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group, must be the same for all points in each polygon | min: 0 inc: 1 |
-| 3                                      | Reserved                                                                                                                                                 |                                               |
-| 4                                      | Reserved                                                                                                                                                 |                                               |
-| 5 (Latitude)        | Latitude                                                                                                                                                 |                                               |
-| 6 (Longitude)       | Longitude                                                                                                                                                |                                               |
-| 7                                      | Reserved                                                                                                                                                 |                                               |
+The vertices for a polygon must be sent sequentially, each with param1 set to the total number of vertices in the polygon.
+
+| Param (Label)       | Description                                                                                                                                                              | Values                                        |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
+| 1 (Vertex Count)    | Polygon vertex count. This is the number of vertices in the current polygon (all vertices will have the same number). | min: 3 inc: 1 |
+| 2 (Inclusion Group) | Vehicle must be inside ALL inclusion zones in a single group, vehicle must be inside at least one group, must be the same for all points in each polygon                 | min: 0 inc: 1 |
+| 3                                      | Reserved                                                                                                                                                                 |                                               |
+| 4                                      | Reserved                                                                                                                                                                 |                                               |
+| 5 (Latitude)        | Latitude                                                                                                                                                                 |                                               |
+| 6 (Longitude)       | Longitude                                                                                                                                                                |                                               |
+| 7                                      | Reserved                                                                                                                                                                 |                                               |
 
 ### MAV_CMD_NAV_FENCE_POLYGON_VERTEX_EXCLUSION (5002) {#MAV_CMD_NAV_FENCE_POLYGON_VERTEX_EXCLUSION}
 
 Fence vertex for an exclusion polygon (the polygon must not be self-intersecting). The vehicle must stay outside this area. Minimum of 3 vertices required.
 
-| Param (Label)    | Description          | Values                                        |
-| ----------------------------------- | -------------------- | --------------------------------------------- |
-| 1 (Vertex Count) | Polygon vertex count | min: 3 inc: 1 |
-| 2                                   | Reserved             |                                               |
-| 3                                   | Reserved             |                                               |
-| 4                                   | Reserved             |                                               |
-| 5 (Latitude)     | Latitude             |                                               |
-| 6 (Longitude)    | Longitude            |                                               |
-| 7                                   | Reserved             |                                               |
+The vertices for a polygon must be sent sequentially, each with param1 set to the total number of vertices in the polygon.
+
+| Param (Label)    | Description                                                                                                                                                              | Values                                        |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
+| 1 (Vertex Count) | Polygon vertex count. This is the number of vertices in the current polygon (all vertices will have the same number). | min: 3 inc: 1 |
+| 2                                   | Reserved                                                                                                                                                                 |                                               |
+| 3                                   | Reserved                                                                                                                                                                 |                                               |
+| 4                                   | Reserved                                                                                                                                                                 |                                               |
+| 5 (Latitude)     | Latitude                                                                                                                                                                 |                                               |
+| 6 (Longitude)    | Longitude                                                                                                                                                                |                                               |
+| 7                                   | Reserved                                                                                                                                                                 |                                               |
 
 ### MAV_CMD_NAV_FENCE_CIRCLE_INCLUSION (5003) {#MAV_CMD_NAV_FENCE_CIRCLE_INCLUSION}
 

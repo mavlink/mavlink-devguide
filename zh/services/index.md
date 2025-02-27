@@ -29,7 +29,6 @@ The main microservices are shown in the sidebar (most are listed below):
 - [File Transfer Protocol (FTP)](../services/ftp.md)
 - [Landing Target Protocol](../services/landing_target.md)
 - [Ping Protocol](../services/ping.md)
-- [Path Planning Protocol](../services/trajectory.md) (Trajectory Interface)
 - [Battery Protocol](../services/battery.md)
 - [Terrain Protocol](../services/terrain.md)
 - [Tunnel Protocol](../services/tunnel.md)
