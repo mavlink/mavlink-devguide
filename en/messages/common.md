@@ -6066,6 +6066,7 @@ Value | Name | Description
 --- | --- | ---
 <a id='MAV_MODE_PROPERTY_ADVANCED'></a>1 | [MAV_MODE_PROPERTY_ADVANCED](#MAV_MODE_PROPERTY_ADVANCED) | If set, this mode is an advanced mode.<br>For example a rate-controlled manual mode might be advanced, whereas a position-controlled manual mode is not.<br>A GCS can optionally use this flag to configure the UI for its intended users. 
 <a id='MAV_MODE_PROPERTY_NOT_USER_SELECTABLE'></a>2 | [MAV_MODE_PROPERTY_NOT_USER_SELECTABLE](#MAV_MODE_PROPERTY_NOT_USER_SELECTABLE) | If set, this mode should not be added to the list of selectable modes.<br>The mode might still be selected by the FC directly (for example as part of a failsafe). 
+<a id='MAV_MODE_PROPERTY_AUTO_MODE'></a>4 | [MAV_MODE_PROPERTY_AUTO_MODE](#MAV_MODE_PROPERTY_AUTO_MODE) | If set, this mode is automatically controlled (it may use but does not require a manual controller).<br>If unset the mode is a assumed to require user input (be a manual mode). 
 
 ### MAV_AUTOPILOT — \[from: [minimal](../messages/minimal.md#MAV_AUTOPILOT)\] {#MAV_AUTOPILOT}
 
