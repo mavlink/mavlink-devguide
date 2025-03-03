@@ -158,7 +158,7 @@ param_count | `uint16_t` | Total number of onboard parameters.
 param_index_first | `uint16_t` | Index of the first onboard parameter in this array. 
 param_array_len | `uint8_t` | Number of onboard parameters in this array. 
 flags | `uint16_t` | Flags. 
-packet_buf | `uint8_t[248]` | Parameters buffer. Contains a series of variable length parameter blocks, one per parameter, with format as specifed elsewhere. 
+packet_buf | `uint8_t[248]` | Parameters buffer. Contains a series of variable length parameter blocks, one per parameter, with format as specified elsewhere. 
 
 
 ## Enumerated Types
