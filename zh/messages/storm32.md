@@ -146,13 +146,13 @@ Frsky SPort passthrough multi packet container.
 
 Parameter multi param value container.
 
-| Field Name                                                  | Type           | 描述                                                                                                                                                              |
-| ----------------------------------------------------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| param_count                            | `uint16_t`     | Total number of onboard parameters.                                                                                                             |
-| param_index_first | `uint16_t`     | Index of the first onboard parameter in this array.                                                                                             |
-| param_array_len   | `uint8_t`      | Number of onboard parameters in this array.                                                                                                     |
-| flags                                                       | `uint16_t`     | Flags.                                                                                                                                          |
-| packet_buf                             | `uint8_t[248]` | Parameters buffer. Contains a series of variable length parameter blocks, one per parameter, with format as specifed elsewhere. |
+| Field Name                                                  | Type           | 描述                                                                                                                                                               |
+| ----------------------------------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| param_count                            | `uint16_t`     | Total number of onboard parameters.                                                                                                              |
+| param_index_first | `uint16_t`     | Index of the first onboard parameter in this array.                                                                                              |
+| param_array_len   | `uint8_t`      | Number of onboard parameters in this array.                                                                                                      |
+| flags                                                       | `uint16_t`     | Flags.                                                                                                                                           |
+| packet_buf                             | `uint8_t[248]` | Parameters buffer. Contains a series of variable length parameter blocks, one per parameter, with format as specified elsewhere. |
 
 ## Enumerated Types
 
@@ -305,3 +305,5 @@ Command to set the shot manager mode.
 | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | 1 (Mode)                  | Set shot mode.                                                                                        | [MAV_QSHOT_MODE](#MAV_QSHOT_MODE) |
 | 2 (Shot state or command) | Set shot state or command. The allowed values are specific to the selected shot mode. |                                                                             |
+
+
