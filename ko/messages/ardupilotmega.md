@@ -44,8 +44,8 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 72      | 246      |
-| [Enums](#enumerated-types) | 46      | 161      |
+| [Messages](#messages)      | 72      | 251      |
+| [Enums](#enumerated-types) | 46      | 166      |
 | [Commands](#mav_commands)  | 198     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -2025,3 +2025,5 @@ Provide a value for height above ground level. This can be used for things like 
 | 5                                | Empty                                                                                                                                        |       |
 | 6                                | Empty                                                                                                                                        |       |
 | 7                                | Empty                                                                                                                                        |       |
+
+

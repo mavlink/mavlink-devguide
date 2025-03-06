@@ -35,8 +35,8 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 3       | 229      |
-| [Enums](#enumerated-types) | 8       | 146      |
+| [Messages](#messages)      | 8       | 229      |
+| [Enums](#enumerated-types) | 13      | 146      |
 | [Commands](#mav_commands)  | 165     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -88,6 +88,56 @@ Transceiver heartbeat with health report (updated every 10s)
 | Field Name | Type      | 值                                                                                                                  | 描述         |
 | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------ | ---------- |
 | rfHealth   | `uint8_t` | [UAVIONIX_ADSB_RF_HEALTH](#UAVIONIX_ADSB_RF_HEALTH) | ADS-B应答器消息 |
+
+### UAVIONIX_ADSB_OUT_CFG_REGISTRATION (10004) {#UAVIONIX_ADSB_OUT_CFG_REGISTRATION}
+
+Aircraft Registration.
+
+| Field Name   | Type      | 描述                                                                                                                                                                                                                                              |
+| ------------ | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| registration | `char[9]` | Aircraft Registration (ASCII string A-Z, 0-9 only), e.g. "N8644B ". Trailing spaces (0x20) only. This is null-terminated. |
+
+### UAVIONIX_ADSB_OUT_CFG_FLIGHTID (10005) {#UAVIONIX_ADSB_OUT_CFG_FLIGHTID}
+
+Flight Identification for ADSB-Out vehicles.
+
+| Field Name                     | Type      | 描述                                                                                                                                                                                                                                                                                                                                    |
+| ------------------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| flight_id | `char[9]` | Flight Identification: 8 ASCII characters, '0' through '9', 'A' through 'Z' or space. Spaces (0x20) used as a trailing pad character, or when call sign is unavailable. Reflects Control message setting. This is null-terminated. |
+
+### UAVIONIX_ADSB_GET (10006) {#UAVIONIX_ADSB_GET}
+
+Request messages.
+
+| Field Name   | Type       | 描述                                                                                    |
+| ------------ | ---------- | ------------------------------------------------------------------------------------- |
+| ReqMessageId | `uint32_t` | Message ID to request. Supports any message in this 10000-10099 range |
+
+### UAVIONIX_ADSB_OUT_CONTROL (10007) {#UAVIONIX_ADSB_OUT_CONTROL}
+
+Control message with all data sent in UCP control message.
+
+| Field Name                     | Type       | Units | 值                                                                                                                                                       | 描述                                                                                                                                                                                                                                         |
+| ------------------------------ | ---------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| state                          | `uint8_t`  |       | [UAVIONIX_ADSB_OUT_CONTROL_STATE](#UAVIONIX_ADSB_OUT_CONTROL_STATE) | ADS-B transponder control state flags                                                                                                                                                                                                      |
+| baroAltMSL                     | `int32_t`  | 毫巴    |                                                                                                                                                         | 相对于标准大气层1013.2毫巴和不带校正高度（MSL）的几何压力高度（MSL），而不受校正高度（m \* 1E-3）。 （up +ve）。 如果未知设置为 UINT32_MAX                                                                                                             |
+| squawk                         | `uint16_t` |       |                                                                                                                                                         | 模式A代码（对于VFR，通常为1200 [0x04B0]）                                                                                                                                                          |
+| emergencyStatus                | `uint8_t`  |       | [UAVIONIX_ADSB_EMERGENCY_STATUS](#UAVIONIX_ADSB_EMERGENCY_STATUS)                        | 紧急消息                                                                                                                                                                                                                                       |
+| flight_id | `char[8]`  |       |                                                                                                                                                         | Flight Identification: 8 ASCII characters, '0' through '9', 'A' through 'Z' or space. Spaces (0x20) used as a trailing pad character, or when call sign is unavailable. |
+| x_bit     | `uint8_t`  |       | [UAVIONIX_ADSB_XBIT](#UAVIONIX_ADSB_XBIT)                                                                     | X-Bit enable (military transponders only)                                                                                                                                                                               |
+
+### UAVIONIX_ADSB_OUT_STATUS (10008) {#UAVIONIX_ADSB_OUT_STATUS}
+
+Status message with information from UCP Heartbeat and Status messages.
+
+| Field Name                     | Type       | 值                                                                                                                                                                                | 描述                                                                                                                                                                                                                                                                                      |
+| ------------------------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| state                          | `uint8_t`  | [UAVIONIX_ADSB_OUT_STATUS_STATE](#UAVIONIX_ADSB_OUT_STATUS_STATE)                            | ADS-B transponder status state flags                                                                                                                                                                                                                                                    |
+| squawk                         | `uint16_t` |                                                                                                                                                                                  | 模式A代码（对于VFR，通常为1200 [0x04B0]）                                                                                                                                                                                                       |
+| NIC_NACp  | `uint8_t`  | [UAVIONIX_ADSB_OUT_STATUS_NIC_NACP](#UAVIONIX_ADSB_OUT_STATUS_NIC_NACP) | Integrity and Accuracy of traffic reported as a 4-bit value for each field (NACp 7:4, NIC 3:0) and encoded by Containment Radius (HPL) and Estimated Position Uncertainty (HFOM), respectively |
+| boardTemp                      | `uint8_t`  |                                                                                                                                                                                  | Board temperature in C                                                                                                                                                                                                                                                                  |
+| fault                          | `uint8_t`  | [UAVIONIX_ADSB_OUT_STATUS_FAULT](#UAVIONIX_ADSB_OUT_STATUS_FAULT)                            | ADS-B transponder fault flags                                                                                                                                                                                                                                                           |
+| flight_id | `char[8]`  |                                                                                                                                                                                  | Flight Identification: 8 ASCII characters, '0' through '9', 'A' through 'Z' or space. Spaces (0x20) used as a trailing pad character, or when call sign is unavailable.                                              |
 
 ## Enumerated Types
 
@@ -199,4 +249,83 @@ Emergency status encoding
 | <a id='UAVIONIX_ADSB_OUT_DOWNED_AIRCRAFT_EMERGENCY'></a>6       | [UAVIONIX_ADSB_OUT_DOWNED_AIRCRAFT_EMERGENCY](#UAVIONIX_ADSB_OUT_DOWNED_AIRCRAFT_EMERGENCY)             |    |
 | <a id='UAVIONIX_ADSB_OUT_RESERVED'></a>7                        | [UAVIONIX_ADSB_OUT_RESERVED](#UAVIONIX_ADSB_OUT_RESERVED)                                                                                         |    |
 
+### UAVIONIX_ADSB_OUT_CONTROL_STATE {#UAVIONIX_ADSB_OUT_CONTROL_STATE}
+
+State flags for ADS-B transponder dynamic report
+
+| 值                                                                        | Name                                                                                                                                                                                                                                                                         | 描述 |
+| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -- |
+| <a id='UAVIONIX_ADSB_OUT_CONTROL_STATE_EXTERNAL_BARO_CROSSCHECKED'></a>1 | [UAVIONIX_ADSB_OUT_CONTROL_STATE_EXTERNAL_BARO_CROSSCHECKED](#UAVIONIX_ADSB_OUT_CONTROL_STATE_EXTERNAL_BARO_CROSSCHECKED) |    |
+| <a id='UAVIONIX_ADSB_OUT_CONTROL_STATE_ON_GROUND'></a>4                  | [UAVIONIX_ADSB_OUT_CONTROL_STATE_ON_GROUND](#UAVIONIX_ADSB_OUT_CONTROL_STATE_ON_GROUND)                                                        |    |
+| <a id='UAVIONIX_ADSB_OUT_CONTROL_STATE_IDENT_BUTTON_ACTIVE'></a>8        | [UAVIONIX_ADSB_OUT_CONTROL_STATE_IDENT_BUTTON_ACTIVE](#UAVIONIX_ADSB_OUT_CONTROL_STATE_IDENT_BUTTON_ACTIVE)               |    |
+| <a id='UAVIONIX_ADSB_OUT_CONTROL_STATE_MODE_A_ENABLED'></a>16            | [UAVIONIX_ADSB_OUT_CONTROL_STATE_MODE_A_ENABLED](#UAVIONIX_ADSB_OUT_CONTROL_STATE_MODE_A_ENABLED)                         |    |
+| <a id='UAVIONIX_ADSB_OUT_CONTROL_STATE_MODE_C_ENABLED'></a>32            | [UAVIONIX_ADSB_OUT_CONTROL_STATE_MODE_C_ENABLED](#UAVIONIX_ADSB_OUT_CONTROL_STATE_MODE_C_ENABLED)                         |    |
+| <a id='UAVIONIX_ADSB_OUT_CONTROL_STATE_MODE_S_ENABLED'></a>64            | [UAVIONIX_ADSB_OUT_CONTROL_STATE_MODE_S_ENABLED](#UAVIONIX_ADSB_OUT_CONTROL_STATE_MODE_S_ENABLED)                         |    |
+| <a id='UAVIONIX_ADSB_OUT_CONTROL_STATE_1090ES_TX_ENABLED'></a>128        | [UAVIONIX_ADSB_OUT_CONTROL_STATE_1090ES_TX_ENABLED](#UAVIONIX_ADSB_OUT_CONTROL_STATE_1090ES_TX_ENABLED)                   |    |
+
+### UAVIONIX_ADSB_XBIT {#UAVIONIX_ADSB_XBIT}
+
+State flags for X-Bit and reserved fields.
+
+| 值                                          | Name                                                                                                                     | 描述 |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | -- |
+| <a id='UAVIONIX_ADSB_XBIT_ENABLED'></a>128 | [UAVIONIX_ADSB_XBIT_ENABLED](#UAVIONIX_ADSB_XBIT_ENABLED) |    |
+
+### UAVIONIX_ADSB_OUT_STATUS_STATE {#UAVIONIX_ADSB_OUT_STATUS_STATE}
+
+State flags for ADS-B transponder status report
+
+| 值                                                                    | Name                                                                                                                                                                                                                                                                 | 描述 |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -- |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_STATE_ON_GROUND'></a>1               | [UAVIONIX_ADSB_OUT_STATUS_STATE_ON_GROUND](#UAVIONIX_ADSB_OUT_STATUS_STATE_ON_GROUND)                                                  |    |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_STATE_INTERROGATED_SINCE_LAST'></a>2 | [UAVIONIX_ADSB_OUT_STATUS_STATE_INTERROGATED_SINCE_LAST](#UAVIONIX_ADSB_OUT_STATUS_STATE_INTERROGATED_SINCE_LAST) |    |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_STATE_XBIT_ENABLED'></a>4            | [UAVIONIX_ADSB_OUT_STATUS_STATE_XBIT_ENABLED](#UAVIONIX_ADSB_OUT_STATUS_STATE_XBIT_ENABLED)                                            |    |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_STATE_IDENT_ACTIVE'></a>8            | [UAVIONIX_ADSB_OUT_STATUS_STATE_IDENT_ACTIVE](#UAVIONIX_ADSB_OUT_STATUS_STATE_IDENT_ACTIVE)                                            |    |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_STATE_MODE_A_ENABLED'></a>16         | [UAVIONIX_ADSB_OUT_STATUS_STATE_MODE_A_ENABLED](#UAVIONIX_ADSB_OUT_STATUS_STATE_MODE_A_ENABLED)                   |    |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_STATE_MODE_C_ENABLED'></a>32         | [UAVIONIX_ADSB_OUT_STATUS_STATE_MODE_C_ENABLED](#UAVIONIX_ADSB_OUT_STATUS_STATE_MODE_C_ENABLED)                   |    |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_STATE_MODE_S_ENABLED'></a>64         | [UAVIONIX_ADSB_OUT_STATUS_STATE_MODE_S_ENABLED](#UAVIONIX_ADSB_OUT_STATUS_STATE_MODE_S_ENABLED)                   |    |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_STATE_1090ES_TX_ENABLED'></a>128     | [UAVIONIX_ADSB_OUT_STATUS_STATE_1090ES_TX_ENABLED](#UAVIONIX_ADSB_OUT_STATUS_STATE_1090ES_TX_ENABLED)             |    |
+
+### UAVIONIX_ADSB_OUT_STATUS_NIC_NACP {#UAVIONIX_ADSB_OUT_STATUS_NIC_NACP}
+
+State flags for ADS-B transponder status report
+
+| 值                                              | Name                                                                                                                                                                                            | 描述 |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -- |
+| <a id='UAVIONIX_ADSB_NIC_CR_20_NM'></a>1       | [UAVIONIX_ADSB_NIC_CR_20_NM](#UAVIONIX_ADSB_NIC_CR_20_NM)                              |    |
+| <a id='UAVIONIX_ADSB_NIC_CR_8_NM'></a>2        | [UAVIONIX_ADSB_NIC_CR_8_NM](#UAVIONIX_ADSB_NIC_CR_8_NM)                                |    |
+| <a id='UAVIONIX_ADSB_NIC_CR_4_NM'></a>3        | [UAVIONIX_ADSB_NIC_CR_4_NM](#UAVIONIX_ADSB_NIC_CR_4_NM)                                |    |
+| <a id='UAVIONIX_ADSB_NIC_CR_2_NM'></a>4        | [UAVIONIX_ADSB_NIC_CR_2_NM](#UAVIONIX_ADSB_NIC_CR_2_NM)                                |    |
+| <a id='UAVIONIX_ADSB_NIC_CR_1_NM'></a>5        | [UAVIONIX_ADSB_NIC_CR_1_NM](#UAVIONIX_ADSB_NIC_CR_1_NM)                                |    |
+| <a id='UAVIONIX_ADSB_NIC_CR_0_3_NM'></a>6      | [UAVIONIX_ADSB_NIC_CR_0_3_NM](#UAVIONIX_ADSB_NIC_CR_0_3_NM)       |    |
+| <a id='UAVIONIX_ADSB_NIC_CR_0_2_NM'></a>7      | [UAVIONIX_ADSB_NIC_CR_0_2_NM](#UAVIONIX_ADSB_NIC_CR_0_2_NM)       |    |
+| <a id='UAVIONIX_ADSB_NIC_CR_0_1_NM'></a>8      | [UAVIONIX_ADSB_NIC_CR_0_1_NM](#UAVIONIX_ADSB_NIC_CR_0_1_NM)       |    |
+| <a id='UAVIONIX_ADSB_NIC_CR_75_M'></a>9        | [UAVIONIX_ADSB_NIC_CR_75_M](#UAVIONIX_ADSB_NIC_CR_75_M)                                |    |
+| <a id='UAVIONIX_ADSB_NIC_CR_25_M'></a>10       | [UAVIONIX_ADSB_NIC_CR_25_M](#UAVIONIX_ADSB_NIC_CR_25_M)                                |    |
+| <a id='UAVIONIX_ADSB_NIC_CR_7_5_M'></a>11      | [UAVIONIX_ADSB_NIC_CR_7_5_M](#UAVIONIX_ADSB_NIC_CR_7_5_M)         |    |
+| <a id='UAVIONIX_ADSB_NACP_EPU_10_NM'></a>16    | [UAVIONIX_ADSB_NACP_EPU_10_NM](#UAVIONIX_ADSB_NACP_EPU_10_NM)                          |    |
+| <a id='UAVIONIX_ADSB_NACP_EPU_4_NM'></a>32     | [UAVIONIX_ADSB_NACP_EPU_4_NM](#UAVIONIX_ADSB_NACP_EPU_4_NM)                            |    |
+| <a id='UAVIONIX_ADSB_NACP_EPU_2_NM'></a>48     | [UAVIONIX_ADSB_NACP_EPU_2_NM](#UAVIONIX_ADSB_NACP_EPU_2_NM)                            |    |
+| <a id='UAVIONIX_ADSB_NACP_EPU_1_NM'></a>64     | [UAVIONIX_ADSB_NACP_EPU_1_NM](#UAVIONIX_ADSB_NACP_EPU_1_NM)                            |    |
+| <a id='UAVIONIX_ADSB_NACP_EPU_0_5_NM'></a>80   | [UAVIONIX_ADSB_NACP_EPU_0_5_NM](#UAVIONIX_ADSB_NACP_EPU_0_5_NM)   |    |
+| <a id='UAVIONIX_ADSB_NACP_EPU_0_3_NM'></a>96   | [UAVIONIX_ADSB_NACP_EPU_0_3_NM](#UAVIONIX_ADSB_NACP_EPU_0_3_NM)   |    |
+| <a id='UAVIONIX_ADSB_NACP_EPU_0_1_NM'></a>112  | [UAVIONIX_ADSB_NACP_EPU_0_1_NM](#UAVIONIX_ADSB_NACP_EPU_0_1_NM)   |    |
+| <a id='UAVIONIX_ADSB_NACP_EPU_0_05_NM'></a>128 | [UAVIONIX_ADSB_NACP_EPU_0_05_NM](#UAVIONIX_ADSB_NACP_EPU_0_05_NM) |    |
+| <a id='UAVIONIX_ADSB_NACP_EPU_30_M'></a>144    | [UAVIONIX_ADSB_NACP_EPU_30_M](#UAVIONIX_ADSB_NACP_EPU_30_M)                            |    |
+| <a id='UAVIONIX_ADSB_NACP_EPU_10_M'></a>160    | [UAVIONIX_ADSB_NACP_EPU_10_M](#UAVIONIX_ADSB_NACP_EPU_10_M)                            |    |
+| <a id='UAVIONIX_ADSB_NACP_EPU_3_M'></a>176     | [UAVIONIX_ADSB_NACP_EPU_3_M](#UAVIONIX_ADSB_NACP_EPU_3_M)                              |    |
+
+### UAVIONIX_ADSB_OUT_STATUS_FAULT {#UAVIONIX_ADSB_OUT_STATUS_FAULT}
+
+State flags for ADS-B transponder fault report
+
+| 值                                                                   | Name                                                                                                                                                                                                                                                               | 描述 |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -- |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_FAULT_STATUS_MESSAGE_UNAVAIL'></a>8 | [UAVIONIX_ADSB_OUT_STATUS_FAULT_STATUS_MESSAGE_UNAVAIL](#UAVIONIX_ADSB_OUT_STATUS_FAULT_STATUS_MESSAGE_UNAVAIL) |    |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_FAULT_GPS_NO_POS'></a>16            | [UAVIONIX_ADSB_OUT_STATUS_FAULT_GPS_NO_POS](#UAVIONIX_ADSB_OUT_STATUS_FAULT_GPS_NO_POS)                         |    |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_FAULT_GPS_UNAVAIL'></a>32           | [UAVIONIX_ADSB_OUT_STATUS_FAULT_GPS_UNAVAIL](#UAVIONIX_ADSB_OUT_STATUS_FAULT_GPS_UNAVAIL)                                            |    |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_FAULT_TX_SYSTEM_FAIL'></a>64        | [UAVIONIX_ADSB_OUT_STATUS_FAULT_TX_SYSTEM_FAIL](#UAVIONIX_ADSB_OUT_STATUS_FAULT_TX_SYSTEM_FAIL)                 |    |
+| <a id='UAVIONIX_ADSB_OUT_STATUS_FAULT_MAINT_REQ'></a>128            | [UAVIONIX_ADSB_OUT_STATUS_FAULT_MAINT_REQ](#UAVIONIX_ADSB_OUT_STATUS_FAULT_MAINT_REQ)                                                |    |
+
 ## Commands (MAV_CMD) {#mav_commands}
+
