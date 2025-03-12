@@ -7625,7 +7625,7 @@ Param (Label) | Description | Values
 
 ### MAV_CMD_ACTUATOR_TEST (310) {#MAV_CMD_ACTUATOR_TEST}
 
-Actuator testing command. This is similar to [MAV_CMD_DO_MOTOR_TEST](#MAV_CMD_DO_MOTOR_TEST) but operates on the level of output functions, i.e. it is possible to test Motor1 independent from which output it is configured on. Autopilots typically refuse this command while armed.
+Actuator testing command. This is similar to [MAV_CMD_DO_MOTOR_TEST](#MAV_CMD_DO_MOTOR_TEST) but operates on the level of output functions, i.e. it is possible to test Motor1 independent from which output it is configured on. Autopilots must NACK this command with [MAV_RESULT_TEMPORARILY_REJECTED](#MAV_RESULT_TEMPORARILY_REJECTED) while armed.
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
