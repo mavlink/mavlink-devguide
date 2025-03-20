@@ -96,3 +96,4 @@ This message informs about the currently active SCRIPT.
 ## Enumerated Types
 
 ## Commands (MAV_CMD) {#mav_commands}
+
