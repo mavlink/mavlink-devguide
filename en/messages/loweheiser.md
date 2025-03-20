@@ -60,7 +60,7 @@ rectifier_temp | `float` | degC | The Temperature of the rectifier.
 generator_temp | `float` | degC | The temperature of the mechanical motor, fuel cell core or generator. 
 efi_batt | `float` | V | EFI Supply Voltage. 
 efi_rpm | `float` | rpm | Motor RPM. 
-efi_pw | `float` | ms | Injector pulse-width in milliseconds. 
+efi_pw | `float` | ms | Injector pulse-width in miliseconds. 
 efi_fuel_flow | `float` | | Fuel flow rate in litres/hour. 
 efi_fuel_consumed | `float` | l | Fuel consumed. 
 efi_baro | `float` | kPa | Atmospheric pressure. 
