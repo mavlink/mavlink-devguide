@@ -44,8 +44,8 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 72      | 251      |
-| [Enums](#enumerated-types) | 46      | 166      |
+| [Messages](#messages)      | 72      | 247      |
+| [Enums](#enumerated-types) | 46      | 162      |
 | [Commands](#mav_commands)  | 198     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -1451,112 +1451,120 @@ Deepstall flight stage.
 
 A mapping of plane flight modes for custom_mode field of heartbeat.
 
-| Value                                  | Name                                                                                                                                                           | Description |
-| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| <a id='PLANE_MODE_MANUAL'></a>0        | [PLANE_MODE_MANUAL](#PLANE_MODE_MANUAL)                                                                              |             |
-| <a id='PLANE_MODE_CIRCLE'></a>1        | [PLANE_MODE_CIRCLE](#PLANE_MODE_CIRCLE)                                                                              |             |
-| <a id='PLANE_MODE_STABILIZE'></a>2     | [PLANE_MODE_STABILIZE](#PLANE_MODE_STABILIZE)                                                                        |             |
-| <a id='PLANE_MODE_TRAINING'></a>3      | [PLANE_MODE_TRAINING](#PLANE_MODE_TRAINING)                                                                          |             |
-| <a id='PLANE_MODE_ACRO'></a>4          | [PLANE_MODE_ACRO](#PLANE_MODE_ACRO)                                                                                  |             |
-| <a id='PLANE_MODE_FLY_BY_WIRE_A'></a>5 | [PLANE_MODE_FLY_BY_WIRE_A](#PLANE_MODE_FLY_BY_WIRE_A) |             |
-| <a id='PLANE_MODE_FLY_BY_WIRE_B'></a>6 | [PLANE_MODE_FLY_BY_WIRE_B](#PLANE_MODE_FLY_BY_WIRE_B) |             |
-| <a id='PLANE_MODE_CRUISE'></a>7        | [PLANE_MODE_CRUISE](#PLANE_MODE_CRUISE)                                                                              |             |
-| <a id='PLANE_MODE_AUTOTUNE'></a>8      | [PLANE_MODE_AUTOTUNE](#PLANE_MODE_AUTOTUNE)                                                                          |             |
-| <a id='PLANE_MODE_AUTO'></a>10         | [PLANE_MODE_AUTO](#PLANE_MODE_AUTO)                                                                                  |             |
-| <a id='PLANE_MODE_RTL'></a>11          | [PLANE_MODE_RTL](#PLANE_MODE_RTL)                                                                                    |             |
-| <a id='PLANE_MODE_LOITER'></a>12       | [PLANE_MODE_LOITER](#PLANE_MODE_LOITER)                                                                              |             |
-| <a id='PLANE_MODE_TAKEOFF'></a>13      | [PLANE_MODE_TAKEOFF](#PLANE_MODE_TAKEOFF)                                                                            |             |
-| <a id='PLANE_MODE_AVOID_ADSB'></a>14   | [PLANE_MODE_AVOID_ADSB](#PLANE_MODE_AVOID_ADSB)                                                 |             |
-| <a id='PLANE_MODE_GUIDED'></a>15       | [PLANE_MODE_GUIDED](#PLANE_MODE_GUIDED)                                                                              |             |
-| <a id='PLANE_MODE_INITIALIZING'></a>16 | [PLANE_MODE_INITIALIZING](#PLANE_MODE_INITIALIZING)                                                                  |             |
-| <a id='PLANE_MODE_QSTABILIZE'></a>17   | [PLANE_MODE_QSTABILIZE](#PLANE_MODE_QSTABILIZE)                                                                      |             |
-| <a id='PLANE_MODE_QHOVER'></a>18       | [PLANE_MODE_QHOVER](#PLANE_MODE_QHOVER)                                                                              |             |
-| <a id='PLANE_MODE_QLOITER'></a>19      | [PLANE_MODE_QLOITER](#PLANE_MODE_QLOITER)                                                                            |             |
-| <a id='PLANE_MODE_QLAND'></a>20        | [PLANE_MODE_QLAND](#PLANE_MODE_QLAND)                                                                                |             |
-| <a id='PLANE_MODE_QRTL'></a>21         | [PLANE_MODE_QRTL](#PLANE_MODE_QRTL)                                                                                  |             |
-| <a id='PLANE_MODE_QAUTOTUNE'></a>22    | [PLANE_MODE_QAUTOTUNE](#PLANE_MODE_QAUTOTUNE)                                                                        |             |
-| <a id='PLANE_MODE_QACRO'></a>23        | [PLANE_MODE_QACRO](#PLANE_MODE_QACRO)                                                                                |             |
-| <a id='PLANE_MODE_THERMAL'></a>24      | [PLANE_MODE_THERMAL](#PLANE_MODE_THERMAL)                                                                            |             |
+| Value                                      | Name                                                                                                                                                           | Description  |
+| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| <a id='PLANE_MODE_MANUAL'></a>0            | [PLANE_MODE_MANUAL](#PLANE_MODE_MANUAL)                                                                              | MANUAL       |
+| <a id='PLANE_MODE_CIRCLE'></a>1            | [PLANE_MODE_CIRCLE](#PLANE_MODE_CIRCLE)                                                                              | CIRCLE       |
+| <a id='PLANE_MODE_STABILIZE'></a>2         | [PLANE_MODE_STABILIZE](#PLANE_MODE_STABILIZE)                                                                        | STABILIZE    |
+| <a id='PLANE_MODE_TRAINING'></a>3          | [PLANE_MODE_TRAINING](#PLANE_MODE_TRAINING)                                                                          | TRAINING     |
+| <a id='PLANE_MODE_ACRO'></a>4              | [PLANE_MODE_ACRO](#PLANE_MODE_ACRO)                                                                                  | ACRO         |
+| <a id='PLANE_MODE_FLY_BY_WIRE_A'></a>5     | [PLANE_MODE_FLY_BY_WIRE_A](#PLANE_MODE_FLY_BY_WIRE_A) | FBWA         |
+| <a id='PLANE_MODE_FLY_BY_WIRE_B'></a>6     | [PLANE_MODE_FLY_BY_WIRE_B](#PLANE_MODE_FLY_BY_WIRE_B) | FBWB         |
+| <a id='PLANE_MODE_CRUISE'></a>7            | [PLANE_MODE_CRUISE](#PLANE_MODE_CRUISE)                                                                              | CRUISE       |
+| <a id='PLANE_MODE_AUTOTUNE'></a>8          | [PLANE_MODE_AUTOTUNE](#PLANE_MODE_AUTOTUNE)                                                                          | AUTOTUNE     |
+| <a id='PLANE_MODE_AUTO'></a>10             | [PLANE_MODE_AUTO](#PLANE_MODE_AUTO)                                                                                  | AUTO         |
+| <a id='PLANE_MODE_RTL'></a>11              | [PLANE_MODE_RTL](#PLANE_MODE_RTL)                                                                                    | RTL          |
+| <a id='PLANE_MODE_LOITER'></a>12           | [PLANE_MODE_LOITER](#PLANE_MODE_LOITER)                                                                              | LOITER       |
+| <a id='PLANE_MODE_TAKEOFF'></a>13          | [PLANE_MODE_TAKEOFF](#PLANE_MODE_TAKEOFF)                                                                            | TAKEOFF      |
+| <a id='PLANE_MODE_AVOID_ADSB'></a>14       | [PLANE_MODE_AVOID_ADSB](#PLANE_MODE_AVOID_ADSB)                                                 | AVOID ADSB   |
+| <a id='PLANE_MODE_GUIDED'></a>15           | [PLANE_MODE_GUIDED](#PLANE_MODE_GUIDED)                                                                              | GUIDED       |
+| <a id='PLANE_MODE_INITIALIZING'></a>16     | [PLANE_MODE_INITIALIZING](#PLANE_MODE_INITIALIZING)                                                                  | INITIALISING |
+| <a id='PLANE_MODE_QSTABILIZE'></a>17       | [PLANE_MODE_QSTABILIZE](#PLANE_MODE_QSTABILIZE)                                                                      | QSTABILIZE   |
+| <a id='PLANE_MODE_QHOVER'></a>18           | [PLANE_MODE_QHOVER](#PLANE_MODE_QHOVER)                                                                              | QHOVER       |
+| <a id='PLANE_MODE_QLOITER'></a>19          | [PLANE_MODE_QLOITER](#PLANE_MODE_QLOITER)                                                                            | QLOITER      |
+| <a id='PLANE_MODE_QLAND'></a>20            | [PLANE_MODE_QLAND](#PLANE_MODE_QLAND)                                                                                | QLAND        |
+| <a id='PLANE_MODE_QRTL'></a>21             | [PLANE_MODE_QRTL](#PLANE_MODE_QRTL)                                                                                  | QRTL         |
+| <a id='PLANE_MODE_QAUTOTUNE'></a>22        | [PLANE_MODE_QAUTOTUNE](#PLANE_MODE_QAUTOTUNE)                                                                        | QAUTOTUNE    |
+| <a id='PLANE_MODE_QACRO'></a>23            | [PLANE_MODE_QACRO](#PLANE_MODE_QACRO)                                                                                | QACRO        |
+| <a id='PLANE_MODE_THERMAL'></a>24          | [PLANE_MODE_THERMAL](#PLANE_MODE_THERMAL)                                                                            | THERMAL      |
+| <a id='PLANE_MODE_LOITER_ALT_QLAND'></a>25 | [PLANE_MODE_LOITER_ALT_QLAND](#PLANE_MODE_LOITER_ALT_QLAND)                | LOITER2QLAND |
+| <a id='PLANE_MODE_AUTOLAND'></a>26         | [PLANE_MODE_AUTOLAND](#PLANE_MODE_AUTOLAND)                                                                          | AUTOLAND     |
 
 ### COPTER_MODE {#COPTER_MODE}
 
 A mapping of copter flight modes for custom_mode field of heartbeat.
 
-| Value                                   | Name                                                                                                                 | Description |
-| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ----------- |
-| <a id='COPTER_MODE_STABILIZE'></a>0     | [COPTER_MODE_STABILIZE](#COPTER_MODE_STABILIZE)                            |             |
-| <a id='COPTER_MODE_ACRO'></a>1          | [COPTER_MODE_ACRO](#COPTER_MODE_ACRO)                                      |             |
-| <a id='COPTER_MODE_ALT_HOLD'></a>2      | [COPTER_MODE_ALT_HOLD](#COPTER_MODE_ALT_HOLD)         |             |
-| <a id='COPTER_MODE_AUTO'></a>3          | [COPTER_MODE_AUTO](#COPTER_MODE_AUTO)                                      |             |
-| <a id='COPTER_MODE_GUIDED'></a>4        | [COPTER_MODE_GUIDED](#COPTER_MODE_GUIDED)                                  |             |
-| <a id='COPTER_MODE_LOITER'></a>5        | [COPTER_MODE_LOITER](#COPTER_MODE_LOITER)                                  |             |
-| <a id='COPTER_MODE_RTL'></a>6           | [COPTER_MODE_RTL](#COPTER_MODE_RTL)                                        |             |
-| <a id='COPTER_MODE_CIRCLE'></a>7        | [COPTER_MODE_CIRCLE](#COPTER_MODE_CIRCLE)                                  |             |
-| <a id='COPTER_MODE_LAND'></a>9          | [COPTER_MODE_LAND](#COPTER_MODE_LAND)                                      |             |
-| <a id='COPTER_MODE_DRIFT'></a>11        | [COPTER_MODE_DRIFT](#COPTER_MODE_DRIFT)                                    |             |
-| <a id='COPTER_MODE_SPORT'></a>13        | [COPTER_MODE_SPORT](#COPTER_MODE_SPORT)                                    |             |
-| <a id='COPTER_MODE_FLIP'></a>14         | [COPTER_MODE_FLIP](#COPTER_MODE_FLIP)                                      |             |
-| <a id='COPTER_MODE_AUTOTUNE'></a>15     | [COPTER_MODE_AUTOTUNE](#COPTER_MODE_AUTOTUNE)                              |             |
-| <a id='COPTER_MODE_POSHOLD'></a>16      | [COPTER_MODE_POSHOLD](#COPTER_MODE_POSHOLD)                                |             |
-| <a id='COPTER_MODE_BRAKE'></a>17        | [COPTER_MODE_BRAKE](#COPTER_MODE_BRAKE)                                    |             |
-| <a id='COPTER_MODE_THROW'></a>18        | [COPTER_MODE_THROW](#COPTER_MODE_THROW)                                    |             |
-| <a id='COPTER_MODE_AVOID_ADSB'></a>19   | [COPTER_MODE_AVOID_ADSB](#COPTER_MODE_AVOID_ADSB)     |             |
-| <a id='COPTER_MODE_GUIDED_NOGPS'></a>20 | [COPTER_MODE_GUIDED_NOGPS](#COPTER_MODE_GUIDED_NOGPS) |             |
-| <a id='COPTER_MODE_SMART_RTL'></a>21    | [COPTER_MODE_SMART_RTL](#COPTER_MODE_SMART_RTL)       |             |
-| <a id='COPTER_MODE_FLOWHOLD'></a>22     | [COPTER_MODE_FLOWHOLD](#COPTER_MODE_FLOWHOLD)                              |             |
-| <a id='COPTER_MODE_FOLLOW'></a>23       | [COPTER_MODE_FOLLOW](#COPTER_MODE_FOLLOW)                                  |             |
-| <a id='COPTER_MODE_ZIGZAG'></a>24       | [COPTER_MODE_ZIGZAG](#COPTER_MODE_ZIGZAG)                                  |             |
-| <a id='COPTER_MODE_SYSTEMID'></a>25     | [COPTER_MODE_SYSTEMID](#COPTER_MODE_SYSTEMID)                              |             |
-| <a id='COPTER_MODE_AUTOROTATE'></a>26   | [COPTER_MODE_AUTOROTATE](#COPTER_MODE_AUTOROTATE)                          |             |
-| <a id='COPTER_MODE_AUTO_RTL'></a>27     | [COPTER_MODE_AUTO_RTL](#COPTER_MODE_AUTO_RTL)         |             |
+| Value                                   | Name                                                                                                                 | Description  |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------ |
+| <a id='COPTER_MODE_STABILIZE'></a>0     | [COPTER_MODE_STABILIZE](#COPTER_MODE_STABILIZE)                            | STABILIZE    |
+| <a id='COPTER_MODE_ACRO'></a>1          | [COPTER_MODE_ACRO](#COPTER_MODE_ACRO)                                      | ACRO         |
+| <a id='COPTER_MODE_ALT_HOLD'></a>2      | [COPTER_MODE_ALT_HOLD](#COPTER_MODE_ALT_HOLD)         | ALT HOLD     |
+| <a id='COPTER_MODE_AUTO'></a>3          | [COPTER_MODE_AUTO](#COPTER_MODE_AUTO)                                      | AUTO         |
+| <a id='COPTER_MODE_GUIDED'></a>4        | [COPTER_MODE_GUIDED](#COPTER_MODE_GUIDED)                                  | GUIDED       |
+| <a id='COPTER_MODE_LOITER'></a>5        | [COPTER_MODE_LOITER](#COPTER_MODE_LOITER)                                  | LOITER       |
+| <a id='COPTER_MODE_RTL'></a>6           | [COPTER_MODE_RTL](#COPTER_MODE_RTL)                                        | RTL          |
+| <a id='COPTER_MODE_CIRCLE'></a>7        | [COPTER_MODE_CIRCLE](#COPTER_MODE_CIRCLE)                                  | CIRCLE       |
+| <a id='COPTER_MODE_LAND'></a>9          | [COPTER_MODE_LAND](#COPTER_MODE_LAND)                                      | LAND         |
+| <a id='COPTER_MODE_DRIFT'></a>11        | [COPTER_MODE_DRIFT](#COPTER_MODE_DRIFT)                                    | DRIFT        |
+| <a id='COPTER_MODE_SPORT'></a>13        | [COPTER_MODE_SPORT](#COPTER_MODE_SPORT)                                    | SPORT        |
+| <a id='COPTER_MODE_FLIP'></a>14         | [COPTER_MODE_FLIP](#COPTER_MODE_FLIP)                                      | FLIP         |
+| <a id='COPTER_MODE_AUTOTUNE'></a>15     | [COPTER_MODE_AUTOTUNE](#COPTER_MODE_AUTOTUNE)                              | AUTOTUNE     |
+| <a id='COPTER_MODE_POSHOLD'></a>16      | [COPTER_MODE_POSHOLD](#COPTER_MODE_POSHOLD)                                | POSHOLD      |
+| <a id='COPTER_MODE_BRAKE'></a>17        | [COPTER_MODE_BRAKE](#COPTER_MODE_BRAKE)                                    | BRAKE        |
+| <a id='COPTER_MODE_THROW'></a>18        | [COPTER_MODE_THROW](#COPTER_MODE_THROW)                                    | THROW        |
+| <a id='COPTER_MODE_AVOID_ADSB'></a>19   | [COPTER_MODE_AVOID_ADSB](#COPTER_MODE_AVOID_ADSB)     | AVOID ADSB   |
+| <a id='COPTER_MODE_GUIDED_NOGPS'></a>20 | [COPTER_MODE_GUIDED_NOGPS](#COPTER_MODE_GUIDED_NOGPS) | GUIDED NOGPS |
+| <a id='COPTER_MODE_SMART_RTL'></a>21    | [COPTER_MODE_SMART_RTL](#COPTER_MODE_SMART_RTL)       | SMARTRTL     |
+| <a id='COPTER_MODE_FLOWHOLD'></a>22     | [COPTER_MODE_FLOWHOLD](#COPTER_MODE_FLOWHOLD)                              | FLOWHOLD     |
+| <a id='COPTER_MODE_FOLLOW'></a>23       | [COPTER_MODE_FOLLOW](#COPTER_MODE_FOLLOW)                                  | FOLLOW       |
+| <a id='COPTER_MODE_ZIGZAG'></a>24       | [COPTER_MODE_ZIGZAG](#COPTER_MODE_ZIGZAG)                                  | ZIGZAG       |
+| <a id='COPTER_MODE_SYSTEMID'></a>25     | [COPTER_MODE_SYSTEMID](#COPTER_MODE_SYSTEMID)                              | SYSTEMID     |
+| <a id='COPTER_MODE_AUTOROTATE'></a>26   | [COPTER_MODE_AUTOROTATE](#COPTER_MODE_AUTOROTATE)                          | AUTOROTATE   |
+| <a id='COPTER_MODE_AUTO_RTL'></a>27     | [COPTER_MODE_AUTO_RTL](#COPTER_MODE_AUTO_RTL)         | AUTO RTL     |
+| <a id='COPTER_MODE_TURTLE'></a>28       | [COPTER_MODE_TURTLE](#COPTER_MODE_TURTLE)                                  | TURTLE       |
 
 ### SUB_MODE {#SUB_MODE}
 
 A mapping of sub flight modes for custom_mode field of heartbeat.
 
-| Value                            | Name                                                                                                   | Description |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------ | ----------- |
-| <a id='SUB_MODE_STABILIZE'></a>0 | [SUB_MODE_STABILIZE](#SUB_MODE_STABILIZE)                    |             |
-| <a id='SUB_MODE_ACRO'></a>1      | [SUB_MODE_ACRO](#SUB_MODE_ACRO)                              |             |
-| <a id='SUB_MODE_ALT_HOLD'></a>2  | [SUB_MODE_ALT_HOLD](#SUB_MODE_ALT_HOLD) |             |
-| <a id='SUB_MODE_AUTO'></a>3      | [SUB_MODE_AUTO](#SUB_MODE_AUTO)                              |             |
-| <a id='SUB_MODE_GUIDED'></a>4    | [SUB_MODE_GUIDED](#SUB_MODE_GUIDED)                          |             |
-| <a id='SUB_MODE_CIRCLE'></a>7    | [SUB_MODE_CIRCLE](#SUB_MODE_CIRCLE)                          |             |
-| <a id='SUB_MODE_SURFACE'></a>9   | [SUB_MODE_SURFACE](#SUB_MODE_SURFACE)                        |             |
-| <a id='SUB_MODE_POSHOLD'></a>16  | [SUB_MODE_POSHOLD](#SUB_MODE_POSHOLD)                        |             |
-| <a id='SUB_MODE_MANUAL'></a>19   | [SUB_MODE_MANUAL](#SUB_MODE_MANUAL)                          |             |
+| Value                               | Name                                                                                                   | Description |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------ | ----------- |
+| <a id='SUB_MODE_STABILIZE'></a>0    | [SUB_MODE_STABILIZE](#SUB_MODE_STABILIZE)                    | STABILIZE   |
+| <a id='SUB_MODE_ACRO'></a>1         | [SUB_MODE_ACRO](#SUB_MODE_ACRO)                              | ACRO        |
+| <a id='SUB_MODE_ALT_HOLD'></a>2     | [SUB_MODE_ALT_HOLD](#SUB_MODE_ALT_HOLD) | ALT HOLD    |
+| <a id='SUB_MODE_AUTO'></a>3         | [SUB_MODE_AUTO](#SUB_MODE_AUTO)                              | AUTO        |
+| <a id='SUB_MODE_GUIDED'></a>4       | [SUB_MODE_GUIDED](#SUB_MODE_GUIDED)                          | GUIDED      |
+| <a id='SUB_MODE_CIRCLE'></a>7       | [SUB_MODE_CIRCLE](#SUB_MODE_CIRCLE)                          | CIRCLE      |
+| <a id='SUB_MODE_SURFACE'></a>9      | [SUB_MODE_SURFACE](#SUB_MODE_SURFACE)                        | SURFACE     |
+| <a id='SUB_MODE_POSHOLD'></a>16     | [SUB_MODE_POSHOLD](#SUB_MODE_POSHOLD)                        | POSHOLD     |
+| <a id='SUB_MODE_MANUAL'></a>19      | [SUB_MODE_MANUAL](#SUB_MODE_MANUAL)                          | MANUAL      |
+| <a id='SUB_MODE_MOTORDETECT'></a>20 | [SUB_MODE_MOTORDETECT](#SUB_MODE_MOTORDETECT)                | MOTORDETECT |
+| <a id='SUB_MODE_SURFTRAK'></a>21    | [SUB_MODE_SURFTRAK](#SUB_MODE_SURFTRAK)                      | SURFTRAK    |
 
 ### ROVER_MODE {#ROVER_MODE}
 
 A mapping of rover flight modes for custom_mode field of heartbeat.
 
-| Value                                  | Name                                                                                                         | Description |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ----------- |
-| <a id='ROVER_MODE_MANUAL'></a>0        | [ROVER_MODE_MANUAL](#ROVER_MODE_MANUAL)                            |             |
-| <a id='ROVER_MODE_ACRO'></a>1          | [ROVER_MODE_ACRO](#ROVER_MODE_ACRO)                                |             |
-| <a id='ROVER_MODE_STEERING'></a>3      | [ROVER_MODE_STEERING](#ROVER_MODE_STEERING)                        |             |
-| <a id='ROVER_MODE_HOLD'></a>4          | [ROVER_MODE_HOLD](#ROVER_MODE_HOLD)                                |             |
-| <a id='ROVER_MODE_LOITER'></a>5        | [ROVER_MODE_LOITER](#ROVER_MODE_LOITER)                            |             |
-| <a id='ROVER_MODE_FOLLOW'></a>6        | [ROVER_MODE_FOLLOW](#ROVER_MODE_FOLLOW)                            |             |
-| <a id='ROVER_MODE_SIMPLE'></a>7        | [ROVER_MODE_SIMPLE](#ROVER_MODE_SIMPLE)                            |             |
-| <a id='ROVER_MODE_AUTO'></a>10         | [ROVER_MODE_AUTO](#ROVER_MODE_AUTO)                                |             |
-| <a id='ROVER_MODE_RTL'></a>11          | [ROVER_MODE_RTL](#ROVER_MODE_RTL)                                  |             |
-| <a id='ROVER_MODE_SMART_RTL'></a>12    | [ROVER_MODE_SMART_RTL](#ROVER_MODE_SMART_RTL) |             |
-| <a id='ROVER_MODE_GUIDED'></a>15       | [ROVER_MODE_GUIDED](#ROVER_MODE_GUIDED)                            |             |
-| <a id='ROVER_MODE_INITIALIZING'></a>16 | [ROVER_MODE_INITIALIZING](#ROVER_MODE_INITIALIZING)                |             |
+| Value                                  | Name                                                                                                         | Description  |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------ |
+| <a id='ROVER_MODE_MANUAL'></a>0        | [ROVER_MODE_MANUAL](#ROVER_MODE_MANUAL)                            | MANUAL       |
+| <a id='ROVER_MODE_ACRO'></a>1          | [ROVER_MODE_ACRO](#ROVER_MODE_ACRO)                                | ACRO         |
+| <a id='ROVER_MODE_STEERING'></a>3      | [ROVER_MODE_STEERING](#ROVER_MODE_STEERING)                        | STEERING     |
+| <a id='ROVER_MODE_HOLD'></a>4          | [ROVER_MODE_HOLD](#ROVER_MODE_HOLD)                                | HOLD         |
+| <a id='ROVER_MODE_LOITER'></a>5        | [ROVER_MODE_LOITER](#ROVER_MODE_LOITER)                            | LOITER       |
+| <a id='ROVER_MODE_FOLLOW'></a>6        | [ROVER_MODE_FOLLOW](#ROVER_MODE_FOLLOW)                            | FOLLOW       |
+| <a id='ROVER_MODE_SIMPLE'></a>7        | [ROVER_MODE_SIMPLE](#ROVER_MODE_SIMPLE)                            | SIMPLE       |
+| <a id='ROVER_MODE_DOCK'></a>8          | [ROVER_MODE_DOCK](#ROVER_MODE_DOCK)                                | DOCK         |
+| <a id='ROVER_MODE_CIRCLE'></a>9        | [ROVER_MODE_CIRCLE](#ROVER_MODE_CIRCLE)                            | CIRCLE       |
+| <a id='ROVER_MODE_AUTO'></a>10         | [ROVER_MODE_AUTO](#ROVER_MODE_AUTO)                                | AUTO         |
+| <a id='ROVER_MODE_RTL'></a>11          | [ROVER_MODE_RTL](#ROVER_MODE_RTL)                                  | RTL          |
+| <a id='ROVER_MODE_SMART_RTL'></a>12    | [ROVER_MODE_SMART_RTL](#ROVER_MODE_SMART_RTL) | SMART RTL    |
+| <a id='ROVER_MODE_GUIDED'></a>15       | [ROVER_MODE_GUIDED](#ROVER_MODE_GUIDED)                            | GUIDED       |
+| <a id='ROVER_MODE_INITIALIZING'></a>16 | [ROVER_MODE_INITIALIZING](#ROVER_MODE_INITIALIZING)                | INITIALISING |
 
 ### TRACKER_MODE {#TRACKER_MODE}
 
 A mapping of antenna tracker flight modes for custom_mode field of heartbeat.
 
-| Value                                    | Name                                                                                                               | Description |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ----------- |
-| <a id='TRACKER_MODE_MANUAL'></a>0        | [TRACKER_MODE_MANUAL](#TRACKER_MODE_MANUAL)                              |             |
-| <a id='TRACKER_MODE_STOP'></a>1          | [TRACKER_MODE_STOP](#TRACKER_MODE_STOP)                                  |             |
-| <a id='TRACKER_MODE_SCAN'></a>2          | [TRACKER_MODE_SCAN](#TRACKER_MODE_SCAN)                                  |             |
-| <a id='TRACKER_MODE_SERVO_TEST'></a>3    | [TRACKER_MODE_SERVO_TEST](#TRACKER_MODE_SERVO_TEST) |             |
-| <a id='TRACKER_MODE_AUTO'></a>10         | [TRACKER_MODE_AUTO](#TRACKER_MODE_AUTO)                                  |             |
-| <a id='TRACKER_MODE_INITIALIZING'></a>16 | [TRACKER_MODE_INITIALIZING](#TRACKER_MODE_INITIALIZING)                  |             |
+| Value                                    | Name                                                                                                               | Description  |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------ |
+| <a id='TRACKER_MODE_MANUAL'></a>0        | [TRACKER_MODE_MANUAL](#TRACKER_MODE_MANUAL)                              | MANUAL       |
+| <a id='TRACKER_MODE_STOP'></a>1          | [TRACKER_MODE_STOP](#TRACKER_MODE_STOP)                                  | STOP         |
+| <a id='TRACKER_MODE_SCAN'></a>2          | [TRACKER_MODE_SCAN](#TRACKER_MODE_SCAN)                                  | SCAN         |
+| <a id='TRACKER_MODE_SERVO_TEST'></a>3    | [TRACKER_MODE_SERVO_TEST](#TRACKER_MODE_SERVO_TEST) | SERVO TEST   |
+| <a id='TRACKER_MODE_GUIDED'></a>4        | [TRACKER_MODE_GUIDED](#TRACKER_MODE_GUIDED)                              | GUIDED       |
+| <a id='TRACKER_MODE_AUTO'></a>10         | [TRACKER_MODE_AUTO](#TRACKER_MODE_AUTO)                                  | AUTO         |
+| <a id='TRACKER_MODE_INITIALIZING'></a>16 | [TRACKER_MODE_INITIALIZING](#TRACKER_MODE_INITIALIZING)                  | INITIALISING |
 
 ### OSD_PARAM_CONFIG_TYPE {#OSD_PARAM_CONFIG_TYPE}
 
