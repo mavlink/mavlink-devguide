@@ -81,9 +81,13 @@ For example, the definition of the [LANDING_TARGET_TYPE](../messages/common.md#L
 </enum>
 ```
 
-The main `enum` tags/fields are:
+The main `enum` attributes are:
 
 - `name`: The name of the enum (mandatory). This is a string of capitalized, underscore-separated words.
+- `bitmask`: Set to `true` for enums that defines entries with values that increase by a power of 2, such as flags.
+
+The main `enum` nested tags are:
+
 - `description` (optional): A string describing the purpose of the enum
 - `entry` (optional): An entry (zero or more entries can be specified for each enum)
 - [deprecated](#deprecated) (optional): A tag indicating that the enum is deprecated.
@@ -94,10 +98,13 @@ The main `enum` tags/fields are:
 
 ### entry {#entry}
 
-The "normal" enum `entry` tags/fields are:
+The "normal" enum `entry` attributes are:
 
 - `name`: The name of the enum value (mandatory). This is a string of capitalized, underscore-separated words.
 - `value` (optional): The _value_ for the entry (a number).
+
+The "normal" `entry` nested fields are:
+
 - `description` (optional): A description of the entry.
 - [deprecated](#deprecated) / [wip](#wip) (optional): A tag indicating that the enum is deprecated or "work in progress".
 
@@ -203,7 +210,7 @@ For example,the definition of the [BATTERY_STATUS](../messages/common.md#BATTERY
       <field type="uint8_t" name="charge_state" enum="MAV_BATTERY_CHARGE_STATE">State for extent of discharge, provided by autopilot for warning or external reactions</field>
       <field type="uint16_t[4]" name="voltages_ext" units="mV" invalid="[0]">Battery voltages for cells 11 to 14. Cells above the valid cell count for this battery should have a value of 0, where zero indicates not supported (note, this is different than for the voltages field and allows empty byte truncation). If the measured value is 0 then 1 should be sent instead.</field>
       <field type="uint8_t" name="mode" enum="MAV_BATTERY_MODE">Battery mode. Default (0) is that battery mode reporting is not supported or battery is in normal-use mode.</field>
-      <field type="uint32_t" name="fault_bitmask" display="bitmask" enum="MAV_BATTERY_FAULT">Fault/health indications. These should be set when charge_state is MAV_BATTERY_CHARGE_STATE_FAILED or MAV_BATTERY_CHARGE_STATE_UNHEALTHY (if not, fault reporting is not supported).</field>
+      <field type="uint32_t" name="fault_bitmask" enum="MAV_BATTERY_FAULT">Fault/health indications. These should be set when charge_state is MAV_BATTERY_CHARGE_STATE_FAILED or MAV_BATTERY_CHARGE_STATE_UNHEALTHY (if not, fault reporting is not supported).</field>
     </message>
 ```
 
@@ -244,7 +251,6 @@ The main message tags/fields are:
     For example, [GPS_STATUS](../messages/common.md#GPS_STATUS) is a value in degrees (0-360) sent in a byte field (0-255).
     To get the original value, scale by multiplying the value with the multiplier (`360/256`).
     This is currently only used for values where scaling is not encoded in the `units`.
-  - `display` (optional): This should be set as `display="bitmask"` for bitmask fields (hint to ground station that enum values must be displayed as checkboxes).
   - `print_format` (optional): TBD.
   - `default` (optional): TBD.
   - `increment` - Allowed increments for the increment value.

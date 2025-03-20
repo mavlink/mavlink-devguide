@@ -365,6 +365,8 @@ The main rules for enums are:
   If enums are merged, only one description will be used (usually the first that is encountered).
 - Enums _may_ be marked as deprecated.
 - Enums _must_ have at least one enum entry.
+- Enums that define bitmasks (values that increase by a power of 2) should be marked with the attribute `bitmask="true"`.
+  This allows users to render a checkbox UI for things that can be represented as flags.
 - Entries:
 
   - _must_ have a `name` attribute.
@@ -378,7 +380,6 @@ The main rules for enums are:
     :::
 
   - _should_ (very highly recommended) include a `description` element.
-  - may represent bitmasks, in which case values will increase by a power of 2.
   - _may_ be marked as deprecated.
 
 ::: warning
@@ -528,7 +529,7 @@ The default value cannot later be changed from `NaN` to `0` (or visa versa) with
 
 To declare a `param` as `reserved` with `default` value of `NaN` you should use the following syntax.
 
-```
+```xml
 <param index="3" reserved="true" default="NaN" />
 ```
 
