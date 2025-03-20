@@ -93,48 +93,48 @@ To create a new dialect file:
 
 3. Copy the following text into the new file.
 
-   ```xml
-   <?xml version="1.0"?>
-   <mavlink>
+  ```xml
+  <?xml version="1.0"?>
+  <mavlink>
 
-       <include>common.xml</include>
-       <!-- <version>9</version> -->
-       <dialect>8</dialect>
+      <include>common.xml</include>
+      <!-- <version>9</version> -->
+      <dialect>8</dialect>
 
-       <enums>
-           <!-- Enums are defined here (optional) -->
-       </enums>
+      <enums>
+          <!-- Enums are defined here (optional) -->
+      </enums>
 
-       <messages>
-           <!-- Messages are defined here (optional) -->
-       </messages>
+      <messages>
+          <!-- Messages are defined here (optional) -->
+      </messages>
 
-   </mavlink>
-   ```
+  </mavlink>
+  ```
 
-   The template assumes that your dialect:
+  The template assumes that your dialect:
 
-   - imports **common.xml** (`<include>common.xml</include>`)
-   - takes its version from **common.xml** (which is why the `version` tags are commented out).
+  - imports **common.xml** (`<include>common.xml</include>`)
+  - takes its version from **common.xml** (which is why the `version` tags are commented out).
 
 4. Update the `include`(s):
 
-   - if the dialect is not based on **common.xml** remove the existing `include` line
-   - Add additional `<include> </include>` elements to import additional files/dialects.
+  - if the dialect is not based on **common.xml** remove the existing `include` line
+  - Add additional `<include> </include>` elements to import additional files/dialects.
 
-     ::: info
-     Includes in nested files are ignored.
-     :::
+    ::: info
+    Includes in nested files are ignored.
+    :::
 
 5. Update the `version`:
 
-   - Most dialects should leave the version commented out (i.e. all dialects that include **common.xml**).
-   - Dialects that are _not_ based on **common.xml** can uncomment the `<version>6</version>` line and use whatever version is desired.
+  - Most dialects should leave the version commented out (i.e. all dialects that include **common.xml**).
+  - Dialects that are _not_ based on **common.xml** can uncomment the `<version>6</version>` line and use whatever version is desired.
 
-     ::: info
-     The `version` specified in the top level file is used by default, if present.
-     If it is not present in the file, then a `version` from an included file is used.
-     :::
+    ::: info
+    The `version` specified in the top level file is used by default, if present.
+    If it is not present in the file, then a `version` from an included file is used.
+    :::
 
 6. Update the `<dialect>8</dialect>` line to replace `8` with the next-largest unused dialect number (based on the other files in the folder).
 
@@ -370,6 +370,8 @@ The main rules for enums are:
   If enums are merged, only one description will be used (usually the first that is encountered).
 - Enums _may_ be marked as deprecated.
 - Enums _must_ have at least one enum entry.
+- Enums that define bitmasks (values that increase by a power of 2) should be marked with the attribute `bitmask="true"`.
+  This allows users to render a checkbox UI for things that can be represented as flags.
 - Entries:
 
   - _must_ have a `name` attribute.
@@ -384,8 +386,6 @@ The main rules for enums are:
     :::
 
   - _should_ (very highly recommended) include a `description` element.
-
-  - 可能表示位掩码, 在这种情况下, 值将增加2。
 
   - _may_ be marked as deprecated.
 
@@ -536,7 +536,7 @@ The default value cannot later be changed from `NaN` to `0` (or visa versa) with
 
 To declare a `param` as `reserved` with `default` value of `NaN` you should use the following syntax.
 
-```
+```xml
 <param index="3" reserved="true" default="NaN" />
 ```
 
