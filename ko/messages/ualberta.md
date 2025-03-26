@@ -36,7 +36,7 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 3       | 229      |
-| [Enums](#enumerated-types) | 3       | 146      |
+| [Enums](#enumerated-types) | 3       | 147      |
 | [Commands](#mav_commands)  | 165     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -116,3 +116,4 @@ Mode currently commanded by pilot
 | <a id='PILOT_ROTO'></a>3   | [PILOT_ROTO](#PILOT_ROTO)     | Rotomotion mode |
 
 ## Commands (MAV_CMD) {#mav_commands}
+
