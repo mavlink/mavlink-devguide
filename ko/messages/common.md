@@ -39,7 +39,7 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 227     | 2        |
-| [Enums](#enumerated-types) | 140     | 6        |
+| [Enums](#enumerated-types) | 141     | 6        |
 | [Commands](#mav_commands)  | 165     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -1145,12 +1145,12 @@ Sent from simulation to autopilot. The RAW values of the RC channels received. T
 
 Sent from autopilot to simulation. Hardware in the loop control outputs. Alternative to [HIL_CONTROLS](#HIL_CONTROLS).
 
-| Field Name                     | Type        | Units | Values                                                                    | Description                                                                                                                                                                                                                                                                                  |
-| ------------------------------ | ----------- | ----- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| time_usec | `uint64_t`  | us    |                                                                           | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
-| controls                       | `float[16]` |       |                                                                           | Control outputs -1 .. 1. Channel assignment depends on the simulated hardware.                                                                                                                                               |
-| mode                           | `uint8_t`   |       | [MAV_MODE_FLAG](#MAV_MODE_FLAG) | System mode. Includes arming state.                                                                                                                                                                                                                          |
-| flags                          | `uint64_t`  |       |                                                                           | Flags as bitfield, 1: indicate simulation using lockstep.                                                                                                                                                                                                    |
+| Field Name                     | Type        | Units | Values                                                                                                                     | Description                                                                                                                                                                                                                                                                                  |
+| ------------------------------ | ----------- | ----- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| time_usec | `uint64_t`  | us    |                                                                                                                            | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
+| controls                       | `float[16]` |       |                                                                                                                            | Control outputs -1 .. 1. Channel assignment depends on the simulated hardware.                                                                                                                                               |
+| mode                           | `uint8_t`   |       | [MAV_MODE_FLAG](#MAV_MODE_FLAG)                                                  | System mode. Includes arming state.                                                                                                                                                                                                                          |
+| flags                          | `uint64_t`  |       | [HIL_ACTUATOR_CONTROLS_FLAGS](#HIL_ACTUATOR_CONTROLS_FLAGS) | Flags bitmask.                                                                                                                                                                                                                                                               |
 
 ### OPTICAL_FLOW (100) {#OPTICAL_FLOW}
 
@@ -5839,6 +5839,14 @@ See https://mavlink.io/en/services/standard_modes.html
 | <a id='MAV_MODE_PROPERTY_ADVANCED'></a>1            | [MAV_MODE_PROPERTY_ADVANCED](#MAV_MODE_PROPERTY_ADVANCED)                                                                 | If set, this mode is an advanced mode.<br>For example a rate-controlled manual mode might be advanced, whereas a position-controlled manual mode is not.<br>A GCS can optionally use this flag to configure the UI for its intended users. |
 | <a id='MAV_MODE_PROPERTY_NOT_USER_SELECTABLE'></a>2 | [MAV_MODE_PROPERTY_NOT_USER_SELECTABLE](#MAV_MODE_PROPERTY_NOT_USER_SELECTABLE) | If set, this mode should not be added to the list of selectable modes.<br>The mode might still be selected by the FC directly (for example as part of a failsafe).                                                                      |
 | <a id='MAV_MODE_PROPERTY_AUTO_MODE'></a>4           | [MAV_MODE_PROPERTY_AUTO_MODE](#MAV_MODE_PROPERTY_AUTO_MODE)                                          | If set, this mode is automatically controlled (it may use but does not require a manual controller).<br>If unset the mode is a assumed to require user input (be a manual mode).                                     |
+
+### HIL_ACTUATOR_CONTROLS_FLAGS {#HIL_ACTUATOR_CONTROLS_FLAGS}
+
+(Bitmask) Flags used in [HIL_ACTUATOR_CONTROLS](#HIL_ACTUATOR_CONTROLS) message.
+
+| Value                                              | Name                                                                                                                                                              | Description                  |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| <a id='HIL_ACTUATOR_CONTROLS_FLAGS_LOCKSTEP'></a>1 | [HIL_ACTUATOR_CONTROLS_FLAGS_LOCKSTEP](#HIL_ACTUATOR_CONTROLS_FLAGS_LOCKSTEP) | Simulation is using lockstep |
 
 ### MAV_AUTOPILOT — \[from: [minimal](../messages/minimal.md#MAV_AUTOPILOT)\] {#MAV_AUTOPILOT}
 
