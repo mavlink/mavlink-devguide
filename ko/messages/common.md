@@ -4271,14 +4271,15 @@ Actuator output function. Values greater or equal to 1000 are autopilot-specific
 
 ### AUTOTUNE_AXIS {#AUTOTUNE_AXIS}
 
-(Bitmask) Enable axes that will be tuned via autotuning. Used in [MAV_CMD_DO_AUTOTUNE_ENABLE](#MAV_CMD_DO_AUTOTUNE_ENABLE).
+(Bitmask) Axes that will be autotuned by [MAV_CMD_DO_AUTOTUNE_ENABLE](#MAV_CMD_DO_AUTOTUNE_ENABLE).
 
-| Value                               | Name                                                                                      | Description                                                                |
-| ----------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| <a id='AUTOTUNE_AXIS_DEFAULT'></a>0 | [AUTOTUNE_AXIS_DEFAULT](#AUTOTUNE_AXIS_DEFAULT) | Flight stack tunes axis according to its default settings. |
-| <a id='AUTOTUNE_AXIS_ROLL'></a>1    | [AUTOTUNE_AXIS_ROLL](#AUTOTUNE_AXIS_ROLL)       | Autotune roll axis.                                        |
-| <a id='AUTOTUNE_AXIS_PITCH'></a>2   | [AUTOTUNE_AXIS_PITCH](#AUTOTUNE_AXIS_PITCH)     | Autotune pitch axis.                                       |
-| <a id='AUTOTUNE_AXIS_YAW'></a>4     | [AUTOTUNE_AXIS_YAW](#AUTOTUNE_AXIS_YAW)         | Autotune yaw axis.                                         |
+Note that at least one flag must be set in [MAV_CMD_DO_AUTOTUNE_ENABLE](#MAV_CMD_DO_AUTOTUNE_ENABLE).param2: if none are set, the flight stack will tune its default set of axes.
+
+| Value                             | Name                                                                                  | Description                          |
+| --------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------ |
+| <a id='AUTOTUNE_AXIS_ROLL'></a>1  | [AUTOTUNE_AXIS_ROLL](#AUTOTUNE_AXIS_ROLL)   | Autotune roll axis.  |
+| <a id='AUTOTUNE_AXIS_PITCH'></a>2 | [AUTOTUNE_AXIS_PITCH](#AUTOTUNE_AXIS_PITCH) | Autotune pitch axis. |
+| <a id='AUTOTUNE_AXIS_YAW'></a>4   | [AUTOTUNE_AXIS_YAW](#AUTOTUNE_AXIS_YAW)     | Autotune yaw axis.   |
 
 ### PREFLIGHT_STORAGE_PARAMETER_ACTION {#PREFLIGHT_STORAGE_PARAMETER_ACTION}
 
@@ -7060,15 +7061,15 @@ Mission command to operate a gripper.
 
 Enable/disable autotune.
 
-| Param (Label) | Description                                                                                               | Values                                                               |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| 1 (Enable)    | Enable (1: enable, 0:disable).         | min: 0 max: 1 inc: 1 |
-| 2 (Axis)      | Specify which axis are autotuned. 0 indicates autopilot default settings. | [AUTOTUNE_AXIS](#AUTOTUNE_AXIS)                 |
-| 3                                | Empty.                                                                                    |                                                                      |
-| 4                                | Empty.                                                                                    |                                                                      |
-| 5                                | Empty.                                                                                    |                                                                      |
-| 6                                | Empty.                                                                                    |                                                                      |
-| 7                                | Empty.                                                                                    |                                                                      |
+| Param (Label) | Description                                                                                                                                                                                                                                                                    | Values                                                               |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| 1 (Enable)    | Enable (1: enable, 0:disable).                                                                                                                                                                              | min: 0 max: 1 inc: 1 |
+| 2 (Axis)      | Specify axes for which autotuning is enabled/disabled. 0 indicates the field is unused (for compatiblity reasons). If 0 the autopilot will follow its default behaviour, which is usually to tune all axes. | [AUTOTUNE_AXIS](#AUTOTUNE_AXIS)                 |
+| 3                                | Empty.                                                                                                                                                                                                                                                         |                                                                      |
+| 4                                | Empty.                                                                                                                                                                                                                                                         |                                                                      |
+| 5                                | Empty.                                                                                                                                                                                                                                                         |                                                                      |
+| 6                                | Empty.                                                                                                                                                                                                                                                         |                                                                      |
+| 7                                | Empty.                                                                                                                                                                                                                                                         |                                                                      |
 
 ### MAV_CMD_NAV_SET_YAW_SPEED (213) {#MAV_CMD_NAV_SET_YAW_SPEED}
 
