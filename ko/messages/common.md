@@ -39,7 +39,7 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 227     | 2        |
-| [Enums](#enumerated-types) | 141     | 6        |
+| [Enums](#enumerated-types) | 140     | 6        |
 | [Commands](#mav_commands)  | 165     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -3882,21 +3882,6 @@ Some deprecated frames do not follow these conventions (e.g. [MAV_FRAME_BODY_NED
 | <a id='MAVLINK_DATA_STREAM_IMG_RAW32U'></a>3 | [MAVLINK_DATA_STREAM_IMG_RAW32U](#MAVLINK_DATA_STREAM_IMG_RAW32U) |             |
 | <a id='MAVLINK_DATA_STREAM_IMG_PGM'></a>4    | [MAVLINK_DATA_STREAM_IMG_PGM](#MAVLINK_DATA_STREAM_IMG_PGM)       |             |
 | <a id='MAVLINK_DATA_STREAM_IMG_PNG'></a>5    | [MAVLINK_DATA_STREAM_IMG_PNG](#MAVLINK_DATA_STREAM_IMG_PNG)       |             |
-
-### FENCE_ACTION {#FENCE_ACTION}
-
-Actions following geofence breach.
-
-| Value                                      | Name                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                                                         |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id='FENCE_ACTION_NONE'></a>0            | [FENCE_ACTION_NONE](#FENCE_ACTION_NONE)                                                                 | Disable fenced mode. If used in a plan this would mean the next fence is disabled.                                                                                                                                                                                                                                                                  |
-| <a id='FENCE_ACTION_GUIDED'></a>1          | [FENCE_ACTION_GUIDED](#FENCE_ACTION_GUIDED)                                                             | Fly to geofence [MAV_CMD_NAV_FENCE_RETURN_POINT](#MAV_CMD_NAV_FENCE_RETURN_POINT) in GUIDED mode. Note: This action is only supported by ArduPlane, and may not be supported in all versions.                              |
-| <a id='FENCE_ACTION_REPORT'></a>2          | [FENCE_ACTION_REPORT](#FENCE_ACTION_REPORT)                                                             | Report fence breach, but don't take action                                                                                                                                                                                                                                                                                                                                          |
-| <a id='FENCE_ACTION_GUIDED_THR_PASS'></a>3 | [FENCE_ACTION_GUIDED_THR_PASS](#FENCE_ACTION_GUIDED_THR_PASS) | Fly to geofence [MAV_CMD_NAV_FENCE_RETURN_POINT](#MAV_CMD_NAV_FENCE_RETURN_POINT) with manual throttle control in GUIDED mode. Note: This action is only supported by ArduPlane, and may not be supported in all versions. |
-| <a id='FENCE_ACTION_RTL'></a>4             | [FENCE_ACTION_RTL](#FENCE_ACTION_RTL)                                                                   | Return/RTL mode.                                                                                                                                                                                                                                                                                                                                                    |
-| <a id='FENCE_ACTION_HOLD'></a>5            | [FENCE_ACTION_HOLD](#FENCE_ACTION_HOLD)                                                                 | Hold at current location.                                                                                                                                                                                                                                                                                                                                           |
-| <a id='FENCE_ACTION_TERMINATE'></a>6       | [FENCE_ACTION_TERMINATE](#FENCE_ACTION_TERMINATE)                                                       | Termination failsafe. Motors are shut down (some flight stacks may trigger other failsafe actions).                                                                                                                                                                                                                              |
-| <a id='FENCE_ACTION_LAND'></a>7            | [FENCE_ACTION_LAND](#FENCE_ACTION_LAND)                                                                 | Land at current location.                                                                                                                                                                                                                                                                                                                                           |
 
 ### FENCE_BREACH {#FENCE_BREACH}
 
