@@ -1145,12 +1145,12 @@ Sent from simulation to autopilot. The RAW values of the RC channels received. T
 
 Sent from autopilot to simulation. Hardware in the loop control outputs. Alternative to [HIL_CONTROLS](#HIL_CONTROLS).
 
-| Field Name                     | Type        | Units | Values                                                                    | Description                                                                                                                                                                                                                                                                                  |
-| ------------------------------ | ----------- | ----- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| time_usec | `uint64_t`  | us    |                                                                           | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
-| controls                       | `float[16]` |       |                                                                           | Control outputs -1 .. 1. Channel assignment depends on the simulated hardware.                                                                                                                                               |
-| mode                           | `uint8_t`   |       | [MAV_MODE_FLAG](#MAV_MODE_FLAG) | System mode. Includes arming state.                                                                                                                                                                                                                          |
-| flags                          | `uint64_t`  |       |                                                                           | Flags as bitfield, 1: indicate simulation using lockstep.                                                                                                                                                                                                    |
+| Field Name                     | Type        | Units | Values                                                                                                                     | Description                                                                                                                                                                                                                                                                                  |
+| ------------------------------ | ----------- | ----- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| time_usec | `uint64_t`  | us    |                                                                                                                            | Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. |
+| controls                       | `float[16]` |       |                                                                                                                            | Control outputs -1 .. 1. Channel assignment depends on the simulated hardware.                                                                                                                                               |
+| mode                           | `uint8_t`   |       | [MAV_MODE_FLAG](#MAV_MODE_FLAG)                                                  | System mode. Includes arming state.                                                                                                                                                                                                                          |
+| flags                          | `uint64_t`  |       | [HIL_ACTUATOR_CONTROLS_FLAGS](#HIL_ACTUATOR_CONTROLS_FLAGS) | Flags bitmask.                                                                                                                                                                                                                                                               |
 
 ### OPTICAL_FLOW (100) {#OPTICAL_FLOW}
 
@@ -3883,21 +3883,6 @@ Some deprecated frames do not follow these conventions (e.g. [MAV_FRAME_BODY_NED
 | <a id='MAVLINK_DATA_STREAM_IMG_PGM'></a>4    | [MAVLINK_DATA_STREAM_IMG_PGM](#MAVLINK_DATA_STREAM_IMG_PGM)       |             |
 | <a id='MAVLINK_DATA_STREAM_IMG_PNG'></a>5    | [MAVLINK_DATA_STREAM_IMG_PNG](#MAVLINK_DATA_STREAM_IMG_PNG)       |             |
 
-### FENCE_ACTION {#FENCE_ACTION}
-
-Actions following geofence breach.
-
-| Value                                      | Name                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                                                         |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id='FENCE_ACTION_NONE'></a>0            | [FENCE_ACTION_NONE](#FENCE_ACTION_NONE)                                                                 | Disable fenced mode. If used in a plan this would mean the next fence is disabled.                                                                                                                                                                                                                                                                  |
-| <a id='FENCE_ACTION_GUIDED'></a>1          | [FENCE_ACTION_GUIDED](#FENCE_ACTION_GUIDED)                                                             | Fly to geofence [MAV_CMD_NAV_FENCE_RETURN_POINT](#MAV_CMD_NAV_FENCE_RETURN_POINT) in GUIDED mode. Note: This action is only supported by ArduPlane, and may not be supported in all versions.                              |
-| <a id='FENCE_ACTION_REPORT'></a>2          | [FENCE_ACTION_REPORT](#FENCE_ACTION_REPORT)                                                             | Report fence breach, but don't take action                                                                                                                                                                                                                                                                                                                                          |
-| <a id='FENCE_ACTION_GUIDED_THR_PASS'></a>3 | [FENCE_ACTION_GUIDED_THR_PASS](#FENCE_ACTION_GUIDED_THR_PASS) | Fly to geofence [MAV_CMD_NAV_FENCE_RETURN_POINT](#MAV_CMD_NAV_FENCE_RETURN_POINT) with manual throttle control in GUIDED mode. Note: This action is only supported by ArduPlane, and may not be supported in all versions. |
-| <a id='FENCE_ACTION_RTL'></a>4             | [FENCE_ACTION_RTL](#FENCE_ACTION_RTL)                                                                   | Return/RTL mode.                                                                                                                                                                                                                                                                                                                                                    |
-| <a id='FENCE_ACTION_HOLD'></a>5            | [FENCE_ACTION_HOLD](#FENCE_ACTION_HOLD)                                                                 | Hold at current location.                                                                                                                                                                                                                                                                                                                                           |
-| <a id='FENCE_ACTION_TERMINATE'></a>6       | [FENCE_ACTION_TERMINATE](#FENCE_ACTION_TERMINATE)                                                       | Termination failsafe. Motors are shut down (some flight stacks may trigger other failsafe actions).                                                                                                                                                                                                                              |
-| <a id='FENCE_ACTION_LAND'></a>7            | [FENCE_ACTION_LAND](#FENCE_ACTION_LAND)                                                                 | Land at current location.                                                                                                                                                                                                                                                                                                                                           |
-
 ### FENCE_BREACH {#FENCE_BREACH}
 
 | Value                               | Name                                                                                      | Description               |
@@ -4271,14 +4256,15 @@ Actuator output function. Values greater or equal to 1000 are autopilot-specific
 
 ### AUTOTUNE_AXIS {#AUTOTUNE_AXIS}
 
-(Bitmask) Enable axes that will be tuned via autotuning. Used in [MAV_CMD_DO_AUTOTUNE_ENABLE](#MAV_CMD_DO_AUTOTUNE_ENABLE).
+(Bitmask) Axes that will be autotuned by [MAV_CMD_DO_AUTOTUNE_ENABLE](#MAV_CMD_DO_AUTOTUNE_ENABLE).
 
-| Value                               | Name                                                                                      | Description                                                                |
-| ----------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| <a id='AUTOTUNE_AXIS_DEFAULT'></a>0 | [AUTOTUNE_AXIS_DEFAULT](#AUTOTUNE_AXIS_DEFAULT) | Flight stack tunes axis according to its default settings. |
-| <a id='AUTOTUNE_AXIS_ROLL'></a>1    | [AUTOTUNE_AXIS_ROLL](#AUTOTUNE_AXIS_ROLL)       | Autotune roll axis.                                        |
-| <a id='AUTOTUNE_AXIS_PITCH'></a>2   | [AUTOTUNE_AXIS_PITCH](#AUTOTUNE_AXIS_PITCH)     | Autotune pitch axis.                                       |
-| <a id='AUTOTUNE_AXIS_YAW'></a>4     | [AUTOTUNE_AXIS_YAW](#AUTOTUNE_AXIS_YAW)         | Autotune yaw axis.                                         |
+Note that at least one flag must be set in [MAV_CMD_DO_AUTOTUNE_ENABLE](#MAV_CMD_DO_AUTOTUNE_ENABLE).param2: if none are set, the flight stack will tune its default set of axes.
+
+| Value                             | Name                                                                                  | Description                          |
+| --------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------ |
+| <a id='AUTOTUNE_AXIS_ROLL'></a>1  | [AUTOTUNE_AXIS_ROLL](#AUTOTUNE_AXIS_ROLL)   | Autotune roll axis.  |
+| <a id='AUTOTUNE_AXIS_PITCH'></a>2 | [AUTOTUNE_AXIS_PITCH](#AUTOTUNE_AXIS_PITCH) | Autotune pitch axis. |
+| <a id='AUTOTUNE_AXIS_YAW'></a>4   | [AUTOTUNE_AXIS_YAW](#AUTOTUNE_AXIS_YAW)     | Autotune yaw axis.   |
 
 ### PREFLIGHT_STORAGE_PARAMETER_ACTION {#PREFLIGHT_STORAGE_PARAMETER_ACTION}
 
@@ -5840,6 +5826,14 @@ See https://mavlink.io/en/services/standard_modes.html
 | <a id='MAV_MODE_PROPERTY_NOT_USER_SELECTABLE'></a>2 | [MAV_MODE_PROPERTY_NOT_USER_SELECTABLE](#MAV_MODE_PROPERTY_NOT_USER_SELECTABLE) | If set, this mode should not be added to the list of selectable modes.<br>The mode might still be selected by the FC directly (for example as part of a failsafe).                                                                      |
 | <a id='MAV_MODE_PROPERTY_AUTO_MODE'></a>4           | [MAV_MODE_PROPERTY_AUTO_MODE](#MAV_MODE_PROPERTY_AUTO_MODE)                                          | If set, this mode is automatically controlled (it may use but does not require a manual controller).<br>If unset the mode is a assumed to require user input (be a manual mode).                                     |
 
+### HIL_ACTUATOR_CONTROLS_FLAGS {#HIL_ACTUATOR_CONTROLS_FLAGS}
+
+(Bitmask) Flags used in [HIL_ACTUATOR_CONTROLS](#HIL_ACTUATOR_CONTROLS) message.
+
+| Value                                              | Name                                                                                                                                                              | Description                  |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| <a id='HIL_ACTUATOR_CONTROLS_FLAGS_LOCKSTEP'></a>1 | [HIL_ACTUATOR_CONTROLS_FLAGS_LOCKSTEP](#HIL_ACTUATOR_CONTROLS_FLAGS_LOCKSTEP) | Simulation is using lockstep |
+
 ### MAV_AUTOPILOT — \[from: [minimal](../messages/minimal.md#MAV_AUTOPILOT)\] {#MAV_AUTOPILOT}
 
 Micro air vehicle / autopilot classes. This identifies the individual model.
@@ -7052,15 +7046,15 @@ Mission command to operate a gripper.
 
 Enable/disable autotune.
 
-| Param (Label) | Description                                                                                               | Values                                                               |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| 1 (Enable)    | Enable (1: enable, 0:disable).         | min: 0 max: 1 inc: 1 |
-| 2 (Axis)      | Specify which axis are autotuned. 0 indicates autopilot default settings. | [AUTOTUNE_AXIS](#AUTOTUNE_AXIS)                 |
-| 3                                | Empty.                                                                                    |                                                                      |
-| 4                                | Empty.                                                                                    |                                                                      |
-| 5                                | Empty.                                                                                    |                                                                      |
-| 6                                | Empty.                                                                                    |                                                                      |
-| 7                                | Empty.                                                                                    |                                                                      |
+| Param (Label) | Description                                                                                                                                                                                                                                                                    | Values                                                               |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| 1 (Enable)    | Enable (1: enable, 0:disable).                                                                                                                                                                              | min: 0 max: 1 inc: 1 |
+| 2 (Axis)      | Specify axes for which autotuning is enabled/disabled. 0 indicates the field is unused (for compatiblity reasons). If 0 the autopilot will follow its default behaviour, which is usually to tune all axes. | [AUTOTUNE_AXIS](#AUTOTUNE_AXIS)                 |
+| 3                                | Empty.                                                                                                                                                                                                                                                         |                                                                      |
+| 4                                | Empty.                                                                                                                                                                                                                                                         |                                                                      |
+| 5                                | Empty.                                                                                                                                                                                                                                                         |                                                                      |
+| 6                                | Empty.                                                                                                                                                                                                                                                         |                                                                      |
+| 7                                | Empty.                                                                                                                                                                                                                                                         |                                                                      |
 
 ### MAV_CMD_NAV_SET_YAW_SPEED (213) {#MAV_CMD_NAV_SET_YAW_SPEED}
 
