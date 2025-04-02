@@ -3904,11 +3904,10 @@ Actions being taken to mitigate/prevent fence breach
 
 ### FENCE_TYPE {#FENCE_TYPE}
 
-(Bitmask)
+(Bitmask) Fence types to enable or disable as a bitmask. Used in [MAV_CMD_DO_FENCE_ENABLE](#MAV_CMD_DO_FENCE_ENABLE).
 
 | 值                                | Name                                                                                                     | 描述                     |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------- |
-| <a id='FENCE_TYPE_ALL'></a>0     | [FENCE_TYPE_ALL](#FENCE_TYPE_ALL)                              | All fence types        |
 | <a id='FENCE_TYPE_ALT_MAX'></a>1 | [FENCE_TYPE_ALT_MAX](#FENCE_TYPE_ALT_MAX) | Maximum altitude fence |
 | <a id='FENCE_TYPE_CIRCLE'></a>2  | [FENCE_TYPE_CIRCLE](#FENCE_TYPE_CIRCLE)                        | Circle fence           |
 | <a id='FENCE_TYPE_POLYGON'></a>4 | [FENCE_TYPE_POLYGON](#FENCE_TYPE_POLYGON)                      | Polygon fence          |
@@ -6976,15 +6975,15 @@ The persistence/lifetime of the setting is undefined.
 Depending on flight stack implementation it may persist until superseded, or it may revert to a system default at the end of a mission.
 Flight stacks typically reset the setting to system defaults on reboot.
 
-| Param (Label) | 描述                                                                                                                                                                                                        | 值                                                                    |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| 1 (Enable)    | enable? (0=disable, 1=enable, 2=disable_floor_only)                                                                                          | min: 0 max: 2 inc: 1 |
-| 2 (Types)     | Fence types to enable or disable as a bitmask. A value of 0 indicates that all fences should be enabled or disabled. This parameter is ignored if param 1 has the value 2 | [FENCE_TYPE](#FENCE_TYPE)                       |
-| 3                                | Empty                                                                                                                                                                                                     |                                                                      |
-| 4                                | Empty                                                                                                                                                                                                     |                                                                      |
-| 5                                | Empty                                                                                                                                                                                                     |                                                                      |
-| 6                                | Empty                                                                                                                                                                                                     |                                                                      |
-| 7                                | Empty                                                                                                                                                                                                     |                                                                      |
+| Param (Label) | 描述                                                                                                                                                                                                                                               | 值                                                                    |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| 1 (Enable)    | enable? (0=disable, 1=enable, 2=disable_floor_only)                                                                                                                                 | min: 0 max: 2 inc: 1 |
+| 2 (Types)     | Fence types to enable or disable as a bitmask. 0: all fences should be enabled or disabled (parameter is ignored, for compatibility reasons).Parameter is ignored if param1=2 | [FENCE_TYPE](#FENCE_TYPE)                       |
+| 3                                | Empty                                                                                                                                                                                                                                            |                                                                      |
+| 4                                | Empty                                                                                                                                                                                                                                            |                                                                      |
+| 5                                | Empty                                                                                                                                                                                                                                            |                                                                      |
+| 6                                | Empty                                                                                                                                                                                                                                            |                                                                      |
+| 7                                | Empty                                                                                                                                                                                                                                            |                                                                      |
 
 ### MAV_CMD_DO_PARACHUTE (208) {#MAV_CMD_DO_PARACHUTE}
 
