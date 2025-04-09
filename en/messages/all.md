@@ -61,7 +61,7 @@ Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 0 | 372
 [Enums](#enumerated-types) | 0 | 235
-[Commands](#mav_commands) | 217 | 0
+[Commands](#mav_commands) | 218 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
