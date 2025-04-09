@@ -4134,7 +4134,10 @@ Value | Name | Description
 
 ### FENCE_TYPE {#FENCE_TYPE}
 
-(Bitmask) Fence types to enable or disable as a bitmask. Used in [MAV_CMD_DO_FENCE_ENABLE](#MAV_CMD_DO_FENCE_ENABLE).
+(Bitmask) Fence types to enable or disable when using [MAV_CMD_DO_FENCE_ENABLE](#MAV_CMD_DO_FENCE_ENABLE).
+
+Note that at least one of these flags must be set in [MAV_CMD_DO_FENCE_ENABLE](#MAV_CMD_DO_FENCE_ENABLE).param2.
+If none are set, the flight stack will ignore the field and enable/disable its default set of fences (usually all of them).
 
 Value | Name | Description
 --- | --- | ---
@@ -7268,7 +7271,7 @@ Flight stacks typically reset the setting to system defaults on reboot.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Enable) | enable? (0=disable, 1=enable, 2=disable_floor_only) | min: 0 max: 2 inc: 1 
-2 (Types) | Fence types to enable or disable as a bitmask. 0: all fences should be enabled or disabled (parameter is ignored, for compatibility reasons).Parameter is ignored if param1=2 | [FENCE_TYPE](#FENCE_TYPE) 
+2 (Types) | Fence types to enable or disable as a bitmask. 0: field is unused/all fences should be enabled or disabled (for compatiblity reasons). Parameter is ignored if param1=2. | [FENCE_TYPE](#FENCE_TYPE) 
 3 | Empty |   
 4 | Empty |   
 5 | Empty |   
