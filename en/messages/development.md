@@ -511,6 +511,7 @@ Sets the GNSS coordinates of the vehicle local origin (0,0,0) position.
 Vehicle should emit [GPS_GLOBAL_ORIGIN](#GPS_GLOBAL_ORIGIN) irrespective of whether the origin is changed.
 This enables transform between the local coordinate frame and the global (GNSS) coordinate frame, which may be necessary when (for example) indoor and outdoor settings are connected and the MAV should move from in- to outdoor.
 This command supersedes [SET_GPS_GLOBAL_ORIGIN](#SET_GPS_GLOBAL_ORIGIN).
+Should be sent in a [COMMAND_INT](#COMMAND_INT) (Expected frame is [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL), and this should be assumed when sent in [COMMAND_LONG](#COMMAND_LONG)).
 
 Param (Label) | Description | Units
 --- | --- | ---
@@ -518,9 +519,9 @@ Param (Label) | Description | Units
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
-5 (Latitude) | Latitude (WGS84) |   
-6 (Longitude) | Longitude (WGS84) |   
-7 (Altitude) | Altitude (MSL) | m 
+5 (Latitude) | Latitude |   
+6 (Longitude) | Longitude |   
+7 (Altitude) | Altitude | m 
 
 
 ### MAV_CMD_ODID_SET_EMERGENCY (12900) — [WIP] {#MAV_CMD_ODID_SET_EMERGENCY}
