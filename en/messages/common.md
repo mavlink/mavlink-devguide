@@ -2007,7 +2007,7 @@ Version and capability of autopilot software. This should be emitted in response
 Field Name | Type | Values | Description
 --- | --- | --- | ---
 capabilities | `uint64_t` | [MAV_PROTOCOL_CAPABILITY](#MAV_PROTOCOL_CAPABILITY) | Bitmap of capabilities 
-flight_sw_version | `uint32_t` | | Firmware version number.<br>The field must be encoded as 4 bytes, where each byte (shown from MSB to LSB) is part of a semantic version: (major) (minor) (patch) ([FIRMWARE_RELEASE_TYPE](#FIRMWARE_RELEASE_TYPE)). 
+flight_sw_version | `uint32_t` | | Firmware version number.<br>The field must be encoded as 4 bytes, where each byte (shown from MSB to LSB) is part of a semantic version: (major) (minor) (patch) ([FIRMWARE_VERSION_TYPE](#FIRMWARE_VERSION_TYPE)). 
 middleware_sw_version | `uint32_t` | | Middleware version number 
 os_sw_version | `uint32_t` | | Operating system version number 
 board_version | `uint32_t` | | HW / board version (last 8 bits should be silicon ID, if any). The first 16 bits of this field specify https://github.com/PX4/PX4-Bootloader/blob/master/board_types.txt 
