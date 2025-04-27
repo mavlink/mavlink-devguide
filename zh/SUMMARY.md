@@ -38,7 +38,7 @@
   - [minimal.xml](messages/minimal.md)
   - [development.xml](messages/development.md)
 - [](services/index.md) 
-  - [Heartbeat/Connection Protocol](services/heartbeat.md)
+  - [心跳/连接协议](services/heartbeat.md)
   - [Mission Protocol](services/mission.md)
   - [Parameter Protocol](services/parameter.md)
   - [Extended Parameter Protocol](services/parameter_ext.md)
