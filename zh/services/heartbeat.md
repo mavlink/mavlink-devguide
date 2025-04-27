@@ -1,4 +1,4 @@
-# Heartbeat/Connection Protocol
+# 心跳/连接协议
 
 The heartbeat protocol is used to advertise the existence of a system on the MAVLink network, along with its system and component id, vehicle type, flight stack, component type, and flight mode.
 
