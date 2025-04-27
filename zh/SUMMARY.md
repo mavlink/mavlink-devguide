@@ -37,7 +37,7 @@
   - [standard.xml](messages/standard.md)
   - [minimal.xml](messages/minimal.md)
   - [development.xml](messages/development.md)
-- [Microservices](services/index.md) 
+- [](services/index.md) 
   - [Heartbeat/Connection Protocol](services/heartbeat.md)
   - [Mission Protocol](services/mission.md)
   - [Parameter Protocol](services/parameter.md)
