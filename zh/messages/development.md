@@ -39,7 +39,7 @@ span.warning {
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 12      | 229      |
 | [Enums](#enumerated-types) | 11      | 146      |
-| [Commands](#mav_commands)  | 172     | 0        |
+| [Commands](#mav_commands)  | 173     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -486,6 +486,27 @@ Recipients must reject command addressed to broadcast system ID.
 | 2 (Component ID) | New component ID for target component(s). 0: ignore (component IDs don't change).                      | min: 0 max: 255 inc: 1 |
 | 3 (Reboot)       | Reboot components after ID change. Any non-zero value triggers the reboot.                                                                                   |                                                                        |
 | 4                                   |                                                                                                                                                                                              |                                                                        |
+
+### MAV_CMD_DO_SET_GLOBAL_ORIGIN (611) — [WIP] {#MAV_CMD_DO_SET_GLOBAL_ORIGIN}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Sets the GNSS coordinates of the vehicle local origin (0,0,0) position.
+
+Vehicle should emit [GPS_GLOBAL_ORIGIN](#GPS_GLOBAL_ORIGIN) irrespective of whether the origin is changed.
+This enables transform between the local coordinate frame and the global (GNSS) coordinate frame, which may be necessary when (for example) indoor and outdoor settings are connected and the MAV should move from in- to outdoor.
+This command supersedes [SET_GPS_GLOBAL_ORIGIN](#SET_GPS_GLOBAL_ORIGIN).
+Should be sent in a [COMMAND_INT](#COMMAND_INT) (Expected frame is [MAV_FRAME_GLOBAL](#MAV_FRAME_GLOBAL), and this should be assumed when sent in [COMMAND_LONG](#COMMAND_LONG)).
+
+| Param (Label) | 描述        | Units |
+| -------------------------------- | --------- | ----- |
+| 1                                | Empty     |       |
+| 2                                | Empty     |       |
+| 3                                | Empty     |       |
+| 4                                | Empty     |       |
+| 5 (Latitude)  | Latitude  |       |
+| 6 (Longitude) | Longitude |       |
+| 7 (Altitude)  | Altitude  | m     |
 
 ### MAV_CMD_ODID_SET_EMERGENCY (12900) — [WIP] {#MAV_CMD_ODID_SET_EMERGENCY}
 

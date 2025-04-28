@@ -29,9 +29,8 @@
   <dd>
 
   <ul>
-    <li>The underlying over-the-wire format is rarely updated (we're only up to <em>MAVLink 2</em>, which was introduced in 2017).
-    </li>
-    <li>New <a href="../messages/common.md">messages</a>/<a href="../services/index.md">microservices</a> are frequently added. 这些更新是后向兼容，用户可定期更新其使用的库以支持新的消息。</li>
+    <li>底层的序列化方式很少更新(只在2017年引入 <em>MAVLink 2</em>时进行了更新)。</li>
+    <li>经常添加新的<a href="../messages/common.md">信息</a>/<a href="../services/index.md">微服务</a>。 这些更新是后向兼容，用户可定期更新其使用的库以支持新的消息。</li>
     <li>消息很少被修改(或删除)，以防止它们变得不兼容。 如果需要更新，项目将通过更新MAVLink次要版本号，并通过 <a href="https://groups.google.com/forum/#!forum/mavlink">邮件列表</a> 通知用户(用户也可以在代码中查询版本)。</li>
   </ul>
   </dd>

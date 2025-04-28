@@ -1,4 +1,4 @@
-# Microservices
+#
 
 The MAVLink "microservices" define higher-level protocols that MAVLink systems can adopt in order to better inter-operate.
 For example, _QGroundControl_, ArduPilot and PX4 autopilots all share a common [Command Protocol](../services/command.md) for sending point-to-point messages that require an acknowledgment.
