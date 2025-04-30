@@ -41,7 +41,7 @@
 
 <dl>
   <dt>我可以将 MAVLink 用于封闭的源程序且不用考虑版权问题吗？</dt>
-  <dd>可以，没有任何使用限制。 The generated MAVLink library headers are made available under the *MIT license* (for more information see: <a href="../index.md#license">Introduction > License</a>).
+  <dd>可以，没有任何使用限制。 生成的 MAVLink 库头文件遵循 *MIT 许可证* 发布 。 （有关详细信息，请参阅： <a href="../index.md#license">许可证介绍</a>）。
   </dd>
 
   <dt>MAVLink 如何检测数据流中的各类消息并进行解码？</dt>
@@ -64,7 +64,7 @@
 
   <dt>我可以帮助编解码子程序或增加其它功能吗？ 我可以帮助编解码子程序或增加其它功能吗？ 可以更改 MAVLink 吗？</dt>
   <dd>可以，在安全测试时必须十分小心。 
-  可以，在安全测试时必须十分小心。 作为多个自动驾驶仪中对安全至关重要的组件，MAVLink 已经经历了多年的测试。 请向MAVLink的技术支持推荐你所想到的新功能。 Please suggest new features on the MAVLink <a href="../index.md#support">support channels</a>.</dd>
+  可以，在安全测试时必须十分小心。 作为多个自动驾驶仪中对安全至关重要的组件，MAVLink 已经经历了多年的测试。 请向MAVLink的技术支持推荐你所想到的新功能。 请在 MAVLink <a href="../index.md#support">支持频道</a> 上提新功能的建议。</dd>
 
   <dt>如何进一步减少生成的 C 库大小？</dt>
   <dd>在资源极受限制的系统中，您可以通过设置 <code>MAVLINK_COMM_NUM_BUFFERS=1</code> 和 <code>MAVLINK_MAX_PAYLOAD_LEN</code>="可提供最大缓冲区大小" (假设仅有一个普通链路并且你的有效载荷小于MAVLink支持的最大值)。
