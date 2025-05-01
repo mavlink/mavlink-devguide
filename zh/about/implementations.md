@@ -50,4 +50,4 @@ These projects have some activity but are not as well maintained:
 - [ETH Flying Machine Arena](http://www.idsc.ethz.ch/Research_DAndrea/FMA)
 - [ETH SenseSoar Solar Airplane Project](http://www.sensesoar.ethz.ch/doku.php?id=project)
 - [ETH Skye Blimp Project](http://www.projectskye.ch/)
-- [UC Santa Cruz SLUGS](http://slugsuav.soe.ucsc.edu/index.html) (early days contributor)
+- [加州大学圣克鲁兹分校自主系统实验室（UC Santa Cruz SLUGS）](http://slugsuav.soe.ucsc.edu/index.html) (early days contributor)
