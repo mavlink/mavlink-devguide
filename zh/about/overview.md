@@ -68,4 +68,4 @@ MAVLink implements two integrity checks: The first check is on the integrity of 
 但是这只能保证数据没被链路改变，不能保证数据定义的一致性。
 The second integrity check is on the [data description](https://en.wikipedia.org/wiki/Data_definition_language) to ensure that two messages with the same ID are indeed containing the same information.
 为了达到此目的，数据定义本身也进行了 CRC-16-CCITT ，结果用作此数据包 CRC 的种子。
-Most reference implementations store this constant in an array named **CRC_EXTRA**.
+大多数参考实现都将此常量存储在名为 **CRC_EXTRA** 的数组中。
