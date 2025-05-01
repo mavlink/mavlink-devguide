@@ -159,7 +159,6 @@ Status message with information from UCP Heartbeat and Status messages.
 
 | Value                                                | Name                                                                                                                                                                                                            | Description |
 | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| <a id='UAVIONIX_ADSB_OUT_RF_SELECT_STANDBY'></a>0    | [UAVIONIX_ADSB_OUT_RF_SELECT_STANDBY](#UAVIONIX_ADSB_OUT_RF_SELECT_STANDBY)                            |             |
 | <a id='UAVIONIX_ADSB_OUT_RF_SELECT_RX_ENABLED'></a>1 | [UAVIONIX_ADSB_OUT_RF_SELECT_RX_ENABLED](#UAVIONIX_ADSB_OUT_RF_SELECT_RX_ENABLED) |             |
 | <a id='UAVIONIX_ADSB_OUT_RF_SELECT_TX_ENABLED'></a>2 | [UAVIONIX_ADSB_OUT_RF_SELECT_TX_ENABLED](#UAVIONIX_ADSB_OUT_RF_SELECT_TX_ENABLED) |             |
 
@@ -180,12 +179,11 @@ Status for ADS-B transponder dynamic input
 
 (Bitmask) Status flags for ADS-B transponder dynamic output
 
-| Value                                              | Name                                                                                                                                                                         | Description |
-| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| <a id='UAVIONIX_ADSB_RF_HEALTH_INITIALIZING'></a>0 | [UAVIONIX_ADSB_RF_HEALTH_INITIALIZING](#UAVIONIX_ADSB_RF_HEALTH_INITIALIZING)            |             |
-| <a id='UAVIONIX_ADSB_RF_HEALTH_OK'></a>1           | [UAVIONIX_ADSB_RF_HEALTH_OK](#UAVIONIX_ADSB_RF_HEALTH_OK)                                |             |
-| <a id='UAVIONIX_ADSB_RF_HEALTH_FAIL_TX'></a>2      | [UAVIONIX_ADSB_RF_HEALTH_FAIL_TX](#UAVIONIX_ADSB_RF_HEALTH_FAIL_TX) |             |
-| <a id='UAVIONIX_ADSB_RF_HEALTH_FAIL_RX'></a>16     | [UAVIONIX_ADSB_RF_HEALTH_FAIL_RX](#UAVIONIX_ADSB_RF_HEALTH_FAIL_RX) |             |
+| Value                                          | Name                                                                                                                                                                         | Description |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| <a id='UAVIONIX_ADSB_RF_HEALTH_OK'></a>1       | [UAVIONIX_ADSB_RF_HEALTH_OK](#UAVIONIX_ADSB_RF_HEALTH_OK)                                |             |
+| <a id='UAVIONIX_ADSB_RF_HEALTH_FAIL_TX'></a>2  | [UAVIONIX_ADSB_RF_HEALTH_FAIL_TX](#UAVIONIX_ADSB_RF_HEALTH_FAIL_TX) |             |
+| <a id='UAVIONIX_ADSB_RF_HEALTH_FAIL_RX'></a>16 | [UAVIONIX_ADSB_RF_HEALTH_FAIL_RX](#UAVIONIX_ADSB_RF_HEALTH_FAIL_RX) |             |
 
 ### UAVIONIX_ADSB_OUT_CFG_AIRCRAFT_SIZE {#UAVIONIX_ADSB_OUT_CFG_AIRCRAFT_SIZE}
 
