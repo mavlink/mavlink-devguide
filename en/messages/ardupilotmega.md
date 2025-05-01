@@ -1149,7 +1149,7 @@ Value | Name | Description
 
 ### RALLY_FLAGS {#RALLY_FLAGS}
 
-(Bitmask) Flags in [RALLY_POINT](#RALLY_POINT) message.
+Flags in [RALLY_POINT](#RALLY_POINT) message.
 
 Value | Name | Description
 --- | --- | ---
