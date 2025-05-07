@@ -280,7 +280,6 @@ Value | Name | Description
 
 Value | Name | Description
 --- | --- | ---
-<a id='MAV_STORM32_GIMBAL_MANAGER_FLAGS_NONE'></a>0 | [MAV_STORM32_GIMBAL_MANAGER_FLAGS_NONE](#MAV_STORM32_GIMBAL_MANAGER_FLAGS_NONE) | 0 = ignore. 
 <a id='MAV_STORM32_GIMBAL_MANAGER_FLAGS_RC_ACTIVE'></a>1 | [MAV_STORM32_GIMBAL_MANAGER_FLAGS_RC_ACTIVE](#MAV_STORM32_GIMBAL_MANAGER_FLAGS_RC_ACTIVE) | Request to set RC input to active, or report RC input is active. Implies RC mixed. RC exclusive is achieved by setting all clients to inactive. 
 <a id='MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_ONBOARD_ACTIVE'></a>2 | [MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_ONBOARD_ACTIVE](#MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_ONBOARD_ACTIVE) | Request to set onboard/companion computer client to active, or report this client is active. 
 <a id='MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_AUTOPILOT_ACTIVE'></a>4 | [MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_AUTOPILOT_ACTIVE](#MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_AUTOPILOT_ACTIVE) | Request to set autopliot client to active, or report this client is active. 
