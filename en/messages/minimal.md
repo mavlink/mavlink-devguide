@@ -156,7 +156,7 @@ Value | Name | Description
 <a id='MAV_TYPE_WINCH'></a>42 | [MAV_TYPE_WINCH](#MAV_TYPE_WINCH) | Winch 
 <a id='MAV_TYPE_GENERIC_MULTIROTOR'></a>43 | [MAV_TYPE_GENERIC_MULTIROTOR](#MAV_TYPE_GENERIC_MULTIROTOR) | Generic multirotor that does not fit into a specific type or whose type is unknown 
 <a id='MAV_TYPE_ILLUMINATOR'></a>44 | [MAV_TYPE_ILLUMINATOR](#MAV_TYPE_ILLUMINATOR) | Illuminator. An illuminator is a light source that is used for lighting up dark areas external to the sytstem: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light). 
-<a id='MAV_TYPE_SATELLITE'></a>45 | [MAV_TYPE_SATELLITE](#MAV_TYPE_SATELLITE) | Satellite. Used for satellite-like systems (orbiting satellites, space stations). For rockets (or landers) use [MAV_TYPE_ROCKET](#MAV_TYPE_ROCKET). 
+<a id='MAV_TYPE_SPACECRAFT_ORBITER'></a>45 | [MAV_TYPE_SPACECRAFT_ORBITER](#MAV_TYPE_SPACECRAFT_ORBITER) | Orbiter spacecraft. Includes satellites orbiting terrestrial and extra-terrestrial bodies. Follows NASA Spacecraft Classification. 
 
 ### MAV_MODE_FLAG {#MAV_MODE_FLAG}
 
