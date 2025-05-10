@@ -39,13 +39,28 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 8       | 319      |
-| [Enums](#enumerated-types) | 8       | 208      |
+| [Messages](#messages)      | 12      | 319      |
+| [Enums](#enumerated-types) | 8       | 209      |
 | [Commands](#mav_commands)  | 201     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
 ## 消息
+
+### AUTOPILOT_STATE_FOR_GIMBAL_DEVICE_EXT (60000) — [WIP] {#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE_EXT}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Addition to message [AUTOPILOT_STATE_FOR_GIMBAL_DEVICE](#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE).
+
+| Field Name                                                      | Type       | Units | 描述                                                                                                          |
+| --------------------------------------------------------------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------- |
+| target_system                              | `uint8_t`  |       | System ID.                                                                                  |
+| target_component                           | `uint8_t`  |       | Component ID.                                                                               |
+| time_boot_us          | `uint64_t` | us    | Timestamp (time since system boot).                                      |
+| wind_x                                     | `float`    | m/s   | Wind X speed in NED (North,Est, Down). NAN if unknown.   |
+| wind_y                                     | `float`    | m/s   | Wind Y speed in NED (North, East, Down). NAN if unknown. |
+| wind_correction_angle | `float`    | rad   | Correction angle due to wind. NaN if unknown.                               |
 
 ### STORM32_GIMBAL_MANAGER_INFORMATION (60010) {#STORM32_GIMBAL_MANAGER_INFORMATION}
 
@@ -142,7 +157,9 @@ Frsky SPort passthrough multi packet container.
 | count                                                  | `uint8_t`      |       | Number of passthrough packets in this message.                                                                                                                                                              |
 | packet_buf                        | `uint8_t[240]` |       | Passthrough packet buffer. A packet has 6 bytes: uint16_t id + uint32_t data. The array has space for 40 packets. |
 
-### PARAM_VALUE_ARRAY (60041) {#PARAM_VALUE_ARRAY}
+### PARAM_VALUE_ARRAY (60041) — [WIP] {#PARAM_VALUE_ARRAY}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
 
 Parameter multi param value container.
 
@@ -153,6 +170,77 @@ Parameter multi param value container.
 | param_array_len   | `uint8_t`      | Number of onboard parameters in this array.                                                                                                      |
 | flags                                                       | `uint16_t`     | Flags.                                                                                                                                           |
 | packet_buf                             | `uint8_t[248]` | Parameters buffer. Contains a series of variable length parameter blocks, one per parameter, with format as specified elsewhere. |
+
+### MLRS_RADIO_LINK_STATS (60045) {#MLRS_RADIO_LINK_STATS}
+
+Radio link statistics for a MAVLink RC receiver or transmitter and other links. Tx: ground-side device, Rx: vehicle-side device.
+
+The message is normally emitted in regular time intervals upon each actual or expected reception of an over-the-air data packet on the link.
+A MAVLink RC receiver should emit it shortly after it emits a [RADIO_RC_CHANNELS](#RADIO_RC_CHANNELS) message (if it is emitting that message).
+Per default, rssi values are in MAVLink units: 0 represents weakest signal, 254 represents maximum signal, UINT8_MAX represents unknown.
+The [RADIO_LINK_STATS_FLAGS_RSSI_DBM](#RADIO_LINK_STATS_FLAGS_RSSI_DBM) flag is set if the rssi units are negative dBm: 1..254 correspond to -1..-254 dBm, 0 represents no reception, UINT8_MAX represents unknown.
+The target_system field should normally be set to the system id of the system the link is connected to, typically the flight controller.
+The target_component field can normally be set to 0, so that all components of the system can receive the message.
+Note: The frequency fields are extensions to ensure that they are located at the end of the serialized payload and subject to MAVLink's trailing-zero trimming.
+
+| Field Name                                                                 | Type       | Units | 值                                                                                                                                               | 描述                                                                                                                                                                                                                                                        |
+| -------------------------------------------------------------------------- | ---------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| target_system                                         | `uint8_t`  |       |                                                                                                                                                 | System ID (ID of target system, normally flight controller).                                                                                                                                                           |
+| target_component                                      | `uint8_t`  |       |                                                                                                                                                 | Component ID (normally 0 for broadcast).                                                                                                                                                                               |
+| flags                                                                      | `uint16_t` |       | [MLRS_RADIO_LINK_STATS_FLAGS](#MLRS_RADIO_LINK_STATS_FLAGS) | Radio link statistics flags.                                                                                                                                                                                                              |
+| rx_LQ_rc                         | `uint8_t`  | c%    | invalid:UINT8_MAX                                                                                          | Link quality of RC data stream from Tx to Rx. Values: 1..100, 0: no link connection, UINT8_MAX: unknown.             |
+| rx_LQ_ser                        | `uint8_t`  | c%    | invalid:UINT8_MAX                                                                                          | Link quality of serial MAVLink data stream from Tx to Rx. Values: 1..100, 0: no link connection, UINT8_MAX: unknown. |
+| rx_rssi1                                              | `uint8_t`  |       | invalid:UINT8_MAX                                                                                          | Rssi of antenna 1. 0: no reception, UINT8_MAX: unknown.                                                                                                              |
+| rx_snr1                                               | `int8_t`   |       | invalid:INT8_MAX                                                                                           | Noise on antenna 1. Radio link dependent. INT8_MAX: unknown.                                                                                                         |
+| tx_LQ_ser                        | `uint8_t`  | c%    | invalid:UINT8_MAX                                                                                          | Link quality of serial MAVLink data stream from Rx to Tx. Values: 1..100, 0: no link connection, UINT8_MAX: unknown. |
+| tx_rssi1                                              | `uint8_t`  |       | invalid:UINT8_MAX                                                                                          | Rssi of antenna 1. 0: no reception. UINT8_MAX: unknown.                                                                                              |
+| tx_snr1                                               | `int8_t`   |       | invalid:INT8_MAX                                                                                           | Noise on antenna 1. Radio link dependent. INT8_MAX: unknown.                                                                                                         |
+| rx_rssi2                                              | `uint8_t`  |       | invalid:UINT8_MAX                                                                                          | Rssi of antenna 2. 0: no reception, UINT8_MAX: use rx_rssi1 if it is known else unknown.                                                        |
+| rx_snr2                                               | `int8_t`   |       | invalid:INT8_MAX                                                                                           | Noise on antenna 2. Radio link dependent. INT8_MAX: use rx_snr1 if it is known else unknown.                                                    |
+| tx_rssi2                                              | `uint8_t`  |       | invalid:UINT8_MAX                                                                                          | Rssi of antenna 2. 0: no reception. UINT8_MAX: use tx_rssi1 if it is known else unknown.                                        |
+| tx_snr2                                               | `int8_t`   |       | invalid:INT8_MAX                                                                                           | Noise on antenna 2. Radio link dependent. INT8_MAX: use tx_snr1 if it is known else unknown.                                                    |
+| <span class='ext'>frequency1</span> <a href='#mav2_extension_field'>++</a> | `float`    | Hz    | invalid:0                                                                                                                       | Frequency on antenna1 in Hz. 0: unknown.                                                                                                                                                                  |
+| <span class='ext'>frequency2</span> <a href='#mav2_extension_field'>++</a> | `float`    | Hz    | invalid:0                                                                                                                       | Frequency on antenna2 in Hz. 0: unknown.                                                                                                                                                                  |
+
+### MLRS_RADIO_LINK_INFORMATION (60046) {#MLRS_RADIO_LINK_INFORMATION}
+
+Radio link information. Tx: ground-side device, Rx: vehicle-side device.
+
+The values of the fields in this message do normally not or only slowly change with time, and for most times the message can be send at a low rate, like 0.2 Hz.
+If values change then the message should temporarily be send more often to inform the system about the changes.
+The target_system field should normally be set to the system id of the system the link is connected to, typically the flight controller.
+The target_component field can normally be set to 0, so that all components of the system can receive the message.
+
+| Field Name                                                                      | Type       | Units | 值                                                                                                                                      | 描述                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------- | ---------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| target_system                                              | `uint8_t`  |       |                                                                                                                                        | System ID (ID of target system, normally flight controller).                                                                                                                                                                                                                                                                                    |
+| target_component                                           | `uint8_t`  |       |                                                                                                                                        | Component ID (normally 0 for broadcast).                                                                                                                                                                                                                                                                                                        |
+| type                                                                            | `uint8_t`  |       | invalid:0 [MLRS_RADIO_LINK_TYPE](#MLRS_RADIO_LINK_TYPE) | Radio link type. 0: unknown/generic type.                                                                                                                                                                                                                                                                                          |
+| 模式                                                                              | `uint8_t`  |       | invalid:UINT8_MAX                                                                                 | Operation mode. Radio link dependent. UINT8_MAX: ignore/unknown.                                                                                                                                                                                                                              |
+| tx_power                                                   | `int8_t`   | dBm   | invalid:INT8_MAX                                                                                  | Tx transmit power in dBm. INT8_MAX: unknown.                                                                                                                                                                                                                                                                  |
+| rx_power                                                   | `int8_t`   | dBm   | invalid:INT8_MAX                                                                                  | Rx transmit power in dBm. INT8_MAX: unknown.                                                                                                                                                                                                                                                                  |
+| tx_frame_rate                         | `uint16_t` | Hz    | invalid:0                                                                                                              | Frame rate in Hz (frames per second) for Tx to Rx transmission. 0: unknown.                                                                                                                                                                                                                                     |
+| rx_frame_rate                         | `uint16_t` | Hz    | invalid:0                                                                                                              | Frame rate in Hz (frames per second) for Rx to Tx transmission. Normally equal to tx_packet_rate. 0: unknown.                                                                                                                                         |
+| mode_str                                                   | `char[6]`  |       |                                                                                                                                        | Operation mode as human readable string. Radio link dependent. Terminated by NULL if the string length is less than 6 chars and WITHOUT NULL termination if the length is exactly 6 chars - applications have to provide 6+1 bytes storage if the mode is stored as string. Use a zero-length string if not known. |
+| band_str                                                   | `char[6]`  |       |                                                                                                                                        | Frequency band as human readable string. Radio link dependent. Terminated by NULL if the string length is less than 6 chars and WITHOUT NULL termination if the length is exactly 6 chars - applications have to provide 6+1 bytes storage if the mode is stored as string. Use a zero-length string if not known. |
+| tx_ser_data_rate | `uint16_t` |       | invalid:0                                                                                                              | Maximum data rate of serial stream in bytes/s for Tx to Rx transmission. 0: unknown. UINT16_MAX: data rate is 64 KBytes/s or larger.                                                                                                                                          |
+| rx_ser_data_rate | `uint16_t` |       | invalid:0                                                                                                              | Maximum data rate of serial stream in bytes/s for Rx to Tx transmission. 0: unknown. UINT16_MAX: data rate is 64 KBytes/s or larger.                                                                                                                                          |
+| tx_receive_sensitivity                | `uint8_t`  |       | invalid:0                                                                                                              | Receive sensitivity of Tx in inverted dBm. 1..255 represents -1..-255 dBm, 0: unknown.                                                                                                                                                                             |
+| rx_receive_sensitivity                | `uint8_t`  |       | invalid:0                                                                                                              | Receive sensitivity of Rx in inverted dBm. 1..255 represents -1..-255 dBm, 0: unknown.                                                                                                                                                                             |
+
+### MLRS_RADIO_LINK_FLOW_CONTROL (60047) — [WIP] {#MLRS_RADIO_LINK_FLOW_CONTROL}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Injected by a radio link endpoint into the MAVLink stream for purposes of flow control. Should be emitted only by components with component id [MAV_COMP_ID_TELEMETRY_RADIO](#MAV_COMP_ID_TELEMETRY_RADIO).
+
+| Field Name                                                                           | Type       | Units   | 描述                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------------ | ---------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| tx_ser_rate                                | `uint16_t` | bytes/s | Transmitted bytes per second, UINT16_MAX: invalid/unknown.                                                                                  |
+| rx_ser_rate                                | `uint16_t` | bytes/s | Recieved bytes per second, UINT16_MAX: invalid/unknown.                                                                                     |
+| tx_used_ser_bandwidth | `uint8_t`  | c%      | Transmit bandwidth consumption. Values: 0..100, UINT8_MAX: invalid/unknown. |
+| rx_used_ser_bandwidth | `uint8_t`  | c%      | Receive bandwidth consumption. Values: 0..100, UINT8_MAX: invalid/unknown.  |
+| txbuf                                                                                | `uint8_t`  | c%      | For compatibility with legacy method. UINT8_MAX: unknown.                                                                   |
 
 ## Enumerated Types
 
@@ -166,34 +254,6 @@ Parameter multi param value container.
 | <a id='MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH2_OUT'></a>203 | [MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH2_OUT](#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH2_OUT) | Registered for STorM32 gimbal controller. For communication with gimbal.           |
 | <a id='MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH3_IN'></a>204  | [MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH3_IN](#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH3_IN)   | Registered for STorM32 gimbal controller. For communication with camera.           |
 | <a id='MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH3_OUT'></a>205 | [MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH3_OUT](#MAV_STORM32_TUNNEL_PAYLOAD_TYPE_STORM32_CH3_OUT) | Registered for STorM32 gimbal controller. For communication with camera.           |
-
-### MAV_STORM32_GIMBAL_PREARM_FLAGS {#MAV_STORM32_GIMBAL_PREARM_FLAGS}
-
-(Bitmask) STorM32 gimbal prearm check flags.
-
-| 值                                                                        | Name                                                                                                                                                                                                                                                  | 描述                                                             |
-| ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_IS_NORMAL'></a>1                  | [MAV_STORM32_GIMBAL_PREARM_FLAGS_IS_NORMAL](#MAV_STORM32_GIMBAL_PREARM_FLAGS_IS_NORMAL)                                 | STorM32 gimbal is in normal state.             |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_IMUS_WORKING'></a>2               | [MAV_STORM32_GIMBAL_PREARM_FLAGS_IMUS_WORKING](#MAV_STORM32_GIMBAL_PREARM_FLAGS_IMUS_WORKING)                           | The IMUs are healthy and working normally.     |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_MOTORS_WORKING'></a>4             | [MAV_STORM32_GIMBAL_PREARM_FLAGS_MOTORS_WORKING](#MAV_STORM32_GIMBAL_PREARM_FLAGS_MOTORS_WORKING)                       | The motors are active and working normally.    |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_ENCODERS_WORKING'></a>8           | [MAV_STORM32_GIMBAL_PREARM_FLAGS_ENCODERS_WORKING](#MAV_STORM32_GIMBAL_PREARM_FLAGS_ENCODERS_WORKING)                   | The encoders are healthy and working normally. |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_VOLTAGE_OK'></a>16                | [MAV_STORM32_GIMBAL_PREARM_FLAGS_VOLTAGE_OK](#MAV_STORM32_GIMBAL_PREARM_FLAGS_VOLTAGE_OK)                               | A battery voltage is applied and is in range.  |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_VIRTUALCHANNELS_RECEIVING'></a>32 | [MAV_STORM32_GIMBAL_PREARM_FLAGS_VIRTUALCHANNELS_RECEIVING](#MAV_STORM32_GIMBAL_PREARM_FLAGS_VIRTUALCHANNELS_RECEIVING) | Virtual input channels are receiving data.     |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_MAVLINK_RECEIVING'></a>64         | [MAV_STORM32_GIMBAL_PREARM_FLAGS_MAVLINK_RECEIVING](#MAV_STORM32_GIMBAL_PREARM_FLAGS_MAVLINK_RECEIVING)                 | Mavlink messages are being received.           |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_STORM32LINK_QFIX'></a>128         | [MAV_STORM32_GIMBAL_PREARM_FLAGS_STORM32LINK_QFIX](#MAV_STORM32_GIMBAL_PREARM_FLAGS_STORM32LINK_QFIX)                   | The STorM32Link data indicates QFix.           |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_STORM32LINK_WORKING'></a>256      | [MAV_STORM32_GIMBAL_PREARM_FLAGS_STORM32LINK_WORKING](#MAV_STORM32_GIMBAL_PREARM_FLAGS_STORM32LINK_WORKING)             | The STorM32Link is working.                    |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_CAMERA_CONNECTED'></a>512         | [MAV_STORM32_GIMBAL_PREARM_FLAGS_CAMERA_CONNECTED](#MAV_STORM32_GIMBAL_PREARM_FLAGS_CAMERA_CONNECTED)                   | The camera has been found and is connected.    |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_AUX0_LOW'></a>1024                | [MAV_STORM32_GIMBAL_PREARM_FLAGS_AUX0_LOW](#MAV_STORM32_GIMBAL_PREARM_FLAGS_AUX0_LOW)                                   | The signal on the AUX0 input pin is low.       |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_AUX1_LOW'></a>2048                | [MAV_STORM32_GIMBAL_PREARM_FLAGS_AUX1_LOW](#MAV_STORM32_GIMBAL_PREARM_FLAGS_AUX1_LOW)                                   | The signal on the AUX1 input pin is low.       |
-| <a id='MAV_STORM32_GIMBAL_PREARM_FLAGS_NTLOGGER_WORKING'></a>4096        | [MAV_STORM32_GIMBAL_PREARM_FLAGS_NTLOGGER_WORKING](#MAV_STORM32_GIMBAL_PREARM_FLAGS_NTLOGGER_WORKING)                   | The NTLogger is working normally.              |
-
-### MAV_STORM32_CAMERA_PREARM_FLAGS {#MAV_STORM32_CAMERA_PREARM_FLAGS}
-
-(Bitmask) STorM32 camera prearm check flags.
-
-| 值                                                       | Name                                                                                                                                                                                             | 描述                                                          |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
-| <a id='MAV_STORM32_CAMERA_PREARM_FLAGS_CONNECTED'></a>1 | [MAV_STORM32_CAMERA_PREARM_FLAGS_CONNECTED](#MAV_STORM32_CAMERA_PREARM_FLAGS_CONNECTED) | The camera has been found and is connected. |
 
 ### MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS {#MAV_STORM32_GIMBAL_MANAGER_CAP_FLAGS}
 
@@ -209,7 +269,6 @@ Parameter multi param value container.
 
 | 值                                                                      | Name                                                                                                                                                                                                                                                                     | 描述                                                                                                                                                                                              |
 | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a id='MAV_STORM32_GIMBAL_MANAGER_FLAGS_NONE'></a>0                    | [MAV_STORM32_GIMBAL_MANAGER_FLAGS_NONE](#MAV_STORM32_GIMBAL_MANAGER_FLAGS_NONE)                                                                                 | 0 = ignore.                                                                                                                                                                     |
 | <a id='MAV_STORM32_GIMBAL_MANAGER_FLAGS_RC_ACTIVE'></a>1               | [MAV_STORM32_GIMBAL_MANAGER_FLAGS_RC_ACTIVE](#MAV_STORM32_GIMBAL_MANAGER_FLAGS_RC_ACTIVE)                                                  | Request to set RC input to active, or report RC input is active. Implies RC mixed. RC exclusive is achieved by setting all clients to inactive. |
 | <a id='MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_ONBOARD_ACTIVE'></a>2   | [MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_ONBOARD_ACTIVE](#MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_ONBOARD_ACTIVE)     | Request to set onboard/companion computer client to active, or report this client is active.                                                                                    |
 | <a id='MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_AUTOPILOT_ACTIVE'></a>4 | [MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_AUTOPILOT_ACTIVE](#MAV_STORM32_GIMBAL_MANAGER_FLAGS_CLIENT_AUTOPILOT_ACTIVE) | Request to set autopliot client to active, or report this client is active.                                                                                                     |
@@ -267,6 +326,40 @@ Enumeration of possible shot modes.
 | <a id='MAV_QSHOT_MODE_SYSID_TARGETING'></a>7   | [MAV_QSHOT_MODE_SYSID_TARGETING](#MAV_QSHOT_MODE_SYSID_TARGETING)                          | Start gimbal tracking the system with specified system ID.                                     |
 | <a id='MAV_QSHOT_MODE_CABLECAM_2POINT'></a>8   | [MAV_QSHOT_MODE_CABLECAM_2POINT](#MAV_QSHOT_MODE_CABLECAM_2POINT)                          | Start 2-point cable cam quick shot.                                                            |
 | <a id='MAV_QSHOT_MODE_HOME_TARGETING'></a>9    | [MAV_QSHOT_MODE_HOME_TARGETING](#MAV_QSHOT_MODE_HOME_TARGETING)                            | Start gimbal tracking the home location.                                                       |
+
+### MLRS_RADIO_LINK_STATS_FLAGS {#MLRS_RADIO_LINK_STATS_FLAGS}
+
+(Bitmask) [RADIO_LINK_STATS](#RADIO_LINK_STATS) flags (bitmask).
+
+The [RX_RECEIVE](#RX_RECEIVE) and [TX_RECEIVE](#TX_RECEIVE) flags indicate from which antenna the received data are taken for processing.
+If a flag is set then the data received on antenna2 is processed, else the data received on antenna1 is used.
+The [RX_TRANSMIT](#RX_TRANSMIT) and [TX_TRANSMIT](#TX_TRANSMIT) flags specify which antenna are transmitting data.
+Both antenna 1 and antenna 2 transmit flags can be set simultaneously, e.g., in case of dual-band or dual-frequency systems.
+If neither flag is set then antenna 1 should be assumed.
+
+| 值                                                               | Name                                                                                                                                                                                                                                                     | 描述                                                                                                                                                                                                                                                                                    |
+| --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a id='MLRS_RADIO_LINK_STATS_FLAGS_RSSI_DBM'></a>1              | [MLRS_RADIO_LINK_STATS_FLAGS_RSSI_DBM](#MLRS_RADIO_LINK_STATS_FLAGS_RSSI_DBM)                                              | Rssi values are in negative dBm. Values 1..254 corresponds to -1..-254 dBm. 0: no reception, UINT8_MAX: unknown. |
+| <a id='MLRS_RADIO_LINK_STATS_FLAGS_RX_RECEIVE_ANTENNA2'></a>2   | [MLRS_RADIO_LINK_STATS_FLAGS_RX_RECEIVE_ANTENNA2](#MLRS_RADIO_LINK_STATS_FLAGS_RX_RECEIVE_ANTENNA2)   | Rx receive antenna. When set the data received on antenna 2 are taken, else the data stems from antenna 1.                                                                                                                                            |
+| <a id='MLRS_RADIO_LINK_STATS_FLAGS_RX_TRANSMIT_ANTENNA1'></a>4  | [MLRS_RADIO_LINK_STATS_FLAGS_RX_TRANSMIT_ANTENNA1](#MLRS_RADIO_LINK_STATS_FLAGS_RX_TRANSMIT_ANTENNA1) | Rx transmit antenna. Data are transmitted on antenna 1.                                                                                                                                                                                               |
+| <a id='MLRS_RADIO_LINK_STATS_FLAGS_RX_TRANSMIT_ANTENNA2'></a>8  | [MLRS_RADIO_LINK_STATS_FLAGS_RX_TRANSMIT_ANTENNA2](#MLRS_RADIO_LINK_STATS_FLAGS_RX_TRANSMIT_ANTENNA2) | Rx transmit antenna. Data are transmitted on antenna 2.                                                                                                                                                                                               |
+| <a id='MLRS_RADIO_LINK_STATS_FLAGS_TX_RECEIVE_ANTENNA2'></a>16  | [MLRS_RADIO_LINK_STATS_FLAGS_TX_RECEIVE_ANTENNA2](#MLRS_RADIO_LINK_STATS_FLAGS_TX_RECEIVE_ANTENNA2)   | Tx receive antenna. When set the data received on antenna 2 are taken, else the data stems from antenna 1.                                                                                                                                            |
+| <a id='MLRS_RADIO_LINK_STATS_FLAGS_TX_TRANSMIT_ANTENNA1'></a>32 | [MLRS_RADIO_LINK_STATS_FLAGS_TX_TRANSMIT_ANTENNA1](#MLRS_RADIO_LINK_STATS_FLAGS_TX_TRANSMIT_ANTENNA1) | Tx transmit antenna. Data are transmitted on antenna 1.                                                                                                                                                                                               |
+| <a id='MLRS_RADIO_LINK_STATS_FLAGS_TX_TRANSMIT_ANTENNA2'></a>64 | [MLRS_RADIO_LINK_STATS_FLAGS_TX_TRANSMIT_ANTENNA2](#MLRS_RADIO_LINK_STATS_FLAGS_TX_TRANSMIT_ANTENNA2) | Tx transmit antenna. Data are transmitted on antenna 2.                                                                                                                                                                                               |
+
+### MLRS_RADIO_LINK_TYPE {#MLRS_RADIO_LINK_TYPE}
+
+[RADIO_LINK_TYPE](#RADIO_LINK_TYPE) enum.
+
+| 值                                             | Name                                                                                                                                                    | 描述                                         |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| <a id='MLRS_RADIO_LINK_TYPE_GENERIC'></a>0    | [MLRS_RADIO_LINK_TYPE_GENERIC](#MLRS_RADIO_LINK_TYPE_GENERIC)       | Unknown radio link type.   |
+| <a id='MLRS_RADIO_LINK_TYPE_HERELINK'></a>1   | [MLRS_RADIO_LINK_TYPE_HERELINK](#MLRS_RADIO_LINK_TYPE_HERELINK)     | Radio link is HereLink.    |
+| <a id='MLRS_RADIO_LINK_TYPE_DRAGONLINK'></a>2 | [MLRS_RADIO_LINK_TYPE_DRAGONLINK](#MLRS_RADIO_LINK_TYPE_DRAGONLINK) | Radio link is Dragon Link. |
+| <a id='MLRS_RADIO_LINK_TYPE_RFD900'></a>3     | [MLRS_RADIO_LINK_TYPE_RFD900](#MLRS_RADIO_LINK_TYPE_RFD900)         | Radio link is RFD900.      |
+| <a id='MLRS_RADIO_LINK_TYPE_CROSSFIRE'></a>4  | [MLRS_RADIO_LINK_TYPE_CROSSFIRE](#MLRS_RADIO_LINK_TYPE_CROSSFIRE)   | Radio link is Crossfire.   |
+| <a id='MLRS_RADIO_LINK_TYPE_EXPRESSLRS'></a>5 | [MLRS_RADIO_LINK_TYPE_EXPRESSLRS](#MLRS_RADIO_LINK_TYPE_EXPRESSLRS) | Radio link is ExpressLRS.  |
+| <a id='MLRS_RADIO_LINK_TYPE_MLRS'></a>6       | [MLRS_RADIO_LINK_TYPE_MLRS](#MLRS_RADIO_LINK_TYPE_MLRS)             | Radio link is mLRS.        |
 
 ## Commands (MAV_CMD) {#mav_commands}
 
