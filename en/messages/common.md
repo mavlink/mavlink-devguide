@@ -38,7 +38,7 @@ span.warning {
 Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 227 | 2
-[Enums](#enumerated-types) | 140 | 6
+[Enums](#enumerated-types) | 141 | 6
 [Commands](#mav_commands) | 165 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -4522,6 +4522,15 @@ Value | Name | Description
 <a id='MISSION_WRITE_PERSISTENT'></a>1 | [MISSION_WRITE_PERSISTENT](#MISSION_WRITE_PERSISTENT) | Write current mission data to persistent storage 
 <a id='MISSION_RESET_DEFAULT'></a>2 | [MISSION_RESET_DEFAULT](#MISSION_RESET_DEFAULT) | Erase all mission data stored on the vehicle (both persistent and volatile storage) 
 
+### REBOOT_SHUTDOWN_CONDITIONS {#REBOOT_SHUTDOWN_CONDITIONS}
+
+Specifies the conditions under which the [MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN](#MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN) command should be accepted.
+
+Value | Name | Description
+--- | --- | ---
+<a id='REBOOT_SHUTDOWN_CONDITIONS_SAFETY_INTERLOCKED'></a>0 | [REBOOT_SHUTDOWN_CONDITIONS_SAFETY_INTERLOCKED](#REBOOT_SHUTDOWN_CONDITIONS_SAFETY_INTERLOCKED) | Reboot/Shutdown only if allowed by safety checks, such as being landed. 
+<a id='REBOOT_SHUTDOWN_CONDITIONS_FORCE'></a>20190226 | [REBOOT_SHUTDOWN_CONDITIONS_FORCE](#REBOOT_SHUTDOWN_CONDITIONS_FORCE) | Force reboot/shutdown of the autopilot/component regardless of system state. 
+
 ### MAV_DATA_STREAM — [DEP] {#MAV_DATA_STREAM}
 
 <span class="warning">**DEPRECATED:** Replaced By [MESSAGE_INTERVAL](#MESSAGE_INTERVAL) (2015-06)</span>
@@ -7560,7 +7569,7 @@ Param (Label) | Description | Values
 3 (Component action) | 0: Do nothing for component, 1: Reboot component, 2: Shutdown component, 3: Reboot component and keep it in the bootloader until upgraded | min: 0 max: 3 inc: 1 
 4 (Component ID) | MAVLink Component ID targeted in param3 (0 for all components). | min: 0 max: 255 inc: 1 
 5 | Reserved (set to 0) |   
-6 | Reserved (set to 0) |   
+6 (Conditions) | Conditions under which reboot/shutdown is allowed. | [REBOOT_SHUTDOWN_CONDITIONS](#REBOOT_SHUTDOWN_CONDITIONS) 
 7 | WIP: ID (e.g. camera ID -1 for all IDs) |   
 
 
