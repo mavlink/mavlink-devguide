@@ -60,9 +60,9 @@ span.warning {
 
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
-| [Messages](#messages)      | 0       | 372      |
-| [Enums](#enumerated-types) | 0       | 235      |
-| [Commands](#mav_commands)  | 218     | 0        |
+| [Messages](#messages)      | 0       | 376      |
+| [Enums](#enumerated-types) | 0       | 236      |
+| [Commands](#mav_commands)  | 219     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -71,4 +71,16 @@ The following sections list all entities in the dialect (both included and defin
 ## Enumerated Types
 
 ## Commands (MAV_CMD) {#mav_commands}
+
+### MAV_CMD_DUMMY_ALL (393) — [WIP] {#MAV_CMD_DUMMY_ALL}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Dummy/temporary [MAV_CMD](#mav_commands) that causes all.xml to correctly import all commands from both ardupilotmega.xml and development.xml (otherwise only one is imported, for the reasons given in https://github.com/ArduPilot/pymavlink/pull/544#discussion_r2069976980).
+
+It not be used, and will be removed when the toolchain is fixed.
+
+| Param (Label) | 描述 |
+| -------------------------------- | -- |
+
 
