@@ -45,7 +45,7 @@ The following sections list all entities in the dialect (both included and defin
 
 ### ARRAY_TEST_0 (17150) {#ARRAY_TEST_0}
 
-Array test #0.
+数组测试 #0。
 
 | Field Name                  | Type          | 描述    |
 | --------------------------- | ------------- | ----- |
@@ -57,7 +57,7 @@ Array test #0.
 
 ### ARRAY_TEST_1 (17151) {#ARRAY_TEST_1}
 
-Array test #1.
+数组测试 #1。
 
 | Field Name                  | Type          | 描述    |
 | --------------------------- | ------------- | ----- |
@@ -65,7 +65,7 @@ Array test #1.
 
 ### ARRAY_TEST_3 (17153) {#ARRAY_TEST_3}
 
-Array test #3.
+数组测试 #3。
 
 | Field Name                  | Type          | 描述    |
 | --------------------------- | ------------- | ----- |
@@ -74,7 +74,7 @@ Array test #3.
 
 ### ARRAY_TEST_4 (17154) {#ARRAY_TEST_4}
 
-Array test #4.
+数组测试 #4。
 
 | Field Name                  | Type          | 描述    |
 | --------------------------- | ------------- | ----- |
@@ -83,7 +83,7 @@ Array test #4.
 
 ### ARRAY_TEST_5 (17155) {#ARRAY_TEST_5}
 
-Array test #5.
+数组测试 #5。
 
 | Field Name | Type      | 描述    |
 | ---------- | --------- | ----- |
@@ -92,7 +92,7 @@ Array test #5.
 
 ### ARRAY_TEST_6 (17156) {#ARRAY_TEST_6}
 
-Array test #6.
+数组测试 #6。
 
 | Field Name                  | Type          | 描述    |
 | --------------------------- | ------------- | ----- |
@@ -105,13 +105,13 @@ Array test #6.
 | ar_i16 | `int16_t[2]`  | 值（数组） |
 | ar_u8  | `uint8_t[2]`  | 值（数组） |
 | ar_i8  | `int8_t[2]`   | 值（数组） |
-| ar_c   | `char[32]`    | 值（数组） |
+| ar_c   | `charr[32]`   | 值（数组） |
 | ar_d   | `double[2]`   | 值（数组） |
 | ar_f   | `float[2]`    | 值（数组） |
 
 ### ARRAY_TEST_7 (17157) {#ARRAY_TEST_7}
 
-Array test #7.
+数组测试 #7。
 
 | Field Name                  | Type          | 描述    |
 | --------------------------- | ------------- | ----- |
@@ -123,11 +123,11 @@ Array test #7.
 | ar_i16 | `int16_t[2]`  | 值（数组） |
 | ar_u8  | `uint8_t[2]`  | 值（数组） |
 | ar_i8  | `int8_t[2]`   | 值（数组） |
-| ar_c   | `char[32]`    | 值（数组） |
+| ar_c   | `charr[32]`   | 值（数组） |
 
 ### ARRAY_TEST_8 (17158) {#ARRAY_TEST_8}
 
-Array test #8.
+数组测试 #8。
 
 | Field Name                  | Type          | 描述    |
 | --------------------------- | ------------- | ----- |
