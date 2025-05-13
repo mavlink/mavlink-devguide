@@ -269,10 +269,10 @@ Further interpretation and handling of the message then has to be done manually 
 The library have a number of `#define` values that you can set to enable various features:
 
 - `MAVLINK_CHECK_MESSAGE_LENGTH`:
-  Enable this option to check the length of each message.
-  This allows invalid messages to be caught much sooner.
-  Use if the transmission medium is prone to missing (or extra) characters (e.g. a radio that fades in and out).
-  Only use if the channel will only contain messages types listed in the headers.
+ Enable this option to check the length of each message.
+ This allows invalid messages to be caught much sooner.
+ Use if the transmission medium is prone to missing (or extra) characters (e.g. a radio that fades in and out).
+ Only use if the channel will only contain messages types listed in the headers.
 
 ## Transmitting
 
@@ -349,8 +349,8 @@ if (mavlink_parse_char(MAVLINK_COMM_0, buf[i], &msg, &status)) {
 
 The following examples show the use of the API.
 
-- [UART Interface](../mavgen_c/example_c_uart.md): Simple C example of a MAVLink to UART interface for Unix-like systems.
-- [UDP Example](../mavgen_c/example_c_udp.md): Simple C example of a MAVLink UDP interface for Unix-like systems (Linux, MacOS, BSD, etc.).
+- [UART Interface](../mavgen_c/example_c_uart.md): 对于Unix类系统的 MAVLink 到UART 接口的简单的C示例。
+- [UDP 示例](../mavgen_c/example_c_udp.md): 对于Unix类系统的 MAVLink UDP 界面的简单的 C 示例(Linux, MacOS, BSD 等)。
 
 In addition, the C library is used in numerous open source systems:
 
