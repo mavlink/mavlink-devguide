@@ -1,4 +1,4 @@
 # Examples
 
-- [UART Interface](../mavgen_c/example_c_uart.md): Simple C example of a MAVLink to UART interface for Unix-like systems.
-- [UDP Example](../mavgen_c/example_c_udp.md): Simple C example of a MAVLink UDP interface for Unix-like systems (Linux, MacOS, BSD, etc.).
+- [UART Interface](../mavgen_c/example_c_uart.md): 对于Unix类系统的 MAVLink 到UART 接口的简单的C示例。
+- [UDP 示例](../mavgen_c/example_c_udp.md): 对于Unix类系统的 MAVLink UDP 界面的简单的 C 示例(Linux, MacOS, BSD 等)。
