@@ -7,7 +7,7 @@ This topic documents the version of the dialect file in the [mavlink/mavlink](ht
 The source repo should be listed in the comments at the top of the XML definition file listed below (but may not be).
 :::
 
-This topic is a human-readable form of the XML definition file: [icarous.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/icarous.xml).
+本主题是XML定义文件的易读版本，该文件为：[icarous.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/icarous.xml)。
 
 <span id="mav2_extension_field"></span>
 
@@ -45,34 +45,34 @@ The following sections list all entities in the dialect (both included and defin
 
 ### ICAROUS_HEARTBEAT (42000) {#ICAROUS_HEARTBEAT}
 
-ICAROUS heartbeat
+ICAROUS 心跳包
 
-| Field Name | Type      | 值                                                                                 | 描述                                                                         |
-| ---------- | --------- | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| status     | `uint8_t` | [ICAROUS_FMS_STATE](#ICAROUS_FMS_STATE) | See the [FMS_STATE](#FMS_STATE) enum. |
+| Field Name | Type      | 值                                                                                 | 描述                                                |
+| ---------- | --------- | --------------------------------------------------------------------------------- | ------------------------------------------------- |
+| status     | `uint8_t` | [ICAROUS_FMS_STATE](#ICAROUS_FMS_STATE) | 请参阅 [FMS_STATE](#FMS_STATE)。 |
 
-### ICAROUS_KINEMATIC_BANDS (42001) {#ICAROUS_KINEMATIC_BANDS}
+### ICAROUS_KINEMATIC_BANDS (4) {#ICAROUS_KINEMATIC_BANDS}
 
-Kinematic multi bands (track) output from Daidalus
+Daidalus输出Kinematic multi bands (track)
 
-| Field Name | Type      | Units | 值                                                                                                                    | 描述                                                                                                            |
-| ---------- | --------- | ----- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| numBands   | `int8_t`  |       |                                                                                                                      | 轨道带数                                                                                                          |
-| type1      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | See the [TRACK_BAND_TYPES](#TRACK_BAND_TYPES) enum. |
-| min1       | `float`   | 度     |                                                                                                                      | 最小角度（度）                                                                                                       |
-| max1       | `float`   | 度     |                                                                                                                      | 最大角度（度）                                                                                                       |
-| type2      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | See the [TRACK_BAND_TYPES](#TRACK_BAND_TYPES) enum. |
-| min2       | `float`   | 度     |                                                                                                                      | 最小角度（度）                                                                                                       |
-| max2       | `float`   | 度     |                                                                                                                      | 最大角度（度）                                                                                                       |
-| type3      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | See the [TRACK_BAND_TYPES](#TRACK_BAND_TYPES) enum. |
-| min3       | `float`   | 度     |                                                                                                                      | 最小角度（度）                                                                                                       |
-| max3       | `float`   | 度     |                                                                                                                      | 最大角度（度）                                                                                                       |
-| type4      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | See the [TRACK_BAND_TYPES](#TRACK_BAND_TYPES) enum. |
-| min4       | `float`   | 度     |                                                                                                                      | 最小角度（度）                                                                                                       |
-| max4       | `float`   | 度     |                                                                                                                      | 最大角度（度）                                                                                                       |
-| type5      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | See the [TRACK_BAND_TYPES](#TRACK_BAND_TYPES) enum. |
-| min5       | `float`   | 度     |                                                                                                                      | 最小角度（度）                                                                                                       |
-| max5       | `float`   | 度     |                                                                                                                      | 最大角度（度）                                                                                                       |
+| Field Name | Type      | Units | 值                                                                                                                    | 描述                                                                                   |
+| ---------- | --------- | ----- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| numBands   | `int8_t`  |       |                                                                                                                      | 轨道带数                                                                                 |
+| type1      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | 请参阅 [TRACK_BAND_TYPES](#TRACK_BAND_TYPES)。 |
+| min1       | `float`   | 度     |                                                                                                                      | 最小角度（度）                                                                              |
+| max1       | `float`   | 度     |                                                                                                                      | 最大角度（度）                                                                              |
+| type2      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | 请参阅 [TRACK_BAND_TYPES](#TRACK_BAND_TYPES)。 |
+| min2       | `float`   | 度     |                                                                                                                      | 最小角度（度）                                                                              |
+| max2       | `float`   | 度     |                                                                                                                      | 最大角度（度）                                                                              |
+| type3      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | 请参阅 [TRACK_BAND_TYPES](#TRACK_BAND_TYPES)。 |
+| min3       | `float`   | 度     |                                                                                                                      | 最小角度（度）                                                                              |
+| max3       | `float`   | 度     |                                                                                                                      | 最大角度（度）                                                                              |
+| type4      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | 请参阅 [TRACK_BAND_TYPES](#TRACK_BAND_TYPES)。 |
+| min4       | `float`   | 度     |                                                                                                                      | 最小角度（度）                                                                              |
+| max4       | `float`   | 度     |                                                                                                                      | 最大角度（度）                                                                              |
+| type5      | `uint8_t` |       | [ICAROUS_TRACK_BAND_TYPES](#ICAROUS_TRACK_BAND_TYPES) | 请参阅 [TRACK_BAND_TYPES](#TRACK_BAND_TYPES)。 |
+| min5       | `float`   | 度     |                                                                                                                      | 最小角度（度）                                                                              |
+| max5       | `float`   | 度     |                                                                                                                      | 最大角度（度）                                                                              |
 
 ## Enumerated Types
 
