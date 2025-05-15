@@ -1,11 +1,10 @@
 <!-- THIS FILE IS AUTO-GENERATED: https://github.com/mavlink/mavlink/blob/master/doc/mavlink_xml_to_markdown.py -->
 
-# Dialect: MAVLINK Standard Message Set (standard.xml)
+# 方言：MAVLINK 标准消息集（standard.xml）
 
-The MAVLink _standard_ message set contains _standard_ definitions that are managed by the MAVLink project.
-The definitions are those that are expected to be implemented in all flight stacks/ground stations
-AND are likely to be implemented in a compatible way.
-The original definitions are defined in [standard.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/standard.xml).
+MAVLink _standard_ 消息集包含了由 MAVLink 项目管理的 _标准_ 定义。
+这些定义是所有飞行控制系统/地面站都应予以实施的，并且很可能以兼容的方式来落实。
+原始定义在 [standard.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/standard.xml 中定义。
 
 <span id="mav2_extension_field"></span>
 

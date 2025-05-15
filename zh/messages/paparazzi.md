@@ -7,7 +7,7 @@ This topic documents the version of the dialect file in the [mavlink/mavlink](ht
 The source repo should be listed in the comments at the top of the XML definition file listed below (but may not be).
 :::
 
-This topic is a human-readable form of the XML definition file: [paparazzi.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/paparazzi.xml).
+本主题是以人类可读形式呈现的XML定义文件：[paparazzi.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/paparazzi.xml) 。
 
 <span id="mav2_extension_field"></span>
 
@@ -47,7 +47,7 @@ The following sections list all entities in the dialect (both included and defin
 
 ### SCRIPT_ITEM (180) {#SCRIPT_ITEM}
 
-Message encoding a mission script item. 此消息在请求下一个脚本项时发出。
+消息编码任务脚本项。 此消息在请求下一个脚本项时发出。
 
 | Field Name                            | Type       | 描述            |
 | ------------------------------------- | ---------- | ------------- |
@@ -58,7 +58,7 @@ Message encoding a mission script item. 此消息在请求下一个脚本项时�
 
 ### SCRIPT_REQUEST (181) {#SCRIPT_REQUEST}
 
-Request script item with the sequence number seq. The response of the system to this message should be a [SCRIPT_ITEM](#SCRIPT_ITEM) message.
+请求带序列号以下的脚本项。 系统对此消息的回应应该是 [SCRIPT_ITEM](#SCRIPT_ITEM)。
 
 | Field Name                            | Type       | 描述           |
 | ------------------------------------- | ---------- | ------------ |
@@ -68,7 +68,7 @@ Request script item with the sequence number seq. The response of the system to 
 
 ### SCRIPT_REQUEST_LIST (182) {#SCRIPT_REQUEST_LIST}
 
-Request the overall list of mission items from the system/component.
+从系统/构成部分请求任务项目的总清单。
 
 | Field Name                            | Type      | 描述           |
 | ------------------------------------- | --------- | ------------ |
@@ -77,7 +77,7 @@ Request the overall list of mission items from the system/component.
 
 ### SCRIPT_COUNT (183) {#SCRIPT_COUNT}
 
-This message is emitted as response to [SCRIPT_REQUEST_LIST](#SCRIPT_REQUEST_LIST) by the MAV to get the number of mission scripts.
+MAV 将此消息作为对 [SCRIPT_REQUEST_LIST](#SCRIPT_REQUEST_LIST的响应发出来获取任务脚本的数量。
 
 | Field Name                            | Type       | 描述           |
 | ------------------------------------- | ---------- | ------------ |
@@ -87,7 +87,7 @@ This message is emitted as response to [SCRIPT_REQUEST_LIST](#SCRIPT_REQUEST_LIS
 
 ### SCRIPT_CURRENT (184) {#SCRIPT_CURRENT}
 
-This message informs about the currently active SCRIPT.
+此消息告知当前活动的 SCRIPT 。
 
 | Field Name | Type       | 描述   |
 | ---------- | ---------- | ---- |

@@ -1,7 +1,7 @@
 # MAVLink C UART 接口示例
 
-The [C-UART Interface Example](https://github.com/mavlink/c_uart_interface_example) is a simple C example of a MAVLink to UART interface for Unix-like systems.
+[C - UART接口示例](https://github.com/mavlink/c_uart_interface_example)是一个适用于类Unix系统的，将MAVLink与UART接口相连的简单C语言示例。
 
-The example source code demonstrates how to set up serial communication between Pixhawk and an offboard computer via USB or a telemetry radio, how to put the vehicle in offboard mode, and how to send and receive MAVLink messages over the interface.
+示例源代码展示了如何通过USB或遥测电台在Pixhawk与地面计算机之间建立串行通信，如何将飞行器设置为离线控制模式，以及如何通过该接口发送和接收MAVLink消息。
 
-Source code and instructions for how to run the example can be found in the Github repo: [mavlink/c_uart_interface_example](https://github.com/mavlink/c_uart_interface_example)
+如何运行示例的源代码和说明可以在 Github 仓库中找到: [mavlink/c_uart_interface_example](https://github.com/mavlink/c_uart_interface_example)

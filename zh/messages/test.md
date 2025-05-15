@@ -2,9 +2,9 @@
 
 # 方言：测试
 
-The test dialect is used for testing XML file parsing.
+测试方言用于测试 XML 文件解析。
 
-This topic is a human-readable form of the XML definition file: [test.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/test.xml).
+本主题是以人类可读形式呈现的XML定义文件：[test.xml](https://github.com/mavlink/mavlink/blob/master/message_definitions/v1.0/test.xml)。
 
 <span id="mav2_extension_field"></span>
 
@@ -44,12 +44,12 @@ The following sections list all entities in the dialect (both included and defin
 
 ### TEST_TYPES (17000) {#TEST_TYPES}
 
-Test all field types
+测试所有字段类型
 
 | Field Name                     | Type          | 描述                                                       |
 | ------------------------------ | ------------- | -------------------------------------------------------- |
 | c                              | `char`        | char                                                     |
-| s                              | `char[10]`    | string                                                   |
+| s                              | `charr[10]`   | string                                                   |
 | u8                             | `uint8_t`     | uint8_t                             |
 | u16                            | `uint16_t`    | uint16_t                            |
 | u32                            | `uint32_t`    | uint32_t                            |
