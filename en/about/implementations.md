@@ -51,3 +51,4 @@ These projects have some activity but are not as well maintained:
 - [ETH SenseSoar Solar Airplane Project](http://www.sensesoar.ethz.ch/doku.php?id=project)
 - [ETH Skye Blimp Project](http://www.projectskye.ch/)
 - [UC Santa Cruz SLUGS](http://slugsuav.soe.ucsc.edu/index.html) (early days contributor)
+- [Polimi MARSH-Sim](https://marsh-sim.github.io/)
