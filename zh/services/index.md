@@ -41,4 +41,3 @@ The main microservices are shown in the sidebar (most are listed below):
 - [Events Interface (WIP)](../services/events.md)
 - [Standard Flight Modes](../services/standard_modes.md)
 - [Time Synchronization](../services/timesync.md)
-- [Illuminator Protocol](../services/illuminator.md)
