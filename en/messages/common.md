@@ -3195,7 +3195,9 @@ velocity_covariance | `float[21]` | | invalid:[NaN:] | Row-major representation 
 <span class='ext'>quality</span> <a href='#mav2_extension_field'>++</a> | `int8_t` | % | invalid:0 | Optional odometry quality metric as a percentage. -1 = odometry has failed, 0 = unknown/unset quality, 1 = worst quality, 100 = best quality 
 
 
-### TRAJECTORY_REPRESENTATION_WAYPOINTS (332) {#TRAJECTORY_REPRESENTATION_WAYPOINTS}
+### TRAJECTORY_REPRESENTATION_WAYPOINTS (332) — [DEP] {#TRAJECTORY_REPRESENTATION_WAYPOINTS}
+
+<span class="warning">**DEPRECATED:** Replaced By Nothing (2025-03) — Implemented PX4 v1.11 to v1.14. Not used in current flight stacks.)</span>
 
 Describe a trajectory using an array of up-to 5 waypoints in the local frame ([MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED)).
 
@@ -3217,7 +3219,9 @@ vel_yaw | `float[5]` | rad/s | invalid:[NaN] | Yaw rate, set to NaN if not being
 command | `uint16_t[5]` | | invalid:[UINT16_MAX] [MAV_CMD](#mav_commands) | [MAV_CMD](#mav_commands) command id of waypoint, set to UINT16_MAX if not being used. 
 
 
-### TRAJECTORY_REPRESENTATION_BEZIER (333) {#TRAJECTORY_REPRESENTATION_BEZIER}
+### TRAJECTORY_REPRESENTATION_BEZIER (333) — [DEP] {#TRAJECTORY_REPRESENTATION_BEZIER}
+
+<span class="warning">**DEPRECATED:** Replaced By Nothing (2025-03) — Implemented PX4 v1.11 to v1.14. Not used in current flight stacks.)</span>
 
 Describe a trajectory using an array of up-to 5 bezier control points in the local frame ([MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED)).
 
