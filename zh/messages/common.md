@@ -3012,7 +3012,9 @@ Odometry message to communicate odometry information with an external interface.
 | <span class='ext'>estimator_type</span> <a href='#mav2_extension_field'>++</a> | `uint8_t`   |       | [MAV_ESTIMATOR_TYPE](#MAV_ESTIMATOR_TYPE)                | Type of estimator that is providing the odometry.                                                                                                                                                                                                                                                                                                              |
 | <span class='ext'>quality</span> <a href='#mav2_extension_field'>++</a>                             | `int8_t`    | %     | invalid:0                                                                          | Optional odometry quality metric as a percentage. -1 = odometry has failed, 0 = unknown/unset quality, 1 = worst quality, 100 = best quality                                                                                                                                                                                                                   |
 
-### TRAJECTORY_REPRESENTATION_WAYPOINTS (332) {#TRAJECTORY_REPRESENTATION_WAYPOINTS}
+### TRAJECTORY_REPRESENTATION_WAYPOINTS (332) — [DEP] {#TRAJECTORY_REPRESENTATION_WAYPOINTS}
+
+<span class="warning">**DEPRECATED:** Replaced By Nothing (2025-03) — Implemented PX4 v1.11 to v1.14. Not used in current flight stacks.)</span>
 
 Describe a trajectory using an array of up-to 5 waypoints in the local frame ([MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED)).
 
@@ -3033,7 +3035,9 @@ Describe a trajectory using an array of up-to 5 waypoints in the local frame ([M
 | vel_yaw      | `float[5]`    | rad/s | invalid:[NaN]                                                                           | Yaw rate, set to NaN if not being used                                                                                                                                                                                                                                                       |
 | command                           | `uint16_t[5]` |       | invalid:[UINT16_MAX] [MAV_CMD](#mav_commands) | [MAV_CMD](#mav_commands) command id of waypoint, set to UINT16_MAX if not being used.                                                                                                                                              |
 
-### TRAJECTORY_REPRESENTATION_BEZIER (333) {#TRAJECTORY_REPRESENTATION_BEZIER}
+### TRAJECTORY_REPRESENTATION_BEZIER (333) — [DEP] {#TRAJECTORY_REPRESENTATION_BEZIER}
+
+<span class="warning">**DEPRECATED:** Replaced By Nothing (2025-03) — Implemented PX4 v1.11 to v1.14. Not used in current flight stacks.)</span>
 
 Describe a trajectory using an array of up-to 5 bezier control points in the local frame ([MAV_FRAME_LOCAL_NED](#MAV_FRAME_LOCAL_NED)).
 
@@ -5933,6 +5937,7 @@ MAVLINK component type reported in HEARTBEAT message. Flight controllers must re
 | <a id='MAV_TYPE_ILLUMINATOR'></a>44               | [MAV_TYPE_ILLUMINATOR](#MAV_TYPE_ILLUMINATOR)                                                                       | Illuminator. An illuminator is a light source that is used for lighting up dark areas external to the sytstem: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light).                                                                                                                                                                                         |
 | <a id='MAV_TYPE_SPACECRAFT_ORBITER'></a>45        | [MAV_TYPE_SPACECRAFT_ORBITER](#MAV_TYPE_SPACECRAFT_ORBITER)                                    | Orbiter spacecraft. Includes satellites orbiting terrestrial and extra-terrestrial bodies. Follows NASA Spacecraft Classification.                                                                                                                                                                                                                                                                                                                                                                                |
 | <a id='MAV_TYPE_GROUND_QUADRUPED'></a>46          | [MAV_TYPE_GROUND_QUADRUPED](#MAV_TYPE_GROUND_QUADRUPED)                                        | A generic four-legged ground vehicle (e.g., a robot dog).                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| <a id='MAV_TYPE_VTOL_GYRODYNE'></a>47             | [MAV_TYPE_VTOL_GYRODYNE](#MAV_TYPE_VTOL_GYRODYNE)                                              | VTOL hybrid of helicopter and autogyro. It has a main rotor for lift and separate propellers for forward flight. The rotor must be powered for hover but can autorotate in cruise flight. See: https://en.wikipedia.org/wiki/Gyrodyne                                                                                                                                                                                                             |
 
 ### MAV_MODE_FLAG — \[from: [minimal](../messages/minimal.md#MAV_MODE_FLAG)\] {#MAV_MODE_FLAG}
 
@@ -5980,10 +5985,17 @@ MAVLINK component type reported in HEARTBEAT message. Flight controllers must re
 
 ### MAV_COMPONENT — \[from: [minimal](../messages/minimal.md#MAV_COMPONENT)\] {#MAV_COMPONENT}
 
-Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.).
+Legacy component ID values for particular types of hardware/software that might make up a MAVLink system (autopilot, cameras, servos, avoidance systems etc.).
 
-Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The [MAV_COMP_ID_ALL](#MAV_COMP_ID_ALL) value is used to indicate messages that must be processed by all components.
-When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded.
+Components are not required or expected to use IDs with names that correspond to their type or function, but may choose to do so.
+Using an ID that matches the type may slightly reduce the chances of component id clashes, as, for historical reasons, it is less likely to be used by some other type of component.
+System integration will still need to ensure that all components have unique IDs.
+
+Component IDs are used for addressing messages to a particular component within a system.
+A component can use any unique ID between 1 and 255 ([MAV_COMP_ID_ALL](#MAV_COMP_ID_ALL) value is the broadcast address, used to send to all components).
+
+Historically component ID were also used for identifying the type of component.
+New code must not use component IDs to infer the component type, but instead check the [MAV_TYPE](#MAV_TYPE) in the HEARTBEAT message!
 
 | 值                                                    | Name                                                                                                                                                                                   | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
