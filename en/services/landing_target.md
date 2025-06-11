@@ -38,7 +38,7 @@ The [LANDING_TARGET](../messages/common.md#LANDING_TARGET) fields that are relat
 
 The positional information can be interpreted as described below.
 
-Imagine a ray pointing from the camera's principal point to the target.
+Imagine a ray pointing from the camera's optical centre to the target.
 The x angle (`angle_x`) is the angle spanned by that ray and the x-axis of the image plane. The same holds for the y angle (`angle_y`).
 In other words, the x angle is a function of the x pixel coordinate of the target (denoted by _u̅_ in the image below), the y angle is a function of the y pixel coordinate (denoted _v_ in the image below).
 Using the angle rather than _u̅/v̅_ pixel coordinates has the advantage that the effect of the camera lens is already accounted for.
