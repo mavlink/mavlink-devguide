@@ -5019,6 +5019,7 @@ Value | Name | Description
 Value | Name | Description
 --- | --- | ---
 <a id='MAV_DO_REPOSITION_FLAGS_CHANGE_MODE'></a>1 | [MAV_DO_REPOSITION_FLAGS_CHANGE_MODE](#MAV_DO_REPOSITION_FLAGS_CHANGE_MODE) | The aircraft should immediately transition into guided. This should not be set for follow me applications 
+<a id='MAV_DO_REPOSITION_FLAGS_RELATIVE_YAW'></a>2 | [MAV_DO_REPOSITION_FLAGS_RELATIVE_YAW](#MAV_DO_REPOSITION_FLAGS_RELATIVE_YAW) | Yaw relative to the vehicle current heading (if not set, relative to North). 
 
 ### SPEED_TYPE {#SPEED_TYPE}
 
@@ -7087,7 +7088,7 @@ Param (Label) | Description | Values | Units
 1 (Speed) | Ground speed, less than 0 (-1) for default | min: -1 | m/s 
 2 (Bitmask) | Bitmask of option flags. | [MAV_DO_REPOSITION_FLAGS](#MAV_DO_REPOSITION_FLAGS) |   
 3 (Radius) | Loiter radius for planes. Positive values only, direction is controlled by Yaw value. A value of zero or NaN is ignored. |   | m 
-4 (Yaw) | Yaw heading. NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). For planes indicates loiter direction (0: clockwise, 1: counter clockwise) |   | rad 
+4 (Yaw) | Yaw heading (heading reference defined in Bitmask field). NaN to use the current system yaw heading mode (e.g. yaw towards next waypoint, yaw to home, etc.). For planes indicates loiter direction (0: clockwise, 1: counter clockwise) |   | rad 
 5 (Latitude) | Latitude |   |   
 6 (Longitude) | Longitude |   |   
 7 (Altitude) | Altitude |   | m 
