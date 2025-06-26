@@ -2511,7 +2511,7 @@ Field Name | Type | Units | Values | Description
 time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot). 
 vendor_name | `uint8_t[32]` | | | Name of the camera vendor 
 model_name | `uint8_t[32]` | | | Name of the camera model 
-firmware_version | `uint32_t` | | invalid:0 | Version of the camera firmware, encoded as: (Dev & 0xff) << 24 | (Patch & 0xff) << 16 | (Minor & 0xff) << 8 | (Major & 0xff). Use 0 if not known. 
+firmware_version | `uint32_t` | | invalid:0 | Version of the camera firmware, encoded as: `(Dev & 0xff) << 24 \| (Patch & 0xff) << 16 \| (Minor & 0xff) << 8 \| (Major & 0xff)`. Use 0 if not known. 
 focal_length | `float` | mm | invalid:NaN | Focal length. Use NaN if not known. 
 sensor_size_h | `float` | mm | invalid:NaN | Image sensor size horizontal. Use NaN if not known. 
 sensor_size_v | `float` | mm | invalid:NaN | Image sensor size vertical. Use NaN if not known. 
