@@ -41,7 +41,7 @@ When using the command protocol:
 - `MAV_CMD_DO_GRIPPER` is addressed to the target gripper component's system id/component id.
 - When sent to an autopilot connected gripper, `param1` should be set to the `Gripper ID` of the target gimbal (1-6) or `0` for all gimbals.
 - For a MAVLink gripper the value should be `0`.
-- The recipient should NACK the command for an invalid ID is set for the ID.
+- The recipient should NACK the command if an invalid ID used.
 
 When using the mission protocol `param1` should be set to the `Gripper ID` of the target gimbal (1-6 for an autopilot-connected gimbal, or the component ID of a MAVLink gimbal).
 An autopilot should execute the command for grippers 1-6 (if connected) and resend `MAV_CMD_DO_GRIPPER` using the command protocol to the component ID that matches the mission item's `param1`.
