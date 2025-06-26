@@ -159,6 +159,7 @@ Value | Name | Description
 <a id='MAV_TYPE_SPACECRAFT_ORBITER'></a>45 | [MAV_TYPE_SPACECRAFT_ORBITER](#MAV_TYPE_SPACECRAFT_ORBITER) | Orbiter spacecraft. Includes satellites orbiting terrestrial and extra-terrestrial bodies. Follows NASA Spacecraft Classification. 
 <a id='MAV_TYPE_GROUND_QUADRUPED'></a>46 | [MAV_TYPE_GROUND_QUADRUPED](#MAV_TYPE_GROUND_QUADRUPED) | A generic four-legged ground vehicle (e.g., a robot dog). 
 <a id='MAV_TYPE_VTOL_GYRODYNE'></a>47 | [MAV_TYPE_VTOL_GYRODYNE](#MAV_TYPE_VTOL_GYRODYNE) | VTOL hybrid of helicopter and autogyro. It has a main rotor for lift and separate propellers for forward flight. The rotor must be powered for hover but can autorotate in cruise flight. See: https://en.wikipedia.org/wiki/Gyrodyne 
+<a id='MAV_TYPE_GRIPPER'></a>48 | [MAV_TYPE_GRIPPER](#MAV_TYPE_GRIPPER) | Gripper 
 
 ### MAV_MODE_FLAG {#MAV_MODE_FLAG}
 
