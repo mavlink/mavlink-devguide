@@ -38,8 +38,8 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 12      | 229      |
-| [Enums](#enumerated-types) | 11      | 147      |
-| [Commands](#mav_commands)  | 173     | 0        |
+| [Enums](#enumerated-types) | 11      | 148      |
+| [Commands](#mav_commands)  | 172     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -455,22 +455,6 @@ Command protocol information: https://mavlink.io/en/services/command.html.
 | 5                                   | Reserved                                                                                                                                                   |                                                                      |
 | 6                                   | Reserved                                                                                                                                                   |                                                                      |
 | 7                                   | WIP: upgrade progress report rate (can be used for more granular control).                              |                                                                      |
-
-### MAV_CMD_SET_AT_S_PARAM (550) — [WIP] {#MAV_CMD_SET_AT_S_PARAM}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
-
-Allows setting an AT S command of an SiK radio.
-
-| Param (Label)      | 描述                                                                                          |
-| ------------------------------------- | ------------------------------------------------------------------------------------------- |
-| 1 (Radio instance) | The radio instance, one-based, 0 for all.                                   |
-| 2 (Index)          | The Sx index, e.g. 3 for S3 which is NETID. |
-| 3 (Value)          | The value to set it to, e.g. default 25 for NETID           |
-| 4                                     |                                                                                             |
-| 5                                     |                                                                                             |
-| 6                                     |                                                                                             |
-| 7                                     |                                                                                             |
 
 ### MAV_CMD_DO_SET_SYS_CMP_ID (610) — [WIP] {#MAV_CMD_DO_SET_SYS_CMP_ID}
 
