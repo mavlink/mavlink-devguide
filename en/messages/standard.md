@@ -35,7 +35,7 @@ span.warning {
 Type | Defined | Included
 --- | --- | ---
 [Messages](#messages) | 0 | 2
-[Enums](#enumerated-types) | 0 | 6
+[Enums](#enumerated-types) | 1 | 6
 Commands | 0 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
@@ -43,4 +43,13 @@ The following sections list all entities in the dialect (both included and defin
 ## Messages
 
 ## Enumerated Types
+
+### BOOL {#BOOL}
+
+(Bitmask) Enum used to indicate true or false (also: success or failure, enabled or disabled, active or inactive).
+
+Value | Name | Description
+--- | --- | ---
+<a id='BOOL_FALSE'></a>0 | [BOOL_FALSE](#BOOL_FALSE) | False. 
+<a id='BOOL_TRUE'></a>1 | [BOOL_TRUE](#BOOL_TRUE) | True. 
 
