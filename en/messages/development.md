@@ -554,8 +554,8 @@ The system manager component should then stream [CONTROL_STATUS](#CONTROL_STATUS
 If the system manager component cannot grant control (because takeover requires permission), the request should be rejected with [MAV_RESULT_FAILED](#MAV_RESULT_FAILED).
 The system manager component should then send this same command to the current owning GCS in order to notify of the request.
 The owning GCS would ACK with [MAV_RESULT_ACCEPTED](#MAV_RESULT_ACCEPTED), and might choose to release control of the vehicle, or re-request control with the takeover bit set to allow permission.
-In case it choses to re-request control with takeover bit set to allow permission, requestor GCS will only have 10 seconds to get control, otherwise owning GCS will re-request control with takeover bit set to disallow permission, and requestor GCS will need repeat the request if still interested in getting control.
-Note that the pilots of both GCS should co-ordinate safe handover offline.
+In case it choses to re-request control with takeover bit set to allow permission, requester GCS will only have 10 seconds to get control, otherwise owning GCS will re-request control with takeover bit set to disallow permission, and requester GCS will need repeat the request if still interested in getting control.
+Note that the pilots of both GCS should coordinate safe handover offline.
 
 Note that in most systems the only controlled component will be the "system manager component", and that will be the autopilot.
 However separate GCS control of a particular component is also permitted, if supported by the component.
@@ -569,7 +569,7 @@ Param (Label) | Description | Values | Units
 1 (Sysid requesting control) | System ID of GCS requesting control. 0 when command sent from GCS to autopilot (autopilot determines requesting GCS sysid from message header). Sysid of GCS requesting control when command sent by autopilot to controlling GCS. |   |   
 2 (Action) | 0: Release control, 1: Request control. |   |   
 3 (Allow takeover) | Enable automatic granting of ownership on request (by default reject request and notify current owner). 0: Ask current owner and reject request, 1: Allow automatic takeover. |   |   
-4 (Request timeout) | Timeout in seconds before a request to a GCS to allow takeover is assumed to be rejected. This is used to display the timeout graphically on requestor and GCS in control. | min: 3 max: 60 | s 
+4 (Request timeout) | Timeout in seconds before a request to a GCS to allow takeover is assumed to be rejected. This is used to display the timeout graphically on requester and GCS in control. | min: 3 max: 60 | s 
 5 | Empty |   |   
 6 | Empty |   |   
 7 | Empty |   |   

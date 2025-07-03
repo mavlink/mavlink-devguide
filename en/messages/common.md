@@ -1443,7 +1443,7 @@ The message is used for both timesync requests and responses.
 The request is sent with `ts1=syncing component timestamp` and `tc1=0`, and may be broadcast or targeted to a specific system/component.
 The response is sent with `ts1=syncing component timestamp` (mirror back unchanged), and `tc1=responding component timestamp`, with the `target_system` and `target_component` set to ids of the original request.
 Systems can determine if they are receiving a request or response based on the value of `tc`.
-If the response has `target_system==target_component==0` the remote system has not been updated to use the component IDs and cannot reliably timesync; the requestor may report an error.
+If the response has `target_system==target_component==0` the remote system has not been updated to use the component IDs and cannot reliably timesync; the requester may report an error.
 Timestamps are UNIX Epoch time or time since system boot in nanoseconds (the timestamp format can be inferred by checking for the magnitude of the number; generally it doesn't matter as only the offset is used).
 The message sequence is repeated numerous times with results being filtered/averaged to estimate the offset.
 See also: https://mavlink.io/en/services/timesync.html.
@@ -1919,7 +1919,7 @@ The autopilot is requesting a resource (file, binary, other type of data)
 
 Field Name | Type | Description
 --- | --- | ---
-request_id | `uint8_t` | Request ID. This ID should be re-used when sending back URI contents 
+request_id | `uint8_t` | Request ID. This ID should be reused when sending back URI contents 
 uri_type | `uint8_t` | The type of requested URI. 0 = a file via URL. 1 = a UAVCAN binary 
 uri | `uint8_t[120]` | The requested unique resource identifier (URI). It is not necessarily a straight domain name (depends on the URI type enum) 
 transfer_type | `uint8_t` | The way the autopilot wants to receive the URI. 0 = MAVLink FTP. 1 = binary stream. 
@@ -3827,7 +3827,7 @@ speed_horizontal | `uint16_t` | cm/s | | Ground speed. Positive only. If unknown
 speed_vertical | `int16_t` | cm/s | | The vertical speed. Up is positive. If unknown: 6300 cm/s. If speed is larger than 6200 cm/s, use 6200 cm/s. If lower than -6200 cm/s, use -6200 cm/s. 
 latitude | `int32_t` | degE7 | invalid:0 | Current latitude of the unmanned aircraft. If unknown: 0 (both Lat/Lon). 
 longitude | `int32_t` | degE7 | invalid:0 | Current longitude of the unmanned aircraft. If unknown: 0 (both Lat/Lon). 
-altitude_barometric | `float` | m | invalid:-1000 | The altitude calculated from the barometric pressue. Reference is against 29.92inHg or 1013.2mb. If unknown: -1000 m. 
+altitude_barometric | `float` | m | invalid:-1000 | The altitude calculated from the barometric pressure. Reference is against 29.92inHg or 1013.2mb. If unknown: -1000 m. 
 altitude_geodetic | `float` | m | invalid:-1000 | The geodetic altitude as defined by WGS84. If unknown: -1000 m. 
 height_reference | `uint8_t` | | [MAV_ODID_HEIGHT_REF](#MAV_ODID_HEIGHT_REF) | Indicates the reference point for the height field. 
 height | `float` | m | invalid:-1000 | The current height of the unmanned aircraft above the take-off location or the ground as indicated by height_reference. If unknown: -1000 m. 
@@ -7312,7 +7312,7 @@ Flight stacks typically reset the setting to system defaults on reboot.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Enable) | enable? (0=disable, 1=enable, 2=disable_floor_only) | min: 0 max: 2 inc: 1 
-2 (Types) | Fence types to enable or disable as a bitmask. 0: field is unused/all fences should be enabled or disabled (for compatiblity reasons). Parameter is ignored if param1=2. | [FENCE_TYPE](#FENCE_TYPE) 
+2 (Types) | Fence types to enable or disable as a bitmask. 0: field is unused/all fences should be enabled or disabled (for compatibility reasons). Parameter is ignored if param1=2. | [FENCE_TYPE](#FENCE_TYPE) 
 3 | Empty |   
 4 | Empty |   
 5 | Empty |   
@@ -7387,7 +7387,7 @@ Enable/disable autotune.
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Enable) | Enable autotune (BOOL_FALSE: disable autotune). Values not equal to 0 or 1 are invalid. | BOOL 
-2 (Axis) | Specify axes for which autotuning is enabled/disabled. 0 indicates the field is unused (for compatiblity reasons). If 0 the autopilot will follow its default behaviour, which is usually to tune all axes. | [AUTOTUNE_AXIS](#AUTOTUNE_AXIS) 
+2 (Axis) | Specify axes for which autotuning is enabled/disabled. 0 indicates the field is unused (for compatibility reasons). If 0 the autopilot will follow its default behaviour, which is usually to tune all axes. | [AUTOTUNE_AXIS](#AUTOTUNE_AXIS) 
 3 | Empty. |   
 4 | Empty. |   
 5 | Empty. |   
@@ -7800,7 +7800,7 @@ Param (Label) | Description | Values | Units
 4 (Req Param 4) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0). |   |   
 5 (Req Param 5) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0/NaN). |   |   
 6 (Req Param 6) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0/NaN). |   |   
-7 (Response Target) | Target address of message stream (if message has target address fields). 0: Flight-stack default (recommended), 1: address of requestor, 2: broadcast. | min: 0 max: 2 inc: 1 |   
+7 (Response Target) | Target address of message stream (if message has target address fields). 0: Flight-stack default (recommended), 1: address of requester, 2: broadcast. | min: 0 max: 2 inc: 1 |   
 
 
 ### MAV_CMD_REQUEST_MESSAGE (512) {#MAV_CMD_REQUEST_MESSAGE}
@@ -7815,7 +7815,7 @@ Param (Label) | Description | Values
 4 (Req Param 3) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0). |   
 5 (Req Param 4) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0). |   
 6 (Req Param 5) | The use of this parameter (if any), must be defined in the requested message. By default assumed not used (0). |   
-7 (Response Target) | Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requestor, 2: broadcast. | min: 0 max: 2 inc: 1 
+7 (Response Target) | Target address for requested message (if message has target address fields). 0: Flight-stack default, 1: address of requester, 2: broadcast. | min: 0 max: 2 inc: 1 
 
 
 ### MAV_CMD_REQUEST_PROTOCOL_VERSION (519) — [DEP] {#MAV_CMD_REQUEST_PROTOCOL_VERSION}

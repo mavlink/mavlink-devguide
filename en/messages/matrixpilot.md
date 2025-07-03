@@ -93,7 +93,7 @@ result | `uint16_t` | result of acknowledge, 0=fail, 1=good
 
 ### FLEXIFUNCTION_DIRECTORY (155) {#FLEXIFUNCTION_DIRECTORY}
 
-Acknowldge success or failure of a flexifunction command
+Acknowledge success or failure of a flexifunction command
 
 Field Name | Type | Description
 --- | --- | ---
@@ -107,7 +107,7 @@ directory_data | `int8_t[48]` | Settings data
 
 ### FLEXIFUNCTION_DIRECTORY_ACK (156) {#FLEXIFUNCTION_DIRECTORY_ACK}
 
-Acknowldge success or failure of a flexifunction command
+Acknowledge success or failure of a flexifunction command
 
 Field Name | Type | Description
 --- | --- | ---
@@ -121,7 +121,7 @@ result | `uint16_t` | result of acknowledge, 0=fail, 1=good
 
 ### FLEXIFUNCTION_COMMAND (157) {#FLEXIFUNCTION_COMMAND}
 
-Acknowldge success or failure of a flexifunction command
+Acknowledge success or failure of a flexifunction command
 
 Field Name | Type | Description
 --- | --- | ---
@@ -132,7 +132,7 @@ command_type | `uint8_t` | Flexifunction command type
 
 ### FLEXIFUNCTION_COMMAND_ACK (158) {#FLEXIFUNCTION_COMMAND_ACK}
 
-Acknowldge success or failure of a flexifunction command
+Acknowledge success or failure of a flexifunction command
 
 Field Name | Type | Description
 --- | --- | ---
