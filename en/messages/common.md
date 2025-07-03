@@ -2846,8 +2846,8 @@ time_boot_ms | `uint32_t` | ms | | Timestamp (time since system boot).
 vendor_name | `char[32]` | | | Name of the gimbal vendor. 
 model_name | `char[32]` | | | Name of the gimbal model. 
 custom_name | `char[32]` | | | Custom name of the gimbal given to it by the user. 
-firmware_version | `uint32_t` | | | Version of the gimbal firmware, encoded as: (Dev & 0xff) << 24 | (Patch & 0xff) << 16 | (Minor & 0xff) << 8 | (Major & 0xff). 
-hardware_version | `uint32_t` | | | Version of the gimbal hardware, encoded as: (Dev & 0xff) << 24 | (Patch & 0xff) << 16 | (Minor & 0xff) << 8 | (Major & 0xff). 
+firmware_version | `uint32_t` | | | Version of the gimbal firmware, encoded as: `(Dev & 0xff) << 24 \| (Patch & 0xff) << 16 \| (Minor & 0xff) << 8 \| (Major & 0xff)`. 
+hardware_version | `uint32_t` | | | Version of the gimbal hardware, encoded as: `(Dev & 0xff) << 24 \| (Patch & 0xff) << 16 \| (Minor & 0xff) << 8 \| (Major & 0xff)`. 
 uid | `uint64_t` | | invalid:0 | UID of gimbal hardware (0 if unknown). 
 cap_flags | `uint16_t` | | [GIMBAL_DEVICE_CAP_FLAGS](#GIMBAL_DEVICE_CAP_FLAGS) | Bitmap of gimbal capability flags. 
 custom_cap_flags | `uint16_t` | | | Bitmap for use for gimbal-specific capability flags. 
