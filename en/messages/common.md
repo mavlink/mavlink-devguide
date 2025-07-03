@@ -6173,7 +6173,7 @@ Value | Name | Description
 <a id='MAV_TYPE_GPS'></a>41 | [MAV_TYPE_GPS](#MAV_TYPE_GPS) | GPS 
 <a id='MAV_TYPE_WINCH'></a>42 | [MAV_TYPE_WINCH](#MAV_TYPE_WINCH) | Winch 
 <a id='MAV_TYPE_GENERIC_MULTIROTOR'></a>43 | [MAV_TYPE_GENERIC_MULTIROTOR](#MAV_TYPE_GENERIC_MULTIROTOR) | Generic multirotor that does not fit into a specific type or whose type is unknown 
-<a id='MAV_TYPE_ILLUMINATOR'></a>44 | [MAV_TYPE_ILLUMINATOR](#MAV_TYPE_ILLUMINATOR) | Illuminator. An illuminator is a light source that is used for lighting up dark areas external to the sytstem: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light). 
+<a id='MAV_TYPE_ILLUMINATOR'></a>44 | [MAV_TYPE_ILLUMINATOR](#MAV_TYPE_ILLUMINATOR) | Illuminator. An illuminator is a light source that is used for lighting up dark areas external to the system: e.g. a torch or searchlight (as opposed to a light source for illuminating the system itself, e.g. an indicator light). 
 <a id='MAV_TYPE_SPACECRAFT_ORBITER'></a>45 | [MAV_TYPE_SPACECRAFT_ORBITER](#MAV_TYPE_SPACECRAFT_ORBITER) | Orbiter spacecraft. Includes satellites orbiting terrestrial and extra-terrestrial bodies. Follows NASA Spacecraft Classification. 
 <a id='MAV_TYPE_GROUND_QUADRUPED'></a>46 | [MAV_TYPE_GROUND_QUADRUPED](#MAV_TYPE_GROUND_QUADRUPED) | A generic four-legged ground vehicle (e.g., a robot dog). 
 <a id='MAV_TYPE_VTOL_GYRODYNE'></a>47 | [MAV_TYPE_VTOL_GYRODYNE](#MAV_TYPE_VTOL_GYRODYNE) | VTOL hybrid of helicopter and autogyro. It has a main rotor for lift and separate propellers for forward flight. The rotor must be powered for hover but can autorotate in cruise flight. See: https://en.wikipedia.org/wiki/Gyrodyne 
