@@ -90,7 +90,7 @@ Flexifunction type and parameters for component at function index from buffer
 
 ### FLEXIFUNCTION_DIRECTORY (155) {#FLEXIFUNCTION_DIRECTORY}
 
-Acknowldge success or failure of a flexifunction command
+Acknowledge success or failure of a flexifunction command
 
 | Field Name                            | Type         | 描述                                      |
 | ------------------------------------- | ------------ | --------------------------------------- |
@@ -103,7 +103,7 @@ Acknowldge success or failure of a flexifunction command
 
 ### FLEXIFUNCTION_DIRECTORY_ACK (156) {#FLEXIFUNCTION_DIRECTORY_ACK}
 
-Acknowldge success or failure of a flexifunction command
+Acknowledge success or failure of a flexifunction command
 
 | Field Name                            | Type       | 描述                                      |
 | ------------------------------------- | ---------- | --------------------------------------- |
@@ -116,7 +116,7 @@ Acknowldge success or failure of a flexifunction command
 
 ### FLEXIFUNCTION_COMMAND (157) {#FLEXIFUNCTION_COMMAND}
 
-Acknowldge success or failure of a flexifunction command
+Acknowledge success or failure of a flexifunction command
 
 | Field Name                            | Type      | 描述                         |
 | ------------------------------------- | --------- | -------------------------- |
@@ -126,7 +126,7 @@ Acknowldge success or failure of a flexifunction command
 
 ### FLEXIFUNCTION_COMMAND_ACK (158) {#FLEXIFUNCTION_COMMAND_ACK}
 
-Acknowldge success or failure of a flexifunction command
+Acknowledge success or failure of a flexifunction command
 
 | Field Name                        | Type       | 描述                    |
 | --------------------------------- | ---------- | --------------------- |
