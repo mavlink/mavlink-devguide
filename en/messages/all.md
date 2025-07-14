@@ -54,13 +54,14 @@ span.warning {
 - [AVSSUAS.xml](../messages/AVSSUAS.md)
 - [cubepilot.xml](../messages/cubepilot.md)
 - [csAirLink.xml](../messages/csAirLink.md)
+- [marsh.xml](../messages/marsh.md)
 
 ## Summary
 
 Type | Defined | Included
 --- | --- | ---
-[Messages](#messages) | 0 | 376
-[Enums](#enumerated-types) | 0 | 237
+[Messages](#messages) | 0 | 381
+[Enums](#enumerated-types) | 0 | 243
 [Commands](#mav_commands) | 218 | 0
 
 The following sections list all entities in the dialect (both included and defined in this file).
