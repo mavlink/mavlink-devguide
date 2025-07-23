@@ -2044,7 +2044,7 @@ size_y | `float` | rad | | Size of target along y-axis
 <span class='ext'>z</span> <a href='#mav2_extension_field'>++</a> | `float` | m | | Z Position of the landing target in [MAV_FRAME](#MAV_FRAME) 
 <span class='ext'>q</span> <a href='#mav2_extension_field'>++</a> | `float[4]` | | | Quaternion of landing target orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0) 
 <span class='ext'>type</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | [LANDING_TARGET_TYPE](#LANDING_TARGET_TYPE) | Type of landing target 
-<span class='ext'>position_valid</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | default:0 BOOL | Position fields (x, y, z, q, type) contain valid target position information ([BOOL_FALSE](#BOOL_FALSE): invalid values). Values not equal to 0 or 1 are invalid. 
+<span class='ext'>position_valid</span> <a href='#mav2_extension_field'>++</a> | `uint8_t` | | default:0 [MAV_BOOL](#MAV_BOOL) | Position fields (x, y, z, q, type) contain valid target position information ([MAV_BOOL_FALSE](#MAV_BOOL_FALSE): invalid values). Values not equal to 0 or 1 are invalid. 
 
 
 ### FENCE_STATUS (162) {#FENCE_STATUS}
@@ -2596,7 +2596,7 @@ alt | `int32_t` | mm | | Altitude (MSL) where image was taken
 relative_alt | `int32_t` | mm | | Altitude above ground 
 q | `float[4]` | | | Quaternion of camera orientation (w, x, y, z order, zero-rotation is 1, 0, 0, 0) 
 image_index | `int32_t` | | | Zero based index of this image (i.e. a new image will have index [CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS).image count -1) 
-capture_result | `int8_t` | | BOOL | Image was captured successfully ([BOOL_TRUE](#BOOL_TRUE)). Values not equal to 0 or 1 are invalid. 
+capture_result | `int8_t` | | [MAV_BOOL](#MAV_BOOL) | Image was captured successfully ([MAV_BOOL_TRUE](#MAV_BOOL_TRUE)). Values not equal to 0 or 1 are invalid. 
 file_url | `char[205]` | | | URL of image taken. Either local storage or http://foo.jpg if camera provides an HTTP interface. 
 
 
@@ -6086,14 +6086,14 @@ Value | Name | Description
 --- | --- | ---
 <a id='HIL_ACTUATOR_CONTROLS_FLAGS_LOCKSTEP'></a>1 | [HIL_ACTUATOR_CONTROLS_FLAGS_LOCKSTEP](#HIL_ACTUATOR_CONTROLS_FLAGS_LOCKSTEP) | Simulation is using lockstep 
 
-### BOOL — \[from: [standard](../messages/standard.md#BOOL)\] {#BOOL}
+### MAV_BOOL — \[from: [standard](../messages/standard.md#MAV_BOOL)\] {#MAV_BOOL}
 
 (Bitmask) Enum used to indicate true or false (also: success or failure, enabled or disabled, active or inactive).
 
 Value | Name | Description
 --- | --- | ---
-<a id='BOOL_FALSE'></a>0 | [BOOL_FALSE](#BOOL_FALSE) | False. 
-<a id='BOOL_TRUE'></a>1 | [BOOL_TRUE](#BOOL_TRUE) | True. 
+<a id='MAV_BOOL_FALSE'></a>0 | [MAV_BOOL_FALSE](#MAV_BOOL_FALSE) | False. 
+<a id='MAV_BOOL_TRUE'></a>1 | [MAV_BOOL_TRUE](#MAV_BOOL_TRUE) | True. 
 
 ### MAV_AUTOPILOT — \[from: [minimal](../messages/minimal.md#MAV_AUTOPILOT)\] {#MAV_AUTOPILOT}
 
@@ -6416,7 +6416,7 @@ Loiter around this waypoint for X turns
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Turns) | Number of turns. | min: 0 |   
-2 (Heading Required) | Leave loiter circle only when track heads towards the next waypoint (BOOL_FALSE: Leave when turns complete). Values not equal to 0 or 1 are invalid. | BOOL |   
+2 (Heading Required) | Leave loiter circle only when track heads towards the next waypoint (MAV_BOOL_FALSE: Leave when turns complete). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 3 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise |   | m 
 4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. |   |   
 5 (Latitude) | Latitude |   |   
@@ -6431,7 +6431,7 @@ Loiter at the specified latitude, longitude and altitude for a certain amount of
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Time) | Loiter time (only starts once Lat, Lon and Alt is reached). | min: 0 | s 
-2 (Heading Required) | Leave loiter circle only when track heading towards the next waypoint (BOOL_FALSE: Leave on time expiry). Values not equal to 0 or 1 are invalid. | BOOL |   
+2 (Heading Required) | Leave loiter circle only when track heading towards the next waypoint (MAV_BOOL_FALSE: Leave on time expiry). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 3 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, else counter-clockwise. |   | m 
 4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. |   |   
 5 (Latitude) | Latitude |   |   
@@ -6550,7 +6550,7 @@ Begin loiter at the specified Latitude and Longitude.  If Lat=Lon=0, then loiter
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Heading Required) | Leave loiter circle only when track heading towards the next waypoint (BOOL_FALSE: Leave when altitude reached). Values not equal to 0 or 1 are invalid. | BOOL |   
+1 (Heading Required) | Leave loiter circle only when track heading towards the next waypoint (MAV_BOOL_FALSE: Leave when altitude reached). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 2 (Radius) | Loiter radius around waypoint for forward-only moving vehicles (not multicopters). If positive loiter clockwise, negative counter-clockwise, 0 means no change to standard loiter. |   | m 
 3 | Empty |   |   
 4 (Xtrack Location) | Loiter circle exit location and/or path to next waypoint ("xtrack") for forward-only moving vehicles (not multicopters). 0 for the vehicle to converge towards the center xtrack when it leaves the loiter (the line between the centers of the current and next waypoint), 1 to converge to the direct line between the location that the vehicle exits the loiter radius and the next waypoint. Otherwise the angle (in degrees) between the tangent of the loiter circle and the center xtrack at which the vehicle must leave the loiter (and converge to the center xtrack). NaN to use the current system default xtrack behaviour. | min: 0 max: 1 inc: 1 |   
@@ -6689,7 +6689,7 @@ Hand control over to an external controller
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Enable) | Guided mode on (BOOL_FALSE: Off). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Enable) | Guided mode on (MAV_BOOL_FALSE: Off). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
@@ -6797,7 +6797,7 @@ Param (Label) | Description | Values | Units
 1 (Angle) | target angle [0-360]. Absolute angles: 0 is north. Relative angle: 0 is initial yaw. Direction set by param3. | min: 0 max: 360 | deg 
 2 (Angular Speed) | angular speed | min: 0 | deg/s 
 3 (Direction) | direction: -1: counter clockwise, 0: shortest direction, 1: clockwise | min: -1 max: 1 inc: 1 |   
-4 (Relative) | Relative offset (BOOL_FALSE: absolute angle). Values not equal to 0 or 1 are invalid. | BOOL |   
+4 (Relative) | Relative offset (MAV_BOOL_FALSE: absolute angle). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 5 | Empty |   |   
 6 | Empty |   |   
 7 | Empty |   |   
@@ -6872,7 +6872,7 @@ Note: the current home position may be emitted in a [HOME_POSITION](#HOME_POSITI
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Use Current) | Use current location (BOOL_FALSE: use specified location). Values not equal to 0 or 1 are invalid. | BOOL |   
+1 (Use Current) | Use current location (MAV_BOOL_FALSE: use specified location). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 2 (Roll) | Roll angle (of surface). Range: -180..180 degrees. NAN or 0 means value not set. 0.01 indicates zero roll. | min: -180 max: 180 | deg 
 3 (Pitch) | Pitch angle (of surface). Range: -90..90 degrees. NAN or 0 means value not set. 0.01 means zero pitch. | min: -90 max: 90 | deg 
 4 (Yaw) | Yaw angle. NaN to use default heading. Range: -180..180 degrees. | min: -180 max: 180 | deg 
@@ -7111,7 +7111,7 @@ If in a GPS controlled position mode, hold the current position or continue.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Continue) | Continue mission (BOOL_TRUE), Pause current mission or reposition command, hold current position (BOOL_FALSE). Values not equal to 0 or 1 are invalid. A VTOL capable vehicle should enter hover mode (multicopter and VTOL planes). A plane should loiter with the default loiter radius. | BOOL 
+1 (Continue) | Continue mission (MAV_BOOL_TRUE), Pause current mission or reposition command, hold current position (MAV_BOOL_FALSE). Values not equal to 0 or 1 are invalid. A VTOL capable vehicle should enter hover mode (multicopter and VTOL planes). A plane should loiter with the default loiter radius. | [MAV_BOOL](#MAV_BOOL) 
 2 | Reserved |   
 3 | Reserved |   
 4 | Reserved |   
@@ -7126,7 +7126,7 @@ Set moving direction to forward or reverse.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Reverse) | Reverse direction (BOOL_FALSE: Forward direction). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Reverse) | Reverse direction (MAV_BOOL_FALSE: Forward direction). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
@@ -7261,9 +7261,9 @@ Mission command to configure a camera or antenna mount
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Mode) | Mount operation mode | [MAV_MOUNT_MODE](#MAV_MOUNT_MODE) 
-2 (Stabilize Roll) | Stabilize roll (BOOL_TRUE). Values not equal to 0 or 1 are invalid. | BOOL 
-3 (Stabilize Pitch) | Stabilize pitch (BOOL_TRUE). Values not equal to 0 or 1 are invalid. | BOOL 
-4 (Stabilize Yaw) | Stabilize yaw (BOOL_TRUE). Values not equal to 0 or 1 are invalid. | BOOL 
+2 (Stabilize Roll) | Stabilize roll (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
+3 (Stabilize Pitch) | Stabilize pitch (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
+4 (Stabilize Yaw) | Stabilize yaw (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 5 (Roll Input Mode) | Roll input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame) |   
 6 (Pitch Input Mode) | Pitch input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame) |   
 7 (Yaw Input Mode) | Yaw input (0 = angle body frame, 1 = angular rate, 2 = angle absolute frame) |   
@@ -7294,7 +7294,7 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Distance) | Camera trigger distance. 0 to stop triggering. | min: 0 | m 
 2 (Shutter) | Camera shutter integration time. -1 or 0 to ignore | min: -1 inc: 1 | ms 
-3 (Trigger) | Trigger camera once, immediately (BOOL_TRUE). Values not equal to 0 or 1 are invalid. | BOOL |   
+3 (Trigger) | Trigger camera once, immediately (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 4 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 |   
 5 | Empty |   |   
 6 | Empty |   |   
@@ -7356,7 +7356,7 @@ Change to/from inverted flight.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Inverted) | Inverted flight (BOOL_False: normal flight). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Inverted) | Inverted flight (MAV_BOOL_False: normal flight). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
@@ -7386,7 +7386,7 @@ Enable/disable autotune.
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Enable) | Enable autotune (BOOL_FALSE: disable autotune). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Enable) | Enable autotune (MAV_BOOL_FALSE: disable autotune). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 (Axis) | Specify axes for which autotuning is enabled/disabled. 0 indicates the field is unused (for compatibility reasons). If 0 the autopilot will follow its default behaviour, which is usually to tune all axes. | [AUTOTUNE_AXIS](#AUTOTUNE_AXIS) 
 3 | Empty. |   
 4 | Empty. |   
@@ -7403,7 +7403,7 @@ Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Yaw) | Yaw angle to adjust steering by. |   | deg 
 2 (Speed) | Speed. |   | m/s 
-3 (Angle) | Relative final angle (BOOL_FALSE: Absolute angle). Values not equal to 0 or 1 are invalid. | BOOL |   
+3 (Angle) | Relative final angle (MAV_BOOL_FALSE: Absolute angle). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 4 | Empty |   |   
 5 | Empty |   |   
 6 | Empty |   |   
@@ -7478,8 +7478,8 @@ Control vehicle engine. This is interpreted by the vehicles engine controller to
 
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
-1 (Start Engine) | Start engine (BOOL_False: Stop engine). Values not equal to 0 or 1 are invalid. | BOOL |   
-2 (Cold Start) | Cold start engine (BOOL_FALSE: Warm start). Values not equal to 0 or 1 are invalid. Controls use of choke where applicable | BOOL |   
+1 (Start Engine) | Start engine (MAV_BOOL_False: Stop engine). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
+2 (Cold Start) | Cold start engine (MAV_BOOL_FALSE: Warm start). Values not equal to 0 or 1 are invalid. Controls use of choke where applicable | [MAV_BOOL](#MAV_BOOL) |   
 3 (Height Delay) | Height delay. This is for commanding engine start only after the vehicle has gained the specified height. Used in VTOL vehicles during takeoff to start engine after the aircraft is off the ground. Zero for no delay. | min: 0 | m 
 4 | Empty |   |   
 5 | Empty |   |   
@@ -7506,7 +7506,7 @@ The command will ACK with [MAV_RESULT_FAILED](#MAV_RESULT_FAILED) if the sequenc
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Number) | Mission sequence value to set. -1 for the current mission item (use to reset mission without changing current mission item). | min: -1 inc: 1 
-2 (Reset Mission) | Reset mission (BOOL_TRUE). Values not equal to 0 or 1 are invalid. Resets jump counters to initial values and changes mission state "completed" to be "active" or "paused". | BOOL 
+2 (Reset Mission) | Reset mission (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. Resets jump counters to initial values and changes mission state "completed" to be "active" or "paused". | [MAV_BOOL](#MAV_BOOL) 
 3 | Empty |   
 4 | Empty |   
 5 | Empty |   
@@ -7536,8 +7536,8 @@ Trigger calibration. This command will be only accepted if in pre-flight mode. E
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Gyro Temperature) | 1: gyro calibration, 3: gyro temperature calibration | min: 0 max: 3 inc: 1 
-2 (Magnetometer) | Magnetometer calibration. Values not equal to 0 or 1 are invalid. | BOOL 
-3 (Ground Pressure) | Ground pressure calibration. Values not equal to 0 or 1 are invalid. | BOOL 
+2 (Magnetometer) | Magnetometer calibration. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
+3 (Ground Pressure) | Ground pressure calibration. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 4 (Remote Control) | 1: radio RC calibration, 2: RC trim calibration | min: 0 max: 1 inc: 1 
 5 (Accelerometer) | 1: accelerometer calibration, 2: board level calibration, 3: accelerometer temperature calibration, 4: simple accelerometer calibration | min: 0 max: 4 inc: 1 
 6 (Compmot or Airspeed) | 1: APM: compass/motor interference calibration (PX4: airspeed calibration, deprecated), 2: airspeed calibration | min: 0 max: 2 inc: 1 
@@ -7698,7 +7698,7 @@ Arms / Disarms a component
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Arm) | Arm (BOOL_FALSE: disarm). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Arm) | Arm (MAV_BOOL_FALSE: disarm). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 (Force) | 0: arm-disarm unless prevented by safety checks (i.e. when landed), 21196: force arming/disarming (e.g. allow arming to override preflight checks and disarming in flight) | min: 0 max: 21196 inc: 21196 
 
 
@@ -7721,7 +7721,7 @@ Turns illuminators ON/OFF. An illuminator is a light source that is used for lig
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Enable) | Illuminators on/off (BOOL_TRUE: illuminators on). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Enable) | Illuminators on/off (MAV_BOOL_TRUE: illuminators on). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 
 
 ### MAV_CMD_DO_ILLUMINATOR_CONFIGURE (406) {#MAV_CMD_DO_ILLUMINATOR_CONFIGURE}
@@ -7826,7 +7826,7 @@ Request MAVLink protocol version compatibility. All receivers should ACK the com
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Protocol) | Request supported protocol versions by all nodes on the network (BOOL_TRUE). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Protocol) | Request supported protocol versions by all nodes on the network (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 | Reserved (all remaining params) |   
 
 
@@ -7838,7 +7838,7 @@ Request autopilot capabilities. The receiver should ACK the command and then emi
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Version) | Request autopilot version (BOOL_TRUE). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Version) | Request autopilot version (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 | Reserved (all remaining params) |   
 
 
@@ -7850,7 +7850,7 @@ Request camera information ([CAMERA_INFORMATION](#CAMERA_INFORMATION)).
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Capabilities) | Request camera capabilities (BOOL_TRUE). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Capabilities) | Request camera capabilities (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 | Reserved (all remaining params) |   
 
 
@@ -7862,7 +7862,7 @@ Request camera settings ([CAMERA_SETTINGS](#CAMERA_SETTINGS)).
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Settings) | Request camera settings (BOOL_TRUE). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Settings) | Request camera settings (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 | Reserved (all remaining params) |   
 
 
@@ -7875,7 +7875,7 @@ Request storage information ([STORAGE_INFORMATION](#STORAGE_INFORMATION)). Use t
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Storage ID) | Storage ID (0 for all, 1 for first, 2 for second, etc.) | min: 0 inc: 1 
-2 (Information) | Request storage information (BOOL_TRUE). Values not equal to 0 or 1 are invalid. | BOOL 
+2 (Information) | Request storage information (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 3 | Reserved (all remaining params) |   
 
 
@@ -7886,8 +7886,8 @@ Format a storage medium. Once format is complete, a [STORAGE_INFORMATION](#STORA
 Param (Label) | Description | Values
 --- | --- | ---
 1 (Storage ID) | Storage ID (1 for first, 2 for second, etc.) | min: 0 inc: 1 
-2 (Format) | Format storage (and reset image log). Values not equal to 0 or 1 are invalid. | BOOL 
-3 (Reset Image Log) | Reset Image Log (without formatting storage medium). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index. Values not equal to 0 or 1 are invalid. | BOOL 
+2 (Format) | Format storage (and reset image log). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
+3 (Reset Image Log) | Reset Image Log (without formatting storage medium). This will reset CAMERA_CAPTURE_STATUS.image_count and CAMERA_IMAGE_CAPTURED.image_index. Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 4 | Reserved (all remaining params) |   
 
 
@@ -7899,7 +7899,7 @@ Request camera capture status ([CAMERA_CAPTURE_STATUS](#CAMERA_CAPTURE_STATUS))
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Capture Status) | Request camera capture status (BOOL_TRUE). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Capture Status) | Request camera capture status (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 | Reserved (all remaining params) |   
 
 
@@ -7911,7 +7911,7 @@ Request flight information ([FLIGHT_INFORMATION](#FLIGHT_INFORMATION))
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Flight Information) | Request flight information (BOOL_TRUE). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Flight Information) | Request flight information (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 | Reserved (all remaining params) |   
 
 
@@ -7921,7 +7921,7 @@ Reset all camera settings to Factory Default
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Reset) | Reset all settings (BOOL_TRUE). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Reset) | Reset all settings (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 (Target Camera ID) | Target camera ID. 7 to 255: MAVLink camera component id. 1 to 6 for cameras attached to the autopilot, which don't have a distinct component id. 0: all cameras. This is used to target specific autopilot-connected cameras. It is also used to target specific cameras when the MAV_CMD is used in a mission. | min: 0 max: 255 inc: 1 
 
 
@@ -8274,7 +8274,7 @@ Request to start/stop transmitting over the high latency telemetry
 
 Param (Label) | Description | Values
 --- | --- | ---
-1 (Enable) | Start transmission over high latency telemetry (BOOL_FALSE: stop transmission). Values not equal to 0 or 1 are invalid. | BOOL 
+1 (Enable) | Start transmission over high latency telemetry (MAV_BOOL_FALSE: stop transmission). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) 
 2 | Empty |   
 3 | Empty |   
 4 | Empty |   
@@ -8348,7 +8348,7 @@ Delay mission state machine until gate has been reached.
 Param (Label) | Description | Values | Units
 --- | --- | --- | ---
 1 (Geometry) | Geometry: 0: orthogonal to path between previous and next waypoint. | min: 0 inc: 1 |   
-2 (UseAltitude) | Use altitude (BOOL_FALSE: ignore altitude). Values not equal to 0 or 1 are invalid. | BOOL |   
+2 (UseAltitude) | Use altitude (MAV_BOOL_FALSE: ignore altitude). Values not equal to 0 or 1 are invalid. | [MAV_BOOL](#MAV_BOOL) |   
 3 | Empty |   |   
 4 | Empty |   |   
 5 (Latitude) | Latitude |   |   
