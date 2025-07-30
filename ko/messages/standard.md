@@ -45,12 +45,12 @@ The following sections list all entities in the dialect (both included and defin
 
 ## Enumerated Types
 
-### BOOL {#BOOL}
+### MAV_BOOL {#MAV_BOOL}
 
 (Bitmask) Enum used to indicate true or false (also: success or failure, enabled or disabled, active or inactive).
 
-| Value                    | Name                                           | Description            |
-| ------------------------ | ---------------------------------------------- | ---------------------- |
-| <a id='BOOL_FALSE'></a>0 | [BOOL_FALSE](#BOOL_FALSE) | False. |
-| <a id='BOOL_TRUE'></a>1  | [BOOL_TRUE](#BOOL_TRUE)   | True.  |
+| Value                        | Name                                                                        | Description            |
+| ---------------------------- | --------------------------------------------------------------------------- | ---------------------- |
+| <a id='MAV_BOOL_FALSE'></a>0 | [MAV_BOOL_FALSE](#MAV_BOOL_FALSE) | False. |
+| <a id='MAV_BOOL_TRUE'></a>1  | [MAV_BOOL_TRUE](#MAV_BOOL_TRUE)   | True.  |
 

@@ -38,8 +38,8 @@ span.warning {
 | Type                       | Defined | Included |
 | -------------------------- | ------- | -------- |
 | [Messages](#messages)      | 12      | 229      |
-| [Enums](#enumerated-types) | 11      | 148      |
-| [Commands](#mav_commands)  | 172     | 0        |
+| [Enums](#enumerated-types) | 12      | 148      |
+| [Commands](#mav_commands)  | 173     | 0        |
 
 The following sections list all entities in the dialect (both included and defined in this file).
 
@@ -413,6 +413,19 @@ State of RAIM processing.
 | <a id='GPS_RAIM_STATE_OK'></a>2       | [GPS_RAIM_STATE_OK](#GPS_RAIM_STATE_OK)             | RAIM integrity check was successful. |
 | <a id='GPS_RAIM_STATE_FAILED'></a>3   | [GPS_RAIM_STATE_FAILED](#GPS_RAIM_STATE_FAILED)     | RAIM integrity check failed.         |
 
+### ACTUATOR_TEST_GROUP — [WIP] {#ACTUATOR_TEST_GROUP}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Actuator groups to test in [MAV_CMD_ACTUATOR_GROUP_TEST](#MAV_CMD_ACTUATOR_GROUP_TEST).
+
+| 值                                                 | Name                                                                                                                                                            | 描述                                                         |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| <a id='ACTUATOR_TEST_GROUP_ROLL_TORQUE'></a>0     | [ACTUATOR_TEST_GROUP_ROLL_TORQUE](#ACTUATOR_TEST_GROUP_ROLL_TORQUE)         | Actuators that contribute to roll torque.  |
+| <a id='ACTUATOR_TEST_GROUP_PITCH_TORQUE'></a>1    | [ACTUATOR_TEST_GROUP_PITCH_TORQUE](#ACTUATOR_TEST_GROUP_PITCH_TORQUE)       | Actuators that contribute to pitch torque. |
+| <a id='ACTUATOR_TEST_GROUP_YAW_TORQUE'></a>2      | [ACTUATOR_TEST_GROUP_YAW_TORQUE](#ACTUATOR_TEST_GROUP_YAW_TORQUE)           | Actuators that contribute to yaw torque.   |
+| <a id='ACTUATOR_TEST_GROUP_COLLECTIVE_TILT'></a>3 | [ACTUATOR_TEST_GROUP_COLLECTIVE_TILT](#ACTUATOR_TEST_GROUP_COLLECTIVE_TILT) | Actuators that affect collective tilt.     |
+
 ## Commands (MAV_CMD) {#mav_commands}
 
 ### MAV_CMD_DO_FIGURE_EIGHT (35) — [WIP] {#MAV_CMD_DO_FIGURE_EIGHT}
@@ -455,6 +468,22 @@ Command protocol information: https://mavlink.io/en/services/command.html.
 | 5                                   | Reserved                                                                                                                                                   |                                                                      |
 | 6                                   | Reserved                                                                                                                                                   |                                                                      |
 | 7                                   | WIP: upgrade progress report rate (can be used for more granular control).                              |                                                                      |
+
+### MAV_CMD_ACTUATOR_GROUP_TEST (309) — [WIP] {#MAV_CMD_ACTUATOR_GROUP_TEST}
+
+<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+
+Command to test groups of related actuators together.
+
+This might include groups such as the actuators that contribute to roll, pitch, or yaw torque, actuators that contribute to thrust in x, y, z axis, tilt mechanisms, flaps and spoilers, and so on.
+This is similar to [MAV_CMD_ACTUATOR_TEST](#MAV_CMD_ACTUATOR_TEST), except that multiple actuators may be affected.
+Different groups may also affect the same actuators (as in the case of controls that affect torque in different axes).
+Autopilots must NACK this command with [MAV_RESULT_TEMPORARILY_REJECTED](#MAV_RESULT_TEMPORARILY_REJECTED) while armed.
+
+| Param (Label) | 描述                                                                                                                                                                             | 值                                                                                     |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| 1 (Group)     | Actuator group to check, such as actuators related to roll torque.                                                                                             | [ACTUATOR_TEST_GROUP](#ACTUATOR_TEST_GROUP) |
+| 2 (Value)     | Value to set. This is a normalized value across the full range of the tested group [-1,1]. | min: -1 max: 1                                        |
 
 ### MAV_CMD_DO_SET_SYS_CMP_ID (610) — [WIP] {#MAV_CMD_DO_SET_SYS_CMP_ID}
 
