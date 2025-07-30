@@ -3143,9 +3143,7 @@ Large debug/prototyping array. The message uses the maximum available payload fo
 | array_id                                        | `uint16_t`  |       | Unique ID used to discriminate between arrays<br>Messages with same value are from the same source (instance).                                                                                                                                            |
 | <span class='ext'>data</span> <a href='#mav2_extension_field'>++</a> | `float[58]` |       | data                                                                                                                                                                                                                                                                                         |
 
-### ORBIT_EXECUTION_STATUS (360) — [WIP] {#ORBIT_EXECUTION_STATUS}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### ORBIT_EXECUTION_STATUS (360) {#ORBIT_EXECUTION_STATUS}
 
 Vehicle status report that is sent out while orbit execution is in progress (see [MAV_CMD_DO_ORBIT](#MAV_CMD_DO_ORBIT)).
 
@@ -6346,9 +6344,7 @@ Reposition the MAV after a follow target command has been sent
 | 6 (X Offset)        | X offset from target                                                                        | m     |
 | 7 (Y Offset)        | Y offset from target                                                                        | m     |
 
-### MAV_CMD_DO_ORBIT (34) — [WIP] {#MAV_CMD_DO_ORBIT}
-
-<span class="warning">**WORK IN PROGRESS**: Do not use in stable production environments (it may change).</span>
+### MAV_CMD_DO_ORBIT (34) {#MAV_CMD_DO_ORBIT}
 
 Start orbiting on the circumference of a circle defined by the parameters. Setting values to NaN/INT32_MAX (as appropriate) results in using defaults.
 
