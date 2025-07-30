@@ -55,7 +55,7 @@ aircraftSize | `uint8_t` | | [UAVIONIX_ADSB_OUT_CFG_AIRCRAFT_SIZE](#UAVIONIX_ADS
 gpsOffsetLat | `uint8_t` | | [UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LAT](#UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LAT) | GPS antenna lateral offset (table 2-36 of DO-282B) 
 gpsOffsetLon | `uint8_t` | | [UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LON](#UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LON) | GPS antenna longitudinal offset from nose [if non-zero, take position (in meters) divide by 2 and add one] (table 2-37 DO-282B) 
 stallSpeed | `uint16_t` | cm/s | | Aircraft stall speed in cm/s 
-rfSelect | `uint8_t` | | [UAVIONIX_ADSB_OUT_RF_SELECT](#UAVIONIX_ADSB_OUT_RF_SELECT) | ADS-B transponder reciever and transmit enable flags 
+rfSelect | `uint8_t` | | [UAVIONIX_ADSB_OUT_RF_SELECT](#UAVIONIX_ADSB_OUT_RF_SELECT) | ADS-B transponder receiver and transmit enable flags 
 
 
 ### UAVIONIX_ADSB_OUT_DYNAMIC (10002) {#UAVIONIX_ADSB_OUT_DYNAMIC}
