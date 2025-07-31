@@ -44,7 +44,7 @@ This is sufficient if the communication link between autopilot and GCS is comple
 However, most communication links are not completely transparent as they either include routing or in case of fixed-length wireless implementations on packetization.
 In order to also test the link, the _MAVLink 2_ handshake protocol sends a _MAVLink 2_ frame to test the complete communication chain.
 
-To do so, the GCS sends a [COMMAND_LONG](../messages/common.md#COMMAND_LONG) or [COMMAND_INT](../messages/common.md#COMMAND_INT) message with the command ID [MAV_CMD_REQUEST_PROTOCOL_VERSION](../messages/common.md#MAV_CMD_REQUEST_PROTOCOL_VERSION).
+To do so, the GCS sends a [COMMAND_LONG](../messages/common.md#COMMAND_LONG) or [COMMAND_INT](../messages/common.md#COMMAND_INT) message with the command ID [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) and param1=300 (PROTOCOL_VERSION)
 
 If the system supports _MAVLink 2_ and the handshake it will respond with [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION) **encoded as MAVLink 2 packet**.
 If it does not support _MAVLink 2_ it should `NACK` the command.
