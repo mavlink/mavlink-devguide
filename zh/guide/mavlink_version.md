@@ -44,7 +44,7 @@ Support for _MAVLink 2_ is indicated in the [AUTOPILOT_VERSION](../messages/comm
 但是, 大多数通信链路并不完全透明, 因为它们要么包括路由, 要么在数据化上固定长度的无线实现的情况下。
 In order to also test the link, the _MAVLink 2_ handshake protocol sends a _MAVLink 2_ frame to test the complete communication chain.
 
-To do so, the GCS sends a [COMMAND_LONG](../messages/common.md#COMMAND_LONG) or [COMMAND_INT](../messages/common.md#COMMAND_INT) message with the command ID [MAV_CMD_REQUEST_PROTOCOL_VERSION](../messages/common.md#MAV_CMD_REQUEST_PROTOCOL_VERSION).
+To do so, the GCS sends a [COMMAND_LONG](../messages/common.md#COMMAND_LONG) or [COMMAND_INT](../messages/common.md#COMMAND_INT) message with the command ID [MAV_CMD_REQUEST_MESSAGE](../messages/common.md#MAV_CMD_REQUEST_MESSAGE) and param1=300 (PROTOCOL_VERSION)
 
 If the system supports _MAVLink 2_ and the handshake it will respond with [PROTOCOL_VERSION](../messages/common.md#PROTOCOL_VERSION) **encoded as MAVLink 2 packet**.
 If it does not support _MAVLink 2_ it should `NACK` the command.
@@ -52,13 +52,13 @@ If it does not support _MAVLink 2_ it should `NACK` the command.
 
 下表显示完整顺序。
 
-[![Mermaid sequence: Request protocol version](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9QUk9UT0NPTF9WRVJTSU9OXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IFBST1RPQ09MX1ZFUlNJT04gaW4gTUFWTGluayAyIGZyYW1pbmdcbiAgICBHQ1MtPj5Ecm9uZTogSWYgQUNLOiBTd2l0Y2hlcyB0byBNQVZMaW5rIDJcbiAgICBEcm9uZS0-PkdDUzogU3dpdGNoZXMgdG8gTUFWTGluayAyIG9uIHJlY2VpdmUiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtO1xuICAgIHBhcnRpY2lwYW50IEdDU1xuICAgIHBhcnRpY2lwYW50IERyb25lXG4gICAgR0NTLT4-RHJvbmU6IE1BVl9DTURfUkVRVUVTVF9QUk9UT0NPTF9WRVJTSU9OXG4gICAgR0NTLT4-R0NTOiBTdGFydCB0aW1lb3V0XG4gICAgRHJvbmUtPj5HQ1M6IFBST1RPQ09MX1ZFUlNJT04gaW4gTUFWTGluayAyIGZyYW1pbmdcbiAgICBHQ1MtPj5Ecm9uZTogSWYgQUNLOiBTd2l0Y2hlcyB0byBNQVZMaW5rIDJcbiAgICBEcm9uZS0-PkdDUzogU3dpdGNoZXMgdG8gTUFWTGluayAyIG9uIHJlY2VpdmUiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+[![Mermaid sequence: Request protocol version](https://mermaid.ink/img/pako:eNptkG1rwjAQx79KuFcbOEkftJoxQWoRma6bdb4YBQntVcNs4mK6J_G7L1bcxmZeHLn_3f93x-0gUzkCgy2-VCgzHAi-1Ly8TiWxb8O1EZnYcGnIMEz-iwOtJB5lW7_q9WqBkUl_vggng8U0eniMktliEiVJfxhdWC8vnRuP0svfLhsZSYwFEyNKVJU5VmvaqX4_jWdxGI8X82iajOI7IuRhzljIZ-KSwoKFXJ7ZZVSQfnhr-W_CZCvcEqN-fGfmnO0jShKNGYpXhAYstciBGV1hA0rUJT-ksDvAUjArLDEFZr85FrxamxRSubc2e7InpcqTU6tquQJW8PXWZtUm5-Z0_z9qlAuj9LeoUeaoQ1VJAyzwazCwHbwDa9NW02tT2mlRt931g6ABH8Achzbdju90A-p4vuN3g30DPutVaLPjUK_luY5tdtuuu_8CvZ-j_w?type=png)](https://mermaid.live/edit#pako:eNptkG1rwjAQx79KuFcbOEkftJoxQWoRma6bdb4YBQntVcNs4mK6J_G7L1bcxmZeHLn_3f93x-0gUzkCgy2-VCgzHAi-1Ly8TiWxb8O1EZnYcGnIMEz-iwOtJB5lW7_q9WqBkUl_vggng8U0eniMktliEiVJfxhdWC8vnRuP0svfLhsZSYwFEyNKVJU5VmvaqX4_jWdxGI8X82iajOI7IuRhzljIZ-KSwoKFXJ7ZZVSQfnhr-W_CZCvcEqN-fGfmnO0jShKNGYpXhAYstciBGV1hA0rUJT-ksDvAUjArLDEFZr85FrxamxRSubc2e7InpcqTU6tquQJW8PXWZtUm5-Z0_z9qlAuj9LeoUeaoQ1VJAyzwazCwHbwDa9NW02tT2mlRt931g6ABH8Achzbdju90A-p4vuN3g30DPutVaLPjUK_luY5tdtuuu_8CvZ-j_w)
 
 <!-- Original sequence
 sequenceDiagram;
     participant GCS
     participant Drone
-    GCS->>Drone: MAV_CMD_REQUEST_PROTOCOL_VERSION
+    GCS->>Drone: MAV_CMD_REQUEST_MESSAGE(param1=300)
     GCS->>GCS: Start timeout
     Drone->>GCS: PROTOCOL_VERSION in MAVLink 2 framing
     GCS->>Drone: If ACK: Switches to MAVLink 2

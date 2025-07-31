@@ -56,7 +56,7 @@ Static data to configure the ADS-B transponder (send within 10 sec of a POR and 
 | gpsOffsetLat | `uint8_t`  |       | [UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LAT](#UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LAT) | GPS天线纬度偏移（DO-282B的表2-36）                                                                                |
 | gpsOffsetLon | `uint8_t`  |       | [UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LON](#UAVIONIX_ADSB_OUT_CFG_GPS_OFFSET_LON) | GPS天线从机头经度偏移[如果非零，取得位置（以米为单位）除以2并加一]（DO-282B的表2-37） |
 | stallSpeed   | `uint16_t` | 厘米/秒  |                                                                                                                                                                                                             | 飞机失速速度（厘米/秒）                                                                                            |
-| rfSelect     | `uint8_t`  |       | [UAVIONIX_ADSB_OUT_RF_SELECT](#UAVIONIX_ADSB_OUT_RF_SELECT)                                                             | ADS-B transponder reciever and transmit enable flags                                                    |
+| rfSelect     | `uint8_t`  |       | [UAVIONIX_ADSB_OUT_RF_SELECT](#UAVIONIX_ADSB_OUT_RF_SELECT)                                                             | ADS-B transponder receiver and transmit enable flags                                                    |
 
 ### UAVIONIX_ADSB_OUT_DYNAMIC (10002) {#UAVIONIX_ADSB_OUT_DYNAMIC}
 
