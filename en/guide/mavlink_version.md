@@ -58,7 +58,7 @@ The diagram below illustrates the complete sequence.
 sequenceDiagram;
     participant GCS
     participant Drone
-    GCS->>Drone: MAV_CMD_REQUEST_PROTOCOL_VERSION
+    GCS->>Drone: MAV_CMD_REQUEST_MESSAGE(param1=300)
     GCS->>GCS: Start timeout
     Drone->>GCS: PROTOCOL_VERSION in MAVLink 2 framing
     GCS->>Drone: If ACK: Switches to MAVLink 2
